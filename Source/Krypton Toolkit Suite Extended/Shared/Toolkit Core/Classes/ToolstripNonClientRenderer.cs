@@ -2,7 +2,7 @@
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
-namespace ToolkitCore.Classes
+namespace Krypton.Toolkit.Extended.Core
 {
     public class ToolstripNonClientRenderer : ToolStripSystemRenderer
     {

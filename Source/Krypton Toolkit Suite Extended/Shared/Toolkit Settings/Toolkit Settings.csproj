@@ -123,4 +123,8 @@
     <Folder Include="Settings\Palette Explorer\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Krypton.Toolkit.Experimental" Version="5.500.2003" />
+  </ItemGroup>
+
 </Project>

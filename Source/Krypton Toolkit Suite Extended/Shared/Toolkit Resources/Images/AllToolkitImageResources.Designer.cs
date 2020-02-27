@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ToolkitResources.Images {
+namespace Krypton.Extended.Toolkit.Resources.Images {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace ToolkitResources.Images {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ToolkitResources.Images.AllToolkitImageResources", typeof(AllToolkitImageResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Krypton.Extended.Toolkit.Resources.Images.AllToolkitImageResources", typeof(AllToolkitImageResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
