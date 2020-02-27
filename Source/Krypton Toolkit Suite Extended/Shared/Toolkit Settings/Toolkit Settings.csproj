@@ -1,0 +1,126 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <LangVersion>8.0</LangVersion>
+    <TargetFrameworks>net40;netcoreapp3.1</TargetFrameworks>
+    <TargetFrameworks Condition="'$(TFMs)' == 'all'">net35;net40;net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1</TargetFrameworks>
+    <RootNamespace>ToolkitSettings</RootNamespace>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Update="Resources\DateTime\DateTimeSpanResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DateTimeSpanResources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\ToolkitSettingsResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ToolkitSettingsResources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Settings\Controls\BooleanSettings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>BooleanSettings.settings</DependentUpon>
+    </Compile>
+    <Compile Update="Settings\Controls\StringSettings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>StringSettings.settings</DependentUpon>
+    </Compile>
+    <Compile Update="Settings\Controls\WindowLocationSettings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>WindowLocationSettings.settings</DependentUpon>
+    </Compile>
+    <Compile Update="Settings\Core\ColourIntegerSettings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ColourIntegerSettings.settings</DependentUpon>
+    </Compile>
+    <Compile Update="Settings\Core\ColourStringSettings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ColourStringSettings.settings</DependentUpon>
+    </Compile>
+    <Compile Update="Settings\Dialogs\Run\RunDialogSettings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>RunDialogSettings.settings</DependentUpon>
+    </Compile>
+    <Compile Update="Settings\Global\GlobalBooleanSettings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>GlobalBooleanSettings.settings</DependentUpon>
+    </Compile>
+    <Compile Update="Settings\Global\GlobalEnumerationSettings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>GlobalEnumerationSettings.settings</DependentUpon>
+    </Compile>
+    <Compile Update="Settings\Global\GlobalStringSettings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>GlobalStringSettings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\DateTime\DateTimeSpanResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>DateTimeSpanResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\ToolkitSettingsResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ToolkitSettingsResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Settings\Controls\BooleanSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>BooleanSettings.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Settings\Controls\StringSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>StringSettings.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Settings\Controls\ThemeSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+    </None>
+    <None Update="Settings\Controls\WindowLocationSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>WindowLocationSettings.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Settings\Core\ColourIntegerSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>ColourIntegerSettings.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Settings\Core\ColourStringSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>ColourStringSettings.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Settings\Dialogs\Run\RunDialogSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>RunDialogSettings.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Settings\Global\GlobalBooleanSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>GlobalBooleanSettings.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Settings\Global\GlobalEnumerationSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>GlobalEnumerationSettings.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Settings\Global\GlobalStringSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>GlobalStringSettings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Settings\Palette Explorer\" />
+  </ItemGroup>
+
+</Project>

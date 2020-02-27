@@ -1,0 +1,12 @@
+<Project>
+  <PropertyGroup>
+   <Copyright>copyright © Peter William Wagner &amp; Simon Coghlan et al.</Copyright>
+   <Product>Krypton Toolkit Suite Extended 2019</Product>
+   <Company>Peter William Wagner &amp; Simon Coghlan et al.</Company>
+   <Authors>Peter William Wagner &amp; Simon Coghlan et al.</Authors>
+   <Owners>Peter William Wagner</Owners>
+   <!-- version number used for the assemblies and the nuget packages -->
+	<LibraryVersion>5.500.2004</LibraryVersion>
+	<GenerateAssemblyInfo>false</GenerateAssemblyInfo> 
+</PropertyGroup>
+</Project>
