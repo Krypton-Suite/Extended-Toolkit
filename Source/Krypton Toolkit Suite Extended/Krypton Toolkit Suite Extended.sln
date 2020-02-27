@@ -35,6 +35,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton Toolkit Suite Exten
 		{D09C0FBA-B998-4A59-B648-FC6977C8D9DF} = {D09C0FBA-B998-4A59-B648-FC6977C8D9DF}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Floating Toolbars", "Libraries\Floating Toolbars\Floating Toolbars.csproj", "{4258845A-0A43-4BB7-89B9-E623E32CA836}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,10 @@ Global
 		{C1C4DE3D-5A1B-4436-9217-071B9A946696}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C1C4DE3D-5A1B-4436-9217-071B9A946696}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C1C4DE3D-5A1B-4436-9217-071B9A946696}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4258845A-0A43-4BB7-89B9-E623E32CA836}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4258845A-0A43-4BB7-89B9-E623E32CA836}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4258845A-0A43-4BB7-89B9-E623E32CA836}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4258845A-0A43-4BB7-89B9-E623E32CA836}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -96,6 +102,7 @@ Global
 		{D09C0FBA-B998-4A59-B648-FC6977C8D9DF} = {0FC2D6C3-9CA1-46CF-8E37-4B900B07184D}
 		{88BB4175-9CB6-4B94-AC2F-EF9EB201B5A3} = {0FC2D6C3-9CA1-46CF-8E37-4B900B07184D}
 		{C1C4DE3D-5A1B-4436-9217-071B9A946696} = {1F1DCECC-C25F-4E91-9C8A-ECCBB9827BBA}
+		{4258845A-0A43-4BB7-89B9-E623E32CA836} = {1F1DCECC-C25F-4E91-9C8A-ECCBB9827BBA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9A189168-3746-4F9F-8C61-863D83D8ABD2}
