@@ -2,12 +2,10 @@
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
-using System.Drawing.Printing;
 using System.Runtime.InteropServices;
 
 namespace Krypton.Toolkit.Extended.Base
 {
-#if !NET45
     /// <summary>
     /// A <see cref="KryptonRichTextBox"/> control with some extra features.
     /// </summary>
@@ -45,6 +43,7 @@ namespace Krypton.Toolkit.Extended.Base
         #endregion
 
         #region Properties
+#if NET47
         /// <summary>
         /// Gets or sets the selection alignment.
         /// </summary>
@@ -93,6 +92,7 @@ namespace Krypton.Toolkit.Extended.Base
                 SendMessage(new HandleRef(this, Handle), 1095, 1, ref _pARAFORMAT);
             }
         }
+#endif
         #endregion
 
         #region Constructor
@@ -137,6 +137,7 @@ namespace Krypton.Toolkit.Extended.Base
             }
         }
 
+#if NET47
         /// <summary>Prints the specified character from.</summary>
         /// <param name="charFrom">The character from.</param>
         /// <param name="charTo">The character to.</param>
@@ -216,6 +217,7 @@ namespace Krypton.Toolkit.Extended.Base
 
             return zero.ToInt32();
         }
+#endif
         #endregion
 
         #region Overrides        
@@ -326,5 +328,4 @@ namespace Krypton.Toolkit.Extended.Base
         }
         #endregion
     }
-#endif
 }

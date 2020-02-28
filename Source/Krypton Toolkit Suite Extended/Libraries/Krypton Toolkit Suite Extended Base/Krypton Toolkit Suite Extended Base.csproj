@@ -8,9 +8,18 @@
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <PackageId>Krypton.Toolkit.Extended.Base</PackageId>
+    <Description>An extension to the standard krypton toolkit to support .NET Core and the latest .NET 3.5/4.x framework. This is the base module.</Description>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Krypton.Ribbon.Experimental" Version="5.500.2003" />
     <PackageReference Include="Krypton.Toolkit.Experimental" Version="5.500.2003" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Shared\Common\Common.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -31,5 +40,15 @@
       <LastGenOutput>ImageResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+
+  <PropertyGroup>
+    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Krypton.Toolkit.Extended.Base.xml</DocumentationFile>
+    <OutputPath>..\..\..\..\Bin\$(configuration)\</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <AssemblyVersion>5.500.2004</AssemblyVersion>
+    <FileVersion>5.500.2004</FileVersion>
+  </PropertyGroup>
 
 </Project>

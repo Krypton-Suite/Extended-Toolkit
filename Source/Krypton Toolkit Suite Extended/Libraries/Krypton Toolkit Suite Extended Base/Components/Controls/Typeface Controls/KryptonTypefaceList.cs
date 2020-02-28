@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Krypton.Toolkit.Extended.Common;
+using System;
 using System.Drawing;
-using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 

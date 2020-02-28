@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Krypton.Toolkit.Extended.Common;
+using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Reflection;

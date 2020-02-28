@@ -12,4 +12,14 @@
     <PackageReference Include="Krypton.Toolkit.Experimental" Version="5.500.2003" />
   </ItemGroup>
 
+  <PropertyGroup>
+    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Krypton.Toolkit.Extended.Floating.Toolbars.xml</DocumentationFile>
+    <OutputPath>..\..\..\..\Bin\$(configuration)\</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <AssemblyVersion>5.500.2004</AssemblyVersion>
+    <FileVersion>5.500.2004</FileVersion>
+  </PropertyGroup>
+
 </Project>
