@@ -19,6 +19,6 @@
   </PropertyGroup>
   
   <ItemGroup>
-	  <None Include="../../../Assets/PNG/64 x 64/Main Icon 64 x 64.png" Link="Icon.png" Pack="true" PackagePath="" />
+	  <None Include="../../../../Assets/PNG/Main Icon/64 x 64/Main Icon 64 x 64.png" Link="Icon.png" Pack="true" PackagePath="" />
   </ItemGroup>
 </Project>
