@@ -875,9 +875,9 @@ namespace Krypton.Toolkit.Extended.Core
             {
                 foreach (Color colour in topRow)
                 {
-                    HSLColour hsl;
+                    HSLColourStructure hsl;
 
-                    hsl = new HSLColour(colour);
+                    hsl = new HSLColourStructure(colour);
                     hsl.L = (5 + i + 16 * i) / 100D;
 
                     results.Add(hsl.ToRgbColour());

@@ -217,7 +217,7 @@ namespace Krypton.Toolkit.Extended.Core
                         saturation = value2 / 655.35;
                         brightness = value3 / 655.35;
 
-                        results.Add(new HSLColour(hue, saturation, brightness).ToRgbColour());
+                        results.Add(new HSLColourStructure(hue, saturation, brightness).ToRgbColour());
                         break;
 
                     case AdobePhotoshopColourSwatchColourSpace.GRAYSCALE:
