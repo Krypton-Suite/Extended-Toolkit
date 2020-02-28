@@ -9,6 +9,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Settings\Palette Explorer\**" />
+    <EmbeddedResource Remove="Settings\Palette Explorer\**" />
+    <None Remove="Settings\Palette Explorer\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="Resources\DateTime\DateTimeSpanResources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -43,6 +49,11 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <AutoGen>True</AutoGen>
       <DependentUpon>ColourStringSettings.settings</DependentUpon>
+    </Compile>
+    <Compile Update="Settings\Core\CoreSettings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CoreSettings.settings</DependentUpon>
     </Compile>
     <Compile Update="Settings\Dialogs\Run\RunDialogSettings.Designer.cs">
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -101,6 +112,10 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>ColourStringSettings.Designer.cs</LastGenOutput>
     </None>
+    <None Update="Settings\Core\CoreSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>CoreSettings.Designer.cs</LastGenOutput>
+    </None>
     <None Update="Settings\Dialogs\Run\RunDialogSettings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>RunDialogSettings.Designer.cs</LastGenOutput>
@@ -117,10 +132,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>GlobalStringSettings.Designer.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Settings\Palette Explorer\" />
   </ItemGroup>
 
   <ItemGroup>
