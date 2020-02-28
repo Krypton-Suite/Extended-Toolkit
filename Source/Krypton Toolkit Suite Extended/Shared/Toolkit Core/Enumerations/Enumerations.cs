@@ -76,7 +76,7 @@
     }
 
     /// <summary>
-    /// Specifies the edit mode of a <see cref="ColourGrid" />.
+    /// Specifies the edit mode of a <see cref="ColourGridControl" />.
     /// </summary>
     public enum ColourEditingMode
     {
@@ -97,7 +97,7 @@
     }
 
     /// <summary>
-    /// Determines how the selected cell in a <see cref="ColourGrid" /> control is rendered.
+    /// Determines how the selected cell in a <see cref="ColourGridControl" /> control is rendered.
     /// </summary>
     public enum ColourGridSelectedCellStyle
     {
