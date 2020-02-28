@@ -5,37 +5,37 @@ VisualStudioVersion = 16.0.29721.120
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{0FC2D6C3-9CA1-46CF-8E37-4B900B07184D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Toolkit Core", "Shared\Toolkit Core\Toolkit Core.csproj", "{9E5B6FE5-89B9-4483-942F-7332E9BC4599}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Core", "Shared\Toolkit Core\Krypton.Toolkit.Suite.Extended.Core.csproj", "{9E5B6FE5-89B9-4483-942F-7332E9BC4599}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{35C5D580-4B81-4E33-AB75-BD5D316A2ABC}"
 	ProjectSection(SolutionItems) = preProject
 		..\..\Directory.Build.props = ..\..\Directory.Build.props
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "Shared\Common\Common.csproj", "{5E8758D3-BE51-474E-9CED-4E55EE1297DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Common", "Shared\Common\Krypton.Toolkit.Suite.Extended.Common.csproj", "{5E8758D3-BE51-474E-9CED-4E55EE1297DF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utilities", "Shared\Utilities\Utilities.csproj", "{836264C1-A8B4-46C1-8F84-BC5184DFA9F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Utilities", "Shared\Utilities\Krypton.Toolkit.Suite.Extended.Utilities.csproj", "{836264C1-A8B4-46C1-8F84-BC5184DFA9F3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Palette Controller", "Shared\Palette Controller\Palette Controller.csproj", "{66F05327-F52E-42CF-979B-D6E6AAB669AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Palette.Controller", "Shared\Palette Controller\Krypton.Toolkit.Suite.Extended.Palette.Controller.csproj", "{66F05327-F52E-42CF-979B-D6E6AAB669AB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistence", "Shared\Persistence\Persistence.csproj", "{9D11E3E9-88A6-46E0-8C3F-000E40330112}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Persistence", "Shared\Persistence\Krypton.Toolkit.Suite.Extended.Persistence.csproj", "{9D11E3E9-88A6-46E0-8C3F-000E40330112}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Toolkit Control Settings", "Shared\Toolkit Control Settings\Toolkit Control Settings.csproj", "{15E9CBE0-AFBF-4284-99C7-B07490C27E41}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Toolkit.Control.Settings", "Shared\Toolkit Control Settings\Krypton.Toolkit.Suite.Extended.Toolkit.Control.Settings.csproj", "{15E9CBE0-AFBF-4284-99C7-B07490C27E41}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Toolkit Language Model", "Shared\Toolkit Language Model\Toolkit Language Model.csproj", "{F1539347-EB0B-4631-B924-75E086896BB6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Language.Model", "Shared\Toolkit Language Model\Krypton.Toolkit.Suite.Extended.Language.Model.csproj", "{F1539347-EB0B-4631-B924-75E086896BB6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Toolkit Resources", "Shared\Toolkit Resources\Toolkit Resources.csproj", "{D09C0FBA-B998-4A59-B648-FC6977C8D9DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Resources", "Shared\Toolkit Resources\Krypton.Toolkit.Suite.Extended.Resources.csproj", "{D09C0FBA-B998-4A59-B648-FC6977C8D9DF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Toolkit Settings", "Shared\Toolkit Settings\Toolkit Settings.csproj", "{88BB4175-9CB6-4B94-AC2F-EF9EB201B5A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Settings", "Shared\Toolkit Settings\Krypton.Toolkit.Suite.Extended.Settings.csproj", "{88BB4175-9CB6-4B94-AC2F-EF9EB201B5A3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{1F1DCECC-C25F-4E91-9C8A-ECCBB9827BBA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton Toolkit Suite Extended Base", "Libraries\Krypton Toolkit Suite Extended Base\Krypton Toolkit Suite Extended Base.csproj", "{C1C4DE3D-5A1B-4436-9217-071B9A946696}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Base", "Libraries\Krypton Toolkit Suite Extended Base\Krypton.Toolkit.Suite.Extended.Base.csproj", "{C1C4DE3D-5A1B-4436-9217-071B9A946696}"
 	ProjectSection(ProjectDependencies) = postProject
 		{D09C0FBA-B998-4A59-B648-FC6977C8D9DF} = {D09C0FBA-B998-4A59-B648-FC6977C8D9DF}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Floating Toolbars", "Libraries\Floating Toolbars\Floating Toolbars.csproj", "{4258845A-0A43-4BB7-89B9-E623E32CA836}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Floating.Toolbars", "Libraries\Floating Toolbars\Krypton.Toolkit.Suite.Extended.Floating.Toolbars.csproj", "{4258845A-0A43-4BB7-89B9-E623E32CA836}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
