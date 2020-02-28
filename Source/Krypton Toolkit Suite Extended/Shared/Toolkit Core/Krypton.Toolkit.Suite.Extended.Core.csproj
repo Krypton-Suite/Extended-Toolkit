@@ -9,7 +9,23 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Krypton.Ribbon.Experimental.Lite" Version="5.500.2003" />
     <PackageReference Include="Krypton.Toolkit.Experimental" Version="5.500.2003" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Resources\ImageResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ImageResources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\ImageResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ImageResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
   <PropertyGroup>
