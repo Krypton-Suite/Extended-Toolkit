@@ -13,11 +13,11 @@ namespace Krypton.Toolkit.Suite.Extended.Settings {
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.5.0.0")]
-    internal sealed partial class StringSettings : global::System.Configuration.ApplicationSettingsBase {
+    internal sealed partial class ThemeSettings : global::System.Configuration.ApplicationSettingsBase {
         
-        private static StringSettings defaultInstance = ((StringSettings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new StringSettings())));
+        private static ThemeSettings defaultInstance = ((ThemeSettings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new ThemeSettings())));
         
-        public static StringSettings Default {
+        public static ThemeSettings Default {
             get {
                 return defaultInstance;
             }
@@ -25,25 +25,25 @@ namespace Krypton.Toolkit.Suite.Extended.Settings {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string PaletteExplorerLocation {
+        [global::System.Configuration.DefaultSettingValueAttribute("Office 2010 - Blue")]
+        public global::Krypton.Toolkit.PaletteMode CurrentApplicationTheme {
             get {
-                return ((string)(this["PaletteExplorerLocation"]));
+                return ((global::Krypton.Toolkit.PaletteMode)(this["CurrentApplicationTheme"]));
             }
             set {
-                this["PaletteExplorerLocation"] = value;
+                this["CurrentApplicationTheme"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string VirusTotalAPIKey {
+        public string CustomThemePath {
             get {
-                return ((string)(this["VirusTotalAPIKey"]));
+                return ((string)(this["CustomThemePath"]));
             }
             set {
-                this["VirusTotalAPIKey"] = value;
+                this["CustomThemePath"] = value;
             }
         }
     }

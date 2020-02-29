@@ -12,6 +12,7 @@
     <PackageReference Include="EasyScintilla" Version="1.0.5" />
     <PackageReference Include="Krypton.Ribbon.Experimental.Lite" Version="5.500.2003" />
     <PackageReference Include="Krypton.Toolkit.Experimental" Version="5.500.2003" />
+    <PackageReference Include="WindowsAPICodePack" Version="1.1.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -48,6 +49,12 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>CoreSettings.Designer.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp3.1'">
+    <PackageReference Include="AutoCompleteMenu-ScintillaNET">
+      <Version>1.6.2</Version>
+    </PackageReference>
   </ItemGroup>
 
   <PropertyGroup>

@@ -4,7 +4,7 @@
     <LangVersion>8.0</LangVersion>
     <TargetFrameworks>net45;netcoreapp3.1</TargetFrameworks>
     <TargetFrameworks Condition="'$(TFMs)' == 'all'">net35;net40;net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1</TargetFrameworks>
-    <RootNamespace>ToolkitSettings</RootNamespace>
+    <RootNamespace>Krypton.Toolkit.Suite.Extended.Settings</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
@@ -25,6 +25,21 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>ToolkitSettingsResources.resx</DependentUpon>
     </Compile>
+    <Compile Update="Settings\Application Updater\InternalApplicationUpdaterSettings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>InternalApplicationUpdaterSettings.settings</DependentUpon>
+    </Compile>
+    <Compile Update="Settings\Application Updater\ThemeSettings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ThemeSettings.settings</DependentUpon>
+    </Compile>
+    <Compile Update="Settings\Application Updater\XMLFileApplicationUpdaterSettings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>XMLFileApplicationUpdaterSettings.settings</DependentUpon>
+    </Compile>
     <Compile Update="Settings\Controls\BooleanSettings.Designer.cs">
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <AutoGen>True</AutoGen>
@@ -34,6 +49,11 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <AutoGen>True</AutoGen>
       <DependentUpon>StringSettings.settings</DependentUpon>
+    </Compile>
+    <Compile Update="Settings\Controls\ThemeSettings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ThemeSettings.settings</DependentUpon>
     </Compile>
     <Compile Update="Settings\Controls\WindowLocationSettings.Designer.cs">
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -89,6 +109,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Settings\Application Updater\InternalApplicationUpdaterSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>InternalApplicationUpdaterSettings.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Settings\Application Updater\ThemeSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>ThemeSettings.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Settings\Application Updater\XMLFileApplicationUpdaterSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>XMLFileApplicationUpdaterSettings.Designer.cs</LastGenOutput>
+    </None>
     <None Update="Settings\Controls\BooleanSettings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>BooleanSettings.Designer.cs</LastGenOutput>
@@ -99,6 +131,7 @@
     </None>
     <None Update="Settings\Controls\ThemeSettings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>ThemeSettings.Designer.cs</LastGenOutput>
     </None>
     <None Update="Settings\Controls\WindowLocationSettings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

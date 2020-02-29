@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ToolkitSettings.Settings.Dialogs.Run {
+namespace Krypton.Toolkit.Suite.Extended.Settings.Run {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

@@ -13,25 +13,13 @@ namespace Krypton.Toolkit.Suite.Extended.Settings {
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.5.0.0")]
-    internal sealed partial class BooleanSettings : global::System.Configuration.ApplicationSettingsBase {
+    internal sealed partial class ThemeSettings : global::System.Configuration.ApplicationSettingsBase {
         
-        private static BooleanSettings defaultInstance = ((BooleanSettings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new BooleanSettings())));
+        private static ThemeSettings defaultInstance = ((ThemeSettings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new ThemeSettings())));
         
-        public static BooleanSettings Default {
+        public static ThemeSettings Default {
             get {
                 return defaultInstance;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool UseVirusTotalUseTLS {
-            get {
-                return ((bool)(this["UseVirusTotalUseTLS"]));
-            }
-            set {
-                this["UseVirusTotalUseTLS"] = value;
             }
         }
     }
