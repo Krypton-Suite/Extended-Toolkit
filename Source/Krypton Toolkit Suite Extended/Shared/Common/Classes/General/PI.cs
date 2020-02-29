@@ -9,8 +9,7 @@ using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Extended.Common
 {
-    // TODO: Make this internal?
-    public class PI
+    internal class PI
     {
         #region Constants
         internal const uint WS_POPUP = 0x80000000;

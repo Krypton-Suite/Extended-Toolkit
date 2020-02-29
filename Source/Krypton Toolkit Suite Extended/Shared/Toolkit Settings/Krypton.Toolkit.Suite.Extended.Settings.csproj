@@ -44,10 +44,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>StringSettings.settings</DependentUpon>
     </Compile>
-    <Compile Update="Settings\Controls\ThemeSettings.Designer.cs">
+    <Compile Update="Settings\Controls\ControlThemeSettings.Designer.cs">
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <AutoGen>True</AutoGen>
-      <DependentUpon>ThemeSettings.settings</DependentUpon>
+      <DependentUpon>ControlThemeSettings.settings</DependentUpon>
     </Compile>
     <Compile Update="Settings\Controls\WindowLocationSettings.Designer.cs">
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -203,9 +203,9 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>StringSettings.Designer.cs</LastGenOutput>
     </None>
-    <None Update="Settings\Controls\ThemeSettings.settings">
+    <None Update="Settings\Controls\ControlThemeSettings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>ThemeSettings.Designer.cs</LastGenOutput>
+      <LastGenOutput>ControlThemeSettings.Designer.cs</LastGenOutput>
     </None>
     <None Update="Settings\Controls\WindowLocationSettings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
