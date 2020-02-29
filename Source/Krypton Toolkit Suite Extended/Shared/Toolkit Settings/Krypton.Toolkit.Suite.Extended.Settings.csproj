@@ -159,10 +159,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>PaletteTypefaceSettings.settings</DependentUpon>
     </Compile>
-    <Compile Update="Settings\Palette Explorer\General\WindowLocationSettings.Designer.cs">
+    <Compile Update="Settings\Palette Explorer\General\PaletteExplorerWindowLocationSettings.Designer.cs">
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <AutoGen>True</AutoGen>
-      <DependentUpon>WindowLocationSettings.settings</DependentUpon>
+      <DependentUpon>PaletteExplorerWindowLocationSettings.settings</DependentUpon>
     </Compile>
     <Compile Update="Settings\Palette Explorer\Properties\ColourPropertyWindowSettings.Designer.cs">
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -295,9 +295,9 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>PaletteTypefaceSettings.Designer.cs</LastGenOutput>
     </None>
-    <None Update="Settings\Palette Explorer\General\WindowLocationSettings.settings">
+    <None Update="Settings\Palette Explorer\General\PaletteExplorerWindowLocationSettings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>WindowLocationSettings.Designer.cs</LastGenOutput>
+      <LastGenOutput>PaletteExplorerWindowLocationSettings.Designer.cs</LastGenOutput>
     </None>
     <None Update="Settings\Palette Explorer\Properties\ColourPropertyWindowSettings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
