@@ -311,6 +311,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Common\Krypton.Toolkit.Suite.Extended.Common.csproj" />
+    <ProjectReference Include="..\Global Utilities\Krypton.Toolkit.Suite.Extended.Global.Utilities.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

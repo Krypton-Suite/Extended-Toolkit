@@ -299,7 +299,7 @@ namespace Krypton.Toolkit.Extended.Core
 
             if (this.LightnessColourSlider != null)
             {
-                this.BindEvents(this.LightnessColourSliderControl);
+                this.BindEvents(this.LightnessColourSlider);
             }
 
             handler = (EventHandler)this.Events[_eventLightnessColourSliderChanged];
@@ -315,9 +315,9 @@ namespace Krypton.Toolkit.Extended.Core
         {
             EventHandler handler;
 
-            if (this.ScreenColourPickerControl != null)
+            if (this.ScreenColourPicker != null)
             {
-                this.BindEvents(this.ScreenColourPickerControl);
+                this.BindEvents(this.ScreenColourPicker);
             }
 
             handler = (EventHandler)this.Events[_eventScreenColourPickerChanged];
@@ -351,9 +351,9 @@ namespace Krypton.Toolkit.Extended.Core
                     this.LockUpdates = true;
                     this.SetColour(this.ColourGrid, sender);
                     this.SetColour(this.ColourWheel, sender);
-                    this.SetColour(this.ScreenColourPickerControl, sender);
+                    this.SetColour(this.ScreenColourPicker, sender);
                     this.SetColour(this.ColourEditor, sender);
-                    this.SetColour(this.LightnessColourSliderControl, sender);
+                    this.SetColour(this.LightnessColourSlider, sender);
                 }
                 finally
                 {

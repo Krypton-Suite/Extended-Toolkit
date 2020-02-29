@@ -963,12 +963,14 @@ namespace Krypton.Toolkit.Extended.Core
             return result;
         }
 
+#if !NETCOREAPP
         private void FillNamedColours()
         {
             AddColorProperties<SystemColors>();
             AddColorProperties<Color>();
             SetDropDownWidth();
         }
+#endif
 
         private void hexTextBox_DrawItem(object sender, DrawItemEventArgs e)
         {
