@@ -89,6 +89,46 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>GlobalStringSettings.settings</DependentUpon>
     </Compile>
+    <Compile Update="Settings\Palette Explorer\Colours\AllMergedColourSettings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AllMergedColourSettings.settings</DependentUpon>
+    </Compile>
+    <Compile Update="Settings\Palette Explorer\Colours\BasicColourSettings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>BasicColourSettings.settings</DependentUpon>
+    </Compile>
+    <Compile Update="Settings\Palette Explorer\Colours\CustomColourSettings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CustomColourSettings.settings</DependentUpon>
+    </Compile>
+    <Compile Update="Settings\Palette Explorer\Colours\CustomTextColourSettings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CustomTextColourSettings.settings</DependentUpon>
+    </Compile>
+    <Compile Update="Settings\Palette Explorer\Colours\LinkTextColourSettings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>LinkTextColourSettings.settings</DependentUpon>
+    </Compile>
+    <Compile Update="Settings\Palette Explorer\Colours\MiscellaneousColourSettings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>MiscellaneousColourSettings.settings</DependentUpon>
+    </Compile>
+    <Compile Update="Settings\Palette Explorer\Colours\StandardControlTextColourSettings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>StandardControlTextColourSettings.settings</DependentUpon>
+    </Compile>
+    <Compile Update="Settings\Palette Explorer\Colours\TextColourSettings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>TextColourSettings.settings</DependentUpon>
+    </Compile>
     <Compile Update="Settings\Palette Explorer\General\ColourCollectionStringSettings.Designer.cs">
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <AutoGen>True</AutoGen>
@@ -193,6 +233,38 @@
     <None Update="Settings\Global\GlobalStringSettings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>GlobalStringSettings.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Settings\Palette Explorer\Colours\AllMergedColourSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>AllMergedColourSettings.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Settings\Palette Explorer\Colours\BasicColourSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>BasicColourSettings.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Settings\Palette Explorer\Colours\CustomColourSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>CustomColourSettings.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Settings\Palette Explorer\Colours\CustomTextColourSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>CustomTextColourSettings.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Settings\Palette Explorer\Colours\LinkTextColourSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>LinkTextColourSettings.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Settings\Palette Explorer\Colours\MiscellaneousColourSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>MiscellaneousColourSettings.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Settings\Palette Explorer\Colours\StandardControlTextColourSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>StandardControlTextColourSettings.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Settings\Palette Explorer\Colours\TextColourSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>TextColourSettings.Designer.cs</LastGenOutput>
     </None>
     <None Update="Settings\Palette Explorer\General\ColourCollectionStringSettings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
