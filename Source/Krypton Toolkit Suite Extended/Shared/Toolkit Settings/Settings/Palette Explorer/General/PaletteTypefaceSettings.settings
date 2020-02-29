@@ -1,0 +1,9 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ToolkitSettings.Settings.Palette_Explorer" GeneratedClassName="PaletteTypefaceSettings">
+  <Profiles />
+  <Settings>
+    <Setting Name="GlobalPaletteTypeface" Type="System.Drawing.Font" Scope="User">
+      <Value Profile="(Default)">Microsoft Sans Serif, 8.25pt</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -16,6 +16,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Toolkit Settings\Krypton.Toolkit.Suite.Extended.Settings.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="Resources\ImageResources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>

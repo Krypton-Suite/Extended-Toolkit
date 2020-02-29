@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Krypton.Toolkit.Suite.Extended.Settings;
+using System;
 using System.Drawing;
 
 namespace Krypton.Toolkit.Extended.Core

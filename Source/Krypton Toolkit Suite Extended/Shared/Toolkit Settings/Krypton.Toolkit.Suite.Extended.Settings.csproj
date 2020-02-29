@@ -9,12 +9,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Settings\Palette Explorer\**" />
-    <EmbeddedResource Remove="Settings\Palette Explorer\**" />
-    <None Remove="Settings\Palette Explorer\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Update="Resources\DateTime\DateTimeSpanResources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -95,6 +89,41 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>GlobalStringSettings.settings</DependentUpon>
     </Compile>
+    <Compile Update="Settings\Palette Explorer\General\ColourCollectionStringSettings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ColourCollectionStringSettings.settings</DependentUpon>
+    </Compile>
+    <Compile Update="Settings\Palette Explorer\General\ColourIntensitySettings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ColourIntensitySettings.settings</DependentUpon>
+    </Compile>
+    <Compile Update="Settings\Palette Explorer\General\GeneralPaletteExplorerSettings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>GeneralPaletteExplorerSettings.settings</DependentUpon>
+    </Compile>
+    <Compile Update="Settings\Palette Explorer\General\PaletteExplorerBooleanSettings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>PaletteExplorerBooleanSettings.settings</DependentUpon>
+    </Compile>
+    <Compile Update="Settings\Palette Explorer\General\PaletteThemeSettings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>PaletteThemeSettings.settings</DependentUpon>
+    </Compile>
+    <Compile Update="Settings\Palette Explorer\General\PaletteTypefaceSettings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>PaletteTypefaceSettings.settings</DependentUpon>
+    </Compile>
+    <Compile Update="Settings\Palette Explorer\General\WindowLocationSettings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>WindowLocationSettings.settings</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -164,6 +193,34 @@
     <None Update="Settings\Global\GlobalStringSettings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>GlobalStringSettings.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Settings\Palette Explorer\General\ColourCollectionStringSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>ColourCollectionStringSettings.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Settings\Palette Explorer\General\ColourIntensitySettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>ColourIntensitySettings.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Settings\Palette Explorer\General\GeneralPaletteExplorerSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>GeneralPaletteExplorerSettings.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Settings\Palette Explorer\General\PaletteExplorerBooleanSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>PaletteExplorerBooleanSettings.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Settings\Palette Explorer\General\PaletteThemeSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>PaletteThemeSettings.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Settings\Palette Explorer\General\PaletteTypefaceSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>PaletteTypefaceSettings.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Settings\Palette Explorer\General\WindowLocationSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>WindowLocationSettings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
 

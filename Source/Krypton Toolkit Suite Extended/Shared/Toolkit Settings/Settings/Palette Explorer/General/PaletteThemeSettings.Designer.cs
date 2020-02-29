@@ -8,16 +8,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Krypton.Toolkit.Suite.Extended.Settings.Settings.Controls {
+namespace Krypton.Toolkit.Suite.Extended.Settings.Settings.Palette_Explorer.General {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.5.0.0")]
-    internal sealed partial class ThemeSettings : global::System.Configuration.ApplicationSettingsBase {
+    internal sealed partial class PaletteThemeSettings : global::System.Configuration.ApplicationSettingsBase {
         
-        private static ThemeSettings defaultInstance = ((ThemeSettings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new ThemeSettings())));
+        private static PaletteThemeSettings defaultInstance = ((PaletteThemeSettings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new PaletteThemeSettings())));
         
-        public static ThemeSettings Default {
+        public static PaletteThemeSettings Default {
             get {
                 return defaultInstance;
             }
@@ -25,24 +25,25 @@ namespace Krypton.Toolkit.Suite.Extended.Settings.Settings.Controls {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Office 2010 - Blue")]
-        public global::Krypton.Toolkit.PaletteMode DefaultTheme {
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string CustomThemeFilePath {
             get {
-                return ((global::Krypton.Toolkit.PaletteMode)(this["DefaultTheme"]));
+                return ((string)(this["CustomThemeFilePath"]));
             }
             set {
-                this["DefaultTheme"] = value;
+                this["CustomThemeFilePath"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::Krypton.Toolkit.KryptonManager GlobalManager {
+        [global::System.Configuration.DefaultSettingValueAttribute("ProfessionalSystem")]
+        public global::Krypton.Toolkit.PaletteModeManager CurrentTheme {
             get {
-                return ((global::Krypton.Toolkit.KryptonManager)(this["GlobalManager"]));
+                return ((global::Krypton.Toolkit.PaletteModeManager)(this["CurrentTheme"]));
             }
             set {
-                this["GlobalManager"] = value;
+                this["CurrentTheme"] = value;
             }
         }
     }
