@@ -1,5 +1,4 @@
-﻿using Krypton.Toolkit.Extended.Common;
-using Krypton.Toolkit.Suite.Extended.Settings.Resources;
+﻿using Krypton.Toolkit.Suite.Extended.Settings.Resources;
 using System;
 using System.ComponentModel;
 using System.Drawing;

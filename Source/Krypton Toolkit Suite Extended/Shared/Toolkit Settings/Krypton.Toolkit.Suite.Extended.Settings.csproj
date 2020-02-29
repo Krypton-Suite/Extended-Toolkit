@@ -309,6 +309,10 @@
     <PackageReference Include="Krypton.Toolkit.Experimental" Version="5.500.2003" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Krypton.Toolkit.Suite.Extended.Common.csproj" />
+  </ItemGroup>
+
   <PropertyGroup>
     <DocumentationFile>..\..\..\..\Bin\$(configuration)\Krypton.Toolkit.Extended.Settings.xml</DocumentationFile>
     <OutputPath>..\..\..\..\Bin\$(configuration)\</OutputPath>
