@@ -13,7 +13,7 @@ namespace Krypton.Toolkit.Extended.Core
     /// </summary>
     [DefaultProperty("Color")]
     [DefaultEvent("ColorChanged")]
-    public partial class ColourEditor : UserControl, IColourEditor
+    public partial class ColourEditorControl : UserControl, IColourEditor
     {
         #region Designer Code
         #region Component Designer generated code
@@ -448,9 +448,9 @@ namespace Krypton.Toolkit.Extended.Core
         #region Constructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ColourEditor"/> class.
+        /// Initializes a new instance of the <see cref="ColourEditorControl"/> class.
         /// </summary>
-        public ColourEditor()
+        public ColourEditorControl()
         {
             this.InitializeComponent();
 
