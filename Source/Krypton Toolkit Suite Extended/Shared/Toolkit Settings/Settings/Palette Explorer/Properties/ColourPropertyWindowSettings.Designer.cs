@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Krypton.Toolkit.Suite.Extended.Settings.Settings.Palette_Explorer.Properties {
+namespace Krypton.Toolkit.Suite.Extended.Settings {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
