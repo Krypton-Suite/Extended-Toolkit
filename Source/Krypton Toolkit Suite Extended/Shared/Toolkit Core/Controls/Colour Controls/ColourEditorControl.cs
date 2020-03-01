@@ -909,6 +909,7 @@ namespace Krypton.Toolkit.Extended.Core
             }
         }
 
+#if !NETCOREAPP
         private void AddColorProperties<T>()
         {
             Type type;
@@ -932,6 +933,7 @@ namespace Krypton.Toolkit.Extended.Core
                 }
             }
         }
+#endif
 
         private string AddSpaces(string text)
         {
@@ -964,12 +966,15 @@ namespace Krypton.Toolkit.Extended.Core
             return result;
         }
 
+        // TODO: Fix this
+#if !NETCOREAPP
         private void FillNamedColours()
         {
             AddColorProperties<SystemColors>();
             AddColorProperties<Color>();
             SetDropDownWidth();
         }
+#endif
 
         private void hexTextBox_DrawItem(object sender, DrawItemEventArgs e)
         {
@@ -1006,7 +1011,9 @@ namespace Krypton.Toolkit.Extended.Core
         {
             if (hexTextBox.Items.Count == 0)
             {
+#if !NETCOREAPP
                 FillNamedColours();
+#endif
             }
         }
 
@@ -1020,7 +1027,9 @@ namespace Krypton.Toolkit.Extended.Core
                 case Keys.PageDown:
                     if (hexTextBox.Items.Count == 0)
                     {
+#if !NETCOREAPP
                         this.FillNamedColours();
+#endif
                     }
                     break;
             }
@@ -1097,7 +1106,9 @@ namespace Krypton.Toolkit.Extended.Core
 
                     if (hexTextBox.Items.Count == 0)
                     {
+#if !NETCOREAPP
                         this.FillNamedColours();
+#endif
                     }
 
                     namedIndex = hexTextBox.FindStringExact(text);

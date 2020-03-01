@@ -2,10 +2,10 @@
 
 namespace Krypton.Toolkit.Extended.Core
 {
-    public class GlobalMethods
+    public class GlobalUtilityMethods
     {
         #region Constructor
-        public GlobalMethods()
+        public GlobalUtilityMethods()
         {
 
         }

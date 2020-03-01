@@ -332,7 +332,7 @@ namespace Krypton.Toolkit.Extended.Core
             this.kcbBaseColour.StateCommon.Content.ShortText.ImageStyle = Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.kcbBaseColour.StateCommon.Content.ShortText.Trim = Krypton.Toolkit.PaletteTextTrim.Inherit;
             this.kcbBaseColour.TabIndex = 32;
-            this.kcbBaseColour.Values.Image = global::ImageResources.Colour_Wheel_16_x_16;
+            this.kcbBaseColour.Values.Image = global::Krypton.Toolkit.Extended.Core.Resources.ImageResources.Colour_Wheel_16_x_16;
             this.kcbBaseColour.Values.Text = "&Choose a Base Colour";
             // 
             // kryptonLabel4
