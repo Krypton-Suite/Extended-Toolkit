@@ -13,9 +13,10 @@ namespace Krypton.Toolkit.Extended.Core
     /// </summary>
     [DefaultProperty("Color")]
     [DefaultEvent("ColorChanged")]
-    public partial class ColourEditorControl : UserControl, IColourEditor
+    public class ColourEditorControl : UserControl, IColourEditor
     {
         #region Designer Code
+
         #region Component Designer generated code
 
         /// <summary> 
@@ -963,14 +964,12 @@ namespace Krypton.Toolkit.Extended.Core
             return result;
         }
 
-#if !NETCOREAPP
         private void FillNamedColours()
         {
             AddColorProperties<SystemColors>();
             AddColorProperties<Color>();
             SetDropDownWidth();
         }
-#endif
 
         private void hexTextBox_DrawItem(object sender, DrawItemEventArgs e)
         {
@@ -1007,7 +1006,7 @@ namespace Krypton.Toolkit.Extended.Core
         {
             if (hexTextBox.Items.Count == 0)
             {
-                this.FillNamedColours();
+                FillNamedColours();
             }
         }
 

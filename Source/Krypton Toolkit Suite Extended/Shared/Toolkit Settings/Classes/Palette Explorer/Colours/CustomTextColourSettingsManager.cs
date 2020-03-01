@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Krypton.Toolkit.Extended.Global.Utilities;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -304,6 +305,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         {
             try
             {
+                /*
                 CommonSaveFileDialog csfd = new CommonSaveFileDialog();
 
                 csfd.Title = "Save Colours To:";
@@ -322,6 +324,19 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
                 {
                     WriteARGBColoursToFile(csfd.FileName);
                 }
+                */
+
+                SaveFileDialog dialog = new SaveFileDialog();
+
+                dialog.Title = "Save Colours To:";
+
+                dialog.Filter = "Colour Configuration File | *.ccf | Normal Text Files | *.txt";
+
+                dialog.DefaultExt = "ccf";
+
+                dialog.FileName = $"All Colour Configuration File - { TranslationMethods.ReturnSafeFileNameDateTimeString() }";
+
+                if (dialog.ShowDialog() == DialogResult.OK) WriteARGBColoursToFile(dialog.FileName);
             }
             catch (Exception exc)
             {
@@ -336,6 +351,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         {
             try
             {
+                /*
                 CommonSaveFileDialog csfd = new CommonSaveFileDialog();
 
                 csfd.Title = "Save Colours To:";
@@ -354,6 +370,19 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
                 {
                     WriteRGBColoursToFile(csfd.FileName);
                 }
+                */
+
+                SaveFileDialog dialog = new SaveFileDialog();
+
+                dialog.Title = "Save Colours To:";
+
+                dialog.Filter = "Colour Configuration File | *.ccf | Normal Text Files | *.txt";
+
+                dialog.DefaultExt = "ccf";
+
+                dialog.FileName = $"All Colour Configuration File - { TranslationMethods.ReturnSafeFileNameDateTimeString() }";
+
+                if (dialog.ShowDialog() == DialogResult.OK) WriteRGBColoursToFile(dialog.FileName);
             }
             catch (Exception exc)
             {

@@ -307,6 +307,7 @@
 
   <ItemGroup>
     <PackageReference Include="Krypton.Toolkit.Experimental" Version="5.500.2003" />
+    <PackageReference Include="WindowsAPICodePack" Version="1.1.1" />
   </ItemGroup>
 
   <ItemGroup>

@@ -10,7 +10,9 @@
 
   <ItemGroup>
     <PackageReference Include="EasyScintilla" Version="1.0.5" />
-    <PackageReference Include="Krypton.Ribbon.Experimental.Lite" Version="5.500.2003" />
+    <PackageReference Include="Krypton.Docking.Experimental" Version="5.500.2003" />
+    <PackageReference Include="Krypton.Navigator.Experimental" Version="5.500.2003" />
+    <PackageReference Include="Krypton.Ribbon.Experimental" Version="5.500.2003" />
     <PackageReference Include="Krypton.Toolkit.Experimental" Version="5.500.2003" />
     <PackageReference Include="WindowsAPICodePack" Version="1.1.1" />
   </ItemGroup>
