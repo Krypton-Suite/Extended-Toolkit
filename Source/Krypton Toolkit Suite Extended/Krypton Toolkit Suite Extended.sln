@@ -12,7 +12,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Exten
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{35C5D580-4B81-4E33-AB75-BD5D316A2ABC}"
 	ProjectSection(SolutionItems) = preProject
+		..\..\build.proj = ..\..\build.proj
 		..\..\Directory.Build.props = ..\..\Directory.Build.props
+		Directory.Build.props = Directory.Build.props
+		Directory.Build.targets = Directory.Build.targets
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Common", "Shared\Common\Krypton.Toolkit.Suite.Extended.Common.csproj", "{5E8758D3-BE51-474E-9CED-4E55EE1297DF}"
@@ -40,9 +43,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Exten
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Floating.Toolbars", "Libraries\Floating Toolbars\Krypton.Toolkit.Suite.Extended.Floating.Toolbars.csproj", "{4258845A-0A43-4BB7-89B9-E623E32CA836}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton.Toolkit.Suite.Extended.Dialogs", "Libraries\Extended Dialogs\Krypton.Toolkit.Suite.Extended.Dialogs.csproj", "{1193729E-89FA-462D-AE0C-2F122195C3D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Dialogs", "Libraries\Extended Dialogs\Krypton.Toolkit.Suite.Extended.Dialogs.csproj", "{1193729E-89FA-462D-AE0C-2F122195C3D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton.Toolkit.Suite.Extended.Global.Utilities", "Shared\Global Utilities\Krypton.Toolkit.Suite.Extended.Global.Utilities.csproj", "{79AA870D-03FA-4A32-B8E2-86554816A439}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Global.Utilities", "Shared\Global Utilities\Krypton.Toolkit.Suite.Extended.Global.Utilities.csproj", "{79AA870D-03FA-4A32-B8E2-86554816A439}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
