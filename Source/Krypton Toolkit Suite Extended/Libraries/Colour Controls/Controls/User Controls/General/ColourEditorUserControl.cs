@@ -875,6 +875,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             }
         }
 
+#if !NETCOREAPP
         private void AddColourProperties<T>()
         {
             Type type;
@@ -898,6 +899,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
                 }
             }
         }
+#endif
 
         private string AddSpaces(string text)
         {
@@ -930,12 +932,14 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             return result;
         }
 
+#if !NETCOREAPP
         private void FillNamedColours()
         {
             this.AddColourProperties<SystemColors>();
             this.AddColourProperties<Color>();
             this.SetDropDownWidth();
         }
+#endif
 
         private void kcmbHex_DrawItem(object sender, DrawItemEventArgs e)
         {
@@ -970,10 +974,12 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
 
         private void kcmbHex_DropDown(object sender, EventArgs e)
         {
+#if !NETCOREAPP
             if (kcmbHex.Items.Count == 0)
             {
                 this.FillNamedColours();
             }
+#endif
         }
 
         private void kcmbHex_KeyDown(object sender, KeyEventArgs e)
@@ -984,10 +990,12 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
                 case Keys.Down:
                 case Keys.PageUp:
                 case Keys.PageDown:
+#if !NETCOREAPP
                     if (kcmbHex.Items.Count == 0)
                     {
                         this.FillNamedColours();
                     }
+#endif
                     break;
             }
         }
@@ -1061,10 +1069,12 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
                         text = text.Substring(1);
                     }
 
+#if !NETCOREAPP
                     if (kcmbHex.Items.Count == 0)
                     {
                         this.FillNamedColours();
                     }
+#endif
 
                     namedIndex = kcmbHex.FindStringExact(text);
 
