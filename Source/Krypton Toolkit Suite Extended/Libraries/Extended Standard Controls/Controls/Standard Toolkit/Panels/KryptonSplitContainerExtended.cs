@@ -1,8 +1,7 @@
-﻿using ComponentFactory.Krypton.Toolkit;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Windows.Forms;
 
-namespace ExtendedStandardControls
+namespace Krypton.Toolkit.Suite.Extended.Standard.Controls
 {
     [ToolboxBitmap(typeof(KryptonSplitContainer))]
     public class KryptonSplitContainerExtended : KryptonSplitContainer

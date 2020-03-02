@@ -1,9 +1,9 @@
-﻿using ComponentFactory.Krypton.Toolkit;
+﻿using Krypton.Toolkit;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace ExtendedStandardControls.Controls.Toolkit.Textural
+namespace Krypton.Toolkit.Suite.Extended.Standard.Controls.Controls.Toolkit.Textural
 {
     [ToolboxBitmap(typeof(KryptonListBox))]
     public class KryptonListBoxExtended : KryptonListBox

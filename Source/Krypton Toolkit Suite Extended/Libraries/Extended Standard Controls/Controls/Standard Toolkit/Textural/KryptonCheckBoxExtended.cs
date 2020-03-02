@@ -1,13 +1,11 @@
-﻿using ComponentFactory.Krypton.Toolkit;
-using ExtendedStandardControls.Classes;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace ExtendedStandardControls
+namespace Krypton.Toolkit.Suite.Extended.Standard.Controls
 {
     /// <summary></summary>
-    /// <seealso cref="ComponentFactory.Krypton.Toolkit.KryptonCheckBox" />
+    /// <seealso cref="Krypton.Toolkit.KryptonCheckBox" />
     [ToolboxBitmap(typeof(KryptonCheckBox))]
     public class KryptonCheckBoxExtended : KryptonCheckBox
     {

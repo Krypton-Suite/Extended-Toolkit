@@ -1,10 +1,9 @@
-﻿using ExtendedStandardControls.Classes;
-using KryptonToolkitSuiteExtendedCore;
+﻿using Krypton.Toolkit.Extended.Base;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace ExtendedStandardControls.Controls.ExtendedToolkit.Textural
+namespace Krypton.Toolkit.Suite.Extended.Standard.Controls
 {
     public class KryptonCommandLinkVersionOneExtended : KryptonCommandLinkButton
     {

@@ -15,10 +15,16 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Shared\Toolkit Core\Krypton.Toolkit.Suite.Extended.Core.csproj" />
+    <ProjectReference Include="..\Extended Standard Controls\Krypton.Toolkit.Suite.Extended.Standard.Controls.csproj" />
     <ProjectReference Include="..\Krypton Toolkit Suite Extended Base\Krypton.Toolkit.Suite.Extended.Base.csproj" />
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Update="Resources\LibraryResources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -27,6 +33,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Update="Resources\LibraryResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>LibraryResources.Designer.cs</LastGenOutput>

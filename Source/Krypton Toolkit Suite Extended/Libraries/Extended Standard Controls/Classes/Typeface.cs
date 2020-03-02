@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace ExtendedStandardControls.Classes
+namespace Krypton.Toolkit.Suite.Extended.Standard.Controls
 {
     internal class Typeface
     {

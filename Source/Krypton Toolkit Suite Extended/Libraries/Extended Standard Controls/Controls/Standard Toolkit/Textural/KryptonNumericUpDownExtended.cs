@@ -1,8 +1,7 @@
-﻿using ComponentFactory.Krypton.Toolkit;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Windows.Forms;
 
-namespace ExtendedStandardControls
+namespace Krypton.Toolkit.Suite.Extended.Standard.Controls
 {
     [ToolboxBitmap(typeof(KryptonNumericUpDown))]
     public class KryptonNumericUpDownExtended : KryptonNumericUpDown
@@ -96,7 +95,7 @@ namespace ExtendedStandardControls
 
             StateNormalBorderColourTwo = Color.Empty;
 
-            Typeface = Classes.Typeface.DefaultTypeface();
+            Typeface = Krypton.Toolkit.Suite.Extended.Standard.Controls.Typeface.DefaultTypeface();
 
             UpdateStateActiveAppearanceValues(StateActiveBackGroundColour, StateActiveTextColour, StateActiveBorderColourOne, StateActiveBorderColourTwo, Typeface);
 

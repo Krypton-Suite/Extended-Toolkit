@@ -1,9 +1,9 @@
-﻿using ComponentFactory.Krypton.Toolkit;
+﻿using Krypton.Toolkit;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace ExtendedStandardControls
+namespace Krypton.Toolkit.Suite.Extended.Standard.Controls
 {
     [ToolboxBitmap(typeof(KryptonMonthCalendar))]
     public class KryptonMonthCalendarExtended : KryptonMonthCalendar

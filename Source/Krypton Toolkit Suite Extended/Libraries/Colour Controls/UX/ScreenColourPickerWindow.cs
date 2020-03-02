@@ -1,4 +1,5 @@
 ﻿using Krypton.Toolkit.Extended.Base;
+using Krypton.Toolkit.Suite.Extended.Standard.Controls;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -8,7 +9,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
     public class ScreenColourPickerWindow : KryptonForm
     {
         #region Designer Code
-        private KryptonPanelExtended kryptonPanelExtended1;
+        private Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonPanelExtended kryptonPanelExtended1;
         private KryptonButtonExtended kbtnOk;
         private System.Windows.Forms.Panel panel1;
         private KryptonSplitContainer kryptonSplitContainer1;
@@ -30,7 +31,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ScreenColourPickerWindow));
-            this.kryptonPanelExtended1 = new KryptonPanelExtended();
+            this.kryptonPanelExtended1 = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonPanelExtended();
             this.kbtnOk = new KryptonButtonExtended();
             this.kbtnCancel = new KryptonButtonExtended();
             this.panel1 = new System.Windows.Forms.Panel();

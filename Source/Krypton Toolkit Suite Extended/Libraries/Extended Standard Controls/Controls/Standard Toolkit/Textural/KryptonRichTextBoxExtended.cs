@@ -1,9 +1,8 @@
-﻿using ComponentFactory.Krypton.Toolkit;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace ExtendedStandardControls
+namespace Krypton.Toolkit.Suite.Extended.Standard.Controls
 {
     [ToolboxBitmap(typeof(KryptonRichTextBox))]
     public class KryptonRichTextBoxExtended : KryptonRichTextBox
@@ -102,7 +101,7 @@ namespace ExtendedStandardControls
 
             StateNormalBorderColourTwo = Color.Empty;
 
-            Typeface = Classes.Typeface.DefaultTypeface();
+            Typeface = Krypton.Toolkit.Suite.Extended.Standard.Controls.Typeface.DefaultTypeface();
 
             CornerRadius = -1;
 

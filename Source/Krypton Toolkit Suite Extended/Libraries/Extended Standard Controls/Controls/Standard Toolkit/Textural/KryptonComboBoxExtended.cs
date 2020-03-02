@@ -1,9 +1,9 @@
-﻿using ComponentFactory.Krypton.Toolkit;
-using ExtendedStandardControls.Classes;
+﻿using Krypton.Toolkit;
+using Krypton.Toolkit.Suite.Extended.Standard.Controls;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace ExtendedStandardControls
+namespace Krypton.Toolkit.Suite.Extended.Standard.Controls
 {
     [ToolboxBitmap(typeof(KryptonComboBox))]
     public class KryptonComboBoxExtended : KryptonComboBox

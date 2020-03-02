@@ -9,7 +9,7 @@ using System.Windows.Forms;
 namespace Krypton.Toolkit.Extended.Colour.Controls
 {
     [DefaultProperty("Color"), DefaultEvent("ColorChanged")]
-    public class ColourEditorControl : UserControl, IColourEditor
+    public class ColourEditorUserControl : UserControl, IColourEditor
     {
         #region Designer Code
         private IContainer components = null;
@@ -409,9 +409,9 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
         #region Constructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ColourEditorControl"/> class.
+        /// Initializes a new instance of the <see cref="ColourEditorUserControl"/> class.
         /// </summary>
-        public ColourEditorControl()
+        public ColourEditorUserControl()
         {
             InitializeComponent();
 

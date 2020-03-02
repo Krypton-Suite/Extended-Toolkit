@@ -22,7 +22,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
         private CircularPictureBox cbColourPreview;
         private KryptonButton kbtnCancel;
         private Cyotek.Windows.Forms.ColorEditor ceEditor;
-        private ColourEditorUserControl ceColour;
+        private Krypton.Toolkit.Extended.Colour.Controls.ColourEditorUserControl ceColour;
         private KryptonButton kbtnSaveColourPalette;
         private KryptonButton kbtnLoadColourPalette;
         private ScreenColourPickerControl scpPicker;
@@ -33,15 +33,15 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.kpnlMain = new Krypton.Toolkit.KryptonPanel();
             this.kbtnSaveColourPalette = new Krypton.Toolkit.KryptonButton();
             this.kbtnLoadColourPalette = new Krypton.Toolkit.KryptonButton();
-            this.scpPicker = new KryptonScreenColourPicker();
-            this.ceColour = new ColourEditorUserControl();
+            this.ceColour = new Krypton.Toolkit.Extended.Colour.Controls.ColourEditorUserControl();
             this.ceEditor = new Cyotek.Windows.Forms.ColorEditor();
             this.kbtnCancel = new Krypton.Toolkit.KryptonButton();
             this.kbtnOk = new Krypton.Toolkit.KryptonButton();
-            this.cbColourPreview = new CircularPictureBox();
-            this.cwColourPicker = new ColourWheelControl();
+            this.cwColourPicker = new Krypton.Toolkit.Extended.Colour.Controls.ColourWheelControl();
             this.cgColourPalette = new Cyotek.Windows.Forms.ColorGrid();
-            this.cem = new ColourEditorManager();
+            this.cem = new Krypton.Toolkit.Extended.Colour.Controls.ColourEditorManager();
+            this.cbColourPreview = new Krypton.Toolkit.Extended.Base.CircularPictureBox();
+            this.scpPicker = new Krypton.Toolkit.Extended.Colour.Controls.ScreenColourPickerControl();
             ((System.ComponentModel.ISupportInitialize)(this.kpnlMain)).BeginInit();
             this.kpnlMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cbColourPreview)).BeginInit();
@@ -49,9 +49,9 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             // 
             // kpnlMain
             // 
+            this.kpnlMain.Controls.Add(this.scpPicker);
             this.kpnlMain.Controls.Add(this.kbtnSaveColourPalette);
             this.kpnlMain.Controls.Add(this.kbtnLoadColourPalette);
-            this.kpnlMain.Controls.Add(this.scpPicker);
             this.kpnlMain.Controls.Add(this.ceColour);
             this.kpnlMain.Controls.Add(this.ceEditor);
             this.kpnlMain.Controls.Add(this.kbtnCancel);
@@ -84,14 +84,6 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.kbtnLoadColourPalette.Values.Image = global::Krypton.Toolkit.Extended.Colour.Controls.Resources.LibraryResources.palette_load;
             this.kbtnLoadColourPalette.Values.Text = "";
             this.kbtnLoadColourPalette.Click += new System.EventHandler(this.KbtnLoadColourPalette_Click);
-            // 
-            // scpPicker
-            // 
-            this.scpPicker.Colour = System.Drawing.Color.Empty;
-            this.scpPicker.Image = global::Krypton.Toolkit.Extended.Colour.Controls.Resources.LibraryResources.eyedropper1;
-            this.scpPicker.Location = new System.Drawing.Point(501, 164);
-            this.scpPicker.Name = "scpPicker";
-            this.scpPicker.Size = new System.Drawing.Size(130, 129);
             // 
             // ceColour
             // 
@@ -135,16 +127,6 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.kbtnOk.Values.Text = "&Ok";
             this.kbtnOk.Click += new System.EventHandler(this.KbtnOk_Click);
             // 
-            // cbColourPreview
-            // 
-            this.cbColourPreview.BackColor = System.Drawing.SystemColors.Control;
-            this.cbColourPreview.Location = new System.Drawing.Point(501, 341);
-            this.cbColourPreview.Name = "cbColourPreview";
-            this.cbColourPreview.Size = new System.Drawing.Size(130, 130);
-            this.cbColourPreview.TabIndex = 2;
-            this.cbColourPreview.TabStop = false;
-            this.cbColourPreview.Paint += new System.Windows.Forms.PaintEventHandler(this.CbColourPreview_Paint);
-            // 
             // cwColourPicker
             // 
             this.cwColourPicker.BackColor = System.Drawing.Color.Transparent;
@@ -173,9 +155,27 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.cem.ColourEditor = this.ceColour;
             this.cem.ColourGrid = this.cgColourPalette;
             this.cem.ColourWheel = this.cwColourPicker;
-            this.cem.ScreenColourPicker = this.scpPicker;
             this.cem.ColorChanged += new System.EventHandler(this.Cem_ColorChanged);
             this.cem.ColourChanged += new System.EventHandler(this.Cem_ColourChanged);
+            // 
+            // cbColourPreview
+            // 
+            this.cbColourPreview.BackColor = System.Drawing.SystemColors.Control;
+            this.cbColourPreview.Location = new System.Drawing.Point(501, 341);
+            this.cbColourPreview.Name = "cbColourPreview";
+            this.cbColourPreview.Size = new System.Drawing.Size(130, 130);
+            this.cbColourPreview.TabIndex = 2;
+            this.cbColourPreview.TabStop = false;
+            this.cbColourPreview.ToolTipValues = null;
+            this.cbColourPreview.Paint += new System.Windows.Forms.PaintEventHandler(this.CbColourPreview_Paint);
+            // 
+            // scpPicker
+            // 
+            this.scpPicker.Colour = System.Drawing.Color.Empty;
+            this.scpPicker.Image = global::Krypton.Toolkit.Extended.Colour.Controls.Properties.Resources.eyedropper;
+            this.scpPicker.Location = new System.Drawing.Point(501, 108);
+            this.scpPicker.Name = "scpPicker";
+            this.scpPicker.Size = new System.Drawing.Size(130, 100);
             // 
             // ColourPickerDialog
             // 

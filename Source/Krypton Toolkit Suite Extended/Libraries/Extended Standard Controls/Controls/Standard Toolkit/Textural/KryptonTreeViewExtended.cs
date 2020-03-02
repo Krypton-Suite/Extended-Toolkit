@@ -1,9 +1,9 @@
-﻿using ComponentFactory.Krypton.Toolkit;
+﻿using Krypton.Toolkit;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace ExtendedStandardControls.Controls
+namespace Krypton.Toolkit.Suite.Extended.Standard.Controls.Controls
 {
     [ToolboxBitmap(typeof(KryptonTreeView))]
     public class KryptonTreeViewExtended : KryptonTreeView

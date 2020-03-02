@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
     <LangVersion>8.0</LangVersion>
@@ -7,5 +7,13 @@
     <RootNamespace>Krypton.Toolkit.Extended.Standard.Controls</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Krypton.Toolkit.Experimental" Version="5.500.2003" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Krypton Toolkit Suite Extended Base\Krypton.Toolkit.Suite.Extended.Base.csproj" />
+  </ItemGroup>
 
 </Project>

@@ -1,13 +1,11 @@
-﻿using ComponentFactory.Krypton.Toolkit;
-using ExtendedStandardControls.Classes;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace ExtendedStandardControls
+namespace Krypton.Toolkit.Suite.Extended.Standard.Controls
 {
     /// <summary>A standard <seealso cref="KryptonButton"/> with exposed properties.</summary>
-    /// <seealso cref="ComponentFactory.Krypton.Toolkit.KryptonButton" />
+    /// <seealso cref="KryptonButton" />
     [ToolboxBitmap(typeof(KryptonButton))]
     public class KryptonButtonExtended : KryptonButton
     {

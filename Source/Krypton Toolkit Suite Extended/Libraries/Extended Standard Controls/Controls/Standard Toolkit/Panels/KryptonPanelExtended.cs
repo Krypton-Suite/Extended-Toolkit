@@ -1,9 +1,7 @@
-﻿using ComponentFactory.Krypton.Toolkit;
-using System;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Windows.Forms;
 
-namespace ExtendedStandardControls
+namespace Krypton.Toolkit.Suite.Extended.Standard.Controls
 {
     [ToolboxBitmap(typeof(KryptonPanel))]
     public class KryptonPanelExtended : KryptonPanel

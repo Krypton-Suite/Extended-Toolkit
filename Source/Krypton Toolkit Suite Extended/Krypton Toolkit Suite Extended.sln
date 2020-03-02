@@ -47,9 +47,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Exten
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Global.Utilities", "Shared\Global Utilities\Krypton.Toolkit.Suite.Extended.Global.Utilities.csproj", "{79AA870D-03FA-4A32-B8E2-86554816A439}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton.Toolkit.Suite.Extended.Colour.Controls", "Libraries\Colour Controls\Krypton.Toolkit.Suite.Extended.Colour.Controls.csproj", "{20BE79E8-83CD-4AEC-B7B3-A261B72B1F3D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Colour.Controls", "Libraries\Colour Controls\Krypton.Toolkit.Suite.Extended.Colour.Controls.csproj", "{20BE79E8-83CD-4AEC-B7B3-A261B72B1F3D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extended Standard Controls", "Libraries\Extended Standard Controls\Extended Standard Controls.csproj", "{4CA53B6B-EA2F-45D0-9938-B55BCD9F4F4F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Standard.Controls", "Libraries\Extended Standard Controls\Krypton.Toolkit.Suite.Extended.Standard.Controls.csproj", "{4CA53B6B-EA2F-45D0-9938-B55BCD9F4F4F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

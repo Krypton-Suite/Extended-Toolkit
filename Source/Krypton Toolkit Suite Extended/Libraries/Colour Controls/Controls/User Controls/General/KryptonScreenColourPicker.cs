@@ -1,4 +1,5 @@
 ﻿using Krypton.Toolkit.Extended.Base;
+using Krypton.Toolkit.Suite.Extended.Standard.Controls;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -8,7 +9,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
     public class KryptonScreenColourPicker : UserControl
     {
         #region Designer Code
-        private KryptonPanelExtended kryptonPanelExtended1;
+        private Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonPanelExtended kryptonPanelExtended1;
         private KryptonButtonExtended kbtnOk;
         private Panel panel1;
         private KryptonSplitContainer kryptonSplitContainer1;
@@ -44,7 +45,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.kknbRed = new KryptonKnobControl();
             this.klblRedValue = new KryptonRedValueLabel();
             this.kryptonRedValueLabel1 = new KryptonRedValueLabel();
-            this.kryptonPanelExtended1 = new KryptonPanelExtended();
+            this.kryptonPanelExtended1 = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonPanelExtended();
             this.kbtnOk = new KryptonButtonExtended();
             this.kbtnCancel = new KryptonButtonExtended();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonSplitContainer1)).BeginInit();
