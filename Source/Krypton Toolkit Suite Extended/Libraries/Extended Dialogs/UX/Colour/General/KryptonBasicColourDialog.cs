@@ -1,4 +1,5 @@
-﻿using Krypton.Toolkit.Extended.Core;
+﻿using Krypton.Toolkit.Extended.Base;
+using Krypton.Toolkit.Extended.Colour.Controls;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -12,7 +13,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
         private KryptonButton kbtnOk;
         private KryptonButton kbtnCancel;
         private KryptonPanel kryptonPanel2;
-        private ColourWheel cwColourSelector;
+        private ColourWheelControl cwColourSelector;
         private CircularPictureBox cpbSelectedColour;
         private KryptonBlueValueLabel kbvlBlue;
         private KryptonGreenValueLabel kgvlGreen;
@@ -26,7 +27,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kbtnCancel = new Krypton.Toolkit.KryptonButton();
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.cwColourSelector = new ColourWheel();
+            this.cwColourSelector = new ColourWheelControl();
             this.krvlRed = new KryptonRedValueLabel();
             this.kgvlGreen = new KryptonGreenValueLabel();
             this.kbvlBlue = new KryptonBlueValueLabel();

@@ -8,4 +8,28 @@
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Cyotek.Windows.Forms.ColorPicker" Version="1.7.2" />
+    <PackageReference Include="Krypton.Toolkit.Experimental" Version="5.500.2003" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Krypton Toolkit Suite Extended Base\Krypton.Toolkit.Suite.Extended.Base.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Resources\LibraryResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>LibraryResources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\LibraryResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>LibraryResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
 </Project>
