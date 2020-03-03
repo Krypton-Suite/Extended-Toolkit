@@ -1,5 +1,4 @@
-﻿using Cyotek.Windows.Forms;
-using Krypton.Toolkit.Extended.Base;
+﻿using Krypton.Toolkit.Extended.Base;
 using System;
 using System.ComponentModel;
 using System.Drawing;
@@ -16,7 +15,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
         #region Designer Code
         private IContainer components = null;
         private KryptonPanel kpnlMain;
-        private Cyotek.Windows.Forms.ColorGrid cgColourPalette;
+        private ColourGridControl cgColourPalette;
         private ColourEditorManager cem;
         private KryptonButton kbtnOk;
         private CircularPictureBox cbColourPreview;
@@ -38,7 +37,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.kbtnCancel = new Krypton.Toolkit.KryptonButton();
             this.kbtnOk = new Krypton.Toolkit.KryptonButton();
             this.cwColourPicker = new Krypton.Toolkit.Extended.Colour.Controls.ColourWheelControl();
-            this.cgColourPalette = new Cyotek.Windows.Forms.ColorGrid();
+            this.cgColourPalette = new ColourGridControl();
             this.cem = new Krypton.Toolkit.Extended.Colour.Controls.ColourEditorManager();
             this.cbColourPreview = new Krypton.Toolkit.Extended.Base.CircularPictureBox();
             this.scpPicker = new Krypton.Toolkit.Extended.Colour.Controls.ScreenColourPickerControl();
@@ -137,17 +136,17 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             // 
             // cgColourPalette
             // 
-            this.cgColourPalette.AutoAddColors = false;
+            this.cgColourPalette.AutoAddColours = false;
             this.cgColourPalette.BackColor = System.Drawing.Color.Transparent;
             this.cgColourPalette.CellSize = new System.Drawing.Size(11, 12);
-            this.cgColourPalette.EditMode = Cyotek.Windows.Forms.ColorEditingMode.Both;
+            this.cgColourPalette.EditMode = ColourEditingMode.Both;
             this.cgColourPalette.Location = new System.Drawing.Point(12, 329);
             this.cgColourPalette.Name = "cgColourPalette";
-            this.cgColourPalette.SelectedCellStyle = Cyotek.Windows.Forms.ColorGridSelectedCellStyle.Standard;
-            this.cgColourPalette.ShowCustomColors = false;
+            this.cgColourPalette.SelectedCellStyle = ColourGridSelectedCellStyle.Standard;
+            this.cgColourPalette.ShowCustomColours = false;
             this.cgColourPalette.Size = new System.Drawing.Size(231, 142);
             this.cgColourPalette.TabIndex = 1;
-            this.cgColourPalette.EditingColor += new System.EventHandler<Cyotek.Windows.Forms.EditColorCancelEventArgs>(this.CgColourPalette_EditingColor);
+            this.cgColourPalette.EditingColour += new EventHandler<EditColourCancelEventArgs>(CgColourPalette_EditingColour);
             // 
             // cem
             // 
@@ -277,15 +276,15 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
 
             if (!ShowAlphaChannel)
             {
-                for (int i = 0; i < cgColourPalette.Colors.Count; i++)
+                for (int i = 0; i < cgColourPalette.Colours.Count; i++)
                 {
                     Color colour;
 
-                    colour = cgColourPalette.Colors[i];
+                    colour = cgColourPalette.Colours[i];
 
                     if (colour.A != 255)
                     {
-                        cgColourPalette.Colors[i] = Color.FromArgb(255, colour);
+                        cgColourPalette.Colours[i] = Color.FromArgb(255, colour);
                     }
                 }
             }
@@ -327,13 +326,13 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             OnPreviewColourChanged(e);
         }
 
-        private void CgColourPalette_EditingColor(object sender, EditColorCancelEventArgs e)
+        private void CgColourPalette_EditingColour(object sender, EditColourCancelEventArgs e)
         {
             e.Cancel = true;
 
-            using (ColorDialog cd = new ColorDialog { FullOpen = true, Color = e.Color })
+            using (ColorDialog cd = new ColorDialog { FullOpen = true, Color = e.Colour })
             {
-                if (cd.ShowDialog(this) == DialogResult.OK) cgColourPalette.Colors[e.ColorIndex] = cd.Color;
+                if (cd.ShowDialog(this) == DialogResult.OK) cgColourPalette.Colours[e.ColourIndex] = cd.Color;
             }
         }
 
@@ -345,13 +344,13 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
                 {
                     try
                     {
-                        Cyotek.Windows.Forms.IPaletteSerializer serializer;
+                        IPaletteSerializer serializer;
 
-                        serializer = Cyotek.Windows.Forms.PaletteSerializer.GetSerializer(fd.FileName);
+                        serializer = PaletteSerializer.GetSerializer(fd.FileName);
 
                         if (serializer != null)
                         {
-                            ColorCollection colours;
+                            ColourCollection colours;
 
                             if (!serializer.CanRead) throw new InvalidOperationException("Serializer does not support reading palettes.");
 
@@ -372,7 +371,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
                                     colours.Add(Color.White);
                                 }
 
-                                cgColourPalette.Colors = colours;
+                                cgColourPalette.Colours = colours;
                             }
                         }
                         else
@@ -428,9 +427,9 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             {
                 if (fd.ShowDialog(this) == DialogResult.OK)
                 {
-                    Cyotek.Windows.Forms.IPaletteSerializer serializer;
+                    IPaletteSerializer serializer;
 
-                    serializer = Cyotek.Windows.Forms.PaletteSerializer.AllSerializers.Where(s => s.CanWrite).ElementAt(fd.FilterIndex - 1);
+                    serializer = PaletteSerializer.AllSerializers.Where(s => s.CanWrite).ElementAt(fd.FilterIndex - 1);
 
                     if (serializer != null)
                     {
@@ -441,7 +440,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
                     {
                         using (FileStream fs = File.OpenWrite(fd.FileName))
                         {
-                            serializer.Serialize(fs, cgColourPalette.Colors);
+                            serializer.Serialize(fs, cgColourPalette.Colours);
                         }
                     }
                     catch (Exception exc)

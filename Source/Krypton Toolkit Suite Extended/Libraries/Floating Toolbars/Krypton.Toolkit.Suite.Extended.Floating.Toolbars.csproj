@@ -20,6 +20,7 @@
   <PropertyGroup>
     <AssemblyVersion>5.500.2004</AssemblyVersion>
     <FileVersion>5.500.2004</FileVersion>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
 </Project>

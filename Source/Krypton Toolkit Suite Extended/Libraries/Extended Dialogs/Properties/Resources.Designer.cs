@@ -63,6 +63,16 @@ namespace Krypton.Toolkit.Extended.Dialogs.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap eyedropper {
+            get {
+                object obj = ResourceManager.GetObject("eyedropper", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap palette_load {
             get {
                 object obj = ResourceManager.GetObject("palette-load", resourceCulture);
