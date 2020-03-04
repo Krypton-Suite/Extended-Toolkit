@@ -47,4 +47,9 @@
     </EmbeddedResource>
   </ItemGroup>
 
+  <PropertyGroup>
+    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Krypton.Toolkit.Extended.Colour.Controls.xml</DocumentationFile>
+    <OutputPath>..\..\..\..\Bin\$(configuration)\</OutputPath>
+  </PropertyGroup>
+
 </Project>

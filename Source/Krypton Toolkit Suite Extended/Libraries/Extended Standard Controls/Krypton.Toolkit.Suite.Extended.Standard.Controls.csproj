@@ -18,4 +18,9 @@
     <ProjectReference Include="..\Krypton Toolkit Suite Extended Base\Krypton.Toolkit.Suite.Extended.Base.csproj" />
   </ItemGroup>
 
+  <PropertyGroup>
+    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Krypton.Toolkit.Extended.Standard.Controls.xml</DocumentationFile>
+    <OutputPath>..\..\..\..\Bin\$(configuration)\</OutputPath>
+  </PropertyGroup>
+
 </Project>

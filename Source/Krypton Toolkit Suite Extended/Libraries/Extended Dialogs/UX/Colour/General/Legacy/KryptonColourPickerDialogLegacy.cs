@@ -16,7 +16,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
     {
         private Suite.Extended.Standard.Controls.KryptonButtonExtended kbeCancel;
         private Suite.Extended.Standard.Controls.KryptonButtonExtended kbeOk;
-        private ColourEditorUserControl ceColour;
+        private ColourEditorUserControlLegacy ceColour;
         private ColourWheelControl cwSelectedColour;
         private Suite.Extended.Standard.Controls.KryptonButtonExtended kbtneLoadColourPalette;
         private Suite.Extended.Standard.Controls.KryptonButtonExtended kryptonButtonExtended1;
@@ -31,7 +31,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ColourPickerDialogLegacy));
             this.kpnlBack = new Krypton.Toolkit.KryptonPanel();
             this.scpColours = new Krypton.Toolkit.Extended.Colour.Controls.ScreenColourPickerControl();
-            this.ceColour = new Krypton.Toolkit.Extended.Colour.Controls.ColourEditorUserControl();
+            this.ceColour = new Krypton.Toolkit.Extended.Colour.Controls.ColourEditorUserControlLegacy();
             this.cwSelectedColour = new Krypton.Toolkit.Extended.Colour.Controls.ColourWheelControl();
             this.cem = new Krypton.Toolkit.Extended.Colour.Controls.ColourEditorManager();
             this.kryptonButtonExtended1 = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonButtonExtended();

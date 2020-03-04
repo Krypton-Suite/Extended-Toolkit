@@ -45,4 +45,9 @@
     </EmbeddedResource>
   </ItemGroup>
 
+  <PropertyGroup>
+    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Krypton.Toolkit.Extended.Dialogs.xml</DocumentationFile>
+    <OutputPath>..\..\..\..\Bin\$(configuration)\</OutputPath>
+  </PropertyGroup>
+
 </Project>

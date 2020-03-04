@@ -21,7 +21,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
         private CircularPictureBox cbColourPreview;
         private KryptonButton kbtnCancel;
         private Cyotek.Windows.Forms.ColorEditor ceEditor;
-        private Krypton.Toolkit.Extended.Colour.Controls.ColourEditorUserControl ceColour;
+        private Krypton.Toolkit.Extended.Colour.Controls.ColourEditorUserControlLegacy ceColour;
         private KryptonButton kbtnSaveColourPalette;
         private KryptonButton kbtnLoadColourPalette;
         private ScreenColourPickerControl scpPicker;
@@ -32,7 +32,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.kpnlMain = new Krypton.Toolkit.KryptonPanel();
             this.kbtnSaveColourPalette = new Krypton.Toolkit.KryptonButton();
             this.kbtnLoadColourPalette = new Krypton.Toolkit.KryptonButton();
-            this.ceColour = new Krypton.Toolkit.Extended.Colour.Controls.ColourEditorUserControl();
+            this.ceColour = new Krypton.Toolkit.Extended.Colour.Controls.ColourEditorUserControlLegacy();
             this.ceEditor = new Cyotek.Windows.Forms.ColorEditor();
             this.kbtnCancel = new Krypton.Toolkit.KryptonButton();
             this.kbtnOk = new Krypton.Toolkit.KryptonButton();

@@ -31,7 +31,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
 
         private Color _colour;
 
-        private ColourEditorUserControl _colourEditor;
+        private ColourEditorUserControlLegacy _colourEditor;
 
         //private ColourGrid _grid;
 
@@ -91,11 +91,11 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
         #region Properties
 
         /// <summary>
-        /// Gets or sets the linked <see cref="ColourEditorUserControl"/>.
+        /// Gets or sets the linked <see cref="ColourEditorUserControlLegacy"/>.
         /// </summary>
         [Category("Behavior")]
-        [DefaultValue(typeof(ColourEditorUserControl), null)]
-        public virtual ColourEditorUserControl ColourEditor
+        [DefaultValue(typeof(ColourEditorUserControlLegacy), null)]
+        public virtual ColourEditorUserControlLegacy ColourEditor
         {
             get { return _colourEditor; }
             set
