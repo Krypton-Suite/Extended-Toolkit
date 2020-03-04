@@ -152,7 +152,6 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             // 
             this.cem.Color = System.Drawing.Color.Empty;
             this.cem.ColourEditor = this.ceColour;
-            this.cem.ColourGrid = this.cgColourPalette;
             this.cem.ColourWheel = this.cwColourPicker;
             this.cem.ColorChanged += new System.EventHandler(this.Cem_ColorChanged);
             this.cem.ColourChanged += new System.EventHandler(this.Cem_ColourChanged);

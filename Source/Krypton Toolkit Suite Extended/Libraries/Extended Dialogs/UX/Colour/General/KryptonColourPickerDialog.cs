@@ -466,6 +466,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.Text = "Colour Dialog";
             ((System.ComponentModel.ISupportInitialize)(this.kpnlBack)).EndInit();
             this.kpnlBack.ResumeLayout(false);
             this.kpnlBack.PerformLayout();
