@@ -12,7 +12,7 @@ using System.Windows.Forms;
 namespace Krypton.Toolkit.Extended.Dialogs
 {
     [DefaultEvent("PreviewColorChanged"), DefaultProperty("Color")]
-    public class ColourPickerDialog : KryptonForm
+    public class ColourPickerDialogLegacy : KryptonForm
     {
         private Suite.Extended.Standard.Controls.KryptonButtonExtended kbeCancel;
         private Suite.Extended.Standard.Controls.KryptonButtonExtended kbeOk;
@@ -28,7 +28,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
 
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ColourPickerDialog));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ColourPickerDialogLegacy));
             this.kpnlBack = new Krypton.Toolkit.KryptonPanel();
             this.scpColours = new Krypton.Toolkit.Extended.Colour.Controls.ScreenColourPickerControl();
             this.ceColour = new Krypton.Toolkit.Extended.Colour.Controls.ColourEditorUserControl();
