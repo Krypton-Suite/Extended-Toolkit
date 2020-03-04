@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Extended.Dialogs
 {
-    public class KryptonBasicColourDialog : KryptonForm
+    public class KryptonBasicColourDialogLegacy : KryptonForm
     {
         #region Designer Code
         private KryptonPanel kryptonPanel1;
@@ -198,7 +198,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
         #endregion
 
         #region Constructor
-        public KryptonBasicColourDialog()
+        public KryptonBasicColourDialogLegacy()
         {
             InitializeComponent();
         }
