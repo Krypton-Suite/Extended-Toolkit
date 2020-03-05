@@ -1713,6 +1713,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.Name = "KryptonContrastColourGeneratorDialog";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Colour Contrast Dialog";
             ((System.ComponentModel.ISupportInitialize)(this.kpnlButtons)).EndInit();
             this.kpnlButtons.ResumeLayout(false);
