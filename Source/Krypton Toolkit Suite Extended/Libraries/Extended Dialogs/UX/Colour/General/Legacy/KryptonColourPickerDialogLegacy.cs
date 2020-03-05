@@ -89,7 +89,6 @@ namespace Krypton.Toolkit.Extended.Dialogs
             // cem
             // 
             this.cem.Color = System.Drawing.Color.Empty;
-            this.cem.ColourEditor = this.ceColour;
             this.cem.ColourWheel = this.cwSelectedColour;
             this.cem.ScreenColourPicker = this.scpColours;
             // 

@@ -376,4 +376,10 @@
         STRING,
         INTEGER
     }
+
+    public enum ColourDialogLayoutType
+    {
+        STANDARD,
+        ENHANCED
+    }
 }
