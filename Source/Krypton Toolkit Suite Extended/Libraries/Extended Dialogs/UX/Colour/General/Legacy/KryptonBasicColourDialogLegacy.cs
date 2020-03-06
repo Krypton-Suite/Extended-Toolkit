@@ -16,7 +16,6 @@ namespace Krypton.Toolkit.Extended.Dialogs
         private ColourWheelControl cwColourSelector;
         private CircularPictureBox cpbSelectedColour;
         private KryptonBlueValueLabel kbvlBlue;
-        private KryptonGreenValueLabel kgvlGreen;
         private KryptonRedValueLabel krvlRed;
         private System.Windows.Forms.Panel panel1;
 
@@ -29,7 +28,6 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.panel1 = new System.Windows.Forms.Panel();
             this.cwColourSelector = new ColourWheelControl();
             this.krvlRed = new KryptonRedValueLabel();
-            this.kgvlGreen = new KryptonGreenValueLabel();
             this.kbvlBlue = new KryptonBlueValueLabel();
             this.cpbSelectedColour = new CircularPictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
@@ -79,7 +77,6 @@ namespace Krypton.Toolkit.Extended.Dialogs
             // 
             this.kryptonPanel2.Controls.Add(this.cpbSelectedColour);
             this.kryptonPanel2.Controls.Add(this.kbvlBlue);
-            this.kryptonPanel2.Controls.Add(this.kgvlGreen);
             this.kryptonPanel2.Controls.Add(this.krvlRed);
             this.kryptonPanel2.Controls.Add(this.cwColourSelector);
             this.kryptonPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -119,30 +116,14 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.krvlRed.StateCommon.ShortText.Color2 = System.Drawing.Color.Red;
             this.krvlRed.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.krvlRed.TabIndex = 3;
-            this.krvlRed.TextSize = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.krvlRed.Typeface = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.krvlRed.Values.Text = "Red Value: ";
-            // 
-            // kgvlGreen
-            // 
-            this.kgvlGreen.Location = new System.Drawing.Point(319, 384);
-            this.kgvlGreen.Name = "kgvlGreen";
-            this.kgvlGreen.RedValue = 255;
-            this.kgvlGreen.Size = new System.Drawing.Size(110, 26);
-            this.kgvlGreen.StateCommon.LongText.Color1 = System.Drawing.Color.Green;
-            this.kgvlGreen.StateCommon.LongText.Color2 = System.Drawing.Color.Green;
-            this.kgvlGreen.StateCommon.LongText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.kgvlGreen.StateCommon.ShortText.Color1 = System.Drawing.Color.Green;
-            this.kgvlGreen.StateCommon.ShortText.Color2 = System.Drawing.Color.Green;
-            this.kgvlGreen.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.kgvlGreen.TabIndex = 4;
-            this.kgvlGreen.TextSize = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.kgvlGreen.Values.Text = "Green Value: ";
             // 
             // kbvlBlue
             // 
             this.kbvlBlue.Location = new System.Drawing.Point(504, 384);
             this.kbvlBlue.Name = "kbvlBlue";
-            this.kbvlBlue.RedValue = 255;
+            this.kbvlBlue.BlueValue = 255;
             this.kbvlBlue.Size = new System.Drawing.Size(98, 26);
             this.kbvlBlue.StateCommon.LongText.Color1 = System.Drawing.Color.Blue;
             this.kbvlBlue.StateCommon.LongText.Color2 = System.Drawing.Color.Blue;
@@ -151,7 +132,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kbvlBlue.StateCommon.ShortText.Color2 = System.Drawing.Color.Blue;
             this.kbvlBlue.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.kbvlBlue.TabIndex = 3;
-            this.kbvlBlue.TextSize = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.kbvlBlue.Typeface = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.kbvlBlue.Values.Text = "Blue Value: ";
             // 
             // cpbSelectedColour
@@ -240,7 +221,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             {
                 krvlRed.Text = $"Red Value: { red }";
 
-                kgvlGreen.Text = $"Green Value: { green }";
+                //kgvlGreen.Text = $"Green Value: { green }";
 
                 kbvlBlue.Text = $"Blue Value: { blue }";
             }

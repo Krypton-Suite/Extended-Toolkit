@@ -133,7 +133,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kryptonAlphaValueLabel9.StateCommon.LongText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.kryptonAlphaValueLabel9.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.kryptonAlphaValueLabel9.TabIndex = 32;
-            this.kryptonAlphaValueLabel9.TextSize = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.kryptonAlphaValueLabel9.Typeface = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.kryptonAlphaValueLabel9.Values.Text = ")";
             // 
             // kryptonAlphaValueLabel10
@@ -145,7 +145,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kryptonAlphaValueLabel10.StateCommon.LongText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.kryptonAlphaValueLabel10.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.kryptonAlphaValueLabel10.TabIndex = 31;
-            this.kryptonAlphaValueLabel10.TextSize = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.kryptonAlphaValueLabel10.Typeface = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.kryptonAlphaValueLabel10.Values.Text = ",";
             // 
             // kryptonAlphaValueLabel11
@@ -157,7 +157,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kryptonAlphaValueLabel11.StateCommon.LongText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.kryptonAlphaValueLabel11.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.kryptonAlphaValueLabel11.TabIndex = 30;
-            this.kryptonAlphaValueLabel11.TextSize = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.kryptonAlphaValueLabel11.Typeface = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.kryptonAlphaValueLabel11.Values.Text = ",";
             // 
             // kryptonRedValueNumericBox2
@@ -217,7 +217,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kryptonAlphaValueLabel8.StateCommon.LongText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.kryptonAlphaValueLabel8.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.kryptonAlphaValueLabel8.TabIndex = 26;
-            this.kryptonAlphaValueLabel8.TextSize = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.kryptonAlphaValueLabel8.Typeface = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.kryptonAlphaValueLabel8.Values.Text = "(";
             // 
             // kryptonAlphaValueLabel7
@@ -229,7 +229,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kryptonAlphaValueLabel7.StateCommon.LongText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.kryptonAlphaValueLabel7.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.kryptonAlphaValueLabel7.TabIndex = 25;
-            this.kryptonAlphaValueLabel7.TextSize = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.kryptonAlphaValueLabel7.Typeface = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.kryptonAlphaValueLabel7.Values.Text = "RGB:";
             // 
             // kryptonAlphaValueLabel6
@@ -241,7 +241,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kryptonAlphaValueLabel6.StateCommon.LongText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.kryptonAlphaValueLabel6.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.kryptonAlphaValueLabel6.TabIndex = 24;
-            this.kryptonAlphaValueLabel6.TextSize = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.kryptonAlphaValueLabel6.Typeface = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.kryptonAlphaValueLabel6.Values.Text = "Hexadecimal Value:";
             // 
             // kryptonAlphaValueLabel5
@@ -253,7 +253,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kryptonAlphaValueLabel5.StateCommon.LongText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.kryptonAlphaValueLabel5.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.kryptonAlphaValueLabel5.TabIndex = 23;
-            this.kryptonAlphaValueLabel5.TextSize = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.kryptonAlphaValueLabel5.Typeface = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.kryptonAlphaValueLabel5.Values.Text = ")";
             // 
             // kryptonAlphaValueLabel4
@@ -265,7 +265,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kryptonAlphaValueLabel4.StateCommon.LongText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.kryptonAlphaValueLabel4.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.kryptonAlphaValueLabel4.TabIndex = 22;
-            this.kryptonAlphaValueLabel4.TextSize = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.kryptonAlphaValueLabel4.Typeface = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.kryptonAlphaValueLabel4.Values.Text = ",";
             // 
             // kryptonAlphaValueLabel3
@@ -277,7 +277,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kryptonAlphaValueLabel3.StateCommon.LongText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.kryptonAlphaValueLabel3.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.kryptonAlphaValueLabel3.TabIndex = 21;
-            this.kryptonAlphaValueLabel3.TextSize = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.kryptonAlphaValueLabel3.Typeface = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.kryptonAlphaValueLabel3.Values.Text = ",";
             // 
             // kryptonAlphaValueLabel2
@@ -289,7 +289,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kryptonAlphaValueLabel2.StateCommon.LongText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.kryptonAlphaValueLabel2.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.kryptonAlphaValueLabel2.TabIndex = 20;
-            this.kryptonAlphaValueLabel2.TextSize = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.kryptonAlphaValueLabel2.Typeface = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.kryptonAlphaValueLabel2.Values.Text = ",";
             // 
             // kryptonAlphaValueNumericBox1
@@ -338,7 +338,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kryptonAlphaValueLabel1.StateCommon.LongText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.kryptonAlphaValueLabel1.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.kryptonAlphaValueLabel1.TabIndex = 5;
-            this.kryptonAlphaValueLabel1.TextSize = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.kryptonAlphaValueLabel1.Typeface = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.kryptonAlphaValueLabel1.Values.Text = "(";
             // 
             // kryptonGreenValueNumericBox1
@@ -366,7 +366,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kavlNormal.StateCommon.LongText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.kavlNormal.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.kavlNormal.TabIndex = 4;
-            this.kavlNormal.TextSize = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.kavlNormal.Typeface = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.kavlNormal.Values.Text = "ARGB:";
             // 
             // kryptonBlueValueNumericBox1

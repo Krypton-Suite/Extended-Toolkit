@@ -40,7 +40,6 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
         private Krypton.Toolkit.KryptonNumericUpDown knumContrastGreenChannelValue;
         private Krypton.Toolkit.KryptonLabel kryptonLabel5;
         private Krypton.Toolkit.KryptonNumericUpDown knumContrastBlueChannelValue;
-        private KryptonGreenValueLabel kryptonGreenValueLabel1;
         private KryptonBlueValueLabel kryptonBlueValueLabel1;
         private KryptonRedValueLabel kryptonRedValueLabel1;
         private Krypton.Toolkit.KryptonPanel kpnlContent;
@@ -48,7 +47,6 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
         private void InitializeComponent()
         {
             this.kpnlContent = new Krypton.Toolkit.KryptonPanel();
-            this.kryptonGreenValueLabel1 = new KryptonGreenValueLabel();
             this.kryptonBlueValueLabel1 = new KryptonBlueValueLabel();
             this.kryptonRedValueLabel1 = new KryptonRedValueLabel();
             this.kbtnContrastColourGenerateAlpha = new Krypton.Toolkit.KryptonButton();
@@ -91,7 +89,6 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             // 
             // kpnlContent
             // 
-            this.kpnlContent.Controls.Add(this.kryptonGreenValueLabel1);
             this.kpnlContent.Controls.Add(this.kryptonBlueValueLabel1);
             this.kpnlContent.Controls.Add(this.kryptonRedValueLabel1);
             this.kpnlContent.Controls.Add(this.kbtnContrastColourGenerateAlpha);
@@ -132,28 +129,11 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.kpnlContent.Size = new System.Drawing.Size(883, 561);
             this.kpnlContent.TabIndex = 0;
             // 
-            // kryptonGreenValueLabel1
-            // 
-            this.kryptonGreenValueLabel1.Location = new System.Drawing.Point(330, 81);
-            this.kryptonGreenValueLabel1.Name = "kryptonGreenValueLabel1";
-            this.kryptonGreenValueLabel1.RedValue = 255;
-            this.kryptonGreenValueLabel1.Size = new System.Drawing.Size(213, 26);
-            this.kryptonGreenValueLabel1.StateCommon.LongText.Color1 = System.Drawing.Color.Green;
-            this.kryptonGreenValueLabel1.StateCommon.LongText.Color2 = System.Drawing.Color.Green;
-            this.kryptonGreenValueLabel1.StateCommon.LongText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.kryptonGreenValueLabel1.StateCommon.ShortText.Color1 = System.Drawing.Color.Green;
-            this.kryptonGreenValueLabel1.StateCommon.ShortText.Color2 = System.Drawing.Color.Green;
-            this.kryptonGreenValueLabel1.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.kryptonGreenValueLabel1.TabIndex = 129;
-            this.kryptonGreenValueLabel1.TextSize = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.kryptonGreenValueLabel1.Values.Text = "kryptonGreenValueLabel1";
-            this.kryptonGreenValueLabel1.Visible = false;
-            // 
             // kryptonBlueValueLabel1
             // 
             this.kryptonBlueValueLabel1.Location = new System.Drawing.Point(330, 49);
             this.kryptonBlueValueLabel1.Name = "kryptonBlueValueLabel1";
-            this.kryptonBlueValueLabel1.RedValue = 255;
+            this.kryptonBlueValueLabel1.BlueValue = 255;
             this.kryptonBlueValueLabel1.Size = new System.Drawing.Size(201, 26);
             this.kryptonBlueValueLabel1.StateCommon.LongText.Color1 = System.Drawing.Color.Blue;
             this.kryptonBlueValueLabel1.StateCommon.LongText.Color2 = System.Drawing.Color.Blue;
@@ -162,7 +142,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.kryptonBlueValueLabel1.StateCommon.ShortText.Color2 = System.Drawing.Color.Blue;
             this.kryptonBlueValueLabel1.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.kryptonBlueValueLabel1.TabIndex = 128;
-            this.kryptonBlueValueLabel1.TextSize = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.kryptonBlueValueLabel1.Typeface = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.kryptonBlueValueLabel1.Values.Text = "kryptonBlueValueLabel1";
             this.kryptonBlueValueLabel1.Visible = false;
             // 
@@ -179,7 +159,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.kryptonRedValueLabel1.StateCommon.ShortText.Color2 = System.Drawing.Color.Red;
             this.kryptonRedValueLabel1.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.kryptonRedValueLabel1.TabIndex = 127;
-            this.kryptonRedValueLabel1.TextSize = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.kryptonRedValueLabel1.Typeface = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.kryptonRedValueLabel1.Values.Text = "Red:";
             this.kryptonRedValueLabel1.Visible = false;
             // 

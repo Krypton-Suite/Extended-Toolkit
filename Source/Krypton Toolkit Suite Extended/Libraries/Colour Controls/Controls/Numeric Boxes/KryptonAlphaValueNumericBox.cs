@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Extended.Colour.Controls
 {
@@ -7,9 +8,15 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
         #region Constants
         private const int DEFAULT_VALUE = 0, MINIMUM_DEFAULT_VALUE = 0, MAXIMUM_DEFAULT_VALUE = 255;
 
-        private Color DEFAULT_BACK_COLOUR = Color.White, DEFAULT_FORECOLOUR = Color.Black;
-
         private Font DEFAULT_TYPEFACE = new Font("Segoe UI", 11f);
+        #endregion
+
+        #region Variable
+        private Font _typeface;
+        #endregion
+
+        #region Property
+        public Font Typeface { get => _typeface; set { _typeface = value; Invalidate(); } }
         #endregion
 
         #region Constructor
@@ -20,12 +27,19 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             Maximum = MAXIMUM_DEFAULT_VALUE;
 
             Value = DEFAULT_VALUE;
+        }
+        #endregion
 
-            StateCommon.Back.Color1 = DEFAULT_BACK_COLOUR;
+        #region Method
+        private void AlterTypeface(Font typeface) => StateCommon.Content.Font = typeface;
+        #endregion
 
-            StateCommon.Content.Color1 = DEFAULT_FORECOLOUR;
+        #region Overrides
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            AlterTypeface(_typeface);
 
-            StateCommon.Content.Font = DEFAULT_TYPEFACE;
+            base.OnPaint(e);
         }
         #endregion
     }

@@ -1,45 +1,112 @@
 ﻿using System.Drawing;
+using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Extended.Colour.Controls
 {
     public class KryptonRedValueLabel : KryptonLabel
     {
         #region Variables
-        private Color _textColour = Color.Red;
+        private bool _useAccessibleUI, _showCurrentColourValue, _showColon;
 
-        private Font _textSize;
+        private Color _textColour;
+
+        private Font _typeface;
 
         private int _value;
+
+        private string _extraText;
         #endregion
 
         #region Properties
-        public Color TextColour { get => _textColour; }
+        public bool ShowCurrentColourValue { get => _showCurrentColourValue; set { _showCurrentColourValue = value; Invalidate(); } }
 
-        public Font TextSize { get => _textSize; set { _textSize = value; Invalidate(); } }
+        public bool UseAccessibleUI { get => _useAccessibleUI; set { _useAccessibleUI = value; Invalidate(); } }
+
+        public bool ShowColon { get => _showColon; set { _showColon = value; Invalidate(); } }
+
+        public Color TextColour { get => _textColour; private set { _textColour = value; Invalidate(); } }
+
+        public Font Typeface { get => _typeface; set { _typeface = value; Invalidate(); } }
 
         public int RedValue { get => _value; set { _value = value; Invalidate(); } }
+
+        public string ExtraText { get => _extraText; set { _extraText = value; Invalidate(); } }
         #endregion
 
         #region Constructor
         public KryptonRedValueLabel()
         {
-            TextSize = new Font("Segoe UI", 12f, FontStyle.Bold);
+            Typeface = new Font("Segoe UI", 12f, FontStyle.Bold);
 
             RedValue = 255;
 
-            StateCommon.LongText.Color1 = TextColour;
+            TextColour = Color.Red;
 
-            StateCommon.LongText.Color2 = TextColour;
+            ExtraText = "Red Value";
 
-            StateCommon.LongText.Font = TextSize;
+            ShowColon = false;
+        }
+        #endregion
 
-            StateCommon.ShortText.Color1 = TextColour;
+        #region Methods
+        private void ShowCurrentColourValueOnLabel(bool value, string text = "Red Value", bool showColon = false)
+        {
+            if (value)
+            {
+                Text = $"{ text }: { RedValue }";
+            }
+            else if (_showColon)
+            {
+                Text = $"{ text }";
+            }
+            else
+            {
+                Text = $"{ text }:";
+            }
+        }
 
-            StateCommon.ShortText.Color2 = TextColour;
+        private void AlterLabelTypeface(Font typeface)
+        {
+            StateCommon.LongText.Font = typeface;
 
-            StateCommon.ShortText.Font = TextSize;
+            StateCommon.ShortText.Font = typeface;
+        }
 
-            Text = $"Red Value: { RedValue }";
+        private void AlterLabelUI(bool useAccessibleUI)
+        {
+            if (useAccessibleUI)
+            {
+                StateCommon.LongText.Color1 = Color.Empty;
+
+                StateCommon.LongText.Color2 = Color.Empty;
+
+                StateCommon.ShortText.Color1 = Color.Empty;
+
+                StateCommon.ShortText.Color2 = Color.Empty;
+            }
+            else
+            {
+                StateCommon.LongText.Color1 = TextColour;
+
+                StateCommon.LongText.Color2 = TextColour;
+
+                StateCommon.ShortText.Color1 = TextColour;
+
+                StateCommon.ShortText.Color2 = TextColour;
+            }
+        }
+        #endregion
+
+        #region Overrides
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            ShowCurrentColourValueOnLabel(_showCurrentColourValue, _extraText, _showColon);
+
+            AlterLabelTypeface(_typeface);
+
+            AlterLabelUI(_useAccessibleUI);
+
+            base.OnPaint(e);
         }
         #endregion
     }

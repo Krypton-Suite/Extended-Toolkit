@@ -282,7 +282,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.klblAlpha.StateCommon.LongText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.klblAlpha.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
             this.klblAlpha.TabIndex = 16;
-            this.klblAlpha.TextSize = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.klblAlpha.Typeface = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.klblAlpha.Values.Text = "Alpha:";
             // 
             // klblLuminosity
@@ -296,7 +296,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.klblLuminosity.StateCommon.LongText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.klblLuminosity.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
             this.klblLuminosity.TabIndex = 15;
-            this.klblLuminosity.TextSize = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.klblLuminosity.Typeface = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.klblLuminosity.Values.Text = "L:";
             // 
             // klblSaturation
@@ -310,7 +310,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.klblSaturation.StateCommon.LongText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.klblSaturation.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
             this.klblSaturation.TabIndex = 14;
-            this.klblSaturation.TextSize = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.klblSaturation.Typeface = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.klblSaturation.Values.Text = "S:";
             // 
             // klblHue
@@ -324,7 +324,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.klblHue.StateCommon.LongText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.klblHue.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
             this.klblHue.TabIndex = 13;
-            this.klblHue.TextSize = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.klblHue.Typeface = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.klblHue.Values.Text = "H:";
             // 
             // klblHSL
@@ -338,7 +338,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.klblHSL.StateCommon.LongText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.klblHSL.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
             this.klblHSL.TabIndex = 12;
-            this.klblHSL.TextSize = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.klblHSL.Typeface = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.klblHSL.Values.Text = "HSL:";
             // 
             // klblHex
@@ -352,7 +352,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.klblHex.StateCommon.LongText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.klblHex.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
             this.klblHex.TabIndex = 11;
-            this.klblHex.TextSize = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.klblHex.Typeface = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.klblHex.Values.Text = "Hex:";
             // 
             // klblBlue
@@ -366,7 +366,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.klblBlue.StateCommon.LongText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.klblBlue.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
             this.klblBlue.TabIndex = 10;
-            this.klblBlue.TextSize = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.klblBlue.Typeface = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.klblBlue.Values.Text = "B:";
             // 
             // klblGreen
@@ -380,7 +380,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.klblGreen.StateCommon.LongText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.klblGreen.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
             this.klblGreen.TabIndex = 9;
-            this.klblGreen.TextSize = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.klblGreen.Typeface = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.klblGreen.Values.Text = "G:";
             // 
             // klblRed
@@ -394,7 +394,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.klblRed.StateCommon.LongText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.klblRed.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
             this.klblRed.TabIndex = 8;
-            this.klblRed.TextSize = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.klblRed.Typeface = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.klblRed.Values.Text = "R:";
             // 
             // klblRGB
@@ -408,7 +408,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.klblRGB.StateCommon.LongText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.klblRGB.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
             this.klblRGB.TabIndex = 7;
-            this.klblRGB.TextSize = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.klblRGB.Typeface = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.klblRGB.Values.Text = "RGB:";
             // 
             // ColourEditorUserControl

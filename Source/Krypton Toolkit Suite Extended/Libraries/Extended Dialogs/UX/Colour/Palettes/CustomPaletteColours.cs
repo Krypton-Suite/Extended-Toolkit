@@ -14,11 +14,8 @@ namespace Krypton.Toolkit.Extended.Dialogs
         private KryptonPanel kryptonPanel1;
         private KryptonListBox kryptonListBox1;
         private Colour.Controls.KryptonBlueValueNumericBox knudBaseBlue;
-        private Colour.Controls.KryptonRedValueLabel klblBaseRed;
-        private Colour.Controls.KryptonBlueValueLabel klblBaseBlue;
         private Colour.Controls.KryptonGreenValueNumericBox knudBaseGreen;
         private Colour.Controls.KryptonRedValueNumericBox knudBaseRed;
-        private Colour.Controls.KryptonGreenValueLabel klblBaseGreen;
         private System.Windows.Forms.PictureBox pbxColourPreview;
         private KryptonButton kryptonButton3;
         private KryptonButton kryptonButton2;
@@ -36,36 +33,33 @@ namespace Krypton.Toolkit.Extended.Dialogs
         private void InitializeComponent()
         {
             this.kpnlButtons = new Krypton.Toolkit.KryptonPanel();
+            this.colourHexadecimalTextBox1 = new Krypton.Toolkit.Extended.Colour.Controls.ColourHexadecimalTextBox();
+            this.kryptonLabelExtended3 = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonLabelExtended();
+            this.kryptonButton5 = new Krypton.Toolkit.KryptonButton();
+            this.kryptonButton4 = new Krypton.Toolkit.KryptonButton();
             this.kbtnOk = new Krypton.Toolkit.Extended.Dialogs.KryptonOKDialogButton();
             this.kbtnCancel = new Krypton.Toolkit.Extended.Dialogs.KryptonCancelDialogButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            this.kryptonComboBoxExtended2 = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonComboBoxExtended();
+            this.kryptonLabelExtended2 = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonLabelExtended();
+            this.kryptonComboBoxExtended1 = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonComboBoxExtended();
+            this.kryptonLabelExtended1 = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonLabelExtended();
+            this.kryptonButton3 = new Krypton.Toolkit.KryptonButton();
+            this.kryptonButton2 = new Krypton.Toolkit.KryptonButton();
+            this.kryptonButton1 = new Krypton.Toolkit.KryptonButton();
+            this.pbxColourPreview = new System.Windows.Forms.PictureBox();
+            this.kryptonListBox1 = new Krypton.Toolkit.KryptonListBox();
             this.knudBaseBlue = new Krypton.Toolkit.Extended.Colour.Controls.KryptonBlueValueNumericBox();
             this.knudBaseGreen = new Krypton.Toolkit.Extended.Colour.Controls.KryptonGreenValueNumericBox();
             this.knudBaseRed = new Krypton.Toolkit.Extended.Colour.Controls.KryptonRedValueNumericBox();
-            this.klblBaseBlue = new Krypton.Toolkit.Extended.Colour.Controls.KryptonBlueValueLabel();
-            this.klblBaseGreen = new Krypton.Toolkit.Extended.Colour.Controls.KryptonGreenValueLabel();
-            this.klblBaseRed = new Krypton.Toolkit.Extended.Colour.Controls.KryptonRedValueLabel();
-            this.kryptonListBox1 = new Krypton.Toolkit.KryptonListBox();
-            this.pbxColourPreview = new System.Windows.Forms.PictureBox();
-            this.kryptonButton1 = new Krypton.Toolkit.KryptonButton();
-            this.kryptonButton2 = new Krypton.Toolkit.KryptonButton();
-            this.kryptonButton3 = new Krypton.Toolkit.KryptonButton();
-            this.kryptonLabelExtended1 = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonLabelExtended();
-            this.kryptonComboBoxExtended1 = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonComboBoxExtended();
-            this.kryptonComboBoxExtended2 = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonComboBoxExtended();
-            this.kryptonLabelExtended2 = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonLabelExtended();
-            this.kryptonButton4 = new Krypton.Toolkit.KryptonButton();
-            this.kryptonButton5 = new Krypton.Toolkit.KryptonButton();
-            this.kryptonLabelExtended3 = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonLabelExtended();
-            this.colourHexadecimalTextBox1 = new Krypton.Toolkit.Extended.Colour.Controls.ColourHexadecimalTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.kpnlButtons)).BeginInit();
             this.kpnlButtons.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxColourPreview)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonComboBoxExtended1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonComboBoxExtended2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonComboBoxExtended1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxColourPreview)).BeginInit();
             this.SuspendLayout();
             // 
             // kpnlButtons
@@ -81,6 +75,60 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kpnlButtons.Name = "kpnlButtons";
             this.kpnlButtons.Size = new System.Drawing.Size(887, 44);
             this.kpnlButtons.TabIndex = 2;
+            // 
+            // colourHexadecimalTextBox1
+            // 
+            this.colourHexadecimalTextBox1.Colour = System.Drawing.Color.Empty;
+            this.colourHexadecimalTextBox1.Hint = "000000";
+            this.colourHexadecimalTextBox1.Location = new System.Drawing.Point(516, 9);
+            this.colourHexadecimalTextBox1.MaxLength = 6;
+            this.colourHexadecimalTextBox1.Name = "colourHexadecimalTextBox1";
+            this.colourHexadecimalTextBox1.Size = new System.Drawing.Size(100, 24);
+            this.colourHexadecimalTextBox1.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colourHexadecimalTextBox1.StateCommon.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
+            this.colourHexadecimalTextBox1.TabIndex = 162;
+            // 
+            // kryptonLabelExtended3
+            // 
+            this.kryptonLabelExtended3.Image = null;
+            this.kryptonLabelExtended3.Location = new System.Drawing.Point(348, 11);
+            this.kryptonLabelExtended3.LongTextTypeface = null;
+            this.kryptonLabelExtended3.Name = "kryptonLabelExtended3";
+            this.kryptonLabelExtended3.ShortTextTypeface = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabelExtended3.Size = new System.Drawing.Size(161, 21);
+            this.kryptonLabelExtended3.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabelExtended3.StateCommonTextColourOne = System.Drawing.Color.Empty;
+            this.kryptonLabelExtended3.StateCommonTextColourTwo = System.Drawing.Color.Empty;
+            this.kryptonLabelExtended3.StateDisabled.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabelExtended3.StateDisabledTextColourOne = System.Drawing.Color.Empty;
+            this.kryptonLabelExtended3.StateDisabledTextColourTwo = System.Drawing.Color.Empty;
+            this.kryptonLabelExtended3.StateNormal.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabelExtended3.StateNormalTextColourOne = System.Drawing.Color.Empty;
+            this.kryptonLabelExtended3.StateNormalTextColourTwo = System.Drawing.Color.Empty;
+            this.kryptonLabelExtended3.TabIndex = 161;
+            this.kryptonLabelExtended3.Values.Text = "Hexadecimal Colour:";
+            // 
+            // kryptonButton5
+            // 
+            this.kryptonButton5.AutoSize = true;
+            this.kryptonButton5.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.kryptonButton5.Location = new System.Drawing.Point(179, 8);
+            this.kryptonButton5.Name = "kryptonButton5";
+            this.kryptonButton5.Size = new System.Drawing.Size(163, 25);
+            this.kryptonButton5.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonButton5.TabIndex = 159;
+            this.kryptonButton5.Values.Text = "Utilise as Base &Colour";
+            // 
+            // kryptonButton4
+            // 
+            this.kryptonButton4.AutoSize = true;
+            this.kryptonButton4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.kryptonButton4.Location = new System.Drawing.Point(12, 8);
+            this.kryptonButton4.Name = "kryptonButton4";
+            this.kryptonButton4.Size = new System.Drawing.Size(161, 25);
+            this.kryptonButton4.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonButton4.TabIndex = 158;
+            this.kryptonButton4.Values.Text = "Save &Selected Colour";
             // 
             // kbtnOk
             // 
@@ -269,248 +317,13 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kryptonPanel1.Controls.Add(this.pbxColourPreview);
             this.kryptonPanel1.Controls.Add(this.kryptonListBox1);
             this.kryptonPanel1.Controls.Add(this.knudBaseBlue);
-            this.kryptonPanel1.Controls.Add(this.klblBaseRed);
-            this.kryptonPanel1.Controls.Add(this.klblBaseBlue);
             this.kryptonPanel1.Controls.Add(this.knudBaseGreen);
             this.kryptonPanel1.Controls.Add(this.knudBaseRed);
-            this.kryptonPanel1.Controls.Add(this.klblBaseGreen);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel1.Name = "kryptonPanel1";
             this.kryptonPanel1.Size = new System.Drawing.Size(887, 240);
             this.kryptonPanel1.TabIndex = 5;
-            // 
-            // knudBaseBlue
-            // 
-            this.knudBaseBlue.Location = new System.Drawing.Point(611, 206);
-            this.knudBaseBlue.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.knudBaseBlue.Name = "knudBaseBlue";
-            this.knudBaseBlue.Size = new System.Drawing.Size(74, 23);
-            this.knudBaseBlue.StateCommon.Back.Color1 = System.Drawing.Color.Blue;
-            this.knudBaseBlue.StateCommon.Content.Color1 = System.Drawing.Color.White;
-            this.knudBaseBlue.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.knudBaseBlue.StateCommon.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
-            this.knudBaseBlue.TabIndex = 23;
-            // 
-            // knudBaseGreen
-            // 
-            this.knudBaseGreen.Location = new System.Drawing.Point(332, 206);
-            this.knudBaseGreen.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.knudBaseGreen.Name = "knudBaseGreen";
-            this.knudBaseGreen.Size = new System.Drawing.Size(74, 23);
-            this.knudBaseGreen.StateCommon.Back.Color1 = System.Drawing.Color.Green;
-            this.knudBaseGreen.StateCommon.Content.Color1 = System.Drawing.Color.White;
-            this.knudBaseGreen.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.knudBaseGreen.StateCommon.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
-            this.knudBaseGreen.TabIndex = 22;
-            // 
-            // knudBaseRed
-            // 
-            this.knudBaseRed.Location = new System.Drawing.Point(63, 206);
-            this.knudBaseRed.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.knudBaseRed.Name = "knudBaseRed";
-            this.knudBaseRed.Size = new System.Drawing.Size(74, 23);
-            this.knudBaseRed.StateCommon.Back.Color1 = System.Drawing.Color.Red;
-            this.knudBaseRed.StateCommon.Content.Color1 = System.Drawing.Color.White;
-            this.knudBaseRed.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.knudBaseRed.StateCommon.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
-            this.knudBaseRed.TabIndex = 21;
-            // 
-            // klblBaseBlue
-            // 
-            this.klblBaseBlue.Location = new System.Drawing.Point(557, 206);
-            this.klblBaseBlue.Name = "klblBaseBlue";
-            this.klblBaseBlue.RedValue = 255;
-            this.klblBaseBlue.Size = new System.Drawing.Size(48, 21);
-            this.klblBaseBlue.StateCommon.LongText.Color1 = System.Drawing.Color.Blue;
-            this.klblBaseBlue.StateCommon.LongText.Color2 = System.Drawing.Color.Blue;
-            this.klblBaseBlue.StateCommon.LongText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.klblBaseBlue.StateCommon.ShortText.Color1 = System.Drawing.Color.Blue;
-            this.klblBaseBlue.StateCommon.ShortText.Color2 = System.Drawing.Color.Blue;
-            this.klblBaseBlue.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
-            this.klblBaseBlue.TabIndex = 20;
-            this.klblBaseBlue.TextSize = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.klblBaseBlue.Values.Text = "Blue:";
-            // 
-            // klblBaseGreen
-            // 
-            this.klblBaseGreen.Location = new System.Drawing.Point(265, 206);
-            this.klblBaseGreen.Name = "klblBaseGreen";
-            this.klblBaseGreen.RedValue = 255;
-            this.klblBaseGreen.Size = new System.Drawing.Size(61, 21);
-            this.klblBaseGreen.StateCommon.LongText.Color1 = System.Drawing.Color.Green;
-            this.klblBaseGreen.StateCommon.LongText.Color2 = System.Drawing.Color.Green;
-            this.klblBaseGreen.StateCommon.LongText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.klblBaseGreen.StateCommon.ShortText.Color1 = System.Drawing.Color.Green;
-            this.klblBaseGreen.StateCommon.ShortText.Color2 = System.Drawing.Color.Green;
-            this.klblBaseGreen.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
-            this.klblBaseGreen.TabIndex = 19;
-            this.klblBaseGreen.TextSize = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.klblBaseGreen.Values.Text = "Green:";
-            // 
-            // klblBaseRed
-            // 
-            this.klblBaseRed.Location = new System.Drawing.Point(12, 206);
-            this.klblBaseRed.Name = "klblBaseRed";
-            this.klblBaseRed.RedValue = 255;
-            this.klblBaseRed.Size = new System.Drawing.Size(45, 21);
-            this.klblBaseRed.StateCommon.LongText.Color1 = System.Drawing.Color.Red;
-            this.klblBaseRed.StateCommon.LongText.Color2 = System.Drawing.Color.Red;
-            this.klblBaseRed.StateCommon.LongText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.klblBaseRed.StateCommon.ShortText.Color1 = System.Drawing.Color.Red;
-            this.klblBaseRed.StateCommon.ShortText.Color2 = System.Drawing.Color.Red;
-            this.klblBaseRed.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
-            this.klblBaseRed.TabIndex = 18;
-            this.klblBaseRed.TextSize = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.klblBaseRed.Values.Text = "Red:";
-            // 
-            // kryptonListBox1
-            // 
-            this.kryptonListBox1.Location = new System.Drawing.Point(13, 13);
-            this.kryptonListBox1.Name = "kryptonListBox1";
-            this.kryptonListBox1.Size = new System.Drawing.Size(185, 171);
-            this.kryptonListBox1.TabIndex = 24;
-            // 
-            // pbxColourPreview
-            // 
-            this.pbxColourPreview.BackColor = System.Drawing.Color.Transparent;
-            this.pbxColourPreview.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pbxColourPreview.Location = new System.Drawing.Point(204, 13);
-            this.pbxColourPreview.Name = "pbxColourPreview";
-            this.pbxColourPreview.Size = new System.Drawing.Size(671, 112);
-            this.pbxColourPreview.TabIndex = 156;
-            this.pbxColourPreview.TabStop = false;
-            // 
-            // kryptonButton1
-            // 
-            this.kryptonButton1.Location = new System.Drawing.Point(143, 206);
-            this.kryptonButton1.Name = "kryptonButton1";
-            this.kryptonButton1.Size = new System.Drawing.Size(116, 25);
-            this.kryptonButton1.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonButton1.TabIndex = 157;
-            this.kryptonButton1.Values.Text = "Generate &Red";
-            // 
-            // kryptonButton2
-            // 
-            this.kryptonButton2.Location = new System.Drawing.Point(412, 206);
-            this.kryptonButton2.Name = "kryptonButton2";
-            this.kryptonButton2.Size = new System.Drawing.Size(139, 25);
-            this.kryptonButton2.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonButton2.TabIndex = 158;
-            this.kryptonButton2.Values.Text = "Generate Gr&een";
-            // 
-            // kryptonButton3
-            // 
-            this.kryptonButton3.Location = new System.Drawing.Point(691, 206);
-            this.kryptonButton3.Name = "kryptonButton3";
-            this.kryptonButton3.Size = new System.Drawing.Size(124, 25);
-            this.kryptonButton3.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonButton3.TabIndex = 159;
-            this.kryptonButton3.Values.Text = "Generate &Blue";
-            // 
-            // kryptonLabelExtended1
-            // 
-            this.kryptonLabelExtended1.Image = null;
-            this.kryptonLabelExtended1.Location = new System.Drawing.Point(205, 146);
-            this.kryptonLabelExtended1.LongTextTypeface = null;
-            this.kryptonLabelExtended1.Name = "kryptonLabelExtended1";
-            this.kryptonLabelExtended1.ShortTextTypeface = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonLabelExtended1.Size = new System.Drawing.Size(141, 21);
-            this.kryptonLabelExtended1.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonLabelExtended1.StateCommonTextColourOne = System.Drawing.Color.Empty;
-            this.kryptonLabelExtended1.StateCommonTextColourTwo = System.Drawing.Color.Empty;
-            this.kryptonLabelExtended1.StateDisabled.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonLabelExtended1.StateDisabledTextColourOne = System.Drawing.Color.Empty;
-            this.kryptonLabelExtended1.StateDisabledTextColourTwo = System.Drawing.Color.Empty;
-            this.kryptonLabelExtended1.StateNormal.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonLabelExtended1.StateNormalTextColourOne = System.Drawing.Color.Empty;
-            this.kryptonLabelExtended1.StateNormalTextColourTwo = System.Drawing.Color.Empty;
-            this.kryptonLabelExtended1.TabIndex = 160;
-            this.kryptonLabelExtended1.Values.Text = "Standard Colours:";
-            // 
-            // kryptonComboBoxExtended1
-            // 
-            this.kryptonComboBoxExtended1.ComboBoxContentTypeface = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonComboBoxExtended1.ComboBoxItemContentLongTextTypeface = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonComboBoxExtended1.ComboBoxItemContentShortTextTypeface = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonComboBoxExtended1.DropDownWidth = 191;
-            this.kryptonComboBoxExtended1.Image = null;
-            this.kryptonComboBoxExtended1.IntegralHeight = false;
-            this.kryptonComboBoxExtended1.Location = new System.Drawing.Point(352, 146);
-            this.kryptonComboBoxExtended1.Name = "kryptonComboBoxExtended1";
-            this.kryptonComboBoxExtended1.Size = new System.Drawing.Size(191, 22);
-            this.kryptonComboBoxExtended1.StateActive.ComboBox.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonComboBoxExtended1.StateActive.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
-            this.kryptonComboBoxExtended1.StateActiveComboBoxBackColour = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended1.StateActiveComboBoxBorderColourOne = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended1.StateActiveComboBoxBorderColourTwo = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended1.StateActiveComboBoxContentColour = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended1.StateCommon.ComboBox.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonComboBoxExtended1.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
-            this.kryptonComboBoxExtended1.StateCommon.Item.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonComboBoxExtended1.StateCommon.Item.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonComboBoxExtended1.StateCommonComboBoxBackColour = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended1.StateCommonComboBoxBorderColourOne = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended1.StateCommonComboBoxBorderColourTwo = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended1.StateCommonComboBoxContentColour = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended1.StateCommonComboBoxDropBackColourOne = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended1.StateCommonComboBoxDropBackColourTwo = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended1.StateCommonComboBoxItemBackColourOne = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended1.StateCommonComboBoxItemBackColourTwo = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended1.StateCommonComboBoxItemContentLongTextColourOne = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended1.StateCommonComboBoxItemContentLongTextColourTwo = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended1.StateCommonComboBoxItemContentShortTextColourOne = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended1.StateCommonComboBoxItemContentShortTextColourTwo = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended1.StateDisabled.ComboBox.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonComboBoxExtended1.StateDisabled.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
-            this.kryptonComboBoxExtended1.StateDisabled.Item.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonComboBoxExtended1.StateDisabled.Item.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonComboBoxExtended1.StateDisabledComboBoxBackColour = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended1.StateDisabledComboBoxBorderColourOne = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended1.StateDisabledComboBoxBorderColourTwo = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended1.StateDisabledComboBoxContentColour = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended1.StateDisabledComboBoxItemBackColourOne = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended1.StateDisabledComboBoxItemBackColourTwo = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended1.StateDisabledComboBoxItemContentLongTextColourOne = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended1.StateDisabledComboBoxItemContentLongTextColourTwo = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended1.StateDisabledComboBoxItemContentShortTextColourOne = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended1.StateDisabledComboBoxItemContentShortTextColourTwo = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended1.StateNormal.ComboBox.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonComboBoxExtended1.StateNormal.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
-            this.kryptonComboBoxExtended1.StateNormal.Item.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonComboBoxExtended1.StateNormal.Item.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonComboBoxExtended1.StateNormalComboBoxBackColour = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended1.StateNormalComboBoxBorderColourOne = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended1.StateNormalComboBoxBorderColourTwo = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended1.StateNormalComboBoxContentColour = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended1.StateNormalComboBoxItemBackColourOne = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended1.StateNormalComboBoxItemBackColourTwo = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended1.StateNormalComboBoxItemContentLongTextColourOne = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended1.StateNormalComboBoxItemContentLongTextColourTwo = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended1.StateNormalComboBoxItemContentShortTextColourOne = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended1.StateNormalComboBoxItemContentShortTextColourTwo = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended1.StateTracking.Item.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonComboBoxExtended1.StateTracking.Item.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonComboBoxExtended1.StateTrackingComboBoxItemBackColourOne = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended1.StateTrackingComboBoxItemBackColourTwo = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended1.StateTrackingComboBoxItemContentLongTextColourOne = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended1.StateTrackingComboBoxItemContentLongTextColourTwo = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended1.StateTrackingComboBoxItemContentShortTextColourOne = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended1.StateTrackingComboBoxItemContentShortTextColourTwo = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended1.TabIndex = 161;
-            this.kryptonComboBoxExtended1.Text = "kryptonComboBoxExtended1";
             // 
             // kryptonComboBoxExtended2
             // 
@@ -604,59 +417,190 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kryptonLabelExtended2.TabIndex = 162;
             this.kryptonLabelExtended2.Values.Text = "System Colours:";
             // 
-            // kryptonButton4
+            // kryptonComboBoxExtended1
             // 
-            this.kryptonButton4.AutoSize = true;
-            this.kryptonButton4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.kryptonButton4.Location = new System.Drawing.Point(12, 8);
-            this.kryptonButton4.Name = "kryptonButton4";
-            this.kryptonButton4.Size = new System.Drawing.Size(161, 25);
-            this.kryptonButton4.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonButton4.TabIndex = 158;
-            this.kryptonButton4.Values.Text = "Save &Selected Colour";
+            this.kryptonComboBoxExtended1.ComboBoxContentTypeface = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonComboBoxExtended1.ComboBoxItemContentLongTextTypeface = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonComboBoxExtended1.ComboBoxItemContentShortTextTypeface = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonComboBoxExtended1.DropDownWidth = 191;
+            this.kryptonComboBoxExtended1.Image = null;
+            this.kryptonComboBoxExtended1.IntegralHeight = false;
+            this.kryptonComboBoxExtended1.Location = new System.Drawing.Point(352, 146);
+            this.kryptonComboBoxExtended1.Name = "kryptonComboBoxExtended1";
+            this.kryptonComboBoxExtended1.Size = new System.Drawing.Size(191, 22);
+            this.kryptonComboBoxExtended1.StateActive.ComboBox.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonComboBoxExtended1.StateActive.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
+            this.kryptonComboBoxExtended1.StateActiveComboBoxBackColour = System.Drawing.Color.Empty;
+            this.kryptonComboBoxExtended1.StateActiveComboBoxBorderColourOne = System.Drawing.Color.Empty;
+            this.kryptonComboBoxExtended1.StateActiveComboBoxBorderColourTwo = System.Drawing.Color.Empty;
+            this.kryptonComboBoxExtended1.StateActiveComboBoxContentColour = System.Drawing.Color.Empty;
+            this.kryptonComboBoxExtended1.StateCommon.ComboBox.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonComboBoxExtended1.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
+            this.kryptonComboBoxExtended1.StateCommon.Item.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonComboBoxExtended1.StateCommon.Item.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonComboBoxExtended1.StateCommonComboBoxBackColour = System.Drawing.Color.Empty;
+            this.kryptonComboBoxExtended1.StateCommonComboBoxBorderColourOne = System.Drawing.Color.Empty;
+            this.kryptonComboBoxExtended1.StateCommonComboBoxBorderColourTwo = System.Drawing.Color.Empty;
+            this.kryptonComboBoxExtended1.StateCommonComboBoxContentColour = System.Drawing.Color.Empty;
+            this.kryptonComboBoxExtended1.StateCommonComboBoxDropBackColourOne = System.Drawing.Color.Empty;
+            this.kryptonComboBoxExtended1.StateCommonComboBoxDropBackColourTwo = System.Drawing.Color.Empty;
+            this.kryptonComboBoxExtended1.StateCommonComboBoxItemBackColourOne = System.Drawing.Color.Empty;
+            this.kryptonComboBoxExtended1.StateCommonComboBoxItemBackColourTwo = System.Drawing.Color.Empty;
+            this.kryptonComboBoxExtended1.StateCommonComboBoxItemContentLongTextColourOne = System.Drawing.Color.Empty;
+            this.kryptonComboBoxExtended1.StateCommonComboBoxItemContentLongTextColourTwo = System.Drawing.Color.Empty;
+            this.kryptonComboBoxExtended1.StateCommonComboBoxItemContentShortTextColourOne = System.Drawing.Color.Empty;
+            this.kryptonComboBoxExtended1.StateCommonComboBoxItemContentShortTextColourTwo = System.Drawing.Color.Empty;
+            this.kryptonComboBoxExtended1.StateDisabled.ComboBox.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonComboBoxExtended1.StateDisabled.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
+            this.kryptonComboBoxExtended1.StateDisabled.Item.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonComboBoxExtended1.StateDisabled.Item.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonComboBoxExtended1.StateDisabledComboBoxBackColour = System.Drawing.Color.Empty;
+            this.kryptonComboBoxExtended1.StateDisabledComboBoxBorderColourOne = System.Drawing.Color.Empty;
+            this.kryptonComboBoxExtended1.StateDisabledComboBoxBorderColourTwo = System.Drawing.Color.Empty;
+            this.kryptonComboBoxExtended1.StateDisabledComboBoxContentColour = System.Drawing.Color.Empty;
+            this.kryptonComboBoxExtended1.StateDisabledComboBoxItemBackColourOne = System.Drawing.Color.Empty;
+            this.kryptonComboBoxExtended1.StateDisabledComboBoxItemBackColourTwo = System.Drawing.Color.Empty;
+            this.kryptonComboBoxExtended1.StateDisabledComboBoxItemContentLongTextColourOne = System.Drawing.Color.Empty;
+            this.kryptonComboBoxExtended1.StateDisabledComboBoxItemContentLongTextColourTwo = System.Drawing.Color.Empty;
+            this.kryptonComboBoxExtended1.StateDisabledComboBoxItemContentShortTextColourOne = System.Drawing.Color.Empty;
+            this.kryptonComboBoxExtended1.StateDisabledComboBoxItemContentShortTextColourTwo = System.Drawing.Color.Empty;
+            this.kryptonComboBoxExtended1.StateNormal.ComboBox.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonComboBoxExtended1.StateNormal.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
+            this.kryptonComboBoxExtended1.StateNormal.Item.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonComboBoxExtended1.StateNormal.Item.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonComboBoxExtended1.StateNormalComboBoxBackColour = System.Drawing.Color.Empty;
+            this.kryptonComboBoxExtended1.StateNormalComboBoxBorderColourOne = System.Drawing.Color.Empty;
+            this.kryptonComboBoxExtended1.StateNormalComboBoxBorderColourTwo = System.Drawing.Color.Empty;
+            this.kryptonComboBoxExtended1.StateNormalComboBoxContentColour = System.Drawing.Color.Empty;
+            this.kryptonComboBoxExtended1.StateNormalComboBoxItemBackColourOne = System.Drawing.Color.Empty;
+            this.kryptonComboBoxExtended1.StateNormalComboBoxItemBackColourTwo = System.Drawing.Color.Empty;
+            this.kryptonComboBoxExtended1.StateNormalComboBoxItemContentLongTextColourOne = System.Drawing.Color.Empty;
+            this.kryptonComboBoxExtended1.StateNormalComboBoxItemContentLongTextColourTwo = System.Drawing.Color.Empty;
+            this.kryptonComboBoxExtended1.StateNormalComboBoxItemContentShortTextColourOne = System.Drawing.Color.Empty;
+            this.kryptonComboBoxExtended1.StateNormalComboBoxItemContentShortTextColourTwo = System.Drawing.Color.Empty;
+            this.kryptonComboBoxExtended1.StateTracking.Item.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonComboBoxExtended1.StateTracking.Item.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonComboBoxExtended1.StateTrackingComboBoxItemBackColourOne = System.Drawing.Color.Empty;
+            this.kryptonComboBoxExtended1.StateTrackingComboBoxItemBackColourTwo = System.Drawing.Color.Empty;
+            this.kryptonComboBoxExtended1.StateTrackingComboBoxItemContentLongTextColourOne = System.Drawing.Color.Empty;
+            this.kryptonComboBoxExtended1.StateTrackingComboBoxItemContentLongTextColourTwo = System.Drawing.Color.Empty;
+            this.kryptonComboBoxExtended1.StateTrackingComboBoxItemContentShortTextColourOne = System.Drawing.Color.Empty;
+            this.kryptonComboBoxExtended1.StateTrackingComboBoxItemContentShortTextColourTwo = System.Drawing.Color.Empty;
+            this.kryptonComboBoxExtended1.TabIndex = 161;
+            this.kryptonComboBoxExtended1.Text = "kryptonComboBoxExtended1";
             // 
-            // kryptonButton5
+            // kryptonLabelExtended1
             // 
-            this.kryptonButton5.AutoSize = true;
-            this.kryptonButton5.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.kryptonButton5.Location = new System.Drawing.Point(179, 8);
-            this.kryptonButton5.Name = "kryptonButton5";
-            this.kryptonButton5.Size = new System.Drawing.Size(163, 25);
-            this.kryptonButton5.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonButton5.TabIndex = 159;
-            this.kryptonButton5.Values.Text = "Utilise as Base &Colour";
+            this.kryptonLabelExtended1.Image = null;
+            this.kryptonLabelExtended1.Location = new System.Drawing.Point(205, 146);
+            this.kryptonLabelExtended1.LongTextTypeface = null;
+            this.kryptonLabelExtended1.Name = "kryptonLabelExtended1";
+            this.kryptonLabelExtended1.ShortTextTypeface = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabelExtended1.Size = new System.Drawing.Size(141, 21);
+            this.kryptonLabelExtended1.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabelExtended1.StateCommonTextColourOne = System.Drawing.Color.Empty;
+            this.kryptonLabelExtended1.StateCommonTextColourTwo = System.Drawing.Color.Empty;
+            this.kryptonLabelExtended1.StateDisabled.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabelExtended1.StateDisabledTextColourOne = System.Drawing.Color.Empty;
+            this.kryptonLabelExtended1.StateDisabledTextColourTwo = System.Drawing.Color.Empty;
+            this.kryptonLabelExtended1.StateNormal.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabelExtended1.StateNormalTextColourOne = System.Drawing.Color.Empty;
+            this.kryptonLabelExtended1.StateNormalTextColourTwo = System.Drawing.Color.Empty;
+            this.kryptonLabelExtended1.TabIndex = 160;
+            this.kryptonLabelExtended1.Values.Text = "Standard Colours:";
             // 
-            // kryptonLabelExtended3
+            // kryptonButton3
             // 
-            this.kryptonLabelExtended3.Image = null;
-            this.kryptonLabelExtended3.Location = new System.Drawing.Point(348, 11);
-            this.kryptonLabelExtended3.LongTextTypeface = null;
-            this.kryptonLabelExtended3.Name = "kryptonLabelExtended3";
-            this.kryptonLabelExtended3.ShortTextTypeface = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonLabelExtended3.Size = new System.Drawing.Size(161, 21);
-            this.kryptonLabelExtended3.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonLabelExtended3.StateCommonTextColourOne = System.Drawing.Color.Empty;
-            this.kryptonLabelExtended3.StateCommonTextColourTwo = System.Drawing.Color.Empty;
-            this.kryptonLabelExtended3.StateDisabled.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonLabelExtended3.StateDisabledTextColourOne = System.Drawing.Color.Empty;
-            this.kryptonLabelExtended3.StateDisabledTextColourTwo = System.Drawing.Color.Empty;
-            this.kryptonLabelExtended3.StateNormal.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonLabelExtended3.StateNormalTextColourOne = System.Drawing.Color.Empty;
-            this.kryptonLabelExtended3.StateNormalTextColourTwo = System.Drawing.Color.Empty;
-            this.kryptonLabelExtended3.TabIndex = 161;
-            this.kryptonLabelExtended3.Values.Text = "Hexadecimal Colour:";
+            this.kryptonButton3.Location = new System.Drawing.Point(691, 206);
+            this.kryptonButton3.Name = "kryptonButton3";
+            this.kryptonButton3.Size = new System.Drawing.Size(124, 25);
+            this.kryptonButton3.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonButton3.TabIndex = 159;
+            this.kryptonButton3.Values.Text = "Generate &Blue";
             // 
-            // colourHexadecimalTextBox1
+            // kryptonButton2
             // 
-            this.colourHexadecimalTextBox1.Colour = System.Drawing.Color.Empty;
-            this.colourHexadecimalTextBox1.Hint = "000000";
-            this.colourHexadecimalTextBox1.Location = new System.Drawing.Point(516, 9);
-            this.colourHexadecimalTextBox1.MaxLength = 6;
-            this.colourHexadecimalTextBox1.Name = "colourHexadecimalTextBox1";
-            this.colourHexadecimalTextBox1.Size = new System.Drawing.Size(100, 24);
-            this.colourHexadecimalTextBox1.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.colourHexadecimalTextBox1.StateCommon.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.colourHexadecimalTextBox1.TabIndex = 162;
+            this.kryptonButton2.Location = new System.Drawing.Point(412, 206);
+            this.kryptonButton2.Name = "kryptonButton2";
+            this.kryptonButton2.Size = new System.Drawing.Size(139, 25);
+            this.kryptonButton2.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonButton2.TabIndex = 158;
+            this.kryptonButton2.Values.Text = "Generate Gr&een";
+            // 
+            // kryptonButton1
+            // 
+            this.kryptonButton1.Location = new System.Drawing.Point(143, 206);
+            this.kryptonButton1.Name = "kryptonButton1";
+            this.kryptonButton1.Size = new System.Drawing.Size(116, 25);
+            this.kryptonButton1.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonButton1.TabIndex = 157;
+            this.kryptonButton1.Values.Text = "Generate &Red";
+            // 
+            // pbxColourPreview
+            // 
+            this.pbxColourPreview.BackColor = System.Drawing.Color.Transparent;
+            this.pbxColourPreview.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pbxColourPreview.Location = new System.Drawing.Point(204, 13);
+            this.pbxColourPreview.Name = "pbxColourPreview";
+            this.pbxColourPreview.Size = new System.Drawing.Size(671, 112);
+            this.pbxColourPreview.TabIndex = 156;
+            this.pbxColourPreview.TabStop = false;
+            // 
+            // kryptonListBox1
+            // 
+            this.kryptonListBox1.Location = new System.Drawing.Point(13, 13);
+            this.kryptonListBox1.Name = "kryptonListBox1";
+            this.kryptonListBox1.Size = new System.Drawing.Size(185, 171);
+            this.kryptonListBox1.StateCommon.Item.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonListBox1.TabIndex = 24;
+            // 
+            // knudBaseBlue
+            // 
+            this.knudBaseBlue.Location = new System.Drawing.Point(611, 206);
+            this.knudBaseBlue.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.knudBaseBlue.Name = "knudBaseBlue";
+            this.knudBaseBlue.Size = new System.Drawing.Size(74, 23);
+            this.knudBaseBlue.StateCommon.Back.Color1 = System.Drawing.Color.Blue;
+            this.knudBaseBlue.StateCommon.Content.Color1 = System.Drawing.Color.White;
+            this.knudBaseBlue.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.knudBaseBlue.StateCommon.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
+            this.knudBaseBlue.TabIndex = 23;
+            // 
+            // knudBaseGreen
+            // 
+            this.knudBaseGreen.Location = new System.Drawing.Point(332, 206);
+            this.knudBaseGreen.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.knudBaseGreen.Name = "knudBaseGreen";
+            this.knudBaseGreen.Size = new System.Drawing.Size(74, 23);
+            this.knudBaseGreen.StateCommon.Back.Color1 = System.Drawing.Color.Green;
+            this.knudBaseGreen.StateCommon.Content.Color1 = System.Drawing.Color.White;
+            this.knudBaseGreen.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.knudBaseGreen.StateCommon.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
+            this.knudBaseGreen.TabIndex = 22;
+            // 
+            // knudBaseRed
+            // 
+            this.knudBaseRed.Location = new System.Drawing.Point(63, 206);
+            this.knudBaseRed.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.knudBaseRed.Name = "knudBaseRed";
+            this.knudBaseRed.Size = new System.Drawing.Size(74, 23);
+            this.knudBaseRed.StateCommon.Back.Color1 = System.Drawing.Color.Red;
+            this.knudBaseRed.StateCommon.Content.Color1 = System.Drawing.Color.White;
+            this.knudBaseRed.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.knudBaseRed.StateCommon.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
+            this.knudBaseRed.TabIndex = 21;
             // 
             // CustomPaletteColours
             // 
@@ -664,16 +608,22 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.Controls.Add(this.kryptonPanel1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.kpnlButtons);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "CustomPaletteColours";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
+            this.Text = "Custom Palette Colours";
             ((System.ComponentModel.ISupportInitialize)(this.kpnlButtons)).EndInit();
             this.kpnlButtons.ResumeLayout(false);
             this.kpnlButtons.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxColourPreview)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonComboBoxExtended1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonComboBoxExtended2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonComboBoxExtended1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxColourPreview)).EndInit();
             this.ResumeLayout(false);
 
         }

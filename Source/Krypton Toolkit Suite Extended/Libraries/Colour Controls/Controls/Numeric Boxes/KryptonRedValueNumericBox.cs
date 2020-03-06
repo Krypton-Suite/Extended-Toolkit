@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Extended.Colour.Controls
 {
@@ -12,6 +13,20 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
         private Font DEFAULT_TYPEFACE = new Font("Segoe UI", 11f);
         #endregion
 
+        #region Variables
+        private bool _useAccessibleUI;
+
+        private Color _backColour, _foreColour;
+
+        private Font _typeface;
+        #endregion
+
+        #region Properties
+        public bool UseAccessibleUI { get => _useAccessibleUI; set { _useAccessibleUI = value; Invalidate(); } }
+
+        public Font Typeface { get => _typeface; set { _typeface = value; Invalidate(); } }
+        #endregion
+
         #region Constructor
         public KryptonRedValueNumericBox()
         {
@@ -21,11 +36,39 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
 
             Value = DEFAULT_VALUE;
 
-            StateCommon.Back.Color1 = DEFAULT_BACK_COLOUR;
+            UseAccessibleUI = false;
 
-            StateCommon.Content.Color1 = DEFAULT_FORECOLOUR;
+            StateCommon.Content.Font = Typeface;
+        }
+        #endregion
 
-            StateCommon.Content.Font = DEFAULT_TYPEFACE;
+        #region Methods
+        private void AlterAppearance(bool useAccessibleUI)
+        {
+            if (useAccessibleUI)
+            {
+                StateCommon.Back.Color1 = Color.Empty;
+
+                StateCommon.Content.Color1 = Color.Empty;
+            }
+            else
+            {
+                StateCommon.Back.Color1 = Color.Red;
+
+                StateCommon.Content.Color1 = Color.White;
+            }
+        }
+        private void AlterTypeface(Font typeface) => StateCommon.Content.Font = typeface;
+        #endregion
+
+        #region Overrides
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            AlterAppearance(_useAccessibleUI);
+
+            AlterTypeface(_typeface);
+
+            base.OnPaint(e);
         }
         #endregion
     }

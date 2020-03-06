@@ -38,10 +38,8 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             this.klblBlueValue = new KryptonBlueValueLabel();
             this.kryptonBlueValueLabel1 = new KryptonBlueValueLabel();
-            this.klblGreenValue = new KryptonGreenValueLabel();
             this.kknbBlue = new KryptonKnobControl();
             this.kknbGreen = new KryptonKnobControl();
-            this.kryptonGreenValueLabel1 = new KryptonGreenValueLabel();
             this.kknbRed = new KryptonKnobControl();
             this.klblRedValue = new KryptonRedValueLabel();
             this.kryptonRedValueLabel1 = new KryptonRedValueLabel();
@@ -151,7 +149,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             | System.Windows.Forms.AnchorStyles.Right)));
             this.klblBlueValue.Location = new System.Drawing.Point(238, 366);
             this.klblBlueValue.Name = "klblBlueValue";
-            this.klblBlueValue.RedValue = 255;
+            this.klblBlueValue.BlueValue = 255;
             this.klblBlueValue.Size = new System.Drawing.Size(33, 26);
             this.klblBlueValue.StateCommon.LongText.Color1 = System.Drawing.Color.Blue;
             this.klblBlueValue.StateCommon.LongText.Color2 = System.Drawing.Color.Blue;
@@ -160,7 +158,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.klblBlueValue.StateCommon.ShortText.Color2 = System.Drawing.Color.Blue;
             this.klblBlueValue.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.klblBlueValue.TabIndex = 28;
-            this.klblBlueValue.TextSize = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.klblBlueValue.Typeface = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.klblBlueValue.Values.Text = "{0}";
             // 
             // kryptonBlueValueLabel1
@@ -169,7 +167,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             | System.Windows.Forms.AnchorStyles.Right)));
             this.kryptonBlueValueLabel1.Location = new System.Drawing.Point(42, 366);
             this.kryptonBlueValueLabel1.Name = "kryptonBlueValueLabel1";
-            this.kryptonBlueValueLabel1.RedValue = 255;
+            this.kryptonBlueValueLabel1.BlueValue = 255;
             this.kryptonBlueValueLabel1.Size = new System.Drawing.Size(46, 26);
             this.kryptonBlueValueLabel1.StateCommon.LongText.Color1 = System.Drawing.Color.Blue;
             this.kryptonBlueValueLabel1.StateCommon.LongText.Color2 = System.Drawing.Color.Blue;
@@ -178,26 +176,8 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.kryptonBlueValueLabel1.StateCommon.ShortText.Color2 = System.Drawing.Color.Blue;
             this.kryptonBlueValueLabel1.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.kryptonBlueValueLabel1.TabIndex = 27;
-            this.kryptonBlueValueLabel1.TextSize = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.kryptonBlueValueLabel1.Typeface = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.kryptonBlueValueLabel1.Values.Text = "Blue";
-            // 
-            // klblGreenValue
-            // 
-            this.klblGreenValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.klblGreenValue.Location = new System.Drawing.Point(238, 211);
-            this.klblGreenValue.Name = "klblGreenValue";
-            this.klblGreenValue.RedValue = 255;
-            this.klblGreenValue.Size = new System.Drawing.Size(33, 26);
-            this.klblGreenValue.StateCommon.LongText.Color1 = System.Drawing.Color.Green;
-            this.klblGreenValue.StateCommon.LongText.Color2 = System.Drawing.Color.Green;
-            this.klblGreenValue.StateCommon.LongText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.klblGreenValue.StateCommon.ShortText.Color1 = System.Drawing.Color.Green;
-            this.klblGreenValue.StateCommon.ShortText.Color2 = System.Drawing.Color.Green;
-            this.klblGreenValue.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.klblGreenValue.TabIndex = 26;
-            this.klblGreenValue.TextSize = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.klblGreenValue.Values.Text = "{0}";
             // 
             // kknbBlue
             // 
@@ -238,24 +218,6 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.kknbGreen.TabIndex = 21;
             this.kknbGreen.Value = 0;
             // 
-            // kryptonGreenValueLabel1
-            // 
-            this.kryptonGreenValueLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.kryptonGreenValueLabel1.Location = new System.Drawing.Point(30, 211);
-            this.kryptonGreenValueLabel1.Name = "kryptonGreenValueLabel1";
-            this.kryptonGreenValueLabel1.RedValue = 255;
-            this.kryptonGreenValueLabel1.Size = new System.Drawing.Size(58, 26);
-            this.kryptonGreenValueLabel1.StateCommon.LongText.Color1 = System.Drawing.Color.Green;
-            this.kryptonGreenValueLabel1.StateCommon.LongText.Color2 = System.Drawing.Color.Green;
-            this.kryptonGreenValueLabel1.StateCommon.LongText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.kryptonGreenValueLabel1.StateCommon.ShortText.Color1 = System.Drawing.Color.Green;
-            this.kryptonGreenValueLabel1.StateCommon.ShortText.Color2 = System.Drawing.Color.Green;
-            this.kryptonGreenValueLabel1.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.kryptonGreenValueLabel1.TabIndex = 25;
-            this.kryptonGreenValueLabel1.TextSize = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.kryptonGreenValueLabel1.Values.Text = "Green";
-            // 
             // kknbRed
             // 
             this.kknbRed.BackColor = System.Drawing.Color.Transparent;
@@ -290,7 +252,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.klblRedValue.StateCommon.ShortText.Color2 = System.Drawing.Color.Red;
             this.klblRedValue.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.klblRedValue.TabIndex = 24;
-            this.klblRedValue.TextSize = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.klblRedValue.Typeface = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.klblRedValue.Values.Text = "{0}";
             // 
             // kryptonRedValueLabel1
@@ -308,7 +270,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.kryptonRedValueLabel1.StateCommon.ShortText.Color2 = System.Drawing.Color.Red;
             this.kryptonRedValueLabel1.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.kryptonRedValueLabel1.TabIndex = 23;
-            this.kryptonRedValueLabel1.TextSize = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.kryptonRedValueLabel1.Typeface = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.kryptonRedValueLabel1.Values.Text = "Red";
             // 
             // kryptonPanelExtended1

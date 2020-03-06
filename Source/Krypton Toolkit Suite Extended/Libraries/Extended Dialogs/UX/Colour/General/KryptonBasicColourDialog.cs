@@ -12,13 +12,13 @@ namespace Krypton.Toolkit.Extended.Dialogs
         private KryptonOKDialogButton kbtnOk;
         private KryptonCancelDialogButton kbtnCancel;
         private KryptonPanel kryptonPanel1;
-        private Colour.Controls.KryptonGreenValueLabel klblGreenValue;
         private Colour.Controls.KryptonBlueValueLabel klblBlueValue;
         private Colour.Controls.KryptonRedValueLabel klblRedValue;
         private Base.CircularPictureBox cpbxColourPreview;
         private Colour.Controls.ColourWheelControl cwColourPicker;
         private System.Windows.Forms.Panel panel1;
         private Colour.Controls.ColourHexadecimalTextBox txtHexColour;
+        private Colour.Controls.KryptonGreenValueLabel kryptonGreenValueLabel1;
         private KryptonPanel kpnlButtons;
 
         private void InitializeComponent()
@@ -30,12 +30,12 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kbtnOk = new Krypton.Toolkit.Extended.Dialogs.KryptonOKDialogButton();
             this.kbtnCancel = new Krypton.Toolkit.Extended.Dialogs.KryptonCancelDialogButton();
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
-            this.klblGreenValue = new Krypton.Toolkit.Extended.Colour.Controls.KryptonGreenValueLabel();
             this.klblBlueValue = new Krypton.Toolkit.Extended.Colour.Controls.KryptonBlueValueLabel();
             this.klblRedValue = new Krypton.Toolkit.Extended.Colour.Controls.KryptonRedValueLabel();
             this.cpbxColourPreview = new Krypton.Toolkit.Extended.Base.CircularPictureBox();
             this.cwColourPicker = new Krypton.Toolkit.Extended.Colour.Controls.ColourWheelControl();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.kryptonGreenValueLabel1 = new Krypton.Toolkit.Extended.Colour.Controls.KryptonGreenValueLabel();
             ((System.ComponentModel.ISupportInitialize)(this.kpnlButtons)).BeginInit();
             this.kpnlButtons.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
@@ -72,14 +72,17 @@ namespace Krypton.Toolkit.Extended.Dialogs
             // 
             this.kryptonAlphaValueLabel1.AlphaValue = 255;
             this.kryptonAlphaValueLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.kryptonAlphaValueLabel1.Location = new System.Drawing.Point(12, 9);
+            this.kryptonAlphaValueLabel1.ExtraText = "Alpha Value";
+            this.kryptonAlphaValueLabel1.Location = new System.Drawing.Point(12, 4);
             this.kryptonAlphaValueLabel1.Name = "kryptonAlphaValueLabel1";
-            this.kryptonAlphaValueLabel1.Size = new System.Drawing.Size(154, 21);
+            this.kryptonAlphaValueLabel1.ShowColon = false;
+            this.kryptonAlphaValueLabel1.ShowCurrentColourValue = false;
+            this.kryptonAlphaValueLabel1.Size = new System.Drawing.Size(110, 26);
             this.kryptonAlphaValueLabel1.StateCommon.LongText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.kryptonAlphaValueLabel1.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
+            this.kryptonAlphaValueLabel1.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.kryptonAlphaValueLabel1.TabIndex = 3;
-            this.kryptonAlphaValueLabel1.TextSize = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.kryptonAlphaValueLabel1.Values.Text = "Hexadecimal Value:";
+            this.kryptonAlphaValueLabel1.Typeface = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.kryptonAlphaValueLabel1.Values.Text = "Alpha Value:";
             // 
             // kbtnOk
             // 
@@ -251,7 +254,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             // 
             // kryptonPanel1
             // 
-            this.kryptonPanel1.Controls.Add(this.klblGreenValue);
+            this.kryptonPanel1.Controls.Add(this.kryptonGreenValueLabel1);
             this.kryptonPanel1.Controls.Add(this.klblBlueValue);
             this.kryptonPanel1.Controls.Add(this.klblRedValue);
             this.kryptonPanel1.Controls.Add(this.cpbxColourPreview);
@@ -262,52 +265,44 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kryptonPanel1.Size = new System.Drawing.Size(506, 200);
             this.kryptonPanel1.TabIndex = 1;
             // 
-            // klblGreenValue
-            // 
-            this.klblGreenValue.Location = new System.Drawing.Point(209, 127);
-            this.klblGreenValue.Name = "klblGreenValue";
-            this.klblGreenValue.RedValue = 255;
-            this.klblGreenValue.Size = new System.Drawing.Size(91, 21);
-            this.klblGreenValue.StateCommon.LongText.Color1 = System.Drawing.Color.Green;
-            this.klblGreenValue.StateCommon.LongText.Color2 = System.Drawing.Color.Green;
-            this.klblGreenValue.StateCommon.LongText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.klblGreenValue.StateCommon.ShortText.Color1 = System.Drawing.Color.Green;
-            this.klblGreenValue.StateCommon.ShortText.Color2 = System.Drawing.Color.Green;
-            this.klblGreenValue.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
-            this.klblGreenValue.TabIndex = 4;
-            this.klblGreenValue.TextSize = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.klblGreenValue.Values.Text = "Green: 255";
-            // 
             // klblBlueValue
             // 
-            this.klblBlueValue.Location = new System.Drawing.Point(212, 88);
+            this.klblBlueValue.BlueValue = 255;
+            this.klblBlueValue.ExtraText = "Blue";
+            this.klblBlueValue.Location = new System.Drawing.Point(212, 111);
             this.klblBlueValue.Name = "klblBlueValue";
-            this.klblBlueValue.RedValue = 255;
+            this.klblBlueValue.ShowColon = false;
+            this.klblBlueValue.ShowCurrentColourValue = true;
             this.klblBlueValue.Size = new System.Drawing.Size(79, 21);
             this.klblBlueValue.StateCommon.LongText.Color1 = System.Drawing.Color.Blue;
             this.klblBlueValue.StateCommon.LongText.Color2 = System.Drawing.Color.Blue;
-            this.klblBlueValue.StateCommon.LongText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.klblBlueValue.StateCommon.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.klblBlueValue.StateCommon.ShortText.Color1 = System.Drawing.Color.Blue;
             this.klblBlueValue.StateCommon.ShortText.Color2 = System.Drawing.Color.Blue;
-            this.klblBlueValue.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
+            this.klblBlueValue.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.klblBlueValue.TabIndex = 3;
-            this.klblBlueValue.TextSize = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.klblBlueValue.Typeface = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.klblBlueValue.UseAccessibleUI = false;
             this.klblBlueValue.Values.Text = "Blue: 255";
             // 
             // klblRedValue
             // 
+            this.klblRedValue.ExtraText = "Red";
             this.klblRedValue.Location = new System.Drawing.Point(212, 49);
             this.klblRedValue.Name = "klblRedValue";
             this.klblRedValue.RedValue = 255;
+            this.klblRedValue.ShowColon = false;
+            this.klblRedValue.ShowCurrentColourValue = true;
             this.klblRedValue.Size = new System.Drawing.Size(76, 21);
             this.klblRedValue.StateCommon.LongText.Color1 = System.Drawing.Color.Red;
             this.klblRedValue.StateCommon.LongText.Color2 = System.Drawing.Color.Red;
-            this.klblRedValue.StateCommon.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.klblRedValue.StateCommon.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.klblRedValue.StateCommon.ShortText.Color1 = System.Drawing.Color.Red;
             this.klblRedValue.StateCommon.ShortText.Color2 = System.Drawing.Color.Red;
             this.klblRedValue.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.klblRedValue.TabIndex = 2;
-            this.klblRedValue.TextSize = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.klblRedValue.Typeface = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.klblRedValue.UseAccessibleUI = false;
             this.klblRedValue.Values.Text = "Red: 255";
             // 
             // cpbxColourPreview
@@ -337,6 +332,26 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(506, 3);
             this.panel1.TabIndex = 2;
+            // 
+            // kryptonGreenValueLabel1
+            // 
+            this.kryptonGreenValueLabel1.ExtraText = "Green";
+            this.kryptonGreenValueLabel1.GreenValue = 0;
+            this.kryptonGreenValueLabel1.Location = new System.Drawing.Point(212, 80);
+            this.kryptonGreenValueLabel1.Name = "kryptonGreenValueLabel1";
+            this.kryptonGreenValueLabel1.ShowColon = false;
+            this.kryptonGreenValueLabel1.ShowCurrentColourValue = true;
+            this.kryptonGreenValueLabel1.Size = new System.Drawing.Size(74, 21);
+            this.kryptonGreenValueLabel1.StateCommon.LongText.Color1 = System.Drawing.Color.Green;
+            this.kryptonGreenValueLabel1.StateCommon.LongText.Color2 = System.Drawing.Color.Green;
+            this.kryptonGreenValueLabel1.StateCommon.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonGreenValueLabel1.StateCommon.ShortText.Color1 = System.Drawing.Color.Green;
+            this.kryptonGreenValueLabel1.StateCommon.ShortText.Color2 = System.Drawing.Color.Green;
+            this.kryptonGreenValueLabel1.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonGreenValueLabel1.TabIndex = 3;
+            this.kryptonGreenValueLabel1.Typeface = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonGreenValueLabel1.UseAccessibleUI = false;
+            this.kryptonGreenValueLabel1.Values.Text = "Green: 0";
             // 
             // KryptonBasicColourDialog
             // 
