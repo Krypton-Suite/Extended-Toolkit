@@ -38,6 +38,8 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
         {
             Typeface = new Font("Segoe UI", 12f, FontStyle.Bold);
 
+            BlueValue = 0;
+
             TextColour = Color.Blue;
 
             ExtraText = "Blue Value";

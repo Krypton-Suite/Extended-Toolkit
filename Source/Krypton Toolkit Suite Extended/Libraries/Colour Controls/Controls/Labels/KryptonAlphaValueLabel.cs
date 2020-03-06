@@ -32,7 +32,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
         {
             Typeface = new Font("Segoe UI", 12f, FontStyle.Bold);
 
-            AlphaValue = 255;
+            AlphaValue = 0;
 
             ExtraText = "Alpha Value";
 

@@ -38,7 +38,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
         {
             Typeface = new Font("Segoe UI", 12f, FontStyle.Bold);
 
-            RedValue = 255;
+            RedValue = 0;
 
             TextColour = Color.Red;
 

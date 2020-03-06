@@ -38,6 +38,8 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
         {
             Typeface = new Font("Segoe UI", 12f, FontStyle.Bold);
 
+            GreenValue = 0;
+
             TextColour = Color.Green;
 
             ExtraText = "Green Value";
