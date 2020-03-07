@@ -342,6 +342,7 @@ namespace Krypton.Toolkit.Extended.Base
             this.BackColor = System.Drawing.Color.Transparent;
             this.ImeMode = System.Windows.Forms.ImeMode.On;
             this.Name = "KryptonKnobControlEnhanced";
+            this.Size = new System.Drawing.Size(91, 91);
             this.Resize += new System.EventHandler(this.KnobControl_Resize);
             this.ResumeLayout(false);
 
