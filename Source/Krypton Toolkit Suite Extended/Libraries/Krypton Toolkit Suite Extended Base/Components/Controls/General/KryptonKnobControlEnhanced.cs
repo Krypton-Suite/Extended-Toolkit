@@ -13,8 +13,9 @@ namespace Krypton.Toolkit.Extended.Base
     /// <summary>
     /// Summary description for KnobControl.
     /// </summary>
-    [ToolboxItem(false)]
-    public class KryptonKnobControlEnhanced : System.Windows.Forms.UserControl
+    //[ToolboxItem(false)]
+    [DefaultEvent("ValueChanged"), ToolboxBitmap(typeof(Timer))]
+    public class KryptonKnobControlEnhanced : UserControl
     {
         #region Variables
         /// <summary> 
@@ -170,6 +171,7 @@ namespace Krypton.Toolkit.Extended.Base
             InitializeComponent();
             setDimensions();
 
+            SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.SupportsTransparentBackColor | ControlStyles.ResizeRedraw, true);
 
             // TODO: Add any initialization after the InitForm call
 
@@ -333,12 +335,15 @@ namespace Krypton.Toolkit.Extended.Base
         /// </summary>
         private void InitializeComponent()
         {
+            this.SuspendLayout();
             // 
-            // KnobControl
+            // KryptonKnobControlEnhanced
             // 
+            this.BackColor = System.Drawing.Color.Transparent;
             this.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.Name = "KnobControl";
+            this.Name = "KryptonKnobControlEnhanced";
             this.Resize += new System.EventHandler(this.KnobControl_Resize);
+            this.ResumeLayout(false);
 
         }
         #endregion

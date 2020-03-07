@@ -27,6 +27,7 @@ namespace Krypton.Toolkit.Extended.Base
         private Color _mouseOverColour = Color.FromKnownColor(KnownColor.ControlLightLight);
         private Color _KnobBorderColour = Color.FromKnownColor(KnownColor.ControlDarkDark);
         private Color _KnobBackColour = Color.FromKnownColor(KnownColor.Control);
+        private Color _mouseDownColour;
         private int _Value;
         private bool isKnobRotating = false;
         private Rectangle rKnob;
@@ -134,7 +135,7 @@ namespace Krypton.Toolkit.Extended.Base
             // KryptonKnobControl
             // 
             this.Name = "KryptonKnobControl";
-            this.Size = new System.Drawing.Size(481, 424);
+            this.Size = new System.Drawing.Size(91, 91);
             this.ResumeLayout(false);
 
         }
@@ -329,6 +330,11 @@ namespace Krypton.Toolkit.Extended.Base
                 this.Invalidate();
             }
         }
+
+        [Browsable(true), Category("Appearance-Extended")]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        [Description("Set mouse down Colour of the back of knob control")]
+        public Color MouseDownKnobColour { get => _mouseDownColour; set { _mouseDownColour = value; Invalidate(); } }
         #endregion
 
         #region " Events and sub management "
@@ -410,6 +416,15 @@ namespace Krypton.Toolkit.Extended.Base
                 // Start Rotation of knob
                 this.isKnobRotating = true;
             }
+
+            KnobColour = MouseDownKnobColour;
+        }
+
+        protected override void OnMouseHover(EventArgs e)
+        {
+            KnobColour = MouseOverKnobColour;
+
+            base.OnMouseHover(e);
         }
 
         // ----------------------------------------------------------
@@ -681,6 +696,8 @@ namespace Krypton.Toolkit.Extended.Base
             this.KnobBorderColour = _palette.ColorTable.ToolStripGradientBegin;
             this.ForeColor = _palette.ColorTable.MenuItemText;
             this.KnobBackColour = _palette.ColorTable.MenuStripGradientBegin;
+            MouseOverKnobColour = _palette.ColorTable.ButtonCheckedGradientBegin;
+            MouseDownKnobColour = _palette.ColorTable.ButtonPressedGradientBegin;
         }
         #endregion
 
