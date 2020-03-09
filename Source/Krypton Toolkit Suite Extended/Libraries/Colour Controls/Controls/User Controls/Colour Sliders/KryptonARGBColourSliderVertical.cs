@@ -1,7 +1,9 @@
-﻿using System.Windows.Forms;
+﻿using System.ComponentModel;
+using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Extended.Colour.Controls
 {
+    [DefaultEvent("ColourChanged")]
     public class KryptonARGBColourSliderVertical : UserControl
     {
         #region Designer Code
@@ -264,7 +266,15 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.PerformLayout();
 
         }
-#endregion 
+        #endregion
+
+        #region Event
+        public delegate void ColourChangedEventHandler(object sender, ColourChangedEventArgs e);
+
+        public event ColourChangedEventHandler ColourChanged;
+
+        protected virtual void OnColourChanged(object sender, ColourChangedEventArgs e) => ColourChanged?.Invoke(sender, e);
+        #endregion
 
         #region Constructors
         public KryptonARGBColourSliderVertical()
