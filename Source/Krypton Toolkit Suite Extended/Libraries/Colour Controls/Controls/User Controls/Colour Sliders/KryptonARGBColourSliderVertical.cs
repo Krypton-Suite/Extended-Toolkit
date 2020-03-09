@@ -4,6 +4,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
 {
     public class KryptonARGBColourSliderVertical : UserControl
     {
+        #region Designer Code
         private KryptonRedValueLabel klblRed;
         private KryptonGreenValueLabel klblGreen;
         private KryptonBlueValueLabel klblBlue;
@@ -244,6 +245,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             // 
             // KryptonARGBColourSliderVertical
             // 
+            this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.kryptonAlphaValueNumericBox1);
             this.Controls.Add(this.kryptonBlueValueNumericBox1);
             this.Controls.Add(this.kryptonRedValueNumericBox1);
@@ -262,5 +264,13 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.PerformLayout();
 
         }
+#endregion 
+
+        #region Constructors
+        public KryptonARGBColourSliderVertical()
+        {
+            InitializeComponent();
+        }
+        #endregion
     }
 }

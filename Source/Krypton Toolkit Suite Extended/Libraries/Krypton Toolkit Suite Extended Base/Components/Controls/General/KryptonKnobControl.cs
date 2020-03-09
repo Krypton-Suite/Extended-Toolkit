@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -14,20 +15,13 @@ namespace Krypton.Toolkit.Extended.Base
     {
         #region " constructor "
 
-        private int _Minimum = 0;
-        private int _Maximum = 100;
-        private int _LargeChange = 20;
-        private int _SmallChange = 5;
-        private int _SizeLargeScaleMarker = 6;
-        private int _SizeSmallScaleMarker = 3;
+        private int _Minimum = 0, _Maximum = 100, _LargeChange = 20, _SmallChange = 5, _SizeLargeScaleMarker = 6, _SizeSmallScaleMarker = 3;
         private bool _ShowSmallScale = false;
         private bool _ShowLargeScale = true;
         private bool _isFocused = false;
-        private Color _KnobColour = Color.FromKnownColor(KnownColor.ControlLight);
-        private Color _mouseOverColour = Color.FromKnownColor(KnownColor.ControlLightLight);
-        private Color _KnobBorderColour = Color.FromKnownColor(KnownColor.ControlDarkDark);
-        private Color _KnobBackColour = Color.FromKnownColor(KnownColor.Control);
-        private Color _mouseDownColour;
+        private Color _KnobColour = Color.FromKnownColor(KnownColor.ControlLight), _mouseOverColour = Color.FromKnownColor(KnownColor.ControlLightLight),
+            _KnobBorderColour = Color.FromKnownColor(KnownColor.ControlDarkDark), _KnobBackColour = Color.FromKnownColor(KnownColor.Control),
+            _mouseDownColour, _indicatorColourBegin, _indicatorColourEnd, _insetCircleColour;
         private int _Value;
         private bool isKnobRotating = false;
         private Rectangle rKnob;
@@ -335,6 +329,12 @@ namespace Krypton.Toolkit.Extended.Base
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         [Description("Set mouse down Colour of the back of knob control")]
         public Color MouseDownKnobColour { get => _mouseDownColour; set { _mouseDownColour = value; Invalidate(); } }
+
+        public Color KnobIndicatorColourBegin { get => _indicatorColourBegin; set { _indicatorColourBegin = value; Invalidate(); } }
+
+        public Color KnobIndicatorColourEnd { get => _indicatorColourEnd; set { _indicatorColourEnd = value; Invalidate(); } }
+
+        public Color KnobIndicatorBorderColour { get => _insetCircleColour; set { _insetCircleColour = value; Invalidate(); } }
         #endregion
 
         #region " Events and sub management "
@@ -356,7 +356,8 @@ namespace Krypton.Toolkit.Extended.Base
             // create LinearGradientBrush for creating knob
             bKnob = new LinearGradientBrush(rKnob, getLightColor(KnobColour, 55), getDarkColor(KnobColour, 55), LinearGradientMode.ForwardDiagonal);
             // create LinearGradientBrush for knobPoint
-            bKnobPoint = new LinearGradientBrush(rKnob, getLightColor(_KnobBorderColour, 55), getDarkColor(_KnobBorderColour, 55), LinearGradientMode.ForwardDiagonal);
+            //bKnobPoint = new LinearGradientBrush(rKnob, getLightColor(_KnobBorderColour, 55), getDarkColor(_KnobBorderColour, 55), LinearGradientMode.ForwardDiagonal);
+            bKnobPoint = new LinearGradientBrush(rKnob, KnobIndicatorColourBegin, KnobIndicatorColourEnd, LinearGradientMode.ForwardDiagonal);
 
             // Set background color of Image...
             e.Graphics.FillRectangle(new SolidBrush(_KnobBackColour), new Rectangle(0, 0, Width, Height));
@@ -378,7 +379,8 @@ namespace Krypton.Toolkit.Extended.Base
             // Draw pointer arrow that shows knob position
 
             Rectangle rect = new Rectangle(Arrow.X - 3, Arrow.Y - 3, 6, 6);
-            DrawInsetCircle(ref gOffScreen, ref rect, new Pen(_KnobBorderColour));
+
+            DrawInsetCircle(ref gOffScreen, ref rect, new Pen(KnobIndicatorBorderColour));
 
             // Draw small and large scale
             int i = Minimum;
@@ -698,6 +700,9 @@ namespace Krypton.Toolkit.Extended.Base
             this.KnobBackColour = _palette.ColorTable.MenuStripGradientBegin;
             MouseOverKnobColour = _palette.ColorTable.ButtonCheckedGradientBegin;
             MouseDownKnobColour = _palette.ColorTable.ButtonPressedGradientBegin;
+            KnobIndicatorColourBegin = _palette.ColorTable.MenuStripGradientBegin;
+            KnobIndicatorColourEnd = _palette.ColorTable.MenuStripGradientEnd;
+            KnobIndicatorBorderColour = _palette.ColorTable.ToolStripGradientBegin;
         }
         #endregion
 
