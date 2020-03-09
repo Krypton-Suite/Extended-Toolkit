@@ -1,8 +1,10 @@
 ﻿using Krypton.Toolkit.Extended.Colour.Controls;
+using System.ComponentModel;
 using System.Drawing;
 
 namespace Krypton.Toolkit.Extended.Dialogs
 {
+    [DefaultEvent("BasicPaletteColoursChanged")]
     public class KryptonPaletteBaseColourMixer : KryptonForm
     {
         #region Designer Code
@@ -1396,6 +1398,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
         public delegate void LightColourChangedHandler(object sender, ColourChangedEventArgs e);
 
         public delegate void LightestColourChangedHandler(object sender, ColourChangedEventArgs e);
+
 
         public event BasicPaletteColoursChangedHandler BasicPaletteColoursChanged;
 
