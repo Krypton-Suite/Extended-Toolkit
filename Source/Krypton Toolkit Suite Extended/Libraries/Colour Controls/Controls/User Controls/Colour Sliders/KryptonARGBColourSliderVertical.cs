@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Extended.Colour.Controls
@@ -274,6 +275,29 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
         public event ColourChangedEventHandler ColourChanged;
 
         protected virtual void OnColourChanged(object sender, ColourChangedEventArgs e) => ColourChanged?.Invoke(sender, e);
+        #endregion
+
+        #region Variables
+        private Color _colour;
+        #endregion
+
+        #region Property
+        public Color Colour
+        {
+            get => _colour;
+
+            set
+            {
+                _colour = value;
+
+                if (!Colour.IsEmpty)
+                {
+                    ColourChangedEventArgs e = new ColourChangedEventArgs(value);
+
+                    OnColourChanged(this, e);
+                }
+            }
+        }
         #endregion
 
         #region Constructors
