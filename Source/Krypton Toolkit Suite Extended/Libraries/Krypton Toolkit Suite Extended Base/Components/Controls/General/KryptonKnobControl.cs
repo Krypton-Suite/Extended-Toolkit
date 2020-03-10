@@ -59,21 +59,21 @@ namespace Krypton.Toolkit.Extended.Base
 
         public KryptonKnobControl()
         {
-            this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
-            this.SetStyle(ControlStyles.ResizeRedraw, true);
-            this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);
-            this.SetStyle(ControlStyles.UserPaint, true);
-            this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+            SetStyle(ControlStyles.SupportsTransparentBackColor, true);
+            SetStyle(ControlStyles.ResizeRedraw, true);
+            SetStyle(ControlStyles.AllPaintingInWmPaint, true);
+            SetStyle(ControlStyles.UserPaint, true);
+            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
 
 
             //Create redirection object to the base palette
-            if (((this._palette != null)))
+            if (((_palette != null)))
             {
-                this._palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(this.OnPalettePaint);
+                _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
             }
-            KryptonManager.GlobalPaletteChanged += new EventHandler(this.OnGlobalPaletteChanged);
-            this._palette = KryptonManager.CurrentGlobalPalette;
-            this._paletteRedirect = new PaletteRedirect(this._palette);
+            KryptonManager.GlobalPaletteChanged += new EventHandler(OnGlobalPaletteChanged);
+            _palette = KryptonManager.CurrentGlobalPalette;
+            _paletteRedirect = new PaletteRedirect(_palette);
 
             //Create accessor objects for the back, border and content
             m_paletteBack = new PaletteBackInheritRedirect(_paletteRedirect);
@@ -85,10 +85,10 @@ namespace Krypton.Toolkit.Extended.Base
             //This call is required by the Windows Form Designer.
             InitializeComponent();
 
-            this.ImeMode = ImeMode.On;
-            this.Name = "Knob";
-            this.Resize += new EventHandler(this.Knob_Resize);
-            //this.ValueChanged += new ValueChangedEventHandler(this.ValueChanged);
+            ImeMode = ImeMode.On;
+            Name = "Knob";
+            Resize += new EventHandler(Knob_Resize);
+            //ValueChanged += new ValueChangedEventHandler(ValueChanged);
 
             DottedPen = new Pen(getDarkColor(_KnobBorderColour, 40));
             DottedPen.DashStyle = System.Drawing.Drawing2D.DashStyle.Dot;
@@ -124,13 +124,13 @@ namespace Krypton.Toolkit.Extended.Base
         [System.Diagnostics.DebuggerStepThrough()]
         private void InitializeComponent()
         {
-            this.SuspendLayout();
+            SuspendLayout();
             // 
             // KryptonKnobControl
             // 
-            this.Name = "KryptonKnobControl";
-            this.Size = new System.Drawing.Size(91, 91);
-            this.ResumeLayout(false);
+            Name = "KryptonKnobControl";
+            Size = new System.Drawing.Size(91, 91);
+            ResumeLayout(false);
 
         }
         #endregion
@@ -146,7 +146,7 @@ namespace Krypton.Toolkit.Extended.Base
             {
                 _ShowSmallScale = value;
                 // Need to redraw
-                setDimensions(); this.Invalidate();
+                setDimensions(); Invalidate();
             }
         }
 
@@ -161,7 +161,7 @@ namespace Krypton.Toolkit.Extended.Base
             {
                 _ShowLargeScale = value;
                 // Need to redraw
-                setDimensions(); this.Invalidate();
+                setDimensions(); Invalidate();
             }
         }
 
@@ -174,7 +174,7 @@ namespace Krypton.Toolkit.Extended.Base
             set
             {
                 _SizeLargeScaleMarker = value;
-                setDimensions(); this.Invalidate();
+                setDimensions(); Invalidate();
             }
         }
 
@@ -187,7 +187,7 @@ namespace Krypton.Toolkit.Extended.Base
             set
             {
                 _SizeSmallScaleMarker = value;
-                setDimensions(); this.Invalidate();
+                setDimensions(); Invalidate();
             }
         }
 
@@ -201,7 +201,7 @@ namespace Krypton.Toolkit.Extended.Base
             set
             {
                 _Minimum = value;
-                setDimensions(); this.Invalidate();
+                setDimensions(); Invalidate();
             }
         }
 
@@ -215,7 +215,7 @@ namespace Krypton.Toolkit.Extended.Base
             set
             {
                 _Maximum = value;
-                setDimensions(); this.Invalidate();
+                setDimensions(); Invalidate();
             }
         }
 
@@ -229,7 +229,7 @@ namespace Krypton.Toolkit.Extended.Base
             set
             {
                 _LargeChange = value;
-                setDimensions(); this.Invalidate();
+                setDimensions(); Invalidate();
             }
         }
 
@@ -243,7 +243,7 @@ namespace Krypton.Toolkit.Extended.Base
             set
             {
                 _SmallChange = value;
-                setDimensions(); this.Invalidate();
+                setDimensions(); Invalidate();
             }
         }
         // Current Value of knob control
@@ -257,7 +257,7 @@ namespace Krypton.Toolkit.Extended.Base
                 _Value = value;
                 // Call delegate
                 OnValueChanged(value);
-                setDimensions(); this.Invalidate();
+                setDimensions(); Invalidate();
             }
         }
 
@@ -272,7 +272,7 @@ namespace Krypton.Toolkit.Extended.Base
             {
                 _KnobColour = value;
                 //Refresh Colors
-                this.Invalidate();
+                Invalidate();
             }
         }
 
@@ -306,7 +306,7 @@ namespace Krypton.Toolkit.Extended.Base
             {
                 _KnobBorderColour = value;
                 //Refresh Colors
-                this.Invalidate();
+                Invalidate();
             }
         }
 
@@ -321,7 +321,7 @@ namespace Krypton.Toolkit.Extended.Base
             {
                 _KnobBackColour = value;
                 //Refresh Colors
-                this.Invalidate();
+                Invalidate();
             }
         }
 
@@ -361,7 +361,7 @@ namespace Krypton.Toolkit.Extended.Base
 
             // Set background color of Image...
             e.Graphics.FillRectangle(new SolidBrush(_KnobBackColour), new Rectangle(0, 0, Width, Height));
-            //gOffScreen.Clear(this.BackColor);
+            //gOffScreen.Clear(BackColor);
             // Fill knob Background to give knob effect....
             gOffScreen.FillEllipse(bKnob, rKnob);
             // Set antialias effect on
@@ -370,12 +370,12 @@ namespace Krypton.Toolkit.Extended.Base
             gOffScreen.DrawEllipse(new Pen(_KnobBorderColour), rKnob);
 
             //if control is focused
-            if ((this._isFocused))
+            if ((_isFocused))
             {
                 gOffScreen.DrawEllipse(DottedPen, rKnob);
             }
             // get current position of pointer
-            Point Arrow = this.getKnobPosition();
+            Point Arrow = getKnobPosition();
             // Draw pointer arrow that shows knob position
 
             Rectangle rect = new Rectangle(Arrow.X - 3, Arrow.Y - 3, 6, 6);
@@ -384,19 +384,19 @@ namespace Krypton.Toolkit.Extended.Base
 
             // Draw small and large scale
             int i = Minimum;
-            if ((this._ShowSmallScale))
+            if ((_ShowSmallScale))
             {
-                for (i = Minimum; i <= Maximum; i = i + this._SmallChange)
+                for (i = Minimum; i <= Maximum; i = i + _SmallChange)
                 {
-                    gOffScreen.DrawLine(new Pen(this.ForeColor), getMarkerPoint(0, i), getMarkerPoint(_SizeSmallScaleMarker, i));
+                    gOffScreen.DrawLine(new Pen(ForeColor), getMarkerPoint(0, i), getMarkerPoint(_SizeSmallScaleMarker, i));
                 }
             }
 
-            if ((this._ShowLargeScale))
+            if ((_ShowLargeScale))
             {
-                for (i = Minimum; i <= Maximum; i = i + this._LargeChange)
+                for (i = Minimum; i <= Maximum; i = i + _LargeChange)
                 {
-                    gOffScreen.DrawLine(new Pen(this.ForeColor), getMarkerPoint(0, i), getMarkerPoint(_SizeLargeScaleMarker, i));
+                    gOffScreen.DrawLine(new Pen(ForeColor), getMarkerPoint(0, i), getMarkerPoint(_SizeLargeScaleMarker, i));
                 }
             }
 
@@ -416,7 +416,7 @@ namespace Krypton.Toolkit.Extended.Base
             if ((isPointinRectangle(new Point(e.X, e.Y), rKnob)))
             {
                 // Start Rotation of knob
-                this.isKnobRotating = true;
+                isKnobRotating = true;
             }
 
             KnobColour = MouseDownKnobColour;
@@ -453,13 +453,13 @@ namespace Krypton.Toolkit.Extended.Base
         protected override void OnMouseUp(MouseEventArgs e)
         {
             // Stop rotation
-            this.isKnobRotating = false;
+            isKnobRotating = false;
             if ((isPointinRectangle(new Point(e.X, e.Y), rKnob)))
             {
                 // get value
-                this.Value = this.getValueFromPosition(new Point(e.X, e.Y));
+                Value = getValueFromPosition(new Point(e.X, e.Y));
             }
-            this.Cursor = Cursors.Default;
+            Cursor = Cursors.Default;
         }
 
         protected override void OnMouseMove(MouseEventArgs e)
@@ -467,11 +467,11 @@ namespace Krypton.Toolkit.Extended.Base
             // --------------------------------------
             // Following Handles Knob Rotating
             // --------------------------------------
-            if ((this.isKnobRotating == true))
+            if ((isKnobRotating == true))
             {
-                this.Cursor = Cursors.Hand;
+                Cursor = Cursors.Hand;
                 Point p = new Point(e.X, e.Y);
-                int posVal = this.getValueFromPosition(p);
+                int posVal = getValueFromPosition(p);
                 Value = posVal;
             }
         }
@@ -483,15 +483,15 @@ namespace Krypton.Toolkit.Extended.Base
 
         protected override void OnEnter(EventArgs e)
         {
-            this._isFocused = true;
-            this.Refresh();
+            _isFocused = true;
+            Refresh();
             base.OnEnter(new EventArgs());
         }
 
         protected override void OnLeave(EventArgs e)
         {
-            this._isFocused = false;
-            this.Refresh();
+            _isFocused = false;
+            Refresh();
             base.OnLeave(new EventArgs());
         }
 
@@ -505,7 +505,7 @@ namespace Krypton.Toolkit.Extended.Base
                 if ((_Value < Maximum))
                 {
                     Value = _Value + 1;
-                    this.Invalidate();
+                    Invalidate();
                 }
             }
             else if ((e.KeyCode == Keys.Down | e.KeyCode == Keys.Left))
@@ -513,7 +513,7 @@ namespace Krypton.Toolkit.Extended.Base
                 if ((_Value > Minimum))
                 {
                     Value = _Value - 1;
-                    this.Invalidate();
+                    Invalidate();
                 }
             }
         }
@@ -521,19 +521,19 @@ namespace Krypton.Toolkit.Extended.Base
         private void setDimensions()
         {
             // get smaller from height and width
-            int size = this.Width;
-            if ((this.Width > this.Height))
+            int size = Width;
+            if ((Width > Height))
             {
-                size = this.Height;
+                size = Height;
             }
             // allow 10% gap on all side to determine size of knob
-            this.rKnob = new Rectangle((int)Math.Round((double)(size * 0.1)), (int)Math.Round((double)(size * 0.1)), (int)Math.Round((double)(size * 0.8)), (int)Math.Round((double)(size * 0.8)));
-            this.rScale = new Rectangle(2, 2, size - 4, size - 4);
-            this.pKnob = new Point((int)Math.Round((double)(this.rKnob.X + (((double)this.rKnob.Width) / 2.0))), (int)Math.Round((double)(this.rKnob.Y + (((double)this.rKnob.Height) / 2.0))));
+            rKnob = new Rectangle((int)Math.Round((double)(size * 0.1)), (int)Math.Round((double)(size * 0.1)), (int)Math.Round((double)(size * 0.8)), (int)Math.Round((double)(size * 0.8)));
+            rScale = new Rectangle(2, 2, size - 4, size - 4);
+            pKnob = new Point((int)Math.Round((double)(rKnob.X + (((double)rKnob.Width) / 2.0))), (int)Math.Round((double)(rKnob.Y + (((double)rKnob.Height) / 2.0))));
             // create offscreen image
-            this.OffScreenImage = new Bitmap(this.Width, this.Height);
+            OffScreenImage = new Bitmap(Width, Height);
             // create offscreen graphics
-            this.gOffScreen = Graphics.FromImage(OffScreenImage);
+            gOffScreen = Graphics.FromImage(OffScreenImage);
         }
 
         private void Knob_Resize(object sender, System.EventArgs e)
@@ -546,12 +546,12 @@ namespace Krypton.Toolkit.Extended.Base
         // gets knob position that is to be drawn on control.
         private Point getKnobPosition()
         {
-            double degree = 270 * this.Value / (this.Maximum - this.Minimum);
+            double degree = 270 * Value / (Maximum - Minimum);
             degree = (degree + 135) * Math.PI / 180;
 
             Point Pos = (new Point(0, 0));
-            Pos.X = (int)Math.Round((double)(((Math.Cos(degree) * ((((double)this.rKnob.Width) / 2.0) - 10.0)) + this.rKnob.X) + (((double)this.rKnob.Width) / 2.0)));
-            Pos.Y = (int)Math.Round((double)(((Math.Sin(degree) * ((((double)this.rKnob.Width) / 2.0) - 10.0)) + this.rKnob.Y) + (((double)this.rKnob.Height) / 2.0)));
+            Pos.X = (int)Math.Round((double)(((Math.Cos(degree) * ((((double)rKnob.Width) / 2.0) - 10.0)) + rKnob.X) + (((double)rKnob.Width) / 2.0)));
+            Pos.Y = (int)Math.Round((double)(((Math.Sin(degree) * ((((double)rKnob.Width) / 2.0) - 10.0)) + rKnob.Y) + (((double)rKnob.Height) / 2.0)));
             return Pos;
         }
 
@@ -562,12 +562,12 @@ namespace Krypton.Toolkit.Extended.Base
         // <returns>Point that describes marker position</returns>
         private Point getMarkerPoint(int length, int Value)
         {
-            double degree = 270 * Value / (this.Maximum - this.Minimum);
+            double degree = 270 * Value / (Maximum - Minimum);
             degree = (degree + 135) * Math.PI / 180;
 
             Point Pos = new Point(0, 0);
-            Pos.X = (int)Math.Round((double)(((Math.Cos(degree) * (((((double)this.rKnob.Width) / 2.0) - length) + 7.0)) + this.rKnob.X) + (((double)this.rKnob.Width) / 2.0)));
-            Pos.Y = (int)Math.Round((double)(((Math.Sin(degree) * (((((double)this.rKnob.Width) / 2.0) - length) + 7.0)) + this.rKnob.Y) + (((double)this.rKnob.Height) / 2.0)));
+            Pos.X = (int)Math.Round((double)(((Math.Cos(degree) * (((((double)rKnob.Width) / 2.0) - length) + 7.0)) + rKnob.X) + (((double)rKnob.Width) / 2.0)));
+            Pos.Y = (int)Math.Round((double)(((Math.Sin(degree) * (((((double)rKnob.Width) / 2.0) - length) + 7.0)) + rKnob.Y) + (((double)rKnob.Height) / 2.0)));
 
             return Pos;
         }
@@ -588,14 +588,14 @@ namespace Krypton.Toolkit.Extended.Base
                     degree = (pKnob.Y - p.Y) / (pKnob.X - p.X);
                     degree = Math.Atan(degree);
                     degree = (degree) * (180 / Math.PI) + 45;
-                    v = (int)Math.Round((double)((degree * (this.Maximum - this.Minimum)) / 270.0));
+                    v = (int)Math.Round((double)((degree * (Maximum - Minimum)) / 270.0));
                 }
                 else if ((p.X > pKnob.X))
                 {
                     degree = (p.Y - pKnob.Y) / (p.X - pKnob.X);
                     degree = Math.Atan(degree);
                     degree = 225 + (degree) * (180 / Math.PI);
-                    v = (int)Math.Round((double)((degree * (this.Maximum - this.Minimum)) / 270.0));
+                    v = (int)Math.Round((double)((degree * (Maximum - Minimum)) / 270.0));
                 }
 
                 if ((v > Maximum)) v = Maximum;
@@ -675,16 +675,16 @@ namespace Krypton.Toolkit.Extended.Base
 
         private void OnGlobalPaletteChanged(object sender, EventArgs e)
         {
-            if (((this._palette != null)))
+            if (((_palette != null)))
             {
-                this._palette.PalettePaint -= new EventHandler<PaletteLayoutEventArgs>(this.OnPalettePaint);
+                _palette.PalettePaint -= new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
             }
-            this._palette = KryptonManager.CurrentGlobalPalette;
-            this._paletteRedirect.Target = this._palette;
-            if (((this._palette != null)))
+            _palette = KryptonManager.CurrentGlobalPalette;
+            _paletteRedirect.Target = _palette;
+            if (((_palette != null)))
             {
-                this._palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(this.OnPalettePaint);
-                this.InitColours();
+                _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                InitColours();
             }
             base.Invalidate();
 
@@ -693,11 +693,11 @@ namespace Krypton.Toolkit.Extended.Base
 
         private void InitColours()
         {
-            this.BorderStyle = BorderStyle.None;
-            this.KnobColour = _palette.ColorTable.OverflowButtonGradientBegin;
-            this.KnobBorderColour = _palette.ColorTable.ToolStripGradientBegin;
-            this.ForeColor = _palette.ColorTable.MenuItemText;
-            this.KnobBackColour = _palette.ColorTable.MenuStripGradientBegin;
+            BorderStyle = BorderStyle.None;
+            KnobColour = _palette.ColorTable.OverflowButtonGradientBegin;
+            KnobBorderColour = _palette.ColorTable.ToolStripGradientBegin;
+            ForeColor = _palette.ColorTable.MenuItemText;
+            KnobBackColour = _palette.ColorTable.MenuStripGradientBegin;
             MouseOverKnobColour = _palette.ColorTable.ButtonCheckedGradientBegin;
             MouseDownKnobColour = _palette.ColorTable.ButtonPressedGradientBegin;
             KnobIndicatorColourBegin = _palette.ColorTable.MenuStripGradientBegin;

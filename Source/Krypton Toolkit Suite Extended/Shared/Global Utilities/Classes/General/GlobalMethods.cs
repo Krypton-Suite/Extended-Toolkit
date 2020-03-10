@@ -2,6 +2,7 @@
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Drawing;
 using System.Management;
 using System.Security.Principal;
 using System.Windows.Forms;
@@ -599,6 +600,16 @@ namespace Krypton.Toolkit.Extended.Global.Utilities
                 KryptonMessageBox.Show("This is not implemented or fully functional yet. Please check back again later.", "Incomplete Feature", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+        /// <summary>Anchors the selected control.</summary>
+        /// <param name="control">The control.</param>
+        /// <param name="anchorStyles">The anchor styles.</param>
+        public static void AnchorSelectedControl(Control control, AnchorStyles anchorStyles) => control.Anchor = anchorStyles;
+
+        /// <summary>Sets the selected control location.</summary>
+        /// <param name="control">The control.</param>
+        /// <param name="locatioonPoint">The locatioon point.</param>
+        public static void SetSelectedControlLocation(Control control, Point locatioonPoint) => control.Location = locatioonPoint;
         #endregion
 
         #region Setters and Getters
