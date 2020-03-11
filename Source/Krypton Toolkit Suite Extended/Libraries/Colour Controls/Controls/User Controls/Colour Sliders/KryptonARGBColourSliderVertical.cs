@@ -398,11 +398,31 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
         #endregion
 
         #region Event
+        /// <summary></summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="ColourChangedEventArgs"/> instance containing the event data.</param>
         public delegate void ColourChangedEventHandler(object sender, ColourChangedEventArgs e);
 
+        /// <summary>Occurs when [colour changed].</summary>
         public event ColourChangedEventHandler ColourChanged;
 
+        /// <summary>Called when [colour changed].</summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="ColourChangedEventArgs"/> instance containing the event data.</param>
         protected virtual void OnColourChanged(object sender, ColourChangedEventArgs e) => ColourChanged?.Invoke(sender, e);
+
+        /// <summary></summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="ColourHexadecimalValuesEventArgs"/> instance containing the event data.</param>
+        public delegate void ColourHexadecimalValuesChangedEventHandler(object sender, ColourHexadecimalValuesEventArgs e);
+
+        /// <summary>Occurs when [colour hexadecimal values changed].</summary>
+        public event ColourHexadecimalValuesChangedEventHandler ColourHexadecimalValuesChanged;
+
+        /// <summary>Called when [colour hexadecimal values changed].</summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="ColourHexadecimalValuesEventArgs"/> instance containing the event data.</param>
+        public virtual void OnColourHexadecimalValuesChanged(object sender, ColourHexadecimalValuesEventArgs e) => ColourHexadecimalValuesChanged?.Invoke(sender, e);
         #endregion
 
         #region Variables
@@ -413,6 +433,8 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
         private byte _trueAlphaChannelValue, _trueRedChannelValue, _trueGreenChannelValue, _trueBlueChannelValue;
 
         private Color _colour, _trueColour;
+
+        private string _colourHexadecimalValue;
 
         private KryptonPalette _palette;
         #endregion
@@ -463,6 +485,21 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
         }
 
         public Color TrueColour { get => _trueColour; private set => _trueColour = value; }
+
+        [DefaultValue("#000000")]
+        public string ColourHexadecimalValue
+        {
+            get => _colourHexadecimalValue;
+
+            set
+            {
+                _colourHexadecimalValue = value;
+
+                ColourHexadecimalValuesEventArgs e = new ColourHexadecimalValuesEventArgs(value);
+
+                OnColourHexadecimalValuesChanged(this, e);
+            }
+        }
         #endregion
 
         #region Constructors

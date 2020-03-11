@@ -45,6 +45,16 @@
     </EmbeddedResource>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controls\Colours\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Krypton.Toolkit.Suite.Extended.Palette.Controls">
+      <HintPath>..\Palette Controls\obj\Debug\net45\Krypton.Toolkit.Suite.Extended.Palette.Controls.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
   <PropertyGroup>
     <DocumentationFile>..\..\..\..\Bin\$(configuration)\Krypton.Toolkit.Extended.Dialogs.xml</DocumentationFile>
     <OutputPath>..\..\..\..\Bin\$(configuration)\</OutputPath>

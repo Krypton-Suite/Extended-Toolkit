@@ -1,256 +1,371 @@
 ﻿using Krypton.Toolkit.Extended.Base;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Palette.Controls
 {
     public class BasicPaletteColourUserControl : UserControl
     {
-        private CircularPictureBox circularPictureBox6;
-        private Suite.Extended.Standard.Controls.KryptonLabelExtended kryptonLabelExtended7;
-        private CircularPictureBox circularPictureBox5;
-        private CircularPictureBox circularPictureBox4;
-        private CircularPictureBox circularPictureBox3;
-        private CircularPictureBox circularPictureBox2;
-        private CircularPictureBox circularPictureBox1;
-        private Suite.Extended.Standard.Controls.KryptonLabelExtended kryptonLabelExtended6;
-        private Suite.Extended.Standard.Controls.KryptonLabelExtended kryptonLabelExtended5;
-        private Suite.Extended.Standard.Controls.KryptonLabelExtended kryptonLabelExtended4;
-        private Suite.Extended.Standard.Controls.KryptonLabelExtended kryptonLabelExtended2;
-        private Suite.Extended.Standard.Controls.KryptonLabelExtended kryptonLabelExtended1;
+        #region Designer Code
+        private Standard.Controls.KryptonLabelExtended klblBaseColour;
+        private Standard.Controls.KryptonLabelExtended klblDarkestColour;
+        private Standard.Controls.KryptonLabelExtended klblMediumColour;
+        private Standard.Controls.KryptonLabelExtended klblDarkColour;
+        private Standard.Controls.KryptonLabelExtended klblLightestColour;
+        private Standard.Controls.KryptonLabelExtended klblLightColour;
+        private Toolkit.Extended.Base.CircularPictureBox cbxBaseColour;
+        private Toolkit.Extended.Base.CircularPictureBox cbxMediumColour;
+        private Toolkit.Extended.Base.CircularPictureBox cbxLightColour;
+        private Toolkit.Extended.Base.CircularPictureBox cbxDarkColour;
+        private Toolkit.Extended.Base.CircularPictureBox cbxDarkestColour;
+        private Toolkit.Extended.Base.CircularPictureBox cbxLightestColour;
 
         private void InitializeComponent()
         {
-            this.kryptonLabelExtended7 = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonLabelExtended();
-            this.kryptonLabelExtended6 = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonLabelExtended();
-            this.kryptonLabelExtended5 = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonLabelExtended();
-            this.kryptonLabelExtended4 = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonLabelExtended();
-            this.kryptonLabelExtended2 = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonLabelExtended();
-            this.kryptonLabelExtended1 = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonLabelExtended();
-            this.circularPictureBox6 = new Krypton.Toolkit.Extended.Base.CircularPictureBox();
-            this.circularPictureBox5 = new Krypton.Toolkit.Extended.Base.CircularPictureBox();
-            this.circularPictureBox4 = new Krypton.Toolkit.Extended.Base.CircularPictureBox();
-            this.circularPictureBox3 = new Krypton.Toolkit.Extended.Base.CircularPictureBox();
-            this.circularPictureBox2 = new Krypton.Toolkit.Extended.Base.CircularPictureBox();
-            this.circularPictureBox1 = new Krypton.Toolkit.Extended.Base.CircularPictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox1)).BeginInit();
+            this.klblBaseColour = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonLabelExtended();
+            this.klblDarkestColour = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonLabelExtended();
+            this.klblMediumColour = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonLabelExtended();
+            this.klblDarkColour = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonLabelExtended();
+            this.klblLightestColour = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonLabelExtended();
+            this.klblLightColour = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonLabelExtended();
+            this.cbxBaseColour = new Krypton.Toolkit.Extended.Base.CircularPictureBox();
+            this.cbxMediumColour = new Krypton.Toolkit.Extended.Base.CircularPictureBox();
+            this.cbxLightColour = new Krypton.Toolkit.Extended.Base.CircularPictureBox();
+            this.cbxDarkColour = new Krypton.Toolkit.Extended.Base.CircularPictureBox();
+            this.cbxDarkestColour = new Krypton.Toolkit.Extended.Base.CircularPictureBox();
+            this.cbxLightestColour = new Krypton.Toolkit.Extended.Base.CircularPictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.cbxBaseColour)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbxMediumColour)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbxLightColour)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbxDarkColour)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbxDarkestColour)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbxLightestColour)).BeginInit();
             this.SuspendLayout();
             // 
-            // kryptonLabelExtended7
+            // klblBaseColour
             // 
-            this.kryptonLabelExtended7.Image = null;
-            this.kryptonLabelExtended7.Location = new System.Drawing.Point(14, 452);
-            this.kryptonLabelExtended7.LongTextTypeface = null;
-            this.kryptonLabelExtended7.Name = "kryptonLabelExtended7";
-            this.kryptonLabelExtended7.ShortTextTypeface = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonLabelExtended7.Size = new System.Drawing.Size(120, 21);
-            this.kryptonLabelExtended7.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonLabelExtended7.StateCommonTextColourOne = System.Drawing.Color.Empty;
-            this.kryptonLabelExtended7.StateCommonTextColourTwo = System.Drawing.Color.Empty;
-            this.kryptonLabelExtended7.StateDisabled.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonLabelExtended7.StateDisabledTextColourOne = System.Drawing.Color.Empty;
-            this.kryptonLabelExtended7.StateDisabledTextColourTwo = System.Drawing.Color.Empty;
-            this.kryptonLabelExtended7.StateNormal.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonLabelExtended7.StateNormalTextColourOne = System.Drawing.Color.Empty;
-            this.kryptonLabelExtended7.StateNormalTextColourTwo = System.Drawing.Color.Empty;
-            this.kryptonLabelExtended7.TabIndex = 184;
-            this.kryptonLabelExtended7.Values.Text = "Lightest Colour";
+            this.klblBaseColour.Image = null;
+            this.klblBaseColour.Location = new System.Drawing.Point(25, 14);
+            this.klblBaseColour.LongTextTypeface = null;
+            this.klblBaseColour.Name = "klblBaseColour";
+            this.klblBaseColour.ShortTextTypeface = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.klblBaseColour.Size = new System.Drawing.Size(100, 21);
+            this.klblBaseColour.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.klblBaseColour.StateCommonTextColourOne = System.Drawing.Color.Empty;
+            this.klblBaseColour.StateCommonTextColourTwo = System.Drawing.Color.Empty;
+            this.klblBaseColour.StateDisabled.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.klblBaseColour.StateDisabledTextColourOne = System.Drawing.Color.Empty;
+            this.klblBaseColour.StateDisabledTextColourTwo = System.Drawing.Color.Empty;
+            this.klblBaseColour.StateNormal.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.klblBaseColour.StateNormalTextColourOne = System.Drawing.Color.Empty;
+            this.klblBaseColour.StateNormalTextColourTwo = System.Drawing.Color.Empty;
+            this.klblBaseColour.TabIndex = 0;
+            this.klblBaseColour.Values.Text = "Base Colour";
             // 
-            // kryptonLabelExtended6
+            // klblDarkestColour
             // 
-            this.kryptonLabelExtended6.Image = null;
-            this.kryptonLabelExtended6.Location = new System.Drawing.Point(24, 12);
-            this.kryptonLabelExtended6.LongTextTypeface = null;
-            this.kryptonLabelExtended6.Name = "kryptonLabelExtended6";
-            this.kryptonLabelExtended6.ShortTextTypeface = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonLabelExtended6.Size = new System.Drawing.Size(100, 21);
-            this.kryptonLabelExtended6.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonLabelExtended6.StateCommonTextColourOne = System.Drawing.Color.Empty;
-            this.kryptonLabelExtended6.StateCommonTextColourTwo = System.Drawing.Color.Empty;
-            this.kryptonLabelExtended6.StateDisabled.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonLabelExtended6.StateDisabledTextColourOne = System.Drawing.Color.Empty;
-            this.kryptonLabelExtended6.StateDisabledTextColourTwo = System.Drawing.Color.Empty;
-            this.kryptonLabelExtended6.StateNormal.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonLabelExtended6.StateNormalTextColourOne = System.Drawing.Color.Empty;
-            this.kryptonLabelExtended6.StateNormalTextColourTwo = System.Drawing.Color.Empty;
-            this.kryptonLabelExtended6.TabIndex = 178;
-            this.kryptonLabelExtended6.Values.Text = "Base Colour";
+            this.klblDarkestColour.Image = null;
+            this.klblDarkestColour.Location = new System.Drawing.Point(16, 102);
+            this.klblDarkestColour.LongTextTypeface = null;
+            this.klblDarkestColour.Name = "klblDarkestColour";
+            this.klblDarkestColour.ShortTextTypeface = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.klblDarkestColour.Size = new System.Drawing.Size(118, 21);
+            this.klblDarkestColour.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.klblDarkestColour.StateCommonTextColourOne = System.Drawing.Color.Empty;
+            this.klblDarkestColour.StateCommonTextColourTwo = System.Drawing.Color.Empty;
+            this.klblDarkestColour.StateDisabled.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.klblDarkestColour.StateDisabledTextColourOne = System.Drawing.Color.Empty;
+            this.klblDarkestColour.StateDisabledTextColourTwo = System.Drawing.Color.Empty;
+            this.klblDarkestColour.StateNormal.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.klblDarkestColour.StateNormalTextColourOne = System.Drawing.Color.Empty;
+            this.klblDarkestColour.StateNormalTextColourTwo = System.Drawing.Color.Empty;
+            this.klblDarkestColour.TabIndex = 1;
+            this.klblDarkestColour.Values.Text = "Darkest Colour";
             // 
-            // kryptonLabelExtended5
+            // klblMediumColour
             // 
-            this.kryptonLabelExtended5.Image = null;
-            this.kryptonLabelExtended5.Location = new System.Drawing.Point(15, 100);
-            this.kryptonLabelExtended5.LongTextTypeface = null;
-            this.kryptonLabelExtended5.Name = "kryptonLabelExtended5";
-            this.kryptonLabelExtended5.ShortTextTypeface = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonLabelExtended5.Size = new System.Drawing.Size(118, 21);
-            this.kryptonLabelExtended5.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonLabelExtended5.StateCommonTextColourOne = System.Drawing.Color.Empty;
-            this.kryptonLabelExtended5.StateCommonTextColourTwo = System.Drawing.Color.Empty;
-            this.kryptonLabelExtended5.StateDisabled.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonLabelExtended5.StateDisabledTextColourOne = System.Drawing.Color.Empty;
-            this.kryptonLabelExtended5.StateDisabledTextColourTwo = System.Drawing.Color.Empty;
-            this.kryptonLabelExtended5.StateNormal.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonLabelExtended5.StateNormalTextColourOne = System.Drawing.Color.Empty;
-            this.kryptonLabelExtended5.StateNormalTextColourTwo = System.Drawing.Color.Empty;
-            this.kryptonLabelExtended5.TabIndex = 177;
-            this.kryptonLabelExtended5.Values.Text = "Darkest Colour";
+            this.klblMediumColour.Image = null;
+            this.klblMediumColour.Location = new System.Drawing.Point(20, 278);
+            this.klblMediumColour.LongTextTypeface = null;
+            this.klblMediumColour.Name = "klblMediumColour";
+            this.klblMediumColour.ShortTextTypeface = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.klblMediumColour.Size = new System.Drawing.Size(111, 21);
+            this.klblMediumColour.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.klblMediumColour.StateCommonTextColourOne = System.Drawing.Color.Empty;
+            this.klblMediumColour.StateCommonTextColourTwo = System.Drawing.Color.Empty;
+            this.klblMediumColour.StateDisabled.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.klblMediumColour.StateDisabledTextColourOne = System.Drawing.Color.Empty;
+            this.klblMediumColour.StateDisabledTextColourTwo = System.Drawing.Color.Empty;
+            this.klblMediumColour.StateNormal.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.klblMediumColour.StateNormalTextColourOne = System.Drawing.Color.Empty;
+            this.klblMediumColour.StateNormalTextColourTwo = System.Drawing.Color.Empty;
+            this.klblMediumColour.TabIndex = 2;
+            this.klblMediumColour.Values.Text = "Middle Colour";
             // 
-            // kryptonLabelExtended4
+            // klblDarkColour
             // 
-            this.kryptonLabelExtended4.Image = null;
-            this.kryptonLabelExtended4.Location = new System.Drawing.Point(26, 188);
-            this.kryptonLabelExtended4.LongTextTypeface = null;
-            this.kryptonLabelExtended4.Name = "kryptonLabelExtended4";
-            this.kryptonLabelExtended4.ShortTextTypeface = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonLabelExtended4.Size = new System.Drawing.Size(97, 21);
-            this.kryptonLabelExtended4.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonLabelExtended4.StateCommonTextColourOne = System.Drawing.Color.Empty;
-            this.kryptonLabelExtended4.StateCommonTextColourTwo = System.Drawing.Color.Empty;
-            this.kryptonLabelExtended4.StateDisabled.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonLabelExtended4.StateDisabledTextColourOne = System.Drawing.Color.Empty;
-            this.kryptonLabelExtended4.StateDisabledTextColourTwo = System.Drawing.Color.Empty;
-            this.kryptonLabelExtended4.StateNormal.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonLabelExtended4.StateNormalTextColourOne = System.Drawing.Color.Empty;
-            this.kryptonLabelExtended4.StateNormalTextColourTwo = System.Drawing.Color.Empty;
-            this.kryptonLabelExtended4.TabIndex = 176;
-            this.kryptonLabelExtended4.Values.Text = "Dark Colour";
+            this.klblDarkColour.Image = null;
+            this.klblDarkColour.Location = new System.Drawing.Point(27, 190);
+            this.klblDarkColour.LongTextTypeface = null;
+            this.klblDarkColour.Name = "klblDarkColour";
+            this.klblDarkColour.ShortTextTypeface = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.klblDarkColour.Size = new System.Drawing.Size(97, 21);
+            this.klblDarkColour.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.klblDarkColour.StateCommonTextColourOne = System.Drawing.Color.Empty;
+            this.klblDarkColour.StateCommonTextColourTwo = System.Drawing.Color.Empty;
+            this.klblDarkColour.StateDisabled.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.klblDarkColour.StateDisabledTextColourOne = System.Drawing.Color.Empty;
+            this.klblDarkColour.StateDisabledTextColourTwo = System.Drawing.Color.Empty;
+            this.klblDarkColour.StateNormal.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.klblDarkColour.StateNormalTextColourOne = System.Drawing.Color.Empty;
+            this.klblDarkColour.StateNormalTextColourTwo = System.Drawing.Color.Empty;
+            this.klblDarkColour.TabIndex = 3;
+            this.klblDarkColour.Values.Text = "Dark Colour";
             // 
-            // kryptonLabelExtended2
+            // klblLightestColour
             // 
-            this.kryptonLabelExtended2.Image = null;
-            this.kryptonLabelExtended2.Location = new System.Drawing.Point(19, 276);
-            this.kryptonLabelExtended2.LongTextTypeface = null;
-            this.kryptonLabelExtended2.Name = "kryptonLabelExtended2";
-            this.kryptonLabelExtended2.ShortTextTypeface = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonLabelExtended2.Size = new System.Drawing.Size(111, 21);
-            this.kryptonLabelExtended2.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonLabelExtended2.StateCommonTextColourOne = System.Drawing.Color.Empty;
-            this.kryptonLabelExtended2.StateCommonTextColourTwo = System.Drawing.Color.Empty;
-            this.kryptonLabelExtended2.StateDisabled.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonLabelExtended2.StateDisabledTextColourOne = System.Drawing.Color.Empty;
-            this.kryptonLabelExtended2.StateDisabledTextColourTwo = System.Drawing.Color.Empty;
-            this.kryptonLabelExtended2.StateNormal.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonLabelExtended2.StateNormalTextColourOne = System.Drawing.Color.Empty;
-            this.kryptonLabelExtended2.StateNormalTextColourTwo = System.Drawing.Color.Empty;
-            this.kryptonLabelExtended2.TabIndex = 175;
-            this.kryptonLabelExtended2.Values.Text = "Middle Colour";
+            this.klblLightestColour.Image = null;
+            this.klblLightestColour.Location = new System.Drawing.Point(15, 454);
+            this.klblLightestColour.LongTextTypeface = null;
+            this.klblLightestColour.Name = "klblLightestColour";
+            this.klblLightestColour.ShortTextTypeface = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.klblLightestColour.Size = new System.Drawing.Size(120, 21);
+            this.klblLightestColour.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.klblLightestColour.StateCommonTextColourOne = System.Drawing.Color.Empty;
+            this.klblLightestColour.StateCommonTextColourTwo = System.Drawing.Color.Empty;
+            this.klblLightestColour.StateDisabled.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.klblLightestColour.StateDisabledTextColourOne = System.Drawing.Color.Empty;
+            this.klblLightestColour.StateDisabledTextColourTwo = System.Drawing.Color.Empty;
+            this.klblLightestColour.StateNormal.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.klblLightestColour.StateNormalTextColourOne = System.Drawing.Color.Empty;
+            this.klblLightestColour.StateNormalTextColourTwo = System.Drawing.Color.Empty;
+            this.klblLightestColour.TabIndex = 4;
+            this.klblLightestColour.Values.Text = "Lightest Colour";
             // 
-            // kryptonLabelExtended1
+            // klblLightColour
             // 
-            this.kryptonLabelExtended1.Image = null;
-            this.kryptonLabelExtended1.Location = new System.Drawing.Point(25, 364);
-            this.kryptonLabelExtended1.LongTextTypeface = null;
-            this.kryptonLabelExtended1.Name = "kryptonLabelExtended1";
-            this.kryptonLabelExtended1.ShortTextTypeface = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonLabelExtended1.Size = new System.Drawing.Size(98, 21);
-            this.kryptonLabelExtended1.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonLabelExtended1.StateCommonTextColourOne = System.Drawing.Color.Empty;
-            this.kryptonLabelExtended1.StateCommonTextColourTwo = System.Drawing.Color.Empty;
-            this.kryptonLabelExtended1.StateDisabled.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonLabelExtended1.StateDisabledTextColourOne = System.Drawing.Color.Empty;
-            this.kryptonLabelExtended1.StateDisabledTextColourTwo = System.Drawing.Color.Empty;
-            this.kryptonLabelExtended1.StateNormal.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonLabelExtended1.StateNormalTextColourOne = System.Drawing.Color.Empty;
-            this.kryptonLabelExtended1.StateNormalTextColourTwo = System.Drawing.Color.Empty;
-            this.kryptonLabelExtended1.TabIndex = 174;
-            this.kryptonLabelExtended1.Values.Text = "Light Colour";
+            this.klblLightColour.Image = null;
+            this.klblLightColour.Location = new System.Drawing.Point(26, 366);
+            this.klblLightColour.LongTextTypeface = null;
+            this.klblLightColour.Name = "klblLightColour";
+            this.klblLightColour.ShortTextTypeface = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.klblLightColour.Size = new System.Drawing.Size(98, 21);
+            this.klblLightColour.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.klblLightColour.StateCommonTextColourOne = System.Drawing.Color.Empty;
+            this.klblLightColour.StateCommonTextColourTwo = System.Drawing.Color.Empty;
+            this.klblLightColour.StateDisabled.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.klblLightColour.StateDisabledTextColourOne = System.Drawing.Color.Empty;
+            this.klblLightColour.StateDisabledTextColourTwo = System.Drawing.Color.Empty;
+            this.klblLightColour.StateNormal.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.klblLightColour.StateNormalTextColourOne = System.Drawing.Color.Empty;
+            this.klblLightColour.StateNormalTextColourTwo = System.Drawing.Color.Empty;
+            this.klblLightColour.TabIndex = 5;
+            this.klblLightColour.Values.Text = "Light Colour";
             // 
-            // circularPictureBox6
+            // cbxBaseColour
             // 
-            this.circularPictureBox6.BackColor = System.Drawing.Color.White;
-            this.circularPictureBox6.Location = new System.Drawing.Point(48, 479);
-            this.circularPictureBox6.Name = "circularPictureBox6";
-            this.circularPictureBox6.Size = new System.Drawing.Size(55, 55);
-            this.circularPictureBox6.TabIndex = 185;
-            this.circularPictureBox6.TabStop = false;
-            this.circularPictureBox6.ToolTipValues = null;
+            this.cbxBaseColour.BackColor = System.Drawing.Color.White;
+            this.cbxBaseColour.Location = new System.Drawing.Point(50, 41);
+            this.cbxBaseColour.Name = "cbxBaseColour";
+            this.cbxBaseColour.Size = new System.Drawing.Size(55, 55);
+            this.cbxBaseColour.TabIndex = 6;
+            this.cbxBaseColour.TabStop = false;
+            this.cbxBaseColour.ToolTipValues = null;
             // 
-            // circularPictureBox5
+            // cbxMediumColour
             // 
-            this.circularPictureBox5.BackColor = System.Drawing.Color.White;
-            this.circularPictureBox5.Location = new System.Drawing.Point(48, 391);
-            this.circularPictureBox5.Name = "circularPictureBox5";
-            this.circularPictureBox5.Size = new System.Drawing.Size(55, 55);
-            this.circularPictureBox5.TabIndex = 183;
-            this.circularPictureBox5.TabStop = false;
-            this.circularPictureBox5.ToolTipValues = null;
+            this.cbxMediumColour.BackColor = System.Drawing.Color.White;
+            this.cbxMediumColour.Location = new System.Drawing.Point(50, 305);
+            this.cbxMediumColour.Name = "cbxMediumColour";
+            this.cbxMediumColour.Size = new System.Drawing.Size(55, 55);
+            this.cbxMediumColour.TabIndex = 7;
+            this.cbxMediumColour.TabStop = false;
+            this.cbxMediumColour.ToolTipValues = null;
             // 
-            // circularPictureBox4
+            // cbxLightColour
             // 
-            this.circularPictureBox4.BackColor = System.Drawing.Color.White;
-            this.circularPictureBox4.Location = new System.Drawing.Point(48, 303);
-            this.circularPictureBox4.Name = "circularPictureBox4";
-            this.circularPictureBox4.Size = new System.Drawing.Size(55, 55);
-            this.circularPictureBox4.TabIndex = 182;
-            this.circularPictureBox4.TabStop = false;
-            this.circularPictureBox4.ToolTipValues = null;
+            this.cbxLightColour.BackColor = System.Drawing.Color.White;
+            this.cbxLightColour.Location = new System.Drawing.Point(50, 393);
+            this.cbxLightColour.Name = "cbxLightColour";
+            this.cbxLightColour.Size = new System.Drawing.Size(55, 55);
+            this.cbxLightColour.TabIndex = 8;
+            this.cbxLightColour.TabStop = false;
+            this.cbxLightColour.ToolTipValues = null;
             // 
-            // circularPictureBox3
+            // cbxDarkColour
             // 
-            this.circularPictureBox3.BackColor = System.Drawing.Color.White;
-            this.circularPictureBox3.Location = new System.Drawing.Point(48, 215);
-            this.circularPictureBox3.Name = "circularPictureBox3";
-            this.circularPictureBox3.Size = new System.Drawing.Size(55, 55);
-            this.circularPictureBox3.TabIndex = 181;
-            this.circularPictureBox3.TabStop = false;
-            this.circularPictureBox3.ToolTipValues = null;
+            this.cbxDarkColour.BackColor = System.Drawing.Color.White;
+            this.cbxDarkColour.Location = new System.Drawing.Point(50, 217);
+            this.cbxDarkColour.Name = "cbxDarkColour";
+            this.cbxDarkColour.Size = new System.Drawing.Size(55, 55);
+            this.cbxDarkColour.TabIndex = 9;
+            this.cbxDarkColour.TabStop = false;
+            this.cbxDarkColour.ToolTipValues = null;
             // 
-            // circularPictureBox2
+            // cbxDarkestColour
             // 
-            this.circularPictureBox2.BackColor = System.Drawing.Color.White;
-            this.circularPictureBox2.Location = new System.Drawing.Point(48, 127);
-            this.circularPictureBox2.Name = "circularPictureBox2";
-            this.circularPictureBox2.Size = new System.Drawing.Size(55, 55);
-            this.circularPictureBox2.TabIndex = 180;
-            this.circularPictureBox2.TabStop = false;
-            this.circularPictureBox2.ToolTipValues = null;
+            this.cbxDarkestColour.BackColor = System.Drawing.Color.White;
+            this.cbxDarkestColour.Location = new System.Drawing.Point(50, 129);
+            this.cbxDarkestColour.Name = "cbxDarkestColour";
+            this.cbxDarkestColour.Size = new System.Drawing.Size(55, 55);
+            this.cbxDarkestColour.TabIndex = 10;
+            this.cbxDarkestColour.TabStop = false;
+            this.cbxDarkestColour.ToolTipValues = null;
             // 
-            // circularPictureBox1
+            // cbxLightestColour
             // 
-            this.circularPictureBox1.BackColor = System.Drawing.Color.White;
-            this.circularPictureBox1.Location = new System.Drawing.Point(48, 39);
-            this.circularPictureBox1.Name = "circularPictureBox1";
-            this.circularPictureBox1.Size = new System.Drawing.Size(55, 55);
-            this.circularPictureBox1.TabIndex = 179;
-            this.circularPictureBox1.TabStop = false;
-            this.circularPictureBox1.ToolTipValues = null;
+            this.cbxLightestColour.BackColor = System.Drawing.Color.White;
+            this.cbxLightestColour.Location = new System.Drawing.Point(50, 481);
+            this.cbxLightestColour.Name = "cbxLightestColour";
+            this.cbxLightestColour.Size = new System.Drawing.Size(55, 55);
+            this.cbxLightestColour.TabIndex = 11;
+            this.cbxLightestColour.TabStop = false;
+            this.cbxLightestColour.ToolTipValues = null;
             // 
             // BasicPaletteColourUserControl
             // 
             this.BackColor = System.Drawing.Color.Transparent;
-            this.Controls.Add(this.circularPictureBox6);
-            this.Controls.Add(this.kryptonLabelExtended7);
-            this.Controls.Add(this.circularPictureBox5);
-            this.Controls.Add(this.circularPictureBox4);
-            this.Controls.Add(this.circularPictureBox3);
-            this.Controls.Add(this.circularPictureBox2);
-            this.Controls.Add(this.circularPictureBox1);
-            this.Controls.Add(this.kryptonLabelExtended6);
-            this.Controls.Add(this.kryptonLabelExtended5);
-            this.Controls.Add(this.kryptonLabelExtended4);
-            this.Controls.Add(this.kryptonLabelExtended2);
-            this.Controls.Add(this.kryptonLabelExtended1);
+            this.Controls.Add(this.cbxLightestColour);
+            this.Controls.Add(this.cbxDarkestColour);
+            this.Controls.Add(this.cbxDarkColour);
+            this.Controls.Add(this.cbxLightColour);
+            this.Controls.Add(this.cbxMediumColour);
+            this.Controls.Add(this.cbxBaseColour);
+            this.Controls.Add(this.klblLightColour);
+            this.Controls.Add(this.klblLightestColour);
+            this.Controls.Add(this.klblDarkColour);
+            this.Controls.Add(this.klblMediumColour);
+            this.Controls.Add(this.klblDarkestColour);
+            this.Controls.Add(this.klblBaseColour);
             this.Name = "BasicPaletteColourUserControl";
             this.Size = new System.Drawing.Size(149, 545);
-            ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbxBaseColour)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbxMediumColour)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbxLightColour)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbxDarkColour)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbxDarkestColour)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbxLightestColour)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
+        #endregion
+
+        #region Variables
+        private bool _automaticallyUpdateColourValues;
+
+        private Color _defaultColour, _baseColour, _darkestColour, _darkColour, _mediumColour, _lightColour, _lightestColour;
+
+        private Color[] _basicPaletteColours = new Color[6];
+
+        private CircularPictureBox[] _colourBoxes = new CircularPictureBox[6];
+        #endregion
+
+        #region Properties
+        [DefaultValue(true)]
+        public bool AutomaticallyUpdateColourValues { get => _automaticallyUpdateColourValues; set { _automaticallyUpdateColourValues = value; Invalidate(); } }
+
+        [DefaultValue(null)]
+        public Color DefaultColour { get => _defaultColour; set { _defaultColour = value; Invalidate(); } }
+
+        public Color BaseColour { get => _baseColour; set { _baseColour = value; Invalidate(); } }
+
+        public Color DarkestColour { get => _darkestColour; set { _darkestColour = value; Invalidate(); } }
+
+        public Color DarkColour { get => _darkColour; set { _darkColour = value; Invalidate(); } }
+
+        public Color MediumColour { get => _mediumColour; set { _mediumColour = value; Invalidate(); } }
+
+        public Color LightColour { get => _lightColour; set { _lightColour = value; Invalidate(); } }
+
+        public Color LightestColour { get => _lightestColour; set { _lightestColour = value; Invalidate(); } }
+
+        public Color[] BasicPaletteColours { get => _basicPaletteColours; set { _basicPaletteColours = value; Invalidate(); } }
+
+        public CircularPictureBox[] ColourBoxes { get => _colourBoxes; private set => _colourBoxes = value; }
+        #endregion
+
+        #region Constructor
+        public BasicPaletteColourUserControl()
+        {
+            InitializeComponent();
+
+            // Fill array
+            ColourBoxes[0] = cbxBaseColour;
+
+            ColourBoxes[1] = cbxDarkestColour;
+
+            ColourBoxes[2] = cbxDarkColour;
+
+            ColourBoxes[3] = cbxMediumColour;
+
+            ColourBoxes[4] = cbxLightColour;
+
+            ColourBoxes[5] = cbxLightestColour;
+        }
+        #endregion
+
+        #region Methods
+        /// <summary>Fills the colour array.</summary>
+        /// <param name="baseColour">The base colour.</param>
+        /// <param name="darkestColour">The darkest colour.</param>
+        /// <param name="darkColour">The dark colour.</param>
+        /// <param name="mediumColour">The medium colour.</param>
+        /// <param name="lightColour">The light colour.</param>
+        /// <param name="lightestColour">The lightest colour.</param>
+        private void FillColourArray(Color baseColour, Color darkestColour, Color darkColour, Color mediumColour, Color lightColour, Color lightestColour)
+        {
+            if (baseColour != Color.Empty || darkestColour != Color.Empty || darkColour != Color.Empty || mediumColour != Color.Empty || lightColour != Color.Empty || lightestColour != Color.Empty)
+            {
+                BasicPaletteColours[0] = baseColour;
+
+                BasicPaletteColours[1] = darkestColour;
+
+                BasicPaletteColours[2] = darkColour;
+
+                BasicPaletteColours[3] = mediumColour;
+
+                BasicPaletteColours[4] = lightColour;
+
+                BasicPaletteColours[5] = lightestColour;
+            }
+        }
+
+        private void ResetColours()
+        {
+            if (_baseColour != Color.Empty || _darkestColour != Color.Empty || _darkColour != Color.Empty || _mediumColour != Color.Empty || _lightColour != Color.Empty || _lightestColour != Color.Empty)
+            {
+                BaseColour = Color.Empty;
+
+                DarkestColour = Color.Empty;
+
+                DarkColour = Color.Empty;
+
+                MediumColour = Color.Empty;
+
+                LightColour = Color.Empty;
+
+                LightestColour = Color.Empty;
+
+                foreach (CircularPictureBox box in ColourBoxes)
+                {
+                    box.BackColor = _defaultColour;
+                }
+            }
+        }
+        #endregion
+
+        #region Overrides
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            if (_defaultColour != Color.Empty || _defaultColour != Color.Transparent)
+            {
+                ResetColours();
+            }
+
+            base.OnPaint(e);
+        }
+        #endregion
     }
 }
