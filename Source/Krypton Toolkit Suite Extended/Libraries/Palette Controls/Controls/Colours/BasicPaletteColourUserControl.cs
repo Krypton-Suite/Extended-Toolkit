@@ -225,6 +225,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             // BasicPaletteColourUserControl
             // 
+            this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.cpbLightestColour);
             this.Controls.Add(this.klblLightestColour);
             this.Controls.Add(this.cpbLightColour);
@@ -358,6 +359,25 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
         #region Overrides
         protected override void OnPaint(PaintEventArgs e)
         {
+            if (!_automaticallyUpdateColourValues)
+            {
+                cpbBaseColour.BackColor = _baseColour;
+
+                cpbDarkestColour.BackColor = _darkestColour;
+
+                cpbDarkColour.BackColor = _darkColour;
+
+                cpbMediumColour.BackColor = _mediumColour;
+
+                cpbLightColour.BackColor = _lightColour;
+
+                cpbLightestColour.BackColor = _lightestColour;
+            }
+            else
+            {
+
+            }
+
             base.OnPaint(e);
         }
         #endregion 
