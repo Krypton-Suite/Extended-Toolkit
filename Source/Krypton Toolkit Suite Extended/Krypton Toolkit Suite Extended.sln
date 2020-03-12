@@ -51,10 +51,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Exten
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Standard.Controls", "Libraries\Extended Standard Controls\Krypton.Toolkit.Suite.Extended.Standard.Controls.csproj", "{4CA53B6B-EA2F-45D0-9938-B55BCD9F4F4F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton.Toolkit.Suite.Extended.Palette.Controls", "Libraries\Palette Controls\Krypton.Toolkit.Suite.Extended.Palette.Controls.csproj", "{82351157-6D2E-41E5-965C-8DCA28EF548B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Palette.Controls", "Libraries\Palette Controls\Krypton.Toolkit.Suite.Extended.Palette.Controls.csproj", "{82351157-6D2E-41E5-965C-8DCA28EF548B}"
 	ProjectSection(ProjectDependencies) = postProject
 		{C1C4DE3D-5A1B-4436-9217-071B9A946696} = {C1C4DE3D-5A1B-4436-9217-071B9A946696}
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton.Toolkit.Suite.Extended.Tool.Strip.Items", "Libraries\Toolstrip Items\Krypton.Toolkit.Suite.Extended.Tool.Strip.Items.csproj", "{881805F9-0C28-4ECB-A24E-FE48BC0C1A22}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -126,6 +128,10 @@ Global
 		{82351157-6D2E-41E5-965C-8DCA28EF548B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{82351157-6D2E-41E5-965C-8DCA28EF548B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{82351157-6D2E-41E5-965C-8DCA28EF548B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{881805F9-0C28-4ECB-A24E-FE48BC0C1A22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{881805F9-0C28-4ECB-A24E-FE48BC0C1A22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{881805F9-0C28-4ECB-A24E-FE48BC0C1A22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{881805F9-0C28-4ECB-A24E-FE48BC0C1A22}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -147,6 +153,7 @@ Global
 		{20BE79E8-83CD-4AEC-B7B3-A261B72B1F3D} = {1F1DCECC-C25F-4E91-9C8A-ECCBB9827BBA}
 		{4CA53B6B-EA2F-45D0-9938-B55BCD9F4F4F} = {1F1DCECC-C25F-4E91-9C8A-ECCBB9827BBA}
 		{82351157-6D2E-41E5-965C-8DCA28EF548B} = {1F1DCECC-C25F-4E91-9C8A-ECCBB9827BBA}
+		{881805F9-0C28-4ECB-A24E-FE48BC0C1A22} = {1F1DCECC-C25F-4E91-9C8A-ECCBB9827BBA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9A189168-3746-4F9F-8C61-863D83D8ABD2}
