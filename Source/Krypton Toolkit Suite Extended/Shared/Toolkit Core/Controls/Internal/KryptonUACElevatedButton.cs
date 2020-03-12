@@ -89,6 +89,8 @@ namespace Krypton.Toolkit.Extended.Core
                 {
                     try
                     {
+                        // TODO: Fix this
+                        /*
                         var _icon = IconExtractor.LoadIcon(IconType.SHIELD, SystemInformation.SmallIconSize);
 
                         if (_icon != null)
@@ -107,6 +109,7 @@ namespace Krypton.Toolkit.Extended.Core
                         {
                             _isSystemAbleToLoadShield = false;
                         }
+                        */
                     }
                     catch (Exception exc)
                     {

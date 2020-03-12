@@ -22,6 +22,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
         private Base.KryptonKnobControl kkcGreen;
         private Base.KryptonKnobControl kkcBlue;
         private KryptonAlphaValueLabel klblAlpha;
+    
         #region Design Code
 
         private void InitializeComponent()
@@ -401,6 +402,13 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
+        }
+        #endregion
+
+        #region Constructor
+        public KryptonARGBColourSliderHorizontal()
+        {
+            InitializeComponent();
         }
         #endregion
     }

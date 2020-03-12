@@ -25,9 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Controls\Colours\BasicPaletteColourUserControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Update="Controls\Colours\BasicPaletteColourUserControlTest.cs" />
   </ItemGroup>
 
 </Project>

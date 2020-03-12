@@ -89,6 +89,8 @@ namespace Krypton.Toolkit.Extended.Base
                 {
                     try
                     {
+                        // TODO: FIX THIS
+                        /*
                         var _icon = IconExtractor.LoadIcon(IconType.SHIELD, SystemInformation.SmallIconSize);
 
                         if (_icon != null)
@@ -107,6 +109,7 @@ namespace Krypton.Toolkit.Extended.Base
                         {
                             _isSystemAbleToLoadShield = false;
                         }
+                        */
                     }
                     catch (Exception exc)
                     {
@@ -121,9 +124,9 @@ namespace Krypton.Toolkit.Extended.Base
                 CommonNativeMethods.SendMessage(Handle, BCM_SETSHIELD, IntPtr.Zero, new IntPtr(1));
             }
         }
-        #endregion
+#endregion
 
-        #region Overrides
+#region Overrides
         /// <summary>Raises the Click event.</summary>
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected override void OnClick(EventArgs e)
@@ -141,9 +144,9 @@ namespace Krypton.Toolkit.Extended.Base
         {
             base.OnPaint(e);
         }
-        #endregion
+#endregion
 
-        #region Methods
+#region Methods
         /// <summary>Captures the exception.</summary>
         /// <param name="exception">The exception.</param>
         /// <param name="currentWindow">The current window.</param>
@@ -175,7 +178,7 @@ namespace Krypton.Toolkit.Extended.Base
                 KryptonMessageBoxExtended.Show($"An unexpected error has occurred: { exception.Message }.", title, buttons, icon, messageboxTypeface: defaultTypeface);
             }
         }
-        #endregion
+#endregion
 
         /// <summary>Called when [execute process as administrator].</summary>
         /// <param name="sender">The sender.</param>
