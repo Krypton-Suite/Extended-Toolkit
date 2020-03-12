@@ -24,10 +24,13 @@ namespace Krypton.Toolkit.Extended.Dialogs
         private Suite.Extended.Standard.Controls.KryptonButtonExtended kryptonButtonExtended5;
         private Suite.Extended.Standard.Controls.KryptonButtonExtended kryptonButtonExtended6;
         private Suite.Extended.Standard.Controls.KryptonButtonExtended kryptonButtonExtended7;
+        private KryptonARGBColourSliderVertical kargbColour;
+        private Suite.Extended.Palette.Controls.BasicPaletteColourUserControl basicPaletteColourUserControl1;
         private KryptonCancelDialogButton kbtnCancel;
 
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KryptonPaletteBaseColourMixer));
             this.kpnlButtons = new Krypton.Toolkit.KryptonPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
@@ -45,6 +48,8 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kryptonLabelExtended3 = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonLabelExtended();
             this.kbtnOk = new Krypton.Toolkit.Extended.Dialogs.KryptonOKDialogButton();
             this.kbtnCancel = new Krypton.Toolkit.Extended.Dialogs.KryptonCancelDialogButton();
+            this.basicPaletteColourUserControl1 = new Krypton.Toolkit.Suite.Extended.Palette.Controls.BasicPaletteColourUserControl();
+            this.kargbColour = new Krypton.Toolkit.Extended.Colour.Controls.KryptonARGBColourSliderVertical();
             ((System.ComponentModel.ISupportInitialize)(this.kpnlButtons)).BeginInit();
             this.kpnlButtons.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
@@ -83,6 +88,8 @@ namespace Krypton.Toolkit.Extended.Dialogs
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(this.kargbColour);
+            this.kryptonPanel1.Controls.Add(this.basicPaletteColourUserControl1);
             this.kryptonPanel1.Controls.Add(this.kryptonGroupBoxExtended2);
             this.kryptonPanel1.Controls.Add(this.kryptonGroupBoxExtended1);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1027,6 +1034,40 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kbtnCancel.TabIndex = 2;
             this.kbtnCancel.Values.Text = "C&ancel";
             // 
+            // basicPaletteColourUserControl1
+            // 
+            this.basicPaletteColourUserControl1.AutomaticallyUpdateColourValues = false;
+            this.basicPaletteColourUserControl1.BackColor = System.Drawing.Color.Transparent;
+            this.basicPaletteColourUserControl1.BaseColour = System.Drawing.Color.Empty;
+            this.basicPaletteColourUserControl1.BasicPaletteColours = new System.Drawing.Color[] {
+        System.Drawing.Color.Empty,
+        System.Drawing.Color.Empty,
+        System.Drawing.Color.Empty,
+        System.Drawing.Color.Empty,
+        System.Drawing.Color.Empty,
+        System.Drawing.Color.Empty};
+            this.basicPaletteColourUserControl1.DarkColour = System.Drawing.Color.Empty;
+            this.basicPaletteColourUserControl1.DarkestColour = System.Drawing.Color.Empty;
+            this.basicPaletteColourUserControl1.DefaultColour = System.Drawing.Color.Empty;
+            this.basicPaletteColourUserControl1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.basicPaletteColourUserControl1.LightColour = System.Drawing.Color.Empty;
+            this.basicPaletteColourUserControl1.LightestColour = System.Drawing.Color.Empty;
+            this.basicPaletteColourUserControl1.Location = new System.Drawing.Point(0, 0);
+            this.basicPaletteColourUserControl1.MediumColour = System.Drawing.Color.Empty;
+            this.basicPaletteColourUserControl1.Name = "basicPaletteColourUserControl1";
+            this.basicPaletteColourUserControl1.Size = new System.Drawing.Size(149, 546);
+            this.basicPaletteColourUserControl1.TabIndex = 7;
+            // 
+            // kargbColour
+            // 
+            this.kargbColour.BackColor = System.Drawing.Color.Transparent;
+            this.kargbColour.Colour = System.Drawing.Color.Empty;
+            this.kargbColour.ColourHexadecimalValue = null;
+            this.kargbColour.Location = new System.Drawing.Point(155, 21);
+            this.kargbColour.Name = "kargbColour";
+            this.kargbColour.Size = new System.Drawing.Size(341, 491);
+            this.kargbColour.TabIndex = 7;
+            // 
             // KryptonPaletteBaseColourMixer
             // 
             this.ClientSize = new System.Drawing.Size(759, 593);
@@ -1034,11 +1075,13 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.kpnlButtons);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "KryptonPaletteBaseColourMixer";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.Text = "Base Palette Colours";
             ((System.ComponentModel.ISupportInitialize)(this.kpnlButtons)).EndInit();
             this.kpnlButtons.ResumeLayout(false);
             this.kpnlButtons.PerformLayout();

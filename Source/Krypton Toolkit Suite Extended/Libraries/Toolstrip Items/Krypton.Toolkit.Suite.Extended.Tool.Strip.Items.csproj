@@ -13,9 +13,15 @@
   <PropertyGroup>
     <DocumentationFile>..\..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Tool.Strip.Items.xml</DocumentationFile>
     <OutputPath>..\..\..\..\Bin\$(configuration)\</OutputPath>
+    <Description>Contains menu, tool and status strip items.</Description>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Krypton.Toolkit.Experimental" Version="5.500.2003" />
+    <PackageReference Include="System.Runtime" Version="4.3.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Krypton Toolkit Suite Extended Base\Krypton.Toolkit.Suite.Extended.Base.csproj" />
   </ItemGroup>
 </Project>
