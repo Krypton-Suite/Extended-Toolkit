@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Krypton.Toolkit.Extended.Colour.Controls.Resources {
+namespace Krypton.Toolkit.Extended.Colour.Controls {
     using System;
     
     

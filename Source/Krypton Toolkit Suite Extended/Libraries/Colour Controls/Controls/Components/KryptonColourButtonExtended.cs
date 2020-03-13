@@ -1,5 +1,4 @@
-﻿using Krypton.Toolkit.Extended.Colour.Controls.Resources;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;

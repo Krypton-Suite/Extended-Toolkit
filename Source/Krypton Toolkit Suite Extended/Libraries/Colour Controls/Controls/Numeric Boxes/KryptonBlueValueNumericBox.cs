@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using Krypton.Toolkit.Extended.Colour.Controls.Properties;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Extended.Colour.Controls
@@ -35,6 +36,14 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             UseAccessibleUI = false;
 
             StateCommon.Content.Font = Typeface;
+
+            ToolTipValues.Description = "The blue value";
+
+            ToolTipValues.Heading = "Blue Value";
+
+            ToolTipValues.EnableToolTips = true;
+
+            ToolTipValues.Image = Resources.Blue;
         }
         #endregion
 

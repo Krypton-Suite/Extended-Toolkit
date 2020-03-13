@@ -475,7 +475,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             // scpColour
             // 
             this.scpColour.Color = System.Drawing.Color.Empty;
-            this.scpColour.Image = global::Krypton.Toolkit.Extended.Colour.Controls.Resources.LibraryResources.dropper;
+            this.scpColour.Image = LibraryResources.dropper;
             this.scpColour.Location = new System.Drawing.Point(18, 154);
             this.scpColour.Name = "scpColour";
             this.scpColour.ShowGrid = false;

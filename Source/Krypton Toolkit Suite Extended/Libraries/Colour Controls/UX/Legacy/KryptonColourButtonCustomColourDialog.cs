@@ -179,7 +179,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.kbtnSaveColourPalette.Name = "kbtnSaveColourPalette";
             this.kbtnSaveColourPalette.Size = new System.Drawing.Size(23, 23);
             this.kbtnSaveColourPalette.TabIndex = 105;
-            this.kbtnSaveColourPalette.Values.Image = global::Krypton.Toolkit.Extended.Colour.Controls.Resources.LibraryResources.palette_save;
+            this.kbtnSaveColourPalette.Values.Image = LibraryResources.palette_save;
             this.kbtnSaveColourPalette.Values.Text = "";
             this.kbtnSaveColourPalette.Click += new System.EventHandler(this.KbtnSaveColourPalette_Click);
             // 
@@ -189,7 +189,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.kbtnLoadColourPalette.Name = "kbtnLoadColourPalette";
             this.kbtnLoadColourPalette.Size = new System.Drawing.Size(23, 23);
             this.kbtnLoadColourPalette.TabIndex = 104;
-            this.kbtnLoadColourPalette.Values.Image = global::Krypton.Toolkit.Extended.Colour.Controls.Resources.LibraryResources.palette_load;
+            this.kbtnLoadColourPalette.Values.Image = LibraryResources.palette_load;
             this.kbtnLoadColourPalette.Values.Text = "";
             this.kbtnLoadColourPalette.Click += new System.EventHandler(this.KbtnLoadColourPalette_Click);
             // 

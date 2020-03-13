@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Extended.Dialogs
 {
-    public class KryptonInputBoxExtended : UserControl
+    public class KryptonInputBoxExtendedControl : UserControl
     {
         #region Designer Code
         private Krypton.Toolkit.KryptonPanel kryptonPanel1;
@@ -309,7 +309,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
         #endregion
 
         #region Constructors
-        public KryptonInputBoxExtended()
+        public KryptonInputBoxExtendedControl()
         {
             InitializeComponent();
 

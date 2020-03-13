@@ -1,35 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Krypton.Toolkit.Extended.Colour.Controls;
+using System.ComponentModel;
+using System.Drawing;
 
 namespace Krypton.Toolkit.Extended.Dialogs
 {
+    [DefaultEvent("ColourChanged"), DefaultProperty("Colour")]
     public class KryptonPaletteColourMixerBasic : KryptonForm
     {
+        #region Design Code
         private KryptonPanel kpnlButtons;
         private KryptonOKDialogButton kbtnOk;
         private System.Windows.Forms.Panel panel1;
         private KryptonPanel kryptonPanel1;
-        private Base.CircularPictureBox circularPictureBox1;
-        private Colour.Controls.KryptonRGBColourSliderHorizontal kryptonRGBColourSliderHorizontal1;
+        private Base.CircularPictureBox cpbColourPreview;
+        private Colour.Controls.KryptonRGBColourSliderHorizontal krgbcsColour;
         private KryptonCancelDialogButton kbtnCancel;
 
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KryptonPaletteColourMixerBasic));
             this.kpnlButtons = new Krypton.Toolkit.KryptonPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
-            this.circularPictureBox1 = new Krypton.Toolkit.Extended.Base.CircularPictureBox();
+            this.cpbColourPreview = new Krypton.Toolkit.Extended.Base.CircularPictureBox();
+            this.krgbcsColour = new Krypton.Toolkit.Extended.Colour.Controls.KryptonRGBColourSliderHorizontal();
             this.kbtnOk = new Krypton.Toolkit.Extended.Dialogs.KryptonOKDialogButton();
             this.kbtnCancel = new Krypton.Toolkit.Extended.Dialogs.KryptonCancelDialogButton();
-            this.kryptonRGBColourSliderHorizontal1 = new Krypton.Toolkit.Extended.Colour.Controls.KryptonRGBColourSliderHorizontal();
             ((System.ComponentModel.ISupportInitialize)(this.kpnlButtons)).BeginInit();
             this.kpnlButtons.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpbColourPreview)).BeginInit();
             this.SuspendLayout();
             // 
             // kpnlButtons
@@ -53,23 +54,33 @@ namespace Krypton.Toolkit.Extended.Dialogs
             // 
             // kryptonPanel1
             // 
-            this.kryptonPanel1.Controls.Add(this.kryptonRGBColourSliderHorizontal1);
-            this.kryptonPanel1.Controls.Add(this.circularPictureBox1);
+            this.kryptonPanel1.Controls.Add(this.krgbcsColour);
+            this.kryptonPanel1.Controls.Add(this.cpbColourPreview);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel1.Name = "kryptonPanel1";
             this.kryptonPanel1.Size = new System.Drawing.Size(629, 214);
             this.kryptonPanel1.TabIndex = 7;
             // 
-            // circularPictureBox1
+            // cpbColourPreview
             // 
-            this.circularPictureBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.circularPictureBox1.Location = new System.Drawing.Point(12, 12);
-            this.circularPictureBox1.Name = "circularPictureBox1";
-            this.circularPictureBox1.Size = new System.Drawing.Size(196, 196);
-            this.circularPictureBox1.TabIndex = 8;
-            this.circularPictureBox1.TabStop = false;
-            this.circularPictureBox1.ToolTipValues = null;
+            this.cpbColourPreview.BackColor = System.Drawing.SystemColors.Control;
+            this.cpbColourPreview.Location = new System.Drawing.Point(12, 12);
+            this.cpbColourPreview.Name = "cpbColourPreview";
+            this.cpbColourPreview.Size = new System.Drawing.Size(196, 196);
+            this.cpbColourPreview.TabIndex = 8;
+            this.cpbColourPreview.TabStop = false;
+            this.cpbColourPreview.ToolTipValues = null;
+            // 
+            // krgbcsColour
+            // 
+            this.krgbcsColour.BackColor = System.Drawing.Color.Transparent;
+            this.krgbcsColour.Colour = System.Drawing.Color.Empty;
+            this.krgbcsColour.Location = new System.Drawing.Point(214, 12);
+            this.krgbcsColour.Name = "krgbcsColour";
+            this.krgbcsColour.Size = new System.Drawing.Size(403, 189);
+            this.krgbcsColour.TabIndex = 9;
+            this.krgbcsColour.ColourChanged += new Krypton.Toolkit.Extended.Colour.Controls.KryptonRGBColourSliderHorizontal.ColourChangedEventHandler(this.krgbcsColour_ColourChanged);
             // 
             // kbtnOk
             // 
@@ -237,28 +248,71 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kbtnCancel.TabIndex = 2;
             this.kbtnCancel.Values.Text = "C&ancel";
             // 
-            // kryptonRGBColourSliderHorizontal1
-            // 
-            this.kryptonRGBColourSliderHorizontal1.BackColor = System.Drawing.Color.Transparent;
-            this.kryptonRGBColourSliderHorizontal1.Location = new System.Drawing.Point(214, 19);
-            this.kryptonRGBColourSliderHorizontal1.Name = "kryptonRGBColourSliderHorizontal1";
-            this.kryptonRGBColourSliderHorizontal1.Size = new System.Drawing.Size(403, 189);
-            this.kryptonRGBColourSliderHorizontal1.TabIndex = 8;
-            // 
             // KryptonPaletteColourMixerBasic
             // 
             this.ClientSize = new System.Drawing.Size(629, 261);
             this.Controls.Add(this.kryptonPanel1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.kpnlButtons);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "KryptonPaletteColourMixerBasic";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.Text = "Basic Colour Mixer";
             ((System.ComponentModel.ISupportInitialize)(this.kpnlButtons)).EndInit();
             this.kpnlButtons.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpbColourPreview)).EndInit();
             this.ResumeLayout(false);
 
         }
+        #endregion
+
+        #region Variable
+        private Color _colour;
+        #endregion
+
+        #region Properties
+        public Color Colour
+        {
+            get => _colour;
+
+            set
+            {
+                _colour = value;
+
+                ColourChangedEventArgs e = new ColourChangedEventArgs(value);
+
+                OnColourChanged(this, e);
+            }
+        }
+        #endregion
+
+        #region Event
+        public delegate void ColourChangedEventHandler(object sender, ColourChangedEventArgs e);
+
+        public event ColourChangedEventHandler ColourChanged;
+
+        protected virtual void OnColourChanged(object sender, ColourChangedEventArgs e) => ColourChanged?.Invoke(sender, e);
+        #endregion
+
+        #region Constructor
+        public KryptonPaletteColourMixerBasic()
+        {
+            InitializeComponent();
+        }
+        #endregion
+
+        private void krgbcsColour_ColourChanged(object sender, ColourChangedEventArgs e)
+        {
+            UpdateColour(e.Colour);
+        }
+
+        private void UpdateColour(Color colour) => cpbColourPreview.BackColor = colour;
     }
 }
