@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Runtime.InteropServices;
 
 namespace Krypton.Toolkit.Extended.Base
