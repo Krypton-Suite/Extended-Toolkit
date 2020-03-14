@@ -924,6 +924,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             pbxIcon.Visible = showIcon;
         }
 
+        // TODO: Revisit
         private void ResetDefaultLayout()
         {
             AdjustLayout(new Size(487, 58), new Size(487, 153), new Point(12, 6), new Point(470, 6));

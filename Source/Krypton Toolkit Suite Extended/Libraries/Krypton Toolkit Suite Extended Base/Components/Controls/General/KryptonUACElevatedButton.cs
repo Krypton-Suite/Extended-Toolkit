@@ -15,7 +15,7 @@ namespace Krypton.Toolkit.Extended.Base
     /// The shield is extracted from the system with LoadImage if possible. Otherwise the shield will be enabled by sending the BCM_SETSHIELD Message to the control.
     /// If the operating system is not Windows Vista or higher, no shield will be displayed as there's no such thing as UAC on the target system -> the shield is obsolete.
     /// </remarks>
-    [DesignerCategory("code"), Description("Krypton UAC Elevated Button"), ToolboxBitmap(typeof(KryptonButton), "ToolboxBitmaps.UACButton.bmp"), ToolboxItem(true)]
+    [DefaultEvent("ExecuteProcessAsAdministrator"), DesignerCategory("code"), Description("Krypton UAC Elevated Button"), ToolboxBitmap(typeof(KryptonButton), "ToolboxBitmaps.UACButton.bmp"), ToolboxItem(true)]
     public partial class KryptonUACElevatedButton : KryptonButton
     {
         #region Variables
@@ -70,7 +70,9 @@ namespace Krypton.Toolkit.Extended.Base
         public delegate void ExecuteProcessAsAdministratorEventHandler(object sender, ExecuteProcessAsAdministratorEventArgs e);
 
         /// <summary>The execute process as administrator</summary>
-        public ExecuteProcessAsAdministratorEventHandler ExecuteProcessAsAdministrator;
+        public event ExecuteProcessAsAdministratorEventHandler ExecuteProcessAsAdministrator;
+
+        protected virtual void OnExecuteProcessAsAdministrator(object sender, ExecuteProcessAsAdministratorEventArgs e) => ExecuteProcessAsAdministrator?.Invoke(sender, e);
         #endregion
 
         #region Constructor
@@ -124,9 +126,9 @@ namespace Krypton.Toolkit.Extended.Base
                 CommonNativeMethods.SendMessage(Handle, BCM_SETSHIELD, IntPtr.Zero, new IntPtr(1));
             }
         }
-#endregion
+        #endregion
 
-#region Overrides
+        #region Overrides
         /// <summary>Raises the Click event.</summary>
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected override void OnClick(EventArgs e)
@@ -144,9 +146,9 @@ namespace Krypton.Toolkit.Extended.Base
         {
             base.OnPaint(e);
         }
-#endregion
+        #endregion
 
-#region Methods
+        #region Methods
         /// <summary>Captures the exception.</summary>
         /// <param name="exception">The exception.</param>
         /// <param name="currentWindow">The current window.</param>
@@ -178,17 +180,6 @@ namespace Krypton.Toolkit.Extended.Base
                 KryptonMessageBoxExtended.Show($"An unexpected error has occurred: { exception.Message }.", title, buttons, icon, messageboxTypeface: defaultTypeface);
             }
         }
-#endregion
-
-        /// <summary>Called when [execute process as administrator].</summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="e">The <see cref="ExecuteProcessAsAdministratorEventArgs"/> instance containing the event data.</param>
-        protected virtual void OnExecuteProcessAsAdministrator(object sender, ExecuteProcessAsAdministratorEventArgs e)
-        {
-            if (ExecuteProcessAsAdministrator != null)
-            {
-                ExecuteProcessAsAdministrator(sender, e);
-            }
-        }
+        #endregion
     }
 }

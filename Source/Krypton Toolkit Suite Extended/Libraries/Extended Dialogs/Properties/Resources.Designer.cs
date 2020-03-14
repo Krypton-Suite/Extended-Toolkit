@@ -99,5 +99,25 @@ namespace Krypton.Toolkit.Extended.Dialogs.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Run_48 {
+            get {
+                object obj = ResourceManager.GetObject("Run_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon Run_481 {
+            get {
+                object obj = ResourceManager.GetObject("Run_481", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
     }
 }
