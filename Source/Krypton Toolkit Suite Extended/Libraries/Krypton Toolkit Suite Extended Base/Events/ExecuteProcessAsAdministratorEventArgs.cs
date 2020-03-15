@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.Linq;
 using System.Security.Principal;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Extended.Base
@@ -27,7 +24,7 @@ namespace Krypton.Toolkit.Extended.Base
         /// <summary>Elevates the process with administrative rights.</summary>
         /// <param name="processName">Name of the process.</param>
         /// <exception cref="ArgumentNullException"></exception>
-        private void ElevateProcessWithAdministrativeRights(string processName)
+        public void ElevateProcessWithAdministrativeRights(string processName)
         {
             WindowsPrincipal principal = new WindowsPrincipal(WindowsIdentity.GetCurrent());
 

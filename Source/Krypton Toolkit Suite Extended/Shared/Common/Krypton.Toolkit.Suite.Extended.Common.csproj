@@ -48,6 +48,7 @@
   <PropertyGroup>
     <DocumentationFile>..\..\..\..\Bin\$(configuration)\Krypton.Toolkit.Extended.Common.xml</DocumentationFile>
     <OutputPath>..\..\..\..\Bin\$(configuration)\</OutputPath>
+    <AssemblyVersion>5.500.2005.0</AssemblyVersion>
   </PropertyGroup>
 
 </Project>

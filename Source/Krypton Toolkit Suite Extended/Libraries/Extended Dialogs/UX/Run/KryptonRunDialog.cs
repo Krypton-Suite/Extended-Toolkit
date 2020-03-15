@@ -1,5 +1,10 @@
-﻿using Krypton.Toolkit.Extended.Base;
+﻿using Krypton.Toolkit.Extended.Core;
+using Microsoft.WindowsAPICodePack.Dialogs;
 using System;
+using System.Diagnostics;
+using System.Drawing;
+using System.IO;
+using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Extended.Dialogs
 {
@@ -456,6 +461,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.ktxteUserInput.StateNormalTextColour = System.Drawing.Color.Empty;
             this.ktxteUserInput.TabIndex = 8;
             this.ktxteUserInput.Typeface = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ktxteUserInput.TextChanged += new System.EventHandler(this.ktxteUserInput_TextChanged);
             // 
             // pictureBox1
             // 
@@ -537,6 +543,8 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kcmbeUserInput.StateTrackingComboBoxItemContentShortTextColourOne = System.Drawing.Color.Empty;
             this.kcmbeUserInput.StateTrackingComboBoxItemContentShortTextColourTwo = System.Drawing.Color.Empty;
             this.kcmbeUserInput.TabIndex = 4;
+            this.kcmbeUserInput.TextUpdate += new System.EventHandler(this.kcmbeUserInput_TextUpdate);
+            this.kcmbeUserInput.TextChanged += new System.EventHandler(this.kcmbeUserInput_TextChanged);
             // 
             // kryptonLabelExtended1
             // 
@@ -636,34 +644,269 @@ namespace Krypton.Toolkit.Extended.Dialogs
         private IconVisibility _iconVisibility;
         #endregion
 
+        #region Constructors
+        /// <summary>Initializes a new instance of the <see cref="KryptonRunDialog"/> class.</summary>
+        /// <param name="type">The input type.</param>
+        /// <param name="iconVisibility">The icon visibility.</param>
+        public KryptonRunDialog(Type type = Type.TEXTBOX, IconVisibility iconVisibility = IconVisibility.VISIBLE)
+        {
+            InitializeComponent();
+
+            SetInputType(type);
+
+            SetIconVisibility(iconVisibility);
+
+            AdaptUI(type, iconVisibility);
+        }
+        #endregion
+
+        #region Methods
+        /// <summary>Determines whether [has file extension] [the specified path].</summary>
+        /// <param name="path">The file path.</param>
+        /// <returns><c>true</c> if [has file extension] [the specified path]; otherwise, <c>false</c>.</returns>
+        private bool HasFileExtension(string path)
+        {
+            if (Path.HasExtension(path))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        /// <summary>Determines whether [is text box string empty].</summary>
+        /// <returns><c>true</c> if [is text box string empty]; otherwise, <c>false</c>.</returns>
+        private bool IsTextBoxStringEmpty() => string.IsNullOrEmpty(ktxteUserInput.Text);
+
+        /// <summary>Determines whether [is ComboBox string empty].</summary>
+        /// <returns><c>true</c> if [is ComboBox string empty]; otherwise, <c>false</c>.</returns>
+        private bool IsComboBoxStringEmpty() => string.IsNullOrEmpty(kcmbeUserInput.Text);
+
+        /// <summary>Runs the process.</summary>
+        /// <param name="path">The file path.</param>
+        private void RunProcess(string path)
+        {
+            try
+            {
+                ProcessStartInfo psi = new ProcessStartInfo(path);
+
+                Process.Start(psi);
+
+                Close();
+            }
+            catch (Exception exc)
+            {
+                ExceptionHandler.CaptureException(exc);
+            }
+        }
+
+        /// <summary>Gets the application icon.</summary>
+        /// <param name="path">The file path.</param>
+        /// <returns>The application icon.</returns>
+        private Image GetApplicationIcon(string path) => Icon.ExtractAssociatedIcon(path).ToBitmap();
+
+        /// <summary>Launches the process.</summary>
+        /// <param name="path">The file path.</param>
+        private void LaunchProcess(string path) => Process.Start("explorer.exe", path);
+
+        /// <summary>Enables the run button.</summary>
+        /// <param name="value">if set to <c>true</c> [value].</param>
+        private void EnableRunButton(bool value) => kbtnRun.Enabled = value;
+
+        /// <summary>Enables the locate button.</summary>
+        /// <param name="value">if set to <c>true</c> [value].</param>
+        private void EnableLocateButton(bool value) => kbtneLocate.Enabled = value;
+
+        /// <summary>Adapts the UI.</summary>
+        /// <param name="type">The input type.</param>
+        /// <param name="iconVisibility">The icon visibility.</param>
+        public void AdaptUI(Type type, IconVisibility iconVisibility)
+        {
+            switch (iconVisibility)
+            {
+                case IconVisibility.HIDDEN:
+                    pbxIcon.Visible = false;
+
+                    switch (type)
+                    {
+                        case Type.COMBOBOX:
+                            kcmbeUserInput.Visible = true;
+
+                            kcmbeUserInput.Size = new Size(614, 25);
+
+                            ktxteUserInput.Visible = false;
+                            break;
+                        case Type.TEXTBOX:
+                            kcmbeUserInput.Visible = false;
+
+                            ktxteUserInput.Visible = true;
+
+                            ktxteUserInput.Size = new Size(614, 25);
+                            break;
+                    }
+                    break;
+                case IconVisibility.VISIBLE:
+                    pbxIcon.Visible = true;
+
+                    switch (type)
+                    {
+                        case Type.COMBOBOX:
+                            kcmbeUserInput.Visible = true;
+
+                            kcmbeUserInput.Size = new Size(576, 25);
+
+                            ktxteUserInput.Visible = false;
+                            break;
+                        case Type.TEXTBOX:
+                            kcmbeUserInput.Visible = false;
+
+                            ktxteUserInput.Visible = true;
+
+                            ktxteUserInput.Size = new Size(576, 25);
+                            break;
+                    }
+                    break;
+
+            }
+        }
+        #endregion
+
+        #region Setters/Getters
+        /// <summary>
+        /// Sets the InputType.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void SetInputType(Type value) => _type = value;
+
+        /// <summary>
+        /// Gets the InputType.
+        /// </summary>
+        /// <returns>The value of _type.</returns>
+        public Type GetInputType() => _type;
+
+        /// <summary>
+        /// Sets the IconVisibility.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void SetIconVisibility(IconVisibility value) => _iconVisibility = value;
+
+        /// <summary>
+        /// Gets the IconVisibility.
+        /// </summary>
+        /// <returns>The value of _iconVisibility.</returns>
+        public IconVisibility GetIconVisibility() => _iconVisibility;
+        #endregion
+
         private void kbtnBrowse_Click(object sender, EventArgs e)
         {
+            CommonOpenFileDialog cofd = new CommonOpenFileDialog();
 
+            cofd.Title = "Browse for a Process:";
+
+            if (cofd.ShowDialog() == CommonFileDialogResult.Ok)
+            {
+                if (GetInputType() == Type.COMBOBOX)
+                {
+                    kcmbeUserInput.Text = Path.GetFullPath(cofd.FileName);
+                }
+                else if (GetInputType() == Type.TEXTBOX)
+                {
+                    ktxteUserInput.Text = Path.GetFullPath(cofd.FileName);
+                }
+            }
         }
 
         private void kcdbCancel_Click(object sender, EventArgs e)
         {
+            DialogResult = DialogResult.Cancel;
 
+            Close();
         }
 
         private void kbtnRun_Click(object sender, EventArgs e)
         {
-
+            if (GetInputType() == Type.COMBOBOX)
+            {
+                RunProcess(kcmbeUserInput.Text);
+            }
+            else if (GetInputType() == Type.TEXTBOX)
+            {
+                RunProcess(ktxteUserInput.Text);
+            }
         }
 
         private void kuacRun_Click(object sender, EventArgs e)
         {
-
+            if (GetInputType() == Type.COMBOBOX)
+            {
+                RunProcess(kcmbeUserInput.Text);
+            }
+            else if (GetInputType() == Type.TEXTBOX)
+            {
+                RunProcess(ktxteUserInput.Text);
+            }
         }
 
         private void kbtneLocate_Click(object sender, EventArgs e)
         {
-
+            if (GetInputType() == Type.COMBOBOX)
+            {
+                LaunchProcess(kcmbeUserInput.Text);
+            }
+            else if (GetInputType() == Type.TEXTBOX)
+            {
+                LaunchProcess(ktxteUserInput.Text);
+            }
         }
 
-        private void kuacRun_ExecuteProcessAsAdministrator(object sender, ExecuteProcessAsAdministratorEventArgs e)
+        private void kuacRun_ExecuteProcessAsAdministrator(object sender, Base.ExecuteProcessAsAdministratorEventArgs e)
         {
+            if (GetInputType() == Type.COMBOBOX)
+            {
+                e.ElevateProcessWithAdministrativeRights(kcmbeUserInput.Text);
+            }
+            else if (GetInputType() == Type.TEXTBOX)
+            {
+                e.ElevateProcessWithAdministrativeRights(ktxteUserInput.Text);
+            }
+        }
 
+        private void ktxteUserInput_TextChanged(object sender, EventArgs e)
+        {
+            if (HasFileExtension(ktxteUserInput.Text))
+            {
+                EnableLocateButton(IsTextBoxStringEmpty());
+
+                EnableRunButton(IsTextBoxStringEmpty());
+            }
+
+            if (GetIconVisibility() == IconVisibility.VISIBLE && IsTextBoxStringEmpty()) GetApplicationIcon(ktxteUserInput.Text);
+        }
+
+        private void kcmbeUserInput_TextChanged(object sender, EventArgs e)
+        {
+            if (HasFileExtension(kcmbeUserInput.Text))
+            {
+                EnableLocateButton(IsComboBoxStringEmpty());
+
+                EnableRunButton(IsComboBoxStringEmpty());
+            }
+
+            if (GetIconVisibility() == IconVisibility.VISIBLE && IsComboBoxStringEmpty()) GetApplicationIcon(kcmbeUserInput.Text);
+        }
+
+        private void kcmbeUserInput_TextUpdate(object sender, EventArgs e)
+        {
+            if (HasFileExtension(kcmbeUserInput.Text))
+            {
+                EnableLocateButton(IsComboBoxStringEmpty());
+
+                EnableRunButton(IsComboBoxStringEmpty());
+            }
+
+            if (GetIconVisibility() == IconVisibility.VISIBLE && IsComboBoxStringEmpty()) GetApplicationIcon(kcmbeUserInput.Text);
         }
     }
 }

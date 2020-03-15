@@ -9,6 +9,7 @@
     
     <RootNamespace>Krypton.Toolkit.Extended.Global.Utilities</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
+    <AssemblyVersion>5.500.2005.0</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>
