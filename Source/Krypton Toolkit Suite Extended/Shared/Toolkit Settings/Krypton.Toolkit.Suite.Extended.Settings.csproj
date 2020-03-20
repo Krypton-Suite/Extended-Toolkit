@@ -92,6 +92,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>GlobalStringSettings.settings</DependentUpon>
     </Compile>
+    <Compile Update="Settings\Other\StringCollectionSettings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>StringCollectionSettings.settings</DependentUpon>
+    </Compile>
     <Compile Update="Settings\Palette Explorer\Colours\AllMergedColourSettings.Designer.cs">
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <AutoGen>True</AutoGen>
@@ -241,6 +246,10 @@
     <None Update="Settings\Global\GlobalStringSettings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>GlobalStringSettings.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Settings\Other\StringCollectionSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>StringCollectionSettings.Designer.cs</LastGenOutput>
     </None>
     <None Update="Settings\Palette Explorer\Colours\AllMergedColourSettings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
