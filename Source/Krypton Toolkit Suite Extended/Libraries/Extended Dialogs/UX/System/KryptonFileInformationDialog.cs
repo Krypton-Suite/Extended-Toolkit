@@ -1,4 +1,5 @@
 ﻿using Krypton.Toolkit.Extended.Common;
+using Krypton.Toolkit.Extended.Core;
 using System;
 using System.Diagnostics;
 using System.Drawing;
@@ -38,7 +39,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
         private Suite.Extended.Standard.Controls.KryptonButtonExtended kbtnCalculateChecksum;
         private Suite.Extended.Standard.Controls.KryptonGroupBoxExtended kryptonGroupBoxExtended2;
         private Suite.Extended.Standard.Controls.KryptonButtonExtended kbtneValidateChecksum;
-        private Suite.Extended.Standard.Controls.KryptonComboBoxExtended kryptonComboBoxExtended2;
+        private Suite.Extended.Standard.Controls.KryptonComboBoxExtended kcmbeValidateChecksumType;
         private Suite.Extended.Standard.Controls.KryptonLabelExtended kryptonLabelExtended11;
         private Suite.Extended.Standard.Controls.KryptonTextBoxExtended ktxtFileHash;
         private Suite.Extended.Standard.Controls.KryptonButtonExtended kbtnImportHash;
@@ -60,7 +61,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
         private KryptonCheckBox kcbEncrypted;
         private KryptonCheckBox kcbArchive;
         private KryptonButton kbtnGetFileAttributes;
-        private KryptonButton kryptonButton1;
+        private KryptonButton kbtnSetFileAttributes;
         private KryptonButton kbtnClearAllFileAttributes;
         private System.Windows.Forms.ContextMenuStrip ctxHashMenu;
         private System.ComponentModel.IContainer components;
@@ -105,8 +106,16 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kryptonGroupBoxExtended2 = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonGroupBoxExtended();
             this.kbtnImportHash = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonButtonExtended();
             this.ktxtFileHash = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonTextBoxExtended();
+            this.ctxHashMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.cutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+            this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
+            this.selectAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.kbtneValidateChecksum = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonButtonExtended();
-            this.kryptonComboBoxExtended2 = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonComboBoxExtended();
+            this.kcmbeValidateChecksumType = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonComboBoxExtended();
             this.kryptonLabelExtended11 = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonLabelExtended();
             this.kryptonGroupBoxExtended1 = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonGroupBoxExtended();
             this.kbtnCalculateChecksum = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonButtonExtended();
@@ -115,7 +124,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kryptonLabelExtended8 = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonLabelExtended();
             this.kryptonPage3 = new Krypton.Navigator.KryptonPage();
             this.kbtnGetFileAttributes = new Krypton.Toolkit.KryptonButton();
-            this.kryptonButton1 = new Krypton.Toolkit.KryptonButton();
+            this.kbtnSetFileAttributes = new Krypton.Toolkit.KryptonButton();
             this.kbtnClearAllFileAttributes = new Krypton.Toolkit.KryptonButton();
             this.kryptonGroupBoxExtended3 = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonGroupBoxExtended();
             this.kcbTemporary = new Krypton.Toolkit.KryptonCheckBox();
@@ -135,14 +144,6 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kcbEncrypted = new Krypton.Toolkit.KryptonCheckBox();
             this.kcbArchive = new Krypton.Toolkit.KryptonCheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.ctxHashMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.cutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
-            this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
-            this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
-            this.selectAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bgwMD5 = new System.ComponentModel.BackgroundWorker();
             this.bgwSHA1 = new System.ComponentModel.BackgroundWorker();
             this.bgwSHA256 = new System.ComponentModel.BackgroundWorker();
@@ -164,7 +165,8 @@ namespace Krypton.Toolkit.Extended.Dialogs
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBoxExtended2.Panel)).BeginInit();
             this.kryptonGroupBoxExtended2.Panel.SuspendLayout();
             this.kryptonGroupBoxExtended2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonComboBoxExtended2)).BeginInit();
+            this.ctxHashMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kcmbeValidateChecksumType)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBoxExtended1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBoxExtended1.Panel)).BeginInit();
             this.kryptonGroupBoxExtended1.Panel.SuspendLayout();
@@ -176,7 +178,6 @@ namespace Krypton.Toolkit.Extended.Dialogs
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBoxExtended3.Panel)).BeginInit();
             this.kryptonGroupBoxExtended3.Panel.SuspendLayout();
             this.kryptonGroupBoxExtended3.SuspendLayout();
-            this.ctxHashMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // kryptonPanel1
@@ -456,7 +457,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kryptonPage1,
             this.kryptonPage2,
             this.kryptonPage3});
-            this.kryptonNavigator1.SelectedIndex = 1;
+            this.kryptonNavigator1.SelectedIndex = 2;
             this.kryptonNavigator1.Size = new System.Drawing.Size(584, 564);
             this.kryptonNavigator1.TabIndex = 0;
             this.kryptonNavigator1.Text = "kryptonNavigator1";
@@ -696,7 +697,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kryptonGroupBoxExtended2.Panel.Controls.Add(this.kbtnImportHash);
             this.kryptonGroupBoxExtended2.Panel.Controls.Add(this.ktxtFileHash);
             this.kryptonGroupBoxExtended2.Panel.Controls.Add(this.kbtneValidateChecksum);
-            this.kryptonGroupBoxExtended2.Panel.Controls.Add(this.kryptonComboBoxExtended2);
+            this.kryptonGroupBoxExtended2.Panel.Controls.Add(this.kcmbeValidateChecksumType);
             this.kryptonGroupBoxExtended2.Panel.Controls.Add(this.kryptonLabelExtended11);
             this.kryptonGroupBoxExtended2.ShortTextTypeface = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kryptonGroupBoxExtended2.Size = new System.Drawing.Size(547, 174);
@@ -845,6 +846,60 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.ktxtFileHash.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.ktxtFileHash.Typeface = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
+            // ctxHashMenu
+            // 
+            this.ctxHashMenu.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.ctxHashMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cutToolStripMenuItem,
+            this.toolStripMenuItem1,
+            this.copyToolStripMenuItem,
+            this.toolStripMenuItem2,
+            this.pasteToolStripMenuItem,
+            this.toolStripMenuItem3,
+            this.selectAllToolStripMenuItem});
+            this.ctxHashMenu.Name = "ctxHashMenu";
+            this.ctxHashMenu.Size = new System.Drawing.Size(181, 132);
+            // 
+            // cutToolStripMenuItem
+            // 
+            this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
+            this.cutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cutToolStripMenuItem.Text = "C&ut";
+            this.cutToolStripMenuItem.Click += new System.EventHandler(this.cutToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(119, 6);
+            // 
+            // copyToolStripMenuItem
+            // 
+            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.copyToolStripMenuItem.Text = "&Copy";
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(119, 6);
+            // 
+            // pasteToolStripMenuItem
+            // 
+            this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.pasteToolStripMenuItem.Text = "&Paste";
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(119, 6);
+            // 
+            // selectAllToolStripMenuItem
+            // 
+            this.selectAllToolStripMenuItem.Name = "selectAllToolStripMenuItem";
+            this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.selectAllToolStripMenuItem.Text = "&Select All";
+            // 
             // kbtneValidateChecksum
             // 
             this.kbtneValidateChecksum.Image = null;
@@ -925,78 +980,79 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kbtneValidateChecksum.StateTrackingShortTextColourTwo = System.Drawing.Color.Empty;
             this.kbtneValidateChecksum.TabIndex = 5;
             this.kbtneValidateChecksum.Values.Text = "&Validate";
+            this.kbtneValidateChecksum.Click += new System.EventHandler(this.kbtneValidateChecksum_Click);
             // 
-            // kryptonComboBoxExtended2
+            // kcmbeValidateChecksumType
             // 
-            this.kryptonComboBoxExtended2.ComboBoxContentTypeface = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.kryptonComboBoxExtended2.ComboBoxItemContentLongTextTypeface = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.kryptonComboBoxExtended2.ComboBoxItemContentShortTextTypeface = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.kryptonComboBoxExtended2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.kryptonComboBoxExtended2.DropDownWidth = 121;
-            this.kryptonComboBoxExtended2.Image = null;
-            this.kryptonComboBoxExtended2.IntegralHeight = false;
-            this.kryptonComboBoxExtended2.Location = new System.Drawing.Point(118, 14);
-            this.kryptonComboBoxExtended2.Name = "kryptonComboBoxExtended2";
-            this.kryptonComboBoxExtended2.Size = new System.Drawing.Size(121, 22);
-            this.kryptonComboBoxExtended2.StateActive.ComboBox.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.kryptonComboBoxExtended2.StateActive.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
-            this.kryptonComboBoxExtended2.StateActiveComboBoxBackColour = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended2.StateActiveComboBoxBorderColourOne = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended2.StateActiveComboBoxBorderColourTwo = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended2.StateActiveComboBoxContentColour = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended2.StateCommon.ComboBox.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.kryptonComboBoxExtended2.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
-            this.kryptonComboBoxExtended2.StateCommon.Item.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.kryptonComboBoxExtended2.StateCommon.Item.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.kryptonComboBoxExtended2.StateCommonComboBoxBackColour = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended2.StateCommonComboBoxBorderColourOne = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended2.StateCommonComboBoxBorderColourTwo = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended2.StateCommonComboBoxContentColour = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended2.StateCommonComboBoxDropBackColourOne = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended2.StateCommonComboBoxDropBackColourTwo = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended2.StateCommonComboBoxItemBackColourOne = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended2.StateCommonComboBoxItemBackColourTwo = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended2.StateCommonComboBoxItemContentLongTextColourOne = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended2.StateCommonComboBoxItemContentLongTextColourTwo = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended2.StateCommonComboBoxItemContentShortTextColourOne = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended2.StateCommonComboBoxItemContentShortTextColourTwo = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended2.StateDisabled.ComboBox.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.kryptonComboBoxExtended2.StateDisabled.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
-            this.kryptonComboBoxExtended2.StateDisabled.Item.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.kryptonComboBoxExtended2.StateDisabled.Item.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.kryptonComboBoxExtended2.StateDisabledComboBoxBackColour = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended2.StateDisabledComboBoxBorderColourOne = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended2.StateDisabledComboBoxBorderColourTwo = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended2.StateDisabledComboBoxContentColour = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended2.StateDisabledComboBoxItemBackColourOne = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended2.StateDisabledComboBoxItemBackColourTwo = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended2.StateDisabledComboBoxItemContentLongTextColourOne = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended2.StateDisabledComboBoxItemContentLongTextColourTwo = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended2.StateDisabledComboBoxItemContentShortTextColourOne = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended2.StateDisabledComboBoxItemContentShortTextColourTwo = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended2.StateNormal.ComboBox.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.kryptonComboBoxExtended2.StateNormal.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
-            this.kryptonComboBoxExtended2.StateNormal.Item.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.kryptonComboBoxExtended2.StateNormal.Item.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.kryptonComboBoxExtended2.StateNormalComboBoxBackColour = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended2.StateNormalComboBoxBorderColourOne = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended2.StateNormalComboBoxBorderColourTwo = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended2.StateNormalComboBoxContentColour = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended2.StateNormalComboBoxItemBackColourOne = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended2.StateNormalComboBoxItemBackColourTwo = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended2.StateNormalComboBoxItemContentLongTextColourOne = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended2.StateNormalComboBoxItemContentLongTextColourTwo = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended2.StateNormalComboBoxItemContentShortTextColourOne = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended2.StateNormalComboBoxItemContentShortTextColourTwo = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended2.StateTracking.Item.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.kryptonComboBoxExtended2.StateTracking.Item.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.kryptonComboBoxExtended2.StateTrackingComboBoxItemBackColourOne = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended2.StateTrackingComboBoxItemBackColourTwo = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended2.StateTrackingComboBoxItemContentLongTextColourOne = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended2.StateTrackingComboBoxItemContentLongTextColourTwo = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended2.StateTrackingComboBoxItemContentShortTextColourOne = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended2.StateTrackingComboBoxItemContentShortTextColourTwo = System.Drawing.Color.Empty;
-            this.kryptonComboBoxExtended2.TabIndex = 3;
+            this.kcmbeValidateChecksumType.ComboBoxContentTypeface = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.kcmbeValidateChecksumType.ComboBoxItemContentLongTextTypeface = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.kcmbeValidateChecksumType.ComboBoxItemContentShortTextTypeface = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.kcmbeValidateChecksumType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.kcmbeValidateChecksumType.DropDownWidth = 121;
+            this.kcmbeValidateChecksumType.Image = null;
+            this.kcmbeValidateChecksumType.IntegralHeight = false;
+            this.kcmbeValidateChecksumType.Location = new System.Drawing.Point(118, 14);
+            this.kcmbeValidateChecksumType.Name = "kcmbeValidateChecksumType";
+            this.kcmbeValidateChecksumType.Size = new System.Drawing.Size(121, 22);
+            this.kcmbeValidateChecksumType.StateActive.ComboBox.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.kcmbeValidateChecksumType.StateActive.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
+            this.kcmbeValidateChecksumType.StateActiveComboBoxBackColour = System.Drawing.Color.Empty;
+            this.kcmbeValidateChecksumType.StateActiveComboBoxBorderColourOne = System.Drawing.Color.Empty;
+            this.kcmbeValidateChecksumType.StateActiveComboBoxBorderColourTwo = System.Drawing.Color.Empty;
+            this.kcmbeValidateChecksumType.StateActiveComboBoxContentColour = System.Drawing.Color.Empty;
+            this.kcmbeValidateChecksumType.StateCommon.ComboBox.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.kcmbeValidateChecksumType.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
+            this.kcmbeValidateChecksumType.StateCommon.Item.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.kcmbeValidateChecksumType.StateCommon.Item.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.kcmbeValidateChecksumType.StateCommonComboBoxBackColour = System.Drawing.Color.Empty;
+            this.kcmbeValidateChecksumType.StateCommonComboBoxBorderColourOne = System.Drawing.Color.Empty;
+            this.kcmbeValidateChecksumType.StateCommonComboBoxBorderColourTwo = System.Drawing.Color.Empty;
+            this.kcmbeValidateChecksumType.StateCommonComboBoxContentColour = System.Drawing.Color.Empty;
+            this.kcmbeValidateChecksumType.StateCommonComboBoxDropBackColourOne = System.Drawing.Color.Empty;
+            this.kcmbeValidateChecksumType.StateCommonComboBoxDropBackColourTwo = System.Drawing.Color.Empty;
+            this.kcmbeValidateChecksumType.StateCommonComboBoxItemBackColourOne = System.Drawing.Color.Empty;
+            this.kcmbeValidateChecksumType.StateCommonComboBoxItemBackColourTwo = System.Drawing.Color.Empty;
+            this.kcmbeValidateChecksumType.StateCommonComboBoxItemContentLongTextColourOne = System.Drawing.Color.Empty;
+            this.kcmbeValidateChecksumType.StateCommonComboBoxItemContentLongTextColourTwo = System.Drawing.Color.Empty;
+            this.kcmbeValidateChecksumType.StateCommonComboBoxItemContentShortTextColourOne = System.Drawing.Color.Empty;
+            this.kcmbeValidateChecksumType.StateCommonComboBoxItemContentShortTextColourTwo = System.Drawing.Color.Empty;
+            this.kcmbeValidateChecksumType.StateDisabled.ComboBox.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.kcmbeValidateChecksumType.StateDisabled.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
+            this.kcmbeValidateChecksumType.StateDisabled.Item.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.kcmbeValidateChecksumType.StateDisabled.Item.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.kcmbeValidateChecksumType.StateDisabledComboBoxBackColour = System.Drawing.Color.Empty;
+            this.kcmbeValidateChecksumType.StateDisabledComboBoxBorderColourOne = System.Drawing.Color.Empty;
+            this.kcmbeValidateChecksumType.StateDisabledComboBoxBorderColourTwo = System.Drawing.Color.Empty;
+            this.kcmbeValidateChecksumType.StateDisabledComboBoxContentColour = System.Drawing.Color.Empty;
+            this.kcmbeValidateChecksumType.StateDisabledComboBoxItemBackColourOne = System.Drawing.Color.Empty;
+            this.kcmbeValidateChecksumType.StateDisabledComboBoxItemBackColourTwo = System.Drawing.Color.Empty;
+            this.kcmbeValidateChecksumType.StateDisabledComboBoxItemContentLongTextColourOne = System.Drawing.Color.Empty;
+            this.kcmbeValidateChecksumType.StateDisabledComboBoxItemContentLongTextColourTwo = System.Drawing.Color.Empty;
+            this.kcmbeValidateChecksumType.StateDisabledComboBoxItemContentShortTextColourOne = System.Drawing.Color.Empty;
+            this.kcmbeValidateChecksumType.StateDisabledComboBoxItemContentShortTextColourTwo = System.Drawing.Color.Empty;
+            this.kcmbeValidateChecksumType.StateNormal.ComboBox.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.kcmbeValidateChecksumType.StateNormal.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
+            this.kcmbeValidateChecksumType.StateNormal.Item.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.kcmbeValidateChecksumType.StateNormal.Item.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.kcmbeValidateChecksumType.StateNormalComboBoxBackColour = System.Drawing.Color.Empty;
+            this.kcmbeValidateChecksumType.StateNormalComboBoxBorderColourOne = System.Drawing.Color.Empty;
+            this.kcmbeValidateChecksumType.StateNormalComboBoxBorderColourTwo = System.Drawing.Color.Empty;
+            this.kcmbeValidateChecksumType.StateNormalComboBoxContentColour = System.Drawing.Color.Empty;
+            this.kcmbeValidateChecksumType.StateNormalComboBoxItemBackColourOne = System.Drawing.Color.Empty;
+            this.kcmbeValidateChecksumType.StateNormalComboBoxItemBackColourTwo = System.Drawing.Color.Empty;
+            this.kcmbeValidateChecksumType.StateNormalComboBoxItemContentLongTextColourOne = System.Drawing.Color.Empty;
+            this.kcmbeValidateChecksumType.StateNormalComboBoxItemContentLongTextColourTwo = System.Drawing.Color.Empty;
+            this.kcmbeValidateChecksumType.StateNormalComboBoxItemContentShortTextColourOne = System.Drawing.Color.Empty;
+            this.kcmbeValidateChecksumType.StateNormalComboBoxItemContentShortTextColourTwo = System.Drawing.Color.Empty;
+            this.kcmbeValidateChecksumType.StateTracking.Item.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.kcmbeValidateChecksumType.StateTracking.Item.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.kcmbeValidateChecksumType.StateTrackingComboBoxItemBackColourOne = System.Drawing.Color.Empty;
+            this.kcmbeValidateChecksumType.StateTrackingComboBoxItemBackColourTwo = System.Drawing.Color.Empty;
+            this.kcmbeValidateChecksumType.StateTrackingComboBoxItemContentLongTextColourOne = System.Drawing.Color.Empty;
+            this.kcmbeValidateChecksumType.StateTrackingComboBoxItemContentLongTextColourTwo = System.Drawing.Color.Empty;
+            this.kcmbeValidateChecksumType.StateTrackingComboBoxItemContentShortTextColourOne = System.Drawing.Color.Empty;
+            this.kcmbeValidateChecksumType.StateTrackingComboBoxItemContentShortTextColourTwo = System.Drawing.Color.Empty;
+            this.kcmbeValidateChecksumType.TabIndex = 3;
             // 
             // kryptonLabelExtended11
             // 
@@ -1142,7 +1198,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kbtnCalculateChecksum.StateTrackingShortTextColourTwo = System.Drawing.Color.Empty;
             this.kbtnCalculateChecksum.TabIndex = 5;
             this.kbtnCalculateChecksum.Values.Text = "&Calculate";
-            this.kbtnCalculateChecksum.Click += new System.EventHandler(this.kbtnCalculateChecksum_Click);
+            this.kbtnCalculateChecksum.Click += new System.EventHandler(this.KbtnCalculateChecksum_Click);
             // 
             // klbleChecksumOutput
             // 
@@ -1262,7 +1318,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             // 
             this.kryptonPage3.AutoHiddenSlideSize = new System.Drawing.Size(200, 200);
             this.kryptonPage3.Controls.Add(this.kbtnGetFileAttributes);
-            this.kryptonPage3.Controls.Add(this.kryptonButton1);
+            this.kryptonPage3.Controls.Add(this.kbtnSetFileAttributes);
             this.kryptonPage3.Controls.Add(this.kbtnClearAllFileAttributes);
             this.kryptonPage3.Controls.Add(this.kryptonGroupBoxExtended3);
             this.kryptonPage3.Flags = 65534;
@@ -1285,18 +1341,19 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kbtnGetFileAttributes.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kbtnGetFileAttributes.TabIndex = 24;
             this.kbtnGetFileAttributes.Values.Text = "G&et File Attributes";
+            this.kbtnGetFileAttributes.Click += new System.EventHandler(this.kbtnGetFileAttributes_Click);
             // 
-            // kryptonButton1
+            // kbtnSetFileAttributes
             // 
-            this.kryptonButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.kryptonButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.kryptonButton1.Location = new System.Drawing.Point(301, 185);
-            this.kryptonButton1.Name = "kryptonButton1";
-            this.kryptonButton1.Size = new System.Drawing.Size(111, 25);
-            this.kryptonButton1.StateCommon.Content.LongText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonButton1.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonButton1.TabIndex = 23;
-            this.kryptonButton1.Values.Text = "&Set File Attributes";
+            this.kbtnSetFileAttributes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.kbtnSetFileAttributes.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.kbtnSetFileAttributes.Location = new System.Drawing.Point(301, 185);
+            this.kbtnSetFileAttributes.Name = "kbtnSetFileAttributes";
+            this.kbtnSetFileAttributes.Size = new System.Drawing.Size(111, 25);
+            this.kbtnSetFileAttributes.StateCommon.Content.LongText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kbtnSetFileAttributes.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kbtnSetFileAttributes.TabIndex = 23;
+            this.kbtnSetFileAttributes.Values.Text = "&Set File Attributes";
             // 
             // kbtnClearAllFileAttributes
             // 
@@ -1309,6 +1366,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kbtnClearAllFileAttributes.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kbtnClearAllFileAttributes.TabIndex = 22;
             this.kbtnClearAllFileAttributes.Values.Text = "Cle&ar All File Attributes";
+            this.kbtnClearAllFileAttributes.Click += new System.EventHandler(this.kbtnClearAllFileAttributes_Click);
             // 
             // kryptonGroupBoxExtended3
             // 
@@ -1377,6 +1435,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kcbTemporary.ToolTipValues.Description = null;
             this.kcbTemporary.ToolTipValues.Heading = "Archived";
             this.kcbTemporary.Values.Text = "Te&mporary";
+            this.kcbTemporary.CheckedChanged += new System.EventHandler(this.CheckedChanged);
             // 
             // kcbSystem
             // 
@@ -1389,6 +1448,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kcbSystem.ToolTipValues.Description = null;
             this.kcbSystem.ToolTipValues.Heading = "Archived";
             this.kcbSystem.Values.Text = "S&ystem";
+            this.kcbSystem.CheckedChanged += new System.EventHandler(this.CheckedChanged);
             // 
             // kcbSparseFile
             // 
@@ -1401,6 +1461,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kcbSparseFile.ToolTipValues.Description = null;
             this.kcbSparseFile.ToolTipValues.Heading = "Archived";
             this.kcbSparseFile.Values.Text = "Spar&se File";
+            this.kcbSparseFile.CheckedChanged += new System.EventHandler(this.CheckedChanged);
             // 
             // kcbReparsePoint
             // 
@@ -1413,6 +1474,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kcbReparsePoint.ToolTipValues.Description = null;
             this.kcbReparsePoint.ToolTipValues.Heading = "Archived";
             this.kcbReparsePoint.Values.Text = "Re&parse Point";
+            this.kcbReparsePoint.CheckedChanged += new System.EventHandler(this.CheckedChanged);
             // 
             // kcbReadOnly
             // 
@@ -1425,6 +1487,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kcbReadOnly.ToolTipValues.Description = null;
             this.kcbReadOnly.ToolTipValues.Heading = "Archived";
             this.kcbReadOnly.Values.Text = "&Read Only";
+            this.kcbReadOnly.CheckedChanged += new System.EventHandler(this.CheckedChanged);
             // 
             // kcbOffline
             // 
@@ -1437,6 +1500,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kcbOffline.ToolTipValues.Description = null;
             this.kcbOffline.ToolTipValues.Heading = "Archived";
             this.kcbOffline.Values.Text = "O&ffline";
+            this.kcbOffline.CheckedChanged += new System.EventHandler(this.CheckedChanged);
             // 
             // kcbIntegrityStream
             // 
@@ -1447,6 +1511,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kcbIntegrityStream.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kcbIntegrityStream.TabIndex = 25;
             this.kcbIntegrityStream.Values.Text = "I&ntegrity Stream";
+            this.kcbIntegrityStream.CheckedChanged += new System.EventHandler(this.CheckedChanged);
             // 
             // kcbNormal
             // 
@@ -1457,6 +1522,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kcbNormal.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kcbNormal.TabIndex = 24;
             this.kcbNormal.Values.Text = "No&rmal";
+            this.kcbNormal.CheckedChanged += new System.EventHandler(this.CheckedChanged);
             // 
             // kcbNoScrubData
             // 
@@ -1467,6 +1533,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kcbNoScrubData.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kcbNoScrubData.TabIndex = 23;
             this.kcbNoScrubData.Values.Text = "No &Scrub Data";
+            this.kcbNoScrubData.CheckedChanged += new System.EventHandler(this.CheckedChanged);
             // 
             // kcbNotContextIndexed
             // 
@@ -1477,6 +1544,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kcbNotContextIndexed.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kcbNotContextIndexed.TabIndex = 22;
             this.kcbNotContextIndexed.Values.Text = "Not Co&ntext Indexed";
+            this.kcbNotContextIndexed.CheckedChanged += new System.EventHandler(this.CheckedChanged);
             // 
             // kcbHidden
             // 
@@ -1489,6 +1557,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kcbHidden.ToolTipValues.Description = null;
             this.kcbHidden.ToolTipValues.Heading = "Archived";
             this.kcbHidden.Values.Text = "&Hidden";
+            this.kcbHidden.CheckedChanged += new System.EventHandler(this.CheckedChanged);
             // 
             // kcbCompressed
             // 
@@ -1499,6 +1568,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kcbCompressed.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kcbCompressed.TabIndex = 20;
             this.kcbCompressed.Values.Text = "C&ompressed";
+            this.kcbCompressed.CheckedChanged += new System.EventHandler(this.CheckedChanged);
             // 
             // kcbDevice
             // 
@@ -1509,6 +1579,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kcbDevice.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kcbDevice.TabIndex = 19;
             this.kcbDevice.Values.Text = "D&evice";
+            this.kcbDevice.CheckedChanged += new System.EventHandler(this.CheckedChanged);
             // 
             // kcbDirectory
             // 
@@ -1519,6 +1590,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kcbDirectory.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kcbDirectory.TabIndex = 18;
             this.kcbDirectory.Values.Text = "D&irectory";
+            this.kcbDirectory.CheckedChanged += new System.EventHandler(this.CheckedChanged);
             // 
             // kcbEncrypted
             // 
@@ -1529,6 +1601,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kcbEncrypted.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kcbEncrypted.TabIndex = 17;
             this.kcbEncrypted.Values.Text = "&Encrypted";
+            this.kcbEncrypted.CheckedChanged += new System.EventHandler(this.CheckedChanged);
             // 
             // kcbArchive
             // 
@@ -1541,6 +1614,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kcbArchive.ToolTipValues.Description = null;
             this.kcbArchive.ToolTipValues.Heading = "Archived";
             this.kcbArchive.Values.Text = "&Archive";
+            this.kcbArchive.CheckedChanged += new System.EventHandler(this.CheckedChanged);
             // 
             // panel1
             // 
@@ -1550,59 +1624,6 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(608, 3);
             this.panel1.TabIndex = 2;
-            // 
-            // ctxHashMenu
-            // 
-            this.ctxHashMenu.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.ctxHashMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cutToolStripMenuItem,
-            this.toolStripMenuItem1,
-            this.copyToolStripMenuItem,
-            this.toolStripMenuItem2,
-            this.pasteToolStripMenuItem,
-            this.toolStripMenuItem3,
-            this.selectAllToolStripMenuItem});
-            this.ctxHashMenu.Name = "ctxHashMenu";
-            this.ctxHashMenu.Size = new System.Drawing.Size(123, 110);
-            // 
-            // cutToolStripMenuItem
-            // 
-            this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
-            this.cutToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
-            this.cutToolStripMenuItem.Text = "C&ut";
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(119, 6);
-            // 
-            // copyToolStripMenuItem
-            // 
-            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
-            this.copyToolStripMenuItem.Text = "&Copy";
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(119, 6);
-            // 
-            // pasteToolStripMenuItem
-            // 
-            this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
-            this.pasteToolStripMenuItem.Text = "&Paste";
-            // 
-            // toolStripMenuItem3
-            // 
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(119, 6);
-            // 
-            // selectAllToolStripMenuItem
-            // 
-            this.selectAllToolStripMenuItem.Name = "selectAllToolStripMenuItem";
-            this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
-            this.selectAllToolStripMenuItem.Text = "&Select All";
             // 
             // bgwMD5
             // 
@@ -1663,7 +1684,8 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kryptonGroupBoxExtended2.Panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBoxExtended2)).EndInit();
             this.kryptonGroupBoxExtended2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonComboBoxExtended2)).EndInit();
+            this.ctxHashMenu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kcmbeValidateChecksumType)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBoxExtended1.Panel)).EndInit();
             this.kryptonGroupBoxExtended1.Panel.ResumeLayout(false);
             this.kryptonGroupBoxExtended1.Panel.PerformLayout();
@@ -1677,7 +1699,6 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kryptonGroupBoxExtended3.Panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBoxExtended3)).EndInit();
             this.kryptonGroupBoxExtended3.ResumeLayout(false);
-            this.ctxHashMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1685,10 +1706,16 @@ namespace Krypton.Toolkit.Extended.Dialogs
 
         #region Variables
         private string _filePath;
+
+        private SecurityAssistant _securityAssistant = new SecurityAssistant();
+
+        private KryptonCheckBox[] _checkBoxes = new KryptonCheckBox[16];
         #endregion
 
         #region Properties
         public string FilePath { get => _filePath; private set => _filePath = value; }
+
+        public KryptonCheckBox[] FileAttributeOptions { get => _checkBoxes; private set => _checkBoxes = value; }
         #endregion
 
         #region Constructor
@@ -1696,10 +1723,13 @@ namespace Krypton.Toolkit.Extended.Dialogs
         {
             InitializeComponent();
 
+            InitialiseCheckboxArray();
+
             GrabFileData(filePath);
         }
         #endregion
 
+        #region Methods
         private void GrabFileData(string filePath)
         {
             // Create a new FileInfo object
@@ -1797,9 +1827,62 @@ namespace Krypton.Toolkit.Extended.Dialogs
             kcbTemporary.Checked = ReturnFileAttributes(path, FileAttributes.Temporary);
         }
 
+        private void InitialiseCheckboxArray()
+        {
+            FileAttributeOptions[0] = kcbArchive;
+
+            FileAttributeOptions[1] = kcbCompressed;
+
+            FileAttributeOptions[2] = kcbDevice;
+
+            FileAttributeOptions[3] = kcbDirectory;
+
+            FileAttributeOptions[4] = kcbEncrypted;
+
+            FileAttributeOptions[5] = kcbHidden;
+
+            FileAttributeOptions[6] = kcbIntegrityStream;
+
+            FileAttributeOptions[7] = kcbNormal;
+
+            FileAttributeOptions[8] = kcbNoScrubData;
+
+            FileAttributeOptions[9] = kcbNotContextIndexed;
+
+            FileAttributeOptions[10] = kcbOffline;
+
+            FileAttributeOptions[11] = kcbReadOnly;
+
+            FileAttributeOptions[12] = kcbReparsePoint;
+
+            FileAttributeOptions[13] = kcbSparseFile;
+
+            FileAttributeOptions[14] = kcbSystem;
+
+            FileAttributeOptions[15] = kcbTemporary;
+        }
+
+        private string CalculateChecksum(string filePath, string text)
+        {
+            throw new NotImplementedException();
+        }
+
+        private bool IsChecksumValid(string checksumHash)
+        {
+            string fileChecksum = CalculateChecksum(FilePath, kcmbeValidateChecksumType.Text);
+
+            return fileChecksum.Equals(checksumHash);
+        }
+        #endregion 
+
         private void KryptonFileInformationDialog_Load(object sender, EventArgs e)
         {
+            foreach (string item in _securityAssistant.ReturnSupportedHashAlgorithims())
+            {
+                kcmbeCalculateChecksumHashType.Items.Add(item);
 
+                kcmbeValidateChecksumType.Items.Add(item);
+            }
         }
 
         private void pbxFileIcon_Click(object sender, EventArgs e)
@@ -1814,9 +1897,39 @@ namespace Krypton.Toolkit.Extended.Dialogs
             }
         }
 
-        private void kbtnCalculateChecksum_Click(object sender, EventArgs e)
-        {
+        private void KbtnCalculateChecksum_Click(object sender, EventArgs e) => klbleChecksumOutput.Text = CalculateChecksum(FilePath, kcmbeCalculateChecksumHashType.Text);
 
+        private void CheckedChanged(object sender, EventArgs e) => kbtnGetFileAttributes.Enabled = true;
+
+        private void kbtnGetFileAttributes_Click(object sender, EventArgs e) => GetFileAttributes(FilePath);
+
+        private void kbtneValidateChecksum_Click(object sender, EventArgs e)
+        {
+            if (IsChecksumValid(ktxtFileHash.Text))
+            {
+                ktxtFileHash.StateCommon.Back.Color1 = Color.Green;
+            }
+            else
+            {
+                ktxtFileHash.StateCommon.Back.Color1 = Color.Red;
+
+                ktxtFileHash.StateCommon.Content.Color1 = Color.White;
+            }
+        }
+
+        private void kbtnClearAllFileAttributes_Click(object sender, EventArgs e)
+        {
+            foreach (KryptonCheckBox item in FileAttributeOptions)
+            {
+                item.Checked = false;
+            }
+
+            kbtnSetFileAttributes.PerformClick();
+        }
+
+        private void cutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //ktxtFileHash.Text.cut
         }
     }
 }

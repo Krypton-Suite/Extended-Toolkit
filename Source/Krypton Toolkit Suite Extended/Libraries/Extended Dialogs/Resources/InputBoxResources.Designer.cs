@@ -481,21 +481,11 @@ namespace Krypton.Toolkit.Extended.Dialogs.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
-        /// </summary>
-        internal static System.Drawing.Icon Run_48 {
-            get {
-                object obj = ResourceManager.GetObject("Run_48", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Run_481 {
+        internal static System.Drawing.Bitmap Run_48_x_48 {
             get {
-                object obj = ResourceManager.GetObject("Run_481", resourceCulture);
+                object obj = ResourceManager.GetObject("Run_48_x_48", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

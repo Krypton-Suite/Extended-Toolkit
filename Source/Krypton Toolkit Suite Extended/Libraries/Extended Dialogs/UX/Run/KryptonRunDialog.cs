@@ -591,6 +591,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             // pbxIcon
             // 
             this.pbxIcon.BackColor = System.Drawing.Color.Transparent;
+            this.pbxIcon.Image = global::Krypton.Toolkit.Extended.Dialogs.Properties.Resources.Run_48_x_48;
             this.pbxIcon.Location = new System.Drawing.Point(12, 60);
             this.pbxIcon.Name = "pbxIcon";
             this.pbxIcon.Size = new System.Drawing.Size(64, 64);

@@ -22,7 +22,7 @@
     <FileVersion>5.500.2004</FileVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Version>5.500.2005</Version>
+    <Version>5.500.2004</Version>
   </PropertyGroup>
 
 </Project>

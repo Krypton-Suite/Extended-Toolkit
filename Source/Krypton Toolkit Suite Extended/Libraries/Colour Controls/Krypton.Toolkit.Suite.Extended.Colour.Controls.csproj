@@ -8,7 +8,7 @@
     <UseWindowsForms>true</UseWindowsForms>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Version>5.500.2005</Version>
+    <Version>5.500.2004</Version>
     <PackageLicenseFile></PackageLicenseFile>
   </PropertyGroup>
 

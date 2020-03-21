@@ -16,6 +16,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		..\..\Directory.Build.props = ..\..\Directory.Build.props
 		Directory.Build.props = Directory.Build.props
 		Directory.Build.targets = Directory.Build.targets
+		..\..\README.md = ..\..\README.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Common", "Shared\Common\Krypton.Toolkit.Suite.Extended.Common.csproj", "{5E8758D3-BE51-474E-9CED-4E55EE1297DF}"
@@ -56,7 +57,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Exten
 		{C1C4DE3D-5A1B-4436-9217-071B9A946696} = {C1C4DE3D-5A1B-4436-9217-071B9A946696}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton.Toolkit.Suite.Extended.Tool.Strip.Items", "Libraries\Toolstrip Items\Krypton.Toolkit.Suite.Extended.Tool.Strip.Items.csproj", "{881805F9-0C28-4ECB-A24E-FE48BC0C1A22}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Tool.Strip.Items", "Libraries\Toolstrip Items\Krypton.Toolkit.Suite.Extended.Tool.Strip.Items.csproj", "{881805F9-0C28-4ECB-A24E-FE48BC0C1A22}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
