@@ -261,7 +261,7 @@ namespace Krypton.Toolkit.Extended.Base
             }
             else
             {
-                g.FillPolygon(GetBrush(rect, LightColor, MiddleColor, PaletteColorStyle.Default, Angle, (VisualOrientation)Ta, PreserveColor), pt);
+                g.FillPolygon(GetBrush(rect, LightColor, MiddleColor, PaletteColourStyle.Default, Angle, (VisualOrientation)Ta, PreserveColor), pt);
             }
         }
 
@@ -309,7 +309,7 @@ namespace Krypton.Toolkit.Extended.Base
             }
             else
             {
-                g.FillPath(DrawingMethods.GetBrush(rect, LightColor, MiddleColor, PaletteColorStyle.Default, Angle, (VisualOrientation)Ta, PreserveColor), path);
+                g.FillPath(DrawingMethods.GetBrush(rect, LightColor, MiddleColor, PaletteColourStyle.Default, Angle, (VisualOrientation)Ta, PreserveColor), path);
             }
         }
 
@@ -331,8 +331,8 @@ namespace Krypton.Toolkit.Extended.Base
                     NewUpPt[3] = pt[5];
                     NewUpPt[4] = pt[6];
                     Angle = 90F;
-                    DarkColor = DrawingMethods.GetModifiedColor(DarkColor, 5, 0, 0);
-                    MiddleColor = DrawingMethods.GetModifiedColor(MiddleColor, -10, 0, 0);
+                    DarkColor = DrawingMethods.GetModifiedColour(DarkColor, 5, 0, 0);
+                    MiddleColor = DrawingMethods.GetModifiedColour(MiddleColor, -10, 0, 0);
                     break;
 
                 case TabAlignment.Bottom:
@@ -342,8 +342,8 @@ namespace Krypton.Toolkit.Extended.Base
                     NewUpPt[3] = new PointF(pt[1].X, pt[3].Y - HalfSize);
                     NewUpPt[4] = new PointF(pt[5].X, pt[4].Y - HalfSize);
                     Angle = 270F;
-                    DarkColor = DrawingMethods.GetModifiedColor(DarkColor, 10, 0, 0);
-                    MiddleColor = DrawingMethods.GetModifiedColor(MiddleColor, -10, 0, 0);
+                    DarkColor = DrawingMethods.GetModifiedColour(DarkColor, 10, 0, 0);
+                    MiddleColor = DrawingMethods.GetModifiedColour(MiddleColor, -10, 0, 0);
                     break;
 
                 case TabAlignment.Left:
@@ -354,8 +354,8 @@ namespace Krypton.Toolkit.Extended.Base
                     NewUpPt[3] = pt[1];
                     NewUpPt[4] = new PointF(pt[3].X + HalfSize, pt[2].Y);
                     Angle = 0F;
-                    DarkColor = DrawingMethods.GetModifiedColor(DarkColor, 10, 0, 0);
-                    MiddleColor = DrawingMethods.GetModifiedColor(MiddleColor, -10, 0, 0);
+                    DarkColor = DrawingMethods.GetModifiedColour(DarkColor, 10, 0, 0);
+                    MiddleColor = DrawingMethods.GetModifiedColour(MiddleColor, -10, 0, 0);
                     break;
 
                 case TabAlignment.Right:
@@ -376,8 +376,8 @@ namespace Krypton.Toolkit.Extended.Base
                         */
 
                         Angle = 180F;
-                        DarkColor = DrawingMethods.GetModifiedColor(DarkColor, 10, 0, 0);
-                        MiddleColor = DrawingMethods.GetModifiedColor(MiddleColor, -10, 0, 0);
+                        DarkColor = DrawingMethods.GetModifiedColour(DarkColor, 10, 0, 0);
+                        MiddleColor = DrawingMethods.GetModifiedColour(MiddleColor, -10, 0, 0);
                     }
                     else
                     {
@@ -397,14 +397,14 @@ namespace Krypton.Toolkit.Extended.Base
                             case TabHeaderStatus.NormalPreserve:
                                 if (DarkColor == Color.White)
                                 { DarkColor = Color.WhiteSmoke; }
-                                else { DarkColor = DrawingMethods.GetModifiedColor(DarkColor, 5, 0, 0); }
+                                else { DarkColor = DrawingMethods.GetModifiedColour(DarkColor, 5, 0, 0); }
                                 MiddleColor = LightColor;
 
                                 break;
 
                             case TabHeaderStatus.Normal:
                                 LightColor = DarkColor; //to store value (buffer)
-                                DarkColor = DrawingMethods.GetModifiedColor(MiddleColor, 5, 0, 0);
+                                DarkColor = DrawingMethods.GetModifiedColour(MiddleColor, 5, 0, 0);
                                 MiddleColor = LightColor;
                                 break;
 
@@ -741,7 +741,7 @@ namespace Krypton.Toolkit.Extended.Base
             if (DarkColor == Color.White) DarkColor = Color.Snow;
 
             //fill the light part (top)
-            using (Brush b = GetBrush(rect, LightColor, DarkColor, PaletteColorStyle.Default, Angle, VisualOrientation.Top, false))
+            using (Brush b = GetBrush(rect, LightColor, DarkColor, PaletteColourStyle.Default, Angle, VisualOrientation.Top, false))
             {
                 g.FillRectangle(b, rect);
             }
@@ -801,7 +801,7 @@ namespace Krypton.Toolkit.Extended.Base
             return c; // System.Windows.Forms.ControlPaint.Light(clr, 0.5F);
         }
 
-        public static Color GetLighterColor(Color clr)
+        public static Color GetLighterColour(Color clr)
         {
             Color c = new Color();
             int r, g, b;
@@ -818,7 +818,7 @@ namespace Krypton.Toolkit.Extended.Base
             return c; // System.Windows.Forms.ControlPaint.Light(clr, 0.5F);
         }
 
-        public static Color GetModifiedColor(Color clr, int britness, int saturation, int hue)
+        public static Color GetModifiedColour(Color clr, int britness, int saturation, int hue)
         {
             Color c = new Color();
 
@@ -867,7 +867,7 @@ namespace Krypton.Toolkit.Extended.Base
             return ControlPaint.LightLight(clr);
         }
 
-        public static Brush GetBrush(Rectangle rect, Color ColorBegin, Color ColorEnd, PaletteColorStyle ColorStyle, float Angle, VisualOrientation orientation, bool PreserveColors)
+        public static Brush GetBrush(Rectangle rect, Color ColorBegin, Color ColorEnd, PaletteColourStyle ColorStyle, float Angle, VisualOrientation orientation, bool PreserveColors)
         {
             Blend blend1 = new Blend(4);
             Blend blend2;
@@ -942,13 +942,13 @@ namespace Krypton.Toolkit.Extended.Base
 
 
             //For Gefault Type Only
-            if (ColorStyle == PaletteColorStyle.Default)
+            if (ColorStyle == PaletteColourStyle.Default)
             {
                 LinearGradientBrush lb;
                 if (PreserveColors)
                 { lb = new LinearGradientBrush(rect, ColorEnd, ColorBegin, Angle); }
                 else
-                { lb = new LinearGradientBrush(rect, GetDarkerColor(ColorEnd), GetLighterColor(ColorBegin), Angle); }
+                { lb = new LinearGradientBrush(rect, GetDarkerColor(ColorEnd), GetLighterColour(ColorBegin), Angle); }
 
                 lb.Blend = blend1;
                 return lb;
@@ -956,7 +956,7 @@ namespace Krypton.Toolkit.Extended.Base
 
 
             //Solid
-            if (ColorStyle == PaletteColorStyle.Solid)
+            if (ColorStyle == PaletteColourStyle.Solid)
             {
                 return new SolidBrush(ColorBegin);
             }
@@ -977,7 +977,7 @@ namespace Krypton.Toolkit.Extended.Base
             }
 
             //One Note Specific
-            if (ColorStyle == PaletteColorStyle.OneNote)
+            if (ColorStyle == PaletteColourStyle.OneNote)
             {
                 ColorBegin = Color.White;
             }
@@ -986,58 +986,58 @@ namespace Krypton.Toolkit.Extended.Base
             LinearGradientBrush brush = new LinearGradientBrush(rect, ColorBegin, ColorEnd, Angle);
             switch (ColorStyle)
             {
-                case PaletteColorStyle.Status:
+                case PaletteColourStyle.Status:
                     brush.Blend = blend13;
                     return brush;
 
-                case PaletteColorStyle.Switch25:
+                case PaletteColourStyle.Switch25:
                     brush.Blend = blend12;
                     return brush;
 
-                case PaletteColorStyle.Switch33:
+                case PaletteColourStyle.Switch33:
                     brush.Blend = blend2;
                     return brush;
 
-                case PaletteColorStyle.Switch50:
+                case PaletteColourStyle.Switch50:
                     brush.Blend = blend3;
                     return brush;
 
-                case PaletteColorStyle.Switch90:
+                case PaletteColourStyle.Switch90:
                     brush.Blend = blend4;
                     return brush;
 
-                case PaletteColorStyle.Linear:
+                case PaletteColourStyle.Linear:
                     return brush;
 
-                case PaletteColorStyle.Rounded:
+                case PaletteColourStyle.Rounded:
                     brush.SetSigmaBellShape(1f, 1f);
                     return brush;
 
-                case PaletteColorStyle.Rounding2:
+                case PaletteColourStyle.Rounding2:
                     brush.Blend = blend8;
                     return brush;
 
-                case PaletteColorStyle.Rounding3:
+                case PaletteColourStyle.Rounding3:
                     brush.Blend = blend9;
                     return brush;
 
-                case PaletteColorStyle.Rounding4:
+                case PaletteColourStyle.Rounding4:
                     brush.Blend = blend10;
                     return brush;
 
-                case PaletteColorStyle.Sigma:
+                case PaletteColourStyle.Sigma:
                     brush.SetSigmaBellShape(0.5f);
                     return brush;
 
-                case PaletteColorStyle.HalfCut:
+                case PaletteColourStyle.HalfCut:
                     brush.Blend = blend5;
                     return brush;
 
-                case PaletteColorStyle.QuarterPhase:
+                case PaletteColourStyle.QuarterPhase:
                     brush.Blend = blend6;
                     return brush;
 
-                case PaletteColorStyle.OneNote:
+                case PaletteColourStyle.OneNote:
                     brush.Blend = blend7;
                     return brush;
             }
@@ -1058,7 +1058,7 @@ namespace Krypton.Toolkit.Extended.Base
             Right
         }
 
-        public enum PaletteColorStyle
+        public enum PaletteColourStyle
         {
             Default,
             Solid,

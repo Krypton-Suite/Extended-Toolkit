@@ -23,6 +23,8 @@
   <PropertyGroup>
     <AssemblyVersion>5.500.2004</AssemblyVersion>
     <FileVersion>5.500.2004</FileVersion>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>5.500.2004</Version>
   </PropertyGroup>
 
 </Project>

@@ -48,7 +48,11 @@
   <PropertyGroup>
     <DocumentationFile>..\..\..\..\Bin\$(configuration)\Krypton.Toolkit.Extended.Common.xml</DocumentationFile>
     <OutputPath>..\..\..\..\Bin\$(configuration)\</OutputPath>
-    <AssemblyVersion>5.500.2005.0</AssemblyVersion>
+    <AssemblyVersion>5.500.2004.0</AssemblyVersion>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>5.500.2004</Version>
+    <FileVersion>5.500.2004.0</FileVersion>
+    <Description>Contains common logic.</Description>
   </PropertyGroup>
 
 </Project>
