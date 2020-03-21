@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Krypton.Toolkit.Suite.Extended.Settings.Palette" GeneratedClassName="PaletteThemeSettings">
+  <Profiles />
+  <Settings>
+    <Setting Name="CustomThemeFilePath" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="CurrentTheme" Type="Krypton.Toolkit.PaletteModeManager" Scope="User">
+      <Value Profile="(Default)">ProfessionalSystem</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

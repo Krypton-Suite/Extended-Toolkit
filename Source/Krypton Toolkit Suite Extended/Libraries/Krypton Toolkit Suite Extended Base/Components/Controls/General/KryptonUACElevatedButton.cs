@@ -15,7 +15,7 @@ namespace Krypton.Toolkit.Extended.Base
     /// The shield is extracted from the system with LoadImage if possible. Otherwise the shield will be enabled by sending the BCM_SETSHIELD Message to the control.
     /// If the operating system is not Windows Vista or higher, no shield will be displayed as there's no such thing as UAC on the target system -> the shield is obsolete.
     /// </remarks>
-    [DesignerCategory("code"), Description("Krypton UAC Elevated Button"), ToolboxBitmap(typeof(KryptonButton), "ToolboxBitmaps.UACButton.bmp"), ToolboxItem(true)]
+    [DefaultEvent("ExecuteProcessAsAdministrator"), DesignerCategory("code"), Description("Krypton UAC Elevated Button"), ToolboxBitmap(typeof(KryptonButton), "ToolboxBitmaps.UACButton.bmp"), ToolboxItem(true)]
     public partial class KryptonUACElevatedButton : KryptonButton
     {
         #region Variables
@@ -70,7 +70,9 @@ namespace Krypton.Toolkit.Extended.Base
         public delegate void ExecuteProcessAsAdministratorEventHandler(object sender, ExecuteProcessAsAdministratorEventArgs e);
 
         /// <summary>The execute process as administrator</summary>
-        public ExecuteProcessAsAdministratorEventHandler ExecuteProcessAsAdministrator;
+        public event ExecuteProcessAsAdministratorEventHandler ExecuteProcessAsAdministrator;
+
+        protected virtual void OnExecuteProcessAsAdministrator(object sender, ExecuteProcessAsAdministratorEventArgs e) => ExecuteProcessAsAdministrator?.Invoke(sender, e);
         #endregion
 
         #region Constructor
@@ -89,6 +91,8 @@ namespace Krypton.Toolkit.Extended.Base
                 {
                     try
                     {
+                        // TODO: FIX THIS
+                        /*
                         var _icon = IconExtractor.LoadIcon(IconType.SHIELD, SystemInformation.SmallIconSize);
 
                         if (_icon != null)
@@ -107,6 +111,7 @@ namespace Krypton.Toolkit.Extended.Base
                         {
                             _isSystemAbleToLoadShield = false;
                         }
+                        */
                     }
                     catch (Exception exc)
                     {
@@ -176,16 +181,5 @@ namespace Krypton.Toolkit.Extended.Base
             }
         }
         #endregion
-
-        /// <summary>Called when [execute process as administrator].</summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="e">The <see cref="ExecuteProcessAsAdministratorEventArgs"/> instance containing the event data.</param>
-        protected virtual void OnExecuteProcessAsAdministrator(object sender, ExecuteProcessAsAdministratorEventArgs e)
-        {
-            if (ExecuteProcessAsAdministrator != null)
-            {
-                ExecuteProcessAsAdministrator(sender, e);
-            }
-        }
     }
 }

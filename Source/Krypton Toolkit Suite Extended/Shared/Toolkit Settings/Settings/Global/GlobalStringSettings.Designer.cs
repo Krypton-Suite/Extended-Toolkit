@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ToolkitSettings.Settings.Global {
+namespace Krypton.Toolkit.Suite.Extended.Settings {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

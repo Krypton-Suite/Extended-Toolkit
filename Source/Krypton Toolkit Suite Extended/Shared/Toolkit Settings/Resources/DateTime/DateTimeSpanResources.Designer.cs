@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ToolkitSettings.Resources.DateTime {
+namespace Krypton.Toolkit.Suite.Extended.Settings.Resources.DateTime {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace ToolkitSettings.Resources.DateTime {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ToolkitSettings.Resources.DateTime.DateTimeSpanResources", typeof(DateTimeSpanResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Krypton.Toolkit.Suite.Extended.Settings.Resources.DateTime.DateTimeSpanResources", typeof(DateTimeSpanResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
