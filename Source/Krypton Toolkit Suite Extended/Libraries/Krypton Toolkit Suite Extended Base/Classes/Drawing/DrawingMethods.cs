@@ -114,8 +114,8 @@ namespace Krypton.Toolkit.Extended.Base
             Color ColorBacklightEnd = Color.FromArgb(50, 0, 0, 0);
             Color ColorGlowStart = Color.FromArgb(nAlphaEnd, 255, 255, 255);
             Color ColorGlowEnd = Color.FromArgb(nAlphaStart, 255, 255, 255);
-            Color ColorFillBK = GetDarkerColor(BaseColor, 85);
-            Color ColorBorder = GetDarkerColor(BaseColor, 100);
+            Color ColorFillBK = GetDarkerColour(BaseColor, 85);
+            Color ColorBorder = GetDarkerColour(BaseColor, 100);
 
             // Draw a single bar.
             #region BarItself
@@ -159,8 +159,8 @@ namespace Krypton.Toolkit.Extended.Base
             Color ColorBacklightEnd = Color.FromArgb(50, 0, 0, 0);
             Color ColorGlowStart = Color.FromArgb(nAlphaEnd, 255, 255, 255);
             Color ColorGlowEnd = Color.FromArgb(nAlphaStart, 255, 255, 255);
-            Color ColorFillBK = GetDarkerColor(BaseColor, 85);
-            Color ColorBorder = GetDarkerColor(BaseColor, 100);
+            Color ColorFillBK = GetDarkerColour(BaseColor, 85);
+            Color ColorBorder = GetDarkerColour(BaseColor, 100);
 
             // Draw a single colummn.
             #region BarItself
@@ -300,7 +300,7 @@ namespace Krypton.Toolkit.Extended.Base
             //check on all whites
             if (MiddleColor == Color.White)
             {
-                MiddleColor = GetDarkerColor(Color.White);
+                MiddleColor = GetDarkerColour(Color.White);
             }
             //If Extended or not
             if (Extended)
@@ -750,7 +750,7 @@ namespace Krypton.Toolkit.Extended.Base
         #endregion
 
         #region ... ColorManipulation ...
-        public static Color GetDarkerColor(Color clr)
+        public static Color GetDarkerColour(Color clr)
         {
             Color c = new Color();
             int r, g, b;
@@ -767,7 +767,7 @@ namespace Krypton.Toolkit.Extended.Base
             return c;
         }
 
-        public static Color GetDarkerColor(Color clr, int amount)
+        public static Color GetDarkerColour(Color clr, int amount)
         {
             Color c = new Color();
             int r, g, b;
@@ -784,7 +784,7 @@ namespace Krypton.Toolkit.Extended.Base
             return c;
         }
 
-        public static Color GetLighterColor(Color clr, int amount)
+        public static Color GetLighterColour(Color clr, int amount)
         {
             Color c = new Color();
             int r, g, b;
@@ -849,20 +849,20 @@ namespace Krypton.Toolkit.Extended.Base
 
             return c;
         }
-        public static Color GetSystemDarkerColor(Color clr)
+        public static Color GetSystemDarkerColour(Color clr)
         {
             return ControlPaint.Dark(clr);
         }
-        public static Color GetSystemDarkerDarkColor(Color clr)
+        public static Color GetSystemDarkerDarkColour(Color clr)
         {
             return ControlPaint.DarkDark(clr);
         }
 
-        public static Color GetSystemLighterColor(Color clr)
+        public static Color GetSystemLighterColour(Color clr)
         {
             return ControlPaint.Light(clr);
         }
-        public static Color GetSystemLighterLightColor(Color clr)
+        public static Color GetSystemLighterLightColour(Color clr)
         {
             return ControlPaint.LightLight(clr);
         }
@@ -948,7 +948,7 @@ namespace Krypton.Toolkit.Extended.Base
                 if (PreserveColors)
                 { lb = new LinearGradientBrush(rect, ColorEnd, ColorBegin, Angle); }
                 else
-                { lb = new LinearGradientBrush(rect, GetDarkerColor(ColorEnd), GetLighterColour(ColorBegin), Angle); }
+                { lb = new LinearGradientBrush(rect, GetDarkerColour(ColorEnd), GetLighterColour(ColorBegin), Angle); }
 
                 lb.Blend = blend1;
                 return lb;
