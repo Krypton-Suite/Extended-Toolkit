@@ -5,8 +5,8 @@ using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Extended.Base
 {
-    [ToolboxBitmap(typeof(KryptonComboBox))]
-    public class KryptonColourComboBox : KryptonComboBox
+    [ToolboxBitmap(typeof(KryptonComboBoxExtended))]
+    public class KryptonColourComboBox : KryptonComboBoxExtended
     {
         #region Event
         public event DrawItemEventHandler DrawItem;
@@ -44,7 +44,7 @@ namespace Krypton.Toolkit.Extended.Base
 
             if (e.Index >= 0)
             {
-                string n = ((KryptonComboBox)sender).Items[e.Index].ToString();
+                string n = ((KryptonComboBoxExtended)sender).Items[e.Index].ToString();
 
                 Font typeface = new Font(base.Font.FontFamily, 9, FontStyle.Regular);
 

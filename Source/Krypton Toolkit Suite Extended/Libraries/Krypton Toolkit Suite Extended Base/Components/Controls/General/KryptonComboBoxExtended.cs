@@ -6,12 +6,12 @@ using System.Windows.Forms;
 namespace Krypton.Toolkit.Extended.Base
 {
     [ToolboxBitmap(typeof(ComboBox))]
-    public class KryptonComboBox : ComboBox
+    public class KryptonComboBoxExtended : ComboBox
     {
         private IPalette _palette;
         private PaletteRedirect _paletteRedirect;
 
-        public KryptonComboBox()
+        public KryptonComboBoxExtended()
         {
             SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint, true);
 
