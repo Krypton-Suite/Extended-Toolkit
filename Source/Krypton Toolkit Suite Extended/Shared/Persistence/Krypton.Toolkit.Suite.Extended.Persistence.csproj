@@ -4,7 +4,7 @@
     <LangVersion>8.0</LangVersion>
     <TargetFrameworks>net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1</TargetFrameworks>
     <TargetFrameworks Condition="'$(TFMs)' == 'all'">net35;net40;net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1</TargetFrameworks>
-    <RootNamespace>Persistence</RootNamespace>
+    <RootNamespace>Krypton.Toolkit.Suite.Extended.Persistence</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
@@ -13,8 +13,8 @@
   </ItemGroup>
 
   <PropertyGroup>
-    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Krypton.Toolkit.Extended.Persistence.xml</DocumentationFile>
-    <OutputPath>..\..\..\..\Bin\$(configuration)\</OutputPath>
+    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Persistence\Krypton.Toolkit.Extended.Persistence.xml</DocumentationFile>
+    <OutputPath>..\..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Persistence\</OutputPath>
   </PropertyGroup>
 
   <PropertyGroup>

@@ -7,7 +7,7 @@
 
     <!--<TargetFrameworks>net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1</TargetFrameworks>-->
     
-    <RootNamespace>Utilities</RootNamespace>
+    <RootNamespace>Krypton.Toolkit.Suite.Extended.Utilities</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
@@ -16,8 +16,8 @@
   </ItemGroup>
 
   <PropertyGroup>
-    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Krypton.Toolkit.Extended.Utilities.xml</DocumentationFile>
-    <OutputPath>..\..\..\..\Bin\$(configuration)\</OutputPath>
+    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Utilities\Krypton.Toolkit.Extended.Utilities.xml</DocumentationFile>
+    <OutputPath>..\..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Utilities\</OutputPath>
   </PropertyGroup>
 
   <PropertyGroup>

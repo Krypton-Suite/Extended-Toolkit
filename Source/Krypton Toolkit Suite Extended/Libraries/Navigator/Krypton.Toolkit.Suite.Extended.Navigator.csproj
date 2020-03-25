@@ -24,7 +24,7 @@
 
   <ItemGroup>
     <Reference Include="Krypton.Toolkit.Suite.Extended.Dialogs">
-      <HintPath>..\Extended Dialogs\obj\Debug\net45\Krypton.Toolkit.Suite.Extended.Dialogs.dll</HintPath>
+      <HintPath>..\Extended Dialogs\obj\Debug\net45\Krypton.Toolkit.Suite.Extended.Dialogs\Krypton.Toolkit.Suite.Extended.Dialogs.dll</HintPath>
     </Reference>
     <Reference Include="System.Design" />
   </ItemGroup>
@@ -45,8 +45,8 @@
   </ItemGroup>
 
   <PropertyGroup>
-    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Krypton.Toolkit.Extended.Navigator.xml</DocumentationFile>
-    <OutputPath>..\..\..\..\Bin\$(configuration)\</OutputPath>
+    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Navigator\Krypton.Toolkit.Extended.Navigator.xml</DocumentationFile>
+    <OutputPath>..\..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Navigator\</OutputPath>
   </PropertyGroup>
 
 </Project>

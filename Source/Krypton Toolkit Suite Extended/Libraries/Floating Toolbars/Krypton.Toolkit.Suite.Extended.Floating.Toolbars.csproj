@@ -13,8 +13,8 @@
   </ItemGroup>
 
   <PropertyGroup>
-    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Krypton.Toolkit.Extended.Floating.Toolbars.xml</DocumentationFile>
-    <OutputPath>..\..\..\..\Bin\$(configuration)\</OutputPath>
+    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Floating.Toolbars\Krypton.Toolkit.Extended.Floating.Toolbars.xml</DocumentationFile>
+    <OutputPath>..\..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Floating.Toolbars\</OutputPath>
   </PropertyGroup>
 
   <PropertyGroup>

@@ -52,14 +52,14 @@
 
   <ItemGroup>
     <Reference Include="Krypton.Toolkit.Suite.Extended.Palette.Controls">
-      <HintPath>..\Palette Controls\obj\Debug\net45\Krypton.Toolkit.Suite.Extended.Palette.Controls.dll</HintPath>
+      <HintPath>..\Palette Controls\obj\Debug\net45\Krypton.Toolkit.Suite.Extended.Standard.Controls\Krypton.Toolkit.Suite.Extended.Palette.Controls.dll</HintPath>
     </Reference>
     <Reference Include="PresentationFramework" />
   </ItemGroup>
 
   <PropertyGroup>
-    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Krypton.Toolkit.Extended.Dialogs.xml</DocumentationFile>
-    <OutputPath>..\..\..\..\Bin\$(configuration)\</OutputPath>
+    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Dialogs\Krypton.Toolkit.Extended.Dialogs.xml</DocumentationFile>
+    <OutputPath>..\..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Dialogs\</OutputPath>
   </PropertyGroup>
 
 </Project>

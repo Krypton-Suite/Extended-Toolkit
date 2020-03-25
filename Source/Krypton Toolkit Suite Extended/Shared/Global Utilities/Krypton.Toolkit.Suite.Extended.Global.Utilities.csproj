@@ -36,4 +36,9 @@
     </EmbeddedResource>
   </ItemGroup>
 
+  <PropertyGroup>
+    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Global.Utilities\Krypton.Toolkit.Extended.Global.Utilities.xml</DocumentationFile>
+    <OutputPath>..\..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Global.Utilities\</OutputPath>
+  </PropertyGroup>
+
 </Project>
