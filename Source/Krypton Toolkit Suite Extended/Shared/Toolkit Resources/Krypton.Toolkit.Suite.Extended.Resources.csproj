@@ -2,11 +2,8 @@
 
   <PropertyGroup>
     <LangVersion>8.0</LangVersion>
-    <TargetFrameworks>net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1</TargetFrameworks>
-    <TargetFrameworks Condition="'$(TFMs)' == 'all'">net35;net40;net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1</TargetFrameworks>
-
-    <!--<TargetFrameworks>net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1</TargetFrameworks>-->
-    
+    <TargetFrameworks>net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;netcoreapp5.0</TargetFrameworks>
+    <TargetFrameworks Condition="'$(TFMs)' == 'all'">net35;net40;net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1</TargetFrameworks>    
     <RootNamespace>Krypton.Extended.Toolkit.Resources</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
@@ -32,10 +29,10 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>5.500.2004</AssemblyVersion>
-    <FileVersion>5.500.2004</FileVersion>
+    <AssemblyVersion>6.0.2005</AssemblyVersion>
+    <FileVersion>6.0.2005</FileVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>5.500.2004</Version>
+    <Version>6.0.2005</Version>
   </PropertyGroup>
 
 </Project>
