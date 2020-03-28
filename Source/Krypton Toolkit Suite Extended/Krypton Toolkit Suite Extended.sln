@@ -64,7 +64,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Exten
 		{D09C0FBA-B998-4A59-B648-FC6977C8D9DF} = {D09C0FBA-B998-4A59-B648-FC6977C8D9DF}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton.Toolkit.Suite.Extended.Krypton.Wizard", "Libraries\Krypton Wizard\Krypton.Toolkit.Suite.Extended.Krypton.Wizard.csproj", "{2CD86052-534E-4582-8EAB-3536DF40A4D8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton.Toolkit.Suite.Extended.Wizard", "Libraries\Krypton Wizard\Krypton.Toolkit.Suite.Extended.Wizard.csproj", "{2CD86052-534E-4582-8EAB-3536DF40A4D8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
