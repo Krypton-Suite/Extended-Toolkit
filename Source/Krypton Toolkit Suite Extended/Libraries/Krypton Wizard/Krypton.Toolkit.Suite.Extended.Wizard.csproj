@@ -9,10 +9,15 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Version>5.550.2005</Version>
+    <PackageLicenseFile></PackageLicenseFile>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Krypton.Toolkit.Experimental" Version="5.500.2003" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Shared\Common\Krypton.Toolkit.Suite.Extended.Common.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -16,7 +16,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		..\..\Directory.Build.props = ..\..\Directory.Build.props
 		Directory.Build.props = Directory.Build.props
 		Directory.Build.targets = Directory.Build.targets
-		..\..\README.md = ..\..\README.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Common", "Shared\Common\Krypton.Toolkit.Suite.Extended.Common.csproj", "{5E8758D3-BE51-474E-9CED-4E55EE1297DF}"
@@ -65,6 +64,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Exten
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton.Toolkit.Suite.Extended.Wizard", "Libraries\Krypton Wizard\Krypton.Toolkit.Suite.Extended.Wizard.csproj", "{2CD86052-534E-4582-8EAB-3536DF40A4D8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Markdown", "Markdown", "{6D03424F-E3C8-40E6-9D67-41BE49CFFE35}"
+	ProjectSection(SolutionItems) = preProject
+		Prerequisites.md = Prerequisites.md
+		..\..\README.md = ..\..\README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -172,6 +177,7 @@ Global
 		{881805F9-0C28-4ECB-A24E-FE48BC0C1A22} = {1F1DCECC-C25F-4E91-9C8A-ECCBB9827BBA}
 		{7524CBCA-386E-4859-AC38-F007BE57B14E} = {1F1DCECC-C25F-4E91-9C8A-ECCBB9827BBA}
 		{2CD86052-534E-4582-8EAB-3536DF40A4D8} = {1F1DCECC-C25F-4E91-9C8A-ECCBB9827BBA}
+		{6D03424F-E3C8-40E6-9D67-41BE49CFFE35} = {35C5D580-4B81-4E33-AB75-BD5D316A2ABC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9A189168-3746-4F9F-8C61-863D83D8ABD2}

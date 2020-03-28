@@ -59,5 +59,185 @@ namespace Krypton.Toolkit.Extended.Wizard.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BackBtnStrip {
+            get {
+                object obj = ResourceManager.GetObject("BackBtnStrip", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BackBtnStrip2 {
+            get {
+                object obj = ResourceManager.GetObject("BackBtnStrip2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap GlassExtenderProvider {
+            get {
+                object obj = ResourceManager.GetObject("GlassExtenderProvider", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap StepWizardControl {
+            get {
+                object obj = ResourceManager.GetObject("StepWizardControl", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ThemedImageButton {
+            get {
+                object obj = ResourceManager.GetObject("ThemedImageButton", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ThemedLabel {
+            get {
+                object obj = ResourceManager.GetObject("ThemedLabel", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ThemedTableLayoutPanel {
+            get {
+                object obj = ResourceManager.GetObject("ThemedTableLayoutPanel", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Returns to a previous page.
+        /// </summary>
+        internal static string WizardBackButtonToolTip {
+            get {
+                return ResourceManager.GetString("WizardBackButtonToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to B&amp;ack.
+        /// </summary>
+        internal static string WizardBackText {
+            get {
+                return ResourceManager.GetString("WizardBackText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Cancel.
+        /// </summary>
+        internal static string WizardCancelText {
+            get {
+                return ResourceManager.GetString("WizardCancelText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap WizardControl {
+            get {
+                object obj = ResourceManager.GetObject("WizardControl", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to F&amp;inish.
+        /// </summary>
+        internal static string WizardFinishText {
+            get {
+                return ResourceManager.GetString("WizardFinishText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon WizardHat {
+            get {
+                object obj = ResourceManager.GetObject("WizardHat", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Page Title.
+        /// </summary>
+        internal static string WizardHeader {
+            get {
+                return ResourceManager.GetString("WizardHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to H&amp;elp.
+        /// </summary>
+        internal static string WizardHelpText {
+            get {
+                return ResourceManager.GetString("WizardHelpText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ne&amp;xt.
+        /// </summary>
+        internal static string WizardNextText {
+            get {
+                return ResourceManager.GetString("WizardNextText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No wizard pages have been added..
+        /// </summary>
+        internal static string WizardNoPagesNotice {
+            get {
+                return ResourceManager.GetString("WizardNoPagesNotice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Help.
+        /// </summary>
+        internal static string WizardPageDefaultHelpText {
+            get {
+                return ResourceManager.GetString("WizardPageDefaultHelpText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wizard Title.
+        /// </summary>
+        internal static string WizardTitle {
+            get {
+                return ResourceManager.GetString("WizardTitle", resourceCulture);
+            }
+        }
     }
 }
