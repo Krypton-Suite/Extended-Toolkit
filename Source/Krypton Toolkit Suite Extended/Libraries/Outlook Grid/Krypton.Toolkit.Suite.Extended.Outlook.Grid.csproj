@@ -21,6 +21,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="Krypton.Toolkit.Suite.Extended.Base">
+      <HintPath>..\Krypton Toolkit Suite Extended Base\obj\Debug\net45\Krypton.Toolkit.Suite.Extended.Base.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
