@@ -1077,7 +1077,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             ConditionalFormatting newformat = ((List<ConditionalFormatting>)item.Tag)[item.SelectedIndex];
             if (format == null)
             {
-                formatConditions.Add(new Formatting.ConditionalFormatting(col.DataGridViewColumn.Name, newformat.FormatType, newformat.FormatParams));
+                formatConditions.Add(new ConditionalFormatting(col.DataGridViewColumn.Name, newformat.FormatType, newformat.FormatParams));
             }
             else
             {
@@ -1098,7 +1098,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 ConditionalFormatting format = formatConditions.Where(x => x.ColumnName == col.Name).FirstOrDefault();
                 if (format == null)
                 {
-                    ConditionalFormatting newformat = new Formatting.ConditionalFormatting(col.DataGridViewColumn.Name, EnumConditionalFormatType.TWOCOLOURSRANGE, new TwoColoursParams(fm.colMin, fm.colMax));
+                    ConditionalFormatting newformat = new ConditionalFormatting(col.DataGridViewColumn.Name, EnumConditionalFormatType.TWOCOLOURSRANGE, new TwoColoursParams(fm.colMin, fm.colMax));
                     formatConditions.Add(newformat);
                 }
                 else
@@ -1122,7 +1122,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 ConditionalFormatting format = formatConditions.Where(x => x.ColumnName == col.Name).FirstOrDefault();
                 if (format == null)
                 {
-                    ConditionalFormatting newformat = new Formatting.ConditionalFormatting(col.DataGridViewColumn.Name, EnumConditionalFormatType.THREECOLOURSRANGE, new ThreeColoursParams(Color.FromArgb(248, 105, 107), Color.FromArgb(255, 235, 132), Color.FromArgb(99, 190, 123)));
+                    ConditionalFormatting newformat = new ConditionalFormatting(col.DataGridViewColumn.Name, EnumConditionalFormatType.THREECOLOURSRANGE, new ThreeColoursParams(Color.FromArgb(248, 105, 107), Color.FromArgb(255, 235, 132), Color.FromArgb(99, 190, 123)));
                     formatConditions.Add(newformat);
                 }
                 else
@@ -1145,7 +1145,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 ConditionalFormatting format = formatConditions.Where(x => x.ColumnName == col.Name).FirstOrDefault();
                 if (format == null)
                 {
-                    ConditionalFormatting newformat = new Formatting.ConditionalFormatting(col.DataGridViewColumn.Name, EnumConditionalFormatType.BAR, new BarParams(fm.colMin, fm.gradient));
+                    ConditionalFormatting newformat = new ConditionalFormatting(col.DataGridViewColumn.Name, EnumConditionalFormatType.BAR, new BarParams(fm.colMin, fm.gradient));
                     formatConditions.Add(newformat);
                 }
                 else
@@ -1900,10 +1900,10 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                         it2.Image = Properties.Resources.paint_bucket_green;
                         it2.Click += OnBARCustomClick;
 
-                        KryptonContextMenuItems _BARs = new KryptonContextMenuItems(new ComponentFactory.Krypton.Toolkit.KryptonContextMenuItemBase[] { it2 });
+                        KryptonContextMenuItems _BARs = new KryptonContextMenuItems(new KryptonContextMenuItemBase[] { it2 });
 
                         //Menu construction
-                        it.Items.AddRange(new ComponentFactory.Krypton.Toolkit.KryptonContextMenuItemBase[] {
+                        it.Items.AddRange(new KryptonContextMenuItemBase[] {
                         KFormattingBARHeadingSolid,
                         KFormattingBARImgSelectSolid,
                         KFormattingBARHeadingGradient,
@@ -1936,7 +1936,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                         it2.Image = Properties.Resources.paint_bucket_green;
                         it2.Click += OnTwoColorsCustomClick;
 
-                        _TwoColors = new KryptonContextMenuItems(new ComponentFactory.Krypton.Toolkit.KryptonContextMenuItemBase[] { sep1, it2 });
+                        _TwoColors = new KryptonContextMenuItems(new KryptonContextMenuItemBase[] { sep1, it2 });
                         it.Items.Add(_TwoColors);
                     }
                     else if (names[i] == EnumConditionalFormatType.THREECOLOURSRANGE.ToString())
@@ -1963,7 +1963,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                         it2.Image = Properties.Resources.paint_bucket_green;
                         it2.Click += OnThreeColorsCustomClick;
 
-                        _ThreeColors = new KryptonContextMenuItems(new ComponentFactory.Krypton.Toolkit.KryptonContextMenuItemBase[] { sep1, it2 });
+                        _ThreeColors = new KryptonContextMenuItems(new KryptonContextMenuItemBase[] { sep1, it2 });
                         it.Items.Add(_ThreeColors);
                     }
 

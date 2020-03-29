@@ -10,6 +10,7 @@
 
 using System;
 using System.Drawing;
+using static Krypton.Toolkit.Suite.Extended.Outlook.Grid.ColourHelper;
 
 namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 {

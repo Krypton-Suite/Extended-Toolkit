@@ -10,7 +10,22 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 {
-    public class EnumConditionalFormatType
+    /// <summary>
+    /// Conditional Formatting type
+    /// </summary>
+    public enum EnumConditionalFormatType
     {
+        /// <summary>
+        /// Two scale colour
+        /// </summary>
+        TWOCOLOURSRANGE,
+        /// <summary>
+        /// Three scale colour
+        /// </summary>
+        THREECOLOURSRANGE,
+        /// <summary>
+        /// Bar
+        /// </summary>
+        BAR
     }
 }
