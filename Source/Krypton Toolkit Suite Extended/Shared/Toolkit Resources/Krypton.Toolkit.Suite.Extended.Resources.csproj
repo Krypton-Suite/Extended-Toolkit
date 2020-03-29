@@ -24,8 +24,8 @@
   </ItemGroup>
 
   <PropertyGroup>
-    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Resources\Krypton.Toolkit.Extended.Resources.xml</DocumentationFile>
-    <OutputPath>..\..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Resources\</OutputPath>
+    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Resources\Krypton.Toolkit.Extended.Resources.xml</DocumentationFile>
+    <OutputPath>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Resources\</OutputPath>
   </PropertyGroup>
 
   <PropertyGroup>

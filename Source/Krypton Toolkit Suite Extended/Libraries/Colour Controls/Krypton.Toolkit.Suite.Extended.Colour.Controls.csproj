@@ -48,8 +48,8 @@
   </ItemGroup>
 
   <PropertyGroup>
-    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Colour.Controls\Krypton.Toolkit.Extended.Colour.Controls.xml</DocumentationFile>
-    <OutputPath>..\..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Colour.Controls\</OutputPath>
+    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Colour.Controls\Krypton.Toolkit.Extended.Colour.Controls.xml</DocumentationFile>
+    <OutputPath>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Colour.Controls\</OutputPath>
   </PropertyGroup>
 
 </Project>

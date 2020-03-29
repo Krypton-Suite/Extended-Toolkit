@@ -325,8 +325,8 @@
   </ItemGroup>
 
   <PropertyGroup>
-    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Settings\Krypton.Toolkit.Extended.Settings.xml</DocumentationFile>
-    <OutputPath>..\..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Settings\</OutputPath>
+    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Settings\Krypton.Toolkit.Extended.Settings.xml</DocumentationFile>
+    <OutputPath>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Settings\</OutputPath>
   </PropertyGroup>
 
   <PropertyGroup>

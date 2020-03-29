@@ -4,22 +4,13 @@
     <LangVersion>8.0</LangVersion>
     <TargetFrameworks>net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1</TargetFrameworks>
     <TargetFrameworks Condition="'$(TFMs)' == 'all'">net35;net40;net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1</TargetFrameworks>
-    <RootNamespace>Krypton.Toolkit.Extended.Floating.Toolbars</RootNamespace>
+    <RootNamespace>Krypton.Toolkit.Extended.IO</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Krypton.Toolkit.Experimental" Version="5.500.2003" />
-  </ItemGroup>
-
   <PropertyGroup>
-    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Floating.Toolbars\Krypton.Toolkit.Extended.Floating.Toolbars.xml</DocumentationFile>
-    <OutputPath>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Floating.Toolbars\</OutputPath>
-  </PropertyGroup>
-
-  <PropertyGroup>
-    <AssemblyVersion>5.500.2005</AssemblyVersion>
-    <FileVersion>5.500.2005</FileVersion>
+    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.IO\Krypton.Toolkit.Extended.IO.xml</DocumentationFile>
+    <OutputPath>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.IO\</OutputPath>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Version>5.500.2005</Version>
