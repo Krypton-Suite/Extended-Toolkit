@@ -61,6 +61,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             // 
             // kbtnOk
             // 
+            this.kbtnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.kbtnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.kbtnOk.Location = new System.Drawing.Point(424, 11);
             this.kbtnOk.Name = "kbtnOk";
@@ -71,6 +72,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             // 
             // kbtnCancel
             // 
+            this.kbtnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.kbtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.kbtnCancel.Location = new System.Drawing.Point(520, 11);
             this.kbtnCancel.Name = "kbtnCancel";
@@ -583,6 +585,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             this.Name = "CustomFormatRule";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
+            this.Text = "Custom Rule";
             this.Load += new System.EventHandler(this.CustomFormatRule_Load);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
