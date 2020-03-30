@@ -363,6 +363,7 @@ namespace Krypton.Toolkit.Extended.Core
         NIN_BALLOONUSERCLICK = 0x0405
     }
 
+
     #region SubClass Classing Handler Class
     internal class SubClass : System.Windows.Forms.NativeWindow
     {

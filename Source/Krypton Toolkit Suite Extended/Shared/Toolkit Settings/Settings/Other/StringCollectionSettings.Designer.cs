@@ -22,5 +22,25 @@ namespace Krypton.Toolkit.Suite.Extended.Settings.Settings.Other {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"<?xml version=""1.0"" encoding=""utf-16""?>
+<ArrayOfString xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
+  <string>MD-5</string>
+  <string>SHA-1</string>
+  <string>SHA-256</string>
+  <string>SHA-384</string>
+  <string>SHA-512</string>
+  <string>RIPEMD-160</string>
+</ArrayOfString>")]
+        public global::System.Collections.Specialized.StringCollection SupportedHashTypes {
+            get {
+                return ((global::System.Collections.Specialized.StringCollection)(this["SupportedHashTypes"]));
+            }
+            set {
+                this["SupportedHashTypes"] = value;
+            }
+        }
     }
 }
