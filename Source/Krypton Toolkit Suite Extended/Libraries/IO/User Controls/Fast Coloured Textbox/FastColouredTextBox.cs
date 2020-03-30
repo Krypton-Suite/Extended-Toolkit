@@ -5287,7 +5287,7 @@ namespace Krypton.Toolkit.Extended.IO
                     GetVisibleState(r.End.iLine) != VisibleState.Visible)
                     continue;
 
-                using (var pen = new Pen(hint.BorderColor))
+                using (var pen = new Pen(hint.BorderColour))
                 {
                     pen.DashStyle = DashStyle.Dash;
                     if (r.IsEmpty)

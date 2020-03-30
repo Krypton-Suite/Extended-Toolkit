@@ -26,6 +26,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="Krypton.Toolkit.Suite.Extended.Dialogs">
+      <HintPath>..\Extended Dialogs\obj\Debug\net45\Krypton.Toolkit.Suite.Extended.Dialogs.dll</HintPath>
+    </Reference>
+    <Reference Include="Krypton.Toolkit.Suite.Extended.Standard.Controls">
+      <HintPath>..\Extended Standard Controls\obj\Debug\net45\Krypton.Toolkit.Suite.Extended.Standard.Controls.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
