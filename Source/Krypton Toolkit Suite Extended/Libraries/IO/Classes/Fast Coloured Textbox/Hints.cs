@@ -222,11 +222,11 @@ namespace Krypton.Toolkit.Extended.IO
         /// <summary>
         /// Second backcolor
         /// </summary>
-        public Color BackColour2 { get { return HostPanel.BackColor2; } set { HostPanel.BackColor2 = value; } }
+        public Color BackColour2 { get { return HostPanel.BackColour2; } set { HostPanel.BackColour2 = value; } }
         /// <summary>
         /// Border color
         /// </summary>
-        public Color BorderColour { get { return HostPanel.BorderColor; } set { HostPanel.BorderColor = value; } }
+        public Color BorderColour { get { return HostPanel.BorderColour; } set { HostPanel.BorderColour = value; } }
         /// <summary>
         /// Fore color
         /// </summary>
