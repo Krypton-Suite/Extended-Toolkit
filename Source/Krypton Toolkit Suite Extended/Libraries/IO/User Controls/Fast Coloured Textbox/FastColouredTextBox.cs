@@ -1,9 +1,18 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
+using System.Drawing.Design;
+using System.Drawing.Drawing2D;
+using System.IO;
 using System.Reflection;
+using System.Runtime.InteropServices;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading;
 using System.Windows.Forms;
+using System.Windows.Forms.Design;
 
 namespace Krypton.Toolkit.Extended.IO
 {
@@ -23,9 +32,9 @@ namespace Krypton.Toolkit.Extended.IO
 
         public readonly List<LineInfo> LineInfos = new List<LineInfo>();
         private readonly Range selection;
-        private readonly Timer timer = new Timer();
-        private readonly Timer timer2 = new Timer();
-        private readonly Timer timer3 = new Timer();
+        private readonly System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
+        private readonly System.Windows.Forms.Timer timer2 = new System.Windows.Forms.Timer();
+        private readonly System.Windows.Forms.Timer timer3 = new System.Windows.Forms.Timer();
         private readonly List<VisualMarker> visibleMarkers = new List<VisualMarker>();
         public int TextHeight;
         public bool AllowInsertRemoveLines = true;
@@ -1090,9 +1099,9 @@ namespace Krypton.Toolkit.Extended.IO
         /// </summary>
         [Browsable(true)]
         [DefaultValue(null)]
-        [Description("Allows to get text from other FastColoredTextBox.")]
+        [Description("Allows to get text from other FastColouredTextBox.")]
         //[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public FastColoredTextBox SourceTextBox
+        public FastColouredTextBox SourceTextBox
         {
             get { return sourceTextBox; }
             set
@@ -1287,10 +1296,10 @@ namespace Krypton.Toolkit.Extended.IO
 
 
         [Browsable(false)]
-        public FindForm findForm { get; private set; }
+        public FindWindow FindWindow { get; private set; }
 
         [Browsable(false)]
-        public ReplaceForm replaceForm { get; private set; }
+        public ReplaceWindow ReplaceWindow { get; private set; }
 
         /// <summary>
         /// Do not change this property
@@ -1523,7 +1532,7 @@ namespace Krypton.Toolkit.Extended.IO
                     if (!base.AutoScroll)
                         base.AutoScroll = true;
                     Size newSize = value;
-                    if (WordWrap && WordWrapMode != FastColoredTextBoxNS.WordWrapMode.Custom)
+                    if (WordWrap && WordWrapMode != WordWrapMode.Custom)
                     {
                         int maxWidth = GetMaxLineWordWrapedWidth();
                         newSize = new Size(Math.Min(newSize.Width, maxWidth), newSize.Height);
@@ -2295,9 +2304,9 @@ namespace Krypton.Toolkit.Extended.IO
                 VisibleRangeChangedDelayed(this, new EventArgs());
         }
 
-        Dictionary<Timer, Timer> timersToReset = new Dictionary<Timer, Timer>();
+        Dictionary<System.Windows.Forms.Timer, System.Windows.Forms.Timer> timersToReset = new Dictionary<System.Windows.Forms.Timer, System.Windows.Forms.Timer>();
 
-        private void ResetTimer(Timer timer)
+        private void ResetTimer(System.Windows.Forms.Timer timer)
         {
             if (InvokeRequired)
             {
@@ -2314,7 +2323,7 @@ namespace Krypton.Toolkit.Extended.IO
         protected override void OnHandleCreated(EventArgs e)
         {
             base.OnHandleCreated(e);
-            foreach (var timer in new List<Timer>(timersToReset.Keys))
+            foreach (var timer in new List<System.Windows.Forms.Timer>(timersToReset.Keys))
                 ResetTimer(timer);
             timersToReset.Clear();
 
@@ -2372,17 +2381,17 @@ namespace Krypton.Toolkit.Extended.IO
         /// </summary>
         public virtual void ShowFindDialog(string findText)
         {
-            if (findForm == null)
-                findForm = new FindForm(this);
+            if (FindWindow == null)
+                FindWindow = new FindWindow(this);
 
             if (findText != null)
-                findForm.tbFind.Text = findText;
+                FindWindow.FindBox.Text = findText;
             else if (!Selection.IsEmpty && Selection.Start.iLine == Selection.End.iLine)
-                findForm.tbFind.Text = Selection.Text;
+                FindWindow.FindBox.Text = Selection.Text;
 
-            findForm.tbFind.SelectAll();
-            findForm.Show();
-            findForm.Focus();
+            FindWindow.FindBox.SelectAll();
+            FindWindow.Show();
+            FindWindow.Focus();
         }
 
         /// <summary>
@@ -2400,17 +2409,17 @@ namespace Krypton.Toolkit.Extended.IO
         {
             if (ReadOnly)
                 return;
-            if (replaceForm == null)
-                replaceForm = new ReplaceForm(this);
+            if (ReplaceWindow == null)
+                ReplaceWindow = new ReplaceWindow(this);
 
             if (findText != null)
-                replaceForm.tbFind.Text = findText;
+                ReplaceWindow.FindBox.Text = findText;
             else if (!Selection.IsEmpty && Selection.Start.iLine == Selection.End.iLine)
-                replaceForm.tbFind.Text = Selection.Text;
+                ReplaceWindow.FindBox.Text = Selection.Text;
 
-            replaceForm.tbFind.SelectAll();
-            replaceForm.Show();
-            replaceForm.Focus();
+            ReplaceWindow.FindBox.SelectAll();
+            ReplaceWindow.Show();
+            ReplaceWindow.Focus();
         }
 
         /// <summary>
@@ -3606,10 +3615,10 @@ namespace Krypton.Toolkit.Extended.IO
                     break;
 
                 case FCTBAction.FindNext:
-                    if (findForm == null || findForm.tbFind.Text == "")
+                    if (FindWindow == null || FindWindow.FindBox.Text == "")
                         ShowFindDialog();
                     else
-                        findForm.FindNext(findForm.tbFind.Text);
+                        FindWindow.FindNext(FindWindow.FindBox.Text);
                     break;
 
                 case FCTBAction.ReplaceDialog:
@@ -7410,11 +7419,11 @@ window.status = ""#print"";
                 timer2.Dispose();
                 middleClickScrollingTimer.Dispose();
 
-                if (findForm != null)
-                    findForm.Dispose();
+                if (FindWindow != null)
+                    FindWindow.Dispose();
 
-                if (replaceForm != null)
-                    replaceForm.Dispose();
+                if (ReplaceWindow != null)
+                    ReplaceWindow.Dispose();
                 /*
                 if (Font != null)
                     Font.Dispose();
@@ -7581,7 +7590,7 @@ window.status = ""#print"";
         /// </summary>
         public void ShowGoToDialog()
         {
-            var form = new GoToForm();
+            var form = new GoToWindow();
             form.TotalLineCount = LinesCount;
             form.SelectedLineNumber = Selection.Start.iLine + 1;
 
@@ -8002,7 +8011,7 @@ window.status = ""#print"";
         private bool middleClickScrollingActivated;
         private Point middleClickScrollingOriginPoint;
         private Point middleClickScrollingOriginScroll;
-        private readonly Timer middleClickScrollingTimer = new Timer();
+        private readonly System.Windows.Forms.Timer middleClickScrollingTimer = new System.Windows.Forms.Timer();
         private ScrollDirection middleClickScollDirection = ScrollDirection.None;
 
         /// <summary>

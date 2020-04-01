@@ -2,6 +2,7 @@
 using Krypton.Toolkit.Extended.Common;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -487,6 +488,12 @@ namespace Krypton.Toolkit.Extended.IO
             tb = box;
         }
         #endregion
+
+        [Browsable(false)]
+        public KryptonTextBox FindBox { get => ktxtFind; }
+
+        [Browsable(false)]
+        public KryptonTextBox ReplaceBox { get => ktxtReplace; }
 
         private void kbtnCancel_Click(object sender, EventArgs e)
         {

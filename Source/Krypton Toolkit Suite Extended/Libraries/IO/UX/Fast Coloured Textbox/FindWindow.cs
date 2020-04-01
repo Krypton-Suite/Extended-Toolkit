@@ -1,5 +1,6 @@
 ﻿using Krypton.Toolkit.Extended.Base;
 using System;
+using System.ComponentModel;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -305,7 +306,7 @@ namespace Krypton.Toolkit.Extended.IO
                 if (kcbMatchWholeWord.Checked)
                     pattern = "\\b" + pattern + "\\b";
                 //
-                Range range = tb.Selection.Clone();
+                Range range = _textBox.Selection.Clone();
                 range.Normalize();
                 //
                 if (_firstSearch)
@@ -315,22 +316,22 @@ namespace Krypton.Toolkit.Extended.IO
                 }
                 //
                 range.Start = range.End;
-                if (range.Start >= startPlace)
-                    range.End = new Place(tb.GetLineLength(tb.LinesCount - 1), tb.LinesCount - 1);
+                if (range.Start >= _startPlace)
+                    range.End = new Place(_textBox.GetLineLength(_textBox.LinesCount - 1), _textBox.LinesCount - 1);
                 else
-                    range.End = startPlace;
+                    range.End = _startPlace;
                 //
                 foreach (var r in range.GetRangesByLines(pattern, opt))
                 {
-                    tb.Selection = r;
-                    tb.DoSelectionVisible();
-                    tb.Invalidate();
+                    _textBox.Selection = r;
+                    _textBox.DoSelectionVisible();
+                    _textBox.Invalidate();
                     return;
                 }
                 //
-                if (range.Start >= startPlace && startPlace > Place.Empty)
+                if (range.Start >= _startPlace && _startPlace > Place.Empty)
                 {
-                    tb.Selection.Start = new Place(0, 0);
+                    _textBox.Selection.Start = new Place(0, 0);
                     FindNext(pattern);
                     return;
                 }
@@ -342,6 +343,9 @@ namespace Krypton.Toolkit.Extended.IO
             }
         }
         #endregion
+
+        [Browsable(false)]
+        public KryptonTextBox FindBox { get => ktxtFind; }
 
         private void kbtnCancel_Click(object sender, EventArgs e)
         {
