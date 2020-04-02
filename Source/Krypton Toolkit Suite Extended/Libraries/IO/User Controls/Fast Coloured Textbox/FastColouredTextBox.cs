@@ -21,6 +21,7 @@ namespace Krypton.Toolkit.Extended.IO
     /// </summary>
     public partial class FastColouredTextBox : UserControl, ISupportInitialize
     {
+        #region Constants
         internal const int minLeftIndent = 8;
         private const int maxBracketSearchIterations = 1000;
         private const int maxLinesForFolding = 3000;
@@ -29,13 +30,18 @@ namespace Krypton.Toolkit.Extended.IO
         private const int WM_HSCROLL = 0x114;
         private const int WM_VSCROLL = 0x115;
         private const int SB_ENDSCROLL = 0x8;
+        #endregion
 
+        #region Readonly
         public readonly List<LineInfo> LineInfos = new List<LineInfo>();
         private readonly Range selection;
         private readonly System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
         private readonly System.Windows.Forms.Timer timer2 = new System.Windows.Forms.Timer();
         private readonly System.Windows.Forms.Timer timer3 = new System.Windows.Forms.Timer();
         private readonly List<VisualMarker> visibleMarkers = new List<VisualMarker>();
+        #endregion
+
+        #region Variables
         public int TextHeight;
         public bool AllowInsertRemoveLines = true;
         private Brush backBrush;
@@ -101,7 +107,9 @@ namespace Krypton.Toolkit.Extended.IO
         private int reservedCountOfLineNumberChars = 1;
         private int zoom = 100;
         private Size localAutoScrollMinSize;
+        #endregion
 
+        #region Constructor
         /// <summary>
         /// Constructor
         /// </summary>
@@ -135,7 +143,7 @@ namespace Krypton.Toolkit.Extended.IO
             ShowLineNumbers = true;
             TabLength = 4;
             FoldedBlockStyle = new FoldedBlockStyle(Brushes.Gray, null, FontStyle.Regular);
-            SelectionColor = Color.Blue;
+            SelectionColour = Color.Blue;
             BracketsStyle = new MarkerStyle(new SolidBrush(Color.FromArgb(80, Color.Lime)));
             BracketsStyle2 = new MarkerStyle(new SolidBrush(Color.FromArgb(60, Color.Red)));
             DelayedEventsInterval = 100;
@@ -194,7 +202,9 @@ namespace Krypton.Toolkit.Extended.IO
             timer3.Tick += timer3_Tick;
             middleClickScrollingTimer.Tick += middleClickScrollingTimer_Tick;
         }
+        #endregion
 
+        #region Properties
         private char[] autoCompleteBracketsList = { '(', ')', '{', '}', '[', ']', '"', '"', '\'', '\'' };
 
         public char[] AutoCompleteBracketsList
@@ -1612,8 +1622,8 @@ namespace Krypton.Toolkit.Extended.IO
         /// Color of selected area
         /// </summary>
         [DefaultValue(typeof(Color), "Blue")]
-        [Description("Color of selected area.")]
-        public virtual Color SelectionColor
+        [Description("Colour of selected area.")]
+        public virtual Color SelectionColour
         {
             get { return selectionColor; }
             set
@@ -1656,14 +1666,18 @@ namespace Krypton.Toolkit.Extended.IO
                 Invalidate();
             }
         }
+        #endregion
 
+        #region Event
         /// <summary>
         /// Occurs when mouse is moving over text and tooltip is needed
         /// </summary>
         [Browsable(true)]
         [Description("Occurs when mouse is moving over text and tooltip is needed.")]
         public event EventHandler<ToolTipNeededEventArgs> ToolTipNeeded;
+        #endregion
 
+        #region Methods
         /// <summary>
         /// Removes all hints
         /// </summary>
@@ -1730,6 +1744,20 @@ namespace Krypton.Toolkit.Extended.IO
         }
 
         /// <summary>
+        /// Invalidates the entire surface of the control and causes the control to be redrawn.
+        /// This method is thread safe and does not require Invoke.
+        /// </summary>
+        public new void Invalidate()
+        {
+            if (InvokeRequired)
+                BeginInvoke(new MethodInvoker(Invalidate));
+            else
+                base.Invalidate();
+        }
+        #endregion
+
+        #region Virtuals
+        /// <summary>
         /// Occurs when user click on the hint
         /// </summary>
         /// <param name="hint"></param>
@@ -1790,25 +1818,15 @@ namespace Krypton.Toolkit.Extended.IO
                 VisibleRangeChanged(this, new EventArgs());
         }
 
-        /// <summary>
-        /// Invalidates the entire surface of the control and causes the control to be redrawn.
-        /// This method is thread safe and does not require Invoke.
-        /// </summary>
-        public new void Invalidate()
-        {
-            if (InvokeRequired)
-                BeginInvoke(new MethodInvoker(Invalidate));
-            else
-                base.Invalidate();
-        }
-
         protected virtual void OnCharSizeChanged()
         {
             VerticalScroll.SmallChange = charHeight;
             VerticalScroll.LargeChange = 10 * charHeight;
             HorizontalScroll.SmallChange = CharWidth;
         }
+        #endregion
 
+        #region Events
         /// <summary>
         /// HintClick event.
         /// It occurs if user click on the hint.
@@ -1989,8 +2007,9 @@ namespace Krypton.Toolkit.Extended.IO
         [Browsable(true)]
         [Description("Occurs when custom wordwrap is needed.")]
         public event EventHandler<WordWrapNeededEventArgs> WordWrapNeeded;
+        #endregion
 
-
+        #region Public
         /// <summary>
         /// Returns list of styles of given place
         /// </summary>
@@ -2228,12 +2247,6 @@ namespace Krypton.Toolkit.Extended.IO
             DoSelectionVisible();
         }
 
-        protected override void OnLoad(EventArgs e)
-        {
-            base.OnLoad(e);
-            m_hImc = ImmGetContext(Handle);
-        }
-
         private void timer2_Tick(object sender, EventArgs e)
         {
             timer2.Enabled = false;
@@ -2302,6 +2315,12 @@ namespace Krypton.Toolkit.Extended.IO
         {
             if (VisibleRangeChangedDelayed != null)
                 VisibleRangeChangedDelayed(this, new EventArgs());
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            m_hImc = ImmGetContext(Handle);
         }
 
         Dictionary<System.Windows.Forms.Timer, System.Windows.Forms.Timer> timersToReset = new Dictionary<System.Windows.Forms.Timer, System.Windows.Forms.Timer>();
@@ -7645,6 +7664,7 @@ window.status = ""#print"";
             NeedRecalc();
             Invalidate();
         }
+        #endregion
 
         void ISupportInitialize.BeginInit()
         {

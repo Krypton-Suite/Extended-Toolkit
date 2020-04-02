@@ -42,8 +42,29 @@ namespace Krypton.Toolkit.Extended.IO
         #endregion
         #endregion
 
-        public EventHandler TargetChanged;
+        #region Variables
 
+        #region Krypton
+        private KryptonManager _manager = new KryptonManager();
+
+        private PaletteBackInheritRedirect _paletteBack;
+
+        private PaletteBorderInheritRedirect _paletteBorder;
+
+        private PaletteContentInheritRedirect _paletteContent;
+
+        private IPalette _palette;
+
+        private PaletteRedirect _paletteRedirect;
+        #endregion
+
+        #endregion
+
+        #region Event Handler
+        public EventHandler TargetChanged;
+        #endregion
+
+        #region Properties
         [DefaultValue(typeof(Color), "ControlLight")]
         public Color BackColour2 { get; set; }
 
@@ -68,7 +89,9 @@ namespace Krypton.Toolkit.Extended.IO
                 OnTargetChanged();
             }
         }
+        #endregion
 
+        #region Constructors
         public Ruler()
         {
             InitializeComponent();
@@ -80,10 +103,26 @@ namespace Krypton.Toolkit.Extended.IO
             BackColour2 = SystemColors.ControlLight;
             TickColour = Color.DarkGray;
             CaretTickColour = Color.Black;
+
+            if (((_palette != null))) _palette.PalettePaint += OnPalettePaint;
+
+            KryptonManager.GlobalPaletteChanged += OnGlobalPaletteChanged;
+
+            _palette = KryptonManager.CurrentGlobalPalette;
+
+            _paletteRedirect = new PaletteRedirect(_palette);
+
+            _paletteBack = new PaletteBackInheritRedirect(_paletteRedirect);
+
+            _paletteBorder = new PaletteBorderInheritRedirect(_paletteRedirect);
+
+            _paletteContent = new PaletteContentInheritRedirect(_paletteRedirect);
+
+            InitiliseColourScheme();
         }
+        #endregion
 
-
-
+        #region Protected
         protected virtual void OnTargetChanged()
         {
             if (TargetChanged != null)
@@ -102,16 +141,6 @@ namespace Krypton.Toolkit.Extended.IO
             target.Scroll += new ScrollEventHandler(target_Scroll);
             target.SelectionChanged += new EventHandler(target_SelectionChanged);
             target.VisibleRangeChanged += new EventHandler(target_VisibleRangeChanged);
-        }
-
-        void target_VisibleRangeChanged(object sender, EventArgs e)
-        {
-            Invalidate();
-        }
-
-        void target_SelectionChanged(object sender, EventArgs e)
-        {
-            Invalidate();
         }
 
         protected virtual void target_Scroll(object sender, ScrollEventArgs e)
@@ -165,5 +194,49 @@ namespace Krypton.Toolkit.Extended.IO
                 e.Graphics.DrawLine(pen, new Point(car.X + 2, fontSize.Height + 3), new Point(car.X + 2, Height - 4));
             }
         }
+        #endregion
+
+        #region Event Handlers
+        void target_VisibleRangeChanged(object sender, EventArgs e)
+        {
+            Invalidate();
+        }
+
+        void target_SelectionChanged(object sender, EventArgs e)
+        {
+            Invalidate();
+        }
+        #endregion
+
+        #region Krypton
+        private void InitiliseColourScheme()
+        {
+            BackColour2 = _palette.ColorTable.MenuStripGradientEnd;
+
+            TickColour = _palette.ColorTable.MenuItemText;
+
+            CaretTickColour = _palette.ColorTable.MenuItemText;
+        }
+
+        private void OnGlobalPaletteChanged(object sender, EventArgs e)
+        {
+            if (((_palette != null))) _palette.PalettePaint -= OnPalettePaint;
+
+            _palette = KryptonManager.CurrentGlobalPalette;
+
+            _paletteRedirect.Target = _palette;
+
+            if (((_palette != null)))
+            {
+                _palette.PalettePaint += OnPalettePaint;
+
+                InitiliseColourScheme();
+            }
+
+            Invalidate();
+        }
+
+        private void OnPalettePaint(object sender, PaletteLayoutEventArgs e) => Invalidate();
+        #endregion
     }
 }
