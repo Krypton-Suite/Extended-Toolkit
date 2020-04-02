@@ -16,6 +16,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		..\..\Directory.Build.props = ..\..\Directory.Build.props
 		Directory.Build.props = Directory.Build.props
 		Directory.Build.targets = Directory.Build.targets
+		..\..\Prerequisites.md = ..\..\Prerequisites.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Common", "Shared\Common\Krypton.Toolkit.Suite.Extended.Common.csproj", "{5E8758D3-BE51-474E-9CED-4E55EE1297DF}"
@@ -67,13 +68,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Exten
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Markdown", "Markdown", "{6D03424F-E3C8-40E6-9D67-41BE49CFFE35}"
 	ProjectSection(SolutionItems) = preProject
-		Prerequisites.md = Prerequisites.md
+		..\..\Prerequisites.md = ..\..\Prerequisites.md
 		..\..\README.md = ..\..\README.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Outlook.Grid", "Libraries\Outlook Grid\Krypton.Toolkit.Suite.Extended.Outlook.Grid.csproj", "{8B69F08C-6892-4AEF-B479-E865154EC947}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton.Toolkit.Suite.Extended.IO", "Libraries\IO\Krypton.Toolkit.Suite.Extended.IO.csproj", "{0E2E0B55-4944-419E-A4A1-6F92A621DB3B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.IO", "Libraries\IO\Krypton.Toolkit.Suite.Extended.IO.csproj", "{0E2E0B55-4944-419E-A4A1-6F92A621DB3B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
