@@ -2,6 +2,12 @@
 
 =======
 
+# NuGet Information
+
+## Stable
+
+=======
+
 ## 2020-03-21 - Build 2004 - April 2020
 * Support for all frameworks .NET 4.5 to 4.8 inclusive
 * Support for .NET Core LTS (currently 3.1)
