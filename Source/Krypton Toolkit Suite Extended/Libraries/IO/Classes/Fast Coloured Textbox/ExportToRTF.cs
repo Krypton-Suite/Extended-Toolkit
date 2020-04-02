@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
 
@@ -48,7 +47,7 @@ namespace Krypton.Toolkit.Extended.IO
             styles[currentStyleId] = null;
             colourTable.Clear();
             //
-            var lineNumberColor = GetColourTableNumber(r.tb.LineNumberColor);
+            var lineNumberColor = GetColourTableNumber(r.tb.LineNumberColour);
 
             if (IncludeLineNumbers)
                 tempSB.AppendFormat(@"{{\cf{1} {0}}}\tab", currentLine + 1, lineNumberColor);

@@ -60,20 +60,20 @@ namespace Krypton.Toolkit.Extended.IO
         /// Back color of selected item
         /// </summary>
         [DefaultValue(typeof(Color), "Orange")]
-        public Color SelectedColor
+        public Color SelectedColour
         {
-            get { return listView.SelectedColor; }
-            set { listView.SelectedColor = value; }
+            get { return listView.SelectedColour; }
+            set { listView.SelectedColour = value; }
         }
 
         /// <summary>
         /// Border color of hovered item
         /// </summary>
         [DefaultValue(typeof(Color), "Red")]
-        public Color HoveredColor
+        public Color HoveredColour
         {
-            get { return listView.HoveredColor; }
-            set { listView.HoveredColor = value; }
+            get { return listView.HoveredColour; }
+            set { listView.HoveredColour = value; }
         }
 
         public AutoCompleteMenu(FastColouredTextBox tb)
@@ -234,8 +234,8 @@ namespace Krypton.Toolkit.Extended.IO
             set { toolTip.ShowAlways = value; }
         }
 
-        public Color SelectedColor { get; set; }
-        public Color HoveredColor { get; set; }
+        public Color SelectedColour { get; set; }
+        public Color HoveredColour { get; set; }
         public int FocussedItemIndex
         {
             get { return focussedItemIndex; }
@@ -274,8 +274,8 @@ namespace Krypton.Toolkit.Extended.IO
             toolTip.ShowAlways = false;
             AppearInterval = 500;
             timer.Tick += new EventHandler(timer_Tick);
-            SelectedColor = Color.Orange;
-            HoveredColor = Color.Red;
+            SelectedColour = Color.Orange;
+            HoveredColour = Color.Red;
             ToolTipDuration = 3000;
             toolTip.Popup += ToolTip_Popup;
 
@@ -539,15 +539,15 @@ namespace Krypton.Toolkit.Extended.IO
                     e.Graphics.DrawImage(ImageList.Images[item.ImageIndex], 1, y);
 
                 if (i == FocussedItemIndex)
-                    using (var selectedBrush = new LinearGradientBrush(new Point(0, y - 3), new Point(0, y + itemHeight), Color.Transparent, SelectedColor))
-                    using (var pen = new Pen(SelectedColor))
+                    using (var selectedBrush = new LinearGradientBrush(new Point(0, y - 3), new Point(0, y + itemHeight), Color.Transparent, SelectedColour))
+                    using (var pen = new Pen(SelectedColour))
                     {
                         e.Graphics.FillRectangle(selectedBrush, leftPadding, y, ClientSize.Width - 1 - leftPadding, itemHeight - 1);
                         e.Graphics.DrawRectangle(pen, leftPadding, y, ClientSize.Width - 1 - leftPadding, itemHeight - 1);
                     }
 
                 if (i == hoveredItemIndex)
-                    using (var pen = new Pen(HoveredColor))
+                    using (var pen = new Pen(HoveredColour))
                         e.Graphics.DrawRectangle(pen, leftPadding, y, ClientSize.Width - 1 - leftPadding, itemHeight - 1);
 
                 using (var brush = new SolidBrush(item.ForeColour != Color.Transparent ? item.ForeColour : ForeColor))

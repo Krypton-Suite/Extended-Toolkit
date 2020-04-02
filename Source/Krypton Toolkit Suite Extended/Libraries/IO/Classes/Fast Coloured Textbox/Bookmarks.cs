@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Linq;
 
 namespace Krypton.Toolkit.Extended.IO
 {
@@ -243,7 +242,7 @@ namespace Krypton.Toolkit.Extended.IO
             this.TB = tb;
             this.Name = name;
             this.LineIndex = lineIndex;
-            Color = tb.BookmarkColour;
+            Colour = tb.BookmarkColour;
         }
 
         public virtual void Paint(Graphics gr, Rectangle lineRect)
