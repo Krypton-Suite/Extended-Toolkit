@@ -1,5 +1,4 @@
-﻿using Krypton.Toolkit.Extended.Base;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -8,33 +7,33 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
     public class BasicPaletteColourUserControl : UserControl
     {
         #region Design Code
-        private Suite.Extended.Standard.Controls.KryptonLabelExtended klblBasicColour;
-        private Base.CircularPictureBox cpbBaseColour;
-        private Base.CircularPictureBox cpbDarkestColour;
-        private Suite.Extended.Standard.Controls.KryptonLabelExtended klblDarkestColour;
-        private Base.CircularPictureBox cpbDarkColour;
-        private Suite.Extended.Standard.Controls.KryptonLabelExtended klblDarkColour;
-        private Base.CircularPictureBox cpbMediumColour;
-        private Suite.Extended.Standard.Controls.KryptonLabelExtended klblMediumColour;
-        private Base.CircularPictureBox cpbLightColour;
-        private Suite.Extended.Standard.Controls.KryptonLabelExtended klblLightColour;
-        private Base.CircularPictureBox cpbLightestColour;
-        private Suite.Extended.Standard.Controls.KryptonLabelExtended klblLightestColour;
+        private KryptonLabelExtended klblBasicColour;
+        private CircularPictureBox cpbBaseColour;
+        private CircularPictureBox cpbDarkestColour;
+        private KryptonLabelExtended klblDarkestColour;
+        private CircularPictureBox cpbDarkColour;
+        private KryptonLabelExtended klblDarkColour;
+        private CircularPictureBox cpbMediumColour;
+        private KryptonLabelExtended klblMediumColour;
+        private CircularPictureBox cpbLightColour;
+        private KryptonLabelExtended klblLightColour;
+        private CircularPictureBox cpbLightestColour;
+        private KryptonLabelExtended klblLightestColour;
 
         private void InitializeComponent()
         {
-            this.klblBasicColour = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonLabelExtended();
-            this.cpbBaseColour = new Krypton.Toolkit.Extended.Base.CircularPictureBox();
-            this.cpbDarkestColour = new Krypton.Toolkit.Extended.Base.CircularPictureBox();
-            this.klblDarkestColour = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonLabelExtended();
-            this.cpbDarkColour = new Krypton.Toolkit.Extended.Base.CircularPictureBox();
-            this.klblDarkColour = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonLabelExtended();
-            this.cpbMediumColour = new Krypton.Toolkit.Extended.Base.CircularPictureBox();
-            this.klblMediumColour = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonLabelExtended();
-            this.cpbLightColour = new Krypton.Toolkit.Extended.Base.CircularPictureBox();
-            this.klblLightColour = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonLabelExtended();
-            this.cpbLightestColour = new Krypton.Toolkit.Extended.Base.CircularPictureBox();
-            this.klblLightestColour = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonLabelExtended();
+            this.klblBasicColour = new KryptonLabelExtended();
+            this.cpbBaseColour = new CircularPictureBox();
+            this.cpbDarkestColour = new CircularPictureBox();
+            this.klblDarkestColour = new KryptonLabelExtended();
+            this.cpbDarkColour = new CircularPictureBox();
+            this.klblDarkColour = new KryptonLabelExtended();
+            this.cpbMediumColour = new CircularPictureBox();
+            this.klblMediumColour = new KryptonLabelExtended();
+            this.cpbLightColour = new CircularPictureBox();
+            this.klblLightColour = new KryptonLabelExtended();
+            this.cpbLightestColour = new CircularPictureBox();
+            this.klblLightestColour = new KryptonLabelExtended();
             ((System.ComponentModel.ISupportInitialize)(this.cpbBaseColour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cpbDarkestColour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cpbDarkColour)).BeginInit();
@@ -378,7 +377,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
 
             }
 
-            base.OnPaint(e);
+            OnPaint(e);
         }
         #endregion 
     }

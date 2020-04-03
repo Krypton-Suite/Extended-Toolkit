@@ -1,4 +1,4 @@
-﻿using Krypton.Toolkit.Extended.Base;
+﻿using Krypton.Toolkit.Extended.Palette.Controls;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
@@ -120,7 +120,7 @@ namespace Krypton.Toolkit.Suite.Extended.Palette.Controls
         private Color _defaultColour, _baseColour, _darkestColour, _darkColour, _mediumColour, _lightColour, _lightestColour;
 
         private Color[] _basicPaletteColours = new Color[6];
-       
+
         private CircularPictureBox[] _colourBoxes = new CircularPictureBox[6];
         #endregion
 
