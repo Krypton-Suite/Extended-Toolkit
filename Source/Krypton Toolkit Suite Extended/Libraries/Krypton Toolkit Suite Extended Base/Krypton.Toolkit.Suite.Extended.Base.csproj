@@ -9,14 +9,9 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageId>Krypton.Toolkit.Extended.Base</PackageId>
+    <PackageId>Krypton.Toolkit.Suite.Extended.Base</PackageId>
     <Description>An extension to the standard krypton toolkit to support .NET Core and the latest .NET 3.5/4.x framework. This is the base module.</Description>
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Krypton.Ribbon.Experimental" Version="5.500.2003" />
-    <PackageReference Include="Krypton.Toolkit.Experimental" Version="5.500.2003" />
-  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\Shared\Common\Krypton.Toolkit.Suite.Extended.Common.csproj" />
@@ -46,6 +41,11 @@
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Krypton.Ribbon.Canary" Version="5.500.2005" />
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="5.500.2005" />
   </ItemGroup>
 
   <PropertyGroup>

@@ -12,14 +12,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Krypton.Toolkit.Experimental" Version="5.500.2003" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\Shared\Toolkit Core\Krypton.Toolkit.Suite.Extended.Core.csproj" />
     <ProjectReference Include="..\..\Shared\Toolkit Language Model\Krypton.Toolkit.Suite.Extended.Language.Model.csproj" />
     <ProjectReference Include="..\Colour Controls\Krypton.Toolkit.Suite.Extended.Colour.Controls.csproj" />
-    <ProjectReference Include="..\Palette Controls\Krypton.Toolkit.Suite.Extended.Palette.Controls.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -48,6 +43,10 @@
 
   <ItemGroup>
     <Folder Include="Controls\Colours\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="5.500.2005" />
   </ItemGroup>
 
   <ItemGroup>

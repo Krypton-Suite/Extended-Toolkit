@@ -8,10 +8,6 @@
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Krypton.Toolkit.Experimental" Version="5.500.2003" />
-  </ItemGroup>
-
   <PropertyGroup>
     <DocumentationFile>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Language.Model\Krypton.Toolkit.Extended.Language.Model.xml</DocumentationFile>
     <OutputPath>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Language.Model\</OutputPath>
@@ -23,5 +19,9 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Version>5.500.2005</Version>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="5.500.2005" />
+  </ItemGroup>
 
 </Project>
