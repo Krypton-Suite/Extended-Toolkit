@@ -1,4 +1,5 @@
 ﻿using Krypton.Toolkit.Extended.Colour.Controls;
+using Krypton.Toolkit.Extended.Palette.Controls;
 using System.ComponentModel;
 using System.Drawing;
 
@@ -25,7 +26,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
         private Suite.Extended.Standard.Controls.KryptonButtonExtended kryptonButtonExtended6;
         private Suite.Extended.Standard.Controls.KryptonButtonExtended kryptonButtonExtended7;
         private KryptonARGBColourSliderVertical kargbColour;
-        private Palette.Controls.BasicPaletteColourUserControl basicPaletteColourUserControl1;
+        private BasicPaletteColourUserControl basicPaletteColourUserControl1;
         private KryptonCancelDialogButton kbtnCancel;
 
         private void InitializeComponent()

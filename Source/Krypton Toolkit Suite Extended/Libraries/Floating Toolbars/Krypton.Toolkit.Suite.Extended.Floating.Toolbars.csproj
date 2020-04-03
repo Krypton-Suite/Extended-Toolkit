@@ -24,5 +24,10 @@
   <ItemGroup>
     <PackageReference Include="Krypton.Toolkit.Canary" Version="5.500.2005" />
   </ItemGroup>
+  
+  <PropertyGroup>
+    <!--<PackageId>Krypton.Toolkit.Extended.Floating.Toolbars</PackageId>-->
+    <PackageId>Krypton.Toolkit.Extended.Floating.Toolbars.Canary</PackageId>
+  </PropertyGroup>
 
 </Project>

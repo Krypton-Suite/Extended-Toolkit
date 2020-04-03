@@ -1,4 +1,5 @@
 ﻿using Krypton.Toolkit.Extended.Base;
+using Krypton.Toolkit.Extended.Core;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
@@ -13,7 +14,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
         private Panel panel2;
         private Panel panel9;
         private Panel panel4;
-        private Base.CircularPictureBox cbPreview;
+        private CircularPictureBox cbPreview;
         private Suite.Extended.Standard.Controls.KryptonLabelExtended klblHeader;
 
         private void InitializeComponent()

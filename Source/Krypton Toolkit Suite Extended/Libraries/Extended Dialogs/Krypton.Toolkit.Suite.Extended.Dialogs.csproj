@@ -12,6 +12,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Shared\Palette Controls\Krypton.Toolkit.Suite.Extended.Palette.Controls.csproj" />
     <ProjectReference Include="..\..\Shared\Toolkit Core\Krypton.Toolkit.Suite.Extended.Core.csproj" />
     <ProjectReference Include="..\..\Shared\Toolkit Language Model\Krypton.Toolkit.Suite.Extended.Language.Model.csproj" />
     <ProjectReference Include="..\Colour Controls\Krypton.Toolkit.Suite.Extended.Colour.Controls.csproj" />
@@ -59,6 +60,12 @@
   <PropertyGroup>
     <DocumentationFile>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Dialogs\Krypton.Toolkit.Extended.Dialogs.xml</DocumentationFile>
     <OutputPath>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Dialogs\</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <!--<PackageId>Krypton.Toolkit.Suite.Extended.Dialogs</PackageId>-->
+    <PackageId>Krypton.Toolkit.Suite.Extended.Dialogs.Canary</PackageId>
+    <Description>Contains dialogs.</Description>
   </PropertyGroup>
 
 </Project>

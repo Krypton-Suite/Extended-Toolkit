@@ -248,9 +248,9 @@ namespace Krypton.Toolkit.Extended.IO
         public virtual void Paint(Graphics gr, Rectangle lineRect)
         {
             var size = TB.CharHeight - 1;
-            using (var brush = new LinearGradientBrush(new Rectangle(0, lineRect.Top, size, size), Color.White, Color, 45))
+            using (var brush = new LinearGradientBrush(new Rectangle(0, lineRect.Top, size, size), Color.White, Colour, 45))
                 gr.FillEllipse(brush, 0, lineRect.Top, size, size);
-            using (var pen = new Pen(Color))
+            using (var pen = new Pen(Colour))
                 gr.DrawEllipse(pen, 0, lineRect.Top, size, size);
         }
     }

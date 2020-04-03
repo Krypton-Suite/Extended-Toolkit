@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using System.Windows.Forms.Design;
+using KEYS = System.Windows.Forms.Keys;
 
 namespace Krypton.Toolkit.Extended.IO
 {
