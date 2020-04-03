@@ -81,7 +81,7 @@ namespace Krypton.Toolkit.Extended.IO
             this[KEYS.Escape] = FCTBAction.ClearHints;
             this[KEYS.Control | KEYS.M] = FCTBAction.MacroRecord;
             this[KEYS.Control | KEYS.E] = FCTBAction.MacroExecute;
-            this[KEYS.Control | KEYS.Space] = FCTBAction.AutocompleteMenu;
+            this[KEYS.Control | KEYS.Space] = FCTBAction.AutoCompleteMenu;
             this[KEYS.Tab] = FCTBAction.IndentIncrease;
             this[KEYS.Shift | KEYS.Tab] = FCTBAction.IndentDecrease;
             this[KEYS.Control | KEYS.Subtract] = FCTBAction.ZoomOut;
@@ -137,7 +137,7 @@ namespace Krypton.Toolkit.Extended.IO
     public enum FCTBAction
     {
         None,
-        AutocompleteMenu,
+        AutoCompleteMenu,
         AutoIndentChars,
         BookmarkLine,
         ClearHints,
