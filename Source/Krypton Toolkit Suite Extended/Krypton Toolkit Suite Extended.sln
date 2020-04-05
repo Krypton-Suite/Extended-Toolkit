@@ -37,11 +37,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Exten
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{1F1DCECC-C25F-4E91-9C8A-ECCBB9827BBA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Base", "Libraries\Krypton Toolkit Suite Extended Base\Krypton.Toolkit.Suite.Extended.Base.csproj", "{C1C4DE3D-5A1B-4436-9217-071B9A946696}"
-	ProjectSection(ProjectDependencies) = postProject
-		{D09C0FBA-B998-4A59-B648-FC6977C8D9DF} = {D09C0FBA-B998-4A59-B648-FC6977C8D9DF}
-	EndProjectSection
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Floating.Toolbars", "Libraries\Floating Toolbars\Krypton.Toolkit.Suite.Extended.Floating.Toolbars.csproj", "{4258845A-0A43-4BB7-89B9-E623E32CA836}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Dialogs", "Libraries\Extended Dialogs\Krypton.Toolkit.Suite.Extended.Dialogs.csproj", "{1193729E-89FA-462D-AE0C-2F122195C3D6}"
@@ -72,6 +67,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Standard.Controls", "Libraries\Extended Standard Controls\Krypton.Toolkit.Suite.Extended.Standard.Controls.csproj", "{3CDC440A-3293-4310-BBBF-11EBA1D8F9DF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Palette.Controls", "Shared\Palette Controls\Krypton.Toolkit.Suite.Extended.Palette.Controls.csproj", "{5CABBF5F-3D32-497C-AC10-328870C6BD6C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Base", "Libraries\Base\Krypton.Toolkit.Suite.Extended.Base.csproj", "{CE2BA44A-F0BD-4AA4-A5EB-E3C6354DD529}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -115,10 +112,6 @@ Global
 		{88BB4175-9CB6-4B94-AC2F-EF9EB201B5A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88BB4175-9CB6-4B94-AC2F-EF9EB201B5A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{88BB4175-9CB6-4B94-AC2F-EF9EB201B5A3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C1C4DE3D-5A1B-4436-9217-071B9A946696}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C1C4DE3D-5A1B-4436-9217-071B9A946696}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C1C4DE3D-5A1B-4436-9217-071B9A946696}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C1C4DE3D-5A1B-4436-9217-071B9A946696}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4258845A-0A43-4BB7-89B9-E623E32CA836}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4258845A-0A43-4BB7-89B9-E623E32CA836}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4258845A-0A43-4BB7-89B9-E623E32CA836}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -163,6 +156,10 @@ Global
 		{5CABBF5F-3D32-497C-AC10-328870C6BD6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5CABBF5F-3D32-497C-AC10-328870C6BD6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5CABBF5F-3D32-497C-AC10-328870C6BD6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE2BA44A-F0BD-4AA4-A5EB-E3C6354DD529}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE2BA44A-F0BD-4AA4-A5EB-E3C6354DD529}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE2BA44A-F0BD-4AA4-A5EB-E3C6354DD529}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE2BA44A-F0BD-4AA4-A5EB-E3C6354DD529}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -177,7 +174,6 @@ Global
 		{F1539347-EB0B-4631-B924-75E086896BB6} = {0FC2D6C3-9CA1-46CF-8E37-4B900B07184D}
 		{D09C0FBA-B998-4A59-B648-FC6977C8D9DF} = {0FC2D6C3-9CA1-46CF-8E37-4B900B07184D}
 		{88BB4175-9CB6-4B94-AC2F-EF9EB201B5A3} = {0FC2D6C3-9CA1-46CF-8E37-4B900B07184D}
-		{C1C4DE3D-5A1B-4436-9217-071B9A946696} = {1F1DCECC-C25F-4E91-9C8A-ECCBB9827BBA}
 		{4258845A-0A43-4BB7-89B9-E623E32CA836} = {1F1DCECC-C25F-4E91-9C8A-ECCBB9827BBA}
 		{1193729E-89FA-462D-AE0C-2F122195C3D6} = {1F1DCECC-C25F-4E91-9C8A-ECCBB9827BBA}
 		{79AA870D-03FA-4A32-B8E2-86554816A439} = {0FC2D6C3-9CA1-46CF-8E37-4B900B07184D}
@@ -190,6 +186,7 @@ Global
 		{0E2E0B55-4944-419E-A4A1-6F92A621DB3B} = {1F1DCECC-C25F-4E91-9C8A-ECCBB9827BBA}
 		{3CDC440A-3293-4310-BBBF-11EBA1D8F9DF} = {1F1DCECC-C25F-4E91-9C8A-ECCBB9827BBA}
 		{5CABBF5F-3D32-497C-AC10-328870C6BD6C} = {0FC2D6C3-9CA1-46CF-8E37-4B900B07184D}
+		{CE2BA44A-F0BD-4AA4-A5EB-E3C6354DD529} = {1F1DCECC-C25F-4E91-9C8A-ECCBB9827BBA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9A189168-3746-4F9F-8C61-863D83D8ABD2}
