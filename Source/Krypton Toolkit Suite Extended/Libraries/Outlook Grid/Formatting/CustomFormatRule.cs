@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Krypton.Toolkit.Extended.Dialogs;
+using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -10,8 +11,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
     {
         #region Design Code
         private KryptonPanel kryptonPanel1;
-        private Toolkit.Extended.Base.KryptonOKDialogButton kbtnOk;
-        private Toolkit.Extended.Base.KryptonCancelDialogButton kbtnCancel;
+        private KryptonOKDialogButton kbtnOk;
+        private KryptonCancelDialogButton kbtnCancel;
         private System.Windows.Forms.Panel panel1;
         private Standard.Controls.KryptonComboBoxExtended kcmbeFormat;
         private Standard.Controls.KryptonLabelExtended klblFormat;
@@ -27,8 +28,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         private void InitializeComponent()
         {
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
-            this.kbtnOk = new Krypton.Toolkit.Extended.Base.KryptonOKDialogButton();
-            this.kbtnCancel = new Krypton.Toolkit.Extended.Base.KryptonCancelDialogButton();
+            this.kbtnOk = new KryptonOKDialogButton();
+            this.kbtnCancel = new KryptonCancelDialogButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
             this.kcmbeFill = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonComboBoxExtended();

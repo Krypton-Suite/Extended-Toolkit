@@ -1,4 +1,5 @@
 ﻿using Krypton.Toolkit.Extended.Base;
+using Krypton.Toolkit.Suite.Extended.Standard.Controls;
 using System;
 using System.ComponentModel;
 using System.Text.RegularExpressions;
@@ -10,7 +11,7 @@ namespace Krypton.Toolkit.Extended.IO
     {
         #region Design Code
         private KryptonPanel kryptonPanel1;
-        private Suite.Extended.Standard.Controls.KryptonButtonExtended kbtnFindNext;
+        private KryptonButtonExtended kbtnFindNext;
         private Dialogs.KryptonCancelDialogButton kbtnCancel;
         private KryptonCheckBox kcbRegex;
         private KryptonCheckBox kcbMatchWholeWord;
