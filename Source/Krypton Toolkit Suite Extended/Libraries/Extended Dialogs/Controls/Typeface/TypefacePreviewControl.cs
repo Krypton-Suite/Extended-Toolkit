@@ -37,7 +37,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             // 
             this.kgbTypefacePreview.Panel.Controls.Add(this.klblTypefacePreview);
             this.kgbTypefacePreview.ShortTextTypeface = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kgbTypefacePreview.Size = new System.Drawing.Size(401, 242);
+            this.kgbTypefacePreview.Size = new System.Drawing.Size(240, 140);
             this.kgbTypefacePreview.StateCommon.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.kgbTypefacePreview.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kgbTypefacePreview.StateCommonBackGroundColourOne = System.Drawing.Color.Empty;
@@ -75,7 +75,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.klblTypefacePreview.LongTextTypeface = null;
             this.klblTypefacePreview.Name = "klblTypefacePreview";
             this.klblTypefacePreview.ShortTextTypeface = null;
-            this.klblTypefacePreview.Size = new System.Drawing.Size(397, 222);
+            this.klblTypefacePreview.Size = new System.Drawing.Size(236, 120);
             this.klblTypefacePreview.StateCommon.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
             this.klblTypefacePreview.StateCommon.ShortText.TextV = Krypton.Toolkit.PaletteRelativeAlign.Center;
             this.klblTypefacePreview.StateCommonTextColourOne = System.Drawing.Color.Empty;
@@ -92,7 +92,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.kgbTypefacePreview);
             this.Name = "TypefacePreviewControl";
-            this.Size = new System.Drawing.Size(401, 242);
+            this.Size = new System.Drawing.Size(240, 140);
             ((System.ComponentModel.ISupportInitialize)(this.kgbTypefacePreview.Panel)).EndInit();
             this.kgbTypefacePreview.Panel.ResumeLayout(false);
             this.kgbTypefacePreview.Panel.PerformLayout();
@@ -112,19 +112,19 @@ namespace Krypton.Toolkit.Extended.Dialogs
         #endregion
 
         #region Properties
-        public Color TypefacePreviewColourOne { get => _typefacePreviewColourOne; set { _typefacePreviewColourOne = value; Invalidate(); } }
+        public Color TypefacePreviewColourOne { get => klblTypefacePreview.StateCommonTextColourOne; set => klblTypefacePreview.StateCommonTextColourOne = value; }
 
-        public Color TypefacePreviewColourTwo { get => _typefacePreviewColourTwo; set { _typefacePreviewColourTwo = value; Invalidate(); } }
+        public Color TypefacePreviewColourTwo { get => klblTypefacePreview.StateCommonTextColourTwo; set => klblTypefacePreview.StateCommonTextColourTwo = value; }
 
-        public Font HeaderTypeface { get => _headerTypeface; set { _headerTypeface = value; Invalidate(); } }
+        public Font HeaderTypeface { get => kgbTypefacePreview.ShortTextTypeface; set => kgbTypefacePreview.ShortTextTypeface = value; }
 
-        public Font TypefacePreview { get => _typefacePreview; set { _typefacePreview = value; Invalidate(); } }
+        public Font TypefacePreview { get => klblTypefacePreview.ShortTextTypeface; set => klblTypefacePreview.ShortTextTypeface = value; }
 
         [DefaultValue("Typeface Preview")]
-        public string HeaderText { get => _headerText; set { _headerText = value; Invalidate(); } }
+        public string HeaderText { get => kgbTypefacePreview.Values.Heading; set => kgbTypefacePreview.Values.Heading = value; }
 
         [DefaultValue("Test Text 123 #+-*")]
-        public string TypefacePreviewText { get => _typefacePreviewText; set { _typefacePreviewText = value; Invalidate(); } }
+        public string TypefacePreviewText { get => klblTypefacePreview.Text; set => klblTypefacePreview.Text = value; }
         #endregion
 
         #region Constructor
@@ -163,15 +163,15 @@ namespace Krypton.Toolkit.Extended.Dialogs
         #region Overrides
         protected override void OnPaint(PaintEventArgs e)
         {
-            UpdateTypefacePreviewColour(TypefacePreviewColourOne, TypefacePreviewColourTwo);
+            //UpdateTypefacePreviewColour(TypefacePreviewColourOne, TypefacePreviewColourTwo);
 
-            kgbTypefacePreview.ShortTextTypeface = HeaderTypeface;
+            //kgbTypefacePreview.ShortTextTypeface = HeaderTypeface;
 
-            klblTypefacePreview.ShortTextTypeface = TypefacePreview;
+            //klblTypefacePreview.ShortTextTypeface = TypefacePreview;
 
-            kgbTypefacePreview.Values.Heading = HeaderText;
+            //kgbTypefacePreview.Values.Heading = HeaderText;
 
-            klblTypefacePreview.Text = TypefacePreviewText;
+            //klblTypefacePreview.Text = TypefacePreviewText;
 
             base.OnPaint(e);
         }

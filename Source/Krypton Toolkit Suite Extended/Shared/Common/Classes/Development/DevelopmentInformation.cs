@@ -20,6 +20,7 @@ namespace Krypton.Toolkit.Extended.Common
         #endregion
 
         #region Constructors
+        /// <summary>Initializes a new instance of the <see cref="DevelopmentInformation"/> class.</summary>
         public DevelopmentInformation()
         {
 
