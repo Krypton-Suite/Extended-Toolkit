@@ -1,11 +1,13 @@
 ﻿using Krypton.Toolkit.Values;
 using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Extended.Core
 {
+    [ToolboxItem(false)]
     public class CircularPictureBox : PictureBox, IContentValues
     {
         private ToolTipValues _values;

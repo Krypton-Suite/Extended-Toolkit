@@ -38,13 +38,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\..\..\..\..\..\Versions\Extended\Krypton-Toolkit-Suite-Extended-NET\Assets\License\License.md">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Krypton.Ribbon.Canary" Version="5.500.2005" />
     <PackageReference Include="Krypton.Toolkit.Canary" Version="5.500.2005" />
   </ItemGroup>
@@ -59,9 +52,9 @@
     <FileVersion>5.500.2005</FileVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <PackageLicenseExpression></PackageLicenseExpression>
+    <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
     <Version>5.500.2005</Version>
-    <PackageLicenseFile>License.md</PackageLicenseFile>
+    <PackageLicenseFile></PackageLicenseFile>
   </PropertyGroup>
 
 </Project>
