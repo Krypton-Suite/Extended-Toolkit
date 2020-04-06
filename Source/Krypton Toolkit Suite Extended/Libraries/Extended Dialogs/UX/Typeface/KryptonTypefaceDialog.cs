@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +9,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
 {
     public class KryptonTypefaceDialog : KryptonForm
     {
+        #region Drsign Code
         private Suite.Extended.Standard.Controls.KryptonPanelExtended kryptonPanelExtended1;
         private KryptonOKDialogButton kryptonOKDialogButton1;
         private System.Windows.Forms.Panel panel1;
@@ -250,5 +252,41 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.ResumeLayout(false);
 
         }
+        #endregion
+
+        #region Events
+        public delegate void TypefaceChangedEventHandler(object sender, TypefaceChangedEventArgs e);
+
+        public event TypefaceChangedEventHandler TypefaceChanged;
+
+        protected virtual void OnTypefaceChanged(object sender, TypefaceChangedEventArgs e) => TypefaceChanged?.Invoke(sender, e);
+        #endregion
+
+        #region Variable
+        private Font _typeface;
+        #endregion
+
+        #region Property
+        public Font Typeface
+        {
+            get => _typeface;
+
+            set
+            {
+                _typeface = value;
+
+                TypefaceChangedEventArgs e = new TypefaceChangedEventArgs(value);
+
+                OnTypefaceChanged(this, e);
+            }
+        }
+        #endregion
+
+        #region Constructors
+        public KryptonTypefaceDialog()
+        {
+            InitializeComponent();
+        }
+        #endregion
     }
 }
