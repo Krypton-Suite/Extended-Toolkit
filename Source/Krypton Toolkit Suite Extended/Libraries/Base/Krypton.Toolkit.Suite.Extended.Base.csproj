@@ -19,6 +19,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="Krypton.Toolkit.Suite.Extended.Standard.Controls">
+      <HintPath>..\Extended Standard Controls\obj\Debug\net45\Krypton.Toolkit.Suite.Extended.Standard.Controls.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualBasic" />
   </ItemGroup>
 

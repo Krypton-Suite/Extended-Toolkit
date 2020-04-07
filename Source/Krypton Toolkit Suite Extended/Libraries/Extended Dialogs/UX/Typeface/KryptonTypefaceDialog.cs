@@ -14,6 +14,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
         private KryptonOKDialogButton kryptonOKDialogButton1;
         private System.Windows.Forms.Panel panel1;
         private Suite.Extended.Standard.Controls.KryptonPanelExtended kryptonPanelExtended2;
+        private Base.KryptonTypefaceExample kryptonTypefaceExample1;
         private KryptonCancelDialogButton kryptonCancelDialogButton1;
 
         private void InitializeComponent()
@@ -23,9 +24,11 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kryptonCancelDialogButton1 = new Krypton.Toolkit.Extended.Dialogs.KryptonCancelDialogButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.kryptonPanelExtended2 = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonPanelExtended();
+            this.kryptonTypefaceExample1 = new Krypton.Toolkit.Extended.Base.KryptonTypefaceExample();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanelExtended1)).BeginInit();
             this.kryptonPanelExtended1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanelExtended2)).BeginInit();
+            this.kryptonPanelExtended2.SuspendLayout();
             this.SuspendLayout();
             // 
             // kryptonPanelExtended1
@@ -220,6 +223,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             // 
             // kryptonPanelExtended2
             // 
+            this.kryptonPanelExtended2.Controls.Add(this.kryptonTypefaceExample1);
             this.kryptonPanelExtended2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanelExtended2.Image = null;
             this.kryptonPanelExtended2.Location = new System.Drawing.Point(0, 0);
@@ -233,8 +237,20 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kryptonPanelExtended2.StateNormalBackGroundColourTwo = System.Drawing.Color.Empty;
             this.kryptonPanelExtended2.TabIndex = 2;
             // 
+            // kryptonTypefaceExample1
+            // 
+            this.kryptonTypefaceExample1.BackColor = System.Drawing.Color.Transparent;
+            this.kryptonTypefaceExample1.HeaderText = "Sample Typeface";
+            this.kryptonTypefaceExample1.Location = new System.Drawing.Point(280, 196);
+            this.kryptonTypefaceExample1.Name = "kryptonTypefaceExample1";
+            this.kryptonTypefaceExample1.SampleText = "AaBbCc123#+*-";
+            this.kryptonTypefaceExample1.Size = new System.Drawing.Size(259, 168);
+            this.kryptonTypefaceExample1.TabIndex = 3;
+            // 
             // KryptonTypefaceDialog
             // 
+            this.AcceptButton = this.kryptonOKDialogButton1;
+            this.CancelButton = this.kryptonCancelDialogButton1;
             this.ClientSize = new System.Drawing.Size(551, 419);
             this.Controls.Add(this.kryptonPanelExtended2);
             this.Controls.Add(this.panel1);
@@ -246,9 +262,11 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.Text = "Typeface";
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanelExtended1)).EndInit();
             this.kryptonPanelExtended1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanelExtended2)).EndInit();
+            this.kryptonPanelExtended2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Extended.Base
@@ -11,38 +9,38 @@ namespace Krypton.Toolkit.Extended.Base
     {
         #region Designer Code
         private Krypton.Toolkit.KryptonLabel klblPreview;
-        private Krypton.Toolkit.KryptonGroupBox kryptonGroupBox1;
+        private Krypton.Toolkit.KryptonGroupBox kgbContent;
 
         private void InitializeComponent()
         {
-            this.kryptonGroupBox1 = new Krypton.Toolkit.KryptonGroupBox();
+            this.kgbContent = new Krypton.Toolkit.KryptonGroupBox();
             this.klblPreview = new Krypton.Toolkit.KryptonLabel();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1.Panel)).BeginInit();
-            this.kryptonGroupBox1.Panel.SuspendLayout();
-            this.kryptonGroupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kgbContent)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kgbContent.Panel)).BeginInit();
+            this.kgbContent.Panel.SuspendLayout();
+            this.kgbContent.SuspendLayout();
             this.SuspendLayout();
             // 
-            // kryptonGroupBox1
+            // kgbContent
             // 
-            this.kryptonGroupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonGroupBox1.Location = new System.Drawing.Point(0, 0);
-            this.kryptonGroupBox1.Name = "kryptonGroupBox1";
+            this.kgbContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kgbContent.Location = new System.Drawing.Point(0, 0);
+            this.kgbContent.Name = "kgbContent";
             // 
-            // kryptonGroupBox1.Panel
+            // kgbContent.Panel
             // 
-            this.kryptonGroupBox1.Panel.Controls.Add(this.klblPreview);
-            this.kryptonGroupBox1.Size = new System.Drawing.Size(530, 281);
-            this.kryptonGroupBox1.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonGroupBox1.TabIndex = 0;
-            this.kryptonGroupBox1.Values.Heading = "Current Preview";
+            this.kgbContent.Panel.Controls.Add(this.klblPreview);
+            this.kgbContent.Size = new System.Drawing.Size(259, 168);
+            this.kgbContent.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kgbContent.TabIndex = 0;
+            this.kgbContent.Values.Heading = "Current Preview";
             // 
             // klblPreview
             // 
             this.klblPreview.Dock = System.Windows.Forms.DockStyle.Fill;
             this.klblPreview.Location = new System.Drawing.Point(0, 0);
             this.klblPreview.Name = "klblPreview";
-            this.klblPreview.Size = new System.Drawing.Size(526, 251);
+            this.klblPreview.Size = new System.Drawing.Size(255, 138);
             this.klblPreview.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.klblPreview.StateCommon.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
             this.klblPreview.StateCommon.ShortText.TextV = Krypton.Toolkit.PaletteRelativeAlign.Center;
@@ -52,28 +50,32 @@ namespace Krypton.Toolkit.Extended.Base
             // KryptonTypefaceExample
             // 
             this.BackColor = System.Drawing.Color.Transparent;
-            this.Controls.Add(this.kryptonGroupBox1);
+            this.Controls.Add(this.kgbContent);
             this.Name = "KryptonTypefaceExample";
-            this.Size = new System.Drawing.Size(530, 281);
+            this.Size = new System.Drawing.Size(259, 168);
             this.Load += new System.EventHandler(this.KryptonTypefaceExample_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1.Panel)).EndInit();
-            this.kryptonGroupBox1.Panel.ResumeLayout(false);
-            this.kryptonGroupBox1.Panel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1)).EndInit();
-            this.kryptonGroupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kgbContent.Panel)).EndInit();
+            this.kgbContent.Panel.ResumeLayout(false);
+            this.kgbContent.Panel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kgbContent)).EndInit();
+            this.kgbContent.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
         #endregion
 
         #region Variables
-        private Font _typeface;
+        private Font _typeface, _headerTypeface;
 
         private string _headerText, _sampleText;
         #endregion
 
         #region Properties
+        [DefaultValue(typeof(Font), "Microsoft Sans Serif, 8.25f")]
         public Font Typeface { get => _typeface; set { _typeface = value; Invalidate(); } }
+
+        [DefaultValue(typeof(Font), "Microsoft Sans Serif, 8.25f, FontStyle.Bold")]
+        public Font HheaderTypeface { get => _headerTypeface; set { _headerTypeface = value; Invalidate(); } }
 
         public string HeaderText { get => _headerText; set { _headerText = value; Invalidate(); } }
 
@@ -89,7 +91,9 @@ namespace Krypton.Toolkit.Extended.Base
 
         private void KryptonTypefaceExample_Load(object sender, EventArgs e)
         {
-            Typeface = new Font("Segoe UI", 12f, FontStyle.Regular);
+            Typeface = new Font("Microsoft Sans Serif", 8.25f, FontStyle.Regular);
+
+            HheaderTypeface = new Font("Microsoft Sans Serif", 8.25f, FontStyle.Bold);
 
             HeaderText = "Sample Typeface";
 
@@ -102,6 +106,8 @@ namespace Krypton.Toolkit.Extended.Base
 
             SetHeaderText(HeaderText);
 
+            SetHheaderTypeface(HheaderTypeface);
+
             SetSampleText(SampleText);
 
             base.OnPaint(e);
@@ -110,7 +116,9 @@ namespace Krypton.Toolkit.Extended.Base
         #region Methods
         private void SetTypeface(Font typeface) => klblPreview.StateCommon.ShortText.Font = typeface;
 
-        private void SetHeaderText(string headerText) => kryptonGroupBox1.Values.Heading = headerText;
+        private void SetHheaderTypeface(Font typeface) => kgbContent.StateCommon.Content.ShortText.Font = typeface;
+
+        private void SetHeaderText(string headerText) => kgbContent.Values.Heading = headerText;
 
         private void SetSampleText(string sampleText) => klblPreview.Text = sampleText;
         #endregion
