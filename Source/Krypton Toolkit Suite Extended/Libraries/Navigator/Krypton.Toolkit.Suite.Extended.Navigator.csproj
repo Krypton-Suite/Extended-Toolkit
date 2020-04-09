@@ -16,7 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Extended Dialogs\Krypton.Toolkit.Suite.Extended.Dialogs.csproj" />
-    <ProjectReference Include="..\Krypton Toolkit Suite Extended Base\Krypton.Toolkit.Suite.Extended.Base.csproj" />
+    <ProjectReference Include="..\Base\Krypton.Toolkit.Suite.Extended.Base.csproj" />
   </ItemGroup>
 
   <ItemGroup>
