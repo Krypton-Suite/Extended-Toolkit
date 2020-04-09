@@ -136,6 +136,8 @@ namespace Krypton.Toolkit.Extended.Base
         {
             InitializeComponent();
 
+            TypefaceSize = size;
+
             klbTypefaces.Items.Add("Section");
 
             klbTypefaces.Items.Add("Section");
@@ -150,6 +152,8 @@ namespace Krypton.Toolkit.Extended.Base
                 {
                 }
             }
+
+            klbTypefaces.ListBox.DrawItem += ListBox_DrawItem;
         }
         #endregion
 
@@ -171,6 +175,81 @@ namespace Krypton.Toolkit.Extended.Base
             }
 
             return -1;
+        }
+
+        public void AddSelectedTypefaceToRecent()
+        {
+            if (klbTypefaces.SelectedIndex < 1) return;
+
+            klbTypefaces.SuspendLayout();
+
+            int tmpCount = _recentlyUsed.Count;
+
+            _recentlyUsed.Add((Font)klbTypefaces.SelectedItem);
+
+            for (int i = 1; i <= tmpCount; i++)
+            {
+                klbTypefaces.Items.RemoveAt(1);
+            }
+            
+            for (int i = 0; i < _recentlyUsed.Count; i++)
+            {
+                klbTypefaces.Items.Insert(i + 1, _recentlyUsed[i]);
+            }
+
+            klbTypefaces.SelectedIndex = 1;
+
+            klbTypefaces.ResumeLayout();
+        }
+
+        public void AddFontToRecent(FontFamily typeface)
+        {
+            klbTypefaces.SuspendLayout();
+
+            for (int i = 1; i <= _recentlyUsed.Count; i++)
+            {
+                klbTypefaces.Items.RemoveAt(1);
+            }
+
+            _recentlyUsed.Add((Font)klbTypefaces.Items[IndexOf(typeface)]);
+
+            for (int i = 0; i < _recentlyUsed.Count; i++)
+            {
+                klbTypefaces.Items.Insert(i + 1, _recentlyUsed[i]);
+            }
+
+            //lstFont.SelectedIndex = 1;
+
+            klbTypefaces.ResumeLayout();
+        }
+        #endregion
+
+        #region Event Handlers
+        private void ListBox_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            if (e.Index == 0)
+            {
+                e.Graphics.FillRectangle(Brushes.AliceBlue, e.Bounds);
+                Font font = new Font(DefaultFont, FontStyle.Bold | FontStyle.Italic);
+                e.Graphics.DrawString("Recently Used", font, Brushes.Black, e.Bounds.X + 10, e.Bounds.Y + 3, StringFormat.GenericDefault);
+            }
+            else if (e.Index == AllTypefaceStartIndex - 1)
+            {
+                e.Graphics.FillRectangle(Brushes.AliceBlue, e.Bounds);
+                Font font = new Font(DefaultFont, FontStyle.Bold | FontStyle.Italic);
+                e.Graphics.DrawString("All Fonts", font, Brushes.Black, e.Bounds.X + 10, e.Bounds.Y + 3, StringFormat.GenericDefault);
+            }
+            else
+            {
+                // Draw the background of the ListBox control for each item.
+                e.DrawBackground();
+
+                Font font = (Font)klbTypefaces.Items[e.Index];
+                e.Graphics.DrawString(font.Name, font, Brushes.Black, e.Bounds, StringFormat.GenericDefault);
+
+                // If the ListBox has focus, draw a focus rectangle around the selected item.
+                e.DrawFocusRectangle();
+            }
         }
         #endregion
     }
