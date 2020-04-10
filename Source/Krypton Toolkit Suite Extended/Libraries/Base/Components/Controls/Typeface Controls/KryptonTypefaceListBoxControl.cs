@@ -1,6 +1,8 @@
 ﻿using Krypton.Toolkit.Extended.Common;
+using System;
 using System.ComponentModel;
 using System.Drawing;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Extended.Base
@@ -41,6 +43,8 @@ namespace Krypton.Toolkit.Extended.Base
             this.ktxtSearch.Name = "ktxtSearch";
             this.ktxtSearch.Size = new System.Drawing.Size(196, 23);
             this.ktxtSearch.TabIndex = 0;
+            this.ktxtSearch.TextChanged += new System.EventHandler(this.ktxtSearch_TextChanged);
+            this.ktxtSearch.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ktxtSearch_MouseDown);
             // 
             // panel2
             // 
@@ -59,6 +63,9 @@ namespace Krypton.Toolkit.Extended.Base
             this.klbTypefaces.Name = "klbTypefaces";
             this.klbTypefaces.Size = new System.Drawing.Size(196, 221);
             this.klbTypefaces.TabIndex = 0;
+            this.klbTypefaces.SelectedIndexChanged += new System.EventHandler(this.klbTypefaces_SelectedIndexChanged);
+            this.klbTypefaces.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.klbTypefaces_DrawItem);
+            this.klbTypefaces.KeyDown += new System.Windows.Forms.KeyEventHandler(this.klbTypefaces_KeyDown);
             // 
             // KryptonTypefaceListBoxControl
             // 
@@ -67,6 +74,7 @@ namespace Krypton.Toolkit.Extended.Base
             this.Controls.Add(this.panel1);
             this.Name = "KryptonTypefaceListBoxControl";
             this.Size = new System.Drawing.Size(196, 244);
+            this.Load += new System.EventHandler(this.KryptonTypefaceListBoxControl_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -148,12 +156,10 @@ namespace Krypton.Toolkit.Extended.Base
                 {
                     AddTypeface(size, typeface);
                 }
-                catch 
+                catch
                 {
                 }
             }
-
-            klbTypefaces.ListBox.DrawItem += ListBox_DrawItem;
         }
         #endregion
 
@@ -191,7 +197,7 @@ namespace Krypton.Toolkit.Extended.Base
             {
                 klbTypefaces.Items.RemoveAt(1);
             }
-            
+
             for (int i = 0; i < _recentlyUsed.Count; i++)
             {
                 klbTypefaces.Items.Insert(i + 1, _recentlyUsed[i]);
@@ -218,25 +224,32 @@ namespace Krypton.Toolkit.Extended.Base
                 klbTypefaces.Items.Insert(i + 1, _recentlyUsed[i]);
             }
 
-            //lstFont.SelectedIndex = 1;
+            //klbTypefaces.SelectedIndex = 1;
 
             klbTypefaces.ResumeLayout();
         }
+
+        [DllImport("user32.dll")]
+        private static extern IntPtr SendMessage(IntPtr hWnd, uint Msg, uint wParam, uint lParam);
         #endregion
 
         #region Event Handlers
-        private void ListBox_DrawItem(object sender, DrawItemEventArgs e)
+        private void klbTypefaces_DrawItem(object sender, DrawItemEventArgs e)
         {
             if (e.Index == 0)
             {
                 e.Graphics.FillRectangle(Brushes.AliceBlue, e.Bounds);
+
                 Font font = new Font(DefaultFont, FontStyle.Bold | FontStyle.Italic);
+
                 e.Graphics.DrawString("Recently Used", font, Brushes.Black, e.Bounds.X + 10, e.Bounds.Y + 3, StringFormat.GenericDefault);
             }
             else if (e.Index == AllTypefaceStartIndex - 1)
             {
                 e.Graphics.FillRectangle(Brushes.AliceBlue, e.Bounds);
+
                 Font font = new Font(DefaultFont, FontStyle.Bold | FontStyle.Italic);
+
                 e.Graphics.DrawString("All Fonts", font, Brushes.Black, e.Bounds.X + 10, e.Bounds.Y + 3, StringFormat.GenericDefault);
             }
             else
@@ -245,11 +258,105 @@ namespace Krypton.Toolkit.Extended.Base
                 e.DrawBackground();
 
                 Font font = (Font)klbTypefaces.Items[e.Index];
+
                 e.Graphics.DrawString(font.Name, font, Brushes.Black, e.Bounds, StringFormat.GenericDefault);
 
                 // If the ListBox has focus, draw a focus rectangle around the selected item.
                 e.DrawFocusRectangle();
             }
+        }
+
+        private void klbTypefaces_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (klbTypefaces.SelectedIndex == RECENTLY_USED_SELECTION_INDEX || klbTypefaces.SelectedIndex == AllTypefaceSelectionIndex)
+            {
+                klbTypefaces.SelectedIndex = _lastSelectedIndex;
+            }
+            else if (klbTypefaces.SelectedItem != null)
+            {
+                if (!ktxtSearch.Focused)
+                {
+                    Font f = (Font)klbTypefaces.SelectedItem;
+
+                    ktxtSearch.Text = f.Name;
+                }
+
+                Font typeface = (Font)klbTypefaces.SelectedItem;
+
+                TypefaceChangedEventArgs t = new TypefaceChangedEventArgs(typeface);
+
+                OnTypefaceChanged(klbTypefaces, t);
+
+                _lastSelectedIndex = klbTypefaces.SelectedIndex;
+            }
+        }
+
+        private void ktxtSearch_TextChanged(object sender, EventArgs e)
+        {
+            if (!ktxtSearch.Focused) return;
+
+            for (int i = AllTypefaceSelectionIndex; i < klbTypefaces.Items.Count; i++)
+            {
+                string str = ((Font)klbTypefaces.Items[i]).Name;
+
+                if (str.StartsWith(ktxtSearch.Text, true, null))
+                {
+                    klbTypefaces.SelectedIndex = i;
+
+                    const uint WM_VSCROLL = 0x0115;
+
+                    const uint SB_THUMBPOSITION = 4;
+
+                    uint b = ((uint)(klbTypefaces.SelectedIndex) << 16) | (SB_THUMBPOSITION & 0xffff);
+
+                    SendMessage(klbTypefaces.Handle, WM_VSCROLL, b, 0);
+
+                    return;
+                }
+            }
+        }
+
+        private void ktxtSearch_MouseDown(object sender, MouseEventArgs e) => ktxtSearch.SelectAll();
+
+        private void klbTypefaces_KeyDown(object sender, KeyEventArgs e)
+        {
+            // if you type alphanumeric characters while focus is on ListBox, it shifts the focus to TextBox.
+            if (Char.IsLetterOrDigit((char)e.KeyValue))
+            {
+                ktxtSearch.Focus();
+
+                ktxtSearch.Text = ((char)e.KeyValue).ToString();
+
+                ktxtSearch.SelectionStart = 1;
+            }
+
+
+            // allows to move between sections using arrow keys
+            switch (e.KeyCode)
+            {
+                case Keys.Left:
+                case Keys.Up:
+                    if (klbTypefaces.SelectedIndex == AllTypefaceSelectionIndex + 1)
+                    {
+                        klbTypefaces.SelectedIndex = klbTypefaces.SelectedIndex - 2;
+                        e.SuppressKeyPress = true;
+                    }
+                    break;
+                case Keys.Down:
+                case Keys.Right:
+                    if (klbTypefaces.SelectedIndex == AllTypefaceSelectionIndex - 1)
+                    {
+                        klbTypefaces.SelectedIndex = klbTypefaces.SelectedIndex + 2;
+                        e.SuppressKeyPress = true;
+                    }
+                    break;
+
+            }
+        }
+
+        private void KryptonTypefaceListBoxControl_Load(object sender, EventArgs e)
+        {
+            ActiveControl = klbTypefaces;
         }
         #endregion
     }
