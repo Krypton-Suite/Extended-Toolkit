@@ -14,7 +14,7 @@
 
   <ItemGroup>
     <PackageReference Include="Cyotek.Windows.Forms.ColorPicker" Version="1.7.2" />
-    <PackageReference Include="Krypton.Toolkit.Canary" Version="5.500.2005.1" />
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="5.500.2005.2" />
   </ItemGroup>
 
   <ItemGroup>

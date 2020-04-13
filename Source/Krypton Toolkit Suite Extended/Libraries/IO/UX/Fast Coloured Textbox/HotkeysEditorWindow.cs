@@ -628,20 +628,20 @@ namespace Krypton.Toolkit.Extended.IO
 
         private void kgv_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
-            //var cell = (kdgv[0, e.RowIndex] as KryptonDataGridViewComboBoxCell);
-            //if (cell.Items.Count == 0)
-            //    foreach (var item in new string[] { "", "Ctrl", "Ctrl + Shift", "Ctrl + Alt", "Shift", "Shift + Alt", "Alt", "Ctrl + Shift + Alt" })
-            //        cell.Items.Add(item);
+            var cell = (kdgv[0, e.RowIndex] as KryptonDataGridViewComboBoxCell);
+            if (cell.Items.Count == 0)
+                foreach (var item in new string[] { "", "Ctrl", "Ctrl + Shift", "Ctrl + Alt", "Shift", "Shift + Alt", "Alt", "Ctrl + Shift + Alt" })
+                    cell.Items.Add(item);
 
-            //cell = (kdgv[1, e.RowIndex] as KryptonDataGridViewComboBoxCell);
-            //if (cell.Items.Count == 0)
-            //    foreach (var item in Enum.GetValues(typeof(Keys)))
-            //        cell.Items.Add(item);
+            cell = (kdgv[1, e.RowIndex] as KryptonDataGridViewComboBoxCell);
+            if (cell.Items.Count == 0)
+                foreach (var item in Enum.GetValues(typeof(Keys)))
+                    cell.Items.Add(item);
 
-            //cell = (kdgv[2, e.RowIndex] as KryptonDataGridViewComboBoxCell);
-            //if (cell.Items.Count == 0)
-            //    foreach (var item in Enum.GetValues(typeof(FCTBAction)))
-            //        cell.Items.Add(item);
+            cell = (kdgv[2, e.RowIndex] as KryptonDataGridViewComboBoxCell);
+            if (cell.Items.Count == 0)
+                foreach (var item in Enum.GetValues(typeof(FCTBAction)))
+                    cell.Items.Add(item);
         }
     }
 }

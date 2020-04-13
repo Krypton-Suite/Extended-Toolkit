@@ -13,7 +13,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Krypton.Toolkit.Canary" Version="5.500.2005.1" />
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="5.500.2005.2" />
     <PackageReference Include="System.Management" Version="4.7.0" />
     <PackageReference Include="WindowsAPICodePack" Version="1.1.1" />
   </ItemGroup>

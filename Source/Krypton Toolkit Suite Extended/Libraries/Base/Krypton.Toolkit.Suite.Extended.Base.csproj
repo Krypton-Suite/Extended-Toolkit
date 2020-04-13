@@ -42,7 +42,7 @@
 
   <ItemGroup>
     <PackageReference Include="Krypton.Ribbon.Canary" Version="5.500.2005.1" />
-    <PackageReference Include="Krypton.Toolkit.Canary" Version="5.500.2005.1" />
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="5.500.2005.2" />
   </ItemGroup>
 
   <PropertyGroup>
