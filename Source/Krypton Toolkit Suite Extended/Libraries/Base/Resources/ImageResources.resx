@@ -124,6 +124,9 @@
   <data name="arrowControl_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>arrowControl.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="arrowleft" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>arrowleft.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Arrow_Down" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Arrow_Down.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -171,6 +174,9 @@
   </data>
   <data name="ButtonNoColor" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>ButtonNoColor.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="check" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>check.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Class_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Class_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -225,6 +231,9 @@
   </data>
   <data name="Critical_32_x_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Critical_32_x_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cross" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>cross.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Cube_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Cube_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -289,6 +298,9 @@
   <data name="Hand" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Hand.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="handle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>handle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Hand_128_x_128" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Hand 128 x 128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -324,6 +336,9 @@
   </data>
   <data name="if_Symbol_Stop_49267" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>if_Symbol-Stop_49267.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Image70" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Image70.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="inactive_search" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>inactive_search.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -363,6 +378,9 @@
   </data>
   <data name="Interface_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Interface_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="loading_circle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>loading-circle.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="maximize" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>maximize.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -519,6 +537,12 @@
   </data>
   <data name="text_underline" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>text_underline.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ToggleSwitch" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>ToggleSwitch.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ToggleSwitch1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>ToggleSwitch.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ttf_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>ttf-2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

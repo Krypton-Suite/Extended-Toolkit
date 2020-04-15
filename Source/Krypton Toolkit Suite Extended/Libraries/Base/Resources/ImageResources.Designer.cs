@@ -103,6 +103,16 @@ namespace Krypton.Toolkit.Extended.Base.Resources {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap arrowleft {
+            get {
+                object obj = ResourceManager.GetObject("arrowleft", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap BrowseFolders_256 {
             get {
                 object obj = ResourceManager.GetObject("BrowseFolders_256", resourceCulture);
@@ -236,6 +246,16 @@ namespace Krypton.Toolkit.Extended.Base.Resources {
         internal static System.Drawing.Bitmap ButtonNoColor {
             get {
                 object obj = ResourceManager.GetObject("ButtonNoColor", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap check {
+            get {
+                object obj = ResourceManager.GetObject("check", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -416,6 +436,16 @@ namespace Krypton.Toolkit.Extended.Base.Resources {
         internal static System.Drawing.Bitmap Critical_32_x_32 {
             get {
                 object obj = ResourceManager.GetObject("Critical_32_x_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cross {
+            get {
+                object obj = ResourceManager.GetObject("cross", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -653,6 +683,16 @@ namespace Krypton.Toolkit.Extended.Base.Resources {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap handle {
+            get {
+                object obj = ResourceManager.GetObject("handle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap help {
             get {
                 object obj = ResourceManager.GetObject("help", resourceCulture);
@@ -746,6 +786,16 @@ namespace Krypton.Toolkit.Extended.Base.Resources {
         internal static System.Drawing.Bitmap if_Symbol_Stop_49267 {
             get {
                 object obj = ResourceManager.GetObject("if_Symbol_Stop_49267", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Image70 {
+            get {
+                object obj = ResourceManager.GetObject("Image70", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -876,6 +926,16 @@ namespace Krypton.Toolkit.Extended.Base.Resources {
         internal static System.Drawing.Bitmap Interface_16x {
             get {
                 object obj = ResourceManager.GetObject("Interface_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap loading_circle {
+            get {
+                object obj = ResourceManager.GetObject("loading_circle", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1396,6 +1456,26 @@ namespace Krypton.Toolkit.Extended.Base.Resources {
         internal static System.Drawing.Bitmap text_underline {
             get {
                 object obj = ResourceManager.GetObject("text_underline", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ToggleSwitch {
+            get {
+                object obj = ResourceManager.GetObject("ToggleSwitch", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ToggleSwitch1 {
+            get {
+                object obj = ResourceManager.GetObject("ToggleSwitch1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
