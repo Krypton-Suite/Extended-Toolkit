@@ -1080,10 +1080,97 @@ namespace Krypton.Toolkit.Extended.Base
         }
         #endregion
 
+        #region Private Methods
+
+        private void SetValueInternal(bool checkedValue)
+        {
+            if (checkedValue == _checked)
+                return;
+
+            while (_animating)
+            {
+                Application.DoEvents();
+            }
+
+            BeginAnimation(checkedValue);
+        }
+
+        private void BeginAnimation(bool checkedValue)
+        {
+            _animating = true;
+            _animationResult = checkedValue;
+
+            if (_animationTimer != null && _useAnimation)
+            {
+                _animationTimer.Interval = _animationInterval;
+                _animationTimer.Enabled = true;
+            }
+            else
+            {
+                AnimationComplete();
+            }
+        }
+
+        private void AnimationComplete()
+        {
+            _animating = false;
+            _moving = false;
+            _checked = _animationResult;
+
+            _isButtonHovered = false;
+            _isButtonPressed = false;
+            _isLeftFieldHovered = false;
+            _isLeftFieldPressed = false;
+            _isRightFieldHovered = false;
+            _isRightFieldPressed = false;
+
+            Refresh();
+
+            if (CheckedChanged != null)
+                CheckedChanged(this, new EventArgs());
+
+            if (_lastMouseEventArgs != null)
+                OnMouseMove(_lastMouseEventArgs);
+
+            _lastMouseEventArgs = null;
+        }
+        #endregion
+
         #region Event Handlers
         private void AnimationTimer_Tick(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            _animationTimer.Enabled = false;
+
+            bool animationDone = false;
+            int newButtonValue;
+
+            if (IsButtonMovingRight)
+            {
+                newButtonValue = ButtonValue + _animationStep;
+
+                if (newButtonValue > _animationTarget)
+                    newButtonValue = _animationTarget;
+
+                ButtonValue = newButtonValue;
+
+                animationDone = ButtonValue >= _animationTarget;
+            }
+            else
+            {
+                newButtonValue = ButtonValue - _animationStep;
+
+                if (newButtonValue < _animationTarget)
+                    newButtonValue = _animationTarget;
+
+                ButtonValue = newButtonValue;
+
+                animationDone = ButtonValue <= _animationTarget;
+            }
+
+            if (animationDone)
+                AnimationComplete();
+            else
+                _animationTimer.Enabled = true;
         }
         #endregion
     }
