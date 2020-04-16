@@ -18,6 +18,7 @@
 | <img src="https://img.shields.io/badge/Module-Tool Strip Items-orange.svg" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Tool.Strip.Items)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
 | <img src="https://img.shields.io/badge/Module-Wizard-orange.svg" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Wizard)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
 
+<!--
 ## Canary
 
 | Module Name | Current Version | GitHub License |
@@ -31,6 +32,19 @@
 | <img src="https://img.shields.io/badge/Module-Standard Controls-yellow.svg" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Standard.Controls.Canary)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
 | <img src="https://img.shields.io/badge/Module-Tool Strip Items-yellow.svg" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Tool.Strip.Items.Canary)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
 | <img src="https://img.shields.io/badge/Module-Wizard-yellow.svg" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Wizard.Canary)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
+-->
+
+=======
+
+## 2020-05-01 - Build 2005 - May 2020
+* Fix for [#3](https://github.com/Krypton-Suite/Extended-Toolkit/issues/3), Missing controls
+* Add `IO Components` module
+* Add `Outlook Grid` module
+* Add `Navi Suite` module
+* Add `Task Dialogs` module
+* Add `Wizard` module
+* General fixes
+* Updated standard toolkit to build **2005**
 
 =======
 
