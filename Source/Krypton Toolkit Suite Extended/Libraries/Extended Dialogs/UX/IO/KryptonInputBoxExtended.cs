@@ -609,12 +609,18 @@ namespace Krypton.Toolkit.Extended.Dialogs
         #endregion
 
         #region Enumerations
+        /// <summary>The icon displayed on the Krypton input box.</summary>
         public enum Icon
         {
+            /// <summary>A custom icon.</summary>
             CUSTOM,
+            /// <summary>A ok icon.</summary>
             OK,
+            /// <summary>A error icon.</summary>
             ERROR,
+            /// <summary>A exclamation icon.</summary>
             EXCLAMATION,
+            /// <summary>A information icon.</summary>
             INFORMATION,
             QUESTION,
             NOTHING,
