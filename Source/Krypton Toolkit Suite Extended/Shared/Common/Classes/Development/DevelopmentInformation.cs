@@ -10,12 +10,21 @@ namespace Krypton.Toolkit.Extended.Common
     {
         #region Variables
         private Version _internalVersion = Assembly.GetExecutingAssembly().GetName().Version, _assemblyVersion;
+
         private FileInfo _fileInfo;
         #endregion
 
         #region Properties
+        /// <summary>Gets or sets the file information.</summary>
+        /// <value>The file information.</value>
+        public FileInfo FileInformation { get => _fileInfo; set => _fileInfo = value; }
+
+        /// <summary>Gets or sets the assembly version.</summary>
+        /// <value>The assembly version.</value>
         public Version AssemblyVersion { get => _assemblyVersion; set => _assemblyVersion = value; }
 
+        /// <summary>Gets the internal version.</summary>
+        /// <value>The internal version.</value>
         public Version InternalVersion { get => _internalVersion; }
         #endregion
 
@@ -107,25 +116,25 @@ namespace Krypton.Toolkit.Extended.Common
             }
         }
 
-        public static FileInfo GetFileInfomation(string filePath)
-        {
-            return new FileInfo(filePath);
-        }
+        /// <summary>Gets the file infomation.</summary>
+        /// <param name="filePath">The file path.</param>
+        /// <returns></returns>
+        public static FileInfo GetFileInfomation(string filePath) => new FileInfo(filePath);
 
-        public static FileVersionInfo GetFileVersionInformation(string filePath)
-        {
-            return FileVersionInfo.GetVersionInfo(filePath);
-        }
+        /// <summary>Gets the file version information.</summary>
+        /// <param name="filePath">The file path.</param>
+        /// <returns></returns>
+        public static FileVersionInfo GetFileVersionInformation(string filePath) => FileVersionInfo.GetVersionInfo(filePath);
 
-        public static Version GetFileVersion(FileVersionInfo fileVersionInfo)
-        {
-            return Version.Parse(fileVersionInfo.ProductVersion);
-        }
+        /// <summary>Gets the file version.</summary>
+        /// <param name="fileVersionInfo">The file version information.</param>
+        /// <returns></returns>
+        public static Version GetFileVersion(FileVersionInfo fileVersionInfo) => Version.Parse(fileVersionInfo.ProductVersion);
 
-        public static Version GetAssemblyVersion(Assembly executablePath)
-        {
-            return executablePath.GetName().Version;
-        }
+        /// <summary>Gets the assembly version.</summary>
+        /// <param name="executablePath">The executable path.</param>
+        /// <returns></returns>
+        public static Version GetAssemblyVersion(Assembly executablePath) => executablePath.GetName().Version;
         #endregion
     }
 }
