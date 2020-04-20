@@ -58,6 +58,8 @@ namespace Krypton.Toolkit.Extended.Base
 
             _imageB = null;
 
+            Size = new Size(100, 100);
+
             if (((_palette != null))) _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
 
             KryptonManager.GlobalPaletteChanged += new EventHandler(OnGlobalPaletteChanged);
