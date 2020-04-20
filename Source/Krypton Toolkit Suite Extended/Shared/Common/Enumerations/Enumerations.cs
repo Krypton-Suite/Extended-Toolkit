@@ -25,13 +25,20 @@
         SHIELD = 106
     }
 
+	/// <summary>The current development/support state of the application.</summary>
     public enum DevelopmentState
     {
+		/// <summary>The application is in a pre-alpha state.</summary>
         PREALPHA,
+		/// <summary>The application is in a alpha state.</summary>
         ALPHA,
+		/// <summary>The application is in a beta state.</summary>
         BETA,
+		/// <summary>The application is in the relese to manufacturing state.</summary>
         RTM,
+		/// <summary>The application is in the current support state.</summary>
         CURRENT,
+		/// <summary>The application has reached its end of life.</summary>
         EOL
     }
 
