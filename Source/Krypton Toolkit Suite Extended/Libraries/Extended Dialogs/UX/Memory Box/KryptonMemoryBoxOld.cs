@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Krypton.Toolkit.Extended.Dialogs
 {
-    public class KryptonMemoryBox : KryptonForm
+    public class KryptonMemoryBoxOld : KryptonForm
     {
         private KryptonLabel klblBody;
         private System.Windows.Forms.PictureBox pictureBoxIcon;
