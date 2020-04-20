@@ -13,25 +13,15 @@
     /// <summary>The icon type.</summary>
     public enum IconType
     {
-        /// <summary>
-        /// The warning
-        /// </summary>
+        /// <summary>The warning icon.</summary>
         WARNING = 101,
-        /// <summary>
-        /// The help
-        /// </summary>
+        /// <summary>The help icon.</summary>
         HELP = 102,
-        /// <summary>
-        /// The error
-        /// </summary>
+        /// <summary>The error icon.</summary>
         ERROR = 103,
-        /// <summary>
-        /// The information
-        /// </summary>
+        /// <summary>The information icon.</summary>
         INFO = 104,
-        /// <summary>
-        /// The shield
-        /// </summary>
+        /// <summary>The shield icon.</summary>
         SHIELD = 106
     }
 
