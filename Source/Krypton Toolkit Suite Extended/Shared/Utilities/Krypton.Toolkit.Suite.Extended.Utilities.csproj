@@ -21,7 +21,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Krypton.Toolkit.Canary" Version="5.500.2005.2" />
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="5.500.2006" />
   </ItemGroup>
 
 </Project>
