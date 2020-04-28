@@ -43,6 +43,8 @@
 * Add `Navi Suite` module
 * Add `Task Dialogs` module
 * Add `Wizard` module
+* Add `Palette Controls` module
+* Fixed names for `KryptonComboBoxExtended`, `KryptonPanelExtended` and `KryptonRichTextBoxExtended` to <ControlName>`Enhanced` to avoid confusion
 * General fixes
 * Updated standard toolkit to build **2005**
 
