@@ -53,7 +53,10 @@ namespace Krypton.Toolkit.Extended.Base
         #endregion
 
         #region Overrides
-
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
+        }
         #endregion
     }
 }
