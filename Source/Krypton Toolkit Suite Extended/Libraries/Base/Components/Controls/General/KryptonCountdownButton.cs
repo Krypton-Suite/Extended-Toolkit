@@ -12,19 +12,21 @@ namespace Krypton.Toolkit.Extended.Base
 
         private int _time;
 
-        private Timer _countdownTimer = new Timer();
+        private Timer _countdownTimer; //= new Timer();
         #endregion
 
         #region Properties
         public bool TimerEnabled { get => _timerEnabled; set => _timerEnabled = value; }
 
-        public int CountdownTime { get => _time; set { _time = value; Invalidate(); } }
+        public int Seconds { get; set; }
         #endregion
 
         #region Constructor
         public KryptonCountdownButton()
         {
             _countdownTimer = new Timer();
+
+            _countdownTimer.Enabled = TimerEnabled;
 
             _countdownTimer.Interval = 1000;
 
@@ -33,17 +35,25 @@ namespace Krypton.Toolkit.Extended.Base
 
         private void CountdownTimer_Tick(object sender, EventArgs e)
         {
-            int tmp = CountdownTime;
+            _time++;
 
-            do
+            if (Seconds != 0)
             {
-                tmp--;
-
-                Text = $"{ Text } ({ tmp })";
+                Text = $"{ Text } ({ Seconds - _time })";
 
                 Enabled = false;
-            } while (tmp > 0);
+            }
+            else
+            {
+                _countdownTimer.Stop();
+
+                Enabled = true;
+            }
         }
+        #endregion
+
+        #region Overrides
+
         #endregion
     }
 }
