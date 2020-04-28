@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Extended.Base
 {
-    public class KryptonPanelExtended : KryptonPanel
+    public class KryptonPanelEnhanced : KryptonPanel
     {
         #region Variables
         private int _cornerRadius;
@@ -17,7 +17,7 @@ namespace Krypton.Toolkit.Extended.Base
         #endregion
 
         #region Constructor
-        public KryptonPanelExtended()
+        public KryptonPanelEnhanced()
         {
             DoubleBuffered = true;
 
