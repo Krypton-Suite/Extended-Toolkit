@@ -11,7 +11,7 @@ namespace Krypton.Toolkit.Extended.Base
     /// A <see cref="KryptonRichTextBox"/> control with some extra features.
     /// </summary>
     [Description("A KryptonRichTextBox control with some extra features."), ToolboxBitmap(typeof(KryptonRichTextBox)), ToolboxItem(true)]
-    public class KryptonRichTextBoxExtended : KryptonRichTextBox
+    public class KryptonRichTextBoxEnhanced : KryptonRichTextBox
     {
         #region Variables
         private int _updating = 0, _oldEventMask = 0;
@@ -98,10 +98,10 @@ namespace Krypton.Toolkit.Extended.Base
 
         #region Constructor
         /// <summary>
-        /// Initialises a new instance of the <see cref="KryptonRichTextBoxExtended"/> class.
+        /// Initialises a new instance of the <see cref="KryptonRichTextBoxEnhanced"/> class.
         /// </summary>
         [DebuggerNonUserCode]
-        public KryptonRichTextBoxExtended()
+        public KryptonRichTextBoxEnhanced()
         {
             Font = new Font("Segoe UI", 12f, FontStyle.Regular, GraphicsUnit.Point, 0);
         }
@@ -259,11 +259,11 @@ namespace Krypton.Toolkit.Extended.Base
 
             public IntPtr hdcTarget;
 
-            public KryptonRichTextBoxExtended.RECT rc;
+            public KryptonRichTextBoxEnhanced.RECT rc;
 
-            public KryptonRichTextBoxExtended.RECT rcPage;
+            public KryptonRichTextBoxEnhanced.RECT rcPage;
 
-            public KryptonRichTextBoxExtended.CHARRANGE chrg;
+            public KryptonRichTextBoxEnhanced.CHARRANGE chrg;
         }
 
         private struct PARAFORMAT

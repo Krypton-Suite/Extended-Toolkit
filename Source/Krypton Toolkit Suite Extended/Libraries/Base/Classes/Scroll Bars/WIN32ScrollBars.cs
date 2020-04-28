@@ -236,7 +236,7 @@ namespace Krypton.Toolkit.Extended.Base
         #endregion
 
         #region InitComboBoxInfo Method - Private
-        public static bool InitComboBoxInfo(ref KryptonComboBoxExtended cbo, ref WIN32ScrollBars.ComboBoxInfo cbi)
+        public static bool InitComboBoxInfo(ref KryptonComboBoxEnhanced cbo, ref WIN32ScrollBars.ComboBoxInfo cbi)
         {
 
             cbi.cbSize = Marshal.SizeOf(cbi);
