@@ -24,12 +24,6 @@ namespace Krypton.Toolkit.Extended.Base
         #region Constructor
         public KryptonCountdownButton()
         {
-            _countdownTimer = new Timer();
-
-            _countdownTimer.Enabled = TimerEnabled;
-
-            _countdownTimer.Interval = 1000;
-
             _countdownTimer.Tick += CountdownTimer_Tick;
         }
 
@@ -55,6 +49,34 @@ namespace Krypton.Toolkit.Extended.Base
         #region Overrides
         protected override void OnPaint(PaintEventArgs e)
         {
+            if (_countdownTimer.Enabled)
+            {
+                if (Seconds != 0)
+                {
+                    Text = $"{ Text } ({ Seconds - _time })";
+
+                    _countdownTimer = new Timer();
+
+                    _countdownTimer.Interval = 1000;
+
+                    _countdownTimer.Tick += (sender, ev) =>
+                    {
+                        _time++;
+
+                        Text = $"{ Text } ({ Seconds - _time })";
+
+                        Enabled = false;
+
+                        if (_time == Seconds)
+                        {
+                            _countdownTimer.Stop();
+
+                            Enabled = true;
+                        }
+                    };
+                }
+            }
+
             base.OnPaint(e);
         }
         #endregion
