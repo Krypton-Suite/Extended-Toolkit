@@ -45,6 +45,7 @@
 * Add `Wizard` module
 * Add `Palette Controls` module
 * Fixed names for `KryptonComboBoxExtended`, `KryptonPanelExtended` and `KryptonRichTextBoxExtended` to <ControlName>`Enhanced` to avoid confusion
+* Fix [#5](https://github.com/Krypton-Suite/Extended-Toolkit/issues/5), `NuGet Packaging Issue`
 * General fixes
 * Updated standard toolkit to build **2005**
 
