@@ -8,13 +8,13 @@
     <UseWindowsForms>true</UseWindowsForms>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Version>5.500.2005</Version>
+    <Version>5.500.2005.1</Version>
     <PackageLicenseFile></PackageLicenseFile>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Cyotek.Windows.Forms.ColorPicker" Version="1.7.2" />
-    <PackageReference Include="Krypton.Toolkit.Canary" Version="5.500.2005.2" />
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2006" />
   </ItemGroup>
 
   <ItemGroup>
@@ -51,7 +51,7 @@
     <DocumentationFile>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Colour.Controls\Krypton.Toolkit.Extended.Colour.Controls.xml</DocumentationFile>
     <OutputPath>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Colour.Controls\</OutputPath>
     <!--<PackageId>Krypton.Toolkit.Extended.Colour.Controls</PackageId>-->
-    <PackageId>Krypton.Toolkit.Extended.Colour.Controls</PackageId>
+    <PackageId>Krypton.Toolkit.Suite.Extended.Colour.Controls</PackageId>
     <Description>Contains colour controls.</Description>
   </PropertyGroup>
 
