@@ -10,7 +10,7 @@
 
   <PropertyGroup>
     <!--<PackageId>Krypton.Toolkit.Suite.Extended.Base</PackageId>-->
-    <PackageId>Krypton.Toolkit.Suite.Extended.Base.Canary</PackageId>
+    <PackageId>Krypton.Toolkit.Suite.Extended.Base</PackageId>
     <Description>An extension to the standard krypton toolkit to support .NET Core and the latest .NET 3.5/4.x framework. This is the base module.</Description>
   </PropertyGroup>
 

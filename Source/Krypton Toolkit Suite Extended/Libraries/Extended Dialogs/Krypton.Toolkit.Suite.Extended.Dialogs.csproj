@@ -64,7 +64,7 @@
 
   <PropertyGroup>
     <!--<PackageId>Krypton.Toolkit.Suite.Extended.Dialogs</PackageId>-->
-    <PackageId>Krypton.Toolkit.Suite.Extended.Dialogs.Canary</PackageId>
+    <PackageId>Krypton.Toolkit.Suite.Extended.Dialogs</PackageId>
     <Description>Contains dialogs.</Description>
   </PropertyGroup>
 

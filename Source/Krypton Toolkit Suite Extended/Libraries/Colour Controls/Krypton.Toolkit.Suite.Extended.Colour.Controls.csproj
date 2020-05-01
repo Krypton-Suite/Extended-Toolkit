@@ -51,7 +51,7 @@
     <DocumentationFile>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Colour.Controls\Krypton.Toolkit.Extended.Colour.Controls.xml</DocumentationFile>
     <OutputPath>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Colour.Controls\</OutputPath>
     <!--<PackageId>Krypton.Toolkit.Extended.Colour.Controls</PackageId>-->
-    <PackageId>Krypton.Toolkit.Extended.Colour.Controls.Canary</PackageId>
+    <PackageId>Krypton.Toolkit.Extended.Colour.Controls</PackageId>
     <Description>Contains colour controls.</Description>
   </PropertyGroup>
 

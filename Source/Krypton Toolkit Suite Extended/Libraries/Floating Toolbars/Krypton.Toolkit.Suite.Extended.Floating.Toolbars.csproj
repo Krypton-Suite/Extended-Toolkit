@@ -27,7 +27,7 @@
   
   <PropertyGroup>
     <!--<PackageId>Krypton.Toolkit.Extended.Floating.Toolbars</PackageId>-->
-    <PackageId>Krypton.Toolkit.Extended.Floating.Toolbars.Canary</PackageId>
+    <PackageId>Krypton.Toolkit.Extended.Floating.Toolbars</PackageId>
   </PropertyGroup>
 
 </Project>
