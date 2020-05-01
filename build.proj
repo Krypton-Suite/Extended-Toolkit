@@ -1,4 +1,3 @@
-<!--
 <Project>
 		<Import Project="Directory.Build.props" />
 
@@ -79,4 +78,3 @@
 		<Exec Command="nuget.exe push %(NugetPkgs.Identity)" />
 	</Target>
 </Project>
--->

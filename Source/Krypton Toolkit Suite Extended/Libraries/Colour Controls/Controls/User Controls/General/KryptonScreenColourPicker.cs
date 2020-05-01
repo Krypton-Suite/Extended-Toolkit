@@ -9,7 +9,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
     public class KryptonScreenColourPicker : UserControl
     {
         #region Designer Code
-        private Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonPanelExtended kryptonPanelExtended1;
+        private Suite.Extended.Standard.Controls.KryptonPanelExtended kryptonPanelExtended1;
         private KryptonButtonExtended kbtnOk;
         private Panel panel1;
         private KryptonSplitContainer kryptonSplitContainer1;
