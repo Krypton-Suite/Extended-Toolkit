@@ -36,7 +36,13 @@
 
 =======
 
-## 2020-05-01 - Build 2005 - May 2020
+## 2020-05-01 pm - Build 2005.1 - May 2020
+* Removed errant `Experimental` package
+* Updated standard toolkit to build **6.0.2006**
+
+=======
+
+## 2020-05-01 am - Build 2005 - May 2020
 * Fix for [#3](https://github.com/Krypton-Suite/Extended-Toolkit/issues/3), Missing controls
 * Add `IO Components` module
 * Add `Outlook Grid` module

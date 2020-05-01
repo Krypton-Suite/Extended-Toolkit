@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Krypton.Toolkit.Experimental" Version="5.500.2003" />
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2006" />
     <PackageReference Include="WindowsAPICodePack" Version="1.1.1" />
   </ItemGroup>
 
@@ -45,10 +45,10 @@
   <PropertyGroup>
     <DocumentationFile>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Common\Krypton.Toolkit.Extended.Common.xml</DocumentationFile>
     <OutputPath>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Common\</OutputPath>
-    <AssemblyVersion>5.500.2005.0</AssemblyVersion>
+    <AssemblyVersion>5.500.2005.1</AssemblyVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>5.500.2005</Version>
-    <FileVersion>5.500.2005.0</FileVersion>
+    <Version>5.500.2005.1</Version>
+    <FileVersion>5.500.2005.1</FileVersion>
     <Description>Contains common logic.</Description>
   </PropertyGroup>
 
