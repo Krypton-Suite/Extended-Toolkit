@@ -40,8 +40,8 @@
 * Fix for [#3](https://github.com/Krypton-Suite/Extended-Toolkit/issues/3), Missing controls
 * Add `IO Components` module
 * Add `Outlook Grid` module
-* Add `Navi Suite` module
-* Add `Task Dialogs` module
+<!--* Add `Navi Suite` module
+* Add `Task Dialogs` module-->
 * Add `Wizard` module
 * Add `Palette Controls` module
 * Fixed names for `KryptonComboBoxExtended`, `KryptonPanelExtended` and `KryptonRichTextBoxExtended` to <ControlName>`Enhanced` to avoid confusion
