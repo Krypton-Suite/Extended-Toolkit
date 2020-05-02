@@ -95,4 +95,13 @@
         BUTTONTWO,
         BUTTONTHREE
     }
+
+    public enum KryptonMemoryBoxDialogResult
+    {
+        YES,
+        YESTOALL,
+        NO,
+        NOTOALL,
+        CANCEL
+    }
 }
