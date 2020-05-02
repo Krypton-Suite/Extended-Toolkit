@@ -1,7 +1,7 @@
 <Project>
   <PropertyGroup>
-    <Version>5.500.2005.0</Version>
-    <FileVersion>5.500.2005.0</FileVersion>
-    <InformationalVersion>5.500.2005.0</InformationalVersion>
+    <Version>6.0.2006.0</Version>
+    <FileVersion>6.0.2006.0</FileVersion>
+    <InformationalVersion>6.0.2006.0</InformationalVersion>
   </PropertyGroup>
 </Project>
