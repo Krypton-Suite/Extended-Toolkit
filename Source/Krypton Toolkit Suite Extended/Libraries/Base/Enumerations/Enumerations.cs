@@ -152,6 +152,14 @@
         FIVEMINUTES = 5
     }
 
+    public enum LVSortDataType
+    {
+        DATES = 4,
+        NUMBERS = 2,
+        TEXTCASESENSITIVE = 0,
+        TEXTIGNORECASE = 1
+    }
+
     #region Scrollbars
     /// <summary>
     /// The scrollbar arrow button states.

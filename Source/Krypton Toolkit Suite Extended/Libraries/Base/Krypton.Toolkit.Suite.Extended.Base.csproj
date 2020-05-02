@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Shared\Common\Krypton.Toolkit.Suite.Extended.Common.csproj" />
+    <ProjectReference Include="..\..\Shared\Toolkit Core\Krypton.Toolkit.Suite.Extended.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>
