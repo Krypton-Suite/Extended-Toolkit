@@ -1,0 +1,58 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <LangVersion>8.0</LangVersion>
+    <TargetFrameworks>net45;netcoreapp3.1</TargetFrameworks>
+    <TargetFrameworks Condition="'$(TFMs)' == 'all'">net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1</TargetFrameworks>
+    <RootNamespace>Krypton.Toolkit.Extended.Colour.Controls</RootNamespace>
+    <UseWindowsForms>true</UseWindowsForms>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Version>5.500.2005.1</Version>
+    <PackageLicenseFile></PackageLicenseFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Cyotek.Windows.Forms.ColorPicker" Version="1.7.2" />
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2006" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Shared\Toolkit Core\Krypton.Toolkit.Suite.Extended.Core.csproj" />
+    <ProjectReference Include="..\Extended Standard Controls\Krypton.Toolkit.Suite.Extended.Standard.Controls.csproj" />
+    <ProjectReference Include="..\Base\Krypton.Toolkit.Suite.Extended.Base.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\LibraryResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>LibraryResources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\LibraryResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>LibraryResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <PropertyGroup>
+    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Colour.Controls\Krypton.Toolkit.Extended.Colour.Controls.xml</DocumentationFile>
+    <OutputPath>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Colour.Controls\</OutputPath>
+    <!--<PackageId>Krypton.Toolkit.Extended.Colour.Controls</PackageId>-->
+    <PackageId>Krypton.Toolkit.Suite.Extended.Colour.Controls</PackageId>
+    <Description>Contains colour controls.</Description>
+  </PropertyGroup>
+
+</Project>

@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <LangVersion>8.0</LangVersion>
+    <TargetFrameworks>net45;netcoreapp3.1</TargetFrameworks>
+    <TargetFrameworks Condition="'$(TFMs)' == 'all'">net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1</TargetFrameworks>    
+    <RootNamespace>Krypton.Extended.Toolkit.Resources</RootNamespace>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Update="Images\AllToolkitImageResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AllToolkitImageResources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Images\AllToolkitImageResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AllToolkitImageResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <PropertyGroup>
+    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Resources\Krypton.Toolkit.Extended.Resources.xml</DocumentationFile>
+    <OutputPath>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Resources\</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <AssemblyVersion>5.500.2005.1</AssemblyVersion>
+    <FileVersion>5.500.2005.1</FileVersion>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>5.500.2005.1</Version>
+  </PropertyGroup>
+
+</Project>
