@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Base.Components.List_View
+namespace Krypton.Toolkit.Extended.Base
 {
-    class KryptonListView
+    [ToolboxBitmap(typeof(ListView))]
+    public class KryptonListView : ListView
     {
     }
 }
