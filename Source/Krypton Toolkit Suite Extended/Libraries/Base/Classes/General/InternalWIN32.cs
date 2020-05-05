@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Drawing;
 using System.Runtime.InteropServices;
-using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Extended.Base
 {
-    internal class Win32
+    public class InternalWIN32Methods
     {
         /*
 		 * GetWindow() Constants
@@ -17,7 +16,7 @@ namespace Krypton.Toolkit.Extended.Base
         public const int GW_OWNER = 4;
         public const int GW_CHILD = 5;
 
-        public const int WM_NCCALCSIZE = 0x83;
+        public const int WM_NCCALCSIZESB = 0x83;
         public const int WM_WINDOWPOSCHANGING = 0x46;
         public const int WM_PAINT = 0xF;
         public const int WM_CREATE = 0x1;
@@ -29,14 +28,14 @@ namespace Krypton.Toolkit.Extended.Base
         public const int WM_SHARED_MENU = 0x1E2;
         public const int WH_CALLWNDPROC = 4;
         public const int WM_PARENTNOTIFY = 0x210;
-        public const int WM_HSCROLL = 0x114;
+        public const int WM_HSCROLLSB = 0x114;
         public const int WM_NCHITTEST = 0x84;
         public const int WM_ERASEBKGND = 0x0014; // WM_ERASEBKGND message
 
         public const int HC_ACTION = 0;
         public const int GWL_WNDPROC = -4;
 
-        public Win32()
+        public InternalWIN32Methods()
         {
             //
             // TODO: Add constructor logic here
@@ -45,7 +44,7 @@ namespace Krypton.Toolkit.Extended.Base
 
 
         [DllImport("User32", CallingConvention = CallingConvention.Cdecl)]
-        public static extern int RealGetWindowClass(IntPtr hwnd, System.Text.StringBuilder pszType, int cchType);
+        public static extern int RealGetWindowClass(IntPtr hwnd, System.Text.StringBuilder pszType, uint cchType);
 
         [DllImport("user32")]
         public static extern IntPtr SetParent(IntPtr hWndChild, IntPtr hWndNewParent);
@@ -150,7 +149,7 @@ namespace Krypton.Toolkit.Extended.Base
     /// <summary>
     /// Windows Event Messages sent to the WindowProc
     /// </summary>
-    public enum Messaqes
+    public enum Msgs
     {
         WM_NULL = 0x0000,
         WM_CREATE = 0x0001,
@@ -363,77 +362,77 @@ namespace Krypton.Toolkit.Extended.Base
         NIN_BALLOONUSERCLICK = 0x0405
     }
 
-    #region SubClass Classing Handler Class
-    internal class SubClass : System.Windows.Forms.NativeWindow
-    {
-        public delegate int SubClassWndProcEventHandler(ref System.Windows.Forms.Message m);
-        public event SubClassWndProcEventHandler SubClassedWndProc;
-        private bool IsSubClassed = false;
+    //#region SubClass Classing Handler Class
+    //internal class SubClass : System.Windows.Forms.NativeWindow
+    //{
+    //    public delegate int SubClassWndProcEventHandler(ref System.Windows.Forms.Message m);
+    //    public event SubClassWndProcEventHandler SubClassedWndProc;
+    //    private bool IsSubClassed = false;
 
-        public SubClass(IntPtr Handle, bool _SubClass)
-        {
-            base.AssignHandle(Handle);
-            this.IsSubClassed = _SubClass;
-        }
+    //    public SubClass(IntPtr Handle, bool _SubClass)
+    //    {
+    //        base.AssignHandle(Handle);
+    //        this.IsSubClassed = _SubClass;
+    //    }
 
-        public bool SubClassed
-        {
-            get { return this.IsSubClassed; }
-            set { this.IsSubClassed = value; }
-        }
+    //    public bool SubClassed
+    //    {
+    //        get { return this.IsSubClassed; }
+    //        set { this.IsSubClassed = value; }
+    //    }
 
-        protected override void WndProc(ref Message m)
-        {
-            if (this.IsSubClassed)
-            {
-                if (OnSubClassedWndProc(ref m) != 0)
-                    return;
-            }
-            base.WndProc(ref m);
-        }
+    //    protected override void WndProc(ref Message m)
+    //    {
+    //        if (this.IsSubClassed)
+    //        {
+    //            if (OnSubClassedWndProc(ref m) != 0)
+    //                return;
+    //        }
+    //        base.WndProc(ref m);
+    //    }
 
-        public void CallDefaultWndProc(ref Message m)
-        {
-            base.WndProc(ref m);
-        }
+    //    public void CallDefaultWndProc(ref Message m)
+    //    {
+    //        base.WndProc(ref m);
+    //    }
 
-        #region HiWord Message Cracker
-        public int HiWord(int Number)
-        {
-            return ((Number >> 16) & 0xffff);
-        }
-        #endregion
+    //    #region HiWord Message Cracker
+    //    public int HiWord(int Number)
+    //    {
+    //        return ((Number >> 16) & 0xffff);
+    //    }
+    //    #endregion
 
-        #region LoWord Message Cracker
-        public int LoWord(int Number)
-        {
-            return (Number & 0xffff);
-        }
-        #endregion
+    //    #region LoWord Message Cracker
+    //    public int LoWord(int Number)
+    //    {
+    //        return (Number & 0xffff);
+    //    }
+    //    #endregion
 
-        #region MakeLong Message Cracker
-        public int MakeLong(int LoWord, int HiWord)
-        {
-            return (HiWord << 16) | (LoWord & 0xffff);
-        }
-        #endregion
+    //    #region MakeLong Message Cracker
+    //    public int MakeLong(int LoWord, int HiWord)
+    //    {
+    //        return (HiWord << 16) | (LoWord & 0xffff);
+    //    }
+    //    #endregion
 
-        #region MakeLParam Message Cracker
-        public IntPtr MakeLParam(int LoWord, int HiWord)
-        {
-            return (IntPtr)((HiWord << 16) | (LoWord & 0xffff));
-        }
-        #endregion
+    //    #region MakeLParam Message Cracker
+    //    public IntPtr MakeLParam(int LoWord, int HiWord)
+    //    {
+    //        return (IntPtr)((HiWord << 16) | (LoWord & 0xffff));
+    //    }
+    //    #endregion
 
-        private int OnSubClassedWndProc(ref Message m)
-        {
-            if (SubClassedWndProc != null)
-            {
-                return this.SubClassedWndProc(ref m);
-            }
+    //    private int OnSubClassedWndProc(ref Message m)
+    //    {
+    //        if (SubClassedWndProc != null)
+    //        {
+    //            return this.SubClassedWndProc(ref m);
+    //        }
 
-            return 0;
-        }
-    }
-    #endregion
+    //        return 0;
+    //    }
+    //}
+    //#endregion
 }

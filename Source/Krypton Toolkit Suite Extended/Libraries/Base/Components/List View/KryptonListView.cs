@@ -1,5 +1,4 @@
-﻿using Krypton.Toolkit.Extended.Base.Internal;
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
@@ -9,11 +8,38 @@ using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Extended.Base
 {
-    [ToolboxBitmap(typeof(ListView))]
-    public partial class KryptonListView : ListView
+    public class KryptonListView : ListView
     {
-        #region Constants
-        private const int MINIMUM_ITEM_HEIGHT = 18;
+        #region Designer Code
+        private ImageList ilCheckBoxes;
+        private ImageList ilHeight;
+        private System.ComponentModel.IContainer components;
+
+        private void InitializeComponent()
+        {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KryptonListView));
+            this.ilCheckBoxes = new System.Windows.Forms.ImageList(this.components);
+            this.ilHeight = new System.Windows.Forms.ImageList(this.components);
+            this.SuspendLayout();
+            // 
+            // ilCheckBoxes
+            // 
+            this.ilCheckBoxes.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ilCheckBoxes.ImageStream")));
+            this.ilCheckBoxes.TransparentColor = System.Drawing.Color.Transparent;
+            this.ilCheckBoxes.Images.SetKeyName(0, "VistaChecked.png");
+            this.ilCheckBoxes.Images.SetKeyName(1, "VistaNotChecked.png");
+            this.ilCheckBoxes.Images.SetKeyName(2, "XPChecked.gif");
+            this.ilCheckBoxes.Images.SetKeyName(3, "XPNotChecked.gif");
+            // 
+            // ilHeight
+            // 
+            this.ilHeight.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+            this.ilHeight.ImageSize = new System.Drawing.Size(16, 16);
+            this.ilHeight.TransparentColor = System.Drawing.Color.Transparent;
+            this.ResumeLayout(false);
+
+        }
         #endregion
 
         #region Variables
@@ -27,12 +53,12 @@ namespace Krypton.Toolkit.Extended.Base
         private IDisposable _mementoBack1;
         private IDisposable _mementoBack2;
         private ListViewColumnSorter lvwColumnSorter;
-        private ListViewItem _itemDnD = null;
         private Font _originalFont;
-        private Color _originalForeColour;
+        private Color _originalForeColor;
+        private const int _minimumItemHeight = 18;
         #endregion
 
-        #region Properties
+        #region   "   Properties   "
 
         //for setting the minimum height of an item
         public virtual int ItemHeight { get; set; }
@@ -65,10 +91,10 @@ namespace Krypton.Toolkit.Extended.Base
             get { return _lineAfter; }
             set { _lineAfter = value; }
         }
-        bool _enableDragDrop = false;
+        Boolean _enableDragDrop = false;
         [Browsable(true), Category("Appearance-Extended")]
         [DefaultValue("False")]
-        public bool EnableDragDrop
+        public Boolean EnableDragDrop
         {
             get { return _enableDragDrop; }
             set { _enableDragDrop = value; }
@@ -77,16 +103,16 @@ namespace Krypton.Toolkit.Extended.Base
         Color _alternateRowColor = Color.LightGray;
         [Browsable(true), Category("Appearance-Extended")]
         [DefaultValue("Color.Gray")]
-        public Color AlternateRowColour
+        public Color AlternateRowColor
         {
             get { return _alternateRowColor; }
             set { _alternateRowColor = value; Invalidate(); }
         }
 
-        bool _alternateRowColorEnabled = true;
+        Boolean _alternateRowColorEnabled = true;
         [Browsable(true), Category("Appearance-Extended")]
         [DefaultValue("true")]
-        public bool AlternateRowColourEnabled
+        public Boolean AlternateRowColorEnabled
         {
             get { return _alternateRowColorEnabled; }
             set { _alternateRowColorEnabled = value; Invalidate(); }
@@ -96,7 +122,7 @@ namespace Krypton.Toolkit.Extended.Base
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         [Browsable(true), Category("Appearance-Extended")]
         [DefaultValue("Color.White")]
-        public Color GradientStartColour
+        public Color GradientStartColor
         {
             get { return _gradientStartColor; }
             set { _gradientStartColor = value; Invalidate(); }
@@ -106,7 +132,7 @@ namespace Krypton.Toolkit.Extended.Base
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         [Browsable(true), Category("Appearance-Extended")]
         [DefaultValue("Color.Gray")]
-        public Color GradientEndColour
+        public Color GradientEndColor
         {
             get { return _gradientEndColor; }
             set { _gradientEndColor = value; Invalidate(); }
@@ -116,25 +142,25 @@ namespace Krypton.Toolkit.Extended.Base
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         [Browsable(true), Category("Appearance-Extended")]
         [DefaultValue("Color.Gray")]
-        public Color GradientMiddleColour
+        public Color GradientMiddleColor
         {
             get { return _gradientMiddleColor; }
             set { _gradientMiddleColor = value; Invalidate(); }
         }
 
-        bool _persistentColors = false;
+        Boolean _persistentColors = false;
         [Browsable(true), Category("Appearance-Extended")]
         [DefaultValue("False")]
-        public bool PersistentColours
+        public Boolean PersistentColors
         {
             get { return _persistentColors; }
             set { _persistentColors = value; Invalidate(); }
         }
 
-        bool _useStyledColors = false;
+        Boolean _useStyledColors = false;
         [Browsable(true), Category("Appearance-Extended")]
         [DefaultValue("False")]
-        public bool UseStyledColours
+        public Boolean UseStyledColors
         {
             get { return _useStyledColors; }
             set { _useStyledColors = value; Invalidate(); }
@@ -143,79 +169,79 @@ namespace Krypton.Toolkit.Extended.Base
         private bool _useKryptonRenderer = true;
         [Browsable(true), Category("Appearance-Extended")]
         [DefaultValue("True")]
-        public bool UseKryptonRenderer
+        public Boolean UseKryptonRenderer
         {
             get { return _useKryptonRenderer; }
             set { _useKryptonRenderer = value; Invalidate(); }
         }
 
-        bool _selectEntireRowOnSubItem = true;
+        Boolean _selectEntireRowOnSubItem = true;
         [Browsable(true), Category("Appearance-Extended")]
         [DefaultValue("True")]
-        public bool SelectEntireRowOnSubItem
+        public Boolean SelectEntireRowOnSubItem
         {
             get { return _selectEntireRowOnSubItem; }
             set { _selectEntireRowOnSubItem = value; }
         }
 
-        //bool _indendFirstItem = true;
+        //Boolean _indendFirstItem = true;
         /*[Browsable(true), Category("Appearance-Extended")]
         [DefaultValue("True")]
-        public bool IndendFirstItem
+        public Boolean IndendFirstItem
         {
             get { return _indendFirstItem; }
             set { _indendFirstItem = value; }
         }*/
 
-        bool _forceLeftAlign = false;
+        Boolean _forceLeftAlign = false;
         [Browsable(false), Category("Appearance-Extended")]
         [DefaultValue("True")]
-        public bool ForceLeftAlign
+        public Boolean ForceLeftAlign
         {
             get { return _forceLeftAlign; }
             set { _forceLeftAlign = value; }
         }
 
-        bool _autoSizeLastColumn = true;
+        Boolean _autoSizeLastColumn = true;
         [Browsable(true), Category("Appearance-Extended")]
         [DefaultValue("True")]
-        public bool AutoSizeLastColumn
+        public Boolean AutoSizeLastColumn
         {
             get { return _autoSizeLastColumn; }
             set { _autoSizeLastColumn = value; Invalidate(); }
         }
 
-        bool _enableSorting = true;
+        Boolean _enableSorting = true;
         [Browsable(true), Category("Appearance-Extended")]
         [DefaultValue("True")]
-        public bool EnableSorting
+        public Boolean EnableSorting
         {
             get { return _enableSorting; }
             set { _enableSorting = value; }
         }
 
-        bool _enableHeaderRendering = true;
+        Boolean _enableHeaderRendering = true;
         [Browsable(true), Category("Appearance-Extended")]
         [DefaultValue("False")]
-        public bool EnableHeaderRendering
+        public Boolean EnableHeaderRendering
         {
             get { return _enableHeaderRendering; }
             set { _enableHeaderRendering = value; Invalidate(); }
         }
 
-        bool _enableHeaderGlow = false;
+        Boolean _enableHeaderGlow = false;
         [Browsable(true), Category("Appearance-Extended")]
         [DefaultValue("False")]
-        public bool EnableHeaderGlow
+        public Boolean EnableHeaderGlow
         {
             get { return _enableHeaderGlow; }
             set { _enableHeaderGlow = value; Invalidate(); }
         }
 
-        bool _enableHeaderHotTrack = false;
+        Boolean _enableHeaderHotTrack = false;
         [Browsable(true), Category("Appearance-Extended")]
         [DefaultValue("False")]
-        public bool EnableHeaderHotTrack
+        public Boolean EnableHeaderHotTrack
         {
             get { return _enableHeaderHotTrack; }
             set
@@ -234,19 +260,19 @@ namespace Krypton.Toolkit.Extended.Base
             }
         }
 
-        bool _enableVistaCheckBoxes = true;
+        Boolean _enableVistaCheckBoxes = true;
         [Browsable(true), Category("Appearance-Extended")]
         [DefaultValue("True")]
-        public bool EnableVistaCheckBoxes
+        public Boolean EnableVistaCheckBoxes
         {
             get { return _enableVistaCheckBoxes; }
             set { _enableVistaCheckBoxes = value; Invalidate(); }
         }
 
-        bool _enableSelectionBorder = false;
+        Boolean _enableSelectionBorder = false;
         [Browsable(true), Category("Appearance-Extended")]
         [DefaultValue("True")]
-        public bool EnableSelectionBorder
+        public Boolean EnableSelectionBorder
         {
             get { return _enableSelectionBorder; }
             set { _enableSelectionBorder = value; Invalidate(); }
@@ -257,7 +283,7 @@ namespace Krypton.Toolkit.Extended.Base
         #region Constructors
         public KryptonListView()
         {
-            //this.SetStyle(ControlStyles.UserPaint, true);
+            // this.SetStyle(ControlStyles.UserPaint, true);
             this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);
             this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
             this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
@@ -270,7 +296,7 @@ namespace Krypton.Toolkit.Extended.Base
             _originalFont = (Font)this.Font.Clone();
 
             //store the original foreColor
-            _originalForeColour = (Color)this.ForeColor;
+            _originalForeColor = (Color)this.ForeColor;
 
             // add Palette Handler
             // Cache the current global palette setting
@@ -291,7 +317,7 @@ namespace Krypton.Toolkit.Extended.Base
             _paletteBorder = new PaletteBorderInheritRedirect(_paletteRedirect);
             _paletteContent = new PaletteContentInheritRedirect(_paletteRedirect);
 
-            InitColours();
+            InitColors();
 
             // Create an instance of a ListView column sorter and assign it 
             // to the ListView control.
@@ -321,12 +347,14 @@ namespace Krypton.Toolkit.Extended.Base
         }
         #endregion
 
-        #region DrawItem and SubItem
+        #region   "   DrawItem and SubItem   "
+        //Draw Item
         protected override void OnDrawItem(DrawListViewItemEventArgs e)
         {
+
             //set font 
             //get Colors And Font
-            this.ForeColor = GetForeTextColour(PaletteState.Normal);
+            this.ForeColor = GetForeTextColor(PaletteState.Normal);
             this.Font = GetForeTextFont(PaletteState.Normal);
 
 
@@ -336,8 +364,8 @@ namespace Krypton.Toolkit.Extended.Base
                 Graphics g = e.Graphics;
 
                 //minimum item height
-                if (rect.Height < MINIMUM_ITEM_HEIGHT)
-                { rect.Height = (int)MINIMUM_ITEM_HEIGHT; }
+                if (rect.Height < _minimumItemHeight)
+                { rect.Height = (int)_minimumItemHeight; }
 
 
                 rect.Height -= 1;
@@ -387,16 +415,16 @@ namespace Krypton.Toolkit.Extended.Base
                 }
             }
             else
-            {
                 e.DrawDefault = true;
-            }
         }
 
+
+        //Draw SubItem
         protected override void OnDrawSubItem(DrawListViewSubItemEventArgs e)
         {
             //set font 
             //get Colors And Font
-            this.ForeColor = GetForeTextColour(PaletteState.Normal);
+            this.ForeColor = GetForeTextColor(PaletteState.Normal);
             this.Font = GetForeTextFont(PaletteState.Normal);
 
             if (!DesignMode)
@@ -405,8 +433,8 @@ namespace Krypton.Toolkit.Extended.Base
                 Graphics g = e.Graphics;
 
                 //minimum item height
-                if (rect.Height < MINIMUM_ITEM_HEIGHT)
-                { rect.Height = (int)MINIMUM_ITEM_HEIGHT; }
+                if (rect.Height < _minimumItemHeight)
+                { rect.Height = (int)_minimumItemHeight; }
 
                 rect.Height -= 1;
                 rect.Width -= 1;
@@ -498,7 +526,7 @@ namespace Krypton.Toolkit.Extended.Base
                         if (_useKryptonRenderer) rect.Offset(0, -2);
 
                         //drawText
-                        Color textColor = GetForeTextColour(PaletteState.CheckedPressed);
+                        Color textColor = GetForeTextColor(PaletteState.CheckedPressed);
                         //if (!_hasFocus)
                         //    textColor = GetForeTextColor(PaletteState.Normal);
 
@@ -529,16 +557,15 @@ namespace Krypton.Toolkit.Extended.Base
 
             }
             else
-            {
                 e.DrawDefault = true;
-            }
+
         }
         #endregion
 
-        #region Drawing Renderers
-        private Color GetForeTextColourHeader(PaletteState buttonState)
+        #region   "   Drawing Renderers   "
+        private Color GetForeTextColorHeader(PaletteState buttonState)
         {
-            Color textColor = _originalForeColour;
+            Color textColor = _originalForeColor;
 
             textColor = _palette.ColorTable.MenuItemText;// StatusStripText;
             if (buttonState == PaletteState.CheckedPressed) textColor = _palette.ColorTable.StatusStripText;
@@ -548,10 +575,9 @@ namespace Krypton.Toolkit.Extended.Base
 
             return textColor;
         }
-
-        private Color GetForeTextColour(PaletteState buttonState)
+        private Color GetForeTextColor(PaletteState buttonState)
         {
-            Color textColor = _originalForeColour;
+            Color textColor = _originalForeColor;
 
             if ((_persistentColors == false) || _useKryptonRenderer)
             {
@@ -598,6 +624,7 @@ namespace Krypton.Toolkit.Extended.Base
             }
             return State;
         }
+
 
         private void KryptonRenderer(PaletteState State, ref Graphics g, ref Rectangle rect)
         {
@@ -760,6 +787,7 @@ namespace Krypton.Toolkit.Extended.Base
 
         }
 
+
         private void HeaderPressedOffset(ref Rectangle rect, ListViewItemStates State)
         {
             //min rect height for SystemColors (Theme disabled)
@@ -782,7 +810,7 @@ namespace Krypton.Toolkit.Extended.Base
         }
         #endregion
 
-        #region Draw Header
+        #region   "   Draw Header   "
         protected override void OnDrawColumnHeader(DrawListViewColumnHeaderEventArgs e)
         {
             if (!DesignMode)
@@ -841,7 +869,7 @@ namespace Krypton.Toolkit.Extended.Base
                     HeaderPressedOffset(ref rect, e.State);
 
                     //get Colors And Font
-                    Color textColor = GetForeTextColourHeader(GetPaletteState(ref e, bHot));
+                    Color textColor = GetForeTextColorHeader(GetPaletteState(ref e, bHot));
                     Font textFont = GetForeTextFont(GetPaletteState(ref e, bHot));
 
                     //set text properties
@@ -875,283 +903,12 @@ namespace Krypton.Toolkit.Extended.Base
 
             }
             else
-            {
                 e.DrawDefault = true;
-            }
         }
+
         #endregion
 
-        #region Overrides
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            base.OnPaint(e);
-        }
-
-        protected override void OnMouseDown(MouseEventArgs e)
-        {
-            if (_enableDragDrop)
-            {
-                _itemDnD = GetItemAt(e.X, e.Y);
-            }
-
-            base.OnMouseDown(e);
-        }
-
-        protected override void OnMouseUp(MouseEventArgs e)
-        {
-            if (_enableDragDrop)
-            {
-                if (_itemDnD == null)
-                    return;
-
-                try
-                {
-                    // calculate the bottom of the last item in the LV so that you don't have to stop your drag at the last item
-                    int lastItemBottom = Math.Min(e.Y, this.Items[this.Items.Count - 1].GetBounds(ItemBoundsPortion.Entire).Bottom - 1);
-
-                    // use 0 instead of e.X so that you don't have to keep inside the columns while dragging
-                    ListViewItem itemOver = this.GetItemAt(0, lastItemBottom);
-
-                    if (itemOver == null)
-                        return;
-
-                    Rectangle rc = itemOver.GetBounds(ItemBoundsPortion.Entire);
-
-                    // find out if we insert before or after the item the mouse is over
-                    bool insertBefore;
-                    if (e.Y < rc.Top + (rc.Height / 2))
-                    {
-                        insertBefore = true;
-                    }
-                    else
-                    {
-                        insertBefore = false;
-                    }
-
-                    if (_itemDnD != itemOver) // if we dropped the item on itself, nothing is to be done
-                    {
-                        if (insertBefore)
-                        {
-                            this.Items.Remove(_itemDnD);
-                            this.Items.Insert(itemOver.Index, _itemDnD);
-                        }
-                        else
-                        {
-                            this.Items.Remove(_itemDnD);
-                            this.Items.Insert(itemOver.Index + 1, _itemDnD);
-                        }
-                    }
-
-                    // clear the insertion line
-                    this.LineAfter =
-                    this.LineBefore = -1;
-
-                    this.Invalidate();
-
-                }
-                finally
-                {
-                    // finish drag&drop operation
-                    _itemDnD = null;
-                    Cursor = Cursors.Default;
-                }
-            }
-
-            base.OnMouseUp(e);
-        }
-
-        protected override void OnGotFocus(EventArgs e)
-        {
-            _hasFocus = true;
-
-            base.OnGotFocus(e);
-        }
-
-        protected override void OnLostFocus(EventArgs e)
-        {
-            _hasFocus = false;
-
-            base.OnLostFocus(e);
-        }
-
-        protected override void OnMouseEnter(EventArgs e)
-        {
-            base.OnMouseEnter(e);
-        }
-
-        protected override void OnMouseMove(MouseEventArgs e)
-        {
-            if (_enableDragDrop)
-            {
-                if (_itemDnD == null)
-                    return;
-
-                // Show the user that a drag operation is happening
-                Cursor = Cursors.Hand;
-
-                // calculate the bottom of the last item in the LV so that you don't have to stop your drag at the last item
-                int lastItemBottom = Math.Min(e.Y, this.Items[this.Items.Count - 1].GetBounds(ItemBoundsPortion.Entire).Bottom - 1);
-
-                // use 0 instead of e.X so that you don't have to keep inside the columns while dragging
-                ListViewItem itemOver = this.GetItemAt(0, lastItemBottom);
-
-                if (itemOver == null)
-                    return;
-
-                Rectangle rc = itemOver.GetBounds(ItemBoundsPortion.Entire);
-                if (e.Y < rc.Top + (rc.Height / 2))
-                {
-                    this.LineBefore = itemOver.Index;
-                    this.LineAfter = -1;
-                }
-                else
-                {
-                    this.LineBefore = -1;
-                    this.LineAfter = itemOver.Index;
-                }
-
-                // invalidate the LV so that the insertion line is shown
-                Invalidate();
-            }
-            base.OnMouseMove(e);
-        }
-
-        protected override void OnItemMouseHover(ListViewItemMouseHoverEventArgs e)
-        {
-            base.OnItemMouseHover(e);
-        }
-
-        protected override void OnColumnClick(ColumnClickEventArgs e)
-        {
-            base.OnColumnClick(e);
-
-            if (_enableSorting == true)
-            {
-                // Determine if clicked column is already the column that is being sorted.
-                if (e.Column == lvwColumnSorter.SortColumn)
-                {
-                    // Reverse the current sort direction for this column.
-                    if (lvwColumnSorter.Order == SortOrder.Ascending)
-                    {
-                        lvwColumnSorter.Order = SortOrder.Descending;
-                    }
-                    else
-                    {
-                        lvwColumnSorter.Order = SortOrder.Ascending;
-                    }
-                }
-                else
-                {
-                    // Set the column number that is to be sorted; default to ascending.
-                    lvwColumnSorter.SortColumn = e.Column;
-                    lvwColumnSorter.Order = SortOrder.Ascending;
-                }
-
-                //set info for sort image
-                //CleanColumnsTag();
-                //this.Columns[e.Column].Tag = lvwColumnSorter.Order;
-
-                // Perform the sort with these new sort options.
-                this.Sort();
-            }
-        }
-
-        [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
-        protected override void WndProc(ref Message m)
-        {
-            //To avoid errors on designer
-            if (!DesignMode)
-            {
-                if (_autoSizeLastColumn)
-                {
-                    // if the control is in details view mode and columns
-                    // have been added, then intercept the WM_PAINT message
-                    // and reset the last column width to fill the list view
-                    switch (m.Msg)
-                    {
-                        case InternalWIN32.WM_PAINT:
-                            if (this.View == View.Details && this.Columns.Count > 0)
-                                this.Columns[this.Columns.Count - 1].Width = -2;
-                            for (int i = 0; i < this.Columns.Count - 1; i++)
-                            {
-                                this.Columns[i].Width = this.Columns[i].Width;
-                            }
-                            if (_enableDragDrop)
-                            {
-                                if (LineBefore >= 0 && LineBefore < Items.Count)
-                                {
-                                    Rectangle rc = Items[LineBefore].GetBounds(ItemBoundsPortion.Entire);
-                                    DrawInsertionLine(rc.Left, rc.Right, rc.Top);
-                                }
-                                if (LineAfter >= 0 && LineBefore < Items.Count)
-                                {
-                                    Rectangle rc = Items[LineAfter].GetBounds(ItemBoundsPortion.Entire);
-                                    DrawInsertionLine(rc.Left, rc.Right, rc.Bottom);
-                                }
-                            }
-                            break;
-
-                        case InternalWIN32.WM_NCHITTEST:
-                            //DRAWITEMSTRUCT dis = (DRAWITEMSTRUCT)Marshal.PtrToStructure(message.LParam, typeof(DRAWITEMSTRUCT));
-
-                            //ColumnHeader ch = this.Columns[dis.itemID];
-                            break;
-                    }
-
-                }
-            }
-
-            // pass messages on to the base control for processing
-            base.WndProc(ref m);
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                if (_mementoContent != null)
-                {
-                    _mementoContent.Dispose();
-                    _mementoContent = null;
-                }
-
-                if (_mementoBack1 != null)
-                {
-                    _mementoBack1.Dispose();
-                    _mementoBack1 = null;
-                }
-
-                if (_mementoBack2 != null)
-                {
-                    _mementoBack2.Dispose();
-                    _mementoBack2 = null;
-                }
-
-                // Unhook from the palette events
-                if (_palette != null)
-                {
-                    _palette.PalettePaint -= new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
-                    _palette = null;
-                }
-
-                // Unhook from the static events, otherwise we cannot be garbage collected
-                KryptonManager.GlobalPaletteChanged -= new EventHandler(OnGlobalPaletteChanged);
-            }
-
-            base.Dispose(disposing);
-        }
-
-        protected override void OnNotifyMessage(Message m)
-        {
-            //Filter out the WM_ERASEBKGND message
-            if (m.Msg != 0x14)
-            {
-                base.OnNotifyMessage(m);
-            }
-        }
-        #endregion
-
-        #region Methods
+        #region   "   Helper Subs   "
         public StringAlignment ConvertHorizontalAlignmentToStringAlignment(HorizontalAlignment input)
         {
 
@@ -1225,10 +982,280 @@ namespace Krypton.Toolkit.Extended.Base
 
             return result;
         }
+
+        #endregion
+
+        #region   "   Others Ovverides   "
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
+        }
+
+        // The LVItem being dragged
+        private ListViewItem _itemDnD = null;
+
+        protected override void OnMouseDown(MouseEventArgs e)
+        {
+            if (_enableDragDrop)
+            {
+                _itemDnD = this.GetItemAt(e.X, e.Y);
+                // if the LV is still empty, no item will be found anyway, so we don't have to consider this case
+            }
+            base.OnMouseDown(e);
+        }
+        protected override void OnMouseUp(MouseEventArgs e)
+        {
+            if (_enableDragDrop)
+            {
+                if (_itemDnD == null)
+                    return;
+
+                try
+                {
+                    // calculate the bottom of the last item in the LV so that you don't have to stop your drag at the last item
+                    int lastItemBottom = Math.Min(e.Y, this.Items[this.Items.Count - 1].GetBounds(ItemBoundsPortion.Entire).Bottom - 1);
+
+                    // use 0 instead of e.X so that you don't have to keep inside the columns while dragging
+                    ListViewItem itemOver = this.GetItemAt(0, lastItemBottom);
+
+                    if (itemOver == null)
+                        return;
+
+                    Rectangle rc = itemOver.GetBounds(ItemBoundsPortion.Entire);
+
+                    // find out if we insert before or after the item the mouse is over
+                    bool insertBefore;
+                    if (e.Y < rc.Top + (rc.Height / 2))
+                    {
+                        insertBefore = true;
+                    }
+                    else
+                    {
+                        insertBefore = false;
+                    }
+
+                    if (_itemDnD != itemOver) // if we dropped the item on itself, nothing is to be done
+                    {
+                        if (insertBefore)
+                        {
+                            this.Items.Remove(_itemDnD);
+                            this.Items.Insert(itemOver.Index, _itemDnD);
+                        }
+                        else
+                        {
+                            this.Items.Remove(_itemDnD);
+                            this.Items.Insert(itemOver.Index + 1, _itemDnD);
+                        }
+                    }
+
+                    // clear the insertion line
+                    this.LineAfter =
+                    this.LineBefore = -1;
+
+                    this.Invalidate();
+
+                }
+                finally
+                {
+                    // finish drag&drop operation
+                    _itemDnD = null;
+                    Cursor = Cursors.Default;
+                }
+            }
+
+            base.OnMouseUp(e);
+        }
+
+        protected override void OnGotFocus(EventArgs e)
+        {
+            _hasFocus = true;
+            base.OnGotFocus(e);
+        }
+        protected override void OnLostFocus(EventArgs e)
+        {
+            _hasFocus = false;
+            base.OnLostFocus(e);
+            //Invalidate();
+        }
+        protected override void OnMouseEnter(EventArgs e)
+        {
+            base.OnMouseEnter(e);
+            //Invalidate();
+        }
+        protected override void OnMouseMove(MouseEventArgs e)
+        {
+            if (_enableDragDrop)
+            {
+                if (_itemDnD == null)
+                    return;
+
+                // Show the user that a drag operation is happening
+                Cursor = Cursors.Hand;
+
+                // calculate the bottom of the last item in the LV so that you don't have to stop your drag at the last item
+                int lastItemBottom = Math.Min(e.Y, this.Items[this.Items.Count - 1].GetBounds(ItemBoundsPortion.Entire).Bottom - 1);
+
+                // use 0 instead of e.X so that you don't have to keep inside the columns while dragging
+                ListViewItem itemOver = this.GetItemAt(0, lastItemBottom);
+
+                if (itemOver == null)
+                    return;
+
+                Rectangle rc = itemOver.GetBounds(ItemBoundsPortion.Entire);
+                if (e.Y < rc.Top + (rc.Height / 2))
+                {
+                    this.LineBefore = itemOver.Index;
+                    this.LineAfter = -1;
+                }
+                else
+                {
+                    this.LineBefore = -1;
+                    this.LineAfter = itemOver.Index;
+                }
+
+                // invalidate the LV so that the insertion line is shown
+                Invalidate();
+            }
+            base.OnMouseMove(e);
+        }
+        protected override void OnItemMouseHover(ListViewItemMouseHoverEventArgs e)
+        {
+            base.OnItemMouseHover(e);
+        }
+
+        protected override void OnColumnClick(ColumnClickEventArgs e)
+        {
+            base.OnColumnClick(e);
+
+            if (_enableSorting == true)
+            {
+                // Determine if clicked column is already the column that is being sorted.
+                if (e.Column == lvwColumnSorter.SortColumn)
+                {
+                    // Reverse the current sort direction for this column.
+                    if (lvwColumnSorter.Order == SortOrder.Ascending)
+                    {
+                        lvwColumnSorter.Order = SortOrder.Descending;
+                    }
+                    else
+                    {
+                        lvwColumnSorter.Order = SortOrder.Ascending;
+                    }
+                }
+                else
+                {
+                    // Set the column number that is to be sorted; default to ascending.
+                    lvwColumnSorter.SortColumn = e.Column;
+                    lvwColumnSorter.Order = SortOrder.Ascending;
+                }
+
+                //set info for sort image
+                //CleanColumnsTag();
+                //this.Columns[e.Column].Tag = lvwColumnSorter.Order;
+
+                // Perform the sort with these new sort options.
+                this.Sort();
+            }
+        }
+
+        [PermissionSetAttribute(SecurityAction.Demand, Name = "FullTrust")]
+        protected override void WndProc(ref Message message)
+        {
+            //To avoid errors on designer
+            if (!DesignMode)
+            {
+                if (_autoSizeLastColumn)
+                {
+                    // if the control is in details view mode and columns
+                    // have been added, then intercept the WM_PAINT message
+                    // and reset the last column width to fill the list view
+                    switch (message.Msg)
+                    {
+                        case Win32.WM_PAINT:
+                            if (this.View == View.Details && this.Columns.Count > 0)
+                                this.Columns[this.Columns.Count - 1].Width = -2;
+                            for (int i = 0; i < this.Columns.Count - 1; i++)
+                            {
+                                this.Columns[i].Width = this.Columns[i].Width;
+                            }
+                            if (_enableDragDrop)
+                            {
+                                if (LineBefore >= 0 && LineBefore < Items.Count)
+                                {
+                                    Rectangle rc = Items[LineBefore].GetBounds(ItemBoundsPortion.Entire);
+                                    DrawInsertionLine(rc.Left, rc.Right, rc.Top);
+                                }
+                                if (LineAfter >= 0 && LineBefore < Items.Count)
+                                {
+                                    Rectangle rc = Items[LineAfter].GetBounds(ItemBoundsPortion.Entire);
+                                    DrawInsertionLine(rc.Left, rc.Right, rc.Bottom);
+                                }
+                            }
+                            break;
+
+                        case Win32.WM_NCHITTEST:
+                            //DRAWITEMSTRUCT dis = (DRAWITEMSTRUCT)Marshal.PtrToStructure(message.LParam, typeof(DRAWITEMSTRUCT));
+
+                            //ColumnHeader ch = this.Columns[dis.itemID];
+                            break;
+                    }
+
+                }
+            }
+
+            // pass messages on to the base control for processing
+            base.WndProc(ref message);
+
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                if (_mementoContent != null)
+                {
+                    _mementoContent.Dispose();
+                    _mementoContent = null;
+                }
+
+                if (_mementoBack1 != null)
+                {
+                    _mementoBack1.Dispose();
+                    _mementoBack1 = null;
+                }
+
+                if (_mementoBack2 != null)
+                {
+                    _mementoBack2.Dispose();
+                    _mementoBack2 = null;
+                }
+
+                // Unhook from the palette events
+                if (_palette != null)
+                {
+                    _palette.PalettePaint -= new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                    _palette = null;
+                }
+
+                // Unhook from the static events, otherwise we cannot be garbage collected
+                KryptonManager.GlobalPaletteChanged -= new EventHandler(OnGlobalPaletteChanged);
+            }
+
+            base.Dispose(disposing);
+        }
+
+        protected override void OnNotifyMessage(Message m)
+        {
+            //Filter out the WM_ERASEBKGND message
+            if (m.Msg != 0x14)
+            {
+                base.OnNotifyMessage(m);
+            }
+        }
         #endregion
 
         #region Krypton
-        private void InitColours()
+        private void InitColors()
         {
             //set colors
             if (_persistentColors == false)
@@ -1250,7 +1277,6 @@ namespace Krypton.Toolkit.Extended.Base
             _alternateRowColor = _palette.ColorTable.ToolStripContentPanelGradientBegin;
         }
 
-        //Krypton Palette Events
         private void OnGlobalPaletteChanged(object sender, EventArgs e)
         {
             // Unhook events from old palette
@@ -1265,7 +1291,7 @@ namespace Krypton.Toolkit.Extended.Base
             if (_palette != null)
             {
                 _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
-                InitColours();
+                InitColors();
             }
 
             // Change of palette means we should repaint to show any changes

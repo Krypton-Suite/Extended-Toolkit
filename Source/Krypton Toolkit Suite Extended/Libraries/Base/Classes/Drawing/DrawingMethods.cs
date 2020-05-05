@@ -8,6 +8,14 @@ namespace Krypton.Toolkit.Extended.Base
     public static class DrawingMethods
     {
         #region ... DrawMethods ...
+        /// <summary>Draws the linear gradient two parts.</summary>
+        /// <param name="g">The g.</param>
+        /// <param name="rect">The rect.</param>
+        /// <param name="LightColor">Color of the light.</param>
+        /// <param name="MiddleColor1">The middle color1.</param>
+        /// <param name="MiddleColor2">The middle color2.</param>
+        /// <param name="DarkColor">Color of the dark.</param>
+        /// <param name="Angle">The angle.</param>
         public static void DrawLinearGradientTwoParts(Graphics g, Rectangle rect, Color LightColor, Color MiddleColor1, Color MiddleColor2, Color DarkColor, float Angle)
         {
             Rectangle upbounds = new Rectangle();

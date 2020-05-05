@@ -70,7 +70,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Exten
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Base", "Libraries\Base\Krypton.Toolkit.Suite.Extended.Base.csproj", "{CE2BA44A-F0BD-4AA4-A5EB-E3C6354DD529}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton.Toolkit.Suite.Extended.Navi.Suite", "Libraries\Navi Suite\Krypton.Toolkit.Suite.Extended.Navi.Suite.csproj", "{620BA053-114C-439F-832F-69D76CED69BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Navi.Suite", "Libraries\Navi Suite\Krypton.Toolkit.Suite.Extended.Navi.Suite.csproj", "{620BA053-114C-439F-832F-69D76CED69BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp", "TestApp\TestApp.csproj", "{79893524-B84B-417A-8D13-52732E62A416}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -166,6 +168,10 @@ Global
 		{620BA053-114C-439F-832F-69D76CED69BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{620BA053-114C-439F-832F-69D76CED69BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{620BA053-114C-439F-832F-69D76CED69BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79893524-B84B-417A-8D13-52732E62A416}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79893524-B84B-417A-8D13-52732E62A416}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79893524-B84B-417A-8D13-52732E62A416}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79893524-B84B-417A-8D13-52732E62A416}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

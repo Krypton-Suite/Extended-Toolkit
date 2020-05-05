@@ -52,6 +52,10 @@
   </PropertyGroup>
 
   <PropertyGroup>
+    <NoWarn>NU1701</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup>
     <AssemblyVersion>5.500.2005.1</AssemblyVersion>
     <FileVersion>5.500.2005.1</FileVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>

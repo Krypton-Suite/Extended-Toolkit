@@ -3823,6 +3823,26 @@ namespace Krypton.Extended.Toolkit.Resources.Images {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap VistaChecked {
+            get {
+                object obj = ResourceManager.GetObject("VistaChecked", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap VistaNotChecked {
+            get {
+                object obj = ResourceManager.GetObject("VistaNotChecked", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Warning {
             get {
                 object obj = ResourceManager.GetObject("Warning", resourceCulture);
@@ -3887,6 +3907,26 @@ namespace Krypton.Extended.Toolkit.Resources.Images {
             get {
                 object obj = ResourceManager.GetObject("WizardHat", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap XPChecked {
+            get {
+                object obj = ResourceManager.GetObject("XPChecked", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap XPNotChecked {
+            get {
+                object obj = ResourceManager.GetObject("XPNotChecked", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }
