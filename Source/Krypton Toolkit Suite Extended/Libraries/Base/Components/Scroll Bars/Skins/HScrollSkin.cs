@@ -237,7 +237,7 @@ namespace Krypton.Toolkit.Extended.Base
         #region "   Horizontal Scroll   "
         private void HScrollBar1_miScroll(object sender, ScrollEventArgs e)
         {
-            if (_win.GetType() == typeof(System.Windows.Forms.ListView) || (_win.GetType() == typeof(KryptonListViewTest)))
+            if (_win.GetType() == typeof(System.Windows.Forms.ListView) || (_win.GetType() == typeof(KryptonListView)))
             {
                 ListView listView1 = (ListView)_win;
 
@@ -450,7 +450,7 @@ namespace Krypton.Toolkit.Extended.Base
                         }
                     }
                 }
-                if (_win.GetType() == typeof(System.Windows.Forms.ListView) || (_win.GetType() == typeof(KryptonListViewTest)))
+                if (_win.GetType() == typeof(System.Windows.Forms.ListView) || (_win.GetType() == typeof(KryptonListView)))
                 {
                     ListView listView1 = (ListView)_win;
 
