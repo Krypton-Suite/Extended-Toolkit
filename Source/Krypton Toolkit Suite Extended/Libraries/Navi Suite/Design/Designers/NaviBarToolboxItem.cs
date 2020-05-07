@@ -1,7 +1,9 @@
 ﻿using System;
 using System.ComponentModel;
+using System.ComponentModel.Design;
 using System.Drawing.Design;
 using System.Runtime.Serialization;
+using System.Security.Permissions;
 
 namespace Krypton.Toolkit.Extended.Navi.Suite
 {
