@@ -74,7 +74,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Exten
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestApp", "C:\Users\Peter William Wagner\source\repos\TestApp\TestApp.csproj", "{2BE8C569-AB69-41E1-9879-CA81F7FE2C6E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton.Toolkit.Suite.Extended.Shell", "Shared\Shell\Krypton.Toolkit.Suite.Extended.Shell.csproj", "{C907AD61-4063-4A4B-AFE8-E4A0F6A8EA8B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Shell", "Shared\Shell\Krypton.Toolkit.Suite.Extended.Shell.csproj", "{C907AD61-4063-4A4B-AFE8-E4A0F6A8EA8B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
