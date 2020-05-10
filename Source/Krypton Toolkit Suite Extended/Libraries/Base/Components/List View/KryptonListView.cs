@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Extended.Base
 {
-    [System.Drawing.ToolboxBitmapAttribute(typeof(System.Windows.Forms.ListView))]
+    [ToolboxBitmap(typeof(ListView))]
     public class KryptonListView : ListView
     {
         #region   "   Members   "
