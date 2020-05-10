@@ -80,6 +80,8 @@
     <PackageLicenseExpression></PackageLicenseExpression>
     <Version>6.0.2006</Version>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>Krypton Extended Toolkit.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
 </Project>
