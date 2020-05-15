@@ -49,8 +49,8 @@
     <OutputPath>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Common\</OutputPath>
     <AssemblyVersion>6.0.2006</AssemblyVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>6.0.2006</Version>
-    <FileVersion>6.0.2006</FileVersion>
+    <Version>5.550.2006</Version>
+    <FileVersion>5.550.2006.0</FileVersion>
     <Description>Contains common logic.</Description>
   </PropertyGroup>
 

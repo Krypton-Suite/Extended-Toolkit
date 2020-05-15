@@ -104,4 +104,17 @@
         NOTOALL,
         CANCEL
     }
+
+    public enum KryptonMemoryBoxIcon
+    {
+        CUSTOM,
+        OK,
+        ERROR,
+        EXCLAMATION,
+        INFORMATION,
+        QUESTION,
+        NONE,
+        STOP,
+        HAND
+    }
 }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Krypton.Toolkit.Extended.Dialogs.Resources;
+using System;
+using System.Drawing;
 
 namespace Krypton.Toolkit.Extended.Dialogs
 {
@@ -124,7 +126,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
         #endregion
 
         #region Variables
-        private KryptonMemoryBoxDialogResult _defaultDialogResult;
+        private KryptonMemoryBoxDialogResult _defaultDialogResult, _lastResult;
         #endregion
 
         #region Property
@@ -132,7 +134,10 @@ namespace Krypton.Toolkit.Extended.Dialogs
         #endregion
 
         #region Constructors
-
+        public KryptonMemoryBox()
+        {
+            InitializeComponent();
+        }
         #endregion
 
         #region Methods
@@ -176,6 +181,71 @@ namespace Krypton.Toolkit.Extended.Dialogs
                 case KryptonMemoryBoxDialogResult.CANCEL:
                     AcceptButton = kbtnCancel;
                     break;
+            }
+        }
+
+        public KryptonMemoryBoxDialogResult ShowKryptonMemoryBoxDialogResult()
+        {
+            _defaultDialogResult = KryptonMemoryBoxDialogResult.CANCEL;
+
+            if (_lastResult == KryptonMemoryBoxDialogResult.NOTOALL)
+            {
+                _defaultDialogResult = KryptonMemoryBoxDialogResult.NO;
+            }
+            else if (_lastResult == KryptonMemoryBoxDialogResult.YESTOALL)
+            {
+                _defaultDialogResult = KryptonMemoryBoxDialogResult.YES;
+            }
+            else
+            {
+                base.ShowDialog();
+            }
+
+            return _defaultDialogResult;
+        }
+
+        public KryptonMemoryBoxDialogResult ShowKryptonMemoryBoxDialogResult(string title, string message, KryptonMemoryBoxIcon icon = KryptonMemoryBoxIcon.NONE, string iconPath = null)
+        {
+            Text = title;
+
+            klblBody.Text = message;
+
+            UpdateUI();
+
+            switch (icon)
+            {
+                case KryptonMemoryBoxIcon.CUSTOM:
+                    pbxIcon.Image = new Bitmap(iconPath);
+                    break;
+                case KryptonMemoryBoxIcon.OK:
+                    pbxIcon.Image = InputBoxResources.Input_Box_Ok_64_x_64;
+                    break;
+                case KryptonMemoryBoxIcon.ERROR:
+                    break;
+                case KryptonMemoryBoxIcon.EXCLAMATION:
+                    break;
+                case KryptonMemoryBoxIcon.INFORMATION:
+                    break;
+                case KryptonMemoryBoxIcon.QUESTION:
+                    break;
+                case KryptonMemoryBoxIcon.NONE:
+                    break;
+                case KryptonMemoryBoxIcon.STOP:
+                    break;
+                case KryptonMemoryBoxIcon.HAND:
+                    break;
+            }
+
+            return ShowKryptonMemoryBoxDialogResult();
+        }
+
+        private void UpdateUI()
+        {
+            if (pbxIcon.Image != null)
+            {
+                pbxIcon.Visible = true;
+
+                klblBody.Size = new Size();
             }
         }
         #endregion

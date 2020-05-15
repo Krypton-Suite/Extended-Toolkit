@@ -15,9 +15,9 @@
 
   <PropertyGroup>
     <AssemblyVersion>6.0.2006</AssemblyVersion>
-    <FileVersion>6.0.2006</FileVersion>
+    <FileVersion>5.550.2006.0</FileVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>6.0.2006</Version>
+    <Version>5.550.2006</Version>
   </PropertyGroup>
 
   <ItemGroup>

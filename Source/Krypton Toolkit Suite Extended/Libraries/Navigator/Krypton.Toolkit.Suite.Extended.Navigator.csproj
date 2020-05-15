@@ -7,7 +7,7 @@
     <RootNamespace>Krypton.Toolkit.Extended.Navigator</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>6.0.2006</Version>
+    <Version>5.550.2006</Version>
   </PropertyGroup>
 
   <ItemGroup>
