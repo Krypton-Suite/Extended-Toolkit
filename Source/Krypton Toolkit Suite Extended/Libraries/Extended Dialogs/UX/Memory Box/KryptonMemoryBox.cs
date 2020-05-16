@@ -89,9 +89,9 @@ namespace Krypton.Toolkit.Extended.Dialogs
             // klblBody
             // 
             this.klblBody.AutoSize = false;
-            this.klblBody.Location = new System.Drawing.Point(118, 13);
+            this.klblBody.Location = new System.Drawing.Point(82, 13);
             this.klblBody.Name = "klblBody";
-            this.klblBody.Size = new System.Drawing.Size(368, 211);
+            this.klblBody.Size = new System.Drawing.Size(404, 211);
             this.klblBody.TabIndex = 2;
             this.klblBody.Values.Text = null;
             // 
@@ -100,7 +100,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.pbxIcon.BackColor = System.Drawing.Color.Transparent;
             this.pbxIcon.Location = new System.Drawing.Point(12, 12);
             this.pbxIcon.Name = "pbxIcon";
-            this.pbxIcon.Size = new System.Drawing.Size(100, 100);
+            this.pbxIcon.Size = new System.Drawing.Size(64, 64);
             this.pbxIcon.TabIndex = 1;
             this.pbxIcon.TabStop = false;
             // 
@@ -217,8 +217,6 @@ namespace Krypton.Toolkit.Extended.Dialogs
 
             klblBody.Text = message;
 
-            UpdateUI();
-
             switch (icon)
             {
                 case KryptonMemoryBoxIcon.CUSTOM:
@@ -228,18 +226,27 @@ namespace Krypton.Toolkit.Extended.Dialogs
                     pbxIcon.Image = InputBoxResources.Input_Box_Ok_64_x_64;
                     break;
                 case KryptonMemoryBoxIcon.ERROR:
+                    pbxIcon.Image = InputBoxResources.Input_Box_Critical_64_x_64;
                     break;
                 case KryptonMemoryBoxIcon.EXCLAMATION:
+                    pbxIcon.Image = InputBoxResources.Input_Box_Warning_64_x_58;
                     break;
                 case KryptonMemoryBoxIcon.INFORMATION:
+                    pbxIcon.Image = InputBoxResources.Input_Box_Information_64_x_64;
                     break;
                 case KryptonMemoryBoxIcon.QUESTION:
+                    pbxIcon.Image = InputBoxResources.Input_Box_Question_64_x_64;
                     break;
                 case KryptonMemoryBoxIcon.NONE:
+                    pbxIcon.Image = null;
+
+                    UpdateUI();
                     break;
                 case KryptonMemoryBoxIcon.STOP:
+                    pbxIcon.Image = InputBoxResources.Input_Box_Stop_64_x_64;
                     break;
                 case KryptonMemoryBoxIcon.HAND:
+                    pbxIcon.Image = InputBoxResources.Input_Box_Hand_64_x_64;
                     break;
             }
 
@@ -252,7 +259,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             {
                 pbxIcon.Visible = true;
 
-                klblBody.Size = new Size(367, 211);
+                klblBody.Size = new Size(404, 211);
             }
             else
             {
