@@ -89,9 +89,9 @@ namespace Krypton.Toolkit.Extended.Dialogs
             // klblBody
             // 
             this.klblBody.AutoSize = false;
-            this.klblBody.Location = new System.Drawing.Point(119, 13);
+            this.klblBody.Location = new System.Drawing.Point(118, 13);
             this.klblBody.Name = "klblBody";
-            this.klblBody.Size = new System.Drawing.Size(367, 211);
+            this.klblBody.Size = new System.Drawing.Size(368, 211);
             this.klblBody.TabIndex = 2;
             this.klblBody.Values.Text = null;
             // 
@@ -244,7 +244,13 @@ namespace Krypton.Toolkit.Extended.Dialogs
             {
                 pbxIcon.Visible = true;
 
-                klblBody.Size = new Size();
+                klblBody.Size = new Size(367, 211);
+            }
+            else
+            {
+                pbxIcon.Visible = false;
+
+                klblBody.Size = new Size(474, 211);
             }
         }
         #endregion
