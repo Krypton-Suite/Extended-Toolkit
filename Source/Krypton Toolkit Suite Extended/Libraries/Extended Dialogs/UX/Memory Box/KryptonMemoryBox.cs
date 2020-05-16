@@ -183,7 +183,9 @@ namespace Krypton.Toolkit.Extended.Dialogs
             }
         }
 
-        public KryptonMemoryBoxDialogResult ShowKryptonMemoryBoxDialogResult()
+        /// <summary>Shows the krypton memory box dialog result.</summary>
+        /// <returns></returns>
+        private KryptonMemoryBoxDialogResult ShowKryptonMemoryBoxDialogResult()
         {
             _defaultDialogResult = KryptonMemoryBoxDialogResult.CANCEL;
 
@@ -203,6 +205,12 @@ namespace Krypton.Toolkit.Extended.Dialogs
             return _defaultDialogResult;
         }
 
+        /// <summary>Shows the krypton memory box dialog result.</summary>
+        /// <param name="title">The title.</param>
+        /// <param name="message">The message.</param>
+        /// <param name="icon">The icon.</param>
+        /// <param name="iconPath">The icon path.</param>
+        /// <returns></returns>
         public KryptonMemoryBoxDialogResult ShowKryptonMemoryBoxDialogResult(string title, string message, KryptonMemoryBoxIcon icon = KryptonMemoryBoxIcon.NONE, string iconPath = null)
         {
             Text = title;
