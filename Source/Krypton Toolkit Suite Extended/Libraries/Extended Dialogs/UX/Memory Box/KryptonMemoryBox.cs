@@ -18,15 +18,14 @@ namespace Krypton.Toolkit.Extended.Dialogs
 
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KryptonMemoryBox));
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
-            this.pbxIcon = new System.Windows.Forms.PictureBox();
-            this.klblBody = new Krypton.Toolkit.KryptonLabel();
-            this.kbtnYes = new Krypton.Toolkit.KryptonButton();
-            this.kbtnCancel = new Krypton.Toolkit.KryptonButton();
-            this.kbtnNo = new Krypton.Toolkit.KryptonButton();
-            this.kbtnNoToAll = new Krypton.Toolkit.KryptonButton();
             this.kbtnYesToAll = new Krypton.Toolkit.KryptonButton();
+            this.kbtnNoToAll = new Krypton.Toolkit.KryptonButton();
+            this.kbtnNo = new Krypton.Toolkit.KryptonButton();
+            this.kbtnCancel = new Krypton.Toolkit.KryptonButton();
+            this.kbtnYes = new Krypton.Toolkit.KryptonButton();
+            this.klblBody = new Krypton.Toolkit.KryptonLabel();
+            this.pbxIcon = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxIcon)).BeginInit();
@@ -47,46 +46,13 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kryptonPanel1.Size = new System.Drawing.Size(501, 271);
             this.kryptonPanel1.TabIndex = 0;
             // 
-            // pbxIcon
+            // kbtnYesToAll
             // 
-            this.pbxIcon.BackColor = System.Drawing.Color.Transparent;
-            this.pbxIcon.Location = new System.Drawing.Point(12, 12);
-            this.pbxIcon.Name = "pbxIcon";
-            this.pbxIcon.Size = new System.Drawing.Size(100, 100);
-            this.pbxIcon.TabIndex = 1;
-            this.pbxIcon.TabStop = false;
-            // 
-            // klblBody
-            // 
-            this.klblBody.Location = new System.Drawing.Point(119, 13);
-            this.klblBody.Name = "klblBody";
-            this.klblBody.Size = new System.Drawing.Size(318, 211);
-            this.klblBody.TabIndex = 2;
-            this.klblBody.Values.Text = resources.GetString("kryptonLabel1.Values.Text");
-            // 
-            // kbtnYes
-            // 
-            this.kbtnYes.Location = new System.Drawing.Point(12, 234);
-            this.kbtnYes.Name = "kbtnYes";
-            this.kbtnYes.Size = new System.Drawing.Size(90, 25);
-            this.kbtnYes.TabIndex = 3;
-            this.kbtnYes.Values.Text = "&Yes";
-            // 
-            // kbtnCancel
-            // 
-            this.kbtnCancel.Location = new System.Drawing.Point(396, 234);
-            this.kbtnCancel.Name = "kbtnCancel";
-            this.kbtnCancel.Size = new System.Drawing.Size(90, 25);
-            this.kbtnCancel.TabIndex = 4;
-            this.kbtnCancel.Values.Text = "&Cancel";
-            // 
-            // kbtnNo
-            // 
-            this.kbtnNo.Location = new System.Drawing.Point(204, 234);
-            this.kbtnNo.Name = "kbtnNo";
-            this.kbtnNo.Size = new System.Drawing.Size(90, 25);
-            this.kbtnNo.TabIndex = 5;
-            this.kbtnNo.Values.Text = "&No";
+            this.kbtnYesToAll.Location = new System.Drawing.Point(108, 234);
+            this.kbtnYesToAll.Name = "kbtnYesToAll";
+            this.kbtnYesToAll.Size = new System.Drawing.Size(90, 25);
+            this.kbtnYesToAll.TabIndex = 7;
+            this.kbtnYesToAll.Values.Text = "Ye&s to All";
             // 
             // kbtnNoToAll
             // 
@@ -96,13 +62,47 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kbtnNoToAll.TabIndex = 6;
             this.kbtnNoToAll.Values.Text = "N&o to All";
             // 
-            // kbtnYesToAll
+            // kbtnNo
             // 
-            this.kbtnYesToAll.Location = new System.Drawing.Point(108, 234);
-            this.kbtnYesToAll.Name = "kbtnYesToAll";
-            this.kbtnYesToAll.Size = new System.Drawing.Size(90, 25);
-            this.kbtnYesToAll.TabIndex = 7;
-            this.kbtnYesToAll.Values.Text = "Ye&s to All";
+            this.kbtnNo.Location = new System.Drawing.Point(204, 234);
+            this.kbtnNo.Name = "kbtnNo";
+            this.kbtnNo.Size = new System.Drawing.Size(90, 25);
+            this.kbtnNo.TabIndex = 5;
+            this.kbtnNo.Values.Text = "&No";
+            // 
+            // kbtnCancel
+            // 
+            this.kbtnCancel.Location = new System.Drawing.Point(396, 234);
+            this.kbtnCancel.Name = "kbtnCancel";
+            this.kbtnCancel.Size = new System.Drawing.Size(90, 25);
+            this.kbtnCancel.TabIndex = 4;
+            this.kbtnCancel.Values.Text = "&Cancel";
+            // 
+            // kbtnYes
+            // 
+            this.kbtnYes.Location = new System.Drawing.Point(12, 234);
+            this.kbtnYes.Name = "kbtnYes";
+            this.kbtnYes.Size = new System.Drawing.Size(90, 25);
+            this.kbtnYes.TabIndex = 3;
+            this.kbtnYes.Values.Text = "&Yes";
+            // 
+            // klblBody
+            // 
+            this.klblBody.AutoSize = false;
+            this.klblBody.Location = new System.Drawing.Point(119, 13);
+            this.klblBody.Name = "klblBody";
+            this.klblBody.Size = new System.Drawing.Size(367, 211);
+            this.klblBody.TabIndex = 2;
+            this.klblBody.Values.Text = null;
+            // 
+            // pbxIcon
+            // 
+            this.pbxIcon.BackColor = System.Drawing.Color.Transparent;
+            this.pbxIcon.Location = new System.Drawing.Point(12, 12);
+            this.pbxIcon.Name = "pbxIcon";
+            this.pbxIcon.Size = new System.Drawing.Size(100, 100);
+            this.pbxIcon.TabIndex = 1;
+            this.pbxIcon.TabStop = false;
             // 
             // KryptonMemoryBox
             // 
@@ -118,7 +118,6 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.Load += new System.EventHandler(this.KryptonMemoryBox_Load);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
-            this.kryptonPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxIcon)).EndInit();
             this.ResumeLayout(false);
 

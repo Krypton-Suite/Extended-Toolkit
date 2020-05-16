@@ -2,30 +2,20 @@
 
   <PropertyGroup>
     <LangVersion>8.0</LangVersion>
-    <TargetFrameworks>net45;netcoreapp3.1;netcoreapp5.0</TargetFrameworks>
-    <TargetFrameworks Condition="'$(TFMs)' == 'all'">net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;netcoreapp5.0</TargetFrameworks>
-    <RootNamespace>Krypton.Toolkit.Extended.Software.Updater</RootNamespace>
+    <TargetFrameworks>net45;netcoreapp3.1;netcoreapp5.0</TargetFrameworks>    
+    <RootNamespace>Krypton.Toolkit.Suite.Extended.Zip.Extractor</RootNamespace>
+    <OutputType>WinExe</OutputType>
     <UseWindowsForms>true</UseWindowsForms>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <AssemblyName>Zip Extractor</AssemblyName>
+    <ApplicationIcon>Resources\ZipExtractor.ico</ApplicationIcon>
     <Version>5.550.2006</Version>
-    <FileVersion>5.550.2006.0</FileVersion>
-    <Description>Contains popular software update solutions such as AutoUpdater.NET, NetSparkle and SharpUpdate.</Description>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net45|AnyCPU'">
-    <DocumentationFile></DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="ILRepack.Lib.MSBuild.Task" Version="2.0.18.1" />
     <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2006" />
     <PackageReference Include="ZipStorer" Version="3.6.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="NetSparkle\" />
-    <Folder Include="SharpUpdate\" />
+    <PackageReference Include="ZipStorer64" Version="3.5.1" />
   </ItemGroup>
 
   <ItemGroup>
