@@ -39,6 +39,7 @@
 =======
 
 ## 2020-06-01 - Build 2006 - June 2020
+* Versions are now `5.550.xxxx`
 * Add preliminary support for .NET 5
 * Removed `KryptonListView` due to bug (will return at some point in the future)
 * Add `KryptonMemoryBox` a versitile alternative to `KryptonMessageBox` 
