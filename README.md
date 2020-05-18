@@ -44,7 +44,7 @@
 * Add `KryptonMemoryBox` a versitile alternative to `KryptonMessageBox` 
 * Add `Navi Suite` module
 * Add new package for popular software updaters, such as `AutoUpdater.NET`, `SharpUpdate` and `NetSparkle`
-* * Updated standard toolkit to build **6.0.2006.1**
+* Updated standard toolkit to build **6.0.2006.1**
 
 =======
 
