@@ -20,12 +20,12 @@
   <ItemGroup>
     <PackageReference Include="ILRepack.Lib.MSBuild.Task" Version="2.0.18.1" />
     <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2006" />
+    <PackageReference Include="Krypton.Toolkit.Suite.Extended.Dialogs" Version="5.500.2005.1" />
     <PackageReference Include="ZipStorer" Version="3.6.0" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="NetSparkle\" />
-    <Folder Include="SharpUpdate\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -34,12 +34,21 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Update="SharpUpdate\Language\LanguageEN.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>LanguageEN.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Update="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="SharpUpdate\Language\LanguageEN.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>LanguageEN.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 

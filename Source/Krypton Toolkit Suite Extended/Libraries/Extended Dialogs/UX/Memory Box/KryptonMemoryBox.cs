@@ -1,6 +1,7 @@
 ﻿using Krypton.Toolkit.Extended.Dialogs.Resources;
 using System;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Extended.Dialogs
 {
@@ -9,21 +10,21 @@ namespace Krypton.Toolkit.Extended.Dialogs
         #region Designer Code
         private KryptonPanel kryptonPanel1;
         private KryptonLabel klblBody;
-        private KryptonButton kbtnYesToAll;
-        private KryptonButton kbtnNoToAll;
-        private KryptonButton kbtnNo;
-        private KryptonButton kbtnCancel;
-        private KryptonButton kbtnYes;
+        private KryptonButton kbtnButtonTwo;
+        private KryptonButton kbtnButtonFour;
+        private KryptonButton kbtnButtonThree;
+        private KryptonButton kbtnButtonFive;
+        private KryptonButton kbtnButtonOne;
         private System.Windows.Forms.PictureBox pbxIcon;
 
         private void InitializeComponent()
         {
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
-            this.kbtnYesToAll = new Krypton.Toolkit.KryptonButton();
-            this.kbtnNoToAll = new Krypton.Toolkit.KryptonButton();
-            this.kbtnNo = new Krypton.Toolkit.KryptonButton();
-            this.kbtnCancel = new Krypton.Toolkit.KryptonButton();
-            this.kbtnYes = new Krypton.Toolkit.KryptonButton();
+            this.kbtnButtonTwo = new Krypton.Toolkit.KryptonButton();
+            this.kbtnButtonFour = new Krypton.Toolkit.KryptonButton();
+            this.kbtnButtonThree = new Krypton.Toolkit.KryptonButton();
+            this.kbtnButtonFive = new Krypton.Toolkit.KryptonButton();
+            this.kbtnButtonOne = new Krypton.Toolkit.KryptonButton();
             this.klblBody = new Krypton.Toolkit.KryptonLabel();
             this.pbxIcon = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
@@ -33,11 +34,11 @@ namespace Krypton.Toolkit.Extended.Dialogs
             // 
             // kryptonPanel1
             // 
-            this.kryptonPanel1.Controls.Add(this.kbtnYesToAll);
-            this.kryptonPanel1.Controls.Add(this.kbtnNoToAll);
-            this.kryptonPanel1.Controls.Add(this.kbtnNo);
-            this.kryptonPanel1.Controls.Add(this.kbtnCancel);
-            this.kryptonPanel1.Controls.Add(this.kbtnYes);
+            this.kryptonPanel1.Controls.Add(this.kbtnButtonTwo);
+            this.kryptonPanel1.Controls.Add(this.kbtnButtonFour);
+            this.kryptonPanel1.Controls.Add(this.kbtnButtonThree);
+            this.kryptonPanel1.Controls.Add(this.kbtnButtonFive);
+            this.kryptonPanel1.Controls.Add(this.kbtnButtonOne);
             this.kryptonPanel1.Controls.Add(this.klblBody);
             this.kryptonPanel1.Controls.Add(this.pbxIcon);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -46,45 +47,50 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kryptonPanel1.Size = new System.Drawing.Size(501, 271);
             this.kryptonPanel1.TabIndex = 0;
             // 
-            // kbtnYesToAll
+            // kbtnButtonTwo
             // 
-            this.kbtnYesToAll.Location = new System.Drawing.Point(108, 234);
-            this.kbtnYesToAll.Name = "kbtnYesToAll";
-            this.kbtnYesToAll.Size = new System.Drawing.Size(90, 25);
-            this.kbtnYesToAll.TabIndex = 7;
-            this.kbtnYesToAll.Values.Text = "Ye&s to All";
+            this.kbtnButtonTwo.Location = new System.Drawing.Point(108, 234);
+            this.kbtnButtonTwo.Name = "kbtnButtonTwo";
+            this.kbtnButtonTwo.Size = new System.Drawing.Size(90, 25);
+            this.kbtnButtonTwo.TabIndex = 7;
+            this.kbtnButtonTwo.Values.Text = "Ye&s to All";
+            this.kbtnButtonTwo.Click += new System.EventHandler(this.kbtnButtonTwo_Click);
             // 
-            // kbtnNoToAll
+            // kbtnButtonFour
             // 
-            this.kbtnNoToAll.Location = new System.Drawing.Point(300, 234);
-            this.kbtnNoToAll.Name = "kbtnNoToAll";
-            this.kbtnNoToAll.Size = new System.Drawing.Size(90, 25);
-            this.kbtnNoToAll.TabIndex = 6;
-            this.kbtnNoToAll.Values.Text = "N&o to All";
+            this.kbtnButtonFour.Location = new System.Drawing.Point(300, 234);
+            this.kbtnButtonFour.Name = "kbtnButtonFour";
+            this.kbtnButtonFour.Size = new System.Drawing.Size(90, 25);
+            this.kbtnButtonFour.TabIndex = 6;
+            this.kbtnButtonFour.Values.Text = "N&o to All";
+            this.kbtnButtonFour.Click += new System.EventHandler(this.kbtnButtonFour_Click);
             // 
-            // kbtnNo
+            // kbtnButtonThree
             // 
-            this.kbtnNo.Location = new System.Drawing.Point(204, 234);
-            this.kbtnNo.Name = "kbtnNo";
-            this.kbtnNo.Size = new System.Drawing.Size(90, 25);
-            this.kbtnNo.TabIndex = 5;
-            this.kbtnNo.Values.Text = "&No";
+            this.kbtnButtonThree.Location = new System.Drawing.Point(204, 234);
+            this.kbtnButtonThree.Name = "kbtnButtonThree";
+            this.kbtnButtonThree.Size = new System.Drawing.Size(90, 25);
+            this.kbtnButtonThree.TabIndex = 5;
+            this.kbtnButtonThree.Values.Text = "&No";
+            this.kbtnButtonThree.Click += new System.EventHandler(this.kbtnButtonThree_Click);
             // 
-            // kbtnCancel
+            // kbtnButtonFive
             // 
-            this.kbtnCancel.Location = new System.Drawing.Point(396, 234);
-            this.kbtnCancel.Name = "kbtnCancel";
-            this.kbtnCancel.Size = new System.Drawing.Size(90, 25);
-            this.kbtnCancel.TabIndex = 4;
-            this.kbtnCancel.Values.Text = "&Cancel";
+            this.kbtnButtonFive.Location = new System.Drawing.Point(396, 234);
+            this.kbtnButtonFive.Name = "kbtnButtonFive";
+            this.kbtnButtonFive.Size = new System.Drawing.Size(90, 25);
+            this.kbtnButtonFive.TabIndex = 4;
+            this.kbtnButtonFive.Values.Text = "&Cancel";
+            this.kbtnButtonFive.Click += new System.EventHandler(this.kbtnButtonFive_Click);
             // 
-            // kbtnYes
+            // kbtnButtonOne
             // 
-            this.kbtnYes.Location = new System.Drawing.Point(12, 234);
-            this.kbtnYes.Name = "kbtnYes";
-            this.kbtnYes.Size = new System.Drawing.Size(90, 25);
-            this.kbtnYes.TabIndex = 3;
-            this.kbtnYes.Values.Text = "&Yes";
+            this.kbtnButtonOne.Location = new System.Drawing.Point(12, 234);
+            this.kbtnButtonOne.Name = "kbtnButtonOne";
+            this.kbtnButtonOne.Size = new System.Drawing.Size(90, 25);
+            this.kbtnButtonOne.TabIndex = 3;
+            this.kbtnButtonOne.Values.Text = "&Yes";
+            this.kbtnButtonOne.Click += new System.EventHandler(this.kbtnButtonOne_Click);
             // 
             // klblBody
             // 
@@ -148,15 +154,15 @@ namespace Krypton.Toolkit.Extended.Dialogs
         /// <param name="cancelText">The cancel text.</param>
         private void SetButtonText(string yesText, string yesToAllText, string noText, string noToAllText, string cancelText)
         {
-            kbtnYes.Text = yesText;
+            kbtnButtonOne.Text = yesText;
 
-            kbtnYesToAll.Text = yesToAllText;
+            kbtnButtonTwo.Text = yesToAllText;
 
-            kbtnNo.Text = noText;
+            kbtnButtonThree.Text = noText;
 
-            kbtnNoToAll.Text = noToAllText;
+            kbtnButtonFour.Text = noToAllText;
 
-            kbtnCancel.Text = cancelText;
+            kbtnButtonFive.Text = cancelText;
         }
 
         /// <summary>Sets the default dialog result.</summary>
@@ -166,19 +172,19 @@ namespace Krypton.Toolkit.Extended.Dialogs
             switch (dialogResult)
             {
                 case KryptonMemoryBoxDialogResult.YES:
-                    AcceptButton = kbtnYes;
+                    AcceptButton = kbtnButtonOne;
                     break;
                 case KryptonMemoryBoxDialogResult.YESTOALL:
-                    AcceptButton = kbtnYesToAll;
+                    AcceptButton = kbtnButtonTwo;
                     break;
                 case KryptonMemoryBoxDialogResult.NO:
-                    AcceptButton = kbtnNo;
+                    AcceptButton = kbtnButtonThree;
                     break;
                 case KryptonMemoryBoxDialogResult.NOTOALL:
-                    AcceptButton = kbtnNoToAll;
+                    AcceptButton = kbtnButtonFour;
                     break;
                 case KryptonMemoryBoxDialogResult.CANCEL:
-                    AcceptButton = kbtnCancel;
+                    AcceptButton = kbtnButtonFive;
                     break;
             }
         }
@@ -210,8 +216,10 @@ namespace Krypton.Toolkit.Extended.Dialogs
         /// <param name="message">The message.</param>
         /// <param name="icon">The icon.</param>
         /// <param name="iconPath">The icon path.</param>
+        /// <param name="defaultButton">The default button.</param>
+        /// <param name="defaultDialogResult">The default dialog result.</param>
         /// <returns></returns>
-        public KryptonMemoryBoxDialogResult ShowKryptonMemoryBoxDialogResult(string title, string message, KryptonMemoryBoxIcon icon = KryptonMemoryBoxIcon.NONE, string iconPath = null)
+        private KryptonMemoryBoxDialogResult ShowKryptonMemoryBoxDialogResult(string title, string message, KryptonMemoryBoxIcon icon = KryptonMemoryBoxIcon.NONE, string iconPath = null, KryptonMemoryBoxDefaultButton defaultButton = KryptonMemoryBoxDefaultButton.BUTTONONE, KryptonMemoryBoxDialogResult defaultDialogResult = KryptonMemoryBoxDialogResult.CANCEL)
         {
             Text = title;
 
@@ -250,7 +258,26 @@ namespace Krypton.Toolkit.Extended.Dialogs
                     break;
             }
 
+            SetDefaultButton(defaultButton);
+
+            SetDefaultDialogResult(defaultDialogResult);
+
             return ShowKryptonMemoryBoxDialogResult();
+        }
+
+        /// <summary>Shows the specified title.</summary>
+        /// <param name="title">The title.</param>
+        /// <param name="message">The message.</param>
+        /// <param name="icon">The icon.</param>
+        /// <param name="iconPath">The icon path.</param>
+        /// <param name="defaultButton">The default button.</param>
+        /// <param name="defaultDialogResult">The default dialog result.</param>
+        /// <returns></returns>
+        public static KryptonMemoryBoxDialogResult Show(string title, string message, KryptonMemoryBoxIcon icon = KryptonMemoryBoxIcon.NONE, string iconPath = null, KryptonMemoryBoxDefaultButton defaultButton = KryptonMemoryBoxDefaultButton.BUTTONONE, KryptonMemoryBoxDialogResult defaultDialogResult = KryptonMemoryBoxDialogResult.CANCEL)
+        {
+            KryptonMemoryBox memoryBox = new KryptonMemoryBox();
+
+            return memoryBox.ShowKryptonMemoryBoxDialogResult(title, message, icon, iconPath, defaultButton, defaultDialogResult);
         }
 
         private void UpdateUI()
@@ -268,7 +295,95 @@ namespace Krypton.Toolkit.Extended.Dialogs
                 klblBody.Size = new Size(474, 211);
             }
         }
+
+        /*
+        private DialogResult ConvertKryptonMemoryBoxDialogResult(KryptonMemoryBoxDialogResult dialogResult)
+        {
+            DialogResult result;
+
+            if (dialogResult == KryptonMemoryBoxDialogResult.CANCEL)
+            {
+                result = DialogResult.Cancel;
+            }
+
+            return result;
+        }
+        */
+
+        private DialogResult ReturnDialogResult(DialogResult result) => result;
+
+        private void SetAcceptButton(KryptonButton button) => AcceptButton = button;
+
+        private void SetDefaultButton(KryptonMemoryBoxDefaultButton defaultButton)
+        {
+            switch (defaultButton)
+            {
+                case KryptonMemoryBoxDefaultButton.BUTTONONE:
+                    SetAcceptButton(kbtnButtonOne);
+                    break;
+                case KryptonMemoryBoxDefaultButton.BUTTONTWO:
+                    SetAcceptButton(kbtnButtonTwo);
+                    break;
+                case KryptonMemoryBoxDefaultButton.BUTTONTHREE:
+                    SetAcceptButton(kbtnButtonThree);
+                    break;
+                case KryptonMemoryBoxDefaultButton.BUTTONFOUR:
+                    SetAcceptButton(kbtnButtonFour);
+                    break;
+                case KryptonMemoryBoxDefaultButton.BUTTONFIVE:
+                    SetAcceptButton(kbtnButtonFive);
+                    break;
+                default:
+                    SetAcceptButton(kbtnButtonOne);
+                    break;
+            }
+        }
         #endregion
+
+        private void kbtnButtonOne_Click(object sender, EventArgs e)
+        {
+            _defaultDialogResult = KryptonMemoryBoxDialogResult.YES;
+
+            _lastResult = KryptonMemoryBoxDialogResult.YES;
+
+            DialogResult = DialogResult.Yes;
+        }
+
+        private void kbtnButtonTwo_Click(object sender, EventArgs e)
+        {
+            _defaultDialogResult = KryptonMemoryBoxDialogResult.YESTOALL;
+
+            _lastResult = KryptonMemoryBoxDialogResult.YESTOALL;
+
+            DialogResult = DialogResult.Yes;
+        }
+
+        private void kbtnButtonThree_Click(object sender, EventArgs e)
+        {
+            _defaultDialogResult = KryptonMemoryBoxDialogResult.NO;
+
+            _lastResult = KryptonMemoryBoxDialogResult.NO;
+
+            DialogResult = DialogResult.No;
+        }
+
+        private void kbtnButtonFour_Click(object sender, EventArgs e)
+        {
+            _defaultDialogResult = KryptonMemoryBoxDialogResult.NOTOALL;
+
+            _lastResult = KryptonMemoryBoxDialogResult.NOTOALL;
+
+            DialogResult = DialogResult.No;
+        }
+
+        private void kbtnButtonFive_Click(object sender, EventArgs e)
+        {
+            _defaultDialogResult = KryptonMemoryBoxDialogResult.CANCEL;
+
+            _lastResult = KryptonMemoryBoxDialogResult.CANCEL;
+
+            DialogResult = DialogResult.Cancel;
+        }
 
         private void KryptonMemoryBox_Load(object sender, EventArgs e)
         {
