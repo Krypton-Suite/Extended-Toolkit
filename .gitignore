@@ -310,3 +310,4 @@ __pycache__/
 OpenCover/
 *.zip
 *.dll
+*.exe

@@ -9,115 +9,86 @@ namespace Krypton.Toolkit.Extended.Base
 {
     public class ListViewSort : IComparer
     {
+        #region Variables
+        private bool _mAscending = true;
 
-        // Fields
-        private bool mAscending = true;
-        private int mSortColumn = 0;
-        private LVSortDataType mSortType = LVSortDataType.TextCaseSensitive;
+        private int _mSortColumn = 0;
 
+        private LVSortDataType _dataType = LVSortDataType.TEXTCASESENSITIVE;
+        #endregion
 
-        // Methods
+        #region Methods
         public int Compare(object x, object y)
         {
             int num = 0;
-            ListViewItem item = (ListViewItem)x;
-            ListViewItem item2 = (ListViewItem)y;
-            switch (this.mSortType)
+
+            ListViewItem item0 = (ListViewItem)x, item1 = (ListViewItem)y;
+
+            switch (_dataType)
             {
-                case LVSortDataType.TextCaseSensitive:
-                    if (!this.mAscending)
-                    {
-                        return string.Compare(item2.SubItems[this.mSortColumn].Text, item.SubItems[this.mSortColumn].Text);
-                    }
-                    return string.Compare(item.SubItems[this.mSortColumn].Text, item2.SubItems[this.mSortColumn].Text);
-
-                case LVSortDataType.TextIgnoreCase:
-                    if (!this.mAscending)
-                    {
-                        return string.Compare(item2.SubItems[this.mSortColumn].Text, item.SubItems[this.mSortColumn].Text, true);
-                    }
-                    return string.Compare(item.SubItems[this.mSortColumn].Text, item2.SubItems[this.mSortColumn].Text, true);
-
-                case LVSortDataType.Numbers:
+                case LVSortDataType.DATES:
                     try
                     {
-                        if (this.mAscending)
-                        {
-                            return (int)Math.Round((double)(Conversions.ToDouble(item.SubItems[this.mSortColumn].Text) - Conversions.ToDouble(item2.SubItems[this.mSortColumn].Text)));
-                        }
-                        num = (int)Math.Round((double)(Conversions.ToDouble(item2.SubItems[this.mSortColumn].Text) - Conversions.ToDouble(item.SubItems[this.mSortColumn].Text)));
+                        if (_mAscending) return (int)DateAndTime.DateDiff(DateInterval.Day, Conversions.ToDate(item1.SubItems[_mSortColumn].Text), Conversions.ToDate(item0.SubItems[_mSortColumn].Text), FirstDayOfWeek.Monday, FirstWeekOfYear.Jan1);
+
+                        num = (int)DateAndTime.DateDiff(DateInterval.Day, Conversions.ToDate(item0.SubItems[_mSortColumn].Text), Conversions.ToDate(item1.SubItems[_mSortColumn].Text), FirstDayOfWeek.Monday, FirstWeekOfYear.Jan1);
                     }
-                    catch (Exception exception1)
+                    catch (Exception e3)
                     {
-                        ProjectData.SetProjectError(exception1);
-                        Exception exception = exception1;
+                        ProjectData.SetProjectError(e3);
+
+                        Exception e2 = e3;
+
                         num = 0;
+
                         ProjectData.ClearProjectError();
                     }
-                    return num;
-
-                case (LVSortDataType.Numbers | LVSortDataType.TextIgnoreCase):
-                    return num;
-
-                case LVSortDataType.Dates:
+                    break;
+                case LVSortDataType.NUMBERS:
                     try
                     {
-                        if (this.mAscending)
-                        {
-                            return (int)DateAndTime.DateDiff(DateInterval.Day, Conversions.ToDate(item2.SubItems[this.mSortColumn].Text), Conversions.ToDate(item.SubItems[this.mSortColumn].Text), FirstDayOfWeek.Sunday, FirstWeekOfYear.Jan1);
-                        }
-                        num = (int)DateAndTime.DateDiff(DateInterval.Day, Conversions.ToDate(item.SubItems[this.mSortColumn].Text), Conversions.ToDate(item2.SubItems[this.mSortColumn].Text), FirstDayOfWeek.Sunday, FirstWeekOfYear.Jan1);
+                        if (_mAscending) return (int)Math.Round((double)(Conversions.ToDouble(item0.SubItems[_mSortColumn].Text) - Conversions.ToDouble(item1.SubItems[_mSortColumn].Text)));
+
+                        num = (int)Math.Round((double)(Conversions.ToDouble(item1.SubItems[_mSortColumn].Text) - Conversions.ToDouble(item0.SubItems[_mSortColumn].Text)));
                     }
-                    catch (Exception exception3)
+                    catch (Exception e1)
                     {
-                        ProjectData.SetProjectError(exception3);
-                        Exception exception2 = exception3;
+                        ProjectData.SetProjectError(e1);
+
+                        Exception e0 = e1;
+
                         num = 0;
+
                         ProjectData.ClearProjectError();
                     }
+                    break;
+                case LVSortDataType.TEXTCASESENSITIVE:
+                    if (!_mAscending) return string.Compare(item1.SubItems[_mSortColumn].Text, item0.SubItems[_mSortColumn].Text);
+
+                    return string.Compare(item0.SubItems[_mSortColumn].Text, item1.SubItems[_mSortColumn].Text);
+                    break;
+                case LVSortDataType.TEXTIGNORECASE:
+                    if (!_mAscending) return string.Compare(item1.SubItems[_mSortColumn].Text, item0.SubItems[_mSortColumn].Text, true);
+
+                    return string.Compare(item0.SubItems[_mSortColumn].Text, item1.SubItems[_mSortColumn].Text, true);
+                    break;
+                case (LVSortDataType.NUMBERS | LVSortDataType.TEXTIGNORECASE):
                     return num;
             }
+
             return num;
         }
+        #endregion
 
-        // Properties
-        public bool SortAscending
-        {
-            get
-            {
-                return this.mAscending;
-            }
-            set
-            {
-                this.mAscending = value;
-            }
-        }
+        #region Properties
+        public bool SortAscending { get => _mAscending; set => _mAscending = value; }
 
-        public int SortColumn
-        {
-            get
-            {
-                return this.mSortColumn;
-            }
-            set
-            {
-                this.mSortColumn = value;
-            }
-        }
+        public int SortColumn { get => _mSortColumn; set => _mSortColumn = value; }
 
-        public LVSortDataType SortType
-        {
-            get
-            {
-                return this.mSortType;
-            }
-            set
-            {
-                this.mSortType = value;
-            }
-        }
+        public LVSortDataType SortType { get => _dataType; set => _dataType = value; }
+        #endregion
 
-        // Nested Types
+        #region Structs
         [StructLayout(LayoutKind.Sequential)]
         public struct LSColumn
         {
@@ -130,14 +101,6 @@ namespace Krypton.Toolkit.Extended.Base
                 this.SortedAscending = SortAsc;
             }
         }
-
-        public enum LVSortDataType
-        {
-            Dates = 4,
-            Numbers = 2,
-            TextCaseSensitive = 0,
-            TextIgnoreCase = 1
-        }
+        #endregion
     }
-
 }

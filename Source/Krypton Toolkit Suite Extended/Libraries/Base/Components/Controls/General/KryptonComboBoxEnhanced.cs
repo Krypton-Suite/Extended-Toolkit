@@ -265,10 +265,10 @@ namespace Krypton.Toolkit.Extended.Base
         // height - controls' height
         public void DrawBorder(ref Message message, int width, int height)
         {
-            if (message.Msg == WIN32.WM_NCPAINT || message.Msg == WIN32.WM_ERASEBKGND || message.Msg == WIN32.WM_PAINT)
+            if (message.Msg == InternalWIN32Methods.WM_NCPAINT || message.Msg == InternalWIN32Methods.WM_ERASEBKGND || message.Msg == InternalWIN32Methods.WM_PAINT)
             {
                 //get handle to a display device context
-                IntPtr hdc = WIN32.GetDCEx(message.HWnd, (IntPtr)1, 1 | 0x0020);
+                IntPtr hdc = InternalWIN32Methods.GetDCEx(message.HWnd, (IntPtr)1, 1 | 0x0020);
 
                 if (hdc != IntPtr.Zero)
                 {
@@ -278,7 +278,7 @@ namespace Krypton.Toolkit.Extended.Base
                     ControlPaint.DrawBorder(graphics, rectangle, _borderColor, ButtonBorderStyle.Solid);
 
                     message.Result = (IntPtr)1;
-                    WIN32.ReleaseDC(message.HWnd, hdc);
+                    InternalWIN32Methods.ReleaseDC(message.HWnd, hdc);
                 }
             }
         }

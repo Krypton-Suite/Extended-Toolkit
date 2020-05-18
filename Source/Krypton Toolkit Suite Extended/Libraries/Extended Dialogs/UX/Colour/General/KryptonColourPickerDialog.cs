@@ -126,7 +126,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.ceColours.BackColor = System.Drawing.Color.Transparent;
             this.ceColours.Location = new System.Drawing.Point(162, 12);
             this.ceColours.Name = "ceColours";
-            this.ceColours.Size = new System.Drawing.Size(274, 359);
+            this.ceColours.Size = new System.Drawing.Size(274, 364);
             this.ceColours.TabIndex = 1;
             // 
             // cwColour

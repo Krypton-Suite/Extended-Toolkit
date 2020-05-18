@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <LangVersion>8.0</LangVersion>
-    <TargetFrameworks>net45;netcoreapp3.1</TargetFrameworks>
-    <TargetFrameworks Condition="'$(TFMs)' == 'all'">net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1</TargetFrameworks>    
+    <TargetFrameworks>net45;netcoreapp3.1;netcoreapp5.0</TargetFrameworks>
+    <TargetFrameworks Condition="'$(TFMs)' == 'all'">net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;netcoreapp5.0</TargetFrameworks>    
     <RootNamespace>Krypton.Toolkit.Extended.Base</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Shared\Common\Krypton.Toolkit.Suite.Extended.Common.csproj" />
+    <ProjectReference Include="..\..\Shared\Toolkit Core\Krypton.Toolkit.Suite.Extended.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,6 +27,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Update="Resources\ImageResources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -34,6 +40,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <LogicalName>$(RootNamespace).Properties.Resources.resources</LogicalName>
+    </EmbeddedResource>
     <EmbeddedResource Update="Resources\ImageResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ImageResources.Designer.cs</LastGenOutput>
@@ -41,8 +52,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Krypton.Ribbon.Canary" Version="6.0.2006" />
-    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2006" />
+    <PackageReference Include="Krypton.Ribbon.Canary" Version="6.0.2006.1" />
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2006.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\..\Assets\License\LICENSE.md">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
   <PropertyGroup>
@@ -51,13 +69,19 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>5.500.2005.1</AssemblyVersion>
-    <FileVersion>5.500.2005.1</FileVersion>
+    <NoWarn>NU1701</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <AssemblyVersion>6.0.2006</AssemblyVersion>
+    <FileVersion>5.550.2006.0</FileVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
-    <Version>5.500.2005.1</Version>
-    <PackageLicenseFile></PackageLicenseFile>
+    <PackageLicenseExpression></PackageLicenseExpression>
+    <Version>5.550.2006</Version>
+    <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>Krypton Extended Toolkit.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
 </Project>

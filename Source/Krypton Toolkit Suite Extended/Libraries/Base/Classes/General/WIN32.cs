@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Extended.Base
 {
-    public class WIN32
+    internal class Win32
     {
         /*
 		 * GetWindow() Constants
@@ -17,7 +17,7 @@ namespace Krypton.Toolkit.Extended.Base
         public const int GW_OWNER = 4;
         public const int GW_CHILD = 5;
 
-        public const int WM_NCCALCSIZESB = 0x83;
+        public const int WM_NCCALCSIZE = 0x83;
         public const int WM_WINDOWPOSCHANGING = 0x46;
         public const int WM_PAINT = 0xF;
         public const int WM_CREATE = 0x1;
@@ -29,14 +29,14 @@ namespace Krypton.Toolkit.Extended.Base
         public const int WM_SHARED_MENU = 0x1E2;
         public const int WH_CALLWNDPROC = 4;
         public const int WM_PARENTNOTIFY = 0x210;
-        public const int WM_HSCROLLSB = 0x114;
+        public const int WM_HSCROLL = 0x114;
         public const int WM_NCHITTEST = 0x84;
         public const int WM_ERASEBKGND = 0x0014; // WM_ERASEBKGND message
 
         public const int HC_ACTION = 0;
         public const int GWL_WNDPROC = -4;
 
-        public WIN32()
+        public Win32()
         {
             //
             // TODO: Add constructor logic here
@@ -45,7 +45,7 @@ namespace Krypton.Toolkit.Extended.Base
 
 
         [DllImport("User32", CallingConvention = CallingConvention.Cdecl)]
-        public static extern int RealGetWindowClass(IntPtr hwnd, System.Text.StringBuilder pszType, uint cchType);
+        public static extern int RealGetWindowClass(IntPtr hwnd, System.Text.StringBuilder pszType, int cchType);
 
         [DllImport("user32")]
         public static extern IntPtr SetParent(IntPtr hWndChild, IntPtr hWndNewParent);
@@ -150,7 +150,7 @@ namespace Krypton.Toolkit.Extended.Base
     /// <summary>
     /// Windows Event Messages sent to the WindowProc
     /// </summary>
-    public enum Msgs
+    public enum Messaqes
     {
         WM_NULL = 0x0000,
         WM_CREATE = 0x0001,
