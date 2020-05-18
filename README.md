@@ -44,7 +44,7 @@
 * Removed `KryptonListView` due to bug (will return at some point in the future)
 * Add `KryptonMemoryBox` a versitile alternative to `KryptonMessageBox` 
 * Add `Navi Suite` module
-* Add new package for popular software updaters, such as `AutoUpdater.NET`, `SharpUpdate` and `NetSparkle`
+* Add new package for popular software updaters, such as `AutoUpdater.NET` and `SharpUpdate`
 * Updated standard toolkit to build **6.0.2006.1**
 
 =======
