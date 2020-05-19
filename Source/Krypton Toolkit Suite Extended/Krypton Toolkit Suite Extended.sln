@@ -78,7 +78,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Exten
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Software.Updater", "Libraries\Software Updater\Krypton.Toolkit.Suite.Extended.Software.Updater.csproj", "{A472C71C-BA28-4DCE-B8E9-DA76FC98D67C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton.Toolkit.Suite.Extended.Zip.Extractor", "Shared\Zip Extractor\Krypton.Toolkit.Suite.Extended.Zip.Extractor.csproj", "{A081B3E2-E00C-48A8-8112-5E1CA0A2AAD0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Zip.Extractor", "Shared\Zip Extractor\Krypton.Toolkit.Suite.Extended.Zip.Extractor.csproj", "{A081B3E2-E00C-48A8-8112-5E1CA0A2AAD0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

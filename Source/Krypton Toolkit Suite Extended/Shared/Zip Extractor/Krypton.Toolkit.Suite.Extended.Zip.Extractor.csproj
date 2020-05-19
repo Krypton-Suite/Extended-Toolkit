@@ -34,8 +34,8 @@
   </ItemGroup>
 
   <PropertyGroup>
-    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Zip.Extractor\Krypton.Toolkit.Suite.Zip.Extractor.xml</DocumentationFile>
-    <OutputPath>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Zip.Extractor\</OutputPath>
+    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Zip.Extractor\Krypton.Toolkit.Suite.Zip.Extractor.xml</DocumentationFile>
+    <OutputPath>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Zip.Extractor\</OutputPath>
   </PropertyGroup>
 
 </Project>
