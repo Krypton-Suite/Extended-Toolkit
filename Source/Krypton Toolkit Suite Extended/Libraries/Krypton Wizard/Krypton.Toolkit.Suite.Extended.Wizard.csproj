@@ -8,7 +8,7 @@
     <UseWindowsForms>true</UseWindowsForms>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Version>5.550.2006</Version>
+    <Version>5.550.2007</Version>
     <PackageLicenseFile></PackageLicenseFile>
   </PropertyGroup>
 
@@ -18,7 +18,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2006.1" />
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="5.550.2007.1" />
   </ItemGroup>
 
   <ItemGroup>

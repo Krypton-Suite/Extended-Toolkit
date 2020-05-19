@@ -8,12 +8,12 @@
     <UseWindowsForms>true</UseWindowsForms>
     <AssemblyName>Zip Extractor</AssemblyName>
     <ApplicationIcon>Resources\ZipExtractor.ico</ApplicationIcon>
-    <Version>5.550.2006</Version>
+    <Version>5.550.2007</Version>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="ILRepack.Lib.MSBuild.Task" Version="2.0.18.1" />
-    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2006.1" />
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="5.550.2007.1" />
     <PackageReference Include="ZipStorer" Version="3.6.0" />
     <PackageReference Include="ZipStorer64" Version="3.5.1" />
   </ItemGroup>

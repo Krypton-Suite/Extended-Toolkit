@@ -7,7 +7,7 @@
     <RootNamespace>Krypton.Toolkit.Suite.Extended.Tool.Strip.Items</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>5.550.2006</Version>
+    <Version>5.550.2007</Version>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -17,7 +17,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2006.1" />
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="5.550.2007.1" />
     <PackageReference Include="System.Runtime" Version="4.3.1" />
   </ItemGroup>
 
