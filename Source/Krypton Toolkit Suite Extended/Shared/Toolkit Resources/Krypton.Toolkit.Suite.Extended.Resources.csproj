@@ -29,7 +29,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>6.0.2006</AssemblyVersion>
+    <AssemblyVersion>5.550.2006</AssemblyVersion>
     <FileVersion>5.550.2006.0</FileVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Version>5.550.2006</Version>

@@ -14,7 +14,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>6.0.2006</AssemblyVersion>
+    <AssemblyVersion>5.550.2006</AssemblyVersion>
     <FileVersion>5.550.2006.0</FileVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
@@ -22,7 +22,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2006.1" />
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="5.550.2006.1" />
   </ItemGroup>
   
   <PropertyGroup>

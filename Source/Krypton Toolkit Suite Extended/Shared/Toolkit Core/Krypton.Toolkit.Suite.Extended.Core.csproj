@@ -10,11 +10,11 @@
 
   <ItemGroup>
     <PackageReference Include="EasyScintilla" Version="1.0.5" />
-    <PackageReference Include="Krypton.Docking.Canary" Version="6.0.2006.1" />
-    <PackageReference Include="Krypton.Navigator.Canary" Version="6.0.2006.1" />
-    <PackageReference Include="Krypton.Ribbon.Canary" Version="6.0.2006.1" />
-    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2006.1" />
-    <PackageReference Include="Krypton.Workspace.Canary" Version="6.0.2006.1" />
+    <PackageReference Include="Krypton.Docking.Canary" Version="5.550.2006.1" />
+    <PackageReference Include="Krypton.Navigator.Canary" Version="5.550.2006.1" />
+    <PackageReference Include="Krypton.Ribbon.Canary" Version="5.550.2006.1" />
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="5.550.2006.1" />
+    <PackageReference Include="Krypton.Workspace.Canary" Version="5.550.2006.1" />
     <PackageReference Include="WindowsAPICodePack" Version="1.1.1" />
   </ItemGroup>
 
@@ -70,7 +70,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>6.0.2006</AssemblyVersion>
+    <AssemblyVersion>5.550.2006</AssemblyVersion>
     <FileVersion>5.550.2006.0</FileVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Version>5.550.2006</Version>
