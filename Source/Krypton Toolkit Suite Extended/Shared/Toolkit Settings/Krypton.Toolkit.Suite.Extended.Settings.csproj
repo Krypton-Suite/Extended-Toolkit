@@ -315,7 +315,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2006" />
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2006.2" />
     <PackageReference Include="WindowsAPICodePack" Version="1.1.1" />
   </ItemGroup>
 
@@ -330,10 +330,10 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>6.0.2006</AssemblyVersion>
-    <FileVersion>6.0.2006</FileVersion>
+    <AssemblyVersion>5.550.2007</AssemblyVersion>
+    <FileVersion>5.550.2007.0</FileVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>6.0.2006</Version>
+    <Version>5.550.2007</Version>
   </PropertyGroup>
 
 </Project>

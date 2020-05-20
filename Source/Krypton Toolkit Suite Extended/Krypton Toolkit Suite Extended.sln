@@ -12,6 +12,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Exten
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{35C5D580-4B81-4E33-AB75-BD5D316A2ABC}"
 	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
 		..\..\build.proj = ..\..\build.proj
 		..\..\Directory.Build.props = ..\..\Directory.Build.props
 		Directory.Build.props = Directory.Build.props
@@ -74,7 +75,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Exten
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestApp", "C:\Users\Peter William Wagner\source\repos\TestApp\TestApp.csproj", "{2BE8C569-AB69-41E1-9879-CA81F7FE2C6E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Shell", "Shared\Shell\Krypton.Toolkit.Suite.Extended.Shell.csproj", "{C907AD61-4063-4A4B-AFE8-E4A0F6A8EA8B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.File.Explorer", "Libraries\File Explorer\Krypton.Toolkit.Suite.Extended.File.Explorer.csproj", "{1699A926-B81D-4A37-A6A2-5909C80FAB63}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Software.Updater", "Libraries\Software Updater\Krypton.Toolkit.Suite.Extended.Software.Updater.csproj", "{A472C71C-BA28-4DCE-B8E9-DA76FC98D67C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Zip.Extractor", "Shared\Zip Extractor\Krypton.Toolkit.Suite.Extended.Zip.Extractor.csproj", "{A081B3E2-E00C-48A8-8112-5E1CA0A2AAD0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -174,10 +179,18 @@ Global
 		{2BE8C569-AB69-41E1-9879-CA81F7FE2C6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2BE8C569-AB69-41E1-9879-CA81F7FE2C6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2BE8C569-AB69-41E1-9879-CA81F7FE2C6E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C907AD61-4063-4A4B-AFE8-E4A0F6A8EA8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C907AD61-4063-4A4B-AFE8-E4A0F6A8EA8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C907AD61-4063-4A4B-AFE8-E4A0F6A8EA8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C907AD61-4063-4A4B-AFE8-E4A0F6A8EA8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1699A926-B81D-4A37-A6A2-5909C80FAB63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1699A926-B81D-4A37-A6A2-5909C80FAB63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1699A926-B81D-4A37-A6A2-5909C80FAB63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1699A926-B81D-4A37-A6A2-5909C80FAB63}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A472C71C-BA28-4DCE-B8E9-DA76FC98D67C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A472C71C-BA28-4DCE-B8E9-DA76FC98D67C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A472C71C-BA28-4DCE-B8E9-DA76FC98D67C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A472C71C-BA28-4DCE-B8E9-DA76FC98D67C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A081B3E2-E00C-48A8-8112-5E1CA0A2AAD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A081B3E2-E00C-48A8-8112-5E1CA0A2AAD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A081B3E2-E00C-48A8-8112-5E1CA0A2AAD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A081B3E2-E00C-48A8-8112-5E1CA0A2AAD0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -206,7 +219,9 @@ Global
 		{5CABBF5F-3D32-497C-AC10-328870C6BD6C} = {0FC2D6C3-9CA1-46CF-8E37-4B900B07184D}
 		{CE2BA44A-F0BD-4AA4-A5EB-E3C6354DD529} = {1F1DCECC-C25F-4E91-9C8A-ECCBB9827BBA}
 		{620BA053-114C-439F-832F-69D76CED69BD} = {1F1DCECC-C25F-4E91-9C8A-ECCBB9827BBA}
-		{C907AD61-4063-4A4B-AFE8-E4A0F6A8EA8B} = {0FC2D6C3-9CA1-46CF-8E37-4B900B07184D}
+		{1699A926-B81D-4A37-A6A2-5909C80FAB63} = {1F1DCECC-C25F-4E91-9C8A-ECCBB9827BBA}
+		{A472C71C-BA28-4DCE-B8E9-DA76FC98D67C} = {1F1DCECC-C25F-4E91-9C8A-ECCBB9827BBA}
+		{A081B3E2-E00C-48A8-8112-5E1CA0A2AAD0} = {0FC2D6C3-9CA1-46CF-8E37-4B900B07184D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9A189168-3746-4F9F-8C61-863D83D8ABD2}

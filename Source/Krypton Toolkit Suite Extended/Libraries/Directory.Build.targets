@@ -1,6 +1,6 @@
 <Project>
     <!-- For reference, not used
-    <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.targets', '$(MSBuildThisFileDirectory)../../'))" />
+    <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.targets', '$(MSBuildThisFileDirectory)../../../'))" />
     
 
     <PropertyGroup>
