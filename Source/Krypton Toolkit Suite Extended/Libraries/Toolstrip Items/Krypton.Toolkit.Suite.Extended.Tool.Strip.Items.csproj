@@ -14,6 +14,7 @@
     <DocumentationFile>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Tool.Strip.Items\Krypton.Toolkit.Suite.Extended.Tool.Strip.Items.xml</DocumentationFile>
     <OutputPath>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Tool.Strip.Items\</OutputPath>
     <Description>Contains menu, tool and status strip items.</Description>
+    <RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>

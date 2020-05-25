@@ -10,6 +10,7 @@
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Version>5.550.2007</Version>
     <OutputType>Library</OutputType>
+    <RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>

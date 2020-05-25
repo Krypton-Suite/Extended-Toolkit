@@ -33,6 +33,7 @@
     <FileVersion>5.550.2007.0</FileVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Version>5.550.2007</Version>
+    <RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
   </PropertyGroup>
 
 </Project>

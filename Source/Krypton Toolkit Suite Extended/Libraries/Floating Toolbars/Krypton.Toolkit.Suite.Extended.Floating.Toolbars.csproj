@@ -28,6 +28,7 @@
   <PropertyGroup>
     <!--<PackageId>Krypton.Toolkit.Extended.Floating.Toolbars</PackageId>-->
     <PackageId>Krypton.Toolkit.Suite.Extended.Floating.Toolbars</PackageId>
+    <RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
   </PropertyGroup>
 
 </Project>

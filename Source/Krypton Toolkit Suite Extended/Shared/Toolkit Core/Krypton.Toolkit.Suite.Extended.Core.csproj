@@ -78,6 +78,9 @@
     <FileVersion>5.550.2007.0</FileVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Version>5.550.2007</Version>
+    <Description>Core binaries.</Description>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
   </PropertyGroup>
 
 </Project>

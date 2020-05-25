@@ -70,6 +70,7 @@
     <!--<PackageId>Krypton.Toolkit.Suite.Extended.Dialogs</PackageId>-->
     <PackageId>Krypton.Toolkit.Suite.Extended.Dialogs</PackageId>
     <Description>Contains dialogs.</Description>
+    <RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
   </PropertyGroup>
 
 </Project>

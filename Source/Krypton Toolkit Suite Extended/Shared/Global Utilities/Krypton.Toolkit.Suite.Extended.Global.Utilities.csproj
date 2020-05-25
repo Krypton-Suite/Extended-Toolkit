@@ -10,6 +10,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Version>5.550.2007</Version>
     <FileVersion>5.550.2007.0</FileVersion>
+    <RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
