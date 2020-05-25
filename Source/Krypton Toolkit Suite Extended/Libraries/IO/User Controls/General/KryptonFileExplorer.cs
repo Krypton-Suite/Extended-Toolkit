@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -423,7 +424,7 @@ namespace Krypton.Toolkit.Extended.IO
         #endregion
 
         #region Variables
-
+        private bool _showBackButton, _showForwardButton, _showBreadcrumbBar, _showSingularActionButton, _showSplitActionButton;
         #endregion
 
         #region Properties
@@ -438,7 +439,9 @@ namespace Krypton.Toolkit.Extended.IO
         #endregion
 
         #region Methods
+        private string TranslateListViewItemIntoPath(ListViewItem item) => Path.GetFullPath(item.Text);
 
+        //private string TranslateListViewItemIntoPath(KryptonListViewItem item) => Path.GetFullPath(item.Text);
         #endregion
 
         #region Overrides
