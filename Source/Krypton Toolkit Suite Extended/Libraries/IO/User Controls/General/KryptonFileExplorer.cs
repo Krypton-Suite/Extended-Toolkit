@@ -9,12 +9,13 @@ namespace Krypton.Toolkit.Extended.IO
 {
     public class KryptonFileExplorer : UserControl
     {
+        #region Designer Code
         private Panel panel1;
         private Panel panel5;
         private Panel panel4;
         private Panel panel2;
         private Panel panel3;
-        private KryptonBreadCrumb kryptonBreadCrumb1;
+        private KryptonBreadCrumb kbcPath;
         private Panel panel7;
         private Panel panel6;
         private Panel panel12;
@@ -22,14 +23,14 @@ namespace Krypton.Toolkit.Extended.IO
         private Panel panel8;
         private Panel panel9;
         private Panel panel10;
-        private KryptonTreeView kryptonTreeView1;
-        private ListView listView1;
+        private KryptonTreeView ktvFileSystem;
+        private ListView lvContents;
         private KryptonButton kryptonButton1;
         private KryptonButton kryptonButton2;
-        private KryptonComboBox kryptonComboBox1;
-        private KryptonLabel kryptonLabel1;
+        private KryptonComboBox kcmbChosenItem;
+        private KryptonLabel klblAction;
         private KryptonButton kbtnAction;
-        private Base.KryptonSplitButton kryptonSplitButton1;
+        private Base.KryptonSplitButton ksbtnAction;
         private KryptonButton kbtnCancel;
         private KryptonSplitContainer kryptonSplitContainer1;
 
@@ -41,9 +42,9 @@ namespace Krypton.Toolkit.Extended.IO
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.kryptonSplitContainer1 = new Krypton.Toolkit.KryptonSplitContainer();
-            this.kryptonTreeView1 = new Krypton.Toolkit.KryptonTreeView();
-            this.kryptonBreadCrumb1 = new Krypton.Toolkit.KryptonBreadCrumb();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.ktvFileSystem = new Krypton.Toolkit.KryptonTreeView();
+            this.kbcPath = new Krypton.Toolkit.KryptonBreadCrumb();
+            this.lvContents = new System.Windows.Forms.ListView();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
@@ -53,11 +54,11 @@ namespace Krypton.Toolkit.Extended.IO
             this.panel12 = new System.Windows.Forms.Panel();
             this.kryptonButton1 = new Krypton.Toolkit.KryptonButton();
             this.kryptonButton2 = new Krypton.Toolkit.KryptonButton();
-            this.kryptonComboBox1 = new Krypton.Toolkit.KryptonComboBox();
+            this.kcmbChosenItem = new Krypton.Toolkit.KryptonComboBox();
             this.kbtnCancel = new Krypton.Toolkit.KryptonButton();
-            this.kryptonSplitButton1 = new Krypton.Toolkit.Extended.Base.KryptonSplitButton();
+            this.ksbtnAction = new Krypton.Toolkit.Extended.Base.KryptonSplitButton();
             this.kbtnAction = new Krypton.Toolkit.KryptonButton();
-            this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
+            this.klblAction = new Krypton.Toolkit.KryptonLabel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -69,7 +70,7 @@ namespace Krypton.Toolkit.Extended.IO
             ((System.ComponentModel.ISupportInitialize)(this.kryptonSplitContainer1.Panel2)).BeginInit();
             this.kryptonSplitContainer1.Panel2.SuspendLayout();
             this.kryptonSplitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonBreadCrumb1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kbcPath)).BeginInit();
             this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -77,7 +78,7 @@ namespace Krypton.Toolkit.Extended.IO
             this.panel10.SuspendLayout();
             this.panel11.SuspendLayout();
             this.panel12.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonComboBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kcmbChosenItem)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -122,7 +123,7 @@ namespace Krypton.Toolkit.Extended.IO
             // 
             // panel5
             // 
-            this.panel5.Controls.Add(this.kryptonBreadCrumb1);
+            this.panel5.Controls.Add(this.kbcPath);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(120, 0);
             this.panel5.Name = "panel5";
@@ -137,45 +138,45 @@ namespace Krypton.Toolkit.Extended.IO
             // 
             // kryptonSplitContainer1.Panel1
             // 
-            this.kryptonSplitContainer1.Panel1.Controls.Add(this.kryptonTreeView1);
+            this.kryptonSplitContainer1.Panel1.Controls.Add(this.ktvFileSystem);
             // 
             // kryptonSplitContainer1.Panel2
             // 
-            this.kryptonSplitContainer1.Panel2.Controls.Add(this.listView1);
+            this.kryptonSplitContainer1.Panel2.Controls.Add(this.lvContents);
             this.kryptonSplitContainer1.Size = new System.Drawing.Size(670, 344);
             this.kryptonSplitContainer1.SplitterDistance = 223;
             this.kryptonSplitContainer1.TabIndex = 0;
             // 
-            // kryptonTreeView1
+            // ktvFileSystem
             // 
-            this.kryptonTreeView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonTreeView1.Location = new System.Drawing.Point(0, 0);
-            this.kryptonTreeView1.Name = "kryptonTreeView1";
-            this.kryptonTreeView1.Size = new System.Drawing.Size(223, 344);
-            this.kryptonTreeView1.TabIndex = 0;
+            this.ktvFileSystem.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ktvFileSystem.Location = new System.Drawing.Point(0, 0);
+            this.ktvFileSystem.Name = "ktvFileSystem";
+            this.ktvFileSystem.Size = new System.Drawing.Size(223, 344);
+            this.ktvFileSystem.TabIndex = 0;
             // 
-            // kryptonBreadCrumb1
+            // kbcPath
             // 
-            this.kryptonBreadCrumb1.AutoSize = false;
-            this.kryptonBreadCrumb1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonBreadCrumb1.Location = new System.Drawing.Point(0, 0);
-            this.kryptonBreadCrumb1.Name = "kryptonBreadCrumb1";
+            this.kbcPath.AutoSize = false;
+            this.kbcPath.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kbcPath.Location = new System.Drawing.Point(0, 0);
+            this.kbcPath.Name = "kbcPath";
             // 
             // 
             // 
-            this.kryptonBreadCrumb1.RootItem.ShortText = "Root";
-            this.kryptonBreadCrumb1.Size = new System.Drawing.Size(550, 23);
-            this.kryptonBreadCrumb1.TabIndex = 0;
+            this.kbcPath.RootItem.ShortText = "Root";
+            this.kbcPath.Size = new System.Drawing.Size(550, 23);
+            this.kbcPath.TabIndex = 0;
             // 
-            // listView1
+            // lvContents
             // 
-            this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(0, 0);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(442, 344);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.lvContents.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lvContents.HideSelection = false;
+            this.lvContents.Location = new System.Drawing.Point(0, 0);
+            this.lvContents.Name = "lvContents";
+            this.lvContents.Size = new System.Drawing.Size(442, 344);
+            this.lvContents.TabIndex = 0;
+            this.lvContents.UseCompatibleStateImageBehavior = false;
             // 
             // panel6
             // 
@@ -208,7 +209,7 @@ namespace Krypton.Toolkit.Extended.IO
             // panel9
             // 
             this.panel9.Controls.Add(this.kbtnAction);
-            this.panel9.Controls.Add(this.kryptonSplitButton1);
+            this.panel9.Controls.Add(this.ksbtnAction);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel9.Location = new System.Drawing.Point(0, 0);
             this.panel9.Name = "panel9";
@@ -226,7 +227,7 @@ namespace Krypton.Toolkit.Extended.IO
             // 
             // panel11
             // 
-            this.panel11.Controls.Add(this.kryptonLabel1);
+            this.panel11.Controls.Add(this.klblAction);
             this.panel11.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel11.Location = new System.Drawing.Point(0, 0);
             this.panel11.Name = "panel11";
@@ -235,7 +236,7 @@ namespace Krypton.Toolkit.Extended.IO
             // 
             // panel12
             // 
-            this.panel12.Controls.Add(this.kryptonComboBox1);
+            this.panel12.Controls.Add(this.kcmbChosenItem);
             this.panel12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel12.Location = new System.Drawing.Point(60, 0);
             this.panel12.Name = "panel12";
@@ -260,18 +261,18 @@ namespace Krypton.Toolkit.Extended.IO
             this.kryptonButton2.TabIndex = 0;
             this.kryptonButton2.Values.Text = "kryptonButton2";
             // 
-            // kryptonComboBox1
+            // kcmbChosenItem
             // 
-            this.kryptonComboBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonComboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.kryptonComboBox1.DropDownWidth = 490;
-            this.kryptonComboBox1.IntegralHeight = false;
-            this.kryptonComboBox1.Location = new System.Drawing.Point(0, 0);
-            this.kryptonComboBox1.Name = "kryptonComboBox1";
-            this.kryptonComboBox1.Size = new System.Drawing.Size(490, 21);
-            this.kryptonComboBox1.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
-            this.kryptonComboBox1.TabIndex = 0;
-            this.kryptonComboBox1.Text = "kryptonComboBox1";
+            this.kcmbChosenItem.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kcmbChosenItem.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.kcmbChosenItem.DropDownWidth = 490;
+            this.kcmbChosenItem.IntegralHeight = false;
+            this.kcmbChosenItem.Location = new System.Drawing.Point(0, 0);
+            this.kcmbChosenItem.Name = "kcmbChosenItem";
+            this.kcmbChosenItem.Size = new System.Drawing.Size(490, 21);
+            this.kcmbChosenItem.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
+            this.kcmbChosenItem.TabIndex = 0;
+            this.kcmbChosenItem.Text = "kryptonComboBox1";
             // 
             // kbtnCancel
             // 
@@ -283,90 +284,90 @@ namespace Krypton.Toolkit.Extended.IO
             this.kbtnCancel.TabIndex = 0;
             this.kbtnCancel.Values.Text = "&Cancel";
             // 
-            // kryptonSplitButton1
+            // ksbtnAction
             // 
-            this.kryptonSplitButton1.AutoSize = true;
-            this.kryptonSplitButton1.CornerRadius = -1;
-            this.kryptonSplitButton1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonSplitButton1.Image = null;
-            this.kryptonSplitButton1.Location = new System.Drawing.Point(0, 0);
-            this.kryptonSplitButton1.LongTextTypeface = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kryptonSplitButton1.Name = "kryptonSplitButton1";
-            this.kryptonSplitButton1.OverrideDefault.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kryptonSplitButton1.OverrideDefault.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kryptonSplitButton1.OverrideDefaultBackGroundColourOne = System.Drawing.Color.Empty;
-            this.kryptonSplitButton1.OverrideDefaultBackGroundColourTwo = System.Drawing.Color.Empty;
-            this.kryptonSplitButton1.OverrideDefaultBorderColourOne = System.Drawing.Color.Empty;
-            this.kryptonSplitButton1.OverrideDefaultBorderColourTwo = System.Drawing.Color.Empty;
-            this.kryptonSplitButton1.OverrideDefaultLongTextColourOne = System.Drawing.Color.Empty;
-            this.kryptonSplitButton1.OverrideDefaultLongTextColourTwo = System.Drawing.Color.Empty;
-            this.kryptonSplitButton1.OverrideDefaultShortTextColourOne = System.Drawing.Color.Empty;
-            this.kryptonSplitButton1.OverrideDefaultShortTextColourTwo = System.Drawing.Color.Empty;
-            this.kryptonSplitButton1.OverrideFocus.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kryptonSplitButton1.OverrideFocus.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kryptonSplitButton1.OverrideFocusBackGroundColourOne = System.Drawing.Color.Empty;
-            this.kryptonSplitButton1.OverrideFocusBackGroundColourTwo = System.Drawing.Color.Empty;
-            this.kryptonSplitButton1.OverrideFocusBorderColourOne = System.Drawing.Color.Empty;
-            this.kryptonSplitButton1.OverrideFocusBorderColourTwo = System.Drawing.Color.Empty;
-            this.kryptonSplitButton1.OverrideFocusLongTextColourOne = System.Drawing.Color.Empty;
-            this.kryptonSplitButton1.OverrideFocusLongTextColourTwo = System.Drawing.Color.Empty;
-            this.kryptonSplitButton1.OverrideFocusShortTextColourOne = System.Drawing.Color.Empty;
-            this.kryptonSplitButton1.OverrideFocusShortTextColourTwo = System.Drawing.Color.Empty;
-            this.kryptonSplitButton1.ShortTextTypeface = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kryptonSplitButton1.ShowSplitOption = true;
-            this.kryptonSplitButton1.Size = new System.Drawing.Size(60, 23);
-            this.kryptonSplitButton1.StateCommon.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kryptonSplitButton1.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kryptonSplitButton1.StateCommonBackGroundColourOne = System.Drawing.Color.Empty;
-            this.kryptonSplitButton1.StateCommonBackGroundColourTwo = System.Drawing.Color.Empty;
-            this.kryptonSplitButton1.StateCommonBorderColourOne = System.Drawing.Color.Empty;
-            this.kryptonSplitButton1.StateCommonBorderColourTwo = System.Drawing.Color.Empty;
-            this.kryptonSplitButton1.StateCommonLongTextColourOne = System.Drawing.Color.Empty;
-            this.kryptonSplitButton1.StateCommonLongTextColourTwo = System.Drawing.Color.Empty;
-            this.kryptonSplitButton1.StateCommonShortTextColourOne = System.Drawing.Color.Empty;
-            this.kryptonSplitButton1.StateCommonShortTextColourTwo = System.Drawing.Color.Empty;
-            this.kryptonSplitButton1.StateDisabled.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kryptonSplitButton1.StateDisabled.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kryptonSplitButton1.StateDisabledBackGroundColourOne = System.Drawing.Color.Empty;
-            this.kryptonSplitButton1.StateDisabledBackGroundColourTwo = System.Drawing.Color.Empty;
-            this.kryptonSplitButton1.StateDisabledBorderColourOne = System.Drawing.Color.Empty;
-            this.kryptonSplitButton1.StateDisabledBorderColourTwo = System.Drawing.Color.Empty;
-            this.kryptonSplitButton1.StateDisabledLongTextColourOne = System.Drawing.Color.Empty;
-            this.kryptonSplitButton1.StateDisabledLongTextColourTwo = System.Drawing.Color.Empty;
-            this.kryptonSplitButton1.StateDisabledShortTextColourOne = System.Drawing.Color.Empty;
-            this.kryptonSplitButton1.StateDisabledShortTextColourTwo = System.Drawing.Color.Empty;
-            this.kryptonSplitButton1.StateNormal.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kryptonSplitButton1.StateNormal.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kryptonSplitButton1.StateNormalBackGroundColourOne = System.Drawing.Color.Empty;
-            this.kryptonSplitButton1.StateNormalBackGroundColourTwo = System.Drawing.Color.Empty;
-            this.kryptonSplitButton1.StateNormalBorderColourOne = System.Drawing.Color.Empty;
-            this.kryptonSplitButton1.StateNormalBorderColourTwo = System.Drawing.Color.Empty;
-            this.kryptonSplitButton1.StateNormalLongTextColourOne = System.Drawing.Color.Empty;
-            this.kryptonSplitButton1.StateNormalLongTextColourTwo = System.Drawing.Color.Empty;
-            this.kryptonSplitButton1.StateNormalShortTextColourOne = System.Drawing.Color.Empty;
-            this.kryptonSplitButton1.StateNormalShortTextColourTwo = System.Drawing.Color.Empty;
-            this.kryptonSplitButton1.StatePressed.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kryptonSplitButton1.StatePressed.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kryptonSplitButton1.StatePressedBackGroundColourOne = System.Drawing.Color.Empty;
-            this.kryptonSplitButton1.StatePressedBackGroundColourTwo = System.Drawing.Color.Empty;
-            this.kryptonSplitButton1.StatePressedBorderColourOne = System.Drawing.Color.Empty;
-            this.kryptonSplitButton1.StatePressedBorderColourTwo = System.Drawing.Color.Empty;
-            this.kryptonSplitButton1.StatePressedLongTextColourOne = System.Drawing.Color.Empty;
-            this.kryptonSplitButton1.StatePressedLongTextColourTwo = System.Drawing.Color.Empty;
-            this.kryptonSplitButton1.StatePressedShortTextColourOne = System.Drawing.Color.Empty;
-            this.kryptonSplitButton1.StatePressedShortTextColourTwo = System.Drawing.Color.Empty;
-            this.kryptonSplitButton1.StateTracking.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kryptonSplitButton1.StateTracking.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kryptonSplitButton1.StateTrackingBackGroundColourOne = System.Drawing.Color.Empty;
-            this.kryptonSplitButton1.StateTrackingBackGroundColourTwo = System.Drawing.Color.Empty;
-            this.kryptonSplitButton1.StateTrackingBorderColourOne = System.Drawing.Color.Empty;
-            this.kryptonSplitButton1.StateTrackingBorderColourTwo = System.Drawing.Color.Empty;
-            this.kryptonSplitButton1.StateTrackingLongTextColourOne = System.Drawing.Color.Empty;
-            this.kryptonSplitButton1.StateTrackingLongTextColourTwo = System.Drawing.Color.Empty;
-            this.kryptonSplitButton1.StateTrackingShortTextColourOne = System.Drawing.Color.Empty;
-            this.kryptonSplitButton1.StateTrackingShortTextColourTwo = System.Drawing.Color.Empty;
-            this.kryptonSplitButton1.TabIndex = 0;
-            this.kryptonSplitButton1.Values.Text = "kryptonSplitButton1";
+            this.ksbtnAction.AutoSize = true;
+            this.ksbtnAction.CornerRadius = -1;
+            this.ksbtnAction.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ksbtnAction.Image = null;
+            this.ksbtnAction.Location = new System.Drawing.Point(0, 0);
+            this.ksbtnAction.LongTextTypeface = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.ksbtnAction.Name = "ksbtnAction";
+            this.ksbtnAction.OverrideDefault.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.ksbtnAction.OverrideDefault.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.ksbtnAction.OverrideDefaultBackGroundColourOne = System.Drawing.Color.Empty;
+            this.ksbtnAction.OverrideDefaultBackGroundColourTwo = System.Drawing.Color.Empty;
+            this.ksbtnAction.OverrideDefaultBorderColourOne = System.Drawing.Color.Empty;
+            this.ksbtnAction.OverrideDefaultBorderColourTwo = System.Drawing.Color.Empty;
+            this.ksbtnAction.OverrideDefaultLongTextColourOne = System.Drawing.Color.Empty;
+            this.ksbtnAction.OverrideDefaultLongTextColourTwo = System.Drawing.Color.Empty;
+            this.ksbtnAction.OverrideDefaultShortTextColourOne = System.Drawing.Color.Empty;
+            this.ksbtnAction.OverrideDefaultShortTextColourTwo = System.Drawing.Color.Empty;
+            this.ksbtnAction.OverrideFocus.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.ksbtnAction.OverrideFocus.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.ksbtnAction.OverrideFocusBackGroundColourOne = System.Drawing.Color.Empty;
+            this.ksbtnAction.OverrideFocusBackGroundColourTwo = System.Drawing.Color.Empty;
+            this.ksbtnAction.OverrideFocusBorderColourOne = System.Drawing.Color.Empty;
+            this.ksbtnAction.OverrideFocusBorderColourTwo = System.Drawing.Color.Empty;
+            this.ksbtnAction.OverrideFocusLongTextColourOne = System.Drawing.Color.Empty;
+            this.ksbtnAction.OverrideFocusLongTextColourTwo = System.Drawing.Color.Empty;
+            this.ksbtnAction.OverrideFocusShortTextColourOne = System.Drawing.Color.Empty;
+            this.ksbtnAction.OverrideFocusShortTextColourTwo = System.Drawing.Color.Empty;
+            this.ksbtnAction.ShortTextTypeface = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.ksbtnAction.ShowSplitOption = true;
+            this.ksbtnAction.Size = new System.Drawing.Size(60, 23);
+            this.ksbtnAction.StateCommon.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.ksbtnAction.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.ksbtnAction.StateCommonBackGroundColourOne = System.Drawing.Color.Empty;
+            this.ksbtnAction.StateCommonBackGroundColourTwo = System.Drawing.Color.Empty;
+            this.ksbtnAction.StateCommonBorderColourOne = System.Drawing.Color.Empty;
+            this.ksbtnAction.StateCommonBorderColourTwo = System.Drawing.Color.Empty;
+            this.ksbtnAction.StateCommonLongTextColourOne = System.Drawing.Color.Empty;
+            this.ksbtnAction.StateCommonLongTextColourTwo = System.Drawing.Color.Empty;
+            this.ksbtnAction.StateCommonShortTextColourOne = System.Drawing.Color.Empty;
+            this.ksbtnAction.StateCommonShortTextColourTwo = System.Drawing.Color.Empty;
+            this.ksbtnAction.StateDisabled.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.ksbtnAction.StateDisabled.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.ksbtnAction.StateDisabledBackGroundColourOne = System.Drawing.Color.Empty;
+            this.ksbtnAction.StateDisabledBackGroundColourTwo = System.Drawing.Color.Empty;
+            this.ksbtnAction.StateDisabledBorderColourOne = System.Drawing.Color.Empty;
+            this.ksbtnAction.StateDisabledBorderColourTwo = System.Drawing.Color.Empty;
+            this.ksbtnAction.StateDisabledLongTextColourOne = System.Drawing.Color.Empty;
+            this.ksbtnAction.StateDisabledLongTextColourTwo = System.Drawing.Color.Empty;
+            this.ksbtnAction.StateDisabledShortTextColourOne = System.Drawing.Color.Empty;
+            this.ksbtnAction.StateDisabledShortTextColourTwo = System.Drawing.Color.Empty;
+            this.ksbtnAction.StateNormal.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.ksbtnAction.StateNormal.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.ksbtnAction.StateNormalBackGroundColourOne = System.Drawing.Color.Empty;
+            this.ksbtnAction.StateNormalBackGroundColourTwo = System.Drawing.Color.Empty;
+            this.ksbtnAction.StateNormalBorderColourOne = System.Drawing.Color.Empty;
+            this.ksbtnAction.StateNormalBorderColourTwo = System.Drawing.Color.Empty;
+            this.ksbtnAction.StateNormalLongTextColourOne = System.Drawing.Color.Empty;
+            this.ksbtnAction.StateNormalLongTextColourTwo = System.Drawing.Color.Empty;
+            this.ksbtnAction.StateNormalShortTextColourOne = System.Drawing.Color.Empty;
+            this.ksbtnAction.StateNormalShortTextColourTwo = System.Drawing.Color.Empty;
+            this.ksbtnAction.StatePressed.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.ksbtnAction.StatePressed.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.ksbtnAction.StatePressedBackGroundColourOne = System.Drawing.Color.Empty;
+            this.ksbtnAction.StatePressedBackGroundColourTwo = System.Drawing.Color.Empty;
+            this.ksbtnAction.StatePressedBorderColourOne = System.Drawing.Color.Empty;
+            this.ksbtnAction.StatePressedBorderColourTwo = System.Drawing.Color.Empty;
+            this.ksbtnAction.StatePressedLongTextColourOne = System.Drawing.Color.Empty;
+            this.ksbtnAction.StatePressedLongTextColourTwo = System.Drawing.Color.Empty;
+            this.ksbtnAction.StatePressedShortTextColourOne = System.Drawing.Color.Empty;
+            this.ksbtnAction.StatePressedShortTextColourTwo = System.Drawing.Color.Empty;
+            this.ksbtnAction.StateTracking.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.ksbtnAction.StateTracking.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.ksbtnAction.StateTrackingBackGroundColourOne = System.Drawing.Color.Empty;
+            this.ksbtnAction.StateTrackingBackGroundColourTwo = System.Drawing.Color.Empty;
+            this.ksbtnAction.StateTrackingBorderColourOne = System.Drawing.Color.Empty;
+            this.ksbtnAction.StateTrackingBorderColourTwo = System.Drawing.Color.Empty;
+            this.ksbtnAction.StateTrackingLongTextColourOne = System.Drawing.Color.Empty;
+            this.ksbtnAction.StateTrackingLongTextColourTwo = System.Drawing.Color.Empty;
+            this.ksbtnAction.StateTrackingShortTextColourOne = System.Drawing.Color.Empty;
+            this.ksbtnAction.StateTrackingShortTextColourTwo = System.Drawing.Color.Empty;
+            this.ksbtnAction.TabIndex = 0;
+            this.ksbtnAction.Values.Text = "ACTION";
             // 
             // kbtnAction
             // 
@@ -377,14 +378,14 @@ namespace Krypton.Toolkit.Extended.IO
             this.kbtnAction.TabIndex = 1;
             this.kbtnAction.Values.Text = "ACTION";
             // 
-            // kryptonLabel1
+            // klblAction
             // 
-            this.kryptonLabel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonLabel1.Location = new System.Drawing.Point(0, 0);
-            this.kryptonLabel1.Name = "kryptonLabel1";
-            this.kryptonLabel1.Size = new System.Drawing.Size(60, 23);
-            this.kryptonLabel1.TabIndex = 0;
-            this.kryptonLabel1.Values.Text = "kryptonLabel1";
+            this.klblAction.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.klblAction.Location = new System.Drawing.Point(0, 0);
+            this.klblAction.Name = "klblAction";
+            this.klblAction.Size = new System.Drawing.Size(60, 23);
+            this.klblAction.TabIndex = 0;
+            this.klblAction.Values.Text = "kryptonLabel1";
             // 
             // KryptonFileExplorer
             // 
@@ -405,7 +406,7 @@ namespace Krypton.Toolkit.Extended.IO
             this.kryptonSplitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonSplitContainer1)).EndInit();
             this.kryptonSplitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonBreadCrumb1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kbcPath)).EndInit();
             this.panel6.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
@@ -415,9 +416,41 @@ namespace Krypton.Toolkit.Extended.IO
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
             this.panel12.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonComboBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kcmbChosenItem)).EndInit();
             this.ResumeLayout(false);
 
         }
+        #endregion
+
+        #region Variables
+
+        #endregion
+
+        #region Properties
+
+        #endregion
+
+        #region Constructor
+        public KryptonFileExplorer()
+        {
+            InitializeComponent();
+        }
+        #endregion
+
+        #region Methods
+
+        #endregion
+
+        #region Overrides
+        protected override void OnResize(EventArgs e)
+        {
+            base.OnResize(e);
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
+        }
+        #endregion
     }
 }
