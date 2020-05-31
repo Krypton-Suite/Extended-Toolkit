@@ -212,28 +212,98 @@ namespace Krypton.Toolkit.Extended.Palette.Utilities
 
         Color RibbonGroupTitleTracking2 { get; set; }
 
-        RibbonMinimizeBarDark = 102,
-        RibbonMinimizeBarLight = 103,
-        RibbonGroupCollapsedBorder1 = 104,
-        RibbonGroupCollapsedBorder2 = 105,
-        RibbonGroupCollapsedBorder3 = 106,
+        Color RibbonMinimizeBarDark { get; set; }
 
-        RibbonGroupCollapsedBorder4 = 107,
-        RibbonGroupCollapsedBack1 = 108,
-        RibbonGroupCollapsedBack2 = 109,
-        RibbonGroupCollapsedBack3 = 110,
-        RibbonGroupCollapsedBack4 = 111,
+        Color RibbonMinimizeBarLight { get; set; }
 
-        RibbonGroupCollapsedBorderT1 = 112,
-        RibbonGroupCollapsedBorderT2 = 113,
-        RibbonGroupCollapsedBorderT3 = 114,
-        RibbonGroupCollapsedBorderT4 = 115,
-        RibbonGroupCollapsedBackT1 = 116,
+        Color RibbonGroupCollapsedBorder1 { get; set; }
 
-        RibbonGroupCollapsedBackT2 = 117,
-        RibbonGroupCollapsedBackT3 = 118,
-        RibbonGroupCollapsedBackT4 = 119,
-        RibbonGroupFrameBorder1 = 120,
-        RibbonGroupFrameBorder2 = 121,
+        Color RibbonGroupCollapsedBorder2 { get; set; }
+
+        Color RibbonGroupCollapsedBorder3 { get; set; }
+
+        Color RibbonGroupCollapsedBorder4 { get; set; }
+
+        Color RibbonGroupCollapsedBack1 { get; set; }
+
+        Color RibbonGroupCollapsedBack2 { get; set; }
+
+        Color RibbonGroupCollapsedBack3 { get; set; }
+
+        Color RibbonGroupCollapsedBack4 { get; set; }
+
+        Color RibbonGroupCollapsedBorderT1 { get; set; }
+
+        Color RibbonGroupCollapsedBorderT2 { get; set; }
+
+        Color RibbonGroupCollapsedBorderT3 { get; set; }
+
+        Color RibbonGroupCollapsedBorderT4 { get; set; }
+
+        Color RibbonGroupCollapsedBackT1 { get; set; }
+
+        Color RibbonGroupCollapsedBackT2 { get; set; }
+
+        Color RibbonGroupCollapsedBackT3 { get; set; }
+
+        Color RibbonGroupCollapsedBackT4 { get; set; }
+
+        Color RibbonGroupFrameBorder1 { get; set; }
+
+        Color RibbonGroupFrameBorder2 { get; set; }
+
+        Color RibbonGroupFrameInside1 { get; set; }
+
+        Color RibbonGroupFrameInside2 { get; set; }
+
+        Color RibbonGroupFrameInside3 { get; set; }
+
+        Color RibbonGroupFrameInside4 { get; set; }
+
+        Color RibbonGroupCollapsedText { get; set; }
+
+        Color AlternatePressedBack1 { get; set; }
+
+        Color AlternatePressedBack2 { get; set; }
+
+        Color AlternatePressedBorder1 { get; set; }
+
+        Color AlternatePressedBorder2 { get; set; }
+
+        Color FormButtonBack1Checked { get; set; }
+
+        Color FormButtonBack2Checked { get; set; }
+
+        Color FormButtonBorderCheck { get; set; }
+
+        Color FormButtonBack1CheckTrack { get; set; }
+
+        Color FormButtonBack2CheckTrack { get; set; }
+
+        Color RibbonQATMini1 { get; set; }
+
+        Color RibbonQATMini2 { get; set; }
+       
+        Color RibbonQATMini3 { get; set; }
+        
+		Color RibbonQATMini4 { get; set; }
+       
+	    Color RibbonQATMini5 { get; set; }
+
+        Color RibbonQATMini1I { get; set; }
+        
+		Color RibbonQATMini2I { get; set; }
+        
+		Color RibbonQATMini3I { get; set; }
+        
+		Color RibbonQATMini4I { get; set; }
+
+        Color RibbonQATMini5I { get; set; }
+        
+		Color RibbonQATFullbar1 { get; set; }
+        
+		Color RibbonQATFullbar2 { get; set; }
+        
+		Color RibbonQATFullbar3 { get; set; }
     }
 }
