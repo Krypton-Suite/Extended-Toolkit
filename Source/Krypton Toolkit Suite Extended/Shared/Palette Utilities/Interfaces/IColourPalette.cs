@@ -305,5 +305,159 @@ namespace Krypton.Toolkit.Extended.Palette.Utilities
 		Color RibbonQATFullbar2 { get; set; }
         
 		Color RibbonQATFullbar3 { get; set; }
+
+        Color RibbonQATButtonDark { get; set; }
+       
+        Color RibbonQATButtonLight { get; set; }
+        
+		Color RibbonQATOverflow1 { get; set; }
+        
+		Color RibbonQATOverflow2 { get; set; }
+
+        Color RibbonGroupSeparatorDark { get; set; }
+        
+		Color RibbonGroupSeparatorLight { get; set; }
+        
+		Color ButtonClusterButtonBack1 { get; set; }
+        
+		Color ButtonClusterButtonBack2 { get; set; }
+		
+		Color ButtonClusterButtonBorder1 { get; set; }
+        
+		Color ButtonClusterButtonBorder2 { get; set; }
+        
+		Color NavigatorMiniBackColor { get; set; }
+        
+		Color GridListNormal1 { get; set; }
+        
+		Color GridListNormal2 { get; set; }
+      
+	    Color GridListPressed1 { get; set; }
+        
+		Color GridListPressed2 { get; set; }
+        
+		Color GridListSelected { get; set; }
+        
+		Color GridSheetColNormal1 { get; set; }
+        
+		Color GridSheetColNormal2 { get; set; }
+       
+	    Color GridSheetColPressed1 { get; set; }
+        
+		Color GridSheetColPressed2 { get; set; }
+        
+		Color GridSheetColSelected1 { get; set; }
+        
+		Color GridSheetColSelected2 { get; set; }
+        
+		Color GridSheetRowNormal { get; set; }
+		
+		Color GridSheetRowPressed { get; set; }
+        
+		Color GridSheetRowSelected { get; set; }
+        
+		Color GridDataCellBorder { get; set; }
+        
+		Color GridDataCellSelected { get; set; }
+        
+		Color InputControlTextNormal { get; set; }
+       
+	    Color InputControlTextDisabled { get; set; }
+        
+		Color InputControlBorderNormal { get; set; }
+        
+		Color InputControlBorderDisabled { get; set; }
+        
+		Color InputControlBackNormal { get; set; }
+        
+		Color InputControlBackDisabled { get; set; }
+        
+		Color InputControlBackInactive  { get; set; }
+        
+		Color InputDropDownNormal1  { get; set; }
+        
+		Color InputDropDownNormal2  { get; set; }
+        
+		Color InputDropDownDisabled1  { get; set; }
+        
+		Color InputDropDownDisabled2  { get; set; }
+		
+		Color ContextMenuHeadingBack { get; set; }
+        
+		Color ContextMenuHeadingText { get; set; }
+        
+		Color ContextMenuImageColumn { get; set; }
+        
+		Color AppButtonBack1 { get; set; }
+        
+		Color AppButtonBack2 { get; set; }
+        
+		Color AppButtonBorder { get; set; }
+        
+		Color AppButtonOuter1 { get; set; }
+        
+		Color AppButtonOuter2 { get; set; }
+        
+		Color AppButtonOuter3 { get; set; }
+        
+		Color AppButtonInner1 { get; set; }
+       
+	    Color AppButtonInner2 { get; set; }
+        
+		Color AppButtonMenuDocsBack { get; set; }
+        
+		Color AppButtonMenuDocsText { get; set; }
+        
+		Color SeparatorHighInternalBorder1 { get; set; }
+        
+		Color SeparatorHighInternalBorder2 { get; set; }
+		
+		Color RibbonGalleryBorder { get; set; }
+        
+		Color RibbonGalleryBackNormal { get; set; }
+        
+		Color RibbonGalleryBackTracking { get; set; }
+        
+		Color RibbonGalleryBack1 { get; set; }
+        
+		Color RibbonGalleryBack2 { get; set; }
+       
+	    Color RibbonTabTracking3 { get; set; }
+        
+		Color RibbonTabTracking4 { get; set; }
+        
+		Color RibbonGroupBorder3 { get; set; }
+        
+		Color RibbonGroupBorder4 { get; set; }
+        
+		Color RibbonGroupBorder5 { get; set; }
+		
+		Color RibbonGroupTitleText { get; set; }
+        
+		Color RibbonDropArrowLight { get; set; }
+        
+		Color RibbonDropArrowDark { get; set; }
+        
+		Color HeaderDockInactiveBack1 { get; set; }
+        
+		Color HeaderDockInactiveBack2 { get; set; }
+      
+	    Color ButtonNavigatorBorder { get; set; }
+        
+		Color ButtonNavigatorText { get; set; }
+        
+		Color ButtonNavigatorTrack1 { get; set; }
+        
+		Color ButtonNavigatorTrack2 { get; set; }
+        
+		Color ButtonNavigatorPressed1 { get; set; }
+      
+	    Color ButtonNavigatorPressed2 { get; set; }
+        
+		Color ButtonNavigatorChecked1 { get; set; }
+        
+		Color ButtonNavigatorChecked2 { get; set; }
+        
+		Color ToolTipBottom { get; set; }
     }
 }
