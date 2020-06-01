@@ -38,7 +38,19 @@
 
 =======
 
-## 2020-06-01 - Build 2006 - June 2020
+## 2020-07-01 - Build 2007 - July 2020
+* Fix `Krypton.Toolkit.Extended.Base` to `Krypton.Toolkit.Suite.Extended.Base`
+* Add `.NET Sparkle` to software updater package
+* Add `Task Dialogs` module
+
+=======
+
+## 2020-06-01 pm - Build 2006 - June 2020
+* Add strong name key files `snk` to projects & DLLs
+
+=======
+
+## 2020-06-01 am - Build 2006 - June 2020
 * Versions are now `5.550.xxxx`
 * Add preliminary support for .NET 5
 * Removed `KryptonListView` due to bug (will return at some point in the future)
@@ -59,7 +71,6 @@
 * Fix for [#3](https://github.com/Krypton-Suite/Extended-Toolkit/issues/3), Missing controls
 * Add `IO Components` module
 * Add `Outlook Grid` module
-<!--* Add `Task Dialogs` module-->
 * Add `Wizard` module
 * Add `Palette Controls` module
 * Fixed names for `KryptonComboBoxExtended`, `KryptonPanelExtended` and `KryptonRichTextBoxExtended` to <ControlName>`Enhanced` to avoid confusion
