@@ -1201,33 +1201,33 @@ namespace Krypton.Toolkit.Extended.Base
                     // and reset the last column width to fill the list view
                     switch (message.Msg)
                     {
-                        case WIN32.WM_PAINT:
-                            if (this.View == View.Details && this.Columns.Count > 0)
-                                this.Columns[this.Columns.Count - 1].Width = -2;
-                            for (int i = 0; i < this.Columns.Count - 1; i++)
-                            {
-                                this.Columns[i].Width = this.Columns[i].Width;
-                            }
-                            if (_enableDragDrop)
-                            {
-                                if (LineBefore >= 0 && LineBefore < Items.Count)
-                                {
-                                    Rectangle rc = Items[LineBefore].GetBounds(ItemBoundsPortion.Entire);
-                                    DrawInsertionLine(rc.Left, rc.Right, rc.Top);
-                                }
-                                if (LineAfter >= 0 && LineBefore < Items.Count)
-                                {
-                                    Rectangle rc = Items[LineAfter].GetBounds(ItemBoundsPortion.Entire);
-                                    DrawInsertionLine(rc.Left, rc.Right, rc.Bottom);
-                                }
-                            }
-                            break;
+                        //case WIN32.WM_PAINT:
+                        //    if (this.View == View.Details && this.Columns.Count > 0)
+                        //        this.Columns[this.Columns.Count - 1].Width = -2;
+                        //    for (int i = 0; i < this.Columns.Count - 1; i++)
+                        //    {
+                        //        this.Columns[i].Width = this.Columns[i].Width;
+                        //    }
+                        //    if (_enableDragDrop)
+                        //    {
+                        //        if (LineBefore >= 0 && LineBefore < Items.Count)
+                        //        {
+                        //            Rectangle rc = Items[LineBefore].GetBounds(ItemBoundsPortion.Entire);
+                        //            DrawInsertionLine(rc.Left, rc.Right, rc.Top);
+                        //        }
+                        //        if (LineAfter >= 0 && LineBefore < Items.Count)
+                        //        {
+                        //            Rectangle rc = Items[LineAfter].GetBounds(ItemBoundsPortion.Entire);
+                        //            DrawInsertionLine(rc.Left, rc.Right, rc.Bottom);
+                        //        }
+                        //    }
+                        //    break;
 
-                        case WIN32.WM_NCHITTEST:
-                            //DRAWITEMSTRUCT dis = (DRAWITEMSTRUCT)Marshal.PtrToStructure(message.LParam, typeof(DRAWITEMSTRUCT));
+                        //case WIN32.WM_NCHITTEST:
+                        //    //DRAWITEMSTRUCT dis = (DRAWITEMSTRUCT)Marshal.PtrToStructure(message.LParam, typeof(DRAWITEMSTRUCT));
 
-                            //ColumnHeader ch = this.Columns[dis.itemID];
-                            break;
+                        //    //ColumnHeader ch = this.Columns[dis.itemID];
+                        //    break;
                     }
 
                 }
