@@ -7,7 +7,7 @@
     <RootNamespace>Krypton.Toolkit.Extended.Standard.Controls</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>5.550.2006</Version>
+    <Version>5.550.2006.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -22,6 +22,8 @@
   <PropertyGroup>
     <DocumentationFile>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Standard.Controls\Krypton.Toolkit.Extended.Standard.Controls.xml</DocumentationFile>
     <OutputPath>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Standard.Controls\</OutputPath>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>Krypton Extended Toolkit.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
 </Project>

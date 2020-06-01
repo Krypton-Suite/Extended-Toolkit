@@ -8,7 +8,7 @@
     <UseWindowsForms>true</UseWindowsForms>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Version>5.550.2006</Version>
+    <Version>5.550.2006.1</Version>
     <PackageLicenseFile></PackageLicenseFile>
   </PropertyGroup>
 
@@ -53,6 +53,8 @@
     <!--<PackageId>Krypton.Toolkit.Extended.Colour.Controls</PackageId>-->
     <PackageId>Krypton.Toolkit.Suite.Extended.Colour.Controls</PackageId>
     <Description>Contains colour controls.</Description>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>Krypton Extended Toolkit.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
 </Project>

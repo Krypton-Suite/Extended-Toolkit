@@ -73,12 +73,12 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>5.550.2006</AssemblyVersion>
-    <FileVersion>5.550.2006.0</FileVersion>
+    <AssemblyVersion>5.550.2006.1</AssemblyVersion>
+    <FileVersion>5.550.2006.1.1</FileVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageLicenseExpression></PackageLicenseExpression>
-    <Version>5.550.2006</Version>
+    <Version>5.550.2006.1</Version>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>Krypton Extended Toolkit.snk</AssemblyOriginatorKeyFile>

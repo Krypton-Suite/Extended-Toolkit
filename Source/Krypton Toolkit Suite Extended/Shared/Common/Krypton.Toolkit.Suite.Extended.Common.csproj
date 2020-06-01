@@ -47,11 +47,13 @@
   <PropertyGroup>
     <DocumentationFile>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Common\Krypton.Toolkit.Extended.Common.xml</DocumentationFile>
     <OutputPath>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Common\</OutputPath>
-    <AssemblyVersion>5.550.2006</AssemblyVersion>
+    <AssemblyVersion>5.550.2006.1</AssemblyVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>5.550.2006</Version>
-    <FileVersion>5.550.2006.0</FileVersion>
+    <Version>5.550.2006.1</Version>
+    <FileVersion>5.550.2006.1</FileVersion>
     <Description>Contains common logic.</Description>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>Krypton Extended Toolkit.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
 </Project>

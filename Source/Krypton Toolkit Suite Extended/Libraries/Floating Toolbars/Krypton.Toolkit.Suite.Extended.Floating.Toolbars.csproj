@@ -14,11 +14,11 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>5.550.2006</AssemblyVersion>
-    <FileVersion>5.550.2006.0</FileVersion>
+    <AssemblyVersion>5.550.2006.1</AssemblyVersion>
+    <FileVersion>5.550.2006.1.1</FileVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Version>5.550.2006</Version>
+    <Version>5.550.2006.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -28,6 +28,8 @@
   <PropertyGroup>
     <!--<PackageId>Krypton.Toolkit.Extended.Floating.Toolbars</PackageId>-->
     <PackageId>Krypton.Toolkit.Suite.Extended.Floating.Toolbars</PackageId>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>Krypton Extended Toolkit.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
 </Project>
