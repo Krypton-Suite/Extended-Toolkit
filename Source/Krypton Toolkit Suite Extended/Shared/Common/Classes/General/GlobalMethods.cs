@@ -2,7 +2,6 @@
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.Management;
 using System.Security.Principal;
 using System.Windows.Forms;
 
@@ -229,9 +228,9 @@ namespace Krypton.Toolkit.Extended.Common
         {
             string result = string.Empty;
 
-            ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT Caption FROM Win32_OperatingSystem");
+            System.Management.ManagementObjectSearcher searcher = new System.Management.ManagementObjectSearcher("SELECT Caption FROM Win32_OperatingSystem");
 
-            foreach (ManagementObject os in searcher.Get())
+            foreach (System.Management.ManagementObject os in searcher.Get())
             {
                 result = os["Caption"].ToString();
 
@@ -556,9 +555,9 @@ namespace Krypton.Toolkit.Extended.Common
         {
             string result = string.Empty;
 
-            ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT Caption FROM Win32_OperatingSystem");
+            System.Management.ManagementObjectSearcher searcher = new System.Management.ManagementObjectSearcher("SELECT Caption FROM Win32_OperatingSystem");
 
-            foreach (ManagementObject os in searcher.Get())
+            foreach (System.Management.ManagementObject os in searcher.Get())
             {
                 result = os["Caption"].ToString();
 

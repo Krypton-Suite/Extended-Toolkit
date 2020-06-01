@@ -2,19 +2,19 @@
 
   <PropertyGroup>
     <LangVersion>8.0</LangVersion>
-    <TargetFrameworks>net45;netcoreapp3.1</TargetFrameworks>
-    <TargetFrameworks Condition="'$(TFMs)' == 'all'">net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1</TargetFrameworks>    
+    <TargetFrameworks>net45;netcoreapp3.1;netcoreapp5.0</TargetFrameworks>
+    <TargetFrameworks Condition="'$(TFMs)' == 'all'">net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;netcoreapp5.0</TargetFrameworks>    
     <RootNamespace>Krypton.Toolkit.Extended.Core</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="EasyScintilla" Version="1.0.5" />
-    <PackageReference Include="Krypton.Docking.Canary" Version="6.0.2006" />
-    <PackageReference Include="Krypton.Navigator.Canary" Version="6.0.2006" />
-    <PackageReference Include="Krypton.Ribbon.Canary" Version="6.0.2006" />
-    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2006" />
-    <PackageReference Include="Krypton.Workspace.Canary" Version="6.0.2006" />
+    <PackageReference Include="Krypton.Docking.Canary" Version="6.0.2006.1" />
+    <PackageReference Include="Krypton.Navigator.Canary" Version="6.0.2006.1" />
+    <PackageReference Include="Krypton.Ribbon.Canary" Version="6.0.2006.1" />
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2006.1" />
+    <PackageReference Include="Krypton.Workspace.Canary" Version="6.0.2006.1" />
     <PackageReference Include="WindowsAPICodePack" Version="1.1.1" />
   </ItemGroup>
 
@@ -70,10 +70,10 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>5.500.2005.1</AssemblyVersion>
-    <FileVersion>5.500.2005.1</FileVersion>
+    <AssemblyVersion>5.550.2006</AssemblyVersion>
+    <FileVersion>5.550.2006.0</FileVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>5.500.2005.1</Version>
+    <Version>5.550.2006</Version>
   </PropertyGroup>
 
 </Project>

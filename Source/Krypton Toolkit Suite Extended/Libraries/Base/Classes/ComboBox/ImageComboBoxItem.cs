@@ -3,6 +3,7 @@ using System.Drawing;
 
 namespace Krypton.Toolkit.Extended.Base
 {
+    /// <summary></summary>
     [Serializable]
     public class ImageComboBoxItem
     {
@@ -42,9 +43,10 @@ namespace Krypton.Toolkit.Extended.Base
         }
 
 
+        /// <summary>Initializes a new instance of the <see cref="ImageComboBoxItem" /> class.</summary>
         public ImageComboBoxItem()
         {
-            _value = String.Empty;
+            _value = string.Empty;
             _image = new Bitmap(1, 1);
         }
 
@@ -73,6 +75,8 @@ namespace Krypton.Toolkit.Extended.Base
         }
 
 
+        /// <summary>Converts to string.</summary>
+        /// <returns>A <see cref="System.String" /> that represents this instance.</returns>
         public override string ToString()
         {
             return _value.ToString();
