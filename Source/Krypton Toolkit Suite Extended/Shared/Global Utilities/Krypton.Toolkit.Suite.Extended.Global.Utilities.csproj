@@ -6,10 +6,10 @@
     <TargetFrameworks Condition="'$(TFMs)' == 'all'">net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;netcoreapp5.0</TargetFrameworks>
     <RootNamespace>Krypton.Toolkit.Extended.Global.Utilities</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyVersion>5.550.2006.1</AssemblyVersion>
+    <AssemblyVersion>5.550.2006.2</AssemblyVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>5.550.2006.1</Version>
-    <FileVersion>5.550.2006.1</FileVersion>
+    <Version>5.550.2006.2</Version>
+    <FileVersion>5.550.2006.2</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -36,8 +36,8 @@
   <PropertyGroup>
     <DocumentationFile>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Global.Utilities\Krypton.Toolkit.Extended.Global.Utilities.xml</DocumentationFile>
     <OutputPath>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Global.Utilities\</OutputPath>
-    <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>Krypton Extended Toolkit.snk</AssemblyOriginatorKeyFile>
+    <!--<SignAssembly>true</SignAssembly>-->
+    <!--<AssemblyOriginatorKeyFile>Krypton Extended Toolkit.snk</AssemblyOriginatorKeyFile>-->
   </PropertyGroup>
 
 </Project>
