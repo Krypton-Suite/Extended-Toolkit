@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.Design;
 using System.Drawing;
 
-namespace Krypton.Toolkit.Extended.Base
+namespace Krypton.Toolkit.Suite.Extended.Base
 {
     internal class KryptonCommandLinkButtonActionList : DesignerActionList
     {

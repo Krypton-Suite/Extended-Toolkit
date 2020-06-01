@@ -1,4 +1,4 @@
-﻿using Krypton.Toolkit.Extended.Base.Resources;
+﻿using Krypton.Toolkit.Suite.Extended.Base.Resources;
 using System;
 using System.ComponentModel;
 using System.Drawing;
@@ -6,7 +6,7 @@ using System.Media;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Base
+namespace Krypton.Toolkit.Suite.Extended.Base
 {
     [DesignerCategory("code"), DesignTimeVisible(false), ToolboxBitmap(typeof(KryptonMessageBoxExtended), "ToolboxBitmaps.KryptonMessageBox.bmp"), ToolboxItem(false)]
     public class KryptonMessageBoxExtended : KryptonForm
@@ -21,9 +21,9 @@ namespace Krypton.Toolkit.Extended.Base
             this._messageIcon = new System.Windows.Forms.PictureBox();
             this._panelButtons = new Krypton.Toolkit.KryptonPanel();
             this._borderEdge = new Krypton.Toolkit.KryptonBorderEdge();
-            this._button3 = new Krypton.Toolkit.Extended.Base.KryptonMessageBoxExtended.MessageButton();
-            this._button1 = new Krypton.Toolkit.Extended.Base.KryptonMessageBoxExtended.MessageButton();
-            this._button2 = new Krypton.Toolkit.Extended.Base.KryptonMessageBoxExtended.MessageButton();
+            this._button3 = new Krypton.Toolkit.Suite.Extended.Base.KryptonMessageBoxExtended.MessageButton();
+            this._button1 = new Krypton.Toolkit.Suite.Extended.Base.KryptonMessageBoxExtended.MessageButton();
+            this._button2 = new Krypton.Toolkit.Suite.Extended.Base.KryptonMessageBoxExtended.MessageButton();
             this._doNotShowAgainOption = new Krypton.Toolkit.KryptonCheckBox();
             ((System.ComponentModel.ISupportInitialize)(this._panelMessage)).BeginInit();
             this._panelMessage.SuspendLayout();
