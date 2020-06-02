@@ -13,4 +13,9 @@
     <FileVersion>5.550.2007.0</FileVersion>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Task.Dialogs\Krypton.Toolkit.Suite.Extended.Task.Dialogs.xml</DocumentationFile>
+    <OutputPath>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Task.Dialogs\</OutputPath>
+  </PropertyGroup>
+
 </Project>

@@ -20,8 +20,8 @@
 
   <ItemGroup>
     <PackageReference Include="ILRepack.Lib.MSBuild.Task" Version="2.0.18.1" />
-    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2006.2" />
-    <PackageReference Include="Krypton.Toolkit.Suite.Extended.Dialogs" Version="5.500.2005.1" />
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2006.3" />
+    <PackageReference Include="Krypton.Toolkit.Suite.Extended.Dialogs" Version="5.550.2006.2" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="ZipStorer" Version="3.6.0" />
   </ItemGroup>

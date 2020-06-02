@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using TaskDialogFlags = Krypton.Toolkit.Suite.Extended.Task.Dialogs.TaskDialogNativeMethods.TASKDIALOG_FLAGS;
+using TaskDialogIconElement = Krypton.Toolkit.Suite.Extended.Task.Dialogs.TaskDialogNativeMethods.TASKDIALOG_ICON_ELEMENTS;
+using TaskDialogTextElement = Krypton.Toolkit.Suite.Extended.Task.Dialogs.TaskDialogNativeMethods.TASKDIALOG_ELEMENTS;
 
 namespace Krypton.Toolkit.Suite.Extended.Task.Dialogs
 {

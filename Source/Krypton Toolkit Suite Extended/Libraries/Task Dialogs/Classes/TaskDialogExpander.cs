@@ -1,5 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
+using TaskDialogFlags = Krypton.Toolkit.Suite.Extended.Task.Dialogs.TaskDialogNativeMethods.TASKDIALOG_FLAGS;
+using TaskDialogTextElement = Krypton.Toolkit.Suite.Extended.Task.Dialogs.TaskDialogNativeMethods.TASKDIALOG_ELEMENTS;
 
 namespace Krypton.Toolkit.Suite.Extended.Task.Dialogs
 {

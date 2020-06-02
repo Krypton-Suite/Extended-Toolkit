@@ -1,5 +1,4 @@
-﻿using Krypton.Toolkit.Extended.Base;
-using Krypton.Toolkit.Suite.Extended.Standard.Controls;
+﻿using Krypton.Toolkit.Suite.Extended.Standard.Controls;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -15,12 +14,12 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
         private KryptonSplitContainer kryptonSplitContainer1;
         private KryptonLabelExtended klblHexValue;
         private Cyotek.Windows.Forms.ScreenColorPicker scpColour;
-        private CircularPictureBox cpbSelectedColour;
+        //private Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox cpbSelectedColour;
         private KryptonPanel kryptonPanel1;
         private KryptonBlueValueLabel kryptonBlueValueLabel1;
-        private KryptonKnobControl kknbBlue;
-        private KryptonKnobControl kknbGreen;
-        private KryptonKnobControl kknbRed;
+        //private Krypton.Toolkit.Suite.Extended.Base.KryptonKnobControl kknbBlue;
+        //private Krypton.Toolkit.Suite.Extended.Base.KryptonKnobControl kknbGreen;
+        //private Krypton.Toolkit.Suite.Extended.Base.KryptonKnobControl kknbRed;
         private KryptonRedValueLabel kryptonRedValueLabel1;
         private KryptonBlueValueNumericBox knumBlue;
         private KryptonGreenValueNumericBox knumGreen;
@@ -41,12 +40,8 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.knumGreen = new Krypton.Toolkit.Extended.Colour.Controls.KryptonGreenValueNumericBox();
             this.knumRed = new Krypton.Toolkit.Extended.Colour.Controls.KryptonRedValueNumericBox();
             this.kryptonBlueValueLabel1 = new Krypton.Toolkit.Extended.Colour.Controls.KryptonBlueValueLabel();
-            this.kknbBlue = new Krypton.Toolkit.Extended.Base.KryptonKnobControl();
-            this.kknbGreen = new Krypton.Toolkit.Extended.Base.KryptonKnobControl();
-            this.kknbRed = new Krypton.Toolkit.Extended.Base.KryptonKnobControl();
             this.kryptonRedValueLabel1 = new Krypton.Toolkit.Extended.Colour.Controls.KryptonRedValueLabel();
             this.scpColour = new Cyotek.Windows.Forms.ScreenColorPicker();
-            this.cpbSelectedColour = new Krypton.Toolkit.Extended.Base.CircularPictureBox();
             this.kryptonGreenValueLabel1 = new Krypton.Toolkit.Extended.Colour.Controls.KryptonGreenValueLabel();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanelExtended1)).BeginInit();
             this.kryptonPanelExtended1.SuspendLayout();
@@ -58,7 +53,6 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.kryptonSplitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cpbSelectedColour)).BeginInit();
             this.SuspendLayout();
             // 
             // kryptonPanelExtended1
@@ -268,7 +262,6 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             // 
             this.kryptonSplitContainer1.Panel1.Controls.Add(this.klblHexValue);
             this.kryptonSplitContainer1.Panel1.Controls.Add(this.scpColour);
-            this.kryptonSplitContainer1.Panel1.Controls.Add(this.cpbSelectedColour);
             // 
             // kryptonSplitContainer1.Panel2
             // 
@@ -304,9 +297,6 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.kryptonPanel1.Controls.Add(this.knumGreen);
             this.kryptonPanel1.Controls.Add(this.knumRed);
             this.kryptonPanel1.Controls.Add(this.kryptonBlueValueLabel1);
-            this.kryptonPanel1.Controls.Add(this.kknbBlue);
-            this.kryptonPanel1.Controls.Add(this.kknbGreen);
-            this.kryptonPanel1.Controls.Add(this.kknbRed);
             this.kryptonPanel1.Controls.Add(this.kryptonRedValueLabel1);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
@@ -370,7 +360,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             // 
             // kryptonBlueValueLabel1
             // 
-            this.kryptonBlueValueLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.kryptonBlueValueLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.kryptonBlueValueLabel1.BlueValue = 255;
             this.kryptonBlueValueLabel1.ExtraText = "Blue";
@@ -389,6 +379,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.kryptonBlueValueLabel1.Typeface = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.kryptonBlueValueLabel1.UseAccessibleUI = false;
             this.kryptonBlueValueLabel1.Values.Text = "Blue:";
+            /*
             // 
             // kknbBlue
             // 
@@ -449,10 +440,11 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.kknbRed.TabIndex = 20;
             this.kknbRed.Value = 0;
             this.kknbRed.ValueChanged += new Krypton.Toolkit.Extended.Base.ValueChangedEventHandler(this.kknbRed_ValueChanged);
+            */
             // 
             // kryptonRedValueLabel1
             // 
-            this.kryptonRedValueLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.kryptonRedValueLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.kryptonRedValueLabel1.ExtraText = "Red";
             this.kryptonRedValueLabel1.Location = new System.Drawing.Point(46, 62);
@@ -482,17 +474,6 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.scpColour.ShowTextWithSnapshot = true;
             this.scpColour.Size = new System.Drawing.Size(115, 112);
             this.scpColour.ColorChanged += new System.EventHandler(this.scpColour_ColorChanged);
-            // 
-            // cpbSelectedColour
-            // 
-            this.cpbSelectedColour.BackColor = System.Drawing.SystemColors.Control;
-            this.cpbSelectedColour.Location = new System.Drawing.Point(18, 14);
-            this.cpbSelectedColour.Name = "cpbSelectedColour";
-            this.cpbSelectedColour.Size = new System.Drawing.Size(115, 115);
-            this.cpbSelectedColour.TabIndex = 0;
-            this.cpbSelectedColour.TabStop = false;
-            this.cpbSelectedColour.ToolTipValues = null;
-            this.cpbSelectedColour.BackColorChanged += new System.EventHandler(this.cpbSelectedColour_BackColorChanged);
             // 
             // kryptonGreenValueLabel1
             // 
@@ -537,7 +518,6 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cpbSelectedColour)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -604,15 +584,15 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
 
         private void InitialiseWindow()
         {
-            knumRed.Value = kknbRed.Value;
+            //knumRed.Value = kknbRed.Value;
 
-            knumGreen.Value = kknbGreen.Value;
+            //knumGreen.Value = kknbGreen.Value;
 
-            knumBlue.Value = kknbBlue.Value;
+            //knumBlue.Value = kknbBlue.Value;
 
-            klblHexValue.Text = string.Empty;
+            //klblHexValue.Text = string.Empty;
 
-            cpbSelectedColour.BackColor = Color.Transparent;
+            //cpbSelectedColour.BackColor = Color.Transparent;
         }
 
         private string GetHexColourValue(Color colour) => ColorTranslator.ToHtml(colour);
@@ -621,11 +601,11 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
         {
             if (useKnobs)
             {
-                kknbBlue.Value = colour.B;
+                //kknbBlue.Value = colour.B;
 
-                kknbGreen.Value = colour.G;
+                //kknbGreen.Value = colour.G;
 
-                kknbRed.Value = colour.R;
+                //kknbRed.Value = colour.R;
             }
             else
             {
@@ -642,59 +622,59 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             knumRed.Value = r;
         }
 
-        private void ConstructSpecifiedColour(byte red, byte green, byte blue) => cpbSelectedColour.BackColor = Color.FromArgb(red, green, blue);
+        //private void ConstructSpecifiedColour(byte red, byte green, byte blue) => cpbSelectedColour.BackColor = Color.FromArgb(red, green, blue);
 
-        private void ConstructSpecifiedColour(int red, int green, int blue) => cpbSelectedColour.BackColor = Color.FromArgb(red, green, blue);
+        //private void ConstructSpecifiedColour(int red, int green, int blue) => cpbSelectedColour.BackColor = Color.FromArgb(red, green, blue);
         #endregion
 
         private void scpColour_ColorChanged(object sender, EventArgs e)
         {
-            cpbSelectedColour.BackColor = scpColour.Color;
+            //cpbSelectedColour.BackColor = scpColour.Color;
         }
 
         private void kknbRed_ValueChanged(object Sender)
         {
-            AlterLabel(ColourChannelLabel.REDLABEL, kknbRed.Value);
+            //AlterLabel(ColourChannelLabel.REDLABEL, kknbRed.Value);
 
-            ConstructSpecifiedColour(kknbRed.Value, kknbGreen.Value, kknbBlue.Value);
+            //ConstructSpecifiedColour(kknbRed.Value, kknbGreen.Value, kknbBlue.Value);
         }
 
         private void kknbGreen_ValueChanged(object Sender)
         {
-            AlterLabel(ColourChannelLabel.GREENLABEL, kknbGreen.Value);
+            //AlterLabel(ColourChannelLabel.GREENLABEL, kknbGreen.Value);
 
-            ConstructSpecifiedColour(kknbRed.Value, kknbGreen.Value, kknbBlue.Value);
+            //ConstructSpecifiedColour(kknbRed.Value, kknbGreen.Value, kknbBlue.Value);
         }
 
         private void kknbBlue_ValueChanged(object Sender)
         {
-            AlterLabel(ColourChannelLabel.BLUELABEL, kknbBlue.Value);
+            //AlterLabel(ColourChannelLabel.BLUELABEL, kknbBlue.Value);
 
-            ConstructSpecifiedColour(kknbRed.Value, kknbGreen.Value, kknbBlue.Value);
+            //ConstructSpecifiedColour(kknbRed.Value, kknbGreen.Value, kknbBlue.Value);
         }
 
         private void knumRed_ValueChanged(object sender, EventArgs e)
         {
-            ConstructSpecifiedColour((byte)knumRed.Value, (byte)knumGreen.Value, (byte)knumBlue.Value);
+            //ConstructSpecifiedColour((byte)knumRed.Value, (byte)knumGreen.Value, (byte)knumBlue.Value);
         }
 
         private void knumGreen_ValueChanged(object sender, EventArgs e)
         {
-            ConstructSpecifiedColour((byte)knumRed.Value, (byte)knumGreen.Value, (byte)knumBlue.Value);
+            //ConstructSpecifiedColour((byte)knumRed.Value, (byte)knumGreen.Value, (byte)knumBlue.Value);
         }
 
         private void knumBlue_ValueChanged(object sender, EventArgs e)
         {
-            ConstructSpecifiedColour((byte)knumRed.Value, (byte)knumGreen.Value, (byte)knumBlue.Value);
+            //ConstructSpecifiedColour((byte)knumRed.Value, (byte)knumGreen.Value, (byte)knumBlue.Value);
         }
 
         private void cpbSelectedColour_BackColorChanged(object sender, EventArgs e)
         {
-            klblHexValue.Text = GetHexColourValue(cpbSelectedColour.BackColor);
+            //klblHexValue.Text = GetHexColourValue(cpbSelectedColour.BackColor);
 
-            UpdateColourValues(cpbSelectedColour.BackColor);
+            //UpdateColourValues(cpbSelectedColour.BackColor);
 
-            Colour = cpbSelectedColour.BackColor;
+            //Colour = cpbSelectedColour.BackColor;
         }
 
         private void kbtnCancel_Click(object sender, EventArgs e)
