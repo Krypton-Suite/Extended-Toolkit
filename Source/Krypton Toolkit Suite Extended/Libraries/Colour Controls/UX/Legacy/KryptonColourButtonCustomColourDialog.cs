@@ -1,9 +1,10 @@
-﻿using Krypton.Toolkit.Extended.Base;
+﻿using Krypton.Toolkit.Extended.Colour.Controls;
+using Krypton.Toolkit.Suite.Extended.Base;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Colour.Controls
+namespace Krypton.Toolkit.Suite.Extended.Colour.Controls
 {
     public class KryptonColourButtonCustomColourDialog : KryptonForm
     {
@@ -73,7 +74,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.ktbHexadecimalColourValue = new Krypton.Toolkit.KryptonTextBox();
             this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
             this.cwColours = new Krypton.Toolkit.Extended.Colour.Controls.ColourWheelControl();
-            this.cpbSelectedColour = new Krypton.Toolkit.Extended.Base.CircularPictureBox();
+            this.cpbSelectedColour = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
             this.kryptonGreenValueLabel1 = new Krypton.Toolkit.Extended.Colour.Controls.KryptonGreenValueLabel();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
