@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Krypton.Toolkit.Extended.Dialogs
+namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
     public class KryptonTypefaceDialog : KryptonForm
     {
@@ -20,8 +20,8 @@ namespace Krypton.Toolkit.Extended.Dialogs
         private void InitializeComponent()
         {
             this.kryptonPanelExtended1 = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonPanelExtended();
-            this.kryptonOKDialogButton1 = new Krypton.Toolkit.Extended.Dialogs.KryptonOKDialogButton();
-            this.kryptonCancelDialogButton1 = new Krypton.Toolkit.Extended.Dialogs.KryptonCancelDialogButton();
+            this.kryptonOKDialogButton1 = new Krypton.Toolkit.Suite.Extended.Dialogs.KryptonOKDialogButton();
+            this.kryptonCancelDialogButton1 = new Krypton.Toolkit.Suite.Extended.Dialogs.KryptonCancelDialogButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.kryptonPanelExtended2 = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonPanelExtended();
             this.kryptonTypefaceExample1 = new Krypton.Toolkit.Extended.Base.KryptonTypefaceExample();

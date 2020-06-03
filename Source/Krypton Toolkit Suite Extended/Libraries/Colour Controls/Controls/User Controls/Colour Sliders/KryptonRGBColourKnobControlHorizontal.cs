@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Colour.Controls.Controls
+namespace Krypton.Toolkit.Suite.Extended.Colour.Controls.Controls
 {
     public class KryptonRGBColourKnobControlHorizontal : UserControl
     {
@@ -18,12 +18,12 @@ namespace Krypton.Toolkit.Extended.Colour.Controls.Controls
 
         private void InitializeComponent()
         {
-            this.kryptonKnobControl1 = new Krypton.Toolkit.Extended.Base.KryptonKnobControl();
-            this.kryptonKnobControl2 = new Krypton.Toolkit.Extended.Base.KryptonKnobControl();
-            this.kryptonKnobControl3 = new Krypton.Toolkit.Extended.Base.KryptonKnobControl();
-            this.kryptonRedValueLabel1 = new Krypton.Toolkit.Extended.Colour.Controls.KryptonRedValueLabel();
-            this.kryptonGreenValueLabel1 = new Krypton.Toolkit.Extended.Colour.Controls.KryptonGreenValueLabel();
-            this.kryptonBlueValueLabel1 = new Krypton.Toolkit.Extended.Colour.Controls.KryptonBlueValueLabel();
+            this.kryptonKnobControl1 = new Krypton.Toolkit.Suite.Extended.Base.KryptonKnobControl();
+            this.kryptonKnobControl2 = new Krypton.Toolkit.Suite.Extended.Base.KryptonKnobControl();
+            this.kryptonKnobControl3 = new Krypton.Toolkit.Suite.Extended.Base.KryptonKnobControl();
+            this.kryptonRedValueLabel1 = new Krypton.Toolkit.Suite.Extended.Colour.Controls.KryptonRedValueLabel();
+            this.kryptonGreenValueLabel1 = new Krypton.Toolkit.Suite.Extended.Colour.Controls.KryptonGreenValueLabel();
+            this.kryptonBlueValueLabel1 = new Krypton.Toolkit.Suite.Extended.Colour.Controls.KryptonBlueValueLabel();
             this.SuspendLayout();
             // 
             // kryptonKnobControl1

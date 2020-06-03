@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Colour.Controls
+namespace Krypton.Toolkit.Suite.Extended.Colour.Controls
 {
     public delegate void ColourChangedHandler(object sender, ColourChangedEventArgs e);
 
@@ -23,15 +23,15 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
 
         private void InitializeComponent()
         {
-            this.knudBlue = new Krypton.Toolkit.Extended.Colour.Controls.KryptonBlueValueNumericBox();
-            this.knudRed = new Krypton.Toolkit.Extended.Colour.Controls.KryptonRedValueNumericBox();
-            this.knudGreen = new Krypton.Toolkit.Extended.Colour.Controls.KryptonGreenValueNumericBox();
-            this.ktrkGreen = new Krypton.Toolkit.Extended.Colour.Controls.KryptonGreenTrackBar();
-            this.ktrkBlue = new Krypton.Toolkit.Extended.Colour.Controls.KryptonBlueTrackBar();
-            this.ktrkRed = new Krypton.Toolkit.Extended.Colour.Controls.KryptonRedTrackBar();
-            this.klblBlue = new Krypton.Toolkit.Extended.Colour.Controls.KryptonBlueValueLabel();
-            this.klblGreen = new Krypton.Toolkit.Extended.Colour.Controls.KryptonGreenValueLabel();
-            this.klblRed = new Krypton.Toolkit.Extended.Colour.Controls.KryptonRedValueLabel();
+            this.knudBlue = new Krypton.Toolkit.Suite.Extended.Colour.Controls.KryptonBlueValueNumericBox();
+            this.knudRed = new Krypton.Toolkit.Suite.Extended.Colour.Controls.KryptonRedValueNumericBox();
+            this.knudGreen = new Krypton.Toolkit.Suite.Extended.Colour.Controls.KryptonGreenValueNumericBox();
+            this.ktrkGreen = new Krypton.Toolkit.Suite.Extended.Colour.Controls.KryptonGreenTrackBar();
+            this.ktrkBlue = new Krypton.Toolkit.Suite.Extended.Colour.Controls.KryptonBlueTrackBar();
+            this.ktrkRed = new Krypton.Toolkit.Suite.Extended.Colour.Controls.KryptonRedTrackBar();
+            this.klblBlue = new Krypton.Toolkit.Suite.Extended.Colour.Controls.KryptonBlueValueLabel();
+            this.klblGreen = new Krypton.Toolkit.Suite.Extended.Colour.Controls.KryptonGreenValueLabel();
+            this.klblRed = new Krypton.Toolkit.Suite.Extended.Colour.Controls.KryptonRedValueLabel();
             this.SuspendLayout();
             // 
             // knudBlue

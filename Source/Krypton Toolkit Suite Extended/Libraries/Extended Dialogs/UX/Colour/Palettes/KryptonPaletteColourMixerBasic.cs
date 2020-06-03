@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Drawing;
 
-namespace Krypton.Toolkit.Extended.Dialogs
+namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
     [DefaultEvent("ColourChanged"), DefaultProperty("Colour")]
     public class KryptonPaletteColourMixerBasic : KryptonForm
@@ -24,8 +24,8 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             this.cpbColourPreview = new Krypton.Toolkit.Extended.Base.CircularPictureBox();
             this.krgbcsColour = new Krypton.Toolkit.Extended.Colour.Controls.KryptonRGBColourSliderHorizontal();
-            this.kbtnOk = new Krypton.Toolkit.Extended.Dialogs.KryptonOKDialogButton();
-            this.kbtnCancel = new Krypton.Toolkit.Extended.Dialogs.KryptonCancelDialogButton();
+            this.kbtnOk = new Krypton.Toolkit.Suite.Extended.Dialogs.KryptonOKDialogButton();
+            this.kbtnCancel = new Krypton.Toolkit.Suite.Extended.Dialogs.KryptonCancelDialogButton();
             ((System.ComponentModel.ISupportInitialize)(this.kpnlButtons)).BeginInit();
             this.kpnlButtons.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();

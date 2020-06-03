@@ -7,7 +7,7 @@ using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Colour.Controls
+namespace Krypton.Toolkit.Suite.Extended.Colour.Controls
 {
     [DefaultProperty("Colour"), DefaultEvent("ColourChanged")]
     public class ColourGridControl : Control, IColourEditor

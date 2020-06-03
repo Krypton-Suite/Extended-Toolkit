@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Krypton.Toolkit.Extended.Dialogs.Resources {
+namespace Krypton.Toolkit.Suite.Extended.Dialogs.Resources {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Krypton.Toolkit.Extended.Dialogs.Resources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Krypton.Toolkit.Extended.Dialogs.Resources.InputBoxResources", typeof(InputBoxResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Krypton.Toolkit.Suite.Extended.Dialogs.Resources.InputBoxResources", typeof(InputBoxResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

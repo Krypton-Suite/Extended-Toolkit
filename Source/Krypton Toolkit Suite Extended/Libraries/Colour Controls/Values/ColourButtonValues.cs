@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Krypton.Toolkit.Suite.Extended.Colour.Controls.Resources;
+using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Design;
 
-namespace Krypton.Toolkit.Extended.Colour.Controls
+namespace Krypton.Toolkit.Suite.Extended.Colour.Controls
 {
     public class ColourButtonValues : Storage, IContentValues
     {

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Colour.Controls
+namespace Krypton.Toolkit.Suite.Extended.Colour.Controls
 {
     public class KryptonRGBColourKnobControlVertical : UserControl
     {
@@ -19,12 +19,12 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
 
         private void InitializeComponent()
         {
-            this.kryptonBlueValueLabel1 = new Krypton.Toolkit.Extended.Colour.Controls.KryptonBlueValueLabel();
-            this.klblGreen = new Krypton.Toolkit.Extended.Colour.Controls.KryptonGreenValueLabel();
-            this.klblRed = new Krypton.Toolkit.Extended.Colour.Controls.KryptonRedValueLabel();
-            this.knbBlue = new Krypton.Toolkit.Extended.Base.KryptonKnobControl();
-            this.knbGreen = new Krypton.Toolkit.Extended.Base.KryptonKnobControl();
-            this.knbRed = new Krypton.Toolkit.Extended.Base.KryptonKnobControl();
+            this.kryptonBlueValueLabel1 = new Krypton.Toolkit.Suite.Extended.Colour.Controls.KryptonBlueValueLabel();
+            this.klblGreen = new Krypton.Toolkit.Suite.Extended.Colour.Controls.KryptonGreenValueLabel();
+            this.klblRed = new Krypton.Toolkit.Suite.Extended.Colour.Controls.KryptonRedValueLabel();
+            this.knbBlue = new Krypton.Toolkit.Suite.Extended.Base.KryptonKnobControl();
+            this.knbGreen = new Krypton.Toolkit.Suite.Extended.Base.KryptonKnobControl();
+            this.knbRed = new Krypton.Toolkit.Suite.Extended.Base.KryptonKnobControl();
             this.SuspendLayout();
             // 
             // kryptonBlueValueLabel1
@@ -104,7 +104,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.knbBlue.SmallChange = 5;
             this.knbBlue.TabIndex = 5;
             this.knbBlue.Value = 0;
-            this.knbBlue.ValueChanged += new Krypton.Toolkit.Extended.Base.ValueChangedEventHandler(this.knbBlue_ValueChanged);
+            this.knbBlue.ValueChanged += new Krypton.Toolkit.Suite.Extended.Base.ValueChangedEventHandler(this.knbBlue_ValueChanged);
             // 
             // knbGreen
             // 
@@ -123,7 +123,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.knbGreen.SmallChange = 5;
             this.knbGreen.TabIndex = 4;
             this.knbGreen.Value = 0;
-            this.knbGreen.ValueChanged += new Krypton.Toolkit.Extended.Base.ValueChangedEventHandler(this.knbGreen_ValueChanged);
+            this.knbGreen.ValueChanged += new Krypton.Toolkit.Suite.Extended.Base.ValueChangedEventHandler(this.knbGreen_ValueChanged);
             // 
             // knbRed
             // 
@@ -142,7 +142,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.knbRed.SmallChange = 5;
             this.knbRed.TabIndex = 3;
             this.knbRed.Value = 0;
-            this.knbRed.ValueChanged += new Krypton.Toolkit.Extended.Base.ValueChangedEventHandler(this.knbRed_ValueChanged);
+            this.knbRed.ValueChanged += new Krypton.Toolkit.Suite.Extended.Base.ValueChangedEventHandler(this.knbRed_ValueChanged);
             // 
             // KryptonRGBColourKnobControlVertical
             // 

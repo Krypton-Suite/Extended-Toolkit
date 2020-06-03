@@ -8,7 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Dialogs
+namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
     [DefaultEvent("PreviewColourChanged"), DefaultProperty("Colour")]
     public class KryptonColourPickerDialog : KryptonForm
@@ -38,8 +38,8 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.scp = new Krypton.Toolkit.Extended.Colour.Controls.ScreenColourPickerControl();
             this.ceColours = new Krypton.Toolkit.Extended.Colour.Controls.ColourEditorUserControl();
             this.cwColour = new Krypton.Toolkit.Extended.Colour.Controls.ColourWheelControl();
-            this.kbtnCancel = new Krypton.Toolkit.Extended.Dialogs.KryptonCancelDialogButton();
-            this.kbtnOk = new Krypton.Toolkit.Extended.Dialogs.KryptonOKDialogButton();
+            this.kbtnCancel = new Krypton.Toolkit.Suite.Extended.Dialogs.KryptonCancelDialogButton();
+            this.kbtnOk = new Krypton.Toolkit.Suite.Extended.Dialogs.KryptonOKDialogButton();
             this.cem = new Krypton.Toolkit.Extended.Colour.Controls.ColourEditorManager();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
@@ -72,7 +72,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kbtnSavePalette.Size = new System.Drawing.Size(22, 22);
             this.kbtnSavePalette.TabIndex = 4;
             this.kbtnSavePalette.ToolTipValues.Description = "Save current custom palette for futre use.";
-            this.kbtnSavePalette.Values.Image = global::Krypton.Toolkit.Extended.Dialogs.Properties.Resources.palette_save;
+            this.kbtnSavePalette.Values.Image = global::Krypton.Toolkit.Suite.Extended.Dialogs.Properties.Resources.palette_save;
             this.kbtnSavePalette.Values.Text = "";
             this.kbtnSavePalette.Click += new System.EventHandler(this.kbtnSavePalette_Click);
             // 
@@ -86,8 +86,8 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kbtnLoadPalette.TabIndex = 1;
             this.kbtnLoadPalette.ToolTipValues.Description = "Load a custom palette.";
             this.kbtnLoadPalette.ToolTipValues.Heading = "Load Custom Palette";
-            this.kbtnLoadPalette.ToolTipValues.Image = global::Krypton.Toolkit.Extended.Dialogs.Properties.Resources.palette_load;
-            this.kbtnLoadPalette.Values.Image = global::Krypton.Toolkit.Extended.Dialogs.Properties.Resources.palette_load;
+            this.kbtnLoadPalette.ToolTipValues.Image = global::Krypton.Toolkit.Suite.Extended.Dialogs.Properties.Resources.palette_load;
+            this.kbtnLoadPalette.Values.Image = global::Krypton.Toolkit.Suite.Extended.Dialogs.Properties.Resources.palette_load;
             this.kbtnLoadPalette.Values.Text = "";
             this.kbtnLoadPalette.Click += new System.EventHandler(this.kbtnLoadPalette_Click);
             // 
@@ -114,7 +114,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             // scp
             // 
             this.scp.Colour = System.Drawing.Color.Empty;
-            this.scp.Image = global::Krypton.Toolkit.Extended.Dialogs.Properties.Resources.eyedropper;
+            this.scp.Image = global::Krypton.Toolkit.Suite.Extended.Dialogs.Properties.Resources.eyedropper;
             this.scp.Location = new System.Drawing.Point(443, 87);
             this.scp.Name = "scp";
             this.scp.Size = new System.Drawing.Size(119, 103);

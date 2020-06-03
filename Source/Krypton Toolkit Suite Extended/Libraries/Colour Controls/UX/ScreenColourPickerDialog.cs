@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Colour.Controls
+namespace Krypton.Toolkit.Suite.Extended.Colour.Controls
 {
     public class ScreenColourPickerDialog : KryptonForm
     {
@@ -35,13 +35,13 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.knumGreen = new Krypton.Toolkit.KryptonNumericUpDown();
             this.knumRed = new Krypton.Toolkit.KryptonNumericUpDown();
             this.klblHexValue = new Krypton.Toolkit.KryptonLabel();
-            this.scpColour = new Krypton.Toolkit.Extended.Colour.Controls.ScreenColourPickerControl();
-            this.cwColour = new Krypton.Toolkit.Extended.Colour.Controls.ColourWheelControl();
+            this.scpColour = new Krypton.Toolkit.Suite.Extended.Colour.Controls.ScreenColourPickerControl();
+            this.cwColour = new Krypton.Toolkit.Suite.Extended.Colour.Controls.ColourWheelControl();
             this.kknbRed = new Krypton.Toolkit.Suite.Extended.Base.KryptonKnobControl();
             this.kknbGreen = new Krypton.Toolkit.Suite.Extended.Base.KryptonKnobControl();
             this.kknbBlue = new Krypton.Toolkit.Suite.Extended.Base.KryptonKnobControl();
             this.cpbSelectedColour = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
-            this.cem = new Krypton.Toolkit.Extended.Colour.Controls.ColourEditorManager();
+            this.cem = new Krypton.Toolkit.Suite.Extended.Colour.Controls.ColourEditorManager();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
@@ -169,7 +169,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             // scpColour
             // 
             this.scpColour.Colour = System.Drawing.Color.Empty;
-            this.scpColour.Image = global::Krypton.Toolkit.Extended.Colour.Controls.Properties.Resources.eyedropper;
+            this.scpColour.Image = global::Krypton.Toolkit.Suite.Extended.Colour.Controls.Properties.Resources.eyedropper;
             this.scpColour.Location = new System.Drawing.Point(12, 173);
             this.scpColour.Name = "scpColour";
             this.scpColour.Size = new System.Drawing.Size(166, 158);

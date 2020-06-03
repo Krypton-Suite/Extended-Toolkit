@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Drawing;
 
-namespace Krypton.Toolkit.Extended.Dialogs
+namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
     [DefaultEvent("SelectedColourChanged"), DefaultProperty("Colour")]
     public class KryptonBasicColourDialog : KryptonForm
@@ -27,8 +27,8 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kpnlButtons = new Krypton.Toolkit.KryptonPanel();
             this.txtHexColour = new Krypton.Toolkit.Extended.Colour.Controls.ColourHexadecimalTextBox();
             this.kryptonAlphaValueLabel1 = new Krypton.Toolkit.Extended.Colour.Controls.KryptonAlphaValueLabel();
-            this.kbtnOk = new Krypton.Toolkit.Extended.Dialogs.KryptonOKDialogButton();
-            this.kbtnCancel = new Krypton.Toolkit.Extended.Dialogs.KryptonCancelDialogButton();
+            this.kbtnOk = new Krypton.Toolkit.Suite.Extended.Dialogs.KryptonOKDialogButton();
+            this.kbtnCancel = new Krypton.Toolkit.Suite.Extended.Dialogs.KryptonCancelDialogButton();
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             this.klblBlueValue = new Krypton.Toolkit.Extended.Colour.Controls.KryptonBlueValueLabel();
             this.klblRedValue = new Krypton.Toolkit.Extended.Colour.Controls.KryptonRedValueLabel();

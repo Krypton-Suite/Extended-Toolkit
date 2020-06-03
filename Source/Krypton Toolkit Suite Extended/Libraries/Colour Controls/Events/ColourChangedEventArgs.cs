@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 
-namespace Krypton.Toolkit.Extended.Colour.Controls
+namespace Krypton.Toolkit.Suite.Extended.Colour.Controls
 {
     public class ColourChangedEventArgs : EventArgs
     {

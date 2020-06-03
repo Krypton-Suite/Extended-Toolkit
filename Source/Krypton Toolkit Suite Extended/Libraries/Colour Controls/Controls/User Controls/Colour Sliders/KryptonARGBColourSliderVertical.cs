@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Colour.Controls
+namespace Krypton.Toolkit.Suite.Extended.Colour.Controls
 {
     [DefaultEvent("ColourChanged"), DefaultProperty("Colour")]
     public class KryptonARGBColourSliderVertical : UserControl
@@ -31,24 +31,24 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
 
         private void InitializeComponent()
         {
-            this.kkcBlue = new Krypton.Toolkit.Extended.Base.KryptonKnobControl();
-            this.kkcGreen = new Krypton.Toolkit.Extended.Base.KryptonKnobControl();
-            this.kkcRed = new Krypton.Toolkit.Extended.Base.KryptonKnobControl();
-            this.kkcAlpha = new Krypton.Toolkit.Extended.Base.KryptonKnobControl();
+            this.kkcBlue = new Krypton.Toolkit.Suite.Extended.Base.KryptonKnobControl();
+            this.kkcGreen = new Krypton.Toolkit.Suite.Extended.Base.KryptonKnobControl();
+            this.kkcRed = new Krypton.Toolkit.Suite.Extended.Base.KryptonKnobControl();
+            this.kkcAlpha = new Krypton.Toolkit.Suite.Extended.Base.KryptonKnobControl();
             this.pnlKnobs = new System.Windows.Forms.Panel();
             this.pnlControls = new System.Windows.Forms.Panel();
-            this.knudAlphaValue = new Krypton.Toolkit.Extended.Colour.Controls.KryptonAlphaValueNumericBox();
-            this.knudBlueValue = new Krypton.Toolkit.Extended.Colour.Controls.KryptonBlueValueNumericBox();
-            this.knudRedValue = new Krypton.Toolkit.Extended.Colour.Controls.KryptonRedValueNumericBox();
-            this.knudGreenValue = new Krypton.Toolkit.Extended.Colour.Controls.KryptonGreenValueNumericBox();
-            this.ktrkGreenValue = new Krypton.Toolkit.Extended.Colour.Controls.KryptonGreenTrackBar();
-            this.ktrkBlueValue = new Krypton.Toolkit.Extended.Colour.Controls.KryptonBlueTrackBar();
-            this.ktrkRedValue = new Krypton.Toolkit.Extended.Colour.Controls.KryptonRedTrackBar();
-            this.ktrkAlphaValue = new Krypton.Toolkit.Extended.Colour.Controls.KryptonAlphaTrackBar();
-            this.klblBlue = new Krypton.Toolkit.Extended.Colour.Controls.KryptonBlueValueLabel();
-            this.klblGreen = new Krypton.Toolkit.Extended.Colour.Controls.KryptonGreenValueLabel();
-            this.klblRed = new Krypton.Toolkit.Extended.Colour.Controls.KryptonRedValueLabel();
-            this.klblAlpha = new Krypton.Toolkit.Extended.Colour.Controls.KryptonAlphaValueLabel();
+            this.knudAlphaValue = new Krypton.Toolkit.Suite.Extended.Colour.Controls.KryptonAlphaValueNumericBox();
+            this.knudBlueValue = new Krypton.Toolkit.Suite.Extended.Colour.Controls.KryptonBlueValueNumericBox();
+            this.knudRedValue = new Krypton.Toolkit.Suite.Extended.Colour.Controls.KryptonRedValueNumericBox();
+            this.knudGreenValue = new Krypton.Toolkit.Suite.Extended.Colour.Controls.KryptonGreenValueNumericBox();
+            this.ktrkGreenValue = new Krypton.Toolkit.Suite.Extended.Colour.Controls.KryptonGreenTrackBar();
+            this.ktrkBlueValue = new Krypton.Toolkit.Suite.Extended.Colour.Controls.KryptonBlueTrackBar();
+            this.ktrkRedValue = new Krypton.Toolkit.Suite.Extended.Colour.Controls.KryptonRedTrackBar();
+            this.ktrkAlphaValue = new Krypton.Toolkit.Suite.Extended.Colour.Controls.KryptonAlphaTrackBar();
+            this.klblBlue = new Krypton.Toolkit.Suite.Extended.Colour.Controls.KryptonBlueValueLabel();
+            this.klblGreen = new Krypton.Toolkit.Suite.Extended.Colour.Controls.KryptonGreenValueLabel();
+            this.klblRed = new Krypton.Toolkit.Suite.Extended.Colour.Controls.KryptonRedValueLabel();
+            this.klblAlpha = new Krypton.Toolkit.Suite.Extended.Colour.Controls.KryptonAlphaValueLabel();
             this.pnlKnobs.SuspendLayout();
             this.pnlControls.SuspendLayout();
             this.SuspendLayout();
@@ -73,7 +73,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.kkcBlue.SmallChange = 5;
             this.kkcBlue.TabIndex = 180;
             this.kkcBlue.Value = 0;
-            this.kkcBlue.ValueChanged += new Krypton.Toolkit.Extended.Base.ValueChangedEventHandler(this.kkcBlue_ValueChanged);
+            this.kkcBlue.ValueChanged += new Krypton.Toolkit.Suite.Extended.Base.ValueChangedEventHandler(this.kkcBlue_ValueChanged);
             // 
             // kkcGreen
             // 
@@ -95,7 +95,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.kkcGreen.SmallChange = 5;
             this.kkcGreen.TabIndex = 179;
             this.kkcGreen.Value = 0;
-            this.kkcGreen.ValueChanged += new Krypton.Toolkit.Extended.Base.ValueChangedEventHandler(this.kkcGreen_ValueChanged);
+            this.kkcGreen.ValueChanged += new Krypton.Toolkit.Suite.Extended.Base.ValueChangedEventHandler(this.kkcGreen_ValueChanged);
             // 
             // kkcRed
             // 
@@ -117,7 +117,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.kkcRed.SmallChange = 5;
             this.kkcRed.TabIndex = 178;
             this.kkcRed.Value = 0;
-            this.kkcRed.ValueChanged += new Krypton.Toolkit.Extended.Base.ValueChangedEventHandler(this.kkcRed_ValueChanged);
+            this.kkcRed.ValueChanged += new Krypton.Toolkit.Suite.Extended.Base.ValueChangedEventHandler(this.kkcRed_ValueChanged);
             // 
             // kkcAlpha
             // 
@@ -139,7 +139,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.kkcAlpha.SmallChange = 5;
             this.kkcAlpha.TabIndex = 175;
             this.kkcAlpha.Value = 0;
-            this.kkcAlpha.ValueChanged += new Krypton.Toolkit.Extended.Base.ValueChangedEventHandler(this.kkcAlpha_ValueChanged);
+            this.kkcAlpha.ValueChanged += new Krypton.Toolkit.Suite.Extended.Base.ValueChangedEventHandler(this.kkcAlpha_ValueChanged);
             // 
             // pnlKnobs
             // 

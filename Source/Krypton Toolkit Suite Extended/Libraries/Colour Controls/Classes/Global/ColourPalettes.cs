@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Reflection;
 
-namespace Krypton.Toolkit.Extended.Colour.Controls
+namespace Krypton.Toolkit.Suite.Extended.Colour.Controls
 {
     public static class ColourPalettes
     {

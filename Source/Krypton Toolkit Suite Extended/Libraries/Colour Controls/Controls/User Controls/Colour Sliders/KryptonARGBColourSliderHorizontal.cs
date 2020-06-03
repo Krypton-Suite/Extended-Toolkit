@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Colour.Controls
+namespace Krypton.Toolkit.Suite.Extended.Colour.Controls
 {
     public class KryptonARGBColourSliderHorizontal : UserControl
     {
@@ -22,29 +22,29 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
         private Base.KryptonKnobControl kkcGreen;
         private Base.KryptonKnobControl kkcBlue;
         private KryptonAlphaValueLabel klblAlpha;
-    
+
         #region Design Code
 
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.knudBlue = new Krypton.Toolkit.Extended.Colour.Controls.KryptonBlueValueNumericBox();
-            this.ktrkBlue = new Krypton.Toolkit.Extended.Colour.Controls.KryptonBlueTrackBar();
-            this.ktrkGreen = new Krypton.Toolkit.Extended.Colour.Controls.KryptonGreenTrackBar();
-            this.knudGreen = new Krypton.Toolkit.Extended.Colour.Controls.KryptonGreenValueNumericBox();
-            this.ktrkRed = new Krypton.Toolkit.Extended.Colour.Controls.KryptonRedTrackBar();
-            this.knudRed = new Krypton.Toolkit.Extended.Colour.Controls.KryptonRedValueNumericBox();
-            this.ktrkAlpha = new Krypton.Toolkit.Extended.Colour.Controls.KryptonAlphaTrackBar();
-            this.knudAlpha = new Krypton.Toolkit.Extended.Colour.Controls.KryptonAlphaValueNumericBox();
-            this.klblBlue = new Krypton.Toolkit.Extended.Colour.Controls.KryptonBlueValueLabel();
-            this.klblGreen = new Krypton.Toolkit.Extended.Colour.Controls.KryptonGreenValueLabel();
-            this.klblRed = new Krypton.Toolkit.Extended.Colour.Controls.KryptonRedValueLabel();
-            this.klblAlpha = new Krypton.Toolkit.Extended.Colour.Controls.KryptonAlphaValueLabel();
-            this.kkcAlpha = new Krypton.Toolkit.Extended.Base.KryptonKnobControl();
-            this.kkcRed = new Krypton.Toolkit.Extended.Base.KryptonKnobControl();
-            this.kkcGreen = new Krypton.Toolkit.Extended.Base.KryptonKnobControl();
-            this.kkcBlue = new Krypton.Toolkit.Extended.Base.KryptonKnobControl();
+            this.knudBlue = new Krypton.Toolkit.Suite.Extended.Colour.Controls.KryptonBlueValueNumericBox();
+            this.ktrkBlue = new Krypton.Toolkit.Suite.Extended.Colour.Controls.KryptonBlueTrackBar();
+            this.ktrkGreen = new Krypton.Toolkit.Suite.Extended.Colour.Controls.KryptonGreenTrackBar();
+            this.knudGreen = new Krypton.Toolkit.Suite.Extended.Colour.Controls.KryptonGreenValueNumericBox();
+            this.ktrkRed = new Krypton.Toolkit.Suite.Extended.Colour.Controls.KryptonRedTrackBar();
+            this.knudRed = new Krypton.Toolkit.Suite.Extended.Colour.Controls.KryptonRedValueNumericBox();
+            this.ktrkAlpha = new Krypton.Toolkit.Suite.Extended.Colour.Controls.KryptonAlphaTrackBar();
+            this.knudAlpha = new Krypton.Toolkit.Suite.Extended.Colour.Controls.KryptonAlphaValueNumericBox();
+            this.klblBlue = new Krypton.Toolkit.Suite.Extended.Colour.Controls.KryptonBlueValueLabel();
+            this.klblGreen = new Krypton.Toolkit.Suite.Extended.Colour.Controls.KryptonGreenValueLabel();
+            this.klblRed = new Krypton.Toolkit.Suite.Extended.Colour.Controls.KryptonRedValueLabel();
+            this.klblAlpha = new Krypton.Toolkit.Suite.Extended.Colour.Controls.KryptonAlphaValueLabel();
+            this.kkcAlpha = new Krypton.Toolkit.Suite.Extended.Base.KryptonKnobControl();
+            this.kkcRed = new Krypton.Toolkit.Suite.Extended.Base.KryptonKnobControl();
+            this.kkcGreen = new Krypton.Toolkit.Suite.Extended.Base.KryptonKnobControl();
+            this.kkcBlue = new Krypton.Toolkit.Suite.Extended.Base.KryptonKnobControl();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -83,7 +83,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             // 
             // knudBlue
             // 
-            this.knudBlue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.knudBlue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.knudBlue.Location = new System.Drawing.Point(411, 204);
             this.knudBlue.Maximum = new decimal(new int[] {
@@ -139,7 +139,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             // 
             // knudGreen
             // 
-            this.knudGreen.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.knudGreen.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.knudGreen.Location = new System.Drawing.Point(411, 145);
             this.knudGreen.Maximum = new decimal(new int[] {
@@ -177,7 +177,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             // 
             // knudRed
             // 
-            this.knudRed.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.knudRed.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.knudRed.Location = new System.Drawing.Point(411, 81);
             this.knudRed.Maximum = new decimal(new int[] {
@@ -208,7 +208,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             // 
             // knudAlpha
             // 
-            this.knudAlpha.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.knudAlpha.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.knudAlpha.Location = new System.Drawing.Point(411, 15);
             this.knudAlpha.Maximum = new decimal(new int[] {
@@ -225,7 +225,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             // 
             // klblBlue
             // 
-            this.klblBlue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.klblBlue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)));
             this.klblBlue.BlueValue = 0;
             this.klblBlue.ExtraText = "Blue Value";
@@ -247,7 +247,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             // 
             // klblGreen
             // 
-            this.klblGreen.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.klblGreen.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)));
             this.klblGreen.ExtraText = "Green Value";
             this.klblGreen.GreenValue = 0;
@@ -269,7 +269,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             // 
             // klblRed
             // 
-            this.klblRed.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.klblRed.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)));
             this.klblRed.ExtraText = "Red Value";
             this.klblRed.Location = new System.Drawing.Point(13, 81);
@@ -292,7 +292,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             // klblAlpha
             // 
             this.klblAlpha.AlphaValue = 0;
-            this.klblAlpha.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.klblAlpha.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)));
             this.klblAlpha.ExtraText = "Alpha Value";
             this.klblAlpha.Location = new System.Drawing.Point(13, 15);

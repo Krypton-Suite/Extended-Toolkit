@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Krypton.Toolkit.Suite.Extended.Colour.Controls.Resources;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -6,7 +7,7 @@ using System.Drawing.Design;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Colour.Controls
+namespace Krypton.Toolkit.Suite.Extended.Colour.Controls
 {
     [ToolboxItem(true), ToolboxBitmap(typeof(KryptonColourButtonExtended), "ToolboxBitmaps.KryptonColourButtonExtended.bmp"), DefaultEvent("SelectedColourChanged"), DefaultProperty("SelectedColour"), Designer(typeof(KryptonColourButtonExtendedDesigner)), DesignerCategory("code"), Description("Raises an event when the user clicks it."), ClassInterface(ClassInterfaceType.AutoDispatch), ComVisible(true)]
     public partial class KryptonColourButtonExtended : VisualSimpleBase, IButtonControl, IContentValues

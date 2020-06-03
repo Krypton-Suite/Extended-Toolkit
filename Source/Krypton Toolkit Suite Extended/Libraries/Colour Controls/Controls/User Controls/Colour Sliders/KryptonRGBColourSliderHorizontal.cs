@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Colour.Controls
+namespace Krypton.Toolkit.Suite.Extended.Colour.Controls
 {
     [DefaultEvent("ColourChanged"), DefaultProperty("Colour")]
     public class KryptonRGBColourSliderHorizontal : UserControl
@@ -34,24 +34,24 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KryptonRGBColourSliderHorizontal));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.kkcGreen = new Krypton.Toolkit.Extended.Base.KryptonKnobControl();
+            this.kkcGreen = new Krypton.Toolkit.Suite.Extended.Base.KryptonKnobControl();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.kkcRed = new Krypton.Toolkit.Extended.Base.KryptonKnobControl();
+            this.kkcRed = new Krypton.Toolkit.Suite.Extended.Base.KryptonKnobControl();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.kkcBlue = new Krypton.Toolkit.Extended.Base.KryptonKnobControl();
+            this.kkcBlue = new Krypton.Toolkit.Suite.Extended.Base.KryptonKnobControl();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.ktrkGreen = new Krypton.Toolkit.Extended.Colour.Controls.KryptonGreenTrackBar();
-            this.knudGreen = new Krypton.Toolkit.Extended.Colour.Controls.KryptonGreenValueNumericBox();
-            this.klblGreen = new Krypton.Toolkit.Extended.Colour.Controls.KryptonGreenValueLabel();
-            this.ktrkRed = new Krypton.Toolkit.Extended.Colour.Controls.KryptonRedTrackBar();
-            this.knudRed = new Krypton.Toolkit.Extended.Colour.Controls.KryptonRedValueNumericBox();
-            this.klblRed = new Krypton.Toolkit.Extended.Colour.Controls.KryptonRedValueLabel();
-            this.ktrkBlue = new Krypton.Toolkit.Extended.Colour.Controls.KryptonBlueTrackBar();
-            this.klblBlue = new Krypton.Toolkit.Extended.Colour.Controls.KryptonBlueValueLabel();
-            this.kryptonBlueValueNumericBox1 = new Krypton.Toolkit.Extended.Colour.Controls.KryptonBlueValueNumericBox();
+            this.ktrkGreen = new Krypton.Toolkit.Suite.Extended.Colour.Controls.KryptonGreenTrackBar();
+            this.knudGreen = new Krypton.Toolkit.Suite.Extended.Colour.Controls.KryptonGreenValueNumericBox();
+            this.klblGreen = new Krypton.Toolkit.Suite.Extended.Colour.Controls.KryptonGreenValueLabel();
+            this.ktrkRed = new Krypton.Toolkit.Suite.Extended.Colour.Controls.KryptonRedTrackBar();
+            this.knudRed = new Krypton.Toolkit.Suite.Extended.Colour.Controls.KryptonRedValueNumericBox();
+            this.klblRed = new Krypton.Toolkit.Suite.Extended.Colour.Controls.KryptonRedValueLabel();
+            this.ktrkBlue = new Krypton.Toolkit.Suite.Extended.Colour.Controls.KryptonBlueTrackBar();
+            this.klblBlue = new Krypton.Toolkit.Suite.Extended.Colour.Controls.KryptonBlueValueLabel();
+            this.kryptonBlueValueNumericBox1 = new Krypton.Toolkit.Suite.Extended.Colour.Controls.KryptonBlueValueNumericBox();
             this.panel1.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel7.SuspendLayout();

@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Drawing;
 
-namespace Krypton.Toolkit.Extended.Colour.Controls
+namespace Krypton.Toolkit.Suite.Extended.Colour.Controls
 {
     public class ColourPickerDialog : KryptonForm
     {
+        #region Design Code
         private KryptonPanel kryptonPanel1;
         private Suite.Extended.Base.KryptonOKDialogButton kbtnOk;
         private System.Windows.Forms.Panel panel1;
@@ -25,7 +22,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.kbtnCancel = new Krypton.Toolkit.Suite.Extended.Base.KryptonCancelDialogButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
-            this.colourWheelControl1 = new Krypton.Toolkit.Extended.Colour.Controls.ColourWheelControl();
+            this.colourWheelControl1 = new Krypton.Toolkit.Suite.Extended.Colour.Controls.ColourWheelControl();
             this.colorGrid1 = new Cyotek.Windows.Forms.ColorGrid();
             this.kryptonButton1 = new Krypton.Toolkit.KryptonButton();
             this.kbtnSavePalette = new Krypton.Toolkit.KryptonButton();
@@ -108,7 +105,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.kryptonButton1.Name = "kryptonButton1";
             this.kryptonButton1.Size = new System.Drawing.Size(22, 22);
             this.kryptonButton1.TabIndex = 30;
-            this.kryptonButton1.Values.Image = global::Krypton.Toolkit.Extended.Colour.Controls.Properties.Resources.palette_load;
+            this.kryptonButton1.Values.Image = global::Krypton.Toolkit.Suite.Extended.Colour.Controls.Properties.Resources.palette_load;
             this.kryptonButton1.Values.Text = "";
             // 
             // kbtnSavePalette
@@ -119,7 +116,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.kbtnSavePalette.Name = "kbtnSavePalette";
             this.kbtnSavePalette.Size = new System.Drawing.Size(22, 22);
             this.kbtnSavePalette.TabIndex = 29;
-            this.kbtnSavePalette.Values.Image = global::Krypton.Toolkit.Extended.Colour.Controls.Properties.Resources.palette_save;
+            this.kbtnSavePalette.Values.Image = global::Krypton.Toolkit.Suite.Extended.Colour.Controls.Properties.Resources.palette_save;
             this.kbtnSavePalette.Values.Text = "";
             // 
             // ColourPickerDialog
@@ -137,5 +134,10 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.ResumeLayout(false);
 
         }
+        #endregion
+
+        #region Properties
+        public Color Colour { get; set; }
+        #endregion
     }
 }
