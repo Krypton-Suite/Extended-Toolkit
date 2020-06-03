@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Suite.Extended.Base
+namespace Krypton.Toolkit.Extended.Base
 {
     [ToolboxBitmap(typeof(KryptonUACElevatedButton))]
     public class KryptonRoundedUACElevatedButton : KryptonUACElevatedButton

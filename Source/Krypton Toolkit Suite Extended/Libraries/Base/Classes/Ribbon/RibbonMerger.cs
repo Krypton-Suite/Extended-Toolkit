@@ -6,7 +6,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 
-namespace Krypton.Toolkit.Suite.Extended.Base
+namespace Krypton.Toolkit.Extended.Base
 {
     /// <summary>
     /// Merges a krypton ribbon with another ribbon.

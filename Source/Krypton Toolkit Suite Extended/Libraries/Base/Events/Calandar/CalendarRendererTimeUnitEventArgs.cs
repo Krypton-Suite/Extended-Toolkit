@@ -1,4 +1,4 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Base
+﻿namespace Krypton.Toolkit.Extended.Base
 {
     /// <summary>
     /// Contains information about a <see cref="CalendarTimeScaleUnit"/> that is about to be painted

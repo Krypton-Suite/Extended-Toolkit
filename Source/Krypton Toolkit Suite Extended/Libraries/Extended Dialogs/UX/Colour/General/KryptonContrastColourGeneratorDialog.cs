@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Drawing;
 
-namespace Krypton.Toolkit.Suite.Extended.Dialogs
+namespace Krypton.Toolkit.Extended.Dialogs
 {
     public class KryptonContrastColourGeneratorDialog : KryptonForm
     {
@@ -53,8 +53,8 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.kpnlButtons = new Krypton.Toolkit.KryptonPanel();
             this.kcbKeepOpacityValues = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonCheckBoxExtended();
             this.kcbAutomateColourContrastValues = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonCheckBoxExtended();
-            this.kbtnOk = new Krypton.Toolkit.Suite.Extended.Dialogs.KryptonOKDialogButton();
-            this.kbtnCancel = new Krypton.Toolkit.Suite.Extended.Dialogs.KryptonCancelDialogButton();
+            this.kbtnOk = new Krypton.Toolkit.Extended.Dialogs.KryptonOKDialogButton();
+            this.kbtnCancel = new Krypton.Toolkit.Extended.Dialogs.KryptonCancelDialogButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             this.kbtnUtiliseContrastColour = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonButtonExtended();

@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Suite.Extended.Base
+namespace Krypton.Toolkit.Extended.Base
 {
     /// <summary>A <seealso cref="KryptonButton"/> with rounded corners.</summary>
     [ToolboxBitmap(typeof(KryptonButton)), Description("A KryptonButton with exposed rounding property")]

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 
-namespace Krypton.Toolkit.Suite.Extended.Colour.Controls
+namespace Krypton.Toolkit.Extended.Colour.Controls
 {
     /// <summary>
     /// Provides access to color comparison operations.

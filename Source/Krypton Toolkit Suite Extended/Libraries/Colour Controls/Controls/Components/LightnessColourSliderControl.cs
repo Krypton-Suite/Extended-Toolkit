@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Drawing;
 
-namespace Krypton.Toolkit.Suite.Extended.Colour.Controls
+namespace Krypton.Toolkit.Extended.Colour.Controls
 {
     [ToolboxItem(true)]
     public class LightnessColourSliderControl : ColourSliderControl, IColourEditor

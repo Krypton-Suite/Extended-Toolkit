@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Drawing.Drawing2D;
 
-namespace Krypton.Toolkit.Suite.Extended.Base
+namespace Krypton.Toolkit.Extended.Base
 {
     /// <summary>
     /// CalendarRenderer that renders low-intensity calendar for slow computers

@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.Design;
 using System.Windows.Forms.Design;
 
-namespace Krypton.Toolkit.Suite.Extended.Colour.Controls
+namespace Krypton.Toolkit.Extended.Colour.Controls
 {
     internal class KryptonColourButtonExtendedDesigner : ControlDesigner
     {

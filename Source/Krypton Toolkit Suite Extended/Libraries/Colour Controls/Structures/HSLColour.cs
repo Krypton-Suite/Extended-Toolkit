@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Text;
 
-namespace Krypton.Toolkit.Suite.Extended.Colour.Controls
+namespace Krypton.Toolkit.Extended.Colour.Controls
 {
     [Serializable]
     public struct HSLColour

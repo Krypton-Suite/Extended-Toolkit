@@ -5,7 +5,7 @@ using System.Drawing.Design;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Suite.Extended.Base
+namespace Krypton.Toolkit.Extended.Base
 {
     /// <summary>
     /// Combines button functionality with the styling features of the Krypton Toolkit.

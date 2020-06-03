@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace Krypton.Toolkit.Suite.Extended.Base
+namespace Krypton.Toolkit.Extended.Base
 {
     public class CalendarItemCancelEventArgs : CancelEventArgs
     {

@@ -3,7 +3,7 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Suite.Extended.Dialogs
+namespace Krypton.Toolkit.Extended.Dialogs
 {
     [ToolboxBitmap(typeof(KryptonButtonExtended))]
     public class KryptonYesDialogButton : KryptonButtonExtended

@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Suite.Extended.Base
+namespace Krypton.Toolkit.Extended.Base
 {
     /// <summary></summary>
     /// <typeparam name="TComboBoxItem">The type of the ComboBox item.</typeparam>

@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Suite.Extended.Base.Internal
+namespace Krypton.Toolkit.Extended.Base.Internal
 {
 	internal class InternalWIN32
 	{

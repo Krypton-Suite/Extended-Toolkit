@@ -1,4 +1,4 @@
-﻿using Krypton.Toolkit.Suite.Extended.Dialogs.Resources;
+﻿using Krypton.Toolkit.Extended.Dialogs.Resources;
 using System;
 using System.Diagnostics;
 using System.Drawing;
@@ -6,7 +6,7 @@ using System.IO;
 using System.Media;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Suite.Extended.Dialogs
+namespace Krypton.Toolkit.Extended.Dialogs
 {
     /// <summary>
     /// Adapted from: https://github.com/dotCoefficient/Notification/blob/master/Notification/Notification.cs

@@ -1,4 +1,4 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Dialogs
+﻿namespace Krypton.Toolkit.Extended.Dialogs
 {
     public enum InputBoxIcon
     {
@@ -68,6 +68,7 @@
         INHERIT
     }
 
+    /*
     /// <summary>The chosen language for buttons.</summary>
     public enum Language
     {
@@ -86,6 +87,7 @@
         /// <summary>A custom language definition.</summary>
         CUSTOM
     }
+    */
 
     public enum InputBoxDefaultButton
     {

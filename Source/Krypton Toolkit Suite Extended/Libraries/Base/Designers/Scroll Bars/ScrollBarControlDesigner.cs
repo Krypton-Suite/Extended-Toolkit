@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Windows.Forms.Design;
 
-namespace Krypton.Toolkit.Suite.Extended.Base
+namespace Krypton.Toolkit.Extended.Base
 {
     /// <summary>
     /// The designer for the <see cref="KryptonScrollBar"/> control.

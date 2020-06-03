@@ -1,4 +1,4 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Colour.Controls
+﻿namespace Krypton.Toolkit.Extended.Colour.Controls
 {
     public class Helpers
     {

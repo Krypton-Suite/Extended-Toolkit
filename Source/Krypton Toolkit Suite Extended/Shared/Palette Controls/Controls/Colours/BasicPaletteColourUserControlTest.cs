@@ -1,4 +1,4 @@
-﻿using Krypton.Toolkit.Suite.Extended.Palette.Controls;
+﻿using Krypton.Toolkit.Extended.Palette.Controls;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
@@ -8,21 +8,21 @@ namespace Krypton.Toolkit.Suite.Extended.Palette.Controls
     public class BasicPaletteColourUserControlTest : UserControl
     {
         #region Designer Code
-        private Toolkit.Suite.Extended.Palette.Controls.PaletteColourPreviewControl baseColour;
-        private Toolkit.Suite.Extended.Palette.Controls.PaletteColourPreviewControl darkestColour;
-        private Toolkit.Suite.Extended.Palette.Controls.PaletteColourPreviewControl darkColour;
-        private Toolkit.Suite.Extended.Palette.Controls.PaletteColourPreviewControl lightestColour;
-        private Toolkit.Suite.Extended.Palette.Controls.PaletteColourPreviewControl lightColour;
-        private Toolkit.Suite.Extended.Palette.Controls.PaletteColourPreviewControl mediumColour;
+        private Toolkit.Extended.Palette.Controls.PaletteColourPreviewControl baseColour;
+        private Toolkit.Extended.Palette.Controls.PaletteColourPreviewControl darkestColour;
+        private Toolkit.Extended.Palette.Controls.PaletteColourPreviewControl darkColour;
+        private Toolkit.Extended.Palette.Controls.PaletteColourPreviewControl lightestColour;
+        private Toolkit.Extended.Palette.Controls.PaletteColourPreviewControl lightColour;
+        private Toolkit.Extended.Palette.Controls.PaletteColourPreviewControl mediumColour;
 
         private void InitializeComponent()
         {
-            this.mediumColour = new Krypton.Toolkit.Suite.Extended.Palette.Controls.PaletteColourPreviewControl();
-            this.lightColour = new Krypton.Toolkit.Suite.Extended.Palette.Controls.PaletteColourPreviewControl();
-            this.lightestColour = new Krypton.Toolkit.Suite.Extended.Palette.Controls.PaletteColourPreviewControl();
-            this.darkColour = new Krypton.Toolkit.Suite.Extended.Palette.Controls.PaletteColourPreviewControl();
-            this.darkestColour = new Krypton.Toolkit.Suite.Extended.Palette.Controls.PaletteColourPreviewControl();
-            this.baseColour = new Krypton.Toolkit.Suite.Extended.Palette.Controls.PaletteColourPreviewControl();
+            this.mediumColour = new Krypton.Toolkit.Extended.Palette.Controls.PaletteColourPreviewControl();
+            this.lightColour = new Krypton.Toolkit.Extended.Palette.Controls.PaletteColourPreviewControl();
+            this.lightestColour = new Krypton.Toolkit.Extended.Palette.Controls.PaletteColourPreviewControl();
+            this.darkColour = new Krypton.Toolkit.Extended.Palette.Controls.PaletteColourPreviewControl();
+            this.darkestColour = new Krypton.Toolkit.Extended.Palette.Controls.PaletteColourPreviewControl();
+            this.baseColour = new Krypton.Toolkit.Extended.Palette.Controls.PaletteColourPreviewControl();
             this.SuspendLayout();
             // 
             // mediumColour

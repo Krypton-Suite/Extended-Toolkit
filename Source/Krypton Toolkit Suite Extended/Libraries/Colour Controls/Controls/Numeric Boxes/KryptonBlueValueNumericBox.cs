@@ -1,8 +1,8 @@
-﻿using Krypton.Toolkit.Suite.Extended.Colour.Controls.Properties;
+﻿using Krypton.Toolkit.Extended.Colour.Controls.Properties;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Suite.Extended.Colour.Controls
+namespace Krypton.Toolkit.Extended.Colour.Controls
 {
     public class KryptonBlueValueNumericBox : KryptonNumericUpDown
     {
@@ -43,7 +43,7 @@ namespace Krypton.Toolkit.Suite.Extended.Colour.Controls
 
             ToolTipValues.EnableToolTips = true;
 
-            ToolTipValues.Image = Properties.Resources.Blue;
+            ToolTipValues.Image = Resources.Blue;
         }
         #endregion
 

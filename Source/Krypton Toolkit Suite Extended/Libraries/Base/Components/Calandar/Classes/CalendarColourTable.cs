@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Globalization;
 
-namespace Krypton.Toolkit.Suite.Extended.Base
+namespace Krypton.Toolkit.Extended.Base
 {
     /// <summary>
     /// Provides the colour information to the graphical elements.

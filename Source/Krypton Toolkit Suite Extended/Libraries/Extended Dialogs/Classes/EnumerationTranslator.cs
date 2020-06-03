@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Krypton.Toolkit.Suite.Extended.Language.Model;
+using System;
 using System.Windows.Forms;
-using Krypton.Toolkit.Suite.Extended.Language.Model;
 
-namespace Krypton.Toolkit.Suite.Extended.Dialogs
+namespace Krypton.Toolkit.Extended.Dialogs
 {
     public class EnumerationTranslator
     {

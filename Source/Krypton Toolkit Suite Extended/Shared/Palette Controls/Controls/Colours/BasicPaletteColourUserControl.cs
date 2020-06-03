@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Suite.Extended.Palette.Controls
+namespace Krypton.Toolkit.Extended.Palette.Controls
 {
     public class BasicPaletteColourUserControl : UserControl
     {

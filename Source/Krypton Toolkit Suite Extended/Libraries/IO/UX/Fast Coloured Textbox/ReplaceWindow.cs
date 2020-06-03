@@ -1,4 +1,4 @@
-﻿using Krypton.Toolkit.Suite.Extended.Base;
+﻿using Krypton.Toolkit.Extended.Base;
 using Krypton.Toolkit.Extended.Common;
 using System;
 using System.Collections.Generic;
@@ -21,7 +21,7 @@ namespace Krypton.Toolkit.Extended.IO
         private Suite.Extended.Standard.Controls.KryptonButtonExtended kbtnReplaceAll;
         private Suite.Extended.Standard.Controls.KryptonButtonExtended kbtnReplace;
         private Suite.Extended.Standard.Controls.KryptonButtonExtended kbtnFindNext;
-        private Suite.Extended.Base.KryptonCancelDialogButton kbtnCancel;
+        private Dialogs.KryptonCancelDialogButton kbtnCancel;
         private KryptonPanel kryptonPanel1;
 
         private void InitializeComponent()
@@ -30,7 +30,7 @@ namespace Krypton.Toolkit.Extended.IO
             this.kbtnReplaceAll = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonButtonExtended();
             this.kbtnReplace = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonButtonExtended();
             this.kbtnFindNext = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonButtonExtended();
-            this.kbtnCancel = new Krypton.Toolkit.Suite.Extended.Base.KryptonCancelDialogButton();
+            this.kbtnCancel = new Krypton.Toolkit.Extended.Dialogs.KryptonCancelDialogButton();
             this.ktxtReplace = new Krypton.Toolkit.KryptonTextBox();
             this.kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
             this.kcbRegex = new Krypton.Toolkit.KryptonCheckBox();

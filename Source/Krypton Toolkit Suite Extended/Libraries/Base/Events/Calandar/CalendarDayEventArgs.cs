@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Krypton.Toolkit.Suite.Extended.Base
+namespace Krypton.Toolkit.Extended.Base
 {
     /// <summary>
     /// Event data with a <see cref="CalendarDay"/> element

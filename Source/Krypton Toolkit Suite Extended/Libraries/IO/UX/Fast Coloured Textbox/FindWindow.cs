@@ -1,4 +1,4 @@
-﻿using Krypton.Toolkit.Suite.Extended.Base;
+﻿using Krypton.Toolkit.Extended.Base;
 using Krypton.Toolkit.Suite.Extended.Standard.Controls;
 using System;
 using System.ComponentModel;
@@ -12,7 +12,7 @@ namespace Krypton.Toolkit.Extended.IO
         #region Design Code
         private KryptonPanel kryptonPanel1;
         private KryptonButtonExtended kbtnFindNext;
-        private KryptonCancelDialogButton kbtnCancel;
+        private Dialogs.KryptonCancelDialogButton kbtnCancel;
         private KryptonCheckBox kcbRegex;
         private KryptonCheckBox kcbMatchWholeWord;
         private KryptonCheckBox kcbMatchCase;
@@ -23,7 +23,7 @@ namespace Krypton.Toolkit.Extended.IO
         {
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             this.kbtnFindNext = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonButtonExtended();
-            this.kbtnCancel = new Krypton.Toolkit.Suite.Extended.Dialogs.KryptonCancelDialogButton();
+            this.kbtnCancel = new Krypton.Toolkit.Extended.Dialogs.KryptonCancelDialogButton();
             this.kcbRegex = new Krypton.Toolkit.KryptonCheckBox();
             this.kcbMatchWholeWord = new Krypton.Toolkit.KryptonCheckBox();
             this.kcbMatchCase = new Krypton.Toolkit.KryptonCheckBox();

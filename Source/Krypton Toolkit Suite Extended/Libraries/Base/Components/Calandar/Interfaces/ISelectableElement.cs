@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace Krypton.Toolkit.Suite.Extended.Base
+namespace Krypton.Toolkit.Extended.Base
 {
     /// <summary>
     /// Represents a clickable element of <see cref="MonthView"/> control

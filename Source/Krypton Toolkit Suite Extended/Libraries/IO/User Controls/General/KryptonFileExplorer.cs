@@ -1,5 +1,4 @@
-﻿using Krypton.Toolkit.Suite.Extended.Base;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
@@ -36,7 +35,7 @@ namespace Krypton.Toolkit.Extended.IO
         private KryptonButton kbtnCancel;
         private Panel pnlUp;
         private KryptonButton kbtnUp;
-        private KryptonSplitButton ksbtnAction;
+        private Base.KryptonSplitButton ksbtnAction;
         private KryptonSplitContainer kryptonSplitContainer1;
 
         private void InitializeComponent()
@@ -65,7 +64,7 @@ namespace Krypton.Toolkit.Extended.IO
             this.kryptonSplitContainer1 = new Krypton.Toolkit.KryptonSplitContainer();
             this.ktvFileSystem = new Krypton.Toolkit.KryptonTreeView();
             this.lvContents = new System.Windows.Forms.ListView();
-            this.ksbtnAction = new Krypton.Toolkit.Suite.Extended.Base.KryptonSplitButton();
+            this.ksbtnAction = new Krypton.Toolkit.Extended.Base.KryptonSplitButton();
             this.pnlTop.SuspendLayout();
             this.pnlPath.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kbcPath)).BeginInit();

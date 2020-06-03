@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Suite.Extended.Colour.Controls
+namespace Krypton.Toolkit.Extended.Colour.Controls
 {
     [ToolboxBitmap(typeof(KryptonTrackBar))]
     public class KryptonGreenTrackBar : KryptonTrackBar

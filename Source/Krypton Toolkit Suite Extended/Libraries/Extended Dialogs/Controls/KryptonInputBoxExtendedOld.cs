@@ -1,10 +1,10 @@
-﻿using Krypton.Toolkit.Suite.Extended.Dialogs.Resources;
+﻿using Krypton.Toolkit.Extended.Dialogs.Resources;
 using Krypton.Toolkit.Suite.Extended.Language.Model;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Suite.Extended.Dialogs
+namespace Krypton.Toolkit.Extended.Dialogs
 {
     public class KryptonInputBoxExtendedControl : UserControl
     {

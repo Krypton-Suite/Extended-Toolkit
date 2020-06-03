@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Krypton.Toolkit.Suite.Extended.Base
+namespace Krypton.Toolkit.Extended.Base
 {
     /// <summary>
     /// Holds data of a Calendar Loading Items of certain date range

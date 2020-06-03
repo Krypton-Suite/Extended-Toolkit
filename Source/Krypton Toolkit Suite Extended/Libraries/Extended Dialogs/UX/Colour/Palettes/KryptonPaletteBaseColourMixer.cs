@@ -1,8 +1,9 @@
-﻿using Krypton.Toolkit.Suite.Extended.Colour.Controls;
+﻿using Krypton.Toolkit.Extended.Colour.Controls;
+using Krypton.Toolkit.Extended.Palette.Controls;
 using System.ComponentModel;
 using System.Drawing;
 
-namespace Krypton.Toolkit.Suite.Extended.Dialogs
+namespace Krypton.Toolkit.Extended.Dialogs
 {
     [DefaultEvent("BasicPaletteColoursChanged")]
     public class KryptonPaletteBaseColourMixer : KryptonForm
@@ -32,13 +33,13 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KryptonPaletteBaseColourMixer));
             this.kpnlButtons = new Krypton.Toolkit.KryptonPanel();
-            this.colourHexadecimalTextBox1 = new Krypton.Toolkit.Suite.Extended.Colour.Controls.ColourHexadecimalTextBox();
+            this.colourHexadecimalTextBox1 = new Krypton.Toolkit.Extended.Colour.Controls.ColourHexadecimalTextBox();
             this.kryptonLabelExtended3 = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonLabelExtended();
-            this.kbtnOk = new Krypton.Toolkit.Suite.Extended.Dialogs.KryptonOKDialogButton();
-            this.kbtnCancel = new Krypton.Toolkit.Suite.Extended.Dialogs.KryptonCancelDialogButton();
+            this.kbtnOk = new Krypton.Toolkit.Extended.Dialogs.KryptonOKDialogButton();
+            this.kbtnCancel = new Krypton.Toolkit.Extended.Dialogs.KryptonCancelDialogButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
-            this.kargbColour = new Krypton.Toolkit.Suite.Extended.Colour.Controls.KryptonARGBColourSliderVertical();
+            this.kargbColour = new Krypton.Toolkit.Extended.Colour.Controls.KryptonARGBColourSliderVertical();
             this.kryptonGroupBoxExtended2 = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonGroupBoxExtended();
             this.kryptonComboBoxExtended1 = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonComboBoxExtended();
             this.kryptonButtonExtended5 = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonButtonExtended();
@@ -49,7 +50,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.kryptonButtonExtended3 = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonButtonExtended();
             this.kryptonButtonExtended2 = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonButtonExtended();
             this.kryptonButtonExtended1 = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonButtonExtended();
-            this.basicPaletteColourUserControl1 = new Krypton.Toolkit.Suite.Extended.Palette.Controls.BasicPaletteColourUserControl();
+            this.basicPaletteColourUserControl1 = new Krypton.Toolkit.Extended.Palette.Controls.BasicPaletteColourUserControl();
             ((System.ComponentModel.ISupportInitialize)(this.kpnlButtons)).BeginInit();
             this.kpnlButtons.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
@@ -305,12 +306,12 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.kargbColour.Name = "kargbColour";
             this.kargbColour.Size = new System.Drawing.Size(341, 491);
             this.kargbColour.TabIndex = 7;
-            this.kargbColour.ColourChanged += new Krypton.Toolkit.Suite.Extended.Colour.Controls.KryptonARGBColourSliderVertical.ColourChangedEventHandler(this.kargbColour_ColourChanged);
-            this.kargbColour.ColourHexadecimalValuesChanged += new Krypton.Toolkit.Suite.Extended.Colour.Controls.KryptonARGBColourSliderVertical.ColourHexadecimalValuesChangedEventHandler(this.kargbColour_ColourHexadecimalValuesChanged);
+            this.kargbColour.ColourChanged += new Krypton.Toolkit.Extended.Colour.Controls.KryptonARGBColourSliderVertical.ColourChangedEventHandler(this.kargbColour_ColourChanged);
+            this.kargbColour.ColourHexadecimalValuesChanged += new Krypton.Toolkit.Extended.Colour.Controls.KryptonARGBColourSliderVertical.ColourHexadecimalValuesChangedEventHandler(this.kargbColour_ColourHexadecimalValuesChanged);
             // 
             // kryptonGroupBoxExtended2
             // 
-            this.kryptonGroupBoxExtended2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            this.kryptonGroupBoxExtended2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.kryptonGroupBoxExtended2.Image = null;
             this.kryptonGroupBoxExtended2.Location = new System.Drawing.Point(518, 271);
@@ -678,7 +679,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             // 
             // kryptonGroupBoxExtended1
             // 
-            this.kryptonGroupBoxExtended1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            this.kryptonGroupBoxExtended1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.kryptonGroupBoxExtended1.Image = null;
             this.kryptonGroupBoxExtended1.Location = new System.Drawing.Point(518, 43);
