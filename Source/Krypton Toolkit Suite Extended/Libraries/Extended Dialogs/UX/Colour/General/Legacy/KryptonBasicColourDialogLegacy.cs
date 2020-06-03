@@ -1,5 +1,5 @@
-﻿using Krypton.Toolkit.Extended.Base;
-using Krypton.Toolkit.Extended.Colour.Controls;
+﻿using Krypton.Toolkit.Suite.Extended.Base;
+using Krypton.Toolkit.Suite.Extended.Colour.Controls;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
