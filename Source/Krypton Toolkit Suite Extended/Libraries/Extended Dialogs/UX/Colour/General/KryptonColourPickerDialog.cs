@@ -1,5 +1,5 @@
 ﻿using Cyotek.Windows.Forms;
-using Krypton.Toolkit.Extended.Base;
+using Krypton.Toolkit.Suite.Extended.Base;
 using System;
 using System.ComponentModel;
 using System.Drawing;
@@ -22,7 +22,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         private Colour.Controls.ColourEditorUserControl ceColours;
         private Colour.Controls.ScreenColourPickerControl scp;
         private Cyotek.Windows.Forms.ColorGrid cgColours;
-        private Core.CircularPictureBox cpbColourPreview;
+        private CircularPictureBox cpbColourPreview;
         private KryptonButton kbtnSavePalette;
         private KryptonButton kbtnLoadPalette;
         private KryptonOKDialogButton kbtnOk;
@@ -34,13 +34,13 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.kbtnSavePalette = new Krypton.Toolkit.KryptonButton();
             this.kbtnLoadPalette = new Krypton.Toolkit.KryptonButton();
             this.cgColours = new Cyotek.Windows.Forms.ColorGrid();
-            this.cpbColourPreview = new Krypton.Toolkit.Extended.Core.CircularPictureBox();
-            this.scp = new Krypton.Toolkit.Extended.Colour.Controls.ScreenColourPickerControl();
-            this.ceColours = new Krypton.Toolkit.Extended.Colour.Controls.ColourEditorUserControl();
-            this.cwColour = new Krypton.Toolkit.Extended.Colour.Controls.ColourWheelControl();
+            this.cpbColourPreview = new CircularPictureBox();
+            this.scp = new Krypton.Toolkit.Suite.Extended.Colour.Controls.ScreenColourPickerControl();
+            this.ceColours = new Krypton.Toolkit.Suite.Extended.Colour.Controls.ColourEditorUserControl();
+            this.cwColour = new Krypton.Toolkit.Suite.Extended.Colour.Controls.ColourWheelControl();
             this.kbtnCancel = new Krypton.Toolkit.Suite.Extended.Dialogs.KryptonCancelDialogButton();
             this.kbtnOk = new Krypton.Toolkit.Suite.Extended.Dialogs.KryptonOKDialogButton();
-            this.cem = new Krypton.Toolkit.Extended.Colour.Controls.ColourEditorManager();
+            this.cem = new Krypton.Toolkit.Suite.Extended.Colour.Controls.ColourEditorManager();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cpbColourPreview)).BeginInit();
