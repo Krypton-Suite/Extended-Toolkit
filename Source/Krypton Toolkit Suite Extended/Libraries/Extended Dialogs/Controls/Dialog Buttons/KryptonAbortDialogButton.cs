@@ -15,7 +15,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
 
         public Language Language { get => _language; set { _language = value; Invalidate(); } }
 
-       public KryptonForm Parent { get => _parent; set { _parent = value; Invalidate(); } }
+       public KryptonForm ParentWindow { get => _parent; set { _parent = value; Invalidate(); } }
 
         public KryptonAbortDialogButton()
         {
@@ -46,6 +46,16 @@ namespace Krypton.Toolkit.Extended.Dialogs
 
                 form.CancelButton = this;
             }
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            if (ParentWindow != null)
+            {
+                ParentWindow.CancelButton = this;
+            }
+
+            base.OnPaint(e);
         }
     }
 }

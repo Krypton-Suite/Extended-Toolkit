@@ -8,6 +8,10 @@ namespace Krypton.Toolkit.Extended.Dialogs
     [ToolboxBitmap(typeof(KryptonButton))]
     public class KryptonNODialogButton : KryptonButton
     {
+        private KryptonForm _parent;
+
+        public KryptonForm ParentWindow { get => _parent; set { _parent = value; Invalidate(); } }
+
         public KryptonNODialogButton()
         {
             DialogResult = DialogResult.No;
@@ -37,6 +41,16 @@ namespace Krypton.Toolkit.Extended.Dialogs
         private void KryptonNODialogButton_TextChanged(object sender, EventArgs e)
         {
             if (Text == Name) Text = "&No";
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            if (ParentWindow != null)
+            {
+                ParentWindow.CancelButton = this;
+            }
+
+            base.OnPaint(e);
         }
     }
 }

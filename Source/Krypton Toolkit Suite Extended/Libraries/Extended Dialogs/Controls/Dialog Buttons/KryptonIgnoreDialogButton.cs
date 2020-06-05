@@ -6,8 +6,12 @@ using System.Windows.Forms;
 namespace Krypton.Toolkit.Extended.Dialogs
 {
     [ToolboxBitmap(typeof(KryptonButton))]
-    public class KryptonIgnoreDialogButton : KryptonButtonExtended
+    public class KryptonIgnoreDialogButton : KryptonButton
     {
+        private KryptonForm _parent;
+
+        public KryptonForm ParentWindow { get => _parent; set { _parent = value; Invalidate(); } }
+
         public KryptonIgnoreDialogButton()
         {
             DialogResult = DialogResult.Ignore;
@@ -37,6 +41,16 @@ namespace Krypton.Toolkit.Extended.Dialogs
 
                 form.AcceptButton = this;
             }
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            if (ParentWindow != null)
+            {
+                ParentWindow.AcceptButton = this;
+            }
+
+            base.OnPaint(e);
         }
     }
 }

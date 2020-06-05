@@ -7,6 +7,10 @@ namespace Krypton.Toolkit.Extended.Base
     [ToolboxBitmap(typeof(KryptonButton))]
     public class KryptonCancelDialogButton : KryptonButton
     {
+        private KryptonForm _parent;
+
+        public KryptonForm ParentWindow { get => _parent; set { _parent = value; Invalidate(); } }
+
         public KryptonCancelDialogButton()
         {
             DialogResult = DialogResult.Cancel;
@@ -36,6 +40,13 @@ namespace Krypton.Toolkit.Extended.Base
 
                 form.CancelButton = this;
             }
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            if (ParentWindow != null) ParentWindow.CancelButton = this;
+
+            base.OnPaint(e);
         }
     }
 }

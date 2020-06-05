@@ -7,6 +7,10 @@ namespace Krypton.Toolkit.Extended.Base
     [ToolboxBitmap(typeof(KryptonButton))]
     public class KryptonOKDialogButton : KryptonButton
     {
+        private KryptonForm _parent;
+
+        public KryptonForm ParentWindow { get => _parent; set { _parent = value; Invalidate(); } }
+
         public KryptonOKDialogButton()
         {
             DialogResult = DialogResult.OK;
@@ -36,6 +40,13 @@ namespace Krypton.Toolkit.Extended.Base
 
                 form.AcceptButton = this;
             }
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            if (ParentWindow != null) ParentWindow.AcceptButton = this;
+
+            base.OnPaint(e);
         }
     }
 }

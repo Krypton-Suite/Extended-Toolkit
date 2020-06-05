@@ -31,6 +31,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="Krypton.Toolkit.Suite.Extended.Base">
+      <HintPath>..\Base\obj\Debug\net45\Krypton.Toolkit.Suite.Extended.Base.dll</HintPath>
+    </Reference>
     <Reference Include="Krypton.Toolkit.Suite.Extended.Dialogs">
       <HintPath>..\Extended Dialogs\obj\Debug\net45\Krypton.Toolkit.Suite.Extended.Dialogs.dll</HintPath>
     </Reference>
