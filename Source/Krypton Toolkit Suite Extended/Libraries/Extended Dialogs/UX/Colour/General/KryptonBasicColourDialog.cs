@@ -14,7 +14,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
         private KryptonPanel kryptonPanel1;
         private Colour.Controls.KryptonBlueValueLabel klblBlueValue;
         private Colour.Controls.KryptonRedValueLabel klblRedValue;
-        private Base.CircularPictureBox cpbxColourPreview;
+        private Core.CircularPictureBox cpbxColourPreview;
         private Colour.Controls.ColourWheelControl cwColourPicker;
         private System.Windows.Forms.Panel panel1;
         private Colour.Controls.ColourHexadecimalTextBox txtHexColour;
@@ -32,7 +32,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             this.klblBlueValue = new Krypton.Toolkit.Extended.Colour.Controls.KryptonBlueValueLabel();
             this.klblRedValue = new Krypton.Toolkit.Extended.Colour.Controls.KryptonRedValueLabel();
-            this.cpbxColourPreview = new Krypton.Toolkit.Extended.Base.CircularPictureBox();
+            this.cpbxColourPreview = new Krypton.Toolkit.Extended.Core.CircularPictureBox();
             this.cwColourPicker = new Krypton.Toolkit.Extended.Colour.Controls.ColourWheelControl();
             this.panel1 = new System.Windows.Forms.Panel();
             this.kryptonGreenValueLabel1 = new Krypton.Toolkit.Extended.Colour.Controls.KryptonGreenValueLabel();
