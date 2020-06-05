@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Shared\Toolkit Core\Krypton.Toolkit.Suite.Extended.Core.csproj" />
+    <ProjectReference Include="..\..\Shared\Toolkit Language Model\Krypton.Toolkit.Suite.Extended.Language.Model.csproj" />
     <ProjectReference Include="..\Base\Krypton.Toolkit.Suite.Extended.Base.csproj" />
   </ItemGroup>
 

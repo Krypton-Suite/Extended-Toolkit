@@ -12,7 +12,6 @@ namespace Krypton.Toolkit.Extended.IO
         #region Design Code
         private KryptonPanel kryptonPanel1;
         private KryptonButtonExtended kbtnFindNext;
-        private Dialogs.KryptonCancelDialogButton kbtnCancel;
         private KryptonCheckBox kcbRegex;
         private KryptonCheckBox kcbMatchWholeWord;
         private KryptonCheckBox kcbMatchCase;
@@ -23,7 +22,6 @@ namespace Krypton.Toolkit.Extended.IO
         {
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             this.kbtnFindNext = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonButtonExtended();
-            this.kbtnCancel = new Krypton.Toolkit.Extended.Dialogs.KryptonCancelDialogButton();
             this.kcbRegex = new Krypton.Toolkit.KryptonCheckBox();
             this.kcbMatchWholeWord = new Krypton.Toolkit.KryptonCheckBox();
             this.kcbMatchCase = new Krypton.Toolkit.KryptonCheckBox();
@@ -36,7 +34,6 @@ namespace Krypton.Toolkit.Extended.IO
             // kryptonPanel1
             // 
             this.kryptonPanel1.Controls.Add(this.kbtnFindNext);
-            this.kryptonPanel1.Controls.Add(this.kbtnCancel);
             this.kryptonPanel1.Controls.Add(this.kcbRegex);
             this.kryptonPanel1.Controls.Add(this.kcbMatchWholeWord);
             this.kryptonPanel1.Controls.Add(this.kcbMatchCase);
@@ -129,89 +126,6 @@ namespace Krypton.Toolkit.Extended.IO
             this.kbtnFindNext.TabIndex = 1;
             this.kbtnFindNext.Values.Text = "&Find Next";
             this.kbtnFindNext.Click += new System.EventHandler(this.kbtnFindNext_Click);
-            // 
-            // kbtnCancel
-            // 
-            this.kbtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.kbtnCancel.Image = null;
-            this.kbtnCancel.Location = new System.Drawing.Point(254, 64);
-            this.kbtnCancel.LongTextTypeface = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtnCancel.Name = "kbtnCancel";
-            this.kbtnCancel.OverrideDefault.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtnCancel.OverrideDefault.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtnCancel.OverrideDefaultBackGroundColourOne = System.Drawing.Color.Empty;
-            this.kbtnCancel.OverrideDefaultBackGroundColourTwo = System.Drawing.Color.Empty;
-            this.kbtnCancel.OverrideDefaultBorderColourOne = System.Drawing.Color.Empty;
-            this.kbtnCancel.OverrideDefaultBorderColourTwo = System.Drawing.Color.Empty;
-            this.kbtnCancel.OverrideDefaultLongTextColourOne = System.Drawing.Color.Empty;
-            this.kbtnCancel.OverrideDefaultLongTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtnCancel.OverrideDefaultShortTextColourOne = System.Drawing.Color.Empty;
-            this.kbtnCancel.OverrideDefaultShortTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtnCancel.OverrideFocus.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtnCancel.OverrideFocus.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtnCancel.OverrideFocusBackGroundColourOne = System.Drawing.Color.Empty;
-            this.kbtnCancel.OverrideFocusBackGroundColourTwo = System.Drawing.Color.Empty;
-            this.kbtnCancel.OverrideFocusBorderColourOne = System.Drawing.Color.Empty;
-            this.kbtnCancel.OverrideFocusBorderColourTwo = System.Drawing.Color.Empty;
-            this.kbtnCancel.OverrideFocusLongTextColourOne = System.Drawing.Color.Empty;
-            this.kbtnCancel.OverrideFocusLongTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtnCancel.OverrideFocusShortTextColourOne = System.Drawing.Color.Empty;
-            this.kbtnCancel.OverrideFocusShortTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtnCancel.ShortTextTypeface = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtnCancel.Size = new System.Drawing.Size(90, 25);
-            this.kbtnCancel.StateCommon.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtnCancel.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtnCancel.StateCommonBackGroundColourOne = System.Drawing.Color.Empty;
-            this.kbtnCancel.StateCommonBackGroundColourTwo = System.Drawing.Color.Empty;
-            this.kbtnCancel.StateCommonBorderColourOne = System.Drawing.Color.Empty;
-            this.kbtnCancel.StateCommonBorderColourTwo = System.Drawing.Color.Empty;
-            this.kbtnCancel.StateCommonLongTextColourOne = System.Drawing.Color.Empty;
-            this.kbtnCancel.StateCommonLongTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtnCancel.StateCommonShortTextColourOne = System.Drawing.Color.Empty;
-            this.kbtnCancel.StateCommonShortTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtnCancel.StateDisabled.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtnCancel.StateDisabled.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtnCancel.StateDisabledBackGroundColourOne = System.Drawing.Color.Empty;
-            this.kbtnCancel.StateDisabledBackGroundColourTwo = System.Drawing.Color.Empty;
-            this.kbtnCancel.StateDisabledBorderColourOne = System.Drawing.Color.Empty;
-            this.kbtnCancel.StateDisabledBorderColourTwo = System.Drawing.Color.Empty;
-            this.kbtnCancel.StateDisabledLongTextColourOne = System.Drawing.Color.Empty;
-            this.kbtnCancel.StateDisabledLongTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtnCancel.StateDisabledShortTextColourOne = System.Drawing.Color.Empty;
-            this.kbtnCancel.StateDisabledShortTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtnCancel.StateNormal.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtnCancel.StateNormal.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtnCancel.StateNormalBackGroundColourOne = System.Drawing.Color.Empty;
-            this.kbtnCancel.StateNormalBackGroundColourTwo = System.Drawing.Color.Empty;
-            this.kbtnCancel.StateNormalBorderColourOne = System.Drawing.Color.Empty;
-            this.kbtnCancel.StateNormalBorderColourTwo = System.Drawing.Color.Empty;
-            this.kbtnCancel.StateNormalLongTextColourOne = System.Drawing.Color.Empty;
-            this.kbtnCancel.StateNormalLongTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtnCancel.StateNormalShortTextColourOne = System.Drawing.Color.Empty;
-            this.kbtnCancel.StateNormalShortTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtnCancel.StatePressed.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtnCancel.StatePressed.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtnCancel.StatePressedBackGroundColourOne = System.Drawing.Color.Empty;
-            this.kbtnCancel.StatePressedBackGroundColourTwo = System.Drawing.Color.Empty;
-            this.kbtnCancel.StatePressedBorderColourOne = System.Drawing.Color.Empty;
-            this.kbtnCancel.StatePressedBorderColourTwo = System.Drawing.Color.Empty;
-            this.kbtnCancel.StatePressedLongTextColourOne = System.Drawing.Color.Empty;
-            this.kbtnCancel.StatePressedLongTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtnCancel.StatePressedShortTextColourOne = System.Drawing.Color.Empty;
-            this.kbtnCancel.StatePressedShortTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtnCancel.StateTracking.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtnCancel.StateTracking.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtnCancel.StateTrackingBackGroundColourOne = System.Drawing.Color.Empty;
-            this.kbtnCancel.StateTrackingBackGroundColourTwo = System.Drawing.Color.Empty;
-            this.kbtnCancel.StateTrackingBorderColourOne = System.Drawing.Color.Empty;
-            this.kbtnCancel.StateTrackingBorderColourTwo = System.Drawing.Color.Empty;
-            this.kbtnCancel.StateTrackingLongTextColourOne = System.Drawing.Color.Empty;
-            this.kbtnCancel.StateTrackingLongTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtnCancel.StateTrackingShortTextColourOne = System.Drawing.Color.Empty;
-            this.kbtnCancel.StateTrackingShortTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtnCancel.TabIndex = 1;
-            this.kbtnCancel.Values.Text = "C&ancel";
-            this.kbtnCancel.Click += new System.EventHandler(this.kbtnCancel_Click);
             // 
             // kcbRegex
             // 

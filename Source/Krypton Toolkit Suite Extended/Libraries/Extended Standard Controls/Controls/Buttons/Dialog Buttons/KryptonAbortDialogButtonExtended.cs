@@ -1,5 +1,8 @@
-﻿using Krypton.Toolkit.Suite.Extended.Standard.Controls;
+﻿using Krypton.Toolkit.Suite.Extended.Language.Model;
+using Krypton.Toolkit.Suite.Extended.Standard.Controls;
 using System;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Extended.Standard.Controls
 {
@@ -14,7 +17,7 @@ namespace Krypton.Toolkit.Extended.Standard.Controls
 
         public KryptonForm Parent { get => _parent; set { _parent = value; Invalidate(); } }
 
-        public KryptonAbortDialogButton()
+        public KryptonAbortDialogButtonExtended()
         {
             DialogResult = DialogResult.Abort;
 
