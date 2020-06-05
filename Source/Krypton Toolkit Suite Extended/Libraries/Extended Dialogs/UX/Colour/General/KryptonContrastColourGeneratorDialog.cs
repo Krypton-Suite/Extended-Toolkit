@@ -13,8 +13,8 @@ namespace Krypton.Toolkit.Extended.Dialogs
         private Suite.Extended.Standard.Controls.KryptonCheckBoxExtended kcbKeepOpacityValues;
         private System.Windows.Forms.Panel panel1;
         private KryptonPanel kryptonPanel1;
-        private Base.CircularPictureBox cpbContrastColourPreview;
-        private Base.CircularPictureBox cpbBaseColour;
+        private Core.CircularPictureBox cpbContrastColourPreview;
+        private Core.CircularPictureBox cpbBaseColour;
         private Suite.Extended.Standard.Controls.KryptonLabelExtended klblBaseColour;
         private Suite.Extended.Standard.Controls.KryptonLabelExtended klblContrastColour;
         private Suite.Extended.Standard.Controls.KryptonButtonExtended kbtnGenerateBaseColour;
