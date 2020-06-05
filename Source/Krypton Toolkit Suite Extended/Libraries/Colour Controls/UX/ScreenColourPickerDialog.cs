@@ -11,8 +11,6 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
         private System.Windows.Forms.Panel panel1;
         private KryptonPanel kryptonPanel2;
         private Cyotek.Windows.Forms.ColorEditorManager cem;
-        private Extended.Dialogs.KryptonOKDialogButton kryptonOKDialogButton1;
-        private Extended.Dialogs.KryptonCancelDialogButton kryptonCancelDialogButton1;
         private KryptonPanel kryptonPanel1;
 
         private void InitializeComponent()

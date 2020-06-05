@@ -13,7 +13,6 @@ namespace Krypton.Toolkit.Extended.Dialogs
         private System.Windows.Forms.Panel panel1;
         private KryptonPanel kryptonPanel1;
         private Base.CircularPictureBox cpbColourPreview;
-        private Colour.Controls.KryptonRGBColourSliderHorizontal krgbcsColour;
         private KryptonCancelDialogButton kbtnCancel;
 
         private void InitializeComponent()
@@ -23,7 +22,6 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.panel1 = new System.Windows.Forms.Panel();
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             this.cpbColourPreview = new Krypton.Toolkit.Extended.Base.CircularPictureBox();
-            this.krgbcsColour = new Krypton.Toolkit.Extended.Colour.Controls.KryptonRGBColourSliderHorizontal();
             this.kbtnOk = new Krypton.Toolkit.Extended.Dialogs.KryptonOKDialogButton();
             this.kbtnCancel = new Krypton.Toolkit.Extended.Dialogs.KryptonCancelDialogButton();
             ((System.ComponentModel.ISupportInitialize)(this.kpnlButtons)).BeginInit();
@@ -54,7 +52,6 @@ namespace Krypton.Toolkit.Extended.Dialogs
             // 
             // kryptonPanel1
             // 
-            this.kryptonPanel1.Controls.Add(this.krgbcsColour);
             this.kryptonPanel1.Controls.Add(this.cpbColourPreview);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
@@ -71,16 +68,6 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.cpbColourPreview.TabIndex = 8;
             this.cpbColourPreview.TabStop = false;
             this.cpbColourPreview.ToolTipValues = null;
-            // 
-            // krgbcsColour
-            // 
-            this.krgbcsColour.BackColor = System.Drawing.Color.Transparent;
-            this.krgbcsColour.Colour = System.Drawing.Color.Empty;
-            this.krgbcsColour.Location = new System.Drawing.Point(214, 12);
-            this.krgbcsColour.Name = "krgbcsColour";
-            this.krgbcsColour.Size = new System.Drawing.Size(403, 189);
-            this.krgbcsColour.TabIndex = 9;
-            this.krgbcsColour.ColourChanged += new Krypton.Toolkit.Extended.Colour.Controls.KryptonRGBColourSliderHorizontal.ColourChangedEventHandler(this.krgbcsColour_ColourChanged);
             // 
             // kbtnOk
             // 

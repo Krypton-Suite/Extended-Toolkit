@@ -14,6 +14,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Controls\User Controls\Colour Sliders\**" />
+    <EmbeddedResource Remove="Controls\User Controls\Colour Sliders\**" />
+    <None Remove="Controls\User Controls\Colour Sliders\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Cyotek.Windows.Forms.ColorPicker" Version="1.7.2" />
     <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2006.1" />
   </ItemGroup>
