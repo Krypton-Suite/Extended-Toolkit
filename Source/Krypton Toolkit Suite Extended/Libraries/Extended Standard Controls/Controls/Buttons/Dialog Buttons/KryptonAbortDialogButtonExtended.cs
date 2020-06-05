@@ -1,13 +1,10 @@
-﻿using Krypton.Toolkit.Suite.Extended.Language.Model;
-using Krypton.Toolkit.Suite.Extended.Standard.Controls;
+﻿using Krypton.Toolkit.Suite.Extended.Standard.Controls;
 using System;
-using System.Drawing;
-using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Dialogs
+namespace Krypton.Toolkit.Extended.Standard.Controls
 {
-    [ToolboxBitmap(typeof(KryptonButton))]
-    public class KryptonAbortDialogButton : KryptonButton
+    [ToolboxBitmap(typeof(KryptonButtonExtended))]
+    public class KryptonAbortDialogButtonExtended : KryptonButtonExtended
     {
         private Language _language = Language.ENGLISH;
 
@@ -15,7 +12,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
 
         public Language Language { get => _language; set { _language = value; Invalidate(); } }
 
-       public KryptonForm Parent { get => _parent; set { _parent = value; Invalidate(); } }
+        public KryptonForm Parent { get => _parent; set { _parent = value; Invalidate(); } }
 
         public KryptonAbortDialogButton()
         {

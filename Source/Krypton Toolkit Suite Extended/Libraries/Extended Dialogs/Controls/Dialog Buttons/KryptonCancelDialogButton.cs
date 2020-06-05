@@ -5,8 +5,8 @@ using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Extended.Dialogs
 {
-    [ToolboxBitmap(typeof(KryptonButtonExtended))]
-    public class KryptonCancelDialogButton : KryptonButtonExtended
+    [ToolboxBitmap(typeof(KryptonButton))]
+    public class KryptonCancelDialogButton : KryptonButton
     {
         public KryptonCancelDialogButton()
         {

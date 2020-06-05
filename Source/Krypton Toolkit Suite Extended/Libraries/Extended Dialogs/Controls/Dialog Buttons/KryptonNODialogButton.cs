@@ -5,8 +5,8 @@ using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Extended.Dialogs
 {
-    [ToolboxBitmap(typeof(KryptonButtonExtended))]
-    public class KryptonNODialogButton : KryptonButtonExtended
+    [ToolboxBitmap(typeof(KryptonButton))]
+    public class KryptonNODialogButton : KryptonButton
     {
         public KryptonNODialogButton()
         {

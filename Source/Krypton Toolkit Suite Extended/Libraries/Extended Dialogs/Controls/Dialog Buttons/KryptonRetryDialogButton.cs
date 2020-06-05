@@ -1,12 +1,11 @@
-﻿using Krypton.Toolkit.Suite.Extended.Standard.Controls;
-using System;
+﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Extended.Dialogs
 {
-    [ToolboxBitmap(typeof(KryptonButtonExtended))]
-    public class KryptonRetryDialogButton : KryptonButtonExtended
+    [ToolboxBitmap(typeof(KryptonButton))]
+    public class KryptonRetryDialogButton : KryptonButton
     {
         public KryptonRetryDialogButton()
         {
