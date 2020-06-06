@@ -8,7 +8,7 @@ using System.Windows.Forms;
 namespace Krypton.Toolkit.Extended.Base
 {
     // Delegate type for hooking up ValueChanged notifications.
-    public delegate void ValueChangedEventHandler(object Sender);
+    public delegate void ValueChangedEventHandler(object sender, KnobValueChangedEventArgs e);
 
     [DefaultEvent("ValueChanged"), ToolboxBitmap(typeof(Timer))]
     public class KryptonKnobControl : UserControl
@@ -255,8 +255,11 @@ namespace Krypton.Toolkit.Extended.Base
             set
             {
                 _Value = value;
+
+                KnobValueChangedEventArgs e = new KnobValueChangedEventArgs(value);
+
                 // Call delegate
-                OnValueChanged(value);
+                OnValueChanged(null, e);
                 setDimensions(); Invalidate();
             }
         }
@@ -338,11 +341,11 @@ namespace Krypton.Toolkit.Extended.Base
         #endregion
 
         #region " Events and sub management "
-        protected object OnValueChanged(object sender)
+        protected object OnValueChanged(object sender, KnobValueChangedEventArgs e)
         {
             if (ValueChanged != null)
             {
-                ValueChanged(sender);
+                ValueChanged(sender, e);
             }
             return sender;
         }

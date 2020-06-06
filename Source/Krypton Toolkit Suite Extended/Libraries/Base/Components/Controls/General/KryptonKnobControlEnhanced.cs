@@ -78,7 +78,7 @@ namespace Krypton.Toolkit.Extended.Base
         // Invoke the ValueChanged event; called  when value     
         // is changed                                            
         //-------------------------------------------------------
-        protected virtual void OnValueChanged(object sender) => ValueChanged?.Invoke(sender);
+        protected virtual void OnValueChanged(object sender, KnobValueChangedEventArgs e) => ValueChanged?.Invoke(sender, e);
         #endregion
 
         #region Properties
@@ -424,10 +424,13 @@ namespace Krypton.Toolkit.Extended.Base
                 if (value >= _minimum && value <= _maximum)
                 {
                     _value = value;
+
+                    KnobValueChangedEventArgs e = new KnobValueChangedEventArgs(value);
+
                     // Redraw
                     Invalidate();
                     // call delegate  
-                    OnValueChanged(this);
+                    OnValueChanged(null, e);
                 }
             }
         }
