@@ -68,13 +68,19 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
         #endregion
 
         #region Variables
-        private Color _colour;
+        private bool _showToolbar;
+
+        private Color _colour, _colourToAdd;
 
         private ColorGrid _grid;
         #endregion
 
         #region Properties
+        public bool ShowToolbar { get => _showToolbar; set { _showToolbar = value; Invalidate(); } }
+
         public Color Colour { get => _colour; set { _colour = value; ColourChangedEventArgs colour = new ColourChangedEventArgs(value); OnSelectedColourChanged(this, colour); } }
+
+        public Color ColourToAdd { get => _colourToAdd; set => _colourToAdd = value; }
 
         public ColorGrid ColourGrid { get => _grid; private set => _grid = value;  }
         #endregion
@@ -93,7 +99,9 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
 
             ColourGrid = cgColour;
 
-            ColourGrid.AddCustomColor(colour);
+            ColourToAdd = colour;
+
+            ColourGrid.AddCustomColor(ColourToAdd);
 
             ColourGrid.Color = colour;
         }
