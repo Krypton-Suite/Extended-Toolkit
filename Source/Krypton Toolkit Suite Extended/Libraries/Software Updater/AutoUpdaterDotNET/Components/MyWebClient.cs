@@ -1,8 +1,10 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Net;
 
 namespace Krypton.Toolkit.Extended.Software.Updater.AutoUpdaterDotNET
 {
+    [ToolboxItem(false)]
     public class MyWebClient : WebClient
     {
         /// <summary>
