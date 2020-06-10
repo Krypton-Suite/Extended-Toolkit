@@ -9,6 +9,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
 {
     public class ColourPickerDialog : KryptonForm
     {
+        #region Design Code
         private KryptonPanel kryptonPanel1;
         private System.Windows.Forms.Panel panel1;
         private Cyotek.Windows.Forms.ColorGrid colorGrid1;
@@ -19,8 +20,6 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
         private KryptonButton kryptonButton2;
         private KryptonButton kryptonButton1;
         private KryptonPanel kryptonPanel2;
-
-        public Color Colour { get; set; }
 
         private void InitializeComponent()
         {
@@ -149,6 +148,9 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.ResumeLayout(false);
 
         }
+        #endregion
+
+        public Color Colour { get; set; }
 
         private void ColourPickerDialog_Load(object sender, EventArgs e)
         {
