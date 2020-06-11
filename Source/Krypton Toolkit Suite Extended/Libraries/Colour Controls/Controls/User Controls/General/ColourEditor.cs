@@ -1699,5 +1699,12 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             }
         }
         #endregion
+
+        #region Overrides
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
+        }
+        #endregion
     }
 }

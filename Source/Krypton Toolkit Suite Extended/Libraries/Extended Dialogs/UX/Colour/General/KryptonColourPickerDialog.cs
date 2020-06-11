@@ -19,7 +19,6 @@ namespace Krypton.Toolkit.Extended.Dialogs
         private Colour.Controls.ColourWheelControl cwColour;
         private KryptonCancelDialogButton kbtnCancel;
         private Colour.Controls.ColourEditorManager cem;
-        private Colour.Controls.ColourEditorUserControl ceColours;
         private Colour.Controls.ScreenColourPickerControl scp;
         private Cyotek.Windows.Forms.ColorGrid cgColours;
         private Core.CircularPictureBox cpbColourPreview;
@@ -36,7 +35,6 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.cgColours = new Cyotek.Windows.Forms.ColorGrid();
             this.cpbColourPreview = new Krypton.Toolkit.Extended.Core.CircularPictureBox();
             this.scp = new Krypton.Toolkit.Extended.Colour.Controls.ScreenColourPickerControl();
-            this.ceColours = new Krypton.Toolkit.Extended.Colour.Controls.ColourEditorUserControl();
             this.cwColour = new Krypton.Toolkit.Extended.Colour.Controls.ColourWheelControl();
             this.kbtnCancel = new Krypton.Toolkit.Extended.Dialogs.KryptonCancelDialogButton();
             this.kbtnOk = new Krypton.Toolkit.Extended.Dialogs.KryptonOKDialogButton();
@@ -53,7 +51,6 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kryptonPanel1.Controls.Add(this.cgColours);
             this.kryptonPanel1.Controls.Add(this.cpbColourPreview);
             this.kryptonPanel1.Controls.Add(this.scp);
-            this.kryptonPanel1.Controls.Add(this.ceColours);
             this.kryptonPanel1.Controls.Add(this.cwColour);
             this.kryptonPanel1.Controls.Add(this.kbtnCancel);
             this.kryptonPanel1.Controls.Add(this.kbtnOk);
@@ -120,15 +117,6 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.scp.Size = new System.Drawing.Size(119, 103);
             this.scp.ColourChanged += new System.EventHandler(this.scp_ColourChanged);
             // 
-            // ceColours
-            // 
-            this.ceColours.AutoSize = true;
-            this.ceColours.BackColor = System.Drawing.Color.Transparent;
-            this.ceColours.Location = new System.Drawing.Point(162, 12);
-            this.ceColours.Name = "ceColours";
-            this.ceColours.Size = new System.Drawing.Size(274, 364);
-            this.ceColours.TabIndex = 1;
-            // 
             // cwColour
             // 
             this.cwColour.BackColor = System.Drawing.Color.Transparent;
@@ -191,7 +179,6 @@ namespace Krypton.Toolkit.Extended.Dialogs
             // cem
             // 
             this.cem.Color = System.Drawing.Color.Empty;
-            this.cem.ColourEditor = this.ceColours;
             this.cem.ColourGrid = this.cgColours;
             this.cem.ColourWheel = this.cwColour;
             this.cem.ScreenColourPicker = this.scp;
@@ -280,7 +267,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
         {
             base.OnLoad(e);
 
-            ceColours.ShowAlphaChannel = ShowAlphaChannel;
+            //ceColours.ShowAlphaChannel = ShowAlphaChannel;
 
             if (!ShowAlphaChannel)
             {
