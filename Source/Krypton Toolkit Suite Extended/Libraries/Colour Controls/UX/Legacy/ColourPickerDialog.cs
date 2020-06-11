@@ -151,7 +151,6 @@ namespace Krypton.Toolkit.Extended.Colour.Controls.Legacy
             // cem
             // 
             this.cem.Color = System.Drawing.Color.Empty;
-            this.cem.ColourEditor = this.ceColour;
             this.cem.ColourWheel = this.cwColourPicker;
             this.cem.ColorChanged += new System.EventHandler(this.Cem_ColorChanged);
             this.cem.ColourChanged += new System.EventHandler(this.Cem_ColourChanged);
