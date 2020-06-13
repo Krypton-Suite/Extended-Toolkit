@@ -9,8 +9,8 @@ using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Extended.Colour.Controls
 {
-    [DefaultProperty("Colour"), DefaultEvent("ColourChanged")]
-    public class ColourGridControl : Control, IColourEditor
+    [DefaultProperty("Colour"), DefaultEvent("ColourChanged"), ToolboxItem(false)]
+    public class ColourGridControl : Control
     {
         #region Constants
 
