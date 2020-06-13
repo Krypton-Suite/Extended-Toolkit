@@ -989,17 +989,18 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
 
         protected virtual void EditColour(int ColourIndex)
         {
-            using (ColourPickerDialog dialog = new ColourPickerDialog())
-            {
-                dialog.Colour = GetColour(ColourIndex);
-                if (dialog.ShowDialog(this) == DialogResult.OK)
-                {
-                    BeginUpdate();
-                    SetColour(ColourIndex, dialog.Colour);
-                    Colour = dialog.Colour;
-                    EndUpdate();
-                }
-            }
+            // TODO: Fix this
+            //using (KryptonColourPickerDialog dialog = new KryptonColourPickerDialog())
+            //{
+            //    dialog.Colour = GetColour(ColourIndex);
+            //    if (dialog.ShowDialog(this) == DialogResult.OK)
+            //    {
+            //        BeginUpdate();
+            //        SetColour(ColourIndex, dialog.Colour);
+            //        Colour = dialog.Colour;
+            //        EndUpdate();
+            //    }
+            //}
         }
 
         protected Size GetAutoSize()
