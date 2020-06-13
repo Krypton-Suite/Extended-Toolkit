@@ -9,8 +9,8 @@ using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Extended.Colour.Controls
 {
-    [DefaultProperty("Colour"), DefaultEvent("ColourChanged")]
-    public class ColourGridControl : Control, IColourEditor
+    [DefaultProperty("Colour"), DefaultEvent("ColourChanged"), ToolboxItem(false)]
+    public class ColourGridControl : Control
     {
         #region Constants
 
@@ -990,17 +990,17 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
         protected virtual void EditColour(int ColourIndex)
         {
             // TODO: Fix this
-            //using (KryptonColourPickerDialog dialog = new KryptonColourPickerDialog())
-            //{
-            //    dialog.Colour = GetColour(ColourIndex);
-            //    if (dialog.ShowDialog(this) == DialogResult.OK)
-            //    {
-            //        BeginUpdate();
-            //        SetColour(ColourIndex, dialog.Colour);
-            //        Colour = dialog.Colour;
-            //        EndUpdate();
-            //    }
-            //}
+            using (KryptonColourPickerDialog dialog = new KryptonColourPickerDialog())
+            {
+                dialog.Colour = GetColour(ColourIndex);
+                if (dialog.ShowDialog(this) == DialogResult.OK)
+                {
+                    BeginUpdate();
+                    SetColour(ColourIndex, dialog.Colour);
+                    Colour = dialog.Colour;
+                    EndUpdate();
+                }
+            }
         }
 
         protected Size GetAutoSize()
