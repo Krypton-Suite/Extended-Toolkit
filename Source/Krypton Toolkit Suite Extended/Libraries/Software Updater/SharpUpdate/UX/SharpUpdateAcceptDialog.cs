@@ -12,6 +12,7 @@ namespace Krypton.Toolkit.Extended.Software.Updater.SharpUpdate
         private KryptonLabel klblpdateAvail;
         private KryptonLabel klblNewVersion;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private Dialogs.KryptonNODialogButton kbtnNo;
         private KryptonButton kbtnDetails;
 
         private void InitializeComponent()
@@ -21,6 +22,7 @@ namespace Krypton.Toolkit.Extended.Software.Updater.SharpUpdate
             this.klblpdateAvail = new Krypton.Toolkit.KryptonLabel();
             this.klblNewVersion = new Krypton.Toolkit.KryptonLabel();
             this.kbtnDetails = new Krypton.Toolkit.KryptonButton();
+            this.kbtnNo = new Krypton.Toolkit.Extended.Dialogs.KryptonNODialogButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -28,6 +30,7 @@ namespace Krypton.Toolkit.Extended.Software.Updater.SharpUpdate
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(this.kbtnNo);
             this.kryptonPanel1.Controls.Add(this.pictureBox1);
             this.kryptonPanel1.Controls.Add(this.klblpdateAvail);
             this.kryptonPanel1.Controls.Add(this.klblNewVersion);
@@ -79,6 +82,16 @@ namespace Krypton.Toolkit.Extended.Software.Updater.SharpUpdate
             this.kbtnDetails.TabIndex = 1;
             this.kbtnDetails.Values.Text = "&Details...";
             this.kbtnDetails.Click += new System.EventHandler(this.kbtnDetails_Click);
+            // 
+            // kbtnNo
+            // 
+            this.kbtnNo.DialogResult = System.Windows.Forms.DialogResult.No;
+            this.kbtnNo.Location = new System.Drawing.Point(206, 106);
+            this.kbtnNo.Name = "kbtnNo";
+            this.kbtnNo.ParentWindow = this;
+            this.kbtnNo.Size = new System.Drawing.Size(90, 25);
+            this.kbtnNo.TabIndex = 1;
+            this.kbtnNo.Values.Text = "&No";
             // 
             // SharpUpdateAcceptDialog
             // 
