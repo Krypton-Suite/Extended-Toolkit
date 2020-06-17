@@ -9,7 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2006.1" />
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2006.3" />
+    <PackageReference Include="Microsoft.VisualBasic" Version="10.3.0" />
     <PackageReference Include="System.Management" Version="4.7.0" />
     <PackageReference Include="System.Runtime" Version="4.3.1" />
     <PackageReference Include="WindowsAPICodePack" Version="1.1.1" />
@@ -47,11 +48,12 @@
   <PropertyGroup>
     <DocumentationFile>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Common\Krypton.Toolkit.Extended.Common.xml</DocumentationFile>
     <OutputPath>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Common\</OutputPath>
-    <AssemblyVersion>5.550.2006</AssemblyVersion>
+    <AssemblyVersion>5.550.2007</AssemblyVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>5.550.2006</Version>
-    <FileVersion>5.550.2006.0</FileVersion>
+    <Version>5.550.2007</Version>
+    <FileVersion>5.550.2007.0</FileVersion>
     <Description>Contains common logic.</Description>
+    <RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
   </PropertyGroup>
 
 </Project>

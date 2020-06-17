@@ -11,15 +11,6 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
     public class ColourEditorUserControl : UserControl, IColourEditor
     {
         #region Designer Code
-        private KryptonAlphaValueLabel klblRed;
-        private KryptonAlphaValueLabel klblGreen;
-        private KryptonAlphaValueLabel klblBlue;
-        private KryptonAlphaValueLabel klblHex;
-        private KryptonAlphaValueLabel klblHSL;
-        private KryptonAlphaValueLabel klblLuminosity;
-        private KryptonAlphaValueLabel klblSaturation;
-        private KryptonAlphaValueLabel klblHue;
-        private KryptonAlphaValueLabel klblAlpha;
         private RGBAColourSliderControl rColourBar;
         private RGBAColourSliderControl gColourBar;
         private RGBAColourSliderControl bColourBar;
@@ -34,8 +25,29 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
         private KryptonNumericUpDown knudHue;
         private KryptonNumericUpDown knudSaturation;
         private KryptonNumericUpDown knudLuminosity;
+        private KryptonLabel klblRGB;
+        private KryptonLabel klblBlue;
+        private KryptonLabel klblGreen;
+        private KryptonLabel klblRed;
+        private KryptonLabel klblHex;
+        private KryptonLabel klblHSL;
+        private KryptonLabel klblHue;
+        private KryptonLabel klblSaturation;
+        private KryptonLabel klblLuminosity;
+        private KryptonLabel klblAlpha;
+        private Panel pnlRGB;
+        private Panel pnlRed;
+        private Panel pnlGreen;
+        private Panel pnlBlue;
+        private Panel pnlHexadecimal;
+        private Panel pnlHSL;
+        private Panel pnlAlpha;
+        private Panel pnlLuminosity;
+        private Panel pnlSaturation;
+        private Panel pnlHue;
+        private Panel panel1;
+        private Panel pnlHSLUI;
         private KryptonNumericUpDown knudAlpha;
-        private KryptonAlphaValueLabel klblRGB;
 
         private void InitializeComponent()
         {
@@ -44,36 +56,61 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.knudSaturation = new Krypton.Toolkit.KryptonNumericUpDown();
             this.knudLuminosity = new Krypton.Toolkit.KryptonNumericUpDown();
             this.knudAlpha = new Krypton.Toolkit.KryptonNumericUpDown();
-            this.knudBlue = new Krypton.Toolkit.Extended.Colour.Controls.KryptonBlueValueNumericBox();
-            this.knudGreen = new Krypton.Toolkit.Extended.Colour.Controls.KryptonGreenValueNumericBox();
-            this.knudRed = new Krypton.Toolkit.Extended.Colour.Controls.KryptonRedValueNumericBox();
-            this.aColourBar = new Krypton.Toolkit.Extended.Colour.Controls.RGBAColourSliderControl();
-            this.hColourBar = new Krypton.Toolkit.Extended.Colour.Controls.HueColourSliderControl();
-            this.sColourBar = new Krypton.Toolkit.Extended.Colour.Controls.SaturationColourSliderControl();
-            this.lColourBar = new Krypton.Toolkit.Extended.Colour.Controls.LightnessColourSliderControl();
+            this.klblRGB = new Krypton.Toolkit.KryptonLabel();
+            this.klblBlue = new Krypton.Toolkit.KryptonLabel();
+            this.klblGreen = new Krypton.Toolkit.KryptonLabel();
+            this.klblRed = new Krypton.Toolkit.KryptonLabel();
+            this.klblHex = new Krypton.Toolkit.KryptonLabel();
+            this.klblHSL = new Krypton.Toolkit.KryptonLabel();
+            this.klblHue = new Krypton.Toolkit.KryptonLabel();
+            this.klblSaturation = new Krypton.Toolkit.KryptonLabel();
+            this.klblLuminosity = new Krypton.Toolkit.KryptonLabel();
+            this.klblAlpha = new Krypton.Toolkit.KryptonLabel();
+            this.pnlRGB = new System.Windows.Forms.Panel();
+            this.pnlRed = new System.Windows.Forms.Panel();
             this.rColourBar = new Krypton.Toolkit.Extended.Colour.Controls.RGBAColourSliderControl();
+            this.knudRed = new Krypton.Toolkit.Extended.Colour.Controls.KryptonRedValueNumericBox();
+            this.pnlGreen = new System.Windows.Forms.Panel();
             this.gColourBar = new Krypton.Toolkit.Extended.Colour.Controls.RGBAColourSliderControl();
+            this.knudGreen = new Krypton.Toolkit.Extended.Colour.Controls.KryptonGreenValueNumericBox();
+            this.pnlBlue = new System.Windows.Forms.Panel();
             this.bColourBar = new Krypton.Toolkit.Extended.Colour.Controls.RGBAColourSliderControl();
-            this.klblAlpha = new Krypton.Toolkit.Extended.Colour.Controls.KryptonAlphaValueLabel();
-            this.klblLuminosity = new Krypton.Toolkit.Extended.Colour.Controls.KryptonAlphaValueLabel();
-            this.klblSaturation = new Krypton.Toolkit.Extended.Colour.Controls.KryptonAlphaValueLabel();
-            this.klblHue = new Krypton.Toolkit.Extended.Colour.Controls.KryptonAlphaValueLabel();
-            this.klblHSL = new Krypton.Toolkit.Extended.Colour.Controls.KryptonAlphaValueLabel();
-            this.klblHex = new Krypton.Toolkit.Extended.Colour.Controls.KryptonAlphaValueLabel();
-            this.klblBlue = new Krypton.Toolkit.Extended.Colour.Controls.KryptonAlphaValueLabel();
-            this.klblGreen = new Krypton.Toolkit.Extended.Colour.Controls.KryptonAlphaValueLabel();
-            this.klblRed = new Krypton.Toolkit.Extended.Colour.Controls.KryptonAlphaValueLabel();
-            this.klblRGB = new Krypton.Toolkit.Extended.Colour.Controls.KryptonAlphaValueLabel();
+            this.knudBlue = new Krypton.Toolkit.Extended.Colour.Controls.KryptonBlueValueNumericBox();
+            this.pnlHexadecimal = new System.Windows.Forms.Panel();
+            this.pnlHSL = new System.Windows.Forms.Panel();
+            this.pnlAlpha = new System.Windows.Forms.Panel();
+            this.aColourBar = new Krypton.Toolkit.Extended.Colour.Controls.RGBAColourSliderControl();
+            this.pnlLuminosity = new System.Windows.Forms.Panel();
+            this.lColourBar = new Krypton.Toolkit.Extended.Colour.Controls.LightnessColourSliderControl();
+            this.pnlSaturation = new System.Windows.Forms.Panel();
+            this.sColourBar = new Krypton.Toolkit.Extended.Colour.Controls.SaturationColourSliderControl();
+            this.pnlHue = new System.Windows.Forms.Panel();
+            this.hColourBar = new Krypton.Toolkit.Extended.Colour.Controls.HueColourSliderControl();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnlHSLUI = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.kcmbHex)).BeginInit();
+            this.pnlRGB.SuspendLayout();
+            this.pnlRed.SuspendLayout();
+            this.pnlGreen.SuspendLayout();
+            this.pnlBlue.SuspendLayout();
+            this.pnlHexadecimal.SuspendLayout();
+            this.pnlHSL.SuspendLayout();
+            this.pnlAlpha.SuspendLayout();
+            this.pnlLuminosity.SuspendLayout();
+            this.pnlSaturation.SuspendLayout();
+            this.pnlHue.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.pnlHSLUI.SuspendLayout();
             this.SuspendLayout();
             // 
             // kcmbHex
             // 
             this.kcmbHex.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.kcmbHex.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.kcmbHex.DropDownWidth = 58;
             this.kcmbHex.IntegralHeight = false;
-            this.kcmbHex.Location = new System.Drawing.Point(54, 141);
+            this.kcmbHex.Location = new System.Drawing.Point(54, 0);
             this.kcmbHex.Name = "kcmbHex";
             this.kcmbHex.Size = new System.Drawing.Size(204, 27);
             this.kcmbHex.StateCommon.ComboBox.Content.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -90,7 +127,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             // 
             this.knudHue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.knudHue.Location = new System.Drawing.Point(200, 209);
+            this.knudHue.Location = new System.Drawing.Point(200, 3);
             this.knudHue.Maximum = new decimal(new int[] {
             255,
             0,
@@ -106,7 +143,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             // 
             this.knudSaturation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.knudSaturation.Location = new System.Drawing.Point(200, 246);
+            this.knudSaturation.Location = new System.Drawing.Point(200, 3);
             this.knudSaturation.Maximum = new decimal(new int[] {
             255,
             0,
@@ -122,7 +159,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             // 
             this.knudLuminosity.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.knudLuminosity.Location = new System.Drawing.Point(200, 284);
+            this.knudLuminosity.Location = new System.Drawing.Point(200, 6);
             this.knudLuminosity.Maximum = new decimal(new int[] {
             255,
             0,
@@ -138,7 +175,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             // 
             this.knudAlpha.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.knudAlpha.Location = new System.Drawing.Point(200, 323);
+            this.knudAlpha.Location = new System.Drawing.Point(200, 3);
             this.knudAlpha.Maximum = new decimal(new int[] {
             255,
             0,
@@ -150,59 +187,274 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.knudAlpha.StateCommon.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
             this.knudAlpha.TabIndex = 33;
             // 
-            // knudBlue
+            // klblRGB
             // 
-            this.knudBlue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.knudBlue.Location = new System.Drawing.Point(200, 103);
-            this.knudBlue.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.knudBlue.Name = "knudBlue";
-            this.knudBlue.Size = new System.Drawing.Size(58, 23);
-            this.knudBlue.StateCommon.Back.Color1 = System.Drawing.Color.Blue;
-            this.knudBlue.StateCommon.Content.Color1 = System.Drawing.Color.White;
-            this.knudBlue.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.knudBlue.StateCommon.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
-            this.knudBlue.TabIndex = 28;
+            this.klblRGB.Dock = System.Windows.Forms.DockStyle.Left;
+            this.klblRGB.Location = new System.Drawing.Point(0, 0);
+            this.klblRGB.Name = "klblRGB";
+            this.klblRGB.Size = new System.Drawing.Size(51, 27);
+            this.klblRGB.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.klblRGB.TabIndex = 34;
+            this.klblRGB.Values.Text = "RGB:";
             // 
-            // knudGreen
+            // klblBlue
             // 
-            this.knudGreen.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.knudGreen.Location = new System.Drawing.Point(200, 65);
-            this.knudGreen.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.knudGreen.Name = "knudGreen";
-            this.knudGreen.Size = new System.Drawing.Size(58, 23);
-            this.knudGreen.StateCommon.Back.Color1 = System.Drawing.Color.Green;
-            this.knudGreen.StateCommon.Content.Color1 = System.Drawing.Color.White;
-            this.knudGreen.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.knudGreen.StateCommon.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
-            this.knudGreen.TabIndex = 27;
+            this.klblBlue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.klblBlue.Location = new System.Drawing.Point(13, 6);
+            this.klblBlue.Name = "klblBlue";
+            this.klblBlue.Size = new System.Drawing.Size(27, 21);
+            this.klblBlue.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.klblBlue.TabIndex = 35;
+            this.klblBlue.Values.Text = "B:";
+            // 
+            // klblGreen
+            // 
+            this.klblGreen.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.klblGreen.Location = new System.Drawing.Point(14, 5);
+            this.klblGreen.Name = "klblGreen";
+            this.klblGreen.Size = new System.Drawing.Size(28, 21);
+            this.klblGreen.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.klblGreen.TabIndex = 36;
+            this.klblGreen.Values.Text = "G:";
+            // 
+            // klblRed
+            // 
+            this.klblRed.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.klblRed.Location = new System.Drawing.Point(14, 6);
+            this.klblRed.Name = "klblRed";
+            this.klblRed.Size = new System.Drawing.Size(28, 21);
+            this.klblRed.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.klblRed.TabIndex = 37;
+            this.klblRed.Values.Text = "R:";
+            // 
+            // klblHex
+            // 
+            this.klblHex.Dock = System.Windows.Forms.DockStyle.Left;
+            this.klblHex.Location = new System.Drawing.Point(0, 0);
+            this.klblHex.Name = "klblHex";
+            this.klblHex.Size = new System.Drawing.Size(45, 27);
+            this.klblHex.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.klblHex.TabIndex = 38;
+            this.klblHex.Values.Text = "Hex:";
+            // 
+            // klblHSL
+            // 
+            this.klblHSL.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.klblHSL.Location = new System.Drawing.Point(4, 6);
+            this.klblHSL.Name = "klblHSL";
+            this.klblHSL.Size = new System.Drawing.Size(47, 21);
+            this.klblHSL.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.klblHSL.TabIndex = 39;
+            this.klblHSL.Values.Text = "HSL:";
+            // 
+            // klblHue
+            // 
+            this.klblHue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.klblHue.Location = new System.Drawing.Point(13, 5);
+            this.klblHue.Name = "klblHue";
+            this.klblHue.Size = new System.Drawing.Size(28, 21);
+            this.klblHue.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.klblHue.TabIndex = 40;
+            this.klblHue.Values.Text = "H:";
+            // 
+            // klblSaturation
+            // 
+            this.klblSaturation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.klblSaturation.Location = new System.Drawing.Point(13, 5);
+            this.klblSaturation.Name = "klblSaturation";
+            this.klblSaturation.Size = new System.Drawing.Size(27, 21);
+            this.klblSaturation.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.klblSaturation.TabIndex = 41;
+            this.klblSaturation.Values.Text = "S:";
+            // 
+            // klblLuminosity
+            // 
+            this.klblLuminosity.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.klblLuminosity.Location = new System.Drawing.Point(14, 6);
+            this.klblLuminosity.Name = "klblLuminosity";
+            this.klblLuminosity.Size = new System.Drawing.Size(25, 21);
+            this.klblLuminosity.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.klblLuminosity.TabIndex = 42;
+            this.klblLuminosity.Values.Text = "L:";
+            // 
+            // klblAlpha
+            // 
+            this.klblAlpha.Dock = System.Windows.Forms.DockStyle.Left;
+            this.klblAlpha.Location = new System.Drawing.Point(0, 0);
+            this.klblAlpha.Name = "klblAlpha";
+            this.klblAlpha.Size = new System.Drawing.Size(57, 27);
+            this.klblAlpha.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.klblAlpha.TabIndex = 43;
+            this.klblAlpha.Values.Text = "Alpha:";
+            // 
+            // pnlRGB
+            // 
+            this.pnlRGB.BackColor = System.Drawing.Color.Transparent;
+            this.pnlRGB.Controls.Add(this.klblRGB);
+            this.pnlRGB.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlRGB.Location = new System.Drawing.Point(0, 0);
+            this.pnlRGB.Name = "pnlRGB";
+            this.pnlRGB.Size = new System.Drawing.Size(261, 27);
+            this.pnlRGB.TabIndex = 44;
+            // 
+            // pnlRed
+            // 
+            this.pnlRed.BackColor = System.Drawing.Color.Transparent;
+            this.pnlRed.Controls.Add(this.klblRed);
+            this.pnlRed.Controls.Add(this.rColourBar);
+            this.pnlRed.Controls.Add(this.knudRed);
+            this.pnlRed.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlRed.Location = new System.Drawing.Point(0, 27);
+            this.pnlRed.Name = "pnlRed";
+            this.pnlRed.Size = new System.Drawing.Size(261, 32);
+            this.pnlRed.TabIndex = 35;
+            // 
+            // rColourBar
+            // 
+            this.rColourBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.rColourBar.BackColor = System.Drawing.Color.Transparent;
+            this.rColourBar.Location = new System.Drawing.Point(47, 6);
+            this.rColourBar.Name = "rColourBar";
+            this.rColourBar.Size = new System.Drawing.Size(147, 20);
+            this.rColourBar.TabIndex = 17;
             // 
             // knudRed
             // 
             this.knudRed.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.knudRed.Location = new System.Drawing.Point(200, 28);
+            this.knudRed.Location = new System.Drawing.Point(200, 3);
             this.knudRed.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
             this.knudRed.Name = "knudRed";
-            this.knudRed.Size = new System.Drawing.Size(58, 23);
+            this.knudRed.Size = new System.Drawing.Size(58, 22);
             this.knudRed.StateCommon.Back.Color1 = System.Drawing.Color.Red;
             this.knudRed.StateCommon.Content.Color1 = System.Drawing.Color.White;
-            this.knudRed.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.knudRed.StateCommon.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
             this.knudRed.TabIndex = 26;
+            this.knudRed.Typeface = null;
+            this.knudRed.UseAccessibleUI = false;
+            // 
+            // pnlGreen
+            // 
+            this.pnlGreen.Controls.Add(this.klblGreen);
+            this.pnlGreen.Controls.Add(this.gColourBar);
+            this.pnlGreen.Controls.Add(this.knudGreen);
+            this.pnlGreen.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlGreen.Location = new System.Drawing.Point(0, 59);
+            this.pnlGreen.Name = "pnlGreen";
+            this.pnlGreen.Size = new System.Drawing.Size(261, 32);
+            this.pnlGreen.TabIndex = 38;
+            // 
+            // gColourBar
+            // 
+            this.gColourBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.gColourBar.BackColor = System.Drawing.Color.Transparent;
+            this.gColourBar.Channel = Krypton.Toolkit.Extended.Colour.Controls.RGBAChannel.Green;
+            this.gColourBar.Location = new System.Drawing.Point(47, 3);
+            this.gColourBar.Name = "gColourBar";
+            this.gColourBar.Size = new System.Drawing.Size(147, 27);
+            this.gColourBar.TabIndex = 18;
+            // 
+            // knudGreen
+            // 
+            this.knudGreen.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.knudGreen.Location = new System.Drawing.Point(200, 6);
+            this.knudGreen.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.knudGreen.Name = "knudGreen";
+            this.knudGreen.Size = new System.Drawing.Size(58, 22);
+            this.knudGreen.StateCommon.Back.Color1 = System.Drawing.Color.Green;
+            this.knudGreen.StateCommon.Content.Color1 = System.Drawing.Color.White;
+            this.knudGreen.StateCommon.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
+            this.knudGreen.TabIndex = 27;
+            this.knudGreen.Typeface = null;
+            this.knudGreen.UseAccessibleUI = false;
+            // 
+            // pnlBlue
+            // 
+            this.pnlBlue.Controls.Add(this.klblBlue);
+            this.pnlBlue.Controls.Add(this.bColourBar);
+            this.pnlBlue.Controls.Add(this.knudBlue);
+            this.pnlBlue.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlBlue.Location = new System.Drawing.Point(0, 91);
+            this.pnlBlue.Name = "pnlBlue";
+            this.pnlBlue.Size = new System.Drawing.Size(261, 32);
+            this.pnlBlue.TabIndex = 37;
+            // 
+            // bColourBar
+            // 
+            this.bColourBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.bColourBar.BackColor = System.Drawing.Color.Transparent;
+            this.bColourBar.Channel = Krypton.Toolkit.Extended.Colour.Controls.RGBAChannel.Blue;
+            this.bColourBar.Location = new System.Drawing.Point(47, 3);
+            this.bColourBar.Name = "bColourBar";
+            this.bColourBar.Size = new System.Drawing.Size(148, 25);
+            this.bColourBar.TabIndex = 19;
+            // 
+            // knudBlue
+            // 
+            this.knudBlue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.knudBlue.Location = new System.Drawing.Point(200, 6);
+            this.knudBlue.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.knudBlue.Name = "knudBlue";
+            this.knudBlue.Size = new System.Drawing.Size(58, 22);
+            this.knudBlue.StateCommon.Back.Color1 = System.Drawing.Color.Blue;
+            this.knudBlue.StateCommon.Content.Color1 = System.Drawing.Color.White;
+            this.knudBlue.StateCommon.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
+            this.knudBlue.TabIndex = 28;
+            this.knudBlue.Typeface = null;
+            this.knudBlue.UseAccessibleUI = false;
+            // 
+            // pnlHexadecimal
+            // 
+            this.pnlHexadecimal.BackColor = System.Drawing.Color.Transparent;
+            this.pnlHexadecimal.Controls.Add(this.klblHex);
+            this.pnlHexadecimal.Controls.Add(this.kcmbHex);
+            this.pnlHexadecimal.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlHexadecimal.Location = new System.Drawing.Point(0, 122);
+            this.pnlHexadecimal.Name = "pnlHexadecimal";
+            this.pnlHexadecimal.Size = new System.Drawing.Size(261, 27);
+            this.pnlHexadecimal.TabIndex = 45;
+            // 
+            // pnlHSL
+            // 
+            this.pnlHSL.BackColor = System.Drawing.Color.Transparent;
+            this.pnlHSL.Controls.Add(this.klblHSL);
+            this.pnlHSL.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlHSL.Location = new System.Drawing.Point(0, 0);
+            this.pnlHSL.Name = "pnlHSL";
+            this.pnlHSL.Size = new System.Drawing.Size(261, 50);
+            this.pnlHSL.TabIndex = 39;
+            // 
+            // pnlAlpha
+            // 
+            this.pnlAlpha.Controls.Add(this.klblAlpha);
+            this.pnlAlpha.Controls.Add(this.aColourBar);
+            this.pnlAlpha.Controls.Add(this.knudAlpha);
+            this.pnlAlpha.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlAlpha.Location = new System.Drawing.Point(0, 276);
+            this.pnlAlpha.Name = "pnlAlpha";
+            this.pnlAlpha.Size = new System.Drawing.Size(261, 27);
+            this.pnlAlpha.TabIndex = 46;
             // 
             // aColourBar
             // 
@@ -210,240 +462,129 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             | System.Windows.Forms.AnchorStyles.Right)));
             this.aColourBar.BackColor = System.Drawing.Color.Transparent;
             this.aColourBar.Channel = Krypton.Toolkit.Extended.Colour.Controls.RGBAChannel.Alpha;
-            this.aColourBar.Location = new System.Drawing.Point(66, 326);
+            this.aColourBar.Location = new System.Drawing.Point(65, 6);
             this.aColourBar.Name = "aColourBar";
-            this.aColourBar.Size = new System.Drawing.Size(128, 20);
+            this.aColourBar.Size = new System.Drawing.Size(130, 20);
             this.aColourBar.TabIndex = 25;
             // 
-            // hColourBar
+            // pnlLuminosity
             // 
-            this.hColourBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.hColourBar.BackColor = System.Drawing.Color.Transparent;
-            this.hColourBar.Location = new System.Drawing.Point(47, 212);
-            this.hColourBar.Name = "hColourBar";
-            this.hColourBar.Size = new System.Drawing.Size(147, 20);
-            this.hColourBar.TabIndex = 22;
-            // 
-            // sColourBar
-            // 
-            this.sColourBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.sColourBar.BackColor = System.Drawing.Color.Transparent;
-            this.sColourBar.Location = new System.Drawing.Point(47, 249);
-            this.sColourBar.Name = "sColourBar";
-            this.sColourBar.Size = new System.Drawing.Size(147, 20);
-            this.sColourBar.TabIndex = 23;
+            this.pnlLuminosity.Controls.Add(this.klblLuminosity);
+            this.pnlLuminosity.Controls.Add(this.lColourBar);
+            this.pnlLuminosity.Controls.Add(this.knudLuminosity);
+            this.pnlLuminosity.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlLuminosity.Location = new System.Drawing.Point(0, 94);
+            this.pnlLuminosity.Name = "pnlLuminosity";
+            this.pnlLuminosity.Size = new System.Drawing.Size(261, 32);
+            this.pnlLuminosity.TabIndex = 47;
             // 
             // lColourBar
             // 
             this.lColourBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lColourBar.BackColor = System.Drawing.Color.Transparent;
-            this.lColourBar.Location = new System.Drawing.Point(47, 287);
+            this.lColourBar.Location = new System.Drawing.Point(45, 9);
             this.lColourBar.Name = "lColourBar";
-            this.lColourBar.Size = new System.Drawing.Size(147, 20);
+            this.lColourBar.Size = new System.Drawing.Size(150, 20);
             this.lColourBar.TabIndex = 24;
             // 
-            // rColourBar
+            // pnlSaturation
             // 
-            this.rColourBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.rColourBar.BackColor = System.Drawing.Color.Transparent;
-            this.rColourBar.Location = new System.Drawing.Point(47, 31);
-            this.rColourBar.Name = "rColourBar";
-            this.rColourBar.Size = new System.Drawing.Size(147, 20);
-            this.rColourBar.TabIndex = 17;
+            this.pnlSaturation.Controls.Add(this.klblSaturation);
+            this.pnlSaturation.Controls.Add(this.sColourBar);
+            this.pnlSaturation.Controls.Add(this.knudSaturation);
+            this.pnlSaturation.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlSaturation.Location = new System.Drawing.Point(0, 62);
+            this.pnlSaturation.Name = "pnlSaturation";
+            this.pnlSaturation.Size = new System.Drawing.Size(261, 32);
+            this.pnlSaturation.TabIndex = 43;
             // 
-            // gColourBar
+            // sColourBar
             // 
-            this.gColourBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.gColourBar.BackColor = System.Drawing.Color.Transparent;
-            this.gColourBar.Channel = Krypton.Toolkit.Extended.Colour.Controls.RGBAChannel.Green;
-            this.gColourBar.Location = new System.Drawing.Point(47, 68);
-            this.gColourBar.Name = "gColourBar";
-            this.gColourBar.Size = new System.Drawing.Size(147, 20);
-            this.gColourBar.TabIndex = 18;
+            this.sColourBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.sColourBar.BackColor = System.Drawing.Color.Transparent;
+            this.sColourBar.Location = new System.Drawing.Point(47, 5);
+            this.sColourBar.Name = "sColourBar";
+            this.sColourBar.Size = new System.Drawing.Size(147, 20);
+            this.sColourBar.TabIndex = 23;
             // 
-            // bColourBar
+            // pnlHue
             // 
-            this.bColourBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.bColourBar.BackColor = System.Drawing.Color.Transparent;
-            this.bColourBar.Channel = Krypton.Toolkit.Extended.Colour.Controls.RGBAChannel.Blue;
-            this.bColourBar.Location = new System.Drawing.Point(47, 106);
-            this.bColourBar.Name = "bColourBar";
-            this.bColourBar.Size = new System.Drawing.Size(147, 20);
-            this.bColourBar.TabIndex = 19;
+            this.pnlHue.Controls.Add(this.klblHue);
+            this.pnlHue.Controls.Add(this.hColourBar);
+            this.pnlHue.Controls.Add(this.knudHue);
+            this.pnlHue.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlHue.Location = new System.Drawing.Point(0, 30);
+            this.pnlHue.Name = "pnlHue";
+            this.pnlHue.Size = new System.Drawing.Size(261, 32);
+            this.pnlHue.TabIndex = 48;
             // 
-            // klblAlpha
+            // hColourBar
             // 
-            this.klblAlpha.AlphaValue = 255;
-            this.klblAlpha.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.klblAlpha.Location = new System.Drawing.Point(3, 325);
-            this.klblAlpha.Name = "klblAlpha";
-            this.klblAlpha.Size = new System.Drawing.Size(57, 21);
-            this.klblAlpha.StateCommon.LongText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.klblAlpha.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
-            this.klblAlpha.TabIndex = 16;
-            this.klblAlpha.Typeface = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.klblAlpha.Values.Text = "Alpha:";
+            this.hColourBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.hColourBar.BackColor = System.Drawing.Color.Transparent;
+            this.hColourBar.Location = new System.Drawing.Point(47, 5);
+            this.hColourBar.Name = "hColourBar";
+            this.hColourBar.Size = new System.Drawing.Size(147, 20);
+            this.hColourBar.TabIndex = 22;
             // 
-            // klblLuminosity
+            // panel1
             // 
-            this.klblLuminosity.AlphaValue = 255;
-            this.klblLuminosity.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.klblLuminosity.Location = new System.Drawing.Point(13, 286);
-            this.klblLuminosity.Name = "klblLuminosity";
-            this.klblLuminosity.Size = new System.Drawing.Size(25, 21);
-            this.klblLuminosity.StateCommon.LongText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.klblLuminosity.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
-            this.klblLuminosity.TabIndex = 15;
-            this.klblLuminosity.Typeface = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.klblLuminosity.Values.Text = "L:";
+            this.panel1.Controls.Add(this.pnlBlue);
+            this.panel1.Controls.Add(this.pnlGreen);
+            this.panel1.Controls.Add(this.pnlRed);
+            this.panel1.Controls.Add(this.pnlRGB);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(261, 122);
+            this.panel1.TabIndex = 49;
             // 
-            // klblSaturation
+            // pnlHSLUI
             // 
-            this.klblSaturation.AlphaValue = 255;
-            this.klblSaturation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.klblSaturation.Location = new System.Drawing.Point(13, 248);
-            this.klblSaturation.Name = "klblSaturation";
-            this.klblSaturation.Size = new System.Drawing.Size(27, 21);
-            this.klblSaturation.StateCommon.LongText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.klblSaturation.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
-            this.klblSaturation.TabIndex = 14;
-            this.klblSaturation.Typeface = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.klblSaturation.Values.Text = "S:";
-            // 
-            // klblHue
-            // 
-            this.klblHue.AlphaValue = 255;
-            this.klblHue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.klblHue.Location = new System.Drawing.Point(13, 211);
-            this.klblHue.Name = "klblHue";
-            this.klblHue.Size = new System.Drawing.Size(28, 21);
-            this.klblHue.StateCommon.LongText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.klblHue.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
-            this.klblHue.TabIndex = 13;
-            this.klblHue.Typeface = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.klblHue.Values.Text = "H:";
-            // 
-            // klblHSL
-            // 
-            this.klblHSL.AlphaValue = 255;
-            this.klblHSL.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.klblHSL.Location = new System.Drawing.Point(3, 184);
-            this.klblHSL.Name = "klblHSL";
-            this.klblHSL.Size = new System.Drawing.Size(47, 21);
-            this.klblHSL.StateCommon.LongText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.klblHSL.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
-            this.klblHSL.TabIndex = 12;
-            this.klblHSL.Typeface = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.klblHSL.Values.Text = "HSL:";
-            // 
-            // klblHex
-            // 
-            this.klblHex.AlphaValue = 255;
-            this.klblHex.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.klblHex.Location = new System.Drawing.Point(3, 141);
-            this.klblHex.Name = "klblHex";
-            this.klblHex.Size = new System.Drawing.Size(45, 21);
-            this.klblHex.StateCommon.LongText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.klblHex.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
-            this.klblHex.TabIndex = 11;
-            this.klblHex.Typeface = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.klblHex.Values.Text = "Hex:";
-            // 
-            // klblBlue
-            // 
-            this.klblBlue.AlphaValue = 255;
-            this.klblBlue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.klblBlue.Location = new System.Drawing.Point(13, 105);
-            this.klblBlue.Name = "klblBlue";
-            this.klblBlue.Size = new System.Drawing.Size(27, 21);
-            this.klblBlue.StateCommon.LongText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.klblBlue.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
-            this.klblBlue.TabIndex = 10;
-            this.klblBlue.Typeface = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.klblBlue.Values.Text = "B:";
-            // 
-            // klblGreen
-            // 
-            this.klblGreen.AlphaValue = 255;
-            this.klblGreen.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.klblGreen.Location = new System.Drawing.Point(13, 67);
-            this.klblGreen.Name = "klblGreen";
-            this.klblGreen.Size = new System.Drawing.Size(28, 21);
-            this.klblGreen.StateCommon.LongText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.klblGreen.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
-            this.klblGreen.TabIndex = 9;
-            this.klblGreen.Typeface = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.klblGreen.Values.Text = "G:";
-            // 
-            // klblRed
-            // 
-            this.klblRed.AlphaValue = 255;
-            this.klblRed.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.klblRed.Location = new System.Drawing.Point(13, 30);
-            this.klblRed.Name = "klblRed";
-            this.klblRed.Size = new System.Drawing.Size(28, 21);
-            this.klblRed.StateCommon.LongText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.klblRed.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
-            this.klblRed.TabIndex = 8;
-            this.klblRed.Typeface = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.klblRed.Values.Text = "R:";
-            // 
-            // klblRGB
-            // 
-            this.klblRGB.AlphaValue = 255;
-            this.klblRGB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.klblRGB.Location = new System.Drawing.Point(3, 3);
-            this.klblRGB.Name = "klblRGB";
-            this.klblRGB.Size = new System.Drawing.Size(51, 21);
-            this.klblRGB.StateCommon.LongText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.klblRGB.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
-            this.klblRGB.TabIndex = 7;
-            this.klblRGB.Typeface = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.klblRGB.Values.Text = "RGB:";
+            this.pnlHSLUI.Controls.Add(this.pnlHue);
+            this.pnlHSLUI.Controls.Add(this.pnlSaturation);
+            this.pnlHSLUI.Controls.Add(this.pnlHSL);
+            this.pnlHSLUI.Controls.Add(this.pnlLuminosity);
+            this.pnlHSLUI.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlHSLUI.Location = new System.Drawing.Point(0, 150);
+            this.pnlHSLUI.Name = "pnlHSLUI";
+            this.pnlHSLUI.Size = new System.Drawing.Size(261, 126);
+            this.pnlHSLUI.TabIndex = 50;
             // 
             // ColourEditorUserControl
             // 
             this.BackColor = System.Drawing.Color.Transparent;
-            this.Controls.Add(this.knudAlpha);
-            this.Controls.Add(this.knudLuminosity);
-            this.Controls.Add(this.knudSaturation);
-            this.Controls.Add(this.knudHue);
-            this.Controls.Add(this.kcmbHex);
-            this.Controls.Add(this.knudBlue);
-            this.Controls.Add(this.knudGreen);
-            this.Controls.Add(this.knudRed);
-            this.Controls.Add(this.aColourBar);
-            this.Controls.Add(this.hColourBar);
-            this.Controls.Add(this.sColourBar);
-            this.Controls.Add(this.lColourBar);
-            this.Controls.Add(this.rColourBar);
-            this.Controls.Add(this.gColourBar);
-            this.Controls.Add(this.bColourBar);
-            this.Controls.Add(this.klblAlpha);
-            this.Controls.Add(this.klblLuminosity);
-            this.Controls.Add(this.klblSaturation);
-            this.Controls.Add(this.klblHue);
-            this.Controls.Add(this.klblHSL);
-            this.Controls.Add(this.klblHex);
-            this.Controls.Add(this.klblBlue);
-            this.Controls.Add(this.klblGreen);
-            this.Controls.Add(this.klblRed);
-            this.Controls.Add(this.klblRGB);
+            this.Controls.Add(this.pnlHSLUI);
+            this.Controls.Add(this.pnlAlpha);
+            this.Controls.Add(this.pnlHexadecimal);
+            this.Controls.Add(this.panel1);
             this.Name = "ColourEditorUserControl";
-            this.Size = new System.Drawing.Size(261, 359);
+            this.Size = new System.Drawing.Size(261, 303);
+            this.Load += new System.EventHandler(this.ColourEditorUserControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.kcmbHex)).EndInit();
+            this.pnlRGB.ResumeLayout(false);
+            this.pnlRGB.PerformLayout();
+            this.pnlRed.ResumeLayout(false);
+            this.pnlRed.PerformLayout();
+            this.pnlGreen.ResumeLayout(false);
+            this.pnlGreen.PerformLayout();
+            this.pnlBlue.ResumeLayout(false);
+            this.pnlBlue.PerformLayout();
+            this.pnlHexadecimal.ResumeLayout(false);
+            this.pnlHexadecimal.PerformLayout();
+            this.pnlHSL.ResumeLayout(false);
+            this.pnlHSL.PerformLayout();
+            this.pnlAlpha.ResumeLayout(false);
+            this.pnlAlpha.PerformLayout();
+            this.pnlLuminosity.ResumeLayout(false);
+            this.pnlLuminosity.PerformLayout();
+            this.pnlSaturation.ResumeLayout(false);
+            this.pnlSaturation.PerformLayout();
+            this.pnlHue.ResumeLayout(false);
+            this.pnlHue.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.pnlHSLUI.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
         #endregion
@@ -470,7 +611,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
 
         private Orientation _orientation;
 
-        private bool _showAlphaChannel, _showColourSpaceLabels;
+        private bool _showAlphaChannel, _showColourSpaceLabels, _showLabelsInColour, _showHSLUI, _showHexadecimalUI;
 
         #endregion
 
@@ -584,12 +725,13 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
                     _showAlphaChannel = value;
 
                     this.OnShowAlphaChannelChanged(EventArgs.Empty);
+
+                    Invalidate();
                 }
             }
         }
 
-        [Category("Appearance")]
-        [DefaultValue(true)]
+        [Category("Appearance"), DefaultValue(true)]
         public bool ShowColourSpaceLabels
         {
             get { return _showColourSpaceLabels; }
@@ -603,6 +745,15 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
                 }
             }
         }
+
+        [Category("Appearence"), DefaultValue(false)]
+        public bool ShowLabelsInColour { get => _showLabelsInColour; set { _showLabelsInColour = value; Invalidate(); } }
+
+        [Category("Appearence"), DefaultValue(true)]
+        public bool ShowHSL { get => _showHSLUI; set { _showHSLUI = value; Invalidate(); } }
+
+        [Category("Appearence"), DefaultValue(true)]
+        public bool ShowHexadecimal { get => _showHexadecimalUI; set { _showHexadecimalUI = value; Invalidate(); } }
 
         /// <summary>
         /// Gets or sets a value indicating whether input changes should be processed.
@@ -927,6 +1078,19 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
 
             base.OnResize(e);
         }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            SetColouredLabels(ShowLabelsInColour);
+
+            ShowHexadecimalUI(ShowHexadecimal);
+
+            ShowHSLUI(ShowHSL);
+
+            ShowAlphaUI(ShowAlphaChannel);
+
+            base.OnPaint(e);
+        }
         #endregion
 
         #region Methods
@@ -1209,6 +1373,79 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
                 this.UpdateFields(true);
             }
         }
+
+        private void SetColouredLabels(bool value)
+        {
+            if (value)
+            {
+                klblRed.StateCommon.ShortText.Color1 = Color.Red;
+
+                klblRed.StateCommon.ShortText.Color2 = Color.Red;
+
+                klblGreen.StateCommon.ShortText.Color1 = Color.Green;
+
+                klblGreen.StateCommon.ShortText.Color2 = Color.Green;
+
+                klblBlue.StateCommon.ShortText.Color1 = Color.Blue;
+
+                klblBlue.StateCommon.ShortText.Color2 = Color.Blue;
+            }
+            else
+            {
+                klblRed.StateCommon.ShortText.Color1 = Color.Empty;
+
+                klblRed.StateCommon.ShortText.Color2 = Color.Empty;
+
+                klblGreen.StateCommon.ShortText.Color1 = Color.Empty;
+
+                klblGreen.StateCommon.ShortText.Color2 = Color.Empty;
+
+                klblBlue.StateCommon.ShortText.Color1 = Color.Empty;
+
+                klblBlue.StateCommon.ShortText.Color2 = Color.Empty;
+            }
+        }
+
+        private void ShowHSLUI(bool value)
+        {
+            pnlHSL.Visible = value;
+
+            pnlHue.Visible = value;
+
+            pnlSaturation.Visible = value;
+
+            pnlLuminosity.Visible = value;
+
+            AdjustUI();
+        }
+
+        private void ShowAlphaUI(bool value) { pnlAlpha.Visible = value; AdjustUI(); }
+
+        private void ShowHexadecimalUI(bool value) { pnlHexadecimal.Visible = value; AdjustUI(); }
+
+        private void AdjustUI()
+        {
+            int height;
+
+            if (ShowAlphaChannel && ShowHexadecimal && ShowHSL)
+            {
+                height = pnlRGB.Height + pnlRed.Height + pnlBlue.Height + pnlHexadecimal.Height + pnlHSL.Height + pnlHue.Height + pnlSaturation.Height + pnlLuminosity.Height + pnlAlpha.Height;
+
+                Height = height;
+            }
+            else if (ShowAlphaChannel && ShowHexadecimal)
+            {
+                height = pnlRGB.Height + pnlRed.Height + pnlBlue.Height + pnlHexadecimal.Height + pnlAlpha.Height;
+
+                Height = height;
+            }
+            else if (ShowAlphaChannel && ShowHSL)
+            {
+                height = pnlRGB.Height + pnlRed.Height + pnlBlue.Height + pnlHSL.Height + pnlHue.Height + pnlSaturation.Height + pnlLuminosity.Height + pnlAlpha.Height;
+
+                Height = height;
+            }
+        }
         #endregion
 
         #region IColourEditor Implementation
@@ -1244,6 +1481,11 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
                     }
                 }
             }
+        }
+
+        private void ColourEditorUserControl_Load(object sender, EventArgs e)
+        {
+
         }
 
         [Category("Property Changed")]

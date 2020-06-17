@@ -6,12 +6,16 @@ using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Extended.Dialogs
 {
-    [ToolboxBitmap(typeof(KryptonButtonExtended))]
-    public class KryptonAbortDialogButton : KryptonButtonExtended
+    [ToolboxBitmap(typeof(KryptonButton))]
+    public class KryptonAbortDialogButton : KryptonButton
     {
         private Language _language = Language.ENGLISH;
 
+        private KryptonForm _parent;
+
         public Language Language { get => _language; set { _language = value; Invalidate(); } }
+
+       public KryptonForm ParentWindow { get => _parent; set { _parent = value; Invalidate(); } }
 
         public KryptonAbortDialogButton()
         {
@@ -42,6 +46,16 @@ namespace Krypton.Toolkit.Extended.Dialogs
 
                 form.CancelButton = this;
             }
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            if (ParentWindow != null)
+            {
+                ParentWindow.CancelButton = this;
+            }
+
+            base.OnPaint(e);
         }
     }
 }

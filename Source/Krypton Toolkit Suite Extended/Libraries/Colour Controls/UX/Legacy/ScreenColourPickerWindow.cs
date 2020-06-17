@@ -1,11 +1,6 @@
-﻿using Krypton.Toolkit.Extended.Base;
-using Krypton.Toolkit.Suite.Extended.Standard.Controls;
-using System;
-using System.Drawing;
-using System.Windows.Forms;
-
-namespace Krypton.Toolkit.Extended.Colour.Controls
+﻿namespace Krypton.Toolkit.Extended.Colour.Controls.Legacy
 {
+    /*
     public class ScreenColourPickerWindow : KryptonForm
     {
         #region Designer Code
@@ -723,4 +718,5 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
         }
         #endregion
     }
+    */
 }

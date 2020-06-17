@@ -8,19 +8,38 @@
     <UseWindowsForms>true</UseWindowsForms>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Version>5.550.2006</Version>
+    <Version>5.550.2007</Version>
+    <RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
     <PackageLicenseFile></PackageLicenseFile>
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Controls\User Controls\Colour Sliders\**" />
+    <EmbeddedResource Remove="Controls\User Controls\Colour Sliders\**" />
+    <None Remove="Controls\User Controls\Colour Sliders\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Cyotek.Windows.Forms.ColorPicker" Version="1.7.2" />
-    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2006.1" />
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2006.3" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\Shared\Toolkit Core\Krypton.Toolkit.Suite.Extended.Core.csproj" />
     <ProjectReference Include="..\Extended Standard Controls\Krypton.Toolkit.Suite.Extended.Standard.Controls.csproj" />
     <ProjectReference Include="..\Base\Krypton.Toolkit.Suite.Extended.Base.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Krypton.Toolkit.Suite.Extended.Base">
+      <HintPath>..\Base\obj\Debug\net45\Krypton.Toolkit.Suite.Extended.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Krypton.Toolkit.Suite.Extended.Dialogs">
+      <HintPath>..\Extended Dialogs\obj\Debug\net45\Krypton.Toolkit.Suite.Extended.Dialogs.dll</HintPath>
+    </Reference>
+    <Reference Include="Krypton.Toolkit.Suite.Extended.Floating.Toolbars">
+      <HintPath>..\Floating Toolbars\obj\Debug\net45\Krypton.Toolkit.Suite.Extended.Floating.Toolbars.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>

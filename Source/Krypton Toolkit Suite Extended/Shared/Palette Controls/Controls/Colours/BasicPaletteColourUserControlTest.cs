@@ -1,10 +1,10 @@
-﻿using Krypton.Toolkit.Extended.Palette.Controls;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Palette.Controls
 {
+    /*
     public class BasicPaletteColourUserControlTest : UserControl
     {
         #region Designer Code
@@ -245,4 +245,5 @@ namespace Krypton.Toolkit.Suite.Extended.Palette.Controls
         }
         #endregion
     }
+    */
 }

@@ -6,6 +6,7 @@ using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Extended.Colour.Controls
 {
+    /*
     public class KryptonScreenColourPicker : UserControl
     {
         #region Designer Code
@@ -197,7 +198,6 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.kknbBlue.SmallChange = 5;
             this.kknbBlue.TabIndex = 22;
             this.kknbBlue.Value = 0;
-            this.kknbBlue.ValueChanged += new ValueChangedEventHandler(this.kknbBlue_ValueChanged);
             // 
             // kknbGreen
             // 
@@ -681,4 +681,5 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
         }
         #endregion
     }
+    */
 }

@@ -14,20 +14,21 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>5.550.2006</AssemblyVersion>
-    <FileVersion>5.550.2006.0</FileVersion>
+    <AssemblyVersion>5.550.2007</AssemblyVersion>
+    <FileVersion>5.550.2007.0</FileVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Version>5.550.2006</Version>
+    <Version>5.550.2007</Version>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2006.1" />
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2006.3" />
   </ItemGroup>
   
   <PropertyGroup>
     <!--<PackageId>Krypton.Toolkit.Extended.Floating.Toolbars</PackageId>-->
     <PackageId>Krypton.Toolkit.Suite.Extended.Floating.Toolbars</PackageId>
+    <RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
   </PropertyGroup>
 
 </Project>

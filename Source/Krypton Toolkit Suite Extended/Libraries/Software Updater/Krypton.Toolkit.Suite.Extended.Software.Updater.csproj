@@ -8,9 +8,10 @@
     <UseWindowsForms>true</UseWindowsForms>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Version>5.550.2006</Version>
-    <FileVersion>5.550.2006.0</FileVersion>
+    <Version>5.550.2007</Version>
+    <FileVersion>5.550.2007.0</FileVersion>
     <Description>Contains popular software update solutions such as AutoUpdater.NET, NetSparkle and SharpUpdate.</Description>
+    <RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net45|AnyCPU'">
@@ -19,8 +20,8 @@
 
   <ItemGroup>
     <PackageReference Include="ILRepack.Lib.MSBuild.Task" Version="2.0.18.1" />
-    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2006.1" />
-    <PackageReference Include="Krypton.Toolkit.Suite.Extended.Dialogs" Version="5.500.2005.1" />
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2006.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="ZipStorer" Version="3.6.0" />
   </ItemGroup>
 
@@ -55,6 +56,24 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>LanguageEN.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="NetSparkle\Tools\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Shared\Common\Krypton.Toolkit.Suite.Extended.Common.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Krypton.Toolkit.Suite.Extended.Base">
+      <HintPath>..\Base\obj\Debug\net45\Krypton.Toolkit.Suite.Extended.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Krypton.Toolkit.Suite.Extended.Dialogs">
+      <HintPath>..\Extended Dialogs\obj\Debug\net45\Krypton.Toolkit.Suite.Extended.Dialogs.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http" />
   </ItemGroup>
 
   <PropertyGroup>

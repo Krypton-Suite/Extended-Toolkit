@@ -23,7 +23,6 @@
     <Reference Include="Krypton.Toolkit.Suite.Extended.Standard.Controls">
       <HintPath>..\Extended Standard Controls\obj\Debug\net45\Krypton.Toolkit.Suite.Extended.Standard.Controls.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.VisualBasic" />
   </ItemGroup>
 
   <ItemGroup>
@@ -52,8 +51,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Krypton.Ribbon.Canary" Version="6.0.2006.1" />
-    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2006.1" />
+    <PackageReference Include="Krypton.Ribbon.Canary" Version="6.0.2006.3" />
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2006.3" />
+    <PackageReference Include="Microsoft.VisualBasic" Version="10.3.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -73,14 +73,15 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>5.550.2006</AssemblyVersion>
-    <FileVersion>5.550.2006.0</FileVersion>
+    <AssemblyVersion>5.550.2007</AssemblyVersion>
+    <FileVersion>5.550.2007.0</FileVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageLicenseExpression></PackageLicenseExpression>
-    <Version>5.550.2006</Version>
+    <Version>5.550.2007</Version>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
-    <SignAssembly>true</SignAssembly>
+    <RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
+    <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>Krypton Extended Toolkit.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 

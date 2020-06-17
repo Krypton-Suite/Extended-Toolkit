@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Palette.Controls
+namespace Krypton.Toolkit.Suite.Extended.Palette.Controls
 {
     [ToolboxItem(false)]
     internal class KryptonLabelExtended : KryptonLabel

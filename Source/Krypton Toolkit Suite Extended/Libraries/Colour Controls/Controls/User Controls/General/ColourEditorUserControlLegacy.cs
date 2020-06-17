@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Extended.Colour.Controls
 {
-    [DefaultProperty("Color"), DefaultEvent("ColorChanged")]
+    [DefaultProperty("Color"), DefaultEvent("ColorChanged"), ToolboxItem(false)]
     public class ColourEditorUserControlLegacy : UserControl, IColourEditor
     {
         #region Designer Code
