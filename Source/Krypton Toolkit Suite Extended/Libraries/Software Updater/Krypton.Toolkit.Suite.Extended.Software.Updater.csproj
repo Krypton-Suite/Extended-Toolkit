@@ -8,8 +8,8 @@
     <UseWindowsForms>true</UseWindowsForms>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Version>5.550.2007</Version>
-    <FileVersion>5.550.2007.0</FileVersion>
+    <Version>5.550.2008</Version>
+    <FileVersion>5.550.2008.0</FileVersion>
     <Description>Contains popular software update solutions such as AutoUpdater.NET, NetSparkle and SharpUpdate.</Description>
     <RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
   </PropertyGroup>

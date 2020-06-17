@@ -14,11 +14,11 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>5.550.2007</AssemblyVersion>
-    <FileVersion>5.550.2007.0</FileVersion>
+    <AssemblyVersion>5.550.2008</AssemblyVersion>
+    <FileVersion>5.550.2008.0</FileVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Version>5.550.2007</Version>
+    <Version>5.550.2008</Version>
   </PropertyGroup>
 
   <ItemGroup>

@@ -48,10 +48,10 @@
   <PropertyGroup>
     <DocumentationFile>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Common\Krypton.Toolkit.Extended.Common.xml</DocumentationFile>
     <OutputPath>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Common\</OutputPath>
-    <AssemblyVersion>5.550.2007</AssemblyVersion>
+    <AssemblyVersion>5.550.2008</AssemblyVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>5.550.2007</Version>
-    <FileVersion>5.550.2007.0</FileVersion>
+    <Version>5.550.2008</Version>
+    <FileVersion>5.550.2008.0</FileVersion>
     <Description>Contains common logic.</Description>
     <RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
   </PropertyGroup>

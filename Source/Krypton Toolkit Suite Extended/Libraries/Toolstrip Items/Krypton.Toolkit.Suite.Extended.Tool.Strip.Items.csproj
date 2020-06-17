@@ -7,7 +7,7 @@
     <RootNamespace>Krypton.Toolkit.Suite.Extended.Tool.Strip.Items</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>5.550.2007</Version>
+    <Version>5.550.2008</Version>
   </PropertyGroup>
 
   <PropertyGroup>
