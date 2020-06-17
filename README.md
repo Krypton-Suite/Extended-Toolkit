@@ -17,6 +17,7 @@
 | <img src="https://img.shields.io/badge/Module-Outlook Grid-orange.svg" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Outlook.Grid)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
 | <img src="https://img.shields.io/badge/Module-Software Updater-orange.svg" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Software.Updater)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
 | <img src="https://img.shields.io/badge/Module-Standard Controls-orange.svg" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Standard.Controls)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
+| <img src="https://img.shields.io/badge/Module-Task Dialogs-orange.svg" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Task.Dialogs)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
 | <img src="https://img.shields.io/badge/Module-Tool Strip Items-orange.svg" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Tool.Strip.Items)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
 | <img src="https://img.shields.io/badge/Module-Wizard-orange.svg" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Wizard)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
 
@@ -38,7 +39,21 @@
 
 =======
 
-## 2020-06-01 - Build 2006 - June 2020
+## 2020-07-01 - Build 2007 - July 2020
+<!--* Fix `Krypton.Toolkit.Extended.Base` to `Krypton.Toolkit.Suite.Extended.Base`-->
+* Add `.NET Sparkle` to software updater package
+* Add `Task Dialogs` module
+* Small changes to dialog buttons
+* Tidy up code
+
+=======
+
+## 2020-06-01 pm - Build 2006 - June 2020
+* Add strong name key files `snk` to projects & DLLs
+
+=======
+
+## 2020-06-01 am - Build 2006 - June 2020
 * Versions are now `5.550.xxxx`
 * Add preliminary support for .NET 5
 * Removed `KryptonListView` due to bug (will return at some point in the future)
@@ -59,9 +74,6 @@
 * Fix for [#3](https://github.com/Krypton-Suite/Extended-Toolkit/issues/3), Missing controls
 * Add `IO Components` module
 * Add `Outlook Grid` module
-
-=======
-
 * Add `Wizard` module
 * Add `Palette Controls` module
 * Fixed names for `KryptonComboBoxExtended`, `KryptonPanelExtended` and `KryptonRichTextBoxExtended` to <ControlName>`Enhanced` to avoid confusion
