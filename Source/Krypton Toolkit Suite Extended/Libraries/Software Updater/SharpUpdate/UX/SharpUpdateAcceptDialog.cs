@@ -13,16 +13,18 @@ namespace Krypton.Toolkit.Extended.Software.Updater.SharpUpdate
         private KryptonLabel klblNewVersion;
         private System.Windows.Forms.PictureBox pictureBox1;
         private Dialogs.KryptonNODialogButton kbtnNo;
+        private KryptonButton kbtnYes;
         private KryptonButton kbtnDetails;
 
         private void InitializeComponent()
         {
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            this.kbtnNo = new Krypton.Toolkit.Extended.Dialogs.KryptonNODialogButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.klblpdateAvail = new Krypton.Toolkit.KryptonLabel();
             this.klblNewVersion = new Krypton.Toolkit.KryptonLabel();
             this.kbtnDetails = new Krypton.Toolkit.KryptonButton();
-            this.kbtnNo = new Krypton.Toolkit.Extended.Dialogs.KryptonNODialogButton();
+            this.kbtnYes = new Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -30,6 +32,7 @@ namespace Krypton.Toolkit.Extended.Software.Updater.SharpUpdate
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(this.kbtnYes);
             this.kryptonPanel1.Controls.Add(this.kbtnNo);
             this.kryptonPanel1.Controls.Add(this.pictureBox1);
             this.kryptonPanel1.Controls.Add(this.klblpdateAvail);
@@ -40,6 +43,17 @@ namespace Krypton.Toolkit.Extended.Software.Updater.SharpUpdate
             this.kryptonPanel1.Name = "kryptonPanel1";
             this.kryptonPanel1.Size = new System.Drawing.Size(404, 143);
             this.kryptonPanel1.TabIndex = 0;
+            // 
+            // kbtnNo
+            // 
+            this.kbtnNo.DialogResult = System.Windows.Forms.DialogResult.No;
+            this.kbtnNo.Location = new System.Drawing.Point(206, 106);
+            this.kbtnNo.Name = "kbtnNo";
+            this.kbtnNo.ParentWindow = this;
+            this.kbtnNo.Size = new System.Drawing.Size(90, 25);
+            this.kbtnNo.TabIndex = 1;
+            this.kbtnNo.Values.Text = "&No";
+            this.kbtnNo.Click += new System.EventHandler(this.kbtnNo_Click);
             // 
             // pictureBox1
             // 
@@ -83,15 +97,15 @@ namespace Krypton.Toolkit.Extended.Software.Updater.SharpUpdate
             this.kbtnDetails.Values.Text = "&Details...";
             this.kbtnDetails.Click += new System.EventHandler(this.kbtnDetails_Click);
             // 
-            // kbtnNo
+            // kbtnYes
             // 
-            this.kbtnNo.DialogResult = System.Windows.Forms.DialogResult.No;
-            this.kbtnNo.Location = new System.Drawing.Point(206, 106);
-            this.kbtnNo.Name = "kbtnNo";
-            this.kbtnNo.ParentWindow = this;
-            this.kbtnNo.Size = new System.Drawing.Size(90, 25);
-            this.kbtnNo.TabIndex = 1;
-            this.kbtnNo.Values.Text = "&No";
+            this.kbtnYes.DialogResult = System.Windows.Forms.DialogResult.Yes;
+            this.kbtnYes.Location = new System.Drawing.Point(110, 106);
+            this.kbtnYes.Name = "kbtnYes";
+            this.kbtnYes.Size = new System.Drawing.Size(90, 25);
+            this.kbtnYes.TabIndex = 5;
+            this.kbtnYes.Values.Text = "Y&es";
+            this.kbtnYes.Click += new System.EventHandler(this.kbtnYes_Click);
             // 
             // SharpUpdateAcceptDialog
             // 

@@ -43,6 +43,7 @@
 <!--* Fix `Krypton.Toolkit.Extended.Base` to `Krypton.Toolkit.Suite.Extended.Base`-->
 * Add `.NET Sparkle` to software updater package
 * Add `Task Dialogs` module
+* Small changes to dialog buttons
 * Tidy up code
 
 =======

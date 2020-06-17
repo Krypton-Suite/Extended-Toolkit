@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Krypton.Toolkit.Suite.Extended.Core;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -9,7 +10,15 @@ namespace Krypton.Toolkit.Extended.Base
     {
         private KryptonForm _parent;
 
-        public KryptonForm ParentWindow { get => _parent; set { _parent = value; Invalidate(); } }
+        public KryptonForm ParentWindow { get => _parent; set { _parent = value; Invalidate(); OwnerWindowChangedEventArgs e = new OwnerWindowChangedEventArgs(this, value); OnParentWindowChanged(null, e); } }
+
+        #region Custom Events
+        public delegate void ParentWindowChangedEventHandler(object sender, OwnerWindowChangedEventArgs e);
+
+        public event ParentWindowChangedEventHandler ParentWindowChanged;
+
+        protected virtual void OnParentWindowChanged(object sender, OwnerWindowChangedEventArgs e) => ParentWindowChanged?.Invoke(sender, e);
+        #endregion
 
         public KryptonOKDialogButton()
         {
@@ -45,6 +54,10 @@ namespace Krypton.Toolkit.Extended.Base
         protected override void OnPaint(PaintEventArgs e)
         {
             if (ParentWindow != null) ParentWindow.AcceptButton = this;
+
+            OwnerWindowChangedEventArgs ev = new OwnerWindowChangedEventArgs(this, ParentWindow);
+
+            ev.AssociateAcceptButton(this);
 
             base.OnPaint(e);
         }
