@@ -175,6 +175,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.cwColour.Name = "cwColour";
             this.cwColour.Size = new System.Drawing.Size(249, 183);
             this.cwColour.TabIndex = 0;
+            this.cwColour.ColourChanged += new System.EventHandler(this.cwColour_ColourChanged);
             // 
             // panel1
             // 
@@ -352,22 +353,17 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
         private void cem_ColourChanged(object sender, EventArgs e)
         {
             Colour = cem.Colour;
+
+            ViewColour(Colour);
         }
 
-        private void cem_ColorChanged(object sender, EventArgs e)
-        {
-            SetColour(cem.Colour);
-        }
+        private void cem_ColorChanged(object sender, EventArgs e) => SetColour(cem.Colour);
 
-        private void cgColour_ColorChanged(object sender, EventArgs e)
-        {
-            cem.Colour = cgColour.Color;
-        }
+        private void cgColour_ColorChanged(object sender, EventArgs e) => cem.Colour = cgColour.Color;
 
-        private void cgColour_EditingColor(object sender, EditColorCancelEventArgs e)
-        {
-            cem.Colour = e.Color;
-        }
+        private void cgColour_EditingColor(object sender, EditColorCancelEventArgs e) => cem.Colour = e.Color;
+
+        private void cwColour_ColourChanged(object sender, EventArgs e) => cem.Colour = cwColour.Colour;
         #endregion
 
         #region Setters/Getters
@@ -378,6 +374,10 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
         /// <summary>Gets the colour.</summary>
         /// <returns></returns>
         public Color GetColour() => Colour;
+        #endregion
+
+        #region Methods
+        private void ViewColour(Color colour) => cpbColour.BackColor = colour;
         #endregion
     }
 }
