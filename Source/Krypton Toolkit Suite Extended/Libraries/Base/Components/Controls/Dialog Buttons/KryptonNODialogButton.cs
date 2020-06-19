@@ -53,11 +53,12 @@ namespace Krypton.Toolkit.Extended.Base
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            if (ParentWindow != null) ParentWindow.CancelButton = this;
+            if (ParentWindow != null)
+            {
+                OwnerWindowChangedEventArgs ev = new OwnerWindowChangedEventArgs(this, ParentWindow);
 
-            OwnerWindowChangedEventArgs ev = new OwnerWindowChangedEventArgs(this, ParentWindow);
-
-            ev.AssociateCancelButton(this);
+                ev.AssociateCancelButton(this);
+            }
 
             base.OnPaint(e);
         }
