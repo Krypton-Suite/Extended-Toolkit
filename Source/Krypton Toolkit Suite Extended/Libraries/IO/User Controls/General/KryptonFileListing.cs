@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Extended.IO
@@ -129,6 +125,13 @@ namespace Krypton.Toolkit.Extended.IO
         public KryptonTextBox DirectoryPath { get => ktxtDirectory; }
 
         public KryptonListBox FileListing { get => klbFileListing; }
+        #endregion
+
+        #region Constructor
+        public KryptonFileListing()
+        {
+            InitializeComponent();
+        }
         #endregion
 
         private void kbtnBrowse_Click(object sender, EventArgs e)

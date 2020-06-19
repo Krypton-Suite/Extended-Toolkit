@@ -854,14 +854,14 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.klblHex.TabIndex = 1;
             this.klblHex.Values.Text = "Hex:";
             // 
-            // ColourEditor
+            // ColourEditorOld
             // 
             this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.pnlHexadecimal);
             this.Controls.Add(this.pnlRGB);
             this.Controls.Add(this.pnlHSLUI);
             this.Controls.Add(this.pnlAlpha);
-            this.Name = "ColourEditor";
+            this.Name = "ColourEditorOld";
             this.Size = new System.Drawing.Size(337, 375);
             this.pnlAlpha.ResumeLayout(false);
             this.panel35.ResumeLayout(false);
