@@ -342,12 +342,12 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
 
         private void kdbtnOk_Click(object sender, EventArgs e)
         {
-
+            DialogResult = DialogResult.OK;
         }
 
         private void kdbtnCancel_Click(object sender, EventArgs e)
         {
-
+            DialogResult = DialogResult.Cancel;
         }
 
         private void cem_ColourChanged(object sender, EventArgs e)

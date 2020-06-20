@@ -1,13 +1,13 @@
-﻿using System;
+﻿using Microsoft.WindowsAPICodePack.Dialogs;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 
 namespace Krypton.Toolkit.Extended.IO
 {
     public class KryptonFileMover : KryptonForm
     {
+        #region Design Code
         private KryptonPanel kryptonPanel1;
         private Base.KryptonOKDialogButton kdbtnOk;
         private System.Windows.Forms.Panel panel1;
@@ -28,25 +28,25 @@ namespace Krypton.Toolkit.Extended.IO
             this.kdbtnCancel = new Krypton.Toolkit.Extended.Base.KryptonCancelDialogButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
-            this.kflListing = new Krypton.Toolkit.Extended.IO.KryptonFileListing();
-            this.kryptonGroupBox1 = new Krypton.Toolkit.KryptonGroupBox();
-            this.klblFileHash = new Krypton.Toolkit.KryptonLabel();
-            this.kbtnMoveFiles = new Krypton.Toolkit.KryptonButton();
+            this.kbtnCopyFiles = new Krypton.Toolkit.KryptonButton();
             this.kryptonGroupBox2 = new Krypton.Toolkit.KryptonGroupBox();
             this.klblDirectoryInformation = new Krypton.Toolkit.KryptonLabel();
-            this.kbtnCopyFiles = new Krypton.Toolkit.KryptonButton();
+            this.kbtnMoveFiles = new Krypton.Toolkit.KryptonButton();
+            this.kryptonGroupBox1 = new Krypton.Toolkit.KryptonGroupBox();
+            this.klblFileHash = new Krypton.Toolkit.KryptonLabel();
+            this.kflListing = new Krypton.Toolkit.Extended.IO.KryptonFileListing();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
             this.kryptonPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1.Panel)).BeginInit();
-            this.kryptonGroupBox1.Panel.SuspendLayout();
-            this.kryptonGroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox2.Panel)).BeginInit();
             this.kryptonGroupBox2.Panel.SuspendLayout();
             this.kryptonGroupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1.Panel)).BeginInit();
+            this.kryptonGroupBox1.Panel.SuspendLayout();
+            this.kryptonGroupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // kryptonPanel1
@@ -101,13 +101,44 @@ namespace Krypton.Toolkit.Extended.IO
             this.kryptonPanel2.Size = new System.Drawing.Size(707, 392);
             this.kryptonPanel2.TabIndex = 4;
             // 
-            // kflListing
+            // kbtnCopyFiles
             // 
-            this.kflListing.Location = new System.Drawing.Point(12, 12);
-            this.kflListing.Name = "kflListing";
-            this.kflListing.PromptText = null;
-            this.kflListing.Size = new System.Drawing.Size(268, 374);
-            this.kflListing.TabIndex = 5;
+            this.kbtnCopyFiles.Location = new System.Drawing.Point(345, 335);
+            this.kbtnCopyFiles.Name = "kbtnCopyFiles";
+            this.kbtnCopyFiles.Size = new System.Drawing.Size(293, 25);
+            this.kbtnCopyFiles.TabIndex = 6;
+            this.kbtnCopyFiles.Values.Text = "&Copy Files";
+            this.kbtnCopyFiles.Click += new System.EventHandler(this.kbtnCopyFiles_Click);
+            // 
+            // kryptonGroupBox2
+            // 
+            this.kryptonGroupBox2.Location = new System.Drawing.Point(288, 168);
+            this.kryptonGroupBox2.Name = "kryptonGroupBox2";
+            // 
+            // kryptonGroupBox2.Panel
+            // 
+            this.kryptonGroupBox2.Panel.Controls.Add(this.klblDirectoryInformation);
+            this.kryptonGroupBox2.Size = new System.Drawing.Size(409, 150);
+            this.kryptonGroupBox2.TabIndex = 6;
+            this.kryptonGroupBox2.Values.Heading = "Directory Information";
+            // 
+            // klblDirectoryInformation
+            // 
+            this.klblDirectoryInformation.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.klblDirectoryInformation.Location = new System.Drawing.Point(0, 0);
+            this.klblDirectoryInformation.Name = "klblDirectoryInformation";
+            this.klblDirectoryInformation.Size = new System.Drawing.Size(405, 126);
+            this.klblDirectoryInformation.TabIndex = 7;
+            this.klblDirectoryInformation.Values.Text = "kryptonLabel2";
+            // 
+            // kbtnMoveFiles
+            // 
+            this.kbtnMoveFiles.Location = new System.Drawing.Point(345, 335);
+            this.kbtnMoveFiles.Name = "kbtnMoveFiles";
+            this.kbtnMoveFiles.Size = new System.Drawing.Size(293, 25);
+            this.kbtnMoveFiles.TabIndex = 5;
+            this.kbtnMoveFiles.Values.Text = "&Move Files";
+            this.kbtnMoveFiles.Click += new System.EventHandler(this.kbtnMoveFiles_Click);
             // 
             // kryptonGroupBox1
             // 
@@ -132,43 +163,14 @@ namespace Krypton.Toolkit.Extended.IO
             this.klblFileHash.TabIndex = 5;
             this.klblFileHash.Values.Text = "{0}";
             // 
-            // kbtnMoveFiles
+            // kflListing
             // 
-            this.kbtnMoveFiles.Location = new System.Drawing.Point(345, 335);
-            this.kbtnMoveFiles.Name = "kbtnMoveFiles";
-            this.kbtnMoveFiles.Size = new System.Drawing.Size(293, 25);
-            this.kbtnMoveFiles.TabIndex = 5;
-            this.kbtnMoveFiles.Values.Text = "&Move Files";
-            this.kbtnMoveFiles.Click += new System.EventHandler(this.kbtnMoveFiles_Click);
-            // 
-            // kryptonGroupBox2
-            // 
-            this.kryptonGroupBox2.Location = new System.Drawing.Point(288, 168);
-            this.kryptonGroupBox2.Name = "kryptonGroupBox2";
-            // 
-            // kryptonGroupBox2.Panel
-            // 
-            this.kryptonGroupBox2.Panel.Controls.Add(this.klblDirectoryInformation);
-            this.kryptonGroupBox2.Size = new System.Drawing.Size(409, 150);
-            this.kryptonGroupBox2.TabIndex = 6;
-            this.kryptonGroupBox2.Values.Heading = "Directory Information";
-            // 
-            // klblDirectoryInformation
-            // 
-            this.klblDirectoryInformation.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.klblDirectoryInformation.Location = new System.Drawing.Point(0, 0);
-            this.klblDirectoryInformation.Name = "klblDirectoryInformation";
-            this.klblDirectoryInformation.Size = new System.Drawing.Size(405, 126);
-            this.klblDirectoryInformation.TabIndex = 7;
-            this.klblDirectoryInformation.Values.Text = "kryptonLabel2";
-            // 
-            // kbtnCopyFiles
-            // 
-            this.kbtnCopyFiles.Location = new System.Drawing.Point(345, 335);
-            this.kbtnCopyFiles.Name = "kbtnCopyFiles";
-            this.kbtnCopyFiles.Size = new System.Drawing.Size(293, 25);
-            this.kbtnCopyFiles.TabIndex = 6;
-            this.kbtnCopyFiles.Values.Text = "&Copy Files";
+            this.kflListing.Location = new System.Drawing.Point(12, 12);
+            this.kflListing.Name = "kflListing";
+            this.kflListing.OpenFileDialogTitle = null;
+            this.kflListing.PromptText = null;
+            this.kflListing.Size = new System.Drawing.Size(268, 374);
+            this.kflListing.TabIndex = 5;
             // 
             // KryptonFileMover
             // 
@@ -182,19 +184,30 @@ namespace Krypton.Toolkit.Extended.IO
             this.kryptonPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
             this.kryptonPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1.Panel)).EndInit();
-            this.kryptonGroupBox1.Panel.ResumeLayout(false);
-            this.kryptonGroupBox1.Panel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1)).EndInit();
-            this.kryptonGroupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox2.Panel)).EndInit();
             this.kryptonGroupBox2.Panel.ResumeLayout(false);
             this.kryptonGroupBox2.Panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox2)).EndInit();
             this.kryptonGroupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1.Panel)).EndInit();
+            this.kryptonGroupBox1.Panel.ResumeLayout(false);
+            this.kryptonGroupBox1.Panel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1)).EndInit();
+            this.kryptonGroupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
+        #endregion
+
+        #region Variables
+        private string _sourceDirectory, _targetDirectory;
+        #endregion
+
+        #region Properties
+        public string SourceDirectory { get => _sourceDirectory; set => _sourceDirectory = value; }
+
+        public string TargetDirectory { get => _targetDirectory; set => _targetDirectory = value; }
+        #endregion
 
         private void KryptonFileMover_Load(object sender, EventArgs e)
         {
@@ -204,6 +217,40 @@ namespace Krypton.Toolkit.Extended.IO
         private void kbtnMoveFiles_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void kbtnCopyFiles_Click(object sender, EventArgs e)
+        {
+            if (kflListing.FileListing.Items.Count > 0)
+            {
+                List<string> tempFiles = new List<string>();
+
+                foreach (string item in kflListing.FileListing.Items)
+                {
+                    tempFiles.Add(item);
+                }
+
+                string tempPath = null;
+
+                CommonOpenFileDialog cofd = new CommonOpenFileDialog();
+
+                cofd.IsFolderPicker = true;
+
+                cofd.Title = "Select a destination:";
+
+                if (cofd.ShowDialog() == CommonFileDialogResult.Ok)
+                {
+                    tempPath = Path.GetFullPath(cofd.FileName);
+                }
+
+                CopyFiles copy = new CopyFiles(tempFiles, tempPath);
+
+                KryptonFileMonitor monitor = new KryptonFileMonitor();
+
+                monitor.SynchronizationObject = this;
+
+                copy.CopyAsync(monitor);
+            }
         }
     }
 }

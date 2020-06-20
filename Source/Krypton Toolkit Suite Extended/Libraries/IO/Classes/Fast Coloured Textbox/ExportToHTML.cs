@@ -78,7 +78,7 @@ namespace Krypton.Toolkit.Extended.IO
             bool hasNonSpace = false;
             foreach (Place p in r)
             {
-                Char c = r.tb[p.iLine][p.iChar];
+                InternalChar c = r.tb[p.iLine][p.iChar];
                 if (c.style != currentStyleId)
                 {
                     Flush(sb, tempSB, currentStyleId);

@@ -8,9 +8,9 @@ namespace Krypton.Toolkit.Extended.IO
     /// <summary>
     /// Line of text
     /// </summary>
-    public class Line : IList<Char>
+    public class Line : IList<InternalChar>
     {
-        protected List<Char> chars;
+        protected List<InternalChar> chars;
 
         public string FoldingStartMarker { get; set; }
         public string FoldingEndMarker { get; set; }
@@ -43,7 +43,7 @@ namespace Krypton.Toolkit.Extended.IO
         internal Line(int uid)
         {
             this.UniqueId = uid;
-            chars = new List<Char>();
+            chars = new List<InternalChar>();
         }
 
 
@@ -56,7 +56,7 @@ namespace Krypton.Toolkit.Extended.IO
             FoldingEndMarker = null;
             for (int i = 0; i < Count; i++)
             {
-                Char c = this[i];
+                InternalChar c = this[i];
                 c.style &= ~styleIndex;
                 this[i] = c;
             }
@@ -70,7 +70,7 @@ namespace Krypton.Toolkit.Extended.IO
             get
             {
                 StringBuilder sb = new StringBuilder(Count);
-                foreach (Char c in this)
+                foreach (InternalChar c in this)
                     sb.Append(c.c);
                 return sb.ToString();
             }
@@ -102,12 +102,12 @@ namespace Krypton.Toolkit.Extended.IO
             }
         }
 
-        public int IndexOf(Char item)
+        public int IndexOf(InternalChar item)
         {
             return chars.IndexOf(item);
         }
 
-        public void Insert(int index, Char item)
+        public void Insert(int index, InternalChar item)
         {
             chars.Insert(index, item);
         }
@@ -117,7 +117,7 @@ namespace Krypton.Toolkit.Extended.IO
             chars.RemoveAt(index);
         }
 
-        public Char this[int index]
+        public InternalChar this[int index]
         {
             get
             {
@@ -129,7 +129,7 @@ namespace Krypton.Toolkit.Extended.IO
             }
         }
 
-        public void Add(Char item)
+        public void Add(InternalChar item)
         {
             chars.Add(item);
         }
@@ -139,12 +139,12 @@ namespace Krypton.Toolkit.Extended.IO
             chars.Clear();
         }
 
-        public bool Contains(Char item)
+        public bool Contains(InternalChar item)
         {
             return chars.Contains(item);
         }
 
-        public void CopyTo(Char[] array, int arrayIndex)
+        public void CopyTo(InternalChar[] array, int arrayIndex)
         {
             chars.CopyTo(array, arrayIndex);
         }
@@ -162,12 +162,12 @@ namespace Krypton.Toolkit.Extended.IO
             get { return false; }
         }
 
-        public bool Remove(Char item)
+        public bool Remove(InternalChar item)
         {
             return chars.Remove(item);
         }
 
-        public IEnumerator<Char> GetEnumerator()
+        public IEnumerator<InternalChar> GetEnumerator()
         {
             return chars.GetEnumerator();
         }
@@ -189,7 +189,7 @@ namespace Krypton.Toolkit.Extended.IO
             chars.TrimExcess();
         }
 
-        public virtual void AddRange(IEnumerable<Char> collection)
+        public virtual void AddRange(IEnumerable<InternalChar> collection)
         {
             chars.AddRange(collection);
         }

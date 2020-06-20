@@ -145,6 +145,14 @@ namespace Krypton.Toolkit.Extended.IO
         public object FileItem { get => _fileListItem; private set => _fileListItem = value; }
         #endregion
 
+        #region Custom Events
+        public delegate void DirectoryPathChangedEventHandler(object sender, DirectoryPathChangedEventArgs e);
+
+        public event DirectoryPathChangedEventHandler DirectoryPathChanged;
+
+        protected virtual void OnDirectoryPathChanged(object sender, DirectoryPathChangedEventArgs e) => DirectoryPathChanged?.Invoke(sender, e);
+        #endregion
+
         #region Constructor
         public KryptonFileListing()
         {

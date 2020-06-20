@@ -6,6 +6,7 @@
     <TargetFrameworks Condition="'$(TFMs)' == 'all'">net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;netcoreapp5.0</TargetFrameworks>
     <RootNamespace>Krypton.Toolkit.Extended.IO</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <PropertyGroup>
