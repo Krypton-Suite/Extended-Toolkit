@@ -106,9 +106,9 @@ namespace Krypton.Toolkit.Extended.Dialogs
         [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
         public virtual extern void GetFamilyCodePage([In] uint uiCodePage, out uint puiFamilyCodePage);
         [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-        public virtual extern void GetFontCodePages([In, ComAliasName("MultiLanguage.wireHDC")] ref _RemotableHandle hDC, [In, ComAliasName("MultiLanguage.wireHFONT")] ref _RemotableHandle hFont, out uint pdwCodePages);
+        public virtual extern void GetFontCodePages([In, ComAliasName("wireHDC")] ref _RemotableHandle hDC, [In, ComAliasName("wireHFONT")] ref _RemotableHandle hFont, out uint pdwCodePages);
         [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-        public virtual extern void GetFontUnicodeRanges([In, ComAliasName("MultiLanguage.wireHDC")] ref _RemotableHandle hDC, [In, Out] ref uint puiRanges, out tagUNICODERANGE pUranges);
+        public virtual extern void GetFontUnicodeRanges([In, ComAliasName("wireHDC")] ref _RemotableHandle hDC, [In, Out] ref uint puiRanges, out tagUNICODERANGE pUranges);
         [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
         public virtual extern void GetLcidFromRfc1766(out uint plocale, [In, MarshalAs(UnmanagedType.BStr)] string bstrRfc1766);
         [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
@@ -140,11 +140,11 @@ namespace Krypton.Toolkit.Extended.Dialogs
         [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
         public virtual extern void IMLangFontLink2_GetCharCodePages([In] ushort chSrc, out uint pdwCodePages);
         [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-        public virtual extern void IMLangFontLink2_GetFontCodePages([In, ComAliasName("MultiLanguage.wireHDC")] ref _RemotableHandle hDC, [In, ComAliasName("MultiLanguage.wireHFONT")] ref _RemotableHandle hFont, out uint pdwCodePages);
+        public virtual extern void IMLangFontLink2_GetFontCodePages([In, ComAliasName("wireHDC")] ref _RemotableHandle hDC, [In, ComAliasName("wireHFONT")] ref _RemotableHandle hFont, out uint pdwCodePages);
         [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
         public virtual extern void IMLangFontLink2_GetStrCodePages([In] ref ushort pszSrc, [In] int cchSrc, [In] uint dwPriorityCodePages, out uint pdwCodePages, out int pcchCodePages);
         [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-        public virtual extern void IMLangFontLink2_ReleaseFont([In, ComAliasName("MultiLanguage.wireHFONT")] ref _RemotableHandle hFont);
+        public virtual extern void IMLangFontLink2_ReleaseFont([In, ComAliasName("wireHFONT")] ref _RemotableHandle hFont);
         [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
         public virtual extern void IMLangFontLink2_ResetFontMapping();
         [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
@@ -220,26 +220,26 @@ namespace Krypton.Toolkit.Extended.Dialogs
         [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
         public virtual extern void IMultiLanguage3_SetMimeDBSource([In] tagMIMECONTF dwSource);
         [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-        public virtual extern void IMultiLanguage3_ValidateCodePage([In] uint uiCodePage, [In, ComAliasName("MultiLanguage.wireHWND")] ref _RemotableHandle hwnd);
+        public virtual extern void IMultiLanguage3_ValidateCodePage([In] uint uiCodePage, [In, ComAliasName("wireHWND")] ref _RemotableHandle hwnd);
         [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-        public virtual extern void IMultiLanguage3_ValidateCodePageEx([In] uint uiCodePage, [In, ComAliasName("MultiLanguage.wireHWND")] ref _RemotableHandle hwnd, [In] uint dwfIODControl);
+        public virtual extern void IMultiLanguage3_ValidateCodePageEx([In] uint uiCodePage, [In, ComAliasName("wireHWND")] ref _RemotableHandle hwnd, [In] uint dwfIODControl);
         [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
         public virtual extern void IsCodePageInstallable([In] uint uiCodePage);
         [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
         public virtual extern void IsConvertible([In] uint dwSrcEncoding, [In] uint dwDstEncoding);
         [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-        public virtual extern void MapFont([In, ComAliasName("MultiLanguage.wireHDC")] ref _RemotableHandle hDC, [In] uint dwCodePages, [In] ushort chSrc, [Out, ComAliasName("MultiLanguage.wireHFONT")] IntPtr pFont);
+        public virtual extern void MapFont([In, ComAliasName("wireHDC")] ref _RemotableHandle hDC, [In] uint dwCodePages, [In] ushort chSrc, [Out, ComAliasName("wireHFONT")] IntPtr pFont);
         [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-        public virtual extern void MapFont([In, ComAliasName("MultiLanguage.wireHDC")] ref _RemotableHandle hDC, [In] uint dwCodePages, [In, ComAliasName("MultiLanguage.wireHFONT")] ref _RemotableHandle hSrcFont, [Out, ComAliasName("MultiLanguage.wireHFONT")] IntPtr phDestFont);
+        public virtual extern void MapFont([In, ComAliasName("wireHDC")] ref _RemotableHandle hDC, [In] uint dwCodePages, [In, ComAliasName("wireHFONT")] ref _RemotableHandle hSrcFont, [Out, ComAliasName("wireHFONT")] IntPtr phDestFont);
         [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-        public virtual extern void ReleaseFont([In, ComAliasName("MultiLanguage.wireHFONT")] ref _RemotableHandle hFont);
+        public virtual extern void ReleaseFont([In, ComAliasName("wireHFONT")] ref _RemotableHandle hFont);
         [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
         public virtual extern void ResetFontMapping();
         [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
         public virtual extern void SetMimeDBSource([In] tagMIMECONTF dwSource);
         [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-        public virtual extern void ValidateCodePage([In] uint uiCodePage, [In, ComAliasName("MultiLanguage.wireHWND")] ref _RemotableHandle hwnd);
+        public virtual extern void ValidateCodePage([In] uint uiCodePage, [In, ComAliasName("wireHWND")] ref _RemotableHandle hwnd);
         [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-        public virtual extern void ValidateCodePageEx([In] uint uiCodePage, [In, ComAliasName("MultiLanguage.wireHWND")] ref _RemotableHandle hwnd, [In] uint dwfIODControl);
+        public virtual extern void ValidateCodePageEx([In] uint uiCodePage, [In, ComAliasName("wireHWND")] ref _RemotableHandle hwnd, [In] uint dwfIODControl);
     }
 }

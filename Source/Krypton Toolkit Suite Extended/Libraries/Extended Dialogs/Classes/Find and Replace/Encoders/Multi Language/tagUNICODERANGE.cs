@@ -24,9 +24,14 @@
 */
 #endregion
 
+using System.Runtime.InteropServices;
+
 namespace Krypton.Toolkit.Extended.Dialogs
 {
-    public class tagUNICODERANGE
+    [StructLayout(LayoutKind.Sequential, Pack = 2)]
+    public struct tagUNICODERANGE
     {
+        public ushort wcFrom;
+        public ushort wcTo;
     }
 }

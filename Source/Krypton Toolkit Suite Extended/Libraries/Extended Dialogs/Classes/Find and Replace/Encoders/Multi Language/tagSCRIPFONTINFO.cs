@@ -24,9 +24,15 @@
 */
 #endregion
 
+using System.Runtime.InteropServices;
+
 namespace Krypton.Toolkit.Extended.Dialogs
 {
-    public class tagSCRIPFONTINFO
+    [StructLayout(LayoutKind.Sequential, Pack = 8)]
+    public struct tagSCRIPFONTINFO
     {
+        public long scripts;
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 0x20)]
+        public ushort[] wszFont;
     }
 }

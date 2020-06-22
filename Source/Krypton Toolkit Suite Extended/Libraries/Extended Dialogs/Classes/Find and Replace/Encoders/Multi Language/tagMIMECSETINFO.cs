@@ -24,9 +24,16 @@
 */
 #endregion
 
+using System.Runtime.InteropServices;
+
 namespace Krypton.Toolkit.Extended.Dialogs
 {
-    public class tagMIMECSETINFO
+    [StructLayout(LayoutKind.Sequential, Pack = 4)]
+    public struct tagMIMECSETINFO
     {
+        public uint uiCodePage;
+        public uint uiInternetEncoding;
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 50)]
+        public ushort[] wszCharset;
     }
 }

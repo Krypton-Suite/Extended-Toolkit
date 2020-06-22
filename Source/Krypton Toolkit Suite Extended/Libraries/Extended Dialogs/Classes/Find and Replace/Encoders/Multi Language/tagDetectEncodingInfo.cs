@@ -24,21 +24,18 @@
 */
 #endregion
 
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 namespace Krypton.Toolkit.Extended.Dialogs
 {
-    [ComImport, Guid("3DC39D1D-C030-11D0-B81B-00C04FC9B31F"), InterfaceType((short)1)]
-    public interface IEnumRfc1766
+    /// Thanks to jannewe for finding the fix!
+    /// http://www.codeproject.com/KB/recipes/DetectEncoding.aspx?msg=3247475#xx3247475xx
+    [StructLayout(LayoutKind.Sequential)]
+    public struct DetectEncodingInfo
     {
-        [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-        void Clone([MarshalAs(UnmanagedType.Interface)] out IEnumRfc1766 ppEnum);
-        [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-        void Next([In] uint celt, out tagRFC1766INFO rgelt, out uint pceltFetched);
-        [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-        void Reset();
-        [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-        void Skip([In] uint celt);
+        public uint nLangID;
+        public uint nCodePage;
+        public int nDocPercent;
+        public int nConfidence;
     }
 }
