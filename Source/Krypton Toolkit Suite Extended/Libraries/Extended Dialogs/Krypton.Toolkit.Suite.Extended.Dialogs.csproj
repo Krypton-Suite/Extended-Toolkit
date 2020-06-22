@@ -44,9 +44,11 @@
 
   <ItemGroup>
     <Folder Include="Controls\Colours\" />
+    <Folder Include="UX\Find and Replace\" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="System.Text.RegularExpressions" Version="4.3.1" />
     <PackageReference Include="WindowsAPICodePack" Version="1.1.1" />
     <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2006.3" />
   </ItemGroup>
