@@ -44,7 +44,6 @@
 
   <ItemGroup>
     <Folder Include="Controls\Colours\" />
-    <Folder Include="UX\Find and Replace\" />
   </ItemGroup>
 
   <ItemGroup>
