@@ -75,10 +75,15 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.tspbCurrentStatusProgress = new System.Windows.Forms.ToolStripProgressBar();
             this.tsslCurrentStatusProgressValue = new System.Windows.Forms.ToolStripStatusLabel();
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            this.kbtnGenerateReplaceCommandLine = new Krypton.Toolkit.KryptonButton();
             this.kbtnCancel = new Krypton.Toolkit.KryptonButton();
             this.kbtnReplace = new Krypton.Toolkit.KryptonButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
+            this.ktxtCommandLine = new Krypton.Toolkit.KryptonTextBox();
+            this.kryptonLabel10 = new Krypton.Toolkit.KryptonLabel();
+            this.kbtnBrowseExcludeDirectory = new Krypton.Toolkit.KryptonButton();
+            this.kbtnFindOnly = new Krypton.Toolkit.KryptonButton();
             this.kbtnSwitch = new Krypton.Toolkit.KryptonButton();
             this.kdgvResults = new Krypton.Toolkit.KryptonDataGridView();
             this.krtbPreview = new Krypton.Toolkit.KryptonRichTextBox();
@@ -115,11 +120,6 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.toolTip_chkIncludeFilesWithoutMatches = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip_btnSwap = new System.Windows.Forms.ToolTip(this.components);
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.kbtnFindOnly = new Krypton.Toolkit.KryptonButton();
-            this.kbtnGenerateReplaceCommandLine = new Krypton.Toolkit.KryptonButton();
-            this.kbtnBrowseExcludeDirectory = new Krypton.Toolkit.KryptonButton();
-            this.kryptonLabel10 = new Krypton.Toolkit.KryptonLabel();
-            this.ktxtCommandLine = new Krypton.Toolkit.KryptonTextBox();
             this.ss.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
@@ -184,6 +184,16 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kryptonPanel1.Size = new System.Drawing.Size(1132, 50);
             this.kryptonPanel1.TabIndex = 1;
             // 
+            // kbtnGenerateReplaceCommandLine
+            // 
+            this.kbtnGenerateReplaceCommandLine.Enabled = false;
+            this.kbtnGenerateReplaceCommandLine.Location = new System.Drawing.Point(12, 11);
+            this.kbtnGenerateReplaceCommandLine.Name = "kbtnGenerateReplaceCommandLine";
+            this.kbtnGenerateReplaceCommandLine.Size = new System.Drawing.Size(192, 25);
+            this.kbtnGenerateReplaceCommandLine.TabIndex = 2;
+            this.kbtnGenerateReplaceCommandLine.Values.Text = "&Generate Replace Command Line";
+            this.kbtnGenerateReplaceCommandLine.Click += new System.EventHandler(this.kbtnGenerateReplaceCommandLine_Click);
+            // 
             // kbtnCancel
             // 
             this.kbtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
@@ -245,6 +255,40 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kryptonPanel2.Name = "kryptonPanel2";
             this.kryptonPanel2.Size = new System.Drawing.Size(1132, 734);
             this.kryptonPanel2.TabIndex = 3;
+            // 
+            // ktxtCommandLine
+            // 
+            this.ktxtCommandLine.Location = new System.Drawing.Point(642, 92);
+            this.ktxtCommandLine.Name = "ktxtCommandLine";
+            this.ktxtCommandLine.Size = new System.Drawing.Size(445, 23);
+            this.ktxtCommandLine.TabIndex = 28;
+            // 
+            // kryptonLabel10
+            // 
+            this.kryptonLabel10.Location = new System.Drawing.Point(540, 95);
+            this.kryptonLabel10.Name = "kryptonLabel10";
+            this.kryptonLabel10.Size = new System.Drawing.Size(96, 20);
+            this.kryptonLabel10.TabIndex = 27;
+            this.kryptonLabel10.Values.Text = "Command Line:";
+            // 
+            // kbtnBrowseExcludeDirectory
+            // 
+            this.kbtnBrowseExcludeDirectory.Location = new System.Drawing.Point(1093, 59);
+            this.kbtnBrowseExcludeDirectory.Name = "kbtnBrowseExcludeDirectory";
+            this.kbtnBrowseExcludeDirectory.Size = new System.Drawing.Size(27, 25);
+            this.kbtnBrowseExcludeDirectory.TabIndex = 26;
+            this.kbtnBrowseExcludeDirectory.Values.Text = ".&..";
+            this.kbtnBrowseExcludeDirectory.Click += new System.EventHandler(this.kbtnBrowseExcludeDirectory_Click);
+            // 
+            // kbtnFindOnly
+            // 
+            this.kbtnFindOnly.Location = new System.Drawing.Point(668, 290);
+            this.kbtnFindOnly.Name = "kbtnFindOnly";
+            this.kbtnFindOnly.Size = new System.Drawing.Size(78, 61);
+            this.kbtnFindOnly.TabIndex = 25;
+            this.kbtnFindOnly.Values.Image = global::Krypton.Toolkit.Extended.Dialogs.Properties.Resources.swap_icon1;
+            this.kbtnFindOnly.Values.Text = "Find\r\n&Only";
+            this.kbtnFindOnly.Click += new System.EventHandler(this.kbtnFindOnly_Click);
             // 
             // kbtnSwitch
             // 
@@ -533,50 +577,6 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.errorProvider1.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.errorProvider1.ContainerControl = this;
             // 
-            // kbtnFindOnly
-            // 
-            this.kbtnFindOnly.Location = new System.Drawing.Point(668, 290);
-            this.kbtnFindOnly.Name = "kbtnFindOnly";
-            this.kbtnFindOnly.Size = new System.Drawing.Size(78, 61);
-            this.kbtnFindOnly.TabIndex = 25;
-            this.kbtnFindOnly.Values.Image = global::Krypton.Toolkit.Extended.Dialogs.Properties.Resources.swap_icon1;
-            this.kbtnFindOnly.Values.Text = "Find\r\n&Only";
-            this.kbtnFindOnly.Click += new System.EventHandler(this.kbtnFindOnly_Click);
-            // 
-            // kbtnGenerateReplaceCommandLine
-            // 
-            this.kbtnGenerateReplaceCommandLine.Enabled = false;
-            this.kbtnGenerateReplaceCommandLine.Location = new System.Drawing.Point(12, 11);
-            this.kbtnGenerateReplaceCommandLine.Name = "kbtnGenerateReplaceCommandLine";
-            this.kbtnGenerateReplaceCommandLine.Size = new System.Drawing.Size(192, 25);
-            this.kbtnGenerateReplaceCommandLine.TabIndex = 2;
-            this.kbtnGenerateReplaceCommandLine.Values.Text = "&Generate Replace Command Line";
-            this.kbtnGenerateReplaceCommandLine.Click += new System.EventHandler(this.kbtnGenerateReplaceCommandLine_Click);
-            // 
-            // kbtnBrowseExcludeDirectory
-            // 
-            this.kbtnBrowseExcludeDirectory.Location = new System.Drawing.Point(1093, 59);
-            this.kbtnBrowseExcludeDirectory.Name = "kbtnBrowseExcludeDirectory";
-            this.kbtnBrowseExcludeDirectory.Size = new System.Drawing.Size(27, 25);
-            this.kbtnBrowseExcludeDirectory.TabIndex = 26;
-            this.kbtnBrowseExcludeDirectory.Values.Text = ".&..";
-            this.kbtnBrowseExcludeDirectory.Click += new System.EventHandler(this.kbtnBrowseExcludeDirectory_Click);
-            // 
-            // kryptonLabel10
-            // 
-            this.kryptonLabel10.Location = new System.Drawing.Point(540, 95);
-            this.kryptonLabel10.Name = "kryptonLabel10";
-            this.kryptonLabel10.Size = new System.Drawing.Size(96, 20);
-            this.kryptonLabel10.TabIndex = 27;
-            this.kryptonLabel10.Values.Text = "Command Line:";
-            // 
-            // ktxtCommandLine
-            // 
-            this.ktxtCommandLine.Location = new System.Drawing.Point(642, 92);
-            this.ktxtCommandLine.Name = "ktxtCommandLine";
-            this.ktxtCommandLine.Size = new System.Drawing.Size(445, 23);
-            this.ktxtCommandLine.TabIndex = 28;
-            // 
             // KryptonFindAndReplaceDialog
             // 
             this.ClientSize = new System.Drawing.Size(1132, 808);
@@ -654,7 +654,15 @@ namespace Krypton.Toolkit.Extended.Dialogs
         #region Event Handlers
         private void KryptonFindAndReplaceDialog_Load(object sender, EventArgs e)
         {
+            var encodings = GetEncodings();
 
+            kcmbEncoding.Items.AddRange(encodings.ToArray());
+
+            kcmbEncoding.SelectedIndex = 0;
+
+            InitWithRegistryData();
+
+            ktxtInputDirectory.Focus();
         }
 
         private void KryptonFindAndReplaceDialog_FormClosing(object sender, FormClosingEventArgs e)
@@ -672,7 +680,13 @@ namespace Krypton.Toolkit.Extended.Dialogs
 
         private void kbtnBrowseInputDirectory_Click(object sender, EventArgs e)
         {
+            CommonOpenFileDialog cofd = new CommonOpenFileDialog();
 
+            folderBrowserDialog1.SelectedPath = txtDir.Text;
+            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+            {
+                ktxtInputDirectory.Text = folderBrowserDialog1.SelectedPath;
+            }
         }
 
         private void kbtnBrowseExcludeDirectory_Click(object sender, EventArgs e)
@@ -770,7 +784,13 @@ namespace Krypton.Toolkit.Extended.Dialogs
 
         private void kbtnCancel_Click(object sender, EventArgs e)
         {
-
+            if (_currentThread.IsAlive)
+            {
+                if (_isFindOnly)
+                    _finder.CancelFind();
+                else
+                    _replacer.CancelReplace();
+            }
         }
 
         private void krtbFind_KeyDown(object sender, KeyEventArgs e)
@@ -929,7 +949,23 @@ namespace Krypton.Toolkit.Extended.Dialogs
 
         private void kdgvResults_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex == -1) //heading
+                return;
 
+            OpenFileUsingExternalApp(e.RowIndex);
+        }
+
+        private void contextMenu_ClickOpen(object sender, GVResultEventArgs e)
+        {
+            OpenFileUsingExternalApp(e.cellRow);
+        }
+
+        private void contextMenu_ClickOpenFolder(object sender, GVResultEventArgs e)
+        {
+            var filePath = kdgvResults.Rows[e.cellRow].Cells[1].Value.ToString();
+
+            string argument = @"/select, " + ktxtInputDirectory.Text + filePath.TrimStart('.');
+            Process.Start("explorer.exe", argument);
         }
         #endregion
 
@@ -1390,6 +1426,115 @@ namespace Krypton.Toolkit.Extended.Dialogs
 
             return stringBuilder.ToString();
         }
+
+        private void OpenFileUsingExternalApp(int rowIndex)
+        {
+            var filePath = kdgvResults.Rows[rowIndex].Cells[1].Value.ToString();
+
+            string file = ktxtInputDirectory.Text + filePath.TrimStart('.');
+            Process.Start(file);
+        }
+
+        private ContextMenuStrip CreateContextMenu(int rowNumber)
+        {
+            var contextMenu = new ContextMenuStrip();
+            contextMenu.ShowImageMargin = false;
+
+            var openMenuItem = new ToolStripMenuItem("Open");
+
+            var eventArgs = new GVResultEventArgs();
+            eventArgs.cellRow = rowNumber;
+            openMenuItem.Click += delegate { contextMenu_ClickOpen(this, eventArgs); };
+
+            var openFolderMenuItem = new ToolStripMenuItem("Open Containing Folder");
+            openFolderMenuItem.Click += delegate { contextMenu_ClickOpenFolder(this, eventArgs); };
+
+            contextMenu.Items.Add(openMenuItem);
+            contextMenu.Items.Add(openFolderMenuItem);
+
+            return contextMenu;
+        }
+
+        private void ShowStats(Stats stats, bool showReplaceStats = false)
+        {
+            var sb = new StringBuilder();
+            sb.AppendLine("Files:");
+            sb.AppendLine("- Total: " + stats.Files.Total);
+            sb.AppendLine("- Processed: " + stats.Files.Processed);
+            sb.AppendLine("- Binary: " + stats.Files.Binary + " (skipped)");
+            sb.AppendLine("- With Matches: " + stats.Files.WithMatches);
+            sb.AppendLine("- Without Matches: " + stats.Files.WithoutMatches);
+            sb.AppendLine("- Failed to Open: " + stats.Files.FailedToRead);
+
+            if (showReplaceStats)
+                sb.AppendLine("- Failed to Write: " + stats.Files.FailedToWrite);
+
+            sb.AppendLine("");
+            sb.AppendLine("Matches:");
+            sb.AppendLine("- Found: " + stats.Matches.Found);
+
+            if (showReplaceStats)
+                sb.AppendLine("- Replaced: " + stats.Matches.Replaced);
+
+            var passedSeconds = stats.Time.Passed.TotalSeconds;
+            var remainingSeconds = stats.Time.Remaining.TotalSeconds;
+
+            if (passedSeconds >= 1)
+            {
+                sb.AppendLine("");
+                sb.AppendLine("Time:");
+                sb.AppendLine("- Passed: " + Utils.FormatTimeSpan(stats.Time.Passed));
+
+                if (passedSeconds >= 3 && (int)remainingSeconds != 0)
+                {
+                    sb.AppendLine("- Remaining: " + Utils.FormatTimeSpan(stats.Time.Remaining) + " (estimated)");
+                }
+            }
+
+            klblDetails.Text = sb.ToString();
+        }
+
+
+        private void HideStats()
+        {
+            klblDetails.Text = string.Empty;
+        }
+
+        private void InitWithRegistryData()
+        {
+            var data = new FormData();
+
+            data.LoadSetting();
+
+            if (data.IsFirstTime)
+            {
+                data.IsFirstTime = false;
+                return;
+            }
+
+            ktxtInputDirectory.Text = data.Dir;
+            kchkIncludeSubdirectories.Checked = data.IncludeSubDirectories;
+            ktxtFileMask.Text = data.FileMask;
+            ktxtExcludeMask.Text = data.ExcludeFileMask;
+            ktxtExcludeDirectory.Text = data.ExcludeDir;
+            krtbFind.Text = data.FindText;
+            kchkCaseSensitive.Checked = data.IsCaseSensitive;
+            kchkUseRegularExpressions.Checked = data.IsRegEx;
+            kchkSkipBinaryFileDetection.Checked = data.SkipBinaryFileDetection;
+            kchkIncludeFilesWithoutMatches.Checked = data.IncludeFilesWithoutMatches;
+            kchkShowEncoding.Checked = data.ShowEncoding;
+            krtbReplace.Text = data.ReplaceText;
+            kchkUseEscapeCharacters.Checked = data.UseEscapeChars;
+            kchkKeepModifiedDate.Checked = data.IsKeepModifiedDate;
+
+            if (!string.IsNullOrEmpty(data.Encoding))
+                kcmbEncoding.SelectedIndex = kcmbEncoding.Items.IndexOf(data.Encoding);
+        }
         #endregion
+
+        public class GVResultEventArgs : EventArgs
+        {
+            public int cellRow { get; set; }
+        }
     }
 }
