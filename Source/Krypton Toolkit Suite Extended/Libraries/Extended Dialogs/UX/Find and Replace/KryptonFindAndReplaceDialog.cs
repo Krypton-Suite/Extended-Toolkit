@@ -1,7 +1,9 @@
 ﻿using Krypton.Toolkit.Extended.Base;
+using Microsoft.WindowsAPICodePack.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -49,11 +51,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
         private KryptonTextBox ktxtInputDirectory;
         private KryptonButton kbtnBrowseInputDirectory;
         private KryptonLabel kryptonLabel1;
-        private System.Windows.Forms.ToolTip toolTip_chkShowEncoding;
         private System.ComponentModel.IContainer components;
-        private System.Windows.Forms.ToolTip toolTip_chkSkipBinaryFileDetection;
-        private System.Windows.Forms.ToolTip toolTip_chkIncludeFilesWithoutMatches;
-        private System.Windows.Forms.ToolTip toolTip_btnSwap;
         private KryptonButton kbtnSwitch;
         private KryptonComboBox kcmbEncoding;
         private KryptonLabel kryptonLabel9;
@@ -115,10 +113,6 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.ktxtInputDirectory = new Krypton.Toolkit.KryptonTextBox();
             this.kbtnBrowseInputDirectory = new Krypton.Toolkit.KryptonButton();
             this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
-            this.toolTip_chkShowEncoding = new System.Windows.Forms.ToolTip(this.components);
-            this.toolTip_chkSkipBinaryFileDetection = new System.Windows.Forms.ToolTip(this.components);
-            this.toolTip_chkIncludeFilesWithoutMatches = new System.Windows.Forms.ToolTip(this.components);
-            this.toolTip_btnSwap = new System.Windows.Forms.ToolTip(this.components);
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.ss.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
@@ -262,6 +256,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.ktxtCommandLine.Name = "ktxtCommandLine";
             this.ktxtCommandLine.Size = new System.Drawing.Size(445, 23);
             this.ktxtCommandLine.TabIndex = 28;
+            this.ktxtCommandLine.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ktxtCommandLine_KeyDown);
             // 
             // kryptonLabel10
             // 
@@ -317,6 +312,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.krtbPreview.StateCommon.Back.Color1 = System.Drawing.SystemColors.Info;
             this.krtbPreview.TabIndex = 22;
             this.krtbPreview.Text = "";
+            this.krtbPreview.KeyDown += new System.Windows.Forms.KeyEventHandler(this.krtbPreview_KeyDown);
             this.krtbPreview.MouseDown += new System.Windows.Forms.MouseEventHandler(this.krtbPreview_MouseDown);
             // 
             // kryptonLabel8
@@ -342,6 +338,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.krtbReplace.Size = new System.Drawing.Size(1007, 96);
             this.krtbReplace.TabIndex = 18;
             this.krtbReplace.Text = "";
+            this.krtbReplace.KeyDown += new System.Windows.Forms.KeyEventHandler(this.krtbReplace_KeyDown);
             this.krtbReplace.MouseDown += new System.Windows.Forms.MouseEventHandler(this.krtbReplace_MouseDown);
             this.krtbReplace.Validating += new System.ComponentModel.CancelEventHandler(this.krtbReplace_Validating);
             // 
@@ -545,6 +542,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kchkIncludeSubdirectories.Size = new System.Drawing.Size(145, 20);
             this.kchkIncludeSubdirectories.TabIndex = 6;
             this.kchkIncludeSubdirectories.Values.Text = "&Include Subdirectories";
+            this.kchkIncludeSubdirectories.CheckedChanged += new System.EventHandler(this.kchkIncludeSubdirectories_CheckedChanged);
             // 
             // ktxtInputDirectory
             // 
@@ -682,21 +680,31 @@ namespace Krypton.Toolkit.Extended.Dialogs
         {
             CommonOpenFileDialog cofd = new CommonOpenFileDialog();
 
-            folderBrowserDialog1.SelectedPath = txtDir.Text;
-            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+            if (!string.IsNullOrEmpty(ktxtInputDirectory.Text)) cofd.InitialDirectory = ktxtInputDirectory.Text;
+
+            if (cofd.ShowDialog() == CommonFileDialogResult.Ok)
             {
-                ktxtInputDirectory.Text = folderBrowserDialog1.SelectedPath;
+                ktxtInputDirectory.Text = Path.GetFullPath(cofd.FileName);
             }
         }
 
         private void kbtnBrowseExcludeDirectory_Click(object sender, EventArgs e)
         {
+            CommonOpenFileDialog cofd = new CommonOpenFileDialog();
 
+            if (cofd.ShowDialog() == CommonFileDialogResult.Ok)
+            {
+                ktxtExcludeDirectory.Text = Path.GetFullPath(cofd.FileName);
+            }
         }
 
         private void kbtnSwitch_Click(object sender, EventArgs e)
         {
+            string findText = krtbFind.Text;
 
+            krtbFind.Text = krtbReplace.Text;
+
+            krtbReplace.Text = findText;
         }
 
         private void kbtnFindOnly_Click(object sender, EventArgs e)
@@ -795,7 +803,14 @@ namespace Krypton.Toolkit.Extended.Dialogs
 
         private void krtbFind_KeyDown(object sender, KeyEventArgs e)
         {
+            if (e.Control && (e.KeyCode == Keys.A))
+            {
+                krtbFind.SelectAll();
 
+                e.SuppressKeyPress = true;
+
+                e.Handled = true;
+            }
         }
 
         private void krtbReplace_MouseDown(object sender, MouseEventArgs e)
@@ -965,7 +980,42 @@ namespace Krypton.Toolkit.Extended.Dialogs
             var filePath = kdgvResults.Rows[e.cellRow].Cells[1].Value.ToString();
 
             string argument = @"/select, " + ktxtInputDirectory.Text + filePath.TrimStart('.');
+
             Process.Start("explorer.exe", argument);
+        }
+
+        private void krtbReplace_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && (e.KeyCode == Keys.A))
+            {
+                krtbReplace.SelectAll();
+
+                e.SuppressKeyPress = true;
+
+                e.Handled = true;
+            }
+        }
+
+        private void krtbPreview_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void ktxtCommandLine_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && (e.KeyCode == Keys.A))
+            {
+                ktxtCommandLine.SelectAll();
+
+                e.SuppressKeyPress = true;
+
+                e.Handled = true;
+            }
+        }
+
+        private void kchkIncludeSubdirectories_CheckedChanged(object sender, EventArgs e)
+        {
+            ktxtExcludeDirectory.Enabled = kchkIncludeSubdirectories.Checked;
         }
         #endregion
 
@@ -1529,6 +1579,76 @@ namespace Krypton.Toolkit.Extended.Dialogs
 
             if (!string.IsNullOrEmpty(data.Encoding))
                 kcmbEncoding.SelectedIndex = kcmbEncoding.Items.IndexOf(data.Encoding);
+        }
+
+        private List<string> GetEncodings()
+        {
+            var result = new List<string>();
+
+            result.Add("Auto Detect");
+
+            foreach (EncodingInfo ei in Encoding.GetEncodings().OrderBy(ei => ei.Name))
+            {
+                //Encoding e = ei.GetEncoding();
+
+                result.Add(ei.Name);
+            }
+
+            return result;
+        }
+
+        private Finder GetFinder()
+        {
+            var finder = new Finder();
+            finder.Dir = ktxtInputDirectory.Text;
+
+            finder.IncludeSubDirectories = kchkIncludeSubdirectories.Checked;
+            finder.FileMask = ktxtFileMask.Text;
+            finder.FindTextHasRegEx = kchkUseRegularExpressions.Checked;
+            finder.FindText = CleanRichBoxText(krtbFind.Text);
+            finder.IsCaseSensitive = kchkCaseSensitive.Checked;
+            finder.SkipBinaryFileDetection = kchkSkipBinaryFileDetection.Checked;
+            finder.IncludeFilesWithoutMatches = kchkIncludeFilesWithoutMatches.Checked;
+            finder.ExcludeFileMask = ktxtExcludeMask.Text;
+            finder.ExcludeDir = ktxtExcludeDirectory.Text;
+
+            finder.UseEscapeChars = kchkUseEscapeCharacters.Checked;
+
+            if (kcmbEncoding.SelectedIndex > 0)
+                finder.AlwaysUseEncoding = Utils.GetEncodingByName(kcmbEncoding.Text);
+
+            return finder;
+        }
+
+        private string CleanRichBoxText(string text)
+        {
+            return text.Replace("\n", Environment.NewLine);
+        }
+
+        private Replacer GetReplacer()
+        {
+            var replacer = new Replacer();
+
+            replacer.Dir = ktxtInputDirectory.Text;
+            replacer.IncludeSubDirectories = kchkIncludeSubdirectories.Checked;
+
+            replacer.FileMask = ktxtFileMask.Text;
+            replacer.ExcludeFileMask = ktxtFileMask.Text;
+            replacer.ExcludeDir = ktxtExcludeDirectory.Text;
+            replacer.FindText = CleanRichBoxText(krtbFind.Text);
+            replacer.IsCaseSensitive = kchkCaseSensitive.Checked;
+            replacer.FindTextHasRegEx = kchkUseRegularExpressions.Checked;
+            replacer.SkipBinaryFileDetection = kchkSkipBinaryFileDetection.Checked;
+            replacer.IncludeFilesWithoutMatches = kchkIncludeFilesWithoutMatches.Checked;
+            replacer.ReplaceText = CleanRichBoxText(krtbReplace.Text);
+            replacer.UseEscapeChars = kchkUseEscapeCharacters.Checked;
+            replacer.IsKeepModifiedDate = kchkKeepModifiedDate.Checked;
+
+
+            if (kcmbEncoding.SelectedIndex > 0)
+                replacer.AlwaysUseEncoding = Utils.GetEncodingByName(kcmbEncoding.Text);
+
+            return replacer;
         }
         #endregion
 
