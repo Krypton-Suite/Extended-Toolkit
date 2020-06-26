@@ -254,7 +254,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             // 
             this.ktxtCommandLine.Location = new System.Drawing.Point(642, 92);
             this.ktxtCommandLine.Name = "ktxtCommandLine";
-            this.ktxtCommandLine.Size = new System.Drawing.Size(445, 23);
+            this.ktxtCommandLine.Size = new System.Drawing.Size(445, 20);
             this.ktxtCommandLine.TabIndex = 28;
             this.ktxtCommandLine.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ktxtCommandLine_KeyDown);
             // 
@@ -491,7 +491,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.ktxtExcludeMask.Location = new System.Drawing.Point(389, 92);
             this.ktxtExcludeMask.MaxLength = 50;
             this.ktxtExcludeMask.Name = "ktxtExcludeMask";
-            this.ktxtExcludeMask.Size = new System.Drawing.Size(145, 23);
+            this.ktxtExcludeMask.Size = new System.Drawing.Size(145, 20);
             this.ktxtExcludeMask.TabIndex = 12;
             // 
             // kryptonLabel4
@@ -508,7 +508,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.ktxtFileMask.Location = new System.Drawing.Point(113, 92);
             this.ktxtFileMask.MaxLength = 50;
             this.ktxtFileMask.Name = "ktxtFileMask";
-            this.ktxtFileMask.Size = new System.Drawing.Size(145, 23);
+            this.ktxtFileMask.Size = new System.Drawing.Size(145, 20);
             this.ktxtFileMask.TabIndex = 10;
             this.ktxtFileMask.Validating += new System.ComponentModel.CancelEventHandler(this.ktxtFileMask_Validating);
             // 
@@ -524,7 +524,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             // 
             this.ktxtExcludeDirectory.Location = new System.Drawing.Point(491, 58);
             this.ktxtExcludeDirectory.Name = "ktxtExcludeDirectory";
-            this.ktxtExcludeDirectory.Size = new System.Drawing.Size(596, 23);
+            this.ktxtExcludeDirectory.Size = new System.Drawing.Size(596, 20);
             this.ktxtExcludeDirectory.TabIndex = 8;
             // 
             // kryptonLabel2
@@ -548,7 +548,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             // 
             this.ktxtInputDirectory.Location = new System.Drawing.Point(113, 14);
             this.ktxtInputDirectory.Name = "ktxtInputDirectory";
-            this.ktxtInputDirectory.Size = new System.Drawing.Size(974, 23);
+            this.ktxtInputDirectory.Size = new System.Drawing.Size(974, 20);
             this.ktxtInputDirectory.TabIndex = 5;
             this.ktxtInputDirectory.Validating += new System.ComponentModel.CancelEventHandler(this.ktxtInputDirectory_Validating);
             this.ktxtInputDirectory.Validated += new System.EventHandler(this.ktxtInputDirectory_Validated);
