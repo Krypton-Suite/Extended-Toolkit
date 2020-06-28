@@ -4,6 +4,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
 {
     public class KryptonColourDetailsDialog : KryptonForm
     {
+        #region Designer Code
         private KryptonPanel kpnlButtons;
         private KryptonOKDialogButton kbtnOk;
         private System.Windows.Forms.Panel panel1;
@@ -428,6 +429,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.ResumeLayout(false);
 
         }
+        #endregion
 
         private void KryptonColourDetailsDialog_Load(object sender, EventArgs e)
         {

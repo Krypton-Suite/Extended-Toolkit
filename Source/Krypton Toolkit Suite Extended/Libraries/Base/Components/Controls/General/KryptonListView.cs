@@ -287,7 +287,9 @@ namespace Krypton.Toolkit.Extended.Base
         {
             get { return _indendFirstItem; }
             set { _indendFirstItem = value; }
-        }*/
+        }
+    
+    //////////////////////////////////////////////
 
         private Boolean _forceLeftAlign = false;
         [Browsable(false), Category("Appearance-Extended")]

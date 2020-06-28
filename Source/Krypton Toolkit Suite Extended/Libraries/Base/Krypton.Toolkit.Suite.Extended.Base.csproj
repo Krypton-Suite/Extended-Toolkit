@@ -81,8 +81,6 @@
     <Version>5.550.2007</Version>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
     <RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
-    <SignAssembly>false</SignAssembly>
-    <AssemblyOriginatorKeyFile>Krypton Extended Toolkit.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
 </Project>
