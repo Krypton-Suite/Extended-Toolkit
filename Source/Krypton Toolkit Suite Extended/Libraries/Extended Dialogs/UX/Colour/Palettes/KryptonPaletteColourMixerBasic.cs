@@ -1,4 +1,5 @@
-﻿using Krypton.Toolkit.Suite.Extended.Drawing.Suite;
+﻿using Krypton.Toolkit.Suite.Extended.Base;
+using Krypton.Toolkit.Suite.Extended.Drawing.Suite;
 using System.ComponentModel;
 using System.Drawing;
 
@@ -12,7 +13,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
         private KryptonOKDialogButton kbtnOk;
         private System.Windows.Forms.Panel panel1;
         private KryptonPanel kryptonPanel1;
-        private Base.CircularPictureBox cpbColourPreview;
+        private CircularPictureBox cpbColourPreview;
         private KryptonCancelDialogButton kbtnCancel;
 
         private void InitializeComponent()
@@ -21,7 +22,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kpnlButtons = new Krypton.Toolkit.KryptonPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
-            this.cpbColourPreview = new Krypton.Toolkit.Extended.Base.CircularPictureBox();
+            this.cpbColourPreview = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
             this.kbtnOk = new Krypton.Toolkit.Extended.Dialogs.KryptonOKDialogButton();
             this.kbtnCancel = new Krypton.Toolkit.Extended.Dialogs.KryptonCancelDialogButton();
             ((System.ComponentModel.ISupportInitialize)(this.kpnlButtons)).BeginInit();

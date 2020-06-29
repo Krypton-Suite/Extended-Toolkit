@@ -1,5 +1,5 @@
 ﻿using Cyotek.Windows.Forms;
-using Krypton.Toolkit.Extended.Base;
+using Krypton.Toolkit.Suite.Extended.Base;
 using Krypton.Toolkit.Suite.Extended.Drawing.Suite;
 using System;
 using System.ComponentModel;
@@ -38,7 +38,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kbeCancel = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonButtonExtended();
             this.kbeOk = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonButtonExtended();
             this.cgColourPalette = new Cyotek.Windows.Forms.ColorGrid();
-            this.cpbColourPreview = new Krypton.Toolkit.Extended.Base.CircularPictureBox();
+            this.cpbColourPreview = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
             this.kbtneLoadColourPalette = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonButtonExtended();
             ((System.ComponentModel.ISupportInitialize)(this.kpnlBack)).BeginInit();
             this.kpnlBack.SuspendLayout();

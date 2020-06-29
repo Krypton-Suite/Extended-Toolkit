@@ -4,12 +4,12 @@
     <LangVersion>8.0</LangVersion>
     <TargetFrameworks>net45;netcoreapp3.1;netcoreapp5.0</TargetFrameworks>
     <TargetFrameworks Condition="'$(TFMs)' == 'all'">net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;netcoreapp5.0</TargetFrameworks>
-    <RootNamespace>Krypton.Toolkit.Extended.Floating.Toolbars</RootNamespace>
+    <RootNamespace>Krypton.Toolkit.Suite.Extended.Floating.Toolbars</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
   <PropertyGroup>
-    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Floating.Toolbars\Krypton.Toolkit.Extended.Floating.Toolbars.xml</DocumentationFile>
+    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Floating.Toolbars\Krypton.Toolkit.Suite.Extended.Floating.Toolbars.xml</DocumentationFile>
     <OutputPath>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Floating.Toolbars\</OutputPath>
   </PropertyGroup>
 

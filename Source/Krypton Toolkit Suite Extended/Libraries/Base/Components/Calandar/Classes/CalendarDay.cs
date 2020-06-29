@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Base
+namespace Krypton.Toolkit.Suite.Extended.Base
 {
     /// <summary>
     /// Represents a day present on the <see cref="KryptonCalendar"/> control's view.

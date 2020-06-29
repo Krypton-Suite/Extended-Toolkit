@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using Krypton.Toolkit.Suite.Extended.Base;
+using System.Drawing;
 
 namespace Krypton.Toolkit.Extended.Dialogs
 {
@@ -9,7 +10,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
         private KryptonOKDialogButton kryptonOKDialogButton1;
         private System.Windows.Forms.Panel panel1;
         private Suite.Extended.Standard.Controls.KryptonPanelExtended kryptonPanelExtended2;
-        private Base.KryptonTypefaceExample kryptonTypefaceExample1;
+        private KryptonTypefaceExample kryptonTypefaceExample1;
         private KryptonCancelDialogButton kryptonCancelDialogButton1;
 
         private void InitializeComponent()
@@ -19,7 +20,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kryptonCancelDialogButton1 = new Krypton.Toolkit.Extended.Dialogs.KryptonCancelDialogButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.kryptonPanelExtended2 = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonPanelExtended();
-            this.kryptonTypefaceExample1 = new Krypton.Toolkit.Extended.Base.KryptonTypefaceExample();
+            this.kryptonTypefaceExample1 = new Krypton.Toolkit.Suite.Extended.Base.KryptonTypefaceExample();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanelExtended1)).BeginInit();
             this.kryptonPanelExtended1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanelExtended2)).BeginInit();

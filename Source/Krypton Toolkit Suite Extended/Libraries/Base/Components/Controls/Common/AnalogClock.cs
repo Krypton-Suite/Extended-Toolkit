@@ -5,7 +5,7 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Text;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Base
+namespace Krypton.Toolkit.Suite.Extended.Base
 {
     /// <summary>
     /// Defines the ticking style used for the second and minute hands of the analog clock. 

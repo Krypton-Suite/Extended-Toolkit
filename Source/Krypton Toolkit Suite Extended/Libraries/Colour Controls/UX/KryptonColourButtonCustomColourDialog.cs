@@ -14,7 +14,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Suite
         private KryptonPanel kryptonPanel1;
         private KryptonButton kryptonOKDialogButton1;
         private KryptonPanel kryptonPanel2;
-        private Krypton.Toolkit.Extended.Base.CircularPictureBox circularPictureBox1;
+        private Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox circularPictureBox1;
         private KryptonNumericUpDown kryptonNumericUpDown6;
         private KryptonNumericUpDown kryptonNumericUpDown5;
         private KryptonNumericUpDown kryptonNumericUpDown4;
@@ -61,7 +61,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Suite
             this.kryptonLabel3 = new Krypton.Toolkit.KryptonLabel();
             this.kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
             this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
-            this.circularPictureBox1 = new Krypton.Toolkit.Extended.Base.CircularPictureBox();
+            this.circularPictureBox1 = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();

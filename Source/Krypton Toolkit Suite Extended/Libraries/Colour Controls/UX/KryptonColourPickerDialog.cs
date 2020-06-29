@@ -1,5 +1,5 @@
 ﻿using Cyotek.Windows.Forms;
-using Krypton.Toolkit.Extended.Base;
+using Krypton.Toolkit.Suite.Extended.Base;
 using System;
 using System.ComponentModel;
 using System.Drawing;
@@ -17,13 +17,13 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Suite
         private KryptonPanel kryptonPanel2;
         private System.Windows.Forms.Panel panel1;
         private ColourWheelControl cwColour;
-        private Krypton.Toolkit.Extended.Base.CircularPictureBox cpbColour;
+        private Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox cpbColour;
         private Cyotek.Windows.Forms.ColorGrid cgColour;
         private ScreenColourPickerControl scpColour;
         private ColourEditor ceColour;
         private ColourEditorManager cem;
-        private Krypton.Toolkit.Extended.Base.KryptonOKDialogButton kdbtnOk;
-        private Krypton.Toolkit.Extended.Base.KryptonCancelDialogButton kdbtnCancel;
+        private Krypton.Toolkit.Suite.Extended.Base.KryptonOKDialogButton kdbtnOk;
+        private Krypton.Toolkit.Suite.Extended.Base.KryptonCancelDialogButton kdbtnCancel;
         private KryptonButton kbtnSavePalette;
         private KryptonButton kbtnLoadPalette;
         private KryptonPanel kryptonPanel1;
@@ -32,12 +32,12 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Suite
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KryptonColourPickerDialog));
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
-            this.kdbtnOk = new Krypton.Toolkit.Extended.Base.KryptonOKDialogButton();
-            this.kdbtnCancel = new Krypton.Toolkit.Extended.Base.KryptonCancelDialogButton();
+            this.kdbtnOk = new Krypton.Toolkit.Suite.Extended.Base.KryptonOKDialogButton();
+            this.kdbtnCancel = new Krypton.Toolkit.Suite.Extended.Base.KryptonCancelDialogButton();
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
             this.kbtnSavePalette = new Krypton.Toolkit.KryptonButton();
             this.kbtnLoadPalette = new Krypton.Toolkit.KryptonButton();
-            this.cpbColour = new Krypton.Toolkit.Extended.Base.CircularPictureBox();
+            this.cpbColour = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
             this.cgColour = new Cyotek.Windows.Forms.ColorGrid();
             this.scpColour = new Krypton.Toolkit.Suite.Extended.Drawing.Suite.ScreenColourPickerControl();
             this.ceColour = new Krypton.Toolkit.Suite.Extended.Drawing.Suite.ColourEditor();

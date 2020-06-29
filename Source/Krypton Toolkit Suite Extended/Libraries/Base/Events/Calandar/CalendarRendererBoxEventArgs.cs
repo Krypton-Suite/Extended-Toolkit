@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Base
+namespace Krypton.Toolkit.Suite.Extended.Base
 {
     /// <summary>
     /// Contains information about something's bounds and text to draw on the calendar

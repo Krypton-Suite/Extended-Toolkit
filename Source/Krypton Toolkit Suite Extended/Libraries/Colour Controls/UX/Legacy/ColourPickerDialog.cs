@@ -1,4 +1,4 @@
-﻿using Krypton.Toolkit.Extended.Base;
+﻿using Krypton.Toolkit.Suite.Extended.Base;
 using Krypton.Toolkit.Suite.Extended.Drawing.Suite.Resources;
 using System;
 using System.ComponentModel;
@@ -40,7 +40,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Suite.Legacy
             this.cwColourPicker = new Krypton.Toolkit.Suite.Extended.Drawing.Suite.ColourWheelControl();
             this.cgColourPalette = new ColourGridControl();
             this.cem = new Krypton.Toolkit.Suite.Extended.Drawing.Suite.ColourEditorManager();
-            this.cbColourPreview = new Krypton.Toolkit.Extended.Base.CircularPictureBox();
+            this.cbColourPreview = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
             this.scpPicker = new Krypton.Toolkit.Suite.Extended.Drawing.Suite.ScreenColourPickerControl();
             ((System.ComponentModel.ISupportInitialize)(this.kpnlMain)).BeginInit();
             this.kpnlMain.SuspendLayout();

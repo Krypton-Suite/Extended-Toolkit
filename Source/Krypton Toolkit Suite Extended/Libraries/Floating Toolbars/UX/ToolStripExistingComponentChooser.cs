@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Floating.Toolbars
+namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
 {
     public class ToolStripExistingComponentChooser : KryptonForm
     {

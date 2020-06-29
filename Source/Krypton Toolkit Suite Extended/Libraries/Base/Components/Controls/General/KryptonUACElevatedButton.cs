@@ -5,7 +5,7 @@ using System.Drawing;
 using System.Reflection;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Base
+namespace Krypton.Toolkit.Suite.Extended.Base
 {
     /// <summary>
     /// A standard Krypton button control with UAC shield

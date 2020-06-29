@@ -1,5 +1,5 @@
 ﻿using Cyotek.Windows.Forms;
-using Krypton.Toolkit.Extended.Base;
+using Krypton.Toolkit.Suite.Extended.Base;
 using System;
 using System.ComponentModel;
 using System.Drawing;

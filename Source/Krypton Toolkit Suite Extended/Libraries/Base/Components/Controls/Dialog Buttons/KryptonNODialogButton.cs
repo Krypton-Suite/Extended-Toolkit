@@ -1,9 +1,10 @@
 ﻿using Krypton.Toolkit.Suite.Extended.Core;
+using Krypton.Toolkit;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Base
+namespace Krypton.Toolkt.Suite.Extended.Base
 {
     [ToolboxBitmap(typeof(KryptonButton))]
     public class KryptonNODialogButton : KryptonButton

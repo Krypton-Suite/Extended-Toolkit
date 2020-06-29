@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Krypton.Toolkit.Extended.Base
+namespace Krypton.Toolkit.Suite.Extended.Base
 {
     /// <summary>
     /// Represents a selectable timescale unit on a <see cref="CalendarDay"/>

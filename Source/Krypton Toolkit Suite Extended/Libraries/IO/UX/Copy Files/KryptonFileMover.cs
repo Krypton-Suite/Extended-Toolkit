@@ -1,4 +1,5 @@
-﻿using Microsoft.WindowsAPICodePack.Dialogs;
+﻿using Krypton.Toolkt.Suite.Extended.Base;
+using Microsoft.WindowsAPICodePack.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -9,7 +10,7 @@ namespace Krypton.Toolkit.Extended.IO
     {
         #region Design Code
         private KryptonPanel kryptonPanel1;
-        private Base.KryptonOKDialogButton kdbtnOk;
+        private KryptonButton kdbtnOk;
         private System.Windows.Forms.Panel panel1;
         private KryptonPanel kryptonPanel2;
         private KryptonButton kbtnCopyFiles;
@@ -19,13 +20,13 @@ namespace Krypton.Toolkit.Extended.IO
         private KryptonGroupBox kryptonGroupBox1;
         private KryptonLabel klblFileHash;
         private KryptonFileListing kflListing;
-        private Base.KryptonCancelDialogButton kdbtnCancel;
+        private KryptonButton kdbtnCancel;
 
         private void InitializeComponent()
         {
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
-            this.kdbtnOk = new Krypton.Toolkit.Extended.Base.KryptonOKDialogButton();
-            this.kdbtnCancel = new Krypton.Toolkit.Extended.Base.KryptonCancelDialogButton();
+            this.kdbtnOk = new Krypton.Toolkit.KryptonButton();
+            this.kdbtnCancel = new Krypton.Toolkit.KryptonButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
             this.kbtnCopyFiles = new Krypton.Toolkit.KryptonButton();
@@ -64,7 +65,6 @@ namespace Krypton.Toolkit.Extended.IO
             this.kdbtnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.kdbtnOk.Location = new System.Drawing.Point(509, 6);
             this.kdbtnOk.Name = "kdbtnOk";
-            this.kdbtnOk.ParentWindow = null;
             this.kdbtnOk.Size = new System.Drawing.Size(90, 25);
             this.kdbtnOk.TabIndex = 3;
             this.kdbtnOk.Values.Text = "&OK";
@@ -74,7 +74,6 @@ namespace Krypton.Toolkit.Extended.IO
             this.kdbtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.kdbtnCancel.Location = new System.Drawing.Point(605, 6);
             this.kdbtnCancel.Name = "kdbtnCancel";
-            this.kdbtnCancel.ParentWindow = null;
             this.kdbtnCancel.Size = new System.Drawing.Size(90, 25);
             this.kdbtnCancel.TabIndex = 3;
             this.kdbtnCancel.Values.Text = "C&ancel";

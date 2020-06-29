@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Reflection;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Base
+namespace Krypton.Toolkit.Suite.Extended.Base
 {
     [ToolboxBitmap(typeof(KryptonComboBoxEnhanced))]
     public class KryptonColourComboBox : KryptonComboBoxEnhanced

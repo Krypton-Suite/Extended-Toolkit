@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Security.Principal;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Base
+namespace Krypton.Toolkit.Suite.Extended.Base
 {
     public class ExecuteProcessAsAdministratorEventArgs : EventArgs
     {

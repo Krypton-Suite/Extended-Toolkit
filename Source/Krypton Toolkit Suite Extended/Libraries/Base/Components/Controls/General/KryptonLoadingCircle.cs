@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Base
+namespace Krypton.Toolkit.Suite.Extended.Base
 {
     [System.Drawing.ToolboxBitmap(typeof(BackgroundWorker)), ToolboxItem(true)]
     public partial class KryptonLoadingCircle : Control

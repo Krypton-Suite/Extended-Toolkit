@@ -1,4 +1,4 @@
-﻿using Krypton.Toolkit.Extended.Base;
+﻿using Krypton.Toolkit.Suite.Extended.Base;
 using Krypton.Toolkit.Suite.Extended.Drawing.Suite.Resources;
 using System;
 using System.Drawing;
@@ -74,7 +74,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Suite.Legacy
             this.ktbHexadecimalColourValue = new Krypton.Toolkit.KryptonTextBox();
             this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
             this.cwColours = new Krypton.Toolkit.Suite.Extended.Drawing.Suite.ColourWheelControl();
-            this.cpbSelectedColour = new Krypton.Toolkit.Extended.Base.CircularPictureBox();
+            this.cpbSelectedColour = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
             this.kryptonGreenValueLabel1 = new Krypton.Toolkit.Suite.Extended.Drawing.Suite.KryptonGreenValueLabel();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();

@@ -14,12 +14,12 @@ namespace Krypton.Toolkit.Extended.IO
         private KryptonLabel klblTotalFiles;
         private System.Windows.Forms.ProgressBar pbCurrentFile;
         private KryptonLabel klblCurrentFile;
-        private Base.KryptonCancelDialogButton kdbtnCancel;
+        private KryptonButton kdbtnCancel;
 
         private void InitializeComponent()
         {
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
-            this.kdbtnCancel = new Krypton.Toolkit.Extended.Base.KryptonCancelDialogButton();
+            this.kdbtnCancel = new Krypton.Toolkit.KryptonButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
             this.pbCurrentFile = new System.Windows.Forms.ProgressBar();
@@ -46,7 +46,6 @@ namespace Krypton.Toolkit.Extended.IO
             this.kdbtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.kdbtnCancel.Location = new System.Drawing.Point(292, 6);
             this.kdbtnCancel.Name = "kdbtnCancel";
-            this.kdbtnCancel.ParentWindow = null;
             this.kdbtnCancel.Size = new System.Drawing.Size(90, 25);
             this.kdbtnCancel.TabIndex = 3;
             this.kdbtnCancel.Values.Text = "C&ancel";
