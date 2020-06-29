@@ -2,7 +2,7 @@
 using System;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Core
+namespace Krypton.Toolkit.Suite.Extended.Core
 {
     public partial class GlobalOptionsMenu : KryptonForm
     {
@@ -400,7 +400,7 @@ namespace Krypton.Toolkit.Extended.Core
             this.kcbBaseColour.Size = new System.Drawing.Size(199, 30);
             this.kcbBaseColour.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kcbBaseColour.TabIndex = 61;
-            this.kcbBaseColour.Values.Image = global::Krypton.Toolkit.Extended.Core.Resources.ImageResources.Colour_Wheel_16_x_16;
+            this.kcbBaseColour.Values.Image = global::Krypton.Toolkit.Suite.Extended.Core.Resources.ImageResources.Colour_Wheel_16_x_16;
             this.kcbBaseColour.Values.Text = "&Choose a Base Colour";
             // 
             // kryptonLabel4

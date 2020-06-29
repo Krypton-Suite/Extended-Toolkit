@@ -7,7 +7,7 @@
 using Krypton.Toolkit.Values;
 using System.ComponentModel;
 
-namespace Krypton.Toolkit.Extended.Core
+namespace Krypton.Toolkit.Suite.Extended.Core
 {
     [ToolboxItem(false), DesignerCategory("code")]
     public class ToolTipValueManager : HeaderValues

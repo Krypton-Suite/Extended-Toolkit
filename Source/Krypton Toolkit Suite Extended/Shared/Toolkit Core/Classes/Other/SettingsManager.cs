@@ -1,7 +1,7 @@
-﻿using Krypton.Toolkit.Extended.Core.Settings;
+﻿using Krypton.Toolkit.Suite.Extended.Core.Settings;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Core
+namespace Krypton.Toolkit.Suite.Extended.Core
 {
     public class SettingsManagerAlternative
     {

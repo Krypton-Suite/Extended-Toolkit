@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Core
+namespace Krypton.Toolkit.Suite.Extended.Core
 {
     public class ToolStripControlHostFixed : ToolStripControlHost
     {

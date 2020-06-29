@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Krypton.Toolkit.Extended.Core
+﻿namespace Krypton.Toolkit.Suite.Extended.Core
 {
     public class AssemblyInformation
     {

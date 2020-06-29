@@ -1,5 +1,4 @@
-﻿using Krypton.Toolkit.Suite.Extended.Language.Model;
-using Krypton.Toolkit.Suite.Extended.Standard.Controls;
+﻿using Krypton.Toolkit.Suite.Extended.Standard.Controls;
 using System;
 using System.Drawing;
 using System.Windows.Forms;

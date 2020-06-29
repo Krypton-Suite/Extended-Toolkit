@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace Krypton.Toolkit.Extended.Core
+namespace Krypton.Toolkit.Suite.Extended.Core
 {
     public interface IColourPalette
     {

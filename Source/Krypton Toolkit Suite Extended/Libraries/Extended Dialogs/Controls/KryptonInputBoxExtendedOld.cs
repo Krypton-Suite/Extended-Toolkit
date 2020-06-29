@@ -1,5 +1,4 @@
 ﻿using Krypton.Toolkit.Suite.Extended.Dialogs.Resources;
-using Krypton.Toolkit.Suite.Extended.Language.Model;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
