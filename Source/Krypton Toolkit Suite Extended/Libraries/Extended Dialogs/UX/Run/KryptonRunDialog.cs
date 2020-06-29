@@ -1,5 +1,5 @@
 ﻿using Krypton.Toolkit.Suite.Extended.Base;
-using Krypton.Toolkit.Extended.Core;
+using Krypton.Toolkit.Suite.Extended.Core;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using System;
 using System.Diagnostics;

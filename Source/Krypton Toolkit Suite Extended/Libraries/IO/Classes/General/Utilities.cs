@@ -1,4 +1,4 @@
-﻿using Krypton.Toolkit.Extended.Common;
+﻿using Krypton.Toolkit.Suite.Extended.Common;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;

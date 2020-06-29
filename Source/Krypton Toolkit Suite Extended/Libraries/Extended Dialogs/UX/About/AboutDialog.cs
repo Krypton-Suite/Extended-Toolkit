@@ -1,4 +1,4 @@
-﻿using Krypton.Toolkit.Extended.Core;
+﻿using Krypton.Toolkit.Suite.Extended.Core;
 using System;
 
 namespace Krypton.Toolkit.Suite.Extended.Dialogs

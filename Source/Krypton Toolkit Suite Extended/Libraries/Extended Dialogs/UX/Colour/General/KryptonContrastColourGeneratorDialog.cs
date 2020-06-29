@@ -1,4 +1,4 @@
-﻿using Krypton.Toolkit.Extended.Core;
+﻿using Krypton.Toolkit.Suite.Extended.Core;
 using System.ComponentModel;
 using System.Drawing;
 
@@ -84,8 +84,8 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.kbtnGenerateBaseColour = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonButtonExtended();
             this.kbtnGenerateContrastColour = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonButtonExtended();
             this.klblContrastColour = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonLabelExtended();
-            this.cpbContrastColourPreview = new Krypton.Toolkit.Extended.Core.CircularPictureBox();
-            this.cpbBaseColour = new Krypton.Toolkit.Extended.Core.CircularPictureBox();
+            this.cpbContrastColourPreview = new Krypton.Toolkit.Suite.Extended.Core.CircularPictureBox();
+            this.cpbBaseColour = new Krypton.Toolkit.Suite.Extended.Core.CircularPictureBox();
             this.klblBaseColour = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonLabelExtended();
             this.klblBaseGreen = new Krypton.Toolkit.Suite.Extended.Drawing.Suite.KryptonGreenValueLabel();
             this.klblContrastColourGreen = new Krypton.Toolkit.Suite.Extended.Drawing.Suite.KryptonGreenValueLabel();

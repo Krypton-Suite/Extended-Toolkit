@@ -1,10 +1,10 @@
-﻿using Krypton.Toolkit.Extended.Common;
-using Krypton.Toolkit.Extended.Core;
+﻿using Krypton.Toolkit.Suite.Extended.Common;
+using Krypton.Toolkit.Suite.Extended.Core;
 using System;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using ExceptionHandler = Krypton.Toolkit.Extended.Core.ExceptionHandler;
+using ExceptionHandler = Krypton.Toolkit.Suite.Extended.Core.ExceptionHandler;
 
 namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {

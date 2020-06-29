@@ -1,4 +1,4 @@
-﻿using Krypton.Toolkit.Extended.Common;
+﻿using Krypton.Toolkit.Suite.Extended.Common;
 using Krypton.Toolkit.Extended.Software.Updater.SharpUpdate.Language;
 using System;
 using System.Windows.Forms;
