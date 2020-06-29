@@ -1,4 +1,4 @@
-﻿using Krypton.Toolkit.Extended.Colour.Controls;
+﻿using Krypton.Toolkit.Suite.Extended.Drawing.Suite;
 using System.ComponentModel;
 using System.Drawing;
 
@@ -9,7 +9,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
     {
         #region Designer Code
         private KryptonPanel kpnlButtons;
-        private Colour.Controls.ColourHexadecimalTextBox colourHexadecimalTextBox1;
+        private Krypton.Toolkit.Suite.Extended.Drawing.Suite.ColourHexadecimalTextBox colourHexadecimalTextBox1;
         private Suite.Extended.Standard.Controls.KryptonLabelExtended kryptonLabelExtended3;
         private KryptonOKDialogButton kbtnOk;
         private System.Windows.Forms.Panel panel1;
@@ -30,7 +30,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KryptonPaletteBaseColourMixer));
             this.kpnlButtons = new Krypton.Toolkit.KryptonPanel();
-            this.colourHexadecimalTextBox1 = new Krypton.Toolkit.Extended.Colour.Controls.ColourHexadecimalTextBox();
+            this.colourHexadecimalTextBox1 = new Krypton.Toolkit.Suite.Extended.Drawing.Suite.ColourHexadecimalTextBox();
             this.kryptonLabelExtended3 = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonLabelExtended();
             this.kbtnOk = new Krypton.Toolkit.Extended.Dialogs.KryptonOKDialogButton();
             this.kbtnCancel = new Krypton.Toolkit.Extended.Dialogs.KryptonCancelDialogButton();

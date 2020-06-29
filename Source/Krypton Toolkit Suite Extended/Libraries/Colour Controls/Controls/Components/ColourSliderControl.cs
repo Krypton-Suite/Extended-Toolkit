@@ -6,14 +6,12 @@ using System.Drawing.Imaging;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Colour.Controls
+namespace Krypton.Toolkit.Suite.Extended.Drawing.Suite
 {
     /// <summary>
     /// Represents a control for selecting a value from a scale
     /// </summary>
-    [DefaultValue("Value")]
-    [DefaultEvent("ValueChanged")]
-    [ToolboxItem(false)]
+    [DefaultValue("Value"), DefaultEvent("ValueChanged"), ToolboxItem(false)]
     public class ColourSliderControl : Control
     {
         #region Constants

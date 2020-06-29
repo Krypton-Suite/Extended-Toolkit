@@ -16,9 +16,9 @@ namespace Krypton.Toolkit.Extended.Dialogs
         #region Designer Code
         private IContainer components = null;
         private KryptonPanel kryptonPanel1;
-        private Colour.Controls.ColourWheelControl cwColour;
-        private Colour.Controls.ColourEditorManager cem;
-        private Colour.Controls.ScreenColourPickerControl scp;
+        private Krypton.Toolkit.Suite.Extended.Drawing.Suite.ColourWheelControl cwColour;
+        private Krypton.Toolkit.Suite.Extended.Drawing.Suite.ColourEditorManager cem;
+        private Krypton.Toolkit.Suite.Extended.Drawing.Suite.ScreenColourPickerControl scp;
         private Cyotek.Windows.Forms.ColorGrid cgColours;
         private Core.CircularPictureBox cpbColourPreview;
         private KryptonButton kbtnSavePalette;

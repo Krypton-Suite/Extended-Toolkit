@@ -15,7 +15,7 @@
     <ProjectReference Include="..\..\Shared\Palette Controls\Krypton.Toolkit.Suite.Extended.Palette.Controls.csproj" />
     <ProjectReference Include="..\..\Shared\Toolkit Core\Krypton.Toolkit.Suite.Extended.Core.csproj" />
     <ProjectReference Include="..\..\Shared\Toolkit Language Model\Krypton.Toolkit.Suite.Extended.Language.Model.csproj" />
-    <ProjectReference Include="..\Colour Controls\Krypton.Toolkit.Suite.Extended.Colour.Controls.csproj" />
+    <ProjectReference Include="..\Colour Controls\Krypton.Toolkit.Suite.Extended.Drawing.Suite.csproj" />
   </ItemGroup>
 
   <ItemGroup>

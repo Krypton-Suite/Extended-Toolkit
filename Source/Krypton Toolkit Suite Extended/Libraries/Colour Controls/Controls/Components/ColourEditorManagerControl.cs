@@ -3,7 +3,7 @@ using System;
 using System.ComponentModel;
 using System.Drawing;
 
-namespace Krypton.Toolkit.Extended.Colour.Controls
+namespace Krypton.Toolkit.Suite.Extended.Drawing.Suite
 {
     /// <summary>
     /// Represents a control that binds multiple editors together as a single composite unit.

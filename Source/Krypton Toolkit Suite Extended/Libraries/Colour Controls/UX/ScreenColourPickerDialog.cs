@@ -3,7 +3,7 @@ using System;
 using System.ComponentModel;
 using System.Drawing;
 
-namespace Krypton.Toolkit.Extended.Colour.Controls
+namespace Krypton.Toolkit.Suite.Extended.Drawing.Suite
 {
     [DefaultEvent("SelectedColourChanged"), DefaultProperty("Colour")]
     public class ScreenColourPickerDialog : KryptonForm
@@ -21,12 +21,12 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
         private KryptonNumericUpDown knudRed;
         private KryptonTextBox ktxtHexValue;
         private KryptonLabel kryptonLabel4;
-        private Base.KryptonKnobControl kkcBlue;
-        private Base.KryptonKnobControl kkcGreen;
-        private Base.KryptonKnobControl kkcRed;
-        private Base.CircularPictureBox cpbSelectedColour;
-        private Base.KryptonOKDialogButton kryptonOKDialogButton1;
-        private Base.KryptonCancelDialogButton kryptonCancelDialogButton1;
+        private Krypton.Toolkit.Extended.Base.KryptonKnobControl kkcBlue;
+        private Krypton.Toolkit.Extended.Base.KryptonKnobControl kkcGreen;
+        private Krypton.Toolkit.Extended.Base.KryptonKnobControl kkcRed;
+        private Krypton.Toolkit.Extended.Base.CircularPictureBox cpbSelectedColour;
+        private Krypton.Toolkit.Extended.Base.KryptonOKDialogButton kryptonOKDialogButton1;
+        private Krypton.Toolkit.Extended.Base.KryptonCancelDialogButton kryptonCancelDialogButton1;
         private ColourEditorManager cem;
         private KryptonPanel kryptonPanel1;
 
@@ -46,12 +46,12 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.knudGreen = new Krypton.Toolkit.KryptonNumericUpDown();
             this.knudBlue = new Krypton.Toolkit.KryptonNumericUpDown();
             this.knudRed = new Krypton.Toolkit.KryptonNumericUpDown();
-            this.cwColour = new Krypton.Toolkit.Extended.Colour.Controls.ColourWheelControl();
-            this.scp = new Krypton.Toolkit.Extended.Colour.Controls.ScreenColourPickerControl();
+            this.cwColour = new Krypton.Toolkit.Suite.Extended.Drawing.Suite.ColourWheelControl();
+            this.scp = new Krypton.Toolkit.Suite.Extended.Drawing.Suite.ScreenColourPickerControl();
             this.klblGreen = new Krypton.Toolkit.KryptonLabel();
             this.klblBlue = new Krypton.Toolkit.KryptonLabel();
             this.klblRed = new Krypton.Toolkit.KryptonLabel();
-            this.cem = new Krypton.Toolkit.Extended.Colour.Controls.ColourEditorManager();
+            this.cem = new Krypton.Toolkit.Suite.Extended.Drawing.Suite.ColourEditorManager();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
@@ -280,7 +280,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             // scp
             // 
             this.scp.Colour = System.Drawing.Color.Empty;
-            this.scp.Image = global::Krypton.Toolkit.Extended.Colour.Controls.Properties.Resources.eyedropper;
+            this.scp.Image = global::Krypton.Toolkit.Suite.Extended.Drawing.Suite.Properties.Resources.eyedropper;
             this.scp.Location = new System.Drawing.Point(12, 185);
             this.scp.Name = "scp";
             this.scp.Size = new System.Drawing.Size(139, 113);

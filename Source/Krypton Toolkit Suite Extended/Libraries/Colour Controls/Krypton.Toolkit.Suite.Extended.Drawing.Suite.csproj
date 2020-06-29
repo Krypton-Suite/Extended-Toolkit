@@ -4,7 +4,7 @@
     <LangVersion>8.0</LangVersion>
     <TargetFrameworks>net45;netcoreapp3.1;netcoreapp5.0</TargetFrameworks>
     <TargetFrameworks Condition="'$(TFMs)' == 'all'">net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;netcoreapp5.0</TargetFrameworks>
-    <RootNamespace>Krypton.Toolkit.Extended.Colour.Controls</RootNamespace>
+    <RootNamespace>Krypton.Toolkit.Suite.Extended.Drawing.Suite</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
@@ -67,11 +67,11 @@
   </ItemGroup>
 
   <PropertyGroup>
-    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Colour.Controls\Krypton.Toolkit.Extended.Colour.Controls.xml</DocumentationFile>
-    <OutputPath>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Colour.Controls\</OutputPath>
+    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Drawing.Suite\Krypton.Toolkit.Suite.Extended.Drawing.Suite.xml</DocumentationFile>
+    <OutputPath>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Drawing.Suite\</OutputPath>
     <!--<PackageId>Krypton.Toolkit.Extended.Colour.Controls</PackageId>-->
-    <PackageId>Krypton.Toolkit.Suite.Extended.Colour.Controls</PackageId>
-    <Description>Contains colour controls.</Description>
+    <PackageId>Krypton.Toolkit.Suite.Extended.Drawing.Suite</PackageId>
+    <Description>Contains colour and drawing controls.</Description>
   </PropertyGroup>
 
 </Project>

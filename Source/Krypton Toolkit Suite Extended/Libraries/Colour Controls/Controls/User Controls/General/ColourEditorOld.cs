@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Colour.Controls
+namespace Krypton.Toolkit.Suite.Extended.Drawing.Suite
 {
     [DefaultEvent("ColourChanged"), DefaultProperty("Colour")]
     public class ColourEditorOld : UserControl, IColourEditor
@@ -79,7 +79,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
         {
             this.pnlAlpha = new System.Windows.Forms.Panel();
             this.panel35 = new System.Windows.Forms.Panel();
-            this.aColourBar = new Krypton.Toolkit.Extended.Colour.Controls.RGBAColourSliderControl();
+            this.aColourBar = new Krypton.Toolkit.Suite.Extended.Drawing.Suite.RGBAColourSliderControl();
             this.panel27 = new System.Windows.Forms.Panel();
             this.knudAlpha = new Krypton.Toolkit.KryptonNumericUpDown();
             this.panel13 = new System.Windows.Forms.Panel();
@@ -89,21 +89,21 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.klblHSL = new Krypton.Toolkit.KryptonLabel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel32 = new System.Windows.Forms.Panel();
-            this.hColourBar = new Krypton.Toolkit.Extended.Colour.Controls.HueColourSliderControl();
+            this.hColourBar = new Krypton.Toolkit.Suite.Extended.Drawing.Suite.HueColourSliderControl();
             this.panel24 = new System.Windows.Forms.Panel();
             this.knudHue = new Krypton.Toolkit.KryptonNumericUpDown();
             this.panel16 = new System.Windows.Forms.Panel();
             this.klblHue = new Krypton.Toolkit.KryptonLabel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel33 = new System.Windows.Forms.Panel();
-            this.sColourBar = new Krypton.Toolkit.Extended.Colour.Controls.SaturationColourSliderControl();
+            this.sColourBar = new Krypton.Toolkit.Suite.Extended.Drawing.Suite.SaturationColourSliderControl();
             this.panel25 = new System.Windows.Forms.Panel();
             this.knudSaturation = new Krypton.Toolkit.KryptonNumericUpDown();
             this.panel15 = new System.Windows.Forms.Panel();
             this.kryptonLabel8 = new Krypton.Toolkit.KryptonLabel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel34 = new System.Windows.Forms.Panel();
-            this.lColourBar = new Krypton.Toolkit.Extended.Colour.Controls.LightnessColourSliderControl();
+            this.lColourBar = new Krypton.Toolkit.Suite.Extended.Drawing.Suite.LightnessColourSliderControl();
             this.panel26 = new System.Windows.Forms.Panel();
             this.knudLuminosity = new Krypton.Toolkit.KryptonNumericUpDown();
             this.panel14 = new System.Windows.Forms.Panel();
@@ -113,23 +113,23 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
             this.panel11 = new System.Windows.Forms.Panel();
             this.panel29 = new System.Windows.Forms.Panel();
-            this.rColourBar = new Krypton.Toolkit.Extended.Colour.Controls.RGBAColourSliderControl();
+            this.rColourBar = new Krypton.Toolkit.Suite.Extended.Drawing.Suite.RGBAColourSliderControl();
             this.panel21 = new System.Windows.Forms.Panel();
-            this.knudRed = new Krypton.Toolkit.Extended.Colour.Controls.KryptonRedValueNumericBox();
+            this.knudRed = new Krypton.Toolkit.Suite.Extended.Drawing.Suite.KryptonRedValueNumericBox();
             this.pnlRed = new System.Windows.Forms.Panel();
             this.klblRed = new Krypton.Toolkit.KryptonLabel();
             this.panel10 = new System.Windows.Forms.Panel();
             this.panel30 = new System.Windows.Forms.Panel();
-            this.gColourBar = new Krypton.Toolkit.Extended.Colour.Controls.RGBAColourSliderControl();
+            this.gColourBar = new Krypton.Toolkit.Suite.Extended.Drawing.Suite.RGBAColourSliderControl();
             this.panel22 = new System.Windows.Forms.Panel();
-            this.knudGreen = new Krypton.Toolkit.Extended.Colour.Controls.KryptonGreenValueNumericBox();
+            this.knudGreen = new Krypton.Toolkit.Suite.Extended.Drawing.Suite.KryptonGreenValueNumericBox();
             this.pnlGreen = new System.Windows.Forms.Panel();
             this.klblGreen = new Krypton.Toolkit.KryptonLabel();
             this.panel9 = new System.Windows.Forms.Panel();
             this.panel31 = new System.Windows.Forms.Panel();
-            this.bColourBar = new Krypton.Toolkit.Extended.Colour.Controls.RGBAColourSliderControl();
+            this.bColourBar = new Krypton.Toolkit.Suite.Extended.Drawing.Suite.RGBAColourSliderControl();
             this.panel23 = new System.Windows.Forms.Panel();
-            this.knudBlue = new Krypton.Toolkit.Extended.Colour.Controls.KryptonBlueValueNumericBox();
+            this.knudBlue = new Krypton.Toolkit.Suite.Extended.Drawing.Suite.KryptonBlueValueNumericBox();
             this.pnlBlue = new System.Windows.Forms.Panel();
             this.klblBlue = new Krypton.Toolkit.KryptonLabel();
             this.pnlHexadecimal = new System.Windows.Forms.Panel();
@@ -200,7 +200,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             // aColourBar
             // 
             this.aColourBar.BackColor = System.Drawing.Color.Transparent;
-            this.aColourBar.Channel = Krypton.Toolkit.Extended.Colour.Controls.RGBAChannel.Alpha;
+            this.aColourBar.Channel = Krypton.Toolkit.Suite.Extended.Drawing.Suite.RGBAChannel.Alpha;
             this.aColourBar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.aColourBar.Location = new System.Drawing.Point(0, 0);
             this.aColourBar.Name = "aColourBar";
@@ -660,7 +660,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             // gColourBar
             // 
             this.gColourBar.BackColor = System.Drawing.Color.Transparent;
-            this.gColourBar.Channel = Krypton.Toolkit.Extended.Colour.Controls.RGBAChannel.Green;
+            this.gColourBar.Channel = Krypton.Toolkit.Suite.Extended.Drawing.Suite.RGBAChannel.Green;
             this.gColourBar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gColourBar.Location = new System.Drawing.Point(0, 0);
             this.gColourBar.Name = "gColourBar";
@@ -742,7 +742,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             // bColourBar
             // 
             this.bColourBar.BackColor = System.Drawing.Color.Transparent;
-            this.bColourBar.Channel = Krypton.Toolkit.Extended.Colour.Controls.RGBAChannel.Blue;
+            this.bColourBar.Channel = Krypton.Toolkit.Suite.Extended.Drawing.Suite.RGBAChannel.Blue;
             this.bColourBar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bColourBar.Location = new System.Drawing.Point(0, 0);
             this.bColourBar.Name = "bColourBar";

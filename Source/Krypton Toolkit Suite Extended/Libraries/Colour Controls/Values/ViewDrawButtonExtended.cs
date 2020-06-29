@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Drawing;
 
-namespace Krypton.Toolkit.Extended.Colour.Controls
+namespace Krypton.Toolkit.Suite.Extended.Drawing.Suite
 {
     public class ViewDrawButtonExtended : ViewComposite
     {

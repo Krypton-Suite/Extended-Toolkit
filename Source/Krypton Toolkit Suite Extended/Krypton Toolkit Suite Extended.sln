@@ -44,7 +44,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Exten
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Global.Utilities", "Shared\Global Utilities\Krypton.Toolkit.Suite.Extended.Global.Utilities.csproj", "{79AA870D-03FA-4A32-B8E2-86554816A439}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Colour.Controls", "Libraries\Colour Controls\Krypton.Toolkit.Suite.Extended.Colour.Controls.csproj", "{20BE79E8-83CD-4AEC-B7B3-A261B72B1F3D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Drawing.Suite", "Libraries\Colour Controls\Krypton.Toolkit.Suite.Extended.Drawing.Suite.csproj", "{20BE79E8-83CD-4AEC-B7B3-A261B72B1F3D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Tool.Strip.Items", "Libraries\Toolstrip Items\Krypton.Toolkit.Suite.Extended.Tool.Strip.Items.csproj", "{881805F9-0C28-4ECB-A24E-FE48BC0C1A22}"
 EndProject

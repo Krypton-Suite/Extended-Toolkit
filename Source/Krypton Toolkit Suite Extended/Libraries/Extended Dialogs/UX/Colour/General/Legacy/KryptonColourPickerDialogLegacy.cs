@@ -1,6 +1,6 @@
 ﻿using Cyotek.Windows.Forms;
 using Krypton.Toolkit.Extended.Base;
-using Krypton.Toolkit.Extended.Colour.Controls;
+using Krypton.Toolkit.Suite.Extended.Drawing.Suite;
 using System;
 using System.ComponentModel;
 using System.Drawing;
@@ -30,10 +30,10 @@ namespace Krypton.Toolkit.Extended.Dialogs
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ColourPickerDialogLegacy));
             this.kpnlBack = new Krypton.Toolkit.KryptonPanel();
-            this.scpColours = new Krypton.Toolkit.Extended.Colour.Controls.ScreenColourPickerControl();
-            this.ceColour = new Krypton.Toolkit.Extended.Colour.Controls.ColourEditorUserControlLegacy();
-            this.cwSelectedColour = new Krypton.Toolkit.Extended.Colour.Controls.ColourWheelControl();
-            this.cem = new Krypton.Toolkit.Extended.Colour.Controls.ColourEditorManager();
+            this.scpColours = new Krypton.Toolkit.Suite.Extended.Drawing.Suite.ScreenColourPickerControl();
+            this.ceColour = new Krypton.Toolkit.Suite.Extended.Drawing.Suite.ColourEditorUserControlLegacy();
+            this.cwSelectedColour = new Krypton.Toolkit.Suite.Extended.Drawing.Suite.ColourWheelControl();
+            this.cem = new Krypton.Toolkit.Suite.Extended.Drawing.Suite.ColourEditorManager();
             this.kryptonButtonExtended1 = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonButtonExtended();
             this.kbeCancel = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonButtonExtended();
             this.kbeOk = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonButtonExtended();

@@ -1,4 +1,4 @@
-﻿namespace Krypton.Toolkit.Extended.Colour.Controls
+﻿namespace Krypton.Toolkit.Suite.Extended.Drawing.Suite
 {
     /// <summary>
     /// Specifies the style of a color cell border.
