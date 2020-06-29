@@ -29,7 +29,7 @@ using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace Krypton.Toolkit.Extended.Dialogs
+namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
     //From here http://www.architectshack.com/TextFileEncodingDetector.ashx
     public class KlerksSoftEncodingDetector

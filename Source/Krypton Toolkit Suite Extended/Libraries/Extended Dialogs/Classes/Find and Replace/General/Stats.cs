@@ -26,7 +26,7 @@
 
 using System;
 
-namespace Krypton.Toolkit.Extended.Dialogs
+namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
     public enum Status
     {

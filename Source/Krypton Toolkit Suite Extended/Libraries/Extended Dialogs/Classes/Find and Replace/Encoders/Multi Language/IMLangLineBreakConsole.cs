@@ -27,7 +27,7 @@
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-namespace Krypton.Toolkit.Extended.Dialogs
+namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
     [ComImport, InterfaceType((short)1), Guid("F5BE2EE1-BFD7-11D0-B188-00AA0038C969")]
     public interface IMLangLineBreakConsole

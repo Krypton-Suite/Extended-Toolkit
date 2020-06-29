@@ -7,7 +7,7 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Dialogs
+namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
     public class KryptonRunDialog : KryptonForm
     {
@@ -33,7 +33,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             this.kbtnRun = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonButtonExtended();
             this.kuacRun = new Krypton.Toolkit.Suite.Extended.Base.KryptonUACElevatedButton();
-            this.kcdbCancel = new Krypton.Toolkit.Extended.Dialogs.KryptonCancelDialogButton();
+            this.kcdbCancel = new Krypton.Toolkit.Suite.Extended.Dialogs.KryptonCancelDialogButton();
             this.kbtnBrowse = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonButtonExtended();
             this.kbtneLocate = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonButtonExtended();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -533,7 +533,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             // pbxIcon
             // 
             this.pbxIcon.BackColor = System.Drawing.Color.Transparent;
-            this.pbxIcon.Image = global::Krypton.Toolkit.Extended.Dialogs.Properties.Resources.Run_48_x_48;
+            this.pbxIcon.Image = global::Krypton.Toolkit.Suite.Extended.Dialogs.Properties.Resources.Run_48_x_48;
             this.pbxIcon.Location = new System.Drawing.Point(12, 60);
             this.pbxIcon.Name = "pbxIcon";
             this.pbxIcon.Size = new System.Drawing.Size(64, 64);

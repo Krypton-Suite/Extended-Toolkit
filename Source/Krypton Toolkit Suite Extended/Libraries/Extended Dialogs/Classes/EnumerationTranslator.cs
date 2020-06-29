@@ -2,7 +2,7 @@
 using System;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Dialogs
+namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
     public class EnumerationTranslator
     {

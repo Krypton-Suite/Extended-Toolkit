@@ -30,7 +30,7 @@ using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-namespace Krypton.Toolkit.Extended.Dialogs
+namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
     [ComImport, Guid("0000000C-0000-0000-C000-000000000046"), InterfaceType((short)1)]
     public interface IStream : ISequentialStream

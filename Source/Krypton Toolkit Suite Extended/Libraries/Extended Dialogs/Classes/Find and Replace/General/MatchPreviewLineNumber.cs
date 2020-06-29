@@ -26,7 +26,7 @@
 
 using System.Collections.Generic;
 
-namespace Krypton.Toolkit.Extended.Dialogs
+namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
     public class MatchPreviewLineNumber
     {

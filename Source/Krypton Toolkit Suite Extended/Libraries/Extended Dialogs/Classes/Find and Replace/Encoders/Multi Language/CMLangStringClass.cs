@@ -28,7 +28,7 @@ using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-namespace Krypton.Toolkit.Extended.Dialogs
+namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
     [ComImport, Guid("C04D65CF-B70D-11D0-B188-00AA0038C969"), ComConversionLoss, ClassInterface((short)0), TypeLibType((short)2)]
     public class CMLangStringClass : IMLangString, CMLangString, IMLangStringWStr, IMLangStringAStr

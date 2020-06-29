@@ -1,11 +1,11 @@
-﻿using Krypton.Toolkit.Extended.Dialogs.Properties;
+﻿using Krypton.Toolkit.Suite.Extended.Dialogs.Properties;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Krypton.Toolkit.Extended.Dialogs
+namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
     public class FormData
     {

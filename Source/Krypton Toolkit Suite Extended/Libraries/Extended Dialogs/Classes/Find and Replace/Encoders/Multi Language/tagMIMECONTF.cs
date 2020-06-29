@@ -24,7 +24,7 @@
 */
 #endregion
 
-namespace Krypton.Toolkit.Extended.Dialogs
+namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
     public enum tagMIMECONTF
     {

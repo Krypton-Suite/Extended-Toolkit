@@ -30,7 +30,7 @@ using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-namespace Krypton.Toolkit.Extended.Dialogs
+namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
     [ComImport, ComConversionLoss, InterfaceType((short)1), Guid("DCCFC162-2B38-11D2-B7EC-00C04F8F5D9A")]
     public interface IMLangFontLink2 : IMLangCodePages

@@ -1,7 +1,7 @@
 ﻿using Krypton.Toolkit.Extended.Core;
 using System;
 
-namespace Krypton.Toolkit.Extended.Dialogs
+namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
     public partial class AboutDialog : KryptonForm
     {

@@ -12,7 +12,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Dialogs
+namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
     public class KryptonFindAndReplaceDialog : KryptonForm
     {
@@ -281,7 +281,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kbtnFindOnly.Name = "kbtnFindOnly";
             this.kbtnFindOnly.Size = new System.Drawing.Size(78, 61);
             this.kbtnFindOnly.TabIndex = 25;
-            this.kbtnFindOnly.Values.Image = global::Krypton.Toolkit.Extended.Dialogs.Properties.Resources.swap_icon1;
+            this.kbtnFindOnly.Values.Image = global::Krypton.Toolkit.Suite.Extended.Dialogs.Properties.Resources.swap_icon1;
             this.kbtnFindOnly.Values.Text = "Find\r\n&Only";
             this.kbtnFindOnly.Click += new System.EventHandler(this.kbtnFindOnly_Click);
             // 
@@ -291,7 +291,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kbtnSwitch.Name = "kbtnSwitch";
             this.kbtnSwitch.Size = new System.Drawing.Size(78, 61);
             this.kbtnSwitch.TabIndex = 24;
-            this.kbtnSwitch.Values.Image = global::Krypton.Toolkit.Extended.Dialogs.Properties.Resources.swap_icon50_x_46;
+            this.kbtnSwitch.Values.Image = global::Krypton.Toolkit.Suite.Extended.Dialogs.Properties.Resources.swap_icon50_x_46;
             this.kbtnSwitch.Values.Text = "";
             this.kbtnSwitch.Click += new System.EventHandler(this.kbtnSwitch_Click);
             // 

@@ -27,7 +27,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace Krypton.Toolkit.Extended.Dialogs
+namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
     [StructLayout(LayoutKind.Sequential, Pack = 8)]
     public struct tagSTATSTG

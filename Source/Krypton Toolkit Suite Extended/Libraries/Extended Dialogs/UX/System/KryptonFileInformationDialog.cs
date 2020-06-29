@@ -6,7 +6,7 @@ using System.Drawing;
 using System.IO;
 using ExceptionHandler = Krypton.Toolkit.Extended.Core.ExceptionHandler;
 
-namespace Krypton.Toolkit.Extended.Dialogs
+namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
     public class KryptonFileInformationDialog : KryptonForm
     {
@@ -148,8 +148,8 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kcbEncrypted = new Krypton.Toolkit.KryptonCheckBox();
             this.kcbArchive = new Krypton.Toolkit.KryptonCheckBox();
             this.kryptonButtonExtended2 = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonButtonExtended();
-            this.kryptonOKDialogButton1 = new Krypton.Toolkit.Extended.Dialogs.KryptonOKDialogButton();
-            this.kryptonCancelDialogButton1 = new Krypton.Toolkit.Extended.Dialogs.KryptonCancelDialogButton();
+            this.kryptonOKDialogButton1 = new Krypton.Toolkit.Suite.Extended.Dialogs.KryptonOKDialogButton();
+            this.kryptonCancelDialogButton1 = new Krypton.Toolkit.Suite.Extended.Dialogs.KryptonCancelDialogButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();

@@ -26,7 +26,7 @@
 
 using System.Runtime.InteropServices;
 
-namespace Krypton.Toolkit.Extended.Dialogs
+namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
     [StructLayout(LayoutKind.Explicit, Pack = 4)]
     public struct __MIDL_IWinTypes_0009

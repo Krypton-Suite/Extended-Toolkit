@@ -30,7 +30,7 @@ using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-namespace Krypton.Toolkit.Extended.Dialogs
+namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
     [ComImport, InterfaceType((short)1), Guid("4E5868AB-B157-4623-9ACC-6A1D9CAEBE04")]
     public interface IMultiLanguage3 : IMultiLanguage2

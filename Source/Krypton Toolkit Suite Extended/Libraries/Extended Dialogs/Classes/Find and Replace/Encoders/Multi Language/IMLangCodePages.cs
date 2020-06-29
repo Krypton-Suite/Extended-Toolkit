@@ -27,7 +27,7 @@
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-namespace Krypton.Toolkit.Extended.Dialogs
+namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
     [ComImport, Guid("359F3443-BD4A-11D0-B188-00AA0038C969"), InterfaceType((short)1)]
     public interface IMLangCodePages

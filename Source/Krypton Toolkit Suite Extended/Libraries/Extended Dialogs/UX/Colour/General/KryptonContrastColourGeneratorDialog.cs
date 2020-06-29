@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Drawing;
 
-namespace Krypton.Toolkit.Extended.Dialogs
+namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
     public class KryptonContrastColourGeneratorDialog : KryptonForm
     {
@@ -13,8 +13,8 @@ namespace Krypton.Toolkit.Extended.Dialogs
         private Suite.Extended.Standard.Controls.KryptonCheckBoxExtended kcbKeepOpacityValues;
         private System.Windows.Forms.Panel panel1;
         private KryptonPanel kryptonPanel1;
-        private Core.CircularPictureBox cpbContrastColourPreview;
-        private Core.CircularPictureBox cpbBaseColour;
+        private CircularPictureBox cpbContrastColourPreview;
+        private CircularPictureBox cpbBaseColour;
         private Suite.Extended.Standard.Controls.KryptonLabelExtended klblBaseColour;
         private Suite.Extended.Standard.Controls.KryptonLabelExtended klblContrastColour;
         private Suite.Extended.Standard.Controls.KryptonButtonExtended kbtnGenerateBaseColour;
@@ -53,8 +53,8 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kpnlButtons = new Krypton.Toolkit.KryptonPanel();
             this.kcbKeepOpacityValues = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonCheckBoxExtended();
             this.kcbAutomateColourContrastValues = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonCheckBoxExtended();
-            this.kbtnOk = new Krypton.Toolkit.Extended.Dialogs.KryptonOKDialogButton();
-            this.kbtnCancel = new Krypton.Toolkit.Extended.Dialogs.KryptonCancelDialogButton();
+            this.kbtnOk = new Krypton.Toolkit.Suite.Extended.Dialogs.KryptonOKDialogButton();
+            this.kbtnCancel = new Krypton.Toolkit.Suite.Extended.Dialogs.KryptonCancelDialogButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             this.kbtnUtiliseContrastColour = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonButtonExtended();

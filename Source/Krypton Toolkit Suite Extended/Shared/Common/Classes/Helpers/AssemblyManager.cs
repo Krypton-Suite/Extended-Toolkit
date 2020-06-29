@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace Krypton.Toolkit.Extended.Common
+namespace Krypton.Toolkit.Suite.Extended.Common
 {
     public class AssemblyManager
     {

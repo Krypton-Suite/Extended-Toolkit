@@ -1,8 +1,9 @@
-﻿using System;
+﻿using Krypton.Toolkit.Suite.Extended.Base;
+using System;
 using System.ComponentModel;
 using System.Drawing;
 
-namespace Krypton.Toolkit.Extended.Dialogs
+namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
     [DefaultEvent("SelectedColourChanged"), DefaultProperty("Colour")]
     public class KryptonBasicColourDialog : KryptonForm
@@ -14,7 +15,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
         private KryptonPanel kryptonPanel1;
         private Krypton.Toolkit.Suite.Extended.Drawing.Suite.KryptonBlueValueLabel klblBlueValue;
         private Krypton.Toolkit.Suite.Extended.Drawing.Suite.KryptonRedValueLabel klblRedValue;
-        private Core.CircularPictureBox cpbxColourPreview;
+        private CircularPictureBox cpbxColourPreview;
         private Krypton.Toolkit.Suite.Extended.Drawing.Suite.ColourWheelControl cwColourPicker;
         private System.Windows.Forms.Panel panel1;
         private Krypton.Toolkit.Suite.Extended.Drawing.Suite.ColourHexadecimalTextBox txtHexColour;
@@ -27,12 +28,12 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kpnlButtons = new Krypton.Toolkit.KryptonPanel();
             this.txtHexColour = new Krypton.Toolkit.Suite.Extended.Drawing.Suite.ColourHexadecimalTextBox();
             this.kryptonAlphaValueLabel1 = new Krypton.Toolkit.Suite.Extended.Drawing.Suite.KryptonAlphaValueLabel();
-            this.kbtnOk = new Krypton.Toolkit.Extended.Dialogs.KryptonOKDialogButton();
-            this.kbtnCancel = new Krypton.Toolkit.Extended.Dialogs.KryptonCancelDialogButton();
+            this.kbtnOk = new Krypton.Toolkit.Suite.Extended.Dialogs.KryptonOKDialogButton();
+            this.kbtnCancel = new Krypton.Toolkit.Suite.Extended.Dialogs.KryptonCancelDialogButton();
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             this.klblBlueValue = new Krypton.Toolkit.Suite.Extended.Drawing.Suite.KryptonBlueValueLabel();
             this.klblRedValue = new Krypton.Toolkit.Suite.Extended.Drawing.Suite.KryptonRedValueLabel();
-            this.cpbxColourPreview = new Krypton.Toolkit.Extended.Core.CircularPictureBox();
+            this.cpbxColourPreview = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
             this.cwColourPicker = new Krypton.Toolkit.Suite.Extended.Drawing.Suite.ColourWheelControl();
             this.panel1 = new System.Windows.Forms.Panel();
             this.kryptonGreenValueLabel1 = new Krypton.Toolkit.Suite.Extended.Drawing.Suite.KryptonGreenValueLabel();

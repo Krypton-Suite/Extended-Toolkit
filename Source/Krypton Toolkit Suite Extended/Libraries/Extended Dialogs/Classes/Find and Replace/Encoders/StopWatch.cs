@@ -28,7 +28,7 @@ using System;
 using System.Collections.Concurrent;
 using System.Text;
 
-namespace Krypton.Toolkit.Extended.Dialogs
+namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
     /// <summary>
     /// Used for streamlining code execution and finding bottlenecks.

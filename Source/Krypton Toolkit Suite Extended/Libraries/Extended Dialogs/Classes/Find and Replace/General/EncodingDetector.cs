@@ -28,7 +28,7 @@ using System;
 using System.Linq;
 using System.Text;
 
-namespace Krypton.Toolkit.Extended.Dialogs
+namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
     public class EncodingDetector
     {
