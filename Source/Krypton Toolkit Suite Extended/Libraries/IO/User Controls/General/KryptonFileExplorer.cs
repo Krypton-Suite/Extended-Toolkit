@@ -1,14 +1,10 @@
 ﻿using Krypton.Toolkit.Suite.Extended.Base;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.IO
+namespace Krypton.Toolkit.Suite.Extended.IO
 {
     public class KryptonFileExplorer : UserControl
     {
@@ -458,7 +454,7 @@ namespace Krypton.Toolkit.Extended.IO
         #region Properties
         [DefaultValue(true)]
         public bool ShowBackButton { get => _showBackButton; set { _showBackButton = value; Invalidate(); } }
-        
+
         [DefaultValue(true)]
         public bool ShowForwardButton { get => _showForwardButton; set { _showForwardButton = value; Invalidate(); } }
 

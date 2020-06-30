@@ -1,4 +1,4 @@
-﻿namespace Krypton.Toolkit.Extended.IO.Classes
+﻿namespace Krypton.Toolkit.Suite.Extended.IO
 {
     internal class FileItem
     {

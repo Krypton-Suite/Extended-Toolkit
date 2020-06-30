@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace Krypton.Toolkit.Extended.IO
+namespace Krypton.Toolkit.Suite.Extended.IO
 {
     public class KryptonFileMover : KryptonForm
     {
@@ -35,7 +35,7 @@ namespace Krypton.Toolkit.Extended.IO
             this.kbtnMoveFiles = new Krypton.Toolkit.KryptonButton();
             this.kryptonGroupBox1 = new Krypton.Toolkit.KryptonGroupBox();
             this.klblFileHash = new Krypton.Toolkit.KryptonLabel();
-            this.kflListing = new Krypton.Toolkit.Extended.IO.KryptonFileListing();
+            this.kflListing = new Krypton.Toolkit.Suite.Extended.IO.KryptonFileListing();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();

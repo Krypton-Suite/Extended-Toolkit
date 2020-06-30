@@ -5,7 +5,7 @@ using System.Drawing.Design;
 using System.Runtime.Serialization;
 using System.Security.Permissions;
 
-namespace Krypton.Toolkit.Extended.Navi.Suite
+namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 {
     /// <summary>
     /// Represents a NaviBar toolbox item

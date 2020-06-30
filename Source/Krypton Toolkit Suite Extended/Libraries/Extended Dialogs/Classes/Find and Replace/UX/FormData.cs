@@ -29,51 +29,51 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
         public void SaveSetting()
         {
-            Settings.Default.Dir = Dir;
-            Settings.Default.IncludeSubDirectories = IncludeSubDirectories;
-            Settings.Default.FileMask = FileMask;
-            Settings.Default.ExcludeFileMask = ExcludeFileMask;
-            Settings.Default.ExcludeDir = ExcludeDir;
-            Settings.Default.FindText = FindText;
-            Settings.Default.IsCaseSensitive = IsCaseSensitive;
-            Settings.Default.IsRegEx = IsRegEx;
-            Settings.Default.SkipBinaryFileDetection = SkipBinaryFileDetection;
-            Settings.Default.IncludeFilesWithoutMatches = IncludeFilesWithoutMatches;
-            Settings.Default.ShowEncoding = ShowEncoding;
-            Settings.Default.ReplaceText = ReplaceText;
-            Settings.Default.UseEscapeChars = UseEscapeChars;
-            Settings.Default.Encoding = Encoding;
-            Settings.Default.IsKeepModifiedDate = IsKeepModifiedDate;
-            Settings.Default.IsFirstTime = IsFirstTime;
+            Properties.Settings.Default.Dir = Dir;
+            Properties.Settings.Default.IncludeSubDirectories = IncludeSubDirectories;
+            Properties.Settings.Default.FileMask = FileMask;
+            Properties.Settings.Default.ExcludeFileMask = ExcludeFileMask;
+            Properties.Settings.Default.ExcludeDir = ExcludeDir;
+            Properties.Settings.Default.FindText = FindText;
+            Properties.Settings.Default.IsCaseSensitive = IsCaseSensitive;
+            Properties.Settings.Default.IsRegEx = IsRegEx;
+            Properties.Settings.Default.SkipBinaryFileDetection = SkipBinaryFileDetection;
+            Properties.Settings.Default.IncludeFilesWithoutMatches = IncludeFilesWithoutMatches;
+            Properties.Settings.Default.ShowEncoding = ShowEncoding;
+            Properties.Settings.Default.ReplaceText = ReplaceText;
+            Properties.Settings.Default.UseEscapeChars = UseEscapeChars;
+            Properties.Settings.Default.Encoding = Encoding;
+            Properties.Settings.Default.IsKeepModifiedDate = IsKeepModifiedDate;
+            Properties.Settings.Default.IsFirstTime = IsFirstTime;
 
-            Settings.Default.Save();
+            Properties.Settings.Default.Save();
         }
 
         public void LoadSetting()
         {
-            if (Settings.Default.UpgradeRequired)
+            if (Properties.Settings.Default.UpgradeRequired)
             {
-                Settings.Default.Upgrade();
-                Settings.Default.UpgradeRequired = false;
-                Settings.Default.Save();
+                Properties.Settings.Default.Upgrade();
+                Properties.Settings.Default.UpgradeRequired = false;
+                Properties.Settings.Default.Save();
             }
 
-            Dir = Settings.Default.Dir;
-            IncludeSubDirectories = Settings.Default.IncludeSubDirectories;
-            FileMask = Settings.Default.FileMask;
-            ExcludeFileMask = Settings.Default.ExcludeFileMask;
-            ExcludeDir = Settings.Default.ExcludeDir;
-            FindText = Settings.Default.FindText;
-            IsCaseSensitive = Settings.Default.IsCaseSensitive;
-            IsRegEx = Settings.Default.IsRegEx;
-            SkipBinaryFileDetection = Settings.Default.SkipBinaryFileDetection;
-            IncludeFilesWithoutMatches = Settings.Default.IncludeFilesWithoutMatches;
-            ShowEncoding = Settings.Default.ShowEncoding;
-            ReplaceText = Settings.Default.ReplaceText;
-            UseEscapeChars = Settings.Default.UseEscapeChars;
-            Encoding = Settings.Default.Encoding;
-            IsKeepModifiedDate = Settings.Default.IsKeepModifiedDate;
-            IsFirstTime = Settings.Default.IsFirstTime;
+            Dir = Properties.Settings.Default.Dir;
+            IncludeSubDirectories = Properties.Settings.Default.IncludeSubDirectories;
+            FileMask = Properties.Settings.Default.FileMask;
+            ExcludeFileMask = Properties.Settings.Default.ExcludeFileMask;
+            ExcludeDir = Properties.Settings.Default.ExcludeDir;
+            FindText = Properties.Settings.Default.FindText;
+            IsCaseSensitive = Properties.Settings.Default.IsCaseSensitive;
+            IsRegEx = Properties.Settings.Default.IsRegEx;
+            SkipBinaryFileDetection = Properties.Settings.Default.SkipBinaryFileDetection;
+            IncludeFilesWithoutMatches = Properties.Settings.Default.IncludeFilesWithoutMatches;
+            ShowEncoding = Properties.Settings.Default.ShowEncoding;
+            ReplaceText = Properties.Settings.Default.ReplaceText;
+            UseEscapeChars = Properties.Settings.Default.UseEscapeChars;
+            Encoding = Properties.Settings.Default.Encoding;
+            IsKeepModifiedDate = Properties.Settings.Default.IsKeepModifiedDate;
+            IsFirstTime = Properties.Settings.Default.IsFirstTime;
         }
     }
 }

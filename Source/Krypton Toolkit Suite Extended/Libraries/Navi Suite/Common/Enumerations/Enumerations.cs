@@ -1,4 +1,4 @@
-﻿namespace Krypton.Toolkit.Extended.Navi.Suite
+﻿namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 {
     /// <summary>
     /// Indicates in what state the control currently is. 

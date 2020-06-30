@@ -1,4 +1,4 @@
-﻿namespace Krypton.Toolkit.Extended.IO
+﻿namespace Krypton.Toolkit.Suite.Extended.IO
 {
     /// <summary>
     /// Customize how we display the line numbers

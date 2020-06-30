@@ -35,10 +35,10 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Navi.Suite
+namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 {
     [
-    Designer("Krypton.Toolkit.Extended.Navi.Suite.NaviBarDesigner, Krypton.Toolkit.Extended.Navi.Suite, Version=2.0.0.0, Culture=neutral, PublicKeyToken=86dab5aa2dd98116"),
+    Designer("Krypton.Toolkit.Suite.Extended.Navi.Suite.NaviBarDesigner, Krypton.Toolkit.Suite.Extended.Navi.Suite, Version=2.0.0.0, Culture=neutral, PublicKeyToken=86dab5aa2dd98116"),
    DefaultEvent("activeBandChanged"),
    DefaultProperty("Bands"),
     //ToolboxItem("Krypton.Toolkit.Extended.Navi.Suite.NaviBarToolboxItem, Krypton.Toolkit.Extended.Navi.Suite, Version=2.0.0.0, Culture=neutral, PublicKeyToken=86dab5aa2dd98116"),	
