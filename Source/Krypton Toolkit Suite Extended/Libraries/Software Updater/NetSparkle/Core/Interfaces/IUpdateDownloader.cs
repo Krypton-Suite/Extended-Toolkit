@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Threading.Tasks;
 
-namespace Krypton.Toolkit.Extended.Software.Updater.NetSparkle
+namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
 {
     /// <summary>
     /// Interface for objects that can download (or otherwise obtain) update files

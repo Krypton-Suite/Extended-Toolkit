@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Krypton.Toolkit.Extended.Software.Updater.NetSparkle
+namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
 {
     /// <summary>
     /// Event called when the download/install window closes

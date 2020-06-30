@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
 using System.Text;
 
-namespace Krypton.Toolkit.Extended.Software.Updater.AutoUpdaterDotNET
+namespace Krypton.Toolkit.Suite.Extended.Software.Updater.AutoUpdaterDotNET
 {
     /// <summary>
     /// Provides a mechanism for storing AutoUpdater state between sessions on a Json formatted file.

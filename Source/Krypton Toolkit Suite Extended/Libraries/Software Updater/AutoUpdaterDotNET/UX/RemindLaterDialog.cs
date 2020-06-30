@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Software.Updater.AutoUpdaterDotNET
+namespace Krypton.Toolkit.Suite.Extended.Software.Updater.AutoUpdaterDotNET
 {
     internal class RemindLaterDialog : KryptonForm
     {
@@ -72,7 +72,7 @@ namespace Krypton.Toolkit.Extended.Software.Updater.AutoUpdaterDotNET
             // pictureBoxIcon
             // 
             this.pictureBoxIcon.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxIcon.Image = global::Krypton.Toolkit.Extended.Software.Updater.Properties.Resources.clock_go_32;
+            this.pictureBoxIcon.Image = global::Krypton.Toolkit.Suite.Extended.Software.Updater.Properties.Resources.clock_go_32;
             this.pictureBoxIcon.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.pictureBoxIcon.Location = new System.Drawing.Point(3, 3);
             this.pictureBoxIcon.Name = "pictureBoxIcon";
@@ -168,7 +168,7 @@ namespace Krypton.Toolkit.Extended.Software.Updater.AutoUpdaterDotNET
             this.kbtnOK.Name = "kbtnOK";
             this.kbtnOK.Size = new System.Drawing.Size(115, 32);
             this.kbtnOK.TabIndex = 6;
-            this.kbtnOK.Values.Image = global::Krypton.Toolkit.Extended.Software.Updater.Properties.Resources.clock_play;
+            this.kbtnOK.Values.Image = global::Krypton.Toolkit.Suite.Extended.Software.Updater.Properties.Resources.clock_play;
             this.kbtnOK.Values.Text = "&OK";
             this.kbtnOK.Click += new System.EventHandler(this.kbtnOK_Click);
             // 

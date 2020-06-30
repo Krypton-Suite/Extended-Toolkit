@@ -2,7 +2,7 @@
 using Microsoft.VisualBasic;
 using System;
 
-namespace Krypton.Toolkit.Extended.Navigator
+namespace Krypton.Toolkit.Suite.Extended.Navigator
 {
     public class OutlookBarNavigationPaneOptions : KryptonForm
     {

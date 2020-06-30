@@ -5,7 +5,7 @@ using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
-namespace Krypton.Toolkit.Extended.Software.Updater.NetSparkle
+namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
 {
     class WebRequestAppCastDataDownloader : IAppCastDataDownloader
     {

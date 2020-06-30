@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 using System.Security.Permissions;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Navigator
+namespace Krypton.Toolkit.Suite.Extended.Navigator
 {
     /// <summary>
     /// Summary description for TabControl.

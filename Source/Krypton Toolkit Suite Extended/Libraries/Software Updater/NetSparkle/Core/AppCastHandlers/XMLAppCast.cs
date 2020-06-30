@@ -4,7 +4,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Xml.Linq;
 
-namespace Krypton.Toolkit.Extended.Software.Updater.NetSparkle
+namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
 {
     /// <summary>
     /// An XML-based appcast document downloader and handler

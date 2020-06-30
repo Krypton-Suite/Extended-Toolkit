@@ -1,4 +1,4 @@
-﻿using Krypton.Toolkit.Extended.Software.Updater.Properties;
+﻿using Krypton.Toolkit.Suite.Extended.Software.Updater.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

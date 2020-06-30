@@ -88,7 +88,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace Krypton.Toolkit.Extended.Software.Updater.NetSparkle
+namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
 {
     public class MarkdownOptions
     {

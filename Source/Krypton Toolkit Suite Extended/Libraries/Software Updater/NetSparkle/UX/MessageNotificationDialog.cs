@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 
-namespace Krypton.Toolkit.Extended.Software.Updater.NetSparkle
+namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
 {
     public class MessageNotificationDialog : KryptonForm
     {

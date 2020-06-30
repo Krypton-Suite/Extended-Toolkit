@@ -1,4 +1,4 @@
-﻿namespace Krypton.Toolkit.Extended.Software.Updater.SharpUpdate
+﻿namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
 {
     internal class SharpUpdateFileInfo
     {

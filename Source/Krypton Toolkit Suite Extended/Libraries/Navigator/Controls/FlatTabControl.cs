@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Drawing.Design;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Navigator
+namespace Krypton.Toolkit.Suite.Extended.Navigator
 {
     /// <summary>
     /// Summary description for FlatTabControl.

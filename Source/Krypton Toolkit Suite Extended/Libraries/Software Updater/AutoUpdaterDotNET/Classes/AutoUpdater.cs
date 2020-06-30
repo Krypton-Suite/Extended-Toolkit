@@ -1,4 +1,4 @@
-﻿using Krypton.Toolkit.Extended.Software.Updater.Properties;
+﻿using Krypton.Toolkit.Suite.Extended.Software.Updater.Properties;
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -13,7 +13,7 @@ using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Serialization;
 
-namespace Krypton.Toolkit.Extended.Software.Updater.AutoUpdaterDotNET
+namespace Krypton.Toolkit.Suite.Extended.Software.Updater.AutoUpdaterDotNET
 {
     /// <summary>
     ///     Main class that lets you auto update applications by setting some static fields and executing its Start method.

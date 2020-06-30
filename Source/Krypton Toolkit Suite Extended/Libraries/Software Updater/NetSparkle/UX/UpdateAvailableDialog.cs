@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Software.Updater.NetSparkle
+namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
 {
     public class UpdateAvailableDialog : KryptonForm, IUpdateAvailable
     {
@@ -113,7 +113,7 @@ namespace Krypton.Toolkit.Extended.Software.Updater.NetSparkle
             this.kbtnUpdate.Size = new System.Drawing.Size(153, 28);
             this.kbtnUpdate.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.kbtnUpdate.TabIndex = 14;
-            this.kbtnUpdate.Values.Image = global::Krypton.Toolkit.Extended.Software.Updater.Properties.Resources.download;
+            this.kbtnUpdate.Values.Image = global::Krypton.Toolkit.Suite.Extended.Software.Updater.Properties.Resources.download;
             this.kbtnUpdate.Values.Text = "Update";
             this.kbtnUpdate.Click += new System.EventHandler(this.kbtnUpdate_Click);
             // 
@@ -128,7 +128,7 @@ namespace Krypton.Toolkit.Extended.Software.Updater.NetSparkle
             this.kbtnSkip.Size = new System.Drawing.Size(153, 28);
             this.kbtnSkip.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.kbtnSkip.TabIndex = 13;
-            this.kbtnSkip.Values.Image = global::Krypton.Toolkit.Extended.Software.Updater.Properties.Resources.hand_point;
+            this.kbtnSkip.Values.Image = global::Krypton.Toolkit.Suite.Extended.Software.Updater.Properties.Resources.hand_point;
             this.kbtnSkip.Values.Text = "Skip this version";
             this.kbtnSkip.Click += new System.EventHandler(this.kbtnSkip_Click);
             // 
@@ -142,7 +142,7 @@ namespace Krypton.Toolkit.Extended.Software.Updater.NetSparkle
             this.kbtnRemindLater.Size = new System.Drawing.Size(153, 28);
             this.kbtnRemindLater.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.kbtnRemindLater.TabIndex = 15;
-            this.kbtnRemindLater.Values.Image = global::Krypton.Toolkit.Extended.Software.Updater.Properties.Resources.clock_go;
+            this.kbtnRemindLater.Values.Image = global::Krypton.Toolkit.Suite.Extended.Software.Updater.Properties.Resources.clock_go;
             this.kbtnRemindLater.Values.Text = "Remind &me later";
             this.kbtnRemindLater.Click += new System.EventHandler(this.kbtnRemindLater_Click);
             // 

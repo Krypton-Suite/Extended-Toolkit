@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Security.Cryptography;
 
-namespace Krypton.Toolkit.Extended.Software.Updater.NetSparkle
+namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
 {
     /// <summary>
     /// Class to verify a DSA signature

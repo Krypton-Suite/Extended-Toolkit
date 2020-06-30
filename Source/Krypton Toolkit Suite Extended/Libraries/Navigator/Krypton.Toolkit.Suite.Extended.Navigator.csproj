@@ -4,7 +4,7 @@
     <LangVersion>8.0</LangVersion>
     <TargetFrameworks>net45;netcoreapp3.1;netcoreapp5.0</TargetFrameworks>
     <TargetFrameworks Condition="'$(TFMs)' == 'all'">net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;netcoreapp5.0</TargetFrameworks>
-    <RootNamespace>Krypton.Toolkit.Extended.Navigator</RootNamespace>
+    <RootNamespace>Krypton.Toolkit.Suite.Extended.Navigator</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Version>5.550.2008</Version>
@@ -43,7 +43,7 @@
   </ItemGroup>
 
   <PropertyGroup>
-    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Navigator\Krypton.Toolkit.Extended.Navigator.xml</DocumentationFile>
+    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Navigator\Krypton.Toolkit.Suite.Extended.Navigator.xml</DocumentationFile>
     <OutputPath>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Navigator\</OutputPath>
   </PropertyGroup>
 

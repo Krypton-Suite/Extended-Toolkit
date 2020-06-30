@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Drawing;
 
-namespace Krypton.Toolkit.Extended.Navigator
+namespace Krypton.Toolkit.Suite.Extended.Navigator
 {
     [ToolboxBitmap(typeof(System.Windows.Forms.TabControl))]
     public partial class KryptonFlatTabControl : FlatTabControl

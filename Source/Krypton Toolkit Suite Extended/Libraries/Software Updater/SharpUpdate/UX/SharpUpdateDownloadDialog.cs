@@ -1,4 +1,4 @@
-﻿using Krypton.Toolkit.Extended.Software.Updater.SharpUpdate.Language;
+﻿using Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate.Language;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,7 +7,7 @@ using System.IO;
 using System.Net;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Software.Updater.SharpUpdate
+namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
 {
     internal class SharpUpdateDownloadDialog : KryptonForm
     {
