@@ -6,6 +6,13 @@
     <TargetFrameworks Condition="'$(TFMs)' == 'all'">net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;netcoreapp5.0</TargetFrameworks>
     <RootNamespace>Krypton.Toolkit.Suite.Extended.Wizard</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <!--<PackageId>Krypton.Toolkit.Extended.Wizard.Canary</PackageId>-->
+    <PackageId>Krypton.Toolkit.Suite.Extended.Wizard</PackageId>
+    <PackageOutputPath>..\..\..\..\Bin\NuGet</PackageOutputPath>
+    <PackagePath></PackagePath>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Version>5.550.2008</Version>

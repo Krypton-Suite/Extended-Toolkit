@@ -6,10 +6,20 @@
     <TargetFrameworks Condition="'$(TFMs)' == 'all'">net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;netcoreapp5.0</TargetFrameworks>
     <RootNamespace>Krypton.Toolkit.Extended.Palette.Controls</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
+    <OutputType>Library</OutputType>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <!--<PackageId>Krypton.Toolkit.Extended.Palette.Controls.Canary</PackageId>-->
+    <PackageId>Krypton.Toolkit.Suite.Extended.Palette.Controls</PackageId>
+    <PackageOutputPath>..\..\..\..\Bin\NuGet</PackageOutputPath>
+    <PackagePath></PackagePath>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Version>5.550.2008</Version>
+    <Description>Contains controls for palette creation.</Description>
     <RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
+    <PackageLicenseFile></PackageLicenseFile>
   </PropertyGroup>
 
   <ItemGroup>

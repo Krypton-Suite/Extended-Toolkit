@@ -8,11 +8,25 @@
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
+  <!--Package configuration-->
   <PropertyGroup>
-    <!--<PackageId>Krypton.Toolkit.Suite.Extended.Base</PackageId>-->
+    <!--<PackageId>Krypton.Toolkit.Suite.Extended.Base.Canary</PackageId>-->
+    <PackageIcon></PackageIcon>
     <PackageId>Krypton.Toolkit.Suite.Extended.Base</PackageId>
     <Description>An extension to the standard krypton toolkit to support .NET Core and the latest .NET 3.5/4.x framework. This is the base module.</Description>
+    <PackageOutputPath>..\..\..\..\Bin\NuGet</PackageOutputPath>    
+    <PackagePath></PackagePath>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <!--<PackageLicenseExpression>BSD-3 Clause</PackageLicenseExpression>
+    <PackageLicenseFile>LICENSE.md</PackageLicenseFile>-->
+    <RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
+    <Version>5.550.2008</Version>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\..\Assets\License\LICENSE.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\Shared\Common\Krypton.Toolkit.Suite.Extended.Common.csproj" />
@@ -56,13 +70,6 @@
     <PackageReference Include="Microsoft.VisualBasic" Version="10.3.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Include="..\..\..\..\Assets\License\LICENSE.md">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
-  </ItemGroup>
-
   <PropertyGroup>
     <DocumentationFile>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Base\Krypton.Toolkit.Extended.Base.xml</DocumentationFile>
     <OutputPath>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Base\</OutputPath>
@@ -75,12 +82,6 @@
   <PropertyGroup>
     <AssemblyVersion>5.550.2008</AssemblyVersion>
     <FileVersion>5.550.2008.0</FileVersion>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <PackageLicenseExpression></PackageLicenseExpression>
-    <Version>5.550.2008</Version>
-    <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
-    <RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
   </PropertyGroup>
 
 </Project>

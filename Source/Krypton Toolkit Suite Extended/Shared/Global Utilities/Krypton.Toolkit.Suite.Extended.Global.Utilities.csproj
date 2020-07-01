@@ -7,10 +7,21 @@
     <RootNamespace>Krypton.Toolkit.Extended.Global.Utilities</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
     <AssemblyVersion>5.550.2008</AssemblyVersion>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>5.550.2008</Version>
     <FileVersion>5.550.2008.0</FileVersion>
+    <OutputType>Library</OutputType>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <!--<PackageId>Krypton.Toolkit.Extended.Global.Utilities.Canary</PackageId>-->
+    <PackageId>Krypton.Toolkit.Suite.Extended.Global.Utilities</PackageId>
+    <PackageOutputPath>..\..\..\..\Bin\NuGet</PackageOutputPath>
+    <PackagePath></PackagePath>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Version>5.550.2008</Version>
+    <Description>Contains supporting logic.</Description>
     <RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
+    <PackageLicenseFile></PackageLicenseFile>
   </PropertyGroup>
 
   <ItemGroup>

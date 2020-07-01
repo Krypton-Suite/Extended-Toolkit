@@ -4,9 +4,23 @@
     <LangVersion>8.0</LangVersion>
     <TargetFrameworks>net45;netcoreapp3.1;netcoreapp5.0</TargetFrameworks>
     <TargetFrameworks Condition="'$(TFMs)' == 'all'">net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;netcoreapp5.0</TargetFrameworks>    
-    <RootNamespace>ToolkitControlSettings</RootNamespace>
+    <RootNamespace>Krypton.Toolkit.Suite.Extended.Control.Settings</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
+    <OutputType>Library</OutputType>
   </PropertyGroup>
+
+  <!--<PropertyGroup>
+    <-<PackageId>Krypton.Toolkit.Extended.Control.Settings.Canary</PackageId>->
+    <PackageId>Krypton.Toolkit.Suite.Extended.Control.Settings</PackageId>
+    <PackageOutputPath>..\..\..\..\Bin\NuGet</PackageOutputPath>
+    <PackagePath></PackagePath>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Version>5.550.2008</Version>
+    <Description>Contains toolkit control settings.</Description>
+    <RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
+    <PackageLicenseFile></PackageLicenseFile>
+  </PropertyGroup>-->
 
   <PropertyGroup>
     <DocumentationFile>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Toolkit.Control.Settings\Krypton.Toolkit.Extended.Control.Settings.xml</DocumentationFile>
@@ -16,9 +30,6 @@
   <PropertyGroup>
     <AssemblyVersion>5.550.2008</AssemblyVersion>
     <FileVersion>5.550.2008.0</FileVersion>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>5.550.2008</Version>
-    <RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
