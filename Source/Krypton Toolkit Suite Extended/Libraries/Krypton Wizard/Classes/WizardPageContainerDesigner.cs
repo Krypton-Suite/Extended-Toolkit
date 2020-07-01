@@ -3,12 +3,11 @@ using System.ComponentModel;
 using System.ComponentModel.Design;
 using System.Drawing;
 using System.Drawing.Design;
-using System.Linq;
 using System.Security.Permissions;
 using System.Windows.Forms;
 using System.Windows.Forms.Design;
 
-namespace Krypton.Toolkit.Extended.Wizard
+namespace Krypton.Toolkit.Suite.Extended.Wizard
 {
     [PermissionSet(SecurityAction.Demand, Name = "FullTrust"), EditorBrowsable(EditorBrowsableState.Never)]
     internal class WizardBaseDesigner : RichParentControlDesigner<WizardPageContainer, WizardBaseDesigner.ActionList>, IToolboxUser

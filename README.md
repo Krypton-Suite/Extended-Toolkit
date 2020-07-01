@@ -39,8 +39,15 @@
 
 =======
 
+## 2020-08-01 - Build 2008 - August 2020
+* All namespaces now correlate to the package name e.g, `Krypton.Toolkit.Extended.Base` now becomes `Krypton.Toolkit.Suite.Extended.Base`
+* New find and replace dialog built off of [FnR](https://github.com/zzzprojects/findandreplace)
+* Canary packages are now here
+* General bugfixes
+
+=======
+
 ## 2020-07-01 - Build 2007 - July 2020
-<!--* Fix `Krypton.Toolkit.Extended.Base` to `Krypton.Toolkit.Suite.Extended.Base`-->
 * Add `.NET Sparkle` to software updater package
 * Add `Task Dialogs` module
 * Small changes to dialog buttons

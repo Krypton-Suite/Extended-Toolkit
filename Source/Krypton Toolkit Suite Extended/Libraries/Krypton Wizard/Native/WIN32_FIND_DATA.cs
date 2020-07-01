@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 
 using FILETIME = System.Runtime.InteropServices.ComTypes.FILETIME;
 
-namespace Krypton.Toolkit.Extended.Wizard
+namespace Krypton.Toolkit.Suite.Extended.Wizard
 {
     internal static partial class NativeMethods
     {
