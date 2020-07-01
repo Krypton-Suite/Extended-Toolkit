@@ -1289,13 +1289,13 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Suite
             point = this.ValueToPoint(this.Value);
 
             // divider
-            if (this.ShowValueDivider)
+            if (ShowValueDivider)
             {
                 Point start;
                 Point end;
                 IntPtr hdc;
 
-                if (this.Orientation == Orientation.Horizontal)
+                if (Orientation == Orientation.Horizontal)
                 {
                     start = new Point(point.X, this.BarBounds.Top);
                     end = new Point(point.X, this.BarBounds.Bottom);
