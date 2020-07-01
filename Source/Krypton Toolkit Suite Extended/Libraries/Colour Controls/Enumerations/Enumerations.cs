@@ -1,4 +1,6 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Drawing.Suite
+﻿using System;
+
+namespace Krypton.Toolkit.Suite.Extended.Drawing.Suite
 {
     /// <summary>
     /// Specifies the style of a color cell border.
@@ -312,5 +314,169 @@
         /// The status text colour.
         /// </summary>
         STATUSTEXTCOLOUR = 26
+    }
+
+    /// <summary>
+    /// Specifies the source of an action being performed.
+    /// </summary>
+    [Flags]
+    public enum ImageBoxActionSources
+    {
+        /// <summary>
+        /// Unknown source.
+        /// </summary>
+        Unknown = 0,
+
+        /// <summary>
+        /// A user initialized the action.
+        /// </summary>
+        User = 1
+    }
+
+    /// <summary>
+    ///   Specifies the border styles of an image
+    /// </summary>
+    public enum ImageBoxBorderStyle
+    {
+        /// <summary>
+        ///   No border.
+        /// </summary>
+        None,
+
+        /// <summary>
+        ///   A fixed, single-line border.
+        /// </summary>
+        FixedSingle,
+
+        /// <summary>
+        ///   A fixed, single-line border with a solid drop shadow.
+        /// </summary>
+        FixedSingleDropShadow,
+
+        /// <summary>
+        ///   A fixed, single-line border with a soft outer glow.
+        /// </summary>
+        FixedSingleGlowShadow
+    }
+
+    /// <summary>
+    ///   Specifies the display styles for the background texture grid
+    /// </summary>
+    public enum ImageBoxGridDisplayMode
+    {
+        /// <summary>
+        ///   No background.
+        /// </summary>
+        None,
+
+        /// <summary>
+        ///   Background is displayed in the control's client area.
+        /// </summary>
+        Client,
+
+        /// <summary>
+        ///   Background is displayed only in the image region.
+        /// </summary>
+        Image
+    }
+
+    /// <summary>
+    ///   Specifies the size of the background texture grid.
+    /// </summary>
+    public enum ImageBoxGridScale
+    {
+        /// <summary>
+        ///   Displays a solid color
+        /// </summary>
+        None,
+
+        /// <summary>
+        ///   Half of the default size.
+        /// </summary>
+        Tiny,
+
+        /// <summary>
+        ///   Default size.
+        /// </summary>
+        Small,
+
+        /// <summary>
+        ///   50% increase of default size.
+        /// </summary>
+        Medium,
+
+        /// <summary>
+        ///   100% increase of default size.
+        /// </summary>
+        Large
+    }
+
+    /// <summary>
+    ///   Specifies the selection mode.
+    /// </summary>
+    public enum ImageBoxSelectionMode
+    {
+        /// <summary>
+        ///   No selection.
+        /// </summary>
+        None,
+
+        /// <summary>
+        ///   Rectangle selection.
+        /// </summary>
+        Rectangle,
+
+        /// <summary>
+        ///   Zoom selection.
+        /// </summary>
+        Zoom
+    }
+
+    /// <summary>
+    /// Determines the sizing mode of an image hosted in an <see cref="ImageBox" /> control.
+    /// </summary>
+    public enum ImageBoxSizeMode
+    {
+        /// <summary>
+        /// The image is disiplayed according to current zoom and scroll properties.
+        /// </summary>
+        Normal,
+
+        /// <summary>
+        /// The image is stretched to fill the client area of the control.
+        /// </summary>
+        Stretch,
+
+        /// <summary>
+        /// The image is stretched to fill as much of the client area of the control as possible, whilst retaining the same aspect ratio for the width and height.
+        /// </summary>
+        Fit
+    }
+
+    /// <summary>
+    /// Describes the zoom action occuring
+    /// </summary>
+    [Flags]
+    public enum ImageBoxZoomActions
+    {
+        /// <summary>
+        /// No action.
+        /// </summary>
+        None = 0,
+
+        /// <summary>
+        /// The control is increasing the zoom.
+        /// </summary>
+        ZoomIn = 1,
+
+        /// <summary>
+        /// The control is decreasing the zoom.
+        /// </summary>
+        ZoomOut = 2,
+
+        /// <summary>
+        /// The control zoom was reset.
+        /// </summary>
+        ActualSize = 4
     }
 }

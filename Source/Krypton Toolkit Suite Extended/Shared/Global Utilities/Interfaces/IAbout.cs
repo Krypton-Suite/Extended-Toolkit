@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 
-namespace Krypton.Toolkit.Extended.Global.Utilities
+namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
 {
     /// <summary>
     /// For 'About' windows.

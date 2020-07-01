@@ -2,7 +2,7 @@
 using System.Net;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Global.Utilities
+namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
 {
     /// <summary>
     /// Handles networking.

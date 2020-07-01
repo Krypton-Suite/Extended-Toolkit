@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace Krypton.Toolkit.Extended.Global.Utilities
+namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
 {
     /// <summary>
     /// Provides some methods from the user32 and uxtheme libraries.

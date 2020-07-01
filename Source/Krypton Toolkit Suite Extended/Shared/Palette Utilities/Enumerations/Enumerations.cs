@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Krypton.Toolkit.Extended.Palette.Utilities
+namespace Krypton.Toolkit.Suite.Extended.Palette.Utilities
 {
     public enum PaletteColours
     {

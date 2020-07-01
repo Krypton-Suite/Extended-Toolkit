@@ -1283,7 +1283,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Suite
             float scaleX;
             float scaleY;
 
-            dpi = NativeMethods.GetDesktopDpi();
+            dpi = Internal.NativeMethods.GetDesktopDpi();
             scaleX = dpi.X / 96F;
             scaleY = dpi.Y / 96F;
 

@@ -5,7 +5,7 @@ using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Global.Utilities
+namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
 {
     /// <summary>
     /// Some translation methods.

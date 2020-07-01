@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 
-namespace Krypton.Toolkit.Extended.Palette.Utilities
+namespace Krypton.Toolkit.Suite.Extended.Palette.Utilities
 {
     public class Utilities
     {

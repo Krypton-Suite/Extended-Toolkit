@@ -3,7 +3,7 @@ using System.IO;
 using System.Net;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Global.Utilities
+namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
 {
     /// <summary>
     /// This class is used to retrieve data for the downloaded file.

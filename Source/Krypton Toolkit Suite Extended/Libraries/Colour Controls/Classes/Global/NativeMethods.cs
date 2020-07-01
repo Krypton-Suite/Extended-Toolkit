@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Runtime.InteropServices;
 
-namespace Krypton.Toolkit.Suite.Extended.Drawing.Suite
+namespace Krypton.Toolkit.Suite.Extended.Drawing.Suite.Internal
 {
     internal class NativeMethods
     {

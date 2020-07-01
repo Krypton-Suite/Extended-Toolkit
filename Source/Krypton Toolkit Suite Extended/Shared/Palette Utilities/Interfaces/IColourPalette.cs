@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 
-namespace Krypton.Toolkit.Extended.Palette.Utilities
+namespace Krypton.Toolkit.Suite.Extended.Palette.Utilities
 {
     /// <summary>
     /// Aggregates all colours to be used in an custom palette configuration.

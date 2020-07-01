@@ -1308,9 +1308,9 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Suite
 
                 // draw a XOR'd line using Win32 API as this functionality isn't part of .NET
                 hdc = e.Graphics.GetHdc();
-                NativeMethods.SetROP2(hdc, NativeMethods.R2_NOT);
-                NativeMethods.MoveToEx(hdc, start.X, start.Y, IntPtr.Zero);
-                NativeMethods.LineTo(hdc, end.X, end.Y);
+                Internal.NativeMethods.SetROP2(hdc, Internal.NativeMethods.R2_NOT);
+                Internal.NativeMethods.MoveToEx(hdc, start.X, start.Y, IntPtr.Zero);
+                Internal.NativeMethods.LineTo(hdc, end.X, end.Y);
                 e.Graphics.ReleaseHdc(hdc);
             }
 
