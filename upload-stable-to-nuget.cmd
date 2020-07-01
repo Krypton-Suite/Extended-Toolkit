@@ -63,7 +63,7 @@ dotnet nuget push Krypton.Toolkit.Suite.Extended.Utilities.5.550.2006.2.nupkg -k
 
 dotnet nuget push Krypton.Toolkit.Suite.Extended.Wizard.5.550.2006.2.nupkg -k <#API-KEY#> -s https://api.nuget.org/v3/index.json
 
-:: dotnet nuget push Krypton.Toolkit.Suite.Extended.Base.5.550.2006.2.nupkg -k <#API-KEY#> -s https://api.nuget.org/v3/index.json
+dotnet nuget push Krypton.Toolkit.Suite.Extended.Task.Dialogs.5.550.2006.2.nupkg -k <#API-KEY#> -s https://api.nuget.org/v3/index.json
 
 echo All NuGet packages have now been published!
 
