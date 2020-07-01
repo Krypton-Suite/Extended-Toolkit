@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Drawing.Design;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using Krypton.Toolkit.Extended.Colour.Controls.Legacy;
 
 namespace Krypton.Toolkit.Extended.Colour.Controls
 {

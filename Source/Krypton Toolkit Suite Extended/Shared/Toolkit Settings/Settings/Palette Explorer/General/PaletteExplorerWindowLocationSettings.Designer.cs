@@ -8,66 +8,53 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Krypton.Toolkit.Suite.Extended.Settings
-{
-
-
+namespace Krypton.Toolkit.Suite.Extended.Settings.Settings.Palette_Explorer.General {
+    
+    
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.5.0.0")]
-    internal sealed partial class PaletteExplorerWindowLocationSettings : global::System.Configuration.ApplicationSettingsBase
-    {
-
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.7.0.0")]
+    internal sealed partial class PaletteExplorerWindowLocationSettings : global::System.Configuration.ApplicationSettingsBase {
+        
         private static PaletteExplorerWindowLocationSettings defaultInstance = ((PaletteExplorerWindowLocationSettings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new PaletteExplorerWindowLocationSettings())));
-
-        public static PaletteExplorerWindowLocationSettings Default
-        {
-            get
-            {
+        
+        public static PaletteExplorerWindowLocationSettings Default {
+            get {
                 return defaultInstance;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0, 0")]
-        public global::System.Drawing.Point MainWindowLocation
-        {
-            get
-            {
+        public global::System.Drawing.Point MainWindowLocation {
+            get {
                 return ((global::System.Drawing.Point)(this["MainWindowLocation"]));
             }
-            set
-            {
+            set {
                 this["MainWindowLocation"] = value;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0, 0")]
-        public global::System.Drawing.Point PalettePropertiesPaneWindowLocation
-        {
-            get
-            {
+        public global::System.Drawing.Point PalettePropertiesPaneWindowLocation {
+            get {
                 return ((global::System.Drawing.Point)(this["PalettePropertiesPaneWindowLocation"]));
             }
-            set
-            {
+            set {
                 this["PalettePropertiesPaneWindowLocation"] = value;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0, 0")]
-        public global::System.Drawing.Point ColourPropertiesWindowLocation
-        {
-            get
-            {
+        public global::System.Drawing.Point ColourPropertiesWindowLocation {
+            get {
                 return ((global::System.Drawing.Point)(this["ColourPropertiesWindowLocation"]));
             }
-            set
-            {
+            set {
                 this["ColourPropertiesWindowLocation"] = value;
             }
         }

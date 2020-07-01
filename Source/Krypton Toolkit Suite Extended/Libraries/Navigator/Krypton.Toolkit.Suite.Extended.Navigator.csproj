@@ -7,7 +7,8 @@
     <RootNamespace>Krypton.Toolkit.Extended.Navigator</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>5.550.2006</Version>
+    <Version>5.550.2007</Version>
+    <RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
@@ -44,8 +45,6 @@
   <PropertyGroup>
     <DocumentationFile>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Navigator\Krypton.Toolkit.Extended.Navigator.xml</DocumentationFile>
     <OutputPath>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Navigator\</OutputPath>
-    <!--<SignAssembly>true</SignAssembly>-->
-    <!--<AssemblyOriginatorKeyFile>Krypton Extended Toolkit.snk</AssemblyOriginatorKeyFile>-->
   </PropertyGroup>
 
 </Project>

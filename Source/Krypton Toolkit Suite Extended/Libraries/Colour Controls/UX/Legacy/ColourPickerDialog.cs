@@ -7,7 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Colour.Controls
+namespace Krypton.Toolkit.Extended.Colour.Controls.Legacy
 {
     [DefaultEvent("PreviewColorChanged"), DefaultProperty("Color")]
     public class ColourPickerDialog : KryptonForm
@@ -151,7 +151,6 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             // cem
             // 
             this.cem.Color = System.Drawing.Color.Empty;
-            this.cem.ColourEditor = this.ceColour;
             this.cem.ColourWheel = this.cwColourPicker;
             this.cem.ColorChanged += new System.EventHandler(this.Cem_ColorChanged);
             this.cem.ColourChanged += new System.EventHandler(this.Cem_ColourChanged);

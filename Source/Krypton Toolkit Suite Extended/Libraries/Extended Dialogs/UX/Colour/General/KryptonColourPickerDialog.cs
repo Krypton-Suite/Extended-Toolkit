@@ -17,15 +17,16 @@ namespace Krypton.Toolkit.Extended.Dialogs
         private IContainer components = null;
         private KryptonPanel kryptonPanel1;
         private Colour.Controls.ColourWheelControl cwColour;
-        private KryptonCancelDialogButton kbtnCancel;
         private Colour.Controls.ColourEditorManager cem;
-        private Colour.Controls.ColourEditorUserControl ceColours;
         private Colour.Controls.ScreenColourPickerControl scp;
         private Cyotek.Windows.Forms.ColorGrid cgColours;
         private Core.CircularPictureBox cpbColourPreview;
         private KryptonButton kbtnSavePalette;
         private KryptonButton kbtnLoadPalette;
-        private KryptonOKDialogButton kbtnOk;
+        private KryptonPanel kryptonPanel2;
+        private KryptonOKDialogButton kryptonOKDialogButton1;
+        private KryptonCancelDialogButton kryptonCancelDialogButton1;
+        private Panel panel1;
 
         private void InitializeComponent()
         {
@@ -35,15 +36,15 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kbtnLoadPalette = new Krypton.Toolkit.KryptonButton();
             this.cgColours = new Cyotek.Windows.Forms.ColorGrid();
             this.cpbColourPreview = new Krypton.Toolkit.Extended.Core.CircularPictureBox();
-            this.scp = new Krypton.Toolkit.Extended.Colour.Controls.ScreenColourPickerControl();
-            this.ceColours = new Krypton.Toolkit.Extended.Colour.Controls.ColourEditorUserControl();
-            this.cwColour = new Krypton.Toolkit.Extended.Colour.Controls.ColourWheelControl();
-            this.kbtnCancel = new Krypton.Toolkit.Extended.Dialogs.KryptonCancelDialogButton();
-            this.kbtnOk = new Krypton.Toolkit.Extended.Dialogs.KryptonOKDialogButton();
-            this.cem = new Krypton.Toolkit.Extended.Colour.Controls.ColourEditorManager();
+            this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.kryptonCancelDialogButton1 = new Krypton.Toolkit.Extended.Dialogs.KryptonCancelDialogButton();
+            this.kryptonOKDialogButton1 = new Krypton.Toolkit.Extended.Dialogs.KryptonOKDialogButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cpbColourPreview)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
+            this.kryptonPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // kryptonPanel1
@@ -52,22 +53,17 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kryptonPanel1.Controls.Add(this.kbtnLoadPalette);
             this.kryptonPanel1.Controls.Add(this.cgColours);
             this.kryptonPanel1.Controls.Add(this.cpbColourPreview);
-            this.kryptonPanel1.Controls.Add(this.scp);
-            this.kryptonPanel1.Controls.Add(this.ceColours);
-            this.kryptonPanel1.Controls.Add(this.cwColour);
-            this.kryptonPanel1.Controls.Add(this.kbtnCancel);
-            this.kryptonPanel1.Controls.Add(this.kbtnOk);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel1.Name = "kryptonPanel1";
-            this.kryptonPanel1.Size = new System.Drawing.Size(574, 544);
+            this.kryptonPanel1.Size = new System.Drawing.Size(574, 491);
             this.kryptonPanel1.TabIndex = 0;
             // 
             // kbtnSavePalette
             // 
             this.kbtnSavePalette.AutoSize = true;
             this.kbtnSavePalette.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.kbtnSavePalette.Location = new System.Drawing.Point(40, 345);
+            this.kbtnSavePalette.Location = new System.Drawing.Point(40, 252);
             this.kbtnSavePalette.Name = "kbtnSavePalette";
             this.kbtnSavePalette.Size = new System.Drawing.Size(22, 22);
             this.kbtnSavePalette.TabIndex = 4;
@@ -80,7 +76,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             // 
             this.kbtnLoadPalette.AutoSize = true;
             this.kbtnLoadPalette.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.kbtnLoadPalette.Location = new System.Drawing.Point(12, 345);
+            this.kbtnLoadPalette.Location = new System.Drawing.Point(12, 252);
             this.kbtnLoadPalette.Name = "kbtnLoadPalette";
             this.kbtnLoadPalette.Size = new System.Drawing.Size(22, 22);
             this.kbtnLoadPalette.TabIndex = 1;
@@ -94,7 +90,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             // cgColours
             // 
             this.cgColours.BackColor = System.Drawing.Color.Transparent;
-            this.cgColours.Location = new System.Drawing.Point(12, 373);
+            this.cgColours.Location = new System.Drawing.Point(12, 280);
             this.cgColours.Name = "cgColours";
             this.cgColours.Size = new System.Drawing.Size(247, 165);
             this.cgColours.TabIndex = 3;
@@ -111,213 +107,50 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.cpbColourPreview.ToolTipValues = null;
             this.cpbColourPreview.Paint += new System.Windows.Forms.PaintEventHandler(this.cpbColourPreview_Paint);
             // 
-            // scp
+            // kryptonPanel2
             // 
-            this.scp.Colour = System.Drawing.Color.Empty;
-            this.scp.Image = global::Krypton.Toolkit.Extended.Dialogs.Properties.Resources.eyedropper;
-            this.scp.Location = new System.Drawing.Point(443, 87);
-            this.scp.Name = "scp";
-            this.scp.Size = new System.Drawing.Size(119, 103);
-            this.scp.ColourChanged += new System.EventHandler(this.scp_ColourChanged);
+            this.kryptonPanel2.Controls.Add(this.kryptonOKDialogButton1);
+            this.kryptonPanel2.Controls.Add(this.kryptonCancelDialogButton1);
+            this.kryptonPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.kryptonPanel2.Location = new System.Drawing.Point(0, 454);
+            this.kryptonPanel2.Name = "kryptonPanel2";
+            this.kryptonPanel2.Size = new System.Drawing.Size(574, 37);
+            this.kryptonPanel2.TabIndex = 1;
             // 
-            // ceColours
+            // panel1
             // 
-            this.ceColours.AutoSize = true;
-            this.ceColours.BackColor = System.Drawing.Color.Transparent;
-            this.ceColours.Location = new System.Drawing.Point(162, 12);
-            this.ceColours.Name = "ceColours";
-            this.ceColours.Size = new System.Drawing.Size(274, 364);
-            this.ceColours.TabIndex = 1;
+            this.panel1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 451);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(574, 3);
+            this.panel1.TabIndex = 2;
             // 
-            // cwColour
+            // kryptonCancelDialogButton1
             // 
-            this.cwColour.BackColor = System.Drawing.Color.Transparent;
-            this.cwColour.Location = new System.Drawing.Point(12, 12);
-            this.cwColour.Name = "cwColour";
-            this.cwColour.Size = new System.Drawing.Size(144, 144);
-            this.cwColour.TabIndex = 1;
-            this.cwColour.ColourChanged += new System.EventHandler(this.cwColour_ColourChanged);
+            this.kryptonCancelDialogButton1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.kryptonCancelDialogButton1.Location = new System.Drawing.Point(472, 6);
+            this.kryptonCancelDialogButton1.Name = "kryptonCancelDialogButton1";
+            this.kryptonCancelDialogButton1.ParentWindow = this;
+            this.kryptonCancelDialogButton1.Size = new System.Drawing.Size(90, 25);
+            this.kryptonCancelDialogButton1.TabIndex = 0;
+            this.kryptonCancelDialogButton1.Values.Text = "C&ancel";
             // 
-            // kbtnCancel
+            // kryptonOKDialogButton1
             // 
-            this.kbtnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.kbtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.kbtnCancel.Image = null;
-            this.kbtnCancel.Location = new System.Drawing.Point(472, 43);
-            this.kbtnCancel.LongTextTypeface = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtnCancel.Name = "kbtnCancel";
-            this.kbtnCancel.OverrideDefault.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtnCancel.OverrideDefault.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtnCancel.OverrideDefaultBackGroundColourOne = System.Drawing.Color.Empty;
-            this.kbtnCancel.OverrideDefaultBackGroundColourTwo = System.Drawing.Color.Empty;
-            this.kbtnCancel.OverrideDefaultBorderColourOne = System.Drawing.Color.Empty;
-            this.kbtnCancel.OverrideDefaultBorderColourTwo = System.Drawing.Color.Empty;
-            this.kbtnCancel.OverrideDefaultLongTextColourOne = System.Drawing.Color.Empty;
-            this.kbtnCancel.OverrideDefaultLongTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtnCancel.OverrideDefaultShortTextColourOne = System.Drawing.Color.Empty;
-            this.kbtnCancel.OverrideDefaultShortTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtnCancel.OverrideFocus.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtnCancel.OverrideFocus.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtnCancel.OverrideFocusBackGroundColourOne = System.Drawing.Color.Empty;
-            this.kbtnCancel.OverrideFocusBackGroundColourTwo = System.Drawing.Color.Empty;
-            this.kbtnCancel.OverrideFocusBorderColourOne = System.Drawing.Color.Empty;
-            this.kbtnCancel.OverrideFocusBorderColourTwo = System.Drawing.Color.Empty;
-            this.kbtnCancel.OverrideFocusLongTextColourOne = System.Drawing.Color.Empty;
-            this.kbtnCancel.OverrideFocusLongTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtnCancel.OverrideFocusShortTextColourOne = System.Drawing.Color.Empty;
-            this.kbtnCancel.OverrideFocusShortTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtnCancel.ShortTextTypeface = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtnCancel.Size = new System.Drawing.Size(90, 25);
-            this.kbtnCancel.StateCommon.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtnCancel.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtnCancel.StateCommonBackGroundColourOne = System.Drawing.Color.Empty;
-            this.kbtnCancel.StateCommonBackGroundColourTwo = System.Drawing.Color.Empty;
-            this.kbtnCancel.StateCommonBorderColourOne = System.Drawing.Color.Empty;
-            this.kbtnCancel.StateCommonBorderColourTwo = System.Drawing.Color.Empty;
-            this.kbtnCancel.StateCommonLongTextColourOne = System.Drawing.Color.Empty;
-            this.kbtnCancel.StateCommonLongTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtnCancel.StateCommonShortTextColourOne = System.Drawing.Color.Empty;
-            this.kbtnCancel.StateCommonShortTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtnCancel.StateDisabled.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtnCancel.StateDisabled.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtnCancel.StateDisabledBackGroundColourOne = System.Drawing.Color.Empty;
-            this.kbtnCancel.StateDisabledBackGroundColourTwo = System.Drawing.Color.Empty;
-            this.kbtnCancel.StateDisabledBorderColourOne = System.Drawing.Color.Empty;
-            this.kbtnCancel.StateDisabledBorderColourTwo = System.Drawing.Color.Empty;
-            this.kbtnCancel.StateDisabledLongTextColourOne = System.Drawing.Color.Empty;
-            this.kbtnCancel.StateDisabledLongTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtnCancel.StateDisabledShortTextColourOne = System.Drawing.Color.Empty;
-            this.kbtnCancel.StateDisabledShortTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtnCancel.StateNormal.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtnCancel.StateNormal.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtnCancel.StateNormalBackGroundColourOne = System.Drawing.Color.Empty;
-            this.kbtnCancel.StateNormalBackGroundColourTwo = System.Drawing.Color.Empty;
-            this.kbtnCancel.StateNormalBorderColourOne = System.Drawing.Color.Empty;
-            this.kbtnCancel.StateNormalBorderColourTwo = System.Drawing.Color.Empty;
-            this.kbtnCancel.StateNormalLongTextColourOne = System.Drawing.Color.Empty;
-            this.kbtnCancel.StateNormalLongTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtnCancel.StateNormalShortTextColourOne = System.Drawing.Color.Empty;
-            this.kbtnCancel.StateNormalShortTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtnCancel.StatePressed.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtnCancel.StatePressed.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtnCancel.StatePressedBackGroundColourOne = System.Drawing.Color.Empty;
-            this.kbtnCancel.StatePressedBackGroundColourTwo = System.Drawing.Color.Empty;
-            this.kbtnCancel.StatePressedBorderColourOne = System.Drawing.Color.Empty;
-            this.kbtnCancel.StatePressedBorderColourTwo = System.Drawing.Color.Empty;
-            this.kbtnCancel.StatePressedLongTextColourOne = System.Drawing.Color.Empty;
-            this.kbtnCancel.StatePressedLongTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtnCancel.StatePressedShortTextColourOne = System.Drawing.Color.Empty;
-            this.kbtnCancel.StatePressedShortTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtnCancel.StateTracking.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtnCancel.StateTracking.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtnCancel.StateTrackingBackGroundColourOne = System.Drawing.Color.Empty;
-            this.kbtnCancel.StateTrackingBackGroundColourTwo = System.Drawing.Color.Empty;
-            this.kbtnCancel.StateTrackingBorderColourOne = System.Drawing.Color.Empty;
-            this.kbtnCancel.StateTrackingBorderColourTwo = System.Drawing.Color.Empty;
-            this.kbtnCancel.StateTrackingLongTextColourOne = System.Drawing.Color.Empty;
-            this.kbtnCancel.StateTrackingLongTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtnCancel.StateTrackingShortTextColourOne = System.Drawing.Color.Empty;
-            this.kbtnCancel.StateTrackingShortTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtnCancel.TabIndex = 1;
-            this.kbtnCancel.Values.Text = "C&ancel";
-            this.kbtnCancel.Click += new System.EventHandler(this.kbtnCancel_Click);
-            // 
-            // kbtnOk
-            // 
-            this.kbtnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.kbtnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.kbtnOk.Image = null;
-            this.kbtnOk.Location = new System.Drawing.Point(472, 12);
-            this.kbtnOk.LongTextTypeface = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtnOk.Name = "kbtnOk";
-            this.kbtnOk.OverrideDefault.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtnOk.OverrideDefault.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtnOk.OverrideDefaultBackGroundColourOne = System.Drawing.Color.Empty;
-            this.kbtnOk.OverrideDefaultBackGroundColourTwo = System.Drawing.Color.Empty;
-            this.kbtnOk.OverrideDefaultBorderColourOne = System.Drawing.Color.Empty;
-            this.kbtnOk.OverrideDefaultBorderColourTwo = System.Drawing.Color.Empty;
-            this.kbtnOk.OverrideDefaultLongTextColourOne = System.Drawing.Color.Empty;
-            this.kbtnOk.OverrideDefaultLongTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtnOk.OverrideDefaultShortTextColourOne = System.Drawing.Color.Empty;
-            this.kbtnOk.OverrideDefaultShortTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtnOk.OverrideFocus.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtnOk.OverrideFocus.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtnOk.OverrideFocusBackGroundColourOne = System.Drawing.Color.Empty;
-            this.kbtnOk.OverrideFocusBackGroundColourTwo = System.Drawing.Color.Empty;
-            this.kbtnOk.OverrideFocusBorderColourOne = System.Drawing.Color.Empty;
-            this.kbtnOk.OverrideFocusBorderColourTwo = System.Drawing.Color.Empty;
-            this.kbtnOk.OverrideFocusLongTextColourOne = System.Drawing.Color.Empty;
-            this.kbtnOk.OverrideFocusLongTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtnOk.OverrideFocusShortTextColourOne = System.Drawing.Color.Empty;
-            this.kbtnOk.OverrideFocusShortTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtnOk.ShortTextTypeface = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtnOk.Size = new System.Drawing.Size(90, 25);
-            this.kbtnOk.StateCommon.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtnOk.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtnOk.StateCommonBackGroundColourOne = System.Drawing.Color.Empty;
-            this.kbtnOk.StateCommonBackGroundColourTwo = System.Drawing.Color.Empty;
-            this.kbtnOk.StateCommonBorderColourOne = System.Drawing.Color.Empty;
-            this.kbtnOk.StateCommonBorderColourTwo = System.Drawing.Color.Empty;
-            this.kbtnOk.StateCommonLongTextColourOne = System.Drawing.Color.Empty;
-            this.kbtnOk.StateCommonLongTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtnOk.StateCommonShortTextColourOne = System.Drawing.Color.Empty;
-            this.kbtnOk.StateCommonShortTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtnOk.StateDisabled.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtnOk.StateDisabled.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtnOk.StateDisabledBackGroundColourOne = System.Drawing.Color.Empty;
-            this.kbtnOk.StateDisabledBackGroundColourTwo = System.Drawing.Color.Empty;
-            this.kbtnOk.StateDisabledBorderColourOne = System.Drawing.Color.Empty;
-            this.kbtnOk.StateDisabledBorderColourTwo = System.Drawing.Color.Empty;
-            this.kbtnOk.StateDisabledLongTextColourOne = System.Drawing.Color.Empty;
-            this.kbtnOk.StateDisabledLongTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtnOk.StateDisabledShortTextColourOne = System.Drawing.Color.Empty;
-            this.kbtnOk.StateDisabledShortTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtnOk.StateNormal.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtnOk.StateNormal.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtnOk.StateNormalBackGroundColourOne = System.Drawing.Color.Empty;
-            this.kbtnOk.StateNormalBackGroundColourTwo = System.Drawing.Color.Empty;
-            this.kbtnOk.StateNormalBorderColourOne = System.Drawing.Color.Empty;
-            this.kbtnOk.StateNormalBorderColourTwo = System.Drawing.Color.Empty;
-            this.kbtnOk.StateNormalLongTextColourOne = System.Drawing.Color.Empty;
-            this.kbtnOk.StateNormalLongTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtnOk.StateNormalShortTextColourOne = System.Drawing.Color.Empty;
-            this.kbtnOk.StateNormalShortTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtnOk.StatePressed.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtnOk.StatePressed.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtnOk.StatePressedBackGroundColourOne = System.Drawing.Color.Empty;
-            this.kbtnOk.StatePressedBackGroundColourTwo = System.Drawing.Color.Empty;
-            this.kbtnOk.StatePressedBorderColourOne = System.Drawing.Color.Empty;
-            this.kbtnOk.StatePressedBorderColourTwo = System.Drawing.Color.Empty;
-            this.kbtnOk.StatePressedLongTextColourOne = System.Drawing.Color.Empty;
-            this.kbtnOk.StatePressedLongTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtnOk.StatePressedShortTextColourOne = System.Drawing.Color.Empty;
-            this.kbtnOk.StatePressedShortTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtnOk.StateTracking.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtnOk.StateTracking.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtnOk.StateTrackingBackGroundColourOne = System.Drawing.Color.Empty;
-            this.kbtnOk.StateTrackingBackGroundColourTwo = System.Drawing.Color.Empty;
-            this.kbtnOk.StateTrackingBorderColourOne = System.Drawing.Color.Empty;
-            this.kbtnOk.StateTrackingBorderColourTwo = System.Drawing.Color.Empty;
-            this.kbtnOk.StateTrackingLongTextColourOne = System.Drawing.Color.Empty;
-            this.kbtnOk.StateTrackingLongTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtnOk.StateTrackingShortTextColourOne = System.Drawing.Color.Empty;
-            this.kbtnOk.StateTrackingShortTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtnOk.TabIndex = 0;
-            this.kbtnOk.Values.Text = "&OK";
-            this.kbtnOk.Click += new System.EventHandler(this.kbtnOk_Click);
-            // 
-            // cem
-            // 
-            this.cem.Color = System.Drawing.Color.Empty;
-            this.cem.ColourEditor = this.ceColours;
-            this.cem.ColourGrid = this.cgColours;
-            this.cem.ColourWheel = this.cwColour;
-            this.cem.ScreenColourPicker = this.scp;
-            this.cem.ColourChanged += new System.EventHandler(this.cem_ColourChanged);
+            this.kryptonOKDialogButton1.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.kryptonOKDialogButton1.Location = new System.Drawing.Point(376, 6);
+            this.kryptonOKDialogButton1.Name = "kryptonOKDialogButton1";
+            this.kryptonOKDialogButton1.ParentWindow = this;
+            this.kryptonOKDialogButton1.Size = new System.Drawing.Size(90, 25);
+            this.kryptonOKDialogButton1.TabIndex = 3;
+            this.kryptonOKDialogButton1.Values.Text = "&OK";
             // 
             // KryptonColourPickerDialog
             // 
-            this.ClientSize = new System.Drawing.Size(574, 544);
+            this.ClientSize = new System.Drawing.Size(574, 491);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.kryptonPanel2);
             this.Controls.Add(this.kryptonPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -333,6 +166,8 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cpbColourPreview)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
+            this.kryptonPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -356,7 +191,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
         #endregion
 
         #region Properties
-        public Color Colour { get => cem.Colour; set => cem.Colour = value; }
+        //public Color Colour { get => cem.Colour; set => cem.Colour = value; }
 
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool ShowAlphaChannel { get; set; }
@@ -398,7 +233,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
         {
             base.OnLoad(e);
 
-            ceColours.ShowAlphaChannel = ShowAlphaChannel;
+            //ceColours.ShowAlphaChannel = ShowAlphaChannel;
 
             if (!ShowAlphaChannel)
             {
@@ -478,12 +313,12 @@ namespace Krypton.Toolkit.Extended.Dialogs
                         }
                         else
                         {
-                            KryptonMessageBoxExtended.Show("Sorry, unable to open palette, the file format is not supported or is not recognized.", "Load Palette", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            KryptonMessageBox.Show("Sorry, unable to open palette, the file format is not supported or is not recognized.", "Load Palette", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         }
                     }
                     catch (Exception exc)
                     {
-                        KryptonMessageBoxExtended.Show($@"Sorry, unable to open palette. { exc.GetBaseException().Message }", "Load Palette", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        KryptonMessageBox.Show($@"Sorry, unable to open palette. { exc.GetBaseException().Message }", "Load Palette", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -520,12 +355,12 @@ namespace Krypton.Toolkit.Extended.Dialogs
                     }
                     catch (Exception exc)
                     {
-                        KryptonMessageBoxExtended.Show($@"Sorry, unable to save palette. { exc.GetBaseException().Message }", "Save Palette", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        KryptonMessageBox.Show($@"Sorry, unable to save palette. { exc.GetBaseException().Message }", "Save Palette", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else
                 {
-                    KryptonMessageBoxExtended.Show("Sorry, unable to save palette, the file format is not supported or is not recognised.", "Save Palette", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    KryptonMessageBox.Show("Sorry, unable to save palette, the file format is not supported or is not recognised.", "Save Palette", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
         }
@@ -542,7 +377,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
 
         private void scp_ColourChanged(object sender, EventArgs e)
         {
-            Colour = scp.Colour;
+            //Colour = scp.Colour;
 
             OnPreviewColourChanged(e);
         }
@@ -564,23 +399,23 @@ namespace Krypton.Toolkit.Extended.Dialogs
 
             region = cpbColourPreview.ClientRectangle;
 
-            if (Colour.A != 255)
-            {
-                if (_textureBrush == null)
-                {
-                    using (Bitmap bg = new Bitmap(GetType().Assembly.GetManifestResourceStream(string.Concat(GetType().Namespace, ".Resources.cellbackground.png"))))
-                    {
-                        _textureBrush = new TextureBrush(bg, WrapMode.Tile);
-                    }
-                }
+            //if (Colour.A != 255)
+            //{
+            //    if (_textureBrush == null)
+            //    {
+            //        using (Bitmap bg = new Bitmap(GetType().Assembly.GetManifestResourceStream(string.Concat(GetType().Namespace, ".Resources.cellbackground.png"))))
+            //        {
+            //            _textureBrush = new TextureBrush(bg, WrapMode.Tile);
+            //        }
+            //    }
 
-                e.Graphics.FillRectangle(_textureBrush, region);
-            }
+            //    e.Graphics.FillRectangle(_textureBrush, region);
+            //}
 
-            using (Brush brush = new SolidBrush(this.Colour))
-            {
-                e.Graphics.FillRectangle(brush, region);
-            }
+            //using (Brush brush = new SolidBrush(this.Colour))
+            //{
+            //    e.Graphics.FillRectangle(brush, region);
+            //}
 
             e.Graphics.DrawRectangle(SystemPens.ControlText, region.Left, region.Top, region.Width - 1, region.Height - 1);
         }

@@ -59,5 +59,88 @@ namespace Krypton.Toolkit.Extended.Software.Updater.NetSparkle.Resources {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error!.
+        /// </summary>
+        internal static string DefaultUIFactory_ErrorTitle {
+            get {
+                return ResourceManager.GetString("DefaultUIFactory_ErrorTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Info.
+        /// </summary>
+        internal static string DefaultUIFactory_MessageTitle {
+            get {
+                return ResourceManager.GetString("DefaultUIFactory_MessageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sorry, either you aren&apos;t connected to the internet, or our server is having a problem..
+        /// </summary>
+        internal static string DefaultUIFactory_ShowCannotDownloadAppcastMessage {
+            get {
+                return ResourceManager.GetString("DefaultUIFactory_ShowCannotDownloadAppcastMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sorry, there was a problem attempting to download the update
+        ///
+        ///{0}.
+        /// </summary>
+        internal static string DefaultUIFactory_ShowDownloadErrorMessage {
+            get {
+                return ResourceManager.GetString("DefaultUIFactory_ShowDownloadErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updater not supported, please execute {0} manually.
+        /// </summary>
+        internal static string DefaultUIFactory_ShowUnknownInstallerFormatMessageText {
+            get {
+                return ResourceManager.GetString("DefaultUIFactory_ShowUnknownInstallerFormatMessageText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have elected to skip this version..
+        /// </summary>
+        internal static string DefaultUIFactory_ShowVersionIsSkippedByUserRequestMessage {
+            get {
+                return ResourceManager.GetString("DefaultUIFactory_ShowVersionIsSkippedByUserRequestMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your current version is up to date..
+        /// </summary>
+        internal static string DefaultUIFactory_ShowVersionIsUpToDateMessage {
+            get {
+                return ResourceManager.GetString("DefaultUIFactory_ShowVersionIsUpToDateMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to More information.
+        /// </summary>
+        internal static string DefaultUIFactory_ToastCallToAction {
+            get {
+                return ResourceManager.GetString("DefaultUIFactory_ToastCallToAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Version Available.
+        /// </summary>
+        internal static string DefaultUIFactory_ToastMessage {
+            get {
+                return ResourceManager.GetString("DefaultUIFactory_ToastMessage", resourceCulture);
+            }
+        }
     }
 }

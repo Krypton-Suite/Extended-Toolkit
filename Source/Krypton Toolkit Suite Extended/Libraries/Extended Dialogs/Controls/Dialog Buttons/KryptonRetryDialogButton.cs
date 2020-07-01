@@ -1,13 +1,16 @@
-﻿using Krypton.Toolkit.Suite.Extended.Standard.Controls;
-using System;
+﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Extended.Dialogs
 {
-    [ToolboxBitmap(typeof(KryptonButtonExtended))]
-    public class KryptonRetryDialogButton : KryptonButtonExtended
+    [ToolboxBitmap(typeof(KryptonButton))]
+    public class KryptonRetryDialogButton : KryptonButton
     {
+        private KryptonForm _parent;
+
+        public KryptonForm ParentWindow { get => _parent; set { _parent = value; Invalidate(); } }
+
         public KryptonRetryDialogButton()
         {
             DialogResult = DialogResult.Retry;
@@ -37,6 +40,16 @@ namespace Krypton.Toolkit.Extended.Dialogs
 
                 form.AcceptButton = this;
             }
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            if (ParentWindow != null)
+            {
+                ParentWindow.AcceptButton = this;
+            }
+
+            base.OnPaint(e);
         }
     }
 }

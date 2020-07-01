@@ -8,11 +8,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Krypton.Toolkit.Suite.Extended.Settings.Run {
+namespace Krypton.Toolkit.Suite.Extended.Settings.Settings.Dialogs.Run {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.5.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.7.0.0")]
     internal sealed partial class RunDialogSettings : global::System.Configuration.ApplicationSettingsBase {
         
         private static RunDialogSettings defaultInstance = ((RunDialogSettings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new RunDialogSettings())));

@@ -8,36 +8,29 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Krypton.Toolkit.Suite.Extended.Settings
-{
-
-
+namespace Krypton.Toolkit.Suite.Extended.Settings.Settings.Core {
+    
+    
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.5.0.0")]
-    internal sealed partial class CoreSettings : global::System.Configuration.ApplicationSettingsBase
-    {
-
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.7.0.0")]
+    internal sealed partial class CoreSettings : global::System.Configuration.ApplicationSettingsBase {
+        
         private static CoreSettings defaultInstance = ((CoreSettings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new CoreSettings())));
-
-        public static CoreSettings Default
-        {
-            get
-            {
+        
+        public static CoreSettings Default {
+            get {
                 return defaultInstance;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool UpdateInRealTime
-        {
-            get
-            {
+        public bool UpdateInRealTime {
+            get {
                 return ((bool)(this["UpdateInRealTime"]));
             }
-            set
-            {
+            set {
                 this["UpdateInRealTime"] = value;
             }
         }

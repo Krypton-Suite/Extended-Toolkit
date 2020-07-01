@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Krypton.Toolkit.Suite.Extended.Core;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -7,6 +8,18 @@ namespace Krypton.Toolkit.Extended.Base
     [ToolboxBitmap(typeof(KryptonButton))]
     public class KryptonCancelDialogButton : KryptonButton
     {
+        private KryptonForm _parent;
+
+        public KryptonForm ParentWindow { get => _parent; set { _parent = value; Invalidate(); OwnerWindowChangedEventArgs e = new OwnerWindowChangedEventArgs(this, value); OnParentWindowChanged(null, e); } }
+
+        #region Custom Events
+        public delegate void ParentWindowChangedEventHandler(object sender, OwnerWindowChangedEventArgs e);
+
+        public event ParentWindowChangedEventHandler ParentWindowChanged;
+
+        protected virtual void OnParentWindowChanged(object sender, OwnerWindowChangedEventArgs e) => ParentWindowChanged?.Invoke(sender, e);
+        #endregion
+
         public KryptonCancelDialogButton()
         {
             DialogResult = DialogResult.Cancel;
@@ -36,6 +49,17 @@ namespace Krypton.Toolkit.Extended.Base
 
                 form.CancelButton = this;
             }
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            if (ParentWindow != null) ParentWindow.CancelButton = this;
+
+            OwnerWindowChangedEventArgs ev = new OwnerWindowChangedEventArgs(this, ParentWindow);
+
+            ev.AssociateCancelButton(this);
+
+            base.OnPaint(e);
         }
     }
 }
