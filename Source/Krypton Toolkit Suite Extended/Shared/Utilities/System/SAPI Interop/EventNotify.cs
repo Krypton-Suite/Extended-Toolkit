@@ -1,4 +1,5 @@
 ﻿using Krypton.Toolkit.Suite.Extended.Utilities.System.AudioFormat;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
 using System;
 using System.Collections.Generic;
 
