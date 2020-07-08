@@ -1,4 +1,7 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
+﻿using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser;
+
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 {
     internal class ScriptRef
     {
