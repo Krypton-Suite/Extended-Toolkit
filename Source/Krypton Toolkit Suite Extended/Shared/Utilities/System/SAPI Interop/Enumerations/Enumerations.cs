@@ -271,4 +271,48 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop
         SPREF_Hypothesis = 0x20,
         SPREF_FalseRecognition = 0x40
     }
+
+    internal enum SPRECOSTATE
+    {
+        SPRST_INACTIVE,
+        SPRST_ACTIVE,
+        SPRST_ACTIVE_ALWAYS,
+        SPRST_INACTIVE_WITH_PURGE,
+        SPRST_NUM_STATES
+    }
+
+    [Flags]
+    internal enum SPRESULTALPHABET
+    {
+        SPRA_NONE = 0x0,
+        SPRA_APP_UPS = 0x1,
+        SPRA_ENGINE_UPS = 0x2
+    }
+
+    internal enum SPRULESTATE
+    {
+        SPRS_INACTIVE = 0,
+        SPRS_ACTIVE = 1,
+        SPRS_ACTIVE_WITH_AUTO_PAUSE = 3,
+        SPRS_ACTIVE_USER_DELIMITED = 4
+    }
+
+    internal enum SPSTREAMFORMATTYPE
+    {
+        SPWF_INPUT,
+        SPWF_SRENGINE
+    }
+
+    internal enum SPVPRIORITY
+    {
+        SPVPRI_NORMAL,
+        SPVPRI_ALERT,
+        SPVPRI_OVER
+    }
+
+    internal enum SPXMLRESULTOPTIONS
+    {
+        SPXRO_SML,
+        SPXRO_Alternates_SML
+    }
 }
