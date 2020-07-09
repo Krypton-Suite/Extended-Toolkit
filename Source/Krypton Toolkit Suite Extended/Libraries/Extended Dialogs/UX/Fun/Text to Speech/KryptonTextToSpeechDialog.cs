@@ -33,37 +33,37 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.kbtnCancel = new Krypton.Toolkit.KryptonButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
-            this.kryptonGroupBox1 = new Krypton.Toolkit.KryptonGroupBox();
-            this.krtbInput = new Krypton.Toolkit.KryptonRichTextBox();
-            this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
-            this.kbtnSpeak = new Krypton.Toolkit.KryptonButton();
-            this.kgrpAdjustments = new Krypton.Toolkit.KryptonGroupBox();
             this.kryptonGroupBox3 = new Krypton.Toolkit.KryptonGroupBox();
-            this.kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
-            this.ktrkRate = new Krypton.Toolkit.KryptonTrackBar();
-            this.klblRate = new Krypton.Toolkit.KryptonLabel();
-            this.klblVolume = new Krypton.Toolkit.KryptonLabel();
-            this.ktrkVolume = new Krypton.Toolkit.KryptonTrackBar();
-            this.kryptonLabel5 = new Krypton.Toolkit.KryptonLabel();
-            this.kcmbInstalledVoices = new Krypton.Toolkit.KryptonComboBox();
             this.kbtnPreview = new Krypton.Toolkit.KryptonButton();
+            this.kcmbInstalledVoices = new Krypton.Toolkit.KryptonComboBox();
+            this.kgrpAdjustments = new Krypton.Toolkit.KryptonGroupBox();
+            this.kryptonLabel5 = new Krypton.Toolkit.KryptonLabel();
+            this.klblVolume = new Krypton.Toolkit.KryptonLabel();
+            this.klblRate = new Krypton.Toolkit.KryptonLabel();
+            this.ktrkVolume = new Krypton.Toolkit.KryptonTrackBar();
+            this.ktrkRate = new Krypton.Toolkit.KryptonTrackBar();
+            this.kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
+            this.kryptonGroupBox1 = new Krypton.Toolkit.KryptonGroupBox();
+            this.kbtnSpeak = new Krypton.Toolkit.KryptonButton();
+            this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
+            this.krtbInput = new Krypton.Toolkit.KryptonRichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
             this.kryptonPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1.Panel)).BeginInit();
-            this.kryptonGroupBox1.Panel.SuspendLayout();
-            this.kryptonGroupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kgrpAdjustments)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kgrpAdjustments.Panel)).BeginInit();
-            this.kgrpAdjustments.Panel.SuspendLayout();
-            this.kgrpAdjustments.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox3.Panel)).BeginInit();
             this.kryptonGroupBox3.Panel.SuspendLayout();
             this.kryptonGroupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kcmbInstalledVoices)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kgrpAdjustments)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kgrpAdjustments.Panel)).BeginInit();
+            this.kgrpAdjustments.Panel.SuspendLayout();
+            this.kgrpAdjustments.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1.Panel)).BeginInit();
+            this.kryptonGroupBox1.Panel.SuspendLayout();
+            this.kryptonGroupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // kryptonPanel1
@@ -105,46 +105,42 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.kryptonPanel2.Size = new System.Drawing.Size(513, 542);
             this.kryptonPanel2.TabIndex = 5;
             // 
-            // kryptonGroupBox1
+            // kryptonGroupBox3
             // 
-            this.kryptonGroupBox1.Location = new System.Drawing.Point(12, 12);
-            this.kryptonGroupBox1.Name = "kryptonGroupBox1";
+            this.kryptonGroupBox3.Location = new System.Drawing.Point(12, 455);
+            this.kryptonGroupBox3.Name = "kryptonGroupBox3";
             // 
-            // kryptonGroupBox1.Panel
+            // kryptonGroupBox3.Panel
             // 
-            this.kryptonGroupBox1.Panel.Controls.Add(this.kbtnSpeak);
-            this.kryptonGroupBox1.Panel.Controls.Add(this.kryptonLabel1);
-            this.kryptonGroupBox1.Panel.Controls.Add(this.krtbInput);
-            this.kryptonGroupBox1.Size = new System.Drawing.Size(489, 240);
-            this.kryptonGroupBox1.TabIndex = 6;
-            this.kryptonGroupBox1.Values.Heading = "Input";
+            this.kryptonGroupBox3.Panel.Controls.Add(this.kbtnPreview);
+            this.kryptonGroupBox3.Panel.Controls.Add(this.kcmbInstalledVoices);
+            this.kryptonGroupBox3.Size = new System.Drawing.Size(489, 81);
+            this.kryptonGroupBox3.TabIndex = 6;
+            this.kryptonGroupBox3.Values.Heading = "Installed Voices";
             // 
-            // krtbInput
+            // kbtnPreview
             // 
-            this.krtbInput.Location = new System.Drawing.Point(3, 3);
-            this.krtbInput.Name = "krtbInput";
-            this.krtbInput.Size = new System.Drawing.Size(479, 152);
-            this.krtbInput.TabIndex = 0;
-            this.krtbInput.Text = "";
-            this.krtbInput.TextChanged += new System.EventHandler(this.krtbInput_TextChanged);
+            this.kbtnPreview.Enabled = false;
+            this.kbtnPreview.Location = new System.Drawing.Point(380, 14);
+            this.kbtnPreview.Name = "kbtnPreview";
+            this.kbtnPreview.Size = new System.Drawing.Size(90, 25);
+            this.kbtnPreview.TabIndex = 6;
+            this.kbtnPreview.Values.Text = "&Preview";
+            this.kbtnPreview.Click += new System.EventHandler(this.kbtnPreview_Click);
             // 
-            // kryptonLabel1
+            // kcmbInstalledVoices
             // 
-            this.kryptonLabel1.Location = new System.Drawing.Point(3, 161);
-            this.kryptonLabel1.Name = "kryptonLabel1";
-            this.kryptonLabel1.Size = new System.Drawing.Size(408, 20);
-            this.kryptonLabel1.TabIndex = 6;
-            this.kryptonLabel1.Values.Text = "Please enter some text in the field above, then click \'speak\' to listen back.";
-            // 
-            // kbtnSpeak
-            // 
-            this.kbtnSpeak.Enabled = false;
-            this.kbtnSpeak.Location = new System.Drawing.Point(197, 187);
-            this.kbtnSpeak.Name = "kbtnSpeak";
-            this.kbtnSpeak.Size = new System.Drawing.Size(90, 25);
-            this.kbtnSpeak.TabIndex = 6;
-            this.kbtnSpeak.Values.Text = "&Speak";
-            this.kbtnSpeak.Click += new System.EventHandler(this.kbtnSpeak_Click);
+            this.kcmbInstalledVoices.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.kcmbInstalledVoices.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.kcmbInstalledVoices.DropDownWidth = 360;
+            this.kcmbInstalledVoices.IntegralHeight = false;
+            this.kcmbInstalledVoices.Location = new System.Drawing.Point(14, 16);
+            this.kcmbInstalledVoices.Name = "kcmbInstalledVoices";
+            this.kcmbInstalledVoices.Size = new System.Drawing.Size(360, 21);
+            this.kcmbInstalledVoices.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
+            this.kcmbInstalledVoices.TabIndex = 13;
+            this.kcmbInstalledVoices.SelectedIndexChanged += new System.EventHandler(this.kcmbInstalledVoices_SelectedIndexChanged);
+            this.kcmbInstalledVoices.TextChanged += new System.EventHandler(this.kcmbInstalledVoices_TextChanged);
             // 
             // kgrpAdjustments
             // 
@@ -163,47 +159,13 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.kgrpAdjustments.TabIndex = 6;
             this.kgrpAdjustments.Values.Heading = "Adjustments";
             // 
-            // kryptonGroupBox3
+            // kryptonLabel5
             // 
-            this.kryptonGroupBox3.Location = new System.Drawing.Point(12, 455);
-            this.kryptonGroupBox3.Name = "kryptonGroupBox3";
-            // 
-            // kryptonGroupBox3.Panel
-            // 
-            this.kryptonGroupBox3.Panel.Controls.Add(this.kbtnPreview);
-            this.kryptonGroupBox3.Panel.Controls.Add(this.kcmbInstalledVoices);
-            this.kryptonGroupBox3.Size = new System.Drawing.Size(489, 81);
-            this.kryptonGroupBox3.TabIndex = 6;
-            this.kryptonGroupBox3.Values.Heading = "Installed Voices";
-            // 
-            // kryptonLabel2
-            // 
-            this.kryptonLabel2.Location = new System.Drawing.Point(14, 12);
-            this.kryptonLabel2.Name = "kryptonLabel2";
-            this.kryptonLabel2.Size = new System.Drawing.Size(35, 20);
-            this.kryptonLabel2.TabIndex = 7;
-            this.kryptonLabel2.Values.Text = "Rate";
-            // 
-            // ktrkRate
-            // 
-            this.ktrkRate.DrawBackground = true;
-            this.ktrkRate.Location = new System.Drawing.Point(14, 38);
-            this.ktrkRate.Maximum = 100;
-            this.ktrkRate.Name = "ktrkRate";
-            this.ktrkRate.Size = new System.Drawing.Size(456, 27);
-            this.ktrkRate.TabIndex = 6;
-            this.ktrkRate.Value = 50;
-            this.ktrkRate.ValueChanged += new System.EventHandler(this.ktrkRate_ValueChanged);
-            // 
-            // klblRate
-            // 
-            this.klblRate.AutoSize = false;
-            this.klblRate.Location = new System.Drawing.Point(14, 71);
-            this.klblRate.Name = "klblRate";
-            this.klblRate.Size = new System.Drawing.Size(456, 20);
-            this.klblRate.StateCommon.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.klblRate.TabIndex = 9;
-            this.klblRate.Values.Text = "{0}";
+            this.kryptonLabel5.Location = new System.Drawing.Point(14, 82);
+            this.kryptonLabel5.Name = "kryptonLabel5";
+            this.kryptonLabel5.Size = new System.Drawing.Size(53, 20);
+            this.kryptonLabel5.TabIndex = 11;
+            this.kryptonLabel5.Values.Text = "Volume";
             // 
             // klblVolume
             // 
@@ -214,6 +176,16 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.klblVolume.StateCommon.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
             this.klblVolume.TabIndex = 12;
             this.klblVolume.Values.Text = "{0}";
+            // 
+            // klblRate
+            // 
+            this.klblRate.AutoSize = false;
+            this.klblRate.Location = new System.Drawing.Point(14, 71);
+            this.klblRate.Name = "klblRate";
+            this.klblRate.Size = new System.Drawing.Size(456, 20);
+            this.klblRate.StateCommon.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
+            this.klblRate.TabIndex = 9;
+            this.klblRate.Values.Text = "{0}";
             // 
             // ktrkVolume
             // 
@@ -226,37 +198,65 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.ktrkVolume.Value = 50;
             this.ktrkVolume.ValueChanged += new System.EventHandler(this.ktrkVolume_ValueChanged);
             // 
-            // kryptonLabel5
+            // ktrkRate
             // 
-            this.kryptonLabel5.Location = new System.Drawing.Point(14, 82);
-            this.kryptonLabel5.Name = "kryptonLabel5";
-            this.kryptonLabel5.Size = new System.Drawing.Size(53, 20);
-            this.kryptonLabel5.TabIndex = 11;
-            this.kryptonLabel5.Values.Text = "Volume";
+            this.ktrkRate.DrawBackground = true;
+            this.ktrkRate.Location = new System.Drawing.Point(14, 38);
+            this.ktrkRate.Maximum = 100;
+            this.ktrkRate.Name = "ktrkRate";
+            this.ktrkRate.Size = new System.Drawing.Size(456, 27);
+            this.ktrkRate.TabIndex = 6;
+            this.ktrkRate.Value = 50;
+            this.ktrkRate.ValueChanged += new System.EventHandler(this.ktrkRate_ValueChanged);
             // 
-            // kcmbInstalledVoices
+            // kryptonLabel2
             // 
-            this.kcmbInstalledVoices.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.kcmbInstalledVoices.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.kcmbInstalledVoices.DropDownWidth = 360;
-            this.kcmbInstalledVoices.IntegralHeight = false;
-            this.kcmbInstalledVoices.Location = new System.Drawing.Point(14, 16);
-            this.kcmbInstalledVoices.Name = "kcmbInstalledVoices";
-            this.kcmbInstalledVoices.Size = new System.Drawing.Size(360, 21);
-            this.kcmbInstalledVoices.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
-            this.kcmbInstalledVoices.TabIndex = 13;
-            this.kcmbInstalledVoices.SelectedIndexChanged += new System.EventHandler(this.kcmbInstalledVoices_SelectedIndexChanged);
-            this.kcmbInstalledVoices.TextChanged += new System.EventHandler(this.kcmbInstalledVoices_TextChanged);
+            this.kryptonLabel2.Location = new System.Drawing.Point(14, 12);
+            this.kryptonLabel2.Name = "kryptonLabel2";
+            this.kryptonLabel2.Size = new System.Drawing.Size(35, 20);
+            this.kryptonLabel2.TabIndex = 7;
+            this.kryptonLabel2.Values.Text = "Rate";
             // 
-            // kbtnPreview
+            // kryptonGroupBox1
             // 
-            this.kbtnPreview.Enabled = false;
-            this.kbtnPreview.Location = new System.Drawing.Point(380, 14);
-            this.kbtnPreview.Name = "kbtnPreview";
-            this.kbtnPreview.Size = new System.Drawing.Size(90, 25);
-            this.kbtnPreview.TabIndex = 6;
-            this.kbtnPreview.Values.Text = "&Preview";
-            this.kbtnPreview.Click += new System.EventHandler(this.kbtnPreview_Click);
+            this.kryptonGroupBox1.Location = new System.Drawing.Point(12, 12);
+            this.kryptonGroupBox1.Name = "kryptonGroupBox1";
+            // 
+            // kryptonGroupBox1.Panel
+            // 
+            this.kryptonGroupBox1.Panel.Controls.Add(this.kbtnSpeak);
+            this.kryptonGroupBox1.Panel.Controls.Add(this.kryptonLabel1);
+            this.kryptonGroupBox1.Panel.Controls.Add(this.krtbInput);
+            this.kryptonGroupBox1.Size = new System.Drawing.Size(489, 240);
+            this.kryptonGroupBox1.TabIndex = 6;
+            this.kryptonGroupBox1.Values.Heading = "Input";
+            // 
+            // kbtnSpeak
+            // 
+            this.kbtnSpeak.Enabled = false;
+            this.kbtnSpeak.Location = new System.Drawing.Point(197, 187);
+            this.kbtnSpeak.Name = "kbtnSpeak";
+            this.kbtnSpeak.Size = new System.Drawing.Size(90, 25);
+            this.kbtnSpeak.TabIndex = 6;
+            this.kbtnSpeak.Values.Text = "&Speak";
+            this.kbtnSpeak.Click += new System.EventHandler(this.kbtnSpeak_Click);
+            // 
+            // kryptonLabel1
+            // 
+            this.kryptonLabel1.Location = new System.Drawing.Point(3, 161);
+            this.kryptonLabel1.Name = "kryptonLabel1";
+            this.kryptonLabel1.Size = new System.Drawing.Size(408, 20);
+            this.kryptonLabel1.TabIndex = 6;
+            this.kryptonLabel1.Values.Text = "Please enter some text in the field above, then click \'speak\' to listen back.";
+            // 
+            // krtbInput
+            // 
+            this.krtbInput.Location = new System.Drawing.Point(3, 3);
+            this.krtbInput.Name = "krtbInput";
+            this.krtbInput.Size = new System.Drawing.Size(479, 152);
+            this.krtbInput.TabIndex = 0;
+            this.krtbInput.Text = "";
+            this.krtbInput.TextChanged += new System.EventHandler(this.krtbInput_TextChanged);
             // 
             // KryptonTextToSpeechDialog
             // 
@@ -268,26 +268,28 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "KryptonTextToSpeechDialog";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.Text = "Text to Speech";
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
             this.kryptonPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1.Panel)).EndInit();
-            this.kryptonGroupBox1.Panel.ResumeLayout(false);
-            this.kryptonGroupBox1.Panel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1)).EndInit();
-            this.kryptonGroupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kgrpAdjustments.Panel)).EndInit();
-            this.kgrpAdjustments.Panel.ResumeLayout(false);
-            this.kgrpAdjustments.Panel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kgrpAdjustments)).EndInit();
-            this.kgrpAdjustments.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox3.Panel)).EndInit();
             this.kryptonGroupBox3.Panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox3)).EndInit();
             this.kryptonGroupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kcmbInstalledVoices)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kgrpAdjustments.Panel)).EndInit();
+            this.kgrpAdjustments.Panel.ResumeLayout(false);
+            this.kgrpAdjustments.Panel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kgrpAdjustments)).EndInit();
+            this.kgrpAdjustments.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1.Panel)).EndInit();
+            this.kryptonGroupBox1.Panel.ResumeLayout(false);
+            this.kryptonGroupBox1.Panel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1)).EndInit();
+            this.kryptonGroupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
