@@ -361,33 +361,33 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
         private void PropagateInstalledVoicesList()
         {
-            //using (SpeechSynthesizer synth = new SpeechSynthesizer())
-            //{
-            //    foreach (var voice in synth.GetInstalledVoices())
-            //    {
-            //        kcmbInstalledVoices.Items.Add(voice.VoiceInfo.Name);
-            //    }
-            //}
+            using (SpeechSynthesizer synth = new SpeechSynthesizer())
+            {
+                foreach (var voice in synth.GetInstalledVoices())
+                {
+                    kcmbInstalledVoices.Items.Add(voice.VoiceInfo.Name);
+                }
+            }
 
-            //kcmbInstalledVoices.SelectedIndex = 0;
+            kcmbInstalledVoices.SelectedIndex = 0;
         }
 
         private void Speak(string textToSpeak, string voice, int rate, int volume)
         {
-            //using (SpeechSynthesizer synth = new SpeechSynthesizer { Volume = volume, Rate = rate })
-            //{
-            //    synth.SelectVoice(voice);
+            using (SpeechSynthesizer synth = new SpeechSynthesizer { Volume = volume, Rate = rate })
+            {
+                synth.SelectVoice(voice);
 
-            //    kgrpAdjustments.Enabled = false;
+                kgrpAdjustments.Enabled = false;
 
-            //    synth.Speak(textToSpeak);
+                synth.Speak(textToSpeak);
 
-            //    kgrpAdjustments.Enabled = true;
-            //}
+                kgrpAdjustments.Enabled = true;
+            }
 
-#if NETCOREAPP
-            SpeakNETCore(textToSpeak);
-#endif
+            //#if NETCOREAPP
+            //            SpeakNETCore(textToSpeak);
+            //#endif
         }
 
         /// <summary>
