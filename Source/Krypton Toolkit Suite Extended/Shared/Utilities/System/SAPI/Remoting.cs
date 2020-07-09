@@ -280,7 +280,7 @@ namespace System.Runtime.InteropServices
     [ComVisible(true)]
     // The Tlbimp.exe(Type Library Importer) applies this attribute to classes or interfaces.
     // https://docs.microsoft.com/en-us/dotnet/api/system.runtime.interopservices.typelibtypeattribute?view=netframework-4.8
-    public sealed class TypeLibTypeAttribute : Attribute
+    public sealed class TypeLibTypeAttrib : Attribute
     {
 
         private TypeLibTypeFlags m_flags;
@@ -295,7 +295,7 @@ namespace System.Runtime.InteropServices
         //   flags:
         //     Der System.Runtime.InteropServices.TypeLibTypeFlags-Wert für den attributierten
         //     Typ, wie er in der Typbibliothek angegeben ist, aus der er importiert wurde.
-        public TypeLibTypeAttribute(TypeLibTypeFlags flags)
+        public TypeLibTypeAttrib(TypeLibTypeFlags flags)
         {
             this.m_flags = flags;
         }
@@ -308,7 +308,7 @@ namespace System.Runtime.InteropServices
         //   flags:
         //     Der System.Runtime.InteropServices.TypeLibTypeFlags-Wert für den attributierten
         //     Typ, wie er in der Typbibliothek angegeben ist, aus der er importiert wurde.
-        public TypeLibTypeAttribute(short flags)
+        public TypeLibTypeAttrib(short flags)
         {
             this.m_flags = (TypeLibTypeFlags)flags;
 
