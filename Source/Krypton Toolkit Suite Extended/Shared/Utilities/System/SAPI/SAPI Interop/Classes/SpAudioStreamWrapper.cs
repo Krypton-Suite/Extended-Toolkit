@@ -1,4 +1,5 @@
 ﻿using Krypton.Toolkit.Suite.Extended.Utilities.System.AudioFormat;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis;
 using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech;
 using System;
 using System.IO;
