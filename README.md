@@ -43,6 +43,7 @@
 * All namespaces now correlate to the package name e.g, `Krypton.Toolkit.Extended.Base` now becomes `Krypton.Toolkit.Suite.Extended.Base`
 * New find and replace dialog built off of [FnR](https://github.com/zzzprojects/findandreplace)
 <!--* Canary packages are now here-->
+* All NuGet packages will now be output to `Bin\NuGet`
 * General bugfixes
 
 =======
