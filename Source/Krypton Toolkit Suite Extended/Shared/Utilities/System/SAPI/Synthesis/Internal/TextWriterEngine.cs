@@ -1,4 +1,6 @@
-﻿using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech;
+﻿using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.TTSEngine;
+using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech;
 using System;
 using System.Collections.Generic;
 using System.Globalization;

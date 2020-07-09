@@ -1,8 +1,6 @@
-﻿using System;
+﻿using Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis;
+using System;
 using System.Globalization;
-#if !NETCOREAPP && !NET5
-using System.Speech.Synthesis;
-#endif 
 using System.Text;
 
 namespace Krypton.Toolkit.Suite.Extended.Dialogs

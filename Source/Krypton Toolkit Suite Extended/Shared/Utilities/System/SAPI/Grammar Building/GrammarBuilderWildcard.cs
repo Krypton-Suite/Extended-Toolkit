@@ -1,4 +1,6 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Utilities.System.GrammarBuilding
+﻿using Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser;
+
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.GrammarBuilding
 {
     internal sealed class GrammarBuilderWildcard : GrammarBuilderBase
     {

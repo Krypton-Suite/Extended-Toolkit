@@ -1,4 +1,6 @@
-﻿using Microsoft.Win32;
+﻿using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop;
+using Microsoft.Win32;
 using System;
 using System.Collections;
 using System.Collections.Generic;

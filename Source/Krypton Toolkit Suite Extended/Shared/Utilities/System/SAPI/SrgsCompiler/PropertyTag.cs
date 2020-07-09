@@ -1,4 +1,5 @@
 ﻿using Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser;
+using System.Runtime.InteropServices;
 
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 {

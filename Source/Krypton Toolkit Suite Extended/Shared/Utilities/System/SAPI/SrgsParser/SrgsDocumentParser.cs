@@ -1,4 +1,6 @@
-﻿using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech;
+﻿using Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar;
+using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -7,7 +9,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser
 {
     internal class SrgsDocumentParser : ISrgsParser
     {
-        private SrgsGrammar _grammar;
+        private SrgsGrammar.SrgsGrammar _grammar;
 
         private IElementFactory _parser;
 
@@ -19,7 +21,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser
             }
         }
 
-        internal SrgsDocumentParser(SrgsGrammar grammar)
+        internal SrgsDocumentParser(SrgsGrammar.SrgsGrammar grammar)
         {
             _grammar = grammar;
         }
@@ -37,7 +39,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser
             }
         }
 
-        private void ProcessGrammarElement(SrgsGrammar source, IGrammar grammar)
+        private void ProcessGrammarElement(SrgsGrammar.SrgsGrammar source, IGrammar grammar)
         {
             grammar.Culture = source.Culture;
             grammar.Mode = source.Mode;

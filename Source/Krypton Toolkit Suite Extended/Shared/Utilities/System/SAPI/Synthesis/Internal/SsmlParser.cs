@@ -1,4 +1,6 @@
-﻿using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech;
+﻿using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.TTSEngine;
+using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -966,7 +968,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
             string dest = null;
             string dest2 = null;
             string dest3 = null;
-            System.Speech.Synthesis.TtsEngine.SayAs sayAs = new System.Speech.Synthesis.TtsEngine.SayAs();
+            TTSEngine.SayAs sayAs = new TTSEngine.SayAs();
             while (reader.MoveToNextAttribute())
             {
                 bool flag = reader.NamespaceURI.Length != 0;

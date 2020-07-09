@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
+using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Threading;

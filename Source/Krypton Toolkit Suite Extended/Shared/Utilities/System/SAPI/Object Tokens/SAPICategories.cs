@@ -1,4 +1,5 @@
 ﻿using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis;
 using Microsoft.Win32;
 using System.Collections.Generic;
 using System.Globalization;

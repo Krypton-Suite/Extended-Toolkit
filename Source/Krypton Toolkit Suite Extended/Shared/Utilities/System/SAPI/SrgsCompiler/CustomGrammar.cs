@@ -1,5 +1,10 @@
-﻿using Microsoft.CSharp;
+﻿using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser;
+using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.IO;
+using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech;
+using Microsoft.CSharp;
 using Microsoft.VisualBasic;
+using System;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

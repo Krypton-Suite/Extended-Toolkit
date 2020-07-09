@@ -1,4 +1,5 @@
 ﻿using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.TTSEngine;
 using System;
 using System.IO;
 using System.Runtime.InteropServices;

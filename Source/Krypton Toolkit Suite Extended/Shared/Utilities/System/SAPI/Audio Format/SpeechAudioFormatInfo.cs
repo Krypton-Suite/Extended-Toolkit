@@ -1,14 +1,11 @@
-﻿using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech;
+﻿using Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis;
+using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.AudioFormat
 {
-	[Serializable]
+    [Serializable]
 	public class SpeechAudioFormatInfo
 	{
 		private int _averageBytesPerSecond;

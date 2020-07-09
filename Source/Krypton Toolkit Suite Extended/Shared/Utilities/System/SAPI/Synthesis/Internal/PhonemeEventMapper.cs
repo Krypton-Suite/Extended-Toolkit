@@ -1,4 +1,6 @@
 ﻿#define TRACE
+using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.TTSEngine;
 using System;
 using System.Collections;
 using System.Diagnostics;

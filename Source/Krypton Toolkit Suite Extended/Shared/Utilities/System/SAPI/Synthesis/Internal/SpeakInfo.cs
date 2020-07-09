@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Krypton.Toolkit.Suite.Extended.Utilities.System.TTSEngine;
+using System.Collections.Generic;
 using System.Globalization;
 
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
