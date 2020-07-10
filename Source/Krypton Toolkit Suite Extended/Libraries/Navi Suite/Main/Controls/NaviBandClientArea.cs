@@ -34,7 +34,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Navi.Suite
+namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 {
     [ToolboxItem(false)]
     public partial class NaviBandClientArea : NaviControl

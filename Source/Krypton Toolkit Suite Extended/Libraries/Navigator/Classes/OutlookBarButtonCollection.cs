@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Drawing;
 
-namespace Krypton.Toolkit.Extended.Navigator
+namespace Krypton.Toolkit.Suite.Extended.Navigator
 {
     public class OutlookBarButtonCollection : CollectionBase
     {

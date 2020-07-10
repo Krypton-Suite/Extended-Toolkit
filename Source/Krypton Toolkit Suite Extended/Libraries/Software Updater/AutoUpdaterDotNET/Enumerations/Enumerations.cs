@@ -1,6 +1,6 @@
 ﻿using System.Xml.Serialization;
 
-namespace Krypton.Toolkit.Extended.Software.Updater.AutoUpdaterDotNET
+namespace Krypton.Toolkit.Suite.Extended.Software.Updater.AutoUpdaterDotNET
 {
     /// <summary>
     ///     Enum representing the remind later time span.

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Krypton.Toolkit.Extended.IO
+namespace Krypton.Toolkit.Suite.Extended.IO
 {
     /// <summary>
     /// Insert single char
@@ -122,12 +122,12 @@ namespace Krypton.Toolkit.Extended.IO
                         spaceCountNextTabStop = tb.TabLength;
 
                     for (int i = 0; i < spaceCountNextTabStop; i++)
-                        ts[tb.Selection.Start.iLine].Insert(tb.Selection.Start.iChar, new Char(' '));
+                        ts[tb.Selection.Start.iLine].Insert(tb.Selection.Start.iChar, new InternalChar(' '));
 
                     tb.Selection.Start = new Place(tb.Selection.Start.iChar + spaceCountNextTabStop, tb.Selection.Start.iLine);
                     break;
                 default:
-                    ts[tb.Selection.Start.iLine].Insert(tb.Selection.Start.iChar, new Char(c));
+                    ts[tb.Selection.Start.iLine].Insert(tb.Selection.Start.iChar, new InternalChar(c));
                     tb.Selection.Start = new Place(tb.Selection.Start.iChar + 1, tb.Selection.Start.iLine);
                     break;
             }

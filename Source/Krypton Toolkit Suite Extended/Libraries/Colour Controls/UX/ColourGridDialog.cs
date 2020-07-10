@@ -1,26 +1,28 @@
 ﻿using Cyotek.Windows.Forms;
-using Krypton.Toolkit.Extended.Base;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Colour.Controls
+namespace Krypton.Toolkit.Suite.Extended.Drawing.Suite
 {
     public class ColourGridDialog : KryptonForm
     {
         #region Designer Code
+        private Krypton.Toolkit.Suite.Extended.Floating.Toolbars.ToolStripPanelExtened tspeColourGridActions;
+        private Krypton.Toolkit.Suite.Extended.Floating.Toolbars.FloatableToolStrip ftsColourGridActions;
+        private System.Windows.Forms.ToolStripButton tsbSavePalette;
+        private System.Windows.Forms.ToolStripButton tsbLoadPalette;
+        private KryptonPanel kryptonPanel1;
+        private ColorGrid cgColour;
 
         private void InitializeComponent()
         {
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             this.cgColour = new Cyotek.Windows.Forms.ColorGrid();
-            this.tspeColourGridActions = new Krypton.Toolkit.Extended.Floating.Toolbars.ToolStripPanelExtened();
-            this.ftsColourGridActions = new Krypton.Toolkit.Extended.Floating.Toolbars.FloatableToolStrip();
+            this.tspeColourGridActions = new Krypton.Toolkit.Suite.Extended.Floating.Toolbars.ToolStripPanelExtened();
+            this.ftsColourGridActions = new Krypton.Toolkit.Suite.Extended.Floating.Toolbars.FloatableToolStrip();
             this.tsbSavePalette = new System.Windows.Forms.ToolStripButton();
             this.tsbLoadPalette = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
@@ -74,7 +76,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             // tsbSavePalette
             // 
             this.tsbSavePalette.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbSavePalette.Image = global::Krypton.Toolkit.Extended.Colour.Controls.Properties.Resources.palette_save;
+            this.tsbSavePalette.Image = global::Krypton.Toolkit.Suite.Extended.Drawing.Suite.Properties.Resources.palette_save;
             this.tsbSavePalette.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbSavePalette.Name = "tsbSavePalette";
             this.tsbSavePalette.Size = new System.Drawing.Size(23, 22);
@@ -84,7 +86,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             // tsbLoadPalette
             // 
             this.tsbLoadPalette.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbLoadPalette.Image = global::Krypton.Toolkit.Extended.Colour.Controls.Properties.Resources.palette_load;
+            this.tsbLoadPalette.Image = global::Krypton.Toolkit.Suite.Extended.Drawing.Suite.Properties.Resources.palette_load;
             this.tsbLoadPalette.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbLoadPalette.Name = "tsbLoadPalette";
             this.tsbLoadPalette.Size = new System.Drawing.Size(23, 22);
@@ -127,12 +129,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
         private bool _showToolbar;
 
         private Color _colour, _colourToAdd;
-        private Floating.Toolbars.ToolStripPanelExtened tspeColourGridActions;
-        private Floating.Toolbars.FloatableToolStrip ftsColourGridActions;
-        private System.Windows.Forms.ToolStripButton tsbSavePalette;
-        private System.Windows.Forms.ToolStripButton tsbLoadPalette;
-        private KryptonPanel kryptonPanel1;
-        private ColorGrid cgColour;
+    
         private ColorGrid _grid;
         #endregion
 

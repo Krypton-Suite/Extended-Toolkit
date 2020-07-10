@@ -3,7 +3,7 @@ using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace Krypton.Toolkit.Extended.IO
+namespace Krypton.Toolkit.Suite.Extended.IO
 {
     public static class EncodingDetector
     {

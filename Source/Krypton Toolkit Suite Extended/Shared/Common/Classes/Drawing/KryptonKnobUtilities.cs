@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 
-namespace Krypton.Toolkit.Extended.Common
+namespace Krypton.Toolkit.Suite.Extended.Common
 {
     public class KryptonKnobUtilities
     {

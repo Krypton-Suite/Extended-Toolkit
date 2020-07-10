@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace Krypton.Toolkit.Extended.Base
+namespace Krypton.Toolkit.Suite.Extended.Base
 {
     public class CommandLinkTextValues : CaptionValues
     {

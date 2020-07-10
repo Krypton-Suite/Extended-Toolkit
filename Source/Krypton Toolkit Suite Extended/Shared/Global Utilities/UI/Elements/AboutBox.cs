@@ -1,17 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Krypton.Toolkit.Extended.Global.Utilities
+namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
 {
     /// <summary>
     /// Displays the application information.
     /// </summary>
     /// <seealso cref="Toolkit.KryptonForm" />
-    /// <seealso cref="Core.Interfaces.IAbout" />
+    /// <seealso cref="IAbout" />
     public partial class AboutBox : KryptonForm, IAbout
     {
         #region Designer Code

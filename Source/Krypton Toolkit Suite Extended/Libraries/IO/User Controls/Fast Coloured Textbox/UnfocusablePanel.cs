@@ -1,10 +1,11 @@
-﻿using System.Drawing;
+﻿using System.ComponentModel;
+using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.IO
+namespace Krypton.Toolkit.Suite.Extended.IO
 {
-    [System.ComponentModel.ToolboxItem(false)]
+    [ToolboxItem(false)]
     public class UnfocusablePanel : UserControl
     {
         public Color BackColour2 { get; set; }

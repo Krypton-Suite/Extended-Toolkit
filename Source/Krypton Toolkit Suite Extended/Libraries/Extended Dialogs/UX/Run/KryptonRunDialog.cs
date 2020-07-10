@@ -1,4 +1,5 @@
-﻿using Krypton.Toolkit.Extended.Core;
+﻿using Krypton.Toolkit.Suite.Extended.Base;
+using Krypton.Toolkit.Suite.Extended.Core;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using System;
 using System.Diagnostics;
@@ -6,7 +7,7 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Dialogs
+namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
     public class KryptonRunDialog : KryptonForm
     {
@@ -17,7 +18,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
         private Suite.Extended.Standard.Controls.KryptonLabelExtended klblMessage;
         private System.Windows.Forms.PictureBox pbxIcon;
         private Suite.Extended.Standard.Controls.KryptonButtonExtended kbtnRun;
-        private Base.KryptonUACElevatedButton kuacRun;
+        private KryptonUACElevatedButton kuacRun;
         private KryptonCancelDialogButton kcdbCancel;
         private Suite.Extended.Standard.Controls.KryptonButtonExtended kbtnBrowse;
         private Suite.Extended.Standard.Controls.KryptonButtonExtended kbtneLocate;
@@ -31,8 +32,8 @@ namespace Krypton.Toolkit.Extended.Dialogs
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KryptonRunDialog));
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             this.kbtnRun = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonButtonExtended();
-            this.kuacRun = new Krypton.Toolkit.Extended.Base.KryptonUACElevatedButton();
-            this.kcdbCancel = new Krypton.Toolkit.Extended.Dialogs.KryptonCancelDialogButton();
+            this.kuacRun = new Krypton.Toolkit.Suite.Extended.Base.KryptonUACElevatedButton();
+            this.kcdbCancel = new Krypton.Toolkit.Suite.Extended.Dialogs.KryptonCancelDialogButton();
             this.kbtnBrowse = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonButtonExtended();
             this.kbtneLocate = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonButtonExtended();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -157,7 +158,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kuacRun.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kuacRun.TabIndex = 4;
             this.kuacRun.Values.Text = "&Run";
-            this.kuacRun.ExecuteProcessAsAdministrator += new Krypton.Toolkit.Extended.Base.KryptonUACElevatedButton.ExecuteProcessAsAdministratorEventHandler(this.kuacRun_ExecuteProcessAsAdministrator);
+            this.kuacRun.ExecuteProcessAsAdministrator += new Krypton.Toolkit.Suite.Extended.Base.KryptonUACElevatedButton.ExecuteProcessAsAdministratorEventHandler(this.kuacRun_ExecuteProcessAsAdministrator);
             this.kuacRun.Click += new System.EventHandler(this.kuacRun_Click);
             // 
             // kcdbCancel
@@ -532,7 +533,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             // pbxIcon
             // 
             this.pbxIcon.BackColor = System.Drawing.Color.Transparent;
-            this.pbxIcon.Image = global::Krypton.Toolkit.Extended.Dialogs.Properties.Resources.Run_48_x_48;
+            this.pbxIcon.Image = global::Krypton.Toolkit.Suite.Extended.Dialogs.Properties.Resources.Run_48_x_48;
             this.pbxIcon.Location = new System.Drawing.Point(12, 60);
             this.pbxIcon.Name = "pbxIcon";
             this.pbxIcon.Size = new System.Drawing.Size(64, 64);
@@ -802,7 +803,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             }
         }
 
-        private void kuacRun_ExecuteProcessAsAdministrator(object sender, Base.ExecuteProcessAsAdministratorEventArgs e)
+        private void kuacRun_ExecuteProcessAsAdministrator(object sender, Suite.Extended.Base.ExecuteProcessAsAdministratorEventArgs e)
         {
             if (GetInputType() == Type.COMBOBOX)
             {

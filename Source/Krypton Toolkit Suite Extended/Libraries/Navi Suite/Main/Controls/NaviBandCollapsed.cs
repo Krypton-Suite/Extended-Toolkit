@@ -34,7 +34,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Navi.Suite
+namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 {
     /// <summary>
     /// This class represents a Band which is collapsed
@@ -45,7 +45,7 @@ namespace Krypton.Toolkit.Extended.Navi.Suite
     /// to collapsed mode. 
     /// </remarks>
     [
-     Designer("Krypton.Toolkit.Extended.Navi.Suite.NaviBandDesigner, Krypton.Toolkit.Extended.Navi.Suite, Version=2.0.0.0, Culture=neutral, PublicKeyToken=86dab5aa2dd98116"),
+     Designer("Krypton.Toolkit.Suite.Extended.Navi.Suite.NaviBandDesigner, Krypton.Toolkit.Suite.Extended.Navi.Suite, Version=2.0.0.0, Culture=neutral, PublicKeyToken=86dab5aa2dd98116"),
      ToolboxItem(false)
     ]
     public partial class NaviBandCollapsed : NaviControl

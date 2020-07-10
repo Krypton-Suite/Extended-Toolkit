@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Common
+namespace Krypton.Toolkit.Suite.Extended.Common
 {
     internal class PI
     {

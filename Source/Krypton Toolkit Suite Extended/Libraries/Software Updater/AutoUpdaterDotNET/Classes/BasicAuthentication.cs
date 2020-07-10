@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace Krypton.Toolkit.Extended.Software.Updater.AutoUpdaterDotNET
+namespace Krypton.Toolkit.Suite.Extended.Software.Updater.AutoUpdaterDotNET
 {
     /// <summary>
     ///     Provides Basic Authentication header for web request.

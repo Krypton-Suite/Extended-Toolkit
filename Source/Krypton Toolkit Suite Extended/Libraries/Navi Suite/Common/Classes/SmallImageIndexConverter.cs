@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Globalization;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Navi.Suite
+namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 {
     public class SmallImageIndexConverter : ImageIndexConverter
     {

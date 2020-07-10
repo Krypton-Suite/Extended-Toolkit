@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Runtime.InteropServices;
 
-namespace Krypton.Toolkit.Extended.Navi.Suite
+namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 {
     internal static class NativeMethods
     {

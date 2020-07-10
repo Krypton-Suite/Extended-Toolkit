@@ -33,7 +33,7 @@ using System;
 using System.ComponentModel;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Navi.Suite
+namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 {
     /// <summary>
     /// Represents a control with customizable drawing and layout styles

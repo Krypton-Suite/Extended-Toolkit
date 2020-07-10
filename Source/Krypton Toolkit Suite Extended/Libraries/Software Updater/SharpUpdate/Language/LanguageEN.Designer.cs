@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Krypton.Toolkit.Extended.Software.Updater.SharpUpdate.Language {
+namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate.Language {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Krypton.Toolkit.Extended.Software.Updater.SharpUpdate.Language {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Krypton.Toolkit.Extended.Software.Updater.SharpUpdate.Language.LanguageEN", typeof(LanguageEN).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate.Language.LanguageEN", typeof(LanguageEN).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

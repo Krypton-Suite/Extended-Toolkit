@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Runtime.CompilerServices;
 
-namespace Krypton.Toolkit.Extended.Core
+namespace Krypton.Toolkit.Suite.Extended.Core
 {
     public class Helpers
     {

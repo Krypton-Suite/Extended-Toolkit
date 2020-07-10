@@ -1,11 +1,11 @@
-﻿using Krypton.Toolkit.Extended.Wizard.Properties;
+﻿using Krypton.Toolkit.Suite.Extended.Wizard.Properties;
 using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 
-namespace Krypton.Toolkit.Extended.Wizard
+namespace Krypton.Toolkit.Suite.Extended.Wizard
 {
     /// <summary>Styles that can be applied to the body of a <see cref="WizardControl"/> when on XP or earlier or when a Basic theme is applied.</summary>
     public enum WizardClassicStyle

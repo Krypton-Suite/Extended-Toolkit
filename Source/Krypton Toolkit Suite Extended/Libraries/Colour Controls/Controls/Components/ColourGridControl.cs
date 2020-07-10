@@ -7,7 +7,7 @@ using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Colour.Controls
+namespace Krypton.Toolkit.Suite.Extended.Drawing.Suite
 {
     [DefaultProperty("Colour"), DefaultEvent("ColourChanged"), ToolboxItem(false)]
     public class ColourGridControl : Control
@@ -1283,7 +1283,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             float scaleX;
             float scaleY;
 
-            dpi = NativeMethods.GetDesktopDpi();
+            dpi = Internal.NativeMethods.GetDesktopDpi();
             scaleX = dpi.X / 96F;
             scaleY = dpi.Y / 96F;
 

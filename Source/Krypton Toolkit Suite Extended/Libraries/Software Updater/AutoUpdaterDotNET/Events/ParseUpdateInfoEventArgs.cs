@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Krypton.Toolkit.Extended.Software.Updater.AutoUpdaterDotNET
+namespace Krypton.Toolkit.Suite.Extended.Software.Updater.AutoUpdaterDotNET
 {
     /// <summary>
     ///     An object of this class contains the AppCast file received from server.

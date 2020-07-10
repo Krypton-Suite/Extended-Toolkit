@@ -34,7 +34,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Navi.Suite
+namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 {
     [
     //Designer(typeof(Guifreaks.Navisuite.Design.NavigationBarButtonDesigner))

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 
-namespace Krypton.Toolkit.Extended.Core
+namespace Krypton.Toolkit.Suite.Extended.Core
 {
     /// <summary>Provides data for the <see cref="ColourCollection.CollectionChanged"/> event of a <see cref="ColourCollection"/> instance.</summary>
     public class ColourCollectionEventArgs : EventArgs

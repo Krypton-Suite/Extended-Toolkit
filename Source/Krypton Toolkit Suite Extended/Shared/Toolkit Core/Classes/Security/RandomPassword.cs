@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Security.Cryptography;
 
-namespace Krypton.Toolkit.Extended.Core
+namespace Krypton.Toolkit.Suite.Extended.Core
 {
     /// <summary>
     /// This class can generate random passwords, which do not include ambiguous 

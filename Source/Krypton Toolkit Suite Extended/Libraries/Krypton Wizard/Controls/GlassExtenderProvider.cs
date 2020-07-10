@@ -5,7 +5,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Wizard
+namespace Krypton.Toolkit.Suite.Extended.Wizard
 {
     /// <summary>
     /// GlassExtenderProvider extends a <see cref="Form"/> and provides glass margins.

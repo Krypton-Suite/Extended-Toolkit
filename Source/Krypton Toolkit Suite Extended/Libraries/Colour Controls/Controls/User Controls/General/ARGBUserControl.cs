@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Colour.Controls
+namespace Krypton.Toolkit.Suite.Extended.Drawing.Suite
 {
     public class ARGBUserControl : UserControl
     {

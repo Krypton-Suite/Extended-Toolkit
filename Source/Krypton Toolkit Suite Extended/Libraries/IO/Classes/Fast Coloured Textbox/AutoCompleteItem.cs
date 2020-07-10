@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 
-namespace Krypton.Toolkit.Extended.IO
+namespace Krypton.Toolkit.Suite.Extended.IO
 {
     public class AutoCompleteItem
     {

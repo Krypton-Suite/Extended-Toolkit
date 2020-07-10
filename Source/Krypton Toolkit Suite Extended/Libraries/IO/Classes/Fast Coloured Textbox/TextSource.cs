@@ -5,7 +5,7 @@ using System.Drawing;
 using System.IO;
 using System.Text;
 
-namespace Krypton.Toolkit.Extended.IO
+namespace Krypton.Toolkit.Suite.Extended.IO
 {
     /// <summary>
     /// This class contains the source text (chars and styles).

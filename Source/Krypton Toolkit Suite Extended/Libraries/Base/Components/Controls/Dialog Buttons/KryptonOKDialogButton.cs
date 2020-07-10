@@ -3,7 +3,7 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Base
+namespace Krypton.Toolkit.Suite.Extended.Base
 {
     [ToolboxBitmap(typeof(KryptonButton))]
     public class KryptonOKDialogButton : KryptonButton
@@ -53,11 +53,12 @@ namespace Krypton.Toolkit.Extended.Base
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            if (ParentWindow != null) ParentWindow.AcceptButton = this;
+            if (ParentWindow != null)
+            {
+                OwnerWindowChangedEventArgs ev = new OwnerWindowChangedEventArgs(this, ParentWindow);
 
-            OwnerWindowChangedEventArgs ev = new OwnerWindowChangedEventArgs(this, ParentWindow);
-
-            ev.AssociateAcceptButton(this);
+                ev.AssociateAcceptButton(this);
+            }
 
             base.OnPaint(e);
         }

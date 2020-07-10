@@ -6,13 +6,22 @@
     <TargetFrameworks Condition="'$(TFMs)' == 'all'">net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;netcoreapp5.0</TargetFrameworks>
     <RootNamespace>Krypton.Toolkit.Suite.Extended.Tool.Strip.Items</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>5.550.2007</Version>
+    <OutputType>Library</OutputType>
   </PropertyGroup>
 
   <PropertyGroup>
     <DocumentationFile>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Tool.Strip.Items\Krypton.Toolkit.Suite.Extended.Tool.Strip.Items.xml</DocumentationFile>
     <OutputPath>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Tool.Strip.Items\</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <!--<PackageId>Krypton.Toolkit.Extended.Tool.Strip.Items.Canary</PackageId>-->
+    <PackageId>Krypton.Toolkit.Suite.Extended.Tool.Strip.Items</PackageId>
+    <PackageOutputPath>..\..\..\..\Bin\NuGet</PackageOutputPath>
+    <PackagePath></PackagePath>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Version>5.550.2008</Version>
     <Description>Contains menu, tool and status strip items.</Description>
     <RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
   </PropertyGroup>

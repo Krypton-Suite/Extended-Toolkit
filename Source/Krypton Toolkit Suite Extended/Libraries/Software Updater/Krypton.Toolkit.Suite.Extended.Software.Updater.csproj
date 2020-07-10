@@ -4,16 +4,24 @@
     <LangVersion>8.0</LangVersion>
     <TargetFrameworks>net45;netcoreapp3.1;netcoreapp5.0</TargetFrameworks>
     <TargetFrameworks Condition="'$(TFMs)' == 'all'">net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;netcoreapp5.0</TargetFrameworks>
-    <RootNamespace>Krypton.Toolkit.Extended.Software.Updater</RootNamespace>
+    <RootNamespace>Krypton.Toolkit.Suite.Extended.Software.Updater</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
+    <FileVersion>5.550.2008.0</FileVersion>
+    <OutputType>Library</OutputType>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <!--<PackageId>Krypton.Toolkit.Extended.Software.Updater.Canary</PackageId>-->
+    <PackageId>Krypton.Toolkit.Suite.Extended.Software.Updater</PackageId>
+    <PackageOutputPath>..\..\..\..\Bin\NuGet</PackageOutputPath>
+    <PackagePath></PackagePath>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Version>5.550.2007</Version>
-    <FileVersion>5.550.2007.0</FileVersion>
+    <Version>5.550.2008</Version>
     <Description>Contains popular software update solutions such as AutoUpdater.NET, NetSparkle and SharpUpdate.</Description>
     <RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
   </PropertyGroup>
-
+  
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net45|AnyCPU'">
     <DocumentationFile></DocumentationFile>
   </PropertyGroup>

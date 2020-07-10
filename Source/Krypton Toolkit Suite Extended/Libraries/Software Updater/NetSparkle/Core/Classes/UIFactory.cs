@@ -1,11 +1,11 @@
-﻿using Krypton.Toolkit.Extended.Software.Updater.NetSparkle.Resources;
+﻿using Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle.Resources;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Software.Updater.NetSparkle
+namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
 {
     /// <summary>
     /// UI factory for default interface

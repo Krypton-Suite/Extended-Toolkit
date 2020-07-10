@@ -1,11 +1,11 @@
-﻿using Krypton.Toolkit.Extended.Base;
+﻿using Krypton.Toolkit.Suite.Extended.Base;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.IO
+namespace Krypton.Toolkit.Suite.Extended.IO
 {
     public class HotkeysEditorWindow : KryptonForm
     {
@@ -49,7 +49,7 @@ namespace Krypton.Toolkit.Extended.IO
             this.colModifiers = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.colKey = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.colAction = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.kgv = new Krypton.Toolkit.Extended.Base.KryptonGrid();
+            this.kgv = new Krypton.Toolkit.Suite.Extended.Base.KryptonGrid();
             this.kcolModifiers = new Krypton.Toolkit.KryptonDataGridViewComboBoxColumn();
             this.kcolKey = new Krypton.Toolkit.KryptonDataGridViewComboBoxColumn();
             this.kcolmnAction = new Krypton.Toolkit.KryptonDataGridViewComboBoxColumn();

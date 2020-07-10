@@ -3,7 +3,7 @@ using System.Drawing;
 using System.IO;
 using System.Text;
 
-namespace Krypton.Toolkit.Extended.Core
+namespace Krypton.Toolkit.Suite.Extended.Core
 {
     /// <summary>
     /// Serialises and deserialises color palettes into and from the Jasc palette format.

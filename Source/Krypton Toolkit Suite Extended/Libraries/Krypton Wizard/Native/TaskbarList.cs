@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Wizard
+namespace Krypton.Toolkit.Suite.Extended.Wizard
 {
     [System.Security.SuppressUnmanagedCodeSecurity]
     internal static partial class NativeMethods

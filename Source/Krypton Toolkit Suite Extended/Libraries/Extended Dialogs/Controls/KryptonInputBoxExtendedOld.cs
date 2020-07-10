@@ -1,10 +1,9 @@
-﻿using Krypton.Toolkit.Extended.Dialogs.Resources;
-using Krypton.Toolkit.Suite.Extended.Language.Model;
+﻿using Krypton.Toolkit.Suite.Extended.Dialogs.Resources;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Dialogs
+namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
     public class KryptonInputBoxExtendedControl : UserControl
     {
@@ -217,7 +216,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
 
         private InputBoxIcon _icon;
 
-        private Language _language;
+        private Language.Model.Language _language;
 
         private InputBoxButtons _buttons;
 
@@ -271,7 +270,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
 
         public PaletteRelativeAlign UserSelectionTextAlignment { get => _userSelectionTextAlignment; set { _userSelectionTextAlignment = value; Invalidate(); } }
 
-        public Language Language { get => _language; set { _language = value; Invalidate(); } }
+        public Language.Model.Language ChosenLanguage { get => _language; set { _language = value; Invalidate(); } }
 
         public string[] ItemList { get => _itemList; set { _itemList = value; Invalidate(); } }
 
@@ -313,7 +312,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
         {
             InitializeComponent();
 
-            Language = Language.ENGLISH;
+            ChosenLanguage = Language.Model.Language.ENGLISH;
         }
         #endregion
 
@@ -391,26 +390,26 @@ namespace Krypton.Toolkit.Extended.Dialogs
         /// <param name="yesText">The yes text.</param>
         /// <param name="noText">The no text.</param>
         /// <param name="cancelText">The cancel text.</param>
-        private void SetLanguage(Language language, string okText = "", string yesText = "", string noText = "", string cancelText = "", string abortText = "")
+        private void SetLanguage(Language.Model.Language language, string okText = "", string yesText = "", string noText = "", string cancelText = "", string abortText = "")
         {
             switch (language)
             {
-                case Language.CZECH:
+                case Language.Model.Language.CZECH:
                     _buttonTextArray = "OK,Ano,Ne,Storno".Split(',');
                     break;
-                case Language.FRANÇAIS:
+                case Language.Model.Language.FRANÇAIS:
                     _buttonTextArray = "OK,Oui,Non,Annuler".Split(',');
                     break;
-                case Language.DEUTSCH:
+                case Language.Model.Language.DEUTSCH:
                     _buttonTextArray = "OK,Ja,Nein,Abbrechen".Split(',');
                     break;
-                case Language.SLOVAKIAN:
+                case Language.Model.Language.SLOVAKIAN:
                     _buttonTextArray = "OK,Áno,Nie,Zrušiť".Split(',');
                     break;
-                case Language.ESPAÑOL:
+                case Language.Model.Language.ESPAÑOL:
                     _buttonTextArray = "OK,Sí,No,Cancelar".Split(',');
                     break;
-                case Language.CUSTOM:
+                case Language.Model.Language.CUSTOM:
                     _buttonTextArray = SetCustomText(okText, yesText, noText, cancelText, abortText);
                     break;
                 default:
@@ -939,7 +938,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
 
             SetControlTypeface(ControlTypeface);
 
-            SetLanguage(Language, OkText, YesText, NoText, CancelText, AbortText);
+            SetLanguage(ChosenLanguage, OkText, YesText, NoText, CancelText, AbortText);
 
             if (CustomIcon != null)
             {

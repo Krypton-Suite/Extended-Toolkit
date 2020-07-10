@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Base
+namespace Krypton.Toolkit.Suite.Extended.Base
 {
     /// <summary>Provides a rounded <seealso cref="KryptonRichTextBox"/> like Google Chrome's current Omnibox design.</summary>
     [ToolboxBitmap(typeof(KryptonRichTextBox)), ToolboxItem(true), Description("Provides a rounded rich textbox like Google Chrome's current Omnibox design.")]

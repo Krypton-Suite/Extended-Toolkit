@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Krypton.Toolkit.Extended.Dialogs.Properties {
+namespace Krypton.Toolkit.Suite.Extended.Dialogs.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Krypton.Toolkit.Extended.Dialogs.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Krypton.Toolkit.Extended.Dialogs.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Krypton.Toolkit.Suite.Extended.Dialogs.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -127,6 +127,46 @@ namespace Krypton.Toolkit.Extended.Dialogs.Properties {
             get {
                 object obj = ResourceManager.GetObject("Run_481", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap swap_icon {
+            get {
+                object obj = ResourceManager.GetObject("swap_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap swap_icon1 {
+            get {
+                object obj = ResourceManager.GetObject("swap_icon1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap swap_icon50_x_46 {
+            get {
+                object obj = ResourceManager.GetObject("swap_icon50_x_46", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap swap_icon50_x_51 {
+            get {
+                object obj = ResourceManager.GetObject("swap_icon50_x_51", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

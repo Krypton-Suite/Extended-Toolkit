@@ -5,7 +5,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 
-namespace Krypton.Toolkit.Extended.Core
+namespace Krypton.Toolkit.Suite.Extended.Core
 {
     /// <summary>
     /// Represents a collection of colors

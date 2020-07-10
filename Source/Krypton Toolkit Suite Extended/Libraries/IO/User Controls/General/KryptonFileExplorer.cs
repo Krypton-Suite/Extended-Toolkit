@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Krypton.Toolkit.Suite.Extended.Base;
+using System;
 using System.ComponentModel;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.IO
+namespace Krypton.Toolkit.Suite.Extended.IO
 {
     public class KryptonFileExplorer : UserControl
     {
@@ -35,7 +32,7 @@ namespace Krypton.Toolkit.Extended.IO
         private KryptonButton kbtnCancel;
         private Panel pnlUp;
         private KryptonButton kbtnUp;
-        private Base.KryptonSplitButton ksbtnAction;
+        private KryptonSplitButton ksbtnAction;
         private KryptonSplitContainer kryptonSplitContainer1;
 
         private void InitializeComponent()
@@ -64,7 +61,7 @@ namespace Krypton.Toolkit.Extended.IO
             this.kryptonSplitContainer1 = new Krypton.Toolkit.KryptonSplitContainer();
             this.ktvFileSystem = new Krypton.Toolkit.KryptonTreeView();
             this.lvContents = new System.Windows.Forms.ListView();
-            this.ksbtnAction = new Krypton.Toolkit.Extended.Base.KryptonSplitButton();
+            this.ksbtnAction = new Krypton.Toolkit.Suite.Extended.Base.KryptonSplitButton();
             this.pnlTop.SuspendLayout();
             this.pnlPath.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kbcPath)).BeginInit();
@@ -457,7 +454,7 @@ namespace Krypton.Toolkit.Extended.IO
         #region Properties
         [DefaultValue(true)]
         public bool ShowBackButton { get => _showBackButton; set { _showBackButton = value; Invalidate(); } }
-        
+
         [DefaultValue(true)]
         public bool ShowForwardButton { get => _showForwardButton; set { _showForwardButton = value; Invalidate(); } }
 

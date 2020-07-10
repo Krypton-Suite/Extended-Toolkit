@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace Krypton.Toolkit.Extended.Software.Updater.NetSparkle
+namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
 {
     /// <summary>
     /// Interface used by objects that can download app casts from the internet.

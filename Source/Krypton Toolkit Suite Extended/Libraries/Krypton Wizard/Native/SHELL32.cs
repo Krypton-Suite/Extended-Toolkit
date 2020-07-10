@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 using System.Security;
 using System.Text;
 
-namespace Krypton.Toolkit.Extended.Wizard
+namespace Krypton.Toolkit.Suite.Extended.Wizard
 {
     [SuppressUnmanagedCodeSecurity]
     internal static partial class NativeMethods

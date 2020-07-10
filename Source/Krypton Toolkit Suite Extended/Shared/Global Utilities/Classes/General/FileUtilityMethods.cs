@@ -3,7 +3,7 @@ using System.IO;
 using System.Net;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Global.Utilities
+namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
 {
     /// <summary>
     /// This class is used to retrieve data for the downloaded file.
@@ -102,6 +102,61 @@ namespace Krypton.Toolkit.Extended.Global.Utilities
             }
 
             return output;
+        }
+
+        /// <summary>
+        /// This is a highly optimized function to get the file size abbreviation in bytes for an arbitrary, 64-bit file size. It returns the file size to three decimals followed by the abbreviation, like KB, MB, GB, etc. Use this function to display a human-readable, user-friendly file size to your users.
+        /// https://www.somacon.com/p576.php
+        /// </summary>
+        /// <param name="size">The size.</param>
+        /// <returns>
+        ///   Returns the human-readable file size for an arbitrary, 64-bit file size.
+        /// </returns>
+        public string GetBytesReadable(long size)
+        {
+            // Get absolute value
+            long absolute_i = (size < 0 ? -size : size);
+            // Determine the suffix and readable value
+            string suffix;
+            double readable;
+            if (absolute_i >= 0x1000000000000000) // Exabyte
+            {
+                suffix = "EB";
+                readable = (size >> 50);
+            }
+            else if (absolute_i >= 0x4000000000000) // Petabyte
+            {
+                suffix = "PB";
+                readable = (size >> 40);
+            }
+            else if (absolute_i >= 0x10000000000) // Terabyte
+            {
+                suffix = "TB";
+                readable = (size >> 30);
+            }
+            else if (absolute_i >= 0x40000000) // Gigabyte
+            {
+                suffix = "GB";
+                readable = (size >> 20);
+            }
+            else if (absolute_i >= 0x100000) // Megabyte
+            {
+                suffix = "MB";
+                readable = (size >> 10);
+            }
+            else if (absolute_i >= 0x400) // Kilobyte
+            {
+                suffix = "KB";
+                readable = size;
+            }
+            else
+            {
+                return size.ToString("0 B"); // Byte
+            }
+            // Divide by 1024 to get fractional value
+            readable = (readable / 1024);
+            // Return formatted number with suffix
+            return readable.ToString("0.### ") + suffix;
         }
 
         /// <summary>

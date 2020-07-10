@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Reflection;
 
-namespace Krypton.Toolkit.Extended.Software.Updater.SharpUpdate
+namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
 {
     /// <summary>
     /// The interface that all applications need to implement in order to use SharpUpdate

@@ -5,7 +5,7 @@ using System.Collections;
 using System.IO;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Core
+namespace Krypton.Toolkit.Suite.Extended.Core
 {
     public partial class ThemeOptions : KryptonForm
     {

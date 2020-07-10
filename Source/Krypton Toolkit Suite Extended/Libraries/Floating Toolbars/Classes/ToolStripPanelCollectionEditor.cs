@@ -4,7 +4,7 @@ using System.Drawing.Design;
 using System.Windows.Forms;
 using System.Windows.Forms.Design;
 
-namespace Krypton.Toolkit.Extended.Floating.Toolbars
+namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
 {
     internal class ToolStripPanelCollectionEditor : UITypeEditor
     {

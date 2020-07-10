@@ -1,11 +1,11 @@
-﻿using Krypton.Toolkit.Extended.Common;
+﻿using Krypton.Toolkit.Suite.Extended.Common;
 using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Windows.Forms.Design;
 
-namespace Krypton.Toolkit.Extended.Base
+namespace Krypton.Toolkit.Suite.Extended.Base
 {
     [ToolboxBitmap(typeof(ProgressBar)), ToolboxItem(true), ToolStripItemDesignerAvailability(ToolStripItemDesignerAvailability.All)]
     public class KryptonProgressBar : ProgressBarControl

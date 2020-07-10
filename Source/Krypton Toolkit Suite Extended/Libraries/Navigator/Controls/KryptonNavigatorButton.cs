@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 
-namespace Krypton.Toolkit.Extended.Navigator
+namespace Krypton.Toolkit.Suite.Extended.Navigator
 {
     [System.Drawing.ToolboxBitmap(typeof(System.Windows.Forms.Button)), ToolboxItem(false)]
     public class KryptonNavigatorButton : KryptonButton

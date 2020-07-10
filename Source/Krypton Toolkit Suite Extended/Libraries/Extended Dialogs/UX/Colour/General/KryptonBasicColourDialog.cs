@@ -1,41 +1,42 @@
-﻿using System;
+﻿using Krypton.Toolkit.Suite.Extended.Base;
+using System;
 using System.ComponentModel;
 using System.Drawing;
 
-namespace Krypton.Toolkit.Extended.Dialogs
+namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
     [DefaultEvent("SelectedColourChanged"), DefaultProperty("Colour")]
     public class KryptonBasicColourDialog : KryptonForm
     {
         #region Designer Code
-        private Colour.Controls.KryptonAlphaValueLabel kryptonAlphaValueLabel1;
+        private Krypton.Toolkit.Suite.Extended.Drawing.Suite.KryptonAlphaValueLabel kryptonAlphaValueLabel1;
         private KryptonOKDialogButton kbtnOk;
         private KryptonCancelDialogButton kbtnCancel;
         private KryptonPanel kryptonPanel1;
-        private Colour.Controls.KryptonBlueValueLabel klblBlueValue;
-        private Colour.Controls.KryptonRedValueLabel klblRedValue;
-        private Core.CircularPictureBox cpbxColourPreview;
-        private Colour.Controls.ColourWheelControl cwColourPicker;
+        private Krypton.Toolkit.Suite.Extended.Drawing.Suite.KryptonBlueValueLabel klblBlueValue;
+        private Krypton.Toolkit.Suite.Extended.Drawing.Suite.KryptonRedValueLabel klblRedValue;
+        private CircularPictureBox cpbxColourPreview;
+        private Krypton.Toolkit.Suite.Extended.Drawing.Suite.ColourWheelControl cwColourPicker;
         private System.Windows.Forms.Panel panel1;
-        private Colour.Controls.ColourHexadecimalTextBox txtHexColour;
-        private Colour.Controls.KryptonGreenValueLabel kryptonGreenValueLabel1;
+        private Krypton.Toolkit.Suite.Extended.Drawing.Suite.ColourHexadecimalTextBox txtHexColour;
+        private Krypton.Toolkit.Suite.Extended.Drawing.Suite.KryptonGreenValueLabel kryptonGreenValueLabel1;
         private KryptonPanel kpnlButtons;
 
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KryptonBasicColourDialog));
             this.kpnlButtons = new Krypton.Toolkit.KryptonPanel();
-            this.txtHexColour = new Krypton.Toolkit.Extended.Colour.Controls.ColourHexadecimalTextBox();
-            this.kryptonAlphaValueLabel1 = new Krypton.Toolkit.Extended.Colour.Controls.KryptonAlphaValueLabel();
-            this.kbtnOk = new Krypton.Toolkit.Extended.Dialogs.KryptonOKDialogButton();
-            this.kbtnCancel = new Krypton.Toolkit.Extended.Dialogs.KryptonCancelDialogButton();
+            this.txtHexColour = new Krypton.Toolkit.Suite.Extended.Drawing.Suite.ColourHexadecimalTextBox();
+            this.kryptonAlphaValueLabel1 = new Krypton.Toolkit.Suite.Extended.Drawing.Suite.KryptonAlphaValueLabel();
+            this.kbtnOk = new Krypton.Toolkit.Suite.Extended.Dialogs.KryptonOKDialogButton();
+            this.kbtnCancel = new Krypton.Toolkit.Suite.Extended.Dialogs.KryptonCancelDialogButton();
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
-            this.klblBlueValue = new Krypton.Toolkit.Extended.Colour.Controls.KryptonBlueValueLabel();
-            this.klblRedValue = new Krypton.Toolkit.Extended.Colour.Controls.KryptonRedValueLabel();
-            this.cpbxColourPreview = new Krypton.Toolkit.Extended.Core.CircularPictureBox();
-            this.cwColourPicker = new Krypton.Toolkit.Extended.Colour.Controls.ColourWheelControl();
+            this.klblBlueValue = new Krypton.Toolkit.Suite.Extended.Drawing.Suite.KryptonBlueValueLabel();
+            this.klblRedValue = new Krypton.Toolkit.Suite.Extended.Drawing.Suite.KryptonRedValueLabel();
+            this.cpbxColourPreview = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
+            this.cwColourPicker = new Krypton.Toolkit.Suite.Extended.Drawing.Suite.ColourWheelControl();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.kryptonGreenValueLabel1 = new Krypton.Toolkit.Extended.Colour.Controls.KryptonGreenValueLabel();
+            this.kryptonGreenValueLabel1 = new Krypton.Toolkit.Suite.Extended.Drawing.Suite.KryptonGreenValueLabel();
             ((System.ComponentModel.ISupportInitialize)(this.kpnlButtons)).BeginInit();
             this.kpnlButtons.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();

@@ -1,11 +1,11 @@
-﻿using Krypton.Toolkit.Extended.Core;
+﻿using Krypton.Toolkit.Suite.Extended.Core;
 using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.IO
+namespace Krypton.Toolkit.Suite.Extended.IO
 {
     /// <summary>
     /// 
@@ -137,7 +137,7 @@ namespace Krypton.Toolkit.Extended.IO
             this.kbtnGo.Name = "kbtnGo";
             this.kbtnGo.Size = new System.Drawing.Size(22, 22);
             this.kbtnGo.TabIndex = 8;
-            this.kbtnGo.Values.Image = global::Krypton.Toolkit.Extended.IO.Properties.Resources.kbtnGo_Values_Image;
+            this.kbtnGo.Values.Image = global::Krypton.Toolkit.Suite.Extended.IO.Properties.Resources.kbtnGo_Values_Image;
             this.kbtnGo.Values.Text = "";
             this.kbtnGo.Click += new System.EventHandler(this.kbtnGo_Click);
             // 
@@ -161,7 +161,7 @@ namespace Krypton.Toolkit.Extended.IO
             this.kbtnInfo.Name = "kbtnInfo";
             this.kbtnInfo.Size = new System.Drawing.Size(22, 22);
             this.kbtnInfo.TabIndex = 6;
-            this.kbtnInfo.Values.Image = global::Krypton.Toolkit.Extended.IO.Properties.Resources.kbtnInfo_Values_Image;
+            this.kbtnInfo.Values.Image = global::Krypton.Toolkit.Suite.Extended.IO.Properties.Resources.kbtnInfo_Values_Image;
             this.kbtnInfo.Values.Text = "";
             this.kbtnInfo.Click += new System.EventHandler(this.kbtnInfo_Click);
             // 
@@ -173,7 +173,7 @@ namespace Krypton.Toolkit.Extended.IO
             this.kbtnRefresh.Name = "kbtnRefresh";
             this.kbtnRefresh.Size = new System.Drawing.Size(22, 22);
             this.kbtnRefresh.TabIndex = 5;
-            this.kbtnRefresh.Values.Image = global::Krypton.Toolkit.Extended.IO.Properties.Resources.kbtnRefresh_Values_Image;
+            this.kbtnRefresh.Values.Image = global::Krypton.Toolkit.Suite.Extended.IO.Properties.Resources.kbtnRefresh_Values_Image;
             this.kbtnRefresh.Values.Text = "";
             this.kbtnRefresh.Click += new System.EventHandler(this.kbtnRefresh_Click);
             // 
@@ -185,7 +185,7 @@ namespace Krypton.Toolkit.Extended.IO
             this.ktbnHome.Name = "ktbnHome";
             this.ktbnHome.Size = new System.Drawing.Size(22, 22);
             this.ktbnHome.TabIndex = 4;
-            this.ktbnHome.Values.Image = global::Krypton.Toolkit.Extended.IO.Properties.Resources.kbtnHome_Values_Image;
+            this.ktbnHome.Values.Image = global::Krypton.Toolkit.Suite.Extended.IO.Properties.Resources.kbtnHome_Values_Image;
             this.ktbnHome.Values.Text = "";
             this.ktbnHome.Click += new System.EventHandler(this.ktbnHome_Click);
             // 
@@ -197,7 +197,7 @@ namespace Krypton.Toolkit.Extended.IO
             this.kbtnUp.Name = "kbtnUp";
             this.kbtnUp.Size = new System.Drawing.Size(22, 22);
             this.kbtnUp.TabIndex = 3;
-            this.kbtnUp.Values.Image = global::Krypton.Toolkit.Extended.IO.Properties.Resources.kbtnUp_Values_Image;
+            this.kbtnUp.Values.Image = global::Krypton.Toolkit.Suite.Extended.IO.Properties.Resources.kbtnUp_Values_Image;
             this.kbtnUp.Values.Text = "";
             this.kbtnUp.Click += new System.EventHandler(this.kbtnUp_Click);
             // 
@@ -209,7 +209,7 @@ namespace Krypton.Toolkit.Extended.IO
             this.kbtnBack.Name = "kbtnBack";
             this.kbtnBack.Size = new System.Drawing.Size(22, 22);
             this.kbtnBack.TabIndex = 2;
-            this.kbtnBack.Values.Image = global::Krypton.Toolkit.Extended.IO.Properties.Resources.kbtnBack_Values_Image;
+            this.kbtnBack.Values.Image = global::Krypton.Toolkit.Suite.Extended.IO.Properties.Resources.kbtnBack_Values_Image;
             this.kbtnBack.Values.Text = "";
             this.kbtnBack.Click += new System.EventHandler(this.kbtnBack_Click);
             // 
@@ -221,7 +221,7 @@ namespace Krypton.Toolkit.Extended.IO
             this.kbtnForward.Name = "kbtnForward";
             this.kbtnForward.Size = new System.Drawing.Size(22, 22);
             this.kbtnForward.TabIndex = 1;
-            this.kbtnForward.Values.Image = global::Krypton.Toolkit.Extended.IO.Properties.Resources.kbtnNext_Values_Image;
+            this.kbtnForward.Values.Image = global::Krypton.Toolkit.Suite.Extended.IO.Properties.Resources.kbtnNext_Values_Image;
             this.kbtnForward.Values.Text = "";
             this.kbtnForward.Click += new System.EventHandler(this.kbtnForward_Click);
             // 
@@ -233,7 +233,7 @@ namespace Krypton.Toolkit.Extended.IO
             this.kbtnAdd.Name = "kbtnAdd";
             this.kbtnAdd.Size = new System.Drawing.Size(22, 22);
             this.kbtnAdd.TabIndex = 0;
-            this.kbtnAdd.Values.Image = global::Krypton.Toolkit.Extended.IO.Properties.Resources.kbtnAdd_Values_Image;
+            this.kbtnAdd.Values.Image = global::Krypton.Toolkit.Suite.Extended.IO.Properties.Resources.kbtnAdd_Values_Image;
             this.kbtnAdd.Values.Text = "";
             this.kbtnAdd.Click += new System.EventHandler(this.kbtnAdd_Click);
             // 

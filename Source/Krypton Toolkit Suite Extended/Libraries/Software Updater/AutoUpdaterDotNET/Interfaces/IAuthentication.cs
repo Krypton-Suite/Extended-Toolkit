@@ -1,4 +1,4 @@
-﻿namespace Krypton.Toolkit.Extended.Software.Updater.AutoUpdaterDotNET
+﻿namespace Krypton.Toolkit.Suite.Extended.Software.Updater.AutoUpdaterDotNET
 {
     /// <summary>
     ///     Interface for authentication

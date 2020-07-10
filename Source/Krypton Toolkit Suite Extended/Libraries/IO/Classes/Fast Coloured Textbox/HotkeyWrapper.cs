@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.IO
+namespace Krypton.Toolkit.Suite.Extended.IO
 {
     public class HotkeyWrapper
     {

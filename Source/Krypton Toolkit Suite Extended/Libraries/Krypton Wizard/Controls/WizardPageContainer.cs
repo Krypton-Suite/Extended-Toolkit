@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Wizard
+namespace Krypton.Toolkit.Suite.Extended.Wizard
 {
     /// <summary>Button state for buttons controlling the wizard.</summary>
     public enum WizardCommandButtonState

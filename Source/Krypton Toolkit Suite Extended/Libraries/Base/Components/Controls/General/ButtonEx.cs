@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Base
+namespace Krypton.Toolkit.Suite.Extended.Base
 {
     internal class ButtonEx : KryptonButton
     {

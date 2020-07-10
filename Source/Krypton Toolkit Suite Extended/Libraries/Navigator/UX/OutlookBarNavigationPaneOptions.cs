@@ -1,8 +1,8 @@
-﻿using Krypton.Toolkit.Extended.Base;
+﻿using Krypton.Toolkit.Suite.Extended.Base;
 using Microsoft.VisualBasic;
 using System;
 
-namespace Krypton.Toolkit.Extended.Navigator
+namespace Krypton.Toolkit.Suite.Extended.Navigator
 {
     public class OutlookBarNavigationPaneOptions : KryptonForm
     {
@@ -22,8 +22,8 @@ namespace Krypton.Toolkit.Extended.Navigator
         private void InitializeComponent()
         {
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
-            this.kbtnOk = new Krypton.Toolkit.Extended.Base.KryptonOKDialogButton();
-            this.kbtnCancel = new Krypton.Toolkit.Extended.Base.KryptonCancelDialogButton();
+            this.kbtnOk = new Krypton.Toolkit.Suite.Extended.Base.KryptonOKDialogButton();
+            this.kbtnCancel = new Krypton.Toolkit.Suite.Extended.Base.KryptonCancelDialogButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
             this.clbItems = new System.Windows.Forms.CheckedListBox();

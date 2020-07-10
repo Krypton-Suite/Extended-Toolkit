@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net;
 
-namespace Krypton.Toolkit.Extended.Base
+namespace Krypton.Toolkit.Suite.Extended.Base
 {
     public class InternetProtocolEventArgs : EventArgs
     {

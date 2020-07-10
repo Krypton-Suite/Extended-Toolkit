@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Krypton.Toolkit.Extended.Software.Updater.NetSparkle.Resources {
+namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle.Resources {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Krypton.Toolkit.Extended.Software.Updater.NetSparkle.Resources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Krypton.Toolkit.Extended.Software.Updater.NetSparkle.Resources.Strings", typeof(Strings).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle.Resources.Strings", typeof(Strings).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

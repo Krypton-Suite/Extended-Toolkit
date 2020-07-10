@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace Krypton.Toolkit.Extended.IO
+namespace Krypton.Toolkit.Suite.Extended.IO
 {
     /// <summary>
     /// Diapason of text chars
@@ -814,7 +814,7 @@ namespace Krypton.Toolkit.Extended.IO
                 int toX = y == toLine ? Math.Min(toChar - 1, tb[y].Count - 1) : tb[y].Count - 1;
                 for (int x = fromX; x <= toX; x++)
                 {
-                    Char c = tb[y][x];
+                    InternalChar c = tb[y][x];
                     c.style |= styleIndex;
                     tb[y][x] = c;
                 }
@@ -1044,7 +1044,7 @@ namespace Krypton.Toolkit.Extended.IO
                 int toX = y == toLine ? Math.Min(toChar - 1, tb[y].Count - 1) : tb[y].Count - 1;
                 for (int x = fromX; x <= toX; x++)
                 {
-                    Char c = tb[y][x];
+                    InternalChar c = tb[y][x];
                     c.style &= ~styleIndex;
                     tb[y][x] = c;
                 }
@@ -1165,7 +1165,7 @@ namespace Krypton.Toolkit.Extended.IO
         /// <summary>
         /// Chars of range (exclude \n)
         /// </summary>
-        public IEnumerable<Char> Chars
+        public IEnumerable<InternalChar> Chars
         {
             get
             {
@@ -1486,7 +1486,7 @@ namespace Krypton.Toolkit.Extended.IO
                         }
                     }
                     else
-                        foreach (Char c in Chars)
+                        foreach (InternalChar c in Chars)
                             if ((c.style & si) != 0)//found char with ReadonlyStyle
                                 return true;
                 }

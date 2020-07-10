@@ -33,7 +33,7 @@ using System;
 using System.Reflection;
 using System.Resources;
 
-namespace Krypton.Toolkit.Extended.Navi.Suite
+namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 {
     public class NaviOptionsForm : KryptonForm
     {
@@ -71,7 +71,7 @@ namespace Krypton.Toolkit.Extended.Navi.Suite
             this.buttonMoveDown = new Krypton.Toolkit.KryptonButton();
             this.buttonOk = new Krypton.Toolkit.KryptonButton();
             this.buttonCancel = new Krypton.Toolkit.KryptonButton();
-            this.checkedListBoxBands = new Krypton.Toolkit.Extended.Navi.Suite.NaviCheckedListBox();
+            this.checkedListBoxBands = new Krypton.Toolkit.Suite.Extended.Navi.Suite.NaviCheckedListBox();
             this.kclbBands = new Krypton.Toolkit.KryptonCheckedListBox();
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();

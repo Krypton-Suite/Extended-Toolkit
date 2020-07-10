@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace Krypton.Toolkit.Extended.Software.Updater.NetSparkle
+namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
 {
     /// <summary>
     /// Provides data for a progress event for downloading an AppCastItem from a

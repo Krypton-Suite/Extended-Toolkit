@@ -1,9 +1,9 @@
-﻿using Krypton.Toolkit.Extended.Standard.Controls;
+﻿using Krypton.Toolkit.Suite.Extended.Standard.Controls;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Navigator
+namespace Krypton.Toolkit.Suite.Extended.Navigator
 {
     [ToolboxBitmap(typeof(Button)), ToolboxItem(false)]
     public class CustomNavigatorButton : CustomButton

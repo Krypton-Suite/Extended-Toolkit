@@ -4,7 +4,7 @@ using System;
 using System.IO;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Core
+namespace Krypton.Toolkit.Suite.Extended.Core
 {
     public partial class ColourBlendingOptions : KryptonForm
     {
@@ -332,7 +332,7 @@ namespace Krypton.Toolkit.Extended.Core
             this.kcbBaseColour.StateCommon.Content.ShortText.ImageStyle = Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.kcbBaseColour.StateCommon.Content.ShortText.Trim = Krypton.Toolkit.PaletteTextTrim.Inherit;
             this.kcbBaseColour.TabIndex = 32;
-            this.kcbBaseColour.Values.Image = global::Krypton.Toolkit.Extended.Core.Resources.ImageResources.Colour_Wheel_16_x_16;
+            this.kcbBaseColour.Values.Image = global::Krypton.Toolkit.Suite.Extended.Core.Resources.ImageResources.Colour_Wheel_16_x_16;
             this.kcbBaseColour.Values.Text = "&Choose a Base Colour";
             // 
             // kryptonLabel4

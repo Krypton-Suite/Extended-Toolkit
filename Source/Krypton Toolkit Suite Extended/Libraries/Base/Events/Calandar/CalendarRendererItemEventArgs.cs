@@ -1,4 +1,4 @@
-﻿namespace Krypton.Toolkit.Extended.Base
+﻿namespace Krypton.Toolkit.Suite.Extended.Base
 {
     /// <summary>
     /// Contains information to render an item

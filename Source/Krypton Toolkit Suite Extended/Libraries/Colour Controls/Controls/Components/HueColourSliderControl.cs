@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Linq;
 
-namespace Krypton.Toolkit.Extended.Colour.Controls
+namespace Krypton.Toolkit.Suite.Extended.Drawing.Suite
 {
     [ToolboxItem(true)]
     public class HueColourSliderControl : ColourSliderControl

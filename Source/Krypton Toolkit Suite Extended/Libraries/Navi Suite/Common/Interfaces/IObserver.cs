@@ -1,4 +1,4 @@
-﻿namespace Krypton.Toolkit.Extended.Navi.Suite
+﻿namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 {
     /// <summary>
     /// Represents an object which can observe other <see cref="IObservable"/> objects

@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using System.Windows.Forms.Design;
 
-namespace Krypton.Toolkit.Extended.Navigator.Controls
+namespace Krypton.Toolkit.Suite.Extended.Navigator.Controls
 {
     [Designer(typeof(KryptonTabControlDesigner), typeof(IDesigner)), ToolboxBitmap(typeof(TabControl))]
     public class KryptonTabControl : TabControl

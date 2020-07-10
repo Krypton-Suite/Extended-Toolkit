@@ -10,7 +10,7 @@ using System.Threading;
 using System.Threading.Tasks;
 //#endif
 
-namespace Krypton.Toolkit.Extended.Software.Updater.NetSparkle
+namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
 {
     /// <summary>
     /// Class to communicate with a sparkle-based appcast to download

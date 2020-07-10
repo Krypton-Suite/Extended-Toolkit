@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace Krypton.Toolkit.Extended.Base
+namespace Krypton.Toolkit.Suite.Extended.Base
 {
     /// <summary>
     /// Summary description for Utility.

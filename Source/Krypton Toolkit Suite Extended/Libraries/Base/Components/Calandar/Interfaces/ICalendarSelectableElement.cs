@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Krypton.Toolkit.Extended.Base
+namespace Krypton.Toolkit.Suite.Extended.Base
 {
     /// <summary>
     /// Interface implemented by every selectable element of the calendar

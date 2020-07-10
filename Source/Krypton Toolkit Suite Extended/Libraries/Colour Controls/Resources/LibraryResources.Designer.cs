@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Krypton.Toolkit.Extended.Colour.Controls {
+namespace Krypton.Toolkit.Suite.Extended.Drawing.Suite.Resources {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Krypton.Toolkit.Extended.Colour.Controls.Resources.LibraryResources", typeof(LibraryResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Krypton.Toolkit.Suite.Extended.Drawing.Suite.Resources.LibraryResources", typeof(LibraryResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

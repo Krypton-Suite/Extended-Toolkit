@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 using System.Text.Json;
 #endif
 
-namespace Krypton.Toolkit.Extended.Software.Updater.NetSparkle
+namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
 {
     class JSONConfiguration : Configuration
     {

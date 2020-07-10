@@ -1,9 +1,9 @@
 ﻿using EasyScintilla;
-using Krypton.Toolkit.Extended.Core.Resources;
+using Krypton.Toolkit.Suite.Extended.Core.Resources;
 using System;
 using System.IO;
 
-namespace Krypton.Toolkit.Extended.Core
+namespace Krypton.Toolkit.Suite.Extended.Core
 {
     public class FileCreator
     {

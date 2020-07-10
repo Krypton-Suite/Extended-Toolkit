@@ -6,7 +6,7 @@ using System.Drawing.Drawing2D;
 using System.Security.Permissions;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Base
+namespace Krypton.Toolkit.Suite.Extended.Base
 {
     [ToolboxBitmap(typeof(ListView)), ToolboxItem(false)]
     public class KryptonListView : ListView

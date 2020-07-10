@@ -2,7 +2,7 @@
 using System;
 using System.Drawing;
 
-namespace Krypton.Toolkit.Extended.Colour.Controls
+namespace Krypton.Toolkit.Suite.Extended.Drawing.Suite.Legacy
 {
     public class ColourGridWindow : KryptonForm
     {

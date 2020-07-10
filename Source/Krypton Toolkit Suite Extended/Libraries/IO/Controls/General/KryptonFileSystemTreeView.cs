@@ -5,7 +5,7 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.IO
+namespace Krypton.Toolkit.Suite.Extended.IO
 {
     #region TreeView
     [ToolboxBitmap(typeof(KryptonTreeView)), Description("A directory and file browser.")]

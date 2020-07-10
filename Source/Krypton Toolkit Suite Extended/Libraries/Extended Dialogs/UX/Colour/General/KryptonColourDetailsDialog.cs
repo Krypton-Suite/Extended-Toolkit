@@ -1,62 +1,61 @@
 ﻿using System;
 
-namespace Krypton.Toolkit.Extended.Dialogs
+namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
     public class KryptonColourDetailsDialog : KryptonForm
     {
-        #region Designer Code
         private KryptonPanel kpnlButtons;
         private KryptonOKDialogButton kbtnOk;
         private System.Windows.Forms.Panel panel1;
         private KryptonPanel kryptonPanel1;
         private KryptonLabel kryptonLabel6;
-        private Colour.Controls.KryptonBlueValueNumericBox kryptonBlueValueNumericBox1;
+        private Krypton.Toolkit.Suite.Extended.Drawing.Suite.KryptonBlueValueNumericBox kryptonBlueValueNumericBox1;
         private KryptonLabel kryptonLabel5;
         private KryptonLabel kryptonLabel4;
-        private Colour.Controls.KryptonRedValueNumericBox kryptonRedValueNumericBox1;
-        private Colour.Controls.KryptonGreenValueNumericBox kryptonGreenValueNumericBox1;
+        private Krypton.Toolkit.Suite.Extended.Drawing.Suite.KryptonRedValueNumericBox kryptonRedValueNumericBox1;
+        private Krypton.Toolkit.Suite.Extended.Drawing.Suite.KryptonGreenValueNumericBox kryptonGreenValueNumericBox1;
         private KryptonLabel kryptonLabel3;
-        private Colour.Controls.KryptonAlphaValueNumericBox kryptonAlphaValueNumericBox1;
+        private Krypton.Toolkit.Suite.Extended.Drawing.Suite.KryptonAlphaValueNumericBox kryptonAlphaValueNumericBox1;
         private KryptonLabel kryptonLabel2;
         private KryptonLabel kryptonLabel1;
         private KryptonLabel kryptonLabel7;
-        private Colour.Controls.KryptonBlueValueNumericBox kryptonBlueValueNumericBox2;
+        private Krypton.Toolkit.Suite.Extended.Drawing.Suite.KryptonBlueValueNumericBox kryptonBlueValueNumericBox2;
         private KryptonLabel kryptonLabel8;
         private KryptonLabel kryptonLabel9;
-        private Colour.Controls.KryptonRedValueNumericBox kryptonRedValueNumericBox2;
-        private Colour.Controls.KryptonGreenValueNumericBox kryptonGreenValueNumericBox2;
+        private Krypton.Toolkit.Suite.Extended.Drawing.Suite.KryptonRedValueNumericBox kryptonRedValueNumericBox2;
+        private Krypton.Toolkit.Suite.Extended.Drawing.Suite.KryptonGreenValueNumericBox kryptonGreenValueNumericBox2;
         private KryptonLabel kryptonLabel10;
         private KryptonLabel kryptonLabel11;
-        private Colour.Controls.ColourHexadecimalTextBox txtHexColour;
-        private Colour.Controls.KryptonAlphaValueLabel kryptonAlphaValueLabel1;
+        private Krypton.Toolkit.Suite.Extended.Drawing.Suite.ColourHexadecimalTextBox txtHexColour;
+        private Krypton.Toolkit.Suite.Extended.Drawing.Suite.KryptonAlphaValueLabel kryptonAlphaValueLabel1;
         private KryptonCancelDialogButton kbtnCancel;
 
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KryptonColourDetailsDialog));
             this.kpnlButtons = new Krypton.Toolkit.KryptonPanel();
-            this.kbtnOk = new Krypton.Toolkit.Extended.Dialogs.KryptonOKDialogButton();
-            this.kbtnCancel = new Krypton.Toolkit.Extended.Dialogs.KryptonCancelDialogButton();
+            this.kbtnOk = new Krypton.Toolkit.Suite.Extended.Dialogs.KryptonOKDialogButton();
+            this.kbtnCancel = new Krypton.Toolkit.Suite.Extended.Dialogs.KryptonCancelDialogButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
-            this.txtHexColour = new Krypton.Toolkit.Extended.Colour.Controls.ColourHexadecimalTextBox();
+            this.txtHexColour = new Krypton.Toolkit.Suite.Extended.Drawing.Suite.ColourHexadecimalTextBox();
             this.kryptonLabel7 = new Krypton.Toolkit.KryptonLabel();
-            this.kryptonAlphaValueLabel1 = new Krypton.Toolkit.Extended.Colour.Controls.KryptonAlphaValueLabel();
-            this.kryptonBlueValueNumericBox2 = new Krypton.Toolkit.Extended.Colour.Controls.KryptonBlueValueNumericBox();
+            this.kryptonAlphaValueLabel1 = new Krypton.Toolkit.Suite.Extended.Drawing.Suite.KryptonAlphaValueLabel();
+            this.kryptonBlueValueNumericBox2 = new Krypton.Toolkit.Suite.Extended.Drawing.Suite.KryptonBlueValueNumericBox();
             this.kryptonLabel8 = new Krypton.Toolkit.KryptonLabel();
             this.kryptonLabel9 = new Krypton.Toolkit.KryptonLabel();
-            this.kryptonRedValueNumericBox2 = new Krypton.Toolkit.Extended.Colour.Controls.KryptonRedValueNumericBox();
-            this.kryptonGreenValueNumericBox2 = new Krypton.Toolkit.Extended.Colour.Controls.KryptonGreenValueNumericBox();
+            this.kryptonRedValueNumericBox2 = new Krypton.Toolkit.Suite.Extended.Drawing.Suite.KryptonRedValueNumericBox();
+            this.kryptonGreenValueNumericBox2 = new Krypton.Toolkit.Suite.Extended.Drawing.Suite.KryptonGreenValueNumericBox();
             this.kryptonLabel10 = new Krypton.Toolkit.KryptonLabel();
             this.kryptonLabel11 = new Krypton.Toolkit.KryptonLabel();
             this.kryptonLabel6 = new Krypton.Toolkit.KryptonLabel();
-            this.kryptonBlueValueNumericBox1 = new Krypton.Toolkit.Extended.Colour.Controls.KryptonBlueValueNumericBox();
+            this.kryptonBlueValueNumericBox1 = new Krypton.Toolkit.Suite.Extended.Drawing.Suite.KryptonBlueValueNumericBox();
             this.kryptonLabel5 = new Krypton.Toolkit.KryptonLabel();
             this.kryptonLabel4 = new Krypton.Toolkit.KryptonLabel();
-            this.kryptonRedValueNumericBox1 = new Krypton.Toolkit.Extended.Colour.Controls.KryptonRedValueNumericBox();
-            this.kryptonGreenValueNumericBox1 = new Krypton.Toolkit.Extended.Colour.Controls.KryptonGreenValueNumericBox();
+            this.kryptonRedValueNumericBox1 = new Krypton.Toolkit.Suite.Extended.Drawing.Suite.KryptonRedValueNumericBox();
+            this.kryptonGreenValueNumericBox1 = new Krypton.Toolkit.Suite.Extended.Drawing.Suite.KryptonGreenValueNumericBox();
             this.kryptonLabel3 = new Krypton.Toolkit.KryptonLabel();
-            this.kryptonAlphaValueNumericBox1 = new Krypton.Toolkit.Extended.Colour.Controls.KryptonAlphaValueNumericBox();
+            this.kryptonAlphaValueNumericBox1 = new Krypton.Toolkit.Suite.Extended.Drawing.Suite.KryptonAlphaValueNumericBox();
             this.kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
             this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
             ((System.ComponentModel.ISupportInitialize)(this.kpnlButtons)).BeginInit();
@@ -429,7 +428,6 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.ResumeLayout(false);
 
         }
-        #endregion
 
         private void KryptonColourDetailsDialog_Load(object sender, EventArgs e)
         {

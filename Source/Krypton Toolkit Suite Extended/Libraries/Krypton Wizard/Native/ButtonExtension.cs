@@ -1,8 +1,8 @@
-﻿using Krypton.Toolkit.Extended.Common;
+﻿using Krypton.Toolkit.Suite.Extended.Common;
 using System;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Wizard
+namespace Krypton.Toolkit.Suite.Extended.Wizard
 {
     /// <summary>
     /// 

@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Colour.Controls
+namespace Krypton.Toolkit.Suite.Extended.Drawing.Suite
 {
     public class ColourGridUserControl : UserControl
     {
@@ -50,8 +50,8 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.kbtnOpenPalette.ToolTipValues.Description = "Load a custom palette.";
             this.kbtnOpenPalette.ToolTipValues.EnableToolTips = true;
             this.kbtnOpenPalette.ToolTipValues.Heading = "Load Palette";
-            this.kbtnOpenPalette.ToolTipValues.Image = global::Krypton.Toolkit.Extended.Colour.Controls.Properties.Resources.palette_load;
-            this.kbtnOpenPalette.Values.Image = global::Krypton.Toolkit.Extended.Colour.Controls.Properties.Resources.palette_load;
+            this.kbtnOpenPalette.ToolTipValues.Image = global::Krypton.Toolkit.Suite.Extended.Drawing.Suite.Properties.Resources.palette_load;
+            this.kbtnOpenPalette.Values.Image = global::Krypton.Toolkit.Suite.Extended.Drawing.Suite.Properties.Resources.palette_load;
             this.kbtnOpenPalette.Values.Text = "";
             this.kbtnOpenPalette.Click += new System.EventHandler(this.kbtnOpenPalette_Click);
             // 
@@ -66,8 +66,8 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.kbtnSavePalette.ToolTipValues.Description = "Save a custom palette.";
             this.kbtnSavePalette.ToolTipValues.EnableToolTips = true;
             this.kbtnSavePalette.ToolTipValues.Heading = "Save Palette";
-            this.kbtnSavePalette.ToolTipValues.Image = global::Krypton.Toolkit.Extended.Colour.Controls.Properties.Resources.palette_save;
-            this.kbtnSavePalette.Values.Image = global::Krypton.Toolkit.Extended.Colour.Controls.Properties.Resources.palette_save;
+            this.kbtnSavePalette.ToolTipValues.Image = global::Krypton.Toolkit.Suite.Extended.Drawing.Suite.Properties.Resources.palette_save;
+            this.kbtnSavePalette.Values.Image = global::Krypton.Toolkit.Suite.Extended.Drawing.Suite.Properties.Resources.palette_save;
             this.kbtnSavePalette.Values.Text = "";
             this.kbtnSavePalette.Click += new System.EventHandler(this.kbtnSavePalette_Click);
             // 

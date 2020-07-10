@@ -1,9 +1,9 @@
-﻿using Krypton.Toolkit.Extended.Wizard.Properties;
+﻿using Krypton.Toolkit.Suite.Extended.Wizard.Properties;
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Wizard
+namespace Krypton.Toolkit.Suite.Extended.Wizard
 {
     /// <summary>
     /// Represents a single page in a <see cref="WizardControl" />.

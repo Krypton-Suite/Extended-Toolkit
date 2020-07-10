@@ -1,6 +1,6 @@
 ﻿using Cyotek.Windows.Forms;
-using Krypton.Toolkit.Extended.Base;
-using Krypton.Toolkit.Extended.Colour.Controls;
+using Krypton.Toolkit.Suite.Extended.Base;
+using Krypton.Toolkit.Suite.Extended.Drawing.Suite;
 using System;
 using System.ComponentModel;
 using System.Drawing;
@@ -9,7 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Dialogs
+namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
     [DefaultEvent("PreviewColorChanged"), DefaultProperty("Color")]
     public class ColourPickerDialogLegacy : KryptonForm
@@ -30,15 +30,15 @@ namespace Krypton.Toolkit.Extended.Dialogs
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ColourPickerDialogLegacy));
             this.kpnlBack = new Krypton.Toolkit.KryptonPanel();
-            this.scpColours = new Krypton.Toolkit.Extended.Colour.Controls.ScreenColourPickerControl();
-            this.ceColour = new Krypton.Toolkit.Extended.Colour.Controls.ColourEditorUserControlLegacy();
-            this.cwSelectedColour = new Krypton.Toolkit.Extended.Colour.Controls.ColourWheelControl();
-            this.cem = new Krypton.Toolkit.Extended.Colour.Controls.ColourEditorManager();
+            this.scpColours = new Krypton.Toolkit.Suite.Extended.Drawing.Suite.ScreenColourPickerControl();
+            this.ceColour = new Krypton.Toolkit.Suite.Extended.Drawing.Suite.ColourEditorUserControlLegacy();
+            this.cwSelectedColour = new Krypton.Toolkit.Suite.Extended.Drawing.Suite.ColourWheelControl();
+            this.cem = new Krypton.Toolkit.Suite.Extended.Drawing.Suite.ColourEditorManager();
             this.kryptonButtonExtended1 = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonButtonExtended();
             this.kbeCancel = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonButtonExtended();
             this.kbeOk = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonButtonExtended();
             this.cgColourPalette = new Cyotek.Windows.Forms.ColorGrid();
-            this.cpbColourPreview = new Krypton.Toolkit.Extended.Base.CircularPictureBox();
+            this.cpbColourPreview = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
             this.kbtneLoadColourPalette = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonButtonExtended();
             ((System.ComponentModel.ISupportInitialize)(this.kpnlBack)).BeginInit();
             this.kpnlBack.SuspendLayout();
@@ -65,7 +65,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             // scpColours
             // 
             this.scpColours.Colour = System.Drawing.Color.Empty;
-            this.scpColours.Image = global::Krypton.Toolkit.Extended.Dialogs.Properties.Resources.eyedropper;
+            this.scpColours.Image = global::Krypton.Toolkit.Suite.Extended.Dialogs.Properties.Resources.eyedropper;
             this.scpColours.Location = new System.Drawing.Point(501, 144);
             this.scpColours.Name = "scpColours";
             this.scpColours.Size = new System.Drawing.Size(130, 131);
@@ -171,7 +171,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kryptonButtonExtended1.StateTrackingShortTextColourOne = System.Drawing.Color.Empty;
             this.kryptonButtonExtended1.StateTrackingShortTextColourTwo = System.Drawing.Color.Empty;
             this.kryptonButtonExtended1.TabIndex = 0;
-            this.kryptonButtonExtended1.Values.Image = global::Krypton.Toolkit.Extended.Dialogs.Properties.Resources.palette_save;
+            this.kryptonButtonExtended1.Values.Image = global::Krypton.Toolkit.Suite.Extended.Dialogs.Properties.Resources.palette_save;
             this.kryptonButtonExtended1.Values.Text = "";
             // 
             // kbeCancel
@@ -356,14 +356,14 @@ namespace Krypton.Toolkit.Extended.Dialogs
             // 
             // kbtneLoadColourPalette
             // 
-            this.kbtneLoadColourPalette.Image = global::Krypton.Toolkit.Extended.Dialogs.Properties.Resources.palette_load;
+            this.kbtneLoadColourPalette.Image = global::Krypton.Toolkit.Suite.Extended.Dialogs.Properties.Resources.palette_load;
             this.kbtneLoadColourPalette.Location = new System.Drawing.Point(12, 308);
             this.kbtneLoadColourPalette.LongTextTypeface = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.kbtneLoadColourPalette.Name = "kbtneLoadColourPalette";
             this.kbtneLoadColourPalette.OverrideDefault.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtneLoadColourPalette.OverrideDefault.Content.LongText.Image = global::Krypton.Toolkit.Extended.Dialogs.Properties.Resources.palette_load;
+            this.kbtneLoadColourPalette.OverrideDefault.Content.LongText.Image = global::Krypton.Toolkit.Suite.Extended.Dialogs.Properties.Resources.palette_load;
             this.kbtneLoadColourPalette.OverrideDefault.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtneLoadColourPalette.OverrideDefault.Content.ShortText.Image = global::Krypton.Toolkit.Extended.Dialogs.Properties.Resources.palette_load;
+            this.kbtneLoadColourPalette.OverrideDefault.Content.ShortText.Image = global::Krypton.Toolkit.Suite.Extended.Dialogs.Properties.Resources.palette_load;
             this.kbtneLoadColourPalette.OverrideDefaultBackGroundColourOne = System.Drawing.Color.Empty;
             this.kbtneLoadColourPalette.OverrideDefaultBackGroundColourTwo = System.Drawing.Color.Empty;
             this.kbtneLoadColourPalette.OverrideDefaultBorderColourOne = System.Drawing.Color.Empty;
@@ -373,9 +373,9 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kbtneLoadColourPalette.OverrideDefaultShortTextColourOne = System.Drawing.Color.Empty;
             this.kbtneLoadColourPalette.OverrideDefaultShortTextColourTwo = System.Drawing.Color.Empty;
             this.kbtneLoadColourPalette.OverrideFocus.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtneLoadColourPalette.OverrideFocus.Content.LongText.Image = global::Krypton.Toolkit.Extended.Dialogs.Properties.Resources.palette_load;
+            this.kbtneLoadColourPalette.OverrideFocus.Content.LongText.Image = global::Krypton.Toolkit.Suite.Extended.Dialogs.Properties.Resources.palette_load;
             this.kbtneLoadColourPalette.OverrideFocus.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtneLoadColourPalette.OverrideFocus.Content.ShortText.Image = global::Krypton.Toolkit.Extended.Dialogs.Properties.Resources.palette_load;
+            this.kbtneLoadColourPalette.OverrideFocus.Content.ShortText.Image = global::Krypton.Toolkit.Suite.Extended.Dialogs.Properties.Resources.palette_load;
             this.kbtneLoadColourPalette.OverrideFocusBackGroundColourOne = System.Drawing.Color.Empty;
             this.kbtneLoadColourPalette.OverrideFocusBackGroundColourTwo = System.Drawing.Color.Empty;
             this.kbtneLoadColourPalette.OverrideFocusBorderColourOne = System.Drawing.Color.Empty;
@@ -387,9 +387,9 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kbtneLoadColourPalette.ShortTextTypeface = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.kbtneLoadColourPalette.Size = new System.Drawing.Size(23, 23);
             this.kbtneLoadColourPalette.StateCommon.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtneLoadColourPalette.StateCommon.Content.LongText.Image = global::Krypton.Toolkit.Extended.Dialogs.Properties.Resources.palette_load;
+            this.kbtneLoadColourPalette.StateCommon.Content.LongText.Image = global::Krypton.Toolkit.Suite.Extended.Dialogs.Properties.Resources.palette_load;
             this.kbtneLoadColourPalette.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtneLoadColourPalette.StateCommon.Content.ShortText.Image = global::Krypton.Toolkit.Extended.Dialogs.Properties.Resources.palette_load;
+            this.kbtneLoadColourPalette.StateCommon.Content.ShortText.Image = global::Krypton.Toolkit.Suite.Extended.Dialogs.Properties.Resources.palette_load;
             this.kbtneLoadColourPalette.StateCommonBackGroundColourOne = System.Drawing.Color.Empty;
             this.kbtneLoadColourPalette.StateCommonBackGroundColourTwo = System.Drawing.Color.Empty;
             this.kbtneLoadColourPalette.StateCommonBorderColourOne = System.Drawing.Color.Empty;
@@ -399,9 +399,9 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kbtneLoadColourPalette.StateCommonShortTextColourOne = System.Drawing.Color.Empty;
             this.kbtneLoadColourPalette.StateCommonShortTextColourTwo = System.Drawing.Color.Empty;
             this.kbtneLoadColourPalette.StateDisabled.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtneLoadColourPalette.StateDisabled.Content.LongText.Image = global::Krypton.Toolkit.Extended.Dialogs.Properties.Resources.palette_load;
+            this.kbtneLoadColourPalette.StateDisabled.Content.LongText.Image = global::Krypton.Toolkit.Suite.Extended.Dialogs.Properties.Resources.palette_load;
             this.kbtneLoadColourPalette.StateDisabled.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtneLoadColourPalette.StateDisabled.Content.ShortText.Image = global::Krypton.Toolkit.Extended.Dialogs.Properties.Resources.palette_load;
+            this.kbtneLoadColourPalette.StateDisabled.Content.ShortText.Image = global::Krypton.Toolkit.Suite.Extended.Dialogs.Properties.Resources.palette_load;
             this.kbtneLoadColourPalette.StateDisabledBackGroundColourOne = System.Drawing.Color.Empty;
             this.kbtneLoadColourPalette.StateDisabledBackGroundColourTwo = System.Drawing.Color.Empty;
             this.kbtneLoadColourPalette.StateDisabledBorderColourOne = System.Drawing.Color.Empty;
@@ -411,9 +411,9 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kbtneLoadColourPalette.StateDisabledShortTextColourOne = System.Drawing.Color.Empty;
             this.kbtneLoadColourPalette.StateDisabledShortTextColourTwo = System.Drawing.Color.Empty;
             this.kbtneLoadColourPalette.StateNormal.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtneLoadColourPalette.StateNormal.Content.LongText.Image = global::Krypton.Toolkit.Extended.Dialogs.Properties.Resources.palette_load;
+            this.kbtneLoadColourPalette.StateNormal.Content.LongText.Image = global::Krypton.Toolkit.Suite.Extended.Dialogs.Properties.Resources.palette_load;
             this.kbtneLoadColourPalette.StateNormal.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtneLoadColourPalette.StateNormal.Content.ShortText.Image = global::Krypton.Toolkit.Extended.Dialogs.Properties.Resources.palette_load;
+            this.kbtneLoadColourPalette.StateNormal.Content.ShortText.Image = global::Krypton.Toolkit.Suite.Extended.Dialogs.Properties.Resources.palette_load;
             this.kbtneLoadColourPalette.StateNormalBackGroundColourOne = System.Drawing.Color.Empty;
             this.kbtneLoadColourPalette.StateNormalBackGroundColourTwo = System.Drawing.Color.Empty;
             this.kbtneLoadColourPalette.StateNormalBorderColourOne = System.Drawing.Color.Empty;
@@ -423,9 +423,9 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kbtneLoadColourPalette.StateNormalShortTextColourOne = System.Drawing.Color.Empty;
             this.kbtneLoadColourPalette.StateNormalShortTextColourTwo = System.Drawing.Color.Empty;
             this.kbtneLoadColourPalette.StatePressed.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtneLoadColourPalette.StatePressed.Content.LongText.Image = global::Krypton.Toolkit.Extended.Dialogs.Properties.Resources.palette_load;
+            this.kbtneLoadColourPalette.StatePressed.Content.LongText.Image = global::Krypton.Toolkit.Suite.Extended.Dialogs.Properties.Resources.palette_load;
             this.kbtneLoadColourPalette.StatePressed.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtneLoadColourPalette.StatePressed.Content.ShortText.Image = global::Krypton.Toolkit.Extended.Dialogs.Properties.Resources.palette_load;
+            this.kbtneLoadColourPalette.StatePressed.Content.ShortText.Image = global::Krypton.Toolkit.Suite.Extended.Dialogs.Properties.Resources.palette_load;
             this.kbtneLoadColourPalette.StatePressedBackGroundColourOne = System.Drawing.Color.Empty;
             this.kbtneLoadColourPalette.StatePressedBackGroundColourTwo = System.Drawing.Color.Empty;
             this.kbtneLoadColourPalette.StatePressedBorderColourOne = System.Drawing.Color.Empty;
@@ -435,9 +435,9 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kbtneLoadColourPalette.StatePressedShortTextColourOne = System.Drawing.Color.Empty;
             this.kbtneLoadColourPalette.StatePressedShortTextColourTwo = System.Drawing.Color.Empty;
             this.kbtneLoadColourPalette.StateTracking.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtneLoadColourPalette.StateTracking.Content.LongText.Image = global::Krypton.Toolkit.Extended.Dialogs.Properties.Resources.palette_load;
+            this.kbtneLoadColourPalette.StateTracking.Content.LongText.Image = global::Krypton.Toolkit.Suite.Extended.Dialogs.Properties.Resources.palette_load;
             this.kbtneLoadColourPalette.StateTracking.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtneLoadColourPalette.StateTracking.Content.ShortText.Image = global::Krypton.Toolkit.Extended.Dialogs.Properties.Resources.palette_load;
+            this.kbtneLoadColourPalette.StateTracking.Content.ShortText.Image = global::Krypton.Toolkit.Suite.Extended.Dialogs.Properties.Resources.palette_load;
             this.kbtneLoadColourPalette.StateTrackingBackGroundColourOne = System.Drawing.Color.Empty;
             this.kbtneLoadColourPalette.StateTrackingBackGroundColourTwo = System.Drawing.Color.Empty;
             this.kbtneLoadColourPalette.StateTrackingBorderColourOne = System.Drawing.Color.Empty;
@@ -449,8 +449,8 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kbtneLoadColourPalette.TabIndex = 1;
             this.kbtneLoadColourPalette.ToolTipValues.Description = "Load a custom palette.";
             this.kbtneLoadColourPalette.ToolTipValues.Heading = "Custom Palette";
-            this.kbtneLoadColourPalette.ToolTipValues.Image = global::Krypton.Toolkit.Extended.Dialogs.Properties.Resources.palette_load;
-            this.kbtneLoadColourPalette.Values.Image = global::Krypton.Toolkit.Extended.Dialogs.Properties.Resources.palette_load;
+            this.kbtneLoadColourPalette.ToolTipValues.Image = global::Krypton.Toolkit.Suite.Extended.Dialogs.Properties.Resources.palette_load;
+            this.kbtneLoadColourPalette.Values.Image = global::Krypton.Toolkit.Suite.Extended.Dialogs.Properties.Resources.palette_load;
             this.kbtneLoadColourPalette.Values.Text = "";
             // 
             // ColourPickerDialog

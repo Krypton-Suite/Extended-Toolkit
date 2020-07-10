@@ -6,9 +6,9 @@ using System.Drawing.Imaging;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 
-using static Krypton.Toolkit.Extended.Wizard.NativeMethods;
+using static Krypton.Toolkit.Suite.Extended.Wizard.NativeMethods;
 
-namespace Krypton.Toolkit.Extended.Wizard
+namespace Krypton.Toolkit.Suite.Extended.Wizard
 {
     internal static partial class VisualStyleRendererExtension
     {
