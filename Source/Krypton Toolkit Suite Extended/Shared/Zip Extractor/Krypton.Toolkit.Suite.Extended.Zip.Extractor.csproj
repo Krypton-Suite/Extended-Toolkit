@@ -8,7 +8,7 @@
     <UseWindowsForms>true</UseWindowsForms>
     <AssemblyName>Zip Extractor</AssemblyName>
     <ApplicationIcon>Resources\ZipExtractor.ico</ApplicationIcon>
-    <Version>5.550.2008</Version>
+    <Version>5.550.2009</Version>
   </PropertyGroup>
 
   <ItemGroup>

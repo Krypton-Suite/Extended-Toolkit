@@ -21,7 +21,7 @@
     <PackagePath></PackagePath>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Version>5.550.2008</Version>
+    <Version>5.550.2009</Version>
     <Authors>Peter William Wagner &amp; Simon Coghlan, Thomas Bolon, JDH Software</Authors>
     <Description>A Data Grid View with multi sorting and multi grouping abilities.</Description>
     <Copyright>Copyright © JDH Software 2013-2018. Then modifications by Peter Wagner (aka Wagnerp) &amp; Simon Coghlan (aka Smurf-IV) 2020. All rights reserved.</Copyright>

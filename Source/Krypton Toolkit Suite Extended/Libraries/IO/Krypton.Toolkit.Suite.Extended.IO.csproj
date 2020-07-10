@@ -17,7 +17,7 @@
     <PackagePath></PackagePath>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Version>5.550.2008</Version>
+    <Version>5.550.2009</Version>
     <RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
   </PropertyGroup>
 
