@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -8,11 +9,17 @@ namespace Krypton.Toolkit.Suite.Extended.Base
     public class KryptonTimeOutButton : KryptonButton
     {
         #region Variables
+        private bool _enabledOnCountdown;
+
         private int _seconds;
         #endregion
 
         #region Properties
-        public int Seconds { get => _seconds; set { _seconds = value; Invalidate(); } }
+        [DefaultValue(false)]
+        public bool EnabledOnCountdown { get => _enabledOnCountdown; set => _enabledOnCountdown = value; }
+
+        [DefaultValue(60)]
+        public int Seconds { get => _seconds; set { _seconds = value; CountDownEventArgs ce = new CountDownEventArgs(this, EnabledOnCountdown, Seconds, Text); OnCountdown(null, ce); Invalidate(); } }
         #endregion
 
         #region Custom Event
