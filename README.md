@@ -39,6 +39,11 @@
 
 =======
 
+## 2020-09-01 - Build 2009 - September 2020
+* Support for more framework versions - In addition to supporting .NET Framework 4.5, .NET Core 3.1 and .NET 5, the toolkit can be now used with projects using .NET Framework 4.5.1 to 4.8 inclusive
+
+=======
+
 ## 2020-08-01 - Build 2008 - August 2020
 * All namespaces now correlate to the package name e.g, `Krypton.Toolkit.Extended.Base` now becomes `Krypton.Toolkit.Suite.Extended.Base`
 * New find and replace dialog built off of [FnR](https://github.com/zzzprojects/findandreplace)

@@ -204,7 +204,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         private readonly string _caption;
         private readonly MessageBoxButtons _buttons;
         private readonly MessageBoxIcon _icon;
-        private readonly MessageBoxDefaultButton _defaultButton;
+        private readonly MessageBoxDefaultButton _defaultButton, _timeOutButton;
         private MessageBoxOptions _options; // TODO: What is this used for ?
         private KryptonPanel _panelMessage;
         private KryptonPanel _panelMessageText;
@@ -218,7 +218,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         private KryptonBorderEdge _borderEdge;
         private HelpInformation _helpInformation; // TODO: What is this used for ?
         private Font _messageboxTypeface;
-        private int _timeOut, _timeOutTimerDelay;
+        private int _timeOut, _timeOutTimerDelay, _seconds;
         private Timer _timer;
         private KryptonCheckBox _doNotShowAgainOption;
         private string _doNotShowAgainOptionText;
@@ -263,6 +263,10 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         /// The time out.
         /// </value>
         public int TimeOut { get { return _timeOut; } set { _timeOut = value; } }
+
+        public MessageBoxDefaultButton TimeOutButton { get => _timeOutButton; set => _timeOutButton = value; }
+
+        public int Seconds { get => _seconds; set => _seconds = value; }
 
         /// <summary>
         /// Gets or sets the time out timer delay.
@@ -421,6 +425,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         /// <param name="buttons">The buttons.</param>
         /// <param name="icon">The icon.</param>
         /// <param name="defaultButton">The default button.</param>
+        /// <param name="timeOutButton">The button to display the timeout on.</param>
         /// <param name="options">The options.</param>
         /// <param name="helpInformation">The help information.</param>
         /// <param name="showCtrlCopy">The show control copy. (Can be null)</param>
@@ -431,15 +436,16 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         /// <param name="useTimeOutOption">Use a time out on the messagebox. (Default is set as false)</param>
         /// <param name="timeOut">Specify the time out time. (Default is set at 60 seconds)</param>
         /// <param name="timeOutDelay">Specify the time out delay timer. (Default is 250 milliseconds)</param>
+        /// <param name="seconds">The seconds.</param>
         /// <param name="defaultTimeOutResponse">The default response on time out. (Default is OK)</param>
         /// <param name="button1Text">Sets the text on button 1. (Can be null)</param>
         /// <param name="button2Text">Sets the text on button 2. (Can be null)</param>
         /// <param name="button3Text">Sets the text on button 3. (Can be null)</param>
         private KryptonMessageBoxExtended(IWin32Window showOwner, string text, string caption,
-            MessageBoxButtons buttons, MessageBoxIcon icon, MessageBoxDefaultButton defaultButton,
+            MessageBoxButtons buttons, MessageBoxIcon icon, MessageBoxDefaultButton defaultButton, MessageBoxDefaultButton timeOutButton,
             MessageBoxOptions options, HelpInformation helpInformation, bool? showCtrlCopy, bool topMost,
             Font messageboxTypeface, bool showDoNotShowAgainOption, string doNotShowAgainOptionText,
-            bool useTimeOutOption, int timeOut, int timeOutDelay, DialogResult defaultTimeOutResponse,
+            bool useTimeOutOption, int timeOut, int timeOutDelay, int seconds, DialogResult defaultTimeOutResponse,
             string button1Text, string button2Text, string button3Text)
         {
             #region Store Values
@@ -452,6 +458,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             _icon = icon;
 
             _defaultButton = defaultButton;
+
+            TimeOutButton = timeOutButton;
 
             _options = options;
 
@@ -471,6 +479,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
 
             TimeOutTimerDelay = timeOutDelay;
 
+            Seconds = seconds;
             #endregion
 
             // Create the form contents
