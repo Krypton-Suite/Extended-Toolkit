@@ -8,6 +8,7 @@ using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Base
 {
+    /// <summary>Gives the basic <see cref="KryptonMessageBox">KryptonMessageBox</see> more functionality.</summary>
     [DesignerCategory("code"), DesignTimeVisible(false), ToolboxBitmap(typeof(KryptonMessageBoxExtended), "ToolboxBitmaps.KryptonMessageBox.bmp"), ToolboxItem(false)]
     public class KryptonMessageBoxExtended : KryptonForm
     {
@@ -711,7 +712,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         public static DialogResult Show(string text, string caption,
                                         MessageBoxButtons buttons, bool? showCtrlCopy = null, bool topMost = true, Font messageboxTypeface = null, string button1Text = null, string button2Text = null, string button3Text = null)
         {
-            return InternalShow(null, text, caption, buttons, MessageBoxIcon.None, MessageBoxDefaultButton.Button1, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, topMost, messageboxTypeface, false, NULL_TEXT, false, 60, 250, DialogResult.OK, button1Text, button2Text, button3Text);
+            return InternalShow(null, text, caption, buttons, MessageBoxIcon.None, MessageBoxDefaultButton.Button1, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly, null, showCtrlCopy, topMost, messageboxTypeface, false, NULL_TEXT, false, 60, button1Text, button2Text, button3Text);
         }
 
         /// <summary>
