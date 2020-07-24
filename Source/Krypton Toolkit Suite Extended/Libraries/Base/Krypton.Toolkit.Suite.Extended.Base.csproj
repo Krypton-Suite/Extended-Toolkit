@@ -8,18 +8,14 @@
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
-  <!--Package configuration-->
+  <!--Basic package configuration-->
   <PropertyGroup>
-    <!--<PackageId>Krypton.Toolkit.Suite.Extended.Base.Canary</PackageId>-->
-    <PackageIcon></PackageIcon>
     <PackageId>Krypton.Toolkit.Suite.Extended.Base</PackageId>
+    <PackageOutputPath>..\..\..\..\Bin\NuGet</PackageOutputPath>
     <Description>An extension to the standard krypton toolkit to support .NET Core and the latest .NET 3.5/4.x framework. This is the base module.</Description>
-    <PackageOutputPath>..\..\..\..\Bin\NuGet</PackageOutputPath>    
-    <PackagePath></PackagePath>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <!--<PackageLicenseExpression>BSD-3 Clause</PackageLicenseExpression>
-    <PackageLicenseFile>LICENSE.md</PackageLicenseFile>-->
+    <PackageLicense>https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE</PackageLicense>
     <RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
     <Version>5.550.2009</Version>
   </PropertyGroup>
