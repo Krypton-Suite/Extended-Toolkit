@@ -219,8 +219,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         private KryptonBorderEdge _borderEdge;
         private HelpInformation _helpInformation; // TODO: What is this used for ?
         private Font _messageboxTypeface;
-        private int _timeOut, _timeOutTimerDelay, _seconds, _time;
-        private Timer _timeOutTimer, _timerButtonOne, _timerButtonTwo, _timerButtonThree;
+        private int _timeOut, _timeOutTimerDelay, _seconds, _time, _fadeInterval;
+        private Timer _timeOutTimer, _timerButtonOne, _timerButtonTwo, _timerButtonThree, _fadeInTimer, _fadeOutTimer;
         private KryptonCheckBox _doNotShowAgainOption;
         private string _doNotShowAgainOptionText;
         private bool _doNotShowAgainOptionResult, _showDoNotShowAgainOption, _useTimeOutOption, _useFadingOption;
@@ -270,6 +270,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         public MessageBoxDefaultButton TimeOutButton { get => _timeOutButton; }
 
         public int Seconds { get => _seconds; set => _seconds = value; }
+
+        public int FadeInterval { get => _fadeInterval; set => _fadeInterval = value; }
 
         /// <summary>
         /// Gets or sets the time out timer delay.
@@ -445,7 +447,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             MessageBoxButtons buttons, MessageBoxIcon icon, MessageBoxDefaultButton defaultButton, MessageBoxDefaultButton timeOutButton,
             MessageBoxOptions options, HelpInformation helpInformation, bool? showCtrlCopy, bool topMost,
             Font messageboxTypeface, bool showDoNotShowAgainOption, string doNotShowAgainOptionText,
-            bool useTimeOutOption, int seconds,
+            bool useTimeOutOption, int seconds, int fadeInterval,
             string button1Text, string button2Text, string button3Text, bool fade)
         {
             #region Store Values
@@ -478,6 +480,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             Seconds = seconds;
 
             Fade = fade;
+
+            FadeInterval = fadeInterval;
             #endregion
 
             // Create the form contents
@@ -706,7 +710,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
 
-        public static DialogResult Show(string text, string caption, MessageBoxButtons buttons, bool? showCtrlCopy = null, bool topMost = true, Font messageboxTypeface = null, string button1Text = null, string button2Text = null, string button3Text = null) => InternalShow(null, text, caption, buttons, MessageBoxIcon.None, MessageBoxDefaultButton.Button1, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly, null, showCtrlCopy, topMost, messageboxTypeface, false, NULL_TEXT, false, 60, button1Text, button2Text, button3Text);
+        public static DialogResult Show(string text, string caption, MessageBoxButtons buttons, bool? showCtrlCopy = null, bool topMost = true, Font messageboxTypeface = null, string button1Text = null, string button2Text = null, string button3Text = null) => InternalShow(null, text, caption, buttons, MessageBoxIcon.None, MessageBoxDefaultButton.Button1, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly, null, showCtrlCopy, topMost, messageboxTypeface, false, NULL_TEXT, false, 60, 10, button1Text, button2Text, button3Text);
 
         /// <summary>
         /// Displays a message box in front of the specified object and with the specified text, caption, buttons, icon, default button, and options.
@@ -916,6 +920,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         /// <param name="doNotShowAgainOptionText">The do not show again option text.</param>
         /// <param name="useTimeOutOption">if set to <c>true</c> [use time out option].</param>
         /// <param name="seconds">The seconds.</param>
+        /// <param name="fadeInterval">Sets the interval of fading timer.</param>
         /// <param name="button1Text">The button1 text.</param>
         /// <param name="button2Text">The button2 text.</param>
         /// <param name="button3Text">The button3 text.</param>
@@ -933,7 +938,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
                                                  MessageBoxOptions options,
                                                  HelpInformation helpInformation, bool? showCtrlCopy, bool topMost, Font messageboxTypeface = null,
                                                  bool showDoNotShowAgainOption = false, string doNotShowAgainOptionText = "Do n&ot show again",
-                                                 bool useTimeOutOption = false, int seconds = 60,
+                                                 bool useTimeOutOption = false, int seconds = 60, int fadeInterval = 10,
                                                  string button1Text = null, string button2Text = null, string button3Text = null, bool fade = false)
         {
             // Check if trying to show a message box from a non-interactive process, this is not possible
@@ -963,7 +968,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
 
             // Show message box window as a modal dialog and then dispose of it afterwards
-            using (KryptonMessageBoxExtended ekmb = new KryptonMessageBoxExtended(showOwner, text, caption, buttons, icon, defaultButton, timeOutButton, options, helpInformation, showCtrlCopy, topMost, messageboxTypeface, showDoNotShowAgainOption, doNotShowAgainOptionText, useTimeOutOption, seconds, button1Text, button2Text, button3Text, fade))
+            using (KryptonMessageBoxExtended ekmb = new KryptonMessageBoxExtended(showOwner, text, caption, buttons, icon, defaultButton, timeOutButton, options, helpInformation, showCtrlCopy, topMost, messageboxTypeface, showDoNotShowAgainOption, doNotShowAgainOptionText, useTimeOutOption, seconds, fadeInterval, button1Text, button2Text, button3Text, fade))
             {
                 ekmb.StartPosition = showOwner == null ? FormStartPosition.CenterScreen : FormStartPosition.CenterParent;
 
@@ -1543,6 +1548,48 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         /// <summary>Gets the do not show again value.</summary>
         /// <returns></returns>
         public bool GetDoNotShowAgainValue() => _doNotShowAgainOption.Checked;
+
+        private void FadeIn()
+        {
+            _fadeInTimer = new Timer();
+
+            _fadeInTimer.Interval = _fadeInterval;
+
+            _fadeInTimer.Tick += FadeInTimer_Tick;
+
+            _fadeInTimer.Start();
+        }
+
+        private void FadeOut()
+        {
+            _fadeOutTimer = new Timer();
+
+            _fadeOutTimer.Interval = _fadeInterval;
+
+            _fadeOutTimer.Tick += FadeOutTimer_Tick;
+
+            _fadeOutTimer.Start();
+        }
+
+        private void FadeOutTimer_Tick(object sender, EventArgs e)
+        {
+            if (Opacity == 0d)
+            {
+                _fadeOutTimer.Stop();
+            }
+
+            Opacity -= 0.02d;
+        }
+
+        private void FadeInTimer_Tick(object sender, EventArgs e)
+        {
+            if (Opacity == 1d)
+            {
+                _fadeInTimer.Stop();
+            }
+
+            Opacity += 0.02d;
+        }
         #endregion
 
         #region Events
