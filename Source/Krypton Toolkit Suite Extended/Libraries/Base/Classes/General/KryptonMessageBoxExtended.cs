@@ -223,7 +223,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         private Timer _timeOutTimer, _timerButtonOne, _timerButtonTwo, _timerButtonThree;
         private KryptonCheckBox _doNotShowAgainOption;
         private string _doNotShowAgainOptionText;
-        private bool _doNotShowAgainOptionResult, _showDoNotShowAgainOption, _useTimeOutOption;
+        private bool _doNotShowAgainOptionResult, _showDoNotShowAgainOption, _useTimeOutOption, _useFadingOption;
         private DialogResult _defaultTimeOutResponse;
         #endregion
 
@@ -246,6 +246,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         public bool ShowDoNotShowAgainOption { get { return _showDoNotShowAgainOption; } set { _showDoNotShowAgainOption = value; } }
 
         public bool UseTimeOutOption { get { return _useTimeOutOption; } set { _useTimeOutOption = value; } }
+
+        public bool Fade { get => _useFadingOption; set => _useFadingOption = value; }
 
         public DialogResult DefaultTimeOutResponse { get { return _defaultTimeOutResponse; } set { _defaultTimeOutResponse = value; } }
 
@@ -444,7 +446,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             MessageBoxOptions options, HelpInformation helpInformation, bool? showCtrlCopy, bool topMost,
             Font messageboxTypeface, bool showDoNotShowAgainOption, string doNotShowAgainOptionText,
             bool useTimeOutOption, int seconds,
-            string button1Text, string button2Text, string button3Text)
+            string button1Text, string button2Text, string button3Text, bool fade)
         {
             #region Store Values
             _text = text;
@@ -474,6 +476,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             UseTimeOutOption = _useTimeOutOption;
 
             Seconds = seconds;
+
+            Fade = fade;
             #endregion
 
             // Create the form contents
@@ -915,6 +919,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         /// <param name="button1Text">The button1 text.</param>
         /// <param name="button2Text">The button2 text.</param>
         /// <param name="button3Text">The button3 text.</param>
+        /// <param name="fade">Fades the Krypton Messagebox in and out.</param>
         /// <returns></returns>
         /// <exception cref="InvalidOperationException">Cannot show modal dialog when non-interactive</exception>
         /// <exception cref="ArgumentException">Cannot show message box from a service with an owner specified - options
@@ -929,7 +934,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
                                                  HelpInformation helpInformation, bool? showCtrlCopy, bool topMost, Font messageboxTypeface = null,
                                                  bool showDoNotShowAgainOption = false, string doNotShowAgainOptionText = "Do n&ot show again",
                                                  bool useTimeOutOption = false, int seconds = 60,
-                                                 string button1Text = null, string button2Text = null, string button3Text = null)
+                                                 string button1Text = null, string button2Text = null, string button3Text = null, bool fade = false)
         {
             // Check if trying to show a message box from a non-interactive process, this is not possible
             if (!SystemInformation.UserInteractive && ((options & (MessageBoxOptions.ServiceNotification | MessageBoxOptions.DefaultDesktopOnly)) == 0))
@@ -958,7 +963,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
 
             // Show message box window as a modal dialog and then dispose of it afterwards
-            using (KryptonMessageBoxExtended ekmb = new KryptonMessageBoxExtended(showOwner, text, caption, buttons, icon, defaultButton, timeOutButton, options, helpInformation, showCtrlCopy, topMost, messageboxTypeface, showDoNotShowAgainOption, doNotShowAgainOptionText, useTimeOutOption, seconds, button1Text, button2Text, button3Text))
+            using (KryptonMessageBoxExtended ekmb = new KryptonMessageBoxExtended(showOwner, text, caption, buttons, icon, defaultButton, timeOutButton, options, helpInformation, showCtrlCopy, topMost, messageboxTypeface, showDoNotShowAgainOption, doNotShowAgainOptionText, useTimeOutOption, seconds, button1Text, button2Text, button3Text, fade))
             {
                 ekmb.StartPosition = showOwner == null ? FormStartPosition.CenterScreen : FormStartPosition.CenterParent;
 
