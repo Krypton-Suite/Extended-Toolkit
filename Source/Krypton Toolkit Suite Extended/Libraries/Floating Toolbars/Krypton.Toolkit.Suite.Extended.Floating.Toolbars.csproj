@@ -14,24 +14,35 @@
     <OutputPath>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Floating.Toolbars\</OutputPath>
   </PropertyGroup>
 
-  <PropertyGroup>
-    <AssemblyVersion>5.550.2009</AssemblyVersion>
-    <FileVersion>5.550.2009.0</FileVersion>
-  </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2006.3" />
   </ItemGroup>
   
   <PropertyGroup>
-    <!--<PackageId>Krypton.Toolkit.Extended.Floating.Toolbars.Canary</PackageId>-->
-    <PackageId>Krypton.Toolkit.Suite.Extended.Floating.Toolbars</PackageId>
-    <PackageOutputPath>..\..\..\..\Bin\NuGet</PackageOutputPath>
-    <PackagePath></PackagePath>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Version>5.550.2009</Version>
     <RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
+  </PropertyGroup>
+
+  <!--Stable package configuration-
+  <PropertyGroup>
+    <PackageId>Krypton.Toolkit.Suite.Extended.Floating.Toolbars</PackageId>
+    <PackageOutputPath>..\..\..\..\Bin\NuGet\Stable</PackageOutputPath>
+    <PackageIconUrl>https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/Assets/PNG/Main%20Icon/64%20x%2064/Main%20Icon%2064%20x%2064.png</PackageIconUrl>
+  </PropertyGroup>-->
+
+  <!--Canary package configuration-->
+  <PropertyGroup>
+    <PackageId>Krypton.Toolkit.Suite.Extended.Floating.Toolbars.Canary</PackageId>
+    <PackageOutputPath>..\..\..\..\Bin\NuGet\Canary</PackageOutputPath>
+    <PackageIconUrl>https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/Assets/PNG/Main%20Icon/64%20x%2064/Main%20Icon%2064%20x%2064%20Canary.png</PackageIconUrl>
+  </PropertyGroup>
+
+  <!--Version configuration-->
+  <PropertyGroup>
+    <AssemblyVersion>5.550.2009</AssemblyVersion>
+    <FileVersion>5.550.2009.0</FileVersion>
+    <Version>5.550.2009</Version>
   </PropertyGroup>
 
 </Project>

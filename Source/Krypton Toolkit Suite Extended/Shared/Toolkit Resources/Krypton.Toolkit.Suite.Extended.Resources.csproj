@@ -10,16 +10,32 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <!--<PackageId>Krypton.Toolkit.Extended.Resources.Canary</PackageId>-->
-    <PackageId>Krypton.Toolkit.Suite.Extended.Resources</PackageId>
-    <PackageOutputPath>..\..\..\..\Bin\NuGet</PackageOutputPath>
-    <PackagePath></PackagePath>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Version>5.550.2009</Version>
     <Description>Contains toolkit resources.</Description>
     <RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
     <PackageLicenseFile></PackageLicenseFile>
+  </PropertyGroup>
+
+  <!--Stable package configuration-
+  <PropertyGroup>
+    <PackageId>Krypton.Toolkit.Suite.Extended.Resources</PackageId>
+    <PackageOutputPath>..\..\..\..\Bin\NuGet\Stable</PackageOutputPath>
+    <PackageIconUrl>https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/Assets/PNG/Main%20Icon/64%20x%2064/Main%20Icon%2064%20x%2064.png</PackageIconUrl>
+  </PropertyGroup>-->
+
+  <!--Canary package configuration-->
+  <PropertyGroup>
+    <PackageId>Krypton.Toolkit.Suite.Extended.Resources.Canary</PackageId>
+    <PackageOutputPath>..\..\..\..\Bin\NuGet\Canary</PackageOutputPath>
+    <PackageIconUrl>https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/Assets/PNG/Main%20Icon/64%20x%2064/Main%20Icon%2064%20x%2064%20Canary.png</PackageIconUrl>
+  </PropertyGroup>
+
+  <!--Version configuration-->
+  <PropertyGroup>
+    <AssemblyVersion>5.550.2009</AssemblyVersion>
+    <FileVersion>5.550.2009.0</FileVersion>
+    <Version>5.550.2009</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -41,10 +57,4 @@
     <DocumentationFile>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Resources\Krypton.Toolkit.Extended.Resources.xml</DocumentationFile>
     <OutputPath>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Resources\</OutputPath>
   </PropertyGroup>
-
-  <PropertyGroup>
-    <AssemblyVersion>5.550.2009</AssemblyVersion>
-    <FileVersion>5.550.2009.0</FileVersion>
-  </PropertyGroup>
-
 </Project>
