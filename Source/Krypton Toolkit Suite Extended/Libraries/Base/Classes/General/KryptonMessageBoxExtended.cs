@@ -970,6 +970,11 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             // Show message box window as a modal dialog and then dispose of it afterwards
             using (KryptonMessageBoxExtended ekmb = new KryptonMessageBoxExtended(showOwner, text, caption, buttons, icon, defaultButton, timeOutButton, options, helpInformation, showCtrlCopy, topMost, messageboxTypeface, showDoNotShowAgainOption, doNotShowAgainOptionText, useTimeOutOption, seconds, fadeInterval, button1Text, button2Text, button3Text, fade))
             {
+                if (fade)
+                {
+                    ekmb.FadeIn();
+                }
+
                 ekmb.StartPosition = showOwner == null ? FormStartPosition.CenterScreen : FormStartPosition.CenterParent;
 
                 return ekmb.ShowDialog(showOwner);

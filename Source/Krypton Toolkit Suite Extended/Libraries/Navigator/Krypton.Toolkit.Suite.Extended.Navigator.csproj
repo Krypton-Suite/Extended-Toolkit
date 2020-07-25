@@ -32,7 +32,7 @@
   <!--Version configuration-->
   <PropertyGroup>
     <AssemblyVersion>5.550.2009</AssemblyVersion>
-    <FileVersion>5.550.2009.0</FileVersion>
+    <FileVersion>5.550.2009.2</FileVersion>
     <Version>5.550.2009</Version>
   </PropertyGroup>
 

@@ -29,7 +29,7 @@
 
   <PropertyGroup>
     <AssemblyVersion>5.550.2009</AssemblyVersion>
-    <FileVersion>5.550.2009.0</FileVersion>
+    <FileVersion>5.550.2009.1</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>

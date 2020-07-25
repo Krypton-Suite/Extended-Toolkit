@@ -36,6 +36,8 @@
   <PropertyGroup>
     <DocumentationFile>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Zip.Extractor\Krypton.Toolkit.Suite.Zip.Extractor.xml</DocumentationFile>
     <OutputPath>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Zip.Extractor\</OutputPath>
+    <AssemblyVersion>5.550.2009.1</AssemblyVersion>
+    <FileVersion>6.0.2006.1</FileVersion>
   </PropertyGroup>
 
 </Project>
