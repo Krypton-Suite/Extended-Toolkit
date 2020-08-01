@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Text;
 
-namespace Krypton.Toolkit.Extended.IO
+namespace Krypton.Toolkit.Suite.Extended.IO
 {
     /// <summary>
     /// Exports colored text as RTF
@@ -54,7 +54,7 @@ namespace Krypton.Toolkit.Extended.IO
             //
             foreach (Place p in r)
             {
-                Char c = r.tb[p.iLine][p.iChar];
+                InternalChar c = r.tb[p.iLine][p.iChar];
                 if (c.style != currentStyleId)
                 {
                     Flush(sb, tempSB, currentStyleId);

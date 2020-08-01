@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace Krypton.Toolkit.Extended.Colour.Controls
+namespace Krypton.Toolkit.Suite.Extended.Drawing.Suite
 {
     public interface IPaletteSerializer
     {

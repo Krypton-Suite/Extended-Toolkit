@@ -2,7 +2,7 @@
 using System;
 using System.Drawing;
 
-namespace Krypton.Toolkit.Extended.Core
+namespace Krypton.Toolkit.Suite.Extended.Core
 {
     /// <summary>
     /// https://stackoverflow.com/questions/7255514/generating-colours-after-applying-opacity-of-black-and-white

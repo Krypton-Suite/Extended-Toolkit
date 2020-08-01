@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Text;
 
-namespace Krypton.Toolkit.Extended.Common
+namespace Krypton.Toolkit.Suite.Extended.Common
 {
     public class HashingHelper
     {

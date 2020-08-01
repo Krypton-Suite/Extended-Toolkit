@@ -35,7 +35,7 @@ using System.Reflection;
 using System.Resources;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Navi.Suite
+namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 {
     public class NaviLayoutEngineOffice : NaviLayoutEngine
     {
@@ -820,7 +820,7 @@ namespace Krypton.Toolkit.Extended.Navi.Suite
             this.miShowMoreButtons.Size = new System.Drawing.Size(234, 22);
             this.miShowMoreButtons.Text = rm.GetString("BarShowMore");
             this.miShowMoreButtons.Click += new EventHandler(miShowMoreButtons_Click);
-            this.miShowMoreButtons.Image = global::Krypton.Toolkit.Extended.Navi.Suite.Properties.Resources.Up;
+            this.miShowMoreButtons.Image = global::Krypton.Toolkit.Suite.Extended.Navi.Suite.Properties.Resources.Up;
             this.miShowMoreButtons.Enabled = largeButtonCount < visibleButtonCount;
             this.miShowMoreButtons.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.ImageAndText;
             // 
@@ -830,7 +830,7 @@ namespace Krypton.Toolkit.Extended.Navi.Suite
             this.miShowLessButtons.Size = new System.Drawing.Size(234, 22);
             this.miShowLessButtons.Text = rm.GetString("BarShowLess");
             this.miShowLessButtons.Click += new EventHandler(miShowLessButtons_Click);
-            this.miShowLessButtons.Image = global::Krypton.Toolkit.Extended.Navi.Suite.Properties.Resources.Down;
+            this.miShowLessButtons.Image = global::Krypton.Toolkit.Suite.Extended.Navi.Suite.Properties.Resources.Down;
             this.miShowLessButtons.Enabled = largeButtonCount > 0;
             this.miShowLessButtons.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.ImageAndText;
             // 

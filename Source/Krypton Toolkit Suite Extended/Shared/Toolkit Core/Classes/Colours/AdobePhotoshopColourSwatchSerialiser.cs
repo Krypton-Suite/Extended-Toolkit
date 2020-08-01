@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.IO;
 
-namespace Krypton.Toolkit.Extended.Core
+namespace Krypton.Toolkit.Suite.Extended.Core
 {
     /// <summary>
     /// Deserialises colour palettes into and from the images and palettes using the  ILBM (IFF Interleaved Bitmap) format.

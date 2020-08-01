@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 
-namespace Krypton.Toolkit.Extended.Navi.Suite
+namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 {
     /// <summary>
     /// The basic collection class with events which notifies when new items have been added or removed

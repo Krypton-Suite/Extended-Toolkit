@@ -1,17 +1,16 @@
-﻿using Krypton.Toolkit.Extended.Base;
-using Krypton.Toolkit.Suite.Extended.Standard.Controls;
+﻿using Krypton.Toolkit.Suite.Extended.Base;
 using System;
 using System.ComponentModel;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.IO
+namespace Krypton.Toolkit.Suite.Extended.IO
 {
     public class FindWindow : KryptonForm
     {
         #region Design Code
         private KryptonPanel kryptonPanel1;
-        private KryptonButtonExtended kbtnFindNext;
+        private KryptonButton kbtnFindNext;
         private KryptonCheckBox kcbRegex;
         private KryptonCheckBox kcbMatchWholeWord;
         private KryptonCheckBox kcbMatchCase;
@@ -21,7 +20,7 @@ namespace Krypton.Toolkit.Extended.IO
         private void InitializeComponent()
         {
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
-            this.kbtnFindNext = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonButtonExtended();
+            this.kbtnFindNext = new Krypton.Toolkit.KryptonButton();
             this.kcbRegex = new Krypton.Toolkit.KryptonCheckBox();
             this.kcbMatchWholeWord = new Krypton.Toolkit.KryptonCheckBox();
             this.kcbMatchCase = new Krypton.Toolkit.KryptonCheckBox();
@@ -47,82 +46,23 @@ namespace Krypton.Toolkit.Extended.IO
             // 
             // kbtnFindNext
             // 
-            this.kbtnFindNext.Image = null;
             this.kbtnFindNext.Location = new System.Drawing.Point(158, 64);
-            this.kbtnFindNext.LongTextTypeface = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.kbtnFindNext.Name = "kbtnFindNext";
             this.kbtnFindNext.OverrideDefault.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.kbtnFindNext.OverrideDefault.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtnFindNext.OverrideDefaultBackGroundColourOne = System.Drawing.Color.Empty;
-            this.kbtnFindNext.OverrideDefaultBackGroundColourTwo = System.Drawing.Color.Empty;
-            this.kbtnFindNext.OverrideDefaultBorderColourOne = System.Drawing.Color.Empty;
-            this.kbtnFindNext.OverrideDefaultBorderColourTwo = System.Drawing.Color.Empty;
-            this.kbtnFindNext.OverrideDefaultLongTextColourOne = System.Drawing.Color.Empty;
-            this.kbtnFindNext.OverrideDefaultLongTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtnFindNext.OverrideDefaultShortTextColourOne = System.Drawing.Color.Empty;
-            this.kbtnFindNext.OverrideDefaultShortTextColourTwo = System.Drawing.Color.Empty;
             this.kbtnFindNext.OverrideFocus.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.kbtnFindNext.OverrideFocus.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtnFindNext.OverrideFocusBackGroundColourOne = System.Drawing.Color.Empty;
-            this.kbtnFindNext.OverrideFocusBackGroundColourTwo = System.Drawing.Color.Empty;
-            this.kbtnFindNext.OverrideFocusBorderColourOne = System.Drawing.Color.Empty;
-            this.kbtnFindNext.OverrideFocusBorderColourTwo = System.Drawing.Color.Empty;
-            this.kbtnFindNext.OverrideFocusLongTextColourOne = System.Drawing.Color.Empty;
-            this.kbtnFindNext.OverrideFocusLongTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtnFindNext.OverrideFocusShortTextColourOne = System.Drawing.Color.Empty;
-            this.kbtnFindNext.OverrideFocusShortTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtnFindNext.ShortTextTypeface = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.kbtnFindNext.Size = new System.Drawing.Size(90, 25);
             this.kbtnFindNext.StateCommon.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.kbtnFindNext.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtnFindNext.StateCommonBackGroundColourOne = System.Drawing.Color.Empty;
-            this.kbtnFindNext.StateCommonBackGroundColourTwo = System.Drawing.Color.Empty;
-            this.kbtnFindNext.StateCommonBorderColourOne = System.Drawing.Color.Empty;
-            this.kbtnFindNext.StateCommonBorderColourTwo = System.Drawing.Color.Empty;
-            this.kbtnFindNext.StateCommonLongTextColourOne = System.Drawing.Color.Empty;
-            this.kbtnFindNext.StateCommonLongTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtnFindNext.StateCommonShortTextColourOne = System.Drawing.Color.Empty;
-            this.kbtnFindNext.StateCommonShortTextColourTwo = System.Drawing.Color.Empty;
             this.kbtnFindNext.StateDisabled.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.kbtnFindNext.StateDisabled.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtnFindNext.StateDisabledBackGroundColourOne = System.Drawing.Color.Empty;
-            this.kbtnFindNext.StateDisabledBackGroundColourTwo = System.Drawing.Color.Empty;
-            this.kbtnFindNext.StateDisabledBorderColourOne = System.Drawing.Color.Empty;
-            this.kbtnFindNext.StateDisabledBorderColourTwo = System.Drawing.Color.Empty;
-            this.kbtnFindNext.StateDisabledLongTextColourOne = System.Drawing.Color.Empty;
-            this.kbtnFindNext.StateDisabledLongTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtnFindNext.StateDisabledShortTextColourOne = System.Drawing.Color.Empty;
-            this.kbtnFindNext.StateDisabledShortTextColourTwo = System.Drawing.Color.Empty;
             this.kbtnFindNext.StateNormal.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.kbtnFindNext.StateNormal.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtnFindNext.StateNormalBackGroundColourOne = System.Drawing.Color.Empty;
-            this.kbtnFindNext.StateNormalBackGroundColourTwo = System.Drawing.Color.Empty;
-            this.kbtnFindNext.StateNormalBorderColourOne = System.Drawing.Color.Empty;
-            this.kbtnFindNext.StateNormalBorderColourTwo = System.Drawing.Color.Empty;
-            this.kbtnFindNext.StateNormalLongTextColourOne = System.Drawing.Color.Empty;
-            this.kbtnFindNext.StateNormalLongTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtnFindNext.StateNormalShortTextColourOne = System.Drawing.Color.Empty;
-            this.kbtnFindNext.StateNormalShortTextColourTwo = System.Drawing.Color.Empty;
             this.kbtnFindNext.StatePressed.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.kbtnFindNext.StatePressed.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtnFindNext.StatePressedBackGroundColourOne = System.Drawing.Color.Empty;
-            this.kbtnFindNext.StatePressedBackGroundColourTwo = System.Drawing.Color.Empty;
-            this.kbtnFindNext.StatePressedBorderColourOne = System.Drawing.Color.Empty;
-            this.kbtnFindNext.StatePressedBorderColourTwo = System.Drawing.Color.Empty;
-            this.kbtnFindNext.StatePressedLongTextColourOne = System.Drawing.Color.Empty;
-            this.kbtnFindNext.StatePressedLongTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtnFindNext.StatePressedShortTextColourOne = System.Drawing.Color.Empty;
-            this.kbtnFindNext.StatePressedShortTextColourTwo = System.Drawing.Color.Empty;
             this.kbtnFindNext.StateTracking.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.kbtnFindNext.StateTracking.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtnFindNext.StateTrackingBackGroundColourOne = System.Drawing.Color.Empty;
-            this.kbtnFindNext.StateTrackingBackGroundColourTwo = System.Drawing.Color.Empty;
-            this.kbtnFindNext.StateTrackingBorderColourOne = System.Drawing.Color.Empty;
-            this.kbtnFindNext.StateTrackingBorderColourTwo = System.Drawing.Color.Empty;
-            this.kbtnFindNext.StateTrackingLongTextColourOne = System.Drawing.Color.Empty;
-            this.kbtnFindNext.StateTrackingLongTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtnFindNext.StateTrackingShortTextColourOne = System.Drawing.Color.Empty;
-            this.kbtnFindNext.StateTrackingShortTextColourTwo = System.Drawing.Color.Empty;
             this.kbtnFindNext.TabIndex = 1;
             this.kbtnFindNext.Values.Text = "&Find Next";
             this.kbtnFindNext.Click += new System.EventHandler(this.kbtnFindNext_Click);

@@ -1,5 +1,5 @@
-﻿using Krypton.Toolkit.Extended.Common;
-using Krypton.Toolkit.Extended.Global.Utilities;
+﻿using Krypton.Toolkit.Suite.Extended.Common;
+using Krypton.Toolkit.Suite.Extended.Global.Utilities;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using System;
 using System.Drawing;

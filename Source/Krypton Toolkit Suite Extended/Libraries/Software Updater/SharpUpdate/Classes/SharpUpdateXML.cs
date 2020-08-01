@@ -4,7 +4,7 @@ using System.IO;
 using System.Net;
 using System.Xml;
 
-namespace Krypton.Toolkit.Extended.Software.Updater.SharpUpdate
+namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
 {
     /// <summary>
     /// Contains update information

@@ -5,7 +5,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Software.Updater.SharpUpdate
+namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
 {
     /// <summary>
     /// Provides application update support in C#

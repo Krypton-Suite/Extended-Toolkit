@@ -2,7 +2,7 @@
 using System.IO;
 using System.Runtime.InteropServices;
 
-namespace Krypton.Toolkit.Extended.Common
+namespace Krypton.Toolkit.Suite.Extended.Common
 {
     public class FileUtilities
     {

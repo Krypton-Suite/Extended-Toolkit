@@ -1,8 +1,7 @@
-﻿using Krypton.Toolkit.Suite.Extended.Language.Model;
-using System;
+﻿using System;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Dialogs
+namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
     public class EnumerationTranslator
     {
@@ -69,6 +68,6 @@ namespace Krypton.Toolkit.Extended.Dialogs
         /// <summary>Translates the input language.</summary>
         /// <param name="value">The value.</param>
         /// <returns></returns>
-        public static Language TranslateInputLanguage(string value) => (Language)Enum.Parse(typeof(Language), value);
+        public static Language.Model.Language TranslateInputLanguage(string value) => (Language.Model.Language)Enum.Parse(typeof(Language.Model.Language), value);
     }
 }

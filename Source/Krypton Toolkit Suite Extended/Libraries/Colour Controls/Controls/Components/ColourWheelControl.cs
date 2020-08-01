@@ -6,10 +6,9 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Colour.Controls
+namespace Krypton.Toolkit.Suite.Extended.Drawing.Suite
 {
-    [DefaultProperty("Colour")]
-    [DefaultEvent("ColourChanged")]
+    [DefaultProperty("Colour"), DefaultEvent("ColourChanged")]
     public class ColourWheelControl : Control, IColourEditor
     {
         #region Constants

@@ -8,3 +8,6 @@ csharp_style_var_for_built_in_types = false:none
 
 # IDE0008: Use explicit type
 csharp_style_var_when_type_is_apparent = false:none
+
+# IDE0004: Remove Unnecessary Cast
+#dotnet_diagnostic.IDE0004.severity = silent

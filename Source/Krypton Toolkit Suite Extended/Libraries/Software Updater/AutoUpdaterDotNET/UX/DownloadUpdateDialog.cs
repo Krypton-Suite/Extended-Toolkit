@@ -1,4 +1,4 @@
-﻿using Krypton.Toolkit.Extended.Software.Updater.Properties;
+﻿using Krypton.Toolkit.Suite.Extended.Software.Updater.Properties;
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -10,7 +10,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Software.Updater.AutoUpdaterDotNET
+namespace Krypton.Toolkit.Suite.Extended.Software.Updater.AutoUpdaterDotNET
 {
     internal class DownloadUpdateDialog : KryptonForm
     {
@@ -66,9 +66,9 @@ namespace Krypton.Toolkit.Extended.Software.Updater.AutoUpdaterDotNET
             // pbxIcon
             // 
             this.pbxIcon.BackColor = System.Drawing.Color.Transparent;
-            this.pbxIcon.ErrorImage = global::Krypton.Toolkit.Extended.Software.Updater.Properties.Resources.download_32;
-            this.pbxIcon.Image = global::Krypton.Toolkit.Extended.Software.Updater.Properties.Resources.download_32;
-            this.pbxIcon.InitialImage = global::Krypton.Toolkit.Extended.Software.Updater.Properties.Resources.download_32;
+            this.pbxIcon.ErrorImage = global::Krypton.Toolkit.Suite.Extended.Software.Updater.Properties.Resources.download_32;
+            this.pbxIcon.Image = global::Krypton.Toolkit.Suite.Extended.Software.Updater.Properties.Resources.download_32;
+            this.pbxIcon.InitialImage = global::Krypton.Toolkit.Suite.Extended.Software.Updater.Properties.Resources.download_32;
             this.pbxIcon.Location = new System.Drawing.Point(12, 12);
             this.pbxIcon.Name = "pbxIcon";
             this.pbxIcon.Size = new System.Drawing.Size(59, 62);

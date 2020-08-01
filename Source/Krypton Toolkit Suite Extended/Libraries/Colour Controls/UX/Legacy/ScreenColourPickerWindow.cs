@@ -1,4 +1,4 @@
-﻿namespace Krypton.Toolkit.Extended.Colour.Controls.Legacy
+﻿namespace Krypton.Toolkit.Suite.Extended.Drawing.Suite.Legacy
 {
     /*
     public class ScreenColourPickerWindow : KryptonForm

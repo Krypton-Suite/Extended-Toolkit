@@ -5,13 +5,12 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Colour.Controls
+namespace Krypton.Toolkit.Suite.Extended.Drawing.Suite
 {
     /// <summary>
     /// Represents a control that allows the selection of a colour by dragging the mouse across the desktop
     /// </summary>
-    [DefaultProperty("Colour")]
-    [DefaultEvent("ColourChanged")]
+    [DefaultProperty("Colour"), DefaultEvent("ColourChanged")]
     public class ScreenColourPickerControl : Control, IColourEditor
     {
         #region Constants

@@ -2,7 +2,7 @@
 using System;
 using System.Globalization;
 
-namespace Krypton.Toolkit.Extended.Software.Updater.NetSparkle
+namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
 {
     /// <summary>
     /// This class handles all registry values which are used from sparkle to handle 

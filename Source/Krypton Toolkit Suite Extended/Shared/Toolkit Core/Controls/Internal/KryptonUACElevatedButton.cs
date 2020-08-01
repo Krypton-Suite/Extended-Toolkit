@@ -1,11 +1,11 @@
-﻿using Krypton.Toolkit.Extended.Common;
+﻿using Krypton.Toolkit.Suite.Extended.Common;
 using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Reflection;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Core
+namespace Krypton.Toolkit.Suite.Extended.Core
 {
     /// <summary>
     /// A standard Krypton button control with UAC shield

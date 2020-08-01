@@ -1,9 +1,10 @@
 ﻿using Krypton.Toolkit.Suite.Extended.Core;
+using Krypton.Toolkit;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Base
+namespace Krypton.Toolkt.Suite.Extended.Base
 {
     [ToolboxBitmap(typeof(KryptonButton))]
     public class KryptonNODialogButton : KryptonButton
@@ -53,11 +54,12 @@ namespace Krypton.Toolkit.Extended.Base
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            if (ParentWindow != null) ParentWindow.CancelButton = this;
+            if (ParentWindow != null)
+            {
+                OwnerWindowChangedEventArgs ev = new OwnerWindowChangedEventArgs(this, ParentWindow);
 
-            OwnerWindowChangedEventArgs ev = new OwnerWindowChangedEventArgs(this, ParentWindow);
-
-            ev.AssociateCancelButton(this);
+                ev.AssociateCancelButton(this);
+            }
 
             base.OnPaint(e);
         }

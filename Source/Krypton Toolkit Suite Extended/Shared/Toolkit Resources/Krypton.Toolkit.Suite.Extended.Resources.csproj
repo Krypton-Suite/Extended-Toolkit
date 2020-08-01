@@ -6,6 +6,20 @@
     <TargetFrameworks Condition="'$(TFMs)' == 'all'">net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;netcoreapp5.0</TargetFrameworks>    
     <RootNamespace>Krypton.Extended.Toolkit.Resources</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
+    <OutputType>Library</OutputType>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <!--<PackageId>Krypton.Toolkit.Extended.Resources.Canary</PackageId>-->
+    <PackageId>Krypton.Toolkit.Suite.Extended.Resources</PackageId>
+    <PackageOutputPath>..\..\..\..\Bin\NuGet</PackageOutputPath>
+    <PackagePath></PackagePath>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Version>5.550.2008</Version>
+    <Description>Contains toolkit resources.</Description>
+    <RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
+    <PackageLicenseFile></PackageLicenseFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -29,11 +43,8 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>5.550.2007</AssemblyVersion>
-    <FileVersion>5.550.2007.0</FileVersion>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>5.550.2007</Version>
-    <RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
+    <AssemblyVersion>5.550.2008</AssemblyVersion>
+    <FileVersion>5.550.2008.0</FileVersion>
   </PropertyGroup>
 
 </Project>

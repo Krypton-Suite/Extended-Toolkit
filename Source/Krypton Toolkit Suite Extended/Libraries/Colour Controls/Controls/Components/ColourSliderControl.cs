@@ -6,14 +6,12 @@ using System.Drawing.Imaging;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Colour.Controls
+namespace Krypton.Toolkit.Suite.Extended.Drawing.Suite
 {
     /// <summary>
     /// Represents a control for selecting a value from a scale
     /// </summary>
-    [DefaultValue("Value")]
-    [DefaultEvent("ValueChanged")]
-    [ToolboxItem(false)]
+    [DefaultValue("Value"), DefaultEvent("ValueChanged"), ToolboxItem(false)]
     public class ColourSliderControl : Control
     {
         #region Constants
@@ -1291,13 +1289,13 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             point = this.ValueToPoint(this.Value);
 
             // divider
-            if (this.ShowValueDivider)
+            if (ShowValueDivider)
             {
                 Point start;
                 Point end;
                 IntPtr hdc;
 
-                if (this.Orientation == Orientation.Horizontal)
+                if (Orientation == Orientation.Horizontal)
                 {
                     start = new Point(point.X, this.BarBounds.Top);
                     end = new Point(point.X, this.BarBounds.Bottom);
@@ -1310,9 +1308,9 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
 
                 // draw a XOR'd line using Win32 API as this functionality isn't part of .NET
                 hdc = e.Graphics.GetHdc();
-                NativeMethods.SetROP2(hdc, NativeMethods.R2_NOT);
-                NativeMethods.MoveToEx(hdc, start.X, start.Y, IntPtr.Zero);
-                NativeMethods.LineTo(hdc, end.X, end.Y);
+                Internal.NativeMethods.SetROP2(hdc, Internal.NativeMethods.R2_NOT);
+                Internal.NativeMethods.MoveToEx(hdc, start.X, start.Y, IntPtr.Zero);
+                Internal.NativeMethods.LineTo(hdc, end.X, end.Y);
                 e.Graphics.ReleaseHdc(hdc);
             }
 

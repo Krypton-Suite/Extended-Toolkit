@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
 
-namespace Krypton.Toolkit.Extended.IO
+namespace Krypton.Toolkit.Suite.Extended.IO
 {
     /// <summary>
     /// This class contains the source text (chars and styles).
@@ -378,7 +377,7 @@ namespace Krypton.Toolkit.Extended.IO
             }
 
             foreach (var c in s)
-                line.Add(new Char(c));
+                line.Add(new InternalChar(c));
             base.lines[i] = line;
 
             if (CurrentTB.WordWrap)

@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms.VisualStyles;
 
-namespace Krypton.Toolkit.Extended.Wizard
+namespace Krypton.Toolkit.Suite.Extended.Wizard
 {
     /// <summary>
     /// Identifies a control or user interface (UI) element that is drawn with visual styles.

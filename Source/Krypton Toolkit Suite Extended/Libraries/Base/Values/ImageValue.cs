@@ -1,8 +1,8 @@
-﻿using Krypton.Toolkit.Extended.Base.Resources;
+﻿using Krypton.Toolkit.Suite.Extended.Base.Resources;
 using System.ComponentModel;
 using System.Drawing;
 
-namespace Krypton.Toolkit.Extended.Base
+namespace Krypton.Toolkit.Suite.Extended.Base
 {
     public class ImageValue : Storage, IContentValues
     {

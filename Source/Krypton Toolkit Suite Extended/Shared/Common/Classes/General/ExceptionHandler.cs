@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.ExceptionServices;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Common
+namespace Krypton.Toolkit.Suite.Extended.Common
 {
     public class ExceptionHandler
     {

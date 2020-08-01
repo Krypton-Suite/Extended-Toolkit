@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms.Design;
 
-namespace Krypton.Toolkit.Extended.Navi.Suite
+namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 {
     /// <summary>
     /// Enables design time mode for the ClientArea of the Band

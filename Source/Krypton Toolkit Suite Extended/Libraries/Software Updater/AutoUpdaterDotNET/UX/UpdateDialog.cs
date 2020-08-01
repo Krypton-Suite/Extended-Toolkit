@@ -6,7 +6,7 @@ using System.Globalization;
 using System.IO;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Software.Updater.AutoUpdaterDotNET
+namespace Krypton.Toolkit.Suite.Extended.Software.Updater.AutoUpdaterDotNET
 {
     public class UpdateDialog : KryptonForm
     {
@@ -57,9 +57,9 @@ namespace Krypton.Toolkit.Extended.Software.Updater.AutoUpdaterDotNET
             // pictureBoxIcon
             // 
             this.pictureBoxIcon.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxIcon.Image = global::Krypton.Toolkit.Extended.Software.Updater.Properties.Resources.update;
+            this.pictureBoxIcon.Image = global::Krypton.Toolkit.Suite.Extended.Software.Updater.Properties.Resources.update;
             this.pictureBoxIcon.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.pictureBoxIcon.InitialImage = global::Krypton.Toolkit.Extended.Software.Updater.Properties.Resources.update;
+            this.pictureBoxIcon.InitialImage = global::Krypton.Toolkit.Suite.Extended.Software.Updater.Properties.Resources.update;
             this.pictureBoxIcon.Location = new System.Drawing.Point(11, 13);
             this.pictureBoxIcon.Name = "pictureBoxIcon";
             this.pictureBoxIcon.Size = new System.Drawing.Size(70, 66);
@@ -123,7 +123,7 @@ namespace Krypton.Toolkit.Extended.Software.Updater.AutoUpdaterDotNET
             this.kbtnUpdate.Size = new System.Drawing.Size(153, 28);
             this.kbtnUpdate.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.kbtnUpdate.TabIndex = 11;
-            this.kbtnUpdate.Values.Image = global::Krypton.Toolkit.Extended.Software.Updater.Properties.Resources.download;
+            this.kbtnUpdate.Values.Image = global::Krypton.Toolkit.Suite.Extended.Software.Updater.Properties.Resources.download;
             this.kbtnUpdate.Values.Text = "Update";
             this.kbtnUpdate.Click += new System.EventHandler(this.kbtnUpdate_Click);
             // 
@@ -138,7 +138,7 @@ namespace Krypton.Toolkit.Extended.Software.Updater.AutoUpdaterDotNET
             this.kbtnSkip.Size = new System.Drawing.Size(153, 28);
             this.kbtnSkip.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.kbtnSkip.TabIndex = 10;
-            this.kbtnSkip.Values.Image = global::Krypton.Toolkit.Extended.Software.Updater.Properties.Resources.hand_point;
+            this.kbtnSkip.Values.Image = global::Krypton.Toolkit.Suite.Extended.Software.Updater.Properties.Resources.hand_point;
             this.kbtnSkip.Values.Text = "Skip this version";
             this.kbtnSkip.Click += new System.EventHandler(this.kbtnSkip_Click);
             // 
@@ -152,7 +152,7 @@ namespace Krypton.Toolkit.Extended.Software.Updater.AutoUpdaterDotNET
             this.kbtnRemindLater.Size = new System.Drawing.Size(153, 28);
             this.kbtnRemindLater.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.kbtnRemindLater.TabIndex = 12;
-            this.kbtnRemindLater.Values.Image = global::Krypton.Toolkit.Extended.Software.Updater.Properties.Resources.clock_go;
+            this.kbtnRemindLater.Values.Image = global::Krypton.Toolkit.Suite.Extended.Software.Updater.Properties.Resources.clock_go;
             this.kbtnRemindLater.Values.Text = "Remind &me later";
             this.kbtnRemindLater.Click += new System.EventHandler(this.kbtnRemindLater_Click);
             // 

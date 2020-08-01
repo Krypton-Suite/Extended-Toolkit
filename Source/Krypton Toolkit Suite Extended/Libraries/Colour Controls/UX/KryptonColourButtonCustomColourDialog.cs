@@ -6,15 +6,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Colour.Controls
+namespace Krypton.Toolkit.Suite.Extended.Drawing.Suite
 {
     public class KryptonColourButtonCustomColourDialog : KryptonForm
     {
         #region Design Code
         private KryptonPanel kryptonPanel1;
-        private Base.KryptonOKDialogButton kryptonOKDialogButton1;
+        private KryptonButton kryptonOKDialogButton1;
         private KryptonPanel kryptonPanel2;
-        private Base.CircularPictureBox circularPictureBox1;
+        private Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox circularPictureBox1;
         private KryptonNumericUpDown kryptonNumericUpDown6;
         private KryptonNumericUpDown kryptonNumericUpDown5;
         private KryptonNumericUpDown kryptonNumericUpDown4;
@@ -34,13 +34,13 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
         private KryptonButton kryptonButton1;
         private KryptonButton kryptonButton3;
         private KryptonButton kryptonButton2;
-        private Base.KryptonCancelDialogButton kryptonCancelDialogButton1;
+        private KryptonButton kryptonCancelDialogButton1;
 
         private void InitializeComponent()
         {
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
-            this.kryptonOKDialogButton1 = new Krypton.Toolkit.Extended.Base.KryptonOKDialogButton();
-            this.kryptonCancelDialogButton1 = new Krypton.Toolkit.Extended.Base.KryptonCancelDialogButton();
+            this.kryptonOKDialogButton1 = new Krypton.Toolkit.KryptonButton();
+            this.kryptonCancelDialogButton1 = new Krypton.Toolkit.KryptonButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
             this.kryptonButton3 = new Krypton.Toolkit.KryptonButton();
@@ -48,7 +48,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.kryptonButton1 = new Krypton.Toolkit.KryptonButton();
             this.kryptonTextBox1 = new Krypton.Toolkit.KryptonTextBox();
             this.kryptonLabel7 = new Krypton.Toolkit.KryptonLabel();
-            this.colourWheelControl1 = new Krypton.Toolkit.Extended.Colour.Controls.ColourWheelControl();
+            this.colourWheelControl1 = new Krypton.Toolkit.Suite.Extended.Drawing.Suite.ColourWheelControl();
             this.kryptonNumericUpDown6 = new Krypton.Toolkit.KryptonNumericUpDown();
             this.kryptonNumericUpDown5 = new Krypton.Toolkit.KryptonNumericUpDown();
             this.kryptonNumericUpDown4 = new Krypton.Toolkit.KryptonNumericUpDown();
@@ -61,7 +61,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.kryptonLabel3 = new Krypton.Toolkit.KryptonLabel();
             this.kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
             this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
-            this.circularPictureBox1 = new Krypton.Toolkit.Extended.Base.CircularPictureBox();
+            this.circularPictureBox1 = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
@@ -85,7 +85,6 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.kryptonOKDialogButton1.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.kryptonOKDialogButton1.Location = new System.Drawing.Point(273, 4);
             this.kryptonOKDialogButton1.Name = "kryptonOKDialogButton1";
-            this.kryptonOKDialogButton1.ParentWindow = this;
             this.kryptonOKDialogButton1.Size = new System.Drawing.Size(90, 25);
             this.kryptonOKDialogButton1.TabIndex = 1;
             this.kryptonOKDialogButton1.Values.Text = "&OK";
@@ -96,7 +95,6 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.kryptonCancelDialogButton1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.kryptonCancelDialogButton1.Location = new System.Drawing.Point(369, 4);
             this.kryptonCancelDialogButton1.Name = "kryptonCancelDialogButton1";
-            this.kryptonCancelDialogButton1.ParentWindow = this;
             this.kryptonCancelDialogButton1.Size = new System.Drawing.Size(90, 25);
             this.kryptonCancelDialogButton1.TabIndex = 0;
             this.kryptonCancelDialogButton1.Values.Text = "C&ancel";
@@ -145,7 +143,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.kryptonButton3.Name = "kryptonButton3";
             this.kryptonButton3.Size = new System.Drawing.Size(22, 22);
             this.kryptonButton3.TabIndex = 21;
-            this.kryptonButton3.Values.Image = global::Krypton.Toolkit.Extended.Colour.Controls.Properties.Resources.palette_save;
+            this.kryptonButton3.Values.Image = global::Krypton.Toolkit.Suite.Extended.Drawing.Suite.Properties.Resources.palette_save;
             this.kryptonButton3.Values.Text = "";
             // 
             // kryptonButton2
@@ -156,7 +154,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
             this.kryptonButton2.Name = "kryptonButton2";
             this.kryptonButton2.Size = new System.Drawing.Size(22, 22);
             this.kryptonButton2.TabIndex = 20;
-            this.kryptonButton2.Values.Image = global::Krypton.Toolkit.Extended.Colour.Controls.Properties.Resources.palette_load;
+            this.kryptonButton2.Values.Image = global::Krypton.Toolkit.Suite.Extended.Drawing.Suite.Properties.Resources.palette_load;
             this.kryptonButton2.Values.Text = "";
             // 
             // kryptonButton1

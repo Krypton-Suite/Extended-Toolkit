@@ -9,7 +9,7 @@
 | Module Name | Current Version | GitHub License |
 |---|---|---|
 | <img src="https://img.shields.io/badge/Module-Base-orange.svg" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Base)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
-| <img src="https://img.shields.io/badge/Module-Colour Controls-orange.svg" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Colour.Controls)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
+| <img src="https://img.shields.io/badge/Module-Drawing Suite-orange.svg" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Drawing.Suite)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
 | <img src="https://img.shields.io/badge/Module-Dialogs-orange.svg" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Dialogs)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
 | <img src="https://img.shields.io/badge/Module-Floating Toolbars-orange.svg" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Floating.Toolbars)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
 | <img src="https://img.shields.io/badge/Module-IO-orange.svg" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.IO)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
@@ -39,8 +39,17 @@
 
 =======
 
+## 2020-08-01 - Build 2008 - August 2020
+* All namespaces now correlate to the package name e.g, `Krypton.Toolkit.Extended.Base` now becomes `Krypton.Toolkit.Suite.Extended.Base`
+* The `Krypton.Toolkit.Suite.Extended.Colour.Controls` package has now been renamed to `Krypton.Toolkit.Suite.Extended.Drawing.Suite`
+* New find and replace dialog built off of [FnR](https://github.com/zzzprojects/findandreplace)
+* All NuGet packages will now be output to `Bin\NuGet`
+* General bugfixes
+<!--* Canary packages are now here-->
+
+=======
+
 ## 2020-07-01 - Build 2007 - July 2020
-<!--* Fix `Krypton.Toolkit.Extended.Base` to `Krypton.Toolkit.Suite.Extended.Base`-->
 * Add `.NET Sparkle` to software updater package
 * Add `Task Dialogs` module
 * Small changes to dialog buttons

@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Base
+namespace Krypton.Toolkit.Suite.Extended.Base
 {
     [ToolboxBitmap(typeof(KryptonMaskedTextBox))]
     public class KryptonRoundedMaskedTextBox : KryptonMaskedTextBox

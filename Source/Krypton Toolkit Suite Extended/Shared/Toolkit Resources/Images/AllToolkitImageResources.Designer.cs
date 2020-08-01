@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Krypton.Extended.Toolkit.Resources.Images {
+namespace Krypton.Extended.Suite.Toolkit.Resources.Images {
     using System;
     
     

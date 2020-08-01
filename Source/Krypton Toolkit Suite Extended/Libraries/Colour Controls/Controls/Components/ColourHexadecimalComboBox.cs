@@ -1,4 +1,4 @@
-﻿using Krypton.Toolkit.Extended.Core;
+﻿using Krypton.Toolkit.Suite.Extended.Core;
 using System;
 using System.Drawing;
 using System.Linq;
@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Colour.Controls
+namespace Krypton.Toolkit.Suite.Extended.Drawing.Suite
 {
     public class ColourHexadecimalComboBox : KryptonComboBox
     {

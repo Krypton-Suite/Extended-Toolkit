@@ -1,5 +1,5 @@
 ﻿using Cyotek.Windows.Forms;
-using Krypton.Toolkit.Extended.Base;
+using Krypton.Toolkit.Suite.Extended.Base;
 using System;
 using System.ComponentModel;
 using System.Drawing;
@@ -8,7 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Dialogs
+namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
     [DefaultEvent("PreviewColourChanged"), DefaultProperty("Colour")]
     public class KryptonColourPickerDialog : KryptonForm
@@ -16,11 +16,11 @@ namespace Krypton.Toolkit.Extended.Dialogs
         #region Designer Code
         private IContainer components = null;
         private KryptonPanel kryptonPanel1;
-        private Colour.Controls.ColourWheelControl cwColour;
-        private Colour.Controls.ColourEditorManager cem;
-        private Colour.Controls.ScreenColourPickerControl scp;
+        private Krypton.Toolkit.Suite.Extended.Drawing.Suite.ColourWheelControl cwColour;
+        private Krypton.Toolkit.Suite.Extended.Drawing.Suite.ColourEditorManager cem;
+        private Krypton.Toolkit.Suite.Extended.Drawing.Suite.ScreenColourPickerControl scp;
         private Cyotek.Windows.Forms.ColorGrid cgColours;
-        private Core.CircularPictureBox cpbColourPreview;
+        private CircularPictureBox cpbColourPreview;
         private KryptonButton kbtnSavePalette;
         private KryptonButton kbtnLoadPalette;
         private KryptonPanel kryptonPanel2;
@@ -35,11 +35,11 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kbtnSavePalette = new Krypton.Toolkit.KryptonButton();
             this.kbtnLoadPalette = new Krypton.Toolkit.KryptonButton();
             this.cgColours = new Cyotek.Windows.Forms.ColorGrid();
-            this.cpbColourPreview = new Krypton.Toolkit.Extended.Core.CircularPictureBox();
+            this.cpbColourPreview = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.kryptonCancelDialogButton1 = new Krypton.Toolkit.Extended.Dialogs.KryptonCancelDialogButton();
-            this.kryptonOKDialogButton1 = new Krypton.Toolkit.Extended.Dialogs.KryptonOKDialogButton();
+            this.kryptonCancelDialogButton1 = new Krypton.Toolkit.Suite.Extended.Dialogs.KryptonCancelDialogButton();
+            this.kryptonOKDialogButton1 = new Krypton.Toolkit.Suite.Extended.Dialogs.KryptonOKDialogButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cpbColourPreview)).BeginInit();
@@ -68,7 +68,7 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kbtnSavePalette.Size = new System.Drawing.Size(22, 22);
             this.kbtnSavePalette.TabIndex = 4;
             this.kbtnSavePalette.ToolTipValues.Description = "Save current custom palette for futre use.";
-            this.kbtnSavePalette.Values.Image = global::Krypton.Toolkit.Extended.Dialogs.Properties.Resources.palette_save;
+            this.kbtnSavePalette.Values.Image = global::Krypton.Toolkit.Suite.Extended.Dialogs.Properties.Resources.palette_save;
             this.kbtnSavePalette.Values.Text = "";
             this.kbtnSavePalette.Click += new System.EventHandler(this.kbtnSavePalette_Click);
             // 
@@ -82,8 +82,8 @@ namespace Krypton.Toolkit.Extended.Dialogs
             this.kbtnLoadPalette.TabIndex = 1;
             this.kbtnLoadPalette.ToolTipValues.Description = "Load a custom palette.";
             this.kbtnLoadPalette.ToolTipValues.Heading = "Load Custom Palette";
-            this.kbtnLoadPalette.ToolTipValues.Image = global::Krypton.Toolkit.Extended.Dialogs.Properties.Resources.palette_load;
-            this.kbtnLoadPalette.Values.Image = global::Krypton.Toolkit.Extended.Dialogs.Properties.Resources.palette_load;
+            this.kbtnLoadPalette.ToolTipValues.Image = global::Krypton.Toolkit.Suite.Extended.Dialogs.Properties.Resources.palette_load;
+            this.kbtnLoadPalette.Values.Image = global::Krypton.Toolkit.Suite.Extended.Dialogs.Properties.Resources.palette_load;
             this.kbtnLoadPalette.Values.Text = "";
             this.kbtnLoadPalette.Click += new System.EventHandler(this.kbtnLoadPalette_Click);
             // 

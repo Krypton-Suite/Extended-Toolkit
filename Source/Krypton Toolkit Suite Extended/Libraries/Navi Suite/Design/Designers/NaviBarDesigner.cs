@@ -2,11 +2,10 @@
 using System.Collections;
 using System.ComponentModel;
 using System.ComponentModel.Design;
-using System.Linq;
 using System.Windows.Forms;
 using System.Windows.Forms.Design;
 
-namespace Krypton.Toolkit.Extended.Navi.Suite
+namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 {
     [ToolboxItemFilter("System.Windows.Forms", ToolboxItemFilterType.Custom)]
     public class NaviBarDesigner : ParentControlDesigner

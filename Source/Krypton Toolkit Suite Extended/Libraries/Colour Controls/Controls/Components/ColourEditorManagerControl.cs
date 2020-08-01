@@ -3,7 +3,7 @@ using System;
 using System.ComponentModel;
 using System.Drawing;
 
-namespace Krypton.Toolkit.Extended.Colour.Controls
+namespace Krypton.Toolkit.Suite.Extended.Drawing.Suite
 {
     /// <summary>
     /// Represents a control that binds multiple editors together as a single composite unit.
@@ -93,8 +93,7 @@ namespace Krypton.Toolkit.Extended.Colour.Controls
         /// <summary>
         /// Gets or sets the linked <see cref="ColourEditor"/>.
         /// </summary>
-        [Category("Behavior")]
-        [DefaultValue(typeof(ColourEditor), null)]
+        [Category("Behavior"), DefaultValue(typeof(ColourEditor), null)]
         public virtual ColourEditor ColourEditor
         {
             get { return _colourEditor; }

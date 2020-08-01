@@ -1,8 +1,8 @@
-﻿using Krypton.Toolkit.Extended.Software.Updater.SharpUpdate.Language;
+﻿using Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate.Language;
 using System;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Software.Updater.SharpUpdate
+namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
 {
     internal class SharpUpdateInfoDialog : KryptonForm
     {
@@ -81,7 +81,7 @@ namespace Krypton.Toolkit.Extended.Software.Updater.SharpUpdate
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = global::Krypton.Toolkit.Extended.Software.Updater.Properties.Resources.update2;
+            this.pictureBox1.Image = global::Krypton.Toolkit.Suite.Extended.Software.Updater.Properties.Resources.update2;
             this.pictureBox1.Location = new System.Drawing.Point(12, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(80, 80);

@@ -6,12 +6,20 @@
     <TargetFrameworks Condition="'$(TFMs)' == 'all'">net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;netcoreapp5.0</TargetFrameworks>
     <RootNamespace>Krypton.Toolkit.Extended.File.Explorer</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <!--<PropertyGroup>
+    <!-<PackageId>Krypton.Toolkit.Suite.Extended.File.Explorer.Canary</PackageId>->
+    <PackageId>Krypton.Toolkit.Suite.Extended.File.Explorer</PackageId>
+    <Description>Contains colour and drawing controls.</Description>
+    <PackageOutputPath>..\..\..\..\Bin\NuGet</PackageOutputPath>
+    <PackagePath></PackagePath>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Version>5.550.2007</Version>
+    <Version>5.550.2008</Version>
     <OutputType>Library</OutputType>
     <RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
-  </PropertyGroup>
+  </PropertyGroup>-->
 
   <ItemGroup>
     <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2006.3" />

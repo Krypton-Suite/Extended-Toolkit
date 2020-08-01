@@ -10,7 +10,7 @@ using System.Text;
 
 using FILETIME = System.Runtime.InteropServices.ComTypes.FILETIME;
 
-namespace Krypton.Toolkit.Extended.Wizard
+namespace Krypton.Toolkit.Suite.Extended.Wizard
 {
     /// <summary>
     /// A representation of a shell item property key.

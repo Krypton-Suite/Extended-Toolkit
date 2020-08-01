@@ -1,4 +1,4 @@
-﻿using Krypton.Toolkit.Extended.Core.Resources;
+﻿using Krypton.Toolkit.Suite.Extended.Core.Resources;
 using System;
 using System.ComponentModel;
 using System.Drawing;
@@ -6,7 +6,7 @@ using System.Media;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Core
+namespace Krypton.Toolkit.Suite.Extended.Core
 {
     /// <summary>
     /// Displays a message box that can contain text, buttons, and symbols that inform and instruct the user.

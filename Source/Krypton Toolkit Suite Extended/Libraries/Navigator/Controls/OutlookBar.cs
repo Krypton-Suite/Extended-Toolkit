@@ -1,11 +1,11 @@
-﻿using Krypton.Toolkit.Extended.Navigator.Properties;
+﻿using Krypton.Toolkit.Suite.Extended.Navigator.Properties;
 using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Navigator
+namespace Krypton.Toolkit.Suite.Extended.Navigator
 {
     [DefaultEvent("ButtonClicked")]
     [ToolboxBitmap(typeof(TableLayoutPanel))]

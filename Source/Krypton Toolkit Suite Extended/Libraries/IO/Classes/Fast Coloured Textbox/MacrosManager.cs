@@ -5,7 +5,7 @@ using System.Threading;
 using System.Windows.Forms;
 using System.Xml;
 
-namespace Krypton.Toolkit.Extended.IO
+namespace Krypton.Toolkit.Suite.Extended.IO
 {
     /// <summary>
     /// This class records, stores and executes the macros.

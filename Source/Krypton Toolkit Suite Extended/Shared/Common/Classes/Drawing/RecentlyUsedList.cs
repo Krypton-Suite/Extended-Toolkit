@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 
-namespace Krypton.Toolkit.Extended.Common
+namespace Krypton.Toolkit.Suite.Extended.Common
 {
     /// <summary>
     /// A custom collection for maintaining recently used lists of any kind. For example, recently used fonts, color etc.

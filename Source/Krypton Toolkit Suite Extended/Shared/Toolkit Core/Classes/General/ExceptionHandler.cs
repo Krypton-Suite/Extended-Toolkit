@@ -3,7 +3,7 @@ using System.IO;
 using System.Runtime.ExceptionServices;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Core
+namespace Krypton.Toolkit.Suite.Extended.Core
 {
     /// <summary>
     /// A wrapper for exception handling.

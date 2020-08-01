@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Common
+namespace Krypton.Toolkit.Suite.Extended.Common
 {
     /// <summary>
     /// Code from: https://github.com/aalitor/AltoControls/blob/on-development/AltoControls/Helpers/Transparenter.cs

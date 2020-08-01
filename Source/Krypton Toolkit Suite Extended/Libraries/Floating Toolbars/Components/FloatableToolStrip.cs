@@ -6,7 +6,7 @@ using System.Drawing.Design;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Floating.Toolbars
+namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
 {
     [ToolboxBitmap(typeof(FloatableToolStrip), "ToolboxBitmaps.FloatableToolStrip.bmp")]
     public class FloatableToolStrip : ToolStrip

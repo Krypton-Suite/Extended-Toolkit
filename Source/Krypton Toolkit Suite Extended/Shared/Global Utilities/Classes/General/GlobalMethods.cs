@@ -7,7 +7,7 @@ using System.Management;
 using System.Security.Principal;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Global.Utilities
+namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
 {
     /// <summary>
     /// Methods that can be used anywhere.

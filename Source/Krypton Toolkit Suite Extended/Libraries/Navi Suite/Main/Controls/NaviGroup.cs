@@ -34,13 +34,13 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Extended.Navi.Suite
+namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 {
     /// <summary>
     /// Represents a container control which can be expanded or collapsed to a header bar only. 
     /// </summary>
     [
-     Designer("Krypton.Toolkit.Extended.Navi.Suite.NaviGroupDesigner, Krypton.Toolkit.Extended.Navi.Suite, Version=2.0.0.0, Culture=neutral, PublicKeyToken=86dab5aa2dd98116"),
+     Designer("Krypton.Toolkit.Suite.Extended.Navi.Suite.NaviGroupDesigner, Krypton.Toolkit.Suite.Extended.Navi.Suite, Version=2.0.0.0, Culture=neutral, PublicKeyToken=86dab5aa2dd98116"),
     ToolboxItem(true),
     ToolboxBitmap(typeof(NaviGroup))
     ]

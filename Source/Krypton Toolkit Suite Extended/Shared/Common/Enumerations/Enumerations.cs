@@ -1,4 +1,4 @@
-﻿namespace Krypton.Toolkit.Extended.Common
+﻿namespace Krypton.Toolkit.Suite.Extended.Common
 {
     public enum SupportedHashAlgorithims
     {
