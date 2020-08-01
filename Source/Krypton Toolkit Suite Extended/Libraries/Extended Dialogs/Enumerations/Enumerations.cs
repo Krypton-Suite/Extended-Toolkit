@@ -156,6 +156,7 @@
 
     public enum ActionType
     {
+        DEFAULT,
         LAUCHPROCESS,
         OPEN
     }

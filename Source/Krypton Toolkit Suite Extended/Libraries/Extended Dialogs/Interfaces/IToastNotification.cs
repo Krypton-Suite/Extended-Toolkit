@@ -1,10 +1,13 @@
 ﻿using System.Drawing;
 using System.IO;
+using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
     public interface IToastNotification
     {
+        /// <summary>Gets or sets the button location.</summary>
+        /// <value>The action button location.</value>
         public ActionButtonLocation ButtonLocation { get; set; }
 
         /// <summary>
@@ -87,11 +90,17 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         /// </value>
         public int Seconds { get; set; }
 
+        /// <summary>Gets or sets the corner radius.</summary>
+        /// <value>The corner radius.</value>
         public int CornerRadius { get; set; }
 
+        /// <summary>Gets or sets the palette draw borders.</summary>
+        /// <value>The palette draw borders.</value>
         public PaletteDrawBorders PaletteDrawBorders { get; set; }
 
-        public IconType Type { get; set; }
+        /// <summary>Gets or sets the type of the icon.</summary>
+        /// <value>The type of the icon.</value>
+        public IconType IconType { get; set; }
 
         /// <summary>
         /// Gets or sets the right to left support.
@@ -100,5 +109,17 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         /// The right to left support.
         /// </value>
         public RightToLeftSupport RightToLeft { get; set; }
+
+        /// <summary>Gets or sets the dismiss text.</summary>
+        /// <value>The dismiss text.</value>
+        public string DismissText { get; set; }
+
+        /// <summary>Gets or sets the action text.</summary>
+        /// <value>The action text.</value>
+        public string ActionText { get; set; }
+
+        /// <summary>Gets or sets the icon size mode.</summary>
+        /// <value>The icon size mode.</value>
+        public PictureBoxSizeMode IconSizeMode { get; set; }
     }
 }

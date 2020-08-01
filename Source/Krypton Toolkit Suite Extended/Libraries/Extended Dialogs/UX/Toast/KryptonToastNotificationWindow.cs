@@ -13,44 +13,44 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
     /// Adapted from: https://github.com/dotCoefficient/Notification/blob/master/Notification/Notification.cs
     /// </summary>
     /// <seealso cref="KryptonForm" />
-    public class KryptonToastNotificationWindow : KryptonForm
+    public class KryptonToastNotificationWindow : KryptonForm, IToastNotificationUIElements
     {
         #region Design Code
-        private KryptonPanel kryptonPanel1;
+        private KryptonPanel kpnlButtons;
         private KryptonButton kbtneLaunch;
         private KryptonButton kbtneDismiss;
-        private System.Windows.Forms.Panel panel1;
-        private KryptonPanel kryptonPanel2;
-        private KryptonLabel klblContent;
+        private System.Windows.Forms.Panel pnlSplitter;
+        private KryptonPanel kpnlContent;
+        private KryptonWrapLabel kwlContent;
         private KryptonWrapLabel kwlTitle;
         private System.Windows.Forms.PictureBox pbxIcon;
 
         private void InitializeComponent()
         {
-            this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            this.kpnlButtons = new Krypton.Toolkit.KryptonPanel();
             this.kbtneLaunch = new Krypton.Toolkit.KryptonButton();
             this.kbtneDismiss = new Krypton.Toolkit.KryptonButton();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
-            this.klblContent = new Krypton.Toolkit.KryptonLabel();
+            this.pnlSplitter = new System.Windows.Forms.Panel();
+            this.kpnlContent = new Krypton.Toolkit.KryptonPanel();
+            this.kwlContent = new Krypton.Toolkit.KryptonWrapLabel();
             this.kwlTitle = new Krypton.Toolkit.KryptonWrapLabel();
             this.pbxIcon = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
-            this.kryptonPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
-            this.kryptonPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kpnlButtons)).BeginInit();
+            this.kpnlButtons.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kpnlContent)).BeginInit();
+            this.kpnlContent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxIcon)).BeginInit();
             this.SuspendLayout();
             // 
-            // kryptonPanel1
+            // kpnlButtons
             // 
-            this.kryptonPanel1.Controls.Add(this.kbtneLaunch);
-            this.kryptonPanel1.Controls.Add(this.kbtneDismiss);
-            this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.kryptonPanel1.Location = new System.Drawing.Point(0, 244);
-            this.kryptonPanel1.Name = "kryptonPanel1";
-            this.kryptonPanel1.Size = new System.Drawing.Size(605, 45);
-            this.kryptonPanel1.TabIndex = 0;
+            this.kpnlButtons.Controls.Add(this.kbtneLaunch);
+            this.kpnlButtons.Controls.Add(this.kbtneDismiss);
+            this.kpnlButtons.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.kpnlButtons.Location = new System.Drawing.Point(0, 244);
+            this.kpnlButtons.Name = "kpnlButtons";
+            this.kpnlButtons.Size = new System.Drawing.Size(605, 45);
+            this.kpnlButtons.TabIndex = 0;
             // 
             // kbtneLaunch
             // 
@@ -100,37 +100,34 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.kbtneDismiss.Values.Text = "&Dismiss ({0})";
             this.kbtneDismiss.Click += new System.EventHandler(this.kbtneDismiss_Click);
             // 
-            // panel1
+            // pnlSplitter
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 241);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(605, 3);
-            this.panel1.TabIndex = 1;
+            this.pnlSplitter.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.pnlSplitter.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlSplitter.Location = new System.Drawing.Point(0, 241);
+            this.pnlSplitter.Name = "pnlSplitter";
+            this.pnlSplitter.Size = new System.Drawing.Size(605, 3);
+            this.pnlSplitter.TabIndex = 1;
             // 
-            // kryptonPanel2
+            // kpnlContent
             // 
-            this.kryptonPanel2.Controls.Add(this.klblContent);
-            this.kryptonPanel2.Controls.Add(this.kwlTitle);
-            this.kryptonPanel2.Controls.Add(this.pbxIcon);
-            this.kryptonPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonPanel2.Location = new System.Drawing.Point(0, 0);
-            this.kryptonPanel2.Name = "kryptonPanel2";
-            this.kryptonPanel2.Size = new System.Drawing.Size(605, 241);
-            this.kryptonPanel2.TabIndex = 2;
+            this.kpnlContent.Controls.Add(this.kwlContent);
+            this.kpnlContent.Controls.Add(this.kwlTitle);
+            this.kpnlContent.Controls.Add(this.pbxIcon);
+            this.kpnlContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kpnlContent.Location = new System.Drawing.Point(0, 0);
+            this.kpnlContent.Name = "kpnlContent";
+            this.kpnlContent.Size = new System.Drawing.Size(605, 241);
+            this.kpnlContent.TabIndex = 2;
             // 
-            // klblContent
+            // kwlContent
             // 
-            this.klblContent.AutoSize = false;
-            this.klblContent.Location = new System.Drawing.Point(82, 79);
-            this.klblContent.Name = "klblContent";
-            this.klblContent.Size = new System.Drawing.Size(511, 156);
-            this.klblContent.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.klblContent.StateDisabled.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.klblContent.StateNormal.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.klblContent.TabIndex = 4;
-            this.klblContent.Values.Text = "kryptonLabelExtended1";
+            this.kwlContent.AutoSize = false;
+            this.kwlContent.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.kwlContent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.kwlContent.Location = new System.Drawing.Point(82, 79);
+            this.kwlContent.Name = "kwlContent";
+            this.kwlContent.Size = new System.Drawing.Size(511, 156);
             // 
             // kwlTitle
             // 
@@ -157,9 +154,9 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             // KryptonToastNotificationWindow
             // 
             this.ClientSize = new System.Drawing.Size(605, 289);
-            this.Controls.Add(this.kryptonPanel2);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.kryptonPanel1);
+            this.Controls.Add(this.kpnlContent);
+            this.Controls.Add(this.pnlSplitter);
+            this.Controls.Add(this.kpnlButtons);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -167,12 +164,12 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.Load += new System.EventHandler(this.KryptonToastNotificationWindow_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
-            this.kryptonPanel1.ResumeLayout(false);
-            this.kryptonPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
-            this.kryptonPanel2.ResumeLayout(false);
-            this.kryptonPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kpnlButtons)).EndInit();
+            this.kpnlButtons.ResumeLayout(false);
+            this.kpnlButtons.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kpnlContent)).EndInit();
+            this.kpnlContent.ResumeLayout(false);
+            this.kpnlContent.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxIcon)).EndInit();
             this.ResumeLayout(false);
 
@@ -189,6 +186,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         private Timer _timer;
         private SoundPlayer _player;
         private IconType _iconType;
+        private IToastNotification _toastNotificationOptions;
         private RightToLeftSupport _rightToLeftSupport;
         private PaletteDrawBorders _drawBorders;
         #endregion
@@ -292,6 +290,17 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         /// The right to left support.
         /// </value>
         public RightToLeftSupport RightToLeft { get => _rightToLeftSupport; set { _rightToLeftSupport = value; Invalidate(); } }
+        #endregion
+
+        #region Custom Events
+
+        #region Dismiss
+        public delegate void DismissEventHandler(EventArgs e);
+
+        public event DismissEventHandler Dismiss;
+
+        protected virtual void OnDismiss(EventArgs e) => Dismiss?.Invoke(e);
+        #endregion
         #endregion
 
         #region Constructors
@@ -578,7 +587,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
             kwlTitle.Text = HeaderText;
 
-            klblContent.Text = ContentText;
+            kwlContent.Text = ContentText;
 
             kbtneLaunch.Visible = ShowActionButton;
 
@@ -622,6 +631,8 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         public void DisplayNotification()
         {
             ImplementInterface(ButtonLocation, Action, Fade, ShowActionButton, SoundPath, SoundStream, HeaderText, ContentText, ProcessName, IconImage, Seconds, CornerRadius, PaletteDrawBorders, Type, RightToLeft);
+
+            // TODO: Complete code
         }
 
         private void ImplementInterface(ActionButtonLocation buttonLocation, ActionType action, bool fade, bool showActionButton, string soundPath, Stream soundStream, string headerText, string contentText, string processName, Image iconImage, int seconds, int cornerRadius, PaletteDrawBorders paletteDrawBorders, IconType type, RightToLeftSupport rightToLeft)
@@ -738,7 +749,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
             kwlTitle.Location = new Point(147, 12);
 
-            klblContent.Location = new Point(147, 77);
+            kwlContent.Location = new Point(147, 77);
 
             //klblContent.RightToLeft = RightToLeft.
 
@@ -782,7 +793,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         {
             kwlTitle.Size = headerLabelSize;
 
-            klblContent.Size = contentLabelSize;
+            kwlContent.Size = contentLabelSize;
 
             kbtneLaunch.Location = actionButtonLocation;
 
@@ -876,5 +887,14 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             }
         }
         #endregion
+        public KryptonForm BaseWindow { get => this; }
+        public KryptonPanel ContentPanel { get => kpnlContent; }
+        public KryptonPanel ButtonPanel { get => kpnlButtons; }
+        public KryptonWrapLabel HeaderLabel { get => kwlTitle; }
+        public KryptonWrapLabel ContentLabel { get => kwlContent; }
+        public KryptonButton ActionButton { get => kbtneLaunch; }
+        public KryptonButton DismissButton { get => kbtneDismiss; }
+        public Panel SplitterPanel { get => pnlSplitter; }
+        public PictureBox IconBox { get => pbxIcon; }
     }
 }
