@@ -126,4 +126,43 @@
         BUTTONFOUR = 3,
         BUTTONFIVE = 4
     }
+
+    public enum IconType
+    {
+        CUSTOM,
+        OK,
+        ERROR,
+        EXCLAMATION,
+        INFORMATION,
+        QUESTION,
+        NOTHING,
+        NONE,
+        STOP,
+        HAND,
+        WARNING
+    }
+
+    public enum ProgressBarOrientation
+    {
+        VERTICAL,
+        HORIZONTAL
+    }
+
+    public enum RightToLeftSupport
+    {
+        LEFTTORIGHT,
+        RIGHTTOLEFT
+    }
+
+    public enum ActionType
+    {
+        LAUCHPROCESS,
+        OPEN
+    }
+
+    public enum ActionButtonLocation
+    {
+        LEFT,
+        RIGHT
+    }
 }

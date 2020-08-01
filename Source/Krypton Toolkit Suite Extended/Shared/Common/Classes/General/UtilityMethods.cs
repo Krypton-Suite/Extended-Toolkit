@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Diagnostics;
+using System.Drawing;
 using System.Security.Principal;
 using System.Windows.Forms;
 
@@ -72,6 +73,11 @@ namespace Krypton.Toolkit.Suite.Extended.Common
                 return false;
             }
         }
+
+        /// <summary>Changes the control location.</summary>
+        /// <param name="control">The control.</param>
+        /// <param name="location">The location.</param>
+        public static void ChangeControlLocation(Control control, Point location) => control.Location = location;
         #endregion
     }
 }
