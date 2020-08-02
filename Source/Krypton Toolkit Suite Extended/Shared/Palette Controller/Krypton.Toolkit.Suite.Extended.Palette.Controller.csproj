@@ -39,7 +39,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Palette.Controller\Krypton.Toolkit.Extended.Palette.Controller.xml</DocumentationFile>
+    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Palette.Controller\Krypton.Toolkit.Suite.Extended.Palette.Controller.xml</DocumentationFile>
     <OutputPath>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Palette.Controller\</OutputPath>
   </PropertyGroup>
 

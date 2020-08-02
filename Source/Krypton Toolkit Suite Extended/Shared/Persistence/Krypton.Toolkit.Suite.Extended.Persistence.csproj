@@ -39,7 +39,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Persistence\Krypton.Toolkit.Extended.Persistence.xml</DocumentationFile>
+    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Persistence\Krypton.Toolkit.Suite.Extended.Persistence.xml</DocumentationFile>
     <OutputPath>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Persistence\</OutputPath>
   </PropertyGroup>
 

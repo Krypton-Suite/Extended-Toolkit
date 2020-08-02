@@ -23,7 +23,7 @@
   </PropertyGroup>-->
 
   <PropertyGroup>
-    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Toolkit.Control.Settings\Krypton.Toolkit.Extended.Control.Settings.xml</DocumentationFile>
+    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Toolkit.Control.Settings\Krypton.Toolkit.Suite.Extended.Control.Settings.xml</DocumentationFile>
     <OutputPath>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Toolkit.Control.Settings\</OutputPath>
   </PropertyGroup>
 
