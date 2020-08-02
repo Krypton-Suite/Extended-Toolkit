@@ -4,6 +4,7 @@ using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
+    /// <summary>Contains elements of <see cref="KryptonToastNotificationWindow"/>.</summary>
     public interface IToastNotification
     {
         /// <summary>Gets or sets the button location.</summary>

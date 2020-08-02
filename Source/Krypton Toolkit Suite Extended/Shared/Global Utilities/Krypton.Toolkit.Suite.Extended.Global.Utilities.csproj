@@ -6,7 +6,7 @@
     <TargetFrameworks Condition="'$(TFMs)' == 'all'">net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;netcoreapp5.0</TargetFrameworks>
     <RootNamespace>Krypton.Toolkit.Extended.Global.Utilities</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyVersion>5.550.2009</AssemblyVersion>
+    <AssemblyVersion>5.550.2009.1</AssemblyVersion>
     <OutputType>Library</OutputType>
   </PropertyGroup>
 
@@ -33,9 +33,9 @@
 
   <!--Version configuration-->
   <PropertyGroup>
-    <AssemblyVersion>5.550.2009</AssemblyVersion>
+    <AssemblyVersion>5.550.2009.1</AssemblyVersion>
     <FileVersion>5.550.2009.1</FileVersion>
-    <Version>5.550.2009</Version>
+    <Version>5.550.2009.1</Version>
   </PropertyGroup>
 
   <ItemGroup>

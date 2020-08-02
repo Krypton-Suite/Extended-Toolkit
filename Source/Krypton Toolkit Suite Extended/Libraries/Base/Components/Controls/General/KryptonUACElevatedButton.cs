@@ -72,6 +72,9 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         /// <summary>The execute process as administrator</summary>
         public event ExecuteProcessAsAdministratorEventHandler ExecuteProcessAsAdministrator;
 
+        /// <summary>Executes the process as an administrator.</summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="ExecuteProcessAsAdministratorEventArgs" /> instance containing the event data.</param>
         protected virtual void OnExecuteProcessAsAdministrator(object sender, ExecuteProcessAsAdministratorEventArgs e) => ExecuteProcessAsAdministrator?.Invoke(sender, e);
         #endregion
 

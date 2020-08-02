@@ -1,9 +1,13 @@
 ﻿namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
+    /// <summary>The chosen input box icon.</summary>
     public enum InputBoxIcon
     {
+        /// <summary>A user defined icon.</summary>
         CUSTOM,
+        /// <summary>A ok icon.</summary>
         OK,
+        /// <summary>A error icon.</summary>
         ERROR,
         EXCLAMATION,
         INFORMATION,
