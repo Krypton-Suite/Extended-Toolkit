@@ -1,4 +1,6 @@
-﻿using System.Drawing;
+﻿using Krypton.Toolkit.Suite.Extended.Dialogs.Resources;
+using System;
+using System.Drawing;
 using System.IO;
 using System.Media;
 using System.Windows.Forms;
@@ -150,7 +152,8 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Experimental
         private ActionType _actionType;
         private bool _fade, _showActionButton;
         private ContentAlignment _headerTextAlignment, _contentTextAlignment;
-        private string _headerText, _contentText, _dismissText, _processName;
+        private DefaultNotificationButton _defaultNotificationButton;
+        private string _headerText, _contentText, _dismissButtonText, _actionButtonText, _processName;
         private Image _customIconImage;
         private int _time, _cornerRadius, _seconds;
         private Timer _timer;
@@ -238,9 +241,13 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Experimental
         /// </value>
         public string ProcessName { get => _processName; set => _processName = value; }
 
-        /// <summary>Gets or sets the dismiss text.</summary>
-        /// <value>The dismiss text.</value>
-        public string DismissText { get => _dismissText; set => _dismissText = value; }
+        /// <summary>Gets or sets the action button text.</summary>
+        /// <value>The action button text.</value>
+        public string ActionButtonText { get => _actionButtonText; set => _actionButtonText = value; }
+
+        /// <summary>Gets or sets the dismiss button text.</summary>
+        /// <value>The dismiss button text.</value>
+        public string DismissButtonText { get => _dismissButtonText; set => _dismissButtonText = value; }
 
         /// <summary>
         /// Gets or sets the icon image.
@@ -267,6 +274,10 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Experimental
         public IconType IconType { get => _iconType; set => _iconType = value; }
 
         public RightToLeftSupport RightToLeft { get => _rightToLeftSupport; set { _rightToLeftSupport = value; Invalidate(); } }
+
+        /// <summary>Gets or sets the default notification button.</summary>
+        /// <value>The default notification button.</value>
+        public DefaultNotificationButton DefaultNotificationButton { get => _defaultNotificationButton; set => _defaultNotificationButton = value; }
         #endregion
 
         #region Constants
@@ -287,7 +298,8 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Experimental
         /// <param name="contentTextAlignment">The content text alignment.</param>
         /// <param name="headerTextAlignment">The header text alignment.</param>
         /// <param name="processName">Name of the process.</param>
-        /// <param name="dismissText">The dismiss text.</param>
+        /// <param name="dismissButtonText">The dismiss button text.</param>
+        /// <param name="actionButtonText">The action button text.</param>
         /// <param name="customIconImage">The custom icon image.</param>
         /// <param name="seconds">The seconds.</param>
         /// <param name="cornerRadius">The corner radius.</param>
@@ -295,11 +307,15 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Experimental
         /// <param name="actionButtonLocation">The location of the action button.</param>
         /// <param name="dismissButtonLocation">The location of the dismiss button.</param>
         /// <param name="showControlBox">Shows the control box (Minimise, Maximise & Close).</param>
+        /// <param name="contentTypeface">The typeface for the content text.</param>
+        /// <param name="headerTypeface">The typeface for the header text.</param>
+        /// <param name="defaultNotificationButton">The default notification button.</param>
         public KryptonToastNotificationWindow(string headerText, string contentText, string windowTitleText, IconType iconType, bool fade, ActionType actionType,
                                               bool showActionButton, string soundPath, Stream soundStream, ContentAlignment contentTextAlignment,
-                                              ContentAlignment headerTextAlignment, string processName, string dismissText, Image customIconImage,
-                                              int seconds, int cornerRadius, PaletteDrawBorders drawBorders, Point actionButtonLocation,
-                                              Point dismissButtonLocation, bool showControlBox)
+                                              ContentAlignment headerTextAlignment, string processName, string dismissButtonText, string actionButtonText,
+                                              Image customIconImage, int seconds, int cornerRadius, PaletteDrawBorders drawBorders,
+                                              Point actionButtonLocation, Point dismissButtonLocation, bool showControlBox,
+                                              Font contentTypeface, Font headerTypeface, DefaultNotificationButton defaultNotificationButton)
         {
             InitializeComponent();
 
@@ -326,7 +342,9 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Experimental
 
             ProcessName = processName;
 
-            DismissText = dismissText;
+            ActionButtonText = actionButtonText;
+
+            DismissButtonText = dismissButtonText;
 
             CustomIconImage = customIconImage;
 
@@ -335,6 +353,8 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Experimental
             CornerRadius = cornerRadius;
 
             PaletteDrawBorders = drawBorders;
+
+            DefaultNotificationButton = defaultNotificationButton;
             #endregion
 
             Text = windowTitleText;
@@ -348,6 +368,14 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Experimental
             DoubleBuffered = true;
 
             ControlBox = showControlBox;
+
+            kwlContent.StateCommon.Font = contentTypeface;
+
+            kwlContent.TextAlign = ContentTextAlignment;
+
+            kwlTitle.StateCommon.Font = headerTypeface;
+
+            kwlTitle.TextAlign = HeaderTextAlignment;
         }
         #endregion
 
@@ -355,7 +383,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Experimental
         /// <summary>Internals the show.</summary>
         /// <param name="headerText">The header text.</param>
         /// <param name="contentText">The content text.</param>
-        /// <param name="windowTitleText">The window title text.</param>
+        /// <param name="windowTitleText">The text on the window title bar.</param>
         /// <param name="iconType">Type of the icon.</param>
         /// <param name="fade">if set to <c>true</c> [fade].</param>
         /// <param name="actionType">Type of the action.</param>
@@ -365,22 +393,27 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Experimental
         /// <param name="contentTextAlignment">The content text alignment.</param>
         /// <param name="headerTextAlignment">The header text alignment.</param>
         /// <param name="processName">Name of the process.</param>
-        /// <param name="dismissText">The dismiss text.</param>
+        /// <param name="dismissButtonText">The dismiss button text.</param>
+        /// <param name="actionButtonText">The action button text.</param>
         /// <param name="customIconImage">The custom icon image.</param>
         /// <param name="seconds">The seconds.</param>
         /// <param name="cornerRadius">The corner radius.</param>
         /// <param name="drawBorders">The draw borders.</param>
-        /// <param name="actionButtonLocation">The action button location.</param>
-        /// <param name="dismissButtonLocation">The dismiss button location.</param>
-        /// <param name="showControlBox">if set to <c>true</c> [show control box].</param>
+        /// <param name="actionButtonLocation">The location of the action button.</param>
+        /// <param name="dismissButtonLocation">The location of the dismiss button.</param>
+        /// <param name="showControlBox">Shows the control box (Minimise, Maximise & Close).</param>
+        /// <param name="contentTypeface">The typeface for the content text.</param>
+        /// <param name="headerTypeface">The typeface for the header text.</param>
+        /// <param name="defaultNotificationButton">The default notification button.</param>
         /// <returns></returns>
         private static DialogResult InternalShow(string headerText, string contentText, string windowTitleText, IconType iconType, bool fade, ActionType actionType,
                                               bool showActionButton, string soundPath, Stream soundStream, ContentAlignment contentTextAlignment,
-                                              ContentAlignment headerTextAlignment, string processName, string dismissText, Image customIconImage,
-                                              int seconds, int cornerRadius, PaletteDrawBorders drawBorders, Point actionButtonLocation,
-                                              Point dismissButtonLocation, bool showControlBox)
+                                              ContentAlignment headerTextAlignment, string processName, string dismissButtonText, string actionButtonText,
+                                              Image customIconImage, int seconds, int cornerRadius, PaletteDrawBorders drawBorders,
+                                              Point actionButtonLocation, Point dismissButtonLocation, bool showControlBox,
+                                              Font contentTypeface, Font headerTypeface, DefaultNotificationButton defaultNotificationButton)
         {
-            using (KryptonToastNotificationWindow ktnw = new KryptonToastNotificationWindow(headerText, contentText, windowTitleText, iconType, fade, actionType, showActionButton, soundPath, soundStream, contentTextAlignment, headerTextAlignment, processName, dismissText, customIconImage, seconds, cornerRadius, drawBorders, actionButtonLocation, dismissButtonLocation, showControlBox))
+            using (KryptonToastNotificationWindow ktnw = new KryptonToastNotificationWindow(headerText, contentText, windowTitleText, iconType, fade, actionType, showActionButton, soundPath, soundStream, contentTextAlignment, headerTextAlignment, processName, dismissButtonText, actionButtonText, customIconImage, seconds, cornerRadius, drawBorders, actionButtonLocation, dismissButtonLocation, showControlBox, contentTypeface, headerTypeface, defaultNotificationButton))
             {
                 ktnw.Show();
 
@@ -456,6 +489,49 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Experimental
             {
                 pbxIcon.Visible = false;
             }
+
+            kwlContent.Text = ContentText;
+
+            kwlTitle.Text = HeaderText;
+
+            kbtnAction.Visible = ShowActionButton;
+
+            if (Seconds != 0)
+            {
+                kbtnDismiss.Text = $"{ DismissButtonText } ({ Seconds - _time }s)";
+
+                _timer = new Timer();
+
+                _timer.Interval = 1000;
+
+                _timer.Tick += (sender, e) =>
+                {
+                    _time++;
+
+                    kbtnDismiss.Text = $"{ DismissButtonText } ({ Seconds - _time }s)";
+
+                    if (_time == Seconds)
+                    {
+                        _timer.Stop();
+
+                        FadeOutAndClose();
+                    }
+                };
+            }
+
+            if (SoundPath != null)
+            {
+                _player = new SoundPlayer(SoundPath);
+            }
+
+            if (SoundStream != null)
+            {
+                _player = new SoundPlayer(SoundStream);
+            }
+
+            SetDefaultNotificationButton(DefaultNotificationButton);
+
+            base.Show();
         }
 
         private Image GetIconImage(IconType type, Image customIconImage)
@@ -475,26 +551,100 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Experimental
             switch (type)
             {
                 case IconType.CUSTOM:
-                    break;
-                case IconType.OK:
-                    break;
-                case IconType.ERROR:
-                    break;
-                case IconType.EXCLAMATION:
-                    break;
-                case IconType.INFORMATION:
-                    break;
-                case IconType.QUESTION:
-                    break;
-                case IconType.NOTHING:
+                    if (customIconImage != null)
+                    {
+                        pbxIcon.Image = customIconImage;
+                    }
+                    else
+                    {
+                        throw new ArgumentNullException();
+                    }
                     break;
                 case IconType.NONE:
+                    AdjustLayout(new Size(622, 58), new Size(622, 153), new Point(12, 6), new Point(470, 6), false);
                     break;
-                case IconType.STOP:
+                case IconType.QUESTION:
+                    pbxIcon.Image = InputBoxResources.Input_Box_Question_64_x_64;
+
+                    SystemSounds.Question.Play();
                     break;
-                case IconType.HAND:
+                case IconType.INFORMATION:
+                    pbxIcon.Image = InputBoxResources.Input_Box_Information_64_x_64;
+
+                    SystemSounds.Exclamation.Play();
                     break;
                 case IconType.WARNING:
+                    pbxIcon.Image = InputBoxResources.Input_Box_Warning_64_x_58;
+
+                    SystemSounds.Exclamation.Play();
+                    break;
+                case IconType.ERROR:
+                    pbxIcon.Image = InputBoxResources.Input_Box_Critical_64_x_64;
+                    break;
+                case IconType.HAND:
+                    pbxIcon.Image = InputBoxResources.Input_Box_Hand_64_x_64;
+                    break;
+                case IconType.STOP:
+                    pbxIcon.Image = InputBoxResources.Input_Box_Stop_64_x_64;
+                    break;
+                case IconType.OK:
+                    pbxIcon.Image = InputBoxResources.Input_Box_Ok_64_x_64;
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// Adjusts the layout.
+        /// </summary>
+        /// <param name="headerLabelSize">Size of the header label.</param>
+        /// <param name="contentLabelSize">Size of the content label.</param>
+        /// <param name="actionButtonLocation">The action button location.</param>
+        /// <param name="dismissButtonLocation">The dismiss button location.</param>
+        /// <param name="showIcon">if set to <c>true</c> [show icon].</param>
+        private void AdjustLayout(Size headerLabelSize, Size contentLabelSize, Point actionButtonLocation, Point dismissButtonLocation, bool showIcon = true)
+        {
+            kwlTitle.Size = headerLabelSize;
+
+            kwlContent.Size = contentLabelSize;
+
+            kbtnAction.Location = actionButtonLocation;
+
+            kbtnDismiss.Location = dismissButtonLocation;
+
+            pbxIcon.Visible = showIcon;
+        }
+
+        /// <summary>
+        /// Sets the action text.
+        /// </summary>
+        /// <param name="type">The type.</param>
+        private void SetActionText(ActionType type)
+        {
+            switch (type)
+            {
+                case ActionType.LAUCHPROCESS:
+                    kbtnAction.Text = $"&{ ActionButtonText } { Path.GetFileName(ProcessName) }";
+                    break;
+                case ActionType.OPEN:
+                    kbtnAction.Text = $"&{ ActionButtonText }";
+                    break;
+            }
+        }
+
+        /// <summary>Sets the default notification button.</summary>
+        /// <param name="defaultNotificationButton">The default notification button.</param>
+        private void SetDefaultNotificationButton(DefaultNotificationButton defaultNotificationButton)
+        {
+            switch (defaultNotificationButton)
+            {
+                case DefaultNotificationButton.ACTIONBUTTON:
+                    AcceptButton = kbtnAction;
+                    break;
+                case DefaultNotificationButton.DISMISSBUTTON:
+                    AcceptButton = kbtnDismiss;
+                    break;
+                case DefaultNotificationButton.NONE:
+                    AcceptButton = null;
                     break;
             }
         }
@@ -502,6 +652,21 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Experimental
         private Point PollActionButtonLocation() => kbtnAction.Location;
 
         private Point PollDismissButtonLocation() => kbtnDismiss.Location;
+        #endregion
+
+        #region Protected
+        protected override bool ShowWithoutActivation => true;
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            UpdateIconType(IconType);
+
+            StateCommon.Border.Rounding = CornerRadius;
+
+            StateCommon.Border.DrawBorders = PaletteDrawBorders;
+
+            base.OnPaint(e);
+        }
         #endregion
     }
 }

@@ -170,4 +170,11 @@
         LEFT,
         RIGHT
     }
+
+    public enum DefaultNotificationButton
+    {
+        ACTIONBUTTON,
+        DISMISSBUTTON,
+        NONE
+    }
 }

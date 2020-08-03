@@ -79,6 +79,18 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <param name="control">The control.</param>
         /// <param name="location">The location.</param>
         public static void ChangeControlLocation(Control control, Point location) => control.Location = location;
+
+        /// <summary>
+        /// Bitmaps to image.
+        /// </summary>
+        /// <param name="bitmap">The bitmap.</param>
+        /// <returns></returns>
+        public static Image BitmapToImage(Bitmap bitmap)
+        {
+            Image tmp = new Bitmap(bitmap);
+
+            return tmp;
+        }
         #endregion
     }
 }
