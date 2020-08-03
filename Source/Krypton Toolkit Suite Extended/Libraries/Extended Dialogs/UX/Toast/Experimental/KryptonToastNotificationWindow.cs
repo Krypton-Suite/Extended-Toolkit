@@ -57,6 +57,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Experimental
             this.kbtnDismiss.Size = new System.Drawing.Size(141, 25);
             this.kbtnDismiss.TabIndex = 1;
             this.kbtnDismiss.Values.Text = "Dismiss ({0}s)";
+            this.kbtnDismiss.Click += new System.EventHandler(this.kbtnDismiss_Click);
             // 
             // kbtnAction
             // 
@@ -68,6 +69,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Experimental
             this.kbtnAction.TabIndex = 0;
             this.kbtnAction.Values.Text = "{0}";
             this.kbtnAction.Visible = false;
+            this.kbtnAction.Click += new System.EventHandler(this.kbtnAction_Click);
             // 
             // pnlSplitter
             // 
@@ -283,6 +285,25 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Experimental
 
         #region Constants
         private const int DEFAULT_Y_AXIS_LOCATION = 7;
+        #endregion
+
+        #region Custom Events
+
+        #region Action Event
+        /// <summary></summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="LaunchActionEventArgs" /> instance containing the event data.</param>
+        public delegate void LaunchActionEventHandler(object sender, LaunchActionEventArgs e);
+
+        /// <summary>Occurs when [launch action].</summary>
+        public event LaunchActionEventHandler LaunchAction;
+
+        /// <summary>Called when [launch action].</summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="LaunchActionEventArgs" /> instance containing the event data.</param>
+        protected virtual void OnLaunchAction(object sender, LaunchActionEventArgs e) => LaunchAction?.Invoke(sender, e);
+        #endregion
+
         #endregion
 
         #region Constructor
@@ -708,6 +729,18 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Experimental
             {
                 _player.Play();
             }
+        }
+
+        private void kbtnAction_Click(object sender, EventArgs e)
+        {
+            LaunchActionEventArgs launch = new LaunchActionEventArgs(ProcessName);
+
+            OnLaunchAction(sender, launch);
+        }
+
+        private void kbtnDismiss_Click(object sender, EventArgs e)
+        {
+
         }
         #endregion
     }
