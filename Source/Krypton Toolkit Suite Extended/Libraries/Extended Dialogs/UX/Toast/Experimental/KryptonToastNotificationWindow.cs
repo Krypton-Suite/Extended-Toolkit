@@ -652,6 +652,8 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Experimental
                     AcceptButton = null;
                     break;
             }
+
+            DefaultNotificationButton = defaultNotificationButton;
         }
 
         private Point PollActionButtonLocation() => kbtnAction.Location;
@@ -659,6 +661,8 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Experimental
         private Point PollDismissButtonLocation() => kbtnDismiss.Location;
 
         private Point DefaultStartLocation() => new Point(Screen.PrimaryScreen.WorkingArea.Width - Width - 5, Screen.PrimaryScreen.WorkingArea.Height - Height - 5);
+
+        private DefaultNotificationButton GetDefaultNotificationButton() => DefaultNotificationButton;
         #endregion
 
         #region Protected
@@ -684,10 +688,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Experimental
             if (WindowState == FormWindowState.Maximized) WindowState = FormWindowState.Normal;
         }
 
-        private void KryptonToastNotificationWindow_Resize(object sender, EventArgs e)
-        {
-
-        }
+        private void KryptonToastNotificationWindow_Resize(object sender, EventArgs e) => SetDefaultNotificationButton(GetDefaultNotificationButton());
 
         private void KryptonToastNotificationWindow_Load(object sender, EventArgs e)
         {
