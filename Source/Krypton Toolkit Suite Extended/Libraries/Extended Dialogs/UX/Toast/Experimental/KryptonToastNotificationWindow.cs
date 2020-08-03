@@ -26,13 +26,13 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Experimental
         private void InitializeComponent()
         {
             this.kpnlButtons = new Krypton.Toolkit.KryptonPanel();
+            this.kbtnDismiss = new Krypton.Toolkit.KryptonButton();
+            this.kbtnAction = new Krypton.Toolkit.KryptonButton();
             this.pnlSplitter = new System.Windows.Forms.Panel();
             this.kpnlContent = new Krypton.Toolkit.KryptonPanel();
-            this.kbtnAction = new Krypton.Toolkit.KryptonButton();
-            this.kbtnDismiss = new Krypton.Toolkit.KryptonButton();
-            this.pbxIcon = new System.Windows.Forms.PictureBox();
-            this.kwlTitle = new Krypton.Toolkit.KryptonWrapLabel();
             this.kwlContent = new Krypton.Toolkit.KryptonWrapLabel();
+            this.kwlTitle = new Krypton.Toolkit.KryptonWrapLabel();
+            this.pbxIcon = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.kpnlButtons)).BeginInit();
             this.kpnlButtons.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kpnlContent)).BeginInit();
@@ -49,6 +49,25 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Experimental
             this.kpnlButtons.Name = "kpnlButtons";
             this.kpnlButtons.Size = new System.Drawing.Size(609, 38);
             this.kpnlButtons.TabIndex = 0;
+            // 
+            // kbtnDismiss
+            // 
+            this.kbtnDismiss.Location = new System.Drawing.Point(456, 7);
+            this.kbtnDismiss.Name = "kbtnDismiss";
+            this.kbtnDismiss.Size = new System.Drawing.Size(141, 25);
+            this.kbtnDismiss.TabIndex = 1;
+            this.kbtnDismiss.Values.Text = "Dismiss ({0}s)";
+            // 
+            // kbtnAction
+            // 
+            this.kbtnAction.AutoSize = true;
+            this.kbtnAction.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.kbtnAction.Location = new System.Drawing.Point(13, 7);
+            this.kbtnAction.Name = "kbtnAction";
+            this.kbtnAction.Size = new System.Drawing.Size(25, 24);
+            this.kbtnAction.TabIndex = 0;
+            this.kbtnAction.Values.Text = "{0}";
+            this.kbtnAction.Visible = false;
             // 
             // pnlSplitter
             // 
@@ -70,34 +89,16 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Experimental
             this.kpnlContent.Size = new System.Drawing.Size(609, 252);
             this.kpnlContent.TabIndex = 1;
             // 
-            // kbtnAction
+            // kwlContent
             // 
-            this.kbtnAction.AutoSize = true;
-            this.kbtnAction.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.kbtnAction.Location = new System.Drawing.Point(13, 7);
-            this.kbtnAction.Name = "kbtnAction";
-            this.kbtnAction.Size = new System.Drawing.Size(25, 24);
-            this.kbtnAction.TabIndex = 0;
-            this.kbtnAction.Values.Text = "{0}";
-            this.kbtnAction.Visible = false;
-            // 
-            // kbtnDismiss
-            // 
-            this.kbtnDismiss.Location = new System.Drawing.Point(456, 7);
-            this.kbtnDismiss.Name = "kbtnDismiss";
-            this.kbtnDismiss.Size = new System.Drawing.Size(141, 25);
-            this.kbtnDismiss.TabIndex = 1;
-            this.kbtnDismiss.Values.Text = "Dismiss ({0}s)";
-            // 
-            // pbxIcon
-            // 
-            this.pbxIcon.BackColor = System.Drawing.Color.Transparent;
-            this.pbxIcon.Location = new System.Drawing.Point(12, 12);
-            this.pbxIcon.Name = "pbxIcon";
-            this.pbxIcon.Size = new System.Drawing.Size(64, 64);
-            this.pbxIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pbxIcon.TabIndex = 4;
-            this.pbxIcon.TabStop = false;
+            this.kwlContent.AutoSize = false;
+            this.kwlContent.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.kwlContent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.kwlContent.Location = new System.Drawing.Point(86, 76);
+            this.kwlContent.Name = "kwlContent";
+            this.kwlContent.Size = new System.Drawing.Size(511, 156);
+            this.kwlContent.Text = "<##CONTENT##>";
+            this.kwlContent.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // kwlTitle
             // 
@@ -111,16 +112,15 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Experimental
             this.kwlTitle.Text = "<##HEADER-TITLE##>";
             this.kwlTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // kwlContent
+            // pbxIcon
             // 
-            this.kwlContent.AutoSize = false;
-            this.kwlContent.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.kwlContent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
-            this.kwlContent.Location = new System.Drawing.Point(86, 76);
-            this.kwlContent.Name = "kwlContent";
-            this.kwlContent.Size = new System.Drawing.Size(511, 156);
-            this.kwlContent.Text = "<##CONTENT##>";
-            this.kwlContent.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.pbxIcon.BackColor = System.Drawing.Color.Transparent;
+            this.pbxIcon.Location = new System.Drawing.Point(12, 12);
+            this.pbxIcon.Name = "pbxIcon";
+            this.pbxIcon.Size = new System.Drawing.Size(64, 64);
+            this.pbxIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pbxIcon.TabIndex = 4;
+            this.pbxIcon.TabStop = false;
             // 
             // KryptonToastNotificationWindow
             // 
@@ -135,6 +135,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Experimental
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.Load += new System.EventHandler(this.KryptonToastNotificationWindow_Load);
             ((System.ComponentModel.ISupportInitialize)(this.kpnlButtons)).EndInit();
             this.kpnlButtons.ResumeLayout(false);
             this.kpnlButtons.PerformLayout();
@@ -376,6 +377,10 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Experimental
             kwlTitle.StateCommon.Font = headerTypeface;
 
             kwlTitle.TextAlign = HeaderTextAlignment;
+
+            Resize += KryptonToastNotificationWindow_Resize;
+
+            GotFocus += KryptonToastNotificationWindow_GotFocus;
         }
         #endregion
 
@@ -652,11 +657,15 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Experimental
         private Point PollActionButtonLocation() => kbtnAction.Location;
 
         private Point PollDismissButtonLocation() => kbtnDismiss.Location;
+
+        private Point DefaultStartLocation() => new Point(Screen.PrimaryScreen.WorkingArea.Width - Width - 5, Screen.PrimaryScreen.WorkingArea.Height - Height - 5);
         #endregion
 
         #region Protected
         protected override bool ShowWithoutActivation => true;
 
+        /// <summary>Raises the <see cref="E:System.Windows.Forms.Control.Paint">Paint</see> event.</summary>
+        /// <param name="e">A <see cref="T:System.Windows.Forms.PaintEventArgs">PaintEventArgs</see> that contains the event data.</param>
         protected override void OnPaint(PaintEventArgs e)
         {
             UpdateIconType(IconType);
@@ -666,6 +675,38 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Experimental
             StateCommon.Border.DrawBorders = PaletteDrawBorders;
 
             base.OnPaint(e);
+        }
+        #endregion
+
+        #region Event Handlers
+        private void KryptonToastNotificationWindow_GotFocus(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Maximized) WindowState = FormWindowState.Normal;
+        }
+
+        private void KryptonToastNotificationWindow_Resize(object sender, EventArgs e)
+        {
+
+        }
+
+        private void KryptonToastNotificationWindow_Load(object sender, EventArgs e)
+        {
+            Location = DefaultStartLocation();
+
+            if (Fade)
+            {
+                FadeIn();
+            }
+
+            if (_timer != null)
+            {
+                _timer.Start();
+            }
+
+            if (_player != null)
+            {
+                _player.Play();
+            }
         }
         #endregion
     }
