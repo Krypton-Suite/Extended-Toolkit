@@ -483,6 +483,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Experimental
         /// <param name="contentTypeface">The content typeface.</param>
         /// <param name="headerTypeface">The header typeface.</param>
         /// <param name="defaultNotificationButton">The default notification button.</param>
+        /// <param name="optionalDismissArguments">The optional dismiss arguments.</param>
         public static void DisplayToast(string headerText, string contentText, string windowTitleText, IconType iconType, int actionButtonLocationXAxis, int dismissButtonLocationXAxis, bool fade, ActionType actionType,
                                               bool showActionButton, string soundPath, Stream soundStream, ContentAlignment contentTextAlignment,
                                               ContentAlignment headerTextAlignment, string processName, string dismissButtonText,
@@ -493,7 +494,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Experimental
         #endregion
 
         #region Internal Method        
-        /// <summary>Internals the show.</summary>
+        /// <summary>Shows the toast notification.</summary>
         /// <param name="headerText">The header text.</param>
         /// <param name="contentText">The content text.</param>
         /// <param name="windowTitleText">The window title text.</param>
@@ -518,6 +519,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Experimental
         /// <param name="contentTypeface">The content typeface.</param>
         /// <param name="headerTypeface">The header typeface.</param>
         /// <param name="defaultNotificationButton">The default notification button.</param>
+        /// <param name="optionalDismissArguments">The optional dismiss arguments.</param>
         private static void InternalShow(string headerText, string contentText, string windowTitleText, IconType iconType, Point actionButtonLocation, Point dismissButtonLocation, bool fade = false, ActionType actionType = ActionType.DEFAULT,
                                               bool showActionButton = false, string soundPath = null, Stream soundStream = null, ContentAlignment contentTextAlignment = ContentAlignment.MiddleLeft,
                                               ContentAlignment headerTextAlignment = ContentAlignment.MiddleCenter, string processName = null, string dismissButtonText = "Dismiss",
@@ -580,6 +582,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Experimental
             fadeTimer.Start();
         }
 
+        /// <summary>Displays the control to the user.</summary>
         public new void Show()
         {
             Opacity = 0;
@@ -645,6 +648,10 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Experimental
             base.Show();
         }
 
+        /// <summary>Gets the icon image.</summary>
+        /// <param name="type">The type.</param>
+        /// <param name="customIconImage">The custom icon image.</param>
+        /// <returns></returns>
         private Image GetIconImage(IconType type, Image customIconImage)
         {
             if (type == IconType.CUSTOM)
@@ -657,6 +664,10 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Experimental
             }
         }
 
+        /// <summary>Updates the type of the icon.</summary>
+        /// <param name="type">The type.</param>
+        /// <param name="customIconImage">The custom icon image.</param>
+        /// <exception cref="ArgumentNullException"></exception>
         private void UpdateIconType(IconType type, Image customIconImage = null)
         {
             switch (type)
@@ -781,20 +792,33 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Experimental
             }
         }
 
-        private Point PollActionButtonLocation() => kbtnAction.Location;
+        /// <summary>Polls the action button location.</summary>
+        /// <returns></returns>
+        public Point PollActionButtonLocation() => kbtnAction.Location;
 
-        private Point PollDismissButtonLocation() => kbtnDismiss.Location;
+        /// <summary>Polls the dismiss button location.</summary>
+        /// <returns></returns>
+        public Point PollDismissButtonLocation() => kbtnDismiss.Location;
 
+        /// <summary>The default start location.</summary>
+        /// <returns></returns>
         private Point DefaultStartLocation() => new Point(Screen.PrimaryScreen.WorkingArea.Width - Width - 5, Screen.PrimaryScreen.WorkingArea.Height - Height - 5);
 
+        /// <summary>Gets the default notification button.</summary>
+        /// <returns></returns>
         private DefaultNotificationButton GetDefaultNotificationButton() => DefaultNotificationButton;
 
+        /// <summary>Returns the optional dismiss arguments as string.</summary>
+        /// <param name="optionalDismissArguments">The optional dismiss arguments.</param>
+        /// <returns></returns>
         private string ReturnOptionalDismissArgumentsAsString(object[] optionalDismissArguments) => optionalDismissArguments.ToString();
 
+        /// <summary>Launches the optional dismiss arguments.</summary>
         private void LaunchOptionalDismissArguments() => Process.Start(ReturnOptionalDismissArgumentsAsString(OptionalDismissArguments));
         #endregion
 
         #region Protected
+        /// <summary>Gets a value indicating whether the window will be activated when it is shown.</summary>
         protected override bool ShowWithoutActivation => true;
 
         /// <summary>Raises the <see cref="E:System.Windows.Forms.Control.Paint">Paint</see> event.</summary>
