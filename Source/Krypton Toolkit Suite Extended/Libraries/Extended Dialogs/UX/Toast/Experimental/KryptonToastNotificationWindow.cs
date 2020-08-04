@@ -1,5 +1,6 @@
 ﻿using Krypton.Toolkit.Suite.Extended.Dialogs.Resources;
 using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Media;
@@ -165,6 +166,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Experimental
         private IToastNotification _toastNotificationOptions;
         private RightToLeftSupport _rightToLeftSupport;
         private PaletteDrawBorders _drawBorders;
+        private object[] _optionalArguments;
         #endregion
 
         #region Properties       
@@ -281,6 +283,10 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Experimental
         /// <summary>Gets or sets the default notification button.</summary>
         /// <value>The default notification button.</value>
         public DefaultNotificationButton DefaultNotificationButton { get => _defaultNotificationButton; set => _defaultNotificationButton = value; }
+
+        /// <summary>Gets or sets the optional dismiss arguments.</summary>
+        /// <value>The optional dismiss arguments.</value>
+        public object[] OptionalDismissArguments { get => _optionalArguments; set => _optionalArguments = value; }
         #endregion
 
         #region Constants
@@ -302,6 +308,21 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Experimental
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="LaunchActionEventArgs" /> instance containing the event data.</param>
         protected virtual void OnLaunchAction(object sender, LaunchActionEventArgs e) => LaunchAction?.Invoke(sender, e);
+        #endregion
+
+        #region Dismiss Event
+        /// <summary></summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="DismissEventArgs" /> instance containing the event data.</param>
+        public delegate void DismissEventHandler(object sender, DismissEventArgs e);
+
+        /// <summary>Occurs when [dismiss].</summary>
+        public event DismissEventHandler Dismiss;
+
+        /// <summary>Called when [dismiss].</summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="DismissEventArgs" /> instance containing the event data.</param>
+        protected virtual void OnDismiss(object sender, DismissEventArgs e) => Dismiss?.Invoke(sender, e);
         #endregion
 
         #endregion
@@ -332,12 +353,14 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Experimental
         /// <param name="contentTypeface">The typeface for the content text.</param>
         /// <param name="headerTypeface">The typeface for the header text.</param>
         /// <param name="defaultNotificationButton">The default notification button.</param>
+        /// <param name="optionalDismissArguments">The arguments to run when dismissing the toast.</param>
         public KryptonToastNotificationWindow(string headerText, string contentText, string windowTitleText, IconType iconType, bool fade, ActionType actionType,
                                               bool showActionButton, string soundPath, Stream soundStream, ContentAlignment contentTextAlignment,
                                               ContentAlignment headerTextAlignment, string processName, string dismissButtonText, string actionButtonText,
                                               Image customIconImage, int seconds, int cornerRadius, PaletteDrawBorders drawBorders,
                                               Point actionButtonLocation, Point dismissButtonLocation, bool showControlBox,
-                                              Font contentTypeface, Font headerTypeface, DefaultNotificationButton defaultNotificationButton)
+                                              Font contentTypeface, Font headerTypeface, DefaultNotificationButton defaultNotificationButton,
+                                              object[] optionalDismissArguments)
         {
             InitializeComponent();
 
@@ -377,6 +400,8 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Experimental
             PaletteDrawBorders = drawBorders;
 
             DefaultNotificationButton = defaultNotificationButton;
+
+            OptionalDismissArguments = optionalDismissArguments;
             #endregion
 
             Text = windowTitleText;
@@ -391,13 +416,11 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Experimental
 
             ControlBox = showControlBox;
 
-            kwlContent.StateCommon.Font = contentTypeface;
-
             kwlContent.TextAlign = ContentTextAlignment;
 
-            kwlTitle.StateCommon.Font = headerTypeface;
-
             kwlTitle.TextAlign = HeaderTextAlignment;
+
+            SetTypefaces(contentTypeface, headerTypeface);
 
             Resize += KryptonToastNotificationWindow_Resize;
 
@@ -405,12 +428,43 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Experimental
         }
         #endregion
 
-        #region Internal Method
-        /// <summary>Internals the show.</summary>
+        #region Public Methods
+        /// <summary>Displays the toast.</summary>
         /// <param name="headerText">The header text.</param>
         /// <param name="contentText">The content text.</param>
-        /// <param name="windowTitleText">The text on the window title bar.</param>
         /// <param name="iconType">Type of the icon.</param>
+        public static void DisplayToast(string headerText, string contentText, IconType iconType) => InternalShow(headerText, contentText, null, iconType, new Point(13, DEFAULT_Y_AXIS_LOCATION), new Point(456, DEFAULT_Y_AXIS_LOCATION));
+
+        /// <summary>Displays the toast.</summary>
+        /// <param name="headerText">The header text.</param>
+        /// <param name="contentText">The content text.</param>
+        /// <param name="windowTitleText">The window title text.</param>
+        /// <param name="iconType">Type of the icon.</param>
+        public static void DisplayToast(string headerText, string contentText, string windowTitleText, IconType iconType) => InternalShow(headerText, contentText, windowTitleText, iconType, new Point(13, DEFAULT_Y_AXIS_LOCATION), new Point(456, DEFAULT_Y_AXIS_LOCATION));
+
+        /// <summary>Displays the toast.</summary>
+        /// <param name="headerText">The header text.</param>
+        /// <param name="contentText">The content text.</param>
+        /// <param name="iconType">Type of the icon.</param>
+        /// <param name="customIconImage">The custom icon image.</param>
+        public static void DisplayToast(string headerText, string contentText, IconType iconType, Image customIconImage) => InternalShow(headerText, contentText, null, iconType, new Point(13, DEFAULT_Y_AXIS_LOCATION), new Point(456, DEFAULT_Y_AXIS_LOCATION), false, ActionType.DEFAULT, false, null, null, ContentAlignment.MiddleLeft, ContentAlignment.MiddleCenter, null, "Dismiss", "Launch", customIconImage);
+
+        /// <summary>Displays the toast.</summary>
+        /// <param name="headerText">The header text.</param>
+        /// <param name="contentText">The content text.</param>
+        /// <param name="windowTitleText">The window title text.</param>
+        /// <param name="iconType">Type of the icon.</param>
+        /// <param name="customIconImage">The custom icon image.</param>
+        public static void DisplayToast(string headerText, string contentText, string windowTitleText, IconType iconType, Image customIconImage) => InternalShow(headerText, contentText, windowTitleText, iconType, new Point(13, DEFAULT_Y_AXIS_LOCATION), new Point(456, DEFAULT_Y_AXIS_LOCATION), false, ActionType.DEFAULT, false, null, null, ContentAlignment.MiddleLeft, ContentAlignment.MiddleCenter, null, "Dismiss", "Launch", customIconImage);
+
+
+        /// <summary>Displays the toast.</summary>
+        /// <param name="headerText">The header text.</param>
+        /// <param name="contentText">The content text.</param>
+        /// <param name="windowTitleText">The window title text.</param>
+        /// <param name="iconType">Type of the icon.</param>
+        /// <param name="actionButtonLocationXAxis">The action button location x axis.</param>
+        /// <param name="dismissButtonLocationXAxis">The dismiss button location x axis.</param>
         /// <param name="fade">if set to <c>true</c> [fade].</param>
         /// <param name="actionType">Type of the action.</param>
         /// <param name="showActionButton">if set to <c>true</c> [show action button].</param>
@@ -425,25 +479,56 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Experimental
         /// <param name="seconds">The seconds.</param>
         /// <param name="cornerRadius">The corner radius.</param>
         /// <param name="drawBorders">The draw borders.</param>
-        /// <param name="actionButtonLocation">The location of the action button.</param>
-        /// <param name="dismissButtonLocation">The location of the dismiss button.</param>
-        /// <param name="showControlBox">Shows the control box (Minimise, Maximise & Close).</param>
-        /// <param name="contentTypeface">The typeface for the content text.</param>
-        /// <param name="headerTypeface">The typeface for the header text.</param>
+        /// <param name="showControlBox">if set to <c>true</c> [show control box].</param>
+        /// <param name="contentTypeface">The content typeface.</param>
+        /// <param name="headerTypeface">The header typeface.</param>
         /// <param name="defaultNotificationButton">The default notification button.</param>
-        /// <returns></returns>
-        private static DialogResult InternalShow(string headerText, string contentText, string windowTitleText, IconType iconType, bool fade, ActionType actionType,
+        public static void DisplayToast(string headerText, string contentText, string windowTitleText, IconType iconType, int actionButtonLocationXAxis, int dismissButtonLocationXAxis, bool fade, ActionType actionType,
                                               bool showActionButton, string soundPath, Stream soundStream, ContentAlignment contentTextAlignment,
-                                              ContentAlignment headerTextAlignment, string processName, string dismissButtonText, string actionButtonText,
-                                              Image customIconImage, int seconds, int cornerRadius, PaletteDrawBorders drawBorders,
-                                              Point actionButtonLocation, Point dismissButtonLocation, bool showControlBox,
-                                              Font contentTypeface, Font headerTypeface, DefaultNotificationButton defaultNotificationButton)
+                                              ContentAlignment headerTextAlignment, string processName, string dismissButtonText,
+                                              string actionButtonText, Image customIconImage, int seconds, int cornerRadius,
+                                              PaletteDrawBorders drawBorders, bool showControlBox,
+                                              Font contentTypeface, Font headerTypeface, DefaultNotificationButton defaultNotificationButton, object[] optionalDismissArguments) =>
+            InternalShow(headerText, contentText, windowTitleText, iconType, new Point(actionButtonLocationXAxis, DEFAULT_Y_AXIS_LOCATION), new Point(dismissButtonLocationXAxis, DEFAULT_Y_AXIS_LOCATION), fade, actionType, showActionButton, soundPath, soundStream, contentTextAlignment, headerTextAlignment, processName, dismissButtonText, actionButtonText, customIconImage, seconds, cornerRadius, drawBorders, showControlBox, contentTypeface, headerTypeface, defaultNotificationButton, optionalDismissArguments);
+        #endregion
+
+        #region Internal Method        
+        /// <summary>Internals the show.</summary>
+        /// <param name="headerText">The header text.</param>
+        /// <param name="contentText">The content text.</param>
+        /// <param name="windowTitleText">The window title text.</param>
+        /// <param name="iconType">Type of the icon.</param>
+        /// <param name="actionButtonLocation">The action button location.</param>
+        /// <param name="dismissButtonLocation">The dismiss button location.</param>
+        /// <param name="fade">if set to <c>true</c> [fade].</param>
+        /// <param name="actionType">Type of the action.</param>
+        /// <param name="showActionButton">if set to <c>true</c> [show action button].</param>
+        /// <param name="soundPath">The sound path.</param>
+        /// <param name="soundStream">The sound stream.</param>
+        /// <param name="contentTextAlignment">The content text alignment.</param>
+        /// <param name="headerTextAlignment">The header text alignment.</param>
+        /// <param name="processName">Name of the process.</param>
+        /// <param name="dismissButtonText">The dismiss button text.</param>
+        /// <param name="actionButtonText">The action button text.</param>
+        /// <param name="customIconImage">The custom icon image.</param>
+        /// <param name="seconds">The seconds.</param>
+        /// <param name="cornerRadius">The corner radius.</param>
+        /// <param name="drawBorders">The draw borders.</param>
+        /// <param name="showControlBox">if set to <c>true</c> [show control box].</param>
+        /// <param name="contentTypeface">The content typeface.</param>
+        /// <param name="headerTypeface">The header typeface.</param>
+        /// <param name="defaultNotificationButton">The default notification button.</param>
+        private static void InternalShow(string headerText, string contentText, string windowTitleText, IconType iconType, Point actionButtonLocation, Point dismissButtonLocation, bool fade = false, ActionType actionType = ActionType.DEFAULT,
+                                              bool showActionButton = false, string soundPath = null, Stream soundStream = null, ContentAlignment contentTextAlignment = ContentAlignment.MiddleLeft,
+                                              ContentAlignment headerTextAlignment = ContentAlignment.MiddleCenter, string processName = null, string dismissButtonText = "Dismiss",
+                                              string actionButtonText = "Launch", Image customIconImage = null, int seconds = 60, int cornerRadius = -1,
+                                              PaletteDrawBorders drawBorders = PaletteDrawBorders.All, bool showControlBox = false,
+                                              Font contentTypeface = null, Font headerTypeface = null, DefaultNotificationButton defaultNotificationButton = DefaultNotificationButton.DISMISSBUTTON,
+                                              object[] optionalDismissArguments = null)
         {
-            using (KryptonToastNotificationWindow ktnw = new KryptonToastNotificationWindow(headerText, contentText, windowTitleText, iconType, fade, actionType, showActionButton, soundPath, soundStream, contentTextAlignment, headerTextAlignment, processName, dismissButtonText, actionButtonText, customIconImage, seconds, cornerRadius, drawBorders, actionButtonLocation, dismissButtonLocation, showControlBox, contentTypeface, headerTypeface, defaultNotificationButton))
+            using (KryptonToastNotificationWindow ktnw = new KryptonToastNotificationWindow(headerText, contentText, windowTitleText, iconType, fade, actionType, showActionButton, soundPath, soundStream, contentTextAlignment, headerTextAlignment, processName, dismissButtonText, actionButtonText, customIconImage, seconds, cornerRadius, drawBorders, actionButtonLocation, dismissButtonLocation, showControlBox, contentTypeface, headerTypeface, defaultNotificationButton, optionalDismissArguments))
             {
                 ktnw.Show();
-
-                return DialogResult.None;
             }
         }
         #endregion
@@ -677,6 +762,25 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Experimental
             DefaultNotificationButton = defaultNotificationButton;
         }
 
+        /// <summary>Sets the typefaces.</summary>
+        /// <param name="contentTypeface">The content typeface.</param>
+        /// <param name="headerTypeface">The header typeface.</param>
+        private void SetTypefaces(Font contentTypeface, Font headerTypeface)
+        {
+            if (contentTypeface == null && headerTypeface == null)
+            {
+                kwlContent.Font = new Font("Microsoft Sans Serif", 10f);
+
+                kwlTitle.Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
+            }
+            else
+            {
+                kwlContent.Font = contentTypeface;
+
+                kwlTitle.Font = headerTypeface;
+            }
+        }
+
         private Point PollActionButtonLocation() => kbtnAction.Location;
 
         private Point PollDismissButtonLocation() => kbtnDismiss.Location;
@@ -684,6 +788,10 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Experimental
         private Point DefaultStartLocation() => new Point(Screen.PrimaryScreen.WorkingArea.Width - Width - 5, Screen.PrimaryScreen.WorkingArea.Height - Height - 5);
 
         private DefaultNotificationButton GetDefaultNotificationButton() => DefaultNotificationButton;
+
+        private string ReturnOptionalDismissArgumentsAsString(object[] optionalDismissArguments) => optionalDismissArguments.ToString();
+
+        private void LaunchOptionalDismissArguments() => Process.Start(ReturnOptionalDismissArgumentsAsString(OptionalDismissArguments));
         #endregion
 
         #region Protected
@@ -740,7 +848,9 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Experimental
 
         private void kbtnDismiss_Click(object sender, EventArgs e)
         {
+            DismissEventArgs dismissEvent = new DismissEventArgs(Fade);
 
+            OnDismiss(sender, dismissEvent);
         }
         #endregion
     }
