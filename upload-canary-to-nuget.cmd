@@ -29,6 +29,8 @@ dotnet nuget push Krypton.Toolkit.Suite.Extended.Common.Canary.5.550.2009.nupkg 
 
 dotnet nuget push Krypton.Toolkit.Suite.Extended.Core.Canary.5.550.2009.nupkg -k <#API-KEY#> -s https://api.nuget.org/v3/index.json
 
+dotnet nuget push Krypton.Toolkit.Suite.Extended.Data.Visualisation.Canary.5.550.2010 -k <#API-KEY#> -s https://api.nuget.org/v3/index.json
+
 dotnet nuget push Krypton.Toolkit.Suite.Extended.Dialogs.Canary.5.550.2009.nupkg -k <#API-KEY#> -s https://api.nuget.org/v3/index.json
 
 dotnet nuget push Krypton.Toolkit.Suite.Extended.Floating.Toolbars.Canary.5.550.2009.nupkg -k <#API-KEY#> -s https://api.nuget.org/v3/index.json
