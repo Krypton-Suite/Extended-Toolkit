@@ -12,7 +12,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Experimental
     /// Adapted from: https://github.com/dotCoefficient/Notification/blob/master/Notification/Notification.cs
     /// </summary>
     /// <seealso cref="KryptonForm" />
-    public class KryptonToastNotificationWindow : KryptonForm
+    public class KryptonToastNotificationWindowPrototype : KryptonForm
     {
         #region Design Code
         private System.Windows.Forms.Panel pnlSplitter;
@@ -183,7 +183,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Experimental
         public ActionType Action { get => _actionType; set => _actionType = value; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether this <see cref="KryptonToastNotificationWindow"/> is fade.
+        /// Gets or sets a value indicating whether this <see cref="KryptonToastNotificationWindowPrototype"/> is fade.
         /// </summary>
         /// <value>
         ///   <c>true</c> if fade; otherwise, <c>false</c>.
@@ -328,7 +328,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Experimental
         #endregion
 
         #region Constructor
-        /// <summary>Initializes a new instance of the <see cref="KryptonToastNotificationWindow" /> class.</summary>
+        /// <summary>Initializes a new instance of the <see cref="KryptonToastNotificationWindowPrototype" /> class.</summary>
         /// <param name="headerText">The header text.</param>
         /// <param name="contentText">The content text.</param>
         /// <param name="windowTitleText">The text on the window title bar.</param>
@@ -354,7 +354,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Experimental
         /// <param name="headerTypeface">The typeface for the header text.</param>
         /// <param name="defaultNotificationButton">The default notification button.</param>
         /// <param name="optionalDismissArguments">The arguments to run when dismissing the toast.</param>
-        public KryptonToastNotificationWindow(string headerText, string contentText, string windowTitleText, IconType iconType, bool fade, ActionType actionType,
+        public KryptonToastNotificationWindowPrototype(string headerText, string contentText, string windowTitleText, IconType iconType, bool fade, ActionType actionType,
                                               bool showActionButton, string soundPath, Stream soundStream, ContentAlignment contentTextAlignment,
                                               ContentAlignment headerTextAlignment, string processName, string dismissButtonText, string actionButtonText,
                                               Image customIconImage, int seconds, int cornerRadius, PaletteDrawBorders drawBorders,
@@ -457,6 +457,37 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Experimental
         /// <param name="customIconImage">The custom icon image.</param>
         public static void DisplayToast(string headerText, string contentText, string windowTitleText, IconType iconType, Image customIconImage) => InternalShow(headerText, contentText, windowTitleText, iconType, new Point(13, DEFAULT_Y_AXIS_LOCATION), new Point(456, DEFAULT_Y_AXIS_LOCATION), false, ActionType.DEFAULT, false, null, null, ContentAlignment.MiddleLeft, ContentAlignment.MiddleCenter, null, "Dismiss", "Launch", customIconImage);
 
+        /// <summary>Displays the toast.</summary>
+        /// <param name="headerText">The header text.</param>
+        /// <param name="contentText">The content text.</param>
+        /// <param name="iconType">Type of the icon.</param>
+        /// <param name="fade">if set to <c>true</c> [fade].</param>
+        public static void DisplayToast(string headerText, string contentText, IconType iconType, bool fade) => InternalShow(headerText, contentText, null, iconType, new Point(13, DEFAULT_Y_AXIS_LOCATION), new Point(456, DEFAULT_Y_AXIS_LOCATION), fade);
+
+        /// <summary>Displays the toast.</summary>
+        /// <param name="headerText">The header text.</param>
+        /// <param name="contentText">The content text.</param>
+        /// <param name="iconType">Type of the icon.</param>
+        /// <param name="fade">if set to <c>true</c> [fade].</param>
+        /// <param name="customIconImage">The custom icon image.</param>
+        public static void DisplayToast(string headerText, string contentText, IconType iconType, bool fade, Image customIconImage) => InternalShow(headerText, contentText, null, iconType, new Point(13, DEFAULT_Y_AXIS_LOCATION), new Point(456, DEFAULT_Y_AXIS_LOCATION), fade, ActionType.DEFAULT, false, null, null, ContentAlignment.MiddleLeft, ContentAlignment.MiddleCenter, null, "Dismiss", "Launch", customIconImage);
+
+        /// <summary>Displays the toast.</summary>
+        /// <param name="headerText">The header text.</param>
+        /// <param name="contentText">The content text.</param>
+        /// <param name="windowTitleText">The window title text.</param>
+        /// <param name="iconType">Type of the icon.</param>
+        /// <param name="fade">if set to <c>true</c> [fade].</param>
+        public static void DisplayToast(string headerText, string contentText, string windowTitleText, IconType iconType, bool fade) => InternalShow(headerText, contentText, windowTitleText, iconType, new Point(13, DEFAULT_Y_AXIS_LOCATION), new Point(456, DEFAULT_Y_AXIS_LOCATION), fade);
+
+        /// <summary>Displays the toast.</summary>
+        /// <param name="headerText">The header text.</param>
+        /// <param name="contentText">The content text.</param>
+        /// <param name="windowTitleText">The window title text.</param>
+        /// <param name="iconType">Type of the icon.</param>
+        /// <param name="fade">if set to <c>true</c> [fade].</param>
+        /// <param name="customIconImage">The custom icon image.</param>
+        public static void DisplayToast(string headerText, string contentText, string windowTitleText, IconType iconType, bool fade, Image customIconImage) => InternalShow(headerText, contentText, windowTitleText, iconType, new Point(13, DEFAULT_Y_AXIS_LOCATION), new Point(456, DEFAULT_Y_AXIS_LOCATION), fade, ActionType.DEFAULT, false, null, null, ContentAlignment.MiddleLeft, ContentAlignment.MiddleCenter, null, "Dismiss", "Launch", customIconImage);
 
         /// <summary>Displays the toast.</summary>
         /// <param name="headerText">The header text.</param>
@@ -528,7 +559,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Experimental
                                               Font contentTypeface = null, Font headerTypeface = null, DefaultNotificationButton defaultNotificationButton = DefaultNotificationButton.DISMISSBUTTON,
                                               object[] optionalDismissArguments = null)
         {
-            using (KryptonToastNotificationWindow ktnw = new KryptonToastNotificationWindow(headerText, contentText, windowTitleText, iconType, fade, actionType, showActionButton, soundPath, soundStream, contentTextAlignment, headerTextAlignment, processName, dismissButtonText, actionButtonText, customIconImage, seconds, cornerRadius, drawBorders, actionButtonLocation, dismissButtonLocation, showControlBox, contentTypeface, headerTypeface, defaultNotificationButton, optionalDismissArguments))
+            using (KryptonToastNotificationWindowPrototype ktnw = new KryptonToastNotificationWindowPrototype(headerText, contentText, windowTitleText, iconType, fade, actionType, showActionButton, soundPath, soundStream, contentTextAlignment, headerTextAlignment, processName, dismissButtonText, actionButtonText, customIconImage, seconds, cornerRadius, drawBorders, actionButtonLocation, dismissButtonLocation, showControlBox, contentTypeface, headerTypeface, defaultNotificationButton, optionalDismissArguments))
             {
                 ktnw.Show();
             }
