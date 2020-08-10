@@ -158,6 +158,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Experimental
         private ContentAlignment _headerTextAlignment, _contentTextAlignment;
         private DefaultNotificationButton _defaultNotificationButton;
         private string _headerText, _contentText, _dismissButtonText, _actionButtonText, _processName;
+        private string[] _optionalArguments;
         private Image _customIconImage;
         private int _time, _cornerRadius, _seconds;
         private Timer _timer;
@@ -166,7 +167,6 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Experimental
         private IToastNotification _toastNotificationOptions;
         private RightToLeftSupport _rightToLeftSupport;
         private PaletteDrawBorders _drawBorders;
-        private object[] _optionalArguments;
         #endregion
 
         #region Properties       
@@ -286,7 +286,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Experimental
 
         /// <summary>Gets or sets the optional dismiss arguments.</summary>
         /// <value>The optional dismiss arguments.</value>
-        public object[] OptionalDismissArguments { get => _optionalArguments; set => _optionalArguments = value; }
+        public string[] OptionalDismissArguments { get => _optionalArguments; set => _optionalArguments = value; }
         #endregion
 
         #region Constants
@@ -360,7 +360,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Experimental
                                               Image customIconImage, int seconds, int cornerRadius, PaletteDrawBorders drawBorders,
                                               Point actionButtonLocation, Point dismissButtonLocation, bool showControlBox,
                                               Font contentTypeface, Font headerTypeface, DefaultNotificationButton defaultNotificationButton,
-                                              object[] optionalDismissArguments)
+                                              string[] optionalDismissArguments)
         {
             InitializeComponent();
 
@@ -520,7 +520,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Experimental
                                               ContentAlignment headerTextAlignment, string processName, string dismissButtonText,
                                               string actionButtonText, Image customIconImage, int seconds, int cornerRadius,
                                               PaletteDrawBorders drawBorders, bool showControlBox,
-                                              Font contentTypeface, Font headerTypeface, DefaultNotificationButton defaultNotificationButton, object[] optionalDismissArguments) =>
+                                              Font contentTypeface, Font headerTypeface, DefaultNotificationButton defaultNotificationButton, string[] optionalDismissArguments) =>
             InternalShow(headerText, contentText, windowTitleText, iconType, new Point(actionButtonLocationXAxis, DEFAULT_Y_AXIS_LOCATION), new Point(dismissButtonLocationXAxis, DEFAULT_Y_AXIS_LOCATION), fade, actionType, showActionButton, soundPath, soundStream, contentTextAlignment, headerTextAlignment, processName, dismissButtonText, actionButtonText, customIconImage, seconds, cornerRadius, drawBorders, showControlBox, contentTypeface, headerTypeface, defaultNotificationButton, optionalDismissArguments);
         #endregion
 
@@ -557,7 +557,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Experimental
                                               string actionButtonText = "Launch", Image customIconImage = null, int seconds = 60, int cornerRadius = -1,
                                               PaletteDrawBorders drawBorders = PaletteDrawBorders.All, bool showControlBox = false,
                                               Font contentTypeface = null, Font headerTypeface = null, DefaultNotificationButton defaultNotificationButton = DefaultNotificationButton.DISMISSBUTTON,
-                                              object[] optionalDismissArguments = null)
+                                              string[] optionalDismissArguments = null)
         {
             using (KryptonToastNotificationWindowPrototype ktnw = new KryptonToastNotificationWindowPrototype(headerText, contentText, windowTitleText, iconType, fade, actionType, showActionButton, soundPath, soundStream, contentTextAlignment, headerTextAlignment, processName, dismissButtonText, actionButtonText, customIconImage, seconds, cornerRadius, drawBorders, actionButtonLocation, dismissButtonLocation, showControlBox, contentTypeface, headerTypeface, defaultNotificationButton, optionalDismissArguments))
             {
