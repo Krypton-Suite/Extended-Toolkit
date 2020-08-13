@@ -6,8 +6,8 @@
     <TargetFrameworks Condition="'$(TFMs)' == 'all'">net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;netcoreapp5.0</TargetFrameworks>
     <RootNamespace>Krypton.Toolkit.Extended.File.Explorer</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyVersion>1.0.0.1</AssemblyVersion>
-    <FileVersion>6.0.2006.1</FileVersion>
+    <AssemblyVersion>5.550.2009</AssemblyVersion>
+    <FileVersion>5.550.2009</FileVersion>
   </PropertyGroup>
 
   <!--<PropertyGroup>
@@ -18,7 +18,7 @@
     <PackagePath></PackagePath>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Version>5.550.2009.2</Version>
+    <Version>5.550.2009</Version>
     <OutputType>Library</OutputType>
     <RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
   </PropertyGroup>-->

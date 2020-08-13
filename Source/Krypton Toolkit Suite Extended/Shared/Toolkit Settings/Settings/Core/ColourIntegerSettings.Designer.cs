@@ -8,81 +8,65 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Krypton.Toolkit.Suite.Extended.Settings
-{
-
-
+namespace Krypton.Toolkit.Suite.Extended.Settings.Settings.Core {
+    
+    
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.5.0.0")]
-    internal sealed partial class ColourIntegerSettings : global::System.Configuration.ApplicationSettingsBase
-    {
-
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.8.0.0")]
+    internal sealed partial class ColourIntegerSettings : global::System.Configuration.ApplicationSettingsBase {
+        
         private static ColourIntegerSettings defaultInstance = ((ColourIntegerSettings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new ColourIntegerSettings())));
-
-        public static ColourIntegerSettings Default
-        {
-            get
-            {
+        
+        public static ColourIntegerSettings Default {
+            get {
                 return defaultInstance;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("255")]
-        public int AlphaChannelValue
-        {
-            get
-            {
+        public int AlphaChannelValue {
+            get {
                 return ((int)(this["AlphaChannelValue"]));
             }
-            set
-            {
+            set {
                 this["AlphaChannelValue"] = value;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int RedChannelValue
-        {
-            get
-            {
+        public int RedChannelValue {
+            get {
                 return ((int)(this["RedChannelValue"]));
             }
-            set
-            {
+            set {
                 this["RedChannelValue"] = value;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int GreenChannelValue
-        {
-            get
-            {
+        public int GreenChannelValue {
+            get {
                 return ((int)(this["GreenChannelValue"]));
             }
-            set
-            {
+            set {
                 this["GreenChannelValue"] = value;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int BlueChannelValue
-        {
-            get
-            {
+        public int BlueChannelValue {
+            get {
                 return ((int)(this["BlueChannelValue"]));
             }
-            set
-            {
+            set {
                 this["BlueChannelValue"] = value;
             }
         }

@@ -8,50 +8,40 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Krypton.Toolkit.Suite.Extended.Settings
-{
-
-
+namespace Krypton.Toolkit.Suite.Extended.Settings.Settings.Controls {
+    
+    
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.5.0.0")]
-    internal sealed partial class ControlThemeSettings : global::System.Configuration.ApplicationSettingsBase
-    {
-
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.8.0.0")]
+    internal sealed partial class ControlThemeSettings : global::System.Configuration.ApplicationSettingsBase {
+        
         private static ControlThemeSettings defaultInstance = ((ControlThemeSettings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new ControlThemeSettings())));
-
-        public static ControlThemeSettings Default
-        {
-            get
-            {
+        
+        public static ControlThemeSettings Default {
+            get {
                 return defaultInstance;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Office 2010 - Blue")]
-        public global::Krypton.Toolkit.PaletteMode DefaultTheme
-        {
-            get
-            {
+        public global::Krypton.Toolkit.PaletteMode DefaultTheme {
+            get {
                 return ((global::Krypton.Toolkit.PaletteMode)(this["DefaultTheme"]));
             }
-            set
-            {
+            set {
                 this["DefaultTheme"] = value;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::Krypton.Toolkit.KryptonManager GlobalManager
-        {
-            get
-            {
+        public global::Krypton.Toolkit.KryptonManager GlobalManager {
+            get {
                 return ((global::Krypton.Toolkit.KryptonManager)(this["GlobalManager"]));
             }
-            set
-            {
+            set {
                 this["GlobalManager"] = value;
             }
         }

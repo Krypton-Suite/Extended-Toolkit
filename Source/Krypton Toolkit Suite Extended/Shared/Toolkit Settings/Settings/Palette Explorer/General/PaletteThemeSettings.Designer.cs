@@ -8,51 +8,41 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Krypton.Toolkit.Suite.Extended.Settings
-{
-
-
+namespace Krypton.Toolkit.Suite.Extended.Settings.Settings.Palette_Explorer.General {
+    
+    
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.5.0.0")]
-    internal sealed partial class PaletteThemeSettings : global::System.Configuration.ApplicationSettingsBase
-    {
-
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.8.0.0")]
+    internal sealed partial class PaletteThemeSettings : global::System.Configuration.ApplicationSettingsBase {
+        
         private static PaletteThemeSettings defaultInstance = ((PaletteThemeSettings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new PaletteThemeSettings())));
-
-        public static PaletteThemeSettings Default
-        {
-            get
-            {
+        
+        public static PaletteThemeSettings Default {
+            get {
                 return defaultInstance;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string CustomThemeFilePath
-        {
-            get
-            {
+        public string CustomThemeFilePath {
+            get {
                 return ((string)(this["CustomThemeFilePath"]));
             }
-            set
-            {
+            set {
                 this["CustomThemeFilePath"] = value;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("ProfessionalSystem")]
-        public global::Krypton.Toolkit.PaletteModeManager CurrentTheme
-        {
-            get
-            {
+        public global::Krypton.Toolkit.PaletteModeManager CurrentTheme {
+            get {
                 return ((global::Krypton.Toolkit.PaletteModeManager)(this["CurrentTheme"]));
             }
-            set
-            {
+            set {
                 this["CurrentTheme"] = value;
             }
         }
