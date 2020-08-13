@@ -380,7 +380,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
         {
             try
             {
-                SQLDMO.Application app = new SQLDMO.ApplicationClass();
+                //SQLDMO.Application app = new SQLDMO.ApplicationClass();
                 return true;
             }
             // if the SQLDMO object doesn't exist, we can use SQLDMO
@@ -397,16 +397,16 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
         private void GetSqlServersUsingSQLDMO(object sender, EventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
-            SQLDMO.Application app = new SQLDMO.ApplicationClass();
-            SQLDMO.NameList nameList = app.ListAvailableSQLServers();
+            //SQLDMO.Application app = new SQLDMO.ApplicationClass();
+            //SQLDMO.NameList nameList = app.ListAvailableSQLServers();
             string srvName = "";
-            _sqlServerList = new string[nameList.Count];
+            //_sqlServerList = new string[nameList.Count];
 
-            for (int i = 0; i < nameList.Count; i++)
-            {
-                srvName = nameList.Item(i + 1);
-                _sqlServerList[i] = srvName;
-            }
+            //for (int i = 0; i < nameList.Count; i++)
+            //{
+            //    srvName = nameList.Item(i + 1);
+            //    _sqlServerList[i] = srvName;
+            //}
         }
         #endregion
 

@@ -208,8 +208,6 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
             //set focus on parent form
             poParentForm.BringToFront();
         }
-
-
         #endregion
     }
 }
