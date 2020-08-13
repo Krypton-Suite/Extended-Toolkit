@@ -2,18 +2,18 @@
 
   <PropertyGroup>
     <LangVersion>8.0</LangVersion>
-    <TargetFrameworks>net45;netcoreapp3.1;netcoreapp5.0</TargetFrameworks>    
+    <TargetFrameworks>net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;netcoreapp5.0</TargetFrameworks>    
     <RootNamespace>Krypton.Toolkit.Suite.Extended.Zip.Extractor</RootNamespace>
     <OutputType>WinExe</OutputType>
     <UseWindowsForms>true</UseWindowsForms>
     <AssemblyName>Zip Extractor</AssemblyName>
     <ApplicationIcon>Resources\ZipExtractor.ico</ApplicationIcon>
-    <Version>5.550.2008</Version>
+    <Version>5.550.2009.2</Version>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="ILRepack.Lib.MSBuild.Task" Version="2.0.18.1" />
-    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2006.3" />
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2008" />
     <PackageReference Include="ZipStorer" Version="3.6.0" />
     <PackageReference Include="ZipStorer64" Version="3.5.1" />
   </ItemGroup>
@@ -36,6 +36,8 @@
   <PropertyGroup>
     <DocumentationFile>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Zip.Extractor\Krypton.Toolkit.Suite.Zip.Extractor.xml</DocumentationFile>
     <OutputPath>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Zip.Extractor\</OutputPath>
+    <AssemblyVersion>5.550.2009.2</AssemblyVersion>
+    <FileVersion>6.0.2006.1</FileVersion>
   </PropertyGroup>
 
 </Project>

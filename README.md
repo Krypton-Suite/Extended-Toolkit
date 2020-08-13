@@ -21,13 +21,12 @@
 | <img src="https://img.shields.io/badge/Module-Tool Strip Items-orange.svg" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Tool.Strip.Items)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
 | <img src="https://img.shields.io/badge/Module-Wizard-orange.svg" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Wizard)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
 
-<!--
 ## Canary
 
 | Module Name | Current Version | GitHub License |
 |---|---|---|
 | <img src="https://img.shields.io/badge/Module-Base-yellow.svg" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Base.Canary)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
-| <img src="https://img.shields.io/badge/Module-Colour Controls-yellow.svg" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Colour.Controls.Canary)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
+| <img src="https://img.shields.io/badge/Module-Drawing Suite-yellow.svg" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Drawing.Suite.Canary)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
 | <img src="https://img.shields.io/badge/Module-Dialogs-yellow.svg" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Dialogs.Canary)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
 | <img src="https://img.shields.io/badge/Module-Floating Toolbars-yellow.svg" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Floating.Toolbars.Canary)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
 | <img src="https://img.shields.io/badge/Module-IO-yellow.svg" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.IO.Canary)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
@@ -35,17 +34,24 @@
 | <img src="https://img.shields.io/badge/Module-Standard Controls-yellow.svg" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Standard.Controls.Canary)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
 | <img src="https://img.shields.io/badge/Module-Tool Strip Items-yellow.svg" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Tool.Strip.Items.Canary)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
 | <img src="https://img.shields.io/badge/Module-Wizard-yellow.svg" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Wizard.Canary)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
--->
+
+
+=======
+
+## 2020-09-01 - Build 2009.1 - September 2020
+* Support for more framework versions - In addition to supporting .NET Framework 4.5, .NET Core 3.1 and .NET 5, the toolkit can be now used with projects using .NET Framework 4.5.1 to 4.8 inclusive
+* Canary packages are now available
+* Implement extra features for `KryptonToastNotificationWindow`
+* New `csproj` configuration options to support canary/stable NuGet packages
+* Updated standard toolkit to build `2008`
 
 =======
 
 ## 2020-08-01 - Build 2008 - August 2020
 * All namespaces now correlate to the package name e.g, `Krypton.Toolkit.Extended.Base` now becomes `Krypton.Toolkit.Suite.Extended.Base`
-* The `Krypton.Toolkit.Suite.Extended.Colour.Controls` package has now been renamed to `Krypton.Toolkit.Suite.Extended.Drawing.Suite`
 * New find and replace dialog built off of [FnR](https://github.com/zzzprojects/findandreplace)
 * All NuGet packages will now be output to `Bin\NuGet`
 * General bugfixes
-<!--* Canary packages are now here-->
 
 =======
 
