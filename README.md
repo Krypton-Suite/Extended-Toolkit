@@ -38,7 +38,7 @@
 
 =======
 
-## 2020-09-01 - Build 2009.1 - September 2020
+## 2020-09-01 - Build 2009 - September 2020
 * Support for more framework versions - In addition to supporting .NET Framework 4.5, .NET Core 3.1 and .NET 5, the toolkit can be now used with projects using .NET Framework 4.5.1 to 4.8 inclusive
 * Canary packages are now available
 * Implement extra features for `KryptonToastNotificationWindow`
