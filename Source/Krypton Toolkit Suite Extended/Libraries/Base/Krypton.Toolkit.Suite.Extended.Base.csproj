@@ -1,0 +1,93 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <LangVersion>8.0</LangVersion>
+    <TargetFrameworks>net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;netcoreapp5.0</TargetFrameworks>
+    <TargetFrameworks Condition="'$(TFMs)' == 'all'">net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;netcoreapp5.0</TargetFrameworks>    
+    <RootNamespace>Krypton.Toolkit.Suite.Extended.Base</RootNamespace>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <!--Basic package configuration-->
+  <PropertyGroup>    
+    <Description>An extension to the standard krypton toolkit to support .NET Core and the latest .NET 3.5/4.x framework. This is the base module.</Description>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageLicense>https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE</PackageLicense>
+    <RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
+  </PropertyGroup>
+
+  <!--Stable package configuration-
+  <PropertyGroup>
+    <PackageId>Krypton.Toolkit.Suite.Extended.Base</PackageId>
+    <PackageOutputPath>..\..\..\..\Bin\NuGet\Stable</PackageOutputPath>
+    <PackageIconUrl>https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/Assets/PNG/Main%20Icon/64%20x%2064/Main%20Icon%2064%20x%2064.png</PackageIconUrl>
+  </PropertyGroup>-->
+
+  <!--Canary package configuration-->
+  <PropertyGroup>
+    <PackageId>Krypton.Toolkit.Suite.Extended.Base.Canary</PackageId>
+    <PackageOutputPath>..\..\..\..\Bin\NuGet\Canary</PackageOutputPath>
+    <PackageIconUrl>https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/Assets/PNG/Main%20Icon/64%20x%2064/Main%20Icon%2064%20x%2064%20Canary.png</PackageIconUrl>
+  </PropertyGroup>
+  
+  <!--Version configuration-->
+  <PropertyGroup>
+    <AssemblyVersion>5.550.2009</AssemblyVersion>
+    <FileVersion>5.550.2009</FileVersion>
+    <Version>5.550.2009</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Shared\Common\Krypton.Toolkit.Suite.Extended.Common.csproj" />
+    <ProjectReference Include="..\..\Shared\Toolkit Core\Krypton.Toolkit.Suite.Extended.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Krypton.Toolkit.Suite.Extended.Standard.Controls">
+      <HintPath>..\Extended Standard Controls\obj\Debug\net45\Krypton.Toolkit.Suite.Extended.Standard.Controls.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\ImageResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ImageResources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <LogicalName>$(RootNamespace).Properties.Resources.resources</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\ImageResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ImageResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Krypton.Ribbon.Canary" Version="6.0.2008" />
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2008" />
+    <PackageReference Include="Microsoft.VisualBasic" Version="10.3.0" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Base\Krypton.Toolkit.Suite.Extended.Base.xml</DocumentationFile>
+    <OutputPath>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Base\</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <NoWarn>NU1701</NoWarn>
+    <PackageLicenseFile></PackageLicenseFile>
+  </PropertyGroup>
+
+</Project>
