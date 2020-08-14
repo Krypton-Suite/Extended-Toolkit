@@ -17,19 +17,19 @@
     <PackageLicenseFile></PackageLicenseFile>
   </PropertyGroup>
 
-  <!--Stable package configuration-
+  <!--Stable package configuration-->
   <PropertyGroup>
     <PackageId>Krypton.Toolkit.Suite.Extended.Resources</PackageId>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Stable</PackageOutputPath>
     <PackageIconUrl>https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/Assets/PNG/Main%20Icon/64%20x%2064/Main%20Icon%2064%20x%2064.png</PackageIconUrl>
-  </PropertyGroup>-->
+  </PropertyGroup>
 
-  <!--Canary package configuration-->
+  <!--Canary package configuration-
   <PropertyGroup>
     <PackageId>Krypton.Toolkit.Suite.Extended.Resources.Canary</PackageId>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Canary</PackageOutputPath>
     <PackageIconUrl>https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/Assets/PNG/Main%20Icon/64%20x%2064/Main%20Icon%2064%20x%2064%20Canary.png</PackageIconUrl>
-  </PropertyGroup>
+  </PropertyGroup>-->
 
   <!--Version configuration-->
   <PropertyGroup>
