@@ -45,5 +45,9 @@
   <ItemGroup>
     <ProjectReference Include="..\Base\Krypton.Toolkit.Suite.Extended.Base.csproj" />
   </ItemGroup>
+  
+  <ItemGroup>
+    <Folder Include="FTP\" />
+  </ItemGroup>
 
 </Project>

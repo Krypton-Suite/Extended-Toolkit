@@ -12,7 +12,7 @@
   <PropertyGroup>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Description>Contains language options for certain controls.</Description>
+    <Description>An extension to the standard krypton toolkit to support .NET Core and the latest .NET 3.5/4.x framework. Contains language options for certain controls.</Description>
     <RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
     <PackageLicenseFile></PackageLicenseFile>
   </PropertyGroup>

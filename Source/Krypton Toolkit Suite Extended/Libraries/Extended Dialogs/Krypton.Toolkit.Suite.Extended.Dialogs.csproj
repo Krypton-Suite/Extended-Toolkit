@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <Description>Contains dialogs.</Description>
+    <Description>An extension to the standard krypton toolkit to support .NET Core and the latest .NET 3.5/4.x framework. Contains dialogs.</Description>
     <RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
     <PackagePath></PackagePath>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>

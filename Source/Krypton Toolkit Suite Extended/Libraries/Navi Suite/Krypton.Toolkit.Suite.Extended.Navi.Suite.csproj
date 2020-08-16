@@ -10,6 +10,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
+    <Description>An extension to the standard krypton toolkit to support .NET Core and the latest .NET 3.5/4.x framework. This package contains a Outlook like control system.</Description>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageLicenseFile></PackageLicenseFile>

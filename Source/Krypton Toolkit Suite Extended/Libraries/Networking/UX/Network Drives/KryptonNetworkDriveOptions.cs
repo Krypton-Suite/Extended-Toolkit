@@ -1,4 +1,8 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Networking
+﻿using Krypton.Toolkit.Suite.Extended.Base;
+using System;
+using System.Windows.Forms;
+
+namespace Krypton.Toolkit.Suite.Extended.Networking
 {
     public class KryptonNetworkDriveOptions : KryptonForm
     {
@@ -14,7 +18,7 @@
         private KryptonLabel kryptonLabel3;
         private KryptonLabel kryptonLabel2;
         private KryptonLabel kryptonLabel1;
-        private KryptonTextBox kryptonTextBox1;
+        private KryptonTextBox ktxtPassword;
         private KryptonTextBox ktxtUsername;
         private KryptonComboBox kcmbDriveLetter;
         private System.Windows.Forms.ToolStripStatusLabel tslStatus;
@@ -40,11 +44,28 @@
         {
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.tslStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.functionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.restoreAllDrivesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dialogsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showDriveConnectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+            this.showDriveDisconnectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.kryptonPanel3 = new Krypton.Toolkit.KryptonPanel();
             this.kryptonGroupBox1 = new Krypton.Toolkit.KryptonGroupBox();
-            this.kryptonTextBox1 = new Krypton.Toolkit.KryptonTextBox();
+            this.kcbSaveCredentials = new Krypton.Toolkit.KryptonCheckBox();
+            this.kcbPromptForCredentials = new Krypton.Toolkit.KryptonCheckBox();
+            this.kcbForceDisConnection = new Krypton.Toolkit.KryptonCheckBox();
+            this.kcbPersistantConnection = new Krypton.Toolkit.KryptonCheckBox();
+            this.kbtnDisconnect = new Krypton.Toolkit.KryptonButton();
+            this.kbtnMapDrive = new Krypton.Toolkit.KryptonButton();
+            this.ktxtPassword = new Krypton.Toolkit.KryptonTextBox();
             this.ktxtUsername = new Krypton.Toolkit.KryptonTextBox();
             this.kcmbDriveLetter = new Krypton.Toolkit.KryptonComboBox();
             this.ktxtShareAddress = new Krypton.Toolkit.KryptonTextBox();
@@ -53,23 +74,6 @@
             this.kryptonLabel3 = new Krypton.Toolkit.KryptonLabel();
             this.kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
             this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
-            this.kbtnMapDrive = new Krypton.Toolkit.KryptonButton();
-            this.tslStatus = new System.Windows.Forms.ToolStripStatusLabel();
-            this.kbtnDisconnect = new Krypton.Toolkit.KryptonButton();
-            this.functionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dialogsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.kcbPersistantConnection = new Krypton.Toolkit.KryptonCheckBox();
-            this.kcbForceDisConnection = new Krypton.Toolkit.KryptonCheckBox();
-            this.kcbPromptForCredentials = new Krypton.Toolkit.KryptonCheckBox();
-            this.kcbSaveCredentials = new Krypton.Toolkit.KryptonCheckBox();
-            this.restoreAllDrivesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
-            this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.showDriveConnectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
-            this.showDriveDisconnectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -106,6 +110,12 @@
             this.statusStrip1.TabIndex = 0;
             this.statusStrip1.Text = "statusStrip1";
             // 
+            // tslStatus
+            // 
+            this.tslStatus.Name = "tslStatus";
+            this.tslStatus.Size = new System.Drawing.Size(16, 17);
+            this.tslStatus.Text = "...";
+            // 
             // kryptonPanel2
             // 
             this.kryptonPanel2.Controls.Add(this.menuStrip1);
@@ -125,9 +135,78 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(301, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(181, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // functionsToolStripMenuItem
+            // 
+            this.functionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.restoreAllDrivesToolStripMenuItem,
+            this.toolStripMenuItem1,
+            this.closeToolStripMenuItem});
+            this.functionsToolStripMenuItem.Name = "functionsToolStripMenuItem";
+            this.functionsToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
+            this.functionsToolStripMenuItem.Text = "F&unctions";
+            // 
+            // restoreAllDrivesToolStripMenuItem
+            // 
+            this.restoreAllDrivesToolStripMenuItem.Name = "restoreAllDrivesToolStripMenuItem";
+            this.restoreAllDrivesToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.restoreAllDrivesToolStripMenuItem.Text = "Re&store All Drives";
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(162, 6);
+            // 
+            // closeToolStripMenuItem
+            // 
+            this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
+            this.closeToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.closeToolStripMenuItem.Text = "C&lose";
+            // 
+            // dialogsToolStripMenuItem
+            // 
+            this.dialogsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.showDriveConnectionToolStripMenuItem,
+            this.toolStripMenuItem2,
+            this.showDriveDisconnectionToolStripMenuItem});
+            this.dialogsToolStripMenuItem.Name = "dialogsToolStripMenuItem";
+            this.dialogsToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
+            this.dialogsToolStripMenuItem.Text = "D&ialogs";
+            // 
+            // showDriveConnectionToolStripMenuItem
+            // 
+            this.showDriveConnectionToolStripMenuItem.Name = "showDriveConnectionToolStripMenuItem";
+            this.showDriveConnectionToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
+            this.showDriveConnectionToolStripMenuItem.Text = "Show \'Drive &Connection\'";
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(215, 6);
+            // 
+            // showDriveDisconnectionToolStripMenuItem
+            // 
+            this.showDriveDisconnectionToolStripMenuItem.Name = "showDriveDisconnectionToolStripMenuItem";
+            this.showDriveDisconnectionToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
+            this.showDriveDisconnectionToolStripMenuItem.Text = "Show \'Driv&e Disconnection\'";
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aboutToolStripMenuItem});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Text = "&Help";
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.aboutToolStripMenuItem.Text = "&About";
             // 
             // kryptonPanel3
             // 
@@ -151,7 +230,7 @@
             this.kryptonGroupBox1.Panel.Controls.Add(this.kcbPersistantConnection);
             this.kryptonGroupBox1.Panel.Controls.Add(this.kbtnDisconnect);
             this.kryptonGroupBox1.Panel.Controls.Add(this.kbtnMapDrive);
-            this.kryptonGroupBox1.Panel.Controls.Add(this.kryptonTextBox1);
+            this.kryptonGroupBox1.Panel.Controls.Add(this.ktxtPassword);
             this.kryptonGroupBox1.Panel.Controls.Add(this.ktxtUsername);
             this.kryptonGroupBox1.Panel.Controls.Add(this.kcmbDriveLetter);
             this.kryptonGroupBox1.Panel.Controls.Add(this.ktxtShareAddress);
@@ -164,15 +243,69 @@
             this.kryptonGroupBox1.TabIndex = 0;
             this.kryptonGroupBox1.Values.Heading = "Map Drive Settings";
             // 
-            // kryptonTextBox1
+            // kcbSaveCredentials
             // 
-            this.kryptonTextBox1.Hint = "Password...";
-            this.kryptonTextBox1.Location = new System.Drawing.Point(116, 129);
-            this.kryptonTextBox1.Name = "kryptonTextBox1";
-            this.kryptonTextBox1.PasswordChar = '●';
-            this.kryptonTextBox1.Size = new System.Drawing.Size(237, 23);
-            this.kryptonTextBox1.TabIndex = 8;
-            this.kryptonTextBox1.UseSystemPasswordChar = true;
+            this.kcbSaveCredentials.Location = new System.Drawing.Point(270, 193);
+            this.kcbSaveCredentials.Name = "kcbSaveCredentials";
+            this.kcbSaveCredentials.Size = new System.Drawing.Size(113, 20);
+            this.kcbSaveCredentials.TabIndex = 13;
+            this.kcbSaveCredentials.Values.Text = "Save &Credentials";
+            // 
+            // kcbPromptForCredentials
+            // 
+            this.kcbPromptForCredentials.Location = new System.Drawing.Point(116, 194);
+            this.kcbPromptForCredentials.Name = "kcbPromptForCredentials";
+            this.kcbPromptForCredentials.Size = new System.Drawing.Size(147, 20);
+            this.kcbPromptForCredentials.TabIndex = 12;
+            this.kcbPromptForCredentials.Values.Text = "&Prompt for Credentials";
+            // 
+            // kcbForceDisConnection
+            // 
+            this.kcbForceDisConnection.Location = new System.Drawing.Point(270, 167);
+            this.kcbForceDisConnection.Name = "kcbForceDisConnection";
+            this.kcbForceDisConnection.Size = new System.Drawing.Size(141, 20);
+            this.kcbForceDisConnection.TabIndex = 11;
+            this.kcbForceDisConnection.Values.Text = "Fo&rce Dis/Connection";
+            // 
+            // kcbPersistantConnection
+            // 
+            this.kcbPersistantConnection.Checked = true;
+            this.kcbPersistantConnection.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.kcbPersistantConnection.Location = new System.Drawing.Point(116, 167);
+            this.kcbPersistantConnection.Name = "kcbPersistantConnection";
+            this.kcbPersistantConnection.Size = new System.Drawing.Size(142, 20);
+            this.kcbPersistantConnection.TabIndex = 10;
+            this.kcbPersistantConnection.Values.Text = "&Persistant Connection";
+            // 
+            // kbtnDisconnect
+            // 
+            this.kbtnDisconnect.Enabled = false;
+            this.kbtnDisconnect.Location = new System.Drawing.Point(359, 53);
+            this.kbtnDisconnect.Name = "kbtnDisconnect";
+            this.kbtnDisconnect.Size = new System.Drawing.Size(105, 25);
+            this.kbtnDisconnect.TabIndex = 9;
+            this.kbtnDisconnect.Values.Text = "D&isconnect";
+            this.kbtnDisconnect.Click += new System.EventHandler(this.kbtnDisconnect_Click);
+            // 
+            // kbtnMapDrive
+            // 
+            this.kbtnMapDrive.Enabled = false;
+            this.kbtnMapDrive.Location = new System.Drawing.Point(359, 15);
+            this.kbtnMapDrive.Name = "kbtnMapDrive";
+            this.kbtnMapDrive.Size = new System.Drawing.Size(105, 25);
+            this.kbtnMapDrive.TabIndex = 3;
+            this.kbtnMapDrive.Values.Text = "&Map Drive";
+            this.kbtnMapDrive.Click += new System.EventHandler(this.kbtnMapDrive_Click);
+            // 
+            // ktxtPassword
+            // 
+            this.ktxtPassword.Hint = "Password...";
+            this.ktxtPassword.Location = new System.Drawing.Point(116, 129);
+            this.ktxtPassword.Name = "ktxtPassword";
+            this.ktxtPassword.PasswordChar = '●';
+            this.ktxtPassword.Size = new System.Drawing.Size(237, 23);
+            this.ktxtPassword.TabIndex = 8;
+            this.ktxtPassword.UseSystemPasswordChar = true;
             // 
             // ktxtUsername
             // 
@@ -242,141 +375,22 @@
             this.kryptonLabel1.TabIndex = 0;
             this.kryptonLabel1.Values.Text = "Share Address:";
             // 
-            // kbtnMapDrive
-            // 
-            this.kbtnMapDrive.Enabled = false;
-            this.kbtnMapDrive.Location = new System.Drawing.Point(359, 15);
-            this.kbtnMapDrive.Name = "kbtnMapDrive";
-            this.kbtnMapDrive.Size = new System.Drawing.Size(105, 25);
-            this.kbtnMapDrive.TabIndex = 3;
-            this.kbtnMapDrive.Values.Text = "&Map Drive";
-            // 
-            // tslStatus
-            // 
-            this.tslStatus.Name = "tslStatus";
-            this.tslStatus.Size = new System.Drawing.Size(16, 17);
-            this.tslStatus.Text = "...";
-            // 
-            // kbtnDisconnect
-            // 
-            this.kbtnDisconnect.Enabled = false;
-            this.kbtnDisconnect.Location = new System.Drawing.Point(359, 53);
-            this.kbtnDisconnect.Name = "kbtnDisconnect";
-            this.kbtnDisconnect.Size = new System.Drawing.Size(105, 25);
-            this.kbtnDisconnect.TabIndex = 9;
-            this.kbtnDisconnect.Values.Text = "D&isconnect";
-            // 
-            // functionsToolStripMenuItem
-            // 
-            this.functionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.restoreAllDrivesToolStripMenuItem,
-            this.toolStripMenuItem1,
-            this.closeToolStripMenuItem});
-            this.functionsToolStripMenuItem.Name = "functionsToolStripMenuItem";
-            this.functionsToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
-            this.functionsToolStripMenuItem.Text = "F&unctions";
-            // 
-            // dialogsToolStripMenuItem
-            // 
-            this.dialogsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.showDriveConnectionToolStripMenuItem,
-            this.toolStripMenuItem2,
-            this.showDriveDisconnectionToolStripMenuItem});
-            this.dialogsToolStripMenuItem.Name = "dialogsToolStripMenuItem";
-            this.dialogsToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
-            this.dialogsToolStripMenuItem.Text = "D&ialogs";
-            // 
-            // helpToolStripMenuItem
-            // 
-            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aboutToolStripMenuItem});
-            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.helpToolStripMenuItem.Text = "&Help";
-            // 
-            // aboutToolStripMenuItem
-            // 
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.aboutToolStripMenuItem.Text = "&About";
-            // 
-            // kcbPersistantConnection
-            // 
-            this.kcbPersistantConnection.Checked = true;
-            this.kcbPersistantConnection.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.kcbPersistantConnection.Location = new System.Drawing.Point(116, 167);
-            this.kcbPersistantConnection.Name = "kcbPersistantConnection";
-            this.kcbPersistantConnection.Size = new System.Drawing.Size(142, 20);
-            this.kcbPersistantConnection.TabIndex = 10;
-            this.kcbPersistantConnection.Values.Text = "&Persistant Connection";
-            // 
-            // kcbForceDisConnection
-            // 
-            this.kcbForceDisConnection.Location = new System.Drawing.Point(270, 167);
-            this.kcbForceDisConnection.Name = "kcbForceDisConnection";
-            this.kcbForceDisConnection.Size = new System.Drawing.Size(141, 20);
-            this.kcbForceDisConnection.TabIndex = 11;
-            this.kcbForceDisConnection.Values.Text = "Fo&rce Dis/Connection";
-            // 
-            // kcbPromptForCredentials
-            // 
-            this.kcbPromptForCredentials.Location = new System.Drawing.Point(116, 194);
-            this.kcbPromptForCredentials.Name = "kcbPromptForCredentials";
-            this.kcbPromptForCredentials.Size = new System.Drawing.Size(147, 20);
-            this.kcbPromptForCredentials.TabIndex = 12;
-            this.kcbPromptForCredentials.Values.Text = "&Prompt for Credentials";
-            // 
-            // kcbSaveCredentials
-            // 
-            this.kcbSaveCredentials.Location = new System.Drawing.Point(270, 193);
-            this.kcbSaveCredentials.Name = "kcbSaveCredentials";
-            this.kcbSaveCredentials.Size = new System.Drawing.Size(113, 20);
-            this.kcbSaveCredentials.TabIndex = 13;
-            this.kcbSaveCredentials.Values.Text = "Save &Credentials";
-            // 
-            // restoreAllDrivesToolStripMenuItem
-            // 
-            this.restoreAllDrivesToolStripMenuItem.Name = "restoreAllDrivesToolStripMenuItem";
-            this.restoreAllDrivesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.restoreAllDrivesToolStripMenuItem.Text = "Re&store All Drives";
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
-            // 
-            // closeToolStripMenuItem
-            // 
-            this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.closeToolStripMenuItem.Text = "C&lose";
-            // 
-            // showDriveConnectionToolStripMenuItem
-            // 
-            this.showDriveConnectionToolStripMenuItem.Name = "showDriveConnectionToolStripMenuItem";
-            this.showDriveConnectionToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
-            this.showDriveConnectionToolStripMenuItem.Text = "Show \'Drive &Connection\'";
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(215, 6);
-            // 
-            // showDriveDisconnectionToolStripMenuItem
-            // 
-            this.showDriveDisconnectionToolStripMenuItem.Name = "showDriveDisconnectionToolStripMenuItem";
-            this.showDriveDisconnectionToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
-            this.showDriveDisconnectionToolStripMenuItem.Text = "Show \'Driv&e Disconnection\'";
-            // 
             // KryptonNetworkDriveOptions
             // 
             this.ClientSize = new System.Drawing.Size(502, 323);
             this.Controls.Add(this.kryptonPanel3);
             this.Controls.Add(this.kryptonPanel2);
             this.Controls.Add(this.kryptonPanel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MainMenuStrip = this.menuStrip1;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "KryptonNetworkDriveOptions";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Connect to a Network Share";
+            this.Load += new System.EventHandler(this.KryptonNetworkDriveOptions_Load);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
@@ -400,5 +414,105 @@
         }
         #endregion
 
+        #region Variables
+        private char[] _validDriveLetters;
+
+        private NetworkDrives _networkDrives = new NetworkDrives();
+
+        private NetworkUtilities _utilities = new NetworkUtilities();
+        #endregion
+
+        #region Constructors
+        public KryptonNetworkDriveOptions()
+        {
+            InitializeComponent();
+        }
+        #endregion
+
+        private void KryptonNetworkDriveOptions_Load(object sender, EventArgs e)
+        {
+            _utilities.GetAvailableDriveLetters(_validDriveLetters);
+
+            foreach (char item in _validDriveLetters)
+            {
+                kcmbDriveLetter.Items.Add(item.ToString());
+            }
+
+            // set the address field to a share name for the current computer
+
+            ktxtShareAddress.Text = "\\\\" + SystemInformation.ComputerName + "\\C$";
+        }
+
+        private void kbtnMapDrive_Click(object sender, EventArgs e)
+        {
+            UpdateStatus($"Mapping '{ ktxtShareAddress.Text }' to drive '{ kcmbDriveLetter.Text }'");
+
+            try
+            {
+                _networkDrives.Force = kcbForceDisConnection.Checked;
+
+                _networkDrives.Persistent = kcbPersistantConnection.Checked;
+
+                _networkDrives.LocalDrive = kcmbDriveLetter.Text;
+
+                _networkDrives.PromptForCredentials = kcbPromptForCredentials.Checked;
+
+                _networkDrives.ShareName = ktxtShareAddress.Text;
+
+                _networkDrives.SaveCredentials = kcbSaveCredentials.Checked;
+
+                if (ktxtUsername.Text == "" && ktxtPassword.Text == "")
+                {
+                    _networkDrives.MapDrive();
+                }
+                else if (ktxtUsername.Text == "")
+                {
+                    _networkDrives.MapDrive(ktxtPassword.Text);
+                }
+                else
+                {
+                    _networkDrives.MapDrive(ktxtUsername.Text, ktxtPassword.Text);
+                }
+
+                UpdateStatus("Drive mapping was successful!");
+            }
+            catch (Exception exc)
+            {
+                UpdateStatus($"Cannot map drive! - { exc.Message }");
+
+                KryptonMessageBoxExtended.Show(this, "Cannot map drive!\nError: " + exc.Message);
+            }
+
+            _networkDrives = null;
+        }
+
+        private void kbtnDisconnect_Click(object sender, EventArgs e)
+        {
+            UpdateStatus("Disconnecting drive...");
+
+            try
+            {
+                //unmap the drive
+                _networkDrives.Force = kcbForceDisConnection.Checked;
+
+                _networkDrives.LocalDrive = kcmbDriveLetter.Text;
+
+                _networkDrives.UnMapDrive();
+
+                //update status
+                UpdateStatus("Drive disconnection successful");
+            }
+            catch (Exception err)
+            {
+                //report error
+                UpdateStatus("Cannot disconnect drive! - " + err.Message);
+
+                KryptonMessageBoxExtended.Show(this, "Cannot disconnect drive!\nError: " + err.Message);
+            }
+
+            _networkDrives = null;
+        }
+
+        private void UpdateStatus(string text) => tslStatus.Text = text;
     }
 }
