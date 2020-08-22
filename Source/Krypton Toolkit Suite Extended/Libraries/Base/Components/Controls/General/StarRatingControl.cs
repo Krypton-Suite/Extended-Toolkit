@@ -12,7 +12,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         private Container _components;
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public override System.Drawing.Color BackColor
+        public override Color BackColor
         {
             get { return base.BackColor; }
             set { base.BackColor = value; }
