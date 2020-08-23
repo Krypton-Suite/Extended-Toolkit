@@ -47,7 +47,6 @@
   </ItemGroup>
   
   <ItemGroup>
-    <Folder Include="Classes\Network Utility\" />
     <Folder Include="FTP\" />
   </ItemGroup>
 
