@@ -129,7 +129,7 @@ namespace Krypton.Toolkit.Suite.Extended.IO
             _Cancelled = Cancelled;
         }
 
-        public bool Cancelled { get { return _Cancelled; } }
+        public bool Cancelled => _Cancelled;
     }
 
     /// <summary>
@@ -148,11 +148,10 @@ namespace Krypton.Toolkit.Suite.Extended.IO
             _Exception = Exception;
         }
 
-        public string Source { get { return _Source; } }
-        public string Destination { get { return _Destination; } }
-        public Exception Exception { get { return _Exception; } }
+        public string Source => _Source;
+        public string Destination => _Destination;
+        public Exception Exception => _Exception;
     }
 
     #endregion
-
 }

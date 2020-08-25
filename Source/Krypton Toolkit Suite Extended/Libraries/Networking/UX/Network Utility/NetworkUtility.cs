@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Networking
 {
     public class NetworkUtility : KryptonForm
     {
-        private KryptonSplitContainer kryptonSplitContainer1;
+        #region Design Code
+        private KryptonSplitContainer ksc;
         private KryptonLinkLabel klblPortScan;
         private KryptonLinkLabel klblPing;
         private KryptonLinkLabel klblNetStatWithoutDNS;
@@ -17,81 +15,37 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
 
         private void InitializeComponent()
         {
-            this.kryptonSplitContainer1 = new Krypton.Toolkit.KryptonSplitContainer();
-            this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
-            this.klblNetStat = new Krypton.Toolkit.KryptonLinkLabel();
-            this.klblNetStatWithoutDNS = new Krypton.Toolkit.KryptonLinkLabel();
-            this.klblPing = new Krypton.Toolkit.KryptonLinkLabel();
+            this.ksc = new Krypton.Toolkit.KryptonSplitContainer();
             this.klblPortScan = new Krypton.Toolkit.KryptonLinkLabel();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonSplitContainer1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonSplitContainer1.Panel1)).BeginInit();
-            this.kryptonSplitContainer1.Panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonSplitContainer1.Panel2)).BeginInit();
-            this.kryptonSplitContainer1.SuspendLayout();
+            this.klblPing = new Krypton.Toolkit.KryptonLinkLabel();
+            this.klblNetStatWithoutDNS = new Krypton.Toolkit.KryptonLinkLabel();
+            this.klblNetStat = new Krypton.Toolkit.KryptonLinkLabel();
+            this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            ((System.ComponentModel.ISupportInitialize)(this.ksc)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ksc.Panel1)).BeginInit();
+            this.ksc.Panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ksc.Panel2)).BeginInit();
+            this.ksc.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.SuspendLayout();
             // 
-            // kryptonSplitContainer1
+            // ksc
             // 
-            this.kryptonSplitContainer1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.kryptonSplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonSplitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.kryptonSplitContainer1.Name = "kryptonSplitContainer1";
+            this.ksc.Cursor = System.Windows.Forms.Cursors.Default;
+            this.ksc.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ksc.Location = new System.Drawing.Point(0, 0);
+            this.ksc.Name = "ksc";
             // 
-            // kryptonSplitContainer1.Panel1
+            // ksc.Panel1
             // 
-            this.kryptonSplitContainer1.Panel1.Controls.Add(this.klblPortScan);
-            this.kryptonSplitContainer1.Panel1.Controls.Add(this.klblPing);
-            this.kryptonSplitContainer1.Panel1.Controls.Add(this.klblNetStatWithoutDNS);
-            this.kryptonSplitContainer1.Panel1.Controls.Add(this.klblNetStat);
-            this.kryptonSplitContainer1.Panel1.Controls.Add(this.kryptonPanel1);
-            this.kryptonSplitContainer1.Size = new System.Drawing.Size(808, 437);
-            this.kryptonSplitContainer1.SplitterDistance = 269;
-            this.kryptonSplitContainer1.TabIndex = 0;
-            // 
-            // kryptonPanel1
-            // 
-            this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
-            this.kryptonPanel1.Name = "kryptonPanel1";
-            this.kryptonPanel1.Size = new System.Drawing.Size(269, 42);
-            this.kryptonPanel1.TabIndex = 0;
-            // 
-            // klblNetStat
-            // 
-            this.klblNetStat.AutoSize = false;
-            this.klblNetStat.Dock = System.Windows.Forms.DockStyle.Top;
-            this.klblNetStat.LinkBehavior = Krypton.Toolkit.KryptonLinkBehavior.HoverUnderline;
-            this.klblNetStat.Location = new System.Drawing.Point(0, 42);
-            this.klblNetStat.Name = "klblNetStat";
-            this.klblNetStat.Size = new System.Drawing.Size(269, 42);
-            this.klblNetStat.StateCommon.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Far;
-            this.klblNetStat.TabIndex = 1;
-            this.klblNetStat.Values.Text = "Net Stat";
-            // 
-            // klblNetStatWithoutDNS
-            // 
-            this.klblNetStatWithoutDNS.AutoSize = false;
-            this.klblNetStatWithoutDNS.Dock = System.Windows.Forms.DockStyle.Top;
-            this.klblNetStatWithoutDNS.LinkBehavior = Krypton.Toolkit.KryptonLinkBehavior.HoverUnderline;
-            this.klblNetStatWithoutDNS.Location = new System.Drawing.Point(0, 84);
-            this.klblNetStatWithoutDNS.Name = "klblNetStatWithoutDNS";
-            this.klblNetStatWithoutDNS.Size = new System.Drawing.Size(269, 42);
-            this.klblNetStatWithoutDNS.StateCommon.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Far;
-            this.klblNetStatWithoutDNS.TabIndex = 2;
-            this.klblNetStatWithoutDNS.Values.Text = "Net Stat without DNS";
-            // 
-            // klblPing
-            // 
-            this.klblPing.AutoSize = false;
-            this.klblPing.Dock = System.Windows.Forms.DockStyle.Top;
-            this.klblPing.LinkBehavior = Krypton.Toolkit.KryptonLinkBehavior.HoverUnderline;
-            this.klblPing.Location = new System.Drawing.Point(0, 126);
-            this.klblPing.Name = "klblPing";
-            this.klblPing.Size = new System.Drawing.Size(269, 42);
-            this.klblPing.StateCommon.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Far;
-            this.klblPing.TabIndex = 3;
-            this.klblPing.Values.Text = "Ping";
+            this.ksc.Panel1.Controls.Add(this.klblPortScan);
+            this.ksc.Panel1.Controls.Add(this.klblPing);
+            this.ksc.Panel1.Controls.Add(this.klblNetStatWithoutDNS);
+            this.ksc.Panel1.Controls.Add(this.klblNetStat);
+            this.ksc.Panel1.Controls.Add(this.kryptonPanel1);
+            this.ksc.Size = new System.Drawing.Size(808, 437);
+            this.ksc.SplitterDistance = 269;
+            this.ksc.TabIndex = 0;
             // 
             // klblPortScan
             // 
@@ -104,20 +58,168 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
             this.klblPortScan.StateCommon.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Far;
             this.klblPortScan.TabIndex = 4;
             this.klblPortScan.Values.Text = "Port Scan";
+            this.klblPortScan.LinkClicked += new System.EventHandler(this.klblPortScan_LinkClicked);
+            // 
+            // klblPing
+            // 
+            this.klblPing.AutoSize = false;
+            this.klblPing.Dock = System.Windows.Forms.DockStyle.Top;
+            this.klblPing.LinkBehavior = Krypton.Toolkit.KryptonLinkBehavior.HoverUnderline;
+            this.klblPing.Location = new System.Drawing.Point(0, 126);
+            this.klblPing.Name = "klblPing";
+            this.klblPing.Size = new System.Drawing.Size(269, 42);
+            this.klblPing.StateCommon.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Far;
+            this.klblPing.TabIndex = 3;
+            this.klblPing.Values.Text = "Ping";
+            this.klblPing.LinkClicked += new System.EventHandler(this.klblPing_LinkClicked);
+            // 
+            // klblNetStatWithoutDNS
+            // 
+            this.klblNetStatWithoutDNS.AutoSize = false;
+            this.klblNetStatWithoutDNS.Dock = System.Windows.Forms.DockStyle.Top;
+            this.klblNetStatWithoutDNS.LinkBehavior = Krypton.Toolkit.KryptonLinkBehavior.HoverUnderline;
+            this.klblNetStatWithoutDNS.Location = new System.Drawing.Point(0, 84);
+            this.klblNetStatWithoutDNS.Name = "klblNetStatWithoutDNS";
+            this.klblNetStatWithoutDNS.Size = new System.Drawing.Size(269, 42);
+            this.klblNetStatWithoutDNS.StateCommon.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Far;
+            this.klblNetStatWithoutDNS.TabIndex = 2;
+            this.klblNetStatWithoutDNS.Values.Text = "Net Stat without DNS";
+            this.klblNetStatWithoutDNS.LinkClicked += new System.EventHandler(this.klblNetStatWithoutDNS_LinkClicked);
+            // 
+            // klblNetStat
+            // 
+            this.klblNetStat.AutoSize = false;
+            this.klblNetStat.Dock = System.Windows.Forms.DockStyle.Top;
+            this.klblNetStat.LinkBehavior = Krypton.Toolkit.KryptonLinkBehavior.HoverUnderline;
+            this.klblNetStat.Location = new System.Drawing.Point(0, 42);
+            this.klblNetStat.Name = "klblNetStat";
+            this.klblNetStat.Size = new System.Drawing.Size(269, 42);
+            this.klblNetStat.StateCommon.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Far;
+            this.klblNetStat.TabIndex = 1;
+            this.klblNetStat.Values.Text = "Net Stat";
+            this.klblNetStat.LinkClicked += new System.EventHandler(this.klblNetStat_LinkClicked);
+            // 
+            // kryptonPanel1
+            // 
+            this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
+            this.kryptonPanel1.Name = "kryptonPanel1";
+            this.kryptonPanel1.Size = new System.Drawing.Size(269, 42);
+            this.kryptonPanel1.TabIndex = 0;
             // 
             // NetworkUtility
             // 
             this.ClientSize = new System.Drawing.Size(808, 437);
-            this.Controls.Add(this.kryptonSplitContainer1);
+            this.Controls.Add(this.ksc);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "NetworkUtility";
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonSplitContainer1.Panel1)).EndInit();
-            this.kryptonSplitContainer1.Panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonSplitContainer1.Panel2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonSplitContainer1)).EndInit();
-            this.kryptonSplitContainer1.ResumeLayout(false);
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
+            this.Text = "Network Utility";
+            this.Load += new System.EventHandler(this.NetworkUtility_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.ksc.Panel1)).EndInit();
+            this.ksc.Panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ksc.Panel2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ksc)).EndInit();
+            this.ksc.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.ResumeLayout(false);
 
+        }
+        #endregion
+
+        #region Variables
+        private KryptonPanel _infoPanel;
+
+        private KryptonPanel _netStatPanel;
+
+        private KryptonPanel _pingPanel;
+
+        private KryptonPanel _portScanPanel;
+        #endregion
+
+        #region Constructor
+        public NetworkUtility()
+        {
+            InitializeComponent();
+        }
+        #endregion
+
+        private void NetworkUtility_Load(object sender, EventArgs e)
+        {
+            _infoPanel = new KryptonPanel();
+
+            _netStatPanel = new KryptonPanel();
+
+            _pingPanel = new KryptonPanel();
+
+            _portScanPanel = new KryptonPanel();
+
+            Info info = new Info(_infoPanel);
+
+            ksc.Panel2.Controls.Add(_infoPanel);
+        }
+
+        private void klblNetStat_LinkClicked(object sender, EventArgs e)
+        {
+            SelectMenu(klblNetStat);
+
+            NetStat netStat = new NetStat(_netStatPanel, true);
+
+            netStat.Execute();
+        }
+
+        private void klblNetStatWithoutDNS_LinkClicked(object sender, EventArgs e)
+        {
+            SelectMenu(klblNetStatWithoutDNS);
+
+            NetStat netStat = new NetStat(_netStatPanel, false);
+
+            netStat.Execute();
+
+            ksc.Panel2.Controls.RemoveAt(0);
+
+            ksc.Panel2.Controls.Add(_netStatPanel);
+        }
+
+        private void klblPing_LinkClicked(object sender, EventArgs e)
+        {
+            SelectMenu(klblPing);
+
+            Pinger ping = new Pinger(_pingPanel);
+
+            ksc.Panel2.Controls.RemoveAt(0);
+
+            ksc.Panel2.Controls.Add(_pingPanel);
+        }
+
+        private void klblPortScan_LinkClicked(object sender, EventArgs e)
+        {
+            SelectMenu(klblPortScan);
+
+            PortScan scan = new PortScan(_portScanPanel);
+
+            ksc.Panel2.Controls.RemoveAt(0);
+
+            ksc.Panel2.Controls.Add(_portScanPanel);
+        }
+
+        private void SelectMenu(KryptonLinkLabel control)
+        {
+            Control.ControlCollection collecion = ksc.Panel1.Controls;
+
+            foreach (Control ctr in collecion)
+            {
+                try
+                {
+                    KryptonLinkLabel linkControl = (KryptonLinkLabel)ctr;
+                    //linkControl.BackColor = Color.Transparent;
+                    //linkControl.LinkColor = Color.White;
+                }
+                catch { }
+            }
         }
     }
 }
