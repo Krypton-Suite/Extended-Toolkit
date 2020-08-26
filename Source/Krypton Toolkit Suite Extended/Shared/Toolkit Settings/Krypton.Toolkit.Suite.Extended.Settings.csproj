@@ -104,6 +104,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>RunDialogSettings.settings</DependentUpon>
     </Compile>
+    <Compile Update="Settings\Dialogs\Text Finder\TextFinderDialogSettings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>TextFinderDialogSettings.settings</DependentUpon>
+    </Compile>
     <Compile Update="Settings\Global\GlobalBooleanSettings.Designer.cs">
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <AutoGen>True</AutoGen>
@@ -261,6 +266,10 @@
     <None Update="Settings\Dialogs\Run\RunDialogSettings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>RunDialogSettings.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Settings\Dialogs\Text Finder\TextFinderDialogSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>TextFinderDialogSettings.Designer.cs</LastGenOutput>
     </None>
     <None Update="Settings\Global\GlobalBooleanSettings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
