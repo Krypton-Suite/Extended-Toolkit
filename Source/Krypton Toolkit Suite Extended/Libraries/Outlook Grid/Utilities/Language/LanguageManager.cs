@@ -15,7 +15,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
         public static readonly object myLock = new object();
 
-        public ResourceManager resourceManagerUS, resourceManagerGB;
+        public ResourceManager resourceManagerUS, resourceManagerGB, resourceManagerFR;
 
         private CultureInfo cultureInfo;
 
@@ -24,9 +24,11 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
         private LanguageManager()
         {
-            resourceManagerUS = new ResourceManager("KryptonOutlookGrid.Utilities.Language.EnglishStringsUS", Assembly.GetExecutingAssembly());
+            resourceManagerUS = new ResourceManager("Krypton.Toolkit.Suite.Extended.Outlook.Grid.Utilities.Language.EnglishStringsUS", Assembly.GetExecutingAssembly());
 
-            resourceManagerGB = new ResourceManager("KryptonOutlookGrid.Utilities.Language.EnglishStringsGB", Assembly.GetExecutingAssembly());
+            resourceManagerGB = new ResourceManager("Krypton.Toolkit.Suite.Extended.Outlook.Grid.Utilities.Language.EnglishStringsGB", Assembly.GetExecutingAssembly());
+
+            resourceManagerFR = new ResourceManager("Krypton.Toolkit.Suite.Extended.Outlook.Grid.Utilities.Language.FrenchStrings", Assembly.GetExecutingAssembly());
 
             cultureInfo = Thread.CurrentThread.CurrentCulture;
         }
@@ -35,18 +37,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// Gets or sets the P locker.
         /// </summary>
         /// <value>The P locker.</value>
-        public object PLocker
-        {
-            get
-            {
-                return this.locker;
-            }
-
-            set
-            {
-                this.locker = value;
-            }
-        }
+        public object PLocker { get => locker; set => locker = value; }
 
         /// <summary>
         /// Gets the instance of the singleton.
@@ -76,19 +67,18 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <param name="name"></param>
         /// <returns></returns>
         /// <remarks></remarks>
-        public string GetStringUS(string name)
-        {
-            return resourceManagerUS.GetString(name, cultureInfo);
-        }
+        public string GetStringUS(string name) => resourceManagerUS.GetString(name, cultureInfo);
 
         /// <summary>
         /// Get localised string for GB
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public string GetStringGB(string name)
-        {
-            return resourceManagerGB.GetString(name, cultureInfo);
-        }
+        public string GetStringGB(string name) => resourceManagerGB.GetString(name, cultureInfo);
+
+        /// <summary>Gets localised string for FR.</summary>
+        /// <param name="name">The name.</param>
+        /// <returns></returns>
+        public string GetStringFR(string name) => resourceManagerFR.GetString(name, cultureInfo);
     }
 }
