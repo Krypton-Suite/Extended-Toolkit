@@ -55,7 +55,7 @@ namespace Krypton.Toolkit.Suite.Extended.IO
         /// </summary>
         public virtual CompareResult Compare(string fragmentText)
         {
-            if (string.IsNullOrEmpty(fragmentText) || Text.ToLowerInvariant().Contains(fragmentText.ToLowerInvariant())) && Text != fragmentText)
+            if (string.IsNullOrEmpty(fragmentText) || Text.ToLowerInvariant().Contains(fragmentText.ToLowerInvariant()) && Text != fragmentText)
                 return CompareResult.VisibleAndSelected;
 
             return CompareResult.Hidden;
