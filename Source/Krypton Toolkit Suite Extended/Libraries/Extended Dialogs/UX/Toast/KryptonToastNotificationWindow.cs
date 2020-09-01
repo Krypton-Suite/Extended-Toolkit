@@ -1,4 +1,5 @@
-﻿using Krypton.Toolkit.Suite.Extended.Dialogs.Resources;
+﻿using Krypton.Toolkit.Suite.Extended.Common;
+using Krypton.Toolkit.Suite.Extended.Dialogs.Resources;
 using System;
 using System.Diagnostics;
 using System.Drawing;
@@ -12,240 +13,121 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
     /// Adapted from: https://github.com/dotCoefficient/Notification/blob/master/Notification/Notification.cs
     /// </summary>
     /// <seealso cref="KryptonForm" />
-    public class KryptonToastNotificationWindow : KryptonForm
+    public class KryptonToastNotificationWindow : KryptonForm, IToastNotificationUIElements
     {
         #region Design Code
-        private KryptonPanel kryptonPanel1;
-        private Suite.Extended.Standard.Controls.KryptonButtonExtended kbtneLaunch;
-        private Suite.Extended.Standard.Controls.KryptonButtonExtended kbtneDismiss;
-        private System.Windows.Forms.Panel panel1;
-        private KryptonPanel kryptonPanel2;
-        private Suite.Extended.Standard.Controls.KryptonLabelExtended klblContent;
+        private KryptonPanel kpnlButtons;
+        private KryptonButton kbtneLaunch;
+        private KryptonButton kbtneDismiss;
+        private System.Windows.Forms.Panel pnlSplitter;
+        private KryptonPanel kpnlContent;
+        private KryptonWrapLabel kwlContent;
         private KryptonWrapLabel kwlTitle;
         private System.Windows.Forms.PictureBox pbxIcon;
 
         private void InitializeComponent()
         {
-            this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
-            this.kbtneDismiss = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonButtonExtended();
-            this.kbtneLaunch = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonButtonExtended();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
-            this.pbxIcon = new System.Windows.Forms.PictureBox();
+            this.kpnlButtons = new Krypton.Toolkit.KryptonPanel();
+            this.kbtneLaunch = new Krypton.Toolkit.KryptonButton();
+            this.kbtneDismiss = new Krypton.Toolkit.KryptonButton();
+            this.pnlSplitter = new System.Windows.Forms.Panel();
+            this.kpnlContent = new Krypton.Toolkit.KryptonPanel();
+            this.kwlContent = new Krypton.Toolkit.KryptonWrapLabel();
             this.kwlTitle = new Krypton.Toolkit.KryptonWrapLabel();
-            this.klblContent = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonLabelExtended();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
-            this.kryptonPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
-            this.kryptonPanel2.SuspendLayout();
+            this.pbxIcon = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.kpnlButtons)).BeginInit();
+            this.kpnlButtons.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kpnlContent)).BeginInit();
+            this.kpnlContent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxIcon)).BeginInit();
             this.SuspendLayout();
             // 
-            // kryptonPanel1
+            // kpnlButtons
             // 
-            this.kryptonPanel1.Controls.Add(this.kbtneLaunch);
-            this.kryptonPanel1.Controls.Add(this.kbtneDismiss);
-            this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.kryptonPanel1.Location = new System.Drawing.Point(0, 244);
-            this.kryptonPanel1.Name = "kryptonPanel1";
-            this.kryptonPanel1.Size = new System.Drawing.Size(605, 45);
-            this.kryptonPanel1.TabIndex = 0;
-            // 
-            // kbtneDismiss
-            // 
-            this.kbtneDismiss.Image = null;
-            this.kbtneDismiss.Location = new System.Drawing.Point(449, 8);
-            this.kbtneDismiss.LongTextTypeface = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtneDismiss.Name = "kbtneDismiss";
-            this.kbtneDismiss.OverrideDefault.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtneDismiss.OverrideDefault.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtneDismiss.OverrideDefaultBackGroundColourOne = System.Drawing.Color.Empty;
-            this.kbtneDismiss.OverrideDefaultBackGroundColourTwo = System.Drawing.Color.Empty;
-            this.kbtneDismiss.OverrideDefaultBorderColourOne = System.Drawing.Color.Empty;
-            this.kbtneDismiss.OverrideDefaultBorderColourTwo = System.Drawing.Color.Empty;
-            this.kbtneDismiss.OverrideDefaultLongTextColourOne = System.Drawing.Color.Empty;
-            this.kbtneDismiss.OverrideDefaultLongTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtneDismiss.OverrideDefaultShortTextColourOne = System.Drawing.Color.Empty;
-            this.kbtneDismiss.OverrideDefaultShortTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtneDismiss.OverrideFocus.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtneDismiss.OverrideFocus.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtneDismiss.OverrideFocusBackGroundColourOne = System.Drawing.Color.Empty;
-            this.kbtneDismiss.OverrideFocusBackGroundColourTwo = System.Drawing.Color.Empty;
-            this.kbtneDismiss.OverrideFocusBorderColourOne = System.Drawing.Color.Empty;
-            this.kbtneDismiss.OverrideFocusBorderColourTwo = System.Drawing.Color.Empty;
-            this.kbtneDismiss.OverrideFocusLongTextColourOne = System.Drawing.Color.Empty;
-            this.kbtneDismiss.OverrideFocusLongTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtneDismiss.OverrideFocusShortTextColourOne = System.Drawing.Color.Empty;
-            this.kbtneDismiss.OverrideFocusShortTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtneDismiss.ShortTextTypeface = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtneDismiss.Size = new System.Drawing.Size(144, 25);
-            this.kbtneDismiss.StateCommon.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtneDismiss.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtneDismiss.StateCommonBackGroundColourOne = System.Drawing.Color.Empty;
-            this.kbtneDismiss.StateCommonBackGroundColourTwo = System.Drawing.Color.Empty;
-            this.kbtneDismiss.StateCommonBorderColourOne = System.Drawing.Color.Empty;
-            this.kbtneDismiss.StateCommonBorderColourTwo = System.Drawing.Color.Empty;
-            this.kbtneDismiss.StateCommonLongTextColourOne = System.Drawing.Color.Empty;
-            this.kbtneDismiss.StateCommonLongTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtneDismiss.StateCommonShortTextColourOne = System.Drawing.Color.Empty;
-            this.kbtneDismiss.StateCommonShortTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtneDismiss.StateDisabled.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtneDismiss.StateDisabled.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtneDismiss.StateDisabledBackGroundColourOne = System.Drawing.Color.Empty;
-            this.kbtneDismiss.StateDisabledBackGroundColourTwo = System.Drawing.Color.Empty;
-            this.kbtneDismiss.StateDisabledBorderColourOne = System.Drawing.Color.Empty;
-            this.kbtneDismiss.StateDisabledBorderColourTwo = System.Drawing.Color.Empty;
-            this.kbtneDismiss.StateDisabledLongTextColourOne = System.Drawing.Color.Empty;
-            this.kbtneDismiss.StateDisabledLongTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtneDismiss.StateDisabledShortTextColourOne = System.Drawing.Color.Empty;
-            this.kbtneDismiss.StateDisabledShortTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtneDismiss.StateNormal.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtneDismiss.StateNormal.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtneDismiss.StateNormalBackGroundColourOne = System.Drawing.Color.Empty;
-            this.kbtneDismiss.StateNormalBackGroundColourTwo = System.Drawing.Color.Empty;
-            this.kbtneDismiss.StateNormalBorderColourOne = System.Drawing.Color.Empty;
-            this.kbtneDismiss.StateNormalBorderColourTwo = System.Drawing.Color.Empty;
-            this.kbtneDismiss.StateNormalLongTextColourOne = System.Drawing.Color.Empty;
-            this.kbtneDismiss.StateNormalLongTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtneDismiss.StateNormalShortTextColourOne = System.Drawing.Color.Empty;
-            this.kbtneDismiss.StateNormalShortTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtneDismiss.StatePressed.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtneDismiss.StatePressed.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtneDismiss.StatePressedBackGroundColourOne = System.Drawing.Color.Empty;
-            this.kbtneDismiss.StatePressedBackGroundColourTwo = System.Drawing.Color.Empty;
-            this.kbtneDismiss.StatePressedBorderColourOne = System.Drawing.Color.Empty;
-            this.kbtneDismiss.StatePressedBorderColourTwo = System.Drawing.Color.Empty;
-            this.kbtneDismiss.StatePressedLongTextColourOne = System.Drawing.Color.Empty;
-            this.kbtneDismiss.StatePressedLongTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtneDismiss.StatePressedShortTextColourOne = System.Drawing.Color.Empty;
-            this.kbtneDismiss.StatePressedShortTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtneDismiss.StateTracking.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtneDismiss.StateTracking.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtneDismiss.StateTrackingBackGroundColourOne = System.Drawing.Color.Empty;
-            this.kbtneDismiss.StateTrackingBackGroundColourTwo = System.Drawing.Color.Empty;
-            this.kbtneDismiss.StateTrackingBorderColourOne = System.Drawing.Color.Empty;
-            this.kbtneDismiss.StateTrackingBorderColourTwo = System.Drawing.Color.Empty;
-            this.kbtneDismiss.StateTrackingLongTextColourOne = System.Drawing.Color.Empty;
-            this.kbtneDismiss.StateTrackingLongTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtneDismiss.StateTrackingShortTextColourOne = System.Drawing.Color.Empty;
-            this.kbtneDismiss.StateTrackingShortTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtneDismiss.TabIndex = 0;
-            this.kbtneDismiss.Values.Text = "&Dismiss ({0})";
-            this.kbtneDismiss.Click += new System.EventHandler(this.kbtneDismiss_Click);
+            this.kpnlButtons.Controls.Add(this.kbtneLaunch);
+            this.kpnlButtons.Controls.Add(this.kbtneDismiss);
+            this.kpnlButtons.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.kpnlButtons.Location = new System.Drawing.Point(0, 244);
+            this.kpnlButtons.Name = "kpnlButtons";
+            this.kpnlButtons.Size = new System.Drawing.Size(605, 45);
+            this.kpnlButtons.TabIndex = 0;
             // 
             // kbtneLaunch
             // 
             this.kbtneLaunch.AutoSize = true;
             this.kbtneLaunch.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.kbtneLaunch.Image = null;
             this.kbtneLaunch.Location = new System.Drawing.Point(12, 8);
-            this.kbtneLaunch.LongTextTypeface = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.kbtneLaunch.Name = "kbtneLaunch";
             this.kbtneLaunch.OverrideDefault.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.kbtneLaunch.OverrideDefault.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtneLaunch.OverrideDefaultBackGroundColourOne = System.Drawing.Color.Empty;
-            this.kbtneLaunch.OverrideDefaultBackGroundColourTwo = System.Drawing.Color.Empty;
-            this.kbtneLaunch.OverrideDefaultBorderColourOne = System.Drawing.Color.Empty;
-            this.kbtneLaunch.OverrideDefaultBorderColourTwo = System.Drawing.Color.Empty;
-            this.kbtneLaunch.OverrideDefaultLongTextColourOne = System.Drawing.Color.Empty;
-            this.kbtneLaunch.OverrideDefaultLongTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtneLaunch.OverrideDefaultShortTextColourOne = System.Drawing.Color.Empty;
-            this.kbtneLaunch.OverrideDefaultShortTextColourTwo = System.Drawing.Color.Empty;
             this.kbtneLaunch.OverrideFocus.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.kbtneLaunch.OverrideFocus.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtneLaunch.OverrideFocusBackGroundColourOne = System.Drawing.Color.Empty;
-            this.kbtneLaunch.OverrideFocusBackGroundColourTwo = System.Drawing.Color.Empty;
-            this.kbtneLaunch.OverrideFocusBorderColourOne = System.Drawing.Color.Empty;
-            this.kbtneLaunch.OverrideFocusBorderColourTwo = System.Drawing.Color.Empty;
-            this.kbtneLaunch.OverrideFocusLongTextColourOne = System.Drawing.Color.Empty;
-            this.kbtneLaunch.OverrideFocusLongTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtneLaunch.OverrideFocusShortTextColourOne = System.Drawing.Color.Empty;
-            this.kbtneLaunch.OverrideFocusShortTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtneLaunch.ShortTextTypeface = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.kbtneLaunch.Size = new System.Drawing.Size(24, 20);
             this.kbtneLaunch.StateCommon.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.kbtneLaunch.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtneLaunch.StateCommonBackGroundColourOne = System.Drawing.Color.Empty;
-            this.kbtneLaunch.StateCommonBackGroundColourTwo = System.Drawing.Color.Empty;
-            this.kbtneLaunch.StateCommonBorderColourOne = System.Drawing.Color.Empty;
-            this.kbtneLaunch.StateCommonBorderColourTwo = System.Drawing.Color.Empty;
-            this.kbtneLaunch.StateCommonLongTextColourOne = System.Drawing.Color.Empty;
-            this.kbtneLaunch.StateCommonLongTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtneLaunch.StateCommonShortTextColourOne = System.Drawing.Color.Empty;
-            this.kbtneLaunch.StateCommonShortTextColourTwo = System.Drawing.Color.Empty;
             this.kbtneLaunch.StateDisabled.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.kbtneLaunch.StateDisabled.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtneLaunch.StateDisabledBackGroundColourOne = System.Drawing.Color.Empty;
-            this.kbtneLaunch.StateDisabledBackGroundColourTwo = System.Drawing.Color.Empty;
-            this.kbtneLaunch.StateDisabledBorderColourOne = System.Drawing.Color.Empty;
-            this.kbtneLaunch.StateDisabledBorderColourTwo = System.Drawing.Color.Empty;
-            this.kbtneLaunch.StateDisabledLongTextColourOne = System.Drawing.Color.Empty;
-            this.kbtneLaunch.StateDisabledLongTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtneLaunch.StateDisabledShortTextColourOne = System.Drawing.Color.Empty;
-            this.kbtneLaunch.StateDisabledShortTextColourTwo = System.Drawing.Color.Empty;
             this.kbtneLaunch.StateNormal.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.kbtneLaunch.StateNormal.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtneLaunch.StateNormalBackGroundColourOne = System.Drawing.Color.Empty;
-            this.kbtneLaunch.StateNormalBackGroundColourTwo = System.Drawing.Color.Empty;
-            this.kbtneLaunch.StateNormalBorderColourOne = System.Drawing.Color.Empty;
-            this.kbtneLaunch.StateNormalBorderColourTwo = System.Drawing.Color.Empty;
-            this.kbtneLaunch.StateNormalLongTextColourOne = System.Drawing.Color.Empty;
-            this.kbtneLaunch.StateNormalLongTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtneLaunch.StateNormalShortTextColourOne = System.Drawing.Color.Empty;
-            this.kbtneLaunch.StateNormalShortTextColourTwo = System.Drawing.Color.Empty;
             this.kbtneLaunch.StatePressed.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.kbtneLaunch.StatePressed.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtneLaunch.StatePressedBackGroundColourOne = System.Drawing.Color.Empty;
-            this.kbtneLaunch.StatePressedBackGroundColourTwo = System.Drawing.Color.Empty;
-            this.kbtneLaunch.StatePressedBorderColourOne = System.Drawing.Color.Empty;
-            this.kbtneLaunch.StatePressedBorderColourTwo = System.Drawing.Color.Empty;
-            this.kbtneLaunch.StatePressedLongTextColourOne = System.Drawing.Color.Empty;
-            this.kbtneLaunch.StatePressedLongTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtneLaunch.StatePressedShortTextColourOne = System.Drawing.Color.Empty;
-            this.kbtneLaunch.StatePressedShortTextColourTwo = System.Drawing.Color.Empty;
             this.kbtneLaunch.StateTracking.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.kbtneLaunch.StateTracking.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kbtneLaunch.StateTrackingBackGroundColourOne = System.Drawing.Color.Empty;
-            this.kbtneLaunch.StateTrackingBackGroundColourTwo = System.Drawing.Color.Empty;
-            this.kbtneLaunch.StateTrackingBorderColourOne = System.Drawing.Color.Empty;
-            this.kbtneLaunch.StateTrackingBorderColourTwo = System.Drawing.Color.Empty;
-            this.kbtneLaunch.StateTrackingLongTextColourOne = System.Drawing.Color.Empty;
-            this.kbtneLaunch.StateTrackingLongTextColourTwo = System.Drawing.Color.Empty;
-            this.kbtneLaunch.StateTrackingShortTextColourOne = System.Drawing.Color.Empty;
-            this.kbtneLaunch.StateTrackingShortTextColourTwo = System.Drawing.Color.Empty;
             this.kbtneLaunch.TabIndex = 1;
             this.kbtneLaunch.Values.Text = "{0}";
             this.kbtneLaunch.Click += new System.EventHandler(this.kbtneLaunch_Click);
             // 
-            // panel1
+            // kbtneDismiss
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 241);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(605, 3);
-            this.panel1.TabIndex = 1;
+            this.kbtneDismiss.Location = new System.Drawing.Point(449, 8);
+            this.kbtneDismiss.Name = "kbtneDismiss";
+            this.kbtneDismiss.OverrideDefault.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.kbtneDismiss.OverrideDefault.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.kbtneDismiss.OverrideFocus.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.kbtneDismiss.OverrideFocus.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.kbtneDismiss.Size = new System.Drawing.Size(144, 25);
+            this.kbtneDismiss.StateCommon.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.kbtneDismiss.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.kbtneDismiss.StateDisabled.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.kbtneDismiss.StateDisabled.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.kbtneDismiss.StateNormal.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.kbtneDismiss.StateNormal.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.kbtneDismiss.StatePressed.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.kbtneDismiss.StatePressed.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.kbtneDismiss.StateTracking.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.kbtneDismiss.StateTracking.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.kbtneDismiss.TabIndex = 0;
+            this.kbtneDismiss.Values.Text = "&Dismiss ({0})";
+            this.kbtneDismiss.Click += new System.EventHandler(this.kbtneDismiss_Click);
             // 
-            // kryptonPanel2
+            // pnlSplitter
             // 
-            this.kryptonPanel2.Controls.Add(this.klblContent);
-            this.kryptonPanel2.Controls.Add(this.kwlTitle);
-            this.kryptonPanel2.Controls.Add(this.pbxIcon);
-            this.kryptonPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonPanel2.Location = new System.Drawing.Point(0, 0);
-            this.kryptonPanel2.Name = "kryptonPanel2";
-            this.kryptonPanel2.Size = new System.Drawing.Size(605, 241);
-            this.kryptonPanel2.TabIndex = 2;
+            this.pnlSplitter.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.pnlSplitter.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlSplitter.Location = new System.Drawing.Point(0, 241);
+            this.pnlSplitter.Name = "pnlSplitter";
+            this.pnlSplitter.Size = new System.Drawing.Size(605, 3);
+            this.pnlSplitter.TabIndex = 1;
             // 
-            // pbxIcon
+            // kpnlContent
             // 
-            this.pbxIcon.BackColor = System.Drawing.Color.Transparent;
-            this.pbxIcon.Location = new System.Drawing.Point(12, 12);
-            this.pbxIcon.Name = "pbxIcon";
-            this.pbxIcon.Size = new System.Drawing.Size(64, 64);
-            this.pbxIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pbxIcon.TabIndex = 3;
-            this.pbxIcon.TabStop = false;
+            this.kpnlContent.Controls.Add(this.kwlContent);
+            this.kpnlContent.Controls.Add(this.kwlTitle);
+            this.kpnlContent.Controls.Add(this.pbxIcon);
+            this.kpnlContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kpnlContent.Location = new System.Drawing.Point(0, 0);
+            this.kpnlContent.Name = "kpnlContent";
+            this.kpnlContent.Size = new System.Drawing.Size(605, 241);
+            this.kpnlContent.TabIndex = 2;
+            // 
+            // kwlContent
+            // 
+            this.kwlContent.AutoSize = false;
+            this.kwlContent.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.kwlContent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.kwlContent.Location = new System.Drawing.Point(82, 79);
+            this.kwlContent.Name = "kwlContent";
+            this.kwlContent.Size = new System.Drawing.Size(511, 156);
             // 
             // kwlTitle
             // 
@@ -259,33 +141,22 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.kwlTitle.Text = "kryptonWrapLabel1";
             this.kwlTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // klblContent
+            // pbxIcon
             // 
-            this.klblContent.AutoSize = false;
-            this.klblContent.Image = null;
-            this.klblContent.Location = new System.Drawing.Point(82, 79);
-            this.klblContent.LongTextTypeface = null;
-            this.klblContent.Name = "klblContent";
-            this.klblContent.ShortTextTypeface = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.klblContent.Size = new System.Drawing.Size(511, 156);
-            this.klblContent.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.klblContent.StateCommonTextColourOne = System.Drawing.Color.Empty;
-            this.klblContent.StateCommonTextColourTwo = System.Drawing.Color.Empty;
-            this.klblContent.StateDisabled.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.klblContent.StateDisabledTextColourOne = System.Drawing.Color.Empty;
-            this.klblContent.StateDisabledTextColourTwo = System.Drawing.Color.Empty;
-            this.klblContent.StateNormal.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.klblContent.StateNormalTextColourOne = System.Drawing.Color.Empty;
-            this.klblContent.StateNormalTextColourTwo = System.Drawing.Color.Empty;
-            this.klblContent.TabIndex = 4;
-            this.klblContent.Values.Text = "kryptonLabelExtended1";
+            this.pbxIcon.BackColor = System.Drawing.Color.Transparent;
+            this.pbxIcon.Location = new System.Drawing.Point(12, 12);
+            this.pbxIcon.Name = "pbxIcon";
+            this.pbxIcon.Size = new System.Drawing.Size(64, 64);
+            this.pbxIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pbxIcon.TabIndex = 3;
+            this.pbxIcon.TabStop = false;
             // 
             // KryptonToastNotificationWindow
             // 
             this.ClientSize = new System.Drawing.Size(605, 289);
-            this.Controls.Add(this.kryptonPanel2);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.kryptonPanel1);
+            this.Controls.Add(this.kpnlContent);
+            this.Controls.Add(this.pnlSplitter);
+            this.Controls.Add(this.kpnlButtons);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -293,54 +164,20 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.Load += new System.EventHandler(this.KryptonToastNotificationWindow_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
-            this.kryptonPanel1.ResumeLayout(false);
-            this.kryptonPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
-            this.kryptonPanel2.ResumeLayout(false);
-            this.kryptonPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kpnlButtons)).EndInit();
+            this.kpnlButtons.ResumeLayout(false);
+            this.kpnlButtons.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kpnlContent)).EndInit();
+            this.kpnlContent.ResumeLayout(false);
+            this.kpnlContent.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxIcon)).EndInit();
             this.ResumeLayout(false);
 
         }
-        #endregion
-
-        #region Enumerations
-        public enum IconType
-        {
-            CUSTOM,
-            OK,
-            ERROR,
-            EXCLAMATION,
-            INFORMATION,
-            QUESTION,
-            NOTHING,
-            NONE,
-            STOP,
-            HAND,
-            WARNING
-        }
-
-        public enum ProgressBarOrientation
-        {
-            VERTICAL,
-            HORIZONTAL
-        }
-
-        public enum RightToLeftSupport
-        {
-            LEFTTORIGHT,
-            RIGHTTOLEFT
-        }
-
-        public enum ActionType
-        {
-            LAUCHPROCESS,
-            OPEN
-        }
-        #endregion
+        #endregion        
 
         #region Variables
+        private ActionButtonLocation _buttonLocation;
         private ActionType _actionType;
         private bool _fade, _showActionButton;
         private string _headerText, _contentText, _processName;
@@ -349,11 +186,14 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         private Timer _timer;
         private SoundPlayer _player;
         private IconType _iconType;
+        private IToastNotification _toastNotificationOptions;
         private RightToLeftSupport _rightToLeftSupport;
         private PaletteDrawBorders _drawBorders;
         #endregion
 
-        #region Properties        
+        #region Properties       
+        public ActionButtonLocation ButtonLocation { get => _buttonLocation; set => _buttonLocation = value; }
+
         /// <summary>
         /// Gets or sets the type of the action.
         /// </summary>
@@ -450,6 +290,17 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         /// The right to left support.
         /// </value>
         public RightToLeftSupport RightToLeft { get => _rightToLeftSupport; set { _rightToLeftSupport = value; Invalidate(); } }
+        #endregion
+
+        #region Custom Events
+
+        #region Dismiss
+        public delegate void DismissEventHandler(EventArgs e);
+
+        public event DismissEventHandler Dismiss;
+
+        protected virtual void OnDismiss(EventArgs e) => Dismiss?.Invoke(e);
+        #endregion
         #endregion
 
         #region Constructors
@@ -614,8 +465,10 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         /// <param name="actionType">Type of the action.</param>
         /// <param name="processName">Name of the process.</param>
         /// <param name="showControlBox">if set to <c>true</c> [show control box].</param>
-        public KryptonToastNotificationWindow(bool fade, Image image, string headerText, string contentText, bool showActionButton, ActionType actionType, string processName, bool showControlBox = true) : this(fade, image, headerText, contentText, showControlBox)
+        public KryptonToastNotificationWindow(bool fade, Image image, string headerText, string contentText, ActionButtonLocation actionButtonLocation, bool showActionButton, ActionType actionType, string processName, bool showControlBox = true) : this(fade, image, headerText, contentText, showControlBox)
         {
+            ButtonLocation = actionButtonLocation;
+
             ShowActionButton = showActionButton;
 
             Action = actionType;
@@ -635,7 +488,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         /// <param name="processName">Name of the process.</param>
         /// <param name="showControlBox">if set to <c>true</c> [show control box].</param>
         /// <param name="cornerRadius">The corner radius.</param>
-        public KryptonToastNotificationWindow(bool fade, Image image, string headerText, string contentText, bool showActionButton, ActionType actionType, string processName, bool showControlBox = true, int cornerRadius = -1) : this(fade, image, headerText, contentText, showControlBox)
+        public KryptonToastNotificationWindow(bool fade, Image image, string headerText, string contentText, ActionButtonLocation actionButtonLocation, bool showActionButton, ActionType actionType, string processName, bool showControlBox = true, int cornerRadius = -1) : this(fade, image, headerText, contentText, actionButtonLocation, showActionButton, actionType, processName, showControlBox)
         {
             CornerRadius = cornerRadius;
         }
@@ -651,7 +504,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         /// <param name="showControlBox">if set to <c>true</c> [show control box].</param>
         /// <param name="cornerRadius">The corner radius.</param>
         /// <param name="borders">The borders.</param>
-        public KryptonToastNotificationWindow(bool fade, Image image, string headerText, string contentText, bool showActionButton, ActionType actionType, string processName, bool showControlBox = true, int cornerRadius = -1, PaletteDrawBorders borders = PaletteDrawBorders.All) : this(fade, image, headerText, contentText, showControlBox)
+        public KryptonToastNotificationWindow(bool fade, Image image, string headerText, string contentText, ActionButtonLocation actionButtonLocation, bool showActionButton, ActionType actionType, string processName, bool showControlBox = true, int cornerRadius = -1, PaletteDrawBorders borders = PaletteDrawBorders.All) : this(fade, image, headerText, contentText, actionButtonLocation, showActionButton, actionType, processName, showControlBox)
         {
             PaletteDrawBorders = borders;
         }
@@ -722,9 +575,21 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
                 pbxIcon.Image = IconImage;
             }
 
+            switch (ButtonLocation)
+            {
+                case ActionButtonLocation.LEFT:
+                    UtilityMethods.ChangeControlLocation(kbtneLaunch, new Point(12, 8));
+                    break;
+                case ActionButtonLocation.RIGHT:
+                    UtilityMethods.ChangeControlLocation(kbtneLaunch, new Point(318, 8));
+                    break;
+            }
+
             kwlTitle.Text = HeaderText;
 
-            klblContent.Text = ContentText;
+            kwlContent.Text = ContentText;
+
+            kbtneLaunch.Visible = ShowActionButton;
 
             if (Seconds != 0)
             {
@@ -760,6 +625,19 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             }
 
             base.Show();
+        }
+
+        /// <summary>Displays the notification.</summary>
+        public void DisplayNotification()
+        {
+            ImplementInterface(ButtonLocation, Action, Fade, ShowActionButton, SoundPath, SoundStream, HeaderText, ContentText, ProcessName, IconImage, Seconds, CornerRadius, PaletteDrawBorders, Type, RightToLeft);
+
+            // TODO: Complete code
+        }
+
+        private void ImplementInterface(ActionButtonLocation buttonLocation, ActionType action, bool fade, bool showActionButton, string soundPath, Stream soundStream, string headerText, string contentText, string processName, Image iconImage, int seconds, int cornerRadius, PaletteDrawBorders paletteDrawBorders, IconType type, RightToLeftSupport rightToLeft)
+        {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -871,7 +749,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
             kwlTitle.Location = new Point(147, 12);
 
-            klblContent.Location = new Point(147, 77);
+            kwlContent.Location = new Point(147, 77);
 
             //klblContent.RightToLeft = RightToLeft.
 
@@ -915,7 +793,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         {
             kwlTitle.Size = headerLabelSize;
 
-            klblContent.Size = contentLabelSize;
+            kwlContent.Size = contentLabelSize;
 
             kbtneLaunch.Location = actionButtonLocation;
 
@@ -1009,5 +887,14 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             }
         }
         #endregion
+        public KryptonForm BaseWindow { get => this; }
+        public KryptonPanel ContentPanel { get => kpnlContent; }
+        public KryptonPanel ButtonPanel { get => kpnlButtons; }
+        public KryptonWrapLabel HeaderLabel { get => kwlTitle; }
+        public KryptonWrapLabel ContentLabel { get => kwlContent; }
+        public KryptonButton ActionButton { get => kbtneLaunch; }
+        public KryptonButton DismissButton { get => kbtneDismiss; }
+        public Panel SplitterPanel { get => pnlSplitter; }
+        public PictureBox IconBox { get => pbxIcon; }
     }
 }

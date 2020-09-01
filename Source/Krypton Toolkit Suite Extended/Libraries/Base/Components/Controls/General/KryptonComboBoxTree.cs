@@ -27,11 +27,11 @@ namespace Krypton.Toolkit.Suite.Extended.Base
 
         #region Private Fields
         private KryptonPanel pnlBack;
-        private Panel pnlTree;
+        private KryptonPanel pnlTree;
         private KryptonComboBox combobox;
         private KryptonTreeView tvTreeView;
         private LabelEx lblSizingGrip;
-        private Form frmTreeView;
+        private KryptonForm frmTreeView;
 
         private string _branchSeparator;
         private bool _absoluteChildrenSelectableOnly;
@@ -123,12 +123,12 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             tvTreeView.LostFocus += new EventHandler(TreeViewLostFocus);
             //tvTreeView.Scrollable = false;
 
-            frmTreeView = new Form();
+            frmTreeView = new KryptonForm();
             frmTreeView.FormBorderStyle = FormBorderStyle.None;
             frmTreeView.StartPosition = FormStartPosition.Manual;
             frmTreeView.ShowInTaskbar = false;
 
-            pnlTree = new Panel();
+            pnlTree = new KryptonPanel();
             pnlTree.Dock = DockStyle.Fill;
             pnlTree.BorderStyle = BorderStyle.FixedSingle;
             pnlTree.BackColor = Color.White;

@@ -1,10 +1,12 @@
 ﻿using System.ComponentModel;
 using System.Diagnostics;
+using System.Drawing;
 using System.Security.Principal;
 using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Common
 {
+    /// <summary>Provides useful methods for specified tasks.</summary>
     public class UtilityMethods
     {
         #region Constructor
@@ -19,7 +21,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
 
         #region Methods
         /// <summary>
-        /// Elevates the application to use administrative privileges. To be used with <see cref="ExtendedToolkit.Controls.KryptonUACElevatedButton"/> or <see cref="ExtendedToolkit.ToolstripControls.ToolStripMenuItemUACSheld"/> button click.
+        /// Elevates the application to use administrative privileges. To be used with <see cref="Krypton.Toolkit.Suite.Extended.Base.KryptonUACElevatedButton"/> or <see cref="Krypton.Toolkit.Suite.Extended.Tool.Strip.Items.ToolStripMenuItemUACSheld"/> button click.
         /// </summary>
         /// <param name="processName">The process name that you wish to elevate.</param>
         public static void ElevateProcessWithAdministrativeRights(string processName)
@@ -71,6 +73,23 @@ namespace Krypton.Toolkit.Suite.Extended.Common
             {
                 return false;
             }
+        }
+
+        /// <summary>Changes the control location.</summary>
+        /// <param name="control">The control.</param>
+        /// <param name="location">The location.</param>
+        public static void ChangeControlLocation(Control control, Point location) => control.Location = location;
+
+        /// <summary>
+        /// Bitmaps to image.
+        /// </summary>
+        /// <param name="bitmap">The bitmap.</param>
+        /// <returns></returns>
+        public static Image BitmapToImage(Bitmap bitmap)
+        {
+            Image tmp = new Bitmap(bitmap);
+
+            return tmp;
         }
         #endregion
     }

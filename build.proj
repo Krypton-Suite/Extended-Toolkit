@@ -40,12 +40,17 @@
 		<Target Name="PackLite">
 		<ItemGroup>
 			<Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\*\*.csproj" />
+			<Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Shared\*\*.csproj" />
 		</ItemGroup>
 		<ItemGroup>
 			<NugetAssets Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\*\obj\*.json" />
 			<NugetAssets Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\*\obj\*.cache" />
 			<NugetAssets Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\*\obj\*.g.targets" />
 			<NugetAssets Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\*\obj\*.g.props" />
+			<NugetAssets Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Shared\*\obj\*.json" />
+			<NugetAssets Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Shared\*\obj\*.cache" />
+			<NugetAssets Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Shared\*\obj\*.g.targets" />
+			<NugetAssets Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Shared\*\obj\*.g.props" />
 		</ItemGroup>
 		<MSBuild Projects="@(Projects)" Properties="Configuration=$(Configuration);TFMs=all" Targets="Clean" />
 		<Delete Files="@(NugetAssets)" />
@@ -56,12 +61,17 @@
 	 <Target Name="PackAll">
 		<ItemGroup>
 			<Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\*\*.csproj" />
+			<Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Shared\*\*.csproj" />
 		</ItemGroup>
 		<ItemGroup>
 			<NugetAssets Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\*\obj\*.json" />
 			<NugetAssets Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\*\obj\*.cache" />
 			<NugetAssets Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\*\obj\*.g.targets" />
 			<NugetAssets Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\*\obj\*.g.props" />
+			<NugetAssets Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Shared\*\obj\*.json" />
+			<NugetAssets Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Shared\*\obj\*.cache" />
+			<NugetAssets Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Shared\*\obj\*.g.targets" />
+			<NugetAssets Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Shared\*\obj\*.g.props" />
 		</ItemGroup>
 		<MSBuild Projects="@(Projects)" Properties="Configuration=$(Configuration);TFMs=all" Targets="Clean" />
 		<Delete Files="@(NugetAssets)" />

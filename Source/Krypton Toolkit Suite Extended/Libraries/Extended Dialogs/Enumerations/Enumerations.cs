@@ -1,9 +1,13 @@
 ﻿namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
+    /// <summary>The chosen input box icon.</summary>
     public enum InputBoxIcon
     {
+        /// <summary>A user defined icon.</summary>
         CUSTOM,
+        /// <summary>A ok icon.</summary>
         OK,
+        /// <summary>A error icon.</summary>
         ERROR,
         EXCLAMATION,
         INFORMATION,
@@ -125,5 +129,52 @@
         BUTTONTHREE = 2,
         BUTTONFOUR = 3,
         BUTTONFIVE = 4
+    }
+
+    public enum IconType
+    {
+        CUSTOM,
+        OK,
+        ERROR,
+        EXCLAMATION,
+        INFORMATION,
+        QUESTION,
+        NOTHING,
+        NONE,
+        STOP,
+        HAND,
+        WARNING
+    }
+
+    public enum ProgressBarOrientation
+    {
+        VERTICAL,
+        HORIZONTAL
+    }
+
+    public enum RightToLeftSupport
+    {
+        LEFTTORIGHT,
+        RIGHTTOLEFT
+    }
+
+    public enum ActionType
+    {
+        DEFAULT,
+        LAUCHPROCESS,
+        OPEN
+    }
+
+    public enum ActionButtonLocation
+    {
+        LEFT,
+        RIGHT
+    }
+
+    public enum DefaultNotificationButton
+    {
+        ACTIONBUTTON,
+        DISMISSBUTTON,
+        NONE
     }
 }

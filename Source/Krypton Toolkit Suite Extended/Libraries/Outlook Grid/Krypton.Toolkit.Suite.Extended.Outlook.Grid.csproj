@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <LangVersion>8.0</LangVersion>
-    <TargetFrameworks>net45;netcoreapp3.1;netcoreapp5.0</TargetFrameworks>
+    <TargetFrameworks>net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;netcoreapp5.0</TargetFrameworks>
     <TargetFrameworks Condition="'$(TFMs)' == 'all'">net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;netcoreapp5.0</TargetFrameworks>
     <RootNamespace>Krypton.Toolkit.Suite.Extended.Outlook.Grid</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
@@ -15,21 +15,37 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <!--<PackageId>Krypton.Toolkit.Extended.Outlook.Grid.Canary</PackageId>-->
-    <PackageId>Krypton.Toolkit.Suite.Extended.Outlook.Grid</PackageId>
-    <PackageOutputPath>..\..\..\..\Bin\NuGet</PackageOutputPath>
-    <PackagePath></PackagePath>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Version>5.550.2008</Version>
     <Authors>Peter William Wagner &amp; Simon Coghlan, Thomas Bolon, JDH Software</Authors>
     <Description>A Data Grid View with multi sorting and multi grouping abilities.</Description>
     <Copyright>Copyright © JDH Software 2013-2018. Then modifications by Peter Wagner (aka Wagnerp) &amp; Simon Coghlan (aka Smurf-IV) 2020. All rights reserved.</Copyright>
     <RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
   </PropertyGroup>
 
+  <!--Stable package configuration-->
+  <PropertyGroup>
+    <PackageId>Krypton.Toolkit.Suite.Extended.Outlook.Grid</PackageId>
+    <PackageOutputPath>..\..\..\..\Bin\NuGet\Stable</PackageOutputPath>
+    <PackageIconUrl>https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/Assets/PNG/Main%20Icon/64%20x%2064/Main%20Icon%2064%20x%2064.png</PackageIconUrl>
+  </PropertyGroup>
+
+  <!--Canary package configuration-
+  <PropertyGroup>
+    <PackageId>Krypton.Toolkit.Suite.Extended.Outlook.Grid.Canary</PackageId>
+    <PackageOutputPath>..\..\..\..\Bin\NuGet\Canary</PackageOutputPath>
+    <PackageIconUrl>https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/Assets/PNG/Main%20Icon/64%20x%2064/Main%20Icon%2064%20x%2064%20Canary.png</PackageIconUrl>
+  </PropertyGroup>-->
+
+  <!--Version configuration-->
+  <PropertyGroup>
+    <AssemblyVersion>5.550.2009</AssemblyVersion>
+    <FileVersion>5.550.2009</FileVersion>
+    <Version>5.550.2009</Version>
+  </PropertyGroup>
+
   <ItemGroup>
-    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2006.3" />
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2008" />
   </ItemGroup>
 
   <ItemGroup>
