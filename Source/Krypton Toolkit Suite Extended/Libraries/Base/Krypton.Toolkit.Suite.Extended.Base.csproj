@@ -2,10 +2,11 @@
 
   <PropertyGroup>
     <LangVersion>8.0</LangVersion>
-    <TargetFrameworks>net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;netcoreapp5.0</TargetFrameworks>
-    <TargetFrameworks Condition="'$(TFMs)' == 'all'">net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;netcoreapp5.0</TargetFrameworks>    
+    <TargetFrameworks>net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;net5.0</TargetFrameworks>
+    <TargetFrameworks Condition="'$(TFMs)' == 'all'">net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;net5.0</TargetFrameworks>    
     <RootNamespace>Krypton.Toolkit.Suite.Extended.Base</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
+    <AnalysisLevel>latest</AnalysisLevel>
   </PropertyGroup>
 
   <!--Basic package configuration-->
@@ -22,13 +23,14 @@
     <PackageId>Krypton.Toolkit.Suite.Extended.Base</PackageId>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Stable</PackageOutputPath>
     <PackageIconUrl>https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/Assets/PNG/Main%20Icon/64%20x%2064/Main%20Icon%2064%20x%2064.png</PackageIconUrl>
+    <PackageIcon>Icon Stable.png</PackageIcon>
   </PropertyGroup>-->
 
   <!--Canary package configuration-->
   <PropertyGroup>
     <PackageId>Krypton.Toolkit.Suite.Extended.Base.Canary</PackageId>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Canary</PackageOutputPath>
-    <PackageIconUrl>https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/Assets/PNG/Main%20Icon/64%20x%2064/Main%20Icon%2064%20x%2064%20Canary.png</PackageIconUrl>
+    <PackageIcon>Icon Canary.png</PackageIcon>
   </PropertyGroup>
   
   <!--Version configuration-->
@@ -89,5 +91,9 @@
     <NoWarn>NU1701</NoWarn>
     <PackageLicenseFile></PackageLicenseFile>
   </PropertyGroup>
+  
+  <ItemGroup>
+    <None Include="Icon Canary.png" Pack="true" PackagePath="\" />
+  </ItemGroup>
 
 </Project>
