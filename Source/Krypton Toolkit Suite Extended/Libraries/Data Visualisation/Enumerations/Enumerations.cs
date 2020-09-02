@@ -26,4 +26,24 @@
         STICK,
         LINE
     }
+
+    public enum Cursor
+    {
+        ARROW,
+        CROSSHAIR,
+        HAND,
+        WE,
+        NS,
+        ALL
+    }
+
+    public enum DateTimeUnit
+    {
+        YEAR,
+        MONTH,
+        DAY,
+        HOUR,
+        MINUTE,
+        SECOND
+    }
 }
