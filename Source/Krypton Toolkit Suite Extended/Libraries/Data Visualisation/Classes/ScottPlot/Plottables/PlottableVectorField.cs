@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
-using System.Text;
-using ScottPlot.Config;
-using ScottPlot.Drawing;
-using ScottPlot.Statistics;
 
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
 {
@@ -18,13 +13,13 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
         public double[] ys;
         public string label;
         public Color color;
-        private Colormap colormap;
+        private Colourmap colormap;
 
         private Pen pen;
         private Color[] arrowColors;
         private double scaleFactor;
 
-        public PlottableVectorField(Vector2[,] vectors, double[] xs, double[] ys, string label, Color color, Colormap colormap, double scaleFactor)
+        public PlottableVectorField(Vector2[,] vectors, double[] xs, double[] ys, string label, Color color, Colourmap colormap, double scaleFactor)
         {
             //the magnitude squared is faster to compute than the magnitude
             double minMagnitudeSquared = vectors[0, 0].Length();
@@ -62,7 +57,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
             if (colormap != null)
             {
                 double[] flattenedIntensities = intensities.Cast<double>().ToArray();
-                arrowColors = Colormap.GetColors(flattenedIntensities, colormap);
+                arrowColors = Colourmap.GetColours(flattenedIntensities, colormap);
             }
 
             this.vectors = vectors;

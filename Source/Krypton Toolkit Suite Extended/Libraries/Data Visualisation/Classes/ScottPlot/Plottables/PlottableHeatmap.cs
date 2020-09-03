@@ -1,17 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
-using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Transactions;
-using ScottPlot.Config;
-using ScottPlot.Drawing;
 
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
 {
@@ -22,7 +14,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
         private int width;
         private int height;
         private double[] intensitiesNormalized;
-        private Colormap colorMap;
+        private Colourmap colorMap;
         public string label;
         private double[] axisOffsets;
         private double[] axisMultipliers;
@@ -40,7 +32,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
         private SolidBrush brush;
         private Pen pen;
 
-        public PlottableHeatmap(double[,] intensities, Colormap colormap, string label, double[] axisOffsets, double[] axisMultipliers, double? scaleMin, double? scaleMax, double? transparencyThreshold, Bitmap backgroundImage, bool displayImageAbove, bool drawAxisLabels)
+        public PlottableHeatmap(double[,] intensities, Colourmap colormap, string label, double[] axisOffsets, double[] axisMultipliers, double? scaleMin, double? scaleMax, double? transparencyThreshold, Bitmap backgroundImage, bool displayImageAbove, bool drawAxisLabels)
         {
             this.width = intensities.GetLength(1);
             this.height = intensities.GetLength(0);
@@ -73,13 +65,13 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
 
             intensitiesNormalized = Normalize(intensitiesFlattened, null, null, scaleMin, scaleMax);
 
-            int[] flatARGB = Colormap.GetRGBAs(intensitiesNormalized, colormap, minimumIntensity: transparencyThreshold ?? 0);
+            int[] flatARGB = Colourmap.GetRGBAs(intensitiesNormalized, colormap, minimumIntensity: transparencyThreshold ?? 0);
 
             bmp = new Bitmap(width, height, PixelFormat.Format32bppArgb);
             scale = new Bitmap(1, 256, PixelFormat.Format32bppArgb);
 
             double[] normalizedValues = Normalize(Enumerable.Range(0, scale.Height).Select(i => (double)i).Reverse().ToArray(), null, null, scaleMin, scaleMax);
-            int[] scaleRGBA = Colormap.GetRGBAs(normalizedValues, colormap);
+            int[] scaleRGBA = Colourmap.GetRGBAs(normalizedValues, colormap);
 
             Rectangle rect = new Rectangle(0, 0, bmp.Width, bmp.Height);
             Rectangle rectScale = new Rectangle(0, 0, scale.Width, scale.Height);

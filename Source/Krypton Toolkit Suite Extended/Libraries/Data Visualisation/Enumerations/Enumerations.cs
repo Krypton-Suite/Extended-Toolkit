@@ -46,4 +46,84 @@
         MINUTE,
         SECOND
     }
+
+    public enum Edge
+    {
+        Left,
+        Right,
+        Bottom,
+        Top
+    }
+
+    public enum Orientation
+    {
+        Horizontal,
+        Vertical
+    }
+
+    public enum Direction { W, NW, N, NE, E, SE, S, SW, C }
+
+    public enum HorizontalAlignment { Left, Right, Center }
+
+    public enum VerticalAlignment { Upper, Lower, Center }
+
+    public enum legendLocation
+    {
+        none,
+        upperLeft,
+        upperRight,
+        upperCenter,
+        middleLeft,
+        middleRight,
+        lowerLeft,
+        lowerRight,
+        lowerCenter,
+    }
+    public enum shadowDirection
+    {
+        none,
+        upperLeft,
+        upperRight,
+        lowerLeft,
+        lowerRight,
+    }
+
+    public enum Style
+    {
+        Default,
+        Control,
+        Blue1,
+        Blue2,
+        Blue3,
+        Light1,
+        Light2,
+        Gray1,
+        Gray2,
+        Black,
+        Seaborn
+    }
+
+    public enum TextAlignment
+    {
+        // TODO: capitolize these in ScottPlot 4.1
+        upperLeft,
+        upperRight,
+        upperCenter,
+        middleLeft,
+        middleRight,
+        lowerLeft,
+        lowerRight,
+        lowerCenter,
+        middleCenter
+    }
+
+    public enum LineStyle
+    {
+        None,
+        Solid,
+        Dash,
+        DashDot,
+        DashDotDot,
+        Dot
+    };
 }
