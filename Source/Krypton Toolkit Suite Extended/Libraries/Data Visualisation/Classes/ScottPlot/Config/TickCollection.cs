@@ -41,7 +41,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
             SizeF max = new SizeF(0, 0);
             foreach (string label in labels)
             {
-                SizeF tickLabelSize = Drawing.GDI.MeasureString(settings.gfxData, label, settings.ticks.font);
+                SizeF tickLabelSize = GDI.MeasureString(settings.gfxData, label, settings.ticks.font);
                 max.Width = Math.Max(max.Width, tickLabelSize.Width);
                 max.Height = Math.Max(max.Height, tickLabelSize.Height);
             }
@@ -74,18 +74,18 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
             int tickCount;
 
             // predict maxLabelSize up front using predetermined label sizes
-            maxLabelSize = Drawing.GDI.MeasureString(settings.gfxData, "2019-08-20\n8:42:17 PM", settings.ticks.font);
+            maxLabelSize = GDI.MeasureString(settings.gfxData, "2019-08-20\n8:42:17 PM", settings.ticks.font);
 
             if (verticalAxis)
             {
-                low = settings.axes.y.min - settings.yAxisUnitsPerPixel; // add an extra pixel to capture the edge tick
-                high = settings.axes.y.max + settings.yAxisUnitsPerPixel; // add an extra pixel to capture the edge tick
+                low = settings.axes.y.Min - settings.yAxisUnitsPerPixel; // add an extra pixel to capture the edge tick
+                high = settings.axes.y.Max + settings.yAxisUnitsPerPixel; // add an extra pixel to capture the edge tick
                 tickCount = (int)(settings.dataSize.Height / maxLabelSize.Height);
             }
             else
             {
-                low = settings.axes.x.min - settings.xAxisUnitsPerPixel; // add an extra pixel to capture the edge tick
-                high = settings.axes.x.max + settings.xAxisUnitsPerPixel; // add an extra pixel to capture the edge tick
+                low = settings.axes.x.Min - settings.xAxisUnitsPerPixel; // add an extra pixel to capture the edge tick
+                high = settings.axes.x.Max + settings.xAxisUnitsPerPixel; // add an extra pixel to capture the edge tick
                 tickCount = (int)(settings.dataSize.Width / maxLabelSize.Width);
             }
 
@@ -124,22 +124,22 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
         {
             // predict maxLabelSize up front using predetermined label sizes
             string longestLabel = (dateFormat) ? "2019-08-20\n20:42:17" : "-8888";
-            maxLabelSize = Drawing.GDI.MeasureString(settings.gfxData, longestLabel, settings.ticks.font);
+            maxLabelSize = GDI.MeasureString(settings.gfxData, longestLabel, settings.ticks.font);
 
             double low, high, tickSpacing;
             int maxTickCount;
 
             if (verticalAxis)
             {
-                low = settings.axes.y.min - settings.yAxisUnitsPerPixel; // add an extra pixel to capture the edge tick
-                high = settings.axes.y.max + settings.yAxisUnitsPerPixel; // add an extra pixel to capture the edge tick
+                low = settings.axes.y.Min - settings.yAxisUnitsPerPixel; // add an extra pixel to capture the edge tick
+                high = settings.axes.y.Max + settings.yAxisUnitsPerPixel; // add an extra pixel to capture the edge tick
                 maxTickCount = (int)(settings.dataSize.Height / maxLabelSize.Height);
                 tickSpacing = (settings.ticks.manualSpacingY != 0) ? settings.ticks.manualSpacingY : GetIdealTickSpacing(low, high, maxTickCount);
             }
             else
             {
-                low = settings.axes.x.min - settings.xAxisUnitsPerPixel; // add an extra pixel to capture the edge tick
-                high = settings.axes.x.max + settings.xAxisUnitsPerPixel; // add an extra pixel to capture the edge tick
+                low = settings.axes.x.Min - settings.xAxisUnitsPerPixel; // add an extra pixel to capture the edge tick
+                high = settings.axes.x.Max + settings.xAxisUnitsPerPixel; // add an extra pixel to capture the edge tick
                 maxTickCount = (int)(settings.dataSize.Width / maxLabelSize.Width * 1.2);
                 tickSpacing = (settings.ticks.manualSpacingX != 0) ? settings.ticks.manualSpacingX : GetIdealTickSpacing(low, high, maxTickCount);
             }

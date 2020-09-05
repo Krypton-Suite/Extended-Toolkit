@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ScottPlot.Config;
 
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
 {
@@ -37,7 +32,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
             return $"PlottableOHLC with {GetPointCount()} points";
         }
 
-        public override Config.AxisLimits2D GetLimits()
+        public override AxisLimits2D GetLimits()
         {
             double[] limits = new double[4];
             limits[0] = ohlcs[0].time;
@@ -63,7 +58,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
                 limits[1] = ohlcs.Length - 1;
             }
 
-            return new Config.AxisLimits2D(limits);
+            return new AxisLimits2D(limits);
         }
 
         public override void Render(Settings settings)

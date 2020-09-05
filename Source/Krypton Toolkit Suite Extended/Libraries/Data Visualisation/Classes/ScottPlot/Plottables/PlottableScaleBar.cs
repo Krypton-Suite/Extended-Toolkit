@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Text;
-using ScottPlot.Config;
+﻿using System.Drawing;
 
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
 {
@@ -62,12 +58,12 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
             using (var brush = new SolidBrush(color))
             using (var pen = new Pen(color, (float)thickness))
             {
-                PointF cornerPoint = settings.GetPixel(settings.axes.x.max, settings.axes.y.min);
+                PointF cornerPoint = settings.GetPixel(settings.axes.x.Max, settings.axes.y.Min);
                 cornerPoint.X -= (float)padPx;
                 cornerPoint.Y -= (float)padPx;
 
-                var xLabelSize = Drawing.GDI.MeasureString(settings.gfxData, labelX, font);
-                var yLabelSize = Drawing.GDI.MeasureString(settings.gfxData, labelY, font);
+                var xLabelSize = GDI.MeasureString(settings.gfxData, labelX, font);
+                var yLabelSize = GDI.MeasureString(settings.gfxData, labelY, font);
                 cornerPoint.X -= yLabelSize.Width * 1.2f;
                 cornerPoint.Y -= yLabelSize.Height;
 

@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Text;
-using ScottPlot.Drawing;
-using ScottPlot.Statistics;
 
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
 {

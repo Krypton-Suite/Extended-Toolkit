@@ -1,13 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ScottPlot.Config;
-using ScottPlot.Drawing;
-using ScottPlot.plottables;
 
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
 {

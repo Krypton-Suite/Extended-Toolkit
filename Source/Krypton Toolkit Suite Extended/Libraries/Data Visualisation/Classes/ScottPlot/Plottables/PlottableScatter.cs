@@ -4,9 +4,6 @@ using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using ScottPlot.Config;
-using ScottPlot.Drawing;
 
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
 {
@@ -86,7 +83,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
             return $"PlottableScatter{label} with {GetPointCount()} points";
         }
 
-        public override Config.AxisLimits2D GetLimits()
+        public override AxisLimits2D GetLimits()
         {
             double[] limits = new double[4];
 
@@ -127,7 +124,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
             }
 
             // TODO: use features of 2d axis
-            return new Config.AxisLimits2D(limits);
+            return new AxisLimits2D(limits);
         }
 
         protected virtual void DrawPoint(Settings settings, List<PointF> points, int i)
@@ -226,7 +223,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
         public override LegendItem[] GetLegendItems()
         {
             // TODO: determine how to respect line width in legend
-            var singleLegendItem = new Config.LegendItem(label, color, lineStyle, lineWidth, markerShape, markerSize);
+            var singleLegendItem = new LegendItem(label, color, lineStyle, lineWidth, markerShape, markerSize);
             return new LegendItem[] { singleLegendItem };
         }
     }

@@ -80,7 +80,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
             return bytes;
         }
 
-        [Obsolete("use ScottPlot.Config.Fonts.GetValidFontName()", error: true)]
+        [Obsolete("use ScottPlot.Fonts.GetValidFontName()", error: true)]
         public static string VerifyFont(string fontName)
         {
             return null;

@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using ScottPlot.Config;
-using ScottPlot.Drawing;
 
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
 {
@@ -65,7 +61,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
             return $"PlottableErrorBars{label} with {GetPointCount()} points";
         }
 
-        public override Config.AxisLimits2D GetLimits()
+        public override AxisLimits2D GetLimits()
         {
             double xMin = double.PositiveInfinity;
             double yMin = double.PositiveInfinity;
@@ -112,7 +108,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
                     yMax = Math.Max(yMax, ys[i] + yPositiveError[i]);
             }
 
-            return new Config.AxisLimits2D(new double[] { xMin, xMax, yMin, yMax });
+            return new AxisLimits2D(new double[] { xMin, xMax, yMin, yMax });
         }
 
 
@@ -157,7 +153,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
 
         public override LegendItem[] GetLegendItems()
         {
-            var singleLegendItem = new Config.LegendItem(label, color, markerShape: MarkerShape.none);
+            var singleLegendItem = new LegendItem(label, color, markerShape: MarkerShape.none);
             return new LegendItem[] { singleLegendItem };
         }
     }

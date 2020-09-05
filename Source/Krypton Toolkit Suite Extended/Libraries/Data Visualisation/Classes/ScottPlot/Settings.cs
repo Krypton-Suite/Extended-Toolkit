@@ -42,8 +42,8 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
         public TextLabel xLabel = new TextLabel() { fontSize = 16 };
         public TextLabel yLabel = new TextLabel() { fontSize = 16 };
         public Misc misc = new Misc();
-        //public Config.Benchmark benchmark = new Config.Benchmark();
-        //public Config.Grid grid = new Config.Grid();
+        //public Benchmark benchmark = new Benchmark();
+        //public Grid grid = new Grid();
         public Axes axes = new Axes();
         public readonly Layout layout = new Layout();
         public Ticks ticks = new Ticks();

@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Text;
-using ScottPlot.Config;
-using ScottPlot.Drawing;
 
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
 {
@@ -45,8 +41,8 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
         {
             PointF pt1, pt2;
 
-            pt1 = settings.GetPixel(position, settings.axes.y.min);
-            pt2 = settings.GetPixel(position, settings.axes.y.max);
+            pt1 = settings.GetPixel(position, settings.axes.y.Min);
+            pt2 = settings.GetPixel(position, settings.axes.y.Max);
 
             settings.gfxData.DrawLine(pen, pt1, pt2);
         }
@@ -86,7 +82,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
 
         public override LegendItem[] GetLegendItems()
         {
-            var singleLegendItem = new Config.LegendItem(label, color, lineStyle, pen.Width, MarkerShape.none);
+            var singleLegendItem = new LegendItem(label, color, lineStyle, pen.Width, MarkerShape.none);
             return new LegendItem[] { singleLegendItem };
         }
     }

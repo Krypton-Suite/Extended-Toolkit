@@ -4,8 +4,6 @@ using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
-using ScottPlot.Config;
-using ScottPlot.Drawing;
 
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
 {
@@ -78,7 +76,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
             return $"PlottableSignal{label} with {GetPointCount()} points";
         }
 
-        public override Config.AxisLimits2D GetLimits()
+        public override AxisLimits2D GetLimits()
         {
             double yMin = ys[0];
             double yMax = ys[0];
@@ -96,7 +94,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
             limits[3] = yMax + yOffset;
 
             // TODO: use features of 2d axis
-            return new Config.AxisLimits2D(limits);
+            return new AxisLimits2D(limits);
         }
 
         private void RenderSingleLine(Settings settings)
@@ -308,9 +306,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
             brush = new SolidBrush(color);
 
             double dataSpanUnits = ys.Length * samplePeriod;
-            double columnSpanUnits = settings.axes.x.span / settings.dataSize.Width;
+            double columnSpanUnits = settings.axes.x.Span / settings.dataSize.Width;
             double columnPointCount = (columnSpanUnits / dataSpanUnits) * ys.Length;
-            double offsetUnits = settings.axes.x.min - xOffset;
+            double offsetUnits = settings.axes.x.Min - xOffset;
             double offsetPoints = offsetUnits / samplePeriod;
             int visibleIndex1 = (int)(offsetPoints);
             int visibleIndex2 = (int)(offsetPoints + columnPointCount * (settings.dataSize.Width + 1));
@@ -363,7 +361,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
 
         public override LegendItem[] GetLegendItems()
         {
-            var singleLegendItem = new Config.LegendItem(label, color)
+            var singleLegendItem = new LegendItem(label, color)
             {
                 lineStyle = lineStyle,
                 lineWidth = lineWidth,

@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Drawing;
-using System.Text;
-using ScottPlot.Config;
 
-namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.plottables
+namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
 {
     // This class is intended for experimentation with new tick-determination systems
     public class ExperimentalTicks : Plottable
@@ -25,8 +22,8 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.plottables
             float pixelYbot = settings.dataOrigin.Y + settings.dataSize.Height;
 
             // these are useful coordinate values
-            double coordinateYtop = settings.axes.y.max;
-            double coordinateYbot = settings.axes.y.min;
+            double coordinateYtop = settings.axes.y.Max;
+            double coordinateYbot = settings.axes.y.Min;
 
             // Calculate where ticks should be.
             // This is may be easier with private static helper classes or structs.

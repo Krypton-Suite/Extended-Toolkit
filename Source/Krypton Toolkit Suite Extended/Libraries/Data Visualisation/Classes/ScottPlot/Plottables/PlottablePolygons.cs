@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using ScottPlot.Config;
 
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
 {
@@ -139,10 +138,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
             {
                 polysToRender = polys.Where(poly => poly
                        .Any(p =>
-                                 p.x >= settings.axes.limits[0]
-                              && p.x <= settings.axes.limits[1]
-                              && p.y >= settings.axes.limits[2]
-                              && p.y <= settings.axes.limits[3]
+                                 p.x >= settings.axes.Limits[0]
+                              && p.x <= settings.axes.Limits[1]
+                              && p.y >= settings.axes.Limits[2]
+                              && p.y <= settings.axes.Limits[3]
                                ));
             }
             else

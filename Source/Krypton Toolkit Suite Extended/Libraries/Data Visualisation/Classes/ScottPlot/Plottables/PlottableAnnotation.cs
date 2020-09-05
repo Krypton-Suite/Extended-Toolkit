@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Text;
-using ScottPlot.Config;
+﻿using System.Drawing;
 
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
 {
@@ -67,7 +63,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
             if (label is null)
                 return;
 
-            SizeF size = Drawing.GDI.MeasureString(settings.gfxData, label, font);
+            SizeF size = GDI.MeasureString(settings.gfxData, label, font);
 
             double x = (xPixel >= 0) ? xPixel : settings.bmpData.Width + xPixel - size.Width;
             double y = (yPixel >= 0) ? yPixel : settings.bmpData.Height + yPixel - size.Height;

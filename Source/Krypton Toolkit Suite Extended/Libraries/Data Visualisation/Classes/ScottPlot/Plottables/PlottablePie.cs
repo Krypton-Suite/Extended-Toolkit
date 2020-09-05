@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using ScottPlot.Config;
 
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
 {
@@ -64,7 +61,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
             int sliceOutlineWidth = 0;
             if (explodedChart)
             {
-                pen.Color = settings.DataBackground.Color; // TODO: will fail if data background is transparent
+                pen.Color = settings.DataBackground.Colour; // TODO: will fail if data background is transparent
                 outlineWidth = 20;
                 sliceOutlineWidth = 1;
             }
@@ -73,7 +70,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
             double centreX = limits.xCenter;
             double centreY = limits.yCenter;
             float diameterPixels = .9f * Math.Min(settings.dataSize.Width, settings.dataSize.Height);
-            string fontName = Config.Fonts.GetSansFontName();
+            string fontName = Fonts.GetSansFontName();
             float fontSize = 12;
 
             // record label details and draw them after slices to prevent cover-ups

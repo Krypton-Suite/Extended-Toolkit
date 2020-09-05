@@ -58,7 +58,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
         {
             get
             {
-                return Drawing.GDI.MeasureString(gfx, text, font);
+                return GDI.MeasureString(gfx, text, font);
             }
         }
 

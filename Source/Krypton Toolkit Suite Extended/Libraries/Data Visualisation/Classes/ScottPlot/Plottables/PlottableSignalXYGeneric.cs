@@ -1,6 +1,4 @@
-﻿using ScottPlot.Config;
-using ScottPlot.MinMaxSearchStrategies;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -45,8 +43,8 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
 
         public IEnumerable<PointF> ProcessInterval(int x, int from, int length, Settings settings)
         {
-            TX start = (TX)Convert.ChangeType(settings.axes.x.min + settings.axes.x.span / settings.dataSize.Width * x, typeof(TX));
-            TX end = (TX)Convert.ChangeType(settings.axes.x.min + settings.axes.x.span / settings.dataSize.Width * (x + 1), typeof(TX));
+            TX start = (TX)Convert.ChangeType(settings.axes.x.Min + settings.axes.x.Span / settings.dataSize.Width * x, typeof(TX));
+            TX end = (TX)Convert.ChangeType(settings.axes.x.Min + settings.axes.x.Span / settings.dataSize.Width * (x + 1), typeof(TX));
 
             int startIndex = Array.BinarySearch(xs, from, length, start);
             if (startIndex < 0)
@@ -88,7 +86,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
             int searchTo;
 
             // Calculate point before displayed points
-            int pointBeforeIndex = Array.BinarySearch(xs, minRenderIndex, maxRenderIndex - minRenderIndex + 1, Convert.ChangeType(settings.axes.x.min, typeof(TX)));
+            int pointBeforeIndex = Array.BinarySearch(xs, minRenderIndex, maxRenderIndex - minRenderIndex + 1, Convert.ChangeType(settings.axes.x.Min, typeof(TX)));
             if (pointBeforeIndex < 0)
             {
                 pointBeforeIndex = ~pointBeforeIndex;
@@ -106,7 +104,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
             }
 
             // Calculate point after displayed points
-            int pointAfterIndex = Array.BinarySearch(xs, minRenderIndex, maxRenderIndex - minRenderIndex + 1, Convert.ChangeType(settings.axes.x.max, typeof(TX)));
+            int pointAfterIndex = Array.BinarySearch(xs, minRenderIndex, maxRenderIndex - minRenderIndex + 1, Convert.ChangeType(settings.axes.x.Max, typeof(TX)));
             if (pointAfterIndex < 0)
             {
                 pointAfterIndex = ~pointAfterIndex;

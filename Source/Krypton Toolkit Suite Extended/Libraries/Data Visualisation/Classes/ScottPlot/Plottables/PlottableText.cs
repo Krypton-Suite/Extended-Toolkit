@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ScottPlot.Config;
 
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
 {
@@ -44,12 +39,12 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
             return $"PlottableText \"{text}\" at ({x}, {y})";
         }
 
-        public override Config.AxisLimits2D GetLimits()
+        public override AxisLimits2D GetLimits()
         {
             double[] limits = { x, x, y, y };
 
             // TODO: use features of 2d axis
-            return new Config.AxisLimits2D(limits);
+            return new AxisLimits2D(limits);
         }
 
         public override void Render(Settings settings)
@@ -57,7 +52,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
 
             PointF defaultPoint = settings.GetPixel(x, y);
             PointF textLocationPoint = new PointF();
-            SizeF stringSize = Drawing.GDI.MeasureString(settings.gfxData, text, font);
+            SizeF stringSize = GDI.MeasureString(settings.gfxData, text, font);
 
             if (rotation == 0)
             {

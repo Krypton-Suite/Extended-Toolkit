@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
-using System.Text;
-using ScottPlot.Config;
 
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
 {
@@ -49,8 +46,8 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
             double positionMin = Math.Min(position1, position2);
             double positionMax = Math.Max(position1, position2);
 
-            topLeft = settings.GetPixel(settings.axes.x.min, positionMin);
-            lowerRight = settings.GetPixel(settings.axes.x.max, positionMax);
+            topLeft = settings.GetPixel(settings.axes.x.Min, positionMin);
+            lowerRight = settings.GetPixel(settings.axes.x.Max, positionMax);
             if (topLeft.Y > settings.bmpData.Height)
                 topLeft.Y = settings.bmpData.Height;
             if (lowerRight.Y < 0)
@@ -125,7 +122,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
 
         public override LegendItem[] GetLegendItems()
         {
-            var singleLegendItem = new Config.LegendItem(label, color, markerSize: 0, lineWidth: 10);
+            var singleLegendItem = new LegendItem(label, color, markerSize: 0, lineWidth: 10);
             return new LegendItem[] { singleLegendItem };
         }
     }

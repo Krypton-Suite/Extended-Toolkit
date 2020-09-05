@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
-using System.Text;
-using ScottPlot.Config;
 
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
 {
@@ -46,15 +44,15 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
 
             double[] limits = { -10, 10, min, max };
 
-            return new Config.AxisLimits2D(limits);
+            return new AxisLimits2D(limits);
         }
 
         int lastNumberOfPointsDisplayed = 0;
         public override void Render(Settings settings)
         {
             double step = settings.xAxisUnitsPerPixel;
-            double minRenderedX = settings.axes.limits[0];
-            double maxRenderedX = settings.axes.limits[1];
+            double minRenderedX = settings.axes.Limits[0];
+            double maxRenderedX = settings.axes.Limits[1];
             int maxSeriesLength = (int)Math.Ceiling((maxRenderedX - minRenderedX) / step);
             lastNumberOfPointsDisplayed = maxSeriesLength;
 
@@ -103,7 +101,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
 
         public override LegendItem[] GetLegendItems()
         {
-            var singleLegendItem = new Config.LegendItem(label, color, lineStyle, lineWidth, MarkerShape.none);
+            var singleLegendItem = new LegendItem(label, color, lineStyle, lineWidth, MarkerShape.none);
             return new LegendItem[] { singleLegendItem };
         }
     }

@@ -1,5 +1,4 @@
-﻿using ScottPlot.MinMaxSearchStrategies;
-using System.Drawing;
+﻿using System.Drawing;
 
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
 {
