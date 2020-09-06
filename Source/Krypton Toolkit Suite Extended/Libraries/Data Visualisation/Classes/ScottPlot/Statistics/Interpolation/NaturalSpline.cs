@@ -15,7 +15,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
     {
         public NaturalSpline(double[] xs, double[] ys, int resolution = 10) : base(xs, ys, resolution)
         {
-            m = new Matrix(n - 2);
+            m = new PlottMatrix(n - 2);
             gauss = new MatrixSolver(n - 2, m);
 
             a = new double[n];

@@ -15,7 +15,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
     {
         public PeriodicSpline(double[] xs, double[] ys, int resolution = 10) : base(xs, ys, resolution)
         {
-            m = new Matrix(n - 1);
+            m = new PlottMatrix(n - 1);
             gauss = new MatrixSolver(n - 1, m);
 
             a = new double[n + 1];

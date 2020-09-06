@@ -12,11 +12,11 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
     // Matrix equation solver using the Gaussian elimination algorithm
     public class MatrixSolver
     {
-        public readonly Matrix m;
+        public readonly PlottMatrix m;
         public readonly int maxOrder;
         public bool calcError;
 
-        public MatrixSolver(int size, Matrix mi)
+        public MatrixSolver(int size, PlottMatrix mi)
         {
             maxOrder = size;
             m = mi;

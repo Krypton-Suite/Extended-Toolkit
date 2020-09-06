@@ -7,13 +7,13 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
 {
-    public class Matrix
+    public class PlottMatrix
     {
         public double[,] a;
         public double[] y;
         public double[] x;
 
-        public Matrix(int size)
+        public PlottMatrix(int size)
         {
             a = new double[size, size];
             y = new double[size];

@@ -16,7 +16,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
             int resolution = 10, double firstSlopeDegrees = 0, double lastSlopeDegrees = 0) :
             base(xs, ys, resolution)
         {
-            m = new Matrix(n);
+            m = new PlottMatrix(n);
             gauss = new MatrixSolver(n, m);
 
             a = new double[n];

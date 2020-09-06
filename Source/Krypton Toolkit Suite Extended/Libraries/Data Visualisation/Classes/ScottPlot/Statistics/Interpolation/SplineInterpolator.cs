@@ -13,7 +13,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
         public double[] givenYs, givenXs;
         public double[] interpolatedXs, interpolatedYs;
 
-        protected Matrix m;
+        protected PlottMatrix m;
         protected MatrixSolver gauss;
 
         protected readonly int n;
