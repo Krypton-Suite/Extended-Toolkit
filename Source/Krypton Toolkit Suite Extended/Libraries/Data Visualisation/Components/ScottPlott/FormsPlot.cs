@@ -172,11 +172,11 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
         private ContextMenuStrip DefaultRightClickMenu()
         {
             var cms = new ContextMenuStrip();
-            cms.Items.Add(new ToolStripMenuItem("Save Image", null, new EventHandler(SaveImage)));
-            cms.Items.Add(new ToolStripMenuItem("Copy Image", null, new EventHandler(CopyImage)));
-            cms.Items.Add(new ToolStripMenuItem("Open in New Window", null, new EventHandler(OpenNewWindow)));
-            cms.Items.Add(new ToolStripMenuItem("Settings", null, new EventHandler(OpenSettingsWindow)));
-            cms.Items.Add(new ToolStripMenuItem("Help", null, new EventHandler(OpenHelpWindow)));
+            cms.Items.Add(new ToolStripMenuItem("&Save Image", null, new EventHandler(SaveImage)));
+            cms.Items.Add(new ToolStripMenuItem("Copy I&mage", null, new EventHandler(CopyImage)));
+            cms.Items.Add(new ToolStripMenuItem("O&pen in New Window", null, new EventHandler(OpenNewWindow)));
+            cms.Items.Add(new ToolStripMenuItem("&Settings", null, new EventHandler(OpenSettingsWindow)));
+            //cms.Items.Add(new ToolStripMenuItem("&Help", null, new EventHandler(OpenHelpWindow)));
             return cms;
         }
 
