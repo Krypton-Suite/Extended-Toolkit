@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
 {
     public class SettingsWindow : KryptonForm
     {
+        #region Design Mode
         private KryptonPanel kryptonPanel1;
         private KryptonPanel kryptonPanel2;
         private KryptonButton kbtnApply;
@@ -49,7 +47,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
         private KryptonCheckBox kchkMultiplier;
         private KryptonCheckBox kchkOffset;
         private KryptonListBox klbPlotObjects;
-        private KryptonTextBox kryptonTextBox1;
+        private KryptonTextBox ktxtLabelText;
+        private KryptonButton kbtnSaveCSV;
+        private KryptonButton kbtnCopyCSV;
         private System.Windows.Forms.Panel panel1;
 
         private void InitializeComponent()
@@ -96,7 +96,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
             this.kchkGrid = new Krypton.Toolkit.KryptonCheckBox();
             this.kbtnTightenLayout = new Krypton.Toolkit.KryptonButton();
             this.klbPlotObjects = new Krypton.Toolkit.KryptonListBox();
-            this.kryptonTextBox1 = new Krypton.Toolkit.KryptonTextBox();
+            this.ktxtLabelText = new Krypton.Toolkit.KryptonTextBox();
+            this.kbtnCopyCSV = new Krypton.Toolkit.KryptonButton();
+            this.kbtnSaveCSV = new Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
@@ -131,6 +133,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
             this.kryptonGroupBox7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox8.Panel)).BeginInit();
+            this.kryptonGroupBox8.Panel.SuspendLayout();
             this.kryptonGroupBox8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox9.Panel)).BeginInit();
@@ -183,6 +186,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
             this.kbtnCancel.Size = new System.Drawing.Size(90, 25);
             this.kbtnCancel.TabIndex = 0;
             this.kbtnCancel.Values.Text = "C&ancel";
+            this.kbtnCancel.Click += new System.EventHandler(this.kbtnCancel_Click);
             // 
             // kbtnApply
             // 
@@ -194,6 +198,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
             this.kbtnApply.Size = new System.Drawing.Size(90, 25);
             this.kbtnApply.TabIndex = 1;
             this.kbtnApply.Values.Text = "App&ly";
+            this.kbtnApply.Click += new System.EventHandler(this.kbtnApply_Click);
             // 
             // kryptonGroupBox1
             // 
@@ -270,6 +275,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
             this.kbtnVerticalAxisFitData.Size = new System.Drawing.Size(100, 25);
             this.kbtnVerticalAxisFitData.TabIndex = 6;
             this.kbtnVerticalAxisFitData.Values.Text = "Fit &Data";
+            this.kbtnVerticalAxisFitData.Click += new System.EventHandler(this.kbtnVerticalAxisFitData_Click);
             // 
             // kchkVerticalAxisShowMinorTicks
             // 
@@ -330,6 +336,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
             this.kbtnHorizontalAxisFitData.Size = new System.Drawing.Size(100, 25);
             this.kbtnHorizontalAxisFitData.TabIndex = 6;
             this.kbtnHorizontalAxisFitData.Values.Text = "Fit &Data";
+            this.kbtnHorizontalAxisFitData.Click += new System.EventHandler(this.kbtnHorizontalAxisFitData_Click);
             // 
             // ktxtHorizontalAxisLowerLimit
             // 
@@ -449,8 +456,14 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
             // 
             this.kryptonGroupBox8.Location = new System.Drawing.Point(12, 329);
             this.kryptonGroupBox8.Name = "kryptonGroupBox8";
+            // 
+            // kryptonGroupBox8.Panel
+            // 
+            this.kryptonGroupBox8.Panel.Controls.Add(this.kbtnSaveCSV);
+            this.kryptonGroupBox8.Panel.Controls.Add(this.kbtnCopyCSV);
             this.kryptonGroupBox8.Size = new System.Drawing.Size(279, 75);
             this.kryptonGroupBox8.TabIndex = 9;
+            this.kryptonGroupBox8.Values.Heading = "Data Export";
             // 
             // kryptonGroupBox9
             // 
@@ -459,7 +472,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
             // 
             // kryptonGroupBox9.Panel
             // 
-            this.kryptonGroupBox9.Panel.Controls.Add(this.kryptonTextBox1);
+            this.kryptonGroupBox9.Panel.Controls.Add(this.ktxtLabelText);
             this.kryptonGroupBox9.Size = new System.Drawing.Size(279, 75);
             this.kryptonGroupBox9.TabIndex = 10;
             this.kryptonGroupBox9.Values.Heading = "Label";
@@ -539,6 +552,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
             this.kbtnTightenLayout.Size = new System.Drawing.Size(154, 25);
             this.kbtnTightenLayout.TabIndex = 9;
             this.kbtnTightenLayout.Values.Text = "Ti&ghten Layout";
+            this.kbtnTightenLayout.Click += new System.EventHandler(this.kbtnTightenLayout_Click);
             // 
             // klbPlotObjects
             // 
@@ -546,14 +560,33 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
             this.klbPlotObjects.Name = "klbPlotObjects";
             this.klbPlotObjects.Size = new System.Drawing.Size(279, 227);
             this.klbPlotObjects.TabIndex = 11;
+            this.klbPlotObjects.SelectedIndexChanged += new System.EventHandler(this.klbPlotObjects_SelectedIndexChanged);
             // 
-            // kryptonTextBox1
+            // ktxtLabelText
             // 
-            this.kryptonTextBox1.Location = new System.Drawing.Point(12, 12);
-            this.kryptonTextBox1.Name = "kryptonTextBox1";
-            this.kryptonTextBox1.Size = new System.Drawing.Size(249, 23);
-            this.kryptonTextBox1.TabIndex = 0;
-            this.kryptonTextBox1.Text = "kryptonTextBox1";
+            this.ktxtLabelText.Hint = "Label text...";
+            this.ktxtLabelText.Location = new System.Drawing.Point(12, 12);
+            this.ktxtLabelText.Name = "ktxtLabelText";
+            this.ktxtLabelText.Size = new System.Drawing.Size(249, 23);
+            this.ktxtLabelText.TabIndex = 0;
+            // 
+            // kbtnCopyCSV
+            // 
+            this.kbtnCopyCSV.Location = new System.Drawing.Point(12, 13);
+            this.kbtnCopyCSV.Name = "kbtnCopyCSV";
+            this.kbtnCopyCSV.Size = new System.Drawing.Size(90, 25);
+            this.kbtnCopyCSV.TabIndex = 0;
+            this.kbtnCopyCSV.Values.Text = "C&opy CSV";
+            this.kbtnCopyCSV.Click += new System.EventHandler(this.kbtnCopyCSV_Click);
+            // 
+            // kbtnSaveCSV
+            // 
+            this.kbtnSaveCSV.Location = new System.Drawing.Point(108, 13);
+            this.kbtnSaveCSV.Name = "kbtnSaveCSV";
+            this.kbtnSaveCSV.Size = new System.Drawing.Size(90, 25);
+            this.kbtnSaveCSV.TabIndex = 1;
+            this.kbtnSaveCSV.Values.Text = "&Save CSV";
+            this.kbtnSaveCSV.Click += new System.EventHandler(this.kbtnSaveCSV_Click);
             // 
             // SettingsWindow
             // 
@@ -605,6 +638,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox7)).EndInit();
             this.kryptonGroupBox7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox8.Panel)).EndInit();
+            this.kryptonGroupBox8.Panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox8)).EndInit();
             this.kryptonGroupBox8.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox9.Panel)).EndInit();
@@ -615,6 +649,182 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
             ((System.ComponentModel.ISupportInitialize)(this.kcmbColourStyle)).EndInit();
             this.ResumeLayout(false);
 
+        }
+        #endregion
+
+        #region Variables
+        private Plot _plot;
+        #endregion
+
+        #region Properties
+        public Plot Plot { get => _plot; set => _plot = value; }
+        #endregion
+
+        #region Constructor
+        public SettingsWindow(Plot plot)
+        {
+            InitializeComponent();
+
+            Plot = plot;
+
+            PopualteGuiFromPlot();
+        }
+        #endregion
+
+        private void kbtnVerticalAxisFitData_Click(object sender, EventArgs e)
+        {
+            Plot.AxisAutoY();
+
+            PopualteGuiFromPlot();
+        }
+
+        private void kbtnHorizontalAxisFitData_Click(object sender, EventArgs e)
+        {
+            Plot.AxisAutoX();
+
+            PopualteGuiFromPlot();
+        }
+
+        private void kbtnTightenLayout_Click(object sender, EventArgs e)
+        {
+            Plot.TightenLayout();
+        }
+
+        private void kbtnCopyCSV_Click(object sender, EventArgs e)
+        {
+            int plotObjectIndex = klbPlotObjects.SelectedIndex;
+
+            IExportable plottable = (IExportable)Plot.GetPlottables()[plotObjectIndex];
+
+            Clipboard.SetText(plottable.GetCSV());
+        }
+
+        private void kbtnSaveCSV_Click(object sender, EventArgs e)
+        {
+            int plotObjectIndex = klbPlotObjects.SelectedIndex;
+
+            IExportable plottable = (IExportable)Plot.GetPlottables()[plotObjectIndex];
+
+            SaveFileDialog savefile = new SaveFileDialog();
+            savefile.Title = $"Export CSV data for {plottable}";
+            savefile.FileName = "data.csv";
+            savefile.Filter = "CSV Files (*.csv)|*.csv|All files (*.*)|*.*";
+            if (savefile.ShowDialog() == DialogResult.OK)
+                plottable.SaveCSV(savefile.FileName);
+        }
+
+        private void kbtnApply_Click(object sender, EventArgs e)
+        {
+            var settings = Plot.GetSettings();
+
+            // vertical axis
+            Plot.YLabel(ktxtVerticalAxisLabelText.Text);
+            Plot.Ticks(displayTicksYminor: kchkVerticalAxisShowMinorTicks.Checked, dateTimeY: kchkVerticalAxisDateAndTimeFormat.Checked);
+            double y1, y2;
+            double.TryParse(ktxtVerticalAxisLowerLimit.Text, out y1);
+            double.TryParse(ktxtVerticalAxisUpperLimit.Text, out y2);
+            Plot.Axis(y1: y1, y2: y2);
+
+            // horizontal axis
+            Plot.XLabel(ktxtHorizontalAxisLabelText.Text);
+            Plot.Ticks(displayTicksXminor: kchkHorizontalAxisShowMinorTicks.Checked, dateTimeX: kchkHorizontalAxisDateAndTimeFormat.Checked);
+            double x1, x2;
+            double.TryParse(ktxtHorizontalAxisLowerLimit.Text, out x1);
+            double.TryParse(ktxtHorizontalAxisUpperLimit.Text, out x2);
+            Plot.Axis(x1: x1, x2: x2);
+
+            // tick display options
+            Plot.Ticks(useOffsetNotation: kchkOffset.Checked, useMultiplierNotation: kchkMultiplier.Checked);
+
+            // image quality
+            Plot.AntiAlias(figure: krbImageQualityHigh.Checked, data: krbImageQualityHigh.Checked);
+            //Plot.mouseTracker.lowQualityWhileInteracting = cbQualityLowWhileDragging.Checked;
+
+            // misc
+            Plot.Grid(enable: kchkGrid.Checked);
+            Plot.Legend(enableLegend: kchkDisplayOnGraph.Checked);
+            if (kcmbColourStyle.Text != "")
+            {
+                Style newStyle = (Style)Enum.Parse(typeof(Style), kcmbColourStyle.Text);
+                Plot.Style(newStyle);
+            }
+
+            Close();
+        }
+
+        private void kbtnCancel_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        #region Methods
+        private void PopualteGuiFromPlot()
+        {
+            // vertical axis
+            ktxtVerticalAxisLabelText.Text = Plot.GetSettings().yLabel.text;
+            ktxtVerticalAxisUpperLimit.Text = Math.Round(Plot.Axis()[3], 4).ToString();
+            ktxtVerticalAxisLowerLimit.Text = Math.Round(Plot.Axis()[2], 4).ToString();
+            kchkVerticalAxisShowMinorTicks.Checked = Plot.GetSettings().ticks.displayYminor;
+            kchkVerticalAxisDateAndTimeFormat.Checked = Plot.GetSettings().ticks.y.dateFormat;
+
+            // horizontal axis
+            ktxtHorizontalAxisLabelText.Text = Plot.GetSettings().xLabel.text;
+            ktxtHorizontalAxisUpperLimit.Text = Math.Round(Plot.Axis()[1], 4).ToString();
+            ktxtHorizontalAxisLowerLimit.Text = Math.Round(Plot.Axis()[0], 4).ToString();
+            kchkHorizontalAxisShowMinorTicks.Checked = Plot.GetSettings().ticks.displayXminor;
+            kchkHorizontalAxisDateAndTimeFormat.Checked = Plot.GetSettings().ticks.x.dateFormat;
+
+            // tick display options
+            kchkOffset.Checked = Plot.GetSettings().ticks.useOffsetNotation;
+            kchkMultiplier.Checked = Plot.GetSettings().ticks.useMultiplierNotation;
+            kchkGrid.Checked = Plot.GetSettings().HorizontalGridLines.Visible;
+
+            // legend
+            kchkDisplayOnGraph.Checked = Plot.GetSettings().Legend.Visible;
+
+            // image quality
+            krbImageQualityLow.Checked = !Plot.GetSettings().misc.antiAliasData;
+            krbImageQualityHigh.Checked = Plot.GetSettings().misc.antiAliasData;
+            //cbQualityLowWhileDragging.Checked = Plot.mouseTracker.lowQualityWhileInteracting;
+
+            // list of plottables
+            klbPlotObjects.Items.Clear();
+
+            foreach (var plotObject in Plot.GetPlottables())
+            {
+                klbPlotObjects.Items.Add(plotObject);
+            }
+
+            // list of color styles
+            kcmbColourStyle.Items.AddRange(Enum.GetNames(typeof(Style)));
+        }
+        #endregion
+
+        private void klbPlotObjects_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (klbPlotObjects.Items.Count > 0 && klbPlotObjects.SelectedItem != null)
+            {
+                int plotObjectIndex = klbPlotObjects.SelectedIndex;
+
+                var plottable = Plot.GetPlottables()[plotObjectIndex];
+
+                kbtnSaveCSV.Enabled = plottable is IExportable;
+
+                kbtnCopyCSV.Enabled = plottable is IExportable;
+
+                // don't allow labels to be changed (after new legend system)
+                //tbLabel.Enabled = true;
+                //tbLabel.Text = plottable.ToString();
+                ktxtLabelText.Text = "editing disabled";
+            }
+            else
+            {
+                kbtnSaveCSV.Enabled = false;
+
+                kbtnCopyCSV.Enabled = false;
+
+                ktxtLabelText.Enabled = false;
+            }
         }
     }
 }

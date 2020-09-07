@@ -556,8 +556,8 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
 
         private void OpenSettingsWindow(object sender, EventArgs e)
         {
-            GlobalUtilityMethods.NotImplementedYet();
-            //new SettingsWindow(Plot).ShowDialog();
+            new SettingsWindow(Plot).ShowDialog();
+
             Render();
         }
 
