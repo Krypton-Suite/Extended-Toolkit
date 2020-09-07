@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Krypton.Toolkit.Suite.Extended.Core;
+using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
@@ -41,6 +42,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
             this.pbxPlot.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.pbxPlot_MouseDoubleClick);
             this.pbxPlot.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pbxPlot_MouseDown);
             this.pbxPlot.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pbxPlot_MouseMove);
+            pbxPlot.MouseWheel += new MouseEventHandler(pbxPlot_MouseWheel);
             this.pbxPlot.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pbxPlot_MouseUp);
             // 
             // klblTitle
@@ -148,7 +150,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
         {
             ContextMenuStrip = DefaultRightClickMenu();
 
-            pbxPlot.MouseWheel += PbxPlot_MouseWheel;
+            pbxPlot.MouseWheel += pbxPlot_MouseWheel;
 
             isDesignerMode = Process.GetCurrentProcess().ProcessName == "devenv";
             klblTitle.Visible = isDesignerMode;
@@ -163,8 +165,8 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
 
             settings = Plot.GetSettings(showWarning: false);
 
-            PbxPlot_MouseUp(null, null);
-            PbxPlot_SizeChanged(null, null);
+            pbxPlot_MouseUp(null, null);
+            pbxPlot_SizeChanged(null, null);
         }
 
         private ContextMenuStrip DefaultRightClickMenu()
@@ -202,7 +204,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
         }
         #endregion
 
-        private void PbxPlot_SizeChanged(object sender, EventArgs e)
+        private void pbxPlot_SizeChanged(object sender, EventArgs e)
         {
             if (Plot is null)
                 return;
@@ -287,19 +289,19 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
         IDraggable plottableBeingDragged = null;
         private bool isMovingDraggable { get { return (plottableBeingDragged != null); } }
 
-        private Cursor GetCursor(Visualisation.Cursor scottPlotCursor)
+        private System.Windows.Forms.Cursor GetCursor(Visualisation.Cursor scottPlotCursor)
         {
             switch (scottPlotCursor)
             {
                 case Visualisation.Cursor.ARROW: return Cursors.Arrow;
                 case Visualisation.Cursor.WE: return Cursors.SizeWE;
                 case Visualisation.Cursor.NS: return Cursors.SizeNS;
-                case Visualisation.Cursor.All: return Cursors.SizeAll;
+                case Visualisation.Cursor.ALL: return Cursors.SizeAll;
                 default: return Cursors.Help;
             }
         }
 
-        private void PbxPlot_MouseDown(object sender, MouseEventArgs e)
+        private void pbxPlot_MouseDown(object sender, MouseEventArgs e)
         {
             var mousePixel = e.Location;
             plottableBeingDragged = Plot.GetDraggableUnderMouse(mousePixel.X, mousePixel.Y);
@@ -328,7 +330,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
 
         private int dpiScale = 1; //Heres hoping that WinForms becomes DPI aware
 
-        private void PbxPlot_MouseMove(object sender, MouseEventArgs e)
+        private void pbxPlot_MouseMove(object sender, MouseEventArgs e)
         {
             mouseLocation = e.Location;
             OnMouseMoved(e);
@@ -434,7 +436,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
             pbxPlot.Cursor = GetCursor(spCursor);
         }
 
-        private void PbxPlot_MouseUp(object sender, MouseEventArgs e)
+        private void pbxPlot_MouseUp(object sender, MouseEventArgs e)
         {
             if (mouseMiddleDownLocation != null)
             {
@@ -504,13 +506,13 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
             Render(recalculateLayout: shouldRecalculate);
         }
 
-        private void PbxPlot_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void pbxPlot_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             OnMouseDoubleClicked(e);
             base.OnMouseDoubleClick(e);
         }
 
-        private void PbxPlot_MouseWheel(object sender, MouseEventArgs e)
+        private void pbxPlot_MouseWheel(object sender, MouseEventArgs e)
         {
             if (enableScrollWheelZoom == false)
                 return;
@@ -554,18 +556,20 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
 
         private void OpenSettingsWindow(object sender, EventArgs e)
         {
-            new UserControls.FormSettings(Plot).ShowDialog();
+            GlobalUtilityMethods.NotImplementedYet();
+            //new SettingsWindow(Plot).ShowDialog();
             Render();
         }
 
         private void OpenHelpWindow(object sender, EventArgs e)
         {
-            new UserControls.FormHelp().ShowDialog();
+            GlobalUtilityMethods.NotImplementedYet();
+            //new HelpWindow().ShowDialog();
         }
 
         private void OpenNewWindow(object sender, EventArgs e)
         {
-            new FormsPlotViewer(Plot.Copy()).Show();
+            new PlotViewerWindow(Plot.Copy()).Show();
         }
 
         #endregion
