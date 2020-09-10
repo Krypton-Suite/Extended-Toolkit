@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
@@ -509,7 +510,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
 
             foreach (string directory in directories)
             {
-                if (directory.IsNullOrWhiteSpace())
+                if (string.IsNullOrWhiteSpace(directory))
                     continue;
 
                 var response = await ControlStream.SendCommandAsync(new FTPCommandEnvelope
