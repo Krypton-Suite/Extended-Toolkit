@@ -2,7 +2,7 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Networking
 {
-    public class FtpNodeInformation
+    public class FTPNodeInformation
     {
         public string Name { get; set; }
         public long Size { get; set; }

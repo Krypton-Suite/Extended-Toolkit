@@ -95,5 +95,9 @@
   <ItemGroup>
     <None Include="Icon Canary.png" Pack="true" PackagePath="\" />
   </ItemGroup>
+  
+  <ItemGroup>
+    <Folder Include="Components\Controls\Internal\" />
+  </ItemGroup>
 
 </Project>

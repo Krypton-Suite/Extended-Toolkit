@@ -37,6 +37,20 @@
     <FileVersion>5.550.2011</FileVersion>
     <Version>5.550.2011</Version>
   </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="FTP\Classes\**" />
+    <Compile Remove="FTP\Components\**" />
+    <Compile Remove="FTP\Infrastructure\**" />
+    <Compile Remove="FTP\Interfaces\**" />
+    <EmbeddedResource Remove="FTP\Classes\**" />
+    <EmbeddedResource Remove="FTP\Components\**" />
+    <EmbeddedResource Remove="FTP\Infrastructure\**" />
+    <EmbeddedResource Remove="FTP\Interfaces\**" />
+    <None Remove="FTP\Classes\**" />
+    <None Remove="FTP\Components\**" />
+    <None Remove="FTP\Infrastructure\**" />
+    <None Remove="FTP\Interfaces\**" />
+  </ItemGroup>
   
   <ItemGroup>
     <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2008" />
@@ -44,5 +58,13 @@
   
   <ItemGroup>
     <ProjectReference Include="..\Base\Krypton.Toolkit.Suite.Extended.Base.csproj" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Folder Include="FTP\" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Reference Include="System.DirectoryServices" />
   </ItemGroup>
 </Project>

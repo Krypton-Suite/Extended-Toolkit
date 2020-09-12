@@ -65,7 +65,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
             return FTPNodeType.SYMBOLICLINK;
         }
 
-        internal static FtpNodeInformation ToFtpNode(this string operand)
+        internal static FTPNodeInformation ToFtpNode(this string operand)
         {
             var dictionary = operand.Split(';')
                                     .Select(s => s.Split('='))
@@ -76,7 +76,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
                                                        ? strings[1]
                                                        : strings[0]);
 
-            return new FtpNodeInformation
+            return new FTPNodeInformation
             {
                 NodeType = dictionary.GetValueOrDefault("type").Trim().ToNodeType(),
                 Name = dictionary.GetValueOrDefault("name").Trim(),
