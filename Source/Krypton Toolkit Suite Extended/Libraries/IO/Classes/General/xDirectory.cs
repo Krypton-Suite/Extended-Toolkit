@@ -12,8 +12,6 @@ namespace Krypton.Toolkit.Suite.Extended.IO
     /// </summary>
     public class xDirectory
     {
-
-
         #region Private Members
         /// <summary>
         /// The Source Directory.
@@ -51,8 +49,6 @@ namespace Krypton.Toolkit.Suite.Extended.IO
         private static bool _cancelCopy = false;
 
         #endregion
-
-
 
         #region Constructor
 

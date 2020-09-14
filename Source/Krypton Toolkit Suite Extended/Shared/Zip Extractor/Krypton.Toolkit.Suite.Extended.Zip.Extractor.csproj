@@ -2,13 +2,13 @@
 
   <PropertyGroup>
     <LangVersion>8.0</LangVersion>
-    <TargetFrameworks>net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;netcoreapp5.0</TargetFrameworks>    
+    <TargetFrameworks>net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;net5.0</TargetFrameworks>    
     <RootNamespace>Krypton.Toolkit.Suite.Extended.Zip.Extractor</RootNamespace>
     <OutputType>WinExe</OutputType>
     <UseWindowsForms>true</UseWindowsForms>
     <AssemblyName>Zip Extractor</AssemblyName>
     <ApplicationIcon>Resources\ZipExtractor.ico</ApplicationIcon>
-    <Version>5.550.2009</Version>
+    <Version>5.550.2010.2</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -36,8 +36,8 @@
   <PropertyGroup>
     <DocumentationFile>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Zip.Extractor\Krypton.Toolkit.Suite.Zip.Extractor.xml</DocumentationFile>
     <OutputPath>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Zip.Extractor\</OutputPath>
-    <AssemblyVersion>5.550.2009</AssemblyVersion>
-    <FileVersion>5.550.2009</FileVersion>
+    <AssemblyVersion>5.550.2010.2</AssemblyVersion>
+    <FileVersion>5.550.2010.2</FileVersion>
   </PropertyGroup>
 
 </Project>

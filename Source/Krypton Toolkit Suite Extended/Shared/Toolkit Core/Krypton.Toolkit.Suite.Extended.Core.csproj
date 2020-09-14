@@ -2,20 +2,20 @@
 
   <PropertyGroup>
     <LangVersion>8.0</LangVersion>
-    <TargetFrameworks>net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;netcoreapp5.0</TargetFrameworks>
-    <TargetFrameworks Condition="'$(TFMs)' == 'all'">net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;netcoreapp5.0</TargetFrameworks>    
+    <TargetFrameworks>net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;net5.0</TargetFrameworks>
+    <TargetFrameworks Condition="'$(TFMs)' == 'all'">net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;net5.0</TargetFrameworks>    
     <RootNamespace>Krypton.Toolkit.Suite.Extended.Core</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
     <OutputType>Library</OutputType>
-  </PropertyGroup>
+  </PropertyGroup>-->
 
   <PropertyGroup>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Description>Contains the core logic.</Description>
+    <Description>An extension to the standard krypton toolkit to support .NET Core and the latest .NET 3.5/4.x framework. Contains the core logic for the toolkit.</Description>
     <RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
     <PackageLicenseFile></PackageLicenseFile>
-  </PropertyGroup>
+  </PropertyGroup>-->
 
   <!--Stable package configuration-->
   <PropertyGroup>
@@ -24,7 +24,7 @@
     <PackageIconUrl>https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/Assets/PNG/Main%20Icon/64%20x%2064/Main%20Icon%2064%20x%2064.png</PackageIconUrl>
   </PropertyGroup>
 
-  <!--Canary package configuration
+  <!--Canary package configuration-
   <PropertyGroup>
     <PackageId>Krypton.Toolkit.Suite.Extended.Core.Canary</PackageId>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Canary</PackageOutputPath>
@@ -33,10 +33,10 @@
 
   <!--Version configuration-->
   <PropertyGroup>
-    <AssemblyVersion>5.550.2009</AssemblyVersion>
-    <FileVersion>5.550.2009</FileVersion>
-    <Version>5.550.2009</Version>
-  </PropertyGroup>
+    <AssemblyVersion>5.550.2010</AssemblyVersion>
+    <FileVersion>5.550.2010</FileVersion>
+    <Version>5.550.2010</Version>
+  </PropertyGroup>-->
 
   <ItemGroup>
     <None Include="..\..\.editorconfig" Link=".editorconfig" />
@@ -101,6 +101,6 @@
   <PropertyGroup>
     <DocumentationFile>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Core\Krypton.Toolkit.Suite.Extended.Core.xml</DocumentationFile>
     <OutputPath>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Core\</OutputPath>
-  </PropertyGroup>
+  </PropertyGroup>-->
 
 </Project>

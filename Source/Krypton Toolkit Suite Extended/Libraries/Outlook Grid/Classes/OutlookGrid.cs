@@ -35,6 +35,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
     /// <seealso cref="Krypton.Toolkit.KryptonDataGridView" />
     public partial class KryptonOutlookGrid : KryptonDataGridView
     {
+        #region Variables
         private KryptonOutlookGridGroupBox groupBox;
         //Krypton
         private IPalette _palette;
@@ -97,6 +98,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
         //Formatting
         private List<ConditionalFormatting> formatConditions;
+
+        private UILanguage _uiLanguage;
+        #endregion
 
         /// <summary>
         /// Group Image Click Event
@@ -205,26 +209,14 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// </summary>
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public new DataGridViewRow RowTemplate
-        {
-            get
-            {
-                return base.RowTemplate;
-            }
-        }
+        public new DataGridViewRow RowTemplate => base.RowTemplate;
 
         /// <summary>
         /// Gets if the grid is grouped
         /// </summary>
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public bool IsGridGrouped
-        {
-            get
-            {
-                return !(groupCollection.Count == 0);
-            }
-        }
+        public bool IsGridGrouped => !(groupCollection.Count == 0);
 
         /// <summary>
         /// Gets or sets the OutlookGridGroupBox
@@ -232,69 +224,33 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         [Category("Behavior")]
         [Description("Associate the OutlookGridGroupBox with the grid.")]
         [DefaultValue(null)]
-        public KryptonOutlookGridGroupBox GroupBox
-        {
-            get
-            {
-                return groupBox;
-            }
-            set
-            {
-                groupBox = value;
-            }
-        }
+        public KryptonOutlookGridGroupBox GroupBox { get => groupBox; set => groupBox = value; }
 
         /// <summary>
         /// Gets or sets the list of rows in the grid (without grouping,... for having a copy)
         /// </summary>
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public List<OutlookGridRow> InternalRows
-        {
-            get { return internalRows; }
-            set { internalRows = value; }
-        }
+        public List<OutlookGridRow> InternalRows { get => internalRows; set => internalRows = value; }
 
         /// <summary>
         /// Gets or sets the previous selected group row
         /// </summary>
         [Browsable(false)]
-        public int PreviousSelectedGroupRow
-        {
-            get
-            {
-                return _previousGroupRowSelected;
-            }
-
-            set
-            {
-                _previousGroupRowSelected = value;
-            }
-        }
+        public int PreviousSelectedGroupRow { get => _previousGroupRowSelected; set => _previousGroupRowSelected = value; }
 
         /// <summary>
         /// Gets the Krypton Palette of the OutlookGrid
         /// </summary>
         [Browsable(false)]
-        public IPalette GridPalette
-        { get { return _palette; } }
+        public IPalette GridPalette => _palette;
 
         /// <summary>
         /// Gets or sets the group collection.
         /// </summary>
         /// <value>OutlookGridGroupCollection.</value>
         [Browsable(false)]
-        public OutlookGridGroupCollection GroupCollection
-        {
-            get
-            {
-                return groupCollection;
-            }
-            set
-            {
-                groupCollection = value;
-            }
-        }
+        public OutlookGridGroupCollection GroupCollection { get => groupCollection; set => groupCollection = value; }
 
         /// <summary>
         /// Gets or sets the HideColumnOnGrouping property.
@@ -303,17 +259,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         [Category("Behavior")]
         [Description("Hide the column when it is grouped.")]
         [DefaultValue(false)]
-        public bool HideColumnOnGrouping
-        {
-            get
-            {
-                return _hideColumnOnGrouping;
-            }
-            set
-            {
-                _hideColumnOnGrouping = value;
-            }
-        }
+        public bool HideColumnOnGrouping { get => _hideColumnOnGrouping; set => _hideColumnOnGrouping = value; }
 
         /// <summary>
         /// Gets or sets the conditional formatting items list.
@@ -324,17 +270,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         [Category("Behavior")]
         [Description("Conditional formatting.")]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
-        public List<ConditionalFormatting> ConditionalFormatting
-        {
-            get
-            {
-                return formatConditions;
-            }
-            set
-            {
-                formatConditions = value;
-            }
-        }
+        public List<ConditionalFormatting> ConditionalFormatting { get => formatConditions; set => formatConditions = value; }
 
 
         /// <summary>
@@ -346,7 +282,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         [DefaultValue(true)]
         public bool ShowLines
         {
-            get { return _showLines; }
+            get => _showLines;
             set
             {
                 if (value != _showLines)
@@ -365,7 +301,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// </value>
         public FillMode FillMode
         {
-            get { return _fillMode; }
+            get => _fillMode;
             set
             {
                 if (value != _fillMode)
@@ -380,12 +316,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// Enables integrated context menu
         /// </summary>
         [DefaultValue(true)]
-        public bool AllowDefaultContextmenu
-        {
-            get { return _allowdefaultcontextmenu; }
-            set { _allowdefaultcontextmenu = value; }
-        }
+        public bool AllowDefaultContextmenu { get => _allowdefaultcontextmenu; set => _allowdefaultcontextmenu = value; }
 
+        public UILanguage UILanguage { get => _uiLanguage; set => _uiLanguage = value; }
         #endregion OutlookGrid property definitions
 
         #region OutlookGrid Overrides

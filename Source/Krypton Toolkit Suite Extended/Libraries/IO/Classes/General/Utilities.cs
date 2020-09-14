@@ -13,6 +13,9 @@ namespace Krypton.Toolkit.Suite.Extended.IO
         }
 
         #region Methods
+        /// <summary>Populates the directory information.</summary>
+        /// <param name="directory">The directory.</param>
+        /// <param name="target">The target.</param>
         public void PopulateDirectoryInformation(string directory, KryptonLabel target)
         {
             DirectoryInfo directoryInfo = new DirectoryInfo(directory);
@@ -20,6 +23,9 @@ namespace Krypton.Toolkit.Suite.Extended.IO
             target.Text = $"Directory Name: { directoryInfo.Name }\nCreated: { directoryInfo.CreationTime.ToString() }\nModified: { directoryInfo.LastWriteTime }\nSize: { ParseReadableSize(GetDirectorySize(directoryInfo)) }\nAttributes: { directoryInfo.Attributes }";
         }
 
+        /// <summary>Parses the size of the readable.</summary>
+        /// <param name="size">The size.</param>
+        /// <returns></returns>
         private string ParseReadableSize(long size)
         {
             // Get absolute value
@@ -94,6 +100,9 @@ namespace Krypton.Toolkit.Suite.Extended.IO
             return totalSize;
         }
 
+        /// <summary>Gets the size of the file.</summary>
+        /// <param name="filePath">The file path.</param>
+        /// <returns></returns>
         private long GetFileSize(string filePath)
         {
             FileInfo fileInfo = new FileInfo(filePath);
@@ -101,6 +110,9 @@ namespace Krypton.Toolkit.Suite.Extended.IO
             return fileInfo.Length;
         }
 
+        /// <summary>Populates the file information.</summary>
+        /// <param name="file">The file.</param>
+        /// <param name="target">The target.</param>
         public void PopulateFileInformation(string file, KryptonLabel target)
         {
             FileInfo fileInfo = new FileInfo(file);
@@ -108,10 +120,11 @@ namespace Krypton.Toolkit.Suite.Extended.IO
             target.Text = $"File Name: { fileInfo.Name }\nCreated: { fileInfo.CreationTime.ToString() }\nModified: { fileInfo.LastWriteTime }\nSize: { ParseReadableSize(GetFileSize(file)) }\nAttributes: { fileInfo.Attributes }";
         }
 
-        public void GetFileHash(string filePath, SupportedHashAlgorithims hashType, KryptonLabel target)
-        {
-            target.Text = GetHash(hashType, filePath);
-        }
+        /// <summary>Gets the file hash.</summary>
+        /// <param name="filePath">The file path.</param>
+        /// <param name="hashType">Type of the hash.</param>
+        /// <param name="target">The target.</param>
+        public void GetFileHash(string filePath, SupportedHashAlgorithims hashType, KryptonLabel target) => target.Text = GetHash(hashType, filePath);
 
         private string GetHash(SupportedHashAlgorithims hashType, string filePath)
         {

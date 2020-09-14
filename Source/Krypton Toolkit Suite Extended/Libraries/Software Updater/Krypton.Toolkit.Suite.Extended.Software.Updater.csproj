@@ -2,19 +2,19 @@
 
   <PropertyGroup>
     <LangVersion>8.0</LangVersion>
-    <TargetFrameworks>net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;netcoreapp5.0</TargetFrameworks>
-    <TargetFrameworks Condition="'$(TFMs)' == 'all'">net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;netcoreapp5.0</TargetFrameworks>
+    <TargetFrameworks>net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;net5.0</TargetFrameworks>
+    <TargetFrameworks Condition="'$(TFMs)' == 'all'">net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;net5.0</TargetFrameworks>
     <RootNamespace>Krypton.Toolkit.Suite.Extended.Software.Updater</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
     <OutputType>Library</OutputType>
-  </PropertyGroup>
+  </PropertyGroup>-->
 
   <PropertyGroup>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Description>Contains popular software update solutions such as AutoUpdater.NET, NetSparkle and SharpUpdate.</Description>
+    <Description>An extension to the standard krypton toolkit to support .NET Core and the latest .NET 3.5/4.x framework. Contains popular software update solutions such as AutoUpdater.NET, NetSparkle and SharpUpdate.</Description>
     <RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
-  </PropertyGroup>
+  </PropertyGroup>-->
 
   <!--Stable package configuration-->
   <PropertyGroup>
@@ -32,14 +32,14 @@
 
   <!--Version configuration-->
   <PropertyGroup>
-    <AssemblyVersion>5.550.2009</AssemblyVersion>
-    <FileVersion>5.550.2009</FileVersion>
-    <Version>5.550.2009</Version>
-  </PropertyGroup>
+    <AssemblyVersion>5.550.2010</AssemblyVersion>
+    <FileVersion>5.550.2010</FileVersion>
+    <Version>5.550.2010</Version>
+  </PropertyGroup>-->
   
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net45|AnyCPU'">
     <DocumentationFile></DocumentationFile>
-  </PropertyGroup>
+  </PropertyGroup>-->
 
   <ItemGroup>
     <PackageReference Include="ILRepack.Lib.MSBuild.Task" Version="2.0.18.1" />
@@ -102,6 +102,6 @@
   <PropertyGroup>
     <DocumentationFile>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Software.Updater\Krypton.Toolkit.Suite.Extended.Software.Updater.xml</DocumentationFile>
     <OutputPath>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Software.Updater\</OutputPath>
-  </PropertyGroup>
+  </PropertyGroup>-->
 
 </Project>
