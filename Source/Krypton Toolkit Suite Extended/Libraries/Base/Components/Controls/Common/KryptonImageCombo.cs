@@ -14,155 +14,208 @@ namespace Krypton.Toolkit.Suite.Extended.Base
 {
     public class KryptonImageCombo : KryptonComboBox
     {
-        #region Variables
-        private ImageList _imageList = new ImageList();
-        #endregion
+        private ImageList imgs = new ImageList();
 
-        #region Property
-        public ImageList ImageList { get => _imageList; set => _imageList = value; }
-        #endregion
-
-        #region Constructor
+        // constructor
         public KryptonImageCombo()
         {
-            DrawMode = DrawMode.OwnerDrawFixed;
+            // set draw mode to owner draw
+            this.DrawMode = DrawMode.OwnerDrawFixed;
         }
-        #endregion
 
-        #region Override
+        // ImageList property
+        public ImageList ImageList
+        {
+            get
+            {
+                return imgs;
+            }
+            set
+            {
+                imgs = value;
+            }
+        }
+
+        // customized drawing process
         protected override void OnDrawItem(DrawItemEventArgs e)
         {
+            // draw background & focus rect
             e.DrawBackground();
-
             e.DrawFocusRectangle();
 
+            // check if it is an item from the Items collection
             if (e.Index < 0)
-            {
-                e.Graphics.DrawString(Text, e.Font, new SolidBrush(e.ForeColor), e.Bounds.Left + ImageList.ImageSize.Width, e.Bounds.Top);
-            }
+
+                // not an item, draw the text (indented)
+                e.Graphics.DrawString(this.Text, e.Font, new SolidBrush(e.ForeColor), e.Bounds.Left + imgs.ImageSize.Width, e.Bounds.Top);
+
             else
             {
-                if (Items[e.Index].GetType() == typeof(ImageComboItem))
+
+                // check if item is an ImageComboItem
+                if (this.Items[e.Index].GetType() == typeof(ImageComboItem))
                 {
-                    ImageComboItem item = (ImageComboItem)Items[e.Index];
 
-                    Color foreColour = (item.ForeColour != Color.FromKnownColor(KnownColor.Transparent)) ? item.ForeColour : e.ForeColor;
+                    // get item to draw
+                    ImageComboItem item = (ImageComboItem)this.Items[e.Index];
 
-                    Font typeface = item.Mark ? new Font(e.Font, FontStyle.Bold) : e.Font;
+                    // get forecolor & font
+                    Color forecolor = (item.ForeColor != Color.FromKnownColor(KnownColor.Transparent)) ? item.ForeColor : e.ForeColor;
+                    Font font = item.Mark ? new Font(e.Font, FontStyle.Bold) : e.Font;
 
+                    // -1: no image
                     if (item.ImageIndex != -1)
                     {
-                        ImageList.Draw(e.Graphics, e.Bounds.Left, e.Bounds.Top, item.ImageIndex);
-
-                        e.Graphics.DrawString(item.Text, typeface, new SolidBrush(foreColour), e.Bounds.Left + ImageList.ImageSize.Width, e.Bounds.Top);
+                        // draw image, then draw text next to it
+                        this.ImageList.Draw(e.Graphics, e.Bounds.Left, e.Bounds.Top, item.ImageIndex);
+                        e.Graphics.DrawString(item.Text, font, new SolidBrush(forecolor), e.Bounds.Left + imgs.ImageSize.Width, e.Bounds.Top);
                     }
                     else
-                    {
-                        e.Graphics.DrawString(item.Text, typeface, new SolidBrush(foreColour), e.Bounds.Left + ImageList.ImageSize.Width, e.Bounds.Top);
-                    }
+                        // draw text (indented)
+                        e.Graphics.DrawString(item.Text, font, new SolidBrush(forecolor), e.Bounds.Left + imgs.ImageSize.Width, e.Bounds.Top);
+
                 }
                 else
-                {
-                    e.Graphics.DrawString(Items[e.Index].ToString(), e.Font, new SolidBrush(e.ForeColor), e.Bounds.Left + ImageList.ImageSize.Width, e.Bounds.Top);
-                }
+
+                    // it is not an ImageComboItem, draw it
+                    e.Graphics.DrawString(this.Items[e.Index].ToString(), e.Font, new SolidBrush(e.ForeColor), e.Bounds.Left + imgs.ImageSize.Width, e.Bounds.Top);
+
             }
 
             base.OnDrawItem(e);
         }
-        #endregion
+
     }
 
-    #region Image Combo Item Class
+
     public class ImageComboItem : object
     {
-        #region Variables
-        private Color _foreColour = Color.FromKnownColor(KnownColor.Transparent);
-
-        private bool _mark = false;
-
-        private int _imageIndex = -1;
-
-        private object _tag = null;
-
-        private string _text = null;
+        // forecolor: transparent = inherit
+        private Color forecolor = Color.FromKnownColor(KnownColor.Transparent);
+        private bool mark = false;
+        private int imageindex = -1;
+        private object tag = null;
+        private string text = null;
 
         private string _itemValue = null;
-        #endregion
 
-        #region Properties
-        // Item value
-        public string ItemValue { get => _itemValue; set => _itemValue = value; }
-
-        // forecolor
-        public Color ForeColour { get => _foreColour; set => _foreColour = value; }
-
-        // image index
-        public int ImageIndex { get => _imageIndex; set => _imageIndex = value; }
-
-        // mark (bold)
-        public bool Mark { get => _mark; set => _mark = value; }
-
-        // tag
-        public object Tag { get => _tag; set => _tag = value; }
-
-        // item text
-        public string Text { get => _text; set => _text = value; }
-        #endregion
-
-        #region Constructors
+        // constructors
         public ImageComboItem()
         {
         }
 
-        public ImageComboItem(string text)
+        public ImageComboItem(string Text)
         {
-            Text = text;
+            text = Text;
         }
 
-        public ImageComboItem(string text, int imageIndex)
+        public ImageComboItem(string Text, int ImageIndex)
         {
-            Text = text;
-
-            ImageIndex = imageIndex;
+            text = Text;
+            imageindex = ImageIndex;
         }
 
-        public ImageComboItem(string text, int imageIndex, bool mark)
+        public ImageComboItem(string Text, int ImageIndex, bool Mark)
         {
-            Text = text;
-
-            ImageIndex = imageIndex;
-
-            Mark = mark;
+            text = Text;
+            imageindex = ImageIndex;
+            mark = Mark;
         }
 
-        public ImageComboItem(string text, int imageIndex, bool mark, Color foreColour)
+        public ImageComboItem(string Text, int ImageIndex, bool Mark, Color ForeColor)
         {
-            Text = text;
-
-            ImageIndex = imageIndex;
-
-            Mark = mark;
-
-            ForeColour = foreColour;
+            text = Text;
+            imageindex = ImageIndex;
+            mark = Mark;
+            forecolor = ForeColor;
         }
 
-        public ImageComboItem(string text, int imageIndex, bool mark, Color foreColour, object tag)
+        public ImageComboItem(string Text, int ImageIndex, bool Mark, Color ForeColor, object Tag)
         {
-            Text = text;
-
-            ImageIndex = imageIndex;
-
-            Mark = mark;
-
-            ForeColour = foreColour;
-
-            Tag = tag;
+            text = Text;
+            imageindex = ImageIndex;
+            mark = Mark;
+            forecolor = ForeColor;
+            tag = Tag;
         }
-        #endregion
 
-        #region Override
-        public override string ToString() => _text;
-        #endregion
+        // Item value
+        public string ItemValue
+        {
+            get { return _itemValue; }
+            set { _itemValue = value; }
+        }
+
+        // forecolor
+        public Color ForeColor
+        {
+            get
+            {
+                return forecolor;
+            }
+            set
+            {
+                forecolor = value;
+            }
+        }
+
+        // image index
+        public int ImageIndex
+        {
+            get
+            {
+                return imageindex;
+            }
+            set
+            {
+                imageindex = value;
+            }
+        }
+
+        // mark (bold)
+        public bool Mark
+        {
+            get
+            {
+                return mark;
+            }
+            set
+            {
+                mark = value;
+            }
+        }
+
+        // tag
+        public object Tag
+        {
+            get
+            {
+                return tag;
+            }
+            set
+            {
+                tag = value;
+            }
+        }
+
+        // item text
+        public string Text
+        {
+            get
+            {
+                return text;
+            }
+            set
+            {
+                text = value;
+            }
+        }
+
+        // ToString() should return item text
+        public override string ToString()
+        {
+            return text;
+        }
+
     }
-    #endregion
 }

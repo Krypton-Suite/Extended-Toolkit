@@ -42,6 +42,7 @@
 * Improved NuGet package descriptions
 * Fixed [#21](https://github.com/Krypton-Suite/Extended-Toolkit/issues/21), OutlookGrid Column right click causes error. Thanks to [dax-leo](https://github.com/dax-leo)
 * New `Data Visualisation` NuGet package for charts & graphs
+* New `KryptonDriveComboBox` & `KryptonImageComboBox` in `Base`
 
 =======
 

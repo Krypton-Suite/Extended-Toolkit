@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace Krypton.Toolkit.Suite.Extended.Base
+namespace Krypton.Toolkit.Suite.Extended.Base.Internal
 {
     public class ImageComboItem : object
     {
