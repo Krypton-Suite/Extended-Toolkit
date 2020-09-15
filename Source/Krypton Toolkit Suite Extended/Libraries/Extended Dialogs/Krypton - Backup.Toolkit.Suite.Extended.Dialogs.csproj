@@ -17,7 +17,7 @@
     <PackagePath></PackagePath>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Version>5.550.2010.2</Version>
+    <Version>5.550.2011</Version>
   </PropertyGroup>
 
   <ItemGroup>
