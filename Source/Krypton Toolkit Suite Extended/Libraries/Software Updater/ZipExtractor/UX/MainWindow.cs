@@ -1,10 +1,21 @@
-﻿using Krypton.Toolkit.Suite.Extended.Software.Updater.Properties;
+﻿using Krypton.Toolkit.Suite.Extended.Base;
+using Krypton.Toolkit.Suite.Extended.Common;
+using Krypton.Toolkit.Suite.Extended.Software.Updater.Properties;
+using Krypton.Toolkit.Suite.Extended.Software.Updater.ZipExtractor;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.IO.Compression;
+using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
+#if NET45
+using System.IO.Compression;
+#endif
 
 namespace Krypton.Toolkit.Extended.Software.Updater.ZipExtractor
 {
@@ -90,10 +101,20 @@ namespace Krypton.Toolkit.Extended.Software.Updater.ZipExtractor
         private BackgroundWorker _worker;
 
         private StringBuilder _logBuilder = new StringBuilder();
+
+        private string _executablePath;
+
+        private string[] _arguments;
         #endregion
 
         #region Constants
         private const int MAX_RETRIES = 2;
+        #endregion
+
+        #region Properties
+        public string ExecutablePath { get => _executablePath; private set => _executablePath = value; }
+
+        public string[] Arguments { get => _arguments; private set => _arguments = value; }
         #endregion
 
         #region Constructor
@@ -133,14 +154,264 @@ namespace Krypton.Toolkit.Extended.Software.Updater.ZipExtractor
 
             string[] args = Environment.GetCommandLineArgs();
 
-            for (var index = 0; index < args.Length; index++)
+            Arguments = args;
+
+            for (var index = 0; index < Arguments.Length; index++)
             {
-                var arg = args[index];
+                var arg = Arguments[index];
 
                 _logBuilder.AppendLine($"[{ index }]: { arg }");
             }
 
             _logBuilder.AppendLine();
+
+            if (Arguments.Length >= 4)
+            {
+                string executablePath = Arguments[3];
+
+                ExecutablePath = executablePath;
+
+                _worker = new BackgroundWorker { WorkerReportsProgress = true, WorkerSupportsCancellation = true };
+
+                _worker.DoWork += Worker_DoWork;
+
+                _worker.ProgressChanged += Worker_ProgressChanged;
+
+                _worker.RunWorkerCompleted += Worker_RunWorkerCompleted;
+
+                _worker.RunWorkerAsync();
+            }
+        }
+
+        private void Worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            try
+            {
+                if (e.Error != null)
+                {
+                    throw e.Error;
+                }
+
+                if (!e.Cancelled)
+                {
+                    ktxtInformation.Text = @"Finished";
+
+                    try
+                    {
+                        ProcessStartInfo psi = new ProcessStartInfo(ExecutablePath);
+
+                        if (Arguments.Length >= 4)
+                        {
+                            psi.Arguments = Arguments[4];
+                        }
+
+                        Process.Start(psi);
+
+                        _logBuilder.AppendLine("Successfully launched the updated application.");
+                    }
+                    catch (Win32Exception exc)
+                    {
+                        if (exc.ErrorCode != 1223)
+                        {
+                            throw;
+                        }
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                _logBuilder.AppendLine();
+
+                _logBuilder.AppendLine(exception.ToString());
+
+                KryptonMessageBoxExtended.Show(exception.Message, exception.GetType().ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                _logBuilder.AppendLine();
+
+                Application.Exit();
+            }
+        }
+
+        private void Worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            pbProgress.Value = e.ProgressPercentage;
+
+            ktxtInformation.Text = e.UserState.ToString();
+        }
+
+        private void Worker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            foreach (var process in Process.GetProcessesByName(Path.GetFileNameWithoutExtension(ExecutablePath)))
+            {
+                try
+                {
+                    if (process.MainModule != null && process.MainModule.FileName.Equals(ExecutablePath))
+                    {
+                        _logBuilder.AppendLine("Waiting for application process to exit...");
+
+                        _worker.ReportProgress(0, "Waiting for application to exit...");
+
+                        process.WaitForExit();
+                    }
+                }
+                catch (Exception exc)
+                {
+                    ExceptionHandler.CaptureException(exc);
+
+                    Debug.WriteLine(exc.Message);
+                }
+
+                _logBuilder.AppendLine("BackgroundWorker started successfully.");
+
+                var path = Arguments[2];
+
+                // Ensures that the last character on the extraction path
+                // is the directory separator char.
+                // Without this, a malicious zip file could try to traverse outside of the expected
+                // extraction path.
+                if (!path.EndsWith(Path.DirectorySeparatorChar.ToString(), StringComparison.Ordinal))
+                {
+                    path += Path.DirectorySeparatorChar;
+                }
+
+#if NET45
+                var archive = ZipFile.OpenRead(Arguments[1]);
+
+                var entries = archive.Entries;
+#else
+                var zip = ZipStorer.Open(Arguments[1], FileAccess.Read);
+
+                var entries = zip.ReadCentralDir();
+#endif
+
+                _logBuilder.AppendLine($"Found total of { entries.Count } files and folders inside the zip file.");
+
+                try
+                {
+                    int progress = 0;
+
+                    for (int index = 0; index < entries.Count; index++)
+                    {
+                        if (_worker.CancellationPending)
+                        {
+                            e.Cancel = true;
+
+                            break;
+                        }
+
+                        var entry = entries[index];
+
+#if NET45
+                        string currentFile = string.Format(Resources.CurrentFileExtracting, entry.FullName);
+#else
+                        string currentFile = string.Format(Resources.CurrentFileExtracting, entry.FilenameInZip);
+#endif
+
+                        _worker.ReportProgress(progress, currentFile);
+
+                        int retries = 0;
+
+                        bool notCopied = true;
+
+                        while (notCopied)
+                        {
+                            string filePath = string.Empty;
+
+                            try
+                            {
+#if NET45
+                                filePath = Path.Combine(path, entry.FullName);
+
+                                if (!entry.IsDirectory())
+	                            {
+                                    var parentDirectory = Path.GetDirectoryName(filePath);
+
+                                    if (!Directory.Exists(parentDirectory))
+                                    {
+                                        Directory.CreateDirectory(parentDirectory);
+                                    }
+
+                                    entry.ExtractToFile(filePath, true);
+	                            }
+#else
+                                filePath = Path.Combine(path, entry.FilenameInZip);
+
+                                zip.ExtractFile(entry, filePath);
+#endif
+
+                                notCopied = false;
+                            }
+                            catch (IOException ioe)
+                            {
+                                const int ERROR_SHARING_VIOLATION = 0x20, ERROR_LOCK_VIOLATION = 0x21;
+
+                                var errorCode = Marshal.GetHRForException(ioe) & 0x0000FFFF;
+
+                                if (errorCode == ERROR_SHARING_VIOLATION || errorCode == ERROR_LOCK_VIOLATION)
+                                {
+                                    retries++;
+
+                                    if (retries > MAX_RETRIES)
+                                    {
+                                        throw;
+                                    }
+
+                                    List<Process> lockingProcesses = null;
+
+                                    if (Environment.OSVersion.Version.Major >= 6 && retries >= 2)
+                                    {
+                                        try
+                                        {
+                                            lockingProcesses = Suite.Extended.Software.Updater.ZipExtractor.FileUtilities.WhoIsLocking(filePath);
+                                        }
+                                        catch (Exception)
+                                        {
+
+                                        }
+                                    }
+
+                                    if (lockingProcesses == null)
+                                    {
+                                        Thread.Sleep(5000);
+                                    }
+                                    else
+                                    {
+                                        foreach (var lockingProcess in lockingProcesses)
+                                        {
+                                            var result = KryptonMessageBoxExtended.Show(string.Format(Resources.FileStillInUseMessage, lockingProcess.ProcessName, filePath), Resources.FileStillInUseCaption, MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+
+                                            if (result == DialogResult.Cancel)
+                                            {
+                                                throw;
+                                            }
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    throw;
+                                }
+                            }
+                        }
+
+                        progress = (index + 1) * 100 / entries.Count;
+
+                        _worker.ReportProgress(progress, currentFile);
+
+                        _logBuilder.AppendLine($"{ currentFile } [{ progress }%]");
+                    }
+                }
+                finally
+                {
+#if NET45
+                    archive.Dispose();
+#else
+                    zip.Close();
+#endif
+                }
+            }
         }
 
         private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)

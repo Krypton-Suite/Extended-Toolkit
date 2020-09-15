@@ -42,6 +42,7 @@
 * New `Networking` NuGet package
 * Stable packages will now use the stable `Krypton.*` standard toolkit & vice-versa
 * General bugfixes
+* Fix for 'ZipExtractor' in `Software.Updaters` package
 * Updated standard toolkit to build `2011`
 
 =======
