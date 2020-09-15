@@ -1,11 +1,8 @@
 ﻿using Krypton.Toolkit.Suite.Extended.Software.Updater.Properties;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using System.IO.Compression;
 using System.Text;
 using System.Windows.Forms;
 
@@ -95,6 +92,10 @@ namespace Krypton.Toolkit.Extended.Software.Updater.ZipExtractor
         private StringBuilder _logBuilder = new StringBuilder();
         #endregion
 
+        #region Constants
+        private const int MAX_RETRIES = 2;
+        #endregion
+
         #region Constructor
         public MainWindow(Icon appIcon, Bitmap applicationIcon)
         {
@@ -125,140 +126,21 @@ namespace Krypton.Toolkit.Extended.Software.Updater.ZipExtractor
         private void MainWindow_Shown(object sender, EventArgs e)
         {
             _logBuilder.AppendLine(DateTime.Now.ToString("F"));
+
             _logBuilder.AppendLine();
+
             _logBuilder.AppendLine("ZipExtractor started with following command line arguments.");
 
             string[] args = Environment.GetCommandLineArgs();
+
             for (var index = 0; index < args.Length; index++)
             {
                 var arg = args[index];
-                _logBuilder.AppendLine($"[{index}] {arg}");
+
+                _logBuilder.AppendLine($"[{ index }]: { arg }");
             }
 
             _logBuilder.AppendLine();
-
-            if (args.Length >= 4)
-            {
-                string executablePath = args[3];
-
-                // Extract all the files.
-                _worker = new BackgroundWorker
-                {
-                    WorkerReportsProgress = true,
-                    WorkerSupportsCancellation = true
-                };
-
-                _worker.DoWork += (o, eventArgs) =>
-                {
-                    foreach (var process in Process.GetProcesses())
-                    {
-                        try
-                        {
-                            if (process.MainModule.FileName.Equals(executablePath))
-                            {
-                                _logBuilder.AppendLine("Waiting for application process to exit...");
-
-                                _worker.ReportProgress(0, "Waiting for application to exit...");
-                                process.WaitForExit();
-                            }
-                        }
-                        catch (Exception exception)
-                        {
-                            Debug.WriteLine(exception.Message);
-                        }
-                    }
-
-                    _logBuilder.AppendLine("BackgroundWorker started successfully.");
-
-                    var path = args[2];
-
-                    // Open an existing zip file for reading.
-                    ZipStorer zip = ZipStorer.Open(args[1], FileAccess.Read);
-
-                    // Read the central directory collection.
-                    List<ZipStorer.ZipFileEntry> dir = zip.ReadCentralDir();
-
-                    _logBuilder.AppendLine($"Found total of {dir.Count} files and folders inside the zip file.");
-
-                    for (var index = 0; index < dir.Count; index++)
-                    {
-                        if (_worker.CancellationPending)
-                        {
-                            eventArgs.Cancel = true;
-                            zip.Close();
-                            return;
-                        }
-
-                        ZipStorer.ZipFileEntry entry = dir[index];
-                        zip.ExtractFile(entry, Path.Combine(path, entry.FilenameInZip));
-                        string currentFile = string.Format(Resources.CurrentFileExtracting, entry.FilenameInZip);
-                        int progress = (index + 1) * 100 / dir.Count;
-                        _worker.ReportProgress(progress, currentFile);
-
-                        _logBuilder.AppendLine($"{currentFile} [{progress}%]");
-                    }
-
-                    zip.Close();
-                };
-
-                _worker.ProgressChanged += (o, eventArgs) =>
-                {
-                    pbProgress.Value = eventArgs.ProgressPercentage;
-                    ktxtInformation.Text = eventArgs.UserState.ToString();
-                    //? ktxtInformation.SelectionStart = ktxtInformation.Text.Length;
-                    //? ktxtInformation.SelectionLength = 0;
-                };
-
-                _worker.RunWorkerCompleted += (o, eventArgs) =>
-                {
-                    try
-                    {
-                        if (eventArgs.Error != null)
-                        {
-                            throw eventArgs.Error;
-                        }
-
-                        if (!eventArgs.Cancelled)
-                        {
-                            ktxtInformation.Text = @"Finished";
-                            try
-                            {
-                                ProcessStartInfo processStartInfo = new ProcessStartInfo(executablePath);
-                                if (args.Length > 4)
-                                {
-                                    processStartInfo.Arguments = args[4];
-                                }
-
-                                Process.Start(processStartInfo);
-
-                                _logBuilder.AppendLine("Successfully launched the updated application.");
-                            }
-                            catch (Win32Exception exception)
-                            {
-                                if (exception.NativeErrorCode != 1223)
-                                {
-                                    throw;
-                                }
-                            }
-                        }
-                    }
-                    catch (Exception exception)
-                    {
-                        _logBuilder.AppendLine();
-                        _logBuilder.AppendLine(exception.ToString());
-
-                        KryptonMessageBox.Show(exception.Message, exception.GetType().ToString(),
-                            MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    finally
-                    {
-                        _logBuilder.AppendLine();
-                        Application.Exit();
-                    }
-                };
-
-                _worker.RunWorkerAsync();
-            }
         }
 
         private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
