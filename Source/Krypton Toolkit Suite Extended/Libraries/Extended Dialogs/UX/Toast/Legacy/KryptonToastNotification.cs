@@ -1,8 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics;
+using System.Drawing;
+using System.IO;
+using System.Media;
+using System.Windows.Forms;
+using Krypton.Toolkit.Suite.Extended.Dialogs.Resources;
 
 namespace Krypton.Toolkit.Suite.Extended.Dialogs.Legacy
 {
@@ -365,31 +367,31 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Legacy
             }
             else if (iconType == IconType.QUESTION)
             {
-                pbxIcon.Image = BitmapToImage(Properties.Resources.Question_128_x_128);
+                pbxIcon.Image = BitmapToImage(InputBoxResources.Question_128_x_128);
             }
             else if (iconType == IconType.INFORMATION)
             {
-                pbxIcon.Image = BitmapToImage(Properties.Resources.Information_128_x_128);
+                pbxIcon.Image = BitmapToImage(InputBoxResources.Information_128_x_128);
             }
             else if (iconType == IconType.WARNING)
             {
-                pbxIcon.Image = BitmapToImage(Properties.Resources.Warning_128_x_128);
+                pbxIcon.Image = BitmapToImage(InputBoxResources.Warning_128_x_128);
             }
             else if (iconType == IconType.ERROR)
             {
-                pbxIcon.Image = BitmapToImage(Properties.Resources.Critical_128_x_128);
+                pbxIcon.Image = BitmapToImage(InputBoxResources.Critical_128_x_128);
             }
             else if (iconType == IconType.HAND)
             {
-                pbxIcon.Image = BitmapToImage(Properties.Resources.Hand_128_x_128);
+                pbxIcon.Image = BitmapToImage(InputBoxResources.Hand_128_x_128);
             }
             else if (iconType == IconType.STOP)
             {
-                pbxIcon.Image = BitmapToImage(Properties.Resources.Stop_128_x_128);
+                pbxIcon.Image = BitmapToImage(InputBoxResources.Stop_128_x_128);
             }
             else if (iconType == IconType.OK)
             {
-                pbxIcon.Image = BitmapToImage(Properties.Resources.Ok_128_x_128);
+                pbxIcon.Image = BitmapToImage(InputBoxResources.Ok_128_x_128);
             }
             #endregion
 
@@ -669,31 +671,31 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Legacy
                 case IconType.NONE:
                     break;
                 case IconType.QUESTION:
-                    pbxIcon.Image = Properties.Resources.Question_128_x_128;
+                    pbxIcon.Image = InputBoxResources.Question_128_x_128;
 
                     SystemSounds.Question.Play();
                     break;
                 case IconType.INFORMATION:
-                    pbxIcon.Image = Properties.Resources.Information_128_x_128;
+                    pbxIcon.Image = InputBoxResources.Information_128_x_128;
 
                     SystemSounds.Exclamation.Play();
                     break;
                 case IconType.WARNING:
-                    pbxIcon.Image = Properties.Resources.Warning_128_x_128;
+                    pbxIcon.Image = InputBoxResources.Warning_128_x_128;
 
                     SystemSounds.Exclamation.Play();
                     break;
                 case IconType.ERROR:
-                    pbxIcon.Image = Properties.Resources.Critical_128_x_128;
+                    pbxIcon.Image = InputBoxResources.Critical_128_x_128;
                     break;
                 case IconType.HAND:
-                    pbxIcon.Image = Properties.Resources.Hand_128_x_128;
+                    pbxIcon.Image = InputBoxResources.Hand_128_x_128;
                     break;
                 case IconType.STOP:
-                    pbxIcon.Image = Properties.Resources.Stop_128_x_128;
+                    pbxIcon.Image = InputBoxResources.Stop_128_x_128;
                     break;
                 case IconType.OK:
-                    pbxIcon.Image = Properties.Resources.Ok_128_x_128;
+                    pbxIcon.Image = InputBoxResources.Ok_128_x_128;
                     break;
                 default:
                     break;
