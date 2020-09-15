@@ -38,6 +38,14 @@
 
 =======
 
+## 2020-11-01 - Build 2011 - November 2011
+* New `Networking` NuGet package
+* Stable packages will now use the stable `Krypton.*` standard toolkit & vice-versa
+* General bugfixes
+* Updated standard toolkit to build `2011`
+
+=======
+
 ## 2020-10-01 - Build 2010 - October 2020
 * Improved NuGet package descriptions
 * Fixed [#21](https://github.com/Krypton-Suite/Extended-Toolkit/issues/21), OutlookGrid Column right click causes error. Thanks to [dax-leo](https://github.com/dax-leo)
