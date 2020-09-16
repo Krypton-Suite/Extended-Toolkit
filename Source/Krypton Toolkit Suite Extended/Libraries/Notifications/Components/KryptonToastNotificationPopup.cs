@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Suite.Extended.Dialogs
+namespace Krypton.Toolkit.Suite.Extended.Notifications
 {
     /// <summary>
     /// Non-visual component to show a notification window in the right lower
@@ -55,7 +55,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         [Category("Appearance"), DefaultValue(typeof(Color), "Control")]
         [Description("Colour of the window background.")]
         public Color BodyColour { get; set; }
-
+        
         [Category("Title"), DefaultValue(typeof(Color), "Gray")]
         [Description("Colour of the title text.")]
         public Color TitleColour { get; set; }

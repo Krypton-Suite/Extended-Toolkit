@@ -95,7 +95,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build Tools", "Build Tools"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Data.Visualisation", "Libraries\Data Visualisation\Krypton.Toolkit.Suite.Extended.Data.Visualisation.csproj", "{344A1AFD-6F59-4B7A-ADAD-C1C76A873D9B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton.Toolkit.Suite.Extended.Networking", "Libraries\Networking\Krypton.Toolkit.Suite.Extended.Networking.csproj", "{7AFE829E-3C03-4DC8-B76F-4B8E6D97A525}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Networking", "Libraries\Networking\Krypton.Toolkit.Suite.Extended.Networking.csproj", "{7AFE829E-3C03-4DC8-B76F-4B8E6D97A525}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton.Toolkit.Suite.Extended.Notifications", "Libraries\Notifications\Krypton.Toolkit.Suite.Extended.Notifications.csproj", "{A1512DD6-7B4B-43E5-9C87-E85D83E82030}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -219,6 +221,10 @@ Global
 		{7AFE829E-3C03-4DC8-B76F-4B8E6D97A525}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7AFE829E-3C03-4DC8-B76F-4B8E6D97A525}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7AFE829E-3C03-4DC8-B76F-4B8E6D97A525}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1512DD6-7B4B-43E5-9C87-E85D83E82030}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1512DD6-7B4B-43E5-9C87-E85D83E82030}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1512DD6-7B4B-43E5-9C87-E85D83E82030}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1512DD6-7B4B-43E5-9C87-E85D83E82030}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -254,6 +260,7 @@ Global
 		{126FA20A-D91D-4F97-926D-DE6E72A77868} = {1F1DCECC-C25F-4E91-9C8A-ECCBB9827BBA}
 		{344A1AFD-6F59-4B7A-ADAD-C1C76A873D9B} = {1F1DCECC-C25F-4E91-9C8A-ECCBB9827BBA}
 		{7AFE829E-3C03-4DC8-B76F-4B8E6D97A525} = {1F1DCECC-C25F-4E91-9C8A-ECCBB9827BBA}
+		{A1512DD6-7B4B-43E5-9C87-E85D83E82030} = {1F1DCECC-C25F-4E91-9C8A-ECCBB9827BBA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9A189168-3746-4F9F-8C61-863D83D8ABD2}

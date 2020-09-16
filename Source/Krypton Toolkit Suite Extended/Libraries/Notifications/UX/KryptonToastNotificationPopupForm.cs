@@ -3,10 +3,15 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Suite.Extended.Dialogs
+namespace Krypton.Toolkit.Suite.Extended.Notifications
 {
+    /// <summary>
+    /// The container UI for <seealso cref="KryptonToastNotificationPopup" /> component.
+    /// </summary>
+    /// <seealso cref="Krypton.Toolkit.KryptonForm" />
     public class KryptonToastNotificationPopupForm : KryptonForm
     {
+        #region Design Code
         private void InitializeComponent()
         {
             this.kpnlBack = new Krypton.Toolkit.KryptonPanel();
@@ -33,6 +38,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.ResumeLayout(false);
 
         }
+        #endregion
 
         #region Overrides
         protected override bool ShowWithoutActivation { get => true; }
