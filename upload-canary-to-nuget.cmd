@@ -43,6 +43,10 @@ dotnet nuget push Krypton.Toolkit.Suite.Extended.Language.Model.Canary.5.550.<#B
 
 dotnet nuget push Krypton.Toolkit.Suite.Extended.Navi.Suite.Canary.5.550.<#BUILD#>.nupkg -k <#API-KEY#> -s https://api.nuget.org/v3/index.json
 
+dotnet nuget push Krypton.Toolkit.Suite.Extended.Networking.Canary.5.550.<#BUILD#>.nupkg -k <#API-KEY#> -s https://api.nuget.org/v3/index.json
+
+dotnet nuget push Krypton.Toolkit.Suite.Extended.Notifications.Canary.5.550.<#BUILD#>.nuget -k <#API-KEY#> -s https://api.nuget.org/v3/index.json
+
 dotnet nuget push Krypton.Toolkit.Suite.Extended.Outlook.Grid.Canary.5.550.<#BUILD#>.nupkg -k <#API-KEY#> -s https://api.nuget.org/v3/index.json
 
 dotnet nuget push Krypton.Toolkit.Suite.Extended.Palette.Controller.Canary.5.550.<#BUILD#>.nupkg -k <#API-KEY#> -s https://api.nuget.org/v3/index.json

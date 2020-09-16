@@ -1,5 +1,9 @@
-﻿using System;
+﻿using Krypton.Toolkit.Suite.Extended.Notifications.Properties;
+using System;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
+using System.Media;
 using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Notifications
@@ -339,31 +343,31 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
             }
             else if (iconType == IconType.QUESTION)
             {
-                pbxIcon.Image = BitmapToImage(InputBoxResources.Input_Box_Question_64_x_64);
+                pbxIcon.Image = BitmapToImage(Resources.Input_Box_Question_64_x_64);
             }
             else if (iconType == IconType.INFORMATION)
             {
-                pbxIcon.Image = BitmapToImage(InputBoxResources.Input_Box_Information_64_x_64);
+                pbxIcon.Image = BitmapToImage(Resources.Input_Box_Information_64_x_64);
             }
             else if (iconType == IconType.WARNING)
             {
-                pbxIcon.Image = BitmapToImage(InputBoxResources.Input_Box_Warning_64_x_58);
+                pbxIcon.Image = BitmapToImage(Resources.Input_Box_Warning_64_x_58);
             }
             else if (iconType == IconType.ERROR)
             {
-                pbxIcon.Image = BitmapToImage(InputBoxResources.Input_Box_Critical_64_x_64);
+                pbxIcon.Image = BitmapToImage(Resources.Input_Box_Critical_64_x_64);
             }
             else if (iconType == IconType.HAND)
             {
-                pbxIcon.Image = BitmapToImage(InputBoxResources.Input_Box_Hand_64_x_64);
+                pbxIcon.Image = BitmapToImage(Resources.Input_Box_Hand_64_x_64);
             }
             else if (iconType == IconType.STOP)
             {
-                pbxIcon.Image = BitmapToImage(InputBoxResources.Input_Box_Stop_64_x_64);
+                pbxIcon.Image = BitmapToImage(Resources.Input_Box_Stop_64_x_64);
             }
             else if (iconType == IconType.OK)
             {
-                pbxIcon.Image = BitmapToImage(InputBoxResources.Input_Box_Ok_64_x_64);
+                pbxIcon.Image = BitmapToImage(Resources.Input_Box_Ok_64_x_64);
             }
             #endregion
 
@@ -652,31 +656,31 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
                     AdjustLayout(new Size(622, 58), new Size(622, 153), new Point(12, 6), new Point(470, 6), false);
                     break;
                 case IconType.QUESTION:
-                    pbxIcon.Image = InputBoxResources.Input_Box_Question_64_x_64;
+                    pbxIcon.Image = Resources.Input_Box_Question_64_x_64;
 
                     SystemSounds.Question.Play();
                     break;
                 case IconType.INFORMATION:
-                    pbxIcon.Image = InputBoxResources.Input_Box_Information_64_x_64;
+                    pbxIcon.Image = Resources.Input_Box_Information_64_x_64;
 
                     SystemSounds.Exclamation.Play();
                     break;
                 case IconType.WARNING:
-                    pbxIcon.Image = InputBoxResources.Input_Box_Warning_64_x_58;
+                    pbxIcon.Image = Resources.Input_Box_Warning_64_x_58;
 
                     SystemSounds.Exclamation.Play();
                     break;
                 case IconType.ERROR:
-                    pbxIcon.Image = InputBoxResources.Input_Box_Critical_64_x_64;
+                    pbxIcon.Image = Resources.Input_Box_Critical_64_x_64;
                     break;
                 case IconType.HAND:
-                    pbxIcon.Image = InputBoxResources.Input_Box_Hand_64_x_64;
+                    pbxIcon.Image = Resources.Input_Box_Hand_64_x_64;
                     break;
                 case IconType.STOP:
-                    pbxIcon.Image = InputBoxResources.Input_Box_Stop_64_x_64;
+                    pbxIcon.Image = Resources.Input_Box_Stop_64_x_64;
                     break;
                 case IconType.OK:
-                    pbxIcon.Image = InputBoxResources.Input_Box_Ok_64_x_64;
+                    pbxIcon.Image = Resources.Input_Box_Ok_64_x_64;
                     break;
                 default:
                     break;
@@ -882,6 +886,8 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
             }
         }
         #endregion
+
+        #region IToastNotificationUIElements Implementation
         public KryptonForm BaseWindow { get => this; }
         public KryptonPanel ContentPanel { get => kpnlContent; }
         public KryptonPanel ButtonPanel { get => kpnlButtons; }
@@ -891,5 +897,6 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         public KryptonButton DismissButton { get => kbtneDismiss; }
         public Panel SplitterPanel { get => pnlSplitter; }
         public PictureBox IconBox { get => pbxIcon; }
+        #endregion
     }
 }

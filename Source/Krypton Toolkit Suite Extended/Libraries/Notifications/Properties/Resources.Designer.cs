@@ -101,6 +101,286 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Input_Box_Critical_128_x_128 {
+            get {
+                object obj = ResourceManager.GetObject("Input_Box_Critical_128_x_128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Input_Box_Critical_32_x_32 {
+            get {
+                object obj = ResourceManager.GetObject("Input_Box_Critical_32_x_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Input_Box_Critical_48_x_48 {
+            get {
+                object obj = ResourceManager.GetObject("Input_Box_Critical_48_x_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Input_Box_Critical_64_x_64 {
+            get {
+                object obj = ResourceManager.GetObject("Input_Box_Critical_64_x_64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Input_Box_Hand_128_x_128 {
+            get {
+                object obj = ResourceManager.GetObject("Input_Box_Hand_128_x_128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Input_Box_Hand_32_x_32 {
+            get {
+                object obj = ResourceManager.GetObject("Input_Box_Hand_32_x_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Input_Box_Hand_48_x_48 {
+            get {
+                object obj = ResourceManager.GetObject("Input_Box_Hand_48_x_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Input_Box_Hand_64_x_64 {
+            get {
+                object obj = ResourceManager.GetObject("Input_Box_Hand_64_x_64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Input_Box_Information_128_x_128 {
+            get {
+                object obj = ResourceManager.GetObject("Input_Box_Information_128_x_128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Input_Box_Information_32_x_32 {
+            get {
+                object obj = ResourceManager.GetObject("Input_Box_Information_32_x_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Input_Box_Information_48_x_48 {
+            get {
+                object obj = ResourceManager.GetObject("Input_Box_Information_48_x_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Input_Box_Information_64_x_64 {
+            get {
+                object obj = ResourceManager.GetObject("Input_Box_Information_64_x_64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Input_Box_Ok_128_x_128 {
+            get {
+                object obj = ResourceManager.GetObject("Input_Box_Ok_128_x_128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Input_Box_Ok_32_x_32 {
+            get {
+                object obj = ResourceManager.GetObject("Input_Box_Ok_32_x_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Input_Box_Ok_48_x_48 {
+            get {
+                object obj = ResourceManager.GetObject("Input_Box_Ok_48_x_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Input_Box_Ok_64_x_64 {
+            get {
+                object obj = ResourceManager.GetObject("Input_Box_Ok_64_x_64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Input_Box_Question_128_x_128 {
+            get {
+                object obj = ResourceManager.GetObject("Input_Box_Question_128_x_128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Input_Box_Question_32_x_32 {
+            get {
+                object obj = ResourceManager.GetObject("Input_Box_Question_32_x_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Input_Box_Question_48_x_48 {
+            get {
+                object obj = ResourceManager.GetObject("Input_Box_Question_48_x_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Input_Box_Question_64_x_64 {
+            get {
+                object obj = ResourceManager.GetObject("Input_Box_Question_64_x_64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Input_Box_Stop_128_x_128 {
+            get {
+                object obj = ResourceManager.GetObject("Input_Box_Stop_128_x_128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Input_Box_Stop_32_x_32 {
+            get {
+                object obj = ResourceManager.GetObject("Input_Box_Stop_32_x_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Input_Box_Stop_48_x_48 {
+            get {
+                object obj = ResourceManager.GetObject("Input_Box_Stop_48_x_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Input_Box_Stop_64_x_64 {
+            get {
+                object obj = ResourceManager.GetObject("Input_Box_Stop_64_x_64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Input_Box_Warning_128_x_115 {
+            get {
+                object obj = ResourceManager.GetObject("Input_Box_Warning_128_x_115", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Input_Box_Warning_32_x_29 {
+            get {
+                object obj = ResourceManager.GetObject("Input_Box_Warning_32_x_29", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Input_Box_Warning_48_x_43 {
+            get {
+                object obj = ResourceManager.GetObject("Input_Box_Warning_48_x_43", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Input_Box_Warning_64_x_58 {
+            get {
+                object obj = ResourceManager.GetObject("Input_Box_Warning_64_x_58", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
         internal static System.Drawing.Icon KR_48_x_48_Orange {

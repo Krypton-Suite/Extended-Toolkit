@@ -97,7 +97,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Exten
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Networking", "Libraries\Networking\Krypton.Toolkit.Suite.Extended.Networking.csproj", "{7AFE829E-3C03-4DC8-B76F-4B8E6D97A525}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton.Toolkit.Suite.Extended.Notifications", "Libraries\Notifications\Krypton.Toolkit.Suite.Extended.Notifications.csproj", "{A1512DD6-7B4B-43E5-9C87-E85D83E82030}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Notifications", "Libraries\Notifications\Krypton.Toolkit.Suite.Extended.Notifications.csproj", "{A1512DD6-7B4B-43E5-9C87-E85D83E82030}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5E8758D3-BE51-474E-9CED-4E55EE1297DF} = {5E8758D3-BE51-474E-9CED-4E55EE1297DF}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

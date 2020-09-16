@@ -28,7 +28,7 @@
   <PropertyGroup>
     <PackageId>Krypton.Toolkit.Suite.Extended.Palette.Utilities.Canary</PackageId>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Canary</PackageOutputPath>
-    <PackageIconUrl>https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/Assets/PNG/Main%20Icon/64%20x%2064/Main%20Icon%2064%20x%2064%20Canary.png</PackageIconUrl>
+    <PackageIconUrl>https://tinyurl.com/KryptonCanaryIcon</PackageIconUrl>
   </PropertyGroup>
 
   <!--Version configuration-->

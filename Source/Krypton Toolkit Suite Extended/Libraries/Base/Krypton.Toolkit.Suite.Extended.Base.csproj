@@ -30,7 +30,7 @@
   <PropertyGroup>
     <PackageId>Krypton.Toolkit.Suite.Extended.Base.Canary</PackageId>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Canary</PackageOutputPath>
-    <PackageIcon>Icon Canary.png</PackageIcon>
+    <PackageIconUrl>https://tinyurl.com/KryptonCanaryIcon</PackageIconUrl>
   </PropertyGroup>
   
   <!--Version configuration-->
