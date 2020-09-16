@@ -76,7 +76,6 @@
 
   <ItemGroup>
     <Folder Include="Controls\Colours\" />
-    <Folder Include="UX\Toast\Legacy\" />
   </ItemGroup>
 
   <ItemGroup>
