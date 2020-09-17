@@ -43,6 +43,10 @@ dotnet nuget push Krypton.Toolkit.Suite.Extended.Language.Model.5.550.<#BUILD#>.
 
 dotnet nuget push Krypton.Toolkit.Suite.Extended.Navi.Suite.5.550.<#BUILD#>.nupkg -k <#API-KEY#> -s https://api.nuget.org/v3/index.json
 
+dotnet nuget push Krypton.Toolkit.Suite.Extended.Networking.5.550.<#BUILD#>.nupkg -k <#API-KEY#> -s https://api.nuget.org/v3/index.json
+
+dotnet nuget push Krypton.Toolkit.Suite.Extended.Notifications.5.550.<#BUILD#>.nupkg -k <#API-KEY#> -s https://api.nuget.org/v3/index.json
+
 dotnet nuget push Krypton.Toolkit.Suite.Extended.Outlook.Grid.5.550.<#BUILD#>.nupkg -k <#API-KEY#> -s https://api.nuget.org/v3/index.json
 
 dotnet nuget push Krypton.Toolkit.Suite.Extended.Palette.Controller.5.550.<#BUILD#>.nupkg -k <#API-KEY#> -s https://api.nuget.org/v3/index.json
