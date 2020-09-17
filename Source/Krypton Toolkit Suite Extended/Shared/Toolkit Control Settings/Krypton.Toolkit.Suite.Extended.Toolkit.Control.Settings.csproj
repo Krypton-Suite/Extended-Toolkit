@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <LangVersion>8.0</LangVersion>
+    <TargetFrameworks>net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;net5.0</TargetFrameworks>
+    <TargetFrameworks Condition="'$(TFMs)' == 'all'">net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;net5.0</TargetFrameworks>    
+    <RootNamespace>Krypton.Toolkit.Suite.Extended.Toolkit.Control.Settings</RootNamespace>
+    <UseWindowsForms>true</UseWindowsForms>
+    <OutputType>Library</OutputType>
+  </PropertyGroup>
+
+  <!--<PropertyGroup>
+    <-<PackageId>Krypton.Toolkit.Extended.Control.Settings.Canary</PackageId>->
+    <PackageId>Krypton.Toolkit.Suite.Extended.Control.Settings</PackageId>
+    <PackageOutputPath>..\..\..\..\Bin\NuGet</PackageOutputPath>
+    <PackagePath></PackagePath>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Version>5.550.2010</Version>
+    <Description>Contains toolkit control settings.</Description>
+    <RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
+    <PackageLicenseFile></PackageLicenseFile>
+  </PropertyGroup>-->
+
+  <PropertyGroup>
+    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Toolkit.Control.Settings\Krypton.Toolkit.Suite.Extended.Toolkit.Control.Settings.xml</DocumentationFile>
+    <OutputPath>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Toolkit.Control.Settings\</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <AssemblyVersion>5.550.2010</AssemblyVersion>
+    <FileVersion>5.550.2010</FileVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2008" />
+  </ItemGroup>
+
+</Project>
