@@ -52,6 +52,8 @@
 * Fixed [#21](https://github.com/Krypton-Suite/Extended-Toolkit/issues/21), OutlookGrid Column right click causes error. Thanks to [dax-leo](https://github.com/dax-leo)
 * New `Data Visualisation` NuGet package for charts & graphs
 * New `KryptonDriveComboBox` & `KryptonImageComboBox` in `Base`
+* New `Notifications` NuGet package
+* ***Warning: Please uninstall ANY previous versions before installing this build!***
 
 =======
 
@@ -120,4 +122,4 @@
 * Support for .NET Core LTS (currently 3.1)
 * Changed `490` to `500`
 * Builds from now on will be labelled as `YYMM`
-* **Before installing, please follow [this](https://github.com/Krypton-Suite/Standard-Toolkit-Online-Help/blob/master/Source/Documentation/Standard%20Toolkit%20Migration%20Guide.md) as the toolkit now uses different namespaces!**
+* ***Before installing, please follow [this](https://github.com/Krypton-Suite/Standard-Toolkit-Online-Help/blob/master/Source/Documentation/Standard%20Toolkit%20Migration%20Guide.md) as the toolkit now uses different namespaces!***
