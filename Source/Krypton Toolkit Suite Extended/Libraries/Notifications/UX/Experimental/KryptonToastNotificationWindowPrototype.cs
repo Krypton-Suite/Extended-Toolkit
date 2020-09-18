@@ -1,4 +1,4 @@
-﻿using Krypton.Toolkit.Suite.Extended.Dialogs.Resources;
+﻿using Krypton.Toolkit.Suite.Extended.Notifications.Properties;
 using System;
 using System.Diagnostics;
 using System.Drawing;
@@ -6,7 +6,7 @@ using System.IO;
 using System.Media;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Suite.Extended.Dialogs.Experimental
+namespace Krypton.Toolkit.Suite.Extended.Notifications.Experimental
 {
     /// <summary>
     /// Adapted from: https://github.com/dotCoefficient/Notification/blob/master/Notification/Notification.cs
@@ -717,31 +717,31 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Experimental
                     AdjustLayout(new Size(622, 58), new Size(622, 153), new Point(12, 6), new Point(470, 6), false);
                     break;
                 case IconType.QUESTION:
-                    pbxIcon.Image = InputBoxResources.Input_Box_Question_64_x_64;
+                    pbxIcon.Image = Resources.Input_Box_Question_64_x_64;
 
                     SystemSounds.Question.Play();
                     break;
                 case IconType.INFORMATION:
-                    pbxIcon.Image = InputBoxResources.Input_Box_Information_64_x_64;
+                    pbxIcon.Image = Resources.Input_Box_Information_64_x_64;
 
                     SystemSounds.Exclamation.Play();
                     break;
                 case IconType.WARNING:
-                    pbxIcon.Image = InputBoxResources.Input_Box_Warning_64_x_58;
+                    pbxIcon.Image = Resources.Input_Box_Warning_64_x_58;
 
                     SystemSounds.Exclamation.Play();
                     break;
                 case IconType.ERROR:
-                    pbxIcon.Image = InputBoxResources.Input_Box_Critical_64_x_64;
+                    pbxIcon.Image = Resources.Input_Box_Critical_64_x_64;
                     break;
                 case IconType.HAND:
-                    pbxIcon.Image = InputBoxResources.Input_Box_Hand_64_x_64;
+                    pbxIcon.Image = Resources.Input_Box_Hand_64_x_64;
                     break;
                 case IconType.STOP:
-                    pbxIcon.Image = InputBoxResources.Input_Box_Stop_64_x_64;
+                    pbxIcon.Image = Resources.Input_Box_Stop_64_x_64;
                     break;
                 case IconType.OK:
-                    pbxIcon.Image = InputBoxResources.Input_Box_Ok_64_x_64;
+                    pbxIcon.Image = Resources.Input_Box_Ok_64_x_64;
                     break;
             }
         }

@@ -13,6 +13,13 @@
         RIGHT
     }
 
+    public enum DefaultNotificationButton
+    {
+        ACTIONBUTTON,
+        DISMISSBUTTON,
+        NONE
+    }
+
     public enum IconType
     {
         CUSTOM,
