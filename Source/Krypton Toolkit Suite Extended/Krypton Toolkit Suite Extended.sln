@@ -102,6 +102,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Exten
 		{5E8758D3-BE51-474E-9CED-4E55EE1297DF} = {5E8758D3-BE51-474E-9CED-4E55EE1297DF}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton.Toolkit.Suite.Extended.Object.ListView", "Libraries\Object ListView\Krypton.Toolkit.Suite.Extended.Object.ListView.csproj", "{8ED47FF7-8B20-4CFF-A6B1-6D8421932F50}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -228,6 +230,10 @@ Global
 		{A1512DD6-7B4B-43E5-9C87-E85D83E82030}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A1512DD6-7B4B-43E5-9C87-E85D83E82030}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A1512DD6-7B4B-43E5-9C87-E85D83E82030}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8ED47FF7-8B20-4CFF-A6B1-6D8421932F50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8ED47FF7-8B20-4CFF-A6B1-6D8421932F50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8ED47FF7-8B20-4CFF-A6B1-6D8421932F50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8ED47FF7-8B20-4CFF-A6B1-6D8421932F50}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -264,6 +270,7 @@ Global
 		{344A1AFD-6F59-4B7A-ADAD-C1C76A873D9B} = {1F1DCECC-C25F-4E91-9C8A-ECCBB9827BBA}
 		{7AFE829E-3C03-4DC8-B76F-4B8E6D97A525} = {1F1DCECC-C25F-4E91-9C8A-ECCBB9827BBA}
 		{A1512DD6-7B4B-43E5-9C87-E85D83E82030} = {1F1DCECC-C25F-4E91-9C8A-ECCBB9827BBA}
+		{8ED47FF7-8B20-4CFF-A6B1-6D8421932F50} = {1F1DCECC-C25F-4E91-9C8A-ECCBB9827BBA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9A189168-3746-4F9F-8C61-863D83D8ABD2}
