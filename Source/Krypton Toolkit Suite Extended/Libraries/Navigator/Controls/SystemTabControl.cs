@@ -261,7 +261,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             Rectangle TabArea = this.DisplayRectangle;
 
 
-            if (!Utility.IsVista())
+            if (!Utility.IsVistaOrHigher())
             {
                 TabArea.Y = TabArea.Y;
                 TabArea.Width = TabArea.Width + 2;
@@ -525,7 +525,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             }
 
             //use AntiAlias
-            if (Utility.IsVista())
+            if (Utility.IsVistaOrHigher())
             {
                 g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             }

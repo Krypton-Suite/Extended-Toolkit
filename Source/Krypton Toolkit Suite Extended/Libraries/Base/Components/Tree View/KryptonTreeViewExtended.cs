@@ -246,8 +246,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             _paletteContent = new PaletteContentInheritRedirect(_paletteRedirect);
 
             //vista
-            _enableVistaCheckBoxes = Utility.IsVista();
-            _enableVistaSigns = Utility.IsVista();
+            _enableVistaCheckBoxes = Utility.IsVistaOrHigher();
+            _enableVistaSigns = Utility.IsVistaOrHigher();
 
             InitColors();
 
@@ -594,7 +594,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
                         }
 
                         //vista Pixel fix
-                        if (Utility.IsVista() == true)
+                        if (Utility.IsVistaOrHigher() == true)
                         {
                             rect.Offset(-2, -1);
                         }
@@ -604,7 +604,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
                         rect.Offset(16, 0);
 
                         //vista Pixel fix
-                        if (Utility.IsVista() == true)
+                        if (Utility.IsVistaOrHigher() == true)
                         {
                             rect.Offset(-1, 1);
                         }

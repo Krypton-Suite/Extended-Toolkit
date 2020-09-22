@@ -38,20 +38,20 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             return result;
         }
 
-        public static Boolean IsVista()
+        public static bool IsVistaOrHigher()
         {
             // Check OS Before using XP drop shadow
-            Boolean Result = false;
-            Version OSVer = System.Environment.OSVersion.Version;
+            bool result = false;
+            Version OSVer = Environment.OSVersion.Version;
             if (OSVer.Major >= 6)
             {
-                Result = true;
+                result = true;
             }
             else
             {
-                Result = false;
+                result = false;
             }
-            return Result;
+            return result;
         }
 
         public static StringFormat GetStringFormat(ContentAlignment contentAlignment)

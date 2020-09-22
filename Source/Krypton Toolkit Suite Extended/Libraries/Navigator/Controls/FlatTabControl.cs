@@ -874,7 +874,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             }
 
             //use AntiAlias
-            if (Utility.IsVista())
+            if (Utility.IsVistaOrHigher())
             {
                 g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             }
