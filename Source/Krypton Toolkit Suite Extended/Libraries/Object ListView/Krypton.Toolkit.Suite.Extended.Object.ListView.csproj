@@ -15,7 +15,7 @@
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
     <Authors>Phillip Piper (c) 2006 - 2016. Modifications by Krypton Suite, 2020 - 2021</Authors>
-    <PackageTags>ListView, WinForms Controls, WinForms, Krypton, DotNet, DotNet-Core</PackageTags>
+    <PackageTags>ListView WinForms Controls WinForms Krypton .NET .NET Core</PackageTags>
   </PropertyGroup>
 
   <!--Stable package configuration-
