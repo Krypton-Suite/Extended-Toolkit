@@ -3,6 +3,7 @@ using System.Collections;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
@@ -26,7 +27,8 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         private System.ComponentModel.IContainer components;
         private KryptonLabel kryptonLabel2;
         private KryptonLabel kryptonLabel1;
-        private System.Windows.Forms.PictureBox pictureBox;
+        private System.Windows.Forms.PictureBox pbxHitTarget;
+        private KryptonLabel klblCursor;
         private System.Windows.Forms.ImageList imageList;
 
         private void InitializeComponent()
@@ -37,6 +39,8 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.kbtnClose = new Krypton.Toolkit.KryptonButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
+            this.klblCursor = new Krypton.Toolkit.KryptonLabel();
+            this.pbxHitTarget = new System.Windows.Forms.PictureBox();
             this.kryptonGroupBox1 = new Krypton.Toolkit.KryptonGroupBox();
             this.kblPoint = new Krypton.Toolkit.Suite.Extended.Base.KryptonBorderedLabel();
             this.kryptonLabel6 = new Krypton.Toolkit.KryptonLabel();
@@ -50,16 +54,15 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.pictureBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
             this.kryptonPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxHitTarget)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1.Panel)).BeginInit();
             this.kryptonGroupBox1.Panel.SuspendLayout();
             this.kryptonGroupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // kryptonPanel1
@@ -93,7 +96,8 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             // 
             // kryptonPanel2
             // 
-            this.kryptonPanel2.Controls.Add(this.pictureBox);
+            this.kryptonPanel2.Controls.Add(this.klblCursor);
+            this.kryptonPanel2.Controls.Add(this.pbxHitTarget);
             this.kryptonPanel2.Controls.Add(this.kryptonGroupBox1);
             this.kryptonPanel2.Controls.Add(this.kryptonLabel2);
             this.kryptonPanel2.Controls.Add(this.kryptonLabel1);
@@ -102,6 +106,32 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.kryptonPanel2.Name = "kryptonPanel2";
             this.kryptonPanel2.Size = new System.Drawing.Size(380, 259);
             this.kryptonPanel2.TabIndex = 2;
+            // 
+            // klblCursor
+            // 
+            this.klblCursor.Location = new System.Drawing.Point(196, 56);
+            this.klblCursor.Name = "klblCursor";
+            this.klblCursor.Size = new System.Drawing.Size(6, 2);
+            this.klblCursor.TabIndex = 6;
+            this.klblCursor.Values.Text = "";
+            // 
+            // pbxHitTarget
+            // 
+            this.pbxHitTarget.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbxHitTarget.BackColor = System.Drawing.Color.Transparent;
+            this.pbxHitTarget.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbxHitTarget.Image = ((System.Drawing.Image)(resources.GetObject("pbxHitTarget.Image")));
+            this.pbxHitTarget.Location = new System.Drawing.Point(158, 54);
+            this.pbxHitTarget.Name = "pbxHitTarget";
+            this.pbxHitTarget.Size = new System.Drawing.Size(32, 32);
+            this.pbxHitTarget.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pbxHitTarget.TabIndex = 5;
+            this.pbxHitTarget.TabStop = false;
+            this.toolTip.SetToolTip(this.pbxHitTarget, "Start dragging ...");
+            this.pbxHitTarget.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pbxHitTarget_MouseDown);
+            this.pbxHitTarget.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pbxHitTarget_MouseMove);
+            this.pbxHitTarget.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pbxHitTarget_MouseUp);
             // 
             // kryptonGroupBox1
             // 
@@ -222,20 +252,6 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.imageList.Images.SetKeyName(0, "");
             this.imageList.Images.SetKeyName(1, "");
             // 
-            // pictureBox
-            // 
-            this.pictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox.Image")));
-            this.pictureBox.Location = new System.Drawing.Point(158, 54);
-            this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(31, 28);
-            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox.TabIndex = 5;
-            this.pictureBox.TabStop = false;
-            this.toolTip.SetToolTip(this.pictureBox, "Start dragging ...");
-            // 
             // FindWindowUtility
             // 
             this.ClientSize = new System.Drawing.Size(380, 304);
@@ -248,12 +264,12 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
             this.kryptonPanel2.ResumeLayout(false);
             this.kryptonPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxHitTarget)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1.Panel)).EndInit();
             this.kryptonGroupBox1.Panel.ResumeLayout(false);
             this.kryptonGroupBox1.Panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1)).EndInit();
             this.kryptonGroupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -423,6 +439,54 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         private void kbtnClose_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void pbxHitTarget_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                Cursor = new Cursor(GetType(), "Resources\\Target.cur");
+
+                pbxHitTarget.Image = imageList.Images[0];
+            }
+        }
+
+        private void pbxHitTarget_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (Cursor != Cursors.Default)
+            {
+                IntPtr FoundWindow = ChildWindowFromPoint(Cursor.Position);
+
+                // not this application
+                if (Control.FromHandle(FoundWindow) == null)
+                {
+                    if (FoundWindow != _lastWindow)
+                    {
+                        // clear old window
+                        ShowInvertRectTracker(_lastWindow);
+                        // set new window
+                        _lastWindow = FoundWindow;
+                        // paint new window
+                        ShowInvertRectTracker(_lastWindow);
+                    }
+                    DisplayWindowInfo(_lastWindow);
+                }
+                // show global mouse cursor
+                klblCursor.Text = $"Cursor: { Cursor.Position }";
+            }
+        }
+
+        private void pbxHitTarget_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (Cursor != Cursors.Default)
+            {
+                // reset all done things from mouse_down and mouse_move ...
+                ShowInvertRectTracker(_lastWindow);
+                _lastWindow = IntPtr.Zero;
+
+                Cursor = Cursors.Default;
+                pbxHitTarget.Image = imageList.Images[1];
+            }
         }
     }
 }
