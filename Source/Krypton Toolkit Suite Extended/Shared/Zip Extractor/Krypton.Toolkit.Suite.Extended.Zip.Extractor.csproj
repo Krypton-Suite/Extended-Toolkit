@@ -8,7 +8,7 @@
     <UseWindowsForms>true</UseWindowsForms>
     <AssemblyName>Zip Extractor</AssemblyName>
     <ApplicationIcon>Resources\ZipExtractor.ico</ApplicationIcon>
-    <Version>5.550.2011</Version>
+    <Version>5.550.2012</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -36,8 +36,8 @@
   <PropertyGroup>
     <DocumentationFile>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Zip.Extractor\Krypton.Toolkit.Suite.Zip.Extractor.xml</DocumentationFile>
     <OutputPath>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Zip.Extractor\</OutputPath>
-    <AssemblyVersion>5.550.2011</AssemblyVersion>
-    <FileVersion>5.550.2011</FileVersion>
+    <AssemblyVersion>5.550.2012</AssemblyVersion>
+    <FileVersion>5.550.2012</FileVersion>
   </PropertyGroup>
 
 </Project>

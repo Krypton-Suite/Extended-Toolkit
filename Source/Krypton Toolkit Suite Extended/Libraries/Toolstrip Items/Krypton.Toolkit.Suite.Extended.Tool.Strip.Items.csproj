@@ -36,9 +36,9 @@
 
   <!--Version configuration-->
   <PropertyGroup>
-    <AssemblyVersion>5.550.2011</AssemblyVersion>
-    <FileVersion>5.550.2011</FileVersion>
-    <Version>5.550.2011</Version>
+    <AssemblyVersion>5.550.2012</AssemblyVersion>
+    <FileVersion>5.550.2012</FileVersion>
+    <Version>5.550.2012</Version>
   </PropertyGroup>
 
   <ItemGroup>
