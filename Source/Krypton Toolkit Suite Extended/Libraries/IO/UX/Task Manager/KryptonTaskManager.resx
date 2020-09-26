@@ -117,32 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="kbtnAdd_Values_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\kbtnAdd.Values.Image.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="kbtnBack_Values_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\kbtnBack.Values.Image.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="kbtnGo_Values_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\kbtnGo.Values.Image.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="kbtnHome_Values_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\kbtnHome.Values.Image.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="kbtnInfo_Values_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\kbtnInfo.Values.Image.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="kbtnNext_Values_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\kbtnNext.Values.Image.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="kbtnRefresh_Values_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\kbtnRefresh.Values.Image.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="kbtnUp_Values_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\kbtnUp.Values.Image.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
 </root>
