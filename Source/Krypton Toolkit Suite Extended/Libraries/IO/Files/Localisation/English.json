@@ -1,5 +1,5 @@
 {
-    "MainForm_DragFile": "Drag file here",
+    "MainForm_DragFile": "Drag a File Here",
     "MainForm_More": "More",
     "SettingsForm_Title": "Settings",
     "SettingsForm_General": "General settings",
@@ -16,7 +16,7 @@
     "UploadForm_InvalidLength": "Invalid API key length. The key must contain 64 characters.",
     "UploadForm_InvalidKey": "Invalid API key",
     "Message_Idle": "Idle.",
-    "Message_Init": "Initializing...",
+    "Message_Init": "Initialising...",
     "Message_Check": "Checking...",
     "Message_Upload": "Uploading...",
     "Message_NoLink": "No permalink found in response!",

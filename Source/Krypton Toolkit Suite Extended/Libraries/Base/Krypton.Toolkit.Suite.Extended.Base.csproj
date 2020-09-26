@@ -75,6 +75,13 @@
     </EmbeddedResource>
   </ItemGroup>
 
+  <!--Stable NuGet packages
+  <ItemGroup>
+    <PackageReference Include="Krypton.Ribbon" Version="5.550.2011" />
+    <PackageReference Include="Krypton.Toolkit" Version="5.550.2011" />
+    <PackageReference Include="Microsoft.VisualBasic" Version="10.3.0" />
+  </ItemGroup>-->
+
   <ItemGroup>
     <PackageReference Include="Krypton.Ribbon.Canary" Version="6.0.2008" />
     <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2008" />
