@@ -29,6 +29,22 @@
     <PackageIconUrl>https://tinyurl.com/KryptonToolkitCanaryIcon</PackageIconUrl>
   </PropertyGroup>
 
+  <!--Stable NuGet package configuration-
+  <ItemGroup>
+    <PackageReference Include="Krypton.Toolkit" Version="5.550.2011" />
+  </ItemGroup>-->
+
+  <!--Canary NuGet package configuration-->
+  <ItemGroup>
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2008" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ILRepack.Lib.MSBuild.Task" Version="2.0.18.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="ZipStorer" Version="3.6.0" />
+  </ItemGroup>
+
   <!--Version configuration-->
   <PropertyGroup>
     <AssemblyVersion>5.550.2011</AssemblyVersion>
@@ -39,13 +55,6 @@
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net45|AnyCPU'">
     <DocumentationFile></DocumentationFile>
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="ILRepack.Lib.MSBuild.Task" Version="2.0.18.1" />
-    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2008" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-    <PackageReference Include="ZipStorer" Version="3.6.0" />
-  </ItemGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
     <Reference Include="System.IO.Compression" />

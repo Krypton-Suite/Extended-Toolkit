@@ -31,6 +31,16 @@
     <PackageIconUrl>https://tinyurl.com/KryptonToolkitCanaryIcon</PackageIconUrl>
   </PropertyGroup>
 
+  <!--Stable NuGet package configuration-
+  <ItemGroup>
+    <PackageReference Include="Krypton.Toolkit" Version="5.550.2011" />
+  </ItemGroup>-->
+
+  <!--Canary NuGet package configuration-->
+  <ItemGroup>
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2008" />
+  </ItemGroup>
+
   <!--Version configuration-->
   <PropertyGroup>
     <AssemblyVersion>5.550.2011</AssemblyVersion>
@@ -47,10 +57,6 @@
     <NoWarn>NU1701</NoWarn>
     <PackageLicenseFile></PackageLicenseFile>
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2008" />
-  </ItemGroup>
 
   <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">

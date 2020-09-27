@@ -30,6 +30,16 @@
     <PackageIconUrl>https://tinyurl.com/KryptonToolkitCanaryIcon</PackageIconUrl>
   </PropertyGroup>
 
+  <!--Stable NuGet package configuration-
+  <ItemGroup>
+    <PackageReference Include="Krypton.Toolkit" Version="5.550.2011" />
+  </ItemGroup>-->
+
+  <!--Stable NuGet package configuration-->
+  <ItemGroup>
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2008" />
+  </ItemGroup>
+
   <!--Version configuration-->
   <PropertyGroup>
     <AssemblyVersion>5.550.2011</AssemblyVersion>
@@ -49,10 +59,6 @@
     <None Remove="FTP\Components\**" />
     <None Remove="FTP\Infrastructure\**" />
     <None Remove="FTP\Interfaces\**" />
-  </ItemGroup>
-  
-  <ItemGroup>
-    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2008" />
   </ItemGroup>
   
   <ItemGroup>
