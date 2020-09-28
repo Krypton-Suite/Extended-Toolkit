@@ -1,9 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Dynamic;
-using System.Management;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+
+// Required namespaces
+using System.Diagnostics;
+using System.Management;
+using System.Dynamic;
 
 namespace Krypton.Toolkit.Suite.Extended.IO
 {
