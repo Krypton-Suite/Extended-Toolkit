@@ -1,17 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-// Required namespaces
-using System.Diagnostics;
-using System.Management;
-using System.Dynamic;
 
 namespace Krypton.Toolkit.Suite.Extended.IO
 {
@@ -21,6 +8,10 @@ namespace Krypton.Toolkit.Suite.Extended.IO
     /// <seealso cref="Krypton.Toolkit.KryptonForm" />
     public class KryptonTaskManager : KryptonForm
     {
+
+        #region Old Code
+
+        /*
         #region Designer Code
         private System.Windows.Forms.ListView lvProcesses;
         private System.Windows.Forms.ColumnHeader chProcessName;
@@ -236,5 +227,26 @@ namespace Krypton.Toolkit.Suite.Extended.IO
             return response;
         }
         #endregion
+        */
+
+        #endregion
+
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // KryptonTaskManager
+            // 
+            this.ClientSize = new System.Drawing.Size(953, 645);
+            this.Name = "KryptonTaskManager";
+            this.Load += new System.EventHandler(this.KryptonTaskManager_Load);
+            this.ResumeLayout(false);
+
+        }
+
+        private void KryptonTaskManager_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
