@@ -9,6 +9,7 @@
 | Module Name | Current Version | GitHub License |
 |---|---|---|
 | <img src="https://img.shields.io/badge/Module-Base-orange.svg" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Base)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
+| <img src="https://img.shields.io/badge/Module-Data Visualisation-orange.svg" /> | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Data.Visualisation)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
 | <img src="https://img.shields.io/badge/Module-Drawing Suite-orange.svg" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Drawing.Suite)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
 | <img src="https://img.shields.io/badge/Module-Dialogs-orange.svg" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Dialogs)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
 | <img src="https://img.shields.io/badge/Module-Floating Toolbars-orange.svg" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Floating.Toolbars)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
