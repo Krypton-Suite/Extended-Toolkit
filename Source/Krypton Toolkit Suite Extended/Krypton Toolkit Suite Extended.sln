@@ -105,6 +105,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton.Toolkit.Suite.Extended.Object.ListView", "Libraries\Object ListView\Krypton.Toolkit.Suite.Extended.Object.ListView.csproj", "{8ED47FF7-8B20-4CFF-A6B1-6D8421932F50}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Rounded.Controls", "Libraries\Rounded Controls\Krypton.Toolkit.Suite.Extended.Rounded.Controls.csproj", "{47B82158-2402-4472-9FFE-29D81504602B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{CE2BA44A-F0BD-4AA4-A5EB-E3C6354DD529} = {CE2BA44A-F0BD-4AA4-A5EB-E3C6354DD529}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
