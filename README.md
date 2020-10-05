@@ -44,6 +44,7 @@
 ## 2020-12-01 - Build 2012 - December 2020
 * Fixes for `FastColouredTextBox`
 * New Gantt chart control for `Data Visualisation`
+* Removed `Notification` elements from `Dialogs` module
 
 =======
 

@@ -1,9 +1,9 @@
-﻿using Krypton.Toolkit.Suite.Extended.Base;
-using System.ComponentModel;
+﻿using System.ComponentModel;
+using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Rounded.Controls
 {
-    public class KryptonRoundedUACButton : KryptonUACElevatedButton
+    public class KryptonRoundedComboBox : KryptonComboBox
     {
         #region Variables
         private int _cornerRoundness;
@@ -15,14 +15,19 @@ namespace Krypton.Toolkit.Suite.Extended.Rounded.Controls
         #endregion
 
         #region Constructor
-        public KryptonRoundedUACButton()
+        public KryptonRoundedComboBox()
         {
             CornerRoundness = -1;
         }
         #endregion
 
         #region Overrides
-        //protected override 
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            StateCommon.ComboBox.Border.Rounding = CornerRoundness;
+
+            base.OnPaint(e);
+        }
         #endregion
     }
 }
