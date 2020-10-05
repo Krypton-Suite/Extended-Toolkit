@@ -7534,24 +7534,33 @@ window.status = ""#print"";
         /// </summary>
         /// <param name="fileName"></param>
         /// <param name="enc"></param>
-        public void OpenBindingFile(string fileName, Encoding enc)
+        public void OpenBindingFile(string fileName, Encoding enc) => OpenBindingStream(new FileStream(fileName, FileMode.Open), enc);
+
+        /// <summary>
+        /// Open stream binding mode
+        /// </summary>
+        /// <param name="fileStream"></param>
+        /// <param name="enc"></param>
+        public void OpenBindingStream(FileStream fileStream, Encoding enc)
         {
             var fts = new FileTextSource(this);
+
             try
             {
                 InitTextSource(fts);
-                fts.OpenFile(fileName, enc);
+
+                fts.OpenStream(fileStream, enc);
+
                 IsChanged = false;
+
                 OnVisibleRangeChanged();
             }
-            catch
+            catch (Exception)
             {
-                fts.CloseFile();
-                InitTextSource(CreateTextSource());
-                lines.InsertLine(0, TextSource.CreateLine());
-                IsChanged = false;
+
                 throw;
             }
+
             Invalidate();
         }
 

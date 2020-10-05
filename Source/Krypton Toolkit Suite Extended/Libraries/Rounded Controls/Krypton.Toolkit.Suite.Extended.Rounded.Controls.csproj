@@ -46,5 +46,14 @@
     <FileVersion>5.550.2101</FileVersion>
     <Version>5.550.2101</Version>
   </PropertyGroup>
+  
+<ItemGroup>
+    <ProjectReference Include="..\..\Libraries\Base\Krypton.Toolkit.Suite.Extended.Base.csproj" />
+  </ItemGroup>
+  
+  <PropertyGroup>
+    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Rounded.Controls\Krypton.Toolkit.Suite.Extended.Rounded.Controls.xml</DocumentationFile>
+    <OutputPath>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Rounded.Controls\</OutputPath>
+  </PropertyGroup>
 
 </Project>

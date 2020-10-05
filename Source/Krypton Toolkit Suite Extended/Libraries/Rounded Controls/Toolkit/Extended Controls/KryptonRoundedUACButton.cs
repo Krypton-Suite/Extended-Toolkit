@@ -1,5 +1,8 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Rounded.Controls
+﻿using System.ComponentModel;
+
+namespace Krypton.Toolkit.Suite.Extended.Rounded.Controls
 {
+    /*
     public class KryptonRoundedUACButton : KryptonUACElevatedButton
     {
         #region Variables
@@ -22,4 +25,5 @@
         //protected override 
         #endregion
     }
+    */
 }

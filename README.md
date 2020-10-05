@@ -41,6 +41,12 @@
 
 =======
 
+## 2020-12-01 - Build 2012 - December 2020
+* Fixes for `FastColouredTextBox`
+* New Gantt chart control for `Data Visualisation`
+
+=======
+
 ## 2020-11-01 - Build 2011 - November 2020
 * New `Networking` NuGet package
 * Stable packages will now use the stable `Krypton.*` standard toolkit & vice-versa
