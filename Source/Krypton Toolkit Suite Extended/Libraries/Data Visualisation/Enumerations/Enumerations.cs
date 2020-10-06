@@ -125,5 +125,17 @@
         DashDot,
         DashDotDot,
         Dot
-    };
+    }
+
+    /// <summary>
+    /// Time resolution for the minor tick marks which are spaced Chart.TimeWidth apart
+    /// </summary>
+    public enum TimeResolution
+    {
+        Week,
+        Day,
+        Hour,
+        Minute,
+        Second,
+    }
 }
