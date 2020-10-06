@@ -138,4 +138,17 @@
         Minute,
         Second,
     }
+
+    public enum ChartTextAlign
+    {
+        TopLeft,
+        TopCenter,
+        TopRight,
+        MiddleLeft,
+        MiddleCenter,
+        MiddleRight,
+        BottomLeft,
+        BottomCenter,
+        BottomRight
+    }
 }

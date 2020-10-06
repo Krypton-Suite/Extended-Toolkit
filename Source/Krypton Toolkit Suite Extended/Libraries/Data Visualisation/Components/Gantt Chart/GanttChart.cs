@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Drawing.Printing;
+using System.Globalization;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
@@ -14,6 +15,49 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
     /// </summary>
     public partial class GanttChart : UserControl
     {
+        #region Design Code
+        /// <summary> 
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary> 
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Component Designer generated code
+
+        /// <summary> 
+        /// Required method for Designer support - do not modify 
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // Chart
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Margin = new System.Windows.Forms.Padding(0);
+            this.Name = "GanttChart";
+            this.Size = new System.Drawing.Size(469, 439);
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+        #endregion
+
         #region Public Methods
 
         /// <summary>
@@ -45,25 +89,25 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
 
             // TODO: Use Krypton colours
             // Formatting
-            TaskFormat = new GanttChart.TaskFormat()
+            TaskFormat = new TaskFormat()
             {
-                Color = Brushes.Black,
+                Colour = Brushes.Black,
                 Border = Pens.Maroon,
                 BackFill = Brushes.MediumSlateBlue,
                 ForeFill = Brushes.YellowGreen,
                 SlackFill = new HatchBrush(HatchStyle.LightDownwardDiagonal, Color.Blue, Color.Transparent)
             };
-            CriticalTaskFormat = new GanttChart.TaskFormat()
+            CriticalTaskFormat = new TaskFormat()
             {
-                Color = Brushes.Black,
+                Colour = Brushes.Black,
                 Border = Pens.Maroon,
                 BackFill = Brushes.Crimson,
                 ForeFill = Brushes.YellowGreen,
                 SlackFill = new HatchBrush(HatchStyle.LightDownwardDiagonal, Color.Red, Color.Transparent)
             };
-            HeaderFormat = new GanttChart.HeaderFormat()
+            HeaderFormat = new HeaderFormat()
             {
-                Color = Brushes.Black,
+                Colour = Brushes.Black,
                 Border = new Pen(SystemColors.ActiveBorder),
                 GradientLight = SystemColors.ButtonHighlight,
                 GradientDark = SystemColors.ButtonFace
@@ -1201,15 +1245,15 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
         private DateTime __CalculateViewportStart()
         {
             float vpTime = (int)(_mViewport.X / this.MinorWidth);
-            if (this.TimeResolution == GanttChart.TimeResolution.Week)
+            if (this.TimeResolution == TimeResolution.Week)
             {
                 return _mProject.Start.AddDays(vpTime * 7);
             }
-            else if (this.TimeResolution == GanttChart.TimeResolution.Day)
+            else if (this.TimeResolution == TimeResolution.Day)
             {
                 return _mProject.Start.AddDays(vpTime);
             }
-            else if (this.TimeResolution == GanttChart.TimeResolution.Hour)
+            else if (this.TimeResolution == TimeResolution.Hour)
             {
                 return _mProject.Start.AddHours(vpTime);
             }
@@ -1281,7 +1325,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
                     {
                         // Draw minor label
                         var textbox = graphics.TextBoxAlign(minor.Text, minor.TextAlign, minor.Font, labelRects[i], minor.Margin);
-                        graphics.DrawString(minor.Text, minor.Font, minor.Color, textbox);
+                        graphics.DrawString(minor.Text, minor.Font, minor.Colour, textbox);
                     }
 
                     if (!string.IsNullOrEmpty(major.Text))
@@ -1289,7 +1333,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
                         // Draw major label
                         var majorLabelRect = new RectangleF(labelRects[i].X, _mViewport.Y, this.MajorWidth, this.HeaderOneHeight);
                         var textbox = graphics.TextBoxAlign(major.Text, major.TextAlign, major.Font, majorLabelRect, major.Margin);
-                        graphics.DrawString(major.Text, major.Font, major.Color, textbox);
+                        graphics.DrawString(major.Text, major.Font, major.Colour, textbox);
                         __DrawMarker(graphics, labelRects[i].X + MinorWidth / 2f, _mViewport.Y + HeaderOneHeight - 2f);
                     }
                 }
@@ -1301,14 +1345,14 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
 
         private void ___GetLabelFormat(DateTime datetime, DateTime datetimeprev, out LabelFormat minor, out LabelFormat major)
         {
-            minor = new LabelFormat() { Text = string.Empty, Font = this.Font, Color = HeaderFormat.Colour, Margin = 3, TextAlign = ChartTextAlign.MiddleCenter };
-            major = new LabelFormat() { Text = string.Empty, Font = this.Font, Color = HeaderFormat.Colour, Margin = 3, TextAlign = ChartTextAlign.MiddleLeft };
+            minor = new LabelFormat() { Text = string.Empty, Font = this.Font, Colour = HeaderFormat.Colour, Margin = 3, TextAlign = ChartTextAlign.MiddleCenter };
+            major = new LabelFormat() { Text = string.Empty, Font = this.Font, Colour = HeaderFormat.Colour, Margin = 3, TextAlign = ChartTextAlign.MiddleLeft };
 
-            System.Globalization.GregorianCalendar calendar = new System.Globalization.GregorianCalendar();
+            GregorianCalendar calendar = new GregorianCalendar();
             switch (TimeResolution)
             {
                 case TimeResolution.Week:
-                    minor.Text = calendar.GetWeekOfYear(datetime, System.Globalization.CalendarWeekRule.FirstFullWeek, DayOfWeek.Monday).ToString();
+                    minor.Text = calendar.GetWeekOfYear(datetime, CalendarWeekRule.FirstFullWeek, DayOfWeek.Monday).ToString();
                     if (datetime.Month != datetimeprev.Month) major.Text = datetime.ToString("MMMM");
                     break;
                 case TimeResolution.Hour:
@@ -1372,7 +1416,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
                         txtrect.Offset(taskrect.Width, 0);
                         if (viewRect.IntersectsWith(txtrect))
                         {
-                            graphics.DrawString(name, e.Font, e.Format.Color, txtrect);
+                            graphics.DrawString(name, e.Font, e.Format.Colour, txtrect);
                         }
                     }
 
