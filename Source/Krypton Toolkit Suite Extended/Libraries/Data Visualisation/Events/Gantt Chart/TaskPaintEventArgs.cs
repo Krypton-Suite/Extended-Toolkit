@@ -18,7 +18,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
         {
             get
             {
-                return new RectangleF(this.Chart.GetSpan(Task.Start), this.Row * this.Chart.BarSpacing + this.Chart.BarSpacing + this.Chart.HeaderOneHeight, this.Chart.GetSpan(this.Task.Duration), this.Chart.BarHeight);
+                return new RectangleF(Chart.GetSpan(Task.Start), Row * Chart.BarSpacing + Chart.BarSpacing + Chart.HeaderOneHeight, Chart.GetSpan(Task.Duration), Chart.BarHeight);
             }
         }
         /// <summary>
@@ -43,11 +43,11 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
         public TaskPaintEventArgs(Graphics graphics, Rectangle clipRect, GanttChart chart, Task task, int row, bool critical, Font font, TaskFormat format) // need to create a paint event for each task for custom painting
             : base(graphics, clipRect, chart)
         {
-            this.Task = task;
-            this.Row = row;
-            this.Font = font;
-            this.Format = format;
-            this.IsCritical = critical;
+            Task = task;
+            Row = row;
+            Font = font;
+            Format = format;
+            IsCritical = critical;
         }
     }
 }
