@@ -14,13 +14,8 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
         /// <summary>
         /// Get the rectangle bounds of the task
         /// </summary>
-        public RectangleF Rectangle
-        {
-            get
-            {
-                return new RectangleF(Chart.GetSpan(Task.Start), Row * Chart.BarSpacing + Chart.BarSpacing + Chart.HeaderOneHeight, Chart.GetSpan(Task.Duration), Chart.BarHeight);
-            }
-        }
+        public RectangleF Rectangle => new RectangleF(Chart.GetSpan(Task.Start), Row * Chart.BarSpacing + Chart.BarSpacing + Chart.HeaderOneHeight, Chart.GetSpan(Task.Duration), Chart.BarHeight);
+
         /// <summary>
         /// Get the row number of the task
         /// </summary>
