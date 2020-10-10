@@ -33,6 +33,8 @@ dotnet nuget push Krypton.Toolkit.Suite.Extended.Tool.Strip.Items.5.550.<#BUILD#
 
 dotnet nuget push Krypton.Toolkit.Suite.Extended.Standard.Controls.5.550.<#BUILD#>.nupkg -k <#API-KEY#> -s https://api.nuget.org/v3/index.json
 
+dotnet nuget push Krypton.Toolkit.Suite.Extended.Software.Updater.5.550.<#BUILD#>.nupkg -k <#API-KEY#> -s https://api.nuget.org/v3/index.json
+
 dotnet nuget push Krypton.Toolkit.Suite.Extended.Floating.Toolbars.5.550.<#BUILD#>.nupkg -k <#API-KEY#> -s https://api.nuget.org/v3/index.json
 
 dotnet nuget push Krypton.Toolkit.Suite.Extended.IO.5.550.<#BUILD#>.nupkg -k <#API-KEY#> -s https://api.nuget.org/v3/index.json
