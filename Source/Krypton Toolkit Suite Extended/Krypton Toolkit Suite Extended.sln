@@ -106,6 +106,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton.Toolkit.Suite.Exten
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Rounded.Controls", "Libraries\Rounded Controls\Krypton.Toolkit.Suite.Extended.Rounded.Controls.csproj", "{47B82158-2402-4472-9FFE-29D81504602B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{353629A2-A05E-4D18-8071-5CDF0C2914FC}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\Upload Stable Library Modules to NuGet.cmd = ..\..\Upload Stable Library Modules to NuGet.cmd
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -278,6 +283,7 @@ Global
 		{A1512DD6-7B4B-43E5-9C87-E85D83E82030} = {1F1DCECC-C25F-4E91-9C8A-ECCBB9827BBA}
 		{8ED47FF7-8B20-4CFF-A6B1-6D8421932F50} = {1F1DCECC-C25F-4E91-9C8A-ECCBB9827BBA}
 		{47B82158-2402-4472-9FFE-29D81504602B} = {1F1DCECC-C25F-4E91-9C8A-ECCBB9827BBA}
+		{353629A2-A05E-4D18-8071-5CDF0C2914FC} = {35C5D580-4B81-4E33-AB75-BD5D316A2ABC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9A189168-3746-4F9F-8C61-863D83D8ABD2}
