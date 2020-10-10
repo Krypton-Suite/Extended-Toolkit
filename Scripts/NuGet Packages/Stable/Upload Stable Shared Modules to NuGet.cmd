@@ -1,3 +1,11 @@
+:: -------------------------------------------------------
+::
+:: Author: P. Wagner
+:: Created: Saturday 10th October, 2020 10:00 AM GMT
+:: Last Updated:
+::
+:: -------------------------------------------------------
+
 @echo off
 
 echo You are about to publish new shared module updates to NuGet. Have You set your API key correctly? (Y/N)

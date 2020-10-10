@@ -110,8 +110,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{3536
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Stable", "Stable", "{D548C9DB-138F-4480-86A3-884F7258CC4F}"
 	ProjectSection(SolutionItems) = preProject
-		..\..\Upload Stable Library Modules to NuGet.cmd = ..\..\Upload Stable Library Modules to NuGet.cmd
-		..\..\Upload Stable Shared Modules to NuGet.cmd = ..\..\Upload Stable Shared Modules to NuGet.cmd
+		..\..\Scripts\NuGet Packages\Stable\Upload Stable Library Modules to NuGet.cmd = ..\..\Scripts\NuGet Packages\Stable\Upload Stable Library Modules to NuGet.cmd
+		..\..\Scripts\NuGet Packages\Stable\Upload Stable Shared Modules to NuGet.cmd = ..\..\Scripts\NuGet Packages\Stable\Upload Stable Shared Modules to NuGet.cmd
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Canary", "Canary", "{A1C6A43B-50D8-4985-A93C-23427DD10A9F}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\Scripts\NuGet Packages\Canary\Upload Canary Library Modules to NuGet.cmd = ..\..\Scripts\NuGet Packages\Canary\Upload Canary Library Modules to NuGet.cmd
+		..\..\Scripts\NuGet Packages\Canary\Upload Canary Shared Modules to NuGet.cmd = ..\..\Scripts\NuGet Packages\Canary\Upload Canary Shared Modules to NuGet.cmd
 	EndProjectSection
 EndProject
 Global
@@ -288,6 +294,7 @@ Global
 		{47B82158-2402-4472-9FFE-29D81504602B} = {1F1DCECC-C25F-4E91-9C8A-ECCBB9827BBA}
 		{353629A2-A05E-4D18-8071-5CDF0C2914FC} = {35C5D580-4B81-4E33-AB75-BD5D316A2ABC}
 		{D548C9DB-138F-4480-86A3-884F7258CC4F} = {353629A2-A05E-4D18-8071-5CDF0C2914FC}
+		{A1C6A43B-50D8-4985-A93C-23427DD10A9F} = {353629A2-A05E-4D18-8071-5CDF0C2914FC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9A189168-3746-4F9F-8C61-863D83D8ABD2}
