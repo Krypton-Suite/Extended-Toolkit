@@ -25,11 +25,11 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
         private void InitializeComponent()
         {
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            this.kbtnScan = new Krypton.Toolkit.KryptonButton();
+            this.ktxtWorkGroupName = new Krypton.Toolkit.KryptonTextBox();
+            this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
             this.kdgvNodes = new Krypton.Toolkit.KryptonDataGridView();
-            this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
-            this.ktxtWorkGroupName = new Krypton.Toolkit.KryptonTextBox();
-            this.kbtnScan = new Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
@@ -48,6 +48,32 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
             this.kryptonPanel1.Size = new System.Drawing.Size(585, 44);
             this.kryptonPanel1.TabIndex = 0;
             // 
+            // kbtnScan
+            // 
+            this.kbtnScan.Enabled = false;
+            this.kbtnScan.Location = new System.Drawing.Point(472, 12);
+            this.kbtnScan.Name = "kbtnScan";
+            this.kbtnScan.Size = new System.Drawing.Size(101, 25);
+            this.kbtnScan.TabIndex = 2;
+            this.kbtnScan.Values.Text = "St&art Scan";
+            this.kbtnScan.Click += new System.EventHandler(this.kbtnScan_Click);
+            // 
+            // ktxtWorkGroupName
+            // 
+            this.ktxtWorkGroupName.Hint = "Type a domain or workgroup name here...";
+            this.ktxtWorkGroupName.Location = new System.Drawing.Point(178, 12);
+            this.ktxtWorkGroupName.Name = "ktxtWorkGroupName";
+            this.ktxtWorkGroupName.Size = new System.Drawing.Size(287, 23);
+            this.ktxtWorkGroupName.TabIndex = 1;
+            // 
+            // kryptonLabel1
+            // 
+            this.kryptonLabel1.Location = new System.Drawing.Point(12, 12);
+            this.kryptonLabel1.Name = "kryptonLabel1";
+            this.kryptonLabel1.Size = new System.Drawing.Size(159, 20);
+            this.kryptonLabel1.TabIndex = 0;
+            this.kryptonLabel1.Values.Text = "Domain/Workgroup Name:";
+            // 
             // kryptonPanel2
             // 
             this.kryptonPanel2.Controls.Add(this.kdgvNodes);
@@ -65,32 +91,6 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
             this.kdgvNodes.Size = new System.Drawing.Size(585, 394);
             this.kdgvNodes.TabIndex = 1;
             // 
-            // kryptonLabel1
-            // 
-            this.kryptonLabel1.Location = new System.Drawing.Point(12, 12);
-            this.kryptonLabel1.Name = "kryptonLabel1";
-            this.kryptonLabel1.Size = new System.Drawing.Size(159, 20);
-            this.kryptonLabel1.TabIndex = 0;
-            this.kryptonLabel1.Values.Text = "Domain/Workgroup Name:";
-            // 
-            // ktxtWorkGroupName
-            // 
-            this.ktxtWorkGroupName.Hint = "Type a domain or workgroup name here...";
-            this.ktxtWorkGroupName.Location = new System.Drawing.Point(178, 12);
-            this.ktxtWorkGroupName.Name = "ktxtWorkGroupName";
-            this.ktxtWorkGroupName.Size = new System.Drawing.Size(287, 23);
-            this.ktxtWorkGroupName.TabIndex = 1;
-            // 
-            // kbtnScan
-            // 
-            this.kbtnScan.Enabled = false;
-            this.kbtnScan.Location = new System.Drawing.Point(472, 12);
-            this.kbtnScan.Name = "kbtnScan";
-            this.kbtnScan.Size = new System.Drawing.Size(101, 25);
-            this.kbtnScan.TabIndex = 2;
-            this.kbtnScan.Values.Text = "St&art Scan";
-            this.kbtnScan.Click += new System.EventHandler(this.kbtnScan_Click);
-            // 
             // NetworkScannerWindow
             // 
             this.ClientSize = new System.Drawing.Size(585, 438);
@@ -103,6 +103,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Scan Network";
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
