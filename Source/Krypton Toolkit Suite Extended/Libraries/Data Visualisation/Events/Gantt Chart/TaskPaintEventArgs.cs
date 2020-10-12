@@ -10,7 +10,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
         /// <summary>
         /// Get the task to be painted
         /// </summary>
-        public Task Task { get; private set; }
+        public GanttChartTask Task { get; private set; }
         /// <summary>
         /// Get the rectangle bounds of the task
         /// </summary>
@@ -35,7 +35,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
         /// <summary>
         /// Initialize a new instance of TaskPaintEventArgs with the editable default font and task paint format
         /// </summary>
-        public TaskPaintEventArgs(Graphics graphics, Rectangle clipRect, GanttChart chart, Task task, int row, bool critical, Font font, TaskFormat format) // need to create a paint event for each task for custom painting
+        public TaskPaintEventArgs(Graphics graphics, Rectangle clipRect, GanttChart chart, GanttChartTask task, int row, bool critical, Font font, TaskFormat format) // need to create a paint event for each task for custom painting
             : base(graphics, clipRect, chart)
         {
             Task = task;

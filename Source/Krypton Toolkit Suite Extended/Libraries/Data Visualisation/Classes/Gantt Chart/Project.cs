@@ -8,7 +8,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
     /// Wrapper ProjectManager class
     /// </summary>
     [Serializable]
-    public class ProjectManager : ProjectManager<Task, object>
+    public class ProjectManager : ProjectManager<GanttChartTask, object>
     {
     }
 
@@ -19,7 +19,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
     /// <typeparam name="R"></typeparam>
     [Serializable]
     public class ProjectManager<T, R> : IProjectManager<T, R>
-        where T : Task
+        where T : GanttChartTask
         where R : class
     {
         HashSet<T> _mRegister = new HashSet<T>();

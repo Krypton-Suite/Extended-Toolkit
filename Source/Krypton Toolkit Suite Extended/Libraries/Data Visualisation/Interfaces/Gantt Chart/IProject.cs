@@ -7,12 +7,12 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
     /// Passive data class holding schedule information
     /// </summary>
     [Serializable]
-    public class Task
+    public class GanttChartTask
     {
         /// <summary>
         /// Initialize a new task to hold schedule information
         /// </summary>
-        public Task()
+        public GanttChartTask()
         {
             Complete = 0.0f;
             Start = TimeSpan.Zero;
@@ -62,6 +62,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
         /// <returns></returns>
         public override string ToString()
         {
+            // TODO: Update this
             return string.Format("[Name = {0}, Start = {1}, End = {2}, Duration = {3}, Complete = {4}]", Name, Start, End, Duration, Complete);
         }
     }
@@ -69,10 +70,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
     /// <summary>
     /// ProjectManager interface
     /// </summary>
-    /// <typeparam name="T">Task class type</typeparam>
+    /// <typeparam name="T">GanttChartTask class type</typeparam>
     /// <typeparam name="R">Resource class type</typeparam>
     public interface IProjectManager<T, R>
-        where T : Task
+        where T : GanttChartTask
         where R : class
     {
         /// <summary>

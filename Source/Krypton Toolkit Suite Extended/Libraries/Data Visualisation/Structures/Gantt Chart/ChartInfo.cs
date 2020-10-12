@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading.Tasks;
 
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
 {
@@ -19,14 +18,14 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
         /// <summary>
         /// Get or set the task
         /// </summary>
-        public Task Task { get; set; }
+        public GanttChartTask Task { get; set; }
         /// <summary>
         /// Construct a passive data structure to hold chart information
         /// </summary>
         /// <param name="row"></param>
         /// <param name="dateTime"></param>
         /// <param name="task"></param>
-        public ChartInfo(int row, DateTime dateTime, Task task)
+        public ChartInfo(int row, DateTime dateTime, GanttChartTask task)
             : this()
         {
             Row = row;

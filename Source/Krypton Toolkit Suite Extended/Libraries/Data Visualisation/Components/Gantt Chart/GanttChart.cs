@@ -117,13 +117,13 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
         /// <summary>
         /// Delegate method for creating a new Task. Creates Task by default.
         /// </summary>
-        public Func<Task> CreateTaskDelegate = delegate () { return new Task(); };
+        public Func<GanttChartTask> CreateTaskDelegate = delegate () { return new GanttChartTask(); };
 
         /// <summary>
         /// Get the selected tasks.
         /// Split tasks will not be in this list, only its task parts, if selected.
         /// </summary>
-        public IEnumerable<Task> SelectedTasks
+        public IEnumerable<GanttChartTask> SelectedTasks
         {
             get
             {
@@ -134,7 +134,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
         /// <summary>
         /// Get the latest selected task
         /// </summary>
-        public Task SelectedTask
+        public GanttChartTask SelectedTask
         {
             get
             {
@@ -300,7 +300,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
         /// <param name="task"></param>
         /// <param name="row"></param>
         /// <returns></returns>
-        public bool TryGetRow(Task task, out int row)
+        public bool TryGetRow(GanttChartTask task, out int row)
         {
             row = 0;
             if (_mChartTaskHitRects.ContainsKey(task))
@@ -324,7 +324,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
         /// <param name="row"></param>
         /// <param name="task"></param>
         /// <returns></returns>
-        public bool TryGetTask(int row, out Task task)
+        public bool TryGetTask(int row, out GanttChartTask task)
         {
             task = null;
             if (row > 0 && row < _mProject.Tasks.Count())
@@ -339,7 +339,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
         /// Initialize this Chart with a Project
         /// </summary>
         /// <param name="project"></param>
-        public void Init(ProjectManager<Task, object> project)
+        public void Init(ProjectManager<GanttChartTask, object> project)
         {
             _mProject = project;
             _GenerateModels();
@@ -439,7 +439,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
         /// </summary>
         /// <param name="task"></param>
         /// <param name="text"></param>
-        public void SetToolTip(Task task, string text)
+        public void SetToolTip(GanttChartTask task, string text)
         {
             if (task != null && text != string.Empty)
                 _mTaskToolTip[task] = text;
@@ -450,7 +450,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
         /// </summary>
         /// <param name="task"></param>
         /// <returns></returns>
-        public string GetToolTip(Task task)
+        public string GetToolTip(GanttChartTask task)
         {
             if (task != null)
                 return _mTaskToolTip[task];
@@ -462,7 +462,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
         /// Clear tool tip for the specified task
         /// </summary>
         /// <param name="task"></param>
-        public void ClearToolTip(Task task)
+        public void ClearToolTip(GanttChartTask task)
         {
             if (task != null)
                 _mTaskToolTip.Remove(task);
@@ -490,7 +490,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
         /// Scroll to the specified task
         /// </summary>
         /// <param name="task"></param>
-        public void ScrollTo(Task task)
+        public void ScrollTo(GanttChartTask task)
         {
             if (_mChartTaskRects.ContainsKey(task))
             {
@@ -605,7 +605,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
             // Dragging
             if (AllowTaskDragDrop && _mDraggedTask != null)
             {
-                Task target = task;
+                GanttChartTask target = task;
                 if (target == _mDraggedTask) target = null;
                 RectangleF targetRect = target == null ? RectangleF.Empty : _mChartTaskHitRects[target];
                 int row = _DeviceCoordToChartRow(e.Location.Y);
@@ -806,14 +806,14 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
 
             var delta = (e.PreviousLocation.X - e.StartLocation.X);
 
-            if (e.Button == System.Windows.Forms.MouseButtons.Left)
+            if (e.Button == MouseButtons.Left)
             {
                 if (e.Target == null)
                 {
                     if (Control.ModifierKeys.HasFlag(Keys.Shift))
                     {
                         // insert
-                        Task source = e.Source;
+                        GanttChartTask source = e.Source;
                         if (_mProject.IsPart(source)) source = _mProject.SplitTaskOf(source);
                         if (this.TryGetRow(source, out int from))
                             _mProject.Move(source, e.Row - from);
@@ -1034,7 +1034,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
 
         #region Private Helper Methods
 
-        private Task _GetTaskUnderMouse(Point mouse)
+        private GanttChartTask _GetTaskUnderMouse(Point mouse)
         {
             var chartcoord = _mViewport.DeviceToWorldCoord(mouse);
 
@@ -1169,12 +1169,12 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
                     }
                     else // Compute task part rectangles if task is a split task
                     {
-                        var parts = new List<KeyValuePair<Task, RectangleF>>();
+                        var parts = new List<KeyValuePair<GanttChartTask, RectangleF>>();
                         _mChartTaskPartRects.Add(task, parts);
                         foreach (var part in _mProject.PartsOf(task))
                         {
                             taskRect = new RectangleF(GetSpan(part.Start), y_coord, GetSpan(part.Duration), this.BarHeight);
-                            parts.Add(new KeyValuePair<Task, RectangleF>(part, taskRect));
+                            parts.Add(new KeyValuePair<GanttChartTask, RectangleF>(part, taskRect));
 
                             // Parts are mouse enabled, add to hitRect collection
                             _mChartTaskHitRects.Add(part, taskRect);
@@ -1377,7 +1377,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
         {
             var viewRect = _mViewport.Rectangle;
             int row = 0;
-            var crit_task_set = new HashSet<Task>(_mProject.CriticalPaths.SelectMany(x => x));
+            var crit_task_set = new HashSet<GanttChartTask>(_mProject.CriticalPaths.SelectMany(x => x));
             var pen = new Pen(Color.Gray);
             float labelMargin = this.MinorWidth / 2.0f + 3.0f;
             pen.DashStyle = DashStyle.Dot;
@@ -1513,7 +1513,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
             }
         }
 
-        private void __DrawRegularTaskAndGroup(Graphics graphics, TaskPaintEventArgs e, Task task, RectangleF taskRect)
+        private void __DrawRegularTaskAndGroup(Graphics graphics, TaskPaintEventArgs e, GanttChartTask task, RectangleF taskRect)
         {
             var fill = taskRect;
             fill.Width = (int)(fill.Width * task.Complete);
@@ -1543,7 +1543,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
             }
         }
 
-        private void __DrawTaskParts(Graphics graphics, TaskPaintEventArgs e, Task task, Pen pen)
+        private void __DrawTaskParts(Graphics graphics, TaskPaintEventArgs e, GanttChartTask task, Pen pen)
         {
             var parts = _mChartTaskPartRects[task];
 
@@ -1603,20 +1603,20 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
             public List<DateTime> DateTimes;
         }
 
-        ProjectManager<Task, object> _mProject = null; // The project to be visualised / rendered as a Gantt Chart
+        ProjectManager<GanttChartTask, object> _mProject = null; // The project to be visualised / rendered as a Gantt Chart
         IViewport _mViewport = null;
-        Task _mDraggedTask = null; // The dragged source Task
+        GanttChartTask _mDraggedTask = null; // The dragged source Task
         Point _mDragTaskLastLocation = Point.Empty; // Record the task dragging mouse offset
         Point _mDragTaskStartLocation = Point.Empty;
         Point _mPanViewLastLocation = Point.Empty;
-        List<Task> _mSelectedTasks = new List<Task>(); // List of selected tasks
-        Dictionary<Task, RectangleF> _mChartTaskHitRects = new Dictionary<Task, RectangleF>(); // list of hitareas for Task Rectangles
-        Dictionary<Task, RectangleF> _mChartTaskRects = new Dictionary<Task, RectangleF>();
-        Dictionary<Task, List<KeyValuePair<Task, RectangleF>>> _mChartTaskPartRects = new Dictionary<Task, List<KeyValuePair<Task, RectangleF>>>();
-        Dictionary<Task, RectangleF> _mChartSlackRects = new Dictionary<Task, RectangleF>();
+        List<GanttChartTask> _mSelectedTasks = new List<GanttChartTask>(); // List of selected tasks
+        Dictionary<GanttChartTask, RectangleF> _mChartTaskHitRects = new Dictionary<GanttChartTask, RectangleF>(); // list of hitareas for Task Rectangles
+        Dictionary<GanttChartTask, RectangleF> _mChartTaskRects = new Dictionary<GanttChartTask, RectangleF>();
+        Dictionary<GanttChartTask, List<KeyValuePair<GanttChartTask, RectangleF>>> _mChartTaskPartRects = new Dictionary<GanttChartTask, List<KeyValuePair<GanttChartTask, RectangleF>>>();
+        Dictionary<GanttChartTask, RectangleF> _mChartSlackRects = new Dictionary<GanttChartTask, RectangleF>();
         HeaderInfo _mHeaderInfo = new HeaderInfo();
-        Task _mMouseEntered = null; // flag whether the mouse has entered a Task rectangle or not
-        Dictionary<Task, string> _mTaskToolTip = new Dictionary<Task, string>();
+        GanttChartTask _mMouseEntered = null; // flag whether the mouse has entered a Task rectangle or not
+        Dictionary<GanttChartTask, string> _mTaskToolTip = new Dictionary<GanttChartTask, string>();
         #endregion Private Helper Variables
     }
 }

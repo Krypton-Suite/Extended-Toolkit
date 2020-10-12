@@ -3,28 +3,8 @@ using System.Drawing;
 
 namespace Krypton.Toolkit.Suite.Extended.Base
 {
-    public class KryptonToggleSwitchAndroidRenderer : KryptonToggleSwitchRendererBase
+    public class KryptonToggleSwitchOSXRenderer : KryptonToggleSwitchRendererBase
     {
-        #region Public Properties
-        public Color BorderColour { get; set; }
-
-        public Color BackColour { get; set; }
-
-        public Color LeftSideColour { get; set; }
-
-        public Color RightSideColour { get; set; }
-
-        public Color OffButtonColour { get; set; }
-
-        public Color OnButtonColour { get; set; }
-
-        public Color OffButtonBorderColour { get; set; }
-
-        public Color OnButtonBorderColour { get; set; }
-
-        public int SlantAngle { get; set; }
-        #endregion
-
         public override Rectangle GetButtonRectangle()
         {
             throw new NotImplementedException();

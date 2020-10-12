@@ -1,5 +1,4 @@
 ﻿using System.Drawing;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
@@ -20,11 +19,11 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
         /// <summary>
         /// Get the source task that is being dragged
         /// </summary>
-        public Task Source { get; private set; }
+        public GanttChartTask Source { get; private set; }
         /// <summary>
         /// Get the target task that is being dropped on
         /// </summary>
-        public Task Target { get; private set; }
+        public GanttChartTask Target { get; private set; }
         /// <summary>
         /// Get the rectangle bounds of the source task in chart coordinates
         /// </summary>
@@ -40,7 +39,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
         /// <summary>
         /// Initialize a new instance of TaskDragDropEventArgs with the MouseEventArgs parameters and the Task involved and the previous mouse location.
         /// </summary>
-        public TaskDragDropEventArgs(Point startLocation, Point prevLocation, Task source, RectangleF sourceRect, Task target, RectangleF targetRect, int row, MouseButtons buttons, int clicks, int x, int y, int delta)
+        public TaskDragDropEventArgs(Point startLocation, Point prevLocation, GanttChartTask source, RectangleF sourceRect, GanttChartTask target, RectangleF targetRect, int row, MouseButtons buttons, int clicks, int x, int y, int delta)
             : base(buttons, clicks, x, y, delta)
         {
             this.Source = source;
