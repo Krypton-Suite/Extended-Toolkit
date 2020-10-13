@@ -22,33 +22,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
 
         #region Enums
 
-        public enum ToggleSwitchStyle
-        {
-            Metro,
-            Android,
-            IOS5,
-            BrushedMetal,
-            OSX,
-            Carbon,
-            Iphone,
-            Fancy,
-            Modern,
-            PlainAndSimple
-        }
 
-        public enum ToggleSwitchAlignment
-        {
-            Near,
-            Center,
-            Far
-        }
-
-        public enum ToggleSwitchButtonAlignment
-        {
-            Left,
-            Center,
-            Right
-        }
 
         #endregion Enums
 
