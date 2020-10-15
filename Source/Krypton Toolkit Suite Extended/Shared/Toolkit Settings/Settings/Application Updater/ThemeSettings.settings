@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Krypton.Toolkit.Suite.Extended.Settings" GeneratedClassName="ThemeSettings">
+  <Profiles />
+  <Settings>
+    <Setting Name="CurrentApplicationTheme" Type="Krypton.Toolkit.PaletteMode" Scope="User">
+      <Value Profile="(Default)">Office 2010 - Blue</Value>
+    </Setting>
+    <Setting Name="CustomThemePath" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+  </Settings>
+</SettingsFile>

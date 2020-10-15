@@ -1,0 +1,39 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Krypton.Toolkit.Suite.Extended.Settings" GeneratedClassName="ColourCollectionStringSettings">
+  <Profiles />
+  <Settings>
+    <Setting Name="ColourStringCollectionValues" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">
+        &lt;?xml version="1.0" encoding="utf-16"?&gt;
+        &lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+        &lt;string&gt;Border Colour&lt;/string&gt;
+        &lt;string&gt;Alternative Normal Text Colour&lt;/string&gt;
+        &lt;string&gt;Normal Text Colour&lt;/string&gt;
+        &lt;string&gt;Disabled Text Colour&lt;/string&gt;
+        &lt;string&gt;Focused Text Colour&lt;/string&gt;
+        &lt;string&gt;Pressed Text Colour&lt;/string&gt;
+        &lt;string&gt;Disabled Control Colour&lt;/string&gt;
+        &lt;string&gt;Link Normal Colour&lt;/string&gt;
+        &lt;string&gt;Link Focused Colour&lt;/string&gt;
+        &lt;string&gt;Link Hover Colour&lt;/string&gt;
+        &lt;string&gt;Link Visited Colour&lt;/string&gt;
+        &lt;string&gt;Custom Colour One&lt;/string&gt;
+        &lt;string&gt;Custom Colour Two&lt;/string&gt;
+        &lt;string&gt;Custom Colour Three&lt;/string&gt;
+        &lt;string&gt;Custom Colour Four&lt;/string&gt;
+        &lt;string&gt;Custom Colour Five&lt;/string&gt;
+        &lt;string&gt;Custom Colour Six&lt;/string&gt;
+        &lt;string&gt;Custom Text Colour One&lt;/string&gt;
+        &lt;string&gt;Custom Text Colour Two&lt;/string&gt;
+        &lt;string&gt;Custom Text Colour Three&lt;/string&gt;
+        &lt;string&gt;Custom Text Colour Four&lt;/string&gt;
+        &lt;string&gt;Custom Text Colour Five&lt;/string&gt;
+        &lt;string&gt;Custom Text Colour Six&lt;/string&gt;
+        &lt;string&gt;Menu Text Colour&lt;/string&gt;
+        &lt;string&gt;Status Text Colour&lt;/string&gt;
+        &lt;string&gt;Ribbon Tab Text Colour&lt;/string&gt;
+        &lt;/ArrayOfString&gt;
+      </Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
