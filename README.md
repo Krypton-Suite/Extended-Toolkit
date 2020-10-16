@@ -50,6 +50,7 @@ Please refer to [examples](https://github.com/Krypton-Suite/Extended-Toolkit/blo
 * Fixes for `FastColouredTextBox`
 * New Gantt chart control for `Data Visualisation`
 * Removed `Notification` elements from `Dialogs` module
+* Added `Toolkit Examples.md` to showcase components
 
 =======
 
