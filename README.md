@@ -41,6 +41,11 @@
 
 =======
 
+# Toolkit Examples
+Please refer to [examples](https://github.com/Krypton-Suite/Extended-Toolkit/blob/canary/Documents/Toolkit%20Examples.md) to see what each control looks like.
+
+=======
+
 ## 2020-12-01 - Build 2012 - December 2020
 * Fixes for `FastColouredTextBox`
 * New Gantt chart control for `Data Visualisation`
