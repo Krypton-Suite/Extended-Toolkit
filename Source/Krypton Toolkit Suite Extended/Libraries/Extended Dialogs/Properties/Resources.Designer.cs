@@ -61,6 +61,15 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &amp;Abort.
+        /// </summary>
+        internal static string AbortText {
+            get {
+                return ResourceManager.GetString("AbortText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
         internal static System.Drawing.Icon blank {
@@ -71,12 +80,30 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ca&amp;ncel.
+        /// </summary>
+        internal static string CancelText {
+            get {
+                return ResourceManager.GetString("CancelText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap cellbackground {
             get {
                 object obj = ResourceManager.GetObject("cellbackground", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Do not show this dialog again.
+        /// </summary>
+        internal static string DoNotShowText {
+            get {
+                return ResourceManager.GetString("DoNotShowText", resourceCulture);
             }
         }
         
@@ -141,6 +168,24 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Hel&amp;p.
+        /// </summary>
+        internal static string HelpText {
+            get {
+                return ResourceManager.GetString("HelpText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Ignore.
+        /// </summary>
+        internal static string IgnoreText {
+            get {
+                return ResourceManager.GetString("IgnoreText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
         internal static System.Drawing.Icon info {
@@ -177,6 +222,24 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Properties {
             get {
                 object obj = ResourceManager.GetObject("locker", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;No.
+        /// </summary>
+        internal static string NoText {
+            get {
+                return ResourceManager.GetString("NoText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O&amp;k.
+        /// </summary>
+        internal static string OkText {
+            get {
+                return ResourceManager.GetString("OkText", resourceCulture);
             }
         }
         
@@ -227,6 +290,15 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Properties {
             get {
                 object obj = ResourceManager.GetObject("question", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Re&amp;try.
+        /// </summary>
+        internal static string RetryText {
+            get {
+                return ResourceManager.GetString("RetryText", resourceCulture);
             }
         }
         
@@ -367,6 +439,15 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Properties {
             get {
                 object obj = ResourceManager.GetObject("Windows_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Y&amp;es.
+        /// </summary>
+        internal static string YesText {
+            get {
+                return ResourceManager.GetString("YesText", resourceCulture);
             }
         }
     }

@@ -211,4 +211,31 @@
   <data name="warning" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\warning.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="AbortText" xml:space="preserve">
+    <value>&amp;Abort</value>
+  </data>
+  <data name="CancelText" xml:space="preserve">
+    <value>Ca&amp;ncel</value>
+  </data>
+  <data name="DoNotShowText" xml:space="preserve">
+    <value>&amp;Do not show this dialog again</value>
+  </data>
+  <data name="HelpText" xml:space="preserve">
+    <value>Hel&amp;p</value>
+  </data>
+  <data name="IgnoreText" xml:space="preserve">
+    <value>&amp;Ignore</value>
+  </data>
+  <data name="NoText" xml:space="preserve">
+    <value>&amp;No</value>
+  </data>
+  <data name="OkText" xml:space="preserve">
+    <value>O&amp;k</value>
+  </data>
+  <data name="RetryText" xml:space="preserve">
+    <value>Re&amp;try</value>
+  </data>
+  <data name="YesText" xml:space="preserve">
+    <value>Y&amp;es</value>
+  </data>
 </root>
