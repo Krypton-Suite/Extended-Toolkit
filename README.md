@@ -41,6 +41,12 @@
 
 =======
 
+## 2021-01-0x - Build 2101 - January 2021
+* Rounded controls are now in a separate package `Krypton.Toolkit.Suite.Extended.Rounded.Controls`, rather than the `Base` package
+* Added [Information Box](https://github.com/JohannBlais/InformationBox), by [Johann Blais](https://github.com/JohannBlais)
+
+=======
+
 ## 2020-12-01 - Build 2012 - December 2020
 * Fixes for `FastColouredTextBox`
 * New Gantt chart control for `Data Visualisation`
