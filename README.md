@@ -44,6 +44,7 @@
 ## 2021-01-0x - Build 2101 - January 2021
 * Rounded controls are now in a separate package `Krypton.Toolkit.Suite.Extended.Rounded.Controls`, rather than the `Base` package
 * Added [Information Box](https://github.com/JohannBlais/InformationBox), by [Johann Blais](https://github.com/JohannBlais)
+* New 'Alert' toast notification. Use the `Alert` class in `Notifications` to activate it
 
 =======
 

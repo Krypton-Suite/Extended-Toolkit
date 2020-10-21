@@ -63,9 +63,29 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap close48px {
+            get {
+                object obj = ResourceManager.GetObject("close48px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Critical_128_x_128 {
             get {
                 object obj = ResourceManager.GetObject("Critical_128_x_128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap error48px {
+            get {
+                object obj = ResourceManager.GetObject("error48px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -96,6 +116,16 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications.Properties {
         internal static System.Drawing.Bitmap Information_128_x_128 {
             get {
                 object obj = ResourceManager.GetObject("Information_128_x_128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap information48px {
+            get {
+                object obj = ResourceManager.GetObject("information48px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -423,9 +453,29 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap sucess48px {
+            get {
+                object obj = ResourceManager.GetObject("sucess48px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Warning_128_x_128 {
             get {
                 object obj = ResourceManager.GetObject("Warning_128_x_128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap warning48px {
+            get {
+                object obj = ResourceManager.GetObject("warning48px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

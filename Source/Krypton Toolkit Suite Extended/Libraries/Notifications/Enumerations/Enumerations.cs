@@ -40,4 +40,20 @@
         LEFTTORIGHT,
         RIGHTTOLEFT
     }
+
+    public enum AlertAction
+    {
+        START,
+        WAIT,
+        CLOSE
+    }
+
+    public enum AlertType
+    {
+        SUCESS,
+        INFORMATION,
+        WARNING,
+        ERROR,
+        CUSTOM
+    }
 }

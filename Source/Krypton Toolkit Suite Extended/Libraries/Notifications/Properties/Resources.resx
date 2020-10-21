@@ -118,14 +118,23 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="close48px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\close48px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Critical_128_x_128" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Critical 128 x 128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="error48px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\error48px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Grip" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Grip.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Hand_128_x_128" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Hand 128 x 128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="information48px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\information48px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Information_128_x_128" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Information 128 x 128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -225,6 +234,12 @@
   </data>
   <data name="Stop_128_x_128" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Stop 128 x 128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="sucess48px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sucess48px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="warning48px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\warning48px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Warning_128_x_128" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Warning 128 x 128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
