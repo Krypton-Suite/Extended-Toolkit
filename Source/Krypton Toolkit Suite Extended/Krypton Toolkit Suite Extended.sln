@@ -85,6 +85,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build Tools", "Build Tools"
 	ProjectSection(SolutionItems) = preProject
 		..\..\build-complete.cmd = ..\..\build-complete.cmd
 		..\..\build.cmd = ..\..\build.cmd
+		..\..\build.proj = ..\..\build.proj
 		..\..\pack.cmd = ..\..\pack.cmd
 		..\..\publish.cmd = ..\..\publish.cmd
 		..\..\purge.cmd = ..\..\purge.cmd
@@ -100,7 +101,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Exten
 		{5E8758D3-BE51-474E-9CED-4E55EE1297DF} = {5E8758D3-BE51-474E-9CED-4E55EE1297DF}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton.Toolkit.Suite.Extended.Object.ListView", "Libraries\Object ListView\Krypton.Toolkit.Suite.Extended.Object.ListView.csproj", "{8ED47FF7-8B20-4CFF-A6B1-6D8421932F50}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Object.ListView", "Libraries\Object ListView\Krypton.Toolkit.Suite.Extended.Object.ListView.csproj", "{8ED47FF7-8B20-4CFF-A6B1-6D8421932F50}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Rounded.Controls", "Libraries\Rounded Controls\Krypton.Toolkit.Suite.Extended.Rounded.Controls.csproj", "{47B82158-2402-4472-9FFE-29D81504602B}"
 EndProject
@@ -118,7 +119,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Canary", "Canary", "{A1C6A4
 		..\..\Scripts\NuGet Packages\Canary\Upload Canary Shared Modules to NuGet.cmd = ..\..\Scripts\NuGet Packages\Canary\Upload Canary Shared Modules to NuGet.cmd
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton.Toolkit.Suite.Extended.Outlook.Grid", "Libraries\Outlook Grid\Krypton.Toolkit.Suite.Extended.Outlook.Grid.csproj", "{C3A80364-ACFF-4F4A-91C7-660FA4854C8F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Outlook.Grid", "Libraries\Outlook Grid\Krypton.Toolkit.Suite.Extended.Outlook.Grid.csproj", "{C3A80364-ACFF-4F4A-91C7-660FA4854C8F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
