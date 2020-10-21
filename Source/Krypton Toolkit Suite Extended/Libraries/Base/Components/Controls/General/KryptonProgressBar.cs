@@ -28,6 +28,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         {
             SetStyle(ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.SupportsTransparentBackColor, true);
 
+            BackgroundColour = Color.Transparent;
+
             UpdateStyles();
 
             if (_palette != null) _palette.PalettePaint += OnPalettePaint;
