@@ -60,6 +60,7 @@ Please refer to [examples](https://github.com/Krypton-Suite/Extended-Toolkit/blo
 * General bugfixes
 * Fix for 'ZipExtractor' in `Software.Updaters` package
 * Updated standard toolkit to build `2011`
+* ***Important! If you're upgrading from a older legacy version, please uninstall your currently installed packages BEFORE intalling these packages. Please also follow [this](https://github.com/Krypton-Suite/Standard-Toolkit-Online-Help/blob/master/Source/Documentation/Standard%20Toolkit%20Migration%20Guide.md) guidence, as the toolkit now uses different namespaces!***
 
 =======
 
