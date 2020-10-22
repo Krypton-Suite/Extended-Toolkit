@@ -13,7 +13,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
 
         private KryptonFormExtended _nextWindow;
 
-        private KryptonFadeManager _fadeManager;
+        private InternalKryptonFadeManager _fadeManager;
         #endregion
 
         #region Properties

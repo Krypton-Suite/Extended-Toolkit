@@ -6,6 +6,7 @@ using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
+    /// <summary>A splash window for your application. Use this in your entry point.</summary>
     public class KryptonSplashWindow : KryptonForm
     {
         #region Design Code
@@ -140,10 +141,17 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         #endregion
 
         #region Variables
-        private bool _applicationIconImageBoxVisability, _applicationIconCircularImageBoxVisibility, _progressBarVisibility, _extraTextVisibility, _useFadingEffects;
+        private bool _applicationIconImageBoxVisibility, _applicationIconCircularImageBoxVisibility, _progressBarVisibility, _extraTextVisibility, _useFadingEffects;
 
         private Color _progressBarBackgroundColour, _progressBarStartColour, _progressBarEndColour, _progressBarGlowColour,
-                      _wondowBorderColourOne, _windowBorderColourTwo, _panelBackColourOne, _panelBackColourTwo;
+                      _wondowBorderColourOne, _windowBorderColourTwo, _panelBackColourOne, _panelBackColourTwo,
+                      _labelTextColourOne, _labelTextColourTwo, _labelTextExtraColourOne, _labelTextExtraColourTwo;
+
+        //private KryptonFadeManager _fadeManager;
+
+        private Font _applicationTitleTypeface, _extraTextTypeface;
+
+        private KryptonForm _mainWindow;
 
         private int _timerInterval, _cornerRadius;
 
@@ -155,38 +163,74 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         #endregion
 
         #region Properties
-        public bool ApplicationIconImageBoxVisability { get => _applicationIconImageBoxVisability; set { _applicationIconImageBoxVisability = value; Invalidate(); } }
+        /// <summary>Gets or sets a value indicating whether [application icon image box visibility].</summary>
+        /// <value><c>true</c> if [application icon image box visibility]; otherwise, <c>false</c>.</value>
+        public bool ApplicationIconImageBoxVisibility { get => _applicationIconImageBoxVisibility; set { _applicationIconImageBoxVisibility = value; Invalidate(); } }
 
+        /// <summary>Gets or sets a value indicating whether [application icon circular image box visibility].</summary>
+        /// <value><c>true</c> if [application icon circular image box visibility]; otherwise, <c>false</c>.</value>
         public bool ApplicationIconCircularImageBoxVisibility { get => _applicationIconCircularImageBoxVisibility; set { _applicationIconCircularImageBoxVisibility = value; Invalidate(); } }
 
+        /// <summary>Gets or sets a value indicating whether [progress bar visibility].</summary>
+        /// <value><c>true</c> if [progress bar visibility]; otherwise, <c>false</c>.</value>
         public bool ProgressBarVisibility { get => _progressBarVisibility; set { _progressBarVisibility = value; Invalidate(); } }
 
+        /// <summary>Gets or sets a value indicating whether [extra text visibility].</summary>
+        /// <value><c>true</c> if [extra text visibility]; otherwise, <c>false</c>.</value>
         public bool ExtraTextVisibility { get => _extraTextVisibility; set { _extraTextVisibility = value; Invalidate(); } }
 
+        /// <summary>Gets or sets a value indicating whether [use fading effects].</summary>
+        /// <value><c>true</c> if [use fading effects]; otherwise, <c>false</c>.</value>
         public bool UseFadingEffects { get => _useFadingEffects; set => _useFadingEffects = value; }
 
+        /// <summary>Gets or sets the progress bar background colour.</summary>
+        /// <value>The progress bar background colour.</value>
         public Color ProgressBarBackgroundColour { get => _progressBarBackgroundColour; set => _progressBarBackgroundColour = value; }
 
+        /// <summary>Gets or sets the progress bar start colour.</summary>
+        /// <value>The progress bar start colour.</value>
         public Color ProgressBarStartColour { get => _progressBarStartColour; set => _progressBarStartColour = value; }
 
+        /// <summary>Gets or sets the progress bar end colour.</summary>
+        /// <value>The progress bar end colour.</value>
         public Color ProgressBarEndColour { get => _progressBarEndColour; set => _progressBarEndColour = value; }
 
+        /// <summary>Gets or sets the progress bar glow colour.</summary>
+        /// <value>The progress bar glow colour.</value>
         public Color ProgressBarGlowColour { get => _progressBarGlowColour; set => _progressBarGlowColour = value; }
 
+        /// <summary>Gets or sets the main window.</summary>
+        /// <value>The main window.</value>
+        public KryptonForm MainWindow { get => _mainWindow; set => _mainWindow = value; }
+
+        /// <summary>Gets or sets the timer interval.</summary>
+        /// <value>The timer interval.</value>
         public int TimerInterval { get => _timerInterval; set => _timerInterval = value; }
 
+        /// <summary>Gets or sets the corner radius.</summary>
+        /// <value>The corner radius.</value>
         [DefaultValue(-1)]
         public int CornerRadius { get => _cornerRadius; set => _cornerRadius = value; }
 
+        /// <summary>Gets or sets the application image.</summary>
+        /// <value>The application image.</value>
         public Image ApplicationImage { get => _applicationImage; set => _applicationImage = value; }
 
+        /// <summary>Gets or sets the name of the application.</summary>
+        /// <value>The name of the application.</value>
         public string ApplicationName { get => _applicationName; set => _applicationName = value; }
 
+        /// <summary>Gets or sets the extra text.</summary>
+        /// <value>The extra text.</value>
         public string ExtraText { get => _extraText; set => _extraText = value; }
         #endregion
 
         #region Constructors
-        public KryptonSplashWindow(string applicationName, Image applicationImage)
+        /// <summary>Initializes a new instance of the <see cref="KryptonSplashWindow" /> class.</summary>
+        /// <param name="applicationName">Name of the application.</param>
+        /// <param name="applicationImage">The application image.</param>
+        /// <param name="mainWindow">The main window to move on to, once the process finishes.</param>
+        public KryptonSplashWindow(string applicationName, Image applicationImage, KryptonForm mainWindow)
         {
             InitializeComponent();
 
@@ -209,7 +253,13 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             pbxApplicationIconStandard.Image = applicationImage;
         }
 
-        public KryptonSplashWindow(string applicationName, Image applicationImage, bool showApplicationIconImageBox = false, bool showApplicationIconCircularImageBox = true)
+        /// <summary>Initializes a new instance of the <see cref="KryptonSplashWindow" /> class.</summary>
+        /// <param name="applicationName">Name of the application.</param>
+        /// <param name="applicationImage">The application image.</param>
+        /// <param name="mainWindow">The main window to move on to, once the process finishes.</param>
+        /// <param name="showApplicationIconImageBox">if set to <c>true</c> [show application icon image box].</param>
+        /// <param name="showApplicationIconCircularImageBox">if set to <c>true</c> [show application icon circular image box].</param>
+        public KryptonSplashWindow(string applicationName, Image applicationImage, KryptonForm mainWindow, bool showApplicationIconImageBox = false, bool showApplicationIconCircularImageBox = true)
         {
             InitializeComponent();
         }
@@ -228,8 +278,27 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         private void UpdateSplash_Tick(object sender, EventArgs e)
         {
             kpProgress.Value = kpProgress.Value + 1;
+
+            if (kpProgress.Value == 100)
+            {
+                //var newThread = new System.Threading.Thread(RunMainWindow(MainWindow));
+
+                //newThread.SetApartmentState(System.Threading.ApartmentState.STA);
+
+                //newThread.Start();
+
+                MainWindow.Show();
+
+                Close();
+            }
         }
 
+        #region Methods
+        /// <summary>Updates the UI elements.</summary>
+        /// <param name="applicationIconImageBoxVisability">if set to <c>true</c> [application icon image box visability].</param>
+        /// <param name="applicationIconCircularImageBoxVisability">if set to <c>true</c> [application icon circular image box visability].</param>
+        /// <param name="extraTextVisability">if set to <c>true</c> [extra text visability].</param>
+        /// <param name="progressBarVisability">if set to <c>true</c> [progress bar visability].</param>
         private void UpdateUIElements(bool applicationIconImageBoxVisability, bool applicationIconCircularImageBoxVisability, bool extraTextVisability, bool progressBarVisability)
         {
             pbxApplicationIconStandard.Visible = applicationIconImageBoxVisability;
@@ -241,15 +310,23 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             kpnlProgressBar.Visible = progressBarVisability;
         }
 
-        private void UpdateApplicationName(string applicationName)
-        {
-            throw new NotImplementedException();
-        }
+        /// <summary>Updates the name of the application.</summary>
+        /// <param name="applicationName">Name of the application.</param>
+        private void UpdateApplicationName(string applicationName) => klblApplicationName.Text = applicationName;
 
+        /// <summary>Polls the current progress value.</summary>
+        /// <returns></returns>
         public int PollCurrentProgressValue() => kpProgress.Value;
 
+        /// <summary>Updates the extra text.</summary>
+        /// <param name="message">The message.</param>
         public void UpdateExtraText(string message) => kmlblExtraText.Text = message;
 
+        /// <summary>Changes the progress bar colour.</summary>
+        /// <param name="backgroundColour">The background colour.</param>
+        /// <param name="startColour">The start colour.</param>
+        /// <param name="endColour">The end colour.</param>
+        /// <param name="glowColour">The glow colour.</param>
         public void ChangeProgressBarColour(Color backgroundColour, Color startColour, Color endColour, Color glowColour)
         {
             kpProgress.BackgroundColour = backgroundColour;
@@ -260,5 +337,10 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
             kpProgress.GlowColour = glowColour;
         }
+
+        /// <summary>Runs the main window.</summary>
+        /// <param name="mainWindow">The main window.</param>
+        public void RunMainWindow(KryptonForm mainWindow) => Application.Run(mainWindow);
+        #endregion
     }
 }

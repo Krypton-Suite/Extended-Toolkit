@@ -2,7 +2,7 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Base
 {
-    internal class KryptonFadeManager
+    internal class InternalKryptonFadeManager
     {
         #region Variables
         private double _fadeIn, _fadeOut;
@@ -26,7 +26,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         private double FadeOut { get => _fadeOut; set => _fadeOut = value; }
         #endregion
 
-        public KryptonFadeManager()
+        public InternalKryptonFadeManager()
         {
 
         }

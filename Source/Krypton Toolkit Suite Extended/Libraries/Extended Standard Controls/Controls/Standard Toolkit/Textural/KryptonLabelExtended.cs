@@ -1,5 +1,4 @@
-﻿using Krypton.Toolkit;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -33,7 +32,7 @@ namespace Krypton.Toolkit.Suite.Extended.Standard.Controls
         public Color StateDisabledTextColourOne { get => _stateDisabledTextColourOne; set { _stateDisabledTextColourOne = value; Invalidate(); } }
 
         [Category("Appearance"), Description("The second text colour.")]
-        public Color StateDisabledTextColourTwo { get => _stateDisabledTextColourTwo; set { _stateDisabledTextColourTwo = value; Invalidate(); } }  
+        public Color StateDisabledTextColourTwo { get => _stateDisabledTextColourTwo; set { _stateDisabledTextColourTwo = value; Invalidate(); } }
         #endregion
 
         #region State Normal
@@ -41,7 +40,7 @@ namespace Krypton.Toolkit.Suite.Extended.Standard.Controls
         public Color StateNormalTextColourOne { get => _stateNormalTextColourOne; set { _stateNormalTextColourOne = value; Invalidate(); } }
 
         [Category("Appearance"), Description("The second text colour.")]
-        public Color StateNormalTextColourTwo { get => _stateNormalTextColourTwo; set { _stateNormalTextColourTwo = value; Invalidate(); } }            
+        public Color StateNormalTextColourTwo { get => _stateNormalTextColourTwo; set { _stateNormalTextColourTwo = value; Invalidate(); } }
         #endregion
 
         #region Globals
