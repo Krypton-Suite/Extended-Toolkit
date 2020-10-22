@@ -147,7 +147,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
                       _wondowBorderColourOne, _windowBorderColourTwo, _panelBackColourOne, _panelBackColourTwo,
                       _labelTextColourOne, _labelTextColourTwo, _labelTextExtraColourOne, _labelTextExtraColourTwo;
 
-        //private KryptonFadeManager _fadeManager;
+        private KryptonFadeManager _fadeManager = new KryptonFadeManager();
 
         private Font _applicationTitleTypeface, _extraTextTypeface;
 
@@ -267,12 +267,18 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
         private void KryptonSplashWindow_FormClosing(object sender, FormClosingEventArgs e)
         {
-
+            if (UseFadingEffects)
+            {
+                _fadeManager.FadeExtendedWindowOut(this, MainWindow);
+            }
         }
 
         private void KryptonSplashWindow_Load(object sender, EventArgs e)
         {
-
+            if (UseFadingEffects)
+            {
+                _fadeManager.FadeExtendedWindowIn(this);
+            }
         }
 
         private void UpdateSplash_Tick(object sender, EventArgs e)
