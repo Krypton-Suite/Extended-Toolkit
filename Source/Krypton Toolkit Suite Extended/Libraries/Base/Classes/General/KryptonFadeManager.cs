@@ -27,6 +27,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         private double FadeOut { get => _fadeOut; set => _fadeOut = value; }
         #endregion
 
+        /// <summary>Initializes a new instance of the <see cref="KryptonFadeManager" /> class.</summary>
         public KryptonFadeManager()
         {
 

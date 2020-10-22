@@ -45,6 +45,8 @@
 * Rounded controls are now in a separate package `Krypton.Toolkit.Suite.Extended.Rounded.Controls`, rather than the `Base` package
 * Added [Information Box](https://github.com/JohannBlais/InformationBox), by [Johann Blais](https://github.com/JohannBlais)
 * New 'Alert' toast notification. Use the `Alert` class in `Notifications` to activate it
+* Implement public version of the `KryptonFadeManager` class, so you can apply *fading* effects to `KryptonForm`
+* Updated standard toolkit to build `2101`
 
 =======
 
