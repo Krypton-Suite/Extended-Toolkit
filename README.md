@@ -46,6 +46,8 @@
 * Added [Information Box](https://github.com/JohannBlais/InformationBox), by [Johann Blais](https://github.com/JohannBlais)
 * New 'Alert' toast notification. Use the `Alert` class in `Notifications` to activate it
 * Implement public version of the `KryptonFadeManager` class, so you can apply *fading* effects to `KryptonForm`
+* New `KryptonAboutDialog`, with extra features
+* New `NotificationLocationPosition` property in `KryptonToastNotificationPopup` to allow for custom location configuration
 * Updated standard toolkit to build `2101`
 
 =======
