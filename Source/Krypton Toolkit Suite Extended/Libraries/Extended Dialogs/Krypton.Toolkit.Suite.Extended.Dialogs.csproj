@@ -91,6 +91,7 @@
 
   <ItemGroup>
     <Folder Include="Controls\Colours\" />
+    <Folder Include="Interfaces\Exception Box\" />
   </ItemGroup>
 
   <ItemGroup>

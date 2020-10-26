@@ -9,8 +9,8 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         private KryptonPanel kryptonPanel2;
         private KryptonCancelDialogButton kcdbCancel;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-        private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
+        private System.Windows.Forms.ToolStripStatusLabel tslInfo;
+        private System.Windows.Forms.ToolStripProgressBar tspbProgress;
         private KryptonPanel kryptonPanel3;
         private Navigator.KryptonNavigator kryptonNavigator1;
         private Navigator.KryptonPage kryptonPage1;
@@ -19,22 +19,25 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         private KryptonButton kbtnLessDetails;
         private KryptonButton kbtnCopy;
         private KryptonButton kbtnSave;
-        private KryptonRichTextBox kryptonRichTextBox2;
+        private KryptonRichTextBox krtbUserExpanation;
         private KryptonLabel kryptonLabel6;
-        private Base.KryptonBorderedLabel kryptonBorderedLabel4;
+        private Base.KryptonBorderedLabel kblblTime;
         private KryptonLabel kryptonLabel4;
-        private Base.KryptonBorderedLabel kryptonBorderedLabel5;
+        private Base.KryptonBorderedLabel kblblDate;
         private KryptonLabel kryptonLabel5;
-        private Base.KryptonBorderedLabel kryptonBorderedLabel3;
+        private Base.KryptonBorderedLabel kblblRegion;
         private KryptonLabel kryptonLabel3;
-        private Base.KryptonBorderedLabel kryptonBorderedLabel2;
+        private Base.KryptonBorderedLabel kblblVersion;
         private KryptonLabel kryptonLabel2;
-        private Base.KryptonBorderedLabel kryptonBorderedLabel1;
+        private Base.KryptonBorderedLabel kblblApplicationName;
         private KryptonLabel kryptonLabel1;
-        private KryptonRichTextBox kryptonRichTextBox1;
+        private KryptonRichTextBox krtbExceptionMessage;
         private System.Windows.Forms.PictureBox picGeneral;
         private Navigator.KryptonPage kryptonPage3;
         private Navigator.KryptonPage kryptonPage4;
+        private KryptonRichTextBox krtbExceptionLarge;
+        private System.Windows.Forms.ListView lvAssemblies;
+        private KryptonTreeView ktvEnvironment;
         private KryptonPanel kryptonPanel1;
 
         private void InitializeComponent()
@@ -42,35 +45,38 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KryptonFullReportView));
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
+            this.tslInfo = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tspbProgress = new System.Windows.Forms.ToolStripProgressBar();
             this.kcdbCancel = new Krypton.Toolkit.Suite.Extended.Dialogs.KryptonCancelDialogButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
+            this.kbtnLessDetails = new Krypton.Toolkit.KryptonButton();
+            this.kbtnCopy = new Krypton.Toolkit.KryptonButton();
+            this.kbtnSave = new Krypton.Toolkit.KryptonButton();
             this.kbtnSend = new Krypton.Toolkit.KryptonButton();
             this.kryptonPanel3 = new Krypton.Toolkit.KryptonPanel();
             this.kryptonNavigator1 = new Krypton.Navigator.KryptonNavigator();
             this.kryptonPage1 = new Krypton.Navigator.KryptonPage();
+            this.krtbUserExpanation = new Krypton.Toolkit.KryptonRichTextBox();
+            this.kryptonLabel6 = new Krypton.Toolkit.KryptonLabel();
+            this.kblblTime = new Krypton.Toolkit.Suite.Extended.Base.KryptonBorderedLabel();
+            this.kryptonLabel4 = new Krypton.Toolkit.KryptonLabel();
+            this.kblblDate = new Krypton.Toolkit.Suite.Extended.Base.KryptonBorderedLabel();
+            this.kryptonLabel5 = new Krypton.Toolkit.KryptonLabel();
+            this.kblblRegion = new Krypton.Toolkit.Suite.Extended.Base.KryptonBorderedLabel();
+            this.kryptonLabel3 = new Krypton.Toolkit.KryptonLabel();
+            this.kblblVersion = new Krypton.Toolkit.Suite.Extended.Base.KryptonBorderedLabel();
+            this.kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
+            this.kblblApplicationName = new Krypton.Toolkit.Suite.Extended.Base.KryptonBorderedLabel();
+            this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
+            this.krtbExceptionMessage = new Krypton.Toolkit.KryptonRichTextBox();
+            this.picGeneral = new System.Windows.Forms.PictureBox();
             this.kryptonPage2 = new Krypton.Navigator.KryptonPage();
-            this.kbtnSave = new Krypton.Toolkit.KryptonButton();
-            this.kbtnCopy = new Krypton.Toolkit.KryptonButton();
-            this.kbtnLessDetails = new Krypton.Toolkit.KryptonButton();
             this.kryptonPage3 = new Krypton.Navigator.KryptonPage();
             this.kryptonPage4 = new Krypton.Navigator.KryptonPage();
-            this.picGeneral = new System.Windows.Forms.PictureBox();
-            this.kryptonRichTextBox1 = new Krypton.Toolkit.KryptonRichTextBox();
-            this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
-            this.kryptonBorderedLabel1 = new Krypton.Toolkit.Suite.Extended.Base.KryptonBorderedLabel();
-            this.kryptonBorderedLabel2 = new Krypton.Toolkit.Suite.Extended.Base.KryptonBorderedLabel();
-            this.kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
-            this.kryptonBorderedLabel3 = new Krypton.Toolkit.Suite.Extended.Base.KryptonBorderedLabel();
-            this.kryptonLabel3 = new Krypton.Toolkit.KryptonLabel();
-            this.kryptonBorderedLabel4 = new Krypton.Toolkit.Suite.Extended.Base.KryptonBorderedLabel();
-            this.kryptonLabel4 = new Krypton.Toolkit.KryptonLabel();
-            this.kryptonBorderedLabel5 = new Krypton.Toolkit.Suite.Extended.Base.KryptonBorderedLabel();
-            this.kryptonLabel5 = new Krypton.Toolkit.KryptonLabel();
-            this.kryptonLabel6 = new Krypton.Toolkit.KryptonLabel();
-            this.kryptonRichTextBox2 = new Krypton.Toolkit.KryptonRichTextBox();
+            this.lvAssemblies = new System.Windows.Forms.ListView();
+            this.ktvEnvironment = new Krypton.Toolkit.KryptonTreeView();
+            this.krtbExceptionLarge = new Krypton.Toolkit.KryptonRichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -82,10 +88,13 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.kryptonNavigator1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPage1)).BeginInit();
             this.kryptonPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPage2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPage3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPage4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picGeneral)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPage2)).BeginInit();
+            this.kryptonPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPage3)).BeginInit();
+            this.kryptonPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPage4)).BeginInit();
+            this.kryptonPage4.SuspendLayout();
             this.SuspendLayout();
             // 
             // kryptonPanel1
@@ -101,8 +110,8 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             // 
             this.statusStrip1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1,
-            this.toolStripProgressBar1});
+            this.tslInfo,
+            this.tspbProgress});
             this.statusStrip1.Location = new System.Drawing.Point(0, 0);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.ManagerRenderMode;
@@ -110,18 +119,18 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.statusStrip1.TabIndex = 0;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // toolStripStatusLabel1
+            // tslInfo
             // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(496, 17);
-            this.toolStripStatusLabel1.Spring = true;
-            this.toolStripStatusLabel1.Text = "Loading system information...";
-            this.toolStripStatusLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.tslInfo.Name = "tslInfo";
+            this.tslInfo.Size = new System.Drawing.Size(465, 17);
+            this.tslInfo.Spring = true;
+            this.tslInfo.Text = "Loading system information...";
+            this.tslInfo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // toolStripProgressBar1
+            // tspbProgress
             // 
-            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
-            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 16);
+            this.tspbProgress.Name = "tspbProgress";
+            this.tspbProgress.Size = new System.Drawing.Size(100, 16);
             // 
             // kcdbCancel
             // 
@@ -156,6 +165,36 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.kryptonPanel2.Size = new System.Drawing.Size(613, 41);
             this.kryptonPanel2.TabIndex = 3;
             // 
+            // kbtnLessDetails
+            // 
+            this.kbtnLessDetails.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.kbtnLessDetails.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.kbtnLessDetails.Location = new System.Drawing.Point(130, 7);
+            this.kbtnLessDetails.Name = "kbtnLessDetails";
+            this.kbtnLessDetails.Size = new System.Drawing.Size(90, 25);
+            this.kbtnLessDetails.TabIndex = 8;
+            this.kbtnLessDetails.Values.Text = "Less &Details";
+            // 
+            // kbtnCopy
+            // 
+            this.kbtnCopy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.kbtnCopy.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.kbtnCopy.Location = new System.Drawing.Point(226, 7);
+            this.kbtnCopy.Name = "kbtnCopy";
+            this.kbtnCopy.Size = new System.Drawing.Size(90, 25);
+            this.kbtnCopy.TabIndex = 7;
+            this.kbtnCopy.Values.Text = "&Copy";
+            // 
+            // kbtnSave
+            // 
+            this.kbtnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.kbtnSave.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.kbtnSave.Location = new System.Drawing.Point(322, 7);
+            this.kbtnSave.Name = "kbtnSave";
+            this.kbtnSave.Size = new System.Drawing.Size(90, 25);
+            this.kbtnSave.TabIndex = 6;
+            this.kbtnSave.Values.Text = "S&ave";
+            // 
             // kbtnSend
             // 
             this.kbtnSend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -185,7 +224,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.kryptonPage2,
             this.kryptonPage3,
             this.kryptonPage4});
-            this.kryptonNavigator1.SelectedIndex = 3;
+            this.kryptonNavigator1.SelectedIndex = 0;
             this.kryptonNavigator1.Size = new System.Drawing.Size(591, 500);
             this.kryptonNavigator1.TabIndex = 0;
             this.kryptonNavigator1.Text = "kryptonNavigator1";
@@ -193,19 +232,19 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             // kryptonPage1
             // 
             this.kryptonPage1.AutoHiddenSlideSize = new System.Drawing.Size(200, 200);
-            this.kryptonPage1.Controls.Add(this.kryptonRichTextBox2);
+            this.kryptonPage1.Controls.Add(this.krtbUserExpanation);
             this.kryptonPage1.Controls.Add(this.kryptonLabel6);
-            this.kryptonPage1.Controls.Add(this.kryptonBorderedLabel4);
+            this.kryptonPage1.Controls.Add(this.kblblTime);
             this.kryptonPage1.Controls.Add(this.kryptonLabel4);
-            this.kryptonPage1.Controls.Add(this.kryptonBorderedLabel5);
+            this.kryptonPage1.Controls.Add(this.kblblDate);
             this.kryptonPage1.Controls.Add(this.kryptonLabel5);
-            this.kryptonPage1.Controls.Add(this.kryptonBorderedLabel3);
+            this.kryptonPage1.Controls.Add(this.kblblRegion);
             this.kryptonPage1.Controls.Add(this.kryptonLabel3);
-            this.kryptonPage1.Controls.Add(this.kryptonBorderedLabel2);
+            this.kryptonPage1.Controls.Add(this.kblblVersion);
             this.kryptonPage1.Controls.Add(this.kryptonLabel2);
-            this.kryptonPage1.Controls.Add(this.kryptonBorderedLabel1);
+            this.kryptonPage1.Controls.Add(this.kblblApplicationName);
             this.kryptonPage1.Controls.Add(this.kryptonLabel1);
-            this.kryptonPage1.Controls.Add(this.kryptonRichTextBox1);
+            this.kryptonPage1.Controls.Add(this.krtbExceptionMessage);
             this.kryptonPage1.Controls.Add(this.picGeneral);
             this.kryptonPage1.Flags = 65534;
             this.kryptonPage1.LastVisibleSet = true;
@@ -216,71 +255,127 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.kryptonPage1.ToolTipTitle = "Page ToolTip";
             this.kryptonPage1.UniqueName = "08a4072e2e444d618f93b1769d0f5934";
             // 
-            // kryptonPage2
+            // krtbUserExpanation
             // 
-            this.kryptonPage2.AutoHiddenSlideSize = new System.Drawing.Size(200, 200);
-            this.kryptonPage2.Flags = 65534;
-            this.kryptonPage2.LastVisibleSet = true;
-            this.kryptonPage2.MinimumSize = new System.Drawing.Size(50, 50);
-            this.kryptonPage2.Name = "kryptonPage2";
-            this.kryptonPage2.Size = new System.Drawing.Size(589, 473);
-            this.kryptonPage2.Text = "Exceptions";
-            this.kryptonPage2.ToolTipTitle = "Page ToolTip";
-            this.kryptonPage2.UniqueName = "694cc14036a848cf80adc36d768d2a0a";
+            this.krtbUserExpanation.Location = new System.Drawing.Point(22, 265);
+            this.krtbUserExpanation.Name = "krtbUserExpanation";
+            this.krtbUserExpanation.Size = new System.Drawing.Size(552, 195);
+            this.krtbUserExpanation.StateCommon.Back.Color1 = System.Drawing.Color.Cornsilk;
+            this.krtbUserExpanation.TabIndex = 39;
+            this.krtbUserExpanation.Text = "kryptonRichTextBox2";
             // 
-            // kbtnSave
+            // kryptonLabel6
             // 
-            this.kbtnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.kbtnSave.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.kbtnSave.Location = new System.Drawing.Point(322, 7);
-            this.kbtnSave.Name = "kbtnSave";
-            this.kbtnSave.Size = new System.Drawing.Size(90, 25);
-            this.kbtnSave.TabIndex = 6;
-            this.kbtnSave.Values.Text = "S&ave";
+            this.kryptonLabel6.Location = new System.Drawing.Point(22, 238);
+            this.kryptonLabel6.Name = "kryptonLabel6";
+            this.kryptonLabel6.Size = new System.Drawing.Size(390, 20);
+            this.kryptonLabel6.TabIndex = 38;
+            this.kryptonLabel6.Values.Text = "Please enter a brief explanation of events leading up to this exception";
             // 
-            // kbtnCopy
+            // kblblTime
             // 
-            this.kbtnCopy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.kbtnCopy.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.kbtnCopy.Location = new System.Drawing.Point(226, 7);
-            this.kbtnCopy.Name = "kbtnCopy";
-            this.kbtnCopy.Size = new System.Drawing.Size(90, 25);
-            this.kbtnCopy.TabIndex = 7;
-            this.kbtnCopy.Values.Text = "&Copy";
+            this.kblblTime.AutoSize = false;
+            this.kblblTime.BackColor = System.Drawing.Color.Transparent;
+            this.kblblTime.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(192)))), ((int)(((byte)(214)))));
+            this.kblblTime.Location = new System.Drawing.Point(370, 195);
+            this.kblblTime.Name = "kblblTime";
+            this.kblblTime.Size = new System.Drawing.Size(139, 25);
+            this.kblblTime.TabIndex = 37;
+            this.kblblTime.Values.Text = "";
             // 
-            // kbtnLessDetails
+            // kryptonLabel4
             // 
-            this.kbtnLessDetails.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.kbtnLessDetails.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.kbtnLessDetails.Location = new System.Drawing.Point(130, 7);
-            this.kbtnLessDetails.Name = "kbtnLessDetails";
-            this.kbtnLessDetails.Size = new System.Drawing.Size(90, 25);
-            this.kbtnLessDetails.TabIndex = 8;
-            this.kbtnLessDetails.Values.Text = "Less &Details";
+            this.kryptonLabel4.Location = new System.Drawing.Point(288, 196);
+            this.kryptonLabel4.Name = "kryptonLabel4";
+            this.kryptonLabel4.Size = new System.Drawing.Size(40, 20);
+            this.kryptonLabel4.TabIndex = 36;
+            this.kryptonLabel4.Values.Text = "Time:";
             // 
-            // kryptonPage3
+            // kblblDate
             // 
-            this.kryptonPage3.AutoHiddenSlideSize = new System.Drawing.Size(200, 200);
-            this.kryptonPage3.Flags = 65534;
-            this.kryptonPage3.LastVisibleSet = true;
-            this.kryptonPage3.MinimumSize = new System.Drawing.Size(50, 50);
-            this.kryptonPage3.Name = "kryptonPage3";
-            this.kryptonPage3.Size = new System.Drawing.Size(589, 473);
-            this.kryptonPage3.Text = "Assemblies";
-            this.kryptonPage3.ToolTipTitle = "Page ToolTip";
-            this.kryptonPage3.UniqueName = "fde488a4932e4ef29bd2bcb5e3a9d6fd";
+            this.kblblDate.AutoSize = false;
+            this.kblblDate.BackColor = System.Drawing.Color.Transparent;
+            this.kblblDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(192)))), ((int)(((byte)(214)))));
+            this.kblblDate.Location = new System.Drawing.Point(104, 195);
+            this.kblblDate.Name = "kblblDate";
+            this.kblblDate.Size = new System.Drawing.Size(139, 25);
+            this.kblblDate.TabIndex = 35;
+            this.kblblDate.Values.Text = "";
             // 
-            // kryptonPage4
+            // kryptonLabel5
             // 
-            this.kryptonPage4.AutoHiddenSlideSize = new System.Drawing.Size(200, 200);
-            this.kryptonPage4.Flags = 65534;
-            this.kryptonPage4.LastVisibleSet = true;
-            this.kryptonPage4.MinimumSize = new System.Drawing.Size(50, 50);
-            this.kryptonPage4.Name = "kryptonPage4";
-            this.kryptonPage4.Size = new System.Drawing.Size(589, 473);
-            this.kryptonPage4.Text = "System";
-            this.kryptonPage4.ToolTipTitle = "Page ToolTip";
-            this.kryptonPage4.UniqueName = "c6c80bc57dec4d9f974905ba7ac0c48a";
+            this.kryptonLabel5.Location = new System.Drawing.Point(22, 196);
+            this.kryptonLabel5.Name = "kryptonLabel5";
+            this.kryptonLabel5.Size = new System.Drawing.Size(39, 20);
+            this.kryptonLabel5.TabIndex = 34;
+            this.kryptonLabel5.Values.Text = "Date:";
+            // 
+            // kblblRegion
+            // 
+            this.kblblRegion.AutoSize = false;
+            this.kblblRegion.BackColor = System.Drawing.Color.Transparent;
+            this.kblblRegion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(192)))), ((int)(((byte)(214)))));
+            this.kblblRegion.Location = new System.Drawing.Point(370, 153);
+            this.kblblRegion.Name = "kblblRegion";
+            this.kblblRegion.Size = new System.Drawing.Size(139, 25);
+            this.kblblRegion.TabIndex = 33;
+            this.kblblRegion.Values.Text = "";
+            // 
+            // kryptonLabel3
+            // 
+            this.kryptonLabel3.Location = new System.Drawing.Point(288, 154);
+            this.kryptonLabel3.Name = "kryptonLabel3";
+            this.kryptonLabel3.Size = new System.Drawing.Size(52, 20);
+            this.kryptonLabel3.TabIndex = 32;
+            this.kryptonLabel3.Values.Text = "Region:";
+            // 
+            // kblblVersion
+            // 
+            this.kblblVersion.AutoSize = false;
+            this.kblblVersion.BackColor = System.Drawing.Color.Transparent;
+            this.kblblVersion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(192)))), ((int)(((byte)(214)))));
+            this.kblblVersion.Location = new System.Drawing.Point(104, 153);
+            this.kblblVersion.Name = "kblblVersion";
+            this.kblblVersion.Size = new System.Drawing.Size(139, 25);
+            this.kblblVersion.TabIndex = 31;
+            this.kblblVersion.Values.Text = "";
+            // 
+            // kryptonLabel2
+            // 
+            this.kryptonLabel2.Location = new System.Drawing.Point(22, 154);
+            this.kryptonLabel2.Name = "kryptonLabel2";
+            this.kryptonLabel2.Size = new System.Drawing.Size(54, 20);
+            this.kryptonLabel2.TabIndex = 30;
+            this.kryptonLabel2.Values.Text = "Version:";
+            // 
+            // kblblApplicationName
+            // 
+            this.kblblApplicationName.AutoSize = false;
+            this.kblblApplicationName.BackColor = System.Drawing.Color.Transparent;
+            this.kblblApplicationName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(192)))), ((int)(((byte)(214)))));
+            this.kblblApplicationName.Location = new System.Drawing.Point(104, 106);
+            this.kblblApplicationName.Name = "kblblApplicationName";
+            this.kblblApplicationName.Size = new System.Drawing.Size(470, 25);
+            this.kblblApplicationName.TabIndex = 29;
+            this.kblblApplicationName.Values.Text = "";
+            // 
+            // kryptonLabel1
+            // 
+            this.kryptonLabel1.Location = new System.Drawing.Point(22, 107);
+            this.kryptonLabel1.Name = "kryptonLabel1";
+            this.kryptonLabel1.Size = new System.Drawing.Size(75, 20);
+            this.kryptonLabel1.TabIndex = 28;
+            this.kryptonLabel1.Values.Text = "Application:";
+            // 
+            // krtbExceptionMessage
+            // 
+            this.krtbExceptionMessage.Location = new System.Drawing.Point(92, 20);
+            this.krtbExceptionMessage.Name = "krtbExceptionMessage";
+            this.krtbExceptionMessage.ReadOnly = true;
+            this.krtbExceptionMessage.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
+            this.krtbExceptionMessage.Size = new System.Drawing.Size(482, 64);
+            this.krtbExceptionMessage.TabIndex = 27;
+            this.krtbExceptionMessage.Text = "";
             // 
             // picGeneral
             // 
@@ -293,129 +388,79 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.picGeneral.TabIndex = 26;
             this.picGeneral.TabStop = false;
             // 
-            // kryptonRichTextBox1
+            // kryptonPage2
             // 
-            this.kryptonRichTextBox1.Location = new System.Drawing.Point(92, 20);
-            this.kryptonRichTextBox1.Name = "kryptonRichTextBox1";
-            this.kryptonRichTextBox1.ReadOnly = true;
-            this.kryptonRichTextBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
-            this.kryptonRichTextBox1.Size = new System.Drawing.Size(482, 64);
-            this.kryptonRichTextBox1.TabIndex = 27;
-            this.kryptonRichTextBox1.Text = "kryptonRichTextBox1";
+            this.kryptonPage2.AutoHiddenSlideSize = new System.Drawing.Size(200, 200);
+            this.kryptonPage2.Controls.Add(this.krtbExceptionLarge);
+            this.kryptonPage2.Flags = 65534;
+            this.kryptonPage2.LastVisibleSet = true;
+            this.kryptonPage2.MinimumSize = new System.Drawing.Size(50, 50);
+            this.kryptonPage2.Name = "kryptonPage2";
+            this.kryptonPage2.Size = new System.Drawing.Size(589, 473);
+            this.kryptonPage2.Text = "Exceptions";
+            this.kryptonPage2.ToolTipTitle = "Page ToolTip";
+            this.kryptonPage2.UniqueName = "694cc14036a848cf80adc36d768d2a0a";
             // 
-            // kryptonLabel1
+            // kryptonPage3
             // 
-            this.kryptonLabel1.Location = new System.Drawing.Point(22, 107);
-            this.kryptonLabel1.Name = "kryptonLabel1";
-            this.kryptonLabel1.Size = new System.Drawing.Size(75, 20);
-            this.kryptonLabel1.TabIndex = 28;
-            this.kryptonLabel1.Values.Text = "Application:";
+            this.kryptonPage3.AutoHiddenSlideSize = new System.Drawing.Size(200, 200);
+            this.kryptonPage3.Controls.Add(this.lvAssemblies);
+            this.kryptonPage3.Flags = 65534;
+            this.kryptonPage3.LastVisibleSet = true;
+            this.kryptonPage3.MinimumSize = new System.Drawing.Size(50, 50);
+            this.kryptonPage3.Name = "kryptonPage3";
+            this.kryptonPage3.Size = new System.Drawing.Size(589, 473);
+            this.kryptonPage3.Text = "Assemblies";
+            this.kryptonPage3.ToolTipTitle = "Page ToolTip";
+            this.kryptonPage3.UniqueName = "fde488a4932e4ef29bd2bcb5e3a9d6fd";
             // 
-            // kryptonBorderedLabel1
+            // kryptonPage4
             // 
-            this.kryptonBorderedLabel1.AutoSize = false;
-            this.kryptonBorderedLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.kryptonBorderedLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(192)))), ((int)(((byte)(214)))));
-            this.kryptonBorderedLabel1.Location = new System.Drawing.Point(104, 106);
-            this.kryptonBorderedLabel1.Name = "kryptonBorderedLabel1";
-            this.kryptonBorderedLabel1.Size = new System.Drawing.Size(470, 25);
-            this.kryptonBorderedLabel1.TabIndex = 29;
-            this.kryptonBorderedLabel1.Values.Text = "kryptonBorderedLabel1";
+            this.kryptonPage4.AutoHiddenSlideSize = new System.Drawing.Size(200, 200);
+            this.kryptonPage4.Controls.Add(this.ktvEnvironment);
+            this.kryptonPage4.Flags = 65534;
+            this.kryptonPage4.LastVisibleSet = true;
+            this.kryptonPage4.MinimumSize = new System.Drawing.Size(50, 50);
+            this.kryptonPage4.Name = "kryptonPage4";
+            this.kryptonPage4.Size = new System.Drawing.Size(589, 473);
+            this.kryptonPage4.Text = "System";
+            this.kryptonPage4.ToolTipTitle = "Page ToolTip";
+            this.kryptonPage4.UniqueName = "c6c80bc57dec4d9f974905ba7ac0c48a";
             // 
-            // kryptonBorderedLabel2
+            // lvAssemblies
             // 
-            this.kryptonBorderedLabel2.AutoSize = false;
-            this.kryptonBorderedLabel2.BackColor = System.Drawing.Color.Transparent;
-            this.kryptonBorderedLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(192)))), ((int)(((byte)(214)))));
-            this.kryptonBorderedLabel2.Location = new System.Drawing.Point(104, 153);
-            this.kryptonBorderedLabel2.Name = "kryptonBorderedLabel2";
-            this.kryptonBorderedLabel2.Size = new System.Drawing.Size(139, 25);
-            this.kryptonBorderedLabel2.TabIndex = 31;
-            this.kryptonBorderedLabel2.Values.Text = "kryptonBorderedLabel2";
+            this.lvAssemblies.Activation = System.Windows.Forms.ItemActivation.OneClick;
+            this.lvAssemblies.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lvAssemblies.FullRowSelect = true;
+            this.lvAssemblies.HideSelection = false;
+            this.lvAssemblies.HotTracking = true;
+            this.lvAssemblies.HoverSelection = true;
+            this.lvAssemblies.Location = new System.Drawing.Point(0, 0);
+            this.lvAssemblies.Name = "lvAssemblies";
+            this.lvAssemblies.Size = new System.Drawing.Size(589, 473);
+            this.lvAssemblies.TabIndex = 0;
+            this.lvAssemblies.UseCompatibleStateImageBehavior = false;
+            this.lvAssemblies.View = System.Windows.Forms.View.Details;
             // 
-            // kryptonLabel2
+            // ktvEnvironment
             // 
-            this.kryptonLabel2.Location = new System.Drawing.Point(22, 154);
-            this.kryptonLabel2.Name = "kryptonLabel2";
-            this.kryptonLabel2.Size = new System.Drawing.Size(75, 20);
-            this.kryptonLabel2.TabIndex = 30;
-            this.kryptonLabel2.Values.Text = "Application:";
+            this.ktvEnvironment.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ktvEnvironment.Location = new System.Drawing.Point(0, 0);
+            this.ktvEnvironment.Name = "ktvEnvironment";
+            this.ktvEnvironment.Size = new System.Drawing.Size(589, 473);
+            this.ktvEnvironment.TabIndex = 0;
             // 
-            // kryptonBorderedLabel3
+            // krtbExceptionLarge
             // 
-            this.kryptonBorderedLabel3.AutoSize = false;
-            this.kryptonBorderedLabel3.BackColor = System.Drawing.Color.Transparent;
-            this.kryptonBorderedLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(192)))), ((int)(((byte)(214)))));
-            this.kryptonBorderedLabel3.Location = new System.Drawing.Point(370, 153);
-            this.kryptonBorderedLabel3.Name = "kryptonBorderedLabel3";
-            this.kryptonBorderedLabel3.Size = new System.Drawing.Size(139, 25);
-            this.kryptonBorderedLabel3.TabIndex = 33;
-            this.kryptonBorderedLabel3.Values.Text = "kryptonBorderedLabel3";
+            this.krtbExceptionLarge.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.krtbExceptionLarge.Location = new System.Drawing.Point(0, 0);
+            this.krtbExceptionLarge.Name = "krtbExceptionLarge";
+            this.krtbExceptionLarge.ReadOnly = true;
+            this.krtbExceptionLarge.Size = new System.Drawing.Size(589, 473);
+            this.krtbExceptionLarge.TabIndex = 0;
+            this.krtbExceptionLarge.Text = "";
             // 
-            // kryptonLabel3
-            // 
-            this.kryptonLabel3.Location = new System.Drawing.Point(288, 154);
-            this.kryptonLabel3.Name = "kryptonLabel3";
-            this.kryptonLabel3.Size = new System.Drawing.Size(75, 20);
-            this.kryptonLabel3.TabIndex = 32;
-            this.kryptonLabel3.Values.Text = "Application:";
-            // 
-            // kryptonBorderedLabel4
-            // 
-            this.kryptonBorderedLabel4.AutoSize = false;
-            this.kryptonBorderedLabel4.BackColor = System.Drawing.Color.Transparent;
-            this.kryptonBorderedLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(192)))), ((int)(((byte)(214)))));
-            this.kryptonBorderedLabel4.Location = new System.Drawing.Point(370, 195);
-            this.kryptonBorderedLabel4.Name = "kryptonBorderedLabel4";
-            this.kryptonBorderedLabel4.Size = new System.Drawing.Size(139, 25);
-            this.kryptonBorderedLabel4.TabIndex = 37;
-            this.kryptonBorderedLabel4.Values.Text = "kryptonBorderedLabel4";
-            // 
-            // kryptonLabel4
-            // 
-            this.kryptonLabel4.Location = new System.Drawing.Point(288, 196);
-            this.kryptonLabel4.Name = "kryptonLabel4";
-            this.kryptonLabel4.Size = new System.Drawing.Size(75, 20);
-            this.kryptonLabel4.TabIndex = 36;
-            this.kryptonLabel4.Values.Text = "Application:";
-            // 
-            // kryptonBorderedLabel5
-            // 
-            this.kryptonBorderedLabel5.AutoSize = false;
-            this.kryptonBorderedLabel5.BackColor = System.Drawing.Color.Transparent;
-            this.kryptonBorderedLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(192)))), ((int)(((byte)(214)))));
-            this.kryptonBorderedLabel5.Location = new System.Drawing.Point(104, 195);
-            this.kryptonBorderedLabel5.Name = "kryptonBorderedLabel5";
-            this.kryptonBorderedLabel5.Size = new System.Drawing.Size(139, 25);
-            this.kryptonBorderedLabel5.TabIndex = 35;
-            this.kryptonBorderedLabel5.Values.Text = "kryptonBorderedLabel5";
-            // 
-            // kryptonLabel5
-            // 
-            this.kryptonLabel5.Location = new System.Drawing.Point(22, 196);
-            this.kryptonLabel5.Name = "kryptonLabel5";
-            this.kryptonLabel5.Size = new System.Drawing.Size(75, 20);
-            this.kryptonLabel5.TabIndex = 34;
-            this.kryptonLabel5.Values.Text = "Application:";
-            // 
-            // kryptonLabel6
-            // 
-            this.kryptonLabel6.Location = new System.Drawing.Point(22, 238);
-            this.kryptonLabel6.Name = "kryptonLabel6";
-            this.kryptonLabel6.Size = new System.Drawing.Size(390, 20);
-            this.kryptonLabel6.TabIndex = 38;
-            this.kryptonLabel6.Values.Text = "Please enter a brief explanation of events leading up to this exception";
-            // 
-            // kryptonRichTextBox2
-            // 
-            this.kryptonRichTextBox2.Location = new System.Drawing.Point(22, 265);
-            this.kryptonRichTextBox2.Name = "kryptonRichTextBox2";
-            this.kryptonRichTextBox2.Size = new System.Drawing.Size(552, 195);
-            this.kryptonRichTextBox2.StateCommon.Back.Color1 = System.Drawing.Color.Cornsilk;
-            this.kryptonRichTextBox2.TabIndex = 39;
-            this.kryptonRichTextBox2.Text = "kryptonRichTextBox2";
-            // 
-            // KryptonExceptionMessageBox
+            // KryptonFullReportView
             // 
             this.CancelButton = this.kcdbCancel;
             this.ClientSize = new System.Drawing.Size(613, 588);
@@ -424,7 +469,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.Controls.Add(this.kryptonPanel2);
             this.Controls.Add(this.kryptonPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "KryptonExceptionMessageBox";
+            this.Name = "KryptonFullReportView";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.Load += new System.EventHandler(this.KryptonExceptionMessageBox_Load);
@@ -442,10 +487,13 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPage1)).EndInit();
             this.kryptonPage1.ResumeLayout(false);
             this.kryptonPage1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPage2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPage3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPage4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picGeneral)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPage2)).EndInit();
+            this.kryptonPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPage3)).EndInit();
+            this.kryptonPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPage4)).EndInit();
+            this.kryptonPage4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
