@@ -50,6 +50,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="Krypton.Toolkit.Suite.Extended.Base">
+      <HintPath>..\Base\obj\Debug\net45\Krypton.Toolkit.Suite.Extended.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Krypton.Toolkit.Suite.Extended.Dialogs">
+      <HintPath>..\Extended Dialogs\obj\Debug\net45\Krypton.Toolkit.Suite.Extended.Dialogs.dll</HintPath>
+    </Reference>
     <Reference Include="System.Deployment" />
   </ItemGroup>
   
@@ -121,6 +127,23 @@
     <PackageReference Include="Handlebars.Net">
       <Version>1.11.5</Version>
     </PackageReference>
+  </ItemGroup>
+  
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
   <!--Version configuration-->

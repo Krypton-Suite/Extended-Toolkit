@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Krypton.Toolkit.Suite.Extended.Dialogs
+namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
 {
     public class KryptonLightReportView : KryptonForm
     {
+        #region Design Code
         private System.Windows.Forms.Panel panel1;
         private KryptonPanel kryptonPanel1;
         private KryptonButton kbtnSend;
@@ -21,17 +18,16 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KryptonLightReportView));
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
+            this.kbtnSend = new Krypton.Toolkit.KryptonButton();
+            this.kbtnCopyDetails = new Krypton.Toolkit.KryptonButton();
+            this.kbtnMoreDetails = new Krypton.Toolkit.KryptonButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
-            this.kbtnMoreDetails = new Krypton.Toolkit.KryptonButton();
-            this.kbtnCopyDetails = new Krypton.Toolkit.KryptonButton();
-            this.kbtnSend = new Krypton.Toolkit.KryptonButton();
-            this.lessDetail_alertIcon = new System.Windows.Forms.PictureBox();
-            this.kwlHeader = new Krypton.Toolkit.KryptonWrapLabel();
-            this.kwlExceptionMessageLarge = new Krypton.Toolkit.KryptonWrapLabel();
             this.klblContactCompany = new Krypton.Toolkit.KryptonLabel();
+            this.kwlExceptionMessageLarge = new Krypton.Toolkit.KryptonWrapLabel();
+            this.kwlHeader = new Krypton.Toolkit.KryptonWrapLabel();
+            this.lessDetail_alertIcon = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
             this.kryptonPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
@@ -49,6 +45,30 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.kryptonPanel2.Name = "kryptonPanel2";
             this.kryptonPanel2.Size = new System.Drawing.Size(542, 41);
             this.kryptonPanel2.TabIndex = 4;
+            // 
+            // kbtnSend
+            // 
+            this.kbtnSend.Location = new System.Drawing.Point(316, 8);
+            this.kbtnSend.Name = "kbtnSend";
+            this.kbtnSend.Size = new System.Drawing.Size(90, 25);
+            this.kbtnSend.TabIndex = 2;
+            this.kbtnSend.Values.Text = "&Send";
+            // 
+            // kbtnCopyDetails
+            // 
+            this.kbtnCopyDetails.Location = new System.Drawing.Point(220, 8);
+            this.kbtnCopyDetails.Name = "kbtnCopyDetails";
+            this.kbtnCopyDetails.Size = new System.Drawing.Size(90, 25);
+            this.kbtnCopyDetails.TabIndex = 1;
+            this.kbtnCopyDetails.Values.Text = "&Copy Details";
+            // 
+            // kbtnMoreDetails
+            // 
+            this.kbtnMoreDetails.Location = new System.Drawing.Point(124, 8);
+            this.kbtnMoreDetails.Name = "kbtnMoreDetails";
+            this.kbtnMoreDetails.Size = new System.Drawing.Size(90, 25);
+            this.kbtnMoreDetails.TabIndex = 0;
+            this.kbtnMoreDetails.Values.Text = "More &Details";
             // 
             // panel1
             // 
@@ -71,40 +91,23 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.kryptonPanel1.Size = new System.Drawing.Size(542, 256);
             this.kryptonPanel1.TabIndex = 6;
             // 
-            // kbtnMoreDetails
+            // klblContactCompany
             // 
-            this.kbtnMoreDetails.Location = new System.Drawing.Point(124, 8);
-            this.kbtnMoreDetails.Name = "kbtnMoreDetails";
-            this.kbtnMoreDetails.Size = new System.Drawing.Size(90, 25);
-            this.kbtnMoreDetails.TabIndex = 0;
-            this.kbtnMoreDetails.Values.Text = "More &Details";
+            this.klblContactCompany.Location = new System.Drawing.Point(12, 228);
+            this.klblContactCompany.Name = "klblContactCompany";
+            this.klblContactCompany.Size = new System.Drawing.Size(6, 2);
+            this.klblContactCompany.TabIndex = 29;
+            this.klblContactCompany.Values.Text = "";
             // 
-            // kbtnCopyDetails
+            // kwlExceptionMessageLarge
             // 
-            this.kbtnCopyDetails.Location = new System.Drawing.Point(220, 8);
-            this.kbtnCopyDetails.Name = "kbtnCopyDetails";
-            this.kbtnCopyDetails.Size = new System.Drawing.Size(90, 25);
-            this.kbtnCopyDetails.TabIndex = 1;
-            this.kbtnCopyDetails.Values.Text = "&Copy Details";
-            // 
-            // kbtnSend
-            // 
-            this.kbtnSend.Location = new System.Drawing.Point(316, 8);
-            this.kbtnSend.Name = "kbtnSend";
-            this.kbtnSend.Size = new System.Drawing.Size(90, 25);
-            this.kbtnSend.TabIndex = 2;
-            this.kbtnSend.Values.Text = "&Send";
-            // 
-            // lessDetail_alertIcon
-            // 
-            this.lessDetail_alertIcon.BackColor = System.Drawing.Color.Transparent;
-            this.lessDetail_alertIcon.Image = ((System.Drawing.Image)(resources.GetObject("lessDetail_alertIcon.Image")));
-            this.lessDetail_alertIcon.Location = new System.Drawing.Point(12, 12);
-            this.lessDetail_alertIcon.Name = "lessDetail_alertIcon";
-            this.lessDetail_alertIcon.Size = new System.Drawing.Size(64, 64);
-            this.lessDetail_alertIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.lessDetail_alertIcon.TabIndex = 26;
-            this.lessDetail_alertIcon.TabStop = false;
+            this.kwlExceptionMessageLarge.AutoSize = false;
+            this.kwlExceptionMessageLarge.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.kwlExceptionMessageLarge.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.kwlExceptionMessageLarge.Location = new System.Drawing.Point(12, 83);
+            this.kwlExceptionMessageLarge.Name = "kwlExceptionMessageLarge";
+            this.kwlExceptionMessageLarge.Size = new System.Drawing.Size(518, 141);
+            this.kwlExceptionMessageLarge.Text = "No message";
             // 
             // kwlHeader
             // 
@@ -118,23 +121,16 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.kwlHeader.Text = "Operation Failed!";
             this.kwlHeader.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // kwlExceptionMessageLarge
+            // lessDetail_alertIcon
             // 
-            this.kwlExceptionMessageLarge.AutoSize = false;
-            this.kwlExceptionMessageLarge.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.kwlExceptionMessageLarge.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
-            this.kwlExceptionMessageLarge.Location = new System.Drawing.Point(12, 83);
-            this.kwlExceptionMessageLarge.Name = "kwlExceptionMessageLarge";
-            this.kwlExceptionMessageLarge.Size = new System.Drawing.Size(518, 141);
-            this.kwlExceptionMessageLarge.Text = "No message";
-            // 
-            // klblContactCompany
-            // 
-            this.klblContactCompany.Location = new System.Drawing.Point(12, 228);
-            this.klblContactCompany.Name = "klblContactCompany";
-            this.klblContactCompany.Size = new System.Drawing.Size(6, 2);
-            this.klblContactCompany.TabIndex = 29;
-            this.klblContactCompany.Values.Text = "";
+            this.lessDetail_alertIcon.BackColor = System.Drawing.Color.Transparent;
+            this.lessDetail_alertIcon.Image = global::Krypton.Toolkit.Suite.Extended.Error.Reporting.Properties.Resources.Warning_64_x_58;
+            this.lessDetail_alertIcon.Location = new System.Drawing.Point(12, 12);
+            this.lessDetail_alertIcon.Name = "lessDetail_alertIcon";
+            this.lessDetail_alertIcon.Size = new System.Drawing.Size(64, 64);
+            this.lessDetail_alertIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.lessDetail_alertIcon.TabIndex = 26;
+            this.lessDetail_alertIcon.TabStop = false;
             // 
             // KryptonLightReportView
             // 
@@ -148,6 +144,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.Name = "KryptonLightReportView";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
+            this.Load += new System.EventHandler(this.KryptonLightReportView_Load);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
             this.kryptonPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
@@ -155,6 +152,12 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.kryptonPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lessDetail_alertIcon)).EndInit();
             this.ResumeLayout(false);
+
+        }
+        #endregion
+
+        private void KryptonLightReportView_Load(object sender, EventArgs e)
+        {
 
         }
     }
