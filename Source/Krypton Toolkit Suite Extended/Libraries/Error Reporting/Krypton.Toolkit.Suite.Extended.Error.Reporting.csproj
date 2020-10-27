@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
     <LangVersion>latest</LangVersion>
@@ -34,22 +34,93 @@
 
   <!--Stable NuGet packages
   <ItemGroup>
+    <PackageReference Include="Krypton.Navigator" Version="5.550.2011" />
     <PackageReference Include="Krypton.Toolkit" Version="5.550.2011" />
   </ItemGroup>-->
 
   <!--Canary NuGet package configuration-->
   <ItemGroup>
+    <PackageReference Include="Krypton.Navigator.Canary" Version="6.0.2008" />
     <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2008" />
   </ItemGroup>
-
+  
   <ItemGroup>
     <PackageReference Include="DotNetZip" Version="1.14.0" />
     <PackageReference Include="Simple-MAPI.NET" Version="1.1.0" />
-    <PackageReference Include="WindowsAPICodePack" Version="1.1.1" />
   </ItemGroup>
 
   <ItemGroup>
     <Reference Include="System.Deployment" />
+  </ItemGroup>
+  
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net452'">
+    <PackageReference Include="Handlebars.Net">
+      <Version>1.11.5</Version>
+    </PackageReference>
+  </ItemGroup>
+  
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net46'">
+    <PackageReference Include="Handlebars.Net">
+      <Version>1.11.5</Version>
+    </PackageReference>
+  </ItemGroup>
+  
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net461'">
+    <PackageReference Include="Handlebars.Net">
+      <Version>1.11.5</Version>
+    </PackageReference>
+  </ItemGroup>
+  
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net462'">
+    <PackageReference Include="Handlebars.Net">
+      <Version>1.11.5</Version>
+    </PackageReference>
+  </ItemGroup>
+  
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net47'">
+    <PackageReference Include="Handlebars.Net">
+      <Version>1.11.5</Version>
+    </PackageReference>
+  </ItemGroup>
+  
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net471'">
+    <PackageReference Include="Handlebars.Net">
+      <Version>1.11.5</Version>
+    </PackageReference>
+  </ItemGroup>
+  
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net472'">
+    <PackageReference Include="Handlebars.Net">
+      <Version>1.11.5</Version>
+    </PackageReference>
+  </ItemGroup>
+  
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net48'">
+    <PackageReference Include="Handlebars.Net">
+      <Version>1.11.5</Version>
+    </PackageReference>
+  </ItemGroup>
+  
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp3.1'">
+    <PackageReference Include="Handlebars.Net">
+      <Version>1.11.5</Version>
+    </PackageReference>
+  </ItemGroup>
+  
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net5.0-windows'">
+    <PackageReference Include="Handlebars.Net">
+      <Version>1.11.5</Version>
+    </PackageReference>
   </ItemGroup>
 
   <!--Version configuration-->
@@ -58,8 +129,6 @@
     <FileVersion>5.550.2101</FileVersion>
     <Version>5.550.2101</Version>
   </PropertyGroup>
-
-
 
   <PropertyGroup>
     <DocumentationFile>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Error.Reporting\Krypton.Toolkit.Suite.Error.Reporting.xml</DocumentationFile>
