@@ -15,11 +15,7 @@
 
         public abstract string Description { get; }
 
-        public virtual string ConnectingMessage
-        {
-            get { return $"Connecting { Description }..." }
-        }
-
+        public virtual string ConnectingMessage => $"Connecting { Description }...";
         public string EmailSubject
         {
             get
