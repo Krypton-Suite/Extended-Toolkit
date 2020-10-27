@@ -1,7 +1,7 @@
 ﻿using Ionic.Zip;
 using System.Collections.Generic;
 
-namespace Krypton.Toolkit.Suite.Extended.Dialogs
+namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
 {
     internal interface IZipper
     {

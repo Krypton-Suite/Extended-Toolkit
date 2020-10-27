@@ -4,7 +4,7 @@ using System.Deployment.Application;
 using System.Reflection;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Suite.Extended.Dialogs
+namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
 {
     /// <summary>
     /// ReportGenerator is the entry point to use 'ExceptionReporter.NET' to retrieve the report/data only.

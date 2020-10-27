@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Krypton.Toolkit.Suite.Extended.Dialogs
+namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
 {
     /// <summary>
     /// The entry-point (class) to invoking an ExceptionReporter dialog
@@ -98,7 +98,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             Send(new SilentSendEvent(), exceptions);
         }
 
-        static readonly bool _isRunningMono = System.Type.GetType("Mono.Runtime") != null;
+        static readonly bool _isRunningMono = Type.GetType("Mono.Runtime") != null;
 
         /// <returns><c>true</c>, if running mono <c>false</c> otherwise.</returns>
         public static bool IsRunningMono() { return _isRunningMono; }

@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Net.Mail;
 using System.Reflection;
 
-namespace Krypton.Toolkit.Suite.Extended.Dialogs
+namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
 {
     /// <summary>
     /// A bag of configuration and data

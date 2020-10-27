@@ -1,6 +1,6 @@
 ﻿using System.Net.Mail;
 
-namespace Krypton.Toolkit.Suite.Extended.Dialogs
+namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
 {
     internal interface IAttach
     {
@@ -28,7 +28,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         public void Attach(string filename)
         {
             if (_mapi != null) _mapi.Attach(filename);
-            if (_mailMessage != null) _mailMessage.Attachments.Add(new System.Net.Mail.Attachment(filename));
+            if (_mailMessage != null) _mailMessage.Attachments.Add(new Attachment(filename));
         }
     }
 }
