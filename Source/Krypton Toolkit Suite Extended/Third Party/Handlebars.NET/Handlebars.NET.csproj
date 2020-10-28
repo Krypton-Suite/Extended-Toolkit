@@ -23,8 +23,8 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Libraries\Handlebars.NET\Handlebars.NET.xml</DocumentationFile>
-    <OutputPath>..\..\..\..\Bin\$(configuration)\Libraries\Handlebars.NET\</OutputPath>
+    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Third Party\Handlebars.NET\Handlebars.NET.xml</DocumentationFile>
+    <OutputPath>..\..\..\..\Bin\$(configuration)\Third Party\Handlebars.NET\</OutputPath>
   </PropertyGroup>
 
   <ItemGroup>
