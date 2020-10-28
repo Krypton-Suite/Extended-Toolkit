@@ -1,5 +1,4 @@
-﻿using HandlebarsDotNet;
-using System.IO;
+﻿using System.IO;
 using System.Reflection;
 using System.Text;
 
@@ -24,7 +23,7 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
 
         private string Render(string template)
         {
-            var compile = HandlebarsDotNet.Handlebars.Compile(template);
+            var compile = Handlebars.Compile(template);
             var report = compile(_model);
             return report;
         }
