@@ -24,7 +24,7 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
 
         private string Render(string template)
         {
-            var compile = Handlebars.Compile(template);
+            var compile = HandlebarsDotNet.Handlebars.Compile(template);
             var report = compile(_model);
             return report;
         }
