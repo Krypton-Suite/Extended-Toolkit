@@ -3,7 +3,7 @@
   <PropertyGroup>
     <LangVersion>latest</LangVersion>
     <TargetFrameworks>net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows</TargetFrameworks>
-    <RootNamespace>Handlebars.NET</RootNamespace>
+    <RootNamespace>HandlebarsDotNET</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
     <AnalysisLevel>latest</AnalysisLevel>
   </PropertyGroup>
@@ -13,6 +13,13 @@
     <Copyright>Copyright © 2014-2020 Rex Morgan</Copyright>
     <Description>Blistering-fast Handlebars.js templates in your .NET application.</Description>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <!--Version configuration-->
+  <PropertyGroup>
+    <AssemblyVersion>1.11.5</AssemblyVersion>
+    <FileVersion>1.11.5</FileVersion>
+    <Version>1.11.5</Version>
   </PropertyGroup>
 
   <PropertyGroup>
