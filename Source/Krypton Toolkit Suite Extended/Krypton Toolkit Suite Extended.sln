@@ -15,9 +15,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 		..\..\build.proj = ..\..\build.proj
 		..\..\Directory.Build.props = ..\..\Directory.Build.props
-		Directory.Build.props = Directory.Build.props
-		Directory.Build.targets = Directory.Build.targets
-		..\..\Prerequisites.md = ..\..\Prerequisites.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Common", "Shared\Common\Krypton.Toolkit.Suite.Extended.Common.csproj", "{5E8758D3-BE51-474E-9CED-4E55EE1297DF}"
@@ -125,7 +122,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Exten
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Third Party", "Third Party", "{0E036EC5-549F-405A-82FA-87A03CE379E1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Handlebars.NET", "Third Party\Handlebars.NET\Handlebars.NET.csproj", "{81614A8C-D1C8-404C-A90C-569E2973BD2F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Handlebars.NET", "Third Party\Handlebars.NET\Handlebars.NET.csproj", "{E373AFB9-4138-4E44-A567-DF0237599446}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -265,10 +262,10 @@ Global
 		{674EB91B-7B86-4E88-84DB-CCC400E46F9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{674EB91B-7B86-4E88-84DB-CCC400E46F9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{674EB91B-7B86-4E88-84DB-CCC400E46F9C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{81614A8C-D1C8-404C-A90C-569E2973BD2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{81614A8C-D1C8-404C-A90C-569E2973BD2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{81614A8C-D1C8-404C-A90C-569E2973BD2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{81614A8C-D1C8-404C-A90C-569E2973BD2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E373AFB9-4138-4E44-A567-DF0237599446}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E373AFB9-4138-4E44-A567-DF0237599446}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E373AFB9-4138-4E44-A567-DF0237599446}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E373AFB9-4138-4E44-A567-DF0237599446}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -311,7 +308,7 @@ Global
 		{A1C6A43B-50D8-4985-A93C-23427DD10A9F} = {353629A2-A05E-4D18-8071-5CDF0C2914FC}
 		{C3A80364-ACFF-4F4A-91C7-660FA4854C8F} = {1F1DCECC-C25F-4E91-9C8A-ECCBB9827BBA}
 		{674EB91B-7B86-4E88-84DB-CCC400E46F9C} = {1F1DCECC-C25F-4E91-9C8A-ECCBB9827BBA}
-		{81614A8C-D1C8-404C-A90C-569E2973BD2F} = {0E036EC5-549F-405A-82FA-87A03CE379E1}
+		{E373AFB9-4138-4E44-A567-DF0237599446} = {0E036EC5-549F-405A-82FA-87A03CE379E1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9A189168-3746-4F9F-8C61-863D83D8ABD2}
