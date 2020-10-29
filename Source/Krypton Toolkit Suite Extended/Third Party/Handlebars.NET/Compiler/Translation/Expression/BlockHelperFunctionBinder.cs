@@ -1,14 +1,13 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Reflection;
-using System.Runtime.CompilerServices;
 using Expressions.Shortcuts;
 using HandlebarsDotNet.Collections;
 using HandlebarsDotNet.Compiler.Structure.Path;
 using HandlebarsDotNet.Helpers.BlockHelpers;
 using HandlebarsDotNet.Polyfills;
+using HandlebarsDotNET.Collections;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Reflection;
+using System.Runtime.CompilerServices;
 using static Expressions.Shortcuts.ExpressionShortcuts;
 
 namespace HandlebarsDotNet.Compiler
@@ -39,18 +38,18 @@ namespace HandlebarsDotNet.Compiler
         protected override Expression VisitBlockHelperExpression(BlockHelperExpression bhex)
         {
             var isInlinePartial = bhex.HelperName == "#*inline";
-            
+
             var pathInfo = CompilationContext.Configuration.PathInfoStore.GetOrAdd(bhex.HelperName);
             var bindingContext = CompilationContext.Args.BindingContext;
             var context = isInlinePartial
                 ? bindingContext.As<object>()
                 : bindingContext.Property(o => o.Value);
-            
+
             var readerContext = bhex.Context;
             var direct = Compile(bhex.Body);
             var inverse = Compile(bhex.Inversion);
             var args = FunctionBinderHelpers.CreateArguments(bhex.Arguments, CompilationContext);
-            
+
             var helperName = pathInfo.TrimmedPath;
             var direction = bhex.IsRaw || pathInfo.IsBlockHelper ? BlockHelperDirection.Direct : BlockHelperDirection.Inverse;
             var blockParams = CreateBlockParams();
@@ -70,16 +69,16 @@ namespace HandlebarsDotNet.Compiler
 
                 descriptor = new StrongBox<BlockHelperDescriptorBase>(resolvedDescriptor);
                 blockHelpers.Add(pathInfo, descriptor);
-                
+
                 return BindByRef(descriptor);
             }
-            
+
             var lateBindBlockHelperDescriptor = new LateBindBlockHelperDescriptor(pathInfo, CompilationContext.Configuration);
             var lateBindBlockHelperRef = new StrongBox<BlockHelperDescriptorBase>(lateBindBlockHelperDescriptor);
             blockHelpers.Add(pathInfo, lateBindBlockHelperRef);
 
             return BindByRef(lateBindBlockHelperRef);
-            
+
             ExpressionContainer<ChainSegment[]> CreateBlockParams()
             {
                 var parameters = bhex.BlockParams?.BlockParam?.Parameters;
@@ -90,24 +89,24 @@ namespace HandlebarsDotNet.Compiler
 
                 return Arg(parameters);
             }
-            
+
             TemplateDelegate Compile(Expression expression)
             {
-                var blockExpression = (BlockExpression) expression;
+                var blockExpression = (BlockExpression)expression;
                 return FunctionBuilder.Compile(blockExpression.Expressions, CompilationContext.Configuration);
             }
 
             Expression BindByRef(StrongBox<BlockHelperDescriptorBase> helperBox)
             {
                 var writer = CompilationContext.Args.EncodedWriter;
-                
+
                 var helperOptions = direction switch
                 {
                     BlockHelperDirection.Direct => New(() => new HelperOptions(direct, inverse, blockParams, bindingContext)),
                     BlockHelperDirection.Inverse => New(() => new HelperOptions(inverse, direct, blockParams, bindingContext)),
                     _ => throw new HandlebarsCompilerException("Helper referenced with unknown prefix", readerContext)
                 };
-                
+
                 return Call(() => helperBox.Value.Invoke(writer, helperOptions, context, args));
             }
         }

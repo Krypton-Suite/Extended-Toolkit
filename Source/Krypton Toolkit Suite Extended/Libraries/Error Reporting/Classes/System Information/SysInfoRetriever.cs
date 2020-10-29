@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Management;
 
 namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
 {

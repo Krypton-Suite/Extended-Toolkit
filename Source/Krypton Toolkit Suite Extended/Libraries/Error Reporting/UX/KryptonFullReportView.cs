@@ -34,6 +34,11 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
         private System.Windows.Forms.ListView lvAssemblies;
         private KryptonTreeView ktvEnvironment;
         private Dialogs.KryptonCancelDialogButton kryptonCancelDialogButton1;
+        private Base.KryptonBorderedLabel kryptonBorderedLabel5;
+        private Base.KryptonBorderedLabel kryptonBorderedLabel4;
+        private Base.KryptonBorderedLabel kryptonBorderedLabel3;
+        private Base.KryptonBorderedLabel kryptonBorderedLabel2;
+        private Base.KryptonBorderedLabel kryptonBorderedLabel1;
         private KryptonPanel kryptonPanel1;
 
         private void InitializeComponent()
@@ -44,6 +49,7 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
             this.tspbProgress = new System.Windows.Forms.ToolStripProgressBar();
             this.panel1 = new System.Windows.Forms.Panel();
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
+            this.kryptonCancelDialogButton1 = new Krypton.Toolkit.Suite.Extended.Dialogs.KryptonCancelDialogButton();
             this.kbtnLessDetails = new Krypton.Toolkit.KryptonButton();
             this.kbtnCopy = new Krypton.Toolkit.KryptonButton();
             this.kbtnSave = new Krypton.Toolkit.KryptonButton();
@@ -66,7 +72,11 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
             this.lvAssemblies = new System.Windows.Forms.ListView();
             this.kryptonPage4 = new Krypton.Navigator.KryptonPage();
             this.ktvEnvironment = new Krypton.Toolkit.KryptonTreeView();
-            this.kryptonCancelDialogButton1 = new Krypton.Toolkit.Suite.Extended.Dialogs.KryptonCancelDialogButton();
+            this.kryptonBorderedLabel1 = new Krypton.Toolkit.Suite.Extended.Base.KryptonBorderedLabel();
+            this.kryptonBorderedLabel2 = new Krypton.Toolkit.Suite.Extended.Base.KryptonBorderedLabel();
+            this.kryptonBorderedLabel3 = new Krypton.Toolkit.Suite.Extended.Base.KryptonBorderedLabel();
+            this.kryptonBorderedLabel4 = new Krypton.Toolkit.Suite.Extended.Base.KryptonBorderedLabel();
+            this.kryptonBorderedLabel5 = new Krypton.Toolkit.Suite.Extended.Base.KryptonBorderedLabel();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -144,6 +154,16 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
             this.kryptonPanel2.Size = new System.Drawing.Size(613, 41);
             this.kryptonPanel2.TabIndex = 3;
             // 
+            // kryptonCancelDialogButton1
+            // 
+            this.kryptonCancelDialogButton1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.kryptonCancelDialogButton1.Location = new System.Drawing.Point(515, 7);
+            this.kryptonCancelDialogButton1.Name = "kryptonCancelDialogButton1";
+            this.kryptonCancelDialogButton1.ParentWindow = null;
+            this.kryptonCancelDialogButton1.Size = new System.Drawing.Size(90, 25);
+            this.kryptonCancelDialogButton1.TabIndex = 9;
+            this.kryptonCancelDialogButton1.Values.Text = "C&ancel";
+            // 
             // kbtnLessDetails
             // 
             this.kbtnLessDetails.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -211,6 +231,11 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
             // kryptonPage1
             // 
             this.kryptonPage1.AutoHiddenSlideSize = new System.Drawing.Size(200, 200);
+            this.kryptonPage1.Controls.Add(this.kryptonBorderedLabel5);
+            this.kryptonPage1.Controls.Add(this.kryptonBorderedLabel4);
+            this.kryptonPage1.Controls.Add(this.kryptonBorderedLabel3);
+            this.kryptonPage1.Controls.Add(this.kryptonBorderedLabel2);
+            this.kryptonPage1.Controls.Add(this.kryptonBorderedLabel1);
             this.kryptonPage1.Controls.Add(this.krtbUserExpanation);
             this.kryptonPage1.Controls.Add(this.kryptonLabel6);
             this.kryptonPage1.Controls.Add(this.kryptonLabel4);
@@ -379,15 +404,60 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
             this.ktvEnvironment.Size = new System.Drawing.Size(589, 473);
             this.ktvEnvironment.TabIndex = 0;
             // 
-            // kryptonCancelDialogButton1
+            // kryptonBorderedLabel1
             // 
-            this.kryptonCancelDialogButton1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.kryptonCancelDialogButton1.Location = new System.Drawing.Point(515, 7);
-            this.kryptonCancelDialogButton1.Name = "kryptonCancelDialogButton1";
-            this.kryptonCancelDialogButton1.ParentWindow = null;
-            this.kryptonCancelDialogButton1.Size = new System.Drawing.Size(90, 25);
-            this.kryptonCancelDialogButton1.TabIndex = 9;
-            this.kryptonCancelDialogButton1.Values.Text = "C&ancel";
+            this.kryptonBorderedLabel1.AutoSize = false;
+            this.kryptonBorderedLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.kryptonBorderedLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(192)))), ((int)(((byte)(214)))));
+            this.kryptonBorderedLabel1.Location = new System.Drawing.Point(104, 106);
+            this.kryptonBorderedLabel1.Name = "kryptonBorderedLabel1";
+            this.kryptonBorderedLabel1.Size = new System.Drawing.Size(470, 25);
+            this.kryptonBorderedLabel1.TabIndex = 40;
+            this.kryptonBorderedLabel1.Values.Text = "kryptonBorderedLabel1";
+            // 
+            // kryptonBorderedLabel2
+            // 
+            this.kryptonBorderedLabel2.AutoSize = false;
+            this.kryptonBorderedLabel2.BackColor = System.Drawing.Color.Transparent;
+            this.kryptonBorderedLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(192)))), ((int)(((byte)(214)))));
+            this.kryptonBorderedLabel2.Location = new System.Drawing.Point(92, 149);
+            this.kryptonBorderedLabel2.Name = "kryptonBorderedLabel2";
+            this.kryptonBorderedLabel2.Size = new System.Drawing.Size(165, 25);
+            this.kryptonBorderedLabel2.TabIndex = 41;
+            this.kryptonBorderedLabel2.Values.Text = "kryptonBorderedLabel2";
+            // 
+            // kryptonBorderedLabel3
+            // 
+            this.kryptonBorderedLabel3.AutoSize = false;
+            this.kryptonBorderedLabel3.BackColor = System.Drawing.Color.Transparent;
+            this.kryptonBorderedLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(192)))), ((int)(((byte)(214)))));
+            this.kryptonBorderedLabel3.Location = new System.Drawing.Point(92, 191);
+            this.kryptonBorderedLabel3.Name = "kryptonBorderedLabel3";
+            this.kryptonBorderedLabel3.Size = new System.Drawing.Size(165, 25);
+            this.kryptonBorderedLabel3.TabIndex = 42;
+            this.kryptonBorderedLabel3.Values.Text = "kryptonBorderedLabel3";
+            // 
+            // kryptonBorderedLabel4
+            // 
+            this.kryptonBorderedLabel4.AutoSize = false;
+            this.kryptonBorderedLabel4.BackColor = System.Drawing.Color.Transparent;
+            this.kryptonBorderedLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(192)))), ((int)(((byte)(214)))));
+            this.kryptonBorderedLabel4.Location = new System.Drawing.Point(361, 149);
+            this.kryptonBorderedLabel4.Name = "kryptonBorderedLabel4";
+            this.kryptonBorderedLabel4.Size = new System.Drawing.Size(165, 25);
+            this.kryptonBorderedLabel4.TabIndex = 43;
+            this.kryptonBorderedLabel4.Values.Text = "kryptonBorderedLabel4";
+            // 
+            // kryptonBorderedLabel5
+            // 
+            this.kryptonBorderedLabel5.AutoSize = false;
+            this.kryptonBorderedLabel5.BackColor = System.Drawing.Color.Transparent;
+            this.kryptonBorderedLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(192)))), ((int)(((byte)(214)))));
+            this.kryptonBorderedLabel5.Location = new System.Drawing.Point(361, 191);
+            this.kryptonBorderedLabel5.Name = "kryptonBorderedLabel5";
+            this.kryptonBorderedLabel5.Size = new System.Drawing.Size(165, 25);
+            this.kryptonBorderedLabel5.TabIndex = 44;
+            this.kryptonBorderedLabel5.Values.Text = "kryptonBorderedLabel5";
             // 
             // KryptonFullReportView
             // 

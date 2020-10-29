@@ -1,9 +1,10 @@
+using HandlebarsDotNet.Collections;
+using HandlebarsDotNet.Compiler.Structure.Path;
+using HandlebarsDotNET.Collections;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using HandlebarsDotNet.Collections;
-using HandlebarsDotNet.Compiler.Structure.Path;
 
 namespace HandlebarsDotNet.MemberAccessors
 {
@@ -14,7 +15,7 @@ namespace HandlebarsDotNet.MemberAccessors
 
         private static readonly Func<Type, DeferredValue<Type, RawObjectTypeDescriptor>> DescriptorsValueFactory =
             key => new DeferredValue<Type, RawObjectTypeDescriptor>(key, type => new RawObjectTypeDescriptor(type));
-        
+
         private readonly ICompiledHandlebarsConfiguration _configuration;
 
         public ReflectionMemberAccessor(ICompiledHandlebarsConfiguration configuration)
@@ -86,13 +87,13 @@ namespace HandlebarsDotNet.MemberAccessors
 
                 if (property != null)
                 {
-                    return (Func<object, object>) CreateGetDelegateMethodInfo
+                    return (Func<object, object>)CreateGetDelegateMethodInfo
                         .MakeGenericMethod(type, property.PropertyType)
-                        .Invoke(null, new object[] {property});
+                        .Invoke(null, new object[] { property });
                 }
 
                 var field = type.GetFields(BindingFlags.Instance | BindingFlags.Public).FirstOrDefault(o => string.Equals(o.Name, name.LowerInvariant, StringComparison.OrdinalIgnoreCase));
-                
+
                 if (field != null)
                 {
                     return o => field.GetValue(o);
@@ -103,8 +104,8 @@ namespace HandlebarsDotNet.MemberAccessors
 
             private static Func<object, object> CreateGetDelegate<T, TValue>(PropertyInfo property)
             {
-                var @delegate = (Func<T, TValue>) property.GetMethod.CreateDelegate(typeof(Func<T, TValue>));
-                return o => (object) @delegate((T) o);
+                var @delegate = (Func<T, TValue>)property.GetMethod.CreateDelegate(typeof(Func<T, TValue>));
+                return o => (object)@delegate((T)o);
             }
         }
     }

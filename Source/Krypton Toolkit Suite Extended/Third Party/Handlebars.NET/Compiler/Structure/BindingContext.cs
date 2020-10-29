@@ -3,6 +3,7 @@ using System.Runtime.CompilerServices;
 using HandlebarsDotNet.Collections;
 using HandlebarsDotNet.Compiler.Structure.Path;
 using HandlebarsDotNet.ObjectDescriptors;
+using HandlebarsDotNET.Collections;
 
 namespace HandlebarsDotNet.Compiler
 {

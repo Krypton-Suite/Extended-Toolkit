@@ -5,6 +5,7 @@ using System.Reflection;
 using HandlebarsDotNet.Collections;
 using HandlebarsDotNet.MemberAccessors.DictionaryAccessors;
 using HandlebarsDotNet.Polyfills;
+using HandlebarsDotNET.Collections;
 
 namespace HandlebarsDotNet.ObjectDescriptors
 {

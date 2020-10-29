@@ -1,6 +1,7 @@
+using HandlebarsDotNet.Collections;
+using HandlebarsDotNET.Collections;
 using System;
 using System.Collections.Generic;
-using HandlebarsDotNet.Collections;
 
 namespace HandlebarsDotNet.ObjectDescriptors
 {
@@ -25,7 +26,7 @@ namespace HandlebarsDotNet.ObjectDescriptors
         {
             _providers = providers;
         }
-        
+
         public bool TryGetDescriptor(Type type, out ObjectDescriptor value)
         {
             var deferredValue = _descriptorsCache.GetOrAdd(type, ValueFactory, _providers);

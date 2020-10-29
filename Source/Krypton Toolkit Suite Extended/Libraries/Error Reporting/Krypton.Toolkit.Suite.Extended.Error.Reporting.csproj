@@ -57,6 +57,7 @@
       <HintPath>..\Extended Dialogs\obj\Debug\net45\Krypton.Toolkit.Suite.Extended.Dialogs.dll</HintPath>
     </Reference>
     <Reference Include="System.Deployment" />
+    <Reference Include="System.Management" />
   </ItemGroup>
   
   <ItemGroup>

@@ -1,17 +1,18 @@
+using Expressions.Shortcuts;
+using HandlebarsDotNet.Collections;
+using HandlebarsDotNET.Collections;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using Expressions.Shortcuts;
-using HandlebarsDotNet.Collections;
 using static Expressions.Shortcuts.ExpressionShortcuts;
 
 namespace HandlebarsDotNet.Compiler
 {
     internal static class FunctionBinderHelpers
     {
-        private static readonly LookupSlim<int, DeferredValue<int, ConstructorInfo>> ArgumentsConstructorsMap 
+        private static readonly LookupSlim<int, DeferredValue<int, ConstructorInfo>> ArgumentsConstructorsMap
             = new LookupSlim<int, DeferredValue<int, ConstructorInfo>>();
 
         private static readonly Func<int, DeferredValue<int, ConstructorInfo>> CtorFactory = i =>
@@ -44,7 +45,7 @@ namespace HandlebarsDotNet.Compiler
                 var newExpression = Expression.New(constructor, arguments);
                 return Arg<Arguments>(newExpression);
             }
-            
+
             var arr = Array<object>(arguments);
             return New(() => new Arguments(arr));
         }
