@@ -1,4 +1,7 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
+﻿using Krypton.Toolkit.Suite.Extended.Base;
+using System.Windows.Forms;
+
+namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
 {
     /// <summary>
     /// contract to show view-related things
@@ -30,7 +33,7 @@
 
         public IExceptionReportView Create()
         {
-            return new ExceptionReportView(_reportInfo);
+            return new KryptonFullReportView(_reportInfo);
         }
 
         public void ShowError(string message, string description)
