@@ -1,0 +1,75 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <LangVersion>latest</LangVersion>
+    <TargetFrameworks>net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows</TargetFrameworks>
+    <RootNamespace>Krypton.Toolkit.Suite.Extended.Navigator</RootNamespace>
+    <UseWindowsForms>true</UseWindowsForms>
+    <OutputType>Library</OutputType>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Description>An extension to the standard krypton toolkit to support .NET Core, .NET 5 and the latest .NET 3.5/4.x framework. This package contains enhanced navigator features.</Description>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
+  </PropertyGroup>
+
+  <!--Stable package configuration-->
+  <PropertyGroup>
+    <PackageId>Krypton.Toolkit.Suite.Extended.Navigator</PackageId>
+    <PackageOutputPath>..\..\..\..\Bin\NuGet\Stable</PackageOutputPath>
+    <PackageIconUrl>https://tinyurl.com/KryptonExtendedToolkitIcon</PackageIconUrl>
+  </PropertyGroup>
+
+  <!--Canary package configuration-
+  <PropertyGroup>
+    <PackageId>Krypton.Toolkit.Suite.Extended.Navigator.Canary</PackageId>
+    <PackageOutputPath>..\..\..\..\Bin\NuGet\Canary</PackageOutputPath>
+    <PackageIconUrl>https://tinyurl.com/KryptonToolkitCanaryIcon</PackageIconUrl>
+  </PropertyGroup>-->
+
+  <!--Version configuration-->
+  <PropertyGroup>
+    <AssemblyVersion>5.550.2011</AssemblyVersion>
+    <FileVersion>5.550.2011</FileVersion>
+    <Version>5.550.2011</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualBasic" Version="10.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Extended Dialogs\Krypton.Toolkit.Suite.Extended.Dialogs.csproj" />
+    <ProjectReference Include="..\Base\Krypton.Toolkit.Suite.Extended.Base.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Krypton.Toolkit.Suite.Extended.Dialogs">
+      <HintPath>..\Extended Dialogs\obj\Debug\net45\Krypton.Toolkit.Suite.Extended.Dialogs\Krypton.Toolkit.Suite.Extended.Dialogs.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Design" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <PropertyGroup>
+    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Navigator\Krypton.Toolkit.Suite.Extended.Navigator.xml</DocumentationFile>
+    <OutputPath>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Navigator\</OutputPath>
+  </PropertyGroup>
+
+</Project>
