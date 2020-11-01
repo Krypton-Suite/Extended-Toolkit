@@ -41,11 +41,11 @@
 
   <!--Canary NuGet package configuration-->
   <ItemGroup>
-    <PackageReference Include="Krypton.Docking.Canary" Version="6.0.2008" />
-    <PackageReference Include="Krypton.Navigator.Canary" Version="6.0.2008" />
-    <PackageReference Include="Krypton.Ribbon.Canary" Version="6.0.2008" />
-    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2008" />
-    <PackageReference Include="Krypton.Workspace.Canary" Version="6.0.2008" />
+    <PackageReference Include="Krypton.Docking.Canary" Version="6.0.2011" />
+    <PackageReference Include="Krypton.Navigator.Canary" Version="6.0.2011" />
+    <PackageReference Include="Krypton.Ribbon.Canary" Version="6.0.2011" />
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2011" />
+    <PackageReference Include="Krypton.Workspace.Canary" Version="6.0.2011" />
   </ItemGroup>
 
   <!--Version configuration-->
