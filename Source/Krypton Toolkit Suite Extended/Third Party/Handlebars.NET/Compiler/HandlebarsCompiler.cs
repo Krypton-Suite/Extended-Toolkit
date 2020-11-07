@@ -1,12 +1,13 @@
-﻿using System;
+﻿using HandlebarsDotNet.Compiler.Lexer;
+using HandlebarsDotNET.Compiler.Lexer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using HandlebarsDotNet.Compiler.Lexer;
 
 namespace HandlebarsDotNet.Compiler
 {
     public delegate void TemplateDelegate(in EncodedTextWriter writer, BindingContext context);
-    
+
     internal static class HandlebarsCompiler
     {
         public static TemplateDelegate Compile(ExtendedStringReader source, ICompiledHandlebarsConfiguration configuration)
@@ -16,12 +17,12 @@ namespace HandlebarsDotNet.Compiler
             {
                 createdFeatures[index].OnCompiling(configuration);
             }
-            
+
             var expressionBuilder = new ExpressionBuilder(configuration);
             var tokens = Tokenizer.Tokenize(source).ToList();
             var expressions = expressionBuilder.ConvertTokensToExpressions(tokens);
             var action = FunctionBuilder.Compile(expressions, configuration);
-            
+
             for (var index = 0; index < createdFeatures.Count; index++)
             {
                 createdFeatures[index].CompilationCompleted();
@@ -54,7 +55,7 @@ namespace HandlebarsDotNet.Compiler
                 throw new InvalidOperationException($"Cannot find layout '{layoutToken.Value}' for template '{templatePath}'");
 
             var compiledLayout = CompileView(readerFactoryFactory, layoutPath, configuration);
-            
+
             return (in EncodedTextWriter writer, BindingContext context) =>
             {
                 var config = context.Configuration;
@@ -63,7 +64,7 @@ namespace HandlebarsDotNet.Compiler
                 compiledView(textWriter, context);
                 var inner = innerWriter.ToString();
 
-                var vmContext = new [] {new {body = inner}, context.Value};
+                var vmContext = new[] { new { body = inner }, context.Value };
                 var viewModel = new DynamicViewModel(vmContext);
                 using var bindingContext = BindingContext.Create(config, viewModel);
 

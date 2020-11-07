@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using HandlebarsDotNET.Compiler.Lexer;
+using System.Collections.Generic;
 
 namespace HandlebarsDotNet.Compiler.Lexer
 {
@@ -27,16 +28,16 @@ namespace HandlebarsDotNet.Compiler.Lexer
 
         private static string AccumulateBlockWord(ExtendedStringReader reader)
         {
-            using(var container = StringBuilderPool.Shared.Use())
+            using (var container = StringBuilderPool.Shared.Use())
             {
                 var buffer = container.Value;
                 buffer.Append((char)reader.Read());
-                while(char.IsWhiteSpace((char)reader.Peek()))
+                while (char.IsWhiteSpace((char)reader.Peek()))
                 {
                     reader.Read();
                 }
-                
-                while(true)
+
+                while (true)
                 {
                     var peek = (char)reader.Peek();
                     if (peek == '}' || peek == '~' || char.IsWhiteSpace(peek))
@@ -53,7 +54,7 @@ namespace HandlebarsDotNet.Compiler.Lexer
                         buffer.Append((char)node);
                     }
                 }
-                
+
                 return buffer.ToString();
             }
         }

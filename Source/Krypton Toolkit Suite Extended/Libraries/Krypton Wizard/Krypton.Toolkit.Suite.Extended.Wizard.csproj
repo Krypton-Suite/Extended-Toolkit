@@ -12,6 +12,7 @@
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Description>An extension to the standard krypton toolkit to support .NET Core, .NET 5 and the latest .NET 3.5/4.x framework. This package allows the creation of wizards.</Description>
     <RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
+    <PackageLicenseExpression>BSD-3 Clause</PackageLicenseExpression>
   </PropertyGroup>
 
   <!--Stable package configuration-
@@ -35,7 +36,7 @@
 
   <!--Canary NuGet package configuration-->
   <ItemGroup>
-    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2008" />
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2011" />
   </ItemGroup>
 
   <!--Version configuration-->

@@ -13,7 +13,7 @@
     <Description>An extension to the standard krypton toolkit to support .NET Core, .NET 5 and the latest .NET 3.5/4.x framework. This is the error reporting module.</Description>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <PackageLicense>https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE</PackageLicense>
+    <PackageLicenseExpression>BSD-3 Clause</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
   </PropertyGroup>
 
@@ -40,8 +40,8 @@
 
   <!--Canary NuGet package configuration-->
   <ItemGroup>
-    <PackageReference Include="Krypton.Navigator.Canary" Version="6.0.2008" />
-    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2008" />
+    <PackageReference Include="Krypton.Navigator.Canary" Version="6.0.2011" />
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2011" />
   </ItemGroup>
   
   <ItemGroup>
@@ -56,8 +56,6 @@
     <Reference Include="Krypton.Toolkit.Suite.Extended.Dialogs">
       <HintPath>..\Extended Dialogs\obj\Debug\net45\Krypton.Toolkit.Suite.Extended.Dialogs.dll</HintPath>
     </Reference>
-    <Reference Include="System.Deployment" />
-    <Reference Include="System.Management" />
   </ItemGroup>
   
   <ItemGroup>

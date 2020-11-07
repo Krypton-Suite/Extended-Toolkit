@@ -13,7 +13,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
-    <PackageLicenseFile></PackageLicenseFile>
+    <PackageLicenseExpression>BSD-3 Clause</PackageLicenseExpression>
   </PropertyGroup>
 
   <!--Stable package configuration-
@@ -37,7 +37,7 @@
 
   <!--Canary NuGet package configuration-->
   <ItemGroup>
-    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2008" />
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2011" />
   </ItemGroup>
 
   <ItemGroup>
