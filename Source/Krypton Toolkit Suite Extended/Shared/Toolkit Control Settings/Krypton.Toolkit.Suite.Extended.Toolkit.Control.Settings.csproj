@@ -18,7 +18,7 @@
     <Version>5.550.2101</Version>
     <Description>Contains toolkit control settings.</Description>
     <RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
-    <PackageLicenseFile></PackageLicenseFile>
+	  <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
   </PropertyGroup>-->
 
   <!--Stable NuGet package configuration-
