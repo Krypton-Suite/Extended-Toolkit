@@ -56,6 +56,7 @@
     <Reference Include="Krypton.Toolkit.Suite.Extended.Dialogs">
       <HintPath>..\Extended Dialogs\obj\Debug\net45\Krypton.Toolkit.Suite.Extended.Dialogs.dll</HintPath>
     </Reference>
+    <Reference Include="System.Deployment" />
   </ItemGroup>
   
   <ItemGroup>
@@ -76,9 +77,9 @@
 
   <!--Version configuration-->
   <PropertyGroup>
-    <AssemblyVersion>5.550.2101</AssemblyVersion>
-    <FileVersion>5.550.2101</FileVersion>
-    <Version>5.550.2101</Version>
+    <AssemblyVersion>5.550.2103</AssemblyVersion>
+    <FileVersion>5.550.2103</FileVersion>
+    <Version>5.550.2103</Version>
   </PropertyGroup>
 
   <PropertyGroup>

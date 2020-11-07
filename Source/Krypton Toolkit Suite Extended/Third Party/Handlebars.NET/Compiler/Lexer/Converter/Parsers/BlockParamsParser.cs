@@ -1,3 +1,5 @@
+using HandlebarsDotNET.Compiler.Lexer;
+
 namespace HandlebarsDotNet.Compiler.Lexer
 {
     internal class BlockParamsParser : Parser

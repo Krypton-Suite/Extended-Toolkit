@@ -18,7 +18,7 @@
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Authors>Peter William Wagner &amp; Simon Coghlan, Thomas Bolon, JDH Software</Authors>
     <Description>An extension to the standard krypton toolkit to support .NET Core, .NET 5 and the latest .NET 3.5/4.x framework. A Data Grid View with multi sorting and multi grouping abilities.</Description>
-    <Copyright>Copyright © JDH Software 2013-2018. Then modifications by Peter Wagner (aka Wagnerp) &amp; Simon Coghlan (aka Smurf-IV) 2020 - 2021. All rights reserved.</Copyright>
+    <Copyright>Copyright © JDH Software 2013 - 2018. Then modifications by Peter Wagner (aka Wagnerp) &amp; Simon Coghlan (aka Smurf-IV) 2020 - 2021. All rights reserved.</Copyright>
     <RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
     <PackageLicenseExpression>BSD-3 Clause</PackageLicenseExpression>
   </PropertyGroup>
