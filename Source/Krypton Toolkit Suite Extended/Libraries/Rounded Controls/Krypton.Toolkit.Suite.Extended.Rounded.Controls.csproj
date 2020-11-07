@@ -48,7 +48,7 @@
     <Version>5.550.2101</Version>
   </PropertyGroup>
   
-<ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\..\Libraries\Base\Krypton.Toolkit.Suite.Extended.Base.csproj" />
   </ItemGroup>
   

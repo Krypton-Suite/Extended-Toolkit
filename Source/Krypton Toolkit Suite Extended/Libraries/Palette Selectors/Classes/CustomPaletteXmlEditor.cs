@@ -21,10 +21,10 @@ namespace Krypton.Toolkit.Suite.Extended.Palette.Selectors
                 var paletteDialog = new KryptonCustomPaletteXmlDialog();
                 if (value != null && typeof(string) == value.GetType())
                 {
-                    paletteDialog.paletteXml.Text = (string)value;
+                    paletteDialog.PaletteEdit.Text = (string)value;
                 }
                 svc.ShowDialog(paletteDialog);
-                if (paletteDialog.DialogResult == DialogResult.OK) value = paletteDialog.paletteXml.Text;
+                if (paletteDialog.DialogResult == DialogResult.OK) value = paletteDialog.PaletteEdit.Text;
             }
             return value;
         }
