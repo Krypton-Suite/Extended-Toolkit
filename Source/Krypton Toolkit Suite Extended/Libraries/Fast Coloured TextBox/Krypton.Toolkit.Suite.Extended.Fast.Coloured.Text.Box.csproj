@@ -1,16 +1,16 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
     <LangVersion>latest</LangVersion>
     <TargetFrameworks>net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows</TargetFrameworks>
-    <RootNamespace>Krypton.Toolkit.Suite.Extended.Floating.Toolbars</RootNamespace>
+    <RootNamespace>Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
     <OutputType>Library</OutputType>
   </PropertyGroup>
 
   <PropertyGroup>
-    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Floating.Toolbars\Krypton.Toolkit.Suite.Extended.Floating.Toolbars.xml</DocumentationFile>
-    <OutputPath>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Floating.Toolbars\</OutputPath>
+    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box\Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box.xml</DocumentationFile>
+    <OutputPath>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box\</OutputPath>
   </PropertyGroup>
   
   <PropertyGroup>
@@ -22,14 +22,14 @@
 
   <!--Stable package configuration-
   <PropertyGroup>
-    <PackageId>Krypton.Toolkit.Suite.Extended.Floating.Toolbars</PackageId>
+    <PackageId>Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box</PackageId>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Stable</PackageOutputPath>
     <PackageIconUrl>https://tinyurl.com/KryptonExtendedToolkitIcon</PackageIconUrl>
   </PropertyGroup>-->
 
   <!--Canary package configuration-->
   <PropertyGroup>
-    <PackageId>Krypton.Toolkit.Suite.Extended.Floating.Toolbars.Canary</PackageId>
+    <PackageId>Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box.Canary</PackageId>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Canary</PackageOutputPath>
     <PackageIconUrl>https://tinyurl.com/KryptonToolkitCanaryIcon</PackageIconUrl>
   </PropertyGroup>
@@ -46,9 +46,8 @@
 
   <!--Version configuration-->
   <PropertyGroup>
-    <AssemblyVersion>5.550.2101</AssemblyVersion>
-    <FileVersion>5.550.2101</FileVersion>
-    <Version>5.550.2101</Version>
+    <AssemblyVersion>5.550.2103</AssemblyVersion>
+    <FileVersion>5.550.2103</FileVersion>
+    <Version>5.550.2103</Version>
   </PropertyGroup>
-
 </Project>
