@@ -145,6 +145,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         /// <param name="parentWindow">The <see cref="KryptonForm">parent window.</see></param>
         /// <param name="parent">The parent form.</param>
         /// <param name="order">The z-order</param>
+        /// <param name="sound">The sound configuration</param>
         /// <returns>One of the <see cref="InformationBoxResult"/> values.</returns>
         public static InformationBoxResult Show(string text,
                                                 string title = "",
@@ -175,11 +176,12 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
                                                 InformationBoxOpacity opacity = InformationBoxOpacity.NoFade,
                                                 KryptonForm parentWindow = null,
                                                 Form parent = null,
-                                                InformationBoxOrder order = InformationBoxOrder.Default)
+                                                InformationBoxOrder order = InformationBoxOrder.Default,
+                                                InformationBoxSound sound = InformationBoxSound.Default)
         {
             var parameters = new object[]{ title, helpFile, helpTopic, initialization, buttons, icon, customIcon, defaultButton,
                  customButtons, buttonsLayout, autoSizeMode, position, showHelpButton, helpNavigator, showDoNotShowAgainCheckBox,
-                 style, autoClose, design, titleStyle, titleIcon, legacyButtons, legacyIcon, legacyDefaultButton, behavior, callback, opacity, parentWindow, parent, order };
+                 style, autoClose, design, titleStyle, titleIcon, legacyButtons, legacyIcon, legacyDefaultButton, behavior, callback, opacity, parentWindow, parent, order, sound };
 
             return new KryptonInformationBoxWindow(text, parameters).Show();
         }
@@ -333,6 +335,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         /// <param name="parentWindow">The parent <see cref="KryptonForm">window.</see></param>
         /// <param name="parent">The parent form.</param>
         /// <param name="order">The z-order</param>
+        /// <param name="sound">The sound configuration</param>
         /// <returns>
         /// One of the <see cref="InformationBoxResult"/> values.
         /// </returns>
@@ -366,11 +369,12 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
                                                 InformationBoxOpacity opacity = InformationBoxOpacity.NoFade,
                                                 KryptonForm parentWindow = null,
                                                 Form parent = null,
-                                                InformationBoxOrder order = InformationBoxOrder.Default)
+                                                InformationBoxOrder order = InformationBoxOrder.Default,
+                                                InformationBoxSound sound = InformationBoxSound.Default)
         {
             var parameters = new object[]{ title, helpFile, helpTopic, initialization, buttons, icon, customIcon, defaultButton,
                  customButtons, buttonsLayout, autoSizeMode, position, showHelpButton, helpNavigator, showDoNotShowAgainCheckBox,
-                 style, autoClose, design, titleStyle, titleIcon, legacyButtons, legacyIcon, legacyDefaultButton, behavior, callback, opacity, parentWindow, parent, order };
+                 style, autoClose, design, titleStyle, titleIcon, legacyButtons, legacyIcon, legacyDefaultButton, behavior, callback, opacity, parentWindow, parent, order, sound };
 
             return new KryptonInformationBoxWindow(text, parameters).Show(out checkBoxState);
         }

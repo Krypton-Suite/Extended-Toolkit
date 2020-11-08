@@ -311,24 +311,28 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         YesNoCancel,
 
         /// <summary>
-        /// The message box contains Yes, No, and a user defined buttons.
+        /// The message box contains Yes, No, and a user-defined buttons.
         /// </summary>
         YesNoUser1,
 
         /// <summary>
-        /// The message box contains OK, Cancel, and a user defined buttons.
+        /// The message box contains OK, Cancel, and a user-defined buttons.
         /// </summary>
         OKCancelUser1,
 
         /// <summary>
-        /// The message box contains two user defined buttons.
+        /// The message box contains two user-defined buttons.
         /// </summary>
         User1User2,
 
         /// <summary>
-        /// The message box contains one user defined button.
+        /// The message box contains one user-defined button.
         /// </summary>
         User1,
+        /// <summary>
+        /// The message box contains three user-defined buttons.
+        /// </summary>
+        User1User2User3
     }
 
     /// <summary>
@@ -682,14 +686,18 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         Yes,
 
         /// <summary>
-        /// The dialog box return value is User1 (usually sent from the first user defined button).
+        /// The dialog box return value is User1 (usually sent from the first user-defined button).
         /// </summary>
         User1,
 
         /// <summary>
-        /// The dialog box return value is Yes (usually sent from the second user defined button).
+        /// The dialog box return value is Yes (usually sent from the second user-defined button).
         /// </summary>
         User2,
+        /// <summary>
+        /// The dialog box return value is User3 (usually sent from the third user-defined button).
+        /// </summary>
+        User3,
     }
 
     /// <summary>
@@ -731,6 +739,22 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         /// Use a custom icon.
         /// </summary>
         Custom,
+    }
+
+    /// <summary>
+    /// Specifies constants defining whether sound will be played on opening
+    /// </summary>
+    public enum InformationBoxSound
+    {
+        /// <summary>
+        /// The default system sound.
+        /// </summary>
+        Default,
+
+        /// <summary>
+        /// Does not play default sound.
+        /// </summary>
+        None,
     }
 
     /// <summary>

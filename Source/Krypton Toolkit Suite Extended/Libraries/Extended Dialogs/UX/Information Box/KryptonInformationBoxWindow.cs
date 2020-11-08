@@ -222,6 +222,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         #endregion
 
         #region Attributes
+
         /// <summary>
         /// Contains the callback used to inform the caller of a modeless box
         /// </summary>
@@ -238,14 +239,19 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         private readonly string buttonUser2Text = "User2";
 
         /// <summary>
+        /// Text for the third user button
+        /// </summary>
+        private readonly string buttonUser3Text = "User3";
+
+        /// <summary>
         /// Help file associated to the help button
         /// </summary>
-        private readonly string helpFile = string.Empty;
+        private readonly string helpFile;
 
         /// <summary>
         /// Help topic associated to the help button
         /// </summary>
-        private readonly string helpTopic = string.Empty;
+        private readonly string helpTopic;
 
         /// <summary>
         /// Contains the graphics used to measure the strings
@@ -255,7 +261,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         /// <summary>
         /// Contains a reference to the active form
         /// </summary>
-        private readonly KryptonForm activeForm;
+        private readonly Form activeForm;
 
         /// <summary>
         /// Result corresponding the clicked button
@@ -265,7 +271,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         /// <summary>
         /// Main icon of the form
         /// </summary>
-        private InformationBoxIcon icon = InformationBoxIcon.None;
+        private InformationBoxIcon icon;
 
         /// <summary>
         /// Custom icon
@@ -275,12 +281,12 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         /// <summary>
         /// Buttons displayed on the form
         /// </summary>
-        private InformationBoxButtons buttons = InformationBoxButtons.OK;
+        private InformationBoxButtons buttons;
 
         /// <summary>
         /// Default button
         /// </summary>
-        private InformationBoxDefaultButton defaultButton = InformationBoxDefaultButton.Button1;
+        private InformationBoxDefaultButton defaultButton;
 
         /// <summary>
         /// Buttons layout
@@ -376,21 +382,168 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         /// Z-Order of the form
         /// </summary>
         private InformationBoxOrder order = InformationBoxOrder.Default;
-        #endregion
+
+        /// <summary>
+        /// Sound to play on opening
+        /// </summary>
+        private InformationBoxSound sound;
+
+        #endregion Attributes
 
         #region Constructors
-        internal KryptonInformationBoxWindow(string text)
+
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="KryptonInformationBoxWindow"/> class using the specified text.
+        /// </summary>
+        /// <param name="text">The text.</param>
+        /// <param name="title">The title.</param>
+        /// <param name="helpFile">The help file.</param>
+        /// <param name="helpTopic">The help topic.</param>
+        /// <param name="initialization">The initialization.</param>
+        /// <param name="buttons">The buttons.</param>
+        /// <param name="icon">The icon.</param>
+        /// <param name="customIcon">The custom icon.</param>
+        /// <param name="defaultButton">The default button.</param>
+        /// <param name="customButtons">The custom buttons.</param>
+        /// <param name="buttonsLayout">The buttons layout.</param>
+        /// <param name="autoSizeMode">The auto size mode.</param>
+        /// <param name="position">The position.</param>
+        /// <param name="showHelpButton">if set to <c>true</c> shows help button.</param>
+        /// <param name="helpNavigator">The help navigator.</param>
+        /// <param name="showDoNotShowAgainCheckBox">if set to <c>true</c> shows the do not show again check box.</param>
+        /// <param name="style">The style.</param>
+        /// <param name="autoClose">The auto close configuration.</param>
+        /// <param name="design">The design.</param>
+        /// <param name="titleStyle">The title style.</param>
+        /// <param name="titleIcon">The title icon.</param>
+        /// <param name="legacyButtons">The legacy buttons.</param>
+        /// <param name="legacyIcon">The legacy icon.</param>
+        /// <param name="legacyDefaultButton">The legacy default button.</param>
+        /// <param name="behavior">The behavior.</param>
+        /// <param name="callback">The callback.</param>
+        /// <param name="opacity">The opacity.</param>
+        /// <param name="parent">The parent form.</param>
+        /// <param name="order">The z-order</param>
+        /// <param name="sound">The sound</param>
+        internal KryptonInformationBoxWindow(string text,
+                                    string title = "",
+                                    string helpFile = "",
+                                    string helpTopic = "",
+                                    InformationBoxInitialization initialization = InformationBoxInitialization.FromScopeAndParameters,
+                                    InformationBoxButtons buttons = InformationBoxButtons.OK,
+                                    InformationBoxIcon icon = InformationBoxIcon.None,
+                                    Icon customIcon = null,
+                                    InformationBoxDefaultButton defaultButton = InformationBoxDefaultButton.Button1,
+                                    string[] customButtons = null,
+                                    InformationBoxButtonsLayout buttonsLayout = InformationBoxButtonsLayout.GroupMiddle,
+                                    InformationBoxAutoSizeMode autoSizeMode = InformationBoxAutoSizeMode.None,
+                                    InformationBoxPosition position = InformationBoxPosition.CenterOnParent,
+                                    bool showHelpButton = false,
+                                    HelpNavigator helpNavigator = HelpNavigator.TableOfContents,
+                                    InformationBoxCheckBox showDoNotShowAgainCheckBox = 0,
+                                    InformationBoxStyle style = InformationBoxStyle.Standard,
+                                    AutoCloseParameters autoClose = null,
+                                    DesignParameters design = null,
+                                    InformationBoxTitleIconStyle titleStyle = InformationBoxTitleIconStyle.None,
+                                    InformationBoxTitleIcon titleIcon = null,
+                                    MessageBoxButtons? legacyButtons = null,
+                                    MessageBoxIcon? legacyIcon = null,
+                                    MessageBoxDefaultButton? legacyDefaultButton = null,
+                                    InformationBoxBehavior behavior = InformationBoxBehavior.Modal,
+                                    AsyncResultCallback callback = null,
+                                    InformationBoxOpacity opacity = InformationBoxOpacity.NoFade,
+                                    KryptonForm parent = null,
+                                    InformationBoxOrder order = InformationBoxOrder.Default,
+                                    InformationBoxSound sound = InformationBoxSound.Default)
         {
-            InitializeComponent();
+            this.InitializeComponent();
+            this.measureGraphics = CreateGraphics();
 
-            measureGraphics = CreateGraphics();
+            // Apply default font for message boxes
+            this.Font = SystemFonts.MessageBoxFont;
+            this.kwlMessageText.Font = SystemFonts.MessageBoxFont;
+            this.klblTitle.StateCommon.ShortText.Font = SystemFonts.CaptionFont;
 
-            kwlMessageText.Text = text;
+            this.kwlMessageText.Text = text;
+
+            if (InformationBoxInitialization.FromParametersOnly == initialization)
+            {
+                this.LoadCurrentScope();
+            }
+
+            this.Text = title;
+            this.klblTitle.Text = title;
+            this.helpFile = helpFile;
+            this.helpTopic = helpTopic;
+            this.buttons = buttons;
+            this.icon = icon;
+            if (customIcon != null)
+            {
+                this.iconType = InformationBoxIconType.UserDefined;
+                this.customIcon = new Icon(customIcon, 48, 48);
+            }
+            this.defaultButton = defaultButton;
+            if (customButtons != null)
+            {
+                if (customButtons.Length > 0)
+                {
+                    this.buttonUser1Text = customButtons[0];
+                }
+
+                if (customButtons.Length > 1)
+                {
+                    this.buttonUser2Text = customButtons[1];
+                }
+
+                if (customButtons.Length > 2)
+                {
+                    this.buttonUser3Text = customButtons[2];
+                }
+            }
+            this.buttonsLayout = buttonsLayout;
+            this.autoSizeMode = autoSizeMode;
+            this.position = position;
+            this.showHelpButton = showHelpButton;
+            this.helpNavigator = helpNavigator;
+            this.checkBox = showDoNotShowAgainCheckBox;
+            this.style = style;
+            this.autoClose = autoClose;
+            this.design = design;
+            this.titleStyle = titleStyle;
+            if (titleIcon != null)
+            {
+                this.titleIcon = titleIcon.Icon;
+            }
+            if (!(legacyButtons is null))
+            {
+                this.buttons = MessageBoxEnumConverter.Parse(legacyButtons.Value);
+            }
+            if (!(legacyIcon is null))
+            {
+                this.icon = MessageBoxEnumConverter.Parse(legacyIcon.Value);
+            }
+            if (!(legacyDefaultButton is null))
+            {
+                this.defaultButton = MessageBoxEnumConverter.Parse(legacyDefaultButton.Value);
+            }
+            this.behavior = behavior;
+            this.callback = callback;
+            this.opacity = opacity;
+            this.Parent = parent;
+            this.order = order;
+            this.sound = sound;
         }
 
-        internal KryptonInformationBoxWindow(string text, params object[] parameters) : this(text)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="KryptonInformationBoxWindow"/> class.
+        /// </summary>
+        /// <param name="text">The text of the box.</param>
+        /// <param name="parameters">The parameters.</param>
+        internal KryptonInformationBoxWindow(string text, params object[] parameters)
+            : this(text)
         {
-            activeForm = (KryptonForm)ActiveForm;
+            this.activeForm = ActiveForm;
 
             // Looks for a parameter of the type InformationBoxInitialization.
             // If found and equal to InformationBoxInitialization.FromParametersOnly,
@@ -410,7 +563,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
             if (loadScope)
             {
-                LoadCurrentScope();
+                this.LoadCurrentScope();
             }
 
             int stringCount = 0;
@@ -428,16 +581,16 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
                 {
                     if (stringCount == 0)
                     {
-                        Text = (string)parameter;
-                        klblTitle.Text = (string)parameter;
+                        this.Text = (string)parameter;
+                        this.klblTitle.Text = (string)parameter;
                     }
                     else if (stringCount == 1)
                     {
-                        helpFile = (string)parameter;
+                        this.helpFile = (string)parameter;
                     }
                     else if (stringCount == 2)
                     {
-                        helpTopic = (string)parameter;
+                        this.helpTopic = (string)parameter;
                     }
 
                     stringCount++;
@@ -445,23 +598,23 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
                 else if (parameter is InformationBoxButtons)
                 {
                     // Buttons
-                    buttons = (InformationBoxButtons)parameter;
+                    this.buttons = (InformationBoxButtons)parameter;
                 }
                 else if (parameter is InformationBoxIcon)
                 {
                     // Internal icon
-                    icon = (InformationBoxIcon)parameter;
+                    this.icon = (InformationBoxIcon)parameter;
                 }
                 else if (parameter is Icon)
                 {
                     // User defined icon
-                    iconType = InformationBoxIconType.UserDefined;
-                    customIcon = new Icon((Icon)parameter, 48, 48);
+                    this.iconType = InformationBoxIconType.UserDefined;
+                    this.customIcon = new Icon((Icon)parameter, 48, 48);
                 }
                 else if (parameter is InformationBoxDefaultButton)
                 {
                     // Default button
-                    defaultButton = (InformationBoxDefaultButton)parameter;
+                    this.defaultButton = (InformationBoxDefaultButton)parameter;
                 }
                 else if (parameter is string[])
                 {
@@ -469,144 +622,146 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
                     string[] labels = (string[])parameter;
                     if (labels.Length > 0)
                     {
-                        buttonUser1Text = labels[0];
+                        this.buttonUser1Text = labels[0];
                     }
 
                     if (labels.Length > 1)
                     {
-                        buttonUser2Text = labels[1];
+                        this.buttonUser2Text = labels[1];
+                    }
+
+                    if (labels.Length > 2)
+                    {
+                        this.buttonUser3Text = labels[2];
                     }
                 }
                 else if (parameter is InformationBoxButtonsLayout)
                 {
                     // Buttons layout
-                    buttonsLayout = (InformationBoxButtonsLayout)parameter;
+                    this.buttonsLayout = (InformationBoxButtonsLayout)parameter;
                 }
                 else if (parameter is InformationBoxAutoSizeMode)
                 {
                     // Autosize mode
-                    autoSizeMode = (InformationBoxAutoSizeMode)parameter;
+                    this.autoSizeMode = (InformationBoxAutoSizeMode)parameter;
                 }
                 else if (parameter is InformationBoxPosition)
                 {
                     // Position
-                    position = (InformationBoxPosition)parameter;
+                    this.position = (InformationBoxPosition)parameter;
                 }
                 else if (parameter is bool)
                 {
                     // Help button
-                    showHelpButton = (bool)parameter;
+                    this.showHelpButton = (bool)parameter;
                 }
                 else if (parameter is HelpNavigator)
                 {
                     // Help navigator
-                    helpNavigator = (HelpNavigator)parameter;
+                    this.helpNavigator = (HelpNavigator)parameter;
                 }
                 else if (parameter is InformationBoxCheckBox)
                 {
                     // Do not show this dialog again ?
-                    checkBox = (InformationBoxCheckBox)parameter;
+                    this.checkBox = (InformationBoxCheckBox)parameter;
                 }
                 else if (parameter is InformationBoxStyle)
                 {
                     // Visual style
-                    style = (InformationBoxStyle)parameter;
+                    this.style = (InformationBoxStyle)parameter;
                 }
                 else if (parameter is AutoCloseParameters)
                 {
                     // Auto-close parameters
-                    autoClose = (AutoCloseParameters)parameter;
+                    this.autoClose = (AutoCloseParameters)parameter;
                 }
                 else if (parameter is DesignParameters)
                 {
                     // Design parameters
-                    design = (DesignParameters)parameter;
+                    this.design = (DesignParameters)parameter;
                 }
                 else if (parameter is InformationBoxTitleIconStyle)
                 {
                     // Title style
-                    titleStyle = (InformationBoxTitleIconStyle)parameter;
+                    this.titleStyle = (InformationBoxTitleIconStyle)parameter;
                 }
                 else if (parameter is InformationBoxTitleIcon)
                 {
                     // Title icon
-                    titleIcon = ((InformationBoxTitleIcon)parameter).Icon;
+                    this.titleIcon = ((InformationBoxTitleIcon)parameter).Icon;
                 }
-                else if (parameter is MessageBoxButtons? && parameter != null)
+                else if (parameter is MessageBoxButtons?)
                 {
                     // MessageBox buttons
-                    buttons = MessageBoxEnumConverter.Parse((MessageBoxButtons)parameter);
+                    this.buttons = MessageBoxEnumConverter.Parse((MessageBoxButtons)parameter);
                 }
-                else if (parameter is MessageBoxIcon? && parameter != null)
+                else if (parameter is MessageBoxIcon?)
                 {
                     // MessageBox icon
-                    icon = MessageBoxEnumConverter.Parse((MessageBoxIcon)parameter);
+                    this.icon = MessageBoxEnumConverter.Parse((MessageBoxIcon)parameter);
                 }
-                else if (parameter is MessageBoxDefaultButton? && parameter != null)
+                else if (parameter is MessageBoxDefaultButton?)
                 {
                     // MessageBox default button
-                    defaultButton = MessageBoxEnumConverter.Parse((MessageBoxDefaultButton)parameter);
+                    this.defaultButton = MessageBoxEnumConverter.Parse((MessageBoxDefaultButton)parameter);
                 }
                 else if (parameter is InformationBoxBehavior)
                 {
                     // InformationBox behaviour
-                    behavior = (InformationBoxBehavior)parameter;
+                    this.behavior = (InformationBoxBehavior)parameter;
                 }
                 else if (parameter is AsyncResultCallback)
                 {
                     // Callback for the result
-                    callback = (AsyncResultCallback)parameter;
+                    this.callback = (AsyncResultCallback)parameter;
                 }
                 else if (parameter is InformationBoxOpacity)
                 {
                     // Opacity
-                    opacity = (InformationBoxOpacity)parameter;
+                    this.opacity = (InformationBoxOpacity)parameter;
                 }
                 else if (parameter is Form)
                 {
                     // Form parent
-                    Parent = (Form)Parent;
+                    this.Parent = (Form)Parent;
                 }
                 else if (parameter is InformationBoxOrder)
                 {
                     // z-order
-                    order = (InformationBoxOrder)parameter;
+                    this.order = (InformationBoxOrder)parameter;
                 }
-                else if (parameter is Form)
+                else if (parameter is InformationBoxSound)
                 {
-                    // Form parent
-                    Parent = (Form)Parent;
-                }
-                else if (parameter is InformationBoxOrder)
-                {
-                    // z-order
-                    order = (InformationBoxOrder)parameter;
+                    // Sound
+                    this.sound = (InformationBoxSound)parameter;
                 }
             }
         }
-        #endregion
+
+        #endregion Constructors
 
         #region Show
+
         /// <summary>
         /// Shows this InformationBox.
         /// </summary>
         /// <returns>The result corresponding to the button clicked</returns>
         internal new InformationBoxResult Show()
         {
-            SetCheckBox();
-            SetButtons();
-            SetText();
-            SetIcon();
-            SetLayout();
-            SetFocus();
-            SetPosition();
-            SetWindowStyle();
-            SetAutoClose();
-            SetOpacity();
-            PlaySound();
-            SetOrder();
+            this.SetCheckBox();
+            this.SetButtons();
+            this.SetText();
+            this.SetIcon();
+            this.SetLayout();
+            this.SetFocus();
+            this.SetPosition();
+            this.SetWindowStyle();
+            this.SetAutoClose();
+            this.SetOpacity();
+            this.PlaySound();
+            this.SetOrder();
 
-            if (behavior == InformationBoxBehavior.Modal)
+            if (this.behavior == InformationBoxBehavior.Modal)
             {
                 ShowDialog();
             }
@@ -615,7 +770,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
                 base.Show();
             }
 
-            return result;
+            return this.result;
         }
 
         /// <summary>
@@ -625,55 +780,64 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         /// <returns>The result corresponding to the button clicked</returns>
         internal InformationBoxResult Show(out CheckState state)
         {
-            result = Show();
-            state = kcbDoNotShow.CheckState;
-            return result;
+            this.result = this.Show();
+            state = this.kcbDoNotShow.CheckState;
+            return this.result;
         }
-        #endregion
+
+        #endregion Show
 
         #region Sound
+
         /// <summary>
         /// Plays the sound associated with the icon type.
         /// </summary>
         private void PlaySound()
         {
-            SystemSound sound;
-
-            if (iconType == InformationBoxIconType.UserDefined)
+            if (sound == InformationBoxSound.None)
             {
-                sound = SystemSounds.Beep;
+                return;
+            }
+
+            SystemSound soundToPlay;
+
+            if (this.iconType == InformationBoxIconType.UserDefined)
+            {
+                soundToPlay = SystemSounds.Beep;
             }
             else
             {
-                switch (IconHelper.GetCategory(icon))
+                switch (IconHelper.GetCategory(this.icon))
                 {
                     case InformationBoxMessageCategory.Asterisk:
-                        sound = SystemSounds.Asterisk;
+                        soundToPlay = SystemSounds.Asterisk;
                         break;
                     case InformationBoxMessageCategory.Exclamation:
-                        sound = SystemSounds.Exclamation;
+                        soundToPlay = SystemSounds.Exclamation;
                         break;
                     case InformationBoxMessageCategory.Hand:
-                        sound = SystemSounds.Hand;
+                        soundToPlay = SystemSounds.Hand;
                         break;
                     case InformationBoxMessageCategory.Question:
-                        sound = SystemSounds.Question;
+                        soundToPlay = SystemSounds.Question;
                         break;
                     default:
-                        sound = SystemSounds.Beep;
+                        soundToPlay = SystemSounds.Beep;
                         break;
                 }
             }
 
-            if (null != sound)
+            if (null != soundToPlay)
             {
-                sound.Play();
+                soundToPlay.Play();
             }
         }
-        #endregion
 
-        #region Box Initialisation
-        // <summary>
+        #endregion Sound
+
+        #region Box initialization
+
+        /// <summary>
         /// Loads the current scope.
         /// </summary>
         private void LoadCurrentScope()
@@ -687,93 +851,98 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
             if (parameters.Icon.HasValue)
             {
-                icon = parameters.Icon.Value;
+                this.icon = parameters.Icon.Value;
             }
 
             if (parameters.CustomIcon != null)
             {
-                iconType = InformationBoxIconType.UserDefined;
-                customIcon = parameters.CustomIcon;
+                this.iconType = InformationBoxIconType.UserDefined;
+                this.customIcon = parameters.CustomIcon;
             }
 
             if (parameters.Buttons.HasValue)
             {
-                buttons = parameters.Buttons.Value;
+                this.buttons = parameters.Buttons.Value;
             }
 
             if (parameters.DefaultButton.HasValue)
             {
-                defaultButton = parameters.DefaultButton.Value;
+                this.defaultButton = parameters.DefaultButton.Value;
             }
 
             if (parameters.Layout.HasValue)
             {
-                buttonsLayout = parameters.Layout.Value;
+                this.buttonsLayout = parameters.Layout.Value;
             }
 
             if (parameters.AutoSizeMode.HasValue)
             {
-                autoSizeMode = parameters.AutoSizeMode.Value;
+                this.autoSizeMode = parameters.AutoSizeMode.Value;
             }
 
             if (parameters.Position.HasValue)
             {
-                position = parameters.Position.Value;
+                this.position = parameters.Position.Value;
             }
 
             if (parameters.CheckBox.HasValue)
             {
-                checkBox = parameters.CheckBox.Value;
+                this.checkBox = parameters.CheckBox.Value;
             }
 
             if (parameters.Style.HasValue)
             {
-                style = parameters.Style.Value;
+                this.style = parameters.Style.Value;
             }
 
             if (parameters.AutoClose != null)
             {
-                autoClose = parameters.AutoClose;
+                this.autoClose = parameters.AutoClose;
             }
 
             if (parameters.Design != null)
             {
-                design = parameters.Design;
+                this.design = parameters.Design;
             }
 
             if (parameters.TitleIconStyle.HasValue)
             {
-                titleStyle = parameters.TitleIconStyle.Value;
+                this.titleStyle = parameters.TitleIconStyle.Value;
             }
 
             if (parameters.TitleIcon != null)
             {
-                titleIcon = parameters.TitleIcon;
+                this.titleIcon = parameters.TitleIcon;
             }
 
             if (parameters.Behavior.HasValue)
             {
-                behavior = parameters.Behavior.Value;
+                this.behavior = parameters.Behavior.Value;
             }
 
             if (parameters.Opacity.HasValue)
             {
-                opacity = parameters.Opacity.Value;
+                this.opacity = parameters.Opacity.Value;
             }
 
             if (parameters.Help.HasValue)
             {
-                showHelpButton = parameters.Help.Value;
+                this.showHelpButton = parameters.Help.Value;
             }
 
             if (parameters.HelpNavigator.HasValue)
             {
-                helpNavigator = parameters.HelpNavigator.Value;
+                this.helpNavigator = parameters.HelpNavigator.Value;
             }
 
             if (parameters.Order.HasValue)
             {
-                order = parameters.Order.Value;
+                this.order = parameters.Order.Value;
+            }
+
+            if (parameters.Sound.HasValue)
+            {
+                this.sound = parameters.Sound.Value;
             }
         }
 
@@ -784,14 +953,14 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         /// </summary>
         private void SetAutoClose()
         {
-            if (null == autoClose)
+            if (null == this.autoClose)
             {
                 return;
             }
 
-            tmrAutoClose.Interval = 1000;
-            tmrAutoClose.Tick += TmrAutoClose_Tick;
-            tmrAutoClose.Start();
+            this.tmrAutoClose.Interval = 1000;
+            this.tmrAutoClose.Tick += this.TmrAutoClose_Tick;
+            this.tmrAutoClose.Start();
         }
 
         #endregion Auto close
@@ -803,7 +972,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         /// </summary>
         private void SetOpacity()
         {
-            switch (opacity)
+            switch (this.opacity)
             {
                 case InformationBoxOpacity.Faded10:
                     Opacity = 0.1;
@@ -849,40 +1018,50 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         /// </summary>
         private void SetWindowStyle()
         {
-            if (style == InformationBoxStyle.Modern)
+            if (this.style == InformationBoxStyle.Modern)
             {
                 Color barsBackColor = Color.Black;
                 Color formBackColor = Color.Silver;
 
-                if (null != design)
+                if (null != this.design)
                 {
-                    barsBackColor = design.BarsBackColor;
-                    formBackColor = design.FormBackColor;
+                    barsBackColor = this.design.BarsBackColor;
+                    formBackColor = this.design.FormBackColor;
                 }
 
-                FormBorderStyle = FormBorderStyle.None;
-                klblTitle.Visible = true;
+                //this.pnlForm.BackColor = formBackColor;
+                this.kwlMessageText.BackColor = formBackColor;
 
-                foreach (KryptonButton button in kpnlButtons.Controls)
+                this.kpnlButtons.BackColor = barsBackColor;
+                this.klblTitle.BackColor = barsBackColor;
+
+                FormBorderStyle = FormBorderStyle.None;
+                this.klblTitle.Visible = true;
+
+                foreach (KryptonButton button in this.kpnlButtons.Controls)
                 {
                     button.BackColor = barsBackColor;
                 }
             }
-            else if (style == InformationBoxStyle.Standard)
+            else if (this.style == InformationBoxStyle.Standard)
             {
                 Color barsBackColor = SystemColors.Control;
                 Color formBackColor = SystemColors.Control;
 
-                if (null != design)
+                if (null != this.design)
                 {
-                    barsBackColor = design.BarsBackColor;
-                    formBackColor = design.FormBackColor;
+                    barsBackColor = this.design.BarsBackColor;
+                    formBackColor = this.design.FormBackColor;
                 }
 
+                //this.kpnlButtons.BackColor = barsBackColor;
+                //this.k.BackColor = formBackColor;
+                //this.kwlMessageText.BackColor = formBackColor;
+
                 FormBorderStyle = FormBorderStyle.FixedDialog;
-                klblTitle.Visible = false;
-                kpnlMain.Top -= klblTitle.Height;
-                //kpnlButtons.SideBorder = SideBorder.None;
+                this.klblTitle.Visible = false;
+                this.kpnlMain.Top -= this.klblTitle.Height;
+                //this.kpnlButtons.SideBorder = SideBorder.None;
             }
         }
 
@@ -895,14 +1074,14 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         /// </summary>
         private void SetCheckBox()
         {
-            kcbDoNotShow.Text = Properties.Resources.DoNotShowText;
+            this.kcbDoNotShow.Text = Properties.Resources.DoNotShowText;
 
-            kcbDoNotShow.Visible = ((checkBox & InformationBoxCheckBox.Show) == InformationBoxCheckBox.Show);
-            kcbDoNotShow.Checked = ((checkBox & InformationBoxCheckBox.Checked) == InformationBoxCheckBox.Checked);
-            //kcbDoNotShow.TextAlign = ((checkBox & InformationBoxCheckBox.RightAligned) == InformationBoxCheckBox.RightAligned)
+            this.kcbDoNotShow.Visible = ((this.checkBox & InformationBoxCheckBox.Show) == InformationBoxCheckBox.Show);
+            this.kcbDoNotShow.Checked = ((this.checkBox & InformationBoxCheckBox.Checked) == InformationBoxCheckBox.Checked);
+            //this.kcbDoNotShow.TextAlign = ((this.checkBox & InformationBoxCheckBox.RightAligned) == InformationBoxCheckBox.RightAligned)
             //                             ? ContentAlignment.BottomRight
             //                             : ContentAlignment.BottomLeft;
-            //kcbDoNotShow.CheckAlign = ((checkBox & InformationBoxCheckBox.RightAligned) == InformationBoxCheckBox.RightAligned)
+            //this.kcbDoNotShow.CheckAlign = ((this.checkBox & InformationBoxCheckBox.RightAligned) == InformationBoxCheckBox.RightAligned)
             //                              ? ContentAlignment.MiddleRight
             //                              : ContentAlignment.MiddleLeft;
         }
@@ -916,7 +1095,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         /// </summary>
         private void SetPosition()
         {
-            if (position == InformationBoxPosition.CenterOnScreen)
+            if (this.position == InformationBoxPosition.CenterOnScreen)
             {
                 StartPosition = FormStartPosition.CenterScreen;
                 CenterToScreen();
@@ -937,19 +1116,19 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         /// </summary>
         private void SetFocus()
         {
-            if (defaultButton == InformationBoxDefaultButton.Button1 && kpnlButtons.Controls.Count > 0)
+            if (this.defaultButton == InformationBoxDefaultButton.Button1 && this.kpnlButtons.Controls.Count > 0)
             {
-                kpnlButtons.Controls[0].Select();
+                this.kpnlButtons.Controls[0].Select();
             }
 
-            if (defaultButton == InformationBoxDefaultButton.Button2 && kpnlButtons.Controls.Count > 1)
+            if (this.defaultButton == InformationBoxDefaultButton.Button2 && this.kpnlButtons.Controls.Count > 1)
             {
-                kpnlButtons.Controls[1].Select();
+                this.kpnlButtons.Controls[1].Select();
             }
 
-            if (defaultButton == InformationBoxDefaultButton.Button3 && kpnlButtons.Controls.Count > 2)
+            if (this.defaultButton == InformationBoxDefaultButton.Button3 && this.kpnlButtons.Controls.Count > 2)
             {
-                kpnlButtons.Controls[2].Select();
+                this.kpnlButtons.Controls[2].Select();
             }
         }
 
@@ -968,35 +1147,35 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             #region Width
 
             // Caption width including button
-            int captionWidth = Convert.ToInt32(measureGraphics.MeasureString(Text, SystemFonts.CaptionFont).Width) + 30;
-            if (titleStyle != InformationBoxTitleIconStyle.None)
+            int captionWidth = Convert.ToInt32(this.measureGraphics.MeasureString(Text, SystemFonts.CaptionFont).Width) + 30;
+            if (this.titleStyle != InformationBoxTitleIconStyle.None)
             {
                 captionWidth += BORDER_PADDING * 2;
             }
 
             // "Do not show this dialog again" width
-            int checkBoxWidth = ((checkBox & InformationBoxCheckBox.Show) == InformationBoxCheckBox.Show)
-                                    ? (int)measureGraphics.MeasureString(kcbDoNotShow.Text, kcbDoNotShow.StateCommon.ShortText.Font).Width + BORDER_PADDING * 4
+            int checkBoxWidth = ((this.checkBox & InformationBoxCheckBox.Show) == InformationBoxCheckBox.Show)
+                                    ? (int)this.measureGraphics.MeasureString(this.kcbDoNotShow.Text, this.kcbDoNotShow.Font).Width + BORDER_PADDING * 4
                                     : 0;
 
             // Width of the text and icon.
             int iconAndTextWidth = 0;
 
             // Minimum width to display all needed buttons.
-            int buttonsMinWidth = (kpnlButtons.Controls.Count + 4) * BORDER_PADDING;
-            foreach (Control ctrl in kpnlButtons.Controls)
+            int buttonsMinWidth = (this.kpnlButtons.Controls.Count + 4) * BORDER_PADDING;
+            foreach (Control ctrl in this.kpnlButtons.Controls)
             {
                 buttonsMinWidth += ctrl.Width;
             }
 
             // Icon width
-            if (icon != InformationBoxIcon.None || iconType == InformationBoxIconType.UserDefined)
+            if (this.icon != InformationBoxIcon.None || this.iconType == InformationBoxIconType.UserDefined)
             {
                 iconAndTextWidth += ICON_PANEL_WIDTH;
             }
 
             // Text width
-            iconAndTextWidth += kwlMessageText.Width + BORDER_PADDING * 2;
+            iconAndTextWidth += this.kwlMessageText.Width + BORDER_PADDING * 2;
 
             // Gets the maximum size
             totalWidth = Math.Max(Math.Max(Math.Max(buttonsMinWidth, iconAndTextWidth), captionWidth), checkBoxWidth);
@@ -1005,21 +1184,21 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
             #region Height
 
-            if ((checkBox & InformationBoxCheckBox.Show) != InformationBoxCheckBox.Show)
+            if ((this.checkBox & InformationBoxCheckBox.Show) != InformationBoxCheckBox.Show)
             {
-                kcbDoNotShow.Visible = false;
-                kpnlBase.Height -= kcbDoNotShow.Height;
+                this.kcbDoNotShow.Visible = false;
+                this.kpnlBase.Height -= this.kcbDoNotShow.Height;
             }
 
             int iconHeight = 0;
-            if (icon != InformationBoxIcon.None || iconType == InformationBoxIconType.UserDefined)
+            if (this.icon != InformationBoxIcon.None || this.iconType == InformationBoxIconType.UserDefined)
             {
-                iconHeight = pbxIcon.Height;
+                iconHeight = this.pbxIcon.Height;
             }
 
-            int textHeight = kwlMessageText.Height;
+            int textHeight = this.kwlMessageText.Height;
 
-            totalHeight = Math.Max(iconHeight, textHeight) + BORDER_PADDING * 2 + kpnlBase.Height;
+            totalHeight = Math.Max(iconHeight, textHeight) + BORDER_PADDING * 2 + this.kpnlBase.Height;
 
             // Add a small space to avoid vertical scrollbar.
             if (iconAndTextWidth > Screen.PrimaryScreen.WorkingArea.Width - 100)
@@ -1032,40 +1211,40 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             {
                 totalHeight = Screen.PrimaryScreen.WorkingArea.Height - 50;
                 totalWidth += 20;
-                kwlMessageText.Top = BORDER_PADDING;
+                this.kwlMessageText.Top = BORDER_PADDING;
                 verticalScroll = true;
             }
 
-            kpnlContent.Size = new Size(Math.Min(Screen.PrimaryScreen.WorkingArea.Width - 20, totalWidth), totalHeight - kpnlBase.Height);
+            this.kpnlMain.Size = new Size(Math.Min(Screen.PrimaryScreen.WorkingArea.Width - 20, totalWidth), totalHeight - this.kpnlBase.Height);
 
-            if (style == InformationBoxStyle.Modern)
+            if (this.style == InformationBoxStyle.Modern)
             {
-                totalHeight += klblTitle.Height;
+                totalHeight += this.klblTitle.Height;
             }
 
             #endregion Height
 
-            // Sets the size;
+            // Sets the size
             ClientSize = new Size(Math.Min(Screen.PrimaryScreen.WorkingArea.Width - 20, totalWidth), totalHeight);
 
             #region Position
 
             // Set new position for all components
             // Icon
-            pbxIcon.Left = BORDER_PADDING;
-            pbxIcon.Top = BORDER_PADDING;
+            this.pbxIcon.Left = BORDER_PADDING;
+            this.pbxIcon.Top = BORDER_PADDING;
 
             // Text
-            kpnlScrollText.Width = ClientSize.Width - ((icon != InformationBoxIcon.None || iconType == InformationBoxIconType.UserDefined)
+            this.kpnlScrollText.Width = ClientSize.Width - ((this.icon != InformationBoxIcon.None || this.iconType == InformationBoxIconType.UserDefined)
                                        ? ICON_PANEL_WIDTH + BORDER_PADDING + 5
                                        : BORDER_PADDING);
             if (!verticalScroll)
             {
-                kwlMessageText.Top = Convert.ToInt32((kpnlText.Height - kwlMessageText.Height) / 2);
+                this.kwlMessageText.Top = Convert.ToInt32((this.kpnlText.Height - this.kwlMessageText.Height) / 2);
             }
 
             // Buttons
-            SetButtonsLayout();
+            this.SetButtonsLayout();
 
             #endregion Position
         }
@@ -1076,11 +1255,11 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         private void SetButtonsLayout()
         {
             // Do not count the checkbox
-            int buttonsCount = kpnlButtons.Controls.Count;
+            int buttonsCount = this.kpnlButtons.Controls.Count;
             int index = 0;
             int initialPosition = 0;
             int spaceBetween = 0;
-            switch (buttonsLayout)
+            switch (this.buttonsLayout)
             {
                 case InformationBoxButtonsLayout.GroupLeft:
                     initialPosition = BORDER_PADDING;
@@ -1092,27 +1271,27 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
                     // If there is only one button then we must center it
                     if (buttonsCount == 1)
                     {
-                        initialPosition += Convert.ToInt32((Width - buttonsCount * kpnlButtons.Controls[0].Width) / (buttonsCount + 1));
+                        initialPosition += Convert.ToInt32((Width - buttonsCount * this.kpnlButtons.Controls[0].Width) / (buttonsCount + 1));
                     }
                     else
                     {
-                        initialPosition = Convert.ToInt32((Width - (buttonsCount * (kpnlButtons.Controls[0].Width + BORDER_PADDING))) / 2);
+                        initialPosition = Convert.ToInt32((Width - (buttonsCount * (this.kpnlButtons.Controls[0].Width + BORDER_PADDING))) / 2);
                     }
 
                     break;
                 case InformationBoxButtonsLayout.GroupRight:
                     spaceBetween = BORDER_PADDING;
-                    initialPosition = ClientSize.Width - (buttonsCount * (kpnlButtons.Controls[0].Width + BORDER_PADDING));
+                    initialPosition = ClientSize.Width - (buttonsCount * (this.kpnlButtons.Controls[0].Width + BORDER_PADDING));
                     break;
                 case InformationBoxButtonsLayout.Separate:
-                    spaceBetween = Convert.ToInt32((ClientSize.Width - buttonsCount * kpnlButtons.Controls[0].Width) / (buttonsCount + 1));
+                    spaceBetween = Convert.ToInt32((ClientSize.Width - buttonsCount * this.kpnlButtons.Controls[0].Width) / (buttonsCount + 1));
                     initialPosition = spaceBetween;
                     break;
                 default:
                     break;
             }
 
-            foreach (Control ctrl in kpnlButtons.Controls)
+            foreach (Control ctrl in this.kpnlButtons.Controls)
             {
                 ctrl.Left = initialPosition + spaceBetween * (index) + ctrl.Width * index;
                 ++index;
@@ -1128,46 +1307,46 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         /// </summary>
         private void SetIcon()
         {
-            if (iconType == InformationBoxIconType.Internal)
+            if (this.iconType == InformationBoxIconType.Internal)
             {
-                if (icon == InformationBoxIcon.None)
+                if (this.icon == InformationBoxIcon.None)
                 {
-                    kpnlIcon.Visible = false;
-                    pbxIcon.Image = null;
+                    this.kpnlIcon.Visible = false;
+                    this.pbxIcon.Image = null;
                 }
                 else
                 {
-                    kpnlIcon.Visible = true;
-                    pbxIcon.Image = IconHelper.FromEnum(icon).ToBitmap();
+                    this.kpnlIcon.Visible = true;
+                    this.pbxIcon.Image = IconHelper.FromEnum(this.icon).ToBitmap();
                 }
             }
             else
             {
-                pbxIcon.Image = customIcon.ToBitmap();
-                kpnlIcon.Visible = true;
+                this.pbxIcon.Image = this.customIcon.ToBitmap();
+                this.kpnlIcon.Visible = true;
             }
 
-            kpnlIcon.Width = ICON_PANEL_WIDTH;
+            this.kpnlIcon.Width = ICON_PANEL_WIDTH;
 
-            if (titleStyle == InformationBoxTitleIconStyle.None)
+            if (this.titleStyle == InformationBoxTitleIconStyle.None)
             {
                 ShowIcon = false;
                 Icon = Properties.Resources.blank;
             }
-            else if (titleStyle == InformationBoxTitleIconStyle.SameAsBox)
+            else if (this.titleStyle == InformationBoxTitleIconStyle.SameAsBox)
             {
-                if (iconType == InformationBoxIconType.Internal)
+                if (this.iconType == InformationBoxIconType.Internal)
                 {
-                    Icon = IconHelper.FromEnum(icon);
+                    Icon = IconHelper.FromEnum(this.icon);
                 }
                 else
                 {
-                    Icon = customIcon;
+                    Icon = this.customIcon;
                 }
             }
-            else if (titleStyle == InformationBoxTitleIconStyle.Custom)
+            else if (this.titleStyle == InformationBoxTitleIconStyle.Custom)
             {
-                Icon = titleIcon;
+                Icon = this.titleIcon;
             }
         }
 
@@ -1180,9 +1359,9 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         /// </summary>
         private void SetOrder()
         {
-            if (order == InformationBoxOrder.TopMost)
+            if (this.order == InformationBoxOrder.TopMost)
             {
-                TopMost = true;
+                this.TopMost = true;
             }
         }
 
@@ -1195,32 +1374,33 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         /// </summary>
         private void SetText()
         {
-            kwlMessageText.Text = kwlMessageText.Text.Replace("\n\r", "\n");
-            kwlMessageText.Text = kwlMessageText.Text.Replace("\n", Environment.NewLine);
+            this.kwlMessageText.Text = this.kwlMessageText.Text.Replace("\n\r", "\n");
+            this.kwlMessageText.Text = this.kwlMessageText.Text.Replace("\n", Environment.NewLine);
 
             Screen currentScreen = Screen.FromControl(this);
             int screenWidth = currentScreen.WorkingArea.Width;
 
-            if (autoSizeMode == InformationBoxAutoSizeMode.None)
+            if (this.autoSizeMode == InformationBoxAutoSizeMode.None)
             {
-                kwlMessageText.Size = measureGraphics.MeasureString(kwlMessageText.Text, kwlMessageText.Font, screenWidth / 2).ToSize();
+                //this.kwlMessageText.WordWrap = true;
+                this.kwlMessageText.Size = this.measureGraphics.MeasureString(this.kwlMessageText.Text, this.kwlMessageText.Font, screenWidth / 2).ToSize();
             }
             else
             {
-                internalText = new StringBuilder(kwlMessageText.Text);
+                this.internalText = new StringBuilder(this.kwlMessageText.Text);
 
-                if (autoSizeMode == InformationBoxAutoSizeMode.MinimumHeight)
+                if (this.autoSizeMode == InformationBoxAutoSizeMode.MinimumHeight)
                 {
                     // Remove line breaks.
-                    internalText = internalText.Replace(Environment.NewLine, " ");
+                    this.internalText = this.internalText.Replace(Environment.NewLine, " ");
                     Regex splitter = new Regex(@"(?<sentence>.+?(\. |$))", RegexOptions.Compiled);
-                    MatchCollection sentences = splitter.Matches(internalText.ToString());
+                    MatchCollection sentences = splitter.Matches(this.internalText.ToString());
                     StringBuilder formattedText = new StringBuilder();
                     int currentWidth = 0;
 
                     foreach (Match sentence in sentences)
                     {
-                        int sentenceLength = (int)measureGraphics.MeasureString(sentence.Value, kwlMessageText.Font).Width;
+                        int sentenceLength = (int)this.measureGraphics.MeasureString(sentence.Value, kwlMessageText.Font).Width;
                         if (currentWidth != 0 && (sentenceLength + currentWidth) > (screenWidth - 50))
                         {
                             formattedText.Append(Environment.NewLine);
@@ -1231,24 +1411,24 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
                         formattedText.Append(sentence.Value);
                     }
 
-                    internalText = formattedText;
+                    this.internalText = formattedText;
                 }
-                else if (autoSizeMode == InformationBoxAutoSizeMode.MinimumWidth)
+                else if (this.autoSizeMode == InformationBoxAutoSizeMode.MinimumWidth)
                 {
-                    internalText.Replace(". ", "." + Environment.NewLine);
-                    internalText.Replace("? ", "?" + Environment.NewLine);
-                    internalText.Replace("! ", "!" + Environment.NewLine);
-                    internalText.Replace(": ", ":" + Environment.NewLine);
-                    internalText.Replace(") ", ")" + Environment.NewLine);
-                    internalText.Replace(", ", "," + Environment.NewLine);
+                    this.internalText.Replace(". ", "." + Environment.NewLine);
+                    this.internalText.Replace("? ", "?" + Environment.NewLine);
+                    this.internalText.Replace("! ", "!" + Environment.NewLine);
+                    this.internalText.Replace(": ", ":" + Environment.NewLine);
+                    this.internalText.Replace(") ", ")" + Environment.NewLine);
+                    this.internalText.Replace(", ", "," + Environment.NewLine);
                 }
 
-                kwlMessageText.Text = internalText.ToString();
+                this.kwlMessageText.Text = this.internalText.ToString();
 
-                kwlMessageText.Size = measureGraphics.MeasureString(kwlMessageText.Text, kwlMessageText.Font).ToSize();
+                this.kwlMessageText.Size = this.measureGraphics.MeasureString(this.kwlMessageText.Text, this.kwlMessageText.Font).ToSize();
             }
 
-            kwlMessageText.Width += BORDER_PADDING;
+            this.kwlMessageText.Width += BORDER_PADDING;
         }
 
         #endregion Text
@@ -1261,79 +1441,87 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         private void SetButtons()
         {
             // Abort button
-            if (buttons == InformationBoxButtons.AbortRetryIgnore)
+            if (this.buttons == InformationBoxButtons.AbortRetryIgnore)
             {
-                AddButton("Abort", Properties.Resources.AbortText);
+                this.AddButton("Abort", Properties.Resources.AbortText);
             }
 
             // Ok
-            if (buttons == InformationBoxButtons.OK ||
-                buttons == InformationBoxButtons.OKCancel ||
-                buttons == InformationBoxButtons.OKCancelUser1)
+            if (this.buttons == InformationBoxButtons.OK ||
+                this.buttons == InformationBoxButtons.OKCancel ||
+                this.buttons == InformationBoxButtons.OKCancelUser1)
             {
-                AddButton("OK", Properties.Resources.OkText);
+                this.AddButton("OK", Properties.Resources.OkText);
             }
 
             // Yes
-            if (buttons == InformationBoxButtons.YesNo ||
-                buttons == InformationBoxButtons.YesNoCancel ||
-                buttons == InformationBoxButtons.YesNoUser1)
+            if (this.buttons == InformationBoxButtons.YesNo ||
+                this.buttons == InformationBoxButtons.YesNoCancel ||
+                this.buttons == InformationBoxButtons.YesNoUser1)
             {
-                AddButton("Yes", Properties.Resources.YesText);
+                this.AddButton("Yes", Properties.Resources.YesText);
             }
 
             // Retry
-            if (buttons == InformationBoxButtons.AbortRetryIgnore ||
-                buttons == InformationBoxButtons.RetryCancel)
+            if (this.buttons == InformationBoxButtons.AbortRetryIgnore ||
+                this.buttons == InformationBoxButtons.RetryCancel)
             {
-                AddButton("Retry", Properties.Resources.RetryText);
+                this.AddButton("Retry", Properties.Resources.RetryText);
             }
 
             // No
-            if (buttons == InformationBoxButtons.YesNo ||
-                buttons == InformationBoxButtons.YesNoCancel ||
-                buttons == InformationBoxButtons.YesNoUser1)
+            if (this.buttons == InformationBoxButtons.YesNo ||
+                this.buttons == InformationBoxButtons.YesNoCancel ||
+                this.buttons == InformationBoxButtons.YesNoUser1)
             {
-                AddButton("No", Properties.Resources.NoText);
+                this.AddButton("No", Properties.Resources.NoText);
             }
 
             // Cancel
-            if (buttons == InformationBoxButtons.OKCancel ||
-                buttons == InformationBoxButtons.OKCancelUser1 ||
-                buttons == InformationBoxButtons.RetryCancel ||
-                buttons == InformationBoxButtons.YesNoCancel)
+            if (this.buttons == InformationBoxButtons.OKCancel ||
+                this.buttons == InformationBoxButtons.OKCancelUser1 ||
+                this.buttons == InformationBoxButtons.RetryCancel ||
+                this.buttons == InformationBoxButtons.YesNoCancel)
             {
-                AddButton("Cancel", Properties.Resources.CancelText);
+                this.AddButton("Cancel", Properties.Resources.CancelText);
             }
 
             // Ignore
-            if (buttons == InformationBoxButtons.AbortRetryIgnore)
+            if (this.buttons == InformationBoxButtons.AbortRetryIgnore)
             {
-                AddButton("Ignore", Properties.Resources.IgnoreText);
+                this.AddButton("Ignore", Properties.Resources.IgnoreText);
             }
 
             // User1
-            if (buttons == InformationBoxButtons.OKCancelUser1 ||
-                buttons == InformationBoxButtons.User1User2 ||
-                buttons == InformationBoxButtons.YesNoUser1 ||
-                buttons == InformationBoxButtons.User1)
+            if (this.buttons == InformationBoxButtons.OKCancelUser1 ||
+                this.buttons == InformationBoxButtons.User1User2User3 ||
+                this.buttons == InformationBoxButtons.User1User2 ||
+                this.buttons == InformationBoxButtons.YesNoUser1 ||
+                this.buttons == InformationBoxButtons.User1)
             {
-                AddButton("User1", buttonUser1Text);
+                this.AddButton("User1", this.buttonUser1Text);
             }
 
             // User2
-            if (buttons == InformationBoxButtons.User1User2)
+            if (this.buttons == InformationBoxButtons.User1User2 ||
+                this.buttons == InformationBoxButtons.User1User2User3)
             {
-                AddButton("User2", buttonUser2Text);
+                this.AddButton("User2", this.buttonUser2Text);
+            }
+
+            // User3
+            if (this.buttons == InformationBoxButtons.User1User2User3)
+            {
+                this.AddButton("User3", this.buttonUser3Text);
             }
 
             // Help button is displayed when asked or when a help file name exists
-            if (showHelpButton || !String.IsNullOrEmpty(helpFile))
+            if (this.showHelpButton || !String.IsNullOrEmpty(this.helpFile))
             {
-                AddButton("Help", Properties.Resources.HelpText);
+                this.AddButton("Help", Properties.Resources.HelpText);
             }
 
-            SetButtonsSize();
+            this.SetButtonsSize();
         }
 
         /// <summary>
@@ -1345,21 +1533,21 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             int maxSize = 0;
 
             // Measures the width of each button
-            foreach (Control ctrl in kpnlButtons.Controls)
+            foreach (Control ctrl in this.kpnlButtons.Controls)
             {
-                maxSize = Math.Max(Convert.ToInt32(measureGraphics.MeasureString(ctrl.Text, ctrl.Font).Width + 40), maxSize);
+                maxSize = Math.Max(Convert.ToInt32(this.measureGraphics.MeasureString(ctrl.Text, ctrl.Font).Width + 40), maxSize);
             }
 
-            foreach (Control ctrl in kpnlButtons.Controls)
+            foreach (Control ctrl in this.kpnlButtons.Controls)
             {
-                if (style == InformationBoxStyle.Standard)
+                if (this.style == InformationBoxStyle.Standard)
                 {
                     ctrl.Size = new Size(maxSize, 23);
                     ctrl.Top = 5;
                 }
-                else if (style == InformationBoxStyle.Modern)
+                else if (this.style == InformationBoxStyle.Modern)
                 {
-                    ctrl.Size = new Size(maxSize, kpnlButtons.Height);
+                    ctrl.Size = new Size(maxSize, this.kpnlButtons.Height);
                     ctrl.Top = 0;
                 }
             }
@@ -1374,26 +1562,27 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         {
             Control buttonToAdd;
 
-            if (style == InformationBoxStyle.Modern)
+            if (this.style == InformationBoxStyle.Modern)
             {
                 buttonToAdd = new KryptonButton();
                 //(buttonToAdd as KryptonButton).PersistantMode = false;
-                (buttonToAdd as KryptonButton).Click += Button_Click;
+                (buttonToAdd as KryptonButton).Click += this.Button_Click;
             }
             else
             {
                 buttonToAdd = new KryptonButton();
-                (buttonToAdd as KryptonButton).Click += Button_Click;
+                (buttonToAdd as KryptonButton).Click += this.Button_Click;
             }
 
+            buttonToAdd.Font = SystemFonts.MessageBoxFont;
             buttonToAdd.Name = name;
             buttonToAdd.Text = text;
-            kpnlButtons.Controls.Add(buttonToAdd);
+            this.kpnlButtons.Controls.Add(buttonToAdd);
         }
 
         #endregion Buttons
 
-        #endregion
+        #endregion Box initialization
 
         #region Button click
 
@@ -1407,84 +1596,90 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             switch (senderControl.Name)
             {
                 case "Abort":
-                    result = InformationBoxResult.Abort;
+                    this.result = InformationBoxResult.Abort;
                     break;
                 case "OK":
-                    result = InformationBoxResult.OK;
+                    this.result = InformationBoxResult.OK;
                     break;
                 case "Yes":
-                    result = InformationBoxResult.Yes;
+                    this.result = InformationBoxResult.Yes;
                     break;
                 case "Retry":
-                    result = InformationBoxResult.Retry;
+                    this.result = InformationBoxResult.Retry;
                     break;
                 case "No":
-                    result = InformationBoxResult.No;
+                    this.result = InformationBoxResult.No;
                     break;
                 case "Cancel":
-                    result = InformationBoxResult.Cancel;
+                    this.result = InformationBoxResult.Cancel;
                     break;
                 case "Ignore":
-                    result = InformationBoxResult.Ignore;
+                    this.result = InformationBoxResult.Ignore;
                     break;
                 case "User1":
-                    result = InformationBoxResult.User1;
+                    this.result = InformationBoxResult.User1;
                     break;
                 case "User2":
-                    result = InformationBoxResult.User2;
+                    this.result = InformationBoxResult.User2;
+                    break;
+                case "User3":
+                    this.result = InformationBoxResult.User3;
                     break;
                 default:
-                    result = InformationBoxResult.None;
+                    this.result = InformationBoxResult.None;
                     break;
             }
 
             if (senderControl.Name.Equals("Help"))
             {
-                OpenHelp();
+                this.OpenHelp();
             }
             else
             {
                 DialogResult = DialogResult.OK;
-                if (behavior == InformationBoxBehavior.Modeless)
+                if (this.behavior == InformationBoxBehavior.Modeless)
                 {
                     Close();
                 }
             }
         }
-        #endregion
+
+        #endregion Button click
 
         #region Help
+
         /// <summary>
         /// Opens the help.
         /// </summary>
         private void OpenHelp()
         {
             // If there is an active form
-            if (null != activeForm)
+            if (null != this.activeForm)
             {
-                MethodInfo met = activeForm.GetType().GetMethod("OnHelpRequested", BindingFlags.NonPublic | BindingFlags.InvokeMethod | BindingFlags.FlattenHierarchy | BindingFlags.Instance);
+                MethodInfo met = this.activeForm.GetType().GetMethod("OnHelpRequested", BindingFlags.NonPublic | BindingFlags.InvokeMethod | BindingFlags.FlattenHierarchy | BindingFlags.Instance);
                 if (null != met)
                 {
                     // Call for help on the active form.
-                    met.Invoke(activeForm, new object[] { new HelpEventArgs(MousePosition) });
+                    met.Invoke(this.activeForm, new object[] { new HelpEventArgs(MousePosition) });
                 }
             }
 
             // If a help file is specified
-            if (!String.IsNullOrEmpty(helpFile))
+            if (!String.IsNullOrEmpty(this.helpFile))
             {
                 // If no topic is specified
-                if (String.IsNullOrEmpty(helpTopic))
+                if (String.IsNullOrEmpty(this.helpTopic))
                 {
-                    Help.ShowHelp(activeForm, helpFile, helpNavigator);
+                    Help.ShowHelp(this.activeForm, this.helpFile, this.helpNavigator);
                 }
                 else
                 {
-                    Help.ShowHelp(activeForm, helpFile, helpTopic);
+                    Help.ShowHelp(this.activeForm, this.helpFile, this.helpTopic);
                 }
             }
         }
-        #endregion
+
+        #endregion Help
 
         #region Event handling
 
@@ -1528,7 +1723,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         {
             if (this.style == InformationBoxStyle.Modern)
             {
-                ControlPaint.DrawBorder(e.Graphics, kpnlContent.ClientRectangle, Color.Black, ButtonBorderStyle.Solid);
+                ControlPaint.DrawBorder(e.Graphics, this.kpnlContent.ClientRectangle, Color.Black, ButtonBorderStyle.Solid);
             }
         }
 
@@ -1598,44 +1793,44 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void TmrAutoClose_Tick(object sender, EventArgs e)
         {
-            if (elapsedTime == autoClose.Seconds)
+            if (this.elapsedTime == this.autoClose.Seconds)
             {
-                tmrAutoClose.Stop();
+                this.tmrAutoClose.Stop();
 
-                switch (autoClose.Mode)
+                switch (this.autoClose.Mode)
                 {
                     case AutoCloseDefinedParameters.Button:
-                        if (autoClose.DefaultButton == InformationBoxDefaultButton.Button1 && kpnlButtons.Controls.Count > 0)
+                        if (this.autoClose.DefaultButton == InformationBoxDefaultButton.Button1 && this.kpnlButtons.Controls.Count > 0)
                         {
-                            HandleButton(kpnlButtons.Controls[0]);
+                            this.HandleButton(this.kpnlButtons.Controls[0]);
                         }
-                        else if (autoClose.DefaultButton == InformationBoxDefaultButton.Button2 && kpnlButtons.Controls.Count > 1)
+                        else if (this.autoClose.DefaultButton == InformationBoxDefaultButton.Button2 && this.kpnlButtons.Controls.Count > 1)
                         {
-                            HandleButton(kpnlButtons.Controls[1]);
+                            this.HandleButton(this.kpnlButtons.Controls[1]);
                         }
-                        else if (autoClose.DefaultButton == InformationBoxDefaultButton.Button3 && kpnlButtons.Controls.Count > 2)
+                        else if (this.autoClose.DefaultButton == InformationBoxDefaultButton.Button3 && this.kpnlButtons.Controls.Count > 2)
                         {
-                            HandleButton(kpnlButtons.Controls[2]);
+                            this.HandleButton(this.kpnlButtons.Controls[2]);
                         }
 
                         return;
                     case AutoCloseDefinedParameters.TimeOnly:
-                        if (defaultButton == InformationBoxDefaultButton.Button1 && kpnlButtons.Controls.Count > 0)
+                        if (this.defaultButton == InformationBoxDefaultButton.Button1 && this.kpnlButtons.Controls.Count > 0)
                         {
-                            HandleButton(kpnlButtons.Controls[0]);
+                            this.HandleButton(this.kpnlButtons.Controls[0]);
                         }
-                        else if (defaultButton == InformationBoxDefaultButton.Button2 && kpnlButtons.Controls.Count > 1)
+                        else if (this.defaultButton == InformationBoxDefaultButton.Button2 && this.kpnlButtons.Controls.Count > 1)
                         {
-                            HandleButton(kpnlButtons.Controls[1]);
+                            this.HandleButton(this.kpnlButtons.Controls[1]);
                         }
-                        else if (defaultButton == InformationBoxDefaultButton.Button3 && kpnlButtons.Controls.Count > 2)
+                        else if (this.defaultButton == InformationBoxDefaultButton.Button3 && this.kpnlButtons.Controls.Count > 2)
                         {
-                            HandleButton(kpnlButtons.Controls[2]);
+                            this.HandleButton(this.kpnlButtons.Controls[2]);
                         }
 
                         return;
                     case AutoCloseDefinedParameters.Result:
-                        result = autoClose.Result;
+                        this.result = this.autoClose.Result;
                         DialogResult = DialogResult.OK;
                         return;
                     default:
@@ -1645,34 +1840,34 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             else
             {
                 Control buttonToUpdate = null;
-                if (autoClose.Mode == AutoCloseDefinedParameters.Button)
+                if (this.autoClose.Mode == AutoCloseDefinedParameters.Button)
                 {
-                    if (autoClose.DefaultButton == InformationBoxDefaultButton.Button1 && kpnlButtons.Controls.Count > 0)
+                    if (this.autoClose.DefaultButton == InformationBoxDefaultButton.Button1 && this.kpnlButtons.Controls.Count > 0)
                     {
-                        buttonToUpdate = kpnlButtons.Controls[0];
+                        buttonToUpdate = this.kpnlButtons.Controls[0];
                     }
-                    else if (autoClose.DefaultButton == InformationBoxDefaultButton.Button2 && kpnlButtons.Controls.Count > 1)
+                    else if (this.autoClose.DefaultButton == InformationBoxDefaultButton.Button2 && this.kpnlButtons.Controls.Count > 1)
                     {
-                        buttonToUpdate = kpnlButtons.Controls[1];
+                        buttonToUpdate = this.kpnlButtons.Controls[1];
                     }
-                    else if (autoClose.DefaultButton == InformationBoxDefaultButton.Button3 && kpnlButtons.Controls.Count > 2)
+                    else if (this.autoClose.DefaultButton == InformationBoxDefaultButton.Button3 && this.kpnlButtons.Controls.Count > 2)
                     {
-                        buttonToUpdate = kpnlButtons.Controls[2];
+                        buttonToUpdate = this.kpnlButtons.Controls[2];
                     }
                 }
                 else
                 {
-                    if (defaultButton == InformationBoxDefaultButton.Button1 && kpnlButtons.Controls.Count > 0)
+                    if (this.defaultButton == InformationBoxDefaultButton.Button1 && this.kpnlButtons.Controls.Count > 0)
                     {
-                        buttonToUpdate = kpnlButtons.Controls[0];
+                        buttonToUpdate = this.kpnlButtons.Controls[0];
                     }
-                    else if (defaultButton == InformationBoxDefaultButton.Button2 && kpnlButtons.Controls.Count > 1)
+                    else if (this.defaultButton == InformationBoxDefaultButton.Button2 && this.kpnlButtons.Controls.Count > 1)
                     {
-                        buttonToUpdate = kpnlButtons.Controls[1];
+                        buttonToUpdate = this.kpnlButtons.Controls[1];
                     }
-                    else if (defaultButton == InformationBoxDefaultButton.Button3 && kpnlButtons.Controls.Count > 2)
+                    else if (this.defaultButton == InformationBoxDefaultButton.Button3 && this.kpnlButtons.Controls.Count > 2)
                     {
-                        buttonToUpdate = kpnlButtons.Controls[2];
+                        buttonToUpdate = this.kpnlButtons.Controls[2];
                     }
                 }
 
@@ -1685,11 +1880,11 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
                         KryptonButton button = (KryptonButton)buttonToUpdate;
                         if (extractLabel.IsMatch(button.Text))
                         {
-                            button.Text = String.Format(CultureInfo.InvariantCulture, "{0} ({1})", button.Text.Substring(0, button.Text.LastIndexOf(" (", StringComparison.OrdinalIgnoreCase)), autoClose.Seconds - elapsedTime);
+                            button.Text = String.Format(CultureInfo.InvariantCulture, "{0} ({1})", button.Text.Substring(0, button.Text.LastIndexOf(" (", StringComparison.OrdinalIgnoreCase)), this.autoClose.Seconds - this.elapsedTime);
                         }
                         else
                         {
-                            button.Text = String.Format(CultureInfo.InvariantCulture, "{0} ({1})", button.Text, autoClose.Seconds - elapsedTime);
+                            button.Text = String.Format(CultureInfo.InvariantCulture, "{0} ({1})", button.Text, this.autoClose.Seconds - this.elapsedTime);
                         }
                     }
                     else if (buttonToUpdate is KryptonButton)
@@ -1697,20 +1892,19 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
                         KryptonButton button = (KryptonButton)buttonToUpdate;
                         if (extractLabel.IsMatch(button.Text))
                         {
-                            button.Text = String.Format(CultureInfo.InvariantCulture, "{0} ({1})", button.Text.Substring(0, button.Text.LastIndexOf(" (", StringComparison.OrdinalIgnoreCase)), autoClose.Seconds - elapsedTime);
+                            button.Text = String.Format(CultureInfo.InvariantCulture, "{0} ({1})", button.Text.Substring(0, button.Text.LastIndexOf(" (", StringComparison.OrdinalIgnoreCase)), this.autoClose.Seconds - this.elapsedTime);
                         }
                         else
                         {
-                            button.Text = String.Format(CultureInfo.InvariantCulture, "{0} ({1})", button.Text, autoClose.Seconds - elapsedTime);
+                            button.Text = String.Format(CultureInfo.InvariantCulture, "{0} ({1})", button.Text, this.autoClose.Seconds - this.elapsedTime);
                         }
                     }
                 }
             }
 
-            elapsedTime++;
+            this.elapsedTime++;
         }
 
         #endregion Event handling
-
     }
 }
