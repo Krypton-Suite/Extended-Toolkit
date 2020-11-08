@@ -1,10 +1,9 @@
-﻿#region License
+﻿#region BSD License
 /*
- * ImageCombo Control is developed by Niels Penneman
- * All credit goes to him for this control
- * http://www.codeproject.com/cs/combobox/ImageCombo_NET.asp
- * 
-*/
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ */
 #endregion
 
 using System.Drawing;
