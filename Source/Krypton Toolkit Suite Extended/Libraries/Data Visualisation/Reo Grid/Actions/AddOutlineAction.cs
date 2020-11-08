@@ -1,19 +1,10 @@
-﻿/*****************************************************************************
- * 
- * ReoGrid - Opensource .NET Spreadsheet Control
- * 
- * https://reogrid.net/
- *
- * THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY
- * KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
- * IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR
- * PURPOSE.
- *
- * Thank you to all contributors!
- * 
- * (c) 2012-2020 Jingwood, unvell.com <jingwood at unvell.com>
- * 
- ****************************************************************************/
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ */
+#endregion
 
 #if OUTLINE
 

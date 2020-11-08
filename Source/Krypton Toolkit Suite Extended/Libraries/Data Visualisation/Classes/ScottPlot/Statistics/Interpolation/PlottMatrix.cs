@@ -1,9 +1,10 @@
-﻿/*
- *  Work in this file is derived from code originally written by Hans-Peter Moser:
- *  http://www.mosismath.com/Basics/Basics.html
- *  http://www.mosismath.com/Matrix_Gauss/MatrixGauss.html
- *  It is included in ScottPlot under a MIT license with permission from the original author.
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
  */
+#endregion
 
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
 {
