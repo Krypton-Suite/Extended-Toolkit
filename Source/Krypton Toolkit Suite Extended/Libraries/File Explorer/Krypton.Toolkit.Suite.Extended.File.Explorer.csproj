@@ -6,7 +6,7 @@
     <RootNamespace>Krypton.Toolkit.Extended.File.Explorer</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
     <AssemblyVersion>5.5500.2010</AssemblyVersion>
-    <FileVersion>5.550.2011</FileVersion>
+    <FileVersion>5.550.2012</FileVersion>
   </PropertyGroup>
 
   <!--<PropertyGroup>
@@ -17,7 +17,7 @@
     <PackagePath></PackagePath>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Version>5.550.2011</Version>
+    <Version>5.550.2012</Version>
     <OutputType>Library</OutputType>
     <RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
   </PropertyGroup>-->

@@ -12,6 +12,10 @@
     <DocumentationFile>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Floating.Toolbars\Krypton.Toolkit.Suite.Extended.Floating.Toolbars.xml</DocumentationFile>
     <OutputPath>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Floating.Toolbars\</OutputPath>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2011" />
+  </ItemGroup>
   
   <PropertyGroup>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -19,35 +23,25 @@
     <RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
   </PropertyGroup>
 
-  <!--Stable package configuration-->
+  <!--Stable package configuration-
   <PropertyGroup>
     <PackageId>Krypton.Toolkit.Suite.Extended.Floating.Toolbars</PackageId>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Stable</PackageOutputPath>
     <PackageIconUrl>https://tinyurl.com/KryptonExtendedToolkitIcon</PackageIconUrl>
-  </PropertyGroup>
+  </PropertyGroup>-->
 
-  <!--Canary package configuration-
+  <!--Canary package configuration-->
   <PropertyGroup>
     <PackageId>Krypton.Toolkit.Suite.Extended.Floating.Toolbars.Canary</PackageId>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Canary</PackageOutputPath>
     <PackageIconUrl>https://tinyurl.com/KryptonToolkitCanaryIcon</PackageIconUrl>
-  </PropertyGroup>-->
-
-  <!--Stable NuGet packages-->
-  <ItemGroup>
-    <PackageReference Include="Krypton.Toolkit" Version="5.550.2011" />
-  </ItemGroup>
-
-  <!--Canary NuGet package configuration-
-  <ItemGroup>
-    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2008" />
-  </ItemGroup>-->
+  </PropertyGroup>
 
   <!--Version configuration-->
   <PropertyGroup>
-    <AssemblyVersion>5.550.2011</AssemblyVersion>
-    <FileVersion>5.550.2011</FileVersion>
-    <Version>5.550.2011</Version>
+    <AssemblyVersion>5.550.2012</AssemblyVersion>
+    <FileVersion>5.550.2012</FileVersion>
+    <Version>5.550.2012</Version>
   </PropertyGroup>
 
 </Project>

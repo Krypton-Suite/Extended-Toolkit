@@ -22,63 +22,24 @@
     <RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
   </PropertyGroup>
 
-  <!--Stable package configuration-->
+  <!--Stable package configuration-
   <PropertyGroup>
     <PackageId>Krypton.Toolkit.Suite.Extended.Outlook.Grid</PackageId>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Stable</PackageOutputPath>
     <PackageIconUrl>https://tinyurl.com/KryptonExtendedToolkitIcon</PackageIconUrl>
-  </PropertyGroup>
+  </PropertyGroup>-->
 
-  <!--Canary package configuration-
+  <!--Canary package configuration-->
   <PropertyGroup>
     <PackageId>Krypton.Toolkit.Suite.Extended.Outlook.Grid.Canary</PackageId>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Canary</PackageOutputPath>
     <PackageIconUrl>https://tinyurl.com/KryptonToolkitCanaryIcon</PackageIconUrl>
-  </PropertyGroup>-->
-
-  <!--Stable NuGet package configuration-->
-  <ItemGroup>
-    <PackageReference Include="Krypton.Toolkit" Version="5.550.2011" />
-  </ItemGroup>
-
-  <!--Canary NuGet package configuration-
-  <ItemGroup>
-    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2008" />
-  </ItemGroup>-->
+  </PropertyGroup>
 
   <!--Version configuration-->
   <PropertyGroup>
-    <AssemblyVersion>5.550.2011</AssemblyVersion>
-    <FileVersion>5.550.2011</FileVersion>
-    <Version>5.550.2011</Version>
+    <AssemblyVersion>5.550.2102</AssemblyVersion>
+    <FileVersion>5.550.2102</FileVersion>
+    <Version>5.550.2102</Version>
   </PropertyGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Extended Dialogs\Krypton.Toolkit.Suite.Extended.Dialogs.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="Krypton.Toolkit.Suite.Extended.Base">
-      <HintPath>..\Krypton Toolkit Suite Extended Base\obj\Debug\net45\Krypton.Toolkit.Suite.Extended.Base.dll</HintPath>
-    </Reference>
-    <Reference Include="Krypton.Toolkit.Suite.Extended.Standard.Controls">
-      <HintPath>..\Extended Standard Controls\obj\Debug\net45\Krypton.Toolkit.Suite.Extended.Standard.Controls.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Update="Properties\Resources.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Update="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
-  
 </Project>

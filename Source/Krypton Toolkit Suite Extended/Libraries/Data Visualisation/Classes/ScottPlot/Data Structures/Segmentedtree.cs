@@ -41,7 +41,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
             }
             catch
             {
-                throw new ArgumentOutOfRangeException("Unsupported data type, provide convertable to double data types");
+                throw new ArgumentOutOfRangeException("Unsupported data type, provide convertible to double data types");
             }
             InitExp();
         }
@@ -50,6 +50,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
         {
             UpdateTreesInBackground();
         }
+
 
         public async Task SetSourceAsync(T[] data)
         {

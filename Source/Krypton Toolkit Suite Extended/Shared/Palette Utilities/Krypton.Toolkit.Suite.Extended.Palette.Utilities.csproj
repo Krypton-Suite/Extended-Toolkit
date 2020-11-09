@@ -16,25 +16,25 @@
     <PackageLicenseFile></PackageLicenseFile>
   </PropertyGroup>
 
-  <!--Stable package configuration-->
+  <!--Stable package configuration-
   <PropertyGroup>
     <PackageId>Krypton.Toolkit.Suite.Extended.Palette.Utilities</PackageId>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Stable</PackageOutputPath>
     <PackageIconUrl>https://tinyurl.com/KryptonExtendedToolkitIcon</PackageIconUrl>
-  </PropertyGroup>
+  </PropertyGroup>-->
 
-  <!--Canary package configuration-
+  <!--Canary package configuration-->
   <PropertyGroup>
     <PackageId>Krypton.Toolkit.Suite.Extended.Palette.Utilities.Canary</PackageId>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Canary</PackageOutputPath>
     <PackageIconUrl>https://tinyurl.com/KryptonToolkitCanaryIcon</PackageIconUrl>
-  </PropertyGroup>-->
+  </PropertyGroup>
 
   <!--Version configuration-->
   <PropertyGroup>
-    <AssemblyVersion>5.550.2011</AssemblyVersion>
-    <FileVersion>5.550.2011</FileVersion>
-    <Version>5.550.2011</Version>
+    <AssemblyVersion>5.550.2012</AssemblyVersion>
+    <FileVersion>5.550.2012</FileVersion>
+    <Version>5.550.2012</Version>
   </PropertyGroup>
 
   <PropertyGroup>

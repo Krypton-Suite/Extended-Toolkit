@@ -5,7 +5,7 @@
     <TargetFrameworks>net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows</TargetFrameworks>
     <RootNamespace>Krypton.Toolkit.Extended.Global.Utilities</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyVersion>5.550.2011</AssemblyVersion>
+    <AssemblyVersion>5.550.2012</AssemblyVersion>
     <OutputType>Library</OutputType>
   </PropertyGroup>
 
@@ -16,35 +16,35 @@
     <RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
   </PropertyGroup>
 
-  <!--Stable package configuration-->
+  <!--Stable package configuration-
   <PropertyGroup>
     <PackageId>Krypton.Toolkit.Suite.Extended.Global.Utilities</PackageId>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Stable</PackageOutputPath>
     <PackageIconUrl>https://tinyurl.com/KryptonExtendedToolkitIcon</PackageIconUrl>
-  </PropertyGroup>
+  </PropertyGroup>-->
 
-  <!--Canary package configuration-
+  <!--Canary package configuration-->
   <PropertyGroup>
     <PackageId>Krypton.Toolkit.Suite.Extended.Global.Utilities.Canary</PackageId>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Canary</PackageOutputPath>
     <PackageIconUrl>https://tinyurl.com/KryptonToolkitCanaryIcon</PackageIconUrl>
-  </PropertyGroup>-->
+  </PropertyGroup>
 
-  <!--Stable NuGet package configuration-->
+  <!--Stable NuGet package configuration-
   <ItemGroup>
     <PackageReference Include="Krypton.Toolkit" Version="5.550.2011" />
-  </ItemGroup>
-
-  <!--Canary NuGet package configuration-
-  <ItemGroup>
-    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2008" />
   </ItemGroup>-->
+
+  <!--Canary NuGet package configuration-->
+  <ItemGroup>
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2011" />
+  </ItemGroup>
 
   <!--Version configuration-->
   <PropertyGroup>
-    <AssemblyVersion>5.550.2011</AssemblyVersion>
-    <FileVersion>5.550.2011</FileVersion>
-    <Version>5.550.2011</Version>
+    <AssemblyVersion>5.550.2012</AssemblyVersion>
+    <FileVersion>5.550.2012</FileVersion>
+    <Version>5.550.2012</Version>
   </PropertyGroup>
 
   <ItemGroup>
