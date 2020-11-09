@@ -43,7 +43,13 @@
 
 =======
 
-## 2021-01-0x - Build 2101 - January 2021
+## 2021-02-01 - Build 2102 - February 2021
+* New `Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box` NuGet package
+* License headers for code files
+
+=======
+
+## 2021-01-04 - Build 2101 - January 2021
 * Rounded controls are now in a separate package `Krypton.Toolkit.Suite.Extended.Rounded.Controls`, rather than the `Base` package
 * Added [Information Box](https://github.com/JohannBlais/InformationBox), by [Johann Blais](https://github.com/JohannBlais)
 * New 'Alert' toast notification. Use the `Alert` class in `Notifications` to activate it
