@@ -1,8 +1,11 @@
-﻿/*
- *  Work in this file is derived from code originally written by Hans-Peter Moser:
- *  http://www.mosismath.com/AngleSplines/EndSlopeSplines.html
- *  It is included in ScottPlot under a MIT license with permission from the original author.
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
  */
+#endregion
+
 using System;
 
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation

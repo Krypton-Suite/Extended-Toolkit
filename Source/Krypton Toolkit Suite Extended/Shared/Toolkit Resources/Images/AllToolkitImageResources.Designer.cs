@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Krypton.Extended.Suite.Toolkit.Resources.Images {
+namespace Krypton.Extended.Toolkit.Resources.Images {
     using System;
     
     
@@ -3886,6 +3886,16 @@ namespace Krypton.Extended.Suite.Toolkit.Resources.Images {
         internal static System.Drawing.Bitmap Warning_32_x_32 {
             get {
                 object obj = ResourceManager.GetObject("Warning_32_x_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Warning_64_x_58 {
+            get {
+                object obj = ResourceManager.GetObject("Warning_64_x_58", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

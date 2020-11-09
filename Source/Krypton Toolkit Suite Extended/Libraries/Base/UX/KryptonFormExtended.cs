@@ -1,4 +1,12 @@
-﻿using System;
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ */
+#endregion
+
+using System;
 using System.ComponentModel;
 using System.Windows.Forms;
 
@@ -13,7 +21,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
 
         private KryptonFormExtended _nextWindow;
 
-        private KryptonFadeManager _fadeManager;
+        private InternalKryptonFadeManager _fadeManager;
         #endregion
 
         #region Properties

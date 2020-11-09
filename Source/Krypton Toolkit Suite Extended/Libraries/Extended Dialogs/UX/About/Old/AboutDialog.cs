@@ -1,5 +1,6 @@
 ﻿using Krypton.Toolkit.Suite.Extended.Core;
 using System;
+using System.Diagnostics;
 
 namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
@@ -53,6 +54,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.kbtnSystemInformation.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kbtnSystemInformation.TabIndex = 46;
             this.kbtnSystemInformation.Values.Text = "System &Information...";
+            this.kbtnSystemInformation.Click += new System.EventHandler(this.kbtnSystemInformation_Click);
             // 
             // kbtnClose
             // 
@@ -155,6 +157,11 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             Text = $"About { _about.ApplicationName }";
 
             pbxApplicationImage.Image = _about.ApplicationIconImage;
+        }
+
+        private void kbtnSystemInformation_Click(object sender, EventArgs e)
+        {
+            Process.Start("msinfo32.exe");
         }
     }
 }

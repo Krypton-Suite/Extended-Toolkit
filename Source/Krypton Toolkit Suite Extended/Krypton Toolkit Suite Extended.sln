@@ -15,8 +15,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 		..\..\build.proj = ..\..\build.proj
 		..\..\Directory.Build.props = ..\..\Directory.Build.props
-		Directory.Build.props = Directory.Build.props
-		Directory.Build.targets = Directory.Build.targets
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Common", "Shared\Common\Krypton.Toolkit.Suite.Extended.Common.csproj", "{5E8758D3-BE51-474E-9CED-4E55EE1297DF}"
@@ -84,6 +82,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build Tools", "Build Tools"
 	ProjectSection(SolutionItems) = preProject
 		..\..\build-complete.cmd = ..\..\build-complete.cmd
 		..\..\build.cmd = ..\..\build.cmd
+		..\..\build.proj = ..\..\build.proj
 		..\..\pack.cmd = ..\..\pack.cmd
 		..\..\publish.cmd = ..\..\publish.cmd
 		..\..\purge.cmd = ..\..\purge.cmd
@@ -119,11 +118,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Canary", "Canary", "{A1C6A4
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Outlook.Grid", "Libraries\Outlook Grid\Krypton.Toolkit.Suite.Extended.Outlook.Grid.csproj", "{C3A80364-ACFF-4F4A-91C7-660FA4854C8F}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{4D80D7FB-C372-4418-9026-3049D1E058B8}"
-	ProjectSection(SolutionItems) = preProject
-		..\..\Documents\NuGet Package Information.md = ..\..\Documents\NuGet Package Information.md
-		..\..\Documents\Toolkit Examples.md = ..\..\Documents\Toolkit Examples.md
-	EndProjectSection
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Error.Reporting", "Libraries\Error Reporting\Krypton.Toolkit.Suite.Extended.Error.Reporting.csproj", "{674EB91B-7B86-4E88-84DB-CCC400E46F9C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Third Party", "Third Party", "{0E036EC5-549F-405A-82FA-87A03CE379E1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Handlebars.NET", "Third Party\Handlebars.NET\Handlebars.NET.csproj", "{E373AFB9-4138-4E44-A567-DF0237599446}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Palette.Selectors", "Libraries\Palette Selectors\Krypton.Toolkit.Suite.Extended.Palette.Selectors.csproj", "{A2D33ABA-506A-465F-9DC3-84A8FD2E07C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box", "Libraries\Fast Coloured TextBox\Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box.csproj", "{03363F41-A860-475D-B4F1-FFDF38740FA4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -259,6 +262,22 @@ Global
 		{C3A80364-ACFF-4F4A-91C7-660FA4854C8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C3A80364-ACFF-4F4A-91C7-660FA4854C8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C3A80364-ACFF-4F4A-91C7-660FA4854C8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{674EB91B-7B86-4E88-84DB-CCC400E46F9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{674EB91B-7B86-4E88-84DB-CCC400E46F9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{674EB91B-7B86-4E88-84DB-CCC400E46F9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{674EB91B-7B86-4E88-84DB-CCC400E46F9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E373AFB9-4138-4E44-A567-DF0237599446}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E373AFB9-4138-4E44-A567-DF0237599446}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E373AFB9-4138-4E44-A567-DF0237599446}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E373AFB9-4138-4E44-A567-DF0237599446}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2D33ABA-506A-465F-9DC3-84A8FD2E07C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2D33ABA-506A-465F-9DC3-84A8FD2E07C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2D33ABA-506A-465F-9DC3-84A8FD2E07C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2D33ABA-506A-465F-9DC3-84A8FD2E07C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03363F41-A860-475D-B4F1-FFDF38740FA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03363F41-A860-475D-B4F1-FFDF38740FA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03363F41-A860-475D-B4F1-FFDF38740FA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03363F41-A860-475D-B4F1-FFDF38740FA4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -300,6 +319,10 @@ Global
 		{D548C9DB-138F-4480-86A3-884F7258CC4F} = {353629A2-A05E-4D18-8071-5CDF0C2914FC}
 		{A1C6A43B-50D8-4985-A93C-23427DD10A9F} = {353629A2-A05E-4D18-8071-5CDF0C2914FC}
 		{C3A80364-ACFF-4F4A-91C7-660FA4854C8F} = {1F1DCECC-C25F-4E91-9C8A-ECCBB9827BBA}
+		{674EB91B-7B86-4E88-84DB-CCC400E46F9C} = {1F1DCECC-C25F-4E91-9C8A-ECCBB9827BBA}
+		{E373AFB9-4138-4E44-A567-DF0237599446} = {0E036EC5-549F-405A-82FA-87A03CE379E1}
+		{A2D33ABA-506A-465F-9DC3-84A8FD2E07C0} = {1F1DCECC-C25F-4E91-9C8A-ECCBB9827BBA}
+		{03363F41-A860-475D-B4F1-FFDF38740FA4} = {1F1DCECC-C25F-4E91-9C8A-ECCBB9827BBA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9A189168-3746-4F9F-8C61-863D83D8ABD2}
