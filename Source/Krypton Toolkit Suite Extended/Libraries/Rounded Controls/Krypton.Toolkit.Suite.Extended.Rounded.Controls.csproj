@@ -33,7 +33,7 @@
 
   <!--Stable NuGet package configuration-
   <ItemGroup>
-    <PackageReference Include="Krypton.Toolkit" Version="5.550.2101" />
+    <PackageReference Include="Krypton.Toolkit" Version="5.550.2102" />
   </ItemGroup>-->
 
   <!--Canary NuGet package configuration-->
@@ -43,9 +43,9 @@
 
   <!--Version configuration-->
   <PropertyGroup>
-    <AssemblyVersion>5.550.2101</AssemblyVersion>
-    <FileVersion>5.550.2101</FileVersion>
-    <Version>5.550.2101</Version>
+    <AssemblyVersion>5.550.2102</AssemblyVersion>
+    <FileVersion>5.550.2102</FileVersion>
+    <Version>5.550.2102</Version>
   </PropertyGroup>
   
   <ItemGroup>
