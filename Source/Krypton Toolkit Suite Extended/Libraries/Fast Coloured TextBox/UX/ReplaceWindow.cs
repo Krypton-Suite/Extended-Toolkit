@@ -334,7 +334,7 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
         #region Methods
         public List<Range> FindAll(string pattern)
         {
-            RegexOptions opt = kchkMatchCase.Checked ? RegexOptions.None : RegexOptions.IgnoreCase;
+            var opt = kchkMatchCase.Checked ? RegexOptions.None : RegexOptions.IgnoreCase;
 
             if (!kchkUseRegex.Checked)
             {

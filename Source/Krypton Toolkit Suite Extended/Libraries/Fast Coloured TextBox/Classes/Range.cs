@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
 {
@@ -12,7 +12,7 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
     {
         Place start;
         Place end;
-        public readonly FastColoredTextBox tb;
+        public readonly FastColouredTextBox tb;
         int preferedPos = -1;
         int updating = 0;
 
@@ -23,7 +23,7 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
         /// <summary>
         /// Constructor
         /// </summary>
-        public Range(FastColoredTextBox tb)
+        public Range(FastColouredTextBox tb)
         {
             this.tb = tb;
         }
@@ -55,7 +55,7 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
         /// <summary>
         /// Constructor
         /// </summary>
-        public Range(FastColoredTextBox tb, int iStartChar, int iStartLine, int iEndChar, int iEndLine)
+        public Range(FastColouredTextBox tb, int iStartChar, int iStartLine, int iEndChar, int iEndLine)
             : this(tb)
         {
             start = new Place(iStartChar, iStartLine);
@@ -65,7 +65,7 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
         /// <summary>
         /// Constructor
         /// </summary>
-        public Range(FastColoredTextBox tb, Place start, Place end)
+        public Range(FastColouredTextBox tb, Place start, Place end)
             : this(tb)
         {
             this.start = start;
@@ -75,7 +75,7 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
         /// <summary>
         /// Constructor. Creates range of the line
         /// </summary>
-        public Range(FastColoredTextBox tb, int iLine)
+        public Range(FastColouredTextBox tb, int iLine)
             : this(tb)
         {
             start = new Place(0, iLine);

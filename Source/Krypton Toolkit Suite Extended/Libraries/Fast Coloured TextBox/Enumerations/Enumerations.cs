@@ -288,4 +288,21 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
         X64,
         Unknown
     }
+
+    /// <summary>
+    /// Language
+    /// </summary>
+    public enum Language
+    {
+        Custom,
+        CSharp,
+        VB,
+        HTML,
+        XML,
+        SQL,
+        PHP,
+        JS,
+        Lua,
+        JSON
+    }
 }
