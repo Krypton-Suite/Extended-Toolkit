@@ -173,4 +173,119 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
         All = 0xffff
     }
 #endif
+
+    /// <summary>
+    /// Actions for shortcuts
+    /// </summary>
+    public enum FCTBAction
+    {
+        None,
+        AutocompleteMenu,
+        AutoIndentChars,
+        BookmarkLine,
+        ClearHints,
+        ClearWordLeft,
+        ClearWordRight,
+        CommentSelected,
+        Copy,
+        Cut,
+        DeleteCharRight,
+        FindChar,
+        FindDialog,
+        FindNext,
+        GoDown,
+        GoDownWithSelection,
+        GoDown_ColumnSelectionMode,
+        GoEnd,
+        GoEndWithSelection,
+        GoFirstLine,
+        GoFirstLineWithSelection,
+        GoHome,
+        GoHomeWithSelection,
+        GoLastLine,
+        GoLastLineWithSelection,
+        GoLeft,
+        GoLeftWithSelection,
+        GoLeft_ColumnSelectionMode,
+        GoPageDown,
+        GoPageDownWithSelection,
+        GoPageUp,
+        GoPageUpWithSelection,
+        GoRight,
+        GoRightWithSelection,
+        GoRight_ColumnSelectionMode,
+        GoToDialog,
+        GoNextBookmark,
+        GoPrevBookmark,
+        GoUp,
+        GoUpWithSelection,
+        GoUp_ColumnSelectionMode,
+        GoWordLeft,
+        GoWordLeftWithSelection,
+        GoWordRight,
+        GoWordRightWithSelection,
+        IndentIncrease,
+        IndentDecrease,
+        LowerCase,
+        MacroExecute,
+        MacroRecord,
+        MoveSelectedLinesDown,
+        MoveSelectedLinesUp,
+        NavigateBackward,
+        NavigateForward,
+        Paste,
+        Redo,
+        ReplaceDialog,
+        ReplaceMode,
+        ScrollDown,
+        ScrollUp,
+        SelectAll,
+        UnbookmarkLine,
+        Undo,
+        UpperCase,
+        ZoomIn,
+        ZoomNormal,
+        ZoomOut,
+        CustomAction1,
+        CustomAction2,
+        CustomAction3,
+        CustomAction4,
+        CustomAction5,
+        CustomAction6,
+        CustomAction7,
+        CustomAction8,
+        CustomAction9,
+        CustomAction10,
+        CustomAction11,
+        CustomAction12,
+        CustomAction13,
+        CustomAction14,
+        CustomAction15,
+        CustomAction16,
+        CustomAction17,
+        CustomAction18,
+        CustomAction19,
+        CustomAction20
+    }
+
+    public enum VisibleState : byte
+    {
+        Visible,
+        StartOfHiddenBlock,
+        Hidden
+    }
+
+    public enum IndentMarker
+    {
+        None,
+        Increased,
+        Decreased
+    }
+
+    public enum Platform
+    {
+        X86,
+        X64,
+        Unknown
+    }
 }

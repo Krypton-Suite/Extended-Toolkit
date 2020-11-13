@@ -188,6 +188,59 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
             FindNext(kbtnFindNext.Text);
         }
 
+        private void ktxtSearchTerm_TextChanged(object sender, EventArgs e)
+        {
+            kbtnFindNext.Enabled = string.IsNullOrWhiteSpace(kbtnFindNext.Text);
+        }
+
+        private void ktxtSearchTerm_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '\r')
+            {
+                kbtnFindNext.PerformClick();
+                e.Handled = true;
+                return;
+            }
+            if (e.KeyChar == '\x1b')
+            {
+                Hide();
+                e.Handled = true;
+                return;
+            }
+        }
+
+        private void FindWindown_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                e.Cancel = true;
+                Hide();
+            }
+            _textBox.Focus();
+        }
+
+        private void kchkMatchCase_CheckedChanged(object sender, EventArgs e)
+        {
+            ResetSerach();
+        }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == Keys.Escape)
+            {
+                this.Close();
+                return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        protected override void OnActivated(EventArgs e)
+        {
+            kbtnFindNext.Focus();
+            ResetSerach();
+        }
+
+        #region Methods
         public virtual void FindNext(string pattern)
         {
             try
@@ -235,58 +288,7 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
             }
         }
 
-        private void ktxtSearchTerm_TextChanged(object sender, EventArgs e)
-        {
-            kbtnFindNext.Enabled = string.IsNullOrWhiteSpace(kbtnFindNext.Text);
-        }
-
-        private void ktxtSearchTerm_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == '\r')
-            {
-                kbtnFindNext.PerformClick();
-                e.Handled = true;
-                return;
-            }
-            if (e.KeyChar == '\x1b')
-            {
-                Hide();
-                e.Handled = true;
-                return;
-            }
-        }
-
-        private void FindWindown_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (e.CloseReason == CloseReason.UserClosing)
-            {
-                e.Cancel = true;
-                Hide();
-            }
-            _textBox.Focus();
-        }
-
-        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
-        {
-            if (keyData == Keys.Escape)
-            {
-                this.Close();
-                return true;
-            }
-            return base.ProcessCmdKey(ref msg, keyData);
-        }
-
-        protected override void OnActivated(EventArgs e)
-        {
-            kbtnFindNext.Focus();
-            ResetSerach();
-        }
-
         private void ResetSerach() => _firstSearch = true;
-
-        private void kchkMatchCase_CheckedChanged(object sender, EventArgs e)
-        {
-            ResetSerach();
-        }
+        #endregion
     }
 }
