@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
 {

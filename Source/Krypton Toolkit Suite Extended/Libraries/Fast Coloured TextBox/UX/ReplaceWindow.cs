@@ -216,6 +216,10 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
         private Place _startPlace;
         #endregion
 
+        #region Properties
+        public KryptonTextBox FindBox => ktxtSearchTerm;
+        #endregion
+
         #region Constructor
         public ReplaceWindow(FastColouredTextBox textBox)
         {

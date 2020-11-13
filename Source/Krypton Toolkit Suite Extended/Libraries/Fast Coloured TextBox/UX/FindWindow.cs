@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
 {
-    public class FindWindown : KryptonForm
+    public class FindWindow : KryptonForm
     {
         #region Design Code
         private KryptonPanel kryptonPanel1;
@@ -169,8 +169,12 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
         private FastColouredTextBox _textBox;
         #endregion
 
+        #region Properties
+        public KryptonTextBox FindBox => ktxtSearchTerm;
+        #endregion
+
         #region Constructor
-        public FindWindown(FastColouredTextBox textBox)
+        public FindWindow(FastColouredTextBox textBox)
         {
             InitializeComponent();
 

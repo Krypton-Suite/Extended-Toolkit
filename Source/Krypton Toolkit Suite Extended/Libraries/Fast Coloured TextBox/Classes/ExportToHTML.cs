@@ -37,7 +37,7 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
         /// </summary>
         public bool IncludeLineNumbers { get; set; }
 
-        FastColoredTextBox tb;
+        FastColouredTextBox tb;
 
         public ExportToHTML()
         {
@@ -47,7 +47,7 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
             UseBr = true;
         }
 
-        public string GetHtml(FastColoredTextBox tb)
+        public string GetHtml(FastColouredTextBox tb)
         {
             this.tb = tb;
             Range sel = new Range(tb);

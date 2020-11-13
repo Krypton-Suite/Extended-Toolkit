@@ -37,7 +37,7 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
             this.TB = tb;
             this.Name = name;
             this.LineIndex = lineIndex;
-            Colour = tb.BookmarkColor;
+            Colour = tb.BookmarkColour;
         }
 
         public virtual void Paint(Graphics gr, Rectangle lineRect)

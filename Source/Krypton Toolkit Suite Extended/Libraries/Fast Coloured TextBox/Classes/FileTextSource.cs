@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.IO;
 using System.Text;
 
 namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
@@ -26,7 +26,7 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
         /// </summary>
         public event EventHandler<LinePushedEventArgs> LinePushed;
 
-        public FileTextSource(FastColoredTextBox currentTB)
+        public FileTextSource(FastColouredTextBox currentTB)
             : base(currentTB)
         {
             timer.Interval = 10000;

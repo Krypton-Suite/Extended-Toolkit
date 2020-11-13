@@ -13,7 +13,7 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
         public Color ExpandMarkerBackColour { get; set; }
         public Color ExpandMarkerBorderColour { get; set; }
 
-        public ServiceColors()
+        public ServiceColours()
         {
             CollapseMarkerForeColour = Color.Silver;
             CollapseMarkerBackColour = Color.White;

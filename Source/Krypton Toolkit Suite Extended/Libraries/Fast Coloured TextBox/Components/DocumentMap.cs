@@ -1,4 +1,8 @@
 ﻿using System;
+using System.ComponentModel;
+using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
 {
@@ -84,14 +88,14 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
                 TargetChanged(this, EventArgs.Empty);
         }
 
-        protected virtual void UnSubscribe(FastColoredTextBox target)
+        protected virtual void UnSubscribe(FastColouredTextBox target)
         {
             target.Scroll -= new ScrollEventHandler(Target_Scroll);
             target.SelectionChangedDelayed -= new EventHandler(Target_SelectionChanged);
             target.VisibleRangeChanged -= new EventHandler(Target_VisibleRangeChanged);
         }
 
-        protected virtual void Subscribe(FastColoredTextBox target)
+        protected virtual void Subscribe(FastColouredTextBox target)
         {
             target.Scroll += new ScrollEventHandler(Target_Scroll);
             target.SelectionChangedDelayed += new EventHandler(Target_SelectionChanged);

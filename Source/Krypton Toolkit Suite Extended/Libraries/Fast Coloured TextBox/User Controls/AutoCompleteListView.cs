@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
@@ -82,8 +83,8 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
             toolTip.ShowAlways = false;
             AppearInterval = 500;
             timer.Tick += new EventHandler(timer_Tick);
-            SelectedColor = Color.Orange;
-            HoveredColor = Color.Red;
+            SelectedColour = Color.Orange;
+            HoveredColour = Color.Red;
             ToolTipDuration = 3000;
             toolTip.Popup += ToolTip_Popup;
 
@@ -217,9 +218,9 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
                 {
                     item.Parent = Menu;
                     CompareResult res = item.Compare(text);
-                    if (res != CompareResult.Hidden)
+                    if (res != CompareResult.HIDDEN)
                         visibleItems.Add(item);
-                    if (res == CompareResult.VisibleAndSelected && !foundSelected)
+                    if (res == CompareResult.VISIBLEANDSELECTED && !foundSelected)
                     {
                         foundSelected = true;
                         FocussedItemIndex = visibleItems.Count - 1;
@@ -347,15 +348,15 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
                     e.Graphics.DrawImage(ImageList.Images[item.ImageIndex], 1, y);
 
                 if (i == FocussedItemIndex)
-                    using (var selectedBrush = new LinearGradientBrush(new Point(0, y - 3), new Point(0, y + itemHeight), Color.Transparent, SelectedColor))
-                    using (var pen = new Pen(SelectedColor))
+                    using (var selectedBrush = new LinearGradientBrush(new Point(0, y - 3), new Point(0, y + itemHeight), Color.Transparent, SelectedColour))
+                    using (var pen = new Pen(SelectedColour))
                     {
                         e.Graphics.FillRectangle(selectedBrush, leftPadding, y, ClientSize.Width - 1 - leftPadding, itemHeight - 1);
                         e.Graphics.DrawRectangle(pen, leftPadding, y, ClientSize.Width - 1 - leftPadding, itemHeight - 1);
                     }
 
                 if (i == hoveredItemIndex)
-                    using (var pen = new Pen(HoveredColor))
+                    using (var pen = new Pen(HoveredColour))
                         e.Graphics.DrawRectangle(pen, leftPadding, y, ClientSize.Width - 1 - leftPadding, itemHeight - 1);
 
                 using (var brush = new SolidBrush(item.ForeColour != Color.Transparent ? item.ForeColour : ForeColor))

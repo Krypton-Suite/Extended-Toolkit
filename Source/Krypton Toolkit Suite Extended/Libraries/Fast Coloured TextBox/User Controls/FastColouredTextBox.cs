@@ -119,7 +119,7 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
         private Range updatingRange;
         private Range visibleRange;
         private bool wordWrap;
-        private WordWrapMode wordWrapMode = WordWrapMode.WordWrapControlWidth;
+        private WordWrapMode wordWrapMode = WordWrapMode.WORDWRAPCONTROLWIDTH;
         private int reservedCountOfLineNumberChars = 1;
         private int zoom = 100;
         private Size localAutoScrollMinSize;
@@ -152,8 +152,8 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
             IndentBackColour = Color.WhiteSmoke;
             ServiceLinesColour = Color.Silver;
             FoldingIndicatorColour = Color.Green;
-            CurrentLineColor = Color.Transparent;
-            ChangedLineColor = Color.Transparent;
+            CurrentLineColour = Color.Transparent;
+            ChangedLineColour = Color.Transparent;
             HighlightFoldingIndicator = true;
             ShowLineNumbers = true;
             TabLength = 4;
@@ -189,15 +189,15 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
             DisabledColour = Color.FromArgb(100, 180, 180, 180);
             needRecalcFoldingLines = true;
             AllowDrop = true;
-            FindEndOfFoldingBlockStrategy = FindEndOfFoldingBlockStrategy.Strategy1;
+            FindEndOfFoldingBlockStrategy = FindEndOfFoldingBlockStrategy.STRATEGY1;
             VirtualSpace = false;
             bookmarks = new Bookmarks(this);
-            BookmarkColor = Color.PowderBlue;
+            BookmarkColour = Color.PowderBlue;
             ToolTip = new ToolTip();
             timer3.Interval = 500;
             hints = new Hints(this);
             SelectionHighlightingForLineBreaksEnabled = true;
-            textAreaBorder = TextAreaBorderType.None;
+            textAreaBorder = TextAreaBorderType.NONE;
             textAreaBorderColor = Color.Black;
             macrosManager = new MacrosManager(this);
             HotkeysMapping = new HotkeysMapping();
@@ -209,7 +209,7 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
 ^\s*(case|default)\s*[^:]*(?<range>:)\s*(?<range>[^;]+);";
             AutoIndentChars = true;
             CaretBlinking = true;
-            ServiceColors = new ServiceColors();
+            ServiceColours = new ServiceColours();
             //
             base.AutoScroll = true;
             timer.Tick += timer_Tick;
@@ -239,7 +239,7 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
         [Browsable(true)]
         [Description("Colors of some service visual markers.")]
         [TypeConverter(typeof(ExpandableObjectConverter))]
-        public ServiceColors ServiceColours { get; set; }
+        public ServiceColours ServiceColours { get; set; }
 
         /// <summary>
         /// Contains UniqueId of start lines of folded blocks
@@ -349,7 +349,7 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
         /// <summary>
         /// Strategy of search of end of folding block
         /// </summary>
-        [DefaultValue(FindEndOfFoldingBlockStrategy.Strategy1)]
+        [DefaultValue(FindEndOfFoldingBlockStrategy.STRATEGY1)]
         [Description("Strategy of search of end of folding block.")]
         public FindEndOfFoldingBlockStrategy FindEndOfFoldingBlockStrategy { get; set; }
 
@@ -1319,10 +1319,10 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
 
 
         [Browsable(false)]
-        public FindForm findForm { get; private set; }
+        public FindWindow findForm { get; private set; }
 
         [Browsable(false)]
-        public ReplaceForm replaceForm { get; private set; }
+        public ReplaceWindow replaceForm { get; private set; }
 
         /// <summary>
         /// Do not change this property
@@ -1555,7 +1555,7 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
                     if (!base.AutoScroll)
                         base.AutoScroll = true;
                     Size newSize = value;
-                    if (WordWrap && WordWrapMode != FastColoredTextBoxNS.WordWrapMode.Custom)
+                    if (WordWrap && WordWrapMode != WordWrapMode.CUSTOM)
                     {
                         int maxWidth = GetMaxLineWordWrapedWidth();
                         newSize = new Size(Math.Min(newSize.Width, maxWidth), newSize.Height);
@@ -2405,14 +2405,14 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
         public virtual void ShowFindDialog(string findText)
         {
             if (findForm == null)
-                findForm = new FindForm(this);
+                findForm = new FindWindow(this);
 
             if (findText != null)
-                findForm.tbFind.Text = findText;
+                findForm.FindBox.Text = findText;
             else if (!Selection.IsEmpty && Selection.Start.iLine == Selection.End.iLine)
-                findForm.tbFind.Text = Selection.Text;
+                findForm.FindBox.Text = Selection.Text;
 
-            findForm.tbFind.SelectAll();
+            findForm.FindBox.SelectAll();
             findForm.Show();
             findForm.Focus();
         }
@@ -2433,14 +2433,14 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
             if (ReadOnly)
                 return;
             if (replaceForm == null)
-                replaceForm = new ReplaceForm(this);
+                replaceForm = new ReplaceWindow(this);
 
             if (findText != null)
-                replaceForm.tbFind.Text = findText;
+                replaceForm.FindBox.Text = findText;
             else if (!Selection.IsEmpty && Selection.Start.iLine == Selection.End.iLine)
-                replaceForm.tbFind.Text = Selection.Text;
+                replaceForm.FindBox.Text = Selection.Text;
 
-            replaceForm.tbFind.SelectAll();
+            replaceForm.FindBox.SelectAll();
             replaceForm.Show();
             replaceForm.Focus();
         }
@@ -3118,15 +3118,15 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
             if (wordWrap)
                 switch (WordWrapMode)
                 {
-                    case WordWrapMode.WordWrapControlWidth:
-                    case WordWrapMode.CharWrapControlWidth:
+                    case WordWrapMode.WORDWRAPCONTROLWIDTH:
+                    case WordWrapMode.CHARWRAPCONTROLWIDTH:
                         maxLineLength = Math.Min(maxLineLength,
                                                  (ClientSize.Width - LeftIndent - Paddings.Left - Paddings.Right) /
                                                  CharWidth);
                         minWidth = 0;
                         break;
-                    case WordWrapMode.WordWrapPreferredWidth:
-                    case WordWrapMode.CharWrapPreferredWidth:
+                    case WordWrapMode.WORDWRAPPREFERREDWIDTH:
+                    case WordWrapMode.CHARWRAPPREFERREDWIDTH:
                         maxLineLength = Math.Min(maxLineLength, PreferredLineWidth);
                         minWidth = LeftIndent + PreferredLineWidth * CharWidth + 2 + Paddings.Left + Paddings.Right;
                         break;
@@ -3179,11 +3179,11 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
             if (wordWrap)
                 switch (wordWrapMode)
                 {
-                    case WordWrapMode.WordWrapControlWidth:
-                    case WordWrapMode.CharWrapControlWidth:
+                    case WordWrapMode.WORDWRAPCONTROLWIDTH:
+                    case WordWrapMode.CHARWRAPCONTROLWIDTH:
                         return ClientSize.Width;
-                    case WordWrapMode.WordWrapPreferredWidth:
-                    case WordWrapMode.CharWrapPreferredWidth:
+                    case WordWrapMode.WORDWRAPPREFERREDWIDTH:
+                    case WordWrapMode.CHARWRAPPREFERREDWIDTH:
                         return LeftIndent + PreferredLineWidth * CharWidth + 2 + Paddings.Left + Paddings.Right;
                 }
 
@@ -3199,17 +3199,17 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
 
             switch (WordWrapMode)
             {
-                case WordWrapMode.WordWrapControlWidth:
+                case WordWrapMode.WORDWRAPCONTROLWIDTH:
                     maxCharsPerLine = (ClientSize.Width - LeftIndent - Paddings.Left - Paddings.Right) / CharWidth;
                     break;
-                case WordWrapMode.CharWrapControlWidth:
+                case WordWrapMode.CHARWRAPCONTROLWIDTH:
                     maxCharsPerLine = (ClientSize.Width - LeftIndent - Paddings.Left - Paddings.Right) / CharWidth;
                     charWrap = true;
                     break;
-                case WordWrapMode.WordWrapPreferredWidth:
+                case WordWrapMode.WORDWRAPPREFERREDWIDTH:
                     maxCharsPerLine = PreferredLineWidth;
                     break;
-                case WordWrapMode.CharWrapPreferredWidth:
+                case WordWrapMode.CHARWRAPPREFERREDWIDTH:
                     maxCharsPerLine = PreferredLineWidth;
                     charWrap = true;
                     break;
@@ -3226,7 +3226,7 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
 
                         li.wordWrapIndent = WordWrapAutoIndent ? lines[iLine].StartSpacesCount + WordWrapIndent : WordWrapIndent;
 
-                        if (WordWrapMode == WordWrapMode.Custom)
+                        if (WordWrapMode == WordWrapMode.CUSTOM)
                         {
                             if (WordWrapNeeded != null)
                                 WordWrapNeeded(this, new WordWrapNeededEventArgs(li.CutOffPositions, ImeAllowed, lines[iLine]));
@@ -3638,10 +3638,10 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
                     break;
 
                 case FCTBAction.FindNext:
-                    if (findForm == null || findForm.tbFind.Text == "")
+                    if (findForm == null || findForm.FindBox.Text == "")
                         ShowFindDialog();
                     else
-                        findForm.FindNext(findForm.tbFind.Text);
+                        findForm.FindNext(findForm.FindBox.Text);
                     break;
 
                 case FCTBAction.ReplaceDialog:
@@ -4977,11 +4977,11 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
             e.Graphics.SmoothingMode = SmoothingMode.None;
             //
             var servicePen = new Pen(ServiceLinesColour);
-            Brush changedLineBrush = new SolidBrush(ChangedLineColor);
+            Brush changedLineBrush = new SolidBrush(ChangedLineColour);
             Brush indentBrush = new SolidBrush(IndentBackColour);
             Brush paddingBrush = new SolidBrush(PaddingBackColour);
             Brush currentLineBrush =
-                new SolidBrush(Color.FromArgb(CurrentLineColor.A == 255 ? 50 : CurrentLineColor.A, CurrentLineColor));
+                new SolidBrush(Color.FromArgb(CurrentLineColour.A == 255 ? 50 : CurrentLineColour.A, CurrentLineColour));
             //draw padding area
             var textAreaRect = TextAreaRect;
             //top
@@ -5054,12 +5054,12 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
                                                  new Rectangle(textAreaRect.Left, y, textAreaRect.Width,
                                                                CharHeight * lineInfo.WordWrapStringsCount));
                 //draw current line background
-                if (CurrentLineColor != Color.Transparent && iLine == Selection.Start.iLine)
+                if (CurrentLineColour != Color.Transparent && iLine == Selection.Start.iLine)
                     if (Selection.IsEmpty)
                         e.Graphics.FillRectangle(currentLineBrush,
                                                  new Rectangle(textAreaRect.Left, y, textAreaRect.Width, CharHeight));
                 //draw changed line marker
-                if (ChangedLineColor != Color.Transparent && line.IsChanged)
+                if (ChangedLineColour != Color.Transparent && line.IsChanged)
                     e.Graphics.FillRectangle(changedLineBrush,
                                              new RectangleF(-10, y, LeftIndent - minLeftIndent - 2 + 10, CharHeight + 1));
                 //
@@ -5235,15 +5235,15 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
             foreach (VisualMarker m in visibleMarkers)
             {
                 if (m is CollapseFoldingMarker)
-                    using (var bk = new SolidBrush(ServiceColors.CollapseMarkerBackColor))
-                    using (var fore = new Pen(ServiceColors.CollapseMarkerForeColor))
-                    using (var border = new Pen(ServiceColors.CollapseMarkerBorderColor))
+                    using (var bk = new SolidBrush(ServiceColours.CollapseMarkerBackColour))
+                    using (var fore = new Pen(ServiceColours.CollapseMarkerForeColour))
+                    using (var border = new Pen(ServiceColours.CollapseMarkerBorderColour))
                         (m as CollapseFoldingMarker).Draw(e.Graphics, border, bk, fore);
                 else
                 if (m is ExpandFoldingMarker)
-                    using (var bk = new SolidBrush(ServiceColors.ExpandMarkerBackColor))
-                    using (var fore = new Pen(ServiceColors.ExpandMarkerForeColor))
-                    using (var border = new Pen(ServiceColors.ExpandMarkerBorderColor))
+                    using (var bk = new SolidBrush(ServiceColours.ExpandMarkerBackColour))
+                    using (var fore = new Pen(ServiceColours.ExpandMarkerForeColour))
+                    using (var border = new Pen(ServiceColours.ExpandMarkerBorderColour))
                         (m as ExpandFoldingMarker).Draw(e.Graphics, border, bk, fore);
                 else
                     m.Draw(e.Graphics, servicePen);
@@ -5283,19 +5283,19 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
 
         private void DrawTextAreaBorder(Graphics graphics)
         {
-            if (TextAreaBorder == TextAreaBorderType.None)
+            if (TextAreaBorder == TextAreaBorderType.NONE)
                 return;
 
             var rect = TextAreaRect;
 
-            if (TextAreaBorder == TextAreaBorderType.Shadow)
+            if (TextAreaBorder == TextAreaBorderType.SHADOW)
             {
                 const int shadowSize = 4;
                 var rBottom = new Rectangle(rect.Left + shadowSize, rect.Bottom, rect.Width - shadowSize, shadowSize);
                 var rCorner = new Rectangle(rect.Right, rect.Bottom, shadowSize, shadowSize);
                 var rRight = new Rectangle(rect.Right, rect.Top + shadowSize, shadowSize, rect.Height - shadowSize);
 
-                using (var brush = new SolidBrush(Color.FromArgb(80, TextAreaBorderColor)))
+                using (var brush = new SolidBrush(Color.FromArgb(80, TextAreaBorderColour)))
                 {
                     graphics.FillRectangle(brush, rBottom);
                     graphics.FillRectangle(brush, rRight);
@@ -5303,7 +5303,7 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
                 }
             }
 
-            using (Pen pen = new Pen(TextAreaBorderColor))
+            using (Pen pen = new Pen(TextAreaBorderColour))
                 graphics.DrawRectangle(pen, rect);
         }
 
@@ -6519,7 +6519,7 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
 
             switch (FindEndOfFoldingBlockStrategy)
             {
-                case FindEndOfFoldingBlockStrategy.Strategy1:
+                case FindEndOfFoldingBlockStrategy.STRATEGY1:
                     for (i = iStartLine /*+1*/; i < LinesCount; i++)
                     {
                         if (lines.LineHasFoldingStartMarker(i))
@@ -6539,7 +6539,7 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
                     }
                     break;
 
-                case FindEndOfFoldingBlockStrategy.Strategy2:
+                case FindEndOfFoldingBlockStrategy.STRATEGY2:
                     for (i = iStartLine /*+1*/; i < LinesCount; i++)
                     {
                         if (lines.LineHasFoldingEndMarker(i))
@@ -7083,8 +7083,8 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
         {
             switch (BracketsHighlightStrategy)
             {
-                case BracketsHighlightStrategy.Strategy1: HighlightBrackets1(LeftBracket, RightBracket, ref leftBracketPosition, ref rightBracketPosition); break;
-                case BracketsHighlightStrategy.Strategy2: HighlightBrackets2(LeftBracket, RightBracket, ref leftBracketPosition, ref rightBracketPosition); break;
+                case BracketsHighlightStrategy.STRATEGY1: HighlightBrackets1(LeftBracket, RightBracket, ref leftBracketPosition, ref rightBracketPosition); break;
+                case BracketsHighlightStrategy.STRATEGY2: HighlightBrackets2(LeftBracket, RightBracket, ref leftBracketPosition, ref rightBracketPosition); break;
             }
         }
 
@@ -7258,10 +7258,10 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
 
             switch (HighlightingRangeType)
             {
-                case HighlightingRangeType.VisibleRange:
+                case HighlightingRangeType.VISIBLERANGE:
                     range = VisibleRange.GetUnionWith(args.ChangedRange);
                     break;
-                case HighlightingRangeType.AllTextRange:
+                case HighlightingRangeType.ALLTEXTRANGE:
                     range = Range;
                     break;
                 default:
@@ -7613,7 +7613,7 @@ window.status = ""#print"";
         /// </summary>
         public void ShowGoToDialog()
         {
-            var form = new GoToForm();
+            var form = new GoToWindow();
             form.TotalLineCount = LinesCount;
             form.SelectedLineNumber = Selection.Start.iLine + 1;
 
@@ -8035,7 +8035,7 @@ window.status = ""#print"";
         private Point middleClickScrollingOriginPoint;
         private Point middleClickScrollingOriginScroll;
         private readonly Timer middleClickScrollingTimer = new Timer();
-        private ScrollDirection middleClickScollDirection = ScrollDirection.None;
+        private ScrollDirection middleClickScollDirection = ScrollDirection.NONE;
 
         /// <summary>
         /// Activates the scrolling mode (middle click button).
@@ -8126,38 +8126,38 @@ window.status = ""#print"";
             if (distance > 10)
             {
                 if (angleInDegree >= 325 || angleInDegree <= 35)
-                    this.middleClickScollDirection = ScrollDirection.Right;
+                    this.middleClickScollDirection = ScrollDirection.RIGHT;
                 else if (angleInDegree <= 55)
-                    this.middleClickScollDirection = ScrollDirection.Right | ScrollDirection.Up;
+                    this.middleClickScollDirection = ScrollDirection.RIGHT | ScrollDirection.UP;
                 else if (angleInDegree <= 125)
-                    this.middleClickScollDirection = ScrollDirection.Up;
+                    this.middleClickScollDirection = ScrollDirection.UP;
                 else if (angleInDegree <= 145)
-                    this.middleClickScollDirection = ScrollDirection.Up | ScrollDirection.Left;
+                    this.middleClickScollDirection = ScrollDirection.UP | ScrollDirection.LEFT;
                 else if (angleInDegree <= 215)
-                    this.middleClickScollDirection = ScrollDirection.Left;
+                    this.middleClickScollDirection = ScrollDirection.LEFT;
                 else if (angleInDegree <= 235)
-                    this.middleClickScollDirection = ScrollDirection.Left | ScrollDirection.Down;
+                    this.middleClickScollDirection = ScrollDirection.LEFT | ScrollDirection.DOWN;
                 else if (angleInDegree <= 305)
-                    this.middleClickScollDirection = ScrollDirection.Down;
+                    this.middleClickScollDirection = ScrollDirection.DOWN;
                 else
-                    this.middleClickScollDirection = ScrollDirection.Down | ScrollDirection.Right;
+                    this.middleClickScollDirection = ScrollDirection.DOWN | ScrollDirection.RIGHT;
             }
             else
             {
-                this.middleClickScollDirection = ScrollDirection.None;
+                this.middleClickScollDirection = ScrollDirection.NONE;
             }
 
             // Set mouse cursor
             switch (this.middleClickScollDirection)
             {
-                case ScrollDirection.Right: base.Cursor = Cursors.PanEast; break;
-                case ScrollDirection.Right | ScrollDirection.Up: base.Cursor = Cursors.PanNE; break;
-                case ScrollDirection.Up: base.Cursor = Cursors.PanNorth; break;
-                case ScrollDirection.Up | ScrollDirection.Left: base.Cursor = Cursors.PanNW; break;
-                case ScrollDirection.Left: base.Cursor = Cursors.PanWest; break;
-                case ScrollDirection.Left | ScrollDirection.Down: base.Cursor = Cursors.PanSW; break;
-                case ScrollDirection.Down: base.Cursor = Cursors.PanSouth; break;
-                case ScrollDirection.Down | ScrollDirection.Right: base.Cursor = Cursors.PanSE; break;
+                case ScrollDirection.RIGHT: base.Cursor = Cursors.PanEast; break;
+                case ScrollDirection.RIGHT | ScrollDirection.UP: base.Cursor = Cursors.PanNE; break;
+                case ScrollDirection.UP: base.Cursor = Cursors.PanNorth; break;
+                case ScrollDirection.UP | ScrollDirection.LEFT: base.Cursor = Cursors.PanNW; break;
+                case ScrollDirection.LEFT: base.Cursor = Cursors.PanWest; break;
+                case ScrollDirection.LEFT | ScrollDirection.DOWN: base.Cursor = Cursors.PanSW; break;
+                case ScrollDirection.DOWN: base.Cursor = Cursors.PanSouth; break;
+                case ScrollDirection.DOWN | ScrollDirection.RIGHT: base.Cursor = Cursors.PanSE; break;
                 default: base.Cursor = defaultCursor; return;
             }
 
@@ -8174,11 +8174,11 @@ window.status = ""#print"";
                 VerticalScroll.Value + yScrollOffset,
                 ScrollOrientation.VerticalScroll);
 
-            if ((middleClickScollDirection & (ScrollDirection.Down | ScrollDirection.Up)) > 0)
+            if ((middleClickScollDirection & (ScrollDirection.DOWN | ScrollDirection.UP)) > 0)
                 //DoScrollVertical(1 + Math.Abs(yScrollOffset), Math.Sign(distanceY));
                 OnScroll(yea, false);
 
-            if ((middleClickScollDirection & (ScrollDirection.Right | ScrollDirection.Left)) > 0)
+            if ((middleClickScollDirection & (ScrollDirection.RIGHT | ScrollDirection.LEFT)) > 0)
                 OnScroll(xea);
 
             // Enable drawing
