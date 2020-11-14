@@ -42,6 +42,10 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
         #endregion
         #endregion
 
+        #region Variables
+        private FastColouredTextBox target;
+        #endregion
+
         public EventHandler TargetChanged;
 
         [DefaultValue(typeof(Color), "ControlLight")]
@@ -52,8 +56,6 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
 
         [DefaultValue(typeof(Color), "Black")]
         public Color CaretTickColour { get; set; }
-
-        FastColouredTextBox target;
 
         [Description("Target FastColouredTextBox")]
         public FastColouredTextBox Target

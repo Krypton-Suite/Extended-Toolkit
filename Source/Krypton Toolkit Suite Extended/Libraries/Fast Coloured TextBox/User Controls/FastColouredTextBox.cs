@@ -41,6 +41,7 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
     /// </summary>
     public partial class FastColouredTextBox : UserControl, ISupportInitialize
     {
+        #region Constants
         internal const int minLeftIndent = 8;
         private const int maxBracketSearchIterations = 1000;
         private const int maxLinesForFolding = 3000;
@@ -49,13 +50,16 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
         private const int WM_HSCROLL = 0x114;
         private const int WM_VSCROLL = 0x115;
         private const int SB_ENDSCROLL = 0x8;
+        #endregion
 
+        #region Readonly
         public readonly List<LineInfo> LineInfos = new List<LineInfo>();
         private readonly Range selection;
         private readonly Timer timer = new Timer();
         private readonly Timer timer2 = new Timer();
         private readonly Timer timer3 = new Timer();
         private readonly List<VisualMarker> visibleMarkers = new List<VisualMarker>();
+        #endregion
 
         #region Variables
         public int TextHeight;
@@ -220,6 +224,7 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
 
         private char[] autoCompleteBracketsList = { '(', ')', '{', '}', '[', ']', '"', '"', '\'', '\'' };
 
+        #region Properties
         public char[] AutoCompleteBracketsList
         {
             get { return autoCompleteBracketsList; }
@@ -232,6 +237,13 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
         [DefaultValue(false)]
         [Description("AutoComplete brackets.")]
         public bool AutoCompleteBrackets { get; set; }
+
+        /// <summary>
+        /// Force inserted string or char to be uppercase
+        /// </summary>
+        [DefaultValue(false)]
+        [Description("Force upper case.")]
+        public bool ForceUpperCase { get; set; }
 
         /// <summary>
         /// Colors of some service visual markers
@@ -820,7 +832,7 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
         /// </summary>
         [Description("Here you can change hotkeys for FastColoredTextBox.")]
         [Editor(typeof(HotkeysEditor), typeof(UITypeEditor))]
-        [DefaultValue("Tab=IndentIncrease, Escape=ClearHints, PgUp=GoPageUp, PgDn=GoPageDown, End=GoEnd, Home=GoHome, Left=GoLeft, Up=GoUp, Right=GoRight, Down=GoDown, Ins=ReplaceMode, Del=DeleteCharRight, F3=FindNext, Shift+Tab=IndentDecrease, Shift+PgUp=GoPageUpWithSelection, Shift+PgDn=GoPageDownWithSelection, Shift+End=GoEndWithSelection, Shift+Home=GoHomeWithSelection, Shift+Left=GoLeftWithSelection, Shift+Up=GoUpWithSelection, Shift+Right=GoRightWithSelection, Shift+Down=GoDownWithSelection, Shift+Ins=Paste, Shift+Del=Cut, Ctrl+Back=ClearWordLeft, Ctrl+Space=AutocompleteMenu, Ctrl+End=GoLastLine, Ctrl+Home=GoFirstLine, Ctrl+Left=GoWordLeft, Ctrl+Up=ScrollUp, Ctrl+Right=GoWordRight, Ctrl+Down=ScrollDown, Ctrl+Ins=Copy, Ctrl+Del=ClearWordRight, Ctrl+0=ZoomNormal, Ctrl+A=SelectAll, Ctrl+B=BookmarkLine, Ctrl+C=Copy, Ctrl+E=MacroExecute, Ctrl+F=FindDialog, Ctrl+G=GoToDialog, Ctrl+H=ReplaceDialog, Ctrl+I=AutoIndentChars, Ctrl+M=MacroRecord, Ctrl+N=GoNextBookmark, Ctrl+R=Redo, Ctrl+U=UpperCase, Ctrl+V=Paste, Ctrl+X=Cut, Ctrl+Z=Undo, Ctrl+Add=ZoomIn, Ctrl+Subtract=ZoomOut, Ctrl+OemMinus=NavigateBackward, Ctrl+Shift+End=GoLastLineWithSelection, Ctrl+Shift+Home=GoFirstLineWithSelection, Ctrl+Shift+Left=GoWordLeftWithSelection, Ctrl+Shift+Right=GoWordRightWithSelection, Ctrl+Shift+B=UnbookmarkLine, Ctrl+Shift+C=CommentSelected, Ctrl+Shift+N=GoPrevBookmark, Ctrl+Shift+U=LowerCase, Ctrl+Shift+OemMinus=NavigateForward, Alt+Back=Undo, Alt+Up=MoveSelectedLinesUp, Alt+Down=MoveSelectedLinesDown, Alt+F=FindChar, Alt+Shift+Left=GoLeft_ColumnSelectionMode, Alt+Shift+Up=GoUp_ColumnSelectionMode, Alt+Shift+Right=GoRight_ColumnSelectionMode, Alt+Shift+Down=GoDown_ColumnSelectionMode")]
+        [DefaultValue("Tab=IndentIncrease, Escape=ClearHints, PgUp=GoPageUp, PgDn=GoPageDown, End=GoEnd, Home=GoHome, Left=GoLeft, Up=GoUp, Right=GoRight, Down=GoDown, Ins=ReplaceMode, Del=DeleteCharRight, F3=FindNext, Shift+Tab=IndentDecrease, Shift+PgUp=GoPageUpWithSelection, Shift+PgDn=GoPageDownWithSelection, Shift+End=GoEndWithSelection, Shift+Home=GoHomeWithSelection, Shift+Left=GoLeftWithSelection, Shift+Up=GoUpWithSelection, Shift+Right=GoRightWithSelection, Shift+Down=GoDownWithSelection, Shift+Ins=Paste, Shift+Del=Cut, Ctrl+Back=ClearWordLeft, Ctrl+Space=AutocompleteMenu, Ctrl+End=GoLastLine, Ctrl+Home=GoFirstLine, Ctrl+Left=GoWordLeft, Ctrl+Up=ScrollUp, Ctrl+Right=GoWordRight, Ctrl+Down=ScrollDown, Ctrl+Ins=Copy, Ctrl+Del=ClearWordRight, Ctrl+0=ZoomNormal, Ctrl+A=SelectAll, Ctrl+B=BookmarkLine, Ctrl+C=Copy, Ctrl+E=MacroExecute, Ctrl+F=FindDialog, Ctrl+G=GoToDialog, Ctrl+H=ReplaceDialog, Ctrl+I=AutoIndentChars, Ctrl+M=MacroRecord, Ctrl+N=GoNextBookmark, Ctrl+R=Redo, Ctrl+U=UpperCase, Ctrl+V=Paste, Ctrl+X=Cut, Ctrl+Z=Undo, Ctrl+Add=ZoomIn, Ctrl+Subtract=ZoomOut, Ctrl+OemMinus=NavigateBackward, Ctrl+Shift+End=GoLastLineWithSelection, Ctrl+Shift+Home=GoFirstLineWithSelection, Ctrl+Shift+Left=GoWordLeftWithSelection, Ctrl+Shift+Right=GoWordRightWithSelection, Ctrl+Shift+B=UnbookmarkLine, Ctrl+Shift+C=CommentSelected, Ctrl+Shift+N=GoPrevBookmark, Ctrl+Shift+U=LowerCase, Ctrl+Shift+OemMinus=NavigateForward, Alt+Back=Undo, Alt+Up=MoveSelectedLinesUp, Alt+Down=MoveSelectedLinesDown, Alt+F=FindChar, Alt+Shift+Left=GoLeft_ColumnSelectionMode, Alt+Shift+Up=GoUp_ColumnSelectionMode, Alt+Shift+Right=GoRight_ColumnSelectionMode, Alt+Shift+Down=GoDown_ColumnSelectionMode, Ctrl+D=CloneLine")]
         public string Hotkeys
         {
             get { return HotkeysMapping.ToString(); }
@@ -1679,6 +1691,7 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
                 Invalidate();
             }
         }
+        #endregion
 
         /// <summary>
         /// Occurs when mouse is moving over text and tooltip is needed
@@ -2748,7 +2761,7 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
                     if (Selection.IsEmpty && Selection.Start.iChar > GetLineLength(Selection.Start.iLine) && VirtualSpace)
                         InsertVirtualSpaces();
 
-                lines.Manager.ExecuteCommand(new InsertTextCommand(TextSource, text));
+                lines.Manager.ExecuteCommand(new InsertTextCommand(TextSource, ForceUpperCase ? text.ToUpper() : text));
                 if (updating <= 0 && jumpToCaret)
                     DoCaretVisible();
             }
@@ -2903,10 +2916,7 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
 
         public static SizeF GetCharSize(Font font, char c)
         {
-            Size sz2 = TextRenderer.MeasureText("<" + c.ToString() + ">", font);
-            Size sz3 = TextRenderer.MeasureText("<>", font);
-
-            return new SizeF(sz2.Width - sz3.Width + 1, /*sz2.Height*/font.Height);
+            return CharSizeCache.GetCharSize(font, c);
         }
 
         [DllImport("Imm32.dll")]
@@ -3007,7 +3017,7 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
                     InsertVirtualSpaces();
 
                 //insert char
-                lines.Manager.ExecuteCommand(new InsertCharCommand(TextSource, c));
+                lines.Manager.ExecuteCommand(new InsertCharCommand(TextSource, ForceUpperCase ? char.ToUpper(c) : c));
             }
             finally
             {
@@ -3754,6 +3764,10 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
                     BookmarkLine(Selection.Start.iLine);
                     break;
 
+                case FCTBAction.CloneLine:
+                    CloneLine(Selection);
+                    break;
+
                 case FCTBAction.GoNextBookmark:
                     GotoNextBookmark(Selection.Start.iLine);
                     break;
@@ -4118,6 +4132,21 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
         {
             if (!bookmarks.Contains(iLine))
                 bookmarks.Add(iLine);
+        }
+
+        /// <summary>
+        /// Clones current line
+        /// </summary>
+        public virtual void CloneLine(Range selection)
+        {
+            // expand selection
+            selection.Expand();
+            // get text of selected lines
+            string text = Environment.NewLine + selection.Text;
+            // move caret to end of selected lines
+            selection.Start = selection.End;
+            // insert text
+            InsertText(text);
         }
 
         /// <summary>

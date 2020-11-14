@@ -186,6 +186,7 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
         ClearHints,
         ClearWordLeft,
         ClearWordRight,
+        CloneLine,
         CommentSelected,
         Copy,
         Cut,
