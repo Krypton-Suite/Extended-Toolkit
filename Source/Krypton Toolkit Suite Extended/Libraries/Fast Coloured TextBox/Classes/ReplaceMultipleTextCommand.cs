@@ -49,7 +49,7 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
             tb.Selection.BeginUpdate();
             for (int i = 0; i < ranges.Count; i++)
             {
-                tb.Selection.Start = ranges[i].ReplacedRange.Start;
+                tb.Selection.SetStartAndEnd(ranges[i].ReplacedRange.Start);
                 for (int j = 0; j < ranges[i].ReplaceText.Length; j++)
                     tb.Selection.GoRight(true);
                 ClearSelectedCommand.ClearSelected(ts);

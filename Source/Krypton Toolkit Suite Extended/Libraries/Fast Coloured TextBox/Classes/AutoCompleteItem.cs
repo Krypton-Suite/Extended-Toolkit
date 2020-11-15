@@ -78,7 +78,31 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
         /// </summary>
         public virtual void OnSelected(AutoCompleteMenu popupMenu, SelectedEventArgs e)
         {
-            ;
+            e.Tb.BeginUpdate();
+            e.Tb.Selection.BeginUpdate();
+            //remember places
+            var p1 = popupMenu.Fragment.Start;
+            var p2 = e.Tb.Selection.Start;
+            //do auto indent
+            if (e.Tb.AutoIndent)
+            {
+                for (int iLine = p1.iLine + 1; iLine <= p2.iLine; iLine++)
+                {
+                    e.Tb.Selection.SetStartAndEnd(new Place(0, iLine));
+                    e.Tb.DoAutoIndent(iLine);
+                }
+            }
+            e.Tb.Selection.SetStartAndEnd(p1);
+            //move caret position right and find char ^
+            while (e.Tb.Selection.CharBeforeStart != '^')
+                if (!e.Tb.Selection.GoRightThroughFolded())
+                    break;
+            //remove char ^
+            e.Tb.Selection.GoLeft(true);
+            e.Tb.InsertText("");
+            //
+            e.Tb.Selection.EndUpdate();
+            e.Tb.EndUpdate();
         }
 
         /// <summary>

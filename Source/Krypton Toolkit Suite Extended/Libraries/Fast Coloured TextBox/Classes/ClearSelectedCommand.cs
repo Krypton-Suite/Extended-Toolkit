@@ -22,7 +22,7 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
         /// </summary>
         public override void Undo()
         {
-            ts.CurrentTB.Selection.Start = new Place(sel.FromX, Math.Min(sel.Start.iLine, sel.End.iLine));
+            ts.CurrentTB.Selection.SetStartAndEnd(new Place(sel.FromX, Math.Min(sel.Start.iLine, sel.End.iLine)));
             ts.OnTextChanging();
             InsertTextCommand.InsertText(deletedText, ts);
             ts.OnTextChanged(sel.Start.iLine, sel.End.iLine);
@@ -70,7 +70,7 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
                 InsertCharCommand.MergeLines(fromLine, ts);
             }
             //
-            tb.Selection.Start = new Place(fromChar, fromLine);
+            tb.Selection.SetStartAndEnd(new Place(fromChar, fromLine));
             //
             ts.NeedRecalc(new TextSource.TextChangedEventArgs(fromLine, toLine));
         }
@@ -80,4 +80,5 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
             return new ClearSelectedCommand(ts);
         }
     }
+
 }

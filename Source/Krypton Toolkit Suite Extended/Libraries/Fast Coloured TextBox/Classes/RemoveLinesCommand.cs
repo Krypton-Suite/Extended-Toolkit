@@ -42,12 +42,12 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
                 var iLine = iLines[i];
 
                 if (iLine < ts.Count)
-                    tb.Selection.Start = new Place(0, iLine);
+                    tb.Selection.SetStartAndEnd(new Place(0, iLine));
                 else
-                    tb.Selection.Start = new Place(ts[ts.Count - 1].Count, ts.Count - 1);
+                    tb.Selection.SetStartAndEnd(new Place(ts[ts.Count - 1].Count, ts.Count - 1));
 
                 InsertCharCommand.InsertLine(ts);
-                tb.Selection.Start = new Place(0, iLine);
+                tb.Selection.SetStartAndEnd(new Place(0, iLine));
                 var text = prevText[prevText.Count - i - 1];
                 InsertTextCommand.InsertText(text, ts);
                 ts[iLine].IsChanged = true;
@@ -83,7 +83,7 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
                 ts.RemoveLine(iLine);
                 //ts.OnTextChanged(ranges[i].Start.iLine, ranges[i].End.iLine);
             }
-            tb.Selection.Start = new Place(0, 0);
+            tb.Selection.SetStartAndEnd(new Place(0, 0));
             tb.Selection.EndUpdate();
             ts.NeedRecalc(new TextSource.TextChangedEventArgs(0, 1));
 

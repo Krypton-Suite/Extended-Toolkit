@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
+﻿namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
 {
+
+
     /// <summary>
     /// Remembers current selection and restore it after Undo
     /// </summary>

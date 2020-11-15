@@ -1,6 +1,4 @@
-﻿using System.Linq;
-
-namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
+﻿namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
 {
     /// <summary>
     /// Insert text
@@ -52,7 +50,7 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
                 if (ts.Count == 0)
                 {
                     InsertCharCommand.InsertLine(ts);
-                    tb.Selection.Start = Place.Empty;
+                    tb.Selection.SetStartAndEnd(Place.Empty);
                 }
                 tb.ExpandBlock(tb.Selection.Start.iLine);
                 var len = insertedText.Length;

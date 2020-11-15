@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
 {
-    /// <summary>
+    //// <summary>
     /// Insert text into given ranges
     /// </summary>
     public class ReplaceTextCommand : UndoableCommand
@@ -47,7 +47,7 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
             tb.Selection.BeginUpdate();
             for (int i = 0; i < ranges.Count; i++)
             {
-                tb.Selection.Start = ranges[i].Start;
+                tb.Selection.SetStartAndEnd(ranges[i].Start);
                 for (int j = 0; j < insertedText.Length; j++)
                     tb.Selection.GoRight(true);
                 ClearSelected(ts);
@@ -122,4 +122,5 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
             }
         }
     }
+
 }

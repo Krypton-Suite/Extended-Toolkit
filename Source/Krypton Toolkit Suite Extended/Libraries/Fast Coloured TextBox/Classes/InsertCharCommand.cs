@@ -32,7 +32,7 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
                 case '\n': MergeLines(sel.Start.iLine, ts); break;
                 case '\r': break;
                 case '\b':
-                    ts.CurrentTB.Selection.Start = lastSel.Start;
+                    ts.CurrentTB.Selection.SetStartAndEnd(lastSel.Start);
                     char cc = '\x0';
                     if (deletedChar != '\x0')
                     {
@@ -44,12 +44,12 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
                     ts.CurrentTB.ExpandBlock(sel.Start.iLine);
                     for (int i = sel.FromX; i < lastSel.FromX; i++)
                         ts[sel.Start.iLine].RemoveAt(sel.Start.iChar);
-                    ts.CurrentTB.Selection.Start = sel.Start;
+                    ts.CurrentTB.Selection.SetStartAndEnd(sel.Start);
                     break;
                 default:
                     ts.CurrentTB.ExpandBlock(sel.Start.iLine);
                     ts[sel.Start.iLine].RemoveAt(sel.Start.iChar);
-                    ts.CurrentTB.Selection.Start = sel.Start;
+                    ts.CurrentTB.Selection.SetStartAndEnd(sel.Start);
                     break;
             }
 
@@ -111,7 +111,7 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
                     {
                         deletedChar = ts[tb.Selection.Start.iLine][tb.Selection.Start.iChar - 1].c;
                         ts[tb.Selection.Start.iLine].RemoveAt(tb.Selection.Start.iChar - 1);
-                        tb.Selection.Start = new Place(tb.Selection.Start.iChar - 1, tb.Selection.Start.iLine);
+                        tb.Selection.SetStartAndEnd(new Place(tb.Selection.Start.iChar - 1, tb.Selection.Start.iLine));
                     }
                     break;
                 case '\t':
@@ -122,11 +122,11 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
                     for (int i = 0; i < spaceCountNextTabStop; i++)
                         ts[tb.Selection.Start.iLine].Insert(tb.Selection.Start.iChar, new Char(' '));
 
-                    tb.Selection.Start = new Place(tb.Selection.Start.iChar + spaceCountNextTabStop, tb.Selection.Start.iLine);
+                    tb.Selection.SetStartAndEnd(new Place(tb.Selection.Start.iChar + spaceCountNextTabStop, tb.Selection.Start.iLine));
                     break;
                 default:
                     ts[tb.Selection.Start.iLine].Insert(tb.Selection.Start.iChar, new Char(c));
-                    tb.Selection.Start = new Place(tb.Selection.Start.iChar + 1, tb.Selection.Start.iLine);
+                    tb.Selection.SetStartAndEnd(new Place(tb.Selection.Start.iChar + 1, tb.Selection.Start.iLine));
                     break;
             }
         }
@@ -143,7 +143,7 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
             else
                 BreakLines(tb.Selection.Start.iLine, tb.Selection.Start.iChar, ts);
 
-            tb.Selection.Start = new Place(0, tb.Selection.Start.iLine + 1);
+            tb.Selection.SetStartAndEnd(new Place(0, tb.Selection.Start.iLine + 1));
             ts.NeedRecalc(new TextSource.TextChangedEventArgs(0, 1));
         }
 
@@ -171,7 +171,7 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
                 ts[i].AddRange(ts[i + 1]);
                 ts.RemoveLine(i + 1);
             }
-            tb.Selection.Start = new Place(pos, i);
+            tb.Selection.SetStartAndEnd(new Place(pos, i));
             ts.NeedRecalc(new TextSource.TextChangedEventArgs(0, 1));
         }
 

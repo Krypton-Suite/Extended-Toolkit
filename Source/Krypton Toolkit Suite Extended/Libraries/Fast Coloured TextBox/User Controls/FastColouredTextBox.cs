@@ -148,7 +148,8 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
             InitTextSource(CreateTextSource());
             if (lines.Count == 0)
                 lines.InsertLine(0, lines.CreateLine());
-            selection = new Range(this) { Start = new Place(0, 0) };
+            selection = new Range(this);
+            selection.SetStartAndEnd(new Place(0, 0));
             //default settings
             Cursor = Cursors.IBeam;
             BackColor = Color.White;
@@ -1191,7 +1192,7 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
                     return;
 
                 selection.BeginUpdate();
-                selection.Start = value.Start;
+                Selection.Start = value.Start;
                 selection.End = value.End;
                 selection.EndUpdate();
                 Invalidate();
@@ -1489,7 +1490,7 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
         public int SelectionStart
         {
             get { return Math.Min(PlaceToPosition(Selection.Start), PlaceToPosition(Selection.End)); }
-            set { Selection.Start = PositionToPlace(value); }
+            set { Selection.SetStartAndEnd(PositionToPlace(value)); }
         }
 
         /// <summary>
@@ -2260,7 +2261,7 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
         {
             if (iLine >= LinesCount) return;
             lastNavigatedDateTime = lines[iLine].LastVisit;
-            Selection.Start = new Place(0, iLine);
+            Selection.SetStartAndEnd(new Place(0, iLine));
             DoSelectionVisible();
         }
 
@@ -2607,7 +2608,7 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
                 {
                     int iLine = Selection.Start.iLine;
                     RemoveLines(new List<int> { iLine });
-                    Selection.Start = new Place(0, Math.Max(0, Math.Min(iLine, LinesCount - 1)));
+                    Selection.SetStartAndEnd(new Place(0, Math.Max(0, Math.Min(iLine, LinesCount - 1))));
                 }
             }
         }
@@ -2661,9 +2662,9 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
         public void GoEnd()
         {
             if (lines.Count > 0)
-                Selection.Start = new Place(lines[lines.Count - 1].Count, lines.Count - 1);
+                Selection.SetStartAndEnd(new Place(lines[lines.Count - 1].Count, lines.Count - 1));
             else
-                Selection.Start = new Place(0, 0);
+                Selection.SetStartAndEnd(new Place(0, 0));
 
             DoCaretVisible();
         }
@@ -2673,7 +2674,7 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
         /// </summary>
         public void GoHome()
         {
-            Selection.Start = new Place(0, 0);
+            Selection.SetStartAndEnd(new Place(0, 0));
 
             DoCaretVisible();
             //VerticalScroll.Value = 0;
@@ -2821,7 +2822,7 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
             var range = InsertText(text, style);
             //
             count = range.Text.Length - count;
-            Selection.Start = PositionToPlace(oldStart + (oldStart >= pos ? count : 0));
+            Selection.SetStartAndEnd(PositionToPlace(oldStart + (oldStart >= pos ? count : 0)));
             Selection.End = PositionToPlace(oldEnd + (oldEnd >= pos ? count : 0));
             Selection.EndUpdate();
 
@@ -2854,9 +2855,9 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
             try
             {
                 if (lines.Count > 0)
-                    Selection.Start = new Place(lines[lines.Count - 1].Count, lines.Count - 1);
+                    Selection.SetStartAndEnd(new Place(lines[lines.Count - 1].Count, lines.Count - 1));
                 else
-                    Selection.Start = new Place(0, 0);
+                    Selection.SetStartAndEnd(new Place(0, 0));
 
                 //remember last caret position
                 Place last = Selection.Start;
@@ -3034,7 +3035,7 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
             Selection.BeginUpdate();
             try
             {
-                Selection.Start = new Place(lineLength, Selection.Start.iLine);
+                Selection.SetStartAndEnd(new Place(lineLength, Selection.Start.iLine));
                 lines.Manager.ExecuteCommand(new InsertTextCommand(TextSource, new string(' ', count)));
             }
             finally
@@ -4144,7 +4145,7 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
             // get text of selected lines
             string text = Environment.NewLine + selection.Text;
             // move caret to end of selected lines
-            selection.Start = selection.End;
+            Selection.Start = selection.End;
             // insert text
             InsertText(text);
         }
@@ -4177,9 +4178,9 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
                 for (int i = Selection.Start.iLine; i <= Selection.End.iLine; i++)
                     temp.Add(i);
                 RemoveLines(temp);
-                Selection.Start = new Place(GetLineLength(iLine), iLine);
+                Selection.SetStartAndEnd(new Place(GetLineLength(iLine), iLine));
                 SelectedText = "\n" + text;
-                Selection.Start = new Place(prevSelection.Start.iChar, prevSelection.Start.iLine + 1);
+                Selection.SetStartAndEnd(new Place(prevSelection.Start.iChar, prevSelection.Start.iLine + 1));
                 Selection.End = new Place(prevSelection.End.iChar, prevSelection.End.iLine + 1);
             }
             else
@@ -4206,9 +4207,9 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
                 for (int i = Selection.Start.iLine; i <= Selection.End.iLine; i++)
                     temp.Add(i);
                 RemoveLines(temp);
-                Selection.Start = new Place(0, iLine - 1);
+                Selection.SetStartAndEnd(new Place(0, iLine - 1));
                 SelectedText = text + "\n";
-                Selection.Start = new Place(prevSelection.Start.iChar, prevSelection.Start.iLine - 1);
+                Selection.SetStartAndEnd(new Place(prevSelection.Start.iChar, prevSelection.Start.iLine - 1));
                 Selection.End = new Place(prevSelection.End.iChar, prevSelection.End.iLine - 1);
             }
             else
@@ -4741,17 +4742,17 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
             //insert start spaces
             if (needToInsert == 0)
                 return;
-            Selection.Start = new Place(0, iLine);
+            Selection.SetStartAndEnd(new Place(0, iLine));
             if (needToInsert > 0)
                 InsertText(new String(' ', needToInsert));
             else
             {
-                Selection.Start = new Place(0, iLine);
+                Selection.SetStartAndEnd(new Place(0, iLine));
                 Selection.End = new Place(-needToInsert, iLine);
                 ClearSelected();
             }
 
-            Selection.Start = new Place(Math.Min(lines[iLine].Count, Math.Max(0, oldStart.iChar + needToInsert)), iLine);
+            Selection.SetStartAndEnd(new Place(Math.Min(lines[iLine].Count, Math.Max(0, oldStart.iChar + needToInsert)), iLine));
         }
 
         /// <summary>
@@ -5579,7 +5580,7 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
                     //select whole line
                     int iLine = PointToPlaceSimple(e.Location).iLine;
                     lineSelectFrom = iLine;
-                    Selection.Start = new Place(0, iLine);
+                    Selection.SetStartAndEnd(new Place(0, iLine));
                     Selection.End = new Place(GetLineLength(iLine), iLine);
                     Selection.EndUpdate();
                     Invalidate();
@@ -5600,15 +5601,15 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
 
             if (Selection.ColumnSelectionMode)
             {
-                Selection.Start = PointToPlaceSimple(e.Location);
+                Selection.SetStartAndEnd(PointToPlaceSimple(e.Location));
                 Selection.ColumnSelectionMode = true;
             }
             else
             {
                 if (VirtualSpace)
-                    Selection.Start = PointToPlaceSimple(e.Location);
+                    Selection.SetStartAndEnd(PointToPlaceSimple(e.Location));
                 else
-                    Selection.Start = PointToPlace(e.Location);
+                    Selection.SetStartAndEnd(PointToPlace(e.Location));
             }
 
             if ((lastModifiers & Keys.Shift) != 0)
@@ -5819,12 +5820,12 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
                     int iLine = place.iLine;
                     if (iLine < lineSelectFrom)
                     {
-                        Selection.Start = new Place(0, iLine);
+                        Selection.SetStartAndEnd(new Place(0, iLine));
                         Selection.End = new Place(GetLineLength(lineSelectFrom), lineSelectFrom);
                     }
                     else
                     {
-                        Selection.Start = new Place(GetLineLength(iLine), iLine);
+                        Selection.SetStartAndEnd(new Place(GetLineLength(iLine), iLine));
                         Selection.End = new Place(0, lineSelectFrom);
                     }
 
@@ -5840,11 +5841,11 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
                     Selection.BeginUpdate();
                     if (Selection.ColumnSelectionMode)
                     {
-                        Selection.Start = place;
+                        Selection.SetStartAndEnd(place);
                         Selection.ColumnSelectionMode = true;
                     }
                     else
-                        Selection.Start = place;
+                        Selection.SetStartAndEnd(place);
                     Selection.End = oldEnd;
                     Selection.EndUpdate();
                     DoCaretVisible();
@@ -6678,7 +6679,7 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
             int newLine = FindNextVisibleLine(to);
             if (newLine == to)
                 newLine = FindPrevVisibleLine(from);
-            Selection.Start = new Place(0, newLine);
+            Selection.SetStartAndEnd(new Place(0, newLine));
             //
             needRecalc = true;
             Invalidate();
@@ -6730,7 +6731,7 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
             {
                 if (!Selection.ReadOnly)
                 {
-                    Selection.Start = new Place(this[Selection.Start.iLine].StartSpacesCount, Selection.Start.iLine);
+                    Selection.SetStartAndEnd(new Place(this[Selection.Start.iLine].StartSpacesCount, Selection.Start.iLine));
                     //insert tab as spaces
                     int spaces = TabLength - (Selection.Start.iChar % TabLength);
                     //replace mode? select forward chars
@@ -6771,7 +6772,7 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
             for (int i = from; i <= to; i++)
             {
                 if (lines[i].Count == 0) continue;
-                Selection.Start = new Place(startChar, i);
+                Selection.SetStartAndEnd(new Place(startChar, i));
                 lines.Manager.ExecuteCommand(new InsertTextCommand(TextSource, new String(' ', TabLength)));
             }
 
@@ -6780,7 +6781,7 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
             {
                 int newSelectionStartCharacterIndex = currentSelection.Start.iChar + this.TabLength;
                 int newSelectionEndCharacterIndex = currentSelection.End.iChar + (currentSelection.End.iLine == to ? this.TabLength : 0);
-                this.Selection.Start = new Place(newSelectionStartCharacterIndex, currentSelection.Start.iLine);
+                this.Selection.SetStartAndEnd(new Place(newSelectionStartCharacterIndex, currentSelection.Start.iLine));
                 this.Selection.End = new Place(newSelectionEndCharacterIndex, currentSelection.End.iLine);
             }
             else
@@ -6866,7 +6867,7 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
             {
                 int newSelectionStartCharacterIndex = Math.Max(0, currentSelection.Start.iChar - numberOfDeletedWhitespacesOfFirstLine);
                 int newSelectionEndCharacterIndex = Math.Max(0, currentSelection.End.iChar - numberOfDeletetWhitespacesOfLastLine);
-                this.Selection.Start = new Place(newSelectionStartCharacterIndex, currentSelection.Start.iLine);
+                this.Selection.SetStartAndEnd(new Place(newSelectionStartCharacterIndex, currentSelection.Start.iLine));
                 this.Selection.End = new Place(newSelectionEndCharacterIndex, currentSelection.End.iLine);
             }
             else
@@ -6920,14 +6921,14 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
                 lines.Manager.ExecuteCommand(new SelectCommand(TextSource));//remember selection
 
                 // Remove whitespaces
-                this.Selection.Start = new Place(leftOffset, currentLineIndex);
+                this.Selection.SetStartAndEnd(new Place(leftOffset, currentLineIndex));
                 this.Selection.End = new Place(leftOffset + numberOfCharactersToRemove, currentLineIndex);
                 ClearSelected();
 
                 // Restore selection
                 int newSelectionStartCharacterIndex = currentSelection.Start.iChar - numberOfCharactersToRemove;
                 int newSelectionEndCharacterIndex = currentSelection.End.iChar - numberOfCharactersToRemove;
-                this.Selection.Start = new Place(newSelectionStartCharacterIndex, currentLineIndex);
+                this.Selection.SetStartAndEnd(new Place(newSelectionStartCharacterIndex, currentLineIndex));
                 this.Selection.End = new Place(newSelectionEndCharacterIndex, currentLineIndex);
 
                 lines.Manager.ExecuteCommand(new SelectCommand(TextSource));//remember selection
@@ -6959,7 +6960,7 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
                 DoAutoIndent(i);
             //
             lines.Manager.EndAutoUndoCommands();
-            Selection.Start = r.Start;
+            Selection.SetStartAndEnd(r.Start);
             Selection.End = r.End;
             Selection.Expand();
             //
@@ -6982,10 +6983,10 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
             int spaces = GetMinStartSpacesCount(from, to);
             for (int i = from; i <= to; i++)
             {
-                Selection.Start = new Place(spaces, i);
+                Selection.SetStartAndEnd(new Place(spaces, i));
                 lines.Manager.ExecuteCommand(new InsertTextCommand(TextSource, prefix));
             }
-            Selection.Start = new Place(0, from);
+            Selection.SetStartAndEnd(new Place(0, from));
             Selection.End = new Place(lines[to].Count, to);
             needRecalc = true;
             lines.Manager.EndAutoUndoCommands();
@@ -7014,12 +7015,12 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
                 if (trimmedText.StartsWith(prefix))
                 {
                     int spaces = text.Length - trimmedText.Length;
-                    Selection.Start = new Place(spaces, i);
+                    Selection.SetStartAndEnd(new Place(spaces, i));
                     Selection.End = new Place(spaces + prefix.Length, i);
                     ClearSelected();
                 }
             }
-            Selection.Start = new Place(0, from);
+            Selection.SetStartAndEnd(new Place(0, from));
             Selection.End = new Place(lines[to].Count, to);
             needRecalc = true;
             lines.Manager.EndAutoUndoCommands();
@@ -7079,7 +7080,7 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
                 if (iEnd < 0)
                     return;
                 Selection.BeginUpdate();
-                Selection.Start = new Place(0, iStart);
+                Selection.SetStartAndEnd(new Place(0, iStart));
                 Selection.End = new Place(lines[iEnd].Count, iEnd);
                 Selection.EndUpdate();
                 Invalidate();
@@ -7536,7 +7537,7 @@ window.status = ""#print"";
                 IsChanged = false;
                 throw;
             }
-            Selection.Start = Place.Empty;
+            Selection.SetStartAndEnd(Place.Empty);
             DoSelectionVisible();
         }
 
@@ -7706,7 +7707,7 @@ window.status = ""#print"";
         void ISupportInitialize.EndInit()
         {
             OnTextChanged();
-            Selection.Start = Place.Empty;
+            Selection.SetStartAndEnd(Place.Empty);
             DoCaretVisible();
             IsChanged = false;
             ClearUndo();
@@ -7772,7 +7773,7 @@ window.status = ""#print"";
             {
                 Selection.BeginUpdate();
                 // Insert text
-                Selection.Start = place;
+                Selection.SetStartAndEnd(place);
                 InsertText(text);
                 // Select inserted text
                 Selection = new Range(this, place, Selection.Start);
@@ -7880,7 +7881,7 @@ window.status = ""#print"";
             {
                 Selection.BeginUpdate();
                 // Insert text
-                Selection.Start = place;
+                Selection.SetStartAndEnd(place);
                 InsertText(text);
                 // Select inserted text
                 Selection = new Range(this, place, Selection.Start);
@@ -8040,7 +8041,7 @@ window.status = ""#print"";
             if (e.Data.GetDataPresent(DataFormats.Text))
             {
                 Point p = PointToClient(new Point(e.X, e.Y));
-                Selection.Start = PointToPlace(p);
+                Selection.SetStartAndEnd(PointToPlace(p));
                 if (p.Y < 6 && VerticalScroll.Visible && VerticalScroll.Value > 0)
                     VerticalScroll.Value = Math.Max(0, VerticalScroll.Value - charHeight);
 

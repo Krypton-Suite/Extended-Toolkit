@@ -44,6 +44,15 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
 
         #region Variables
         private FastColouredTextBox target;
+
+        //Palette State
+        private KryptonManager _manager = new KryptonManager();
+        private PaletteBackInheritRedirect _paletteBack;
+        private PaletteBorderInheritRedirect _paletteBorder;
+        private PaletteContentInheritRedirect _paletteContent;
+
+        private IPalette _palette;
+        private PaletteRedirect _paletteRedirect;
         #endregion
 
         public EventHandler TargetChanged;
@@ -79,9 +88,25 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
             MinimumSize = new Size(0, 24);
             MaximumSize = new Size(int.MaxValue / 2, 24);
 
-            BackColour2 = SystemColors.ControlLight;
-            TickColour = Color.DarkGray;
-            CaretTickColour = Color.Black;
+            //BackColour2 = SystemColors.ControlLight;
+            //TickColour = Color.DarkGray;
+            //CaretTickColour = Color.Black;
+
+            //Create redirection object to the base palette
+            if (((_palette != null)))
+            {
+                _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+            }
+            KryptonManager.GlobalPaletteChanged += new EventHandler(OnGlobalPaletteChanged);
+            _palette = KryptonManager.CurrentGlobalPalette;
+            _paletteRedirect = new PaletteRedirect(_palette);
+
+            //Create accessor objects for the back, border and content
+            _paletteBack = new PaletteBackInheritRedirect(_paletteRedirect);
+            _paletteBorder = new PaletteBorderInheritRedirect(_paletteRedirect);
+            _paletteContent = new PaletteContentInheritRedirect(_paletteRedirect);
+
+            InitColours();
         }
 
 
@@ -167,5 +192,40 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
                 e.Graphics.DrawLine(pen, new Point(car.X + 2, fontSize.Height + 3), new Point(car.X + 2, Height - 4));
             }
         }
+
+        #region " Krypton "
+        //Krypton Events
+        private void OnPalettePaint(object sender, PaletteLayoutEventArgs e)
+        {
+            base.Invalidate();
+        }
+
+        private void OnGlobalPaletteChanged(object sender, EventArgs e)
+        {
+            if (((_palette != null)))
+            {
+                _palette.PalettePaint -= new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+            }
+            _palette = KryptonManager.CurrentGlobalPalette;
+            _paletteRedirect.Target = _palette;
+            if (((_palette != null)))
+            {
+                _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                InitColours();
+            }
+            base.Invalidate();
+
+        }
+
+
+        private void InitColours()
+        {
+            BorderStyle = BorderStyle.None;
+            BackColour2 = _palette.ColorTable.OverflowButtonGradientBegin;
+            ForeColor = _palette.ColorTable.MenuItemText;
+            TickColour = _palette.ColorTable.MenuStripGradientEnd;
+            CaretTickColour = _palette.ColorTable.MenuStripText;
+        }
+        #endregion
     }
 }

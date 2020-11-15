@@ -156,9 +156,9 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
         {
             ColumnSelectionMode = false;
 
-            Start = new Place(0, 0);
+            SetStartAndEnd(new Place(0, 0));
             if (tb.LinesCount == 0)
-                Start = new Place(0, 0);
+                SetStartAndEnd(new Place(0, 0));
             else
             {
                 end = new Place(0, 0);
@@ -176,7 +176,7 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
             get { return start; }
             set
             {
-                end = start = value;
+                start = value;
                 preferedPos = -1;
                 OnSelectionChanged();
             }
@@ -728,6 +728,12 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
         }
 
         /// <summary>
+        /// Setter changing both, the Start and End property to the same value
+        /// </summary>
+        /// <param name="value">The new place</param>
+        public void SetStartAndEnd(Place value) { End = Start = value; }
+
+        /// <summary>
         /// Set style for range
         /// </summary>
         public void SetStyle(Style style)
@@ -1213,7 +1219,7 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
             var mask = tb.GetStyleIndexMask(new Style[] { style });
             //
             Range r = new Range(tb);
-            r.Start = Start;
+            r.SetStartAndEnd(Start);
             //go left, check style
             while (r.GoLeftThroughFolded())
             {
@@ -1228,7 +1234,7 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
             }
             Place startFragment = r.Start;
 
-            r.Start = Start;
+            r.SetStartAndEnd(Start);
             //go right, check style
             do
             {
@@ -1264,7 +1270,7 @@ namespace Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box
             }
             Place startFragment = r.Start;
 
-            r.Start = Start;
+            r.SetStartAndEnd(Start);
             //go right, check symbols
             do
             {
