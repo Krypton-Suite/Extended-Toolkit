@@ -45,6 +45,7 @@
 
 ## 2021-02-01 - Build 2102 - February 2021
 * New `Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box` NuGet package
+* New expandable menu/context menu item in `Krypton.Toolkit.Suite.Extended.Tool.Strip.Items`
 * License headers for code files
 
 =======

@@ -11,7 +11,7 @@ namespace Krypton.Toolkit.Suite.Extended.Palette.Selectors
     {
         #region Design Code
         private KryptonPanel kryptonPanel1;
-        private Dialogs.KryptonOKDialogButton kdbtnOk;
+        private KryptonButton kdbtnOk;
         private KryptonButton kbtnSave;
         private KryptonButton kbtnCreate;
         private KryptonButton kbtnLoadPalette;
@@ -23,7 +23,7 @@ namespace Krypton.Toolkit.Suite.Extended.Palette.Selectors
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KryptonCustomPaletteXmlDialog));
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
-            this.kdbtnOk = new Krypton.Toolkit.Suite.Extended.Dialogs.KryptonOKDialogButton();
+            this.kdbtnOk = new Krypton.Toolkit.KryptonButton();
             this.kbtnSave = new Krypton.Toolkit.KryptonButton();
             this.kbtnCreate = new Krypton.Toolkit.KryptonButton();
             this.kbtnLoadPalette = new Krypton.Toolkit.KryptonButton();
@@ -53,7 +53,6 @@ namespace Krypton.Toolkit.Suite.Extended.Palette.Selectors
             this.kdbtnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.kdbtnOk.Location = new System.Drawing.Point(562, 5);
             this.kdbtnOk.Name = "kdbtnOk";
-            this.kdbtnOk.ParentWindow = null;
             this.kdbtnOk.Size = new System.Drawing.Size(90, 25);
             this.kdbtnOk.TabIndex = 4;
             this.kdbtnOk.Values.Text = "&OK";
