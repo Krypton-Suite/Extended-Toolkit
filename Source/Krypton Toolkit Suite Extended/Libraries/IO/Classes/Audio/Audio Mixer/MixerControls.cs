@@ -1,15 +1,9 @@
-﻿#region License
+﻿#region BSD License
 /*
-  THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY
-  KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
-  IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR
-  PURPOSE. IT CAN BE DISTRIBUTED FREE OF CHARGE AS LONG AS THIS HEADER 
-  REMAINS UNCHANGED.
-
-  Email:  gustavo_franco @hotmail.com
-
-  Copyright (C) 2005 Franco, Gustavo
-*/
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ */
 #endregion
 
 using Krypton.Toolkit.Suite.Extended.Core;
