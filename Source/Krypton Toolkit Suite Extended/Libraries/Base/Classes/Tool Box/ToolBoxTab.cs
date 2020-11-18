@@ -46,6 +46,21 @@ namespace Krypton.Toolkit.Suite.Extended.Base
 
         #endregion //Private Attributes
 
+        #region Krypton Variables
+        //Palette State
+        private KryptonManager _manager = new KryptonManager();
+
+        private PaletteBackInheritRedirect _paletteBack;
+
+        private PaletteBorderInheritRedirect _paletteBorder;
+
+        private PaletteContentInheritRedirect _paletteContent;
+
+        private IPalette _palette;
+
+        private PaletteRedirect _paletteRedirect;
+        #endregion
+
         #region Properties
 
         [Category("ToolBoxTab")]
@@ -2033,6 +2048,24 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             _delegates[2] = new MouseEventHandler(On_MouseMove);
             _delegates[3] = new EventHandler(On_MouseLeave);
             _delegates[4] = new PaintEventHandler(On_Paint);
+
+            //Create redirection object to the base palette
+            if (((_palette != null)))
+            {
+                _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+            }
+            KryptonManager.GlobalPaletteChanged += new EventHandler(OnGlobalPaletteChanged);
+            _palette = KryptonManager.CurrentGlobalPalette;
+            _paletteRedirect = new PaletteRedirect(_palette);
+
+            //Create accessor objects for the back, border and content
+            _paletteBack = new PaletteBackInheritRedirect(_paletteRedirect);
+
+            _paletteBorder = new PaletteBorderInheritRedirect(_paletteRedirect);
+
+            _paletteContent = new PaletteContentInheritRedirect(_paletteRedirect);
+
+            InitColours();
         }
 
         private void InvalidateEx(bool invalidateSelf, bool invalidateItems)
@@ -2672,5 +2705,40 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         }
 
         #endregion //Private Methods
+
+        #region Krypton
+        //Krypton Events
+        private void OnPalettePaint(object sender, PaletteLayoutEventArgs e)
+        {
+            base.Invalidate();
+        }
+
+        private void OnGlobalPaletteChanged(object sender, EventArgs e)
+        {
+            if (((_palette != null)))
+            {
+                _palette.PalettePaint -= new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+            }
+            _palette = KryptonManager.CurrentGlobalPalette;
+            _paletteRedirect.Target = _palette;
+            if (((_palette != null)))
+            {
+                _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                InitColours();
+            }
+            base.Invalidate();
+
+        }
+
+
+        private void InitColours()
+        {
+            ItemNormalColour = _palette.ColorTable.OverflowButtonGradientBegin;
+            ItemBorderColour = _palette.ColorTable.ToolStripBorder;
+            ItemBackgroundColour = _palette.ColorTable.MenuStripGradientBegin;
+            ItemHoverColour = _palette.ColorTable.ButtonCheckedGradientBegin;
+            ItemSelectedColour = _palette.ColorTable.ButtonPressedGradientBegin;
+        }
+        #endregion
     }
 }
