@@ -67,7 +67,7 @@ using System.Xml.Serialization;
 
 namespace Krypton.Toolkit.Suite.Extended.Base
 {
-    [Serializable]
+    [Description("A Visual Studio toolbox like control for your application."), Serializable]
     public class KryptonToolBox : UserControl
     {
         #region Constants
@@ -300,6 +300,20 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         [NonSerialized]
         private LayoutFinished _layoutFinished = null;
 
+        #region Krypton Variables
+        private KryptonManager _manager = new KryptonManager();
+
+        private PaletteBackInheritRedirect _paletteBack;
+
+        private PaletteBorderInheritRedirect _paletteBorder;
+
+        private PaletteContentInheritRedirect _paletteContent;
+
+        private IPalette _palette;
+
+        private PaletteRedirect _paletteRedirect;
+        #endregion
+
         #endregion //Private Attributes
 
         #region Public Attributes
@@ -401,6 +415,24 @@ namespace Krypton.Toolkit.Suite.Extended.Base
 
             _upScroll.Enabled = false;
             _dnScroll.Enabled = false;
+
+            //Create redirection object to the base palette
+            if (((_palette != null)))
+            {
+                _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+            }
+            KryptonManager.GlobalPaletteChanged += new EventHandler(OnGlobalPaletteChanged);
+            _palette = KryptonManager.CurrentGlobalPalette;
+            _paletteRedirect = new PaletteRedirect(_palette);
+
+            //Create accessor objects for the back, border and content
+            _paletteBack = new PaletteBackInheritRedirect(_paletteRedirect);
+
+            _paletteBorder = new PaletteBorderInheritRedirect(_paletteRedirect);
+
+            _paletteContent = new PaletteContentInheritRedirect(_paletteRedirect);
+
+            InitColours();
         }
 
         #endregion //Initialization
@@ -4070,5 +4102,45 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         }
 
         #endregion //Serialization
+
+        #region Krypton
+        //Krypton Events
+        private void OnPalettePaint(object sender, PaletteLayoutEventArgs e)
+        {
+            base.Invalidate();
+        }
+
+        private void OnGlobalPaletteChanged(object sender, EventArgs e)
+        {
+            if (((_palette != null)))
+            {
+                _palette.PalettePaint -= new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+            }
+            _palette = KryptonManager.CurrentGlobalPalette;
+            _paletteRedirect.Target = _palette;
+            if (((_palette != null)))
+            {
+                _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                InitColours();
+            }
+            base.Invalidate();
+
+        }
+
+
+        private void InitColours()
+        {
+            BorderStyle = BorderStyle.None;
+            ItemNormalColour = _palette.ColorTable.OverflowButtonGradientBegin;
+            TabNormalTextColour = _palette.ColorTable.MenuItemText;
+            ForeColor = _palette.ColorTable.MenuStripText;
+            TabSelectedTextColour = _palette.ColorTable.StatusStripText;
+            ItemHoverColour = _palette.ColorTable.ButtonCheckedGradientBegin;
+            TabHoverTextColour = _palette.ColorTable.ButtonSelectedHighlight;
+            ItemSelectedTextColour = _palette.ColorTable.ButtonSelectedGradientBegin;
+            ItemNormalTextColour = _palette.ColorTable.ToolStripText;
+            ItemHoverTextColour = _palette.ColorTable.ButtonSelectedGradientMiddle;
+        }
+        #endregion
     }
 }
