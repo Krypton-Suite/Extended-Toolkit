@@ -46,6 +46,8 @@
 ## 2021-02-01 - Build 2102 - February 2021
 * New `Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box` NuGet package
 * New expandable menu/context menu item in `Krypton.Toolkit.Suite.Extended.Tool.Strip.Items`
+* New [Visual Studio Toolbox](https://www.codeproject.com/Articles/8658/Another-ToolBox-Control) control
+* Implemented [#37](https://github.com/Krypton-Suite/Extended-Toolkit/issues/37), KryptonTextBox with Icon
 * License headers for code files
 
 =======

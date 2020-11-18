@@ -348,4 +348,10 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         BOTTOM,
         HIDDEN,
     }
+
+    public enum KryptonTextBoxImageAlignment
+    {
+        LEFT,
+        RIGHT
+    }
 }
