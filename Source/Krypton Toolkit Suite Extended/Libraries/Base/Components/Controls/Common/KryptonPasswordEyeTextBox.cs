@@ -16,10 +16,10 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         private void InitializeComponent()
         {
             this.pnlButton = new System.Windows.Forms.Panel();
+            this.kbtnRevealPassword = new Krypton.Toolkit.KryptonButton();
             this.kchkbtnRevealPassword = new Krypton.Toolkit.KryptonCheckButton();
             this.pnlTextField = new System.Windows.Forms.Panel();
             this.ktxtPasswordField = new Krypton.Toolkit.KryptonTextBox();
-            this.kbtnRevealPassword = new Krypton.Toolkit.KryptonButton();
             this.pnlButton.SuspendLayout();
             this.pnlTextField.SuspendLayout();
             this.SuspendLayout();
@@ -35,6 +35,22 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             this.pnlButton.Size = new System.Drawing.Size(27, 27);
             this.pnlButton.TabIndex = 0;
             // 
+            // kbtnRevealPassword
+            // 
+            this.kbtnRevealPassword.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kbtnRevealPassword.Location = new System.Drawing.Point(0, 0);
+            this.kbtnRevealPassword.Name = "kbtnRevealPassword";
+            this.kbtnRevealPassword.Size = new System.Drawing.Size(27, 27);
+            this.kbtnRevealPassword.StateCommon.Back.Color1 = System.Drawing.Color.White;
+            this.kbtnRevealPassword.StateCommon.Back.Color2 = System.Drawing.Color.White;
+            this.kbtnRevealPassword.StateCommon.Back.Image = global::Krypton.Toolkit.Suite.Extended.Base.Properties.Resources.Eye_Icon;
+            this.kbtnRevealPassword.TabIndex = 1;
+            this.kbtnRevealPassword.ToolTipValues.Description = "Reveals the password in the textbox.";
+            this.kbtnRevealPassword.ToolTipValues.EnableToolTips = true;
+            this.kbtnRevealPassword.ToolTipValues.Heading = "Reveal Password";
+            this.kbtnRevealPassword.ToolTipValues.Image = global::Krypton.Toolkit.Suite.Extended.Base.Properties.Resources.PasswordEyeImage;
+            this.kbtnRevealPassword.Values.Text = "";
+            // 
             // kchkbtnRevealPassword
             // 
             this.kchkbtnRevealPassword.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -43,7 +59,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             this.kchkbtnRevealPassword.Size = new System.Drawing.Size(27, 27);
             this.kchkbtnRevealPassword.StateCommon.Back.Color1 = System.Drawing.Color.White;
             this.kchkbtnRevealPassword.StateCommon.Back.Color2 = System.Drawing.Color.White;
-            this.kchkbtnRevealPassword.StateCommon.Back.Image = global::Krypton.Toolkit.Suite.Extended.Base.Properties.Resources.PasswordEyeImage;
+            this.kchkbtnRevealPassword.StateCommon.Back.Image = global::Krypton.Toolkit.Suite.Extended.Base.Properties.Resources.Eye_Icon;
             this.kchkbtnRevealPassword.TabIndex = 0;
             this.kchkbtnRevealPassword.Values.Image = global::Krypton.Toolkit.Suite.Extended.Base.Properties.Resources.PasswordEyeImage;
             this.kchkbtnRevealPassword.Values.Text = "";
@@ -66,18 +82,6 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             this.ktxtPasswordField.Size = new System.Drawing.Size(223, 23);
             this.ktxtPasswordField.TabIndex = 0;
             this.ktxtPasswordField.UseSystemPasswordChar = true;
-            // 
-            // kbtnRevealPassword
-            // 
-            this.kbtnRevealPassword.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kbtnRevealPassword.Location = new System.Drawing.Point(0, 0);
-            this.kbtnRevealPassword.Name = "kbtnRevealPassword";
-            this.kbtnRevealPassword.Size = new System.Drawing.Size(27, 27);
-            this.kbtnRevealPassword.StateCommon.Back.Color1 = System.Drawing.Color.White;
-            this.kbtnRevealPassword.StateCommon.Back.Color2 = System.Drawing.Color.White;
-            this.kbtnRevealPassword.StateCommon.Back.Image = global::Krypton.Toolkit.Suite.Extended.Base.Properties.Resources.PasswordEyeImage;
-            this.kbtnRevealPassword.TabIndex = 1;
-            this.kbtnRevealPassword.Values.Text = "";
             // 
             // KryptonPasswordEyeTextBox
             // 
