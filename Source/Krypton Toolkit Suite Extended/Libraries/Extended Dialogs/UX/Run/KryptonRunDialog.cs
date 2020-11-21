@@ -7,10 +7,12 @@
 #endregion
 
 using Krypton.Toolkit.Suite.Extended.Common;
+using Microsoft.WindowsAPICodePack.Dialogs;
 using System;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
@@ -35,25 +37,25 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KryptonRunDialog));
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
+            this.kdbtnCancel = new Krypton.Toolkit.Suite.Extended.Dialogs.KryptonCancelDialogButton();
             this.kbtnLocate = new Krypton.Toolkit.KryptonButton();
             this.kbtnBrowse = new Krypton.Toolkit.KryptonButton();
             this.kdbRun = new Krypton.Toolkit.Suite.Extended.Dialogs.KryptonOKDialogButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
-            this.kdbtnCancel = new Krypton.Toolkit.Suite.Extended.Dialogs.KryptonCancelDialogButton();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.kryptonWrapLabel1 = new Krypton.Toolkit.KryptonWrapLabel();
-            this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
-            this.kcmbPath = new Krypton.Toolkit.KryptonComboBox();
-            this.pbxInputIcon = new System.Windows.Forms.PictureBox();
             this.ktxtPath = new Krypton.Toolkit.KryptonTextBox();
+            this.pbxInputIcon = new System.Windows.Forms.PictureBox();
+            this.kcmbPath = new Krypton.Toolkit.KryptonComboBox();
+            this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
+            this.kryptonWrapLabel1 = new Krypton.Toolkit.KryptonWrapLabel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
             this.kryptonPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kcmbPath)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxInputIcon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kcmbPath)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // kryptonPanel2
@@ -68,6 +70,17 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.kryptonPanel2.Size = new System.Drawing.Size(637, 44);
             this.kryptonPanel2.TabIndex = 1;
             // 
+            // kdbtnCancel
+            // 
+            this.kdbtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.kdbtnCancel.Location = new System.Drawing.Point(445, 7);
+            this.kdbtnCancel.Name = "kdbtnCancel";
+            this.kdbtnCancel.ParentWindow = null;
+            this.kdbtnCancel.Size = new System.Drawing.Size(90, 25);
+            this.kdbtnCancel.TabIndex = 4;
+            this.kdbtnCancel.Values.Text = "C&ancel";
+            this.kdbtnCancel.Click += new System.EventHandler(this.kdbtnCancel_Click);
+            // 
             // kbtnLocate
             // 
             this.kbtnLocate.Location = new System.Drawing.Point(12, 7);
@@ -76,6 +89,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.kbtnLocate.TabIndex = 4;
             this.kbtnLocate.Values.Text = "Loc&ate...";
             this.kbtnLocate.Visible = false;
+            this.kbtnLocate.Click += new System.EventHandler(this.kbtnLocate_Click);
             // 
             // kbtnBrowse
             // 
@@ -84,6 +98,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.kbtnBrowse.Size = new System.Drawing.Size(84, 25);
             this.kbtnBrowse.TabIndex = 3;
             this.kbtnBrowse.Values.Text = "Br&owse...";
+            this.kbtnBrowse.Click += new System.EventHandler(this.kbtnBrowse_Click);
             // 
             // kdbRun
             // 
@@ -95,6 +110,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.kdbRun.Size = new System.Drawing.Size(90, 25);
             this.kdbRun.TabIndex = 2;
             this.kdbRun.Values.Text = "&Run";
+            this.kdbRun.Click += new System.EventHandler(this.kdbRun_Click);
             // 
             // panel1
             // 
@@ -119,48 +135,27 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.kryptonPanel1.Size = new System.Drawing.Size(637, 259);
             this.kryptonPanel1.TabIndex = 3;
             // 
-            // kdbtnCancel
+            // ktxtPath
             // 
-            this.kdbtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.kdbtnCancel.Location = new System.Drawing.Point(445, 7);
-            this.kdbtnCancel.Name = "kdbtnCancel";
-            this.kdbtnCancel.ParentWindow = null;
-            this.kdbtnCancel.Size = new System.Drawing.Size(90, 25);
-            this.kdbtnCancel.TabIndex = 4;
-            this.kdbtnCancel.Values.Text = "C&ancel";
+            this.ktxtPath.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.ktxtPath.Hint = "Type a path to a application, file/directory or website here...";
+            this.ktxtPath.Location = new System.Drawing.Point(67, 197);
+            this.ktxtPath.Name = "ktxtPath";
+            this.ktxtPath.Size = new System.Drawing.Size(520, 24);
+            this.ktxtPath.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ktxtPath.StateCommon.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
+            this.ktxtPath.TabIndex = 4;
+            this.ktxtPath.TextChanged += new System.EventHandler(this.ktxtPath_TextChanged);
             // 
-            // pictureBox1
+            // pbxInputIcon
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = global::Krypton.Toolkit.Suite.Extended.Dialogs.Properties.Resources.Run_48_x_48;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 77);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(48, 48);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 4;
-            this.pictureBox1.TabStop = false;
-            // 
-            // kryptonWrapLabel1
-            // 
-            this.kryptonWrapLabel1.AutoSize = false;
-            this.kryptonWrapLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonWrapLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
-            this.kryptonWrapLabel1.Location = new System.Drawing.Point(67, 25);
-            this.kryptonWrapLabel1.Name = "kryptonWrapLabel1";
-            this.kryptonWrapLabel1.Size = new System.Drawing.Size(558, 148);
-            this.kryptonWrapLabel1.StateCommon.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonWrapLabel1.Text = "Type the name of a application, file, directory or internet\r\nresource, and Window" +
-    "s will open it for you.";
-            this.kryptonWrapLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // kryptonLabel1
-            // 
-            this.kryptonLabel1.Location = new System.Drawing.Point(12, 201);
-            this.kryptonLabel1.Name = "kryptonLabel1";
-            this.kryptonLabel1.Size = new System.Drawing.Size(49, 21);
-            this.kryptonLabel1.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonLabel1.TabIndex = 4;
-            this.kryptonLabel1.Values.Text = "Path:";
+            this.pbxInputIcon.BackColor = System.Drawing.Color.Transparent;
+            this.pbxInputIcon.Location = new System.Drawing.Point(593, 195);
+            this.pbxInputIcon.Name = "pbxInputIcon";
+            this.pbxInputIcon.Size = new System.Drawing.Size(32, 32);
+            this.pbxInputIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pbxInputIcon.TabIndex = 8;
+            this.pbxInputIcon.TabStop = false;
             // 
             // kcmbPath
             // 
@@ -175,27 +170,40 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.kcmbPath.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
             this.kcmbPath.StateCommon.Item.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kcmbPath.TabIndex = 5;
+            this.kcmbPath.TextChanged += new System.EventHandler(this.kcmbPath_TextChanged);
             // 
-            // pbxInputIcon
+            // kryptonLabel1
             // 
-            this.pbxInputIcon.BackColor = System.Drawing.Color.Transparent;
-            this.pbxInputIcon.Location = new System.Drawing.Point(593, 195);
-            this.pbxInputIcon.Name = "pbxInputIcon";
-            this.pbxInputIcon.Size = new System.Drawing.Size(32, 32);
-            this.pbxInputIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pbxInputIcon.TabIndex = 8;
-            this.pbxInputIcon.TabStop = false;
+            this.kryptonLabel1.Location = new System.Drawing.Point(12, 201);
+            this.kryptonLabel1.Name = "kryptonLabel1";
+            this.kryptonLabel1.Size = new System.Drawing.Size(49, 21);
+            this.kryptonLabel1.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabel1.TabIndex = 4;
+            this.kryptonLabel1.Values.Text = "Path:";
             // 
-            // ktxtPath
+            // kryptonWrapLabel1
             // 
-            this.ktxtPath.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.ktxtPath.Hint = "Type a path to a application, file/directory or website here...";
-            this.ktxtPath.Location = new System.Drawing.Point(67, 197);
-            this.ktxtPath.Name = "ktxtPath";
-            this.ktxtPath.Size = new System.Drawing.Size(520, 25);
-            this.ktxtPath.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ktxtPath.StateCommon.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
-            this.ktxtPath.TabIndex = 4;
+            this.kryptonWrapLabel1.AutoSize = false;
+            this.kryptonWrapLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonWrapLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.kryptonWrapLabel1.Location = new System.Drawing.Point(67, 25);
+            this.kryptonWrapLabel1.Name = "kryptonWrapLabel1";
+            this.kryptonWrapLabel1.Size = new System.Drawing.Size(558, 148);
+            this.kryptonWrapLabel1.StateCommon.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonWrapLabel1.Text = "Type the name of a application, file, directory or internet\r\nresource, and Window" +
+    "s will open it for you.";
+            this.kryptonWrapLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = global::Krypton.Toolkit.Suite.Extended.Dialogs.Properties.Resources.Run_48_x_48;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 77);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(48, 48);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 4;
+            this.pictureBox1.TabStop = false;
             // 
             // KryptonRunDialog
             // 
@@ -216,9 +224,9 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kcmbPath)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxInputIcon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kcmbPath)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -260,6 +268,12 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         /// <returns><c>true</c> if [is ComboBox string empty]; otherwise, <c>false</c>.</returns>
         private bool IsComboBoxStringEmpty() => string.IsNullOrEmpty(kcmbPath.Text);
 
+        /// <summary>Determines whether [is input a directory] [the specified input].</summary>
+        /// <param name="input">The input.</param>
+        /// <returns>
+        ///   <c>true</c> if [is input a directory] [the specified input]; otherwise, <c>false</c>.</returns>
+        private bool IsInputADirectory(Control input) => input.Text.EndsWith("\\");
+
         /// <summary>Runs the process.</summary>
         /// <param name="path">The file path.</param>
         private void RunProcess(string path)
@@ -283,9 +297,9 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         /// <returns>The application icon.</returns>
         private Image GetApplicationIcon(string path) => Icon.ExtractAssociatedIcon(path).ToBitmap();
 
-        /// <summary>Launches the process.</summary>
+        /// <summary>Locates the process.</summary>
         /// <param name="path">The file path.</param>
-        private void LaunchProcess(string path) => Process.Start("explorer.exe", path);
+        private void LocateProcess(string path) => Process.Start("explorer.exe", path);
 
         /// <summary>Enables the run button.</summary>
         /// <param name="value">if set to <c>true</c> [value].</param>
@@ -376,6 +390,64 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         #endregion
 
         private void KryptonRunDialog_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void kbtnBrowse_Click(object sender, EventArgs e)
+        {
+            CommonOpenFileDialog cofd = new CommonOpenFileDialog();
+
+            cofd.Title = "Browse for a Process:";
+
+            if (cofd.ShowDialog() == CommonFileDialogResult.Ok)
+            {
+                if (GetInputType() == RunDialogType.COMBOBOX)
+                {
+                    kcmbPath.Text = Path.GetFullPath(cofd.FileName);
+                }
+                else if (GetInputType() == RunDialogType.TEXTBOX)
+                {
+                    ktxtPath.Text = Path.GetFullPath(cofd.FileName);
+                }
+            }
+        }
+
+        private void kdbtnCancel_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void kdbRun_Click(object sender, EventArgs e)
+        {
+            if (GetInputType() == RunDialogType.COMBOBOX)
+            {
+                RunProcess(kcmbPath.Text);
+            }
+            else if (GetInputType() == RunDialogType.TEXTBOX)
+            {
+                RunProcess(ktxtPath.Text);
+            }
+        }
+
+        private void kbtnLocate_Click(object sender, EventArgs e)
+        {
+            if (GetInputType() == RunDialogType.COMBOBOX)
+            {
+                LocateProcess(kcmbPath.Text);
+            }
+            else if (GetInputType() == RunDialogType.TEXTBOX)
+            {
+                LocateProcess(ktxtPath.Text);
+            }
+        }
+
+        private void ktxtPath_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void kcmbPath_TextChanged(object sender, EventArgs e)
         {
 
         }
