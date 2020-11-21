@@ -49,6 +49,7 @@
 * New [Visual Studio Toolbox](https://www.codeproject.com/Articles/8658/Another-ToolBox-Control) control
 * New `KryptonPasswordEyeTextBox`
 * Implemented [#37](https://github.com/Krypton-Suite/Extended-Toolkit/issues/37), KryptonTextBox with Icon
+* `KryptonRunDialog` modifications
 * License headers for code files
 
 =======

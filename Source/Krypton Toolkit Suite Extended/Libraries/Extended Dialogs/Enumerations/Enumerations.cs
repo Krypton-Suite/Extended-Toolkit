@@ -790,4 +790,23 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         /// </summary>
         Both,
     }
+
+    /// <summary>The run dialog UI type.</summary>
+    public enum RunDialogType
+    {
+        /// <summary>
+        /// Show a combobox on the run dialog.
+        /// </summary>
+        COMBOBOX,
+        /// <summary>
+        /// Show a textbox on the run dialog.
+        /// </summary>
+        TEXTBOX
+    }
+
+    public enum RunDialogIconVisibility
+    {
+        HIDDEN,
+        VISIBLE
+    }
 }
