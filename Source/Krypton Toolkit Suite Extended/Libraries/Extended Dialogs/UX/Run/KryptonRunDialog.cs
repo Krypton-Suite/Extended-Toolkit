@@ -10,6 +10,7 @@ using Krypton.Toolkit.Suite.Extended.Base;
 using Krypton.Toolkit.Suite.Extended.Common;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using System;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
@@ -255,9 +256,15 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         private RunDialogIconVisibility _iconVisibility;
         #endregion
 
-        #region Properties
+        #region Properties        
+        /// <summary>Shows the run button as a <see cref="KryptonUACElevatedButton"/> style button instead of a <see cref="KryptonButton"/>.</summary>
+        /// <value>
+        ///   <c>true</c> if [show uac run button]; otherwise, <c>false</c>.
+        /// </value>
+        [DefaultValue(false), Description("Shows the run button as a UAC style button.")]
         public bool ShowUACRunButton { get => _showUACRunButton; set { _showUACRunButton = value; Invalidate(); } }
 
+        [DefaultValue(1), Description("Shows the icon representation of the file, application etc in the text field.")]
         public RunDialogIconVisibility IconVisibility { get => _iconVisibility; set { _iconVisibility = value; Invalidate(); } }
 
         public RunDialogType DialogType { get => _type; set { _type = value; Invalidate(); } }
@@ -533,6 +540,8 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
                 kuacbtnRun.Visible = false;
             }
+
+            AdaptUI(DialogType, IconVisibility);
 
             base.OnPaint(e);
         }
