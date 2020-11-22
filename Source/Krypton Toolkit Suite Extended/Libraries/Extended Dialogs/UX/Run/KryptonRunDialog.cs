@@ -6,6 +6,7 @@
  */
 #endregion
 
+using Krypton.Toolkit.Suite.Extended.Base;
 using Krypton.Toolkit.Suite.Extended.Common;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using System;
@@ -31,16 +32,15 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         private KryptonLabel kryptonLabel1;
         private System.Windows.Forms.PictureBox pbxInputIcon;
         private KryptonTextBox ktxtPath;
+        private Base.KryptonUACElevatedButton kuacbtnRun;
         private KryptonOKDialogButton kdbRun;
 
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KryptonRunDialog));
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
-            this.kdbtnCancel = new Krypton.Toolkit.Suite.Extended.Dialogs.KryptonCancelDialogButton();
             this.kbtnLocate = new Krypton.Toolkit.KryptonButton();
             this.kbtnBrowse = new Krypton.Toolkit.KryptonButton();
-            this.kdbRun = new Krypton.Toolkit.Suite.Extended.Dialogs.KryptonOKDialogButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             this.ktxtPath = new Krypton.Toolkit.KryptonTextBox();
@@ -49,6 +49,9 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
             this.kryptonWrapLabel1 = new Krypton.Toolkit.KryptonWrapLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.kuacbtnRun = new Krypton.Toolkit.Suite.Extended.Base.KryptonUACElevatedButton();
+            this.kdbtnCancel = new Krypton.Toolkit.Suite.Extended.Dialogs.KryptonCancelDialogButton();
+            this.kdbRun = new Krypton.Toolkit.Suite.Extended.Dialogs.KryptonOKDialogButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
             this.kryptonPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
@@ -60,6 +63,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             // 
             // kryptonPanel2
             // 
+            this.kryptonPanel2.Controls.Add(this.kuacbtnRun);
             this.kryptonPanel2.Controls.Add(this.kdbtnCancel);
             this.kryptonPanel2.Controls.Add(this.kbtnLocate);
             this.kryptonPanel2.Controls.Add(this.kbtnBrowse);
@@ -69,17 +73,6 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.kryptonPanel2.Name = "kryptonPanel2";
             this.kryptonPanel2.Size = new System.Drawing.Size(637, 44);
             this.kryptonPanel2.TabIndex = 1;
-            // 
-            // kdbtnCancel
-            // 
-            this.kdbtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.kdbtnCancel.Location = new System.Drawing.Point(445, 7);
-            this.kdbtnCancel.Name = "kdbtnCancel";
-            this.kdbtnCancel.ParentWindow = null;
-            this.kdbtnCancel.Size = new System.Drawing.Size(90, 25);
-            this.kdbtnCancel.TabIndex = 4;
-            this.kdbtnCancel.Values.Text = "C&ancel";
-            this.kdbtnCancel.Click += new System.EventHandler(this.kdbtnCancel_Click);
             // 
             // kbtnLocate
             // 
@@ -99,18 +92,6 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.kbtnBrowse.TabIndex = 3;
             this.kbtnBrowse.Values.Text = "Br&owse...";
             this.kbtnBrowse.Click += new System.EventHandler(this.kbtnBrowse_Click);
-            // 
-            // kdbRun
-            // 
-            this.kdbRun.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.kdbRun.Enabled = false;
-            this.kdbRun.Location = new System.Drawing.Point(349, 7);
-            this.kdbRun.Name = "kdbRun";
-            this.kdbRun.ParentWindow = null;
-            this.kdbRun.Size = new System.Drawing.Size(90, 25);
-            this.kdbRun.TabIndex = 2;
-            this.kdbRun.Values.Text = "&Run";
-            this.kdbRun.Click += new System.EventHandler(this.kdbRun_Click);
             // 
             // panel1
             // 
@@ -205,6 +186,40 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
             // 
+            // kuacbtnRun
+            // 
+            this.kuacbtnRun.Location = new System.Drawing.Point(349, 7);
+            this.kuacbtnRun.Name = "kuacbtnRun";
+            this.kuacbtnRun.ProcessToElevate = null;
+            this.kuacbtnRun.ShowUACShield = true;
+            this.kuacbtnRun.Size = new System.Drawing.Size(90, 26);
+            this.kuacbtnRun.TabIndex = 4;
+            this.kuacbtnRun.Values.Text = "&Run";
+            this.kuacbtnRun.ExecuteProcessAsAdministrator += new Krypton.Toolkit.Suite.Extended.Base.KryptonUACElevatedButton.ExecuteProcessAsAdministratorEventHandler(this.kuacbtnRun_ExecuteProcessAsAdministrator);
+            // 
+            // kdbtnCancel
+            // 
+            this.kdbtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.kdbtnCancel.Location = new System.Drawing.Point(445, 7);
+            this.kdbtnCancel.Name = "kdbtnCancel";
+            this.kdbtnCancel.ParentWindow = null;
+            this.kdbtnCancel.Size = new System.Drawing.Size(90, 25);
+            this.kdbtnCancel.TabIndex = 4;
+            this.kdbtnCancel.Values.Text = "C&ancel";
+            this.kdbtnCancel.Click += new System.EventHandler(this.kdbtnCancel_Click);
+            // 
+            // kdbRun
+            // 
+            this.kdbRun.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.kdbRun.Enabled = false;
+            this.kdbRun.Location = new System.Drawing.Point(349, 7);
+            this.kdbRun.Name = "kdbRun";
+            this.kdbRun.ParentWindow = null;
+            this.kdbRun.Size = new System.Drawing.Size(90, 25);
+            this.kdbRun.TabIndex = 2;
+            this.kdbRun.Values.Text = "&Run";
+            this.kdbRun.Click += new System.EventHandler(this.kdbRun_Click);
+            // 
             // KryptonRunDialog
             // 
             this.ClientSize = new System.Drawing.Size(637, 306);
@@ -233,20 +248,39 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         #endregion
 
         #region Variables
+        private bool _showUACRunButton;
+
         private RunDialogType _type;
 
         private RunDialogIconVisibility _iconVisibility;
+        #endregion
+
+        #region Properties
+        public bool ShowUACRunButton { get => _showUACRunButton; set { _showUACRunButton = value; Invalidate(); } }
+
+        public RunDialogIconVisibility IconVisibility { get => _iconVisibility; set { _iconVisibility = value; Invalidate(); } }
+
+        public RunDialogType DialogType { get => _type; set { _type = value; Invalidate(); } }
         #endregion
 
         #region Constructors
         /// <summary>Initializes a new instance of the <see cref="KryptonRunDialog"/> class.</summary>
         /// <param name="type">The input type.</param>
         /// <param name="iconVisibility">The icon visibility.</param>
-        public KryptonRunDialog(RunDialogType type = RunDialogType.TEXTBOX, RunDialogIconVisibility iconVisibility = RunDialogIconVisibility.VISIBLE)
+        /// <param name="showUACRunButton"></param>
+        public KryptonRunDialog(RunDialogType type = RunDialogType.TEXTBOX, RunDialogIconVisibility iconVisibility = RunDialogIconVisibility.VISIBLE, bool showUACRunButton = false)
         {
             InitializeComponent();
 
-            SetInputType(type);
+            ShowUACRunButton = showUACRunButton;
+
+            IconVisibility = iconVisibility;
+
+            DialogType = type;
+
+            SetShowUACRunButton(showUACRunButton);
+
+            SetDialogType(type);
 
             SetIconVisibility(iconVisibility);
 
@@ -324,7 +358,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
                         case RunDialogType.COMBOBOX:
                             kcmbPath.Visible = true;
 
-                            kcmbPath.Size = new Size(614, 25);
+                            kcmbPath.Size = new Size(558, 25);
 
                             ktxtPath.Visible = false;
                             break;
@@ -333,7 +367,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
                             ktxtPath.Visible = true;
 
-                            ktxtPath.Size = new Size(614, 25);
+                            ktxtPath.Size = new Size(558, 25);
                             break;
                     }
                     break;
@@ -365,16 +399,16 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
         #region Setters/Getters
         /// <summary>
-        /// Sets the InputType.
+        /// Sets the DialogType.
         /// </summary>
         /// <param name="value">The value.</param>
-        public void SetInputType(RunDialogType value) => _type = value;
+        public void SetDialogType(RunDialogType value) => DialogType = value;
 
         /// <summary>
-        /// Gets the InputType.
+        /// Gets the DialogType.
         /// </summary>
-        /// <returns>The value of _type.</returns>
-        public RunDialogType GetInputType() => _type;
+        /// <returns>The value of DialogType.</returns>
+        public RunDialogType GetDialogType() => DialogType;
 
         /// <summary>
         /// Sets the IconVisibility.
@@ -385,10 +419,21 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         /// <summary>
         /// Gets the IconVisibility.
         /// </summary>
-        /// <returns>The value of _iconVisibility.</returns>
+        /// <returns>The value of IconVisibility.</returns>
         public RunDialogIconVisibility GetIconVisibility() => _iconVisibility;
+
+        /// <summary>Shows the UAC run button.</summary>
+        /// <param name="value">if set to <c>true</c> [value].</param>
+        public void SetShowUACRunButton(bool value) => ShowUACRunButton = value;
+
+        /// <summary>Shows the UAC run button.</summary>
+        /// <returns>
+        ///   <br />
+        /// </returns>
+        public bool GetShowUACRunButton() => ShowUACRunButton;
         #endregion
 
+        #region Event Handlers
         private void KryptonRunDialog_Load(object sender, EventArgs e)
         {
 
@@ -402,13 +447,17 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
             if (cofd.ShowDialog() == CommonFileDialogResult.Ok)
             {
-                if (GetInputType() == RunDialogType.COMBOBOX)
+                if (GetDialogType() == RunDialogType.COMBOBOX)
                 {
                     kcmbPath.Text = Path.GetFullPath(cofd.FileName);
+
+                    pbxInputIcon.Image = GetApplicationIcon(kcmbPath.Text);
                 }
-                else if (GetInputType() == RunDialogType.TEXTBOX)
+                else if (GetDialogType() == RunDialogType.TEXTBOX)
                 {
                     ktxtPath.Text = Path.GetFullPath(cofd.FileName);
+
+                    pbxInputIcon.Image = GetApplicationIcon(ktxtPath.Text);
                 }
             }
         }
@@ -420,11 +469,11 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
         private void kdbRun_Click(object sender, EventArgs e)
         {
-            if (GetInputType() == RunDialogType.COMBOBOX)
+            if (GetDialogType() == RunDialogType.COMBOBOX)
             {
                 RunProcess(kcmbPath.Text);
             }
-            else if (GetInputType() == RunDialogType.TEXTBOX)
+            else if (GetDialogType() == RunDialogType.TEXTBOX)
             {
                 RunProcess(ktxtPath.Text);
             }
@@ -432,11 +481,11 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
         private void kbtnLocate_Click(object sender, EventArgs e)
         {
-            if (GetInputType() == RunDialogType.COMBOBOX)
+            if (GetDialogType() == RunDialogType.COMBOBOX)
             {
                 LocateProcess(kcmbPath.Text);
             }
-            else if (GetInputType() == RunDialogType.TEXTBOX)
+            else if (GetDialogType() == RunDialogType.TEXTBOX)
             {
                 LocateProcess(ktxtPath.Text);
             }
@@ -451,5 +500,42 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         {
 
         }
+
+        private void kuacbtnRun_ExecuteProcessAsAdministrator(object sender, ExecuteProcessAsAdministratorEventArgs e)
+        {
+            if (GetDialogType() == RunDialogType.COMBOBOX)
+            {
+                RunProcess(kcmbPath.Text);
+            }
+            else if (GetDialogType() == RunDialogType.TEXTBOX)
+            {
+                RunProcess(ktxtPath.Text);
+            }
+        }
+        #endregion
+
+        #region Overrides
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            if (ShowUACRunButton)
+            {
+                kuacbtnRun.Visible = true;
+
+                AcceptButton = kuacbtnRun;
+
+                kdbRun.Visible = false;
+            }
+            else
+            {
+                kdbRun.Visible = true;
+
+                AcceptButton = kdbRun;
+
+                kuacbtnRun.Visible = false;
+            }
+
+            base.OnPaint(e);
+        }
+        #endregion
     }
 }
