@@ -14,29 +14,29 @@
     <RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
   </PropertyGroup>
 
-  <!--Stable package configuration-
+  <!--Stable package configuration-->
   <PropertyGroup>
     <PackageId>Krypton.Toolkit.Suite.Extended.Wizard</PackageId>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Stable</PackageOutputPath>
     <PackageIconUrl>https://tinyurl.com/KryptonExtendedToolkitIcon</PackageIconUrl>
-  </PropertyGroup>-->
+  </PropertyGroup>
 
-  <!--Canary package configuration-->
+  <!--Canary package configuration-
   <PropertyGroup>
     <PackageId>Krypton.Toolkit.Suite.Extended.Wizard.Canary</PackageId>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Canary</PackageOutputPath>
     <PackageIconUrl>https://tinyurl.com/KryptonToolkitCanaryIcon</PackageIconUrl>
-  </PropertyGroup>
+  </PropertyGroup>-->
 
-  <!--Stable NuGet package configuration-
+  <!--Stable NuGet package configuration-->
   <ItemGroup>
     <PackageReference Include="Krypton.Toolkit" Version="5.550.2011" />
-  </ItemGroup>-->
+  </ItemGroup>
 
-  <!--Canary NuGet package configuration-->
+  <!--Canary NuGet package configuration-
   <ItemGroup>
     <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2011" />
-  </ItemGroup>
+  </ItemGroup>-->
 
   <!--Version configuration-->
   <PropertyGroup>

@@ -17,32 +17,31 @@
     <RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
   </PropertyGroup>
 
-  <!--Stable package configuration-
+  <!--Stable package configuration-->
   <PropertyGroup>
     <PackageId>Krypton.Toolkit.Suite.Extended.Base</PackageId>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Stable</PackageOutputPath>
     <PackageIconUrl>https://tinyurl.com/KryptonExtendedToolkitIcon</PackageIconUrl>
-    <PackageIcon>Icon Stable.png</PackageIcon>
-  </PropertyGroup>-->
+  </PropertyGroup>
 
-  <!--Canary package configuration-->
+  <!--Canary package configuration-
   <PropertyGroup>
     <PackageId>Krypton.Toolkit.Suite.Extended.Base.Canary</PackageId>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Canary</PackageOutputPath>
     <PackageIconUrl>https://tinyurl.com/KryptonToolkitCanaryIcon</PackageIconUrl>
-  </PropertyGroup>
+  </PropertyGroup>-->
 
-  <!--Stable NuGet packages
+  <!--Stable NuGet packages-->
   <ItemGroup>
     <PackageReference Include="Krypton.Ribbon" Version="5.550.2011" />
     <PackageReference Include="Krypton.Toolkit" Version="5.550.2011" />
-  </ItemGroup>-->
+  </ItemGroup>
 
-  <!--Canary NuGet package configuration-->
+  <!--Canary NuGet package configuration-
   <ItemGroup>
     <PackageReference Include="Krypton.Ribbon.Canary" Version="6.0.2011" />
     <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2011" />
-  </ItemGroup>
+  </ItemGroup>-->
 
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualBasic" Version="10.3.0" />

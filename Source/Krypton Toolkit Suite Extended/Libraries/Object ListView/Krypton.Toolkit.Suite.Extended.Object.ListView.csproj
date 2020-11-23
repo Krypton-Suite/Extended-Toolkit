@@ -18,7 +18,7 @@
     <PackageTags>ListView WinForms Controls WinForms Krypton .NET .NET Core</PackageTags>
   </PropertyGroup>
 
-  <!--Stable package configuration-
+  <!--Stable package configuration--
   <PropertyGroup>
     <PackageId>Krypton.Toolkit.Suite.Extended.Object.ListView</PackageId>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Stable</PackageOutputPath>
