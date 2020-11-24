@@ -44,13 +44,13 @@
 <!--=======
 
 ## 2021-03-01 - Build 2103 - March 2021
-* New `Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box` NuGet package
 * Rewritten the `Krypton.Toolkit.Suite.Extended.Outlook.Grid` module
 * Implement [#36](https://github.com/Krypton-Suite/Extended-Toolkit/issues/36), Expose the OutlookGrid.Classes.OutlookGridRowComparer2 class-->
 
 =======
 
 ## 2021-02-01 - Build 2102 - February 2021
+* New `Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box` NuGet package
 * New expandable menu/context menu item in `Krypton.Toolkit.Suite.Extended.Tool.Strip.Items`
 * New [Visual Studio Toolbox](https://www.codeproject.com/Articles/8658/Another-ToolBox-Control) control
 * New `KryptonPasswordEyeTextBox`
