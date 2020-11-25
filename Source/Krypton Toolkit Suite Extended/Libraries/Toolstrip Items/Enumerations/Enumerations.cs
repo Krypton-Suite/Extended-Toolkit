@@ -13,4 +13,19 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         NormalBlink = 0,
         SoftBlink = 1
     }
+
+    /// <summary>
+    /// Check mark display style. 
+    /// </summary>
+    public enum CheckMarkDisplayStyle
+    {
+        CHECKBOX = 0,
+        RADIOBUTTON = 1
+    }
+
+    public enum MarqueeScrollDirection
+    {
+        RIGHTTOLEFT,
+        LEFTTORIGHT
+    }
 }
