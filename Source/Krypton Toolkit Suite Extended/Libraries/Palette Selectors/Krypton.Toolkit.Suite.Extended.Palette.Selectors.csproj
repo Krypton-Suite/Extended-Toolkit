@@ -50,6 +50,20 @@
     <PackageReference Include="WindowsAPICodePack" Version="1.1.1" />
   </ItemGroup>
   
+  <!--Stable NuGet version configuration-
+  <PropertyGroup>
+    <AssemblyVersion>5.550.2102</AssemblyVersion>
+    <FileVersion>5.550.2102</FileVersion>
+    <Version>5.550.2102</Version>
+  </PropertyGroup>-->
+
+  <!--Canary NuGet version configuration-->
+  <PropertyGroup>
+    <AssemblyVersion>6.0.2102</AssemblyVersion>
+    <FileVersion>6.0.2102</FileVersion>
+    <Version>6.0.2102</Version>
+  </PropertyGroup>
+  
   <ItemGroup>
     <Reference Include="Krypton.Toolkit.Suite.Extended.Dialogs">
       <HintPath>..\Extended Dialogs\obj\Debug\net45\Krypton.Toolkit.Suite.Extended.Dialogs.dll</HintPath>
@@ -76,13 +90,6 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-
-  <!--Version configuration-->
-  <PropertyGroup>
-    <AssemblyVersion>5.550.2102</AssemblyVersion>
-    <FileVersion>5.550.2102</FileVersion>
-    <Version>5.550.2102</Version>
-  </PropertyGroup>
 
   <PropertyGroup>
     <DocumentationFile>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Palette.Selectors\Krypton.Toolkit.Suite.Extended.Palette.Selectors.xml</DocumentationFile>

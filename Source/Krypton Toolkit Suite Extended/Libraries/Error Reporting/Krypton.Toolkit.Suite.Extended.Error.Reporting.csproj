@@ -48,6 +48,20 @@
     <PackageReference Include="DotNetZip" Version="1.14.0" />
     <PackageReference Include="Simple-MAPI.NET" Version="1.1.0" />
   </ItemGroup>
+  
+  <!--Stable NuGet version configuration-
+  <PropertyGroup>
+    <AssemblyVersion>5.550.2102</AssemblyVersion>
+    <FileVersion>5.550.2102</FileVersion>
+    <Version>5.550.2102</Version>
+  </PropertyGroup>-->
+
+  <!--Canary NuGet version configuration-->
+  <PropertyGroup>
+    <AssemblyVersion>6.0.2102</AssemblyVersion>
+    <FileVersion>6.0.2102</FileVersion>
+    <Version>6.0.2102</Version>
+  </PropertyGroup>
 
   <ItemGroup>
     <Reference Include="Krypton.Toolkit.Suite.Extended.Base">
@@ -74,14 +88,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-
-  <!--Version configuration-->
-  <PropertyGroup>
-    <AssemblyVersion>5.550.2103</AssemblyVersion>
-    <FileVersion>5.550.2103</FileVersion>
-    <Version>5.550.2103</Version>
-  </PropertyGroup>
-
+  
   <PropertyGroup>
     <DocumentationFile>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Error.Reporting\Krypton.Toolkit.Suite.Error.Reporting.xml</DocumentationFile>
     <OutputPath>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Error.Reporting\</OutputPath>

@@ -15,7 +15,6 @@
     <PackagePath></PackagePath>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Version>5.550.2102</Version>
     <Description>Contains toolkit control settings.</Description>
     <RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
 	  <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
@@ -36,9 +35,18 @@
     <OutputPath>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Toolkit.Control.Settings\</OutputPath>
   </PropertyGroup>
 
+  <!--Stable NuGet version configuration-
   <PropertyGroup>
     <AssemblyVersion>5.550.2102</AssemblyVersion>
     <FileVersion>5.550.2102</FileVersion>
+    <Version>5.550.2102</Version>
+  </PropertyGroup>-->
+
+  <!--Canary NuGet version configuration-->
+  <PropertyGroup>
+    <AssemblyVersion>6.0.2102</AssemblyVersion>
+    <FileVersion>6.0.2102</FileVersion>
+    <Version>6.0.2102</Version>
   </PropertyGroup>
 
 </Project>
