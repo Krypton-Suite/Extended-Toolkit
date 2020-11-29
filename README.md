@@ -57,6 +57,7 @@
 * Implemented [#37](https://github.com/Krypton-Suite/Extended-Toolkit/issues/37), KryptonTextBox with Icon
 * `KryptonRunDialog` modifications
 * License headers for code files
+* Canary versions will now start with `6.0`, whereas stable versions will remain on `5.550`
 
 =======
 
