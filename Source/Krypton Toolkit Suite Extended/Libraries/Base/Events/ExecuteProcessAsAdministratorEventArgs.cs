@@ -14,9 +14,10 @@ using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Base
 {
+    /// <summary>Handles the user account control event for the <see cref="KryptonUACElevatedButton" />.</summary>
     public class ExecuteProcessAsAdministratorEventArgs : EventArgs
     {
-        /// <summary>Gets or sets the process path.</summary>
+        /// <summary>Gets or sets the process path to execute.</summary>
         /// <value>The process path.</value>
         public string ProcessPath { get; set; }
 

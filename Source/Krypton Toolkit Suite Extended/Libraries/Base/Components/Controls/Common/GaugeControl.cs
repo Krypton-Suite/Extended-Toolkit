@@ -14,6 +14,7 @@ using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Base
 {
+    /// <summary>Displays a value on an analog gauge. Raises an event if the value enters one of the definable ranges.</summary>
     [System.Drawing.ToolboxBitmapAttribute(typeof(System.Windows.Forms.Timer)),
     DefaultEvent("ValueInRangeChanged"),
     Description("Displays a value on an analog gauge. Raises an event if the value enters one of the definable ranges."), ToolboxItem(true)]
@@ -53,14 +54,22 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         #endregion
 
         #region ... enum, var, delegate, event
-        public enum NeedleColorEnum
+        /// <summary>The colour of the gauge needle.</summary>
+        public enum NeedleColourEnum
         {
+            /// <summary>A gray coloured needle.</summary>
             Gray = 0,
+            /// <summary>A red coloured needle.</summary>
             Red = 1,
+            /// <summary>A green coloured needle.</summary>
             Green = 2,
+            /// <summary>A blue coloured needle.</summary>
             Blue = 3,
+            /// <summary>A yellow coloured needle.</summary>
             Yellow = 4,
+            /// <summary>A violet coloured needle.</summary>
             Violet = 5,
+            /// <summary>A magenta coloured needle.</summary>
             Magenta = 6
         };
 
@@ -123,26 +132,35 @@ namespace Krypton.Toolkit.Suite.Extended.Base
 
         private Int32 m_NeedleType = 0;
         private Int32 m_NeedleRadius = 80;
-        private NeedleColorEnum m_NeedleColor1 = NeedleColorEnum.Gray;
+        private NeedleColourEnum m_NeedleColor1 = NeedleColourEnum.Gray;
         private Color m_NeedleColor2 = Color.DimGray;
         private Int32 m_NeedleWidth = 2;
 
+        /// <summary>Handles the value when it falls into a defined range.</summary>
         public class ValueInRangeChangedEventArgs : EventArgs
         {
+            /// <summary>The value in range</summary>
             public Int32 valueInRange;
 
+            /// <summary>Initializes a new instance of the <see cref="ValueInRangeChangedEventArgs" /> class.</summary>
+            /// <param name="valueInRange">The value in range.</param>
             public ValueInRangeChangedEventArgs(Int32 valueInRange)
             {
                 this.valueInRange = valueInRange;
             }
         }
 
+        /// <summary>The delegate of the event that handles the value when it falls into a defined range.</summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="ValueInRangeChangedEventArgs" /> instance containing the event data.</param>
         public delegate void ValueInRangeChangedDelegate(Object sender, ValueInRangeChangedEventArgs e);
+        /// <summary>This event is raised if the value falls into a defined range.</summary>
         [Description("This event is raised if the value falls into a defined range.")]
         public event ValueInRangeChangedDelegate ValueInRangeChanged;
         #endregion
 
         #region ... hidden , overridden inherited properties
+        /// <summary>Gets or sets a value indicating whether the control can accept data that the user drags onto it.</summary>
         public new Boolean AllowDrop
         {
             get
@@ -154,6 +172,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
 
             }
         }
+        /// <summary>This property is not relevant for this class.</summary>
         public new Boolean AutoSize
         {
             get
@@ -165,6 +184,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
 
             }
         }
+        /// <summary>Gets or sets the foreground color of the control.</summary>
         public new Boolean ForeColor
         {
             get
@@ -175,6 +195,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             {
             }
         }
+        /// <summary>Gets or sets the Input Method Editor (IME) mode of the control.</summary>
         public new Boolean ImeMode
         {
             get
@@ -186,6 +207,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
         }
 
+        /// <summary>Gets or sets the background colour for the control.</summary>
         public override System.Drawing.Color BackColor
         {
             get
@@ -199,6 +221,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
                 Refresh();
             }
         }
+        /// <summary>Gets or sets the font of the text displayed by the control.</summary>
         public override System.Drawing.Font Font
         {
             get
@@ -212,6 +235,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
                 Refresh();
             }
         }
+        /// <summary>Gets or sets the background image layout as defined in the <see cref="T:System.Windows.Forms.ImageLayout">ImageLayout</see> enumeration.</summary>
         public override System.Windows.Forms.ImageLayout BackgroundImageLayout
         {
             get
@@ -227,6 +251,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         }
         #endregion
 
+        /// <summary>Initializes a new instance of the <see cref="Gauge" /> class.</summary>
         public Gauge()
         {
             InitializeComponent();
@@ -242,6 +267,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         /// Indicates if the current view is being utilized in the VS.NET IDE or not.
         ///
         private bool _designMode;
+        /// <summary>Gets a value that indicates whether the <see cref="T:System.ComponentModel.Component">Component</see> is currently in design mode.</summary>
         public new bool DesignMode
         {
             get
@@ -251,6 +277,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
         }
 
+        /// <summary>Gets or sets the value.</summary>
+        /// <value>The value.</value>
         [Browsable(true),
         Category("Appearance-Extended"),
         Description("The value.")]
@@ -295,6 +323,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
         }
 
+        /// <summary>The caption index. set this to a value of 0 up to 4 to change the corresponding caption's properties.</summary>
+        /// <value>The index of the cap.</value>
         [Browsable(true),
         Category("Appearance-Extended"),
         RefreshProperties(RefreshProperties.All),
@@ -1255,7 +1285,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         [Browsable(true),
         Category("Appearance-Extended"),
         Description("The first color of the needle.")]
-        public NeedleColorEnum NeedleColor1
+        public NeedleColourEnum NeedleColor1
         {
             get
             {
@@ -1592,49 +1622,49 @@ namespace Krypton.Toolkit.Suite.Extended.Base
                     pe.Graphics.FillEllipse(new SolidBrush(m_NeedleColor2), Center.X - m_NeedleWidth * 3, Center.Y - m_NeedleWidth * 3, m_NeedleWidth * 6, m_NeedleWidth * 6);
                     switch (m_NeedleColor1)
                     {
-                        case NeedleColorEnum.Gray:
+                        case NeedleColourEnum.Gray:
                             brush1 = new SolidBrush(Color.FromArgb(80 + subcol, 80 + subcol, 80 + subcol));
                             brush2 = new SolidBrush(Color.FromArgb(180 - subcol, 180 - subcol, 180 - subcol));
                             brush3 = new SolidBrush(Color.FromArgb(80 + subcol2, 80 + subcol2, 80 + subcol2));
                             brush4 = new SolidBrush(Color.FromArgb(180 - subcol2, 180 - subcol2, 180 - subcol2));
                             pe.Graphics.DrawEllipse(Pens.Gray, Center.X - m_NeedleWidth * 3, Center.Y - m_NeedleWidth * 3, m_NeedleWidth * 6, m_NeedleWidth * 6);
                             break;
-                        case NeedleColorEnum.Red:
+                        case NeedleColourEnum.Red:
                             brush1 = new SolidBrush(Color.FromArgb(145 + subcol, subcol, subcol));
                             brush2 = new SolidBrush(Color.FromArgb(245 - subcol, 100 - subcol, 100 - subcol));
                             brush3 = new SolidBrush(Color.FromArgb(145 + subcol2, subcol2, subcol2));
                             brush4 = new SolidBrush(Color.FromArgb(245 - subcol2, 100 - subcol2, 100 - subcol2));
                             pe.Graphics.DrawEllipse(Pens.Red, Center.X - m_NeedleWidth * 3, Center.Y - m_NeedleWidth * 3, m_NeedleWidth * 6, m_NeedleWidth * 6);
                             break;
-                        case NeedleColorEnum.Green:
+                        case NeedleColourEnum.Green:
                             brush1 = new SolidBrush(Color.FromArgb(subcol, 145 + subcol, subcol));
                             brush2 = new SolidBrush(Color.FromArgb(100 - subcol, 245 - subcol, 100 - subcol));
                             brush3 = new SolidBrush(Color.FromArgb(subcol2, 145 + subcol2, subcol2));
                             brush4 = new SolidBrush(Color.FromArgb(100 - subcol2, 245 - subcol2, 100 - subcol2));
                             pe.Graphics.DrawEllipse(Pens.Green, Center.X - m_NeedleWidth * 3, Center.Y - m_NeedleWidth * 3, m_NeedleWidth * 6, m_NeedleWidth * 6);
                             break;
-                        case NeedleColorEnum.Blue:
+                        case NeedleColourEnum.Blue:
                             brush1 = new SolidBrush(Color.FromArgb(subcol, subcol, 145 + subcol));
                             brush2 = new SolidBrush(Color.FromArgb(100 - subcol, 100 - subcol, 245 - subcol));
                             brush3 = new SolidBrush(Color.FromArgb(subcol2, subcol2, 145 + subcol2));
                             brush4 = new SolidBrush(Color.FromArgb(100 - subcol2, 100 - subcol2, 245 - subcol2));
                             pe.Graphics.DrawEllipse(Pens.Blue, Center.X - m_NeedleWidth * 3, Center.Y - m_NeedleWidth * 3, m_NeedleWidth * 6, m_NeedleWidth * 6);
                             break;
-                        case NeedleColorEnum.Magenta:
+                        case NeedleColourEnum.Magenta:
                             brush1 = new SolidBrush(Color.FromArgb(subcol, 145 + subcol, 145 + subcol));
                             brush2 = new SolidBrush(Color.FromArgb(100 - subcol, 245 - subcol, 245 - subcol));
                             brush3 = new SolidBrush(Color.FromArgb(subcol2, 145 + subcol2, 145 + subcol2));
                             brush4 = new SolidBrush(Color.FromArgb(100 - subcol2, 245 - subcol2, 245 - subcol2));
                             pe.Graphics.DrawEllipse(Pens.Magenta, Center.X - m_NeedleWidth * 3, Center.Y - m_NeedleWidth * 3, m_NeedleWidth * 6, m_NeedleWidth * 6);
                             break;
-                        case NeedleColorEnum.Violet:
+                        case NeedleColourEnum.Violet:
                             brush1 = new SolidBrush(Color.FromArgb(145 + subcol, subcol, 145 + subcol));
                             brush2 = new SolidBrush(Color.FromArgb(245 - subcol, 100 - subcol, 245 - subcol));
                             brush3 = new SolidBrush(Color.FromArgb(145 + subcol2, subcol2, 145 + subcol2));
                             brush4 = new SolidBrush(Color.FromArgb(245 - subcol2, 100 - subcol2, 245 - subcol2));
                             pe.Graphics.DrawEllipse(Pens.Violet, Center.X - m_NeedleWidth * 3, Center.Y - m_NeedleWidth * 3, m_NeedleWidth * 6, m_NeedleWidth * 6);
                             break;
-                        case NeedleColorEnum.Yellow:
+                        case NeedleColourEnum.Yellow:
                             brush1 = new SolidBrush(Color.FromArgb(145 + subcol, 145 + subcol, subcol));
                             brush2 = new SolidBrush(Color.FromArgb(245 - subcol, 245 - subcol, 100 - subcol));
                             brush3 = new SolidBrush(Color.FromArgb(145 + subcol2, 145 + subcol2, subcol2));
@@ -1693,31 +1723,31 @@ namespace Krypton.Toolkit.Suite.Extended.Base
 
                     switch (m_NeedleColor1)
                     {
-                        case NeedleColorEnum.Gray:
+                        case NeedleColourEnum.Gray:
                             pe.Graphics.DrawLine(new Pen(Color.DarkGray, m_NeedleWidth), Center.X, Center.Y, endPoint.X, endPoint.Y);
                             pe.Graphics.DrawLine(new Pen(Color.DarkGray, m_NeedleWidth), Center.X, Center.Y, startPoint.X, startPoint.Y);
                             break;
-                        case NeedleColorEnum.Red:
+                        case NeedleColourEnum.Red:
                             pe.Graphics.DrawLine(new Pen(Color.Red, m_NeedleWidth), Center.X, Center.Y, endPoint.X, endPoint.Y);
                             pe.Graphics.DrawLine(new Pen(Color.Red, m_NeedleWidth), Center.X, Center.Y, startPoint.X, startPoint.Y);
                             break;
-                        case NeedleColorEnum.Green:
+                        case NeedleColourEnum.Green:
                             pe.Graphics.DrawLine(new Pen(Color.Green, m_NeedleWidth), Center.X, Center.Y, endPoint.X, endPoint.Y);
                             pe.Graphics.DrawLine(new Pen(Color.Green, m_NeedleWidth), Center.X, Center.Y, startPoint.X, startPoint.Y);
                             break;
-                        case NeedleColorEnum.Blue:
+                        case NeedleColourEnum.Blue:
                             pe.Graphics.DrawLine(new Pen(Color.Blue, m_NeedleWidth), Center.X, Center.Y, endPoint.X, endPoint.Y);
                             pe.Graphics.DrawLine(new Pen(Color.Blue, m_NeedleWidth), Center.X, Center.Y, startPoint.X, startPoint.Y);
                             break;
-                        case NeedleColorEnum.Magenta:
+                        case NeedleColourEnum.Magenta:
                             pe.Graphics.DrawLine(new Pen(Color.Magenta, m_NeedleWidth), Center.X, Center.Y, endPoint.X, endPoint.Y);
                             pe.Graphics.DrawLine(new Pen(Color.Magenta, m_NeedleWidth), Center.X, Center.Y, startPoint.X, startPoint.Y);
                             break;
-                        case NeedleColorEnum.Violet:
+                        case NeedleColourEnum.Violet:
                             pe.Graphics.DrawLine(new Pen(Color.Violet, m_NeedleWidth), Center.X, Center.Y, endPoint.X, endPoint.Y);
                             pe.Graphics.DrawLine(new Pen(Color.Violet, m_NeedleWidth), Center.X, Center.Y, startPoint.X, startPoint.Y);
                             break;
-                        case NeedleColorEnum.Yellow:
+                        case NeedleColourEnum.Yellow:
                             pe.Graphics.DrawLine(new Pen(Color.Yellow, m_NeedleWidth), Center.X, Center.Y, endPoint.X, endPoint.Y);
                             pe.Graphics.DrawLine(new Pen(Color.Yellow, m_NeedleWidth), Center.X, Center.Y, startPoint.X, startPoint.Y);
                             break;
