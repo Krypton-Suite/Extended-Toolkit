@@ -40,8 +40,8 @@
 
   <!--Canary NuGet package configuration-->
   <ItemGroup>
-    <PackageReference Include="Krypton.Ribbon.Canary" Version="6.0.2011" />
-    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2011" />
+    <PackageReference Include="Krypton.Ribbon.Canary" Version="6.0.2101" />
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2101" />
   </ItemGroup>
 
   <ItemGroup>
