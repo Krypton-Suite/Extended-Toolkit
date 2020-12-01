@@ -43,6 +43,19 @@
 
 =======
 
+# Toolkit Examples
+Please refer to [examples](https://github.com/Krypton-Suite/Extended-Toolkit/blob/canary/Documents/Toolkit%20Examples.md) to see what each control looks like.
+
+=======
+
+## 2020-12-01 - Build 2012 - December 2020
+* Fixes for `FastColouredTextBox`
+* New Gantt chart control for `Data Visualisation`
+* Removed `Notification` elements from `Dialogs` module
+* Added `Toolkit Examples.md` to showcase components
+
+=======
+
 ## 2020-11-01 - Build 2011 - November 2020
 * New `Networking` NuGet package
 * Stable packages will now use the stable `Krypton.*` standard toolkit & vice-versa

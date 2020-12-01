@@ -264,4 +264,47 @@
         DISABLED
     }
     #endregion
+
+    public enum ToggleSwitchStyle
+    {
+        Metro,
+        Android,
+        IOS5,
+        BrushedMetal,
+        OSX,
+        Carbon,
+        Iphone,
+        Fancy,
+        Modern,
+        PlainAndSimple
+    }
+
+    public enum ToggleSwitchAlignment
+    {
+        Near,
+        Center,
+        Far
+    }
+
+    public enum ToggleSwitchButtonAlignment
+    {
+        Left,
+        Center,
+        Right
+    }
+
+    public enum ToggleSwitchState
+    {
+        OFF,
+        ON
+    }
+
+    public enum ToggleButtonStyle
+    {
+        ANDROID,
+        WINDOWS,
+        IOS,
+        CUSTOM,
+        METALLIC
+    }
 }
