@@ -22,7 +22,7 @@
   <PropertyGroup>
     <PackageId>Krypton.Toolkit.Suite.Extended.Object.ListView</PackageId>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Stable</PackageOutputPath>
-    <PackageIconUrl>https://tinyurl.com/KryptonExtendedToolkitIcon</PackageIconUrl>
+    <PackageIcon>Stable.png</PackageIcon>
     <PackageIcon>Icon Stable.png</PackageIcon>
   </PropertyGroup>-->
 
@@ -30,7 +30,7 @@
   <PropertyGroup>
     <PackageId>Krypton.Toolkit.Suite.Extended.Object.ListView.Canary</PackageId>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Canary</PackageOutputPath>
-    <PackageIconUrl>https://tinyurl.com/KryptonToolkitCanaryIcon</PackageIconUrl>
+    <PackageIcon>Canary.png</PackageIcon>
   </PropertyGroup>
 
   <!--Stable NuGet package configuration-
@@ -56,6 +56,12 @@
     <FileVersion>6.0.2102</FileVersion>
     <Version>6.0.2102</Version>
   </PropertyGroup>
+  
+  <ItemGroup>
+    <None Include="Package Icons\Canary.png" Pack="true" PackagePath="\" />
+    <!--<None Include="Package Icons\Stable.png" Pack="true" PackagePath="\" />-->
+    <!--<None Include="Package Icons\Nightly.png" Pack="true" PackagePath="\" />-->
+  </ItemGroup>
 
   <PropertyGroup>
     <DocumentationFile>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Object.ListView\Krypton.Toolkit.Suite.Extended.Object.ListView.xml</DocumentationFile>

@@ -25,14 +25,14 @@
   <PropertyGroup>
     <PackageId>Krypton.Toolkit.Suite.Extended.Utilities</PackageId>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Stable</PackageOutputPath>
-    <PackageIconUrl>https://tinyurl.com/KryptonExtendedToolkitIcon</PackageIconUrl>
+    <PackageIcon>Stable.png</PackageIcon>
   </PropertyGroup>-->
 
   <!--Canary package configuration-->
   <PropertyGroup>
     <PackageId>Krypton.Toolkit.Suite.Extended.Utilities.Canary</PackageId>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Canary</PackageOutputPath>
-    <PackageIconUrl>https://tinyurl.com/KryptonToolkitCanaryIcon</PackageIconUrl>
+    <PackageIcon>Canary.png</PackageIcon>
   </PropertyGroup>
 
   <!--Stable NuGet package configuration-
@@ -58,5 +58,11 @@
     <FileVersion>6.0.2102</FileVersion>
     <Version>6.0.2102</Version>
   </PropertyGroup>
+  
+  <ItemGroup>
+    <None Include="Package Icons\Canary.png" Pack="true" PackagePath="\" />
+    <!--<None Include="Package Icons\Stable.png" Pack="true" PackagePath="\" />-->
+    <!--<None Include="Package Icons\Nightly.png" Pack="true" PackagePath="\" />-->
+  </ItemGroup>
   
 </Project>

@@ -20,14 +20,14 @@
   <PropertyGroup>
     <PackageId>Krypton.Toolkit.Suite.Extended.Dialogs</PackageId>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Stable</PackageOutputPath>
-    <PackageIconUrl>https://tinyurl.com/KryptonExtendedToolkitIcon</PackageIconUrl>
+    <PackageIcon>Stable.png</PackageIcon>
   </PropertyGroup>-->
 
   <!--Canary package configuration-->
   <PropertyGroup>
     <PackageId>Krypton.Toolkit.Suite.Extended.Dialogs.Canary</PackageId>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Canary</PackageOutputPath>
-    <PackageIconUrl>https://tinyurl.com/KryptonToolkitCanaryIcon</PackageIconUrl>
+    <PackageIcon>Canary.png</PackageIcon>
   </PropertyGroup>
 
   <!--Stable NuGet package configuration-
@@ -59,6 +59,12 @@
     <FileVersion>6.0.2102</FileVersion>
     <Version>6.0.2102</Version>
   </PropertyGroup>
+  
+  <ItemGroup>
+    <None Include="Package Icons\Canary.png" Pack="true" PackagePath="\" />
+    <!--<None Include="Package Icons\Stable.png" Pack="true" PackagePath="\" />-->
+    <!--<None Include="Package Icons\Nightly.png" Pack="true" PackagePath="\" />-->
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\Shared\Palette Controls\Krypton.Toolkit.Suite.Extended.Palette.Controls.csproj" />

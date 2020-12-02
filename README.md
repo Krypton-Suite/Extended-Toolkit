@@ -64,6 +64,7 @@
 * `KryptonRunDialog` modifications
 * License headers for code files
 * Canary versions will now start with `6.0`, whereas stable versions will remain on `5.550`
+* New icon for canary packages
 
 =======
 
