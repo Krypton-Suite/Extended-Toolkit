@@ -45,6 +45,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="Package Icons\Canary.png" Pack="true" PackagePath="\" />
+    <!--<None Include="Package Icons\Stable.png" Pack="true" PackagePath="\" />-->
+    <!--<None Include="Package Icons\Nightly.png" Pack="true" PackagePath="\" />-->
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.VisualBasic" Version="10.3.0" />
   </ItemGroup>
 
