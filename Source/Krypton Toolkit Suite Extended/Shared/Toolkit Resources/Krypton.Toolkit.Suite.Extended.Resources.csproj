@@ -43,12 +43,6 @@
     <FileVersion>6.0.2102</FileVersion>
     <Version>6.0.2102</Version>
   </PropertyGroup>
-  
-  <ItemGroup>
-    <None Include="Package Icons\Canary.png" Pack="true" PackagePath="\" />
-    <!--<None Include="Package Icons\Stable.png" Pack="true" PackagePath="\" />-->
-    <!--<None Include="Package Icons\Nightly.png" Pack="true" PackagePath="\" />-->
-  </ItemGroup>
 
   <ItemGroup>
     <Compile Update="Images\AllToolkitImageResources.Designer.cs">
