@@ -1376,6 +1376,9 @@ namespace Krypton.Toolkit.Suite.Extended.Base
 
         #region ... Graphic Paths ...
 
+        /// <summary>Creates the rectangle graphics path.</summary>
+        /// <param name="rect">The rectangle.</param>
+        /// <returns>The path of the rectangle.</returns>
         public static GraphicsPath CreateRectGraphicsPath(Rectangle rect)
         {
             GraphicsPath path = new GraphicsPath();
