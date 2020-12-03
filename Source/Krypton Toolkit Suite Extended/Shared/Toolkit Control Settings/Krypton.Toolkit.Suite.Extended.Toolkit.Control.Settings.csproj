@@ -20,6 +20,34 @@
 	<PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
   </PropertyGroup>-->
 
+  <!--Canary package configuration-->
+  <PropertyGroup>
+    <PackageId>Krypton.Toolkit.Suite.Extended.Notifications.Canary</PackageId>
+    <PackageOutputPath>..\..\..\..\Bin\NuGet\Canary</PackageOutputPath>
+    <PackageIcon>Canary.png</PackageIcon>
+    <AssemblyVersion>6.0.2102</AssemblyVersion>
+    <FileVersion>6.0.2102</FileVersion>
+    <Version>6.0.2102</Version>
+  </PropertyGroup>
+
+  <!--Nightly package configuration-
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <PackageId>Krypton.Toolkit.Suite.Extended.Notifications.Nightly</PackageId>
+    <PackageOutputPath>..\..\..\..\Bin\NuGet\Nightly</PackageOutputPath>
+    <PackageIcon>Nightly.png</PackageIcon>
+    <VersionSuffix>pre$([System.DateTime]::UtcNow.ToString(yyyyMMdd-HHmm))</VersionSuffix>
+  </PropertyGroup>-->
+
+  <!--Stable package configuration-
+  <PropertyGroup>
+    <PackageId>Krypton.Toolkit.Suite.Extended.Notifications</PackageId>
+    <PackageOutputPath>..\..\..\..\Bin\NuGet\Stable</PackageOutputPath>
+    <PackageIcon>Stable.png</PackageIcon>
+    <AssemblyVersion>5.550.2102</AssemblyVersion>
+    <FileVersion>5.550.2102</FileVersion>
+    <Version>5.550.2102</Version>
+  </PropertyGroup>-->
+
   <!--Stable NuGet package configuration-
   <ItemGroup>
     <PackageReference Include="Krypton.Toolkit" Version="5.550.2011" />
@@ -33,20 +61,6 @@
   <PropertyGroup>
     <DocumentationFile>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Toolkit.Control.Settings\Krypton.Toolkit.Suite.Extended.Toolkit.Control.Settings.xml</DocumentationFile>
     <OutputPath>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Toolkit.Control.Settings\</OutputPath>
-  </PropertyGroup>
-
-  <!--Stable NuGet version configuration-
-  <PropertyGroup>
-    <AssemblyVersion>5.550.2102</AssemblyVersion>
-    <FileVersion>5.550.2102</FileVersion>
-    <Version>5.550.2102</Version>
-  </PropertyGroup>-->
-
-  <!--Canary NuGet version configuration-->
-  <PropertyGroup>
-    <AssemblyVersion>6.0.2102</AssemblyVersion>
-    <FileVersion>6.0.2102</FileVersion>
-    <Version>6.0.2102</Version>
   </PropertyGroup>
 
   <ItemGroup>
