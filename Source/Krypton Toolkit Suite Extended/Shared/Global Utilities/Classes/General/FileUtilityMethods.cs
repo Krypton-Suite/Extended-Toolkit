@@ -375,11 +375,23 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
         /// <summary>
         /// Returns the file information on the selected file.
         /// </summary>
-        /// <param name="FilePath">The file path.</param>
+        /// <param name="filePath">The file path.</param>
         /// <returns>Returns the file information on the selected file.</returns>
-        public FileInfo ReturnFileInformationOn(string FilePath)
+        public FileInfo ReturnFileInformationOn(string filePath)
         {
             return new FileInfo(FilePath);
+        }
+
+        public List<string> GetDirectoryContents(string directoryPath)
+        {
+            List<string> content = new List<string>();
+
+            foreach (string item in Directory.GetFiles(directoryPath))
+            {
+                content.Add(item);
+            }
+
+            return content;
         }
 
         /// <summary>
