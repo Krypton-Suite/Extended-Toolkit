@@ -1,0 +1,55 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <LangVersion>latest</LangVersion>
+    <TargetFrameworks>net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows</TargetFrameworks>    
+    <RootNamespace>Krypton.Toolkit.Suite.Extended.Language.Model</RootNamespace>
+    <UseWindowsForms>true</UseWindowsForms>
+    <OutputType>Library</OutputType>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Description>An extension to the standard krypton toolkit to support .NET Core, .NET 5 and the latest .NET 3.5/4.x framework. Contains language options for certain controls.</Description>
+    <RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
+    <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
+  </PropertyGroup>
+
+  <!--Stable package configuration-
+  <PropertyGroup>
+    <PackageId>Krypton.Toolkit.Suite.Extended.Language.Model</PackageId>
+    <PackageOutputPath>..\..\..\..\Bin\NuGet\Stable</PackageOutputPath>
+    <PackageIconUrl>https://tinyurl.com/KryptonExtendedToolkitIcon</PackageIconUrl>
+  </PropertyGroup>-->
+
+  <!--Canary package configuration-->
+  <PropertyGroup>
+    <PackageId>Krypton.Toolkit.Suite.Extended.Language.Model.Canary</PackageId>
+    <PackageOutputPath>..\..\..\..\Bin\NuGet\Canary</PackageOutputPath>
+    <PackageIconUrl>https://tinyurl.com/KryptonToolkitCanaryIcon</PackageIconUrl>
+  </PropertyGroup>
+
+  <!--Stable NuGet package configuration-
+  <ItemGroup>
+    <PackageReference Include="Krypton.Toolkit" Version="5.550.2011" />
+  </ItemGroup>-->
+
+  <!--Canary NuGet package configuration-->
+  <ItemGroup>
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2101" />
+  </ItemGroup>
+
+  <!--Version configuration-->
+  <PropertyGroup>
+    <AssemblyVersion>5.550.2101</AssemblyVersion>
+    <FileVersion>5.550.2101</FileVersion>
+    <Version>5.550.2101</Version>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Language.Model\Krypton.Toolkit.Suite.Extended.Language.Model.xml</DocumentationFile>
+    <OutputPath>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Language.Model\</OutputPath>
+  </PropertyGroup>
+
+</Project>
