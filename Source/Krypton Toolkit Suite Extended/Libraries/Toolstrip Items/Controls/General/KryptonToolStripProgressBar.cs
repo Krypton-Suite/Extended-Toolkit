@@ -6,18 +6,14 @@
  */
 #endregion
 
-using System;
-using System.Drawing;
 using System.ComponentModel;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Drawing;
 using System.Windows.Forms;
+using System.Windows.Forms.Design;
 
 namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 {
-    [ToolStripItemDesignerAvailability(ToolStripItemDesignerAvailability.All)]
+    [ToolStripItemDesignerAvailability(ToolStripItemDesignerAvailability.All), ToolboxItem(false), ToolboxBitmap(typeof(ToolStripProgressBar))]
     public class KryptonToolStripProgressBar : ToolStripProgressBar
     {
         #region Constructor
