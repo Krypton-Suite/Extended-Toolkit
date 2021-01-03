@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 {
-    [Description("A standard tool strip, with a few enhancements."), ToolboxItem(false)]
+    [Description("A standard tool strip, with a few enhancements.")]
     /// <summary>A standard tool strip, with a few enhancements.</summary>
     public class KryptonEnhancedToolStrip : ToolStrip
     {
