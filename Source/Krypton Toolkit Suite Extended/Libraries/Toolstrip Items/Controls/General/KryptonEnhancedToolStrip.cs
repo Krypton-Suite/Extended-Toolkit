@@ -10,24 +10,27 @@ using System;
 using System.ComponentModel;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Suite.Extended.Base
+namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 {
     [Description("A standard tool strip, with a few enhancements."), ToolboxItem(false)]
-	/// <summary>A standard tool strip, with a few enhancements.</summary>
+    /// <summary>A standard tool strip, with a few enhancements.</summary>
     public class KryptonEnhancedToolStrip : ToolStrip
     {
-		#region Variables
-		private bool _clickThrough = false;
-		#endregion
-		
-		#region Properties
-		/// <summary>Gets or sets whether the ToolStripEx honors item clicks when its containing form does not have input focus.</summary>
+        #region Variables
+        private bool _clickThrough = false, _useKryptonRender;
+        #endregion
+
+        #region Properties
+        /// <summary>Gets or sets whether the ToolStripEx honors item clicks when its containing form does not have input focus.</summary>
         /// <remarks>Default value is false, which is the same behavior provided by the base ToolStrip class.</remarks>
-		public bool ClickThrough { get => _clickThrough; set => _clickThrough = value; }
-		#endregion
-		
-		#region Constructor
-		public KryptonEnhancedToolStrip() {}
+        public bool ClickThrough { get => _clickThrough; set => _clickThrough = value; }
+
+        [DefaultValue(false)]
+        public bool UseKryptonRender { get => _useKryptonRender; set { _useKryptonRender = value; Invalidate(); } }
+        #endregion
+
+        #region Constructor
+        public KryptonEnhancedToolStrip() { }
         #endregion
 
         #region Overrides
@@ -39,6 +42,19 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             {
                 m.Result = (IntPtr)NativeConstants.MA_ACTIVATE;
             }
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            if (_useKryptonRender)
+            {
+                if (ToolStripManager.Renderer is KryptonProfessionalRenderer kpr)
+                {
+                    BackColor = kpr.KCT.StatusStripGradientEnd;
+                }
+            }
+
+            base.OnPaint(e);
         }
         #endregion
     }
