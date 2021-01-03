@@ -21,33 +21,70 @@
     <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
   </PropertyGroup>
 
-  <!--Stable package configuration-
-  <PropertyGroup>
-    <PackageId>Krypton.Toolkit.Suite.Extended.Tool.Strip.Items</PackageId>
-    <PackageOutputPath>..\..\..\..\Bin\NuGet\Stable</PackageOutputPath>
-    <PackageIconUrl>https://tinyurl.com/KryptonExtendedToolkitIcon</PackageIconUrl>
-  </PropertyGroup>-->
-
   <!--Canary package configuration-->
   <PropertyGroup>
     <PackageId>Krypton.Toolkit.Suite.Extended.Tool.Strip.Items.Canary</PackageId>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Canary</PackageOutputPath>
-    <PackageIconUrl>https://tinyurl.com/KryptonToolkitCanaryIcon</PackageIconUrl>
+    <PackageIcon>Canary.png</PackageIcon>
+    <AssemblyVersion>6.0.2102</AssemblyVersion>
+    <FileVersion>6.0.2102</FileVersion>
+    <Version>6.0.2102</Version>
   </PropertyGroup>
 
-  <!--Version configuration-->
+  <!--Nightly package configuration-
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <PackageId>Krypton.Toolkit.Suite.Extended.Tool.Strip.Items.Nightly</PackageId>
+    <PackageOutputPath>..\..\..\..\Bin\NuGet\Nightly</PackageOutputPath>
+    <PackageIcon>Nightly.png</PackageIcon>
+    <VersionSuffix>pre$([System.DateTime]::UtcNow.ToString(yyyyMMdd-HHmm))</VersionSuffix>
+  </PropertyGroup>-->
+
+  <!--Stable package configuration-
   <PropertyGroup>
-    <AssemblyVersion>5.550.2101</AssemblyVersion>
-    <FileVersion>5.550.2101</FileVersion>
-    <Version>5.550.2101</Version>
-  </PropertyGroup>
+    <PackageId>Krypton.Toolkit.Suite.Extended.Tool.Strip.Items</PackageId>
+    <PackageOutputPath>..\..\..\..\Bin\NuGet\Stable</PackageOutputPath>
+    <PackageIcon>Stable.png</PackageIcon>
+    <AssemblyVersion>5.550.2102</AssemblyVersion>
+    <FileVersion>5.550.2102</FileVersion>
+    <Version>5.550.2102</Version>
+  </PropertyGroup>-->
+  
+   <!--Stable NuGet package configuration-
+  <ItemGroup>
+    <PackageReference Include="Krypton.Toolkit" Version="5.550.2011" />
+  </ItemGroup>-->
 
+  <!--Canary NuGet package configuration-->
   <ItemGroup>
     <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2101" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="System.Runtime" Version="4.3.1" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Package Icons\Canary.png" Pack="true" PackagePath="\" />
+    <!--<None Include="Package Icons\Stable.png" Pack="true" PackagePath="\" />-->
+    <!--<None Include="Package Icons\Nightly.png" Pack="true" PackagePath="\" />-->
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Base\Krypton.Toolkit.Suite.Extended.Base.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

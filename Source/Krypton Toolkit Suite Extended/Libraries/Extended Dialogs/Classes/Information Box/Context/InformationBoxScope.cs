@@ -1,8 +1,9 @@
-﻿#region License
-// <copyright file="InformationBoxScope.cs" company="Johann Blais">
-// Copyright (c) 2008 All Right Reserved
-// </copyright>
-// <author>Johann Blais</author>
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ */
 #endregion
 
 using System;

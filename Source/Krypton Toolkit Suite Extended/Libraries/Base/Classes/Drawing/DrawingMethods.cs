@@ -13,6 +13,7 @@ using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Base
 {
+    /// <summary>Contains several methods that are used in the toolkit.</summary>
     public static class DrawingMethods
     {
         #region ... DrawMethods ...
@@ -20,8 +21,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         /// <param name="g">The g.</param>
         /// <param name="rect">The rect.</param>
         /// <param name="LightColor">Color of the light.</param>
-        /// <param name="MiddleColor1">The middle color1.</param>
-        /// <param name="MiddleColor2">The middle color2.</param>
+        /// <param name="MiddleColor1">The first middle color.</param>
+        /// <param name="MiddleColor2">The second middle color.</param>
         /// <param name="DarkColor">Color of the dark.</param>
         /// <param name="Angle">The angle.</param>
         public static void DrawLinearGradientTwoParts(Graphics g, Rectangle rect, Color LightColor, Color MiddleColor1, Color MiddleColor2, Color DarkColor, float Angle)
@@ -48,6 +49,15 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             g.FillRectangle(background2, downbounds);
         }
 
+        /// <summary>Draws a gradient.</summary>
+        /// <param name="g">The graphics.</param>
+        /// <param name="rect">The rectangle.</param>
+        /// <param name="DarkColor">Color of the dark.</param>
+        /// <param name="LightColor">Color of the light.</param>
+        /// <param name="Angle">The angle.</param>
+        /// <param name="EnableBorder">if set to <c>true</c> [enable border].</param>
+        /// <param name="BorderColor">Color of the border.</param>
+        /// <param name="BorderSize">Size of the border.</param>
         public static void DrawGradient(Graphics g, Rectangle rect, Color DarkColor, Color LightColor, float Angle, bool EnableBorder, Color BorderColor, float BorderSize)
         {
             using (LinearGradientBrush lb = new LinearGradientBrush(rect, LightColor, DarkColor, Angle))
@@ -68,6 +78,12 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             if (EnableBorder) g.DrawRectangle(new Pen(BorderColor, BorderSize), rect);
         }
 
+        /// <summary>Draws the status blend.</summary>
+        /// <param name="g">The graphics.</param>
+        /// <param name="rect">The rectangle.</param>
+        /// <param name="LightColor">Color of the light.</param>
+        /// <param name="DarkColor">Color of the dark.</param>
+        /// <param name="Angle">The angle.</param>
         public static void DrawStatusBlend(Graphics g, Rectangle rect, Color LightColor, Color DarkColor, float Angle)
         {
             // One time creation of the blend for the status strip gradient brush
@@ -93,6 +109,11 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
         }
 
+        /// <summary>Draws the content from one colour.</summary>
+        /// <param name="g">The graphics.</param>
+        /// <param name="rect">The rectangle.</param>
+        /// <param name="baseHue">The base hue.</param>
+        /// <param name="Angle">The angle.</param>
         public static void DrawContentFromOneColor(Graphics g, Rectangle rect, float baseHue, float Angle)
         {
             Color topTopColor = ColorFromAhsb(255, baseHue, 0.2958f, 0.7292f);
@@ -112,6 +133,11 @@ namespace Krypton.Toolkit.Suite.Extended.Base
                 g.FillRectangle(bottomBrush, bottomRect);
             }
         }
+        /// <summary>Draws the bar.</summary>
+        /// <param name="g">The graphics.</param>
+        /// <param name="rect">The rectangle.</param>
+        /// <param name="BaseColor">Color of the base.</param>
+        /// <param name="DrawBorder">if set to <c>true</c> [draw border].</param>
         public static void DrawBar(Graphics g, RectangleF rect, Color BaseColor, bool DrawBorder)
         {
             // Some calculations
@@ -157,6 +183,11 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             #endregion
         }
 
+        /// <summary>Draws the columns.</summary>
+        /// <param name="g">The graphics.</param>
+        /// <param name="rect">The rectangle.</param>
+        /// <param name="BaseColor">The base colour.</param>
+        /// <param name="DrawBorder">if set to <c>true</c> [draw border].</param>
         public static void DrawColumn(Graphics g, RectangleF rect, Color BaseColor, bool DrawBorder)
         {
             // Some calculations
@@ -224,15 +255,33 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         #endregion
 
         #region ... TabControl ...
+        /// <summary>The current status of the tabs.</summary>
         public enum TabHeaderStatus : int
         {
+            /// <summary>The normal look.</summary>
             Normal = 0,
+            /// <summary>Preserve a normal look.</summary>
             NormalPreserve = 1,
+            /// <summary>The active look.</summary>
             Hot = 2,
+            /// <summary>The selected look.</summary>
             Selected = 3,
+            /// <summary>The active and selected look.</summary>
             HotSelected = 4
         };
 
+        /// <summary>Draws the tab header.</summary>
+        /// <param name="g">The g.</param>
+        /// <param name="pt">The pt.</param>
+        /// <param name="rect">The rect.</param>
+        /// <param name="LightColor">Color of the light.</param>
+        /// <param name="MiddleColor">Color of the middle.</param>
+        /// <param name="ExtraColor">Color of the extra.</param>
+        /// <param name="Angle">The angle.</param>
+        /// <param name="Ta">The ta.</param>
+        /// <param name="Extended">if set to <c>true</c> [extended].</param>
+        /// <param name="Status">The status.</param>
+        /// <param name="PreserveColor">if set to <c>true</c> [preserve color].</param>
         public static void DrawTabHeader(Graphics g, Point[] pt, Rectangle rect, Color LightColor, Color MiddleColor, Color ExtraColor, float Angle, TabAlignment Ta, bool Extended, TabHeaderStatus Status, bool PreserveColor)
         {
             switch (Ta)
@@ -281,6 +330,18 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
         }
 
+        /// <summary>Draws the tab header.</summary>
+        /// <param name="g">The g.</param>
+        /// <param name="path">The path.</param>
+        /// <param name="rect">The rect.</param>
+        /// <param name="LightColor">Color of the light.</param>
+        /// <param name="MiddleColor">Color of the middle.</param>
+        /// <param name="ExtraColor">Color of the extra.</param>
+        /// <param name="Angle">The angle.</param>
+        /// <param name="Ta">The ta.</param>
+        /// <param name="Extended">if set to <c>true</c> [extended].</param>
+        /// <param name="Status">The status.</param>
+        /// <param name="PreserveColor">if set to <c>true</c> [preserve color].</param>
         public static void DrawTabHeader(Graphics g, GraphicsPath path, Rectangle rect, Color LightColor, Color MiddleColor, Color ExtraColor, float Angle, TabAlignment Ta, bool Extended, TabHeaderStatus Status, bool PreserveColor)
         {
             switch (Ta)
@@ -329,6 +390,18 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
         }
 
+        /// <summary>Draws the tab header.</summary>
+        /// <param name="g">The g.</param>
+        /// <param name="pt">The pt.</param>
+        /// <param name="rect">The rect.</param>
+        /// <param name="LightColor">Color of the light.</param>
+        /// <param name="MiddleColor">Color of the middle.</param>
+        /// <param name="DarkColor">Color of the dark.</param>
+        /// <param name="ExtraColor">Color of the extra.</param>
+        /// <param name="Angle">The angle.</param>
+        /// <param name="Ta">The ta.</param>
+        /// <param name="Extended">if set to <c>true</c> [extended].</param>
+        /// <param name="Status">The status.</param>
         public static void DrawTabHeader(Graphics g, PointF[] pt, Rectangle rect, Color LightColor, Color MiddleColor, Color DarkColor, Color ExtraColor, float Angle, TabAlignment Ta, bool Extended, TabHeaderStatus Status)
         {
             //Split the area, new half height
@@ -474,6 +547,15 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
         }
 
+        /// <summary>Gets the tab rounded path.</summary>
+        /// <param name="bounds">The bounds.</param>
+        /// <param name="radius">The radius.</param>
+        /// <param name="orientation">The orientation.</param>
+        /// <param name="IsForBorder">if set to <c>true</c> [is for border].</param>
+        /// <param name="Status">The status.</param>
+        /// <param name="Appearance">The appearance.</param>
+        /// <param name="allowSelectedTabHighSize">Size of the allow selected tab high.</param>
+        /// <returns>The tab's rounded path.</returns>
         public static GraphicsPath GetTabRoundedPath(Rectangle bounds, int radius, TabAlignment orientation, bool IsForBorder, DrawingMethods.TabHeaderStatus Status, TabAppearance Appearance, int allowSelectedTabHighSize)
         {
             GraphicsPath graphicsPath = new GraphicsPath();
@@ -543,6 +625,17 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             return graphicsPath;
         }
 
+        /// <summary>Gets the tab squared points.</summary>
+        /// <param name="bounds">The bounds.</param>
+        /// <param name="cornerWidth">Width of the corner.</param>
+        /// <param name="orientation">The orientation.</param>
+        /// <param name="cornerLeftWidth">Width of the corner left.</param>
+        /// <param name="cornerRightWidth">Width of the corner right.</param>
+        /// <param name="Appearance">The appearance.</param>
+        /// <param name="Status">The status.</param>
+        /// <param name="allowSelectedTabHighSize">Size of the allow selected tab high.</param>
+        /// <param name="IsForBorder">if set to <c>true</c> [is for border].</param>
+        /// <returns>The tab squared points.</returns>
         public static Point[] GetTabSquaredPoints(Rectangle bounds, int cornerWidth, TabAlignment orientation, int cornerLeftWidth, int cornerRightWidth, TabAppearance Appearance, DrawingMethods.TabHeaderStatus Status, int allowSelectedTabHighSize, bool IsForBorder)
         {
             Point[] pt = new Point[7];
@@ -613,6 +706,15 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             return pt;
         }
 
+        /// <summary>Gets the squared top points.</summary>
+        /// <param name="recBounds">The record bounds.</param>
+        /// <param name="cornerWidth">Width of the corner.</param>
+        /// <param name="cornerLeftWidth">Width of the corner left.</param>
+        /// <param name="cornerRightWidth">Width of the corner right.</param>
+        /// <param name="Appearance">The appearance.</param>
+        /// <param name="Status">The status.</param>
+        /// <param name="allowSelectedTabHighSize">Size of the allow selected tab high.</param>
+        /// <returns>Top points.</returns>
         public static Point[] GetSquaredTopPoints(Rectangle recBounds, int cornerWidth, int cornerLeftWidth, int cornerRightWidth, TabAppearance Appearance, DrawingMethods.TabHeaderStatus Status, int allowSelectedTabHighSize)
         {
             Point[] pt = new Point[7];
@@ -637,6 +739,15 @@ namespace Krypton.Toolkit.Suite.Extended.Base
 
         }
 
+        /// <summary>Gets the squared bottom points.</summary>
+        /// <param name="recBounds">The record bounds.</param>
+        /// <param name="cornerWidth">Width of the corner.</param>
+        /// <param name="cornerLeftWidth">Width of the corner left.</param>
+        /// <param name="cornerRightWidth">Width of the corner right.</param>
+        /// <param name="Appearance">The appearance.</param>
+        /// <param name="Status">The status.</param>
+        /// <param name="allowSelectedTabHighSize">Size of the allow selected tab high.</param>
+        /// <returns>The bottom squared points.</returns>
         public static Point[] GetSquaredBottomPoints(Rectangle recBounds, int cornerWidth, int cornerLeftWidth, int cornerRightWidth, TabAppearance Appearance, DrawingMethods.TabHeaderStatus Status, int allowSelectedTabHighSize)
         {
             Point[] pt = new Point[7];
@@ -659,6 +770,15 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             return pt;
         }
 
+        /// <summary>Gets the squared left points.</summary>
+        /// <param name="recBounds">The record bounds.</param>
+        /// <param name="cornerWidth">Width of the corner.</param>
+        /// <param name="cornerLeftWidth">Width of the corner left.</param>
+        /// <param name="cornerRightWidth">Width of the corner right.</param>
+        /// <param name="Appearance">The appearance.</param>
+        /// <param name="Status">The status.</param>
+        /// <param name="allowSelectedTabHighSize">Size of the allow selected tab high.</param>
+        /// <returns>The left squared points.</returns>
         public static Point[] GetSquaredLeftPoints(Rectangle recBounds, int cornerWidth, int cornerLeftWidth, int cornerRightWidth, TabAppearance Appearance, DrawingMethods.TabHeaderStatus Status, int allowSelectedTabHighSize)
         {
             Point[] pt = new Point[7];
@@ -672,6 +792,15 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             return pt;
         }
 
+        /// <summary>Gets the squared right points.</summary>
+        /// <param name="recBounds">The record bounds.</param>
+        /// <param name="cornerWidth">Width of the corner.</param>
+        /// <param name="cornerLeftWidth">Width of the corner left.</param>
+        /// <param name="cornerRightWidth">Width of the corner right.</param>
+        /// <param name="Appearance">The appearance.</param>
+        /// <param name="Status">The status.</param>
+        /// <param name="allowSelectedTabHighSize">Size of the allow selected tab high.</param>
+        /// <returns>The right squared points.</returns>
         public static Point[] GetSquaredRightPoints(Rectangle recBounds, int cornerWidth, int cornerLeftWidth, int cornerRightWidth, TabAppearance Appearance, DrawingMethods.TabHeaderStatus Status, int allowSelectedTabHighSize)
         {
             Point[] pt = new Point[7];
@@ -687,6 +816,11 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             return pt;
         }
 
+        /// <summary>Clears the tab selected bottom line.</summary>
+        /// <param name="g">The graphics.</param>
+        /// <param name="recBounds">The record bounds.</param>
+        /// <param name="pen">The pen.</param>
+        /// <param name="Alignment">The alignment.</param>
         public static void ClearTabSelectedBottomLine(Graphics g, Rectangle recBounds, Pen pen, TabAlignment Alignment)
         {
 
@@ -722,6 +856,14 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         #endregion
 
         #region ... ListView ...
+        /// <summary>Draws the ListView second header.</summary>
+        /// <param name="g">The graphics.</param>
+        /// <param name="rect">The rectangle.</param>
+        /// <param name="LightColor">The light colour.</param>
+        /// <param name="MiddleColor">The middle colour.</param>
+        /// <param name="DarkColor">The dark colour.</param>
+        /// <param name="ExtraColor">The extra colour.</param>
+        /// <param name="Angle">The angle.</param>
         public static void DrawListViewHeader2(Graphics g, Rectangle rect, Color LightColor, Color MiddleColor, Color DarkColor, Color ExtraColor, float Angle)
         {
 
@@ -751,6 +893,12 @@ namespace Krypton.Toolkit.Suite.Extended.Base
                 g.FillRectangle(b, Newrect);
             }
         }
+        /// <summary>Draws the ListView header.</summary>
+        /// <param name="g">The graphics.</param>
+        /// <param name="rect">The rectangle.</param>
+        /// <param name="LightColor">The light colour.</param>
+        /// <param name="DarkColor">The dark colour.</param>
+        /// <param name="Angle">The angle.</param>
         public static void DrawListViewHeader(Graphics g, Rectangle rect, Color LightColor, Color DarkColor, float Angle)
         {
             //check on all whites
@@ -766,14 +914,17 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         #endregion
 
         #region ... ColorManipulation ...
-        public static Color GetDarkerColour(Color clr)
+        /// <summary>Gets a darker version of the user defined colour.</summary>
+        /// <param name="colour">The colour.</param>
+        /// <returns>A darker colour.</returns>
+        public static Color GetDarkerColour(Color colour)
         {
             Color c = new Color();
             int r, g, b;
 
-            r = clr.R - 18;
-            g = clr.G - 18;
-            b = clr.B - 18;
+            r = colour.R - 18;
+            g = colour.G - 18;
+            b = colour.B - 18;
 
             if (r < 0) r = 0;
             if (g < 0) g = 0;
@@ -783,14 +934,18 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             return c;
         }
 
-        public static Color GetDarkerColour(Color clr, int amount)
+        /// <summary>Gets a darker version of the user defined colour by an amount.</summary>
+        /// <param name="colour">The colour.</param>
+        /// <param name="amount">The amount.</param>
+        /// <returns>A darker version of the user defined colour by an amount.</returns>
+        public static Color GetDarkerColour(Color colour, int amount)
         {
             Color c = new Color();
             int r, g, b;
 
-            r = clr.R - amount;
-            g = clr.G - amount;
-            b = clr.B - amount;
+            r = colour.R - amount;
+            g = colour.G - amount;
+            b = colour.B - amount;
 
             if (r < 0) r = 0;
             if (g < 0) g = 0;
@@ -800,14 +955,18 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             return c;
         }
 
-        public static Color GetLighterColour(Color clr, int amount)
+        /// <summary>Gets a lighter version of the user defined colour based on an amount.</summary>
+        /// <param name="colour">The colour.</param>
+        /// <param name="amount">The amount.</param>
+        /// <returns>A lighter version of the user defined colour based on an amount.</returns>
+        public static Color GetLighterColour(Color colour, int amount)
         {
             Color c = new Color();
             int r, g, b;
 
-            r = clr.R + amount;
-            g = clr.G + amount;
-            b = clr.B + amount;
+            r = colour.R + amount;
+            g = colour.G + amount;
+            b = colour.B + amount;
 
             if (r > 255) r = 255;
             if (g > 255) g = 255;
@@ -817,14 +976,17 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             return c; // System.Windows.Forms.ControlPaint.Light(clr, 0.5F);
         }
 
-        public static Color GetLighterColour(Color clr)
+        /// <summary>Gets a lighter version of the user defined colour.</summary>
+        /// <param name="colour">The colour.</param>
+        /// <returns>A lighter version of the user defined colour.</returns>
+        public static Color GetLighterColour(Color colour)
         {
             Color c = new Color();
             int r, g, b;
 
-            r = clr.R + 18;
-            g = clr.G + 18;
-            b = clr.B + 18;
+            r = colour.R + 18;
+            g = colour.G + 18;
+            b = colour.B + 18;
 
             if (r > 255) r = 255;
             if (g > 255) g = 255;
@@ -834,11 +996,17 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             return c; // System.Windows.Forms.ControlPaint.Light(clr, 0.5F);
         }
 
-        public static Color GetModifiedColour(Color clr, int britness, int saturation, int hue)
+        /// <summary>Gets the modified colour.</summary>
+        /// <param name="colour">The colour.</param>
+        /// <param name="britness">The britness.</param>
+        /// <param name="saturation">The saturation.</param>
+        /// <param name="hue">The hue.</param>
+        /// <returns>A modified colour.</returns>
+        public static Color GetModifiedColour(Color colour, int britness, int saturation, int hue)
         {
             Color c = new Color();
 
-            ColourHandler.RGB rgb = new ColourHandler.RGB(clr.R, clr.G, clr.B);
+            ColourHandler.RGB rgb = new ColourHandler.RGB(colour.R, colour.G, colour.B);
             ColourHandler.HSV hsv = ColourHandler.RGBtoHSV(rgb);
 
             hsv.value += britness;
@@ -865,25 +1033,36 @@ namespace Krypton.Toolkit.Suite.Extended.Base
 
             return c;
         }
-        public static Color GetSystemDarkerColour(Color clr)
-        {
-            return ControlPaint.Dark(clr);
-        }
-        public static Color GetSystemDarkerDarkColour(Color clr)
-        {
-            return ControlPaint.DarkDark(clr);
-        }
+        /// <summary>Gets the system darker colour.</summary>
+        /// <param name="colour">The colour.</param>
+        /// <returns>A darker colour.</returns>
+        public static Color GetSystemDarkerColour(Color colour) => ControlPaint.Dark(colour);
 
-        public static Color GetSystemLighterColour(Color clr)
-        {
-            return ControlPaint.Light(clr);
-        }
-        public static Color GetSystemLighterLightColour(Color clr)
-        {
-            return ControlPaint.LightLight(clr);
-        }
+        /// <summary>Gets the system darker dark colour.</summary>
+        /// <param name="colour">The colour.</param>
+        /// <returns>A darker colour.</returns>
+        public static Color GetSystemDarkerDarkColour(Color colour) => ControlPaint.DarkDark(colour);
 
-        public static Brush GetBrush(Rectangle rect, Color ColorBegin, Color ColorEnd, PaletteColourStyle ColorStyle, float Angle, VisualOrientation orientation, bool PreserveColors)
+        /// <summary>Gets the system lighter colour.</summary>
+        /// <param name="colour">The colour.</param>
+        /// <returns>A light colour.</returns>
+        public static Color GetSystemLighterColour(Color colour) => ControlPaint.Light(colour);
+
+        /// <summary>Gets the system lighter light colour.</summary>
+        /// <param name="colour">The colour.</param>
+        /// <returns>A light colour.</returns>
+        public static Color GetSystemLighterLightColour(Color colour) => ControlPaint.LightLight(colour);
+
+        /// <summary>Gets the brush.</summary>
+        /// <param name="rect">The rectangle.</param>
+        /// <param name="colourBegin">The beginning colour.</param>
+        /// <param name="colourEnd">The end colour.</param>
+        /// <param name="colourStyle">The colour style.</param>
+        /// <param name="angle">The angle.</param>
+        /// <param name="orientation">The orientation.</param>
+        /// <param name="preserveColours">if set to <c>true</c> [preserve colours].</param>
+        /// <returns>The brush.</returns>
+        public static Brush GetBrush(Rectangle rect, Color colourBegin, Color colourEnd, PaletteColourStyle colourStyle, float angle, VisualOrientation orientation, bool preserveColours)
         {
             Blend blend1 = new Blend(4);
             Blend blend2;
@@ -958,13 +1137,13 @@ namespace Krypton.Toolkit.Suite.Extended.Base
 
 
             //For Gefault Type Only
-            if (ColorStyle == PaletteColourStyle.Default)
+            if (colourStyle == PaletteColourStyle.Default)
             {
                 LinearGradientBrush lb;
-                if (PreserveColors)
-                { lb = new LinearGradientBrush(rect, ColorEnd, ColorBegin, Angle); }
+                if (preserveColours)
+                { lb = new LinearGradientBrush(rect, colourEnd, colourBegin, angle); }
                 else
-                { lb = new LinearGradientBrush(rect, GetDarkerColour(ColorEnd), GetLighterColour(ColorBegin), Angle); }
+                { lb = new LinearGradientBrush(rect, GetDarkerColour(colourEnd), GetLighterColour(colourBegin), angle); }
 
                 lb.Blend = blend1;
                 return lb;
@@ -972,35 +1151,35 @@ namespace Krypton.Toolkit.Suite.Extended.Base
 
 
             //Solid
-            if (ColorStyle == PaletteColourStyle.Solid)
+            if (colourStyle == PaletteColourStyle.Solid)
             {
-                return new SolidBrush(ColorBegin);
+                return new SolidBrush(colourBegin);
             }
 
             switch (orientation)
             {
                 case VisualOrientation.Bottom:
-                    Angle += 180f;
+                    angle += 180f;
                     break;
 
                 case VisualOrientation.Left:
-                    Angle -= 90f;
+                    angle -= 90f;
                     break;
 
                 case VisualOrientation.Right:
-                    Angle += 90f;
+                    angle += 90f;
                     break;
             }
 
             //One Note Specific
-            if (ColorStyle == PaletteColourStyle.OneNote)
+            if (colourStyle == PaletteColourStyle.OneNote)
             {
-                ColorBegin = Color.White;
+                colourBegin = Color.White;
             }
 
             //Others
-            LinearGradientBrush brush = new LinearGradientBrush(rect, ColorBegin, ColorEnd, Angle);
-            switch (ColorStyle)
+            LinearGradientBrush brush = new LinearGradientBrush(rect, colourBegin, colourEnd, angle);
+            switch (colourStyle)
             {
                 case PaletteColourStyle.Status:
                     brush.Blend = blend13;
@@ -1060,9 +1239,12 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             return brush;
         }
 
+        /// <summary>The corner type.</summary>
         public enum CornerType
         {
+            /// <summary>A rounded corner.</summary>
             Rounded,
+            /// <summary>A squared corner.</summary>
             Squared
         }
 
@@ -1194,6 +1376,9 @@ namespace Krypton.Toolkit.Suite.Extended.Base
 
         #region ... Graphic Paths ...
 
+        /// <summary>Creates the rectangle graphics path.</summary>
+        /// <param name="rect">The rectangle.</param>
+        /// <returns>The path of the rectangle.</returns>
         public static GraphicsPath CreateRectGraphicsPath(Rectangle rect)
         {
             GraphicsPath path = new GraphicsPath();

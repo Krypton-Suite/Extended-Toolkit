@@ -2533,6 +2533,16 @@ namespace Krypton.Extended.Toolkit.Resources.Images {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap PasswordEyeImage {
+            get {
+                object obj = ResourceManager.GetObject("PasswordEyeImage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Paste_16_x_16 {
             get {
                 object obj = ResourceManager.GetObject("Paste_16_x_16", resourceCulture);
