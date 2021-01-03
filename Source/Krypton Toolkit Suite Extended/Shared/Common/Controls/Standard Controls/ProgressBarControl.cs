@@ -211,7 +211,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// 000, 163, 211 = Blue
         /// 000, 211, 040 = Green
         /// </summary>
-        [Category("Bar"), DefaultValue(typeof(Color), "210, 0, 0"), Description("The start color for the progress bar." + "210, 000, 000 = Red" + "\n" + "210, 202, 000 = Yellow" + "\n" + "000, 163, 211 = Blue" + "\n" + "000, 211, 040 = Green" + "\n")]
+        [Category("Bar"), DefaultValue(typeof(Color), "210, 0, 0"), Description("The start colour for the progress bar." + "210, 000, 000 = Red" + "\n" + "210, 202, 000 = Yellow" + "\n" + "000, 163, 211 = Blue" + "\n" + "000, 211, 040 = Green" + "\n")]
         public Color StartColour
         {
             get
@@ -233,7 +233,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// 000, 163, 211 = Blue
         /// 000, 211, 040 = Green
         /// </summary>
-        [Category("Bar"), DefaultValue(typeof(Color), "0, 211, 40"), Description("The end color for the progress bar." + "210, 000, 000 = Red" + "\n" + "210, 202, 000 = Yellow" + "\n" + "000, 163, 211 = Blue" + "\n" + "000, 211, 040 = Green" + "\n")]
+        [Category("Bar"), DefaultValue(typeof(Color), "0, 211, 40"), Description("The end colour for the progress bar." + "210, 000, 000 = Red" + "\n" + "210, 202, 000 = Yellow" + "\n" + "000, 163, 211 = Blue" + "\n" + "000, 211, 040 = Green" + "\n")]
         public Color EndColour
         {
             get
@@ -255,7 +255,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <summary>
         /// The color of the highlights.
         /// </summary>
-        [Category("Highlights and Glows"), DefaultValue(typeof(Color), "White"), Description("The color of the highlights.")]
+        [Category("Highlights and Glows"), DefaultValue(typeof(Color), "White"), Description("The colour of the highlights.")]
         public Color HighlightColour
         {
             get
@@ -273,7 +273,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <summary>
         /// The color of the background.
         /// </summary>
-        [Category("Highlights and Glows"), DefaultValue(typeof(Color), "201,201,201"), Description("The color of the background.")]
+        [Category("Highlights and Glows"), DefaultValue(typeof(Color), "201,201,201"), Description("The colour of the background.")]
         public Color BackgroundColour
         {
             get
@@ -317,7 +317,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <summary>
         /// The color of the glow.
         /// </summary>
-        [Category("Highlights and Glows"), DefaultValue(typeof(Color), "150, 255, 255, 255"), Description("The color of the glow.")]
+        [Category("Highlights and Glows"), DefaultValue(typeof(Color), "150, 255, 255, 255"), Description("The colour of the glow.")]
         public Color GlowColour
         {
             get

@@ -18,6 +18,7 @@
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Description>An extension to the standard krypton toolkit to support .NET Core, .NET 5 and the latest .NET 3.5/4.x framework. Contains menu, tool and status strip items.</Description>
     <RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
+    <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
   </PropertyGroup>
 
   <!--Stable package configuration-->
@@ -25,7 +26,7 @@
     <PackageId>Krypton.Toolkit.Suite.Extended.Tool.Strip.Items</PackageId>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Stable</PackageOutputPath>
     <PackageIconUrl>https://tinyurl.com/KryptonExtendedToolkitIcon</PackageIconUrl>
-  </PropertyGroup>
+  </PropertyGroup>	
 
   <!--Canary package configuration-
   <PropertyGroup>
@@ -33,22 +34,17 @@
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Canary</PackageOutputPath>
     <PackageIconUrl>https://tinyurl.com/KryptonToolkitCanaryIcon</PackageIconUrl>
   </PropertyGroup>-->
+
+  <!--NuGet package configuration-->
+  <ItemGroup>
+    <PackageReference Include="Krypton.Toolkit" Version="5.550.2101" />
+  </ItemGroup>  
   
-  <!--Stable NuGet package configuration-->
-  <ItemGroup>
-    <PackageReference Include="Krypton.Toolkit" Version="5.550.2011" />
-  </ItemGroup>
-
-  <!--Canary NuGet package configuration-
-  <ItemGroup>
-    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2011" />
-  </ItemGroup>-->
-
   <!--Version configuration-->
   <PropertyGroup>
-    <AssemblyVersion>5.550.2012</AssemblyVersion>
-    <FileVersion>5.550.2012</FileVersion>
-    <Version>5.550.2012</Version>
+    <AssemblyVersion>5.550.2101</AssemblyVersion>
+    <FileVersion>5.550.2101</FileVersion>
+    <Version>5.550.2101</Version>
   </PropertyGroup>
 
   <ItemGroup>

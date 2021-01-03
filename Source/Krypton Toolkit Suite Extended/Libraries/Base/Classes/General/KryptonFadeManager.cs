@@ -1,8 +1,17 @@
-﻿using System.Threading;
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ */
+#endregion
+
+using System.Threading;
 
 namespace Krypton.Toolkit.Suite.Extended.Base
 {
-    internal class KryptonFadeManager
+    /// <summary>Use this class to apply 'fading' effects to <see cref="KryptonForm">your window</see>.</summary>
+    public class KryptonFadeManager
     {
         #region Variables
         private double _fadeIn, _fadeOut;
@@ -26,6 +35,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         private double FadeOut { get => _fadeOut; set => _fadeOut = value; }
         #endregion
 
+        /// <summary>Initializes a new instance of the <see cref="KryptonFadeManager" /> class.</summary>
         public KryptonFadeManager()
         {
 
@@ -35,7 +45,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         /// <summary>Fades the extended window in.</summary>
         /// <param name="window">The window.</param>
         /// <param name="fadeInSleepTimer">The fade in sleep timer.</param>
-        public void FadeExtendedWindowIn(KryptonFormExtended window, int fadeInSleepTimer = 50)
+        public void FadeExtendedWindowIn(KryptonForm window, int fadeInSleepTimer = 50)
         {
             for (FadeIn = 0.0; FadeIn <= 1.1; FadeIn += 0.1)
             {
@@ -51,7 +61,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         /// <param name="window">The current window.</param>
         /// <param name="nextWindow">The next window.</param>
         /// <param name="fadeOutSleepTimer">The fade out sleep timer.</param>
-        public void FadeExtendedWindowOut(KryptonFormExtended window, KryptonFormExtended nextWindow = null, int fadeOutSleepTimer = 50)
+        public void FadeExtendedWindowOut(KryptonForm window, KryptonForm nextWindow = null, int fadeOutSleepTimer = 50)
         {
             for (FadeOut = 90; FadeOut >= 10; FadeOut += -10)
             {

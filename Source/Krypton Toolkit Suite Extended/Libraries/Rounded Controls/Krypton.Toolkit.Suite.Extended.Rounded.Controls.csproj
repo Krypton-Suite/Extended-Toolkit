@@ -14,31 +14,32 @@
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Description>An extension to the standard krypton toolkit to support .NET Core, .NET 5 and the latest .NET 3.5/4.x framework. Contains popular software update solutions such as AutoUpdater.NET, NetSparkle and SharpUpdate.</Description>
     <RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
+    <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
   </PropertyGroup>
 
-  <!--Stable package configuration-
+  <!--Stable package configuration-->
   <PropertyGroup>
     <PackageId>Krypton.Toolkit.Suite.Extended.Rounded.Controls</PackageId>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Stable</PackageOutputPath>
     <PackageIconUrl>https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/Assets/PNG/Main%20Icon/64%20x%2064/Main%20Icon%2064%20x%2064.png</PackageIconUrl>
-  </PropertyGroup>-->
+  </PropertyGroup>
 
-  <!--Canary package configuration-->
+  <!--Canary package configuration-
   <PropertyGroup>
     <PackageId>Krypton.Toolkit.Suite.Extended.Rounded.Controls.Canary</PackageId>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Canary</PackageOutputPath>
     <PackageIconUrl>https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/Assets/PNG/Main%20Icon/64%20x%2064/Main%20Icon%2064%20x%2064%20Canary.png</PackageIconUrl>
-  </PropertyGroup>
+  </PropertyGroup>-->
 
-  <!--Stable NuGet package configuration-
+  <!--Stable NuGet package configuration-->
   <ItemGroup>
     <PackageReference Include="Krypton.Toolkit" Version="5.550.2101" />
-  </ItemGroup>-->
-
-  <!--Canary NuGet package configuration-->
-  <ItemGroup>
-    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2011" />
   </ItemGroup>
+
+  <!--Canary NuGet package configuration-
+  <ItemGroup>
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2101" />
+  </ItemGroup>-->
 
   <!--Version configuration-->
   <PropertyGroup>
@@ -47,7 +48,7 @@
     <Version>5.550.2101</Version>
   </PropertyGroup>
   
-<ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\..\Libraries\Base\Krypton.Toolkit.Suite.Extended.Base.csproj" />
   </ItemGroup>
   

@@ -44,6 +44,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         private Size _imageSize = new Size(0, 0);
         private KryptonPalette _palette;
         private KryptonToastNotificationPopupForm _toastNotificationPopupForm;
+        private Point _notificationLocationPosition;
         #endregion
 
         #region Properties
@@ -55,7 +56,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         [Category("Appearance"), DefaultValue(typeof(Color), "Control")]
         [Description("Colour of the window background.")]
         public Color BodyColour { get; set; }
-        
+
         [Category("Title"), DefaultValue(typeof(Color), "Gray")]
         [Description("Colour of the title text.")]
         public Color TitleColour { get; set; }
@@ -83,6 +84,9 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         [Category("Appearance"), DefaultValue(50)]
         [Description("Gradient of window background colour.")]
         public int GradientPower { get; set; }
+
+        [Category("Appearance"), Description("Set or get a custom location for the notification.")]
+        public Point NotificationLocationPosition { get => _notificationLocationPosition; set => _notificationLocationPosition = value; }
 
         [Category("Content")]
         [Description("Font of the content text.")]
@@ -239,6 +243,8 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
             AnimationInterval = 10;
 
             Size = new Size(400, 100);
+
+            NotificationLocationPosition = new Point(Screen.PrimaryScreen.WorkingArea.Right - _toastNotificationPopupForm.Size.Width - 1, _startPosition);
 
             _toastNotificationPopupForm = new KryptonToastNotificationPopupForm(this);
 
@@ -519,7 +525,18 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
                     _stopOpacity = 1;
 
                     _toastNotificationPopupForm.Opacity = _stopOpacity;
-                    _toastNotificationPopupForm.Location = new Point(Screen.PrimaryScreen.WorkingArea.Right - _toastNotificationPopupForm.Size.Width - 1, _startPosition);
+
+                    // Use custom location
+                    if (_notificationLocationPosition != Point.Empty)
+                    {
+                        _toastNotificationPopupForm.Location = _notificationLocationPosition;
+                    }
+                    else
+                    {
+                        // Bottom right
+                        _toastNotificationPopupForm.Location = new Point(Screen.PrimaryScreen.WorkingArea.Right - _toastNotificationPopupForm.Size.Width - 1, _startPosition);
+                    }
+
                     _toastNotificationPopupForm.Visible = true;
                     _isAppearing = true;
 

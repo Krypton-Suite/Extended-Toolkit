@@ -9,12 +9,12 @@
   </PropertyGroup>
 
   <!--Basic package configuration-->
-  <PropertyGroup>    
+  <PropertyGroup>
     <Description>An extension to the standard krypton toolkit to support .NET Core, .NET 5 and the latest .NET 3.5/4.x framework. This is the base module.</Description>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <PackageLicense>https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE</PackageLicense>
     <RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
+    <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
   </PropertyGroup>
 
   <!--Stable package configuration-->
@@ -22,6 +22,7 @@
     <PackageId>Krypton.Toolkit.Suite.Extended.Base</PackageId>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Stable</PackageOutputPath>
     <PackageIconUrl>https://tinyurl.com/KryptonExtendedToolkitIcon</PackageIconUrl>
+    <!--<PackageIcon>Icon Stable.png</PackageIcon>-->
   </PropertyGroup>
 
   <!--Canary package configuration-
@@ -33,14 +34,14 @@
 
   <!--Stable NuGet packages-->
   <ItemGroup>
-    <PackageReference Include="Krypton.Ribbon" Version="5.550.2011" />
-    <PackageReference Include="Krypton.Toolkit" Version="5.550.2011" />
+    <PackageReference Include="Krypton.Ribbon" Version="5.550.2101" />
+    <PackageReference Include="Krypton.Toolkit" Version="5.550.2101" />
   </ItemGroup>
 
   <!--Canary NuGet package configuration-
   <ItemGroup>
-    <PackageReference Include="Krypton.Ribbon.Canary" Version="6.0.2011" />
-    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2011" />
+    <PackageReference Include="Krypton.Ribbon.Canary" Version="6.0.2101" />
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2101" />
   </ItemGroup>-->
 
   <ItemGroup>
@@ -49,9 +50,9 @@
   
   <!--Version configuration-->
   <PropertyGroup>
-    <AssemblyVersion>5.550.2012</AssemblyVersion>
-    <FileVersion>5.550.2012</FileVersion>
-    <Version>5.550.2012</Version>
+    <AssemblyVersion>5.550.2101</AssemblyVersion>
+    <FileVersion>5.550.2101</FileVersion>
+    <Version>5.550.2101</Version>
   </PropertyGroup>
 
   <ItemGroup>

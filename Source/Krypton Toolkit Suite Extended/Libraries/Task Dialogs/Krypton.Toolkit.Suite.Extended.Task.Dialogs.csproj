@@ -13,6 +13,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
+    <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
   </PropertyGroup>
 
   <!--Stable package configuration-->
@@ -21,7 +22,7 @@
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Stable</PackageOutputPath>
     <PackageIconUrl>https://tinyurl.com/KryptonExtendedToolkitIcon</PackageIconUrl>
   </PropertyGroup>
-
+  
   <!--Canary package configuration-
   <PropertyGroup>
     <PackageId>Krypton.Toolkit.Suite.Extended.Task.Dialogs.Canary</PackageId>
@@ -31,9 +32,9 @@
 
   <!--Version configuration-->
   <PropertyGroup>
-    <AssemblyVersion>5.550.2012</AssemblyVersion>
-    <FileVersion>5.550.2012</FileVersion>
-    <Version>5.550.2012</Version>
+    <AssemblyVersion>5.550.2101</AssemblyVersion>
+    <FileVersion>5.550.2101</FileVersion>
+    <Version>5.550.2101</Version>
   </PropertyGroup>
 
   <PropertyGroup>

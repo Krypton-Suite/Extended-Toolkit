@@ -1,11 +1,9 @@
-﻿#region Header
-/****************************************************************************************************************
-(C) Copyright 2007 Zuoliu Ding.  All Rights Reserved.
-DataBar.cs:			class DataBar
-Created by:			Zuoliu Ding, 05/20/2006
-Note:				Bar Chart Custom control 
-Site:               http://www.codeproject.com/cs/miscctrl/SystemMonitor.asp
-****************************************************************************************************************/
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ */
 #endregion
 
 using System.ComponentModel;

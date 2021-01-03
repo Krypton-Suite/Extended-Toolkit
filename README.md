@@ -14,6 +14,7 @@
 | <img src="https://img.shields.io/badge/Module-Floating Toolbars-orange.svg" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Floating.Toolbars)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
 | <img src="https://img.shields.io/badge/Module-IO-orange.svg" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.IO)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
 | <img src="https://img.shields.io/badge/Module-Outlook Grid-orange.svg" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Outlook.Grid)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
+| <img src="https://img.shields.io/badge/Module-Rounded Controls-orange.svg" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Rounded.Controls?label=Version&logo=nuget)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
 | <img src="https://img.shields.io/badge/Module-Software Updater-orange.svg" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Software.Updater)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
 | <img src="https://img.shields.io/badge/Module-Standard Controls-orange.svg" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Standard.Controls)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
 | <img src="https://img.shields.io/badge/Module-Task Dialogs-orange.svg" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Task.Dialogs)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
@@ -34,6 +35,8 @@
 | <img src="https://img.shields.io/badge/Module-Floating Toolbars-yellow.svg" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Floating.Toolbars.Canary)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
 | <img src="https://img.shields.io/badge/Module-IO-yellow.svg" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.IO.Canary)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
 | <img src="https://img.shields.io/badge/Module-Outlook Grid-yellow.svg" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Outlook.Grid.Canary)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
+| <img src="https://img.shields.io/badge/Module-Rounded Controls-yellow.svg" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Rounded.Controls.Canary)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
+| <img src="https://img.shields.io/badge/Module-Software Updaters-yellow.svg" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Software.Updater.Canary)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
 | <img src="https://img.shields.io/badge/Module-Standard Controls-yellow.svg" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Standard.Controls.Canary)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
 | <img src="https://img.shields.io/badge/Module-Tool Strip Items-yellow.svg" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Tool.Strip.Items.Canary)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
 | <img src="https://img.shields.io/badge/Module-Navi Suite-yellow.svg" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Navi.Suite.Canary)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg)
@@ -43,8 +46,14 @@
 
 =======
 
-# Toolkit Examples
-Please refer to [examples](https://github.com/Krypton-Suite/Extended-Toolkit/blob/canary/Documents/Toolkit%20Examples.md) to see what each control looks like.
+## 2021-01-0x - Build 2101 - January 2021
+* Rounded controls are now in a separate package `Krypton.Toolkit.Suite.Extended.Rounded.Controls`, rather than the `Base` package
+* Added [Information Box](https://github.com/JohannBlais/InformationBox), by [Johann Blais](https://github.com/JohannBlais)
+* New 'Alert' toast notification. Use the `Alert` class in `Notifications` to activate it
+* Implement public version of the `KryptonFadeManager` class, so you can apply *fading* effects to `KryptonForm`
+* New `KryptonAboutDialog`, with extra features
+* New `NotificationLocationPosition` property in `KryptonToastNotificationPopup` to allow for custom location configuration
+* Updated standard toolkit to build `2101`
 
 =======
 
@@ -52,7 +61,6 @@ Please refer to [examples](https://github.com/Krypton-Suite/Extended-Toolkit/blo
 * Fixes for `FastColouredTextBox`
 * New Gantt chart control for `Data Visualisation`
 * Removed `Notification` elements from `Dialogs` module
-* Added `Toolkit Examples.md` to showcase components
 
 =======
 

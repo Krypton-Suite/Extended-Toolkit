@@ -14,6 +14,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
+    <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
   </PropertyGroup>
 
   <!--Stable package configuration-->
@@ -32,19 +33,19 @@
   
   <!--Stable NuGet package configuration-->
   <ItemGroup>
-    <PackageReference Include="Krypton.Toolkit" Version="5.550.2011" />
+    <PackageReference Include="Krypton.Toolkit" Version="5.550.2101" />
   </ItemGroup>
 
-  <!--Canary NuGet package configuration-
+  <!--Stable NuGet package configuration-
   <ItemGroup>
-    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2011" />
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2101" />
   </ItemGroup>-->
 
   <!--Version configuration-->
   <PropertyGroup>
-    <AssemblyVersion>5.550.2012</AssemblyVersion>
-    <FileVersion>5.550.2012</FileVersion>
-    <Version>5.550.2012</Version>
+    <AssemblyVersion>5.550.2101</AssemblyVersion>
+    <FileVersion>5.550.2101</FileVersion>
+    <Version>5.550.2101</Version>
   </PropertyGroup>
 
   <PropertyGroup>
