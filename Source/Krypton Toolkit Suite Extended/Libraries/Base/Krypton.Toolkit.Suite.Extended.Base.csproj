@@ -22,7 +22,7 @@
     <PackageId>Krypton.Toolkit.Suite.Extended.Base</PackageId>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Stable</PackageOutputPath>
     <PackageIconUrl>https://tinyurl.com/KryptonExtendedToolkitIcon</PackageIconUrl>
-    <PackageIcon>Icon Stable.png</PackageIcon>
+    <!--<PackageIcon>Icon Stable.png</PackageIcon>-->
   </PropertyGroup>
 
   <!--Canary package configuration-
