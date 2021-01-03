@@ -27,7 +27,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         #endregion
 
         #region Constructor
-        public KryptonEnhancedToolStrip() { }
+        public KryptonEnhancedToolStrip() { RenderMode = ToolStripRenderMode.ManagerRenderMode; }
         #endregion
 
         #region Overrides
