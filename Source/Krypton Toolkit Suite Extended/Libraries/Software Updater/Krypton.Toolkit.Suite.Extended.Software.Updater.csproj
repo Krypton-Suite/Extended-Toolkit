@@ -16,32 +16,32 @@
     <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
   </PropertyGroup>
 
-  <!--Stable package configuration-
+  <!--Stable package configuration-->
   <PropertyGroup>
     <PackageId>Krypton.Toolkit.Suite.Extended.Software.Updater</PackageId>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Stable</PackageOutputPath>
     <PackageIconUrl>https://tinyurl.com/KryptonExtendedToolkitIcon</PackageIconUrl>
-  </PropertyGroup>-->
+  </PropertyGroup>
 
-  <!--Canary package configuration-->
+  <!--Canary package configuration-
   <PropertyGroup>
     <PackageId>Krypton.Toolkit.Suite.Extended.Software.Updater.Canary</PackageId>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Canary</PackageOutputPath>
     <PackageIconUrl>https://tinyurl.com/KryptonToolkitCanaryIcon</PackageIconUrl>
-  </PropertyGroup>
+  </PropertyGroup>-->
 
-  <!--Stable NuGet package configuration-
+  <!--Stable NuGet package configuration-->
   <ItemGroup>
-    <PackageReference Include="Krypton.Toolkit" Version="5.550.2011" />
-  </ItemGroup>-->
-
-  <!--Canary NuGet package configuration-->
-  <ItemGroup>
-    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2101" />
+    <PackageReference Include="Krypton.Toolkit" Version="5.550.2101" />
   </ItemGroup>
 
+  <!--Canary NuGet package configuration-
   <ItemGroup>
-    <PackageReference Include="ILRepack.Lib.MSBuild.Task" Version="2.0.18.1" />
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2101" />
+  </ItemGroup>-->
+
+  <ItemGroup>
+    <PackageReference Include="ILRepack.Lib.MSBuild.Task" Version="2.0.18.2" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="ZipStorer" Version="3.6.0" />
   </ItemGroup>

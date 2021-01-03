@@ -20,29 +20,29 @@
     <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
   </PropertyGroup>
 
-  <!--Stable package configuration-
+  <!--Stable package configuration-->
   <PropertyGroup>
     <PackageId>Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box</PackageId>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Stable</PackageOutputPath>
     <PackageIconUrl>https://tinyurl.com/KryptonExtendedToolkitIcon</PackageIconUrl>
-  </PropertyGroup>-->
+  </PropertyGroup>
 
-  <!--Canary package configuration-->
+  <!--Canary package configuration-
   <PropertyGroup>
     <PackageId>Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box.Canary</PackageId>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Canary</PackageOutputPath>
     <PackageIconUrl>https://tinyurl.com/KryptonToolkitCanaryIcon</PackageIconUrl>
-  </PropertyGroup>
+  </PropertyGroup>-->
 
-  <!--Stable NuGet packages
+  <!--Stable NuGet packages-->
   <ItemGroup>
-    <PackageReference Include="Krypton.Toolkit" Version="5.550.2011" />
-  </ItemGroup>-->
+    <PackageReference Include="Krypton.Toolkit" Version="5.550.2101" />
+  </ItemGroup>
 
-  <!--Canary NuGet package configuration-->
+  <!--Canary NuGet package configuration-
   <ItemGroup>
     <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2101" />
-  </ItemGroup>
+  </ItemGroup>-->
 
   <!--Version configuration-->
   <PropertyGroup>

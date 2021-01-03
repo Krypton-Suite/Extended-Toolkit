@@ -21,20 +21,25 @@
     <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
   </PropertyGroup>
 
-  <!--Stable package configuration-
+  <!--Stable package configuration-->
   <PropertyGroup>
     <PackageId>Krypton.Toolkit.Suite.Extended.Tool.Strip.Items</PackageId>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Stable</PackageOutputPath>
     <PackageIconUrl>https://tinyurl.com/KryptonExtendedToolkitIcon</PackageIconUrl>
-  </PropertyGroup>-->
+  </PropertyGroup>	
 
-  <!--Canary package configuration-->
+  <!--Canary package configuration-
   <PropertyGroup>
     <PackageId>Krypton.Toolkit.Suite.Extended.Tool.Strip.Items.Canary</PackageId>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Canary</PackageOutputPath>
     <PackageIconUrl>https://tinyurl.com/KryptonToolkitCanaryIcon</PackageIconUrl>
-  </PropertyGroup>
+  </PropertyGroup>-->
 
+  <!--NuGet package configuration-->
+  <ItemGroup>
+    <PackageReference Include="Krypton.Toolkit" Version="5.550.2101" />
+  </ItemGroup>  
+  
   <!--Version configuration-->
   <PropertyGroup>
     <AssemblyVersion>5.550.2101</AssemblyVersion>
@@ -43,7 +48,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2101" />
     <PackageReference Include="System.Runtime" Version="4.3.1" />
   </ItemGroup>
 
