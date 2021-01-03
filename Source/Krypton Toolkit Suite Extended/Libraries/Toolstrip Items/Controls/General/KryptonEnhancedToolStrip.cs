@@ -24,9 +24,6 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         /// <summary>Gets or sets whether the ToolStripEx honors item clicks when its containing form does not have input focus.</summary>
         /// <remarks>Default value is false, which is the same behavior provided by the base ToolStrip class.</remarks>
         public bool ClickThrough { get => _clickThrough; set => _clickThrough = value; }
-
-        [DefaultValue(false)]
-        public bool UseKryptonRender { get => _useKryptonRender; set { _useKryptonRender = value; Invalidate(); } }
         #endregion
 
         #region Constructor

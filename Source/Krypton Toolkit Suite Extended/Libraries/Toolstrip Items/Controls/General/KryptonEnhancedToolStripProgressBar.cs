@@ -6,11 +6,45 @@
  */
 #endregion
 
+using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
+using System.Windows.Forms.Design;
 
 namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 {
+    [Description(""), ToolboxBitmap(typeof(ToolStripProgressBar)), ToolStripItemDesignerAvailability(ToolStripItemDesignerAvailability.All)]
     public class KryptonEnhancedToolStripProgressBar : ToolStripProgressBar
     {
+        #region Variables
+        private bool _useKryptonRender;
+        #endregion
+
+        #region Properties
+        [DefaultValue(false)]
+        public bool UseKryptonRender { get => _useKryptonRender; set { _useKryptonRender = value; Invalidate(); } }
+        #endregion
+
+        #region Constructor
+        public KryptonEnhancedToolStripProgressBar()
+        {
+
+        }
+        #endregion
+
+        #region Overrides
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            if (_useKryptonRender)
+            {
+                if (ToolStripManager.Renderer is KryptonProfessionalRenderer kpr)
+                {
+                    BackColor = kpr.KCT.StatusStripGradientEnd;
+                }
+            }
+
+            base.OnPaint(e);
+        }
+        #endregion
     }
 }
