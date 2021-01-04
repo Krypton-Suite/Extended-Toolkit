@@ -20,7 +20,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #endregion
 
         #region Methods
-        public static void CreateOpenFileDialog(string title, bool isFolderPicker, string initialDirectory, CommonFileDialogFilter filter)
+        public static void CreateOpenFileDialog(string title, bool isFolderPicker, string initialDirectory, CommonFileDialogFilter filter, string fileName = "")
         {
             CommonOpenFileDialog cofd = new CommonOpenFileDialog();
 
