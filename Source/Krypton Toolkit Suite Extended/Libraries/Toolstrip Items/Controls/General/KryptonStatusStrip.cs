@@ -9,6 +9,7 @@
 using System;
 using System.ComponentModel;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
@@ -117,12 +118,48 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         #region Overrides
         protected override void OnRendererChanged(EventArgs e)
         {
-            if (ToolStripManager.Renderer is KryptonProfessionalRenderer kpr)
+            try
             {
-                ProgressBar.BackColor = kpr.KCT.StatusStripGradientEnd;
+                if (ToolStripManager.Renderer is KryptonProfessionalRenderer kpr)
+                {
+                    ProgressBar.BackColor = kpr.KCT.StatusStripGradientEnd;
+                }
+            }
+            catch (Exception ex)
+            {
+
             }
 
             base.OnRendererChanged(e);
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            float progressPercent = (float)(_currentValue / (_maximumValue - _minimumValue));
+
+            if (_useAsProgressBar)
+            {
+                RenderMode = ToolStripRenderMode.System;
+
+                if (progressPercent > 0)
+                {
+                    RectangleF progressRectangle = e.Graphics.VisibleClipBounds;
+
+                    progressRectangle.Width *= progressPercent;
+
+                    LinearGradientBrush lgb = new LinearGradientBrush(progressRectangle, _barColour, _shadeColour, LinearGradientMode.Horizontal);
+
+                    e.Graphics.FillRectangle(lgb, progressRectangle);
+
+                    lgb.Dispose();
+                }
+            }
+            else
+            {
+                RenderMode = ToolStripRenderMode.ManagerRenderMode;
+            }
+
+            base.OnPaint(e);
         }
         #endregion
     }
