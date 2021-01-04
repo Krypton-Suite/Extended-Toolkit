@@ -3,7 +3,10 @@
     public class FileDialogHandler
     {
         #region Constructor
+        public FileDialogHandler()
+        {
 
+        }
         #endregion
 
         #region Methods
