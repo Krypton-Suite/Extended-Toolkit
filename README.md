@@ -53,7 +53,7 @@
 
 ## 2021-04-01 - Build 2104 - April 2021
 * Rewritten the `Krypton.Toolkit.Suite.Extended.Outlook.Grid` module
-* Implement [#36](https://github.com/Krypton-Suite/Extended-Toolkit/issues/36), Expose the OutlookGrid.Classes.OutlookGridRowComparer2 class
+* Implement [#36](https://github.com/Krypton-Suite/Extended-Toolkit/issues/36), Expose the OutlookGrid.Classes.OutlookGridRowComparer2 class-->
 
 =======
 
@@ -62,7 +62,7 @@
 * New `KryptonEnhancedToolStrip` control
 * New `KryptonEnhancedToolStripProgressBar` control
 * New `KryptonStatusStrip` control
-* Updated standard toolkit to build `2103`-->
+* Updated standard toolkit to build `2103`
 
 =======
 
