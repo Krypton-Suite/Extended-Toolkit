@@ -750,6 +750,12 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
         #endregion
 
         #region Methods
+        /// <summary>Displays the tool tip.</summary>
+        /// <param name="colourName">Name of the colour.</param>
+        /// <param name="colour">The colour.</param>
+        /// <returns>
+        ///   <br />
+        /// </returns>
         private string DisplayToolTip(string colourName, Color colour)
         {
             string temp = "";
@@ -766,6 +772,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             return temp;
         }
 
+        /// <summary>Propagates the colour preview array.</summary>
         private void PropagateColourPreviewArray()
         {
             _previews = new CircularPictureBox[29];
@@ -829,6 +836,8 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             ColourPreviews[28] = cpbxRibbonTabColour;
         }
 
+        /// <summary>Resets the colours.</summary>
+        /// <param name="defaultColour">The default colour.</param>
         public void ResetColours(Color defaultColour)
         {
             try
@@ -844,6 +853,8 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             }
         }
 
+        /// <summary>Sets the colour previews.</summary>
+        /// <param name="paletteColours">The palette colours.</param>
         private void SetColourPreviews(Color[] paletteColours)
         {
             try
