@@ -48,11 +48,21 @@
 
 <a href="#"><img src="https://img.shields.io/badge/Documentation-Download File-orange.svg" alt="Download the extended toolkit documentation installer" /></a>
 
-<!--=======
+<!--
+=======
+
+## 2021-04-01 - Build 2104 - April 2021
+* Rewritten the `Krypton.Toolkit.Suite.Extended.Outlook.Grid` module
+* Implement [#36](https://github.com/Krypton-Suite/Extended-Toolkit/issues/36), Expose the OutlookGrid.Classes.OutlookGridRowComparer2 class
+
+=======
 
 ## 2021-03-01 - Build 2103 - March 2021
-* Rewritten the `Krypton.Toolkit.Suite.Extended.Outlook.Grid` module
-* Implement [#36](https://github.com/Krypton-Suite/Extended-Toolkit/issues/36), Expose the OutlookGrid.Classes.OutlookGridRowComparer2 class-->
+* Fixed package descriptions
+* New `KryptonEnhancedToolStrip` control
+* New `KryptonEnhancedToolStripProgressBar` control
+* New `KryptonStatusStrip` control
+* Updated standard toolkit to build `2103`-->
 
 =======
 

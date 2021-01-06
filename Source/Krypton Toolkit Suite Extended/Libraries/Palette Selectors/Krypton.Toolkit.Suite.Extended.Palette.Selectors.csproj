@@ -59,6 +59,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <!--Canary icon-->
+    <None Include="Package Icons\Canary.png" Pack="true" PackagePath="\" />
+
+    <!--Stable icon-->
+    <!--<None Include="Package Icons\Stable.png" Pack="true" PackagePath="\" />-->
+
+    <!--Nightly icon-->
+    <!--<None Include="Package Icons\Nightly.png" Pack="true" PackagePath="\" />-->
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="EasyScintilla" Version="1.0.5" />
     <PackageReference Include="WindowsAPICodePack" Version="1.1.1" />
   </ItemGroup>
