@@ -871,6 +871,42 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
                     ColourPreviews[9].BackColor = paletteColours[9];
 
                     ColourPreviews[10].BackColor = paletteColours[10];
+
+                    ColourPreviews[11].BackColor = paletteColours[11];
+
+                    ColourPreviews[12].BackColor = paletteColours[12];
+
+                    ColourPreviews[13].BackColor = paletteColours[13];
+
+                    ColourPreviews[14].BackColor = paletteColours[14];
+
+                    ColourPreviews[15].BackColor = paletteColours[15];
+
+                    ColourPreviews[16].BackColor = paletteColours[16];
+
+                    ColourPreviews[17].BackColor = paletteColours[17];
+
+                    ColourPreviews[18].BackColor = paletteColours[18];
+
+                    ColourPreviews[19].BackColor = paletteColours[19];
+
+                    ColourPreviews[20].BackColor = paletteColours[20];
+
+                    ColourPreviews[21].BackColor = paletteColours[21];
+
+                    ColourPreviews[22].BackColor = paletteColours[22];
+
+                    ColourPreviews[23].BackColor = paletteColours[23];
+
+                    ColourPreviews[24].BackColor = paletteColours[24];
+
+                    ColourPreviews[25].BackColor = paletteColours[25];
+
+                    ColourPreviews[26].BackColor = paletteColours[26];
+
+                    ColourPreviews[27].BackColor = paletteColours[27];
+
+                    ColourPreviews[28].BackColor = paletteColours[28];
                 }
             }
             catch (Exception e)
