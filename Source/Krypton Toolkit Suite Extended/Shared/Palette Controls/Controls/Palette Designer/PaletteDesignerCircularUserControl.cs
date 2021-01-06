@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Krypton.Toolkit.Suite.Extended.Base;
+using Krypton.Toolkit.Suite.Extended.Common;
+using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Extended.Palette.Controls
@@ -13,26 +16,26 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
         private Suite.Extended.Base.CircularPictureBox cpbxBorderColour;
         private Suite.Extended.Base.CircularPictureBox cpbxAlternativeNormalTextColour;
         private Suite.Extended.Base.CircularPictureBox cpbxNormalTextColour;
-        private Suite.Extended.Base.CircularPictureBox circularPictureBox9;
-        private Suite.Extended.Base.CircularPictureBox circularPictureBox10;
-        private Suite.Extended.Base.CircularPictureBox circularPictureBox11;
-        private Suite.Extended.Base.CircularPictureBox circularPictureBox12;
-        private Suite.Extended.Base.CircularPictureBox circularPictureBox13;
-        private Suite.Extended.Base.CircularPictureBox circularPictureBox14;
-        private Suite.Extended.Base.CircularPictureBox circularPictureBox15;
-        private Suite.Extended.Base.CircularPictureBox circularPictureBox16;
-        private Suite.Extended.Base.CircularPictureBox circularPictureBox17;
-        private Suite.Extended.Base.CircularPictureBox circularPictureBox18;
-        private Suite.Extended.Base.CircularPictureBox circularPictureBox19;
-        private Suite.Extended.Base.CircularPictureBox circularPictureBox20;
-        private Suite.Extended.Base.CircularPictureBox circularPictureBox21;
-        private Suite.Extended.Base.CircularPictureBox circularPictureBox22;
-        private Suite.Extended.Base.CircularPictureBox circularPictureBox23;
-        private Suite.Extended.Base.CircularPictureBox circularPictureBox24;
-        private Suite.Extended.Base.CircularPictureBox circularPictureBox25;
-        private Suite.Extended.Base.CircularPictureBox circularPictureBox26;
-        private Suite.Extended.Base.CircularPictureBox circularPictureBox27;
-        private Suite.Extended.Base.CircularPictureBox circularPictureBox28;
+        private Suite.Extended.Base.CircularPictureBox cpbxDisabledTextColour;
+        private Suite.Extended.Base.CircularPictureBox cpbxFocusedTextColour;
+        private Suite.Extended.Base.CircularPictureBox cpbxPressedTextColour;
+        private Suite.Extended.Base.CircularPictureBox cpbxDisabledColour;
+        private Suite.Extended.Base.CircularPictureBox cpbxLinkNormalColour;
+        private Suite.Extended.Base.CircularPictureBox cpbxLinkFocusedColour;
+        private Suite.Extended.Base.CircularPictureBox cpbxStatusTextColour;
+        private Suite.Extended.Base.CircularPictureBox cpbxMenuTextColour;
+        private Suite.Extended.Base.CircularPictureBox cpbxCustomTextColourFive;
+        private Suite.Extended.Base.CircularPictureBox cpbxCustomTextColourFour;
+        private Suite.Extended.Base.CircularPictureBox cpbxCustomTextColourThree;
+        private Suite.Extended.Base.CircularPictureBox cpbxCustomTextColourTwo;
+        private Suite.Extended.Base.CircularPictureBox cpbxCustomTextColourOne;
+        private Suite.Extended.Base.CircularPictureBox cpbxCustomColourFive;
+        private Suite.Extended.Base.CircularPictureBox cpbxCustomColourFour;
+        private Suite.Extended.Base.CircularPictureBox cpbxCustomColourThree;
+        private Suite.Extended.Base.CircularPictureBox cpbxCustomColourTwo;
+        private Suite.Extended.Base.CircularPictureBox cpbxCustomColourOne;
+        private Suite.Extended.Base.CircularPictureBox cpbxLinkVisitedColour;
+        private Suite.Extended.Base.CircularPictureBox cpbxLinkHoverColour;
         private Suite.Extended.Base.CircularPictureBox circularPictureBox29;
         private Suite.Extended.Base.CircularPictureBox circularPictureBox30;
         private Suite.Extended.Base.CircularPictureBox circularPictureBox31;
@@ -46,7 +49,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
         private Suite.Extended.Base.CircularPictureBox circularPictureBox39;
         private Suite.Extended.Base.CircularPictureBox circularPictureBox40;
         private Suite.Extended.Base.CircularPictureBox circularPictureBox41;
-        private Suite.Extended.Base.CircularPictureBox circularPictureBox42;
+        private Suite.Extended.Base.CircularPictureBox cpbxRibbonTabColour;
         private ToolTip ttColourInformation;
         private System.ComponentModel.IContainer components;
         private Suite.Extended.Base.CircularPictureBox cpbxDarkColour;
@@ -62,26 +65,26 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.cpbxBorderColour = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
             this.cpbxAlternativeNormalTextColour = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
             this.cpbxNormalTextColour = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
-            this.circularPictureBox9 = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
-            this.circularPictureBox10 = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
-            this.circularPictureBox11 = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
-            this.circularPictureBox12 = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
-            this.circularPictureBox13 = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
-            this.circularPictureBox14 = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
-            this.circularPictureBox15 = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
-            this.circularPictureBox16 = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
-            this.circularPictureBox17 = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
-            this.circularPictureBox18 = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
-            this.circularPictureBox19 = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
-            this.circularPictureBox20 = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
-            this.circularPictureBox21 = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
-            this.circularPictureBox22 = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
-            this.circularPictureBox23 = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
-            this.circularPictureBox24 = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
-            this.circularPictureBox25 = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
-            this.circularPictureBox26 = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
-            this.circularPictureBox27 = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
-            this.circularPictureBox28 = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
+            this.cpbxDisabledTextColour = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
+            this.cpbxFocusedTextColour = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
+            this.cpbxPressedTextColour = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
+            this.cpbxDisabledColour = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
+            this.cpbxLinkNormalColour = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
+            this.cpbxLinkFocusedColour = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
+            this.cpbxStatusTextColour = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
+            this.cpbxMenuTextColour = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
+            this.cpbxCustomTextColourFive = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
+            this.cpbxCustomTextColourFour = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
+            this.cpbxCustomTextColourThree = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
+            this.cpbxCustomTextColourTwo = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
+            this.cpbxCustomTextColourOne = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
+            this.cpbxCustomColourFive = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
+            this.cpbxCustomColourFour = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
+            this.cpbxCustomColourThree = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
+            this.cpbxCustomColourTwo = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
+            this.cpbxCustomColourOne = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
+            this.cpbxLinkVisitedColour = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
+            this.cpbxLinkHoverColour = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
             this.circularPictureBox29 = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
             this.circularPictureBox30 = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
             this.circularPictureBox31 = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
@@ -95,7 +98,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.circularPictureBox39 = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
             this.circularPictureBox40 = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
             this.circularPictureBox41 = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
-            this.circularPictureBox42 = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
+            this.cpbxRibbonTabColour = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
             this.ttColourInformation = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.cpbxBaseColour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cpbxDarkColour)).BeginInit();
@@ -105,26 +108,26 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             ((System.ComponentModel.ISupportInitialize)(this.cpbxBorderColour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cpbxAlternativeNormalTextColour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cpbxNormalTextColour)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox12)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox13)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox14)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox15)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox16)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox17)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox18)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox19)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox20)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox21)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox22)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox23)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox24)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox25)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox26)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox27)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox28)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpbxDisabledTextColour)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpbxFocusedTextColour)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpbxPressedTextColour)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpbxDisabledColour)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpbxLinkNormalColour)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpbxLinkFocusedColour)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpbxStatusTextColour)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpbxMenuTextColour)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpbxCustomTextColourFive)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpbxCustomTextColourFour)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpbxCustomTextColourThree)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpbxCustomTextColourTwo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpbxCustomTextColourOne)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpbxCustomColourFive)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpbxCustomColourFour)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpbxCustomColourThree)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpbxCustomColourTwo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpbxCustomColourOne)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpbxLinkVisitedColour)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpbxLinkHoverColour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox29)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox30)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox31)).BeginInit();
@@ -138,7 +141,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox39)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox40)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox41)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox42)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpbxRibbonTabColour)).BeginInit();
             this.SuspendLayout();
             // 
             // cpbxBaseColour
@@ -221,205 +224,205 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.cpbxNormalTextColour.TabStop = false;
             this.cpbxNormalTextColour.ToolTipValues = null;
             // 
-            // circularPictureBox9
+            // cpbxDisabledTextColour
             // 
-            this.circularPictureBox9.BackColor = System.Drawing.Color.Black;
-            this.circularPictureBox9.Location = new System.Drawing.Point(669, 13);
-            this.circularPictureBox9.Name = "circularPictureBox9";
-            this.circularPictureBox9.Size = new System.Drawing.Size(64, 64);
-            this.circularPictureBox9.TabIndex = 8;
-            this.circularPictureBox9.TabStop = false;
-            this.circularPictureBox9.ToolTipValues = null;
+            this.cpbxDisabledTextColour.BackColor = System.Drawing.Color.Black;
+            this.cpbxDisabledTextColour.Location = new System.Drawing.Point(669, 13);
+            this.cpbxDisabledTextColour.Name = "cpbxDisabledTextColour";
+            this.cpbxDisabledTextColour.Size = new System.Drawing.Size(64, 64);
+            this.cpbxDisabledTextColour.TabIndex = 8;
+            this.cpbxDisabledTextColour.TabStop = false;
+            this.cpbxDisabledTextColour.ToolTipValues = null;
             // 
-            // circularPictureBox10
+            // cpbxFocusedTextColour
             // 
-            this.circularPictureBox10.BackColor = System.Drawing.Color.Black;
-            this.circularPictureBox10.Location = new System.Drawing.Point(751, 13);
-            this.circularPictureBox10.Name = "circularPictureBox10";
-            this.circularPictureBox10.Size = new System.Drawing.Size(64, 64);
-            this.circularPictureBox10.TabIndex = 9;
-            this.circularPictureBox10.TabStop = false;
-            this.circularPictureBox10.ToolTipValues = null;
+            this.cpbxFocusedTextColour.BackColor = System.Drawing.Color.Black;
+            this.cpbxFocusedTextColour.Location = new System.Drawing.Point(751, 13);
+            this.cpbxFocusedTextColour.Name = "cpbxFocusedTextColour";
+            this.cpbxFocusedTextColour.Size = new System.Drawing.Size(64, 64);
+            this.cpbxFocusedTextColour.TabIndex = 9;
+            this.cpbxFocusedTextColour.TabStop = false;
+            this.cpbxFocusedTextColour.ToolTipValues = null;
             // 
-            // circularPictureBox11
+            // cpbxPressedTextColour
             // 
-            this.circularPictureBox11.BackColor = System.Drawing.Color.Black;
-            this.circularPictureBox11.Location = new System.Drawing.Point(833, 13);
-            this.circularPictureBox11.Name = "circularPictureBox11";
-            this.circularPictureBox11.Size = new System.Drawing.Size(64, 64);
-            this.circularPictureBox11.TabIndex = 10;
-            this.circularPictureBox11.TabStop = false;
-            this.circularPictureBox11.ToolTipValues = null;
+            this.cpbxPressedTextColour.BackColor = System.Drawing.Color.Black;
+            this.cpbxPressedTextColour.Location = new System.Drawing.Point(833, 13);
+            this.cpbxPressedTextColour.Name = "cpbxPressedTextColour";
+            this.cpbxPressedTextColour.Size = new System.Drawing.Size(64, 64);
+            this.cpbxPressedTextColour.TabIndex = 10;
+            this.cpbxPressedTextColour.TabStop = false;
+            this.cpbxPressedTextColour.ToolTipValues = null;
             // 
-            // circularPictureBox12
+            // cpbxDisabledColour
             // 
-            this.circularPictureBox12.BackColor = System.Drawing.Color.Black;
-            this.circularPictureBox12.Location = new System.Drawing.Point(915, 13);
-            this.circularPictureBox12.Name = "circularPictureBox12";
-            this.circularPictureBox12.Size = new System.Drawing.Size(64, 64);
-            this.circularPictureBox12.TabIndex = 11;
-            this.circularPictureBox12.TabStop = false;
-            this.circularPictureBox12.ToolTipValues = null;
+            this.cpbxDisabledColour.BackColor = System.Drawing.Color.Black;
+            this.cpbxDisabledColour.Location = new System.Drawing.Point(915, 13);
+            this.cpbxDisabledColour.Name = "cpbxDisabledColour";
+            this.cpbxDisabledColour.Size = new System.Drawing.Size(64, 64);
+            this.cpbxDisabledColour.TabIndex = 11;
+            this.cpbxDisabledColour.TabStop = false;
+            this.cpbxDisabledColour.ToolTipValues = null;
             // 
-            // circularPictureBox13
+            // cpbxLinkNormalColour
             // 
-            this.circularPictureBox13.BackColor = System.Drawing.Color.Black;
-            this.circularPictureBox13.Location = new System.Drawing.Point(997, 13);
-            this.circularPictureBox13.Name = "circularPictureBox13";
-            this.circularPictureBox13.Size = new System.Drawing.Size(64, 64);
-            this.circularPictureBox13.TabIndex = 12;
-            this.circularPictureBox13.TabStop = false;
-            this.circularPictureBox13.ToolTipValues = null;
+            this.cpbxLinkNormalColour.BackColor = System.Drawing.Color.Black;
+            this.cpbxLinkNormalColour.Location = new System.Drawing.Point(997, 13);
+            this.cpbxLinkNormalColour.Name = "cpbxLinkNormalColour";
+            this.cpbxLinkNormalColour.Size = new System.Drawing.Size(64, 64);
+            this.cpbxLinkNormalColour.TabIndex = 12;
+            this.cpbxLinkNormalColour.TabStop = false;
+            this.cpbxLinkNormalColour.ToolTipValues = null;
             // 
-            // circularPictureBox14
+            // cpbxLinkFocusedColour
             // 
-            this.circularPictureBox14.BackColor = System.Drawing.Color.Black;
-            this.circularPictureBox14.Location = new System.Drawing.Point(1079, 13);
-            this.circularPictureBox14.Name = "circularPictureBox14";
-            this.circularPictureBox14.Size = new System.Drawing.Size(64, 64);
-            this.circularPictureBox14.TabIndex = 13;
-            this.circularPictureBox14.TabStop = false;
-            this.circularPictureBox14.ToolTipValues = null;
+            this.cpbxLinkFocusedColour.BackColor = System.Drawing.Color.Black;
+            this.cpbxLinkFocusedColour.Location = new System.Drawing.Point(1079, 13);
+            this.cpbxLinkFocusedColour.Name = "cpbxLinkFocusedColour";
+            this.cpbxLinkFocusedColour.Size = new System.Drawing.Size(64, 64);
+            this.cpbxLinkFocusedColour.TabIndex = 13;
+            this.cpbxLinkFocusedColour.TabStop = false;
+            this.cpbxLinkFocusedColour.ToolTipValues = null;
             // 
-            // circularPictureBox15
+            // cpbxStatusTextColour
             // 
-            this.circularPictureBox15.BackColor = System.Drawing.Color.Black;
-            this.circularPictureBox15.Location = new System.Drawing.Point(1079, 165);
-            this.circularPictureBox15.Name = "circularPictureBox15";
-            this.circularPictureBox15.Size = new System.Drawing.Size(64, 64);
-            this.circularPictureBox15.TabIndex = 27;
-            this.circularPictureBox15.TabStop = false;
-            this.circularPictureBox15.ToolTipValues = null;
+            this.cpbxStatusTextColour.BackColor = System.Drawing.Color.Black;
+            this.cpbxStatusTextColour.Location = new System.Drawing.Point(1079, 165);
+            this.cpbxStatusTextColour.Name = "cpbxStatusTextColour";
+            this.cpbxStatusTextColour.Size = new System.Drawing.Size(64, 64);
+            this.cpbxStatusTextColour.TabIndex = 27;
+            this.cpbxStatusTextColour.TabStop = false;
+            this.cpbxStatusTextColour.ToolTipValues = null;
             // 
-            // circularPictureBox16
+            // cpbxMenuTextColour
             // 
-            this.circularPictureBox16.BackColor = System.Drawing.Color.Black;
-            this.circularPictureBox16.Location = new System.Drawing.Point(997, 165);
-            this.circularPictureBox16.Name = "circularPictureBox16";
-            this.circularPictureBox16.Size = new System.Drawing.Size(64, 64);
-            this.circularPictureBox16.TabIndex = 26;
-            this.circularPictureBox16.TabStop = false;
-            this.circularPictureBox16.ToolTipValues = null;
+            this.cpbxMenuTextColour.BackColor = System.Drawing.Color.Black;
+            this.cpbxMenuTextColour.Location = new System.Drawing.Point(997, 165);
+            this.cpbxMenuTextColour.Name = "cpbxMenuTextColour";
+            this.cpbxMenuTextColour.Size = new System.Drawing.Size(64, 64);
+            this.cpbxMenuTextColour.TabIndex = 26;
+            this.cpbxMenuTextColour.TabStop = false;
+            this.cpbxMenuTextColour.ToolTipValues = null;
             // 
-            // circularPictureBox17
+            // cpbxCustomTextColourFive
             // 
-            this.circularPictureBox17.BackColor = System.Drawing.Color.Black;
-            this.circularPictureBox17.Location = new System.Drawing.Point(915, 165);
-            this.circularPictureBox17.Name = "circularPictureBox17";
-            this.circularPictureBox17.Size = new System.Drawing.Size(64, 64);
-            this.circularPictureBox17.TabIndex = 25;
-            this.circularPictureBox17.TabStop = false;
-            this.circularPictureBox17.ToolTipValues = null;
+            this.cpbxCustomTextColourFive.BackColor = System.Drawing.Color.Black;
+            this.cpbxCustomTextColourFive.Location = new System.Drawing.Point(915, 165);
+            this.cpbxCustomTextColourFive.Name = "cpbxCustomTextColourFive";
+            this.cpbxCustomTextColourFive.Size = new System.Drawing.Size(64, 64);
+            this.cpbxCustomTextColourFive.TabIndex = 25;
+            this.cpbxCustomTextColourFive.TabStop = false;
+            this.cpbxCustomTextColourFive.ToolTipValues = null;
             // 
-            // circularPictureBox18
+            // cpbxCustomTextColourFour
             // 
-            this.circularPictureBox18.BackColor = System.Drawing.Color.Black;
-            this.circularPictureBox18.Location = new System.Drawing.Point(833, 165);
-            this.circularPictureBox18.Name = "circularPictureBox18";
-            this.circularPictureBox18.Size = new System.Drawing.Size(64, 64);
-            this.circularPictureBox18.TabIndex = 24;
-            this.circularPictureBox18.TabStop = false;
-            this.circularPictureBox18.ToolTipValues = null;
+            this.cpbxCustomTextColourFour.BackColor = System.Drawing.Color.Black;
+            this.cpbxCustomTextColourFour.Location = new System.Drawing.Point(833, 165);
+            this.cpbxCustomTextColourFour.Name = "cpbxCustomTextColourFour";
+            this.cpbxCustomTextColourFour.Size = new System.Drawing.Size(64, 64);
+            this.cpbxCustomTextColourFour.TabIndex = 24;
+            this.cpbxCustomTextColourFour.TabStop = false;
+            this.cpbxCustomTextColourFour.ToolTipValues = null;
             // 
-            // circularPictureBox19
+            // cpbxCustomTextColourThree
             // 
-            this.circularPictureBox19.BackColor = System.Drawing.Color.Black;
-            this.circularPictureBox19.Location = new System.Drawing.Point(751, 165);
-            this.circularPictureBox19.Name = "circularPictureBox19";
-            this.circularPictureBox19.Size = new System.Drawing.Size(64, 64);
-            this.circularPictureBox19.TabIndex = 23;
-            this.circularPictureBox19.TabStop = false;
-            this.circularPictureBox19.ToolTipValues = null;
+            this.cpbxCustomTextColourThree.BackColor = System.Drawing.Color.Black;
+            this.cpbxCustomTextColourThree.Location = new System.Drawing.Point(751, 165);
+            this.cpbxCustomTextColourThree.Name = "cpbxCustomTextColourThree";
+            this.cpbxCustomTextColourThree.Size = new System.Drawing.Size(64, 64);
+            this.cpbxCustomTextColourThree.TabIndex = 23;
+            this.cpbxCustomTextColourThree.TabStop = false;
+            this.cpbxCustomTextColourThree.ToolTipValues = null;
             // 
-            // circularPictureBox20
+            // cpbxCustomTextColourTwo
             // 
-            this.circularPictureBox20.BackColor = System.Drawing.Color.Black;
-            this.circularPictureBox20.Location = new System.Drawing.Point(669, 165);
-            this.circularPictureBox20.Name = "circularPictureBox20";
-            this.circularPictureBox20.Size = new System.Drawing.Size(64, 64);
-            this.circularPictureBox20.TabIndex = 22;
-            this.circularPictureBox20.TabStop = false;
-            this.circularPictureBox20.ToolTipValues = null;
+            this.cpbxCustomTextColourTwo.BackColor = System.Drawing.Color.Black;
+            this.cpbxCustomTextColourTwo.Location = new System.Drawing.Point(669, 165);
+            this.cpbxCustomTextColourTwo.Name = "cpbxCustomTextColourTwo";
+            this.cpbxCustomTextColourTwo.Size = new System.Drawing.Size(64, 64);
+            this.cpbxCustomTextColourTwo.TabIndex = 22;
+            this.cpbxCustomTextColourTwo.TabStop = false;
+            this.cpbxCustomTextColourTwo.ToolTipValues = null;
             // 
-            // circularPictureBox21
+            // cpbxCustomTextColourOne
             // 
-            this.circularPictureBox21.BackColor = System.Drawing.Color.Black;
-            this.circularPictureBox21.Location = new System.Drawing.Point(587, 165);
-            this.circularPictureBox21.Name = "circularPictureBox21";
-            this.circularPictureBox21.Size = new System.Drawing.Size(64, 64);
-            this.circularPictureBox21.TabIndex = 21;
-            this.circularPictureBox21.TabStop = false;
-            this.circularPictureBox21.ToolTipValues = null;
+            this.cpbxCustomTextColourOne.BackColor = System.Drawing.Color.Black;
+            this.cpbxCustomTextColourOne.Location = new System.Drawing.Point(587, 165);
+            this.cpbxCustomTextColourOne.Name = "cpbxCustomTextColourOne";
+            this.cpbxCustomTextColourOne.Size = new System.Drawing.Size(64, 64);
+            this.cpbxCustomTextColourOne.TabIndex = 21;
+            this.cpbxCustomTextColourOne.TabStop = false;
+            this.cpbxCustomTextColourOne.ToolTipValues = null;
             // 
-            // circularPictureBox22
+            // cpbxCustomColourFive
             // 
-            this.circularPictureBox22.BackColor = System.Drawing.Color.Black;
-            this.circularPictureBox22.Location = new System.Drawing.Point(505, 165);
-            this.circularPictureBox22.Name = "circularPictureBox22";
-            this.circularPictureBox22.Size = new System.Drawing.Size(64, 64);
-            this.circularPictureBox22.TabIndex = 20;
-            this.circularPictureBox22.TabStop = false;
-            this.circularPictureBox22.ToolTipValues = null;
+            this.cpbxCustomColourFive.BackColor = System.Drawing.Color.Black;
+            this.cpbxCustomColourFive.Location = new System.Drawing.Point(505, 165);
+            this.cpbxCustomColourFive.Name = "cpbxCustomColourFive";
+            this.cpbxCustomColourFive.Size = new System.Drawing.Size(64, 64);
+            this.cpbxCustomColourFive.TabIndex = 20;
+            this.cpbxCustomColourFive.TabStop = false;
+            this.cpbxCustomColourFive.ToolTipValues = null;
             // 
-            // circularPictureBox23
+            // cpbxCustomColourFour
             // 
-            this.circularPictureBox23.BackColor = System.Drawing.Color.Black;
-            this.circularPictureBox23.Location = new System.Drawing.Point(423, 165);
-            this.circularPictureBox23.Name = "circularPictureBox23";
-            this.circularPictureBox23.Size = new System.Drawing.Size(64, 64);
-            this.circularPictureBox23.TabIndex = 19;
-            this.circularPictureBox23.TabStop = false;
-            this.circularPictureBox23.ToolTipValues = null;
+            this.cpbxCustomColourFour.BackColor = System.Drawing.Color.Black;
+            this.cpbxCustomColourFour.Location = new System.Drawing.Point(423, 165);
+            this.cpbxCustomColourFour.Name = "cpbxCustomColourFour";
+            this.cpbxCustomColourFour.Size = new System.Drawing.Size(64, 64);
+            this.cpbxCustomColourFour.TabIndex = 19;
+            this.cpbxCustomColourFour.TabStop = false;
+            this.cpbxCustomColourFour.ToolTipValues = null;
             // 
-            // circularPictureBox24
+            // cpbxCustomColourThree
             // 
-            this.circularPictureBox24.BackColor = System.Drawing.Color.Black;
-            this.circularPictureBox24.Location = new System.Drawing.Point(341, 165);
-            this.circularPictureBox24.Name = "circularPictureBox24";
-            this.circularPictureBox24.Size = new System.Drawing.Size(64, 64);
-            this.circularPictureBox24.TabIndex = 18;
-            this.circularPictureBox24.TabStop = false;
-            this.circularPictureBox24.ToolTipValues = null;
+            this.cpbxCustomColourThree.BackColor = System.Drawing.Color.Black;
+            this.cpbxCustomColourThree.Location = new System.Drawing.Point(341, 165);
+            this.cpbxCustomColourThree.Name = "cpbxCustomColourThree";
+            this.cpbxCustomColourThree.Size = new System.Drawing.Size(64, 64);
+            this.cpbxCustomColourThree.TabIndex = 18;
+            this.cpbxCustomColourThree.TabStop = false;
+            this.cpbxCustomColourThree.ToolTipValues = null;
             // 
-            // circularPictureBox25
+            // cpbxCustomColourTwo
             // 
-            this.circularPictureBox25.BackColor = System.Drawing.Color.Black;
-            this.circularPictureBox25.Location = new System.Drawing.Point(259, 165);
-            this.circularPictureBox25.Name = "circularPictureBox25";
-            this.circularPictureBox25.Size = new System.Drawing.Size(64, 64);
-            this.circularPictureBox25.TabIndex = 17;
-            this.circularPictureBox25.TabStop = false;
-            this.circularPictureBox25.ToolTipValues = null;
+            this.cpbxCustomColourTwo.BackColor = System.Drawing.Color.Black;
+            this.cpbxCustomColourTwo.Location = new System.Drawing.Point(259, 165);
+            this.cpbxCustomColourTwo.Name = "cpbxCustomColourTwo";
+            this.cpbxCustomColourTwo.Size = new System.Drawing.Size(64, 64);
+            this.cpbxCustomColourTwo.TabIndex = 17;
+            this.cpbxCustomColourTwo.TabStop = false;
+            this.cpbxCustomColourTwo.ToolTipValues = null;
             // 
-            // circularPictureBox26
+            // cpbxCustomColourOne
             // 
-            this.circularPictureBox26.BackColor = System.Drawing.Color.Black;
-            this.circularPictureBox26.Location = new System.Drawing.Point(177, 165);
-            this.circularPictureBox26.Name = "circularPictureBox26";
-            this.circularPictureBox26.Size = new System.Drawing.Size(64, 64);
-            this.circularPictureBox26.TabIndex = 16;
-            this.circularPictureBox26.TabStop = false;
-            this.circularPictureBox26.ToolTipValues = null;
+            this.cpbxCustomColourOne.BackColor = System.Drawing.Color.Black;
+            this.cpbxCustomColourOne.Location = new System.Drawing.Point(177, 165);
+            this.cpbxCustomColourOne.Name = "cpbxCustomColourOne";
+            this.cpbxCustomColourOne.Size = new System.Drawing.Size(64, 64);
+            this.cpbxCustomColourOne.TabIndex = 16;
+            this.cpbxCustomColourOne.TabStop = false;
+            this.cpbxCustomColourOne.ToolTipValues = null;
             // 
-            // circularPictureBox27
+            // cpbxLinkVisitedColour
             // 
-            this.circularPictureBox27.BackColor = System.Drawing.Color.Black;
-            this.circularPictureBox27.Location = new System.Drawing.Point(95, 165);
-            this.circularPictureBox27.Name = "circularPictureBox27";
-            this.circularPictureBox27.Size = new System.Drawing.Size(64, 64);
-            this.circularPictureBox27.TabIndex = 15;
-            this.circularPictureBox27.TabStop = false;
-            this.circularPictureBox27.ToolTipValues = null;
+            this.cpbxLinkVisitedColour.BackColor = System.Drawing.Color.Black;
+            this.cpbxLinkVisitedColour.Location = new System.Drawing.Point(95, 165);
+            this.cpbxLinkVisitedColour.Name = "cpbxLinkVisitedColour";
+            this.cpbxLinkVisitedColour.Size = new System.Drawing.Size(64, 64);
+            this.cpbxLinkVisitedColour.TabIndex = 15;
+            this.cpbxLinkVisitedColour.TabStop = false;
+            this.cpbxLinkVisitedColour.ToolTipValues = null;
             // 
-            // circularPictureBox28
+            // cpbxLinkHoverColour
             // 
-            this.circularPictureBox28.BackColor = System.Drawing.Color.Black;
-            this.circularPictureBox28.Location = new System.Drawing.Point(13, 165);
-            this.circularPictureBox28.Name = "circularPictureBox28";
-            this.circularPictureBox28.Size = new System.Drawing.Size(64, 64);
-            this.circularPictureBox28.TabIndex = 14;
-            this.circularPictureBox28.TabStop = false;
-            this.circularPictureBox28.ToolTipValues = null;
+            this.cpbxLinkHoverColour.BackColor = System.Drawing.Color.Black;
+            this.cpbxLinkHoverColour.Location = new System.Drawing.Point(13, 165);
+            this.cpbxLinkHoverColour.Name = "cpbxLinkHoverColour";
+            this.cpbxLinkHoverColour.Size = new System.Drawing.Size(64, 64);
+            this.cpbxLinkHoverColour.TabIndex = 14;
+            this.cpbxLinkHoverColour.TabStop = false;
+            this.cpbxLinkHoverColour.ToolTipValues = null;
             // 
             // circularPictureBox29
             // 
@@ -430,6 +433,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.circularPictureBox29.TabIndex = 41;
             this.circularPictureBox29.TabStop = false;
             this.circularPictureBox29.ToolTipValues = null;
+            this.circularPictureBox29.Visible = false;
             // 
             // circularPictureBox30
             // 
@@ -440,6 +444,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.circularPictureBox30.TabIndex = 40;
             this.circularPictureBox30.TabStop = false;
             this.circularPictureBox30.ToolTipValues = null;
+            this.circularPictureBox30.Visible = false;
             // 
             // circularPictureBox31
             // 
@@ -450,6 +455,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.circularPictureBox31.TabIndex = 39;
             this.circularPictureBox31.TabStop = false;
             this.circularPictureBox31.ToolTipValues = null;
+            this.circularPictureBox31.Visible = false;
             // 
             // circularPictureBox32
             // 
@@ -460,6 +466,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.circularPictureBox32.TabIndex = 38;
             this.circularPictureBox32.TabStop = false;
             this.circularPictureBox32.ToolTipValues = null;
+            this.circularPictureBox32.Visible = false;
             // 
             // circularPictureBox33
             // 
@@ -470,6 +477,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.circularPictureBox33.TabIndex = 37;
             this.circularPictureBox33.TabStop = false;
             this.circularPictureBox33.ToolTipValues = null;
+            this.circularPictureBox33.Visible = false;
             // 
             // circularPictureBox34
             // 
@@ -480,6 +488,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.circularPictureBox34.TabIndex = 36;
             this.circularPictureBox34.TabStop = false;
             this.circularPictureBox34.ToolTipValues = null;
+            this.circularPictureBox34.Visible = false;
             // 
             // circularPictureBox35
             // 
@@ -490,6 +499,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.circularPictureBox35.TabIndex = 35;
             this.circularPictureBox35.TabStop = false;
             this.circularPictureBox35.ToolTipValues = null;
+            this.circularPictureBox35.Visible = false;
             // 
             // circularPictureBox36
             // 
@@ -500,6 +510,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.circularPictureBox36.TabIndex = 34;
             this.circularPictureBox36.TabStop = false;
             this.circularPictureBox36.ToolTipValues = null;
+            this.circularPictureBox36.Visible = false;
             // 
             // circularPictureBox37
             // 
@@ -510,6 +521,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.circularPictureBox37.TabIndex = 33;
             this.circularPictureBox37.TabStop = false;
             this.circularPictureBox37.ToolTipValues = null;
+            this.circularPictureBox37.Visible = false;
             // 
             // circularPictureBox38
             // 
@@ -520,6 +532,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.circularPictureBox38.TabIndex = 32;
             this.circularPictureBox38.TabStop = false;
             this.circularPictureBox38.ToolTipValues = null;
+            this.circularPictureBox38.Visible = false;
             // 
             // circularPictureBox39
             // 
@@ -530,6 +543,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.circularPictureBox39.TabIndex = 31;
             this.circularPictureBox39.TabStop = false;
             this.circularPictureBox39.ToolTipValues = null;
+            this.circularPictureBox39.Visible = false;
             // 
             // circularPictureBox40
             // 
@@ -540,6 +554,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.circularPictureBox40.TabIndex = 30;
             this.circularPictureBox40.TabStop = false;
             this.circularPictureBox40.ToolTipValues = null;
+            this.circularPictureBox40.Visible = false;
             // 
             // circularPictureBox41
             // 
@@ -550,16 +565,17 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.circularPictureBox41.TabIndex = 29;
             this.circularPictureBox41.TabStop = false;
             this.circularPictureBox41.ToolTipValues = null;
+            this.circularPictureBox41.Visible = false;
             // 
-            // circularPictureBox42
+            // cpbxRibbonTabColour
             // 
-            this.circularPictureBox42.BackColor = System.Drawing.Color.Black;
-            this.circularPictureBox42.Location = new System.Drawing.Point(13, 317);
-            this.circularPictureBox42.Name = "circularPictureBox42";
-            this.circularPictureBox42.Size = new System.Drawing.Size(64, 64);
-            this.circularPictureBox42.TabIndex = 28;
-            this.circularPictureBox42.TabStop = false;
-            this.circularPictureBox42.ToolTipValues = null;
+            this.cpbxRibbonTabColour.BackColor = System.Drawing.Color.Black;
+            this.cpbxRibbonTabColour.Location = new System.Drawing.Point(13, 317);
+            this.cpbxRibbonTabColour.Name = "cpbxRibbonTabColour";
+            this.cpbxRibbonTabColour.Size = new System.Drawing.Size(64, 64);
+            this.cpbxRibbonTabColour.TabIndex = 28;
+            this.cpbxRibbonTabColour.TabStop = false;
+            this.cpbxRibbonTabColour.ToolTipValues = null;
             // 
             // PaletteDesignerCircularUserControl
             // 
@@ -576,27 +592,27 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.Controls.Add(this.circularPictureBox39);
             this.Controls.Add(this.circularPictureBox40);
             this.Controls.Add(this.circularPictureBox41);
-            this.Controls.Add(this.circularPictureBox42);
-            this.Controls.Add(this.circularPictureBox15);
-            this.Controls.Add(this.circularPictureBox16);
-            this.Controls.Add(this.circularPictureBox17);
-            this.Controls.Add(this.circularPictureBox18);
-            this.Controls.Add(this.circularPictureBox19);
-            this.Controls.Add(this.circularPictureBox20);
-            this.Controls.Add(this.circularPictureBox21);
-            this.Controls.Add(this.circularPictureBox22);
-            this.Controls.Add(this.circularPictureBox23);
-            this.Controls.Add(this.circularPictureBox24);
-            this.Controls.Add(this.circularPictureBox25);
-            this.Controls.Add(this.circularPictureBox26);
-            this.Controls.Add(this.circularPictureBox27);
-            this.Controls.Add(this.circularPictureBox28);
-            this.Controls.Add(this.circularPictureBox14);
-            this.Controls.Add(this.circularPictureBox13);
-            this.Controls.Add(this.circularPictureBox12);
-            this.Controls.Add(this.circularPictureBox11);
-            this.Controls.Add(this.circularPictureBox10);
-            this.Controls.Add(this.circularPictureBox9);
+            this.Controls.Add(this.cpbxRibbonTabColour);
+            this.Controls.Add(this.cpbxStatusTextColour);
+            this.Controls.Add(this.cpbxMenuTextColour);
+            this.Controls.Add(this.cpbxCustomTextColourFive);
+            this.Controls.Add(this.cpbxCustomTextColourFour);
+            this.Controls.Add(this.cpbxCustomTextColourThree);
+            this.Controls.Add(this.cpbxCustomTextColourTwo);
+            this.Controls.Add(this.cpbxCustomTextColourOne);
+            this.Controls.Add(this.cpbxCustomColourFive);
+            this.Controls.Add(this.cpbxCustomColourFour);
+            this.Controls.Add(this.cpbxCustomColourThree);
+            this.Controls.Add(this.cpbxCustomColourTwo);
+            this.Controls.Add(this.cpbxCustomColourOne);
+            this.Controls.Add(this.cpbxLinkVisitedColour);
+            this.Controls.Add(this.cpbxLinkHoverColour);
+            this.Controls.Add(this.cpbxLinkFocusedColour);
+            this.Controls.Add(this.cpbxLinkNormalColour);
+            this.Controls.Add(this.cpbxDisabledColour);
+            this.Controls.Add(this.cpbxPressedTextColour);
+            this.Controls.Add(this.cpbxFocusedTextColour);
+            this.Controls.Add(this.cpbxDisabledTextColour);
             this.Controls.Add(this.cpbxNormalTextColour);
             this.Controls.Add(this.cpbxAlternativeNormalTextColour);
             this.Controls.Add(this.cpbxBorderColour);
@@ -616,26 +632,26 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             ((System.ComponentModel.ISupportInitialize)(this.cpbxBorderColour)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cpbxAlternativeNormalTextColour)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cpbxNormalTextColour)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox12)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox13)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox14)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox15)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox16)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox17)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox18)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox19)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox20)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox21)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox22)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox23)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox24)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox25)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox26)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox27)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox28)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpbxDisabledTextColour)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpbxFocusedTextColour)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpbxPressedTextColour)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpbxDisabledColour)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpbxLinkNormalColour)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpbxLinkFocusedColour)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpbxStatusTextColour)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpbxMenuTextColour)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpbxCustomTextColourFive)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpbxCustomTextColourFour)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpbxCustomTextColourThree)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpbxCustomTextColourTwo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpbxCustomTextColourOne)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpbxCustomColourFive)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpbxCustomColourFour)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpbxCustomColourThree)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpbxCustomColourTwo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpbxCustomColourOne)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpbxLinkVisitedColour)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpbxLinkHoverColour)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox29)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox30)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox31)).EndInit();
@@ -649,7 +665,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox39)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox40)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox41)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox42)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpbxRibbonTabColour)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -657,6 +673,12 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
 
         #region Variables
         private bool _showColourInformation;
+
+        private Color[] _paletteColours = new Color[29];
+
+        private Color _defaultColour;
+
+        private CircularPictureBox[] _previews;
 
         //Palette State
         private KryptonManager k_manager = new KryptonManager();
@@ -666,6 +688,27 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
 
         private IPalette _palette;
         private PaletteRedirect _paletteRedirect;
+        #endregion
+
+        #region Properties
+        public bool ShowColourInformation { get => _showColourInformation; set => _showColourInformation = value; }
+
+        public Color[] PaletteColours { get => _paletteColours; set { _paletteColours = value; Invalidate(); } }
+
+        public Color DefaultColour { get => _defaultColour; set { _defaultColour = value; Invalidate(); } }
+
+        public CircularPictureBox[] ColourPreviews { get => _previews; private set => _previews = value; }
+        #endregion
+
+        #region Constructors
+        public PaletteDesignerCircularUserControl()
+        {
+            InitializeComponent();
+
+            InitColours();
+
+            PropagateColourPreviewArray();
+        }
         #endregion
 
         private void PaletteDesignerCircularUserControl_Load(object sender, EventArgs e)
@@ -704,6 +747,139 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             ttColourInformation.ForeColor = _palette.ColorTable.MenuItemText;
             ttColourInformation.BackColor = _palette.ColorTable.MenuStripGradientBegin;
         }
+        #endregion
+
+        #region Methods
+        private string DisplayToolTip(string colourName, Color colour)
+        {
+            string temp = "";
+
+            if (_showColourInformation)
+            {
+
+            }
+            else
+            {
+                return "";
+            }
+
+            return temp;
+        }
+
+        private void PropagateColourPreviewArray()
+        {
+            _previews = new CircularPictureBox[29];
+
+            ColourPreviews[0] = cpbxBaseColour;
+
+            ColourPreviews[1] = cpbxDarkColour;
+
+            ColourPreviews[2] = cpbxMediumColour;
+
+            ColourPreviews[3] = cpbxLightColour;
+
+            ColourPreviews[4] = cpbxLightestColour;
+
+            ColourPreviews[5] = cpbxBorderColour;
+
+            ColourPreviews[6] = cpbxAlternativeNormalTextColour;
+
+            ColourPreviews[7] = cpbxNormalTextColour;
+
+            ColourPreviews[8] = cpbxDisabledTextColour;
+
+            ColourPreviews[9] = cpbxFocusedTextColour;
+
+            ColourPreviews[10] = cpbxPressedTextColour;
+
+            ColourPreviews[11] = cpbxDisabledColour;
+
+            ColourPreviews[12] = cpbxLinkNormalColour;
+
+            ColourPreviews[13] = cpbxLinkFocusedColour;
+
+            ColourPreviews[14] = cpbxLinkHoverColour;
+
+            ColourPreviews[15] = cpbxLinkVisitedColour;
+
+            ColourPreviews[16] = cpbxCustomColourOne;
+
+            ColourPreviews[17] = cpbxCustomColourTwo;
+
+            ColourPreviews[18] = cpbxCustomColourThree;
+
+            ColourPreviews[19] = cpbxCustomColourFour;
+
+            ColourPreviews[20] = cpbxCustomColourFive;
+
+            ColourPreviews[21] = cpbxCustomTextColourOne;
+
+            ColourPreviews[22] = cpbxCustomTextColourTwo;
+
+            ColourPreviews[23] = cpbxCustomTextColourThree;
+
+            ColourPreviews[24] = cpbxCustomTextColourFour;
+
+            ColourPreviews[25] = cpbxCustomTextColourFive;
+
+            ColourPreviews[26] = cpbxMenuTextColour;
+
+            ColourPreviews[27] = cpbxStatusTextColour;
+
+            ColourPreviews[28] = cpbxRibbonTabColour;
+        }
+
+        public void ResetColours(Color defaultColour)
+        {
+            try
+            {
+                foreach (CircularPictureBox box in ColourPreviews)
+                {
+                    box.BackColor = defaultColour;
+                }
+            }
+            catch (Exception e)
+            {
+                ExceptionHandler.CaptureException(e);
+            }
+        }
+
+        private void SetColourPreviews(Color[] paletteColours)
+        {
+            try
+            {
+                if (ColourPreviews.Length > 0)
+                {
+                    ColourPreviews[0].BackColor = GetPaletteColours()[0];
+
+                    ColourPreviews[1].BackColor = GetPaletteColours()[1];
+
+                    ColourPreviews[2].BackColor = GetPaletteColours()[2];
+
+                    ColourPreviews[3].BackColor = GetPaletteColours()[3];
+
+                    ColourPreviews[4].BackColor = GetPaletteColours()[4];
+                }
+            }
+            catch (Exception e)
+            {
+                ExceptionHandler.CaptureException(e);
+            }
+        }
+        #endregion
+
+        #region Setters and Getters
+        /// <summary>
+        /// Sets the PaletteColours.
+        /// </summary>
+        /// <param name="values">The value.</param>
+        public void SetPaletteColours(Color[] values) => _paletteColours = values;
+
+        /// <summary>
+        /// Gets the PaletteColours.
+        /// </summary>
+        /// <returns>The value of _paletteColours.</returns>
+        public Color[] GetPaletteColours() => _paletteColours;
         #endregion
     }
 }
