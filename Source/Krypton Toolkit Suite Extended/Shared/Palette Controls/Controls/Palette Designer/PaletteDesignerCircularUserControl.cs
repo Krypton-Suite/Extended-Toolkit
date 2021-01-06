@@ -850,15 +850,27 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             {
                 if (ColourPreviews.Length > 0)
                 {
-                    ColourPreviews[0].BackColor = GetPaletteColours()[0];
+                    ColourPreviews[0].BackColor = paletteColours[0];
 
-                    ColourPreviews[1].BackColor = GetPaletteColours()[1];
+                    ColourPreviews[1].BackColor = paletteColours[1];
 
-                    ColourPreviews[2].BackColor = GetPaletteColours()[2];
+                    ColourPreviews[2].BackColor = paletteColours[2];
 
-                    ColourPreviews[3].BackColor = GetPaletteColours()[3];
+                    ColourPreviews[3].BackColor = paletteColours[3];
 
-                    ColourPreviews[4].BackColor = GetPaletteColours()[4];
+                    ColourPreviews[4].BackColor = paletteColours[4];
+
+                    ColourPreviews[5].BackColor = paletteColours[5];
+
+                    ColourPreviews[6].BackColor = paletteColours[6];
+
+                    ColourPreviews[7].BackColor = paletteColours[7];
+
+                    ColourPreviews[8].BackColor = paletteColours[8];
+
+                    ColourPreviews[9].BackColor = paletteColours[9];
+
+                    ColourPreviews[10].BackColor = paletteColours[10];
                 }
             }
             catch (Exception e)
