@@ -18,6 +18,38 @@ namespace Krypton.Toolkit.Suite.Extended.Palette.Selectors
         #endregion
 
         #region Methods
+        /// <summary>Creates a new krypton palette.</summary>
+        /// <param name="paletteMode">The palette mode.</param>
+        /// <param name="baseColour">The base colour.</param>
+        /// <param name="darkColour">The dark colour.</param>
+        /// <param name="mediumColour">The medium colour.</param>
+        /// <param name="lightColour">The light colour.</param>
+        /// <param name="lightestColour">The lightest colour.</param>
+        /// <param name="borderColour">The border colour.</param>
+        /// <param name="disabledTextColour">The disabled text colour.</param>
+        /// <param name="focusedTextColour">The focused text colour.</param>
+        /// <param name="alternativeNormalTextColour">The alternative normal text colour.</param>
+        /// <param name="normalTextColour">The normal text colour.</param>
+        /// <param name="pressedTextColour">The pressed text colour.</param>
+        /// <param name="disabledObjectColour">The disabled object colour.</param>
+        /// <param name="linkFocusedTextColour">The link focused text colour.</param>
+        /// <param name="linkHoverTextColour">The link hover text colour.</param>
+        /// <param name="linkNormalTextColour">The link normal text colour.</param>
+        /// <param name="linkVisitedTextColour">The link visited text colour.</param>
+        /// <param name="customColourOne">The custom colour one.</param>
+        /// <param name="customColourTwo">The custom colour two.</param>
+        /// <param name="customColourThree">The custom colour three.</param>
+        /// <param name="customColourFour">The custom colour four.</param>
+        /// <param name="customColourFive">The custom colour five.</param>
+        /// <param name="customTextColourOne">The custom text colour one.</param>
+        /// <param name="customTextColourTwo">The custom text colour two.</param>
+        /// <param name="customTextColourThree">The custom text colour three.</param>
+        /// <param name="customTextColourFour">The custom text colour four.</param>
+        /// <param name="customTextColourFive">The custom text colour five.</param>
+        /// <param name="menuTextColour">The menu text colour.</param>
+        /// <param name="statusStripTextColour">The status strip text colour.</param>
+        /// <param name="ribbonTabTextColour">The ribbon tab text colour.</param>
+        /// <param name="invertColours">if set to <c>true</c> [invert colours].</param>
         public static void CreateNewKryptonPalette(PaletteMode paletteMode, Color baseColour, Color darkColour, Color mediumColour, Color lightColour, Color lightestColour, Color borderColour, Color disabledTextColour, Color focusedTextColour, Color alternativeNormalTextColour, Color normalTextColour, Color pressedTextColour, Color disabledObjectColour, Color linkFocusedTextColour, Color linkHoverTextColour, Color linkNormalTextColour, Color linkVisitedTextColour, Color customColourOne, Color customColourTwo, Color customColourThree, Color customColourFour, Color customColourFive, Color customTextColourOne, Color customTextColourTwo, Color customTextColourThree, Color customTextColourFour, Color customTextColourFive, Color menuTextColour, Color statusStripTextColour, Color ribbonTabTextColour, bool invertColours = false)
         {
             try
@@ -340,119 +372,119 @@ namespace Krypton.Toolkit.Suite.Extended.Palette.Selectors
 
                     compositionEngine._palette.Ribbon.RibbonAppButton.StateCommon.BackColor5 = baseColour;
 
-                    compositionEngine._palette.Ribbon.RibbonAppButton.StatePressed5 = darkColour;
+                    compositionEngine._palette.Ribbon.RibbonAppButton.StatePressed.BackColor5 = darkColour;
 
-                    compositionEngine._palette.Ribbon.RibbonAppButton.StateTracking5 = customColourFive;
+                    compositionEngine._palette.Ribbon.RibbonAppButton.StateTracking.BackColor5 = customColourFive;
 
-                    compositionEngine._palette.Ribbon.RibbonGroupArea.StateCheckedNormal1 = baseColour;
+                    compositionEngine._palette.Ribbon.RibbonGroupArea.StateCheckedNormal.BackColor1 = baseColour;
 
-                    compositionEngine._palette.Ribbon.RibbonGroupArea.StateCheckedNormal2 = customColourTwo;
+                    compositionEngine._palette.Ribbon.RibbonGroupArea.StateCheckedNormal.BackColor2 = customColourTwo;
 
-                    compositionEngine._palette.Ribbon.RibbonGroupArea.StateCheckedNormal3 = baseColour;
+                    compositionEngine._palette.Ribbon.RibbonGroupArea.StateCheckedNormal.BackColor3 = baseColour;
 
-                    compositionEngine._palette.Ribbon.RibbonGroupArea.StateCheckedNormal4 = baseColour;
+                    compositionEngine._palette.Ribbon.RibbonGroupArea.StateCheckedNormal.BackColor4 = baseColour;
 
-                    compositionEngine._palette.Ribbon.RibbonGroupArea.StateCheckedNormal5 = baseColour;
+                    compositionEngine._palette.Ribbon.RibbonGroupArea.StateCheckedNormal.BackColor5 = baseColour;
 
                     compositionEngine._palette.Ribbon.RibbonGroupButtonText.StateCommon.TextColor = customTextColourTwo;
 
                     compositionEngine._palette.Ribbon.RibbonGroupCheckBoxText.StateCommon.TextColor = customTextColourTwo;
 
-                    compositionEngine._palette.Ribbon.RibbonGroupCollapsedBack.StateNormal1 = SystemColors.Window;
+                    compositionEngine._palette.Ribbon.RibbonGroupCollapsedBack.StateNormal.BackColor1 = SystemColors.Window;
 
-                    compositionEngine._palette.Ribbon.RibbonGroupCollapsedBack.StateNormal2 = baseColour;
+                    compositionEngine._palette.Ribbon.RibbonGroupCollapsedBack.StateNormal.BackColor2 = baseColour;
 
-                    compositionEngine._palette.Ribbon.RibbonGroupCollapsedBack.StateNormal3 = lightColour;
+                    compositionEngine._palette.Ribbon.RibbonGroupCollapsedBack.StateNormal.BackColor3 = lightColour;
 
-                    compositionEngine._palette.Ribbon.RibbonGroupCollapsedBack.StateNormal4 = baseColour;
+                    compositionEngine._palette.Ribbon.RibbonGroupCollapsedBack.StateNormal.BackColor4 = baseColour;
 
-                    compositionEngine._palette.Ribbon.RibbonGroupCollapsedBack.StateTracking1 = SystemColors.Window;
+                    compositionEngine._palette.Ribbon.RibbonGroupCollapsedBack.StateTracking.BackColor1 = SystemColors.Window;
 
-                    compositionEngine._palette.Ribbon.RibbonGroupCollapsedBack.StateTracking2 = lightColour;
+                    compositionEngine._palette.Ribbon.RibbonGroupCollapsedBack.StateTracking.BackColor2 = lightColour;
 
-                    compositionEngine._palette.Ribbon.RibbonGroupCollapsedBack.StateTracking3 = lightestColour; // Or 230, 230, 230
+                    compositionEngine._palette.Ribbon.RibbonGroupCollapsedBack.StateTracking.BackColor3 = lightestColour; // Or 230, 230, 230
 
-                    compositionEngine._palette.Ribbon.RibbonGroupCollapsedBack.StateTracking4 = baseColour;
+                    compositionEngine._palette.Ribbon.RibbonGroupCollapsedBack.StateTracking.BackColor4 = baseColour;
 
-                    compositionEngine._palette.Ribbon.RibbonGroupCollapsedBorder.StateCommon1 = baseColour;
+                    compositionEngine._palette.Ribbon.RibbonGroupCollapsedBorder.StateCommon.BackColor1 = baseColour;
 
-                    compositionEngine._palette.Ribbon.RibbonGroupCollapsedBorder.StateCommon2 = mediumColour;
+                    compositionEngine._palette.Ribbon.RibbonGroupCollapsedBorder.StateCommon.BackColor2 = mediumColour;
 
-                    compositionEngine._palette.Ribbon.RibbonGroupCollapsedBorder.StateCommon3 = lightColour;
+                    compositionEngine._palette.Ribbon.RibbonGroupCollapsedBorder.StateCommon.BackColor3 = lightColour;
 
-                    compositionEngine._palette.Ribbon.RibbonGroupCollapsedBorder.StateCommon4 = baseColour;
+                    compositionEngine._palette.Ribbon.RibbonGroupCollapsedBorder.StateCommon.BackColor4 = baseColour;
 
-                    compositionEngine._palette.Ribbon.RibbonGroupCollapsedBorder.StateCommon5 = baseColour;
+                    compositionEngine._palette.Ribbon.RibbonGroupCollapsedBorder.StateCommon.BackColor5 = baseColour;
 
-                    compositionEngine._palette.Ribbon.RibbonGroupCollapsedFrameBack.StateCommon1 = baseColour;
+                    compositionEngine._palette.Ribbon.RibbonGroupCollapsedFrameBack.StateCommon.BackColor1 = baseColour;
 
-                    compositionEngine._palette.Ribbon.RibbonGroupCollapsedFrameBack.StateCommon2 = baseColour;
+                    compositionEngine._palette.Ribbon.RibbonGroupCollapsedFrameBack.StateCommon.BackColor2 = baseColour;
 
-                    compositionEngine._palette.Ribbon.RibbonGroupCollapsedFrameBack.StateCommon3 = lightColour;
+                    compositionEngine._palette.Ribbon.RibbonGroupCollapsedFrameBack.StateCommon.BackColor3 = lightColour;
 
-                    compositionEngine._palette.Ribbon.RibbonGroupCollapsedFrameBack.StateCommon4 = lightColour;
+                    compositionEngine._palette.Ribbon.RibbonGroupCollapsedFrameBack.StateCommon.BackColor4 = lightColour;
 
-                    compositionEngine._palette.Ribbon.RibbonGroupCollapsedFrameBack.StateCommon5 = baseColour;
+                    compositionEngine._palette.Ribbon.RibbonGroupCollapsedFrameBack.StateCommon.BackColor5 = baseColour;
 
-                    compositionEngine._palette.Ribbon.RibbonGroupCollapsedFrameBorder.StateCommon1 = lightColour;
+                    compositionEngine._palette.Ribbon.RibbonGroupCollapsedFrameBorder.StateCommon.BackColor1 = lightColour;
 
-                    compositionEngine._palette.Ribbon.RibbonGroupCollapsedFrameBorder.StateCommon2 = lightestColour; // Or 230, 230, 230
+                    compositionEngine._palette.Ribbon.RibbonGroupCollapsedFrameBorder.StateCommon.BackColor2 = lightestColour; // Or 230, 230, 230
 
                     compositionEngine._palette.Ribbon.RibbonGroupCollapsedText.StateCommon.TextColor = alternativeNormalTextColour;
 
-                    compositionEngine._palette.Ribbon.RibbonGroupNormalBorder.StateCommon1 = baseColour;
+                    compositionEngine._palette.Ribbon.RibbonGroupNormalBorder.StateCommon.BackColor1 = baseColour;
 
-                    compositionEngine._palette.Ribbon.RibbonGroupNormalBorder.StateCommon2 = mediumColour;
+                    compositionEngine._palette.Ribbon.RibbonGroupNormalBorder.StateCommon.BackColor2 = mediumColour;
 
-                    compositionEngine._palette.Ribbon.RibbonGroupNormalTitle.StateCommon1 = lightestColour; // Or 230, 230, 230
+                    compositionEngine._palette.Ribbon.RibbonGroupNormalTitle.StateCommon.BackColor1 = lightestColour; // Or 230, 230, 230
 
-                    compositionEngine._palette.Ribbon.RibbonGroupNormalTitle.StateCommon2 = mediumColour;
+                    compositionEngine._palette.Ribbon.RibbonGroupNormalTitle.StateCommon.BackColor2 = mediumColour;
 
                     compositionEngine._palette.Ribbon.RibbonGroupNormalTitle.StateCommon.TextColor = customTextColourFive;
 
-                    compositionEngine._palette.Ribbon.RibbonGroupNormalTitle.StateTracking1 = lightestColour;
+                    compositionEngine._palette.Ribbon.RibbonGroupNormalTitle.StateTracking.BackColor1 = lightestColour;
 
-                    compositionEngine._palette.Ribbon.RibbonGroupNormalTitle.StateTracking2 = mediumColour;
+                    compositionEngine._palette.Ribbon.RibbonGroupNormalTitle.StateTracking.BackColor2 = mediumColour;
 
-                    compositionEngine._palette.Ribbon.RibbonQATFullbar1 = mediumColour;
+                    compositionEngine._palette.Ribbon.RibbonQATFullbar.BackColor1 = mediumColour;
 
-                    compositionEngine._palette.Ribbon.RibbonQATFullbar2 = mediumColour;
+                    compositionEngine._palette.Ribbon.RibbonQATFullbar.BackColor2 = mediumColour;
 
-                    compositionEngine._palette.Ribbon.RibbonQATFullbar3 = mediumColour;
+                    compositionEngine._palette.Ribbon.RibbonQATFullbar.BackColor3 = mediumColour;
 
-                    compositionEngine._palette.Ribbon.RibbonQATMinibar.StateCommon1 = mediumColour;
+                    compositionEngine._palette.Ribbon.RibbonQATMinibar.StateCommon.BackColor1 = mediumColour;
 
-                    compositionEngine._palette.Ribbon.RibbonQATMinibar.StateCommon2 = mediumColour;
+                    compositionEngine._palette.Ribbon.RibbonQATMinibar.StateCommon.BackColor2 = mediumColour;
 
-                    compositionEngine._palette.Ribbon.RibbonQATMinibar.StateCommon3 = mediumColour;
+                    compositionEngine._palette.Ribbon.RibbonQATMinibar.StateCommon.BackColor3 = mediumColour;
 
-                    compositionEngine._palette.Ribbon.RibbonQATMinibar.StateCommon4 = mediumColour;
+                    compositionEngine._palette.Ribbon.RibbonQATMinibar.StateCommon.BackColor4 = mediumColour;
 
-                    compositionEngine._palette.Ribbon.RibbonQATOverflow1 = mediumColour;
+                    compositionEngine._palette.Ribbon.RibbonQATOverflow.BackColor1 = mediumColour;
 
-                    compositionEngine._palette.Ribbon.RibbonQATOverflow2 = mediumColour;
+                    compositionEngine._palette.Ribbon.RibbonQATOverflow.BackColor2 = mediumColour;
 
-                    compositionEngine._palette.Ribbon.RibbonTab.StateCheckedTracking1 = mediumColour;
+                    compositionEngine._palette.Ribbon.RibbonTab.StateCheckedTracking.BackColor1 = mediumColour;
 
-                    compositionEngine._palette.Ribbon.RibbonTab.StateCheckedTracking2 = lightColour;
+                    compositionEngine._palette.Ribbon.RibbonTab.StateCheckedTracking.BackColor2 = lightColour;
 
-                    compositionEngine._palette.Ribbon.RibbonTab.StateCheckedTracking3 = darkColour;
+                    compositionEngine._palette.Ribbon.RibbonTab.StateCheckedTracking.BackColor3 = darkColour;
 
-                    compositionEngine._palette.Ribbon.RibbonTab.StateCheckedTracking4 = mediumColour;
+                    compositionEngine._palette.Ribbon.RibbonTab.StateCheckedTracking.BackColor4 = mediumColour;
 
-                    compositionEngine._palette.Ribbon.RibbonTab.StateCommon1 = mediumColour;
+                    compositionEngine._palette.Ribbon.RibbonTab.StateCommon.BackColor1 = mediumColour;
 
-                    compositionEngine._palette.Ribbon.RibbonTab.StateCommon3 = mediumColour;
+                    compositionEngine._palette.Ribbon.RibbonTab.StateCommon.BackColor3 = mediumColour;
 
-                    compositionEngine._palette.Ribbon.RibbonTab.StateCommon4 = lightColour;
+                    compositionEngine._palette.Ribbon.RibbonTab.StateCommon.BackColor4 = lightColour;
 
-                    compositionEngine._palette.Ribbon.RibbonTab.StateCommon5 = lightColour;
+                    compositionEngine._palette.Ribbon.RibbonTab.StateCommon.BackColor5 = lightColour;
 
                     compositionEngine._palette.Ribbon.RibbonTab.StateCommon.TextColor = normalTextColour;
 
-                    compositionEngine._palette.Ribbon.RibbonTab.StateContextCheckedTracking2 = mediumColour;
+                    compositionEngine._palette.Ribbon.RibbonTab.StateContextCheckedTracking.BackColor2 = mediumColour;
 
-                    compositionEngine._palette.Ribbon.RibbonTab.StateTracking2 = mediumColour;
+                    compositionEngine._palette.Ribbon.RibbonTab.StateTracking.BackColor2 = mediumColour;
 
                     compositionEngine._palette.Ribbon.RibbonTab.StateNormal.TextColor = ribbonTabTextColour;
                     #endregion
