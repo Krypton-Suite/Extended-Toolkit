@@ -1,6 +1,7 @@
 ﻿using Krypton.Toolkit.Suite.Extended.Base;
 using Krypton.Toolkit.Suite.Extended.Common;
 using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -691,6 +692,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
         #endregion
 
         #region Properties
+        [DefaultValue(true)]
         public bool ShowColourInformation { get => _showColourInformation; set => _showColourInformation = value; }
 
         public Color[] PaletteColours { get => _paletteColours; set { _paletteColours = value; Invalidate(); } }
