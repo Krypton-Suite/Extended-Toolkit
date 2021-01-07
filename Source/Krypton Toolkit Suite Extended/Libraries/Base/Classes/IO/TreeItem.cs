@@ -20,6 +20,9 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         #endregion
 
         #region Constructor
+        /// <summary>Initializes a new instance of the <see cref="TreeItem" /> class.</summary>
+        /// <param name="data">The data.</param>
+        /// <param name="parent">The parent.</param>
         public TreeItem(string data, TreeItem parent = null)
         {
             Interlocked.Increment(ref _count);
@@ -33,6 +36,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         #endregion
 
         #region Methods
+        /// <summary>Adds the child.</summary>
+        /// <param name="child">The child.</param>
         public void AddChild(TreeItem child) => Childs.Add(child);
         #endregion
     }

@@ -13,20 +13,22 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         #endregion
 
         #region Methods
-        public static string AddLongPathPrefix(this string path)
-        {
-            return LONG_PATH_PREFIX + path;
-        }
+        /// <summary>Adds the long path prefix.</summary>
+        /// <param name="path">The path.</param>
+        /// <returns>The long path prefix.</returns>
+        public static string AddLongPathPrefix(this string path) => LONG_PATH_PREFIX + path;
 
 
-        public static string WithoutLongPathPrefix(this string path)
-        {
-            return path.Replace(LONG_PATH_PREFIX, "");
-        }
+        /// <summary>Withouts the long path prefix.</summary>
+        /// <param name="path">The path.</param>
+        /// <returns>The path.</returns>
+        public static string WithoutLongPathPrefix(this string path) => path.Replace(LONG_PATH_PREFIX, "");
 
-        public static void LoadFileTreeAsync(object _node)
+        /// <summary>Loads the file tree asynchronously.</summary>
+        /// <param name="fileNode">The node.</param>
+        public static void LoadFileTreeAsync(object fileNode)
         {
-            TreeItem node = (TreeItem)_node;
+            TreeItem node = (TreeItem)fileNode;
 
             foreach (string entry in Directory.EnumerateFileSystemEntries(node.ItemData))
             {
@@ -60,6 +62,10 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
         }
 
+        /// <summary>Gets the file tree node by path.</summary>
+        /// <param name="path">The path.</param>
+        /// <param name="fileTree">The file tree.</param>
+        /// <returns>The current file node.</returns>
         public static TreeItem GetFileTreeNodeByPath(string path, TreeItem fileTree)
         {
             if (path == fileTree.ItemData)
@@ -93,6 +99,10 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         }
 
 
+        /// <summary>Copies and paste the directory.</summary>
+        /// <param name="sourceDir">The source directory.</param>
+        /// <param name="destDir">The destination directory.</param>
+        /// <exception cref="Exception">Target folder is a subdirectory of the source folder.</exception>
         public static void CopyAndPasteDirectory(DirectoryInfo sourceDir, DirectoryInfo destDir)
         {
             //Is the target folder a sub-directory of the original folder.
@@ -121,7 +131,10 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         }
 
 
-        public static string FileSizeStr(long fileSize)
+        /// <summary>Files the size string.</summary>
+        /// <param name="fileSize">Size of the file.</param>
+        /// <returns>The file size as a string.</returns>
+        public static string FileSizeString(long fileSize)
         {
             string fileSizeStr = string.Empty;
 
@@ -137,14 +150,17 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
             else if (fileSize >= 1024 * 1024 * 1024)
             {
-                fileSizeStr = Math.Round(fileSize * 1.0 / (1024 * 1024 * 1024), 2, MidpointRounding.AwayFromZero) +
-                              " GB";
+                fileSizeStr = Math.Round(fileSize * 1.0 / (1024 * 1024 * 1024), 2, MidpointRounding.AwayFromZero) + " GB";
             }
 
             return fileSizeStr;
         }
 
 
+        /// <summary>Gets the size of the directory.</summary>
+        /// <param name="dirPath">The directory path.</param>
+        /// <returns>The size of the directory.</returns>
+        /// <exception cref="ArgumentException">This is not a directory</exception>
         public static long GetDirectorySize(string dirPath)
         {
             if (!Directory.Exists(dirPath))
@@ -176,6 +192,10 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         }
 
 
+        /// <summary>Determines whether [is valid file name] [the specified file name].</summary>
+        /// <param name="fileName">Name of the file.</param>
+        /// <returns>
+        ///   <c>true</c> if [is valid file name] [the specified file name]; otherwise, <c>false</c>.</returns>
         public static bool IsValidFileName(string fileName)
         {
             const string errChar = "\\/:*?\"<>|";
