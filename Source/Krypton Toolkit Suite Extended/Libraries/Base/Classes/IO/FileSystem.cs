@@ -38,7 +38,9 @@ namespace Krypton.Toolkit.Suite.Extended.Base
 
                 try
                 {
+#if !NETCORE31 && !NET5
                     Directory.GetAccessControl(entry);
+#endif 
                 }
                 catch (UnauthorizedAccessException)
                 {
