@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Security.Permissions;
 using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Base
@@ -371,13 +373,26 @@ namespace Krypton.Toolkit.Suite.Extended.Base
 
         private void OnGlobalPaletteChanged(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            // Unhook events from old palette
+            if (_palette != null)
+                _palette.PalettePaint -= new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+
+            // Cache the new IPalette that is the global palette
+            _palette = KryptonManager.CurrentGlobalPalette;
+            _paletteRedirect.Target = _palette;
+
+            // Hook into events for the new palette
+            if (_palette != null)
+            {
+                _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                InitialiseColours();
+            }
+
+            // Change of palette means we should repaint to show any changes
+            Invalidate();
         }
 
-        private void OnPalettePaint(object sender, PaletteLayoutEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
+        private void OnPalettePaint(object sender, PaletteLayoutEventArgs e) => Invalidate();
         #endregion
 
         #region Overrides
@@ -757,7 +772,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
                 using (GraphicsPath path = renderer.RenderStandardBorder.GetBackPath(renderContext, innerRect, _paletteBorder, VisualOrientation.Top, buttonState))
                 {
                     // Ask renderer to draw the background
-                    _momentoBack2 = renderer.RenderStandardBack.DrawBack(renderContext, innerContent, path, _paletteBack, VisualOrientation.Top, buttonState, _mementoBack2);
+                    _momentoBack2 = renderer.RenderStandardBack.DrawBack(renderContext, innerContent, path, _paletteBack, VisualOrientation.Top, buttonState, _momentoBack2);
                 }
 
                 // Now we draw the border of the inner area, also in ButtonStandalone style
@@ -840,12 +855,572 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
         }
         #endregion
+
+        #region Draw Headers
+        protected override void OnDrawColumnHeader(DrawListViewColumnHeaderEventArgs e)
+        {
+            if (!DesignMode)
+            {
+
+                if (_enableHeaderRendering == true)
+                {
+                    Rectangle rect = e.Bounds;
+                    rect.Height = rect.Height;// -2;
+                    rect.Width = rect.Width - 0;
+                    Graphics g = e.Graphics;
+
+                    Point mouse = new Point();
+                    mouse = PointToClient(Control.MousePosition);
+
+                    //Header HotTrack
+                    bool bHot = false;
+                    if (_enableHeaderHotTrack)
+                    {
+                        //Mod
+                        Invalidate();
+
+                        Rectangle mouserect = new Rectangle();
+                        mouserect = e.Bounds;
+                        mouserect.Width += 2; //expand the rectangle to make the check more stable
+                        mouserect.Height += 2;
+
+                        if (mouserect.Contains(mouse))
+                            bHot = true;
+                    }
+
+                    //ClearType
+                    try
+                    { e.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit; }
+                    catch
+                    { }
+
+
+                    //Empty Area
+                    g.FillRectangle(new SolidBrush(Color.White), rect);
+
+                    //design with The Correct renderer
+                    try
+                    {
+                        if (_useKryptonRenderer)
+                            KryptonRendererHeader(ref g, ref rect, bHot, ref e); //KryptonRendererHeader
+                        else
+                            InternalRendererHeader(ref g, ref rect, bHot, ref e); //InternalRendererHeader
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.WriteLine(ex.Message);
+                    }
+
+                    //OffSet Header
+                    HeaderPressedOffset(ref rect, e.State);
+
+                    //get Colors And Font
+                    Color textColor = GetForeTextColourHeader(GetPaletteState(ref e, bHot));
+                    Font textFont = GetForeTextFont(GetPaletteState(ref e, bHot));
+
+                    //set text properties
+                    StringFormat TextFormat = new StringFormat();
+                    TextFormat.FormatFlags = StringFormatFlags.NoWrap;
+                    TextFormat.Alignment = ConvertHorizontalAlignmentToStringAlignment(e.Header.TextAlign);
+
+                    //string Ellipsis
+                    string ColumnHeaderString = CompactString(e.Header.Text, rect.Width, textFont, TextFormatFlags.EndEllipsis);
+
+                    //draw Text
+                    g.DrawString(ColumnHeaderString, textFont, new SolidBrush(textColor), rect, TextFormat);
+                    //e.DrawText();
+
+
+                    //Draw sort indicator
+                    if (this.Columns[e.ColumnIndex].Tag != null)
+                    {
+                        SortOrder sort = (SortOrder)this.Columns[e.ColumnIndex].Tag;
+
+                        // Prepare arrow
+                        if (sort == SortOrder.Ascending)
+                            g.FillRectangle(new SolidBrush(Color.Red), rect.X + rect.Width - 8, rect.Y, 8, 8);
+                        else if (sort == SortOrder.Descending)
+                            g.FillRectangle(new SolidBrush(Color.Green), rect.X + rect.Width - 8, rect.Y, 8, 8);
+                    }
+
+                }
+                else
+                    e.DrawDefault = true;
+
+            }
+            else
+            {
+                e.DrawDefault = true;
+            }
+        }
+        #endregion
+
+        #region Helpers
+        public StringAlignment ConvertHorizontalAlignmentToStringAlignment(HorizontalAlignment input)
+        {
+
+            switch (input)
+            {
+                case HorizontalAlignment.Center:
+                    return StringAlignment.Center;
+
+                case HorizontalAlignment.Right:
+                    return StringAlignment.Far;
+
+                case HorizontalAlignment.Left:
+                    return StringAlignment.Near;
+
+            }
+            return StringAlignment.Center;
+        }
+
+        private void CleanColumnsTags()
+        {
+            int i;
+
+            for (i = 0; i < this.Columns.Count; i++)
+            {
+                this.Columns[i].Tag = null;
+            }
+            Invalidate();
+        }
+
+        //create Graphics Path
+        private GraphicsPath CreateRectGraphicsPath(Rectangle rect)
+        {
+            GraphicsPath path = new GraphicsPath();
+            path.AddRectangle(rect);
+            return path;
+        }
+
+        /// <summary>
+        /// Draw a line with insertion marks at each end
+        /// </summary>
+        /// <param name="X1">Starting position (X) of the line</param>
+        /// <param name="X2">Ending position (X) of the line</param>
+        /// <param name="Y">Position (Y) of the line</param>
+        private void DrawInsertionLine(int X1, int X2, int Y)
+        {
+            using (Graphics g = this.CreateGraphics())
+            {
+                g.DrawLine(Pens.Red, X1, Y, X2 - 1, Y);
+
+                Point[] leftTriangle = new Point[3] {
+                            new Point(X1,      Y-4),
+                            new Point(X1 + 7,  Y),
+                            new Point(X1,      Y+4)
+                        };
+                Point[] rightTriangle = new Point[3] {
+                            new Point(X2,     Y-4),
+                            new Point(X2 - 8, Y),
+                            new Point(X2,     Y+4)
+                        };
+                g.FillPolygon(Brushes.Red, leftTriangle);
+                g.FillPolygon(Brushes.Red, rightTriangle);
+            }
+        }
+
+
+        private string CompactString(string MyString, int Width, Font Font, TextFormatFlags FormatFlags)
+        {
+            string result = string.Copy(MyString);
+
+            TextRenderer.MeasureText(result, Font, new Size(Width, 0), FormatFlags | TextFormatFlags.ModifyString);
+
+            return result;
+        }
+        #endregion
+
+        #region Overrides
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
+        }
+
+        // The LVItem being dragged
+        private ListViewItem _itemDnD = null;
+
+        protected override void OnMouseDown(MouseEventArgs e)
+        {
+            if (_enableDragDrop)
+            {
+                _itemDnD = GetItemAt(e.X, e.Y);
+            }
+
+            base.OnMouseDown(e);
+        }
+
+        protected override void OnMouseUp(MouseEventArgs e)
+        {
+            if (_enableDragDrop)
+            {
+                if (_itemDnD == null)
+                    return;
+
+                try
+                {
+                    // calculate the bottom of the last item in the LV so that you don't have to stop your drag at the last item
+                    int lastItemBottom = Math.Min(e.Y, this.Items[this.Items.Count - 1].GetBounds(ItemBoundsPortion.Entire).Bottom - 1);
+
+                    // use 0 instead of e.X so that you don't have to keep inside the columns while dragging
+                    ListViewItem itemOver = this.GetItemAt(0, lastItemBottom);
+
+                    if (itemOver == null)
+                        return;
+
+                    Rectangle rc = itemOver.GetBounds(ItemBoundsPortion.Entire);
+
+                    // find out if we insert before or after the item the mouse is over
+                    bool insertBefore;
+                    if (e.Y < rc.Top + (rc.Height / 2))
+                    {
+                        insertBefore = true;
+                    }
+                    else
+                    {
+                        insertBefore = false;
+                    }
+
+                    if (_itemDnD != itemOver) // if we dropped the item on itself, nothing is to be done
+                    {
+                        if (insertBefore)
+                        {
+                            this.Items.Remove(_itemDnD);
+                            this.Items.Insert(itemOver.Index, _itemDnD);
+                        }
+                        else
+                        {
+                            this.Items.Remove(_itemDnD);
+                            this.Items.Insert(itemOver.Index + 1, _itemDnD);
+                        }
+                    }
+
+                    // clear the insertion line
+                    this.LineAfter =
+                    this.LineBefore = -1;
+
+                    this.Invalidate();
+
+                }
+                finally
+                {
+                    // finish drag&drop operation
+                    _itemDnD = null;
+                    Cursor = Cursors.Default;
+                }
+            }
+
+            base.OnMouseUp(e);
+        }
+
+        protected override void OnGotFocus(EventArgs e)
+        {
+            _hasFocus = true;
+
+            base.OnGotFocus(e);
+        }
+
+        protected override void OnLostFocus(EventArgs e)
+        {
+            _hasFocus = false;
+
+            base.OnLostFocus(e);
+        }
+
+        protected override void OnMouseEnter(EventArgs e)
+        {
+            base.OnMouseEnter(e);
+        }
+
+        protected override void OnMouseMove(MouseEventArgs e)
+        {
+            if (_enableDragDrop)
+            {
+                if (_itemDnD == null)
+                    return;
+
+                // Show the user that a drag operation is happening
+                Cursor = Cursors.Hand;
+
+                // calculate the bottom of the last item in the LV so that you don't have to stop your drag at the last item
+                int lastItemBottom = Math.Min(e.Y, this.Items[this.Items.Count - 1].GetBounds(ItemBoundsPortion.Entire).Bottom - 1);
+
+                // use 0 instead of e.X so that you don't have to keep inside the columns while dragging
+                ListViewItem itemOver = this.GetItemAt(0, lastItemBottom);
+
+                if (itemOver == null)
+                    return;
+
+                Rectangle rc = itemOver.GetBounds(ItemBoundsPortion.Entire);
+                if (e.Y < rc.Top + (rc.Height / 2))
+                {
+                    this.LineBefore = itemOver.Index;
+                    this.LineAfter = -1;
+                }
+                else
+                {
+                    this.LineBefore = -1;
+                    this.LineAfter = itemOver.Index;
+                }
+
+                // invalidate the LV so that the insertion line is shown
+                Invalidate();
+            }
+
+            base.OnMouseMove(e);
+        }
+
+        protected override void OnItemMouseHover(ListViewItemMouseHoverEventArgs e)
+        {
+            base.OnItemMouseHover(e);
+        }
+
+        protected override void OnColumnClick(ColumnClickEventArgs e)
+        {
+            base.OnColumnClick(e);
+
+            if (_enableSorting == true)
+            {
+                // Determine if clicked column is already the column that is being sorted.
+                if (e.Column == lvwColumnSorter.SortColumn)
+                {
+                    // Reverse the current sort direction for this column.
+                    if (lvwColumnSorter.Order == SortOrder.Ascending)
+                    {
+                        lvwColumnSorter.Order = SortOrder.Descending;
+                    }
+                    else
+                    {
+                        lvwColumnSorter.Order = SortOrder.Ascending;
+                    }
+                }
+                else
+                {
+                    // Set the column number that is to be sorted; default to ascending.
+                    lvwColumnSorter.SortColumn = e.Column;
+                    lvwColumnSorter.Order = SortOrder.Ascending;
+                }
+
+                //set info for sort image
+                //CleanColumnsTag();
+                //this.Columns[e.Column].Tag = lvwColumnSorter.Order;
+
+                // Perform the sort with these new sort options.
+                this.Sort();
+            }
+        }
+
+        [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
+        protected override void WndProc(ref Message m)
+        {
+            //To avoid errors on designer
+            if (!DesignMode)
+            {
+                if (_autoSizeLastColumn)
+                {
+                    // if the control is in details view mode and columns
+                    // have been added, then intercept the WM_PAINT message
+                    // and reset the last column width to fill the list view
+                    switch (m.Msg)
+                    {
+                        case Win32.WM_PAINT:
+                            if (this.View == View.Details && this.Columns.Count > 0)
+                                this.Columns[this.Columns.Count - 1].Width = -2;
+                            for (int i = 0; i < this.Columns.Count - 1; i++)
+                            {
+                                this.Columns[i].Width = this.Columns[i].Width;
+                            }
+                            if (_enableDragDrop)
+                            {
+                                if (LineBefore >= 0 && LineBefore < Items.Count)
+                                {
+                                    Rectangle rc = Items[LineBefore].GetBounds(ItemBoundsPortion.Entire);
+                                    DrawInsertionLine(rc.Left, rc.Right, rc.Top);
+                                }
+                                if (LineAfter >= 0 && LineBefore < Items.Count)
+                                {
+                                    Rectangle rc = Items[LineAfter].GetBounds(ItemBoundsPortion.Entire);
+                                    DrawInsertionLine(rc.Left, rc.Right, rc.Bottom);
+                                }
+                            }
+                            break;
+
+                        case Win32.WM_NCHITTEST:
+                            //DRAWITEMSTRUCT dis = (DRAWITEMSTRUCT)Marshal.PtrToStructure(message.LParam, typeof(DRAWITEMSTRUCT));
+
+                            //ColumnHeader ch = this.Columns[dis.itemID];
+                            break;
+                    }
+
+                }
+            }
+
+            // pass messages on to the base control for processing
+            base.WndProc(ref m);
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                if (_momentoContent != null)
+                {
+                    _momentoContent.Dispose();
+                    _momentoContent = null;
+                }
+
+                if (_momentoBack1 != null)
+                {
+                    _momentoBack1.Dispose();
+                    _momentoBack1 = null;
+                }
+
+                if (_momentoBack2 != null)
+                {
+                    _momentoBack2.Dispose();
+                    _momentoBack2 = null;
+                }
+
+                // Unhook from the palette events
+                if (_palette != null)
+                {
+                    _palette.PalettePaint -= new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                    _palette = null;
+                }
+
+                // Unhook from the static events, otherwise we cannot be garbage collected
+                KryptonManager.GlobalPaletteChanged -= new EventHandler(OnGlobalPaletteChanged);
+            }
+
+            base.Dispose(disposing);
+        }
+
+        protected override void OnNotifyMessage(Message m)
+        {
+            if (m.Msg != 0x14)
+            {
+                base.OnNotifyMessage(m);
+            }
+        }
+        #endregion
     }
 
     #region ListViewColumnSorter : Class
-    internal class ListViewColumnSorter
+    internal class ListViewColumnSorter : IComparer
     {
+        /// <summary>
+        /// Specifies the column to be sorted
+        /// </summary>
+        private int ColumnToSort;
+        /// <summary>
+        /// Specifies the order in which to sort (i.e. 'Ascending').
+        /// </summary>
+        private SortOrder OrderOfSort;
+        /// <summary>
+        /// Case insensitive comparer object
+        /// </summary>
+        private CaseInsensitiveComparer ObjectCompare;
 
+        /// <summary>
+        /// Class constructor.  Initializes various elements
+        /// </summary>
+        public ListViewColumnSorter()
+        {
+            // Initialize the column to '0'
+            ColumnToSort = 0;
+
+            // Initialize the sort order to 'none'
+            OrderOfSort = SortOrder.None;
+
+            // Initialize the CaseInsensitiveComparer object
+            ObjectCompare = new CaseInsensitiveComparer();
+        }
+
+        /// <summary>
+        /// This method is inherited from the IComparer interface.  It compares the two objects passed using a case insensitive comparison.
+        /// </summary>
+        /// <param name="x">First object to be compared</param>
+        /// <param name="y">Second object to be compared</param>
+        /// <returns>The result of the comparison. "0" if equal, negative if 'x' is less than 'y' and positive if 'x' is greater than 'y'</returns>
+        public int Compare(object x, object y)
+        {
+            int compareResult;
+            ListViewItem listviewX, listviewY;
+
+            // Cast the objects to be compared to ListViewItem objects
+            listviewX = (ListViewItem)x;
+            listviewY = (ListViewItem)y;
+
+            // Compare the two items
+            string itemX;
+            try
+            {
+                itemX = listviewX.SubItems[ColumnToSort].Text;
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.Message);
+                itemX = " ";
+            }
+            string itemY;
+            try
+            {
+                itemY = listviewY.SubItems[ColumnToSort].Text;
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.Message);
+                itemY = " ";
+            }
+            compareResult = ObjectCompare.Compare(itemX, itemY);
+
+            // Calculate correct return value based on object comparison
+            if (OrderOfSort == SortOrder.Ascending)
+            {
+                // Ascending sort is selected, return normal result of compare operation
+                return compareResult;
+            }
+            else if (OrderOfSort == SortOrder.Descending)
+            {
+                // Descending sort is selected, return negative result of compare operation
+                return (-compareResult);
+            }
+            else
+            {
+                // Return '0' to indicate they are equal
+                return 0;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the number of the column to which to apply the sorting operation (Defaults to '0').
+        /// </summary>
+        public int SortColumn
+        {
+            set
+            {
+                ColumnToSort = value;
+            }
+            get
+            {
+                return ColumnToSort;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the order of sorting to apply (for example, 'Ascending' or 'Descending').
+        /// </summary>
+        public SortOrder Order
+        {
+            set
+            {
+                OrderOfSort = value;
+            }
+            get
+            {
+                return OrderOfSort;
+            }
+        }
     }
     #endregion
 }
