@@ -17,7 +17,7 @@
 
   <!--Canary NuGet package configuration-->
   <ItemGroup>
-    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2101" />
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2103" />
   </ItemGroup>
   
   <!--Stable NuGet version configuration-
