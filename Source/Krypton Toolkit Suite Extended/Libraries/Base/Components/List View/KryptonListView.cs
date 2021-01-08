@@ -15,30 +15,28 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         #region Designer
         private void InitializeComponent()
         {
-            components = new Container();
-
-            ComponentResourceManager resources = new ComponentResourceManager(typeof(KryptonListView));
-
-            ilCheckBoxes = new ImageList(components);
-
-            ilHeight = new ImageList(components);
-
-            SuspendLayout();
-
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KryptonListView));
+            this.ilCheckBoxes = new System.Windows.Forms.ImageList(this.components);
+            this.ilHeight = new System.Windows.Forms.ImageList(this.components);
+            this.SuspendLayout();
+            // 
+            // ilCheckBoxes
+            // 
             this.ilCheckBoxes.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ilCheckBoxes.ImageStream")));
             this.ilCheckBoxes.TransparentColor = System.Drawing.Color.Transparent;
-            this.ilCheckBoxes.Images.SetKeyName(0, "XpNotChecked.gif");
-            this.ilCheckBoxes.Images.SetKeyName(1, "XpChecked.gif");
-            this.ilCheckBoxes.Images.SetKeyName(2, "VistaNotChecked.png");
-            this.ilCheckBoxes.Images.SetKeyName(3, "VistaChecked.png");
+            this.ilCheckBoxes.Images.SetKeyName(0, "VistaChecked.png");
+            this.ilCheckBoxes.Images.SetKeyName(1, "VistaNotChecked.png");
+            this.ilCheckBoxes.Images.SetKeyName(2, "XPChecked.gif");
+            this.ilCheckBoxes.Images.SetKeyName(3, "XPNotChecked.gif");
+            // 
+            // ilHeight
+            // 
+            this.ilHeight.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+            this.ilHeight.ImageSize = new System.Drawing.Size(1, 16);
+            this.ilHeight.TransparentColor = System.Drawing.Color.Transparent;
+            this.ResumeLayout(false);
 
-            ilHeight.ColorDepth = ColorDepth.Depth32Bit;
-
-            ilHeight.ImageSize = new Size(1, 16);
-
-            ilHeight.TransparentColor = Color.Transparent;
-
-            ResumeLayout(false);
         }
         #endregion
 
