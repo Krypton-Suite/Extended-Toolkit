@@ -43,6 +43,8 @@
         private System.ComponentModel.IContainer components;
         private KryptonPanel kryptonPanel3;
         private KryptonSplitContainer kryptonSplitContainer1;
+        private KryptonPalette kryptonPalette1;
+        private KryptonManager kryptonManager1;
         private System.Windows.Forms.ToolStripComboBox toolStripComboBox2;
 
         private void InitializeComponent()
@@ -90,6 +92,8 @@
             this.listIcons = new System.Windows.Forms.ImageList(this.components);
             this.kryptonPanel3 = new Krypton.Toolkit.KryptonPanel();
             this.kryptonSplitContainer1 = new Krypton.Toolkit.KryptonSplitContainer();
+            this.kryptonPalette1 = new Krypton.Toolkit.KryptonPalette(this.components);
+            this.kryptonManager1 = new Krypton.Toolkit.KryptonManager(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
@@ -434,6 +438,11 @@
             this.kryptonSplitContainer1.Size = new System.Drawing.Size(1234, 602);
             this.kryptonSplitContainer1.SplitterDistance = 411;
             this.kryptonSplitContainer1.TabIndex = 0;
+            // 
+            // kryptonManager1
+            // 
+            this.kryptonManager1.GlobalPalette = this.kryptonPalette1;
+            this.kryptonManager1.GlobalPaletteMode = Krypton.Toolkit.PaletteModeManager.Custom;
             // 
             // FileExplorerWindow
             // 
