@@ -31,6 +31,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
     {
         #region Variables
         private bool _showUACShield = false;
+        private Size _uacShieldSize;
         #endregion
 
         #region Properties
@@ -38,20 +39,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         /// Gets or sets the shield icon visibility of the command link.
         /// </summary>
         [Category("Command Link"), Description("Gets or sets the shield icon visibility of the command link."), DefaultValue(false)]
-        public bool ShowUACShield
-        {
-            get
-            {
-                return _showUACShield;
-            }
-
-            set
-            {
-                _showUACShield = value;
-
-                SendMessage(new HandleRef(this, this.Handle), BCM_SETSHIELD, IntPtr.Zero, _showUACShield);
-            }
-        }
+        public bool ShowUACShield  { get => _showUACShield; set  { _showUACShield = value; Invalidate(); } }
 
         /// <summary>
         /// Gets or sets the note text of the command link.
@@ -118,6 +106,16 @@ namespace Krypton.Toolkit.Suite.Extended.Base
 
                 return createParams;
             }
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            if (_showUACShield)
+            {
+                Values.Image = SystemIcons.Shield.ToBitmap();
+            }
+
+            base.OnPaint(e);
         }
         #endregion
 

@@ -44,9 +44,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         private readonly PaletteTripleOverride _overrideTracking;
         private readonly PaletteTripleOverride _overridePressed;
         private IKryptonCommand _command;
-        private bool _isDefault;
-        private bool _useMnemonic;
-        private bool _wasEnabled;
+        private bool _isDefault, _useMnemonic, _wasEnabled, _showUACShield;
+        private Size _uacShieldSize;
         #endregion
 
         #region Events
@@ -489,6 +488,12 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             get => base.ImeMode;
             set => base.ImeMode = value;
         }
+
+        /// <summary>
+        /// Gets or sets the shield icon visibility of the command link.
+        /// </summary>
+        [Category("Command Link"), Description("Gets or sets the shield icon visibility of the command link."), DefaultValue(false)]
+        public bool ShowUACShield { get => _showUACShield; set { _showUACShield = value; Invalidate(); } }
         #endregion
 
         #region Protected Overrides
@@ -611,6 +616,15 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             _buttonController.RemoveFixed();
         }
 
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            if (_showUACShield)
+            {
+                CommandLinkImageValue.Image = SystemIcons.Shield.ToBitmap();
+            }
+
+            base.OnPaint(e);
+        }
         #endregion
 
         #region Protected Virtual
