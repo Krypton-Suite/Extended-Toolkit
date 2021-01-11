@@ -45,7 +45,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         private readonly PaletteTripleOverride _overrideTracking;
         private readonly PaletteTripleOverride _overridePressed;
         private IKryptonCommand _command;
-        private bool _isDefault, _useMnemonic, _wasEnabled, _showUACShield;
+        private bool _isDefault, _useMnemonic, _wasEnabled, _showUACShield, _isUACElevatedButton;
+        private Image _originalImage;
         private Size _uacShieldSize;
         #endregion
 
@@ -134,6 +135,11 @@ namespace Krypton.Toolkit.Suite.Extended.Base
 
             // Create the view manager instance
             ViewManager = new ViewManager(this, drawButton);
+
+            // UAC setup
+            _showUACShield = false;
+
+            _uacShieldSize = new Size(15, 15);
         }
         #endregion
 
@@ -494,12 +500,37 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         /// Gets or sets the shield icon visibility of the command link.
         /// </summary>
         [Category("Command Link"), Description("Gets or sets the shield icon visibility of the command link."), DefaultValue(false)]
-        public bool ShowUACShield { get => _showUACShield; set { _showUACShield = value; Invalidate(); } }
+        public bool ShowUACShield
+        {
+            get => _showUACShield;
+
+            set
+            {
+                _showUACShield = value;
+
+                // TODO: Store the original icon
+
+                CommandLinkImageValue.Image = SystemIcons.Shield.ToBitmap();
+            }
+        }
 
         /// <summary>Gets or sets the size of the UAC shield.</summary>
         /// <value>The size of the UAC shield.</value>
         [Category("Command Link"), Description("Gets or sets the shield icon size of the command link."), DefaultValue(typeof(Size), "15, 15")]
-        public Size UACShieldSize { get => _uacShieldSize; set { _uacShieldSize = value; Invalidate(); } }
+        public Size UACShieldSize
+        {
+            get => _uacShieldSize;
+
+            set
+            {
+                _uacShieldSize = value;
+
+                if (_showUACShield)
+                {
+                    CommandLinkImageValue.Image = UtilityMethods.ResizeImage(SystemIcons.Shield.ToBitmap(), _uacShieldSize.Width, _uacShieldSize.Height);
+                }
+            }
+        }
         #endregion
 
         #region Protected Overrides
@@ -628,7 +659,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             {
                 CommandLinkImageValue.Image = SystemIcons.Shield.ToBitmap();
 
-                UtilityMethods.ResizeImage(SystemIcons.Shield.ToBitmap(), _uacShieldSize.Width, _uacShieldSize.Height);
+                //UtilityMethods.ResizeImage(SystemIcons.Shield.ToBitmap(), _uacShieldSize.Width, _uacShieldSize.Height);
             }
 
             base.OnPaint(e);

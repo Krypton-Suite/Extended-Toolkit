@@ -6,7 +6,6 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Common;
 using System;
 using System.ComponentModel;
 using System.Drawing;
@@ -31,7 +30,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
     public class KryptonCommandLinkVersion2 : KryptonButton
     {
         #region Variables
-        private bool _showUACShield = false;
+        private bool _showUACShield = false, _isUACElevatedButton;
+        private Image _originalImage;
         private Size _uacShieldSize;
         #endregion
 
@@ -40,12 +40,37 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         /// Gets or sets the shield icon visibility of the command link.
         /// </summary>
         [Category("Command Link"), Description("Gets or sets the shield icon visibility of the command link."), DefaultValue(false)]
-        public bool ShowUACShield { get => _showUACShield; set { _showUACShield = value; Invalidate(); } }
+        public bool ShowUACShield
+        {
+            get => _showUACShield;
+
+            set
+            {
+                _showUACShield = value;
+
+                // TODO: Store the original icon
+
+                Values.Image = SystemIcons.Shield.ToBitmap();
+            }
+        }
 
         /// <summary>Gets or sets the size of the UAC shield.</summary>
         /// <value>The size of the UAC shield.</value>
         [Category("Command Link"), Description("Gets or sets the shield icon size of the command link."), DefaultValue(typeof(Size), "15, 15")]
-        public Size UACShieldSize { get => _uacShieldSize; set { _uacShieldSize = value; Invalidate(); } }
+        public Size UACShieldSize
+        {
+            get => _uacShieldSize;
+
+            set
+            {
+                _uacShieldSize = value;
+
+                if (_showUACShield)
+                {
+                    Values.Image = UtilityMethods.ResizeImage(SystemIcons.Shield.ToBitmap(), _uacShieldSize.Width, _uacShieldSize.Height);
+                }
+            }
+        }
 
         /// <summary>
         /// Gets or sets the note text of the command link.
@@ -116,13 +141,6 @@ namespace Krypton.Toolkit.Suite.Extended.Base
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            if (_showUACShield)
-            {
-                Values.Image = SystemIcons.Shield.ToBitmap();
-
-                UtilityMethods.ResizeImage(SystemIcons.Shield.ToBitmap(), _uacShieldSize.Width, _uacShieldSize.Height);
-            }
-
             base.OnPaint(e);
         }
         #endregion
