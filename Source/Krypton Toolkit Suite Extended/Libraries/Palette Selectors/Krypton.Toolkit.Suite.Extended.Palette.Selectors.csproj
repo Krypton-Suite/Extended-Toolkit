@@ -55,7 +55,7 @@
 
   <!--Canary NuGet package configuration-->
   <ItemGroup>
-    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2103.3" />
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2103.4" />
   </ItemGroup>
 
   <ItemGroup>
