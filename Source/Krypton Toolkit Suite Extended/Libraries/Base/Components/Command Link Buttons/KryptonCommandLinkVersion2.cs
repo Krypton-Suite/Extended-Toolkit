@@ -42,6 +42,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         [Category("Command Link"), Description("Gets or sets the shield icon visibility of the command link."), DefaultValue(false)]
         public bool ShowUACShield { get => _showUACShield; set { _showUACShield = value; Invalidate(); } }
 
+        /// <summary>Gets or sets the size of the UAC shield.</summary>
+        /// <value>The size of the UAC shield.</value>
         [Category("Command Link"), Description("Gets or sets the shield icon size of the command link."), DefaultValue(typeof(Size), "15, 15")]
         public Size UACShieldSize { get => _uacShieldSize; set { _uacShieldSize = value; Invalidate(); } }
 
