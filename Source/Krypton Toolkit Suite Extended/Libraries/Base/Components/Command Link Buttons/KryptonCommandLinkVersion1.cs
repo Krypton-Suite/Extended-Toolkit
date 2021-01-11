@@ -496,6 +496,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             set => base.ImeMode = value;
         }
 
+        public Image OriginalImage { get => _originalImage; private set => _originalImage = value; }
+
         /// <summary>
         /// Gets or sets the shield icon visibility of the command link.
         /// </summary>
@@ -509,6 +511,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
                 _showUACShield = value;
 
                 // TODO: Store the original icon
+                OriginalImage = CommandLinkImageValue.Image;
 
                 CommandLinkImageValue.Image = SystemIcons.Shield.ToBitmap();
             }
