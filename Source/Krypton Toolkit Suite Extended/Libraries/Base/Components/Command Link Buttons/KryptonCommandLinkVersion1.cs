@@ -513,7 +513,16 @@ namespace Krypton.Toolkit.Suite.Extended.Base
                 // TODO: Store the original icon
                 OriginalImage = CommandLinkImageValue.Image;
 
-                CommandLinkImageValue.Image = SystemIcons.Shield.ToBitmap();
+                if (!_showUACShield)
+                {
+                    CommandLinkImageValue.Image = _originalImage;
+
+                    OriginalImage = null;
+                }
+                else
+                {
+                    CommandLinkImageValue.Image = SystemIcons.Shield.ToBitmap();
+                }
             }
         }
 
