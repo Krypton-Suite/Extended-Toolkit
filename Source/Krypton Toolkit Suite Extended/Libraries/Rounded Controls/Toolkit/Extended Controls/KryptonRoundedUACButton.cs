@@ -11,7 +11,7 @@ using System.ComponentModel;
 
 namespace Krypton.Toolkit.Suite.Extended.Rounded.Controls
 {
-    public class KryptonRoundedUACButton : KryptonUACElevatedButton
+    public class KryptonRoundedUACButton : KryptonUACElevatedButtonVersion1
     {
         #region Variables
         private int _cornerRoundness;

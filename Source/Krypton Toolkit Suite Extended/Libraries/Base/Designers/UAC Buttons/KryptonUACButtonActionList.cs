@@ -36,6 +36,21 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         #endregion
 
         #region Public
+        public bool UseAsUACElevatedButton
+        {
+            get => _uacButton.UseAsUACElevatedButton;
+
+            set
+            {
+                if (_uacButton.UseAsUACElevatedButton != value)
+                {
+                    _service.OnComponentChanged(_uacButton, null, _uacButton.UseAsUACElevatedButton, value);
+
+                    _uacButton.UseAsUACElevatedButton = value;
+                }
+            }
+        }
+
         /// <summary>
         /// Gets and sets the button style.
         /// </summary>

@@ -26,7 +26,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         private Suite.Extended.Standard.Controls.KryptonLabelExtended klblMessage;
         private System.Windows.Forms.PictureBox pbxIcon;
         private Suite.Extended.Standard.Controls.KryptonButtonExtended kbtnRun;
-        private KryptonUACElevatedButton kuacRun;
+        private KryptonUACElevatedButtonVersion1 kuacRun;
         private KryptonCancelDialogButton kcdbCancel;
         private Suite.Extended.Standard.Controls.KryptonButtonExtended kbtnBrowse;
         private Suite.Extended.Standard.Controls.KryptonButtonExtended kbtneLocate;
@@ -40,7 +40,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KryptonRunDialog));
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             this.kbtnRun = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonButtonExtended();
-            this.kuacRun = new Krypton.Toolkit.Suite.Extended.Base.KryptonUACElevatedButton();
+            this.kuacRun = new Krypton.Toolkit.Suite.Extended.Base.KryptonUACElevatedButtonVersion1();
             this.kcdbCancel = new Krypton.Toolkit.Suite.Extended.Dialogs.KryptonCancelDialogButton();
             this.kbtnBrowse = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonButtonExtended();
             this.kbtneLocate = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonButtonExtended();
@@ -166,7 +166,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.kuacRun.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kuacRun.TabIndex = 4;
             this.kuacRun.Values.Text = "&Run";
-            this.kuacRun.ExecuteProcessAsAdministrator += new Krypton.Toolkit.Suite.Extended.Base.KryptonUACElevatedButton.ExecuteProcessAsAdministratorEventHandler(this.kuacRun_ExecuteProcessAsAdministrator);
+            this.kuacRun.ExecuteProcessAsAdministrator += new Krypton.Toolkit.Suite.Extended.Base.KryptonUACElevatedButtonVersion1.ExecuteProcessAsAdministratorEventHandler(this.kuacRun_ExecuteProcessAsAdministrator);
             this.kuacRun.Click += new System.EventHandler(this.kuacRun_Click);
             // 
             // kcdbCancel
