@@ -45,7 +45,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         private readonly PaletteTripleOverride _overrideTracking;
         private readonly PaletteTripleOverride _overridePressed;
         private IKryptonCommand _command;
-        private bool _isDefault, _useMnemonic, _wasEnabled, _showUACShield, _isUACElevatedButton;
+        private bool _isDefault, _useMnemonic, _wasEnabled, _useAsUACElevatedButton;
         private Image _originalImage;
         private Size _uacShieldSize;
         #endregion
@@ -137,7 +137,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             ViewManager = new ViewManager(this, drawButton);
 
             // UAC setup
-            _showUACShield = false;
+            _useAsUACElevatedButton = false;
 
             _uacShieldSize = new Size(15, 15);
         }
@@ -498,22 +498,22 @@ namespace Krypton.Toolkit.Suite.Extended.Base
 
         public Image OriginalImage { get => _originalImage; private set => _originalImage = value; }
 
-        /// <summary>
-        /// Gets or sets the shield icon visibility of the command link.
-        /// </summary>
+        /// <summary>Gets or sets a value indicating whether [use as uac elevated button].</summary>
+        /// <value>
+        ///   <c>true</c> if [use as uac elevated button]; otherwise, <c>false</c>.</value>
         [Category("Command Link"), Description("Gets or sets the shield icon visibility of the command link."), DefaultValue(false)]
-        public bool ShowUACShield
+        public bool UseAsUACElevatedButton
         {
-            get => _showUACShield;
+            get => _useAsUACElevatedButton;
 
             set
             {
-                _showUACShield = value;
+                _useAsUACElevatedButton = value;
 
                 // TODO: Store the original icon
                 OriginalImage = CommandLinkImageValue.Image;
 
-                if (!_showUACShield)
+                if (!_useAsUACElevatedButton)
                 {
                     CommandLinkImageValue.Image = _originalImage;
 
@@ -537,7 +537,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             {
                 _uacShieldSize = value;
 
-                if (_showUACShield)
+                if (_useAsUACElevatedButton)
                 {
                     CommandLinkImageValue.Image = UtilityMethods.ResizeImage(SystemIcons.Shield.ToBitmap(), _uacShieldSize.Width, _uacShieldSize.Height);
                 }
@@ -667,13 +667,6 @@ namespace Krypton.Toolkit.Suite.Extended.Base
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            if (_showUACShield)
-            {
-                CommandLinkImageValue.Image = SystemIcons.Shield.ToBitmap();
-
-                //UtilityMethods.ResizeImage(SystemIcons.Shield.ToBitmap(), _uacShieldSize.Width, _uacShieldSize.Height);
-            }
-
             base.OnPaint(e);
         }
         #endregion

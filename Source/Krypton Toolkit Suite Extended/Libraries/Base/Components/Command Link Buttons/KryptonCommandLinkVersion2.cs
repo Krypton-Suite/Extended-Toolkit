@@ -31,7 +31,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
     public class KryptonCommandLinkVersion2 : KryptonButton
     {
         #region Variables
-        private bool _showUACShield = false, _isUACElevatedButton;
+        private bool _useAsUACElevatedButton;
         private Image _originalImage;
         private Size _uacShieldSize;
         #endregion
@@ -41,19 +41,21 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         /// Gets or sets the shield icon visibility of the command link.
         /// </summary>
         [Category("Command Link"), Description("Gets or sets the shield icon visibility of the command link."), DefaultValue(false)]
-        public bool ShowUACShield
+        public bool UseAsUACElevatedButton
         {
-            get => _showUACShield;
+            get => _useAsUACElevatedButton;
 
             set
             {
-                _showUACShield = value;
+                _useAsUACElevatedButton = value;
 
                 // TODO: Store the original icon
 
                 Values.Image = SystemIcons.Shield.ToBitmap();
             }
         }
+
+        public Image OriginalImage { get => _originalImage; private set => _originalImage = value; }
 
         /// <summary>Gets or sets the size of the UAC shield.</summary>
         /// <value>The size of the UAC shield.</value>
@@ -66,7 +68,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             {
                 _uacShieldSize = value;
 
-                if (_showUACShield)
+                if (_useAsUACElevatedButton)
                 {
                     Values.Image = UtilityMethods.ResizeImage(SystemIcons.Shield.ToBitmap(), _uacShieldSize.Width, _uacShieldSize.Height);
                 }

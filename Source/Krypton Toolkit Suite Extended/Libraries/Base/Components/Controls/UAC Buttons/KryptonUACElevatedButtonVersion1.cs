@@ -24,7 +24,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
     /// If the operating system is not Windows Vista or higher, no shield will be displayed as there's no such thing as UAC on the target system -> the shield is obsolete.
     /// </remarks>
     [DefaultEvent("ExecuteProcessAsAdministrator"), DesignerCategory("code"), Description("Krypton UAC Elevated Button"), ToolboxBitmap(typeof(KryptonButton), "ToolboxBitmaps.UACButton.bmp"), ToolboxItem(true)]
-    public partial class KryptonUACElevatedButton : KryptonButton
+    public partial class KryptonUACElevatedButtonVersion1 : KryptonButton
     {
         #region Variables
         private Assembly _processToElevate;
@@ -88,9 +88,9 @@ namespace Krypton.Toolkit.Suite.Extended.Base
 
         #region Constructor
         /// <summary>
-        /// Initialises a new instance of the <see cref="KryptonUACElevatedButton"/> class.
+        /// Initialises a new instance of the <see cref="KryptonUACElevatedButtonVersion1"/> class.
         /// </summary>
-        public KryptonUACElevatedButton() : base()
+        public KryptonUACElevatedButtonVersion1() : base()
         {
             Size = new Size((int)(Width * 1.5), Height + 1);
 
