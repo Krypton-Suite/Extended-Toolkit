@@ -1,10 +1,11 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Security.Principal;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Suite.Extended.Common
+namespace Krypton.Toolkit.Suite.Extended.Base
 {
     /// <summary>Adapted from https://www.codeproject.com/Articles/18509/Add-a-UAC-shield-to-a-button-when-elevation-is-req.</summary>
     internal static class UACSecurity
@@ -57,7 +58,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
             {
                 Process p = Process.Start(startInfo);
             }
-            catch (System.ComponentModel.Win32Exception ex)
+            catch (Win32Exception ex)
             {
                 return; //If cancelled, do nothing
             }

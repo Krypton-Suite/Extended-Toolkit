@@ -192,7 +192,6 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.kuacbtnRun.Location = new System.Drawing.Point(349, 7);
             this.kuacbtnRun.Name = "kuacbtnRun";
             this.kuacbtnRun.ProcessToElevate = null;
-            this.kuacbtnRun.ShowUACShield = true;
             this.kuacbtnRun.Size = new System.Drawing.Size(90, 26);
             this.kuacbtnRun.TabIndex = 4;
             this.kuacbtnRun.Values.Text = "&Run";

@@ -161,7 +161,6 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.kuacRun.Location = new System.Drawing.Point(352, 8);
             this.kuacRun.Name = "kuacRun";
             this.kuacRun.ProcessToElevate = null;
-            this.kuacRun.ShowUACShield = true;
             this.kuacRun.Size = new System.Drawing.Size(91, 25);
             this.kuacRun.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kuacRun.TabIndex = 4;

@@ -134,62 +134,63 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             //    //FlatStyle = FlatStyle.System;
 
             //    CommonNativeMethods.SendMessage(Handle, BCM_SETSHIELD, IntPtr.Zero, new IntPtr(1));
+
+            UACSecurity.AddShieldToButton(this);
         }
-    }
-    #endregion
+        #endregion
 
-    #region Overrides
-    /// <summary>Raises the Click event.</summary>
-    /// <param name="e">An EventArgs that contains the event data.</param>
-    protected override void OnClick(EventArgs e)
-    {
-        ExecuteProcessAsAdministratorEventArgs evt = new ExecuteProcessAsAdministratorEventArgs(ProcessName);
-
-        OnExecuteProcessAsAdministrator(this, evt);
-
-        base.OnClick(e);
-    }
-
-    /// <summary>Raises the Paint event.</summary>
-    /// <param name="e">A PaintEventArgs that contains the event data.</param>
-    protected override void OnPaint(PaintEventArgs e)
-    {
-        base.OnPaint(e);
-    }
-    #endregion
-
-    #region Methods
-    /// <summary>Captures the exception.</summary>
-    /// <param name="exception">The exception.</param>
-    /// <param name="currentWindow">The current window.</param>
-    /// <param name="control">The control.</param>
-    /// <param name="title">The title.</param>
-    /// <param name="buttons">The buttons.</param>
-    /// <param name="icon">The icon.</param>
-    /// <param name="className">Name of the class.</param>
-    /// <param name="methodSignature">The method signature.</param>
-    /// <param name="defaultTypeface">The default typeface.</param>
-    private static void CaptureException(Exception exception, KryptonForm currentWindow, Control control = null, string title = @"Exception Caught", MessageBoxButtons buttons = MessageBoxButtons.OK, MessageBoxIcon icon = MessageBoxIcon.Error, string className = "", string methodSignature = "", Font defaultTypeface = null)
-    {
-        defaultTypeface = new Font(currentWindow.Font.FontFamily, currentWindow.Font.Size, currentWindow.Font.Style, currentWindow.Font.Unit);
-
-        if (className != "")
+        #region Overrides
+        /// <summary>Raises the Click event.</summary>
+        /// <param name="e">An EventArgs that contains the event data.</param>
+        protected override void OnClick(EventArgs e)
         {
-            KryptonMessageBoxExtended.Show($"An unexpected error has occurred: { exception.Message }.\n\nError in class: '{ className }.cs'.", title, buttons, icon, messageboxTypeface: defaultTypeface);
+            ExecuteProcessAsAdministratorEventArgs evt = new ExecuteProcessAsAdministratorEventArgs(ProcessName);
+
+            OnExecuteProcessAsAdministrator(this, evt);
+
+            base.OnClick(e);
         }
-        else if (methodSignature != "")
+
+        /// <summary>Raises the Paint event.</summary>
+        /// <param name="e">A PaintEventArgs that contains the event data.</param>
+        protected override void OnPaint(PaintEventArgs e)
         {
-            KryptonMessageBoxExtended.Show($"An unexpected error has occurred: { exception.Message }.\n\nError in method: '{ methodSignature }'.", title, buttons, icon, messageboxTypeface: defaultTypeface);
+            base.OnPaint(e);
         }
-        else if (className != "" && methodSignature != "")
+        #endregion
+
+        #region Methods
+        /// <summary>Captures the exception.</summary>
+        /// <param name="exception">The exception.</param>
+        /// <param name="currentWindow">The current window.</param>
+        /// <param name="control">The control.</param>
+        /// <param name="title">The title.</param>
+        /// <param name="buttons">The buttons.</param>
+        /// <param name="icon">The icon.</param>
+        /// <param name="className">Name of the class.</param>
+        /// <param name="methodSignature">The method signature.</param>
+        /// <param name="defaultTypeface">The default typeface.</param>
+        private static void CaptureException(Exception exception, KryptonForm currentWindow, Control control = null, string title = @"Exception Caught", MessageBoxButtons buttons = MessageBoxButtons.OK, MessageBoxIcon icon = MessageBoxIcon.Error, string className = "", string methodSignature = "", Font defaultTypeface = null)
         {
-            KryptonMessageBoxExtended.Show($"An unexpected error has occurred: { exception.Message }.\n\nError in class: '{ className }.cs'.\n\nError in method: '{ methodSignature }'.", title, buttons, icon, messageboxTypeface: defaultTypeface);
+            defaultTypeface = new Font(currentWindow.Font.FontFamily, currentWindow.Font.Size, currentWindow.Font.Style, currentWindow.Font.Unit);
+
+            if (className != "")
+            {
+                KryptonMessageBoxExtended.Show($"An unexpected error has occurred: { exception.Message }.\n\nError in class: '{ className }.cs'.", title, buttons, icon, messageboxTypeface: defaultTypeface);
+            }
+            else if (methodSignature != "")
+            {
+                KryptonMessageBoxExtended.Show($"An unexpected error has occurred: { exception.Message }.\n\nError in method: '{ methodSignature }'.", title, buttons, icon, messageboxTypeface: defaultTypeface);
+            }
+            else if (className != "" && methodSignature != "")
+            {
+                KryptonMessageBoxExtended.Show($"An unexpected error has occurred: { exception.Message }.\n\nError in class: '{ className }.cs'.\n\nError in method: '{ methodSignature }'.", title, buttons, icon, messageboxTypeface: defaultTypeface);
+            }
+            else
+            {
+                KryptonMessageBoxExtended.Show($"An unexpected error has occurred: { exception.Message }.", title, buttons, icon, messageboxTypeface: defaultTypeface);
+            }
         }
-        else
-        {
-            KryptonMessageBoxExtended.Show($"An unexpected error has occurred: { exception.Message }.", title, buttons, icon, messageboxTypeface: defaultTypeface);
-        }
+        #endregion
     }
-    #endregion
-}
 }

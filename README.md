@@ -62,6 +62,8 @@
 * New `KryptonEnhancedToolStrip` control
 * New `KryptonEnhancedToolStripProgressBar` control
 * New `KryptonStatusStrip` control
+* UAC options for command link buttons (elevation events will come in the next update)
+* A new version of the `KryptonUACElevatedButton` that uses the `SystemIcons` API, to grab the version specific UAC shield icon (32 x 32). The existing `KryptonUACElevatedButton` is still in the toolkit for compatibility reasons, but will be hidden in the tool box.
 * Updated standard toolkit to build `2103`
 
 =======
