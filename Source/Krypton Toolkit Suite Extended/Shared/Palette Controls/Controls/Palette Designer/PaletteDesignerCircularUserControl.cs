@@ -786,6 +786,16 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
                 ColourInformation.SetTooltip(cpbxLinkHoverColour, "Link Hover Text");
 
                 ColourInformation.SetTooltip(cpbxLinkVisitedColour, "Link Visited Text");
+
+                ColourInformation.SetTooltip(cpbxCustomColourOne, "Custom Colour One");
+
+                ColourInformation.SetTooltip(cpbxCustomColourTwo, "Custom Colour Two");
+
+                ColourInformation.SetTooltip(cpbxCustomColourThree, "Custom Colour Three");
+
+                ColourInformation.SetTooltip(cpbxCustomColourFour, "Custom Colour Four");
+
+                ColourInformation.SetTooltip(cpbxCustomColourFive, "Custom Colour Five");
             }
             else
             {
