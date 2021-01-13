@@ -1,5 +1,4 @@
-﻿using Krypton.Toolkit.Suite.Extended.Base;
-using Krypton.Toolkit.Suite.Extended.Common;
+﻿using Krypton.Toolkit.Suite.Extended.Core;
 using System;
 using System.ComponentModel;
 using System.Drawing;
@@ -679,7 +678,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
 
         private Color _defaultColour;
 
-        private CircularPictureBox[] _previews;
+        private Suite.Extended.Base.CircularPictureBox[] _previews;
 
         //Palette State
         private KryptonManager k_manager = new KryptonManager();
@@ -699,7 +698,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
 
         public Color DefaultColour { get => _defaultColour; set { _defaultColour = value; Invalidate(); } }
 
-        public CircularPictureBox[] ColourPreviews { get => _previews; private set => _previews = value; }
+        public Suite.Extended.Base.CircularPictureBox[] ColourPreviews { get => _previews; private set => _previews = value; }
         #endregion
 
         #region Constructors
@@ -752,32 +751,66 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
         #endregion
 
         #region Methods
-        /// <summary>Displays the tool tip.</summary>
-        /// <param name="colourName">Name of the colour.</param>
-        /// <param name="colour">The colour.</param>
-        /// <returns>
-        ///   <br />
-        /// </returns>
-        private string DisplayToolTip(string colourName, Color colour)
+        public void SetupColourToolTips(bool displayToolTips)
         {
-            string temp = "";
-
-            if (_showColourInformation)
+            if (displayToolTips)
             {
+                ColourInformation.SetTooltip(cpbxBaseColour, "Base");
 
+                ColourInformation.SetTooltip(cpbxDarkColour, "Dark");
+
+                ColourInformation.SetTooltip(cpbxMediumColour, "Medium");
+
+                ColourInformation.SetTooltip(cpbxLightColour, "Light");
+
+                ColourInformation.SetTooltip(cpbxLightestColour, "Lightest");
+
+                ColourInformation.SetTooltip(cpbxBorderColour, "Border");
+
+                ColourInformation.SetTooltip(cpbxAlternativeNormalTextColour, "Alternative Normal Text");
+
+                ColourInformation.SetTooltip(cpbxNormalTextColour, "Normal Text");
+
+                ColourInformation.SetTooltip(cpbxDisabledTextColour, "Disabled Text");
+
+                ColourInformation.SetTooltip(cpbxFocusedTextColour, "Focused Text");
+
+                ColourInformation.SetTooltip(cpbxPressedTextColour, "Pressed Text");
+
+                ColourInformation.SetTooltip(cpbxDisabledColour, "Disabled Control");
+
+                ColourInformation.SetTooltip(cpbxLinkNormalColour, "Link Normal Text");
+
+                ColourInformation.SetTooltip(cpbxLinkFocusedColour, "Link Focused Text");
+
+                ColourInformation.SetTooltip(cpbxLinkHoverColour, "Link Hover Text");
+
+                ColourInformation.SetTooltip(cpbxLinkVisitedColour, "Link Visited Text");
             }
             else
             {
-                return "";
-            }
+                if (_previews.Length > 0)
+                {
+                    try
+                    {
+                        foreach (Suite.Extended.Base.CircularPictureBox box in _previews)
+                        {
+                            box.ToolTipValues.Description = string.Empty;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
 
-            return temp;
+                        throw;
+                    }
+                }
+            }
         }
 
         /// <summary>Propagates the colour preview array.</summary>
         private void PropagateColourPreviewArray()
         {
-            _previews = new CircularPictureBox[29];
+            _previews = new Suite.Extended.Base.CircularPictureBox[29];
 
             ColourPreviews[0] = cpbxBaseColour;
 
@@ -844,14 +877,14 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
         {
             try
             {
-                foreach (CircularPictureBox box in ColourPreviews)
+                foreach (Suite.Extended.Base.CircularPictureBox box in ColourPreviews)
                 {
                     box.BackColor = defaultColour;
                 }
             }
             catch (Exception e)
             {
-                ExceptionHandler.CaptureException(e);
+                Suite.Extended.Common.ExceptionHandler.CaptureException(e);
             }
         }
 
@@ -924,7 +957,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             }
             catch (Exception e)
             {
-                ExceptionHandler.CaptureException(e);
+                Suite.Extended.Common.ExceptionHandler.CaptureException(e);
             }
         }
         #endregion
