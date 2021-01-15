@@ -23,17 +23,16 @@ namespace Krypton.Toolkit.Suite.Extended.Base
     /// <remarks>
     /// If used on Windows Vista or higher, the button will be a CommandLink: Basically the same functionality as a Button but looks different.
     /// </remarks>
-    [DesignerCategory("Code")]
-    [DisplayName("Krypton Command Link")]
-    [Description("A Krypton Command Link Button.")]
-    [ToolboxItem(true)]
-    [ToolboxBitmap(typeof(KryptonButton))]
+    [DesignerCategory("Code"), DisplayName("Krypton Command Link"),
+     Description("A Krypton Command Link Button."), ToolboxItem(true),
+     ToolboxBitmap(typeof(KryptonButton))]
     public class KryptonCommandLinkVersion2 : KryptonButton
     {
         #region Variables
         private bool _useAsUACElevatedButton;
         private Image _originalImage;
         private Size _uacShieldSize;
+        private string _processToElevate;
         #endregion
 
         #region Properties
@@ -91,6 +90,26 @@ namespace Krypton.Toolkit.Suite.Extended.Base
                 SetNoteText(value);
             }
         }
+
+        /// <summary>Gets or sets the process path to elevate.</summary>
+        /// <value>The process to elevate.</value>
+        [Category("Command Link"), Description("Gets or sets the process path to elevate."), DefaultValue("")]
+        public string ProcessToElevate { get => _processToElevate; set => _processToElevate = value; }
+        #endregion
+
+        #region Custom Events
+        /// <summary></summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="ExecuteProcessAsAdministratorEventArgs"/> instance containing the event data.</param>
+        public delegate void ExecuteProcessAsAdministratorEventHandler(object sender, ExecuteProcessAsAdministratorEventArgs e);
+
+        /// <summary>The execute process as administrator</summary>
+        public event ExecuteProcessAsAdministratorEventHandler ExecuteProcessAsAdministrator;
+
+        /// <summary>Executes the process as an administrator.</summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="ExecuteProcessAsAdministratorEventArgs" /> instance containing the event data.</param>
+        protected virtual void OnExecuteProcessAsAdministrator(object sender, ExecuteProcessAsAdministratorEventArgs e) => ExecuteProcessAsAdministrator?.Invoke(sender, e);
         #endregion
 
         #region WIN32 Calls
@@ -140,6 +159,28 @@ namespace Krypton.Toolkit.Suite.Extended.Base
 
                 return createParams;
             }
+        }
+
+        protected override void OnClick(EventArgs e)
+        {
+            if (_useAsUACElevatedButton)
+            {
+                if (_processToElevate != null)
+                {
+                    try
+                    {
+                        ExecuteProcessAsAdministratorEventArgs executeProcessAsAdministrator = new ExecuteProcessAsAdministratorEventArgs(_processToElevate);
+
+                        executeProcessAsAdministrator.ElevateProcessWithAdministrativeRights(_processToElevate);
+                    }
+                    catch (Exception exc)
+                    {
+
+                    }
+                }
+            }
+
+            base.OnClick(e);
         }
 
         protected override void OnPaint(PaintEventArgs e)

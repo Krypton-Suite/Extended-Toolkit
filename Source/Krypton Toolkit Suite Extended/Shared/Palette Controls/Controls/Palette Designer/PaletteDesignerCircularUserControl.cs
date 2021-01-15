@@ -796,6 +796,22 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
                 ColourInformation.SetTooltip(cpbxCustomColourFour, "Custom Colour Four");
 
                 ColourInformation.SetTooltip(cpbxCustomColourFive, "Custom Colour Five");
+
+                ColourInformation.SetTooltip(cpbxCustomTextColourOne, "Custom Text Colour One");
+
+                ColourInformation.SetTooltip(cpbxCustomTextColourTwo, "Custom Text Colour Two");
+
+                ColourInformation.SetTooltip(cpbxCustomTextColourThree, "Custom Text Colour Three");
+
+                ColourInformation.SetTooltip(cpbxCustomTextColourFour, "Custom Text Colour Four");
+
+                ColourInformation.SetTooltip(cpbxCustomTextColourFive, "Custom Text Colour Five");
+
+                ColourInformation.SetTooltip(cpbxMenuTextColour, "Menu Text");
+
+                ColourInformation.SetTooltip(cpbxStatusTextColour, "Status Strip Text");
+
+                ColourInformation.SetTooltip(cpbxRibbonTabColour, "Ribbon Tab");
             }
             else
             {

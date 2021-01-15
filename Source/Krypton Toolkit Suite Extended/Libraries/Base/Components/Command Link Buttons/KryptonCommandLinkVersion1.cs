@@ -22,17 +22,10 @@ namespace Krypton.Toolkit.Suite.Extended.Base
     /// <remarks>
     /// Main code taken from KryptonButton, then trimmed out to force the CommandLink layout
     /// </remarks>
-    [ToolboxItem(true)]
-    //[ToolboxBitmap(typeof(KryptonButton), "ToolboxBitmaps.KryptonButton.bmp")] // TODO: use a local image
-    [ToolboxBitmap(typeof(KryptonButton), "ToolboxBitmaps.CommandLinkButton.bmp")]
-    [DefaultEvent("Click")]
-    [DefaultProperty("Heading")]
-    [Designer(typeof(KryptonCommandLinkButtonDesigner))]
-    [DesignerCategory("code")]
-    [ClassInterface(ClassInterfaceType.AutoDispatch)]
-    [DisplayName("Krypton Command Link")]
-    [Description("A Krypton Command Link Button.")]
-    [ComVisible(true)]
+    [ToolboxItem(true), ToolboxBitmap(typeof(KryptonButton), "ToolboxBitmaps.CommandLinkButton.bmp"), DefaultEvent("Click"),
+     DefaultProperty("Heading"), Designer(typeof(KryptonCommandLinkButtonDesigner)), DesignerCategory("code"),
+     ClassInterface(ClassInterfaceType.AutoDispatch), DisplayName("Krypton Command Link"),
+     Description("A Krypton Command Link Button."), ComVisible(true)]
     public class KryptonCommandLinkButton : VisualSimpleBase, IButtonControl
     {
         #region Instance Fields
@@ -46,6 +39,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         private readonly PaletteTripleOverride _overridePressed;
         private IKryptonCommand _command;
         private bool _isDefault, _useMnemonic, _wasEnabled, _useAsUACElevatedButton;
+        private string _processToElevate;
         private Image _originalImage;
         private Size _uacShieldSize;
         #endregion
@@ -57,6 +51,19 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         [Category("Property Changed")]
         [Description("Occurs when the value of the KryptonCommand property changes.")]
         public event EventHandler KryptonCommandChanged;
+
+        /// <summary></summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="ExecuteProcessAsAdministratorEventArgs"/> instance containing the event data.</param>
+        public delegate void ExecuteProcessAsAdministratorEventHandler(object sender, ExecuteProcessAsAdministratorEventArgs e);
+
+        /// <summary>The execute process as administrator</summary>
+        public event ExecuteProcessAsAdministratorEventHandler ExecuteProcessAsAdministrator;
+
+        /// <summary>Executes the process as an administrator.</summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="ExecuteProcessAsAdministratorEventArgs" /> instance containing the event data.</param>
+        protected virtual void OnExecuteProcessAsAdministrator(object sender, ExecuteProcessAsAdministratorEventArgs e) => ExecuteProcessAsAdministrator?.Invoke(sender, e);
         #endregion
 
         #region Identity
@@ -543,6 +550,11 @@ namespace Krypton.Toolkit.Suite.Extended.Base
                 }
             }
         }
+
+        /// <summary>Gets or sets the process path to elevate.</summary>
+        /// <value>The process to elevate.</value>
+        [Category("Command Link"), Description("Gets or sets the process path to elevate."), DefaultValue("")]
+        public string ProcessToElevate { get => _processToElevate; set => _processToElevate = value; }
         #endregion
 
         #region Protected Overrides
@@ -630,8 +642,27 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             // Let base class fire standard event
             base.OnClick(e);
 
-            // If we have an attached command then execute it
-            KryptonCommand?.PerformExecute();
+            if (_useAsUACElevatedButton)
+            {
+                if (_processToElevate != null)
+                {
+                    try
+                    {
+                        ExecuteProcessAsAdministratorEventArgs executeProcessAsAdministrator = new ExecuteProcessAsAdministratorEventArgs(_processToElevate);
+
+                        executeProcessAsAdministrator.ElevateProcessWithAdministrativeRights(_processToElevate);
+                    }
+                    catch (Exception exc)
+                    {
+
+                    }
+                }
+            }
+            else
+            {
+                // If we have an attached command then execute it
+                KryptonCommand?.PerformExecute();
+            }
         }
 
         /// <summary>
