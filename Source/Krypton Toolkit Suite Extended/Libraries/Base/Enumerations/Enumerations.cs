@@ -6,6 +6,8 @@
  */
 #endregion
 
+using System;
+
 namespace Krypton.Toolkit.Suite.Extended.Base
 {
     public enum BlinkState
@@ -314,5 +316,42 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         IOS,
         CUSTOM,
         METALLIC
+    }
+
+    // The value of the enumerations are the char values
+    // of marlett font which will be used to draw scroll arrow
+    // for each direction. Only up and down directions are used now.
+    //
+    // 01/10/2005 - Marlett font is no longer used for scroll buttons.
+
+    [Serializable]
+    public enum ToolBoxScrollDirection
+    {
+        LEFT = 3,
+        RIGHT = 4,
+        UP = 5,
+        DOWN = 6,
+    }
+
+    [Serializable]
+    public enum ToolBoxViewMode
+    {
+        LARGEICONS,
+        SMALLICONS,
+        LIST,
+    }
+
+    [Serializable]
+    public enum ToolBoxTextPosition
+    {
+        TOP,
+        BOTTOM,
+        HIDDEN,
+    }
+
+    public enum KryptonTextBoxImageAlignment
+    {
+        LEFT,
+        RIGHT
     }
 }

@@ -7,22 +7,20 @@
 #endregion
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Krypton.Toolkit.Suite.Extended.Base
 {
+    /// <summary>Handles the value property for the <see cref="KryptonKnobControl" /></summary>
     public class KnobValueChangedEventArgs : EventArgs
     {
         private int _value;
 
+        /// <summary>Gets or sets the value for the <see cref="KryptonKnobControl" />.</summary>
+        /// <value>The value.</value>
         public int Value { get => _value; set => _value = value; }
 
-        public KnobValueChangedEventArgs(int value)
-        {
-            Value = value;
-        }
+        /// <summary>Initializes a new instance of the <see cref="KnobValueChangedEventArgs" /> class.</summary>
+        /// <param name="value">The value.</param>
+        public KnobValueChangedEventArgs(int value) => Value = value;
     }
 }

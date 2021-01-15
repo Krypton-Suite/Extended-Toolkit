@@ -14,6 +14,7 @@ using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Base
 {
+    /// <summary>Displays a value on an analog gauge. Raises an event if the value enters one of the definable ranges.</summary>
     [System.Drawing.ToolboxBitmapAttribute(typeof(System.Windows.Forms.Timer)),
     DefaultEvent("ValueInRangeChanged"),
     Description("Displays a value on an analog gauge. Raises an event if the value enters one of the definable ranges."), ToolboxItem(true)]
@@ -53,14 +54,22 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         #endregion
 
         #region ... enum, var, delegate, event
-        public enum NeedleColorEnum
+        /// <summary>The colour of the gauge needle.</summary>
+        public enum NeedleColourEnum
         {
+            /// <summary>A gray coloured needle.</summary>
             Gray = 0,
+            /// <summary>A red coloured needle.</summary>
             Red = 1,
+            /// <summary>A green coloured needle.</summary>
             Green = 2,
+            /// <summary>A blue coloured needle.</summary>
             Blue = 3,
+            /// <summary>A yellow coloured needle.</summary>
             Yellow = 4,
+            /// <summary>A violet coloured needle.</summary>
             Violet = 5,
+            /// <summary>A magenta coloured needle.</summary>
             Magenta = 6
         };
 
@@ -123,26 +132,35 @@ namespace Krypton.Toolkit.Suite.Extended.Base
 
         private Int32 m_NeedleType = 0;
         private Int32 m_NeedleRadius = 80;
-        private NeedleColorEnum m_NeedleColor1 = NeedleColorEnum.Gray;
+        private NeedleColourEnum m_NeedleColor1 = NeedleColourEnum.Gray;
         private Color m_NeedleColor2 = Color.DimGray;
         private Int32 m_NeedleWidth = 2;
 
+        /// <summary>Handles the value when it falls into a defined range.</summary>
         public class ValueInRangeChangedEventArgs : EventArgs
         {
+            /// <summary>The value in range</summary>
             public Int32 valueInRange;
 
+            /// <summary>Initializes a new instance of the <see cref="ValueInRangeChangedEventArgs" /> class.</summary>
+            /// <param name="valueInRange">The value in range.</param>
             public ValueInRangeChangedEventArgs(Int32 valueInRange)
             {
                 this.valueInRange = valueInRange;
             }
         }
 
+        /// <summary>The delegate of the event that handles the value when it falls into a defined range.</summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="ValueInRangeChangedEventArgs" /> instance containing the event data.</param>
         public delegate void ValueInRangeChangedDelegate(Object sender, ValueInRangeChangedEventArgs e);
+        /// <summary>This event is raised if the value falls into a defined range.</summary>
         [Description("This event is raised if the value falls into a defined range.")]
         public event ValueInRangeChangedDelegate ValueInRangeChanged;
         #endregion
 
         #region ... hidden , overridden inherited properties
+        /// <summary>Gets or sets a value indicating whether the control can accept data that the user drags onto it.</summary>
         public new Boolean AllowDrop
         {
             get
@@ -154,6 +172,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
 
             }
         }
+        /// <summary>This property is not relevant for this class.</summary>
         public new Boolean AutoSize
         {
             get
@@ -165,6 +184,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
 
             }
         }
+        /// <summary>Gets or sets the foreground color of the control.</summary>
         public new Boolean ForeColor
         {
             get
@@ -175,6 +195,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             {
             }
         }
+        /// <summary>Gets or sets the Input Method Editor (IME) mode of the control.</summary>
         public new Boolean ImeMode
         {
             get
@@ -186,6 +207,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
         }
 
+        /// <summary>Gets or sets the background colour for the control.</summary>
         public override System.Drawing.Color BackColor
         {
             get
@@ -199,6 +221,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
                 Refresh();
             }
         }
+        /// <summary>Gets or sets the font of the text displayed by the control.</summary>
         public override System.Drawing.Font Font
         {
             get
@@ -212,6 +235,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
                 Refresh();
             }
         }
+        /// <summary>Gets or sets the background image layout as defined in the <see cref="T:System.Windows.Forms.ImageLayout">ImageLayout</see> enumeration.</summary>
         public override System.Windows.Forms.ImageLayout BackgroundImageLayout
         {
             get
@@ -227,6 +251,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         }
         #endregion
 
+        /// <summary>Initializes a new instance of the <see cref="Gauge" /> class.</summary>
         public Gauge()
         {
             InitializeComponent();
@@ -242,6 +267,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         /// Indicates if the current view is being utilized in the VS.NET IDE or not.
         ///
         private bool _designMode;
+        /// <summary>Gets a value that indicates whether the <see cref="T:System.ComponentModel.Component">Component</see> is currently in design mode.</summary>
         public new bool DesignMode
         {
             get
@@ -251,6 +277,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
         }
 
+        /// <summary>Gets or sets the value.</summary>
+        /// <value>The value.</value>
         [Browsable(true),
         Category("Appearance-Extended"),
         Description("The value.")]
@@ -295,6 +323,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
         }
 
+        /// <summary>The caption index. set this to a value of 0 up to 4 to change the corresponding caption's properties.</summary>
+        /// <value>The index of the cap.</value>
         [Browsable(true),
         Category("Appearance-Extended"),
         RefreshProperties(RefreshProperties.All),
@@ -316,9 +346,11 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
         }
 
+        /// <summary>The colour of the caption text.</summary>
+        /// <value>The color of the captions.</value>
         [Browsable(true),
         Category("Appearance-Extended"),
-        Description("The color of the caption text.")]
+        Description("The colour of the caption text.")]
         private Color CapColor
         {
             get
@@ -330,15 +362,17 @@ namespace Krypton.Toolkit.Suite.Extended.Base
                 if (m_CapColor[m_CapIdx] != value)
                 {
                     m_CapColor[m_CapIdx] = value;
-                    CapColors = m_CapColor;
+                    CapColours = m_CapColor;
                     drawGaugeBackground = true;
                     Refresh();
                 }
             }
         }
 
+        /// <summary>The colours of the caption text.</summary>
+        /// <value>The caption colours.</value>
         [Browsable(false)]
-        public Color[] CapColors
+        public Color[] CapColours
         {
             get
             {
@@ -350,6 +384,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
         }
 
+        /// <summary>The text of the caption.</summary>
+        /// <value>The caption text.</value>
         [Browsable(true),
         Category("Appearance-Extended"),
         Description("The text of the caption.")]
@@ -371,6 +407,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
         }
 
+        /// <summary>The text array of the caption.</summary>
+        /// <value>The caption text array.</value>
         [Browsable(false)]
         public String[] CapsText
         {
@@ -387,6 +425,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
         }
 
+        /// <summary>The position of the caption.</summary>
+        /// <value>The caption position.</value>
         [Browsable(true),
         Category("Appearance-Extended"),
         Description("The position of the caption.")]
@@ -408,6 +448,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
         }
 
+        /// <summary>The position array of the caption.</summary>
+        /// <value>The caption position array.</value>
         [Browsable(false)]
         public Point[] CapsPosition
         {
@@ -421,10 +463,12 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
         }
 
+        /// <summary>The centre of the gauge (in the control's client area).</summary>
+        /// <value>The centre of the gauge.</value>
         [Browsable(true),
         Category("Appearance-Extended"),
-        Description("The center of the gauge (in the control's client area).")]
-        public Point Center
+        Description("The centre of the gauge (in the control's client area).")]
+        public Point Centre
         {
             get
             {
@@ -441,6 +485,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
         }
 
+        /// <summary>The minimum value to show on the scale.</summary>
+        /// <value>The minimum value of the scale.</value>
         [Browsable(true),
         Category("Appearance-Extended"),
         Description("The minimum value to show on the scale.")]
@@ -462,6 +508,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
         }
 
+        /// <summary>The maximum value to show on the scale.</summary>
+        /// <value>The maximum value of the scale.</value>
         [Browsable(true),
         Category("Appearance-Extended"),
         Description("The maximum value to show on the scale.")]
@@ -483,10 +531,12 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
         }
 
+        /// <summary>The colour of the base arc.</summary>
+        /// <value>The base arc colour.</value>
         [Browsable(true),
         Category("Appearance-Extended"),
-        Description("The color of the base arc.")]
-        public Color BaseArcColor
+        Description("The colour of the base arc.")]
+        public Color BaseArcColour
         {
             get
             {
@@ -503,6 +553,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
         }
 
+        /// <summary>The radius of the base arc.</summary>
+        /// <value>The base arc radius.</value>
         [Browsable(true),
         Category("Appearance-Extended"),
         Description("The radius of the base arc.")]
@@ -523,6 +575,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
         }
 
+        /// <summary>The start angle of the base arc.</summary>
+        /// <value>The base arc start angle.</value>
         [Browsable(true),
         Category("Appearance-Extended"),
         Description("The start angle of the base arc.")]
@@ -543,6 +597,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
         }
 
+        /// <summary>The sweep angle of the base arc.</summary>
+        /// <value>The base arc sweep angle.</value>
         [Browsable(true),
         Category("Appearance-Extended"),
         Description("The sweep angle of the base arc.")]
@@ -563,6 +619,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
         }
 
+        /// <summary>The width of the base arc.</summary>
+        /// <value>The width of the base arc.</value>
         [Browsable(true),
         Category("Appearance-Extended"),
         Description("The width of the base arc.")]
@@ -583,10 +641,12 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
         }
 
+        /// <summary>The colour of the inter scale lines which are the middle scale lines for an uneven number of minor scale lines.</summary>
+        /// <value>The scale lines inter colour.</value>
         [Browsable(true),
         Category("Appearance-Extended"),
-        Description("The color of the inter scale lines which are the middle scale lines for an uneven number of minor scale lines.")]
-        public Color ScaleLinesInterColor
+        Description("The colour of the inter scale lines which are the middle scale lines for an uneven number of minor scale lines.")]
+        public Color ScaleLinesInterColour
         {
             get
             {
@@ -603,6 +663,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
         }
 
+        /// <summary>Gets or sets the scale lines inter inner radius.</summary>
+        /// <value>The scale lines inter inner radius.</value>
         [Browsable(true),
         Category("Appearance-Extended"),
         Description("The inner radius of the inter scale lines which are the middle scale lines for an uneven number of minor scale lines.")]
@@ -623,6 +685,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
         }
 
+        /// <summary>Gets or sets the scale lines inter outer radius.</summary>
+        /// <value>The scale lines inter outer radius.</value>
         [Browsable(true),
         Category("Appearance-Extended"),
         Description("The outer radius of the inter scale lines which are the middle scale lines for an uneven number of minor scale lines.")]
@@ -643,6 +707,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
         }
 
+        /// <summary>Gets or sets the width of the scale lines inter.</summary>
+        /// <value>The width of the scale lines inter.</value>
         [Browsable(true),
         Category("Appearance-Extended"),
         Description("The width of the inter scale lines which are the middle scale lines for an uneven number of minor scale lines.")]
@@ -663,6 +729,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
         }
 
+        /// <summary>Gets or sets the scale lines minor number of.</summary>
+        /// <value>The scale lines minor number of.</value>
         [Browsable(true),
         Category("Appearance-Extended"),
         Description("The number of minor scale lines.")]
@@ -683,10 +751,12 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
         }
 
+        /// <summary>Gets or sets the scale lines minor colour.</summary>
+        /// <value>The scale lines minor colour.</value>
         [Browsable(true),
         Category("Appearance-Extended"),
-        Description("The color of the minor scale lines.")]
-        public Color ScaleLinesMinorColor
+        Description("The colour of the minor scale lines.")]
+        public Color ScaleLinesMinorColour
         {
             get
             {
@@ -703,6 +773,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
         }
 
+        /// <summary>Gets or sets the scale lines minor inner radius.</summary>
+        /// <value>The scale lines minor inner radius.</value>
         [Browsable(true),
         Category("Appearance-Extended"),
         Description("The inner radius of the minor scale lines.")]
@@ -723,6 +795,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
         }
 
+        /// <summary>Gets or sets the scale lines minor outer radius.</summary>
+        /// <value>The scale lines minor outer radius.</value>
         [Browsable(true),
         Category("Appearance-Extended"),
         Description("The outer radius of the minor scale lines.")]
@@ -743,6 +817,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
         }
 
+        /// <summary>Gets or sets the width of the scale lines minor.</summary>
+        /// <value>The width of the scale lines minor.</value>
         [Browsable(true),
         Category("Appearance-Extended"),
         Description("The width of the minor scale lines.")]
@@ -763,6 +839,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
         }
 
+        /// <summary>Gets or sets the scale lines major step value.</summary>
+        /// <value>The scale lines major step value.</value>
         [Browsable(true),
         Category("Appearance-Extended"),
         Description("The step value of the major scale lines.")]
@@ -782,10 +860,12 @@ namespace Krypton.Toolkit.Suite.Extended.Base
                 }
             }
         }
+        /// <summary>Gets or sets the scale lines major colour.</summary>
+        /// <value>The scale lines major colour.</value>
         [Browsable(true),
         Category("Appearance-Extended"),
-        Description("The color of the major scale lines.")]
-        public Color ScaleLinesMajorColor
+        Description("The colour of the major scale lines.")]
+        public Color ScaleLinesMajorColour
         {
             get
             {
@@ -802,6 +882,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
         }
 
+        /// <summary>Gets or sets the scale lines major inner radius.</summary>
+        /// <value>The scale lines major inner radius.</value>
         [Browsable(true),
         Category("Appearance-Extended"),
         Description("The inner radius of the major scale lines.")]
@@ -822,6 +904,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
         }
 
+        /// <summary>Gets or sets the scale lines major outer radius.</summary>
+        /// <value>The scale lines major outer radius.</value>
         [Browsable(true),
         Category("Appearance-Extended"),
         Description("The outer radius of the major scale lines.")]
@@ -842,6 +926,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
         }
 
+        /// <summary>Gets or sets the width of the scale lines major.</summary>
+        /// <value>The width of the scale lines major.</value>
         [Browsable(true),
         Category("Appearance-Extended"),
         Description("The width of the major scale lines.")]
@@ -862,6 +948,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
         }
 
+        /// <summary>Gets or sets the index of the range.</summary>
+        /// <value>The index of the range.</value>
         [Browsable(true),
         Category("Appearance-Extended"),
         RefreshProperties(RefreshProperties.All),
@@ -885,6 +973,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
         }
 
+        /// <summary>Gets or sets a value indicating whether range is enabled.</summary>
+        /// <value><c>true</c> if [range enabled]; otherwise, <c>false</c>.</value>
         [Browsable(true),
         Category("Appearance-Extended"),
         Description("Enables or disables the range selected by Range_Idx.")]
@@ -907,6 +997,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         }
 
 
+        /// <summary>Gets or sets the ranges enabled.</summary>
+        /// <value>The ranges enabled.</value>
         [Browsable(false)]
         public Boolean[] RangesEnabled
         {
@@ -920,10 +1012,12 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
         }
 
+        /// <summary>Gets or sets the range colour.</summary>
+        /// <value>The range colour.</value>
         [Browsable(true),
         Category("Appearance-Extended"),
-        Description("The color of the range.")]
-        public Color RangeColor
+        Description("The colour of the range.")]
+        public Color RangeColour
         {
             get
             {
@@ -934,15 +1028,17 @@ namespace Krypton.Toolkit.Suite.Extended.Base
                 if (m_RangeColor[m_RangeIdx] != value)
                 {
                     m_RangeColor[m_RangeIdx] = value;
-                    RangesColor = m_RangeColor;
+                    RangesColour = m_RangeColor;
                     drawGaugeBackground = true;
                     Refresh();
                 }
             }
         }
 
+        /// <summary>Gets or sets the ranges colour.</summary>
+        /// <value>The ranges colour.</value>
         [Browsable(false)]
-        public Color[] RangesColor
+        public Color[] RangesColour
         {
             get
             {
@@ -954,6 +1050,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
         }
 
+        /// <summary>Gets or sets the range start value.</summary>
+        /// <value>The range start value.</value>
         [Browsable(true),
         Category("Appearance-Extended"),
         Description("The start value of the range, must be less than RangeEndValue.")]
@@ -976,6 +1074,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
         }
 
+        /// <summary>Gets or sets the ranges start value.</summary>
+        /// <value>The ranges start value.</value>
         [Browsable(false)]
         public Single[] RangesStartValue
         {
@@ -989,6 +1089,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
         }
 
+        /// <summary>Gets or sets the range end value.</summary>
+        /// <value>The range end value.</value>
         [Browsable(true),
         Category("Appearance-Extended"),
         Description("The end value of the range. Must be greater than RangeStartValue.")]
@@ -1011,6 +1113,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
         }
 
+        /// <summary>Gets or sets the ranges end value.</summary>
+        /// <value>The ranges end value.</value>
         [Browsable(false)]
         public Single[] RangesEndValue
         {
@@ -1024,6 +1128,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
         }
 
+        /// <summary>Gets or sets the range inner radius.</summary>
+        /// <value>The range inner radius.</value>
         [Browsable(true),
         Category("Appearance-Extended"),
         Description("The inner radius of the range.")]
@@ -1045,6 +1151,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
         }
 
+        /// <summary>Gets or sets the ranges inner radius.</summary>
+        /// <value>The ranges inner radius.</value>
         [Browsable(false)]
         public Int32[] RangesInnerRadius
         {
@@ -1058,6 +1166,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
         }
 
+        /// <summary>Gets or sets the range outer radius.</summary>
+        /// <value>The range outer radius.</value>
         [Browsable(true),
         Category("Appearance-Extended"),
         Description("The inner radius of the range.")]
@@ -1079,6 +1189,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
         }
 
+        /// <summary>Gets or sets the ranges outer radius.</summary>
+        /// <value>The ranges outer radius.</value>
         [Browsable(false)]
         public Int32[] RangesOuterRadius
         {
@@ -1092,6 +1204,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
         }
 
+        /// <summary>Gets or sets the scale numbers radius.</summary>
+        /// <value>The scale numbers radius.</value>
         [Browsable(true),
         Category("Appearance-Extended"),
         Description("The radius of the scale numbers.")]
@@ -1112,10 +1226,12 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
         }
 
+        /// <summary>Gets or sets the scale numbers colour.</summary>
+        /// <value>The scale numbers colour.</value>
         [Browsable(true),
         Category("Appearance-Extended"),
-        Description("The color of the scale numbers.")]
-        public Color ScaleNumbersColor
+        Description("The colour of the scale numbers.")]
+        public Color ScaleNumbersColour
         {
             get
             {
@@ -1132,6 +1248,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
         }
 
+        /// <summary>Gets or sets the scale numbers format.</summary>
+        /// <value>The scale numbers format.</value>
         [Browsable(true),
         Category("Appearance-Extended"),
         Description("The format of the scale numbers.")]
@@ -1152,6 +1270,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
         }
 
+        /// <summary>Gets or sets the scale numbers start scale line.</summary>
+        /// <value>The scale numbers start scale line.</value>
         [Browsable(true),
         Category("Appearance-Extended"),
         Description("The number of the scale line to start writing numbers next to.")]
@@ -1172,6 +1292,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
         }
 
+        /// <summary>Gets or sets the scale numbers step scale lines.</summary>
+        /// <value>The scale numbers step scale lines.</value>
         [Browsable(true),
         Category("Appearance-Extended"),
         Description("The number of scale line steps for writing numbers.")]
@@ -1192,6 +1314,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
         }
 
+        /// <summary>Gets or sets the scale numbers rotation.</summary>
+        /// <value>The scale numbers rotation.</value>
         [Browsable(true),
         Category("Appearance-Extended"),
         Description("The angle relative to the tangent of the base arc at a scale line that is used to rotate numbers. set to 0 for no rotation or e.g. set to 90.")]
@@ -1212,6 +1336,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
         }
 
+        /// <summary>Gets or sets the type of the needle (0 or 1 only).</summary>
+        /// <value>The type of the needle.</value>
         [Browsable(true),
         Category("Appearance-Extended"),
         Description("The type of the needle, currently only type 0 and 1 are supported. Type 0 looks nicers but if you experience performance problems you might consider using type 1.")]
@@ -1232,6 +1358,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
         }
 
+        /// <summary>Gets or sets the needle radius.</summary>
+        /// <value>The needle radius.</value>
         [Browsable(true),
         Category("Appearance-Extended"),
         Description("The radius of the needle.")]
@@ -1252,10 +1380,12 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
         }
 
+        /// <summary>Gets or sets the first needle colour.</summary>
+        /// <value>The first needle colour.</value>
         [Browsable(true),
         Category("Appearance-Extended"),
-        Description("The first color of the needle.")]
-        public NeedleColorEnum NeedleColor1
+        Description("The first colour of the needle.")]
+        public NeedleColourEnum NeedleColour1
         {
             get
             {
@@ -1272,10 +1402,12 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
         }
 
+        /// <summary>Gets or sets the second needle colour.</summary>
+        /// <value>The second needle colour.</value>
         [Browsable(true),
         Category("Appearance-Extended"),
-        Description("The second color of the needle.")]
-        public Color NeedleColor2
+        Description("The second colour of the needle.")]
+        public Color NeedleColour2
         {
             get
             {
@@ -1292,6 +1424,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
         }
 
+        /// <summary>Gets or sets the width of the needle.</summary>
+        /// <value>The width of the needle.</value>
         [Browsable(true),
         Category("Appearance-Extended"),
         Description("The width of the needle.")]
@@ -1373,10 +1507,14 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         #endregion
 
         #region ... base member overrides
+        /// <summary>Paints the background of the control.</summary>
+        /// <param name="pevent">A <see cref="T:System.Windows.Forms.PaintEventArgs">PaintEventArgs</see> that contains information about the control to paint.</param>
         protected override void OnPaintBackground(PaintEventArgs pevent)
         {
         }
 
+        /// <summary>Raises the <see cref="E:Paint" /> event.</summary>
+        /// <param name="pe">The <see cref="PaintEventArgs" /> instance containing the event data.</param>
         protected override void OnPaint(PaintEventArgs pe)
         {
             if ((Width < 10) || (Height < 10))
@@ -1481,10 +1619,10 @@ namespace Krypton.Toolkit.Suite.Extended.Base
                     ggr.SetClip(gp);
 
                     ggr.DrawLine(new Pen(m_ScaleLinesMajorColor, m_ScaleLinesMajorWidth),
-                    (Single)(Center.X),
-                    (Single)(Center.Y),
-                    (Single)(Center.X + 2 * m_ScaleLinesMajorOuterRadius * Math.Cos((m_BaseArcStart + countValue * m_BaseArcSweep / (m_MaxValue - m_MinValue)) * Math.PI / 180.0)),
-                    (Single)(Center.Y + 2 * m_ScaleLinesMajorOuterRadius * Math.Sin((m_BaseArcStart + countValue * m_BaseArcSweep / (m_MaxValue - m_MinValue)) * Math.PI / 180.0)));
+                    (Single)(Centre.X),
+                    (Single)(Centre.Y),
+                    (Single)(Centre.X + 2 * m_ScaleLinesMajorOuterRadius * Math.Cos((m_BaseArcStart + countValue * m_BaseArcSweep / (m_MaxValue - m_MinValue)) * Math.PI / 180.0)),
+                    (Single)(Centre.Y + 2 * m_ScaleLinesMajorOuterRadius * Math.Sin((m_BaseArcStart + countValue * m_BaseArcSweep / (m_MaxValue - m_MinValue)) * Math.PI / 180.0)));
 
                     gp.Reset();
                     gp.AddEllipse(new Rectangle(m_Center.X - m_ScaleLinesMinorOuterRadius, m_Center.Y - m_ScaleLinesMinorOuterRadius, 2 * m_ScaleLinesMinorOuterRadius, 2 * m_ScaleLinesMinorOuterRadius));
@@ -1507,10 +1645,10 @@ namespace Krypton.Toolkit.Suite.Extended.Base
                                 ggr.SetClip(gp);
 
                                 ggr.DrawLine(new Pen(m_ScaleLinesInterColor, m_ScaleLinesInterWidth),
-                                (Single)(Center.X),
-                                (Single)(Center.Y),
-                                (Single)(Center.X + 2 * m_ScaleLinesInterOuterRadius * Math.Cos((m_BaseArcStart + countValue * m_BaseArcSweep / (m_MaxValue - m_MinValue) + counter2 * m_BaseArcSweep / (((Single)((m_MaxValue - m_MinValue) / m_ScaleLinesMajorStepValue)) * (m_ScaleLinesMinorNumOf + 1))) * Math.PI / 180.0)),
-                                (Single)(Center.Y + 2 * m_ScaleLinesInterOuterRadius * Math.Sin((m_BaseArcStart + countValue * m_BaseArcSweep / (m_MaxValue - m_MinValue) + counter2 * m_BaseArcSweep / (((Single)((m_MaxValue - m_MinValue) / m_ScaleLinesMajorStepValue)) * (m_ScaleLinesMinorNumOf + 1))) * Math.PI / 180.0)));
+                                (Single)(Centre.X),
+                                (Single)(Centre.Y),
+                                (Single)(Centre.X + 2 * m_ScaleLinesInterOuterRadius * Math.Cos((m_BaseArcStart + countValue * m_BaseArcSweep / (m_MaxValue - m_MinValue) + counter2 * m_BaseArcSweep / (((Single)((m_MaxValue - m_MinValue) / m_ScaleLinesMajorStepValue)) * (m_ScaleLinesMinorNumOf + 1))) * Math.PI / 180.0)),
+                                (Single)(Centre.Y + 2 * m_ScaleLinesInterOuterRadius * Math.Sin((m_BaseArcStart + countValue * m_BaseArcSweep / (m_MaxValue - m_MinValue) + counter2 * m_BaseArcSweep / (((Single)((m_MaxValue - m_MinValue) / m_ScaleLinesMajorStepValue)) * (m_ScaleLinesMinorNumOf + 1))) * Math.PI / 180.0)));
 
                                 gp.Reset();
                                 gp.AddEllipse(new Rectangle(m_Center.X - m_ScaleLinesMinorOuterRadius, m_Center.Y - m_ScaleLinesMinorOuterRadius, 2 * m_ScaleLinesMinorOuterRadius, 2 * m_ScaleLinesMinorOuterRadius));
@@ -1522,10 +1660,10 @@ namespace Krypton.Toolkit.Suite.Extended.Base
                             else
                             {
                                 ggr.DrawLine(new Pen(m_ScaleLinesMinorColor, m_ScaleLinesMinorWidth),
-                                (Single)(Center.X),
-                                (Single)(Center.Y),
-                                (Single)(Center.X + 2 * m_ScaleLinesMinorOuterRadius * Math.Cos((m_BaseArcStart + countValue * m_BaseArcSweep / (m_MaxValue - m_MinValue) + counter2 * m_BaseArcSweep / (((Single)((m_MaxValue - m_MinValue) / m_ScaleLinesMajorStepValue)) * (m_ScaleLinesMinorNumOf + 1))) * Math.PI / 180.0)),
-                                (Single)(Center.Y + 2 * m_ScaleLinesMinorOuterRadius * Math.Sin((m_BaseArcStart + countValue * m_BaseArcSweep / (m_MaxValue - m_MinValue) + counter2 * m_BaseArcSweep / (((Single)((m_MaxValue - m_MinValue) / m_ScaleLinesMajorStepValue)) * (m_ScaleLinesMinorNumOf + 1))) * Math.PI / 180.0)));
+                                (Single)(Centre.X),
+                                (Single)(Centre.Y),
+                                (Single)(Centre.X + 2 * m_ScaleLinesMinorOuterRadius * Math.Cos((m_BaseArcStart + countValue * m_BaseArcSweep / (m_MaxValue - m_MinValue) + counter2 * m_BaseArcSweep / (((Single)((m_MaxValue - m_MinValue) / m_ScaleLinesMajorStepValue)) * (m_ScaleLinesMinorNumOf + 1))) * Math.PI / 180.0)),
+                                (Single)(Centre.Y + 2 * m_ScaleLinesMinorOuterRadius * Math.Sin((m_BaseArcStart + countValue * m_BaseArcSweep / (m_MaxValue - m_MinValue) + counter2 * m_BaseArcSweep / (((Single)((m_MaxValue - m_MinValue) / m_ScaleLinesMajorStepValue)) * (m_ScaleLinesMinorNumOf + 1))) * Math.PI / 180.0)));
                             }
                         }
                     }
@@ -1538,8 +1676,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
                         ggr.RotateTransform(90.0F + m_BaseArcStart + countValue * m_BaseArcSweep / (m_MaxValue - m_MinValue));
                     }
 
-                    ggr.TranslateTransform((Single)(Center.X + m_ScaleNumbersRadius * Math.Cos((m_BaseArcStart + countValue * m_BaseArcSweep / (m_MaxValue - m_MinValue)) * Math.PI / 180.0f)),
-                                           (Single)(Center.Y + m_ScaleNumbersRadius * Math.Sin((m_BaseArcStart + countValue * m_BaseArcSweep / (m_MaxValue - m_MinValue)) * Math.PI / 180.0f)),
+                    ggr.TranslateTransform((Single)(Centre.X + m_ScaleNumbersRadius * Math.Cos((m_BaseArcStart + countValue * m_BaseArcSweep / (m_MaxValue - m_MinValue)) * Math.PI / 180.0f)),
+                                           (Single)(Centre.Y + m_ScaleNumbersRadius * Math.Sin((m_BaseArcStart + countValue * m_BaseArcSweep / (m_MaxValue - m_MinValue)) * Math.PI / 180.0f)),
                                            System.Drawing.Drawing2D.MatrixOrder.Append);
 
 
@@ -1589,57 +1727,57 @@ namespace Krypton.Toolkit.Suite.Extended.Base
                     Int32 subcol = (Int32)(((brushAngle + 225) % 180) * 100 / 180);
                     Int32 subcol2 = (Int32)(((brushAngle + 135) % 180) * 100 / 180);
 
-                    pe.Graphics.FillEllipse(new SolidBrush(m_NeedleColor2), Center.X - m_NeedleWidth * 3, Center.Y - m_NeedleWidth * 3, m_NeedleWidth * 6, m_NeedleWidth * 6);
+                    pe.Graphics.FillEllipse(new SolidBrush(m_NeedleColor2), Centre.X - m_NeedleWidth * 3, Centre.Y - m_NeedleWidth * 3, m_NeedleWidth * 6, m_NeedleWidth * 6);
                     switch (m_NeedleColor1)
                     {
-                        case NeedleColorEnum.Gray:
+                        case NeedleColourEnum.Gray:
                             brush1 = new SolidBrush(Color.FromArgb(80 + subcol, 80 + subcol, 80 + subcol));
                             brush2 = new SolidBrush(Color.FromArgb(180 - subcol, 180 - subcol, 180 - subcol));
                             brush3 = new SolidBrush(Color.FromArgb(80 + subcol2, 80 + subcol2, 80 + subcol2));
                             brush4 = new SolidBrush(Color.FromArgb(180 - subcol2, 180 - subcol2, 180 - subcol2));
-                            pe.Graphics.DrawEllipse(Pens.Gray, Center.X - m_NeedleWidth * 3, Center.Y - m_NeedleWidth * 3, m_NeedleWidth * 6, m_NeedleWidth * 6);
+                            pe.Graphics.DrawEllipse(Pens.Gray, Centre.X - m_NeedleWidth * 3, Centre.Y - m_NeedleWidth * 3, m_NeedleWidth * 6, m_NeedleWidth * 6);
                             break;
-                        case NeedleColorEnum.Red:
+                        case NeedleColourEnum.Red:
                             brush1 = new SolidBrush(Color.FromArgb(145 + subcol, subcol, subcol));
                             brush2 = new SolidBrush(Color.FromArgb(245 - subcol, 100 - subcol, 100 - subcol));
                             brush3 = new SolidBrush(Color.FromArgb(145 + subcol2, subcol2, subcol2));
                             brush4 = new SolidBrush(Color.FromArgb(245 - subcol2, 100 - subcol2, 100 - subcol2));
-                            pe.Graphics.DrawEllipse(Pens.Red, Center.X - m_NeedleWidth * 3, Center.Y - m_NeedleWidth * 3, m_NeedleWidth * 6, m_NeedleWidth * 6);
+                            pe.Graphics.DrawEllipse(Pens.Red, Centre.X - m_NeedleWidth * 3, Centre.Y - m_NeedleWidth * 3, m_NeedleWidth * 6, m_NeedleWidth * 6);
                             break;
-                        case NeedleColorEnum.Green:
+                        case NeedleColourEnum.Green:
                             brush1 = new SolidBrush(Color.FromArgb(subcol, 145 + subcol, subcol));
                             brush2 = new SolidBrush(Color.FromArgb(100 - subcol, 245 - subcol, 100 - subcol));
                             brush3 = new SolidBrush(Color.FromArgb(subcol2, 145 + subcol2, subcol2));
                             brush4 = new SolidBrush(Color.FromArgb(100 - subcol2, 245 - subcol2, 100 - subcol2));
-                            pe.Graphics.DrawEllipse(Pens.Green, Center.X - m_NeedleWidth * 3, Center.Y - m_NeedleWidth * 3, m_NeedleWidth * 6, m_NeedleWidth * 6);
+                            pe.Graphics.DrawEllipse(Pens.Green, Centre.X - m_NeedleWidth * 3, Centre.Y - m_NeedleWidth * 3, m_NeedleWidth * 6, m_NeedleWidth * 6);
                             break;
-                        case NeedleColorEnum.Blue:
+                        case NeedleColourEnum.Blue:
                             brush1 = new SolidBrush(Color.FromArgb(subcol, subcol, 145 + subcol));
                             brush2 = new SolidBrush(Color.FromArgb(100 - subcol, 100 - subcol, 245 - subcol));
                             brush3 = new SolidBrush(Color.FromArgb(subcol2, subcol2, 145 + subcol2));
                             brush4 = new SolidBrush(Color.FromArgb(100 - subcol2, 100 - subcol2, 245 - subcol2));
-                            pe.Graphics.DrawEllipse(Pens.Blue, Center.X - m_NeedleWidth * 3, Center.Y - m_NeedleWidth * 3, m_NeedleWidth * 6, m_NeedleWidth * 6);
+                            pe.Graphics.DrawEllipse(Pens.Blue, Centre.X - m_NeedleWidth * 3, Centre.Y - m_NeedleWidth * 3, m_NeedleWidth * 6, m_NeedleWidth * 6);
                             break;
-                        case NeedleColorEnum.Magenta:
+                        case NeedleColourEnum.Magenta:
                             brush1 = new SolidBrush(Color.FromArgb(subcol, 145 + subcol, 145 + subcol));
                             brush2 = new SolidBrush(Color.FromArgb(100 - subcol, 245 - subcol, 245 - subcol));
                             brush3 = new SolidBrush(Color.FromArgb(subcol2, 145 + subcol2, 145 + subcol2));
                             brush4 = new SolidBrush(Color.FromArgb(100 - subcol2, 245 - subcol2, 245 - subcol2));
-                            pe.Graphics.DrawEllipse(Pens.Magenta, Center.X - m_NeedleWidth * 3, Center.Y - m_NeedleWidth * 3, m_NeedleWidth * 6, m_NeedleWidth * 6);
+                            pe.Graphics.DrawEllipse(Pens.Magenta, Centre.X - m_NeedleWidth * 3, Centre.Y - m_NeedleWidth * 3, m_NeedleWidth * 6, m_NeedleWidth * 6);
                             break;
-                        case NeedleColorEnum.Violet:
+                        case NeedleColourEnum.Violet:
                             brush1 = new SolidBrush(Color.FromArgb(145 + subcol, subcol, 145 + subcol));
                             brush2 = new SolidBrush(Color.FromArgb(245 - subcol, 100 - subcol, 245 - subcol));
                             brush3 = new SolidBrush(Color.FromArgb(145 + subcol2, subcol2, 145 + subcol2));
                             brush4 = new SolidBrush(Color.FromArgb(245 - subcol2, 100 - subcol2, 245 - subcol2));
-                            pe.Graphics.DrawEllipse(Pens.Violet, Center.X - m_NeedleWidth * 3, Center.Y - m_NeedleWidth * 3, m_NeedleWidth * 6, m_NeedleWidth * 6);
+                            pe.Graphics.DrawEllipse(Pens.Violet, Centre.X - m_NeedleWidth * 3, Centre.Y - m_NeedleWidth * 3, m_NeedleWidth * 6, m_NeedleWidth * 6);
                             break;
-                        case NeedleColorEnum.Yellow:
+                        case NeedleColourEnum.Yellow:
                             brush1 = new SolidBrush(Color.FromArgb(145 + subcol, 145 + subcol, subcol));
                             brush2 = new SolidBrush(Color.FromArgb(245 - subcol, 245 - subcol, 100 - subcol));
                             brush3 = new SolidBrush(Color.FromArgb(145 + subcol2, 145 + subcol2, subcol2));
                             brush4 = new SolidBrush(Color.FromArgb(245 - subcol2, 245 - subcol2, 100 - subcol2));
-                            pe.Graphics.DrawEllipse(Pens.Violet, Center.X - m_NeedleWidth * 3, Center.Y - m_NeedleWidth * 3, m_NeedleWidth * 6, m_NeedleWidth * 6);
+                            pe.Graphics.DrawEllipse(Pens.Violet, Centre.X - m_NeedleWidth * 3, Centre.Y - m_NeedleWidth * 3, m_NeedleWidth * 6, m_NeedleWidth * 6);
                             break;
                     }
 
@@ -1655,77 +1793,79 @@ namespace Krypton.Toolkit.Suite.Extended.Base
                         brush4 = brush3;
                     }
 
-                    points[0].X = (Single)(Center.X + m_NeedleRadius * Math.Cos(needleAngle));
-                    points[0].Y = (Single)(Center.Y + m_NeedleRadius * Math.Sin(needleAngle));
-                    points[1].X = (Single)(Center.X - m_NeedleRadius / 20 * Math.Cos(needleAngle));
-                    points[1].Y = (Single)(Center.Y - m_NeedleRadius / 20 * Math.Sin(needleAngle));
-                    points[2].X = (Single)(Center.X - m_NeedleRadius / 5 * Math.Cos(needleAngle) + m_NeedleWidth * 2 * Math.Cos(needleAngle + Math.PI / 2));
-                    points[2].Y = (Single)(Center.Y - m_NeedleRadius / 5 * Math.Sin(needleAngle) + m_NeedleWidth * 2 * Math.Sin(needleAngle + Math.PI / 2));
+                    points[0].X = (Single)(Centre.X + m_NeedleRadius * Math.Cos(needleAngle));
+                    points[0].Y = (Single)(Centre.Y + m_NeedleRadius * Math.Sin(needleAngle));
+                    points[1].X = (Single)(Centre.X - m_NeedleRadius / 20 * Math.Cos(needleAngle));
+                    points[1].Y = (Single)(Centre.Y - m_NeedleRadius / 20 * Math.Sin(needleAngle));
+                    points[2].X = (Single)(Centre.X - m_NeedleRadius / 5 * Math.Cos(needleAngle) + m_NeedleWidth * 2 * Math.Cos(needleAngle + Math.PI / 2));
+                    points[2].Y = (Single)(Centre.Y - m_NeedleRadius / 5 * Math.Sin(needleAngle) + m_NeedleWidth * 2 * Math.Sin(needleAngle + Math.PI / 2));
                     pe.Graphics.FillPolygon(brush1, points);
 
-                    points[2].X = (Single)(Center.X - m_NeedleRadius / 5 * Math.Cos(needleAngle) + m_NeedleWidth * 2 * Math.Cos(needleAngle - Math.PI / 2));
-                    points[2].Y = (Single)(Center.Y - m_NeedleRadius / 5 * Math.Sin(needleAngle) + m_NeedleWidth * 2 * Math.Sin(needleAngle - Math.PI / 2));
+                    points[2].X = (Single)(Centre.X - m_NeedleRadius / 5 * Math.Cos(needleAngle) + m_NeedleWidth * 2 * Math.Cos(needleAngle - Math.PI / 2));
+                    points[2].Y = (Single)(Centre.Y - m_NeedleRadius / 5 * Math.Sin(needleAngle) + m_NeedleWidth * 2 * Math.Sin(needleAngle - Math.PI / 2));
                     pe.Graphics.FillPolygon(brush2, points);
 
-                    points[0].X = (Single)(Center.X - (m_NeedleRadius / 20 - 1) * Math.Cos(needleAngle));
-                    points[0].Y = (Single)(Center.Y - (m_NeedleRadius / 20 - 1) * Math.Sin(needleAngle));
-                    points[1].X = (Single)(Center.X - m_NeedleRadius / 5 * Math.Cos(needleAngle) + m_NeedleWidth * 2 * Math.Cos(needleAngle + Math.PI / 2));
-                    points[1].Y = (Single)(Center.Y - m_NeedleRadius / 5 * Math.Sin(needleAngle) + m_NeedleWidth * 2 * Math.Sin(needleAngle + Math.PI / 2));
-                    points[2].X = (Single)(Center.X - m_NeedleRadius / 5 * Math.Cos(needleAngle) + m_NeedleWidth * 2 * Math.Cos(needleAngle - Math.PI / 2));
-                    points[2].Y = (Single)(Center.Y - m_NeedleRadius / 5 * Math.Sin(needleAngle) + m_NeedleWidth * 2 * Math.Sin(needleAngle - Math.PI / 2));
+                    points[0].X = (Single)(Centre.X - (m_NeedleRadius / 20 - 1) * Math.Cos(needleAngle));
+                    points[0].Y = (Single)(Centre.Y - (m_NeedleRadius / 20 - 1) * Math.Sin(needleAngle));
+                    points[1].X = (Single)(Centre.X - m_NeedleRadius / 5 * Math.Cos(needleAngle) + m_NeedleWidth * 2 * Math.Cos(needleAngle + Math.PI / 2));
+                    points[1].Y = (Single)(Centre.Y - m_NeedleRadius / 5 * Math.Sin(needleAngle) + m_NeedleWidth * 2 * Math.Sin(needleAngle + Math.PI / 2));
+                    points[2].X = (Single)(Centre.X - m_NeedleRadius / 5 * Math.Cos(needleAngle) + m_NeedleWidth * 2 * Math.Cos(needleAngle - Math.PI / 2));
+                    points[2].Y = (Single)(Centre.Y - m_NeedleRadius / 5 * Math.Sin(needleAngle) + m_NeedleWidth * 2 * Math.Sin(needleAngle - Math.PI / 2));
                     pe.Graphics.FillPolygon(brush4, points);
 
-                    points[0].X = (Single)(Center.X - m_NeedleRadius / 20 * Math.Cos(needleAngle));
-                    points[0].Y = (Single)(Center.Y - m_NeedleRadius / 20 * Math.Sin(needleAngle));
-                    points[1].X = (Single)(Center.X + m_NeedleRadius * Math.Cos(needleAngle));
-                    points[1].Y = (Single)(Center.Y + m_NeedleRadius * Math.Sin(needleAngle));
+                    points[0].X = (Single)(Centre.X - m_NeedleRadius / 20 * Math.Cos(needleAngle));
+                    points[0].Y = (Single)(Centre.Y - m_NeedleRadius / 20 * Math.Sin(needleAngle));
+                    points[1].X = (Single)(Centre.X + m_NeedleRadius * Math.Cos(needleAngle));
+                    points[1].Y = (Single)(Centre.Y + m_NeedleRadius * Math.Sin(needleAngle));
 
-                    pe.Graphics.DrawLine(new Pen(m_NeedleColor2), Center.X, Center.Y, points[0].X, points[0].Y);
-                    pe.Graphics.DrawLine(new Pen(m_NeedleColor2), Center.X, Center.Y, points[1].X, points[1].Y);
+                    pe.Graphics.DrawLine(new Pen(m_NeedleColor2), Centre.X, Centre.Y, points[0].X, points[0].Y);
+                    pe.Graphics.DrawLine(new Pen(m_NeedleColor2), Centre.X, Centre.Y, points[1].X, points[1].Y);
                     break;
                 case 1:
-                    Point startPoint = new Point((Int32)(Center.X - m_NeedleRadius / 8 * Math.Cos(needleAngle)),
-                                               (Int32)(Center.Y - m_NeedleRadius / 8 * Math.Sin(needleAngle)));
-                    Point endPoint = new Point((Int32)(Center.X + m_NeedleRadius * Math.Cos(needleAngle)),
-                                             (Int32)(Center.Y + m_NeedleRadius * Math.Sin(needleAngle)));
+                    Point startPoint = new Point((Int32)(Centre.X - m_NeedleRadius / 8 * Math.Cos(needleAngle)),
+                                               (Int32)(Centre.Y - m_NeedleRadius / 8 * Math.Sin(needleAngle)));
+                    Point endPoint = new Point((Int32)(Centre.X + m_NeedleRadius * Math.Cos(needleAngle)),
+                                             (Int32)(Centre.Y + m_NeedleRadius * Math.Sin(needleAngle)));
 
-                    pe.Graphics.FillEllipse(new SolidBrush(m_NeedleColor2), Center.X - m_NeedleWidth * 3, Center.Y - m_NeedleWidth * 3, m_NeedleWidth * 6, m_NeedleWidth * 6);
+                    pe.Graphics.FillEllipse(new SolidBrush(m_NeedleColor2), Centre.X - m_NeedleWidth * 3, Centre.Y - m_NeedleWidth * 3, m_NeedleWidth * 6, m_NeedleWidth * 6);
 
                     switch (m_NeedleColor1)
                     {
-                        case NeedleColorEnum.Gray:
-                            pe.Graphics.DrawLine(new Pen(Color.DarkGray, m_NeedleWidth), Center.X, Center.Y, endPoint.X, endPoint.Y);
-                            pe.Graphics.DrawLine(new Pen(Color.DarkGray, m_NeedleWidth), Center.X, Center.Y, startPoint.X, startPoint.Y);
+                        case NeedleColourEnum.Gray:
+                            pe.Graphics.DrawLine(new Pen(Color.DarkGray, m_NeedleWidth), Centre.X, Centre.Y, endPoint.X, endPoint.Y);
+                            pe.Graphics.DrawLine(new Pen(Color.DarkGray, m_NeedleWidth), Centre.X, Centre.Y, startPoint.X, startPoint.Y);
                             break;
-                        case NeedleColorEnum.Red:
-                            pe.Graphics.DrawLine(new Pen(Color.Red, m_NeedleWidth), Center.X, Center.Y, endPoint.X, endPoint.Y);
-                            pe.Graphics.DrawLine(new Pen(Color.Red, m_NeedleWidth), Center.X, Center.Y, startPoint.X, startPoint.Y);
+                        case NeedleColourEnum.Red:
+                            pe.Graphics.DrawLine(new Pen(Color.Red, m_NeedleWidth), Centre.X, Centre.Y, endPoint.X, endPoint.Y);
+                            pe.Graphics.DrawLine(new Pen(Color.Red, m_NeedleWidth), Centre.X, Centre.Y, startPoint.X, startPoint.Y);
                             break;
-                        case NeedleColorEnum.Green:
-                            pe.Graphics.DrawLine(new Pen(Color.Green, m_NeedleWidth), Center.X, Center.Y, endPoint.X, endPoint.Y);
-                            pe.Graphics.DrawLine(new Pen(Color.Green, m_NeedleWidth), Center.X, Center.Y, startPoint.X, startPoint.Y);
+                        case NeedleColourEnum.Green:
+                            pe.Graphics.DrawLine(new Pen(Color.Green, m_NeedleWidth), Centre.X, Centre.Y, endPoint.X, endPoint.Y);
+                            pe.Graphics.DrawLine(new Pen(Color.Green, m_NeedleWidth), Centre.X, Centre.Y, startPoint.X, startPoint.Y);
                             break;
-                        case NeedleColorEnum.Blue:
-                            pe.Graphics.DrawLine(new Pen(Color.Blue, m_NeedleWidth), Center.X, Center.Y, endPoint.X, endPoint.Y);
-                            pe.Graphics.DrawLine(new Pen(Color.Blue, m_NeedleWidth), Center.X, Center.Y, startPoint.X, startPoint.Y);
+                        case NeedleColourEnum.Blue:
+                            pe.Graphics.DrawLine(new Pen(Color.Blue, m_NeedleWidth), Centre.X, Centre.Y, endPoint.X, endPoint.Y);
+                            pe.Graphics.DrawLine(new Pen(Color.Blue, m_NeedleWidth), Centre.X, Centre.Y, startPoint.X, startPoint.Y);
                             break;
-                        case NeedleColorEnum.Magenta:
-                            pe.Graphics.DrawLine(new Pen(Color.Magenta, m_NeedleWidth), Center.X, Center.Y, endPoint.X, endPoint.Y);
-                            pe.Graphics.DrawLine(new Pen(Color.Magenta, m_NeedleWidth), Center.X, Center.Y, startPoint.X, startPoint.Y);
+                        case NeedleColourEnum.Magenta:
+                            pe.Graphics.DrawLine(new Pen(Color.Magenta, m_NeedleWidth), Centre.X, Centre.Y, endPoint.X, endPoint.Y);
+                            pe.Graphics.DrawLine(new Pen(Color.Magenta, m_NeedleWidth), Centre.X, Centre.Y, startPoint.X, startPoint.Y);
                             break;
-                        case NeedleColorEnum.Violet:
-                            pe.Graphics.DrawLine(new Pen(Color.Violet, m_NeedleWidth), Center.X, Center.Y, endPoint.X, endPoint.Y);
-                            pe.Graphics.DrawLine(new Pen(Color.Violet, m_NeedleWidth), Center.X, Center.Y, startPoint.X, startPoint.Y);
+                        case NeedleColourEnum.Violet:
+                            pe.Graphics.DrawLine(new Pen(Color.Violet, m_NeedleWidth), Centre.X, Centre.Y, endPoint.X, endPoint.Y);
+                            pe.Graphics.DrawLine(new Pen(Color.Violet, m_NeedleWidth), Centre.X, Centre.Y, startPoint.X, startPoint.Y);
                             break;
-                        case NeedleColorEnum.Yellow:
-                            pe.Graphics.DrawLine(new Pen(Color.Yellow, m_NeedleWidth), Center.X, Center.Y, endPoint.X, endPoint.Y);
-                            pe.Graphics.DrawLine(new Pen(Color.Yellow, m_NeedleWidth), Center.X, Center.Y, startPoint.X, startPoint.Y);
+                        case NeedleColourEnum.Yellow:
+                            pe.Graphics.DrawLine(new Pen(Color.Yellow, m_NeedleWidth), Centre.X, Centre.Y, endPoint.X, endPoint.Y);
+                            pe.Graphics.DrawLine(new Pen(Color.Yellow, m_NeedleWidth), Centre.X, Centre.Y, startPoint.X, startPoint.Y);
                             break;
                     }
                     break;
             }
         }
 
+        /// <summary>Raises the <see cref="E:System.Windows.Forms.Control.Resize">Resize</see> event.</summary>
+        /// <param name="e">An <see cref="T:System.EventArgs">EventArgs</see> that contains the event data.</param>
         protected override void OnResize(EventArgs e)
         {
             drawGaugeBackground = true;

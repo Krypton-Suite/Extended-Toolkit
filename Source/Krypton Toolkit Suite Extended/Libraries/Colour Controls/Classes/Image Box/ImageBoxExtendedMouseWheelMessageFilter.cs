@@ -1,13 +1,8 @@
-﻿#region License
+﻿#region BSD License
 /*
- * Cyotek ImageBox
- * Copyright (c) 2010 - 2020 Cyotek Ltd.
- * http://cyotek.com
- * http://cyotek.com/blog/tag/imagebox
- *
- * Licensed under the MIT License.See license.txt for the full text.
- *
- *  If you use this control in your applications, attribution, donations or contributions are welcome.
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
  */
 #endregion
 

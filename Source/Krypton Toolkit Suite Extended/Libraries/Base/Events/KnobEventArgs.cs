@@ -10,12 +10,21 @@ using System;
 
 namespace Krypton.Toolkit.Suite.Extended.Base
 {
+    /// <summary>
+    /// Handles attributes for the <see cref="KryptonKnobControl" /> control.
+    /// </summary>
+    /// <seealso cref="EventArgs" />
     public class KnobEventArgs : EventArgs
     {
         private float _value;
 
+        /// <summary>Gets or sets the value of the <seealso cref="KryptonKnobControl">control.</seealso></summary>
+        /// <value>
+        /// The value.
+        /// </value>
         public float Value { get => _value; set => _value = value; }
 
+        /// <summary>Initializes a new instance of the <see cref="KnobEventArgs" /> class.</summary>
         public KnobEventArgs()
         {
 

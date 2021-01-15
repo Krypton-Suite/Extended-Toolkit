@@ -9,22 +9,30 @@
     <AssemblyName>Zip Extractor</AssemblyName>
     <ApplicationIcon>Resources\ZipExtractor.ico</ApplicationIcon>
    </PropertyGroup>
-
-  <PropertyGroup>
-    <AssemblyVersion>5.550.2101</AssemblyVersion>
-    <FileVersion>5.550.2101</FileVersion>
-    <Version>5.550.2101</Version>
-  </PropertyGroup>
-
-  <!--Stable NuGet package configuration-->
+   
+  <!--Stable NuGet package configuration-
   <ItemGroup>
-    <PackageReference Include="Krypton.Toolkit" Version="5.550.2101" />
-  </ItemGroup>
+    <PackageReference Include="Krypton.Toolkit" Version="5.550.2011" />
+  </ItemGroup>-->
 
-  <!--Canary NuGet package configuration-
+  <!--Canary NuGet package configuration-->
   <ItemGroup>
     <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2101" />
-  </ItemGroup>-->
+  </ItemGroup>
+  
+  <!--Stable NuGet version configuration-
+  <PropertyGroup>
+    <AssemblyVersion>5.550.2102</AssemblyVersion>
+    <FileVersion>5.550.2102</FileVersion>
+    <Version>5.550.2102</Version>
+  </PropertyGroup>-->
+
+  <!--Canary NuGet version configuration-->
+  <PropertyGroup>
+    <AssemblyVersion>6.0.2102</AssemblyVersion>
+    <FileVersion>6.0.2102</FileVersion>
+    <Version>6.0.2102</Version>
+  </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="ILRepack.Lib.MSBuild.Task" Version="2.0.18.2" />
@@ -50,8 +58,6 @@
   <PropertyGroup>
     <DocumentationFile>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Zip.Extractor\Krypton.Toolkit.Suite.Zip.Extractor.xml</DocumentationFile>
     <OutputPath>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Zip.Extractor\</OutputPath>
-    <AssemblyVersion>5.550.2101</AssemblyVersion>
-    <FileVersion>5.550.2101</FileVersion>
   </PropertyGroup>
 
 </Project>
