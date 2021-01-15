@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Standard.Controls
 {
-    public class KryptonUACElevatedButtonExtended : KryptonUACElevatedButton
+    public class KryptonUACElevatedButtonExtended : KryptonUACElevatedButtonVersion1
     {
         #region Variables
         private Color _stateCommonBackGroundColourOne, _stateCommonBackGroundColourTwo, _stateCommonLongTextColourOne, _stateCommonLongTextColourTwo, _stateCommonShortTextColourOne, _stateCommonShortTextColourTwo, _stateCommonBorderColourOne, _stateCommonBorderColourTwo,

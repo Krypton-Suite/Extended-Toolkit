@@ -12,26 +12,26 @@
    
   <!--Stable NuGet package configuration-
   <ItemGroup>
-    <PackageReference Include="Krypton.Toolkit" Version="5.550.2011" />
+    <PackageReference Include="Krypton.Toolkit" Version="5.550.2103" />
   </ItemGroup>-->
 
   <!--Canary NuGet package configuration-->
   <ItemGroup>
-    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2101" />
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2103.4" />
   </ItemGroup>
   
   <!--Stable NuGet version configuration-
   <PropertyGroup>
-    <AssemblyVersion>5.550.2102</AssemblyVersion>
-    <FileVersion>5.550.2102</FileVersion>
-    <Version>5.550.2102</Version>
+    <AssemblyVersion>5.550.2103</AssemblyVersion>
+    <FileVersion>5.550.2103</FileVersion>
+    <Version>5.550.2103</Version>
   </PropertyGroup>-->
 
   <!--Canary NuGet version configuration-->
   <PropertyGroup>
-    <AssemblyVersion>6.0.2102</AssemblyVersion>
-    <FileVersion>6.0.2102</FileVersion>
-    <Version>6.0.2102</Version>
+    <AssemblyVersion>6.0.2103</AssemblyVersion>
+    <FileVersion>6.0.2103</FileVersion>
+    <Version>6.0.2103</Version>
   </PropertyGroup>
 
   <ItemGroup>
