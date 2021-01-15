@@ -1,104 +1,104 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
-  <PropertyGroup>
-    <LangVersion>latest</LangVersion>
-    <TargetFrameworks>net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows</TargetFrameworks>
-    <RootNamespace>Krypton.Toolkit.Suite.Extended.Navigator</RootNamespace>
-    <UseWindowsForms>true</UseWindowsForms>
-    <OutputType>Library</OutputType>
-  </PropertyGroup>
+	<PropertyGroup>
+		<LangVersion>latest</LangVersion>
+		<TargetFrameworks>net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows</TargetFrameworks>
+		<RootNamespace>Krypton.Toolkit.Suite.Extended.Navigator</RootNamespace>
+		<UseWindowsForms>true</UseWindowsForms>
+		<OutputType>Library</OutputType>
+	</PropertyGroup>
 
-  <PropertyGroup>
-    <Description>An extension to the standard krypton toolkit to support .NET Core, .NET 5 and the latest .NET 3.5/4.x framework. This package contains enhanced navigator features.</Description>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
-	  <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
-  </PropertyGroup>
+	<PropertyGroup>
+		<Description>An extension to the standard krypton toolkit to support .NET Core, .NET 5 and the latest .NET 3.5/4.x framework. This package contains enhanced navigator features.</Description>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+		<RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
+		<PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
+	</PropertyGroup>
 
-  <!--Canary package configuration-->
-  <PropertyGroup>
-    <PackageId>Krypton.Toolkit.Suite.Extended.Navigator.Canary</PackageId>
-    <PackageOutputPath>..\..\..\..\Bin\NuGet\Canary</PackageOutputPath>
-    <PackageIcon>Canary.png</PackageIcon>
-    <AssemblyVersion>6.0.2103</AssemblyVersion>
-    <FileVersion>6.0.2103</FileVersion>
-    <Version>6.0.2103</Version>
-  </PropertyGroup>
+	<!--Canary package configuration-->
+	<PropertyGroup>
+		<PackageId>Krypton.Toolkit.Suite.Extended.Navigator.Canary</PackageId>
+		<PackageOutputPath>..\..\..\..\Bin\NuGet\Canary</PackageOutputPath>
+		<PackageIcon>Canary.png</PackageIcon>
+		<AssemblyVersion>6.0.2104</AssemblyVersion>
+		<FileVersion>6.0.2104</FileVersion>
+		<Version>6.0.2104</Version>
+	</PropertyGroup>
 
-  <!--Nightly package configuration-
-  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
-    <PackageId>Krypton.Toolkit.Suite.Extended.Navigator.Nightly</PackageId>
-    <PackageOutputPath>..\..\..\..\Bin\NuGet\Nightly</PackageOutputPath>
-    <PackageIcon>Nightly.png</PackageIcon>
-    <VersionSuffix>pre$([System.DateTime]::UtcNow.ToString(yyyyMMdd-HHmm))</VersionSuffix>
-  </PropertyGroup>-->
+	<!--Nightly package configuration-
+	<PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+		<PackageId>Krypton.Toolkit.Suite.Extended.Navigator.Nightly</PackageId>
+		<PackageOutputPath>..\..\..\..\Bin\NuGet\Nightly</PackageOutputPath>
+		<PackageIcon>Nightly.png</PackageIcon>
+		<VersionSuffix>pre$([System.DateTime]::UtcNow.ToString(yyyyMMdd-HHmm))</VersionSuffix>
+	</PropertyGroup>-->
 
-  <!--Stable package configuration-
-  <PropertyGroup>
-    <PackageId>Krypton.Toolkit.Suite.Extended.Navigator</PackageId>
-    <PackageOutputPath>..\..\..\..\Bin\NuGet\Stable</PackageOutputPath>
-    <PackageIcon>Stable.png</PackageIcon>
-    <AssemblyVersion>5.550.2103</AssemblyVersion>
-    <FileVersion>5.550.2103</FileVersion>
-    <Version>5.550.2103</Version>
-  </PropertyGroup>-->
-  
-  <!--Stable NuGet packages
-  <ItemGroup>
-    <PackageReference Include="Krypton.Toolkit" Version="5.550.2103" />
-  </ItemGroup>-->
+	<!--Stable package configuration-
+	<PropertyGroup>
+		<PackageId>Krypton.Toolkit.Suite.Extended.Navigator</PackageId>
+		<PackageOutputPath>..\..\..\..\Bin\NuGet\Stable</PackageOutputPath>
+		<PackageIcon>Stable.png</PackageIcon>
+		<AssemblyVersion>5.550.2104</AssemblyVersion>
+    <FileVersion>5.550.2104</FileVersion>
+    <Version>5.550.2104</Version>
+	</PropertyGroup>-->
+	
+	<!--Stable NuGet packages
+	<ItemGroup>
+		<PackageReference Include="Krypton.Toolkit" Version="5.550.2103" />
+	</ItemGroup>-->
 
-  <!--Canary NuGet package configuration-->
-  <ItemGroup>
-    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2103.4" />
-  </ItemGroup>
+	<!--Canary NuGet package configuration-->
+	<ItemGroup>
+		<PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2103.4" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <!--Canary icon-->
-    <None Include="Package Icons\Canary.png" Pack="true" PackagePath="\" />
+	<ItemGroup>
+		<!--Canary icon-->
+		<None Include="Package Icons\Canary.png" Pack="true" PackagePath="\" />
 
-    <!--Stable icon-->
-    <!--<None Include="Package Icons\Stable.png" Pack="true" PackagePath="\" />-->
+		<!--Stable icon-->
+		<!--<None Include="Package Icons\Stable.png" Pack="true" PackagePath="\" />-->
 
-    <!--Nightly icon-->
-    <!--<None Include="Package Icons\Nightly.png" Pack="true" PackagePath="\" />-->
-  </ItemGroup>
+		<!--Nightly icon-->
+		<!--<None Include="Package Icons\Nightly.png" Pack="true" PackagePath="\" />-->
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.VisualBasic" Version="10.3.0" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.VisualBasic" Version="10.3.0" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Extended Dialogs\Krypton.Toolkit.Suite.Extended.Dialogs.csproj" />
-    <ProjectReference Include="..\Base\Krypton.Toolkit.Suite.Extended.Base.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Extended Dialogs\Krypton.Toolkit.Suite.Extended.Dialogs.csproj" />
+		<ProjectReference Include="..\Base\Krypton.Toolkit.Suite.Extended.Base.csproj" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Reference Include="Krypton.Toolkit.Suite.Extended.Dialogs">
-      <HintPath>..\Extended Dialogs\obj\Debug\net45\Krypton.Toolkit.Suite.Extended.Dialogs\Krypton.Toolkit.Suite.Extended.Dialogs.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Design" />
-  </ItemGroup>
+	<ItemGroup>
+		<Reference Include="Krypton.Toolkit.Suite.Extended.Dialogs">
+			<HintPath>..\Extended Dialogs\obj\Debug\net45\Krypton.Toolkit.Suite.Extended.Dialogs\Krypton.Toolkit.Suite.Extended.Dialogs.dll</HintPath>
+		</Reference>
+		<Reference Include="System.Design" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Compile Update="Properties\Resources.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-  </ItemGroup>
+	<ItemGroup>
+		<Compile Update="Properties\Resources.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>Resources.resx</DependentUpon>
+		</Compile>
+	</ItemGroup>
 
-  <ItemGroup>
-    <EmbeddedResource Update="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Update="Properties\Resources.resx">
+			<Generator>ResXFileCodeGenerator</Generator>
+			<LastGenOutput>Resources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+	</ItemGroup>
 
-  <PropertyGroup>
-    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Navigator\Krypton.Toolkit.Suite.Extended.Navigator.xml</DocumentationFile>
-    <OutputPath>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Navigator\</OutputPath>
-  </PropertyGroup>
+	<PropertyGroup>
+		<DocumentationFile>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Navigator\Krypton.Toolkit.Suite.Extended.Navigator.xml</DocumentationFile>
+		<OutputPath>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Navigator\</OutputPath>
+	</PropertyGroup>
 
 </Project>

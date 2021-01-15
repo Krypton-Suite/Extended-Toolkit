@@ -54,7 +54,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Exten
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Markdown", "Markdown", "{6D03424F-E3C8-40E6-9D67-41BE49CFFE35}"
 	ProjectSection(SolutionItems) = preProject
-		..\..\Prerequisites.md = ..\..\Prerequisites.md
+		..\..\Documents\Examples\Examples.md = ..\..\Documents\Examples\Examples.md
+		..\..\Documents\Help\NuGet Package Information.md = ..\..\Documents\Help\NuGet Package Information.md
+		..\..\Documents\Help\Prerequisites.md = ..\..\Documents\Help\Prerequisites.md
 		..\..\README.md = ..\..\README.md
 	EndProjectSection
 EndProject
