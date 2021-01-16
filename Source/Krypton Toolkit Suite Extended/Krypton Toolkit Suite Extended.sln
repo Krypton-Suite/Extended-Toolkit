@@ -134,7 +134,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing", "Testing", "{CCBF
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "C:\Users\Peter William Wagner\source\repos\Test\Test.csproj", "{68E2BEB0-6F9C-4EDB-A539-C79A1DB69FE6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton.Toolkit.Suite.Extended.Circular.ProgressBar.Suite", "Libraries\Circular ProgressBar\Krypton.Toolkit.Suite.Extended.Circular.ProgressBar.Suite.csproj", "{F176C423-D8F9-4FFF-B72E-C3A5514D1EA0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar.Suite", "Libraries\Circular ProgressBar\Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar.Suite.csproj", "{F176C423-D8F9-4FFF-B72E-C3A5514D1EA0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

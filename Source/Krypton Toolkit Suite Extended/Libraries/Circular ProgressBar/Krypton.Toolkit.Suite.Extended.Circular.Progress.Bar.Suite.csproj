@@ -3,7 +3,7 @@
   <PropertyGroup>
     <LangVersion>latest</LangVersion>
     <TargetFrameworks>net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows</TargetFrameworks>
-    <RootNamespace>Krypton.Toolkit.Suite.Extended.Circular.ProgressBar.Suite</RootNamespace>
+    <RootNamespace>Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar.Suite</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
     <AnalysisLevel>latest</AnalysisLevel>
   </PropertyGroup>
@@ -19,7 +19,7 @@
 
   <!--Canary package configuration-->
   <PropertyGroup>
-    <PackageId>Krypton.Toolkit.Suite.Extended.Circular.ProgressBar.Suite.Canary</PackageId>
+    <PackageId>Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar.Suite.Canary</PackageId>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Canary</PackageOutputPath>
     <PackageIcon>Canary.png</PackageIcon>
     <AssemblyVersion>6.0.2104</AssemblyVersion>
@@ -29,7 +29,7 @@
 
   <!--Nightly package configuration-
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
-    <PackageId>Krypton.Toolkit.Suite.Extended.Circular.ProgressBar.Suite.Nightly</PackageId>
+    <PackageId>Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar.Suite.Nightly</PackageId>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Nightly</PackageOutputPath>
     <PackageIcon>Nightly.png</PackageIcon>
     <VersionSuffix>pre$([System.DateTime]::UtcNow.ToString(yyyyMMdd-HHmm))</VersionSuffix>
@@ -37,7 +37,7 @@
 
   <!--Stable package configuration-
   <PropertyGroup>
-    <PackageId>Krypton.Toolkit.Suite.Extended.Circular.ProgressBar.Suite</PackageId>
+    <PackageId>Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar.Suite</PackageId>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Stable</PackageOutputPath>
     <PackageIcon>Stable.png</PackageIcon>
     <AssemblyVersion>5.550.2104</AssemblyVersion>
@@ -62,7 +62,7 @@
   </ItemGroup>
 
   <PropertyGroup>
-    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Circular.ProgressBar.Suite\Krypton.Toolkit.Suite.Extended.Circular.ProgressBar.Suite.xml</DocumentationFile>
-    <OutputPath>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Circular.ProgressBar.Suite\</OutputPath>
+    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar.Suite\Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar.Suite.xml</DocumentationFile>
+    <OutputPath>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar.Suite\</OutputPath>
   </PropertyGroup>
 </Project>
