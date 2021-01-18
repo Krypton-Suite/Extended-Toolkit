@@ -98,4 +98,192 @@
 	<resheader name="writer">
 		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
 	</resheader>
+	<data name="EARLIERDURINGTHISMONTH" xml:space="preserve">
+    <value>Plus tôt durant ce mois</value>
+  </data>
+  <data name="LATERDURINGTHISMONTH" xml:space="preserve">
+    <value>Plus tard durant ce mois</value>
+  </data>
+  <data name="BEFOREPREVIOUSMONTH" xml:space="preserve">
+    <value>Avant le mois dernier</value>
+  </data>
+  <data name="AFTERNEXTMONTH" xml:space="preserve">
+    <value>Après le mois prochain</value>
+  </data>
+  <data name="THREEWEEKSAGO" xml:space="preserve">
+    <value>Il y a trois semaines</value>
+  </data>
+  <data name="INTHREEWEEKS" xml:space="preserve">
+    <value>Dans trois semaines</value>
+  </data>
+  <data name="INTWOWEEKS" xml:space="preserve">
+    <value>Dans deux semaines</value>
+  </data>
+  <data name="NEXTMONTH" xml:space="preserve">
+    <value>Mois prochain</value>
+  </data>
+  <data name="NEXTWEEK" xml:space="preserve">
+    <value>Semaine prochaine</value>
+  </data>
+  <data name="PREVIOUSWEEK" xml:space="preserve">
+    <value>Semaine dernière</value>
+  </data>
+  <data name="PREVIOUSMONTH" xml:space="preserve">
+    <value>Mois dernier</value>
+  </data>
+  <data name="TODAY" xml:space="preserve">
+    <value>Aujourd'hui</value>
+  </data>
+  <data name="TOMORROW" xml:space="preserve">
+    <value>Demain</value>
+  </data>
+  <data name="TWOWEEKSAGO" xml:space="preserve">
+    <value>Il y a deux semaines</value>
+  </data>
+  <data name="YESTERDAY" xml:space="preserve">
+    <value>Hier</value>
+  </data>
+  <data name="DRAGCOLUMNTOGROUP" xml:space="preserve">
+    <value>Faites glisser ici un entête de colonne pour grouper par cette colonne </value>
+  </data>
+  <data name="BESTFITALL" xml:space="preserve">
+    <value>Meilleur ajustement (toutes colonnes)</value>
+  </data>
+  <data name="CLEARGROUPING" xml:space="preserve">
+    <value>Supprimer les regroupements</value>
+  </data>
+  <data name="CLEARSORTING" xml:space="preserve">
+    <value>Supprimer le tri</value>
+  </data>
+  <data name="FULLCOLLAPSE" xml:space="preserve">
+    <value>Tout réduire</value>
+  </data>
+  <data name="FULLEXPAND" xml:space="preserve">
+    <value>Tout étendre</value>
+  </data>
+  <data name="GROUP" xml:space="preserve">
+    <value>Regrouper par ce champ</value>
+  </data>
+  <data name="HIDEGROUPBOX" xml:space="preserve">
+    <value>Cacher la boîte de regroupement</value>
+  </data>
+  <data name="SHOWGROUPBOX" xml:space="preserve">
+    <value>Afficher la boîte de regroupement</value>
+  </data>
+  <data name="SORTASCENDING" xml:space="preserve">
+    <value>Tri croissant</value>
+  </data>
+  <data name="SORTDESCENDING" xml:space="preserve">
+    <value>Tri décroissant</value>
+  </data>
+  <data name="UNGROUP" xml:space="preserve">
+    <value>Ne pas regrouper par ce champ</value>
+  </data>
+  <data name="BESTFIT" xml:space="preserve">
+    <value>Meilleur ajustement</value>
+  </data>
+  <data name="NODATE" xml:space="preserve">
+    <value>Pas de date</value>
+  </data>
+  <data name="AlphabeticGroupText" xml:space="preserve">
+    <value>Alphabétique</value>
+  </data>
+  <data name="DateGroupText" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="OneItem" xml:space="preserve">
+    <value>1 élément</value>
+  </data>
+  <data name="XXXItems" xml:space="preserve">
+    <value> éléments</value>
+  </data>
+  <data name="YearGroupText" xml:space="preserve">
+    <value>Année</value>
+  </data>
+  <data name="COLUMNS" xml:space="preserve">
+    <value>Colonnes</value>
+  </data>
+  <data name="COLLAPSE" xml:space="preserve">
+    <value>Réduire</value>
+  </data>
+  <data name="EXPAND" xml:space="preserve">
+    <value>Etendre</value>
+  </data>
+  <data name="GROUPINTERVAL" xml:space="preserve">
+    <value>Intervalle de regroupement</value>
+  </data>
+  <data name="Q1" xml:space="preserve">
+    <value>Trim. 1</value>
+  </data>
+  <data name="Q2" xml:space="preserve">
+    <value>Trim. 2</value>
+  </data>
+  <data name="Q3" xml:space="preserve">
+    <value>Trim. 3</value>
+  </data>
+  <data name="Q4" xml:space="preserve">
+    <value>Trim. 4</value>
+  </data>
+  <data name="Day" xml:space="preserve">
+    <value>Jour</value>
+    <comment>Enum</comment>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>Mois</value>
+    <comment>Enum</comment>
+  </data>
+  <data name="Quarter" xml:space="preserve">
+    <value>Trimestre</value>
+    <comment>Enum</comment>
+  </data>
+  <data name="Smart" xml:space="preserve">
+    <value>Intelligent</value>
+    <comment>Enum</comment>
+  </data>
+  <data name="Year" xml:space="preserve">
+    <value>Année</value>
+    <comment>Enum</comment>
+  </data>
+  <data name="SORTBYSUMMARYCOUNT" xml:space="preserve">
+    <value>Trier par nombre d'éléments</value>
+  </data>
+  <data name="UNKNOWN" xml:space="preserve">
+    <value>Inconnu</value>
+  </data>
+  <data name="CONDITIONALFORMATTING" xml:space="preserve">
+    <value>Mise en forme conditionnelle</value>
+  </data>
+  <data name="Bar" xml:space="preserve">
+    <value>Barres de données</value>
+    <comment>Enum</comment>
+  </data>
+  <data name="GradientFill" xml:space="preserve">
+    <value>Remplissage dégradé</value>
+  </data>
+  <data name="SolidFill" xml:space="preserve">
+    <value>Remplissage uni</value>
+  </data>
+  <data name="ThreeColorsRange" xml:space="preserve">
+    <value>Échelle de trois couleurs</value>
+    <comment>Enum</comment>
+  </data>
+  <data name="TwoColorsRange" xml:space="preserve">
+    <value>Échelle de deux couleurs</value>
+    <comment>Enum</comment>
+  </data>
+  <data name="ClearRules" xml:space="preserve">
+    <value>Effacer règles...</value>
+  </data>
+  <data name="CustomThreeDots" xml:space="preserve">
+    <value>Personnalisé...</value>
+  </data>
+  <data name="Other" xml:space="preserve">
+    <value>Autre</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Annuler</value>
+  </data>
+  <data name="Finish" xml:space="preserve">
+    <value>Terminer</value>
+  </data>
 </root>
