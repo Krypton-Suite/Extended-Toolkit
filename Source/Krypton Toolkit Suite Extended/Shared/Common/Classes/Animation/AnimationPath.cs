@@ -1,20 +1,17 @@
 ﻿namespace Krypton.Toolkit.Suite.Extended.Common
 {
-    /// <summary>
-    ///     The Path class is a representation of a line in a 1D plane and the
-    ///     speed in which the animator plays it
-    /// </summary>
-    public class Path
+    /// <summary>The AnimationPath class is a representation of a line in a 1D plane and the speed in which the animator plays it.</summary>
+    public class AnimationPath
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="Path" /> class.
+        ///     Initializes a new instance of the <see cref="AnimationPath" /> class.
         /// </summary>
-        public Path() : this(default(float), default(float), default(ulong), 0, null)
+        public AnimationPath() : this(default(float), default(float), default(ulong), 0, null)
         {
         }
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="Path" /> class.
+        ///     Initializes a new instance of the <see cref="AnimationPath" /> class.
         /// </summary>
         /// <param name="start">
         ///     The starting value
@@ -28,12 +25,12 @@
         /// <exception cref="ArgumentOutOfRangeException">
         ///     Duration is less than zero
         /// </exception>
-        public Path(float start, float end, ulong duration) : this(start, end, duration, 0, null)
+        public AnimationPath(float start, float end, ulong duration) : this(start, end, duration, 0, null)
         {
         }
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="Path" /> class.
+        ///     Initializes a new instance of the <see cref="AnimationPath" /> class.
         /// </summary>
         /// <param name="start">
         ///     The starting value
@@ -50,13 +47,13 @@
         /// <exception cref="ArgumentOutOfRangeException">
         ///     Duration is less than zero
         /// </exception>
-        public Path(float start, float end, ulong duration, AnimationFunctions.Function function)
+        public AnimationPath(float start, float end, ulong duration, AnimationFunctions.Function function)
             : this(start, end, duration, 0, function)
         {
         }
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="Path" /> class.
+        ///     Initializes a new instance of the <see cref="AnimationPath" /> class.
         /// </summary>
         /// <param name="start">
         ///     The starting value
@@ -73,12 +70,12 @@
         /// <exception cref="ArgumentOutOfRangeException">
         ///     Duration is less than zero
         /// </exception>
-        public Path(float start, float end, ulong duration, ulong delay) : this(start, end, duration, delay, null)
+        public AnimationPath(float start, float end, ulong duration, ulong delay) : this(start, end, duration, delay, null)
         {
         }
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="Path" /> class.
+        ///     Initializes a new instance of the <see cref="AnimationPath" /> class.
         /// </summary>
         /// <param name="start">
         ///     The starting value
@@ -98,7 +95,7 @@
         /// <exception cref="ArgumentOutOfRangeException">
         ///     Duration is less than zero
         /// </exception>
-        public Path(float start, float end, ulong duration, ulong delay, AnimationFunctions.Function function)
+        public AnimationPath(float start, float end, ulong duration, ulong delay, AnimationFunctions.Function function)
         {
             Start = start;
             End = end;
@@ -138,14 +135,14 @@
         public float Start { get; set; }
 
         /// <summary>
-        ///     Creates and returns a new <see cref="Path" /> based on the current path but in reverse order
+        ///     Creates and returns a new <see cref="AnimationPath" /> based on the current path but in reverse order
         /// </summary>
         /// <returns>
-        ///     A new <see cref="Path" /> which is the reverse of the current <see cref="Path" />
+        ///     A new <see cref="AnimationPath" /> which is the reverse of the current <see cref="AnimationPath" />
         /// </returns>
-        public Path Reverse()
+        public AnimationPath Reverse()
         {
-            return new Path(End, Start, Duration, Delay, Function);
+            return new AnimationPath(End, Start, Duration, Delay, Function);
         }
     }
 }
