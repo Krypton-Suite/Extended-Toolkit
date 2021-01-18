@@ -59,5 +59,545 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid.Utilities.Language.Strings
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Après le mois prochain.
+        /// </summary>
+        internal static string AFTERNEXTMONTH {
+            get {
+                return ResourceManager.GetString("AFTERNEXTMONTH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Alphabétique.
+        /// </summary>
+        internal static string AlphabeticGroupText {
+            get {
+                return ResourceManager.GetString("AlphabeticGroupText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Barres de données.
+        /// </summary>
+        internal static string Bar {
+            get {
+                return ResourceManager.GetString("Bar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Avant le mois dernier.
+        /// </summary>
+        internal static string BEFOREPREVIOUSMONTH {
+            get {
+                return ResourceManager.GetString("BEFOREPREVIOUSMONTH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Meilleur ajustement.
+        /// </summary>
+        internal static string BESTFIT {
+            get {
+                return ResourceManager.GetString("BESTFIT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Meilleur ajustement (toutes colonnes).
+        /// </summary>
+        internal static string BESTFITALL {
+            get {
+                return ResourceManager.GetString("BESTFITALL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Annuler.
+        /// </summary>
+        internal static string Cancel {
+            get {
+                return ResourceManager.GetString("Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Supprimer les regroupements.
+        /// </summary>
+        internal static string CLEARGROUPING {
+            get {
+                return ResourceManager.GetString("CLEARGROUPING", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Effacer règles....
+        /// </summary>
+        internal static string ClearRules {
+            get {
+                return ResourceManager.GetString("ClearRules", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Supprimer le tri.
+        /// </summary>
+        internal static string CLEARSORTING {
+            get {
+                return ResourceManager.GetString("CLEARSORTING", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Réduire.
+        /// </summary>
+        internal static string COLLAPSE {
+            get {
+                return ResourceManager.GetString("COLLAPSE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Colonnes.
+        /// </summary>
+        internal static string COLUMNS {
+            get {
+                return ResourceManager.GetString("COLUMNS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mise en forme conditionnelle.
+        /// </summary>
+        internal static string CONDITIONALFORMATTING {
+            get {
+                return ResourceManager.GetString("CONDITIONALFORMATTING", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Personnalisé....
+        /// </summary>
+        internal static string CustomThreeDots {
+            get {
+                return ResourceManager.GetString("CustomThreeDots", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Date.
+        /// </summary>
+        internal static string DateGroupText {
+            get {
+                return ResourceManager.GetString("DateGroupText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Jour.
+        /// </summary>
+        internal static string Day {
+            get {
+                return ResourceManager.GetString("Day", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Faites glisser ici un entête de colonne pour grouper par cette colonne .
+        /// </summary>
+        internal static string DRAGCOLUMNTOGROUP {
+            get {
+                return ResourceManager.GetString("DRAGCOLUMNTOGROUP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Plus tôt durant ce mois.
+        /// </summary>
+        internal static string EARLIERDURINGTHISMONTH {
+            get {
+                return ResourceManager.GetString("EARLIERDURINGTHISMONTH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Etendre.
+        /// </summary>
+        internal static string EXPAND {
+            get {
+                return ResourceManager.GetString("EXPAND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Terminer.
+        /// </summary>
+        internal static string Finish {
+            get {
+                return ResourceManager.GetString("Finish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tout réduire.
+        /// </summary>
+        internal static string FULLCOLLAPSE {
+            get {
+                return ResourceManager.GetString("FULLCOLLAPSE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tout étendre.
+        /// </summary>
+        internal static string FULLEXPAND {
+            get {
+                return ResourceManager.GetString("FULLEXPAND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remplissage dégradé.
+        /// </summary>
+        internal static string GradientFill {
+            get {
+                return ResourceManager.GetString("GradientFill", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Regrouper par ce champ.
+        /// </summary>
+        internal static string GROUP {
+            get {
+                return ResourceManager.GetString("GROUP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Intervalle de regroupement.
+        /// </summary>
+        internal static string GROUPINTERVAL {
+            get {
+                return ResourceManager.GetString("GROUPINTERVAL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cacher la boîte de regroupement.
+        /// </summary>
+        internal static string HIDEGROUPBOX {
+            get {
+                return ResourceManager.GetString("HIDEGROUPBOX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dans trois semaines.
+        /// </summary>
+        internal static string INTHREEWEEKS {
+            get {
+                return ResourceManager.GetString("INTHREEWEEKS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dans deux semaines.
+        /// </summary>
+        internal static string INTWOWEEKS {
+            get {
+                return ResourceManager.GetString("INTWOWEEKS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Plus tard durant ce mois.
+        /// </summary>
+        internal static string LATERDURINGTHISMONTH {
+            get {
+                return ResourceManager.GetString("LATERDURINGTHISMONTH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mois.
+        /// </summary>
+        internal static string Month {
+            get {
+                return ResourceManager.GetString("Month", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mois prochain.
+        /// </summary>
+        internal static string NEXTMONTH {
+            get {
+                return ResourceManager.GetString("NEXTMONTH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Semaine prochaine.
+        /// </summary>
+        internal static string NEXTWEEK {
+            get {
+                return ResourceManager.GetString("NEXTWEEK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pas de date.
+        /// </summary>
+        internal static string NODATE {
+            get {
+                return ResourceManager.GetString("NODATE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 1 élément.
+        /// </summary>
+        internal static string OneItem {
+            get {
+                return ResourceManager.GetString("OneItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Autre.
+        /// </summary>
+        internal static string Other {
+            get {
+                return ResourceManager.GetString("Other", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mois dernier.
+        /// </summary>
+        internal static string PREVIOUSMONTH {
+            get {
+                return ResourceManager.GetString("PREVIOUSMONTH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Semaine dernière.
+        /// </summary>
+        internal static string PREVIOUSWEEK {
+            get {
+                return ResourceManager.GetString("PREVIOUSWEEK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trim. 1.
+        /// </summary>
+        internal static string Q1 {
+            get {
+                return ResourceManager.GetString("Q1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trim. 2.
+        /// </summary>
+        internal static string Q2 {
+            get {
+                return ResourceManager.GetString("Q2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trim. 3.
+        /// </summary>
+        internal static string Q3 {
+            get {
+                return ResourceManager.GetString("Q3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trim. 4.
+        /// </summary>
+        internal static string Q4 {
+            get {
+                return ResourceManager.GetString("Q4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trimestre.
+        /// </summary>
+        internal static string Quarter {
+            get {
+                return ResourceManager.GetString("Quarter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Afficher la boîte de regroupement.
+        /// </summary>
+        internal static string SHOWGROUPBOX {
+            get {
+                return ResourceManager.GetString("SHOWGROUPBOX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Intelligent.
+        /// </summary>
+        internal static string Smart {
+            get {
+                return ResourceManager.GetString("Smart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remplissage uni.
+        /// </summary>
+        internal static string SolidFill {
+            get {
+                return ResourceManager.GetString("SolidFill", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tri croissant.
+        /// </summary>
+        internal static string SORTASCENDING {
+            get {
+                return ResourceManager.GetString("SORTASCENDING", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trier par nombre d&apos;éléments.
+        /// </summary>
+        internal static string SORTBYSUMMARYCOUNT {
+            get {
+                return ResourceManager.GetString("SORTBYSUMMARYCOUNT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tri décroissant.
+        /// </summary>
+        internal static string SORTDESCENDING {
+            get {
+                return ResourceManager.GetString("SORTDESCENDING", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Échelle de trois couleurs.
+        /// </summary>
+        internal static string ThreeColorsRange {
+            get {
+                return ResourceManager.GetString("ThreeColorsRange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Il y a trois semaines.
+        /// </summary>
+        internal static string THREEWEEKSAGO {
+            get {
+                return ResourceManager.GetString("THREEWEEKSAGO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Aujourd&apos;hui.
+        /// </summary>
+        internal static string TODAY {
+            get {
+                return ResourceManager.GetString("TODAY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Demain.
+        /// </summary>
+        internal static string TOMORROW {
+            get {
+                return ResourceManager.GetString("TOMORROW", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Échelle de deux couleurs.
+        /// </summary>
+        internal static string TwoColorsRange {
+            get {
+                return ResourceManager.GetString("TwoColorsRange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Il y a deux semaines.
+        /// </summary>
+        internal static string TWOWEEKSAGO {
+            get {
+                return ResourceManager.GetString("TWOWEEKSAGO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ne pas regrouper par ce champ.
+        /// </summary>
+        internal static string UNGROUP {
+            get {
+                return ResourceManager.GetString("UNGROUP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Inconnu.
+        /// </summary>
+        internal static string UNKNOWN {
+            get {
+                return ResourceManager.GetString("UNKNOWN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to  éléments.
+        /// </summary>
+        internal static string XXXItems {
+            get {
+                return ResourceManager.GetString("XXXItems", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Année.
+        /// </summary>
+        internal static string Year {
+            get {
+                return ResourceManager.GetString("Year", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Année.
+        /// </summary>
+        internal static string YearGroupText {
+            get {
+                return ResourceManager.GetString("YearGroupText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hier.
+        /// </summary>
+        internal static string YESTERDAY {
+            get {
+                return ResourceManager.GetString("YESTERDAY", resourceCulture);
+            }
+        }
     }
 }
