@@ -12,9 +12,9 @@ namespace Krypton.Toolkit.Suite.Extended.Common
     public class Animator : IAnimator
     {
 
-        private readonly List<Path> _paths = new List<Path>();
+        private readonly List<AnimationPath> _paths = new List<AnimationPath>();
 
-        private readonly List<Path> _tempPaths = new List<Path>();
+        private readonly List<AnimationPath> _tempPaths = new List<AnimationPath>();
 
         private readonly AnimationTimer _timer;
 
@@ -39,7 +39,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         ///     Initializes a new instance of the <see cref="Animator" /> class.
         /// </summary>
         public Animator()
-            : this(new Path[] { })
+            : this(new AnimationPath[] { })
         {
         }
 
@@ -50,7 +50,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         ///     Limits the maximum frames per seconds
         /// </param>
         public Animator(FPSLimiterKnownValues fpsLimiter)
-            : this(new Path[] { }, fpsLimiter)
+            : this(new AnimationPath[] { }, fpsLimiter)
         {
         }
 
@@ -60,7 +60,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <param name="path">
         ///     The path of the animation
         /// </param>
-        public Animator(Path path)
+        public Animator(AnimationPath path)
             : this(new[] { path })
         {
         }
@@ -74,7 +74,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <param name="fpsLimiter">
         ///     Limits the maximum frames per seconds
         /// </param>
-        public Animator(Path path, FPSLimiterKnownValues fpsLimiter)
+        public Animator(AnimationPath path, FPSLimiterKnownValues fpsLimiter)
             : this(new[] { path }, fpsLimiter)
         {
         }
@@ -85,7 +85,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <param name="paths">
         ///     An array containing the list of paths of the animation
         /// </param>
-        public Animator(Path[] paths) : this(paths, FPSLimiterKnownValues.LimitThirty)
+        public Animator(AnimationPath[] paths) : this(paths, FPSLimiterKnownValues.LimitThirty)
         {
         }
 
@@ -98,7 +98,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <param name="fpsLimiter">
         ///     Limits the maximum frames per seconds
         /// </param>
-        public Animator(Path[] paths, FPSLimiterKnownValues fpsLimiter)
+        public Animator(AnimationPath[] paths, FPSLimiterKnownValues fpsLimiter)
         {
             CurrentStatus = AnimatorStatus.Stopped;
             _timer = new AnimationTimer(Elapsed, fpsLimiter);
@@ -109,7 +109,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         ///     Gets or sets an array containing the list of paths of the animation
         /// </summary>
         /// <exception cref="InvalidOperationException">Animation is running</exception>
-        public Path[] Paths
+        public AnimationPath[] Paths
         {
             get { return _paths.ToArray(); }
             set
@@ -129,7 +129,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <summary>
         ///     Gets the currently active path.
         /// </summary>
-        public Path ActivePath { get; private set; }
+        public AnimationPath ActivePath { get; private set; }
 
         /// <summary>
         ///     Gets or sets a value indicating whether animator should repeat the animation after its ending

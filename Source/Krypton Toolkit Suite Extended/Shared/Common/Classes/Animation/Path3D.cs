@@ -50,9 +50,9 @@
             ulong delay,
             AnimationFunctions.Function function)
             : this(
-                new Path(startX, endX, duration, delay, function),
-                new Path(startY, endY, duration, delay, function),
-                new Path(startZ, endZ, duration, delay, function))
+                new AnimationPath(startX, endX, duration, delay, function),
+                new AnimationPath(startY, endY, duration, delay, function),
+                new AnimationPath(startZ, endZ, duration, delay, function))
         {
         }
 
@@ -96,9 +96,9 @@
             ulong duration,
             ulong delay)
             : this(
-                new Path(startX, endX, duration, delay),
-                new Path(startY, endY, duration, delay),
-                new Path(startZ, endZ, duration, delay))
+                new AnimationPath(startX, endX, duration, delay),
+                new AnimationPath(startY, endY, duration, delay),
+                new AnimationPath(startZ, endZ, duration, delay))
         {
         }
 
@@ -142,9 +142,9 @@
             ulong duration,
             AnimationFunctions.Function function)
             : this(
-                new Path(startX, endX, duration, function),
-                new Path(startY, endY, duration, function),
-                new Path(startZ, endZ, duration, function))
+                new AnimationPath(startX, endX, duration, function),
+                new AnimationPath(startY, endY, duration, function),
+                new AnimationPath(startZ, endZ, duration, function))
         {
         }
 
@@ -183,7 +183,7 @@
             float startZ,
             float endZ,
             ulong duration)
-            : this(new Path(startX, endX, duration), new Path(startY, endY, duration), new Path(startZ, endZ, duration))
+            : this(new AnimationPath(startX, endX, duration), new AnimationPath(startY, endY, duration), new AnimationPath(startZ, endZ, duration))
         {
         }
 
@@ -210,9 +210,9 @@
         /// </exception>
         public Path3D(Float3D start, Float3D end, ulong duration, ulong delay, AnimationFunctions.Function function)
             : this(
-                new Path(start.X, end.X, duration, delay, function),
-                new Path(start.Y, end.Y, duration, delay, function),
-                new Path(start.Z, end.Z, duration, delay, function))
+                new AnimationPath(start.X, end.X, duration, delay, function),
+                new AnimationPath(start.Y, end.Y, duration, delay, function),
+                new AnimationPath(start.Z, end.Z, duration, delay, function))
         {
         }
 
@@ -236,9 +236,9 @@
         /// </exception>
         public Path3D(Float3D start, Float3D end, ulong duration, ulong delay)
             : this(
-                new Path(start.X, end.X, duration, delay),
-                new Path(start.Y, end.Y, duration, delay),
-                new Path(start.Z, end.Z, duration, delay))
+                new AnimationPath(start.X, end.X, duration, delay),
+                new AnimationPath(start.Y, end.Y, duration, delay),
+                new AnimationPath(start.Z, end.Z, duration, delay))
         {
         }
 
@@ -262,9 +262,9 @@
         /// </exception>
         public Path3D(Float3D start, Float3D end, ulong duration, AnimationFunctions.Function function)
             : this(
-                new Path(start.X, end.X, duration, function),
-                new Path(start.Y, end.Y, duration, function),
-                new Path(start.Z, end.Z, duration, function))
+                new AnimationPath(start.X, end.X, duration, function),
+                new AnimationPath(start.Y, end.Y, duration, function),
+                new AnimationPath(start.Z, end.Z, duration, function))
         {
         }
 
@@ -285,9 +285,9 @@
         /// </exception>
         public Path3D(Float3D start, Float3D end, ulong duration)
             : this(
-                new Path(start.X, end.X, duration),
-                new Path(start.Y, end.Y, duration),
-                new Path(start.Z, end.Z, duration))
+                new AnimationPath(start.X, end.X, duration),
+                new AnimationPath(start.Y, end.Y, duration),
+                new AnimationPath(start.Z, end.Z, duration))
         {
         }
 
@@ -303,7 +303,7 @@
         /// <param name="z">
         ///     The depth path.
         /// </param>
-        public Path3D(Path x, Path y, Path z)
+        public Path3D(AnimationPath x, AnimationPath y, AnimationPath z)
         {
             HorizontalPath = x;
             VerticalPath = y;
@@ -313,17 +313,17 @@
         /// <summary>
         ///     Gets the horizontal path
         /// </summary>
-        public Path HorizontalPath { get; }
+        public AnimationPath HorizontalPath { get; }
 
         /// <summary>
         ///     Gets the vertical path
         /// </summary>
-        public Path VerticalPath { get; }
+        public AnimationPath VerticalPath { get; }
 
         /// <summary>
         ///     Gets the depth path
         /// </summary>
-        public Path DepthPath { get; }
+        public AnimationPath DepthPath { get; }
 
 
         /// <summary>
@@ -341,7 +341,7 @@
         ///     Creates and returns a new <see cref="Path3D" /> based on the current path but in reverse order
         /// </summary>
         /// <returns>
-        ///     A new <see cref="Path" /> which is the reverse of the current <see cref="Path3D" />
+        ///     A new <see cref="AnimationPath" /> which is the reverse of the current <see cref="Path3D" />
         /// </returns>
         public Path3D Reverse()
         {

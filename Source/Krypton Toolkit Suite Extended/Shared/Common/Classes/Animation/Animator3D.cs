@@ -157,9 +157,9 @@ namespace Krypton.Toolkit.Suite.Extended.Common
                 {
                     _paths.Clear();
                     _paths.AddRange(value);
-                    var pathsX = new List<Path>();
-                    var pathsY = new List<Path>();
-                    var pathsZ = new List<Path>();
+                    var pathsX = new List<AnimationPath>();
+                    var pathsY = new List<AnimationPath>();
+                    var pathsZ = new List<AnimationPath>();
                     foreach (var p in value)
                     {
                         pathsX.Add(p.HorizontalPath);

@@ -303,7 +303,7 @@ namespace Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar.Suite
             }
 
             _animator.Paths =
-                new Path(_animatedValue ?? Value, Value, (ulong)AnimationSpeed, CustomAnimationFunction).ToArray();
+                new AnimationPath(_animatedValue ?? Value, Value, (ulong)AnimationSpeed, CustomAnimationFunction).ToArray();
             _animator.Repeat = false;
             _animator.Play(
                 new SafeInvoker<float>(
@@ -347,7 +347,7 @@ namespace Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar.Suite
                 return;
             }
 
-            _animator.Paths = new Path(0, 359, (ulong)MarqueeAnimationSpeed, CustomAnimationFunction).ToArray();
+            _animator.Paths = new AnimationPath(0, 359, (ulong)MarqueeAnimationSpeed, CustomAnimationFunction).ToArray();
             _animator.Repeat = true;
             _animator.Play(
                 new SafeInvoker<float>(

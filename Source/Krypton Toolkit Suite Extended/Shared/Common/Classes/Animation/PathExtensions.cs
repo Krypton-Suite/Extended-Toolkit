@@ -3,7 +3,7 @@
 namespace Krypton.Toolkit.Suite.Extended.Common
 {
     /// <summary>
-    ///     Contains public extensions methods about Path class
+    ///     Contains public extensions methods about AnimationPath class
     /// </summary>
     public static class PathExtensions
     {
@@ -14,9 +14,9 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <param name="end">Next point to follow</param>
         /// <param name="duration">Duration of the animation</param>
         /// <returns>An array of paths including the newly created one</returns>
-        public static Path[] ContinueTo(this Path[] paths, float end, ulong duration)
+        public static AnimationPath[] ContinueTo(this AnimationPath[] paths, float end, ulong duration)
         {
-            return paths.Concat(new[] { new Path(paths.Last().End, end, duration) }).ToArray();
+            return paths.Concat(new[] { new AnimationPath(paths.Last().End, end, duration) }).ToArray();
         }
 
         /// <summary>
@@ -27,10 +27,10 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <param name="duration">Duration of the animation</param>
         /// <param name="function">Animation controller function</param>
         /// <returns>An array of paths including the newly created one</returns>
-        public static Path[] ContinueTo(this Path[] paths, float end, ulong duration,
+        public static AnimationPath[] ContinueTo(this AnimationPath[] paths, float end, ulong duration,
             AnimationFunctions.Function function)
         {
-            return paths.Concat(new[] { new Path(paths.Last().End, end, duration, function) }).ToArray();
+            return paths.Concat(new[] { new AnimationPath(paths.Last().End, end, duration, function) }).ToArray();
         }
 
         /// <summary>
@@ -41,9 +41,9 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <param name="duration">Duration of the animation</param>
         /// <param name="delay">Starting delay</param>
         /// <returns>An array of paths including the newly created one</returns>
-        public static Path[] ContinueTo(this Path[] paths, float end, ulong duration, ulong delay)
+        public static AnimationPath[] ContinueTo(this AnimationPath[] paths, float end, ulong duration, ulong delay)
         {
-            return paths.Concat(new[] { new Path(paths.Last().End, end, duration, delay) }).ToArray();
+            return paths.Concat(new[] { new AnimationPath(paths.Last().End, end, duration, delay) }).ToArray();
         }
 
         /// <summary>
@@ -55,10 +55,10 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <param name="delay">Starting delay</param>
         /// <param name="function">Animation controller function</param>
         /// <returns>An array of paths including the newly created one</returns>
-        public static Path[] ContinueTo(this Path[] paths, float end, ulong duration, ulong delay,
+        public static AnimationPath[] ContinueTo(this AnimationPath[] paths, float end, ulong duration, ulong delay,
             AnimationFunctions.Function function)
         {
-            return paths.Concat(new[] { new Path(paths.Last().End, end, duration, delay, function) }).ToArray();
+            return paths.Concat(new[] { new AnimationPath(paths.Last().End, end, duration, delay, function) }).ToArray();
         }
 
 
@@ -69,7 +69,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <param name="end">Next point to follow</param>
         /// <param name="duration">Duration of the animation</param>
         /// <returns>An array of paths including the newly created one</returns>
-        public static Path[] ContinueTo(this Path path, float end, ulong duration)
+        public static AnimationPath[] ContinueTo(this AnimationPath path, float end, ulong duration)
         {
             return path.ToArray().ContinueTo(end, duration);
         }
@@ -82,7 +82,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <param name="duration">Duration of the animation</param>
         /// <param name="function">Animation controller function</param>
         /// <returns>An array of paths including the newly created one</returns>
-        public static Path[] ContinueTo(this Path path, float end, ulong duration, AnimationFunctions.Function function)
+        public static AnimationPath[] ContinueTo(this AnimationPath path, float end, ulong duration, AnimationFunctions.Function function)
         {
             return path.ToArray().ContinueTo(end, duration, function);
         }
@@ -95,7 +95,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <param name="duration">Duration of the animation</param>
         /// <param name="delay">Starting delay</param>
         /// <returns>An array of paths including the newly created one</returns>
-        public static Path[] ContinueTo(this Path path, float end, ulong duration, ulong delay)
+        public static AnimationPath[] ContinueTo(this AnimationPath path, float end, ulong duration, ulong delay)
         {
             return path.ToArray().ContinueTo(end, duration, delay);
         }
@@ -109,7 +109,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <param name="delay">Starting delay</param>
         /// <param name="function">Animation controller function</param>
         /// <returns>An array of paths including the newly created one</returns>
-        public static Path[] ContinueTo(this Path path, float end, ulong duration, ulong delay,
+        public static AnimationPath[] ContinueTo(this AnimationPath path, float end, ulong duration, ulong delay,
             AnimationFunctions.Function function)
         {
             return path.ToArray().ContinueTo(end, duration, delay, function);
@@ -122,7 +122,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <param name="paths">Array of paths</param>
         /// <param name="newPaths">An array of new paths to adds</param>
         /// <returns>An array of paths including the new ones</returns>
-        public static Path[] ContinueTo(this Path[] paths, params Path[] newPaths)
+        public static AnimationPath[] ContinueTo(this AnimationPath[] paths, params AnimationPath[] newPaths)
         {
             return paths.Concat(newPaths).ToArray();
         }
@@ -133,7 +133,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <param name="path">The path to continue</param>
         /// <param name="newPaths">An array of new paths to adds</param>
         /// <returns>An array of paths including the new ones</returns>
-        public static Path[] ContinueTo(this Path path, params Path[] newPaths)
+        public static AnimationPath[] ContinueTo(this AnimationPath path, params AnimationPath[] newPaths)
         {
             return path.ToArray().ContinueTo(newPaths);
         }
@@ -143,7 +143,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// </summary>
         /// <param name="path">The path to add to the array</param>
         /// <returns>An array of paths including the new ones</returns>
-        public static Path[] ToArray(this Path path)
+        public static AnimationPath[] ToArray(this AnimationPath path)
         {
             return new[] { path };
         }
