@@ -16,7 +16,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
 
         private readonly List<Path> _tempPaths = new List<Path>();
 
-        private readonly Timer _timer;
+        private readonly AnimationTimer _timer;
 
         private bool _tempReverseRepeat;
 
@@ -101,7 +101,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         public Animator(Path[] paths, FPSLimiterKnownValues fpsLimiter)
         {
             CurrentStatus = AnimatorStatus.Stopped;
-            _timer = new Timer(Elapsed, fpsLimiter);
+            _timer = new AnimationTimer(Elapsed, fpsLimiter);
             Paths = paths;
         }
 

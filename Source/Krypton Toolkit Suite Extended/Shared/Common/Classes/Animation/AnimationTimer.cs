@@ -8,7 +8,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
     /// <summary>
     ///     The timer class, will execute your code in specific time frames
     /// </summary>
-    public class Timer
+    public class AnimationTimer
     {
         private static Thread _timerThread;
 
@@ -16,12 +16,12 @@ namespace Krypton.Toolkit.Suite.Extended.Common
 
         private static readonly long StartTimeAsMs = DateTime.Now.Ticks;
 
-        private static readonly List<Timer> Subscribers = new List<Timer>();
+        private static readonly List<AnimationTimer> Subscribers = new List<AnimationTimer>();
 
         private readonly Action<ulong> _callback;
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="Timer" /> class.
+        ///     Initializes a new instance of the <see cref="AnimationTimer" /> class.
         /// </summary>
         /// <param name="callback">
         ///     The callback to be executed at each tick
@@ -29,13 +29,13 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <param name="fpsKnownLimit">
         ///     The max ticks per second
         /// </param>
-        public Timer(Action<ulong> callback, FPSLimiterKnownValues fpsKnownLimit = FPSLimiterKnownValues.LimitThirty)
+        public AnimationTimer(Action<ulong> callback, FPSLimiterKnownValues fpsKnownLimit = FPSLimiterKnownValues.LimitThirty)
             : this(callback, (int)fpsKnownLimit)
         {
         }
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="Timer" /> class.
+        ///     Initializes a new instance of the <see cref="AnimationTimer" /> class.
         /// </summary>
         /// <param name="callback">
         ///     The callback to be executed at each tick
@@ -43,7 +43,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <param name="fpsLimit">
         ///     The max ticks per second
         /// </param>
-        public Timer(Action<ulong> callback, int fpsLimit)
+        public AnimationTimer(Action<ulong> callback, int fpsLimit)
         {
             if (callback == null)
             {
