@@ -125,20 +125,20 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                             Rectangle r = new Rectangle(cellBounds.X + 3, cellBounds.Y + 3, barWidth, cellBounds.Height - 8);
                             if (par.GradientFill)
                             {
-                                using (LinearGradientBrush linearBrush = new LinearGradientBrush(r, par.BarColor, Color.White, LinearGradientMode.Horizontal)) //Color.FromArgb(255, 247, 251, 242)
+                                using (LinearGradientBrush linearBrush = new LinearGradientBrush(r, par.BarColour, Color.White, LinearGradientMode.Horizontal)) //Color.FromArgb(255, 247, 251, 242)
                                 {
                                     graphics.FillRectangle(linearBrush, r);
                                 }
                             }
                             else
                             {
-                                using (SolidBrush solidBrush = new SolidBrush(par.BarColor)) //Color.FromArgb(255, 247, 251, 242)
+                                using (SolidBrush solidBrush = new SolidBrush(par.BarColour)) //Color.FromArgb(255, 247, 251, 242)
                                 {
                                     graphics.FillRectangle(solidBrush, r);
                                 }
                             }
 
-                            using (Pen pen = new Pen(par.BarColor)) //Color.FromArgb(255, 140, 197, 66)))
+                            using (Pen pen = new Pen(par.BarColour)) //Color.FromArgb(255, 140, 197, 66)))
                             {
                                 graphics.DrawRectangle(pen, r);
                             }
@@ -146,15 +146,15 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
                         break;
                     case EnumConditionalFormatType.TwoColorsRange:
-                        TwoColorsParams TWCpar = (TwoColorsParams)FormatParams;
-                        Style.BackColor = TWCpar.ValueColor;
+                        TwoColoursParams TWCpar = (TwoColoursParams)FormatParams;
+                        Style.BackColor = TWCpar.ValueColour;
                         //  if (ContrastTextColor)
-                        Style.ForeColor = ContrastColor(TWCpar.ValueColor);
+                        Style.ForeColor = ContrastColor(TWCpar.ValueColour);
                         break;
                     case EnumConditionalFormatType.ThreeColorsRange:
-                        ThreeColorsParams THCpar = (ThreeColorsParams)FormatParams;
-                        Style.BackColor = THCpar.ValueColor;
-                        Style.ForeColor = ContrastColor(THCpar.ValueColor);
+                        ThreeColoursParams THCpar = (ThreeColoursParams)FormatParams;
+                        Style.BackColor = THCpar.ValueColour;
+                        Style.ForeColor = ContrastColor(THCpar.ValueColour);
                         break;
                     default:
                         Style.BackColor = this.DataGridView.DefaultCellStyle.BackColor;
