@@ -60,17 +60,6 @@
   <ItemGroup>
     <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2101" />
   </ItemGroup>
-
-  <ItemGroup>
-    <!--Canary icon-->
-    <None Include="Package Icons\Canary.png" Pack="true" PackagePath="\" />
-
-    <!--Stable icon-->
-    <None Include="Package Icons\Stable.png" Pack="true" PackagePath="\" />
-
-    <!--Nightly icon-->
-    <None Include="Package Icons\Nightly.png" Pack="true" PackagePath="\" />
-  </ItemGroup>
   
   <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
