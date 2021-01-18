@@ -1,4 +1,6 @@
-﻿using System.ComponentModel;
+﻿using Krypton.Toolkit.Suite.Extended.Common;
+using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
