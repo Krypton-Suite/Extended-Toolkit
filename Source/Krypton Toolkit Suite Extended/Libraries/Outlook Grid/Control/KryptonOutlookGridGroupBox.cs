@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
-using System.Linq;
+using System.Drawing.Drawing2D;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
@@ -138,7 +138,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
             // Create storage that maps onto the inherit instances
             _border = new PaletteBorder(_paletteBorder, null);
-            _dragColumnToGroupText = LangManager.Instance.GetString("DRAGCOLUMNTOGROUP");
+            _dragColumnToGroupText = LanguageManager.Instance.GetLocalisedString("DRAGCOLUMNTOGROUP");
 
             using (Graphics g = CreateGraphics())
             {

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Globalization;
 
 namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 {
