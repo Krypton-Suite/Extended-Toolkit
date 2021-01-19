@@ -1,4 +1,6 @@
 ﻿using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 {
@@ -149,12 +151,12 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                         TwoColoursParams TWCpar = (TwoColoursParams)FormatParams;
                         Style.BackColor = TWCpar.ValueColour;
                         //  if (ContrastTextColor)
-                        Style.ForeColor = ContrastColor(TWCpar.ValueColour);
+                        Style.ForeColor = ContrastColour(TWCpar.ValueColour);
                         break;
                     case EnumConditionalFormatType.ThreeColoursRange:
                         ThreeColoursParams THCpar = (ThreeColoursParams)FormatParams;
                         Style.BackColor = THCpar.ValueColour;
-                        Style.ForeColor = ContrastColor(THCpar.ValueColour);
+                        Style.ForeColor = ContrastColour(THCpar.ValueColour);
                         break;
                     default:
                         Style.BackColor = this.DataGridView.DefaultCellStyle.BackColor;

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
@@ -838,20 +837,20 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             if (_menuItems == null)
             {
                 // Create individual items
-                _menuSortAscending = new KryptonContextMenuItem(LangManager.Instance.GetString("SORTASCENDING"), Properties.Resources.sort_ascending, new EventHandler(OnSortAscending));
-                _menuSortDescending = new KryptonContextMenuItem(LangManager.Instance.GetString("SORTDESCENDING"), Properties.Resources.sort_descending, new EventHandler(OnSortDescending));
+                _menuSortAscending = new KryptonContextMenuItem(LanguageManager.Instance.GetLocalisedString("SORTASCENDING"), Properties.Resources.sort_az_ascending2, new EventHandler(OnSortAscending));
+                _menuSortDescending = new KryptonContextMenuItem(LanguageManager.Instance.GetLocalisedString("SORTDESCENDING"), Properties.Resources.sort_az_descending2, new EventHandler(OnSortDescending));
                 _menuSeparator1 = new KryptonContextMenuSeparator();
-                _menuExpand = new KryptonContextMenuItem(LangManager.Instance.GetString("EXPAND"), Properties.Resources.element_plus_16, new EventHandler(OnGroupExpand));
-                _menuCollapse = new KryptonContextMenuItem(LangManager.Instance.GetString("COLLAPSE"), Properties.Resources.element_minus_16, new EventHandler(OnGroupCollapse));
-                _menuUnGroup = new KryptonContextMenuItem(LangManager.Instance.GetString("UNGROUP"), Properties.Resources.element_delete, new EventHandler(OnUngroup));
+                _menuExpand = new KryptonContextMenuItem(LanguageManager.Instance.GetLocalisedString("EXPAND"), Properties.Resources.element_plus_16, new EventHandler(OnGroupExpand));
+                _menuCollapse = new KryptonContextMenuItem(LanguageManager.Instance.GetLocalisedString("COLLAPSE"), Properties.Resources.element_minus_16, new EventHandler(OnGroupCollapse));
+                _menuUnGroup = new KryptonContextMenuItem(LanguageManager.Instance.GetLocalisedString("UNGROUP"), Properties.Resources.element_delete, new EventHandler(OnUngroup));
                 _menuSeparator2 = new KryptonContextMenuSeparator();
-                _menuFullExpand = new KryptonContextMenuItem(LangManager.Instance.GetString("FULLEXPAND"), Properties.Resources.elements_plus_16, new EventHandler(OnFullExpand));
-                _menuFullCollapse = new KryptonContextMenuItem(LangManager.Instance.GetString("FULLCOLLAPSE"), Properties.Resources.elements_minus_16, new EventHandler(OnFullCollapse));
+                _menuFullExpand = new KryptonContextMenuItem(LanguageManager.Instance.GetLocalisedString("FULLEXPAND"), Properties.Resources.elements_plus_16, new EventHandler(OnFullExpand));
+                _menuFullCollapse = new KryptonContextMenuItem(LanguageManager.Instance.GetLocalisedString("FULLCOLLAPSE"), Properties.Resources.elements_minus_16, new EventHandler(OnFullCollapse));
                 _menuSeparator3 = new KryptonContextMenuSeparator();
-                _menuClearGrouping = new KryptonContextMenuItem(LangManager.Instance.GetString("CLEARGROUPING"), Properties.Resources.element_selection_delete, new EventHandler(OnClearGrouping));
-                _menuHideGroupBox = new KryptonContextMenuItem(LangManager.Instance.GetString("HIDEGROUPBOX"), null, new EventHandler(OnHideGroupBox));
-                _menuGroupInterval = new KryptonContextMenuItem(LangManager.Instance.GetString("GROUPINTERVAL"));
-                _menuSortBySummary = new KryptonContextMenuItem(LangManager.Instance.GetString("SORTBYSUMMARYCOUNT"), null, new EventHandler(OnSortBySummaryCount));
+                _menuClearGrouping = new KryptonContextMenuItem(LanguageManager.Instance.GetLocalisedString("CLEARGROUPING"), Properties.Resources.element_selection_delete, new EventHandler(OnClearGrouping));
+                _menuHideGroupBox = new KryptonContextMenuItem(LanguageManager.Instance.GetLocalisedString("HIDEGROUPBOX"), null, new EventHandler(OnHideGroupBox));
+                _menuGroupInterval = new KryptonContextMenuItem(LanguageManager.Instance.GetLocalisedString("GROUPINTERVAL"));
+                _menuSortBySummary = new KryptonContextMenuItem(LanguageManager.Instance.GetLocalisedString("SORTBYSUMMARYCOUNT"), null, new EventHandler(OnSortBySummaryCount));
                 _menuSortBySummary.CheckOnClick = true;
 
                 //Group Interval
@@ -861,7 +860,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 KryptonContextMenuItemBase[] arrayOptions = new KryptonContextMenuItemBase[names.Length];
                 for (int i = 0; i < names.Length; i++)
                 {
-                    it = new KryptonContextMenuItem(LangManager.Instance.GetString(names[i]));
+                    it = new KryptonContextMenuItem(LanguageManager.Instance.GetLocalisedString(names[i]));
                     it.Tag = names[i];
                     it.Click += OnGroupIntervalClick;
                     arrayOptions[i] = it;
