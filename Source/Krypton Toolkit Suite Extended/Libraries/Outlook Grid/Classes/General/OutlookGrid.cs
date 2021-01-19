@@ -1063,7 +1063,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             ConditionalFormatting newformat = ((List<ConditionalFormatting>)item.Tag)[item.SelectedIndex];
             if (format == null)
             {
-                formatConditions.Add(new Formatting.ConditionalFormatting(col.DataGridViewColumn.Name, newformat.FormatType, newformat.FormatParams));
+                formatConditions.Add(new ConditionalFormatting(col.DataGridViewColumn.Name, newformat.FormatType, newformat.FormatParams));
             }
             else
             {
@@ -1084,13 +1084,13 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 ConditionalFormatting format = formatConditions.Where(x => x.ColumnName == col.Name).FirstOrDefault();
                 if (format == null)
                 {
-                    ConditionalFormatting newformat = new Formatting.ConditionalFormatting(col.DataGridViewColumn.Name, EnumConditionalFormatType.TwoColoursRange, new TwoColorsParams(fm.colMin, fm.colMax));
+                    ConditionalFormatting newformat = new ConditionalFormatting(col.DataGridViewColumn.Name, EnumConditionalFormatType.TwoColoursRange, new TwoColoursParams(fm.colMin, fm.colMax));
                     formatConditions.Add(newformat);
                 }
                 else
                 {
                     format.FormatType = EnumConditionalFormatType.TwoColoursRange;
-                    format.FormatParams = new TwoColorsParams(fm.colMin, fm.colMax);
+                    format.FormatParams = new TwoColoursParams(fm.colMin, fm.colMax);
                 }
                 Fill();
             }
@@ -1108,7 +1108,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 ConditionalFormatting format = formatConditions.Where(x => x.ColumnName == col.Name).FirstOrDefault();
                 if (format == null)
                 {
-                    ConditionalFormatting newformat = new Formatting.ConditionalFormatting(col.DataGridViewColumn.Name, EnumConditionalFormatType.ThreeColoursRange, new ThreeColoursParams(Color.FromArgb(248, 105, 107), Color.FromArgb(255, 235, 132), Color.FromArgb(99, 190, 123)));
+                    ConditionalFormatting newformat = new ConditionalFormatting(col.DataGridViewColumn.Name, EnumConditionalFormatType.ThreeColoursRange, new ThreeColoursParams(Color.FromArgb(248, 105, 107), Color.FromArgb(255, 235, 132), Color.FromArgb(99, 190, 123)));
                     formatConditions.Add(newformat);
                 }
                 else
@@ -1131,7 +1131,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 ConditionalFormatting format = formatConditions.Where(x => x.ColumnName == col.Name).FirstOrDefault();
                 if (format == null)
                 {
-                    ConditionalFormatting newformat = new Formatting.ConditionalFormatting(col.DataGridViewColumn.Name, EnumConditionalFormatType.Bar, new BarParams(fm.colMin, fm.gradient));
+                    ConditionalFormatting newformat = new ConditionalFormatting(col.DataGridViewColumn.Name, EnumConditionalFormatType.Bar, new BarParams(fm.colMin, fm.gradient));
                     formatConditions.Add(newformat);
                 }
                 else
@@ -1720,27 +1720,27 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             if (_menuItems == null)
             {
                 // Create individual items
-                _menuSortAscending = new KryptonContextMenuItem(LangManager.Instance.GetString("SORTASCENDING"), Properties.Resources.sort_ascending, OnColumnSortAscending);
-                _menuSortDescending = new KryptonContextMenuItem(LangManager.Instance.GetString("SORTDESCENDING"), Properties.Resources.sort_descending, new EventHandler(OnColumnSortDescending));
-                _menuClearSorting = new KryptonContextMenuItem(LangManager.Instance.GetString("CLEARSORTING"), Properties.Resources.sort_up_down_delete_16, new EventHandler(OnColumnClearSorting));
+                _menuSortAscending = new KryptonContextMenuItem(LanguageManager.Instance.GetLocalisedString("SORTASCENDING"), Properties.Resources.sort_az_ascending2, OnColumnSortAscending);
+                _menuSortDescending = new KryptonContextMenuItem(LanguageManager.Instance.GetLocalisedString("SORTDESCENDING"), Properties.Resources.sort_az_descending2, new EventHandler(OnColumnSortDescending));
+                _menuClearSorting = new KryptonContextMenuItem(LanguageManager.Instance.GetLocalisedString("CLEARSORTING"), Properties.Resources.sort_up_down_delete_16, new EventHandler(OnColumnClearSorting));
                 _menuSeparator1 = new KryptonContextMenuSeparator();
-                _menuExpand = new KryptonContextMenuItem(LangManager.Instance.GetString("EXPAND"), Properties.Resources.element_plus_16, new EventHandler(OnGroupExpand));
-                _menuCollapse = new KryptonContextMenuItem(LangManager.Instance.GetString("COLLAPSE"), Properties.Resources.element_minus_16, new EventHandler(OnGroupCollapse));
+                _menuExpand = new KryptonContextMenuItem(LanguageManager.Instance.GetLocalisedString("EXPAND"), Properties.Resources.element_plus_16, new EventHandler(OnGroupExpand));
+                _menuCollapse = new KryptonContextMenuItem(LanguageManager.Instance.GetLocalisedString("COLLAPSE"), Properties.Resources.element_minus_16, new EventHandler(OnGroupCollapse));
                 _menuSeparator4 = new KryptonContextMenuSeparator();
-                _menuGroupByThisColumn = new KryptonContextMenuItem(LangManager.Instance.GetString("GROUP"), Properties.Resources.element, new EventHandler(OnGroupByThisColumn));
-                _menuUngroupByThisColumn = new KryptonContextMenuItem(LangManager.Instance.GetString("UNGROUP"), Properties.Resources.element_delete, new EventHandler(OnUnGroupByThisColumn));
-                _menuShowGroupBox = new KryptonContextMenuItem(LangManager.Instance.GetString("SHOWGROUPBOX"), null, new EventHandler(OnShowGroupBox));
-                _menuHideGroupBox = new KryptonContextMenuItem(LangManager.Instance.GetString("HIDEGROUPBOX"), null, new EventHandler(OnHideGroupBox));
+                _menuGroupByThisColumn = new KryptonContextMenuItem(LanguageManager.Instance.GetLocalisedString("GROUP"), Properties.Resources.element, new EventHandler(OnGroupByThisColumn));
+                _menuUngroupByThisColumn = new KryptonContextMenuItem(LanguageManager.Instance.GetLocalisedString("UNGROUP"), Properties.Resources.element_delete, new EventHandler(OnUnGroupByThisColumn));
+                _menuShowGroupBox = new KryptonContextMenuItem(LanguageManager.Instance.GetLocalisedString("SHOWGROUPBOX"), null, new EventHandler(OnShowGroupBox));
+                _menuHideGroupBox = new KryptonContextMenuItem(LanguageManager.Instance.GetLocalisedString("HIDEGROUPBOX"), null, new EventHandler(OnHideGroupBox));
                 _menuSeparator2 = new KryptonContextMenuSeparator();
-                _menuBestFitColumn = new KryptonContextMenuItem(LangManager.Instance.GetString("BESTFIT"), null, new EventHandler(OnBestFitColumn));
-                _menuBestFitAllColumns = new KryptonContextMenuItem(LangManager.Instance.GetString("BESTFITALL"), Properties.Resources.fit_to_size, new EventHandler(OnBestFitAllColumns));
+                _menuBestFitColumn = new KryptonContextMenuItem(LanguageManager.Instance.GetLocalisedString("BESTFIT"), null, new EventHandler(OnBestFitColumn));
+                _menuBestFitAllColumns = new KryptonContextMenuItem(LanguageManager.Instance.GetLocalisedString("BESTFITALL"), Properties.Resources.fit_to_size, new EventHandler(OnBestFitAllColumns));
                 _menuSeparator3 = new KryptonContextMenuSeparator();
-                _menuVisibleColumns = new KryptonContextMenuItem(LangManager.Instance.GetString("COLUMNS"), Properties.Resources.table2_selection_column, null);
-                _menuGroupInterval = new KryptonContextMenuItem(LangManager.Instance.GetString("GROUPINTERVAL"));
-                _menuSortBySummary = new KryptonContextMenuItem(LangManager.Instance.GetString("SORTBYSUMMARYCOUNT"), null, new EventHandler(OnSortBySummary));
+                _menuVisibleColumns = new KryptonContextMenuItem(LanguageManager.Instance.GetLocalisedString("COLUMNS"), Properties.Resources.table2_selection_column, null);
+                _menuGroupInterval = new KryptonContextMenuItem(LanguageManager.Instance.GetLocalisedString("GROUPINTERVAL"));
+                _menuSortBySummary = new KryptonContextMenuItem(LanguageManager.Instance.GetLocalisedString("SORTBYSUMMARYCOUNT"), null, new EventHandler(OnSortBySummary));
                 _menuSortBySummary.CheckOnClick = true;
                 _menuSeparator5 = new KryptonContextMenuSeparator();
-                _menuConditionalFormatting = new KryptonContextMenuItem(LangManager.Instance.GetString("CONDITIONALFORMATTING"), Properties.Resources.table_conditional_16, null);
+                _menuConditionalFormatting = new KryptonContextMenuItem(LanguageManager.Instance.GetLocalisedString("CONDITIONALFORMATTING"), Properties.Resources.table_conditional_16, null);
 
                 //Group Interval
                 KryptonContextMenuItems _GroupIntervalItems;
@@ -1749,7 +1749,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 KryptonContextMenuItemBase[] arrayOptions = new KryptonContextMenuItemBase[names.Length];
                 for (int i = 0; i < names.Length; i++)
                 {
-                    it = new KryptonContextMenuItem(LangManager.Instance.GetString(names[i]));
+                    it = new KryptonContextMenuItem(LanguageManager.Instance.GetLocalisedString(names[i]));
                     it.Tag = names[i];
                     it.Click += OnGroupIntervalClick;
                     arrayOptions[i] = it;
@@ -1845,7 +1845,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 arrayOptions = new KryptonContextMenuItemBase[names.Length + 2];
                 for (int i = 0; i < names.Length; i++)
                 {
-                    it = new KryptonContextMenuItem(LangManager.Instance.GetString(names[i]));
+                    it = new KryptonContextMenuItem(LanguageManager.Instance.GetLocalisedString(names[i]));
                     it.Tag = names[i];
 
                     if (names[i] == EnumConditionalFormatType.Bar.ToString())
@@ -1854,7 +1854,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
                         //Solid
                         KryptonContextMenuHeading KFormattingBarHeadingSolid = new KryptonContextMenuHeading();
-                        KFormattingBarHeadingSolid.Text = LangManager.Instance.GetString("SolidFill");
+                        KFormattingBarHeadingSolid.Text = LanguageManager.Instance.GetLocalisedString("SolidFill");
                         KryptonContextMenuImageSelect KFormattingBarImgSelectSolid = new KryptonContextMenuImageSelect();
                         KFormattingBarImgSelectSolid.ImageList = imgListFormatting;
                         KFormattingBarImgSelectSolid.ImageIndexStart = 0;
@@ -1865,7 +1865,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
                         //Gradient
                         KryptonContextMenuHeading KFormattingBarHeadingGradient = new KryptonContextMenuHeading();
-                        KFormattingBarHeadingGradient.Text = LangManager.Instance.GetString("GradientFill");
+                        KFormattingBarHeadingGradient.Text = LanguageManager.Instance.GetLocalisedString("GradientFill");
                         KryptonContextMenuImageSelect KFormattingBarImgSelectGradient = new KryptonContextMenuImageSelect();
                         KFormattingBarImgSelectGradient.ImageList = imgListFormatting;
                         KFormattingBarImgSelectGradient.ImageIndexStart = 6;
@@ -1876,17 +1876,17 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
                         //Custom
                         KryptonContextMenuHeading KFormattingBarHeadingOther = new KryptonContextMenuHeading();
-                        KFormattingBarHeadingOther.Text = LangManager.Instance.GetString("Other");
+                        KFormattingBarHeadingOther.Text = LanguageManager.Instance.GetLocalisedString("Other");
                         KryptonContextMenuItem it2 = null;
-                        it2 = new KryptonContextMenuItem(LangManager.Instance.GetString("CustomThreeDots"));
+                        it2 = new KryptonContextMenuItem(LanguageManager.Instance.GetLocalisedString("CustomThreeDots"));
                         it2.Tag = "";
                         it2.Image = Properties.Resources.paint_bucket_green;
                         it2.Click += OnBarCustomClick;
 
-                        KryptonContextMenuItems _Bars = new KryptonContextMenuItems(new ComponentFactory.Krypton.Toolkit.KryptonContextMenuItemBase[] { it2 });
+                        KryptonContextMenuItems _Bars = new KryptonContextMenuItems(new KryptonContextMenuItemBase[] { it2 });
 
                         //Menu construction
-                        it.Items.AddRange(new ComponentFactory.Krypton.Toolkit.KryptonContextMenuItemBase[] {
+                        it.Items.AddRange(new KryptonContextMenuItemBase[] {
                         KFormattingBarHeadingSolid,
                         KFormattingBarImgSelectSolid,
                         KFormattingBarHeadingGradient,
@@ -1914,12 +1914,12 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                         sep1.Tag = "";
 
                         KryptonContextMenuItem it2 = null;
-                        it2 = new KryptonContextMenuItem(LangManager.Instance.GetString("CustomThreeDots"));
+                        it2 = new KryptonContextMenuItem(LanguageManager.Instance.GetLocalisedString("CustomThreeDots"));
                         it2.Tag = "";
                         it2.Image = Properties.Resources.paint_bucket_green;
                         it2.Click += OnTwoColorsCustomClick;
 
-                        _TwoColors = new KryptonContextMenuItems(new ComponentFactory.Krypton.Toolkit.KryptonContextMenuItemBase[] { sep1, it2 });
+                        _TwoColors = new KryptonContextMenuItems(new KryptonContextMenuItemBase[] { sep1, it2 });
                         it.Items.Add(_TwoColors);
                     }
                     else if (names[i] == EnumConditionalFormatType.ThreeColoursRange.ToString())
@@ -1941,12 +1941,12 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                         sep1.Tag = "";
 
                         KryptonContextMenuItem it2 = null;
-                        it2 = new KryptonContextMenuItem(LangManager.Instance.GetString("CustomThreeDots"));
+                        it2 = new KryptonContextMenuItem(LanguageManager.Instance.GetLocalisedString("CustomThreeDots"));
                         it2.Tag = "";
                         it2.Image = Properties.Resources.paint_bucket_green;
                         it2.Click += OnThreeColorsCustomClick;
 
-                        _ThreeColors = new KryptonContextMenuItems(new ComponentFactory.Krypton.Toolkit.KryptonContextMenuItemBase[] { sep1, it2 });
+                        _ThreeColors = new KryptonContextMenuItems(new KryptonContextMenuItemBase[] { sep1, it2 });
                         it.Items.Add(_ThreeColors);
                     }
 
@@ -1955,7 +1955,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                     sep2.Tag = "";
                     arrayOptions[i + 1] = sep2;
                     KryptonContextMenuItem it3 = null;
-                    it3 = new KryptonContextMenuItem(LangManager.Instance.GetString("ClearRules"));
+                    it3 = new KryptonContextMenuItem(LanguageManager.Instance.GetLocalisedString("ClearRules"));
                     it3.Image = Properties.Resources.eraser;
                     it3.Tag = "";
                     it3.Click += OnClearConditionalClick;
