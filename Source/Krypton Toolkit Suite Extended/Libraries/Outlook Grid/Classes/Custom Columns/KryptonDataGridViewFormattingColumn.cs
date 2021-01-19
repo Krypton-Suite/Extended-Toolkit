@@ -145,13 +145,13 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                         }
 
                         break;
-                    case EnumConditionalFormatType.TwoColorsRange:
+                    case EnumConditionalFormatType.TwoColoursRange:
                         TwoColoursParams TWCpar = (TwoColoursParams)FormatParams;
                         Style.BackColor = TWCpar.ValueColour;
                         //  if (ContrastTextColor)
                         Style.ForeColor = ContrastColor(TWCpar.ValueColour);
                         break;
-                    case EnumConditionalFormatType.ThreeColorsRange:
+                    case EnumConditionalFormatType.ThreeColoursRange:
                         ThreeColoursParams THCpar = (ThreeColoursParams)FormatParams;
                         Style.BackColor = THCpar.ValueColour;
                         Style.ForeColor = ContrastColor(THCpar.ValueColour);
