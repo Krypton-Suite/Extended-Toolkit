@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -7,43 +6,55 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 {
     internal class OutlookGridRowComparer2 : IComparer<OutlookGridRow>
     {
-        List<Tuple<int, SortOrder, IComparer>> sortColumnIndexAndOrder;
+        KryptonOutlookGrid outlookGrid;
+
+        List<OutlookGridColumn> sortedColumns;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="OutlookGridRowComparer2"/> class.
         /// </summary>
-        /// <param name="sortList">The sort list, tuple (column index, sortorder, Icomparer)</param>
-        public OutlookGridRowComparer2(List<Tuple<int, SortOrder, IComparer>> sortList)
+        /// <param name="kryptonOutlookGrid">The KryptonOutlookGrid owning the rows and columns.</param>
+        /// <param name="sortedColumnsList">A list of the sorted columns.</param>
+        public OutlookGridRowComparer2(KryptonOutlookGrid kryptonOutlookGrid, List<OutlookGridColumn> sortedColumnsList)
         {
-            sortColumnIndexAndOrder = sortList;
+            outlookGrid = kryptonOutlookGrid;
+
+            sortedColumns = sortedColumnsList;
         }
 
         #region IComparer Members
 
         /// <summary>
-        /// Compares the specified x.
+        /// Compares the specified rows.
         /// </summary>
-        /// <param name="x">The x.</param>
-        /// <param name="y">The y.</param>
+        /// <param name="row1">The first row.</param>
+        /// <param name="row2">The second row.</param>
         /// <returns></returns>
         /// <exception cref="System.Exception">OutlookGridRowComparer:  + this.ToString()</exception>
-        public int Compare(OutlookGridRow x, OutlookGridRow y)
+        public int Compare(OutlookGridRow row1, OutlookGridRow row2)
         {
             int compareResult = 0;
             int orderModifier;
             try
             {
-                for (int i = 0; i < sortColumnIndexAndOrder.Count; i++)
+                for (int i = 0; i < sortedColumns.Count; i++)
                 {
                     if (compareResult == 0)
                     {
-                        orderModifier = (sortColumnIndexAndOrder[i].Item2 == SortOrder.Ascending ? 1 : -1);
+                        orderModifier = (sortedColumns[i].SortDirection == SortOrder.Ascending ? 1 : -1);
 
-                        object o1 = x.Cells[sortColumnIndexAndOrder[i].Item1].Value;
-                        object o2 = y.Cells[sortColumnIndexAndOrder[i].Item1].Value;
-                        if (sortColumnIndexAndOrder[i].Item3 != null)
+                        int columnIndex = sortedColumns[i].DataGridViewColumn.Index;
+
+                        object o1 = row1.Cells[columnIndex].Value;
+                        object o2 = row2.Cells[columnIndex].Value;
+                        if (sortedColumns[i].GroupingType.ItemsComparer != null)
                         {
-                            compareResult = sortColumnIndexAndOrder[i].Item3.Compare(o1, o2) * orderModifier;
+                            compareResult = sortedColumns[i].GroupingType.ItemsComparer.Compare(o1, o2) * orderModifier;
+                        }
+                        else if (this.outlookGrid.OnSortCompare(sortedColumns[i], o1, o2, row1, row2,
+                                                                out int userCompareResult))
+                        {
+                            compareResult = userCompareResult * orderModifier;
                         }
                         else
                         {

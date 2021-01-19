@@ -100,9 +100,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         }
 
         /// <summary>
-        /// Gets a list of columns which are sorted and not grouped.
+        /// Gets a list of columns which are grouped.
         /// </summary>
-        /// <returns>List of Column indexes and SortDirection ordered by SortIndex.</returns>
+        /// <returns>List of Column indexes and SortDirection ordered by GroupIndex.</returns>
         public List<Tuple<int, SortOrder, IComparer>> GetIndexAndSortGroupedColumns()
         {
             List<Tuple<int, SortOrder, IComparer>> res = new List<Tuple<int, SortOrder, IComparer>>();
@@ -113,6 +113,17 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                     res.Add(Tuple.Create<int, SortOrder, IComparer>(col.DataGridViewColumn.Index, col.SortDirection, col.GroupingType.ItemsComparer));
             }
             return res;
+        }
+
+        /// <summary>
+        /// Gets a list of columns which are grouped.
+        /// </summary>
+        /// <returns>List of Columns ordered by GroupIndex.</returns>
+        public List<OutlookGridColumn> GetGroupedColumns()
+        {
+            return this.Where(c => c.IsGrouped && c.GroupIndex > -1)
+                       .OrderBy(c => c.GroupIndex)
+                       .ToList();
         }
 
         /// <summary>
@@ -133,6 +144,17 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         public OutlookGridColumn FindFromColumnName(string name)
         {
             return this.FirstOrDefault(x => x.Name == name);
+        }
+
+        /// <summary>
+        /// Gets a list of columns which are sorted and not grouped.
+        /// </summary>
+        /// <returns>List of Columns ordered by SortIndex.</returns>
+        public List<OutlookGridColumn> GetSortedOnlyColumns()
+        {
+            return this.Where(c => !c.IsGrouped && c.SortIndex > -1)
+                       .OrderBy(c => c.SortIndex)
+                       .ToList();
         }
 
         /// <summary>
