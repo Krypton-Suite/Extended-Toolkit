@@ -41,9 +41,9 @@
     <AssemblyVersion>5.550.2102</AssemblyVersion>
     <FileVersion>5.550.2102</FileVersion>
     <Version>5.550.2102</Version>
-  </PropertyGroup
+  </PropertyGroup>
 
-  <!--Stable NuGet package configuration-->
+  <!-- NuGet package configuration-->
   <ItemGroup>
     <PackageReference Include="Krypton.Toolkit" Version="5.550.2011" />
   </ItemGroup>
