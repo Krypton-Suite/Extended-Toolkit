@@ -64,12 +64,6 @@
   </ItemGroup>
   
   <ItemGroup>
-    <!--<None Include="Package Icons\Canary.png" Pack="true" PackagePath="\" />-->
-    <None Include="Package Icons\Stable.png" Pack="true" PackagePath="\" />
-    <!--<None Include="Package Icons\Nightly.png" Pack="true" PackagePath="\" />-->
-  </ItemGroup>
-  
-  <ItemGroup>
     <Reference Include="Krypton.Toolkit.Suite.Extended.Dialogs">
       <HintPath>..\Extended Dialogs\obj\Debug\net45\Krypton.Toolkit.Suite.Extended.Dialogs.dll</HintPath>
     </Reference>
