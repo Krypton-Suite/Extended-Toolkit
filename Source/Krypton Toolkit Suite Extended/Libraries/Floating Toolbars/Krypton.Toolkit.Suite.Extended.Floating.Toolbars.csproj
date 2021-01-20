@@ -20,7 +20,7 @@
     <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
   </PropertyGroup>
 
-  <!--Canary package configuration-->
+  <!--Canary package configuration-
   <PropertyGroup>
     <PackageId>Krypton.Toolkit.Suite.Extended.Floating.Toolbars.Canary</PackageId>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Canary</PackageOutputPath>
@@ -28,7 +28,7 @@
     <AssemblyVersion>6.0.2102</AssemblyVersion>
     <FileVersion>6.0.2102</FileVersion>
     <Version>6.0.2102</Version>
-  </PropertyGroup>
+  </PropertyGroup>-->
 
   <!--Nightly package configuration-
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
@@ -38,7 +38,7 @@
     <VersionSuffix>pre$([System.DateTime]::UtcNow.ToString(yyyyMMdd-HHmm))</VersionSuffix>
   </PropertyGroup>-->
 
-  <!--Stable package configuration-
+  <!--Stable package configuration-->
   <PropertyGroup>
     <PackageId>Krypton.Toolkit.Suite.Extended.Floating.Toolbars</PackageId>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Stable</PackageOutputPath>
@@ -46,17 +46,17 @@
     <AssemblyVersion>5.550.2102</AssemblyVersion>
     <FileVersion>5.550.2102</FileVersion>
     <Version>5.550.2102</Version>
-  </PropertyGroup>-->
+  </PropertyGroup>
 
-  <!--Stable NuGet packages
+  <!--Stable NuGet packages-->
   <ItemGroup>
     <PackageReference Include="Krypton.Toolkit" Version="5.550.2011" />
-  </ItemGroup>-->
+  </ItemGroup>
 
-  <!--Canary NuGet package configuration-->
+  <!--Canary NuGet package configuration-
   <ItemGroup>
     <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2101" />
-  </ItemGroup>
+  </ItemGroup>-->
 
   <ItemGroup>
     <None Include="Package Icons\Canary.png" Pack="true" PackagePath="\" />
