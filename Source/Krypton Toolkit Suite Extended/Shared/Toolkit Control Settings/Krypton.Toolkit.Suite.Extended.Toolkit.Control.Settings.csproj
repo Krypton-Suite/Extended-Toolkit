@@ -50,7 +50,7 @@
 
   <!--Stable NuGet package configuration-->
   <ItemGroup>
-    <PackageReference Include="Krypton.Toolkit" Version="5.550.2011" />
+    <PackageReference Include="Krypton.Toolkit" Version="5.550.2101" />
   </ItemGroup>
 
   <!--Canary NuGet package configuration-
