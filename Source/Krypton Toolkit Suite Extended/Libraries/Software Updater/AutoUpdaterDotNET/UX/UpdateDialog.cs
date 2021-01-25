@@ -177,6 +177,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.AutoUpdaterDotNET
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "{0} {1} is available!";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.UpdateDialog_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.UpdateDialog_FormClosed);
             this.Load += new System.EventHandler(this.UpdateDialog_Load);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
@@ -357,6 +358,14 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.AutoUpdaterDotNET
         }
 
         private void UpdateDialog_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (AutoUpdater.Mandatory && AutoUpdater.UpdateMode == Mode.FORCED)
+            {
+                e.Cancel = ModifierKeys == Keys.Alt || ModifierKeys == Keys.F4;
+            }
+        }
+
+        private void UpdateDialog_FormClosed(object sender, FormClosedEventArgs e)
         {
             AutoUpdater.Running = false;
         }

@@ -360,18 +360,21 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.AutoUpdaterDotNET
 
         private void DownloadUpdateDialog_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (_webClient == null)
+            if (AutoUpdater.Mandatory && AutoUpdater.UpdateMode == Mode.FORCEDDOWNLOAD)
             {
-                DialogResult = DialogResult.Cancel;
+                if (ModifierKeys == Keys.Alt || ModifierKeys == Keys.F4)
+                {
+                    e.Cancel = true;
+
+                    return;
+                }
             }
-            else if (_webClient.IsBusy)
+
+            if (_webClient != null && _webClient.IsBusy)
             {
                 _webClient.CancelAsync();
+
                 DialogResult = DialogResult.Cancel;
-            }
-            else
-            {
-                DialogResult = DialogResult.OK;
             }
         }
     }
