@@ -40,7 +40,9 @@
   </PropertyGroup>-->
 
   <!--Stable package configuration-
-  <PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release">
+    <OutputPath>Build\Lib</OutputPath>
+    <DebugType>pdbonly</DebugType>
     <PackageId>Krypton.Toolkit.Suite.Extended.Tool.Strip.Items</PackageId>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Stable</PackageOutputPath>
     <PackageIcon>Stable.png</PackageIcon>

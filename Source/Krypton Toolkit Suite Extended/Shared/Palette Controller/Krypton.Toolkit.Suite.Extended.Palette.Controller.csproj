@@ -32,10 +32,12 @@
 		<PackageOutputPath>..\..\..\..\Bin\NuGet\Nightly</PackageOutputPath>
 		<PackageIcon>Nightly.png</PackageIcon>
 		<VersionSuffix>pre$([System.DateTime]::UtcNow.ToString(yyyyMMdd-HHmm))</VersionSuffix>
-	</PropertyGroup>-
+	</PropertyGroup>-->
 
-Stable package configuration-
-	<PropertyGroup>
+ <!--Stable package configuration-
+	<PropertyGroup Condition=" '$(Configuration)' == 'Release">
+    <OutputPath>Build\Lib</OutputPath>
+    <DebugType>pdbonly</DebugType>
 		<PackageId>Krypton.Toolkit.Suite.Extended.Palette.Controller</PackageId>
 		<PackageOutputPath>..\..\..\..\Bin\NuGet\Stable</PackageOutputPath>
 		<PackageIcon>Stable.png</PackageIcon>
