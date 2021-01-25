@@ -1,4 +1,5 @@
-﻿using Krypton.Toolkit.Suite.Extended.Core;
+﻿using Krypton.Toolkit.Extended.Palette.Controller;
+using Krypton.Toolkit.Suite.Extended.Core;
 using System;
 using System.ComponentModel;
 using System.Drawing;
@@ -455,13 +456,15 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
         #endregion
 
         #region Variables
-        private bool _showColourInformation;
+        private bool _showColourInformation, _invertColours;
 
         private Color[] _paletteColours = new Color[29];
 
         private Color _defaultColour;
 
         private PictureBox[] _previews;
+
+        private PaletteMode _paletteMode;
 
         //Palette State
         private KryptonManager k_manager = new KryptonManager();
@@ -477,11 +480,18 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
         [DefaultValue(true)]
         public bool ShowColourInformation { get => _showColourInformation; set => _showColourInformation = value; }
 
+        [DefaultValue(false)]
+        public bool InvertColours { get => _invertColours; set => _invertColours = value; }
+
         public Color[] PaletteColours { get => _paletteColours; set { _paletteColours = value; Invalidate(); } }
 
         public Color DefaultColour { get => _defaultColour; set { _defaultColour = value; Invalidate(); } }
 
         public PictureBox[] ColourPreviews { get => _previews; private set => _previews = value; }
+
+        public KryptonPalette Palette { get => internalPalette; set => internalPalette = value; }
+
+        public PaletteMode PaletteMode { get => _paletteMode; set => _paletteMode = value; }
         #endregion
 
         #region Constructors
@@ -598,7 +608,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
         /// <summary>Propagates the colour preview array.</summary>
         private void PropagateColourPreviewArray()
         {
-            _previews = new PictureBox[29];
+            _previews = new PictureBox[30];
 
             ColourPreviews[0] = pbxBaseColour;
 
@@ -753,7 +763,15 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
         {
             try
             {
+                foreach (Color c in PaletteColours)
+                {
+                    if (c != Color.Transparent || c != Color.Empty)
+                    {
+                        //KryptonPaletteCreationEngine.ExportPaletteTheme(Palette, PaletteMode, GetPaletteColours()[0], GetPaletteColours()[1], GetPaletteColours()[2], GetPaletteColours()[3], GetPaletteColours()[4], GetPaletteColours()[5], GetPaletteColours()[6], GetPaletteColours()[7], GetPaletteColours()[8], GetPaletteColours()[9], GetPaletteColours()[10], GetPaletteColours()[11], GetPaletteColours()[12], GetPaletteColours()[13], GetPaletteColours()[14], GetPaletteColours()[15], GetPaletteColours()[16], GetPaletteColours()[17], GetPaletteColours()[18], GetPaletteColours()[19], GetPaletteColours()[20], GetPaletteColours()[21], GetPaletteColours()[22], GetPaletteColours()[23], GetPaletteColours()[24], GetPaletteColours()[25], GetPaletteColours()[26], GetPaletteColours()[27], GetPaletteColours()[28], InvertColours);
 
+                        KryptonPaletteCreationEngine.ExportPaletteTheme(Palette, PaletteMode, GetPaletteColours(), InvertColours);
+                    }
+                }
             }
             catch (Exception e)
             {

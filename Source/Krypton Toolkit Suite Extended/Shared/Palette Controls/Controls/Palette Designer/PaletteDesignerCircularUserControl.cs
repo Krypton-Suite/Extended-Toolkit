@@ -36,7 +36,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
         private Suite.Extended.Base.CircularPictureBox cpbxCustomColourOne;
         private Suite.Extended.Base.CircularPictureBox cpbxLinkVisitedColour;
         private Suite.Extended.Base.CircularPictureBox cpbxLinkHoverColour;
-        private Suite.Extended.Base.CircularPictureBox circularPictureBox29;
+        private Suite.Extended.Base.CircularPictureBox cbpxDisabledTextColour;
         private Suite.Extended.Base.CircularPictureBox circularPictureBox30;
         private Suite.Extended.Base.CircularPictureBox circularPictureBox31;
         private Suite.Extended.Base.CircularPictureBox circularPictureBox32;
@@ -86,7 +86,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.cpbxCustomColourOne = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
             this.cpbxLinkVisitedColour = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
             this.cpbxLinkHoverColour = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
-            this.circularPictureBox29 = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
+            this.cbpxDisabledTextColour = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
             this.circularPictureBox30 = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
             this.circularPictureBox31 = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
             this.circularPictureBox32 = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
@@ -130,7 +130,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             ((System.ComponentModel.ISupportInitialize)(this.cpbxCustomColourOne)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cpbxLinkVisitedColour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cpbxLinkHoverColour)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox29)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbpxDisabledTextColour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox30)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox31)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox32)).BeginInit();
@@ -426,16 +426,16 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.cpbxLinkHoverColour.TabStop = false;
             this.cpbxLinkHoverColour.ToolTipValues = null;
             // 
-            // circularPictureBox29
+            // cbpxDisabledTextColour
             // 
-            this.circularPictureBox29.BackColor = System.Drawing.Color.White;
-            this.circularPictureBox29.Location = new System.Drawing.Point(1079, 318);
-            this.circularPictureBox29.Name = "circularPictureBox29";
-            this.circularPictureBox29.Size = new System.Drawing.Size(64, 64);
-            this.circularPictureBox29.TabIndex = 41;
-            this.circularPictureBox29.TabStop = false;
-            this.circularPictureBox29.ToolTipValues = null;
-            this.circularPictureBox29.Visible = false;
+            this.cbpxDisabledTextColour.BackColor = System.Drawing.Color.White;
+            this.cbpxDisabledTextColour.Location = new System.Drawing.Point(1079, 318);
+            this.cbpxDisabledTextColour.Name = "cbpxDisabledTextColour";
+            this.cbpxDisabledTextColour.Size = new System.Drawing.Size(64, 64);
+            this.cbpxDisabledTextColour.TabIndex = 41;
+            this.cbpxDisabledTextColour.TabStop = false;
+            this.cbpxDisabledTextColour.ToolTipValues = null;
+            this.cbpxDisabledTextColour.Visible = false;
             // 
             // circularPictureBox30
             // 
@@ -586,7 +586,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // PaletteDesignerCircularUserControl
             // 
             this.BackColor = System.Drawing.Color.Transparent;
-            this.Controls.Add(this.circularPictureBox29);
+            this.Controls.Add(this.cbpxDisabledTextColour);
             this.Controls.Add(this.circularPictureBox30);
             this.Controls.Add(this.circularPictureBox31);
             this.Controls.Add(this.circularPictureBox32);
@@ -659,7 +659,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             ((System.ComponentModel.ISupportInitialize)(this.cpbxCustomColourOne)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cpbxLinkVisitedColour)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cpbxLinkHoverColour)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox29)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbpxDisabledTextColour)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox30)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox31)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox32)).EndInit();
@@ -706,6 +706,8 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
         public Color DefaultColour { get => _defaultColour; set { _defaultColour = value; Invalidate(); } }
 
         public Suite.Extended.Base.CircularPictureBox[] ColourPreviews { get => _previews; private set => _previews = value; }
+
+        public KryptonPalette Palette { get => internalPalette; set => internalPalette = value; }
         #endregion
 
         #region Constructors
@@ -843,7 +845,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
         /// <summary>Propagates the colour preview array.</summary>
         private void PropagateColourPreviewArray()
         {
-            _previews = new Suite.Extended.Base.CircularPictureBox[29];
+            _previews = new Suite.Extended.Base.CircularPictureBox[30];
 
             ColourPreviews[0] = cpbxBaseColour;
 

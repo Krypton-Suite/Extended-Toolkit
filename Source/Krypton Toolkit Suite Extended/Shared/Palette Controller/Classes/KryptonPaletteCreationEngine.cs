@@ -8,7 +8,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controller
     /// <summary>
     /// This class contains the logic, and does the heavy lifting to create a new <seealso cref="KryptonPalette"/> so you don't have to!
     /// </summary>
-    public static class PaletteEditorEngine
+    public static class KryptonPaletteCreationEngine
     {
         /// <summary>Exports the palette theme.</summary>
         /// <param name="palette">The palette.</param>
@@ -2098,5 +2098,557 @@ namespace Krypton.Toolkit.Extended.Palette.Controller
             }
         }
         #endregion
+
+        /// <summary>Exports the palette theme.</summary>
+        /// <param name="palette">The palette.</param>
+        /// <param name="paletteMode">The palette mode.</param>
+        /// <param name="paletteColourArray">The palette colour array.</param>
+        /// <param name="invertColours">if set to <c>true</c> [invert colours].</param>
+        public static void ExportPaletteTheme(KryptonPalette palette, PaletteMode paletteMode, Color[] paletteColourArray, bool invertColours = false)
+        {
+            palette = new KryptonPalette();
+
+            try
+            {
+                palette.BasePaletteMode = paletteMode;
+
+                if (paletteColourArray[4] == Color.Transparent)
+                {
+                    paletteColourArray[4] = paletteColourArray[3];
+                }
+
+                if (invertColours)
+                {
+                    #region Button Cluster
+                    palette.ButtonStyles.ButtonCluster.OverrideDefault.Back.Color1 = paletteColourArray[1];
+
+                    palette.ButtonStyles.ButtonCluster.OverrideFocus.Back.Color1 = paletteColourArray[1];
+
+                    palette.ButtonStyles.ButtonCluster.StateCheckedNormal.Back.Color1 = paletteColourArray[1];
+
+                    palette.ButtonStyles.ButtonCluster.StateCommon.Back.ColorStyle = PaletteColorStyle.GlassNormalFull;
+
+                    palette.ButtonStyles.ButtonCluster.StateNormal.Back.Color1 = paletteColourArray[2];
+
+                    palette.ButtonStyles.ButtonCluster.StatePressed.Back.Color1 = paletteColourArray[0];
+
+                    palette.ButtonStyles.ButtonCluster.StateTracking.Back.Color1 = paletteColourArray[1];
+                    #endregion
+
+                    #region Button Common
+                    palette.ButtonStyles.ButtonCommon.OverrideDefault.Back.Color1 = paletteColourArray[3];
+
+                    palette.ButtonStyles.ButtonCommon.OverrideDefault.Content.LongText.Color1 = paletteColourArray[7];
+
+                    palette.ButtonStyles.ButtonCommon.OverrideDefault.Content.ShortText.Color1 = paletteColourArray[7];
+
+                    palette.ButtonStyles.ButtonCommon.StateCheckedNormal.Back.Color1 = paletteColourArray[1];
+
+                    palette.ButtonStyles.ButtonCommon.StateCheckedNormal.Back.Color2 = paletteColourArray[0];
+
+                    palette.ButtonStyles.ButtonCommon.StateCheckedNormal.Back.ColorStyle = PaletteColorStyle.GlassCheckedFull;
+
+                    palette.ButtonStyles.ButtonCommon.StateCheckedNormal.Content.LongText.Color1 = paletteColourArray[6];
+
+                    palette.ButtonStyles.ButtonCommon.StateCheckedNormal.Content.ShortText.Color1 = paletteColourArray[6];
+
+                    palette.ButtonStyles.ButtonCommon.StateCheckedPressed.Back.Color1 = paletteColourArray[1];
+
+                    palette.ButtonStyles.ButtonCommon.StateCheckedPressed.Back.Color2 = paletteColourArray[0];
+
+                    palette.ButtonStyles.ButtonCommon.StateCheckedPressed.Back.ColorStyle = PaletteColorStyle.GlassCheckedStump;
+
+                    palette.ButtonStyles.ButtonCommon.StateCheckedPressed.Border.DrawBorders = PaletteDrawBorders.All;
+
+                    palette.ButtonStyles.ButtonCommon.StateCheckedPressed.Content.LongText.Color1 = paletteColourArray[6];
+
+                    palette.ButtonStyles.ButtonCommon.StateCheckedPressed.Content.ShortText.Color1 = paletteColourArray[6];
+
+                    palette.ButtonStyles.ButtonCommon.StateCheckedTracking.Back.Color1 = paletteColourArray[0];
+
+                    palette.ButtonStyles.ButtonCommon.StateCheckedTracking.Back.Color2 = paletteColourArray[0];
+
+                    palette.ButtonStyles.ButtonCommon.StateCheckedTracking.Border.DrawBorders = PaletteDrawBorders.All;
+
+                    palette.ButtonStyles.ButtonCommon.StateCheckedTracking.Content.LongText.Color1 = paletteColourArray[6];
+
+                    palette.ButtonStyles.ButtonCommon.StateCheckedTracking.Content.ShortText.Color1 = paletteColourArray[6];
+
+                    palette.ButtonStyles.ButtonCommon.StateCommon.Back.Color1 = paletteColourArray[3];
+
+                    palette.ButtonStyles.ButtonCommon.StateDisabled.Back.Color1 = paletteColourArray[11];
+
+                    palette.ButtonStyles.ButtonCommon.StateDisabled.Back.Color2 = paletteColourArray[11];
+
+                    /*
+                    palette.ButtonStyles.ButtonCommon.StateDisabled.Back.Color1 = paletteColourArray[3];
+
+                    palette.ButtonStyles.ButtonCommon.StateDisabled.Back.Color2 = paletteColourArray[3];
+                    */
+
+                    palette.ButtonStyles.ButtonCommon.StateDisabled.Content.LongText.Color1 = paletteColourArray[8];
+
+                    palette.ButtonStyles.ButtonCommon.StateDisabled.Content.ShortText.Color1 = paletteColourArray[8];
+
+                    palette.ButtonStyles.ButtonCommon.StateNormal.Back.Color1 = paletteColourArray[3];
+
+                    palette.ButtonStyles.ButtonCommon.StateNormal.Back.Color2 = paletteColourArray[3];
+
+                    palette.ButtonStyles.ButtonCommon.StateNormal.Content.LongText.Color1 = paletteColourArray[7];
+
+                    palette.ButtonStyles.ButtonCommon.StateNormal.Content.LongText.Color2 = paletteColourArray[7];
+
+                    palette.ButtonStyles.ButtonCommon.StateNormal.Content.ShortText.Color1 = paletteColourArray[7];
+
+                    palette.ButtonStyles.ButtonCommon.StateNormal.Content.ShortText.Color2 = paletteColourArray[7];
+
+                    palette.ButtonStyles.ButtonCommon.StatePressed.Back.Color1 = paletteColourArray[1];
+
+                    palette.ButtonStyles.ButtonCommon.StatePressed.Back.Color2 = paletteColourArray[0];
+
+                    palette.ButtonStyles.ButtonCommon.StatePressed.Content.LongText.Color1 = paletteColourArray[6];
+
+                    palette.ButtonStyles.ButtonCommon.StatePressed.Content.ShortText.Color1 = paletteColourArray[6];
+
+                    palette.ButtonStyles.ButtonCommon.StateTracking.Back.Color1 = paletteColourArray[3];
+
+                    palette.ButtonStyles.ButtonCommon.StateTracking.Back.Color2 = paletteColourArray[4];
+
+                    palette.ButtonStyles.ButtonCommon.StateTracking.Content.LongText.Color1 = paletteColourArray[7];
+
+                    palette.ButtonStyles.ButtonCommon.StateTracking.Content.ShortText.Color1 = paletteColourArray[7];
+                    #endregion
+                }
+                else
+                {
+                    #region Button Cluster
+                    palette.ButtonStyles.ButtonCluster.OverrideDefault.Back.Color1 = paletteColourArray[0];
+
+                    palette.ButtonStyles.ButtonCluster.OverrideFocus.Back.Color1 = paletteColourArray[0];
+
+                    palette.ButtonStyles.ButtonCluster.StateCheckedNormal.Back.Color1 = paletteColourArray[0];
+
+                    palette.ButtonStyles.ButtonCluster.StateCommon.Back.ColorStyle = PaletteColorStyle.GlassNormalFull;
+
+                    palette.ButtonStyles.ButtonCluster.StateNormal.Back.Color1 = paletteColourArray[2];
+
+                    palette.ButtonStyles.ButtonCluster.StatePressed.Back.Color1 = paletteColourArray[1];
+
+                    palette.ButtonStyles.ButtonCluster.StateTracking.Back.Color1 = paletteColourArray[0];
+                    #endregion
+
+                    #region Button Common
+                    palette.ButtonStyles.ButtonCommon.OverrideDefault.Back.Color1 = paletteColourArray[0];
+
+                    palette.ButtonStyles.ButtonCommon.OverrideDefault.Content.LongText.Color1 = paletteColourArray[6];
+
+                    palette.ButtonStyles.ButtonCommon.OverrideDefault.Content.ShortText.Color1 = paletteColourArray[6];
+
+                    palette.ButtonStyles.ButtonCommon.StateCheckedNormal.Back.Color1 = paletteColourArray[4];
+
+                    palette.ButtonStyles.ButtonCommon.StateCheckedNormal.Back.Color2 = paletteColourArray[3];
+
+                    palette.ButtonStyles.ButtonCommon.StateCheckedNormal.Back.ColorStyle = PaletteColorStyle.GlassCheckedFull;
+
+                    palette.ButtonStyles.ButtonCommon.StateCheckedNormal.Content.LongText.Color1 = paletteColourArray[7];
+
+                    palette.ButtonStyles.ButtonCommon.StateCheckedNormal.Content.ShortText.Color1 = paletteColourArray[7];
+
+                    palette.ButtonStyles.ButtonCommon.StateCheckedPressed.Back.Color1 = paletteColourArray[4];
+
+                    palette.ButtonStyles.ButtonCommon.StateCheckedPressed.Back.Color2 = paletteColourArray[3];
+
+                    palette.ButtonStyles.ButtonCommon.StateCheckedPressed.Back.ColorStyle = PaletteColorStyle.GlassCheckedStump;
+
+                    palette.ButtonStyles.ButtonCommon.StateCheckedPressed.Border.DrawBorders = PaletteDrawBorders.All;
+
+                    palette.ButtonStyles.ButtonCommon.StateCheckedPressed.Content.LongText.Color1 = paletteColourArray[7];
+
+                    palette.ButtonStyles.ButtonCommon.StateCheckedPressed.Content.ShortText.Color1 = paletteColourArray[7];
+
+                    palette.ButtonStyles.ButtonCommon.StateCheckedTracking.Back.Color1 = paletteColourArray[4];
+
+                    palette.ButtonStyles.ButtonCommon.StateCheckedTracking.Back.Color2 = paletteColourArray[3];
+
+                    palette.ButtonStyles.ButtonCommon.StateCheckedTracking.Border.DrawBorders = PaletteDrawBorders.All;
+
+                    palette.ButtonStyles.ButtonCommon.StateCheckedTracking.Content.LongText.Color1 = paletteColourArray[7];
+
+                    palette.ButtonStyles.ButtonCommon.StateCheckedTracking.Content.ShortText.Color1 = paletteColourArray[7];
+
+                    palette.ButtonStyles.ButtonCommon.StateCommon.Back.Color1 = paletteColourArray[0];
+
+                    palette.ButtonStyles.ButtonCommon.StateDisabled.Back.Color1 = paletteColourArray[11];
+
+                    palette.ButtonStyles.ButtonCommon.StateDisabled.Back.Color2 = paletteColourArray[11];
+
+                    /*
+                    palette.ButtonStyles.ButtonCommon.StateDisabled.Back.Color1 = paletteColourArray[0];
+
+                    palette.ButtonStyles.ButtonCommon.StateDisabled.Back.Color2 = paletteColourArray[0];
+                    */
+
+                    palette.ButtonStyles.ButtonCommon.StateDisabled.Content.LongText.Color1 = paletteColourArray[8];
+
+                    palette.ButtonStyles.ButtonCommon.StateDisabled.Content.ShortText.Color1 = paletteColourArray[8];
+
+                    palette.ButtonStyles.ButtonCommon.StateNormal.Back.Color1 = paletteColourArray[0];
+
+                    palette.ButtonStyles.ButtonCommon.StateNormal.Back.Color2 = paletteColourArray[0];
+
+                    palette.ButtonStyles.ButtonCommon.StateNormal.Content.LongText.Color1 = paletteColourArray[6];
+
+                    palette.ButtonStyles.ButtonCommon.StateNormal.Content.LongText.Color2 = paletteColourArray[6];
+
+                    palette.ButtonStyles.ButtonCommon.StateNormal.Content.ShortText.Color1 = paletteColourArray[6];
+
+                    palette.ButtonStyles.ButtonCommon.StateNormal.Content.ShortText.Color2 = paletteColourArray[6];
+
+                    palette.ButtonStyles.ButtonCommon.StatePressed.Back.Color1 = paletteColourArray[4];
+
+                    palette.ButtonStyles.ButtonCommon.StatePressed.Back.Color2 = paletteColourArray[3];
+
+                    palette.ButtonStyles.ButtonCommon.StatePressed.Content.LongText.Color1 = paletteColourArray[7];
+
+                    palette.ButtonStyles.ButtonCommon.StatePressed.Content.ShortText.Color1 = paletteColourArray[7];
+
+                    palette.ButtonStyles.ButtonCommon.StateTracking.Back.Color1 = paletteColourArray[0];
+
+                    palette.ButtonStyles.ButtonCommon.StateTracking.Back.Color2 = paletteColourArray[1];
+
+                    palette.ButtonStyles.ButtonCommon.StateTracking.Content.LongText.Color1 = paletteColourArray[6];
+
+                    palette.ButtonStyles.ButtonCommon.StateTracking.Content.ShortText.Color1 = paletteColourArray[6];
+                    #endregion
+
+                    #region Common
+                    palette.Common.StateCommon.Back.Color1 = paletteColourArray[4];
+
+                    palette.Common.StateCommon.Back.Color2 = paletteColourArray[0];
+
+                    palette.Common.StateCommon.Border.Color1 = paletteColourArray[0];
+
+                    palette.Common.StateCommon.Border.Color2 = paletteColourArray[1];
+
+                    palette.Common.StateCommon.Border.DrawBorders = PaletteDrawBorders.All;
+
+                    palette.Common.StateCommon.Content.LongText.Color1 = paletteColourArray[6];
+
+                    palette.Common.StateCommon.Content.LongText.Color2 = paletteColourArray[6];
+
+                    palette.Common.StateCommon.Content.ShortText.Color1 = paletteColourArray[6];
+
+                    palette.Common.StateCommon.Content.ShortText.Color2 = paletteColourArray[6];
+                    #endregion
+
+                    #region Form Styles
+                    palette.FormStyles.FormCommon.StateActive.Back.Color1 = paletteColourArray[0];
+
+                    palette.FormStyles.FormCommon.StateActive.Border.DrawBorders = PaletteDrawBorders.All;
+                    #endregion
+
+                    #region Grid Styles
+                    palette.GridStyles.GridSheet.StateCommon.HeaderColumn.Content.Color1 = paletteColourArray[4];
+
+                    palette.GridStyles.GridSheet.StateCommon.HeaderRow.Content.Color1 = paletteColourArray[4];
+
+                    palette.GridStyles.GridSheet.StateNormal.HeaderColumn.Content.Color1 = paletteColourArray[1];
+
+                    palette.GridStyles.GridSheet.StateNormal.HeaderColumn.Content.Color2 = paletteColourArray[2];
+
+                    palette.GridStyles.GridSheet.StateNormal.HeaderRow.Content.Color1 = paletteColourArray[1];
+
+                    palette.GridStyles.GridSheet.StateTracking.HeaderColumn.Content.Color1 = paletteColourArray[0];
+                    #endregion
+
+                    #region Header Styles
+                    palette.HeaderStyles.HeaderCommon.StateCommon.Back.Color1 = paletteColourArray[2];
+
+                    palette.HeaderStyles.HeaderCommon.StateCommon.Back.Color2 = paletteColourArray[3];
+
+                    palette.HeaderStyles.HeaderCommon.StateDisabled.Back.Color1 = paletteColourArray[3];
+
+                    palette.HeaderStyles.HeaderCommon.StateDisabled.Back.Color2 = paletteColourArray[4];
+
+                    palette.HeaderStyles.HeaderCommon.StateDisabled.Content.LongText.Color1 = paletteColourArray[8];
+
+                    palette.HeaderStyles.HeaderCommon.StateDisabled.Content.LongText.Color2 = paletteColourArray[0];
+
+                    palette.HeaderStyles.HeaderCommon.StateDisabled.Content.ShortText.Color1 = paletteColourArray[8];
+
+                    palette.HeaderStyles.HeaderCommon.StateDisabled.Content.ShortText.Color2 = paletteColourArray[0];
+
+                    palette.HeaderStyles.HeaderForm.StateCommon.Back.Color1 = paletteColourArray[2];
+
+                    palette.HeaderStyles.HeaderForm.StateCommon.Back.Color2 = paletteColourArray[3];
+
+                    palette.HeaderStyles.HeaderForm.StateDisabled.Back.Color1 = paletteColourArray[11];
+
+                    palette.HeaderStyles.HeaderForm.StateDisabled.Back.Color2 = paletteColourArray[0];
+
+                    palette.HeaderStyles.HeaderForm.StateDisabled.Content.LongText.Color1 = paletteColourArray[8];
+
+                    palette.HeaderStyles.HeaderForm.StateDisabled.Content.ShortText.Color1 = paletteColourArray[8];
+                    #endregion
+
+                    #region Label Styles
+                    palette.LabelStyles.LabelNormalControl.OverrideNotVisited.LongText.Color1 = paletteColourArray[14];
+
+                    palette.LabelStyles.LabelNormalControl.OverrideNotVisited.ShortText.Color1 = paletteColourArray[14];
+
+                    palette.LabelStyles.LabelNormalControl.OverridePressed.LongText.Color1 = paletteColourArray[13];
+
+                    palette.LabelStyles.LabelNormalControl.OverridePressed.ShortText.Color1 = paletteColourArray[13];
+
+                    palette.LabelStyles.LabelNormalControl.OverrideVisited.LongText.Color1 = paletteColourArray[15];
+
+                    palette.LabelStyles.LabelNormalControl.OverrideVisited.ShortText.Color1 = paletteColourArray[15];
+
+                    palette.LabelStyles.LabelNormalControl.OverrideFocus.LongText.Color1 = paletteColourArray[12];
+
+                    palette.LabelStyles.LabelNormalControl.OverrideFocus.ShortText.Color1 = paletteColourArray[12];
+
+                    palette.LabelStyles.LabelNormalControl.StateDisabled.LongText.Color1 = paletteColourArray[8];
+
+                    palette.LabelStyles.LabelNormalControl.StateDisabled.ShortText.Color1 = paletteColourArray[8];
+
+                    palette.LabelStyles.LabelNormalControl.StateNormal.LongText.Color1 = paletteColourArray[7];
+
+                    palette.LabelStyles.LabelNormalControl.StateNormal.ShortText.Color1 = paletteColourArray[7];
+                    #endregion
+
+                    #region Ribbon
+                    palette.Ribbon.RibbonAppButton.StateCommon.BackColor2 = paletteColourArray[0];
+
+                    palette.Ribbon.RibbonAppButton.StateCommon.BackColor3 = paletteColourArray[18];
+
+                    palette.Ribbon.RibbonAppButton.StateCommon.BackColor5 = paletteColourArray[0];
+
+                    palette.Ribbon.RibbonAppButton.StatePressed.BackColor5 = paletteColourArray[1];
+
+                    palette.Ribbon.RibbonAppButton.StateTracking.BackColor5 = paletteColourArray[20];
+
+                    palette.Ribbon.RibbonGroupArea.StateCheckedNormal.BackColor1 = paletteColourArray[0];
+
+                    palette.Ribbon.RibbonGroupArea.StateCheckedNormal.BackColor2 = paletteColourArray[17];
+
+                    palette.Ribbon.RibbonGroupArea.StateCheckedNormal.BackColor3 = paletteColourArray[0];
+
+                    palette.Ribbon.RibbonGroupArea.StateCheckedNormal.BackColor4 = paletteColourArray[0];
+
+                    palette.Ribbon.RibbonGroupArea.StateCheckedNormal.BackColor5 = paletteColourArray[0];
+
+                    palette.Ribbon.RibbonGroupButtonText.StateCommon.TextColor = paletteColourArray[22];
+
+                    palette.Ribbon.RibbonGroupCheckBoxText.StateCommon.TextColor = paletteColourArray[22];
+
+                    palette.Ribbon.RibbonGroupCollapsedBack.StateNormal.BackColor1 = SystemColors.Window;
+
+                    palette.Ribbon.RibbonGroupCollapsedBack.StateNormal.BackColor2 = paletteColourArray[0];
+
+                    palette.Ribbon.RibbonGroupCollapsedBack.StateNormal.BackColor3 = paletteColourArray[3];
+
+                    palette.Ribbon.RibbonGroupCollapsedBack.StateNormal.BackColor4 = paletteColourArray[0];
+
+                    palette.Ribbon.RibbonGroupCollapsedBack.StateTracking.BackColor1 = SystemColors.Window;
+
+                    palette.Ribbon.RibbonGroupCollapsedBack.StateTracking.BackColor2 = paletteColourArray[3];
+
+                    palette.Ribbon.RibbonGroupCollapsedBack.StateTracking.BackColor3 = paletteColourArray[4]; // Or 230, 230, 230
+
+                    palette.Ribbon.RibbonGroupCollapsedBack.StateTracking.BackColor4 = paletteColourArray[0];
+
+                    palette.Ribbon.RibbonGroupCollapsedBorder.StateCommon.BackColor1 = paletteColourArray[0];
+
+                    palette.Ribbon.RibbonGroupCollapsedBorder.StateCommon.BackColor2 = paletteColourArray[2];
+
+                    palette.Ribbon.RibbonGroupCollapsedBorder.StateCommon.BackColor3 = paletteColourArray[3];
+
+                    palette.Ribbon.RibbonGroupCollapsedBorder.StateCommon.BackColor4 = paletteColourArray[0];
+
+                    palette.Ribbon.RibbonGroupCollapsedBorder.StateCommon.BackColor5 = paletteColourArray[0];
+
+                    palette.Ribbon.RibbonGroupCollapsedFrameBack.StateCommon.BackColor1 = paletteColourArray[0];
+
+                    palette.Ribbon.RibbonGroupCollapsedFrameBack.StateCommon.BackColor2 = paletteColourArray[0];
+
+                    palette.Ribbon.RibbonGroupCollapsedFrameBack.StateCommon.BackColor3 = paletteColourArray[3];
+
+                    palette.Ribbon.RibbonGroupCollapsedFrameBack.StateCommon.BackColor4 = paletteColourArray[3];
+
+                    palette.Ribbon.RibbonGroupCollapsedFrameBack.StateCommon.BackColor5 = paletteColourArray[0];
+
+                    palette.Ribbon.RibbonGroupCollapsedFrameBorder.StateCommon.BackColor1 = paletteColourArray[3];
+
+                    palette.Ribbon.RibbonGroupCollapsedFrameBorder.StateCommon.BackColor2 = paletteColourArray[4]; // Or 230, 230, 230
+
+                    palette.Ribbon.RibbonGroupCollapsedText.StateCommon.TextColor = paletteColourArray[6];
+
+                    palette.Ribbon.RibbonGroupNormalBorder.StateCommon.BackColor1 = paletteColourArray[0];
+
+                    palette.Ribbon.RibbonGroupNormalBorder.StateCommon.BackColor2 = paletteColourArray[2];
+
+                    palette.Ribbon.RibbonGroupNormalTitle.StateCommon.BackColor1 = paletteColourArray[4]; // Or 230, 230, 230
+
+                    palette.Ribbon.RibbonGroupNormalTitle.StateCommon.BackColor2 = paletteColourArray[2];
+
+                    palette.Ribbon.RibbonGroupNormalTitle.StateCommon.TextColor = paletteColourArray[25];
+
+                    palette.Ribbon.RibbonGroupNormalTitle.StateTracking.BackColor1 = paletteColourArray[4];
+
+                    palette.Ribbon.RibbonGroupNormalTitle.StateTracking.BackColor2 = paletteColourArray[2];
+
+                    palette.Ribbon.RibbonQATFullbar.BackColor1 = paletteColourArray[2];
+
+                    palette.Ribbon.RibbonQATFullbar.BackColor2 = paletteColourArray[2];
+
+                    palette.Ribbon.RibbonQATFullbar.BackColor3 = paletteColourArray[2];
+
+                    palette.Ribbon.RibbonQATMinibar.StateCommon.BackColor1 = paletteColourArray[2];
+
+                    palette.Ribbon.RibbonQATMinibar.StateCommon.BackColor2 = paletteColourArray[2];
+
+                    palette.Ribbon.RibbonQATMinibar.StateCommon.BackColor3 = paletteColourArray[2];
+
+                    palette.Ribbon.RibbonQATMinibar.StateCommon.BackColor4 = paletteColourArray[2];
+
+                    palette.Ribbon.RibbonQATOverflow.BackColor1 = paletteColourArray[2];
+
+                    palette.Ribbon.RibbonQATOverflow.BackColor2 = paletteColourArray[2];
+
+                    palette.Ribbon.RibbonTab.StateCheckedTracking.BackColor1 = paletteColourArray[2];
+
+                    palette.Ribbon.RibbonTab.StateCheckedTracking.BackColor2 = paletteColourArray[3];
+
+                    palette.Ribbon.RibbonTab.StateCheckedTracking.BackColor3 = paletteColourArray[1];
+
+                    palette.Ribbon.RibbonTab.StateCheckedTracking.BackColor4 = paletteColourArray[2];
+
+                    palette.Ribbon.RibbonTab.StateCommon.BackColor1 = paletteColourArray[2];
+
+                    palette.Ribbon.RibbonTab.StateCommon.BackColor3 = paletteColourArray[2];
+
+                    palette.Ribbon.RibbonTab.StateCommon.BackColor4 = paletteColourArray[3];
+
+                    palette.Ribbon.RibbonTab.StateCommon.BackColor5 = paletteColourArray[3];
+
+                    palette.Ribbon.RibbonTab.StateCommon.TextColor = paletteColourArray[7];
+
+                    palette.Ribbon.RibbonTab.StateContextCheckedTracking.BackColor2 = paletteColourArray[2];
+
+                    palette.Ribbon.RibbonTab.StateTracking.BackColor2 = paletteColourArray[2];
+
+                    palette.Ribbon.RibbonTab.StateNormal.TextColor = paletteColourArray[28];
+                    #endregion
+
+                    #region Separator Styles
+                    palette.SeparatorStyles.SeparatorCommon.StateCommon.Back.Color1 = paletteColourArray[0];
+
+                    palette.SeparatorStyles.SeparatorCommon.StateCommon.Back.Color2 = paletteColourArray[0];
+
+                    palette.SeparatorStyles.SeparatorCommon.StateCommon.Border.Color1 = paletteColourArray[0];
+
+                    palette.SeparatorStyles.SeparatorCommon.StateCommon.Border.Color1 = paletteColourArray[0];
+
+                    palette.SeparatorStyles.SeparatorCommon.StateCommon.Border.DrawBorders = PaletteDrawBorders.All;
+                    #endregion
+
+                    #region Tool Menu Status
+                    palette.ToolMenuStatus.Button.ButtonPressedBorder = paletteColourArray[0];
+
+                    palette.ToolMenuStatus.Button.ButtonSelectedBorder = paletteColourArray[0];
+
+                    palette.ToolMenuStatus.Button.OverflowButtonGradientBegin = paletteColourArray[1];
+
+                    palette.ToolMenuStatus.Button.OverflowButtonGradientEnd = paletteColourArray[0];
+
+                    palette.ToolMenuStatus.Button.OverflowButtonGradientMiddle = paletteColourArray[2];
+
+                    palette.ToolMenuStatus.Grip.GripDark = paletteColourArray[0];
+
+                    palette.ToolMenuStatus.Grip.GripLight = paletteColourArray[20];
+
+                    palette.ToolMenuStatus.Menu.ImageMarginGradientBegin = paletteColourArray[0];
+
+                    palette.ToolMenuStatus.Menu.ImageMarginGradientEnd = paletteColourArray[1];
+
+                    palette.ToolMenuStatus.Menu.ImageMarginGradientMiddle = paletteColourArray[2];
+
+                    palette.ToolMenuStatus.Menu.ImageMarginRevealedGradientBegin = paletteColourArray[0];
+
+                    palette.ToolMenuStatus.Menu.ImageMarginRevealedGradientEnd = paletteColourArray[1];
+
+                    palette.ToolMenuStatus.Menu.ImageMarginRevealedGradientMiddle = paletteColourArray[2];
+
+                    palette.ToolMenuStatus.Menu.MenuBorder = paletteColourArray[0];
+
+                    palette.ToolMenuStatus.Menu.MenuItemBorder = paletteColourArray[1];
+
+                    palette.ToolMenuStatus.Menu.MenuItemPressedGradientBegin = paletteColourArray[0];
+
+                    palette.ToolMenuStatus.Menu.MenuItemPressedGradientEnd = paletteColourArray[1];
+
+                    palette.ToolMenuStatus.Menu.MenuItemPressedGradientMiddle = paletteColourArray[2];
+
+                    palette.ToolMenuStatus.Menu.MenuItemSelected = paletteColourArray[2];
+
+                    palette.ToolMenuStatus.Menu.MenuItemSelectedGradientBegin = paletteColourArray[1];
+
+                    palette.ToolMenuStatus.Menu.MenuItemSelectedGradientEnd = paletteColourArray[0];
+
+                    palette.ToolMenuStatus.Menu.MenuItemText = paletteColourArray[26];
+
+                    palette.ToolMenuStatus.MenuStrip.MenuStripGradientBegin = paletteColourArray[0];
+
+                    palette.ToolMenuStatus.MenuStrip.MenuStripGradientEnd = paletteColourArray[1];
+
+                    palette.ToolMenuStatus.MenuStrip.MenuStripText = paletteColourArray[7];
+
+                    palette.ToolMenuStatus.Rafting.RaftingContainerGradientBegin = paletteColourArray[2];
+
+                    palette.ToolMenuStatus.Rafting.RaftingContainerGradientEnd = paletteColourArray[1];
+
+                    palette.ToolMenuStatus.Separator.SeparatorDark = paletteColourArray[0];
+
+                    palette.ToolMenuStatus.Separator.SeparatorLight = paletteColourArray[3];
+
+                    palette.ToolMenuStatus.StatusStrip.StatusStripGradientBegin = paletteColourArray[0];
+
+                    palette.ToolMenuStatus.StatusStrip.StatusStripGradientEnd = paletteColourArray[3];
+
+                    palette.ToolMenuStatus.StatusStrip.StatusStripText = paletteColourArray[7];
+
+                    palette.ToolMenuStatus.ToolStrip.ToolStripBorder = paletteColourArray[1];
+
+                    palette.ToolMenuStatus.ToolStrip.ToolStripContentPanelGradientBegin = paletteColourArray[3];
+
+                    palette.ToolMenuStatus.ToolStrip.ToolStripContentPanelGradientEnd = paletteColourArray[1];
+
+                    palette.ToolMenuStatus.ToolStrip.ToolStripDropDownBackground = paletteColourArray[2];
+
+                    palette.ToolMenuStatus.ToolStrip.ToolStripGradientBegin = paletteColourArray[1];
+
+                    palette.ToolMenuStatus.ToolStrip.ToolStripGradientEnd = paletteColourArray[3];
+
+                    palette.ToolMenuStatus.ToolStrip.ToolStripGradientMiddle = paletteColourArray[2];
+
+                    palette.ToolMenuStatus.ToolStrip.ToolStripPanelGradientBegin = paletteColourArray[3];
+
+                    palette.ToolMenuStatus.ToolStrip.ToolStripPanelGradientEnd = paletteColourArray[1];
+
+                    palette.ToolMenuStatus.ToolStrip.ToolStripText = paletteColourArray[7];
+                    #endregion
+                }
+
+                palette.Export();
+
+                KryptonMessageBox.Show($"Palette exported to: { palette.GetCustomisedKryptonPaletteFilePath() }", "Palette Created", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            catch (Exception e)
+            {
+                ExceptionHandler.CaptureException(e);
+            }
+        }
     }
 }

@@ -66,6 +66,7 @@
   </ItemGroup>
   
   <ItemGroup>
+    <ProjectReference Include="..\Palette Controller\Krypton.Toolkit.Suite.Extended.Palette.Controller.csproj" />
     <ProjectReference Include="..\Toolkit Core\Krypton.Toolkit.Suite.Extended.Core.csproj" />
   </ItemGroup>
   

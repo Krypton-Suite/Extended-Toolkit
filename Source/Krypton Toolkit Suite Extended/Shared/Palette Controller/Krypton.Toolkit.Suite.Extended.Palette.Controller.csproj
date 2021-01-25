@@ -51,7 +51,7 @@ Stable package configuration-
 
 	<!--Canary NuGet package configuration-->
 	<ItemGroup>
-		<PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2101" />
+		<PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2103.4" />
 	</ItemGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\Toolkit Core\Krypton.Toolkit.Suite.Extended.Core.csproj" />
