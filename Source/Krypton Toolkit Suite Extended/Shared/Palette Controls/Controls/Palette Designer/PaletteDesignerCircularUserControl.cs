@@ -19,7 +19,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
         private Suite.Extended.Base.CircularPictureBox cpbxDisabledTextColour;
         private Suite.Extended.Base.CircularPictureBox cpbxFocusedTextColour;
         private Suite.Extended.Base.CircularPictureBox cpbxPressedTextColour;
-        private Suite.Extended.Base.CircularPictureBox cpbxDisabledColour;
+        private Suite.Extended.Base.CircularPictureBox cpbxDisabledControlColour;
         private Suite.Extended.Base.CircularPictureBox cpbxLinkNormalColour;
         private Suite.Extended.Base.CircularPictureBox cpbxLinkFocusedColour;
         private Suite.Extended.Base.CircularPictureBox cpbxStatusTextColour;
@@ -68,7 +68,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.cpbxDisabledTextColour = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
             this.cpbxFocusedTextColour = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
             this.cpbxPressedTextColour = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
-            this.cpbxDisabledColour = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
+            this.cpbxDisabledControlColour = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
             this.cpbxLinkNormalColour = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
             this.cpbxLinkFocusedColour = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
             this.cpbxStatusTextColour = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
@@ -111,7 +111,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             ((System.ComponentModel.ISupportInitialize)(this.cpbxDisabledTextColour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cpbxFocusedTextColour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cpbxPressedTextColour)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cpbxDisabledColour)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpbxDisabledControlColour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cpbxLinkNormalColour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cpbxLinkFocusedColour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cpbxStatusTextColour)).BeginInit();
@@ -146,7 +146,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             // cpbxBaseColour
             // 
-            this.cpbxBaseColour.BackColor = System.Drawing.Color.Black;
+            this.cpbxBaseColour.BackColor = System.Drawing.Color.White;
             this.cpbxBaseColour.Location = new System.Drawing.Point(13, 13);
             this.cpbxBaseColour.Name = "cpbxBaseColour";
             this.cpbxBaseColour.Size = new System.Drawing.Size(64, 64);
@@ -156,7 +156,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             // cpbxDarkColour
             // 
-            this.cpbxDarkColour.BackColor = System.Drawing.Color.Black;
+            this.cpbxDarkColour.BackColor = System.Drawing.Color.White;
             this.cpbxDarkColour.Location = new System.Drawing.Point(95, 13);
             this.cpbxDarkColour.Name = "cpbxDarkColour";
             this.cpbxDarkColour.Size = new System.Drawing.Size(64, 64);
@@ -166,7 +166,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             // cpbxMediumColour
             // 
-            this.cpbxMediumColour.BackColor = System.Drawing.Color.Black;
+            this.cpbxMediumColour.BackColor = System.Drawing.Color.White;
             this.cpbxMediumColour.Location = new System.Drawing.Point(177, 13);
             this.cpbxMediumColour.Name = "cpbxMediumColour";
             this.cpbxMediumColour.Size = new System.Drawing.Size(64, 64);
@@ -176,7 +176,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             // cpbxLightColour
             // 
-            this.cpbxLightColour.BackColor = System.Drawing.Color.Black;
+            this.cpbxLightColour.BackColor = System.Drawing.Color.White;
             this.cpbxLightColour.Location = new System.Drawing.Point(259, 13);
             this.cpbxLightColour.Name = "cpbxLightColour";
             this.cpbxLightColour.Size = new System.Drawing.Size(64, 64);
@@ -186,7 +186,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             // cpbxLightestColour
             // 
-            this.cpbxLightestColour.BackColor = System.Drawing.Color.Black;
+            this.cpbxLightestColour.BackColor = System.Drawing.Color.White;
             this.cpbxLightestColour.Location = new System.Drawing.Point(341, 13);
             this.cpbxLightestColour.Name = "cpbxLightestColour";
             this.cpbxLightestColour.Size = new System.Drawing.Size(64, 64);
@@ -196,7 +196,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             // cpbxBorderColour
             // 
-            this.cpbxBorderColour.BackColor = System.Drawing.Color.Black;
+            this.cpbxBorderColour.BackColor = System.Drawing.Color.White;
             this.cpbxBorderColour.Location = new System.Drawing.Point(423, 13);
             this.cpbxBorderColour.Name = "cpbxBorderColour";
             this.cpbxBorderColour.Size = new System.Drawing.Size(64, 64);
@@ -206,7 +206,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             // cpbxAlternativeNormalTextColour
             // 
-            this.cpbxAlternativeNormalTextColour.BackColor = System.Drawing.Color.Black;
+            this.cpbxAlternativeNormalTextColour.BackColor = System.Drawing.Color.White;
             this.cpbxAlternativeNormalTextColour.Location = new System.Drawing.Point(505, 13);
             this.cpbxAlternativeNormalTextColour.Name = "cpbxAlternativeNormalTextColour";
             this.cpbxAlternativeNormalTextColour.Size = new System.Drawing.Size(64, 64);
@@ -216,7 +216,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             // cpbxNormalTextColour
             // 
-            this.cpbxNormalTextColour.BackColor = System.Drawing.Color.Black;
+            this.cpbxNormalTextColour.BackColor = System.Drawing.Color.White;
             this.cpbxNormalTextColour.Location = new System.Drawing.Point(587, 13);
             this.cpbxNormalTextColour.Name = "cpbxNormalTextColour";
             this.cpbxNormalTextColour.Size = new System.Drawing.Size(64, 64);
@@ -226,7 +226,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             // cpbxDisabledTextColour
             // 
-            this.cpbxDisabledTextColour.BackColor = System.Drawing.Color.Black;
+            this.cpbxDisabledTextColour.BackColor = System.Drawing.Color.White;
             this.cpbxDisabledTextColour.Location = new System.Drawing.Point(669, 13);
             this.cpbxDisabledTextColour.Name = "cpbxDisabledTextColour";
             this.cpbxDisabledTextColour.Size = new System.Drawing.Size(64, 64);
@@ -236,7 +236,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             // cpbxFocusedTextColour
             // 
-            this.cpbxFocusedTextColour.BackColor = System.Drawing.Color.Black;
+            this.cpbxFocusedTextColour.BackColor = System.Drawing.Color.White;
             this.cpbxFocusedTextColour.Location = new System.Drawing.Point(751, 13);
             this.cpbxFocusedTextColour.Name = "cpbxFocusedTextColour";
             this.cpbxFocusedTextColour.Size = new System.Drawing.Size(64, 64);
@@ -246,7 +246,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             // cpbxPressedTextColour
             // 
-            this.cpbxPressedTextColour.BackColor = System.Drawing.Color.Black;
+            this.cpbxPressedTextColour.BackColor = System.Drawing.Color.White;
             this.cpbxPressedTextColour.Location = new System.Drawing.Point(833, 13);
             this.cpbxPressedTextColour.Name = "cpbxPressedTextColour";
             this.cpbxPressedTextColour.Size = new System.Drawing.Size(64, 64);
@@ -254,19 +254,19 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.cpbxPressedTextColour.TabStop = false;
             this.cpbxPressedTextColour.ToolTipValues = null;
             // 
-            // cpbxDisabledColour
+            // cpbxDisabledControlColour
             // 
-            this.cpbxDisabledColour.BackColor = System.Drawing.Color.Black;
-            this.cpbxDisabledColour.Location = new System.Drawing.Point(915, 13);
-            this.cpbxDisabledColour.Name = "cpbxDisabledColour";
-            this.cpbxDisabledColour.Size = new System.Drawing.Size(64, 64);
-            this.cpbxDisabledColour.TabIndex = 11;
-            this.cpbxDisabledColour.TabStop = false;
-            this.cpbxDisabledColour.ToolTipValues = null;
+            this.cpbxDisabledControlColour.BackColor = System.Drawing.Color.White;
+            this.cpbxDisabledControlColour.Location = new System.Drawing.Point(915, 13);
+            this.cpbxDisabledControlColour.Name = "cpbxDisabledControlColour";
+            this.cpbxDisabledControlColour.Size = new System.Drawing.Size(64, 64);
+            this.cpbxDisabledControlColour.TabIndex = 11;
+            this.cpbxDisabledControlColour.TabStop = false;
+            this.cpbxDisabledControlColour.ToolTipValues = null;
             // 
             // cpbxLinkNormalColour
             // 
-            this.cpbxLinkNormalColour.BackColor = System.Drawing.Color.Black;
+            this.cpbxLinkNormalColour.BackColor = System.Drawing.Color.White;
             this.cpbxLinkNormalColour.Location = new System.Drawing.Point(997, 13);
             this.cpbxLinkNormalColour.Name = "cpbxLinkNormalColour";
             this.cpbxLinkNormalColour.Size = new System.Drawing.Size(64, 64);
@@ -276,7 +276,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             // cpbxLinkFocusedColour
             // 
-            this.cpbxLinkFocusedColour.BackColor = System.Drawing.Color.Black;
+            this.cpbxLinkFocusedColour.BackColor = System.Drawing.Color.White;
             this.cpbxLinkFocusedColour.Location = new System.Drawing.Point(1079, 13);
             this.cpbxLinkFocusedColour.Name = "cpbxLinkFocusedColour";
             this.cpbxLinkFocusedColour.Size = new System.Drawing.Size(64, 64);
@@ -286,7 +286,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             // cpbxStatusTextColour
             // 
-            this.cpbxStatusTextColour.BackColor = System.Drawing.Color.Black;
+            this.cpbxStatusTextColour.BackColor = System.Drawing.Color.White;
             this.cpbxStatusTextColour.Location = new System.Drawing.Point(1079, 165);
             this.cpbxStatusTextColour.Name = "cpbxStatusTextColour";
             this.cpbxStatusTextColour.Size = new System.Drawing.Size(64, 64);
@@ -296,7 +296,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             // cpbxMenuTextColour
             // 
-            this.cpbxMenuTextColour.BackColor = System.Drawing.Color.Black;
+            this.cpbxMenuTextColour.BackColor = System.Drawing.Color.White;
             this.cpbxMenuTextColour.Location = new System.Drawing.Point(997, 165);
             this.cpbxMenuTextColour.Name = "cpbxMenuTextColour";
             this.cpbxMenuTextColour.Size = new System.Drawing.Size(64, 64);
@@ -306,7 +306,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             // cpbxCustomTextColourFive
             // 
-            this.cpbxCustomTextColourFive.BackColor = System.Drawing.Color.Black;
+            this.cpbxCustomTextColourFive.BackColor = System.Drawing.Color.White;
             this.cpbxCustomTextColourFive.Location = new System.Drawing.Point(915, 165);
             this.cpbxCustomTextColourFive.Name = "cpbxCustomTextColourFive";
             this.cpbxCustomTextColourFive.Size = new System.Drawing.Size(64, 64);
@@ -316,7 +316,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             // cpbxCustomTextColourFour
             // 
-            this.cpbxCustomTextColourFour.BackColor = System.Drawing.Color.Black;
+            this.cpbxCustomTextColourFour.BackColor = System.Drawing.Color.White;
             this.cpbxCustomTextColourFour.Location = new System.Drawing.Point(833, 165);
             this.cpbxCustomTextColourFour.Name = "cpbxCustomTextColourFour";
             this.cpbxCustomTextColourFour.Size = new System.Drawing.Size(64, 64);
@@ -326,7 +326,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             // cpbxCustomTextColourThree
             // 
-            this.cpbxCustomTextColourThree.BackColor = System.Drawing.Color.Black;
+            this.cpbxCustomTextColourThree.BackColor = System.Drawing.Color.White;
             this.cpbxCustomTextColourThree.Location = new System.Drawing.Point(751, 165);
             this.cpbxCustomTextColourThree.Name = "cpbxCustomTextColourThree";
             this.cpbxCustomTextColourThree.Size = new System.Drawing.Size(64, 64);
@@ -336,7 +336,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             // cpbxCustomTextColourTwo
             // 
-            this.cpbxCustomTextColourTwo.BackColor = System.Drawing.Color.Black;
+            this.cpbxCustomTextColourTwo.BackColor = System.Drawing.Color.White;
             this.cpbxCustomTextColourTwo.Location = new System.Drawing.Point(669, 165);
             this.cpbxCustomTextColourTwo.Name = "cpbxCustomTextColourTwo";
             this.cpbxCustomTextColourTwo.Size = new System.Drawing.Size(64, 64);
@@ -346,7 +346,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             // cpbxCustomTextColourOne
             // 
-            this.cpbxCustomTextColourOne.BackColor = System.Drawing.Color.Black;
+            this.cpbxCustomTextColourOne.BackColor = System.Drawing.Color.White;
             this.cpbxCustomTextColourOne.Location = new System.Drawing.Point(587, 165);
             this.cpbxCustomTextColourOne.Name = "cpbxCustomTextColourOne";
             this.cpbxCustomTextColourOne.Size = new System.Drawing.Size(64, 64);
@@ -356,7 +356,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             // cpbxCustomColourFive
             // 
-            this.cpbxCustomColourFive.BackColor = System.Drawing.Color.Black;
+            this.cpbxCustomColourFive.BackColor = System.Drawing.Color.White;
             this.cpbxCustomColourFive.Location = new System.Drawing.Point(505, 165);
             this.cpbxCustomColourFive.Name = "cpbxCustomColourFive";
             this.cpbxCustomColourFive.Size = new System.Drawing.Size(64, 64);
@@ -366,7 +366,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             // cpbxCustomColourFour
             // 
-            this.cpbxCustomColourFour.BackColor = System.Drawing.Color.Black;
+            this.cpbxCustomColourFour.BackColor = System.Drawing.Color.White;
             this.cpbxCustomColourFour.Location = new System.Drawing.Point(423, 165);
             this.cpbxCustomColourFour.Name = "cpbxCustomColourFour";
             this.cpbxCustomColourFour.Size = new System.Drawing.Size(64, 64);
@@ -376,7 +376,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             // cpbxCustomColourThree
             // 
-            this.cpbxCustomColourThree.BackColor = System.Drawing.Color.Black;
+            this.cpbxCustomColourThree.BackColor = System.Drawing.Color.White;
             this.cpbxCustomColourThree.Location = new System.Drawing.Point(341, 165);
             this.cpbxCustomColourThree.Name = "cpbxCustomColourThree";
             this.cpbxCustomColourThree.Size = new System.Drawing.Size(64, 64);
@@ -386,7 +386,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             // cpbxCustomColourTwo
             // 
-            this.cpbxCustomColourTwo.BackColor = System.Drawing.Color.Black;
+            this.cpbxCustomColourTwo.BackColor = System.Drawing.Color.White;
             this.cpbxCustomColourTwo.Location = new System.Drawing.Point(259, 165);
             this.cpbxCustomColourTwo.Name = "cpbxCustomColourTwo";
             this.cpbxCustomColourTwo.Size = new System.Drawing.Size(64, 64);
@@ -396,7 +396,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             // cpbxCustomColourOne
             // 
-            this.cpbxCustomColourOne.BackColor = System.Drawing.Color.Black;
+            this.cpbxCustomColourOne.BackColor = System.Drawing.Color.White;
             this.cpbxCustomColourOne.Location = new System.Drawing.Point(177, 165);
             this.cpbxCustomColourOne.Name = "cpbxCustomColourOne";
             this.cpbxCustomColourOne.Size = new System.Drawing.Size(64, 64);
@@ -406,7 +406,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             // cpbxLinkVisitedColour
             // 
-            this.cpbxLinkVisitedColour.BackColor = System.Drawing.Color.Black;
+            this.cpbxLinkVisitedColour.BackColor = System.Drawing.Color.White;
             this.cpbxLinkVisitedColour.Location = new System.Drawing.Point(95, 165);
             this.cpbxLinkVisitedColour.Name = "cpbxLinkVisitedColour";
             this.cpbxLinkVisitedColour.Size = new System.Drawing.Size(64, 64);
@@ -416,7 +416,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             // cpbxLinkHoverColour
             // 
-            this.cpbxLinkHoverColour.BackColor = System.Drawing.Color.Black;
+            this.cpbxLinkHoverColour.BackColor = System.Drawing.Color.White;
             this.cpbxLinkHoverColour.Location = new System.Drawing.Point(13, 165);
             this.cpbxLinkHoverColour.Name = "cpbxLinkHoverColour";
             this.cpbxLinkHoverColour.Size = new System.Drawing.Size(64, 64);
@@ -426,7 +426,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             // circularPictureBox29
             // 
-            this.circularPictureBox29.BackColor = System.Drawing.Color.Black;
+            this.circularPictureBox29.BackColor = System.Drawing.Color.White;
             this.circularPictureBox29.Location = new System.Drawing.Point(1079, 318);
             this.circularPictureBox29.Name = "circularPictureBox29";
             this.circularPictureBox29.Size = new System.Drawing.Size(64, 64);
@@ -437,7 +437,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             // circularPictureBox30
             // 
-            this.circularPictureBox30.BackColor = System.Drawing.Color.Black;
+            this.circularPictureBox30.BackColor = System.Drawing.Color.White;
             this.circularPictureBox30.Location = new System.Drawing.Point(997, 318);
             this.circularPictureBox30.Name = "circularPictureBox30";
             this.circularPictureBox30.Size = new System.Drawing.Size(64, 64);
@@ -448,7 +448,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             // circularPictureBox31
             // 
-            this.circularPictureBox31.BackColor = System.Drawing.Color.Black;
+            this.circularPictureBox31.BackColor = System.Drawing.Color.White;
             this.circularPictureBox31.Location = new System.Drawing.Point(915, 318);
             this.circularPictureBox31.Name = "circularPictureBox31";
             this.circularPictureBox31.Size = new System.Drawing.Size(64, 64);
@@ -459,7 +459,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             // circularPictureBox32
             // 
-            this.circularPictureBox32.BackColor = System.Drawing.Color.Black;
+            this.circularPictureBox32.BackColor = System.Drawing.Color.White;
             this.circularPictureBox32.Location = new System.Drawing.Point(833, 318);
             this.circularPictureBox32.Name = "circularPictureBox32";
             this.circularPictureBox32.Size = new System.Drawing.Size(64, 64);
@@ -470,7 +470,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             // circularPictureBox33
             // 
-            this.circularPictureBox33.BackColor = System.Drawing.Color.Black;
+            this.circularPictureBox33.BackColor = System.Drawing.Color.White;
             this.circularPictureBox33.Location = new System.Drawing.Point(751, 318);
             this.circularPictureBox33.Name = "circularPictureBox33";
             this.circularPictureBox33.Size = new System.Drawing.Size(64, 64);
@@ -481,7 +481,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             // circularPictureBox34
             // 
-            this.circularPictureBox34.BackColor = System.Drawing.Color.Black;
+            this.circularPictureBox34.BackColor = System.Drawing.Color.White;
             this.circularPictureBox34.Location = new System.Drawing.Point(669, 318);
             this.circularPictureBox34.Name = "circularPictureBox34";
             this.circularPictureBox34.Size = new System.Drawing.Size(64, 64);
@@ -492,7 +492,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             // circularPictureBox35
             // 
-            this.circularPictureBox35.BackColor = System.Drawing.Color.Black;
+            this.circularPictureBox35.BackColor = System.Drawing.Color.White;
             this.circularPictureBox35.Location = new System.Drawing.Point(587, 318);
             this.circularPictureBox35.Name = "circularPictureBox35";
             this.circularPictureBox35.Size = new System.Drawing.Size(64, 64);
@@ -503,7 +503,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             // circularPictureBox36
             // 
-            this.circularPictureBox36.BackColor = System.Drawing.Color.Black;
+            this.circularPictureBox36.BackColor = System.Drawing.Color.White;
             this.circularPictureBox36.Location = new System.Drawing.Point(505, 318);
             this.circularPictureBox36.Name = "circularPictureBox36";
             this.circularPictureBox36.Size = new System.Drawing.Size(64, 64);
@@ -514,7 +514,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             // circularPictureBox37
             // 
-            this.circularPictureBox37.BackColor = System.Drawing.Color.Black;
+            this.circularPictureBox37.BackColor = System.Drawing.Color.White;
             this.circularPictureBox37.Location = new System.Drawing.Point(423, 318);
             this.circularPictureBox37.Name = "circularPictureBox37";
             this.circularPictureBox37.Size = new System.Drawing.Size(64, 64);
@@ -525,7 +525,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             // circularPictureBox38
             // 
-            this.circularPictureBox38.BackColor = System.Drawing.Color.Black;
+            this.circularPictureBox38.BackColor = System.Drawing.Color.White;
             this.circularPictureBox38.Location = new System.Drawing.Point(341, 318);
             this.circularPictureBox38.Name = "circularPictureBox38";
             this.circularPictureBox38.Size = new System.Drawing.Size(64, 64);
@@ -536,7 +536,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             // circularPictureBox39
             // 
-            this.circularPictureBox39.BackColor = System.Drawing.Color.Black;
+            this.circularPictureBox39.BackColor = System.Drawing.Color.White;
             this.circularPictureBox39.Location = new System.Drawing.Point(259, 318);
             this.circularPictureBox39.Name = "circularPictureBox39";
             this.circularPictureBox39.Size = new System.Drawing.Size(64, 64);
@@ -547,7 +547,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             // circularPictureBox40
             // 
-            this.circularPictureBox40.BackColor = System.Drawing.Color.Black;
+            this.circularPictureBox40.BackColor = System.Drawing.Color.White;
             this.circularPictureBox40.Location = new System.Drawing.Point(177, 318);
             this.circularPictureBox40.Name = "circularPictureBox40";
             this.circularPictureBox40.Size = new System.Drawing.Size(64, 64);
@@ -558,7 +558,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             // circularPictureBox41
             // 
-            this.circularPictureBox41.BackColor = System.Drawing.Color.Black;
+            this.circularPictureBox41.BackColor = System.Drawing.Color.White;
             this.circularPictureBox41.Location = new System.Drawing.Point(95, 318);
             this.circularPictureBox41.Name = "circularPictureBox41";
             this.circularPictureBox41.Size = new System.Drawing.Size(64, 64);
@@ -569,7 +569,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             // cpbxRibbonTabColour
             // 
-            this.cpbxRibbonTabColour.BackColor = System.Drawing.Color.Black;
+            this.cpbxRibbonTabColour.BackColor = System.Drawing.Color.White;
             this.cpbxRibbonTabColour.Location = new System.Drawing.Point(13, 317);
             this.cpbxRibbonTabColour.Name = "cpbxRibbonTabColour";
             this.cpbxRibbonTabColour.Size = new System.Drawing.Size(64, 64);
@@ -579,6 +579,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             // PaletteDesignerCircularUserControl
             // 
+            this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.circularPictureBox29);
             this.Controls.Add(this.circularPictureBox30);
             this.Controls.Add(this.circularPictureBox31);
@@ -609,7 +610,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.Controls.Add(this.cpbxLinkHoverColour);
             this.Controls.Add(this.cpbxLinkFocusedColour);
             this.Controls.Add(this.cpbxLinkNormalColour);
-            this.Controls.Add(this.cpbxDisabledColour);
+            this.Controls.Add(this.cpbxDisabledControlColour);
             this.Controls.Add(this.cpbxPressedTextColour);
             this.Controls.Add(this.cpbxFocusedTextColour);
             this.Controls.Add(this.cpbxDisabledTextColour);
@@ -635,7 +636,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             ((System.ComponentModel.ISupportInitialize)(this.cpbxDisabledTextColour)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cpbxFocusedTextColour)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cpbxPressedTextColour)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cpbxDisabledColour)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpbxDisabledControlColour)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cpbxLinkNormalColour)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cpbxLinkFocusedColour)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cpbxStatusTextColour)).EndInit();
@@ -777,7 +778,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
 
                 ColourInformation.SetTooltip(cpbxPressedTextColour, "Pressed Text");
 
-                ColourInformation.SetTooltip(cpbxDisabledColour, "Disabled Control");
+                ColourInformation.SetTooltip(cpbxDisabledControlColour, "Disabled Control");
 
                 ColourInformation.SetTooltip(cpbxLinkNormalColour, "Link Normal Text");
 
@@ -860,7 +861,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
 
             ColourPreviews[10] = cpbxPressedTextColour;
 
-            ColourPreviews[11] = cpbxDisabledColour;
+            ColourPreviews[11] = cpbxDisabledControlColour;
 
             ColourPreviews[12] = cpbxLinkNormalColour;
 
