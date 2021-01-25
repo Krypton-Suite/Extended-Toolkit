@@ -52,6 +52,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
         private Suite.Extended.Base.CircularPictureBox cpbxRibbonTabColour;
         private ToolTip ttColourInformation;
         private System.ComponentModel.IContainer components;
+        private KryptonPalette internalPalette;
         private Suite.Extended.Base.CircularPictureBox cpbxDarkColour;
 
         private void InitializeComponent()
@@ -100,6 +101,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.circularPictureBox41 = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
             this.cpbxRibbonTabColour = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
             this.ttColourInformation = new System.Windows.Forms.ToolTip(this.components);
+            this.internalPalette = new Krypton.Toolkit.KryptonPalette(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.cpbxBaseColour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cpbxDarkColour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cpbxMediumColour)).BeginInit();
@@ -576,6 +578,10 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.cpbxRibbonTabColour.TabIndex = 28;
             this.cpbxRibbonTabColour.TabStop = false;
             this.cpbxRibbonTabColour.ToolTipValues = null;
+            // 
+            // internalPalette
+            // 
+            this.internalPalette.CustomisedKryptonPaletteFilePath = null;
             // 
             // PaletteDesignerCircularUserControl
             // 

@@ -53,17 +53,9 @@ Stable package configuration-
 	<ItemGroup>
 		<PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2101" />
 	</ItemGroup>
-
-  <ItemGroup>
-    <!--Canary icon-->
-    <None Include="Package Icons\Canary.png" Pack="true" PackagePath="\" />
-
-    <!--Stable icon-->
-    <None Include="Package Icons\Stable.png" Pack="true" PackagePath="\" />
-
-    <!--Nightly icon-->
-    <None Include="Package Icons\Nightly.png" Pack="true" PackagePath="\" />
-  </ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\Toolkit Core\Krypton.Toolkit.Suite.Extended.Core.csproj" />
+	</ItemGroup>
 
 	<PropertyGroup>
 		<DocumentationFile>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Palette.Controller\Krypton.Toolkit.Suite.Extended.Palette.Controller.xml</DocumentationFile>

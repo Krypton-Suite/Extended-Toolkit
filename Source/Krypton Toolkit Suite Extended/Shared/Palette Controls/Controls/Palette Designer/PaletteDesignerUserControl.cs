@@ -39,6 +39,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
         private PictureBox pbxRibbonTabColour;
         private ToolTip ttColourInformation;
         private IContainer components;
+        private KryptonPalette internalPalette;
         private PictureBox pbxBaseColour;
 
         private void InitializeComponent()
@@ -74,6 +75,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.pbxStatusTextColour = new System.Windows.Forms.PictureBox();
             this.pbxRibbonTabColour = new System.Windows.Forms.PictureBox();
             this.ttColourInformation = new System.Windows.Forms.ToolTip(this.components);
+            this.internalPalette = new Krypton.Toolkit.KryptonPalette(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pbxBaseColour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxDarkColour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxMediumColour)).BeginInit();
@@ -379,6 +381,10 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.pbxRibbonTabColour.TabStop = false;
             this.pbxRibbonTabColour.Visible = false;
             // 
+            // internalPalette
+            // 
+            this.internalPalette.CustomisedKryptonPaletteFilePath = null;
+            // 
             // PaletteDesignerUserControl
             // 
             this.BackColor = System.Drawing.Color.Transparent;
@@ -523,6 +529,8 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
         #endregion
 
         #region Methods
+        /// <summary>Setup the colour tool tips.</summary>
+        /// <param name="displayToolTips">if set to <c>true</c> [display tool tips].</param>
         public void SetupColourToolTips(bool displayToolTips)
         {
             if (displayToolTips)
@@ -585,30 +593,12 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
 
                 ColourInformation.SetTooltip(pbxRibbonTabColour, "Ribbon Tab");
             }
-            else
-            {
-                if (_previews.Length > 0)
-                {
-                    try
-                    {
-                        foreach (Suite.Extended.Base.CircularPictureBox box in _previews)
-                        {
-                            box.ToolTipValues.Description = string.Empty;
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-
-                        throw;
-                    }
-                }
-            }
         }
 
         /// <summary>Propagates the colour preview array.</summary>
         private void PropagateColourPreviewArray()
         {
-            _previews = new Suite.Extended.Base.CircularPictureBox[29];
+            _previews = new PictureBox[29];
 
             ColourPreviews[0] = pbxBaseColour;
 
@@ -675,7 +665,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
         {
             try
             {
-                foreach (Suite.Extended.Base.CircularPictureBox box in ColourPreviews)
+                foreach (PictureBox box in ColourPreviews)
                 {
                     box.BackColor = defaultColour;
                 }
@@ -752,6 +742,18 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
 
                     ColourPreviews[28].BackColor = paletteColours[28];
                 }
+            }
+            catch (Exception e)
+            {
+                Suite.Extended.Common.ExceptionHandler.CaptureException(e);
+            }
+        }
+
+        public void ExportPaletteColours()
+        {
+            try
+            {
+
             }
             catch (Exception e)
             {
