@@ -13,7 +13,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
         private Suite.Extended.Base.CircularPictureBox cpbxMediumColour;
         private Suite.Extended.Base.CircularPictureBox cpbxLightColour;
         private Suite.Extended.Base.CircularPictureBox cpbxLightestColour;
-        private Suite.Extended.Base.CircularPictureBox cpbxBorderColour;
+        private Suite.Extended.Base.CircularPictureBox cpbxBorderColourOne;
         private Suite.Extended.Base.CircularPictureBox cpbxAlternativeNormalTextColour;
         private Suite.Extended.Base.CircularPictureBox cpbxNormalTextColour;
         private Suite.Extended.Base.CircularPictureBox cpbxDisabledTextColour;
@@ -48,7 +48,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
         private Suite.Extended.Base.CircularPictureBox circularPictureBox38;
         private Suite.Extended.Base.CircularPictureBox circularPictureBox39;
         private Suite.Extended.Base.CircularPictureBox circularPictureBox40;
-        private Suite.Extended.Base.CircularPictureBox circularPictureBox41;
+        private Suite.Extended.Base.CircularPictureBox cpbxBorderColourTwo;
         private Suite.Extended.Base.CircularPictureBox cpbxRibbonTabTextColour;
         private ToolTip ttColourInformation;
         private System.ComponentModel.IContainer components;
@@ -61,7 +61,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
         private ToolStripMenuItem toolStripMenuItem2;
         private ContextMenuStrip cmsLightestColour;
         private ToolStripMenuItem toolStripMenuItem3;
-        private ContextMenuStrip cmsBorderColour;
+        private ContextMenuStrip cmsBorderColourOne;
         private ToolStripMenuItem toolStripMenuItem4;
         private ContextMenuStrip cmsAlternativeNormalTextColour;
         private ToolStripMenuItem toolStripMenuItem5;
@@ -89,9 +89,9 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
         private ToolStripMenuItem toolStripMenuItem16;
         private ContextMenuStrip cmsCustomColourThree;
         private ToolStripMenuItem toolStripMenuItem17;
-        private ContextMenuStrip cmscmsCustomColourFour;
+        private ContextMenuStrip cmsCustomColourFour;
         private ToolStripMenuItem toolStripMenuItem18;
-        private ContextMenuStrip cmscmsCustomColourFive;
+        private ContextMenuStrip cmsCustomColourFive;
         private ToolStripMenuItem toolStripMenuItem19;
         private ContextMenuStrip cmsCustomTextColourOne;
         private ToolStripMenuItem toolStripMenuItem20;
@@ -109,8 +109,69 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
         private ToolStripMenuItem toolStripMenuItem26;
         private ContextMenuStrip cmsRibbonTabTextColour;
         private ToolStripMenuItem toolStripMenuItem27;
-        private ContextMenuStrip contextMenuStrip29;
+        private ContextMenuStrip cmsMediumColour;
         private ToolStripMenuItem toolStripMenuItem28;
+        private ContextMenuStrip cmsBorderColourTwo;
+        private ToolStripMenuItem toolStripMenuItem29;
+        private ToolStripSeparator toolStripMenuItem30;
+        private ToolStripMenuItem generateARandomColourToolStripMenuItem;
+        private ToolStripSeparator toolStripMenuItem31;
+        private ToolStripMenuItem generateARandomColourToolStripMenuItem1;
+        private ToolStripSeparator toolStripMenuItem57;
+        private ToolStripMenuItem generateARandomColourToolStripMenuItem28;
+        private ToolStripSeparator toolStripMenuItem32;
+        private ToolStripMenuItem generateARandomColourToolStripMenuItem2;
+        private ToolStripSeparator toolStripMenuItem33;
+        private ToolStripMenuItem generateARandomColourToolStripMenuItem3;
+        private ToolStripSeparator toolStripMenuItem34;
+        private ToolStripMenuItem generateARandomColourToolStripMenuItem4;
+        private ToolStripSeparator toolStripMenuItem35;
+        private ToolStripMenuItem generateARandomColourToolStripMenuItem5;
+        private ToolStripMenuItem generateARandomColourToolStripMenuItem6;
+        private ToolStripSeparator toolStripMenuItem36;
+        private ToolStripMenuItem generateARandomColourToolStripMenuItem7;
+        private ToolStripSeparator toolStripMenuItem37;
+        private ToolStripMenuItem generateARandomColourToolStripMenuItem8;
+        private ToolStripSeparator toolStripMenuItem38;
+        private ToolStripMenuItem generateARandomColourToolStripMenuItem9;
+        private ToolStripSeparator toolStripMenuItem39;
+        private ToolStripMenuItem generateARandomColourToolStripMenuItem10;
+        private ToolStripSeparator toolStripMenuItem40;
+        private ToolStripMenuItem generateARandomColourToolStripMenuItem11;
+        private ToolStripSeparator toolStripMenuItem41;
+        private ToolStripMenuItem generateARandomColourToolStripMenuItem12;
+        private ToolStripSeparator toolStripMenuItem55;
+        private ToolStripMenuItem generateARandomColourToolStripMenuItem26;
+        private ToolStripSeparator toolStripMenuItem54;
+        private ToolStripMenuItem generateARandomColourToolStripMenuItem25;
+        private ToolStripSeparator toolStripMenuItem53;
+        private ToolStripMenuItem generateARandomColourToolStripMenuItem24;
+        private ToolStripSeparator toolStripMenuItem52;
+        private ToolStripMenuItem generateARandomColourToolStripMenuItem23;
+        private ToolStripSeparator toolStripMenuItem51;
+        private ToolStripMenuItem generateARandomColourToolStripMenuItem22;
+        private ToolStripSeparator toolStripMenuItem50;
+        private ToolStripMenuItem generateARandomColourToolStripMenuItem21;
+        private ToolStripSeparator toolStripMenuItem49;
+        private ToolStripMenuItem generateARandomColourToolStripMenuItem20;
+        private ToolStripSeparator toolStripMenuItem48;
+        private ToolStripMenuItem generateARandomColourToolStripMenuItem19;
+        private ToolStripSeparator toolStripMenuItem47;
+        private ToolStripMenuItem generateARandomColourToolStripMenuItem18;
+        private ToolStripSeparator toolStripMenuItem46;
+        private ToolStripMenuItem generateARandomColourToolStripMenuItem17;
+        private ToolStripSeparator toolStripMenuItem45;
+        private ToolStripMenuItem generateARandomColourToolStripMenuItem16;
+        private ToolStripSeparator toolStripMenuItem44;
+        private ToolStripMenuItem generateARandomColourToolStripMenuItem15;
+        private ToolStripSeparator toolStripMenuItem43;
+        private ToolStripMenuItem generateARandomColourToolStripMenuItem14;
+        private ToolStripSeparator toolStripMenuItem42;
+        private ToolStripMenuItem generateARandomColourToolStripMenuItem13;
+        private ToolStripSeparator toolStripMenuItem56;
+        private ToolStripMenuItem generateARandomColourToolStripMenuItem27;
+        private ToolStripSeparator toolStripMenuItem58;
+        private ToolStripMenuItem generateARandomColourToolStripMenuItem29;
         private Suite.Extended.Base.CircularPictureBox cpbxDarkColour;
 
         private void InitializeComponent()
@@ -121,7 +182,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.cpbxMediumColour = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
             this.cpbxLightColour = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
             this.cpbxLightestColour = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
-            this.cpbxBorderColour = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
+            this.cpbxBorderColourOne = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
             this.cpbxAlternativeNormalTextColour = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
             this.cpbxNormalTextColour = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
             this.cpbxDisabledTextColour = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
@@ -156,7 +217,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.circularPictureBox38 = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
             this.circularPictureBox39 = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
             this.circularPictureBox40 = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
-            this.circularPictureBox41 = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
+            this.cpbxBorderColourTwo = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
             this.cpbxRibbonTabTextColour = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
             this.ttColourInformation = new System.Windows.Forms.ToolTip(this.components);
             this.internalPalette = new Krypton.Toolkit.KryptonPalette(this.components);
@@ -168,7 +229,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsLightestColour = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.cmsBorderColour = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.cmsBorderColourOne = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsAlternativeNormalTextColour = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
@@ -196,9 +257,9 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.toolStripMenuItem16 = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsCustomColourThree = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem17 = new System.Windows.Forms.ToolStripMenuItem();
-            this.cmscmsCustomColourFour = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.cmsCustomColourFour = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem18 = new System.Windows.Forms.ToolStripMenuItem();
-            this.cmscmsCustomColourFive = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.cmsCustomColourFive = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem19 = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsCustomTextColourOne = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem20 = new System.Windows.Forms.ToolStripMenuItem();
@@ -216,14 +277,75 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.toolStripMenuItem26 = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsRibbonTabTextColour = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem27 = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextMenuStrip29 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.cmsMediumColour = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem28 = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsBorderColourTwo = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem29 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem30 = new System.Windows.Forms.ToolStripSeparator();
+            this.generateARandomColourToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem31 = new System.Windows.Forms.ToolStripSeparator();
+            this.generateARandomColourToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem32 = new System.Windows.Forms.ToolStripSeparator();
+            this.generateARandomColourToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem33 = new System.Windows.Forms.ToolStripSeparator();
+            this.generateARandomColourToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem34 = new System.Windows.Forms.ToolStripSeparator();
+            this.generateARandomColourToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem35 = new System.Windows.Forms.ToolStripSeparator();
+            this.generateARandomColourToolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.generateARandomColourToolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem36 = new System.Windows.Forms.ToolStripSeparator();
+            this.generateARandomColourToolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem37 = new System.Windows.Forms.ToolStripSeparator();
+            this.generateARandomColourToolStripMenuItem8 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem38 = new System.Windows.Forms.ToolStripSeparator();
+            this.generateARandomColourToolStripMenuItem9 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem39 = new System.Windows.Forms.ToolStripSeparator();
+            this.generateARandomColourToolStripMenuItem10 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem40 = new System.Windows.Forms.ToolStripSeparator();
+            this.generateARandomColourToolStripMenuItem11 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem41 = new System.Windows.Forms.ToolStripSeparator();
+            this.generateARandomColourToolStripMenuItem12 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem42 = new System.Windows.Forms.ToolStripSeparator();
+            this.generateARandomColourToolStripMenuItem13 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem43 = new System.Windows.Forms.ToolStripSeparator();
+            this.generateARandomColourToolStripMenuItem14 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem44 = new System.Windows.Forms.ToolStripSeparator();
+            this.generateARandomColourToolStripMenuItem15 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem45 = new System.Windows.Forms.ToolStripSeparator();
+            this.generateARandomColourToolStripMenuItem16 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem46 = new System.Windows.Forms.ToolStripSeparator();
+            this.generateARandomColourToolStripMenuItem17 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem47 = new System.Windows.Forms.ToolStripSeparator();
+            this.generateARandomColourToolStripMenuItem18 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem48 = new System.Windows.Forms.ToolStripSeparator();
+            this.generateARandomColourToolStripMenuItem19 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem49 = new System.Windows.Forms.ToolStripSeparator();
+            this.generateARandomColourToolStripMenuItem20 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem50 = new System.Windows.Forms.ToolStripSeparator();
+            this.generateARandomColourToolStripMenuItem21 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem51 = new System.Windows.Forms.ToolStripSeparator();
+            this.generateARandomColourToolStripMenuItem22 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem52 = new System.Windows.Forms.ToolStripSeparator();
+            this.generateARandomColourToolStripMenuItem23 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem53 = new System.Windows.Forms.ToolStripSeparator();
+            this.generateARandomColourToolStripMenuItem24 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem54 = new System.Windows.Forms.ToolStripSeparator();
+            this.generateARandomColourToolStripMenuItem25 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem55 = new System.Windows.Forms.ToolStripSeparator();
+            this.generateARandomColourToolStripMenuItem26 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem56 = new System.Windows.Forms.ToolStripSeparator();
+            this.generateARandomColourToolStripMenuItem27 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem57 = new System.Windows.Forms.ToolStripSeparator();
+            this.generateARandomColourToolStripMenuItem28 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem58 = new System.Windows.Forms.ToolStripSeparator();
+            this.generateARandomColourToolStripMenuItem29 = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.cpbxBaseColour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cpbxDarkColour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cpbxMediumColour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cpbxLightColour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cpbxLightestColour)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cpbxBorderColour)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpbxBorderColourOne)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cpbxAlternativeNormalTextColour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cpbxNormalTextColour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cpbxDisabledTextColour)).BeginInit();
@@ -258,13 +380,13 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox38)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox39)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox40)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox41)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpbxBorderColourTwo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cpbxRibbonTabTextColour)).BeginInit();
             this.cmsBaseColour.SuspendLayout();
             this.cmsDarkColour.SuspendLayout();
             this.cmsLightColour.SuspendLayout();
             this.cmsLightestColour.SuspendLayout();
-            this.cmsBorderColour.SuspendLayout();
+            this.cmsBorderColourOne.SuspendLayout();
             this.cmsAlternativeNormalTextColour.SuspendLayout();
             this.cmsNormalTextColour.SuspendLayout();
             this.cmsDisabledTextColour.SuspendLayout();
@@ -278,8 +400,8 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.cmsCustomColourOne.SuspendLayout();
             this.cmsCustomColourTwo.SuspendLayout();
             this.cmsCustomColourThree.SuspendLayout();
-            this.cmscmsCustomColourFour.SuspendLayout();
-            this.cmscmsCustomColourFive.SuspendLayout();
+            this.cmsCustomColourFour.SuspendLayout();
+            this.cmsCustomColourFive.SuspendLayout();
             this.cmsCustomTextColourOne.SuspendLayout();
             this.cmsCustomTextColourTwo.SuspendLayout();
             this.cmsCustomTextColourThree.SuspendLayout();
@@ -288,12 +410,14 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.cmsMenuTextColour.SuspendLayout();
             this.cmsStatusTextColour.SuspendLayout();
             this.cmsRibbonTabTextColour.SuspendLayout();
-            this.contextMenuStrip29.SuspendLayout();
+            this.cmsMediumColour.SuspendLayout();
+            this.cmsBorderColourTwo.SuspendLayout();
             this.SuspendLayout();
             // 
             // cpbxBaseColour
             // 
             this.cpbxBaseColour.BackColor = System.Drawing.Color.White;
+            this.cpbxBaseColour.ContextMenuStrip = this.cmsBaseColour;
             this.cpbxBaseColour.Location = new System.Drawing.Point(13, 13);
             this.cpbxBaseColour.Name = "cpbxBaseColour";
             this.cpbxBaseColour.Size = new System.Drawing.Size(64, 64);
@@ -304,6 +428,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // cpbxDarkColour
             // 
             this.cpbxDarkColour.BackColor = System.Drawing.Color.White;
+            this.cpbxDarkColour.ContextMenuStrip = this.cmsDarkColour;
             this.cpbxDarkColour.Location = new System.Drawing.Point(95, 13);
             this.cpbxDarkColour.Name = "cpbxDarkColour";
             this.cpbxDarkColour.Size = new System.Drawing.Size(64, 64);
@@ -314,6 +439,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // cpbxMediumColour
             // 
             this.cpbxMediumColour.BackColor = System.Drawing.Color.White;
+            this.cpbxMediumColour.ContextMenuStrip = this.cmsMediumColour;
             this.cpbxMediumColour.Location = new System.Drawing.Point(177, 13);
             this.cpbxMediumColour.Name = "cpbxMediumColour";
             this.cpbxMediumColour.Size = new System.Drawing.Size(64, 64);
@@ -324,6 +450,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // cpbxLightColour
             // 
             this.cpbxLightColour.BackColor = System.Drawing.Color.White;
+            this.cpbxLightColour.ContextMenuStrip = this.cmsLightColour;
             this.cpbxLightColour.Location = new System.Drawing.Point(259, 13);
             this.cpbxLightColour.Name = "cpbxLightColour";
             this.cpbxLightColour.Size = new System.Drawing.Size(64, 64);
@@ -334,6 +461,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // cpbxLightestColour
             // 
             this.cpbxLightestColour.BackColor = System.Drawing.Color.White;
+            this.cpbxLightestColour.ContextMenuStrip = this.cmsLightestColour;
             this.cpbxLightestColour.Location = new System.Drawing.Point(341, 13);
             this.cpbxLightestColour.Name = "cpbxLightestColour";
             this.cpbxLightestColour.Size = new System.Drawing.Size(64, 64);
@@ -341,20 +469,22 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.cpbxLightestColour.TabStop = false;
             this.cpbxLightestColour.ToolTipValues = null;
             // 
-            // cpbxBorderColour
+            // cpbxBorderColourOne
             // 
-            this.cpbxBorderColour.BackColor = System.Drawing.Color.White;
-            this.cpbxBorderColour.Location = new System.Drawing.Point(423, 13);
-            this.cpbxBorderColour.Name = "cpbxBorderColour";
-            this.cpbxBorderColour.Size = new System.Drawing.Size(64, 64);
-            this.cpbxBorderColour.TabIndex = 5;
-            this.cpbxBorderColour.TabStop = false;
-            this.cpbxBorderColour.ToolTipValues = null;
+            this.cpbxBorderColourOne.BackColor = System.Drawing.Color.White;
+            this.cpbxBorderColourOne.ContextMenuStrip = this.cmsBorderColourOne;
+            this.cpbxBorderColourOne.Location = new System.Drawing.Point(423, 13);
+            this.cpbxBorderColourOne.Name = "cpbxBorderColourOne";
+            this.cpbxBorderColourOne.Size = new System.Drawing.Size(64, 64);
+            this.cpbxBorderColourOne.TabIndex = 5;
+            this.cpbxBorderColourOne.TabStop = false;
+            this.cpbxBorderColourOne.ToolTipValues = null;
             // 
             // cpbxAlternativeNormalTextColour
             // 
             this.cpbxAlternativeNormalTextColour.BackColor = System.Drawing.Color.White;
-            this.cpbxAlternativeNormalTextColour.Location = new System.Drawing.Point(505, 13);
+            this.cpbxAlternativeNormalTextColour.ContextMenuStrip = this.cmsAlternativeNormalTextColour;
+            this.cpbxAlternativeNormalTextColour.Location = new System.Drawing.Point(587, 13);
             this.cpbxAlternativeNormalTextColour.Name = "cpbxAlternativeNormalTextColour";
             this.cpbxAlternativeNormalTextColour.Size = new System.Drawing.Size(64, 64);
             this.cpbxAlternativeNormalTextColour.TabIndex = 6;
@@ -364,7 +494,8 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // cpbxNormalTextColour
             // 
             this.cpbxNormalTextColour.BackColor = System.Drawing.Color.White;
-            this.cpbxNormalTextColour.Location = new System.Drawing.Point(587, 13);
+            this.cpbxNormalTextColour.ContextMenuStrip = this.cmsNormalTextColour;
+            this.cpbxNormalTextColour.Location = new System.Drawing.Point(669, 13);
             this.cpbxNormalTextColour.Name = "cpbxNormalTextColour";
             this.cpbxNormalTextColour.Size = new System.Drawing.Size(64, 64);
             this.cpbxNormalTextColour.TabIndex = 7;
@@ -374,7 +505,8 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // cpbxDisabledTextColour
             // 
             this.cpbxDisabledTextColour.BackColor = System.Drawing.Color.White;
-            this.cpbxDisabledTextColour.Location = new System.Drawing.Point(669, 13);
+            this.cpbxDisabledTextColour.ContextMenuStrip = this.cmsDisabledTextColour;
+            this.cpbxDisabledTextColour.Location = new System.Drawing.Point(751, 13);
             this.cpbxDisabledTextColour.Name = "cpbxDisabledTextColour";
             this.cpbxDisabledTextColour.Size = new System.Drawing.Size(64, 64);
             this.cpbxDisabledTextColour.TabIndex = 8;
@@ -384,7 +516,8 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // cpbxFocusedTextColour
             // 
             this.cpbxFocusedTextColour.BackColor = System.Drawing.Color.White;
-            this.cpbxFocusedTextColour.Location = new System.Drawing.Point(751, 13);
+            this.cpbxFocusedTextColour.ContextMenuStrip = this.cmsFocusedTextColour;
+            this.cpbxFocusedTextColour.Location = new System.Drawing.Point(833, 13);
             this.cpbxFocusedTextColour.Name = "cpbxFocusedTextColour";
             this.cpbxFocusedTextColour.Size = new System.Drawing.Size(64, 64);
             this.cpbxFocusedTextColour.TabIndex = 9;
@@ -394,7 +527,8 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // cpbxPressedTextColour
             // 
             this.cpbxPressedTextColour.BackColor = System.Drawing.Color.White;
-            this.cpbxPressedTextColour.Location = new System.Drawing.Point(833, 13);
+            this.cpbxPressedTextColour.ContextMenuStrip = this.cmsPressedTextColour;
+            this.cpbxPressedTextColour.Location = new System.Drawing.Point(915, 13);
             this.cpbxPressedTextColour.Name = "cpbxPressedTextColour";
             this.cpbxPressedTextColour.Size = new System.Drawing.Size(64, 64);
             this.cpbxPressedTextColour.TabIndex = 10;
@@ -404,7 +538,8 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // cpbxDisabledControlColour
             // 
             this.cpbxDisabledControlColour.BackColor = System.Drawing.Color.White;
-            this.cpbxDisabledControlColour.Location = new System.Drawing.Point(915, 13);
+            this.cpbxDisabledControlColour.ContextMenuStrip = this.cmsDisabledControlColour;
+            this.cpbxDisabledControlColour.Location = new System.Drawing.Point(997, 13);
             this.cpbxDisabledControlColour.Name = "cpbxDisabledControlColour";
             this.cpbxDisabledControlColour.Size = new System.Drawing.Size(64, 64);
             this.cpbxDisabledControlColour.TabIndex = 11;
@@ -414,7 +549,8 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // cpbxLinkNormalColour
             // 
             this.cpbxLinkNormalColour.BackColor = System.Drawing.Color.White;
-            this.cpbxLinkNormalColour.Location = new System.Drawing.Point(997, 13);
+            this.cpbxLinkNormalColour.ContextMenuStrip = this.cmsLinkNormalColour;
+            this.cpbxLinkNormalColour.Location = new System.Drawing.Point(95, 165);
             this.cpbxLinkNormalColour.Name = "cpbxLinkNormalColour";
             this.cpbxLinkNormalColour.Size = new System.Drawing.Size(64, 64);
             this.cpbxLinkNormalColour.TabIndex = 12;
@@ -424,6 +560,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // cpbxLinkFocusedColour
             // 
             this.cpbxLinkFocusedColour.BackColor = System.Drawing.Color.White;
+            this.cpbxLinkFocusedColour.ContextMenuStrip = this.cmsLinkFocusedColour;
             this.cpbxLinkFocusedColour.Location = new System.Drawing.Point(1079, 13);
             this.cpbxLinkFocusedColour.Name = "cpbxLinkFocusedColour";
             this.cpbxLinkFocusedColour.Size = new System.Drawing.Size(64, 64);
@@ -434,7 +571,8 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // cpbxStatusTextColour
             // 
             this.cpbxStatusTextColour.BackColor = System.Drawing.Color.White;
-            this.cpbxStatusTextColour.Location = new System.Drawing.Point(1079, 165);
+            this.cpbxStatusTextColour.ContextMenuStrip = this.cmsStatusTextColour;
+            this.cpbxStatusTextColour.Location = new System.Drawing.Point(13, 318);
             this.cpbxStatusTextColour.Name = "cpbxStatusTextColour";
             this.cpbxStatusTextColour.Size = new System.Drawing.Size(64, 64);
             this.cpbxStatusTextColour.TabIndex = 27;
@@ -444,7 +582,8 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // cpbxMenuTextColour
             // 
             this.cpbxMenuTextColour.BackColor = System.Drawing.Color.White;
-            this.cpbxMenuTextColour.Location = new System.Drawing.Point(997, 165);
+            this.cpbxMenuTextColour.ContextMenuStrip = this.cmsMenuTextColour;
+            this.cpbxMenuTextColour.Location = new System.Drawing.Point(1079, 165);
             this.cpbxMenuTextColour.Name = "cpbxMenuTextColour";
             this.cpbxMenuTextColour.Size = new System.Drawing.Size(64, 64);
             this.cpbxMenuTextColour.TabIndex = 26;
@@ -454,7 +593,8 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // cpbxCustomTextColourFive
             // 
             this.cpbxCustomTextColourFive.BackColor = System.Drawing.Color.White;
-            this.cpbxCustomTextColourFive.Location = new System.Drawing.Point(915, 165);
+            this.cpbxCustomTextColourFive.ContextMenuStrip = this.cmsCustomTextColourFive;
+            this.cpbxCustomTextColourFive.Location = new System.Drawing.Point(997, 165);
             this.cpbxCustomTextColourFive.Name = "cpbxCustomTextColourFive";
             this.cpbxCustomTextColourFive.Size = new System.Drawing.Size(64, 64);
             this.cpbxCustomTextColourFive.TabIndex = 25;
@@ -464,7 +604,8 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // cpbxCustomTextColourFour
             // 
             this.cpbxCustomTextColourFour.BackColor = System.Drawing.Color.White;
-            this.cpbxCustomTextColourFour.Location = new System.Drawing.Point(833, 165);
+            this.cpbxCustomTextColourFour.ContextMenuStrip = this.cmsCustomTextColourFour;
+            this.cpbxCustomTextColourFour.Location = new System.Drawing.Point(915, 165);
             this.cpbxCustomTextColourFour.Name = "cpbxCustomTextColourFour";
             this.cpbxCustomTextColourFour.Size = new System.Drawing.Size(64, 64);
             this.cpbxCustomTextColourFour.TabIndex = 24;
@@ -474,7 +615,8 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // cpbxCustomTextColourThree
             // 
             this.cpbxCustomTextColourThree.BackColor = System.Drawing.Color.White;
-            this.cpbxCustomTextColourThree.Location = new System.Drawing.Point(751, 165);
+            this.cpbxCustomTextColourThree.ContextMenuStrip = this.cmsCustomTextColourThree;
+            this.cpbxCustomTextColourThree.Location = new System.Drawing.Point(833, 165);
             this.cpbxCustomTextColourThree.Name = "cpbxCustomTextColourThree";
             this.cpbxCustomTextColourThree.Size = new System.Drawing.Size(64, 64);
             this.cpbxCustomTextColourThree.TabIndex = 23;
@@ -484,7 +626,8 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // cpbxCustomTextColourTwo
             // 
             this.cpbxCustomTextColourTwo.BackColor = System.Drawing.Color.White;
-            this.cpbxCustomTextColourTwo.Location = new System.Drawing.Point(669, 165);
+            this.cpbxCustomTextColourTwo.ContextMenuStrip = this.cmsCustomTextColourTwo;
+            this.cpbxCustomTextColourTwo.Location = new System.Drawing.Point(751, 165);
             this.cpbxCustomTextColourTwo.Name = "cpbxCustomTextColourTwo";
             this.cpbxCustomTextColourTwo.Size = new System.Drawing.Size(64, 64);
             this.cpbxCustomTextColourTwo.TabIndex = 22;
@@ -494,7 +637,8 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // cpbxCustomTextColourOne
             // 
             this.cpbxCustomTextColourOne.BackColor = System.Drawing.Color.White;
-            this.cpbxCustomTextColourOne.Location = new System.Drawing.Point(587, 165);
+            this.cpbxCustomTextColourOne.ContextMenuStrip = this.cmsCustomTextColourOne;
+            this.cpbxCustomTextColourOne.Location = new System.Drawing.Point(669, 165);
             this.cpbxCustomTextColourOne.Name = "cpbxCustomTextColourOne";
             this.cpbxCustomTextColourOne.Size = new System.Drawing.Size(64, 64);
             this.cpbxCustomTextColourOne.TabIndex = 21;
@@ -504,7 +648,8 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // cpbxCustomColourFive
             // 
             this.cpbxCustomColourFive.BackColor = System.Drawing.Color.White;
-            this.cpbxCustomColourFive.Location = new System.Drawing.Point(505, 165);
+            this.cpbxCustomColourFive.ContextMenuStrip = this.cmsCustomColourFive;
+            this.cpbxCustomColourFive.Location = new System.Drawing.Point(587, 165);
             this.cpbxCustomColourFive.Name = "cpbxCustomColourFive";
             this.cpbxCustomColourFive.Size = new System.Drawing.Size(64, 64);
             this.cpbxCustomColourFive.TabIndex = 20;
@@ -514,7 +659,8 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // cpbxCustomColourFour
             // 
             this.cpbxCustomColourFour.BackColor = System.Drawing.Color.White;
-            this.cpbxCustomColourFour.Location = new System.Drawing.Point(423, 165);
+            this.cpbxCustomColourFour.ContextMenuStrip = this.cmsCustomColourFour;
+            this.cpbxCustomColourFour.Location = new System.Drawing.Point(505, 165);
             this.cpbxCustomColourFour.Name = "cpbxCustomColourFour";
             this.cpbxCustomColourFour.Size = new System.Drawing.Size(64, 64);
             this.cpbxCustomColourFour.TabIndex = 19;
@@ -524,7 +670,8 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // cpbxCustomColourThree
             // 
             this.cpbxCustomColourThree.BackColor = System.Drawing.Color.White;
-            this.cpbxCustomColourThree.Location = new System.Drawing.Point(341, 165);
+            this.cpbxCustomColourThree.ContextMenuStrip = this.cmsCustomColourThree;
+            this.cpbxCustomColourThree.Location = new System.Drawing.Point(423, 165);
             this.cpbxCustomColourThree.Name = "cpbxCustomColourThree";
             this.cpbxCustomColourThree.Size = new System.Drawing.Size(64, 64);
             this.cpbxCustomColourThree.TabIndex = 18;
@@ -534,7 +681,8 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // cpbxCustomColourTwo
             // 
             this.cpbxCustomColourTwo.BackColor = System.Drawing.Color.White;
-            this.cpbxCustomColourTwo.Location = new System.Drawing.Point(259, 165);
+            this.cpbxCustomColourTwo.ContextMenuStrip = this.cmsCustomColourTwo;
+            this.cpbxCustomColourTwo.Location = new System.Drawing.Point(341, 165);
             this.cpbxCustomColourTwo.Name = "cpbxCustomColourTwo";
             this.cpbxCustomColourTwo.Size = new System.Drawing.Size(64, 64);
             this.cpbxCustomColourTwo.TabIndex = 17;
@@ -544,7 +692,8 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // cpbxCustomColourOne
             // 
             this.cpbxCustomColourOne.BackColor = System.Drawing.Color.White;
-            this.cpbxCustomColourOne.Location = new System.Drawing.Point(177, 165);
+            this.cpbxCustomColourOne.ContextMenuStrip = this.cmsCustomColourOne;
+            this.cpbxCustomColourOne.Location = new System.Drawing.Point(259, 165);
             this.cpbxCustomColourOne.Name = "cpbxCustomColourOne";
             this.cpbxCustomColourOne.Size = new System.Drawing.Size(64, 64);
             this.cpbxCustomColourOne.TabIndex = 16;
@@ -554,7 +703,8 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // cpbxLinkVisitedColour
             // 
             this.cpbxLinkVisitedColour.BackColor = System.Drawing.Color.White;
-            this.cpbxLinkVisitedColour.Location = new System.Drawing.Point(95, 165);
+            this.cpbxLinkVisitedColour.ContextMenuStrip = this.cmsLinkVisitedColour;
+            this.cpbxLinkVisitedColour.Location = new System.Drawing.Point(177, 165);
             this.cpbxLinkVisitedColour.Name = "cpbxLinkVisitedColour";
             this.cpbxLinkVisitedColour.Size = new System.Drawing.Size(64, 64);
             this.cpbxLinkVisitedColour.TabIndex = 15;
@@ -564,6 +714,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // cpbxLinkHoverColour
             // 
             this.cpbxLinkHoverColour.BackColor = System.Drawing.Color.White;
+            this.cpbxLinkHoverColour.ContextMenuStrip = this.cmsLinkHoverColour;
             this.cpbxLinkHoverColour.Location = new System.Drawing.Point(13, 165);
             this.cpbxLinkHoverColour.Name = "cpbxLinkHoverColour";
             this.cpbxLinkHoverColour.Size = new System.Drawing.Size(64, 64);
@@ -703,21 +854,22 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.circularPictureBox40.ToolTipValues = null;
             this.circularPictureBox40.Visible = false;
             // 
-            // circularPictureBox41
+            // cpbxBorderColourTwo
             // 
-            this.circularPictureBox41.BackColor = System.Drawing.Color.White;
-            this.circularPictureBox41.Location = new System.Drawing.Point(95, 318);
-            this.circularPictureBox41.Name = "circularPictureBox41";
-            this.circularPictureBox41.Size = new System.Drawing.Size(64, 64);
-            this.circularPictureBox41.TabIndex = 29;
-            this.circularPictureBox41.TabStop = false;
-            this.circularPictureBox41.ToolTipValues = null;
-            this.circularPictureBox41.Visible = false;
+            this.cpbxBorderColourTwo.BackColor = System.Drawing.Color.White;
+            this.cpbxBorderColourTwo.ContextMenuStrip = this.cmsBorderColourTwo;
+            this.cpbxBorderColourTwo.Location = new System.Drawing.Point(505, 13);
+            this.cpbxBorderColourTwo.Name = "cpbxBorderColourTwo";
+            this.cpbxBorderColourTwo.Size = new System.Drawing.Size(64, 64);
+            this.cpbxBorderColourTwo.TabIndex = 29;
+            this.cpbxBorderColourTwo.TabStop = false;
+            this.cpbxBorderColourTwo.ToolTipValues = null;
             // 
             // cpbxRibbonTabTextColour
             // 
             this.cpbxRibbonTabTextColour.BackColor = System.Drawing.Color.White;
-            this.cpbxRibbonTabTextColour.Location = new System.Drawing.Point(13, 317);
+            this.cpbxRibbonTabTextColour.ContextMenuStrip = this.cmsRibbonTabTextColour;
+            this.cpbxRibbonTabTextColour.Location = new System.Drawing.Point(95, 318);
             this.cpbxRibbonTabTextColour.Name = "cpbxRibbonTabTextColour";
             this.cpbxRibbonTabTextColour.Size = new System.Drawing.Size(64, 64);
             this.cpbxRibbonTabTextColour.TabIndex = 28;
@@ -732,9 +884,11 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             this.cmsBaseColour.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.cmsBaseColour.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.useAsBaseColourToolStripMenuItem});
+            this.useAsBaseColourToolStripMenuItem,
+            this.toolStripMenuItem30,
+            this.generateARandomColourToolStripMenuItem});
             this.cmsBaseColour.Name = "cmsBaseColour";
-            this.cmsBaseColour.Size = new System.Drawing.Size(174, 26);
+            this.cmsBaseColour.Size = new System.Drawing.Size(218, 54);
             // 
             // useAsBaseColourToolStripMenuItem
             // 
@@ -746,9 +900,11 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             this.cmsDarkColour.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.cmsDarkColour.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1});
+            this.toolStripMenuItem1,
+            this.toolStripMenuItem31,
+            this.generateARandomColourToolStripMenuItem1});
             this.cmsDarkColour.Name = "contextMenuStrip1";
-            this.cmsDarkColour.Size = new System.Drawing.Size(174, 26);
+            this.cmsDarkColour.Size = new System.Drawing.Size(218, 54);
             // 
             // toolStripMenuItem1
             // 
@@ -760,9 +916,11 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             this.cmsLightColour.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.cmsLightColour.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem2});
+            this.toolStripMenuItem2,
+            this.toolStripMenuItem32,
+            this.generateARandomColourToolStripMenuItem2});
             this.cmsLightColour.Name = "contextMenuStrip1";
-            this.cmsLightColour.Size = new System.Drawing.Size(174, 26);
+            this.cmsLightColour.Size = new System.Drawing.Size(218, 54);
             // 
             // toolStripMenuItem2
             // 
@@ -774,9 +932,11 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             this.cmsLightestColour.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.cmsLightestColour.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem3});
+            this.toolStripMenuItem3,
+            this.toolStripMenuItem33,
+            this.generateARandomColourToolStripMenuItem3});
             this.cmsLightestColour.Name = "contextMenuStrip1";
-            this.cmsLightestColour.Size = new System.Drawing.Size(174, 26);
+            this.cmsLightestColour.Size = new System.Drawing.Size(218, 54);
             // 
             // toolStripMenuItem3
             // 
@@ -784,13 +944,15 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.toolStripMenuItem3.Size = new System.Drawing.Size(173, 22);
             this.toolStripMenuItem3.Text = "Use as &Base Colour";
             // 
-            // cmsBorderColour
+            // cmsBorderColourOne
             // 
-            this.cmsBorderColour.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.cmsBorderColour.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem4});
-            this.cmsBorderColour.Name = "contextMenuStrip1";
-            this.cmsBorderColour.Size = new System.Drawing.Size(174, 26);
+            this.cmsBorderColourOne.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.cmsBorderColourOne.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem4,
+            this.toolStripMenuItem34,
+            this.generateARandomColourToolStripMenuItem4});
+            this.cmsBorderColourOne.Name = "contextMenuStrip1";
+            this.cmsBorderColourOne.Size = new System.Drawing.Size(218, 54);
             // 
             // toolStripMenuItem4
             // 
@@ -802,9 +964,11 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             this.cmsAlternativeNormalTextColour.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.cmsAlternativeNormalTextColour.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem5});
+            this.toolStripMenuItem5,
+            this.toolStripMenuItem35,
+            this.generateARandomColourToolStripMenuItem5});
             this.cmsAlternativeNormalTextColour.Name = "contextMenuStrip1";
-            this.cmsAlternativeNormalTextColour.Size = new System.Drawing.Size(174, 26);
+            this.cmsAlternativeNormalTextColour.Size = new System.Drawing.Size(218, 54);
             // 
             // toolStripMenuItem5
             // 
@@ -816,9 +980,10 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             this.cmsNormalTextColour.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.cmsNormalTextColour.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem6});
+            this.toolStripMenuItem6,
+            this.generateARandomColourToolStripMenuItem6});
             this.cmsNormalTextColour.Name = "contextMenuStrip1";
-            this.cmsNormalTextColour.Size = new System.Drawing.Size(174, 26);
+            this.cmsNormalTextColour.Size = new System.Drawing.Size(218, 48);
             // 
             // toolStripMenuItem6
             // 
@@ -830,9 +995,11 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             this.cmsDisabledTextColour.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.cmsDisabledTextColour.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem7});
+            this.toolStripMenuItem7,
+            this.toolStripMenuItem36,
+            this.generateARandomColourToolStripMenuItem7});
             this.cmsDisabledTextColour.Name = "contextMenuStrip1";
-            this.cmsDisabledTextColour.Size = new System.Drawing.Size(174, 26);
+            this.cmsDisabledTextColour.Size = new System.Drawing.Size(218, 54);
             // 
             // toolStripMenuItem7
             // 
@@ -844,9 +1011,11 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             this.cmsFocusedTextColour.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.cmsFocusedTextColour.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem8});
+            this.toolStripMenuItem8,
+            this.toolStripMenuItem37,
+            this.generateARandomColourToolStripMenuItem8});
             this.cmsFocusedTextColour.Name = "contextMenuStrip1";
-            this.cmsFocusedTextColour.Size = new System.Drawing.Size(174, 26);
+            this.cmsFocusedTextColour.Size = new System.Drawing.Size(218, 54);
             // 
             // toolStripMenuItem8
             // 
@@ -858,9 +1027,11 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             this.cmsPressedTextColour.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.cmsPressedTextColour.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem9});
+            this.toolStripMenuItem9,
+            this.toolStripMenuItem38,
+            this.generateARandomColourToolStripMenuItem9});
             this.cmsPressedTextColour.Name = "contextMenuStrip1";
-            this.cmsPressedTextColour.Size = new System.Drawing.Size(174, 26);
+            this.cmsPressedTextColour.Size = new System.Drawing.Size(218, 54);
             // 
             // toolStripMenuItem9
             // 
@@ -872,9 +1043,11 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             this.cmsDisabledControlColour.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.cmsDisabledControlColour.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem10});
+            this.toolStripMenuItem10,
+            this.toolStripMenuItem39,
+            this.generateARandomColourToolStripMenuItem10});
             this.cmsDisabledControlColour.Name = "contextMenuStrip1";
-            this.cmsDisabledControlColour.Size = new System.Drawing.Size(174, 26);
+            this.cmsDisabledControlColour.Size = new System.Drawing.Size(218, 54);
             // 
             // toolStripMenuItem10
             // 
@@ -886,9 +1059,11 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             this.cmsLinkNormalColour.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.cmsLinkNormalColour.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem11});
+            this.toolStripMenuItem11,
+            this.toolStripMenuItem40,
+            this.generateARandomColourToolStripMenuItem11});
             this.cmsLinkNormalColour.Name = "contextMenuStrip1";
-            this.cmsLinkNormalColour.Size = new System.Drawing.Size(174, 26);
+            this.cmsLinkNormalColour.Size = new System.Drawing.Size(218, 54);
             // 
             // toolStripMenuItem11
             // 
@@ -900,9 +1075,11 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             this.cmsLinkFocusedColour.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.cmsLinkFocusedColour.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem12});
+            this.toolStripMenuItem12,
+            this.toolStripMenuItem41,
+            this.generateARandomColourToolStripMenuItem12});
             this.cmsLinkFocusedColour.Name = "contextMenuStrip1";
-            this.cmsLinkFocusedColour.Size = new System.Drawing.Size(174, 26);
+            this.cmsLinkFocusedColour.Size = new System.Drawing.Size(218, 54);
             // 
             // toolStripMenuItem12
             // 
@@ -914,9 +1091,11 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             this.cmsLinkHoverColour.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.cmsLinkHoverColour.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem13});
+            this.toolStripMenuItem13,
+            this.toolStripMenuItem42,
+            this.generateARandomColourToolStripMenuItem13});
             this.cmsLinkHoverColour.Name = "contextMenuStrip1";
-            this.cmsLinkHoverColour.Size = new System.Drawing.Size(174, 26);
+            this.cmsLinkHoverColour.Size = new System.Drawing.Size(218, 54);
             // 
             // toolStripMenuItem13
             // 
@@ -928,9 +1107,11 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             this.cmsLinkVisitedColour.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.cmsLinkVisitedColour.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem14});
+            this.toolStripMenuItem14,
+            this.toolStripMenuItem43,
+            this.generateARandomColourToolStripMenuItem14});
             this.cmsLinkVisitedColour.Name = "contextMenuStrip1";
-            this.cmsLinkVisitedColour.Size = new System.Drawing.Size(174, 26);
+            this.cmsLinkVisitedColour.Size = new System.Drawing.Size(218, 54);
             // 
             // toolStripMenuItem14
             // 
@@ -942,9 +1123,11 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             this.cmsCustomColourOne.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.cmsCustomColourOne.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem15});
+            this.toolStripMenuItem15,
+            this.toolStripMenuItem44,
+            this.generateARandomColourToolStripMenuItem15});
             this.cmsCustomColourOne.Name = "contextMenuStrip1";
-            this.cmsCustomColourOne.Size = new System.Drawing.Size(174, 26);
+            this.cmsCustomColourOne.Size = new System.Drawing.Size(218, 54);
             // 
             // toolStripMenuItem15
             // 
@@ -956,9 +1139,11 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             this.cmsCustomColourTwo.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.cmsCustomColourTwo.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem16});
+            this.toolStripMenuItem16,
+            this.toolStripMenuItem45,
+            this.generateARandomColourToolStripMenuItem16});
             this.cmsCustomColourTwo.Name = "contextMenuStrip1";
-            this.cmsCustomColourTwo.Size = new System.Drawing.Size(174, 26);
+            this.cmsCustomColourTwo.Size = new System.Drawing.Size(218, 54);
             // 
             // toolStripMenuItem16
             // 
@@ -970,9 +1155,11 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             this.cmsCustomColourThree.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.cmsCustomColourThree.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem17});
+            this.toolStripMenuItem17,
+            this.toolStripMenuItem46,
+            this.generateARandomColourToolStripMenuItem17});
             this.cmsCustomColourThree.Name = "contextMenuStrip1";
-            this.cmsCustomColourThree.Size = new System.Drawing.Size(174, 26);
+            this.cmsCustomColourThree.Size = new System.Drawing.Size(218, 54);
             // 
             // toolStripMenuItem17
             // 
@@ -980,13 +1167,15 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.toolStripMenuItem17.Size = new System.Drawing.Size(173, 22);
             this.toolStripMenuItem17.Text = "Use as &Base Colour";
             // 
-            // cmscmsCustomColourFour
+            // cmsCustomColourFour
             // 
-            this.cmscmsCustomColourFour.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.cmscmsCustomColourFour.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem18});
-            this.cmscmsCustomColourFour.Name = "contextMenuStrip1";
-            this.cmscmsCustomColourFour.Size = new System.Drawing.Size(174, 26);
+            this.cmsCustomColourFour.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.cmsCustomColourFour.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem18,
+            this.toolStripMenuItem47,
+            this.generateARandomColourToolStripMenuItem18});
+            this.cmsCustomColourFour.Name = "contextMenuStrip1";
+            this.cmsCustomColourFour.Size = new System.Drawing.Size(218, 54);
             // 
             // toolStripMenuItem18
             // 
@@ -994,13 +1183,15 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.toolStripMenuItem18.Size = new System.Drawing.Size(173, 22);
             this.toolStripMenuItem18.Text = "Use as &Base Colour";
             // 
-            // cmscmsCustomColourFive
+            // cmsCustomColourFive
             // 
-            this.cmscmsCustomColourFive.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.cmscmsCustomColourFive.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem19});
-            this.cmscmsCustomColourFive.Name = "contextMenuStrip1";
-            this.cmscmsCustomColourFive.Size = new System.Drawing.Size(174, 26);
+            this.cmsCustomColourFive.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.cmsCustomColourFive.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem19,
+            this.toolStripMenuItem48,
+            this.generateARandomColourToolStripMenuItem19});
+            this.cmsCustomColourFive.Name = "contextMenuStrip1";
+            this.cmsCustomColourFive.Size = new System.Drawing.Size(218, 54);
             // 
             // toolStripMenuItem19
             // 
@@ -1012,9 +1203,11 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             this.cmsCustomTextColourOne.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.cmsCustomTextColourOne.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem20});
+            this.toolStripMenuItem20,
+            this.toolStripMenuItem49,
+            this.generateARandomColourToolStripMenuItem20});
             this.cmsCustomTextColourOne.Name = "contextMenuStrip1";
-            this.cmsCustomTextColourOne.Size = new System.Drawing.Size(174, 26);
+            this.cmsCustomTextColourOne.Size = new System.Drawing.Size(218, 54);
             // 
             // toolStripMenuItem20
             // 
@@ -1026,9 +1219,11 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             this.cmsCustomTextColourTwo.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.cmsCustomTextColourTwo.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem21});
+            this.toolStripMenuItem21,
+            this.toolStripMenuItem50,
+            this.generateARandomColourToolStripMenuItem21});
             this.cmsCustomTextColourTwo.Name = "contextMenuStrip1";
-            this.cmsCustomTextColourTwo.Size = new System.Drawing.Size(174, 26);
+            this.cmsCustomTextColourTwo.Size = new System.Drawing.Size(218, 54);
             // 
             // toolStripMenuItem21
             // 
@@ -1040,9 +1235,11 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             this.cmsCustomTextColourThree.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.cmsCustomTextColourThree.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem22});
+            this.toolStripMenuItem22,
+            this.toolStripMenuItem51,
+            this.generateARandomColourToolStripMenuItem22});
             this.cmsCustomTextColourThree.Name = "contextMenuStrip1";
-            this.cmsCustomTextColourThree.Size = new System.Drawing.Size(174, 26);
+            this.cmsCustomTextColourThree.Size = new System.Drawing.Size(218, 54);
             // 
             // toolStripMenuItem22
             // 
@@ -1054,9 +1251,11 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             this.cmsCustomTextColourFour.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.cmsCustomTextColourFour.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem23});
+            this.toolStripMenuItem23,
+            this.toolStripMenuItem52,
+            this.generateARandomColourToolStripMenuItem23});
             this.cmsCustomTextColourFour.Name = "contextMenuStrip1";
-            this.cmsCustomTextColourFour.Size = new System.Drawing.Size(174, 26);
+            this.cmsCustomTextColourFour.Size = new System.Drawing.Size(218, 54);
             // 
             // toolStripMenuItem23
             // 
@@ -1068,9 +1267,11 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             this.cmsCustomTextColourFive.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.cmsCustomTextColourFive.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem24});
+            this.toolStripMenuItem24,
+            this.toolStripMenuItem53,
+            this.generateARandomColourToolStripMenuItem24});
             this.cmsCustomTextColourFive.Name = "contextMenuStrip1";
-            this.cmsCustomTextColourFive.Size = new System.Drawing.Size(174, 26);
+            this.cmsCustomTextColourFive.Size = new System.Drawing.Size(218, 54);
             // 
             // toolStripMenuItem24
             // 
@@ -1082,9 +1283,11 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             this.cmsMenuTextColour.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.cmsMenuTextColour.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem25});
+            this.toolStripMenuItem25,
+            this.toolStripMenuItem54,
+            this.generateARandomColourToolStripMenuItem25});
             this.cmsMenuTextColour.Name = "contextMenuStrip1";
-            this.cmsMenuTextColour.Size = new System.Drawing.Size(174, 26);
+            this.cmsMenuTextColour.Size = new System.Drawing.Size(218, 54);
             // 
             // toolStripMenuItem25
             // 
@@ -1096,9 +1299,11 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             this.cmsStatusTextColour.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.cmsStatusTextColour.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem26});
+            this.toolStripMenuItem26,
+            this.toolStripMenuItem55,
+            this.generateARandomColourToolStripMenuItem26});
             this.cmsStatusTextColour.Name = "contextMenuStrip1";
-            this.cmsStatusTextColour.Size = new System.Drawing.Size(174, 26);
+            this.cmsStatusTextColour.Size = new System.Drawing.Size(218, 54);
             // 
             // toolStripMenuItem26
             // 
@@ -1110,9 +1315,11 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             this.cmsRibbonTabTextColour.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.cmsRibbonTabTextColour.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem27});
+            this.toolStripMenuItem27,
+            this.toolStripMenuItem56,
+            this.generateARandomColourToolStripMenuItem27});
             this.cmsRibbonTabTextColour.Name = "contextMenuStrip1";
-            this.cmsRibbonTabTextColour.Size = new System.Drawing.Size(174, 26);
+            this.cmsRibbonTabTextColour.Size = new System.Drawing.Size(218, 54);
             // 
             // toolStripMenuItem27
             // 
@@ -1120,19 +1327,362 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.toolStripMenuItem27.Size = new System.Drawing.Size(173, 22);
             this.toolStripMenuItem27.Text = "Use as &Base Colour";
             // 
-            // contextMenuStrip29
+            // cmsMediumColour
             // 
-            this.contextMenuStrip29.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.contextMenuStrip29.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem28});
-            this.contextMenuStrip29.Name = "contextMenuStrip1";
-            this.contextMenuStrip29.Size = new System.Drawing.Size(174, 26);
+            this.cmsMediumColour.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.cmsMediumColour.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem28,
+            this.toolStripMenuItem57,
+            this.generateARandomColourToolStripMenuItem28});
+            this.cmsMediumColour.Name = "contextMenuStrip1";
+            this.cmsMediumColour.Size = new System.Drawing.Size(218, 54);
             // 
             // toolStripMenuItem28
             // 
             this.toolStripMenuItem28.Name = "toolStripMenuItem28";
             this.toolStripMenuItem28.Size = new System.Drawing.Size(173, 22);
             this.toolStripMenuItem28.Text = "Use as &Base Colour";
+            // 
+            // cmsBorderColourTwo
+            // 
+            this.cmsBorderColourTwo.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.cmsBorderColourTwo.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem29,
+            this.toolStripMenuItem58,
+            this.generateARandomColourToolStripMenuItem29});
+            this.cmsBorderColourTwo.Name = "contextMenuStrip1";
+            this.cmsBorderColourTwo.Size = new System.Drawing.Size(218, 76);
+            // 
+            // toolStripMenuItem29
+            // 
+            this.toolStripMenuItem29.Name = "toolStripMenuItem29";
+            this.toolStripMenuItem29.Size = new System.Drawing.Size(173, 22);
+            this.toolStripMenuItem29.Text = "Use as &Base Colour";
+            // 
+            // toolStripMenuItem30
+            // 
+            this.toolStripMenuItem30.Name = "toolStripMenuItem30";
+            this.toolStripMenuItem30.Size = new System.Drawing.Size(214, 6);
+            // 
+            // generateARandomColourToolStripMenuItem
+            // 
+            this.generateARandomColourToolStripMenuItem.Name = "generateARandomColourToolStripMenuItem";
+            this.generateARandomColourToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
+            this.generateARandomColourToolStripMenuItem.Text = "Generate a &Random Colour";
+            // 
+            // toolStripMenuItem31
+            // 
+            this.toolStripMenuItem31.Name = "toolStripMenuItem31";
+            this.toolStripMenuItem31.Size = new System.Drawing.Size(214, 6);
+            // 
+            // generateARandomColourToolStripMenuItem1
+            // 
+            this.generateARandomColourToolStripMenuItem1.Name = "generateARandomColourToolStripMenuItem1";
+            this.generateARandomColourToolStripMenuItem1.Size = new System.Drawing.Size(217, 22);
+            this.generateARandomColourToolStripMenuItem1.Text = "Generate a &Random Colour";
+            // 
+            // toolStripMenuItem32
+            // 
+            this.toolStripMenuItem32.Name = "toolStripMenuItem32";
+            this.toolStripMenuItem32.Size = new System.Drawing.Size(214, 6);
+            // 
+            // generateARandomColourToolStripMenuItem2
+            // 
+            this.generateARandomColourToolStripMenuItem2.Name = "generateARandomColourToolStripMenuItem2";
+            this.generateARandomColourToolStripMenuItem2.Size = new System.Drawing.Size(217, 22);
+            this.generateARandomColourToolStripMenuItem2.Text = "Generate a &Random Colour";
+            // 
+            // toolStripMenuItem33
+            // 
+            this.toolStripMenuItem33.Name = "toolStripMenuItem33";
+            this.toolStripMenuItem33.Size = new System.Drawing.Size(214, 6);
+            // 
+            // generateARandomColourToolStripMenuItem3
+            // 
+            this.generateARandomColourToolStripMenuItem3.Name = "generateARandomColourToolStripMenuItem3";
+            this.generateARandomColourToolStripMenuItem3.Size = new System.Drawing.Size(217, 22);
+            this.generateARandomColourToolStripMenuItem3.Text = "Generate a &Random Colour";
+            // 
+            // toolStripMenuItem34
+            // 
+            this.toolStripMenuItem34.Name = "toolStripMenuItem34";
+            this.toolStripMenuItem34.Size = new System.Drawing.Size(214, 6);
+            // 
+            // generateARandomColourToolStripMenuItem4
+            // 
+            this.generateARandomColourToolStripMenuItem4.Name = "generateARandomColourToolStripMenuItem4";
+            this.generateARandomColourToolStripMenuItem4.Size = new System.Drawing.Size(217, 22);
+            this.generateARandomColourToolStripMenuItem4.Text = "Generate a &Random Colour";
+            // 
+            // toolStripMenuItem35
+            // 
+            this.toolStripMenuItem35.Name = "toolStripMenuItem35";
+            this.toolStripMenuItem35.Size = new System.Drawing.Size(214, 6);
+            // 
+            // generateARandomColourToolStripMenuItem5
+            // 
+            this.generateARandomColourToolStripMenuItem5.Name = "generateARandomColourToolStripMenuItem5";
+            this.generateARandomColourToolStripMenuItem5.Size = new System.Drawing.Size(217, 22);
+            this.generateARandomColourToolStripMenuItem5.Text = "Generate a &Random Colour";
+            // 
+            // generateARandomColourToolStripMenuItem6
+            // 
+            this.generateARandomColourToolStripMenuItem6.Name = "generateARandomColourToolStripMenuItem6";
+            this.generateARandomColourToolStripMenuItem6.Size = new System.Drawing.Size(217, 22);
+            this.generateARandomColourToolStripMenuItem6.Text = "Generate a &Random Colour";
+            // 
+            // toolStripMenuItem36
+            // 
+            this.toolStripMenuItem36.Name = "toolStripMenuItem36";
+            this.toolStripMenuItem36.Size = new System.Drawing.Size(214, 6);
+            // 
+            // generateARandomColourToolStripMenuItem7
+            // 
+            this.generateARandomColourToolStripMenuItem7.Name = "generateARandomColourToolStripMenuItem7";
+            this.generateARandomColourToolStripMenuItem7.Size = new System.Drawing.Size(217, 22);
+            this.generateARandomColourToolStripMenuItem7.Text = "Generate a &Random Colour";
+            // 
+            // toolStripMenuItem37
+            // 
+            this.toolStripMenuItem37.Name = "toolStripMenuItem37";
+            this.toolStripMenuItem37.Size = new System.Drawing.Size(214, 6);
+            // 
+            // generateARandomColourToolStripMenuItem8
+            // 
+            this.generateARandomColourToolStripMenuItem8.Name = "generateARandomColourToolStripMenuItem8";
+            this.generateARandomColourToolStripMenuItem8.Size = new System.Drawing.Size(217, 22);
+            this.generateARandomColourToolStripMenuItem8.Text = "Generate a &Random Colour";
+            // 
+            // toolStripMenuItem38
+            // 
+            this.toolStripMenuItem38.Name = "toolStripMenuItem38";
+            this.toolStripMenuItem38.Size = new System.Drawing.Size(214, 6);
+            // 
+            // generateARandomColourToolStripMenuItem9
+            // 
+            this.generateARandomColourToolStripMenuItem9.Name = "generateARandomColourToolStripMenuItem9";
+            this.generateARandomColourToolStripMenuItem9.Size = new System.Drawing.Size(217, 22);
+            this.generateARandomColourToolStripMenuItem9.Text = "Generate a &Random Colour";
+            // 
+            // toolStripMenuItem39
+            // 
+            this.toolStripMenuItem39.Name = "toolStripMenuItem39";
+            this.toolStripMenuItem39.Size = new System.Drawing.Size(214, 6);
+            // 
+            // generateARandomColourToolStripMenuItem10
+            // 
+            this.generateARandomColourToolStripMenuItem10.Name = "generateARandomColourToolStripMenuItem10";
+            this.generateARandomColourToolStripMenuItem10.Size = new System.Drawing.Size(217, 22);
+            this.generateARandomColourToolStripMenuItem10.Text = "Generate a &Random Colour";
+            // 
+            // toolStripMenuItem40
+            // 
+            this.toolStripMenuItem40.Name = "toolStripMenuItem40";
+            this.toolStripMenuItem40.Size = new System.Drawing.Size(214, 6);
+            // 
+            // generateARandomColourToolStripMenuItem11
+            // 
+            this.generateARandomColourToolStripMenuItem11.Name = "generateARandomColourToolStripMenuItem11";
+            this.generateARandomColourToolStripMenuItem11.Size = new System.Drawing.Size(217, 22);
+            this.generateARandomColourToolStripMenuItem11.Text = "Generate a &Random Colour";
+            // 
+            // toolStripMenuItem41
+            // 
+            this.toolStripMenuItem41.Name = "toolStripMenuItem41";
+            this.toolStripMenuItem41.Size = new System.Drawing.Size(214, 6);
+            // 
+            // generateARandomColourToolStripMenuItem12
+            // 
+            this.generateARandomColourToolStripMenuItem12.Name = "generateARandomColourToolStripMenuItem12";
+            this.generateARandomColourToolStripMenuItem12.Size = new System.Drawing.Size(217, 22);
+            this.generateARandomColourToolStripMenuItem12.Text = "Generate a &Random Colour";
+            // 
+            // toolStripMenuItem42
+            // 
+            this.toolStripMenuItem42.Name = "toolStripMenuItem42";
+            this.toolStripMenuItem42.Size = new System.Drawing.Size(214, 6);
+            // 
+            // generateARandomColourToolStripMenuItem13
+            // 
+            this.generateARandomColourToolStripMenuItem13.Name = "generateARandomColourToolStripMenuItem13";
+            this.generateARandomColourToolStripMenuItem13.Size = new System.Drawing.Size(217, 22);
+            this.generateARandomColourToolStripMenuItem13.Text = "Generate a &Random Colour";
+            // 
+            // toolStripMenuItem43
+            // 
+            this.toolStripMenuItem43.Name = "toolStripMenuItem43";
+            this.toolStripMenuItem43.Size = new System.Drawing.Size(214, 6);
+            // 
+            // generateARandomColourToolStripMenuItem14
+            // 
+            this.generateARandomColourToolStripMenuItem14.Name = "generateARandomColourToolStripMenuItem14";
+            this.generateARandomColourToolStripMenuItem14.Size = new System.Drawing.Size(217, 22);
+            this.generateARandomColourToolStripMenuItem14.Text = "Generate a &Random Colour";
+            // 
+            // toolStripMenuItem44
+            // 
+            this.toolStripMenuItem44.Name = "toolStripMenuItem44";
+            this.toolStripMenuItem44.Size = new System.Drawing.Size(214, 6);
+            // 
+            // generateARandomColourToolStripMenuItem15
+            // 
+            this.generateARandomColourToolStripMenuItem15.Name = "generateARandomColourToolStripMenuItem15";
+            this.generateARandomColourToolStripMenuItem15.Size = new System.Drawing.Size(217, 22);
+            this.generateARandomColourToolStripMenuItem15.Text = "Generate a &Random Colour";
+            // 
+            // toolStripMenuItem45
+            // 
+            this.toolStripMenuItem45.Name = "toolStripMenuItem45";
+            this.toolStripMenuItem45.Size = new System.Drawing.Size(214, 6);
+            // 
+            // generateARandomColourToolStripMenuItem16
+            // 
+            this.generateARandomColourToolStripMenuItem16.Name = "generateARandomColourToolStripMenuItem16";
+            this.generateARandomColourToolStripMenuItem16.Size = new System.Drawing.Size(217, 22);
+            this.generateARandomColourToolStripMenuItem16.Text = "Generate a &Random Colour";
+            // 
+            // toolStripMenuItem46
+            // 
+            this.toolStripMenuItem46.Name = "toolStripMenuItem46";
+            this.toolStripMenuItem46.Size = new System.Drawing.Size(214, 6);
+            // 
+            // generateARandomColourToolStripMenuItem17
+            // 
+            this.generateARandomColourToolStripMenuItem17.Name = "generateARandomColourToolStripMenuItem17";
+            this.generateARandomColourToolStripMenuItem17.Size = new System.Drawing.Size(217, 22);
+            this.generateARandomColourToolStripMenuItem17.Text = "Generate a &Random Colour";
+            // 
+            // toolStripMenuItem47
+            // 
+            this.toolStripMenuItem47.Name = "toolStripMenuItem47";
+            this.toolStripMenuItem47.Size = new System.Drawing.Size(214, 6);
+            // 
+            // generateARandomColourToolStripMenuItem18
+            // 
+            this.generateARandomColourToolStripMenuItem18.Name = "generateARandomColourToolStripMenuItem18";
+            this.generateARandomColourToolStripMenuItem18.Size = new System.Drawing.Size(217, 22);
+            this.generateARandomColourToolStripMenuItem18.Text = "Generate a &Random Colour";
+            // 
+            // toolStripMenuItem48
+            // 
+            this.toolStripMenuItem48.Name = "toolStripMenuItem48";
+            this.toolStripMenuItem48.Size = new System.Drawing.Size(214, 6);
+            // 
+            // generateARandomColourToolStripMenuItem19
+            // 
+            this.generateARandomColourToolStripMenuItem19.Name = "generateARandomColourToolStripMenuItem19";
+            this.generateARandomColourToolStripMenuItem19.Size = new System.Drawing.Size(217, 22);
+            this.generateARandomColourToolStripMenuItem19.Text = "Generate a &Random Colour";
+            // 
+            // toolStripMenuItem49
+            // 
+            this.toolStripMenuItem49.Name = "toolStripMenuItem49";
+            this.toolStripMenuItem49.Size = new System.Drawing.Size(214, 6);
+            // 
+            // generateARandomColourToolStripMenuItem20
+            // 
+            this.generateARandomColourToolStripMenuItem20.Name = "generateARandomColourToolStripMenuItem20";
+            this.generateARandomColourToolStripMenuItem20.Size = new System.Drawing.Size(217, 22);
+            this.generateARandomColourToolStripMenuItem20.Text = "Generate a &Random Colour";
+            // 
+            // toolStripMenuItem50
+            // 
+            this.toolStripMenuItem50.Name = "toolStripMenuItem50";
+            this.toolStripMenuItem50.Size = new System.Drawing.Size(214, 6);
+            // 
+            // generateARandomColourToolStripMenuItem21
+            // 
+            this.generateARandomColourToolStripMenuItem21.Name = "generateARandomColourToolStripMenuItem21";
+            this.generateARandomColourToolStripMenuItem21.Size = new System.Drawing.Size(217, 22);
+            this.generateARandomColourToolStripMenuItem21.Text = "Generate a &Random Colour";
+            // 
+            // toolStripMenuItem51
+            // 
+            this.toolStripMenuItem51.Name = "toolStripMenuItem51";
+            this.toolStripMenuItem51.Size = new System.Drawing.Size(214, 6);
+            // 
+            // generateARandomColourToolStripMenuItem22
+            // 
+            this.generateARandomColourToolStripMenuItem22.Name = "generateARandomColourToolStripMenuItem22";
+            this.generateARandomColourToolStripMenuItem22.Size = new System.Drawing.Size(217, 22);
+            this.generateARandomColourToolStripMenuItem22.Text = "Generate a &Random Colour";
+            // 
+            // toolStripMenuItem52
+            // 
+            this.toolStripMenuItem52.Name = "toolStripMenuItem52";
+            this.toolStripMenuItem52.Size = new System.Drawing.Size(214, 6);
+            // 
+            // generateARandomColourToolStripMenuItem23
+            // 
+            this.generateARandomColourToolStripMenuItem23.Name = "generateARandomColourToolStripMenuItem23";
+            this.generateARandomColourToolStripMenuItem23.Size = new System.Drawing.Size(217, 22);
+            this.generateARandomColourToolStripMenuItem23.Text = "Generate a &Random Colour";
+            // 
+            // toolStripMenuItem53
+            // 
+            this.toolStripMenuItem53.Name = "toolStripMenuItem53";
+            this.toolStripMenuItem53.Size = new System.Drawing.Size(214, 6);
+            // 
+            // generateARandomColourToolStripMenuItem24
+            // 
+            this.generateARandomColourToolStripMenuItem24.Name = "generateARandomColourToolStripMenuItem24";
+            this.generateARandomColourToolStripMenuItem24.Size = new System.Drawing.Size(217, 22);
+            this.generateARandomColourToolStripMenuItem24.Text = "Generate a &Random Colour";
+            // 
+            // toolStripMenuItem54
+            // 
+            this.toolStripMenuItem54.Name = "toolStripMenuItem54";
+            this.toolStripMenuItem54.Size = new System.Drawing.Size(214, 6);
+            // 
+            // generateARandomColourToolStripMenuItem25
+            // 
+            this.generateARandomColourToolStripMenuItem25.Name = "generateARandomColourToolStripMenuItem25";
+            this.generateARandomColourToolStripMenuItem25.Size = new System.Drawing.Size(217, 22);
+            this.generateARandomColourToolStripMenuItem25.Text = "Generate a &Random Colour";
+            // 
+            // toolStripMenuItem55
+            // 
+            this.toolStripMenuItem55.Name = "toolStripMenuItem55";
+            this.toolStripMenuItem55.Size = new System.Drawing.Size(214, 6);
+            // 
+            // generateARandomColourToolStripMenuItem26
+            // 
+            this.generateARandomColourToolStripMenuItem26.Name = "generateARandomColourToolStripMenuItem26";
+            this.generateARandomColourToolStripMenuItem26.Size = new System.Drawing.Size(217, 22);
+            this.generateARandomColourToolStripMenuItem26.Text = "Generate a &Random Colour";
+            // 
+            // toolStripMenuItem56
+            // 
+            this.toolStripMenuItem56.Name = "toolStripMenuItem56";
+            this.toolStripMenuItem56.Size = new System.Drawing.Size(214, 6);
+            // 
+            // generateARandomColourToolStripMenuItem27
+            // 
+            this.generateARandomColourToolStripMenuItem27.Name = "generateARandomColourToolStripMenuItem27";
+            this.generateARandomColourToolStripMenuItem27.Size = new System.Drawing.Size(217, 22);
+            this.generateARandomColourToolStripMenuItem27.Text = "Generate a &Random Colour";
+            // 
+            // toolStripMenuItem57
+            // 
+            this.toolStripMenuItem57.Name = "toolStripMenuItem57";
+            this.toolStripMenuItem57.Size = new System.Drawing.Size(214, 6);
+            // 
+            // generateARandomColourToolStripMenuItem28
+            // 
+            this.generateARandomColourToolStripMenuItem28.Name = "generateARandomColourToolStripMenuItem28";
+            this.generateARandomColourToolStripMenuItem28.Size = new System.Drawing.Size(217, 22);
+            this.generateARandomColourToolStripMenuItem28.Text = "Generate a &Random Colour";
+            // 
+            // toolStripMenuItem58
+            // 
+            this.toolStripMenuItem58.Name = "toolStripMenuItem58";
+            this.toolStripMenuItem58.Size = new System.Drawing.Size(214, 6);
+            // 
+            // generateARandomColourToolStripMenuItem29
+            // 
+            this.generateARandomColourToolStripMenuItem29.Name = "generateARandomColourToolStripMenuItem29";
+            this.generateARandomColourToolStripMenuItem29.Size = new System.Drawing.Size(217, 22);
+            this.generateARandomColourToolStripMenuItem29.Text = "Generate a &Random Colour";
             // 
             // PaletteDesignerCircularUserControl
             // 
@@ -1149,7 +1699,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.Controls.Add(this.circularPictureBox38);
             this.Controls.Add(this.circularPictureBox39);
             this.Controls.Add(this.circularPictureBox40);
-            this.Controls.Add(this.circularPictureBox41);
+            this.Controls.Add(this.cpbxBorderColourTwo);
             this.Controls.Add(this.cpbxRibbonTabTextColour);
             this.Controls.Add(this.cpbxStatusTextColour);
             this.Controls.Add(this.cpbxMenuTextColour);
@@ -1173,7 +1723,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.Controls.Add(this.cpbxDisabledTextColour);
             this.Controls.Add(this.cpbxNormalTextColour);
             this.Controls.Add(this.cpbxAlternativeNormalTextColour);
-            this.Controls.Add(this.cpbxBorderColour);
+            this.Controls.Add(this.cpbxBorderColourOne);
             this.Controls.Add(this.cpbxLightestColour);
             this.Controls.Add(this.cpbxLightColour);
             this.Controls.Add(this.cpbxMediumColour);
@@ -1187,7 +1737,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             ((System.ComponentModel.ISupportInitialize)(this.cpbxMediumColour)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cpbxLightColour)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cpbxLightestColour)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cpbxBorderColour)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpbxBorderColourOne)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cpbxAlternativeNormalTextColour)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cpbxNormalTextColour)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cpbxDisabledTextColour)).EndInit();
@@ -1222,13 +1772,13 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox38)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox39)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox40)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox41)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpbxBorderColourTwo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cpbxRibbonTabTextColour)).EndInit();
             this.cmsBaseColour.ResumeLayout(false);
             this.cmsDarkColour.ResumeLayout(false);
             this.cmsLightColour.ResumeLayout(false);
             this.cmsLightestColour.ResumeLayout(false);
-            this.cmsBorderColour.ResumeLayout(false);
+            this.cmsBorderColourOne.ResumeLayout(false);
             this.cmsAlternativeNormalTextColour.ResumeLayout(false);
             this.cmsNormalTextColour.ResumeLayout(false);
             this.cmsDisabledTextColour.ResumeLayout(false);
@@ -1242,8 +1792,8 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.cmsCustomColourOne.ResumeLayout(false);
             this.cmsCustomColourTwo.ResumeLayout(false);
             this.cmsCustomColourThree.ResumeLayout(false);
-            this.cmscmsCustomColourFour.ResumeLayout(false);
-            this.cmscmsCustomColourFive.ResumeLayout(false);
+            this.cmsCustomColourFour.ResumeLayout(false);
+            this.cmsCustomColourFive.ResumeLayout(false);
             this.cmsCustomTextColourOne.ResumeLayout(false);
             this.cmsCustomTextColourTwo.ResumeLayout(false);
             this.cmsCustomTextColourThree.ResumeLayout(false);
@@ -1252,7 +1802,8 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.cmsMenuTextColour.ResumeLayout(false);
             this.cmsStatusTextColour.ResumeLayout(false);
             this.cmsRibbonTabTextColour.ResumeLayout(false);
-            this.contextMenuStrip29.ResumeLayout(false);
+            this.cmsMediumColour.ResumeLayout(false);
+            this.cmsBorderColourTwo.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1354,7 +1905,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
 
                 ColourInformation.SetTooltip(cpbxLightestColour, "Lightest");
 
-                ColourInformation.SetTooltip(cpbxBorderColour, "Border");
+                ColourInformation.SetTooltip(cpbxBorderColourOne, "Border");
 
                 ColourInformation.SetTooltip(cpbxAlternativeNormalTextColour, "Alternative Normal Text");
 
@@ -1437,7 +1988,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
 
             ColourPreviews[4] = cpbxLightestColour;
 
-            ColourPreviews[5] = cpbxBorderColour;
+            ColourPreviews[5] = cpbxBorderColourOne;
 
             ColourPreviews[6] = cpbxAlternativeNormalTextColour;
 

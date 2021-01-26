@@ -14,7 +14,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
         private PictureBox pbxMediumColour;
         private PictureBox pbxLightColour;
         private PictureBox pbxLightestColour;
-        private PictureBox pbxBorderColour;
+        private PictureBox pbxBorderColourOne;
         private PictureBox pbxAlternativeNormalTextColour;
         private PictureBox pbxNormalTextColour;
         private PictureBox pbxDisabledTextColour;
@@ -38,9 +38,128 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
         private PictureBox pbxMenuTextColour;
         private PictureBox pbxStatusTextColour;
         private PictureBox pbxRibbonTabColour;
-        private ToolTip ttColourInformation;
         private IContainer components;
+        private ToolTip ttColourInformation;
+        private ContextMenuStrip cmsBorderColourTwo;
+        private ToolStripMenuItem toolStripMenuItem29;
+        private ToolStripSeparator toolStripMenuItem58;
+        private ToolStripMenuItem generateARandomColourToolStripMenuItem29;
+        private ContextMenuStrip cmsAlternativeNormalTextColour;
+        private ToolStripMenuItem toolStripMenuItem5;
+        private ToolStripSeparator toolStripMenuItem35;
+        private ToolStripMenuItem generateARandomColourToolStripMenuItem5;
+        private ContextMenuStrip cmsMediumColour;
+        private ToolStripMenuItem toolStripMenuItem28;
+        private ToolStripSeparator toolStripMenuItem57;
+        private ToolStripMenuItem generateARandomColourToolStripMenuItem28;
+        private ContextMenuStrip cmsDarkColour;
+        private ToolStripMenuItem toolStripMenuItem1;
+        private ToolStripSeparator toolStripMenuItem31;
+        private ToolStripMenuItem generateARandomColourToolStripMenuItem1;
+        private ContextMenuStrip cmsRibbonTabTextColour;
+        private ToolStripMenuItem toolStripMenuItem27;
+        private ToolStripSeparator toolStripMenuItem56;
+        private ToolStripMenuItem generateARandomColourToolStripMenuItem27;
+        private ContextMenuStrip cmsStatusTextColour;
+        private ToolStripMenuItem toolStripMenuItem26;
+        private ToolStripSeparator toolStripMenuItem55;
+        private ToolStripMenuItem generateARandomColourToolStripMenuItem26;
+        private ContextMenuStrip cmsMenuTextColour;
+        private ToolStripMenuItem toolStripMenuItem25;
+        private ToolStripSeparator toolStripMenuItem54;
+        private ToolStripMenuItem generateARandomColourToolStripMenuItem25;
+        private ContextMenuStrip cmsCustomTextColourFive;
+        private ToolStripMenuItem toolStripMenuItem24;
+        private ToolStripSeparator toolStripMenuItem53;
+        private ToolStripMenuItem generateARandomColourToolStripMenuItem24;
+        private ContextMenuStrip cmsCustomTextColourFour;
+        private ToolStripMenuItem toolStripMenuItem23;
+        private ToolStripSeparator toolStripMenuItem52;
+        private ToolStripMenuItem generateARandomColourToolStripMenuItem23;
+        private ContextMenuStrip cmsCustomTextColourThree;
+        private ToolStripMenuItem toolStripMenuItem22;
+        private ToolStripSeparator toolStripMenuItem51;
+        private ToolStripMenuItem generateARandomColourToolStripMenuItem22;
+        private ContextMenuStrip cmsCustomTextColourTwo;
+        private ToolStripMenuItem toolStripMenuItem21;
+        private ToolStripSeparator toolStripMenuItem50;
+        private ToolStripMenuItem generateARandomColourToolStripMenuItem21;
+        private ContextMenuStrip cmsCustomTextColourOne;
+        private ToolStripMenuItem toolStripMenuItem20;
+        private ToolStripSeparator toolStripMenuItem49;
+        private ToolStripMenuItem generateARandomColourToolStripMenuItem20;
+        private ContextMenuStrip cmsCustomColourFive;
+        private ToolStripMenuItem toolStripMenuItem19;
+        private ToolStripSeparator toolStripMenuItem48;
+        private ToolStripMenuItem generateARandomColourToolStripMenuItem19;
+        private ContextMenuStrip cmsCustomColourFour;
+        private ToolStripMenuItem toolStripMenuItem18;
+        private ToolStripSeparator toolStripMenuItem47;
+        private ToolStripMenuItem generateARandomColourToolStripMenuItem18;
+        private ContextMenuStrip cmsCustomColourThree;
+        private ToolStripMenuItem toolStripMenuItem17;
+        private ToolStripSeparator toolStripMenuItem46;
+        private ToolStripMenuItem generateARandomColourToolStripMenuItem17;
+        private ContextMenuStrip cmsCustomColourTwo;
+        private ToolStripMenuItem toolStripMenuItem16;
+        private ToolStripSeparator toolStripMenuItem45;
+        private ToolStripMenuItem generateARandomColourToolStripMenuItem16;
+        private ContextMenuStrip cmsCustomColourOne;
+        private ToolStripMenuItem toolStripMenuItem15;
+        private ToolStripSeparator toolStripMenuItem44;
+        private ToolStripMenuItem generateARandomColourToolStripMenuItem15;
+        private ContextMenuStrip cmsLinkVisitedColour;
+        private ToolStripMenuItem toolStripMenuItem14;
+        private ToolStripSeparator toolStripMenuItem43;
+        private ToolStripMenuItem generateARandomColourToolStripMenuItem14;
+        private ContextMenuStrip cmsLinkHoverColour;
+        private ToolStripMenuItem toolStripMenuItem13;
+        private ToolStripSeparator toolStripMenuItem42;
+        private ToolStripMenuItem generateARandomColourToolStripMenuItem13;
+        private ContextMenuStrip cmsLinkFocusedColour;
+        private ToolStripMenuItem toolStripMenuItem12;
+        private ToolStripSeparator toolStripMenuItem41;
+        private ToolStripMenuItem generateARandomColourToolStripMenuItem12;
+        private ContextMenuStrip cmsDisabledControlColour;
+        private ToolStripMenuItem toolStripMenuItem10;
+        private ToolStripSeparator toolStripMenuItem39;
+        private ToolStripMenuItem generateARandomColourToolStripMenuItem10;
+        private ContextMenuStrip cmsPressedTextColour;
+        private ToolStripMenuItem toolStripMenuItem9;
+        private ToolStripSeparator toolStripMenuItem38;
+        private ToolStripMenuItem generateARandomColourToolStripMenuItem9;
+        private ContextMenuStrip cmsFocusedTextColour;
+        private ToolStripMenuItem toolStripMenuItem8;
+        private ToolStripSeparator toolStripMenuItem37;
+        private ToolStripMenuItem generateARandomColourToolStripMenuItem8;
+        private ContextMenuStrip cmsDisabledTextColour;
+        private ToolStripMenuItem toolStripMenuItem7;
+        private ToolStripSeparator toolStripMenuItem36;
+        private ToolStripMenuItem generateARandomColourToolStripMenuItem7;
+        private ContextMenuStrip cmsNormalTextColour;
+        private ToolStripMenuItem toolStripMenuItem6;
+        private ToolStripMenuItem generateARandomColourToolStripMenuItem6;
+        private ContextMenuStrip cmsBorderColourOne;
+        private ToolStripMenuItem toolStripMenuItem4;
+        private ToolStripSeparator toolStripMenuItem34;
+        private ToolStripMenuItem generateARandomColourToolStripMenuItem4;
+        private ContextMenuStrip cmsLightestColour;
+        private ToolStripMenuItem toolStripMenuItem3;
+        private ToolStripSeparator toolStripMenuItem33;
+        private ToolStripMenuItem generateARandomColourToolStripMenuItem3;
+        private ContextMenuStrip cmsLightColour;
+        private ToolStripMenuItem toolStripMenuItem2;
+        private ToolStripSeparator toolStripMenuItem32;
+        private ToolStripMenuItem generateARandomColourToolStripMenuItem2;
         private KryptonPalette internalPalette;
+        private ContextMenuStrip cmsLinkNormalColour;
+        private ToolStripMenuItem toolStripMenuItem11;
+        private ToolStripSeparator toolStripMenuItem40;
+        private ToolStripMenuItem generateARandomColourToolStripMenuItem11;
+        private ContextMenuStrip cmsBaseColour;
+        private ToolStripMenuItem useAsBaseColourToolStripMenuItem;
+        private ToolStripSeparator toolStripMenuItem30;
+        private ToolStripMenuItem generateARandomColourToolStripMenuItem;
         private PictureBox pbxBaseColour;
 
         private void InitializeComponent()
@@ -51,7 +170,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.pbxMediumColour = new System.Windows.Forms.PictureBox();
             this.pbxLightColour = new System.Windows.Forms.PictureBox();
             this.pbxLightestColour = new System.Windows.Forms.PictureBox();
-            this.pbxBorderColour = new System.Windows.Forms.PictureBox();
+            this.pbxBorderColourOne = new System.Windows.Forms.PictureBox();
             this.pbxAlternativeNormalTextColour = new System.Windows.Forms.PictureBox();
             this.pbxNormalTextColour = new System.Windows.Forms.PictureBox();
             this.pbxDisabledTextColour = new System.Windows.Forms.PictureBox();
@@ -76,13 +195,132 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.pbxStatusTextColour = new System.Windows.Forms.PictureBox();
             this.pbxRibbonTabColour = new System.Windows.Forms.PictureBox();
             this.ttColourInformation = new System.Windows.Forms.ToolTip(this.components);
+            this.cmsBorderColourTwo = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem29 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem58 = new System.Windows.Forms.ToolStripSeparator();
+            this.generateARandomColourToolStripMenuItem29 = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsAlternativeNormalTextColour = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem35 = new System.Windows.Forms.ToolStripSeparator();
+            this.generateARandomColourToolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsMediumColour = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem28 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem57 = new System.Windows.Forms.ToolStripSeparator();
+            this.generateARandomColourToolStripMenuItem28 = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsDarkColour = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem31 = new System.Windows.Forms.ToolStripSeparator();
+            this.generateARandomColourToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsRibbonTabTextColour = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem27 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem56 = new System.Windows.Forms.ToolStripSeparator();
+            this.generateARandomColourToolStripMenuItem27 = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsStatusTextColour = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem26 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem55 = new System.Windows.Forms.ToolStripSeparator();
+            this.generateARandomColourToolStripMenuItem26 = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsMenuTextColour = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem25 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem54 = new System.Windows.Forms.ToolStripSeparator();
+            this.generateARandomColourToolStripMenuItem25 = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsCustomTextColourFive = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem24 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem53 = new System.Windows.Forms.ToolStripSeparator();
+            this.generateARandomColourToolStripMenuItem24 = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsCustomTextColourFour = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem23 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem52 = new System.Windows.Forms.ToolStripSeparator();
+            this.generateARandomColourToolStripMenuItem23 = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsCustomTextColourThree = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem22 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem51 = new System.Windows.Forms.ToolStripSeparator();
+            this.generateARandomColourToolStripMenuItem22 = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsCustomTextColourTwo = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem21 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem50 = new System.Windows.Forms.ToolStripSeparator();
+            this.generateARandomColourToolStripMenuItem21 = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsCustomTextColourOne = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem20 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem49 = new System.Windows.Forms.ToolStripSeparator();
+            this.generateARandomColourToolStripMenuItem20 = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsCustomColourFive = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem19 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem48 = new System.Windows.Forms.ToolStripSeparator();
+            this.generateARandomColourToolStripMenuItem19 = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsCustomColourFour = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem18 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem47 = new System.Windows.Forms.ToolStripSeparator();
+            this.generateARandomColourToolStripMenuItem18 = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsCustomColourThree = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem17 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem46 = new System.Windows.Forms.ToolStripSeparator();
+            this.generateARandomColourToolStripMenuItem17 = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsCustomColourTwo = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem16 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem45 = new System.Windows.Forms.ToolStripSeparator();
+            this.generateARandomColourToolStripMenuItem16 = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsCustomColourOne = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem15 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem44 = new System.Windows.Forms.ToolStripSeparator();
+            this.generateARandomColourToolStripMenuItem15 = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsLinkVisitedColour = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem14 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem43 = new System.Windows.Forms.ToolStripSeparator();
+            this.generateARandomColourToolStripMenuItem14 = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsLinkHoverColour = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem13 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem42 = new System.Windows.Forms.ToolStripSeparator();
+            this.generateARandomColourToolStripMenuItem13 = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsLinkFocusedColour = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem12 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem41 = new System.Windows.Forms.ToolStripSeparator();
+            this.generateARandomColourToolStripMenuItem12 = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsDisabledControlColour = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem10 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem39 = new System.Windows.Forms.ToolStripSeparator();
+            this.generateARandomColourToolStripMenuItem10 = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsPressedTextColour = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem9 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem38 = new System.Windows.Forms.ToolStripSeparator();
+            this.generateARandomColourToolStripMenuItem9 = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsFocusedTextColour = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem37 = new System.Windows.Forms.ToolStripSeparator();
+            this.generateARandomColourToolStripMenuItem8 = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsDisabledTextColour = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem36 = new System.Windows.Forms.ToolStripSeparator();
+            this.generateARandomColourToolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsNormalTextColour = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
+            this.generateARandomColourToolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsBorderColourOne = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem34 = new System.Windows.Forms.ToolStripSeparator();
+            this.generateARandomColourToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsLightestColour = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem33 = new System.Windows.Forms.ToolStripSeparator();
+            this.generateARandomColourToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsLightColour = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem32 = new System.Windows.Forms.ToolStripSeparator();
+            this.generateARandomColourToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.internalPalette = new Krypton.Toolkit.KryptonPalette(this.components);
+            this.cmsLinkNormalColour = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem11 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem40 = new System.Windows.Forms.ToolStripSeparator();
+            this.generateARandomColourToolStripMenuItem11 = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsBaseColour = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.useAsBaseColourToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem30 = new System.Windows.Forms.ToolStripSeparator();
+            this.generateARandomColourToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pbxBaseColour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxDarkColour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxMediumColour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLightColour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLightestColour)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxBorderColour)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxBorderColourOne)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxAlternativeNormalTextColour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxNormalTextColour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxDisabledTextColour)).BeginInit();
@@ -106,6 +344,36 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             ((System.ComponentModel.ISupportInitialize)(this.pbxMenuTextColour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxStatusTextColour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxRibbonTabColour)).BeginInit();
+            this.cmsBorderColourTwo.SuspendLayout();
+            this.cmsAlternativeNormalTextColour.SuspendLayout();
+            this.cmsMediumColour.SuspendLayout();
+            this.cmsDarkColour.SuspendLayout();
+            this.cmsRibbonTabTextColour.SuspendLayout();
+            this.cmsStatusTextColour.SuspendLayout();
+            this.cmsMenuTextColour.SuspendLayout();
+            this.cmsCustomTextColourFive.SuspendLayout();
+            this.cmsCustomTextColourFour.SuspendLayout();
+            this.cmsCustomTextColourThree.SuspendLayout();
+            this.cmsCustomTextColourTwo.SuspendLayout();
+            this.cmsCustomTextColourOne.SuspendLayout();
+            this.cmsCustomColourFive.SuspendLayout();
+            this.cmsCustomColourFour.SuspendLayout();
+            this.cmsCustomColourThree.SuspendLayout();
+            this.cmsCustomColourTwo.SuspendLayout();
+            this.cmsCustomColourOne.SuspendLayout();
+            this.cmsLinkVisitedColour.SuspendLayout();
+            this.cmsLinkHoverColour.SuspendLayout();
+            this.cmsLinkFocusedColour.SuspendLayout();
+            this.cmsDisabledControlColour.SuspendLayout();
+            this.cmsPressedTextColour.SuspendLayout();
+            this.cmsFocusedTextColour.SuspendLayout();
+            this.cmsDisabledTextColour.SuspendLayout();
+            this.cmsNormalTextColour.SuspendLayout();
+            this.cmsBorderColourOne.SuspendLayout();
+            this.cmsLightestColour.SuspendLayout();
+            this.cmsLightColour.SuspendLayout();
+            this.cmsLinkNormalColour.SuspendLayout();
+            this.cmsBaseColour.SuspendLayout();
             this.SuspendLayout();
             // 
             // pbxBaseColour
@@ -153,14 +421,14 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.pbxLightestColour.TabIndex = 4;
             this.pbxLightestColour.TabStop = false;
             // 
-            // pbxBorderColour
+            // pbxBorderColourOne
             // 
-            this.pbxBorderColour.BackColor = System.Drawing.Color.White;
-            this.pbxBorderColour.Location = new System.Drawing.Point(418, 3);
-            this.pbxBorderColour.Name = "pbxBorderColour";
-            this.pbxBorderColour.Size = new System.Drawing.Size(64, 64);
-            this.pbxBorderColour.TabIndex = 5;
-            this.pbxBorderColour.TabStop = false;
+            this.pbxBorderColourOne.BackColor = System.Drawing.Color.Maroon;
+            this.pbxBorderColourOne.Location = new System.Drawing.Point(418, 3);
+            this.pbxBorderColourOne.Name = "pbxBorderColourOne";
+            this.pbxBorderColourOne.Size = new System.Drawing.Size(64, 64);
+            this.pbxBorderColourOne.TabIndex = 5;
+            this.pbxBorderColourOne.TabStop = false;
             // 
             // pbxAlternativeNormalTextColour
             // 
@@ -382,9 +650,813 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.pbxRibbonTabColour.TabStop = false;
             this.pbxRibbonTabColour.Visible = false;
             // 
+            // cmsBorderColourTwo
+            // 
+            this.cmsBorderColourTwo.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.cmsBorderColourTwo.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem29,
+            this.toolStripMenuItem58,
+            this.generateARandomColourToolStripMenuItem29});
+            this.cmsBorderColourTwo.Name = "contextMenuStrip1";
+            this.cmsBorderColourTwo.Size = new System.Drawing.Size(218, 54);
+            // 
+            // toolStripMenuItem29
+            // 
+            this.toolStripMenuItem29.Name = "toolStripMenuItem29";
+            this.toolStripMenuItem29.Size = new System.Drawing.Size(217, 22);
+            this.toolStripMenuItem29.Text = "Use as &Base Colour";
+            // 
+            // toolStripMenuItem58
+            // 
+            this.toolStripMenuItem58.Name = "toolStripMenuItem58";
+            this.toolStripMenuItem58.Size = new System.Drawing.Size(214, 6);
+            // 
+            // generateARandomColourToolStripMenuItem29
+            // 
+            this.generateARandomColourToolStripMenuItem29.Name = "generateARandomColourToolStripMenuItem29";
+            this.generateARandomColourToolStripMenuItem29.Size = new System.Drawing.Size(217, 22);
+            this.generateARandomColourToolStripMenuItem29.Text = "Generate a &Random Colour";
+            // 
+            // cmsAlternativeNormalTextColour
+            // 
+            this.cmsAlternativeNormalTextColour.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.cmsAlternativeNormalTextColour.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem5,
+            this.toolStripMenuItem35,
+            this.generateARandomColourToolStripMenuItem5});
+            this.cmsAlternativeNormalTextColour.Name = "contextMenuStrip1";
+            this.cmsAlternativeNormalTextColour.Size = new System.Drawing.Size(218, 54);
+            // 
+            // toolStripMenuItem5
+            // 
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(217, 22);
+            this.toolStripMenuItem5.Text = "Use as &Base Colour";
+            // 
+            // toolStripMenuItem35
+            // 
+            this.toolStripMenuItem35.Name = "toolStripMenuItem35";
+            this.toolStripMenuItem35.Size = new System.Drawing.Size(214, 6);
+            // 
+            // generateARandomColourToolStripMenuItem5
+            // 
+            this.generateARandomColourToolStripMenuItem5.Name = "generateARandomColourToolStripMenuItem5";
+            this.generateARandomColourToolStripMenuItem5.Size = new System.Drawing.Size(217, 22);
+            this.generateARandomColourToolStripMenuItem5.Text = "Generate a &Random Colour";
+            // 
+            // cmsMediumColour
+            // 
+            this.cmsMediumColour.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.cmsMediumColour.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem28,
+            this.toolStripMenuItem57,
+            this.generateARandomColourToolStripMenuItem28});
+            this.cmsMediumColour.Name = "contextMenuStrip1";
+            this.cmsMediumColour.Size = new System.Drawing.Size(218, 54);
+            // 
+            // toolStripMenuItem28
+            // 
+            this.toolStripMenuItem28.Name = "toolStripMenuItem28";
+            this.toolStripMenuItem28.Size = new System.Drawing.Size(217, 22);
+            this.toolStripMenuItem28.Text = "Use as &Base Colour";
+            // 
+            // toolStripMenuItem57
+            // 
+            this.toolStripMenuItem57.Name = "toolStripMenuItem57";
+            this.toolStripMenuItem57.Size = new System.Drawing.Size(214, 6);
+            // 
+            // generateARandomColourToolStripMenuItem28
+            // 
+            this.generateARandomColourToolStripMenuItem28.Name = "generateARandomColourToolStripMenuItem28";
+            this.generateARandomColourToolStripMenuItem28.Size = new System.Drawing.Size(217, 22);
+            this.generateARandomColourToolStripMenuItem28.Text = "Generate a &Random Colour";
+            // 
+            // cmsDarkColour
+            // 
+            this.cmsDarkColour.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.cmsDarkColour.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1,
+            this.toolStripMenuItem31,
+            this.generateARandomColourToolStripMenuItem1});
+            this.cmsDarkColour.Name = "contextMenuStrip1";
+            this.cmsDarkColour.Size = new System.Drawing.Size(218, 54);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(217, 22);
+            this.toolStripMenuItem1.Text = "Use as &Base Colour";
+            // 
+            // toolStripMenuItem31
+            // 
+            this.toolStripMenuItem31.Name = "toolStripMenuItem31";
+            this.toolStripMenuItem31.Size = new System.Drawing.Size(214, 6);
+            // 
+            // generateARandomColourToolStripMenuItem1
+            // 
+            this.generateARandomColourToolStripMenuItem1.Name = "generateARandomColourToolStripMenuItem1";
+            this.generateARandomColourToolStripMenuItem1.Size = new System.Drawing.Size(217, 22);
+            this.generateARandomColourToolStripMenuItem1.Text = "Generate a &Random Colour";
+            // 
+            // cmsRibbonTabTextColour
+            // 
+            this.cmsRibbonTabTextColour.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.cmsRibbonTabTextColour.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem27,
+            this.toolStripMenuItem56,
+            this.generateARandomColourToolStripMenuItem27});
+            this.cmsRibbonTabTextColour.Name = "contextMenuStrip1";
+            this.cmsRibbonTabTextColour.Size = new System.Drawing.Size(218, 54);
+            // 
+            // toolStripMenuItem27
+            // 
+            this.toolStripMenuItem27.Name = "toolStripMenuItem27";
+            this.toolStripMenuItem27.Size = new System.Drawing.Size(217, 22);
+            this.toolStripMenuItem27.Text = "Use as &Base Colour";
+            // 
+            // toolStripMenuItem56
+            // 
+            this.toolStripMenuItem56.Name = "toolStripMenuItem56";
+            this.toolStripMenuItem56.Size = new System.Drawing.Size(214, 6);
+            // 
+            // generateARandomColourToolStripMenuItem27
+            // 
+            this.generateARandomColourToolStripMenuItem27.Name = "generateARandomColourToolStripMenuItem27";
+            this.generateARandomColourToolStripMenuItem27.Size = new System.Drawing.Size(217, 22);
+            this.generateARandomColourToolStripMenuItem27.Text = "Generate a &Random Colour";
+            // 
+            // cmsStatusTextColour
+            // 
+            this.cmsStatusTextColour.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.cmsStatusTextColour.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem26,
+            this.toolStripMenuItem55,
+            this.generateARandomColourToolStripMenuItem26});
+            this.cmsStatusTextColour.Name = "contextMenuStrip1";
+            this.cmsStatusTextColour.Size = new System.Drawing.Size(218, 54);
+            // 
+            // toolStripMenuItem26
+            // 
+            this.toolStripMenuItem26.Name = "toolStripMenuItem26";
+            this.toolStripMenuItem26.Size = new System.Drawing.Size(217, 22);
+            this.toolStripMenuItem26.Text = "Use as &Base Colour";
+            // 
+            // toolStripMenuItem55
+            // 
+            this.toolStripMenuItem55.Name = "toolStripMenuItem55";
+            this.toolStripMenuItem55.Size = new System.Drawing.Size(214, 6);
+            // 
+            // generateARandomColourToolStripMenuItem26
+            // 
+            this.generateARandomColourToolStripMenuItem26.Name = "generateARandomColourToolStripMenuItem26";
+            this.generateARandomColourToolStripMenuItem26.Size = new System.Drawing.Size(217, 22);
+            this.generateARandomColourToolStripMenuItem26.Text = "Generate a &Random Colour";
+            // 
+            // cmsMenuTextColour
+            // 
+            this.cmsMenuTextColour.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.cmsMenuTextColour.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem25,
+            this.toolStripMenuItem54,
+            this.generateARandomColourToolStripMenuItem25});
+            this.cmsMenuTextColour.Name = "contextMenuStrip1";
+            this.cmsMenuTextColour.Size = new System.Drawing.Size(218, 54);
+            // 
+            // toolStripMenuItem25
+            // 
+            this.toolStripMenuItem25.Name = "toolStripMenuItem25";
+            this.toolStripMenuItem25.Size = new System.Drawing.Size(217, 22);
+            this.toolStripMenuItem25.Text = "Use as &Base Colour";
+            // 
+            // toolStripMenuItem54
+            // 
+            this.toolStripMenuItem54.Name = "toolStripMenuItem54";
+            this.toolStripMenuItem54.Size = new System.Drawing.Size(214, 6);
+            // 
+            // generateARandomColourToolStripMenuItem25
+            // 
+            this.generateARandomColourToolStripMenuItem25.Name = "generateARandomColourToolStripMenuItem25";
+            this.generateARandomColourToolStripMenuItem25.Size = new System.Drawing.Size(217, 22);
+            this.generateARandomColourToolStripMenuItem25.Text = "Generate a &Random Colour";
+            // 
+            // cmsCustomTextColourFive
+            // 
+            this.cmsCustomTextColourFive.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.cmsCustomTextColourFive.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem24,
+            this.toolStripMenuItem53,
+            this.generateARandomColourToolStripMenuItem24});
+            this.cmsCustomTextColourFive.Name = "contextMenuStrip1";
+            this.cmsCustomTextColourFive.Size = new System.Drawing.Size(218, 54);
+            // 
+            // toolStripMenuItem24
+            // 
+            this.toolStripMenuItem24.Name = "toolStripMenuItem24";
+            this.toolStripMenuItem24.Size = new System.Drawing.Size(217, 22);
+            this.toolStripMenuItem24.Text = "Use as &Base Colour";
+            // 
+            // toolStripMenuItem53
+            // 
+            this.toolStripMenuItem53.Name = "toolStripMenuItem53";
+            this.toolStripMenuItem53.Size = new System.Drawing.Size(214, 6);
+            // 
+            // generateARandomColourToolStripMenuItem24
+            // 
+            this.generateARandomColourToolStripMenuItem24.Name = "generateARandomColourToolStripMenuItem24";
+            this.generateARandomColourToolStripMenuItem24.Size = new System.Drawing.Size(217, 22);
+            this.generateARandomColourToolStripMenuItem24.Text = "Generate a &Random Colour";
+            // 
+            // cmsCustomTextColourFour
+            // 
+            this.cmsCustomTextColourFour.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.cmsCustomTextColourFour.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem23,
+            this.toolStripMenuItem52,
+            this.generateARandomColourToolStripMenuItem23});
+            this.cmsCustomTextColourFour.Name = "contextMenuStrip1";
+            this.cmsCustomTextColourFour.Size = new System.Drawing.Size(218, 54);
+            // 
+            // toolStripMenuItem23
+            // 
+            this.toolStripMenuItem23.Name = "toolStripMenuItem23";
+            this.toolStripMenuItem23.Size = new System.Drawing.Size(217, 22);
+            this.toolStripMenuItem23.Text = "Use as &Base Colour";
+            // 
+            // toolStripMenuItem52
+            // 
+            this.toolStripMenuItem52.Name = "toolStripMenuItem52";
+            this.toolStripMenuItem52.Size = new System.Drawing.Size(214, 6);
+            // 
+            // generateARandomColourToolStripMenuItem23
+            // 
+            this.generateARandomColourToolStripMenuItem23.Name = "generateARandomColourToolStripMenuItem23";
+            this.generateARandomColourToolStripMenuItem23.Size = new System.Drawing.Size(217, 22);
+            this.generateARandomColourToolStripMenuItem23.Text = "Generate a &Random Colour";
+            // 
+            // cmsCustomTextColourThree
+            // 
+            this.cmsCustomTextColourThree.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.cmsCustomTextColourThree.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem22,
+            this.toolStripMenuItem51,
+            this.generateARandomColourToolStripMenuItem22});
+            this.cmsCustomTextColourThree.Name = "contextMenuStrip1";
+            this.cmsCustomTextColourThree.Size = new System.Drawing.Size(218, 54);
+            // 
+            // toolStripMenuItem22
+            // 
+            this.toolStripMenuItem22.Name = "toolStripMenuItem22";
+            this.toolStripMenuItem22.Size = new System.Drawing.Size(217, 22);
+            this.toolStripMenuItem22.Text = "Use as &Base Colour";
+            // 
+            // toolStripMenuItem51
+            // 
+            this.toolStripMenuItem51.Name = "toolStripMenuItem51";
+            this.toolStripMenuItem51.Size = new System.Drawing.Size(214, 6);
+            // 
+            // generateARandomColourToolStripMenuItem22
+            // 
+            this.generateARandomColourToolStripMenuItem22.Name = "generateARandomColourToolStripMenuItem22";
+            this.generateARandomColourToolStripMenuItem22.Size = new System.Drawing.Size(217, 22);
+            this.generateARandomColourToolStripMenuItem22.Text = "Generate a &Random Colour";
+            // 
+            // cmsCustomTextColourTwo
+            // 
+            this.cmsCustomTextColourTwo.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.cmsCustomTextColourTwo.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem21,
+            this.toolStripMenuItem50,
+            this.generateARandomColourToolStripMenuItem21});
+            this.cmsCustomTextColourTwo.Name = "contextMenuStrip1";
+            this.cmsCustomTextColourTwo.Size = new System.Drawing.Size(218, 54);
+            // 
+            // toolStripMenuItem21
+            // 
+            this.toolStripMenuItem21.Name = "toolStripMenuItem21";
+            this.toolStripMenuItem21.Size = new System.Drawing.Size(217, 22);
+            this.toolStripMenuItem21.Text = "Use as &Base Colour";
+            // 
+            // toolStripMenuItem50
+            // 
+            this.toolStripMenuItem50.Name = "toolStripMenuItem50";
+            this.toolStripMenuItem50.Size = new System.Drawing.Size(214, 6);
+            // 
+            // generateARandomColourToolStripMenuItem21
+            // 
+            this.generateARandomColourToolStripMenuItem21.Name = "generateARandomColourToolStripMenuItem21";
+            this.generateARandomColourToolStripMenuItem21.Size = new System.Drawing.Size(217, 22);
+            this.generateARandomColourToolStripMenuItem21.Text = "Generate a &Random Colour";
+            // 
+            // cmsCustomTextColourOne
+            // 
+            this.cmsCustomTextColourOne.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.cmsCustomTextColourOne.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem20,
+            this.toolStripMenuItem49,
+            this.generateARandomColourToolStripMenuItem20});
+            this.cmsCustomTextColourOne.Name = "contextMenuStrip1";
+            this.cmsCustomTextColourOne.Size = new System.Drawing.Size(218, 54);
+            // 
+            // toolStripMenuItem20
+            // 
+            this.toolStripMenuItem20.Name = "toolStripMenuItem20";
+            this.toolStripMenuItem20.Size = new System.Drawing.Size(217, 22);
+            this.toolStripMenuItem20.Text = "Use as &Base Colour";
+            // 
+            // toolStripMenuItem49
+            // 
+            this.toolStripMenuItem49.Name = "toolStripMenuItem49";
+            this.toolStripMenuItem49.Size = new System.Drawing.Size(214, 6);
+            // 
+            // generateARandomColourToolStripMenuItem20
+            // 
+            this.generateARandomColourToolStripMenuItem20.Name = "generateARandomColourToolStripMenuItem20";
+            this.generateARandomColourToolStripMenuItem20.Size = new System.Drawing.Size(217, 22);
+            this.generateARandomColourToolStripMenuItem20.Text = "Generate a &Random Colour";
+            // 
+            // cmsCustomColourFive
+            // 
+            this.cmsCustomColourFive.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.cmsCustomColourFive.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem19,
+            this.toolStripMenuItem48,
+            this.generateARandomColourToolStripMenuItem19});
+            this.cmsCustomColourFive.Name = "contextMenuStrip1";
+            this.cmsCustomColourFive.Size = new System.Drawing.Size(218, 54);
+            // 
+            // toolStripMenuItem19
+            // 
+            this.toolStripMenuItem19.Name = "toolStripMenuItem19";
+            this.toolStripMenuItem19.Size = new System.Drawing.Size(217, 22);
+            this.toolStripMenuItem19.Text = "Use as &Base Colour";
+            // 
+            // toolStripMenuItem48
+            // 
+            this.toolStripMenuItem48.Name = "toolStripMenuItem48";
+            this.toolStripMenuItem48.Size = new System.Drawing.Size(214, 6);
+            // 
+            // generateARandomColourToolStripMenuItem19
+            // 
+            this.generateARandomColourToolStripMenuItem19.Name = "generateARandomColourToolStripMenuItem19";
+            this.generateARandomColourToolStripMenuItem19.Size = new System.Drawing.Size(217, 22);
+            this.generateARandomColourToolStripMenuItem19.Text = "Generate a &Random Colour";
+            // 
+            // cmsCustomColourFour
+            // 
+            this.cmsCustomColourFour.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.cmsCustomColourFour.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem18,
+            this.toolStripMenuItem47,
+            this.generateARandomColourToolStripMenuItem18});
+            this.cmsCustomColourFour.Name = "contextMenuStrip1";
+            this.cmsCustomColourFour.Size = new System.Drawing.Size(218, 54);
+            // 
+            // toolStripMenuItem18
+            // 
+            this.toolStripMenuItem18.Name = "toolStripMenuItem18";
+            this.toolStripMenuItem18.Size = new System.Drawing.Size(217, 22);
+            this.toolStripMenuItem18.Text = "Use as &Base Colour";
+            // 
+            // toolStripMenuItem47
+            // 
+            this.toolStripMenuItem47.Name = "toolStripMenuItem47";
+            this.toolStripMenuItem47.Size = new System.Drawing.Size(214, 6);
+            // 
+            // generateARandomColourToolStripMenuItem18
+            // 
+            this.generateARandomColourToolStripMenuItem18.Name = "generateARandomColourToolStripMenuItem18";
+            this.generateARandomColourToolStripMenuItem18.Size = new System.Drawing.Size(217, 22);
+            this.generateARandomColourToolStripMenuItem18.Text = "Generate a &Random Colour";
+            // 
+            // cmsCustomColourThree
+            // 
+            this.cmsCustomColourThree.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.cmsCustomColourThree.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem17,
+            this.toolStripMenuItem46,
+            this.generateARandomColourToolStripMenuItem17});
+            this.cmsCustomColourThree.Name = "contextMenuStrip1";
+            this.cmsCustomColourThree.Size = new System.Drawing.Size(218, 54);
+            // 
+            // toolStripMenuItem17
+            // 
+            this.toolStripMenuItem17.Name = "toolStripMenuItem17";
+            this.toolStripMenuItem17.Size = new System.Drawing.Size(217, 22);
+            this.toolStripMenuItem17.Text = "Use as &Base Colour";
+            // 
+            // toolStripMenuItem46
+            // 
+            this.toolStripMenuItem46.Name = "toolStripMenuItem46";
+            this.toolStripMenuItem46.Size = new System.Drawing.Size(214, 6);
+            // 
+            // generateARandomColourToolStripMenuItem17
+            // 
+            this.generateARandomColourToolStripMenuItem17.Name = "generateARandomColourToolStripMenuItem17";
+            this.generateARandomColourToolStripMenuItem17.Size = new System.Drawing.Size(217, 22);
+            this.generateARandomColourToolStripMenuItem17.Text = "Generate a &Random Colour";
+            // 
+            // cmsCustomColourTwo
+            // 
+            this.cmsCustomColourTwo.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.cmsCustomColourTwo.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem16,
+            this.toolStripMenuItem45,
+            this.generateARandomColourToolStripMenuItem16});
+            this.cmsCustomColourTwo.Name = "contextMenuStrip1";
+            this.cmsCustomColourTwo.Size = new System.Drawing.Size(218, 54);
+            // 
+            // toolStripMenuItem16
+            // 
+            this.toolStripMenuItem16.Name = "toolStripMenuItem16";
+            this.toolStripMenuItem16.Size = new System.Drawing.Size(217, 22);
+            this.toolStripMenuItem16.Text = "Use as &Base Colour";
+            // 
+            // toolStripMenuItem45
+            // 
+            this.toolStripMenuItem45.Name = "toolStripMenuItem45";
+            this.toolStripMenuItem45.Size = new System.Drawing.Size(214, 6);
+            // 
+            // generateARandomColourToolStripMenuItem16
+            // 
+            this.generateARandomColourToolStripMenuItem16.Name = "generateARandomColourToolStripMenuItem16";
+            this.generateARandomColourToolStripMenuItem16.Size = new System.Drawing.Size(217, 22);
+            this.generateARandomColourToolStripMenuItem16.Text = "Generate a &Random Colour";
+            // 
+            // cmsCustomColourOne
+            // 
+            this.cmsCustomColourOne.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.cmsCustomColourOne.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem15,
+            this.toolStripMenuItem44,
+            this.generateARandomColourToolStripMenuItem15});
+            this.cmsCustomColourOne.Name = "contextMenuStrip1";
+            this.cmsCustomColourOne.Size = new System.Drawing.Size(218, 54);
+            // 
+            // toolStripMenuItem15
+            // 
+            this.toolStripMenuItem15.Name = "toolStripMenuItem15";
+            this.toolStripMenuItem15.Size = new System.Drawing.Size(217, 22);
+            this.toolStripMenuItem15.Text = "Use as &Base Colour";
+            // 
+            // toolStripMenuItem44
+            // 
+            this.toolStripMenuItem44.Name = "toolStripMenuItem44";
+            this.toolStripMenuItem44.Size = new System.Drawing.Size(214, 6);
+            // 
+            // generateARandomColourToolStripMenuItem15
+            // 
+            this.generateARandomColourToolStripMenuItem15.Name = "generateARandomColourToolStripMenuItem15";
+            this.generateARandomColourToolStripMenuItem15.Size = new System.Drawing.Size(217, 22);
+            this.generateARandomColourToolStripMenuItem15.Text = "Generate a &Random Colour";
+            // 
+            // cmsLinkVisitedColour
+            // 
+            this.cmsLinkVisitedColour.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.cmsLinkVisitedColour.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem14,
+            this.toolStripMenuItem43,
+            this.generateARandomColourToolStripMenuItem14});
+            this.cmsLinkVisitedColour.Name = "contextMenuStrip1";
+            this.cmsLinkVisitedColour.Size = new System.Drawing.Size(218, 54);
+            // 
+            // toolStripMenuItem14
+            // 
+            this.toolStripMenuItem14.Name = "toolStripMenuItem14";
+            this.toolStripMenuItem14.Size = new System.Drawing.Size(217, 22);
+            this.toolStripMenuItem14.Text = "Use as &Base Colour";
+            // 
+            // toolStripMenuItem43
+            // 
+            this.toolStripMenuItem43.Name = "toolStripMenuItem43";
+            this.toolStripMenuItem43.Size = new System.Drawing.Size(214, 6);
+            // 
+            // generateARandomColourToolStripMenuItem14
+            // 
+            this.generateARandomColourToolStripMenuItem14.Name = "generateARandomColourToolStripMenuItem14";
+            this.generateARandomColourToolStripMenuItem14.Size = new System.Drawing.Size(217, 22);
+            this.generateARandomColourToolStripMenuItem14.Text = "Generate a &Random Colour";
+            // 
+            // cmsLinkHoverColour
+            // 
+            this.cmsLinkHoverColour.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.cmsLinkHoverColour.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem13,
+            this.toolStripMenuItem42,
+            this.generateARandomColourToolStripMenuItem13});
+            this.cmsLinkHoverColour.Name = "contextMenuStrip1";
+            this.cmsLinkHoverColour.Size = new System.Drawing.Size(218, 54);
+            // 
+            // toolStripMenuItem13
+            // 
+            this.toolStripMenuItem13.Name = "toolStripMenuItem13";
+            this.toolStripMenuItem13.Size = new System.Drawing.Size(217, 22);
+            this.toolStripMenuItem13.Text = "Use as &Base Colour";
+            // 
+            // toolStripMenuItem42
+            // 
+            this.toolStripMenuItem42.Name = "toolStripMenuItem42";
+            this.toolStripMenuItem42.Size = new System.Drawing.Size(214, 6);
+            // 
+            // generateARandomColourToolStripMenuItem13
+            // 
+            this.generateARandomColourToolStripMenuItem13.Name = "generateARandomColourToolStripMenuItem13";
+            this.generateARandomColourToolStripMenuItem13.Size = new System.Drawing.Size(217, 22);
+            this.generateARandomColourToolStripMenuItem13.Text = "Generate a &Random Colour";
+            // 
+            // cmsLinkFocusedColour
+            // 
+            this.cmsLinkFocusedColour.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.cmsLinkFocusedColour.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem12,
+            this.toolStripMenuItem41,
+            this.generateARandomColourToolStripMenuItem12});
+            this.cmsLinkFocusedColour.Name = "contextMenuStrip1";
+            this.cmsLinkFocusedColour.Size = new System.Drawing.Size(218, 54);
+            // 
+            // toolStripMenuItem12
+            // 
+            this.toolStripMenuItem12.Name = "toolStripMenuItem12";
+            this.toolStripMenuItem12.Size = new System.Drawing.Size(217, 22);
+            this.toolStripMenuItem12.Text = "Use as &Base Colour";
+            // 
+            // toolStripMenuItem41
+            // 
+            this.toolStripMenuItem41.Name = "toolStripMenuItem41";
+            this.toolStripMenuItem41.Size = new System.Drawing.Size(214, 6);
+            // 
+            // generateARandomColourToolStripMenuItem12
+            // 
+            this.generateARandomColourToolStripMenuItem12.Name = "generateARandomColourToolStripMenuItem12";
+            this.generateARandomColourToolStripMenuItem12.Size = new System.Drawing.Size(217, 22);
+            this.generateARandomColourToolStripMenuItem12.Text = "Generate a &Random Colour";
+            // 
+            // cmsDisabledControlColour
+            // 
+            this.cmsDisabledControlColour.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.cmsDisabledControlColour.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem10,
+            this.toolStripMenuItem39,
+            this.generateARandomColourToolStripMenuItem10});
+            this.cmsDisabledControlColour.Name = "contextMenuStrip1";
+            this.cmsDisabledControlColour.Size = new System.Drawing.Size(218, 54);
+            // 
+            // toolStripMenuItem10
+            // 
+            this.toolStripMenuItem10.Name = "toolStripMenuItem10";
+            this.toolStripMenuItem10.Size = new System.Drawing.Size(217, 22);
+            this.toolStripMenuItem10.Text = "Use as &Base Colour";
+            // 
+            // toolStripMenuItem39
+            // 
+            this.toolStripMenuItem39.Name = "toolStripMenuItem39";
+            this.toolStripMenuItem39.Size = new System.Drawing.Size(214, 6);
+            // 
+            // generateARandomColourToolStripMenuItem10
+            // 
+            this.generateARandomColourToolStripMenuItem10.Name = "generateARandomColourToolStripMenuItem10";
+            this.generateARandomColourToolStripMenuItem10.Size = new System.Drawing.Size(217, 22);
+            this.generateARandomColourToolStripMenuItem10.Text = "Generate a &Random Colour";
+            // 
+            // cmsPressedTextColour
+            // 
+            this.cmsPressedTextColour.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.cmsPressedTextColour.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem9,
+            this.toolStripMenuItem38,
+            this.generateARandomColourToolStripMenuItem9});
+            this.cmsPressedTextColour.Name = "contextMenuStrip1";
+            this.cmsPressedTextColour.Size = new System.Drawing.Size(218, 54);
+            // 
+            // toolStripMenuItem9
+            // 
+            this.toolStripMenuItem9.Name = "toolStripMenuItem9";
+            this.toolStripMenuItem9.Size = new System.Drawing.Size(217, 22);
+            this.toolStripMenuItem9.Text = "Use as &Base Colour";
+            // 
+            // toolStripMenuItem38
+            // 
+            this.toolStripMenuItem38.Name = "toolStripMenuItem38";
+            this.toolStripMenuItem38.Size = new System.Drawing.Size(214, 6);
+            // 
+            // generateARandomColourToolStripMenuItem9
+            // 
+            this.generateARandomColourToolStripMenuItem9.Name = "generateARandomColourToolStripMenuItem9";
+            this.generateARandomColourToolStripMenuItem9.Size = new System.Drawing.Size(217, 22);
+            this.generateARandomColourToolStripMenuItem9.Text = "Generate a &Random Colour";
+            // 
+            // cmsFocusedTextColour
+            // 
+            this.cmsFocusedTextColour.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.cmsFocusedTextColour.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem8,
+            this.toolStripMenuItem37,
+            this.generateARandomColourToolStripMenuItem8});
+            this.cmsFocusedTextColour.Name = "contextMenuStrip1";
+            this.cmsFocusedTextColour.Size = new System.Drawing.Size(218, 54);
+            // 
+            // toolStripMenuItem8
+            // 
+            this.toolStripMenuItem8.Name = "toolStripMenuItem8";
+            this.toolStripMenuItem8.Size = new System.Drawing.Size(217, 22);
+            this.toolStripMenuItem8.Text = "Use as &Base Colour";
+            // 
+            // toolStripMenuItem37
+            // 
+            this.toolStripMenuItem37.Name = "toolStripMenuItem37";
+            this.toolStripMenuItem37.Size = new System.Drawing.Size(214, 6);
+            // 
+            // generateARandomColourToolStripMenuItem8
+            // 
+            this.generateARandomColourToolStripMenuItem8.Name = "generateARandomColourToolStripMenuItem8";
+            this.generateARandomColourToolStripMenuItem8.Size = new System.Drawing.Size(217, 22);
+            this.generateARandomColourToolStripMenuItem8.Text = "Generate a &Random Colour";
+            // 
+            // cmsDisabledTextColour
+            // 
+            this.cmsDisabledTextColour.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.cmsDisabledTextColour.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem7,
+            this.toolStripMenuItem36,
+            this.generateARandomColourToolStripMenuItem7});
+            this.cmsDisabledTextColour.Name = "contextMenuStrip1";
+            this.cmsDisabledTextColour.Size = new System.Drawing.Size(218, 54);
+            // 
+            // toolStripMenuItem7
+            // 
+            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(217, 22);
+            this.toolStripMenuItem7.Text = "Use as &Base Colour";
+            // 
+            // toolStripMenuItem36
+            // 
+            this.toolStripMenuItem36.Name = "toolStripMenuItem36";
+            this.toolStripMenuItem36.Size = new System.Drawing.Size(214, 6);
+            // 
+            // generateARandomColourToolStripMenuItem7
+            // 
+            this.generateARandomColourToolStripMenuItem7.Name = "generateARandomColourToolStripMenuItem7";
+            this.generateARandomColourToolStripMenuItem7.Size = new System.Drawing.Size(217, 22);
+            this.generateARandomColourToolStripMenuItem7.Text = "Generate a &Random Colour";
+            // 
+            // cmsNormalTextColour
+            // 
+            this.cmsNormalTextColour.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.cmsNormalTextColour.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem6,
+            this.generateARandomColourToolStripMenuItem6});
+            this.cmsNormalTextColour.Name = "contextMenuStrip1";
+            this.cmsNormalTextColour.Size = new System.Drawing.Size(218, 48);
+            // 
+            // toolStripMenuItem6
+            // 
+            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(217, 22);
+            this.toolStripMenuItem6.Text = "Use as &Base Colour";
+            // 
+            // generateARandomColourToolStripMenuItem6
+            // 
+            this.generateARandomColourToolStripMenuItem6.Name = "generateARandomColourToolStripMenuItem6";
+            this.generateARandomColourToolStripMenuItem6.Size = new System.Drawing.Size(217, 22);
+            this.generateARandomColourToolStripMenuItem6.Text = "Generate a &Random Colour";
+            // 
+            // cmsBorderColourOne
+            // 
+            this.cmsBorderColourOne.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.cmsBorderColourOne.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem4,
+            this.toolStripMenuItem34,
+            this.generateARandomColourToolStripMenuItem4});
+            this.cmsBorderColourOne.Name = "contextMenuStrip1";
+            this.cmsBorderColourOne.Size = new System.Drawing.Size(218, 54);
+            // 
+            // toolStripMenuItem4
+            // 
+            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(217, 22);
+            this.toolStripMenuItem4.Text = "Use as &Base Colour";
+            // 
+            // toolStripMenuItem34
+            // 
+            this.toolStripMenuItem34.Name = "toolStripMenuItem34";
+            this.toolStripMenuItem34.Size = new System.Drawing.Size(214, 6);
+            // 
+            // generateARandomColourToolStripMenuItem4
+            // 
+            this.generateARandomColourToolStripMenuItem4.Name = "generateARandomColourToolStripMenuItem4";
+            this.generateARandomColourToolStripMenuItem4.Size = new System.Drawing.Size(217, 22);
+            this.generateARandomColourToolStripMenuItem4.Text = "Generate a &Random Colour";
+            // 
+            // cmsLightestColour
+            // 
+            this.cmsLightestColour.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.cmsLightestColour.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem3,
+            this.toolStripMenuItem33,
+            this.generateARandomColourToolStripMenuItem3});
+            this.cmsLightestColour.Name = "contextMenuStrip1";
+            this.cmsLightestColour.Size = new System.Drawing.Size(218, 54);
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(217, 22);
+            this.toolStripMenuItem3.Text = "Use as &Base Colour";
+            // 
+            // toolStripMenuItem33
+            // 
+            this.toolStripMenuItem33.Name = "toolStripMenuItem33";
+            this.toolStripMenuItem33.Size = new System.Drawing.Size(214, 6);
+            // 
+            // generateARandomColourToolStripMenuItem3
+            // 
+            this.generateARandomColourToolStripMenuItem3.Name = "generateARandomColourToolStripMenuItem3";
+            this.generateARandomColourToolStripMenuItem3.Size = new System.Drawing.Size(217, 22);
+            this.generateARandomColourToolStripMenuItem3.Text = "Generate a &Random Colour";
+            // 
+            // cmsLightColour
+            // 
+            this.cmsLightColour.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.cmsLightColour.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem2,
+            this.toolStripMenuItem32,
+            this.generateARandomColourToolStripMenuItem2});
+            this.cmsLightColour.Name = "contextMenuStrip1";
+            this.cmsLightColour.Size = new System.Drawing.Size(218, 54);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(217, 22);
+            this.toolStripMenuItem2.Text = "Use as &Base Colour";
+            // 
+            // toolStripMenuItem32
+            // 
+            this.toolStripMenuItem32.Name = "toolStripMenuItem32";
+            this.toolStripMenuItem32.Size = new System.Drawing.Size(214, 6);
+            // 
+            // generateARandomColourToolStripMenuItem2
+            // 
+            this.generateARandomColourToolStripMenuItem2.Name = "generateARandomColourToolStripMenuItem2";
+            this.generateARandomColourToolStripMenuItem2.Size = new System.Drawing.Size(217, 22);
+            this.generateARandomColourToolStripMenuItem2.Text = "Generate a &Random Colour";
+            // 
             // internalPalette
             // 
             this.internalPalette.CustomisedKryptonPaletteFilePath = null;
+            // 
+            // cmsLinkNormalColour
+            // 
+            this.cmsLinkNormalColour.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.cmsLinkNormalColour.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem11,
+            this.toolStripMenuItem40,
+            this.generateARandomColourToolStripMenuItem11});
+            this.cmsLinkNormalColour.Name = "contextMenuStrip1";
+            this.cmsLinkNormalColour.Size = new System.Drawing.Size(218, 54);
+            // 
+            // toolStripMenuItem11
+            // 
+            this.toolStripMenuItem11.Name = "toolStripMenuItem11";
+            this.toolStripMenuItem11.Size = new System.Drawing.Size(217, 22);
+            this.toolStripMenuItem11.Text = "Use as &Base Colour";
+            // 
+            // toolStripMenuItem40
+            // 
+            this.toolStripMenuItem40.Name = "toolStripMenuItem40";
+            this.toolStripMenuItem40.Size = new System.Drawing.Size(214, 6);
+            // 
+            // generateARandomColourToolStripMenuItem11
+            // 
+            this.generateARandomColourToolStripMenuItem11.Name = "generateARandomColourToolStripMenuItem11";
+            this.generateARandomColourToolStripMenuItem11.Size = new System.Drawing.Size(217, 22);
+            this.generateARandomColourToolStripMenuItem11.Text = "Generate a &Random Colour";
+            // 
+            // cmsBaseColour
+            // 
+            this.cmsBaseColour.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.cmsBaseColour.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.useAsBaseColourToolStripMenuItem,
+            this.toolStripMenuItem30,
+            this.generateARandomColourToolStripMenuItem});
+            this.cmsBaseColour.Name = "cmsBaseColour";
+            this.cmsBaseColour.Size = new System.Drawing.Size(218, 54);
+            // 
+            // useAsBaseColourToolStripMenuItem
+            // 
+            this.useAsBaseColourToolStripMenuItem.Name = "useAsBaseColourToolStripMenuItem";
+            this.useAsBaseColourToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
+            this.useAsBaseColourToolStripMenuItem.Text = "Use as &Base Colour";
+            // 
+            // toolStripMenuItem30
+            // 
+            this.toolStripMenuItem30.Name = "toolStripMenuItem30";
+            this.toolStripMenuItem30.Size = new System.Drawing.Size(214, 6);
+            // 
+            // generateARandomColourToolStripMenuItem
+            // 
+            this.generateARandomColourToolStripMenuItem.Name = "generateARandomColourToolStripMenuItem";
+            this.generateARandomColourToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
+            this.generateARandomColourToolStripMenuItem.Text = "Generate a &Random Colour";
             // 
             // PaletteDesignerUserControl
             // 
@@ -412,7 +1484,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.Controls.Add(this.pbxDisabledTextColour);
             this.Controls.Add(this.pbxNormalTextColour);
             this.Controls.Add(this.pbxAlternativeNormalTextColour);
-            this.Controls.Add(this.pbxBorderColour);
+            this.Controls.Add(this.pbxBorderColourOne);
             this.Controls.Add(this.pbxLightestColour);
             this.Controls.Add(this.pbxLightColour);
             this.Controls.Add(this.pbxMediumColour);
@@ -426,7 +1498,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             ((System.ComponentModel.ISupportInitialize)(this.pbxMediumColour)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLightColour)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLightestColour)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxBorderColour)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxBorderColourOne)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxAlternativeNormalTextColour)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxNormalTextColour)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxDisabledTextColour)).EndInit();
@@ -450,6 +1522,36 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             ((System.ComponentModel.ISupportInitialize)(this.pbxMenuTextColour)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxStatusTextColour)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxRibbonTabColour)).EndInit();
+            this.cmsBorderColourTwo.ResumeLayout(false);
+            this.cmsAlternativeNormalTextColour.ResumeLayout(false);
+            this.cmsMediumColour.ResumeLayout(false);
+            this.cmsDarkColour.ResumeLayout(false);
+            this.cmsRibbonTabTextColour.ResumeLayout(false);
+            this.cmsStatusTextColour.ResumeLayout(false);
+            this.cmsMenuTextColour.ResumeLayout(false);
+            this.cmsCustomTextColourFive.ResumeLayout(false);
+            this.cmsCustomTextColourFour.ResumeLayout(false);
+            this.cmsCustomTextColourThree.ResumeLayout(false);
+            this.cmsCustomTextColourTwo.ResumeLayout(false);
+            this.cmsCustomTextColourOne.ResumeLayout(false);
+            this.cmsCustomColourFive.ResumeLayout(false);
+            this.cmsCustomColourFour.ResumeLayout(false);
+            this.cmsCustomColourThree.ResumeLayout(false);
+            this.cmsCustomColourTwo.ResumeLayout(false);
+            this.cmsCustomColourOne.ResumeLayout(false);
+            this.cmsLinkVisitedColour.ResumeLayout(false);
+            this.cmsLinkHoverColour.ResumeLayout(false);
+            this.cmsLinkFocusedColour.ResumeLayout(false);
+            this.cmsDisabledControlColour.ResumeLayout(false);
+            this.cmsPressedTextColour.ResumeLayout(false);
+            this.cmsFocusedTextColour.ResumeLayout(false);
+            this.cmsDisabledTextColour.ResumeLayout(false);
+            this.cmsNormalTextColour.ResumeLayout(false);
+            this.cmsBorderColourOne.ResumeLayout(false);
+            this.cmsLightestColour.ResumeLayout(false);
+            this.cmsLightColour.ResumeLayout(false);
+            this.cmsLinkNormalColour.ResumeLayout(false);
+            this.cmsBaseColour.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -555,7 +1657,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
 
                 ColourInformation.SetTooltip(pbxLightestColour, "Lightest");
 
-                ColourInformation.SetTooltip(pbxBorderColour, "Border");
+                ColourInformation.SetTooltip(pbxBorderColourOne, "Border");
 
                 ColourInformation.SetTooltip(pbxAlternativeNormalTextColour, "Alternative Normal Text");
 
@@ -620,7 +1722,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
 
             ColourPreviews[4] = pbxLightestColour;
 
-            ColourPreviews[5] = pbxBorderColour;
+            ColourPreviews[5] = pbxBorderColourOne;
 
             ColourPreviews[6] = pbxAlternativeNormalTextColour;
 
