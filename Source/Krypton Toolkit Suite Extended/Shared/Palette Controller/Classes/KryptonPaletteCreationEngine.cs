@@ -2106,6 +2106,8 @@ namespace Krypton.Toolkit.Extended.Palette.Controller
         /// <param name="invertColours">if set to <c>true</c> [invert colours].</param>
         public static void ExportPaletteTheme(KryptonPalette palette, PaletteMode paletteMode, Color[] paletteColourArray, bool invertColours = false)
         {
+            // TODO: Implement border colours
+
             palette = new KryptonPalette();
 
             try
