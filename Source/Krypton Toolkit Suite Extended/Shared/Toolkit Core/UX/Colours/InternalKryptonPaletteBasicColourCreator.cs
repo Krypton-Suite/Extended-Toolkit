@@ -4,7 +4,7 @@ using System.Drawing;
 
 namespace Krypton.Toolkit.Suite.Extended.Core
 {
-    public class KryptonPaletteBasicColourCreator : KryptonForm
+    public class InternalKryptonPaletteBasicColourCreator : KryptonForm
     {
         #region Design Code
         private KryptonPanel kryptonPanel1;
@@ -50,7 +50,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KryptonPaletteBasicColourCreator));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InternalKryptonPaletteBasicColourCreator));
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             this.kryptonButton1 = new Krypton.Toolkit.KryptonButton();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -545,7 +545,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.cpbxBaseColour.TabIndex = 73;
             this.cpbxBaseColour.TabStop = false;
             // 
-            // KryptonPaletteBasicColourCreator
+            // InternalKryptonPaletteBasicColourCreator
             // 
             this.ClientSize = new System.Drawing.Size(851, 439);
             this.Controls.Add(this.kryptonPanel2);
@@ -555,10 +555,10 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "KryptonPaletteBasicColourCreator";
+            this.Name = "InternalKryptonPaletteBasicColourCreator";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Basic Palette Colour Creator";
-            this.Load += new System.EventHandler(this.KryptonPaletteBasicColourCreator_Load);
+            this.Load += new System.EventHandler(this.InternalKryptonPaletteBasicColourCreator_Load);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
@@ -599,12 +599,12 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #endregion
 
         #region Constructor
-        public KryptonPaletteBasicColourCreator()
+        public InternalKryptonPaletteBasicColourCreator()
         {
             InitializeComponent();
         }
 
-        public KryptonPaletteBasicColourCreator(int alphaValue, int redValue, int greenValue, int blueValue)
+        public InternalKryptonPaletteBasicColourCreator(int alphaValue, int redValue, int greenValue, int blueValue)
         {
             InitializeComponent();
 
@@ -617,7 +617,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             knudBlueValue.Value = blueValue;
         }
 
-        public KryptonPaletteBasicColourCreator(Color baseColour)
+        public InternalKryptonPaletteBasicColourCreator(Color baseColour)
         {
             InitializeComponent();
 
@@ -626,14 +626,14 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             cpbxBaseColour.BackColor = BaseColour;
         }
 
-        public KryptonPaletteBasicColourCreator(bool paletteColourSelector)
+        public InternalKryptonPaletteBasicColourCreator(bool paletteColourSelector)
         {
             InitializeComponent();
 
             PaletteColourSelector = paletteColourSelector;
         }
 
-        public KryptonPaletteBasicColourCreator(bool paletteColourSelector, int alphaValue, int redValue, int greenValue, int blueValue)
+        public InternalKryptonPaletteBasicColourCreator(bool paletteColourSelector, int alphaValue, int redValue, int greenValue, int blueValue)
         {
             InitializeComponent();
 
@@ -648,7 +648,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             knudBlueValue.Value = blueValue;
         }
 
-        public KryptonPaletteBasicColourCreator(bool paletteColourSelector, Color baseColour)
+        public InternalKryptonPaletteBasicColourCreator(bool paletteColourSelector, Color baseColour)
         {
             InitializeComponent();
 
@@ -660,7 +660,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         }
         #endregion
 
-        private void KryptonPaletteBasicColourCreator_Load(object sender, EventArgs e)
+        private void InternalKryptonPaletteBasicColourCreator_Load(object sender, EventArgs e)
         {
 
         }

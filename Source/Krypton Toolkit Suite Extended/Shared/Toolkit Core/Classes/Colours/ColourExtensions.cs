@@ -85,6 +85,8 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             return Color.FromArgb(r.Next(0, 255), r.Next(0, 255), r.Next(0, 255));
         }
 
+        /// <summary>Generates a random colour.</summary>
+        /// <param name="control">The control.</param>
         public static void GenerateRandomColour(Control control)
         {
             Color randomColour = GenerateRandomColour();
@@ -92,9 +94,20 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             control.BackColor = randomColour;
         }
 
+        /// <summary>Use as a base colour.</summary>
+        /// <param name="baseColour">The base colour.</param>
         public static void UseAsBaseColour(Color baseColour)
         {
-            KryptonPaletteBasicColourCreator colourCreator = new KryptonPaletteBasicColourCreator(baseColour);
+            InternalKryptonPaletteBasicColourCreator colourCreator = new InternalKryptonPaletteBasicColourCreator(baseColour);
+
+            colourCreator.Show();
+        }
+
+        /// <summary>Use as a base colour.</summary>
+        /// <param name="control">The control.</param>
+        public static void UseAsBaseColour(Control control)
+        {
+            InternalKryptonPaletteBasicColourCreator colourCreator = new InternalKryptonPaletteBasicColourCreator(control.BackColor);
 
             colourCreator.Show();
         }

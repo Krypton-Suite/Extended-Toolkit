@@ -1842,7 +1842,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
         {
 
         }
-      
+
         #region Methods
         public void SetupColourToolTips(bool displayToolTips)
         {
@@ -1943,51 +1943,53 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
 
             ColourPreviews[5] = cpbxBorderColourOne;
 
-            ColourPreviews[6] = cpbxAlternativeNormalTextColour;
+            ColourPreviews[6] = cpbxBorderColourTwo;
 
-            ColourPreviews[7] = cpbxNormalTextColour;
+            ColourPreviews[7] = cpbxAlternativeNormalTextColour;
 
-            ColourPreviews[8] = cpbxDisabledTextColour;
+            ColourPreviews[8] = cpbxNormalTextColour;
 
-            ColourPreviews[9] = cpbxFocusedTextColour;
+            ColourPreviews[9] = cpbxDisabledTextColour;
 
-            ColourPreviews[10] = cpbxPressedTextColour;
+            ColourPreviews[10] = cpbxFocusedTextColour;
 
-            ColourPreviews[11] = cpbxDisabledControlColour;
+            ColourPreviews[11] = cpbxPressedTextColour;
 
-            ColourPreviews[12] = cpbxLinkNormalColour;
+            ColourPreviews[12] = cpbxDisabledControlColour;
 
-            ColourPreviews[13] = cpbxLinkFocusedColour;
+            ColourPreviews[13] = cpbxLinkNormalColour;
 
-            ColourPreviews[14] = cpbxLinkHoverColour;
+            ColourPreviews[14] = cpbxLinkFocusedColour;
 
-            ColourPreviews[15] = cpbxLinkVisitedColour;
+            ColourPreviews[15] = cpbxLinkHoverColour;
 
-            ColourPreviews[16] = cpbxCustomColourOne;
+            ColourPreviews[16] = cpbxLinkVisitedColour;
 
-            ColourPreviews[17] = cpbxCustomColourTwo;
+            ColourPreviews[17] = cpbxCustomColourOne;
 
-            ColourPreviews[18] = cpbxCustomColourThree;
+            ColourPreviews[18] = cpbxCustomColourTwo;
 
-            ColourPreviews[19] = cpbxCustomColourFour;
+            ColourPreviews[19] = cpbxCustomColourThree;
 
-            ColourPreviews[20] = cpbxCustomColourFive;
+            ColourPreviews[20] = cpbxCustomColourFour;
 
-            ColourPreviews[21] = cpbxCustomTextColourOne;
+            ColourPreviews[21] = cpbxCustomColourFive;
 
-            ColourPreviews[22] = cpbxCustomTextColourTwo;
+            ColourPreviews[22] = cpbxCustomTextColourOne;
 
-            ColourPreviews[23] = cpbxCustomTextColourThree;
+            ColourPreviews[23] = cpbxCustomTextColourTwo;
 
-            ColourPreviews[24] = cpbxCustomTextColourFour;
+            ColourPreviews[24] = cpbxCustomTextColourThree;
 
-            ColourPreviews[25] = cpbxCustomTextColourFive;
+            ColourPreviews[25] = cpbxCustomTextColourFour;
 
-            ColourPreviews[26] = cpbxMenuTextColour;
+            ColourPreviews[26] = cpbxCustomTextColourFive;
 
-            ColourPreviews[27] = cpbxStatusTextColour;
+            ColourPreviews[27] = cpbxMenuTextColour;
 
-            ColourPreviews[28] = cpbxRibbonTabTextColour;
+            ColourPreviews[28] = cpbxStatusTextColour;
+
+            ColourPreviews[29] = cpbxRibbonTabTextColour;
         }
 
         /// <summary>Resets the colours.</summary>
@@ -2013,12 +2015,67 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             {
                 if (_previews.Length! < 0)
                 {
-                    foreach (Suite.Extended.Base.CircularPictureBox box in ColourPreviews)
-                    {
-                        Color randomColour = ColourExtensions.GenerateRandomColour();
+                    generateARandomColourToolStripMenuItem.PerformClick();
 
-                        box.BackColor = randomColour;
-                    }
+                    generateARandomColourToolStripMenuItem1.PerformClick();
+
+                    generateARandomColourToolStripMenuItem2.PerformClick();
+
+                    generateARandomColourToolStripMenuItem3.PerformClick();
+
+                    generateARandomColourToolStripMenuItem4.PerformClick();
+
+                    generateARandomColourToolStripMenuItem5.PerformClick();
+
+                    generateARandomColourToolStripMenuItem6.PerformClick();
+
+                    generateARandomColourToolStripMenuItem7.PerformClick();
+
+                    generateARandomColourToolStripMenuItem8.PerformClick();
+
+                    generateARandomColourToolStripMenuItem9.PerformClick();
+
+                    generateARandomColourToolStripMenuItem10.PerformClick();
+
+                    generateARandomColourToolStripMenuItem11.PerformClick();
+
+                    generateARandomColourToolStripMenuItem12.PerformClick();
+
+                    generateARandomColourToolStripMenuItem13.PerformClick();
+
+                    generateARandomColourToolStripMenuItem14.PerformClick();
+
+                    generateARandomColourToolStripMenuItem15.PerformClick();
+
+                    generateARandomColourToolStripMenuItem16.PerformClick();
+
+                    generateARandomColourToolStripMenuItem17.PerformClick();
+
+                    generateARandomColourToolStripMenuItem18.PerformClick();
+
+                    generateARandomColourToolStripMenuItem19.PerformClick();
+
+                    generateARandomColourToolStripMenuItem20.PerformClick();
+
+                    generateARandomColourToolStripMenuItem21.PerformClick();
+
+                    generateARandomColourToolStripMenuItem22.PerformClick();
+
+                    generateARandomColourToolStripMenuItem23.PerformClick();
+
+                    generateARandomColourToolStripMenuItem24.PerformClick();
+
+                    generateARandomColourToolStripMenuItem25.PerformClick();
+
+                    generateARandomColourToolStripMenuItem26.PerformClick();
+
+                    generateARandomColourToolStripMenuItem27.PerformClick();
+
+                    generateARandomColourToolStripMenuItem28.PerformClick();
+
+                    generateARandomColourToolStripMenuItem29.PerformClick();
+
+                    SetColourPreviews(PaletteColours);
                 }
             }
             catch (Exception e)
