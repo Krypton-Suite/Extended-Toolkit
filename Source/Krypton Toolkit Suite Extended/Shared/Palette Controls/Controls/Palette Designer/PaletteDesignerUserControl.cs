@@ -160,6 +160,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
         private ToolStripMenuItem useAsBaseColourToolStripMenuItem;
         private ToolStripSeparator toolStripMenuItem30;
         private ToolStripMenuItem generateARandomColourToolStripMenuItem;
+        private PictureBox pbxBorderColourTwo;
         private PictureBox pbxBaseColour;
 
         private void InitializeComponent()
@@ -315,6 +316,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.useAsBaseColourToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem30 = new System.Windows.Forms.ToolStripSeparator();
             this.generateARandomColourToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pbxBorderColourTwo = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbxBaseColour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxDarkColour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxMediumColour)).BeginInit();
@@ -374,6 +376,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.cmsLightColour.SuspendLayout();
             this.cmsLinkNormalColour.SuspendLayout();
             this.cmsBaseColour.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxBorderColourTwo)).BeginInit();
             this.SuspendLayout();
             // 
             // pbxBaseColour
@@ -423,7 +426,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // 
             // pbxBorderColourOne
             // 
-            this.pbxBorderColourOne.BackColor = System.Drawing.Color.Maroon;
+            this.pbxBorderColourOne.BackColor = System.Drawing.Color.White;
             this.pbxBorderColourOne.Location = new System.Drawing.Point(418, 3);
             this.pbxBorderColourOne.Name = "pbxBorderColourOne";
             this.pbxBorderColourOne.Size = new System.Drawing.Size(64, 64);
@@ -433,7 +436,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // pbxAlternativeNormalTextColour
             // 
             this.pbxAlternativeNormalTextColour.BackColor = System.Drawing.Color.White;
-            this.pbxAlternativeNormalTextColour.Location = new System.Drawing.Point(501, 3);
+            this.pbxAlternativeNormalTextColour.Location = new System.Drawing.Point(584, 3);
             this.pbxAlternativeNormalTextColour.Name = "pbxAlternativeNormalTextColour";
             this.pbxAlternativeNormalTextColour.Size = new System.Drawing.Size(64, 64);
             this.pbxAlternativeNormalTextColour.TabIndex = 6;
@@ -442,7 +445,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // pbxNormalTextColour
             // 
             this.pbxNormalTextColour.BackColor = System.Drawing.Color.White;
-            this.pbxNormalTextColour.Location = new System.Drawing.Point(584, 3);
+            this.pbxNormalTextColour.Location = new System.Drawing.Point(667, 3);
             this.pbxNormalTextColour.Name = "pbxNormalTextColour";
             this.pbxNormalTextColour.Size = new System.Drawing.Size(64, 64);
             this.pbxNormalTextColour.TabIndex = 7;
@@ -451,7 +454,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // pbxDisabledTextColour
             // 
             this.pbxDisabledTextColour.BackColor = System.Drawing.Color.White;
-            this.pbxDisabledTextColour.Location = new System.Drawing.Point(667, 3);
+            this.pbxDisabledTextColour.Location = new System.Drawing.Point(750, 3);
             this.pbxDisabledTextColour.Name = "pbxDisabledTextColour";
             this.pbxDisabledTextColour.Size = new System.Drawing.Size(64, 64);
             this.pbxDisabledTextColour.TabIndex = 8;
@@ -460,7 +463,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // pbxFocusedTextColour
             // 
             this.pbxFocusedTextColour.BackColor = System.Drawing.Color.White;
-            this.pbxFocusedTextColour.Location = new System.Drawing.Point(750, 3);
+            this.pbxFocusedTextColour.Location = new System.Drawing.Point(833, 3);
             this.pbxFocusedTextColour.Name = "pbxFocusedTextColour";
             this.pbxFocusedTextColour.Size = new System.Drawing.Size(64, 64);
             this.pbxFocusedTextColour.TabIndex = 9;
@@ -469,7 +472,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // pbxPressedTextColour
             // 
             this.pbxPressedTextColour.BackColor = System.Drawing.Color.White;
-            this.pbxPressedTextColour.Location = new System.Drawing.Point(833, 3);
+            this.pbxPressedTextColour.Location = new System.Drawing.Point(916, 3);
             this.pbxPressedTextColour.Name = "pbxPressedTextColour";
             this.pbxPressedTextColour.Size = new System.Drawing.Size(64, 64);
             this.pbxPressedTextColour.TabIndex = 10;
@@ -478,7 +481,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // pbxDisabledControlColour
             // 
             this.pbxDisabledControlColour.BackColor = System.Drawing.Color.White;
-            this.pbxDisabledControlColour.Location = new System.Drawing.Point(916, 3);
+            this.pbxDisabledControlColour.Location = new System.Drawing.Point(999, 3);
             this.pbxDisabledControlColour.Name = "pbxDisabledControlColour";
             this.pbxDisabledControlColour.Size = new System.Drawing.Size(64, 64);
             this.pbxDisabledControlColour.TabIndex = 11;
@@ -487,7 +490,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // pbxLinkNormalColour
             // 
             this.pbxLinkNormalColour.BackColor = System.Drawing.Color.White;
-            this.pbxLinkNormalColour.Location = new System.Drawing.Point(1082, 3);
+            this.pbxLinkNormalColour.Location = new System.Drawing.Point(3, 179);
             this.pbxLinkNormalColour.Name = "pbxLinkNormalColour";
             this.pbxLinkNormalColour.Size = new System.Drawing.Size(64, 64);
             this.pbxLinkNormalColour.TabIndex = 12;
@@ -496,7 +499,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // pbxLinkFocusedColour
             // 
             this.pbxLinkFocusedColour.BackColor = System.Drawing.Color.White;
-            this.pbxLinkFocusedColour.Location = new System.Drawing.Point(999, 3);
+            this.pbxLinkFocusedColour.Location = new System.Drawing.Point(1082, 3);
             this.pbxLinkFocusedColour.Name = "pbxLinkFocusedColour";
             this.pbxLinkFocusedColour.Size = new System.Drawing.Size(64, 64);
             this.pbxLinkFocusedColour.TabIndex = 13;
@@ -505,7 +508,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // pbxLinkHoverColour
             // 
             this.pbxLinkHoverColour.BackColor = System.Drawing.Color.White;
-            this.pbxLinkHoverColour.Location = new System.Drawing.Point(3, 179);
+            this.pbxLinkHoverColour.Location = new System.Drawing.Point(86, 179);
             this.pbxLinkHoverColour.Name = "pbxLinkHoverColour";
             this.pbxLinkHoverColour.Size = new System.Drawing.Size(64, 64);
             this.pbxLinkHoverColour.TabIndex = 14;
@@ -514,7 +517,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // pbxLinkVisitedColour
             // 
             this.pbxLinkVisitedColour.BackColor = System.Drawing.Color.White;
-            this.pbxLinkVisitedColour.Location = new System.Drawing.Point(86, 179);
+            this.pbxLinkVisitedColour.Location = new System.Drawing.Point(169, 179);
             this.pbxLinkVisitedColour.Name = "pbxLinkVisitedColour";
             this.pbxLinkVisitedColour.Size = new System.Drawing.Size(64, 64);
             this.pbxLinkVisitedColour.TabIndex = 15;
@@ -523,132 +526,119 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // pbxCustomColourOne
             // 
             this.pbxCustomColourOne.BackColor = System.Drawing.Color.White;
-            this.pbxCustomColourOne.Location = new System.Drawing.Point(169, 179);
+            this.pbxCustomColourOne.Location = new System.Drawing.Point(252, 179);
             this.pbxCustomColourOne.Name = "pbxCustomColourOne";
             this.pbxCustomColourOne.Size = new System.Drawing.Size(64, 64);
             this.pbxCustomColourOne.TabIndex = 28;
             this.pbxCustomColourOne.TabStop = false;
-            this.pbxCustomColourOne.Visible = false;
             // 
             // pbxCustomColourTwo
             // 
             this.pbxCustomColourTwo.BackColor = System.Drawing.Color.White;
-            this.pbxCustomColourTwo.Location = new System.Drawing.Point(252, 179);
+            this.pbxCustomColourTwo.Location = new System.Drawing.Point(335, 179);
             this.pbxCustomColourTwo.Name = "pbxCustomColourTwo";
             this.pbxCustomColourTwo.Size = new System.Drawing.Size(64, 64);
             this.pbxCustomColourTwo.TabIndex = 27;
             this.pbxCustomColourTwo.TabStop = false;
-            this.pbxCustomColourTwo.Visible = false;
             // 
             // pbxCustomColourThree
             // 
             this.pbxCustomColourThree.BackColor = System.Drawing.Color.White;
-            this.pbxCustomColourThree.Location = new System.Drawing.Point(335, 179);
+            this.pbxCustomColourThree.Location = new System.Drawing.Point(418, 179);
             this.pbxCustomColourThree.Name = "pbxCustomColourThree";
             this.pbxCustomColourThree.Size = new System.Drawing.Size(64, 64);
             this.pbxCustomColourThree.TabIndex = 26;
             this.pbxCustomColourThree.TabStop = false;
-            this.pbxCustomColourThree.Visible = false;
             // 
             // pbxCustomColourFour
             // 
             this.pbxCustomColourFour.BackColor = System.Drawing.Color.White;
-            this.pbxCustomColourFour.Location = new System.Drawing.Point(418, 179);
+            this.pbxCustomColourFour.Location = new System.Drawing.Point(501, 179);
             this.pbxCustomColourFour.Name = "pbxCustomColourFour";
             this.pbxCustomColourFour.Size = new System.Drawing.Size(64, 64);
             this.pbxCustomColourFour.TabIndex = 25;
             this.pbxCustomColourFour.TabStop = false;
-            this.pbxCustomColourFour.Visible = false;
             // 
             // pbxCustomColourFive
             // 
             this.pbxCustomColourFive.BackColor = System.Drawing.Color.White;
-            this.pbxCustomColourFive.Location = new System.Drawing.Point(501, 179);
+            this.pbxCustomColourFive.Location = new System.Drawing.Point(584, 179);
             this.pbxCustomColourFive.Name = "pbxCustomColourFive";
             this.pbxCustomColourFive.Size = new System.Drawing.Size(64, 64);
             this.pbxCustomColourFive.TabIndex = 24;
             this.pbxCustomColourFive.TabStop = false;
-            this.pbxCustomColourFive.Visible = false;
             // 
             // pbxCustomTextColourOne
             // 
             this.pbxCustomTextColourOne.BackColor = System.Drawing.Color.White;
-            this.pbxCustomTextColourOne.Location = new System.Drawing.Point(584, 179);
+            this.pbxCustomTextColourOne.Location = new System.Drawing.Point(667, 179);
             this.pbxCustomTextColourOne.Name = "pbxCustomTextColourOne";
             this.pbxCustomTextColourOne.Size = new System.Drawing.Size(64, 64);
             this.pbxCustomTextColourOne.TabIndex = 23;
             this.pbxCustomTextColourOne.TabStop = false;
-            this.pbxCustomTextColourOne.Visible = false;
             // 
             // pbxCustomTextColourTwo
             // 
             this.pbxCustomTextColourTwo.BackColor = System.Drawing.Color.White;
-            this.pbxCustomTextColourTwo.Location = new System.Drawing.Point(667, 179);
+            this.pbxCustomTextColourTwo.Location = new System.Drawing.Point(750, 179);
             this.pbxCustomTextColourTwo.Name = "pbxCustomTextColourTwo";
             this.pbxCustomTextColourTwo.Size = new System.Drawing.Size(64, 64);
             this.pbxCustomTextColourTwo.TabIndex = 22;
             this.pbxCustomTextColourTwo.TabStop = false;
-            this.pbxCustomTextColourTwo.Visible = false;
             // 
             // pbxCustomTextColourThree
             // 
             this.pbxCustomTextColourThree.BackColor = System.Drawing.Color.White;
-            this.pbxCustomTextColourThree.Location = new System.Drawing.Point(750, 179);
+            this.pbxCustomTextColourThree.Location = new System.Drawing.Point(833, 179);
             this.pbxCustomTextColourThree.Name = "pbxCustomTextColourThree";
             this.pbxCustomTextColourThree.Size = new System.Drawing.Size(64, 64);
             this.pbxCustomTextColourThree.TabIndex = 21;
             this.pbxCustomTextColourThree.TabStop = false;
-            this.pbxCustomTextColourThree.Visible = false;
             // 
             // pbxCustomTextColourFour
             // 
             this.pbxCustomTextColourFour.BackColor = System.Drawing.Color.White;
-            this.pbxCustomTextColourFour.Location = new System.Drawing.Point(833, 179);
+            this.pbxCustomTextColourFour.Location = new System.Drawing.Point(916, 179);
             this.pbxCustomTextColourFour.Name = "pbxCustomTextColourFour";
             this.pbxCustomTextColourFour.Size = new System.Drawing.Size(64, 64);
             this.pbxCustomTextColourFour.TabIndex = 20;
             this.pbxCustomTextColourFour.TabStop = false;
-            this.pbxCustomTextColourFour.Visible = false;
             // 
             // pbxCustomTextColourFive
             // 
             this.pbxCustomTextColourFive.BackColor = System.Drawing.Color.White;
-            this.pbxCustomTextColourFive.Location = new System.Drawing.Point(916, 179);
+            this.pbxCustomTextColourFive.Location = new System.Drawing.Point(999, 179);
             this.pbxCustomTextColourFive.Name = "pbxCustomTextColourFive";
             this.pbxCustomTextColourFive.Size = new System.Drawing.Size(64, 64);
             this.pbxCustomTextColourFive.TabIndex = 19;
             this.pbxCustomTextColourFive.TabStop = false;
-            this.pbxCustomTextColourFive.Visible = false;
             // 
             // pbxMenuTextColour
             // 
             this.pbxMenuTextColour.BackColor = System.Drawing.Color.White;
-            this.pbxMenuTextColour.Location = new System.Drawing.Point(999, 179);
+            this.pbxMenuTextColour.Location = new System.Drawing.Point(1082, 179);
             this.pbxMenuTextColour.Name = "pbxMenuTextColour";
             this.pbxMenuTextColour.Size = new System.Drawing.Size(64, 64);
             this.pbxMenuTextColour.TabIndex = 18;
             this.pbxMenuTextColour.TabStop = false;
-            this.pbxMenuTextColour.Visible = false;
             // 
             // pbxStatusTextColour
             // 
             this.pbxStatusTextColour.BackColor = System.Drawing.Color.White;
-            this.pbxStatusTextColour.Location = new System.Drawing.Point(1082, 179);
+            this.pbxStatusTextColour.Location = new System.Drawing.Point(3, 356);
             this.pbxStatusTextColour.Name = "pbxStatusTextColour";
             this.pbxStatusTextColour.Size = new System.Drawing.Size(64, 64);
             this.pbxStatusTextColour.TabIndex = 17;
             this.pbxStatusTextColour.TabStop = false;
-            this.pbxStatusTextColour.Visible = false;
             // 
             // pbxRibbonTabColour
             // 
             this.pbxRibbonTabColour.BackColor = System.Drawing.Color.White;
-            this.pbxRibbonTabColour.Location = new System.Drawing.Point(3, 356);
+            this.pbxRibbonTabColour.Location = new System.Drawing.Point(86, 356);
             this.pbxRibbonTabColour.Name = "pbxRibbonTabColour";
             this.pbxRibbonTabColour.Size = new System.Drawing.Size(64, 64);
             this.pbxRibbonTabColour.TabIndex = 16;
             this.pbxRibbonTabColour.TabStop = false;
-            this.pbxRibbonTabColour.Visible = false;
             // 
             // cmsBorderColourTwo
             // 
@@ -1458,9 +1448,19 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.generateARandomColourToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
             this.generateARandomColourToolStripMenuItem.Text = "Generate a &Random Colour";
             // 
+            // pbxBorderColourTwo
+            // 
+            this.pbxBorderColourTwo.BackColor = System.Drawing.Color.White;
+            this.pbxBorderColourTwo.Location = new System.Drawing.Point(501, 3);
+            this.pbxBorderColourTwo.Name = "pbxBorderColourTwo";
+            this.pbxBorderColourTwo.Size = new System.Drawing.Size(64, 64);
+            this.pbxBorderColourTwo.TabIndex = 59;
+            this.pbxBorderColourTwo.TabStop = false;
+            // 
             // PaletteDesignerUserControl
             // 
             this.BackColor = System.Drawing.Color.Transparent;
+            this.Controls.Add(this.pbxBorderColourTwo);
             this.Controls.Add(this.pbxCustomColourOne);
             this.Controls.Add(this.pbxCustomColourTwo);
             this.Controls.Add(this.pbxCustomColourThree);
@@ -1552,6 +1552,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.cmsLightColour.ResumeLayout(false);
             this.cmsLinkNormalColour.ResumeLayout(false);
             this.cmsBaseColour.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbxBorderColourTwo)).EndInit();
             this.ResumeLayout(false);
 
         }
