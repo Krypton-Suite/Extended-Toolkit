@@ -2150,6 +2150,8 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
                     ColourPreviews[27].BackColor = paletteColours[27];
 
                     ColourPreviews[28].BackColor = paletteColours[28];
+
+                    ColourPreviews[29].BackColor = paletteColours[29];
                 }
             }
             catch (Exception e)
