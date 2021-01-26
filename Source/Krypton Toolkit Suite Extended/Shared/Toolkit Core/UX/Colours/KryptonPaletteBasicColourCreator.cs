@@ -1,18 +1,8 @@
-﻿#region BSD License
-/*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
- */
-#endregion
-
-using Krypton.Toolkit.Suite.Extended.Core;
-using Krypton.Toolkit.Suite.Extended.Drawing.Suite;
-using Krypton.Toolkit.Suite.Extended.Settings;
+﻿using Krypton.Toolkit.Suite.Extended.Settings;
 using System;
 using System.Drawing;
 
-namespace Krypton.Toolkit.Suite.Extended.Dialogs
+namespace Krypton.Toolkit.Suite.Extended.Core
 {
     public class KryptonPaletteBasicColourCreator : KryptonForm
     {
@@ -21,11 +11,11 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         private KryptonButton kryptonButton1;
         private System.Windows.Forms.Panel panel1;
         private KryptonPanel kryptonPanel2;
-        private Base.CircularPictureBox cpbxLightestColour;
-        private Base.CircularPictureBox cpbxLightColour;
-        private Base.CircularPictureBox cpbxMediumColour;
-        private Base.CircularPictureBox cpbxDarkestColour;
-        private Base.CircularPictureBox cpbxBaseColour;
+        private CircularPictureBox cpbxLightestColour;
+        private CircularPictureBox cpbxLightColour;
+        private CircularPictureBox cpbxMediumColour;
+        private CircularPictureBox cpbxDarkestColour;
+        private CircularPictureBox cpbxBaseColour;
         private KryptonLabel kryptonLabel16;
         private KryptonLabel kryptonLabel15;
         private KryptonLabel kryptonLabel14;
@@ -95,11 +85,11 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.kbtnGenerateRandomColour = new Krypton.Toolkit.KryptonButton();
             this.kryptonLabel5 = new Krypton.Toolkit.KryptonLabel();
             this.ktxtHexadecimalValue = new Krypton.Toolkit.KryptonTextBox();
-            this.cpbxLightestColour = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
-            this.cpbxLightColour = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
-            this.cpbxMediumColour = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
-            this.cpbxDarkestColour = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
-            this.cpbxBaseColour = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
+            this.cpbxLightestColour = new Krypton.Toolkit.Suite.Extended.Core.CircularPictureBox();
+            this.cpbxLightColour = new Krypton.Toolkit.Suite.Extended.Core.CircularPictureBox();
+            this.cpbxMediumColour = new Krypton.Toolkit.Suite.Extended.Core.CircularPictureBox();
+            this.cpbxDarkestColour = new Krypton.Toolkit.Suite.Extended.Core.CircularPictureBox();
+            this.cpbxBaseColour = new Krypton.Toolkit.Suite.Extended.Core.CircularPictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();

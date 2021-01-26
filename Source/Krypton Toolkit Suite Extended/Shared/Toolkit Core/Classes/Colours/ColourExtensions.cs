@@ -94,7 +94,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         public static void UseAsBaseColour(Color baseColour)
         {
+            KryptonPaletteBasicColourCreator colourCreator = new KryptonPaletteBasicColourCreator(baseColour);
 
+            colourCreator.Show();
         }
         #endregion
 
