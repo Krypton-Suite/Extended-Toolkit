@@ -71,6 +71,18 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
             return Color.FromArgb((int)sourceAlphaValue, (int)rgb.R, (int)rgb.G, (int)rgb.B);
         }
+
+        /// <summary>Gets a random colour.</summary>
+        /// <returns>
+        ///   <br />
+        /// </returns>
+        public static Color GenerateRandomColour()
+        {
+            // Create a new random instance
+            Random r = new Random();
+
+            return Color.FromArgb(r.Next(0, 255), r.Next(0, 255), r.Next(0, 255));
+        }
         #endregion
 
         #region Methods
