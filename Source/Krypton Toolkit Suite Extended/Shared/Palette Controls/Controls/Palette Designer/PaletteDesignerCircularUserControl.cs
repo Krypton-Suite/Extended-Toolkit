@@ -1,4 +1,5 @@
-﻿using Krypton.Toolkit.Suite.Extended.Core;
+﻿using Krypton.Toolkit.Extended.Palette.Controller;
+using Krypton.Toolkit.Suite.Extended.Core;
 using System;
 using System.ComponentModel;
 using System.Drawing;
@@ -1798,13 +1799,15 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
         #endregion
 
         #region Variables
-        private bool _showColourInformation;
+        private bool _showColourInformation, _invertColours;
 
-        private Color[] _paletteColours = new Color[29];
+        private Color[] _paletteColours = new Color[30];
 
         private Color _defaultColour;
 
         private Suite.Extended.Base.CircularPictureBox[] _previews;
+
+        private PaletteMode _paletteMode;
 
         //Palette State
         private KryptonManager k_manager = new KryptonManager();
@@ -1818,7 +1821,10 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
 
         #region Properties
         [DefaultValue(true)]
-        public bool ShowColourInformation { get => _showColourInformation; set => _showColourInformation = value; }
+        public bool ShowColourInformation { get => _showColourInformation; set { _showColourInformation = value; Invalidate(); } }
+
+        [DefaultValue(false)]
+        public bool InvertColours { get => _invertColours; set => _invertColours = value; }
 
         public Color[] PaletteColours { get => _paletteColours; set { _paletteColours = value; Invalidate(); } }
 
@@ -1827,6 +1833,8 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
         public Suite.Extended.Base.CircularPictureBox[] ColourPreviews { get => _previews; private set => _previews = value; }
 
         public KryptonPalette Palette { get => internalPalette; set => internalPalette = value; }
+
+        public PaletteMode PaletteMode { get => _paletteMode; set => _paletteMode = value; }
         #endregion
 
         #region Constructors
@@ -1858,7 +1866,9 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
 
                 ColourInformation.SetTooltip(cpbxLightestColour, "Lightest");
 
-                ColourInformation.SetTooltip(cpbxBorderColourOne, "Border");
+                ColourInformation.SetTooltip(cpbxBorderColourOne, "Border One");
+
+                ColourInformation.SetTooltip(cpbxBorderColourTwo, "Border Two");
 
                 ColourInformation.SetTooltip(cpbxAlternativeNormalTextColour, "Alternative Normal Text");
 
@@ -2159,6 +2169,26 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
                 Suite.Extended.Common.ExceptionHandler.CaptureException(e);
             }
         }
+
+        public void ExportPaletteColours()
+        {
+            try
+            {
+                foreach (Color c in PaletteColours)
+                {
+                    if (c != Color.Transparent || c != Color.Empty)
+                    {
+                        //KryptonPaletteCreationEngine.ExportPaletteTheme(Palette, PaletteMode, GetPaletteColours()[0], GetPaletteColours()[1], GetPaletteColours()[2], GetPaletteColours()[3], GetPaletteColours()[4], GetPaletteColours()[5], GetPaletteColours()[6], GetPaletteColours()[7], GetPaletteColours()[8], GetPaletteColours()[9], GetPaletteColours()[10], GetPaletteColours()[11], GetPaletteColours()[12], GetPaletteColours()[13], GetPaletteColours()[14], GetPaletteColours()[15], GetPaletteColours()[16], GetPaletteColours()[17], GetPaletteColours()[18], GetPaletteColours()[19], GetPaletteColours()[20], GetPaletteColours()[21], GetPaletteColours()[22], GetPaletteColours()[23], GetPaletteColours()[24], GetPaletteColours()[25], GetPaletteColours()[26], GetPaletteColours()[27], GetPaletteColours()[28], InvertColours);
+
+                        KryptonPaletteCreationEngine.ExportPaletteTheme(Palette, PaletteMode, GetPaletteColours(), InvertColours);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Suite.Extended.Common.ExceptionHandler.CaptureException(e);
+            }
+        }
         #endregion
 
         #region Setters and Getters
@@ -2306,7 +2336,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
         {
             Color randomColour = ColourExtensions.GenerateRandomColour();
 
-            cpbxBorderColourTwo.BackColor = randomColour;
+            cpbxCustomColourTwo.BackColor = randomColour;
         }
 
         private void generateARandomColourToolStripMenuItem17_Click(object sender, EventArgs e)
@@ -2384,6 +2414,15 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             Color randomColour = ColourExtensions.GenerateRandomColour();
 
             cpbxRibbonTabTextColour.BackColor = randomColour;
+        }
+        #endregion
+
+        #region Overrides
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            SetupColourToolTips(ShowColourInformation);
+
+            base.OnPaint(e);
         }
         #endregion
     }

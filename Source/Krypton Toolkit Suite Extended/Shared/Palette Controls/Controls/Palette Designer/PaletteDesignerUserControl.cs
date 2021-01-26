@@ -1561,7 +1561,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
         #region Variables
         private bool _showColourInformation, _invertColours;
 
-        private Color[] _paletteColours = new Color[29];
+        private Color[] _paletteColours = new Color[30];
 
         private Color _defaultColour;
 
