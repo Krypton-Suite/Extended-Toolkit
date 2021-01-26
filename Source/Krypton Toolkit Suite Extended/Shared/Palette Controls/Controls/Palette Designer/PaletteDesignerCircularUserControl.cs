@@ -423,7 +423,6 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.cpbxBaseColour.Size = new System.Drawing.Size(64, 64);
             this.cpbxBaseColour.TabIndex = 0;
             this.cpbxBaseColour.TabStop = false;
-            this.cpbxBaseColour.ToolTipValues = null;
             // 
             // cmsBaseColour
             // 
@@ -462,7 +461,6 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.cpbxDarkColour.Size = new System.Drawing.Size(64, 64);
             this.cpbxDarkColour.TabIndex = 1;
             this.cpbxDarkColour.TabStop = false;
-            this.cpbxDarkColour.ToolTipValues = null;
             // 
             // cmsDarkColour
             // 
@@ -501,7 +499,6 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.cpbxMediumColour.Size = new System.Drawing.Size(64, 64);
             this.cpbxMediumColour.TabIndex = 2;
             this.cpbxMediumColour.TabStop = false;
-            this.cpbxMediumColour.ToolTipValues = null;
             // 
             // cmsMediumColour
             // 
@@ -540,7 +537,6 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.cpbxLightColour.Size = new System.Drawing.Size(64, 64);
             this.cpbxLightColour.TabIndex = 3;
             this.cpbxLightColour.TabStop = false;
-            this.cpbxLightColour.ToolTipValues = null;
             // 
             // cmsLightColour
             // 
@@ -579,7 +575,6 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.cpbxLightestColour.Size = new System.Drawing.Size(64, 64);
             this.cpbxLightestColour.TabIndex = 4;
             this.cpbxLightestColour.TabStop = false;
-            this.cpbxLightestColour.ToolTipValues = null;
             // 
             // cmsLightestColour
             // 
@@ -618,7 +613,6 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.cpbxBorderColourOne.Size = new System.Drawing.Size(64, 64);
             this.cpbxBorderColourOne.TabIndex = 5;
             this.cpbxBorderColourOne.TabStop = false;
-            this.cpbxBorderColourOne.ToolTipValues = null;
             // 
             // cmsBorderColourOne
             // 
@@ -657,7 +651,6 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.cpbxAlternativeNormalTextColour.Size = new System.Drawing.Size(64, 64);
             this.cpbxAlternativeNormalTextColour.TabIndex = 6;
             this.cpbxAlternativeNormalTextColour.TabStop = false;
-            this.cpbxAlternativeNormalTextColour.ToolTipValues = null;
             // 
             // cmsAlternativeNormalTextColour
             // 
@@ -696,7 +689,6 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.cpbxNormalTextColour.Size = new System.Drawing.Size(64, 64);
             this.cpbxNormalTextColour.TabIndex = 7;
             this.cpbxNormalTextColour.TabStop = false;
-            this.cpbxNormalTextColour.ToolTipValues = null;
             // 
             // cmsNormalTextColour
             // 
@@ -729,7 +721,6 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.cpbxDisabledTextColour.Size = new System.Drawing.Size(64, 64);
             this.cpbxDisabledTextColour.TabIndex = 8;
             this.cpbxDisabledTextColour.TabStop = false;
-            this.cpbxDisabledTextColour.ToolTipValues = null;
             // 
             // cmsDisabledTextColour
             // 
@@ -768,7 +759,6 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.cpbxFocusedTextColour.Size = new System.Drawing.Size(64, 64);
             this.cpbxFocusedTextColour.TabIndex = 9;
             this.cpbxFocusedTextColour.TabStop = false;
-            this.cpbxFocusedTextColour.ToolTipValues = null;
             // 
             // cmsFocusedTextColour
             // 
@@ -807,7 +797,6 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.cpbxPressedTextColour.Size = new System.Drawing.Size(64, 64);
             this.cpbxPressedTextColour.TabIndex = 10;
             this.cpbxPressedTextColour.TabStop = false;
-            this.cpbxPressedTextColour.ToolTipValues = null;
             // 
             // cmsPressedTextColour
             // 
@@ -846,7 +835,6 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.cpbxDisabledControlColour.Size = new System.Drawing.Size(64, 64);
             this.cpbxDisabledControlColour.TabIndex = 11;
             this.cpbxDisabledControlColour.TabStop = false;
-            this.cpbxDisabledControlColour.ToolTipValues = null;
             // 
             // cmsDisabledControlColour
             // 
@@ -885,7 +873,6 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.cpbxLinkNormalColour.Size = new System.Drawing.Size(64, 64);
             this.cpbxLinkNormalColour.TabIndex = 12;
             this.cpbxLinkNormalColour.TabStop = false;
-            this.cpbxLinkNormalColour.ToolTipValues = null;
             // 
             // cmsLinkNormalColour
             // 
@@ -924,7 +911,6 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.cpbxLinkFocusedColour.Size = new System.Drawing.Size(64, 64);
             this.cpbxLinkFocusedColour.TabIndex = 13;
             this.cpbxLinkFocusedColour.TabStop = false;
-            this.cpbxLinkFocusedColour.ToolTipValues = null;
             // 
             // cmsLinkFocusedColour
             // 
@@ -963,7 +949,6 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.cpbxStatusTextColour.Size = new System.Drawing.Size(64, 64);
             this.cpbxStatusTextColour.TabIndex = 27;
             this.cpbxStatusTextColour.TabStop = false;
-            this.cpbxStatusTextColour.ToolTipValues = null;
             // 
             // cmsStatusTextColour
             // 
@@ -1002,7 +987,6 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.cpbxMenuTextColour.Size = new System.Drawing.Size(64, 64);
             this.cpbxMenuTextColour.TabIndex = 26;
             this.cpbxMenuTextColour.TabStop = false;
-            this.cpbxMenuTextColour.ToolTipValues = null;
             // 
             // cmsMenuTextColour
             // 
@@ -1041,7 +1025,6 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.cpbxCustomTextColourFive.Size = new System.Drawing.Size(64, 64);
             this.cpbxCustomTextColourFive.TabIndex = 25;
             this.cpbxCustomTextColourFive.TabStop = false;
-            this.cpbxCustomTextColourFive.ToolTipValues = null;
             // 
             // cmsCustomTextColourFive
             // 
@@ -1080,7 +1063,6 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.cpbxCustomTextColourFour.Size = new System.Drawing.Size(64, 64);
             this.cpbxCustomTextColourFour.TabIndex = 24;
             this.cpbxCustomTextColourFour.TabStop = false;
-            this.cpbxCustomTextColourFour.ToolTipValues = null;
             // 
             // cmsCustomTextColourFour
             // 
@@ -1119,7 +1101,6 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.cpbxCustomTextColourThree.Size = new System.Drawing.Size(64, 64);
             this.cpbxCustomTextColourThree.TabIndex = 23;
             this.cpbxCustomTextColourThree.TabStop = false;
-            this.cpbxCustomTextColourThree.ToolTipValues = null;
             // 
             // cmsCustomTextColourThree
             // 
@@ -1158,7 +1139,6 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.cpbxCustomTextColourTwo.Size = new System.Drawing.Size(64, 64);
             this.cpbxCustomTextColourTwo.TabIndex = 22;
             this.cpbxCustomTextColourTwo.TabStop = false;
-            this.cpbxCustomTextColourTwo.ToolTipValues = null;
             // 
             // cmsCustomTextColourTwo
             // 
@@ -1197,7 +1177,6 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.cpbxCustomTextColourOne.Size = new System.Drawing.Size(64, 64);
             this.cpbxCustomTextColourOne.TabIndex = 21;
             this.cpbxCustomTextColourOne.TabStop = false;
-            this.cpbxCustomTextColourOne.ToolTipValues = null;
             // 
             // cmsCustomTextColourOne
             // 
@@ -1236,7 +1215,6 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.cpbxCustomColourFive.Size = new System.Drawing.Size(64, 64);
             this.cpbxCustomColourFive.TabIndex = 20;
             this.cpbxCustomColourFive.TabStop = false;
-            this.cpbxCustomColourFive.ToolTipValues = null;
             // 
             // cmsCustomColourFive
             // 
@@ -1275,7 +1253,6 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.cpbxCustomColourFour.Size = new System.Drawing.Size(64, 64);
             this.cpbxCustomColourFour.TabIndex = 19;
             this.cpbxCustomColourFour.TabStop = false;
-            this.cpbxCustomColourFour.ToolTipValues = null;
             // 
             // cmsCustomColourFour
             // 
@@ -1314,7 +1291,6 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.cpbxCustomColourThree.Size = new System.Drawing.Size(64, 64);
             this.cpbxCustomColourThree.TabIndex = 18;
             this.cpbxCustomColourThree.TabStop = false;
-            this.cpbxCustomColourThree.ToolTipValues = null;
             // 
             // cmsCustomColourThree
             // 
@@ -1353,7 +1329,6 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.cpbxCustomColourTwo.Size = new System.Drawing.Size(64, 64);
             this.cpbxCustomColourTwo.TabIndex = 17;
             this.cpbxCustomColourTwo.TabStop = false;
-            this.cpbxCustomColourTwo.ToolTipValues = null;
             // 
             // cmsCustomColourTwo
             // 
@@ -1392,7 +1367,6 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.cpbxCustomColourOne.Size = new System.Drawing.Size(64, 64);
             this.cpbxCustomColourOne.TabIndex = 16;
             this.cpbxCustomColourOne.TabStop = false;
-            this.cpbxCustomColourOne.ToolTipValues = null;
             // 
             // cmsCustomColourOne
             // 
@@ -1431,7 +1405,6 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.cpbxLinkVisitedColour.Size = new System.Drawing.Size(64, 64);
             this.cpbxLinkVisitedColour.TabIndex = 15;
             this.cpbxLinkVisitedColour.TabStop = false;
-            this.cpbxLinkVisitedColour.ToolTipValues = null;
             // 
             // cmsLinkVisitedColour
             // 
@@ -1470,7 +1443,6 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.cpbxLinkHoverColour.Size = new System.Drawing.Size(64, 64);
             this.cpbxLinkHoverColour.TabIndex = 14;
             this.cpbxLinkHoverColour.TabStop = false;
-            this.cpbxLinkHoverColour.ToolTipValues = null;
             // 
             // cmsLinkHoverColour
             // 
@@ -1508,7 +1480,6 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.cbpxDisabledTextColour.Size = new System.Drawing.Size(64, 64);
             this.cbpxDisabledTextColour.TabIndex = 41;
             this.cbpxDisabledTextColour.TabStop = false;
-            this.cbpxDisabledTextColour.ToolTipValues = null;
             this.cbpxDisabledTextColour.Visible = false;
             // 
             // circularPictureBox30
@@ -1519,7 +1490,6 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.circularPictureBox30.Size = new System.Drawing.Size(64, 64);
             this.circularPictureBox30.TabIndex = 40;
             this.circularPictureBox30.TabStop = false;
-            this.circularPictureBox30.ToolTipValues = null;
             this.circularPictureBox30.Visible = false;
             // 
             // circularPictureBox31
@@ -1530,7 +1500,6 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.circularPictureBox31.Size = new System.Drawing.Size(64, 64);
             this.circularPictureBox31.TabIndex = 39;
             this.circularPictureBox31.TabStop = false;
-            this.circularPictureBox31.ToolTipValues = null;
             this.circularPictureBox31.Visible = false;
             // 
             // circularPictureBox32
@@ -1541,7 +1510,6 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.circularPictureBox32.Size = new System.Drawing.Size(64, 64);
             this.circularPictureBox32.TabIndex = 38;
             this.circularPictureBox32.TabStop = false;
-            this.circularPictureBox32.ToolTipValues = null;
             this.circularPictureBox32.Visible = false;
             // 
             // circularPictureBox33
@@ -1552,7 +1520,6 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.circularPictureBox33.Size = new System.Drawing.Size(64, 64);
             this.circularPictureBox33.TabIndex = 37;
             this.circularPictureBox33.TabStop = false;
-            this.circularPictureBox33.ToolTipValues = null;
             this.circularPictureBox33.Visible = false;
             // 
             // circularPictureBox34
@@ -1563,7 +1530,6 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.circularPictureBox34.Size = new System.Drawing.Size(64, 64);
             this.circularPictureBox34.TabIndex = 36;
             this.circularPictureBox34.TabStop = false;
-            this.circularPictureBox34.ToolTipValues = null;
             this.circularPictureBox34.Visible = false;
             // 
             // circularPictureBox35
@@ -1574,7 +1540,6 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.circularPictureBox35.Size = new System.Drawing.Size(64, 64);
             this.circularPictureBox35.TabIndex = 35;
             this.circularPictureBox35.TabStop = false;
-            this.circularPictureBox35.ToolTipValues = null;
             this.circularPictureBox35.Visible = false;
             // 
             // circularPictureBox36
@@ -1585,7 +1550,6 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.circularPictureBox36.Size = new System.Drawing.Size(64, 64);
             this.circularPictureBox36.TabIndex = 34;
             this.circularPictureBox36.TabStop = false;
-            this.circularPictureBox36.ToolTipValues = null;
             this.circularPictureBox36.Visible = false;
             // 
             // circularPictureBox37
@@ -1596,7 +1560,6 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.circularPictureBox37.Size = new System.Drawing.Size(64, 64);
             this.circularPictureBox37.TabIndex = 33;
             this.circularPictureBox37.TabStop = false;
-            this.circularPictureBox37.ToolTipValues = null;
             this.circularPictureBox37.Visible = false;
             // 
             // circularPictureBox38
@@ -1607,7 +1570,6 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.circularPictureBox38.Size = new System.Drawing.Size(64, 64);
             this.circularPictureBox38.TabIndex = 32;
             this.circularPictureBox38.TabStop = false;
-            this.circularPictureBox38.ToolTipValues = null;
             this.circularPictureBox38.Visible = false;
             // 
             // circularPictureBox39
@@ -1618,7 +1580,6 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.circularPictureBox39.Size = new System.Drawing.Size(64, 64);
             this.circularPictureBox39.TabIndex = 31;
             this.circularPictureBox39.TabStop = false;
-            this.circularPictureBox39.ToolTipValues = null;
             this.circularPictureBox39.Visible = false;
             // 
             // circularPictureBox40
@@ -1629,7 +1590,6 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.circularPictureBox40.Size = new System.Drawing.Size(64, 64);
             this.circularPictureBox40.TabIndex = 30;
             this.circularPictureBox40.TabStop = false;
-            this.circularPictureBox40.ToolTipValues = null;
             this.circularPictureBox40.Visible = false;
             // 
             // cpbxBorderColourTwo
@@ -1641,7 +1601,6 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.cpbxBorderColourTwo.Size = new System.Drawing.Size(64, 64);
             this.cpbxBorderColourTwo.TabIndex = 29;
             this.cpbxBorderColourTwo.TabStop = false;
-            this.cpbxBorderColourTwo.ToolTipValues = null;
             // 
             // cmsBorderColourTwo
             // 
@@ -1680,7 +1639,6 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.cpbxRibbonTabTextColour.Size = new System.Drawing.Size(64, 64);
             this.cpbxRibbonTabTextColour.TabIndex = 28;
             this.cpbxRibbonTabTextColour.TabStop = false;
-            this.cpbxRibbonTabTextColour.ToolTipValues = null;
             // 
             // cmsRibbonTabTextColour
             // 
@@ -1876,8 +1834,6 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
         {
             InitializeComponent();
 
-            InitColours();
-
             PropagateColourPreviewArray();
         }
         #endregion
@@ -1886,40 +1842,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
         {
 
         }
-
-        #region " Krypton "
-        //Krypton Events
-        private void OnPalettePaint(object sender, PaletteLayoutEventArgs e)
-        {
-            base.Invalidate();
-        }
-
-        private void OnGlobalPaletteChanged(object sender, EventArgs e)
-        {
-            if (((_palette != null)))
-            {
-                _palette.PalettePaint -= new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
-            }
-            _palette = KryptonManager.CurrentGlobalPalette;
-            _paletteRedirect.Target = _palette;
-            if (((_palette != null)))
-            {
-                _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
-                InitColours();
-            }
-            base.Invalidate();
-
-        }
-
-
-        private void InitColours()
-        {
-            BorderStyle = BorderStyle.None;
-            ttColourInformation.ForeColor = _palette.ColorTable.MenuItemText;
-            ttColourInformation.BackColor = _palette.ColorTable.MenuStripGradientBegin;
-        }
-        #endregion
-
+      
         #region Methods
         public void SetupColourToolTips(bool displayToolTips)
         {
@@ -1991,7 +1914,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
                     {
                         foreach (Suite.Extended.Base.CircularPictureBox box in _previews)
                         {
-                            box.ToolTipValues.Description = string.Empty;
+                            //box.tt.Description = string.Empty;
                         }
                     }
                     catch (Exception ex)

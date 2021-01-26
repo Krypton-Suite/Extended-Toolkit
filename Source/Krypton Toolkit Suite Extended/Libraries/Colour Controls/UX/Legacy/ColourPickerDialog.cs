@@ -172,7 +172,6 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Suite.Legacy
             this.cbColourPreview.Size = new System.Drawing.Size(130, 130);
             this.cbColourPreview.TabIndex = 2;
             this.cbColourPreview.TabStop = false;
-            this.cbColourPreview.ToolTipValues = null;
             this.cbColourPreview.Paint += new System.Windows.Forms.PaintEventHandler(this.CbColourPreview_Paint);
             // 
             // scpPicker

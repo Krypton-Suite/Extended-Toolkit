@@ -8,6 +8,7 @@
 
 using System;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Core
 {
@@ -82,6 +83,18 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             Random r = new Random();
 
             return Color.FromArgb(r.Next(0, 255), r.Next(0, 255), r.Next(0, 255));
+        }
+
+        public static void GenerateRandomColour(Control control)
+        {
+            Color randomColour = GenerateRandomColour();
+
+            control.BackColor = randomColour;
+        }
+
+        public static void UseAsBaseColour(Color baseColour)
+        {
+
         }
         #endregion
 

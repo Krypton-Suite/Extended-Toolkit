@@ -6,12 +6,7 @@
  */
 #endregion
 
-using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Drawing.Suite
@@ -210,7 +205,6 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Suite
             this.circularPictureBox1.Size = new System.Drawing.Size(101, 101);
             this.circularPictureBox1.TabIndex = 15;
             this.circularPictureBox1.TabStop = false;
-            this.circularPictureBox1.ToolTipValues = null;
             // 
             // kryptonNumericUpDown6
             // 

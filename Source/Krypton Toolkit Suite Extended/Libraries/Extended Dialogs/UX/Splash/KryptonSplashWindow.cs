@@ -88,7 +88,6 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.cbApplicationIconCircular.Size = new System.Drawing.Size(256, 256);
             this.cbApplicationIconCircular.TabIndex = 5;
             this.cbApplicationIconCircular.TabStop = false;
-            this.cbApplicationIconCircular.ToolTipValues = null;
             // 
             // pbxApplicationIconStandard
             // 

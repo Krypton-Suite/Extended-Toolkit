@@ -9,13 +9,7 @@
 using Cyotek.Windows.Forms;
 using Krypton.Toolkit.Suite.Extended.Base;
 using Krypton.Toolkit.Suite.Extended.Drawing.Suite;
-using System;
 using System.ComponentModel;
-using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.IO;
-using System.Linq;
-using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
@@ -360,7 +354,6 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.cpbColourPreview.Size = new System.Drawing.Size(130, 120);
             this.cpbColourPreview.TabIndex = 3;
             this.cpbColourPreview.TabStop = false;
-            this.cpbColourPreview.ToolTipValues = null;
             // 
             // kbtneLoadColourPalette
             // 

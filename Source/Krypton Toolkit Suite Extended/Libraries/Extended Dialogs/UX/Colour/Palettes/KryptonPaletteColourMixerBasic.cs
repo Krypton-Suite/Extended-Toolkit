@@ -76,7 +76,6 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.cpbColourPreview.Size = new System.Drawing.Size(196, 196);
             this.cpbColourPreview.TabIndex = 8;
             this.cpbColourPreview.TabStop = false;
-            this.cpbColourPreview.ToolTipValues = null;
             // 
             // kbtnOk
             // 

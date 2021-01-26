@@ -14,12 +14,8 @@ using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Base
 {
-    public class CircularPictureBox : PictureBox, IContentValues
+    public class CircularPictureBox : PictureBox
     {
-        private ToolTipValues _values;
-
-        public ToolTipValues ToolTipValues { get => _values; set { _values = value; } }
-
         public CircularPictureBox()
         {
             BackColor = SystemColors.Control;
@@ -51,26 +47,6 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
 
             base.OnPaint(pe);
-        }
-
-        public Image GetImage(PaletteState state)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Color GetImageTransparentColor(PaletteState state)
-        {
-            throw new NotImplementedException();
-        }
-
-        public string GetShortText()
-        {
-            throw new NotImplementedException();
-        }
-
-        public string GetLongText()
-        {
-            throw new NotImplementedException();
         }
     }
 }

@@ -224,7 +224,6 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Suite
             this.cpbSelectedColour.Size = new System.Drawing.Size(130, 130);
             this.cpbSelectedColour.TabIndex = 3;
             this.cpbSelectedColour.TabStop = false;
-            this.cpbSelectedColour.ToolTipValues = null;
             // 
             // knudGreen
             // 
