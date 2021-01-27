@@ -35,7 +35,7 @@
 
   <!--Stable package configuration-
   <PropertyGroup Condition=" '$(Configuration)' == 'Release">
-    <OutputPath>Build\Lib</OutputPath>
+    <OutputPath>..\..\..\..\Bin\$(configuration)\Build\Lib</OutputPath>
     <DebugType>pdbonly</DebugType>
     <PackageId>Krypton.Toolkit.Suite.Extended.Wizard</PackageId>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Stable</PackageOutputPath>

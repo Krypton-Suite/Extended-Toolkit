@@ -440,6 +440,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.useAsBaseColourToolStripMenuItem.Name = "useAsBaseColourToolStripMenuItem";
             this.useAsBaseColourToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
             this.useAsBaseColourToolStripMenuItem.Text = "Use as &Base Colour";
+            this.useAsBaseColourToolStripMenuItem.Click += new System.EventHandler(this.useAsBaseColourToolStripMenuItem_Click);
             // 
             // toolStripMenuItem30
             // 
@@ -478,6 +479,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(217, 22);
             this.toolStripMenuItem1.Text = "Use as &Base Colour";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // toolStripMenuItem31
             // 
@@ -516,6 +518,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.toolStripMenuItem28.Name = "toolStripMenuItem28";
             this.toolStripMenuItem28.Size = new System.Drawing.Size(217, 22);
             this.toolStripMenuItem28.Text = "Use as &Base Colour";
+            this.toolStripMenuItem28.Click += new System.EventHandler(this.toolStripMenuItem28_Click);
             // 
             // toolStripMenuItem57
             // 
@@ -554,6 +557,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             this.toolStripMenuItem2.Size = new System.Drawing.Size(217, 22);
             this.toolStripMenuItem2.Text = "Use as &Base Colour";
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // toolStripMenuItem32
             // 
@@ -592,6 +596,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
             this.toolStripMenuItem3.Size = new System.Drawing.Size(217, 22);
             this.toolStripMenuItem3.Text = "Use as &Base Colour";
+            this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
             // 
             // toolStripMenuItem33
             // 
@@ -630,6 +635,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
             this.toolStripMenuItem4.Size = new System.Drawing.Size(217, 22);
             this.toolStripMenuItem4.Text = "Use as &Base Colour";
+            this.toolStripMenuItem4.Click += new System.EventHandler(this.toolStripMenuItem4_Click);
             // 
             // toolStripMenuItem34
             // 
@@ -668,6 +674,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
             this.toolStripMenuItem5.Size = new System.Drawing.Size(217, 22);
             this.toolStripMenuItem5.Text = "Use as &Base Colour";
+            this.toolStripMenuItem5.Click += new System.EventHandler(this.toolStripMenuItem5_Click);
             // 
             // toolStripMenuItem35
             // 
@@ -705,6 +712,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.toolStripMenuItem6.Name = "toolStripMenuItem6";
             this.toolStripMenuItem6.Size = new System.Drawing.Size(217, 22);
             this.toolStripMenuItem6.Text = "Use as &Base Colour";
+            this.toolStripMenuItem6.Click += new System.EventHandler(this.toolStripMenuItem6_Click);
             // 
             // generateARandomColourToolStripMenuItem6
             // 
@@ -738,6 +746,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.toolStripMenuItem7.Name = "toolStripMenuItem7";
             this.toolStripMenuItem7.Size = new System.Drawing.Size(217, 22);
             this.toolStripMenuItem7.Text = "Use as &Base Colour";
+            this.toolStripMenuItem7.Click += new System.EventHandler(this.toolStripMenuItem7_Click);
             // 
             // toolStripMenuItem36
             // 
@@ -776,6 +785,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.toolStripMenuItem8.Name = "toolStripMenuItem8";
             this.toolStripMenuItem8.Size = new System.Drawing.Size(217, 22);
             this.toolStripMenuItem8.Text = "Use as &Base Colour";
+            this.toolStripMenuItem8.Click += new System.EventHandler(this.toolStripMenuItem8_Click);
             // 
             // toolStripMenuItem37
             // 
@@ -814,6 +824,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.toolStripMenuItem9.Name = "toolStripMenuItem9";
             this.toolStripMenuItem9.Size = new System.Drawing.Size(217, 22);
             this.toolStripMenuItem9.Text = "Use as &Base Colour";
+            this.toolStripMenuItem9.Click += new System.EventHandler(this.toolStripMenuItem9_Click);
             // 
             // toolStripMenuItem38
             // 
@@ -852,6 +863,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.toolStripMenuItem10.Name = "toolStripMenuItem10";
             this.toolStripMenuItem10.Size = new System.Drawing.Size(217, 22);
             this.toolStripMenuItem10.Text = "Use as &Base Colour";
+            this.toolStripMenuItem10.Click += new System.EventHandler(this.toolStripMenuItem10_Click);
             // 
             // toolStripMenuItem39
             // 
@@ -890,6 +902,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.toolStripMenuItem11.Name = "toolStripMenuItem11";
             this.toolStripMenuItem11.Size = new System.Drawing.Size(217, 22);
             this.toolStripMenuItem11.Text = "Use as &Base Colour";
+            this.toolStripMenuItem11.Click += new System.EventHandler(this.toolStripMenuItem11_Click);
             // 
             // toolStripMenuItem40
             // 
@@ -928,6 +941,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.toolStripMenuItem12.Name = "toolStripMenuItem12";
             this.toolStripMenuItem12.Size = new System.Drawing.Size(217, 22);
             this.toolStripMenuItem12.Text = "Use as &Base Colour";
+            this.toolStripMenuItem12.Click += new System.EventHandler(this.toolStripMenuItem12_Click);
             // 
             // toolStripMenuItem41
             // 
@@ -966,6 +980,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.toolStripMenuItem26.Name = "toolStripMenuItem26";
             this.toolStripMenuItem26.Size = new System.Drawing.Size(217, 22);
             this.toolStripMenuItem26.Text = "Use as &Base Colour";
+            this.toolStripMenuItem26.Click += new System.EventHandler(this.toolStripMenuItem26_Click);
             // 
             // toolStripMenuItem55
             // 
@@ -1004,6 +1019,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.toolStripMenuItem25.Name = "toolStripMenuItem25";
             this.toolStripMenuItem25.Size = new System.Drawing.Size(217, 22);
             this.toolStripMenuItem25.Text = "Use as &Base Colour";
+            this.toolStripMenuItem25.Click += new System.EventHandler(this.toolStripMenuItem25_Click);
             // 
             // toolStripMenuItem54
             // 
@@ -1042,6 +1058,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.toolStripMenuItem24.Name = "toolStripMenuItem24";
             this.toolStripMenuItem24.Size = new System.Drawing.Size(217, 22);
             this.toolStripMenuItem24.Text = "Use as &Base Colour";
+            this.toolStripMenuItem24.Click += new System.EventHandler(this.toolStripMenuItem24_Click);
             // 
             // toolStripMenuItem53
             // 
@@ -1080,6 +1097,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.toolStripMenuItem23.Name = "toolStripMenuItem23";
             this.toolStripMenuItem23.Size = new System.Drawing.Size(217, 22);
             this.toolStripMenuItem23.Text = "Use as &Base Colour";
+            this.toolStripMenuItem23.Click += new System.EventHandler(this.toolStripMenuItem23_Click);
             // 
             // toolStripMenuItem52
             // 
@@ -1118,6 +1136,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.toolStripMenuItem22.Name = "toolStripMenuItem22";
             this.toolStripMenuItem22.Size = new System.Drawing.Size(217, 22);
             this.toolStripMenuItem22.Text = "Use as &Base Colour";
+            this.toolStripMenuItem22.Click += new System.EventHandler(this.toolStripMenuItem22_Click);
             // 
             // toolStripMenuItem51
             // 
@@ -1156,6 +1175,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.toolStripMenuItem21.Name = "toolStripMenuItem21";
             this.toolStripMenuItem21.Size = new System.Drawing.Size(217, 22);
             this.toolStripMenuItem21.Text = "Use as &Base Colour";
+            this.toolStripMenuItem21.Click += new System.EventHandler(this.toolStripMenuItem21_Click);
             // 
             // toolStripMenuItem50
             // 
@@ -1194,6 +1214,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.toolStripMenuItem20.Name = "toolStripMenuItem20";
             this.toolStripMenuItem20.Size = new System.Drawing.Size(217, 22);
             this.toolStripMenuItem20.Text = "Use as &Base Colour";
+            this.toolStripMenuItem20.Click += new System.EventHandler(this.toolStripMenuItem20_Click);
             // 
             // toolStripMenuItem49
             // 
@@ -1232,6 +1253,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.toolStripMenuItem19.Name = "toolStripMenuItem19";
             this.toolStripMenuItem19.Size = new System.Drawing.Size(217, 22);
             this.toolStripMenuItem19.Text = "Use as &Base Colour";
+            this.toolStripMenuItem19.Click += new System.EventHandler(this.toolStripMenuItem19_Click);
             // 
             // toolStripMenuItem48
             // 
@@ -1270,6 +1292,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.toolStripMenuItem18.Name = "toolStripMenuItem18";
             this.toolStripMenuItem18.Size = new System.Drawing.Size(217, 22);
             this.toolStripMenuItem18.Text = "Use as &Base Colour";
+            this.toolStripMenuItem18.Click += new System.EventHandler(this.toolStripMenuItem18_Click);
             // 
             // toolStripMenuItem47
             // 
@@ -1308,6 +1331,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.toolStripMenuItem17.Name = "toolStripMenuItem17";
             this.toolStripMenuItem17.Size = new System.Drawing.Size(217, 22);
             this.toolStripMenuItem17.Text = "Use as &Base Colour";
+            this.toolStripMenuItem17.Click += new System.EventHandler(this.toolStripMenuItem17_Click);
             // 
             // toolStripMenuItem46
             // 
@@ -1346,6 +1370,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.toolStripMenuItem16.Name = "toolStripMenuItem16";
             this.toolStripMenuItem16.Size = new System.Drawing.Size(217, 22);
             this.toolStripMenuItem16.Text = "Use as &Base Colour";
+            this.toolStripMenuItem16.Click += new System.EventHandler(this.toolStripMenuItem16_Click);
             // 
             // toolStripMenuItem45
             // 
@@ -1384,6 +1409,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.toolStripMenuItem15.Name = "toolStripMenuItem15";
             this.toolStripMenuItem15.Size = new System.Drawing.Size(217, 22);
             this.toolStripMenuItem15.Text = "Use as &Base Colour";
+            this.toolStripMenuItem15.Click += new System.EventHandler(this.toolStripMenuItem15_Click);
             // 
             // toolStripMenuItem44
             // 
@@ -1422,6 +1448,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.toolStripMenuItem14.Name = "toolStripMenuItem14";
             this.toolStripMenuItem14.Size = new System.Drawing.Size(217, 22);
             this.toolStripMenuItem14.Text = "Use as &Base Colour";
+            this.toolStripMenuItem14.Click += new System.EventHandler(this.toolStripMenuItem14_Click);
             // 
             // toolStripMenuItem43
             // 
@@ -1460,6 +1487,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.toolStripMenuItem13.Name = "toolStripMenuItem13";
             this.toolStripMenuItem13.Size = new System.Drawing.Size(217, 22);
             this.toolStripMenuItem13.Text = "Use as &Base Colour";
+            this.toolStripMenuItem13.Click += new System.EventHandler(this.toolStripMenuItem13_Click);
             // 
             // toolStripMenuItem42
             // 
@@ -1618,6 +1646,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.toolStripMenuItem29.Name = "toolStripMenuItem29";
             this.toolStripMenuItem29.Size = new System.Drawing.Size(217, 22);
             this.toolStripMenuItem29.Text = "Use as &Base Colour";
+            this.toolStripMenuItem29.Click += new System.EventHandler(this.toolStripMenuItem29_Click);
             // 
             // toolStripMenuItem58
             // 
@@ -1656,6 +1685,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.toolStripMenuItem27.Name = "toolStripMenuItem27";
             this.toolStripMenuItem27.Size = new System.Drawing.Size(217, 22);
             this.toolStripMenuItem27.Text = "Use as &Base Colour";
+            this.toolStripMenuItem27.Click += new System.EventHandler(this.toolStripMenuItem27_Click);
             // 
             // toolStripMenuItem56
             // 
@@ -1846,11 +1876,6 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
         }
         #endregion
 
-        private void PaletteDesignerCircularUserControl_Load(object sender, EventArgs e)
-        {
-
-        }
-
         #region Methods
         public void SetupColourToolTips(bool displayToolTips)
         {
@@ -1934,72 +1959,6 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
                     }
                 }
             }
-        }
-
-        /// <summary>Propagates the colour preview array.</summary>
-        private void PropagateColourPreviewArray()
-        {
-            _previews = new Suite.Extended.Base.CircularPictureBox[30];
-
-            ColourPreviews[0] = cpbxBaseColour;
-
-            ColourPreviews[1] = cpbxDarkColour;
-
-            ColourPreviews[2] = cpbxMediumColour;
-
-            ColourPreviews[3] = cpbxLightColour;
-
-            ColourPreviews[4] = cpbxLightestColour;
-
-            ColourPreviews[5] = cpbxBorderColourOne;
-
-            ColourPreviews[6] = cpbxBorderColourTwo;
-
-            ColourPreviews[7] = cpbxAlternativeNormalTextColour;
-
-            ColourPreviews[8] = cpbxNormalTextColour;
-
-            ColourPreviews[9] = cpbxDisabledTextColour;
-
-            ColourPreviews[10] = cpbxFocusedTextColour;
-
-            ColourPreviews[11] = cpbxPressedTextColour;
-
-            ColourPreviews[12] = cpbxDisabledControlColour;
-
-            ColourPreviews[13] = cpbxLinkNormalColour;
-
-            ColourPreviews[14] = cpbxLinkFocusedColour;
-
-            ColourPreviews[15] = cpbxLinkHoverColour;
-
-            ColourPreviews[16] = cpbxLinkVisitedColour;
-
-            ColourPreviews[17] = cpbxCustomColourOne;
-
-            ColourPreviews[18] = cpbxCustomColourTwo;
-
-            ColourPreviews[19] = cpbxCustomColourThree;
-
-            ColourPreviews[20] = cpbxCustomColourFour;
-
-            ColourPreviews[21] = cpbxCustomColourFive;
-
-            ColourPreviews[22] = cpbxCustomTextColourOne;
-
-            ColourPreviews[23] = cpbxCustomTextColourTwo;
-
-            ColourPreviews[24] = cpbxCustomTextColourThree;
-
-            ColourPreviews[25] = cpbxCustomTextColourFour;
-
-            ColourPreviews[26] = cpbxCustomTextColourFive;
-
-            ColourPreviews[27] = cpbxMenuTextColour;
-
-            ColourPreviews[28] = cpbxStatusTextColour;
-
-            ColourPreviews[29] = cpbxRibbonTabTextColour;
         }
 
         /// <summary>Resets the colours.</summary>
@@ -2095,81 +2054,6 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             }
         }
 
-        /// <summary>Sets the colour previews.</summary>
-        /// <param name="paletteColours">The palette colours.</param>
-        private void SetColourPreviews(Color[] paletteColours)
-        {
-            try
-            {
-                if (ColourPreviews.Length > 0)
-                {
-                    ColourPreviews[0].BackColor = paletteColours[0];
-
-                    ColourPreviews[1].BackColor = paletteColours[1];
-
-                    ColourPreviews[2].BackColor = paletteColours[2];
-
-                    ColourPreviews[3].BackColor = paletteColours[3];
-
-                    ColourPreviews[4].BackColor = paletteColours[4];
-
-                    ColourPreviews[5].BackColor = paletteColours[5];
-
-                    ColourPreviews[6].BackColor = paletteColours[6];
-
-                    ColourPreviews[7].BackColor = paletteColours[7];
-
-                    ColourPreviews[8].BackColor = paletteColours[8];
-
-                    ColourPreviews[9].BackColor = paletteColours[9];
-
-                    ColourPreviews[10].BackColor = paletteColours[10];
-
-                    ColourPreviews[11].BackColor = paletteColours[11];
-
-                    ColourPreviews[12].BackColor = paletteColours[12];
-
-                    ColourPreviews[13].BackColor = paletteColours[13];
-
-                    ColourPreviews[14].BackColor = paletteColours[14];
-
-                    ColourPreviews[15].BackColor = paletteColours[15];
-
-                    ColourPreviews[16].BackColor = paletteColours[16];
-
-                    ColourPreviews[17].BackColor = paletteColours[17];
-
-                    ColourPreviews[18].BackColor = paletteColours[18];
-
-                    ColourPreviews[19].BackColor = paletteColours[19];
-
-                    ColourPreviews[20].BackColor = paletteColours[20];
-
-                    ColourPreviews[21].BackColor = paletteColours[21];
-
-                    ColourPreviews[22].BackColor = paletteColours[22];
-
-                    ColourPreviews[23].BackColor = paletteColours[23];
-
-                    ColourPreviews[24].BackColor = paletteColours[24];
-
-                    ColourPreviews[25].BackColor = paletteColours[25];
-
-                    ColourPreviews[26].BackColor = paletteColours[26];
-
-                    ColourPreviews[27].BackColor = paletteColours[27];
-
-                    ColourPreviews[28].BackColor = paletteColours[28];
-
-                    ColourPreviews[29].BackColor = paletteColours[29];
-                }
-            }
-            catch (Exception e)
-            {
-                Suite.Extended.Common.ExceptionHandler.CaptureException(e);
-            }
-        }
-
         public void ExportPaletteColours()
         {
             try
@@ -2206,6 +2090,12 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
         #endregion
 
         #region Event Handlers
+        private void PaletteDesignerCircularUserControl_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        #region Generate Random Colours
         private void generateARandomColourToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Color randomColour = ColourExtensions.GenerateRandomColour();
@@ -2417,12 +2307,219 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
         }
         #endregion
 
+        #region Use as Base Colour
+        private void useAsBaseColourToolStripMenuItem_Click(object sender, EventArgs e) => ColourExtensions.UseAsBaseColour(cpbxBaseColour);
+
+        private void toolStripMenuItem28_Click(object sender, EventArgs e) => ColourExtensions.UseAsBaseColour(cpbxMediumColour);
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e) => ColourExtensions.UseAsBaseColour(cpbxDarkColour);
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e) => ColourExtensions.UseAsBaseColour(cpbxLightColour);
+
+        private void toolStripMenuItem3_Click(object sender, EventArgs e) => ColourExtensions.UseAsBaseColour(cpbxLightestColour);
+
+        private void toolStripMenuItem4_Click(object sender, EventArgs e) => ColourExtensions.UseAsBaseColour(cpbxBorderColourOne);
+
+        private void toolStripMenuItem29_Click(object sender, EventArgs e) => ColourExtensions.UseAsBaseColour(cpbxBorderColourTwo);
+
+        private void toolStripMenuItem5_Click(object sender, EventArgs e) => ColourExtensions.UseAsBaseColour(cpbxAlternativeNormalTextColour);
+
+        private void toolStripMenuItem6_Click(object sender, EventArgs e) => ColourExtensions.UseAsBaseColour(cpbxNormalTextColour);
+
+        private void toolStripMenuItem7_Click(object sender, EventArgs e) => ColourExtensions.UseAsBaseColour(cpbxDisabledTextColour);
+
+        private void toolStripMenuItem8_Click(object sender, EventArgs e) => ColourExtensions.UseAsBaseColour(cpbxFocusedTextColour);
+
+        private void toolStripMenuItem9_Click(object sender, EventArgs e) => ColourExtensions.UseAsBaseColour(cpbxPressedTextColour);
+
+        private void toolStripMenuItem10_Click(object sender, EventArgs e) => ColourExtensions.UseAsBaseColour(cpbxDisabledControlColour);
+
+        private void toolStripMenuItem11_Click(object sender, EventArgs e) => ColourExtensions.UseAsBaseColour(cpbxLinkNormalColour);
+
+        private void toolStripMenuItem12_Click(object sender, EventArgs e) => ColourExtensions.UseAsBaseColour(cpbxLinkFocusedColour);
+
+        private void toolStripMenuItem13_Click(object sender, EventArgs e) => ColourExtensions.UseAsBaseColour(cpbxLinkHoverColour);
+
+        private void toolStripMenuItem14_Click(object sender, EventArgs e) => ColourExtensions.UseAsBaseColour(cpbxLinkVisitedColour);
+
+        private void toolStripMenuItem15_Click(object sender, EventArgs e) => ColourExtensions.UseAsBaseColour(cpbxCustomColourOne);
+
+        private void toolStripMenuItem16_Click(object sender, EventArgs e) => ColourExtensions.UseAsBaseColour(cpbxCustomColourTwo);
+
+        private void toolStripMenuItem17_Click(object sender, EventArgs e) => ColourExtensions.UseAsBaseColour(cpbxCustomColourThree);
+
+        private void toolStripMenuItem18_Click(object sender, EventArgs e) => ColourExtensions.UseAsBaseColour(cpbxCustomColourFour);
+
+        private void toolStripMenuItem19_Click(object sender, EventArgs e) => ColourExtensions.UseAsBaseColour(cpbxCustomColourFive);
+
+        private void toolStripMenuItem20_Click(object sender, EventArgs e) => ColourExtensions.UseAsBaseColour(cpbxCustomTextColourOne);
+
+        private void toolStripMenuItem21_Click(object sender, EventArgs e) => ColourExtensions.UseAsBaseColour(cpbxCustomTextColourTwo);
+
+        private void toolStripMenuItem22_Click(object sender, EventArgs e) => ColourExtensions.UseAsBaseColour(cpbxCustomTextColourThree);
+
+        private void toolStripMenuItem23_Click(object sender, EventArgs e) => ColourExtensions.UseAsBaseColour(cpbxCustomTextColourFour);
+
+        private void toolStripMenuItem24_Click(object sender, EventArgs e) => ColourExtensions.UseAsBaseColour(cpbxCustomTextColourFive);
+
+        private void toolStripMenuItem25_Click(object sender, EventArgs e) => ColourExtensions.UseAsBaseColour(cpbxMenuTextColour);
+
+        private void toolStripMenuItem26_Click(object sender, EventArgs e) => ColourExtensions.UseAsBaseColour(cpbxStatusTextColour);
+
+        private void toolStripMenuItem27_Click(object sender, EventArgs e) => ColourExtensions.UseAsBaseColour(cpbxRibbonTabTextColour);
+        #endregion
+
+        #endregion
+
         #region Overrides
         protected override void OnPaint(PaintEventArgs e)
         {
             SetupColourToolTips(ShowColourInformation);
 
             base.OnPaint(e);
+        }
+        #endregion
+
+        #region Array Management
+        /// <summary>Propagates the colour preview array.</summary>
+        private void PropagateColourPreviewArray()
+        {
+            _previews = new Suite.Extended.Base.CircularPictureBox[30];
+
+            ColourPreviews[0] = cpbxBaseColour;
+
+            ColourPreviews[1] = cpbxDarkColour;
+
+            ColourPreviews[2] = cpbxMediumColour;
+
+            ColourPreviews[3] = cpbxLightColour;
+
+            ColourPreviews[4] = cpbxLightestColour;
+
+            ColourPreviews[5] = cpbxBorderColourOne;
+
+            ColourPreviews[6] = cpbxBorderColourTwo;
+
+            ColourPreviews[7] = cpbxAlternativeNormalTextColour;
+
+            ColourPreviews[8] = cpbxNormalTextColour;
+
+            ColourPreviews[9] = cpbxDisabledTextColour;
+
+            ColourPreviews[10] = cpbxFocusedTextColour;
+
+            ColourPreviews[11] = cpbxPressedTextColour;
+
+            ColourPreviews[12] = cpbxDisabledControlColour;
+
+            ColourPreviews[13] = cpbxLinkNormalColour;
+
+            ColourPreviews[14] = cpbxLinkFocusedColour;
+
+            ColourPreviews[15] = cpbxLinkHoverColour;
+
+            ColourPreviews[16] = cpbxLinkVisitedColour;
+
+            ColourPreviews[17] = cpbxCustomColourOne;
+
+            ColourPreviews[18] = cpbxCustomColourTwo;
+
+            ColourPreviews[19] = cpbxCustomColourThree;
+
+            ColourPreviews[20] = cpbxCustomColourFour;
+
+            ColourPreviews[21] = cpbxCustomColourFive;
+
+            ColourPreviews[22] = cpbxCustomTextColourOne;
+
+            ColourPreviews[23] = cpbxCustomTextColourTwo;
+
+            ColourPreviews[24] = cpbxCustomTextColourThree;
+
+            ColourPreviews[25] = cpbxCustomTextColourFour;
+
+            ColourPreviews[26] = cpbxCustomTextColourFive;
+
+            ColourPreviews[27] = cpbxMenuTextColour;
+
+            ColourPreviews[28] = cpbxStatusTextColour;
+
+            ColourPreviews[29] = cpbxRibbonTabTextColour;
+        }
+
+        /// <summary>Sets the colour previews.</summary>
+        /// <param name="paletteColours">The palette colours.</param>
+        private void SetColourPreviews(Color[] paletteColours)
+        {
+            try
+            {
+                if (ColourPreviews.Length > 0)
+                {
+                    ColourPreviews[0].BackColor = paletteColours[0];
+
+                    ColourPreviews[1].BackColor = paletteColours[1];
+
+                    ColourPreviews[2].BackColor = paletteColours[2];
+
+                    ColourPreviews[3].BackColor = paletteColours[3];
+
+                    ColourPreviews[4].BackColor = paletteColours[4];
+
+                    ColourPreviews[5].BackColor = paletteColours[5];
+
+                    ColourPreviews[6].BackColor = paletteColours[6];
+
+                    ColourPreviews[7].BackColor = paletteColours[7];
+
+                    ColourPreviews[8].BackColor = paletteColours[8];
+
+                    ColourPreviews[9].BackColor = paletteColours[9];
+
+                    ColourPreviews[10].BackColor = paletteColours[10];
+
+                    ColourPreviews[11].BackColor = paletteColours[11];
+
+                    ColourPreviews[12].BackColor = paletteColours[12];
+
+                    ColourPreviews[13].BackColor = paletteColours[13];
+
+                    ColourPreviews[14].BackColor = paletteColours[14];
+
+                    ColourPreviews[15].BackColor = paletteColours[15];
+
+                    ColourPreviews[16].BackColor = paletteColours[16];
+
+                    ColourPreviews[17].BackColor = paletteColours[17];
+
+                    ColourPreviews[18].BackColor = paletteColours[18];
+
+                    ColourPreviews[19].BackColor = paletteColours[19];
+
+                    ColourPreviews[20].BackColor = paletteColours[20];
+
+                    ColourPreviews[21].BackColor = paletteColours[21];
+
+                    ColourPreviews[22].BackColor = paletteColours[22];
+
+                    ColourPreviews[23].BackColor = paletteColours[23];
+
+                    ColourPreviews[24].BackColor = paletteColours[24];
+
+                    ColourPreviews[25].BackColor = paletteColours[25];
+
+                    ColourPreviews[26].BackColor = paletteColours[26];
+
+                    ColourPreviews[27].BackColor = paletteColours[27];
+
+                    ColourPreviews[28].BackColor = paletteColours[28];
+
+                    ColourPreviews[29].BackColor = paletteColours[29];
+                }
+            }
+            catch (Exception e)
+            {
+                Suite.Extended.Common.ExceptionHandler.CaptureException(e);
+            }
         }
         #endregion
     }

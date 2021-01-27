@@ -4,7 +4,7 @@ using System.Drawing;
 
 namespace Krypton.Toolkit.Suite.Extended.Core
 {
-    public class InternalKryptonPaletteBasicColourCreator : KryptonForm
+    internal class InternalKryptonPaletteBasicColourCreator : KryptonForm
     {
         #region Design Code
         private KryptonPanel kryptonPanel1;
