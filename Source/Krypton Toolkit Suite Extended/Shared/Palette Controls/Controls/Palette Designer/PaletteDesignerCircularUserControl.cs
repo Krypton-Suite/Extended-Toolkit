@@ -1974,7 +1974,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             }
             catch (Exception e)
             {
-                Suite.Extended.Common.ExceptionHandler.CaptureException(e);
+                ExceptionHandler.CaptureException(e);
             }
         }
 
@@ -1982,75 +1982,69 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
         {
             try
             {
-                if (_previews.Length! < 0)
-                {
-                    generateARandomColourToolStripMenuItem.PerformClick();
+                generateARandomColourToolStripMenuItem.PerformClick();
 
-                    generateARandomColourToolStripMenuItem1.PerformClick();
+                generateARandomColourToolStripMenuItem1.PerformClick();
 
-                    generateARandomColourToolStripMenuItem2.PerformClick();
+                generateARandomColourToolStripMenuItem2.PerformClick();
 
-                    generateARandomColourToolStripMenuItem3.PerformClick();
+                generateARandomColourToolStripMenuItem3.PerformClick();
 
-                    generateARandomColourToolStripMenuItem4.PerformClick();
+                generateARandomColourToolStripMenuItem4.PerformClick();
 
-                    generateARandomColourToolStripMenuItem5.PerformClick();
+                generateARandomColourToolStripMenuItem5.PerformClick();
 
-                    generateARandomColourToolStripMenuItem6.PerformClick();
+                generateARandomColourToolStripMenuItem6.PerformClick();
 
-                    generateARandomColourToolStripMenuItem7.PerformClick();
+                generateARandomColourToolStripMenuItem7.PerformClick();
 
-                    generateARandomColourToolStripMenuItem8.PerformClick();
+                generateARandomColourToolStripMenuItem8.PerformClick();
 
-                    generateARandomColourToolStripMenuItem9.PerformClick();
+                generateARandomColourToolStripMenuItem9.PerformClick();
 
-                    generateARandomColourToolStripMenuItem10.PerformClick();
+                generateARandomColourToolStripMenuItem10.PerformClick();
 
-                    generateARandomColourToolStripMenuItem11.PerformClick();
+                generateARandomColourToolStripMenuItem11.PerformClick();
 
-                    generateARandomColourToolStripMenuItem12.PerformClick();
+                generateARandomColourToolStripMenuItem12.PerformClick();
 
-                    generateARandomColourToolStripMenuItem13.PerformClick();
+                generateARandomColourToolStripMenuItem13.PerformClick();
 
-                    generateARandomColourToolStripMenuItem14.PerformClick();
+                generateARandomColourToolStripMenuItem14.PerformClick();
 
-                    generateARandomColourToolStripMenuItem15.PerformClick();
+                generateARandomColourToolStripMenuItem15.PerformClick();
 
-                    generateARandomColourToolStripMenuItem16.PerformClick();
+                generateARandomColourToolStripMenuItem16.PerformClick();
 
-                    generateARandomColourToolStripMenuItem17.PerformClick();
+                generateARandomColourToolStripMenuItem17.PerformClick();
 
-                    generateARandomColourToolStripMenuItem18.PerformClick();
+                generateARandomColourToolStripMenuItem18.PerformClick();
 
-                    generateARandomColourToolStripMenuItem19.PerformClick();
+                generateARandomColourToolStripMenuItem19.PerformClick();
 
-                    generateARandomColourToolStripMenuItem20.PerformClick();
+                generateARandomColourToolStripMenuItem20.PerformClick();
 
-                    generateARandomColourToolStripMenuItem21.PerformClick();
+                generateARandomColourToolStripMenuItem21.PerformClick();
 
-                    generateARandomColourToolStripMenuItem22.PerformClick();
+                generateARandomColourToolStripMenuItem22.PerformClick();
 
-                    generateARandomColourToolStripMenuItem23.PerformClick();
+                generateARandomColourToolStripMenuItem23.PerformClick();
 
-                    generateARandomColourToolStripMenuItem24.PerformClick();
+                generateARandomColourToolStripMenuItem24.PerformClick();
 
-                    generateARandomColourToolStripMenuItem25.PerformClick();
+                generateARandomColourToolStripMenuItem25.PerformClick();
 
-                    generateARandomColourToolStripMenuItem26.PerformClick();
+                generateARandomColourToolStripMenuItem26.PerformClick();
 
-                    generateARandomColourToolStripMenuItem27.PerformClick();
+                generateARandomColourToolStripMenuItem27.PerformClick();
 
-                    generateARandomColourToolStripMenuItem28.PerformClick();
+                generateARandomColourToolStripMenuItem28.PerformClick();
 
-                    generateARandomColourToolStripMenuItem29.PerformClick();
-
-                    SetColourPreviews(PaletteColours);
-                }
+                generateARandomColourToolStripMenuItem29.PerformClick();
             }
             catch (Exception e)
             {
-
-                throw;
+                ExceptionHandler.CaptureException(e);
             }
         }
 
@@ -2070,7 +2064,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             }
             catch (Exception e)
             {
-                Suite.Extended.Common.ExceptionHandler.CaptureException(e);
+                ExceptionHandler.CaptureException(e);
             }
         }
         #endregion
@@ -2515,6 +2509,8 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
 
                     ColourPreviews[29].BackColor = paletteColours[29];
                 }
+
+                SetPaletteColours(paletteColours);
             }
             catch (Exception e)
             {
