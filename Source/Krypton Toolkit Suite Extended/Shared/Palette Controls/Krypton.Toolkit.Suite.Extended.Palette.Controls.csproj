@@ -80,6 +80,18 @@
 
   <ItemGroup>
     <Compile Update="Controls\Colours\BasicPaletteColourUserControlTest.cs" />
+    <Compile Update="Settings\PaletteColourSettings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>PaletteColourSettings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Settings\PaletteColourSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>PaletteColourSettings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
 
   <PropertyGroup>
