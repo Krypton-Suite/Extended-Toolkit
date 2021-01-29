@@ -57,6 +57,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="WindowsAPICodePack" Version="1.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <!--Canary icon-->
     <None Include="Package Icons\Canary.png" Pack="true" PackagePath="\" />
     

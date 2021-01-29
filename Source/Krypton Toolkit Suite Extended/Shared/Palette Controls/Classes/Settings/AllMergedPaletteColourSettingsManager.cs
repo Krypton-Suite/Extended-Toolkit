@@ -10,6 +10,7 @@ using Krypton.Toolkit.Extended.Palette.Controls.Settings;
 using Krypton.Toolkit.Suite.Extended.Base;
 using Krypton.Toolkit.Suite.Extended.Common;
 using Krypton.Toolkit.Suite.Extended.Global.Utilities;
+using Microsoft.WindowsAPICodePack.Dialogs;
 using System;
 using System.Drawing;
 using System.IO;
@@ -104,6 +105,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
         #endregion
 
         #region Constructors
+        /// <summary>Initializes a new instance of the <see cref="AllMergedPaletteColourSettingsManager" /> class.</summary>
         public AllMergedPaletteColourSettingsManager()
         {
 
@@ -854,6 +856,8 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
         #endregion
 
         #region IO Stuff
+        /// <summary>Writes the ARGB colours to file.</summary>
+        /// <param name="colourConfigurationFilePath">The colour configuration file path.</param>
         public static void WriteARGBColoursToFile(string colourConfigurationFilePath)
         {
             AllMergedPaletteColourSettingsManager manager = new AllMergedPaletteColourSettingsManager();
@@ -943,6 +947,8 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             }
         }
 
+        /// <summary>Writes the RGB colours to file.</summary>
+        /// <param name="colourConfigurationFilePath">The colour configuration file path.</param>
         public static void WriteRGBColoursToFile(string colourConfigurationFilePath)
         {
             AllMergedPaletteColourSettingsManager manager = new AllMergedPaletteColourSettingsManager();

@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Krypton.Toolkit.Suite.Extended.Core;
+using Krypton.Toolkit.Suite.Extended.Settings;
+using System;
+using System.Drawing;
 
 namespace Krypton.Toolkit.Extended.Palette.Controls
 {
     public class InternalBasicPaletteCreator : KryptonForm
     {
+        #region Design Code
         private KryptonPanel kryptonPanel1;
         private KryptonButton kbtnDebugConsole;
         private KryptonButton kbtnOptions;
@@ -46,6 +46,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
         private KryptonLabel kryptonLabel5;
         private KryptonButton kbtnGenerateRandomColour;
         private KryptonColorButton kcbtnChooseBaseColour;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.StatusStrip statusStrip1;
 
         private void InitializeComponent()
@@ -73,11 +74,6 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.kryptonLabel14 = new Krypton.Toolkit.KryptonLabel();
             this.kryptonLabel13 = new Krypton.Toolkit.KryptonLabel();
             this.kryptonLabel12 = new Krypton.Toolkit.KryptonLabel();
-            this.cpbxLightestColour = new Krypton.Toolkit.Suite.Extended.Core.CircularPictureBox();
-            this.cpbxLightColour = new Krypton.Toolkit.Suite.Extended.Core.CircularPictureBox();
-            this.cpbxMediumColour = new Krypton.Toolkit.Suite.Extended.Core.CircularPictureBox();
-            this.cpbxDarkestColour = new Krypton.Toolkit.Suite.Extended.Core.CircularPictureBox();
-            this.cpbxBaseColour = new Krypton.Toolkit.Suite.Extended.Core.CircularPictureBox();
             this.knudBlueValue = new Krypton.Toolkit.KryptonNumericUpDown();
             this.knudGreenValue = new Krypton.Toolkit.KryptonNumericUpDown();
             this.knudRedValue = new Krypton.Toolkit.KryptonNumericUpDown();
@@ -89,6 +85,13 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.kryptonLabel5 = new Krypton.Toolkit.KryptonLabel();
             this.kbtnGenerateRandomColour = new Krypton.Toolkit.KryptonButton();
             this.kcbtnChooseBaseColour = new Krypton.Toolkit.KryptonColorButton();
+            this.cpbxLightestColour = new Krypton.Toolkit.Suite.Extended.Core.CircularPictureBox();
+            this.cpbxLightColour = new Krypton.Toolkit.Suite.Extended.Core.CircularPictureBox();
+            this.cpbxMediumColour = new Krypton.Toolkit.Suite.Extended.Core.CircularPictureBox();
+            this.cpbxDarkestColour = new Krypton.Toolkit.Suite.Extended.Core.CircularPictureBox();
+            this.cpbxBaseColour = new Krypton.Toolkit.Suite.Extended.Core.CircularPictureBox();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
@@ -103,6 +106,8 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             // statusStrip1
             // 
             this.statusStrip1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1});
             this.statusStrip1.Location = new System.Drawing.Point(0, 563);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.ManagerRenderMode;
@@ -280,6 +285,7 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.ktbAlphaValue.Size = new System.Drawing.Size(21, 330);
             this.ktbAlphaValue.TabIndex = 92;
             this.ktbAlphaValue.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.ktbAlphaValue.Value = 255;
             // 
             // kryptonLabel4
             // 
@@ -362,56 +368,6 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.kryptonLabel12.TabIndex = 83;
             this.kryptonLabel12.Values.Text = "Base Colour";
             // 
-            // cpbxLightestColour
-            // 
-            this.cpbxLightestColour.BackColor = System.Drawing.Color.White;
-            this.cpbxLightestColour.Location = new System.Drawing.Point(47, 427);
-            this.cpbxLightestColour.Name = "cpbxLightestColour";
-            this.cpbxLightestColour.Size = new System.Drawing.Size(64, 64);
-            this.cpbxLightestColour.TabIndex = 82;
-            this.cpbxLightestColour.TabStop = false;
-            this.cpbxLightestColour.ToolTipValues = null;
-            // 
-            // cpbxLightColour
-            // 
-            this.cpbxLightColour.BackColor = System.Drawing.Color.White;
-            this.cpbxLightColour.Location = new System.Drawing.Point(47, 330);
-            this.cpbxLightColour.Name = "cpbxLightColour";
-            this.cpbxLightColour.Size = new System.Drawing.Size(64, 64);
-            this.cpbxLightColour.TabIndex = 81;
-            this.cpbxLightColour.TabStop = false;
-            this.cpbxLightColour.ToolTipValues = null;
-            // 
-            // cpbxMediumColour
-            // 
-            this.cpbxMediumColour.BackColor = System.Drawing.Color.White;
-            this.cpbxMediumColour.Location = new System.Drawing.Point(47, 233);
-            this.cpbxMediumColour.Name = "cpbxMediumColour";
-            this.cpbxMediumColour.Size = new System.Drawing.Size(64, 64);
-            this.cpbxMediumColour.TabIndex = 80;
-            this.cpbxMediumColour.TabStop = false;
-            this.cpbxMediumColour.ToolTipValues = null;
-            // 
-            // cpbxDarkestColour
-            // 
-            this.cpbxDarkestColour.BackColor = System.Drawing.Color.White;
-            this.cpbxDarkestColour.Location = new System.Drawing.Point(47, 136);
-            this.cpbxDarkestColour.Name = "cpbxDarkestColour";
-            this.cpbxDarkestColour.Size = new System.Drawing.Size(64, 64);
-            this.cpbxDarkestColour.TabIndex = 79;
-            this.cpbxDarkestColour.TabStop = false;
-            this.cpbxDarkestColour.ToolTipValues = null;
-            // 
-            // cpbxBaseColour
-            // 
-            this.cpbxBaseColour.BackColor = System.Drawing.Color.White;
-            this.cpbxBaseColour.Location = new System.Drawing.Point(47, 39);
-            this.cpbxBaseColour.Name = "cpbxBaseColour";
-            this.cpbxBaseColour.Size = new System.Drawing.Size(64, 64);
-            this.cpbxBaseColour.TabIndex = 78;
-            this.cpbxBaseColour.TabStop = false;
-            this.cpbxBaseColour.ToolTipValues = null;
-            // 
             // knudBlueValue
             // 
             this.knudBlueValue.Location = new System.Drawing.Point(643, 375);
@@ -473,6 +429,11 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.knudAlphaValue.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.knudAlphaValue.StateCommon.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
             this.knudAlphaValue.TabIndex = 96;
+            this.knudAlphaValue.Value = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
             // 
             // kbtnGenerateGreen
             // 
@@ -535,6 +496,62 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.kcbtnChooseBaseColour.TabIndex = 103;
             this.kcbtnChooseBaseColour.Values.Text = "Ch&oose a Base Colour";
             // 
+            // cpbxLightestColour
+            // 
+            this.cpbxLightestColour.BackColor = System.Drawing.Color.White;
+            this.cpbxLightestColour.Location = new System.Drawing.Point(47, 427);
+            this.cpbxLightestColour.Name = "cpbxLightestColour";
+            this.cpbxLightestColour.Size = new System.Drawing.Size(64, 64);
+            this.cpbxLightestColour.TabIndex = 82;
+            this.cpbxLightestColour.TabStop = false;
+            this.cpbxLightestColour.ToolTipValues = null;
+            // 
+            // cpbxLightColour
+            // 
+            this.cpbxLightColour.BackColor = System.Drawing.Color.White;
+            this.cpbxLightColour.Location = new System.Drawing.Point(47, 330);
+            this.cpbxLightColour.Name = "cpbxLightColour";
+            this.cpbxLightColour.Size = new System.Drawing.Size(64, 64);
+            this.cpbxLightColour.TabIndex = 81;
+            this.cpbxLightColour.TabStop = false;
+            this.cpbxLightColour.ToolTipValues = null;
+            // 
+            // cpbxMediumColour
+            // 
+            this.cpbxMediumColour.BackColor = System.Drawing.Color.White;
+            this.cpbxMediumColour.Location = new System.Drawing.Point(47, 233);
+            this.cpbxMediumColour.Name = "cpbxMediumColour";
+            this.cpbxMediumColour.Size = new System.Drawing.Size(64, 64);
+            this.cpbxMediumColour.TabIndex = 80;
+            this.cpbxMediumColour.TabStop = false;
+            this.cpbxMediumColour.ToolTipValues = null;
+            // 
+            // cpbxDarkestColour
+            // 
+            this.cpbxDarkestColour.BackColor = System.Drawing.Color.White;
+            this.cpbxDarkestColour.Location = new System.Drawing.Point(47, 136);
+            this.cpbxDarkestColour.Name = "cpbxDarkestColour";
+            this.cpbxDarkestColour.Size = new System.Drawing.Size(64, 64);
+            this.cpbxDarkestColour.TabIndex = 79;
+            this.cpbxDarkestColour.TabStop = false;
+            this.cpbxDarkestColour.ToolTipValues = null;
+            // 
+            // cpbxBaseColour
+            // 
+            this.cpbxBaseColour.BackColor = System.Drawing.Color.White;
+            this.cpbxBaseColour.Location = new System.Drawing.Point(47, 39);
+            this.cpbxBaseColour.Name = "cpbxBaseColour";
+            this.cpbxBaseColour.Size = new System.Drawing.Size(64, 64);
+            this.cpbxBaseColour.TabIndex = 78;
+            this.cpbxBaseColour.TabStop = false;
+            this.cpbxBaseColour.ToolTipValues = null;
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(118, 17);
+            this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
+            // 
             // InternalBasicPaletteCreator
             // 
             this.ClientSize = new System.Drawing.Size(735, 585);
@@ -547,6 +564,9 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             this.MinimizeBox = false;
             this.Name = "InternalBasicPaletteCreator";
             this.ShowInTaskbar = false;
+            this.Load += new System.EventHandler(this.InternalBasicPaletteCreator_Load);
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
@@ -559,6 +579,118 @@ namespace Krypton.Toolkit.Extended.Palette.Controls
             ((System.ComponentModel.ISupportInitialize)(this.cpbxBaseColour)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
+
+        }
+
+        #endregion
+
+        #region Variables
+        private ConversionMethods _conversionMethods = new ConversionMethods();
+
+        private RandomNumberGenerator _randomNumberGenerator = new RandomNumberGenerator();
+
+        private HSLColour _hslColour = new HSLColour();
+
+        private ColourControlManager _colourControlManager = new ColourControlManager();
+
+        private GlobalBooleanSettingsManager _globalBooleanSettingsManager = new GlobalBooleanSettingsManager();
+
+        private AllMergedPaletteColourSettingsManager _colourSettingsManager = new AllMergedPaletteColourSettingsManager();
+
+        private Color _baseColour, _colourDark, _colourNormal, _colourLight, _colourLightness;
+
+        private bool _paletteColourSelector;
+        #endregion
+
+        #region Properties
+        public Color BaseColour { get { return _baseColour; } set { _baseColour = value; } }
+
+        public bool PaletteColourSelector { get { return _paletteColourSelector; } set { _paletteColourSelector = value; } }
+        #endregion
+
+        #region Constructor
+        /// <summary>Initializes a new instance of the <see cref="InternalBasicPaletteCreator" /> class.</summary>
+        public InternalBasicPaletteCreator()
+        {
+            InitializeComponent();
+        }
+
+        /// <summary>Initializes a new instance of the <see cref="InternalBasicPaletteCreator" /> class.</summary>
+        /// <param name="alphaValue">The alpha value.</param>
+        /// <param name="redValue">The red value.</param>
+        /// <param name="greenValue">The green value.</param>
+        /// <param name="blueValue">The blue value.</param>
+        public InternalBasicPaletteCreator(int alphaValue, int redValue, int greenValue, int blueValue)
+        {
+            InitializeComponent();
+
+            knudAlphaValue.Value = alphaValue;
+
+            knudRedValue.Value = redValue;
+
+            knudGreenValue.Value = greenValue;
+
+            knudBlueValue.Value = blueValue;
+        }
+
+        /// <summary>Initializes a new instance of the <see cref="InternalBasicPaletteCreator" /> class.</summary>
+        /// <param name="baseColour">The base colour.</param>
+        public InternalBasicPaletteCreator(Color baseColour)
+        {
+            InitializeComponent();
+
+            BaseColour = baseColour;
+
+            cpbxBaseColour.BackColor = BaseColour;
+        }
+
+        /// <summary>Initializes a new instance of the <see cref="InternalBasicPaletteCreator" /> class.</summary>
+        /// <param name="paletteColourSelector">if set to <c>true</c> [palette colour selector].</param>
+        public InternalBasicPaletteCreator(bool paletteColourSelector)
+        {
+            InitializeComponent();
+
+            PaletteColourSelector = paletteColourSelector;
+        }
+
+        /// <summary>Initializes a new instance of the <see cref="InternalBasicPaletteCreator" /> class.</summary>
+        /// <param name="paletteColourSelector">if set to <c>true</c> [palette colour selector].</param>
+        /// <param name="alphaValue">The alpha value.</param>
+        /// <param name="redValue">The red value.</param>
+        /// <param name="greenValue">The green value.</param>
+        /// <param name="blueValue">The blue value.</param>
+        public InternalBasicPaletteCreator(bool paletteColourSelector, int alphaValue, int redValue, int greenValue, int blueValue)
+        {
+            InitializeComponent();
+
+            PaletteColourSelector = paletteColourSelector;
+
+            knudAlphaValue.Value = alphaValue;
+
+            knudRedValue.Value = redValue;
+
+            knudGreenValue.Value = greenValue;
+
+            knudBlueValue.Value = blueValue;
+        }
+
+        /// <summary>Initializes a new instance of the <see cref="InternalBasicPaletteCreator" /> class.</summary>
+        /// <param name="paletteColourSelector">if set to <c>true</c> [palette colour selector].</param>
+        /// <param name="baseColour">The base colour.</param>
+        public InternalBasicPaletteCreator(bool paletteColourSelector, Color baseColour)
+        {
+            InitializeComponent();
+
+            PaletteColourSelector = paletteColourSelector;
+
+            BaseColour = baseColour;
+
+            cpbxBaseColour.BackColor = BaseColour;
+        }
+        #endregion
+
+        private void InternalBasicPaletteCreator_Load(object sender, EventArgs e)
+        {
 
         }
     }
