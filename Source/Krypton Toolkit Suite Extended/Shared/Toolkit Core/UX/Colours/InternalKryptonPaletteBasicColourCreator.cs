@@ -50,46 +50,45 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InternalKryptonPaletteBasicColourCreator));
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            this.kbtnDebugConsole = new Krypton.Toolkit.KryptonButton();
+            this.kbtnOptions = new Krypton.Toolkit.KryptonButton();
+            this.kbtnImportColours = new Krypton.Toolkit.KryptonButton();
+            this.kbtnExportColours = new Krypton.Toolkit.KryptonButton();
+            this.kbtnGenerateColours = new Krypton.Toolkit.KryptonButton();
             this.kryptonButton1 = new Krypton.Toolkit.KryptonButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
-            this.kryptonLabel16 = new Krypton.Toolkit.KryptonLabel();
-            this.kryptonLabel15 = new Krypton.Toolkit.KryptonLabel();
-            this.kryptonLabel14 = new Krypton.Toolkit.KryptonLabel();
-            this.kryptonLabel13 = new Krypton.Toolkit.KryptonLabel();
-            this.kryptonLabel12 = new Krypton.Toolkit.KryptonLabel();
-            this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
-            this.kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
-            this.kryptonLabel3 = new Krypton.Toolkit.KryptonLabel();
-            this.kryptonLabel4 = new Krypton.Toolkit.KryptonLabel();
-            this.kcbtnChooseBaseColour = new Krypton.Toolkit.KryptonColorButton();
-            this.knudAlphaValue = new Krypton.Toolkit.KryptonNumericUpDown();
-            this.knudRedValue = new Krypton.Toolkit.KryptonNumericUpDown();
-            this.knudGreenValue = new Krypton.Toolkit.KryptonNumericUpDown();
-            this.knudBlueValue = new Krypton.Toolkit.KryptonNumericUpDown();
-            this.ktbAlphaValue = new Krypton.Toolkit.KryptonTrackBar();
-            this.ktbRedValue = new Krypton.Toolkit.KryptonTrackBar();
-            this.ktbGreenValue = new Krypton.Toolkit.KryptonTrackBar();
-            this.ktbBlueValue = new Krypton.Toolkit.KryptonTrackBar();
-            this.kbtnDefineCustomTextColours = new Krypton.Toolkit.KryptonButton();
-            this.kbtnGenerateColours = new Krypton.Toolkit.KryptonButton();
-            this.kbtnExportColours = new Krypton.Toolkit.KryptonButton();
-            this.kbtnImportColours = new Krypton.Toolkit.KryptonButton();
-            this.kbtnOptions = new Krypton.Toolkit.KryptonButton();
-            this.kbtnDebugConsole = new Krypton.Toolkit.KryptonButton();
-            this.kbtnGenerateRed = new Krypton.Toolkit.KryptonButton();
-            this.kbtnGenerateBlue = new Krypton.Toolkit.KryptonButton();
-            this.kbtnGenerateGreen = new Krypton.Toolkit.KryptonButton();
-            this.kbtnGenerateRandomColour = new Krypton.Toolkit.KryptonButton();
-            this.kryptonLabel5 = new Krypton.Toolkit.KryptonLabel();
             this.ktxtHexadecimalValue = new Krypton.Toolkit.KryptonTextBox();
+            this.kryptonLabel5 = new Krypton.Toolkit.KryptonLabel();
+            this.kbtnGenerateRandomColour = new Krypton.Toolkit.KryptonButton();
+            this.kbtnGenerateGreen = new Krypton.Toolkit.KryptonButton();
+            this.kbtnGenerateBlue = new Krypton.Toolkit.KryptonButton();
+            this.kbtnGenerateRed = new Krypton.Toolkit.KryptonButton();
+            this.kbtnDefineCustomTextColours = new Krypton.Toolkit.KryptonButton();
+            this.ktbBlueValue = new Krypton.Toolkit.KryptonTrackBar();
+            this.ktbGreenValue = new Krypton.Toolkit.KryptonTrackBar();
+            this.ktbRedValue = new Krypton.Toolkit.KryptonTrackBar();
+            this.ktbAlphaValue = new Krypton.Toolkit.KryptonTrackBar();
+            this.knudBlueValue = new Krypton.Toolkit.KryptonNumericUpDown();
+            this.knudGreenValue = new Krypton.Toolkit.KryptonNumericUpDown();
+            this.knudRedValue = new Krypton.Toolkit.KryptonNumericUpDown();
+            this.knudAlphaValue = new Krypton.Toolkit.KryptonNumericUpDown();
+            this.kcbtnChooseBaseColour = new Krypton.Toolkit.KryptonColorButton();
+            this.kryptonLabel4 = new Krypton.Toolkit.KryptonLabel();
+            this.kryptonLabel3 = new Krypton.Toolkit.KryptonLabel();
+            this.kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
+            this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
             this.cpbxLightestColour = new Krypton.Toolkit.Suite.Extended.Core.CircularPictureBox();
             this.cpbxLightColour = new Krypton.Toolkit.Suite.Extended.Core.CircularPictureBox();
             this.cpbxMediumColour = new Krypton.Toolkit.Suite.Extended.Core.CircularPictureBox();
             this.cpbxDarkestColour = new Krypton.Toolkit.Suite.Extended.Core.CircularPictureBox();
             this.cpbxBaseColour = new Krypton.Toolkit.Suite.Extended.Core.CircularPictureBox();
+            this.kryptonLabel16 = new Krypton.Toolkit.KryptonLabel();
+            this.kryptonLabel15 = new Krypton.Toolkit.KryptonLabel();
+            this.kryptonLabel14 = new Krypton.Toolkit.KryptonLabel();
+            this.kryptonLabel13 = new Krypton.Toolkit.KryptonLabel();
+            this.kryptonLabel12 = new Krypton.Toolkit.KryptonLabel();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
@@ -114,6 +113,48 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kryptonPanel1.Name = "kryptonPanel1";
             this.kryptonPanel1.Size = new System.Drawing.Size(851, 50);
             this.kryptonPanel1.TabIndex = 0;
+            // 
+            // kbtnDebugConsole
+            // 
+            this.kbtnDebugConsole.Location = new System.Drawing.Point(432, 13);
+            this.kbtnDebugConsole.Name = "kbtnDebugConsole";
+            this.kbtnDebugConsole.Size = new System.Drawing.Size(96, 25);
+            this.kbtnDebugConsole.TabIndex = 5;
+            this.kbtnDebugConsole.Values.Text = "&Debug Console";
+            this.kbtnDebugConsole.Visible = false;
+            // 
+            // kbtnOptions
+            // 
+            this.kbtnOptions.Location = new System.Drawing.Point(335, 13);
+            this.kbtnOptions.Name = "kbtnOptions";
+            this.kbtnOptions.Size = new System.Drawing.Size(90, 25);
+            this.kbtnOptions.TabIndex = 4;
+            this.kbtnOptions.Values.Text = "O&ptions";
+            // 
+            // kbtnImportColours
+            // 
+            this.kbtnImportColours.Location = new System.Drawing.Point(224, 13);
+            this.kbtnImportColours.Name = "kbtnImportColours";
+            this.kbtnImportColours.Size = new System.Drawing.Size(104, 25);
+            this.kbtnImportColours.TabIndex = 3;
+            this.kbtnImportColours.Values.Text = "I&mport Colours";
+            // 
+            // kbtnExportColours
+            // 
+            this.kbtnExportColours.Enabled = false;
+            this.kbtnExportColours.Location = new System.Drawing.Point(128, 13);
+            this.kbtnExportColours.Name = "kbtnExportColours";
+            this.kbtnExportColours.Size = new System.Drawing.Size(90, 25);
+            this.kbtnExportColours.TabIndex = 2;
+            this.kbtnExportColours.Values.Text = "Ex&port Colours";
+            // 
+            // kbtnGenerateColours
+            // 
+            this.kbtnGenerateColours.Location = new System.Drawing.Point(13, 13);
+            this.kbtnGenerateColours.Name = "kbtnGenerateColours";
+            this.kbtnGenerateColours.Size = new System.Drawing.Size(109, 25);
+            this.kbtnGenerateColours.TabIndex = 1;
+            this.kbtnGenerateColours.Values.Text = "&Generate Colours";
             // 
             // kryptonButton1
             // 
@@ -171,158 +212,121 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kryptonPanel2.Size = new System.Drawing.Size(851, 386);
             this.kryptonPanel2.TabIndex = 2;
             // 
-            // kryptonLabel16
+            // ktxtHexadecimalValue
             // 
-            this.kryptonLabel16.Location = new System.Drawing.Point(718, 12);
-            this.kryptonLabel16.Name = "kryptonLabel16";
-            this.kryptonLabel16.Size = new System.Drawing.Size(120, 21);
-            this.kryptonLabel16.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonLabel16.StateCommon.ShortText.ImageStyle = Krypton.Toolkit.PaletteImageStyle.Inherit;
-            this.kryptonLabel16.StateCommon.ShortText.Trim = Krypton.Toolkit.PaletteTextTrim.Inherit;
-            this.kryptonLabel16.TabIndex = 72;
-            this.kryptonLabel16.Values.Text = "Lightest Colour";
+            this.ktxtHexadecimalValue.Hint = "000000";
+            this.ktxtHexadecimalValue.Location = new System.Drawing.Point(638, 355);
+            this.ktxtHexadecimalValue.MaxLength = 6;
+            this.ktxtHexadecimalValue.Name = "ktxtHexadecimalValue";
+            this.ktxtHexadecimalValue.Size = new System.Drawing.Size(100, 24);
+            this.ktxtHexadecimalValue.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ktxtHexadecimalValue.StateCommon.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
+            this.ktxtHexadecimalValue.TabIndex = 97;
+            this.ktxtHexadecimalValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // kryptonLabel15
+            // kryptonLabel5
             // 
-            this.kryptonLabel15.Location = new System.Drawing.Point(555, 12);
-            this.kryptonLabel15.Name = "kryptonLabel15";
-            this.kryptonLabel15.Size = new System.Drawing.Size(98, 21);
-            this.kryptonLabel15.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonLabel15.StateCommon.ShortText.ImageStyle = Krypton.Toolkit.PaletteImageStyle.Inherit;
-            this.kryptonLabel15.StateCommon.ShortText.Trim = Krypton.Toolkit.PaletteTextTrim.Inherit;
-            this.kryptonLabel15.TabIndex = 71;
-            this.kryptonLabel15.Values.Text = "Light Colour";
+            this.kryptonLabel5.Location = new System.Drawing.Point(586, 355);
+            this.kryptonLabel5.Name = "kryptonLabel5";
+            this.kryptonLabel5.Size = new System.Drawing.Size(45, 21);
+            this.kryptonLabel5.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
+            this.kryptonLabel5.TabIndex = 96;
+            this.kryptonLabel5.Values.Text = "Hex:";
             // 
-            // kryptonLabel14
+            // kbtnGenerateRandomColour
             // 
-            this.kryptonLabel14.Location = new System.Drawing.Point(370, 12);
-            this.kryptonLabel14.Name = "kryptonLabel14";
-            this.kryptonLabel14.Size = new System.Drawing.Size(120, 21);
-            this.kryptonLabel14.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonLabel14.StateCommon.ShortText.ImageStyle = Krypton.Toolkit.PaletteImageStyle.Inherit;
-            this.kryptonLabel14.StateCommon.ShortText.Trim = Krypton.Toolkit.PaletteTextTrim.Inherit;
-            this.kryptonLabel14.TabIndex = 70;
-            this.kryptonLabel14.Values.Text = "Medium Colour";
+            this.kbtnGenerateRandomColour.Location = new System.Drawing.Point(403, 355);
+            this.kbtnGenerateRandomColour.Name = "kbtnGenerateRandomColour";
+            this.kbtnGenerateRandomColour.Size = new System.Drawing.Size(177, 25);
+            this.kbtnGenerateRandomColour.TabIndex = 95;
+            this.kbtnGenerateRandomColour.Values.Text = "Generate a Random &Colour";
             // 
-            // kryptonLabel13
+            // kbtnGenerateGreen
             // 
-            this.kryptonLabel13.Location = new System.Drawing.Point(187, 12);
-            this.kryptonLabel13.Name = "kryptonLabel13";
-            this.kryptonLabel13.Size = new System.Drawing.Size(118, 21);
-            this.kryptonLabel13.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonLabel13.StateCommon.ShortText.ImageStyle = Krypton.Toolkit.PaletteImageStyle.Inherit;
-            this.kryptonLabel13.StateCommon.ShortText.Trim = Krypton.Toolkit.PaletteTextTrim.Inherit;
-            this.kryptonLabel13.TabIndex = 69;
-            this.kryptonLabel13.Values.Text = "Darkest Colour";
+            this.kbtnGenerateGreen.Location = new System.Drawing.Point(719, 267);
+            this.kbtnGenerateGreen.Name = "kbtnGenerateGreen";
+            this.kbtnGenerateGreen.Size = new System.Drawing.Size(120, 25);
+            this.kbtnGenerateGreen.TabIndex = 94;
+            this.kbtnGenerateGreen.Values.Text = "Generate &Green";
             // 
-            // kryptonLabel12
+            // kbtnGenerateBlue
             // 
-            this.kryptonLabel12.Location = new System.Drawing.Point(22, 12);
-            this.kryptonLabel12.Name = "kryptonLabel12";
-            this.kryptonLabel12.Size = new System.Drawing.Size(100, 21);
-            this.kryptonLabel12.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
-            this.kryptonLabel12.StateCommon.ShortText.ImageStyle = Krypton.Toolkit.PaletteImageStyle.Inherit;
-            this.kryptonLabel12.StateCommon.ShortText.Trim = Krypton.Toolkit.PaletteTextTrim.Inherit;
-            this.kryptonLabel12.TabIndex = 68;
-            this.kryptonLabel12.Values.Text = "Base Colour";
+            this.kbtnGenerateBlue.Location = new System.Drawing.Point(719, 313);
+            this.kbtnGenerateBlue.Name = "kbtnGenerateBlue";
+            this.kbtnGenerateBlue.Size = new System.Drawing.Size(119, 25);
+            this.kbtnGenerateBlue.TabIndex = 93;
+            this.kbtnGenerateBlue.Values.Text = "Generate &Blue";
             // 
-            // kryptonLabel1
+            // kbtnGenerateRed
             // 
-            this.kryptonLabel1.Location = new System.Drawing.Point(22, 315);
-            this.kryptonLabel1.Name = "kryptonLabel1";
-            this.kryptonLabel1.Size = new System.Drawing.Size(48, 21);
-            this.kryptonLabel1.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
-            this.kryptonLabel1.StateCommon.ShortText.ImageStyle = Krypton.Toolkit.PaletteImageStyle.Inherit;
-            this.kryptonLabel1.StateCommon.ShortText.Trim = Krypton.Toolkit.PaletteTextTrim.Inherit;
-            this.kryptonLabel1.TabIndex = 78;
-            this.kryptonLabel1.Values.Text = "Blue:";
+            this.kbtnGenerateRed.Location = new System.Drawing.Point(719, 227);
+            this.kbtnGenerateRed.Name = "kbtnGenerateRed";
+            this.kbtnGenerateRed.Size = new System.Drawing.Size(120, 25);
+            this.kbtnGenerateRed.TabIndex = 92;
+            this.kbtnGenerateRed.Values.Text = "Generate &Red";
             // 
-            // kryptonLabel2
+            // kbtnDefineCustomTextColours
             // 
-            this.kryptonLabel2.Location = new System.Drawing.Point(22, 271);
-            this.kryptonLabel2.Name = "kryptonLabel2";
-            this.kryptonLabel2.Size = new System.Drawing.Size(61, 21);
-            this.kryptonLabel2.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
-            this.kryptonLabel2.StateCommon.ShortText.ImageStyle = Krypton.Toolkit.PaletteImageStyle.Inherit;
-            this.kryptonLabel2.StateCommon.ShortText.Trim = Krypton.Toolkit.PaletteTextTrim.Inherit;
-            this.kryptonLabel2.TabIndex = 79;
-            this.kryptonLabel2.Values.Text = "Green:";
+            this.kbtnDefineCustomTextColours.Location = new System.Drawing.Point(217, 355);
+            this.kbtnDefineCustomTextColours.Name = "kbtnDefineCustomTextColours";
+            this.kbtnDefineCustomTextColours.Size = new System.Drawing.Size(180, 25);
+            this.kbtnDefineCustomTextColours.TabIndex = 91;
+            this.kbtnDefineCustomTextColours.Values.Text = "Define Custom Text &Colours";
             // 
-            // kryptonLabel3
+            // ktbBlueValue
             // 
-            this.kryptonLabel3.Location = new System.Drawing.Point(22, 227);
-            this.kryptonLabel3.Name = "kryptonLabel3";
-            this.kryptonLabel3.Size = new System.Drawing.Size(45, 21);
-            this.kryptonLabel3.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
-            this.kryptonLabel3.StateCommon.ShortText.ImageStyle = Krypton.Toolkit.PaletteImageStyle.Inherit;
-            this.kryptonLabel3.StateCommon.ShortText.Trim = Krypton.Toolkit.PaletteTextTrim.Inherit;
-            this.kryptonLabel3.TabIndex = 80;
-            this.kryptonLabel3.Values.Text = "Red:";
+            this.ktbBlueValue.DrawBackground = true;
+            this.ktbBlueValue.Location = new System.Drawing.Point(179, 315);
+            this.ktbBlueValue.Maximum = 255;
+            this.ktbBlueValue.Name = "ktbBlueValue";
+            this.ktbBlueValue.Size = new System.Drawing.Size(533, 21);
+            this.ktbBlueValue.StateCommon.Track.Color1 = System.Drawing.Color.Blue;
+            this.ktbBlueValue.StateCommon.Track.Color2 = System.Drawing.Color.Blue;
+            this.ktbBlueValue.StateCommon.Track.Color3 = System.Drawing.Color.Blue;
+            this.ktbBlueValue.StateCommon.Track.Color4 = System.Drawing.Color.Blue;
+            this.ktbBlueValue.StateCommon.Track.Color5 = System.Drawing.Color.Blue;
+            this.ktbBlueValue.TabIndex = 90;
+            this.ktbBlueValue.TickStyle = System.Windows.Forms.TickStyle.None;
             // 
-            // kryptonLabel4
+            // ktbGreenValue
             // 
-            this.kryptonLabel4.Location = new System.Drawing.Point(22, 183);
-            this.kryptonLabel4.Name = "kryptonLabel4";
-            this.kryptonLabel4.Size = new System.Drawing.Size(57, 21);
-            this.kryptonLabel4.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
-            this.kryptonLabel4.StateCommon.ShortText.ImageStyle = Krypton.Toolkit.PaletteImageStyle.Inherit;
-            this.kryptonLabel4.StateCommon.ShortText.Trim = Krypton.Toolkit.PaletteTextTrim.Inherit;
-            this.kryptonLabel4.TabIndex = 81;
-            this.kryptonLabel4.Values.Text = "Alpha:";
+            this.ktbGreenValue.DrawBackground = true;
+            this.ktbGreenValue.Location = new System.Drawing.Point(179, 271);
+            this.ktbGreenValue.Maximum = 255;
+            this.ktbGreenValue.Name = "ktbGreenValue";
+            this.ktbGreenValue.Size = new System.Drawing.Size(533, 21);
+            this.ktbGreenValue.StateCommon.Track.Color1 = System.Drawing.Color.Green;
+            this.ktbGreenValue.StateCommon.Track.Color2 = System.Drawing.Color.Green;
+            this.ktbGreenValue.StateCommon.Track.Color3 = System.Drawing.Color.Green;
+            this.ktbGreenValue.StateCommon.Track.Color4 = System.Drawing.Color.Green;
+            this.ktbGreenValue.StateCommon.Track.Color5 = System.Drawing.Color.Green;
+            this.ktbGreenValue.TabIndex = 89;
+            this.ktbGreenValue.TickStyle = System.Windows.Forms.TickStyle.None;
             // 
-            // kcbtnChooseBaseColour
+            // ktbRedValue
             // 
-            this.kcbtnChooseBaseColour.Location = new System.Drawing.Point(13, 355);
-            this.kcbtnChooseBaseColour.Name = "kcbtnChooseBaseColour";
-            this.kcbtnChooseBaseColour.Size = new System.Drawing.Size(197, 25);
-            this.kcbtnChooseBaseColour.TabIndex = 82;
-            this.kcbtnChooseBaseColour.Values.Text = "Ch&oose a Base Colour";
+            this.ktbRedValue.DrawBackground = true;
+            this.ktbRedValue.Location = new System.Drawing.Point(179, 227);
+            this.ktbRedValue.Maximum = 255;
+            this.ktbRedValue.Name = "ktbRedValue";
+            this.ktbRedValue.Size = new System.Drawing.Size(533, 21);
+            this.ktbRedValue.StateCommon.Track.Color1 = System.Drawing.Color.Red;
+            this.ktbRedValue.StateCommon.Track.Color2 = System.Drawing.Color.Red;
+            this.ktbRedValue.StateCommon.Track.Color3 = System.Drawing.Color.Red;
+            this.ktbRedValue.StateCommon.Track.Color4 = System.Drawing.Color.Red;
+            this.ktbRedValue.StateCommon.Track.Color5 = System.Drawing.Color.Red;
+            this.ktbRedValue.TabIndex = 88;
+            this.ktbRedValue.TickStyle = System.Windows.Forms.TickStyle.None;
             // 
-            // knudAlphaValue
+            // ktbAlphaValue
             // 
-            this.knudAlphaValue.Location = new System.Drawing.Point(99, 183);
-            this.knudAlphaValue.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.knudAlphaValue.Name = "knudAlphaValue";
-            this.knudAlphaValue.Size = new System.Drawing.Size(74, 23);
-            this.knudAlphaValue.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.knudAlphaValue.StateCommon.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
-            this.knudAlphaValue.TabIndex = 83;
-            // 
-            // knudRedValue
-            // 
-            this.knudRedValue.Location = new System.Drawing.Point(99, 229);
-            this.knudRedValue.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.knudRedValue.Name = "knudRedValue";
-            this.knudRedValue.Size = new System.Drawing.Size(74, 23);
-            this.knudRedValue.StateCommon.Back.Color1 = System.Drawing.Color.Red;
-            this.knudRedValue.StateCommon.Content.Color1 = System.Drawing.Color.White;
-            this.knudRedValue.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.knudRedValue.StateCommon.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
-            this.knudRedValue.TabIndex = 84;
-            // 
-            // knudGreenValue
-            // 
-            this.knudGreenValue.Location = new System.Drawing.Point(99, 271);
-            this.knudGreenValue.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.knudGreenValue.Name = "knudGreenValue";
-            this.knudGreenValue.Size = new System.Drawing.Size(74, 23);
-            this.knudGreenValue.StateCommon.Back.Color1 = System.Drawing.Color.Green;
-            this.knudGreenValue.StateCommon.Content.Color1 = System.Drawing.Color.White;
-            this.knudGreenValue.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.knudGreenValue.StateCommon.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
-            this.knudGreenValue.TabIndex = 85;
+            this.ktbAlphaValue.DrawBackground = true;
+            this.ktbAlphaValue.Location = new System.Drawing.Point(179, 183);
+            this.ktbAlphaValue.Maximum = 255;
+            this.ktbAlphaValue.Name = "ktbAlphaValue";
+            this.ktbAlphaValue.Size = new System.Drawing.Size(533, 21);
+            this.ktbAlphaValue.TabIndex = 87;
+            this.ktbAlphaValue.TickStyle = System.Windows.Forms.TickStyle.None;
             // 
             // knudBlueValue
             // 
@@ -340,165 +344,95 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.knudBlueValue.StateCommon.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
             this.knudBlueValue.TabIndex = 86;
             // 
-            // ktbAlphaValue
+            // knudGreenValue
             // 
-            this.ktbAlphaValue.DrawBackground = true;
-            this.ktbAlphaValue.Location = new System.Drawing.Point(179, 183);
-            this.ktbAlphaValue.Maximum = 255;
-            this.ktbAlphaValue.Name = "ktbAlphaValue";
-            this.ktbAlphaValue.Size = new System.Drawing.Size(533, 21);
-            this.ktbAlphaValue.TabIndex = 87;
-            this.ktbAlphaValue.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.knudGreenValue.Location = new System.Drawing.Point(99, 271);
+            this.knudGreenValue.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.knudGreenValue.Name = "knudGreenValue";
+            this.knudGreenValue.Size = new System.Drawing.Size(74, 23);
+            this.knudGreenValue.StateCommon.Back.Color1 = System.Drawing.Color.Green;
+            this.knudGreenValue.StateCommon.Content.Color1 = System.Drawing.Color.White;
+            this.knudGreenValue.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.knudGreenValue.StateCommon.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
+            this.knudGreenValue.TabIndex = 85;
             // 
-            // ktbRedValue
+            // knudRedValue
             // 
-            this.ktbRedValue.DrawBackground = true;
-            this.ktbRedValue.Location = new System.Drawing.Point(179, 227);
-            this.ktbRedValue.Maximum = 255;
-            this.ktbRedValue.Name = "ktbRedValue";
-            this.ktbRedValue.Size = new System.Drawing.Size(533, 21);
-            this.ktbRedValue.StateCommon.Track.Color1 = System.Drawing.Color.Red;
-            this.ktbRedValue.StateCommon.Track.Color2 = System.Drawing.Color.Red;
-            this.ktbRedValue.StateCommon.Track.Color3 = System.Drawing.Color.Red;
-            this.ktbRedValue.StateCommon.Track.Color4 = System.Drawing.Color.Red;
-            this.ktbRedValue.StateCommon.Track.Color5 = System.Drawing.Color.Red;
-            this.ktbRedValue.TabIndex = 88;
-            this.ktbRedValue.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.knudRedValue.Location = new System.Drawing.Point(99, 229);
+            this.knudRedValue.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.knudRedValue.Name = "knudRedValue";
+            this.knudRedValue.Size = new System.Drawing.Size(74, 23);
+            this.knudRedValue.StateCommon.Back.Color1 = System.Drawing.Color.Red;
+            this.knudRedValue.StateCommon.Content.Color1 = System.Drawing.Color.White;
+            this.knudRedValue.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.knudRedValue.StateCommon.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
+            this.knudRedValue.TabIndex = 84;
             // 
-            // ktbGreenValue
+            // knudAlphaValue
             // 
-            this.ktbGreenValue.DrawBackground = true;
-            this.ktbGreenValue.Location = new System.Drawing.Point(179, 271);
-            this.ktbGreenValue.Maximum = 255;
-            this.ktbGreenValue.Name = "ktbGreenValue";
-            this.ktbGreenValue.Size = new System.Drawing.Size(533, 21);
-            this.ktbGreenValue.StateCommon.Track.Color1 = System.Drawing.Color.Green;
-            this.ktbGreenValue.StateCommon.Track.Color2 = System.Drawing.Color.Green;
-            this.ktbGreenValue.StateCommon.Track.Color3 = System.Drawing.Color.Green;
-            this.ktbGreenValue.StateCommon.Track.Color4 = System.Drawing.Color.Green;
-            this.ktbGreenValue.StateCommon.Track.Color5 = System.Drawing.Color.Green;
-            this.ktbGreenValue.TabIndex = 89;
-            this.ktbGreenValue.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.knudAlphaValue.Location = new System.Drawing.Point(99, 183);
+            this.knudAlphaValue.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.knudAlphaValue.Name = "knudAlphaValue";
+            this.knudAlphaValue.Size = new System.Drawing.Size(74, 23);
+            this.knudAlphaValue.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.knudAlphaValue.StateCommon.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
+            this.knudAlphaValue.TabIndex = 83;
             // 
-            // ktbBlueValue
+            // kcbtnChooseBaseColour
             // 
-            this.ktbBlueValue.DrawBackground = true;
-            this.ktbBlueValue.Location = new System.Drawing.Point(179, 315);
-            this.ktbBlueValue.Maximum = 255;
-            this.ktbBlueValue.Name = "ktbBlueValue";
-            this.ktbBlueValue.Size = new System.Drawing.Size(533, 21);
-            this.ktbBlueValue.StateCommon.Track.Color1 = System.Drawing.Color.Blue;
-            this.ktbBlueValue.StateCommon.Track.Color2 = System.Drawing.Color.Blue;
-            this.ktbBlueValue.StateCommon.Track.Color3 = System.Drawing.Color.Blue;
-            this.ktbBlueValue.StateCommon.Track.Color4 = System.Drawing.Color.Blue;
-            this.ktbBlueValue.StateCommon.Track.Color5 = System.Drawing.Color.Blue;
-            this.ktbBlueValue.TabIndex = 90;
-            this.ktbBlueValue.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.kcbtnChooseBaseColour.Location = new System.Drawing.Point(13, 355);
+            this.kcbtnChooseBaseColour.Name = "kcbtnChooseBaseColour";
+            this.kcbtnChooseBaseColour.Size = new System.Drawing.Size(197, 25);
+            this.kcbtnChooseBaseColour.TabIndex = 82;
+            this.kcbtnChooseBaseColour.Values.Text = "Ch&oose a Base Colour";
             // 
-            // kbtnDefineCustomTextColours
+            // kryptonLabel4
             // 
-            this.kbtnDefineCustomTextColours.Location = new System.Drawing.Point(217, 355);
-            this.kbtnDefineCustomTextColours.Name = "kbtnDefineCustomTextColours";
-            this.kbtnDefineCustomTextColours.Size = new System.Drawing.Size(180, 25);
-            this.kbtnDefineCustomTextColours.TabIndex = 91;
-            this.kbtnDefineCustomTextColours.Values.Text = "Define Custom Text &Colours";
+            this.kryptonLabel4.Location = new System.Drawing.Point(22, 183);
+            this.kryptonLabel4.Name = "kryptonLabel4";
+            this.kryptonLabel4.Size = new System.Drawing.Size(57, 21);
+            this.kryptonLabel4.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
+            this.kryptonLabel4.TabIndex = 81;
+            this.kryptonLabel4.Values.Text = "Alpha:";
             // 
-            // kbtnGenerateColours
+            // kryptonLabel3
             // 
-            this.kbtnGenerateColours.Location = new System.Drawing.Point(13, 13);
-            this.kbtnGenerateColours.Name = "kbtnGenerateColours";
-            this.kbtnGenerateColours.Size = new System.Drawing.Size(109, 25);
-            this.kbtnGenerateColours.TabIndex = 1;
-            this.kbtnGenerateColours.Values.Text = "&Generate Colours";
+            this.kryptonLabel3.Location = new System.Drawing.Point(22, 227);
+            this.kryptonLabel3.Name = "kryptonLabel3";
+            this.kryptonLabel3.Size = new System.Drawing.Size(45, 21);
+            this.kryptonLabel3.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
+            this.kryptonLabel3.TabIndex = 80;
+            this.kryptonLabel3.Values.Text = "Red:";
             // 
-            // kbtnExportColours
+            // kryptonLabel2
             // 
-            this.kbtnExportColours.Enabled = false;
-            this.kbtnExportColours.Location = new System.Drawing.Point(128, 13);
-            this.kbtnExportColours.Name = "kbtnExportColours";
-            this.kbtnExportColours.Size = new System.Drawing.Size(90, 25);
-            this.kbtnExportColours.TabIndex = 2;
-            this.kbtnExportColours.Values.Text = "Ex&port Colours";
+            this.kryptonLabel2.Location = new System.Drawing.Point(22, 271);
+            this.kryptonLabel2.Name = "kryptonLabel2";
+            this.kryptonLabel2.Size = new System.Drawing.Size(61, 21);
+            this.kryptonLabel2.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
+            this.kryptonLabel2.TabIndex = 79;
+            this.kryptonLabel2.Values.Text = "Green:";
             // 
-            // kbtnImportColours
+            // kryptonLabel1
             // 
-            this.kbtnImportColours.Location = new System.Drawing.Point(224, 13);
-            this.kbtnImportColours.Name = "kbtnImportColours";
-            this.kbtnImportColours.Size = new System.Drawing.Size(104, 25);
-            this.kbtnImportColours.TabIndex = 3;
-            this.kbtnImportColours.Values.Text = "I&mport Colours";
-            // 
-            // kbtnOptions
-            // 
-            this.kbtnOptions.Location = new System.Drawing.Point(335, 13);
-            this.kbtnOptions.Name = "kbtnOptions";
-            this.kbtnOptions.Size = new System.Drawing.Size(90, 25);
-            this.kbtnOptions.TabIndex = 4;
-            this.kbtnOptions.Values.Text = "O&ptions";
-            // 
-            // kbtnDebugConsole
-            // 
-            this.kbtnDebugConsole.Location = new System.Drawing.Point(432, 13);
-            this.kbtnDebugConsole.Name = "kbtnDebugConsole";
-            this.kbtnDebugConsole.Size = new System.Drawing.Size(96, 25);
-            this.kbtnDebugConsole.TabIndex = 5;
-            this.kbtnDebugConsole.Values.Text = "&Debug Console";
-            this.kbtnDebugConsole.Visible = false;
-            // 
-            // kbtnGenerateRed
-            // 
-            this.kbtnGenerateRed.Location = new System.Drawing.Point(719, 227);
-            this.kbtnGenerateRed.Name = "kbtnGenerateRed";
-            this.kbtnGenerateRed.Size = new System.Drawing.Size(120, 25);
-            this.kbtnGenerateRed.TabIndex = 92;
-            this.kbtnGenerateRed.Values.Text = "Generate &Red";
-            // 
-            // kbtnGenerateBlue
-            // 
-            this.kbtnGenerateBlue.Location = new System.Drawing.Point(719, 313);
-            this.kbtnGenerateBlue.Name = "kbtnGenerateBlue";
-            this.kbtnGenerateBlue.Size = new System.Drawing.Size(119, 25);
-            this.kbtnGenerateBlue.TabIndex = 93;
-            this.kbtnGenerateBlue.Values.Text = "Generate &Blue";
-            // 
-            // kbtnGenerateGreen
-            // 
-            this.kbtnGenerateGreen.Location = new System.Drawing.Point(719, 267);
-            this.kbtnGenerateGreen.Name = "kbtnGenerateGreen";
-            this.kbtnGenerateGreen.Size = new System.Drawing.Size(120, 25);
-            this.kbtnGenerateGreen.TabIndex = 94;
-            this.kbtnGenerateGreen.Values.Text = "Generate &Green";
-            // 
-            // kbtnGenerateRandomColour
-            // 
-            this.kbtnGenerateRandomColour.Location = new System.Drawing.Point(403, 355);
-            this.kbtnGenerateRandomColour.Name = "kbtnGenerateRandomColour";
-            this.kbtnGenerateRandomColour.Size = new System.Drawing.Size(177, 25);
-            this.kbtnGenerateRandomColour.TabIndex = 95;
-            this.kbtnGenerateRandomColour.Values.Text = "Generate a Random &Colour";
-            // 
-            // kryptonLabel5
-            // 
-            this.kryptonLabel5.Location = new System.Drawing.Point(586, 355);
-            this.kryptonLabel5.Name = "kryptonLabel5";
-            this.kryptonLabel5.Size = new System.Drawing.Size(45, 21);
-            this.kryptonLabel5.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
-            this.kryptonLabel5.StateCommon.ShortText.ImageStyle = Krypton.Toolkit.PaletteImageStyle.Inherit;
-            this.kryptonLabel5.StateCommon.ShortText.Trim = Krypton.Toolkit.PaletteTextTrim.Inherit;
-            this.kryptonLabel5.TabIndex = 96;
-            this.kryptonLabel5.Values.Text = "Hex:";
-            // 
-            // ktxtHexadecimalValue
-            // 
-            this.ktxtHexadecimalValue.Hint = "000000";
-            this.ktxtHexadecimalValue.Location = new System.Drawing.Point(638, 355);
-            this.ktxtHexadecimalValue.MaxLength = 6;
-            this.ktxtHexadecimalValue.Name = "ktxtHexadecimalValue";
-            this.ktxtHexadecimalValue.Size = new System.Drawing.Size(100, 24);
-            this.ktxtHexadecimalValue.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ktxtHexadecimalValue.StateCommon.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
-            this.ktxtHexadecimalValue.TabIndex = 97;
-            this.ktxtHexadecimalValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.kryptonLabel1.Location = new System.Drawing.Point(22, 315);
+            this.kryptonLabel1.Name = "kryptonLabel1";
+            this.kryptonLabel1.Size = new System.Drawing.Size(48, 21);
+            this.kryptonLabel1.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
+            this.kryptonLabel1.TabIndex = 78;
+            this.kryptonLabel1.Values.Text = "Blue:";
             // 
             // cpbxLightestColour
             // 
@@ -508,6 +442,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.cpbxLightestColour.Size = new System.Drawing.Size(128, 128);
             this.cpbxLightestColour.TabIndex = 77;
             this.cpbxLightestColour.TabStop = false;
+            this.cpbxLightestColour.ToolTipValues = null;
             // 
             // cpbxLightColour
             // 
@@ -517,6 +452,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.cpbxLightColour.Size = new System.Drawing.Size(128, 128);
             this.cpbxLightColour.TabIndex = 76;
             this.cpbxLightColour.TabStop = false;
+            this.cpbxLightColour.ToolTipValues = null;
             // 
             // cpbxMediumColour
             // 
@@ -526,6 +462,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.cpbxMediumColour.Size = new System.Drawing.Size(128, 128);
             this.cpbxMediumColour.TabIndex = 75;
             this.cpbxMediumColour.TabStop = false;
+            this.cpbxMediumColour.ToolTipValues = null;
             // 
             // cpbxDarkestColour
             // 
@@ -535,6 +472,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.cpbxDarkestColour.Size = new System.Drawing.Size(128, 128);
             this.cpbxDarkestColour.TabIndex = 74;
             this.cpbxDarkestColour.TabStop = false;
+            this.cpbxDarkestColour.ToolTipValues = null;
             // 
             // cpbxBaseColour
             // 
@@ -544,6 +482,52 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.cpbxBaseColour.Size = new System.Drawing.Size(128, 128);
             this.cpbxBaseColour.TabIndex = 73;
             this.cpbxBaseColour.TabStop = false;
+            this.cpbxBaseColour.ToolTipValues = null;
+            // 
+            // kryptonLabel16
+            // 
+            this.kryptonLabel16.Location = new System.Drawing.Point(718, 12);
+            this.kryptonLabel16.Name = "kryptonLabel16";
+            this.kryptonLabel16.Size = new System.Drawing.Size(120, 21);
+            this.kryptonLabel16.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabel16.TabIndex = 72;
+            this.kryptonLabel16.Values.Text = "Lightest Colour";
+            // 
+            // kryptonLabel15
+            // 
+            this.kryptonLabel15.Location = new System.Drawing.Point(555, 12);
+            this.kryptonLabel15.Name = "kryptonLabel15";
+            this.kryptonLabel15.Size = new System.Drawing.Size(98, 21);
+            this.kryptonLabel15.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabel15.TabIndex = 71;
+            this.kryptonLabel15.Values.Text = "Light Colour";
+            // 
+            // kryptonLabel14
+            // 
+            this.kryptonLabel14.Location = new System.Drawing.Point(370, 12);
+            this.kryptonLabel14.Name = "kryptonLabel14";
+            this.kryptonLabel14.Size = new System.Drawing.Size(120, 21);
+            this.kryptonLabel14.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabel14.TabIndex = 70;
+            this.kryptonLabel14.Values.Text = "Medium Colour";
+            // 
+            // kryptonLabel13
+            // 
+            this.kryptonLabel13.Location = new System.Drawing.Point(187, 12);
+            this.kryptonLabel13.Name = "kryptonLabel13";
+            this.kryptonLabel13.Size = new System.Drawing.Size(118, 21);
+            this.kryptonLabel13.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabel13.TabIndex = 69;
+            this.kryptonLabel13.Values.Text = "Darkest Colour";
+            // 
+            // kryptonLabel12
+            // 
+            this.kryptonLabel12.Location = new System.Drawing.Point(22, 12);
+            this.kryptonLabel12.Name = "kryptonLabel12";
+            this.kryptonLabel12.Size = new System.Drawing.Size(100, 21);
+            this.kryptonLabel12.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
+            this.kryptonLabel12.TabIndex = 68;
+            this.kryptonLabel12.Values.Text = "Base Colour";
             // 
             // InternalKryptonPaletteBasicColourCreator
             // 
@@ -552,7 +536,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.kryptonPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "InternalKryptonPaletteBasicColourCreator";
