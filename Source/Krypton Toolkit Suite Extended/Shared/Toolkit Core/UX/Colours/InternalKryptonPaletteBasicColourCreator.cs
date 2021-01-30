@@ -1,9 +1,6 @@
-﻿using Krypton.Toolkit.Suite.Extended.Settings;
-using System;
-using System.Drawing;
-
-namespace Krypton.Toolkit.Suite.Extended.Core
+﻿namespace Krypton.Toolkit.Suite.Extended.Core
 {
+    /*
     internal class InternalKryptonPaletteBasicColourCreator : KryptonForm
     {
         #region Design Code
@@ -648,4 +645,5 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         }
     }
+    */
 }

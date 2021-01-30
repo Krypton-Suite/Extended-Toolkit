@@ -1,4 +1,6 @@
-﻿namespace Krypton.Toolkit.Extended.Palette.Controls
+﻿using System.Collections;
+
+namespace Krypton.Toolkit.Extended.Palette.Controls
 {
     public class ColourHelpers
     {
@@ -30,6 +32,58 @@
         "Status Strip Text Colour",
         "Ribbon Tab Text Colour"
         };
+        #endregion
+
+        #region Constructor
+        /// <summary>Initializes a new instance of the <see cref="ColourHelpers" /> class.</summary>
+        public ColourHelpers()
+        {
+
+        }
+        #endregion
+
+        #region Methods
+        /// <summary>Gets the palette colours.</summary>
+        /// <returns></returns>
+        public static string[] GetPaletteColours()
+        {
+            ColourHelpers colourHelpers = new ColourHelpers();
+
+            return colourHelpers._paletteColours;
+        }
+
+        /// <summary>Propagates the colours.</summary>
+        /// <param name="comboBox">The combo box.</param>
+        public static void PropagateColours(KryptonComboBox comboBox)
+        {
+            foreach (string item in GetPaletteColours())
+            {
+                comboBox.Items.Add(item);
+            }
+        }
+
+        /// <summary>Propagates the colours.</summary>
+        /// <param name="comboBox">The combo box.</param>
+        /// <param name="sort">if set to <c>true</c> [sort].</param>
+        public static void PropagateColours(KryptonComboBox comboBox, bool sort)
+        {
+            ArrayList internalArray = new ArrayList();
+
+            foreach (string item in GetPaletteColours())
+            {
+                internalArray.Add(item);
+            }
+
+            if (sort)
+            {
+                internalArray.Sort();
+
+                foreach (string item in internalArray)
+                {
+                    comboBox.Items.Add(item);
+                }
+            }
+        }
         #endregion
     }
 }
