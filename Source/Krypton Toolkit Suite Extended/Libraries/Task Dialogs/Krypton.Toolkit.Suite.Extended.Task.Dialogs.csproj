@@ -16,26 +16,39 @@
     <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
   </PropertyGroup>
 
+  <!--Canary package configuration
+  <PropertyGroup>
+    <PackageId>Krypton.Toolkit.Suite.Extended.Task.Dialogs.Canary</PackageId>
+    <PackageOutputPath>..\..\..\..\Bin\NuGet\Canary</PackageOutputPath>
+    <PackageIcon>Canary.png</PackageIcon>
+    <AssemblyVersion>6.0.2102</AssemblyVersion>
+    <FileVersion>6.0.2102</FileVersion>
+    <Version>6.0.2102</Version>
+  </PropertyGroup>-->
+
+  <!--Nightly package configuration-
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <PackageId>Krypton.Toolkit.Suite.Extended.Task.Dialogs.Nightly</PackageId>
+    <PackageOutputPath>..\..\..\..\Bin\NuGet\Nightly</PackageOutputPath>
+    <PackageIcon>Nightly.png</PackageIcon>
+    <VersionSuffix>pre$([System.DateTime]::UtcNow.ToString(yyyyMMdd-HHmm))</VersionSuffix>
+  </PropertyGroup>-->
+
   <!--Stable package configuration-->
   <PropertyGroup>
     <PackageId>Krypton.Toolkit.Suite.Extended.Task.Dialogs</PackageId>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Stable</PackageOutputPath>
-    <PackageIconUrl>https://tinyurl.com/KryptonExtendedToolkitIcon</PackageIconUrl>
+    <PackageIcon>Stable.png</PackageIcon>
+    <AssemblyVersion>5.550.2102</AssemblyVersion>
+    <FileVersion>5.550.2102</FileVersion>
+    <Version>5.550.2102</Version>
   </PropertyGroup>
-  
-  <!--Canary package configuration-
-  <PropertyGroup>
-    <PackageId>Krypton.Toolkit.Suite.Extended.Task.Dialogs.Canary</PackageId>
-    <PackageOutputPath>..\..\..\..\Bin\NuGet\Canary</PackageOutputPath>
-    <PackageIconUrl>https://tinyurl.com/KryptonToolkitCanaryIcon</PackageIconUrl>
-  </PropertyGroup>-->
 
-  <!--Version configuration-->
-  <PropertyGroup>
-    <AssemblyVersion>5.550.2101</AssemblyVersion>
-    <FileVersion>5.550.2101</FileVersion>
-    <Version>5.550.2101</Version>
-  </PropertyGroup>
+  <ItemGroup>
+    <!--<None Include="Package Icons\Canary.png" Pack="true" PackagePath="\" />-->
+    <None Include="Package Icons\Stable.png" Pack="true" PackagePath="\" />
+    <!--<None Include="Package Icons\Nightly.png" Pack="true" PackagePath="\" />-->
+  </ItemGroup>
 
   <PropertyGroup>
     <DocumentationFile>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Task.Dialogs\Krypton.Toolkit.Suite.Extended.Task.Dialogs.xml</DocumentationFile>

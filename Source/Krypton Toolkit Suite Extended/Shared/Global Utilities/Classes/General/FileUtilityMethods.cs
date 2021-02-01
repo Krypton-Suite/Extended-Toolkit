@@ -1,4 +1,13 @@
-﻿using System;
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ */
+#endregion
+
+using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Windows.Forms;
@@ -7,8 +16,9 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
 {
     /// <summary>
     /// This class is used to retrieve data for the downloaded file.
-    /// Version: 1.0
+    /// Version: 1.0.5
     /// Date: Thursday 31st December 2015
+    /// Modified: Sunday 3rd January 2021
     /// </summary>
     public class FileUtilityMethods
     {
@@ -367,11 +377,23 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
         /// <summary>
         /// Returns the file information on the selected file.
         /// </summary>
-        /// <param name="FilePath">The file path.</param>
+        /// <param name="filePath">The file path.</param>
         /// <returns>Returns the file information on the selected file.</returns>
-        public FileInfo ReturnFileInformationOn(string FilePath)
+        public FileInfo ReturnFileInformationOn(string filePath) => new FileInfo(filePath);
+
+        /// <summary>Gets the directory contents of the selected path.</summary>
+        /// <param name="directoryPath">The directory path.</param>
+        /// <returns>The contents of the selected path.</returns>
+        public List<string> GetDirectoryContents(string directoryPath)
         {
-            return new FileInfo(FilePath);
+            List<string> content = new List<string>();
+
+            foreach (string item in Directory.GetFiles(directoryPath))
+            {
+                content.Add(item);
+            }
+
+            return content;
         }
 
         /// <summary>

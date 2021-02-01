@@ -17,47 +17,55 @@
     <RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
   </PropertyGroup>
 
+  <!--Canary package configuration
+  <PropertyGroup>
+    <PackageId>Krypton.Toolkit.Suite.Extended.Notifications.Canary</PackageId>
+    <PackageOutputPath>..\..\..\..\Bin\NuGet\Canary</PackageOutputPath>
+    <PackageIcon>Canary.png</PackageIcon>
+    <AssemblyVersion>6.0.2102</AssemblyVersion>
+    <FileVersion>6.0.2102</FileVersion>
+    <Version>6.0.2102</Version>
+  </PropertyGroup>-->
+
+  <!--Nightly package configuration-
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <PackageId>Krypton.Toolkit.Suite.Extended.Notifications.Nightly</PackageId>
+    <PackageOutputPath>..\..\..\..\Bin\NuGet\Nightly</PackageOutputPath>
+    <PackageIcon>Nightly.png</PackageIcon>
+    <VersionSuffix>pre$([System.DateTime]::UtcNow.ToString(yyyyMMdd-HHmm))</VersionSuffix>
+  </PropertyGroup>-->
+
   <!--Stable package configuration-->
   <PropertyGroup>
     <PackageId>Krypton.Toolkit.Suite.Extended.Notifications</PackageId>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Stable</PackageOutputPath>
-    <PackageIconUrl>https://tinyurl.com/KryptonExtendedToolkitIcon</PackageIconUrl>
+    <PackageIcon>Stable.png</PackageIcon>
+    <AssemblyVersion>5.550.2102</AssemblyVersion>
+    <FileVersion>5.550.2102</FileVersion>
+    <Version>5.550.2102</Version>
   </PropertyGroup>
-
-  <!--Canary package configuration-
-  <PropertyGroup>
-    <PackageId>Krypton.Toolkit.Suite.Extended.Notifications.Canary</PackageId>
-    <PackageOutputPath>..\..\..\..\Bin\NuGet\Canary</PackageOutputPath>
-    <PackageIconUrl>https://tinyurl.com/KryptonToolkitCanaryIcon</PackageIconUrl>
-  </PropertyGroup>-->
 
   <!--Stable NuGet package configuration-->
   <ItemGroup>
     <PackageReference Include="Krypton.Toolkit" Version="5.550.2101" />
   </ItemGroup>
 
-  <!--Canary NuGet package configuration-
+  <!--Canary NuGet package configuration
   <ItemGroup>
     <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2101" />
   </ItemGroup>-->
 
-  <!--Version configuration-->
-  <PropertyGroup>
-    <AssemblyVersion>5.550.2101</AssemblyVersion>
-    <FileVersion>5.550.2101</FileVersion>
-    <Version>5.550.2101</Version>
-  </PropertyGroup>
+  <ItemGroup>
+    <!--<None Include="Package Icons\Canary.png" Pack="true" PackagePath="\" />-->
+    <None Include="Package Icons\Stable.png" Pack="true" PackagePath="\" />
+    <!--<None Include="Package Icons\Nightly.png" Pack="true" PackagePath="\" />-->
+  </ItemGroup>
 
   <PropertyGroup>
     <DocumentationFile>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Notifications\Krypton.Toolkit.Suite.Extended.Notifications.xml</DocumentationFile>
     <OutputPath>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Notifications\</OutputPath>
   </PropertyGroup>
-
-  <PropertyGroup>
-    <NoWarn>NU1701</NoWarn>
-    <PackageLicenseFile></PackageLicenseFile>
-  </PropertyGroup>
-
+  
   <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>

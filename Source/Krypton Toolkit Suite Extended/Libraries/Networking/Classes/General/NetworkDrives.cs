@@ -1,17 +1,9 @@
-﻿#region License
-/*==============================================================================================================
-AejW.com - Network Drives
--------------------------
-Build:             0015
-Author:            Adam ej Woods
-Modified:          14/05/2004
-Ownership:         Copyright (c)2004 Adam ej Woods
-Source:            http://www.aejw.com/
-EULA:              In no way can this class be disturbed without my permission, this means reposting on a
-                   web site, cdrom, or any other form of media. The code can be used for commercial or
-                   personal purposes, as long as credit is given to the author. The header (this information)
-                   can not be modified or removed. www.CodeProject.com has permission to disturbe this class.
-==============================================================================================================*/
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ */
 #endregion
 
 using System;

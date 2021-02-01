@@ -17,36 +17,55 @@
     <RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
   </PropertyGroup>
 
-  <!--Stable package configuration-->
+  <!--Canary package configuration-->
   <PropertyGroup>
-    <PackageId>Krypton.Toolkit.Suite.Extended.Base</PackageId>
-    <PackageOutputPath>..\..\..\..\Bin\NuGet\Stable</PackageOutputPath>
-    <PackageIconUrl>https://tinyurl.com/KryptonExtendedToolkitIcon</PackageIconUrl>
-    <PackageIcon>Icon Stable.png</PackageIcon>
-  </PropertyGroup>
-
-  <!--Canary package configuration-
-  <PropertyGroup>
-    <PackageId>Krypton.Toolkit.Suite.Extended.Base.Canary</PackageId>
+    <PackageId>Krypton.Toolkit.Suite.Extended.Error.Reporting.Canary</PackageId>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Canary</PackageOutputPath>
-    <PackageIconUrl>https://tinyurl.com/KryptonToolkitCanaryIcon</PackageIconUrl>
+    <PackageIcon>Canary.png</PackageIcon>
+    <AssemblyVersion>6.0.2102</AssemblyVersion>
+    <FileVersion>6.0.2102</FileVersion>
+    <Version>6.0.2102</Version>
   </PropertyGroup>
 
-  <!--Stable NuGet packages-->
+  <!--Nightly package configuration-
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <PackageId>Krypton.Toolkit.Suite.Extended.Error.Reporting.Nightly</PackageId>
+    <PackageOutputPath>..\..\..\..\Bin\NuGet\Nightly</PackageOutputPath>
+    <PackageIcon>Nightly.png</PackageIcon>
+    <VersionSuffix>pre$([System.DateTime]::UtcNow.ToString(yyyyMMdd-HHmm))</VersionSuffix>
+  </PropertyGroup>-->
+
+  <!--Stable package configuration-
+  <PropertyGroup>
+    <PackageId>Krypton.Toolkit.Suite.Extended.Error.Reporting</PackageId>
+    <PackageOutputPath>..\..\..\..\Bin\NuGet\Stable</PackageOutputPath>
+    <PackageIcon>Stable.png</PackageIcon>
+    <AssemblyVersion>5.550.2102</AssemblyVersion>
+    <FileVersion>5.550.2102</FileVersion>
+    <Version>5.550.2102</Version>
+  </PropertyGroup>-->
+
+  <!--Stable NuGet packages
   <ItemGroup>
     <PackageReference Include="Krypton.Navigator" Version="5.550.2101" />
     <PackageReference Include="Krypton.Toolkit" Version="5.550.2101" />
-  </ItemGroup>
+  </ItemGroup>-->
 
-  <!--Canary NuGet package configuration-
+  <!--Canary NuGet package configuration-->
   <ItemGroup>
     <PackageReference Include="Krypton.Navigator.Canary" Version="6.0.2101" />
     <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2101" />
-  </ItemGroup>-->
+  </ItemGroup>
   
   <ItemGroup>
-    <PackageReference Include="DotNetZip" Version="1.15.0" />
+    <PackageReference Include="DotNetZip" Version="1.14.0" />
     <PackageReference Include="Simple-MAPI.NET" Version="1.1.0" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <!--<None Include="Package Icons\Canary.png" Pack="true" PackagePath="\" />-->
+    <None Include="Package Icons\Stable.png" Pack="true" PackagePath="\" />
+    <!--<None Include="Package Icons\Nightly.png" Pack="true" PackagePath="\" />-->
   </ItemGroup>
 
   <ItemGroup>
@@ -74,14 +93,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-
-  <!--Version configuration-->
-  <PropertyGroup>
-    <AssemblyVersion>5.550.2103</AssemblyVersion>
-    <FileVersion>5.550.2103</FileVersion>
-    <Version>5.550.2103</Version>
-  </PropertyGroup>
-
+  
   <PropertyGroup>
     <DocumentationFile>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Error.Reporting\Krypton.Toolkit.Suite.Error.Reporting.xml</DocumentationFile>
     <OutputPath>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Error.Reporting\</OutputPath>
