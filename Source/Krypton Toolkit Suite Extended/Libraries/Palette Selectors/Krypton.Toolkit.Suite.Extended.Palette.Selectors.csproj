@@ -62,6 +62,12 @@
     <PackageReference Include="EasyScintilla" Version="1.0.5" />
     <PackageReference Include="WindowsAPICodePack" Version="1.1.1" />
   </ItemGroup>
+
+  <ItemGroup>
+    <!--<None Include="Package Icons\Canary.png" Pack="true" PackagePath="\" />-->
+    <None Include="Package Icons\Stable.png" Pack="true" PackagePath="\" />
+    <!--<None Include="Package Icons\Nightly.png" Pack="true" PackagePath="\" />-->
+  </ItemGroup>
   
   <ItemGroup>
     <Reference Include="Krypton.Toolkit.Suite.Extended.Dialogs">
