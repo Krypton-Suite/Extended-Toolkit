@@ -254,6 +254,8 @@ namespace Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar.Suite
             _paletteContent = new PaletteContentInheritRedirect(_paletteRedirect);
 
             InitialiseKrypton();
+
+            Text = "0";
         }
         #endregion
 
