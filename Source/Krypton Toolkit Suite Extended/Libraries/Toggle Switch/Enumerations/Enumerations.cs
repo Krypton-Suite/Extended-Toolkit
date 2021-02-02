@@ -11,8 +11,7 @@
         IPHONE,
         FANCY,
         MODERN,
-        PLAINANDSIMPLE,
-        KRYPTON
+        PLAINANDSIMPLE
     }
 
     public enum ToggleSwitchAlignment

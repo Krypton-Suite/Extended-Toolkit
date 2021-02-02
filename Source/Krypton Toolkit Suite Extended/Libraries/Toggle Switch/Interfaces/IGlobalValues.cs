@@ -4,6 +4,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
 {
     public interface IGlobalValues
     {
+        public Color BorderColour { get; set; }
         public Color OuterBorderColour { get; set; }
         public Color OuterBorderColour1 { get; set; }
         public Color OuterBorderColour2 { get; set; }
@@ -39,6 +40,25 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
         public Color ButtonPressedLowerSurfaceColour2 { get; set; }
         public Color ButtonShadowColour1 { get; set; }
         public Color ButtonShadowColour2 { get; set; }
+        public Color LeftSideUpperColour1 { get; set; }
+        public Color LeftSideUpperColour2 { get; set; }
+        public Color LeftSideLowerColour1 { get; set; }
+        public Color LeftSideLowerColour2 { get; set; }
+        public Color LeftSideUpperBorderColour { get; set; }
+        public Color LeftSideLowerBorderColour { get; set; }
+        public Color RightSideUpperColour1 { get; set; }        
+        public Color RightSideUpperColour2 { get; set; }
+        public Color RightSideLowerColour1 { get; set; }
+        public Color RightSideLowerColour2 { get; set; }
+        public Color RightSideUpperBorderColour { get; set; }
+        public Color RightSideLowerBorderColour { get; set; }
+        public Color ButtonShadowColour { get; set; }
+        public Color ButtonNormalOuterBorderColour { get; set; }
+        public Color ButtonNormalInnerBorderColour { get; set; }
+        public Color ButtonHoverOuterBorderColour { get; set; }
+        public Color ButtonHoverInnerBorderColour { get; set; }
+        public Color ButtonPressedOuterBorderColour { get; set; }
+        public Color ButtonPressedInnerBorderColour { get; set; }
 
         public int ButtonShadowWidth { get; set; }
         public int CornerRadius { get; set; }

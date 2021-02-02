@@ -42,6 +42,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
         private bool _isLeftFieldPressed = false;
         private bool _isButtonPressed = false;
         private bool _isRightFieldPressed = false;
+        private bool _useKryptonRender = false;
 
         private int _buttonValue = 0;
         private int _savedButtonValue = 0;
@@ -105,6 +106,95 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
             if (_renderer != null)
                 Refresh();
         }
+
+        private void SetValueInternal(bool checkedValue)
+        {
+            if (checkedValue == _checked)
+                return;
+
+            while (_animating)
+            {
+                Application.DoEvents();
+            }
+
+            BeginAnimation(checkedValue);
+        }
+
+        private void BeginAnimation(bool checkedValue)
+        {
+            _animating = true;
+            _animationResult = checkedValue;
+
+            if (_animationTimer != null && _useAnimation)
+            {
+                _animationTimer.Interval = _animationInterval;
+                _animationTimer.Enabled = true;
+            }
+            else
+            {
+                AnimationComplete();
+            }
+        }
+
+        private void AnimationTimer_Tick(object sender, EventArgs e)
+        {
+            _animationTimer.Enabled = false;
+
+            bool animationDone = false;
+            int newButtonValue;
+
+            if (IsButtonMovingRight)
+            {
+                newButtonValue = ButtonValue + _animationStep;
+
+                if (newButtonValue > _animationTarget)
+                    newButtonValue = _animationTarget;
+
+                ButtonValue = newButtonValue;
+
+                animationDone = ButtonValue >= _animationTarget;
+            }
+            else
+            {
+                newButtonValue = ButtonValue - _animationStep;
+
+                if (newButtonValue < _animationTarget)
+                    newButtonValue = _animationTarget;
+
+                ButtonValue = newButtonValue;
+
+                animationDone = ButtonValue <= _animationTarget;
+            }
+
+            if (animationDone)
+                AnimationComplete();
+            else
+                _animationTimer.Enabled = true;
+        }
+
+        private void AnimationComplete()
+        {
+            _animating = false;
+            _moving = false;
+            _checked = _animationResult;
+
+            _isButtonHovered = false;
+            _isButtonPressed = false;
+            _isLeftFieldHovered = false;
+            _isLeftFieldPressed = false;
+            _isRightFieldHovered = false;
+            _isRightFieldPressed = false;
+
+            Refresh();
+
+            if (CheckedChanged != null)
+                CheckedChanged(this, new EventArgs());
+
+            if (_lastMouseEventArgs != null)
+                OnMouseMove(_lastMouseEventArgs);
+
+            _lastMouseEventArgs = null;
+        }
         #endregion
 
         #region Public Properties
@@ -153,8 +243,6 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
                             break;
                         case ToggleSwitchStyle.PLAINANDSIMPLE:
                             SetRenderer(new ToggleSwitchPlainAndSimpleRenderer());
-                            break;
-                        case ToggleSwitchStyle.KRYPTON:
                             break;
                     }
                 }
@@ -640,6 +728,9 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
             set { _useAnimation = value; }
         }
 
+        [DefaultValue(false), Category("Appearance"), Description("Gets or sets whether the toggle change should use the krypton renderer or not")]
+        public bool UseKryptonRender { get => _useKryptonRender; set => _useKryptonRender = value; }
+
         [Bindable(false)]
         [DefaultValue(1)]
         [Category("Behavior")]
@@ -813,7 +904,240 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
         #region Overrides
         protected override Size DefaultSize => new Size(50, 19);
 
+        protected override void OnPaintBackground(PaintEventArgs pevent)
+        {
+            pevent.Graphics.ResetClip();
 
+            base.OnPaintBackground(pevent);
+
+            if (_renderer != null)
+            {
+                _renderer.RenderBackground(pevent);
+            }
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            e.Graphics.ResetClip();
+
+            base.OnPaint(e);
+
+            if (_renderer != null)
+            {
+                if (BeforeRendering != null)
+                {
+                    BeforeRendering(this, new BeforeRenderingEventArgs(_renderer));
+                }
+
+                _renderer.RenderControl(e);
+            }
+        }
+
+        protected override void OnMouseMove(MouseEventArgs e)
+        {
+            _lastMouseEventArgs = e;
+
+            int buttonWidth = _renderer.GetButtonWidth();
+            Rectangle buttonRectangle = _renderer.GetButtonRectangle(buttonWidth);
+
+            if (_moving)
+            {
+                int val = _xValue + (e.Location.X - _xOffset);
+
+                if (val < 0)
+                    val = 0;
+
+                if (val > Width - buttonWidth)
+                    val = Width - buttonWidth;
+
+                ButtonValue = val;
+                Refresh();
+                return;
+            }
+
+            if (buttonRectangle.Contains(e.Location))
+            {
+                _isButtonHovered = true;
+                _isLeftFieldHovered = false;
+                _isRightFieldHovered = false;
+            }
+            else
+            {
+                if (e.Location.X > buttonRectangle.X + buttonRectangle.Width)
+                {
+                    _isButtonHovered = false;
+                    _isLeftFieldHovered = false;
+                    _isRightFieldHovered = true;
+                }
+                else if (e.Location.X < buttonRectangle.X)
+                {
+                    _isButtonHovered = false;
+                    _isLeftFieldHovered = true;
+                    _isRightFieldHovered = false;
+                }
+            }
+
+            Refresh();
+        }
+
+        protected override void OnMouseDown(MouseEventArgs e)
+        {
+            if (_animating || !AllowUserChange)
+                return;
+
+            int buttonWidth = _renderer.GetButtonWidth();
+            Rectangle buttonRectangle = _renderer.GetButtonRectangle(buttonWidth);
+
+            _savedButtonValue = ButtonValue;
+
+            if (buttonRectangle.Contains(e.Location))
+            {
+                _isButtonPressed = true;
+                _isLeftFieldPressed = false;
+                _isRightFieldPressed = false;
+
+                _moving = true;
+                _xOffset = e.Location.X;
+                _buttonValue = buttonRectangle.X;
+                _xValue = ButtonValue;
+            }
+            else
+            {
+                if (e.Location.X > buttonRectangle.X + buttonRectangle.Width)
+                {
+                    _isButtonPressed = false;
+                    _isLeftFieldPressed = false;
+                    _isRightFieldPressed = true;
+                }
+                else if (e.Location.X < buttonRectangle.X)
+                {
+                    _isButtonPressed = false;
+                    _isLeftFieldPressed = true;
+                    _isRightFieldPressed = false;
+                }
+            }
+
+            Refresh();
+        }
+
+        protected override void OnMouseUp(MouseEventArgs e)
+        {
+            if (_animating || !AllowUserChange)
+                return;
+
+            int buttonWidth = _renderer.GetButtonWidth();
+
+            bool wasLeftSidePressed = IsLeftSidePressed;
+            bool wasRightSidePressed = IsRightSidePressed;
+
+            _isButtonPressed = false;
+            _isLeftFieldPressed = false;
+            _isRightFieldPressed = false;
+
+            if (_moving)
+            {
+                int percentage = (int)((100 * (double)ButtonValue) / ((double)Width - (double)buttonWidth));
+
+                if (_checked)
+                {
+                    if (percentage <= (100 - _thresholdPercentage))
+                    {
+                        _animationTarget = 0;
+                        BeginAnimation(false);
+                    }
+                    else if (ToggleOnButtonClick && _savedButtonValue == ButtonValue)
+                    {
+                        _animationTarget = 0;
+                        BeginAnimation(false);
+                    }
+                    else
+                    {
+                        _animationTarget = Width - buttonWidth;
+                        BeginAnimation(true);
+                    }
+                }
+                else
+                {
+                    if (percentage >= _thresholdPercentage)
+                    {
+                        _animationTarget = Width - buttonWidth;
+                        BeginAnimation(true);
+                    }
+                    else if (ToggleOnButtonClick && _savedButtonValue == ButtonValue)
+                    {
+                        _animationTarget = Width - buttonWidth;
+                        BeginAnimation(true);
+                    }
+                    else
+                    {
+                        _animationTarget = 0;
+                        BeginAnimation(false);
+                    }
+                }
+
+                _moving = false;
+                return;
+            }
+
+            if (IsButtonOnRightSide)
+            {
+                _buttonValue = Width - buttonWidth;
+                _animationTarget = 0;
+            }
+            else
+            {
+                _buttonValue = 0;
+                _animationTarget = Width - buttonWidth;
+            }
+
+            if (wasLeftSidePressed && ToggleOnSideClick)
+            {
+                SetValueInternal(false);
+            }
+            else if (wasRightSidePressed && ToggleOnSideClick)
+            {
+                SetValueInternal(true);
+            }
+
+            Refresh();
+        }
+
+        protected override void OnMouseLeave(EventArgs e)
+        {
+            _isButtonHovered = false;
+            _isLeftFieldHovered = false;
+            _isRightFieldHovered = false;
+            _isButtonPressed = false;
+            _isLeftFieldPressed = false;
+            _isRightFieldPressed = false;
+
+            Refresh();
+        }
+
+        protected override void OnEnabledChanged(EventArgs e)
+        {
+            base.OnEnabledChanged(e);
+
+            Refresh();
+        }
+
+        protected override void OnRegionChanged(EventArgs e)
+        {
+            base.OnRegionChanged(e);
+
+            Refresh();
+        }
+
+        protected override void OnSizeChanged(EventArgs e)
+        {
+            if (_animationTarget > 0)
+            {
+                int buttonWidth = _renderer.GetButtonWidth();
+                _animationTarget = Width - buttonWidth;
+            }
+
+            base.OnSizeChanged(e);
+        }
         #endregion
     }
 }
