@@ -212,6 +212,8 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
                 {
                     _style = value;
 
+                    this;
+
                     switch (_style)
                     {
                         case ToggleSwitchStyle.METRO:

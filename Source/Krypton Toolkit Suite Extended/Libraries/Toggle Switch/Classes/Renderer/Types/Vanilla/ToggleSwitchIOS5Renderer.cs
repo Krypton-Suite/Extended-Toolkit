@@ -97,6 +97,8 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
         public Color ButtonPressedInnerBorderColour { get; set; }
         public int ButtonShadowWidth { get; set; }
         public int CornerRadius { get; set; }
+
+        public int ButtonCornerRadius { get; set; }
         #endregion Public Properties
 
         #region Render Method Implementations

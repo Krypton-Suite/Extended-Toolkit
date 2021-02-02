@@ -106,6 +106,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
         public Color ButtonHoverInnerBorderColour { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public Color ButtonPressedOuterBorderColour { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public Color ButtonPressedInnerBorderColour { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public int ButtonCornerRadius { get; set; }
         #endregion
 
         #endregion Public Properties
