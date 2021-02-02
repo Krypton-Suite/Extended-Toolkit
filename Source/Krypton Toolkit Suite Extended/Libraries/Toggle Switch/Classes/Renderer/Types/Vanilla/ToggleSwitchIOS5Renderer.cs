@@ -99,6 +99,16 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
         public int CornerRadius { get; set; }
 
         public int ButtonCornerRadius { get; set; }
+        public Color BackColour { get; set; }
+        public Color LeftSideColour { get; set; }
+        public Color LeftSideColourHovered { get; set; }
+        public Color LeftSideColourPressed { get; set; }
+        public Color RightSideColour { get; set; }
+        public Color RightSideColourHovered { get; set; }
+        public Color RightSideColourPressed { get; set; }
+        public Color ButtonColour { get; set; }
+        public Color ButtonColourHovered { get; set; }
+        public Color ButtonColourPressed { get; set; }
         #endregion Public Properties
 
         #region Render Method Implementations
