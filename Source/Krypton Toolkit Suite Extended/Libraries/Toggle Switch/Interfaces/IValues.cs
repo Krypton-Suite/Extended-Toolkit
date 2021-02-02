@@ -215,4 +215,51 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
         public Color ButtonShadowColour2 { get; set; }
     }
     #endregion
+
+    #region IPlainAndSimpleValues
+    public interface IPlainAndSimpleValues
+    {
+        public Color BorderColourChecked { get; set; }
+        public Color BorderColourUnchecked { get; set; }
+        public int BorderWidth { get; set; }
+        public int ButtonMargin { get; set; }
+        public Color InnerBackgroundColour { get; set; }
+        public Color ButtonColour { get; set; }
+    }
+    #endregion
+
+    #region IAndroidValues
+    public interface IAndroidValues
+    {
+        public Color BorderColour { get; set; }
+        public Color BackColour { get; set; }
+        public Color LeftSideColour { get; set; }
+        public Color RightSideColour { get; set; }
+        public Color OffButtonColour { get; set; }
+        public Color OnButtonColour { get; set; }
+        public Color OffButtonBorderColour { get; set; }
+        public Color OnButtonBorderColour { get; set; }
+        public int SlantAngle { get; set; }
+    }
+    #endregion
+
+    #region IBrushedMetalValues
+    public interface IBrushedMetalValues
+    {
+        public Color BorderColour1 { get; set; }
+        public Color BorderColour2 { get; set; }
+        public Color BackColour1 { get; set; }
+        public Color BackColour2 { get; set; }
+        public Color UpperShadowColour1 { get; set; }
+        public Color UpperShadowColour2 { get; set; }
+        public Color ButtonNormalBorderColour { get; set; }
+        public Color ButtonNormalSurfaceColour { get; set; }
+        public Color ButtonHoverBorderColour { get; set; }
+        public Color ButtonHoverSurfaceColour { get; set; }
+        public Color ButtonPressedBorderColour { get; set; }
+        public Color ButtonPressedSurfaceColour { get; set; }
+
+        public int UpperShadowHeight { get; set; }
+    }
+    #endregion
 }
