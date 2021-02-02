@@ -4,10 +4,10 @@ using System.Drawing.Drawing2D;
 
 namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
 {
-    public class ToggleSwitchIOS5Renderer : ToggleSwitchRendererBase, IIOS5Content
+    public class ToggleSwitchIOS5KryptonRenderer : ToggleSwitchRendererBase, IIOS5Content
     {
         #region Constructor
-        public ToggleSwitchIOS5Renderer()
+        public ToggleSwitchIOS5KryptonRenderer()
         {
             BorderColour = Color.FromArgb(255, 202, 202, 202);
             LeftSideUpperColour1 = Color.FromArgb(255, 48, 115, 189);

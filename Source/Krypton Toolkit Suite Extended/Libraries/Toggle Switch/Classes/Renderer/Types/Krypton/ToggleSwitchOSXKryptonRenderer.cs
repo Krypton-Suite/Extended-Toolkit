@@ -4,13 +4,13 @@ using System.Drawing.Drawing2D;
 
 namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
 {
-    public class ToggleSwitchOSXRenderer : ToggleSwitchRendererBase, IDisposable, IGlobalValues, IOSXValues
+    public class ToggleSwitchOSXKryptonRenderer : ToggleSwitchRendererBase, IDisposable, IGlobalValues, IOSXValues
     {
         #region Constructor
 
         private GraphicsPath _innerControlPath = null;
 
-        public ToggleSwitchOSXRenderer()
+        public ToggleSwitchOSXKryptonRenderer()
         {
             OuterBorderColour = Color.FromArgb(255, 108, 108, 108);
             InnerBorderColour1 = Color.FromArgb(255, 137, 138, 139);

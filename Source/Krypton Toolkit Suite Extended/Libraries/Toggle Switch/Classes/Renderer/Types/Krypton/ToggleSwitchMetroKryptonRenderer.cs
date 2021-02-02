@@ -2,11 +2,11 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
 {
-    public class ToggleSwitchMetroRenderer : ToggleSwitchRendererBase, IMetroValues
+    public class ToggleSwitchMetroKryptonRenderer : ToggleSwitchRendererBase, IMetroValues
     {
         #region Constructor
 
-        public ToggleSwitchMetroRenderer()
+        public ToggleSwitchMetroKryptonRenderer()
         {
             BackColour = Color.White;
             LeftSideColour = Color.FromArgb(255, 23, 153, 0);

@@ -4,7 +4,7 @@ using System.Drawing.Drawing2D;
 
 namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
 {
-    public class ToggleSwitchIphoneRenderer : ToggleSwitchRendererBase, IDisposable, IGlobalValues, IIPhoneValues
+    public class ToggleSwitchIphoneKryptonRenderer : ToggleSwitchRendererBase, IDisposable, IGlobalValues, IIPhoneValues
     {
         #region Constructor
 
@@ -12,7 +12,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
 
        
 
-        public ToggleSwitchIphoneRenderer()
+        public ToggleSwitchIphoneKryptonRenderer()
         {
             OuterBorderColour = Color.FromArgb(255, 205, 205, 207);
             InnerBorderColour1 = Color.FromArgb(200, 205, 205, 207);

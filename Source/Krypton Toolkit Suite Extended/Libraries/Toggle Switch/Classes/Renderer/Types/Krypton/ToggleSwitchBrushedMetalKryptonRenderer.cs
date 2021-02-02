@@ -4,11 +4,11 @@ using System.Drawing.Drawing2D;
 
 namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
 {
-    public class ToggleSwitchBrushedMetalRenderer : ToggleSwitchRendererBase, IBrushedMetalValues
+    public class ToggleSwitchBrushedMetalKryptonRenderer : ToggleSwitchRendererBase, IBrushedMetalValues
     {
         #region Constructor
 
-        public ToggleSwitchBrushedMetalRenderer()
+        public ToggleSwitchBrushedMetalKryptonRenderer()
         {
             BorderColour1 = Color.FromArgb(255, 145, 146, 149);
             BorderColour2 = Color.FromArgb(255, 227, 229, 232);

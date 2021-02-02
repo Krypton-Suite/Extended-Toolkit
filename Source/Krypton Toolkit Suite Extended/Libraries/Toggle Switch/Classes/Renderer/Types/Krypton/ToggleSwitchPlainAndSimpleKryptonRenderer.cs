@@ -3,11 +3,11 @@ using System.Drawing.Drawing2D;
 
 namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
 {
-    public class ToggleSwitchPlainAndSimpleRenderer : ToggleSwitchRendererBase, IPlainAndSimpleValues
+    public class ToggleSwitchPlainAndSimpleKryptonRenderer : ToggleSwitchRendererBase, IPlainAndSimpleValues
     {
         #region Constructor
 
-        public ToggleSwitchPlainAndSimpleRenderer()
+        public ToggleSwitchPlainAndSimpleKryptonRenderer()
         {
             BorderColourChecked = Color.Black;
             BorderColourUnchecked = Color.Black;

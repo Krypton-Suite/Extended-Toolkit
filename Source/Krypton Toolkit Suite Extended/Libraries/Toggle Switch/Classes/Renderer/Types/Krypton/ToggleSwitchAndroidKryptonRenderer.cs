@@ -3,11 +3,11 @@ using System.Drawing;
 
 namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
 {
-    public class ToggleSwitchAndroidRenderer : ToggleSwitchRendererBase, IAndroidValues
+    public class ToggleSwitchAndroidKryptonRenderer : ToggleSwitchRendererBase, IAndroidValues
     {
         #region Constructor
 
-        public ToggleSwitchAndroidRenderer()
+        public ToggleSwitchAndroidKryptonRenderer()
         {
             BorderColour = Color.FromArgb(255, 166, 166, 166);
             BackColour = Color.FromArgb(255, 32, 32, 32);
