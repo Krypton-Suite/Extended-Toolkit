@@ -4,45 +4,42 @@ using System.Drawing.Drawing2D;
 
 namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
 {
-    public class ToggleSwitchFancyRenderer : ToggleSwitchRendererBase, IDisposable, IGlobalValues, IFancyValues
+    public class ToggleSwitchModernRenderer : ToggleSwitchRendererBase, IDisposable, IGlobalValues, IModernValues
     {
         #region Constructor
 
         private GraphicsPath _innerControlPath = null;
 
-        public ToggleSwitchFancyRenderer()
+        public ToggleSwitchModernRenderer()
         {
-            OuterBorderColour1 = Color.FromArgb(255, 197, 199, 201);
-            OuterBorderColour2 = Color.FromArgb(255, 207, 209, 212);
-            InnerBorderColour1 = Color.FromArgb(200, 205, 208, 207);
-            InnerBorderColour2 = Color.FromArgb(255, 207, 209, 212);
-            LeftSideBackColour1 = Color.FromArgb(255, 61, 110, 6);
-            LeftSideBackColour2 = Color.FromArgb(255, 93, 170, 9);
-            RightSideBackColour1 = Color.FromArgb(255, 149, 0, 0);
-            RightSideBackColour2 = Color.FromArgb(255, 198, 0, 0);
-            ButtonNormalBorderColour1 = Color.FromArgb(255, 212, 209, 211);
-            ButtonNormalBorderColour2 = Color.FromArgb(255, 197, 199, 201);
-            ButtonNormalUpperSurfaceColour1 = Color.FromArgb(255, 252, 251, 252);
-            ButtonNormalUpperSurfaceColour2 = Color.FromArgb(255, 247, 247, 247);
-            ButtonNormalLowerSurfaceColour1 = Color.FromArgb(255, 233, 233, 233);
-            ButtonNormalLowerSurfaceColour2 = Color.FromArgb(255, 225, 225, 225);
-            ButtonHoverBorderColour1 = Color.FromArgb(255, 212, 207, 209);
-            ButtonHoverBorderColour2 = Color.FromArgb(255, 223, 223, 223);
-            ButtonHoverUpperSurfaceColour1 = Color.FromArgb(255, 240, 239, 240);
-            ButtonHoverUpperSurfaceColour2 = Color.FromArgb(255, 235, 235, 235);
-            ButtonHoverLowerSurfaceColour1 = Color.FromArgb(255, 221, 221, 221);
-            ButtonHoverLowerSurfaceColour2 = Color.FromArgb(255, 214, 214, 214);
-            ButtonPressedBorderColour1 = Color.FromArgb(255, 176, 176, 176);
-            ButtonPressedBorderColour2 = Color.FromArgb(255, 176, 176, 176);
-            ButtonPressedUpperSurfaceColour1 = Color.FromArgb(255, 189, 188, 189);
-            ButtonPressedUpperSurfaceColour2 = Color.FromArgb(255, 185, 185, 185);
-            ButtonPressedLowerSurfaceColour1 = Color.FromArgb(255, 175, 175, 175);
-            ButtonPressedLowerSurfaceColour2 = Color.FromArgb(255, 169, 169, 169);
+            OuterBorderColour = Color.FromArgb(255, 31, 31, 31);
+            InnerBorderColour1 = Color.FromArgb(255, 80, 80, 82);
+            InnerBorderColour2 = Color.FromArgb(255, 109, 110, 112);
+            LeftSideBackColour1 = Color.FromArgb(255, 57, 166, 222);
+            LeftSideBackColour2 = Color.FromArgb(255, 53, 155, 229);
+            RightSideBackColour1 = Color.FromArgb(255, 48, 49, 45);
+            RightSideBackColour2 = Color.FromArgb(255, 51, 52, 48);
+            ButtonNormalBorderColour1 = Color.FromArgb(255, 31, 31, 31);
+            ButtonNormalBorderColour2 = Color.FromArgb(255, 31, 31, 31);
+            ButtonNormalSurfaceColour1 = Color.FromArgb(255, 51, 52, 48);
+            ButtonNormalSurfaceColour2 = Color.FromArgb(255, 51, 52, 48);
+            ArrowNormalColour = Color.FromArgb(255, 53, 156, 230);
+            ButtonHoverBorderColour1 = Color.FromArgb(255, 29, 29, 29);
+            ButtonHoverBorderColour2 = Color.FromArgb(255, 29, 29, 29);
+            ButtonHoverSurfaceColour1 = Color.FromArgb(255, 48, 49, 45);
+            ButtonHoverSurfaceColour2 = Color.FromArgb(255, 48, 49, 45);
+            ArrowHoverColour = Color.FromArgb(255, 50, 148, 219);
+            ButtonPressedBorderColour1 = Color.FromArgb(255, 23, 23, 23);
+            ButtonPressedBorderColour2 = Color.FromArgb(255, 23, 23, 23);
+            ButtonPressedSurfaceColour1 = Color.FromArgb(255, 38, 39, 36);
+            ButtonPressedSurfaceColour2 = Color.FromArgb(255, 38, 39, 36);
+            ArrowPressedColour = Color.FromArgb(255, 39, 117, 172);
             ButtonShadowColour1 = Color.FromArgb(50, 0, 0, 0);
             ButtonShadowColour2 = Color.FromArgb(0, 0, 0, 0);
 
             ButtonShadowWidth = 7;
             CornerRadius = 6;
+            ButtonCornerRadius = 6;
         }
 
         public void Dispose()
@@ -53,11 +50,9 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
 
         #endregion Constructor
 
-        #region Public Properties       
-        public int ButtonShadowWidth { get; set; }
-        public int CornerRadius { get; set; }
-        public Color OuterBorderColour1 { get; set; }
-        public Color OuterBorderColour2 { get; set; }
+        #region Public Properties
+
+        public Color OuterBorderColour { get; set; }
         public Color InnerBorderColour1 { get; set; }
         public Color InnerBorderColour2 { get; set; }
         public Color LeftSideBackColour1 { get; set; }
@@ -66,24 +61,26 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
         public Color RightSideBackColour2 { get; set; }
         public Color ButtonNormalBorderColour1 { get; set; }
         public Color ButtonNormalBorderColour2 { get; set; }
-        public Color ButtonNormalUpperSurfaceColour1 { get; set; }
-        public Color ButtonNormalUpperSurfaceColour2 { get; set; }
-        public Color ButtonNormalLowerSurfaceColour1 { get; set; }
-        public Color ButtonNormalLowerSurfaceColour2 { get; set; }
+        public Color ButtonNormalSurfaceColour1 { get; set; }
+        public Color ButtonNormalSurfaceColour2 { get; set; }
+        public Color ArrowNormalColour { get; set; }
         public Color ButtonHoverBorderColour1 { get; set; }
         public Color ButtonHoverBorderColour2 { get; set; }
-        public Color ButtonHoverUpperSurfaceColour1 { get; set; }
-        public Color ButtonHoverUpperSurfaceColour2 { get; set; }
-        public Color ButtonHoverLowerSurfaceColour1 { get; set; }
-        public Color ButtonHoverLowerSurfaceColour2 { get; set; }
+        public Color ButtonHoverSurfaceColour1 { get; set; }
+        public Color ButtonHoverSurfaceColour2 { get; set; }
+        public Color ArrowHoverColour { get; set; }
         public Color ButtonPressedBorderColour1 { get; set; }
         public Color ButtonPressedBorderColour2 { get; set; }
-        public Color ButtonPressedUpperSurfaceColour1 { get; set; }
-        public Color ButtonPressedUpperSurfaceColour2 { get; set; }
-        public Color ButtonPressedLowerSurfaceColour1 { get; set; }
-        public Color ButtonPressedLowerSurfaceColour2 { get; set; }
+        public Color ButtonPressedSurfaceColour1 { get; set; }
+        public Color ButtonPressedSurfaceColour2 { get; set; }
+        public Color ArrowPressedColour { get; set; }
         public Color ButtonShadowColour1 { get; set; }
         public Color ButtonShadowColour2 { get; set; }
+
+        public int ButtonShadowWidth { get; set; }
+        public int CornerRadius { get; set; }
+        public int ButtonCornerRadius { get; set; }
+
         #endregion Public Properties
 
         #region Render Method Implementations
@@ -99,10 +96,9 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
             {
                 g.SetClip(outerBorderPath);
 
-                Color outerBorderColour1 = (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled) ? OuterBorderColour1.ToGrayScale() : OuterBorderColour1;
-                Color outerBorderColour2 = (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled) ? OuterBorderColour2.ToGrayScale() : OuterBorderColour2;
+                Color outerBorderColour = (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled) ? OuterBorderColour.ToGrayScale() : OuterBorderColour;
 
-                using (Brush outerBorderBrush = new LinearGradientBrush(borderRectangle, outerBorderColour1, outerBorderColour2, LinearGradientMode.Vertical))
+                using (Brush outerBorderBrush = new SolidBrush(outerBorderColour))
                 {
                     g.FillPath(outerBorderBrush, outerBorderPath);
                 }
@@ -117,10 +113,10 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
             {
                 g.SetClip(innerBorderPath);
 
-                Color innerBorderColour1 = (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled) ? InnerBorderColour1.ToGrayScale() : InnerBorderColour1;
-                Color innerBorderColour2 = (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled) ? InnerBorderColour2.ToGrayScale() : InnerBorderColour2;
+                Color borderColour1 = (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled) ? InnerBorderColour1.ToGrayScale() : InnerBorderColour1;
+                Color borderColour2 = (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled) ? InnerBorderColour2.ToGrayScale() : InnerBorderColour2;
 
-                using (Brush borderBrush = new LinearGradientBrush(borderRectangle, innerBorderColour1, innerBorderColour2, LinearGradientMode.Vertical))
+                using (Brush borderBrush = new LinearGradientBrush(borderRectangle, borderColour1, borderColour2, LinearGradientMode.Vertical))
                 {
                     g.FillPath(borderBrush, innerBorderPath);
                 }
@@ -436,67 +432,43 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
             g.PixelOffsetMode = PixelOffsetMode.HighQuality;
             g.InterpolationMode = InterpolationMode.HighQualityBilinear;
 
-            //Draw button surface
-            Color buttonUpperSurfaceColour1 = ButtonNormalUpperSurfaceColour1;
-            Color buttonUpperSurfaceColour2 = ButtonNormalUpperSurfaceColour2;
-            Color buttonLowerSurfaceColour1 = ButtonNormalLowerSurfaceColour1;
-            Color buttonLowerSurfaceColour2 = ButtonNormalLowerSurfaceColour2;
-
-            if (ToggleSwitch.IsButtonPressed)
+            if (_innerControlPath != null)
             {
-                buttonUpperSurfaceColour1 = ButtonPressedUpperSurfaceColour1;
-                buttonUpperSurfaceColour2 = ButtonPressedUpperSurfaceColour2;
-                buttonLowerSurfaceColour1 = ButtonPressedLowerSurfaceColour1;
-                buttonLowerSurfaceColour2 = ButtonPressedLowerSurfaceColour2;
+                g.SetClip(_innerControlPath);
+                g.IntersectClip(buttonRectangle);
             }
-            else if (ToggleSwitch.IsButtonHovered)
+            else
             {
-                buttonUpperSurfaceColour1 = ButtonHoverUpperSurfaceColour1;
-                buttonUpperSurfaceColour2 = ButtonHoverUpperSurfaceColour2;
-                buttonLowerSurfaceColour1 = ButtonHoverLowerSurfaceColour1;
-                buttonLowerSurfaceColour2 = ButtonHoverLowerSurfaceColour2;
+                g.SetClip(buttonRectangle);
             }
 
-            if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+            using (GraphicsPath buttonPath = GetRoundedRectanglePath(buttonRectangle, ButtonCornerRadius))
             {
-                buttonUpperSurfaceColour1 = buttonUpperSurfaceColour1.ToGrayScale();
-                buttonUpperSurfaceColour2 = buttonUpperSurfaceColour2.ToGrayScale();
-                buttonLowerSurfaceColour1 = buttonLowerSurfaceColour1.ToGrayScale();
-                buttonLowerSurfaceColour2 = buttonLowerSurfaceColour2.ToGrayScale();
-            }
+                //Draw button surface
+                Color buttonSurfaceColour1 = ButtonNormalSurfaceColour1;
+                Color buttonSurfaceColour2 = ButtonNormalSurfaceColour2;
 
-            buttonRectangle.Inflate(-1, -1);
-
-            int upperHeight = buttonRectangle.Height / 2;
-
-            Rectangle upperGradientRect = new Rectangle(buttonRectangle.X, buttonRectangle.Y, buttonRectangle.Width, upperHeight);
-            Rectangle lowerGradientRect = new Rectangle(buttonRectangle.X, buttonRectangle.Y + upperHeight, buttonRectangle.Width, buttonRectangle.Height - upperHeight);
-
-            using (GraphicsPath buttonPath = GetRoundedRectanglePath(buttonRectangle, CornerRadius))
-            {
-                g.SetClip(buttonPath);
-                g.IntersectClip(upperGradientRect);
-
-                //Draw upper button surface gradient
-                using (Brush buttonUpperSurfaceBrush = new LinearGradientBrush(buttonRectangle, buttonUpperSurfaceColour1, buttonUpperSurfaceColour2, LinearGradientMode.Vertical))
+                if (ToggleSwitch.IsButtonPressed)
                 {
-                    g.FillPath(buttonUpperSurfaceBrush, buttonPath);
+                    buttonSurfaceColour1 = ButtonPressedSurfaceColour1;
+                    buttonSurfaceColour2 = ButtonPressedSurfaceColour2;
+                }
+                else if (ToggleSwitch.IsButtonHovered)
+                {
+                    buttonSurfaceColour1 = ButtonHoverSurfaceColour1;
+                    buttonSurfaceColour2 = ButtonHoverSurfaceColour2;
                 }
 
-                g.ResetClip();
-
-                g.SetClip(buttonPath);
-                g.IntersectClip(lowerGradientRect);
-
-                //Draw lower button surface gradient
-                using (Brush buttonLowerSurfaceBrush = new LinearGradientBrush(buttonRectangle, buttonLowerSurfaceColour1, buttonLowerSurfaceColour2, LinearGradientMode.Vertical))
+                if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
                 {
-                    g.FillPath(buttonLowerSurfaceBrush, buttonPath);
+                    buttonSurfaceColour1 = buttonSurfaceColour1.ToGrayScale();
+                    buttonSurfaceColour2 = buttonSurfaceColour2.ToGrayScale();
                 }
 
-                g.ResetClip();
-
-                g.SetClip(buttonPath);
+                using (Brush buttonSurfaceBrush = new LinearGradientBrush(buttonRectangle, buttonSurfaceColour1, buttonSurfaceColour2, LinearGradientMode.Vertical))
+                {
+                    g.FillPath(buttonSurfaceBrush, buttonPath);
+                }
 
                 //Draw button border
                 Color buttonBorderColour1 = ButtonNormalBorderColour1;
@@ -526,67 +498,37 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
                         g.DrawPath(buttonBorderPen, buttonPath);
                     }
                 }
+            }
 
-                g.ResetClip();
+            g.ResetClip();
 
-                //Draw button image
-                Image buttonImage = ToggleSwitch.ButtonImage ?? (ToggleSwitch.Checked ? ToggleSwitch.OnButtonImage : ToggleSwitch.OffButtonImage);
+            //Draw button arrows
+            Color arrowColour = ArrowNormalColour;
 
-                if (buttonImage != null)
+            if (ToggleSwitch.IsButtonPressed)
+                arrowColour = ArrowPressedColour;
+            else if (ToggleSwitch.IsButtonHovered)
+                arrowColour = ArrowHoverColour;
+
+            if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
+                arrowColour = arrowColour.ToGrayScale();
+
+            Rectangle arrowRectangle = new Rectangle();
+            arrowRectangle.Height = 9;
+            arrowRectangle.Width = 22;
+            arrowRectangle.X = buttonRectangle.X + (int)(((double)buttonRectangle.Width - (double)arrowRectangle.Width) / 2);
+            arrowRectangle.Y = buttonRectangle.Y + (int)(((double)buttonRectangle.Height - (double)arrowRectangle.Height) / 2);
+
+            using (Brush arrowBrush = new SolidBrush(arrowColour))
+            {
+                using (GraphicsPath arrowLeftPath = GetArrowLeftPath(arrowRectangle))
                 {
-                    g.SetClip(buttonPath);
+                    g.FillPath(arrowBrush, arrowLeftPath);
+                }
 
-                    ToggleSwitchButtonAlignment alignment = ToggleSwitch.ButtonImage != null ? ToggleSwitch.ButtonAlignment : (ToggleSwitch.Checked ? ToggleSwitch.OnButtonAlignment : ToggleSwitch.OffButtonAlignment);
-
-                    Size imageSize = buttonImage.Size;
-
-                    Rectangle imageRectangle;
-
-                    int imageXPos = buttonRectangle.X;
-
-                    bool scaleImage = ToggleSwitch.ButtonImage != null ? ToggleSwitch.ButtonScaleImageToFit : (ToggleSwitch.Checked ? ToggleSwitch.OnButtonScaleImageToFit : ToggleSwitch.OffButtonScaleImageToFit);
-
-                    if (scaleImage)
-                    {
-                        Size canvasSize = buttonRectangle.Size;
-                        Size resizedImageSize = ImageHelper.RescaleImageToFit(imageSize, canvasSize);
-
-                        if (alignment == ToggleSwitchButtonAlignment.CENTER)
-                        {
-                            imageXPos = (int)((float)buttonRectangle.X + (((float)buttonRectangle.Width - (float)resizedImageSize.Width) / 2));
-                        }
-                        else if (alignment == ToggleSwitchButtonAlignment.RIGHT)
-                        {
-                            imageXPos = (int)((float)buttonRectangle.X + (float)buttonRectangle.Width - (float)resizedImageSize.Width);
-                        }
-
-                        imageRectangle = new Rectangle(imageXPos, (int)((float)buttonRectangle.Y + (((float)buttonRectangle.Height - (float)resizedImageSize.Height) / 2)), resizedImageSize.Width, resizedImageSize.Height);
-
-                        if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
-                            g.DrawImage(buttonImage, imageRectangle, 0, 0, buttonImage.Width, buttonImage.Height, GraphicsUnit.Pixel, ImageHelper.GetGrayscaleAttributes());
-                        else
-                            g.DrawImage(buttonImage, imageRectangle);
-                    }
-                    else
-                    {
-                        if (alignment == ToggleSwitchButtonAlignment.CENTER)
-                        {
-                            imageXPos = (int)((float)buttonRectangle.X + (((float)buttonRectangle.Width - (float)imageSize.Width) / 2));
-                        }
-                        else if (alignment == ToggleSwitchButtonAlignment.RIGHT)
-                        {
-                            imageXPos = (int)((float)buttonRectangle.X + (float)buttonRectangle.Width - (float)imageSize.Width);
-                        }
-
-                        imageRectangle = new Rectangle(imageXPos, (int)((float)buttonRectangle.Y + (((float)buttonRectangle.Height - (float)imageSize.Height) / 2)), imageSize.Width, imageSize.Height);
-
-                        if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
-                            g.DrawImage(buttonImage, imageRectangle, 0, 0, buttonImage.Width, buttonImage.Height, GraphicsUnit.Pixel, ImageHelper.GetGrayscaleAttributes());
-                        else
-                            g.DrawImageUnscaled(buttonImage, imageRectangle);
-                    }
-
-                    g.ResetClip();
+                using (GraphicsPath arrowRightPath = GetArrowRightPath(arrowRectangle))
+                {
+                    g.FillPath(arrowBrush, arrowRightPath);
                 }
             }
         }
@@ -615,9 +557,39 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
             return gp;
         }
 
+        public GraphicsPath GetArrowLeftPath(Rectangle arrowRectangle)
+        {
+            GraphicsPath gp = new GraphicsPath();
+
+            Point top = new Point(arrowRectangle.X + 8, arrowRectangle.Y);
+            Point bottom = new Point(arrowRectangle.X + 8, arrowRectangle.Y + arrowRectangle.Height);
+            Point tip = new Point(arrowRectangle.X, arrowRectangle.Y + (arrowRectangle.Height / 2));
+
+            gp.AddLine(top, bottom);
+            gp.AddLine(bottom, tip);
+            gp.AddLine(tip, top);
+
+            return gp;
+        }
+
+        public GraphicsPath GetArrowRightPath(Rectangle arrowRectangle)
+        {
+            GraphicsPath gp = new GraphicsPath();
+
+            Point top = new Point(arrowRectangle.X + 14, arrowRectangle.Y);
+            Point bottom = new Point(arrowRectangle.X + 14, arrowRectangle.Y + arrowRectangle.Height);
+            Point tip = new Point(arrowRectangle.X + arrowRectangle.Width, arrowRectangle.Y + (arrowRectangle.Height / 2));
+
+            gp.AddLine(top, bottom);
+            gp.AddLine(bottom, tip);
+            gp.AddLine(tip, top);
+
+            return gp;
+        }
+
         public override int GetButtonWidth()
         {
-            float buttonWidth = 1.61f * ToggleSwitch.Height;
+            float buttonWidth = 1.41f * ToggleSwitch.Height;
             return (int)buttonWidth;
         }
 

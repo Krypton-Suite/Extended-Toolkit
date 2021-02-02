@@ -4,45 +4,36 @@ using System.Drawing.Drawing2D;
 
 namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
 {
-    public class ToggleSwitchFancyRenderer : ToggleSwitchRendererBase, IDisposable, IGlobalValues, IFancyValues
+    public class ToggleSwitchOSXRenderer : ToggleSwitchRendererBase, IDisposable, IGlobalValues, IOSXValues
     {
         #region Constructor
 
         private GraphicsPath _innerControlPath = null;
 
-        public ToggleSwitchFancyRenderer()
+        public ToggleSwitchOSXRenderer()
         {
-            OuterBorderColour1 = Color.FromArgb(255, 197, 199, 201);
-            OuterBorderColour2 = Color.FromArgb(255, 207, 209, 212);
-            InnerBorderColour1 = Color.FromArgb(200, 205, 208, 207);
-            InnerBorderColour2 = Color.FromArgb(255, 207, 209, 212);
-            LeftSideBackColour1 = Color.FromArgb(255, 61, 110, 6);
-            LeftSideBackColour2 = Color.FromArgb(255, 93, 170, 9);
-            RightSideBackColour1 = Color.FromArgb(255, 149, 0, 0);
-            RightSideBackColour2 = Color.FromArgb(255, 198, 0, 0);
-            ButtonNormalBorderColour1 = Color.FromArgb(255, 212, 209, 211);
-            ButtonNormalBorderColour2 = Color.FromArgb(255, 197, 199, 201);
-            ButtonNormalUpperSurfaceColour1 = Color.FromArgb(255, 252, 251, 252);
-            ButtonNormalUpperSurfaceColour2 = Color.FromArgb(255, 247, 247, 247);
-            ButtonNormalLowerSurfaceColour1 = Color.FromArgb(255, 233, 233, 233);
-            ButtonNormalLowerSurfaceColour2 = Color.FromArgb(255, 225, 225, 225);
-            ButtonHoverBorderColour1 = Color.FromArgb(255, 212, 207, 209);
-            ButtonHoverBorderColour2 = Color.FromArgb(255, 223, 223, 223);
-            ButtonHoverUpperSurfaceColour1 = Color.FromArgb(255, 240, 239, 240);
-            ButtonHoverUpperSurfaceColour2 = Color.FromArgb(255, 235, 235, 235);
-            ButtonHoverLowerSurfaceColour1 = Color.FromArgb(255, 221, 221, 221);
-            ButtonHoverLowerSurfaceColour2 = Color.FromArgb(255, 214, 214, 214);
-            ButtonPressedBorderColour1 = Color.FromArgb(255, 176, 176, 176);
-            ButtonPressedBorderColour2 = Color.FromArgb(255, 176, 176, 176);
-            ButtonPressedUpperSurfaceColour1 = Color.FromArgb(255, 189, 188, 189);
-            ButtonPressedUpperSurfaceColour2 = Color.FromArgb(255, 185, 185, 185);
-            ButtonPressedLowerSurfaceColour1 = Color.FromArgb(255, 175, 175, 175);
-            ButtonPressedLowerSurfaceColour2 = Color.FromArgb(255, 169, 169, 169);
+            OuterBorderColour = Color.FromArgb(255, 108, 108, 108);
+            InnerBorderColour1 = Color.FromArgb(255, 137, 138, 139);
+            InnerBorderColour2 = Color.FromArgb(255, 167, 168, 169);
+            BackColour1 = Color.FromArgb(255, 108, 108, 108);
+            BackColour2 = Color.FromArgb(255, 163, 163, 163);
+            ButtonNormalBorderColour1 = Color.FromArgb(255, 147, 147, 148);
+            ButtonNormalBorderColour2 = Color.FromArgb(255, 167, 168, 169);
+            ButtonNormalSurfaceColour1 = Color.FromArgb(255, 250, 250, 250);
+            ButtonNormalSurfaceColour2 = Color.FromArgb(255, 224, 224, 224);
+            ButtonHoverBorderColour1 = Color.FromArgb(255, 145, 146, 147);
+            ButtonHoverBorderColour2 = Color.FromArgb(255, 164, 165, 166);
+            ButtonHoverSurfaceColour1 = Color.FromArgb(255, 238, 238, 238);
+            ButtonHoverSurfaceColour2 = Color.FromArgb(255, 213, 213, 213);
+            ButtonPressedBorderColour1 = Color.FromArgb(255, 138, 138, 140);
+            ButtonPressedBorderColour2 = Color.FromArgb(255, 158, 158, 160);
+            ButtonPressedSurfaceColour1 = Color.FromArgb(255, 187, 187, 187);
+            ButtonPressedSurfaceColour2 = Color.FromArgb(255, 168, 168, 168);
             ButtonShadowColour1 = Color.FromArgb(50, 0, 0, 0);
             ButtonShadowColour2 = Color.FromArgb(0, 0, 0, 0);
 
             ButtonShadowWidth = 7;
-            CornerRadius = 6;
+            CornerRadius = 4;
         }
 
         public void Dispose()
@@ -53,37 +44,31 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
 
         #endregion Constructor
 
-        #region Public Properties       
-        public int ButtonShadowWidth { get; set; }
-        public int CornerRadius { get; set; }
-        public Color OuterBorderColour1 { get; set; }
-        public Color OuterBorderColour2 { get; set; }
+        #region Public Properties
+
+        public Color OuterBorderColour { get; set; }
         public Color InnerBorderColour1 { get; set; }
         public Color InnerBorderColour2 { get; set; }
-        public Color LeftSideBackColour1 { get; set; }
-        public Color LeftSideBackColour2 { get; set; }
-        public Color RightSideBackColour1 { get; set; }
-        public Color RightSideBackColour2 { get; set; }
+        public Color BackColour1 { get; set; }
+        public Color BackColour2 { get; set; }
         public Color ButtonNormalBorderColour1 { get; set; }
         public Color ButtonNormalBorderColour2 { get; set; }
-        public Color ButtonNormalUpperSurfaceColour1 { get; set; }
-        public Color ButtonNormalUpperSurfaceColour2 { get; set; }
-        public Color ButtonNormalLowerSurfaceColour1 { get; set; }
-        public Color ButtonNormalLowerSurfaceColour2 { get; set; }
+        public Color ButtonNormalSurfaceColour1 { get; set; }
+        public Color ButtonNormalSurfaceColour2 { get; set; }
         public Color ButtonHoverBorderColour1 { get; set; }
         public Color ButtonHoverBorderColour2 { get; set; }
-        public Color ButtonHoverUpperSurfaceColour1 { get; set; }
-        public Color ButtonHoverUpperSurfaceColour2 { get; set; }
-        public Color ButtonHoverLowerSurfaceColour1 { get; set; }
-        public Color ButtonHoverLowerSurfaceColour2 { get; set; }
+        public Color ButtonHoverSurfaceColour1 { get; set; }
+        public Color ButtonHoverSurfaceColour2 { get; set; }
         public Color ButtonPressedBorderColour1 { get; set; }
         public Color ButtonPressedBorderColour2 { get; set; }
-        public Color ButtonPressedUpperSurfaceColour1 { get; set; }
-        public Color ButtonPressedUpperSurfaceColour2 { get; set; }
-        public Color ButtonPressedLowerSurfaceColour1 { get; set; }
-        public Color ButtonPressedLowerSurfaceColour2 { get; set; }
+        public Color ButtonPressedSurfaceColour1 { get; set; }
+        public Color ButtonPressedSurfaceColour2 { get; set; }
         public Color ButtonShadowColour1 { get; set; }
         public Color ButtonShadowColour2 { get; set; }
+
+        public int ButtonShadowWidth { get; set; }
+        public int CornerRadius { get; set; }
+
         #endregion Public Properties
 
         #region Render Method Implementations
@@ -99,10 +84,9 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
             {
                 g.SetClip(outerBorderPath);
 
-                Color outerBorderColour1 = (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled) ? OuterBorderColour1.ToGrayScale() : OuterBorderColour1;
-                Color outerBorderColour2 = (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled) ? OuterBorderColour2.ToGrayScale() : OuterBorderColour2;
+                Color outerBorderColour = (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled) ? OuterBorderColour.ToGrayScale() : OuterBorderColour;
 
-                using (Brush outerBorderBrush = new LinearGradientBrush(borderRectangle, outerBorderColour1, outerBorderColour2, LinearGradientMode.Vertical))
+                using (Brush outerBorderBrush = new SolidBrush(outerBorderColour))
                 {
                     g.FillPath(outerBorderBrush, outerBorderPath);
                 }
@@ -117,10 +101,10 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
             {
                 g.SetClip(innerBorderPath);
 
-                Color innerBorderColour1 = (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled) ? InnerBorderColour1.ToGrayScale() : InnerBorderColour1;
-                Color innerBorderColour2 = (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled) ? InnerBorderColour2.ToGrayScale() : InnerBorderColour2;
+                Color borderColour1 = (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled) ? InnerBorderColour1.ToGrayScale() : InnerBorderColour1;
+                Color borderColour2 = (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled) ? InnerBorderColour2.ToGrayScale() : InnerBorderColour2;
 
-                using (Brush borderBrush = new LinearGradientBrush(borderRectangle, innerBorderColour1, innerBorderColour2, LinearGradientMode.Vertical))
+                using (Brush borderBrush = new LinearGradientBrush(borderRectangle, borderColour1, borderColour2, LinearGradientMode.Vertical))
                 {
                     g.FillPath(borderBrush, innerBorderPath);
                 }
@@ -128,8 +112,22 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
                 g.ResetClip();
             }
 
+            //Draw inner background
             Rectangle backgroundRectangle = new Rectangle(borderRectangle.X + 2, borderRectangle.Y + 2, borderRectangle.Width - 4, borderRectangle.Height - 4);
+
             _innerControlPath = GetRoundedRectanglePath(backgroundRectangle, CornerRadius);
+
+            g.SetClip(_innerControlPath);
+
+            Color backColour1 = (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled) ? BackColour1.ToGrayScale() : BackColour1;
+            Color backColour2 = (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled) ? BackColour2.ToGrayScale() : BackColour2;
+
+            using (Brush backgroundBrush = new LinearGradientBrush(borderRectangle, backColour1, backColour2, LinearGradientMode.Vertical))
+            {
+                g.FillPath(backgroundBrush, _innerControlPath);
+            }
+
+            g.ResetClip();
         }
 
         public override void RenderLeftToggleField(Graphics g, Rectangle leftRectangle, int totalToggleFieldWidth)
@@ -137,32 +135,6 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
             g.SmoothingMode = SmoothingMode.HighQuality;
             g.PixelOffsetMode = PixelOffsetMode.HighQuality;
             g.InterpolationMode = InterpolationMode.HighQualityBilinear;
-
-            int buttonWidth = GetButtonWidth();
-
-            //Draw inner background
-            int gradientRectWidth = leftRectangle.Width + buttonWidth / 2;
-            Rectangle gradientRectangle = new Rectangle(leftRectangle.X, leftRectangle.Y, gradientRectWidth, leftRectangle.Height);
-
-            Color leftSideBackColour1 = (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled) ? LeftSideBackColour1.ToGrayScale() : LeftSideBackColour1;
-            Color leftSideBackColour2 = (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled) ? LeftSideBackColour2.ToGrayScale() : LeftSideBackColour2;
-
-            if (_innerControlPath != null)
-            {
-                g.SetClip(_innerControlPath);
-                g.IntersectClip(gradientRectangle);
-            }
-            else
-            {
-                g.SetClip(gradientRectangle);
-            }
-
-            using (Brush backgroundBrush = new LinearGradientBrush(gradientRectangle, leftSideBackColour1, leftSideBackColour2, LinearGradientMode.Vertical))
-            {
-                g.FillRectangle(backgroundBrush, gradientRectangle);
-            }
-
-            g.ResetClip();
 
             Rectangle leftShadowRectangle = new Rectangle();
             leftShadowRectangle.X = leftRectangle.X + leftRectangle.Width - ButtonShadowWidth;
@@ -287,32 +259,6 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
             g.PixelOffsetMode = PixelOffsetMode.HighQuality;
             g.InterpolationMode = InterpolationMode.HighQualityBilinear;
 
-            int buttonWidth = GetButtonWidth();
-
-            //Draw inner background
-            int gradientRectWidth = rightRectangle.Width + buttonWidth / 2;
-            Rectangle gradientRectangle = new Rectangle(rightRectangle.X - buttonWidth / 2, rightRectangle.Y, gradientRectWidth, rightRectangle.Height);
-
-            Color rightSideBackColour1 = (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled) ? RightSideBackColour1.ToGrayScale() : RightSideBackColour1;
-            Color rightSideBackColour2 = (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled) ? RightSideBackColour2.ToGrayScale() : RightSideBackColour2;
-
-            if (_innerControlPath != null)
-            {
-                g.SetClip(_innerControlPath);
-                g.IntersectClip(gradientRectangle);
-            }
-            else
-            {
-                g.SetClip(gradientRectangle);
-            }
-
-            using (Brush backgroundBrush = new LinearGradientBrush(gradientRectangle, rightSideBackColour1, rightSideBackColour2, LinearGradientMode.Vertical))
-            {
-                g.FillRectangle(backgroundBrush, gradientRectangle);
-            }
-
-            g.ResetClip();
-
             Rectangle rightShadowRectangle = new Rectangle();
             rightShadowRectangle.X = rightRectangle.X - CornerRadius;
             rightShadowRectangle.Y = rightRectangle.Y;
@@ -436,67 +382,37 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
             g.PixelOffsetMode = PixelOffsetMode.HighQuality;
             g.InterpolationMode = InterpolationMode.HighQualityBilinear;
 
-            //Draw button surface
-            Color buttonUpperSurfaceColour1 = ButtonNormalUpperSurfaceColour1;
-            Color buttonUpperSurfaceColour2 = ButtonNormalUpperSurfaceColour2;
-            Color buttonLowerSurfaceColour1 = ButtonNormalLowerSurfaceColour1;
-            Color buttonLowerSurfaceColour2 = ButtonNormalLowerSurfaceColour2;
-
-            if (ToggleSwitch.IsButtonPressed)
-            {
-                buttonUpperSurfaceColour1 = ButtonPressedUpperSurfaceColour1;
-                buttonUpperSurfaceColour2 = ButtonPressedUpperSurfaceColour2;
-                buttonLowerSurfaceColour1 = ButtonPressedLowerSurfaceColour1;
-                buttonLowerSurfaceColour2 = ButtonPressedLowerSurfaceColour2;
-            }
-            else if (ToggleSwitch.IsButtonHovered)
-            {
-                buttonUpperSurfaceColour1 = ButtonHoverUpperSurfaceColour1;
-                buttonUpperSurfaceColour2 = ButtonHoverUpperSurfaceColour2;
-                buttonLowerSurfaceColour1 = ButtonHoverLowerSurfaceColour1;
-                buttonLowerSurfaceColour2 = ButtonHoverLowerSurfaceColour2;
-            }
-
-            if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
-            {
-                buttonUpperSurfaceColour1 = buttonUpperSurfaceColour1.ToGrayScale();
-                buttonUpperSurfaceColour2 = buttonUpperSurfaceColour2.ToGrayScale();
-                buttonLowerSurfaceColour1 = buttonLowerSurfaceColour1.ToGrayScale();
-                buttonLowerSurfaceColour2 = buttonLowerSurfaceColour2.ToGrayScale();
-            }
-
             buttonRectangle.Inflate(-1, -1);
-
-            int upperHeight = buttonRectangle.Height / 2;
-
-            Rectangle upperGradientRect = new Rectangle(buttonRectangle.X, buttonRectangle.Y, buttonRectangle.Width, upperHeight);
-            Rectangle lowerGradientRect = new Rectangle(buttonRectangle.X, buttonRectangle.Y + upperHeight, buttonRectangle.Width, buttonRectangle.Height - upperHeight);
 
             using (GraphicsPath buttonPath = GetRoundedRectanglePath(buttonRectangle, CornerRadius))
             {
                 g.SetClip(buttonPath);
-                g.IntersectClip(upperGradientRect);
 
-                //Draw upper button surface gradient
-                using (Brush buttonUpperSurfaceBrush = new LinearGradientBrush(buttonRectangle, buttonUpperSurfaceColour1, buttonUpperSurfaceColour2, LinearGradientMode.Vertical))
+                //Draw button surface
+                Color buttonSurfaceColour1 = ButtonNormalSurfaceColour1;
+                Color buttonSurfaceColour2 = ButtonNormalSurfaceColour2;
+
+                if (ToggleSwitch.IsButtonPressed)
                 {
-                    g.FillPath(buttonUpperSurfaceBrush, buttonPath);
+                    buttonSurfaceColour1 = ButtonPressedSurfaceColour1;
+                    buttonSurfaceColour2 = ButtonPressedSurfaceColour2;
+                }
+                else if (ToggleSwitch.IsButtonHovered)
+                {
+                    buttonSurfaceColour1 = ButtonHoverSurfaceColour1;
+                    buttonSurfaceColour2 = ButtonHoverSurfaceColour2;
                 }
 
-                g.ResetClip();
-
-                g.SetClip(buttonPath);
-                g.IntersectClip(lowerGradientRect);
-
-                //Draw lower button surface gradient
-                using (Brush buttonLowerSurfaceBrush = new LinearGradientBrush(buttonRectangle, buttonLowerSurfaceColour1, buttonLowerSurfaceColour2, LinearGradientMode.Vertical))
+                if (!ToggleSwitch.Enabled && ToggleSwitch.GrayWhenDisabled)
                 {
-                    g.FillPath(buttonLowerSurfaceBrush, buttonPath);
+                    buttonSurfaceColour1 = buttonSurfaceColour1.ToGrayScale();
+                    buttonSurfaceColour2 = buttonSurfaceColour2.ToGrayScale();
                 }
 
-                g.ResetClip();
-
-                g.SetClip(buttonPath);
+                using (Brush buttonSurfaceBrush = new LinearGradientBrush(buttonRectangle, buttonSurfaceColour1, buttonSurfaceColour2, LinearGradientMode.Vertical))
+                {
+                    g.FillPath(buttonSurfaceBrush, buttonPath);
+                }
 
                 //Draw button border
                 Color buttonBorderColour1 = ButtonNormalBorderColour1;
@@ -617,7 +533,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
 
         public override int GetButtonWidth()
         {
-            float buttonWidth = 1.61f * ToggleSwitch.Height;
+            float buttonWidth = 1.53f * (ToggleSwitch.Height - 2);
             return (int)buttonWidth;
         }
 

@@ -4,7 +4,7 @@ using System.Drawing.Drawing2D;
 
 namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
 {
-    public class ToggleSwitchCarbonRenderer : ToggleSwitchRendererBase, IDisposable, IGlobalValues
+    public class ToggleSwitchCarbonRenderer : ToggleSwitchRendererBase, IDisposable, IGlobalValues, ICarbonValues
     {
         #region Constructor
 
@@ -84,40 +84,6 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
         public Color ButtonShadowColour2 { get; set; }
         public int ButtonShadowWidth { get; set; }
         public int CornerRadius { get; set; }
-
-        #region Not Needed
-        public Color BorderColour { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public Color LeftSideUpperColour1 { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public Color LeftSideUpperColour2 { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public Color LeftSideLowerColour1 { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public Color LeftSideLowerColour2 { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public Color LeftSideUpperBorderColour { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public Color LeftSideLowerBorderColour { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public Color RightSideUpperColour1 { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public Color RightSideUpperColour2 { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public Color RightSideLowerColour1 { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public Color RightSideLowerColour2 { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public Color RightSideUpperBorderColour { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public Color RightSideLowerBorderColour { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public Color ButtonShadowColour { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public Color ButtonNormalOuterBorderColour { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public Color ButtonNormalInnerBorderColour { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public Color ButtonHoverOuterBorderColour { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public Color ButtonHoverInnerBorderColour { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public Color ButtonPressedOuterBorderColour { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public Color ButtonPressedInnerBorderColour { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public int ButtonCornerRadius { get; set; }
-        public Color BackColour { get; set; }
-        public Color LeftSideColour { get; set; }
-        public Color LeftSideColourHovered { get; set; }
-        public Color LeftSideColourPressed { get; set; }
-        public Color RightSideColour { get; set; }
-        public Color RightSideColourHovered { get; set; }
-        public Color RightSideColourPressed { get; set; }
-        public Color ButtonColour { get; set; }
-        public Color ButtonColourHovered { get; set; }
-        public Color ButtonColourPressed { get; set; }
-        #endregion
 
         #endregion Public Properties
 
