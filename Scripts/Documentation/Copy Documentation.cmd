@@ -24,6 +24,7 @@ md Shared
 :setuplibraries
 cd Libraries
 md Krypton.Toolkit.Suite.Extended.Base
+md Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar.Suite
 md Krypton.Toolkit.Suite.Extended.Drawing.Suite
 md Krypton.Toolkit.Suite.Extended.Data.Visualisation
 md Krypton.Toolkit.Suite.Extended.Error.Reporting
@@ -42,7 +43,9 @@ md Krypton.Toolkit.Suite.Extended.Notifications
 md Krypton.Toolkit.Suite.Extended.Rounded.Controls
 md Krypton.Toolkit.Suite.Extended.Software.Updater
 :: md Krypton.Toolkit.Suite.Extended.Task.Dialogs
+md Krypton.Toolkit.Suite.Extended.Toggle.Switch
 md Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
+md Krypton.Toolkit.Suite.Extended.Wizard
 cd ..
 goto createnet48directoriesinlibraries
 
@@ -66,6 +69,9 @@ goto createnet48directoriesinshared
 :createnet48directoriesinlibraries
 cd Libraries
 cd Krypton.Toolkit.Suite.Extended.Base
+goto createnet48directory
+cd ..
+cd Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar.Suite
 goto createnet48directory
 cd ..
 cd Krypton.Toolkit.Suite.Extended.Drawing.Suite
@@ -110,7 +116,13 @@ cd ..
 cd Krypton.Toolkit.Suite.Extended.Software.Updater
 goto createnet48directory
 cd ..
+cd Krypton.Toolkit.Suite.Extended.Toggle.Switch
+goto createnet48directory
+cd ..
 cd Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
+goto createnet48directory
+cd ..
+cd Krypton.Toolkit.Suite.Extended.Wizard
 goto createnet48directory
 cd ..\..
 
@@ -141,6 +153,8 @@ cd ..\..
 :copylibraryfiles
 copy <##Target-directory##>\Bin\Debug\Libraries\Krypton.Toolkit.Suite.Extended.Base\net48\Krypton.Toolkit.Suite.Extended.Base.dll <##Destination##>\Extended-Toolkit\Libraries\Krypton.Toolkit.Suite.Extended.Base\Krypton.Toolkit.Suite.Extended.Base.dll
 copy <##Target-directory##>\Bin\Debug\Libraries\Krypton.Toolkit.Suite.Extended.Base\net48\Krypton.Toolkit.Suite.Extended.Base.xml <##Destination##>\Extended-Toolkit\Libraries\Krypton.Toolkit.Suite.Extended.Base\Krypton.Toolkit.Suite.Extended.Base.xml
+copy <##Target-directory##>\Bin\Debug\Libraries\Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar.Suite\net48\Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar.Suite.dll <##Destination##>\Extended-Toolkit\Libraries\Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar.Suite\Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar.Suite.dll
+copy <##Target-directory##>\Bin\Debug\Libraries\Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar.Suite\net48\Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar.Suite.xml <##Destination##>\Extended-Toolkit\Libraries\Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar.Suite\Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar.Suite.xml
 copy <##Target-directory##>\Bin\Debug\Libraries\Krypton.Toolkit.Suite.Extended.Drawing.Suite\net48\Krypton.Toolkit.Suite.Extended.Drawing.Suite.dll <##Destination##>\Extended-Toolkit\Libraries\Krypton.Toolkit.Suite.Extended.Drawing.Suite\Krypton.Toolkit.Suite.Extended.Drawing.Suite.dll
 copy <##Target-directory##>\Bin\Debug\Libraries\Krypton.Toolkit.Suite.Extended.Drawing.Suite\net48\Krypton.Toolkit.Suite.Extended.Drawing.Suite.xml <##Destination##>\Extended-Toolkit\Libraries\Krypton.Toolkit.Suite.Extended.Drawing.Suite\Krypton.Toolkit.Suite.Extended.Drawing.Suite.xml
 copy <##Target-directory##>\Bin\Debug\Libraries\Krypton.Toolkit.Suite.Extended.Data.Visualisation\net48\Krypton.Toolkit.Suite.Extended.Data.Visualisation.dll <##Destination##>\Extended-Toolkit\Libraries\Krypton.Toolkit.Suite.Extended.Data.Visualisation\Krypton.Toolkit.Suite.Extended.Data.Visualisation.dll
@@ -173,8 +187,12 @@ copy <##Target-directory##>\Bin\Debug\Libraries\Krypton.Toolkit.Suite.Extended.R
 copy <##Target-directory##>\Bin\Debug\Libraries\Krypton.Toolkit.Suite.Extended.Software.Updater\net48\Krypton.Toolkit.Suite.Extended.Software.Updater.dll <##Destination##>\Extended-Toolkit\Libraries\Krypton.Toolkit.Suite.Extended.Software.Updater\Krypton.Toolkit.Suite.Extended.Software.Updater.dll
 copy <##Target-directory##>\Bin\Debug\Libraries\Krypton.Toolkit.Suite.Extended.Software.Updater\net48\Krypton.Toolkit.Suite.Extended.Software.Updater.xml <##Destination##>\Extended-Toolkit\Libraries\Krypton.Toolkit.Suite.Extended.Software.Updater\Krypton.Toolkit.Suite.Extended.Software.Updater.xml
 
+copy <##Target-directory##>\Bin\Debug\Libraries\Krypton.Toolkit.Suite.Extended.Toggle.Switch\net48\Krypton.Toolkit.Suite.Extended.Toggle.Switch.dll <##Destination##>\Extended-Toolkit\Libraries\Krypton.Toolkit.Suite.Extended.Toggle.Switch\Krypton.Toolkit.Suite.Extended.Toggle.Switch.dll
+copy <##Target-directory##>\Bin\Debug\Libraries\Krypton.Toolkit.Suite.Extended.Toggle.Switch\net48\Krypton.Toolkit.Suite.Extended.Toggle.Switch.xml <##Destination##>\Extended-Toolkit\Libraries\Krypton.Toolkit.Suite.Extended.Toggle.Switch\Krypton.Toolkit.Suite.Extended.Toggle.Switch.xml
 copy <##Target-directory##>\Bin\Debug\Libraries\Krypton.Toolkit.Suite.Extended.Tool.Strip.Items\net48\Krypton.Toolkit.Suite.Extended.Tool.Strip.Items.dll <##Destination##>\Extended-Toolkit\Libraries\Krypton.Toolkit.Suite.Extended.Tool.Strip.Items\Krypton.Toolkit.Suite.Extended.Tool.Strip.Items.dll
 copy <##Target-directory##>\Bin\Debug\Libraries\Krypton.Toolkit.Suite.Extended.Tool.Strip.Items\net48\Krypton.Toolkit.Suite.Extended.Tool.Strip.Items.xml <##Destination##>\Extended-Toolkit\Libraries\Krypton.Toolkit.Suite.Extended.Tool.Strip.Items\Krypton.Toolkit.Suite.Extended.Tool.Strip.Items.xml
+copy <##Target-directory##>\Bin\Debug\Libraries\Krypton.Toolkit.Suite.Extended.Wizard\net48\Krypton.Toolkit.Suite.Extended.Wizard.dll <##Destination##>\Extended-Toolkit\Libraries\Krypton.Toolkit.Suite.Extended.Wizard\Krypton.Toolkit.Suite.Extended.Wizard.dll
+copy <##Target-directory##>\Bin\Debug\Libraries\Krypton.Toolkit.Suite.Extended.Wizard\net48\Krypton.Toolkit.Suite.Extended.Wizard.xml <##Destination##>\Extended-Toolkit\Libraries\Krypton.Toolkit.Suite.Extended.Wizard\Krypton.Toolkit.Suite.Extended.Wizard.xml
 
 :copysharedfiles
 copy <##Target-directory##>\Bin\Debug\Shared\Krypton.Toolkit.Suite.Extended.Common\net48\Krypton.Toolkit.Suite.Extended.Common.dll <##Destination##>\Extended-Toolkit\Shared\Krypton.Toolkit.Suite.Extended.Common\Krypton.Toolkit.Suite.Extended.Common.dll
