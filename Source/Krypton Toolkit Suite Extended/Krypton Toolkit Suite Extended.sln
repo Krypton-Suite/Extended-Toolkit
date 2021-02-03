@@ -54,10 +54,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Exten
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Markdown", "Markdown", "{6D03424F-E3C8-40E6-9D67-41BE49CFFE35}"
 	ProjectSection(SolutionItems) = preProject
+		..\..\Documents\Modules\Canary Modules.md = ..\..\Documents\Modules\Canary Modules.md
 		..\..\Documents\Examples\Examples.md = ..\..\Documents\Examples\Examples.md
 		..\..\Documents\Help\NuGet Package Information.md = ..\..\Documents\Help\NuGet Package Information.md
 		..\..\Documents\Help\Prerequisites.md = ..\..\Documents\Help\Prerequisites.md
 		..\..\README.md = ..\..\README.md
+		..\..\Documents\Modules\Stable Modules.md = ..\..\Documents\Modules\Stable Modules.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.IO", "Libraries\IO\Krypton.Toolkit.Suite.Extended.IO.csproj", "{0E2E0B55-4944-419E-A4A1-6F92A621DB3B}"
@@ -137,9 +139,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "C:\Users\Peter Will
 		{9E5B6FE5-89B9-4483-942F-7332E9BC4599} = {9E5B6FE5-89B9-4483-942F-7332E9BC4599}
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar.Suite", "Libraries\Circular ProgressBar\Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar.Suite.csproj", "{F176C423-D8F9-4FFF-B72E-C3A5514D1EA0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar", "Libraries\Circular ProgressBar\Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar.csproj", "{F176C423-D8F9-4FFF-B72E-C3A5514D1EA0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton.Toolkit.Suite.Extended.Toggle.Switch", "Libraries\Toggle Switch\Krypton.Toolkit.Suite.Extended.Toggle.Switch.csproj", "{E82C7C09-C266-4394-93A8-EE0802D37B58}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Toggle.Switch", "Libraries\Toggle Switch\Krypton.Toolkit.Suite.Extended.Toggle.Switch.csproj", "{E82C7C09-C266-4394-93A8-EE0802D37B58}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

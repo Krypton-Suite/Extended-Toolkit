@@ -6,7 +6,7 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Text;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar.Suite
+namespace Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar
 {
     /// <summary>The circular progress bar windows form control.</summary>
     [ToolboxItem(true), ToolboxBitmap(typeof(CircularProgressBar), "ToolboxBitmaps.CircularProgressBar.bmp"),

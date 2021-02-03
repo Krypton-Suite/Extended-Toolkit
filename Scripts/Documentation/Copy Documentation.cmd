@@ -24,7 +24,7 @@ md Shared
 :setuplibraries
 cd Libraries
 md Krypton.Toolkit.Suite.Extended.Base
-md Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar.Suite
+md Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar
 md Krypton.Toolkit.Suite.Extended.Drawing.Suite
 md Krypton.Toolkit.Suite.Extended.Data.Visualisation
 md Krypton.Toolkit.Suite.Extended.Error.Reporting
@@ -71,7 +71,7 @@ cd Libraries
 cd Krypton.Toolkit.Suite.Extended.Base
 goto createnet48directory
 cd ..
-cd Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar.Suite
+cd Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar
 goto createnet48directory
 cd ..
 cd Krypton.Toolkit.Suite.Extended.Drawing.Suite
@@ -153,8 +153,8 @@ cd ..\..
 :copylibraryfiles
 copy <##Target-directory##>\Bin\Debug\Libraries\Krypton.Toolkit.Suite.Extended.Base\net48\Krypton.Toolkit.Suite.Extended.Base.dll <##Destination##>\Extended-Toolkit\Libraries\Krypton.Toolkit.Suite.Extended.Base\Krypton.Toolkit.Suite.Extended.Base.dll
 copy <##Target-directory##>\Bin\Debug\Libraries\Krypton.Toolkit.Suite.Extended.Base\net48\Krypton.Toolkit.Suite.Extended.Base.xml <##Destination##>\Extended-Toolkit\Libraries\Krypton.Toolkit.Suite.Extended.Base\Krypton.Toolkit.Suite.Extended.Base.xml
-copy <##Target-directory##>\Bin\Debug\Libraries\Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar.Suite\net48\Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar.Suite.dll <##Destination##>\Extended-Toolkit\Libraries\Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar.Suite\Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar.Suite.dll
-copy <##Target-directory##>\Bin\Debug\Libraries\Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar.Suite\net48\Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar.Suite.xml <##Destination##>\Extended-Toolkit\Libraries\Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar.Suite\Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar.Suite.xml
+copy <##Target-directory##>\Bin\Debug\Libraries\Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar\net48\Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar.dll <##Destination##>\Extended-Toolkit\Libraries\Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar\Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar.dll
+copy <##Target-directory##>\Bin\Debug\Libraries\Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar\net48\Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar.xml <##Destination##>\Extended-Toolkit\Libraries\Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar\Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar.xml
 copy <##Target-directory##>\Bin\Debug\Libraries\Krypton.Toolkit.Suite.Extended.Drawing.Suite\net48\Krypton.Toolkit.Suite.Extended.Drawing.Suite.dll <##Destination##>\Extended-Toolkit\Libraries\Krypton.Toolkit.Suite.Extended.Drawing.Suite\Krypton.Toolkit.Suite.Extended.Drawing.Suite.dll
 copy <##Target-directory##>\Bin\Debug\Libraries\Krypton.Toolkit.Suite.Extended.Drawing.Suite\net48\Krypton.Toolkit.Suite.Extended.Drawing.Suite.xml <##Destination##>\Extended-Toolkit\Libraries\Krypton.Toolkit.Suite.Extended.Drawing.Suite\Krypton.Toolkit.Suite.Extended.Drawing.Suite.xml
 copy <##Target-directory##>\Bin\Debug\Libraries\Krypton.Toolkit.Suite.Extended.Data.Visualisation\net48\Krypton.Toolkit.Suite.Extended.Data.Visualisation.dll <##Destination##>\Extended-Toolkit\Libraries\Krypton.Toolkit.Suite.Extended.Data.Visualisation\Krypton.Toolkit.Suite.Extended.Data.Visualisation.dll
