@@ -212,39 +212,115 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
                 {
                     _style = value;
 
-                    this;
-
                     switch (_style)
                     {
                         case ToggleSwitchStyle.METRO:
-                            SetRenderer(new ToggleSwitchMetroRenderer());
+                            if (_useKryptonRender)
+                            {
+                                SetRenderer(new ToggleSwitchMetroKryptonRenderer());
+                            }
+                            else
+                            {
+                                SetRenderer(new ToggleSwitchMetroRenderer());
+                            }
                             break;
                         case ToggleSwitchStyle.ANDROID:
-                            SetRenderer(new ToggleSwitchAndroidRenderer());
+                            if (_useKryptonRender)
+                            {
+                                SetRenderer(new ToggleSwitchAndroidKryptonRenderer());
+                            }
+                            else
+                            {
+                                SetRenderer(new ToggleSwitchAndroidRenderer());
+                            }
                             break;
                         case ToggleSwitchStyle.IOS5:
-                            SetRenderer(new ToggleSwitchIOS5Renderer());
+
+                            if (_useKryptonRender)
+                            {
+                                SetRenderer(new ToggleSwitchIOS5KryptonRenderer());
+                            }
+                            else
+                            {
+                                SetRenderer(new ToggleSwitchIOS5Renderer());
+                            }
                             break;
                         case ToggleSwitchStyle.BRUSHEDMETAL:
-                            SetRenderer(new ToggleSwitchBrushedMetalRenderer());
+
+                            if (_useKryptonRender)
+                            {
+                                SetRenderer(new ToggleSwitchBrushedMetalKryptonRenderer());
+                            }
+                            else
+                            {
+                                SetRenderer(new ToggleSwitchBrushedMetalRenderer());
+                            }
                             break;
                         case ToggleSwitchStyle.OSX:
-                            SetRenderer(new ToggleSwitchOSXRenderer());
+
+                            if (_useKryptonRender)
+                            {
+                                SetRenderer(new ToggleSwitchOSXKryptonRenderer());
+                            }
+                            else
+                            {
+                                SetRenderer(new ToggleSwitchOSXRenderer());
+                            }
                             break;
                         case ToggleSwitchStyle.CARBON:
-                            SetRenderer(new ToggleSwitchCarbonRenderer());
+
+                            if (_useKryptonRender)
+                            {
+                                SetRenderer(new ToggleSwitchCarbonKryptonRenderer());
+                            }
+                            else
+                            {
+                                SetRenderer(new ToggleSwitchCarbonRenderer());
+                            }
                             break;
                         case ToggleSwitchStyle.IPHONE:
-                            SetRenderer(new ToggleSwitchIphoneRenderer());
+
+                            if (_useKryptonRender)
+                            {
+                                SetRenderer(new ToggleSwitchIphoneKryptonRenderer());
+                            }
+                            else
+                            {
+                                SetRenderer(new ToggleSwitchIphoneRenderer());
+                            }
                             break;
                         case ToggleSwitchStyle.FANCY:
-                            SetRenderer(new ToggleSwitchFancyRenderer());
+
+                            if (_useKryptonRender)
+                            {
+                                SetRenderer(new ToggleSwitchFancyKryptonRenderer());
+                            }
+                            else
+                            {
+                                SetRenderer(new ToggleSwitchFancyRenderer());
+                            }
                             break;
                         case ToggleSwitchStyle.MODERN:
-                            SetRenderer(new ToggleSwitchModernRenderer());
+
+                            if (_useKryptonRender)
+                            {
+                                SetRenderer(new ToggleSwitchModernKryptonRenderer());
+                            }
+                            else
+                            {
+                                SetRenderer(new ToggleSwitchModernRenderer());
+                            }
                             break;
                         case ToggleSwitchStyle.PLAINANDSIMPLE:
-                            SetRenderer(new ToggleSwitchPlainAndSimpleRenderer());
+
+                            if (_useKryptonRender)
+                            {
+                                SetRenderer(new ToggleSwitchPlainAndSimpleKryptonRenderer());
+                            }
+                            else
+                            {
+                                SetRenderer(new ToggleSwitchPlainAndSimpleRenderer());
+                            }
                             break;
                     }
                 }

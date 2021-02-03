@@ -5,18 +5,17 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
 {
     public class ToggleSwitchAndroidKryptonRenderer : ToggleSwitchRendererBase, IAndroidValues
     {
+        #region Variables
+        private IPalette _palette;
+        private PaletteRedirect _paletteRedirect;
+        #endregion
+
         #region Constructor
 
         public ToggleSwitchAndroidKryptonRenderer()
         {
-            BorderColour = Color.FromArgb(255, 166, 166, 166);
-            BackColour = Color.FromArgb(255, 32, 32, 32);
-            LeftSideColour = Color.FromArgb(255, 32, 32, 32);
-            RightSideColour = Color.FromArgb(255, 32, 32, 32);
-            OffButtonColour = Color.FromArgb(255, 70, 70, 70);
-            OnButtonColour = Color.FromArgb(255, 27, 161, 226);
-            OffButtonBorderColour = Color.FromArgb(255, 70, 70, 70);
-            OnButtonBorderColour = Color.FromArgb(255, 27, 161, 226);
+            InitiliseColours();
+
             SlantAngle = 8;
         }
 
@@ -290,5 +289,44 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
         }
 
         #endregion Helper Method Implementations
+
+        #region ... Krypton ...
+
+        //Kripton Palette Events
+        private void OnGlobalPaletteChanged(object sender, EventArgs e)
+        {
+            if (_palette != null)
+                _palette.PalettePaint -= new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+
+            _palette = KryptonManager.CurrentGlobalPalette;
+            _paletteRedirect.Target = _palette;
+
+            if (_palette != null)
+            {
+                _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                //repaint with new values
+
+                InitiliseColours();
+            }
+        }
+
+        //Kripton Palette Events
+        private void OnPalettePaint(object sender, PaletteLayoutEventArgs e)
+        {
+
+        }
+
+        private void InitiliseColours()
+        {
+            BorderColour = _palette.ColorTable.MenuBorder;
+            BackColour = _palette.ColorTable.MenuStripGradientBegin;
+            LeftSideColour = Color.FromArgb(255, 32, 32, 32);
+            RightSideColour = Color.FromArgb(255, 32, 32, 32);
+            OffButtonColour = Color.FromArgb(255, 70, 70, 70);
+            OnButtonColour = Color.FromArgb(255, 27, 161, 226);
+            OffButtonBorderColour = Color.FromArgb(255, 70, 70, 70);
+            OnButtonBorderColour = Color.FromArgb(255, 27, 161, 226);
+        }
+        #endregion
     }
 }
