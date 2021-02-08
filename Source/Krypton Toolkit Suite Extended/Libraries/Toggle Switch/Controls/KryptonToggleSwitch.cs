@@ -807,7 +807,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
         }
 
         [DefaultValue(false), Category("Appearance"), Description("Gets or sets whether the toggle change should use the krypton renderer or not")]
-        public bool UseKryptonRender { get => _useKryptonRender; set => _useKryptonRender = value; }
+        public bool UseKryptonRender { get => _useKryptonRender; set { _useKryptonRender = value; Refresh(); } }
 
         [Bindable(false)]
         [DefaultValue(1)]
