@@ -320,8 +320,8 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
         {
             BorderColour = _palette.ColorTable.MenuBorder;
             BackColour = _palette.ColorTable.MenuStripGradientBegin;
-            LeftSideColour = Color.FromArgb(255, 32, 32, 32);
-            RightSideColour = Color.FromArgb(255, 32, 32, 32);
+            LeftSideColour = _palette.ColorTable.MenuStripGradientBegin;
+            RightSideColour = _palette.ColorTable.MenuStripGradientEnd;
             OffButtonColour = Color.FromArgb(255, 70, 70, 70);
             OnButtonColour = Color.FromArgb(255, 27, 161, 226);
             OffButtonBorderColour = Color.FromArgb(255, 70, 70, 70);

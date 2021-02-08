@@ -48,13 +48,13 @@
 
 # Documentation
 
-<a href="#"><img src="https://img.shields.io/badge/Documentation-Download File-orange.svg" alt="Download the extended toolkit documentation installer" /></a>
+<a href="https://github.com/Krypton-Suite/Help-Files/releases/download/5.550.2102/Krypton.Extended.Toolkit.Help.exe"><img src="https://img.shields.io/badge/Documentation-Download File-orange.svg" alt="Download the extended toolkit documentation installer" /></a>
 
 <!--
 =======
 
 ## 2021-05-01 - Build 2105 - May 2021
-* New `Krypton.Toolkit.Suite.Extended.Toggle.Switch` module
+* New `Krypton.Toolkit.Suite.Extended.Toggle.Switch` module-->
 
 =======
 
@@ -62,11 +62,11 @@
 * Rewritten the `Krypton.Toolkit.Suite.Extended.Outlook.Grid` module
 * Implement [#36](https://github.com/Krypton-Suite/Extended-Toolkit/issues/36), Expose the OutlookGrid.Classes.OutlookGridRowComparer2 class
 * Elevation events for command link button controls
-* New `Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar.Suite` module-->
+* New `Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar.Suite` module
 
 =======
 
-## 2021-03-01 - Build 2103 - March 2021
+## 2021-03-04 - Build 2103 - March 2021
 * Fixed package descriptions
 * New `KryptonEnhancedToolStrip` control
 * New `KryptonEnhancedToolStripProgressBar` control
