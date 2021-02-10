@@ -9,7 +9,7 @@ using System.Windows.Forms;
 namespace Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar
 {
     /// <summary>The circular progress bar windows form control.</summary>
-    [ToolboxItem(true), ToolboxBitmap(typeof(CircularProgressBar), "ToolboxBitmaps.CircularProgressBar.bmp"),
+    [Description("A circular progress bar for your applications."), ToolboxItem(true), ToolboxBitmap(typeof(CircularProgressBar), "ToolboxBitmaps.CircularProgressBar.bmp"),
      DefaultBindingProperty("Value")]
     public class CircularProgressBar : ProgressBar
     {
@@ -22,6 +22,7 @@ namespace Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar
         private KnownAnimationFunctions _knownAnimationFunction;
         private ProgressBarStyle? _lastStyle;
         private int _lastValue;
+        private bool _useColourTrio;
 
         #region Krypton
         //Palette State
@@ -187,6 +188,9 @@ namespace Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar
         /// </summary>
         [Category("Layout")]
         public Padding TextMargin { get; set; }
+
+        [Category("Appearance"), DefaultValue(false), Description("")]
+        public bool UseColourTrio { get => _useColourTrio; set => _useColourTrio = value; }
         #endregion
 
         #region Constructor
@@ -648,6 +652,31 @@ namespace Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar
             base.OnSizeChanged(e);
 
             Invalidate();
+        }
+
+        protected override void OnPrint(PaintEventArgs e)
+        {
+            if (_useColourTrio)
+            {
+                if (Value <= 33)
+                {
+                    ProgressColour = Color.Red;
+                }
+                else if (Value <= 66)
+                {
+                    ProgressColour = _palette.ColorTable.ButtonCheckedGradientBegin;
+                }
+                else
+                {
+                    ProgressColour = Color.Green;
+                }
+            }
+            else
+            {
+                InitialiseKrypton();
+            }
+
+            base.OnPrint(e);
         }
         #endregion
 
