@@ -23,6 +23,7 @@ namespace Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar
         private ProgressBarStyle? _lastStyle;
         private int _lastValue;
         private bool _useColourTrio;
+        private Color _firstValueColour, _secondValueColour, _thirdValueColour;
 
         #region Krypton
         //Palette State
@@ -189,8 +190,14 @@ namespace Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar
         [Category("Layout")]
         public Padding TextMargin { get; set; }
 
-        [Category("Appearance"), DefaultValue(false), Description("")]
+        [Category("Appearance"), DefaultValue(false), Description("Use three colours to depict the current values.")]
         public bool UseColourTrio { get => _useColourTrio; set => _useColourTrio = value; }
+
+        public Color FirstValueColour { get => _firstValueColour; set => _firstValueColour = value; }
+
+        public Color SecondValueColour { get => _secondValueColour; set => _secondValueColour = value; }
+
+        public Color ThirdValueColour { get => _thirdValueColour; set => _thirdValueColour = value; }
         #endregion
 
         #region Constructor
@@ -260,6 +267,12 @@ namespace Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar
             InitialiseKrypton();
 
             Text = "0";
+
+            FirstValueColour = Color.Red;
+
+            SecondValueColour = Color.FromArgb(255, 191, 0);
+
+            ThirdValueColour = Color.Green;
         }
         #endregion
 
@@ -582,6 +595,8 @@ namespace Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar
                 // ignored
             }
         }
+
+        public void Increment(int step) => Value = Value + step;
         #endregion
 
         #region Overrides
@@ -613,6 +628,26 @@ namespace Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar
                 if (_backBrush == null)
                 {
                     RecreateBackgroundBrush();
+                }
+
+                if (_useColourTrio)
+                {
+                    if (Value <= 33)
+                    {
+                        ProgressColour = _firstValueColour;
+                    }
+                    else if (Value <= 66)
+                    {
+                        ProgressColour = _secondValueColour; // _palette.ColorTable.ButtonCheckedGradientBegin;
+                    }
+                    else
+                    {
+                        ProgressColour = _thirdValueColour;
+                    }
+                }
+                else
+                {
+                    InitialiseKrypton();
                 }
 
                 StartPaint(e.Graphics);
@@ -652,31 +687,6 @@ namespace Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar
             base.OnSizeChanged(e);
 
             Invalidate();
-        }
-
-        protected override void OnPrint(PaintEventArgs e)
-        {
-            if (_useColourTrio)
-            {
-                if (Value <= 33)
-                {
-                    ProgressColour = Color.Red;
-                }
-                else if (Value <= 66)
-                {
-                    ProgressColour = _palette.ColorTable.ButtonCheckedGradientBegin;
-                }
-                else
-                {
-                    ProgressColour = Color.Green;
-                }
-            }
-            else
-            {
-                InitialiseKrypton();
-            }
-
-            base.OnPrint(e);
         }
         #endregion
 
