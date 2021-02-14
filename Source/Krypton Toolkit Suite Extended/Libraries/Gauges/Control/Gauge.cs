@@ -248,7 +248,7 @@ namespace Krypton.Toolkit.Suite.Extended.Gauges
         {
             InitializeComponent();
 
-            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+            SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.SupportsTransparentBackColor, true);
 
             //Design Mode
             _designMode = (System.Diagnostics.Process.GetCurrentProcess().ProcessName == "devenv");
