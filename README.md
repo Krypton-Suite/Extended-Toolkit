@@ -50,11 +50,23 @@
 
 <a href="#"><img src="https://img.shields.io/badge/Documentation-Download File-orange.svg" alt="Download the extended toolkit documentation installer" /></a>
 
-<!--=======
+<!--
+=======
 
-## 2021-03-01 - Build 2103 - March 2021
+## 2021-04-01 - Build 2104 - April 2021
 * Rewritten the `Krypton.Toolkit.Suite.Extended.Outlook.Grid` module
 * Implement [#36](https://github.com/Krypton-Suite/Extended-Toolkit/issues/36), Expose the OutlookGrid.Classes.OutlookGridRowComparer2 class-->
+
+=======
+
+## 2021-03-04 - Build 2103 - March 2021
+* Fixed package descriptions
+* New `KryptonEnhancedToolStrip` control
+* New `KryptonEnhancedToolStripProgressBar` control
+* New `KryptonStatusStrip` control
+* UAC options for command link buttons (elevation events will come in the next update)
+* A new version of the `KryptonUACElevatedButton` that uses the `SystemIcons` API, to grab the version specific UAC shield icon (32 x 32). The existing `KryptonUACElevatedButton` is still in the toolkit for compatibility reasons, but will be hidden in the tool box.
+* Updated standard toolkit to build `2103`
 
 =======
 

@@ -67,12 +67,14 @@ using System.Xml.Serialization;
 
 namespace Krypton.Toolkit.Suite.Extended.Base
 {
+    /// <summary>A Visual Studio toolbox like control for your application. Adapted from: https://www.codeproject.com/Articles/8658/Another-ToolBox-Control.</summary>
+    /// <seealso cref="UserControl" />
     [Description("A Visual Studio toolbox like control for your application."), Serializable]
     public class KryptonToolBox : UserControl
     {
         #region Constants
 
-        private const string Xml_Root_Node = "Silver.UI.ToolBox";
+        private const string Xml_Root_Node = "Krypton.Toolkit.Suite.Extended.Base.ToolBox";
         private const string Xml_Config_Node = "Config";
         private const string Xml_TabHeight_Node = "TabHeight";
         private const string Xml_ItemHeight_Node = "ItemHeight";
@@ -4140,6 +4142,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             ItemSelectedTextColour = _palette.ColorTable.ButtonSelectedGradientBegin;
             ItemNormalTextColour = _palette.ColorTable.ToolStripText;
             ItemHoverTextColour = _palette.ColorTable.ButtonSelectedGradientMiddle;
+            BackColor = _palette.ColorTable.ToolStripPanelGradientBegin;
         }
         #endregion
     }

@@ -57,6 +57,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Suite
             this.kryptonTextBox1 = new Krypton.Toolkit.KryptonTextBox();
             this.kryptonLabel7 = new Krypton.Toolkit.KryptonLabel();
             this.colourWheelControl1 = new Krypton.Toolkit.Suite.Extended.Drawing.Suite.ColourWheelControl();
+            this.circularPictureBox1 = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
             this.kryptonNumericUpDown6 = new Krypton.Toolkit.KryptonNumericUpDown();
             this.kryptonNumericUpDown5 = new Krypton.Toolkit.KryptonNumericUpDown();
             this.kryptonNumericUpDown4 = new Krypton.Toolkit.KryptonNumericUpDown();
@@ -69,7 +70,6 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Suite
             this.kryptonLabel3 = new Krypton.Toolkit.KryptonLabel();
             this.kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
             this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
-            this.circularPictureBox1 = new Krypton.Toolkit.Suite.Extended.Base.CircularPictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
@@ -201,6 +201,16 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Suite
             this.colourWheelControl1.Name = "colourWheelControl1";
             this.colourWheelControl1.Size = new System.Drawing.Size(251, 185);
             this.colourWheelControl1.TabIndex = 16;
+            // 
+            // circularPictureBox1
+            // 
+            this.circularPictureBox1.BackColor = System.Drawing.SystemColors.Control;
+            this.circularPictureBox1.Location = new System.Drawing.Point(361, 12);
+            this.circularPictureBox1.Name = "circularPictureBox1";
+            this.circularPictureBox1.Size = new System.Drawing.Size(101, 101);
+            this.circularPictureBox1.TabIndex = 15;
+            this.circularPictureBox1.TabStop = false;
+            this.circularPictureBox1.ToolTipValues = null;
             // 
             // kryptonNumericUpDown6
             // 
@@ -351,16 +361,6 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Suite
             this.kryptonLabel1.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kryptonLabel1.TabIndex = 3;
             this.kryptonLabel1.Values.Text = "Alpha:";
-            // 
-            // circularPictureBox1
-            // 
-            this.circularPictureBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.circularPictureBox1.Location = new System.Drawing.Point(361, 12);
-            this.circularPictureBox1.Name = "circularPictureBox1";
-            this.circularPictureBox1.Size = new System.Drawing.Size(101, 101);
-            this.circularPictureBox1.TabIndex = 15;
-            this.circularPictureBox1.TabStop = false;
-            this.circularPictureBox1.ToolTipValues = null;
             // 
             // KryptonColourButtonCustomColourDialog
             // 

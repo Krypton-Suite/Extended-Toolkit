@@ -1,11 +1,3 @@
-﻿#region BSD License
-/*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
- */
-#endregion
-
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -16,14 +8,100 @@ using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Base
 {
-#if !NETCOREAPP31 && !NET5
-    [ToolboxBitmap(typeof(ListView))]
+    [System.Drawing.ToolboxBitmapAttribute(typeof(System.Windows.Forms.ListView)), ToolboxItem(false)]
     public class KryptonListView : ListView
     {
-        #region Design Code
+        #region   "   Members   "
+        private bool _hasFocus = false;
+        private IPalette _palette;
+        private PaletteRedirect _paletteRedirect;
+        private PaletteBackInheritRedirect _paletteBack;
+        private PaletteBorderInheritRedirect _paletteBorder;
+        private PaletteContentInheritRedirect _paletteContent;
+        private IDisposable _mementoContent;
+        private IDisposable _mementoBack1;
+        private IDisposable _mementoBack2;
+        private IContainer components;
         private ImageList ilCheckBoxes;
+        private ListViewColumnSorter lvwColumnSorter;
+        private Font _originalFont;
+        private Color _originalForeColor;
         private ImageList ilHeight;
-        private System.ComponentModel.IContainer components;
+        private const int _minimumItemHeight = 18;
+        #endregion
+
+        #region   "   CTor   "
+        public KryptonListView()
+        {
+            //this.SetStyle(ControlStyles.UserPaint, true);
+            this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);
+            this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+            this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
+            this.SetStyle(ControlStyles.EnableNotifyMessage, true);
+            UpdateStyles();
+
+            this.OwnerDraw = true;
+
+            //store the original font
+            _originalFont = (Font)this.Font.Clone();
+
+            //store the original foreColor
+            _originalForeColor = (Color)this.ForeColor;
+
+            // add Palette Handler
+            // Cache the current global palette setting
+            _palette = KryptonManager.CurrentGlobalPalette;
+
+            // Hook into palette events
+            if (_palette != null)
+                _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+
+            // We want to be notified whenever the global palette changes
+            KryptonManager.GlobalPaletteChanged += new EventHandler(OnGlobalPaletteChanged);
+
+            // Create redirection object to the base palette
+            _paletteRedirect = new PaletteRedirect(_palette);
+
+            // Create accessor objects for the back, border and content
+            _paletteBack = new PaletteBackInheritRedirect(_paletteRedirect);
+            _paletteBorder = new PaletteBorderInheritRedirect(_paletteRedirect);
+            _paletteContent = new PaletteContentInheritRedirect(_paletteRedirect);
+
+            InitColors();
+
+            // Create an instance of a ListView column sorter and assign it 
+            // to the ListView control.
+            lvwColumnSorter = new ListViewColumnSorter();
+            this.ListViewItemSorter = lvwColumnSorter;
+
+            if (_selectEntireRowOnSubItem == true)
+            {
+                this.FullRowSelect = true;
+            }
+
+            //vista
+            _enableVistaCheckBoxes = Utility.IsVistaOrHigher();
+
+            //for image list
+            InitializeComponent();
+
+            //Design Mode
+            _designMode = (System.Diagnostics.Process.GetCurrentProcess().ProcessName == "devenv");
+
+            //set a minimum item height
+            if (this.SmallImageList == null)
+            {
+
+                this.SmallImageList = ilHeight;
+            }
+
+
+        }
+
+        #endregion
+
+
+        #region   "   Init   "
 
         private void InitializeComponent()
         {
@@ -37,10 +115,10 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             // 
             this.ilCheckBoxes.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ilCheckBoxes.ImageStream")));
             this.ilCheckBoxes.TransparentColor = System.Drawing.Color.Transparent;
-            this.ilCheckBoxes.Images.SetKeyName(0, "VistaChecked.png");
-            this.ilCheckBoxes.Images.SetKeyName(1, "VistaNotChecked.png");
-            this.ilCheckBoxes.Images.SetKeyName(2, "XPChecked.gif");
-            this.ilCheckBoxes.Images.SetKeyName(3, "XPNotChecked.gif");
+            this.ilCheckBoxes.Images.SetKeyName(0, "XpNotChecked.gif");
+            this.ilCheckBoxes.Images.SetKeyName(1, "XpChecked.gif");
+            this.ilCheckBoxes.Images.SetKeyName(2, "VistaNotChecked.png");
+            this.ilCheckBoxes.Images.SetKeyName(3, "VistaChecked.png");
             // 
             // ilHeight
             // 
@@ -50,26 +128,31 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             this.ResumeLayout(false);
 
         }
+        private void InitColors()
+        {
+            //set colors
+            if (_persistentColors == false)
+            {
+                //init color values
+                if (_useStyledColors == true)
+                {
+                    _gradientStartColor = Color.FromArgb(255, 246, 215);
+                    _gradientEndColor = Color.FromArgb(255, 213, 77);
+                    _gradientMiddleColor = Color.FromArgb(252, 224, 133);
+                }
+                else
+                {
+                    _gradientStartColor = _palette.ColorTable.StatusStripGradientBegin;
+                    _gradientEndColor = _palette.ColorTable.OverflowButtonGradientEnd;
+                    _gradientMiddleColor = _palette.ColorTable.StatusStripGradientEnd;
+                }
+            }
+            _alternateRowColor = _palette.ColorTable.ToolStripContentPanelGradientBegin;
+        }
+
         #endregion
 
-        #region Variables
-        private bool _hasFocus = false;
-        private IPalette _palette;
-        private PaletteRedirect _paletteRedirect;
-        private PaletteBackInheritRedirect _paletteBack;
-        private PaletteBorderInheritRedirect _paletteBorder;
-        private PaletteContentInheritRedirect _paletteContent;
-        private IDisposable _mementoContent;
-        private IDisposable _mementoBack1;
-        private IDisposable _mementoBack2;
-        private ListViewColumnSorter lvwColumnSorter;
-        private ListViewItem _itemDnD;
-        private Font _originalFont;
-        private Color _originalForeColour;
-        private const int _minimumItemHeight = 18;
-        #endregion
-
-        #region Properties
+        #region   "   Properties   "
 
         //for setting the minimum height of an item
         public virtual int ItemHeight { get; set; }
@@ -111,70 +194,70 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             set { _enableDragDrop = value; }
         }
 
-        Color _alternateRowColour = Color.LightGray;
+        Color _alternateRowColor = Color.LightGray;
         [Browsable(true), Category("Appearance-Extended")]
         [DefaultValue("Color.Gray")]
-        public Color AlternateRowColour
+        public Color AlternateRowColor
         {
-            get { return _alternateRowColour; }
-            set { _alternateRowColour = value; Invalidate(); }
+            get { return _alternateRowColor; }
+            set { _alternateRowColor = value; Invalidate(); }
         }
 
-        Boolean _alternateRowColourEnabled = true;
+        Boolean _alternateRowColorEnabled = true;
         [Browsable(true), Category("Appearance-Extended")]
         [DefaultValue("true")]
-        public Boolean AlternateRowColourEnabled
+        public Boolean AlternateRowColorEnabled
         {
-            get { return _alternateRowColourEnabled; }
-            set { _alternateRowColourEnabled = value; Invalidate(); }
+            get { return _alternateRowColorEnabled; }
+            set { _alternateRowColorEnabled = value; Invalidate(); }
         }
 
-        Color _gradientStartColour = Color.White;
+        Color _gradientStartColor = Color.White;
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         [Browsable(true), Category("Appearance-Extended")]
         [DefaultValue("Color.White")]
-        public Color GradientStartColour
+        public Color GradientStartColor
         {
-            get { return _gradientStartColour; }
-            set { _gradientStartColour = value; Invalidate(); }
+            get { return _gradientStartColor; }
+            set { _gradientStartColor = value; Invalidate(); }
         }
 
-        Color _gradientEndColour = Color.Gray;
+        Color _gradientEndColor = Color.Gray;
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         [Browsable(true), Category("Appearance-Extended")]
         [DefaultValue("Color.Gray")]
-        public Color GradientEndColour
+        public Color GradientEndColor
         {
-            get { return _gradientEndColour; }
-            set { _gradientEndColour = value; Invalidate(); }
+            get { return _gradientEndColor; }
+            set { _gradientEndColor = value; Invalidate(); }
         }
 
-        Color _gradientMiddleColour = Color.LightGray;
+        Color _gradientMiddleColor = Color.LightGray;
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         [Browsable(true), Category("Appearance-Extended")]
         [DefaultValue("Color.Gray")]
-        public Color GradientMiddleColour
+        public Color GradientMiddleColor
         {
-            get { return _gradientMiddleColour; }
-            set { _gradientMiddleColour = value; Invalidate(); }
+            get { return _gradientMiddleColor; }
+            set { _gradientMiddleColor = value; Invalidate(); }
         }
 
-        Boolean _persistentColours = false;
+        Boolean _persistentColors = false;
         [Browsable(true), Category("Appearance-Extended")]
         [DefaultValue("False")]
-        public Boolean PersistentColours
+        public Boolean PersistentColors
         {
-            get { return _persistentColours; }
-            set { _persistentColours = value; Invalidate(); }
+            get { return _persistentColors; }
+            set { _persistentColors = value; Invalidate(); }
         }
 
-        Boolean _useStyledColours = false;
+        Boolean _useStyledColors = false;
         [Browsable(true), Category("Appearance-Extended")]
         [DefaultValue("False")]
-        public Boolean UseStyledColours
+        public Boolean UseStyledColors
         {
-            get { return _useStyledColours; }
-            set { _useStyledColours = value; Invalidate(); }
+            get { return _useStyledColors; }
+            set { _useStyledColors = value; Invalidate(); }
         }
 
         private bool _useKryptonRenderer = true;
@@ -291,89 +374,14 @@ namespace Krypton.Toolkit.Suite.Extended.Base
 
         #endregion
 
-        #region Constructor
-        public KryptonListView()
-        {
-            SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.SupportsTransparentBackColor | ControlStyles.EnableNotifyMessage, true);
-
-            UpdateStyles();
-
-            OwnerDraw = true;
-
-            _originalFont = (Font)Font.Clone();
-
-            _originalForeColour = (Color)ForeColor;
-
-            _palette = KryptonManager.CurrentGlobalPalette;
-
-            if (_palette != null)
-            {
-                _palette.PalettePaint += OnPalettePaint;
-            }
-
-            KryptonManager.GlobalPaletteChanged += OnGlobalPaletteChanged;
-
-            _paletteRedirect = new PaletteRedirect(_palette);
-
-            _paletteBack = new PaletteBackInheritRedirect(_paletteRedirect);
-
-            _paletteBorder = new PaletteBorderInheritRedirect(_paletteRedirect);
-
-            _paletteContent = new PaletteContentInheritRedirect(_paletteRedirect);
-
-            InitialiseColours();
-
-            lvwColumnSorter = new ListViewColumnSorter();
-
-            this.ListViewItemSorter = lvwColumnSorter;
-
-            if (_selectEntireRowOnSubItem)
-            {
-                FullRowSelect = true;
-            }
-
-            _enableVistaCheckBoxes = Utility.IsVistaOrHigher();
-
-            InitializeComponent();
-
-            _designMode = (Process.GetCurrentProcess().ProcessName == "devenv");
-
-            if (SmallImageList == null)
-            {
-                SmallImageList = ilHeight;
-            }
-        }
-        #endregion
-
-        #region Methods
-        /// <summary>Initialises the colours.</summary>
-        private void InitialiseColours()
-        {
-            //set colors
-            if (_persistentColours == false)
-            {
-                //init color values
-                if (_useStyledColours == true)
-                {
-                    _gradientStartColour = Color.FromArgb(255, 246, 215);
-                    _gradientEndColour = Color.FromArgb(255, 213, 77);
-                    _gradientMiddleColour = Color.FromArgb(252, 224, 133);
-                }
-                else
-                {
-                    _gradientStartColour = _palette.ColorTable.StatusStripGradientBegin;
-                    _gradientEndColour = _palette.ColorTable.OverflowButtonGradientEnd;
-                    _gradientMiddleColour = _palette.ColorTable.StatusStripGradientEnd;
-                }
-            }
-            _alternateRowColour = _palette.ColorTable.ToolStripContentPanelGradientBegin;
-        }
-        #endregion
-
-        #region DrawItem and SubItem
+        #region   "   DrawItem and SubItem   "
+        //Draw Item
         protected override void OnDrawItem(DrawListViewItemEventArgs e)
         {
-            this.ForeColor = GetForeTextColour(PaletteState.Normal);
+
+            //set font 
+            //get Colors And Font
+            this.ForeColor = GetForeTextColor(PaletteState.Normal);
             this.Font = GetForeTextFont(PaletteState.Normal);
 
 
@@ -413,18 +421,12 @@ namespace Krypton.Toolkit.Suite.Extended.Base
                         if (_useKryptonRenderer)
                         {
                             if (_hasFocus)
-                            {
                                 KryptonRenderer(PaletteState.Pressed, ref g, ref rect); //KryptonRenderer
-                            }
                             else
-                            {
                                 KryptonRenderer(PaletteState.Normal, ref g, ref rect);
-                            }
                         }
                         else
-                        {
                             InternalRenderer(ref g, ref rect); //InternalRenderer
-                        }
                     }
                     else
                     {
@@ -440,14 +442,16 @@ namespace Krypton.Toolkit.Suite.Extended.Base
                 }
             }
             else
-            {
                 e.DrawDefault = true;
-            }
         }
 
+
+        //Draw SubItem
         protected override void OnDrawSubItem(DrawListViewSubItemEventArgs e)
         {
-            this.ForeColor = GetForeTextColour(PaletteState.Normal);
+            //set font 
+            //get Colors And Font
+            this.ForeColor = GetForeTextColor(PaletteState.Normal);
             this.Font = GetForeTextFont(PaletteState.Normal);
 
             if (!DesignMode)
@@ -549,7 +553,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
                         if (_useKryptonRenderer) rect.Offset(0, -2);
 
                         //drawText
-                        Color textColor = GetForeTextColour(PaletteState.CheckedPressed);
+                        Color textColor = GetForeTextColor(PaletteState.CheckedPressed);
                         //if (!_hasFocus)
                         //    textColor = GetForeTextColor(PaletteState.Normal);
 
@@ -580,16 +584,15 @@ namespace Krypton.Toolkit.Suite.Extended.Base
 
             }
             else
-            {
                 e.DrawDefault = true;
-            }
+
         }
         #endregion
 
-        #region Drawing Renderers
-        private Color GetForeTextColourHeader(PaletteState buttonState)
+        #region   "   Drawing Renderers   "
+        private Color GetForeTextColorHeader(PaletteState buttonState)
         {
-            Color textColor = _originalForeColour;
+            Color textColor = _originalForeColor;
 
             textColor = _palette.ColorTable.MenuItemText;// StatusStripText;
             if (buttonState == PaletteState.CheckedPressed) textColor = _palette.ColorTable.StatusStripText;
@@ -599,11 +602,11 @@ namespace Krypton.Toolkit.Suite.Extended.Base
 
             return textColor;
         }
-        private Color GetForeTextColour(PaletteState buttonState)
+        private Color GetForeTextColor(PaletteState buttonState)
         {
-            Color textColor = _originalForeColour;
+            Color textColor = _originalForeColor;
 
-            if ((_persistentColours == false) || _useKryptonRenderer)
+            if ((_persistentColors == false) || _useKryptonRenderer)
             {
                 //init color values
                 //if (_useStyledColors == true)
@@ -695,26 +698,26 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         private void InternalRenderer(ref Graphics g, ref Rectangle rect)
         {
             //set colors
-            if (_persistentColours == false)
+            if (_persistentColors == false)
             {
                 //init color values
-                if (_useStyledColours == true)
+                if (_useStyledColors == true)
                 {
-                    _gradientStartColour = Color.FromArgb(255, 246, 215);
-                    _gradientEndColour = Color.FromArgb(255, 213, 77);
-                    _gradientMiddleColour = Color.FromArgb(252, 224, 133);
+                    _gradientStartColor = Color.FromArgb(255, 246, 215);
+                    _gradientEndColor = Color.FromArgb(255, 213, 77);
+                    _gradientMiddleColor = Color.FromArgb(252, 224, 133);
                 }
                 else
                 {
-                    _gradientStartColour = _palette.ColorTable.StatusStripGradientBegin;
-                    _gradientEndColour = _palette.ColorTable.OverflowButtonGradientEnd;
-                    _gradientMiddleColour = _palette.ColorTable.StatusStripGradientEnd;
+                    _gradientStartColor = _palette.ColorTable.StatusStripGradientBegin;
+                    _gradientEndColor = _palette.ColorTable.OverflowButtonGradientEnd;
+                    _gradientMiddleColor = _palette.ColorTable.StatusStripGradientEnd;
                 }
             }
 
 
             //draw
-            DrawingMethods.DrawGradient(g, rect, _gradientStartColour, _gradientEndColour, 90F, _enableSelectionBorder, _gradientMiddleColour, 1);
+            DrawingMethods.DrawGradient(g, rect, _gradientStartColor, _gradientEndColor, 90F, _enableSelectionBorder, _gradientMiddleColor, 1);
         }
 
         private void KryptonRendererHeader(ref Graphics g, ref Rectangle rect, bool bHot, ref DrawListViewColumnHeaderEventArgs e)
@@ -834,7 +837,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         }
         #endregion
 
-        #region Draw Header
+        #region   "   Draw Header   "
         protected override void OnDrawColumnHeader(DrawListViewColumnHeaderEventArgs e)
         {
             if (!DesignMode)
@@ -893,7 +896,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
                     HeaderPressedOffset(ref rect, e.State);
 
                     //get Colors And Font
-                    Color textColor = GetForeTextColourHeader(GetPaletteState(ref e, bHot));
+                    Color textColor = GetForeTextColorHeader(GetPaletteState(ref e, bHot));
                     Font textFont = GetForeTextFont(GetPaletteState(ref e, bHot));
 
                     //set text properties
@@ -929,9 +932,10 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             else
                 e.DrawDefault = true;
         }
+
         #endregion
 
-        #region Helper Subs
+        #region   "   Helper Subs   "
         public StringAlignment ConvertHorizontalAlignmentToStringAlignment(HorizontalAlignment input)
         {
 
@@ -1005,24 +1009,27 @@ namespace Krypton.Toolkit.Suite.Extended.Base
 
             return result;
         }
+
         #endregion
 
-        #region Others Overrides
+        #region   "   Others Ovverides   "
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
         }
 
+        // The LVItem being dragged
+        private ListViewItem _itemDnD = null;
+
         protected override void OnMouseDown(MouseEventArgs e)
         {
             if (_enableDragDrop)
             {
-                _itemDnD = GetItemAt(e.X, e.Y);
+                _itemDnD = this.GetItemAt(e.X, e.Y);
+                // if the LV is still empty, no item will be found anyway, so we don't have to consider this case
             }
-
             base.OnMouseDown(e);
         }
-
         protected override void OnMouseUp(MouseEventArgs e)
         {
             if (_enableDragDrop)
@@ -1033,10 +1040,10 @@ namespace Krypton.Toolkit.Suite.Extended.Base
                 try
                 {
                     // calculate the bottom of the last item in the LV so that you don't have to stop your drag at the last item
-                    int lastItemBottom = Math.Min(e.Y, Items[Items.Count - 1].GetBounds(ItemBoundsPortion.Entire).Bottom - 1);
+                    int lastItemBottom = Math.Min(e.Y, this.Items[this.Items.Count - 1].GetBounds(ItemBoundsPortion.Entire).Bottom - 1);
 
                     // use 0 instead of e.X so that you don't have to keep inside the columns while dragging
-                    ListViewItem itemOver = GetItemAt(0, lastItemBottom);
+                    ListViewItem itemOver = this.GetItemAt(0, lastItemBottom);
 
                     if (itemOver == null)
                         return;
@@ -1058,21 +1065,21 @@ namespace Krypton.Toolkit.Suite.Extended.Base
                     {
                         if (insertBefore)
                         {
-                            Items.Remove(_itemDnD);
-                            Items.Insert(itemOver.Index, _itemDnD);
+                            this.Items.Remove(_itemDnD);
+                            this.Items.Insert(itemOver.Index, _itemDnD);
                         }
                         else
                         {
-                            Items.Remove(_itemDnD);
-                            Items.Insert(itemOver.Index + 1, _itemDnD);
+                            this.Items.Remove(_itemDnD);
+                            this.Items.Insert(itemOver.Index + 1, _itemDnD);
                         }
                     }
 
                     // clear the insertion line
-                    LineAfter =
-                    LineBefore = -1;
+                    this.LineAfter =
+                    this.LineBefore = -1;
 
-                    Invalidate();
+                    this.Invalidate();
 
                 }
                 finally
@@ -1089,22 +1096,19 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         protected override void OnGotFocus(EventArgs e)
         {
             _hasFocus = true;
-
             base.OnGotFocus(e);
         }
-
         protected override void OnLostFocus(EventArgs e)
         {
             _hasFocus = false;
-
             base.OnLostFocus(e);
+            //Invalidate();
         }
-
         protected override void OnMouseEnter(EventArgs e)
         {
             base.OnMouseEnter(e);
+            //Invalidate();
         }
-
         protected override void OnMouseMove(MouseEventArgs e)
         {
             if (_enableDragDrop)
@@ -1116,10 +1120,10 @@ namespace Krypton.Toolkit.Suite.Extended.Base
                 Cursor = Cursors.Hand;
 
                 // calculate the bottom of the last item in the LV so that you don't have to stop your drag at the last item
-                int lastItemBottom = Math.Min(e.Y, Items[Items.Count - 1].GetBounds(ItemBoundsPortion.Entire).Bottom - 1);
+                int lastItemBottom = Math.Min(e.Y, this.Items[this.Items.Count - 1].GetBounds(ItemBoundsPortion.Entire).Bottom - 1);
 
                 // use 0 instead of e.X so that you don't have to keep inside the columns while dragging
-                ListViewItem itemOver = GetItemAt(0, lastItemBottom);
+                ListViewItem itemOver = this.GetItemAt(0, lastItemBottom);
 
                 if (itemOver == null)
                     return;
@@ -1127,22 +1131,20 @@ namespace Krypton.Toolkit.Suite.Extended.Base
                 Rectangle rc = itemOver.GetBounds(ItemBoundsPortion.Entire);
                 if (e.Y < rc.Top + (rc.Height / 2))
                 {
-                    LineBefore = itemOver.Index;
-                    LineAfter = -1;
+                    this.LineBefore = itemOver.Index;
+                    this.LineAfter = -1;
                 }
                 else
                 {
-                    LineBefore = -1;
-                    LineAfter = itemOver.Index;
+                    this.LineBefore = -1;
+                    this.LineAfter = itemOver.Index;
                 }
 
                 // invalidate the LV so that the insertion line is shown
                 Invalidate();
             }
-
             base.OnMouseMove(e);
         }
-
         protected override void OnItemMouseHover(ListViewItemMouseHoverEventArgs e)
         {
             base.OnItemMouseHover(e);
@@ -1176,15 +1178,15 @@ namespace Krypton.Toolkit.Suite.Extended.Base
 
                 //set info for sort image
                 //CleanColumnsTag();
-                //Columns[e.Column].Tag = lvwColumnSorter.Order;
+                //this.Columns[e.Column].Tag = lvwColumnSorter.Order;
 
                 // Perform the sort with these new sort options.
-                Sort();
+                this.Sort();
             }
         }
 
-        [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
-        protected override void WndProc(ref Message m)
+        [PermissionSetAttribute(SecurityAction.Demand, Name = "FullTrust")]
+        protected override void WndProc(ref Message message)
         {
             //To avoid errors on designer
             if (!DesignMode)
@@ -1194,14 +1196,14 @@ namespace Krypton.Toolkit.Suite.Extended.Base
                     // if the control is in details view mode and columns
                     // have been added, then intercept the WM_PAINT message
                     // and reset the last column width to fill the list view
-                    switch (m.Msg)
+                    switch (message.Msg)
                     {
                         case Win32.WM_PAINT:
-                            if (View == View.Details && Columns.Count > 0)
-                                Columns[Columns.Count - 1].Width = -2;
-                            for (int i = 0; i < Columns.Count - 1; i++)
+                            if (this.View == View.Details && this.Columns.Count > 0)
+                                this.Columns[this.Columns.Count - 1].Width = -2;
+                            for (int i = 0; i < this.Columns.Count - 1; i++)
                             {
-                                Columns[i].Width = Columns[i].Width;
+                                this.Columns[i].Width = this.Columns[i].Width;
                             }
                             if (_enableDragDrop)
                             {
@@ -1221,7 +1223,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
                         case Win32.WM_NCHITTEST:
                             //DRAWITEMSTRUCT dis = (DRAWITEMSTRUCT)Marshal.PtrToStructure(message.LParam, typeof(DRAWITEMSTRUCT));
 
-                            //ColumnHeader ch = Columns[dis.itemID];
+                            //ColumnHeader ch = this.Columns[dis.itemID];
                             break;
                     }
 
@@ -1229,7 +1231,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
 
             // pass messages on to the base control for processing
-            base.WndProc(ref m);
+            base.WndProc(ref message);
+
         }
 
         protected override void Dispose(bool disposing)
@@ -1270,6 +1273,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
 
         protected override void OnNotifyMessage(Message m)
         {
+            //Filter out the WM_ERASEBKGND message
             if (m.Msg != 0x14)
             {
                 base.OnNotifyMessage(m);
@@ -1277,7 +1281,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         }
         #endregion
 
-        #region Event Handlers
+        #region   "   Krypton   "
+        //Krypton Palette Events
         private void OnGlobalPaletteChanged(object sender, EventArgs e)
         {
             // Unhook events from old palette
@@ -1292,18 +1297,20 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             if (_palette != null)
             {
                 _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
-                InitialiseColours();
+                InitColors();
             }
 
             // Change of palette means we should repaint to show any changes
             Invalidate();
         }
 
+        //Krypton Palette Events
         private void OnPalettePaint(object sender, PaletteLayoutEventArgs e)
         {
             Invalidate();
         }
         #endregion
+
     }
-#endif
 }
+

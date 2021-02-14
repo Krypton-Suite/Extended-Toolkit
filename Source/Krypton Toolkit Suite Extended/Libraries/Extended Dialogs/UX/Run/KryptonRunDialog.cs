@@ -33,7 +33,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         private KryptonLabel kryptonLabel1;
         private System.Windows.Forms.PictureBox pbxInputIcon;
         private KryptonTextBox ktxtPath;
-        private Base.KryptonUACElevatedButton kuacbtnRun;
+        private Base.KryptonUACElevatedButtonVersion1 kuacbtnRun;
         private KryptonOKDialogButton kdbRun;
 
         private void InitializeComponent()
@@ -50,7 +50,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
             this.kryptonWrapLabel1 = new Krypton.Toolkit.KryptonWrapLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.kuacbtnRun = new Krypton.Toolkit.Suite.Extended.Base.KryptonUACElevatedButton();
+            this.kuacbtnRun = new Krypton.Toolkit.Suite.Extended.Base.KryptonUACElevatedButtonVersion1();
             this.kdbtnCancel = new Krypton.Toolkit.Suite.Extended.Dialogs.KryptonCancelDialogButton();
             this.kdbRun = new Krypton.Toolkit.Suite.Extended.Dialogs.KryptonOKDialogButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
@@ -192,11 +192,10 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.kuacbtnRun.Location = new System.Drawing.Point(349, 7);
             this.kuacbtnRun.Name = "kuacbtnRun";
             this.kuacbtnRun.ProcessToElevate = null;
-            this.kuacbtnRun.ShowUACShield = true;
             this.kuacbtnRun.Size = new System.Drawing.Size(90, 26);
             this.kuacbtnRun.TabIndex = 4;
             this.kuacbtnRun.Values.Text = "&Run";
-            this.kuacbtnRun.ExecuteProcessAsAdministrator += new Krypton.Toolkit.Suite.Extended.Base.KryptonUACElevatedButton.ExecuteProcessAsAdministratorEventHandler(this.kuacbtnRun_ExecuteProcessAsAdministrator);
+            this.kuacbtnRun.ExecuteProcessAsAdministrator += new Krypton.Toolkit.Suite.Extended.Base.KryptonUACElevatedButtonVersion1.ExecuteProcessAsAdministratorEventHandler(this.kuacbtnRun_ExecuteProcessAsAdministrator);
             // 
             // kdbtnCancel
             // 
