@@ -62,7 +62,7 @@
 * Rewritten the `Krypton.Toolkit.Suite.Extended.Outlook.Grid` module
 * Implement [#36](https://github.com/Krypton-Suite/Extended-Toolkit/issues/36), Expose the `OutlookGrid.Classes.OutlookGridRowComparer2` class
 * Elevation events for command link button controls
-* New `Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar.Suite` module
+* New `Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar` module
 
 =======
 
