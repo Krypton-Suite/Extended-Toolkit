@@ -6,7 +6,6 @@
  */
 #endregion
 
-
 namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 {
     internal sealed class NativeConstants

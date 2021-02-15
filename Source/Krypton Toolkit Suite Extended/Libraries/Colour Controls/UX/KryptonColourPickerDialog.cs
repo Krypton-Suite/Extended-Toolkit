@@ -148,7 +148,6 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Suite
             this.cpbColour.Size = new System.Drawing.Size(174, 167);
             this.cpbColour.TabIndex = 3;
             this.cpbColour.TabStop = false;
-            this.cpbColour.ToolTipValues = null;
             // 
             // cgColour
             // 

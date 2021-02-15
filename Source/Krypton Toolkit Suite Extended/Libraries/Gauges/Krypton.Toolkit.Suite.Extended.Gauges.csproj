@@ -3,7 +3,7 @@
   <PropertyGroup>
     <LangVersion>latest</LangVersion>
     <TargetFrameworks>net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows</TargetFrameworks>
-    <RootNamespace>Krypton.Toolkit.Suite.Extended.Circular.ProgressBar.Suite</RootNamespace>
+    <RootNamespace>Krypton.Toolkit.Suite.Extended.Gauges</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
     <AnalysisLevel>latest</AnalysisLevel>
   </PropertyGroup>
@@ -19,50 +19,58 @@
 
   <!--Canary package configuration-->
   <PropertyGroup>
-    <PackageId>Krypton.Toolkit.Suite.Extended.Circular.ProgressBar.Suite.Canary</PackageId>
+    <PackageId>Krypton.Toolkit.Suite.Extended.Gauges.Canary</PackageId>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Canary</PackageOutputPath>
     <PackageIcon>Canary.png</PackageIcon>
-    <AssemblyVersion>6.0.2103</AssemblyVersion>
-    <FileVersion>6.0.2103</FileVersion>
-    <Version>6.0.2103</Version>
+    <AssemblyVersion>6.0.2105</AssemblyVersion>
+    <FileVersion>6.0.2105</FileVersion>
+    <Version>6.0.2105</Version>
   </PropertyGroup>
 
   <!--Nightly package configuration-
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
-    <PackageId>Krypton.Toolkit.Suite.Extended.Circular.ProgressBar.Suite.Nightly</PackageId>
+    <PackageId>Krypton.Toolkit.Suite.Extended.Gauges.Nightly</PackageId>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Nightly</PackageOutputPath>
     <PackageIcon>Nightly.png</PackageIcon>
     <VersionSuffix>pre$([System.DateTime]::UtcNow.ToString(yyyyMMdd-HHmm))</VersionSuffix>
   </PropertyGroup>-->
 
   <!--Stable package configuration-
-  <PropertyGroup>
-    <PackageId>Krypton.Toolkit.Suite.Extended.Circular.ProgressBar.Suite</PackageId>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release">
+    <OutputPath>..\..\..\..\Bin\$(configuration)\Build\Lib</OutputPath>
+    <DebugType>pdbonly</DebugType>
+    <PackageId>Krypton.Toolkit.Suite.Extended.Gauges</PackageId>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Stable</PackageOutputPath>
     <PackageIcon>Stable.png</PackageIcon>
-    <AssemblyVersion>5.550.2103</AssemblyVersion>
-    <FileVersion>5.550.2103</FileVersion>
-    <Version>5.550.2103</Version>
+    <AssemblyVersion>5.550.2105</AssemblyVersion>
+    <FileVersion>5.550.2105</FileVersion>
+    <Version>5.550.2105</Version>
   </PropertyGroup>-->
 
   <!--Stable NuGet packages
   <ItemGroup>
-    <PackageReference Include="Krypton.Ribbon" Version="5.550.2103" />
     <PackageReference Include="Krypton.Toolkit" Version="5.550.2103" />
   </ItemGroup>-->
 
   <!--Canary NuGet package configuration-->
   <ItemGroup>
-    <PackageReference Include="Krypton.Ribbon.Canary" Version="6.0.2103.4" />
-    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2103.4" />
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2103.5" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.VisualBasic" Version="10.3.0" />
+    <!--Canary icon-->
+    <None Include="Package Icons\Canary.png" Pack="true" PackagePath="\" />
+
+    <!--Stable icon-->
+    <None Include="Package Icons\Stable.png" Pack="true" PackagePath="\" />
+
+    <!--Nightly icon-->
+    <None Include="Package Icons\Nightly.png" Pack="true" PackagePath="\" />
   </ItemGroup>
 
   <PropertyGroup>
-    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Circular.ProgressBar.Suite\Krypton.Toolkit.Suite.Extended.Circular.ProgressBar.Suite.xml</DocumentationFile>
-    <OutputPath>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Circular.ProgressBar.Suite\</OutputPath>
+    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Gauges\Krypton.Toolkit.Suite.Extended.Gauges.xml</DocumentationFile>
+    <OutputPath>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Gauges\</OutputPath>
   </PropertyGroup>
+
 </Project>

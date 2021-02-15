@@ -120,10 +120,11 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         {
             try
             {
-                if (ToolStripManager.Renderer is KryptonProfessionalRenderer kpr)
-                {
-                    ProgressBar.BackColor = kpr.KCT.StatusStripGradientEnd;
-                }
+                // This is too buggy!!!
+                //if (ToolStripManager.Renderer is KryptonProfessionalRenderer kpr)
+                //{
+                //    ProgressBar.BackColor = kpr.KCT.StatusStripGradientEnd;
+                //}
             }
             catch (Exception ex)
             {

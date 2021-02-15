@@ -33,6 +33,12 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Suite
         #endregion
 
         #region Methods
+        /// <summary>Gets the contrast of a colour.</summary>
+        /// <param name="source">The source.</param>
+        /// <param name="preserveOpacity">if set to <c>true</c> [preserve opacity].</param>
+        /// <returns>
+        ///   <br />
+        /// </returns>
         public static Color GetContrast(this Color source, bool preserveOpacity = true)
         {
             byte averageColourValue = (byte)((source.R + source.G + source.B) / 3);
@@ -70,6 +76,18 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Suite
             rgb = ConvertToRGB(hsb);
 
             return Color.FromArgb((int)sourceAlphaValue, (int)rgb.R, (int)rgb.G, (int)rgb.B);
+        }
+
+        /// <summary>Gets a random colour.</summary>
+        /// <returns>
+        ///   <br />
+        /// </returns>
+        public static Color GetRandomColour()
+        {
+            // Create a new random instance
+            Random r = new Random();
+
+            return Color.FromArgb(r.Next(0, 255), r.Next(0, 255), r.Next(0, 255));
         }
         #endregion
 

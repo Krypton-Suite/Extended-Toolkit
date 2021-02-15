@@ -26,9 +26,9 @@
     <PackageId>Krypton.Toolkit.Suite.Extended.Tool.Strip.Items.Canary</PackageId>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Canary</PackageOutputPath>
     <PackageIcon>Canary.png</PackageIcon>
-    <AssemblyVersion>6.0.2103</AssemblyVersion>
-    <FileVersion>6.0.2103</FileVersion>
-    <Version>6.0.2103</Version>
+    <AssemblyVersion>6.0.2104</AssemblyVersion>
+    <FileVersion>6.0.2104</FileVersion>
+    <Version>6.0.2104</Version>
   </PropertyGroup>
 
   <!--Nightly package configuration-
@@ -40,13 +40,15 @@
   </PropertyGroup>-->
 
   <!--Stable package configuration-
-  <PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release">
+    <OutputPath>..\..\..\..\Bin\$(configuration)\Build\Lib</OutputPath>
+    <DebugType>pdbonly</DebugType>
     <PackageId>Krypton.Toolkit.Suite.Extended.Tool.Strip.Items</PackageId>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Stable</PackageOutputPath>
     <PackageIcon>Stable.png</PackageIcon>
-    <AssemblyVersion>5.550.2103</AssemblyVersion>
-    <FileVersion>5.550.2103</FileVersion>
-    <Version>5.550.2103</Version>
+    <AssemblyVersion>5.550.2104</AssemblyVersion>
+    <FileVersion>5.550.2104</FileVersion>
+    <Version>5.550.2104</Version>
   </PropertyGroup>-->
   
    <!--Stable NuGet package configuration-
@@ -56,7 +58,7 @@
 
   <!--Canary NuGet package configuration-->
   <ItemGroup>
-    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2103.4" />
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2103.5" />
   </ItemGroup>
 
   <ItemGroup>
@@ -68,10 +70,10 @@
     <None Include="Package Icons\Canary.png" Pack="true" PackagePath="\" />
 
     <!--Stable icon-->
-    <!--<None Include="Package Icons\Stable.png" Pack="true" PackagePath="\" />-->
+    <None Include="Package Icons\Stable.png" Pack="true" PackagePath="\" />
 
     <!--Nightly icon-->
-    <!--<None Include="Package Icons\Nightly.png" Pack="true" PackagePath="\" />-->
+    <None Include="Package Icons\Nightly.png" Pack="true" PackagePath="\" />
   </ItemGroup>
 
   <ItemGroup>
