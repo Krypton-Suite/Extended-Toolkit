@@ -54,7 +54,8 @@
 =======
 
 ## 2021-05-01 - Build 2105 - May 2021
-* New `Krypton.Toolkit.Suite.Extended.Toggle.Switch` module-->
+* New `Krypton.Toolkit.Suite.Extended.Toggle.Switch` module
+* Fixes for the `Krypton.Toolkit.Suite.Extended.Outlook.Grid` module-->
 
 =======
 

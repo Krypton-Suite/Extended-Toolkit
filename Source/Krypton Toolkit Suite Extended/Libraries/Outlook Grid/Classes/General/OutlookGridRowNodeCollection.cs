@@ -9,6 +9,7 @@
 */
 #endregion
 
+using System.Collections;
 using System.Collections.Generic;
 
 namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
@@ -16,7 +17,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
     /// <summary>
     /// List of IOutlookGridGroups
     /// </summary>
-    public class OutlookGridRowNodeCollection
+    public class OutlookGridRowNodeCollection : ICollection<OutlookGridRow>, IList<OutlookGridRow>
     {
         #region "Variables"
         private OutlookGridRow _parentNode;
@@ -84,6 +85,19 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             }
         }
 
+        /// <summary>
+        /// Gets the readonly state of the list
+        /// </summary>
+        public bool IsReadOnly
+        {
+            get
+            {
+                return false;
+            }
+        }
+
+        OutlookGridRow IList<OutlookGridRow>.this[int index] { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+
         #endregion
 
         #region "Public methods"
@@ -103,6 +117,38 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             {
                 return subNodes[index];
             }
+
+            set
+            {
+                subNodes[index] = value;
+                value.ParentNode = _parentNode;
+                value.NodeLevel = ParentNode.NodeLevel + 1; //Not ++
+            }
+        }
+
+        /// <summary>
+        /// Inserts the specified <see cref="OutlookGridRow"/> at the specified index.
+        /// </summary>
+        /// <param name="index">The zero based index to add the row</param>
+        /// <param name="row">The row to insert</param>
+        public void Insert(int index, OutlookGridRow row)
+        {
+            subNodes.Insert(index, row);
+            row.ParentNode = _parentNode;
+            row.NodeLevel = ParentNode.NodeLevel + 1; //Not ++
+        }
+
+        /// <summary>
+        /// Removes the <see cref="OutlookGridRow"/> at the specified index.
+        /// </summary>
+        /// <param name="index"></param>
+        public void RemoveAt(int index)
+        {
+            OutlookGridRow row = subNodes[index];
+            subNodes.RemoveAt(index);
+            row.ParentNode = null;
+            row.NodeLevel = 0;
+            row.Collapsed = false;
         }
 
         /// <summary>
@@ -143,14 +189,61 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             return subNodes.IndexOf(row);
         }
 
-        #endregion
+        /// <summary>
+        /// Determines if specified <see cref="OutlookGridRow"/> is in list
+        /// </summary>
+        /// <param name="row"></param>
+        /// <returns>Returns true if specified row is in list</returns>
+        public bool Contains(OutlookGridRow row)
+        {
+            return subNodes.Contains(row);
+        }
 
-        #region "Internals"
+        /// <summary>
+        /// Copies all <see cref="OutlookGridRow"/> in the list to the specified array
+        /// </summary>
+        /// <param name="array">Destination Array</param>
+        /// <param name="arrayIndex">Startindex in the array</param>
+        public void CopyTo(OutlookGridRow[] array, int arrayIndex)
+        {
+            subNodes.CopyTo(array, arrayIndex);
+        }
+
+        /// <summary>
+        /// Removes the specified <see cref="OutlookGridRow"/> from the list
+        /// </summary>
+        /// <param name="row">Row to remove</param>
+        /// <returns></returns>
+        public bool Remove(OutlookGridRow row)
+        {
+            bool ret = subNodes.Remove(row);
+            if (ret)
+            {
+                row.ParentNode = null;
+                row.NodeLevel = 0;
+                row.Collapsed = false;
+            }
+            return ret;
+        }
+
+        /// <summary>
+        /// Gets the enumerator for this collection
+        /// </summary>
+        /// <returns>The enumerator</returns>
+        public IEnumerator<OutlookGridRow> GetEnumerator()
+        {
+            return subNodes.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return subNodes.GetEnumerator();
+        }
 
         /// <summary>
         /// Clears all subnodes.
         /// </summary>
-        internal void Clear()
+        public void Clear()
         {
             _parentNode = null;
             //If a group is collapsed the rows will not appear. Then if we clear the group the rows should not remain "collapsed"
@@ -160,6 +253,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             }
             subNodes.Clear();
         }
+
 
         #endregion
     }
