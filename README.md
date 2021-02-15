@@ -29,6 +29,7 @@
 | Module Name | Current Version | GitHub License |
 |---|---|---|
 | <img src="https://img.shields.io/badge/Module-Base-yellow.svg" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Base.Canary?label=Version&logo=nuget)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
+| <img src="https://img.shields.io/badge/Module-Circular Progress Bar-yellow.svg" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar.Canary?label=Version&logo=nuget)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
 | <img src="https://img.shields.io/badge/Module-Data Visualisation-yellow.svg" /> | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Data.Visualisation.Canary?label=Version&logo=nuget)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
 | <img src="https://img.shields.io/badge/Module-Drawing Suite-yellow.svg" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Drawing.Suite.Canary?label=Version&logo=nuget)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
 | <img src="https://img.shields.io/badge/Module-Dialogs-yellow.svg" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Dialogs.Canary?label=Version&logo=nuget)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
@@ -51,6 +52,13 @@
 <a href="https://github.com/Krypton-Suite/Help-Files/releases/download/5.550.2102/Krypton.Extended.Toolkit.Help.exe"><img src="https://img.shields.io/badge/Documentation-Download File-orange.svg" alt="Download the extended toolkit documentation installer" /></a>
 
 <!--
+=======
+
+## 2021-06-04 - Build 2106 - June 2021
+* Removal/de-listing of `Krypton.Toolkit.Suite.Extended.Rounded.Controls`, see 'standard toolkit' build 2106 for more information
+* New `KryptonFormExtended` to expose properties, which cannot be fulfilled by a action list
+* Updated standard toolkit to build `2106`
+
 =======
 
 ## 2021-05-01 - Build 2105 - May 2021
