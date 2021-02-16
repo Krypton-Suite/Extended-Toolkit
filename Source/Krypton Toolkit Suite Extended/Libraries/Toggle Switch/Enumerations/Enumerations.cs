@@ -27,4 +27,10 @@
         CENTER,
         RIGHT
     }
+
+    public enum ToggleValueState
+    {
+        OFF = 0,
+        ON = 1
+    }
 }

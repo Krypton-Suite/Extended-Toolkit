@@ -6,7 +6,7 @@ using System.Windows.Forms;
 namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
 {
     [DefaultValue("Checked"), DefaultEvent("CheckedChanged"), ToolboxBitmap(typeof(CheckBox))]
-    public class KryptonToggleSwitch : Control
+    public class KryptonToggleSwitchVersion1 : Control
     {
         #region Delegate and Event declarations
 
@@ -82,7 +82,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
         #endregion
 
         #region Constructor
-        public KryptonToggleSwitch()
+        public KryptonToggleSwitchVersion1()
         {
             SetStyle(ControlStyles.ResizeRedraw | ControlStyles.SupportsTransparentBackColor | ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.DoubleBuffer, true);
 

@@ -1,29 +1,18 @@
-﻿#region BSD License
-/*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
- */
-#endregion
-
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Suite.Extended.Base
+namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
 {
     /// <summary>
     /// A toggle switch.
     /// Boilerplate code from: https://github.com/aalitor/AltoControls/blob/on-development/AltoControls/Controls/SwitchButton.cs
     /// </summary>
     [DefaultEvent("SliderValueChanged"), ToolboxItem(true)]
-    public class KryptonToggleSwitchOld : Control
+    public class KryptonToggleSwitchVersion2 : Control
     {
-        public delegate void SliderChangedEventHandler(object sender, EventArgs e);
-        public event SliderChangedEventHandler SliderValueChanged;
-
         #region Variables
         private float _diameter, _artis;
         private RoundedRectangleF _rect;
@@ -63,8 +52,12 @@ namespace Krypton.Toolkit.Suite.Extended.Base
 
                 _paintTicker.Start();
 
+                SliderValueChangedEventArgs e = new SliderValueChangedEventArgs(value);
+
                 if (SliderValueChanged != null)
-                    SliderValueChanged(this, EventArgs.Empty);
+                {
+                    SliderValueChanged(this, e);
+                }
             }
         }
 
@@ -237,8 +230,13 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         }
         #endregion
 
+        #region Custom Event
+        public delegate void SliderValueChangedEventHandler(object sender, SliderValueChangedEventArgs e);
+        public event SliderValueChangedEventHandler SliderValueChanged;
+        #endregion
+
         #region Constructor
-        public KryptonToggleSwitchOld()
+        public KryptonToggleSwitchVersion2()
         {
             SetStyle(ControlStyles.SupportsTransparentBackColor, true);
 
@@ -289,16 +287,19 @@ namespace Krypton.Toolkit.Suite.Extended.Base
 
             OffText = "Off";
 
-            _paintTicker.Tick += paintTicker_Tick;
+            _paintTicker.Tick += PaintTicker_Tick;
             _paintTicker.Interval = 1;
         }
         #endregion
 
+        #region Overrides
         protected override void OnEnabledChanged(EventArgs e)
         {
             Invalidate();
+
             base.OnEnabledChanged(e);
         }
+
         protected override void OnResize(EventArgs e)
         {
             float textSize = Font.Size;
@@ -314,65 +315,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             base.OnResize(e);
         }
 
-        //creates slide animation
-        private void paintTicker_Tick(object sender, EventArgs e)
-        {
-            float x = _circle.X;
+        protected override Size DefaultSize => new Size(60, 35);
 
-            if (_isOn)           //switch the circle to the left
-            {
-                if (x + _artis <= Width - _diameter - 1)
-                {
-                    x += _artis;
-                    _circle = new RectangleF(x, 1, _diameter, _diameter);
-
-                    Invalidate();
-
-                    IsOn = true;
-                }
-                else
-                {
-                    x = Width - _diameter - 1;
-                    _circle = new RectangleF(x, 1, _diameter, _diameter);
-
-                    Invalidate();
-                    _paintTicker.Stop();
-
-                    IsOn = false;
-                }
-
-            }
-            else //switch the circle to the left with animation
-            {
-                if (x - _artis >= 1)
-                {
-                    x -= _artis;
-                    _circle = new RectangleF(x, 1, _diameter, _diameter);
-
-                    Invalidate();
-
-                    IsOn = true;
-                }
-                else
-                {
-                    x = 1;
-                    _circle = new RectangleF(x, 1, _diameter, _diameter);
-
-                    Invalidate();
-                    _paintTicker.Stop();
-
-                    IsOn = false;
-                }
-            }
-        }
-
-        protected override Size DefaultSize
-        {
-            get
-            {
-                return new Size(60, 35);
-            }
-        }
         protected override void OnPaint(PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = SmoothingMode.HighQuality;
@@ -432,16 +376,74 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
 
             base.OnPaint(e);
-
         }
+
         protected override void OnMouseDown(MouseEventArgs e)
         {
-            if (e.Button != MouseButtons.Left)
+            if (e.Button == MouseButtons.Left)
+            {
                 return;
+            }
+
             _isOn = !_isOn;
+
             IsOn = _isOn;
 
-            base.OnMouseClick(e);
+            base.OnMouseDown(e);
         }
+        #endregion
+
+        #region Event Handlers
+        private void PaintTicker_Tick(object sender, EventArgs e)
+        {
+            float x = _circle.X;
+
+            if (_isOn)           //switch the circle to the left
+            {
+                if (x + _artis <= Width - _diameter - 1)
+                {
+                    x += _artis;
+                    _circle = new RectangleF(x, 1, _diameter, _diameter);
+
+                    Invalidate();
+
+                    IsOn = true;
+                }
+                else
+                {
+                    x = Width - _diameter - 1;
+                    _circle = new RectangleF(x, 1, _diameter, _diameter);
+
+                    Invalidate();
+                    _paintTicker.Stop();
+
+                    IsOn = false;
+                }
+
+            }
+            else //switch the circle to the left with animation
+            {
+                if (x - _artis >= 1)
+                {
+                    x -= _artis;
+                    _circle = new RectangleF(x, 1, _diameter, _diameter);
+
+                    Invalidate();
+
+                    IsOn = true;
+                }
+                else
+                {
+                    x = 1;
+                    _circle = new RectangleF(x, 1, _diameter, _diameter);
+
+                    Invalidate();
+                    _paintTicker.Stop();
+
+                    IsOn = false;
+                }
+            }
+        }
+        #endregion
     }
 }
