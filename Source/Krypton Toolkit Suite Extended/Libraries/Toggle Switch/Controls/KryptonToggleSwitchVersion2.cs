@@ -1,4 +1,4 @@
-﻿using System.ComponentModel;
+using System.ComponentModel;
 using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
@@ -38,6 +38,13 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
 
         #region Events
 
+        #endregion
+
+        #region Methods
+        private void Animmate(bool toggleValue)          
+        {
+
+        }
         #endregion
 
         #region Krypton
