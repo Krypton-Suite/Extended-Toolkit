@@ -16,7 +16,7 @@
     <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
   </PropertyGroup>
 
-  <!--Canary package configuration-->
+  <!--Canary package configuration-
   <PropertyGroup>
     <PackageId>Krypton.Toolkit.Suite.Extended.Resources.Canary</PackageId>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Canary</PackageOutputPath>
@@ -34,7 +34,7 @@
     <VersionSuffix>pre$([System.DateTime]::UtcNow.ToString(yyyyMMdd-HHmm))</VersionSuffix>
   </PropertyGroup>-->
 
-  <!--Stable package configuration-
+  <!--Stable NuGet package configuration-->
   <PropertyGroup>
     <PackageId>Krypton.Toolkit.Suite.Extended.Resources</PackageId>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Stable</PackageOutputPath>
