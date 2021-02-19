@@ -16,7 +16,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
         private float _diameter, _artis;
         private RoundedRectangleF _rect;
         private RectangleF _circle;
-        private bool _isOn, _textEnabled, _useGradientOnKnob;
+        private bool _toggled, _textEnabled, _useGradientOnKnob;
         private Color _borderColour, _textEnabledForeColour, _textDisabledForeColour,
                       _enabledBackColour, _disabledBackColour, _disabledControlColour,
                       _knobColour, _penColour, _gradientStartColour,
@@ -38,13 +38,13 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
             }
         }
 
-        public bool IsOn
+        public bool Toggled
         {
-            get => _isOn;
+            get => _toggled;
 
             set
             {
-                _isOn = value;
+                _toggled = value;
 
                 SliderValueChangedEventArgs evt = new SliderValueChangedEventArgs(value);
 
@@ -346,7 +346,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
 
             if (Enabled)
             {
-                using (SolidBrush brush = new SolidBrush(_isOn ? _enabledBackColour : _disabledBackColour))
+                using (SolidBrush brush = new SolidBrush(_toggled ? _enabledBackColour : _disabledBackColour))
                 {
                     e.Graphics.FillPath(brush, _rect.Path);
                 }
@@ -413,7 +413,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
                 }
             }
 
-            Animate(_isOn);
+            Animate(_toggled);
 
             base.OnPaint(e);
         }
@@ -425,9 +425,9 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
                 return;
             }
 
-            _isOn = !_isOn;
+            _toggled = !_toggled;
 
-            IsOn = _isOn;
+            Toggled = _toggled;
 
             base.OnMouseDown(e);
         }
