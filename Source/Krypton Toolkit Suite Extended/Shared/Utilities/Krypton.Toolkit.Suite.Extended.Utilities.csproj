@@ -61,10 +61,10 @@
 
   <ItemGroup>
     <!--Canary icon-->
-    <None Include="Package Icons\Canary.png" Pack="true" PackagePath="\" />
+    <!--<None Include="Package Icons\Canary.png" Pack="true" PackagePath="\" />-->
 
     <!--Stable icon-->
-    <!--<None Include="Package Icons\Stable.png" Pack="true" PackagePath="\" />-->
+    <None Include="Package Icons\Stable.png" Pack="true" PackagePath="\" />
 
     <!--Nightly icon-->
     <!--<None Include="Package Icons\Nightly.png" Pack="true" PackagePath="\" />-->

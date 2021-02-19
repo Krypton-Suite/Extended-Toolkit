@@ -25,7 +25,7 @@
     <AssemblyVersion>6.0.2103</AssemblyVersion>
     <FileVersion>6.0.2103</FileVersion>
     <Version>6.0.2103</Version>
-  </PropertyGroup>
+  </PropertyGroup>-->
 
   <!--Nightly package configuration-
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
@@ -43,24 +43,24 @@
     <AssemblyVersion>5.550.2103</AssemblyVersion>
     <FileVersion>5.550.2103</FileVersion>
     <Version>5.550.2103</Version>
-  </PropertyGroup>-->
+  </PropertyGroup>
   
   <!--Stable NuGet package configuration-->
   <ItemGroup>
     <PackageReference Include="Krypton.Toolkit" Version="5.550.2103" />
-  </ItemGroup>-->
+  </ItemGroup>
 
-  <!--Stable NuGet package configuration-->->
+  <!--Canary NuGet package configuration-
   <ItemGroup>
     <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2103.4" />
-  </ItemGroup>
+  </ItemGroup>-->
 
   <ItemGroup>
     <!--Canary icon-->
-    <None Include="Package Icons\Canary.png" Pack="true" PackagePath="\" />
+    <!--<None Include="Package Icons\Canary.png" Pack="true" PackagePath="\" />-->
 
     <!--Stable icon-->
-    <!--<None Include="Package Icons\Stable.png" Pack="true" PackagePath="\" />-->
+    <None Include="Package Icons\Stable.png" Pack="true" PackagePath="\" />
 
     <!--Nightly icon-->
     <!--<None Include="Package Icons\Nightly.png" Pack="true" PackagePath="\" />-->

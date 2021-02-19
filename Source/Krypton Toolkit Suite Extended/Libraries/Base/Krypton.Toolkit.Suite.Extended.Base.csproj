@@ -25,9 +25,9 @@
     <AssemblyVersion>6.0.2103</AssemblyVersion>
     <FileVersion>6.0.2103</FileVersion>
     <Version>6.0.2103</Version>
-  </PropertyGroup>
+  </PropertyGroup>-->
 
-  <!--Nightly package configuration-
+   <!--Nightly package configuration-
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
     <PackageId>Krypton.Toolkit.Suite.Extended.Base.Nightly</PackageId>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Nightly</PackageOutputPath>
@@ -43,30 +43,30 @@
     <AssemblyVersion>5.550.2103</AssemblyVersion>
     <FileVersion>5.550.2103</FileVersion>
     <Version>5.550.2103</Version>
-  </PropertyGroup>-->
+  </PropertyGroup>
 
   <!--Stable NuGet packages-->
   <ItemGroup>
     <PackageReference Include="Krypton.Ribbon" Version="5.550.2103" />
     <PackageReference Include="Krypton.Toolkit" Version="5.550.2103" />
-  </ItemGroup>-->
+  </ItemGroup>
 
   <!--Canary NuGet package configuration-
   <ItemGroup>
     <PackageReference Include="Krypton.Ribbon.Canary" Version="6.0.2103.4" />
     <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2103.4" />
-  </ItemGroup>
+  </ItemGroup>-->
 
-  <ItemGroup>
+    <ItemGroup>
     <PackageReference Include="Microsoft.VisualBasic" Version="10.3.0" />
   </ItemGroup>
 
   <ItemGroup>
     <!--Canary icon-->
-    <None Include="Package Icons\Canary.png" Pack="true" PackagePath="\" />
+    <!--<None Include="Package Icons\Canary.png" Pack="true" PackagePath="\" />-->
 
     <!--Stable icon-->
-    <!--<None Include="Package Icons\Stable.png" Pack="true" PackagePath="\" />-->
+    <None Include="Package Icons\Stable.png" Pack="true" PackagePath="\" />
 
     <!--Nightly icon-->
     <!--<None Include="Package Icons\Nightly.png" Pack="true" PackagePath="\" />-->
