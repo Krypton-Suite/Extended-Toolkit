@@ -134,17 +134,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Exten
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing", "Testing", "{CCBF1258-5417-42C4-9838-FA410E9803DB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "C:\Users\Peter William Wagner\source\repos\Test\Test.csproj", "{68E2BEB0-6F9C-4EDB-A539-C79A1DB69FE6}"
-	ProjectSection(ProjectDependencies) = postProject
-		{5E8758D3-BE51-474E-9CED-4E55EE1297DF} = {5E8758D3-BE51-474E-9CED-4E55EE1297DF}
-		{9E5B6FE5-89B9-4483-942F-7332E9BC4599} = {9E5B6FE5-89B9-4483-942F-7332E9BC4599}
-	EndProjectSection
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar", "Libraries\Circular ProgressBar\Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar.csproj", "{F176C423-D8F9-4FFF-B72E-C3A5514D1EA0}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Toggle.Switch", "Libraries\Toggle Switch\Krypton.Toolkit.Suite.Extended.Toggle.Switch.csproj", "{E82C7C09-C266-4394-93A8-EE0802D37B58}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton.Toolkit.Suite.Extended.Gauges", "Libraries\Gauges\Krypton.Toolkit.Suite.Extended.Gauges.csproj", "{FCF6B242-61FD-47D4-B835-096EF7EE2058}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Gauges", "Libraries\Gauges\Krypton.Toolkit.Suite.Extended.Gauges.csproj", "{FCF6B242-61FD-47D4-B835-096EF7EE2058}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "C:\Users\Peter William Wagner\source\Test\Test.csproj", "{71FCBEA5-41C7-4D60-8839-EF0C9195690C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -296,10 +292,6 @@ Global
 		{03363F41-A860-475D-B4F1-FFDF38740FA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{03363F41-A860-475D-B4F1-FFDF38740FA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{03363F41-A860-475D-B4F1-FFDF38740FA4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{68E2BEB0-6F9C-4EDB-A539-C79A1DB69FE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{68E2BEB0-6F9C-4EDB-A539-C79A1DB69FE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{68E2BEB0-6F9C-4EDB-A539-C79A1DB69FE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{68E2BEB0-6F9C-4EDB-A539-C79A1DB69FE6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F176C423-D8F9-4FFF-B72E-C3A5514D1EA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F176C423-D8F9-4FFF-B72E-C3A5514D1EA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F176C423-D8F9-4FFF-B72E-C3A5514D1EA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -312,6 +304,10 @@ Global
 		{FCF6B242-61FD-47D4-B835-096EF7EE2058}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FCF6B242-61FD-47D4-B835-096EF7EE2058}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FCF6B242-61FD-47D4-B835-096EF7EE2058}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71FCBEA5-41C7-4D60-8839-EF0C9195690C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71FCBEA5-41C7-4D60-8839-EF0C9195690C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71FCBEA5-41C7-4D60-8839-EF0C9195690C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71FCBEA5-41C7-4D60-8839-EF0C9195690C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -357,10 +353,10 @@ Global
 		{E373AFB9-4138-4E44-A567-DF0237599446} = {0E036EC5-549F-405A-82FA-87A03CE379E1}
 		{A2D33ABA-506A-465F-9DC3-84A8FD2E07C0} = {1F1DCECC-C25F-4E91-9C8A-ECCBB9827BBA}
 		{03363F41-A860-475D-B4F1-FFDF38740FA4} = {1F1DCECC-C25F-4E91-9C8A-ECCBB9827BBA}
-		{68E2BEB0-6F9C-4EDB-A539-C79A1DB69FE6} = {CCBF1258-5417-42C4-9838-FA410E9803DB}
 		{F176C423-D8F9-4FFF-B72E-C3A5514D1EA0} = {1F1DCECC-C25F-4E91-9C8A-ECCBB9827BBA}
 		{E82C7C09-C266-4394-93A8-EE0802D37B58} = {1F1DCECC-C25F-4E91-9C8A-ECCBB9827BBA}
 		{FCF6B242-61FD-47D4-B835-096EF7EE2058} = {1F1DCECC-C25F-4E91-9C8A-ECCBB9827BBA}
+		{71FCBEA5-41C7-4D60-8839-EF0C9195690C} = {CCBF1258-5417-42C4-9838-FA410E9803DB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9A189168-3746-4F9F-8C61-863D83D8ABD2}
