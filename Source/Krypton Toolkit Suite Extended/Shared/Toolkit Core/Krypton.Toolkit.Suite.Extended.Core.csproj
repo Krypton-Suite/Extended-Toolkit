@@ -57,11 +57,11 @@
 
   <!--Canary NuGet package configuration-->
   <ItemGroup>
-    <PackageReference Include="Krypton.Docking.Canary" Version="6.0.2103.5" />
-    <PackageReference Include="Krypton.Navigator.Canary" Version="6.0.2103.5" />
-    <PackageReference Include="Krypton.Ribbon.Canary" Version="6.0.2103.5" />
-    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2103.5" />
-    <PackageReference Include="Krypton.Workspace.Canary" Version="6.0.2103.5" />
+    <PackageReference Include="Krypton.Docking.Canary" Version="6.0.2103.6" />
+    <PackageReference Include="Krypton.Navigator.Canary" Version="6.0.2103.6" />
+    <PackageReference Include="Krypton.Ribbon.Canary" Version="6.0.2103.6" />
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2103.6" />
+    <PackageReference Include="Krypton.Workspace.Canary" Version="6.0.2103.6" />
   </ItemGroup>
 
   <ItemGroup>
@@ -104,6 +104,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>CoreSettings.settings</DependentUpon>
     </Compile>
+    <Compile Update="Settings\PaletteColourSettings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>PaletteColourSettings.settings</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -121,6 +126,10 @@
     <None Update="Settings\CoreSettings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>CoreSettings.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Settings\PaletteColourSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>PaletteColourSettings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
 

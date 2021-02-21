@@ -140,7 +140,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Exten
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Gauges", "Libraries\Gauges\Krypton.Toolkit.Suite.Extended.Gauges.csproj", "{FCF6B242-61FD-47D4-B835-096EF7EE2058}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "C:\Users\Peter William Wagner\source\Test\Test.csproj", "{71FCBEA5-41C7-4D60-8839-EF0C9195690C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "C:\Users\Peter William Wagner\source\Test\Test.csproj", "{71FCBEA5-41C7-4D60-8839-EF0C9195690C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E82C7C09-C266-4394-93A8-EE0802D37B58} = {E82C7C09-C266-4394-93A8-EE0802D37B58}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

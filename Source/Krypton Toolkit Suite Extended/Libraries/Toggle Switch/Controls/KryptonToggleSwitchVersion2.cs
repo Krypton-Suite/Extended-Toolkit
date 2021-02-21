@@ -26,6 +26,9 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
         #endregion
 
         #region Properties
+        /// <summary>Gets or sets a value indicating whether [text enabled].</summary>
+        /// <value>
+        ///   <c>true</c> if [text enabled]; otherwise, <c>false</c>.</value>
         [Description("Shows or hides the slider text.")]
         public bool TextEnabled
         {
@@ -249,7 +252,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
 
             _circle = new RectangleF(1, 1, _diameter, _diameter);
 
-            IsOn = true;
+            Toggled = true;
 
             BorderColour = Color.LightGray;
 

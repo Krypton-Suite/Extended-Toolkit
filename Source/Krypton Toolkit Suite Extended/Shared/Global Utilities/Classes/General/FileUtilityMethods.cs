@@ -396,6 +396,30 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
             return content;
         }
 
+        /// <summary>Gets the files in the chosen directory.</summary>
+        /// <param name="directoryPath">The directory path.</param>
+        /// <returns>
+        ///   <br />
+        /// </returns>
+        public string[] GetFiles(string directoryPath)
+        {
+            string[] temp = Directory.GetFiles(directoryPath);
+
+            return temp;
+        }
+
+        /// <summary>Gets the directories.</summary>
+        /// <param name="directoryPath">The directory path.</param>
+        /// <returns>
+        ///   <br />
+        /// </returns>
+        public string[] GetDirectories(string directoryPath)
+        {
+            string[] temp = Directory.GetDirectories(directoryPath);
+
+            return temp;
+        }
+
         /// <summary>
         /// Finalizes an instance of the <see cref="FileUtilityMethods"/> class.
         /// </summary>

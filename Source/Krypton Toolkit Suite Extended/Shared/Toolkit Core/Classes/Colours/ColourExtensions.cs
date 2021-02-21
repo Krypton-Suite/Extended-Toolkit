@@ -93,6 +93,24 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
             control.BackColor = randomColour;
         }
+
+        /// <summary>Use as a base colour.</summary>
+        /// <param name="baseColour">The base colour.</param>
+        public static void UseAsBaseColour(Color baseColour)
+        {
+            InternalBasicPaletteCreator colourCreator = new InternalBasicPaletteCreator(baseColour);
+
+            colourCreator.Show();
+        }
+
+        /// <summary>Use as a base colour.</summary>
+        /// <param name="control">The control.</param>
+        public static void UseAsBaseColour(Control control)
+        {
+            InternalBasicPaletteCreator colourCreator = new InternalBasicPaletteCreator(control.BackColor);
+
+            colourCreator.Show();
+        }
         #endregion
 
         #region Methods
