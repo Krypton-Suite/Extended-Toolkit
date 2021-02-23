@@ -119,10 +119,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// Returns the value of BaseColour.
         /// </summary>
         /// <returns>The value of BaseColour.</returns>
-        public Color GetBaseColour()
-        {
-            return _paletteColourSettings.BaseColour;
-        }
+        public Color GetBaseColour() => _paletteColourSettings.BaseColour;
 
         /// <summary>
         /// Sets the value of DarkColour to colour.
@@ -139,10 +136,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// Returns the value of DarkColour.
         /// </summary>
         /// <returns>The value of DarkColour.</returns>
-        public Color GetDarkColour()
-        {
-            return _paletteColourSettings.DarkColour;
-        }
+        public Color GetDarkColour() => _paletteColourSettings.DarkColour;
 
         /// <summary>
         /// Sets the value of MediumColour to colour.
@@ -815,7 +809,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
                 SaveAllMergedColourSettings();
 
-                if (KryptonMessageBoxExtended.Show($"Done! Do you want to restart the application now?", "Action Complete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (KryptonMessageBox.Show($"Done! Do you want to restart the application now?", "Action Complete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     Application.Restart();
                 }

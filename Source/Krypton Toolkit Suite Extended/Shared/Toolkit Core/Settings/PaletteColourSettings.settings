@@ -1,10 +1,8 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Krypton.Toolkit.Suite.Extended.Core.Settings" GeneratedClassName="PaletteColourSettings">
+  <Profiles />
   <Settings>
-	<Setting Name="BaseColour" Type="System.Drawing.Color" Scope="User">
+    <Setting Name="BaseColour" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="DarkColour" Type="System.Drawing.Color" Scope="User">

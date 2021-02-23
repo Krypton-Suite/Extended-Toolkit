@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -12,6 +13,9 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
     [DefaultEvent("SliderValueChanged"), ToolboxItem(true)]
     public class KryptonToggleSwitchVersion2 : Control
     {
+        public delegate void SliderChangedEventHandler(object sender, EventArgs e);
+        public event SliderChangedEventHandler SliderValueChanged;
+
         #region Variables
         private float _diameter, _artis;
         private RoundedRectangleF _rect;
@@ -21,14 +25,12 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
                       _enabledBackColour, _disabledBackColour, _disabledControlColour,
                       _knobColour, _penColour, _gradientStartColour,
                       _gradientEndColour;
+        private Timer _paintTicker = new Timer();
         private LinearGradientMode _mode;
         private string _onText, _offText;
         #endregion
 
         #region Properties
-        /// <summary>Gets or sets a value indicating whether [text enabled].</summary>
-        /// <value>
-        ///   <c>true</c> if [text enabled]; otherwise, <c>false</c>.</value>
         [Description("Shows or hides the slider text.")]
         public bool TextEnabled
         {
@@ -41,17 +43,21 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
             }
         }
 
+        [Description("The toggle state of the switch."), DefaultValue(false)]
         public bool Toggled
         {
             get => _toggled;
 
             set
             {
+                _paintTicker.Stop();
+
                 _toggled = value;
 
-                SliderValueChangedEventArgs evt = new SliderValueChangedEventArgs(value);
+                _paintTicker.Start();
 
-                OnSliderValueChanged(null, evt);
+                if (SliderValueChanged != null)
+                    SliderValueChanged(this, EventArgs.Empty);
             }
         }
 
@@ -224,12 +230,6 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
         }
         #endregion
 
-        #region Custom Event
-        public delegate void SliderValueChangedEventHandler(object sender, SliderValueChangedEventArgs e);
-
-        public event SliderValueChangedEventHandler SliderValueChanged;
-        #endregion
-
         #region Constructor
         public KryptonToggleSwitchVersion2()
         {
@@ -281,161 +281,165 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
             OnText = "On";
 
             OffText = "Off";
+
+            _paintTicker.Tick += paintTicker_Tick;
+            
+            _paintTicker.Interval = 1;
+
+            _paintTicker.Stop();
         }
         #endregion
 
-        #region Protected
-        protected void OnSliderValueChanged(object sender, SliderValueChangedEventArgs e) => SliderValueChanged?.Invoke(sender, e);
-        #endregion
+        protected override void OnEnabledChanged(EventArgs e)
+        {
+            Invalidate();
+            base.OnEnabledChanged(e);
+        }
+        protected override void OnResize(EventArgs e)
+        {
+            float textSize = Font.Size;
 
-        #region Events
+            Width = (Height - 2) * 2;
+            _diameter = Width / 2;
+            _artis = 4 * _diameter / 30;
+            _rect = new RoundedRectangleF(2 * _diameter, _diameter + 2, _diameter / 2, 1, 1);
+            _circle = new RectangleF(!_toggled ? 1 : Width - _diameter - 1, 1, _diameter, _diameter);
 
-        #endregion
+            Font = Font;
 
-        #region Methods
-        private void Animate(bool toggleValue)          
+            base.OnResize(e);
+        }
+
+        //creates slide animation
+        private void paintTicker_Tick(object sender, EventArgs e)
         {
             float x = _circle.X;
 
-            if (toggleValue)
+            if (_toggled)           //switch the circle to the left
             {
                 if (x + _artis <= Width - _diameter - 1)
                 {
                     x += _artis;
-
                     _circle = new RectangleF(x, 1, _diameter, _diameter);
 
                     Invalidate();
+
+                    Toggled = true;
+
+                    //_paintTicker.Stop();
                 }
                 else
                 {
                     x = Width - _diameter - 1;
-                    
                     _circle = new RectangleF(x, 1, _diameter, _diameter);
 
                     Invalidate();
+                    _paintTicker.Stop();
+
+                    Toggled = false;
                 }
+
             }
-            else
+            else //switch the circle to the left with animation
             {
                 if (x - _artis >= 1)
                 {
                     x -= _artis;
-
                     _circle = new RectangleF(x, 1, _diameter, _diameter);
 
                     Invalidate();
+
+                    Toggled = true;
                 }
                 else
                 {
                     x = 1;
-
                     _circle = new RectangleF(x, 1, _diameter, _diameter);
 
                     Invalidate();
+                    _paintTicker.Stop();
+
+                    Toggled = false;
                 }
             }
         }
-        #endregion
 
-        #region Krypton
-
-        #endregion
-
-        #region Overrides
+        protected override Size DefaultSize
+        {
+            get
+            {
+                return new Size(60, 35);
+            }
+        }
         protected override void OnPaint(PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = SmoothingMode.HighQuality;
 
             if (Enabled)
             {
-                using (SolidBrush brush = new SolidBrush(_toggled ? _enabledBackColour : _disabledBackColour))
-                {
+                using (SolidBrush brush = new SolidBrush(Toggled ? EnabledBackColour : DisabledBackColour))
                     e.Graphics.FillPath(brush, _rect.Path);
-                }
 
-                using (Pen pen = new Pen(_borderColour, 2f))
-                {
+                using (Pen pen = new Pen(BorderColour, 2f))
                     e.Graphics.DrawPath(pen, _rect.Path);
-                }
 
-                string onText = _onText, offText = _offText;
+                string on = OnText, off = OffText;
 
-                SolidBrush onBrushColour = new SolidBrush(_textEnabledForeColour), offBrushColour = new SolidBrush(_textDisabledForeColour);
+                SolidBrush onColour = new SolidBrush(TextEnabledForeColour), offBrush = new SolidBrush(TextDisabledForeColour);
 
-                if (_textEnabled)
-                {
+                if (TextEnabled)
                     using (Font font = new Font(Font.FontFamily, Font.Size * _diameter / 30, Font.Style))
                     {
-                        int height = TextRenderer.MeasureText(onText, font).Height;
-
+                        int height = TextRenderer.MeasureText(on, font).Height;
                         float y = (_diameter - height) / 2f;
+                        e.Graphics.DrawString(on, font, onColour, 5, y + 1);
 
-                        e.Graphics.DrawString(onText, font, onBrushColour, 5, y + 1);
-
-                        height = TextRenderer.MeasureText(offText, font).Height;
-
+                        height = TextRenderer.MeasureText(off, font).Height;
                         y = (_diameter - height) / 2f;
-
-                        e.Graphics.DrawString(offText, font, offBrushColour, _diameter + 2, y + 1);
+                        e.Graphics.DrawString(off, font, offBrush, _diameter + 2, y + 1);
                     }
 
-                    if (_useGradientOnKnob)
+                if (UseGradientOnKnob)
+                {
+                    using (LinearGradientBrush lgb = new LinearGradientBrush(_circle, GradientStartColour, GradientEndColour, GradientMode))
                     {
-                        using (LinearGradientBrush lgb = new LinearGradientBrush(_circle, _gradientStartColour, _gradientEndColour, _mode))
-                        {
-                            e.Graphics.FillEllipse(lgb, _circle);
-                        }
-                    }
-                    else
-                    {
-                        using (SolidBrush circleBrush = new SolidBrush(_knobColour))
-                        {
-                            e.Graphics.FillEllipse(circleBrush, _circle);
-                        }
-                    }
-
-                    using (Pen pen = new Pen(_penColour, 1.2f))
-                    {
-                        e.Graphics.DrawEllipse(pen, _circle);
+                        e.Graphics.FillEllipse(lgb, _circle);
                     }
                 }
+                else
+                {
+                    using (SolidBrush circleBrush = new SolidBrush(KnobColour))
+                    {
+                        e.Graphics.FillEllipse(circleBrush, _circle);
+                    }
+                }
+
+                using (Pen pen = new Pen(PenColour, 1.2f))
+                    e.Graphics.DrawEllipse(pen, _circle);
+
             }
             else
             {
-                using (SolidBrush disabledBrush = new SolidBrush(_disabledControlColour))
+                using (SolidBrush disableBrush = new SolidBrush(DisabledControlColour))
+                using (SolidBrush ellBrush = new SolidBrush(DisabledBackColour))
                 {
-                    using (SolidBrush ellBrush = new SolidBrush(_disabledBackColour))
-                    {
-                        e.Graphics.FillPath(disabledBrush, _rect.Path);
-
-                        e.Graphics.FillEllipse(ellBrush, _circle);
-
-                        e.Graphics.DrawEllipse(Pens.DarkGray, _circle);
-                    }
+                    e.Graphics.FillPath(disableBrush, _rect.Path);
+                    e.Graphics.FillEllipse(ellBrush, _circle);
+                    e.Graphics.DrawEllipse(Pens.DarkGray, _circle);
                 }
             }
 
-            Animate(_toggled);
-
             base.OnPaint(e);
-        }
 
+        }
         protected override void OnMouseDown(MouseEventArgs e)
         {
             if (e.Button != MouseButtons.Left)
-            {
                 return;
-            }
-
             _toggled = !_toggled;
-
             Toggled = _toggled;
 
-            base.OnMouseDown(e);
+            base.OnMouseClick(e);
         }
-
-        protected override Size DefaultSize => new Size(60, 15);
-        #endregion
     }
 }

@@ -16,11 +16,11 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         private KryptonButton kryptonButton1;
         private System.Windows.Forms.Panel panel1;
         private KryptonPanel kryptonPanel2;
-        private Suite.Extended.Core.CircularPictureBox cpbxLightestColour;
-        private Suite.Extended.Core.CircularPictureBox cpbxLightColour;
-        private Suite.Extended.Core.CircularPictureBox cpbxMediumColour;
-        private Suite.Extended.Core.CircularPictureBox cpbxDarkestColour;
-        private Suite.Extended.Core.CircularPictureBox cpbxBaseColour;
+        private CircularPictureBox cpbxLightestColour;
+        private CircularPictureBox cpbxLightColour;
+        private CircularPictureBox cpbxMediumColour;
+        private CircularPictureBox cpbxDarkestColour;
+        private CircularPictureBox cpbxBaseColour;
         private KryptonLabel kryptonLabel16;
         private KryptonLabel kryptonLabel15;
         private KryptonLabel kryptonLabel14;
