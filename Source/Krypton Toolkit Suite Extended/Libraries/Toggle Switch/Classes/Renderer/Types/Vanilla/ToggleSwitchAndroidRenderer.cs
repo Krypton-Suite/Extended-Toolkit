@@ -10,6 +10,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
         private PaletteRedirect _paletteRedirect;
 
         #endregion
+
         #region Constructor
 
         public ToggleSwitchAndroidRenderer()
@@ -25,7 +26,23 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
             OnButtonBorderColour = Color.FromArgb(255, 27, 161, 226);
             */
 
-            InitialiseColours();
+            BorderColour = _palette.ColorTable.MenuBorder;
+            BackColour = _palette.ColorTable.MenuStripGradientBegin;
+            LeftSideColour = _palette.ColorTable.MenuStripGradientBegin;
+            RightSideColour = _palette.ColorTable.MenuStripGradientEnd;
+            OffButtonColour = Color.FromArgb(255, 70, 70, 70);
+            OnButtonColour = Color.FromArgb(255, 27, 161, 226);
+            OffButtonBorderColour = Color.FromArgb(255, 70, 70, 70);
+            OnButtonBorderColour = Color.FromArgb(255, 27, 161, 226);
+
+            if (_palette != null)
+            {
+                _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+            }
+
+            _palette = KryptonManager.CurrentGlobalPalette;
+
+            _paletteRedirect = new PaletteRedirect(_paletteRedirect);
 
             SlantAngle = 8;
         }
