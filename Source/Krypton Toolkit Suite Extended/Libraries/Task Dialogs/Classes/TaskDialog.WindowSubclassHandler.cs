@@ -4,17 +4,13 @@ namespace Krypton.Toolkit.Suite.Extended.Task.Dialogs
 {
     public partial class TaskDialog
     {
-        private class WindowSubclassHandler : WindowSubclassHandler
+        private class WindowSubclassHandler : UI.WindowSubclassHandler
         {
             private readonly TaskDialog _taskDialog;
 
             private bool _processedShowWindowMessage;
 
-            public WindowSubclassHandler(TaskDialog taskDialog)
-                : base(taskDialog?._hwndDialog ?? throw new ArgumentNullException(nameof(taskDialog)))
-            {
-                _taskDialog = taskDialog;
-            }
+            public WindowSubclassHandler(TaskDialog taskDialog) : base(taskDialog?._hwndDialog ?? throw new ArgumentNullException(nameof(taskDialog))) => _taskDialog = taskDialog;
 
             protected override unsafe IntPtr WndProc(int msg, IntPtr wParam, IntPtr lParam)
             {

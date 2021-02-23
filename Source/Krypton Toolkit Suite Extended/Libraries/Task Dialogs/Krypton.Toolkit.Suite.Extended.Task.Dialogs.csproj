@@ -6,6 +6,7 @@
     <RootNamespace>Krypton.Toolkit.Suite.Extended.Task.Dialogs</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
     <OutputType>Library</OutputType>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <PropertyGroup>
