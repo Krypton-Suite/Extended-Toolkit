@@ -32,6 +32,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         #endregion
 
         #region Constructor
+        /// <summary>Initializes a new instance of the <see cref="KryptonPropertyGrid" /> class.</summary>
         public KryptonPropertyGrid()
         {
             SetStyle(ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.SupportsTransparentBackColor, true);
@@ -56,21 +57,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         }
         #endregion
 
-        private void InitColours()
-        {
-            ToolStripRenderer = ToolStripManager.Renderer;
-
-            _gradientMiddleColour = _palette.ColorTable.ToolStripGradientMiddle;
-
-            HelpBackColor = _palette.ColorTable.MenuStripGradientBegin;
-
-            HelpForeColor = _palette.ColorTable.StatusStripText;
-
-            LineColor = _palette.ColorTable.ToolStripGradientMiddle;
-
-            CategoryForeColor = _palette.ColorTable.StatusStripText;
-        }
-
+        /// <summary>Raises the <see cref="E:System.Windows.Forms.Control.Paint">Paint</see> event.</summary>
+        /// <param name="e">A <see cref="T:System.Windows.Forms.PaintEventArgs">PaintEventArgs</see> that contains the event data.</param>
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
@@ -78,6 +66,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             e.Graphics.FillRectangle(new SolidBrush(_gradientMiddleColour), e.ClipRectangle);
         }
 
+        /// <summary>Paints the background of the control.</summary>
+        /// <param name="e">A <see cref="T:System.Windows.Forms.PaintEventArgs">PaintEventArgs</see> that contains the event data.</param>
         protected override void OnPaintBackground(PaintEventArgs e)
         {
             base.OnPaintBackground(e);
@@ -86,8 +76,10 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         }
 
         #region Krypton
-
         // Krypton Palette Events
+        /// <summary>Called when [global palette changed].</summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void OnGlobalPaletteChanged(object sender, EventArgs e)
         {
             if (_palette != null)
@@ -109,9 +101,25 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         }
 
         // Krypton Palette Events
-        private void OnPalettePaint(object sender, PaletteLayoutEventArgs e)
+        /// <summary>Called when [palette paint].</summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="PaletteLayoutEventArgs" /> instance containing the event data.</param>
+        private void OnPalettePaint(object sender, PaletteLayoutEventArgs e) => Invalidate();
+
+        /// <summary>Initialises the colours.</summary>
+        private void InitColours()
         {
-            Invalidate();
+            ToolStripRenderer = ToolStripManager.Renderer;
+
+            _gradientMiddleColour = _palette.ColorTable.ToolStripGradientMiddle;
+
+            HelpBackColor = _palette.ColorTable.MenuStripGradientBegin;
+
+            HelpForeColor = _palette.ColorTable.StatusStripText;
+
+            LineColor = _palette.ColorTable.ToolStripGradientMiddle;
+
+            CategoryForeColor = _palette.ColorTable.StatusStripText;
         }
         #endregion
     }
