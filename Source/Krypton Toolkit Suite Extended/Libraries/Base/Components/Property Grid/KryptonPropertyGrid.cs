@@ -57,6 +57,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         }
         #endregion
 
+        #region Overrides
         /// <summary>Raises the <see cref="E:System.Windows.Forms.Control.Paint">Paint</see> event.</summary>
         /// <param name="e">A <see cref="T:System.Windows.Forms.PaintEventArgs">PaintEventArgs</see> that contains the event data.</param>
         protected override void OnPaint(PaintEventArgs e)
@@ -74,6 +75,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
 
             //e.Graphics.FillRectangle(new SolidBrush(_gradientMiddleColor), e.ClipRectangle);
         }
+        #endregion
 
         #region Krypton
         // Krypton Palette Events
