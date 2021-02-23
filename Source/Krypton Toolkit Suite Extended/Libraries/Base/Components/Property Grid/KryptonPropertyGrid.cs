@@ -16,38 +16,38 @@ namespace Krypton.Toolkit.Suite.Extended.Base
     [ToolboxBitmap(typeof(PropertyGrid), "ToolboxBitmaps.PropertyGridVersionTwo.bmp")]
     public class KryptonPropertyGrid : PropertyGrid
     {
+        #region Variables
         private IPalette _palette;
+
         private PaletteRedirect _paletteRedirect;
 
-        #region ... Properties...
-        private Color _gradientMiddleColor = Color.Gray;
-        /// <summary>Gets or sets the gradient middle colour.</summary>
-        /// <value>The gradient middle colour.</value>
-        [Browsable(true), Category("Appearance-Extended")]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        [DefaultValue("Color.Gray")]
-        public Color GradientMiddleColour
-        {
-            get { return _gradientMiddleColor; }
-            set { _gradientMiddleColor = value; Invalidate(); }
-        }
+        private Color _gradientMiddleColour = Color.Gray;
         #endregion
 
-        #region ... Constructor ...
+        #region Properties
+        /// <summary>Gets or sets the gradient middle colour.</summary>
+        /// <value>The gradient middle colour.</value>
+        [Browsable(true), Category("Appearance-Extended"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), DefaultValue("Color.Gray")]
+        public Color GradientMiddleColour { get => _gradientMiddleColour; set { _gradientMiddleColour = value; Invalidate(); } }
+        #endregion
+
+        #region Constructor
         public KryptonPropertyGrid()
         {
-            SetStyle(ControlStyles.UserPaint, true);
-            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
-            SetStyle(ControlStyles.SupportsTransparentBackColor, true);
+            SetStyle(ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.SupportsTransparentBackColor, true);
+
             UpdateStyles();
 
-            // add Palette Handler
+            // Add Palette Handler
             if (_palette != null)
+            {
                 _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+            }
 
             KryptonManager.GlobalPaletteChanged += new EventHandler(OnGlobalPaletteChanged);
 
             _palette = KryptonManager.CurrentGlobalPalette;
+
             _paletteRedirect = new PaletteRedirect(_palette);
 
             InitColours();
@@ -58,31 +58,36 @@ namespace Krypton.Toolkit.Suite.Extended.Base
 
         private void InitColours()
         {
-            this.ToolStripRenderer = ToolStripManager.Renderer;
-            _gradientMiddleColor = _palette.ColorTable.ToolStripGradientMiddle;
-            this.HelpBackColor = _palette.ColorTable.MenuStripGradientBegin;
-            this.HelpForeColor = _palette.ColorTable.StatusStripText;
-            this.LineColor = _palette.ColorTable.ToolStripGradientMiddle;
-            this.CategoryForeColor = _palette.ColorTable.StatusStripText;
+            ToolStripRenderer = ToolStripManager.Renderer;
+
+            _gradientMiddleColour = _palette.ColorTable.ToolStripGradientMiddle;
+
+            HelpBackColor = _palette.ColorTable.MenuStripGradientBegin;
+
+            HelpForeColor = _palette.ColorTable.StatusStripText;
+
+            LineColor = _palette.ColorTable.ToolStripGradientMiddle;
+
+            CategoryForeColor = _palette.ColorTable.StatusStripText;
         }
 
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
-            e.Graphics.FillRectangle(new SolidBrush(_gradientMiddleColor), e.ClipRectangle);
-            //
+
+            e.Graphics.FillRectangle(new SolidBrush(_gradientMiddleColour), e.ClipRectangle);
         }
 
         protected override void OnPaintBackground(PaintEventArgs e)
         {
             base.OnPaintBackground(e);
+
             //e.Graphics.FillRectangle(new SolidBrush(_gradientMiddleColor), e.ClipRectangle);
-            //
         }
 
-        #region ... Krypton ...
+        #region Krypton
 
-        //Kripton Palette Events
+        // Krypton Palette Events
         private void OnGlobalPaletteChanged(object sender, EventArgs e)
         {
             if (_palette != null)
@@ -103,7 +108,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             Invalidate();
         }
 
-        //Kripton Palette Events
+        // Krypton Palette Events
         private void OnPalettePaint(object sender, PaletteLayoutEventArgs e)
         {
             Invalidate();
