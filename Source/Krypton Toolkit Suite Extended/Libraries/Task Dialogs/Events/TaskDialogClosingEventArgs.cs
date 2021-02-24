@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace Krypton.Toolkit.Suite.Extended.Task.Dialogs.Events
+namespace Krypton.Toolkit.Suite.Extended.Task.Dialogs
 {
     /// <summary>
     /// 

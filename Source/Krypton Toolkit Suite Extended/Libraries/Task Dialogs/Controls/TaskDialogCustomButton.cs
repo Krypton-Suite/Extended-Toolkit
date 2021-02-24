@@ -1,4 +1,6 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Task.Dialogs
+﻿using TaskDialogFlags = Krypton.Toolkit.Suite.Extended.Task.Dialogs.TaskDialogNativeMethods.TASKDIALOG_FLAGS;
+
+namespace Krypton.Toolkit.Suite.Extended.Task.Dialogs
 {
     /// <summary>
     /// 

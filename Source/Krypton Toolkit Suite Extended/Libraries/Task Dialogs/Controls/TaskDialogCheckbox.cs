@@ -117,7 +117,7 @@ namespace Krypton.Toolkit.Suite.Extended.Task.Dialogs
             }
         }
 
-        private protected override TASKDIALOG_FLAGS BindCore()
+        private protected override TaskDialogFlags BindCore()
         {
             TaskDialogFlags flags = base.BindCore();
 
