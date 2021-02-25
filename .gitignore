@@ -311,3 +311,4 @@ OpenCover/
 *.zip
 *.dll
 *.exe
+*.ini
