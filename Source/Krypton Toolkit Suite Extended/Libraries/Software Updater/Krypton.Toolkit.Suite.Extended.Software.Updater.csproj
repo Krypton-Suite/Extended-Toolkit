@@ -2,7 +2,6 @@
 
   <PropertyGroup>
     <LangVersion>latest</LangVersion>
-    <TargetFrameworks>net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows</TargetFrameworks>
     <RootNamespace>Krypton.Toolkit.Suite.Extended.Software.Updater</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
     <OutputType>Library</OutputType>
@@ -20,6 +19,7 @@
   <PropertyGroup>
     <PackageId>Krypton.Toolkit.Suite.Extended.Software.Updater.Canary</PackageId>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Canary</PackageOutputPath>
+    <TargetFrameworks>net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows;net6.0-windows</TargetFrameworks>
     <PackageIcon>Canary.png</PackageIcon>
     <AssemblyVersion>6.0.2105</AssemblyVersion>
     <FileVersion>6.0.2105</FileVersion>
@@ -39,6 +39,7 @@
     <OutputPath>..\..\..\..\Bin\$(configuration)\Build\Lib</OutputPath>
     <DebugType>pdbonly</DebugType>
     <PackageId>Krypton.Toolkit.Suite.Extended.Software.Updater</PackageId>
+    <TargetFrameworks>net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows</TargetFrameworks>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Stable</PackageOutputPath>
     <PackageIcon>Stable.png</PackageIcon>
     <AssemblyVersion>5.550.2105</AssemblyVersion>

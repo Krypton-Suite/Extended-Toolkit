@@ -2,7 +2,6 @@
 
   <PropertyGroup>
     <LangVersion>latest</LangVersion>
-    <TargetFrameworks>net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows</TargetFrameworks>    
     <RootNamespace>Krypton.Toolkit.Suite.Extended.Utilities</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
     <OutputType>Library</OutputType>
@@ -24,6 +23,7 @@
   <!--Canary package configuration-->
   <PropertyGroup>
     <PackageId>Krypton.Toolkit.Suite.Extended.Utilities.Canary</PackageId>
+    <TargetFrameworks>net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows;net6.0-windows</TargetFrameworks>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Canary</PackageOutputPath>
     <PackageIcon>Canary.png</PackageIcon>
     <AssemblyVersion>6.0.2105</AssemblyVersion>
@@ -34,6 +34,7 @@
   <!--Nightly package configuration-
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
     <PackageId>Krypton.Toolkit.Suite.Extended.Utilities.Nightly</PackageId>
+    <TargetFrameworks>net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows</TargetFrameworks>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Nightly</PackageOutputPath>
     <PackageIcon>Nightly.png</PackageIcon>
     <VersionSuffix>pre$([System.DateTime]::UtcNow.ToString(yyyyMMdd-HHmm))</VersionSuffix>
