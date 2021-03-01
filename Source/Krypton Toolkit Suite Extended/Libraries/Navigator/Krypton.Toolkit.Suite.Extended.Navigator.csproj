@@ -70,10 +70,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Extended Dialogs\Krypton.Toolkit.Suite.Extended.Dialogs.csproj" />
     <ProjectReference Include="..\Base\Krypton.Toolkit.Suite.Extended.Base.csproj" />
+    <ProjectReference Include="..\Extended Standard Controls\Krypton.Toolkit.Suite.Extended.Standard.Controls.csproj" />
   </ItemGroup>
-
+  
   <ItemGroup>
     <Reference Include="Krypton.Toolkit.Suite.Extended.Dialogs">
       <HintPath>..\Extended Dialogs\obj\Debug\net45\Krypton.Toolkit.Suite.Extended.Dialogs\Krypton.Toolkit.Suite.Extended.Dialogs.dll</HintPath>

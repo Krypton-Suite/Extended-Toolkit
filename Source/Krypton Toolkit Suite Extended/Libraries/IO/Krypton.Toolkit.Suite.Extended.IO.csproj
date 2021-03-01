@@ -73,9 +73,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Shared\Toolkit Core\Krypton.Toolkit.Suite.Extended.Core.csproj" />
-    <ProjectReference Include="..\Extended Dialogs\Krypton.Toolkit.Suite.Extended.Dialogs.csproj" />
-    <ProjectReference Include="..\Extended Standard Controls\Krypton.Toolkit.Suite.Extended.Standard.Controls.csproj" />
-    <ProjectReference Include="..\Base\Krypton.Toolkit.Suite.Extended.Base.csproj" />
+    <ProjectReference Include="..\Colour Controls\Krypton.Toolkit.Suite.Extended.Drawing.Suite.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -26,7 +26,7 @@
     <Version>6.0.2103</Version>
   </PropertyGroup>
 
-  <!--Nightly package configuration-
+  Nightly package configuration-
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
     <PackageId>Krypton.Toolkit.Suite.Extended.Palette.Controls.Nightly</PackageId>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Nightly</PackageOutputPath>
@@ -52,7 +52,7 @@
   <!--Canary NuGet package configuration-
   <ItemGroup>
     <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2103.4" />
-  </ItemGroup>
+  </ItemGroup>-->
 
   <ItemGroup>
     <!--Canary icon-->

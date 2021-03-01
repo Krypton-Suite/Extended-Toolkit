@@ -27,7 +27,7 @@
     <Version>6.0.2103</Version>
   </PropertyGroup>
 
-  <!--Nightly package configuration-
+  Nightly package configuration-
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
     <PackageId>Krypton.Toolkit.Suite.Extended.Error.Reporting.Nightly</PackageId>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Nightly</PackageOutputPath>
@@ -60,7 +60,7 @@
   <ItemGroup>
     <PackageReference Include="DotNetZip" Version="1.14.0" />
     <PackageReference Include="Simple-MAPI.NET" Version="1.1.0" />
-  </ItemGroup>
+  </ItemGroup>-->
 
   <ItemGroup>
     <!--Canary icon-->
