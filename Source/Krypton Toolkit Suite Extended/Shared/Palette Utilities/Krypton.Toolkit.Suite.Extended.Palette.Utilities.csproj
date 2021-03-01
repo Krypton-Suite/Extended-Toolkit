@@ -24,9 +24,9 @@
     <AssemblyVersion>6.0.2103</AssemblyVersion>
     <FileVersion>6.0.2103</FileVersion>
     <Version>6.0.2103</Version>
-  </PropertyGroup>
+  </PropertyGroup>-->
 
-  Nightly package configuration-
+  <!--Nightly package configuration-
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
     <PackageId>Krypton.Toolkit.Suite.Extended.Palette.Utilities.Nightly</PackageId>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Nightly</PackageOutputPath>
@@ -42,7 +42,7 @@
     <AssemblyVersion>5.550.2103</AssemblyVersion>
     <FileVersion>5.550.2103</FileVersion>
     <Version>5.550.2103</Version>
-  </PropertyGroup>-->
+  </PropertyGroup>
 
   <ItemGroup>
     <!--Canary icon-->

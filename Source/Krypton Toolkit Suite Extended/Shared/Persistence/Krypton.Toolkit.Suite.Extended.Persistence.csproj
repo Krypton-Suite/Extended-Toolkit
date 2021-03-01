@@ -42,7 +42,7 @@
     <AssemblyVersion>5.550.2103</AssemblyVersion>
     <FileVersion>5.550.2103</FileVersion>
     <Version>5.550.2103</Version>
-  </PropertyGroup>-->
+  </PropertyGroup>
 
   <!--Stable NuGet package configuration-->
   <ItemGroup>
