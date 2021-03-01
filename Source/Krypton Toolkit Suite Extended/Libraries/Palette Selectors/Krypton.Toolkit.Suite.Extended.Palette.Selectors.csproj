@@ -20,14 +20,14 @@
     <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
   </PropertyGroup>
 
-  <!--Canary package configuration
+  <!--Canary package configuration-
   <PropertyGroup>
     <PackageId>Krypton.Toolkit.Suite.Extended.Palette.Selectors.Canary</PackageId>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Canary</PackageOutputPath>
     <PackageIcon>Canary.png</PackageIcon>
-    <AssemblyVersion>6.0.2102</AssemblyVersion>
-    <FileVersion>6.0.2102</FileVersion>
-    <Version>6.0.2102</Version>
+    <AssemblyVersion>6.0.2103</AssemblyVersion>
+    <FileVersion>6.0.2103</FileVersion>
+    <Version>6.0.2103</Version>
   </PropertyGroup>-->
 
   <!--Nightly package configuration-
@@ -38,35 +38,40 @@
     <VersionSuffix>pre$([System.DateTime]::UtcNow.ToString(yyyyMMdd-HHmm))</VersionSuffix>
   </PropertyGroup>-->
 
-  <!--Stable package configuration-->
+  <!--Stable NuGet package configuration-->
   <PropertyGroup>
     <PackageId>Krypton.Toolkit.Suite.Extended.Palette.Selectors</PackageId>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Stable</PackageOutputPath>
     <PackageIcon>Stable.png</PackageIcon>
-    <AssemblyVersion>5.550.2102</AssemblyVersion>
-    <FileVersion>5.550.2102</FileVersion>
-    <Version>5.550.2102</Version>
-  </PropertyGroup>
+    <AssemblyVersion>5.550.2103</AssemblyVersion>
+    <FileVersion>5.550.2103</FileVersion>
+    <Version>5.550.2103</Version>
+  </PropertyGroup>-->
 
   <!--Stable NuGet packages-->
   <ItemGroup>
-    <PackageReference Include="Krypton.Toolkit" Version="5.550.2101" />
-  </ItemGroup>
+    <PackageReference Include="Krypton.Toolkit" Version="5.550.2103" />
+  </ItemGroup>-->
 
   <!--Canary NuGet package configuration-
   <ItemGroup>
-    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2101" />
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2103.4" />
   </ItemGroup>-->
+
+  <ItemGroup>
+    <!--Canary icon-->
+    <!--<None Include="Package Icons\Canary.png" Pack="true" PackagePath="\" />-->
+
+    <!--Stable icon-->
+    <None Include="Package Icons\Stable.png" Pack="true" PackagePath="\" />
+
+    <!--Nightly icon-->
+    <!--<None Include="Package Icons\Nightly.png" Pack="true" PackagePath="\" />-->
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="EasyScintilla" Version="1.0.5" />
     <PackageReference Include="WindowsAPICodePack" Version="1.1.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <!--<None Include="Package Icons\Canary.png" Pack="true" PackagePath="\" />-->
-    <None Include="Package Icons\Stable.png" Pack="true" PackagePath="\" />
-    <!--<None Include="Package Icons\Nightly.png" Pack="true" PackagePath="\" />-->
   </ItemGroup>
   
   <ItemGroup>

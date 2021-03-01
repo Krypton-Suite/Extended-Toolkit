@@ -11,8 +11,8 @@ using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Base
 {
-    [ToolboxBitmap(typeof(KryptonUACElevatedButton))]
-    public class KryptonRoundedUACElevatedButton : KryptonUACElevatedButton
+    [ToolboxBitmap(typeof(KryptonUACElevatedButtonVersion1))]
+    public class KryptonRoundedUACElevatedButton : KryptonUACElevatedButtonVersion1
     {
         #region Variables
         private int _cornerRadius;

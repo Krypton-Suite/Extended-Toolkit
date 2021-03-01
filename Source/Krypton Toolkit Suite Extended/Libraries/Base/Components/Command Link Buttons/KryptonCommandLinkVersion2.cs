@@ -6,6 +6,7 @@
  */
 #endregion
 
+using Krypton.Toolkit.Suite.Extended.Common;
 using System;
 using System.ComponentModel;
 using System.Drawing;
@@ -30,7 +31,9 @@ namespace Krypton.Toolkit.Suite.Extended.Base
     public class KryptonCommandLinkVersion2 : KryptonButton
     {
         #region Variables
-        private bool _showUACShield = false;
+        private bool _useAsUACElevatedButton;
+        private Image _originalImage;
+        private Size _uacShieldSize;
         #endregion
 
         #region Properties
@@ -38,18 +41,37 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         /// Gets or sets the shield icon visibility of the command link.
         /// </summary>
         [Category("Command Link"), Description("Gets or sets the shield icon visibility of the command link."), DefaultValue(false)]
-        public bool ShowUACShield
+        public bool UseAsUACElevatedButton
         {
-            get
-            {
-                return _showUACShield;
-            }
+            get => _useAsUACElevatedButton;
 
             set
             {
-                _showUACShield = value;
+                _useAsUACElevatedButton = value;
 
-                SendMessage(new HandleRef(this, this.Handle), BCM_SETSHIELD, IntPtr.Zero, _showUACShield);
+                // TODO: Store the original icon
+
+                Values.Image = SystemIcons.Shield.ToBitmap();
+            }
+        }
+
+        public Image OriginalImage { get => _originalImage; private set => _originalImage = value; }
+
+        /// <summary>Gets or sets the size of the UAC shield.</summary>
+        /// <value>The size of the UAC shield.</value>
+        [Category("Command Link"), Description("Gets or sets the shield icon size of the command link."), DefaultValue(typeof(Size), "15, 15")]
+        public Size UACShieldSize
+        {
+            get => _uacShieldSize;
+
+            set
+            {
+                _uacShieldSize = value;
+
+                if (_useAsUACElevatedButton)
+                {
+                    Values.Image = UtilityMethods.ResizeImage(SystemIcons.Shield.ToBitmap(), _uacShieldSize.Width, _uacShieldSize.Height);
+                }
             }
         }
 
@@ -118,6 +140,11 @@ namespace Krypton.Toolkit.Suite.Extended.Base
 
                 return createParams;
             }
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
         }
         #endregion
 

@@ -24,7 +24,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
     /// If the operating system is not Windows Vista or higher, no shield will be displayed as there's no such thing as UAC on the target system -> the shield is obsolete.
     /// </remarks>
     [DefaultEvent("ExecuteProcessAsAdministrator"), DesignerCategory("code"), Description("Krypton UAC Elevated Button"), ToolboxBitmap(typeof(KryptonButton), "ToolboxBitmaps.UACButton.bmp"), ToolboxItem(true)]
-    public partial class KryptonUACElevatedButton : KryptonButton
+    public partial class KryptonUACElevatedButtonVersion1 : KryptonButton
     {
         #region Variables
         private Assembly _processToElevate;
@@ -53,13 +53,12 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         /// <remarks>
         /// The application/process will restart when clicked.
         /// </remarks>
-        [Category("Code"), Description("Elevates the current running application to administrator level when button is clicked. The application/process will restart when clicked."), DefaultValue(true)]
-        public bool ElevateApplicationOnClick { get => _elevateApplicationOnClick; set => _elevateApplicationOnClick = value; }
+        // [Category("Code"), Description("Elevates the current running application to administrator level when button is clicked. The application/process will restart when clicked."), DefaultValue(true)]
+        // public bool ElevateApplicationOnClick { get => _elevateApplicationOnClick; set => _elevateApplicationOnClick = value; }
 
         /// <summary>Gets or sets a value indicating whether [show uac shield].</summary>
-        /// <value>
-        ///   <c>true</c> if [show uac shield]; otherwise, <c>false</c>.</value>
-        public bool ShowUACShield { get => _showUACShield; set { _showUACShield = value; Invalidate(); } }
+        /// <value><c>true</c> if [show uac shield]; otherwise, <c>false</c>.</value>
+        // public bool ShowUACShield { get => _showUACShield; set { _showUACShield = value; Invalidate(); } }
 
         /// <summary>
         /// The application assembly.
@@ -88,54 +87,55 @@ namespace Krypton.Toolkit.Suite.Extended.Base
 
         #region Constructor
         /// <summary>
-        /// Initialises a new instance of the <see cref="KryptonUACElevatedButton"/> class.
+        /// Initialises a new instance of the <see cref="KryptonUACElevatedButtonVersion1"/> class.
         /// </summary>
-        public KryptonUACElevatedButton() : base()
+        public KryptonUACElevatedButtonVersion1() : base()
         {
-            Size = new Size((int)(Width * 1.5), Height + 1);
+            //Size = new Size((int)(Width * 1.5), Height + 1);
 
-            _globalMethods.CheckIfTargetPlatformIsSupported(true);
+            //_globalMethods.CheckIfTargetPlatformIsSupported(true);
 
-            if (_globalMethods.GetIsTargetPlatformSupported())
-            {
-                if (!_isSystemAbleToLoadShield.HasValue || _isSystemAbleToLoadShield.Value)
-                {
-                    try
-                    {
-                        // TODO: FIX THIS
-                        /*
-                        var _icon = IconExtractor.LoadIcon(IconType.SHIELD, SystemInformation.SmallIconSize);
+            //if (_globalMethods.GetIsTargetPlatformSupported())
+            //{
+            //    if (!_isSystemAbleToLoadShield.HasValue || _isSystemAbleToLoadShield.Value)
+            //    {
+            //        try
+            //        {
+            //            // TODO: FIX THIS
+            //            /*
+            //            var _icon = IconExtractor.LoadIcon(IconType.SHIELD, SystemInformation.SmallIconSize);
 
-                        if (_icon != null)
-                        {
-                            Values.Image = _icon.ToBitmap();
+            //            if (_icon != null)
+            //            {
+            //                Values.Image = _icon.ToBitmap();
 
-                            //this.TextImageRelation = TextImageRelation.ImageBeforeText;
+            //                //this.TextImageRelation = TextImageRelation.ImageBeforeText;
 
-                            //Values.Image.ImageAlign = ContentAlignment.MiddleCenter;
+            //                //Values.Image.ImageAlign = ContentAlignment.MiddleCenter;
 
-                            _isSystemAbleToLoadShield = true;
+            //                _isSystemAbleToLoadShield = true;
 
-                            return;
-                        }
-                        else
-                        {
-                            _isSystemAbleToLoadShield = false;
-                        }
-                        */
-                    }
-                    catch (Exception exc)
-                    {
-                        KryptonMessageBoxExtended.Show($"Your platform is unsupported. Please contact the software vendor for details.\nFor reference, your system is running: { _globalMethods.GetOSFriendlyName() }.\nException message: { exc.Message }.", "Unsupported Software", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //                return;
+            //            }
+            //            else
+            //            {
+            //                _isSystemAbleToLoadShield = false;
+            //            }
+            //            */
+            //        }
+            //        catch (Exception exc)
+            //        {
+            //            KryptonMessageBoxExtended.Show($"Your platform is unsupported. Please contact the software vendor for details.\nFor reference, your system is running: { _globalMethods.GetOSFriendlyName() }.\nException message: { exc.Message }.", "Unsupported Software", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                        _isSystemAbleToLoadShield = false;
-                    }
-                }
+            //            _isSystemAbleToLoadShield = false;
+            //        }
+            //    }
 
-                //FlatStyle = FlatStyle.System;
+            //    //FlatStyle = FlatStyle.System;
 
-                CommonNativeMethods.SendMessage(Handle, BCM_SETSHIELD, IntPtr.Zero, new IntPtr(1));
-            }
+            //    CommonNativeMethods.SendMessage(Handle, BCM_SETSHIELD, IntPtr.Zero, new IntPtr(1));
+
+            UACSecurity.AddShieldToButton(this);
         }
         #endregion
 
