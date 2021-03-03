@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
 {
-    [DefaultValue("Checked"), DefaultEvent("CheckedChanged"), ToolboxBitmap(typeof(CheckBox))]
+    [DefaultValue("Checked"), DefaultEvent("CheckedChanged"), ToolboxBitmap(typeof(CheckBox)), ToolboxItem(false)]
     public class KryptonToggleSwitchVersion1 : Control
     {
         #region Delegate and Event declarations
