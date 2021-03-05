@@ -4,6 +4,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 {
     public class CustomThemeBrowser : KryptonForm
     {
+        #region Design Code
         private KryptonPanel kryptonPanel1;
         private KryptonButton kbtnApply;
         private System.Windows.Forms.Panel panel1;
@@ -126,6 +127,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             this.ResumeLayout(false);
 
         }
+        #endregion
 
         private void kbtnBrowseTheme_Click(object sender, EventArgs e)
         {
