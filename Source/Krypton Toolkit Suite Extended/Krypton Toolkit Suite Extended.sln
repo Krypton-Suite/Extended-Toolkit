@@ -145,9 +145,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "C:\Users\Peter Will
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Theme.Switcher", "Libraries\Theme Switcher\Krypton.Toolkit.Suite.Extended.Theme.Switcher.csproj", "{395C2FFD-71E3-4D94-A453-4669789DE982}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Tree.View", "Libraries\Tree View\Krypton.Toolkit.Suite.Extended.Tree.View.csproj", "{74D70A8B-3628-4C30-ACCA-16D08F572DC2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.List.View", "Libraries\List View\Krypton.Toolkit.Suite.Extended.List.View.csproj", "{E31BBA93-2EB1-4536-960E-FBC43303A80E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Drawing.Suite", "Libraries\Drawing Suite\Krypton.Toolkit.Suite.Extended.Drawing.Suite.csproj", "{3451C35B-36E6-49FA-AE2C-4EA44DDCBC6E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Drawing.Suite", "Libraries\Drawing Suite\Krypton.Toolkit.Suite.Extended.Drawing.Suite.csproj", "{A09DDD9B-E4E2-4E83-BF2B-C2E29D8899D9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -315,14 +315,14 @@ Global
 		{395C2FFD-71E3-4D94-A453-4669789DE982}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{395C2FFD-71E3-4D94-A453-4669789DE982}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{395C2FFD-71E3-4D94-A453-4669789DE982}.Release|Any CPU.Build.0 = Release|Any CPU
-		{74D70A8B-3628-4C30-ACCA-16D08F572DC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{74D70A8B-3628-4C30-ACCA-16D08F572DC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{74D70A8B-3628-4C30-ACCA-16D08F572DC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{74D70A8B-3628-4C30-ACCA-16D08F572DC2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3451C35B-36E6-49FA-AE2C-4EA44DDCBC6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3451C35B-36E6-49FA-AE2C-4EA44DDCBC6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3451C35B-36E6-49FA-AE2C-4EA44DDCBC6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3451C35B-36E6-49FA-AE2C-4EA44DDCBC6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E31BBA93-2EB1-4536-960E-FBC43303A80E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E31BBA93-2EB1-4536-960E-FBC43303A80E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E31BBA93-2EB1-4536-960E-FBC43303A80E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E31BBA93-2EB1-4536-960E-FBC43303A80E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A09DDD9B-E4E2-4E83-BF2B-C2E29D8899D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A09DDD9B-E4E2-4E83-BF2B-C2E29D8899D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A09DDD9B-E4E2-4E83-BF2B-C2E29D8899D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A09DDD9B-E4E2-4E83-BF2B-C2E29D8899D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -372,8 +372,8 @@ Global
 		{FCF6B242-61FD-47D4-B835-096EF7EE2058} = {1F1DCECC-C25F-4E91-9C8A-ECCBB9827BBA}
 		{71FCBEA5-41C7-4D60-8839-EF0C9195690C} = {CCBF1258-5417-42C4-9838-FA410E9803DB}
 		{395C2FFD-71E3-4D94-A453-4669789DE982} = {1F1DCECC-C25F-4E91-9C8A-ECCBB9827BBA}
-		{74D70A8B-3628-4C30-ACCA-16D08F572DC2} = {1F1DCECC-C25F-4E91-9C8A-ECCBB9827BBA}
-		{3451C35B-36E6-49FA-AE2C-4EA44DDCBC6E} = {1F1DCECC-C25F-4E91-9C8A-ECCBB9827BBA}
+		{E31BBA93-2EB1-4536-960E-FBC43303A80E} = {1F1DCECC-C25F-4E91-9C8A-ECCBB9827BBA}
+		{A09DDD9B-E4E2-4E83-BF2B-C2E29D8899D9} = {1F1DCECC-C25F-4E91-9C8A-ECCBB9827BBA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9A189168-3746-4F9F-8C61-863D83D8ABD2}
