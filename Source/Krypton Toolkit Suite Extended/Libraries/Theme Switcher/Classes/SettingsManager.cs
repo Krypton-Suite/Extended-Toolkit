@@ -1,4 +1,5 @@
 ﻿using Krypton.Toolkit.Suite.Extended.Theme.Switcher.Properties;
+using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 {
@@ -35,6 +36,19 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
         ///   <br />
         /// </returns>
         public string GetCustomThemePath() => _settings.CustomThemePath;
+        #endregion
+
+        #region Methods
+        /// <summary>Saves the settings.</summary>
+        public void SaveSettings()
+        {
+            DialogResult result = KryptonMessageBox.Show("Are you sure that you want to save these settings?", "Save Settings", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                _settings.Save();
+            }
+        }
         #endregion
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 {
@@ -19,13 +20,13 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ThemeSelector));
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            this.kbtnLoadTheme = new Krypton.Toolkit.KryptonButton();
             this.kbtnApply = new Krypton.Toolkit.KryptonButton();
             this.kbtnCancel = new Krypton.Toolkit.KryptonButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
             this.kcmbPaletteMode = new Krypton.Toolkit.KryptonComboBox();
             this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
-            this.kbtnLoadTheme = new Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
@@ -43,6 +44,18 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             this.kryptonPanel1.Name = "kryptonPanel1";
             this.kryptonPanel1.Size = new System.Drawing.Size(544, 46);
             this.kryptonPanel1.TabIndex = 0;
+            // 
+            // kbtnLoadTheme
+            // 
+            this.kbtnLoadTheme.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.kbtnLoadTheme.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.kbtnLoadTheme.Location = new System.Drawing.Point(12, 9);
+            this.kbtnLoadTheme.Name = "kbtnLoadTheme";
+            this.kbtnLoadTheme.Size = new System.Drawing.Size(90, 25);
+            this.kbtnLoadTheme.TabIndex = 2;
+            this.kbtnLoadTheme.Values.Text = "Load &Theme";
+            this.kbtnLoadTheme.Visible = false;
+            this.kbtnLoadTheme.Click += new System.EventHandler(this.kbtnLoadTheme_Click);
             // 
             // kbtnApply
             // 
@@ -109,18 +122,6 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             this.kryptonLabel1.TabIndex = 0;
             this.kryptonLabel1.Values.Text = "Theme:";
             // 
-            // kbtnLoadTheme
-            // 
-            this.kbtnLoadTheme.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.kbtnLoadTheme.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.kbtnLoadTheme.Location = new System.Drawing.Point(12, 9);
-            this.kbtnLoadTheme.Name = "kbtnLoadTheme";
-            this.kbtnLoadTheme.Size = new System.Drawing.Size(90, 25);
-            this.kbtnLoadTheme.TabIndex = 2;
-            this.kbtnLoadTheme.Values.Text = "Load &Theme";
-            this.kbtnLoadTheme.Visible = false;
-            this.kbtnLoadTheme.Click += new System.EventHandler(this.kbtnLoadTheme_Click);
-            // 
             // ThemeSelector
             // 
             this.ClientSize = new System.Drawing.Size(544, 99);
@@ -136,6 +137,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Select Theme";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ThemeSelector_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
@@ -174,15 +176,10 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
         }
         #endregion
 
-        private void kbtnApply_Click(object sender, EventArgs e)
-        {
-            ApplyTheme(kcmbPaletteMode.Text);
-        }
+        #region Event Handlers
+        private void kbtnApply_Click(object sender, EventArgs e) => ApplyTheme(kcmbPaletteMode.Text);
 
-        private void kbtnCancel_Click(object sender, EventArgs e)
-        {
-
-        }
+        private void kbtnCancel_Click(object sender, EventArgs e) => Hide();
 
         private void kcmbPaletteMode_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -201,48 +198,71 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             browser.Show();
         }
 
+        private void ThemeSelector_FormClosing(object sender, FormClosingEventArgs e) => _settingsManager.SaveSettings();
+        #endregion
+
         #region Methods
         private void ApplyTheme(string themeType)
         {
             if (themeType == "Professional - System")
             {
                 _manager.GlobalPaletteMode = PaletteModeManager.ProfessionalSystem;
+
+                ApplyTheme(PaletteModeManager.ProfessionalSystem);
             }
             else if (themeType == "Professional - Office 2003")
             {
                 _manager.GlobalPaletteMode = PaletteModeManager.ProfessionalOffice2003;
+
+                ApplyTheme(PaletteModeManager.ProfessionalOffice2003);
             }
             else if (themeType == "Office 2007 - Black")
             {
                 _manager.GlobalPaletteMode = PaletteModeManager.Office2007Black;
+
+                ApplyTheme(PaletteModeManager.Office2007Black);
             }
             else if (themeType == "Office 2007 - Blue")
             {
                 _manager.GlobalPaletteMode = PaletteModeManager.Office2007Blue;
+
+                ApplyTheme(PaletteModeManager.Office2007Blue);
             }
             else if (themeType == "Office 2007 - Silver")
             {
                 _manager.GlobalPaletteMode = PaletteModeManager.Office2007Silver;
+
+                ApplyTheme(PaletteModeManager.Office2007Silver);
             }
             else if (themeType == "Office 2007 - White")
             {
                 _manager.GlobalPaletteMode = PaletteModeManager.Office2007White;
+
+                ApplyTheme(PaletteModeManager.Office2007White);
             }
             else if (themeType == "Office 2010 - Black")
             {
                 _manager.GlobalPaletteMode = PaletteModeManager.Office2010Black;
+
+                ApplyTheme(PaletteModeManager.Office2010Black);
             }
             else if (themeType == "Office 2010 - Blue")
             {
                 _manager.GlobalPaletteMode = PaletteModeManager.Office2010Blue;
+
+                ApplyTheme(PaletteModeManager.Office2010Blue);
             }
             else if (themeType == "Office 2010 - Silver")
             {
                 _manager.GlobalPaletteMode = PaletteModeManager.Office2010Silver;
+
+                ApplyTheme(PaletteModeManager.Office2010Silver);
             }
             else if (themeType == "Office 2010 - White")
             {
                 _manager.GlobalPaletteMode = PaletteModeManager.Office2010White;
+
+                ApplyTheme(PaletteModeManager.Office2010White);
             }
             else if (themeType == "Office 2013")
             {
@@ -285,6 +305,10 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
                 _manager.GlobalPaletteMode = PaletteModeManager.Custom;
             }
         }
+
+        /// <summary>Applies the theme.</summary>
+        /// <param name="theme">The theme.</param>
+        private void ApplyTheme(PaletteModeManager theme) => _settingsManager.SetTheme(theme);
 
         /// <summary>Propagates the theme list.</summary>
         private void PropagateThemeList()
