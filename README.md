@@ -57,13 +57,13 @@
 ## 2021-06-04 - Build 2106 - June 2021
 * Removal/de-listing of `Krypton.Toolkit.Suite.Extended.Rounded.Controls`, see 'standard toolkit' build 2106 for more information
 * New `KryptonFormExtended` to expose properties, which cannot be fulfilled by a action list
-* Updated standard toolkit to build `2106`
+* Updated standard toolkit to build `2106`-->
 
 =======
 
 ## 2021-05-01 - Build 2105 - May 2021
 * New `Krypton.Toolkit.Suite.Extended.Toggle.Switch` module
-* Fixes for the `Krypton.Toolkit.Suite.Extended.Outlook.Grid` module-->
+* Fixes for the `Krypton.Toolkit.Suite.Extended.Outlook.Grid` module
 
 =======
 
