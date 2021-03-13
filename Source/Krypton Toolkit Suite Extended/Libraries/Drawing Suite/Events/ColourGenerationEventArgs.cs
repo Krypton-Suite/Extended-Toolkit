@@ -12,10 +12,17 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Suite.Events
         #endregion
 
         #region Properties
+        /// <summary>Gets or sets the colour.</summary>
+        /// <value>The colour.</value>
         public Color Colour { get => _colour; set => _colour = value; }
         #endregion
 
         #region Constructors
+        /// <summary>Initializes a new instance of the <see cref="ColourGenerationEventArgs" /> class.</summary>
+        /// <param name="alphaValue">The alpha value.</param>
+        /// <param name="redValue">The red value.</param>
+        /// <param name="greenValue">The green value.</param>
+        /// <param name="blueValue">The blue value.</param>
         public ColourGenerationEventArgs(byte alphaValue, byte redValue, byte greenValue, byte blueValue)
         {
             _alphaValue = alphaValue;
@@ -26,10 +33,25 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Suite.Events
 
             _blueValue = blueValue;
 
-            ConstructColour(alphaValue, redValue, greenValue, blueValue);
+            SetColour(alphaValue, redValue, greenValue, blueValue);
         }
-
-        private void ConstructColour(byte alphaValue, byte redValue, byte greenValue, byte blueValue) => Colour = Color.FromArgb(alphaValue, redValue, greenValue, blueValue);
         #endregion
+
+        /// <summary>Sets the colour.</summary>
+        /// <param name="alphaValue">The alpha value.</param>
+        /// <param name="redValue">The red value.</param>
+        /// <param name="greenValue">The green value.</param>
+        /// <param name="blueValue">The blue value.</param>
+        public void SetColour(byte alphaValue, byte redValue, byte greenValue, byte blueValue) => Colour = Color.FromArgb(alphaValue, redValue, greenValue, blueValue);
+
+        /// <summary>Sets the colour.</summary>
+        /// <param name="colour">The colour.</param>
+        public void SetColour(Color colour) => Colour = colour;
+
+        /// <summary>Gets the colour.</summary>
+        /// <returns>
+        ///   <br />
+        /// </returns>
+        public Color GetColour() => Colour;
     }
 }
