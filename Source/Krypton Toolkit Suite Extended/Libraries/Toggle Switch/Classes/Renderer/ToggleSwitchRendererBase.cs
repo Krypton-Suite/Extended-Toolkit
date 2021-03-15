@@ -7,7 +7,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
     {
         #region Private Members
 
-        private KryptonToggleSwitch _toggleSwitch;
+        private KryptonToggleSwitchVersion1 _toggleSwitch;
 
         #endregion Private Members
 
@@ -16,9 +16,9 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
         protected ToggleSwitchRendererBase()
         { }
 
-        internal void SetToggleSwitch(KryptonToggleSwitch toggleSwitch) => _toggleSwitch = toggleSwitch;
+        internal void SetToggleSwitch(KryptonToggleSwitchVersion1 toggleSwitch) => _toggleSwitch = toggleSwitch;
 
-        internal KryptonToggleSwitch ToggleSwitch => _toggleSwitch;
+        internal KryptonToggleSwitchVersion1 ToggleSwitch => _toggleSwitch;
 
         #endregion Constructor
 

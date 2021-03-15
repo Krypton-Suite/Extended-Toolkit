@@ -74,6 +74,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         private int _previousGroupRowSelected = -1; //Useful to allow the selection of a group row or not when on mouse down 
 
         //Krypton ContextMenu for the columns header
+        private bool _allowDefaultContextMenu;
         private KryptonContextMenu KCtxMenu;
         private KryptonContextMenuItems _menuItems;
         private KryptonContextMenuItem _menuSortAscending;
@@ -159,6 +160,10 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             internalRows = new List<OutlookGridRow>();
             internalColumns = new OutlookGridColumnCollection();
             _fillMode = FillMode.GroupsOnly;
+
+            _allowDefaultContextMenu = true;
+
+            _showLines = true;
 
             // Cache the current global palette setting
             _palette = KryptonManager.CurrentGlobalPalette;
@@ -391,6 +396,16 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                     Invalidate();
                 }
             }
+        }
+
+        /// <summary>
+        /// Enables integrated context menu
+        /// </summary>
+        [DefaultValue(true)]
+        public bool AllowDefaultContextMenu
+        {
+            get { return _allowDefaultContextMenu; }
+            set { _allowDefaultContextMenu = value; }
         }
 
         #endregion OutlookGrid property definitions
@@ -839,50 +854,56 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             {
                 if (e.Button == MouseButtons.Right)
                 {
-                    ShowColumnHeaderContextMenu(e.ColumnIndex);
+                    if (_allowDefaultContextMenu)
+                    {
+                        ShowColumnHeaderContextMenu(e.ColumnIndex);
+                    }
                 }
                 else if (e.Button == MouseButtons.Left)
                 {
                     OutlookGridColumn col = internalColumns.FindFromColumnIndex(e.ColumnIndex);
-                    if (col.DataGridViewColumn.SortMode != DataGridViewColumnSortMode.NotSortable)
+                    if (col != null)
                     {
-                        SortOrder previousSort = col.SortDirection;
-                        //Reset all sorting column only if not Ctrl or Shift or the column is grouped
-                        if (Control.ModifierKeys != Keys.Shift && Control.ModifierKeys != Keys.Control && !col.IsGrouped)
+                        if (col.DataGridViewColumn.SortMode != DataGridViewColumnSortMode.NotSortable)
                         {
-                            ResetAllSortingColumns();
-                        }
-
-                        //Remove this SortIndex
-                        if (Control.ModifierKeys == Keys.Control)
-                        {
-                            UnSortColum(col);
-                        }
-                        //Add the first or a new SortIndex
-                        else
-                        {
-                            if (previousSort == SortOrder.None)
+                            SortOrder previousSort = col.SortDirection;
+                            //Reset all sorting column only if not Ctrl or Shift or the column is grouped
+                            if (Control.ModifierKeys != Keys.Shift && Control.ModifierKeys != Keys.Control && !col.IsGrouped)
                             {
-                                SortColumn(col, SortOrder.Ascending);
+                                ResetAllSortingColumns();
                             }
+
+                            //Remove this SortIndex
+                            if (Control.ModifierKeys == Keys.Control)
+                            {
+                                UnSortColum(col);
+                            }
+                            //Add the first or a new SortIndex
                             else
                             {
-                                SortColumn(col, (previousSort == SortOrder.Ascending) ? SortOrder.Descending : SortOrder.Ascending);
+                                if (previousSort == SortOrder.None)
+                                {
+                                    SortColumn(col, SortOrder.Ascending);
+                                }
+                                else
+                                {
+                                    SortColumn(col, (previousSort == SortOrder.Ascending) ? SortOrder.Descending : SortOrder.Ascending);
+                                }
                             }
-                        }
 
 #if DEBUG
-                        internalColumns.DebugOutput();
+                            internalColumns.DebugOutput();
 #endif
 
-                        //Refresh the groupBox if the column is grouped
-                        if (col.IsGrouped)
-                        {
-                            ForceRefreshGroupBox();
-                        }
+                            //Refresh the groupBox if the column is grouped
+                            if (col.IsGrouped)
+                            {
+                                ForceRefreshGroupBox();
+                            }
 
-                        //Apply the changes
-                        Fill();
+                            //Apply the changes
+                            Fill();
+                        }
                     }
                 }
             }
@@ -1475,7 +1496,11 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             {
                 internalColumns.Add(col);
                 //Already reflect the SortOrder on the column
-                col.DataGridViewColumn.HeaderCell.SortGlyphDirection = col.SortDirection;
+                if (col.DataGridViewColumn.SortMode != DataGridViewColumnSortMode.NotSortable)
+                {
+                    col.DataGridViewColumn.HeaderCell.SortGlyphDirection = col.SortDirection;
+                }
+
                 if (_hideColumnOnGrouping && col.GroupIndex > -1 && col.GroupingType.AllowHiddenWhenGrouped)
                     col.DataGridViewColumn.Visible = false;
             }
@@ -2784,7 +2809,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             {
                 if (groupCollection[0].Column.GroupingType.SortBySummaryCount)
                     groupCollection.Sort(new OutlookGridGroupCountComparer());
-                else
+                else if (GroupCollection[0].Column.SortDirection != SortOrder.None)
                     groupCollection.Sort();
             }
 

@@ -7,6 +7,7 @@
 #endregion
 
 using Krypton.Toolkit.Suite.Extended.Base;
+using Krypton.Toolkit.Suite.Extended.Drawing.Suite;
 using System;
 using System.ComponentModel;
 using System.Drawing;
@@ -17,17 +18,17 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
     public class KryptonBasicColourDialog : KryptonForm
     {
         #region Designer Code
-        private Krypton.Toolkit.Suite.Extended.Drawing.Suite.KryptonAlphaValueLabel kryptonAlphaValueLabel1;
+        private KryptonAlphaValueLabel kryptonAlphaValueLabel1;
         private KryptonOKDialogButton kbtnOk;
         private KryptonCancelDialogButton kbtnCancel;
         private KryptonPanel kryptonPanel1;
-        private Krypton.Toolkit.Suite.Extended.Drawing.Suite.KryptonBlueValueLabel klblBlueValue;
-        private Krypton.Toolkit.Suite.Extended.Drawing.Suite.KryptonRedValueLabel klblRedValue;
+        private KryptonBlueValueLabel klblBlueValue;
+        private KryptonRedValueLabel klblRedValue;
         private CircularPictureBox cpbxColourPreview;
-        private Krypton.Toolkit.Suite.Extended.Drawing.Suite.ColourWheelControl cwColourPicker;
+        private ColourWheelControl cwColourPicker;
         private System.Windows.Forms.Panel panel1;
-        private Krypton.Toolkit.Suite.Extended.Drawing.Suite.ColourHexadecimalTextBox txtHexColour;
-        private Krypton.Toolkit.Suite.Extended.Drawing.Suite.KryptonGreenValueLabel kryptonGreenValueLabel1;
+        private ColourHexadecimalTextBox txtHexColour;
+        private KryptonGreenValueLabel kryptonGreenValueLabel1;
         private KryptonPanel kpnlButtons;
 
         private void InitializeComponent()
