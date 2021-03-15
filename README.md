@@ -9,6 +9,7 @@
 | Module Name | Current Version | GitHub License |
 |---|---|---|
 | <img src="https://img.shields.io/badge/Module-Base-orange.svg" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Base?label=Version&logo=nuget)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
+| <img src="https://img.shields.io/badge/Module-Circular Progress Bar-orange.svg" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar?label=Version&logo=nuget)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
 | <img src="https://img.shields.io/badge/Module-Drawing Suite-orange.svg" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Drawing.Suite?label=Version&logo=nuget)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
 | <img src="https://img.shields.io/badge/Module-Dialogs-orange.svg" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Dialogs?label=Version&logo=nuget)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
 | <img src="https://img.shields.io/badge/Module-Fast Coloured Textbox-orange.svg" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box?label=Version&logo=nuget)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
@@ -54,8 +55,16 @@
 <!--
 =======
 
+## 2021-06-04 - Build 2106 - June 2021
+* Removal/de-listing of `Krypton.Toolkit.Suite.Extended.Rounded.Controls`, see 'standard toolkit' build 2106 for more information
+* New `KryptonFormExtended` to expose properties, which cannot be fulfilled by a action list
+* Updated standard toolkit to build `2106`-->
+
+=======
+
 ## 2021-05-01 - Build 2105 - May 2021
-* New `Krypton.Toolkit.Suite.Extended.Toggle.Switch` module-->
+* New `Krypton.Toolkit.Suite.Extended.Toggle.Switch` module
+* Fixes for the `Krypton.Toolkit.Suite.Extended.Outlook.Grid` module
 
 =======
 
