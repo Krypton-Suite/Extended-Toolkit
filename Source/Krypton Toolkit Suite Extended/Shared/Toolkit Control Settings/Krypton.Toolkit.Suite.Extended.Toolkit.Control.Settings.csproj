@@ -21,9 +21,9 @@
     <TargetFrameworks>net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows;net6.0-windows</TargetFrameworks>
 		<PackageOutputPath>..\..\..\..\Bin\NuGet\Canary</PackageOutputPath>
 		<PackageIcon>Canary.png</PackageIcon>
-		<AssemblyVersion>6.0.2105</AssemblyVersion>
-		<FileVersion>6.0.2105</FileVersion>
-		<Version>6.0.2105</Version>
+		<AssemblyVersion>6.0.2106</AssemblyVersion>
+		<FileVersion>6.0.2106</FileVersion>
+		<Version>6.0.2106</Version>
 	</PropertyGroup>
 
 	<!--Nightly package configuration-
@@ -42,9 +42,9 @@
     <TargetFrameworks>net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows</TargetFrameworks>
 		<PackageOutputPath>..\..\..\..\Bin\NuGet\Stable</PackageOutputPath>
 		<PackageIcon>Stable.png</PackageIcon>
-		<AssemblyVersion>5.550.2105</AssemblyVersion>
-    <FileVersion>5.550.2105</FileVersion>
-    <Version>5.550.2105</Version>
+		<AssemblyVersion>5.550.2106</AssemblyVersion>
+    <FileVersion>5.550.2106</FileVersion>
+    <Version>5.550.2106</Version>
 	</PropertyGroup>-->
 
   <!--Signed package configuration-
@@ -55,9 +55,9 @@
     <TargetFrameworks>net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows</TargetFrameworks>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Signed</PackageOutputPath>
     <PackageIcon>Stable.png</PackageIcon>
-    <AssemblyVersion>5.550.2105</AssemblyVersion>
-    <FileVersion>5.550.2105</FileVersion>
-    <Version>5.550.2105</Version>
+    <AssemblyVersion>5.550.2106</AssemblyVersion>
+    <FileVersion>5.550.2106</FileVersion>
+    <Version>5.550.2106</Version>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>StrongKrypton.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>-->

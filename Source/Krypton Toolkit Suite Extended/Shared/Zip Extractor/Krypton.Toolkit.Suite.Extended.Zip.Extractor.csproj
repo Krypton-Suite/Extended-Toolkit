@@ -22,16 +22,16 @@
   
   <!--Stable NuGet version configuration-
   <PropertyGroup>
-    <AssemblyVersion>5.550.2105</AssemblyVersion>
-    <FileVersion>5.550.2105</FileVersion>
-    <Version>5.550.2105</Version>
+    <AssemblyVersion>5.550.2106</AssemblyVersion>
+    <FileVersion>5.550.2106</FileVersion>
+    <Version>5.550.2106</Version>
   </PropertyGroup>-->
 
   <!--Canary NuGet version configuration-->
   <PropertyGroup>
-    <AssemblyVersion>6.0.2105</AssemblyVersion>
-    <FileVersion>6.0.2105</FileVersion>
-    <Version>6.0.2105</Version>
+    <AssemblyVersion>6.0.2106</AssemblyVersion>
+    <FileVersion>6.0.2106</FileVersion>
+    <Version>6.0.2106</Version>
   </PropertyGroup>
 
   <ItemGroup>
