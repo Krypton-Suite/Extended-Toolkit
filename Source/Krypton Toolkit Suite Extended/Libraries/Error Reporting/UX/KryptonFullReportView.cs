@@ -502,7 +502,13 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
         #region Variables
         private bool _isDataRefreshRequired;
 
+        private KryptonLightReportView _lightReportView;
+
         private readonly ExceptionReportPresenter _presenter;
+        #endregion
+
+        #region Properties
+        public KryptonLightReportView LightReportView { get => _lightReportView; private set => _lightReportView = value; }
         #endregion
 
         #region Constructor
@@ -542,6 +548,18 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
 
             kbtnDetailToggle.Visible = reportInfo.ShowLessDetailButton;
 
+            ktxtExceptionMessageLarge.Text = ktxtExceptionMessage.Text = !string.IsNullOrEmpty(reportInfo.CustomMessage) ? reportInfo.CustomMessage : reportInfo.Exceptions.First().Message;
+        }
+
+        private void PopulateTabs()
+        {
+
+        }
+
+        private void SetupLightReportView(ExceptionReportInfo reportInfo) => LightReportView = new KryptonLightReportView(reportInfo);
+
+        private void WireUpEvents()
+        {
 
         }
         #endregion
