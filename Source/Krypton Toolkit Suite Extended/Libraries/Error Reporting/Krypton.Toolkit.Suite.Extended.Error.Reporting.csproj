@@ -71,12 +71,12 @@
 
   <!--Canary NuGet package configuration-->
   <ItemGroup>
-    <PackageReference Include="Krypton.Navigator.Canary" Version="6.0.2101" />
-    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2101" />
+    <PackageReference Include="Krypton.Navigator.Canary" Version="6.0.2103.6" />
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2103.6" />
   </ItemGroup>
   
   <ItemGroup>
-    <PackageReference Include="DotNetZip" Version="1.14.0" />
+    <PackageReference Include="DotNetZip" Version="1.15.0" />
     <PackageReference Include="Simple-MAPI.NET" Version="1.1.0" />
     <PackageReference Include="System.Management" Version="5.0.0" />
   </ItemGroup>
@@ -87,6 +87,9 @@
     </Reference>
     <Reference Include="Krypton.Toolkit.Suite.Extended.Dialogs">
       <HintPath>..\Extended Dialogs\obj\Debug\net45\Krypton.Toolkit.Suite.Extended.Dialogs.dll</HintPath>
+    </Reference>
+    <Reference Include="Krypton.Toolkit.Suite.Extended.List.View">
+      <HintPath>..\List View\obj\Debug\net45\Krypton.Toolkit.Suite.Extended.List.View.dll</HintPath>
     </Reference>
     <Reference Include="System.Deployment" />
   </ItemGroup>

@@ -42,7 +42,7 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
             this.kryptonPanel2.Controls.Add(this.kbtnCopyDetails);
             this.kryptonPanel2.Controls.Add(this.kbtnMoreDetails);
             this.kryptonPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.kryptonPanel2.Location = new System.Drawing.Point(0, 259);
+            this.kryptonPanel2.Location = new System.Drawing.Point(0, 277);
             this.kryptonPanel2.Name = "kryptonPanel2";
             this.kryptonPanel2.Size = new System.Drawing.Size(542, 41);
             this.kryptonPanel2.TabIndex = 4;
@@ -75,7 +75,7 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 256);
+            this.panel1.Location = new System.Drawing.Point(0, 274);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(542, 3);
             this.panel1.TabIndex = 5;
@@ -89,12 +89,13 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel1.Name = "kryptonPanel1";
-            this.kryptonPanel1.Size = new System.Drawing.Size(542, 256);
+            this.kryptonPanel1.Size = new System.Drawing.Size(542, 274);
             this.kryptonPanel1.TabIndex = 6;
             // 
             // klblContactCompany
             // 
-            this.klblContactCompany.Location = new System.Drawing.Point(12, 228);
+            this.klblContactCompany.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
+            this.klblContactCompany.Location = new System.Drawing.Point(12, 236);
             this.klblContactCompany.Name = "klblContactCompany";
             this.klblContactCompany.Size = new System.Drawing.Size(6, 2);
             this.klblContactCompany.TabIndex = 29;
@@ -135,7 +136,7 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
             // 
             // KryptonLightReportView
             // 
-            this.ClientSize = new System.Drawing.Size(542, 300);
+            this.ClientSize = new System.Drawing.Size(542, 318);
             this.Controls.Add(this.kryptonPanel1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.kryptonPanel2);
@@ -154,6 +155,13 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
             ((System.ComponentModel.ISupportInitialize)(this.lessDetail_alertIcon)).EndInit();
             this.ResumeLayout(false);
 
+        }
+        #endregion
+
+        #region Constructor
+        public KryptonLightReportView(ExceptionReportInfo reportInfo)
+        {
+            InitializeComponent();
         }
         #endregion
 
