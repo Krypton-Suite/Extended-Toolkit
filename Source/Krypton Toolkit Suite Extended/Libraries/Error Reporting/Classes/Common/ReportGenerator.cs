@@ -66,7 +66,7 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
         }
 
         /// <summary>
-        /// get system information and memoize
+        /// get system information and memorise
         /// </summary>
         internal IEnumerable<SysInfoResult> GetOrFetchSysInfoResults()
         {

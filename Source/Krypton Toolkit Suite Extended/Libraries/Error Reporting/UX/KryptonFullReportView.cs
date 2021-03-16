@@ -33,7 +33,7 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
         private KryptonRichTextBox krtbExceptionLarge;
         private System.Windows.Forms.ListView lvAssemblies;
         private KryptonTreeView ktvEnvironment;
-        private Dialogs.KryptonCancelDialogButton kryptonCancelDialogButton1;
+        private KryptonButton kryptonButton1;
         private Base.KryptonBorderedLabel kryptonBorderedLabel5;
         private Base.KryptonBorderedLabel kryptonBorderedLabel4;
         private Base.KryptonBorderedLabel kryptonBorderedLabel3;
@@ -49,7 +49,7 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
             this.tspbProgress = new System.Windows.Forms.ToolStripProgressBar();
             this.panel1 = new System.Windows.Forms.Panel();
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
-            this.kryptonCancelDialogButton1 = new Krypton.Toolkit.Suite.Extended.Dialogs.KryptonCancelDialogButton();
+            this.kryptonButton1 = new KryptonButton();
             this.kbtnLessDetails = new Krypton.Toolkit.KryptonButton();
             this.kbtnCopy = new Krypton.Toolkit.KryptonButton();
             this.kbtnSave = new Krypton.Toolkit.KryptonButton();
@@ -143,7 +143,7 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
             // 
             // kryptonPanel2
             // 
-            this.kryptonPanel2.Controls.Add(this.kryptonCancelDialogButton1);
+            this.kryptonPanel2.Controls.Add(this.kryptonButton1);
             this.kryptonPanel2.Controls.Add(this.kbtnLessDetails);
             this.kryptonPanel2.Controls.Add(this.kbtnCopy);
             this.kryptonPanel2.Controls.Add(this.kbtnSave);
@@ -154,15 +154,14 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
             this.kryptonPanel2.Size = new System.Drawing.Size(613, 41);
             this.kryptonPanel2.TabIndex = 3;
             // 
-            // kryptonCancelDialogButton1
+            // kryptonButton1
             // 
-            this.kryptonCancelDialogButton1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.kryptonCancelDialogButton1.Location = new System.Drawing.Point(515, 7);
-            this.kryptonCancelDialogButton1.Name = "kryptonCancelDialogButton1";
-            this.kryptonCancelDialogButton1.ParentWindow = null;
-            this.kryptonCancelDialogButton1.Size = new System.Drawing.Size(90, 25);
-            this.kryptonCancelDialogButton1.TabIndex = 9;
-            this.kryptonCancelDialogButton1.Values.Text = "C&ancel";
+            this.kryptonButton1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.kryptonButton1.Location = new System.Drawing.Point(515, 7);
+            this.kryptonButton1.Name = "kryptonButton1";
+            this.kryptonButton1.Size = new System.Drawing.Size(90, 25);
+            this.kryptonButton1.TabIndex = 9;
+            this.kryptonButton1.Values.Text = "C&ancel";
             // 
             // kbtnLessDetails
             // 

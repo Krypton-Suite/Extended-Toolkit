@@ -4,7 +4,7 @@ using System;
 namespace HandlebarsDotNET.Compiler.Lexer
 {
     /// <summary>
-    /// Represents exceptions occured at template parsing stage
+    /// Represents exceptions occurred at template parsing stage
     /// </summary>
     public class HandlebarsParserException : HandlebarsException
     {

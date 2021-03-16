@@ -78,17 +78,7 @@
   <ItemGroup>
     <PackageReference Include="DotNetZip" Version="1.14.0" />
     <PackageReference Include="Simple-MAPI.NET" Version="1.1.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <!--Canary icon-->
-    <None Include="Package Icons\Canary.png" Pack="true" PackagePath="\" />
-
-    <!--Stable icon-->
-    <None Include="Package Icons\Stable.png" Pack="true" PackagePath="\" />
-
-    <!--Nightly icon-->
-    <None Include="Package Icons\Nightly.png" Pack="true" PackagePath="\" />
+    <PackageReference Include="System.Management" Version="5.0.0" />
   </ItemGroup>
 
   <ItemGroup>

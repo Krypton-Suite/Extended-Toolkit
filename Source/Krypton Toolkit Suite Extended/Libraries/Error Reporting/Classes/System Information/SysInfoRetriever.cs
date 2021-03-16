@@ -17,7 +17,7 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
         /// Retrieve system information, using the given SysInfoQuery to determine what information to retrieve
         /// </summary>
         /// <param name="sysInfoQuery">the query to determine what information to retrieve</param>
-        /// <returns>a SysInfoResult ie containing the results of the query</returns>
+        /// <returns>a SysInfoResult i.e. containing the results of the query</returns>
         public SysInfoResult Retrieve(SysInfoQuery sysInfoQuery)
         {
             if (ExceptionReporter.IsRunningMono())
