@@ -149,6 +149,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Exten
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Drawing.Suite", "Libraries\Drawing Suite\Krypton.Toolkit.Suite.Extended.Drawing.Suite.csproj", "{A09DDD9B-E4E2-4E83-BF2B-C2E29D8899D9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simple.MAPI.NET", "Third Party\Simple.MAPI.NET\Simple.MAPI.NET.csproj", "{80BCFEDD-D4B2-46D6-A44E-C39D5DF02CAD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -323,6 +325,10 @@ Global
 		{A09DDD9B-E4E2-4E83-BF2B-C2E29D8899D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A09DDD9B-E4E2-4E83-BF2B-C2E29D8899D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A09DDD9B-E4E2-4E83-BF2B-C2E29D8899D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80BCFEDD-D4B2-46D6-A44E-C39D5DF02CAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80BCFEDD-D4B2-46D6-A44E-C39D5DF02CAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80BCFEDD-D4B2-46D6-A44E-C39D5DF02CAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80BCFEDD-D4B2-46D6-A44E-C39D5DF02CAD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -374,6 +380,7 @@ Global
 		{395C2FFD-71E3-4D94-A453-4669789DE982} = {1F1DCECC-C25F-4E91-9C8A-ECCBB9827BBA}
 		{E31BBA93-2EB1-4536-960E-FBC43303A80E} = {1F1DCECC-C25F-4E91-9C8A-ECCBB9827BBA}
 		{A09DDD9B-E4E2-4E83-BF2B-C2E29D8899D9} = {1F1DCECC-C25F-4E91-9C8A-ECCBB9827BBA}
+		{80BCFEDD-D4B2-46D6-A44E-C39D5DF02CAD} = {0E036EC5-549F-405A-82FA-87A03CE379E1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9A189168-3746-4F9F-8C61-863D83D8ABD2}
