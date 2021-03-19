@@ -42,13 +42,7 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
 #if NET30_OR_GREATER
         private string GetAppVersion(Assembly assembly) => assembly.ImageRuntimeVersion;
 #else
-        private string GetAppVersion()
-      
-        {
-            return System.Deployment.Application.ApplicationDeployment.IsNetworkDeployed ?
-                System.Deployment.Application.ApplicationDeployment.CurrentDeployment.CurrentVersion.ToString() : Application.ProductVersion;
-        }
-        
+        private string GetAppVersion() => ApplicationDeployment.IsNetworkDeployed ? ApplicationDeployment.CurrentDeployment.CurrentVersion.ToString() : Application.ProductVersion;        
 #endif
 
         //		leave commented out for mono to toggle in/out to be able to compile
