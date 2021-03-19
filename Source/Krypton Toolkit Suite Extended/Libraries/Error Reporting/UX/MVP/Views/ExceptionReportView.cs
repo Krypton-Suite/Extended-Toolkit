@@ -43,6 +43,9 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
         private KryptonTreeView ktvEnvironment;
         private KryptonButton kbtnEMail;
         private KryptonButton kbtnClose;
+        private KryptonButton kbtnDetailToggle;
+        private KryptonButton kbtnCopy;
+        private KryptonButton kbtnSave;
         private KryptonPanel kpnlOptions;
 
         private void InitializeComponent()
@@ -52,41 +55,44 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            this.kbtnEMail = new Krypton.Toolkit.KryptonButton();
+            this.kbtnClose = new Krypton.Toolkit.KryptonButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
             this.kpnlLessDetails = new Krypton.Toolkit.KryptonPanel();
-            this.kpnlOptions = new Krypton.Toolkit.KryptonPanel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.klblContactCompany = new Krypton.Toolkit.KryptonLabel();
-            this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
             this.ktxtExceptionMessageLarge2 = new Krypton.Toolkit.KryptonTextBox();
-            this.kbtnSimpleEMail = new Krypton.Toolkit.KryptonButton();
-            this.kbtnSimpleCopyDetails = new Krypton.Toolkit.KryptonButton();
+            this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.kpnlOptions = new Krypton.Toolkit.KryptonPanel();
             this.kbtnMoreDetails = new Krypton.Toolkit.KryptonButton();
-            this.ktxtExceptionMessageLarge = new Krypton.Toolkit.KryptonTextBox();
+            this.kbtnSimpleCopyDetails = new Krypton.Toolkit.KryptonButton();
+            this.kbtnSimpleEMail = new Krypton.Toolkit.KryptonButton();
+            this.klblContactCompany = new Krypton.Toolkit.KryptonLabel();
             this.kryptonNavigator1 = new Krypton.Navigator.KryptonNavigator();
             this.kpGeneral = new Krypton.Navigator.KryptonPage();
-            this.kpExceptions = new Krypton.Navigator.KryptonPage();
-            this.kpAssemblies = new Krypton.Navigator.KryptonPage();
-            this.kpSystem = new Krypton.Navigator.KryptonPage();
-            this.lvAssemblies = new System.Windows.Forms.ListView();
-            this.ktvEnvironment = new Krypton.Toolkit.KryptonTreeView();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.ktxtExceptionMessage = new Krypton.Toolkit.KryptonTextBox();
-            this.kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
-            this.kblApplication = new Krypton.Toolkit.Suite.Extended.Base.KryptonBorderedLabel();
-            this.kblVersion = new Krypton.Toolkit.Suite.Extended.Base.KryptonBorderedLabel();
-            this.kryptonLabel3 = new Krypton.Toolkit.KryptonLabel();
-            this.kblRegion = new Krypton.Toolkit.Suite.Extended.Base.KryptonBorderedLabel();
-            this.kryptonLabel4 = new Krypton.Toolkit.KryptonLabel();
+            this.ktxtUserExplanation = new Krypton.Toolkit.KryptonTextBox();
+            this.kryptonLabel7 = new Krypton.Toolkit.KryptonLabel();
             this.kblTime = new Krypton.Toolkit.Suite.Extended.Base.KryptonBorderedLabel();
             this.kryptonLabel5 = new Krypton.Toolkit.KryptonLabel();
             this.kblDate = new Krypton.Toolkit.Suite.Extended.Base.KryptonBorderedLabel();
             this.kryptonLabel6 = new Krypton.Toolkit.KryptonLabel();
-            this.kryptonLabel7 = new Krypton.Toolkit.KryptonLabel();
-            this.ktxtUserExplanation = new Krypton.Toolkit.KryptonTextBox();
-            this.kbtnClose = new Krypton.Toolkit.KryptonButton();
-            this.kbtnEMail = new Krypton.Toolkit.KryptonButton();
+            this.kblRegion = new Krypton.Toolkit.Suite.Extended.Base.KryptonBorderedLabel();
+            this.kryptonLabel4 = new Krypton.Toolkit.KryptonLabel();
+            this.kblVersion = new Krypton.Toolkit.Suite.Extended.Base.KryptonBorderedLabel();
+            this.kryptonLabel3 = new Krypton.Toolkit.KryptonLabel();
+            this.kblApplication = new Krypton.Toolkit.Suite.Extended.Base.KryptonBorderedLabel();
+            this.kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
+            this.ktxtExceptionMessage = new Krypton.Toolkit.KryptonTextBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.kpExceptions = new Krypton.Navigator.KryptonPage();
+            this.kpAssemblies = new Krypton.Navigator.KryptonPage();
+            this.lvAssemblies = new System.Windows.Forms.ListView();
+            this.kpSystem = new Krypton.Navigator.KryptonPage();
+            this.ktvEnvironment = new Krypton.Toolkit.KryptonTreeView();
+            this.ktxtExceptionMessageLarge = new Krypton.Toolkit.KryptonTextBox();
+            this.kbtnSave = new Krypton.Toolkit.KryptonButton();
+            this.kbtnCopy = new Krypton.Toolkit.KryptonButton();
+            this.kbtnDetailToggle = new Krypton.Toolkit.KryptonButton();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
@@ -94,19 +100,19 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
             this.kryptonPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kpnlLessDetails)).BeginInit();
             this.kpnlLessDetails.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kpnlOptions)).BeginInit();
             this.kpnlOptions.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonNavigator1)).BeginInit();
             this.kryptonNavigator1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kpGeneral)).BeginInit();
             this.kpGeneral.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kpExceptions)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kpAssemblies)).BeginInit();
             this.kpAssemblies.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kpSystem)).BeginInit();
             this.kpSystem.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -138,6 +144,9 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(this.kbtnDetailToggle);
+            this.kryptonPanel1.Controls.Add(this.kbtnCopy);
+            this.kryptonPanel1.Controls.Add(this.kbtnSave);
             this.kryptonPanel1.Controls.Add(this.kbtnEMail);
             this.kryptonPanel1.Controls.Add(this.kbtnClose);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -145,6 +154,26 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
             this.kryptonPanel1.Name = "kryptonPanel1";
             this.kryptonPanel1.Size = new System.Drawing.Size(551, 37);
             this.kryptonPanel1.TabIndex = 1;
+            // 
+            // kbtnEMail
+            // 
+            this.kbtnEMail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.kbtnEMail.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.kbtnEMail.Location = new System.Drawing.Point(353, 6);
+            this.kbtnEMail.Name = "kbtnEMail";
+            this.kbtnEMail.Size = new System.Drawing.Size(90, 25);
+            this.kbtnEMail.TabIndex = 1;
+            this.kbtnEMail.Values.Text = "E-&Mail";
+            // 
+            // kbtnClose
+            // 
+            this.kbtnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.kbtnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.kbtnClose.Location = new System.Drawing.Point(449, 6);
+            this.kbtnClose.Name = "kbtnClose";
+            this.kbtnClose.Size = new System.Drawing.Size(90, 25);
+            this.kbtnClose.TabIndex = 0;
+            this.kbtnClose.Values.Text = "&Close";
             // 
             // panel1
             // 
@@ -178,17 +207,27 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
             this.kpnlLessDetails.StateCommon.Color1 = System.Drawing.Color.White;
             this.kpnlLessDetails.TabIndex = 0;
             // 
-            // kpnlOptions
+            // ktxtExceptionMessageLarge2
             // 
-            this.kpnlOptions.Controls.Add(this.kbtnMoreDetails);
-            this.kpnlOptions.Controls.Add(this.kbtnSimpleCopyDetails);
-            this.kpnlOptions.Controls.Add(this.kbtnSimpleEMail);
-            this.kpnlOptions.Controls.Add(this.klblContactCompany);
-            this.kpnlOptions.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.kpnlOptions.Location = new System.Drawing.Point(0, 121);
-            this.kpnlOptions.Name = "kpnlOptions";
-            this.kpnlOptions.Size = new System.Drawing.Size(400, 79);
-            this.kpnlOptions.TabIndex = 0;
+            this.ktxtExceptionMessageLarge2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ktxtExceptionMessageLarge2.Location = new System.Drawing.Point(83, 46);
+            this.ktxtExceptionMessageLarge2.Multiline = true;
+            this.ktxtExceptionMessageLarge2.Name = "ktxtExceptionMessageLarge2";
+            this.ktxtExceptionMessageLarge2.ReadOnly = true;
+            this.ktxtExceptionMessageLarge2.Size = new System.Drawing.Size(302, 69);
+            this.ktxtExceptionMessageLarge2.TabIndex = 3;
+            this.ktxtExceptionMessageLarge2.Text = "No message";
+            // 
+            // kryptonLabel1
+            // 
+            this.kryptonLabel1.Location = new System.Drawing.Point(83, 13);
+            this.kryptonLabel1.Name = "kryptonLabel1";
+            this.kryptonLabel1.Size = new System.Drawing.Size(158, 26);
+            this.kryptonLabel1.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabel1.TabIndex = 2;
+            this.kryptonLabel1.Values.Text = "Operation Failed";
             // 
             // pictureBox1
             // 
@@ -201,51 +240,17 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
-            // klblContactCompany
+            // kpnlOptions
             // 
-            this.klblContactCompany.Location = new System.Drawing.Point(13, 11);
-            this.klblContactCompany.Name = "klblContactCompany";
-            this.klblContactCompany.Size = new System.Drawing.Size(155, 20);
-            this.klblContactCompany.TabIndex = 0;
-            this.klblContactCompany.Values.Text = "<##COMPANY-NAME##>";
-            // 
-            // kryptonLabel1
-            // 
-            this.kryptonLabel1.Location = new System.Drawing.Point(83, 13);
-            this.kryptonLabel1.Name = "kryptonLabel1";
-            this.kryptonLabel1.Size = new System.Drawing.Size(158, 26);
-            this.kryptonLabel1.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonLabel1.TabIndex = 2;
-            this.kryptonLabel1.Values.Text = "Operation Failed";
-            // 
-            // ktxtExceptionMessageLarge2
-            // 
-            this.ktxtExceptionMessageLarge2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ktxtExceptionMessageLarge2.Location = new System.Drawing.Point(83, 46);
-            this.ktxtExceptionMessageLarge2.Multiline = true;
-            this.ktxtExceptionMessageLarge2.Name = "ktxtExceptionMessageLarge2";
-            this.ktxtExceptionMessageLarge2.ReadOnly = true;
-            this.ktxtExceptionMessageLarge2.Size = new System.Drawing.Size(302, 69);
-            this.ktxtExceptionMessageLarge2.TabIndex = 3;
-            this.ktxtExceptionMessageLarge2.Text = "No message";
-            // 
-            // kbtnSimpleEMail
-            // 
-            this.kbtnSimpleEMail.Location = new System.Drawing.Point(295, 42);
-            this.kbtnSimpleEMail.Name = "kbtnSimpleEMail";
-            this.kbtnSimpleEMail.Size = new System.Drawing.Size(90, 25);
-            this.kbtnSimpleEMail.TabIndex = 1;
-            this.kbtnSimpleEMail.Values.Text = "&E-Mail";
-            // 
-            // kbtnSimpleCopyDetails
-            // 
-            this.kbtnSimpleCopyDetails.Location = new System.Drawing.Point(199, 42);
-            this.kbtnSimpleCopyDetails.Name = "kbtnSimpleCopyDetails";
-            this.kbtnSimpleCopyDetails.Size = new System.Drawing.Size(90, 25);
-            this.kbtnSimpleCopyDetails.TabIndex = 2;
-            this.kbtnSimpleCopyDetails.Values.Text = "Copy &Details";
+            this.kpnlOptions.Controls.Add(this.kbtnMoreDetails);
+            this.kpnlOptions.Controls.Add(this.kbtnSimpleCopyDetails);
+            this.kpnlOptions.Controls.Add(this.kbtnSimpleEMail);
+            this.kpnlOptions.Controls.Add(this.klblContactCompany);
+            this.kpnlOptions.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.kpnlOptions.Location = new System.Drawing.Point(0, 121);
+            this.kpnlOptions.Name = "kpnlOptions";
+            this.kpnlOptions.Size = new System.Drawing.Size(400, 79);
+            this.kpnlOptions.TabIndex = 0;
             // 
             // kbtnMoreDetails
             // 
@@ -255,19 +260,29 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
             this.kbtnMoreDetails.TabIndex = 3;
             this.kbtnMoreDetails.Values.Text = "&More Details";
             // 
-            // ktxtExceptionMessageLarge
+            // kbtnSimpleCopyDetails
             // 
-            this.ktxtExceptionMessageLarge.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ktxtExceptionMessageLarge.Location = new System.Drawing.Point(13, 12);
-            this.ktxtExceptionMessageLarge.Multiline = true;
-            this.ktxtExceptionMessageLarge.Name = "ktxtExceptionMessageLarge";
-            this.ktxtExceptionMessageLarge.ReadOnly = true;
-            this.ktxtExceptionMessageLarge.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.ktxtExceptionMessageLarge.Size = new System.Drawing.Size(526, 336);
-            this.ktxtExceptionMessageLarge.TabIndex = 1;
-            this.ktxtExceptionMessageLarge.Text = "No message";
+            this.kbtnSimpleCopyDetails.Location = new System.Drawing.Point(199, 42);
+            this.kbtnSimpleCopyDetails.Name = "kbtnSimpleCopyDetails";
+            this.kbtnSimpleCopyDetails.Size = new System.Drawing.Size(90, 25);
+            this.kbtnSimpleCopyDetails.TabIndex = 2;
+            this.kbtnSimpleCopyDetails.Values.Text = "Copy &Details";
+            // 
+            // kbtnSimpleEMail
+            // 
+            this.kbtnSimpleEMail.Location = new System.Drawing.Point(295, 42);
+            this.kbtnSimpleEMail.Name = "kbtnSimpleEMail";
+            this.kbtnSimpleEMail.Size = new System.Drawing.Size(90, 25);
+            this.kbtnSimpleEMail.TabIndex = 1;
+            this.kbtnSimpleEMail.Values.Text = "&E-Mail";
+            // 
+            // klblContactCompany
+            // 
+            this.klblContactCompany.Location = new System.Drawing.Point(13, 11);
+            this.klblContactCompany.Name = "klblContactCompany";
+            this.klblContactCompany.Size = new System.Drawing.Size(155, 20);
+            this.klblContactCompany.TabIndex = 0;
+            this.klblContactCompany.Values.Text = "<##COMPANY-NAME##>";
             // 
             // kryptonNavigator1
             // 
@@ -310,146 +325,22 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
             this.kpGeneral.ToolTipTitle = "Page ToolTip";
             this.kpGeneral.UniqueName = "7ec5c377bc774cc1a902f9d23a7b3728";
             // 
-            // kpExceptions
+            // ktxtUserExplanation
             // 
-            this.kpExceptions.AutoHiddenSlideSize = new System.Drawing.Size(200, 200);
-            this.kpExceptions.Flags = 65534;
-            this.kpExceptions.LastVisibleSet = true;
-            this.kpExceptions.MinimumSize = new System.Drawing.Size(50, 50);
-            this.kpExceptions.Name = "kpExceptions";
-            this.kpExceptions.Size = new System.Drawing.Size(524, 308);
-            this.kpExceptions.Text = "Ex&ceptions";
-            this.kpExceptions.ToolTipTitle = "Page ToolTip";
-            this.kpExceptions.UniqueName = "8117034f67524705b7213e5c615e8987";
+            this.ktxtUserExplanation.Location = new System.Drawing.Point(8, 211);
+            this.ktxtUserExplanation.Multiline = true;
+            this.ktxtUserExplanation.Name = "ktxtUserExplanation";
+            this.ktxtUserExplanation.Size = new System.Drawing.Size(502, 85);
+            this.ktxtUserExplanation.StateCommon.Back.Color1 = System.Drawing.Color.Cornsilk;
+            this.ktxtUserExplanation.TabIndex = 15;
             // 
-            // kpAssemblies
+            // kryptonLabel7
             // 
-            this.kpAssemblies.AutoHiddenSlideSize = new System.Drawing.Size(200, 200);
-            this.kpAssemblies.Controls.Add(this.lvAssemblies);
-            this.kpAssemblies.Flags = 65534;
-            this.kpAssemblies.LastVisibleSet = true;
-            this.kpAssemblies.MinimumSize = new System.Drawing.Size(50, 50);
-            this.kpAssemblies.Name = "kpAssemblies";
-            this.kpAssemblies.Size = new System.Drawing.Size(524, 308);
-            this.kpAssemblies.Text = "Ass&emblies";
-            this.kpAssemblies.ToolTipTitle = "Page ToolTip";
-            this.kpAssemblies.UniqueName = "0b764967cdbf46089d42840dac075331";
-            // 
-            // kpSystem
-            // 
-            this.kpSystem.AutoHiddenSlideSize = new System.Drawing.Size(200, 200);
-            this.kpSystem.Controls.Add(this.ktvEnvironment);
-            this.kpSystem.Flags = 65534;
-            this.kpSystem.LastVisibleSet = true;
-            this.kpSystem.MinimumSize = new System.Drawing.Size(50, 50);
-            this.kpSystem.Name = "kpSystem";
-            this.kpSystem.Size = new System.Drawing.Size(524, 308);
-            this.kpSystem.Text = "S&ystem";
-            this.kpSystem.ToolTipTitle = "Page ToolTip";
-            this.kpSystem.UniqueName = "c9fcf23c0d3b4c7d8d45ffbb9212277e";
-            // 
-            // lvAssemblies
-            // 
-            this.lvAssemblies.Activation = System.Windows.Forms.ItemActivation.OneClick;
-            this.lvAssemblies.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lvAssemblies.FullRowSelect = true;
-            this.lvAssemblies.HideSelection = false;
-            this.lvAssemblies.HotTracking = true;
-            this.lvAssemblies.HoverSelection = true;
-            this.lvAssemblies.Location = new System.Drawing.Point(0, 0);
-            this.lvAssemblies.Name = "lvAssemblies";
-            this.lvAssemblies.Size = new System.Drawing.Size(524, 308);
-            this.lvAssemblies.TabIndex = 22;
-            this.lvAssemblies.UseCompatibleStateImageBehavior = false;
-            this.lvAssemblies.View = System.Windows.Forms.View.Details;
-            // 
-            // ktvEnvironment
-            // 
-            this.ktvEnvironment.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ktvEnvironment.HotTracking = true;
-            this.ktvEnvironment.Location = new System.Drawing.Point(0, 0);
-            this.ktvEnvironment.Name = "ktvEnvironment";
-            this.ktvEnvironment.Size = new System.Drawing.Size(524, 308);
-            this.ktvEnvironment.TabIndex = 0;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.Image = global::Krypton.Toolkit.Suite.Extended.Error.Reporting.Properties.Resources.Warning_64_x_58;
-            this.pictureBox2.Location = new System.Drawing.Point(8, 7);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(64, 58);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox2.TabIndex = 2;
-            this.pictureBox2.TabStop = false;
-            // 
-            // ktxtExceptionMessage
-            // 
-            this.ktxtExceptionMessage.Location = new System.Drawing.Point(79, 7);
-            this.ktxtExceptionMessage.Multiline = true;
-            this.ktxtExceptionMessage.Name = "ktxtExceptionMessage";
-            this.ktxtExceptionMessage.ReadOnly = true;
-            this.ktxtExceptionMessage.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.ktxtExceptionMessage.Size = new System.Drawing.Size(431, 68);
-            this.ktxtExceptionMessage.TabIndex = 3;
-            this.ktxtExceptionMessage.Text = "No message";
-            // 
-            // kryptonLabel2
-            // 
-            this.kryptonLabel2.Location = new System.Drawing.Point(8, 82);
-            this.kryptonLabel2.Name = "kryptonLabel2";
-            this.kryptonLabel2.Size = new System.Drawing.Size(75, 20);
-            this.kryptonLabel2.TabIndex = 4;
-            this.kryptonLabel2.Values.Text = "Application:";
-            // 
-            // kblApplication
-            // 
-            this.kblApplication.AutoSize = false;
-            this.kblApplication.BackColor = System.Drawing.Color.Transparent;
-            this.kblApplication.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(192)))), ((int)(((byte)(214)))));
-            this.kblApplication.Location = new System.Drawing.Point(89, 82);
-            this.kblApplication.Name = "kblApplication";
-            this.kblApplication.Size = new System.Drawing.Size(421, 25);
-            this.kblApplication.TabIndex = 5;
-            this.kblApplication.Values.Text = "{0}";
-            // 
-            // kblVersion
-            // 
-            this.kblVersion.AutoSize = false;
-            this.kblVersion.BackColor = System.Drawing.Color.Transparent;
-            this.kblVersion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(192)))), ((int)(((byte)(214)))));
-            this.kblVersion.Location = new System.Drawing.Point(89, 119);
-            this.kblVersion.Name = "kblVersion";
-            this.kblVersion.Size = new System.Drawing.Size(135, 25);
-            this.kblVersion.TabIndex = 7;
-            this.kblVersion.Values.Text = "{0}";
-            // 
-            // kryptonLabel3
-            // 
-            this.kryptonLabel3.Location = new System.Drawing.Point(8, 119);
-            this.kryptonLabel3.Name = "kryptonLabel3";
-            this.kryptonLabel3.Size = new System.Drawing.Size(54, 20);
-            this.kryptonLabel3.TabIndex = 6;
-            this.kryptonLabel3.Values.Text = "Version:";
-            // 
-            // kblRegion
-            // 
-            this.kblRegion.AutoSize = false;
-            this.kblRegion.BackColor = System.Drawing.Color.Transparent;
-            this.kblRegion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(192)))), ((int)(((byte)(214)))));
-            this.kblRegion.Location = new System.Drawing.Point(336, 119);
-            this.kblRegion.Name = "kblRegion";
-            this.kblRegion.Size = new System.Drawing.Size(135, 25);
-            this.kblRegion.TabIndex = 9;
-            this.kblRegion.Values.Text = "{0}";
-            // 
-            // kryptonLabel4
-            // 
-            this.kryptonLabel4.Location = new System.Drawing.Point(255, 119);
-            this.kryptonLabel4.Name = "kryptonLabel4";
-            this.kryptonLabel4.Size = new System.Drawing.Size(52, 20);
-            this.kryptonLabel4.TabIndex = 8;
-            this.kryptonLabel4.Values.Text = "Region:";
+            this.kryptonLabel7.Location = new System.Drawing.Point(8, 185);
+            this.kryptonLabel7.Name = "kryptonLabel7";
+            this.kryptonLabel7.Size = new System.Drawing.Size(75, 20);
+            this.kryptonLabel7.TabIndex = 14;
+            this.kryptonLabel7.Values.Text = "Application:";
             // 
             // kblTime
             // 
@@ -489,40 +380,190 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
             this.kryptonLabel6.TabIndex = 10;
             this.kryptonLabel6.Values.Text = "Date:";
             // 
-            // kryptonLabel7
+            // kblRegion
             // 
-            this.kryptonLabel7.Location = new System.Drawing.Point(8, 185);
-            this.kryptonLabel7.Name = "kryptonLabel7";
-            this.kryptonLabel7.Size = new System.Drawing.Size(75, 20);
-            this.kryptonLabel7.TabIndex = 14;
-            this.kryptonLabel7.Values.Text = "Application:";
+            this.kblRegion.AutoSize = false;
+            this.kblRegion.BackColor = System.Drawing.Color.Transparent;
+            this.kblRegion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(192)))), ((int)(((byte)(214)))));
+            this.kblRegion.Location = new System.Drawing.Point(336, 119);
+            this.kblRegion.Name = "kblRegion";
+            this.kblRegion.Size = new System.Drawing.Size(135, 25);
+            this.kblRegion.TabIndex = 9;
+            this.kblRegion.Values.Text = "{0}";
             // 
-            // ktxtUserExplanation
+            // kryptonLabel4
             // 
-            this.ktxtUserExplanation.Location = new System.Drawing.Point(8, 211);
-            this.ktxtUserExplanation.Multiline = true;
-            this.ktxtUserExplanation.Name = "ktxtUserExplanation";
-            this.ktxtUserExplanation.Size = new System.Drawing.Size(502, 85);
-            this.ktxtUserExplanation.StateCommon.Back.Color1 = System.Drawing.Color.Cornsilk;
-            this.ktxtUserExplanation.TabIndex = 15;
+            this.kryptonLabel4.Location = new System.Drawing.Point(255, 119);
+            this.kryptonLabel4.Name = "kryptonLabel4";
+            this.kryptonLabel4.Size = new System.Drawing.Size(52, 20);
+            this.kryptonLabel4.TabIndex = 8;
+            this.kryptonLabel4.Values.Text = "Region:";
             // 
-            // kbtnClose
+            // kblVersion
             // 
-            this.kbtnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.kbtnClose.Location = new System.Drawing.Point(449, 6);
-            this.kbtnClose.Name = "kbtnClose";
-            this.kbtnClose.Size = new System.Drawing.Size(90, 25);
-            this.kbtnClose.TabIndex = 0;
-            this.kbtnClose.Values.Text = "&Close";
+            this.kblVersion.AutoSize = false;
+            this.kblVersion.BackColor = System.Drawing.Color.Transparent;
+            this.kblVersion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(192)))), ((int)(((byte)(214)))));
+            this.kblVersion.Location = new System.Drawing.Point(89, 119);
+            this.kblVersion.Name = "kblVersion";
+            this.kblVersion.Size = new System.Drawing.Size(135, 25);
+            this.kblVersion.TabIndex = 7;
+            this.kblVersion.Values.Text = "{0}";
             // 
-            // kbtnEMail
+            // kryptonLabel3
             // 
-            this.kbtnEMail.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.kbtnEMail.Location = new System.Drawing.Point(353, 6);
-            this.kbtnEMail.Name = "kbtnEMail";
-            this.kbtnEMail.Size = new System.Drawing.Size(90, 25);
-            this.kbtnEMail.TabIndex = 1;
-            this.kbtnEMail.Values.Text = "E-&Mail";
+            this.kryptonLabel3.Location = new System.Drawing.Point(8, 119);
+            this.kryptonLabel3.Name = "kryptonLabel3";
+            this.kryptonLabel3.Size = new System.Drawing.Size(54, 20);
+            this.kryptonLabel3.TabIndex = 6;
+            this.kryptonLabel3.Values.Text = "Version:";
+            // 
+            // kblApplication
+            // 
+            this.kblApplication.AutoSize = false;
+            this.kblApplication.BackColor = System.Drawing.Color.Transparent;
+            this.kblApplication.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(192)))), ((int)(((byte)(214)))));
+            this.kblApplication.Location = new System.Drawing.Point(89, 82);
+            this.kblApplication.Name = "kblApplication";
+            this.kblApplication.Size = new System.Drawing.Size(421, 25);
+            this.kblApplication.TabIndex = 5;
+            this.kblApplication.Values.Text = "{0}";
+            // 
+            // kryptonLabel2
+            // 
+            this.kryptonLabel2.Location = new System.Drawing.Point(8, 82);
+            this.kryptonLabel2.Name = "kryptonLabel2";
+            this.kryptonLabel2.Size = new System.Drawing.Size(75, 20);
+            this.kryptonLabel2.TabIndex = 4;
+            this.kryptonLabel2.Values.Text = "Application:";
+            // 
+            // ktxtExceptionMessage
+            // 
+            this.ktxtExceptionMessage.Location = new System.Drawing.Point(79, 7);
+            this.ktxtExceptionMessage.Multiline = true;
+            this.ktxtExceptionMessage.Name = "ktxtExceptionMessage";
+            this.ktxtExceptionMessage.ReadOnly = true;
+            this.ktxtExceptionMessage.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.ktxtExceptionMessage.Size = new System.Drawing.Size(431, 68);
+            this.ktxtExceptionMessage.TabIndex = 3;
+            this.ktxtExceptionMessage.Text = "No message";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox2.Image = global::Krypton.Toolkit.Suite.Extended.Error.Reporting.Properties.Resources.Warning_64_x_58;
+            this.pictureBox2.Location = new System.Drawing.Point(8, 7);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(64, 58);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox2.TabIndex = 2;
+            this.pictureBox2.TabStop = false;
+            // 
+            // kpExceptions
+            // 
+            this.kpExceptions.AutoHiddenSlideSize = new System.Drawing.Size(200, 200);
+            this.kpExceptions.Flags = 65534;
+            this.kpExceptions.LastVisibleSet = true;
+            this.kpExceptions.MinimumSize = new System.Drawing.Size(50, 50);
+            this.kpExceptions.Name = "kpExceptions";
+            this.kpExceptions.Size = new System.Drawing.Size(524, 308);
+            this.kpExceptions.Text = "Ex&ceptions";
+            this.kpExceptions.ToolTipTitle = "Page ToolTip";
+            this.kpExceptions.UniqueName = "8117034f67524705b7213e5c615e8987";
+            // 
+            // kpAssemblies
+            // 
+            this.kpAssemblies.AutoHiddenSlideSize = new System.Drawing.Size(200, 200);
+            this.kpAssemblies.Controls.Add(this.lvAssemblies);
+            this.kpAssemblies.Flags = 65534;
+            this.kpAssemblies.LastVisibleSet = true;
+            this.kpAssemblies.MinimumSize = new System.Drawing.Size(50, 50);
+            this.kpAssemblies.Name = "kpAssemblies";
+            this.kpAssemblies.Size = new System.Drawing.Size(524, 308);
+            this.kpAssemblies.Text = "Ass&emblies";
+            this.kpAssemblies.ToolTipTitle = "Page ToolTip";
+            this.kpAssemblies.UniqueName = "0b764967cdbf46089d42840dac075331";
+            // 
+            // lvAssemblies
+            // 
+            this.lvAssemblies.Activation = System.Windows.Forms.ItemActivation.OneClick;
+            this.lvAssemblies.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lvAssemblies.FullRowSelect = true;
+            this.lvAssemblies.HideSelection = false;
+            this.lvAssemblies.HotTracking = true;
+            this.lvAssemblies.HoverSelection = true;
+            this.lvAssemblies.Location = new System.Drawing.Point(0, 0);
+            this.lvAssemblies.Name = "lvAssemblies";
+            this.lvAssemblies.Size = new System.Drawing.Size(524, 308);
+            this.lvAssemblies.TabIndex = 22;
+            this.lvAssemblies.UseCompatibleStateImageBehavior = false;
+            this.lvAssemblies.View = System.Windows.Forms.View.Details;
+            // 
+            // kpSystem
+            // 
+            this.kpSystem.AutoHiddenSlideSize = new System.Drawing.Size(200, 200);
+            this.kpSystem.Controls.Add(this.ktvEnvironment);
+            this.kpSystem.Flags = 65534;
+            this.kpSystem.LastVisibleSet = true;
+            this.kpSystem.MinimumSize = new System.Drawing.Size(50, 50);
+            this.kpSystem.Name = "kpSystem";
+            this.kpSystem.Size = new System.Drawing.Size(524, 308);
+            this.kpSystem.Text = "S&ystem";
+            this.kpSystem.ToolTipTitle = "Page ToolTip";
+            this.kpSystem.UniqueName = "c9fcf23c0d3b4c7d8d45ffbb9212277e";
+            // 
+            // ktvEnvironment
+            // 
+            this.ktvEnvironment.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ktvEnvironment.HotTracking = true;
+            this.ktvEnvironment.Location = new System.Drawing.Point(0, 0);
+            this.ktvEnvironment.Name = "ktvEnvironment";
+            this.ktvEnvironment.Size = new System.Drawing.Size(524, 308);
+            this.ktvEnvironment.TabIndex = 0;
+            // 
+            // ktxtExceptionMessageLarge
+            // 
+            this.ktxtExceptionMessageLarge.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ktxtExceptionMessageLarge.Location = new System.Drawing.Point(13, 12);
+            this.ktxtExceptionMessageLarge.Multiline = true;
+            this.ktxtExceptionMessageLarge.Name = "ktxtExceptionMessageLarge";
+            this.ktxtExceptionMessageLarge.ReadOnly = true;
+            this.ktxtExceptionMessageLarge.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.ktxtExceptionMessageLarge.Size = new System.Drawing.Size(526, 336);
+            this.ktxtExceptionMessageLarge.TabIndex = 1;
+            this.ktxtExceptionMessageLarge.Text = "No message";
+            // 
+            // kbtnSave
+            // 
+            this.kbtnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.kbtnSave.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.kbtnSave.Location = new System.Drawing.Point(257, 6);
+            this.kbtnSave.Name = "kbtnSave";
+            this.kbtnSave.Size = new System.Drawing.Size(90, 25);
+            this.kbtnSave.TabIndex = 2;
+            this.kbtnSave.Values.Text = "S&ave";
+            // 
+            // kbtnCopy
+            // 
+            this.kbtnCopy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.kbtnCopy.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.kbtnCopy.Location = new System.Drawing.Point(161, 6);
+            this.kbtnCopy.Name = "kbtnCopy";
+            this.kbtnCopy.Size = new System.Drawing.Size(90, 25);
+            this.kbtnCopy.TabIndex = 3;
+            this.kbtnCopy.Values.Text = "Co&py";
+            // 
+            // kbtnDetailToggle
+            // 
+            this.kbtnDetailToggle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.kbtnDetailToggle.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.kbtnDetailToggle.Location = new System.Drawing.Point(65, 6);
+            this.kbtnDetailToggle.Name = "kbtnDetailToggle";
+            this.kbtnDetailToggle.Size = new System.Drawing.Size(90, 25);
+            this.kbtnDetailToggle.TabIndex = 4;
+            this.kbtnDetailToggle.Values.Text = "&Less Detils";
             // 
             // ExceptionReportView
             // 
@@ -550,21 +591,21 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
             ((System.ComponentModel.ISupportInitialize)(this.kpnlLessDetails)).EndInit();
             this.kpnlLessDetails.ResumeLayout(false);
             this.kpnlLessDetails.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.kpnlOptions)).EndInit();
             this.kpnlOptions.ResumeLayout(false);
             this.kpnlOptions.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonNavigator1)).EndInit();
             this.kryptonNavigator1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kpGeneral)).EndInit();
             this.kpGeneral.ResumeLayout(false);
             this.kpGeneral.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.kpExceptions)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.kpAssemblies)).EndInit();
             this.kpAssemblies.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kpSystem)).EndInit();
             this.kpSystem.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
