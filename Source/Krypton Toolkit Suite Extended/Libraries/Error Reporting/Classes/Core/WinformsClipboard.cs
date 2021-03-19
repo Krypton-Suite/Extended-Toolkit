@@ -2,7 +2,7 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
 {
-    internal class WinformsClipboard
+    internal class WinFormsClipboard
     {
         public static void CopyTo(string text) => Clipboard.SetDataObject(text, true);
     }

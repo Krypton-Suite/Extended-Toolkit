@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Deployment.Application;
+//using System.Deployment.Application;
 using System.Reflection;
 using System.Windows.Forms;
 
@@ -28,18 +28,28 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
             _info = reportInfo ?? throw new ArgumentNullException(nameof(reportInfo));
 
             _info.AppName = _info.AppName.IsEmpty() ? Application.ProductName : _info.AppName;
+#if NET30_OR_GREATER
+            _info.AppVersion = _info.AppVersion.IsEmpty() ? GetAppVersion(_info.AppAssembly) : _info.AppVersion;
+#else
             _info.AppVersion = _info.AppVersion.IsEmpty() ? GetAppVersion() : _info.AppVersion;
+#endif
             _info.ExceptionDate = _info.ExceptionDateKind != DateTimeKind.Local ? DateTime.UtcNow : DateTime.Now;
 
             if (_info.AppAssembly == null)
                 _info.AppAssembly = Assembly.GetEntryAssembly() ?? Assembly.GetCallingAssembly();
         }
 
+#if NET30_OR_GREATER
+        private string GetAppVersion(Assembly assembly) => assembly.ImageRuntimeVersion;
+#else
         private string GetAppVersion()
+      
         {
-            return ApplicationDeployment.IsNetworkDeployed ?
-                ApplicationDeployment.CurrentDeployment.CurrentVersion.ToString() : Application.ProductVersion;
+            return System.Deployment.Application.ApplicationDeployment.IsNetworkDeployed ?
+                System.Deployment.Application.ApplicationDeployment.CurrentDeployment.CurrentVersion.ToString() : Application.ProductVersion;
         }
+        
+#endif
 
         //		leave commented out for mono to toggle in/out to be able to compile
         //		private string GetAppVersion()

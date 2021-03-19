@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Net.Mail;
 using System.Reflection;
 
 #pragma warning disable 1591
