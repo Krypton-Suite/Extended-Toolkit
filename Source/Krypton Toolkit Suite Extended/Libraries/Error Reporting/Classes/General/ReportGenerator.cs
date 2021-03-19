@@ -28,7 +28,7 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
             _info = reportInfo ?? throw new ArgumentNullException(nameof(reportInfo));
 
             _info.AppName = _info.AppName.IsEmpty() ? Application.ProductName : _info.AppName;
-#if NET30_OR_GREATER
+#if NET || NETCOREAPP3_1
             _info.AppVersion = _info.AppVersion.IsEmpty() ? GetAppVersion(_info.AppAssembly) : _info.AppVersion;
 #else
             _info.AppVersion = _info.AppVersion.IsEmpty() ? GetAppVersion() : _info.AppVersion;
@@ -39,7 +39,7 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
                 _info.AppAssembly = Assembly.GetEntryAssembly() ?? Assembly.GetCallingAssembly();
         }
 
-#if NET30_OR_GREATER
+#if NET || NETCOREAPP3_1
         private string GetAppVersion(Assembly assembly) => assembly.ImageRuntimeVersion;
 #else
         private string GetAppVersion() => ApplicationDeployment.IsNetworkDeployed ? ApplicationDeployment.CurrentDeployment.CurrentVersion.ToString() : Application.ProductVersion;        
