@@ -82,7 +82,6 @@
   
   <ItemGroup>
     <Reference Include="System.Configuration" />
-    <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Management" />
     <Reference Include="System.Windows.Forms" />

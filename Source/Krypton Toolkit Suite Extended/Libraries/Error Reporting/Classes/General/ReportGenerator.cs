@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-//using System.Deployment.Application;
+#if NETFRAMEWORK
+using System.Deployment.Application;
+#endif
 using System.Reflection;
 using System.Windows.Forms;
 
@@ -30,7 +32,7 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
             _info.AppName = _info.AppName.IsEmpty() ? Application.ProductName : _info.AppName;
 #if NET || NETCOREAPP3_1
             _info.AppVersion = _info.AppVersion.IsEmpty() ? GetAppVersion(_info.AppAssembly) : _info.AppVersion;
-#else
+#elif NETFRAMEWORK
             _info.AppVersion = _info.AppVersion.IsEmpty() ? GetAppVersion() : _info.AppVersion;
 #endif
             _info.ExceptionDate = _info.ExceptionDateKind != DateTimeKind.Local ? DateTime.UtcNow : DateTime.Now;
@@ -41,7 +43,7 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
 
 #if NET || NETCOREAPP3_1
         private string GetAppVersion(Assembly assembly) => assembly.ImageRuntimeVersion;
-#else
+#elif NETFRAMEWORK
         private string GetAppVersion() => ApplicationDeployment.IsNetworkDeployed ? ApplicationDeployment.CurrentDeployment.CurrentVersion.ToString() : Application.ProductVersion;        
 #endif
 
