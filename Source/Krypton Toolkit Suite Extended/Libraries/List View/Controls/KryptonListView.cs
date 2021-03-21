@@ -330,7 +330,7 @@ namespace Krypton.Toolkit.Suite.Extended.List.View
 
             InitializeComponent();
 
-            _designMode = (Process.GetCurrentProcess().ProcessName == "devenv");
+            //_designMode = (Process.GetCurrentProcess().ProcessName == "devenv");
 
             if (SmallImageList == null)
             {
