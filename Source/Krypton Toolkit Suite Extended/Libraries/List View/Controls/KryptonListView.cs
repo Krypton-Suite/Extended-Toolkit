@@ -1,4 +1,5 @@
 ﻿using Krypton.Toolkit.Suite.Extended.Core;
+using Krypton.Toolkit.Suite.Extended.List.View.Properties;
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -14,7 +15,7 @@ namespace Krypton.Toolkit.Suite.Extended.List.View
     public class KryptonListView : ListView
     {
         #region Designer Code
-        private ImageList ilCheckBoxes;
+        //private ImageList ilCheckBoxes;
         private System.ComponentModel.IContainer components;
         private ImageList ilHeight;
 
@@ -22,18 +23,18 @@ namespace Krypton.Toolkit.Suite.Extended.List.View
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KryptonListView));
-            this.ilCheckBoxes = new System.Windows.Forms.ImageList(this.components);
+            //this.ilCheckBoxes = new System.Windows.Forms.ImageList(this.components);
             this.ilHeight = new System.Windows.Forms.ImageList(this.components);
             this.SuspendLayout();
             // 
             // ilCheckBoxes
             // 
-            this.ilCheckBoxes.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ilCheckBoxes.ImageStream")));
+            /*this.ilCheckBoxes.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ilCheckBoxes.ImageStream")));
             this.ilCheckBoxes.TransparentColor = System.Drawing.Color.Transparent;
             this.ilCheckBoxes.Images.SetKeyName(0, "XpNotChecked.gif");
             this.ilCheckBoxes.Images.SetKeyName(1, "XpChecked.gif");
             this.ilCheckBoxes.Images.SetKeyName(2, "VistaNotChecked.png");
-            this.ilCheckBoxes.Images.SetKeyName(3, "VistaChecked.png");
+            this.ilCheckBoxes.Images.SetKeyName(3, "VistaChecked.png");*/
             // 
             // ilHeight
             // 
@@ -467,17 +468,17 @@ namespace Krypton.Toolkit.Suite.Extended.List.View
                             {
                                 //CheckState = "V";
                                 if (_enableVistaCheckBoxes == true)
-                                    Check = ilCheckBoxes.Images[3];
+                                    Check = Resources.VistaChecked;
                                 else
-                                    Check = ilCheckBoxes.Images[1];
+                                    Check = Resources.XPChecked;
                             }
                             else
                             {
                                 //CheckState = "O";
                                 if (_enableVistaCheckBoxes == true)
-                                    Check = ilCheckBoxes.Images[2];
+                                    Check = Resources.VistaNotChecked;
                                 else
-                                    Check = ilCheckBoxes.Images[0];
+                                    Check = Resources.XPNotChecked;
                             }
 
                             //vista pixel fix
