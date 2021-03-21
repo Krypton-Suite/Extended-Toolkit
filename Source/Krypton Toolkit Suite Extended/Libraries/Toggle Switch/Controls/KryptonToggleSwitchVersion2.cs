@@ -13,8 +13,11 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
     [DefaultEvent("SliderValueChanged"), ToolboxItem(true)]
     public class KryptonToggleSwitchVersion2 : Control
     {
+        #region Custom Event
         public delegate void SliderChangedEventHandler(object sender, EventArgs e);
+
         public event SliderChangedEventHandler SliderValueChanged;
+        #endregion
 
         #region Variables
         private float _diameter, _artis;
@@ -50,11 +53,20 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
 
             set
             {
-                _paintTicker.Stop();
+                //_paintTicker.Stop();
 
                 _toggled = value;
 
-                _paintTicker.Start();
+                //_paintTicker.Start();
+
+                if (_toggled)
+                {
+                    _paintTicker.Start();
+                }
+                else
+                {
+                    _paintTicker.Stop();
+                }
 
                 if (SliderValueChanged != null)
                     SliderValueChanged(this, EventArgs.Empty);
@@ -282,14 +294,15 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
 
             OffText = "Off";
 
-            _paintTicker.Tick += paintTicker_Tick;
-            
+            _paintTicker.Tick += new EventHandler(ticker_Tick);
+
             _paintTicker.Interval = 1;
 
             _paintTicker.Stop();
         }
         #endregion
 
+        #region Overrides
         protected override void OnEnabledChanged(EventArgs e)
         {
             Invalidate();
@@ -310,67 +323,9 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
             base.OnResize(e);
         }
 
-        //creates slide animation
-        private void paintTicker_Tick(object sender, EventArgs e)
-        {
-            float x = _circle.X;
+        protected override Size DefaultSize => new Size(60, 35);
 
-            if (_toggled)           //switch the circle to the left
-            {
-                if (x + _artis <= Width - _diameter - 1)
-                {
-                    x += _artis;
-                    _circle = new RectangleF(x, 1, _diameter, _diameter);
 
-                    Invalidate();
-
-                    Toggled = true;
-
-                    //_paintTicker.Stop();
-                }
-                else
-                {
-                    x = Width - _diameter - 1;
-                    _circle = new RectangleF(x, 1, _diameter, _diameter);
-
-                    Invalidate();
-                    _paintTicker.Stop();
-
-                    Toggled = false;
-                }
-
-            }
-            else //switch the circle to the left with animation
-            {
-                if (x - _artis >= 1)
-                {
-                    x -= _artis;
-                    _circle = new RectangleF(x, 1, _diameter, _diameter);
-
-                    Invalidate();
-
-                    Toggled = true;
-                }
-                else
-                {
-                    x = 1;
-                    _circle = new RectangleF(x, 1, _diameter, _diameter);
-
-                    Invalidate();
-                    _paintTicker.Stop();
-
-                    Toggled = false;
-                }
-            }
-        }
-
-        protected override Size DefaultSize
-        {
-            get
-            {
-                return new Size(60, 35);
-            }
-        }
         protected override void OnPaint(PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = SmoothingMode.HighQuality;
@@ -441,5 +396,63 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
 
             base.OnMouseClick(e);
         }
+        #endregion
+
+        #region Event Handler
+        //creates slide animation
+        private void ticker_Tick(object sender, EventArgs e)
+        {
+            float x = _circle.X;
+
+            if (_toggled)           //switch the circle to the left
+            {
+                if (x + _artis <= Width - _diameter - 1)
+                {
+                    x += _artis;
+                    _circle = new RectangleF(x, 1, _diameter, _diameter);
+
+                    Invalidate();
+
+                    Toggled = true;
+
+                    //_paintTicker.Stop();
+                }
+                else
+                {
+                    x = Width - _diameter - 1;
+                    _circle = new RectangleF(x, 1, _diameter, _diameter);
+
+                    Invalidate();
+                    _paintTicker.Stop();
+
+                    Toggled = false;
+                }
+
+            }
+            else //switch the circle to the left with animation
+            {
+                if (x - _artis >= 1)
+                {
+                    x -= _artis;
+                    _circle = new RectangleF(x, 1, _diameter, _diameter);
+
+                    Invalidate();
+
+                    Toggled = true;
+                }
+                else
+                {
+                    x = 1;
+                    _circle = new RectangleF(x, 1, _diameter, _diameter);
+
+                    Invalidate();
+                    _paintTicker.Stop();
+
+                    Toggled = false;
+                }
+            }
+        }
+        #endregion
+
     }
 }
