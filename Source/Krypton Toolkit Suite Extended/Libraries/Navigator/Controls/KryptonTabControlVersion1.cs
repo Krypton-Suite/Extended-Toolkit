@@ -23,7 +23,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
     /// Summary description for TabControl.
     /// </summary>
     [ToolboxBitmap(typeof(TabControl))] //,
-    public class KryptonTabControl : TabControl
+    public class KryptonTabControlVersion1 : TabControl
     {
 
         /// <summary> 
@@ -384,7 +384,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         private IDisposable _mementoBack1;
         private IDisposable _mementoBack2;
 
-        public KryptonTabControl()
+        public KryptonTabControlVersion1()
         {
 
             // double buffering
