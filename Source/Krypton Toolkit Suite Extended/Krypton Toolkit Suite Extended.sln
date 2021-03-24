@@ -13,8 +13,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{35C5D580-4B81-4E33-AB75-BD5D316A2ABC}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
-		..\..\build.proj = ..\..\build.proj
-		..\..\Directory.Build.props = ..\..\Directory.Build.props
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Common", "Shared\Common\Krypton.Toolkit.Suite.Extended.Common.csproj", "{5E8758D3-BE51-474E-9CED-4E55EE1297DF}"
@@ -149,7 +147,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Exten
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Drawing.Suite", "Libraries\Drawing Suite\Krypton.Toolkit.Suite.Extended.Drawing.Suite.csproj", "{A09DDD9B-E4E2-4E83-BF2B-C2E29D8899D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simple.MAPI.NET", "Third Party\Simple.MAPI.NET\Simple.MAPI.NET.csproj", "{80BCFEDD-D4B2-46D6-A44E-C39D5DF02CAD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Simple.MAPI.NET", "Third Party\Simple.MAPI.NET\Simple.MAPI.NET.csproj", "{80BCFEDD-D4B2-46D6-A44E-C39D5DF02CAD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build System", "Build System", "{FF83004E-FDCC-4E18-8C74-0BA5F95F6B7C}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\Build.cmd = ..\..\Build.cmd
+		..\..\build.proj = ..\..\build.proj
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -381,6 +385,7 @@ Global
 		{E31BBA93-2EB1-4536-960E-FBC43303A80E} = {1F1DCECC-C25F-4E91-9C8A-ECCBB9827BBA}
 		{A09DDD9B-E4E2-4E83-BF2B-C2E29D8899D9} = {1F1DCECC-C25F-4E91-9C8A-ECCBB9827BBA}
 		{80BCFEDD-D4B2-46D6-A44E-C39D5DF02CAD} = {0E036EC5-549F-405A-82FA-87A03CE379E1}
+		{FF83004E-FDCC-4E18-8C74-0BA5F95F6B7C} = {35C5D580-4B81-4E33-AB75-BD5D316A2ABC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9A189168-3746-4F9F-8C61-863D83D8ABD2}
