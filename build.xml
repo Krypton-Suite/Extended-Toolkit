@@ -31,6 +31,108 @@
       <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\Theme Switcher\Krypton.Toolkit.Suite.Extended.Theme.Switcher.csproj" />
       <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\Toggle Switch\Krypton.Toolkit.Suite.Extended.Toggle.Switch.csproj" />
       <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\Toolstrip Items\Krypton.Toolkit.Suite.Extended.Tool.Strip.Items.csproj" />
+      <!--Shared Projects-->
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Shared\Common\Krypton.Toolkit.Suite.Extended.Common.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Shared\Toolkit Core\Krypton.Toolkit.Suite.Extended.Core.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Shared\Global Utilities\Krypton.Toolkit.Suite.Extended.Global.Utilities.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Shared\Toolkit Language Model\Krypton.Toolkit.Suite.Extended.Language.Model.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Shared\Palette Controller\Krypton.Toolkit.Suite.Extended.Palette.Controller.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Shared\Palette Controls\Krypton.Toolkit.Suite.Extended.Palette.Controls.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Shared\Palette Utilities\Krypton.Toolkit.Suite.Extended.Palette.Utilities.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Shared\Toolkit Resources\Krypton.Toolkit.Suite.Extended.Resources.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Shared\Toolkit Settings\Krypton.Toolkit.Suite.Extended.Settings.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Shared\Utilities\Krypton.Toolkit.Suite.Extended.Utilities.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Shared\Zip Extractor\Krypton.Toolkit.Suite.Extended.Zip.Extractor.csproj" />
     </ItemGroup>
+    <MSBuild Projects="@(Projects)" Properties="Configuration=$(Configuration);TFMs=all" Targets="Clean" />
+  </Target>
+
+  <Target Name="Restore">
+    <ItemGroup>
+      <!--Library Projects-->
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\Base\Krypton.Toolkit.Suite.Extended.Base.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\Circular ProgressBar\Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\Data Visualisation\Krypton.Toolkit.Suite.Extended.Data.Visualisation.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\Drawing Suite\Krypton.Toolkit.Suite.Extended.Drawing.Suite.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\Error Reporting\Krypton.Toolkit.Suite.Extended.Error.Reporting.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\Extended Dialogs\Krypton.Toolkit.Suite.Extended.Dialogs.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\Fast Coloured TextBox\Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\Floating Toolbars\Krypton.Toolkit.Suite.Extended.Floating.Toolbars.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\Gauges\Krypton.Toolkit.Suite.Extended.Gauges.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\IO\Krypton.Toolkit.Suite.Extended.IO.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\Krypton Wizard\Krypton.Toolkit.Suite.Extended.Wizard.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\List View\Krypton.Toolkit.Suite.Extended.List.View.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\Navi Suite\Krypton.Toolkit.Suite.Extended.Navi.Suite.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\Navigator\Krypton.Toolkit.Suite.Extended.Navigator.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\Networking\Krypton.Toolkit.Suite.Extended.Networking.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\Notifications\Krypton.Toolkit.Suite.Extended.Notifications.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\Outlook Grid\Krypton.Toolkit.Suite.Extended.Outlook.Grid.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\Palette Selectors\Krypton.Toolkit.Suite.Extended.Palette.Selectors.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\Software Updater\Krypton.Toolkit.Suite.Extended.Software.Updater.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\Theme Switcher\Krypton.Toolkit.Suite.Extended.Theme.Switcher.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\Toggle Switch\Krypton.Toolkit.Suite.Extended.Toggle.Switch.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\Toolstrip Items\Krypton.Toolkit.Suite.Extended.Tool.Strip.Items.csproj" />
+      <!--Shared Projects-->
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Shared\Common\Krypton.Toolkit.Suite.Extended.Common.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Shared\Toolkit Core\Krypton.Toolkit.Suite.Extended.Core.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Shared\Global Utilities\Krypton.Toolkit.Suite.Extended.Global.Utilities.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Shared\Toolkit Language Model\Krypton.Toolkit.Suite.Extended.Language.Model.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Shared\Palette Controller\Krypton.Toolkit.Suite.Extended.Palette.Controller.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Shared\Palette Controls\Krypton.Toolkit.Suite.Extended.Palette.Controls.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Shared\Palette Utilities\Krypton.Toolkit.Suite.Extended.Palette.Utilities.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Shared\Toolkit Resources\Krypton.Toolkit.Suite.Extended.Resources.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Shared\Toolkit Settings\Krypton.Toolkit.Suite.Extended.Settings.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Shared\Utilities\Krypton.Toolkit.Suite.Extended.Utilities.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Shared\Zip Extractor\Krypton.Toolkit.Suite.Extended.Zip.Extractor.csproj" />
+    </ItemGroup>
+    <MSBuild Projects="@(Projects)" Properties="Configuration=$(Configuration);TFMs=all" Targets="Restore" />
+  </Target>
+
+  <Target Name="Build" DependsOnTargets="Restore">
+    <ItemGroup>
+      <!--Library Projects-->
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\Base\Krypton.Toolkit.Suite.Extended.Base.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\Circular ProgressBar\Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\Data Visualisation\Krypton.Toolkit.Suite.Extended.Data.Visualisation.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\Drawing Suite\Krypton.Toolkit.Suite.Extended.Drawing.Suite.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\Error Reporting\Krypton.Toolkit.Suite.Extended.Error.Reporting.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\Extended Dialogs\Krypton.Toolkit.Suite.Extended.Dialogs.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\Fast Coloured TextBox\Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\Floating Toolbars\Krypton.Toolkit.Suite.Extended.Floating.Toolbars.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\Gauges\Krypton.Toolkit.Suite.Extended.Gauges.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\IO\Krypton.Toolkit.Suite.Extended.IO.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\Krypton Wizard\Krypton.Toolkit.Suite.Extended.Wizard.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\List View\Krypton.Toolkit.Suite.Extended.List.View.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\Navi Suite\Krypton.Toolkit.Suite.Extended.Navi.Suite.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\Navigator\Krypton.Toolkit.Suite.Extended.Navigator.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\Networking\Krypton.Toolkit.Suite.Extended.Networking.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\Notifications\Krypton.Toolkit.Suite.Extended.Notifications.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\Outlook Grid\Krypton.Toolkit.Suite.Extended.Outlook.Grid.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\Palette Selectors\Krypton.Toolkit.Suite.Extended.Palette.Selectors.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\Software Updater\Krypton.Toolkit.Suite.Extended.Software.Updater.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\Theme Switcher\Krypton.Toolkit.Suite.Extended.Theme.Switcher.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\Toggle Switch\Krypton.Toolkit.Suite.Extended.Toggle.Switch.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\Toolstrip Items\Krypton.Toolkit.Suite.Extended.Tool.Strip.Items.csproj" />
+      <!--Shared Projects-->
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Shared\Common\Krypton.Toolkit.Suite.Extended.Common.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Shared\Toolkit Core\Krypton.Toolkit.Suite.Extended.Core.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Shared\Global Utilities\Krypton.Toolkit.Suite.Extended.Global.Utilities.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Shared\Toolkit Language Model\Krypton.Toolkit.Suite.Extended.Language.Model.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Shared\Palette Controller\Krypton.Toolkit.Suite.Extended.Palette.Controller.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Shared\Palette Controls\Krypton.Toolkit.Suite.Extended.Palette.Controls.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Shared\Palette Utilities\Krypton.Toolkit.Suite.Extended.Palette.Utilities.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Shared\Toolkit Resources\Krypton.Toolkit.Suite.Extended.Resources.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Shared\Toolkit Settings\Krypton.Toolkit.Suite.Extended.Settings.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Shared\Utilities\Krypton.Toolkit.Suite.Extended.Utilities.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Shared\Zip Extractor\Krypton.Toolkit.Suite.Extended.Zip.Extractor.csproj" />
+    </ItemGroup>
+    <MSBuild Projects="@(Projects)" Properties="Configuration=$(Configuration);TFMs=all" />
+  </Target>
+
+  <Target Name="CleanPackages">
+    <ItemGroup>
+      <NugetPkgs Include="$(RootFolder)\Bin\Release\*.nupkg" />
+    </ItemGroup>
+    <Delete Files="@(NugetPkgs" />
   </Target>
 </Project>
