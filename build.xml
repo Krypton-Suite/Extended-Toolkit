@@ -5,4 +5,22 @@
     <RootFolder>$(MSBuildProjectDirectory)</RootFolder>
     <Configuration>Release</Configuration>
   </PropertyGroup>
+
+  <Target Name="Clean">
+    <ItemGroup>
+      <!--Library Projects-->
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\Base\Krypton.Toolkit.Suite.Extended.Base.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\Circular ProgressBar\Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\Data Visualisation\Krypton.Toolkit.Suite.Extended.Data.Visualisation.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\Drawing Suite\Krypton.Toolkit.Suite.Extended.Drawing.Suite.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\Error Reporting\Krypton.Toolkit.Suite.Extended.Error.Reporting.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\Extended Dialogs\Krypton.Toolkit.Suite.Extended.Dialogs.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\Fast Coloured TextBox\Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\Floating Toolbars\Krypton.Toolkit.Suite.Extended.Floating.Toolbars.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\Gauges\Krypton.Toolkit.Suite.Extended.Gauges.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\IO\Krypton.Toolkit.Suite.Extended.IO.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\Krypton Wizard\Krypton.Toolkit.Suite.Extended.Wizard.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\List View\Krypton.Toolkit.Suite.Extended.List.View.csproj" />
+    </ItemGroup>
+  </Target>
 </Project>
