@@ -25,6 +25,12 @@
       <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\Navigator\Krypton.Toolkit.Suite.Extended.Navigator.csproj" />
       <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\Networking\Krypton.Toolkit.Suite.Extended.Networking.csproj" />
       <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\Notifications\Krypton.Toolkit.Suite.Extended.Notifications.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\Outlook Grid\Krypton.Toolkit.Suite.Extended.Outlook.Grid.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\Palette Selectors\Krypton.Toolkit.Suite.Extended.Palette.Selectors.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\Software Updater\Krypton.Toolkit.Suite.Extended.Software.Updater.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\Theme Switcher\Krypton.Toolkit.Suite.Extended.Theme.Switcher.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\Toggle Switch\Krypton.Toolkit.Suite.Extended.Toggle.Switch.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit Suite Extended\Libraries\Toolstrip Items\Krypton.Toolkit.Suite.Extended.Tool.Strip.Items.csproj" />
     </ItemGroup>
   </Target>
 </Project>
