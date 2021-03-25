@@ -77,15 +77,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Task.Dialogs", "Libraries\Task Dialogs\Krypton.Toolkit.Suite.Extended.Task.Dialogs.csproj", "{126FA20A-D91D-4F97-926D-DE6E72A77868}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build Tools", "Build Tools", "{58D37E1D-0CBA-4ECB-8D89-4F63C62B42F5}"
-	ProjectSection(SolutionItems) = preProject
-		..\..\build-complete.cmd = ..\..\build-complete.cmd
-		..\..\build.cmd = ..\..\build.cmd
-		..\..\build.proj = ..\..\build.proj
-		..\..\pack.cmd = ..\..\pack.cmd
-		..\..\publish.cmd = ..\..\publish.cmd
-		..\..\purge.cmd = ..\..\purge.cmd
-		..\..\upload-to-nuget.cmd = ..\..\upload-to-nuget.cmd
-	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Data.Visualisation", "Libraries\Data Visualisation\Krypton.Toolkit.Suite.Extended.Data.Visualisation.csproj", "{344A1AFD-6F59-4B7A-ADAD-C1C76A873D9B}"
 EndProject
@@ -154,7 +145,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Root", "Root", "{65FBA90C-3091-465D-BDCE-2A1CF47935DA}"
 	ProjectSection(SolutionItems) = preProject
 		..\..\Build.cmd = ..\..\Build.cmd
-		..\..\build.xml = ..\..\build.xml
+		..\..\build.proj = ..\..\build.proj
 		..\..\Directory.Build.props = ..\..\Directory.Build.props
 	EndProjectSection
 EndProject
@@ -378,7 +369,7 @@ Global
 		{E31BBA93-2EB1-4536-960E-FBC43303A80E} = {1F1DCECC-C25F-4E91-9C8A-ECCBB9827BBA}
 		{A09DDD9B-E4E2-4E83-BF2B-C2E29D8899D9} = {1F1DCECC-C25F-4E91-9C8A-ECCBB9827BBA}
 		{80BCFEDD-D4B2-46D6-A44E-C39D5DF02CAD} = {0E036EC5-549F-405A-82FA-87A03CE379E1}
-		{FF83004E-FDCC-4E18-8C74-0BA5F95F6B7C} = {35C5D580-4B81-4E33-AB75-BD5D316A2ABC}
+		{FF83004E-FDCC-4E18-8C74-0BA5F95F6B7C} = {58D37E1D-0CBA-4ECB-8D89-4F63C62B42F5}
 		{65FBA90C-3091-465D-BDCE-2A1CF47935DA} = {FF83004E-FDCC-4E18-8C74-0BA5F95F6B7C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
