@@ -93,7 +93,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Base\Krypton.Toolkit.Suite.Extended.Base.csproj" />
+    <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Base\Krypton.Toolkit.Suite.Extended.Base.csproj" />
   </ItemGroup>
 
   <ItemGroup>
