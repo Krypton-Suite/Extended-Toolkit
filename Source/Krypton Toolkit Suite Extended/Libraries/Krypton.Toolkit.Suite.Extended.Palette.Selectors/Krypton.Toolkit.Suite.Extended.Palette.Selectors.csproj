@@ -103,7 +103,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Libraries\Base\Krypton.Toolkit.Suite.Extended.Base.csproj" />
-    <ProjectReference Include="..\..\Shared\Toolkit Core\Krypton.Toolkit.Suite.Extended.Core.csproj" />
   </ItemGroup>
   
   <ItemGroup>

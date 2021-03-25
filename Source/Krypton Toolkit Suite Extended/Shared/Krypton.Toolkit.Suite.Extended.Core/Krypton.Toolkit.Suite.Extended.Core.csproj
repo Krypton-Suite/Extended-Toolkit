@@ -101,7 +101,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Toolkit Settings\Krypton.Toolkit.Suite.Extended.Settings.csproj" />
+    <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Settings\Krypton.Toolkit.Suite.Extended.Settings.csproj" />
   </ItemGroup>
 
   <ItemGroup>

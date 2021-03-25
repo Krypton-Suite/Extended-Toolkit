@@ -90,12 +90,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Shared\Palette Controls\Krypton.Toolkit.Suite.Extended.Palette.Controls.csproj" />
-    <ProjectReference Include="..\..\Shared\Toolkit Core\Krypton.Toolkit.Suite.Extended.Core.csproj" />
-    <ProjectReference Include="..\..\Shared\Toolkit Language Model\Krypton.Toolkit.Suite.Extended.Language.Model.csproj" />
-    <ProjectReference Include="..\..\Shared\Utilities\Krypton.Toolkit.Suite.Extended.Utilities.csproj" />
-    <ProjectReference Include="..\Base\Krypton.Toolkit.Suite.Extended.Base.csproj" />
-    <ProjectReference Include="..\Drawing Suite\Krypton.Toolkit.Suite.Extended.Drawing.Suite.csproj" />
+    <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Base\Krypton.Toolkit.Suite.Extended.Base.csproj" />
+    <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Drawing.Suite\Krypton.Toolkit.Suite.Extended.Drawing.Suite.csproj" />
   </ItemGroup>
 
   <ItemGroup>

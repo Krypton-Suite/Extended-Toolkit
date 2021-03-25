@@ -88,10 +88,6 @@
     <None Include="Package Icons\Nightly.png" Pack="true" PackagePath="\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\Shared\Common\Krypton.Toolkit.Suite.Extended.Common.csproj" />
-  </ItemGroup>
-
   <PropertyGroup>
     <DocumentationFile>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar\Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar.xml</DocumentationFile>
     <OutputPath>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar\</OutputPath>

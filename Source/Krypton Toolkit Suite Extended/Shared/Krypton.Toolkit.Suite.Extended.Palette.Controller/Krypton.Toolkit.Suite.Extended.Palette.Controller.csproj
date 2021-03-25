@@ -84,7 +84,7 @@
     </ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\Toolkit Core\Krypton.Toolkit.Suite.Extended.Core.csproj" />
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Core\Krypton.Toolkit.Suite.Extended.Core.csproj" />
 	</ItemGroup>
 
 	<PropertyGroup>

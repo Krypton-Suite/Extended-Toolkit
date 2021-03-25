@@ -403,8 +403,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Common\Krypton.Toolkit.Suite.Extended.Common.csproj" />
-    <ProjectReference Include="..\Global Utilities\Krypton.Toolkit.Suite.Extended.Global.Utilities.csproj" />
+    <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Common\Krypton.Toolkit.Suite.Extended.Common.csproj" />
+    <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Global.Utilities\Krypton.Toolkit.Suite.Extended.Global.Utilities.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

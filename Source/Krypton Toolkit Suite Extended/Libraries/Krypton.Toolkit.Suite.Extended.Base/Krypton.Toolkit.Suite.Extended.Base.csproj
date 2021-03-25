@@ -91,11 +91,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Shared\Common\Krypton.Toolkit.Suite.Extended.Common.csproj" />
-    <ProjectReference Include="..\..\Shared\Toolkit Core\Krypton.Toolkit.Suite.Extended.Core.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Reference Include="Krypton.Toolkit.Suite.Extended.Standard.Controls">
       <HintPath>..\Extended Standard Controls\obj\Debug\net45\Krypton.Toolkit.Suite.Extended.Standard.Controls.dll</HintPath>
     </Reference>

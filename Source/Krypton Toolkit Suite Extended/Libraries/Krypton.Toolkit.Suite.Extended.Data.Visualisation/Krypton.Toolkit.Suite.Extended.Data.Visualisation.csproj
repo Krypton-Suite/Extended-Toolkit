@@ -89,10 +89,6 @@
     <None Include="Package Icons\Nightly.png" Pack="true" PackagePath="\" />
   </ItemGroup>
   
-  <ItemGroup>
-    <ProjectReference Include="..\..\Shared\Toolkit Core\Krypton.Toolkit.Suite.Extended.Core.csproj" />
-  </ItemGroup>
-  
   <PropertyGroup>
     <DocumentationFile>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Data.Visualisation\Krypton.Toolkit.Suite.Extended.Data.Visualisation.xml</DocumentationFile>
     <OutputPath>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Data.Visualisation\</OutputPath>
