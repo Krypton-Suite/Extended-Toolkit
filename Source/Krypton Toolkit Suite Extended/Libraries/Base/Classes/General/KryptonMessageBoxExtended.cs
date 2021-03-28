@@ -17,9 +17,8 @@ using System.Windows.Forms;
 namespace Krypton.Toolkit.Suite.Extended.Base
 {
     /// <summary>Gives the basic <see cref="KryptonMessageBox">KryptonMessageBox</see> more functionality.</summary>
-    // [DesignerCategory("code"),
-    [DesignTimeVisible(false), ToolboxBitmap(typeof(KryptonMessageBoxExtended), "ToolboxBitmaps.KryptonMessageBox.bmp"), ToolboxItem(false)]
-    public class KryptonMessageBoxExtended : KryptonFormExtended
+    [DesignerCategory("code"), DesignTimeVisible(false), ToolboxBitmap(typeof(KryptonMessageBoxExtended), "ToolboxBitmaps.KryptonMessageBox.bmp"), ToolboxItem(false)]
+    public class KryptonMessageBoxExtended : KryptonForm //Extended
     {
         #region System
         private void InitialiseComponent()
@@ -34,6 +33,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             this._button3 = new Krypton.Toolkit.Suite.Extended.Base.KryptonMessageBoxExtended.MessageButton();
             this._button1 = new Krypton.Toolkit.Suite.Extended.Base.KryptonMessageBoxExtended.MessageButton();
             this._button2 = new Krypton.Toolkit.Suite.Extended.Base.KryptonMessageBoxExtended.MessageButton();
+            this._optionalCheckBox = new Krypton.Toolkit.KryptonCheckBox();
             ((System.ComponentModel.ISupportInitialize)(this._panelMessage)).BeginInit();
             this._panelMessage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._panelMessageText)).BeginInit();
@@ -109,6 +109,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             this._panelButtons.Controls.Add(this._button3);
             this._panelButtons.Controls.Add(this._button1);
             this._panelButtons.Controls.Add(this._button2);
+            this._panelButtons.Controls.Add(this._optionalCheckBox);
             this._panelButtons.Dock = System.Windows.Forms.DockStyle.Top;
             this._panelButtons.Location = new System.Drawing.Point(0, 52);
             this._panelButtons.Margin = new System.Windows.Forms.Padding(0);
@@ -164,6 +165,15 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             this._button2.Size = new System.Drawing.Size(50, 26);
             this._button2.TabIndex = 1;
             this._button2.Values.Text = "B2";
+            //
+            // _optionalCheckBox
+            //
+            this._optionalCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this._optionalCheckBox.Location = new System.Drawing.Point(12, 0);
+            this._optionalCheckBox.Size = new System.Drawing.Size(50, 20);
+            this._optionalCheckBox.Name = "_optionalCheckBox";
+            this._optionalCheckBox.TabIndex = 4;
+            this._optionalCheckBox.Text = "CB1";
             // 
             // KryptonMessageBoxExtended
             // 
@@ -198,7 +208,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         #endregion
 
         #region Variables
-        private readonly string _text;
+        private readonly string _text, _optionalCheckBoxText;
         private readonly string _caption;
         private readonly MessageBoxButtons _buttons;
         private readonly MessageBoxIcon _icon;
@@ -213,12 +223,12 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         private MessageButton _button1;
         private MessageButton _button2;
         private MessageButton _button3;
+        private KryptonCheckBox _optionalCheckBox;
         private KryptonBorderEdge _borderEdge;
         private HelpInformation _helpInformation; // TODO: What is this used for ?
         private Font _messageBoxTypeface;
         private int _timeOut, _timeOutTimerDelay, _seconds, _time, _fadeInInterval, _fadeOutInterval;
         private Timer _timeOutTimer, _timerButtonOne, _timerButtonTwo, _timerButtonThree, _fadeInTimer, _fadeOutTimer;
-        private string _doNotShowAgainOptionText;
         private bool _doNotShowAgainOptionResult, _showDoNotShowAgainOption, _useTimeOutOption, _useFadingOption;
         private DialogResult _defaultTimeOutResponse;
         #endregion
@@ -270,14 +280,6 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         /// The time out timer delay.
         /// </value>
         public int TimeOutTimerDelay { get { return _timeOutTimerDelay; } set { _timeOutTimerDelay = value; } }
-
-        /// <summary>
-        /// Gets or sets the do not show again option text.
-        /// </summary>
-        /// <value>
-        /// The do not show again option text.
-        /// </value>
-        public string DoNotShowAgainOptionText { get { return _doNotShowAgainOptionText; } set { _doNotShowAgainOptionText = value; } }
         #endregion
 
         #region Internal Classes
