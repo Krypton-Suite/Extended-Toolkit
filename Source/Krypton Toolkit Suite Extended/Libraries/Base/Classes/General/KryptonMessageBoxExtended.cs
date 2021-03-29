@@ -11,6 +11,7 @@ using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Media;
+using System.Text;
 using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Base
