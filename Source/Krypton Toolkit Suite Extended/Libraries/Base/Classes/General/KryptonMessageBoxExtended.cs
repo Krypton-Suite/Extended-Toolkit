@@ -20,9 +20,9 @@ namespace Krypton.Toolkit.Suite.Extended.Base
     /// Displays a message box that can contain text, buttons, and symbols that inform and instruct the user.
     /// Allows optional Font to be specified, if not then new Font(@"Segoe UI", 12F) will be used
     /// </summary>
-    [ToolboxItem(false), ToolboxBitmap(typeof(ExtendedKryptonMessageBox), "ToolboxBitmaps.KryptonMessageBox.bmp"),
+    [ToolboxItem(false), ToolboxBitmap(typeof(KryptonMessageBoxExtended), "ToolboxBitmaps.KryptonMessageBox.bmp"),
      DesignerCategory("code"), DesignTimeVisible(false)]
-    public class ExtendedKryptonMessageBox : KryptonForm
+    public class KryptonMessageBoxExtended : KryptonForm
     {
         #region System
         private void InitialiseComponent()
@@ -180,7 +180,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
             MinimizeBox = false;
-            Name = "ExtendedKryptonMessageBox";
+            Name = "KryptonMessageBoxExtended";
             ShowIcon = false;
             ShowInTaskbar = false;
             SizeGripStyle = SizeGripStyle.Hide;
@@ -356,13 +356,13 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         #endregion
 
         #region Constructors
-        static ExtendedKryptonMessageBox()
+        static KryptonMessageBoxExtended()
         {
             _osMajorVersion = Environment.OSVersion.Version.Major;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ExtendedKryptonMessageBox"/> class.
+        /// Initializes a new instance of the <see cref="KryptonMessageBoxExtended"/> class.
         /// </summary>
         /// <param name="showOwner">The show owner. (Can be null)</param>
         /// <param name="text">The text.</param>
@@ -374,7 +374,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         /// <param name="helpInformation">The help information.</param>
         /// <param name="showCtrlCopy">The show control copy. (Can be null)</param>
         /// <param name="messageboxTypeface">The messagebox typeface. (Can be null)</param>
-        private ExtendedKryptonMessageBox(IWin32Window showOwner, string text, string caption,
+        private KryptonMessageBoxExtended(IWin32Window showOwner, string text, string caption,
             MessageBoxButtons buttons, MessageBoxIcon icon, MessageBoxDefaultButton defaultButton,
             MessageBoxOptions options, HelpInformation helpInformation, bool? showCtrlCopy,
             Font messageboxTypeface)
@@ -854,7 +854,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
 
             // Show message box window as a modal dialog and then dispose of it afterwards
-            using (ExtendedKryptonMessageBox ekmb = new ExtendedKryptonMessageBox(showOwner, text, caption, buttons, icon, defaultButton, options, helpInformation, showCtrlCopy, messageboxTypeface))
+            using (KryptonMessageBoxExtended ekmb = new KryptonMessageBoxExtended(showOwner, text, caption, buttons, icon, defaultButton, options, helpInformation, showCtrlCopy, messageboxTypeface))
             {
                 ekmb.StartPosition = showOwner == null ? FormStartPosition.CenterScreen : FormStartPosition.CenterParent;
 

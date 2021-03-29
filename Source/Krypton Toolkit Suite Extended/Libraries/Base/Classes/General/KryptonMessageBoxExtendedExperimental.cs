@@ -168,7 +168,9 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             //
             // _optionalCheckBox
             //
-            this._optionalCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this._optionalCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
+            this._optionalCheckBox.AutoSize = true;
+            this._optionalCheckBox.Dock = System.Windows.Forms.DockStyle.Left;
             this._optionalCheckBox.Location = new System.Drawing.Point(12, 0);
             this._optionalCheckBox.Size = new System.Drawing.Size(50, 20);
             this._optionalCheckBox.Name = "_optionalCheckBox";
@@ -383,12 +385,11 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         /// <param name="options">The options.</param>
         /// <param name="helpInformation">The help information.</param>
         /// <param name="showCtrlCopy">The show control copy. (Can be null)</param>
-        /// <param name="topMost">Sets the topmost position.</param>
         /// <param name="messageBoxTypeface">The messagebox typeface. (Can be null)</param>
         private KryptonMessageBoxExtendedExperimental(IWin32Window showOwner, string text, string caption,
                                           MessageBoxButtons buttons, MessageBoxIcon icon, MessageBoxDefaultButton defaultButton,
                                           MessageBoxOptions options, HelpInformation helpInformation,
-                                          bool? showCtrlCopy, bool topMost, Font messageBoxTypeface,
+                                          bool? showCtrlCopy, Font messageBoxTypeface,
                                           bool showOptionalCheckBox, bool isOptionalCheckBoxChecked, string optionalCheckBoxText)
         {
             #region Store Values
@@ -405,8 +406,6 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             _options = options;
 
             _helpInformation = helpInformation;
-
-            TopMost = topMost;
 
             _messageBoxTypeface = messageBoxTypeface ?? new Font(@"Segoe UI", 12F);
 
@@ -439,14 +438,14 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             UpdateSizing(showOwner);
 
             // Arrange the 'Z' order, based on topmost
-            if (topMost)
-            {
-                BringToFront();
-            }
-            else
-            {
-                SendToBack();
-            }
+            //if (topMost)
+            //{
+            //    BringToFront();
+            //}
+            //else
+            //{
+            //    SendToBack();
+            //}
 
             //if (seconds > 0)
             //{
@@ -515,7 +514,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         /// <param name="text">The text to display in the message box.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
-        public static DialogResult Show(string text, bool? showCtrlCopy = null, Font messageboxTypeface = null, bool topMost = true, bool showOptionalCheckBox = false, bool isOptionalCheckBoxChecked = false, string optionalCheckBoxText = null) => InternalShow(null, text, string.Empty, MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, topMost, messageboxTypeface, showOptionalCheckBox, isOptionalCheckBoxChecked, optionalCheckBoxText);
+        public static DialogResult Show(string text, bool? showCtrlCopy = null, Font messageboxTypeface = null, bool showOptionalCheckBox = false, bool isOptionalCheckBoxChecked = false, string optionalCheckBoxText = null) => InternalShow(null, text, string.Empty, MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, isOptionalCheckBoxChecked, optionalCheckBoxText);
 
         /// <summary>
         /// Displays a message box in front of the specified object and with the specified text.
@@ -524,7 +523,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         /// <param name="text">The text to display in the message box.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
-        public static DialogResult Show(IWin32Window owner, string text, bool? showCtrlCopy = null, bool topMost = true, Font messageboxTypeface = null, bool showOptionalCheckBox = false, bool isOptionalCheckBoxChecked = false, string optionalCheckBoxText = null) => InternalShow(owner, text, string.Empty, MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, topMost, messageboxTypeface, showOptionalCheckBox, isOptionalCheckBoxChecked, optionalCheckBoxText);
+        public static DialogResult Show(IWin32Window owner, string text, bool? showCtrlCopy = null, Font messageboxTypeface = null, bool showOptionalCheckBox = false, bool isOptionalCheckBoxChecked = false, string optionalCheckBoxText = null) => InternalShow(owner, text, string.Empty, MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, isOptionalCheckBoxChecked, optionalCheckBoxText);
 
         /// <summary>
         /// Displays a message box with specified text and caption.
@@ -533,7 +532,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         /// <param name="caption">The text to display in the title bar of the message box.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
-        public static DialogResult Show(string text, string caption, bool? showCtrlCopy = null, bool topMost = true, Font messageboxTypeface = null, bool showOptionalCheckBox = false, bool isOptionalCheckBoxChecked = false, string optionalCheckBoxText = null) => InternalShow(null, text, caption, MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, topMost, messageboxTypeface, showOptionalCheckBox, isOptionalCheckBoxChecked, optionalCheckBoxText);
+        public static DialogResult Show(string text, string caption, bool? showCtrlCopy = null, Font messageboxTypeface = null, bool showOptionalCheckBox = false, bool isOptionalCheckBoxChecked = false, string optionalCheckBoxText = null) => InternalShow(null, text, caption, MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, isOptionalCheckBoxChecked, optionalCheckBoxText);
 
         /// <summary>
         /// Displays a message box in front of the specified object and with the specified text and caption.
@@ -543,7 +542,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         /// <param name="caption">The text to display in the title bar of the message box.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
-        public static DialogResult Show(IWin32Window owner, string text, string caption, bool? showCtrlCopy = null, bool topMost = true, Font messageboxTypeface = null, bool showOptionalCheckBox = false, bool isOptionalCheckBoxChecked = false, string optionalCheckBoxText = null) => InternalShow(owner, text, caption, MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, topMost, messageboxTypeface, showOptionalCheckBox, isOptionalCheckBoxChecked, optionalCheckBoxText);
+        public static DialogResult Show(IWin32Window owner, string text, string caption, bool? showCtrlCopy = null, Font messageboxTypeface = null, bool showOptionalCheckBox = false, bool isOptionalCheckBoxChecked = false, string optionalCheckBoxText = null) => InternalShow(owner, text, caption, MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, isOptionalCheckBoxChecked, optionalCheckBoxText);
 
         /// <summary>
         /// Displays a message box with specified text, caption, and buttons.
@@ -553,7 +552,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         /// <param name="buttons">One of the System.Windows.Forms.MessageBoxButtons values that specifies which buttons to display in the message box.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
-        public static DialogResult Show(string text, string caption, MessageBoxButtons buttons, bool? showCtrlCopy = null, bool topMost = true, Font messageboxTypeface = null, bool showOptionalCheckBox = false, bool isOptionalCheckBoxChecked = false, string optionalCheckBoxText = null) => InternalShow(null, text, caption, buttons, MessageBoxIcon.None, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, topMost, messageboxTypeface, showOptionalCheckBox, isOptionalCheckBoxChecked, optionalCheckBoxText);
+        public static DialogResult Show(string text, string caption, MessageBoxButtons buttons, bool? showCtrlCopy = null, Font messageboxTypeface = null, bool showOptionalCheckBox = false, bool isOptionalCheckBoxChecked = false, string optionalCheckBoxText = null) => InternalShow(null, text, caption, buttons, MessageBoxIcon.None, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, isOptionalCheckBoxChecked, optionalCheckBoxText);
 
         /// <summary>
         /// Displays a message box in front of the specified object and with the specified text, caption, and buttons.
@@ -564,7 +563,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         /// <param name="buttons">One of the System.Windows.Forms.MessageBoxButtons values that specifies which buttons to display in the message box.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
-        public static DialogResult Show(IWin32Window owner, string text, string caption, MessageBoxButtons buttons, bool? showCtrlCopy = null, bool topMost = true, Font messageboxTypeface = null, bool showOptionalCheckBox = false, bool isOptionalCheckBoxChecked = false, string optionalCheckBoxText = null) => InternalShow(owner, text, caption, buttons, MessageBoxIcon.None, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, topMost, messageboxTypeface, showOptionalCheckBox, isOptionalCheckBoxChecked, optionalCheckBoxText);
+        public static DialogResult Show(IWin32Window owner, string text, string caption, MessageBoxButtons buttons, bool? showCtrlCopy = null, Font messageboxTypeface = null, bool showOptionalCheckBox = false, bool isOptionalCheckBoxChecked = false, string optionalCheckBoxText = null) => InternalShow(owner, text, caption, buttons, MessageBoxIcon.None, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, isOptionalCheckBoxChecked, optionalCheckBoxText);
 
         /// <summary>
         /// Displays a message box with specified text, caption, buttons, and icon.
@@ -575,7 +574,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         /// <param name="icon">One of the System.Windows.Forms.MessageBoxIcon values that specifies which icon to display in the message box.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
-        public static DialogResult Show(string text, string caption, MessageBoxButtons buttons, MessageBoxIcon icon, bool? showCtrlCopy = null, bool topMost = true, Font messageboxTypeface = null, bool showOptionalCheckBox = false, bool isOptionalCheckBoxChecked = false, string optionalCheckBoxText = null) => InternalShow(null, text, caption, buttons, icon, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, topMost, messageboxTypeface, showOptionalCheckBox, isOptionalCheckBoxChecked, optionalCheckBoxText);
+        public static DialogResult Show(string text, string caption, MessageBoxButtons buttons, MessageBoxIcon icon, bool? showCtrlCopy = null, Font messageboxTypeface = null, bool showOptionalCheckBox = false, bool isOptionalCheckBoxChecked = false, string optionalCheckBoxText = null) => InternalShow(null, text, caption, buttons, icon, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, isOptionalCheckBoxChecked, optionalCheckBoxText);
 
         /// <summary>
         /// Displays a message box in front of the specified object and with the specified text, caption, buttons, and icon.
@@ -587,7 +586,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         /// <param name="icon">One of the System.Windows.Forms.MessageBoxIcon values that specifies which icon to display in the message box.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
-        public static DialogResult Show(IWin32Window owner, string text, string caption, MessageBoxButtons buttons, MessageBoxIcon icon, bool? showCtrlCopy = null, bool topMost = true, Font messageboxTypeface = null, bool showOptionalCheckBox = false, bool isOptionalCheckBoxChecked = false, string optionalCheckBoxText = null) => InternalShow(owner, text, caption, buttons, icon, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, topMost, messageboxTypeface, showOptionalCheckBox, isOptionalCheckBoxChecked, optionalCheckBoxText);
+        public static DialogResult Show(IWin32Window owner, string text, string caption, MessageBoxButtons buttons, MessageBoxIcon icon, bool? showCtrlCopy = null, Font messageboxTypeface = null, bool showOptionalCheckBox = false, bool isOptionalCheckBoxChecked = false, string optionalCheckBoxText = null) => InternalShow(owner, text, caption, buttons, icon, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, isOptionalCheckBoxChecked, optionalCheckBoxText);
 
         /// <summary>
         /// Displays a message box with the specified text, caption, buttons, icon, and default button.
@@ -599,7 +598,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         /// <param name="defaultButton">One of the System.Windows.Forms.MessageBoxDefaultButton values that specifies the default button for the message box.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
-        public static DialogResult Show(string text, string caption, MessageBoxButtons buttons, MessageBoxIcon icon, MessageBoxDefaultButton defaultButton, bool? showCtrlCopy = null, bool topMost = true, Font messageboxTypeface = null, bool showOptionalCheckBox = false, bool isOptionalCheckBoxChecked = false, string optionalCheckBoxText = null) => InternalShow(null, text, caption, buttons, icon, defaultButton, 0, null, showCtrlCopy, topMost, messageboxTypeface, showOptionalCheckBox, isOptionalCheckBoxChecked, optionalCheckBoxText);
+        public static DialogResult Show(string text, string caption, MessageBoxButtons buttons, MessageBoxIcon icon, MessageBoxDefaultButton defaultButton, bool? showCtrlCopy = null, Font messageboxTypeface = null, bool showOptionalCheckBox = false, bool isOptionalCheckBoxChecked = false, string optionalCheckBoxText = null) => InternalShow(null, text, caption, buttons, icon, defaultButton, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, isOptionalCheckBoxChecked, optionalCheckBoxText);
 
         /// <summary>
         /// Displays a message box in front of the specified object and with the specified text, caption, buttons, icon, and default button.
@@ -612,7 +611,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         /// <param name="defaultButton">One of the System.Windows.Forms.MessageBoxDefaultButton values that specifies the default button for the message box.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
-        public static DialogResult Show(IWin32Window owner, string text, string caption, MessageBoxButtons buttons, MessageBoxIcon icon, MessageBoxDefaultButton defaultButton, bool? showCtrlCopy = null, bool topMost = true, Font messageboxTypeface = null, bool showOptionalCheckBox = false, bool isOptionalCheckBoxChecked = false, string optionalCheckBoxText = null) => InternalShow(owner, text, caption, buttons, icon, defaultButton, 0, null, showCtrlCopy, topMost, messageboxTypeface, showOptionalCheckBox, isOptionalCheckBoxChecked, optionalCheckBoxText);
+        public static DialogResult Show(IWin32Window owner, string text, string caption, MessageBoxButtons buttons, MessageBoxIcon icon, MessageBoxDefaultButton defaultButton, bool? showCtrlCopy = null, Font messageboxTypeface = null, bool showOptionalCheckBox = false, bool isOptionalCheckBoxChecked = false, string optionalCheckBoxText = null) => InternalShow(owner, text, caption, buttons, icon, defaultButton, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, isOptionalCheckBoxChecked, optionalCheckBoxText);
 
         /// <summary>
         /// Displays a message box with the specified text, caption, buttons, icon, default button, and options.
@@ -625,7 +624,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         /// <param name="options">One of the System.Windows.Forms.MessageBoxOptions values that specifies which display and association options will be used for the message box. You may pass in 0 if you wish to use the defaults.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
-        public static DialogResult Show(string text, string caption, MessageBoxButtons buttons, MessageBoxIcon icon, MessageBoxDefaultButton defaultButton, MessageBoxOptions options, bool? showCtrlCopy = null, bool topMost = true, Font messageboxTypeface = null, bool showOptionalCheckBox = false, bool isOptionalCheckBoxChecked = false, string optionalCheckBoxText = null) => InternalShow(null, text, caption, buttons, icon, defaultButton, options, null, showCtrlCopy, topMost, messageboxTypeface, showOptionalCheckBox, isOptionalCheckBoxChecked, optionalCheckBoxText);
+        public static DialogResult Show(string text, string caption, MessageBoxButtons buttons, MessageBoxIcon icon, MessageBoxDefaultButton defaultButton, MessageBoxOptions options, bool? showCtrlCopy = null, Font messageboxTypeface = null, bool showOptionalCheckBox = false, bool isOptionalCheckBoxChecked = false, string optionalCheckBoxText = null) => InternalShow(null, text, caption, buttons, icon, defaultButton, options, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, isOptionalCheckBoxChecked, optionalCheckBoxText);
 
         /// <summary>
         /// Displays a message box with specified text, caption, and buttons.
@@ -636,7 +635,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
 
-        //? public static DialogResult Show(string text, string caption, MessageBoxButtons buttons, bool? showCtrlCopy = null, bool topMost = true, Font messageboxTypeface = null, bool showOptionalCheckBox = false, bool isOptionalCheckBoxChecked = false, string optionalCheckBoxText = null) => InternalShow(null, text, caption, buttons, MessageBoxIcon.None, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly, null, showCtrlCopy, topMost, messageboxTypeface, false, NULL_TEXT, false, 60, 50, 50);
+        //? public static DialogResult Show(string text, string caption, MessageBoxButtons buttons, bool? showCtrlCopy = null, Font messageboxTypeface = null, bool showOptionalCheckBox = false, bool isOptionalCheckBoxChecked = false, string optionalCheckBoxText = null) => InternalShow(null, text, caption, buttons, MessageBoxIcon.None, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly, null, showCtrlCopy, messageboxTypeface, false, NULL_TEXT, false, 60, 50, 50);
 
         /// <summary>
         /// Displays a message box in front of the specified object and with the specified text, caption, buttons, icon, default button, and options.
@@ -650,7 +649,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         /// <param name="options">One of the System.Windows.Forms.MessageBoxOptions values that specifies which display and association options will be used for the message box. You may pass in 0 if you wish to use the defaults.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
-        public static DialogResult Show(IWin32Window owner, string text, string caption, MessageBoxButtons buttons, MessageBoxIcon icon, MessageBoxDefaultButton defaultButton, MessageBoxOptions options, bool? showCtrlCopy = null, bool topMost = true, Font messageboxTypeface = null, bool showOptionalCheckBox = false, bool isOptionalCheckBoxChecked = false, string optionalCheckBoxText = null) => InternalShow(owner, text, caption, buttons, icon, defaultButton, options, null, showCtrlCopy, topMost, messageboxTypeface, showOptionalCheckBox, isOptionalCheckBoxChecked, optionalCheckBoxText);
+        public static DialogResult Show(IWin32Window owner, string text, string caption, MessageBoxButtons buttons, MessageBoxIcon icon, MessageBoxDefaultButton defaultButton, MessageBoxOptions options, bool? showCtrlCopy = null, Font messageboxTypeface = null, bool showOptionalCheckBox = false, bool isOptionalCheckBoxChecked = false, string optionalCheckBoxText = null) => InternalShow(owner, text, caption, buttons, icon, defaultButton, options, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, isOptionalCheckBoxChecked, optionalCheckBoxText);
 
         /// <summary>
         /// Displays a message box with the specified text, caption, buttons, icon, default button, options, and Help button.
@@ -664,7 +663,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         /// <param name="displayHelpButton">Displays a message box with the specified text, caption, buttons, icon, default button, options, and Help button.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
-        public static DialogResult Show(string text, string caption, MessageBoxButtons buttons, MessageBoxIcon icon, MessageBoxDefaultButton defaultButton, MessageBoxOptions options, bool displayHelpButton, bool? showCtrlCopy = null, bool topMost = true, Font messageboxTypeface = null, bool showOptionalCheckBox = false, bool isOptionalCheckBoxChecked = false, string optionalCheckBoxText = null) => InternalShow(null, text, caption, buttons, icon, defaultButton, options, displayHelpButton ? new HelpInformation() : null, showCtrlCopy, topMost, messageboxTypeface, showOptionalCheckBox, isOptionalCheckBoxChecked, optionalCheckBoxText);
+        public static DialogResult Show(string text, string caption, MessageBoxButtons buttons, MessageBoxIcon icon, MessageBoxDefaultButton defaultButton, MessageBoxOptions options, bool displayHelpButton, bool? showCtrlCopy = null, Font messageboxTypeface = null, bool showOptionalCheckBox = false, bool isOptionalCheckBoxChecked = false, string optionalCheckBoxText = null) => InternalShow(null, text, caption, buttons, icon, defaultButton, options, displayHelpButton ? new HelpInformation() : null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, isOptionalCheckBoxChecked, optionalCheckBoxText);
 
         /// <summary>
         /// Displays a message box with the specified text, caption, buttons, icon, default button, options, and Help button, using the specified Help file.
@@ -678,7 +677,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         /// <param name="helpFilePath">The path and name of the Help file to display when the user clicks the Help button.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
-        public static DialogResult Show(string text, string caption, MessageBoxButtons buttons, MessageBoxIcon icon, MessageBoxDefaultButton defaultButton, MessageBoxOptions options, string helpFilePath, bool? showCtrlCopy = null, bool topMost = true, Font messageboxTypeface = null, bool showOptionalCheckBox = false, bool isOptionalCheckBoxChecked = false, string optionalCheckBoxText = null) => InternalShow(null, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath), showCtrlCopy, topMost, messageboxTypeface, showOptionalCheckBox, isOptionalCheckBoxChecked, optionalCheckBoxText);
+        public static DialogResult Show(string text, string caption, MessageBoxButtons buttons, MessageBoxIcon icon, MessageBoxDefaultButton defaultButton, MessageBoxOptions options, string helpFilePath, bool? showCtrlCopy = null, Font messageboxTypeface = null, bool showOptionalCheckBox = false, bool isOptionalCheckBoxChecked = false, string optionalCheckBoxText = null) => InternalShow(null, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, isOptionalCheckBoxChecked, optionalCheckBoxText);
 
         /// <summary>
         /// Displays a message box with the specified text, caption, buttons, icon, default button, options, and Help button, using the specified Help file.
@@ -693,7 +692,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         /// <param name="helpFilePath">The path and name of the Help file to display when the user clicks the Help button.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
-        public static DialogResult Show(IWin32Window owner, string text, string caption, MessageBoxButtons buttons, MessageBoxIcon icon, MessageBoxDefaultButton defaultButton, MessageBoxOptions options, string helpFilePath, bool? showCtrlCopy = null, bool topMost = true, Font messageboxTypeface = null, bool showOptionalCheckBox = false, bool isOptionalCheckBoxChecked = false, string optionalCheckBoxText = null) => InternalShow(owner, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath), showCtrlCopy, topMost, messageboxTypeface, showOptionalCheckBox, isOptionalCheckBoxChecked, optionalCheckBoxText);
+        public static DialogResult Show(IWin32Window owner, string text, string caption, MessageBoxButtons buttons, MessageBoxIcon icon, MessageBoxDefaultButton defaultButton, MessageBoxOptions options, string helpFilePath, bool? showCtrlCopy = null, Font messageboxTypeface = null, bool showOptionalCheckBox = false, bool isOptionalCheckBoxChecked = false, string optionalCheckBoxText = null) => InternalShow(owner, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, isOptionalCheckBoxChecked, optionalCheckBoxText);
 
         /// <summary>
         /// Displays a message box with the specified text, caption, buttons, icon, default button, options, and Help button, using the specified Help file and HelpNavigator.
@@ -708,7 +707,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         /// <param name="navigator">One of the System.Windows.Forms.HelpNavigator values.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
-        public static DialogResult Show(string text, string caption, MessageBoxButtons buttons, MessageBoxIcon icon, MessageBoxDefaultButton defaultButton, MessageBoxOptions options, string helpFilePath, HelpNavigator navigator, bool? showCtrlCopy = null, bool topMost = true, Font messageboxTypeface = null, bool showOptionalCheckBox = false, bool isOptionalCheckBoxChecked = false, string optionalCheckBoxText = null) => InternalShow(null, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath, navigator), showCtrlCopy, topMost, messageboxTypeface, showOptionalCheckBox, isOptionalCheckBoxChecked, optionalCheckBoxText);
+        public static DialogResult Show(string text, string caption, MessageBoxButtons buttons, MessageBoxIcon icon, MessageBoxDefaultButton defaultButton, MessageBoxOptions options, string helpFilePath, HelpNavigator navigator, bool? showCtrlCopy = null, Font messageboxTypeface = null, bool showOptionalCheckBox = false, bool isOptionalCheckBoxChecked = false, string optionalCheckBoxText = null) => InternalShow(null, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath, navigator), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, isOptionalCheckBoxChecked, optionalCheckBoxText);
 
         /// <summary>
         /// Displays a message box with the specified text, caption, buttons, icon, default button, options, and Help button, using the specified Help file and Help keyword.
@@ -723,7 +722,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         /// <param name="keyword">The Help keyword to display when the user clicks the Help button.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
-        public static DialogResult Show(string text, string caption, MessageBoxButtons buttons, MessageBoxIcon icon, MessageBoxDefaultButton defaultButton, MessageBoxOptions options, string helpFilePath, string keyword, bool? showCtrlCopy = null, bool topMost = true, Font messageboxTypeface = null, bool showOptionalCheckBox = false, bool isOptionalCheckBoxChecked = false, string optionalCheckBoxText = null) => InternalShow(null, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath, keyword), showCtrlCopy, topMost, messageboxTypeface, showOptionalCheckBox, isOptionalCheckBoxChecked, optionalCheckBoxText);
+        public static DialogResult Show(string text, string caption, MessageBoxButtons buttons, MessageBoxIcon icon, MessageBoxDefaultButton defaultButton, MessageBoxOptions options, string helpFilePath, string keyword, bool? showCtrlCopy = null, Font messageboxTypeface = null, bool showOptionalCheckBox = false, bool isOptionalCheckBoxChecked = false, string optionalCheckBoxText = null) => InternalShow(null, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath, keyword), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, isOptionalCheckBoxChecked, optionalCheckBoxText);
 
         /// <summary>
         /// Displays a message box with the specified text, caption, buttons, icon, default button, options, and Help button, using the specified Help file and HelpNavigator.
@@ -739,7 +738,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         /// <param name="navigator">One of the System.Windows.Forms.HelpNavigator values.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
-        public static DialogResult Show(IWin32Window owner, string text, string caption, MessageBoxButtons buttons, MessageBoxIcon icon, MessageBoxDefaultButton defaultButton, MessageBoxOptions options, string helpFilePath, HelpNavigator navigator, bool? showCtrlCopy = null, bool topMost = true, Font messageboxTypeface = null, bool showOptionalCheckBox = false, bool isOptionalCheckBoxChecked = false, string optionalCheckBoxText = null) => InternalShow(owner, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath, navigator), showCtrlCopy, topMost, messageboxTypeface, showOptionalCheckBox, isOptionalCheckBoxChecked, optionalCheckBoxText);
+        public static DialogResult Show(IWin32Window owner, string text, string caption, MessageBoxButtons buttons, MessageBoxIcon icon, MessageBoxDefaultButton defaultButton, MessageBoxOptions options, string helpFilePath, HelpNavigator navigator, bool? showCtrlCopy = null, Font messageboxTypeface = null, bool showOptionalCheckBox = false, bool isOptionalCheckBoxChecked = false, string optionalCheckBoxText = null) => InternalShow(owner, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath, navigator), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, isOptionalCheckBoxChecked, optionalCheckBoxText);
 
         /// <summary>
         /// Displays a message box with the specified text, caption, buttons, icon, default button, options, and Help button, using the specified Help file and Help keyword.
@@ -755,7 +754,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         /// <param name="keyword">The Help keyword to display when the user clicks the Help button.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
-        public static DialogResult Show(IWin32Window owner, string text, string caption, MessageBoxButtons buttons, MessageBoxIcon icon, MessageBoxDefaultButton defaultButton, MessageBoxOptions options, string helpFilePath, string keyword, bool? showCtrlCopy = null, bool topMost = true, Font messageboxTypeface = null, bool showOptionalCheckBox = false, bool isOptionalCheckBoxChecked = false, string optionalCheckBoxText = null) => InternalShow(owner, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath, keyword), showCtrlCopy, topMost, messageboxTypeface, showOptionalCheckBox, isOptionalCheckBoxChecked, optionalCheckBoxText);
+        public static DialogResult Show(IWin32Window owner, string text, string caption, MessageBoxButtons buttons, MessageBoxIcon icon, MessageBoxDefaultButton defaultButton, MessageBoxOptions options, string helpFilePath, string keyword, bool? showCtrlCopy = null, Font messageboxTypeface = null, bool showOptionalCheckBox = false, bool isOptionalCheckBoxChecked = false, string optionalCheckBoxText = null) => InternalShow(owner, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath, keyword), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, isOptionalCheckBoxChecked, optionalCheckBoxText);
 
         /// <summary>
         /// Displays a message box with the specified text, caption, buttons, icon, default button, options, and Help button, using the specified Help file, HelpNavigator, and Help topic.
@@ -771,7 +770,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         /// <param name="param">The numeric ID of the Help topic to display when the user clicks the Help button.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
-        public static DialogResult Show(string text, string caption, MessageBoxButtons buttons, MessageBoxIcon icon, MessageBoxDefaultButton defaultButton, MessageBoxOptions options, string helpFilePath, HelpNavigator navigator, object param, bool? showCtrlCopy = null, bool topMost = true, Font messageboxTypeface = null, bool showOptionalCheckBox = false, bool isOptionalCheckBoxChecked = false, string optionalCheckBoxText = null) => InternalShow(null, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath, navigator, param), showCtrlCopy, topMost, messageboxTypeface, showOptionalCheckBox, isOptionalCheckBoxChecked, optionalCheckBoxText);
+        public static DialogResult Show(string text, string caption, MessageBoxButtons buttons, MessageBoxIcon icon, MessageBoxDefaultButton defaultButton, MessageBoxOptions options, string helpFilePath, HelpNavigator navigator, object param, bool? showCtrlCopy = null, Font messageboxTypeface = null, bool showOptionalCheckBox = false, bool isOptionalCheckBoxChecked = false, string optionalCheckBoxText = null) => InternalShow(null, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath, navigator, param), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, isOptionalCheckBoxChecked, optionalCheckBoxText);
 
         /// <summary>
         /// Displays a message box with the specified text, caption, buttons, icon, default button, options, and Help button, using the specified Help file, HelpNavigator, and Help topic.
@@ -789,7 +788,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
         /// <param name="messageboxTypeface">Defines the messagebox font.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
-        public static DialogResult Show(IWin32Window owner, string text, string caption, MessageBoxButtons buttons, MessageBoxIcon icon, MessageBoxDefaultButton defaultButton, MessageBoxOptions options, string helpFilePath, HelpNavigator navigator, object param, bool? showCtrlCopy = null, bool topMost = true, Font messageboxTypeface = null, bool showOptionalCheckBox = false, bool isOptionalCheckBoxChecked = false, string optionalCheckBoxText = null) => InternalShow(owner, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath, navigator, param), showCtrlCopy, topMost, messageboxTypeface, showOptionalCheckBox, isOptionalCheckBoxChecked, optionalCheckBoxText);
+        public static DialogResult Show(IWin32Window owner, string text, string caption, MessageBoxButtons buttons, MessageBoxIcon icon, MessageBoxDefaultButton defaultButton, MessageBoxOptions options, string helpFilePath, HelpNavigator navigator, object param, bool? showCtrlCopy = null, Font messageboxTypeface = null, bool showOptionalCheckBox = false, bool isOptionalCheckBoxChecked = false, string optionalCheckBoxText = null) => InternalShow(owner, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath, navigator, param), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, isOptionalCheckBoxChecked, optionalCheckBoxText);
 
         /// <summary>
         /// Displays a message box with the specified text, caption, buttons, icon, default button, options, and Help button, using the specified Help file, HelpNavigator, and Help topic.
@@ -814,7 +813,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         /// <param name="showDoNotShowAgainOption">Displays the 'Do not show again' UI elements.</param>
         /// <param name="doNotShowAgainOptionText">Set your own 'Do not show again' text.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
-        //? public static DialogResult Show(IWin32Window owner, string text, string caption, MessageBoxButtons buttons, MessageBoxIcon icon, MessageBoxDefaultButton defaultButton, MessageBoxOptions options, string helpFilePath, HelpNavigator navigator, object param, bool? showCtrlCopy = null, bool topMost = true, Font messageboxTypeface = null, bool showDoNotShowAgainOption = false, string doNotShowAgainOptionText = "Do n&ot show again") => InternalShow(owner, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath, navigator, param), showCtrlCopy, topMost, messageboxTypeface, showDoNotShowAgainOption, doNotShowAgainOptionText);
+        //? public static DialogResult Show(IWin32Window owner, string text, string caption, MessageBoxButtons buttons, MessageBoxIcon icon, MessageBoxDefaultButton defaultButton, MessageBoxOptions options, string helpFilePath, HelpNavigator navigator, object param, bool? showCtrlCopy = null, Font messageboxTypeface = null, bool showDoNotShowAgainOption = false, string doNotShowAgainOptionText = "Do n&ot show again") => InternalShow(owner, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath, navigator, param), showCtrlCopy, messageboxTypeface, showDoNotShowAgainOption, doNotShowAgainOptionText);
 
         /// <summary>
         /// Displays a message box with the specified text, caption, buttons, icon, default button, options, and Help button, using the specified Help file, HelpNavigator, and Help topic.
@@ -844,7 +843,6 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         /// <param name="options">The options.</param>
         /// <param name="helpInformation">The help information.</param>
         /// <param name="showCtrlCopy">The show control copy.</param>
-        /// <param name="topMost">if set to <c>true</c> [top most].</param>
         /// <param name="messageboxTypeface">The messagebox typeface.</param>
         /// <returns></returns>
         /// <exception cref="InvalidOperationException">Cannot show modal dialog when non-interactive</exception>
@@ -856,7 +854,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
                                                  MessageBoxButtons buttons,
                                                  MessageBoxIcon icon,
                                                  MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
-                                                 HelpInformation helpInformation, bool? showCtrlCopy, bool topMost, Font messageboxTypeface = null,
+                                                 HelpInformation helpInformation, bool? showCtrlCopy, Font messageboxTypeface = null,
                                                  bool showOptionalCheckBox = false, bool isOptionalCheckBoxChecked = false,
                                                  string optionalCheckBoxText = null)
         {
@@ -887,7 +885,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             }
 
             // Show message box window as a modal dialog and then dispose of it afterwards
-            using (KryptonMessageBoxExtendedExperimental ekmb = new KryptonMessageBoxExtendedExperimental(showOwner, text, caption, buttons, icon, defaultButton, options, helpInformation, showCtrlCopy, topMost, messageboxTypeface, showOptionalCheckBox, isOptionalCheckBoxChecked, optionalCheckBoxText))
+            using (KryptonMessageBoxExtendedExperimental ekmb = new KryptonMessageBoxExtendedExperimental(showOwner, text, caption, buttons, icon, defaultButton, options, helpInformation, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, isOptionalCheckBoxChecked, optionalCheckBoxText))
             {
                 ekmb.StartPosition = showOwner == null ? FormStartPosition.CenterScreen : FormStartPosition.CenterParent;
 

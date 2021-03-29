@@ -60,6 +60,7 @@
 * Removal/de-listing of `Krypton.Toolkit.Suite.Extended.Rounded.Controls`, see 'standard toolkit' build 2106 for more information
 * New `KryptonFormExtended` to expose properties, which cannot be fulfilled by a action list over time
 * Renamed both `KryptonTabControl` in the `Krypton.Toolkit.Suite.Extended.Navigator` module to 'Version1'/'Version2' respectively to avoid confusion
+* Cleanup `ExtendedKryptonMessageBox` to remove redundant arguments (some features will return in a future version.)
 * Updated standard toolkit to build `2106`-->
 
 =======
