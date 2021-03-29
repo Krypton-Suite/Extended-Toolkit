@@ -33,6 +33,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             _button3 = new MessageButton();
             _button1 = new MessageButton();
             _button2 = new MessageButton();
+            _optionalCheckBox = new KryptonCheckBox();
             ((ISupportInitialize)(_panelMessage)).BeginInit();
             _panelMessage.SuspendLayout();
             ((ISupportInitialize)(_panelMessageText)).BeginInit();
@@ -107,6 +108,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             _panelButtons.Controls.Add(_button3);
             _panelButtons.Controls.Add(_button1);
             _panelButtons.Controls.Add(_button2);
+            _panelButtons.Controls.Add(_optionalCheckBox);
             _panelButtons.Dock = DockStyle.Top;
             _panelButtons.Location = new Point(0, 52);
             _panelButtons.Margin = new Padding(0);
@@ -165,6 +167,19 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             _button2.TabIndex = 1;
             _button2.Values.Text = @"B2";
             _button2.KeyDown += button_keyDown;
+            //
+            // _optionalCheckBox
+            //
+            _optionalCheckBox.Anchor = AnchorStyles.Top | AnchorStyles.Left;
+            _optionalCheckBox.AutoSize = true;
+            _optionalCheckBox.Dock = DockStyle.Left;
+            _optionalCheckBox.Location = new Point(12, 0);
+            _optionalCheckBox.Margin = new Padding(0);
+            _optionalCheckBox.Size = new Size(50, 20);
+            _optionalCheckBox.Name = "_optionalCheckBox";
+            _optionalCheckBox.TabIndex = 4;
+            _optionalCheckBox.Text = @"CB1";
+            _optionalCheckBox.CheckedChanged += checkbox_CheckChanged;
             // 
             // KryptonMessageBox
             // 
@@ -200,12 +215,12 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         #endregion
 
         #region Variables
-        private readonly string _text;
+        private readonly string _text, _optionalCheckBoxText;
         private readonly string _caption;
         private readonly MessageBoxButtons _buttons;
         private readonly MessageBoxIcon _icon;
         private readonly MessageBoxDefaultButton _defaultButton;
-        private bool _isOptionalCheckBoxChecked;
+        private bool _isOptionalCheckBoxChecked, _showOptionalCheckBox;
         private MessageBoxOptions _options; // TODO: What is this used for ?
         private KryptonPanel _panelMessage;
         private KryptonPanel _panelMessageText;
@@ -1203,6 +1218,10 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         #region Optional CheckBox
         private void checkbox_CheckChanged(object sender, EventArgs e) => SetOptionalCheckBoxValue(_optionalCheckBox.Checked);
 
+        /// <summary>Shows the optional CheckBox UI.</summary>
+        /// <param name="showOptionalCheckBox">if set to <c>true</c> [show optional CheckBox].</param>
+        /// <param name="optionalCheckBoxText">The optional CheckBox text.</param>
+        /// <param name="isOptionalCheckBoxChecked">if set to <c>true</c> [is optional CheckBox checked].</param>
         private void ShowOptionalCheckBoxUI(bool showOptionalCheckBox, string optionalCheckBoxText, bool isOptionalCheckBoxChecked)
         {
             _optionalCheckBox.Visible = showOptionalCheckBox;
