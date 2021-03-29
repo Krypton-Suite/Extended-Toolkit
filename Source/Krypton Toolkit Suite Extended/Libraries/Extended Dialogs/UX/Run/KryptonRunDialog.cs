@@ -5,6 +5,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
     public class KryptonRunDialog : KryptonFormExtended
     {
+        #region Designer Code
         private System.Windows.Forms.Panel panel1;
         private KryptonPanel kryptonPanel2;
         private KryptonUACElevatedButtonVersion1 kuacbtnRun;
@@ -199,6 +200,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.kbtnRun.Size = new System.Drawing.Size(90, 25);
             this.kbtnRun.TabIndex = 5;
             this.kbtnRun.Values.Text = "&Run";
+            this.kbtnRun.Click += new System.EventHandler(this.kbtnRun_Click);
             // 
             // KryptonRunDialog
             // 
@@ -224,7 +226,10 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.ResumeLayout(false);
 
         }
+        #endregion
 
+
+        #region Event Handlers
         private void KryptonRunDialog_Load(object sender, EventArgs e)
         {
 
@@ -249,5 +254,11 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         {
 
         }
+
+        private void kbtnRun_Click(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
     }
 }
