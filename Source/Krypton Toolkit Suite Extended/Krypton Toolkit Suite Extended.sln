@@ -153,7 +153,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Simple.MAPI.NET", "Third Pa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Messagebox", "Libraries\Messagebox\Krypton.Toolkit.Suite.Extended.Messagebox.csproj", "{75A96CCC-8781-4BE0-98B5-02219DD39F35}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Research", "Research\Research\Research.csproj", "{7E57A3FD-FCCC-40C3-B51F-AD6A961C6CF7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Research", "Research\Research\Research.csproj", "{7E57A3FD-FCCC-40C3-B51F-AD6A961C6CF7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Mark.NET", "Third Party\Common.Mark.NET\Common.Mark.NET.csproj", "{32D06DD4-D641-4E11-8178-78F03559104F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cyotek.Windows.Forms.Colour.Picker", "Third Party\Cyotek.Windows.Forms.Colour.Picker\Cyotek.Windows.Forms.Colour.Picker.csproj", "{D4751198-75C5-4BAD-BFDA-F6168EC0B669}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -341,6 +345,14 @@ Global
 		{7E57A3FD-FCCC-40C3-B51F-AD6A961C6CF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E57A3FD-FCCC-40C3-B51F-AD6A961C6CF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E57A3FD-FCCC-40C3-B51F-AD6A961C6CF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32D06DD4-D641-4E11-8178-78F03559104F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32D06DD4-D641-4E11-8178-78F03559104F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32D06DD4-D641-4E11-8178-78F03559104F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32D06DD4-D641-4E11-8178-78F03559104F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4751198-75C5-4BAD-BFDA-F6168EC0B669}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4751198-75C5-4BAD-BFDA-F6168EC0B669}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4751198-75C5-4BAD-BFDA-F6168EC0B669}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4751198-75C5-4BAD-BFDA-F6168EC0B669}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -395,6 +407,8 @@ Global
 		{80BCFEDD-D4B2-46D6-A44E-C39D5DF02CAD} = {0E036EC5-549F-405A-82FA-87A03CE379E1}
 		{75A96CCC-8781-4BE0-98B5-02219DD39F35} = {1F1DCECC-C25F-4E91-9C8A-ECCBB9827BBA}
 		{7E57A3FD-FCCC-40C3-B51F-AD6A961C6CF7} = {CCBF1258-5417-42C4-9838-FA410E9803DB}
+		{32D06DD4-D641-4E11-8178-78F03559104F} = {0E036EC5-549F-405A-82FA-87A03CE379E1}
+		{D4751198-75C5-4BAD-BFDA-F6168EC0B669} = {0E036EC5-549F-405A-82FA-87A03CE379E1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9A189168-3746-4F9F-8C61-863D83D8ABD2}
