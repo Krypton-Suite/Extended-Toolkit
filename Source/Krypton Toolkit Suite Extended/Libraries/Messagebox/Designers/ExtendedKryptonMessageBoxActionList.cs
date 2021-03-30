@@ -4,11 +4,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 {
     internal class ExtendedKryptonMessageBoxActionList : DesignerActionList
     {
-        private ExtendedKryptonMessageBoxDesigner extendedKryptonMessageBoxDesigner;
+        #region Instance Fields
 
-        public ExtendedKryptonMessageBoxActionList(ExtendedKryptonMessageBoxDesigner extendedKryptonMessageBoxDesigner)
-        {
-            this.extendedKryptonMessageBoxDesigner = extendedKryptonMessageBoxDesigner;
-        }
+        #endregion
     }
 }
