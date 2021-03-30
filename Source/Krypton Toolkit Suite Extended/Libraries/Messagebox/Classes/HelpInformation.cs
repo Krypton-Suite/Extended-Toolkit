@@ -2,7 +2,7 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Messagebox
 {
-    internal class HelpInformation
+    public class HelpInformation
     {
         #region Properties
         /// <summary>
