@@ -1,12 +1,4 @@
-﻿#region BSD License
-/*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
- */
-#endregion
-
-using Krypton.Toolkit.Suite.Extended.Base.Resources;
+﻿using Krypton.Toolkit.Suite.Extended.Messagebox.Properties;
 using System;
 using System.ComponentModel;
 using System.Drawing;
@@ -14,7 +6,7 @@ using System.Media;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Suite.Extended.Base
+namespace Krypton.Toolkit.Suite.Extended.Messagebox
 {
     /// <summary>
     /// Displays a message box that can contain text, buttons, and symbols that inform and instruct the user.
@@ -332,8 +324,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             {
                 switch (m.Msg)
                 {
-                    case PI.WM_KEYDOWN:
-                    case PI.WM_SYSKEYDOWN:
+                    case PlatformInvoke.WM_KEYDOWN:
+                    case PlatformInvoke.WM_SYSKEYDOWN:
                         if (IgnoreAltF4)
                         {
                             // Extract the keys being pressed
@@ -850,7 +842,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             if ((helpInformation != null) || ((options & (MessageBoxOptions.ServiceNotification | MessageBoxOptions.DefaultDesktopOnly)) == 0))
             {
                 // If do not have an owner passed in then get the active window and use that instead
-                showOwner = owner ?? FromHandle(PI.GetActiveWindow());
+                showOwner = owner ?? FromHandle(PlatformInvoke.GetActiveWindow());
             }
 
             // Show message box window as a modal dialog and then dispose of it afterwards
@@ -904,25 +896,25 @@ namespace Krypton.Toolkit.Suite.Extended.Base
 
                     break;
                 case MessageBoxIcon.Question:
-                    _messageIcon.Image = ImageResources.Question_32_x_32;
+                    _messageIcon.Image = Resources.Question_32_x_32;
                     SystemSounds.Question.Play();
                     break;
                 case MessageBoxIcon.Information:
-                    _messageIcon.Image = ImageResources.Information_32_x_32;
+                    _messageIcon.Image = Resources.Information_32_x_32;
                     SystemSounds.Asterisk.Play();
                     break;
                 case MessageBoxIcon.Warning:
-                    _messageIcon.Image = ImageResources.Warning_32_x_32;
+                    _messageIcon.Image = Resources.Warning_32_x_32;
                     SystemSounds.Exclamation.Play();
                     break;
                 case MessageBoxIcon.Error:
-                    _messageIcon.Image = ImageResources.Critical_32_x_32;
+                    _messageIcon.Image = Resources.Critical_32_x_32;
                     SystemSounds.Asterisk.Play();
                     break;
                     //case MessageBoxIcon.Hand:
-                    //    _messageIcon.Image = KryptonMessageBoxResources.KryptonMessageBox;
+                    //    _messageIcon.Image = Resources.Hand_32_x_32;
                     //    SystemSounds.Hand.Play();
-                    //    break;
+                    break;
                     //case MessageBoxIcon.Stop:
                     //    SystemSounds.Asterisk.Play();
                     //    break;
