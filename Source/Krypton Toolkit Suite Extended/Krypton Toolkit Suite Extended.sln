@@ -3,7 +3,42 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31025.218
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton Toolkit Suite Extended", "Krypton Toolkit Suite Extended\Krypton Toolkit Suite Extended.csproj", "{97D2EDF3-E97E-45BC-B2E3-52337E09050A}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Main", "Main", "{252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{726DC0AA-2B0D-4EAC-BB7A-7C49AE13A390}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Third Party", "Third Party", "{E311F8C7-1F27-48CD-86BE-CC3D798163BE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Mark.NET", "Third Party\Common.Mark.NET\Common.Mark.NET.csproj", "{1186C9CC-12CD-41B7-BBE6-7F7417725358}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cyotek.Windows.Forms.Colour.Picker", "Third Party\Cyotek.Windows.Forms.Colour.Picker\Cyotek.Windows.Forms.Colour.Picker.csproj", "{32D5D8CE-BABD-4871-8E5B-7C2C2C6BDEC0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Handlebars.NET", "Third Party\Handlebars.NET\Handlebars.NET.csproj", "{262E123E-4845-481F-945B-15014C8D4B33}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Simple.MAPI.NET", "Third Party\Simple.MAPI.NET\Simple.MAPI.NET.csproj", "{4691FCA7-70E4-471A-B716-81FA87293E2E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Research", "Research", "{06E39E78-791A-4008-A165-A69FAE43D8D3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repository Items", "Repository Items", "{5D85B551-9AFC-4E96-93C3-D8D81B69971F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build System", "Build System", "{87BE2145-50BE-4A57-9C79-FCE5A64F6065}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\build.cmd = ..\..\build.cmd
+		..\..\build.proj = ..\..\build.proj
+		Directory.Build.props = Directory.Build.props
+		..\..\Directory.Build.props = ..\..\Directory.Build.props
+		Directory.Build.targets = Directory.Build.targets
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Markdown", "Markdown", "{A7A69BC2-7682-43FB-8E7C-C42FDAA2A215}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\Documents\Modules\Canary Modules.md = ..\..\Documents\Modules\Canary Modules.md
+		..\..\Documents\Examples\Examples.md = ..\..\Documents\Examples\Examples.md
+		..\..\Documents\Modules\NuGet Package Information.md = ..\..\Documents\Modules\NuGet Package Information.md
+		..\..\Documents\Help\Prerequisites.md = ..\..\Documents\Help\Prerequisites.md
+		..\..\README.md = ..\..\README.md
+		..\..\Documents\Modules\Stable Modules.md = ..\..\Documents\Modules\Stable Modules.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,13 +46,33 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{97D2EDF3-E97E-45BC-B2E3-52337E09050A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{97D2EDF3-E97E-45BC-B2E3-52337E09050A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{97D2EDF3-E97E-45BC-B2E3-52337E09050A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{97D2EDF3-E97E-45BC-B2E3-52337E09050A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1186C9CC-12CD-41B7-BBE6-7F7417725358}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1186C9CC-12CD-41B7-BBE6-7F7417725358}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1186C9CC-12CD-41B7-BBE6-7F7417725358}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1186C9CC-12CD-41B7-BBE6-7F7417725358}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32D5D8CE-BABD-4871-8E5B-7C2C2C6BDEC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32D5D8CE-BABD-4871-8E5B-7C2C2C6BDEC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32D5D8CE-BABD-4871-8E5B-7C2C2C6BDEC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32D5D8CE-BABD-4871-8E5B-7C2C2C6BDEC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{262E123E-4845-481F-945B-15014C8D4B33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{262E123E-4845-481F-945B-15014C8D4B33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{262E123E-4845-481F-945B-15014C8D4B33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{262E123E-4845-481F-945B-15014C8D4B33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4691FCA7-70E4-471A-B716-81FA87293E2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4691FCA7-70E4-471A-B716-81FA87293E2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4691FCA7-70E4-471A-B716-81FA87293E2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4691FCA7-70E4-471A-B716-81FA87293E2E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1186C9CC-12CD-41B7-BBE6-7F7417725358} = {E311F8C7-1F27-48CD-86BE-CC3D798163BE}
+		{32D5D8CE-BABD-4871-8E5B-7C2C2C6BDEC0} = {E311F8C7-1F27-48CD-86BE-CC3D798163BE}
+		{262E123E-4845-481F-945B-15014C8D4B33} = {E311F8C7-1F27-48CD-86BE-CC3D798163BE}
+		{4691FCA7-70E4-471A-B716-81FA87293E2E} = {E311F8C7-1F27-48CD-86BE-CC3D798163BE}
+		{87BE2145-50BE-4A57-9C79-FCE5A64F6065} = {5D85B551-9AFC-4E96-93C3-D8D81B69971F}
+		{A7A69BC2-7682-43FB-8E7C-C42FDAA2A215} = {5D85B551-9AFC-4E96-93C3-D8D81B69971F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A7CE7732-0982-4703-8EFD-7715D569BAB5}
