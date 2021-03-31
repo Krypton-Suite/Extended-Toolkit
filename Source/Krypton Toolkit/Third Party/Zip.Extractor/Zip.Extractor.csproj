@@ -19,6 +19,7 @@
   <ItemGroup>
     <PackageReference Include="Krypton.Toolkit" Version="5.550.2103.1" />
   </ItemGroup>
+  
   <ItemGroup>
     <ProjectReference Include="..\Zip.Storer\Zip.Storer.csproj" />
   </ItemGroup>  
