@@ -108,6 +108,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton.Toolkit.Suite.Exten
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton.Toolkit.Suite.Extended.Utilities", "Shared\Krypton.Toolkit.Suite.Extended.Utilities\Krypton.Toolkit.Suite.Extended.Utilities.csproj", "{7BA75AAC-7D3E-4ED3-9562-8176380BC49C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ILRepack.Lib.MSBuild.Task", "Third Party\ILRepack.Lib.MSBuild.Task\ILRepack.Lib.MSBuild.Task.csproj", "{66DD6657-39B3-4ACF-9EE9-B60EF96A2262}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zip.Storer", "Third Party\Zip.Storer\Zip.Storer.csproj", "{7A5B99D8-8925-4831-9704-2A211C0F470A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -266,6 +270,14 @@ Global
 		{7BA75AAC-7D3E-4ED3-9562-8176380BC49C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7BA75AAC-7D3E-4ED3-9562-8176380BC49C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7BA75AAC-7D3E-4ED3-9562-8176380BC49C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66DD6657-39B3-4ACF-9EE9-B60EF96A2262}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66DD6657-39B3-4ACF-9EE9-B60EF96A2262}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66DD6657-39B3-4ACF-9EE9-B60EF96A2262}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66DD6657-39B3-4ACF-9EE9-B60EF96A2262}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A5B99D8-8925-4831-9704-2A211C0F470A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A5B99D8-8925-4831-9704-2A211C0F470A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A5B99D8-8925-4831-9704-2A211C0F470A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A5B99D8-8925-4831-9704-2A211C0F470A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -311,6 +323,8 @@ Global
 		{31A508E4-D3F7-4F55-A0C5-1F0ED4E69BFC} = {726DC0AA-2B0D-4EAC-BB7A-7C49AE13A390}
 		{0851A3F7-8FB9-4E57-965E-76B835587639} = {726DC0AA-2B0D-4EAC-BB7A-7C49AE13A390}
 		{7BA75AAC-7D3E-4ED3-9562-8176380BC49C} = {726DC0AA-2B0D-4EAC-BB7A-7C49AE13A390}
+		{66DD6657-39B3-4ACF-9EE9-B60EF96A2262} = {E311F8C7-1F27-48CD-86BE-CC3D798163BE}
+		{7A5B99D8-8925-4831-9704-2A211C0F470A} = {E311F8C7-1F27-48CD-86BE-CC3D798163BE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A7CE7732-0982-4703-8EFD-7715D569BAB5}
