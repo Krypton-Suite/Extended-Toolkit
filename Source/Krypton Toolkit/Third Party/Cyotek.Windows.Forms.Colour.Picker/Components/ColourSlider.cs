@@ -1378,7 +1378,7 @@ namespace Cyotek.Windows.Forms.Colour.Picker
                 {
                     switch (this.BarStyle)
                     {
-                        case ColorBarStyle.TwoColor:
+                        case ColourBarStyle.TwoColour:
                             blend.Colors = new[]
                                            {
                                this.Colour1,
@@ -1390,7 +1390,7 @@ namespace Cyotek.Windows.Forms.Colour.Picker
                                   1F
                                 };
                             break;
-                        case ColorBarStyle.ThreeColor:
+                        case ColourBarStyle.ThreeColour:
                             blend.Colors = new[]
                                            {
                                this.Colour1,
@@ -1404,8 +1404,8 @@ namespace Cyotek.Windows.Forms.Colour.Picker
                                   1
                                 };
                             break;
-                        case ColorBarStyle.Custom:
-                            ColorCollection custom;
+                        case ColourBarStyle.Custom:
+                            ColourCollection custom;
                             int count;
 
                             custom = this.CustomColours;

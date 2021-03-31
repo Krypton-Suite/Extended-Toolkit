@@ -155,7 +155,7 @@ namespace Cyotek.Windows.Forms.Colour.Picker
             }
         }
 
-        public static ColourCollection NamedColors
+        public static ColourCollection NamedColours
         {
             get
             {
@@ -835,7 +835,7 @@ namespace Cyotek.Windows.Forms.Colour.Picker
             switch (palette)
             {
                 case ColourPalette.Named:
-                    result = NamedColors;
+                    result = NamedColours;
                     break;
                 case ColourPalette.Office2010:
                     result = Office2010Standard;
@@ -875,9 +875,9 @@ namespace Cyotek.Windows.Forms.Colour.Picker
             {
                 foreach (Color color in topRow)
                 {
-                    HslColor hsl;
+                    HslColour hsl;
 
-                    hsl = new HslColor(color);
+                    hsl = new HslColour(color);
                     hsl.L = (5 + i + 16 * i) / 100D;
 
                     results.Add(hsl.ToRgbColor());

@@ -45,27 +45,27 @@ namespace Cyotek.Windows.Forms.Colour.Picker
             this.rgbHeaderLabel = new Krypton.Toolkit.KryptonLabel();
             this.rLabel = new Krypton.Toolkit.KryptonLabel();
             this.rNumericUpDown = new Krypton.Toolkit.KryptonNumericUpDown();
-            this.rColorBar = new Cyotek.Windows.Forms.RgbaColorSlider();
+            this.rColorBar = new RgbaColourSlider();
             this.gLabel = new Krypton.Toolkit.KryptonLabel();
-            this.gColorBar = new Cyotek.Windows.Forms.RgbaColorSlider();
+            this.gColorBar = new RgbaColourSlider();
             this.gNumericUpDown = new Krypton.Toolkit.KryptonNumericUpDown();
             this.bLabel = new Krypton.Toolkit.KryptonLabel();
-            this.bColorBar = new Cyotek.Windows.Forms.RgbaColorSlider();
+            this.bColorBar = new RgbaColourSlider();
             this.bNumericUpDown = new Krypton.Toolkit.KryptonNumericUpDown();
             this.hexLabel = new Krypton.Toolkit.KryptonLabel();
             this.hexTextBox = new Krypton.Toolkit.KryptonComboBox();
             this.lNumericUpDown = new Krypton.Toolkit.KryptonNumericUpDown();
-            this.lColorBar = new Cyotek.Windows.Forms.LightnessColorSlider();
+            this.lColorBar = new LightnessColourSlider();
             this.lLabel = new Krypton.Toolkit.KryptonLabel();
             this.sNumericUpDown = new Krypton.Toolkit.KryptonNumericUpDown();
-            this.sColorBar = new Cyotek.Windows.Forms.SaturationColorSlider();
+            this.sColorBar = new SaturationColourSlider();
             this.sLabel = new Krypton.Toolkit.KryptonLabel();
-            this.hColorBar = new Cyotek.Windows.Forms.HueColorSlider();
+            this.hColorBar = new HueColourSlider();
             this.hNumericUpDown = new Krypton.Toolkit.KryptonNumericUpDown();
             this.hLabel = new Krypton.Toolkit.KryptonLabel();
             this.hslLabel = new Krypton.Toolkit.KryptonLabel();
             this.aNumericUpDown = new Krypton.Toolkit.KryptonNumericUpDown();
-            this.aColorBar = new Cyotek.Windows.Forms.RgbaColorSlider();
+            this.aColorBar = new RgbaColourSlider();
             this.aLabel = new Krypton.Toolkit.KryptonLabel();
             ((System.ComponentModel.ISupportInitialize)(this.rNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gNumericUpDown)).BeginInit();
@@ -127,7 +127,7 @@ namespace Cyotek.Windows.Forms.Colour.Picker
             // 
             // gColorBar
             // 
-            this.gColorBar.Channel = Cyotek.Windows.Forms.RgbaChannel.Green;
+            this.gColorBar.Channel = RgbaChannel.Green;
             this.gColorBar.Location = new System.Drawing.Point(27, 39);
             this.gColorBar.Name = "gColorBar";
             this.gColorBar.Size = new System.Drawing.Size(72, 20);
@@ -159,7 +159,7 @@ namespace Cyotek.Windows.Forms.Colour.Picker
             // 
             // bColorBar
             // 
-            this.bColorBar.Channel = Cyotek.Windows.Forms.RgbaChannel.Blue;
+            this.bColorBar.Channel = RgbaChannel.Blue;
             this.bColorBar.Location = new System.Drawing.Point(27, 65);
             this.bColorBar.Name = "bColorBar";
             this.bColorBar.Size = new System.Drawing.Size(72, 20);
@@ -310,7 +310,7 @@ namespace Cyotek.Windows.Forms.Colour.Picker
             // 
             // aColorBar
             // 
-            this.aColorBar.Channel = Cyotek.Windows.Forms.RgbaChannel.Alpha;
+            this.aColorBar.Channel = RgbaChannel.Alpha;
             this.aColorBar.Location = new System.Drawing.Point(27, 216);
             this.aColorBar.Name = "aColorBar";
             this.aColorBar.Size = new System.Drawing.Size(72, 20);
@@ -329,7 +329,7 @@ namespace Cyotek.Windows.Forms.Colour.Picker
             // ColorEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = Krypton.Toolkit.KryptonAutoScaleMode.Font;
+            this.AutoScaleMode = AutoScaleMode.Font;
             this.Controls.Add(this.aLabel);
             this.Controls.Add(this.aNumericUpDown);
             this.Controls.Add(this.aColorBar);
@@ -374,27 +374,27 @@ namespace Cyotek.Windows.Forms.Colour.Picker
         private Krypton.Toolkit.KryptonLabel rgbHeaderLabel;
         private Krypton.Toolkit.KryptonLabel rLabel;
         private Krypton.Toolkit.KryptonNumericUpDown rNumericUpDown;
-        private RgbaColorSlider rColorBar;
+        private RgbaColourSlider rColorBar;
         private Krypton.Toolkit.KryptonLabel gLabel;
-        private RgbaColorSlider gColorBar;
+        private RgbaColourSlider gColorBar;
         private Krypton.Toolkit.KryptonNumericUpDown gNumericUpDown;
         private Krypton.Toolkit.KryptonLabel bLabel;
-        private RgbaColorSlider bColorBar;
+        private RgbaColourSlider bColorBar;
         private Krypton.Toolkit.KryptonNumericUpDown bNumericUpDown;
         private Krypton.Toolkit.KryptonLabel hexLabel;
         private Krypton.Toolkit.KryptonComboBox hexTextBox;
         private Krypton.Toolkit.KryptonNumericUpDown lNumericUpDown;
-        private LightnessColorSlider lColorBar;
+        private LightnessColourSlider lColorBar;
         private Krypton.Toolkit.KryptonLabel lLabel;
         private Krypton.Toolkit.KryptonNumericUpDown sNumericUpDown;
-        private SaturationColorSlider sColorBar;
+        private SaturationColourSlider sColorBar;
         private Krypton.Toolkit.KryptonLabel sLabel;
-        private HueColorSlider hColorBar;
+        private HueColourSlider hColorBar;
         private Krypton.Toolkit.KryptonNumericUpDown hNumericUpDown;
         private Krypton.Toolkit.KryptonLabel hLabel;
         private Krypton.Toolkit.KryptonLabel hslLabel;
         private Krypton.Toolkit.KryptonNumericUpDown aNumericUpDown;
-        private RgbaColorSlider aColorBar;
+        private RgbaColourSlider aColorBar;
         private Krypton.Toolkit.KryptonLabel aLabel;
         #endregion
 
@@ -498,7 +498,7 @@ namespace Cyotek.Windows.Forms.Colour.Picker
                     }
                     else
                     {
-                        this.OnColorChanged(EventArgs.Empty);
+                        this.OnColourChanged(EventArgs.Empty);
                     }
                 }
             }
@@ -570,7 +570,7 @@ namespace Cyotek.Windows.Forms.Colour.Picker
         /// Raises the <see cref="ColorChanged" /> event.
         /// </summary>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        protected virtual void OnColorChanged(EventArgs e)
+        protected virtual void OnColourChanged(EventArgs e)
         {
             EventHandler handler;
 
@@ -843,11 +843,11 @@ namespace Cyotek.Windows.Forms.Colour.Picker
                         bNumericUpDown.Value = this.Colour.B;
                     }
                     rColorBar.Value = this.Colour.R;
-                    rColorBar.Color = this.Colour;
+                    rColorBar.Colour = this.Colour;
                     gColorBar.Value = this.Colour.G;
-                    gColorBar.Color = this.Colour;
+                    gColorBar.Colour = this.Colour;
                     bColorBar.Value = this.Colour.B;
-                    bColorBar.Color = this.Colour;
+                    bColorBar.Colour = this.Colour;
 
                     // HTML
                     if (!(userAction && hexTextBox.Focused))
@@ -869,9 +869,9 @@ namespace Cyotek.Windows.Forms.Colour.Picker
                         lNumericUpDown.Value = (int)(this.HslColour.L * 100);
                     }
                     hColorBar.Value = (int)this.HslColour.H;
-                    sColorBar.Color = this.Colour;
+                    sColorBar.Colour = this.Colour;
                     sColorBar.Value = (int)(this.HslColour.S * 100);
-                    lColorBar.Color = this.Colour;
+                    lColorBar.Colour = this.Colour;
                     lColorBar.Value = (int)(this.HslColour.L * 100);
 
                     // Alpha
@@ -879,7 +879,7 @@ namespace Cyotek.Windows.Forms.Colour.Picker
                     {
                         aNumericUpDown.Value = this.Colour.A;
                     }
-                    aColorBar.Color = this.Colour;
+                    aColorBar.Colour = this.Colour;
                     aColorBar.Value = this.Colour.A;
                 }
                 finally
@@ -1136,7 +1136,7 @@ namespace Cyotek.Windows.Forms.Colour.Picker
                 {
                     Color color;
 
-                    color = useNamed ? Colour.FromName(hexTextBox.Text) : Color.FromArgb((int)aNumericUpDown.Value, (int)rNumericUpDown.Value, (int)gNumericUpDown.Value, (int)bNumericUpDown.Value);
+                    color = useNamed ? Color.FromName(hexTextBox.Text) : Color.FromArgb((int)aNumericUpDown.Value, (int)rNumericUpDown.Value, (int)gNumericUpDown.Value, (int)bNumericUpDown.Value);
 
                     this.Colour = color;
                     this.HslColour = new HslColour(color);
@@ -1200,7 +1200,7 @@ namespace Cyotek.Windows.Forms.Colour.Picker
                     }
                     else
                     {
-                        this.OnColorChanged(EventArgs.Empty);
+                        this.OnColourChanged(EventArgs.Empty);
                     }
                 }
             }

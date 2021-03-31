@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -343,8 +344,8 @@ namespace Cyotek.Windows.Forms.Colour.Picker
         }
 
         [Category("Appearance")]
-        [DefaultValue(typeof(ColorCellBorderStyle), "FixedSingle")]
-        public virtual ColorCellBorderStyle CellBorderStyle
+        [DefaultValue(typeof(ColourCellBorderStyle), "FixedSingle")]
+        public virtual ColourCellBorderStyle CellBorderStyle
         {
             get { return _cellBorderStyle; }
             set
@@ -812,7 +813,7 @@ namespace Cyotek.Windows.Forms.Colour.Picker
             result.Index = colorIndex;
             if (colorIndex != InvalidIndex)
             {
-                result.Colour = colorIndex < this.Colours.Count + this.CustomColours.Count ? this.GetColour(colorIndex) : Colour.White;
+                result.Colour = colorIndex < this.Colours.Count + this.CustomColours.Count ? this.GetColour(colorIndex) : Color.White;
                 result.Source = this.GetColourSource(colorIndex);
             }
             else
@@ -979,7 +980,7 @@ namespace Cyotek.Windows.Forms.Colour.Picker
                 if (dialog.ShowDialog(this) == DialogResult.OK)
                 {
                     this.BeginUpdate();
-                    this.SetColor(colorIndex, dialog.Colour);
+                    this.SetColour(colorIndex, dialog.Colour);
                     this.Colour = dialog.Colour;
                     this.EndUpdate();
                 }
@@ -1371,12 +1372,12 @@ namespace Cyotek.Windows.Forms.Colour.Picker
         /// <summary>
         /// Raises the <see cref="EditingColor" /> event.
         /// </summary>
-        /// <param name="e">The <see cref="EditColorCancelEventArgs" /> instance containing the event data.</param>
-        protected virtual void OnEditingColour(EditColorCancelEventArgs e)
+        /// <param name="e">The <see cref="EditColourCancelEventArgs" /> instance containing the event data.</param>
+        protected virtual void OnEditingColour(EditColourCancelEventArgs e)
         {
-            EventHandler<EditColorCancelEventArgs> handler;
+            EventHandler<EditColourCancelEventArgs> handler;
 
-            handler = (EventHandler<EditColorCancelEventArgs>)this.Events[_eventEditingColor];
+            handler = (EventHandler<EditColourCancelEventArgs>)this.Events[_eventEditingColor];
 
             handler?.Invoke(this, e);
         }
@@ -1471,7 +1472,7 @@ namespace Cyotek.Windows.Forms.Colour.Picker
 
                         source = this.GetColourSource(this.ColourIndex);
 
-                        if (source == ColourSource.Custom && this.EditMode != ColorEditingMode.None || source == ColourSource.Standard && this.EditMode == ColorEditingMode.Both)
+                        if (source == ColourSource.Custom && this.EditMode != ColourEditingMode.None || source == ColourSource.Standard && this.EditMode == ColourEditingMode.Both)
                         {
                             e.Handled = true;
 
@@ -1518,7 +1519,7 @@ namespace Cyotek.Windows.Forms.Colour.Picker
 
             hitTest = this.HitTest(e.Location);
 
-            if (e.Button == MouseButtons.Left && (hitTest.Source == ColourSource.Custom && this.EditMode != ColorEditingMode.None || hitTest.Source == ColourSource.Standard && this.EditMode == ColorEditingMode.Both))
+            if (e.Button == MouseButtons.Left && (hitTest.Source == ColourSource.Custom && this.EditMode != ColourEditingMode.None || hitTest.Source == ColourSource.Standard && this.EditMode == ColourEditingMode.Both))
             {
                 this.StartColorEdit(hitTest.Index);
             }
@@ -1767,20 +1768,20 @@ namespace Cyotek.Windows.Forms.Colour.Picker
 
             switch (this.CellBorderStyle)
             {
-                case ColorCellBorderStyle.FixedSingle:
+                case ColourCellBorderStyle.FixedSingle:
                     using (Pen pen = new Pen(this.CellBorderColor))
                     {
                         e.Graphics.DrawRectangle(pen, bounds.Left, bounds.Top, bounds.Width - 1, bounds.Height - 1);
                     }
                     break;
-                case ColorCellBorderStyle.DoubleSoft:
-                    HslColor shadedOuter;
-                    HslColor shadedInner;
+                case ColourCellBorderStyle.DoubleSoft:
+                    HslColour shadedOuter;
+                    HslColour shadedInner;
 
-                    shadedOuter = new HslColor(color);
+                    shadedOuter = new HslColour(color);
                     shadedOuter.L -= 0.50;
 
-                    shadedInner = new HslColor(color);
+                    shadedInner = new HslColour(color);
                     shadedInner.L -= 0.20;
 
                     using (Pen pen = new Pen(this.CellBorderColor))
@@ -1788,11 +1789,11 @@ namespace Cyotek.Windows.Forms.Colour.Picker
                         e.Graphics.DrawRectangle(pen, bounds.Left, bounds.Top, bounds.Width - 1, bounds.Height - 1);
                     }
                     e.Graphics.DrawRectangle(Pens.White, bounds.Left + 1, bounds.Top + 1, bounds.Width - 3, bounds.Height - 3);
-                    using (Pen pen = new Pen(Colour.FromArgb(32, shadedOuter.ToRgbColor())))
+                    using (Pen pen = new Pen(Color.FromArgb(32, shadedOuter.ToRgbColor())))
                     {
                         e.Graphics.DrawRectangle(pen, bounds.Left + 2, bounds.Top + 2, bounds.Width - 5, bounds.Height - 5);
                     }
-                    using (Pen pen = new Pen(Colour.FromArgb(32, shadedInner.ToRgbColor())))
+                    using (Pen pen = new Pen(Color.FromArgb(32, shadedInner.ToRgbColor())))
                     {
                         e.Graphics.DrawRectangle(pen, bounds.Left + 3, bounds.Top + 3, bounds.Width - 7, bounds.Height - 7);
                     }
@@ -1900,7 +1901,7 @@ namespace Cyotek.Windows.Forms.Colour.Picker
 
                 if (hitTest.Source != ColourSource.None)
                 {
-                    this.Colour = hitTest.Color;
+                    this.Colour = hitTest.Colour;
                     this.ColourIndex = hitTest.Index;
                 }
             }
@@ -2037,10 +2038,10 @@ namespace Cyotek.Windows.Forms.Colour.Picker
         {
             if (value != null)
             {
-                value.ItemInserted -= this.ColorsCollectionChangedHandler;
-                value.ItemRemoved -= this.ColorsCollectionChangedHandler;
-                value.ItemsCleared -= this.ColorsCollectionChangedHandler;
-                value.ItemReplaced -= this.ColorsCollectionItemReplacedHandler;
+                value.ItemInserted -= this.ColoursCollectionChangedHandler;
+                value.ItemRemoved -= this.ColoursCollectionChangedHandler;
+                value.ItemsCleared -= this.ColoursCollectionChangedHandler;
+                value.ItemReplaced -= this.ColoursCollectionItemReplacedHandler;
             }
         }
 
@@ -2087,9 +2088,9 @@ namespace Cyotek.Windows.Forms.Colour.Picker
 
         private void StartColorEdit(int index)
         {
-            EditColorCancelEventArgs e;
+            EditColourCancelEventArgs e;
 
-            e = new EditColorCancelEventArgs(this.GetColour(index), index);
+            e = new EditColourCancelEventArgs(this.GetColour(index), index);
             this.OnEditingColour(e);
 
             if (!e.Cancel)

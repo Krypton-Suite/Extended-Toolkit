@@ -140,7 +140,7 @@ namespace Cyotek.Windows.Forms.Colour.Picker
             this.colorEditorManager.ColourEditor = this.colorEditor;
             this.colorEditorManager.ColourGrid = this.colorGrid;
             this.colorEditorManager.ColourWheel = this.colorWheel;
-            this.colorEditorManager.ScreenColorPicker = this.screenColorPicker;
+            this.colorEditorManager.ScreenColourPicker = this.screenColorPicker;
             this.colorEditorManager.ColourChanged += new System.EventHandler(this.colorEditorManager_ColorChanged);
             // 
             // ColorPickerDialog
@@ -318,12 +318,12 @@ namespace Cyotek.Windows.Forms.Colour.Picker
             using (ColorDialog dialog = new ColorDialog
             {
                 FullOpen = true,
-                Color = e.Color
+                Color = e.Colour
             })
             {
                 if (dialog.ShowDialog(this) == DialogResult.OK)
                 {
-                    colorGrid.Colours[e.ColorIndex] = dialog.Color;
+                    colorGrid.Colours[e.ColourIndex] = dialog.Color;
                 }
             }
         }

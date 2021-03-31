@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Cyotek.Windows.Forms.Colour.Picker
 {
@@ -131,8 +127,8 @@ namespace Cyotek.Windows.Forms.Colour.Picker
         /// Gets or sets the linked <see cref="ColourWheel"/>.
         /// </summary>
         [Category("Behavior")]
-        [DefaultValue(typeof(ColorWheel), null)]
-        public virtual ColorWheel ColourWheel
+        [DefaultValue(typeof(ColourWheel), null)]
+        public virtual ColourWheel ColourWheel
         {
             get { return _wheel; }
             set
@@ -168,16 +164,16 @@ namespace Cyotek.Windows.Forms.Colour.Picker
         }
 
         /// <summary>
-        /// Gets or sets the linked <see cref="LightnessColorSlider"/>.
+        /// Gets or sets the linked <see cref="LightnessColourSlider"/>.
         /// </summary>
         [Category("Behavior")]
-        [DefaultValue(typeof(LightnessColorSlider), null)]
-        public virtual LightnessColorSlider LightnessColorSlider
+        [DefaultValue(typeof(LightnessColourSlider), null)]
+        public virtual LightnessColourSlider LightnessColourSlider
         {
             get { return _lightnessColorSlider; }
             set
             {
-                if (this.LightnessColorSlider != value)
+                if (this.LightnessColourSlider != value)
                 {
                     _lightnessColorSlider = value;
 
@@ -187,16 +183,16 @@ namespace Cyotek.Windows.Forms.Colour.Picker
         }
 
         /// <summary>
-        /// Gets or sets the linked <see cref="ScreenColorPicker"/>.
+        /// Gets or sets the linked <see cref="ScreenColourPicker"/>.
         /// </summary>
         [Category("Behavior")]
-        [DefaultValue(typeof(ScreenColorPicker), null)]
-        public virtual ScreenColorPicker ScreenColorPicker
+        [DefaultValue(typeof(ScreenColourPicker), null)]
+        public virtual ScreenColourPicker ScreenColourPicker
         {
             get { return _screenColorPicker; }
             set
             {
-                if (this.ScreenColorPicker != value)
+                if (this.ScreenColourPicker != value)
                 {
                     _screenColorPicker = value;
 
@@ -218,10 +214,10 @@ namespace Cyotek.Windows.Forms.Colour.Picker
         /// <summary>
         /// Binds events for the specified editor.
         /// </summary>
-        /// <param name="control">The <see cref="IColorEditor"/> to bind to.</param>
-        protected virtual void BindEvents(IColorEditor control)
+        /// <param name="control">The <see cref="IColourEditor"/> to bind to.</param>
+        protected virtual void BindEvents(IColourEditor control)
         {
-            control.ColorChanged += this.ColorChangedHandler;
+            control.ColourChanged += this.ColorChangedHandler;
         }
 
         /// <summary>
@@ -301,9 +297,9 @@ namespace Cyotek.Windows.Forms.Colour.Picker
         {
             EventHandler handler;
 
-            if (this.LightnessColorSlider != null)
+            if (this.LightnessColourSlider != null)
             {
-                this.BindEvents(this.LightnessColorSlider);
+                this.BindEvents(this.LightnessColourSlider);
             }
 
             handler = (EventHandler)this.Events[_eventLightnessColorSliderChanged];
@@ -319,9 +315,9 @@ namespace Cyotek.Windows.Forms.Colour.Picker
         {
             EventHandler handler;
 
-            if (this.ScreenColorPicker != null)
+            if (this.ScreenColourPicker != null)
             {
-                this.BindEvents(this.ScreenColorPicker);
+                this.BindEvents(this.ScreenColourPicker);
             }
 
             handler = (EventHandler)this.Events[_eventScreenColorPickerChanged];
@@ -332,21 +328,21 @@ namespace Cyotek.Windows.Forms.Colour.Picker
         /// <summary>
         /// Sets the color of the given editor.
         /// </summary>
-        /// <param name="control">The <see cref="IColorEditor"/> to update.</param>
-        /// <param name="sender">The <see cref="IColorEditor"/> triggering the update.</param>
-        protected virtual void SetColor(IColorEditor control, IColorEditor sender)
+        /// <param name="control">The <see cref="IColourEditor"/> to update.</param>
+        /// <param name="sender">The <see cref="IColourEditor"/> triggering the update.</param>
+        protected virtual void SetColor(IColourEditor control, IColourEditor sender)
         {
             if (control != null && control != sender)
             {
-                control.Color = sender.Color;
+                control.Colour = sender.Colour;
             }
         }
 
         /// <summary>
-        /// Synchronizes linked components with the specified <see cref="IColorEditor"/>.
+        /// Synchronizes linked components with the specified <see cref="IColourEditor"/>.
         /// </summary>
-        /// <param name="sender">The <see cref="IColorEditor"/> triggering the update.</param>
-        protected virtual void Synchronize(IColorEditor sender)
+        /// <param name="sender">The <see cref="IColourEditor"/> triggering the update.</param>
+        protected virtual void Synchronize(IColourEditor sender)
         {
             if (!this.LockUpdates)
             {
@@ -355,9 +351,9 @@ namespace Cyotek.Windows.Forms.Colour.Picker
                     this.LockUpdates = true;
                     this.SetColor(this.ColourGrid, sender);
                     this.SetColor(this.ColourWheel, sender);
-                    this.SetColor(this.ScreenColorPicker, sender);
+                    this.SetColor(this.ScreenColourPicker, sender);
                     this.SetColor(this.ColourEditor, sender);
-                    this.SetColor(this.LightnessColorSlider, sender);
+                    this.SetColor(this.LightnessColourSlider, sender);
                 }
                 finally
                 {
@@ -375,12 +371,12 @@ namespace Cyotek.Windows.Forms.Colour.Picker
         {
             if (!this.LockUpdates)
             {
-                IColorEditor source;
+                IColourEditor source;
 
-                source = (IColorEditor)sender;
+                source = (IColourEditor)sender;
 
                 this.LockUpdates = true;
-                this.Colour = source.Color;
+                this.Colour = source.Colour;
                 this.LockUpdates = false;
                 this.Synchronize(source);
             }
@@ -388,7 +384,7 @@ namespace Cyotek.Windows.Forms.Colour.Picker
 
         #endregion
 
-        #region IColorEditor Interface
+        #region IColourEditor Interface
 
         [Category("Property Changed")]
         public event EventHandler ColourChanged
@@ -411,7 +407,7 @@ namespace Cyotek.Windows.Forms.Colour.Picker
                 if (_color != value)
                 {
                     _color = value;
-                    _hslColor = new HslColor(value);
+                    _hslColor = new HslColour(value);
 
                     this.OnColorChanged(EventArgs.Empty);
                 }
