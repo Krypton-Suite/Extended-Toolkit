@@ -1,0 +1,136 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31025.218
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Main", "Main", "{252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{726DC0AA-2B0D-4EAC-BB7A-7C49AE13A390}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Third Party", "Third Party", "{E311F8C7-1F27-48CD-86BE-CC3D798163BE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Mark.NET", "Third Party\Common.Mark.NET\Common.Mark.NET.csproj", "{1186C9CC-12CD-41B7-BBE6-7F7417725358}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cyotek.Windows.Forms.Colour.Picker", "Third Party\Cyotek.Windows.Forms.Colour.Picker\Cyotek.Windows.Forms.Colour.Picker.csproj", "{32D5D8CE-BABD-4871-8E5B-7C2C2C6BDEC0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Handlebars.NET", "Third Party\Handlebars.NET\Handlebars.NET.csproj", "{262E123E-4845-481F-945B-15014C8D4B33}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Simple.MAPI.NET", "Third Party\Simple.MAPI.NET\Simple.MAPI.NET.csproj", "{4691FCA7-70E4-471A-B716-81FA87293E2E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Research", "Research", "{06E39E78-791A-4008-A165-A69FAE43D8D3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repository Items", "Repository Items", "{5D85B551-9AFC-4E96-93C3-D8D81B69971F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build System", "Build System", "{87BE2145-50BE-4A57-9C79-FCE5A64F6065}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\build.cmd = ..\..\build.cmd
+		..\..\build.proj = ..\..\build.proj
+		Directory.Build.props = Directory.Build.props
+		..\..\Directory.Build.props = ..\..\Directory.Build.props
+		Directory.Build.targets = Directory.Build.targets
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Markdown", "Markdown", "{A7A69BC2-7682-43FB-8E7C-C42FDAA2A215}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\Documents\Modules\Canary Modules.md = ..\..\Documents\Modules\Canary Modules.md
+		..\..\Documents\Examples\Examples.md = ..\..\Documents\Examples\Examples.md
+		..\..\Documents\Modules\NuGet Package Information.md = ..\..\Documents\Modules\NuGet Package Information.md
+		..\..\Documents\Help\Prerequisites.md = ..\..\Documents\Help\Prerequisites.md
+		..\..\README.md = ..\..\README.md
+		..\..\Documents\Modules\Stable Modules.md = ..\..\Documents\Modules\Stable Modules.md
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Messagebox", "Main\Krypton.Toolkit.Suite.Extended.Messagebox\Krypton.Toolkit.Suite.Extended.Messagebox.csproj", "{CF885412-B8C5-449B-A7AE-D9E81F405A5C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Base", "Main\Krypton.Toolkit.Suite.Extended.Base\Krypton.Toolkit.Suite.Extended.Base.csproj", "{E63A630D-DF59-48E7-8792-5B64530DD680}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Drawing.Utilities", "Main\Krypton.Toolkit.Suite.Extended.Drawing.Utilities\Krypton.Toolkit.Suite.Extended.Drawing.Utilities.csproj", "{D826A960-6CE3-4E8F-8028-ADE82D7BE4C1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Error.Reporting", "Main\Krypton.Toolkit.Suite.Extended.Error.Reporting\Krypton.Toolkit.Suite.Extended.Error.Reporting.csproj", "{C3AF5854-C865-4620-B678-26CEB4A1596B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Dialogs", "Main\Krypton.Toolkit.Suite.Extended.Dialogs\Krypton.Toolkit.Suite.Extended.Dialogs.csproj", "{48714D9F-E9DF-4F09-B29A-1B77EF522252}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box", "Main\Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box\Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box.csproj", "{D388B564-8277-4D64-B25F-F68594FFCE21}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar", "Main\Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar\Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar.csproj", "{26802C83-BA7F-4D1A-B496-F54CBE6E5CBC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton.Toolkit.Suite.Extended.Data.Visualisation", "Main\Krypton.Toolkit.Suite.Extended.Data.Visualisation\Krypton.Toolkit.Suite.Extended.Data.Visualisation.csproj", "{A2E6AB58-8DDC-4E0F-B69A-E355761D1148}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1186C9CC-12CD-41B7-BBE6-7F7417725358}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1186C9CC-12CD-41B7-BBE6-7F7417725358}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1186C9CC-12CD-41B7-BBE6-7F7417725358}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1186C9CC-12CD-41B7-BBE6-7F7417725358}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32D5D8CE-BABD-4871-8E5B-7C2C2C6BDEC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32D5D8CE-BABD-4871-8E5B-7C2C2C6BDEC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32D5D8CE-BABD-4871-8E5B-7C2C2C6BDEC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32D5D8CE-BABD-4871-8E5B-7C2C2C6BDEC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{262E123E-4845-481F-945B-15014C8D4B33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{262E123E-4845-481F-945B-15014C8D4B33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{262E123E-4845-481F-945B-15014C8D4B33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{262E123E-4845-481F-945B-15014C8D4B33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4691FCA7-70E4-471A-B716-81FA87293E2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4691FCA7-70E4-471A-B716-81FA87293E2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4691FCA7-70E4-471A-B716-81FA87293E2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4691FCA7-70E4-471A-B716-81FA87293E2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF885412-B8C5-449B-A7AE-D9E81F405A5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF885412-B8C5-449B-A7AE-D9E81F405A5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF885412-B8C5-449B-A7AE-D9E81F405A5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF885412-B8C5-449B-A7AE-D9E81F405A5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E63A630D-DF59-48E7-8792-5B64530DD680}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E63A630D-DF59-48E7-8792-5B64530DD680}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E63A630D-DF59-48E7-8792-5B64530DD680}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E63A630D-DF59-48E7-8792-5B64530DD680}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D826A960-6CE3-4E8F-8028-ADE82D7BE4C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D826A960-6CE3-4E8F-8028-ADE82D7BE4C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D826A960-6CE3-4E8F-8028-ADE82D7BE4C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D826A960-6CE3-4E8F-8028-ADE82D7BE4C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3AF5854-C865-4620-B678-26CEB4A1596B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3AF5854-C865-4620-B678-26CEB4A1596B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3AF5854-C865-4620-B678-26CEB4A1596B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3AF5854-C865-4620-B678-26CEB4A1596B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48714D9F-E9DF-4F09-B29A-1B77EF522252}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48714D9F-E9DF-4F09-B29A-1B77EF522252}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48714D9F-E9DF-4F09-B29A-1B77EF522252}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48714D9F-E9DF-4F09-B29A-1B77EF522252}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D388B564-8277-4D64-B25F-F68594FFCE21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D388B564-8277-4D64-B25F-F68594FFCE21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D388B564-8277-4D64-B25F-F68594FFCE21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D388B564-8277-4D64-B25F-F68594FFCE21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26802C83-BA7F-4D1A-B496-F54CBE6E5CBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26802C83-BA7F-4D1A-B496-F54CBE6E5CBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26802C83-BA7F-4D1A-B496-F54CBE6E5CBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26802C83-BA7F-4D1A-B496-F54CBE6E5CBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2E6AB58-8DDC-4E0F-B69A-E355761D1148}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2E6AB58-8DDC-4E0F-B69A-E355761D1148}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2E6AB58-8DDC-4E0F-B69A-E355761D1148}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2E6AB58-8DDC-4E0F-B69A-E355761D1148}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1186C9CC-12CD-41B7-BBE6-7F7417725358} = {E311F8C7-1F27-48CD-86BE-CC3D798163BE}
+		{32D5D8CE-BABD-4871-8E5B-7C2C2C6BDEC0} = {E311F8C7-1F27-48CD-86BE-CC3D798163BE}
+		{262E123E-4845-481F-945B-15014C8D4B33} = {E311F8C7-1F27-48CD-86BE-CC3D798163BE}
+		{4691FCA7-70E4-471A-B716-81FA87293E2E} = {E311F8C7-1F27-48CD-86BE-CC3D798163BE}
+		{87BE2145-50BE-4A57-9C79-FCE5A64F6065} = {5D85B551-9AFC-4E96-93C3-D8D81B69971F}
+		{A7A69BC2-7682-43FB-8E7C-C42FDAA2A215} = {5D85B551-9AFC-4E96-93C3-D8D81B69971F}
+		{CF885412-B8C5-449B-A7AE-D9E81F405A5C} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
+		{E63A630D-DF59-48E7-8792-5B64530DD680} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
+		{D826A960-6CE3-4E8F-8028-ADE82D7BE4C1} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
+		{C3AF5854-C865-4620-B678-26CEB4A1596B} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
+		{48714D9F-E9DF-4F09-B29A-1B77EF522252} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
+		{D388B564-8277-4D64-B25F-F68594FFCE21} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
+		{26802C83-BA7F-4D1A-B496-F54CBE6E5CBC} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
+		{A2E6AB58-8DDC-4E0F-B69A-E355761D1148} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A7CE7732-0982-4703-8EFD-7715D569BAB5}
+	EndGlobalSection
+EndGlobal
