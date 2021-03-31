@@ -73,7 +73,7 @@ namespace Cyotek.Windows.Forms.Colour.Picker
             // 
             // loadPaletteButton
             // 
-            this.loadPaletteButton.Values.Image = global::Properties.Resources.LoadPalette;
+            this.loadPaletteButton.Values.Image = global::Cyotek.Windows.Forms.Colour.Picker.Properties.Resources.palette_load;
             this.loadPaletteButton.Location = new System.Drawing.Point(12, 147);
             this.loadPaletteButton.Name = "loadPaletteButton";
             this.loadPaletteButton.Size = new System.Drawing.Size(23, 23);
@@ -83,20 +83,19 @@ namespace Cyotek.Windows.Forms.Colour.Picker
             // 
             // savePaletteButton
             // 
-            this.savePaletteButton.Values.Image = global::Properties.Resources.SavePalette;
+            this.savePaletteButton.Values.Image = global::Cyotek.Windows.Forms.Colour.Picker.Properties.Resources.palette_save;
             this.savePaletteButton.Location = new System.Drawing.Point(34, 147);
             this.savePaletteButton.Name = "savePaletteButton";
             this.savePaletteButton.Size = new System.Drawing.Size(23, 23);
             this.savePaletteButton.TabIndex = 6;
             this.toolTip.SetToolTip(this.savePaletteButton, "Save Palette");
-            this.savePaletteButton.UseVisualStyleBackColor = false;
             this.savePaletteButton.Click += new System.EventHandler(this.savePaletteButton_Click);
             // 
             // screenColorPicker
             // 
             this.screenColorPicker.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.screenColorPicker.Color = System.Drawing.Color.Black;
-            this.screenColorPicker.Image = global::Properties.Resources.eyedropper;
+            this.screenColorPicker.Colour = System.Drawing.Color.Black;
+            this.screenColorPicker.Image = global::Cyotek.Windows.Forms.Colour.Picker.Properties.Resources.eyedropper1;
             this.screenColorPicker.Location = new System.Drawing.Point(453, 83);
             this.screenColorPicker.Name = "screenColorPicker";
             this.screenColorPicker.Size = new System.Drawing.Size(73, 85);
@@ -105,7 +104,7 @@ namespace Cyotek.Windows.Forms.Colour.Picker
             // 
             // colorWheel
             // 
-            this.colorWheel.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.colorWheel.Colour = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.colorWheel.Location = new System.Drawing.Point(12, 12);
             this.colorWheel.Name = "colorWheel";
             this.colorWheel.Size = new System.Drawing.Size(192, 147);
