@@ -6,7 +6,6 @@
  */
 #endregion
 
-using Microsoft.VisualBasic;
 using System;
 using System.ComponentModel;
 using System.Drawing;
@@ -99,8 +98,8 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             //ValueChanged += new ValueChangedEventHandler(ValueChanged);
 
             DottedPen = new Pen(getDarkColor(_KnobBorderColour, 40));
-            DottedPen.DashStyle = System.Drawing.Drawing2D.DashStyle.Dot;
-            DottedPen.DashCap = System.Drawing.Drawing2D.DashCap.Round;
+            DottedPen.DashStyle = DashStyle.Dot;
+            DottedPen.DashCap = DashCap.Round;
             setDimensions();
 
             InitColours();
@@ -362,7 +361,7 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         {
             Graphics g = e.Graphics;
 
-            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            g.SmoothingMode = SmoothingMode.AntiAlias;
 
             // create LinearGradientBrush for creating knob
             bKnob = new LinearGradientBrush(rKnob, getLightColor(KnobColour, 55), getDarkColor(KnobColour, 55), LinearGradientMode.ForwardDiagonal);

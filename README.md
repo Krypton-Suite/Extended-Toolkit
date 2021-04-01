@@ -9,6 +9,7 @@
 | Module Name | Current Version | GitHub License |
 |---|---|---|
 | <img src="https://img.shields.io/badge/Module-Base-orange.svg" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Base?label=Version&logo=nuget)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
+| <img src="https://img.shields.io/badge/Module-Circular Progress Bar-orange.svg" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar?label=Version&logo=nuget)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
 | <img src="https://img.shields.io/badge/Module-Drawing Suite-orange.svg" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Drawing.Suite?label=Version&logo=nuget)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
 | <img src="https://img.shields.io/badge/Module-Dialogs-orange.svg" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Dialogs?label=Version&logo=nuget)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
 | <img src="https://img.shields.io/badge/Module-Fast Coloured Textbox-orange.svg" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Fast.Coloured.Text.Box?label=Version&logo=nuget)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
@@ -29,6 +30,7 @@
 | Module Name | Current Version | GitHub License |
 |---|---|---|
 | <img src="https://img.shields.io/badge/Module-Base-yellow.svg" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Base.Canary?label=Version&logo=nuget)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
+| <img src="https://img.shields.io/badge/Module-Circular Progress Bar-yellow.svg" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar.Canary?label=Version&logo=nuget)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
 | <img src="https://img.shields.io/badge/Module-Data Visualisation-yellow.svg" /> | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Data.Visualisation.Canary?label=Version&logo=nuget)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
 | <img src="https://img.shields.io/badge/Module-Drawing Suite-yellow.svg" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Drawing.Suite.Canary?label=Version&logo=nuget)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
 | <img src="https://img.shields.io/badge/Module-Dialogs-yellow.svg" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Dialogs.Canary?label=Version&logo=nuget)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg) |
@@ -48,14 +50,21 @@
 
 # Documentation
 
-<a href="#"><img src="https://img.shields.io/badge/Documentation-Download File-orange.svg" alt="Download the extended toolkit documentation installer" /></a>
+<a href="https://github.com/Krypton-Suite/Help-Files/releases/download/5.550.2102/Krypton.Extended.Toolkit.Help.exe"><img src="https://img.shields.io/badge/Documentation-Download File-orange.svg" alt="Download the extended toolkit documentation installer" /></a>
 
 <!--
 =======
 
+## 2021-05-01 - Build 2105 - May 2021
+* New `Krypton.Toolkit.Suite.Extended.Toggle.Switch` module-->
+
+=======
+
 ## 2021-04-01 - Build 2104 - April 2021
 * Rewritten the `Krypton.Toolkit.Suite.Extended.Outlook.Grid` module
-* Implement [#36](https://github.com/Krypton-Suite/Extended-Toolkit/issues/36), Expose the OutlookGrid.Classes.OutlookGridRowComparer2 class-->
+* Implement [#36](https://github.com/Krypton-Suite/Extended-Toolkit/issues/36), Expose the `OutlookGrid.Classes.OutlookGridRowComparer2` class
+* Elevation events for command link button controls
+* New `Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar` module
 
 =======
 

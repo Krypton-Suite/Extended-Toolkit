@@ -517,7 +517,6 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Suite.Legacy
             this.cpbSelectedColour.Size = new System.Drawing.Size(114, 114);
             this.cpbSelectedColour.TabIndex = 5;
             this.cpbSelectedColour.TabStop = false;
-            this.cpbSelectedColour.ToolTipValues = null;
             this.cpbSelectedColour.BackColorChanged += new System.EventHandler(this.CpbSelectedColour_BackColorChanged);
             // 
             // kryptonGreenValueLabel1

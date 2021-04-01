@@ -18,19 +18,19 @@
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Authors>Peter William Wagner &amp; Simon Coghlan, Thomas Bolon, JDH Software</Authors>
     <Description>An extension to the standard krypton toolkit to support .NET Core, .NET 5 and the latest .NET 3.5/4.x framework. A Data Grid View with multi sorting and multi grouping abilities.</Description>
-    <Copyright>Copyright © JDH Software 2013 - 2018. Then modifications by Peter Wagner (aka Wagnerp) &amp; Simon Coghlan (aka Smurf-IV) 2020 - 2021. All rights reserved.</Copyright>
+    <Copyright>Copyright © JDH Software 2013 - 2018. Then modifications by Peter Wagner (aka Wagnerp) &amp; Simon Coghlan (aka Smurf-IV) 2018 - 2021. All rights reserved.</Copyright>
     <RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
     <PackageLicenseExpression>MS-PL</PackageLicenseExpression>
   </PropertyGroup>
 
-  <!--Canary package configuration-
+  <!--Canary package configuration->
   <PropertyGroup>
     <PackageId>Krypton.Toolkit.Suite.Extended.Outlook.Grid.Canary</PackageId>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Canary</PackageOutputPath>
     <PackageIcon>Canary.png</PackageIcon>
-    <AssemblyVersion>6.0.2103</AssemblyVersion>
-    <FileVersion>6.0.2103</FileVersion>
-    <Version>6.0.2103</Version>
+    <AssemblyVersion>6.0.2104</AssemblyVersion>
+    <FileVersion>6.0.2104</FileVersion>
+    <Version>6.0.2104</Version>
   </PropertyGroup>-->
 
   <!--Nightly package configuration-
@@ -41,35 +41,37 @@
     <VersionSuffix>pre$([System.DateTime]::UtcNow.ToString(yyyyMMdd-HHmm))</VersionSuffix>
   </PropertyGroup>-->
 
-  <!--Stable NuGet package configuration-->
-  <PropertyGroup>
+  <!--Stable package configuration-->
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release'">
+    <OutputPath>..\..\..\..\Bin\$(configuration)\Build\Lib</OutputPath>
+    <DebugType>pdbonly</DebugType>
     <PackageId>Krypton.Toolkit.Suite.Extended.Outlook.Grid</PackageId>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Stable</PackageOutputPath>
     <PackageIcon>Stable.png</PackageIcon>
-    <AssemblyVersion>5.550.2103</AssemblyVersion>
-    <FileVersion>5.550.2103</FileVersion>
-    <Version>5.550.2103</Version>
-  </PropertyGroup>-->
+    <AssemblyVersion>5.550.2104</AssemblyVersion>
+    <FileVersion>5.550.2104</FileVersion>
+    <Version>5.550.2104</Version>
+  </PropertyGroup>
   
    <!--Stable NuGet packages-->
   <ItemGroup>
     <PackageReference Include="Krypton.Toolkit" Version="5.550.2103" />
-  </ItemGroup>-->
+  </ItemGroup>
 
-  <!--Canary NuGet package configuration-
+  <!--Canary NuGet package configuration->
   <ItemGroup>
-    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2101" />
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2103.6" />
   </ItemGroup>-->
 
   <ItemGroup>
     <!--Canary icon-->
-    <!--<None Include="Package Icons\Canary.png" Pack="true" PackagePath="\" />-->
+    <None Include="Package Icons\Canary.png" Pack="true" PackagePath="\" />
 
     <!--Stable icon-->
     <None Include="Package Icons\Stable.png" Pack="true" PackagePath="\" />
 
     <!--Nightly icon-->
-    <!--<None Include="Package Icons\Nightly.png" Pack="true" PackagePath="\" />-->
+    <None Include="Package Icons\Nightly.png" Pack="true" PackagePath="\" />
   </ItemGroup>
   
   <ItemGroup>
@@ -78,12 +80,30 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Update="Utilities\Language\Strings\en-US.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>en-US.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Utilities\Language\Strings\fr-FR.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>fr-FR.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   
   <ItemGroup>
     <EmbeddedResource Update="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Utilities\Language\Strings\en-US.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>en-US.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Utilities\Language\Strings\fr-FR.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>fr-FR.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 </Project>

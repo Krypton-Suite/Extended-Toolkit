@@ -18,7 +18,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
     /// Non-visual component to show a notification window in the right lower
     /// corner of the screen. Adapted from: https://github.com/Tulpep/Notification-Popup-Window/blob/master/Tulpep.NotificationWindow/PopupNotifier.cs
     /// </summary>
-    [ToolboxBitmap(typeof(KryptonToastNotificationPopup), "Resources.KR 48 x 48 Orange.ico"), DefaultEvent("Click")]
+    [ToolboxBitmap(typeof(KryptonToastNotificationPopup), "Resources.KR 48 x 48 Orange.ico"), DefaultEvent("Click"), ToolboxItem(false)]
     public class KryptonToastNotificationPopup : Component
     {
         #region Events

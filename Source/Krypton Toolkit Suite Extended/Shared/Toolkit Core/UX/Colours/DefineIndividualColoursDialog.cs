@@ -29,7 +29,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DefineIndividualColoursDialog));
             this.kManager = new Krypton.Toolkit.KryptonManager(this.components);
             this.kPal = new Krypton.Toolkit.KryptonPalette(this.components);
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
@@ -57,15 +56,15 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kryptonLabel4 = new Krypton.Toolkit.KryptonLabel();
             this.kryptonLabel3 = new Krypton.Toolkit.KryptonLabel();
             this.kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
-            this.cpbLightestColourPreview = new CircularPictureBox();
-            this.cpbLightColourPreview = new CircularPictureBox();
+            this.cpbLightestColourPreview = new Krypton.Toolkit.Suite.Extended.Core.CircularPictureBox();
+            this.cpbLightColourPreview = new Krypton.Toolkit.Suite.Extended.Core.CircularPictureBox();
             this.kryptonLabel16 = new Krypton.Toolkit.KryptonLabel();
             this.kryptonLabel15 = new Krypton.Toolkit.KryptonLabel();
-            this.cpbDarkestColourPreview = new CircularPictureBox();
+            this.cpbDarkestColourPreview = new Krypton.Toolkit.Suite.Extended.Core.CircularPictureBox();
             this.kryptonLabel12 = new Krypton.Toolkit.KryptonLabel();
-            this.cpbMiddleColourPreview = new CircularPictureBox();
+            this.cpbMiddleColourPreview = new Krypton.Toolkit.Suite.Extended.Core.CircularPictureBox();
             this.kryptonLabel13 = new Krypton.Toolkit.KryptonLabel();
-            this.cpbBaseColourPreview = new CircularPictureBox();
+            this.cpbBaseColourPreview = new Krypton.Toolkit.Suite.Extended.Core.CircularPictureBox();
             this.kryptonLabel14 = new Krypton.Toolkit.KryptonLabel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.ttInformation = new System.Windows.Forms.ToolTip(this.components);
@@ -90,10 +89,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // 
             this.kManager.GlobalPalette = this.kPal;
             this.kManager.GlobalPaletteMode = Krypton.Toolkit.PaletteModeManager.Custom;
-            // 
-            // kPal
-            // 
-            this.kPal.CustomisedKryptonPaletteFilePath = "";
             // 
             // kryptonPanel1
             // 
@@ -125,6 +120,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.ktbHexadecimal.Name = "ktbHexadecimal";
             this.ktbHexadecimal.Size = new System.Drawing.Size(176, 29);
             this.ktbHexadecimal.StateCommon.Content.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ktbHexadecimal.StateCommon.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
             this.ktbHexadecimal.TabIndex = 85;
             this.ktbHexadecimal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.ktbHexadecimal.TextChanged += new System.EventHandler(this.ktbHexadecimal_TextChanged);
@@ -246,8 +242,10 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             "Middle Colour",
             "Light Colour",
             "Lightest Colour"});
+            this.kcmbDefinedColour.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.kcmbDefinedColour.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.kcmbDefinedColour.DropDownWidth = 173;
+            this.kcmbDefinedColour.IntegralHeight = false;
             this.kcmbDefinedColour.Items.AddRange(new object[] {
             "Base Colour",
             "Darkest Colour",
@@ -258,6 +256,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.kcmbDefinedColour.Name = "kcmbDefinedColour";
             this.kcmbDefinedColour.Size = new System.Drawing.Size(173, 27);
             this.kcmbDefinedColour.StateCommon.ComboBox.Content.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kcmbDefinedColour.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
             this.kcmbDefinedColour.TabIndex = 31;
             this.kcmbDefinedColour.SelectedIndexChanged += new System.EventHandler(this.kcmbDefinedColour_SelectedIndexChanged);
             this.kcmbDefinedColour.TextChanged += new System.EventHandler(this.kcmbDefinedColour_TextChanged);
@@ -358,7 +357,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // knumAlphaChannelValue
             // 
             this.knumAlphaChannelValue.Enabled = false;
-            this.knumAlphaChannelValue.Location = new System.Drawing.Point(214, 470);
+            this.knumAlphaChannelValue.Location = new System.Drawing.Point(214, 480);
             this.knumAlphaChannelValue.Maximum = new decimal(new int[] {
             255,
             0,
@@ -367,6 +366,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.knumAlphaChannelValue.Name = "knumAlphaChannelValue";
             this.knumAlphaChannelValue.Size = new System.Drawing.Size(62, 28);
             this.knumAlphaChannelValue.StateCommon.Content.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.knumAlphaChannelValue.StateCommon.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
             this.knumAlphaChannelValue.TabIndex = 95;
             this.knumAlphaChannelValue.Value = new decimal(new int[] {
             255,
@@ -388,7 +388,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             // knumBlueChannelValue
             // 
             this.knumBlueChannelValue.Enabled = false;
-            this.knumBlueChannelValue.Location = new System.Drawing.Point(507, 470);
+            this.knumBlueChannelValue.Location = new System.Drawing.Point(507, 480);
             this.knumBlueChannelValue.Maximum = new decimal(new int[] {
             255,
             0,
@@ -399,13 +399,14 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.knumBlueChannelValue.StateCommon.Back.Color1 = System.Drawing.Color.Blue;
             this.knumBlueChannelValue.StateCommon.Content.Color1 = System.Drawing.Color.White;
             this.knumBlueChannelValue.StateCommon.Content.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.knumBlueChannelValue.StateCommon.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
             this.knumBlueChannelValue.TabIndex = 90;
             this.knumBlueChannelValue.ValueChanged += new System.EventHandler(this.knumBlueChannelValue_ValueChanged);
             // 
             // knumGreenChannelValue
             // 
             this.knumGreenChannelValue.Enabled = false;
-            this.knumGreenChannelValue.Location = new System.Drawing.Point(415, 470);
+            this.knumGreenChannelValue.Location = new System.Drawing.Point(415, 480);
             this.knumGreenChannelValue.Maximum = new decimal(new int[] {
             255,
             0,
@@ -415,13 +416,14 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.knumGreenChannelValue.Size = new System.Drawing.Size(62, 28);
             this.knumGreenChannelValue.StateCommon.Back.Color1 = System.Drawing.Color.Lime;
             this.knumGreenChannelValue.StateCommon.Content.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.knumGreenChannelValue.StateCommon.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
             this.knumGreenChannelValue.TabIndex = 89;
             this.knumGreenChannelValue.ValueChanged += new System.EventHandler(this.knumGreenChannelValue_ValueChanged);
             // 
             // knumRedChannelValue
             // 
             this.knumRedChannelValue.Enabled = false;
-            this.knumRedChannelValue.Location = new System.Drawing.Point(324, 470);
+            this.knumRedChannelValue.Location = new System.Drawing.Point(324, 480);
             this.knumRedChannelValue.Maximum = new decimal(new int[] {
             255,
             0,
@@ -432,6 +434,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.knumRedChannelValue.StateCommon.Back.Color1 = System.Drawing.Color.Red;
             this.knumRedChannelValue.StateCommon.Content.Color1 = System.Drawing.Color.White;
             this.knumRedChannelValue.StateCommon.Content.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.knumRedChannelValue.StateCommon.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
             this.knumRedChannelValue.TabIndex = 88;
             this.knumRedChannelValue.ValueChanged += new System.EventHandler(this.knumRedChannelValue_ValueChanged);
             // 
@@ -473,6 +476,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.cpbLightestColourPreview.Size = new System.Drawing.Size(64, 64);
             this.cpbLightestColourPreview.TabIndex = 81;
             this.cpbLightestColourPreview.TabStop = false;
+            this.cpbLightestColourPreview.ToolTipValues = null;
             this.cpbLightestColourPreview.Click += new System.EventHandler(this.cpbLightestColourPreview_Click);
             this.cpbLightestColourPreview.MouseHover += new System.EventHandler(this.cpbLightestColourPreview_MouseHover);
             // 
@@ -484,6 +488,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.cpbLightColourPreview.Size = new System.Drawing.Size(64, 64);
             this.cpbLightColourPreview.TabIndex = 84;
             this.cpbLightColourPreview.TabStop = false;
+            this.cpbLightColourPreview.ToolTipValues = null;
             this.cpbLightColourPreview.Click += new System.EventHandler(this.cpbLightColourPreview_Click);
             this.cpbLightColourPreview.MouseHover += new System.EventHandler(this.cpbLightColourPreview_MouseHover);
             // 
@@ -513,6 +518,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.cpbDarkestColourPreview.Size = new System.Drawing.Size(64, 64);
             this.cpbDarkestColourPreview.TabIndex = 80;
             this.cpbDarkestColourPreview.TabStop = false;
+            this.cpbDarkestColourPreview.ToolTipValues = null;
             this.cpbDarkestColourPreview.Click += new System.EventHandler(this.cpbDarkestColourPreview_Click);
             this.cpbDarkestColourPreview.MouseHover += new System.EventHandler(this.cpbDarkestColourPreview_MouseHover);
             // 
@@ -533,6 +539,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.cpbMiddleColourPreview.Size = new System.Drawing.Size(64, 64);
             this.cpbMiddleColourPreview.TabIndex = 79;
             this.cpbMiddleColourPreview.TabStop = false;
+            this.cpbMiddleColourPreview.ToolTipValues = null;
             this.cpbMiddleColourPreview.Click += new System.EventHandler(this.cpbMiddleColourPreview_Click);
             this.cpbMiddleColourPreview.MouseHover += new System.EventHandler(this.cpbMiddleColourPreview_MouseHover);
             // 
@@ -553,6 +560,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.cpbBaseColourPreview.Size = new System.Drawing.Size(64, 64);
             this.cpbBaseColourPreview.TabIndex = 75;
             this.cpbBaseColourPreview.TabStop = false;
+            this.cpbBaseColourPreview.ToolTipValues = null;
             this.cpbBaseColourPreview.Click += new System.EventHandler(this.cpbBaseColourPreview_Click);
             this.cpbBaseColourPreview.MouseHover += new System.EventHandler(this.cpbBaseColourPreview_MouseHover);
             // 
@@ -590,7 +598,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             this.Controls.Add(this.kryptonPanel2);
             this.Controls.Add(this.kryptonPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "DefineIndividualColoursDialog";

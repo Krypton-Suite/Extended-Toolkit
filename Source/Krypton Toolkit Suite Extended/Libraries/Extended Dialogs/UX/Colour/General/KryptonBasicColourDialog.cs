@@ -204,7 +204,6 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.cpbxColourPreview.Size = new System.Drawing.Size(163, 163);
             this.cpbxColourPreview.TabIndex = 1;
             this.cpbxColourPreview.TabStop = false;
-            this.cpbxColourPreview.ToolTipValues = null;
             // 
             // cwColourPicker
             // 

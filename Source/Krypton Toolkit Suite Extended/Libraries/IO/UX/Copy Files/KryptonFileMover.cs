@@ -6,6 +6,7 @@
  */
 #endregion
 
+using Krypton.Toolkt.Suite.Extended.Base;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using System;
 using System.Collections.Generic;

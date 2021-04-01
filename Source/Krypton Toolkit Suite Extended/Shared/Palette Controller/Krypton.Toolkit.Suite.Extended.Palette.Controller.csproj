@@ -16,17 +16,17 @@
 		<PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
 	</PropertyGroup>
 
- <!-- package configuration-
-<PropertyGroup>
-	<PackageId>Krypton.Toolkit.Suite.Extended.Palette.Controller.Canary</PackageId>
-	<PackageOutputPath>..\..\..\..\Bin\NuGet\Canary</PackageOutputPath>
-	<PackageIcon>Canary.png</PackageIcon>
-	<AssemblyVersion>6.0.2103</AssemblyVersion>
-	<FileVersion>6.0.2103</FileVersion>
-	<Version>6.0.2103</Version>
-</PropertyGroup>
+	<!--Canary package configuration->
+	<PropertyGroup>
+		<PackageId>Krypton.Toolkit.Suite.Extended.Palette.Controller.Canary</PackageId>
+		<PackageOutputPath>..\..\..\..\Bin\NuGet\Canary</PackageOutputPath>
+		<PackageIcon>Canary.png</PackageIcon>
+		<AssemblyVersion>6.0.2104</AssemblyVersion>
+		<FileVersion>6.0.2104</FileVersion>
+		<Version>6.0.2104</Version>
+	</PropertyGroup>-->
 
-Nightly package configuration-
+	<!-- package configuration-
 	<PropertyGroup Condition="'$(Configuration)' == 'Debug'">
 		<PackageId>Krypton.Toolkit.Suite.Extended.Palette.Controller.Nightly</PackageId>
 		<PackageOutputPath>..\..\..\..\Bin\NuGet\Nightly</PackageOutputPath>
@@ -34,36 +34,42 @@ Nightly package configuration-
 		<VersionSuffix>pre$([System.DateTime]::UtcNow.ToString(yyyyMMdd-HHmm))</VersionSuffix>
 	</PropertyGroup>-->
 
-<!--Stable package configuration-->
-  <PropertyGroup>
-    <PackageId>Krypton.Toolkit.Suite.Extended.Palette.Controller</PackageId>
-    <PackageOutputPath>..\..\..\..\Bin\NuGet\Stable</PackageOutputPath>
-    <PackageIcon>Stable.png</PackageIcon>
-    <AssemblyVersion>5.550.2103</AssemblyVersion>
-    <FileVersion>5.550.2103</FileVersion>
-    <Version>5.550.2103</Version>
-  </PropertyGroup>
+ <!--Stable package configuration-->
+	<PropertyGroup Condition=" '$(Configuration)' == 'Release'">
+		<OutputPath>..\..\..\..\Bin\$(configuration)\Build\Lib</OutputPath>
+		<DebugType>pdbonly</DebugType>
+		<PackageId>Krypton.Toolkit.Suite.Extended.Palette.Controller</PackageId>
+		<PackageOutputPath>..\..\..\..\Bin\NuGet\Stable</PackageOutputPath>
+		<PackageIcon>Stable.png</PackageIcon>
+		<AssemblyVersion>5.550.2104</AssemblyVersion>
+		 <FileVersion>5.550.2104</FileVersion>
+		 <Version>5.550.2104</Version>
+	</PropertyGroup>
 
 	<!--Stable NuGet package configuration-->
-  <ItemGroup>
-    <PackageReference Include="Krypton.Toolkit" Version="5.550.2103" />
-  </ItemGroup>
-
-	<!--Canary NuGet package configuration-
 	<ItemGroup>
-		<PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2101" />
+		<PackageReference Include="Krypton.Toolkit" Version="5.550.2103" />
+	</ItemGroup>
+
+	<!--Canary NuGet package configuration->
+	<ItemGroup>
+		<PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2103.6" />
 	</ItemGroup>-->
 
-  <ItemGroup>
-    <!--Canary icon-->
-    <!--<None Include="Package Icons\Canary.png" Pack="true" PackagePath="\" />-->
+	<ItemGroup>
+		<!--Canary icon-->
+		<None Include="Package Icons\Canary.png" Pack="true" PackagePath="\" />
 
-    <!--Stable icon-->
-    <None Include="Package Icons\Stable.png" Pack="true" PackagePath="\" />
+		<!--Stable icon-->
+		<None Include="Package Icons\Stable.png" Pack="true" PackagePath="\" />
 
-    <!--Nightly icon-->
-    <!--<None Include="Package Icons\Nightly.png" Pack="true" PackagePath="\" />-->
-  </ItemGroup>
+		<!--Nightly icon-->
+		<None Include="Package Icons\Nightly.png" Pack="true" PackagePath="\" />
+		</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Toolkit Core\Krypton.Toolkit.Suite.Extended.Core.csproj" />
+	</ItemGroup>
 
 	<PropertyGroup>
 		<DocumentationFile>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Palette.Controller\Krypton.Toolkit.Suite.Extended.Palette.Controller.xml</DocumentationFile>
