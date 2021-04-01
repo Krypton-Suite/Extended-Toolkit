@@ -35,7 +35,7 @@
 	</PropertyGroup>-->
 
 	<!--Stable package configuration-
-	<PropertyGroup Condition=" '$(Configuration)' == 'Release">
+	<PropertyGroup>
 		<OutputPath>..\..\..\..\Bin\$(configuration)\Build\Lib</OutputPath>
 		<DebugType>pdbonly</DebugType>
 		<PackageId>Krypton.Toolkit.Suite.Extended.Navigator</PackageId>
