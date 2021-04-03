@@ -76,8 +76,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Exten
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Notifications", "Main\Krypton.Toolkit.Suite.Extended.Notifications\Krypton.Toolkit.Suite.Extended.Notifications.csproj", "{29A9E4C0-5292-4AD6-9915-54035A935BE0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Object.List.View", "Main\Krypton.Toolkit.Suite.Extended.Object.List.View\Krypton.Toolkit.Suite.Extended.Object.List.View.csproj", "{1578AD7D-5E2D-4D31-8B18-A49BEED5065F}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Outlook.Grid", "Main\Krypton.Toolkit.Suite.Extended.Outlook.Grid\Krypton.Toolkit.Suite.Extended.Outlook.Grid.csproj", "{FA183878-9C2A-4401-A091-A178834C7BFB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Palette.Selectors", "Main\Krypton.Toolkit.Suite.Extended.Palette.Selectors\Krypton.Toolkit.Suite.Extended.Palette.Selectors.csproj", "{DFED7888-9B28-4879-A209-105C3D09CD66}"
@@ -112,7 +110,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ILRepack.Lib.MSBuild.Task",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zip.Storer", "Third Party\Zip.Storer\Zip.Storer.csproj", "{7A5B99D8-8925-4831-9704-2A211C0F470A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scintilla.NET", "Third Party\Scintilla.NET\Scintilla.NET.csproj", "{4C65A943-E114-4535-9C84-1D5CE0612FE0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scintilla.NET", "Third Party\Scintilla.NET\Scintilla.NET.csproj", "{4C65A943-E114-4535-9C84-1D5CE0612FE0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -208,10 +206,6 @@ Global
 		{29A9E4C0-5292-4AD6-9915-54035A935BE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{29A9E4C0-5292-4AD6-9915-54035A935BE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{29A9E4C0-5292-4AD6-9915-54035A935BE0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1578AD7D-5E2D-4D31-8B18-A49BEED5065F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1578AD7D-5E2D-4D31-8B18-A49BEED5065F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1578AD7D-5E2D-4D31-8B18-A49BEED5065F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1578AD7D-5E2D-4D31-8B18-A49BEED5065F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FA183878-9C2A-4401-A091-A178834C7BFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FA183878-9C2A-4401-A091-A178834C7BFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA183878-9C2A-4401-A091-A178834C7BFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -313,7 +307,6 @@ Global
 		{951D4C2F-69F2-4176-9502-CDA760D5233F} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 		{A36AE7CE-8AF8-4711-8A8A-4FCDD14DE209} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 		{29A9E4C0-5292-4AD6-9915-54035A935BE0} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
-		{1578AD7D-5E2D-4D31-8B18-A49BEED5065F} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 		{FA183878-9C2A-4401-A091-A178834C7BFB} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 		{DFED7888-9B28-4879-A209-105C3D09CD66} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 		{2D272581-227C-4078-8EB0-2867C6BFD4AE} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}

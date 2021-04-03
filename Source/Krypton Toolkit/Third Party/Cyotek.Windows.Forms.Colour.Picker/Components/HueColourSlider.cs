@@ -4,6 +4,7 @@ using System.Linq;
 
 namespace Cyotek.Windows.Forms.Colour.Picker
 {
+    //[ToolboxItem(true)]
     public class HueColourSlider : ColourSlider
     {
         #region Constructors

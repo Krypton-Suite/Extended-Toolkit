@@ -974,7 +974,7 @@ namespace Cyotek.Windows.Forms.Colour.Picker
 
         protected virtual void EditColour(int colorIndex)
         {
-            using (ColorPickerDialog dialog = new ColorPickerDialog())
+            using (ColourPickerDialog dialog = new ColourPickerDialog())
             {
                 dialog.Colour = this.GetColour(colorIndex);
                 if (dialog.ShowDialog(this) == DialogResult.OK)

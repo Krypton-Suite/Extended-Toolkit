@@ -7,17 +7,18 @@ namespace Cyotek.Windows.Forms.Colour.Picker
     /// <summary>
     /// Represents a control for selecting the saturation of a color
     /// </summary>
+    //[ToolboxItem(true)]
     public class SaturationColourSlider : ColourSlider
     {
         #region Constants
 
-        private static readonly object _eventColorChanged = new object();
+        private static readonly object _eventColourChanged = new object();
 
         #endregion
 
         #region Fields
 
-        private Color _color;
+        private Color _colour;
 
         #endregion
 
@@ -36,8 +37,8 @@ namespace Cyotek.Windows.Forms.Colour.Picker
         [Category("Property Changed")]
         public event EventHandler ColourChanged
         {
-            add { this.Events.AddHandler(_eventColorChanged, value); }
-            remove { this.Events.RemoveHandler(_eventColorChanged, value); }
+            add { this.Events.AddHandler(_eventColourChanged, value); }
+            remove { this.Events.RemoveHandler(_eventColourChanged, value); }
         }
 
         #endregion
@@ -56,12 +57,12 @@ namespace Cyotek.Windows.Forms.Colour.Picker
         [DefaultValue(typeof(Color), "Black")]
         public virtual Color Colour
         {
-            get { return _color; }
+            get { return _colour; }
             set
             {
                 if (this.Colour != value)
                 {
-                    _color = value;
+                    _colour = value;
 
                     this.OnColorChanged(EventArgs.Empty);
                 }
@@ -142,7 +143,7 @@ namespace Cyotek.Windows.Forms.Colour.Picker
             this.CreateScale();
             this.Invalidate();
 
-            handler = (EventHandler)this.Events[_eventColorChanged];
+            handler = (EventHandler)this.Events[_eventColourChanged];
 
             handler?.Invoke(this, e);
         }

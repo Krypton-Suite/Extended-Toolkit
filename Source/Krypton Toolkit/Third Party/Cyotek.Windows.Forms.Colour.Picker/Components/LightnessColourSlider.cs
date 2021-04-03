@@ -4,6 +4,7 @@ using System.Drawing;
 
 namespace Cyotek.Windows.Forms.Colour.Picker
 {
+    //[ToolboxItem(true)]
     public class LightnessColourSlider : ColourSlider, IColourEditor
     {
         #region Constants

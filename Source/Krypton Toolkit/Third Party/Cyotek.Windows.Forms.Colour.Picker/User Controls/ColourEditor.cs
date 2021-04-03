@@ -11,402 +11,369 @@ namespace Cyotek.Windows.Forms.Colour.Picker
     /// <summary>
     /// Represents a control that allows the editing of a color in a variety of ways.
     /// </summary>
-    [DefaultProperty("Colour")]
-    [DefaultEvent("ColourChanged")]
-    public partial class ColourEditor : UserControl, IColourEditor
+    [DefaultProperty("Colour"), DefaultEvent("ColourChanged")]
+    public class ColourEditor : UserControl, IColourEditor
     {
         #region Design Code
-        /// <summary> 
-        /// Required designer variable.
-        /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private Krypton.Toolkit.KryptonLabel klblGreen;
+        private Krypton.Toolkit.KryptonLabel klblRed;
+        private Krypton.Toolkit.KryptonLabel klblRGB;
+        private Krypton.Toolkit.KryptonLabel klblBlue;
+        private Krypton.Toolkit.KryptonNumericUpDown knudBlue;
+        private RgbaColourSlider rgbaBlue;
+        private Krypton.Toolkit.KryptonNumericUpDown knudGreen;
+        private RgbaColourSlider rgbaGreen;
+        private Krypton.Toolkit.KryptonNumericUpDown knudRed;
+        private RgbaColourSlider rgbaRed;
+        private Krypton.Toolkit.KryptonLabel klblSaturation;
+        private Krypton.Toolkit.KryptonLabel klblLuminosity;
+        private Krypton.Toolkit.KryptonLabel klblAlpha;
+        private Krypton.Toolkit.KryptonLabel klblHue;
+        private Krypton.Toolkit.KryptonLabel klblHSL;
+        private Krypton.Toolkit.KryptonComboBox kcmbHexValue;
+        private Krypton.Toolkit.KryptonLabel klblHex;
+        private HueColourSlider hcsHue;
+        private SaturationColourSlider scsSaturation;
+        private Krypton.Toolkit.KryptonNumericUpDown knudLuminosity;
+        private Krypton.Toolkit.KryptonNumericUpDown knudSaturation;
+        private Krypton.Toolkit.KryptonNumericUpDown knudHue;
+        private LightnessColourSlider lcsLuminosity;
+        private Krypton.Toolkit.KryptonNumericUpDown knudAlpha;
+        private RgbaColourSlider rgbasAlpha;
+        private Krypton.Toolkit.KryptonPanel kpBackground;
 
-        /// <summary> 
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        #region Component Designer generated code
-
-        /// <summary> 
-        /// Required method for Designer support - do not modify 
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
-            this.rgbHeaderLabel = new Krypton.Toolkit.KryptonLabel();
-            this.rLabel = new Krypton.Toolkit.KryptonLabel();
-            this.rNumericUpDown = new Krypton.Toolkit.KryptonNumericUpDown();
-            this.rColorBar = new RgbaColourSlider();
-            this.gLabel = new Krypton.Toolkit.KryptonLabel();
-            this.gColorBar = new RgbaColourSlider();
-            this.gNumericUpDown = new Krypton.Toolkit.KryptonNumericUpDown();
-            this.bLabel = new Krypton.Toolkit.KryptonLabel();
-            this.bColorBar = new RgbaColourSlider();
-            this.bNumericUpDown = new Krypton.Toolkit.KryptonNumericUpDown();
-            this.hexLabel = new Krypton.Toolkit.KryptonLabel();
-            this.hexTextBox = new Krypton.Toolkit.KryptonComboBox();
-            this.lNumericUpDown = new Krypton.Toolkit.KryptonNumericUpDown();
-            this.lColorBar = new LightnessColourSlider();
-            this.lLabel = new Krypton.Toolkit.KryptonLabel();
-            this.sNumericUpDown = new Krypton.Toolkit.KryptonNumericUpDown();
-            this.sColorBar = new SaturationColourSlider();
-            this.sLabel = new Krypton.Toolkit.KryptonLabel();
-            this.hColorBar = new HueColourSlider();
-            this.hNumericUpDown = new Krypton.Toolkit.KryptonNumericUpDown();
-            this.hLabel = new Krypton.Toolkit.KryptonLabel();
-            this.hslLabel = new Krypton.Toolkit.KryptonLabel();
-            this.aNumericUpDown = new Krypton.Toolkit.KryptonNumericUpDown();
-            this.aColorBar = new RgbaColourSlider();
-            this.aLabel = new Krypton.Toolkit.KryptonLabel();
-            ((System.ComponentModel.ISupportInitialize)(this.rNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.aNumericUpDown)).BeginInit();
+            this.kpBackground = new Krypton.Toolkit.KryptonPanel();
+            this.knudAlpha = new Krypton.Toolkit.KryptonNumericUpDown();
+            this.rgbasAlpha = new Cyotek.Windows.Forms.Colour.Picker.RgbaColourSlider();
+            this.knudLuminosity = new Krypton.Toolkit.KryptonNumericUpDown();
+            this.knudSaturation = new Krypton.Toolkit.KryptonNumericUpDown();
+            this.knudHue = new Krypton.Toolkit.KryptonNumericUpDown();
+            this.lcsLuminosity = new Cyotek.Windows.Forms.Colour.Picker.LightnessColourSlider();
+            this.scsSaturation = new Cyotek.Windows.Forms.Colour.Picker.SaturationColourSlider();
+            this.hcsHue = new Cyotek.Windows.Forms.Colour.Picker.HueColourSlider();
+            this.klblSaturation = new Krypton.Toolkit.KryptonLabel();
+            this.klblLuminosity = new Krypton.Toolkit.KryptonLabel();
+            this.klblAlpha = new Krypton.Toolkit.KryptonLabel();
+            this.klblHue = new Krypton.Toolkit.KryptonLabel();
+            this.klblHSL = new Krypton.Toolkit.KryptonLabel();
+            this.kcmbHexValue = new Krypton.Toolkit.KryptonComboBox();
+            this.klblHex = new Krypton.Toolkit.KryptonLabel();
+            this.knudBlue = new Krypton.Toolkit.KryptonNumericUpDown();
+            this.rgbaBlue = new Cyotek.Windows.Forms.Colour.Picker.RgbaColourSlider();
+            this.knudGreen = new Krypton.Toolkit.KryptonNumericUpDown();
+            this.rgbaGreen = new Cyotek.Windows.Forms.Colour.Picker.RgbaColourSlider();
+            this.knudRed = new Krypton.Toolkit.KryptonNumericUpDown();
+            this.rgbaRed = new Cyotek.Windows.Forms.Colour.Picker.RgbaColourSlider();
+            this.klblBlue = new Krypton.Toolkit.KryptonLabel();
+            this.klblGreen = new Krypton.Toolkit.KryptonLabel();
+            this.klblRed = new Krypton.Toolkit.KryptonLabel();
+            this.klblRGB = new Krypton.Toolkit.KryptonLabel();
+            ((System.ComponentModel.ISupportInitialize)(this.kpBackground)).BeginInit();
+            this.kpBackground.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kcmbHexValue)).BeginInit();
             this.SuspendLayout();
             // 
-            // rgbHeaderLabel
+            // kpBackground
             // 
-            this.rgbHeaderLabel.AutoSize = true;
-            this.rgbHeaderLabel.Location = new System.Drawing.Point(-3, 0);
-            this.rgbHeaderLabel.Name = "rgbHeaderLabel";
-            this.rgbHeaderLabel.Size = new System.Drawing.Size(33, 13);
-            this.rgbHeaderLabel.TabIndex = 0;
-            this.rgbHeaderLabel.Text = "RGB:";
+            this.kpBackground.Controls.Add(this.knudAlpha);
+            this.kpBackground.Controls.Add(this.rgbasAlpha);
+            this.kpBackground.Controls.Add(this.knudLuminosity);
+            this.kpBackground.Controls.Add(this.knudSaturation);
+            this.kpBackground.Controls.Add(this.knudHue);
+            this.kpBackground.Controls.Add(this.lcsLuminosity);
+            this.kpBackground.Controls.Add(this.scsSaturation);
+            this.kpBackground.Controls.Add(this.hcsHue);
+            this.kpBackground.Controls.Add(this.klblSaturation);
+            this.kpBackground.Controls.Add(this.klblLuminosity);
+            this.kpBackground.Controls.Add(this.klblAlpha);
+            this.kpBackground.Controls.Add(this.klblHue);
+            this.kpBackground.Controls.Add(this.klblHSL);
+            this.kpBackground.Controls.Add(this.kcmbHexValue);
+            this.kpBackground.Controls.Add(this.klblHex);
+            this.kpBackground.Controls.Add(this.knudBlue);
+            this.kpBackground.Controls.Add(this.rgbaBlue);
+            this.kpBackground.Controls.Add(this.knudGreen);
+            this.kpBackground.Controls.Add(this.rgbaGreen);
+            this.kpBackground.Controls.Add(this.knudRed);
+            this.kpBackground.Controls.Add(this.rgbaRed);
+            this.kpBackground.Controls.Add(this.klblBlue);
+            this.kpBackground.Controls.Add(this.klblGreen);
+            this.kpBackground.Controls.Add(this.klblRed);
+            this.kpBackground.Controls.Add(this.klblRGB);
+            this.kpBackground.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kpBackground.Location = new System.Drawing.Point(0, 0);
+            this.kpBackground.Name = "kpBackground";
+            this.kpBackground.Size = new System.Drawing.Size(211, 294);
+            this.kpBackground.TabIndex = 0;
             // 
-            // rLabel
+            // knudAlpha
             // 
-            this.rLabel.AutoSize = true;
-            this.rLabel.Location = new System.Drawing.Point(3, 13);
-            this.rLabel.Name = "rLabel";
-            this.rLabel.Size = new System.Drawing.Size(18, 13);
-            this.rLabel.TabIndex = 1;
-            this.rLabel.Text = "R:";
-            // 
-            // rNumericUpDown
-            // 
-            this.rNumericUpDown.Location = new System.Drawing.Point(105, 11);
-            this.rNumericUpDown.Maximum = new decimal(new int[] {
+            this.knudAlpha.Location = new System.Drawing.Point(132, 257);
+            this.knudAlpha.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
-            this.rNumericUpDown.Name = "rNumericUpDown";
-            this.rNumericUpDown.Size = new System.Drawing.Size(58, 20);
-            this.rNumericUpDown.TabIndex = 2;
-            this.rNumericUpDown.TextAlign = HorizontalAlignment.Right;
-            this.rNumericUpDown.ValueChanged += new System.EventHandler(this.ValueChangedHandler);
+            this.knudAlpha.Name = "knudAlpha";
+            this.knudAlpha.Size = new System.Drawing.Size(67, 22);
+            this.knudAlpha.TabIndex = 25;
+            this.knudAlpha.ValueChanged += ValueChangedHandler;
             // 
-            // rColorBar
+            // rgbasAlpha
             // 
-            this.rColorBar.Location = new System.Drawing.Point(27, 13);
-            this.rColorBar.Name = "rColorBar";
-            this.rColorBar.Size = new System.Drawing.Size(72, 20);
-            this.rColorBar.TabIndex = 3;
-            this.rColorBar.ValueChanged += new System.EventHandler(this.ValueChangedHandler);
+            this.rgbasAlpha.BackColor = System.Drawing.Color.Transparent;
+            this.rgbasAlpha.Channel = Cyotek.Windows.Forms.Colour.Picker.RgbaChannel.Alpha;
+            this.rgbasAlpha.Location = new System.Drawing.Point(51, 259);
+            this.rgbasAlpha.Name = "rgbasAlpha";
+            this.rgbasAlpha.Size = new System.Drawing.Size(75, 23);
+            this.rgbasAlpha.TabIndex = 24;
+            this.rgbasAlpha.ValueChanged += ValueChangedHandler;
             // 
-            // gLabel
+            // knudLuminosity
             // 
-            this.gLabel.AutoSize = true;
-            this.gLabel.Location = new System.Drawing.Point(3, 39);
-            this.gLabel.Name = "gLabel";
-            this.gLabel.Size = new System.Drawing.Size(18, 13);
-            this.gLabel.TabIndex = 4;
-            this.gLabel.Text = "G:";
+            this.knudLuminosity.Location = new System.Drawing.Point(132, 227);
+            this.knudLuminosity.Name = "knudLuminosity";
+            this.knudLuminosity.Size = new System.Drawing.Size(67, 22);
+            this.knudLuminosity.TabIndex = 23;
+            this.knudLuminosity.ValueChanged += ValueChangedHandler;
             // 
-            // gColorBar
+            // knudSaturation
             // 
-            this.gColorBar.Channel = RgbaChannel.Green;
-            this.gColorBar.Location = new System.Drawing.Point(27, 39);
-            this.gColorBar.Name = "gColorBar";
-            this.gColorBar.Size = new System.Drawing.Size(72, 20);
-            this.gColorBar.TabIndex = 6;
-            this.gColorBar.ValueChanged += new System.EventHandler(this.ValueChangedHandler);
+            this.knudSaturation.Location = new System.Drawing.Point(132, 198);
+            this.knudSaturation.Name = "knudSaturation";
+            this.knudSaturation.Size = new System.Drawing.Size(67, 22);
+            this.knudSaturation.TabIndex = 22;
+            this.knudSaturation.ValueChanged += ValueChangedHandler;
             // 
-            // gNumericUpDown
+            // knudHue
             // 
-            this.gNumericUpDown.Location = new System.Drawing.Point(105, 37);
-            this.gNumericUpDown.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.gNumericUpDown.Name = "gNumericUpDown";
-            this.gNumericUpDown.Size = new System.Drawing.Size(58, 20);
-            this.gNumericUpDown.TabIndex = 5;
-            this.gNumericUpDown.TextAlign = HorizontalAlignment.Right;
-            this.gNumericUpDown.ValueChanged += new System.EventHandler(this.ValueChangedHandler);
-            // 
-            // bLabel
-            // 
-            this.bLabel.AutoSize = true;
-            this.bLabel.Location = new System.Drawing.Point(3, 65);
-            this.bLabel.Name = "bLabel";
-            this.bLabel.Size = new System.Drawing.Size(17, 13);
-            this.bLabel.TabIndex = 7;
-            this.bLabel.Text = "B:";
-            // 
-            // bColorBar
-            // 
-            this.bColorBar.Channel = RgbaChannel.Blue;
-            this.bColorBar.Location = new System.Drawing.Point(27, 65);
-            this.bColorBar.Name = "bColorBar";
-            this.bColorBar.Size = new System.Drawing.Size(72, 20);
-            this.bColorBar.TabIndex = 9;
-            this.bColorBar.ValueChanged += new System.EventHandler(this.ValueChangedHandler);
-            // 
-            // bNumericUpDown
-            // 
-            this.bNumericUpDown.Location = new System.Drawing.Point(105, 65);
-            this.bNumericUpDown.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.bNumericUpDown.Name = "bNumericUpDown";
-            this.bNumericUpDown.Size = new System.Drawing.Size(58, 20);
-            this.bNumericUpDown.TabIndex = 8;
-            this.bNumericUpDown.TextAlign = HorizontalAlignment.Right;
-            this.bNumericUpDown.ValueChanged += new System.EventHandler(this.ValueChangedHandler);
-            // 
-            // hexLabel
-            // 
-            this.hexLabel.AutoSize = true;
-            this.hexLabel.Location = new System.Drawing.Point(3, 94);
-            this.hexLabel.Name = "hexLabel";
-            this.hexLabel.Size = new System.Drawing.Size(29, 13);
-            this.hexLabel.TabIndex = 10;
-            this.hexLabel.Text = "Hex:";
-            // 
-            // hexTextBox
-            // 
-            this.hexTextBox.DrawMode = DrawMode.OwnerDrawFixed;
-            this.hexTextBox.Location = new System.Drawing.Point(105, 91);
-            this.hexTextBox.Name = "hexTextBox";
-            this.hexTextBox.Size = new System.Drawing.Size(58, 21);
-            this.hexTextBox.TabIndex = 11;
-            this.hexTextBox.DrawItem += new DrawItemEventHandler(this.hexTextBox_DrawItem);
-            this.hexTextBox.DropDown += new System.EventHandler(this.hexTextBox_DropDown);
-            this.hexTextBox.SelectedIndexChanged += new System.EventHandler(this.hexTextBox_SelectedIndexChanged);
-            this.hexTextBox.TextChanged += new System.EventHandler(this.ValueChangedHandler);
-            this.hexTextBox.KeyDown += new KeyEventHandler(this.hexTextBox_KeyDown);
-            // 
-            // lNumericUpDown
-            // 
-            this.lNumericUpDown.Location = new System.Drawing.Point(105, 190);
-            this.lNumericUpDown.Name = "lNumericUpDown";
-            this.lNumericUpDown.Size = new System.Drawing.Size(58, 20);
-            this.lNumericUpDown.TabIndex = 20;
-            this.lNumericUpDown.TextAlign = HorizontalAlignment.Right;
-            this.lNumericUpDown.ValueChanged += new System.EventHandler(this.ValueChangedHandler);
-            // 
-            // lColorBar
-            // 
-            this.lColorBar.Location = new System.Drawing.Point(27, 190);
-            this.lColorBar.Name = "lColorBar";
-            this.lColorBar.Size = new System.Drawing.Size(72, 20);
-            this.lColorBar.TabIndex = 21;
-            this.lColorBar.ValueChanged += new System.EventHandler(this.ValueChangedHandler);
-            // 
-            // lLabel
-            // 
-            this.lLabel.AutoSize = true;
-            this.lLabel.Location = new System.Drawing.Point(3, 192);
-            this.lLabel.Name = "lLabel";
-            this.lLabel.Size = new System.Drawing.Size(16, 13);
-            this.lLabel.TabIndex = 19;
-            this.lLabel.Text = "L:";
-            // 
-            // sNumericUpDown
-            // 
-            this.sNumericUpDown.Location = new System.Drawing.Point(105, 164);
-            this.sNumericUpDown.Name = "sNumericUpDown";
-            this.sNumericUpDown.Size = new System.Drawing.Size(58, 20);
-            this.sNumericUpDown.TabIndex = 17;
-            this.sNumericUpDown.TextAlign = HorizontalAlignment.Right;
-            this.sNumericUpDown.ValueChanged += new System.EventHandler(this.ValueChangedHandler);
-            // 
-            // sColorBar
-            // 
-            this.sColorBar.Location = new System.Drawing.Point(27, 164);
-            this.sColorBar.Name = "sColorBar";
-            this.sColorBar.Size = new System.Drawing.Size(72, 20);
-            this.sColorBar.TabIndex = 18;
-            this.sColorBar.ValueChanged += new System.EventHandler(this.ValueChangedHandler);
-            // 
-            // sLabel
-            // 
-            this.sLabel.AutoSize = true;
-            this.sLabel.Location = new System.Drawing.Point(4, 166);
-            this.sLabel.Name = "sLabel";
-            this.sLabel.Size = new System.Drawing.Size(17, 13);
-            this.sLabel.TabIndex = 16;
-            this.sLabel.Text = "S:";
-            // 
-            // hColorBar
-            // 
-            this.hColorBar.Location = new System.Drawing.Point(27, 138);
-            this.hColorBar.Name = "hColorBar";
-            this.hColorBar.Size = new System.Drawing.Size(72, 20);
-            this.hColorBar.TabIndex = 15;
-            this.hColorBar.ValueChanged += new System.EventHandler(this.ValueChangedHandler);
-            // 
-            // hNumericUpDown
-            // 
-            this.hNumericUpDown.Location = new System.Drawing.Point(105, 138);
-            this.hNumericUpDown.Maximum = new decimal(new int[] {
+            this.knudHue.Location = new System.Drawing.Point(132, 169);
+            this.knudHue.Maximum = new decimal(new int[] {
             359,
             0,
             0,
             0});
-            this.hNumericUpDown.Name = "hNumericUpDown";
-            this.hNumericUpDown.Size = new System.Drawing.Size(58, 20);
-            this.hNumericUpDown.TabIndex = 14;
-            this.hNumericUpDown.TextAlign = HorizontalAlignment.Right;
-            this.hNumericUpDown.ValueChanged += new System.EventHandler(this.ValueChangedHandler);
+            this.knudHue.Name = "knudHue";
+            this.knudHue.Size = new System.Drawing.Size(67, 22);
+            this.knudHue.TabIndex = 21;
+            this.knudHue.ValueChanged += ValueChangedHandler;
             // 
-            // hLabel
+            // lcsLuminosity
             // 
-            this.hLabel.AutoSize = true;
-            this.hLabel.Location = new System.Drawing.Point(3, 140);
-            this.hLabel.Name = "hLabel";
-            this.hLabel.Size = new System.Drawing.Size(18, 13);
-            this.hLabel.TabIndex = 13;
-            this.hLabel.Text = "H:";
+            this.lcsLuminosity.BackColor = System.Drawing.Color.Transparent;
+            this.lcsLuminosity.Location = new System.Drawing.Point(30, 228);
+            this.lcsLuminosity.Name = "lcsLuminosity";
+            this.lcsLuminosity.Size = new System.Drawing.Size(96, 23);
+            this.lcsLuminosity.TabIndex = 20;
+            this.lcsLuminosity.ValueChanged += ValueChangedHandler;
             // 
-            // hslLabel
+            // scsSaturation
             // 
-            this.hslLabel.AutoSize = true;
-            this.hslLabel.Location = new System.Drawing.Point(3, 117);
-            this.hslLabel.Name = "hslLabel";
-            this.hslLabel.Size = new System.Drawing.Size(31, 13);
-            this.hslLabel.TabIndex = 12;
-            this.hslLabel.Text = "HSL:";
+            this.scsSaturation.BackColor = System.Drawing.Color.Transparent;
+            this.scsSaturation.Location = new System.Drawing.Point(33, 199);
+            this.scsSaturation.Name = "scsSaturation";
+            this.scsSaturation.Size = new System.Drawing.Size(96, 23);
+            this.scsSaturation.TabIndex = 19;
+            this.scsSaturation.ValueChanged += ValueChangedHandler;
             // 
-            // aNumericUpDown
+            // hcsHue
             // 
-            this.aNumericUpDown.Location = new System.Drawing.Point(105, 216);
-            this.aNumericUpDown.Maximum = new decimal(new int[] {
+            this.hcsHue.BackColor = System.Drawing.Color.Transparent;
+            this.hcsHue.Location = new System.Drawing.Point(33, 170);
+            this.hcsHue.Name = "hcsHue";
+            this.hcsHue.Size = new System.Drawing.Size(96, 23);
+            this.hcsHue.TabIndex = 18;
+            this.hcsHue.ValueChanged += ValueChangedHandler;
+            // 
+            // klblSaturation
+            // 
+            this.klblSaturation.Location = new System.Drawing.Point(5, 200);
+            this.klblSaturation.Name = "klblSaturation";
+            this.klblSaturation.Size = new System.Drawing.Size(20, 20);
+            this.klblSaturation.TabIndex = 17;
+            this.klblSaturation.Values.Text = "S:";
+            // 
+            // klblLuminosity
+            // 
+            this.klblLuminosity.Location = new System.Drawing.Point(5, 229);
+            this.klblLuminosity.Name = "klblLuminosity";
+            this.klblLuminosity.Size = new System.Drawing.Size(19, 20);
+            this.klblLuminosity.TabIndex = 16;
+            this.klblLuminosity.Values.Text = "L:";
+            // 
+            // klblAlpha
+            // 
+            this.klblAlpha.Location = new System.Drawing.Point(0, 259);
+            this.klblAlpha.Name = "klblAlpha";
+            this.klblAlpha.Size = new System.Drawing.Size(45, 20);
+            this.klblAlpha.TabIndex = 15;
+            this.klblAlpha.Values.Text = "Alpha:";
+            // 
+            // klblHue
+            // 
+            this.klblHue.Location = new System.Drawing.Point(5, 170);
+            this.klblHue.Name = "klblHue";
+            this.klblHue.Size = new System.Drawing.Size(22, 20);
+            this.klblHue.TabIndex = 14;
+            this.klblHue.Values.Text = "H:";
+            // 
+            // klblHSL
+            // 
+            this.klblHSL.Location = new System.Drawing.Point(0, 144);
+            this.klblHSL.Name = "klblHSL";
+            this.klblHSL.Size = new System.Drawing.Size(34, 20);
+            this.klblHSL.TabIndex = 13;
+            this.klblHSL.Values.Text = "HSL:";
+            // 
+            // kcmbHexValue
+            // 
+            this.kcmbHexValue.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.kcmbHexValue.DropDownWidth = 67;
+            this.kcmbHexValue.IntegralHeight = false;
+            this.kcmbHexValue.Location = new System.Drawing.Point(132, 118);
+            this.kcmbHexValue.Name = "kcmbHexValue";
+            this.kcmbHexValue.Size = new System.Drawing.Size(67, 21);
+            this.kcmbHexValue.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
+            this.kcmbHexValue.TabIndex = 12;
+            this.kcmbHexValue.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.kcmbHexValue_DrawItem);
+            this.kcmbHexValue.DropDown += new System.EventHandler(this.kcmbHexValue_DropDown);
+            this.kcmbHexValue.TextChanged += ValueChangedHandler;
+            this.kcmbHexValue.SelectedIndexChanged += new System.EventHandler(this.kcmbHexValue_SelectedIndexChanged);
+            this.kcmbHexValue.KeyDown += new System.Windows.Forms.KeyEventHandler(this.kcmbHexValue_KeyDown);
+            // 
+            // klblHex
+            // 
+            this.klblHex.Location = new System.Drawing.Point(5, 118);
+            this.klblHex.Name = "klblHex";
+            this.klblHex.Size = new System.Drawing.Size(34, 20);
+            this.klblHex.TabIndex = 11;
+            this.klblHex.Values.Text = "Hex:";
+            // 
+            // knudBlue
+            // 
+            this.knudBlue.Location = new System.Drawing.Point(132, 83);
+            this.knudBlue.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
-            this.aNumericUpDown.Name = "aNumericUpDown";
-            this.aNumericUpDown.Size = new System.Drawing.Size(58, 20);
-            this.aNumericUpDown.TabIndex = 23;
-            this.aNumericUpDown.TextAlign = HorizontalAlignment.Right;
-            this.aNumericUpDown.ValueChanged += new System.EventHandler(this.ValueChangedHandler);
+            this.knudBlue.Name = "knudBlue";
+            this.knudBlue.Size = new System.Drawing.Size(67, 22);
+            this.knudBlue.TabIndex = 10;
+            this.knudBlue.ValueChanged += ValueChangedHandler;
             // 
-            // aColorBar
+            // rgbaBlue
             // 
-            this.aColorBar.Channel = RgbaChannel.Alpha;
-            this.aColorBar.Location = new System.Drawing.Point(27, 216);
-            this.aColorBar.Name = "aColorBar";
-            this.aColorBar.Size = new System.Drawing.Size(72, 20);
-            this.aColorBar.TabIndex = 24;
-            this.aColorBar.ValueChanged += new System.EventHandler(this.ValueChangedHandler);
+            this.rgbaBlue.BackColor = System.Drawing.Color.Transparent;
+            this.rgbaBlue.Channel = Cyotek.Windows.Forms.Colour.Picker.RgbaChannel.Blue;
+            this.rgbaBlue.Location = new System.Drawing.Point(30, 84);
+            this.rgbaBlue.Name = "rgbaBlue";
+            this.rgbaBlue.Size = new System.Drawing.Size(96, 23);
+            this.rgbaBlue.TabIndex = 9;
+            this.rgbaBlue.ValueChanged += ValueChangedHandler;
             // 
-            // aLabel
+            // knudGreen
             // 
-            this.aLabel.AutoSize = true;
-            this.aLabel.Location = new System.Drawing.Point(3, 218);
-            this.aLabel.Name = "aLabel";
-            this.aLabel.Size = new System.Drawing.Size(37, 13);
-            this.aLabel.TabIndex = 22;
-            this.aLabel.Text = "Alpha:";
+            this.knudGreen.Location = new System.Drawing.Point(132, 54);
+            this.knudGreen.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.knudGreen.Name = "knudGreen";
+            this.knudGreen.Size = new System.Drawing.Size(67, 22);
+            this.knudGreen.TabIndex = 8;
+            this.knudGreen.ValueChanged += ValueChangedHandler;
             // 
-            // ColorEditor
+            // rgbaGreen
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = AutoScaleMode.Font;
-            this.Controls.Add(this.aLabel);
-            this.Controls.Add(this.aNumericUpDown);
-            this.Controls.Add(this.aColorBar);
-            this.Controls.Add(this.hslLabel);
-            this.Controls.Add(this.lNumericUpDown);
-            this.Controls.Add(this.lColorBar);
-            this.Controls.Add(this.lLabel);
-            this.Controls.Add(this.sNumericUpDown);
-            this.Controls.Add(this.sColorBar);
-            this.Controls.Add(this.sLabel);
-            this.Controls.Add(this.hColorBar);
-            this.Controls.Add(this.hNumericUpDown);
-            this.Controls.Add(this.hLabel);
-            this.Controls.Add(this.hexTextBox);
-            this.Controls.Add(this.hexLabel);
-            this.Controls.Add(this.bNumericUpDown);
-            this.Controls.Add(this.bColorBar);
-            this.Controls.Add(this.bLabel);
-            this.Controls.Add(this.gNumericUpDown);
-            this.Controls.Add(this.gColorBar);
-            this.Controls.Add(this.gLabel);
-            this.Controls.Add(this.rColorBar);
-            this.Controls.Add(this.rNumericUpDown);
-            this.Controls.Add(this.rLabel);
-            this.Controls.Add(this.rgbHeaderLabel);
-            this.Name = "ColorEditor";
-            this.Size = new System.Drawing.Size(173, 246);
-            ((System.ComponentModel.ISupportInitialize)(this.rNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.aNumericUpDown)).EndInit();
+            this.rgbaGreen.BackColor = System.Drawing.Color.Transparent;
+            this.rgbaGreen.Channel = Cyotek.Windows.Forms.Colour.Picker.RgbaChannel.Green;
+            this.rgbaGreen.Location = new System.Drawing.Point(30, 55);
+            this.rgbaGreen.Name = "rgbaGreen";
+            this.rgbaGreen.Size = new System.Drawing.Size(96, 23);
+            this.rgbaGreen.TabIndex = 7;
+            this.rgbaGreen.ValueChanged += ValueChangedHandler;
+            // 
+            // knudRed
+            // 
+            this.knudRed.Location = new System.Drawing.Point(132, 25);
+            this.knudRed.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.knudRed.Name = "knudRed";
+            this.knudRed.Size = new System.Drawing.Size(67, 22);
+            this.knudRed.TabIndex = 6;
+            this.knudRed.ValueChanged += ValueChangedHandler;
+            // 
+            // rgbaRed
+            // 
+            this.rgbaRed.BackColor = System.Drawing.Color.Transparent;
+            this.rgbaRed.Location = new System.Drawing.Point(30, 26);
+            this.rgbaRed.Name = "rgbaRed";
+            this.rgbaRed.Size = new System.Drawing.Size(96, 23);
+            this.rgbaRed.TabIndex = 5;
+            this.rgbaRed.ValueChanged += ValueChangedHandler;
+            // 
+            // klblBlue
+            // 
+            this.klblBlue.Location = new System.Drawing.Point(3, 84);
+            this.klblBlue.Name = "klblBlue";
+            this.klblBlue.Size = new System.Drawing.Size(20, 20);
+            this.klblBlue.TabIndex = 4;
+            this.klblBlue.Values.Text = "B:";
+            // 
+            // klblGreen
+            // 
+            this.klblGreen.Location = new System.Drawing.Point(3, 55);
+            this.klblGreen.Name = "klblGreen";
+            this.klblGreen.Size = new System.Drawing.Size(22, 20);
+            this.klblGreen.TabIndex = 3;
+            this.klblGreen.Values.Text = "G:";
+            // 
+            // klblRed
+            // 
+            this.klblRed.Location = new System.Drawing.Point(3, 26);
+            this.klblRed.Name = "klblRed";
+            this.klblRed.Size = new System.Drawing.Size(21, 20);
+            this.klblRed.TabIndex = 2;
+            this.klblRed.Values.Text = "R:";
+            // 
+            // klblRGB
+            // 
+            this.klblRGB.Location = new System.Drawing.Point(0, 0);
+            this.klblRGB.Name = "klblRGB";
+            this.klblRGB.Size = new System.Drawing.Size(33, 20);
+            this.klblRGB.TabIndex = 1;
+            this.klblRGB.Values.Text = "RGB";
+            // 
+            // ColourEditor
+            // 
+            this.Controls.Add(this.kpBackground);
+            this.Name = "ColourEditor";
+            this.Size = new System.Drawing.Size(211, 294);
+            ((System.ComponentModel.ISupportInitialize)(this.kpBackground)).EndInit();
+            this.kpBackground.ResumeLayout(false);
+            this.kpBackground.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kcmbHexValue)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
-
-        #endregion
-
-        private Krypton.Toolkit.KryptonLabel rgbHeaderLabel;
-        private Krypton.Toolkit.KryptonLabel rLabel;
-        private Krypton.Toolkit.KryptonNumericUpDown rNumericUpDown;
-        private RgbaColourSlider rColorBar;
-        private Krypton.Toolkit.KryptonLabel gLabel;
-        private RgbaColourSlider gColorBar;
-        private Krypton.Toolkit.KryptonNumericUpDown gNumericUpDown;
-        private Krypton.Toolkit.KryptonLabel bLabel;
-        private RgbaColourSlider bColorBar;
-        private Krypton.Toolkit.KryptonNumericUpDown bNumericUpDown;
-        private Krypton.Toolkit.KryptonLabel hexLabel;
-        private Krypton.Toolkit.KryptonComboBox hexTextBox;
-        private Krypton.Toolkit.KryptonNumericUpDown lNumericUpDown;
-        private LightnessColourSlider lColorBar;
-        private Krypton.Toolkit.KryptonLabel lLabel;
-        private Krypton.Toolkit.KryptonNumericUpDown sNumericUpDown;
-        private SaturationColourSlider sColorBar;
-        private Krypton.Toolkit.KryptonLabel sLabel;
-        private HueColourSlider hColorBar;
-        private Krypton.Toolkit.KryptonNumericUpDown hNumericUpDown;
-        private Krypton.Toolkit.KryptonLabel hLabel;
-        private Krypton.Toolkit.KryptonLabel hslLabel;
-        private Krypton.Toolkit.KryptonNumericUpDown aNumericUpDown;
-        private RgbaColourSlider aColorBar;
-        private Krypton.Toolkit.KryptonLabel aLabel;
         #endregion
 
         #region Constants
 
-        private static readonly object _eventColorChanged = new object();
+        private static readonly object _eventColourChanged = new object();
 
         private static readonly object _eventOrientationChanged = new object();
 
         private static readonly object _eventShowAlphaChannelChanged = new object();
 
-        private static readonly object _eventShowColorSpaceLabelsChanged = new object();
+        private static readonly object _eventShowColourSpaceLabelsChanged = new object();
 
         private const int _minimumBarWidth = 30;
 
@@ -423,24 +390,6 @@ namespace Cyotek.Windows.Forms.Colour.Picker
         private bool _showAlphaChannel;
 
         private bool _showColorSpaceLabels;
-
-        #endregion
-
-        #region Constructors
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ColourEditor"/> class.
-        /// </summary>
-        public ColourEditor()
-        {
-            this.InitializeComponent();
-
-            _colour = Color.Black;
-            _orientation = Orientation.Vertical;
-            this.Size = new Size(200, 260);
-            _showAlphaChannel = true;
-            _showColorSpaceLabels = true;
-        }
 
         #endregion
 
@@ -464,10 +413,10 @@ namespace Cyotek.Windows.Forms.Colour.Picker
         /// Occurs when the ShowColorSpaceLabels property value changes
         /// </summary>
         [Category("Property Changed")]
-        public event EventHandler ShowColorSpaceLabelsChanged
+        public event EventHandler ShowColourSpaceLabelsChanged
         {
-            add { this.Events.AddHandler(_eventShowColorSpaceLabelsChanged, value); }
-            remove { this.Events.RemoveHandler(_eventShowColorSpaceLabelsChanged, value); }
+            add { this.Events.AddHandler(_eventShowColourSpaceLabelsChanged, value); }
+            remove { this.Events.RemoveHandler(_eventShowColourSpaceLabelsChanged, value); }
         }
 
         #endregion
@@ -551,7 +500,7 @@ namespace Cyotek.Windows.Forms.Colour.Picker
                 {
                     _showColorSpaceLabels = value;
 
-                    this.OnShowColorSpaceLabelsChanged(EventArgs.Empty);
+                    this.OnShowColourSpaceLabelsChanged(EventArgs.Empty);
                 }
             }
         }
@@ -564,10 +513,27 @@ namespace Cyotek.Windows.Forms.Colour.Picker
 
         #endregion
 
-        #region Methods
+        #region Constructors
 
         /// <summary>
-        /// Raises the <see cref="ColorChanged" /> event.
+        /// Initializes a new instance of the <see cref="ColourEditor"/> class.
+        /// </summary>
+        public ColourEditor()
+        {
+            InitializeComponent();
+
+            _colour = Color.Black;
+            _orientation = Orientation.Vertical;
+            Size = new Size(211, 294);
+            _showAlphaChannel = true;
+            _showColorSpaceLabels = true;
+        }
+
+        #endregion
+
+        #region Protected
+        /// <summary>
+        /// Raises the <see cref="ColourChanged" /> event.
         /// </summary>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         protected virtual void OnColourChanged(EventArgs e)
@@ -576,38 +542,30 @@ namespace Cyotek.Windows.Forms.Colour.Picker
 
             this.UpdateFields(false);
 
-            handler = (EventHandler)this.Events[_eventColorChanged];
+            handler = (EventHandler)this.Events[_eventColourChanged];
 
             handler?.Invoke(this, e);
         }
 
-        /// <summary>
-        /// Raises the <see cref="E:Krypton.Toolkit.KryptonControl.DockChanged" /> event.
-        /// </summary>
-        /// <param name="e">An <see cref="T:System.EventArgs" /> that contains the event data.</param>
         protected override void OnDockChanged(EventArgs e)
         {
             base.OnDockChanged(e);
 
-            this.ResizeComponents();
+            ResizeComponents();
         }
 
         protected override void OnFontChanged(EventArgs e)
         {
             base.OnFontChanged(e);
 
-            this.SetDropDownWidth();
+            SetDropDownWidth();
         }
 
-        /// <summary>
-        /// Raises the <see cref="E:Krypton.Toolkit.KryptonUserControl.Load" /> event.
-        /// </summary>
-        /// <param name="e">An <see cref="T:System.EventArgs" /> that contains the event data.</param>
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
 
-            this.ResizeComponents();
+            ResizeComponents();
         }
 
         /// <summary>
@@ -618,33 +576,18 @@ namespace Cyotek.Windows.Forms.Colour.Picker
         {
             EventHandler handler;
 
-            this.ResizeComponents();
+            ResizeComponents();
 
             handler = (EventHandler)this.Events[_eventOrientationChanged];
 
             handler?.Invoke(this, e);
         }
 
-        /// <summary>
-        /// Raises the <see cref="E:Krypton.Toolkit.KryptonControl.PaddingChanged" /> event.
-        /// </summary>
-        /// <param name="e">An <see cref="T:System.EventArgs" /> that contains the event data.</param>
-        protected override void OnPaddingChanged(EventArgs e)
-        {
-            base.OnPaddingChanged(e);
-
-            this.ResizeComponents();
-        }
-
-        /// <summary>
-        /// Raises the <see cref="E:Resize" /> event.
-        /// </summary>
-        /// <param name="e">An <see cref="T:System.EventArgs" /> that contains the event data.</param>
         protected override void OnResize(EventArgs e)
         {
             base.OnResize(e);
 
-            this.ResizeComponents();
+            ResizeComponents();
         }
 
         /// <summary>
@@ -656,7 +599,7 @@ namespace Cyotek.Windows.Forms.Colour.Picker
             EventHandler handler;
 
             this.SetControlStates();
-            this.ResizeComponents();
+            ResizeComponents();
 
             handler = (EventHandler)this.Events[_eventShowAlphaChannelChanged];
 
@@ -664,17 +607,17 @@ namespace Cyotek.Windows.Forms.Colour.Picker
         }
 
         /// <summary>
-        /// Raises the <see cref="ShowColorSpaceLabelsChanged" /> event.
+        /// Raises the <see cref="ShowColourSpaceLabelsChanged" /> event.
         /// </summary>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        protected virtual void OnShowColorSpaceLabelsChanged(EventArgs e)
+        protected virtual void OnShowColourSpaceLabelsChanged(EventArgs e)
         {
             EventHandler handler;
 
             this.SetControlStates();
-            this.ResizeComponents();
+            ResizeComponents();
 
-            handler = (EventHandler)this.Events[_eventShowColorSpaceLabelsChanged];
+            handler = (EventHandler)this.Events[_eventShowColourSpaceLabelsChanged];
 
             handler?.Invoke(this, e);
         }
@@ -699,18 +642,18 @@ namespace Cyotek.Windows.Forms.Colour.Picker
                 int columnWidth;
                 int rowHeight;
                 int labelOffset;
-                int colorBarOffset;
+                int colourBarOffset;
                 int editOffset;
                 int barHorizontalOffset;
 
                 top = this.Padding.Top;
                 innerMargin = 3;
                 editWidth = TextRenderer.MeasureText("0000W", this.Font).Width + 6; // magic 6 for interior spacing+borders
-                rowHeight = Math.Max(Math.Max(rLabel.Height, rColorBar.Height), rNumericUpDown.Height);
-                labelOffset = (rowHeight - rLabel.Height) >> 1;
-                colorBarOffset = (rowHeight - rColorBar.Height) >> 1;
-                editOffset = (rowHeight - rNumericUpDown.Height) >> 1;
-                barHorizontalOffset = _showAlphaChannel ? aLabel.Width : hLabel.Width;
+                rowHeight = Math.Max(Math.Max(klblRed.Height, rgbaRed.Height), knudRed.Height);
+                labelOffset = (rowHeight - klblRed.Height) >> 1;
+                colourBarOffset = (rowHeight - rgbaRed.Height) >> 1;
+                editOffset = (rowHeight - knudRed.Height) >> 1;
+                barHorizontalOffset = _showAlphaChannel ? klblAlpha.Width : klblHue.Width;
 
                 switch (this.Orientation)
                 {
@@ -746,31 +689,31 @@ namespace Cyotek.Windows.Forms.Colour.Picker
                 // RGB header
                 if (_showColorSpaceLabels)
                 {
-                    rgbHeaderLabel.SetBounds(group1HeaderLeft, top + labelOffset, 0, 0, BoundsSpecified.Location);
+                    klblRGB.SetBounds(group1HeaderLeft, top + labelOffset, 0, 0, BoundsSpecified.Location);
                     top += rowHeight + innerMargin;
                 }
 
                 // R row
-                rLabel.SetBounds(group1HeaderLeft, top + labelOffset, 0, 0, BoundsSpecified.Location);
-                rColorBar.SetBounds(group1BarLeft, top + colorBarOffset, barWidth, 0, BoundsSpecified.Location | BoundsSpecified.Width);
-                rNumericUpDown.SetBounds(group1EditLeft + editOffset, top, editWidth, 0, BoundsSpecified.Location | BoundsSpecified.Width);
+                klblRed.SetBounds(group1HeaderLeft, top + labelOffset, 0, 0, BoundsSpecified.Location);
+                rgbaRed.SetBounds(group1BarLeft, top + colourBarOffset, barWidth, 0, BoundsSpecified.Location | BoundsSpecified.Width);
+                knudRed.SetBounds(group1EditLeft + editOffset, top, editWidth, 0, BoundsSpecified.Location | BoundsSpecified.Width);
                 top += rowHeight + innerMargin;
 
                 // G row
-                gLabel.SetBounds(group1HeaderLeft, top + labelOffset, 0, 0, BoundsSpecified.Location);
-                gColorBar.SetBounds(group1BarLeft, top + colorBarOffset, barWidth, 0, BoundsSpecified.Location | BoundsSpecified.Width);
-                gNumericUpDown.SetBounds(group1EditLeft + editOffset, top, editWidth, 0, BoundsSpecified.Location | BoundsSpecified.Width);
+                klblGreen.SetBounds(group1HeaderLeft, top + labelOffset, 0, 0, BoundsSpecified.Location);
+                rgbaGreen.SetBounds(group1BarLeft, top + colourBarOffset, barWidth, 0, BoundsSpecified.Location | BoundsSpecified.Width);
+                knudGreen.SetBounds(group1EditLeft + editOffset, top, editWidth, 0, BoundsSpecified.Location | BoundsSpecified.Width);
                 top += rowHeight + innerMargin;
 
                 // B row
-                bLabel.SetBounds(group1HeaderLeft, top + labelOffset, 0, 0, BoundsSpecified.Location);
-                bColorBar.SetBounds(group1BarLeft, top + colorBarOffset, barWidth, 0, BoundsSpecified.Location | BoundsSpecified.Width);
-                bNumericUpDown.SetBounds(group1EditLeft + editOffset, top, editWidth, 0, BoundsSpecified.Location | BoundsSpecified.Width);
+                klblBlue.SetBounds(group1HeaderLeft, top + labelOffset, 0, 0, BoundsSpecified.Location);
+                rgbaBlue.SetBounds(group1BarLeft, top + colourBarOffset, barWidth, 0, BoundsSpecified.Location | BoundsSpecified.Width);
+                knudBlue.SetBounds(group1EditLeft + editOffset, top, editWidth, 0, BoundsSpecified.Location | BoundsSpecified.Width);
                 top += rowHeight + innerMargin;
 
                 // Hex row
-                hexLabel.SetBounds(group1HeaderLeft, top + labelOffset, 0, 0, BoundsSpecified.Location);
-                hexTextBox.SetBounds(hexLabel.Right + innerMargin, top + colorBarOffset, barWidth + editOffset + editWidth - (hexLabel.Right - group1BarLeft), 0, BoundsSpecified.Location | BoundsSpecified.Width);
+                klblHex.SetBounds(group1HeaderLeft, top + labelOffset, 0, 0, BoundsSpecified.Location);
+                kcmbHexValue.SetBounds(klblHex.Right + innerMargin, top + colourBarOffset, barWidth + editOffset + editWidth - (klblHex.Right - group1BarLeft), 0, BoundsSpecified.Location | BoundsSpecified.Width);
                 top += rowHeight + innerMargin;
 
                 // reset top
@@ -782,32 +725,32 @@ namespace Cyotek.Windows.Forms.Colour.Picker
                 // HSL header
                 if (_showColorSpaceLabels)
                 {
-                    hslLabel.SetBounds(group2HeaderLeft, top + labelOffset, 0, 0, BoundsSpecified.Location);
+                    klblHSL.SetBounds(group2HeaderLeft, top + labelOffset, 0, 0, BoundsSpecified.Location);
                     top += rowHeight + innerMargin;
                 }
 
                 // H row
-                hLabel.SetBounds(group2HeaderLeft, top + labelOffset, 0, 0, BoundsSpecified.Location);
-                hColorBar.SetBounds(group2BarLeft, top + colorBarOffset, barWidth, 0, BoundsSpecified.Location | BoundsSpecified.Width);
-                hNumericUpDown.SetBounds(group2EditLeft, top + editOffset, editWidth, 0, BoundsSpecified.Location | BoundsSpecified.Width);
+                klblHue.SetBounds(group2HeaderLeft, top + labelOffset, 0, 0, BoundsSpecified.Location);
+                hcsHue.SetBounds(group2BarLeft, top + colourBarOffset, barWidth, 0, BoundsSpecified.Location | BoundsSpecified.Width);
+                knudHue.SetBounds(group2EditLeft, top + editOffset, editWidth, 0, BoundsSpecified.Location | BoundsSpecified.Width);
                 top += rowHeight + innerMargin;
 
                 // S row
-                sLabel.SetBounds(group2HeaderLeft, top + labelOffset, 0, 0, BoundsSpecified.Location);
-                sColorBar.SetBounds(group2BarLeft, top + colorBarOffset, barWidth, 0, BoundsSpecified.Location | BoundsSpecified.Width);
-                sNumericUpDown.SetBounds(group2EditLeft, top + editOffset, editWidth, 0, BoundsSpecified.Location | BoundsSpecified.Width);
+                klblSaturation.SetBounds(group2HeaderLeft, top + labelOffset, 0, 0, BoundsSpecified.Location);
+                scsSaturation.SetBounds(group2BarLeft, top + colourBarOffset, barWidth, 0, BoundsSpecified.Location | BoundsSpecified.Width);
+                knudSaturation.SetBounds(group2EditLeft, top + editOffset, editWidth, 0, BoundsSpecified.Location | BoundsSpecified.Width);
                 top += rowHeight + innerMargin;
 
                 // L row
-                lLabel.SetBounds(group2HeaderLeft, top + labelOffset, 0, 0, BoundsSpecified.Location);
-                lColorBar.SetBounds(group2BarLeft, top + colorBarOffset, barWidth, 0, BoundsSpecified.Location | BoundsSpecified.Width);
-                lNumericUpDown.SetBounds(group2EditLeft, top + editOffset, editWidth, 0, BoundsSpecified.Location | BoundsSpecified.Width);
+                klblLuminosity.SetBounds(group2HeaderLeft, top + labelOffset, 0, 0, BoundsSpecified.Location);
+                lcsLuminosity.SetBounds(group2BarLeft, top + colourBarOffset, barWidth, 0, BoundsSpecified.Location | BoundsSpecified.Width);
+                knudLuminosity.SetBounds(group2EditLeft, top + editOffset, editWidth, 0, BoundsSpecified.Location | BoundsSpecified.Width);
                 top += rowHeight + innerMargin;
 
                 // A row
-                aLabel.SetBounds(group2HeaderLeft, top + labelOffset, 0, 0, BoundsSpecified.Location);
-                aColorBar.SetBounds(group2BarLeft, top + colorBarOffset, barWidth, 0, BoundsSpecified.Location | BoundsSpecified.Width);
-                aNumericUpDown.SetBounds(group2EditLeft, top + editOffset, editWidth, 0, BoundsSpecified.Location | BoundsSpecified.Width);
+                klblAlpha.SetBounds(group2HeaderLeft, top + labelOffset, 0, 0, BoundsSpecified.Location);
+                rgbasAlpha.SetBounds(group2BarLeft, top + colourBarOffset, barWidth, 0, BoundsSpecified.Location | BoundsSpecified.Width);
+                knudAlpha.SetBounds(group2EditLeft, top + editOffset, editWidth, 0, BoundsSpecified.Location | BoundsSpecified.Width);
             }
             // ReSharper disable EmptyGeneralCatchClause
             catch
@@ -830,57 +773,57 @@ namespace Cyotek.Windows.Forms.Colour.Picker
                     this.LockUpdates = true;
 
                     // RGB
-                    if (!(userAction && rNumericUpDown.Focused))
+                    if (!(userAction && knudRed.Focused))
                     {
-                        rNumericUpDown.Value = this.Colour.R;
+                        knudRed.Value = this.Colour.R;
                     }
-                    if (!(userAction && gNumericUpDown.Focused))
+                    if (!(userAction && knudGreen.Focused))
                     {
-                        gNumericUpDown.Value = this.Colour.G;
+                        knudGreen.Value = this.Colour.G;
                     }
-                    if (!(userAction && bNumericUpDown.Focused))
+                    if (!(userAction && knudBlue.Focused))
                     {
-                        bNumericUpDown.Value = this.Colour.B;
+                        knudBlue.Value = this.Colour.B;
                     }
-                    rColorBar.Value = this.Colour.R;
-                    rColorBar.Colour = this.Colour;
-                    gColorBar.Value = this.Colour.G;
-                    gColorBar.Colour = this.Colour;
-                    bColorBar.Value = this.Colour.B;
-                    bColorBar.Colour = this.Colour;
+                    rgbaRed.Value = this.Colour.R;
+                    rgbaRed.Colour = this.Colour;
+                    rgbaGreen.Value = this.Colour.G;
+                    rgbaGreen.Colour = this.Colour;
+                    rgbaBlue.Value = this.Colour.B;
+                    rgbaBlue.Colour = this.Colour;
 
                     // HTML
-                    if (!(userAction && hexTextBox.Focused))
+                    if (!(userAction && kcmbHexValue.Focused))
                     {
-                        hexTextBox.Text = this.Colour.IsNamedColor ? this.Colour.Name : string.Format("{0:X2}{1:X2}{2:X2}", this.Colour.R, this.Colour.G, this.Colour.B);
+                        kcmbHexValue.Text = this.Colour.IsNamedColor ? this.Colour.Name : string.Format("{0:X2}{1:X2}{2:X2}", this.Colour.R, this.Colour.G, this.Colour.B);
                     }
 
                     // HSL
-                    if (!(userAction && hNumericUpDown.Focused))
+                    if (!(userAction && knudHue.Focused))
                     {
-                        hNumericUpDown.Value = (int)this.HslColour.H;
+                        knudHue.Value = (int)this.HslColour.H;
                     }
-                    if (!(userAction && sNumericUpDown.Focused))
+                    if (!(userAction && knudSaturation.Focused))
                     {
-                        sNumericUpDown.Value = (int)(this.HslColour.S * 100);
+                        knudSaturation.Value = (int)(this.HslColour.S * 100);
                     }
-                    if (!(userAction && lNumericUpDown.Focused))
+                    if (!(userAction && knudLuminosity.Focused))
                     {
-                        lNumericUpDown.Value = (int)(this.HslColour.L * 100);
+                        knudLuminosity.Value = (int)(this.HslColour.L * 100);
                     }
-                    hColorBar.Value = (int)this.HslColour.H;
-                    sColorBar.Colour = this.Colour;
-                    sColorBar.Value = (int)(this.HslColour.S * 100);
-                    lColorBar.Colour = this.Colour;
-                    lColorBar.Value = (int)(this.HslColour.L * 100);
+                    hcsHue.Value = (int)this.HslColour.H;
+                    scsSaturation.Colour = this.Colour;
+                    scsSaturation.Value = (int)(this.HslColour.S * 100);
+                    lcsLuminosity.Colour = this.Colour;
+                    lcsLuminosity.Value = (int)(this.HslColour.L * 100);
 
                     // Alpha
-                    if (!(userAction && aNumericUpDown.Focused))
+                    if (!(userAction && knudAlpha.Focused))
                     {
-                        aNumericUpDown.Value = this.Colour.A;
+                        knudAlpha.Value = this.Colour.A;
                     }
-                    aColorBar.Colour = this.Colour;
-                    aColorBar.Value = this.Colour.A;
+                    rgbasAlpha.Colour = this.Colour;
+                    rgbasAlpha.Value = this.Colour.A;
                 }
                 finally
                 {
@@ -889,25 +832,24 @@ namespace Cyotek.Windows.Forms.Colour.Picker
             }
         }
 
-        private void AddColorProperties<T>()
+        private void AddColourProperties<T>()
         {
-            Type type;
-            Type colorType;
+            Type type, colourType;
 
             type = typeof(T);
-            colorType = typeof(Color);
+            colourType = typeof(Color);
 
             // ReSharper disable once LoopCanBePartlyConvertedToQuery
             foreach (PropertyInfo property in type.GetProperties(BindingFlags.Public | BindingFlags.Static))
             {
-                if (property.PropertyType == colorType)
+                if (property.PropertyType == colourType)
                 {
-                    Color color;
+                    Color colour;
 
-                    color = (Color)property.GetValue(type, null);
-                    if (!color.IsEmpty)
+                    colour = (Color)property.GetValue(type, null);
+                    if (!colour.IsEmpty)
                     {
-                        hexTextBox.Items.Add(color.Name);
+                        kcmbHexValue.Items.Add(colour.Name);
                     }
                 }
             }
@@ -944,104 +886,44 @@ namespace Cyotek.Windows.Forms.Colour.Picker
             return result;
         }
 
-        private void FillNamedColors()
+        private void FillNamedColours()
         {
-            this.AddColorProperties<SystemColors>();
-            this.AddColorProperties<Color>();
-            this.SetDropDownWidth();
-        }
+#if !NETCOREAPP3_0_OR_GREATER
+            AddColourProperties<SystemColors>();
+#else
 
-        private void hexTextBox_DrawItem(object sender, DrawItemEventArgs e)
-        {
-            // TODO: Really, this should be another control - ColorComboBox or ColorListBox etc.
+#endif
+            AddColourProperties<Color>();
 
-            if (e.Index != -1)
-            {
-                Rectangle colorBox;
-                string name;
-                Color color;
-
-                e.DrawBackground();
-
-                name = (string)hexTextBox.Items[e.Index];
-                color = Color.FromName(name);
-                colorBox = new Rectangle(e.Bounds.Left + 1, e.Bounds.Top + 1, e.Bounds.Height - 3, e.Bounds.Height - 3);
-
-                using (Brush brush = new SolidBrush(color))
-                {
-                    e.Graphics.FillRectangle(brush, colorBox);
-                }
-                e.Graphics.DrawRectangle(SystemPens.ControlText, colorBox);
-
-                TextRenderer.DrawText(e.Graphics, this.AddSpaces(name), this.Font, new Point(colorBox.Right + 3, colorBox.Top), e.ForeColor);
-
-                //if (color == Color.Transparent && (e.State & DrawItemState.Selected) != DrawItemState.Selected)
-                //  e.Graphics.DrawLine(SystemPens.ControlText, e.Bounds.Left, e.Bounds.Top, e.Bounds.Right, e.Bounds.Top);
-
-                e.DrawFocusRectangle();
-            }
-        }
-
-        private void hexTextBox_DropDown(object sender, EventArgs e)
-        {
-            if (hexTextBox.Items.Count == 0)
-            {
-                this.FillNamedColors();
-            }
-        }
-
-        private void hexTextBox_KeyDown(object sender, KeyEventArgs e)
-        {
-            switch (e.KeyCode)
-            {
-                case Keys.Up:
-                case Keys.Down:
-                case Keys.PageUp:
-                case Keys.PageDown:
-                    if (hexTextBox.Items.Count == 0)
-                    {
-                        this.FillNamedColors();
-                    }
-                    break;
-            }
-        }
-
-        private void hexTextBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (hexTextBox.SelectedIndex != -1)
-            {
-                this.LockUpdates = true;
-                this.Colour = Color.FromName((string)hexTextBox.SelectedItem);
-                this.LockUpdates = false;
-            }
+            SetDropDownWidth();
         }
 
         private void SetBarStates(bool visible)
         {
-            rColorBar.Visible = visible;
-            gColorBar.Visible = visible;
-            bColorBar.Visible = visible;
-            hColorBar.Visible = visible;
-            sColorBar.Visible = visible;
-            lColorBar.Visible = visible;
-            aColorBar.Visible = _showAlphaChannel && visible;
+            rgbaRed.Visible = visible;
+            rgbaGreen.Visible = visible;
+            rgbaBlue.Visible = visible;
+            hcsHue.Visible = visible;
+            scsSaturation.Visible = visible;
+            lcsLuminosity.Visible = visible;
+            rgbasAlpha.Visible = _showAlphaChannel && visible;
         }
 
         private void SetControlStates()
         {
-            aLabel.Visible = _showAlphaChannel;
-            aColorBar.Visible = _showAlphaChannel;
-            aNumericUpDown.Visible = _showAlphaChannel;
+            klblAlpha.Visible = _showAlphaChannel;
+            rgbasAlpha.Visible = _showAlphaChannel;
+            knudAlpha.Visible = _showAlphaChannel;
 
-            rgbHeaderLabel.Visible = _showColorSpaceLabels;
-            hslLabel.Visible = _showColorSpaceLabels;
+            klblRGB.Visible = _showColorSpaceLabels;
+            klblHSL.Visible = _showColorSpaceLabels;
         }
 
         private void SetDropDownWidth()
         {
-            if (hexTextBox.Items.Count != 0)
+            if (kcmbHexValue.Items.Count != 0)
             {
-                hexTextBox.DropDownWidth = hexTextBox.ItemHeight * 2 + hexTextBox.Items.Cast<string>().Max(s => TextRenderer.MeasureText(s, this.Font).Width);
+                kcmbHexValue.DropDownWidth = kcmbHexValue.ItemHeight * 2 + kcmbHexValue.Items.Cast<string>().Max(s => TextRenderer.MeasureText(s, this.Font).Width);
             }
         }
 
@@ -1064,35 +946,35 @@ namespace Cyotek.Windows.Forms.Colour.Picker
 
                 this.LockUpdates = true;
 
-                if (sender == hexTextBox)
+                if (sender == kcmbHexValue)
                 {
                     string text;
                     int namedIndex;
 
-                    text = hexTextBox.Text;
+                    text = kcmbHexValue.Text;
                     if (text.StartsWith("#"))
                     {
                         text = text.Substring(1);
                     }
 
-                    if (hexTextBox.Items.Count == 0)
+                    if (kcmbHexValue.Items.Count == 0)
                     {
-                        this.FillNamedColors();
+                        this.FillNamedColours();
                     }
 
-                    namedIndex = hexTextBox.FindStringExact(text);
+                    namedIndex = kcmbHexValue.FindStringExact(text);
 
                     if (namedIndex != -1 || text.Length == 6 || text.Length == 8)
                     {
                         try
                         {
-                            Color color;
+                            Color colour;
 
-                            color = namedIndex != -1 ? Color.FromName(text) : ColorTranslator.FromHtml("#" + text);
-                            aNumericUpDown.Value = color.A;
-                            rNumericUpDown.Value = color.R;
-                            bNumericUpDown.Value = color.B;
-                            gNumericUpDown.Value = color.G;
+                            colour = namedIndex != -1 ? Color.FromName(text) : ColorTranslator.FromHtml("#" + text);
+                            knudAlpha.Value = colour.A;
+                            knudRed.Value = colour.R;
+                            knudBlue.Value = colour.B;
+                            knudGreen.Value = colour.G;
 
                             useRgb = true;
                         }
@@ -1106,64 +988,62 @@ namespace Cyotek.Windows.Forms.Colour.Picker
                         useNamed = true;
                     }
                 }
-                else if (sender == aColorBar || sender == rColorBar || sender == gColorBar || sender == bColorBar)
+                else if (sender == rgbasAlpha || sender == rgbaRed || sender == rgbaGreen || sender == rgbaBlue)
                 {
-                    aNumericUpDown.Value = (int)aColorBar.Value;
-                    rNumericUpDown.Value = (int)rColorBar.Value;
-                    gNumericUpDown.Value = (int)gColorBar.Value;
-                    bNumericUpDown.Value = (int)bColorBar.Value;
+                    knudAlpha.Value = (int)rgbasAlpha.Value;
+                    knudRed.Value = (int)rgbaRed.Value;
+                    knudGreen.Value = (int)rgbaGreen.Value;
+                    knudBlue.Value = (int)rgbaBlue.Value;
 
                     useRgb = true;
                 }
-                else if (sender == aNumericUpDown || sender == rNumericUpDown || sender == gNumericUpDown || sender == bNumericUpDown)
+                else if (sender == knudAlpha || sender == knudRed || sender == knudGreen || sender == knudBlue)
                 {
                     useRgb = true;
                 }
-                else if (sender == hColorBar || sender == lColorBar || sender == sColorBar)
+                else if (sender == hcsHue || sender == lcsLuminosity || sender == scsSaturation)
                 {
-                    hNumericUpDown.Value = (int)hColorBar.Value;
-                    sNumericUpDown.Value = (int)sColorBar.Value;
-                    lNumericUpDown.Value = (int)lColorBar.Value;
+                    knudHue.Value = (int)hcsHue.Value;
+                    knudSaturation.Value = (int)scsSaturation.Value;
+                    knudLuminosity.Value = (int)lcsLuminosity.Value;
 
                     useHsl = true;
                 }
-                else if (sender == hNumericUpDown || sender == sNumericUpDown || sender == lNumericUpDown)
+                else if (sender == knudHue || sender == knudSaturation || sender == knudLuminosity)
                 {
                     useHsl = true;
                 }
 
                 if (useRgb || useNamed)
                 {
-                    Color color;
+                    Color colour;
 
-                    color = useNamed ? Color.FromName(hexTextBox.Text) : Color.FromArgb((int)aNumericUpDown.Value, (int)rNumericUpDown.Value, (int)gNumericUpDown.Value, (int)bNumericUpDown.Value);
+                    colour = useNamed ? Color.FromName(kcmbHexValue.Text) : Color.FromArgb((int)knudAlpha.Value, (int)knudRed.Value, (int)knudGreen.Value, (int)knudBlue.Value);
 
-                    this.Colour = color;
-                    this.HslColour = new HslColour(color);
+                    this.Colour = colour;
+                    this.HslColour = new HslColour(colour);
                 }
                 else if (useHsl)
                 {
-                    HslColour color;
+                    HslColour colour;
 
-                    color = new HslColour((int)aNumericUpDown.Value, (double)hNumericUpDown.Value, (double)sNumericUpDown.Value / 100, (double)lNumericUpDown.Value / 100);
-                    this.HslColour = color;
-                    this.Colour = color.ToRgbColor();
+                    colour = new HslColour((int)knudAlpha.Value, (double)knudHue.Value, (double)knudSaturation.Value / 100, (double)knudLuminosity.Value / 100);
+                    this.HslColour = colour;
+                    this.Colour = colour.ToRgbColor();
                 }
 
                 this.LockUpdates = false;
                 this.UpdateFields(true);
             }
         }
-
         #endregion
 
-        #region IColorEditor Interface
-
+        #region IColourInterface
         [Category("Property Changed")]
         public event EventHandler ColourChanged
         {
-            add { this.Events.AddHandler(_eventColorChanged, value); }
-            remove { this.Events.RemoveHandler(_eventColorChanged, value); }
+            add { Events.AddHandler(_eventColourChanged, value); }
+            remove { Events.RemoveHandler(_eventColourChanged, value); }
         }
 
         /// <summary>
@@ -1205,7 +1085,71 @@ namespace Cyotek.Windows.Forms.Colour.Picker
                 }
             }
         }
-
         #endregion
+
+        private void kcmbHexValue_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            if (e.Index != -1)
+            {
+                Rectangle colourBox;
+                string name;
+                Color colour;
+
+                e.DrawBackground();
+
+                name = (string)kcmbHexValue.Items[e.Index];
+                colour = Color.FromName(name);
+                colourBox = new Rectangle(e.Bounds.Left + 1, e.Bounds.Top + 1, e.Bounds.Height - 3, e.Bounds.Height - 3);
+
+                using (Brush brush = new SolidBrush(colour))
+                {
+                    e.Graphics.FillRectangle(brush, colourBox);
+                }
+                e.Graphics.DrawRectangle(SystemPens.ControlText, colourBox);
+
+                TextRenderer.DrawText(e.Graphics, this.AddSpaces(name), this.Font, new Point(colourBox.Right + 3, colourBox.Top), e.ForeColor);
+
+                //if (color == Color.Transparent && (e.State & DrawItemState.Selected) != DrawItemState.Selected)
+                //  e.Graphics.DrawLine(SystemPens.ControlText, e.Bounds.Left, e.Bounds.Top, e.Bounds.Right, e.Bounds.Top);
+
+                e.DrawFocusRectangle();
+            }
+        }
+
+        private void kcmbHexValue_DropDown(object sender, EventArgs e)
+        {
+            if (kcmbHexValue.Items.Count == 0)
+            {
+                FillNamedColours();
+            }
+        }
+
+        private void kcmbHexValue_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Up:
+                case Keys.Down:
+                case Keys.PageUp:
+                case Keys.PageDown:
+                    if (kcmbHexValue.Items.Count == 0)
+                    {
+                        FillNamedColours();
+                    }
+                    break;
+            }
+        }
+
+        private void kcmbHexValue_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (kcmbHexValue.SelectedIndex != 0)
+            {
+                LockUpdates = true;
+
+                Colour = Color.FromName((string)kcmbHexValue.SelectedItem);
+
+                LockUpdates = false;
+            }
+        }
     }
 }

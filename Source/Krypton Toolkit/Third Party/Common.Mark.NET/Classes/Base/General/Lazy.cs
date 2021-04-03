@@ -1,6 +1,6 @@
 ﻿namespace Common.Mark.NET
 {
-#if NET20 || NET35_CLIENT
+//#if NET20 || NET35_CLIENT
     enum LazyThreadSafetyMode
     {
         None,
@@ -53,5 +53,5 @@
             }
         }
     }
-#endif
+//#endif
 }

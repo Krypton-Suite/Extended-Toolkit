@@ -11,9 +11,7 @@ namespace Cyotek.Windows.Forms.Colour.Picker
     /// <summary>
     /// Represents a control for selecting a value from a scale
     /// </summary>
-    [DefaultValue("Value")]
-    [DefaultEvent("ValueChanged")]
-    [ToolboxItem(false)]
+    [DefaultValue("Value"), DefaultEvent("ValueChanged"), ToolboxItem(false)]
     public class ColourSlider : Control
     {
         #region Constants

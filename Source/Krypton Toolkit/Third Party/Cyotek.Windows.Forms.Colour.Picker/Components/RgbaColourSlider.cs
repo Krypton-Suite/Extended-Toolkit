@@ -6,13 +6,14 @@ using System.Windows.Forms;
 
 namespace Cyotek.Windows.Forms.Colour.Picker
 {
+    //[ToolboxItem(true)]
     public class RgbaColourSlider : ColourSlider
     {
         #region Constants
 
         private static readonly object _eventChannelChanged = new object();
 
-        private static readonly object _eventColorChanged = new object();
+        private static readonly object _eventColourChanged = new object();
 
         #endregion
 
@@ -22,7 +23,7 @@ namespace Cyotek.Windows.Forms.Colour.Picker
 
         private RgbaChannel _channel;
 
-        private Color _color;
+        private Color _colour;
 
         #endregion
 
@@ -50,8 +51,8 @@ namespace Cyotek.Windows.Forms.Colour.Picker
         [Category("Property Changed")]
         public event EventHandler ColourChanged
         {
-            add { this.Events.AddHandler(_eventColorChanged, value); }
-            remove { this.Events.RemoveHandler(_eventColorChanged, value); }
+            add { this.Events.AddHandler(_eventColourChanged, value); }
+            remove { this.Events.RemoveHandler(_eventColourChanged, value); }
         }
 
         #endregion
@@ -86,12 +87,12 @@ namespace Cyotek.Windows.Forms.Colour.Picker
         [DefaultValue(typeof(Color), "Black")]
         public virtual Color Colour
         {
-            get { return _color; }
+            get { return _colour; }
             set
             {
                 if (this.Colour != value)
                 {
-                    _color = value;
+                    _colour = value;
 
                     this.OnColorChanged(EventArgs.Empty);
                 }
@@ -244,7 +245,7 @@ namespace Cyotek.Windows.Forms.Colour.Picker
             this.CreateScale();
             this.Invalidate();
 
-            handler = (EventHandler)this.Events[_eventColorChanged];
+            handler = (EventHandler)this.Events[_eventColourChanged];
 
             handler?.Invoke(this, e);
         }
