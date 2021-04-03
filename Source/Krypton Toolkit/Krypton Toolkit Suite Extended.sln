@@ -42,8 +42,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Markdown", "Markdown", "{A7
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Messagebox", "Main\Krypton.Toolkit.Suite.Extended.Messagebox\Krypton.Toolkit.Suite.Extended.Messagebox.csproj", "{CF885412-B8C5-449B-A7AE-D9E81F405A5C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Base", "Main\Krypton.Toolkit.Suite.Extended.Base\Krypton.Toolkit.Suite.Extended.Base.csproj", "{E63A630D-DF59-48E7-8792-5B64530DD680}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Drawing.Utilities", "Main\Krypton.Toolkit.Suite.Extended.Drawing.Utilities\Krypton.Toolkit.Suite.Extended.Drawing.Utilities.csproj", "{D826A960-6CE3-4E8F-8028-ADE82D7BE4C1}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Error.Reporting", "Main\Krypton.Toolkit.Suite.Extended.Error.Reporting\Krypton.Toolkit.Suite.Extended.Error.Reporting.csproj", "{C3AF5854-C865-4620-B678-26CEB4A1596B}"
@@ -112,6 +110,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zip.Storer", "Third Party\Z
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scintilla.NET", "Third Party\Scintilla.NET\Scintilla.NET.csproj", "{4C65A943-E114-4535-9C84-1D5CE0612FE0}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Controls", "Main\Krypton.Toolkit.Suite.Extended.Controls\Krypton.Toolkit.Suite.Extended.Controls.csproj", "{838FCD3C-9306-427D-9A99-9E68CEFA584C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -138,10 +138,6 @@ Global
 		{CF885412-B8C5-449B-A7AE-D9E81F405A5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF885412-B8C5-449B-A7AE-D9E81F405A5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF885412-B8C5-449B-A7AE-D9E81F405A5C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E63A630D-DF59-48E7-8792-5B64530DD680}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E63A630D-DF59-48E7-8792-5B64530DD680}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E63A630D-DF59-48E7-8792-5B64530DD680}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E63A630D-DF59-48E7-8792-5B64530DD680}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D826A960-6CE3-4E8F-8028-ADE82D7BE4C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D826A960-6CE3-4E8F-8028-ADE82D7BE4C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D826A960-6CE3-4E8F-8028-ADE82D7BE4C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -278,6 +274,10 @@ Global
 		{4C65A943-E114-4535-9C84-1D5CE0612FE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C65A943-E114-4535-9C84-1D5CE0612FE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4C65A943-E114-4535-9C84-1D5CE0612FE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{838FCD3C-9306-427D-9A99-9E68CEFA584C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{838FCD3C-9306-427D-9A99-9E68CEFA584C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{838FCD3C-9306-427D-9A99-9E68CEFA584C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{838FCD3C-9306-427D-9A99-9E68CEFA584C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -290,7 +290,6 @@ Global
 		{87BE2145-50BE-4A57-9C79-FCE5A64F6065} = {5D85B551-9AFC-4E96-93C3-D8D81B69971F}
 		{A7A69BC2-7682-43FB-8E7C-C42FDAA2A215} = {5D85B551-9AFC-4E96-93C3-D8D81B69971F}
 		{CF885412-B8C5-449B-A7AE-D9E81F405A5C} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
-		{E63A630D-DF59-48E7-8792-5B64530DD680} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 		{D826A960-6CE3-4E8F-8028-ADE82D7BE4C1} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 		{C3AF5854-C865-4620-B678-26CEB4A1596B} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 		{48714D9F-E9DF-4F09-B29A-1B77EF522252} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
@@ -325,6 +324,7 @@ Global
 		{66DD6657-39B3-4ACF-9EE9-B60EF96A2262} = {E311F8C7-1F27-48CD-86BE-CC3D798163BE}
 		{7A5B99D8-8925-4831-9704-2A211C0F470A} = {E311F8C7-1F27-48CD-86BE-CC3D798163BE}
 		{4C65A943-E114-4535-9C84-1D5CE0612FE0} = {E311F8C7-1F27-48CD-86BE-CC3D798163BE}
+		{838FCD3C-9306-427D-9A99-9E68CEFA584C} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A7CE7732-0982-4703-8EFD-7715D569BAB5}

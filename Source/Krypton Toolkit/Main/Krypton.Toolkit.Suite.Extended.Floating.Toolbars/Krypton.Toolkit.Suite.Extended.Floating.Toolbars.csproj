@@ -13,7 +13,7 @@
   <!--Package Data-->
   <PropertyGroup>
     <PackageId>Krypton.Toolkit.Suite.Extended.Floating.Toolbars</PackageId>
-    <Description></Description>
+    <Description>An extension to the Krypton standard toolkit. This is the floating toolbars module.</Description>
   </PropertyGroup>
 
   <!--Version Information-->
