@@ -1,11 +1,7 @@
 ﻿using Krypton.Toolkit;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Cyotek.Windows.Forms.Colour.Picker
 {
@@ -19,10 +15,11 @@ namespace Cyotek.Windows.Forms.Colour.Picker
             this.kbtnCancel = new Krypton.Toolkit.KryptonButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            this.kryptonButton2 = new Krypton.Toolkit.KryptonButton();
+            this.colourEditor1 = new Cyotek.Windows.Forms.Colour.Picker.ColourEditor();
             this.kryptonButton1 = new Krypton.Toolkit.KryptonButton();
             this.colourWheel1 = new Cyotek.Windows.Forms.Colour.Picker.ColourWheel();
-            this.colourEditor1 = new Cyotek.Windows.Forms.Colour.Picker.ColourEditor();
-            this.kryptonButton2 = new Krypton.Toolkit.KryptonButton();
+            this.cgEditor = new Cyotek.Windows.Forms.Colour.Picker.ColourGrid();
             ((System.ComponentModel.ISupportInitialize)(this.kpnlButtons)).BeginInit();
             this.kpnlButtons.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
@@ -73,11 +70,45 @@ namespace Cyotek.Windows.Forms.Colour.Picker
             this.kryptonPanel1.Controls.Add(this.colourEditor1);
             this.kryptonPanel1.Controls.Add(this.kryptonButton1);
             this.kryptonPanel1.Controls.Add(this.colourWheel1);
+            this.kryptonPanel1.Controls.Add(this.cgEditor);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel1.Name = "kryptonPanel1";
             this.kryptonPanel1.Size = new System.Drawing.Size(619, 297);
             this.kryptonPanel1.TabIndex = 2;
+            // 
+            // kryptonButton2
+            // 
+            this.kryptonButton2.AutoSize = true;
+            this.kryptonButton2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.kryptonButton2.Location = new System.Drawing.Point(40, 138);
+            this.kryptonButton2.Name = "kryptonButton2";
+            this.kryptonButton2.Size = new System.Drawing.Size(22, 22);
+            this.kryptonButton2.TabIndex = 4;
+            this.kryptonButton2.Values.Image = global::Cyotek.Windows.Forms.Colour.Picker.Properties.Resources.palette_save;
+            this.kryptonButton2.Values.Text = "";
+            // 
+            // colourEditor1
+            // 
+            this.colourEditor1.Location = new System.Drawing.Point(192, 12);
+            this.colourEditor1.Name = "colourEditor1";
+            this.colourEditor1.Size = new System.Drawing.Size(211, 266);
+            this.colourEditor1.TabIndex = 5;
+            // 
+            // cgEditor
+            // 
+            this.cgEditor.AutoAddColours = false;
+            this.cgEditor.CellBorderStyle = ColourCellBorderStyle.None;
+            this.cgEditor.EditMode = ColourEditingMode.Both;
+            this.cgEditor.Location = new System.Drawing.Point(12, 176);
+            this.cgEditor.Name = "cgEditor";
+            this.cgEditor.Padding = new System.Windows.Forms.Padding(0);
+            this.cgEditor.Palette = ColourPalette.Paint;
+            this.cgEditor.SelectedCellStyle = ColourGridSelectedCellStyle.Standard;
+            this.cgEditor.ShowCustomColours = false;
+            this.cgEditor.Size = new System.Drawing.Size(192, 72);
+            this.cgEditor.Spacing = new System.Drawing.Size(0, 0);
+            this.cgEditor.TabIndex = 7;
             // 
             // kryptonButton1
             // 
@@ -97,23 +128,12 @@ namespace Cyotek.Windows.Forms.Colour.Picker
             this.colourWheel1.Size = new System.Drawing.Size(129, 120);
             this.colourWheel1.TabIndex = 0;
             // 
-            // colourEditor1
+            // cgEditor
             // 
-            this.colourEditor1.Location = new System.Drawing.Point(166, 12);
-            this.colourEditor1.Name = "colourEditor1";
-            this.colourEditor1.Size = new System.Drawing.Size(211, 266);
-            this.colourEditor1.TabIndex = 3;
-            // 
-            // kryptonButton2
-            // 
-            this.kryptonButton2.AutoSize = true;
-            this.kryptonButton2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.kryptonButton2.Location = new System.Drawing.Point(40, 138);
-            this.kryptonButton2.Name = "kryptonButton2";
-            this.kryptonButton2.Size = new System.Drawing.Size(22, 22);
-            this.kryptonButton2.TabIndex = 4;
-            this.kryptonButton2.Values.Image = global::Cyotek.Windows.Forms.Colour.Picker.Properties.Resources.palette_save;
-            this.kryptonButton2.Values.Text = "";
+            this.cgEditor.Location = new System.Drawing.Point(0, 0);
+            this.cgEditor.Name = "cgEditor";
+            this.cgEditor.Size = new System.Drawing.Size(247, 165);
+            this.cgEditor.TabIndex = 6;
             // 
             // ColourPickerDialog
             // 
@@ -155,14 +175,15 @@ namespace Cyotek.Windows.Forms.Colour.Picker
         private ColourWheel colourWheel1;
         private ColourEditor colourEditor1;
         private KryptonButton kryptonButton2;
-        private Color color;
+        private ColourGrid cgEditor;
+        private Color colour;
         #endregion
 
         #region Properties
         public Color Colour
         {
-            get => color; // { return colorEditorManager.Colour; }
-            set => color = value; // { colorEditorManager.Colour = value; }
+            get => colour; // { return colorEditorManager.Colour; }
+            set => colour = value; // { colorEditorManager.Colour = value; }
         }
 
         [Browsable(false)]
