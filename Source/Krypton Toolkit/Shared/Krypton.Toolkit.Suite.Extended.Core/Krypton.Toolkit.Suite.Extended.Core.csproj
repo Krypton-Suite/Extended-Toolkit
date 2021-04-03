@@ -1,8 +1,37 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0-windows</TargetFramework>
+    <TargetFrameworks>net45;netcoreapp3.1;net5.0-windows;net6.0-windows</TargetFrameworks>
+    <TargetFrameworks Condition="'$(TFMs)' == 'all'">net35;net40;net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows;net6.0-windows</TargetFrameworks>
+    <LangVersion>latest</LangVersion>
+    <OutputType>library</OutputType>
+    <RootNamespace>Krypton.Toolkit.Suite.Extended.Common</RootNamespace>
+    <AssemblyName>Krypton.Toolkit.Suite.Extended.Common</AssemblyName>
     <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <!--Package Data-->
+  <PropertyGroup>
+    <PackageId>Krypton.Toolkit.Suite.Extended.Common</PackageId>
+    <Description>An extension to the Krypton standard toolkit. This is the core module.</Description>
+  </PropertyGroup>
+
+  <!--Version Information-->
+  <PropertyGroup>
+    <AssemblyVersion>6.0.2108</AssemblyVersion>
+    <FileVersion>6.0.2108</FileVersion>
+  </PropertyGroup>
+
+  <!--Krypton Toolkit Import-->
+  <ItemGroup>
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2103.6" />
+    <!--<PackageReference Include="Krypton.Toolkit" Version="5.550.2103" />-->
+  </ItemGroup>
+
+  <!--Binary/Documentation Output-->
+  <PropertyGroup>
+    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Common\Krypton.Toolkit.Suite.Extended.Common.xml</DocumentationFile>
+    <OutputPath>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Common\</OutputPath>
   </PropertyGroup>
 
 </Project>
