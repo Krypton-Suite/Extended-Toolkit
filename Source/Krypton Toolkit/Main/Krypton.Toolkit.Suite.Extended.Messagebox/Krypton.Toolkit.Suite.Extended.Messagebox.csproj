@@ -21,6 +21,7 @@
     <AssemblyVersion>6.0.2108</AssemblyVersion>
     <FileVersion>6.0.2108</FileVersion>
   </PropertyGroup>
+  
   <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
