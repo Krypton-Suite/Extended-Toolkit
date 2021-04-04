@@ -120,6 +120,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton.Toolkit.Suite.Exten
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton.Toolkit.Suite.Extended.Property.Grid", "Main\Krypton.Toolkit.Suite.Extended.Property.Grid\Krypton.Toolkit.Suite.Extended.Property.Grid.csproj", "{1F967ACE-79F7-4C71-9032-3E5705D13C9F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API CodePack", "API CodePack", "{D3F14B97-D6F3-47F8-85CB-E9A7903D372D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Windows.API.Code.Pack.Core", "Third Party\Microsoft\Microsoft.Windows.API.Code.Pack.Core\Microsoft.Windows.API.Code.Pack.Core.csproj", "{DA885BE0-D8AA-4C05-9F38-2A33A9DB564C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Windows.API.Code.Pack.Shell", "Third Party\Microsoft\Microsoft.Windows.API.Code.Pack.Shell\Microsoft.Windows.API.Code.Pack.Shell.csproj", "{A05B1BAF-5DC2-41A0-BF67-598725292B41}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Windows.API.Code.Pack.Shell.Extensions", "Third Party\Microsoft.Windows.API.Code.Pack.Shell.Extensions\Microsoft.Windows.API.Code.Pack.Shell.Extensions.csproj", "{008DC5A2-8B95-48C4-A7CF-2B2BE0AE5946}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -302,6 +310,18 @@ Global
 		{1F967ACE-79F7-4C71-9032-3E5705D13C9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F967ACE-79F7-4C71-9032-3E5705D13C9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F967ACE-79F7-4C71-9032-3E5705D13C9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA885BE0-D8AA-4C05-9F38-2A33A9DB564C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA885BE0-D8AA-4C05-9F38-2A33A9DB564C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA885BE0-D8AA-4C05-9F38-2A33A9DB564C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA885BE0-D8AA-4C05-9F38-2A33A9DB564C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A05B1BAF-5DC2-41A0-BF67-598725292B41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A05B1BAF-5DC2-41A0-BF67-598725292B41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A05B1BAF-5DC2-41A0-BF67-598725292B41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A05B1BAF-5DC2-41A0-BF67-598725292B41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{008DC5A2-8B95-48C4-A7CF-2B2BE0AE5946}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{008DC5A2-8B95-48C4-A7CF-2B2BE0AE5946}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{008DC5A2-8B95-48C4-A7CF-2B2BE0AE5946}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{008DC5A2-8B95-48C4-A7CF-2B2BE0AE5946}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -353,6 +373,10 @@ Global
 		{02E3E01C-A4F8-46CD-B157-17E5540C5BFF} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 		{FDD335B3-3293-4E93-B81F-54F84DC6276A} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 		{1F967ACE-79F7-4C71-9032-3E5705D13C9F} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
+		{D3F14B97-D6F3-47F8-85CB-E9A7903D372D} = {E311F8C7-1F27-48CD-86BE-CC3D798163BE}
+		{DA885BE0-D8AA-4C05-9F38-2A33A9DB564C} = {D3F14B97-D6F3-47F8-85CB-E9A7903D372D}
+		{A05B1BAF-5DC2-41A0-BF67-598725292B41} = {D3F14B97-D6F3-47F8-85CB-E9A7903D372D}
+		{008DC5A2-8B95-48C4-A7CF-2B2BE0AE5946} = {D3F14B97-D6F3-47F8-85CB-E9A7903D372D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A7CE7732-0982-4703-8EFD-7715D569BAB5}
