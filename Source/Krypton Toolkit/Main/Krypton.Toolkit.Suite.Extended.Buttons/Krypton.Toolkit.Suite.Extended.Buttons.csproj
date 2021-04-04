@@ -35,14 +35,14 @@
     <!--Krypton Toolkit Import-->
     <Choose>
       <When Condition="'$(TFMs)' == 'all'">
-        <ItemGroup >
+        <ItemGroup>
           <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2103.6" />
-        </ItemGroup >
+        </ItemGroup>
       </When>
       <Otherwise>
-        <ItemGroup >
-          <PackageReference Include="Krypton.Toolkit.Canary.Lite" Version="6.0.2103.6"/>
-        </ItemGroup >
+        <ItemGroup>
+          <PackageReference Include="Krypton.Toolkit.Canary.Lite" Version="6.0.2103.6" />
+        </ItemGroup>
       </Otherwise>
     </Choose>
 
@@ -51,4 +51,17 @@
       <DocumentationFile>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.Buttons\Krypton.Toolkit.Suite.Extended.Buttons.xml</DocumentationFile>
       <OutputPath>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.Buttons\</OutputPath>
     </PropertyGroup>
+    <ItemGroup>
+      <Compile Update="Properties\Resources.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>Resources.resx</DependentUpon>
+      </Compile>
+    </ItemGroup>
+    <ItemGroup>
+      <EmbeddedResource Update="Properties\Resources.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+    </ItemGroup>
   </Project>
