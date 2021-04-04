@@ -112,6 +112,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scintilla.NET", "Third Part
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Controls", "Main\Krypton.Toolkit.Suite.Extended.Controls\Krypton.Toolkit.Suite.Extended.Controls.csproj", "{838FCD3C-9306-427D-9A99-9E68CEFA584C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton.Toolkit.Suite.Extended.Tool.Box", "Main\Krypton.Toolkit.Suite.Extended.Tool.Box\Krypton.Toolkit.Suite.Extended.Tool.Box.csproj", "{572B0D12-A04B-4EB9-B5FB-87F66FF91078}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton.Toolkit.Suite.Extended.Developer.Utilities", "Main\Krypton.Toolkit.Suite.Extended.Developer.Utilities\Krypton.Toolkit.Suite.Extended.Developer.Utilities.csproj", "{02E3E01C-A4F8-46CD-B157-17E5540C5BFF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -278,6 +282,14 @@ Global
 		{838FCD3C-9306-427D-9A99-9E68CEFA584C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{838FCD3C-9306-427D-9A99-9E68CEFA584C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{838FCD3C-9306-427D-9A99-9E68CEFA584C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{572B0D12-A04B-4EB9-B5FB-87F66FF91078}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{572B0D12-A04B-4EB9-B5FB-87F66FF91078}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{572B0D12-A04B-4EB9-B5FB-87F66FF91078}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{572B0D12-A04B-4EB9-B5FB-87F66FF91078}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02E3E01C-A4F8-46CD-B157-17E5540C5BFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02E3E01C-A4F8-46CD-B157-17E5540C5BFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02E3E01C-A4F8-46CD-B157-17E5540C5BFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02E3E01C-A4F8-46CD-B157-17E5540C5BFF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -325,6 +337,8 @@ Global
 		{7A5B99D8-8925-4831-9704-2A211C0F470A} = {E311F8C7-1F27-48CD-86BE-CC3D798163BE}
 		{4C65A943-E114-4535-9C84-1D5CE0612FE0} = {E311F8C7-1F27-48CD-86BE-CC3D798163BE}
 		{838FCD3C-9306-427D-9A99-9E68CEFA584C} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
+		{572B0D12-A04B-4EB9-B5FB-87F66FF91078} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
+		{02E3E01C-A4F8-46CD-B157-17E5540C5BFF} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A7CE7732-0982-4703-8EFD-7715D569BAB5}
