@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Krypton.Toolkit.Suite.Extended.Developer.Utilities;
+using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Security.Principal;
@@ -75,7 +76,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
                 }
                 catch (Win32Exception e)
                 {
-                    ExceptionHandler.CaptureException(e);
+                    ExceptionCapture.CaptureException(e);
 
                     //KryptonMessageBoxExtended.Show($"Error: { e.Message }", "An Error has Occurred", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
