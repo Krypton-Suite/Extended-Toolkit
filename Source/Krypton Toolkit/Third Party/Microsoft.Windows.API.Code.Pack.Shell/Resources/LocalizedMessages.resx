@@ -321,4 +321,7 @@
   <data name="PropVariantUnsupportedType" xml:space="preserve">
     <value>Cannot be cast to unsupported type.</value>
   </data>
+  <data name="b" xml:space="preserve">
+    <value />
+  </data>
 </root>

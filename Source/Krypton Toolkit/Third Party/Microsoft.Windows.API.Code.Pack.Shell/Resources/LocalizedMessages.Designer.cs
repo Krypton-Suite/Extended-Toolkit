@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Microsoft.Windows.API.Code.Pack.Dialogs.Resources {
+namespace Microsoft.Windows.API.Code.Pack.Shell.Resources {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Microsoft.Windows.API.Code.Pack.Dialogs.Resources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Windows.API.Code.Pack.Dialogs.Resources.LocalizedMessages", typeof(LocalizedMessages).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Windows.API.Code.Pack.Shell.Resources.LocalizedMessages", typeof(LocalizedMessages).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
