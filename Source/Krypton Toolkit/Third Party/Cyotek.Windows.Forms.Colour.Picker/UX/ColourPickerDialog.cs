@@ -5,6 +5,7 @@ using System.Drawing;
 
 namespace Cyotek.Windows.Forms.Colour.Picker
 {
+    // TODO: Complete this
     [DefaultEvent("PreviewColourChanged"), DefaultProperty("Colour")]
     public class ColourPickerDialog : KryptonForm
     {
