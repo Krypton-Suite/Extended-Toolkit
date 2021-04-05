@@ -33,6 +33,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="Resources\LocalizedMessages.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
