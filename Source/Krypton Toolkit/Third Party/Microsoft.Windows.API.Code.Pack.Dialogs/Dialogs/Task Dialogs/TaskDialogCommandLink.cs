@@ -55,124 +55,59 @@ EFFET JURIDIQUE. Le présent contrat décrit certains droits juridiques. Vous po
 */
 #endregion
 
-using Microsoft.Windows.API.Code.Pack.Core.Resources;
+using System.Globalization;
 
-namespace Microsoft.Windows.API.Code.Pack.Core
+namespace Microsoft.Windows.API.Code.Pack.Dialogs
 {
     /// <summary>
-    /// Provides a visual representation of the progress of a long running operation.
+    /// Represents a command-link. 
     /// </summary>
-    public class TaskDialogProgressBar : TaskDialogBar
+    public class TaskDialogCommandLink : TaskDialogButton
     {
         /// <summary>
         /// Creates a new instance of this class.
         /// </summary>
-        public TaskDialogProgressBar() { }
+        public TaskDialogCommandLink() { }
 
         /// <summary>
-        /// Creates a new instance of this class with the specified name.
-        /// And using the default values: Min = 0, Max = 100, Current = 0
+        /// Creates a new instance of this class with the specified name and label.
         /// </summary>
-        /// <param name="name">The name of the control.</param>        
-        public TaskDialogProgressBar(string name) : base(name) { }
+        /// <param name="name">The name for this button.</param>
+        /// <param name="text">The label for this button.</param>
+        public TaskDialogCommandLink(string name, string text) : base(name, text) { }
 
         /// <summary>
-        /// Creates a new instance of this class with the specified 
-        /// minimum, maximum and current values.
+        /// Creates a new instance of this class with the specified name,label, and instruction.
         /// </summary>
-        /// <param name="minimum">The minimum value for this control.</param>
-        /// <param name="maximum">The maximum value for this control.</param>
-        /// <param name="value">The current value for this control.</param>        
-        public TaskDialogProgressBar(int minimum, int maximum, int value)
+        /// <param name="name">The name for this button.</param>
+        /// <param name="text">The label for this button.</param>
+        /// <param name="instruction">The instruction for this command link.</param>
+        public TaskDialogCommandLink(string name, string text, string instruction)
+            : base(name, text)
         {
-            Minimum = minimum;
-            Maximum = maximum;
-            Value = value;
+            this.instruction = instruction;
         }
 
-        private int _minimum;
-        private int _value;
-        private int _maximum = TaskDialogDefaults.ProgressBarMaximumValue;
-
+        private string instruction;
         /// <summary>
-        /// Gets or sets the minimum value for the control.
-        /// </summary>                
-        public int Minimum
-        {
-            get { return _minimum; }
-            set
-            {
-                CheckPropertyChangeAllowed("Minimum");
-
-                // Check for positive numbers
-                if (value < 0)
-                {
-                    throw new System.ArgumentException(LocalizedMessages.TaskDialogProgressBarMinValueGreaterThanZero, "value");
-                }
-
-                // Check if min / max differ
-                if (value >= Maximum)
-                {
-                    throw new System.ArgumentException(LocalizedMessages.TaskDialogProgressBarMinValueLessThanMax, "value");
-                }
-
-                _minimum = value;
-                ApplyPropertyChange("Minimum");
-            }
-        }
-        /// <summary>
-        /// Gets or sets the maximum value for the control.
+        /// Gets or sets the instruction associated with this command link button.
         /// </summary>
-        public int Maximum
+        public string Instruction
         {
-            get { return _maximum; }
-            set
-            {
-                CheckPropertyChangeAllowed("Maximum");
-
-                // Check if min / max differ
-                if (value < Minimum)
-                {
-                    throw new System.ArgumentException(LocalizedMessages.TaskDialogProgressBarMaxValueGreaterThanMin, "value");
-                }
-                _maximum = value;
-                ApplyPropertyChange("Maximum");
-            }
-        }
-        /// <summary>
-        /// Gets or sets the current value for the control.
-        /// </summary>
-        public int Value
-        {
-            get { return this._value; }
-            set
-            {
-                CheckPropertyChangeAllowed("Value");
-                // Check for positive numbers
-                if (value < Minimum || value > Maximum)
-                {
-                    throw new System.ArgumentException(LocalizedMessages.TaskDialogProgressBarValueInRange, "value");
-                }
-                this._value = value;
-                ApplyPropertyChange("Value");
-            }
+            get { return instruction; }
+            set { instruction = value; }
         }
 
         /// <summary>
-        /// Verifies that the progress bar's value is between its minimum and maximum.
+        /// Returns a string representation of this object.
         /// </summary>
-        internal bool HasValidValues
+        /// <returns>A <see cref="System.String"/></returns>
+        public override string ToString()
         {
-            get { return _minimum <= _value && _value <= _maximum; }
-        }
-
-        /// <summary>
-        /// Resets the control to its minimum value.
-        /// </summary>
-        protected internal override void Reset()
-        {
-            base.Reset();
-            _value = _minimum;
+            return string.Format(CultureInfo.CurrentCulture, "{0}{1}{2}",
+                Text ?? string.Empty,
+                (!string.IsNullOrEmpty(Text) && !string.IsNullOrEmpty(instruction)) ? "\n" : string.Empty,
+                instruction ?? string.Empty);
         }
     }
 }

@@ -55,121 +55,113 @@ EFFET JURIDIQUE. Le présent contrat décrit certains droits juridiques. Vous po
 */
 #endregion
 
-using Microsoft.Windows.API.Code.Pack.Core.Resources;
 using System;
-using System.Collections.ObjectModel;
-using System.Linq;
 
-namespace Microsoft.Windows.API.Code.Pack.Core
+namespace Microsoft.Windows.API.Code.Pack.Dialogs
 {
+    // ContentProperty allows us to specify the text 
+    // of the button as the child text of
+    // a button element in XAML, as well as explicitly 
+    // set with 'Text="<text>"'
+    // Note that this attribute is inherited, so it 
+    // applies to command-links and radio buttons as well.
     /// <summary>
-    /// Strongly typed collection for dialog controls.
+    /// Defines the abstract base class for task dialog buttons. 
+    /// Classes that inherit from this class will inherit 
+    /// the Text property defined in this class.
     /// </summary>
-    /// <typeparam name="T">DialogControl</typeparam>
-    public sealed class DialogControlCollection<T> : Collection<T> where T : DialogControl
+    public abstract class TaskDialogButtonBase : TaskDialogControl
     {
-        private IDialogControlHost hostingDialog;
-
-        internal DialogControlCollection(IDialogControlHost host)
-        {
-            hostingDialog = host;
-        }
 
         /// <summary>
-        /// Inserts an dialog control at the specified index.
+        /// Creates a new instance on a task dialog button.
         /// </summary>
-        /// <param name="index">The location to insert the control.</param>
-        /// <param name="control">The item to insert.</param>
-        /// <permission cref="System.InvalidOperationException">A control with 
-        /// the same name already exists in this collection -or- 
-        /// the control is being hosted by another dialog -or- the associated dialog is 
-        /// showing and cannot be modified.</permission>
-        protected override void InsertItem(int index, T control)
+        protected TaskDialogButtonBase() { }
+        /// <summary>
+        /// Creates a new instance on a task dialog button with
+        /// the specified name and text.
+        /// </summary>
+        /// <param name="name">The name for this button.</param>
+        /// <param name="text">The label for this button.</param>
+        protected TaskDialogButtonBase(string name, string text) : base(name)
         {
-            // Check for duplicates, lack of host, 
-            // and during-show adds.
-            if (Items.Contains(control))
-            {
-                throw new InvalidOperationException(LocalizedMessages.DialogCollectionCannotHaveDuplicateNames);
-            }
-            if (control.HostingDialog != null)
-            {
-                throw new InvalidOperationException(LocalizedMessages.DialogCollectionControlAlreadyHosted);
-            }
-            if (!hostingDialog.IsCollectionChangeAllowed())
-            {
-                throw new InvalidOperationException(LocalizedMessages.DialogCollectionModifyShowingDialog);
-            }
-
-            // Reparent, add control.
-            control.HostingDialog = hostingDialog;
-            base.InsertItem(index, control);
-
-            // Notify that we've added a control.
-            hostingDialog.ApplyCollectionChanged();
+            this.text = text;
         }
 
+        // Note that we don't need to explicitly 
+        // implement the add/remove delegate for the Click event;
+        // the hosting dialog only needs the delegate 
+        // information when the Click event is 
+        // raised (indirectly) by NativeTaskDialog, 
+        // so the latest delegate is always available.
         /// <summary>
-        /// Removes the control at the specified index.
+        /// Raised when the task dialog button is clicked.
         /// </summary>
-        /// <param name="index">The location of the control to remove.</param>
-        /// <permission cref="System.InvalidOperationException">
-        /// The associated dialog is 
-        /// showing and cannot be modified.</permission>
-        protected override void RemoveItem(int index)
+        public event EventHandler Click;
+
+        internal void RaiseClickEvent()
         {
-            // Notify that we're about to remove a control.
-            // Throw if dialog showing.
-            if (!hostingDialog.IsCollectionChangeAllowed())
-            {
-                throw new InvalidOperationException(LocalizedMessages.DialogCollectionModifyShowingDialog);
-            }
+            // Only perform click if the button is enabled.
+            if (!enabled) { return; }
 
-            DialogControl control = (DialogControl)Items[index];
-
-            // Unparent and remove.
-            control.HostingDialog = null;
-            base.RemoveItem(index);
-
-            hostingDialog.ApplyCollectionChanged();
+            if (Click != null) { Click(this, EventArgs.Empty); }
         }
 
+        private string text;
         /// <summary>
-        /// Defines the indexer that supports accessing controls by name. 
+        /// Gets or sets the button text.
         /// </summary>
-        /// <remarks>
-        /// <para>Control names are case sensitive.</para>
-        /// <para>This indexer is useful when the dialog is created in XAML
-        /// rather than constructed in code.</para></remarks>
-        ///<exception cref="System.ArgumentException">
-        /// The name cannot be null or a zero-length string.</exception>
-        /// <remarks>If there is more than one control with the same name, only the <B>first control</B> will be returned.</remarks>
-        public T this[string name]
+        public string Text
         {
-            get
+            get { return text; }
+            set
             {
-                if (string.IsNullOrEmpty(name))
-                {
-                    throw new ArgumentException(LocalizedMessages.DialogCollectionControlNameNull, "name");
-                }
+                CheckPropertyChangeAllowed("Text");
+                text = value;
+                ApplyPropertyChange("Text");
+            }
+        }
 
-                return Items.FirstOrDefault(x => x.Name == name);
+        private bool enabled = true;
+        /// <summary>
+        /// Gets or sets a value that determines whether the
+        /// button is enabled. The enabled state can cannot be changed
+        /// before the dialog is shown.
+        /// </summary>
+        public bool Enabled
+        {
+            get { return enabled; }
+            set
+            {
+                CheckPropertyChangeAllowed("Enabled");
+                enabled = value;
+                ApplyPropertyChange("Enabled");
+            }
+        }
+
+        private bool defaultControl;
+        /// <summary>
+        /// Gets or sets a value that indicates whether
+        /// this button is the default button.
+        /// </summary>
+        public bool Default
+        {
+            get { return defaultControl; }
+            set
+            {
+                CheckPropertyChangeAllowed("Default");
+                defaultControl = value;
+                ApplyPropertyChange("Default");
             }
         }
 
         /// <summary>
-        /// Searches for the control who's id matches the value
-        /// passed in the <paramref name="id"/> parameter.
+        /// Returns the Text property value for this button.
         /// </summary>
-        /// 
-        /// <param name="id">An integer containing the identifier of the 
-        /// control being searched for.</param>
-        /// 
-        /// <returns>A DialogControl who's id matches the value of the
-        /// <paramref name="id"/> parameter.</returns>        
-        internal DialogControl GetControlbyId(int id)
+        /// <returns>A <see cref="System.String"/>.</returns>
+        public override string ToString()
         {
-            return Items.FirstOrDefault(x => x.Id == id);
+            return text ?? string.Empty;
         }
     }
 }

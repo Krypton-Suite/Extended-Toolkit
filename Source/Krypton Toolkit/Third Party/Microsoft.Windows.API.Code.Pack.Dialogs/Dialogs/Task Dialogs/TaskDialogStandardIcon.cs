@@ -55,51 +55,61 @@ EFFET JURIDIQUE. Le présent contrat décrit certains droits juridiques. Vous po
 */
 #endregion
 
-namespace Microsoft.Windows.API.Code.Pack.Core
+namespace Microsoft.Windows.API.Code.Pack.Dialogs
 {
     /// <summary>
-    /// Indicates the various buttons and options clicked by the user on the task dialog.
-    /// </summary>        
-    public enum TaskDialogResult
+    /// Specifies the icon displayed in a task dialog.
+    /// </summary>
+    public enum TaskDialogStandardIcon
     {
         /// <summary>
-        /// No button was selected.
+        /// Displays no icons (default).
         /// </summary>
-        None = 0x0000,
+        None = 0,
 
         /// <summary>
-        /// "OK" button was clicked
+        /// Displays the warning icon.
         /// </summary>
-        Ok = 0x0001,
+        Warning = 65535,
 
         /// <summary>
-        /// "Yes" button was clicked
+        /// Displays the error icon.
         /// </summary>
-        Yes = 0x0002,
+        Error = 65534,
 
         /// <summary>
-        /// "No" button was clicked
+        /// Displays the Information icon.
         /// </summary>
-        No = 0x0004,
+        Information = 65533,
 
         /// <summary>
-        /// "Cancel" button was clicked
+        /// Displays the User Account Control shield.
         /// </summary>
-        Cancel = 0x0008,
+        Shield = 65532,
 
         /// <summary>
-        /// "Retry" button was clicked
+        /// Displays the User Account Control shield (gray) header.
         /// </summary>
-        Retry = 0x0010,
+        ShieldGrayHeader = 65527,
 
         /// <summary>
-        /// "Close" button was clicked
+        /// Displays the security success header.
         /// </summary>
-        Close = 0x0020,
+        SecuritySuccessHeader = 65528,
 
         /// <summary>
-        /// A custom button was clicked.
+        /// Displays the security error header.
         /// </summary>
-        CustomButtonClicked = 0x0100,
+        SecurityErrorHeader = 65529,
+
+        /// <summary>
+        /// Displays the User Account Control warning header.
+        /// </summary>
+        SecurityWarningHeader = 65530,
+
+        /// <summary>
+        /// Displays the User Account Control shield (blue) header.
+        /// </summary>
+        ShieldBlueHeader = 65531,
     }
 }

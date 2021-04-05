@@ -55,36 +55,26 @@ EFFET JURIDIQUE. Le présent contrat décrit certains droits juridiques. Vous po
 */
 #endregion
 
-namespace Microsoft.Windows.API.Code.Pack.Core
+namespace Microsoft.Windows.API.Code.Pack.Dialogs
 {
     /// <summary>
-    /// Sets the state of a task dialog progress bar.
-    /// </summary>        
-    public enum TaskDialogProgressBarState
+    /// Specifies the options for expand/collapse sections in dialogs.
+    /// </summary>
+    public enum TaskDialogExpandedDetailsLocation
     {
         /// <summary>
-        /// Uninitialized state, this should never occur.
+        /// Do not show the content.
         /// </summary>
-        None = 0,
+        Hide,
 
         /// <summary>
-        /// Normal state.
+        /// Show the content.
         /// </summary>
-        Normal = TaskDialogNativeMethods.ProgressBarState.Normal,
+        ExpandContent,
 
         /// <summary>
-        /// An error occurred.
+        /// Expand the footer content.
         /// </summary>
-        Error = TaskDialogNativeMethods.ProgressBarState.Error,
-
-        /// <summary>
-        /// The progress is paused.
-        /// </summary>
-        Paused = TaskDialogNativeMethods.ProgressBarState.Paused,
-
-        /// <summary>
-        /// Displays marquee (indeterminate) style progress
-        /// </summary>
-        Marquee
+        ExpandFooter
     }
 }

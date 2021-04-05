@@ -55,50 +55,21 @@ EFFET JURIDIQUE. Le présent contrat décrit certains droits juridiques. Vous po
 */
 #endregion
 
-using System;
-
-namespace Microsoft.Windows.API.Code.Pack.Core
+namespace Microsoft.Windows.API.Code.Pack.Dialogs
 {
     /// <summary>
-    /// Identifies one of the standard buttons that 
-    /// can be displayed via TaskDialog.
+    /// Declares the abstract base class for all custom task dialog controls.
     /// </summary>
-    [Flags]
-    public enum TaskDialogStandardButtons
+    public abstract class TaskDialogControl : DialogControl
     {
         /// <summary>
-        /// No buttons on the dialog.
+        /// Creates a new instance of a task dialog control.
         /// </summary>
-        None = 0x0000,
-
+        protected TaskDialogControl() { }
         /// <summary>
-        /// An "OK" button.
+        /// Creates a new instance of a task dialog control with the specified name.
         /// </summary>
-        Ok = 0x0001,
-
-        /// <summary>
-        /// A "Yes" button.
-        /// </summary>
-        Yes = 0x0002,
-
-        /// <summary>
-        /// A "No" button.
-        /// </summary>
-        No = 0x0004,
-
-        /// <summary>
-        /// A "Cancel" button.
-        /// </summary>
-        Cancel = 0x0008,
-
-        /// <summary>
-        /// A "Retry" button.
-        /// </summary>
-        Retry = 0x0010,
-
-        /// <summary>
-        /// A "Close" button.
-        /// </summary>
-        Close = 0x0020
+        /// <param name="name">The name for this control.</param>
+        protected TaskDialogControl(string name) : base(name) { }
     }
 }

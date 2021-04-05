@@ -55,21 +55,27 @@ EFFET JURIDIQUE. Le présent contrat décrit certains droits juridiques. Vous po
 */
 #endregion
 
-namespace Microsoft.Windows.API.Code.Pack.Core
+using System;
+
+namespace Microsoft.Windows.API.Code.Pack.Dialogs
 {
     /// <summary>
-    /// Specifies the initial display location for a task dialog. 
+    /// Defines event data associated with a HyperlinkClick event.
     /// </summary>
-    public enum TaskDialogStartupLocation
+    public class TaskDialogHyperlinkClickedEventArgs : EventArgs
     {
         /// <summary>
-        /// The window placed in the center of the screen.
+        /// Creates a new instance of this class with the specified link text.
         /// </summary>
-        CenterScreen,
+        /// <param name="linkText">The text of the hyperlink that was clicked.</param>
+        public TaskDialogHyperlinkClickedEventArgs(string linkText)
+        {
+            LinkText = linkText;
+        }
 
         /// <summary>
-        /// The window centered relative to the window that launched the dialog.
+        /// Gets or sets the text of the hyperlink that was clicked.
         /// </summary>
-        CenterOwner
+        public string LinkText { get; set; }
     }
 }

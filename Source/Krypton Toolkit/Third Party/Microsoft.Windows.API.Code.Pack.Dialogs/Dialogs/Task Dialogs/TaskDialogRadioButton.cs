@@ -55,43 +55,26 @@ EFFET JURIDIQUE. Le présent contrat décrit certains droits juridiques. Vous po
 */
 #endregion
 
-namespace Microsoft.Windows.API.Code.Pack.Core
+namespace Microsoft.Windows.API.Code.Pack.Dialogs
 {
     /// <summary>
-    /// Defines a common class for all task dialog bar controls, such as the progress and marquee bars.
+    /// Defines a radio button that can be hosted in by a 
+    /// <see cref="TaskDialog"/> object.
     /// </summary>
-    public class TaskDialogBar : TaskDialogControl
+    public class TaskDialogRadioButton : TaskDialogButtonBase
     {
         /// <summary>
         /// Creates a new instance of this class.
         /// </summary>
-        public TaskDialogBar() { }
+        public TaskDialogRadioButton() { }
+
         /// <summary>
-        /// Creates a new instance of this class with the specified name.
+        /// Creates a new instance of this class with
+        /// the specified name and text.
         /// </summary>
         /// <param name="name">The name for this control.</param>
-        protected TaskDialogBar(string name) : base(name) { }
-
-        private TaskDialogProgressBarState state;
-        /// <summary>
-        /// Gets or sets the state of the progress bar.
-        /// </summary>
-        public TaskDialogProgressBarState State
-        {
-            get { return state; }
-            set
-            {
-                CheckPropertyChangeAllowed("State");
-                state = value;
-                ApplyPropertyChange("State");
-            }
-        }
-        /// <summary>
-        /// Resets the state of the control to normal.
-        /// </summary>
-        protected internal virtual void Reset()
-        {
-            state = TaskDialogProgressBarState.Normal;
-        }
+        /// <param name="text">The value for this controls 
+        /// <see cref="P:Microsoft.WindowsAPICodePack.Dialogs.TaskDialogButtonBase.Text"/> property.</param>
+        public TaskDialogRadioButton(string name, string text) : base(name, text) { }
     }
 }

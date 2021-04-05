@@ -55,21 +55,24 @@ EFFET JURIDIQUE. Le présent contrat décrit certains droits juridiques. Vous po
 */
 #endregion
 
-namespace Microsoft.Windows.API.Code.Pack.Core
+using Microsoft.Windows.API.Code.Pack.Dialogs.Resources;
+
+namespace Microsoft.Windows.API.Code.Pack.Dialogs
 {
-    /// <summary>
-    /// Declares the abstract base class for all custom task dialog controls.
-    /// </summary>
-    public abstract class TaskDialogControl : DialogControl
+    internal static class TaskDialogDefaults
     {
-        /// <summary>
-        /// Creates a new instance of a task dialog control.
-        /// </summary>
-        protected TaskDialogControl() { }
-        /// <summary>
-        /// Creates a new instance of a task dialog control with the specified name.
-        /// </summary>
-        /// <param name="name">The name for this control.</param>
-        protected TaskDialogControl(string name) : base(name) { }
+        public static string Caption { get { return LocalizedMessages.TaskDialogDefaultCaption; } }
+        public static string MainInstruction { get { return LocalizedMessages.TaskDialogDefaultMainInstruction; } }
+        public static string Content { get { return LocalizedMessages.TaskDialogDefaultContent; } }
+
+        public const int ProgressBarMinimumValue = 0;
+        public const int ProgressBarMaximumValue = 100;
+
+        public const int IdealWidth = 0;
+
+        // For generating control ID numbers that won't 
+        // collide with the standard button return IDs.
+        public const int MinimumDialogControlId =
+            (int)TaskDialogNativeMethods.TaskDialogCommonButtonReturnIds.Close + 1;
     }
 }

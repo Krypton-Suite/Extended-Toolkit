@@ -55,35 +55,36 @@ EFFET JURIDIQUE. Le présent contrat décrit certains droits juridiques. Vous po
 */
 #endregion
 
-using System.ComponentModel;
-
-namespace Microsoft.Windows.API.Code.Pack.Core
+namespace Microsoft.Windows.API.Code.Pack.Dialogs
 {
     /// <summary>
-    /// Data associated with <see cref="TaskDialog.Closing"/> event.
-    /// </summary>
-    public class TaskDialogClosingEventArgs : CancelEventArgs
+    /// Sets the state of a task dialog progress bar.
+    /// </summary>        
+    public enum TaskDialogProgressBarState
     {
-        private TaskDialogResult taskDialogResult;
         /// <summary>
-        /// Gets or sets the standard button that was clicked.
+        /// Uninitialized state, this should never occur.
         /// </summary>
-        public TaskDialogResult TaskDialogResult
-        {
-            get { return taskDialogResult; }
-            set { taskDialogResult = value; }
-        }
+        None = 0,
 
-        private string customButton;
         /// <summary>
-        /// Gets or sets the text of the custom button that was clicked.
+        /// Normal state.
         /// </summary>
-        public string CustomButton
-        {
-            get { return customButton; }
-            set { customButton = value; }
-        }
+        Normal = TaskDialogNativeMethods.ProgressBarState.Normal,
 
+        /// <summary>
+        /// An error occurred.
+        /// </summary>
+        Error = TaskDialogNativeMethods.ProgressBarState.Error,
 
+        /// <summary>
+        /// The progress is paused.
+        /// </summary>
+        Paused = TaskDialogNativeMethods.ProgressBarState.Paused,
+
+        /// <summary>
+        /// Displays marquee (indeterminate) style progress
+        /// </summary>
+        Marquee
     }
 }

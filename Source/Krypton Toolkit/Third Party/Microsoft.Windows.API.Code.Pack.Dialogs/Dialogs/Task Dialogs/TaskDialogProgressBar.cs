@@ -55,27 +55,124 @@ EFFET JURIDIQUE. Le présent contrat décrit certains droits juridiques. Vous po
 */
 #endregion
 
-using System;
+using Microsoft.Windows.API.Code.Pack.Dialogs.Resources;
 
-namespace Microsoft.Windows.API.Code.Pack.Core
+namespace Microsoft.Windows.API.Code.Pack.Dialogs
 {
     /// <summary>
-    /// The event data for a TaskDialogTick event.
+    /// Provides a visual representation of the progress of a long running operation.
     /// </summary>
-    public class TaskDialogTickEventArgs : EventArgs
+    public class TaskDialogProgressBar : TaskDialogBar
     {
         /// <summary>
-        /// Initializes the data associated with the TaskDialog tick event.
+        /// Creates a new instance of this class.
         /// </summary>
-        /// <param name="ticks">The total number of ticks since the control was activated.</param>
-        public TaskDialogTickEventArgs(int ticks)
+        public TaskDialogProgressBar() { }
+
+        /// <summary>
+        /// Creates a new instance of this class with the specified name.
+        /// And using the default values: Min = 0, Max = 100, Current = 0
+        /// </summary>
+        /// <param name="name">The name of the control.</param>        
+        public TaskDialogProgressBar(string name) : base(name) { }
+
+        /// <summary>
+        /// Creates a new instance of this class with the specified 
+        /// minimum, maximum and current values.
+        /// </summary>
+        /// <param name="minimum">The minimum value for this control.</param>
+        /// <param name="maximum">The maximum value for this control.</param>
+        /// <param name="value">The current value for this control.</param>        
+        public TaskDialogProgressBar(int minimum, int maximum, int value)
         {
-            Ticks = ticks;
+            Minimum = minimum;
+            Maximum = maximum;
+            Value = value;
+        }
+
+        private int _minimum;
+        private int _value;
+        private int _maximum = TaskDialogDefaults.ProgressBarMaximumValue;
+
+        /// <summary>
+        /// Gets or sets the minimum value for the control.
+        /// </summary>                
+        public int Minimum
+        {
+            get { return _minimum; }
+            set
+            {
+                CheckPropertyChangeAllowed("Minimum");
+
+                // Check for positive numbers
+                if (value < 0)
+                {
+                    throw new System.ArgumentException(LocalizedMessages.TaskDialogProgressBarMinValueGreaterThanZero, "value");
+                }
+
+                // Check if min / max differ
+                if (value >= Maximum)
+                {
+                    throw new System.ArgumentException(LocalizedMessages.TaskDialogProgressBarMinValueLessThanMax, "value");
+                }
+
+                _minimum = value;
+                ApplyPropertyChange("Minimum");
+            }
+        }
+        /// <summary>
+        /// Gets or sets the maximum value for the control.
+        /// </summary>
+        public int Maximum
+        {
+            get { return _maximum; }
+            set
+            {
+                CheckPropertyChangeAllowed("Maximum");
+
+                // Check if min / max differ
+                if (value < Minimum)
+                {
+                    throw new System.ArgumentException(LocalizedMessages.TaskDialogProgressBarMaxValueGreaterThanMin, "value");
+                }
+                _maximum = value;
+                ApplyPropertyChange("Maximum");
+            }
+        }
+        /// <summary>
+        /// Gets or sets the current value for the control.
+        /// </summary>
+        public int Value
+        {
+            get { return this._value; }
+            set
+            {
+                CheckPropertyChangeAllowed("Value");
+                // Check for positive numbers
+                if (value < Minimum || value > Maximum)
+                {
+                    throw new System.ArgumentException(LocalizedMessages.TaskDialogProgressBarValueInRange, "value");
+                }
+                this._value = value;
+                ApplyPropertyChange("Value");
+            }
         }
 
         /// <summary>
-        /// Gets a value that determines the current number of ticks.
+        /// Verifies that the progress bar's value is between its minimum and maximum.
         /// </summary>
-        public int Ticks { get; private set; }
+        internal bool HasValidValues
+        {
+            get { return _minimum <= _value && _value <= _maximum; }
+        }
+
+        /// <summary>
+        /// Resets the control to its minimum value.
+        /// </summary>
+        protected internal override void Reset()
+        {
+            base.Reset();
+            _value = _minimum;
+        }
     }
 }

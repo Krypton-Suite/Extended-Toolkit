@@ -55,26 +55,51 @@ EFFET JURIDIQUE. Le présent contrat décrit certains droits juridiques. Vous po
 */
 #endregion
 
-namespace Microsoft.Windows.API.Code.Pack.Core
+namespace Microsoft.Windows.API.Code.Pack.Dialogs
 {
     /// <summary>
-    /// Specifies the options for expand/collapse sections in dialogs.
-    /// </summary>
-    public enum TaskDialogExpandedDetailsLocation
+    /// Indicates the various buttons and options clicked by the user on the task dialog.
+    /// </summary>        
+    public enum TaskDialogResult
     {
         /// <summary>
-        /// Do not show the content.
+        /// No button was selected.
         /// </summary>
-        Hide,
+        None = 0x0000,
 
         /// <summary>
-        /// Show the content.
+        /// "OK" button was clicked
         /// </summary>
-        ExpandContent,
+        Ok = 0x0001,
 
         /// <summary>
-        /// Expand the footer content.
+        /// "Yes" button was clicked
         /// </summary>
-        ExpandFooter
+        Yes = 0x0002,
+
+        /// <summary>
+        /// "No" button was clicked
+        /// </summary>
+        No = 0x0004,
+
+        /// <summary>
+        /// "Cancel" button was clicked
+        /// </summary>
+        Cancel = 0x0008,
+
+        /// <summary>
+        /// "Retry" button was clicked
+        /// </summary>
+        Retry = 0x0010,
+
+        /// <summary>
+        /// "Close" button was clicked
+        /// </summary>
+        Close = 0x0020,
+
+        /// <summary>
+        /// A custom button was clicked.
+        /// </summary>
+        CustomButtonClicked = 0x0100,
     }
 }

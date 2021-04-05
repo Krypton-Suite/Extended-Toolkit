@@ -55,24 +55,35 @@ EFFET JURIDIQUE. Le présent contrat décrit certains droits juridiques. Vous po
 */
 #endregion
 
-using Microsoft.Windows.API.Code.Pack.Core.Resources;
+using System.ComponentModel;
 
-namespace Microsoft.Windows.API.Code.Pack.Core
+namespace Microsoft.Windows.API.Code.Pack.Dialogs
 {
-    internal static class TaskDialogDefaults
+    /// <summary>
+    /// Data associated with <see cref="TaskDialog.Closing"/> event.
+    /// </summary>
+    public class TaskDialogClosingEventArgs : CancelEventArgs
     {
-        public static string Caption { get { return LocalizedMessages.TaskDialogDefaultCaption; } }
-        public static string MainInstruction { get { return LocalizedMessages.TaskDialogDefaultMainInstruction; } }
-        public static string Content { get { return LocalizedMessages.TaskDialogDefaultContent; } }
+        private TaskDialogResult taskDialogResult;
+        /// <summary>
+        /// Gets or sets the standard button that was clicked.
+        /// </summary>
+        public TaskDialogResult TaskDialogResult
+        {
+            get { return taskDialogResult; }
+            set { taskDialogResult = value; }
+        }
 
-        public const int ProgressBarMinimumValue = 0;
-        public const int ProgressBarMaximumValue = 100;
+        private string customButton;
+        /// <summary>
+        /// Gets or sets the text of the custom button that was clicked.
+        /// </summary>
+        public string CustomButton
+        {
+            get { return customButton; }
+            set { customButton = value; }
+        }
 
-        public const int IdealWidth = 0;
 
-        // For generating control ID numbers that won't 
-        // collide with the standard button return IDs.
-        public const int MinimumDialogControlId =
-            (int)TaskDialogNativeMethods.TaskDialogCommonButtonReturnIds.Close + 1;
     }
 }

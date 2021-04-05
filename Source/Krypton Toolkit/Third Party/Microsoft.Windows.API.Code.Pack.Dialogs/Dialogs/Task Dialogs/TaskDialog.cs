@@ -55,13 +55,13 @@ EFFET JURIDIQUE. Le présent contrat décrit certains droits juridiques. Vous po
 */
 #endregion
 
-using Microsoft.Windows.API.Code.Pack.Core.Resources;
+using Microsoft.Windows.API.Code.Pack.Dialogs.Resources;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows.Forms;
 
-namespace Microsoft.Windows.API.Code.Pack.Core
+namespace Microsoft.Windows.API.Code.Pack.Dialogs
 {
     /// <summary>
     /// Encapsulates a new-to-Vista Win32 TaskDialog window 

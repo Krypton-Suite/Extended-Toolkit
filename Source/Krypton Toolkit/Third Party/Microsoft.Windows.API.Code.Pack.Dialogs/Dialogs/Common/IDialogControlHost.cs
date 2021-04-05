@@ -55,27 +55,44 @@ EFFET JURIDIQUE. Le présent contrat décrit certains droits juridiques. Vous po
 */
 #endregion
 
-using System;
-
-namespace Microsoft.Windows.API.Code.Pack.Core
+namespace Microsoft.Windows.API.Code.Pack.Dialogs
 {
     /// <summary>
-    /// Defines event data associated with a HyperlinkClick event.
+    /// Indicates that the implementing class is a dialog that can host
+    /// customizable dialog controls (subclasses of DialogControl).
     /// </summary>
-    public class TaskDialogHyperlinkClickedEventArgs : EventArgs
+    public interface IDialogControlHost
     {
         /// <summary>
-        /// Creates a new instance of this class with the specified link text.
+        /// Returns if changes to the collection are allowed.
         /// </summary>
-        /// <param name="linkText">The text of the hyperlink that was clicked.</param>
-        public TaskDialogHyperlinkClickedEventArgs(string linkText)
-        {
-            LinkText = linkText;
-        }
+        /// <returns>true if collection change is allowed.</returns>
+        bool IsCollectionChangeAllowed();
 
         /// <summary>
-        /// Gets or sets the text of the hyperlink that was clicked.
+        /// Applies changes to the collection.
         /// </summary>
-        public string LinkText { get; set; }
+        void ApplyCollectionChanged();
+
+        /// <summary>
+        /// Handle notifications of individual child 
+        /// pseudo-controls' properties changing..
+        /// Prefilter should throw if the property 
+        /// cannot be set in the dialog's current state.
+        /// PostProcess should pass on changes to native control, 
+        /// if appropriate.
+        /// </summary>
+        /// <param name="propertyName">The name of the property.</param>
+        /// <param name="control">The control propertyName applies to.</param>
+        /// <returns>true if the property change is allowed.</returns>
+        bool IsControlPropertyChangeAllowed(string propertyName, DialogControl control);
+
+        /// <summary>
+        /// Called when a control currently in the collection 
+        /// has a property changed.
+        /// </summary>
+        /// <param name="propertyName">The name of the property changed.</param>
+        /// <param name="control">The control whose property has changed.</param>
+        void ApplyControlPropertyChange(string propertyName, DialogControl control);
     }
 }

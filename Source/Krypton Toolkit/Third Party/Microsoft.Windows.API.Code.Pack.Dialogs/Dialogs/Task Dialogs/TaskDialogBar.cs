@@ -55,25 +55,43 @@ EFFET JURIDIQUE. Le présent contrat décrit certains droits juridiques. Vous po
 */
 #endregion
 
-using Microsoft.Windows.API.Code.Pack.Core.Resources;
-
-namespace Microsoft.Windows.API.Code.Pack.Core
+namespace Microsoft.Windows.API.Code.Pack.Dialogs
 {
-    internal static class DialogsDefaults
+    /// <summary>
+    /// Defines a common class for all task dialog bar controls, such as the progress and marquee bars.
+    /// </summary>
+    public class TaskDialogBar : TaskDialogControl
     {
-        internal static string Caption { get { return LocalizedMessages.DialogDefaultCaption; } }
-        internal static string MainInstruction { get { return LocalizedMessages.DialogDefaultMainInstruction; } }
-        internal static string Content { get { return LocalizedMessages.DialogDefaultContent; } }
+        /// <summary>
+        /// Creates a new instance of this class.
+        /// </summary>
+        public TaskDialogBar() { }
+        /// <summary>
+        /// Creates a new instance of this class with the specified name.
+        /// </summary>
+        /// <param name="name">The name for this control.</param>
+        protected TaskDialogBar(string name) : base(name) { }
 
-        internal const int ProgressBarStartingValue = 0;
-        internal const int ProgressBarMinimumValue = 0;
-        internal const int ProgressBarMaximumValue = 100;
-
-        internal const int IdealWidth = 0;
-
-        // For generating control ID numbers that won't 
-        // collide with the standard button return IDs.
-        internal const int MinimumDialogControlId =
-            (int)TaskDialogNativeMethods.TaskDialogCommonButtonReturnIds.Close + 1;
+        private TaskDialogProgressBarState state;
+        /// <summary>
+        /// Gets or sets the state of the progress bar.
+        /// </summary>
+        public TaskDialogProgressBarState State
+        {
+            get { return state; }
+            set
+            {
+                CheckPropertyChangeAllowed("State");
+                state = value;
+                ApplyPropertyChange("State");
+            }
+        }
+        /// <summary>
+        /// Resets the state of the control to normal.
+        /// </summary>
+        protected internal virtual void Reset()
+        {
+            state = TaskDialogProgressBarState.Normal;
+        }
     }
 }

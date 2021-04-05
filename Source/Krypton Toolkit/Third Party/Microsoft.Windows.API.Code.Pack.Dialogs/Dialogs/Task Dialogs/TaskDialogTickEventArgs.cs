@@ -55,38 +55,27 @@ EFFET JURIDIQUE. Le présent contrat décrit certains droits juridiques. Vous po
 */
 #endregion
 
-namespace Microsoft.Windows.API.Code.Pack.Core
+using System;
+
+namespace Microsoft.Windows.API.Code.Pack.Dialogs
 {
     /// <summary>
-    /// Implements a button that can be hosted in a task dialog.
+    /// The event data for a TaskDialogTick event.
     /// </summary>
-    public class TaskDialogButton : TaskDialogButtonBase
+    public class TaskDialogTickEventArgs : EventArgs
     {
         /// <summary>
-        /// Creates a new instance of this class.
+        /// Initializes the data associated with the TaskDialog tick event.
         /// </summary>
-        public TaskDialogButton() { }
-
-        /// <summary>
-        /// Creates a new instance of this class with the specified property settings.
-        /// </summary>
-        /// <param name="name">The name of the button.</param>
-        /// <param name="text">The button label.</param>
-        public TaskDialogButton(string name, string text) : base(name, text) { }
-
-        private bool useElevationIcon;
-        /// <summary>
-        /// Gets or sets a value that controls whether the elevation icon is displayed.
-        /// </summary>
-        public bool UseElevationIcon
+        /// <param name="ticks">The total number of ticks since the control was activated.</param>
+        public TaskDialogTickEventArgs(int ticks)
         {
-            get { return useElevationIcon; }
-            set
-            {
-                CheckPropertyChangeAllowed("ShowElevationIcon");
-                useElevationIcon = value;
-                ApplyPropertyChange("ShowElevationIcon");
-            }
+            Ticks = ticks;
         }
+
+        /// <summary>
+        /// Gets a value that determines the current number of ticks.
+        /// </summary>
+        public int Ticks { get; private set; }
     }
 }

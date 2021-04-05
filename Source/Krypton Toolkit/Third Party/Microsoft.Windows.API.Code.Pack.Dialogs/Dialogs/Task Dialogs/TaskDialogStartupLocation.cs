@@ -55,61 +55,21 @@ EFFET JURIDIQUE. Le présent contrat décrit certains droits juridiques. Vous po
 */
 #endregion
 
-namespace Microsoft.Windows.API.Code.Pack.Core
+namespace Microsoft.Windows.API.Code.Pack.Dialogs
 {
     /// <summary>
-    /// Specifies the icon displayed in a task dialog.
+    /// Specifies the initial display location for a task dialog. 
     /// </summary>
-    public enum TaskDialogStandardIcon
+    public enum TaskDialogStartupLocation
     {
         /// <summary>
-        /// Displays no icons (default).
+        /// The window placed in the center of the screen.
         /// </summary>
-        None = 0,
+        CenterScreen,
 
         /// <summary>
-        /// Displays the warning icon.
+        /// The window centered relative to the window that launched the dialog.
         /// </summary>
-        Warning = 65535,
-
-        /// <summary>
-        /// Displays the error icon.
-        /// </summary>
-        Error = 65534,
-
-        /// <summary>
-        /// Displays the Information icon.
-        /// </summary>
-        Information = 65533,
-
-        /// <summary>
-        /// Displays the User Account Control shield.
-        /// </summary>
-        Shield = 65532,
-
-        /// <summary>
-        /// Displays the User Account Control shield (gray) header.
-        /// </summary>
-        ShieldGrayHeader = 65527,
-
-        /// <summary>
-        /// Displays the security success header.
-        /// </summary>
-        SecuritySuccessHeader = 65528,
-
-        /// <summary>
-        /// Displays the security error header.
-        /// </summary>
-        SecurityErrorHeader = 65529,
-
-        /// <summary>
-        /// Displays the User Account Control warning header.
-        /// </summary>
-        SecurityWarningHeader = 65530,
-
-        /// <summary>
-        /// Displays the User Account Control shield (blue) header.
-        /// </summary>
-        ShieldBlueHeader = 65531,
+        CenterOwner
     }
 }
