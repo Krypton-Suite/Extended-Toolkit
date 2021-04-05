@@ -35,14 +35,14 @@
     <!--Krypton Toolkit Import-->
     <Choose>
         <When Condition="'$(TFMs)' == 'all'">
-            <ItemGroup >
+            <ItemGroup>
                 <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2103.6" />
-            </ItemGroup >
+            </ItemGroup>
         </When>
         <Otherwise>
-            <ItemGroup >
-                <PackageReference Include="Krypton.Toolkit.Canary.Lite" Version="6.0.2103.6"/>
-            </ItemGroup >
+            <ItemGroup>
+                <PackageReference Include="Krypton.Toolkit.Canary.Lite" Version="6.0.2103.6" />
+            </ItemGroup>
         </Otherwise>
     </Choose>
 
@@ -51,4 +51,7 @@
         <DocumentationFile>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.DataGridView\Krypton.Toolkit.Suite.Extended.DataGridView.xml</DocumentationFile>
         <OutputPath>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.DataGridView\</OutputPath>
     </PropertyGroup>
+    <ItemGroup>
+      <PackageReference Include="System.ValueTuple" Version="4.5.0" />
+    </ItemGroup>
 </Project>

@@ -114,7 +114,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Exten
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cyotek.Windows.Forms.ColorPicker", "Third Party\Cyotek.Windows.Forms.ColorPicker\Cyotek.Windows.Forms.ColorPicker.csproj", "{903938B3-848C-4B7C-9E44-03AD2F535021}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton.Toolkit.Suite.Extended.DataGridView", "Main\Krypton.Toolkit.Suite.Extended.DataGridView\Krypton.Toolkit.Suite.Extended.DataGridView.csproj", "{8E3EF8E9-27B5-4ED0-96AE-07337413A15A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.DataGridView", "Main\Krypton.Toolkit.Suite.Extended.DataGridView\Krypton.Toolkit.Suite.Extended.DataGridView.csproj", "{8E3EF8E9-27B5-4ED0-96AE-07337413A15A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{20101A7D-50DD-4924-82D1-3E581696843F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataGridView", "Examples\DataGridView\DataGridView.csproj", "{755941EF-B990-4475-9C13-C20837FF037D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -290,6 +294,10 @@ Global
 		{8E3EF8E9-27B5-4ED0-96AE-07337413A15A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E3EF8E9-27B5-4ED0-96AE-07337413A15A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8E3EF8E9-27B5-4ED0-96AE-07337413A15A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{755941EF-B990-4475-9C13-C20837FF037D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{755941EF-B990-4475-9C13-C20837FF037D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{755941EF-B990-4475-9C13-C20837FF037D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{755941EF-B990-4475-9C13-C20837FF037D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -339,6 +347,7 @@ Global
 		{838FCD3C-9306-427D-9A99-9E68CEFA584C} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 		{903938B3-848C-4B7C-9E44-03AD2F535021} = {E311F8C7-1F27-48CD-86BE-CC3D798163BE}
 		{8E3EF8E9-27B5-4ED0-96AE-07337413A15A} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
+		{755941EF-B990-4475-9C13-C20837FF037D} = {20101A7D-50DD-4924-82D1-3E581696843F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A7CE7732-0982-4703-8EFD-7715D569BAB5}
