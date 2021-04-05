@@ -59,7 +59,7 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
-namespace Microsoft.Windows.API.Code.Pack.Core
+namespace Microsoft.Windows.API.Code.Pack.Dialogs
 {
     ///<summary>
     /// Encapsulates additional configuration needed by NativeTaskDialog

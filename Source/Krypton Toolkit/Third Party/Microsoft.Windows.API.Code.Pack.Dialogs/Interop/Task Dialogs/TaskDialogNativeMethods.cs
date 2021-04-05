@@ -58,7 +58,7 @@ EFFET JURIDIQUE. Le présent contrat décrit certains droits juridiques. Vous po
 using System;
 using System.Runtime.InteropServices;
 
-namespace Microsoft.Windows.API.Code.Pack.Core
+namespace Microsoft.Windows.API.Code.Pack.Dialogs
 {
     /// <summary>
     /// Internal class containing most native interop declarations used

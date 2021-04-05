@@ -55,13 +55,13 @@ EFFET JURIDIQUE. Le présent contrat décrit certains droits juridiques. Vous po
 */
 #endregion
 
-using Microsoft.Windows.API.Code.Pack.Core.Resources;
+using Microsoft.Windows.API.Code.Pack.Dialogs.Resources;
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 
-namespace Microsoft.Windows.API.Code.Pack.Core
+namespace Microsoft.Windows.API.Code.Pack.Dialogs
 {
     /// <summary>
     /// Encapsulates the native logic required to create, 
