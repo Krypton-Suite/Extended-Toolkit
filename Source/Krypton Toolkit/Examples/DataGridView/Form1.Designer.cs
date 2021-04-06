@@ -1,7 +1,5 @@
 ﻿
-using Krypton.Toolkit.Suite.Extended.DataGridView;
-
-namespace DataGridView
+namespace DataGridViewExt
 {
     partial class Form1
     {
@@ -31,9 +29,10 @@ namespace DataGridView
         /// </summary>
         private void InitializeComponent()
         {
-            this.kryptonDataGridView1 = new Krypton.Toolkit.Suite.Extended.DataGridView.MasterSingleDetailView();
-            this.kryptonDataGridView2 = new Krypton.Toolkit.Suite.Extended.DataGridView.MasterMultiDetailView();
+            this.kryptonDataGridView1 = new Krypton.Toolkit.Suite.Extended.DataGridViewExt.MasterSingleDetailView();
+            this.kryptonDataGridView2 = new Krypton.Toolkit.Suite.Extended.DataGridViewExt.MasterMultiDetailView();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.buttonSpecAny1 = new Krypton.Toolkit.ButtonSpecAny();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonDataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonDataGridView2)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -41,10 +40,17 @@ namespace DataGridView
             // 
             // kryptonDataGridView1
             // 
+            this.kryptonDataGridView1.AllowUserToAddRows = false;
+            this.kryptonDataGridView1.AllowUserToDeleteRows = false;
+            this.kryptonDataGridView1.AllowUserToOrderColumns = true;
+            this.kryptonDataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.kryptonDataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.kryptonDataGridView1.ColumnHeadersHeight = 36;
             this.kryptonDataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonDataGridView1.Location = new System.Drawing.Point(3, 3);
+            this.kryptonDataGridView1.MultiSelect = false;
             this.kryptonDataGridView1.Name = "kryptonDataGridView1";
+            this.kryptonDataGridView1.ReadOnly = true;
             this.kryptonDataGridView1.RowHeadersWidth = 51;
             this.kryptonDataGridView1.RowTemplate.Height = 29;
             this.kryptonDataGridView1.Size = new System.Drawing.Size(1255, 313);
@@ -76,14 +82,23 @@ namespace DataGridView
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1261, 639);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
+            // buttonSpecAny1
+            // 
+            this.buttonSpecAny1.Style = Krypton.Toolkit.PaletteButtonStyle.Standalone;
+            this.buttonSpecAny1.Text = "Launch List View";
+            this.buttonSpecAny1.UniqueName = "b89e61b4144d414fa963c4e3c0d237e6";
+            this.buttonSpecAny1.Click += new System.EventHandler(this.ButtonSpecAny1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ButtonSpecs.AddRange(new Krypton.Toolkit.ButtonSpecAny[] {
+            this.buttonSpecAny1});
             this.ClientSize = new System.Drawing.Size(1261, 639);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "KryptonDataGridViewExt - Master Detail examples";
             ((System.ComponentModel.ISupportInitialize)(this.kryptonDataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonDataGridView2)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -93,9 +108,10 @@ namespace DataGridView
 
         #endregion
 
-        private MasterSingleDetailView kryptonDataGridView1;
-        private MasterMultiDetailView kryptonDataGridView2;
+        private Krypton.Toolkit.Suite.Extended.DataGridViewExt.MasterSingleDetailView kryptonDataGridView1;
+        private Krypton.Toolkit.Suite.Extended.DataGridViewExt.MasterMultiDetailView kryptonDataGridView2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private Krypton.Toolkit.ButtonSpecAny buttonSpecAny1;
     }
 }
 

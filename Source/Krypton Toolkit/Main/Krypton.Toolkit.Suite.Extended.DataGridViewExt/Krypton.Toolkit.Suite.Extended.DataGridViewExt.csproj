@@ -15,15 +15,15 @@
     <PropertyGroup>
         <LangVersion>latest</LangVersion>
         <OutputType>library</OutputType>
-        <RootNamespace>Krypton.Toolkit.Suite.Extended.DataGridView</RootNamespace>
-        <AssemblyName>Krypton.Toolkit.Suite.Extended.DataGridView</AssemblyName>
+        <RootNamespace>Krypton.Toolkit.Suite.Extended.DataGridViewExt</RootNamespace>
+        <AssemblyName>Krypton.Toolkit.Suite.Extended.DataGridViewExt</AssemblyName>
         <UseWindowsForms>true</UseWindowsForms>
     </PropertyGroup>
 
     <!--Package Data-->
     <PropertyGroup>
-        <PackageId>Krypton.Toolkit.Suite.Extended.DataGridView</PackageId>
-        <Description>An extension to the Krypton standard toolkit. This package holds extensions to the Krypton.DataGridView module.</Description>
+        <PackageId>Krypton.Toolkit.Suite.Extended.DataGridViewExt</PackageId>
+        <Description>An extension to the Krypton standard toolkit DataGridView. This package implements additional Column types and Master-Detail views.</Description>
     </PropertyGroup>
 
     <!--Version Information-->
@@ -48,8 +48,8 @@
 
     <!--Binary/Documentation Output-->
     <PropertyGroup>
-        <DocumentationFile>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.DataGridView\Krypton.Toolkit.Suite.Extended.DataGridView.xml</DocumentationFile>
-        <OutputPath>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.DataGridView\</OutputPath>
+        <DocumentationFile>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.DataGridViewExt\Krypton.Toolkit.Suite.Extended.DataGridViewExt.xml</DocumentationFile>
+        <OutputPath>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.DataGridViewExt\</OutputPath>
     </PropertyGroup>
     <ItemGroup>
       <PackageReference Include="System.ValueTuple" Version="4.5.0" />

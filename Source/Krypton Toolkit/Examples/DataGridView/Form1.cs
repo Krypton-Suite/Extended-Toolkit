@@ -1,12 +1,10 @@
 ﻿using System.Data;
-using System.Data.OleDb;
-using System.Data.SqlClient;
 using System.Data.SQLite;
 using System.Diagnostics;
 using System.Windows.Forms;
 using Krypton.Toolkit;
 
-namespace DataGridView
+namespace DataGridViewExt
 {
     public partial class Form1 : KryptonForm
     {
@@ -28,13 +26,14 @@ namespace DataGridView
                 ordAdapter.Fill(customerOrders, @"Orders");
             }
 
+            // The data relationship below is not possible because the orders have more ids than the customers table contains
             //DataRelation relation = customerOrders.Relations.Add("CustOrders",
             //    customerOrders.Tables["Customers"].Columns["Id"],
             //    customerOrders.Tables["Orders"].Columns["CustomerId"]);
 
             kryptonDataGridView1.DataSet = customerOrders;
-            kryptonDataGridView1.SetMasterSource(@"Employees", @"Id");
-            kryptonDataGridView1.AddSingleDetail(@"Orders", @"EmployeeId");
+            kryptonDataGridView1.SetMasterSource(@"Employees", @"Id");  // Notice that the Source key column name
+            kryptonDataGridView1.AddSingleDetail(@"Orders", @"EmployeeId"); // does not need to be the the same as the Detail target key column name
             kryptonDataGridView1.DetailsCellMouseClick += KryptonDataGridView1OnDetailsCellMouseClick;
 
             using (var empTerAdapter = new SQLiteDataAdapter(@"SELECT * FROM 'EmployeeTerritory'", con))
@@ -57,6 +56,11 @@ namespace DataGridView
         private void KryptonDataGridView1OnDetailsCellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             Debug.WriteLine(kryptonDataGridView1.DetailsCurrentCell.Value);
+        }
+
+        private void ButtonSpecAny1_Click(object sender, System.EventArgs e)
+        {
+            new ListExample().Show(this);
         }
     }
 }
