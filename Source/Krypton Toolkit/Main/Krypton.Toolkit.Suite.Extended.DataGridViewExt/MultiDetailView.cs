@@ -9,16 +9,19 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
-using Krypton.Toolkit.Suite.Extended.DataGridView.Implementation;
+using Krypton.Toolkit.Suite.Extended.DataGridViewExt.Implementation;
 
-namespace Krypton.Toolkit.Suite.Extended.DataGridView
+namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt
 {
-    public class SingleDetailView : KryptonDataGridView, IDetailView<KryptonDataGridView>
+    /// <summary>
+    /// TODO: use Krypton.Navigator
+    /// </summary>
+    public class MultiDetailView : TabControl, IDetailView<TabControl>
     {
         /// <inheritdoc />
         public Dictionary<KryptonDataGridView, string> ChildGrids { get; } = new();
 
-        public SingleDetailView()
+        public MultiDetailView()
         {
             Visible = false;
         }
@@ -28,22 +31,35 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public DataGridViewCell DetailsCurrentCell
         {
-            get => CurrentCell;
-            set => CurrentCell = value;
+            get => ((KryptonDataGridView) SelectedTab.Controls[0]).CurrentCell;
+            set => ((KryptonDataGridView)SelectedTab.Controls[0]).CurrentCell = value;
         }
 
         /// <inheritdoc />
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public DataGridViewRow DetailsCurrentRow => CurrentRow;
+        public DataGridViewRow DetailsCurrentRow => ((KryptonDataGridView)SelectedTab.Controls[0]).CurrentRow;
 
         /// <inheritdoc />
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public event DataGridViewCellMouseEventHandler DetailsCellMouseClick
         {
-            add => CellMouseClick += value;
-            remove => CellMouseClick -= value;
+            add
+            {
+                foreach (TabPage page in TabPages)
+                {
+                    ((KryptonDataGridView) page.Controls[0]).CellMouseClick += value;
+                }
+            }
+
+            remove
+            {
+                foreach (TabPage page in TabPages)
+                {
+                    ((KryptonDataGridView) page.Controls[0]).CellMouseClick -= value;
+                }
+            }
         }
     }
 }

@@ -8,15 +8,15 @@
 
 using System.Windows.Forms.Design;
 
-namespace Krypton.Toolkit.Suite.Extended.DataGridView.Designers
+namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt.Designers
 {
-    internal class MasterMultiDetailViewDesigner : ControlDesigner
+    internal class MasterSingleDetailViewDesigner : ControlDesigner
     {
         #region Identity
         /// <summary>
         /// Initialize a new instance of the KryptonWrapLabelDesigner class.
         /// </summary>
-        public MasterMultiDetailViewDesigner()
+        public MasterSingleDetailViewDesigner()
         {
             // The resizing handles around the control need to change depending on the
             // value of the AutoSize and AutoSizeMode properties. When in AutoSize you

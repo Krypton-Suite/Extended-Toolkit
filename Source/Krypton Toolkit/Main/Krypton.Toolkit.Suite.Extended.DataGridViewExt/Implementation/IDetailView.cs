@@ -10,12 +10,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Suite.Extended.DataGridView.Implementation
+namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt.Implementation
 {
     public interface IDetailView<T> where T : Control
     {
         /// <summary>
-        /// Link the TargetColumn to the gridView
+        /// Link the TargetKeyColumn to the gridView
         /// </summary>
         Dictionary <KryptonDataGridView, string> ChildGrids { get; }
 

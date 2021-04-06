@@ -12,10 +12,11 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Reflection;
 using System.Windows.Forms;
+// ReSharper disable MemberCanBePrivate.Global
+// ReSharper disable UnusedAutoPropertyAccessor.Global
 
-namespace Krypton.Toolkit.Suite.Extended.DataGridView.Implementation
+namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt.Implementation
 {
     /// <summary>
     /// DO NOT use in your application code base: This is a base class to allows passthrough
@@ -25,15 +26,15 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView.Implementation
     {
         internal MasterDetailGridViewBase()
         {
-            var components = new System.ComponentModel.Container();
-            var resources = new System.ComponentModel.ComponentResourceManager(typeof(MasterDetailGridViewBase));
-            rowHeaderIconList = new ImageList(components)
+            var components = new Container();
+            var resources = new ComponentResourceManager(typeof(MasterDetailGridViewBase));
+            RowHeaderIconList = new ImageList(components)
             {
                 ImageStream = (ImageListStreamer)resources.GetObject("RowHeaderIconList.ImageStream"),
                 TransparentColor = Color.Transparent
             };
-            rowHeaderIconList.Images.SetKeyName(0, "expand.png");
-            rowHeaderIconList.Images.SetKeyName(1, "collapse.png");
+            RowHeaderIconList.Images.SetKeyName(0, "expand.png");
+            RowHeaderIconList.Images.SetKeyName(1, "collapse.png");
 
             RowHeaderMouseClick += MasterDetailGridView_RowHeaderMouseClick;
             RowPostPaint += MasterDetailGridView_RowPostPaint;
@@ -63,13 +64,20 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView.Implementation
         /// </summary>
         /// <param name="tableName"></param>
         /// <param name="masterColumn">The foreign key fieldname to be used for the master -> child relationship</param>
-        /// <param name="willBeEditable">Add extra width to the RowHeader</param>
-        public void SetMasterSource(string tableName, string masterColumn, bool willBeEditable = false)
+        /// <param name="columns">optional columns if not already added via designer</param>
+        public void SetMasterSource(string tableName, string masterColumn, DataGridViewColumn[] columns = null)
         {
             if (DataSet == null)
                 throw new MissingFieldException(@"DataSet has not been initialised first");
+            if (columns != null)
+            {
+                AutoGenerateColumns = false;
+                Columns.Clear();
+                Columns.AddRange(columns);
+            }
+
             base.DataSource = new DataView(DataSet.Tables[tableName]);
-            foreignKey = masterColumn;
+            ForeignKey = masterColumn;
             var keyType = DataSet.Tables[tableName].Columns[masterColumn].GetType();
             if ((keyType == typeof(int))
                 || (keyType == typeof(float))
@@ -77,61 +85,40 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView.Implementation
                 || (keyType == typeof(decimal))
                 )
             {
-                filterFormat = @"={0}";
+                FilterFormat = @"={0}";
             }
             else
             {
-                filterFormat = @"='{0}'";
+                FilterFormat = @"='{0}'";
             }
-
-            ConvertToExtKryptonColumns(this);
         }
 
-        protected internal static void ConvertToExtKryptonColumns(KryptonDataGridView dgv)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="masterColumn">The foreign key fieldname to be used for the master -> child relationship</param>
+        /// <param name="columns">optional columns if not already added via designer</param>
+        public void SetMasterSource(BindingSource source, string masterColumn, DataGridViewColumn[] columns = null)
         {
-            if (dgv.AutoGenerateColumns)
+            if (columns != null)
             {
-                // TODO: replace the Columns with the Krypton Ext Equivalents
-                List<DataGridViewColumn> replaceColumns = new(dgv.Columns.Count);
-                foreach (DataGridViewColumn cCol in dgv.Columns)
-                {
-                    // Columns will already be the Krypton.Toolkit versions
-                    var colType = cCol.ValueType;
-                    if (colType == typeof(DateTime))
-                    {
-                        replaceColumns.Add(new KryptonDataGridViewDateTimePickerColumn
-                        {
-                            DataPropertyName = cCol.DataPropertyName,
-                            HeaderText = cCol.HeaderText,
-                            Name = cCol.Name
-                        });
-                    }
-                    // TODO: System.Int64 to NumericUpDowner ??
-                    else if (colType == typeof(bool))
-                    {
-                        replaceColumns.Add(new KryptonDataGridViewBinaryColumn
-                        {
-                            DataPropertyName = cCol.DataPropertyName,
-                            HeaderText = cCol.HeaderText,
-                            Name = cCol.Name
-                        });
-                    }
-                    else
-                    {
-                        replaceColumns.Add(cCol);
-                    }
-                }
-                dgv.Columns.Clear();
-                dgv.Columns.AddRange(replaceColumns.ToArray());
+                AutoGenerateColumns = false;
+                Columns.Clear();
+                Columns.AddRange(columns);
             }
+            base.DataSource = source;
+            ForeignKey = masterColumn;
+            FilterFormat = @"={0}";
         }
 
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        protected string foreignKey;
+        protected string ForeignKey;
+
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        protected string filterFormat;
+        protected string FilterFormat;
 
         /// <summary>
         /// 
@@ -151,7 +138,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView.Implementation
 
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        protected readonly ImageList rowHeaderIconList;
+        protected readonly ImageList RowHeaderIconList;
 
         protected enum RowHeaderIcons
         {
@@ -159,15 +146,15 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView.Implementation
             Collapse = 1
         }
 
-        protected readonly Dictionary<int, (int Height, int divider)> rowCurrent = new();
+        protected readonly Dictionary<int, (int Height, int divider)> RowCurrent = new();
         private readonly int rowExpandedHeight = 300;
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        protected bool collapseRow;
+        protected bool CollapseRow;
 
         private void MasterDetailGridView_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if (!rowCurrent.TryGetValue(e.RowIndex, out var refValues))
+            if (!RowCurrent.TryGetValue(e.RowIndex, out var refValues))
                 refValues = (Rows[e.RowIndex].Height, Rows[e.RowIndex].DividerHeight);
 
             var scale = (refValues.Height - 16) / 2;
@@ -175,40 +162,40 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView.Implementation
             if (rect.Contains(e.Location))
             {
                 // Clicked on the Expand area
-                if (rowCurrent.TryGetValue(e.RowIndex, out refValues))
+                if (RowCurrent.TryGetValue(e.RowIndex, out refValues))
                 {
                     // Restore the row to it's original
-                    rowCurrent.Clear();
+                    RowCurrent.Clear();
                     Rows[e.RowIndex].Height = refValues.Height;
                     Rows[e.RowIndex].DividerHeight = refValues.divider;
                 }
                 else
                 {
                     // Was not expanded here
-                    if (rowCurrent.Count != 0)
+                    if (RowCurrent.Count != 0)
                     {
-                        var eRow = rowCurrent.First().Key;
-                        refValues = rowCurrent.First().Value;
-                        rowCurrent.Clear();
+                        var eRow = RowCurrent.First().Key;
+                        refValues = RowCurrent.First().Value;
+                        RowCurrent.Clear();
                         Rows[eRow].Height = refValues.Height;
                         Rows[eRow].DividerHeight = refValues.divider;
                         ClearSelection();
-                        collapseRow = true;
+                        CollapseRow = true;
                         Rows[eRow].Selected = true;
                     }
 
-                    rowCurrent[e.RowIndex] = (Rows[e.RowIndex].Height, Rows[e.RowIndex].DividerHeight);
+                    RowCurrent[e.RowIndex] = (Rows[e.RowIndex].Height, Rows[e.RowIndex].DividerHeight);
                     Rows[e.RowIndex].Height = rowExpandedHeight;
                     Rows[e.RowIndex].DividerHeight = rowExpandedHeight - Rows[e.RowIndex].DividerHeight;
                 }
 
                 ClearSelection();
-                collapseRow = true;
+                CollapseRow = true;
                 Rows[e.RowIndex].Selected = true;
             }
             else
             {
-                collapseRow = false;
+                CollapseRow = false;
             }
         }
 
@@ -218,11 +205,11 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView.Implementation
 
         private void MasterDetailGridView_Scroll(object sender, ScrollEventArgs e)
         {
-            if (rowCurrent.Count != 0)
+            if (RowCurrent.Count != 0)
             {
-                collapseRow = true;
+                CollapseRow = true;
                 ClearSelection();
-                Rows[rowCurrent.First().Key].Selected = true;
+                Rows[RowCurrent.First().Key].Selected = true;
             }
         }
 
@@ -282,23 +269,41 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView.Implementation
             newGrid.ShowEditingIcon = ShowEditingIcon;
             newGrid.ShowRowErrors = ShowRowErrors;
             newGrid.StandardTab = StandardTab;
-            newGrid.RowHeadersVisible = true;   // TODO: This could be passed from the parent value
+            newGrid.RowHeadersVisible = DetailsRowHeadersVisible;
         }
 
+        /// <summary>
+        /// Detail DataGridView ColumnHeaders Visibility
+        /// </summary>
         [Category("Details Appearance")]
         [DefaultValue(true)]
-        [Description("Detail DataGridView ColumnHeaders Visibilty")]
+        [Description("Detail DataGridView ColumnHeaders Visibility")]
         public bool DetailsColumnHeadersVisible { get; set; }
 
+        /// <summary>
+        /// Detail DataGridView RowHeaders Visibility
+        /// </summary>
+        [Category("Details Appearance")]
+        [DefaultValue(false)]
+        [Description("Detail DataGridView RowHeaders Visibility")]
+        public bool DetailsRowHeadersVisible { get; set; }
+
+        /// <summary>
+        /// Override the Master RowHeaders to be always visible
+        /// </summary>
         [Category("Appearance")]
         [DefaultValue(true)]
         [Description("DataGridView RowHeaders Visible (Will always be true!")]
         public new bool RowHeadersVisible
         {
             get => true;
+            // ReSharper disable once ValueParameterNotUsed
             set => base.RowHeadersVisible = true;
         }
 
+        /// <summary>
+        /// Make sure the RowHeaders have enough room to display the Drop restore image
+        /// </summary>
         [Category("Layout")]
         [Description("DataGridView RowHeaders Width")]
         public new int RowHeadersWidth

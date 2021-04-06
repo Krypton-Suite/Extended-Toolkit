@@ -12,7 +12,7 @@ using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Suite.Extended.DataGridView.Implementation
+namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt.Implementation
 {
     /// <summary>
     /// DO NOT use in your application code base: This is a base class to allows passthrough to the master KryptonDataGridView
@@ -27,9 +27,9 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView.Implementation
 
         private protected override void MasterDetailGridView_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
-            var grid = (System.Windows.Forms.DataGridView)sender;
+            var grid = (DataGridView)sender;
             bool found = true;
-            if (!rowCurrent.TryGetValue(e.RowIndex, out var refValues))
+            if (!RowCurrent.TryGetValue(e.RowIndex, out var refValues))
             {
                 refValues = (Rows[e.RowIndex].Height, Rows[e.RowIndex].DividerHeight);
                 found = false;
@@ -39,12 +39,12 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView.Implementation
             var scale = (refValues.Height - 16) / 2;
             var rect = new Rectangle(e.RowBounds.X + scale, e.RowBounds.Y + scale, 16, 16);
             var childView = (Control)ChildView; // allowed due to where constraint on <T>
-            if (collapseRow)
+            if (CollapseRow)
             {
                 if (found)
                 {
                     grid.Rows[e.RowIndex].DividerHeight = grid.Rows[e.RowIndex].Height - refValues.Height;
-                    e.Graphics.DrawImage(rowHeaderIconList.Images[(int)RowHeaderIcons.Collapse], rect);
+                    e.Graphics.DrawImage(RowHeaderIconList.Images[(int)RowHeaderIcons.Collapse], rect);
                     childView.Location = new Point(e.RowBounds.Left + grid.RowHeadersWidth, e.RowBounds.Top + refValues.Height + 5);
                     childView.Width = e.RowBounds.Right - grid.RowHeadersWidth;
                     childView.Height = grid.Rows[e.RowIndex].DividerHeight - 10;
@@ -53,15 +53,15 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView.Implementation
                 else
                 {
                     childView.Visible = false;
-                    e.Graphics.DrawImage(rowHeaderIconList.Images[(int)RowHeaderIcons.Expand], rect);
+                    e.Graphics.DrawImage(RowHeaderIconList.Images[(int)RowHeaderIcons.Expand], rect);
                 }
 
-                collapseRow = false;
+                CollapseRow = false;
             }
             else if (found)
             {
                 grid.Rows[e.RowIndex].DividerHeight = grid.Rows[e.RowIndex].Height - refValues.Height;
-                e.Graphics.DrawImage(rowHeaderIconList.Images[(int)RowHeaderIcons.Collapse], rect);
+                e.Graphics.DrawImage(RowHeaderIconList.Images[(int)RowHeaderIcons.Collapse], rect);
                 childView.Location = new Point(e.RowBounds.Left + grid.RowHeadersWidth, e.RowBounds.Top + refValues.Height + 5);
                 childView.Width = e.RowBounds.Right - grid.RowHeadersWidth;
                 childView.Height = grid.Rows[e.RowIndex].DividerHeight - 10;
@@ -69,7 +69,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView.Implementation
             }
             else
             {
-                e.Graphics.DrawImage(rowHeaderIconList.Images[(int)RowHeaderIcons.Expand], rect);
+                e.Graphics.DrawImage(RowHeaderIconList.Images[(int)RowHeaderIcons.Expand], rect);
             }
         }
 
@@ -79,11 +79,23 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView.Implementation
                 && CurrentRow != null
             )
             {
-                if (rowCurrent.TryGetValue(CurrentRow.Index, out _))
+                if (RowCurrent.TryGetValue(CurrentRow.Index, out _))
                 {
                     foreach (var cGrid in ChildView.ChildGrids)
                     {
-                        ((DataView)cGrid.Key.DataSource).RowFilter = $@"{cGrid.Value}{string.Format(filterFormat, this[foreignKey, CurrentRow.Index].Value)}";
+                        //if (cGrid.Key.DataSource is BindingSource bs1)
+                        //{
+                        //    bs1.RemoveFilter();
+                        //}
+
+                        ((IBindingListView)cGrid.Key.DataSource).Filter = $@"{cGrid.Value}{string.Format(FilterFormat, this[ForeignKey, CurrentRow.Index].Value)}";
+                        //if (cGrid.Key.DataSource is BindingSource bs)
+                        //{
+                        //    bs.ResetBindings(false);
+                        //    cGrid.Key.ResetBindings();
+                        //    cGrid.Key.Refresh();
+                        //    cGrid.Key.Update();
+                        //}
                     }
                 }
             }
