@@ -2,7 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net;
+using System.Reflection;
+using System.Runtime.Versioning;
 using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
@@ -419,6 +422,24 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
         ~FileUtilityMethods()
         {
             GC.SuppressFinalize(this);
+        }
+    }
+
+    public static class FileUtilityMethodsExtended
+    {
+        /// <summary>Gets the framework version of an assembly. See: https://www.nimaara.com/how-to-obtain-the-framework-version-of-a-net-assembly/. </summary>
+        /// <param name="assembly">The assembly.</param>
+        /// <returns> </returns>
+        public static string GetFrameworkVersion(this Assembly assembly)
+        {
+            var targetFrameAttribute = assembly.GetCustomAttributes(true)
+                .OfType<TargetFrameworkAttribute>().FirstOrDefault();
+            if (targetFrameAttribute == null)
+            {
+                return ".NET 2, 3 or 3.5";
+            }
+
+            return targetFrameAttribute.FrameworkDisplayName.Replace(".NET Framework", ".NET");
         }
     }
 }
