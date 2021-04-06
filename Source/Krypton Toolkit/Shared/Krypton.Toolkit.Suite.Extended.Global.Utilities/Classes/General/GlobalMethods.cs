@@ -1,7 +1,10 @@
-﻿using System;
+﻿using Krypton.Toolkit.Suite.Extended.Developer.Utilities;
+using System;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Drawing;
 using System.Management;
+//using System.Management;
 using System.Security.Principal;
 using System.Windows.Forms;
 
@@ -131,7 +134,7 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
             }
             catch (Exception exc)
             {
-                ExceptionHandler.CaptureException(exc, "Exception Thrown", MessageBoxButtons.OK, MessageBoxIcon.Error, "GlobalMethods", "CheckIfTargetPlatformIsSupported(bool useLegacyVistaSupport = false)");
+                ExceptionCapture.CaptureException(exc, "Exception Thrown", MessageBoxButtons.OK, MessageBoxIcon.Error, "GlobalMethods", "CheckIfTargetPlatformIsSupported(bool useLegacyVistaSupport = false)");
 
                 SetIsTargetPlatformSupported(false);
             }
@@ -238,8 +241,8 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
             return result;
         }
 
-
-
+        // TODO: Fix this method
+        /*
         /// <summary>
         /// This method checks if the client operating system supports the Windows API CodePack set of API's.
         /// </summary>
@@ -255,6 +258,7 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
                 return false;
             }
         }
+        */
         #endregion
 
         #region Setters and Getters
@@ -565,6 +569,8 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
             return result;
         }
 
+        // TODO: Fix this method
+        /*
         /// <summary>
         /// This method checks if the client operating system supports the Windows API CodePack set of API's.
         /// </summary>
@@ -580,6 +586,7 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
                 return false;
             }
         }
+        */
 
         /// <summary>
         /// Not the implemented yet.
