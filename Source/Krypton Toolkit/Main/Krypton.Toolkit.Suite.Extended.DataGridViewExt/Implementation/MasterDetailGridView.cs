@@ -83,19 +83,11 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt.Implementation
                 {
                     foreach (var cGrid in ChildView.ChildGrids)
                     {
-                        //if (cGrid.Key.DataSource is BindingSource bs1)
-                        //{
-                        //    bs1.RemoveFilter();
-                        //}
-
                         ((IBindingListView)cGrid.Key.DataSource).Filter = $@"{cGrid.Value}{string.Format(FilterFormat, this[ForeignKey, CurrentRow.Index].Value)}";
-                        //if (cGrid.Key.DataSource is BindingSource bs)
-                        //{
-                        //    bs.ResetBindings(false);
-                        //    cGrid.Key.ResetBindings();
-                        //    cGrid.Key.Refresh();
-                        //    cGrid.Key.Update();
-                        //}
+                        if (base.SelectionMode == DataGridViewSelectionMode.FullRowSelect)
+                        {
+                            cGrid.Key.ClearSelection();
+                        }
                     }
                 }
             }
