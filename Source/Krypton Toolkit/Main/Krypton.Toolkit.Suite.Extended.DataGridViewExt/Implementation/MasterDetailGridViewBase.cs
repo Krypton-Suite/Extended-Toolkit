@@ -110,6 +110,11 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt.Implementation
             base.DataSource = source;
             ForeignKey = masterColumn;
             FilterFormat = @"={0}";
+            if (base.SelectionMode == DataGridViewSelectionMode.FullRowSelect)
+            {
+                ClearSelection();
+            }
+
         }
 
         [Browsable(false)]
