@@ -127,6 +127,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         #endregion
 
         #region Constructor
+        /// <summary>Initializes a new instance of the <see cref="KryptonAlertWindow" /> class.</summary>
         public KryptonAlertWindow()
         {
             InitializeComponent();
@@ -145,6 +146,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// <param name="image">The image.</param>
         /// <param name="backColour">The back colour.</param>
         /// <param name="textColour">The text colour.</param>
+        /// <param name="headerText">Define the header text.</param>
         internal void DisplayAlert(string message, AlertType alertType, int interval, Image image = null, Color backColour = default, Color textColour = default, string headerText = "")
         {
             Opacity = 0.0;
@@ -202,9 +204,20 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
                     break;
             }
 
-            klblHeader.Text = headerText;
+            if (string.IsNullOrEmpty(headerText))
+            {
+                kwlContent.Visible = true;
 
-            klblContent.Text = message;
+                kwlContent.Text = message;
+            }
+            else
+            {
+                kwlContent.Visible = false;
+
+                klblHeader.Text = headerText;
+
+                klblContent.Text = message;
+            }
 
             _interval = interval;
 
