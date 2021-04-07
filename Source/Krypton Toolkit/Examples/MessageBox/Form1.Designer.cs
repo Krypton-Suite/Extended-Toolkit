@@ -59,6 +59,8 @@ namespace MessageBox
             this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
             this.ktxtOptionalCheckBoxText = new Krypton.Toolkit.KryptonTextBox();
             this.kchkDefineTypeface = new Krypton.Toolkit.KryptonCheckBox();
+            this.krbIconHand = new Krypton.Toolkit.KryptonRadioButton();
+            this.krbIconStop = new Krypton.Toolkit.KryptonRadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
@@ -236,6 +238,8 @@ namespace MessageBox
             // 
             // kryptonGroupBox1.Panel
             // 
+            this.kryptonGroupBox1.Panel.Controls.Add(this.krbIconStop);
+            this.kryptonGroupBox1.Panel.Controls.Add(this.krbIconHand);
             this.kryptonGroupBox1.Panel.Controls.Add(this.klblCustomIconPath);
             this.kryptonGroupBox1.Panel.Controls.Add(this.kbtnBrowseForCustomIcon);
             this.kryptonGroupBox1.Panel.Controls.Add(this.krbIconCustom);
@@ -260,7 +264,7 @@ namespace MessageBox
             // kbtnBrowseForCustomIcon
             // 
             this.kbtnBrowseForCustomIcon.Enabled = false;
-            this.kbtnBrowseForCustomIcon.Location = new System.Drawing.Point(80, 34);
+            this.kbtnBrowseForCustomIcon.Location = new System.Drawing.Point(213, 34);
             this.kbtnBrowseForCustomIcon.Name = "kbtnBrowseForCustomIcon";
             this.kbtnBrowseForCustomIcon.Size = new System.Drawing.Size(150, 25);
             this.kbtnBrowseForCustomIcon.TabIndex = 6;
@@ -269,7 +273,7 @@ namespace MessageBox
             // 
             // krbIconCustom
             // 
-            this.krbIconCustom.Location = new System.Drawing.Point(10, 34);
+            this.krbIconCustom.Location = new System.Drawing.Point(143, 34);
             this.krbIconCustom.Name = "krbIconCustom";
             this.krbIconCustom.Size = new System.Drawing.Size(64, 20);
             this.krbIconCustom.TabIndex = 5;
@@ -366,6 +370,22 @@ namespace MessageBox
             this.kchkDefineTypeface.TabIndex = 7;
             this.kchkDefineTypeface.Values.Text = "Define &Typeface";
             // 
+            // krbIconHand
+            // 
+            this.krbIconHand.Location = new System.Drawing.Point(10, 34);
+            this.krbIconHand.Name = "krbIconHand";
+            this.krbIconHand.Size = new System.Drawing.Size(52, 20);
+            this.krbIconHand.TabIndex = 8;
+            this.krbIconHand.Values.Text = "H&and";
+            // 
+            // krbIconStop
+            // 
+            this.krbIconStop.Location = new System.Drawing.Point(68, 34);
+            this.krbIconStop.Name = "krbIconStop";
+            this.krbIconStop.Size = new System.Drawing.Size(48, 20);
+            this.krbIconStop.TabIndex = 9;
+            this.krbIconStop.Values.Text = "St&op";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -432,6 +452,8 @@ namespace MessageBox
         private Krypton.Toolkit.KryptonRadioButton krbButtonsAbortRetryIgnore;
         private Krypton.Toolkit.KryptonCheckBox kchkDefineTypeface;
         private Krypton.Toolkit.KryptonTextBox ktxtOptionalCheckBoxText;
+        private Krypton.Toolkit.KryptonRadioButton krbIconHand;
+        private Krypton.Toolkit.KryptonRadioButton krbIconStop;
     }
 }
 
