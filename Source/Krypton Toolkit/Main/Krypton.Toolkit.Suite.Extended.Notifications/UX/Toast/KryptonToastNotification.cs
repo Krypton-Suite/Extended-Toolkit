@@ -273,7 +273,13 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         #endregion
 
         #region Constructors
-        public KryptonToastNotification(bool fade, Image icon, string headerText, string contentText, bool showControlBox = true)
+        /// <summary>Initializes a new instance of the <see cref="KryptonToastNotification" /> class.</summary>
+        /// <param name="fade">if set to <c>true</c> [fade].</param>
+        /// <param name="icon">The icon.</param>
+        /// <param name="headerText">The header text.</param>
+        /// <param name="contentText">The content text.</param>
+        /// <param name="showControlBox">if set to <c>true</c> [show control box].</param>
+        public KryptonToastNotification(bool fade, Image icon, string headerText, string contentText, bool showControlBox = false)
         {
             InitializeComponent();
 
@@ -296,7 +302,13 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
             ControlBox = showControlBox;
         }
 
-        public KryptonToastNotification(bool fade, IconType iconType, string headerText, string contentText, bool showControlBox = true)
+        /// <summary>Initializes a new instance of the <see cref="KryptonToastNotification" /> class.</summary>
+        /// <param name="fade">if set to <c>true</c> [fade].</param>
+        /// <param name="iconType">Type of the icon.</param>
+        /// <param name="headerText">The header text.</param>
+        /// <param name="contentText">The content text.</param>
+        /// <param name="showControlBox">if set to <c>true</c> [show control box].</param>
+        public KryptonToastNotification(bool fade, IconType iconType, string headerText, string contentText, bool showControlBox = false)
         {
             InitializeComponent();
 
@@ -364,7 +376,8 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// <param name="headerText">The header text.</param>
         /// <param name="contentText">The content text.</param>
         /// <param name="seconds">The seconds.</param>
-        public KryptonToastNotification(bool fade, Image image, string headerText, string contentText, int seconds, bool showControlBox = true) : this(fade, image, headerText, contentText, showControlBox)
+        /// <param name="showControlBox">Displays the close button.</param>
+        public KryptonToastNotification(bool fade, Image image, string headerText, string contentText, int seconds, bool showControlBox = false) : this(fade, image, headerText, contentText, showControlBox)
         {
             Seconds = seconds;
         }
@@ -378,7 +391,8 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// <param name="contentText">The content text.</param>
         /// <param name="seconds">The seconds.</param>
         /// <param name="soundPath">The sound path.</param>
-        public KryptonToastNotification(bool fade, Image image, string headerText, string contentText, int seconds, string soundPath, bool showControlBox = true) : this(fade, image, headerText, contentText, seconds, showControlBox)
+        /// <param name="showControlBox">Displays the close button.</param>
+        public KryptonToastNotification(bool fade, Image image, string headerText, string contentText, int seconds, string soundPath, bool showControlBox = false) : this(fade, image, headerText, contentText, seconds, showControlBox)
         {
             SoundPath = soundPath;
         }
@@ -391,7 +405,8 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// <param name="headerText">The header text.</param>
         /// <param name="contentText">The content text.</param>
         /// <param name="soundPath">The sound path.</param>
-        public KryptonToastNotification(bool fade, Image image, string headerText, string contentText, string soundPath, bool showControlBox = true) : this(fade, image, headerText, contentText, showControlBox)
+        /// <param name="showControlBox">Displays the close button.</param>
+        public KryptonToastNotification(bool fade, Image image, string headerText, string contentText, string soundPath, bool showControlBox = false) : this(fade, image, headerText, contentText, showControlBox)
         {
             SoundPath = soundPath;
         }
@@ -404,7 +419,8 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// <param name="headerText">The header text.</param>
         /// <param name="contentText">The content text.</param>
         /// <param name="soundStream">The sound stream.</param>
-        public KryptonToastNotification(bool fade, Image image, string headerText, string contentText, Stream soundStream, bool showControlBox = true) : this(fade, image, headerText, contentText, showControlBox)
+        /// <param name="showControlBox">Displays the close button.</param>
+        public KryptonToastNotification(bool fade, Image image, string headerText, string contentText, Stream soundStream, bool showControlBox = false) : this(fade, image, headerText, contentText, showControlBox)
         {
             SoundStream = soundStream;
         }
@@ -418,7 +434,8 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// <param name="contentText">The content text.</param>
         /// <param name="seconds">The seconds.</param>
         /// <param name="soundStream">The sound stream.</param>
-        public KryptonToastNotification(bool fade, Image image, string headerText, string contentText, int seconds, Stream soundStream, bool showControlBox = true) : this(fade, image, headerText, contentText, seconds, showControlBox)
+        /// <param name="showControlBox">Displays the close button.</param>
+        public KryptonToastNotification(bool fade, Image image, string headerText, string contentText, int seconds, Stream soundStream, bool showControlBox = false) : this(fade, image, headerText, contentText, seconds, showControlBox)
         {
             SoundStream = soundStream;
         }
@@ -433,8 +450,9 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// <param name="showActionButton">if set to <c>true</c> [show action button].</param>
         /// <param name="actionType">Type of the action.</param>
         /// <param name="processName">Name of the process.</param>
-        /// <param name="showControlBox">if set to <c>true</c> [show control box].</param>
-        public KryptonToastNotification(bool fade, Image image, string headerText, string contentText, ActionButtonLocation actionButtonLocation, bool showActionButton, ActionType actionType, string processName, bool showControlBox = true) : this(fade, image, headerText, contentText, showControlBox)
+        /// <param name="actionButtonLocation">The placement of the action button.</param>
+        /// <param name="showControlBox">Displays the close button.</param>
+        public KryptonToastNotification(bool fade, Image image, string headerText, string contentText, ActionButtonLocation actionButtonLocation, bool showActionButton, ActionType actionType, string processName, bool showControlBox = false) : this(fade, image, headerText, contentText, showControlBox)
         {
             ButtonLocation = actionButtonLocation;
 
@@ -447,33 +465,36 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
             SetActionText(actionType);
         }
 
-        /// <summary>Initializes a new instance of the <see cref="KryptonToastNotification"/> class.</summary>
+
+        /// <summary>Initializes a new instance of the <see cref="KryptonToastNotification" /> class.</summary>
         /// <param name="fade">if set to <c>true</c> [fade].</param>
         /// <param name="image">The image.</param>
         /// <param name="headerText">The header text.</param>
         /// <param name="contentText">The content text.</param>
+        /// <param name="actionButtonLocation">The action button location.</param>
         /// <param name="showActionButton">if set to <c>true</c> [show action button].</param>
         /// <param name="actionType">Type of the action.</param>
         /// <param name="processName">Name of the process.</param>
         /// <param name="showControlBox">if set to <c>true</c> [show control box].</param>
         /// <param name="cornerRadius">The corner radius.</param>
-        public KryptonToastNotification(bool fade, Image image, string headerText, string contentText, ActionButtonLocation actionButtonLocation, bool showActionButton, ActionType actionType, string processName, bool showControlBox = true, int cornerRadius = -1) : this(fade, image, headerText, contentText, actionButtonLocation, showActionButton, actionType, processName, showControlBox)
+        public KryptonToastNotification(bool fade, Image image, string headerText, string contentText, ActionButtonLocation actionButtonLocation, bool showActionButton, ActionType actionType, string processName, bool showControlBox = false, int cornerRadius = -1) : this(fade, image, headerText, contentText, actionButtonLocation, showActionButton, actionType, processName, showControlBox)
         {
             CornerRadius = cornerRadius;
         }
 
-        /// <summary>Initializes a new instance of the <see cref="KryptonToastNotification"/> class.</summary>
+        /// <summary>Initializes a new instance of the <see cref="KryptonToastNotification" /> class.</summary>
         /// <param name="fade">if set to <c>true</c> [fade].</param>
         /// <param name="image">The image.</param>
         /// <param name="headerText">The header text.</param>
         /// <param name="contentText">The content text.</param>
+        /// <param name="actionButtonLocation">The action button location.</param>
         /// <param name="showActionButton">if set to <c>true</c> [show action button].</param>
         /// <param name="actionType">Type of the action.</param>
         /// <param name="processName">Name of the process.</param>
         /// <param name="showControlBox">if set to <c>true</c> [show control box].</param>
         /// <param name="cornerRadius">The corner radius.</param>
         /// <param name="borders">The borders.</param>
-        public KryptonToastNotification(bool fade, Image image, string headerText, string contentText, ActionButtonLocation actionButtonLocation, bool showActionButton, ActionType actionType, string processName, bool showControlBox = true, int cornerRadius = -1, PaletteDrawBorders borders = PaletteDrawBorders.All) : this(fade, image, headerText, contentText, actionButtonLocation, showActionButton, actionType, processName, showControlBox)
+        public KryptonToastNotification(bool fade, Image image, string headerText, string contentText, ActionButtonLocation actionButtonLocation, bool showActionButton, ActionType actionType, string processName, bool showControlBox = false, int cornerRadius = -1, PaletteDrawBorders borders = PaletteDrawBorders.All) : this(fade, image, headerText, contentText, actionButtonLocation, showActionButton, actionType, processName, showControlBox)
         {
             PaletteDrawBorders = borders;
         }
