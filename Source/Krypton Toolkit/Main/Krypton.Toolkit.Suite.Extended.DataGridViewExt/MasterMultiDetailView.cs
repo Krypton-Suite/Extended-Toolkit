@@ -66,6 +66,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt
             {
                 Dock = DockStyle.Fill
             };
+            SetStyles(newGrid);
             if (columns != null)
             {
                 newGrid.AutoGenerateColumns = false;
@@ -73,7 +74,6 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt
                 newGrid.Columns.AddRange(columns);
             }
             newGrid.DataSource = source;
-            SetStyles(newGrid);
             tPage.Controls.Add(newGrid);
             childViews.ChildGrids[newGrid] = targetKeyColumn;
         }

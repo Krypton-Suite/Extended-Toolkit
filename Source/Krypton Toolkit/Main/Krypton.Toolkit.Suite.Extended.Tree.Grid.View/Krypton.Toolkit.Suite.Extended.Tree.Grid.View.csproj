@@ -15,15 +15,15 @@
   <PropertyGroup>
     <LangVersion>latest</LangVersion>
     <OutputType>library</OutputType>
-    <RootNamespace>Krypton.Toolkit.Suite.Extended.Notifications</RootNamespace>
-    <AssemblyName>Krypton.Toolkit.Suite.Extended.Notifications</AssemblyName>
+    <RootNamespace>Krypton.Toolkit.Suite.Extended.Tree.Grid.View</RootNamespace>
+    <AssemblyName>Krypton.Toolkit.Suite.Extended.Tree.Grid.View</AssemblyName>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
   <!--Package Data-->
   <PropertyGroup>
-    <PackageId>Krypton.Toolkit.Suite.Extended.Notifications</PackageId>
-    <Description>An extension to the Krypton standard toolkit. This package holds items to create notifications for your applications.</Description>
+    <PackageId>Krypton.Toolkit.Suite.Extended.Tree.Grid.View</PackageId>
+    <Description>An extension to the Krypton standard toolkit. This package holds items to create tree grid views for your applications.</Description>
   </PropertyGroup>
 
   <!--Version Information-->
@@ -48,21 +48,8 @@
 
   <!--Binary/Documentation Output-->
   <PropertyGroup>
-    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.Notifications\Krypton.Toolkit.Suite.Extended.Notifications.xml</DocumentationFile>
-    <OutputPath>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.Notifications\</OutputPath>
+    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.Tree.Grid.View\Krypton.Toolkit.Suite.Extended.Tree.Grid.View.xml</DocumentationFile>
+    <OutputPath>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.Tree.Grid.View\</OutputPath>
   </PropertyGroup>
-  <ItemGroup>
-    <Compile Update="Properties\Resources.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Update="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
 
 </Project>

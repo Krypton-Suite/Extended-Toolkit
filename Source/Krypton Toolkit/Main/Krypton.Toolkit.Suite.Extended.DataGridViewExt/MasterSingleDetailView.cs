@@ -37,7 +37,6 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt
         {
             childView = new SingleDetailView();
             Controls.Add(childView);
-            SetStyles(childView);
         }
 
         /// <summary>
@@ -62,14 +61,15 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt
             if (!source.SupportsFiltering)
                 throw new NotImplementedException(@"'source' must implement Filtering. Use SimpleFilteredList class");
 
+            SetStyles(childView);
             if (columns != null)
             {
                 childView.AutoGenerateColumns = false;
                 childView.Columns.Clear();
                 childView.Columns.AddRange(columns);
             }
-            childView.ChildGrids[childView] = targetKeyColumn;
             childView.DataSource = source;
+            childView.ChildGrids[childView] = targetKeyColumn;
         }
 
     }
