@@ -148,10 +148,10 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         #region Variables
         private ActionButtonLocation _buttonLocation;
         private ActionType _actionType;
-        private bool _fade, _showActionButton;
-        private string _headerText, _contentText, _processName;
+        private bool _fade, _showActionButton, _showSubScript;
+        private string _headerText, _contentText, _dismissButtonText, _processName;
         private Image _image;
-        private int _time, _cornerRadius;
+        private int _time, _cornerRadius, _seconds;
         private Timer _timer;
         private SoundPlayer _player;
         private IconType _iconType;
@@ -161,6 +161,8 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         #endregion
 
         #region Properties       
+        /// <summary>Gets or sets the aaction button location.</summary>
+        /// <value>The action button location.</value>
         public ActionButtonLocation ButtonLocation { get => _buttonLocation; set => _buttonLocation = value; }
 
         /// <summary>
@@ -186,6 +188,10 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         ///   <c>true</c> if [show action button]; otherwise, <c>false</c>.
         /// </value>
         public bool ShowActionButton { get => _showActionButton; set => _showActionButton = value; }
+
+        /// <summary>Gets or sets a value indicating whether show the seconds subscript.</summary>
+        /// <value><c>true</c> if [show sub script]; otherwise, <c>false</c>.</value>
+        public bool ShowSubScript { get => _showSubScript; set => _showSubScript = value; }
 
         /// <summary>
         /// Gets or sets the sound path.
@@ -227,16 +233,17 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// </value>
         public string ProcessName { get => _processName; set => _processName = value; }
 
+        /// <summary>Gets or sets the dismiss button text.</summary>
+        /// <value>The dismiss button text.</value>
+        public string DismissButtonText { get => _dismissButtonText; set => _dismissButtonText = value; }
+
         /// <summary>
         /// Gets or sets the icon image.
         /// </summary>
         /// <value>
         /// The icon image.
         /// </value>
-        public Image IconImage
-        {
-            get => _image; set { _image = value; Invalidate(); }
-        }
+        public Image IconImage { get => _image; set { _image = value; Invalidate(); } }
 
         /// <summary>
         /// Gets or sets the seconds.
@@ -244,20 +251,21 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// <value>
         /// The seconds.
         /// </value>
-        public int Seconds { get; set; }
+        public int Seconds { get => _seconds; set => _seconds = value; }
 
+        /// <summary>Gets or sets the corner radius.</summary>
+        /// <value>The corner radius.</value>
         public int CornerRadius { get => _cornerRadius; set { _cornerRadius = value; Invalidate(); } }
 
+        /// <summary>Gets or sets the palette draw borders.</summary>
+        /// <value>The palette draw borders.</value>
         public PaletteDrawBorders PaletteDrawBorders { get => _drawBorders; set { _drawBorders = value; Invalidate(); } }
 
-        public IconType Type { get => _iconType; set => _iconType = value; }
+        /// <summary>Gets or sets the type of the icon.</summary>
+        /// <value>The type of the icon.</value>
+        public IconType IconType { get => _iconType; set => _iconType = value; }
 
-        /// <summary>
-        /// Gets or sets the right to left support.
-        /// </summary>
-        /// <value>
-        /// The right to left support.
-        /// </value>
+        /// <summary>Gets or sets a value indicating whether control's elements are aligned to support locales using right-to-left fonts.</summary>
         public RightToLeftSupport RightToLeft { get => _rightToLeftSupport; set { _rightToLeftSupport = value; Invalidate(); } }
         #endregion
 
@@ -278,8 +286,10 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// <param name="icon">The icon.</param>
         /// <param name="headerText">The header text.</param>
         /// <param name="contentText">The content text.</param>
+        /// <param name="dismissButtonText">The dismiss button text.</param>
         /// <param name="showControlBox">if set to <c>true</c> [show control box].</param>
-        public KryptonToastNotification(bool fade, Image icon, string headerText, string contentText, bool showControlBox = false)
+        /// <param name="showSubScript">If set to <c>true</c> show seconds subscript.</param>
+        public KryptonToastNotification(bool fade, Image icon, string headerText, string contentText, string dismissButtonText = "&Dismiss", bool showControlBox = false, bool showSubScript = false)
         {
             InitializeComponent();
 
@@ -291,6 +301,8 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
 
             ContentText = contentText;
 
+            DismissButtonText = dismissButtonText;
+
             TopMost = true;
 
             Resize += KryptonToastNotificationWindow_Resize;
@@ -300,6 +312,10 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
             DoubleBuffered = true;
 
             ControlBox = showControlBox;
+
+            ShowSubScript = showSubScript;
+
+            //?SetDismissButtonText(dismissButtonText, seconds, showSubScript);
         }
 
         /// <summary>Initializes a new instance of the <see cref="KryptonToastNotification" /> class.</summary>
@@ -307,14 +323,16 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// <param name="iconType">Type of the icon.</param>
         /// <param name="headerText">The header text.</param>
         /// <param name="contentText">The content text.</param>
+        /// <param name="dismissButtonText">The dismiss button text.</param>
         /// <param name="showControlBox">if set to <c>true</c> [show control box].</param>
-        public KryptonToastNotification(bool fade, IconType iconType, string headerText, string contentText, bool showControlBox = false)
+        /// <param name="showSubScript">If set to <c>true</c> show seconds subscript.</param>
+        public KryptonToastNotification(bool fade, IconType iconType, string headerText, string contentText, string dismissButtonText = "&Dismiss", bool showControlBox = false, bool showSubScript = false)
         {
             InitializeComponent();
 
             Fade = fade;
 
-            Type = iconType;
+            IconType = iconType;
 
             #region Update Icons
             if (iconType == IconType.NONE)
@@ -357,6 +375,8 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
 
             ContentText = contentText;
 
+            DismissButtonText = dismissButtonText;
+
             TopMost = true;
 
             Resize += KryptonToastNotificationWindow_Resize;
@@ -366,93 +386,100 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
             DoubleBuffered = true;
 
             ControlBox = showControlBox;
+
+            ShowSubScript = showSubScript;
+
+            //?SetDismissButtonText(dismissButtonText, seconds, showSubScript);
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="KryptonToastNotification"/> class.
-        /// </summary>
+        /// <summary>Initializes a new instance of the <see cref="KryptonToastNotification" /> class.</summary>
         /// <param name="fade">if set to <c>true</c> [fade].</param>
         /// <param name="image">The image.</param>
         /// <param name="headerText">The header text.</param>
         /// <param name="contentText">The content text.</param>
+        /// <param name="dismissButtonText">The dismiss button text.</param>
         /// <param name="seconds">The seconds.</param>
-        /// <param name="showControlBox">Displays the close button.</param>
-        public KryptonToastNotification(bool fade, Image image, string headerText, string contentText, int seconds, bool showControlBox = false) : this(fade, image, headerText, contentText, showControlBox)
+        /// <param name="showControlBox">if set to <c>true</c> [show control box].</param>
+        /// <param name="showSubScript">If set to <c>true</c> show seconds subscript.</param>
+        public KryptonToastNotification(bool fade, Image image, string headerText, string contentText, string dismissButtonText, int seconds, bool showControlBox = false, bool showSubScript = false) : this(fade, image, headerText, contentText, dismissButtonText, showControlBox, showSubScript)
         {
             Seconds = seconds;
+
+            SetDismissButtonText(dismissButtonText, seconds, showSubScript);
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="KryptonToastNotification"/> class.
-        /// </summary>
+        /// <summary>Initializes a new instance of the <see cref="KryptonToastNotification" /> class.</summary>
         /// <param name="fade">if set to <c>true</c> [fade].</param>
         /// <param name="image">The image.</param>
         /// <param name="headerText">The header text.</param>
         /// <param name="contentText">The content text.</param>
+        /// <param name="dismissButtonText">The dismiss button text.</param>
         /// <param name="seconds">The seconds.</param>
         /// <param name="soundPath">The sound path.</param>
-        /// <param name="showControlBox">Displays the close button.</param>
-        public KryptonToastNotification(bool fade, Image image, string headerText, string contentText, int seconds, string soundPath, bool showControlBox = false) : this(fade, image, headerText, contentText, seconds, showControlBox)
+        /// <param name="showControlBox">if set to <c>true</c> [show control box].</param>
+        /// <param name="showSubScript">If set to <c>true</c> show seconds subscript.</param>
+        public KryptonToastNotification(bool fade, Image image, string headerText, string contentText, string dismissButtonText, int seconds, string soundPath, bool showControlBox = false, bool showSubScript = false) : this(fade, image, headerText, contentText, dismissButtonText, seconds, showControlBox, showSubScript)
+        {
+            SoundPath = soundPath;
+
+            SetDismissButtonText(dismissButtonText, seconds, showSubScript);
+        }
+
+        /// <summary>Initializes a new instance of the <see cref="KryptonToastNotification" /> class.</summary>
+        /// <param name="fade">if set to <c>true</c> [fade].</param>
+        /// <param name="image">The image.</param>
+        /// <param name="headerText">The header text.</param>
+        /// <param name="contentText">The content text.</param>
+        /// <param name="dismissButtonText">The dismiss button text.</param>
+        /// <param name="soundPath">The sound path.</param>
+        /// <param name="showControlBox">if set to <c>true</c> [show control box].</param>
+        public KryptonToastNotification(bool fade, Image image, string headerText, string contentText, string dismissButtonText, string soundPath, bool showControlBox = false) : this(fade, image, headerText, contentText, dismissButtonText, showControlBox)
         {
             SoundPath = soundPath;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="KryptonToastNotification"/> class.
-        /// </summary>
+        /// <summary>Initializes a new instance of the <see cref="KryptonToastNotification" /> class.</summary>
         /// <param name="fade">if set to <c>true</c> [fade].</param>
         /// <param name="image">The image.</param>
         /// <param name="headerText">The header text.</param>
         /// <param name="contentText">The content text.</param>
-        /// <param name="soundPath">The sound path.</param>
-        /// <param name="showControlBox">Displays the close button.</param>
-        public KryptonToastNotification(bool fade, Image image, string headerText, string contentText, string soundPath, bool showControlBox = false) : this(fade, image, headerText, contentText, showControlBox)
-        {
-            SoundPath = soundPath;
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="KryptonToastNotification"/> class.
-        /// </summary>
-        /// <param name="fade">if set to <c>true</c> [fade].</param>
-        /// <param name="image">The image.</param>
-        /// <param name="headerText">The header text.</param>
-        /// <param name="contentText">The content text.</param>
+        /// <param name="dismissButtonText">The dismiss button text.</param>
         /// <param name="soundStream">The sound stream.</param>
-        /// <param name="showControlBox">Displays the close button.</param>
-        public KryptonToastNotification(bool fade, Image image, string headerText, string contentText, Stream soundStream, bool showControlBox = false) : this(fade, image, headerText, contentText, showControlBox)
+        /// <param name="showControlBox">if set to <c>true</c> [show control box].</param>
+        public KryptonToastNotification(bool fade, Image image, string headerText, string contentText, string dismissButtonText, Stream soundStream, bool showControlBox = false) : this(fade, image, headerText, contentText, dismissButtonText, showControlBox)
         {
             SoundStream = soundStream;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="KryptonToastNotification"/> class.
-        /// </summary>
+        /// <summary>Initializes a new instance of the <see cref="KryptonToastNotification" /> class.</summary>
         /// <param name="fade">if set to <c>true</c> [fade].</param>
         /// <param name="image">The image.</param>
         /// <param name="headerText">The header text.</param>
         /// <param name="contentText">The content text.</param>
+        /// <param name="dismissButtonText">The dismiss button text.</param>
         /// <param name="seconds">The seconds.</param>
         /// <param name="soundStream">The sound stream.</param>
-        /// <param name="showControlBox">Displays the close button.</param>
-        public KryptonToastNotification(bool fade, Image image, string headerText, string contentText, int seconds, Stream soundStream, bool showControlBox = false) : this(fade, image, headerText, contentText, seconds, showControlBox)
+        /// <param name="showControlBox">if set to <c>true</c> [show control box].</param>
+        /// <param name="showSubScript">If set to <c>true</c> show seconds subscript.</param>
+        public KryptonToastNotification(bool fade, Image image, string headerText, string contentText, string dismissButtonText, int seconds, Stream soundStream, bool showControlBox = false, bool showSubScript = false) : this(fade, image, headerText, contentText, dismissButtonText, seconds, showControlBox, showSubScript)
         {
             SoundStream = soundStream;
+
+            SetDismissButtonText(dismissButtonText, seconds, showSubScript);
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="KryptonToastNotification"/> class.
-        /// </summary>
+        /// <summary>Initializes a new instance of the <see cref="KryptonToastNotification" /> class.</summary>
         /// <param name="fade">if set to <c>true</c> [fade].</param>
         /// <param name="image">The image.</param>
         /// <param name="headerText">The header text.</param>
         /// <param name="contentText">The content text.</param>
+        /// <param name="dismissButtonText">The dismiss button text.</param>
+        /// <param name="actionButtonLocation">The action button location.</param>
         /// <param name="showActionButton">if set to <c>true</c> [show action button].</param>
         /// <param name="actionType">Type of the action.</param>
         /// <param name="processName">Name of the process.</param>
-        /// <param name="actionButtonLocation">The placement of the action button.</param>
-        /// <param name="showControlBox">Displays the close button.</param>
-        public KryptonToastNotification(bool fade, Image image, string headerText, string contentText, ActionButtonLocation actionButtonLocation, bool showActionButton, ActionType actionType, string processName, bool showControlBox = false) : this(fade, image, headerText, contentText, showControlBox)
+        /// <param name="showControlBox">if set to <c>true</c> [show control box].</param>
+        public KryptonToastNotification(bool fade, Image image, string headerText, string contentText, string dismissButtonText, ActionButtonLocation actionButtonLocation, bool showActionButton, ActionType actionType, string processName, bool showControlBox = false) : this(fade, image, headerText, contentText, dismissButtonText, showControlBox)
         {
             ButtonLocation = actionButtonLocation;
 
@@ -465,19 +492,19 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
             SetActionText(actionType);
         }
 
-
         /// <summary>Initializes a new instance of the <see cref="KryptonToastNotification" /> class.</summary>
         /// <param name="fade">if set to <c>true</c> [fade].</param>
         /// <param name="image">The image.</param>
         /// <param name="headerText">The header text.</param>
         /// <param name="contentText">The content text.</param>
+        /// <param name="dismissButtonText">The dismiss button text.</param>
         /// <param name="actionButtonLocation">The action button location.</param>
         /// <param name="showActionButton">if set to <c>true</c> [show action button].</param>
         /// <param name="actionType">Type of the action.</param>
         /// <param name="processName">Name of the process.</param>
         /// <param name="showControlBox">if set to <c>true</c> [show control box].</param>
         /// <param name="cornerRadius">The corner radius.</param>
-        public KryptonToastNotification(bool fade, Image image, string headerText, string contentText, ActionButtonLocation actionButtonLocation, bool showActionButton, ActionType actionType, string processName, bool showControlBox = false, int cornerRadius = -1) : this(fade, image, headerText, contentText, actionButtonLocation, showActionButton, actionType, processName, showControlBox)
+        public KryptonToastNotification(bool fade, Image image, string headerText, string contentText, string dismissButtonText, ActionButtonLocation actionButtonLocation, bool showActionButton, ActionType actionType, string processName, bool showControlBox = false, int cornerRadius = -1) : this(fade, image, headerText, contentText, dismissButtonText, actionButtonLocation, showActionButton, actionType, processName, showControlBox)
         {
             CornerRadius = cornerRadius;
         }
@@ -487,6 +514,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// <param name="image">The image.</param>
         /// <param name="headerText">The header text.</param>
         /// <param name="contentText">The content text.</param>
+        /// <param name="dismissButtonText">The dismiss button text.</param>
         /// <param name="actionButtonLocation">The action button location.</param>
         /// <param name="showActionButton">if set to <c>true</c> [show action button].</param>
         /// <param name="actionType">Type of the action.</param>
@@ -494,7 +522,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// <param name="showControlBox">if set to <c>true</c> [show control box].</param>
         /// <param name="cornerRadius">The corner radius.</param>
         /// <param name="borders">The borders.</param>
-        public KryptonToastNotification(bool fade, Image image, string headerText, string contentText, ActionButtonLocation actionButtonLocation, bool showActionButton, ActionType actionType, string processName, bool showControlBox = false, int cornerRadius = -1, PaletteDrawBorders borders = PaletteDrawBorders.All) : this(fade, image, headerText, contentText, actionButtonLocation, showActionButton, actionType, processName, showControlBox)
+        public KryptonToastNotification(bool fade, Image image, string headerText, string contentText, string dismissButtonText, ActionButtonLocation actionButtonLocation, bool showActionButton, ActionType actionType, string processName, bool showControlBox = false, int cornerRadius = -1, PaletteDrawBorders borders = PaletteDrawBorders.All) : this(fade, image, headerText, contentText, dismissButtonText, actionButtonLocation, showActionButton, actionType, processName, showControlBox)
         {
             PaletteDrawBorders = borders;
         }
@@ -556,9 +584,9 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
 
             ReconfigureUI(RightToLeft);
 
-            if (Type != IconType.NONE)
+            if (IconType != IconType.NONE)
             {
-                UpdateIconType(Type);
+                UpdateIconType(IconType);
             }
             else
             {
@@ -620,7 +648,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// <summary>Displays the notification.</summary>
         public void DisplayNotification()
         {
-            ImplementInterface(ButtonLocation, Action, Fade, ShowActionButton, SoundPath, SoundStream, HeaderText, ContentText, ProcessName, IconImage, Seconds, CornerRadius, PaletteDrawBorders, Type, RightToLeft);
+            ImplementInterface(ButtonLocation, Action, Fade, ShowActionButton, SoundPath, SoundStream, HeaderText, ContentText, ProcessName, IconImage, Seconds, CornerRadius, PaletteDrawBorders, IconType, RightToLeft);
 
             // TODO: Complete code
         }
@@ -684,7 +712,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// <param name="e">A <see cref="T:System.Windows.Forms.PaintEventArgs" /> that contains the event data.</param>
         protected override void OnPaint(PaintEventArgs e)
         {
-            UpdateIconType(Type);
+            UpdateIconType(IconType);
 
             ReconfigureUI(RightToLeft);
 
@@ -792,11 +820,13 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
             pbxNotificationIcon.Visible = showIcon;
         }
 
+        /*
         // TODO: Revisit
         private void ResetDefaultLayout()
         {
             AdjustLayout(new Size(487, 58), new Size(487, 153), new Point(12, 6), new Point(470, 6));
         }
+        */
 
         /// <summary>
         /// Sets the action text.
@@ -826,6 +856,34 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// <summary>Opens the in explorer.</summary>
         /// <param name="process">The process.</param>
         private void OpenInExplorer(string process) => Process.Start("explorer.exe", process);
+
+        /// <summary>Sets the dismiss button text.</summary>
+        /// <param name="buttonText">The button text.</param>
+        /// <param name="seconds">The seconds.</param>
+        /// <param name="showSubScript">if set to <c>true</c> [show sub script].</param>
+        /// <exception cref="ArgumentNullException"></exception>
+        private void SetDismissButtonText(string buttonText, int seconds = 0, bool showSubScript = false)
+        {
+            if (!string.IsNullOrEmpty(buttonText))
+            {
+                if (seconds > 0)
+                {
+                    kbtnDismiss.Text = $"{ buttonText } ({ seconds })";
+                }
+                else if (seconds > 0 && showSubScript)
+                {
+                    kbtnDismiss.Text = $"{ buttonText } ({ seconds }s)";
+                }
+                else
+                {
+                    kbtnDismiss.Text = $"{ buttonText }";
+                }
+            }
+            else
+            {
+                throw new ArgumentNullException();
+            }
+        }
         #endregion
 
         #region Event Handlers
