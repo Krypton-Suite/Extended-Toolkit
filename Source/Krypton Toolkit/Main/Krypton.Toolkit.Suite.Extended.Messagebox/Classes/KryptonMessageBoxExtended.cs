@@ -370,10 +370,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         #endregion
 
         #region Constructors
-        static KryptonMessageBoxExtended()
-        {
-            _osMajorVersion = Environment.OSVersion.Version.Major;
-        }
+        static KryptonMessageBoxExtended() => _osMajorVersion = Environment.OSVersion.Version.Major;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="KryptonMessageBoxExtended" /> class.
@@ -980,6 +977,37 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         Image customMessageBoxIcon = null)
         {
             return InternalShow(owner, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath, navigator, param), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, customMessageBoxIcon);
+        }
+
+        /// <summary>
+        /// Displays a message box with the specified text, caption, buttons, icon, default button, options, and Help button, using the specified Help file, HelpNavigator, and Help topic.
+        /// </summary>
+        /// <param name="owner">Owner of the modal dialog box.</param>
+        /// <param name="text">The text to display in the message box.</param>
+        /// <param name="caption">The text to display in the title bar of the message box.</param>
+        /// <param name="buttons">One of the System.Windows.Forms.MessageBoxButtons values that specifies which buttons to display in the message box.</param>
+        /// <param name="icon">One of the System.Windows.Forms.ExtendedMessageBoxIcon values that specifies which icon to display in the message box.</param>
+        /// <param name="defaultButton">One of the System.Windows.Forms.MessageBoxDefaultButton values that specifies the default button for the message box.</param>
+        /// <param name="options">One of the System.Windows.Forms.MessageBoxOptions values that specifies which display and association options will be used for the message box. You may pass in 0 if you wish to use the defaults.</param>
+        /// <param name="helpFilePath">The path and name of the Help file to display when the user clicks the Help button.</param>
+        /// <param name="navigator">One of the System.Windows.Forms.HelpNavigator values.</param>
+        /// <param name="param">The numeric ID of the Help topic to display when the user clicks the Help button.</param>
+        /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
+        /// <param name="messageboxTypeface">Defines the messagebox font.</param>
+        /// <param name="showOptionalCheckBox">Shows an optional checkbox in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
+        /// <param name="optionalCheckBoxText">The text shown on the optional checkbox.</param>
+        /// <param name="isOptionalCheckBoxChecked">Is the optional checkbox already checked.</param>
+        /// <param name="customMessageBoxIcon">Set a custom messagebox icon. (Must be at least a 32 x 32 PNG image.)</param>
+        /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
+        internal static DialogResult Show(IWin32Window owner,
+                                          string text, string caption,
+                                          MessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
+                                          MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
+                                          HelpInformation helpInformation, bool showCtrlCopy, Font messageBoxTypeface,
+                                          bool showOptionalCheckBox, string optionalCheckBoxText, bool isOptionalCheckBoxChecked,
+                                          Image customMessageBoxIcon)
+        {
+            return InternalShow(owner, text, caption, buttons, icon, defaultButton, options, helpInformation, showCtrlCopy, messageBoxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, customMessageBoxIcon);
         }
         #endregion
 

@@ -180,5 +180,15 @@ namespace MessageBox
                 klblCustomIconPath.Text = Path.GetFullPath(fileDialog.FileName);
             }
         }
+
+        private void kryptonMessageBoxConfigurator1_ShowMessageBox(object sender, ShowMessageBoxEventArgs e)
+        {
+            
+        }
+
+        private void kbtnTestConfigurator_Click(object sender, EventArgs e)
+        {
+            kryptonMessageBoxConfigurator1.DisplayMessageBox();
+        }
     }
 }
