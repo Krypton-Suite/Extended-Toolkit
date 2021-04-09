@@ -37,6 +37,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             _button3 = new MessageButton();
             _button1 = new MessageButton();
             _button2 = new MessageButton();
+            _copyButton = new MessageButton();
             _optionalCheckBox = new KryptonCheckBox();
             ((ISupportInitialize)(_panelMessage)).BeginInit();
             _panelMessage.SuspendLayout();
@@ -112,6 +113,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             _panelButtons.Controls.Add(_button3);
             _panelButtons.Controls.Add(_button1);
             _panelButtons.Controls.Add(_button2);
+            _panelButtons.Controls.Add(_copyButton);
             _panelButtons.Controls.Add(_optionalCheckBox);
             _panelButtons.Dock = DockStyle.Top;
             _panelButtons.Location = new Point(0, 52);
@@ -172,6 +174,20 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             _button2.Values.Text = @"B2";
             _button2.KeyDown += button_keyDown;
             //
+            // _copyButton
+            //
+            _copyButton.Anchor = AnchorStyles.Top | AnchorStyles.Left;
+            _copyButton.AutoSize = true;
+            _copyButton.IgnoreAltF4 = false;
+            _copyButton.Location = new Point(12, 0);
+            _copyButton.Margin = new Padding(0);
+            _copyButton.MinimumSize = new Size(50, 26);
+            _copyButton.Name = "_copyButton";
+            _copyButton.Size = new Size(50, 26);
+            _copyButton.TabIndex = 1;
+            _copyButton.Values.Text = @"B4";
+            _copyButton.KeyDown += copyButton_KeyDown;
+            //
             // _optionalCheckBox
             //
             _optionalCheckBox.Anchor = AnchorStyles.Left;
@@ -218,13 +234,14 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         #endregion
 
         #region Variables
-        private readonly string _text, _optionalCheckBoxText;
+        private readonly string _text, _optionalCheckBoxText, _copyButtonText;
         private readonly string _caption;
         private readonly MessageBoxButtons _buttons;
         private readonly ExtendedMessageBoxIcon _icon;
         private readonly MessageBoxDefaultButton _defaultButton;
+        private AnchorStyles _optionalCheckBoxAnchor;
         private MessageBoxOptions _options; // TODO: What is this used for ?
-        private bool _showOptionalCheckBox;
+        private bool _showOptionalCheckBox, _showCopyButton;
         public static bool _isOptionalCheckBoxChecked;
         private KryptonPanel _panelMessage;
         private KryptonPanel _panelMessageText;
@@ -235,11 +252,13 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         private MessageButton _button1;
         private MessageButton _button2;
         private MessageButton _button3;
+        private MessageButton _copyButton;
         private KryptonCheckBox _optionalCheckBox;
         private KryptonBorderEdge _borderEdge;
         private HelpInformation _helpInformation; // TODO: What is this used for ?
         private Font _messageboxTypeface;
         private Image _customMessageBoxIcon;
+        private Point _optionalCheckBoxLocation;
         #endregion
 
         #region Static Fields
@@ -378,28 +397,32 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// </summary>
         public KryptonMessageBoxExtended() { }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="KryptonMessageBoxExtended"/> class.
-        /// </summary>
-        /// <param name="showOwner">The show owner. (Can be null)</param>
+        /// <summary>Initializes a new instance of the <see cref="KryptonMessageBoxExtended" /> class.</summary>
+        /// <param name="showOwner">The show owner.</param>
         /// <param name="text">The text.</param>
-        /// <param name="caption">The caption. (Can be null)</param>
+        /// <param name="caption">The caption.</param>
         /// <param name="buttons">The buttons.</param>
         /// <param name="icon">The icon.</param>
         /// <param name="defaultButton">The default button.</param>
         /// <param name="options">The options.</param>
         /// <param name="helpInformation">The help information.</param>
-        /// <param name="showCtrlCopy">The show control copy. (Can be null)</param>
-        /// <param name="messageboxTypeface">The messagebox typeface. (Can be null)</param>
-        /// <param name="showOptionalCheckBox">Shows an optional checkbox in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
-        /// <param name="optionalCheckBoxText">The text shown on the optional checkbox.</param>
-        /// <param name="isOptionalCheckBoxChecked">Is the optional checkbox already checked.</param>
-        /// <param name="customMessageBoxIcon">Set a custom messagebox icon.</param>
+        /// <param name="showCtrlCopy">The show control copy.</param>
+        /// <param name="messageboxTypeface">The messagebox typeface.</param>
+        /// <param name="showOptionalCheckBox">if set to <c>true</c> [show optional CheckBox].</param>
+        /// <param name="optionalCheckBoxText">The optional CheckBox text.</param>
+        /// <param name="isOptionalCheckBoxChecked">if set to <c>true</c> [is optional CheckBox checked].</param>
+        /// <param name="optionalCheckBoxAnchor">The optional CheckBox anchor.</param>
+        /// <param name="optionalCheckBoxLocation">The optional CheckBox location.</param>
+        /// <param name="customMessageBoxIcon">The custom message box icon.</param>
+        /// <param name="showCopyButton">if set to <c>true</c> [show copy button].</param>
+        /// <param name="copyButtonText">The copy button text.</param>
         private KryptonMessageBoxExtended(IWin32Window showOwner, string text, string caption,
-            MessageBoxButtons buttons, ExtendedMessageBoxIcon icon, MessageBoxDefaultButton defaultButton,
-            MessageBoxOptions options, HelpInformation helpInformation, bool? showCtrlCopy,
-            Font messageboxTypeface, bool showOptionalCheckBox, string optionalCheckBoxText, bool isOptionalCheckBoxChecked,
-            Image customMessageBoxIcon)
+                                          MessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
+                                          MessageBoxDefaultButton defaultButton,
+                                          MessageBoxOptions options, HelpInformation helpInformation, bool? showCtrlCopy,
+                                          Font messageboxTypeface, bool showOptionalCheckBox, string optionalCheckBoxText,
+                                          bool isOptionalCheckBoxChecked, AnchorStyles? optionalCheckBoxAnchor, Point? optionalCheckBoxLocation,
+                                          Image customMessageBoxIcon, bool showCopyButton, string copyButtonText)
         {
             #region Store Values
             _text = text;
@@ -425,6 +448,14 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             _isOptionalCheckBoxChecked = isOptionalCheckBoxChecked;
 
             _customMessageBoxIcon = customMessageBoxIcon;
+
+            _optionalCheckBoxAnchor = optionalCheckBoxAnchor ?? AnchorStyles.Left;
+
+            _optionalCheckBoxLocation = optionalCheckBoxLocation ?? new Point(12, 0);
+
+            _showCopyButton = showCopyButton;
+
+            _copyButtonText = copyButtonText;
             #endregion
 
             // Create the form contents
@@ -446,7 +477,9 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             // Finally calculate and set form sizing
             UpdateSizing(showOwner);
 
-            ShowOptionalCheckBoxUI(showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked);
+            ShowOptionalCheckBoxUI(showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxAnchor, optionalCheckBoxLocation);
+
+            ShowCopyButton(showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -476,9 +509,13 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="optionalCheckBoxText">The text shown on the optional checkbox.</param>
         /// <param name="isOptionalCheckBoxChecked">Is the optional checkbox already checked.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
-        public static DialogResult Show(string text, bool? showCtrlCopy = null, Font messageboxTypeface = null, bool showOptionalCheckBox = false, string optionalCheckBoxText = null, bool isOptionalCheckBoxChecked = false)
+        public static DialogResult Show(string text, bool? showCtrlCopy = null, Font messageboxTypeface = null,
+                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
+                                        bool isOptionalCheckBoxChecked = false, AnchorStyles? optionalCheckBoxAnchor = null,
+                                        Point? optionalCheckBoxLocation = null, bool showCopyButton = false,
+                                        string copyButtonText = null)
         {
-            return InternalShow(null, text, string.Empty, MessageBoxButtons.OK, ExtendedMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked);
+            return InternalShow(null, text, string.Empty, MessageBoxButtons.OK, ExtendedMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -492,9 +529,13 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="optionalCheckBoxText">The text shown on the optional checkbox.</param>
         /// <param name="isOptionalCheckBoxChecked">Is the optional checkbox already checked.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
-        public static DialogResult Show(IWin32Window owner, string text, bool? showCtrlCopy = null, Font messageboxTypeface = null, bool showOptionalCheckBox = false, string optionalCheckBoxText = null, bool isOptionalCheckBoxChecked = false)
+        public static DialogResult Show(IWin32Window owner, string text, bool? showCtrlCopy = null, Font messageboxTypeface = null,
+                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
+                                        bool isOptionalCheckBoxChecked = false, AnchorStyles? optionalCheckBoxAnchor = null,
+                                        Point? optionalCheckBoxLocation = null, bool showCopyButton = false,
+                                        string copyButtonText = null)
         {
-            return InternalShow(owner, text, string.Empty, MessageBoxButtons.OK, ExtendedMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked);
+            return InternalShow(owner, text, string.Empty, MessageBoxButtons.OK, ExtendedMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -508,9 +549,13 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="optionalCheckBoxText">The text shown on the optional checkbox.</param>
         /// <param name="isOptionalCheckBoxChecked">Is the optional checkbox already checked.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
-        public static DialogResult Show(string text, string caption, bool? showCtrlCopy = null, Font messageboxTypeface = null, bool showOptionalCheckBox = false, string optionalCheckBoxText = null, bool isOptionalCheckBoxChecked = false)
+        public static DialogResult Show(string text, string caption, bool? showCtrlCopy = null, Font messageboxTypeface = null,
+                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
+                                        bool isOptionalCheckBoxChecked = false, AnchorStyles? optionalCheckBoxAnchor = null,
+                                        Point? optionalCheckBoxLocation = null, bool showCopyButton = false,
+                                        string copyButtonText = null)
         {
-            return InternalShow(null, text, caption, MessageBoxButtons.OK, ExtendedMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked);
+            return InternalShow(null, text, caption, MessageBoxButtons.OK, ExtendedMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -527,9 +572,12 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(IWin32Window owner,
                                         string text, string caption, bool? showCtrlCopy = null, Font messageboxTypeface = null,
-                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null, bool isOptionalCheckBoxChecked = false)
+                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
+                                        bool isOptionalCheckBoxChecked = false, AnchorStyles? optionalCheckBoxAnchor = null,
+                                        Point? optionalCheckBoxLocation = null, bool showCopyButton = false,
+                                        string copyButtonText = null)
         {
-            return InternalShow(owner, text, caption, MessageBoxButtons.OK, ExtendedMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked);
+            return InternalShow(owner, text, caption, MessageBoxButtons.OK, ExtendedMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -546,9 +594,12 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(string text, string caption,
                                         MessageBoxButtons buttons, bool? showCtrlCopy = null, Font messageboxTypeface = null,
-                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null, bool isOptionalCheckBoxChecked = false)
+                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
+                                        bool isOptionalCheckBoxChecked = false, AnchorStyles? optionalCheckBoxAnchor = null,
+                                        Point? optionalCheckBoxLocation = null, bool showCopyButton = false,
+                                        string copyButtonText = null)
         {
-            return InternalShow(null, text, caption, buttons, ExtendedMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked);
+            return InternalShow(null, text, caption, buttons, ExtendedMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -567,9 +618,12 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         public static DialogResult Show(IWin32Window owner,
                                         string text, string caption,
                                         MessageBoxButtons buttons, bool? showCtrlCopy = null, Font messageboxTypeface = null,
-                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null, bool isOptionalCheckBoxChecked = false)
+                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
+                                        bool isOptionalCheckBoxChecked = false, AnchorStyles? optionalCheckBoxAnchor = null,
+                                        Point? optionalCheckBoxLocation = null, bool showCopyButton = false,
+                                        string copyButtonText = null)
         {
-            return InternalShow(owner, text, caption, buttons, ExtendedMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked);
+            return InternalShow(owner, text, caption, buttons, ExtendedMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -587,11 +641,14 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="customMessageBoxIcon">Set a custom messagebox icon. (Must be at least a 32 x 32 PNG image.)</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(string text, string caption,
-                                        MessageBoxButtons buttons, ExtendedMessageBoxIcon icon, bool? showCtrlCopy = null, Font messageboxTypeface = null,
-                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null, bool isOptionalCheckBoxChecked = false,
-                                        Image customMessageBoxIcon = null)
+                                        MessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
+                                        bool? showCtrlCopy = null, Font messageboxTypeface = null,
+                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
+                                        bool isOptionalCheckBoxChecked = false, AnchorStyles? optionalCheckBoxAnchor = null,
+                                        Point? optionalCheckBoxLocation = null, Image customMessageBoxIcon = null,
+                                        bool showCopyButton = false, string copyButtonText = null)
         {
-            return InternalShow(null, text, caption, buttons, icon, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, customMessageBoxIcon);
+            return InternalShow(null, text, caption, buttons, icon, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -611,11 +668,14 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(IWin32Window owner,
                                         string text, string caption,
-                                        MessageBoxButtons buttons, ExtendedMessageBoxIcon icon, bool? showCtrlCopy = null, Font messageboxTypeface = null,
-                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null, bool isOptionalCheckBoxChecked = false,
-                                        Image customMessageBoxIcon = null)
+                                        MessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
+                                        bool? showCtrlCopy = null, Font messageboxTypeface = null,
+                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
+                                        bool isOptionalCheckBoxChecked = false, AnchorStyles? optionalCheckBoxAnchor = null,
+                                        Point? optionalCheckBoxLocation = null, Image customMessageBoxIcon = null,
+                                        bool showCopyButton = false, string copyButtonText = null)
         {
-            return InternalShow(owner, text, caption, buttons, icon, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, customMessageBoxIcon);
+            return InternalShow(owner, text, caption, buttons, icon, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -635,11 +695,13 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(string text, string caption,
                                         MessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
-                                        MessageBoxDefaultButton defaultButton, bool? showCtrlCopy = null, Font messageboxTypeface = null,
-                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null, bool isOptionalCheckBoxChecked = false,
-                                        Image customMessageBoxIcon = null)
+                                        MessageBoxDefaultButton defaultButton, bool? showCtrlCopy = null,
+                                        Font messageboxTypeface = null, bool showOptionalCheckBox = false,
+                                        string optionalCheckBoxText = null, bool isOptionalCheckBoxChecked = false,
+                                        AnchorStyles? optionalCheckBoxAnchor = null, Point? optionalCheckBoxLocation = null,
+                                        Image customMessageBoxIcon = null, bool showCopyButton = false, string copyButtonText = null)
         {
-            return InternalShow(null, text, caption, buttons, icon, defaultButton, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, customMessageBoxIcon);
+            return InternalShow(null, text, caption, buttons, icon, defaultButton, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -661,11 +723,13 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         public static DialogResult Show(IWin32Window owner,
                                         string text, string caption,
                                         MessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
-                                        MessageBoxDefaultButton defaultButton, bool? showCtrlCopy = null, Font messageboxTypeface = null,
-                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null, bool isOptionalCheckBoxChecked = false,
-                                        Image customMessageBoxIcon = null)
+                                        MessageBoxDefaultButton defaultButton, bool? showCtrlCopy = null,
+                                        Font messageboxTypeface = null, bool showOptionalCheckBox = false,
+                                        string optionalCheckBoxText = null, bool isOptionalCheckBoxChecked = false,
+                                        AnchorStyles? optionalCheckBoxAnchor = null, Point? optionalCheckBoxLocation = null,
+                                        Image customMessageBoxIcon = null, bool showCopyButton = false, string copyButtonText = null)
         {
-            return InternalShow(owner, text, caption, buttons, icon, defaultButton, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, customMessageBoxIcon);
+            return InternalShow(owner, text, caption, buttons, icon, defaultButton, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -686,11 +750,14 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(string text, string caption,
                                         MessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
-                                        MessageBoxDefaultButton defaultButton, MessageBoxOptions options, bool? showCtrlCopy = null, Font messageboxTypeface = null,
-                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null, bool isOptionalCheckBoxChecked = false,
-                                        Image customMessageBoxIcon = null)
+                                        MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
+                                        bool? showCtrlCopy = null, Font messageboxTypeface = null,
+                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
+                                        bool isOptionalCheckBoxChecked = false, AnchorStyles? optionalCheckBoxAnchor = null,
+                                        Point? optionalCheckBoxLocation = null, Image customMessageBoxIcon = null,
+                                        bool showCopyButton = false, string copyButtonText = null)
         {
-            return InternalShow(null, text, caption, buttons, icon, defaultButton, options, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, customMessageBoxIcon);
+            return InternalShow(null, text, caption, buttons, icon, defaultButton, options, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -713,11 +780,14 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         public static DialogResult Show(IWin32Window owner,
                                         string text, string caption,
                                         MessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
-                                        MessageBoxDefaultButton defaultButton, MessageBoxOptions options, bool? showCtrlCopy = null, Font messageboxTypeface = null,
-                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null, bool isOptionalCheckBoxChecked = false,
-                                        Image customMessageBoxIcon = null)
+                                        MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
+                                        bool? showCtrlCopy = null, Font messageboxTypeface = null,
+                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
+                                        bool isOptionalCheckBoxChecked = false, AnchorStyles? optionalCheckBoxAnchor = null,
+                                        Point? optionalCheckBoxLocation = null, Image customMessageBoxIcon = null,
+                                        bool showCopyButton = false, string copyButtonText = null)
         {
-            return InternalShow(owner, text, caption, buttons, icon, defaultButton, options, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, customMessageBoxIcon);
+            return InternalShow(owner, text, caption, buttons, icon, defaultButton, options, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -741,10 +811,12 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         MessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                         bool displayHelpButton, bool? showCtrlCopy = null, Font messageboxTypeface = null,
-                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null, bool isOptionalCheckBoxChecked = false,
-                                        Image customMessageBoxIcon = null)
+                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
+                                        bool isOptionalCheckBoxChecked = false, AnchorStyles? optionalCheckBoxAnchor = null,
+                                        Point? optionalCheckBoxLocation = null, Image customMessageBoxIcon = null,
+                                        bool showCopyButton = false, string copyButtonText = null)
         {
-            return InternalShow(null, text, caption, buttons, icon, defaultButton, options, displayHelpButton ? new HelpInformation() : null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, customMessageBoxIcon);
+            return InternalShow(null, text, caption, buttons, icon, defaultButton, options, displayHelpButton ? new HelpInformation() : null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -768,10 +840,12 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         MessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                         string helpFilePath, bool? showCtrlCopy = null, Font messageboxTypeface = null,
-                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null, bool isOptionalCheckBoxChecked = false,
-                                        Image customMessageBoxIcon = null)
+                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
+                                        bool isOptionalCheckBoxChecked = false, AnchorStyles? optionalCheckBoxAnchor = null,
+                                        Point? optionalCheckBoxLocation = null, Image customMessageBoxIcon = null,
+                                        bool showCopyButton = false, string copyButtonText = null)
         {
-            return InternalShow(null, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, customMessageBoxIcon);
+            return InternalShow(null, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -797,10 +871,12 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         MessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                         string helpFilePath, bool? showCtrlCopy = null, Font messageboxTypeface = null,
-                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null, bool isOptionalCheckBoxChecked = false,
-                                        Image customMessageBoxIcon = null)
+                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
+                                        bool isOptionalCheckBoxChecked = false, AnchorStyles? optionalCheckBoxAnchor = null,
+                                        Point? optionalCheckBoxLocation = null, Image customMessageBoxIcon = null,
+                                        bool showCopyButton = false, string copyButtonText = null)
         {
-            return InternalShow(owner, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, customMessageBoxIcon);
+            return InternalShow(owner, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -824,11 +900,14 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         public static DialogResult Show(string text, string caption,
                                         MessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
-                                        string helpFilePath, HelpNavigator navigator, bool? showCtrlCopy = null, Font messageboxTypeface = null,
-                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null, bool isOptionalCheckBoxChecked = false,
-                                        Image customMessageBoxIcon = null)
+                                        string helpFilePath, HelpNavigator navigator, bool? showCtrlCopy = null,
+                                        Font messageboxTypeface = null, bool showOptionalCheckBox = false,
+                                        string optionalCheckBoxText = null, bool isOptionalCheckBoxChecked = false,
+                                        AnchorStyles? optionalCheckBoxAnchor = null, Point? optionalCheckBoxLocation = null,
+                                        Image customMessageBoxIcon = null, bool showCopyButton = false,
+                                        string copyButtonText = null)
         {
-            return InternalShow(null, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath, navigator), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, customMessageBoxIcon);
+            return InternalShow(null, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath, navigator), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -853,10 +932,12 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         MessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                         string helpFilePath, string keyword, bool? showCtrlCopy = null, Font messageboxTypeface = null,
-                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null, bool isOptionalCheckBoxChecked = false,
-                                        Image customMessageBoxIcon = null)
+                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
+                                        bool isOptionalCheckBoxChecked = false, AnchorStyles? optionalCheckBoxAnchor = null,
+                                        Point? optionalCheckBoxLocation = null, Image customMessageBoxIcon = null,
+                                        bool showCopyButton = false, string copyButtonText = null)
         {
-            return InternalShow(null, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath, keyword), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, customMessageBoxIcon);
+            return InternalShow(null, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath, keyword), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -882,11 +963,13 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         string text, string caption,
                                         MessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
-                                        string helpFilePath, HelpNavigator navigator, bool? showCtrlCopy = null, Font messageboxTypeface = null,
-                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null, bool isOptionalCheckBoxChecked = false,
-                                        Image customMessageBoxIcon = null)
+                                        string helpFilePath, HelpNavigator navigator, bool? showCtrlCopy = null,
+                                        Font messageboxTypeface = null, bool showOptionalCheckBox = false,
+                                        string optionalCheckBoxText = null, bool isOptionalCheckBoxChecked = false,
+                                        AnchorStyles? optionalCheckBoxAnchor = null, Point? optionalCheckBoxLocation = null,
+                                        Image customMessageBoxIcon = null, bool showCopyButton = false, string copyButtonText = null)
         {
-            return InternalShow(owner, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath, navigator), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, customMessageBoxIcon);
+            return InternalShow(owner, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath, navigator), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -913,10 +996,12 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         MessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                         string helpFilePath, string keyword, bool? showCtrlCopy = null, Font messageboxTypeface = null,
-                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null, bool isOptionalCheckBoxChecked = false,
-                                        Image customMessageBoxIcon = null)
+                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
+                                        bool isOptionalCheckBoxChecked = false, AnchorStyles? optionalCheckBoxAnchor = null,
+                                        Point? optionalCheckBoxLocation = null, Image customMessageBoxIcon = null,
+                                        bool showCopyButton = false, string copyButtonText = null)
         {
-            return InternalShow(owner, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath, keyword), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, customMessageBoxIcon);
+            return InternalShow(owner, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath, keyword), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -941,11 +1026,14 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         public static DialogResult Show(string text, string caption,
                                         MessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
-                                        string helpFilePath, HelpNavigator navigator, object param, bool? showCtrlCopy = null, Font messageboxTypeface = null,
-                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null, bool isOptionalCheckBoxChecked = false,
-                                        Image customMessageBoxIcon = null)
+                                        string helpFilePath, HelpNavigator navigator, object param,
+                                        bool? showCtrlCopy = null, Font messageboxTypeface = null,
+                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
+                                        bool isOptionalCheckBoxChecked = false, AnchorStyles? optionalCheckBoxAnchor = null,
+                                        Point? optionalCheckBoxLocation = null, Image customMessageBoxIcon = null,
+                                        bool showCopyButton = false, string copyButtonText = null)
         {
-            return InternalShow(null, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath, navigator, param), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, customMessageBoxIcon);
+            return InternalShow(null, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath, navigator, param), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -972,11 +1060,14 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         string text, string caption,
                                         MessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
-                                        string helpFilePath, HelpNavigator navigator, object param, bool? showCtrlCopy = null, Font messageboxTypeface = null,
-                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null, bool isOptionalCheckBoxChecked = false,
-                                        Image customMessageBoxIcon = null)
+                                        string helpFilePath, HelpNavigator navigator, object param,
+                                        bool? showCtrlCopy = null, Font messageboxTypeface = null,
+                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
+                                        bool isOptionalCheckBoxChecked = false, AnchorStyles? optionalCheckBoxAnchor = null,
+                                        Point? optionalCheckBoxLocation = null, Image customMessageBoxIcon = null,
+                                        bool showCopyButton = false, string copyButtonText = null)
         {
-            return InternalShow(owner, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath, navigator, param), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, customMessageBoxIcon);
+            return InternalShow(owner, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath, navigator, param), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -1005,9 +1096,10 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                           MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                           HelpInformation helpInformation, bool showCtrlCopy, Font messageBoxTypeface,
                                           bool showOptionalCheckBox, string optionalCheckBoxText, bool isOptionalCheckBoxChecked,
-                                          Image customMessageBoxIcon)
+                                          AnchorStyles optionalCheckBoxAnchor, Point optionalCheckBoxLocation,
+                                          Image customMessageBoxIcon, bool showCopyButton = false, string copyButtonText = null)
         {
-            return InternalShow(owner, text, caption, buttons, icon, defaultButton, options, helpInformation, showCtrlCopy, messageBoxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, customMessageBoxIcon);
+            return InternalShow(owner, text, caption, buttons, icon, defaultButton, options, helpInformation, showCtrlCopy, messageBoxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
         }
         #endregion
 
@@ -1020,7 +1112,9 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                                  MessageBoxOptions options,
                                                  HelpInformation helpInformation, bool? showCtrlCopy, Font messageboxTypeface = null,
                                                  bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
-                                                 bool isOptionalCheckBoxChecked = false, Image customMessageBoxIcon = null)
+                                                 bool isOptionalCheckBoxChecked = false, AnchorStyles? optionalCheckBoxAnchor = null,
+                                                 Point? optionalCheckBoxLocation = null, Image customMessageBoxIcon = null,
+                                                 bool showCopyButton = false, string copyButtonText = null)
         {
             // Check if trying to show a message box from a non-interactive process, this is not possible
             if (!SystemInformation.UserInteractive && ((options & (MessageBoxOptions.ServiceNotification | MessageBoxOptions.DefaultDesktopOnly)) == 0))
@@ -1049,7 +1143,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             }
 
             // Show message box window as a modal dialog and then dispose of it afterwards
-            using (KryptonMessageBoxExtended ekmb = new KryptonMessageBoxExtended(showOwner, text, caption, buttons, icon, defaultButton, options, helpInformation, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, customMessageBoxIcon))
+            using (KryptonMessageBoxExtended ekmb = new KryptonMessageBoxExtended(showOwner, text, caption, buttons, icon, defaultButton, options, helpInformation, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText))
             {
                 ekmb.StartPosition = showOwner == null ? FormStartPosition.CenterScreen : FormStartPosition.CenterParent;
 
@@ -1408,13 +1502,19 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="showOptionalCheckBox">if set to <c>true</c> [show optional CheckBox].</param>
         /// <param name="optionalCheckBoxText">The optional CheckBox text.</param>
         /// <param name="isOptionalCheckBoxChecked">if set to <c>true</c> [is optional CheckBox checked].</param>
-        private void ShowOptionalCheckBoxUI(bool showOptionalCheckBox, string optionalCheckBoxText, bool isOptionalCheckBoxChecked)
+        private void ShowOptionalCheckBoxUI(bool showOptionalCheckBox, string optionalCheckBoxText,
+                                            bool isOptionalCheckBoxChecked, AnchorStyles? optionalCheckBoxAnchor,
+                                            Point? optionalCheckBoxLocation)
         {
             _optionalCheckBox.Visible = showOptionalCheckBox;
 
             _optionalCheckBox.Text = optionalCheckBoxText;
 
             _optionalCheckBox.Checked = isOptionalCheckBoxChecked;
+
+            _optionalCheckBox.Anchor = optionalCheckBoxAnchor ?? AnchorStyles.Left;
+
+            _optionalCheckBoxLocation = optionalCheckBoxLocation ?? new Point(12, 0);
 
             _optionalCheckBox.StateCommon.ShortText.Font = _messageboxTypeface;
         }
@@ -1435,6 +1535,20 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
             return box.GetOptionalCheckBoxValue();
         }
+        #endregion
+
+        #region Copy Button
+        /// <summary>Shows the copy button.</summary>
+        /// <param name="showCopyButton">if set to <c>true</c> [show copy button].</param>
+        /// <param name="copyButtonText">The copy button text.</param>
+        private void ShowCopyButton(bool showCopyButton, string copyButtonText)
+        {
+            _copyButton.Visible = showCopyButton;
+
+            _copyButton.Text = copyButtonText;
+        }
+
+        private void copyButton_KeyDown(object sender, KeyEventArgs e) => Clipboard.SetText(_messageText.Text);
         #endregion
     }
 }

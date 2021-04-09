@@ -14,7 +14,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         #region Variables
         private AnchorStyles _optionalCheckBoxAnchor;
 
-        private bool _showCtrlCopy, _showOptionalCheckBox, _isOptionalCheckBoxChecked;
+        private bool _showCtrlCopy, _showOptionalCheckBox, _isOptionalCheckBoxChecked, _showCopyButton;
 
         private Font _messageBoxTypeface;
 
@@ -32,7 +32,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         private IWin32Window _owner;
 
-        private string _messageBoxCaption, _messageBoxContentText, _optionalCheckBoxText, _helpPath;
+        private string _messageBoxCaption, _messageBoxContentText, _optionalCheckBoxText, _helpPath, _copyButtonText;
 
         private object _helpParam;
 
@@ -60,9 +60,14 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         [DefaultValue(false), Description("Is the optional check box checked by default?")]
         public bool IsOptionalCheckBoxChecked { get => _isOptionalCheckBoxChecked; set => _isOptionalCheckBoxChecked = value; }
 
+        /// <summary>Gets or sets a value indicating whether [show copy button].</summary>
+        /// <value><c>true</c> if [show copy button]; otherwise, <c>false</c>.</value>
+        [DefaultValue(false), Description("Show the copy button.")]
+        public bool ShowCopyButton { get => _showCopyButton; set => _showCopyButton = value; }
+
         /// <summary>Gets or sets the message box typeface.</summary>
         /// <value>The message box typeface.</value>
-        [DefaultValue(typeof(Font), ""), Description("Gets or sets the message box typeface.")]
+        [DefaultValue(typeof(Font), "Microsoft Sans Serif, 8.25F"), Description("Gets or sets the message box typeface.")]
         public Font MessageBoxTypeface { get => _messageBoxTypeface; set => _messageBoxTypeface = value; }
 
         /// <summary>Gets or sets the message box buttons.</summary>
@@ -120,6 +125,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         [DefaultValue(null), Description("Gets or sets the help path.")]
         public string HelpPath { get => _helpPath; set => _helpPath = value; }
 
+        /// <summary>Gets or sets the copy button text.</summary>
+        /// <value>The copy button text.</value>
+        [DefaultValue("&Copy Details"), Description("Gets or sets the copy button text.")]
+        public string CopyButtonText { get => _copyButtonText; set => _copyButtonText = value; }
+
         /// <summary>Gets or sets the help parameters.</summary>
         /// <value>The help parameters.</value>
         [DefaultValue(null), Description("Gets or sets the help parameters.")]
@@ -156,11 +166,12 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         public ShowMessageBoxEventArgs(IWin32Window owner, string text, string caption,
                                        MessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
                                        MessageBoxDefaultButton defaultButton,
-                                       MessageBoxOptions options, string helpPath, 
+                                       MessageBoxOptions options, string helpPath,
                                        HelpNavigator helpNavigator, object helpParam,
                                        bool showCtrlCopy, Font messageboxTypeface, bool showOptionalCheckBox,
                                        string optionalCheckBoxText, bool isOptionalCheckBoxChecked,
-                                       Image customMessageBoxIcon)
+                                       AnchorStyles optionalCheckBoxAnchor, Point optionalCheckBoxLocation,
+                                       Image customMessageBoxIcon, bool showCopyButton, string copyButtonText)
         {
             Owner = owner;
 
@@ -192,7 +203,15 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
             IsOptionalCheckBoxChecked = isOptionalCheckBoxChecked;
 
+            OptionalCheckBoxAnchor = optionalCheckBoxAnchor;
+
+            OptionalCheckBoxLocation = optionalCheckBoxLocation;
+
             CustomMessageBoxIcon = customMessageBoxIcon;
+
+            ShowCopyButton = showCopyButton;
+
+            CopyButtonText = copyButtonText;
         }
         #endregion
 
@@ -201,7 +220,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         public void ShowMessageBox() => KryptonMessageBoxExtended.Show(Owner, MessageBoxContentText, MessageBoxCaption, MessageBoxButtons, MessageBoxIcon,
                                                                        MessageBoxDefaultButton, MessageBoxOptions,
                                                                        new HelpInformation(HelpPath, HelpNavigator, HelpParam), ShowCtrlCopy, MessageBoxTypeface,
-                                                                       ShowOptionalCheckBox, OptionalCheckBoxText, IsOptionalCheckBoxChecked, CustomMessageBoxIcon);
+                                                                       ShowOptionalCheckBox, OptionalCheckBoxText, IsOptionalCheckBoxChecked, OptionalCheckBoxAnchor, OptionalCheckBoxLocation,
+                                                                       CustomMessageBoxIcon, ShowCopyButton, CopyButtonText);
 
         /// <summary>Gets the message box dialog result.</summary>
         /// <returns>The message box dialog result.</returns>
@@ -210,7 +230,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             DialogResult result = KryptonMessageBoxExtended.Show(Owner, MessageBoxContentText, MessageBoxCaption, MessageBoxButtons, MessageBoxIcon,
                                                                        MessageBoxDefaultButton, MessageBoxOptions,
                                                                        new HelpInformation(HelpPath, HelpNavigator, HelpParam), ShowCtrlCopy, MessageBoxTypeface,
-                                                                       ShowOptionalCheckBox, OptionalCheckBoxText, IsOptionalCheckBoxChecked, CustomMessageBoxIcon);
+                                                                       ShowOptionalCheckBox, OptionalCheckBoxText, IsOptionalCheckBoxChecked, OptionalCheckBoxAnchor,
+                                                                       OptionalCheckBoxLocation, CustomMessageBoxIcon, ShowCopyButton, CopyButtonText);
             return result;
         }
         #endregion
