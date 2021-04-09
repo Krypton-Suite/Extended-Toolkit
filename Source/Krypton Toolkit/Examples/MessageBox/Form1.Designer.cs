@@ -30,6 +30,7 @@ namespace MessageBox
         private void InitializeComponent()
         {
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            this.kbtnTestConfigurator = new Krypton.Toolkit.KryptonButton();
             this.kbtnTest = new Krypton.Toolkit.KryptonButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
@@ -62,7 +63,6 @@ namespace MessageBox
             this.ktxtCaption = new Krypton.Toolkit.KryptonTextBox();
             this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
             this.kryptonMessageBoxConfigurator1 = new Krypton.Toolkit.Suite.Extended.Messagebox.KryptonMessageBoxConfigurator();
-            this.kbtnTestConfigurator = new Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
@@ -91,6 +91,16 @@ namespace MessageBox
             this.kryptonPanel1.PanelBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelAlternate;
             this.kryptonPanel1.Size = new System.Drawing.Size(519, 39);
             this.kryptonPanel1.TabIndex = 0;
+            // 
+            // kbtnTestConfigurator
+            // 
+            this.kbtnTestConfigurator.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.kbtnTestConfigurator.Location = new System.Drawing.Point(349, 7);
+            this.kbtnTestConfigurator.Name = "kbtnTestConfigurator";
+            this.kbtnTestConfigurator.Size = new System.Drawing.Size(77, 22);
+            this.kbtnTestConfigurator.TabIndex = 2;
+            this.kbtnTestConfigurator.Values.Text = "&Test";
+            this.kbtnTestConfigurator.Click += new System.EventHandler(this.kbtnTestConfigurator_Click);
             // 
             // kbtnTest
             // 
@@ -391,32 +401,11 @@ namespace MessageBox
             // 
             // kryptonMessageBoxConfigurator1
             // 
-            this.kryptonMessageBoxConfigurator1.CustomMessageBoxIcon = null;
-            this.kryptonMessageBoxConfigurator1.HelpNavigator = System.Windows.Forms.HelpNavigator.Topic;
-            this.kryptonMessageBoxConfigurator1.HelpParam = null;
-            this.kryptonMessageBoxConfigurator1.HelpPath = null;
-            this.kryptonMessageBoxConfigurator1.IsOptionalCheckBoxChecked = false;
             this.kryptonMessageBoxConfigurator1.MessageBoxButtons = System.Windows.Forms.MessageBoxButtons.OK;
-            this.kryptonMessageBoxConfigurator1.MessageBoxCaption = "Hello World!";
             this.kryptonMessageBoxConfigurator1.MessageBoxContentText = "kryptonMessageBoxConfigurator1";
             this.kryptonMessageBoxConfigurator1.MessageBoxDefaultButton = System.Windows.Forms.MessageBoxDefaultButton.Button1;
-            this.kryptonMessageBoxConfigurator1.MessageBoxIcon = Krypton.Toolkit.Suite.Extended.Messagebox.ExtendedMessageBoxIcon.HAND;
-            this.kryptonMessageBoxConfigurator1.MessageBoxTypeface = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonMessageBoxConfigurator1.OptionalCheckBoxText = null;
-            this.kryptonMessageBoxConfigurator1.Owner = null;
-            this.kryptonMessageBoxConfigurator1.ShowCtrlCopy = false;
-            this.kryptonMessageBoxConfigurator1.ShowOptionalCheckBox = false;
-            this.kryptonMessageBoxConfigurator1.ShowMessageBox += new Krypton.Toolkit.Suite.Extended.Messagebox.KryptonMessageBoxConfigurator.ShowMessageBoxEvent(this.kryptonMessageBoxConfigurator1_ShowMessageBox);
-            // 
-            // kbtnTestConfigurator
-            // 
-            this.kbtnTestConfigurator.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.kbtnTestConfigurator.Location = new System.Drawing.Point(349, 7);
-            this.kbtnTestConfigurator.Name = "kbtnTestConfigurator";
-            this.kbtnTestConfigurator.Size = new System.Drawing.Size(77, 22);
-            this.kbtnTestConfigurator.TabIndex = 2;
-            this.kbtnTestConfigurator.Values.Text = "&Test";
-            this.kbtnTestConfigurator.Click += new System.EventHandler(this.kbtnTestConfigurator_Click);
+            this.kryptonMessageBoxConfigurator1.MessageBoxIcon = Krypton.Toolkit.Suite.Extended.Messagebox.ExtendedMessageBoxIcon.CUSTOM;
+            this.kryptonMessageBoxConfigurator1.OptionalCheckBoxAnchor = System.Windows.Forms.AnchorStyles.Left;
             // 
             // Form1
             // 
@@ -486,8 +475,8 @@ namespace MessageBox
         private Krypton.Toolkit.KryptonTextBox ktxtOptionalCheckBoxText;
         private Krypton.Toolkit.KryptonRadioButton krbIconHand;
         private Krypton.Toolkit.KryptonRadioButton krbIconStop;
-        private Krypton.Toolkit.Suite.Extended.Messagebox.KryptonMessageBoxConfigurator kryptonMessageBoxConfigurator1;
         private Krypton.Toolkit.KryptonButton kbtnTestConfigurator;
+        private Krypton.Toolkit.Suite.Extended.Messagebox.KryptonMessageBoxConfigurator kryptonMessageBoxConfigurator1;
     }
 }
 
