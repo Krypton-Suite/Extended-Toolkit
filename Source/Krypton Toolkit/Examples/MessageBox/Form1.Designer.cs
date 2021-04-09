@@ -30,10 +30,13 @@ namespace MessageBox
         private void InitializeComponent()
         {
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            this.kbtnTestConfigurator = new Krypton.Toolkit.KryptonButton();
             this.kbtnTest = new Krypton.Toolkit.KryptonButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
+            this.kchkDefineTypeface = new Krypton.Toolkit.KryptonCheckBox();
             this.kryptonGroupBox3 = new Krypton.Toolkit.KryptonGroupBox();
+            this.ktxtOptionalCheckBoxText = new Krypton.Toolkit.KryptonTextBox();
             this.kchkShowOptionalCheckBoxResult = new Krypton.Toolkit.KryptonCheckBox();
             this.kchkIsOptionalCheckBoxChecked = new Krypton.Toolkit.KryptonCheckBox();
             this.kchkShowOptionalCheckBox = new Krypton.Toolkit.KryptonCheckBox();
@@ -45,6 +48,8 @@ namespace MessageBox
             this.krbButtonsAbortRetryIgnore = new Krypton.Toolkit.KryptonRadioButton();
             this.krbButtonsOk = new Krypton.Toolkit.KryptonRadioButton();
             this.kryptonGroupBox1 = new Krypton.Toolkit.KryptonGroupBox();
+            this.krbIconStop = new Krypton.Toolkit.KryptonRadioButton();
+            this.krbIconHand = new Krypton.Toolkit.KryptonRadioButton();
             this.klblCustomIconPath = new Krypton.Toolkit.KryptonLabel();
             this.kbtnBrowseForCustomIcon = new Krypton.Toolkit.KryptonButton();
             this.krbIconCustom = new Krypton.Toolkit.KryptonRadioButton();
@@ -57,8 +62,7 @@ namespace MessageBox
             this.kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
             this.ktxtCaption = new Krypton.Toolkit.KryptonTextBox();
             this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
-            this.ktxtOptionalCheckBoxText = new Krypton.Toolkit.KryptonTextBox();
-            this.kchkDefineTypeface = new Krypton.Toolkit.KryptonCheckBox();
+            this.kryptonMessageBoxConfigurator1 = new Krypton.Toolkit.Suite.Extended.Messagebox.KryptonMessageBoxConfigurator();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
@@ -79,6 +83,7 @@ namespace MessageBox
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(this.kbtnTestConfigurator);
             this.kryptonPanel1.Controls.Add(this.kbtnTest);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 583);
@@ -86,6 +91,16 @@ namespace MessageBox
             this.kryptonPanel1.PanelBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelAlternate;
             this.kryptonPanel1.Size = new System.Drawing.Size(519, 39);
             this.kryptonPanel1.TabIndex = 0;
+            // 
+            // kbtnTestConfigurator
+            // 
+            this.kbtnTestConfigurator.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.kbtnTestConfigurator.Location = new System.Drawing.Point(349, 7);
+            this.kbtnTestConfigurator.Name = "kbtnTestConfigurator";
+            this.kbtnTestConfigurator.Size = new System.Drawing.Size(77, 22);
+            this.kbtnTestConfigurator.TabIndex = 2;
+            this.kbtnTestConfigurator.Values.Text = "&Test";
+            this.kbtnTestConfigurator.Click += new System.EventHandler(this.kbtnTestConfigurator_Click);
             // 
             // kbtnTest
             // 
@@ -122,6 +137,14 @@ namespace MessageBox
             this.kryptonPanel2.Size = new System.Drawing.Size(519, 580);
             this.kryptonPanel2.TabIndex = 2;
             // 
+            // kchkDefineTypeface
+            // 
+            this.kchkDefineTypeface.Location = new System.Drawing.Point(77, 539);
+            this.kchkDefineTypeface.Name = "kchkDefineTypeface";
+            this.kchkDefineTypeface.Size = new System.Drawing.Size(111, 20);
+            this.kchkDefineTypeface.TabIndex = 7;
+            this.kchkDefineTypeface.Values.Text = "Define &Typeface";
+            // 
             // kryptonGroupBox3
             // 
             this.kryptonGroupBox3.Location = new System.Drawing.Point(77, 409);
@@ -136,6 +159,15 @@ namespace MessageBox
             this.kryptonGroupBox3.Size = new System.Drawing.Size(434, 123);
             this.kryptonGroupBox3.TabIndex = 6;
             this.kryptonGroupBox3.Values.Heading = "Checkbox";
+            // 
+            // ktxtOptionalCheckBoxText
+            // 
+            this.ktxtOptionalCheckBoxText.Enabled = false;
+            this.ktxtOptionalCheckBoxText.Hint = "Enter text here...";
+            this.ktxtOptionalCheckBoxText.Location = new System.Drawing.Point(10, 66);
+            this.ktxtOptionalCheckBoxText.Name = "ktxtOptionalCheckBoxText";
+            this.ktxtOptionalCheckBoxText.Size = new System.Drawing.Size(414, 23);
+            this.ktxtOptionalCheckBoxText.TabIndex = 3;
             // 
             // kchkShowOptionalCheckBoxResult
             // 
@@ -236,6 +268,8 @@ namespace MessageBox
             // 
             // kryptonGroupBox1.Panel
             // 
+            this.kryptonGroupBox1.Panel.Controls.Add(this.krbIconStop);
+            this.kryptonGroupBox1.Panel.Controls.Add(this.krbIconHand);
             this.kryptonGroupBox1.Panel.Controls.Add(this.klblCustomIconPath);
             this.kryptonGroupBox1.Panel.Controls.Add(this.kbtnBrowseForCustomIcon);
             this.kryptonGroupBox1.Panel.Controls.Add(this.krbIconCustom);
@@ -247,6 +281,22 @@ namespace MessageBox
             this.kryptonGroupBox1.Size = new System.Drawing.Size(434, 126);
             this.kryptonGroupBox1.TabIndex = 4;
             this.kryptonGroupBox1.Values.Heading = "Icon";
+            // 
+            // krbIconStop
+            // 
+            this.krbIconStop.Location = new System.Drawing.Point(68, 34);
+            this.krbIconStop.Name = "krbIconStop";
+            this.krbIconStop.Size = new System.Drawing.Size(48, 20);
+            this.krbIconStop.TabIndex = 9;
+            this.krbIconStop.Values.Text = "St&op";
+            // 
+            // krbIconHand
+            // 
+            this.krbIconHand.Location = new System.Drawing.Point(10, 34);
+            this.krbIconHand.Name = "krbIconHand";
+            this.krbIconHand.Size = new System.Drawing.Size(52, 20);
+            this.krbIconHand.TabIndex = 8;
+            this.krbIconHand.Values.Text = "H&and";
             // 
             // klblCustomIconPath
             // 
@@ -260,7 +310,7 @@ namespace MessageBox
             // kbtnBrowseForCustomIcon
             // 
             this.kbtnBrowseForCustomIcon.Enabled = false;
-            this.kbtnBrowseForCustomIcon.Location = new System.Drawing.Point(80, 34);
+            this.kbtnBrowseForCustomIcon.Location = new System.Drawing.Point(213, 34);
             this.kbtnBrowseForCustomIcon.Name = "kbtnBrowseForCustomIcon";
             this.kbtnBrowseForCustomIcon.Size = new System.Drawing.Size(150, 25);
             this.kbtnBrowseForCustomIcon.TabIndex = 6;
@@ -269,7 +319,7 @@ namespace MessageBox
             // 
             // krbIconCustom
             // 
-            this.krbIconCustom.Location = new System.Drawing.Point(10, 34);
+            this.krbIconCustom.Location = new System.Drawing.Point(143, 34);
             this.krbIconCustom.Name = "krbIconCustom";
             this.krbIconCustom.Size = new System.Drawing.Size(64, 20);
             this.krbIconCustom.TabIndex = 5;
@@ -349,22 +399,13 @@ namespace MessageBox
             this.kryptonLabel1.TabIndex = 0;
             this.kryptonLabel1.Values.Text = "Caption:";
             // 
-            // ktxtOptionalCheckBoxText
+            // kryptonMessageBoxConfigurator1
             // 
-            this.ktxtOptionalCheckBoxText.Enabled = false;
-            this.ktxtOptionalCheckBoxText.Hint = "Enter text here...";
-            this.ktxtOptionalCheckBoxText.Location = new System.Drawing.Point(10, 66);
-            this.ktxtOptionalCheckBoxText.Name = "ktxtOptionalCheckBoxText";
-            this.ktxtOptionalCheckBoxText.Size = new System.Drawing.Size(414, 23);
-            this.ktxtOptionalCheckBoxText.TabIndex = 3;
-            // 
-            // kchkDefineTypeface
-            // 
-            this.kchkDefineTypeface.Location = new System.Drawing.Point(77, 539);
-            this.kchkDefineTypeface.Name = "kchkDefineTypeface";
-            this.kchkDefineTypeface.Size = new System.Drawing.Size(111, 20);
-            this.kchkDefineTypeface.TabIndex = 7;
-            this.kchkDefineTypeface.Values.Text = "Define &Typeface";
+            this.kryptonMessageBoxConfigurator1.MessageBoxButtons = System.Windows.Forms.MessageBoxButtons.OK;
+            this.kryptonMessageBoxConfigurator1.MessageBoxContentText = "kryptonMessageBoxConfigurator1";
+            this.kryptonMessageBoxConfigurator1.MessageBoxDefaultButton = System.Windows.Forms.MessageBoxDefaultButton.Button1;
+            this.kryptonMessageBoxConfigurator1.MessageBoxIcon = Krypton.Toolkit.Suite.Extended.Messagebox.ExtendedMessageBoxIcon.CUSTOM;
+            this.kryptonMessageBoxConfigurator1.OptionalCheckBoxAnchor = System.Windows.Forms.AnchorStyles.Left;
             // 
             // Form1
             // 
@@ -432,6 +473,10 @@ namespace MessageBox
         private Krypton.Toolkit.KryptonRadioButton krbButtonsAbortRetryIgnore;
         private Krypton.Toolkit.KryptonCheckBox kchkDefineTypeface;
         private Krypton.Toolkit.KryptonTextBox ktxtOptionalCheckBoxText;
+        private Krypton.Toolkit.KryptonRadioButton krbIconHand;
+        private Krypton.Toolkit.KryptonRadioButton krbIconStop;
+        private Krypton.Toolkit.KryptonButton kbtnTestConfigurator;
+        private Krypton.Toolkit.Suite.Extended.Messagebox.KryptonMessageBoxConfigurator kryptonMessageBoxConfigurator1;
     }
 }
 
