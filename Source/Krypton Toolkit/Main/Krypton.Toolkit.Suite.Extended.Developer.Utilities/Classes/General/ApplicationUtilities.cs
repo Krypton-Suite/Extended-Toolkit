@@ -67,7 +67,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
                 caption = "Under Construction";
             }
 
-            KryptonMessageBoxExtended.Show(owner, message, caption, MessageBoxButtons.OK, ExtendedMessageBoxIcon.CUSTOM, messageboxTypeface: typeface, customMessageBoxIcon: _underConstruction);
+            KryptonMessageBoxExtended.Show(owner, message, caption, ExtendedMessageBoxButtons.OK, ExtendedMessageBoxIcon.CUSTOM, messageboxTypeface: typeface, customMessageBoxIcon: _underConstruction);
         }
 
         /// <summary>Displays the developer information.</summary>

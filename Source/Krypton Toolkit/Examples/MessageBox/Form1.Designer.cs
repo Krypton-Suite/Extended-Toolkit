@@ -62,7 +62,7 @@ namespace MessageBox
             this.kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
             this.ktxtCaption = new Krypton.Toolkit.KryptonTextBox();
             this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
-            this.kryptonMessageBoxConfigurator1 = new Krypton.Toolkit.Suite.Extended.Messagebox.KryptonMessageBoxConfigurator();
+            this.kmbc = new Krypton.Toolkit.Suite.Extended.Messagebox.KryptonMessageBoxConfigurator();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
@@ -399,16 +399,16 @@ namespace MessageBox
             this.kryptonLabel1.TabIndex = 0;
             this.kryptonLabel1.Values.Text = "Caption:";
             // 
-            // kryptonMessageBoxConfigurator1
+            // kmbc
             // 
-            this.kryptonMessageBoxConfigurator1.HelpNavigator = System.Windows.Forms.HelpNavigator.Find;
-            this.kryptonMessageBoxConfigurator1.MessageBoxButtons = System.Windows.Forms.MessageBoxButtons.OK;
-            this.kryptonMessageBoxConfigurator1.MessageBoxCaption = "Version 6";
-            this.kryptonMessageBoxConfigurator1.MessageBoxContentText = "Hello world!";
-            this.kryptonMessageBoxConfigurator1.MessageBoxDefaultButton = System.Windows.Forms.MessageBoxDefaultButton.Button1;
-            this.kryptonMessageBoxConfigurator1.MessageBoxIcon = Krypton.Toolkit.Suite.Extended.Messagebox.ExtendedMessageBoxIcon.CUSTOM;
-            this.kryptonMessageBoxConfigurator1.MessageBoxTypeface = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kryptonMessageBoxConfigurator1.OptionalCheckBoxAnchor = System.Windows.Forms.AnchorStyles.Left;
+            this.kmbc.HelpNavigator = System.Windows.Forms.HelpNavigator.AssociateIndex;
+            this.kmbc.MessageBoxButtons = Krypton.Toolkit.Suite.Extended.Messagebox.ExtendedMessageBoxButtons.CUSTOM;
+            this.kmbc.MessageBoxContentText = "kryptonMessageBoxConfigurator1";
+            this.kmbc.MessageBoxDefaultButton = System.Windows.Forms.MessageBoxDefaultButton.Button1;
+            this.kmbc.MessageBoxIcon = Krypton.Toolkit.Suite.Extended.Messagebox.ExtendedMessageBoxIcon.NONE;
+            this.kmbc.MessageBoxTypeface = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.kmbc.OptionalCheckBoxAnchor = System.Windows.Forms.AnchorStyles.Left;
+            this.kmbc.OptionalCheckBoxCheckState = System.Windows.Forms.CheckState.Unchecked;
             // 
             // Form1
             // 
@@ -418,8 +418,11 @@ namespace MessageBox
             this.Controls.Add(this.kryptonPanel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.kryptonPanel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Messagebox Showcase";
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
@@ -479,7 +482,7 @@ namespace MessageBox
         private Krypton.Toolkit.KryptonRadioButton krbIconHand;
         private Krypton.Toolkit.KryptonRadioButton krbIconStop;
         private Krypton.Toolkit.KryptonButton kbtnTestConfigurator;
-        private Krypton.Toolkit.Suite.Extended.Messagebox.KryptonMessageBoxConfigurator kryptonMessageBoxConfigurator1;
+        private Krypton.Toolkit.Suite.Extended.Messagebox.KryptonMessageBoxConfigurator kmbc;
     }
 }
 

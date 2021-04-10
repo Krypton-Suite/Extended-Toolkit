@@ -20,7 +20,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         private Font _messageBoxTypeface;
 
-        private MessageBoxButtons _buttons;
+        private ExtendedMessageBoxButtons _buttons;
 
         private MessageBoxDefaultButton _defaultButton;
 
@@ -79,8 +79,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         /// <summary>Gets or sets the message box buttons.</summary>
         /// <value>The message box buttons.</value>
-        [DefaultValue(typeof(MessageBoxButtons), "MessageBoxButtons.OK"), Description("Gets or sets the message box buttons.")]
-        public MessageBoxButtons MessageBoxButtons { get => _buttons; set => _buttons = value; }
+        [DefaultValue(typeof(ExtendedMessageBoxButtons), "ExtendedMessageBoxButtons.OK"), Description("Gets or sets the message box buttons.")]
+        public ExtendedMessageBoxButtons MessageBoxButtons { get => _buttons; set => _buttons = value; }
 
         /// <summary>Gets or sets the message box default button.</summary>
         /// <value>The message box default button.</value>
@@ -171,7 +171,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="isOptionalCheckBoxChecked">if set to <c>true</c> [is optional CheckBox checked].</param>
         /// <param name="customMessageBoxIcon">The custom message box icon.</param>
         public ShowMessageBoxEventArgs(IWin32Window owner, string text, string caption,
-                                       MessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
+                                       ExtendedMessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
                                        MessageBoxDefaultButton defaultButton,
                                        MessageBoxOptions options, string helpPath,
                                        HelpNavigator helpNavigator, object helpParam,

@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Drawing;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Messagebox
@@ -20,7 +21,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         private Font _messageBoxTypeface;
 
-        private MessageBoxButtons _buttons;
+        private ExtendedMessageBoxButtons _buttons;
 
         private MessageBoxDefaultButton _defaultButton;
 
@@ -31,6 +32,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         private HelpNavigator _helpNavigator;
 
         private Image _customMessageBoxIcon;
+
+        private int _timeout;
 
         private IWin32Window _owner;
 
@@ -81,8 +84,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         /// <summary>Gets or sets the message box buttons.</summary>
         /// <value>The message box buttons.</value>
-        [DefaultValue(typeof(MessageBoxButtons), "MessageBoxButtons.OK"), Description("Gets or sets the message box buttons.")]
-        public MessageBoxButtons MessageBoxButtons { get => _buttons; set => _buttons = value; }
+        [DefaultValue(typeof(ExtendedMessageBoxButtons), "ExtendedMessageBoxButtons.OK"), Description("Gets or sets the message box buttons.")]
+        public ExtendedMessageBoxButtons MessageBoxButtons { get => _buttons; set => _buttons = value; }
 
         /// <summary>Gets or sets the message box default button.</summary>
         /// <value>The message box default button.</value>
@@ -108,6 +111,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <value>The custom message box icon.</value>
         [DefaultValue(null), Description("Gets or sets a custom message box icon.")]
         public Image CustomMessageBoxIcon { get => _customMessageBoxIcon; set => _customMessageBoxIcon = value; }
+
+        /// <summary>Gets or sets the time out. (This feature is under construction)</summary>
+        /// <value>The time out.</value>
+        [DefaultValue(60), Description("Gets or sets the time out. (This feature is under construction)")]
+        public int TimeOut { get => _timeout; set => _timeout = value; }
 
         /// <summary>Gets or sets the owner of the message box.</summary>
         /// <value>The owner.</value>

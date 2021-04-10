@@ -235,15 +235,16 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         #endregion
 
         #region Variables
-        private readonly string _text, _optionalCheckBoxText, _copyButtonText;
+        private readonly string _text, _optionalCheckBoxText, _copyButtonText, _buttonOneText, _buttonTwoText, _buttonThreeText;
         private readonly string _caption;
-        private readonly MessageBoxButtons _buttons;
+        private readonly ExtendedMessageBoxButtons _buttons;
         private readonly ExtendedMessageBoxIcon _icon;
         private readonly MessageBoxDefaultButton _defaultButton;
         private AnchorStyles _optionalCheckBoxAnchor;
         private MessageBoxOptions _options; // TODO: What is this used for ?
         private bool _showOptionalCheckBox, _showCopyButton;
         private CheckState _optionalCheckBoxCheckState;
+        private DialogResult _buttonOneResult, _buttonTwoResult, _buttonThreeResult;
         public static bool _isOptionalCheckBoxChecked;
         private KryptonPanel _panelMessage;
         private KryptonPanel _panelMessageText;
@@ -420,7 +421,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="showCopyButton">if set to <c>true</c> [show copy button].</param>
         /// <param name="copyButtonText">The copy button text.</param>
         private KryptonMessageBoxExtended(IWin32Window showOwner, string text, string caption,
-                                          MessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
+                                          ExtendedMessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
                                           MessageBoxDefaultButton defaultButton,
                                           MessageBoxOptions options, HelpInformation helpInformation, bool? showCtrlCopy,
                                           Font messageboxTypeface, bool showOptionalCheckBox, string optionalCheckBoxText,
@@ -526,7 +527,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         AnchorStyles? optionalCheckBoxAnchor = null, Point? optionalCheckBoxLocation = null,
                                         bool showCopyButton = false, string copyButtonText = null)
         {
-            return InternalShow(null, text, string.Empty, MessageBoxButtons.OK, ExtendedMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText);
+            return InternalShow(null, text, string.Empty, ExtendedMessageBoxButtons.OK, ExtendedMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -552,7 +553,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         Point? optionalCheckBoxLocation = null, bool showCopyButton = false,
                                         string copyButtonText = null)
         {
-            return InternalShow(owner, text, string.Empty, MessageBoxButtons.OK, ExtendedMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText);
+            return InternalShow(owner, text, string.Empty, ExtendedMessageBoxButtons.OK, ExtendedMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -578,7 +579,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         Point? optionalCheckBoxLocation = null, bool showCopyButton = false,
                                         string copyButtonText = null)
         {
-            return InternalShow(null, text, caption, MessageBoxButtons.OK, ExtendedMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText);
+            return InternalShow(null, text, caption, ExtendedMessageBoxButtons.OK, ExtendedMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -606,7 +607,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         Point? optionalCheckBoxLocation = null, bool showCopyButton = false,
                                         string copyButtonText = null)
         {
-            return InternalShow(owner, text, caption, MessageBoxButtons.OK, ExtendedMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText);
+            return InternalShow(owner, text, caption, ExtendedMessageBoxButtons.OK, ExtendedMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -614,7 +615,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// </summary>
         /// <param name="text">The text to display in the message box.</param>
         /// <param name="caption">The text to display in the title bar of the message box.</param>
-        /// <param name="buttons">One of the System.Windows.Forms.MessageBoxButtons values that specifies which buttons to display in the message box.</param>
+        /// <param name="buttons">One of the System.Windows.Forms.ExtendedMessageBoxButton values that specifies which buttons to display in the message box.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
         /// <param name="messageboxTypeface">The message box typeface. (Can be null)</param>
         /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
@@ -627,7 +628,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="copyButtonText">The text shown on the copy button.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(string text, string caption,
-                                        MessageBoxButtons buttons, bool? showCtrlCopy = null, Font messageboxTypeface = null,
+                                        ExtendedMessageBoxButtons buttons, bool? showCtrlCopy = null, Font messageboxTypeface = null,
                                         bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
                                         bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null,
@@ -643,7 +644,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="owner">Owner of the modal dialog box.</param>
         /// <param name="text">The text to display in the message box.</param>
         /// <param name="caption">The text to display in the title bar of the message box.</param>
-        /// <param name="buttons">One of the System.Windows.Forms.MessageBoxButtons values that specifies which buttons to display in the message box.</param>
+        /// <param name="buttons">One of the System.Windows.Forms.ExtendedMessageBoxButton values that specifies which buttons to display in the message box.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
         /// <param name="messageboxTypeface">The message box typeface. (Can be null)</param>
         /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
@@ -657,7 +658,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(IWin32Window owner,
                                         string text, string caption,
-                                        MessageBoxButtons buttons, bool? showCtrlCopy = null, Font messageboxTypeface = null,
+                                        ExtendedMessageBoxButtons buttons, bool? showCtrlCopy = null, Font messageboxTypeface = null,
                                         bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
                                         bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null,
@@ -672,7 +673,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// </summary>
         /// <param name="text">The text to display in the message box.</param>
         /// <param name="caption">The text to display in the title bar of the message box.</param>
-        /// <param name="buttons">One of the System.Windows.Forms.MessageBoxButtons values that specifies which buttons to display in the message box.</param>
+        /// <param name="buttons">One of the System.Windows.Forms.ExtendedMessageBoxButton values that specifies which buttons to display in the message box.</param>
         /// <param name="icon">One of the System.Windows.Forms.ExtendedMessageBoxIcon values that specifies which icon to display in the message box.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
         /// <param name="messageboxTypeface">The message box typeface. (Can be null)</param>
@@ -687,7 +688,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="copyButtonText">The text shown on the copy button.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(string text, string caption,
-                                        MessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
+                                        ExtendedMessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
                                         bool? showCtrlCopy = null, Font messageboxTypeface = null,
                                         bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
                                         bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
@@ -704,7 +705,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="owner">Owner of the modal dialog box.</param>
         /// <param name="text">The text to display in the message box.</param>
         /// <param name="caption">The text to display in the title bar of the message box.</param>
-        /// <param name="buttons">One of the System.Windows.Forms.MessageBoxButtons values that specifies which buttons to display in the message box.</param>
+        /// <param name="buttons">One of the System.Windows.Forms.ExtendedMessageBoxButton values that specifies which buttons to display in the message box.</param>
         /// <param name="icon">One of the System.Windows.Forms.ExtendedMessageBoxIcon values that specifies which icon to display in the message box.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
         /// <param name="messageboxTypeface">The message box typeface. (Can be null)</param>
@@ -720,7 +721,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(IWin32Window owner,
                                         string text, string caption,
-                                        MessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
+                                        ExtendedMessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
                                         bool? showCtrlCopy = null, Font messageboxTypeface = null,
                                         bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
                                         bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
@@ -736,7 +737,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// </summary>
         /// <param name="text">The text to display in the message box.</param>
         /// <param name="caption">The text to display in the title bar of the message box.</param>
-        /// <param name="buttons">One of the System.Windows.Forms.MessageBoxButtons values that specifies which buttons to display in the message box.</param>
+        /// <param name="buttons">One of the System.Windows.Forms.ExtendedMessageBoxButton values that specifies which buttons to display in the message box.</param>
         /// <param name="icon">One of the System.Windows.Forms.ExtendedMessageBoxIcon values that specifies which icon to display in the message box.</param>
         /// <param name="defaultButton">One of the System.Windows.Forms.MessageBoxDefaultButton values that specifies the default button for the message box.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
@@ -752,7 +753,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="copyButtonText">The text shown on the copy button.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(string text, string caption,
-                                        MessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
+                                        ExtendedMessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, bool? showCtrlCopy = null,
                                         Font messageboxTypeface = null, bool showOptionalCheckBox = false,
                                         string optionalCheckBoxText = null, bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
@@ -768,7 +769,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="owner">Owner of the modal dialog box.</param>
         /// <param name="text">The text to display in the message box.</param>
         /// <param name="caption">The text to display in the title bar of the message box.</param>
-        /// <param name="buttons">One of the System.Windows.Forms.MessageBoxButtons values that specifies which buttons to display in the message box.</param>
+        /// <param name="buttons">One of the System.Windows.Forms.ExtendedMessageBoxButton values that specifies which buttons to display in the message box.</param>
         /// <param name="icon">One of the System.Windows.Forms.ExtendedMessageBoxIcon values that specifies which icon to display in the message box.</param>
         /// <param name="defaultButton">One of the System.Windows.Forms.MessageBoxDefaultButton values that specifies the default button for the message box.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
@@ -785,7 +786,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(IWin32Window owner,
                                         string text, string caption,
-                                        MessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
+                                        ExtendedMessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, bool? showCtrlCopy = null,
                                         Font messageboxTypeface = null, bool showOptionalCheckBox = false,
                                         string optionalCheckBoxText = null, bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
@@ -800,7 +801,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// </summary>
         /// <param name="text">The text to display in the message box.</param>
         /// <param name="caption">The text to display in the title bar of the message box.</param>
-        /// <param name="buttons">One of the System.Windows.Forms.MessageBoxButtons values that specifies which buttons to display in the message box.</param>
+        /// <param name="buttons">One of the System.Windows.Forms.ExtendedMessageBoxButton values that specifies which buttons to display in the message box.</param>
         /// <param name="icon">One of the System.Windows.Forms.ExtendedMessageBoxIcon values that specifies which icon to display in the message box.</param>
         /// <param name="defaultButton">One of the System.Windows.Forms.MessageBoxDefaultButton values that specifies the default button for the message box.</param>
         /// <param name="options">One of the System.Windows.Forms.MessageBoxOptions values that specifies which display and association options will be used for the message box. You may pass in 0 if you wish to use the defaults.</param>
@@ -817,7 +818,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="copyButtonText">The text shown on the copy button.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(string text, string caption,
-                                        MessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
+                                        ExtendedMessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                         bool? showCtrlCopy = null, Font messageboxTypeface = null,
                                         bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
@@ -834,7 +835,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="owner">Owner of the modal dialog box.</param>
         /// <param name="text">The text to display in the message box.</param>
         /// <param name="caption">The text to display in the title bar of the message box.</param>
-        /// <param name="buttons">One of the System.Windows.Forms.MessageBoxButtons values that specifies which buttons to display in the message box.</param>
+        /// <param name="buttons">One of the System.Windows.Forms.ExtendedMessageBoxButton values that specifies which buttons to display in the message box.</param>
         /// <param name="icon">One of the System.Windows.Forms.ExtendedMessageBoxIcon values that specifies which icon to display in the message box.</param>
         /// <param name="defaultButton">One of the System.Windows.Forms.MessageBoxDefaultButton values that specifies the default button for the message box.</param>
         /// <param name="options">One of the System.Windows.Forms.MessageBoxOptions values that specifies which display and association options will be used for the message box. You may pass in 0 if you wish to use the defaults.</param>
@@ -852,7 +853,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(IWin32Window owner,
                                         string text, string caption,
-                                        MessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
+                                        ExtendedMessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                         bool? showCtrlCopy = null, Font messageboxTypeface = null,
                                         bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
@@ -869,7 +870,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// </summary>
         /// <param name="text">The text to display in the message box.</param>
         /// <param name="caption">The text to display in the title bar of the message box.</param>
-        /// <param name="buttons">One of the System.Windows.Forms.MessageBoxButtons values that specifies which buttons to display in the message box.</param>
+        /// <param name="buttons">One of the System.Windows.Forms.ExtendedMessageBoxButton values that specifies which buttons to display in the message box.</param>
         /// <param name="icon">One of the System.Windows.Forms.ExtendedMessageBoxIcon values that specifies which icon to display in the message box.</param>
         /// <param name="defaultButton">One of the System.Windows.Forms.MessageBoxDefaultButton values that specifies the default button for the message box.</param>
         /// <param name="options">One of the System.Windows.Forms.MessageBoxOptions values that specifies which display and association options will be used for the message box. You may pass in 0 if you wish to use the defaults.</param>
@@ -887,7 +888,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="copyButtonText">The text shown on the copy button.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(string text, string caption,
-                                        MessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
+                                        ExtendedMessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                         bool displayHelpButton, bool? showCtrlCopy = null, Font messageboxTypeface = null,
                                         bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
@@ -903,7 +904,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// </summary>
         /// <param name="text">The text to display in the message box.</param>
         /// <param name="caption">The text to display in the title bar of the message box.</param>
-        /// <param name="buttons">One of the System.Windows.Forms.MessageBoxButtons values that specifies which buttons to display in the message box.</param>
+        /// <param name="buttons">One of the System.Windows.Forms.ExtendedMessageBoxButton values that specifies which buttons to display in the message box.</param>
         /// <param name="icon">One of the System.Windows.Forms.ExtendedMessageBoxIcon values that specifies which icon to display in the message box.</param>
         /// <param name="defaultButton">One of the System.Windows.Forms.MessageBoxDefaultButton values that specifies the default button for the message box.</param>
         /// <param name="options">One of the System.Windows.Forms.MessageBoxOptions values that specifies which display and association options will be used for the message box. You may pass in 0 if you wish to use the defaults.</param>
@@ -921,7 +922,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="copyButtonText">The text shown on the copy button.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(string text, string caption,
-                                        MessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
+                                        ExtendedMessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                         string helpFilePath, bool? showCtrlCopy = null, Font messageboxTypeface = null,
                                         bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
@@ -939,7 +940,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="owner">Owner of the modal dialog box.</param>
         /// <param name="text">The text to display in the message box.</param>
         /// <param name="caption">The text to display in the title bar of the message box.</param>
-        /// <param name="buttons">One of the System.Windows.Forms.MessageBoxButtons values that specifies which buttons to display in the message box.</param>
+        /// <param name="buttons">One of the System.Windows.Forms.ExtendedMessageBoxButton values that specifies which buttons to display in the message box.</param>
         /// <param name="icon">One of the System.Windows.Forms.ExtendedMessageBoxIcon values that specifies which icon to display in the message box.</param>
         /// <param name="defaultButton">One of the System.Windows.Forms.MessageBoxDefaultButton values that specifies the default button for the message box.</param>
         /// <param name="options">One of the System.Windows.Forms.MessageBoxOptions values that specifies which display and association options will be used for the message box. You may pass in 0 if you wish to use the defaults.</param>
@@ -958,7 +959,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(IWin32Window owner,
                                         string text, string caption,
-                                        MessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
+                                        ExtendedMessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                         string helpFilePath, bool? showCtrlCopy = null, Font messageboxTypeface = null,
                                         bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
@@ -975,7 +976,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// </summary>
         /// <param name="text">The text to display in the message box.</param>
         /// <param name="caption">The text to display in the title bar of the message box.</param>
-        /// <param name="buttons">One of the System.Windows.Forms.MessageBoxButtons values that specifies which buttons to display in the message box.</param>
+        /// <param name="buttons">One of the System.Windows.Forms.ExtendedMessageBoxButton values that specifies which buttons to display in the message box.</param>
         /// <param name="icon">One of the System.Windows.Forms.ExtendedMessageBoxIcon values that specifies which icon to display in the message box.</param>
         /// <param name="defaultButton">One of the System.Windows.Forms.MessageBoxDefaultButton values that specifies the default button for the message box.</param>
         /// <param name="options">One of the System.Windows.Forms.MessageBoxOptions values that specifies which display and association options will be used for the message box. You may pass in 0 if you wish to use the defaults.</param>
@@ -994,7 +995,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="copyButtonText">The text shown on the copy button.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(string text, string caption,
-                                        MessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
+                                        ExtendedMessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                         string helpFilePath, HelpNavigator navigator, bool? showCtrlCopy = null,
                                         Font messageboxTypeface = null, bool showOptionalCheckBox = false,
@@ -1012,7 +1013,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// </summary>
         /// <param name="text">The text to display in the message box.</param>
         /// <param name="caption">The text to display in the title bar of the message box.</param>
-        /// <param name="buttons">One of the System.Windows.Forms.MessageBoxButtons values that specifies which buttons to display in the message box.</param>
+        /// <param name="buttons">One of the System.Windows.Forms.ExtendedMessageBoxButton values that specifies which buttons to display in the message box.</param>
         /// <param name="icon">One of the System.Windows.Forms.ExtendedMessageBoxIcon values that specifies which icon to display in the message box.</param>
         /// <param name="defaultButton">One of the System.Windows.Forms.MessageBoxDefaultButton values that specifies the default button for the message box.</param>
         /// <param name="options">One of the System.Windows.Forms.MessageBoxOptions values that specifies which display and association options will be used for the message box. You may pass in 0 if you wish to use the defaults.</param>
@@ -1031,7 +1032,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="copyButtonText">The text shown on the copy button.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(string text, string caption,
-                                        MessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
+                                        ExtendedMessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                         string helpFilePath, string keyword, bool? showCtrlCopy = null, Font messageboxTypeface = null,
                                         bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
@@ -1049,7 +1050,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="owner">Owner of the modal dialog box.</param>
         /// <param name="text">The text to display in the message box.</param>
         /// <param name="caption">The text to display in the title bar of the message box.</param>
-        /// <param name="buttons">One of the System.Windows.Forms.MessageBoxButtons values that specifies which buttons to display in the message box.</param>
+        /// <param name="buttons">One of the System.Windows.Forms.ExtendedMessageBoxButton values that specifies which buttons to display in the message box.</param>
         /// <param name="icon">One of the System.Windows.Forms.ExtendedMessageBoxIcon values that specifies which icon to display in the message box.</param>
         /// <param name="defaultButton">One of the System.Windows.Forms.MessageBoxDefaultButton values that specifies the default button for the message box.</param>
         /// <param name="options">One of the System.Windows.Forms.MessageBoxOptions values that specifies which display and association options will be used for the message box. You may pass in 0 if you wish to use the defaults.</param>
@@ -1069,7 +1070,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(IWin32Window owner,
                                         string text, string caption,
-                                        MessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
+                                        ExtendedMessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                         string helpFilePath, HelpNavigator navigator, bool? showCtrlCopy = null,
                                         Font messageboxTypeface = null, bool showOptionalCheckBox = false,
@@ -1087,7 +1088,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="owner">Owner of the modal dialog box.</param>
         /// <param name="text">The text to display in the message box.</param>
         /// <param name="caption">The text to display in the title bar of the message box.</param>
-        /// <param name="buttons">One of the System.Windows.Forms.MessageBoxButtons values that specifies which buttons to display in the message box.</param>
+        /// <param name="buttons">One of the System.Windows.Forms.ExtendedMessageBoxButton values that specifies which buttons to display in the message box.</param>
         /// <param name="icon">One of the System.Windows.Forms.ExtendedMessageBoxIcon values that specifies which icon to display in the message box.</param>
         /// <param name="defaultButton">One of the System.Windows.Forms.MessageBoxDefaultButton values that specifies the default button for the message box.</param>
         /// <param name="options">One of the System.Windows.Forms.MessageBoxOptions values that specifies which display and association options will be used for the message box. You may pass in 0 if you wish to use the defaults.</param>
@@ -1107,7 +1108,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(IWin32Window owner,
                                         string text, string caption,
-                                        MessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
+                                        ExtendedMessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                         string helpFilePath, string keyword, bool? showCtrlCopy = null, Font messageboxTypeface = null,
                                         bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
@@ -1124,7 +1125,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// </summary>
         /// <param name="text">The text to display in the message box.</param>
         /// <param name="caption">The text to display in the title bar of the message box.</param>
-        /// <param name="buttons">One of the System.Windows.Forms.MessageBoxButtons values that specifies which buttons to display in the message box.</param>
+        /// <param name="buttons">One of the System.Windows.Forms.ExtendedMessageBoxButton values that specifies which buttons to display in the message box.</param>
         /// <param name="icon">One of the System.Windows.Forms.ExtendedMessageBoxIcon values that specifies which icon to display in the message box.</param>
         /// <param name="defaultButton">One of the System.Windows.Forms.MessageBoxDefaultButton values that specifies the default button for the message box.</param>
         /// <param name="options">One of the System.Windows.Forms.MessageBoxOptions values that specifies which display and association options will be used for the message box. You may pass in 0 if you wish to use the defaults.</param>
@@ -1144,7 +1145,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="copyButtonText">The text shown on the copy button.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(string text, string caption,
-                                        MessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
+                                        ExtendedMessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                         string helpFilePath, HelpNavigator navigator, object param,
                                         bool? showCtrlCopy = null, Font messageboxTypeface = null,
@@ -1163,7 +1164,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="owner">Owner of the modal dialog box.</param>
         /// <param name="text">The text to display in the message box.</param>
         /// <param name="caption">The text to display in the title bar of the message box.</param>
-        /// <param name="buttons">One of the System.Windows.Forms.MessageBoxButtons values that specifies which buttons to display in the message box.</param>
+        /// <param name="buttons">One of the System.Windows.Forms.ExtendedMessageBoxButton values that specifies which buttons to display in the message box.</param>
         /// <param name="icon">One of the System.Windows.Forms.ExtendedMessageBoxIcon values that specifies which icon to display in the message box.</param>
         /// <param name="defaultButton">One of the System.Windows.Forms.MessageBoxDefaultButton values that specifies the default button for the message box.</param>
         /// <param name="options">One of the System.Windows.Forms.MessageBoxOptions values that specifies which display and association options will be used for the message box. You may pass in 0 if you wish to use the defaults.</param>
@@ -1184,7 +1185,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(IWin32Window owner,
                                         string text, string caption,
-                                        MessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
+                                        ExtendedMessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                         string helpFilePath, HelpNavigator navigator, object param,
                                         bool? showCtrlCopy = null, Font messageboxTypeface = null,
@@ -1202,7 +1203,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="owner">Owner of the modal dialog box.</param>
         /// <param name="text">The text to display in the message box.</param>
         /// <param name="caption">The text to display in the title bar of the message box.</param>
-        /// <param name="buttons">One of the System.Windows.Forms.MessageBoxButtons values that specifies which buttons to display in the message box.</param>
+        /// <param name="buttons">One of the System.Windows.Forms.ExtendedMessageBoxButton values that specifies which buttons to display in the message box.</param>
         /// <param name="icon">One of the System.Windows.Forms.ExtendedMessageBoxIcon values that specifies which icon to display in the message box.</param>
         /// <param name="defaultButton">One of the System.Windows.Forms.MessageBoxDefaultButton values that specifies the default button for the message box.</param>
         /// <param name="options">One of the System.Windows.Forms.MessageBoxOptions values that specifies which display and association options will be used for the message box. You may pass in 0 if you wish to use the defaults.</param>
@@ -1221,7 +1222,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         internal static DialogResult Show(IWin32Window owner,
                                           string text, string caption,
-                                          MessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
+                                          ExtendedMessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
                                           MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                           HelpInformation helpInformation, bool showCtrlCopy, Font messageBoxTypeface,
                                           bool showOptionalCheckBox, string optionalCheckBoxText, bool isOptionalCheckBoxChecked,
@@ -1236,7 +1237,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         #region Implementation
         private static DialogResult InternalShow(IWin32Window owner,
                                                  string text, string caption,
-                                                 MessageBoxButtons buttons,
+                                                 ExtendedMessageBoxButtons buttons,
                                                  ExtendedMessageBoxIcon icon,
                                                  MessageBoxDefaultButton defaultButton,
                                                  MessageBoxOptions options,
@@ -1357,13 +1358,16 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         {
             switch (_buttons)
             {
-                case MessageBoxButtons.OK:
+                case ExtendedMessageBoxButtons.CUSTOM:
+                    // TODO: Set this up
+                    break;
+                case ExtendedMessageBoxButtons.OK:
                     _button1.Text = KryptonManager.Strings.OK;
                     _button1.DialogResult = DialogResult.OK;
                     _button1.StateCommon.Content.ShortText.Font = _messageboxTypeface;
                     _button2.Visible = _button3.Visible = false;
                     break;
-                case MessageBoxButtons.OKCancel:
+                case ExtendedMessageBoxButtons.OKCANCEL:
                     _button1.Text = KryptonManager.Strings.OK;
                     _button2.Text = KryptonManager.Strings.Cancel;
                     _button1.DialogResult = DialogResult.OK;
@@ -1372,7 +1376,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                     _button2.StateCommon.Content.ShortText.Font = _messageboxTypeface;
                     _button3.Visible = false;
                     break;
-                case MessageBoxButtons.YesNo:
+                case ExtendedMessageBoxButtons.YESNO:
                     _button1.Text = KryptonManager.Strings.Yes;
                     _button2.Text = KryptonManager.Strings.No;
                     _button1.DialogResult = DialogResult.Yes;
@@ -1382,7 +1386,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                     _button3.Visible = false;
                     ControlBox = false;
                     break;
-                case MessageBoxButtons.YesNoCancel:
+                case ExtendedMessageBoxButtons.YESNOCANCEL:
                     _button1.Text = KryptonManager.Strings.Yes;
                     _button2.Text = KryptonManager.Strings.No;
                     _button3.Text = KryptonManager.Strings.Cancel;
@@ -1393,7 +1397,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                     _button2.StateCommon.Content.ShortText.Font = _messageboxTypeface;
                     _button3.StateCommon.Content.ShortText.Font = _messageboxTypeface;
                     break;
-                case MessageBoxButtons.RetryCancel:
+                case ExtendedMessageBoxButtons.RETRYCANCEL:
                     _button1.Text = KryptonManager.Strings.Retry;
                     _button2.Text = KryptonManager.Strings.Cancel;
                     _button1.DialogResult = DialogResult.Retry;
@@ -1402,7 +1406,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                     _button2.StateCommon.Content.ShortText.Font = _messageboxTypeface;
                     _button3.Visible = false;
                     break;
-                case MessageBoxButtons.AbortRetryIgnore:
+                case ExtendedMessageBoxButtons.ABORTRETRYIGNORE:
                     _button1.Text = KryptonManager.Strings.Abort;
                     _button2.Text = KryptonManager.Strings.Retry;
                     _button3.Text = KryptonManager.Strings.Ignore;
@@ -1511,14 +1515,17 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             Size button1Size = _button1.GetPreferredSize(Size.Empty);
             Size maxButtonSize = new Size(button1Size.Width + GAP, button1Size.Height);
 
+            // TODO: Setup custom buttons
+
             // If Button2 is visible
             switch (_buttons)
             {
-                case MessageBoxButtons.OKCancel:
-                case MessageBoxButtons.YesNo:
-                case MessageBoxButtons.YesNoCancel:
-                case MessageBoxButtons.RetryCancel:
-                case MessageBoxButtons.AbortRetryIgnore:
+                case ExtendedMessageBoxButtons.CUSTOM:
+                case ExtendedMessageBoxButtons.OK:
+                case ExtendedMessageBoxButtons.YESNO:
+                case ExtendedMessageBoxButtons.YESNOCANCEL:
+                case ExtendedMessageBoxButtons.RETRYCANCEL:
+                case ExtendedMessageBoxButtons.ABORTRETRYIGNORE:
                     {
                         numButtons++;
                         Size button2Size = _button2.GetPreferredSize(Size.Empty);
@@ -1531,8 +1538,9 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             // If Button3 is visible
             switch (_buttons)
             {
-                case MessageBoxButtons.YesNoCancel:
-                case MessageBoxButtons.AbortRetryIgnore:
+                case ExtendedMessageBoxButtons.CUSTOM:
+                case ExtendedMessageBoxButtons.YESNOCANCEL:
+                case ExtendedMessageBoxButtons.ABORTRETRYIGNORE:
                     {
                         numButtons++;
                         Size button3Size = _button2.GetPreferredSize(Size.Empty);
@@ -1548,8 +1556,9 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             // If Button3 is visible
             switch (_buttons)
             {
-                case MessageBoxButtons.YesNoCancel:
-                case MessageBoxButtons.AbortRetryIgnore:
+                case ExtendedMessageBoxButtons.CUSTOM:
+                case ExtendedMessageBoxButtons.YESNOCANCEL:
+                case ExtendedMessageBoxButtons.ABORTRETRYIGNORE:
                     {
                         _button3.Location = new Point(right - maxButtonSize.Width, GAP);
                         _button3.Size = maxButtonSize;
@@ -1561,11 +1570,12 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             // If Button2 is visible
             switch (_buttons)
             {
-                case MessageBoxButtons.OKCancel:
-                case MessageBoxButtons.YesNo:
-                case MessageBoxButtons.YesNoCancel:
-                case MessageBoxButtons.RetryCancel:
-                case MessageBoxButtons.AbortRetryIgnore:
+                case ExtendedMessageBoxButtons.CUSTOM:
+                case ExtendedMessageBoxButtons.OKCANCEL:
+                case ExtendedMessageBoxButtons.YESNO:
+                case ExtendedMessageBoxButtons.YESNOCANCEL:
+                case ExtendedMessageBoxButtons.RETRYCANCEL:
+                case ExtendedMessageBoxButtons.ABORTRETRYIGNORE:
                     {
                         _button2.Location = new Point(right - maxButtonSize.Width, GAP);
                         _button2.Size = maxButtonSize;
@@ -1693,6 +1703,32 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         }
 
         private void copyButton_KeyDown(object sender, KeyEventArgs e) => Clipboard.SetText(_messageText.Text);
+        #endregion
+
+        #region Custom Button Text
+        /// <summary>Sets the custom button text.</summary>
+        /// <param name="customButtonOptions">The custom button options.</param>
+        /// <param name="buttonOneText">The button one text.</param>
+        /// <param name="buttonOneResult">The button one result.</param>
+        /// <param name="buttonTwoText">The button two text.</param>
+        /// <param name="buttonTwoResult">The button two result.</param>
+        /// <param name="buttonThreeText">The button three text.</param>
+        /// <param name="buttonThreeResult">The button three result.</param>
+        private void SetCustomButtonText(ExtendedMessageBoxCustomButtonOptions customButtonOptions,
+                                         string buttonOneText, DialogResult buttonOneResult,
+                                         string? buttonTwoText, DialogResult? buttonTwoResult,
+                                         string? buttonThreeText, DialogResult? buttonThreeResult)
+        {
+            switch (customButtonOptions)
+            {
+                case ExtendedMessageBoxCustomButtonOptions.ONEBUTTON:
+                    break;
+                case ExtendedMessageBoxCustomButtonOptions.TWOBUTTONS:
+                    break;
+                case ExtendedMessageBoxCustomButtonOptions.THREEBUTTONS:
+                    break;
+            }
+        }
         #endregion
     }
 }
