@@ -16,6 +16,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         private bool _showCtrlCopy, _showOptionalCheckBox, _isOptionalCheckBoxChecked, _showCopyButton;
 
+        private CheckState _optionalCheckBoxCheckState;
+
         private Font _messageBoxTypeface;
 
         private MessageBoxButtons _buttons;
@@ -64,6 +66,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <value><c>true</c> if [show copy button]; otherwise, <c>false</c>.</value>
         [DefaultValue(false), Description("Show the copy button.")]
         public bool ShowCopyButton { get => _showCopyButton; set => _showCopyButton = value; }
+
+        /// <summary>Gets or sets the state of the optional CheckBox check.</summary>
+        /// <value>The state of the optional CheckBox check.</value>
+        [DefaultValue(typeof(CheckState), "CheckState.Unchecked"), Description("Gets or sets the state of the optional CheckBox check.")]
+        public CheckState OptionalCheckBoxCheckState { get => _optionalCheckBoxCheckState; set => _optionalCheckBoxCheckState = value; }
 
         /// <summary>Gets or sets the message box typeface.</summary>
         /// <value>The message box typeface.</value>
@@ -220,7 +227,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         public void ShowMessageBox() => KryptonMessageBoxExtended.Show(Owner, MessageBoxContentText, MessageBoxCaption, MessageBoxButtons, MessageBoxIcon,
                                                                        MessageBoxDefaultButton, MessageBoxOptions,
                                                                        new HelpInformation(HelpPath, HelpNavigator, HelpParam), ShowCtrlCopy, MessageBoxTypeface,
-                                                                       ShowOptionalCheckBox, OptionalCheckBoxText, IsOptionalCheckBoxChecked, OptionalCheckBoxAnchor, OptionalCheckBoxLocation,
+                                                                       ShowOptionalCheckBox, OptionalCheckBoxText, IsOptionalCheckBoxChecked, OptionalCheckBoxCheckState, OptionalCheckBoxAnchor, OptionalCheckBoxLocation,
                                                                        CustomMessageBoxIcon, ShowCopyButton, CopyButtonText);
 
         /// <summary>Gets the message box dialog result.</summary>
@@ -230,7 +237,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             DialogResult result = KryptonMessageBoxExtended.Show(Owner, MessageBoxContentText, MessageBoxCaption, MessageBoxButtons, MessageBoxIcon,
                                                                        MessageBoxDefaultButton, MessageBoxOptions,
                                                                        new HelpInformation(HelpPath, HelpNavigator, HelpParam), ShowCtrlCopy, MessageBoxTypeface,
-                                                                       ShowOptionalCheckBox, OptionalCheckBoxText, IsOptionalCheckBoxChecked, OptionalCheckBoxAnchor,
+                                                                       ShowOptionalCheckBox, OptionalCheckBoxText, IsOptionalCheckBoxChecked, OptionalCheckBoxCheckState, OptionalCheckBoxAnchor,
                                                                        OptionalCheckBoxLocation, CustomMessageBoxIcon, ShowCopyButton, CopyButtonText);
             return result;
         }

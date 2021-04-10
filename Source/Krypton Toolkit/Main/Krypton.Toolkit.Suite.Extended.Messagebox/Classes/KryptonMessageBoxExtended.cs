@@ -184,7 +184,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             _copyButton.MinimumSize = new Size(50, 26);
             _copyButton.Name = "_copyButton";
             _copyButton.Size = new Size(50, 26);
-            _copyButton.TabIndex = 1;
+            _copyButton.TabIndex = 5;
             _copyButton.Values.Text = @"B4";
             _copyButton.KeyDown += copyButton_KeyDown;
             //
@@ -199,6 +199,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             _optionalCheckBox.TabIndex = 4;
             _optionalCheckBox.Text = @"CB1";
             _optionalCheckBox.CheckedChanged += checkbox_CheckChanged;
+            _optionalCheckBox.CheckStateChanged += checkBox_CheckStateChanged;
             // 
             // KryptonMessageBox
             // 
@@ -1627,6 +1628,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         #region Optional CheckBox
         private void checkbox_CheckChanged(object sender, EventArgs e) => SetOptionalCheckBoxValue(_optionalCheckBox.Checked);
+
+        private void checkBox_CheckStateChanged(object sender, EventArgs e) => SetOptionalCheckBoxCheckState(_optionalCheckBox.CheckState);
 
         /// <summary>Shows the optional CheckBox UI.</summary>
         /// <param name="showOptionalCheckBox">if set to <c>true</c> [show optional CheckBox].</param>
