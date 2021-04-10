@@ -242,6 +242,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         private AnchorStyles _optionalCheckBoxAnchor;
         private MessageBoxOptions _options; // TODO: What is this used for ?
         private bool _showOptionalCheckBox, _showCopyButton;
+        private CheckState _optionalCheckBoxCheckState;
         public static bool _isOptionalCheckBoxChecked;
         private KryptonPanel _panelMessage;
         private KryptonPanel _panelMessageText;
@@ -393,7 +394,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         /// <summary>
         /// Initializes a new instance of the <see cref="KryptonMessageBoxExtended" /> class.
-        /// A dummy constructor to retrieve the optional checkbox value.
+        /// A dummy constructor to retrieve the optional check box value.
         /// </summary>
         public KryptonMessageBoxExtended() { }
 
@@ -407,10 +408,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="options">The options.</param>
         /// <param name="helpInformation">The help information.</param>
         /// <param name="showCtrlCopy">The show control copy.</param>
-        /// <param name="messageboxTypeface">The messagebox typeface.</param>
+        /// <param name="messageboxTypeface">The message box typeface.</param>
         /// <param name="showOptionalCheckBox">if set to <c>true</c> [show optional CheckBox].</param>
         /// <param name="optionalCheckBoxText">The optional CheckBox text.</param>
         /// <param name="isOptionalCheckBoxChecked">if set to <c>true</c> [is optional CheckBox checked].</param>
+        /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
         /// <param name="optionalCheckBoxAnchor">The optional CheckBox anchor.</param>
         /// <param name="optionalCheckBoxLocation">The optional CheckBox location.</param>
         /// <param name="customMessageBoxIcon">The custom message box icon.</param>
@@ -421,7 +423,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                           MessageBoxDefaultButton defaultButton,
                                           MessageBoxOptions options, HelpInformation helpInformation, bool? showCtrlCopy,
                                           Font messageboxTypeface, bool showOptionalCheckBox, string optionalCheckBoxText,
-                                          bool isOptionalCheckBoxChecked, AnchorStyles? optionalCheckBoxAnchor, Point? optionalCheckBoxLocation,
+                                          bool isOptionalCheckBoxChecked, CheckState? optionalCheckBoxCheckState,
+                                          AnchorStyles? optionalCheckBoxAnchor, Point? optionalCheckBoxLocation,
                                           Image customMessageBoxIcon, bool showCopyButton, string copyButtonText)
         {
             #region Store Values
@@ -446,6 +449,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             _optionalCheckBoxText = optionalCheckBoxText;
 
             _isOptionalCheckBoxChecked = isOptionalCheckBoxChecked;
+
+            _optionalCheckBoxCheckState = optionalCheckBoxCheckState ?? CheckState.Unchecked;
 
             _customMessageBoxIcon = customMessageBoxIcon;
 
@@ -477,7 +482,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             // Finally calculate and set form sizing
             UpdateSizing(showOwner);
 
-            ShowOptionalCheckBoxUI(showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxAnchor, optionalCheckBoxLocation);
+            ShowOptionalCheckBoxUI(showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation);
 
             ShowCopyButton(showCopyButton, copyButtonText);
         }
@@ -504,18 +509,23 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// </summary>
         /// <param name="text">The text to display in the message box.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
-        /// <param name="messageboxTypeface">The messagebox typeface. (Can be null)</param>
-        /// <param name="showOptionalCheckBox">Shows an optional checkbox in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
-        /// <param name="optionalCheckBoxText">The text shown on the optional checkbox.</param>
-        /// <param name="isOptionalCheckBoxChecked">Is the optional checkbox already checked.</param>
+        /// <param name="messageboxTypeface">The message box typeface. (Can be null)</param>
+        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
+        /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
+        /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
+        /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
+        /// <param name="optionalCheckBoxAnchor">The <see cref="AnchorStyles"/> of the optional check box. (Always keep it to the left.)</param>
+        /// <param name="optionalCheckBoxLocation">The location of the optional check box.</param>
+        /// <param name="showCopyButton">Shows an optional copy button, to copy the message box content text to the Windows clipboard.</param>
+        /// <param name="copyButtonText">The text shown on the copy button.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(string text, bool? showCtrlCopy = null, Font messageboxTypeface = null,
                                         bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
-                                        bool isOptionalCheckBoxChecked = false, AnchorStyles? optionalCheckBoxAnchor = null,
-                                        Point? optionalCheckBoxLocation = null, bool showCopyButton = false,
-                                        string copyButtonText = null)
+                                        bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
+                                        AnchorStyles? optionalCheckBoxAnchor = null, Point? optionalCheckBoxLocation = null,
+                                        bool showCopyButton = false, string copyButtonText = null)
         {
-            return InternalShow(null, text, string.Empty, MessageBoxButtons.OK, ExtendedMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText);
+            return InternalShow(null, text, string.Empty, MessageBoxButtons.OK, ExtendedMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -524,18 +534,24 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="owner">Owner of the modal dialog box.</param>
         /// <param name="text">The text to display in the message box.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
-        /// <param name="messageboxTypeface">The messagebox typeface. (Can be null)</param>
-        /// <param name="showOptionalCheckBox">Shows an optional checkbox in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
-        /// <param name="optionalCheckBoxText">The text shown on the optional checkbox.</param>
-        /// <param name="isOptionalCheckBoxChecked">Is the optional checkbox already checked.</param>
+        /// <param name="messageboxTypeface">The message box typeface. (Can be null)</param>
+        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
+        /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
+        /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
+        /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
+        /// <param name="optionalCheckBoxAnchor">The <see cref="AnchorStyles"/> of the optional check box. (Always keep it to the left.)</param>
+        /// <param name="optionalCheckBoxLocation">The location of the optional check box.</param>
+        /// <param name="showCopyButton">Shows an optional copy button, to copy the message box content text to the Windows clipboard.</param>
+        /// <param name="copyButtonText">The text shown on the copy button.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(IWin32Window owner, string text, bool? showCtrlCopy = null, Font messageboxTypeface = null,
                                         bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
-                                        bool isOptionalCheckBoxChecked = false, AnchorStyles? optionalCheckBoxAnchor = null,
+                                        bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
+                                        AnchorStyles? optionalCheckBoxAnchor = null,
                                         Point? optionalCheckBoxLocation = null, bool showCopyButton = false,
                                         string copyButtonText = null)
         {
-            return InternalShow(owner, text, string.Empty, MessageBoxButtons.OK, ExtendedMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText);
+            return InternalShow(owner, text, string.Empty, MessageBoxButtons.OK, ExtendedMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -544,18 +560,24 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="text">The text to display in the message box.</param>
         /// <param name="caption">The text to display in the title bar of the message box.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
-        /// <param name="messageboxTypeface">The messagebox typeface. (Can be null)</param>
-        /// <param name="showOptionalCheckBox">Shows an optional checkbox in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
-        /// <param name="optionalCheckBoxText">The text shown on the optional checkbox.</param>
-        /// <param name="isOptionalCheckBoxChecked">Is the optional checkbox already checked.</param>
+        /// <param name="messageboxTypeface">The message box typeface. (Can be null)</param>
+        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
+        /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
+        /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
+        /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
+        /// <param name="optionalCheckBoxAnchor">The <see cref="AnchorStyles"/> of the optional check box. (Always keep it to the left.)</param>
+        /// <param name="optionalCheckBoxLocation">The location of the optional check box.</param>
+        /// <param name="showCopyButton">Shows an optional copy button, to copy the message box content text to the Windows clipboard.</param>
+        /// <param name="copyButtonText">The text shown on the copy button.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(string text, string caption, bool? showCtrlCopy = null, Font messageboxTypeface = null,
                                         bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
-                                        bool isOptionalCheckBoxChecked = false, AnchorStyles? optionalCheckBoxAnchor = null,
+                                        bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
+                                        AnchorStyles? optionalCheckBoxAnchor = null,
                                         Point? optionalCheckBoxLocation = null, bool showCopyButton = false,
                                         string copyButtonText = null)
         {
-            return InternalShow(null, text, caption, MessageBoxButtons.OK, ExtendedMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText);
+            return InternalShow(null, text, caption, MessageBoxButtons.OK, ExtendedMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -565,19 +587,25 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="text">The text to display in the message box.</param>
         /// <param name="caption">The text to display in the title bar of the message box.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
-        /// <param name="messageboxTypeface">The messagebox typeface. (Can be null)</param>
-        /// <param name="showOptionalCheckBox">Shows an optional checkbox in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
-        /// <param name="optionalCheckBoxText">The text shown on the optional checkbox.</param>
-        /// <param name="isOptionalCheckBoxChecked">Is the optional checkbox already checked.</param>
+        /// <param name="messageboxTypeface">The message box typeface. (Can be null)</param>
+        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
+        /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
+        /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
+        /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
+        /// <param name="optionalCheckBoxAnchor">The <see cref="AnchorStyles"/> of the optional check box. (Always keep it to the left.)</param>
+        /// <param name="optionalCheckBoxLocation">The location of the optional check box.</param>
+        /// <param name="showCopyButton">Shows an optional copy button, to copy the message box content text to the Windows clipboard.</param>
+        /// <param name="copyButtonText">The text shown on the copy button.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(IWin32Window owner,
                                         string text, string caption, bool? showCtrlCopy = null, Font messageboxTypeface = null,
                                         bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
-                                        bool isOptionalCheckBoxChecked = false, AnchorStyles? optionalCheckBoxAnchor = null,
+                                        bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
+                                        AnchorStyles? optionalCheckBoxAnchor = null,
                                         Point? optionalCheckBoxLocation = null, bool showCopyButton = false,
                                         string copyButtonText = null)
         {
-            return InternalShow(owner, text, caption, MessageBoxButtons.OK, ExtendedMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText);
+            return InternalShow(owner, text, caption, MessageBoxButtons.OK, ExtendedMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -587,19 +615,25 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="caption">The text to display in the title bar of the message box.</param>
         /// <param name="buttons">One of the System.Windows.Forms.MessageBoxButtons values that specifies which buttons to display in the message box.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
-        /// <param name="messageboxTypeface">The messagebox typeface. (Can be null)</param>
-        /// <param name="showOptionalCheckBox">Shows an optional checkbox in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
-        /// <param name="optionalCheckBoxText">The text shown on the optional checkbox.</param>
-        /// <param name="isOptionalCheckBoxChecked">Is the optional checkbox already checked.</param>
+        /// <param name="messageboxTypeface">The message box typeface. (Can be null)</param>
+        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
+        /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
+        /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
+        /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
+        /// <param name="optionalCheckBoxAnchor">The <see cref="AnchorStyles"/> of the optional check box. (Always keep it to the left.)</param>
+        /// <param name="optionalCheckBoxLocation">The location of the optional check box.</param>
+        /// <param name="showCopyButton">Shows an optional copy button, to copy the message box content text to the Windows clipboard.</param>
+        /// <param name="copyButtonText">The text shown on the copy button.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(string text, string caption,
                                         MessageBoxButtons buttons, bool? showCtrlCopy = null, Font messageboxTypeface = null,
                                         bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
-                                        bool isOptionalCheckBoxChecked = false, AnchorStyles? optionalCheckBoxAnchor = null,
+                                        bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
+                                        AnchorStyles? optionalCheckBoxAnchor = null,
                                         Point? optionalCheckBoxLocation = null, bool showCopyButton = false,
                                         string copyButtonText = null)
         {
-            return InternalShow(null, text, caption, buttons, ExtendedMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText);
+            return InternalShow(null, text, caption, buttons, ExtendedMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -610,20 +644,26 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="caption">The text to display in the title bar of the message box.</param>
         /// <param name="buttons">One of the System.Windows.Forms.MessageBoxButtons values that specifies which buttons to display in the message box.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
-        /// <param name="messageboxTypeface">The messagebox typeface. (Can be null)</param>
-        /// <param name="showOptionalCheckBox">Shows an optional checkbox in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
-        /// <param name="optionalCheckBoxText">The text shown on the optional checkbox.</param>
-        /// <param name="isOptionalCheckBoxChecked">Is the optional checkbox already checked.</param>
+        /// <param name="messageboxTypeface">The message box typeface. (Can be null)</param>
+        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
+        /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
+        /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
+        /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
+        /// <param name="optionalCheckBoxAnchor">The <see cref="AnchorStyles"/> of the optional check box. (Always keep it to the left.)</param>
+        /// <param name="optionalCheckBoxLocation">The location of the optional check box.</param>
+        /// <param name="showCopyButton">Shows an optional copy button, to copy the message box content text to the Windows clipboard.</param>
+        /// <param name="copyButtonText">The text shown on the copy button.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(IWin32Window owner,
                                         string text, string caption,
                                         MessageBoxButtons buttons, bool? showCtrlCopy = null, Font messageboxTypeface = null,
                                         bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
-                                        bool isOptionalCheckBoxChecked = false, AnchorStyles? optionalCheckBoxAnchor = null,
+                                        bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
+                                        AnchorStyles? optionalCheckBoxAnchor = null,
                                         Point? optionalCheckBoxLocation = null, bool showCopyButton = false,
                                         string copyButtonText = null)
         {
-            return InternalShow(owner, text, caption, buttons, ExtendedMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText);
+            return InternalShow(owner, text, caption, buttons, ExtendedMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -634,21 +674,27 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="buttons">One of the System.Windows.Forms.MessageBoxButtons values that specifies which buttons to display in the message box.</param>
         /// <param name="icon">One of the System.Windows.Forms.ExtendedMessageBoxIcon values that specifies which icon to display in the message box.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
-        /// <param name="messageboxTypeface">The messagebox typeface. (Can be null)</param>
-        /// <param name="showOptionalCheckBox">Shows an optional checkbox in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
-        /// <param name="optionalCheckBoxText">The text shown on the optional checkbox.</param>
-        /// <param name="isOptionalCheckBoxChecked">Is the optional checkbox already checked.</param>
-        /// <param name="customMessageBoxIcon">Set a custom messagebox icon. (Must be at least a 32 x 32 PNG image.)</param>
+        /// <param name="messageboxTypeface">The message box typeface. (Can be null)</param>
+        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
+        /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
+        /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
+        /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
+        /// <param name="optionalCheckBoxAnchor">The <see cref="AnchorStyles"/> of the optional check box. (Always keep it to the left.)</param>
+        /// <param name="optionalCheckBoxLocation">The location of the optional check box.</param>
+        /// <param name="customMessageBoxIcon">Set a custom message box icon. (Must be at least a 32 x 32 PNG image.)</param>
+        /// <param name="showCopyButton">Shows an optional copy button, to copy the message box content text to the Windows clipboard.</param>
+        /// <param name="copyButtonText">The text shown on the copy button.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(string text, string caption,
                                         MessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
                                         bool? showCtrlCopy = null, Font messageboxTypeface = null,
                                         bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
-                                        bool isOptionalCheckBoxChecked = false, AnchorStyles? optionalCheckBoxAnchor = null,
+                                        bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
+                                        AnchorStyles? optionalCheckBoxAnchor = null,
                                         Point? optionalCheckBoxLocation = null, Image customMessageBoxIcon = null,
                                         bool showCopyButton = false, string copyButtonText = null)
         {
-            return InternalShow(null, text, caption, buttons, icon, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
+            return InternalShow(null, text, caption, buttons, icon, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -660,22 +706,28 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="buttons">One of the System.Windows.Forms.MessageBoxButtons values that specifies which buttons to display in the message box.</param>
         /// <param name="icon">One of the System.Windows.Forms.ExtendedMessageBoxIcon values that specifies which icon to display in the message box.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
-        /// <param name="messageboxTypeface">The messagebox typeface. (Can be null)</param>
-        /// <param name="showOptionalCheckBox">Shows an optional checkbox in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
-        /// <param name="optionalCheckBoxText">The text shown on the optional checkbox.</param>
-        /// <param name="isOptionalCheckBoxChecked">Is the optional checkbox already checked.</param>
-        /// <param name="customMessageBoxIcon">Set a custom messagebox icon. (Must be at least a 32 x 32 PNG image.)</param>
+        /// <param name="messageboxTypeface">The message box typeface. (Can be null)</param>
+        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
+        /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
+        /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
+        /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
+        /// <param name="optionalCheckBoxAnchor">The <see cref="AnchorStyles"/> of the optional check box. (Always keep it to the left.)</param>
+        /// <param name="optionalCheckBoxLocation">The location of the optional check box.</param>
+        /// <param name="customMessageBoxIcon">Set a custom message box icon. (Must be at least a 32 x 32 PNG image.)</param>
+        /// <param name="showCopyButton">Shows an optional copy button, to copy the message box content text to the Windows clipboard.</param>
+        /// <param name="copyButtonText">The text shown on the copy button.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(IWin32Window owner,
                                         string text, string caption,
                                         MessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
                                         bool? showCtrlCopy = null, Font messageboxTypeface = null,
                                         bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
-                                        bool isOptionalCheckBoxChecked = false, AnchorStyles? optionalCheckBoxAnchor = null,
+                                        bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
+                                        AnchorStyles? optionalCheckBoxAnchor = null,
                                         Point? optionalCheckBoxLocation = null, Image customMessageBoxIcon = null,
                                         bool showCopyButton = false, string copyButtonText = null)
         {
-            return InternalShow(owner, text, caption, buttons, icon, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
+            return InternalShow(owner, text, caption, buttons, icon, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -687,21 +739,26 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="icon">One of the System.Windows.Forms.ExtendedMessageBoxIcon values that specifies which icon to display in the message box.</param>
         /// <param name="defaultButton">One of the System.Windows.Forms.MessageBoxDefaultButton values that specifies the default button for the message box.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
-        /// <param name="messageboxTypeface">The messagebox typeface. (Can be null)</param>
-        /// <param name="showOptionalCheckBox">Shows an optional checkbox in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
-        /// <param name="optionalCheckBoxText">The text shown on the optional checkbox.</param>
-        /// <param name="isOptionalCheckBoxChecked">Is the optional checkbox already checked.</param>
-        /// <param name="customMessageBoxIcon">Set a custom messagebox icon. (Must be at least a 32 x 32 PNG image.)</param>
+        /// <param name="messageboxTypeface">The message box typeface. (Can be null)</param>
+        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
+        /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
+        /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
+        /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
+        /// <param name="optionalCheckBoxAnchor">The <see cref="AnchorStyles"/> of the optional check box. (Always keep it to the left.)</param>
+        /// <param name="optionalCheckBoxLocation">The location of the optional check box.</param>
+        /// <param name="customMessageBoxIcon">Set a custom message box icon. (Must be at least a 32 x 32 PNG image.)</param>
+        /// <param name="showCopyButton">Shows an optional copy button, to copy the message box content text to the Windows clipboard.</param>
+        /// <param name="copyButtonText">The text shown on the copy button.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(string text, string caption,
                                         MessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, bool? showCtrlCopy = null,
                                         Font messageboxTypeface = null, bool showOptionalCheckBox = false,
-                                        string optionalCheckBoxText = null, bool isOptionalCheckBoxChecked = false,
+                                        string optionalCheckBoxText = null, bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null, Point? optionalCheckBoxLocation = null,
                                         Image customMessageBoxIcon = null, bool showCopyButton = false, string copyButtonText = null)
         {
-            return InternalShow(null, text, caption, buttons, icon, defaultButton, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
+            return InternalShow(null, text, caption, buttons, icon, defaultButton, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -714,22 +771,27 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="icon">One of the System.Windows.Forms.ExtendedMessageBoxIcon values that specifies which icon to display in the message box.</param>
         /// <param name="defaultButton">One of the System.Windows.Forms.MessageBoxDefaultButton values that specifies the default button for the message box.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
-        /// <param name="messageboxTypeface">The messagebox typeface. (Can be null)</param>
-        /// <param name="showOptionalCheckBox">Shows an optional checkbox in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
-        /// <param name="optionalCheckBoxText">The text shown on the optional checkbox.</param>
-        /// <param name="isOptionalCheckBoxChecked">Is the optional checkbox already checked.</param>
-        /// <param name="customMessageBoxIcon">Set a custom messagebox icon. (Must be at least a 32 x 32 PNG image.)</param>
+        /// <param name="messageboxTypeface">The message box typeface. (Can be null)</param>
+        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
+        /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
+        /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
+        /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
+        /// <param name="optionalCheckBoxAnchor">The <see cref="AnchorStyles"/> of the optional check box. (Always keep it to the left.)</param>
+        /// <param name="optionalCheckBoxLocation">The location of the optional check box.</param>
+        /// <param name="customMessageBoxIcon">Set a custom message box icon. (Must be at least a 32 x 32 PNG image.)</param>
+        /// <param name="showCopyButton">Shows an optional copy button, to copy the message box content text to the Windows clipboard.</param>
+        /// <param name="copyButtonText">The text shown on the copy button.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(IWin32Window owner,
                                         string text, string caption,
                                         MessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, bool? showCtrlCopy = null,
                                         Font messageboxTypeface = null, bool showOptionalCheckBox = false,
-                                        string optionalCheckBoxText = null, bool isOptionalCheckBoxChecked = false,
+                                        string optionalCheckBoxText = null, bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null, Point? optionalCheckBoxLocation = null,
                                         Image customMessageBoxIcon = null, bool showCopyButton = false, string copyButtonText = null)
         {
-            return InternalShow(owner, text, caption, buttons, icon, defaultButton, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
+            return InternalShow(owner, text, caption, buttons, icon, defaultButton, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -742,22 +804,27 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="defaultButton">One of the System.Windows.Forms.MessageBoxDefaultButton values that specifies the default button for the message box.</param>
         /// <param name="options">One of the System.Windows.Forms.MessageBoxOptions values that specifies which display and association options will be used for the message box. You may pass in 0 if you wish to use the defaults.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
-        /// <param name="messageboxTypeface">The messagebox typeface. (Can be null)</param>
-        /// <param name="showOptionalCheckBox">Shows an optional checkbox in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
-        /// <param name="optionalCheckBoxText">The text shown on the optional checkbox.</param>
-        /// <param name="isOptionalCheckBoxChecked">Is the optional checkbox already checked.</param>
-        /// <param name="customMessageBoxIcon">Set a custom messagebox icon. (Must be at least a 32 x 32 PNG image.)</param>
+        /// <param name="messageboxTypeface">The message box typeface. (Can be null)</param>
+        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
+        /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
+        /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
+        /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
+        /// <param name="optionalCheckBoxAnchor">The <see cref="AnchorStyles"/> of the optional check box. (Always keep it to the left.)</param>
+        /// <param name="optionalCheckBoxLocation">The location of the optional check box.</param>
+        /// <param name="customMessageBoxIcon">Set a custom message box icon. (Must be at least a 32 x 32 PNG image.)</param>
+        /// <param name="showCopyButton">Shows an optional copy button, to copy the message box content text to the Windows clipboard.</param>
+        /// <param name="copyButtonText">The text shown on the copy button.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(string text, string caption,
                                         MessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                         bool? showCtrlCopy = null, Font messageboxTypeface = null,
                                         bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
-                                        bool isOptionalCheckBoxChecked = false, AnchorStyles? optionalCheckBoxAnchor = null,
+                                        bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null, AnchorStyles? optionalCheckBoxAnchor = null,
                                         Point? optionalCheckBoxLocation = null, Image customMessageBoxIcon = null,
                                         bool showCopyButton = false, string copyButtonText = null)
         {
-            return InternalShow(null, text, caption, buttons, icon, defaultButton, options, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
+            return InternalShow(null, text, caption, buttons, icon, defaultButton, options, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -771,11 +838,16 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="defaultButton">One of the System.Windows.Forms.MessageBoxDefaultButton values that specifies the default button for the message box.</param>
         /// <param name="options">One of the System.Windows.Forms.MessageBoxOptions values that specifies which display and association options will be used for the message box. You may pass in 0 if you wish to use the defaults.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
-        /// <param name="messageboxTypeface">The messagebox typeface. (Can be null)</param>
-        /// <param name="showOptionalCheckBox">Shows an optional checkbox in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
-        /// <param name="optionalCheckBoxText">The text shown on the optional checkbox.</param>
-        /// <param name="customMessageBoxIcon">Set a custom messagebox icon. (Must be at least a 32 x 32 PNG image.)</param>
-        /// <param name="isOptionalCheckBoxChecked">Is the optional checkbox already checked.</param>
+        /// <param name="messageboxTypeface">The message box typeface. (Can be null)</param>
+        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
+        /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
+        /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
+        /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
+        /// <param name="optionalCheckBoxAnchor">The <see cref="AnchorStyles"/> of the optional check box. (Always keep it to the left.)</param>
+        /// <param name="optionalCheckBoxLocation">The location of the optional check box.</param>
+        /// <param name="customMessageBoxIcon">Set a custom message box icon. (Must be at least a 32 x 32 PNG image.)</param>
+        /// <param name="showCopyButton">Shows an optional copy button, to copy the message box content text to the Windows clipboard.</param>
+        /// <param name="copyButtonText">The text shown on the copy button.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(IWin32Window owner,
                                         string text, string caption,
@@ -783,11 +855,12 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                         bool? showCtrlCopy = null, Font messageboxTypeface = null,
                                         bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
-                                        bool isOptionalCheckBoxChecked = false, AnchorStyles? optionalCheckBoxAnchor = null,
+                                        bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
+                                        AnchorStyles? optionalCheckBoxAnchor = null,
                                         Point? optionalCheckBoxLocation = null, Image customMessageBoxIcon = null,
                                         bool showCopyButton = false, string copyButtonText = null)
         {
-            return InternalShow(owner, text, caption, buttons, icon, defaultButton, options, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
+            return InternalShow(owner, text, caption, buttons, icon, defaultButton, options, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -801,22 +874,27 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="options">One of the System.Windows.Forms.MessageBoxOptions values that specifies which display and association options will be used for the message box. You may pass in 0 if you wish to use the defaults.</param>
         /// <param name="displayHelpButton">Displays a message box with the specified text, caption, buttons, icon, default button, options, and Help button.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
-        /// <param name="messageboxTypeface">The messagebox typeface. (Can be null)</param>
-        /// <param name="showOptionalCheckBox">Shows an optional checkbox in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
-        /// <param name="optionalCheckBoxText">The text shown on the optional checkbox.</param>
-        /// <param name="isOptionalCheckBoxChecked">Is the optional checkbox already checked.</param>
-        /// <param name="customMessageBoxIcon">Set a custom messagebox icon. (Must be at least a 32 x 32 PNG image.)</param>
+        /// <param name="messageboxTypeface">The message box typeface. (Can be null)</param>
+        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
+        /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
+        /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
+        /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
+        /// <param name="optionalCheckBoxAnchor">The <see cref="AnchorStyles"/> of the optional check box. (Always keep it to the left.)</param>
+        /// <param name="optionalCheckBoxLocation">The location of the optional check box.</param>
+        /// <param name="customMessageBoxIcon">Set a custom message box icon. (Must be at least a 32 x 32 PNG image.)</param>
+        /// <param name="showCopyButton">Shows an optional copy button, to copy the message box content text to the Windows clipboard.</param>
+        /// <param name="copyButtonText">The text shown on the copy button.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(string text, string caption,
                                         MessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                         bool displayHelpButton, bool? showCtrlCopy = null, Font messageboxTypeface = null,
                                         bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
-                                        bool isOptionalCheckBoxChecked = false, AnchorStyles? optionalCheckBoxAnchor = null,
+                                        bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null, AnchorStyles? optionalCheckBoxAnchor = null,
                                         Point? optionalCheckBoxLocation = null, Image customMessageBoxIcon = null,
                                         bool showCopyButton = false, string copyButtonText = null)
         {
-            return InternalShow(null, text, caption, buttons, icon, defaultButton, options, displayHelpButton ? new HelpInformation() : null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
+            return InternalShow(null, text, caption, buttons, icon, defaultButton, options, displayHelpButton ? new HelpInformation() : null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -830,22 +908,28 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="options">One of the System.Windows.Forms.MessageBoxOptions values that specifies which display and association options will be used for the message box. You may pass in 0 if you wish to use the defaults.</param>
         /// <param name="helpFilePath">The path and name of the Help file to display when the user clicks the Help button.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
-        /// <param name="messageboxTypeface">The messagebox typeface. (Can be null)</param>
-        /// <param name="showOptionalCheckBox">Shows an optional checkbox in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
-        /// <param name="optionalCheckBoxText">The text shown on the optional checkbox.</param>
-        /// <param name="isOptionalCheckBoxChecked">Is the optional checkbox already checked.</param>
-        /// <param name="customMessageBoxIcon">Set a custom messagebox icon. (Must be at least a 32 x 32 PNG image.)</param>
+        /// <param name="messageboxTypeface">The message box typeface. (Can be null)</param>
+        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
+        /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
+        /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
+        /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
+        /// <param name="optionalCheckBoxAnchor">The <see cref="AnchorStyles"/> of the optional check box. (Always keep it to the left.)</param>
+        /// <param name="optionalCheckBoxLocation">The location of the optional check box.</param>
+        /// <param name="customMessageBoxIcon">Set a custom message box icon. (Must be at least a 32 x 32 PNG image.)</param>
+        /// <param name="showCopyButton">Shows an optional copy button, to copy the message box content text to the Windows clipboard.</param>
+        /// <param name="copyButtonText">The text shown on the copy button.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(string text, string caption,
                                         MessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                         string helpFilePath, bool? showCtrlCopy = null, Font messageboxTypeface = null,
                                         bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
-                                        bool isOptionalCheckBoxChecked = false, AnchorStyles? optionalCheckBoxAnchor = null,
+                                        bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
+                                        AnchorStyles? optionalCheckBoxAnchor = null,
                                         Point? optionalCheckBoxLocation = null, Image customMessageBoxIcon = null,
                                         bool showCopyButton = false, string copyButtonText = null)
         {
-            return InternalShow(null, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
+            return InternalShow(null, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -860,11 +944,16 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="options">One of the System.Windows.Forms.MessageBoxOptions values that specifies which display and association options will be used for the message box. You may pass in 0 if you wish to use the defaults.</param>
         /// <param name="helpFilePath">The path and name of the Help file to display when the user clicks the Help button.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
-        /// <param name="messageboxTypeface">The messagebox typeface. (Can be null)</param>
-        /// <param name="showOptionalCheckBox">Shows an optional checkbox in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
-        /// <param name="optionalCheckBoxText">The text shown on the optional checkbox.</param>
-        /// <param name="isOptionalCheckBoxChecked">Is the optional checkbox already checked.</param>
-        /// <param name="customMessageBoxIcon">Set a custom messagebox icon. (Must be at least a 32 x 32 PNG image.)</param>
+        /// <param name="messageboxTypeface">The message box typeface. (Can be null)</param>
+        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
+        /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
+        /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
+        /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
+        /// <param name="optionalCheckBoxAnchor">The <see cref="AnchorStyles"/> of the optional check box. (Always keep it to the left.)</param>
+        /// <param name="optionalCheckBoxLocation">The location of the optional check box.</param>
+        /// <param name="customMessageBoxIcon">Set a custom message box icon. (Must be at least a 32 x 32 PNG image.)</param>
+        /// <param name="showCopyButton">Shows an optional copy button, to copy the message box content text to the Windows clipboard.</param>
+        /// <param name="copyButtonText">The text shown on the copy button.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(IWin32Window owner,
                                         string text, string caption,
@@ -872,11 +961,12 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                         string helpFilePath, bool? showCtrlCopy = null, Font messageboxTypeface = null,
                                         bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
-                                        bool isOptionalCheckBoxChecked = false, AnchorStyles? optionalCheckBoxAnchor = null,
+                                        bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
+                                        AnchorStyles? optionalCheckBoxAnchor = null,
                                         Point? optionalCheckBoxLocation = null, Image customMessageBoxIcon = null,
                                         bool showCopyButton = false, string copyButtonText = null)
         {
-            return InternalShow(owner, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
+            return InternalShow(owner, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -891,11 +981,16 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="helpFilePath">The path and name of the Help file to display when the user clicks the Help button.</param>
         /// <param name="navigator">One of the System.Windows.Forms.HelpNavigator values.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
-        /// <param name="messageboxTypeface">The messagebox typeface. (Can be null)</param>
-        /// <param name="showOptionalCheckBox">Shows an optional checkbox in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
-        /// <param name="optionalCheckBoxText">The text shown on the optional checkbox.</param>
-        /// <param name="isOptionalCheckBoxChecked">Is the optional checkbox already checked.</param>
-        /// <param name="customMessageBoxIcon">Set a custom messagebox icon. (Must be at least a 32 x 32 PNG image.)</param>
+        /// <param name="messageboxTypeface">The message box typeface. (Can be null)</param>
+        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
+        /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
+        /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
+        /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
+        /// <param name="optionalCheckBoxAnchor">The <see cref="AnchorStyles"/> of the optional check box. (Always keep it to the left.)</param>
+        /// <param name="optionalCheckBoxLocation">The location of the optional check box.</param>
+        /// <param name="customMessageBoxIcon">Set a custom message box icon. (Must be at least a 32 x 32 PNG image.)</param>
+        /// <param name="showCopyButton">Shows an optional copy button, to copy the message box content text to the Windows clipboard.</param>
+        /// <param name="copyButtonText">The text shown on the copy button.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(string text, string caption,
                                         MessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
@@ -903,11 +998,12 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         string helpFilePath, HelpNavigator navigator, bool? showCtrlCopy = null,
                                         Font messageboxTypeface = null, bool showOptionalCheckBox = false,
                                         string optionalCheckBoxText = null, bool isOptionalCheckBoxChecked = false,
+                                        CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null, Point? optionalCheckBoxLocation = null,
                                         Image customMessageBoxIcon = null, bool showCopyButton = false,
                                         string copyButtonText = null)
         {
-            return InternalShow(null, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath, navigator), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
+            return InternalShow(null, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath, navigator), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -922,22 +1018,28 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="helpFilePath">The path and name of the Help file to display when the user clicks the Help button.</param>
         /// <param name="keyword">The Help keyword to display when the user clicks the Help button.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
-        /// <param name="messageboxTypeface">The messagebox typeface. (Can be null)</param>
-        /// <param name="showOptionalCheckBox">Shows an optional checkbox in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
-        /// <param name="optionalCheckBoxText">The text shown on the optional checkbox.</param>
-        /// <param name="isOptionalCheckBoxChecked">Is the optional checkbox already checked.</param>
-        /// <param name="customMessageBoxIcon">Set a custom messagebox icon. (Must be at least a 32 x 32 PNG image.)</param>
+        /// <param name="messageboxTypeface">The message box typeface. (Can be null)</param>
+        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
+        /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
+        /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
+        /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
+        /// <param name="optionalCheckBoxAnchor">The <see cref="AnchorStyles"/> of the optional check box. (Always keep it to the left.)</param>
+        /// <param name="optionalCheckBoxLocation">The location of the optional check box.</param>
+        /// <param name="customMessageBoxIcon">Set a custom message box icon. (Must be at least a 32 x 32 PNG image.)</param>
+        /// <param name="showCopyButton">Shows an optional copy button, to copy the message box content text to the Windows clipboard.</param>
+        /// <param name="copyButtonText">The text shown on the copy button.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(string text, string caption,
                                         MessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                         string helpFilePath, string keyword, bool? showCtrlCopy = null, Font messageboxTypeface = null,
                                         bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
-                                        bool isOptionalCheckBoxChecked = false, AnchorStyles? optionalCheckBoxAnchor = null,
+                                        bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
+                                        AnchorStyles? optionalCheckBoxAnchor = null,
                                         Point? optionalCheckBoxLocation = null, Image customMessageBoxIcon = null,
                                         bool showCopyButton = false, string copyButtonText = null)
         {
-            return InternalShow(null, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath, keyword), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
+            return InternalShow(null, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath, keyword), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -953,11 +1055,16 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="helpFilePath">The path and name of the Help file to display when the user clicks the Help button.</param>
         /// <param name="navigator">One of the System.Windows.Forms.HelpNavigator values.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
-        /// <param name="messageboxTypeface">The messagebox typeface. (Can be null)</param>
-        /// <param name="showOptionalCheckBox">Shows an optional checkbox in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
-        /// <param name="optionalCheckBoxText">The text shown on the optional checkbox.</param>
-        /// <param name="isOptionalCheckBoxChecked">Is the optional checkbox already checked.</param>
-        /// <param name="customMessageBoxIcon">Set a custom messagebox icon. (Must be at least a 32 x 32 PNG image.)</param>
+        /// <param name="messageboxTypeface">The message box typeface. (Can be null)</param>
+        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
+        /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
+        /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
+        /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
+        /// <param name="optionalCheckBoxAnchor">The <see cref="AnchorStyles"/> of the optional check box. (Always keep it to the left.)</param>
+        /// <param name="optionalCheckBoxLocation">The location of the optional check box.</param>
+        /// <param name="customMessageBoxIcon">Set a custom message box icon. (Must be at least a 32 x 32 PNG image.)</param>
+        /// <param name="showCopyButton">Shows an optional copy button, to copy the message box content text to the Windows clipboard.</param>
+        /// <param name="copyButtonText">The text shown on the copy button.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(IWin32Window owner,
                                         string text, string caption,
@@ -966,10 +1073,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         string helpFilePath, HelpNavigator navigator, bool? showCtrlCopy = null,
                                         Font messageboxTypeface = null, bool showOptionalCheckBox = false,
                                         string optionalCheckBoxText = null, bool isOptionalCheckBoxChecked = false,
+                                        CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null, Point? optionalCheckBoxLocation = null,
                                         Image customMessageBoxIcon = null, bool showCopyButton = false, string copyButtonText = null)
         {
-            return InternalShow(owner, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath, navigator), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
+            return InternalShow(owner, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath, navigator), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -985,11 +1093,16 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="helpFilePath">The path and name of the Help file to display when the user clicks the Help button.</param>
         /// <param name="keyword">The Help keyword to display when the user clicks the Help button.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
-        /// <param name="messageboxTypeface">The messagebox typeface. (Can be null)</param>
-        /// <param name="showOptionalCheckBox">Shows an optional checkbox in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
-        /// <param name="optionalCheckBoxText">The text shown on the optional checkbox.</param>
-        /// <param name="isOptionalCheckBoxChecked">Is the optional checkbox already checked.</param>
-        /// <param name="customMessageBoxIcon">Set a custom messagebox icon. (Must be at least a 32 x 32 PNG image.)</param>
+        /// <param name="messageboxTypeface">The message box typeface. (Can be null)</param>
+        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
+        /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
+        /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
+        /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
+        /// <param name="optionalCheckBoxAnchor">The <see cref="AnchorStyles"/> of the optional check box. (Always keep it to the left.)</param>
+        /// <param name="optionalCheckBoxLocation">The location of the optional check box.</param>
+        /// <param name="customMessageBoxIcon">Set a custom message box icon. (Must be at least a 32 x 32 PNG image.)</param>
+        /// <param name="showCopyButton">Shows an optional copy button, to copy the message box content text to the Windows clipboard.</param>
+        /// <param name="copyButtonText">The text shown on the copy button.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(IWin32Window owner,
                                         string text, string caption,
@@ -997,11 +1110,12 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                         string helpFilePath, string keyword, bool? showCtrlCopy = null, Font messageboxTypeface = null,
                                         bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
-                                        bool isOptionalCheckBoxChecked = false, AnchorStyles? optionalCheckBoxAnchor = null,
+                                        bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
+                                        AnchorStyles? optionalCheckBoxAnchor = null,
                                         Point? optionalCheckBoxLocation = null, Image customMessageBoxIcon = null,
                                         bool showCopyButton = false, string copyButtonText = null)
         {
-            return InternalShow(owner, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath, keyword), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
+            return InternalShow(owner, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath, keyword), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -1017,11 +1131,16 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="navigator">One of the System.Windows.Forms.HelpNavigator values.</param>
         /// <param name="param">The numeric ID of the Help topic to display when the user clicks the Help button.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
-        /// <param name="messageboxTypeface">The messagebox typeface. (Can be null)</param>
-        /// <param name="showOptionalCheckBox">Shows an optional checkbox in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
-        /// <param name="optionalCheckBoxText">The text shown on the optional checkbox.</param>
-        /// <param name="isOptionalCheckBoxChecked">Is the optional checkbox already checked.</param>
-        /// <param name="customMessageBoxIcon">Set a custom messagebox icon. (Must be at least a 32 x 32 PNG image.)</param>
+        /// <param name="messageboxTypeface">The message box typeface. (Can be null)</param>
+        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
+        /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
+        /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
+        /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
+        /// <param name="optionalCheckBoxAnchor">The <see cref="AnchorStyles"/> of the optional check box. (Always keep it to the left.)</param>
+        /// <param name="optionalCheckBoxLocation">The location of the optional check box.</param>
+        /// <param name="customMessageBoxIcon">Set a custom message box icon. (Must be at least a 32 x 32 PNG image.)</param>
+        /// <param name="showCopyButton">Shows an optional copy button, to copy the message box content text to the Windows clipboard.</param>
+        /// <param name="copyButtonText">The text shown on the copy button.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(string text, string caption,
                                         MessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
@@ -1029,11 +1148,12 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         string helpFilePath, HelpNavigator navigator, object param,
                                         bool? showCtrlCopy = null, Font messageboxTypeface = null,
                                         bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
-                                        bool isOptionalCheckBoxChecked = false, AnchorStyles? optionalCheckBoxAnchor = null,
+                                        bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
+                                        AnchorStyles? optionalCheckBoxAnchor = null,
                                         Point? optionalCheckBoxLocation = null, Image customMessageBoxIcon = null,
                                         bool showCopyButton = false, string copyButtonText = null)
         {
-            return InternalShow(null, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath, navigator, param), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
+            return InternalShow(null, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath, navigator, param), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -1051,10 +1171,15 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="param">The numeric ID of the Help topic to display when the user clicks the Help button.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
         /// <param name="messageboxTypeface">Defines the messagebox font.</param>
-        /// <param name="showOptionalCheckBox">Shows an optional checkbox in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
-        /// <param name="optionalCheckBoxText">The text shown on the optional checkbox.</param>
-        /// <param name="isOptionalCheckBoxChecked">Is the optional checkbox already checked.</param>
-        /// <param name="customMessageBoxIcon">Set a custom messagebox icon. (Must be at least a 32 x 32 PNG image.)</param>
+        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
+        /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
+        /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
+        /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
+        /// <param name="optionalCheckBoxAnchor">The <see cref="AnchorStyles"/> of the optional check box. (Always keep it to the left.)</param>
+        /// <param name="optionalCheckBoxLocation">The location of the optional check box.</param>
+        /// <param name="customMessageBoxIcon">Set a custom message box icon. (Must be at least a 32 x 32 PNG image.)</param>
+        /// <param name="showCopyButton">Shows an optional copy button, to copy the message box content text to the Windows clipboard.</param>
+        /// <param name="copyButtonText">The text shown on the copy button.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(IWin32Window owner,
                                         string text, string caption,
@@ -1063,11 +1188,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         string helpFilePath, HelpNavigator navigator, object param,
                                         bool? showCtrlCopy = null, Font messageboxTypeface = null,
                                         bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
-                                        bool isOptionalCheckBoxChecked = false, AnchorStyles? optionalCheckBoxAnchor = null,
+                                        bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null, AnchorStyles? optionalCheckBoxAnchor = null,
                                         Point? optionalCheckBoxLocation = null, Image customMessageBoxIcon = null,
                                         bool showCopyButton = false, string copyButtonText = null)
         {
-            return InternalShow(owner, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath, navigator, param), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
+            return InternalShow(owner, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath, navigator, param), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -1080,15 +1205,18 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="icon">One of the System.Windows.Forms.ExtendedMessageBoxIcon values that specifies which icon to display in the message box.</param>
         /// <param name="defaultButton">One of the System.Windows.Forms.MessageBoxDefaultButton values that specifies the default button for the message box.</param>
         /// <param name="options">One of the System.Windows.Forms.MessageBoxOptions values that specifies which display and association options will be used for the message box. You may pass in 0 if you wish to use the defaults.</param>
-        /// <param name="helpFilePath">The path and name of the Help file to display when the user clicks the Help button.</param>
-        /// <param name="navigator">One of the System.Windows.Forms.HelpNavigator values.</param>
-        /// <param name="param">The numeric ID of the Help topic to display when the user clicks the Help button.</param>
+        /// <param name="helpInformation">The path and name of the Help file to display when the user clicks the Help button.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
-        /// <param name="messageboxTypeface">Defines the messagebox font.</param>
-        /// <param name="showOptionalCheckBox">Shows an optional checkbox in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
-        /// <param name="optionalCheckBoxText">The text shown on the optional checkbox.</param>
-        /// <param name="isOptionalCheckBoxChecked">Is the optional checkbox already checked.</param>
-        /// <param name="customMessageBoxIcon">Set a custom messagebox icon. (Must be at least a 32 x 32 PNG image.)</param>
+        /// <param name="messageBoxTypeface">Defines the messagebox font.</param>
+        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
+        /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
+        /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
+        /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
+        /// <param name="optionalCheckBoxAnchor">The <see cref="AnchorStyles"/> of the optional check box. (Always keep it to the left.)</param>
+        /// <param name="optionalCheckBoxLocation">The location of the optional check box.</param>
+        /// <param name="customMessageBoxIcon">Set a custom message box icon. (Must be at least a 32 x 32 PNG image.)</param>
+        /// <param name="showCopyButton">Shows an optional copy button, to copy the message box content text to the Windows clipboard.</param>
+        /// <param name="copyButtonText">The text shown on the copy button.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         internal static DialogResult Show(IWin32Window owner,
                                           string text, string caption,
@@ -1096,10 +1224,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                           MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                           HelpInformation helpInformation, bool showCtrlCopy, Font messageBoxTypeface,
                                           bool showOptionalCheckBox, string optionalCheckBoxText, bool isOptionalCheckBoxChecked,
+                                          CheckState? optionalCheckBoxCheckState,
                                           AnchorStyles optionalCheckBoxAnchor, Point optionalCheckBoxLocation,
                                           Image customMessageBoxIcon, bool showCopyButton = false, string copyButtonText = null)
         {
-            return InternalShow(owner, text, caption, buttons, icon, defaultButton, options, helpInformation, showCtrlCopy, messageBoxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
+            return InternalShow(owner, text, caption, buttons, icon, defaultButton, options, helpInformation, showCtrlCopy, messageBoxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
         }
         #endregion
 
@@ -1112,9 +1241,10 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                                  MessageBoxOptions options,
                                                  HelpInformation helpInformation, bool? showCtrlCopy, Font messageboxTypeface = null,
                                                  bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
-                                                 bool isOptionalCheckBoxChecked = false, AnchorStyles? optionalCheckBoxAnchor = null,
-                                                 Point? optionalCheckBoxLocation = null, Image customMessageBoxIcon = null,
-                                                 bool showCopyButton = false, string copyButtonText = null)
+                                                 bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
+                                                 AnchorStyles? optionalCheckBoxAnchor = null, Point? optionalCheckBoxLocation = null,
+                                                 Image customMessageBoxIcon = null, bool showCopyButton = false,
+                                                 string copyButtonText = null)
         {
             // Check if trying to show a message box from a non-interactive process, this is not possible
             if (!SystemInformation.UserInteractive && ((options & (MessageBoxOptions.ServiceNotification | MessageBoxOptions.DefaultDesktopOnly)) == 0))
@@ -1143,7 +1273,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             }
 
             // Show message box window as a modal dialog and then dispose of it afterwards
-            using (KryptonMessageBoxExtended ekmb = new KryptonMessageBoxExtended(showOwner, text, caption, buttons, icon, defaultButton, options, helpInformation, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText))
+            using (KryptonMessageBoxExtended ekmb = new KryptonMessageBoxExtended(showOwner, text, caption, buttons, icon, defaultButton, options, helpInformation, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText))
             {
                 ekmb.StartPosition = showOwner == null ? FormStartPosition.CenterScreen : FormStartPosition.CenterParent;
 
@@ -1502,15 +1632,20 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="showOptionalCheckBox">if set to <c>true</c> [show optional CheckBox].</param>
         /// <param name="optionalCheckBoxText">The optional CheckBox text.</param>
         /// <param name="isOptionalCheckBoxChecked">if set to <c>true</c> [is optional CheckBox checked].</param>
+        /// <param name="optionalCheckBoxCheckState">State of the optional CheckBox check.</param>
+        /// <param name="optionalCheckBoxAnchor">The optional CheckBox anchor.</param>
+        /// <param name="optionalCheckBoxLocation">The optional CheckBox location.</param>
         private void ShowOptionalCheckBoxUI(bool showOptionalCheckBox, string optionalCheckBoxText,
-                                            bool isOptionalCheckBoxChecked, AnchorStyles? optionalCheckBoxAnchor,
-                                            Point? optionalCheckBoxLocation)
+                                            bool isOptionalCheckBoxChecked, CheckState? optionalCheckBoxCheckState,
+                                            AnchorStyles? optionalCheckBoxAnchor, Point? optionalCheckBoxLocation)
         {
             _optionalCheckBox.Visible = showOptionalCheckBox;
 
             _optionalCheckBox.Text = optionalCheckBoxText;
 
             _optionalCheckBox.Checked = isOptionalCheckBoxChecked;
+
+            _optionalCheckBox.CheckState = optionalCheckBoxCheckState ?? CheckState.Unchecked;
 
             _optionalCheckBox.Anchor = optionalCheckBoxAnchor ?? AnchorStyles.Left;
 
@@ -1526,7 +1661,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         private void SetOptionalCheckBoxValue(bool value) => _isOptionalCheckBoxChecked = value;
 
         /// <summary>Gets the optional CheckBox value.</summary>
-        /// <returns>The value of the optional checkbox.</returns>
+        /// <returns>The value of the optional check box.</returns>
         public bool GetOptionalCheckBoxValue() => _isOptionalCheckBoxChecked;
 
         public static bool GetOptionalCheckBoxState()
@@ -1535,6 +1670,12 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
             return box.GetOptionalCheckBoxValue();
         }
+
+        /// <summary>Sets the state of the optional CheckBox check.</summary>
+        /// <param name="state">The state.</param>
+        public void SetOptionalCheckBoxCheckState(CheckState state) => _optionalCheckBox.CheckState = state;
+
+        public CheckState GetOptionalCheckBoxCheckState() => _optionalCheckBox.CheckState;
         #endregion
 
         #region Copy Button

@@ -92,7 +92,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         /// <summary>Gets or sets the help navigator.</summary>
         /// <value>The help navigator.</value>
-        [DefaultValue(null), Description("Gets or sets the help navigator.")]
+        [DefaultValue(typeof(HelpNavigator), "HelpNavigator.AssociateIndex"), Description("Gets or sets the help navigator.")]
         public HelpNavigator HelpNavigator { get => _helpNavigator; set => _helpNavigator = value; }
 
         /// <summary>Gets or sets a custom message box icon.</summary>
@@ -158,7 +158,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="options">The options.</param>
         /// <param name="helpNavigator">The help information.</param>
         /// <param name="showCtrlCopy">if set to <c>true</c> [show control copy].</param>
-        /// <param name="messageboxTypeface">The messagebox typeface.</param>
+        /// <param name="messageboxTypeface">The message box typeface.</param>
         /// <param name="showOptionalCheckBox">if set to <c>true</c> [show optional CheckBox].</param>
         /// <param name="optionalCheckBoxText">The optional CheckBox text.</param>
         /// <param name="isOptionalCheckBoxChecked">if set to <c>true</c> [is optional CheckBox checked].</param>

@@ -94,7 +94,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         /// <summary>Gets or sets the help navigator.</summary>
         /// <value>The help navigator.</value>
-        [DefaultValue(null), Description("Gets or sets the help navigator.")]
+        [DefaultValue(typeof(HelpNavigator), "HelpNavigator.AssociateIndex"), Description("Gets or sets the help navigator.")]
         public HelpNavigator HelpNavigator { get => _helpNavigator; set => _helpNavigator = value; }
 
         /// <summary>Gets or sets a custom message box icon.</summary>
@@ -169,6 +169,10 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             OptionalCheckBoxLocation = new Point(12, 0);
 
             MessageBoxTypeface = new Font("Microsoft Sans Serif", 8.25f);
+
+            HelpNavigator = HelpNavigator.AssociateIndex;
+
+            MessageBoxIcon = ExtendedMessageBoxIcon.NONE;
         }
         #endregion
 

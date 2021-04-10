@@ -188,7 +188,7 @@ namespace MessageBox
 
         private void kbtnTestConfigurator_Click(object sender, EventArgs e)
         {
-            //kryptonMessageBoxConfigurator1.DisplayMessageBox();
+            kryptonMessageBoxConfigurator1.DisplayMessageBox();
         }
     }
 }

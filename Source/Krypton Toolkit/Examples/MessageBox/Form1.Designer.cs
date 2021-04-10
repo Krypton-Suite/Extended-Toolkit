@@ -62,6 +62,7 @@ namespace MessageBox
             this.kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
             this.ktxtCaption = new Krypton.Toolkit.KryptonTextBox();
             this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
+            this.kryptonMessageBoxConfigurator1 = new Krypton.Toolkit.Suite.Extended.Messagebox.KryptonMessageBoxConfigurator();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
@@ -398,6 +399,17 @@ namespace MessageBox
             this.kryptonLabel1.TabIndex = 0;
             this.kryptonLabel1.Values.Text = "Caption:";
             // 
+            // kryptonMessageBoxConfigurator1
+            // 
+            this.kryptonMessageBoxConfigurator1.HelpNavigator = System.Windows.Forms.HelpNavigator.Find;
+            this.kryptonMessageBoxConfigurator1.MessageBoxButtons = System.Windows.Forms.MessageBoxButtons.OK;
+            this.kryptonMessageBoxConfigurator1.MessageBoxCaption = "Version 6";
+            this.kryptonMessageBoxConfigurator1.MessageBoxContentText = "Hello world!";
+            this.kryptonMessageBoxConfigurator1.MessageBoxDefaultButton = System.Windows.Forms.MessageBoxDefaultButton.Button1;
+            this.kryptonMessageBoxConfigurator1.MessageBoxIcon = Krypton.Toolkit.Suite.Extended.Messagebox.ExtendedMessageBoxIcon.CUSTOM;
+            this.kryptonMessageBoxConfigurator1.MessageBoxTypeface = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.kryptonMessageBoxConfigurator1.OptionalCheckBoxAnchor = System.Windows.Forms.AnchorStyles.Left;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -467,6 +479,7 @@ namespace MessageBox
         private Krypton.Toolkit.KryptonRadioButton krbIconHand;
         private Krypton.Toolkit.KryptonRadioButton krbIconStop;
         private Krypton.Toolkit.KryptonButton kbtnTestConfigurator;
+        private Krypton.Toolkit.Suite.Extended.Messagebox.KryptonMessageBoxConfigurator kryptonMessageBoxConfigurator1;
     }
 }
 
