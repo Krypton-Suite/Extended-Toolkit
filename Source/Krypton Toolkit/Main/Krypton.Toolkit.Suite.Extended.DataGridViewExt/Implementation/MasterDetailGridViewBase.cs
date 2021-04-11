@@ -13,6 +13,8 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 // ReSharper disable MemberCanBePrivate.Global
 // ReSharper disable UnusedAutoPropertyAccessor.Global
 
@@ -41,6 +43,8 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt.Implementation
             Scroll += MasterDetailGridView_Scroll;
             SelectionChanged += MasterDetailGridView_SelectionChanged;
             DetailsColumnHeadersVisible = true;
+            ExpandDetailsWhenFullRowSelectClicked = true;
+            CellClick += MasterDetailGridViewBase_CellClick;
         }
 
         /// <summary>
@@ -137,6 +141,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt.Implementation
                 RowPostPaint -= MasterDetailGridView_RowPostPaint;
                 Scroll -= MasterDetailGridView_Scroll;
                 SelectionChanged -= MasterDetailGridView_SelectionChanged;
+                CellClick -= MasterDetailGridViewBase_CellClick;
             }
             base.Dispose(disposing);
         }
@@ -157,6 +162,51 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt.Implementation
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         protected bool CollapseRow;
 
+        private void MasterDetailGridViewBase_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if ((SelectionMode == DataGridViewSelectionMode.FullRowSelect)
+                && ExpandDetailsWhenFullRowSelectClicked
+                && (e.ColumnIndex >= 0)
+                )
+            {
+                ExpandAndCollapseOther(e.RowIndex);
+            }
+        }
+
+        private void ExpandAndCollapseOther(int rowIndex)
+        {
+            if (RowCurrent.TryGetValue(rowIndex, out var refValues))
+            {
+                // Restore the row to it's original
+                RowCurrent.Clear();
+                Rows[rowIndex].Height = refValues.Height;
+                Rows[rowIndex].DividerHeight = refValues.divider;
+            }
+            else
+            {
+                // Was not expanded here
+                if (RowCurrent.Count != 0)
+                {
+                    var eRow = RowCurrent.First().Key;
+                    refValues = RowCurrent.First().Value;
+                    RowCurrent.Clear();
+                    Rows[eRow].Height = refValues.Height;
+                    Rows[eRow].DividerHeight = refValues.divider;
+                    ClearSelection();
+                    CollapseRow = true;
+                    Rows[eRow].Selected = true;
+                }
+
+                RowCurrent[rowIndex] = (Rows[rowIndex].Height, Rows[rowIndex].DividerHeight);
+                Rows[rowIndex].Height = rowExpandedHeight;
+                Rows[rowIndex].DividerHeight = rowExpandedHeight - Rows[e.RowIndex].DividerHeight;
+            }
+
+            ClearSelection();
+            CollapseRow = true;
+            Rows[rowIndex].Selected = true;
+        }
+
         private void MasterDetailGridView_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (!RowCurrent.TryGetValue(e.RowIndex, out var refValues))
@@ -166,37 +216,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt.Implementation
             var rect = new Rectangle(scale, scale, 16, 16);
             if (rect.Contains(e.Location))
             {
-                // Clicked on the Expand area
-                if (RowCurrent.TryGetValue(e.RowIndex, out refValues))
-                {
-                    // Restore the row to it's original
-                    RowCurrent.Clear();
-                    Rows[e.RowIndex].Height = refValues.Height;
-                    Rows[e.RowIndex].DividerHeight = refValues.divider;
-                }
-                else
-                {
-                    // Was not expanded here
-                    if (RowCurrent.Count != 0)
-                    {
-                        var eRow = RowCurrent.First().Key;
-                        refValues = RowCurrent.First().Value;
-                        RowCurrent.Clear();
-                        Rows[eRow].Height = refValues.Height;
-                        Rows[eRow].DividerHeight = refValues.divider;
-                        ClearSelection();
-                        CollapseRow = true;
-                        Rows[eRow].Selected = true;
-                    }
-
-                    RowCurrent[e.RowIndex] = (Rows[e.RowIndex].Height, Rows[e.RowIndex].DividerHeight);
-                    Rows[e.RowIndex].Height = rowExpandedHeight;
-                    Rows[e.RowIndex].DividerHeight = rowExpandedHeight - Rows[e.RowIndex].DividerHeight;
-                }
-
-                ClearSelection();
-                CollapseRow = true;
-                Rows[e.RowIndex].Selected = true;
+                ExpandAndCollapseOther(e.RowIndex);
             }
             else
             {
@@ -284,6 +304,15 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt.Implementation
         [DefaultValue(true)]
         [Description("Detail DataGridView ColumnHeaders Visibility")]
         public bool DetailsColumnHeadersVisible { get; set; }
+
+        /// <summary>
+        /// Detail DataGridView ColumnHeaders Visibility
+        /// </summary>
+        [Category("Details Appearance")]
+        [DefaultValue(true)]
+        [Description("Expand Details when FullRowSelect Clicked")]
+        public bool ExpandDetailsWhenFullRowSelectClicked { get; set; }
+
 
         /// <summary>
         /// Detail DataGridView RowHeaders Visibility

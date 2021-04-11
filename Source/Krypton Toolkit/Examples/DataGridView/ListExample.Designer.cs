@@ -29,10 +29,10 @@ namespace DataGridViewExt
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ListExample));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ListExample));
             this.groupBoxPalette = new System.Windows.Forms.GroupBox();
             this.rbOffice2010Blue = new System.Windows.Forms.RadioButton();
             this.rbSparkle = new System.Windows.Forms.RadioButton();
@@ -257,12 +257,13 @@ namespace DataGridViewExt
             this.kryptonLabel1.TabIndex = 6;
             this.kryptonLabel1.Values.Text = "Right click grid for Krypton Context Menu";
             // 
-            // kryptonDataGridView1
+            // masterSingleDetailView1
             // 
             this.masterSingleDetailView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.masterSingleDetailView1.AutoGenerateColumns = false;
+            this.masterSingleDetailView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.masterSingleDetailView1.ColumnHeadersHeight = 36;
             this.masterSingleDetailView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colDateTime,
@@ -277,6 +278,7 @@ namespace DataGridViewExt
             this.masterSingleDetailView1.Location = new System.Drawing.Point(12, 20);
             this.masterSingleDetailView1.Name = "masterSingleDetailView1";
             this.masterSingleDetailView1.RowHeadersWidth = 51;
+            this.masterSingleDetailView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.masterSingleDetailView1.Size = new System.Drawing.Size(1058, 272);
             this.masterSingleDetailView1.TabIndex = 0;
             // 
@@ -287,7 +289,7 @@ namespace DataGridViewExt
             this.colDateTime.HeaderText = "DateTime";
             this.colDateTime.MinimumWidth = 6;
             this.colDateTime.Name = "colDateTime";
-            this.colDateTime.Width = 190;
+            this.colDateTime.Width = 144;
             // 
             // colComboBox
             // 
@@ -301,7 +303,7 @@ namespace DataGridViewExt
             this.colComboBox.Items.Add("Ms");
             this.colComboBox.MinimumWidth = 6;
             this.colComboBox.Name = "colComboBox";
-            this.colComboBox.Width = 75;
+            this.colComboBox.Width = 144;
             // 
             // colTextBox
             // 
@@ -309,7 +311,7 @@ namespace DataGridViewExt
             this.colTextBox.HeaderText = "TextBox";
             this.colTextBox.MinimumWidth = 6;
             this.colTextBox.Name = "colTextBox";
-            this.colTextBox.Width = 100;
+            this.colTextBox.Width = 144;
             // 
             // colMaskedTextBox
             // 
@@ -318,7 +320,7 @@ namespace DataGridViewExt
             this.colMaskedTextBox.Mask = "(99) 9999-9999";
             this.colMaskedTextBox.MinimumWidth = 6;
             this.colMaskedTextBox.Name = "colMaskedTextBox";
-            this.colMaskedTextBox.Width = 100;
+            this.colMaskedTextBox.Width = 143;
             // 
             // colDomainUpDown
             // 
@@ -331,7 +333,7 @@ namespace DataGridViewExt
             "Separated"});
             this.colDomainUpDown.MinimumWidth = 6;
             this.colDomainUpDown.Name = "colDomainUpDown";
-            this.colDomainUpDown.Width = 105;
+            this.colDomainUpDown.Width = 144;
             // 
             // colNumericUpDown
             // 
@@ -340,7 +342,7 @@ namespace DataGridViewExt
             this.colNumericUpDown.HeaderText = "NumericUpDown";
             this.colNumericUpDown.MinimumWidth = 6;
             this.colNumericUpDown.Name = "colNumericUpDown";
-            this.colNumericUpDown.Width = 105;
+            this.colNumericUpDown.Width = 144;
             // 
             // colCheckBox
             // 
@@ -354,7 +356,6 @@ namespace DataGridViewExt
             this.colCheckBox.MinimumWidth = 6;
             this.colCheckBox.Name = "colCheckBox";
             this.colCheckBox.TrueValue = null;
-            this.colCheckBox.Width = 68;
             // 
             // kryptonContextMenu1
             // 
@@ -604,7 +605,7 @@ namespace DataGridViewExt
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(750, 416);
             this.Name = "ListExample";
-            this.Text = "KryptonDataGridViewExt List as DataSource";
+            this.Text = "KryptonDataGridViewExt List as DataSource (FullRowSelect Expansion)";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBoxPalette.ResumeLayout(false);
             this.groupBoxPalette.PerformLayout();
