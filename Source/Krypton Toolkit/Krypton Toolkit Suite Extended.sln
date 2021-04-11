@@ -15,8 +15,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Handlebars.NET", "Third Par
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Simple.MAPI.NET", "Third Party\Simple.MAPI.NET\Simple.MAPI.NET.csproj", "{4691FCA7-70E4-471A-B716-81FA87293E2E}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Research", "Research", "{06E39E78-791A-4008-A165-A69FAE43D8D3}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repository Items", "Repository Items", "{5D85B551-9AFC-4E96-93C3-D8D81B69971F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build System", "Build System", "{87BE2145-50BE-4A57-9C79-FCE5A64F6065}"
@@ -134,11 +132,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessageBox", "Examples\Mess
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Tree.Grid.View", "Main\Krypton.Toolkit.Suite.Extended.Tree.Grid.View\Krypton.Toolkit.Suite.Extended.Tree.Grid.View.csproj", "{239FD995-7B65-4EC8-AB87-D85810400E34}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton.Toolkit.Suite.Extended.ComboBoxExt", "Main\Krypton.Toolkit.Suite.Extended.ComboBoxExt\Krypton.Toolkit.Suite.Extended.ComboBoxExt.csproj", "{B72B4C28-D185-49FC-B51E-6D1CA2A8434B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.ComboBoxExt", "Main\Krypton.Toolkit.Suite.Extended.ComboBoxExt\Krypton.Toolkit.Suite.Extended.ComboBoxExt.csproj", "{B72B4C28-D185-49FC-B51E-6D1CA2A8434B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Z_Examples", "Z_Examples", "{25D5F0A6-A601-424B-9431-8EFE139A58A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComboBoxExtApp", "Examples\ComboBoxExtApp\ComboBoxExtApp.csproj", "{52125BA9-5B87-4C08-BCAA-10093832031C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComboBoxExtApp", "Examples\ComboBoxExtApp\ComboBoxExtApp.csproj", "{52125BA9-5B87-4C08-BCAA-10093832031C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

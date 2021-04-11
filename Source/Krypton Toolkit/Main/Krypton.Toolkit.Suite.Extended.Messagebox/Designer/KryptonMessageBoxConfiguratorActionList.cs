@@ -21,7 +21,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         #endregion
 
         #region Public
-        public MessageBoxButtons MessageBoxButtons
+        public ExtendedMessageBoxButtons MessageBoxButtons
         {
             get => _messageBoxConfigurator.MessageBoxButtons;
 

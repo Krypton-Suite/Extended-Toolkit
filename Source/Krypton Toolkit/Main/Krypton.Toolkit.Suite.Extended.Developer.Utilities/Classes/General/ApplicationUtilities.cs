@@ -6,13 +6,20 @@
  */
 #endregion
 
+using Krypton.Toolkit.Suite.Extended.Developer.Utilities.Properties;
+using Krypton.Toolkit.Suite.Extended.Messagebox;
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
 {
     public class ApplicationUtilities
     {
+        #region Variables
+        private Image _underConstruction = Resources.UnderConstruction;
+        #endregion
+
         #region Constructor
         public ApplicationUtilities()
         {
@@ -44,6 +51,23 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
             {
                 window.Hide();
             }
+        }
+
+        public static void UnderConstruction(IWin32Window owner, string message, string caption = "Under Construction", Font typeface = null)
+        {
+            Image _underConstruction = Resources.UnderConstruction;
+
+            if (message == null)
+            {
+                message = "This feature is under construction, and will be available in a future update.\nThis window will now close.\n(If you are an end-user seeing this message, then please contact the developer for more information.)";
+            }
+
+            if (caption == null)
+            {
+                caption = "Under Construction";
+            }
+
+            KryptonMessageBoxExtended.Show(owner, message, caption, ExtendedMessageBoxButtons.OK, ExtendedMessageBoxIcon.CUSTOM, messageboxTypeface: typeface, customMessageBoxIcon: _underConstruction);
         }
 
         /// <summary>Displays the developer information.</summary>
