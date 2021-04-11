@@ -1,5 +1,49 @@
-# Extended Toolkit Examples
+<!-- Start Document Outline -->
 
+* [Extended Toolkit Examples](#extended-toolkit-examples)
+	* [DataGridViewExt](#datagridviewext)
+	* [Command Links](#command-links)
+	* [Extended Krypton Messagebox](#extended-krypton-messagebox)
+	* [Krypton Colour Mixer](#krypton-colour-mixer)
+	* [Krypton Colour Wheel](#krypton-colour-wheel)
+	* [Krypton Knob Control](#krypton-knob-control)
+	* [Krypton Palette Colour Shader](#krypton-palette-colour-shader)
+	* [Krypton Property Grid](#krypton-property-grid)
+	* [Krypton Scrollbars](#krypton-scrollbars)
+	* [Krypton Theme Selector](#krypton-theme-selector)
+	* [Krypton Toast Notification](#krypton-toast-notification)
+		* [Version 1](#version-1)
+	* [Krypton Toggle Switch](#krypton-toggle-switch)
+	* [Krypton View Bar](#krypton-view-bar)
+	* [Krypton Circular Progress Bar](#krypton-circular-progress-bar)
+
+<!-- End Document Outline -->
+# Extended Toolkit Examples
+<!-- Following Are the new docs -->
+
+
+## `DataGridViewExt`
+[An Extension to the standard Krypton DataGridView](https://github.com/Krypton-Suite/Extended-Toolkit/tree/version-next/Source/Krypton%20Toolkit/Main/Krypton.Toolkit.Suite.Extended.DataGridViewExt)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Following need to be done -->
 ## Command Links
 
 ![](https://github.com/Krypton-Suite/Extended-Toolkit/blob/master/Assets/Examples/CommandLinks.png)
