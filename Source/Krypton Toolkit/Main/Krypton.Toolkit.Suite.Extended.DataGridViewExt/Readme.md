@@ -22,8 +22,9 @@
 - Krypton theming
 
 ## Usage
-The default display (as above) shows a single Detail View at the top, and a Multi Detail View at the bottom.  
-The "Launch List View" list button in the Title bar shows how to use custom Lists as a dataset and also custom columns.    
+- The default display (as above) shows a single Detail View at the top, and a Multi Detail View at the bottom.  
+- The "Launch List View" list button in the Title bar shows how to use custom Lists as a dataset and also custom columns.    
+- You *have* to click on the circular arrow to make the Row Expand / Collapse.
 ### ExtraDesignerVariables
 ![](ExtraDesignerVariables.png)
 
@@ -37,6 +38,7 @@ The "Launch List View" list button in the Title bar shows how to use custom List
 - How to implement the re-sortable single list
   - Mandy has 1 Item
   - Mark has 4
+  - If there are no Details Rows exist, then the Details view will not be shown. (And not `AllowUserToAddRows`)
 
 ## Single Detail View
 This allows a Master Detail view to be seen with very little code from the client side

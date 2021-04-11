@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Reflection;
 using System.Text.RegularExpressions;
-using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt
 {
@@ -147,8 +146,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt
                 // Call Sort on the ArrayList.
                 sortedList.Sort();
 
-                // Check the sort direction and then copy the sorted items
-                // back into the list.
+                // Check the sort direction and then copy the sorted items back into the list.
                 if (direction == ListSortDirection.Descending)
                 {
                     sortedList.Reverse();
@@ -169,14 +167,12 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt
 
                 isSortedValue = true;
 
-                // Raise the ListChanged event so bound controls refresh their
-                // values.
+                // Raise the ListChanged event so bound controls refresh their values.
                 OnListChanged(new ListChangedEventArgs(ListChangedType.Reset, -1));
             }
             else
             {
-                // If the property type does not implement IComparable, let the user
-                // know.
+                // If the property type does not implement IComparable, let the user know.
                 throw new NotSupportedException($"Cannot sort by {prop.Name}. This{prop.PropertyType} does not implement IComparable");
             }
 
@@ -190,8 +186,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt
             // Ensure the list has been sorted.
             if (unsortedItems != null)
             {
-                // Loop through the unsorted items and reorder the
-                // list per the unsorted list.
+                // Loop through the unsorted items and reorder the list per the unsorted list.
                 for (int i = 0; i < unsortedItems.Count;)
                 {
                     var position = Find(0, SortPropertyCore.Name,
@@ -301,14 +296,12 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt
                     }
 
                     // If the value is empty string, do nothing.
-                    // This behavior is compatible with DataGridView
-                    // AutoFilter code.
-                    else if (value == string.Empty) 
-                    { 
+                    // This behavior is compatible with DataGridView AutoFilter code.
+                    else if (value == string.Empty)
+                    {
                     }
 
-                    // If the value is not null or string, than process
-                    // normal.
+                    // If the value is not null or string, than process normal.
                     else if (Regex.Matches(value,
                      "[?[\\w ]+]? ?[=] ?'?[\\w|/: ]+'?",
                          RegexOptions.Singleline).Count == 1
@@ -341,7 +334,6 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt
 
         void FilteredListView_ListChanged(object sender, ListChangedEventArgs e)
         {
-            MessageBox.Show(RaiseListChangedEvents.ToString());
             // Add the new item
             if (e.ListChangedType == ListChangedType.ItemAdded)
             {

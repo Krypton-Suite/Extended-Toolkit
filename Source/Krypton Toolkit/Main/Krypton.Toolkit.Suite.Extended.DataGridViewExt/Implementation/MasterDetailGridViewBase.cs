@@ -14,7 +14,6 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 // ReSharper disable MemberCanBePrivate.Global
 // ReSharper disable UnusedAutoPropertyAccessor.Global
 
@@ -114,7 +113,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt.Implementation
             base.DataSource = source;
             ForeignKey = masterColumn;
             FilterFormat = @"={0}";
-            if (base.SelectionMode == DataGridViewSelectionMode.FullRowSelect)
+            if (SelectionMode == DataGridViewSelectionMode.FullRowSelect)
             {
                 ClearSelection();
             }
@@ -156,8 +155,11 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt.Implementation
             Collapse = 1
         }
 
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         protected readonly Dictionary<int, (int Height, int divider)> RowCurrent = new();
         private readonly int rowExpandedHeight = 300;
+
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         protected bool CollapseRow;
@@ -198,8 +200,17 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt.Implementation
                 }
 
                 RowCurrent[rowIndex] = (Rows[rowIndex].Height, Rows[rowIndex].DividerHeight);
-                Rows[rowIndex].Height = rowExpandedHeight;
-                Rows[rowIndex].DividerHeight = rowExpandedHeight - Rows[e.RowIndex].DividerHeight;
+                if (ShouldDisplayChildDetails(rowIndex))
+                {
+                    Rows[rowIndex].Height = rowExpandedHeight;
+                    Rows[rowIndex].DividerHeight = rowExpandedHeight - Rows[rowIndex].DividerHeight;
+                }
+                else
+                {
+                    // Need to show some difference to visually indicate an empty child
+                    Rows[rowIndex].Height += 4;
+                    Rows[rowIndex].DividerHeight += 4;
+                }
             }
 
             ClearSelection();
@@ -213,7 +224,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt.Implementation
                 refValues = (Rows[e.RowIndex].Height, Rows[e.RowIndex].DividerHeight);
 
             var scale = (refValues.Height - 16) / 2;
-            var rect = new Rectangle(scale, scale, 16, 16);
+            var rect = new Rectangle(16, scale, 16, 16);
             if (rect.Contains(e.Location))
             {
                 ExpandAndCollapseOther(e.RowIndex);
@@ -223,6 +234,15 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt.Implementation
                 CollapseRow = false;
             }
         }
+
+        // Should the row display the icon and allow Details view
+        private protected bool ShouldDisplayChildDetails(int rowIndex)
+        {
+            return AllowUserToAddRows
+                       || !HasNoChildDetails(rowIndex);
+        }
+
+        private protected abstract bool HasNoChildDetails(int rowIndex);
 
         private protected abstract void MasterDetailGridView_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e);
 
@@ -251,7 +271,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt.Implementation
             newGrid.ForeColor = ForeColor;
             newGrid.Font = Font;
             newGrid.GridColor = GridColor;
-            //BorderStyle = BorderStyle;
+            BorderStyle = BorderStyle;
             newGrid.CellBorderStyle = CellBorderStyle;
             newGrid.ColumnHeadersBorderStyle = ColumnHeadersBorderStyle;
             newGrid.ColumnHeadersDefaultCellStyle = ColumnHeadersDefaultCellStyle;
