@@ -41,8 +41,6 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt.Implementation
             RowPostPaint += MasterDetailGridView_RowPostPaint;
             Scroll += MasterDetailGridView_Scroll;
             SelectionChanged += MasterDetailGridView_SelectionChanged;
-            DetailsColumnHeadersVisible = true;
-            ExpandDetailsWhenFullRowSelectClicked = true;
             CellClick += MasterDetailGridViewBase_CellClick;
         }
 
@@ -157,11 +155,6 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt.Implementation
 
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        protected readonly Dictionary<int, (int Height, int divider)> RowCurrent = new();
-        private readonly int rowExpandedHeight = 300;
-
-        [Browsable(false)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         protected bool CollapseRow;
 
         private void MasterDetailGridViewBase_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -202,8 +195,8 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt.Implementation
                 RowCurrent[rowIndex] = (Rows[rowIndex].Height, Rows[rowIndex].DividerHeight);
                 if (ShouldDisplayChildDetails(rowIndex))
                 {
-                    Rows[rowIndex].Height = rowExpandedHeight;
-                    Rows[rowIndex].DividerHeight = rowExpandedHeight - Rows[rowIndex].DividerHeight;
+                    Rows[rowIndex].Height = DetailRowExpandedMaxHeight;
+                    Rows[rowIndex].DividerHeight = DetailRowExpandedMaxHeight - Rows[rowIndex].DividerHeight;
                 }
                 else
                 {
@@ -247,6 +240,12 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt.Implementation
         private protected abstract void MasterDetailGridView_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e);
 
         private protected abstract void MasterDetailGridView_SelectionChanged(object sender, EventArgs e);
+
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        protected readonly Dictionary<int, (int Height, int divider)> RowCurrent = new();
+
+        private int rowExpandedHeight = 300;
 
         private void MasterDetailGridView_Scroll(object sender, ScrollEventArgs e)
         {
@@ -317,13 +316,14 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt.Implementation
             newGrid.RowHeadersVisible = DetailsRowHeadersVisible;
         }
 
+        #region Details Appearance Designer variables
         /// <summary>
         /// Detail DataGridView ColumnHeaders Visibility
         /// </summary>
         [Category("Details Appearance")]
         [DefaultValue(true)]
         [Description("Detail DataGridView ColumnHeaders Visibility")]
-        public bool DetailsColumnHeadersVisible { get; set; }
+        public bool DetailsColumnHeadersVisible { get; set; } = true;
 
         /// <summary>
         /// Detail DataGridView ColumnHeaders Visibility
@@ -331,8 +331,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt.Implementation
         [Category("Details Appearance")]
         [DefaultValue(true)]
         [Description("Expand Details when FullRowSelect Clicked")]
-        public bool ExpandDetailsWhenFullRowSelectClicked { get; set; }
-
+        public bool ExpandDetailsWhenFullRowSelectClicked { get; set; } = true;
 
         /// <summary>
         /// Detail DataGridView RowHeaders Visibility
@@ -342,6 +341,26 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt.Implementation
         [Description("Detail DataGridView RowHeaders Visibility")]
         public bool DetailsRowHeadersVisible { get; set; }
 
+        /// <summary>
+        /// Detail DataGridView RowHeaders Visibility
+        /// </summary>
+        [Category("Details Appearance")]
+        [DefaultValue(300)]
+        [Description("Detail DataGridView MaxHeight, Min is 100")]
+        public int DetailRowExpandedMaxHeight
+        {
+            get => rowExpandedHeight;
+            set
+            {
+                if (value < 100) 
+                    throw new ArgumentOutOfRangeException(nameof(DetailRowExpandedMaxHeight));
+                rowExpandedHeight = value;
+            }
+        }
+
+        #endregion Details Appearance Designer variables
+
+        #region Existing DataGridView Designer Modifiers
         /// <summary>
         /// Override the Master RowHeaders to be always visible
         /// </summary>
@@ -365,11 +384,12 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt.Implementation
             get => base.RowHeadersWidth;
             set
             {
-                if (value < 18)
+                if (value < 32) // Leave room for the Default Selected icon and then drawing the Expand / collapse icon
                     throw new ArgumentOutOfRangeException(nameof(RowHeadersWidth));
                 base.RowHeadersWidth = value;
             }
         }
+        #endregion Existing DataGridView Designer Modifiers
 
     }
 
