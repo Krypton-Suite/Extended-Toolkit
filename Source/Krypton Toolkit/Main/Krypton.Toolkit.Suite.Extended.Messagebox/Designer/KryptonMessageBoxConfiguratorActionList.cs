@@ -6,7 +6,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
     internal class KryptonMessageBoxConfiguratorActionList : DesignerActionList
     {
         #region Instance Fields
-        private readonly KryptonMessageBoxConfigurator _messageBoxConfigurator;
+        private readonly KryptonMessageBoxManager _messageBoxConfigurator;
 
         private readonly IComponentChangeService _service;
         #endregion
@@ -14,7 +14,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         #region Identity
         public KryptonMessageBoxConfiguratorActionList(KryptonMessageBoxConfiguratorDesigner owner) : base(owner.Component)
         {
-            _messageBoxConfigurator = owner.Component as KryptonMessageBoxConfigurator;
+            _messageBoxConfigurator = owner.Component as KryptonMessageBoxManager;
 
             _service = (IComponentChangeService)GetService(typeof(IComponentChangeService));
         }

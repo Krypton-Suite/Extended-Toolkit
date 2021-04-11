@@ -65,9 +65,10 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
     public enum ExtendedMessageBoxTimeoutAction
     {
-        NOACTION = 0,
-        DEFAULT = 1,
-        CLOSE = 2
+        BUTTONONE = 0,
+        BUTTONTWO = 1,
+        BUTTONTHREE = 2,
+        CLOSE = 3
     }
 
     public enum ExtendedMessageBoxTimeoutButton
