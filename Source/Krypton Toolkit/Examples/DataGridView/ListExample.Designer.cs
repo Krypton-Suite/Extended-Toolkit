@@ -278,6 +278,7 @@ namespace DataGridViewExt
             this.masterSingleDetailView1.KryptonContextMenu = this.kryptonContextMenu1;
             this.masterSingleDetailView1.Location = new System.Drawing.Point(12, 20);
             this.masterSingleDetailView1.Name = "masterSingleDetailView1";
+            this.masterSingleDetailView1.DetailRowExpandedMaxHeight = 200;
             this.masterSingleDetailView1.RowHeadersWidth = 51;
             this.masterSingleDetailView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.masterSingleDetailView1.Size = new System.Drawing.Size(1058, 272);
