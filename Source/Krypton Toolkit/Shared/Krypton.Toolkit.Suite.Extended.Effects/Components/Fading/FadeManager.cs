@@ -41,6 +41,7 @@ namespace Krypton.Toolkit.Suite.Extended.Effects
         #endregion
 
         #region Constructor
+        /// <summary>Initializes a new instance of the <see cref="FadeManager" /> class.</summary>
         public FadeManager()
         {
             _fadeInValue = 1;
