@@ -4,28 +4,19 @@ namespace Krypton.Toolkit.Suite.Extended.Effects
 {
     public class FadeManager : Component
     {
+        /*
         #region Variables
-        private double _fadeInValue, _fadeOutValue;
-
         private FadeController _controller = null;
 
-        private int _fadeSleepTimer;
+        private int _fadeInterval;
 
         private KryptonForm _owner, _nextWindow;
         #endregion
 
         #region Properties
-        /// <summary>Gets or sets the fade in value.</summary>
-        /// <value>The fade in value.</value>
-        public double FadeInValue { get => _fadeInValue; set => _fadeInValue = value; }
-
-        /// <summary>Gets or sets the fade out value.</summary>
-        /// <value>The fade out value.</value>
-        public double FadeOutValue { get => _fadeOutValue; set => _fadeOutValue = value; }
-
         /// <summary>Gets or sets the fade sleep timer.</summary>
         /// <value>The fade sleep timer.</value>
-        public int FadeSleepTimer { get => _fadeSleepTimer; set => _fadeSleepTimer = value; }
+        public int FadeInterval { get => _fadeInterval; set => _fadeInterval = value; }
 
         /// <summary>Gets or sets the owner.</summary>
         /// <value>The owner.</value>
@@ -44,11 +35,7 @@ namespace Krypton.Toolkit.Suite.Extended.Effects
         /// <summary>Initializes a new instance of the <see cref="FadeManager" /> class.</summary>
         public FadeManager()
         {
-            _fadeInValue = 1;
-
-            _fadeOutValue = 0;
-
-            _fadeSleepTimer = 50;
+            _fadeInterval = 50;
 
             _nextWindow = null;
         }
@@ -57,17 +44,18 @@ namespace Krypton.Toolkit.Suite.Extended.Effects
         #region Methods
         public void FadeIn()
         {
-            _controller = new FadeController(_fadeInValue, _fadeOutValue, _fadeSleepTimer, _owner, _nextWindow);
+            _controller = new FadeController(_fadeInterval, _owner, _nextWindow);
 
             _controller.FadeWindowIn(_owner);
         }
 
         public void FadeOut()
         {
-            _controller = new FadeController(_fadeInValue, _fadeOutValue, _fadeSleepTimer, _owner, _nextWindow);
+            _controller = new FadeController(_fadeInterval, _owner, _nextWindow);
 
             _controller.FadeWindowOut(_owner, _nextWindow);
         }
         #endregion
+        */
     }
 }
