@@ -134,6 +134,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Z_Examples", "Z_Examples", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComboBoxExtApp", "Examples\ComboBoxExtApp\ComboBoxExtApp.csproj", "{52125BA9-5B87-4C08-BCAA-10093832031C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton.Toolkit.Suite.Extended.Effects", "Shared\Krypton.Toolkit.Suite.Extended.Effects\Krypton.Toolkit.Suite.Extended.Effects.csproj", "{62106BA1-C710-48FF-A9C2-A43E28FE8C4D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -340,6 +342,10 @@ Global
 		{52125BA9-5B87-4C08-BCAA-10093832031C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{52125BA9-5B87-4C08-BCAA-10093832031C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{52125BA9-5B87-4C08-BCAA-10093832031C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62106BA1-C710-48FF-A9C2-A43E28FE8C4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62106BA1-C710-48FF-A9C2-A43E28FE8C4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62106BA1-C710-48FF-A9C2-A43E28FE8C4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62106BA1-C710-48FF-A9C2-A43E28FE8C4D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -398,6 +404,7 @@ Global
 		{239FD995-7B65-4EC8-AB87-D85810400E34} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 		{B72B4C28-D185-49FC-B51E-6D1CA2A8434B} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 		{52125BA9-5B87-4C08-BCAA-10093832031C} = {25D5F0A6-A601-424B-9431-8EFE139A58A7}
+		{62106BA1-C710-48FF-A9C2-A43E28FE8C4D} = {726DC0AA-2B0D-4EAC-BB7A-7C49AE13A390}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A7CE7732-0982-4703-8EFD-7715D569BAB5}
