@@ -13,6 +13,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+
 // ReSharper disable MemberCanBePrivate.Global
 // ReSharper disable UnusedAutoPropertyAccessor.Global
 
@@ -40,7 +41,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt.Implementation
             RowPostPaint += MasterDetailGridView_RowPostPaint;
             Scroll += MasterDetailGridView_Scroll;
             SelectionChanged += MasterDetailGridView_SelectionChanged;
-            DetailsColumnHeadersVisible = true;
+            CellClick += MasterDetailGridViewBase_CellClick;
         }
 
         /// <summary>
@@ -110,7 +111,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt.Implementation
             base.DataSource = source;
             ForeignKey = masterColumn;
             FilterFormat = @"={0}";
-            if (base.SelectionMode == DataGridViewSelectionMode.FullRowSelect)
+            if (SelectionMode == DataGridViewSelectionMode.FullRowSelect)
             {
                 ClearSelection();
             }
@@ -137,6 +138,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt.Implementation
                 RowPostPaint -= MasterDetailGridView_RowPostPaint;
                 Scroll -= MasterDetailGridView_Scroll;
                 SelectionChanged -= MasterDetailGridView_SelectionChanged;
+                CellClick -= MasterDetailGridViewBase_CellClick;
             }
             base.Dispose(disposing);
         }
@@ -151,11 +153,63 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt.Implementation
             Collapse = 1
         }
 
-        protected readonly Dictionary<int, (int Height, int divider)> RowCurrent = new();
-        private readonly int rowExpandedHeight = 300;
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         protected bool CollapseRow;
+
+        private void MasterDetailGridViewBase_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if ((SelectionMode == DataGridViewSelectionMode.FullRowSelect)
+                && ExpandDetailsWhenFullRowSelectClicked
+                && (e.ColumnIndex >= 0)
+                )
+            {
+                ExpandAndCollapseOther(e.RowIndex);
+            }
+        }
+
+        private void ExpandAndCollapseOther(int rowIndex)
+        {
+            if (RowCurrent.TryGetValue(rowIndex, out var refValues))
+            {
+                // Restore the row to it's original
+                RowCurrent.Clear();
+                Rows[rowIndex].Height = refValues.Height;
+                Rows[rowIndex].DividerHeight = refValues.divider;
+            }
+            else
+            {
+                // Was not expanded here
+                if (RowCurrent.Count != 0)
+                {
+                    var eRow = RowCurrent.First().Key;
+                    refValues = RowCurrent.First().Value;
+                    RowCurrent.Clear();
+                    Rows[eRow].Height = refValues.Height;
+                    Rows[eRow].DividerHeight = refValues.divider;
+                    ClearSelection();
+                    CollapseRow = true;
+                    Rows[eRow].Selected = true;
+                }
+
+                RowCurrent[rowIndex] = (Rows[rowIndex].Height, Rows[rowIndex].DividerHeight);
+                if (ShouldDisplayChildDetails(rowIndex))
+                {
+                    Rows[rowIndex].Height = DetailRowExpandedMaxHeight;
+                    Rows[rowIndex].DividerHeight = DetailRowExpandedMaxHeight - Rows[rowIndex].DividerHeight;
+                }
+                else
+                {
+                    // Need to show some difference to visually indicate an empty child
+                    Rows[rowIndex].Height += 4;
+                    Rows[rowIndex].DividerHeight += 4;
+                }
+            }
+
+            ClearSelection();
+            CollapseRow = true;
+            Rows[rowIndex].Selected = true;
+        }
 
         private void MasterDetailGridView_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
@@ -163,40 +217,10 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt.Implementation
                 refValues = (Rows[e.RowIndex].Height, Rows[e.RowIndex].DividerHeight);
 
             var scale = (refValues.Height - 16) / 2;
-            var rect = new Rectangle(scale, scale, 16, 16);
+            var rect = new Rectangle(16, scale, 16, 16);
             if (rect.Contains(e.Location))
             {
-                // Clicked on the Expand area
-                if (RowCurrent.TryGetValue(e.RowIndex, out refValues))
-                {
-                    // Restore the row to it's original
-                    RowCurrent.Clear();
-                    Rows[e.RowIndex].Height = refValues.Height;
-                    Rows[e.RowIndex].DividerHeight = refValues.divider;
-                }
-                else
-                {
-                    // Was not expanded here
-                    if (RowCurrent.Count != 0)
-                    {
-                        var eRow = RowCurrent.First().Key;
-                        refValues = RowCurrent.First().Value;
-                        RowCurrent.Clear();
-                        Rows[eRow].Height = refValues.Height;
-                        Rows[eRow].DividerHeight = refValues.divider;
-                        ClearSelection();
-                        CollapseRow = true;
-                        Rows[eRow].Selected = true;
-                    }
-
-                    RowCurrent[e.RowIndex] = (Rows[e.RowIndex].Height, Rows[e.RowIndex].DividerHeight);
-                    Rows[e.RowIndex].Height = rowExpandedHeight;
-                    Rows[e.RowIndex].DividerHeight = rowExpandedHeight - Rows[e.RowIndex].DividerHeight;
-                }
-
-                ClearSelection();
-                CollapseRow = true;
-                Rows[e.RowIndex].Selected = true;
+                ExpandAndCollapseOther(e.RowIndex);
             }
             else
             {
@@ -204,9 +228,24 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt.Implementation
             }
         }
 
+        // Should the row display the icon and allow Details view
+        private protected bool ShouldDisplayChildDetails(int rowIndex)
+        {
+            return AllowUserToAddRows
+                       || !HasNoChildDetails(rowIndex);
+        }
+
+        private protected abstract bool HasNoChildDetails(int rowIndex);
+
         private protected abstract void MasterDetailGridView_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e);
 
         private protected abstract void MasterDetailGridView_SelectionChanged(object sender, EventArgs e);
+
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        protected readonly Dictionary<int, (int Height, int divider)> RowCurrent = new();
+
+        private int rowExpandedHeight = 300;
 
         private void MasterDetailGridView_Scroll(object sender, ScrollEventArgs e)
         {
@@ -231,7 +270,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt.Implementation
             newGrid.ForeColor = ForeColor;
             newGrid.Font = Font;
             newGrid.GridColor = GridColor;
-            //BorderStyle = BorderStyle;
+            BorderStyle = BorderStyle;
             newGrid.CellBorderStyle = CellBorderStyle;
             newGrid.ColumnHeadersBorderStyle = ColumnHeadersBorderStyle;
             newGrid.ColumnHeadersDefaultCellStyle = ColumnHeadersDefaultCellStyle;
@@ -277,13 +316,22 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt.Implementation
             newGrid.RowHeadersVisible = DetailsRowHeadersVisible;
         }
 
+        #region Details Appearance Designer variables
         /// <summary>
         /// Detail DataGridView ColumnHeaders Visibility
         /// </summary>
         [Category("Details Appearance")]
         [DefaultValue(true)]
         [Description("Detail DataGridView ColumnHeaders Visibility")]
-        public bool DetailsColumnHeadersVisible { get; set; }
+        public bool DetailsColumnHeadersVisible { get; set; } = true;
+
+        /// <summary>
+        /// Detail DataGridView ColumnHeaders Visibility
+        /// </summary>
+        [Category("Details Appearance")]
+        [DefaultValue(true)]
+        [Description("Expand Details when FullRowSelect Clicked")]
+        public bool ExpandDetailsWhenFullRowSelectClicked { get; set; } = true;
 
         /// <summary>
         /// Detail DataGridView RowHeaders Visibility
@@ -293,6 +341,26 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt.Implementation
         [Description("Detail DataGridView RowHeaders Visibility")]
         public bool DetailsRowHeadersVisible { get; set; }
 
+        /// <summary>
+        /// Detail DataGridView RowHeaders Visibility
+        /// </summary>
+        [Category("Details Appearance")]
+        [DefaultValue(300)]
+        [Description("Detail DataGridView MaxHeight, Min is 100")]
+        public int DetailRowExpandedMaxHeight
+        {
+            get => rowExpandedHeight;
+            set
+            {
+                if (value < 100) 
+                    throw new ArgumentOutOfRangeException(nameof(DetailRowExpandedMaxHeight));
+                rowExpandedHeight = value;
+            }
+        }
+
+        #endregion Details Appearance Designer variables
+
+        #region Existing DataGridView Designer Modifiers
         /// <summary>
         /// Override the Master RowHeaders to be always visible
         /// </summary>
@@ -316,11 +384,12 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt.Implementation
             get => base.RowHeadersWidth;
             set
             {
-                if (value < 18)
+                if (value < 32) // Leave room for the Default Selected icon and then drawing the Expand / collapse icon
                     throw new ArgumentOutOfRangeException(nameof(RowHeadersWidth));
                 base.RowHeadersWidth = value;
             }
         }
+        #endregion Existing DataGridView Designer Modifiers
 
     }
 
