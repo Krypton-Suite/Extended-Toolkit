@@ -60,7 +60,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <summary>Use a two button layout.</summary>
         TWOBUTTONS = 1,
         /// <summary>Use a three button layout.</summary>
-        THREEBUTTONS = 3
+        THREEBUTTONS = 3,
+        NONE = 4
     }
 
     public enum ExtendedMessageBoxTimeoutAction

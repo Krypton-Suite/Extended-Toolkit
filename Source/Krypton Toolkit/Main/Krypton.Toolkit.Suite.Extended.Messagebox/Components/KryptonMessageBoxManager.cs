@@ -18,9 +18,13 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         private CheckState _optionalCheckBoxCheckState;
 
+        private DialogResult _customButtonOneResult, _customButtonTwoResult, _customButtonThreeResult;
+
         private Font _messageBoxTypeface;
 
         private ExtendedMessageBoxButtons _buttons;
+
+        private ExtendedMessageBoxCustomButtonOptions _customButtonOptions;
 
         private MessageBoxDefaultButton _defaultButton;
 
@@ -77,6 +81,21 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         public bool ShowCopyButton { get => _showCopyButton; set => _showCopyButton = value; }
         */
 
+        /// <summary>Gets or sets the custom button one result.</summary>
+        /// <value>The custom button one result.</value>
+        [DefaultValue(typeof(DialogResult), "DialogResult.None"), Description("Gets or sets the custom button one result.")]
+        public DialogResult CustomButtonOneResult { get => _customButtonOneResult; set => _customButtonOneResult = value; }
+
+        /// <summary>Gets or sets the custom button two result.</summary>
+        /// <value>The custom button two result.</value>
+        [DefaultValue(typeof(DialogResult), "DialogResult.None"), Description("Gets or sets the custom button two result.")]
+        public DialogResult CustomButtonTwoResult { get => _customButtonTwoResult; set => _customButtonTwoResult = value; }
+
+        /// <summary>Gets or sets the custom button three result.</summary>
+        /// <value>The custom button three result.</value>
+        [DefaultValue(typeof(DialogResult), "DialogResult.None"), Description("Gets or sets the custom button three result.")]
+        public DialogResult CustomButtonThreeResult { get => _customButtonThreeResult; set => _customButtonThreeResult = value; }
+
         /// <summary>Gets or sets the state of the optional CheckBox check.</summary>
         /// <value>The state of the optional CheckBox check.</value>
         [DefaultValue(typeof(CheckState), "CheckState.Unchecked"), Description("Gets or sets the state of the optional CheckBox check.")]
@@ -91,6 +110,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <value>The message box buttons.</value>
         [DefaultValue(typeof(ExtendedMessageBoxButtons), "ExtendedMessageBoxButtons.OK"), Description("Gets or sets the message box buttons.")]
         public ExtendedMessageBoxButtons MessageBoxButtons { get => _buttons; set => _buttons = value; }
+
+        /// <summary>Gets or sets the custom button options.</summary>
+        /// <value>The custom button options.</value>
+        [DefaultValue(null), Description("Gets or sets the custom button options.")]
+        public ExtendedMessageBoxCustomButtonOptions CustomButtonOptions { get => _customButtonOptions; set => _customButtonOptions = value; }
 
         /// <summary>Gets or sets the message box default button.</summary>
         /// <value>The message box default button.</value>
@@ -159,6 +183,21 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         public string CopyButtonText { get => _copyButtonText; set => _copyButtonText = value; }
         */
 
+        /// <summary>Gets or sets the button one custom text.</summary>
+        /// <value>The button one custom text.</value>
+        [DefaultValue(null), Description("Gets or sets the button one custom text.")]
+        public string ButtonOneCustomText { get => _messageBoxButtonOneCustomText; set => _messageBoxButtonOneCustomText = value; }
+
+        /// <summary>Gets or sets the button two custom text.</summary>
+        /// <value>The button two custom text.</value>
+        [DefaultValue(null), Description("Gets or sets the button two custom text.")]
+        public string ButtonTwoCustomText { get => _messageBoxButtonTwoCustomText; set => _messageBoxButtonTwoCustomText = value; }
+
+        /// <summary>Gets or sets the button three custom text.</summary>
+        /// <value>The button three custom text.</value>
+        [DefaultValue(null), Description("Gets or sets the button three custom text.")]
+        public string ButtonThreeCustomText { get => _messageBoxButtonThreeCustomText; set => _messageBoxButtonThreeCustomText = value; }
+
         /// <summary>Gets or sets the help parameters.</summary>
         /// <value>The help parameters.</value>
         [DefaultValue(null), Description("Gets or sets the help parameters.")]
@@ -211,12 +250,15 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <summary>Displays the message box.</summary>
         public void DisplayMessageBox()
         {
-            ShowMessageBoxEventArgs e = new ShowMessageBoxEventArgs(_owner, _messageBoxContentText, _messageBoxCaption, _buttons, _messageBoxIcon,
-                                                                    _defaultButton, _options, _helpPath, _helpNavigator, _helpParam, _showCtrlCopy,
+            ShowMessageBoxEventArgs e = new ShowMessageBoxEventArgs(_owner, _messageBoxContentText, _messageBoxCaption, _buttons,
+                                                                    _customButtonOptions, _messageBoxIcon, _defaultButton,
+                                                                    _options, _helpPath, _helpNavigator, _helpParam, _showCtrlCopy,
                                                                     _messageBoxTypeface, _showOptionalCheckBox, _optionalCheckBoxText,
-                                                                    _isOptionalCheckBoxChecked, _optionalCheckBoxAnchor, _optionalCheckBoxLocation,
-                                                                    _customMessageBoxIcon, _showCopyButton, _copyButtonText, _fade,
-                                                                    _fadeSleepTimer);
+                                                                    _isOptionalCheckBoxChecked, _optionalCheckBoxAnchor,
+                                                                    _optionalCheckBoxLocation, _customMessageBoxIcon, _showCopyButton,
+                                                                    _copyButtonText, _fade, _fadeSleepTimer, _messageBoxButtonOneCustomText,
+                                                                    _messageBoxButtonTwoCustomText, _messageBoxButtonThreeCustomText,
+                                                                    _customButtonOneResult, _customButtonTwoResult, _customButtonThreeResult);
 
             e.ShowMessageBox();
         }
