@@ -2053,22 +2053,22 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             switch (customButtonOptions)
             {
                 case ExtendedMessageBoxCustomButtonOptions.ONEBUTTON:
-                    _button1.Text = buttonOneText;
+                    _button3.Text = buttonOneText;
 
-                    _button1.DialogResult = buttonOneResult;
+                    _button3.DialogResult = buttonOneResult;
 
-                    _button2.Visible = _button3.Visible = false;
+                    _button1.Visible = _button2.Visible = false;
                     break;
                 case ExtendedMessageBoxCustomButtonOptions.TWOBUTTONS:
-                    _button1.Text = buttonOneText;
+                    _button2.Text = buttonOneText;
 
-                    _button1.DialogResult = buttonOneResult;
+                    _button2.DialogResult = buttonOneResult;
 
-                    _button2.Text = buttonTwoText;
+                    _button3.Text = buttonTwoText;
 
-                    _button2.DialogResult = buttonTwoResult ?? DialogResult.None;
+                    _button3.DialogResult = buttonTwoResult ?? DialogResult.None;
 
-                    _button3.Visible = false;
+                    _button1.Visible = false;
                     break;
                 case ExtendedMessageBoxCustomButtonOptions.THREEBUTTONS:
                     _button1.Text = buttonOneText;

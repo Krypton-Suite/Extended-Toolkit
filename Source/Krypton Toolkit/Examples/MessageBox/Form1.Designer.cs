@@ -31,9 +31,13 @@ namespace MessageBox
         {
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             this.kbtnTest = new Krypton.Toolkit.KryptonButton();
+            this.kchkDefineTypeface = new Krypton.Toolkit.KryptonCheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
-            this.kchkDefineTypeface = new Krypton.Toolkit.KryptonCheckBox();
+            this.kryptonGroupBox4 = new Krypton.Toolkit.KryptonGroupBox();
+            this.knudFadeSleepTimerValue = new Krypton.Toolkit.KryptonNumericUpDown();
+            this.klblFadeSleepTimer = new Krypton.Toolkit.KryptonLabel();
+            this.kchkFadeMessageBox = new Krypton.Toolkit.KryptonCheckBox();
             this.kryptonGroupBox3 = new Krypton.Toolkit.KryptonGroupBox();
             this.ktxtOptionalCheckBoxText = new Krypton.Toolkit.KryptonTextBox();
             this.kchkShowOptionalCheckBoxResult = new Krypton.Toolkit.KryptonCheckBox();
@@ -61,15 +65,17 @@ namespace MessageBox
             this.kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
             this.ktxtCaption = new Krypton.Toolkit.KryptonTextBox();
             this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
-            this.kryptonGroupBox4 = new Krypton.Toolkit.KryptonGroupBox();
-            this.kchkFadeMessageBox = new Krypton.Toolkit.KryptonCheckBox();
-            this.klblFadeSleepTimer = new Krypton.Toolkit.KryptonLabel();
-            this.knudFadeSleepTimerValue = new Krypton.Toolkit.KryptonNumericUpDown();
             this.kmbc = new Krypton.Toolkit.Suite.Extended.Messagebox.KryptonMessageBoxManager();
+            this.krbCustomButtons = new Krypton.Toolkit.KryptonRadioButton();
+            this.kryptonGroupBox5 = new Krypton.Toolkit.KryptonGroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
             this.kryptonPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox4.Panel)).BeginInit();
+            this.kryptonGroupBox4.Panel.SuspendLayout();
+            this.kryptonGroupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox3.Panel)).BeginInit();
             this.kryptonGroupBox3.Panel.SuspendLayout();
@@ -82,10 +88,9 @@ namespace MessageBox
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1.Panel)).BeginInit();
             this.kryptonGroupBox1.Panel.SuspendLayout();
             this.kryptonGroupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox4.Panel)).BeginInit();
-            this.kryptonGroupBox4.Panel.SuspendLayout();
-            this.kryptonGroupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox5.Panel)).BeginInit();
+            this.kryptonGroupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // kryptonPanel1
@@ -109,6 +114,14 @@ namespace MessageBox
             this.kbtnTest.Values.Text = "&Test";
             this.kbtnTest.Click += new System.EventHandler(this.kbtnTest_Click);
             // 
+            // kchkDefineTypeface
+            // 
+            this.kchkDefineTypeface.Location = new System.Drawing.Point(12, 10);
+            this.kchkDefineTypeface.Name = "kchkDefineTypeface";
+            this.kchkDefineTypeface.Size = new System.Drawing.Size(111, 20);
+            this.kchkDefineTypeface.TabIndex = 7;
+            this.kchkDefineTypeface.Values.Text = "Define &Typeface";
+            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
@@ -120,6 +133,7 @@ namespace MessageBox
             // 
             // kryptonPanel2
             // 
+            this.kryptonPanel2.Controls.Add(this.kryptonGroupBox5);
             this.kryptonPanel2.Controls.Add(this.kryptonGroupBox4);
             this.kryptonPanel2.Controls.Add(this.kryptonGroupBox3);
             this.kryptonPanel2.Controls.Add(this.kryptonGroupBox2);
@@ -134,13 +148,55 @@ namespace MessageBox
             this.kryptonPanel2.Size = new System.Drawing.Size(963, 580);
             this.kryptonPanel2.TabIndex = 2;
             // 
-            // kchkDefineTypeface
+            // kryptonGroupBox4
             // 
-            this.kchkDefineTypeface.Location = new System.Drawing.Point(12, 10);
-            this.kchkDefineTypeface.Name = "kchkDefineTypeface";
-            this.kchkDefineTypeface.Size = new System.Drawing.Size(111, 20);
-            this.kchkDefineTypeface.TabIndex = 7;
-            this.kchkDefineTypeface.Values.Text = "Define &Typeface";
+            this.kryptonGroupBox4.Location = new System.Drawing.Point(77, 277);
+            this.kryptonGroupBox4.Name = "kryptonGroupBox4";
+            // 
+            // kryptonGroupBox4.Panel
+            // 
+            this.kryptonGroupBox4.Panel.Controls.Add(this.knudFadeSleepTimerValue);
+            this.kryptonGroupBox4.Panel.Controls.Add(this.klblFadeSleepTimer);
+            this.kryptonGroupBox4.Panel.Controls.Add(this.kchkFadeMessageBox);
+            this.kryptonGroupBox4.Size = new System.Drawing.Size(434, 150);
+            this.kryptonGroupBox4.TabIndex = 8;
+            this.kryptonGroupBox4.Values.Heading = "Fade Values";
+            // 
+            // knudFadeSleepTimerValue
+            // 
+            this.knudFadeSleepTimerValue.Enabled = false;
+            this.knudFadeSleepTimerValue.Location = new System.Drawing.Point(270, 13);
+            this.knudFadeSleepTimerValue.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.knudFadeSleepTimerValue.Name = "knudFadeSleepTimerValue";
+            this.knudFadeSleepTimerValue.Size = new System.Drawing.Size(120, 22);
+            this.knudFadeSleepTimerValue.TabIndex = 3;
+            this.knudFadeSleepTimerValue.Value = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            // 
+            // klblFadeSleepTimer
+            // 
+            this.klblFadeSleepTimer.Enabled = false;
+            this.klblFadeSleepTimer.Location = new System.Drawing.Point(161, 15);
+            this.klblFadeSleepTimer.Name = "klblFadeSleepTimer";
+            this.klblFadeSleepTimer.Size = new System.Drawing.Size(103, 20);
+            this.klblFadeSleepTimer.TabIndex = 3;
+            this.klblFadeSleepTimer.Values.Text = "Fade SleepTimer:";
+            // 
+            // kchkFadeMessageBox
+            // 
+            this.kchkFadeMessageBox.Location = new System.Drawing.Point(10, 15);
+            this.kchkFadeMessageBox.Name = "kchkFadeMessageBox";
+            this.kchkFadeMessageBox.Size = new System.Drawing.Size(145, 20);
+            this.kchkFadeMessageBox.TabIndex = 3;
+            this.kchkFadeMessageBox.Values.Text = "Fade the &Message Box";
+            this.kchkFadeMessageBox.CheckedChanged += new System.EventHandler(this.kchkFadeMessageBox_CheckedChanged);
             // 
             // kryptonGroupBox3
             // 
@@ -200,6 +256,7 @@ namespace MessageBox
             // 
             // kryptonGroupBox2.Panel
             // 
+            this.kryptonGroupBox2.Panel.Controls.Add(this.krbCustomButtons);
             this.kryptonGroupBox2.Panel.Controls.Add(this.krbButtonsYesNoCancel);
             this.kryptonGroupBox2.Panel.Controls.Add(this.krbButtonsRetryCancel);
             this.kryptonGroupBox2.Panel.Controls.Add(this.krbButtonsYesNo);
@@ -260,7 +317,7 @@ namespace MessageBox
             // 
             // kryptonGroupBox1
             // 
-            this.kryptonGroupBox1.Location = new System.Drawing.Point(517, 144);
+            this.kryptonGroupBox1.Location = new System.Drawing.Point(77, 433);
             this.kryptonGroupBox1.Name = "kryptonGroupBox1";
             // 
             // kryptonGroupBox1.Panel
@@ -396,61 +453,18 @@ namespace MessageBox
             this.kryptonLabel1.TabIndex = 0;
             this.kryptonLabel1.Values.Text = "Caption:";
             // 
-            // kryptonGroupBox4
-            // 
-            this.kryptonGroupBox4.Location = new System.Drawing.Point(77, 277);
-            this.kryptonGroupBox4.Name = "kryptonGroupBox4";
-            // 
-            // kryptonGroupBox4.Panel
-            // 
-            this.kryptonGroupBox4.Panel.Controls.Add(this.knudFadeSleepTimerValue);
-            this.kryptonGroupBox4.Panel.Controls.Add(this.klblFadeSleepTimer);
-            this.kryptonGroupBox4.Panel.Controls.Add(this.kchkFadeMessageBox);
-            this.kryptonGroupBox4.Size = new System.Drawing.Size(434, 150);
-            this.kryptonGroupBox4.TabIndex = 8;
-            this.kryptonGroupBox4.Values.Heading = "Fade Values";
-            // 
-            // kchkFadeMessageBox
-            // 
-            this.kchkFadeMessageBox.Location = new System.Drawing.Point(10, 15);
-            this.kchkFadeMessageBox.Name = "kchkFadeMessageBox";
-            this.kchkFadeMessageBox.Size = new System.Drawing.Size(145, 20);
-            this.kchkFadeMessageBox.TabIndex = 3;
-            this.kchkFadeMessageBox.Values.Text = "Fade the &Message Box";
-            this.kchkFadeMessageBox.CheckedChanged += new System.EventHandler(this.kchkFadeMessageBox_CheckedChanged);
-            // 
-            // klblFadeSleepTimer
-            // 
-            this.klblFadeSleepTimer.Enabled = false;
-            this.klblFadeSleepTimer.Location = new System.Drawing.Point(161, 15);
-            this.klblFadeSleepTimer.Name = "klblFadeSleepTimer";
-            this.klblFadeSleepTimer.Size = new System.Drawing.Size(103, 20);
-            this.klblFadeSleepTimer.TabIndex = 3;
-            this.klblFadeSleepTimer.Values.Text = "Fade SleepTimer:";
-            // 
-            // knudFadeSleepTimerValue
-            // 
-            this.knudFadeSleepTimerValue.Enabled = false;
-            this.knudFadeSleepTimerValue.Location = new System.Drawing.Point(270, 13);
-            this.knudFadeSleepTimerValue.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.knudFadeSleepTimerValue.Name = "knudFadeSleepTimerValue";
-            this.knudFadeSleepTimerValue.Size = new System.Drawing.Size(120, 22);
-            this.knudFadeSleepTimerValue.TabIndex = 3;
-            this.knudFadeSleepTimerValue.Value = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            // 
             // kmbc
             // 
+            this.kmbc.ButtonOneCustomText = "Does";
+            this.kmbc.ButtonThreeCustomText = "Work?";
+            this.kmbc.ButtonTwoCustomText = "This";
+            this.kmbc.CustomButtonOneResult = System.Windows.Forms.DialogResult.OK;
+            this.kmbc.CustomButtonOptions = Krypton.Toolkit.Suite.Extended.Messagebox.ExtendedMessageBoxCustomButtonOptions.THREEBUTTONS;
+            this.kmbc.CustomButtonThreeResult = System.Windows.Forms.DialogResult.None;
+            this.kmbc.CustomButtonTwoResult = System.Windows.Forms.DialogResult.None;
             this.kmbc.Fade = true;
             this.kmbc.HelpNavigator = System.Windows.Forms.HelpNavigator.AssociateIndex;
-            this.kmbc.MessageBoxButtons = Krypton.Toolkit.Suite.Extended.Messagebox.ExtendedMessageBoxButtons.OK;
+            this.kmbc.MessageBoxButtons = Krypton.Toolkit.Suite.Extended.Messagebox.ExtendedMessageBoxButtons.CUSTOM;
             this.kmbc.MessageBoxContentText = "kryptonMessageBoxConfigurator1";
             this.kmbc.MessageBoxDefaultButton = System.Windows.Forms.MessageBoxDefaultButton.Button1;
             this.kmbc.MessageBoxIcon = Krypton.Toolkit.Suite.Extended.Messagebox.ExtendedMessageBoxIcon.NONE;
@@ -458,6 +472,21 @@ namespace MessageBox
             this.kmbc.OptionalCheckBoxAnchor = System.Windows.Forms.AnchorStyles.Left;
             this.kmbc.OptionalCheckBoxCheckState = System.Windows.Forms.CheckState.Unchecked;
             this.kmbc.TimeOut = 0;
+            // 
+            // krbCustomButtons
+            // 
+            this.krbCustomButtons.Location = new System.Drawing.Point(116, 39);
+            this.krbCustomButtons.Name = "krbCustomButtons";
+            this.krbCustomButtons.Size = new System.Drawing.Size(110, 20);
+            this.krbCustomButtons.TabIndex = 10;
+            this.krbCustomButtons.Values.Text = "C&utsom Buttons";
+            // 
+            // kryptonGroupBox5
+            // 
+            this.kryptonGroupBox5.Location = new System.Drawing.Point(517, 144);
+            this.kryptonGroupBox5.Name = "kryptonGroupBox5";
+            this.kryptonGroupBox5.Size = new System.Drawing.Size(436, 283);
+            this.kryptonGroupBox5.TabIndex = 9;
             // 
             // Form1
             // 
@@ -478,6 +507,11 @@ namespace MessageBox
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
             this.kryptonPanel2.ResumeLayout(false);
             this.kryptonPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox4.Panel)).EndInit();
+            this.kryptonGroupBox4.Panel.ResumeLayout(false);
+            this.kryptonGroupBox4.Panel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox4)).EndInit();
+            this.kryptonGroupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox3.Panel)).EndInit();
             this.kryptonGroupBox3.Panel.ResumeLayout(false);
             this.kryptonGroupBox3.Panel.PerformLayout();
@@ -493,11 +527,9 @@ namespace MessageBox
             this.kryptonGroupBox1.Panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1)).EndInit();
             this.kryptonGroupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox4.Panel)).EndInit();
-            this.kryptonGroupBox4.Panel.ResumeLayout(false);
-            this.kryptonGroupBox4.Panel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox4)).EndInit();
-            this.kryptonGroupBox4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox5.Panel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox5)).EndInit();
+            this.kryptonGroupBox5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -541,6 +573,8 @@ namespace MessageBox
         private Krypton.Toolkit.KryptonNumericUpDown knudFadeSleepTimerValue;
         private Krypton.Toolkit.KryptonLabel klblFadeSleepTimer;
         private Krypton.Toolkit.KryptonCheckBox kchkFadeMessageBox;
+        private Krypton.Toolkit.KryptonGroupBox kryptonGroupBox5;
+        private Krypton.Toolkit.KryptonRadioButton krbCustomButtons;
     }
 }
 
