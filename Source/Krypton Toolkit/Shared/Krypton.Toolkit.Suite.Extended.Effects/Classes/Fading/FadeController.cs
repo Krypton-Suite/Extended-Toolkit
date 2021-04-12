@@ -5,7 +5,7 @@ using System.Windows.Forms;
 namespace Krypton.Toolkit.Suite.Extended.Effects
 {
     /// <summary>Handles the fading effects. Original library: https://gist.github.com/nathan-fiscaletti/3c0514862fe88b5664b10444e1098778.</summary>
-    public class FadeController
+    internal class FadeController
     {
         #region Variables
         private readonly KryptonForm form;                                           // The form to modify the opacity of.
