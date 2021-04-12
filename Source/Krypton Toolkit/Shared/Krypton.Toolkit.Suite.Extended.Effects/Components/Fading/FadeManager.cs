@@ -4,27 +4,18 @@ namespace Krypton.Toolkit.Suite.Extended.Effects
 {
     public class FadeManager : Component
     {
-        /*
         #region Variables
-        private FadeController _controller = null;
+        private float _fadeSpeed;
 
-        private int _fadeInterval;
-
-        private KryptonForm _owner, _nextWindow;
+        private KryptonForm _windowToFade, _parentWindow;
         #endregion
 
         #region Properties
-        /// <summary>Gets or sets the fade sleep timer.</summary>
-        /// <value>The fade sleep timer.</value>
-        public int FadeInterval { get => _fadeInterval; set => _fadeInterval = value; }
+        public float FadeSpeed { get => _fadeSpeed; set => _fadeSpeed = value; }
 
-        /// <summary>Gets or sets the owner.</summary>
-        /// <value>The owner.</value>
-        public KryptonForm Owner { get => _owner; set => _owner = value; }
+        public KryptonForm WindowToFade { get => _windowToFade; set => _windowToFade = value; }
 
-        /// <summary>Gets or sets the next window.</summary>
-        /// <value>The next window.</value>
-        public KryptonForm NextWindow { get => _nextWindow; set => _nextWindow = value; }
+        public KryptonForm ParentWindow { get => _parentWindow; set => _parentWindow = value; }
         #endregion
 
         #region Custom Events
@@ -35,27 +26,26 @@ namespace Krypton.Toolkit.Suite.Extended.Effects
         /// <summary>Initializes a new instance of the <see cref="FadeManager" /> class.</summary>
         public FadeManager()
         {
-            _fadeInterval = 50;
+            _fadeSpeed = 5;
 
-            _nextWindow = null;
+            _parentWindow = null;
+
+            _windowToFade = null;
         }
         #endregion
 
         #region Methods
-        public void FadeIn()
-        {
-            _controller = new FadeController(_fadeInterval, _owner, _nextWindow);
+        /// <summary>Fades the window in.</summary>
+        public void FadeIn() => FadeController.FadeIn(_windowToFade, _fadeSpeed);
 
-            _controller.FadeWindowIn(_owner);
-        }
+        /// <summary>Fades the window out.</summary>
+        public void FadeOut() => FadeController.FadeOut(_windowToFade, _fadeSpeed);
 
-        public void FadeOut()
-        {
-            _controller = new FadeController(_fadeInterval, _owner, _nextWindow);
+        /// <summary>Fades the window out and close.</summary>
+        public void FadeOutAndClose() => FadeController.FadeOutAndClose(_windowToFade, _fadeSpeed);
 
-            _controller.FadeWindowOut(_owner, _nextWindow);
-        }
+        /// <summary>Fades the dialog.</summary>
+        public void FadeDialog() => FadeController.ShowDialog(_windowToFade, _parentWindow, _fadeSpeed);
         #endregion
-        */
     }
 }
