@@ -5,7 +5,8 @@
 ![](https://github.com/Krypton-Suite/Extended-Toolkit/blob/master/Assets/Examples/CommandLinks.png)
 
 ## `KryptonForm` Fade Effects
-![](https://github.com/Krypton-Suite/Extended-Toolkit/blob/master/Assets/Examples/KryptonFade.gif)
+
+![](https://github.com/Krypton-Suite/Extended-Toolkit/blob/version-next-effects/Assets/Examples/KryptonFade.gif)
 
 ## Extended Krypton Messagebox
 
