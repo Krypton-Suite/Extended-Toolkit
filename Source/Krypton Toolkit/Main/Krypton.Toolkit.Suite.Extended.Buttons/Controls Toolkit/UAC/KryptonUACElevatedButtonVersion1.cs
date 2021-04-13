@@ -23,6 +23,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
     /// The shield is extracted from the system with LoadImage if possible. Otherwise the shield will be enabled by sending the BCM_SETSHIELD Message to the control.
     /// If the operating system is not Windows Vista or higher, no shield will be displayed as there's no such thing as UAC on the target system -> the shield is obsolete.
     /// </remarks>
+    // TODO: Re-look at this
     [DefaultEvent("ExecuteProcessAsAdministrator"), DesignerCategory("code"), Description("Krypton UAC Elevated Button"), ToolboxBitmap(typeof(KryptonButton), "ToolboxBitmaps.UACButton.bmp"), ToolboxItem(true)]
     public partial class KryptonUACElevatedButtonVersion1 : KryptonButton
     {

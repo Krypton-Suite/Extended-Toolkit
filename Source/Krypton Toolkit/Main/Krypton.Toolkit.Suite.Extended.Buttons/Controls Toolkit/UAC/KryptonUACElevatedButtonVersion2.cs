@@ -13,6 +13,7 @@ using System.Drawing;
 
 namespace Krypton.Toolkit.Suite.Extended.Buttons
 {
+    // TODO: Re-look at this
     [Designer(typeof(KryptonUACButtonDesigner)), DesignerCategory("code"), ToolboxBitmap(typeof(KryptonButton))]
     public class KryptonUACElevatedButtonVersion2 : KryptonButton
     {
