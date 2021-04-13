@@ -14,7 +14,8 @@ using System.Drawing;
 namespace Krypton.Toolkit.Suite.Extended.Buttons
 {
     // TODO: Re-look at this
-    [Designer(typeof(KryptonUACButtonDesigner)), DesignerCategory("code"), ToolboxBitmap(typeof(KryptonButton))]
+    [Designer(typeof(KryptonUACButtonDesigner)), DesignerCategory("code"), ToolboxBitmap(typeof(KryptonButton)),
+     ToolboxItem(false)]
     public class KryptonUACElevatedButtonVersion2 : KryptonButton
     {
         #region Variables
