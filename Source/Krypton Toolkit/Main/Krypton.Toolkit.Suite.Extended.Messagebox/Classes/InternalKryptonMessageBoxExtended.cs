@@ -2052,10 +2052,21 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         {
             switch (customButtonOptions)
             {
+                case ExtendedMessageBoxCustomButtonOptions.NONE:
+                    _button3.Text = KryptonManager.Strings.OK;
+
+                    _button3.DialogResult = DialogResult.OK;
+
+                    _button3.StateCommon.Content.ShortText.Font = _messageboxTypeface;
+
+                    _button1.Visible = _button2.Visible = false;
+                    break;
                 case ExtendedMessageBoxCustomButtonOptions.ONEBUTTON:
                     _button3.Text = buttonOneText;
 
                     _button3.DialogResult = buttonOneResult;
+
+                    _button3.StateCommon.Content.ShortText.Font = _messageboxTypeface;
 
                     _button1.Visible = _button2.Visible = false;
                     break;
@@ -2064,9 +2075,13 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
                     _button2.DialogResult = buttonOneResult;
 
+                    _button2.StateCommon.Content.ShortText.Font = _messageboxTypeface;
+
                     _button3.Text = buttonTwoText;
 
                     _button3.DialogResult = buttonTwoResult ?? DialogResult.None;
+
+                    _button3.StateCommon.Content.ShortText.Font = _messageboxTypeface;
 
                     _button1.Visible = false;
                     break;
@@ -2075,13 +2090,19 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
                     _button1.DialogResult = buttonOneResult;
 
+                    _button1.StateCommon.Content.ShortText.Font = _messageboxTypeface;
+
                     _button2.Text = buttonTwoText;
 
                     _button2.DialogResult = buttonTwoResult ?? DialogResult.None;
 
+                    _button2.StateCommon.Content.ShortText.Font = _messageboxTypeface;
+
                     _button3.Text = buttonThreeText;
 
                     _button3.DialogResult = buttonThreeResult ?? DialogResult.None;
+
+                    _button3.StateCommon.Content.ShortText.Font = _messageboxTypeface;
                     break;
             }
         }
