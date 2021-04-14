@@ -13,7 +13,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
     /// Displays a message box that can contain text, buttons, and symbols that inform and instruct the user.
     /// Allows optional Font to be specified, if not then new Font(@"Microsoft Sans Serif", 8.25F) will be used
     /// </summary>
-    [ToolboxItem(false), ToolboxBitmap(typeof(KryptonMessageBoxExtended), "ToolboxBitmaps.KryptonMessageBox.bmp"),
+    [ToolboxItem(false), ToolboxBitmap(typeof(InternalKryptonMessageBoxExtended), "ToolboxBitmaps.KryptonMessageBox.bmp"),
      DesignerCategory("code"), DesignTimeVisible(false)]
     internal class InternalKryptonMessageBoxExtended : KryptonForm
     {
@@ -2050,6 +2050,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                          string buttonTwoText, DialogResult? buttonTwoResult,
                                          string buttonThreeText, DialogResult? buttonThreeResult)
         {
+            // As the physical layout of the buttons on the message box is: 
+            // '_button1', '_button2' and '_button3', text that is for the
+            // first button needs to be displayed on either '_button2' or
+            // '_button3 depending on the options, unless you choose a
+            // three button layout
             switch (customButtonOptions)
             {
                 case ExtendedMessageBoxCustomButtonOptions.NONE:
