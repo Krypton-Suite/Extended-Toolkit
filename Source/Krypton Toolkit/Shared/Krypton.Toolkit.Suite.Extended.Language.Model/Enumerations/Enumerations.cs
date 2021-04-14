@@ -35,4 +35,15 @@
         /// <summary>A abort/retry/ignore button.</summary>
         ABORTRETRYIGNORE
     }
+
+    public enum DialogButtonType
+    {
+        ABORT = 0,
+        CANCEL = 1,
+        IGNORE = 2,
+        NO = 3,
+        OK = 4,
+        RETRY = 5,
+        YES = 6
+    }
 }
