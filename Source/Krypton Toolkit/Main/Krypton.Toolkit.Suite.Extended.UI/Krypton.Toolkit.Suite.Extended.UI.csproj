@@ -15,15 +15,15 @@
   <PropertyGroup>
     <LangVersion>latest</LangVersion>
     <OutputType>library</OutputType>
-    <RootNamespace>Krypton.Toolkit.Suite.Extended.Effects</RootNamespace>
-    <AssemblyName>Krypton.Toolkit.Suite.Extended.Effects</AssemblyName>
+    <RootNamespace>Krypton.Toolkit.Suite.Extended.UI</RootNamespace>
+    <AssemblyName>Krypton.Toolkit.Suite.Extended.UI</AssemblyName>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
   <!--Package Data-->
   <PropertyGroup>
-    <PackageId>Krypton.Toolkit.Suite.Extended.Effects</PackageId>
-    <Description>An extension to the Krypton standard toolkit. This package implements additional effects, to be used in conjunction with the standard toolkit.</Description>
+    <PackageId>Krypton.Toolkit.Suite.Extended.UI</PackageId>
+    <Description>An extension to the Krypton standard toolkit. This package implements additional UI effects, to be used in conjunction with the standard toolkit.</Description>
   </PropertyGroup>
 
   <!--Version Information-->
@@ -48,8 +48,11 @@
 
   <!--Binary/Documentation Output-->
   <PropertyGroup>
-    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Effects\Krypton.Toolkit.Suite.Extended.Effects.xml</DocumentationFile>
-    <OutputPath>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Effects\</OutputPath>
+    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.UI\Krypton.Toolkit.Suite.Extended.UI.xml</DocumentationFile>
+    <OutputPath>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.UI\</OutputPath>
   </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Shared\Krypton.Toolkit.Suite.Extended.Effects\Krypton.Toolkit.Suite.Extended.Effects.csproj" />
+  </ItemGroup>
 
 </Project>
