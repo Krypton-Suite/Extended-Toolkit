@@ -26,6 +26,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             _panelMessageIcon = new KryptonPanel();
             _messageIcon = new PictureBox();
             _panelButtons = new KryptonPanel();
+            _panelCheckBox = new KryptonPanel();
+            _panelFooter = new KryptonPanel();
             _borderEdge = new KryptonBorderEdge();
             _button3 = new MessageButton();
             _button1 = new MessageButton();
@@ -107,7 +109,6 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             _panelButtons.Controls.Add(_button1);
             _panelButtons.Controls.Add(_button2);
             _panelButtons.Controls.Add(_copyButton);
-            _panelButtons.Controls.Add(_optionalCheckBox);
             _panelButtons.Dock = DockStyle.Top;
             _panelButtons.Location = new Point(0, 52);
             _panelButtons.Margin = new Padding(0);
@@ -115,6 +116,29 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             _panelButtons.PanelBackStyle = PaletteBackStyle.PanelAlternate;
             _panelButtons.Size = new Size(156, 26);
             _panelButtons.TabIndex = 0;
+            //
+            // _panelCheckBox
+            //
+            _panelCheckBox.Controls.Add(_optionalCheckBox);
+            _panelCheckBox.Dock = DockStyle.Left;
+            _panelCheckBox.Location = new Point(0, 52);
+            _panelCheckBox.Margin = new Padding(0);
+            _panelCheckBox.Name = "_panelCheckBox";
+            _panelCheckBox.PanelBackStyle = PaletteBackStyle.PanelAlternate;
+            _panelCheckBox.Size = new Size(50, 26);
+            _panelCheckBox.TabIndex = 6;
+            //
+            // _panelFooter
+            //
+            _panelFooter.Controls.Add(_panelCheckBox);
+            _panelFooter.Controls.Add(_panelButtons);
+            _panelFooter.Dock = DockStyle.Top;
+            _panelFooter.Location = new Point(0, 52);
+            _panelFooter.Margin = new Padding(0);
+            _panelFooter.Name = "_panelFooter";
+            _panelFooter.PanelBackStyle = PaletteBackStyle.PanelAlternate;
+            _panelFooter.Size = new Size(156, 26);
+            _panelFooter.TabIndex = 7;
             // 
             // borderEdge
             // 
@@ -199,19 +223,18 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             AutoScaleDimensions = new SizeF(6F, 13F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(156, 78);
-            Controls.Add(_panelButtons);
+            //Controls.Add(_panelButtons);
+            Controls.Add(_panelFooter);
             Controls.Add(_panelMessage);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
             MinimizeBox = false;
-            Name = "InternalKryptonMessageBoxExtended";
+            Name = "KryptonMessageBoxExtended";
             ShowIcon = false;
             ShowInTaskbar = false;
             SizeGripStyle = SizeGripStyle.Hide;
             StartPosition = FormStartPosition.CenterParent;
             TopMost = true;
-            Load += InternalKryptonMessageBoxExtended_Load;
-            FormClosing += InternalKryptonMessageBoxExtended_FormClosing;
             ((ISupportInitialize)(_panelMessage)).EndInit();
             _panelMessage.ResumeLayout(false);
             _panelMessage.PerformLayout();
@@ -220,9 +243,12 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             ((ISupportInitialize)(_panelMessageIcon)).EndInit();
             _panelMessageIcon.ResumeLayout(false);
             ((ISupportInitialize)(_messageIcon)).EndInit();
-            ((ISupportInitialize)(_panelButtons)).EndInit();
-            _panelButtons.ResumeLayout(false);
-            _panelButtons.PerformLayout();
+            //((ISupportInitialize)(_panelButtons)).EndInit();
+            ((ISupportInitialize)(_panelFooter)).EndInit();
+            //_panelButtons.ResumeLayout(false);
+            //_panelButtons.PerformLayout();
+            _panelFooter.ResumeLayout(false);
+            _panelFooter.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
 
@@ -250,6 +276,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         private int _fadeSleepTimer, _timeOut;
         private PictureBox _messageIcon;
         private KryptonPanel _panelButtons;
+        private KryptonPanel _panelCheckBox;
+        private KryptonPanel _panelFooter;
         private MessageButton _button1;
         private MessageButton _button2;
         private MessageButton _button3;
