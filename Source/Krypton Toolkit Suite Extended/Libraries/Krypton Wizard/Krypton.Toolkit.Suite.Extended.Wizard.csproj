@@ -1,0 +1,110 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <LangVersion>latest</LangVersion>
+    <RootNamespace>Krypton.Toolkit.Suite.Extended.Wizard</RootNamespace>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Description>An extension to the standard krypton toolkit to support .NET Core, .NET 5 and the latest .NET 3.5/4.x framework. This package allows the creation of wizards.</Description>
+    <RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
+    <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
+  </PropertyGroup>
+
+  <!--Canary package configuration-->
+  <PropertyGroup>
+    <PackageId>Krypton.Toolkit.Suite.Extended.Wizard.Canary</PackageId>
+      <TargetFrameworks>net45;netcoreapp3.1;net5.0-windows;net6.0-windows</TargetFrameworks>
+      <TargetFrameworks Condition="'$(TFMs)' == 'all'">net35;net40;net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows;net6.0-windows</TargetFrameworks>
+    <PackageOutputPath>..\..\..\..\Bin\NuGet\Canary</PackageOutputPath>
+    <PackageIcon>Canary.png</PackageIcon>
+    <AssemblyVersion>6.0.2106</AssemblyVersion>
+    <FileVersion>6.0.2106</FileVersion>
+    <Version>6.0.2106</Version>
+  </PropertyGroup>
+
+  <!--Nightly package configuration-
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <PackageId>Krypton.Toolkit.Suite.Extended.Wizard.Nightly</PackageId>
+    <PackageOutputPath>..\..\..\..\Bin\NuGet\Nightly</PackageOutputPath>
+    <PackageIcon>Nightly.png</PackageIcon>
+    <VersionSuffix>pre$([System.DateTime]::UtcNow.ToString(yyyyMMdd-HHmm))</VersionSuffix>
+  </PropertyGroup>-->
+
+  <!--Stable package configuration-
+  <PropertyGroup>
+    <PackageId>Krypton.Toolkit.Suite.Extended.Wizard</PackageId>
+      <TargetFrameworks>net45;netcoreapp3.1;net5.0-windows</TargetFrameworks>
+      <TargetFrameworks Condition="'$(TFMs)' == 'all'">net35;net40;net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows</TargetFrameworks>
+    <PackageOutputPath>..\..\..\..\Bin\NuGet\Stable</PackageOutputPath>
+    <PackageIcon>Stable.png</PackageIcon>
+    <AssemblyVersion>5.550.2106</AssemblyVersion>
+    <FileVersion>5.550.2106</FileVersion>
+    <Version>5.550.2106</Version>
+  </PropertyGroup>-->
+
+  <!--Signed package configuration-
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <OutputPath>..\..\..\..\Bin\$(configuration)\Build\Lib\Signed</OutputPath>
+    <DebugType>pdbonly</DebugType>
+    <PackageId>Krypton.Toolkit.Suite.Extended.Wizard.Signed</PackageId>
+      <TargetFrameworks>net45;netcoreapp3.1;net5.0-windows</TargetFrameworks>
+      <TargetFrameworks Condition="'$(TFMs)' == 'all'">net35;net40;net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows</TargetFrameworks>
+    <PackageOutputPath>..\..\..\..\Bin\NuGet\Signed</PackageOutputPath>
+    <PackageIcon>Stable.png</PackageIcon>
+    <AssemblyVersion>5.550.2106</AssemblyVersion>
+    <FileVersion>5.550.2106</FileVersion>
+    <Version>5.550.2106</Version>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>StrongKrypton.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>-->
+
+  <!--Stable NuGet package configuration-
+  <ItemGroup>
+    <PackageReference Include="Krypton.Toolkit" Version="5.550.2103" />
+  </ItemGroup>-->
+
+  <!--Canary NuGet package configuration-->
+  <ItemGroup>
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2103.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!--Canary icon-->
+    <None Include="Package Icons\Canary.png" Pack="true" PackagePath="\" />
+
+    <!--Stable icon-->
+    <None Include="Package Icons\Stable.png" Pack="true" PackagePath="\" />
+
+    <!--Nightly icon-->
+    <None Include="Package Icons\Nightly.png" Pack="true" PackagePath="\" />
+  </ItemGroup>
+  
+  <PropertyGroup>
+    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Wizard\Krypton.Toolkit.Suite.Extended.Wizard.xml</DocumentationFile>
+    <OutputPath>..\..\..\..\Bin\$(configuration)\Libraries\Krypton.Toolkit.Suite.Extended.Wizard\</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Shared\Common\Krypton.Toolkit.Suite.Extended.Common.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>
