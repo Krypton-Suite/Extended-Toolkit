@@ -2,9 +2,9 @@
 
 =======
 
-# NuGet Information
+# NuGet Information - Under Construction
 
-## Stable
+<!--## Stable
 
 | Module Name | Current Version | GitHub License |
 |---|---|---|
@@ -44,7 +44,7 @@
 | <img src="https://img.shields.io/badge/Module-Tool Strip Items-yellow.svg?style=flat-square" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Tool.Strip.Items.Canary?label=Version&logo=nuget&style=flat-square)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg?style=flat-square) |
 | <img src="https://img.shields.io/badge/Module-Navi Suite-yellow.svg?style=flat-square" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Navi.Suite.Canary?label=Version&logo=nuget&style=flat-square)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg?style=flat-square) |
 | <img src="https://img.shields.io/badge/Module-Notifications-yellow.svg?style=flat-square" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Notifications.Canary?label=Version&logo=nuget&style=flat-square)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg?style=flat-square) |
-| <img src="https://img.shields.io/badge/Module-Wizard-yellow.svg?style=flat-square" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Wizard.Canary?label=Version&logo=nuget&style=flat-square)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg?style=flat-square) |
+| <img src="https://img.shields.io/badge/Module-Wizard-yellow.svg?style=flat-square" />           | ![Nuget](https://img.shields.io/nuget/v/Krypton.Toolkit.Suite.Extended.Wizard.Canary?label=Version&logo=nuget&style=flat-square)               | ![GitHub](https://img.shields.io/github/license/Krypton-Suite/Extended-Toolkit.svg?style=flat-square) |-->
 
 =======
 
