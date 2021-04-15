@@ -1,4 +1,4 @@
-﻿using Krypton.Toolkit.Suite.Extended.Messagebox.Properties;
+﻿using Krypton.Toolkit.Suite.Extended.Developer.Utilities.Properties;
 using System;
 using System.ComponentModel;
 using System.Drawing;
@@ -7,15 +7,9 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Suite.Extended.Messagebox
+namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
 {
-    /// <summary>
-    /// Displays a message box that can contain text, buttons, and symbols that inform and instruct the user.
-    /// Allows optional Font to be specified, if not then new Font(@"Microsoft Sans Serif", 8.25F) will be used
-    /// </summary>
-    [ToolboxItem(false), ToolboxBitmap(typeof(InternalKryptonMessageBoxExtended), "ToolboxBitmaps.KryptonMessageBox.bmp"),
-     DesignerCategory("code"), DesignTimeVisible(false)]
-    internal class InternalKryptonMessageBoxExtended : KryptonForm
+    internal class KryptonMessageBoxExtended : KryptonForm
     {
         #region System
         private void InitialiseComponent()
@@ -204,7 +198,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
             MinimizeBox = false;
-            Name = "InternalKryptonMessageBoxExtended";
+            Name = "KryptonMessageBoxExtended";
             ShowIcon = false;
             ShowInTaskbar = false;
             SizeGripStyle = SizeGripStyle.Hide;
@@ -390,15 +384,15 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         #endregion
 
         #region Constructors
-        static InternalKryptonMessageBoxExtended() => _osMajorVersion = Environment.OSVersion.Version.Major;
+        static KryptonMessageBoxExtended() => _osMajorVersion = Environment.OSVersion.Version.Major;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="InternalKryptonMessageBoxExtended" /> class.
+        /// Initializes a new instance of the <see cref="KryptonMessageBoxExtended" /> class.
         /// A dummy constructor to retrieve the optional check box value.
         /// </summary>
-        public InternalKryptonMessageBoxExtended() { }
+        public KryptonMessageBoxExtended() { }
 
-        /// <summary>Initializes a new instance of the <see cref="InternalKryptonMessageBoxExtended" /> class.</summary>
+        /// <summary>Initializes a new instance of the <see cref="KryptonMessageBoxExtended" /> class.</summary>
         /// <param name="showOwner">The show owner.</param>
         /// <param name="text">The text.</param>
         /// <param name="caption">The caption.</param>
@@ -427,7 +421,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="buttonOneCustomDialogResult">The action for the first button to take.</param>
         /// <param name="buttonTwoCustomDialogResult">The action for the second button to take.</param>
         /// <param name="buttonThreeCustomDialogResult">The action for the third button to take.</param>
-        private InternalKryptonMessageBoxExtended(IWin32Window showOwner, string text, string caption,
+        private KryptonMessageBoxExtended(IWin32Window showOwner, string text, string caption,
                                           ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions? customButtonOptions,
                                           ExtendedMessageBoxIcon icon,
                                           MessageBoxDefaultButton defaultButton,
@@ -544,7 +538,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="text">The text to display in the message box.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
         /// <param name="messageboxTypeface">The message box typeface. (Can be null)</param>
-        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
+        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
         /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
         /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
         /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
@@ -571,7 +565,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="text">The text to display in the message box.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
         /// <param name="messageboxTypeface">The message box typeface. (Can be null)</param>
-        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
+        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
         /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
         /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
         /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
@@ -599,7 +593,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="caption">The text to display in the title bar of the message box.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
         /// <param name="messageboxTypeface">The message box typeface. (Can be null)</param>
-        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
+        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
         /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
         /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
         /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
@@ -628,7 +622,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="caption">The text to display in the title bar of the message box.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
         /// <param name="messageboxTypeface">The message box typeface. (Can be null)</param>
-        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
+        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
         /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
         /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
         /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
@@ -659,7 +653,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="customButtonOptions">Custom button options.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
         /// <param name="messageboxTypeface">The message box typeface. (Can be null)</param>
-        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
+        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
         /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
         /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
         /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
@@ -706,7 +700,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="customButtonOptions">Custom button options.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
         /// <param name="messageboxTypeface">The message box typeface. (Can be null)</param>
-        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
+        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
         /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
         /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
         /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
@@ -750,7 +744,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="icon">One of the System.Windows.Forms.ExtendedMessageBoxIcon values that specifies which icon to display in the message box.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
         /// <param name="messageboxTypeface">The message box typeface. (Can be null)</param>
-        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
+        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
         /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
         /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
         /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
@@ -797,7 +791,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="icon">One of the System.Windows.Forms.ExtendedMessageBoxIcon values that specifies which icon to display in the message box.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
         /// <param name="messageboxTypeface">The message box typeface. (Can be null)</param>
-        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
+        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
         /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
         /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
         /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
@@ -844,7 +838,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="defaultButton">One of the System.Windows.Forms.MessageBoxDefaultButton values that specifies the default button for the message box.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
         /// <param name="messageboxTypeface">The message box typeface. (Can be null)</param>
-        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
+        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
         /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
         /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
         /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
@@ -891,7 +885,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="defaultButton">One of the System.Windows.Forms.MessageBoxDefaultButton values that specifies the default button for the message box.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
         /// <param name="messageboxTypeface">The message box typeface. (Can be null)</param>
-        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
+        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
         /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
         /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
         /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
@@ -940,7 +934,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="options">One of the System.Windows.Forms.MessageBoxOptions values that specifies which display and association options will be used for the message box. You may pass in 0 if you wish to use the defaults.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
         /// <param name="messageboxTypeface">The message box typeface. (Can be null)</param>
-        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
+        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
         /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
         /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
         /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
@@ -990,7 +984,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="options">One of the System.Windows.Forms.MessageBoxOptions values that specifies which display and association options will be used for the message box. You may pass in 0 if you wish to use the defaults.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
         /// <param name="messageboxTypeface">The message box typeface. (Can be null)</param>
-        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
+        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
         /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
         /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
         /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
@@ -1041,7 +1035,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="displayHelpButton">Displays a message box with the specified text, caption, buttons, icon, default button, options, and Help button.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
         /// <param name="messageboxTypeface">The message box typeface. (Can be null)</param>
-        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
+        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
         /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
         /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
         /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
@@ -1091,7 +1085,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="helpFilePath">The path and name of the Help file to display when the user clicks the Help button.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
         /// <param name="messageboxTypeface">The message box typeface. (Can be null)</param>
-        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
+        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
         /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
         /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
         /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
@@ -1142,7 +1136,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="helpFilePath">The path and name of the Help file to display when the user clicks the Help button.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
         /// <param name="messageboxTypeface">The message box typeface. (Can be null)</param>
-        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
+        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
         /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
         /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
         /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
@@ -1194,7 +1188,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="navigator">One of the System.Windows.Forms.HelpNavigator values.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
         /// <param name="messageboxTypeface">The message box typeface. (Can be null)</param>
-        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
+        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
         /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
         /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
         /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
@@ -1245,7 +1239,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="keyword">The Help keyword to display when the user clicks the Help button.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
         /// <param name="messageboxTypeface">The message box typeface. (Can be null)</param>
-        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
+        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
         /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
         /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
         /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
@@ -1297,7 +1291,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="navigator">One of the System.Windows.Forms.HelpNavigator values.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
         /// <param name="messageboxTypeface">The message box typeface. (Can be null)</param>
-        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
+        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
         /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
         /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
         /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
@@ -1350,7 +1344,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="keyword">The Help keyword to display when the user clicks the Help button.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
         /// <param name="messageboxTypeface">The message box typeface. (Can be null)</param>
-        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
+        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
         /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
         /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
         /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
@@ -1403,7 +1397,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="param">The numeric ID of the Help topic to display when the user clicks the Help button.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
         /// <param name="messageboxTypeface">The message box typeface. (Can be null)</param>
-        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
+        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
         /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
         /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
         /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
@@ -1457,7 +1451,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="param">The numeric ID of the Help topic to display when the user clicks the Help button.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
         /// <param name="messageboxTypeface">Defines the messagebox font.</param>
-        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
+        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
         /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
         /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
         /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
@@ -1509,7 +1503,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="helpInformation">The path and name of the Help file to display when the user clicks the Help button.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
         /// <param name="messageBoxTypeface">Defines the messagebox font.</param>
-        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
+        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
         /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
         /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
         /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
@@ -1595,7 +1589,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             }
 
             // Show message box window as a modal dialog and then dispose of it afterwards
-            using (InternalKryptonMessageBoxExtended ekmb = new InternalKryptonMessageBoxExtended(showOwner, text, caption, buttons, customButtonOptions, icon, defaultButton,
+            using (KryptonMessageBoxExtended ekmb = new KryptonMessageBoxExtended(showOwner, text, caption, buttons, customButtonOptions, icon, defaultButton,
                                                                                   options, helpInformation, showCtrlCopy, messageboxTypeface,
                                                                                   showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked,
                                                                                   optionalCheckBoxCheckState, optionalCheckBoxAnchor,
@@ -2009,7 +2003,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <returns></returns>
         public static bool GetOptionalCheckBoxState()
         {
-            InternalKryptonMessageBoxExtended box = new InternalKryptonMessageBoxExtended();
+            KryptonMessageBoxExtended box = new KryptonMessageBoxExtended();
 
             return box.GetOptionalCheckBoxValue();
         }
