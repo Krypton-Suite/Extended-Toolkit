@@ -17,13 +17,45 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         private KryptonForm _parent;
         #endregion
 
+        #region Custom Event
+        /// <summary>
+        ///   <br />
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="SelectedLanguageChangedEventArgs" /> instance containing the event data.</param>
+        public delegate void SelectedLanguageChangedEventHandler(object sender, SelectedLanguageChangedEventArgs e);
+
+        /// <summary>Occurs when [selected language changed].</summary>
+        public event SelectedLanguageChangedEventHandler SelectedLanguageChanged;
+
+        /// <summary>Called when [selected language changed].</summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="SelectedLanguageChangedEventArgs" /> instance containing the event data.</param>
+        protected virtual void OnSelectedLanguageChanged(object sender, SelectedLanguageChangedEventArgs e) => SelectedLanguageChanged?.Invoke(sender, e);
+        #endregion
+
         #region Properties
-        public SelectedLanguage SelectedLanguage { get => _selectedLanguage; set { _selectedLanguage = value; Invalidate(); } }
+        public SelectedLanguage SelectedLanguage
+        {
+            get => _selectedLanguage;
+
+            set
+            {
+                SelectedLanguageChangedEventArgs e = new SelectedLanguageChangedEventArgs(value);
+
+                OnSelectedLanguageChanged(this, e);
+
+                _selectedLanguage = value;
+
+                Invalidate();
+            }
+        }
 
         public KryptonForm ParentWindow { get => _parent; set { _parent = value; Invalidate(); } }
         #endregion 
 
         #region Constructor
+        /// <summary>Initializes a new instance of the <see cref="KryptonAbortDialogButton" /> class.</summary>
         public KryptonAbortDialogButton()
         {
             DialogResult = DialogResult.Abort;

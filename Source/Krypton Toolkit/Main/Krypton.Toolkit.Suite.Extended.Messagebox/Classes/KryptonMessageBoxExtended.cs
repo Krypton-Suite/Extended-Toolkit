@@ -200,6 +200,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             _optionalCheckBox.Text = @"CB1";
             _optionalCheckBox.CheckedChanged += checkbox_CheckChanged;
             _optionalCheckBox.CheckStateChanged += checkBox_CheckStateChanged;
+            _optionalCheckBox.TextChanged += checkBox_TextChanged;
             // 
             // KryptonMessageBox
             // 
@@ -235,7 +236,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         #endregion
 
         #region Variables
-        private readonly string _text, _optionalCheckBoxText, _copyButtonText, _buttonOneText, _buttonTwoText, _buttonThreeText;
+        private readonly string _text, _optionalCheckBoxText, _optionalCheckBoxToolTipHeader,
+                                _copyButtonText, _buttonOneText, _buttonTwoText, _buttonThreeText;
         private readonly string _caption;
         private readonly ExtendedMessageBoxButtons _buttons;
         private readonly ExtendedMessageBoxIcon _icon;
@@ -246,6 +248,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         private CheckState _optionalCheckBoxCheckState;
         private DialogResult _buttonOneResult, _buttonTwoResult, _buttonThreeResult;
         public static bool _isOptionalCheckBoxChecked;
+        private readonly int _optionalCheckBoxMaximiumTextLength;
         private KryptonPanel _panelMessage;
         private KryptonPanel _panelMessageText;
         private KryptonWrapLabel _messageText;
@@ -413,6 +416,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="messageboxTypeface">The message box typeface.</param>
         /// <param name="showOptionalCheckBox">if set to <c>true</c> [show optional CheckBox].</param>
         /// <param name="optionalCheckBoxText">The optional CheckBox text.</param>
+        /// <param name="optionalCheckBoxToolTipHeader">The header text on the optional check box.</param>
+        /// <param name="optionalCheckBoxMaximiumTextLength">The maximum length of the text on the optional check box.</param>
         /// <param name="isOptionalCheckBoxChecked">if set to <c>true</c> [is optional CheckBox checked].</param>
         /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
         /// <param name="optionalCheckBoxAnchor">The optional CheckBox anchor.</param>
@@ -425,6 +430,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                           MessageBoxDefaultButton defaultButton,
                                           MessageBoxOptions options, HelpInformation helpInformation, bool? showCtrlCopy,
                                           Font messageboxTypeface, bool showOptionalCheckBox, string optionalCheckBoxText,
+                                          string optionalCheckBoxToolTipHeader, int? optionalCheckBoxMaximiumTextLength,
                                           bool isOptionalCheckBoxChecked, CheckState? optionalCheckBoxCheckState,
                                           AnchorStyles? optionalCheckBoxAnchor, Point? optionalCheckBoxLocation,
                                           Image customMessageBoxIcon, bool showCopyButton, string copyButtonText)
@@ -449,6 +455,10 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             _showOptionalCheckBox = showOptionalCheckBox;
 
             _optionalCheckBoxText = optionalCheckBoxText;
+
+            _optionalCheckBoxToolTipHeader = optionalCheckBoxToolTipHeader;
+
+            _optionalCheckBoxMaximiumTextLength = optionalCheckBoxMaximiumTextLength ?? 30;
 
             _isOptionalCheckBoxChecked = isOptionalCheckBoxChecked;
 
@@ -484,7 +494,9 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             // Finally calculate and set form sizing
             UpdateSizing(showOwner);
 
-            ShowOptionalCheckBoxUI(showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation);
+            ShowOptionalCheckBoxUI(showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked,
+                                   optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation,
+                                   optionalCheckBoxMaximiumTextLength);
 
             ShowCopyButton(showCopyButton, copyButtonText);
         }
@@ -515,6 +527,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
         /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
         /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
+        /// <param name="optionalCheckBoxToolTipHeader">The header text on the optional check box.</param>
+        /// <param name="optionalCheckBoxMaximiumTextLength">The maximum length of the text on the optional check box.</param>
         /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
         /// <param name="optionalCheckBoxAnchor">The <see cref="AnchorStyles"/> of the optional check box. (Always keep it to the left.)</param>
         /// <param name="optionalCheckBoxLocation">The location of the optional check box.</param>
@@ -523,11 +537,16 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(string text, bool? showCtrlCopy = null, Font messageboxTypeface = null,
                                         bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
-                                        bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
+                                        bool isOptionalCheckBoxChecked = false,
+                                        string optionalCheckBoxToolTipHeader = null, int? optionalCheckBoxMaximiumTextLength = null,
+                                        CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null, Point? optionalCheckBoxLocation = null,
                                         bool showCopyButton = false, string copyButtonText = null)
         {
-            return InternalShow(null, text, string.Empty, ExtendedMessageBoxButtons.OK, ExtendedMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText);
+            return InternalShow(null, text, string.Empty, ExtendedMessageBoxButtons.OK, ExtendedMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1,
+                         0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, optionalCheckBoxToolTipHeader,
+                                optionalCheckBoxMaximiumTextLength, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor,
+                                optionalCheckBoxLocation, null, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -540,6 +559,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
         /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
         /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
+        /// <param name="optionalCheckBoxToolTipHeader">The header text on the optional check box.</param>
+        /// <param name="optionalCheckBoxMaximiumTextLength">The maximum length of the text on the optional check box.</param>
         /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
         /// <param name="optionalCheckBoxAnchor">The <see cref="AnchorStyles"/> of the optional check box. (Always keep it to the left.)</param>
         /// <param name="optionalCheckBoxLocation">The location of the optional check box.</param>
@@ -548,12 +569,16 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(IWin32Window owner, string text, bool? showCtrlCopy = null, Font messageboxTypeface = null,
                                         bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
-                                        bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
+                                        bool isOptionalCheckBoxChecked = false, string optionalCheckBoxToolTipHeader = null,
+                                        int? optionalCheckBoxMaximiumTextLength = null, CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null,
                                         Point? optionalCheckBoxLocation = null, bool showCopyButton = false,
                                         string copyButtonText = null)
         {
-            return InternalShow(owner, text, string.Empty, ExtendedMessageBoxButtons.OK, ExtendedMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText);
+            return InternalShow(owner, text, string.Empty, ExtendedMessageBoxButtons.OK, ExtendedMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0,
+                   null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, optionalCheckBoxToolTipHeader,
+                                optionalCheckBoxMaximiumTextLength, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor,
+                                optionalCheckBoxLocation, null, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -566,6 +591,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
         /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
         /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
+        /// <param name="optionalCheckBoxToolTipHeader">The header text on the optional check box.</param>
+        /// <param name="optionalCheckBoxMaximiumTextLength">The maximum length of the text on the optional check box.</param>
         /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
         /// <param name="optionalCheckBoxAnchor">The <see cref="AnchorStyles"/> of the optional check box. (Always keep it to the left.)</param>
         /// <param name="optionalCheckBoxLocation">The location of the optional check box.</param>
@@ -574,12 +601,16 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(string text, string caption, bool? showCtrlCopy = null, Font messageboxTypeface = null,
                                         bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
-                                        bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
+                                        bool isOptionalCheckBoxChecked = false, string optionalCheckBoxToolTipHeader = null,
+                                        int? optionalCheckBoxMaximiumTextLength = null, CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null,
                                         Point? optionalCheckBoxLocation = null, bool showCopyButton = false,
                                         string copyButtonText = null)
         {
-            return InternalShow(null, text, caption, ExtendedMessageBoxButtons.OK, ExtendedMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText);
+            return InternalShow(null, text, caption, ExtendedMessageBoxButtons.OK, ExtendedMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0,
+                   null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, optionalCheckBoxToolTipHeader,
+                                optionalCheckBoxMaximiumTextLength, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor,
+                                optionalCheckBoxLocation, null, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -593,6 +624,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
         /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
         /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
+        /// <param name="optionalCheckBoxToolTipHeader">The header text on the optional check box.</param>
+        /// <param name="optionalCheckBoxMaximiumTextLength">The maximum length of the text on the optional check box.</param>
         /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
         /// <param name="optionalCheckBoxAnchor">The <see cref="AnchorStyles"/> of the optional check box. (Always keep it to the left.)</param>
         /// <param name="optionalCheckBoxLocation">The location of the optional check box.</param>
@@ -602,12 +635,16 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         public static DialogResult Show(IWin32Window owner,
                                         string text, string caption, bool? showCtrlCopy = null, Font messageboxTypeface = null,
                                         bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
-                                        bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
+                                        bool isOptionalCheckBoxChecked = false, string optionalCheckBoxToolTipHeader = null,
+                                        int? optionalCheckBoxMaximiumTextLength = null, CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null,
                                         Point? optionalCheckBoxLocation = null, bool showCopyButton = false,
                                         string copyButtonText = null)
         {
-            return InternalShow(owner, text, caption, ExtendedMessageBoxButtons.OK, ExtendedMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText);
+            return InternalShow(owner, text, caption, ExtendedMessageBoxButtons.OK, ExtendedMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0,
+                                null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, optionalCheckBoxToolTipHeader,
+                                optionalCheckBoxMaximiumTextLength, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor,
+                                optionalCheckBoxLocation, null, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -621,6 +658,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
         /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
         /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
+        /// <param name="optionalCheckBoxToolTipHeader">The header text on the optional check box.</param>
+        /// <param name="optionalCheckBoxMaximiumTextLength">The maximum length of the text on the optional check box.</param>
         /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
         /// <param name="optionalCheckBoxAnchor">The <see cref="AnchorStyles"/> of the optional check box. (Always keep it to the left.)</param>
         /// <param name="optionalCheckBoxLocation">The location of the optional check box.</param>
@@ -630,12 +669,16 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         public static DialogResult Show(string text, string caption,
                                         ExtendedMessageBoxButtons buttons, bool? showCtrlCopy = null, Font messageboxTypeface = null,
                                         bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
-                                        bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
+                                        bool isOptionalCheckBoxChecked = false, string optionalCheckBoxToolTipHeader = null,
+                                        int? optionalCheckBoxMaximiumTextLength = null, CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null,
                                         Point? optionalCheckBoxLocation = null, bool showCopyButton = false,
                                         string copyButtonText = null)
         {
-            return InternalShow(null, text, caption, buttons, ExtendedMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText);
+            return InternalShow(null, text, caption, buttons, ExtendedMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0, null,
+                                showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, optionalCheckBoxToolTipHeader,
+                                optionalCheckBoxMaximiumTextLength, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor,
+                                optionalCheckBoxLocation, null, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -650,6 +693,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
         /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
         /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
+        /// <param name="optionalCheckBoxToolTipHeader">The header text on the optional check box.</param>
+        /// <param name="optionalCheckBoxMaximiumTextLength">The maximum length of the text on the optional check box.</param>
         /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
         /// <param name="optionalCheckBoxAnchor">The <see cref="AnchorStyles"/> of the optional check box. (Always keep it to the left.)</param>
         /// <param name="optionalCheckBoxLocation">The location of the optional check box.</param>
@@ -660,12 +705,16 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         string text, string caption,
                                         ExtendedMessageBoxButtons buttons, bool? showCtrlCopy = null, Font messageboxTypeface = null,
                                         bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
-                                        bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
+                                        bool isOptionalCheckBoxChecked = false, string optionalCheckBoxToolTipHeader = null,
+                                        int? optionalCheckBoxMaximiumTextLength = null, CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null,
                                         Point? optionalCheckBoxLocation = null, bool showCopyButton = false,
                                         string copyButtonText = null)
         {
-            return InternalShow(owner, text, caption, buttons, ExtendedMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText);
+            return InternalShow(owner, text, caption, buttons, ExtendedMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0, null,
+                                showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, optionalCheckBoxToolTipHeader,
+                                optionalCheckBoxMaximiumTextLength, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor,
+                                optionalCheckBoxLocation, null, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -680,6 +729,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
         /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
         /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
+        /// <param name="optionalCheckBoxToolTipHeader">The header text on the optional check box.</param>
+        /// <param name="optionalCheckBoxMaximiumTextLength">The maximum length of the text on the optional check box.</param>
         /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
         /// <param name="optionalCheckBoxAnchor">The <see cref="AnchorStyles"/> of the optional check box. (Always keep it to the left.)</param>
         /// <param name="optionalCheckBoxLocation">The location of the optional check box.</param>
@@ -691,12 +742,16 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         ExtendedMessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
                                         bool? showCtrlCopy = null, Font messageboxTypeface = null,
                                         bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
-                                        bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
+                                        bool isOptionalCheckBoxChecked = false, string optionalCheckBoxToolTipHeader = null,
+                                        int? optionalCheckBoxMaximiumTextLength = null, CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null,
                                         Point? optionalCheckBoxLocation = null, Image customMessageBoxIcon = null,
                                         bool showCopyButton = false, string copyButtonText = null)
         {
-            return InternalShow(null, text, caption, buttons, icon, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
+            return InternalShow(null, text, caption, buttons, icon, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy,
+                                messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, optionalCheckBoxToolTipHeader,
+                                optionalCheckBoxMaximiumTextLength, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor,
+                                optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -712,6 +767,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
         /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
         /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
+        /// <param name="optionalCheckBoxToolTipHeader">The header text on the optional check box.</param>
+        /// <param name="optionalCheckBoxMaximiumTextLength">The maximum length of the text on the optional check box.</param>
         /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
         /// <param name="optionalCheckBoxAnchor">The <see cref="AnchorStyles"/> of the optional check box. (Always keep it to the left.)</param>
         /// <param name="optionalCheckBoxLocation">The location of the optional check box.</param>
@@ -724,12 +781,16 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         ExtendedMessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
                                         bool? showCtrlCopy = null, Font messageboxTypeface = null,
                                         bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
-                                        bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
+                                        bool isOptionalCheckBoxChecked = false, string optionalCheckBoxToolTipHeader = null,
+                                        int? optionalCheckBoxMaximiumTextLength = null, CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null,
                                         Point? optionalCheckBoxLocation = null, Image customMessageBoxIcon = null,
                                         bool showCopyButton = false, string copyButtonText = null)
         {
-            return InternalShow(owner, text, caption, buttons, icon, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
+            return InternalShow(owner, text, caption, buttons, icon, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy,
+                                messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, optionalCheckBoxToolTipHeader,
+                                optionalCheckBoxMaximiumTextLength, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor,
+                                optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -745,6 +806,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
         /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
         /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
+        /// <param name="optionalCheckBoxToolTipHeader">The header text on the optional check box.</param>
+        /// <param name="optionalCheckBoxMaximiumTextLength">The maximum length of the text on the optional check box.</param>
         /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
         /// <param name="optionalCheckBoxAnchor">The <see cref="AnchorStyles"/> of the optional check box. (Always keep it to the left.)</param>
         /// <param name="optionalCheckBoxLocation">The location of the optional check box.</param>
@@ -756,11 +819,16 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         ExtendedMessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, bool? showCtrlCopy = null,
                                         Font messageboxTypeface = null, bool showOptionalCheckBox = false,
-                                        string optionalCheckBoxText = null, bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
+                                        string optionalCheckBoxText = null, bool isOptionalCheckBoxChecked = false,
+                                        string optionalCheckBoxToolTipHeader = null,
+                                        int? optionalCheckBoxMaximiumTextLength = null, CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null, Point? optionalCheckBoxLocation = null,
                                         Image customMessageBoxIcon = null, bool showCopyButton = false, string copyButtonText = null)
         {
-            return InternalShow(null, text, caption, buttons, icon, defaultButton, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
+            return InternalShow(null, text, caption, buttons, icon, defaultButton, 0, null, showCtrlCopy, messageboxTypeface,
+                                showOptionalCheckBox, optionalCheckBoxText, optionalCheckBoxToolTipHeader, optionalCheckBoxMaximiumTextLength,
+                                isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation,
+                                customMessageBoxIcon, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -777,6 +845,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
         /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
         /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
+        /// <param name="optionalCheckBoxToolTipHeader">The header text on the optional check box.</param>
+        /// <param name="optionalCheckBoxMaximiumTextLength">The maximum length of the text on the optional check box.</param>
         /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
         /// <param name="optionalCheckBoxAnchor">The <see cref="AnchorStyles"/> of the optional check box. (Always keep it to the left.)</param>
         /// <param name="optionalCheckBoxLocation">The location of the optional check box.</param>
@@ -789,11 +859,16 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         ExtendedMessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, bool? showCtrlCopy = null,
                                         Font messageboxTypeface = null, bool showOptionalCheckBox = false,
-                                        string optionalCheckBoxText = null, bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
+                                        string optionalCheckBoxText = null, bool isOptionalCheckBoxChecked = false,
+                                        string optionalCheckBoxToolTipHeader = null,
+                                        int? optionalCheckBoxMaximiumTextLength = null, CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null, Point? optionalCheckBoxLocation = null,
                                         Image customMessageBoxIcon = null, bool showCopyButton = false, string copyButtonText = null)
         {
-            return InternalShow(owner, text, caption, buttons, icon, defaultButton, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
+            return InternalShow(owner, text, caption, buttons, icon, defaultButton, 0, null, showCtrlCopy, messageboxTypeface,
+                                showOptionalCheckBox, optionalCheckBoxText, optionalCheckBoxToolTipHeader, optionalCheckBoxMaximiumTextLength,
+                                isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation,
+                                customMessageBoxIcon, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -810,6 +885,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
         /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
         /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
+        /// <param name="optionalCheckBoxToolTipHeader">The header text on the optional check box.</param>
+        /// <param name="optionalCheckBoxMaximiumTextLength">The maximum length of the text on the optional check box.</param>
         /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
         /// <param name="optionalCheckBoxAnchor">The <see cref="AnchorStyles"/> of the optional check box. (Always keep it to the left.)</param>
         /// <param name="optionalCheckBoxLocation">The location of the optional check box.</param>
@@ -822,11 +899,16 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                         bool? showCtrlCopy = null, Font messageboxTypeface = null,
                                         bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
-                                        bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null, AnchorStyles? optionalCheckBoxAnchor = null,
+                                        bool isOptionalCheckBoxChecked = false, string optionalCheckBoxToolTipHeader = null,
+                                        int? optionalCheckBoxMaximiumTextLength = null, CheckState? optionalCheckBoxCheckState = null,
+                                        AnchorStyles? optionalCheckBoxAnchor = null,
                                         Point? optionalCheckBoxLocation = null, Image customMessageBoxIcon = null,
                                         bool showCopyButton = false, string copyButtonText = null)
         {
-            return InternalShow(null, text, caption, buttons, icon, defaultButton, options, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
+            return InternalShow(null, text, caption, buttons, icon, defaultButton, options, null, showCtrlCopy, messageboxTypeface,
+                                showOptionalCheckBox, optionalCheckBoxText, optionalCheckBoxToolTipHeader, optionalCheckBoxMaximiumTextLength,
+                                isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation,
+                                customMessageBoxIcon, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -842,6 +924,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
         /// <param name="messageboxTypeface">The message box typeface. (Can be null)</param>
         /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
+        /// <param name="optionalCheckBoxToolTipHeader">The header text on the optional check box.</param>
+        /// <param name="optionalCheckBoxMaximiumTextLength">The maximum length of the text on the optional check box.</param>
         /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
         /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
         /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
@@ -856,13 +940,17 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         ExtendedMessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                         bool? showCtrlCopy = null, Font messageboxTypeface = null,
-                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
+                                        bool showOptionalCheckBox = false, string optionalCheckBoxToolTipHeader = null,
+                                        int? optionalCheckBoxMaximiumTextLength = null, string optionalCheckBoxText = null,
                                         bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null,
                                         Point? optionalCheckBoxLocation = null, Image customMessageBoxIcon = null,
                                         bool showCopyButton = false, string copyButtonText = null)
         {
-            return InternalShow(owner, text, caption, buttons, icon, defaultButton, options, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
+            return InternalShow(owner, text, caption, buttons, icon, defaultButton, options, null, showCtrlCopy, messageboxTypeface,
+                                showOptionalCheckBox, optionalCheckBoxText, optionalCheckBoxToolTipHeader, optionalCheckBoxMaximiumTextLength,
+                                isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation,
+                                customMessageBoxIcon, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -880,6 +968,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
         /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
         /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
+        /// <param name="optionalCheckBoxToolTipHeader">The header text on the optional check box.</param>
+        /// <param name="optionalCheckBoxMaximiumTextLength">The maximum length of the text on the optional check box.</param>
         /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
         /// <param name="optionalCheckBoxAnchor">The <see cref="AnchorStyles"/> of the optional check box. (Always keep it to the left.)</param>
         /// <param name="optionalCheckBoxLocation">The location of the optional check box.</param>
@@ -892,11 +982,16 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                         bool displayHelpButton, bool? showCtrlCopy = null, Font messageboxTypeface = null,
                                         bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
-                                        bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null, AnchorStyles? optionalCheckBoxAnchor = null,
+                                        bool isOptionalCheckBoxChecked = false, string optionalCheckBoxToolTipHeader = null,
+                                        int? optionalCheckBoxMaximiumTextLength = null, CheckState? optionalCheckBoxCheckState = null,
+                                        AnchorStyles? optionalCheckBoxAnchor = null,
                                         Point? optionalCheckBoxLocation = null, Image customMessageBoxIcon = null,
                                         bool showCopyButton = false, string copyButtonText = null)
         {
-            return InternalShow(null, text, caption, buttons, icon, defaultButton, options, displayHelpButton ? new HelpInformation() : null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
+            return InternalShow(null, text, caption, buttons, icon, defaultButton, options, displayHelpButton ? new HelpInformation() : null,
+                                showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, optionalCheckBoxToolTipHeader,
+                                optionalCheckBoxMaximiumTextLength, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor,
+                                optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -914,6 +1009,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
         /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
         /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
+        /// <param name="optionalCheckBoxToolTipHeader">The header text on the optional check box.</param>
+        /// <param name="optionalCheckBoxMaximiumTextLength">The maximum length of the text on the optional check box.</param>
         /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
         /// <param name="optionalCheckBoxAnchor">The <see cref="AnchorStyles"/> of the optional check box. (Always keep it to the left.)</param>
         /// <param name="optionalCheckBoxLocation">The location of the optional check box.</param>
@@ -926,12 +1023,16 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                         string helpFilePath, bool? showCtrlCopy = null, Font messageboxTypeface = null,
                                         bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
-                                        bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
+                                        bool isOptionalCheckBoxChecked = false, string optionalCheckBoxToolTipHeader = null,
+                                        int? optionalCheckBoxMaximiumTextLength = null, CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null,
                                         Point? optionalCheckBoxLocation = null, Image customMessageBoxIcon = null,
                                         bool showCopyButton = false, string copyButtonText = null)
         {
-            return InternalShow(null, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
+            return InternalShow(null, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath),
+                                showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, optionalCheckBoxToolTipHeader,
+                                optionalCheckBoxMaximiumTextLength, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor,
+                                optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -950,6 +1051,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
         /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
         /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
+        /// <param name="optionalCheckBoxToolTipHeader">The header text on the optional check box.</param>
+        /// <param name="optionalCheckBoxMaximiumTextLength">The maximum length of the text on the optional check box.</param>
         /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
         /// <param name="optionalCheckBoxAnchor">The <see cref="AnchorStyles"/> of the optional check box. (Always keep it to the left.)</param>
         /// <param name="optionalCheckBoxLocation">The location of the optional check box.</param>
@@ -963,12 +1066,16 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                         string helpFilePath, bool? showCtrlCopy = null, Font messageboxTypeface = null,
                                         bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
-                                        bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
+                                        bool isOptionalCheckBoxChecked = false, string optionalCheckBoxToolTipHeader = null,
+                                        int? optionalCheckBoxMaximiumTextLength = null, CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null,
                                         Point? optionalCheckBoxLocation = null, Image customMessageBoxIcon = null,
                                         bool showCopyButton = false, string copyButtonText = null)
         {
-            return InternalShow(owner, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
+            return InternalShow(owner, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath),
+                                showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, optionalCheckBoxToolTipHeader,
+                                optionalCheckBoxMaximiumTextLength, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor,
+                                optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -987,6 +1094,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
         /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
         /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
+        /// <param name="optionalCheckBoxToolTipHeader">The header text on the optional check box.</param>
+        /// <param name="optionalCheckBoxMaximiumTextLength">The maximum length of the text on the optional check box.</param>
         /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
         /// <param name="optionalCheckBoxAnchor">The <see cref="AnchorStyles"/> of the optional check box. (Always keep it to the left.)</param>
         /// <param name="optionalCheckBoxLocation">The location of the optional check box.</param>
@@ -1000,12 +1109,16 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         string helpFilePath, HelpNavigator navigator, bool? showCtrlCopy = null,
                                         Font messageboxTypeface = null, bool showOptionalCheckBox = false,
                                         string optionalCheckBoxText = null, bool isOptionalCheckBoxChecked = false,
+                                        string optionalCheckBoxToolTipHeader = null, int? optionalCheckBoxMaximiumTextLength = null,
                                         CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null, Point? optionalCheckBoxLocation = null,
                                         Image customMessageBoxIcon = null, bool showCopyButton = false,
                                         string copyButtonText = null)
         {
-            return InternalShow(null, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath, navigator), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
+            return InternalShow(null, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath, navigator),
+                                showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, optionalCheckBoxToolTipHeader,
+                                optionalCheckBoxMaximiumTextLength, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor,
+                                optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -1024,6 +1137,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
         /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
         /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
+        /// <param name="optionalCheckBoxToolTipHeader">The header text on the optional check box.</param>
+        /// <param name="optionalCheckBoxMaximiumTextLength">The maximum length of the text on the optional check box.</param>
         /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
         /// <param name="optionalCheckBoxAnchor">The <see cref="AnchorStyles"/> of the optional check box. (Always keep it to the left.)</param>
         /// <param name="optionalCheckBoxLocation">The location of the optional check box.</param>
@@ -1036,12 +1151,16 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                         string helpFilePath, string keyword, bool? showCtrlCopy = null, Font messageboxTypeface = null,
                                         bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
-                                        bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
+                                        bool isOptionalCheckBoxChecked = false, string optionalCheckBoxToolTipHeader = null,
+                                        int? optionalCheckBoxMaximiumTextLength = null, CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null,
                                         Point? optionalCheckBoxLocation = null, Image customMessageBoxIcon = null,
                                         bool showCopyButton = false, string copyButtonText = null)
         {
-            return InternalShow(null, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath, keyword), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
+            return InternalShow(null, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath, keyword),
+                                showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, optionalCheckBoxToolTipHeader,
+                                optionalCheckBoxMaximiumTextLength, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor,
+                                optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -1061,6 +1180,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
         /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
         /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
+        /// <param name="optionalCheckBoxToolTipHeader">The header text on the optional check box.</param>
+        /// <param name="optionalCheckBoxMaximiumTextLength">The maximum length of the text on the optional check box.</param>
         /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
         /// <param name="optionalCheckBoxAnchor">The <see cref="AnchorStyles"/> of the optional check box. (Always keep it to the left.)</param>
         /// <param name="optionalCheckBoxLocation">The location of the optional check box.</param>
@@ -1075,11 +1196,16 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         string helpFilePath, HelpNavigator navigator, bool? showCtrlCopy = null,
                                         Font messageboxTypeface = null, bool showOptionalCheckBox = false,
                                         string optionalCheckBoxText = null, bool isOptionalCheckBoxChecked = false,
+                                        string optionalCheckBoxToolTipHeader = null,
+                                        int? optionalCheckBoxMaximiumTextLength = null,
                                         CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null, Point? optionalCheckBoxLocation = null,
                                         Image customMessageBoxIcon = null, bool showCopyButton = false, string copyButtonText = null)
         {
-            return InternalShow(owner, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath, navigator), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
+            return InternalShow(owner, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath, navigator),
+                                showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, optionalCheckBoxToolTipHeader,
+                                optionalCheckBoxMaximiumTextLength, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor,
+                                optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -1099,6 +1225,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
         /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
         /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
+        /// <param name="optionalCheckBoxToolTipHeader">The header text on the optional check box.</param>
+        /// <param name="optionalCheckBoxMaximiumTextLength">The maximum length of the text on the optional check box.</param>
         /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
         /// <param name="optionalCheckBoxAnchor">The <see cref="AnchorStyles"/> of the optional check box. (Always keep it to the left.)</param>
         /// <param name="optionalCheckBoxLocation">The location of the optional check box.</param>
@@ -1112,12 +1240,16 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                         string helpFilePath, string keyword, bool? showCtrlCopy = null, Font messageboxTypeface = null,
                                         bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
-                                        bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
+                                        bool isOptionalCheckBoxChecked = false, string optionalCheckBoxToolTipHeader = null,
+                                        int? optionalCheckBoxMaximiumTextLength = null, CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null,
                                         Point? optionalCheckBoxLocation = null, Image customMessageBoxIcon = null,
                                         bool showCopyButton = false, string copyButtonText = null)
         {
-            return InternalShow(owner, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath, keyword), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
+            return InternalShow(owner, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath, keyword),
+                                showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, optionalCheckBoxToolTipHeader,
+                                optionalCheckBoxMaximiumTextLength, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor,
+                                optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -1136,6 +1268,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="messageboxTypeface">The message box typeface. (Can be null)</param>
         /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
         /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
+        /// <param name="optionalCheckBoxToolTipHeader">The header text on the optional check box.</param>
+        /// <param name="optionalCheckBoxMaximiumTextLength">The maximum length of the text on the optional check box.</param>
         /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
         /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
         /// <param name="optionalCheckBoxAnchor">The <see cref="AnchorStyles"/> of the optional check box. (Always keep it to the left.)</param>
@@ -1150,12 +1284,17 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         string helpFilePath, HelpNavigator navigator, object param,
                                         bool? showCtrlCopy = null, Font messageboxTypeface = null,
                                         bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
+                                        string optionalCheckBoxToolTipHeader = null,
+                                        int? optionalCheckBoxMaximiumTextLength = null,
                                         bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null,
                                         Point? optionalCheckBoxLocation = null, Image customMessageBoxIcon = null,
                                         bool showCopyButton = false, string copyButtonText = null)
         {
-            return InternalShow(null, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath, navigator, param), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
+            return InternalShow(null, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath, navigator, param),
+                                showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, optionalCheckBoxToolTipHeader,
+                                optionalCheckBoxMaximiumTextLength, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor,
+                                optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -1172,10 +1311,12 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="navigator">One of the System.Windows.Forms.HelpNavigator values.</param>
         /// <param name="param">The numeric ID of the Help topic to display when the user clicks the Help button.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
-        /// <param name="messageboxTypeface">Defines the messagebox font.</param>
+        /// <param name="messageboxTypeface">Defines the message box font.</param>
         /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
         /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
         /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
+        /// <param name="optionalCheckBoxToolTipHeader">The header text on the optional check box.</param>
+        /// <param name="optionalCheckBoxMaximiumTextLength">The maximum length of the text on the optional check box.</param>
         /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
         /// <param name="optionalCheckBoxAnchor">The <see cref="AnchorStyles"/> of the optional check box. (Always keep it to the left.)</param>
         /// <param name="optionalCheckBoxLocation">The location of the optional check box.</param>
@@ -1190,11 +1331,16 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         string helpFilePath, HelpNavigator navigator, object param,
                                         bool? showCtrlCopy = null, Font messageboxTypeface = null,
                                         bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
-                                        bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null, AnchorStyles? optionalCheckBoxAnchor = null,
+                                        bool isOptionalCheckBoxChecked = false, string optionalCheckBoxToolTipHeader = null,
+                                        int? optionalCheckBoxMaximiumTextLength = null, CheckState? optionalCheckBoxCheckState = null,
+                                        AnchorStyles? optionalCheckBoxAnchor = null,
                                         Point? optionalCheckBoxLocation = null, Image customMessageBoxIcon = null,
                                         bool showCopyButton = false, string copyButtonText = null)
         {
-            return InternalShow(owner, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath, navigator, param), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
+            return InternalShow(owner, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath, navigator, param),
+                                showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, optionalCheckBoxToolTipHeader,
+                                optionalCheckBoxMaximiumTextLength, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor,
+                                optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
         }
 
         /// <summary>
@@ -1209,7 +1355,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="options">One of the System.Windows.Forms.MessageBoxOptions values that specifies which display and association options will be used for the message box. You may pass in 0 if you wish to use the defaults.</param>
         /// <param name="helpInformation">The path and name of the Help file to display when the user clicks the Help button.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
-        /// <param name="messageBoxTypeface">Defines the messagebox font.</param>
+        /// <param name="messageBoxTypeface">Defines the message box font.</param>
         /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="KryptonMessageBoxExtended"/>.</param>
         /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
         /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
@@ -1218,6 +1364,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="optionalCheckBoxLocation">The location of the optional check box.</param>
         /// <param name="customMessageBoxIcon">Set a custom message box icon. (Must be at least a 32 x 32 PNG image.)</param>
         /// <param name="showCopyButton">Shows an optional copy button, to copy the message box content text to the Windows clipboard.</param>
+        /// <param name="optionalCheckBoxToolTipHeader">The header text on the optional check box.</param>
+        /// <param name="optionalCheckBoxMaximiumTextLength">The maximum length of the text on the optional check box.</param>
         /// <param name="copyButtonText">The text shown on the copy button.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         internal static DialogResult Show(IWin32Window owner,
@@ -1228,9 +1376,14 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                           bool showOptionalCheckBox, string optionalCheckBoxText, bool isOptionalCheckBoxChecked,
                                           CheckState? optionalCheckBoxCheckState,
                                           AnchorStyles optionalCheckBoxAnchor, Point optionalCheckBoxLocation,
-                                          Image customMessageBoxIcon, bool showCopyButton = false, string copyButtonText = null)
+                                          Image customMessageBoxIcon, bool showCopyButton = false,
+                                          string optionalCheckBoxToolTipHeader = null,
+                                          int? optionalCheckBoxMaximiumTextLength = null, string copyButtonText = null)
         {
-            return InternalShow(owner, text, caption, buttons, icon, defaultButton, options, helpInformation, showCtrlCopy, messageBoxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText);
+            return InternalShow(owner, text, caption, buttons, icon, defaultButton, options, helpInformation, showCtrlCopy, messageBoxTypeface,
+                                showOptionalCheckBox, optionalCheckBoxText, optionalCheckBoxToolTipHeader, optionalCheckBoxMaximiumTextLength,
+                                isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation,
+                                customMessageBoxIcon, showCopyButton, copyButtonText);
         }
         #endregion
 
@@ -1243,6 +1396,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                                  MessageBoxOptions options,
                                                  HelpInformation helpInformation, bool? showCtrlCopy, Font messageboxTypeface = null,
                                                  bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
+                                                 string optionalCheckBoxToolTipHeader = null, int? optionalCheckBoxMaximiumTextLength = null,
                                                  bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
                                                  AnchorStyles? optionalCheckBoxAnchor = null, Point? optionalCheckBoxLocation = null,
                                                  Image customMessageBoxIcon = null, bool showCopyButton = false,
@@ -1275,7 +1429,13 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             }
 
             // Show message box window as a modal dialog and then dispose of it afterwards
-            using (KryptonMessageBoxExtended ekmb = new KryptonMessageBoxExtended(showOwner, text, caption, buttons, icon, defaultButton, options, helpInformation, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText))
+            using (KryptonMessageBoxExtended ekmb = new KryptonMessageBoxExtended(showOwner, text, caption, buttons, icon, defaultButton, options,
+                                                                                  helpInformation, showCtrlCopy, messageboxTypeface, showOptionalCheckBox,
+                                                                                  optionalCheckBoxText, optionalCheckBoxToolTipHeader,
+                                                                                  optionalCheckBoxMaximiumTextLength, isOptionalCheckBoxChecked,
+                                                                                  optionalCheckBoxCheckState, optionalCheckBoxAnchor,
+                                                                                  optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton,
+                                                                                  copyButtonText))
             {
                 ekmb.StartPosition = showOwner == null ? FormStartPosition.CenterScreen : FormStartPosition.CenterParent;
 
@@ -1650,7 +1810,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="optionalCheckBoxLocation">The optional CheckBox location.</param>
         private void ShowOptionalCheckBoxUI(bool showOptionalCheckBox, string optionalCheckBoxText,
                                             bool isOptionalCheckBoxChecked, CheckState? optionalCheckBoxCheckState,
-                                            AnchorStyles? optionalCheckBoxAnchor, Point? optionalCheckBoxLocation)
+                                            AnchorStyles? optionalCheckBoxAnchor, Point? optionalCheckBoxLocation,
+                                            int? optionalCheckBoxMaximiumTextLength)
         {
             _optionalCheckBox.Visible = showOptionalCheckBox;
 
@@ -1665,6 +1826,15 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             _optionalCheckBoxLocation = optionalCheckBoxLocation ?? new Point(12, 0);
 
             _optionalCheckBox.StateCommon.ShortText.Font = _messageboxTypeface;
+        }
+
+        private void checkBox_TextChanged(object sender, EventArgs e)
+        {
+            // If the text length is more than the designated length, use ToolTip
+            if (_optionalCheckBox.Text.Length >= _optionalCheckBoxMaximiumTextLength)
+            {
+                _optionalCheckBox.ToolTipValues.Description = _optionalCheckBox.Text;
+            }
         }
         #endregion
 
