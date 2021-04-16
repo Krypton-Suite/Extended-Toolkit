@@ -18,7 +18,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
     internal class InternalKryptonMessageBoxExtended : KryptonForm
     {
         #region System
-        private void InitialiseComponent()
+        private void InitializeComponent()
         {
             _panelMessage = new KryptonPanel();
             _panelMessageText = new KryptonPanel();
@@ -108,6 +108,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             _panelButtons.Controls.Add(_button3);
             _panelButtons.Controls.Add(_button1);
             _panelButtons.Controls.Add(_button2);
+            _panelButtons.Controls.Add(_optionalCheckBox);
             _panelButtons.Controls.Add(_copyButton);
             _panelButtons.Dock = DockStyle.Top;
             _panelButtons.Location = new Point(0, 52);
@@ -116,29 +117,17 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             _panelButtons.PanelBackStyle = PaletteBackStyle.PanelAlternate;
             _panelButtons.Size = new Size(156, 26);
             _panelButtons.TabIndex = 0;
-            //
+            /*//
             // _panelCheckBox
             //
             _panelCheckBox.Controls.Add(_optionalCheckBox);
-            _panelCheckBox.Dock = DockStyle.Left;
+            _panelCheckBox.Dock = DockStyle.Top;
             _panelCheckBox.Location = new Point(0, 52);
             _panelCheckBox.Margin = new Padding(0);
             _panelCheckBox.Name = "_panelCheckBox";
             _panelCheckBox.PanelBackStyle = PaletteBackStyle.PanelAlternate;
-            _panelCheckBox.Size = new Size(50, 26);
-            _panelCheckBox.TabIndex = 6;
-            //
-            // _panelFooter
-            //
-            _panelFooter.Controls.Add(_panelCheckBox);
-            _panelFooter.Controls.Add(_panelButtons);
-            _panelFooter.Dock = DockStyle.Top;
-            _panelFooter.Location = new Point(0, 52);
-            _panelFooter.Margin = new Padding(0);
-            _panelFooter.Name = "_panelFooter";
-            _panelFooter.PanelBackStyle = PaletteBackStyle.PanelAlternate;
-            _panelFooter.Size = new Size(156, 26);
-            _panelFooter.TabIndex = 7;
+            _panelCheckBox.Size = new Size(156, 26);
+            _panelCheckBox.TabIndex = 6;*/
             // 
             // borderEdge
             // 
@@ -217,14 +206,14 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             _optionalCheckBox.Text = @"CB1";
             _optionalCheckBox.CheckedChanged += checkbox_CheckChanged;
             _optionalCheckBox.CheckStateChanged += checkBox_CheckStateChanged;
+            _optionalCheckBox.TextChanged += checkBox_TextChanged;
             // 
             // KryptonMessageBox
             // 
             AutoScaleDimensions = new SizeF(6F, 13F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(156, 78);
-            //Controls.Add(_panelButtons);
-            Controls.Add(_panelFooter);
+            Controls.Add(_panelButtons);
             Controls.Add(_panelMessage);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
@@ -243,12 +232,9 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             ((ISupportInitialize)(_panelMessageIcon)).EndInit();
             _panelMessageIcon.ResumeLayout(false);
             ((ISupportInitialize)(_messageIcon)).EndInit();
-            //((ISupportInitialize)(_panelButtons)).EndInit();
-            ((ISupportInitialize)(_panelFooter)).EndInit();
-            //_panelButtons.ResumeLayout(false);
-            //_panelButtons.PerformLayout();
-            _panelFooter.ResumeLayout(false);
-            _panelFooter.PerformLayout();
+            ((ISupportInitialize)(_panelButtons)).EndInit();
+            _panelButtons.ResumeLayout(false);
+            _panelButtons.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
 
@@ -526,7 +512,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             #endregion
 
             // Create the form contents
-            InitialiseComponent();
+            InitializeComponent();
 
             // Update contents to match requirements
             UpdateText();
@@ -2021,6 +2007,15 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             _optionalCheckBoxLocation = optionalCheckBoxLocation ?? new Point(12, 0);
 
             _optionalCheckBox.StateCommon.ShortText.Font = _messageboxTypeface;
+        }
+
+        private void checkBox_TextChanged(object sender, EventArgs e)
+        {
+            if (_optionalCheckBox.Text.Length >= 15)
+            {
+
+                _optionalCheckBox.StateCommon.ShortText.Trim = PaletteTextTrim.EllipsisWord;
+            }
         }
         #endregion
 
