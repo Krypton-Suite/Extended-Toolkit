@@ -200,6 +200,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             _optionalCheckBox.AutoSize = true;
             _optionalCheckBox.Location = new Point(12, 0);
             _optionalCheckBox.Margin = new Padding(0);
+            _optionalCheckBox.StateCommon.LongText.MultiLine = InheritBool.True;
+            _optionalCheckBox.StateCommon.ShortText.MultiLine = InheritBool.True;
             _optionalCheckBox.Size = new Size(50, 20);
             _optionalCheckBox.Name = "_optionalCheckBox";
             _optionalCheckBox.TabIndex = 4;
@@ -249,7 +251,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         private readonly ExtendedMessageBoxIcon _icon;
         private readonly MessageBoxDefaultButton _defaultButton;
         private AnchorStyles _optionalCheckBoxAnchor;
-        private MessageBoxOptions _options;
+        private MessageBoxOptions _options; // TODO: What is this used for ?
         private bool _fade, _showOptionalCheckBox, _showCopyButton, _hasTimedOut, _showToolTips;
         private CheckState _optionalCheckBoxCheckState;
         private DialogResult _buttonOneResult, _buttonTwoResult, _buttonThreeResult;
@@ -270,7 +272,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         private MessageButton _copyButton;
         private KryptonCheckBox _optionalCheckBox;
         private KryptonBorderEdge _borderEdge;
-        private HelpInformation _helpInformation;
+        private HelpInformation _helpInformation;// TODO: What is this used for ?
         private Font _messageboxTypeface;
         private Image _customMessageBoxIcon;
         private Point _optionalCheckBoxLocation;
