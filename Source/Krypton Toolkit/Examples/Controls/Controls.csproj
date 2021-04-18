@@ -19,8 +19,4 @@
     <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2103.6" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\Main\Krypton.Toolkit.Suite.Extended.Controls\Krypton.Toolkit.Suite.Extended.Controls.csproj" />
-  </ItemGroup>
-
 </Project>
