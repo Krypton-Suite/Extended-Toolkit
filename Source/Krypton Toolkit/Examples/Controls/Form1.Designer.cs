@@ -48,7 +48,7 @@ namespace Controls
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.kryptonPanel1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Controls Showcase";
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.ResumeLayout(false);
 
