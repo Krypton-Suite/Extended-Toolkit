@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Effects
 {
     /// <summary>Handles the fading effects. Original library: https://gist.github.com/nathan-fiscaletti/3c0514862fe88b5664b10444e1098778.</summary>
-    internal class FadeController
+    public class FadeController
     {
         #region Variables
         private readonly KryptonForm form;                                           // The form to modify the opacity of.
@@ -47,7 +48,7 @@ namespace Krypton.Toolkit.Suite.Extended.Effects
         /// <summary>
         /// Update the opacity of the form using the timer.
         /// </summary>
-        private async void UpdateOpacity()
+        private void UpdateOpacity()
         {
             if (form.IsDisposed)
             {
@@ -83,7 +84,8 @@ namespace Krypton.Toolkit.Suite.Extended.Effects
                     break;
             }
 
-            await Task.Delay(10);
+            // Have to use a thread sleep, rather than an await, otherwise on close would have completed as disposed on the first await Task.Delay()
+            Thread.Sleep(10);
             UpdateOpacity();
         }
 
@@ -141,7 +143,7 @@ namespace Krypton.Toolkit.Suite.Extended.Effects
         /// <summary>
         /// Fades a dialog in using parent form and defined fade speed.
         /// </summary>
-        public async static Task<DialogResult> ShowDialog(KryptonForm form, KryptonForm parent, float fadeSpeed)
+        public static async Task<DialogResult> ShowDialog(KryptonForm form, KryptonForm parent, float fadeSpeed)
         {
             FadeController fader = new FadeController(form, parent);
             return await fader.ShowDialog(fadeSpeed, null);
@@ -151,7 +153,7 @@ namespace Krypton.Toolkit.Suite.Extended.Effects
         /// Fades a dialog in using parent form and defined fade speed
         /// and call the finished delegate.)
         /// </summary>
-        public async static Task<DialogResult> ShowDialog(KryptonForm form, KryptonForm parent, float fadeSpeed, FadeCompleted finished)
+        public static async Task<DialogResult> ShowDialog(KryptonForm form, KryptonForm parent, float fadeSpeed, FadeCompleted finished)
         {
             FadeController fader = new FadeController(form, parent);
             return await fader.ShowDialog(fadeSpeed, finished);

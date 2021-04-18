@@ -136,9 +136,88 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComboBoxExtApp", "Examples\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Effects", "Shared\Krypton.Toolkit.Suite.Extended.Effects\Krypton.Toolkit.Suite.Extended.Effects.csproj", "{62106BA1-C710-48FF-A9C2-A43E28FE8C4D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Effects", "Examples\Effects\Effects.csproj", "{B17FA051-F9C9-4971-AE90-4A346EA8B8AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Effects", "Examples\Effects\Effects.csproj", "{B17FA051-F9C9-4971-AE90-4A346EA8B8AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton.Toolkit.Suite.Extended.UI", "Main\Krypton.Toolkit.Suite.Extended.UI\Krypton.Toolkit.Suite.Extended.UI.csproj", "{A4A20AC1-DC76-48AC-9E91-982581AF7D24}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.UI", "Main\Krypton.Toolkit.Suite.Extended.UI\Krypton.Toolkit.Suite.Extended.UI.csproj", "{A4A20AC1-DC76-48AC-9E91-982581AF7D24}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assets", "Assets", "{6B01F113-016E-445F-BE5E-80BA7144B928}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\Assets\ToggleSwich.bmp = ..\..\Assets\ToggleSwich.bmp
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{404EC0E7-92CB-4E90-80F7-440A4F5D772C}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\Assets\Examples\CircularProgressBar.png = ..\..\Assets\Examples\CircularProgressBar.png
+		..\..\Assets\Examples\CommandLinks.png = ..\..\Assets\Examples\CommandLinks.png
+		..\..\Assets\Examples\ExtendedKryptonMessageBox1.png = ..\..\Assets\Examples\ExtendedKryptonMessageBox1.png
+		..\..\Assets\Examples\ExtendedKryptonMessageBox2.png = ..\..\Assets\Examples\ExtendedKryptonMessageBox2.png
+		..\..\Assets\Examples\FloatableToolStrip.png = ..\..\Assets\Examples\FloatableToolStrip.png
+		..\..\Assets\Examples\FlotableMenuStrip.png = ..\..\Assets\Examples\FlotableMenuStrip.png
+		..\..\Assets\Examples\KryptonColourMixer.png = ..\..\Assets\Examples\KryptonColourMixer.png
+		..\..\Assets\Examples\KryptonColourWheel.png = ..\..\Assets\Examples\KryptonColourWheel.png
+		..\..\Assets\Examples\KryptonInputBoxExtended.png = ..\..\Assets\Examples\KryptonInputBoxExtended.png
+		..\..\Assets\Examples\KryptonKnobControl.png = ..\..\Assets\Examples\KryptonKnobControl.png
+		..\..\Assets\Examples\KryptonPaletteColourShader.png = ..\..\Assets\Examples\KryptonPaletteColourShader.png
+		..\..\Assets\Examples\KryptonPropertyGrid.png = ..\..\Assets\Examples\KryptonPropertyGrid.png
+		..\..\Assets\Examples\KryptonScrollBars.png = ..\..\Assets\Examples\KryptonScrollBars.png
+		..\..\Assets\Examples\KryptonThemeSelector.png = ..\..\Assets\Examples\KryptonThemeSelector.png
+		..\..\Assets\Examples\KryptonToastNotificationV1.png = ..\..\Assets\Examples\KryptonToastNotificationV1.png
+		..\..\Assets\Examples\KryptonToggleSwitch.png = ..\..\Assets\Examples\KryptonToggleSwitch.png
+		..\..\Assets\Examples\KryptonViewBar.png = ..\..\Assets\Examples\KryptonViewBar.png
+		..\..\Assets\Examples\TreeViews.png = ..\..\Assets\Examples\TreeViews.png
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ICO", "ICO", "{734B2F67-D055-44B2-818A-FE569C479937}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "JPEG", "JPEG", "{15346861-5444-49D7-9686-3835EE271259}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "License", "License", "{5E13A5BB-407A-46A5-95A8-9DA57FB21C6C}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\Assets\License\LICENSE.md = ..\..\Assets\License\LICENSE.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Package Icon", "Package Icon", "{6EFEF411-B16C-4DEA-992F-9CA767EB1265}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\Assets\Package Icon\Canary_Icon_128_x_128.png = ..\..\Assets\Package Icon\Canary_Icon_128_x_128.png
+		..\..\Assets\Package Icon\Stable_Icon_128_x_128.png = ..\..\Assets\Package Icon\Stable_Icon_128_x_128.png
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PNG", "PNG", "{F96630C5-2A89-44D5-BED6-99609A6D716A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PSD", "PSD", "{247BBF4E-22B0-49CC-981B-0420AD7FF4E8}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\Assets\PSD\Command Link Button.psd = ..\..\Assets\PSD\Command Link Button.psd
+		..\..\Assets\PSD\Main Icon 512 x 512 Canary.psd = ..\..\Assets\PSD\Main Icon 512 x 512 Canary.psd
+		..\..\Assets\PSD\Main Icon 512 x 512 Nightly.psd = ..\..\Assets\PSD\Main Icon 512 x 512 Nightly.psd
+		..\..\Assets\PSD\PE Icon 512 x 512.psd = ..\..\Assets\PSD\PE Icon 512 x 512.psd
+		..\..\Assets\PSD\Square Design 512 x 512 Orange.psd = ..\..\Assets\PSD\Square Design 512 x 512 Orange.psd
+		..\..\Assets\PSD\ToggleSwich.psd = ..\..\Assets\PSD\ToggleSwich.psd
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "48 x 48", "48 x 48", "{071034AA-BFA3-4325-B763-E95A2E05EF4D}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\Assets\ICO\48 x 48\KR 48 x 48 Orange.ico = ..\..\Assets\ICO\48 x 48\KR 48 x 48 Orange.ico
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "256 x 256", "256 x 256", "{378BEE59-0131-4497-80B8-69B3124325D7}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\Assets\ICO\256 x 256\KR 256 x 256 Orange.ico = ..\..\Assets\ICO\256 x 256\KR 256 x 256 Orange.ico
+		..\..\Assets\ICO\256 x 256\PE Icon 256 x 256.ico = ..\..\Assets\ICO\256 x 256\PE Icon 256 x 256.ico
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "48 x 48", "48 x 48", "{69F98672-EBB9-4B12-BD04-45AEF3C37FC6}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\Assets\JPEG\48 x 48\Logo Stable.jpg = ..\..\Assets\JPEG\48 x 48\Logo Stable.jpg
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Arrows", "Arrows", "{0451E883-C718-4679-962F-E2825B1513B2}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\Assets\PSD\Arrows\Arrow-1.psd = ..\..\Assets\PSD\Arrows\Arrow-1.psd
+		..\..\Assets\PSD\Arrows\Arrow-2.psd = ..\..\Assets\PSD\Arrows\Arrow-2.psd
+		..\..\Assets\PSD\Arrows\Arrow-3.psd = ..\..\Assets\PSD\Arrows\Arrow-3.psd
+		..\..\Assets\PSD\Arrows\Arrow-4.psd = ..\..\Assets\PSD\Arrows\Arrow-4.psd
+		..\..\Assets\PSD\Arrows\Template.psd = ..\..\Assets\PSD\Arrows\Template.psd
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -419,6 +498,18 @@ Global
 		{62106BA1-C710-48FF-A9C2-A43E28FE8C4D} = {726DC0AA-2B0D-4EAC-BB7A-7C49AE13A390}
 		{B17FA051-F9C9-4971-AE90-4A346EA8B8AE} = {25D5F0A6-A601-424B-9431-8EFE139A58A7}
 		{A4A20AC1-DC76-48AC-9E91-982581AF7D24} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
+		{6B01F113-016E-445F-BE5E-80BA7144B928} = {5D85B551-9AFC-4E96-93C3-D8D81B69971F}
+		{404EC0E7-92CB-4E90-80F7-440A4F5D772C} = {6B01F113-016E-445F-BE5E-80BA7144B928}
+		{734B2F67-D055-44B2-818A-FE569C479937} = {6B01F113-016E-445F-BE5E-80BA7144B928}
+		{15346861-5444-49D7-9686-3835EE271259} = {6B01F113-016E-445F-BE5E-80BA7144B928}
+		{5E13A5BB-407A-46A5-95A8-9DA57FB21C6C} = {6B01F113-016E-445F-BE5E-80BA7144B928}
+		{6EFEF411-B16C-4DEA-992F-9CA767EB1265} = {6B01F113-016E-445F-BE5E-80BA7144B928}
+		{F96630C5-2A89-44D5-BED6-99609A6D716A} = {6B01F113-016E-445F-BE5E-80BA7144B928}
+		{247BBF4E-22B0-49CC-981B-0420AD7FF4E8} = {6B01F113-016E-445F-BE5E-80BA7144B928}
+		{071034AA-BFA3-4325-B763-E95A2E05EF4D} = {734B2F67-D055-44B2-818A-FE569C479937}
+		{378BEE59-0131-4497-80B8-69B3124325D7} = {734B2F67-D055-44B2-818A-FE569C479937}
+		{69F98672-EBB9-4B12-BD04-45AEF3C37FC6} = {15346861-5444-49D7-9686-3835EE271259}
+		{0451E883-C718-4679-962F-E2825B1513B2} = {247BBF4E-22B0-49CC-981B-0420AD7FF4E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A7CE7732-0982-4703-8EFD-7715D569BAB5}

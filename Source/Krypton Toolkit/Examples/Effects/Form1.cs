@@ -1,6 +1,7 @@
-﻿using Krypton.Toolkit;
+﻿using System;
+
+using Krypton.Toolkit;
 using Krypton.Toolkit.Suite.Extended.Effects;
-using System;
 
 namespace Effects
 {
@@ -13,7 +14,8 @@ namespace Effects
 
         private void kryptonButton1_Click(object sender, EventArgs e)
         {
-            FadeController.FadeIn(new TestWindow(), 5);
+            var testWindow = new TestWindow();
+            FadeController.FadeIn(testWindow, FadeSpeed.Slower, testWindow.FadeInComplete);
         }
     }
 }
