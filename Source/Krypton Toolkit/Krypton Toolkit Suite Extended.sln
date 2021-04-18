@@ -219,6 +219,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Arrows", "Arrows", "{0451E8
 		..\..\Assets\PSD\Arrows\Template.psd = ..\..\Assets\PSD\Arrows\Template.psd
 	EndProjectSection
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Controls", "Examples\Controls\Controls.csproj", "{5251D485-D77D-4E0E-97BD-8CD8EDA928E3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -437,6 +439,10 @@ Global
 		{A4A20AC1-DC76-48AC-9E91-982581AF7D24}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4A20AC1-DC76-48AC-9E91-982581AF7D24}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4A20AC1-DC76-48AC-9E91-982581AF7D24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5251D485-D77D-4E0E-97BD-8CD8EDA928E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5251D485-D77D-4E0E-97BD-8CD8EDA928E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5251D485-D77D-4E0E-97BD-8CD8EDA928E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5251D485-D77D-4E0E-97BD-8CD8EDA928E3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -510,6 +516,7 @@ Global
 		{378BEE59-0131-4497-80B8-69B3124325D7} = {734B2F67-D055-44B2-818A-FE569C479937}
 		{69F98672-EBB9-4B12-BD04-45AEF3C37FC6} = {15346861-5444-49D7-9686-3835EE271259}
 		{0451E883-C718-4679-962F-E2825B1513B2} = {247BBF4E-22B0-49CC-981B-0420AD7FF4E8}
+		{5251D485-D77D-4E0E-97BD-8CD8EDA928E3} = {25D5F0A6-A601-424B-9431-8EFE139A58A7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A7CE7732-0982-4703-8EFD-7715D569BAB5}
