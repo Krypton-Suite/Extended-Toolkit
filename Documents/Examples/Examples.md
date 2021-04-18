@@ -27,6 +27,8 @@
 
 
 
+## Krypton Form `FadeController`
+[Allows child controls to be faded in etc.](https://github.com/Krypton-Suite/Extended-Toolkit/tree/version-next/Source/Krypton%20Toolkit/Shared/Krypton.Toolkit.Suite.Extended.Effects)
 
 
 
@@ -47,6 +49,7 @@
 ## Command Links
 
 ![](https://github.com/Krypton-Suite/Extended-Toolkit/blob/master/Assets/Examples/CommandLinks.png)
+
 
 ## Extended Krypton Messagebox
 
