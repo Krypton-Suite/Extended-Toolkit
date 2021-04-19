@@ -8,7 +8,6 @@
 
 using System;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -37,7 +36,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt.Implementation
 
             // set childview control
             var scale = (refValues.Height - 16) / 2;
-            var rect = new Rectangle(e.RowBounds.X + scale, e.RowBounds.Y + scale, 16, 16);
+            var rect = new Rectangle(e.RowBounds.X + 16, e.RowBounds.Y + scale, 16, 16);
             var childView = (Control)ChildView; // allowed due to where constraint on <T>
             if (CollapseRow)
             {
@@ -45,10 +44,14 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt.Implementation
                 {
                     grid.Rows[e.RowIndex].DividerHeight = grid.Rows[e.RowIndex].Height - refValues.Height;
                     e.Graphics.DrawImage(RowHeaderIconList.Images[(int)RowHeaderIcons.Collapse], rect);
-                    childView.Location = new Point(e.RowBounds.Left + grid.RowHeadersWidth, e.RowBounds.Top + refValues.Height + 5);
-                    childView.Width = e.RowBounds.Right - grid.RowHeadersWidth;
-                    childView.Height = grid.Rows[e.RowIndex].DividerHeight - 10;
-                    childView.Visible = true;
+                    if (ShouldDisplayChildDetails(e.RowIndex))
+                    {
+                        childView.Location = new Point(e.RowBounds.Left + grid.RowHeadersWidth,
+                            e.RowBounds.Top + refValues.Height + 5);
+                        childView.Width = e.RowBounds.Right - grid.RowHeadersWidth;
+                        childView.Height = grid.Rows[e.RowIndex].DividerHeight - 10;
+                        childView.Visible = true;
+                    }
                 }
                 else
                 {
@@ -62,10 +65,14 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt.Implementation
             {
                 grid.Rows[e.RowIndex].DividerHeight = grid.Rows[e.RowIndex].Height - refValues.Height;
                 e.Graphics.DrawImage(RowHeaderIconList.Images[(int)RowHeaderIcons.Collapse], rect);
-                childView.Location = new Point(e.RowBounds.Left + grid.RowHeadersWidth, e.RowBounds.Top + refValues.Height + 5);
-                childView.Width = e.RowBounds.Right - grid.RowHeadersWidth;
-                childView.Height = grid.Rows[e.RowIndex].DividerHeight - 10;
-                childView.Visible = true;
+                if (ShouldDisplayChildDetails(e.RowIndex))
+                {
+                    childView.Location = new Point(e.RowBounds.Left + grid.RowHeadersWidth,
+                        e.RowBounds.Top + refValues.Height + 5);
+                    childView.Width = e.RowBounds.Right - grid.RowHeadersWidth;
+                    childView.Height = grid.Rows[e.RowIndex].DividerHeight - 10;
+                    childView.Visible = true;
+                }
             }
             else
             {
@@ -75,22 +82,51 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt.Implementation
 
         private protected override void MasterDetailGridView_SelectionChanged(object sender, EventArgs e)
         {
-            if (RowCount != 0
-                && CurrentRow != null
+            if (RowCount == 0
+                || CurrentRow == null
             )
             {
-                if (RowCurrent.TryGetValue(CurrentRow.Index, out _))
+                return;
+            }
+
+            if (RowCurrent.TryGetValue(CurrentRow.Index, out _))
+            {
+                foreach (var cGrid in ChildView.ChildGrids)
                 {
-                    foreach (var cGrid in ChildView.ChildGrids)
+                    ((IBindingListView)cGrid.Key.DataSource).Filter = $@"{cGrid.Value}{string.Format(FilterFormat, this[ForeignKey, CurrentRow.Index].Value)}";
+                    if (SelectionMode == DataGridViewSelectionMode.FullRowSelect)
                     {
-                        ((IBindingListView)cGrid.Key.DataSource).Filter = $@"{cGrid.Value}{string.Format(FilterFormat, this[ForeignKey, CurrentRow.Index].Value)}";
-                        if (base.SelectionMode == DataGridViewSelectionMode.FullRowSelect)
-                        {
-                            cGrid.Key.ClearSelection();
-                        }
+                        cGrid.Key.ClearSelection();
                     }
                 }
             }
+        }
+
+        private protected override bool HasNoChildDetails(int rowIndex)
+        {
+            if (RowCount == 0
+            || rowIndex < 0)
+            {
+                return true;
+            }
+
+            var noDetails = true;
+            foreach (var cGrid in ChildView.ChildGrids)
+            {
+                var bindingListView = (IBindingListView)cGrid.Key.DataSource;
+                //var filterBefore = bindingListView.Filter;
+                bindingListView.Filter = $@"{cGrid.Value}{string.Format(FilterFormat, this[ForeignKey, rowIndex].Value)}";
+                //noDetails = (bindingListView.Count <= 0);
+                noDetails = cGrid.Key.RowCount <= 0;
+
+                //bindingListView.Filter = filterBefore;
+                if (!noDetails)
+                {
+                    break;
+                }
+            }
+
+            return noDetails;
         }
 
         /// <summary>

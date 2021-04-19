@@ -28,6 +28,9 @@
     <!--<PackageReference Include="Krypton.Toolkit" Version="5.550.2103" />-->
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Messagebox\Krypton.Toolkit.Suite.Extended.Messagebox.csproj" />
+  </ItemGroup>
+  <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>

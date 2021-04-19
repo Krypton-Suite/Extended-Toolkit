@@ -77,5 +77,6 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt
             tPage.Controls.Add(newGrid);
             childViews.ChildGrids[newGrid] = targetKeyColumn;
         }
+
     }
 }

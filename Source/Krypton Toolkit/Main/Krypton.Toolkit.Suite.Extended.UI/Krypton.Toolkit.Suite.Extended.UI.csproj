@@ -1,0 +1,58 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Choose>
+    <When Condition="'$(TFMs)' == 'all'">
+      <PropertyGroup>
+        <TargetFrameworks>net35;net40;net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows;net6.0-windows</TargetFrameworks>
+      </PropertyGroup>
+    </When>
+    <Otherwise>
+      <PropertyGroup>
+        <TargetFrameworks>net45;netcoreapp3.1;net5.0-windows;net6.0-windows</TargetFrameworks>
+      </PropertyGroup>
+    </Otherwise>
+  </Choose>
+  <PropertyGroup>
+    <LangVersion>latest</LangVersion>
+    <OutputType>library</OutputType>
+    <RootNamespace>Krypton.Toolkit.Suite.Extended.UI</RootNamespace>
+    <AssemblyName>Krypton.Toolkit.Suite.Extended.UI</AssemblyName>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <!--Package Data-->
+  <PropertyGroup>
+    <PackageId>Krypton.Toolkit.Suite.Extended.UI</PackageId>
+    <Description>An extension to the Krypton standard toolkit. This package implements additional UI effects, to be used in conjunction with the standard toolkit.</Description>
+  </PropertyGroup>
+
+  <!--Version Information-->
+  <PropertyGroup>
+    <AssemblyVersion>6.0.2108</AssemblyVersion>
+    <FileVersion>6.0.2108</FileVersion>
+  </PropertyGroup>
+
+  <!--Krypton Toolkit Import-->
+  <Choose>
+    <When Condition="'$(TFMs)' == 'all'">
+      <ItemGroup>
+        <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2103.6" />
+      </ItemGroup>
+    </When>
+    <Otherwise>
+      <ItemGroup>
+        <PackageReference Include="Krypton.Toolkit.Canary.Lite" Version="6.0.2103.6" />
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
+
+  <!--Binary/Documentation Output-->
+  <PropertyGroup>
+    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.UI\Krypton.Toolkit.Suite.Extended.UI.xml</DocumentationFile>
+    <OutputPath>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.UI\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Shared\Krypton.Toolkit.Suite.Extended.Effects\Krypton.Toolkit.Suite.Extended.Effects.csproj" />
+  </ItemGroup>
+
+</Project>

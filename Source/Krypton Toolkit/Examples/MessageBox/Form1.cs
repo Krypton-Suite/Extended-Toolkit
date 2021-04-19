@@ -16,6 +16,7 @@ namespace MessageBox
 
         private void kbtnTest_Click(object sender, EventArgs e)
         {
+            /*
             if (kchkDefineTypeface.Checked)
             {
                 FontDialog dialog = new FontDialog();
@@ -28,37 +29,382 @@ namespace MessageBox
 
                     if (krbIconNone.Checked)
                     {
-                        KryptonMessageBoxExtended.Show(ktxtMessage.Text, ktxtCaption.Text, MessageBoxButtons.OK, ExtendedMessageBoxIcon.NONE, messageboxTypeface: testFont);
+                        kmbc.MessageBoxContentText = ktxtMessage.Text;
+
+                        kmbc.MessageBoxCaption = ktxtCaption.Text;
+
+                        kmbc.MessageBoxButtons = ExtendedMessageBoxButtons.OK;
+
+                        kmbc.MessageBoxIcon = ExtendedMessageBoxIcon.NONE;
+
+                        kmbc.MessageBoxTypeface = testFont;
+
+                        kmbc.DisplayMessageBox();
                     }
-                    else if (krbIconWarning.Checked)
+                    if (krbIconWarning.Checked)
                     {
-                        KryptonMessageBoxExtended.Show(ktxtMessage.Text, ktxtCaption.Text, MessageBoxButtons.OK, ExtendedMessageBoxIcon.WARNING, messageboxTypeface: testFont);
+                        kmbc.MessageBoxContentText = ktxtMessage.Text;
+
+                        kmbc.MessageBoxCaption = ktxtCaption.Text;
+
+                        kmbc.MessageBoxButtons = ExtendedMessageBoxButtons.OK;
+
+                        kmbc.MessageBoxIcon = ExtendedMessageBoxIcon.WARNING;
+
+                        kmbc.MessageBoxTypeface = testFont;
+
+                        kmbc.DisplayMessageBox();
                     }
-                    else if (krbIconInformation.Checked)
+                    if (krbIconInformation.Checked)
                     {
-                        KryptonMessageBoxExtended.Show(ktxtMessage.Text, ktxtCaption.Text, MessageBoxButtons.OK, ExtendedMessageBoxIcon.INFORMATION, messageboxTypeface: testFont);
+                        kmbc.MessageBoxContentText = ktxtMessage.Text;
+
+                        kmbc.MessageBoxCaption = ktxtCaption.Text;
+
+                        kmbc.MessageBoxButtons = ExtendedMessageBoxButtons.OK;
+
+                        kmbc.MessageBoxIcon = ExtendedMessageBoxIcon.INFORMATION;
+
+                        kmbc.MessageBoxTypeface = testFont;
+
+                        kmbc.DisplayMessageBox();
                     }
-                    else if (krbIconError.Checked)
+                    if (krbIconError.Checked)
                     {
-                        KryptonMessageBoxExtended.Show(ktxtMessage.Text, ktxtCaption.Text, MessageBoxButtons.OK, ExtendedMessageBoxIcon.ERROR, messageboxTypeface: testFont);
+                        kmbc.MessageBoxContentText = ktxtMessage.Text;
+
+                        kmbc.MessageBoxCaption = ktxtCaption.Text;
+
+                        kmbc.MessageBoxButtons = ExtendedMessageBoxButtons.OK;
+
+                        kmbc.MessageBoxIcon = ExtendedMessageBoxIcon.ERROR;
+
+                        kmbc.MessageBoxTypeface = testFont;
+
+                        kmbc.DisplayMessageBox();
                     }
-                    else if (krbIconQuestion.Checked)
+                    if (krbIconQuestion.Checked)
                     {
-                        KryptonMessageBoxExtended.Show(ktxtMessage.Text, ktxtCaption.Text, MessageBoxButtons.OK, ExtendedMessageBoxIcon.QUESTION, messageboxTypeface: testFont);
+                        kmbc.MessageBoxContentText = ktxtMessage.Text;
+
+                        kmbc.MessageBoxCaption = ktxtCaption.Text;
+
+                        kmbc.MessageBoxButtons = ExtendedMessageBoxButtons.OK;
+
+                        kmbc.MessageBoxIcon = ExtendedMessageBoxIcon.QUESTION;
+
+                        kmbc.MessageBoxTypeface = testFont;
+
+                        kmbc.DisplayMessageBox();
                     }
-                    else if (krbIconCustom.Checked)
+                    if (krbIconHand.Checked)
+                    {
+                        kmbc.MessageBoxContentText = ktxtMessage.Text;
+
+                        kmbc.MessageBoxCaption = ktxtCaption.Text;
+
+                        kmbc.MessageBoxButtons = ExtendedMessageBoxButtons.OK;
+
+                        kmbc.MessageBoxIcon = ExtendedMessageBoxIcon.HAND;
+
+                        kmbc.MessageBoxTypeface = testFont;
+
+                        kmbc.DisplayMessageBox();
+                    }
+                    if (krbIconStop.Checked)
+                    {
+                        kmbc.MessageBoxContentText = ktxtMessage.Text;
+
+                        kmbc.MessageBoxCaption = ktxtCaption.Text;
+
+                        kmbc.MessageBoxButtons = ExtendedMessageBoxButtons.OK;
+
+                        kmbc.MessageBoxIcon = ExtendedMessageBoxIcon.STOP;
+
+                        kmbc.MessageBoxTypeface = testFont;
+
+                        kmbc.DisplayMessageBox();
+                    }
+                    if (krbIconCustom.Checked)
                     {
                         if (!string.IsNullOrEmpty(klblCustomIconPath.Text))
                         {
-                            KryptonMessageBoxExtended.Show(ktxtMessage.Text, ktxtCaption.Text, MessageBoxButtons.OK, ExtendedMessageBoxIcon.CUSTOM, messageboxTypeface: testFont, customMessageBoxIcon: new Bitmap(Image.FromFile(klblCustomIconPath.Text)));
+                            kmbc.MessageBoxContentText = ktxtMessage.Text;
+
+                            kmbc.MessageBoxCaption = ktxtCaption.Text;
+
+                            kmbc.MessageBoxButtons = ExtendedMessageBoxButtons.OK;
+
+                            kmbc.MessageBoxIcon = ExtendedMessageBoxIcon.CUSTOM;
+
+                            kmbc.CustomMessageBoxIcon = new Bitmap(klblCustomIconPath.Text);
+
+                            kmbc.MessageBoxTypeface = testFont;
+
+                            kmbc.DisplayMessageBox();
+                        }
+                        else
+                        {
+                            throw new ArgumentNullException();
                         }
                     }
+
+                    #region Ok Button
+                    if (krbIconNone.Checked && krbButtonsOk.Checked)
+                    {
+                        kmbc.MessageBoxContentText = ktxtMessage.Text;
+
+                        kmbc.MessageBoxCaption = ktxtCaption.Text;
+
+                        kmbc.MessageBoxButtons = ExtendedMessageBoxButtons.OK;
+
+                        kmbc.MessageBoxIcon = ExtendedMessageBoxIcon.NONE;
+
+                        kmbc.MessageBoxTypeface = testFont;
+
+                        kmbc.DisplayMessageBox();
+                    }
+                    if (krbIconWarning.Checked && krbButtonsOk.Checked)
+                    {
+                        kmbc.MessageBoxContentText = ktxtMessage.Text;
+
+                        kmbc.MessageBoxCaption = ktxtCaption.Text;
+
+                        kmbc.MessageBoxButtons = ExtendedMessageBoxButtons.OK;
+
+                        kmbc.MessageBoxIcon = ExtendedMessageBoxIcon.WARNING;
+
+                        kmbc.MessageBoxTypeface = testFont;
+
+                        kmbc.DisplayMessageBox();
+                    }
+                    if (krbIconInformation.Checked && krbButtonsOk.Checked)
+                    {
+                        kmbc.MessageBoxContentText = ktxtMessage.Text;
+
+                        kmbc.MessageBoxCaption = ktxtCaption.Text;
+
+                        kmbc.MessageBoxButtons = ExtendedMessageBoxButtons.OK;
+
+                        kmbc.MessageBoxIcon = ExtendedMessageBoxIcon.INFORMATION;
+
+                        kmbc.MessageBoxTypeface = testFont;
+
+                        kmbc.DisplayMessageBox();
+                    }
+                    if (krbIconError.Checked && krbButtonsOk.Checked)
+                    {
+                        kmbc.MessageBoxContentText = ktxtMessage.Text;
+
+                        kmbc.MessageBoxCaption = ktxtCaption.Text;
+
+                        kmbc.MessageBoxButtons = ExtendedMessageBoxButtons.OK;
+
+                        kmbc.MessageBoxIcon = ExtendedMessageBoxIcon.ERROR;
+
+                        kmbc.MessageBoxTypeface = testFont;
+
+                        kmbc.DisplayMessageBox();
+                    }
+                    if (krbIconQuestion.Checked && krbButtonsOk.Checked)
+                    {
+                        kmbc.MessageBoxContentText = ktxtMessage.Text;
+
+                        kmbc.MessageBoxCaption = ktxtCaption.Text;
+
+                        kmbc.MessageBoxButtons = ExtendedMessageBoxButtons.OK;
+
+                        kmbc.MessageBoxIcon = ExtendedMessageBoxIcon.QUESTION;
+
+                        kmbc.MessageBoxTypeface = testFont;
+
+                        kmbc.DisplayMessageBox();
+                    }
+                    if (krbIconHand.Checked && krbButtonsOk.Checked)
+                    {
+                        kmbc.MessageBoxContentText = ktxtMessage.Text;
+
+                        kmbc.MessageBoxCaption = ktxtCaption.Text;
+
+                        kmbc.MessageBoxButtons = ExtendedMessageBoxButtons.OK;
+
+                        kmbc.MessageBoxIcon = ExtendedMessageBoxIcon.HAND;
+
+                        kmbc.MessageBoxTypeface = testFont;
+
+                        kmbc.DisplayMessageBox();
+                    }
+                    if (krbIconStop.Checked && krbButtonsOk.Checked)
+                    {
+                        kmbc.MessageBoxContentText = ktxtMessage.Text;
+
+                        kmbc.MessageBoxCaption = ktxtCaption.Text;
+
+                        kmbc.MessageBoxButtons = ExtendedMessageBoxButtons.OK;
+
+                        kmbc.MessageBoxIcon = ExtendedMessageBoxIcon.STOP;
+
+                        kmbc.MessageBoxTypeface = testFont;
+
+                        kmbc.DisplayMessageBox();
+                    }
+                    if (krbIconCustom.Checked && krbButtonsOk.Checked)
+                    {
+                        if (!string.IsNullOrEmpty(klblCustomIconPath.Text))
+                        {
+                            kmbc.MessageBoxContentText = ktxtMessage.Text;
+
+                            kmbc.MessageBoxCaption = ktxtCaption.Text;
+
+                            kmbc.MessageBoxButtons = ExtendedMessageBoxButtons.OK;
+
+                            kmbc.MessageBoxIcon = ExtendedMessageBoxIcon.CUSTOM;
+
+                            kmbc.CustomMessageBoxIcon = new Bitmap(klblCustomIconPath.Text);
+
+                            kmbc.MessageBoxTypeface = testFont;
+
+                            kmbc.DisplayMessageBox();
+                        }
+                        else
+                        {
+                            throw new ArgumentNullException();
+                        }
+                    }
+                    #endregion
+
+                    #region Abort Retry Ignore Button
+                    if (krbIconNone.Checked && krbButtonsAbortRetryIgnore.Checked)
+                    {
+                        kmbc.MessageBoxContentText = ktxtMessage.Text;
+
+                        kmbc.MessageBoxCaption = ktxtCaption.Text;
+
+                        kmbc.MessageBoxButtons = ExtendedMessageBoxButtons.ABORTRETRYIGNORE;
+
+                        kmbc.MessageBoxIcon = ExtendedMessageBoxIcon.NONE;
+
+                        kmbc.MessageBoxTypeface = testFont;
+
+                        kmbc.DisplayMessageBox();
+                    }
+                    if (krbIconWarning.Checked && krbButtonsAbortRetryIgnore.Checked)
+                    {
+                        kmbc.MessageBoxContentText = ktxtMessage.Text;
+
+                        kmbc.MessageBoxCaption = ktxtCaption.Text;
+
+                        kmbc.MessageBoxButtons = ExtendedMessageBoxButtons.ABORTRETRYIGNORE;
+
+                        kmbc.MessageBoxIcon = ExtendedMessageBoxIcon.WARNING;
+
+                        kmbc.MessageBoxTypeface = testFont;
+
+                        kmbc.DisplayMessageBox();
+                    }
+                    if (krbIconInformation.Checked && krbButtonsAbortRetryIgnore.Checked)
+                    {
+                        kmbc.MessageBoxContentText = ktxtMessage.Text;
+
+                        kmbc.MessageBoxCaption = ktxtCaption.Text;
+
+                        kmbc.MessageBoxButtons = ExtendedMessageBoxButtons.ABORTRETRYIGNORE;
+
+                        kmbc.MessageBoxIcon = ExtendedMessageBoxIcon.INFORMATION;
+
+                        kmbc.MessageBoxTypeface = testFont;
+
+                        kmbc.DisplayMessageBox();
+                    }
+                    if (krbIconError.Checked && krbButtonsAbortRetryIgnore.Checked)
+                    {
+                        kmbc.MessageBoxContentText = ktxtMessage.Text;
+
+                        kmbc.MessageBoxCaption = ktxtCaption.Text;
+
+                        kmbc.MessageBoxButtons = ExtendedMessageBoxButtons.ABORTRETRYIGNORE;
+
+                        kmbc.MessageBoxIcon = ExtendedMessageBoxIcon.ERROR;
+
+                        kmbc.MessageBoxTypeface = testFont;
+
+                        kmbc.DisplayMessageBox();
+                    }
+                    if (krbIconQuestion.Checked && krbButtonsAbortRetryIgnore.Checked)
+                    {
+                        kmbc.MessageBoxContentText = ktxtMessage.Text;
+
+                        kmbc.MessageBoxCaption = ktxtCaption.Text;
+
+                        kmbc.MessageBoxButtons = ExtendedMessageBoxButtons.ABORTRETRYIGNORE;
+
+                        kmbc.MessageBoxIcon = ExtendedMessageBoxIcon.QUESTION;
+
+                        kmbc.MessageBoxTypeface = testFont;
+
+                        kmbc.DisplayMessageBox();
+                    }
+                    if (krbIconHand.Checked && krbButtonsAbortRetryIgnore.Checked)
+                    {
+                        kmbc.MessageBoxContentText = ktxtMessage.Text;
+
+                        kmbc.MessageBoxCaption = ktxtCaption.Text;
+
+                        kmbc.MessageBoxButtons = ExtendedMessageBoxButtons.ABORTRETRYIGNORE;
+
+                        kmbc.MessageBoxIcon = ExtendedMessageBoxIcon.HAND;
+
+                        kmbc.MessageBoxTypeface = testFont;
+
+                        kmbc.DisplayMessageBox();
+                    }
+                    if (krbIconStop.Checked && krbButtonsAbortRetryIgnore.Checked)
+                    {
+                        kmbc.MessageBoxContentText = ktxtMessage.Text;
+
+                        kmbc.MessageBoxCaption = ktxtCaption.Text;
+
+                        kmbc.MessageBoxButtons = ExtendedMessageBoxButtons.ABORTRETRYIGNORE;
+
+                        kmbc.MessageBoxIcon = ExtendedMessageBoxIcon.STOP;
+
+                        kmbc.MessageBoxTypeface = testFont;
+
+                        kmbc.DisplayMessageBox();
+                    }
+                    if (krbIconCustom.Checked && krbButtonsAbortRetryIgnore.Checked)
+                    {
+                        if (!string.IsNullOrEmpty(klblCustomIconPath.Text))
+                        {
+                            kmbc.MessageBoxContentText = ktxtMessage.Text;
+
+                            kmbc.MessageBoxCaption = ktxtCaption.Text;
+
+                            kmbc.MessageBoxButtons = ExtendedMessageBoxButtons.ABORTRETRYIGNORE;
+
+                            kmbc.MessageBoxIcon = ExtendedMessageBoxIcon.CUSTOM;
+
+                            kmbc.CustomMessageBoxIcon = new Bitmap(klblCustomIconPath.Text);
+
+                            kmbc.MessageBoxTypeface = testFont;
+
+                            kmbc.DisplayMessageBox();
+                        }
+                        else
+                        {
+                            throw new ArgumentNullException();
+                        }
+                    }
+                    #endregion
                 }
             }
             else
             {
 
             }
+            */
+
+                kmbc.DisplayMessageBox();
         }
 
         private void krbIconCustom_CheckedChanged(object sender, EventArgs e)
@@ -83,6 +429,23 @@ namespace MessageBox
             {
                 klblCustomIconPath.Text = Path.GetFullPath(fileDialog.FileName);
             }
+        }
+
+        private void kryptonMessageBoxConfigurator1_ShowMessageBox(object sender, ShowMessageBoxEventArgs e)
+        {
+
+        }
+
+        private void kbtnTestConfigurator_Click(object sender, EventArgs e)
+        {
+            //kryptonMessageBoxConfigurator1.DisplayMessageBox();
+        }
+
+        private void kchkFadeMessageBox_CheckedChanged(object sender, EventArgs e)
+        {
+            klblFadeSleepTimer.Enabled = kchkFadeMessageBox.Checked;
+
+            knudFadeSleepTimerValue.Enabled = kchkFadeMessageBox.Checked;
         }
     }
 }

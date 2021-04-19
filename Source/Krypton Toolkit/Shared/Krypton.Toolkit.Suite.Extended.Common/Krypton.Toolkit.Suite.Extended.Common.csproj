@@ -27,6 +27,9 @@
     <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2103.6" />
     <!--<PackageReference Include="Krypton.Toolkit" Version="5.550.2103" />-->
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Main\Krypton.Toolkit.Suite.Extended.Developer.Utilities\Krypton.Toolkit.Suite.Extended.Developer.Utilities.csproj" />
+  </ItemGroup>
 
   <!--Binary/Documentation Output-->
   <PropertyGroup>
