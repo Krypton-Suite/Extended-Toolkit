@@ -2,7 +2,6 @@
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
-using static Krypton.Toolkit.Suite.Extended.Messagebox.KryptonMessageBoxExtended;
 
 namespace Krypton.Toolkit.Suite.Extended.Messagebox
 {
@@ -14,13 +13,17 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         #region Variables
         private AnchorStyles _optionalCheckBoxAnchor;
 
-        private bool _showCtrlCopy, _showOptionalCheckBox, _isOptionalCheckBoxChecked, _showCopyButton;
+        private bool _showCtrlCopy, _fade, _showOptionalCheckBox, _isOptionalCheckBoxChecked, _showCopyButton;
 
         private CheckState _optionalCheckBoxCheckState;
+
+        private DialogResult _customButtonOneResult, _customButtonTwoResult, _customButtonThreeResult;
 
         private Font _messageBoxTypeface;
 
         private ExtendedMessageBoxButtons _buttons;
+
+        private ExtendedMessageBoxCustomButtonOptions _customButtonOptions;
 
         private MessageBoxDefaultButton _defaultButton;
 
@@ -32,9 +35,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         private Image _customMessageBoxIcon;
 
+        private int _fadeSleepTimer, _timeout;
+
         private IWin32Window _owner;
 
-        private string _messageBoxCaption, _messageBoxContentText, _optionalCheckBoxText, _helpPath, _copyButtonText;
+        private string _messageBoxCaption, _messageBoxContentText, _optionalCheckBoxText, _helpPath, _copyButtonText, _messageBoxButtonOneCustomText, _messageBoxButtonTwoCustomText, _messageBoxButtonThreeCustomText;
 
         private object _helpParam;
 
@@ -52,6 +57,12 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         [DefaultValue(false), Description("Allows the user to use 'CTRL + C' to copy the message box content.")]
         public bool ShowCtrlCopy { get => _showCtrlCopy; set => _showCtrlCopy = value; }
 
+        /// <summary>Gets or sets a value indicating whether this <see cref="KryptonMessageBoxManager" /> is fade.</summary>
+        /// <value>
+        ///   <c>true</c> if fade; otherwise, <c>false</c>.</value>
+        [DefaultValue(false), Description("Fades the message box in and out. (Under construction)")]
+        public bool Fade { get => _fade; set => _fade = value; }
+
         /// <summary>Gets or sets a value indicating whether [show optional CheckBox].</summary>
         /// <value><c>true</c> if [show optional CheckBox]; otherwise, <c>false</c>.</value>
         [DefaultValue(false), Description("Shows a optional check box in the message box footer.")]
@@ -67,6 +78,21 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         [DefaultValue(false), Description("Show the copy button.")]
         public bool ShowCopyButton { get => _showCopyButton; set => _showCopyButton = value; }
 
+        /// <summary>Gets or sets the custom button one result.</summary>
+        /// <value>The custom button one result.</value>
+        [DefaultValue(typeof(DialogResult), "DialogResult.None"), Description("Gets or sets the custom button one result.")]
+        public DialogResult CustomButtonOneResult { get => _customButtonOneResult; set => _customButtonOneResult = value; }
+
+        /// <summary>Gets or sets the custom button two result.</summary>
+        /// <value>The custom button two result.</value>
+        [DefaultValue(typeof(DialogResult), "DialogResult.None"), Description("Gets or sets the custom button two result.")]
+        public DialogResult CustomButtonTwoResult { get => _customButtonTwoResult; set => _customButtonTwoResult = value; }
+
+        /// <summary>Gets or sets the custom button three result.</summary>
+        /// <value>The custom button three result.</value>
+        [DefaultValue(typeof(DialogResult), "DialogResult.None"), Description("Gets or sets the custom button three result.")]
+        public DialogResult CustomButtonThreeResult { get => _customButtonThreeResult; set => _customButtonThreeResult = value; }
+
         /// <summary>Gets or sets the state of the optional CheckBox check.</summary>
         /// <value>The state of the optional CheckBox check.</value>
         [DefaultValue(typeof(CheckState), "CheckState.Unchecked"), Description("Gets or sets the state of the optional CheckBox check.")]
@@ -81,6 +107,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <value>The message box buttons.</value>
         [DefaultValue(typeof(ExtendedMessageBoxButtons), "ExtendedMessageBoxButtons.OK"), Description("Gets or sets the message box buttons.")]
         public ExtendedMessageBoxButtons MessageBoxButtons { get => _buttons; set => _buttons = value; }
+
+        /// <summary>Gets or sets the custom button options.</summary>
+        /// <value>The custom button options.</value>
+        [DefaultValue(null), Description("Gets or sets the custom button options.")]
+        public ExtendedMessageBoxCustomButtonOptions CustomButtonOptions { get => _customButtonOptions; set => _customButtonOptions = value; }
 
         /// <summary>Gets or sets the message box default button.</summary>
         /// <value>The message box default button.</value>
@@ -106,6 +137,16 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <value>The custom message box icon.</value>
         [DefaultValue(null), Description("Gets or sets a custom message box icon.")]
         public Image CustomMessageBoxIcon { get => _customMessageBoxIcon; set => _customMessageBoxIcon = value; }
+
+        /// <summary>Gets or sets the speed of the fading animation in milliseconds.</summary>
+        /// <value>The speed of the fading animation in milliseconds.</value>
+        [DefaultValue(50), Description("Gets or sets the speed of the fading animation in milliseconds.")]
+        public int FadeSleepTimer { get => _fadeSleepTimer; set => _fadeSleepTimer = value; }
+
+        /// <summary>Gets or sets the time out. (This feature is under construction)</summary>
+        /// <value>The time out.</value>
+        [DefaultValue(60), Description("Gets or sets the time out. (This feature is under construction)")]
+        public int TimeOut { get => _timeout; set => _timeout = value; }
 
         /// <summary>Gets or sets the owner of the message box.</summary>
         /// <value>The owner.</value>
@@ -136,6 +177,21 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <value>The copy button text.</value>
         [DefaultValue("&Copy Details"), Description("Gets or sets the copy button text.")]
         public string CopyButtonText { get => _copyButtonText; set => _copyButtonText = value; }
+
+        /// <summary>Gets or sets the button one custom text.</summary>
+        /// <value>The button one custom text.</value>
+        [DefaultValue(null), Description("Gets or sets the button one custom text.")]
+        public string ButtonOneCustomText { get => _messageBoxButtonOneCustomText; set => _messageBoxButtonOneCustomText = value; }
+
+        /// <summary>Gets or sets the button two custom text.</summary>
+        /// <value>The button two custom text.</value>
+        [DefaultValue(null), Description("Gets or sets the button two custom text.")]
+        public string ButtonTwoCustomText { get => _messageBoxButtonTwoCustomText; set => _messageBoxButtonTwoCustomText = value; }
+
+        /// <summary>Gets or sets the button three custom text.</summary>
+        /// <value>The button three custom text.</value>
+        [DefaultValue(null), Description("Gets or sets the button three custom text.")]
+        public string ButtonThreeCustomText { get => _messageBoxButtonThreeCustomText; set => _messageBoxButtonThreeCustomText = value; }
 
         /// <summary>Gets or sets the help parameters.</summary>
         /// <value>The help parameters.</value>
@@ -171,14 +227,19 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="isOptionalCheckBoxChecked">if set to <c>true</c> [is optional CheckBox checked].</param>
         /// <param name="customMessageBoxIcon">The custom message box icon.</param>
         public ShowMessageBoxEventArgs(IWin32Window owner, string text, string caption,
-                                       ExtendedMessageBoxButtons buttons, ExtendedMessageBoxIcon icon,
+                                       ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions customButtonOptions,
+                                       ExtendedMessageBoxIcon icon,
                                        MessageBoxDefaultButton defaultButton,
                                        MessageBoxOptions options, string helpPath,
                                        HelpNavigator helpNavigator, object helpParam,
                                        bool showCtrlCopy, Font messageboxTypeface, bool showOptionalCheckBox,
                                        string optionalCheckBoxText, bool isOptionalCheckBoxChecked,
                                        AnchorStyles optionalCheckBoxAnchor, Point optionalCheckBoxLocation,
-                                       Image customMessageBoxIcon, bool showCopyButton, string copyButtonText)
+                                       Image customMessageBoxIcon, bool showCopyButton, string copyButtonText,
+                                       bool fade, int fadeSleepTimer, string buttonOneCustomText,
+                                       string buttonTwoCustomText, string buttonThreeCustomText,
+                                       DialogResult? buttonOneCustomDialogResult, DialogResult? buttonTwoCustomDialogResult,
+                                       DialogResult? buttonThreeCustomDialogResult)
         {
             Owner = owner;
 
@@ -187,6 +248,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             MessageBoxCaption = caption;
 
             MessageBoxButtons = buttons;
+
+            CustomButtonOptions = customButtonOptions;
 
             MessageBoxIcon = icon;
 
@@ -219,26 +282,48 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             ShowCopyButton = showCopyButton;
 
             CopyButtonText = copyButtonText;
+
+            Fade = fade;
+
+            FadeSleepTimer = fadeSleepTimer;
+
+            ButtonOneCustomText = buttonOneCustomText;
+
+            ButtonTwoCustomText = buttonTwoCustomText;
+
+            ButtonThreeCustomText = buttonThreeCustomText;
+
+            CustomButtonOneResult = buttonOneCustomDialogResult ?? DialogResult.None;
+
+            CustomButtonTwoResult = buttonTwoCustomDialogResult ?? DialogResult.None;
+
+            CustomButtonThreeResult = buttonThreeCustomDialogResult ?? DialogResult.None;
         }
         #endregion
 
         #region Methods
         /// <summary>Shows the message box.</summary>
-        public void ShowMessageBox() => KryptonMessageBoxExtended.Show(Owner, MessageBoxContentText, MessageBoxCaption, MessageBoxButtons, MessageBoxIcon,
-                                                                       MessageBoxDefaultButton, MessageBoxOptions,
-                                                                       new HelpInformation(HelpPath, HelpNavigator, HelpParam), ShowCtrlCopy, MessageBoxTypeface,
-                                                                       ShowOptionalCheckBox, OptionalCheckBoxText, IsOptionalCheckBoxChecked, OptionalCheckBoxCheckState, OptionalCheckBoxAnchor, OptionalCheckBoxLocation,
-                                                                       CustomMessageBoxIcon, ShowCopyButton, CopyButtonText);
+        public void ShowMessageBox() => InternalKryptonMessageBoxExtended.Show(Owner, MessageBoxContentText, MessageBoxCaption, MessageBoxButtons,
+                                                                               CustomButtonOptions, MessageBoxIcon, MessageBoxDefaultButton,
+                                                                               MessageBoxOptions, HelpPath, HelpNavigator, HelpParam,
+                                                                               ShowCtrlCopy, MessageBoxTypeface, ShowOptionalCheckBox, OptionalCheckBoxText,
+                                                                               IsOptionalCheckBoxChecked, OptionalCheckBoxCheckState, OptionalCheckBoxAnchor,
+                                                                               OptionalCheckBoxLocation, CustomMessageBoxIcon, ShowCopyButton, CopyButtonText,
+                                                                               Fade, FadeSleepTimer, ButtonOneCustomText, ButtonTwoCustomText, ButtonThreeCustomText,
+                                                                               CustomButtonOneResult, CustomButtonTwoResult, CustomButtonThreeResult);
 
         /// <summary>Gets the message box dialog result.</summary>
         /// <returns>The message box dialog result.</returns>
         public DialogResult GetMessageBoxResult()
         {
-            DialogResult result = KryptonMessageBoxExtended.Show(Owner, MessageBoxContentText, MessageBoxCaption, MessageBoxButtons, MessageBoxIcon,
-                                                                       MessageBoxDefaultButton, MessageBoxOptions,
-                                                                       new HelpInformation(HelpPath, HelpNavigator, HelpParam), ShowCtrlCopy, MessageBoxTypeface,
-                                                                       ShowOptionalCheckBox, OptionalCheckBoxText, IsOptionalCheckBoxChecked, OptionalCheckBoxCheckState, OptionalCheckBoxAnchor,
-                                                                       OptionalCheckBoxLocation, CustomMessageBoxIcon, ShowCopyButton, CopyButtonText);
+            DialogResult result = InternalKryptonMessageBoxExtended.Show(Owner, MessageBoxContentText, MessageBoxCaption, MessageBoxButtons,
+                                                                               CustomButtonOptions, MessageBoxIcon, MessageBoxDefaultButton,
+                                                                               MessageBoxOptions, HelpPath, HelpNavigator, HelpParam,
+                                                                               ShowCtrlCopy, MessageBoxTypeface, ShowOptionalCheckBox, OptionalCheckBoxText,
+                                                                               IsOptionalCheckBoxChecked, OptionalCheckBoxCheckState, OptionalCheckBoxAnchor,
+                                                                               OptionalCheckBoxLocation, CustomMessageBoxIcon, ShowCopyButton, CopyButtonText,
+                                                                               Fade, FadeSleepTimer, ButtonOneCustomText, ButtonTwoCustomText, ButtonThreeCustomText,
+                                                                               CustomButtonOneResult, CustomButtonTwoResult, CustomButtonThreeResult);
             return result;
         }
         #endregion

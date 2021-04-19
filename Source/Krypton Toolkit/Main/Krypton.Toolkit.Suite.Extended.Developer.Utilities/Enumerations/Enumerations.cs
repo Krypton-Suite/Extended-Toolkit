@@ -6,7 +6,7 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Messagebox
+namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
 {
     /// <summary>Specifies the button layout in the <see cref="KryptonMessageBoxExtended"/>.</summary>
     public enum ExtendedMessageBoxButtons
