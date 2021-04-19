@@ -53,7 +53,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
             }
         }
 
-        public static void UnderConstruction(IWin32Window owner, string message, string caption = "Under Construction", Font typeface = null)
+        public static void UnderConstruction(string message, string caption = "Under Construction", Font typeface = null)
         {
             Image _underConstruction = Resources.UnderConstruction;
 
@@ -67,7 +67,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
                 caption = "Under Construction";
             }
 
-            KryptonMessageBoxExtended.Show(owner, message, caption, ExtendedMessageBoxButtons.OK, ExtendedMessageBoxIcon.CUSTOM, messageboxTypeface: typeface, customMessageBoxIcon: _underConstruction);
+            KryptonMessageBoxExtended.Show(message, caption, ExtendedMessageBoxButtons.OK, ExtendedMessageBoxCustomButtonOptions.NONE, ExtendedMessageBoxIcon.CUSTOM, messageboxTypeface: typeface, customMessageBoxIcon: _underConstruction);
         }
 
         /// <summary>Displays the developer information.</summary>
