@@ -28,7 +28,18 @@
     <!--<PackageReference Include="Krypton.Toolkit" Version="5.550.2103" />-->
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Classes\" />
+    <Compile Update="Components\Scroll Bars\Skins\HScrollSkin.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Components\Scroll Bars\Skins\VScrollSkin.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls Toolkit\KryptonComboBoxEnhanced.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls Toolkit\KryptonScrollBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
 
   <!--Binary/Documentation Output-->
