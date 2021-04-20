@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace Krypton.Toolkit.Suite.Extended.Controls
+namespace Krypton.Toolkit.Suite.Extended.Scroll.Bars
 {
     public class WIN32ScrollBars
     {
@@ -236,6 +236,8 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         #endregion
 
         #region InitComboBoxInfo Method - Private
+        // TODO: Clean this up
+        /*
         public static bool InitComboBoxInfo(ref KryptonComboBoxEnhanced cbo, ref WIN32ScrollBars.ComboBoxInfo cbi)
         {
 
@@ -246,6 +248,8 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             }
             return true;
         }
+        */
+
         public static void SetSystemColor(System.Drawing.Color color)
         {
             //array of elements to change

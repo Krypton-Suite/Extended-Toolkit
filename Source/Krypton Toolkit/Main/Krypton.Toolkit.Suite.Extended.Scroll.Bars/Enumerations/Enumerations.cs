@@ -1,4 +1,4 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Controls
+﻿namespace Krypton.Toolkit.Suite.Extended.Scroll.Bars
 {
     /// <summary>
     /// The scrollbar arrow button states.

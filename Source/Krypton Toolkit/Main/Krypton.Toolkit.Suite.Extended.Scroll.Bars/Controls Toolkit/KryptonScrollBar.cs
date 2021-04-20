@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Suite.Extended.Controls
+namespace Krypton.Toolkit.Suite.Extended.Scroll.Bars
 {
     /// <summary>
     /// A custom scrollbar control.
@@ -12,7 +12,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
     [Designer(typeof(ScrollBarControlDesigner))]
     [DefaultEvent("Scroll")]
     [DefaultProperty("Value")]
-    [ToolboxBitmap(typeof(System.Windows.Forms.VScrollBar))]
+    [ToolboxBitmap(typeof(VScrollBar))]
     public class KryptonScrollBar : Control
     {
         #region fields

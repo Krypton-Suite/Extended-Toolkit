@@ -5,7 +5,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Suite.Extended.Controls
+namespace Krypton.Toolkit.Suite.Extended.Scroll.Bars
 {
     [ToolboxBitmap(typeof(VScrollBar))]
     [ToolboxItem(false)]
@@ -195,7 +195,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             if ((Controls.Count != 1) && (_win == null))
             {
                 _win = e.Control;
-                if (_win.GetType() == typeof(KryptonGrid) || _win.GetType() == typeof(DataGridView) || (_win.GetType() == typeof(KryptonDataGridView)))
+                if (_win.GetType() == typeof(DataGridView) || (_win.GetType() == typeof(KryptonDataGridView)))
                 {
                     DataGridView dgv = (DataGridView)_win;
                     dgv.Scroll += dgv_Scroll;
@@ -228,7 +228,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         /// <remarks></remarks>
         private void VScrollBar1_miScroll(object sender, ScrollEventArgs e)
         {
-            if (_win.GetType() == typeof(ListView) || (_win.GetType() == typeof(KryptonListView)))
+            if (_win.GetType() == typeof(ListView))
             {
                 ListView listView1 = (ListView)_win;
 
@@ -267,7 +267,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             }
             else
             {
-                if (_win.GetType() == typeof(KryptonGrid) || _win.GetType() == typeof(DataGridView) || (_win.GetType() == typeof(KryptonDataGridView)))
+                if (_win.GetType() == typeof(DataGridView) || (_win.GetType() == typeof(KryptonDataGridView)))
                 {
                     DataGridView dgv = (DataGridView)_win;
                     if (GetDGVScrollbar(ref dgv, out VSB))
@@ -348,7 +348,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         #region "   Horizontal Scroll   "
         private void HScrollBar1_miScroll(object sender, ScrollEventArgs e)
         {
-            if (_win.GetType() == typeof(ListView) || (_win.GetType() == typeof(KryptonListView)))
+            if (_win.GetType() == typeof(ListView))
             {
                 ListView listView1 = (ListView)_win;
 
@@ -363,7 +363,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             }
             else
             {
-                if (_win.GetType() == typeof(KryptonGrid) || _win.GetType() == typeof(DataGridView) || (_win.GetType() == typeof(KryptonDataGridView)))
+                if (_win.GetType() == typeof(DataGridView) || (_win.GetType() == typeof(KryptonDataGridView)))
                 {
                     DataGridView dgv = (DataGridView)_win;
                     if (GetDGHScrollbar(ref dgv, out HSC))
@@ -604,7 +604,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
                     }
                 }
 
-                if (_win.GetType() == typeof(ListView) || (_win.GetType() == typeof(KryptonListView)))
+                if (_win.GetType() == typeof(ListView))
                 {
                     ListView listView1 = (ListView)_win;
 

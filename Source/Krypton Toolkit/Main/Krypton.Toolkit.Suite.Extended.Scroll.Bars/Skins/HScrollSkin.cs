@@ -5,7 +5,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Suite.Extended.Controls
+namespace Krypton.Toolkit.Suite.Extended.Scroll.Bars
 {
     [ToolboxBitmap(typeof(HScrollBar))]
     [ToolboxItem(false)]
@@ -194,7 +194,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             if ((this.Controls.Count != 1) && (_win == null))
             {
                 this._win = e.Control;
-                if (_win.GetType() == typeof(KryptonGrid) || _win.GetType() == typeof(System.Windows.Forms.DataGridView) || (_win.GetType() == typeof(KryptonDataGridView)))
+                if (_win.GetType() == typeof(System.Windows.Forms.DataGridView) || (_win.GetType() == typeof(KryptonDataGridView)))
                 {
                     DataGridView dgv = (DataGridView)_win;
                     dgv.Scroll += dgv_Scroll;
@@ -237,7 +237,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         #region "   Horizontal Scroll   "
         private void HScrollBar1_miScroll(object sender, ScrollEventArgs e)
         {
-            if (_win.GetType() == typeof(System.Windows.Forms.ListView) || (_win.GetType() == typeof(KryptonListView)))
+            if (_win.GetType() == typeof(ListView))
             {
                 ListView listView1 = (ListView)_win;
 
@@ -252,7 +252,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             }
             else
             {
-                if (_win.GetType() == typeof(KryptonGrid) || _win.GetType() == typeof(System.Windows.Forms.DataGridView) || (_win.GetType() == typeof(KryptonDataGridView)))
+                if (_win.GetType() == typeof(System.Windows.Forms.DataGridView) || (_win.GetType() == typeof(KryptonDataGridView)))
                 {
                     DataGridView dgv = (DataGridView)_win;
                     if (GetDGVScrollbar(ref dgv, out HSB))
@@ -450,7 +450,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
                         }
                     }
                 }
-                if (_win.GetType() == typeof(System.Windows.Forms.ListView) || (_win.GetType() == typeof(KryptonListView)))
+                if (_win.GetType() == typeof(System.Windows.Forms.ListView))
                 {
                     ListView listView1 = (ListView)_win;
 
@@ -466,7 +466,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
                         this.HScrollBar1.Update();//.SyncThumbPositionWithLogicalValue();
                     }
                 }
-                if (_win.GetType() == typeof(KryptonGrid) || _win.GetType() == typeof(System.Windows.Forms.DataGridView) || (_win.GetType() == typeof(KryptonDataGridView)))
+                if (_win.GetType() == typeof(System.Windows.Forms.DataGridView) || (_win.GetType() == typeof(KryptonDataGridView)))
                 {
                     WIN32ScrollBars.SendMessage(_win.Handle, WIN32ScrollBars.WM_HSCROLL, (IntPtr)WIN32ScrollBars.SB_TOP, IntPtr.Zero);
                     _win.Invalidate();
