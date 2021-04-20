@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="krypton.toolkit.canary.lite" Version="6.0.2103.6" />
+    <ProjectReference Include="..\..\Main\Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar\Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar.csproj" />
   </ItemGroup>
 
 </Project>
