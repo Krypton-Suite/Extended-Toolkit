@@ -221,6 +221,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Arrows", "Arrows", "{0451E8
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton.Toolkit.Suite.Extended.Scroll.Bars", "Main\Krypton.Toolkit.Suite.Extended.Scroll.Bars\Krypton.Toolkit.Suite.Extended.Scroll.Bars.csproj", "{69D1AC83-0BA2-429A-B1EA-7E0E65F37451}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scrollbars", "Examples\Scrollbars\Scrollbars.csproj", "{EB2A6BDF-9A95-463D-B146-5F47F52110F1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -443,6 +445,10 @@ Global
 		{69D1AC83-0BA2-429A-B1EA-7E0E65F37451}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{69D1AC83-0BA2-429A-B1EA-7E0E65F37451}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{69D1AC83-0BA2-429A-B1EA-7E0E65F37451}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB2A6BDF-9A95-463D-B146-5F47F52110F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB2A6BDF-9A95-463D-B146-5F47F52110F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB2A6BDF-9A95-463D-B146-5F47F52110F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB2A6BDF-9A95-463D-B146-5F47F52110F1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -517,6 +523,7 @@ Global
 		{69F98672-EBB9-4B12-BD04-45AEF3C37FC6} = {15346861-5444-49D7-9686-3835EE271259}
 		{0451E883-C718-4679-962F-E2825B1513B2} = {247BBF4E-22B0-49CC-981B-0420AD7FF4E8}
 		{69D1AC83-0BA2-429A-B1EA-7E0E65F37451} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
+		{EB2A6BDF-9A95-463D-B146-5F47F52110F1} = {25D5F0A6-A601-424B-9431-8EFE139A58A7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A7CE7732-0982-4703-8EFD-7715D569BAB5}
