@@ -2,8 +2,13 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
+    <LangVersion>latest</LangVersion>
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Main\Krypton.Toolkit.Suite.Extended.Scroll.Bars\Krypton.Toolkit.Suite.Extended.Scroll.Bars.csproj" />
+  </ItemGroup>
 
 </Project>
