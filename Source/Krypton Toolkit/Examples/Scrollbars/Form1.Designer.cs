@@ -32,6 +32,8 @@ namespace Scrollbars
             this.components = new System.ComponentModel.Container();
             this.kryptonScrollBar1 = new Krypton.Toolkit.Suite.Extended.Scroll.Bars.KryptonScrollBar();
             this.kryptonScrollBar2 = new Krypton.Toolkit.Suite.Extended.Scroll.Bars.KryptonScrollBar();
+            this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.SuspendLayout();
             // 
             // kryptonScrollBar1
@@ -49,6 +51,14 @@ namespace Scrollbars
             this.kryptonScrollBar2.Size = new System.Drawing.Size(200, 19);
             this.kryptonScrollBar2.TabIndex = 1;
             // 
+            // kryptonPanel1
+            // 
+            this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
+            this.kryptonPanel1.Name = "kryptonPanel1";
+            this.kryptonPanel1.Size = new System.Drawing.Size(266, 248);
+            this.kryptonPanel1.TabIndex = 2;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -56,11 +66,13 @@ namespace Scrollbars
             this.ClientSize = new System.Drawing.Size(266, 248);
             this.Controls.Add(this.kryptonScrollBar2);
             this.Controls.Add(this.kryptonScrollBar1);
+            this.Controls.Add(this.kryptonPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form1";
             this.Text = "Scrollbars";
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -69,6 +81,7 @@ namespace Scrollbars
 
         private Krypton.Toolkit.Suite.Extended.Scroll.Bars.KryptonScrollBar kryptonScrollBar1;
         private Krypton.Toolkit.Suite.Extended.Scroll.Bars.KryptonScrollBar kryptonScrollBar2;
+        private Krypton.Toolkit.KryptonPanel kryptonPanel1;
     }
 }
 

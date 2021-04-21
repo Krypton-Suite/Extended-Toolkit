@@ -1,8 +1,8 @@
-﻿using System.Windows.Forms;
+﻿using Krypton.Toolkit;
 
 namespace Scrollbars
 {
-    public partial class Form1 : Form
+    public partial class Form1 : KryptonForm
     {
         public Form1()
         {
