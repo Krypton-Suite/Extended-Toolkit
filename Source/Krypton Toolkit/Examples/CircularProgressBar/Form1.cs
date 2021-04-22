@@ -1,13 +1,5 @@
 ﻿using Krypton.Toolkit;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace CircularProgressBar
 {
@@ -34,7 +26,7 @@ namespace CircularProgressBar
         {
             ccbTest.Increment(1);
 
-            ccbTest.Text = $"{ ccbTest.Value }%";
+            ccbTest.Text = $"{ccbTest.Value}%";
 
             if (ccbTest.Value >= 100)
             {
