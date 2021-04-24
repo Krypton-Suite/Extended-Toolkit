@@ -1181,5 +1181,62 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         private Image[] ReturnIconImageArray() => IconImages;
         #endregion
 
+        #region Show
+
+        #region Internal Show
+        private static string InternalShow(string message, string title = "", InputBoxLanguage language = InputBoxLanguage.ENGLISH, InputBoxInputType type = InputBoxInputType.NONE, string[] listItems = null, bool showInTaskBar = false, Font controlTypeface = null, Font messageTypeface = null, string okText = "&Ok", string yesText = "&Yes", string noText = "N&o", string cancelText = "&Cancel", string hintText = "")
+        {
+            using (KryptonInputBoxExtended ib = new KryptonInputBoxExtended(message, title, language, type, listItems, showInTaskBar, controlTypeface, messageTypeface, okText, yesText, noText, cancelText, hintText))
+            {
+                return ib.ShowDialog() == DialogResult.OK ? ib.GetUserResponse() : string.Empty;
+            }
+        }
+
+        private static string InternalShow(string message, string title = "", InputBoxIconType icon = InputBoxIconType.INFORMATION, Image image = null, InputBoxLanguage language = InputBoxLanguage.ENGLISH, InputBoxButtons buttons = InputBoxButtons.OK, InputBoxInputType type = InputBoxInputType.NONE, string[] listItems = null, bool showInTaskBar = false, Font controlTypeface = null, Font messageTypeface = null, string okText = "&Ok", string yesText = "&Yes", string noText = "N&o", string cancelText = "&Cancel", string hintText = "", FormStartPosition startPosition = FormStartPosition.WindowsDefaultLocation, InputBoxTextAlignment textAlignment = InputBoxTextAlignment.LEFT, Point iconLocation = new Point())
+        {
+            using (KryptonInputBoxExtended inputBoxExtended = new KryptonInputBoxExtended(iconLocation, message, title, icon, image, language, buttons, type, listItems, showInTaskBar, controlTypeface, messageTypeface, okText, yesText, noText, cancelText, hintText, startPosition, textAlignment))
+            {
+                inputBoxExtended.StartPosition = startPosition;
+
+                return inputBoxExtended.ShowDialog() == DialogResult.OK ? inputBoxExtended.GetUserResponse() : string.Empty;
+            }
+        }
+
+        private static string InternalShow(IWin32Window owner, string message, string title = "", InputBoxIconType icon = InputBoxIconType.INFORMATION, Image image = null, InputBoxLanguage language = InputBoxLanguage.ENGLISH, InputBoxButtons buttons = InputBoxButtons.OK, InputBoxInputType type = InputBoxInputType.NONE, string[] listItems = null, bool showInTaskBar = false, Font controlTypeface = null, Font messageTypeface = null, string okText = "&Ok", string yesText = "&Yes", string noText = "N&o", string cancelText = "&Cancel", string hintText = "", FormStartPosition startPosition = FormStartPosition.WindowsDefaultLocation, InputBoxTextAlignment textAlignment = InputBoxTextAlignment.LEFT, Point iconLocation = new Point())
+        {
+            IWin32Window showOwner = owner ?? FromHandle(PlatformInvoke.GetActiveWindow());
+
+            string result;
+
+            using (KryptonInputBoxExtended inputBoxExtended = new KryptonInputBoxExtended(iconLocation, message, title, icon, image, language, buttons, type, listItems, showInTaskBar, controlTypeface, messageTypeface, okText, yesText, noText, cancelText, hintText, startPosition, textAlignment))
+            {
+                inputBoxExtended.StartPosition = startPosition;
+
+                switch (type)
+                {
+                    case InputBoxInputType.COMBOBOX:
+                        result = inputBoxExtended.ShowDialog(showOwner) == DialogResult.OK ? inputBoxExtended.GetUserResponse() : string.Empty;
+                        break;
+                    case InputBoxInputType.TEXTBOX:
+                        result = inputBoxExtended.ShowDialog(showOwner) == DialogResult.OK ? inputBoxExtended.GetUserResponse() : string.Empty; 
+                        break;
+                    case InputBoxInputType.MASKEDTEXTBOX:
+                        break;
+                    case InputBoxInputType.NONE:
+                        break;
+                    default:
+                        result = inputBoxExtended.ShowDialog(showOwner) == DialogResult.OK ? inputBoxExtended.GetUserResponse() : string.Empty;
+                        break;
+                }
+
+                return inputBoxExtended.ShowDialog(showOwner) == DialogResult.OK ? inputBoxExtended.GetUserResponse() : string.Empty;
+            }
+        }
+        #endregion
+
+        public static string Show(string message, string title = "", InputBoxLanguage language = InputBoxLanguage.ENGLISH, InputBoxInputType type = InputBoxInputType.NONE, string[] listItems = null, bool showInTaskBar = false, Font controlTypeface = null, Font messageTypeface = null, string okText = "&Ok", string yesText = "&Yes", string noText = "N&o", string cancelText = "&Cancel", string hintText = "") => InternalShow(message, title, language, type, listItems, showInTaskBar, controlTypeface, messageTypeface, okText, yesText, noText, cancelText, hintText);
+
+        public static string Show(string message, string title = "", InputBoxIconType icon = InputBoxIconType.INFORMATION, Image image = null, InputBoxLanguage language = InputBoxLanguage.ENGLISH, InputBoxButtons buttons = InputBoxButtons.OK, InputBoxInputType type = InputBoxInputType.NONE, string[] listItems = null, bool showInTaskBar = false, Font controlTypeface = null, Font messageTypeface = null, string okText = "&Ok", string yesText = "&Yes", string noText = "N&o", string cancelText = "&Cancel", string hintText = "", FormStartPosition startPosition = FormStartPosition.WindowsDefaultLocation, InputBoxTextAlignment textAlignment = InputBoxTextAlignment.LEFT, Point iconLocation = new Point()) => InternalShow(message, title, icon, image, language, buttons, type, listItems, showInTaskBar, controlTypeface, messageTypeface, okText, yesText, noText, cancelText, hintText, startPosition, textAlignment, iconLocation);
+        #endregion
     }
 }
