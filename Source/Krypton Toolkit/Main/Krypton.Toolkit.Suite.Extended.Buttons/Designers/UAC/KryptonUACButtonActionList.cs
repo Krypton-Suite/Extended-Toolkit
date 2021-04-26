@@ -12,6 +12,7 @@ using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Buttons
 {
+    /*
     internal class KryptonUACButtonActionList : DesignerActionList
     {
         #region Instance Fields
@@ -237,4 +238,5 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         }
         #endregion
     }
+    */
 }

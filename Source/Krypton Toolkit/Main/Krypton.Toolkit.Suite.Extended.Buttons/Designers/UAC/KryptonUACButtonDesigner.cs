@@ -11,6 +11,7 @@ using System.Windows.Forms.Design;
 
 namespace Krypton.Toolkit.Suite.Extended.Buttons
 {
+    /*
     internal class KryptonUACButtonDesigner : ControlDesigner
     {
         #region Identity
@@ -47,4 +48,5 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         }
         #endregion
     }
+    */
 }

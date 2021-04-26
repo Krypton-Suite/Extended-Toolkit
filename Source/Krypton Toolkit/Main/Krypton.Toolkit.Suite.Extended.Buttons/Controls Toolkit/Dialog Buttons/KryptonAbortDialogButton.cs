@@ -1,12 +1,22 @@
-﻿using Krypton.Toolkit.Suite.Extended.Language.Model;
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ */
+#endregion
+
 using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
+using Krypton.Toolkit.Suite.Extended.Language.Model;
+
 namespace Krypton.Toolkit.Suite.Extended.Buttons
 {
-    [Designer(typeof(KryptonAbortDialogButtonDesigner)), Description(""), ToolboxBitmap(typeof(KryptonButton))]
+    /// <summary>A drop-in abort button.</summary>
+    [Designer(typeof(KryptonAbortDialogButtonDesigner)), Description("A drop-in abort button."), ToolboxBitmap(typeof(KryptonButton))]
     public class KryptonAbortDialogButton : KryptonButton
     {
         #region Variables
@@ -35,22 +45,30 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         #endregion
 
         #region Properties
+        /// <summary>Gets or sets the selected language.</summary>
+        /// <value>The selected language.</value>
         public SelectedLanguage SelectedLanguage
         {
             get => _selectedLanguage;
 
             set
             {
-                SelectedLanguageChangedEventArgs e = new SelectedLanguageChangedEventArgs(value);
+                if (_selectedLanguage == value)
+                {
+                    SelectedLanguageChangedEventArgs e = new SelectedLanguageChangedEventArgs(value);
 
-                OnSelectedLanguageChanged(this, e);
+                    OnSelectedLanguageChanged(this, e);
 
-                _selectedLanguage = value;
+                    _selectedLanguage = value;
 
-                Invalidate();
+                    // Redraw
+                    Invalidate();
+                }
             }
         }
 
+        /// <summary>Gets or sets the parent window.</summary>
+        /// <value>The parent window.</value>
         public KryptonForm ParentWindow { get => _parent; set { _parent = value; Invalidate(); } }
         #endregion 
 
