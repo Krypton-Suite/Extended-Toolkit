@@ -40,7 +40,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         private IKryptonCommand _command;
         private bool _isDefault, _useMnemonic, _wasEnabled, _useAsUACElevatedButton;
         private string _processToElevate;
-        private Image _originalImage, _uacShieldIcon;
+        private Image _originalImage;
         private Size _uacShieldSize;
         #endregion
 

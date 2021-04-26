@@ -6,15 +6,5 @@
     <OutputType>WinExe</OutputType>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
-  
-  <ItemGroup>
-    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2103.6" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="Krypton.Toolkit.Suite.Extended.Buttons">
-      <HintPath>..\..\Main\Krypton.Toolkit.Suite.Extended.Buttons\obj\Debug\net45\Krypton.Toolkit.Suite.Extended.Buttons.dll</HintPath>
-    </Reference>
-  </ItemGroup>
 
 </Project>

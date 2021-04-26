@@ -30,7 +30,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
     {
         #region Variables
         private bool _useAsUACElevatedButton;
-        private Image _originalImage, _uacShieldIcon;
+        private Image _originalImage;
         private Size _uacShieldSize;
         private string _processToElevate;
         #endregion
@@ -48,19 +48,9 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             {
                 _useAsUACElevatedButton = value;
 
-                // Store the original image
-                _originalImage = Values.Image;
+                // TODO: Store the original icon
 
-                _uacShieldIcon = SystemIcons.Shield.ToBitmap();
-
-                if (!value)
-                {
-                    Values.Image = _originalImage;
-                }
-                else
-                {
-                    Values.Image = _originalImage;
-                }
+                Values.Image = SystemIcons.Shield.ToBitmap();
             }
         }
 
