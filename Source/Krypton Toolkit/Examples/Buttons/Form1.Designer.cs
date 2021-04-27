@@ -31,6 +31,7 @@ namespace Buttons
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.kryptonUACButtonVersion11 = new Krypton.Toolkit.Suite.Extended.Buttons.KryptonUACButtonVersion1();
+            this.kryptonUACButtonVersion21 = new Krypton.Toolkit.Suite.Extended.Buttons.KryptonUACButtonVersion2();
             this.SuspendLayout();
             // 
             // kryptonUACButtonVersion11
@@ -44,11 +45,24 @@ namespace Buttons
             this.kryptonUACButtonVersion11.Values.Image = ((System.Drawing.Image)(resources.GetObject("kryptonUACButtonVersion11.Values.Image")));
             this.kryptonUACButtonVersion11.Values.Text = "kryptonUACButtonVersion11";
             // 
+            // kryptonUACButtonVersion21
+            // 
+            this.kryptonUACButtonVersion21.ExtraArguments = null;
+            this.kryptonUACButtonVersion21.Location = new System.Drawing.Point(393, 210);
+            this.kryptonUACButtonVersion21.Name = "kryptonUACButtonVersion21";
+            this.kryptonUACButtonVersion21.PathToElevatedObject = null;
+            this.kryptonUACButtonVersion21.Size = new System.Drawing.Size(243, 56);
+            this.kryptonUACButtonVersion21.TabIndex = 1;
+            this.kryptonUACButtonVersion21.UseAsUACElevatedButton = true;
+            this.kryptonUACButtonVersion21.Values.Image = ((System.Drawing.Image)(resources.GetObject("kryptonUACButtonVersion21.Values.Image")));
+            this.kryptonUACButtonVersion21.Values.Text = "kryptonUACButtonVersion21";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.kryptonUACButtonVersion21);
             this.Controls.Add(this.kryptonUACButtonVersion11);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -59,6 +73,7 @@ namespace Buttons
         #endregion
 
         private Krypton.Toolkit.Suite.Extended.Buttons.KryptonUACButtonVersion1 kryptonUACButtonVersion11;
+        private Krypton.Toolkit.Suite.Extended.Buttons.KryptonUACButtonVersion2 kryptonUACButtonVersion21;
     }
 }
 

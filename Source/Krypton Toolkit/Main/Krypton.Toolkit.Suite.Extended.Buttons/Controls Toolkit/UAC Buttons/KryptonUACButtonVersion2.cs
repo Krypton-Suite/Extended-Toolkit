@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Buttons
 {
@@ -64,7 +65,9 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         {
             if (showUACShield)
             {
-                Values.Image = SystemIcons.Shield.ToBitmap();
+                //Values.Image = SystemIcons.Shield.ToBitmap();
+
+                Values.Image = IconExtractor.LoadIcon(IconExtractor.IconType.Shield, SystemInformation.SmallIconSize).ToBitmap();
             }
             else
             {
