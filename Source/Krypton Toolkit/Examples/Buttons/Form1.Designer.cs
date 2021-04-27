@@ -29,13 +29,49 @@ namespace Buttons
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            this.kryptonUACButtonVersion11 = new Krypton.Toolkit.Suite.Extended.Buttons.KryptonUACButtonVersion1();
+            this.kryptonUACButtonVersion21 = new Krypton.Toolkit.Suite.Extended.Buttons.KryptonUACButtonVersion2();
+            this.SuspendLayout();
+            // 
+            // kryptonUACButtonVersion11
+            // 
+            this.kryptonUACButtonVersion11.AssemblyToElevate = null;
+            this.kryptonUACButtonVersion11.Location = new System.Drawing.Point(0, 0);
+            this.kryptonUACButtonVersion11.Name = "kryptonUACButtonVersion11";
+            this.kryptonUACButtonVersion11.Size = new System.Drawing.Size(204, 66);
+            this.kryptonUACButtonVersion11.TabIndex = 0;
+            this.kryptonUACButtonVersion11.Values.Text = "kryptonUACButtonVersion11";
+            // 
+            // kryptonUACButtonVersion21
+            // 
+            this.kryptonUACButtonVersion21.ExtraArguments = null;
+            this.kryptonUACButtonVersion21.Location = new System.Drawing.Point(444, 82);
+            this.kryptonUACButtonVersion21.Name = "kryptonUACButtonVersion21";
+            this.kryptonUACButtonVersion21.PathToElevatedObject = null;
+            this.kryptonUACButtonVersion21.Size = new System.Drawing.Size(211, 41);
+            this.kryptonUACButtonVersion21.TabIndex = 1;
+            this.kryptonUACButtonVersion21.UseAsUACElevatedButton = true;
+            this.kryptonUACButtonVersion21.Values.Image = ((System.Drawing.Image)(resources.GetObject("kryptonUACButtonVersion21.Values.Image")));
+            this.kryptonUACButtonVersion21.Values.Text = "kryptonUACButtonVersion21";
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.kryptonUACButtonVersion21);
+            this.Controls.Add(this.kryptonUACButtonVersion11);
+            this.Name = "Form1";
             this.Text = "Form1";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private Krypton.Toolkit.Suite.Extended.Buttons.KryptonUACButtonVersion1 kryptonUACButtonVersion11;
+        private Krypton.Toolkit.Suite.Extended.Buttons.KryptonUACButtonVersion2 kryptonUACButtonVersion21;
     }
 }
 

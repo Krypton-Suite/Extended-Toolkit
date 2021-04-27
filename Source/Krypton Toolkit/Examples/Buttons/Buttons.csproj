@@ -1,10 +1,16 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0-windows</TargetFramework>
+    <TargetFramework>net48</TargetFramework>
     <LangVersion>latest</LangVersion>
     <OutputType>WinExe</OutputType>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="Krypton.Toolkit.Suite.Extended.Buttons">
+      <HintPath>..\..\Main\Krypton.Toolkit.Suite.Extended.Buttons\obj\Debug\net45\Krypton.Toolkit.Suite.Extended.Buttons.dll</HintPath>
+    </Reference>
+  </ItemGroup>
 
 </Project>
