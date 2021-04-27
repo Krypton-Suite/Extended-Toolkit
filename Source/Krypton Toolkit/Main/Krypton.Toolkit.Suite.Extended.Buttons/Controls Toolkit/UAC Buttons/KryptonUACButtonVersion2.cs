@@ -13,6 +13,8 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 
         private string _pathToElevatedObject, _extraArguments;
 
+        private Size _customShieldSize;
+
         private GlobalMethods _globalMethods = new GlobalMethods();
 
         private UtilityMethods _utilityMethods = new UtilityMethods();
@@ -37,6 +39,9 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 
         public string ExtraArguments { get => _extraArguments; set => _extraArguments = value; }
 
+        public Size CustomShieldSize { get => _customShieldSize; set { _customShieldSize = value; ShowUACShield(_useAsUACElevatedButton, UACShieldSize.CUSTOM, value.Height, value.Width); UACShieldSize = UACShieldSize.CUSTOM; } }
+
+        [DefaultValue(typeof(UACShieldSize), "UACShieldSize.SMALL")]
         public UACShieldSize UACShieldSize { get => _shieldSize; set { _shieldSize = value; ShowUACShield(_useAsUACElevatedButton, value); } }
         #endregion
 
@@ -65,8 +70,10 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         #region Methods
         /// <summary>Shows the uac shield.</summary>
         /// <param name="showUACShield">if set to <c>true</c> [show uac shield].</param>
-        private void ShowUACShield(bool showUACShield, UACShieldSize shieldSize = UACShieldSize.SMALL)
+        private void ShowUACShield(bool showUACShield, UACShieldSize shieldSize = UACShieldSize.SMALL, int? height = null, int? width = null)
         {
+            int h = height ?? 16, w = width ?? 16;
+
             if (showUACShield)
             {
                 //Values.Image = SystemIcons.Shield.ToBitmap();
@@ -92,6 +99,12 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
                     Values.Image = UtilityMethods.ResizeImage(shield, 64, 64);
 
                     Invalidate();
+                }
+                else if (shieldSize == UACShieldSize.CUSTOM)
+                {
+                    Image shield = SystemIcons.Shield.ToBitmap();
+
+                    Values.Image = UtilityMethods.ResizeImage(shield, w, h);
                 }
             }
             else

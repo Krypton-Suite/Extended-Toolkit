@@ -46,13 +46,14 @@ namespace Buttons
             // 
             // kryptonUACButtonVersion21
             // 
+            this.kryptonUACButtonVersion21.CustomShieldSize = new System.Drawing.Size(48, 48);
             this.kryptonUACButtonVersion21.ExtraArguments = null;
             this.kryptonUACButtonVersion21.Location = new System.Drawing.Point(393, 210);
             this.kryptonUACButtonVersion21.Name = "kryptonUACButtonVersion21";
             this.kryptonUACButtonVersion21.PathToElevatedObject = null;
             this.kryptonUACButtonVersion21.Size = new System.Drawing.Size(322, 130);
             this.kryptonUACButtonVersion21.TabIndex = 1;
-            this.kryptonUACButtonVersion21.UACShieldSize = Krypton.Toolkit.Suite.Extended.Buttons.UACShieldSize.LARGE;
+            this.kryptonUACButtonVersion21.UACShieldSize = Krypton.Toolkit.Suite.Extended.Buttons.UACShieldSize.CUSTOM;
             this.kryptonUACButtonVersion21.UseAsUACElevatedButton = true;
             this.kryptonUACButtonVersion21.Values.Image = ((System.Drawing.Image)(resources.GetObject("kryptonUACButtonVersion21.Values.Image")));
             this.kryptonUACButtonVersion21.Values.Text = "kryptonUACButtonVersion21";
@@ -66,7 +67,7 @@ namespace Buttons
             this.kuacbtnV1.Size = new System.Drawing.Size(243, 51);
             this.kuacbtnV1.TabIndex = 0;
             this.kuacbtnV1.Values.Image = ((System.Drawing.Image)(resources.GetObject("kuacbtnV1.Values.Image")));
-            this.kuacbtnV1.Values.Text = "kryptonUACButtonVersion11";
+            this.kuacbtnV1.Values.Text = "Open &Notepad";
             // 
             // Form1
             // 

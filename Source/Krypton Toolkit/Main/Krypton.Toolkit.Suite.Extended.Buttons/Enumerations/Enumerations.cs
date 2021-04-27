@@ -4,6 +4,7 @@
     {
         SMALL = 0,
         MEDIUM = 1,
-        LARGE = 2
+        LARGE = 2,
+        CUSTOM = 3
     }
 }
