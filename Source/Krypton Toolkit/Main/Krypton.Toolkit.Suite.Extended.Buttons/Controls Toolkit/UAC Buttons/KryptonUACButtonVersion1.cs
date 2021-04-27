@@ -22,7 +22,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         #region Variables
         private Assembly _assemblyToElevate;
 
-        private bool _elevateApplicationOnClick = true, _showUACShield = true;
+        private bool _elevateApplicationOnClick = true;
 
         private string _processName = string.Empty, _extraArguments = string.Empty;
 
@@ -41,19 +41,6 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         /// <summary>Gets or sets the process to elevate.</summary>
         /// <value>The process to elevate.</value>
         public Assembly AssemblyToElevate { get => _assemblyToElevate; set => _assemblyToElevate = value; }
-
-        /// <summary>
-        /// Elevates the current running application to administrator level when button is clicked.
-        /// </summary>
-        /// <remarks>
-        /// The application/process will restart when clicked.
-        /// </remarks>
-        // [Category("Code"), Description("Elevates the current running application to administrator level when button is clicked. The application/process will restart when clicked."), DefaultValue(true)]
-        // public bool ElevateApplicationOnClick { get => _elevateApplicationOnClick; set => _elevateApplicationOnClick = value; }
-
-        /// <summary>Gets or sets a value indicating whether [show uac shield].</summary>
-        /// <value><c>true</c> if [show uac shield]; otherwise, <c>false</c>.</value>
-        public bool ShowUACShield { get => _showUACShield; set { _showUACShield = value; Invalidate(); } }
 
         /// <summary>
         /// The application assembly.
@@ -155,11 +142,6 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            if (_showUACShield)
-            {
-                UACSecurity.AddShieldToButton(this);
-            }
-
             base.OnPaint(e);
         }
         #endregion

@@ -16,6 +16,8 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         private GlobalMethods _globalMethods = new GlobalMethods();
 
         private UtilityMethods _utilityMethods = new UtilityMethods();
+
+        private UACShieldSize _shieldSize;
         #endregion
 
         #region Properties
@@ -31,11 +33,11 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             }
         }
 
-        //public object ObjectToElevate { get => _objectToElevate; set => _objectToElevate = value; }
-
         public string PathToElevatedObject { get => _pathToElevatedObject; set => _pathToElevatedObject = value; }
 
         public string ExtraArguments { get => _extraArguments; set => _extraArguments = value; }
+
+        public UACShieldSize UACShieldSize { get => _shieldSize; set { _shieldSize = value; Invalidate(); } }
         #endregion
 
         #region Event
@@ -56,18 +58,41 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         #region Constructor
         public KryptonUACButtonVersion2() : base()
         {
-
+            _shieldSize = UACShieldSize.SMALL;
         }
         #endregion
 
         #region Methods
+        /// <summary>Shows the uac shield.</summary>
+        /// <param name="showUACShield">if set to <c>true</c> [show uac shield].</param>
         private void ShowUACShield(bool showUACShield)
         {
             if (showUACShield)
             {
                 //Values.Image = SystemIcons.Shield.ToBitmap();
 
-                Values.Image = IconExtractor.LoadIcon(IconExtractor.IconType.Shield, SystemInformation.SmallIconSize).ToBitmap();
+                if (_shieldSize == UACShieldSize.SMALL)
+                {
+                    Values.Image = IconExtractor.LoadIcon(IconExtractor.IconType.Shield, SystemInformation.SmallIconSize).ToBitmap();
+
+                    Invalidate();
+                }
+                else if (_shieldSize == UACShieldSize.MEDIUM)
+                {
+                    Image shield = SystemIcons.Shield.ToBitmap();
+
+                    Values.Image = UtilityMethods.ResizeImage(shield, 32, 32);
+
+                    Invalidate();
+                }
+                else if (_shieldSize == UACShieldSize.LARGE)
+                {
+                    Image shield = SystemIcons.Shield.ToBitmap();
+
+                    Values.Image = UtilityMethods.ResizeImage(shield, 64, 64);
+
+                    Invalidate();
+                }
             }
             else
             {
@@ -79,6 +104,33 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         #endregion
 
         #region Overrides
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            //if (_useAsUACElevatedButton)
+            //{
+            //    //Values.Image = SystemIcons.Shield.ToBitmap();
+
+            //    if (_shieldSize == UACShieldSize.SMALL)
+            //    {
+            //        Values.Image = IconExtractor.LoadIcon(IconExtractor.IconType.Shield, SystemInformation.SmallIconSize).ToBitmap();
+            //    }
+            //    else if (_shieldSize == UACShieldSize.MEDIUM)
+            //    {
+            //        Image shield = SystemIcons.Shield.ToBitmap();
+
+            //        Values.Image = UtilityMethods.ResizeImage(shield, 32, 32);
+            //    }
+            //    else if (_shieldSize == UACShieldSize.LARGE)
+            //    {
+            //        Image shield = SystemIcons.Shield.ToBitmap();
+
+            //        Values.Image = UtilityMethods.ResizeImage(shield, 64, 64);
+            //    }
+            //}
+
+            base.OnPaint(e);
+        }
+
         protected override void OnClick(EventArgs e)
         {
             base.OnClick(e);

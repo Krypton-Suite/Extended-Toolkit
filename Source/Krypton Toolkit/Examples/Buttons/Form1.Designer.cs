@@ -30,20 +30,19 @@ namespace Buttons
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.kryptonUACButtonVersion11 = new Krypton.Toolkit.Suite.Extended.Buttons.KryptonUACButtonVersion1();
+            this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             this.kryptonUACButtonVersion21 = new Krypton.Toolkit.Suite.Extended.Buttons.KryptonUACButtonVersion2();
+            this.kuacbtnV1 = new Krypton.Toolkit.Suite.Extended.Buttons.KryptonUACButtonVersion1();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.SuspendLayout();
             // 
-            // kryptonUACButtonVersion11
+            // kryptonPanel1
             // 
-            this.kryptonUACButtonVersion11.AssemblyToElevate = null;
-            this.kryptonUACButtonVersion11.Location = new System.Drawing.Point(393, 129);
-            this.kryptonUACButtonVersion11.Name = "kryptonUACButtonVersion11";
-            this.kryptonUACButtonVersion11.ShowUACShield = true;
-            this.kryptonUACButtonVersion11.Size = new System.Drawing.Size(243, 51);
-            this.kryptonUACButtonVersion11.TabIndex = 0;
-            this.kryptonUACButtonVersion11.Values.Image = ((System.Drawing.Image)(resources.GetObject("kryptonUACButtonVersion11.Values.Image")));
-            this.kryptonUACButtonVersion11.Values.Text = "kryptonUACButtonVersion11";
+            this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
+            this.kryptonPanel1.Name = "kryptonPanel1";
+            this.kryptonPanel1.Size = new System.Drawing.Size(800, 450);
+            this.kryptonPanel1.TabIndex = 2;
             // 
             // kryptonUACButtonVersion21
             // 
@@ -51,11 +50,23 @@ namespace Buttons
             this.kryptonUACButtonVersion21.Location = new System.Drawing.Point(393, 210);
             this.kryptonUACButtonVersion21.Name = "kryptonUACButtonVersion21";
             this.kryptonUACButtonVersion21.PathToElevatedObject = null;
-            this.kryptonUACButtonVersion21.Size = new System.Drawing.Size(243, 56);
+            this.kryptonUACButtonVersion21.Size = new System.Drawing.Size(322, 130);
             this.kryptonUACButtonVersion21.TabIndex = 1;
+            this.kryptonUACButtonVersion21.UACShieldSize = Krypton.Toolkit.Suite.Extended.Buttons.UACShieldSize.MEDIUM;
             this.kryptonUACButtonVersion21.UseAsUACElevatedButton = true;
             this.kryptonUACButtonVersion21.Values.Image = ((System.Drawing.Image)(resources.GetObject("kryptonUACButtonVersion21.Values.Image")));
             this.kryptonUACButtonVersion21.Values.Text = "kryptonUACButtonVersion21";
+            // 
+            // kuacbtnV1
+            // 
+            this.kuacbtnV1.AssemblyToElevate = null;
+            this.kuacbtnV1.Location = new System.Drawing.Point(393, 129);
+            this.kuacbtnV1.Name = "kuacbtnV1";
+            this.kuacbtnV1.ProcessName = "C:\\Windows\\notepad.exe";
+            this.kuacbtnV1.Size = new System.Drawing.Size(243, 51);
+            this.kuacbtnV1.TabIndex = 0;
+            this.kuacbtnV1.Values.Image = ((System.Drawing.Image)(resources.GetObject("kuacbtnV1.Values.Image")));
+            this.kuacbtnV1.Values.Text = "kryptonUACButtonVersion11";
             // 
             // Form1
             // 
@@ -63,17 +74,20 @@ namespace Buttons
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.kryptonUACButtonVersion21);
-            this.Controls.Add(this.kryptonUACButtonVersion11);
+            this.Controls.Add(this.kuacbtnV1);
+            this.Controls.Add(this.kryptonPanel1);
             this.Name = "Form1";
             this.Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private Krypton.Toolkit.Suite.Extended.Buttons.KryptonUACButtonVersion1 kryptonUACButtonVersion11;
+        private Krypton.Toolkit.Suite.Extended.Buttons.KryptonUACButtonVersion1 kuacbtnV1;
         private Krypton.Toolkit.Suite.Extended.Buttons.KryptonUACButtonVersion2 kryptonUACButtonVersion21;
+        private Krypton.Toolkit.KryptonPanel kryptonPanel1;
     }
 }
 
