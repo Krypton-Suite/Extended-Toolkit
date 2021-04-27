@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.IO;
 using System.Reflection;
+using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Buttons
 {
@@ -52,7 +53,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 
         /// <summary>Gets or sets a value indicating whether [show uac shield].</summary>
         /// <value><c>true</c> if [show uac shield]; otherwise, <c>false</c>.</value>
-        // public bool ShowUACShield { get => _showUACShield; set { _showUACShield = value; Invalidate(); } }
+        public bool ShowUACShield { get => _showUACShield; set { _showUACShield = value; Invalidate(); } }
 
         /// <summary>
         /// The application assembly.
@@ -82,19 +83,38 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         #region Constructor
         public KryptonUACButtonVersion1() : base()
         {
-            _assemblyToElevate = null;
-
-            _elevateApplicationOnClick = true;
-
-            _processName = "";
-
-            _extraArguments = "";
-
-            _showUACShield = true;
-
-            if (_showUACShield)
+            this.Size = new Size((int)(this.Width * 1.5), this.Height + 1);
+            if (PlatformHelper.VistaOrHigher)
             {
-                UACSecurity.AddShieldToButton(this);
+                //Only try to load the icon if it did not fail before
+                if (!_isSystemAbleToLoadShield.HasValue || _isSystemAbleToLoadShield.Value)
+                {
+                    try
+                    {
+                        var icon = IconExtractor.LoadIcon(IconExtractor.IconType.Shield, SystemInformation.SmallIconSize);
+                        if (icon != null)
+                        {
+                            Values.Image = icon.ToBitmap();
+                            //this.TextImageRelation = TextImageRelation.ImageBeforeText;
+                            //this.ImageAlign = ContentAlignment.MiddleRight;
+
+                            _isSystemAbleToLoadShield = true;
+                            return;
+                        }
+                        else
+                        {
+                            _isSystemAbleToLoadShield = false;
+                        }
+                    }
+                    catch (PlatformNotSupportedException)
+                    {
+                        //This happens when the system does not support this call
+                        //Prevent future calling
+                        _isSystemAbleToLoadShield = false;
+                    }
+                }
+
+                NativeMethods.SendMessage(this.Handle, BCM_SETSHIELD, IntPtr.Zero, new IntPtr(1));
             }
         }
         #endregion
@@ -131,6 +151,16 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             }
 
             base.OnClick(e);
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            if (_showUACShield)
+            {
+                UACSecurity.AddShieldToButton(this);
+            }
+
+            base.OnPaint(e);
         }
         #endregion
     }

@@ -10,8 +10,6 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         #region Variables
         private bool _useAsUACElevatedButton, _elevateOnClick;
 
-        private object _objectToElevate;
-
         private string _pathToElevatedObject, _extraArguments;
 
         private GlobalMethods _globalMethods = new GlobalMethods();
