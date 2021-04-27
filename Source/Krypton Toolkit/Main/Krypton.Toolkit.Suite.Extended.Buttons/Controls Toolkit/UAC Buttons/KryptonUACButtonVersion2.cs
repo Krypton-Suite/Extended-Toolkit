@@ -37,7 +37,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 
         public string ExtraArguments { get => _extraArguments; set => _extraArguments = value; }
 
-        public UACShieldSize UACShieldSize { get => _shieldSize; set { _shieldSize = value; Invalidate(); } }
+        public UACShieldSize UACShieldSize { get => _shieldSize; set { _shieldSize = value; ShowUACShield(_useAsUACElevatedButton, value); } }
         #endregion
 
         #region Event
@@ -65,19 +65,19 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         #region Methods
         /// <summary>Shows the uac shield.</summary>
         /// <param name="showUACShield">if set to <c>true</c> [show uac shield].</param>
-        private void ShowUACShield(bool showUACShield)
+        private void ShowUACShield(bool showUACShield, UACShieldSize shieldSize = UACShieldSize.SMALL)
         {
             if (showUACShield)
             {
                 //Values.Image = SystemIcons.Shield.ToBitmap();
 
-                if (_shieldSize == UACShieldSize.SMALL)
+                if (shieldSize == UACShieldSize.SMALL)
                 {
                     Values.Image = IconExtractor.LoadIcon(IconExtractor.IconType.Shield, SystemInformation.SmallIconSize).ToBitmap();
 
                     Invalidate();
                 }
-                else if (_shieldSize == UACShieldSize.MEDIUM)
+                else if (shieldSize == UACShieldSize.MEDIUM)
                 {
                     Image shield = SystemIcons.Shield.ToBitmap();
 
@@ -85,7 +85,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 
                     Invalidate();
                 }
-                else if (_shieldSize == UACShieldSize.LARGE)
+                else if (shieldSize == UACShieldSize.LARGE)
                 {
                     Image shield = SystemIcons.Shield.ToBitmap();
 

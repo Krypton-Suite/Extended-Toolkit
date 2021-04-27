@@ -52,7 +52,7 @@ namespace Buttons
             this.kryptonUACButtonVersion21.PathToElevatedObject = null;
             this.kryptonUACButtonVersion21.Size = new System.Drawing.Size(322, 130);
             this.kryptonUACButtonVersion21.TabIndex = 1;
-            this.kryptonUACButtonVersion21.UACShieldSize = Krypton.Toolkit.Suite.Extended.Buttons.UACShieldSize.MEDIUM;
+            this.kryptonUACButtonVersion21.UACShieldSize = Krypton.Toolkit.Suite.Extended.Buttons.UACShieldSize.LARGE;
             this.kryptonUACButtonVersion21.UseAsUACElevatedButton = true;
             this.kryptonUACButtonVersion21.Values.Image = ((System.Drawing.Image)(resources.GetObject("kryptonUACButtonVersion21.Values.Image")));
             this.kryptonUACButtonVersion21.Values.Text = "kryptonUACButtonVersion21";
