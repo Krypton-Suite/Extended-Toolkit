@@ -39,12 +39,14 @@ namespace Buttons
             this.kryptonSplitButton1 = new Krypton.Toolkit.Suite.Extended.Buttons.KryptonSplitButton();
             this.kryptonUACButtonVersion11 = new Krypton.Toolkit.Suite.Extended.Buttons.KryptonUACButtonVersion1();
             this.kryptonUACButtonVersion21 = new Krypton.Toolkit.Suite.Extended.Buttons.KryptonUACButtonVersion2();
+            this.kryptonSplitButton2 = new Krypton.Toolkit.Suite.Extended.Buttons.KryptonSplitButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(this.kryptonSplitButton2);
             this.kryptonPanel1.Controls.Add(this.kryptonUACButtonVersion21);
             this.kryptonPanel1.Controls.Add(this.kryptonUACButtonVersion11);
             this.kryptonPanel1.Controls.Add(this.kryptonSplitButton1);
@@ -141,6 +143,19 @@ namespace Buttons
             this.kryptonUACButtonVersion21.Values.Image = ((System.Drawing.Image)(resources.GetObject("kryptonUACButtonVersion21.Values.Image")));
             this.kryptonUACButtonVersion21.Values.Text = "kryptonUACButtonVersion21";
             // 
+            // kryptonSplitButton2
+            // 
+            this.kryptonSplitButton2.AutoSize = true;
+            this.kryptonSplitButton2.Location = new System.Drawing.Point(620, 254);
+            this.kryptonSplitButton2.Name = "kryptonSplitButton2";
+            this.kryptonSplitButton2.ProcessPath = null;
+            this.kryptonSplitButton2.ShowSplitOption = true;
+            this.kryptonSplitButton2.Size = new System.Drawing.Size(168, 24);
+            this.kryptonSplitButton2.TabIndex = 9;
+            this.kryptonSplitButton2.UseUACElevation = true;
+            this.kryptonSplitButton2.Values.Image = ((System.Drawing.Image)(resources.GetObject("kryptonSplitButton2.Values.Image")));
+            this.kryptonSplitButton2.Values.Text = "kryptonSplitButton2";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -166,6 +181,7 @@ namespace Buttons
         private Krypton.Toolkit.Suite.Extended.Buttons.KryptonUACButtonVersion2 kryptonUACButtonVersion21;
         private Krypton.Toolkit.Suite.Extended.Buttons.KryptonUACButtonVersion1 kryptonUACButtonVersion11;
         private Krypton.Toolkit.Suite.Extended.Buttons.KryptonSplitButton kryptonSplitButton1;
+        private Krypton.Toolkit.Suite.Extended.Buttons.KryptonSplitButton kryptonSplitButton2;
     }
 }
 
