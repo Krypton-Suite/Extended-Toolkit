@@ -11,13 +11,13 @@ using System.Windows.Forms.Design;
 
 namespace Krypton.Toolkit.Suite.Extended.Buttons
 {
-    internal class KryptonUACButtonDesigner : ControlDesigner
+    internal class KryptonCommandLinkButtonDesigner : ControlDesigner
     {
         #region Identity
         /// <summary>
-        /// Initialize a new instance of the KryptonUACButtonDesigner class.
+        /// Initialize a new instance of the KryptonButtonDesigner class.
         /// </summary>
-        public KryptonUACButtonDesigner()
+        public KryptonCommandLinkButtonDesigner()
         {
             // The resizing handles around the control need to change depending on the
             // value of the AutoSize and AutoSizeMode properties. When in AutoSize you
@@ -37,9 +37,8 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
                 // Create a collection of action lists
                 DesignerActionListCollection actionLists = new DesignerActionListCollection
                 {
-
                     // Add the button specific list
-                    new KryptonUACButtonActionList(this)
+                    new KryptonCommandLinkButtonActionList(this)
                 };
 
                 return actionLists;
