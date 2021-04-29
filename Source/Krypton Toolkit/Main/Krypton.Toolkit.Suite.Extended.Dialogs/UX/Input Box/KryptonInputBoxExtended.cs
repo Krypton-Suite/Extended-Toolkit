@@ -546,7 +546,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
             SetIconType(iconType, customImage);
 
-            SetCustomImageSize(imageSize, customImage, customImage.Size);
+            SetCustomImageSize(imageSize, customImage);
 
             SetLanguage(inputBoxLanguage, okText, yesText, noText, cancelText);
 
@@ -1313,21 +1313,37 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             }
         }
 
-        private void SetCustomImageSize(InputBoxIconImageSize imageSize, Image customImage, Size? customImageSize)
+        // TODO: Resize other components, depending on pbxImage size
+        private void SetCustomImageSize(InputBoxIconImageSize imageSize, Image customImage = null)
         {
             switch (imageSize)
             {
                 case InputBoxIconImageSize.CUSTOM:
+                    if (customImage != null)
+                    {
+                        pbxImage.Size = customImage.Size;
+                    }
+                    else
+                    {
+                        throw new ArgumentNullException();
+
+                        pbxImage.Size = new Size(32, 32);
+                    }
                     break;
                 case InputBoxIconImageSize.THIRTYTWO:
+                    pbxImage.Size = new Size(32, 32);
                     break;
                 case InputBoxIconImageSize.FOURTYEIGHT:
+                    pbxImage.Size = new Size(48, 48);
                     break;
                 case InputBoxIconImageSize.SIXTYFOUR:
+                    pbxImage.Size = new Size(64, 64);
                     break;
                 case InputBoxIconImageSize.ONEHUNDREDANDTWENTYEIGHT:
+                    pbxImage.Size = new Size(128, 128);
                     break;
                 default:
+                    pbxImage.Size = new Size(32, 32);
                     break;
             }
         }
