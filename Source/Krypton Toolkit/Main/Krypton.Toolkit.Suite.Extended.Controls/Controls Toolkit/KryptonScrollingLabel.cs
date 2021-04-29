@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Krypton.Toolkit.Suite.Extended.Controls
 {
-    class KryptonScrollingLabel
+    public class KryptonScrollingLabel : KryptonLabel
     {
     }
 }
