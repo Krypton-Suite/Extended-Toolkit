@@ -1242,22 +1242,117 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
         private void SetMessageTextAlignment(InputBoxWrappedMessageTextAlignment textAlignment)
         {
-            throw new NotImplementedException();
+            switch (textAlignment)
+            {
+                case InputBoxWrappedMessageTextAlignment.TOPLEFT:
+                    kwlMessage.TextAlign = ContentAlignment.TopLeft;
+                    break;
+                case InputBoxWrappedMessageTextAlignment.TOPCENTRE:
+                    kwlMessage.TextAlign = ContentAlignment.TopCenter;
+                    break;
+                case InputBoxWrappedMessageTextAlignment.TOPRIGHT:
+                    kwlMessage.TextAlign = ContentAlignment.TopRight;
+                    break;
+                case InputBoxWrappedMessageTextAlignment.MIDDLELEFT:
+                    kwlMessage.TextAlign = ContentAlignment.MiddleLeft;
+                    break;
+                case InputBoxWrappedMessageTextAlignment.MIDDLECENTRE:
+                    kwlMessage.TextAlign = ContentAlignment.MiddleCenter;
+                    break;
+                case InputBoxWrappedMessageTextAlignment.MIDDLERIGHT:
+                    kwlMessage.TextAlign = ContentAlignment.MiddleRight;
+                    break;
+                case InputBoxWrappedMessageTextAlignment.BOTTOMLEFT:
+                    kwlMessage.TextAlign = ContentAlignment.BottomLeft;
+                    break;
+                case InputBoxWrappedMessageTextAlignment.BOTTOMCENTRE:
+                    kwlMessage.TextAlign = ContentAlignment.BottomCenter;
+                    break;
+                case InputBoxWrappedMessageTextAlignment.BOTTOMRIGHT:
+                    kwlMessage.TextAlign = ContentAlignment.BottomRight;
+                    break;
+                default:
+                    kwlMessage.TextAlign = ContentAlignment.MiddleLeft;
+                    break;
+            }
         }
 
         private void SetMessageTextAlignment(InputBoxNormalMessageTextAlignment messageTextAlignment)
         {
-            throw new NotImplementedException();
+            switch (messageTextAlignment)
+            {
+                case InputBoxNormalMessageTextAlignment.INHERIT:
+                    klblMessage.StateCommon.ShortText.TextH = PaletteRelativeAlign.Inherit;
+
+                    klblMessage.StateCommon.ShortText.TextV = PaletteRelativeAlign.Inherit;
+                    break;
+                case InputBoxNormalMessageTextAlignment.NEARNEAR:
+                    break;
+                case InputBoxNormalMessageTextAlignment.NEARCENTRE:
+                    break;
+                case InputBoxNormalMessageTextAlignment.NEARFAR:
+                    break;
+                case InputBoxNormalMessageTextAlignment.CENTRENEAR:
+                    break;
+                case InputBoxNormalMessageTextAlignment.CENTRECENTRE:
+                    break;
+                case InputBoxNormalMessageTextAlignment.CENTREFAR:
+                    break;
+                case InputBoxNormalMessageTextAlignment.FARNEAR:
+                    break;
+                case InputBoxNormalMessageTextAlignment.FARCENTRE:
+                    break;
+                case InputBoxNormalMessageTextAlignment.FARFAR:
+                    break;
+                case InputBoxNormalMessageTextAlignment.INHERITNEAR:
+                    break;
+                case InputBoxNormalMessageTextAlignment.INHERITCENTRE:
+                    break;
+                case InputBoxNormalMessageTextAlignment.INHERITFAR:
+                    break;
+                case InputBoxNormalMessageTextAlignment.NEARINHERIT:
+                    break;
+                case InputBoxNormalMessageTextAlignment.CENTREINHERIT:
+                    break;
+                case InputBoxNormalMessageTextAlignment.FARINHERIT:
+                    break;
+                default:
+                    break;
+            }
         }
 
         private void SetDisplayType(InputBoxMessageDisplayType displayType)
         {
-            throw new NotImplementedException();
+            switch (displayType)
+            {
+                case InputBoxMessageDisplayType.LABEL:
+                    break;
+                case InputBoxMessageDisplayType.BORDEREDLABEL:
+                    break;
+                case InputBoxMessageDisplayType.WRAPPEDLABEL:
+                    break;
+                default:
+                    break;
+            }
         }
 
-        private void SetCustomImageSize(InputBoxIconImageSize imageSize, Image customImage)
+        private void SetCustomImageSize(InputBoxIconImageSize imageSize, Image customImage, Size? customImageSize)
         {
-            throw new NotImplementedException();
+            switch (imageSize)
+            {
+                case InputBoxIconImageSize.CUSTOM:
+                    break;
+                case InputBoxIconImageSize.THIRTYTWO:
+                    break;
+                case InputBoxIconImageSize.FOURTYEIGHT:
+                    break;
+                case InputBoxIconImageSize.SIXTYFOUR:
+                    break;
+                case InputBoxIconImageSize.ONEHUNDREDANDTWENTYEIGHT:
+                    break;
+                default:
+                    break;
+            }
         }
         #endregion
 
