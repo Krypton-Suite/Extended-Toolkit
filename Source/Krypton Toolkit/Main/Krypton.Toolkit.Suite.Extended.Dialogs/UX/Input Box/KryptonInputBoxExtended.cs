@@ -1239,6 +1239,26 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         }
 
         private Image[] ReturnIconImageArray() => IconImages;
+
+        private void SetMessageTextAlignment(InputBoxWrappedMessageTextAlignment textAlignment)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void SetMessageTextAlignment(InputBoxNormalMessageTextAlignment messageTextAlignment)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void SetDisplayType(InputBoxMessageDisplayType displayType)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void SetCustomImageSize(InputBoxIconImageSize imageSize, Image customImage)
+        {
+            throw new NotImplementedException();
+        }
         #endregion
 
         #region Show
