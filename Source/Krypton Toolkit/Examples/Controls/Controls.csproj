@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
     <TargetFramework>net5.0-windows</TargetFramework>
@@ -6,5 +6,9 @@
     <OutputType>WinExe</OutputType>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Main\Krypton.Toolkit.Suite.Extended.Controls\Krypton.Toolkit.Suite.Extended.Controls.csproj" />
+  </ItemGroup>
 
 </Project>

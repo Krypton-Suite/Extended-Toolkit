@@ -1,9 +1,14 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Controls
 {
-    [Description("Provides a panel to contain buttons, similar to a KryptonMessageBox button panel.")]
+    /// <summary>Provides a panel to contain buttons, similar to a KryptonMessageBox button panel.</summary>
+    /// <seealso cref="System.Windows.Forms.UserControl" />
+    [Description("Provides a panel to contain buttons, similar to a KryptonMessageBox button panel."),
+     ToolboxBitmap(typeof(KryptonPanel))]
     public class KryptonButtonPanel : UserControl
     {
         #region Design Code
@@ -50,10 +55,25 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         }
         #endregion
 
-        #region Constructor
+        #region Constructors
+        /// <summary>Initializes a new instance of the <see cref="KryptonButtonPanel" /> class.</summary>
         public KryptonButtonPanel()
         {
             InitializeComponent();
+        }
+        #endregion
+
+        #region Protected
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
+        }
+
+        protected override void OnParentChanged(EventArgs e)
+        {
+            Dock = DockStyle.Bottom;
+
+            base.OnParentChanged(e);
         }
         #endregion
     }
