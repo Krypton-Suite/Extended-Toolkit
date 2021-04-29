@@ -1,8 +1,10 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Controls
 {
+    [ToolboxItem(false)]
     public class KryptonMarqueeLabel : KryptonLabel
     {
         int offset;
