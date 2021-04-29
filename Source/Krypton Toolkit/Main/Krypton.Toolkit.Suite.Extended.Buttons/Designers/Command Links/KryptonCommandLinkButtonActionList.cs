@@ -14,7 +14,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
     internal class KryptonCommandLinkButtonActionList : DesignerActionList
     {
         #region Instance Fields
-        private readonly KryptonCommandButtonLinkVersion1 _button;
+        private readonly KryptonCommandLinkButton _button;
         private readonly IComponentChangeService _service;
         #endregion
 
@@ -26,7 +26,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         public KryptonCommandLinkButtonActionList(KryptonCommandLinkButtonDesigner owner) : base(owner.Component)
         {
             // Remember the button instance
-            _button = owner.Component as KryptonCommandButtonLinkVersion1;
+            _button = owner.Component as KryptonCommandLinkButton;
 
             // Cache service used to notify when a property has changed
             _service = (IComponentChangeService)GetService(typeof(IComponentChangeService));

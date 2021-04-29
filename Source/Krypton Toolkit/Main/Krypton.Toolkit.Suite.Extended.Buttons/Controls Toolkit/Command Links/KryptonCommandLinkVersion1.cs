@@ -6,7 +6,6 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Global.Utilities;
 using System;
 using System.ComponentModel;
 using System.Drawing;
@@ -26,7 +25,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
      DefaultProperty("Heading"), Designer(typeof(KryptonCommandLinkButtonDesigner)), DesignerCategory("code"),
      ClassInterface(ClassInterfaceType.AutoDispatch), DisplayName("Krypton Command Link"),
      Description("A Krypton Command Link Button."), ComVisible(true)]
-    public class KryptonCommandButtonLinkVersion1 : VisualSimpleBase, IButtonControl
+    public class KryptonCommandLinkButton : VisualSimpleBase, IButtonControl
     {
         #region Instance Fields
         private readonly ViewDrawCommandLinkButton drawButton;
@@ -70,7 +69,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         /// <summary>
         /// Initialize a new instance of the KryptonButton class.
         /// </summary>
-        public KryptonCommandButtonLinkVersion1()
+        public KryptonCommandLinkButton()
         {
             // We generate click events manually, suppress default
             // production of them by the base Control class

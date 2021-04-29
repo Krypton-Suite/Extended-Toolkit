@@ -6,7 +6,6 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Global.Utilities;
 using System;
 using System.ComponentModel;
 using System.Drawing;
@@ -26,7 +25,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
     [DesignerCategory("Code"), DisplayName("Krypton Command Link"),
      Description("A Krypton Command Link Button."), ToolboxItem(true),
      ToolboxBitmap(typeof(KryptonButton))]
-    public class KryptonCommandButtonLinkVersion2 : KryptonButton
+    public class KryptonCommandLinkVersion2 : KryptonButton
     {
         #region Variables
         private bool _useAsUACElevatedButton;
@@ -132,9 +131,9 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 
         #region Constructor
         /// <summary>
-        /// Initialises a new instance of the <see cref="KryptonCommandButtonLinkVersion2"/> class.
+        /// Initialises a new instance of the <see cref="KryptonCommandLinkVersion2"/> class.
         /// </summary>
-        public KryptonCommandButtonLinkVersion2()
+        public KryptonCommandLinkVersion2()
         {
 
         }

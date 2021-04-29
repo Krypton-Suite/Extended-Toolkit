@@ -6,9 +6,9 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Buttons.Properties;
 using System.ComponentModel;
 using System.Drawing;
+using Krypton.Toolkit.Suite.Extended.Buttons.Properties;
 
 namespace Krypton.Toolkit.Suite.Extended.Buttons
 {

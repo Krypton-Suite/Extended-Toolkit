@@ -12,7 +12,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 {
     public class CommandLinkTextValues : CaptionValues
     {
-        private const string _defaultHeading = @"Command Link Button";
+        private const string _defaultHeading = @"Command Link V1";
         private const string _defaultDescription = @"Here be the ""Note Text""";
 
         public CommandLinkTextValues(NeedPaintHandler needPaint)

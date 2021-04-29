@@ -51,10 +51,11 @@
       <DocumentationFile>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.Buttons\Krypton.Toolkit.Suite.Extended.Buttons.xml</DocumentationFile>
       <OutputPath>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.Buttons\</OutputPath>
     </PropertyGroup>
+    <ItemGroup>
+      <PackageReference Include="System.Management" Version="5.0.0" />
+    </ItemGroup>
   
     <ItemGroup>
-      <ProjectReference Include="..\..\Shared\Krypton.Toolkit.Suite.Extended.Common\Krypton.Toolkit.Suite.Extended.Common.csproj" />
-      <ProjectReference Include="..\..\Shared\Krypton.Toolkit.Suite.Extended.Global.Utilities\Krypton.Toolkit.Suite.Extended.Global.Utilities.csproj" />
       <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Developer.Utilities\Krypton.Toolkit.Suite.Extended.Developer.Utilities.csproj" />
     </ItemGroup>
   

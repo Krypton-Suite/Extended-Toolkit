@@ -15,7 +15,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
     internal class KryptonUACButtonActionList : DesignerActionList
     {
         #region Instance Fields
-        private readonly KryptonUACElevatedButtonVersion2 _uacButton;
+        private readonly KryptonUACButtonVersion2 _uacButton;
         private readonly IComponentChangeService _service;
         #endregion
 
@@ -28,7 +28,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             : base(owner.Component)
         {
             // Remember the button instance
-            _uacButton = owner.Component as KryptonUACElevatedButtonVersion2;
+            _uacButton = owner.Component as KryptonUACButtonVersion2;
 
             // Cache service used to notify when a property has changed
             _service = (IComponentChangeService)GetService(typeof(IComponentChangeService));

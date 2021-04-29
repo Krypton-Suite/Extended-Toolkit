@@ -1,12 +1,4 @@
-﻿#region BSD License
-/*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
- */
-#endregion
-
-using System;
+﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -20,9 +12,11 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         #endregion
 
         #region Variables
-        private bool _skipNextOpen = false, _showSplitOption = true;
+        private bool _skipNextOpen = false, _showSplitOption = true, _useUACElevation;
 
         private Rectangle _dropDownRectangle = new Rectangle();
+
+        private string _processPath;
         #endregion
 
         #region Readonly
@@ -49,6 +43,48 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
                 }
             }
         }
+
+        /// <summary>Gets or sets a value indicating whether [use uac elevation].</summary>
+        /// <value>
+        ///   <c>true</c> if [use uac elevation]; otherwise, <c>false</c>.</value>
+        public bool UseUACElevation
+        {
+            get => _useUACElevation;
+
+            set
+            {
+                if (value != _useUACElevation)
+                {
+                    _useUACElevation = value;
+
+                    if (_useUACElevation)
+                    {
+                        Values.Image = IconExtractor.LoadIcon(IconExtractor.IconType.Shield, SystemInformation.SmallIconSize).ToBitmap();
+                    }
+                    else
+                    {
+                        Values.Image = null;
+                    }
+                }
+            }
+        }
+
+        public string ProcessPath { get => _processPath; set => _processPath = value; }
+        #endregion
+
+        #region Events
+        /// <summary></summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="ExecuteProcessAsAdministratorEventArgs"/> instance containing the event data.</param>
+        public delegate void ExecuteProcessAsAdministratorEventHandler(object sender, ExecuteProcessAsAdministratorEventArgs e);
+
+        /// <summary>The execute process as administrator</summary>
+        public event ExecuteProcessAsAdministratorEventHandler ExecuteProcessAsAdministrator;
+
+        /// <summary>Executes the process as an administrator.</summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="ExecuteProcessAsAdministratorEventArgs" /> instance containing the event data.</param>
+        protected virtual void OnExecuteProcessAsAdministrator(object sender, ExecuteProcessAsAdministratorEventArgs e) => ExecuteProcessAsAdministrator?.Invoke(sender, e);
         #endregion
 
         #region Constructor
@@ -176,6 +212,18 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 
             // Draw an arrow in the correct location 
             PaintArrow(g, _dropDownRectangle);
+        }
+
+        protected override void OnClick(EventArgs e)
+        {
+            if (_useUACElevation)
+            {
+                ExecuteProcessAsAdministratorEventArgs administrativeTask = new ExecuteProcessAsAdministratorEventArgs(_processPath);
+
+                OnExecuteProcessAsAdministrator(this, administrativeTask);
+            }
+
+            base.OnClick(e);
         }
         #endregion
 
