@@ -223,9 +223,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Windows.Forms.Animation.Lib
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CircularProgressBar", "Examples\CircularProgressBar\CircularProgressBar.csproj", "{4D879F83-CB0A-45B1-A2E6-CEC396AFFCF9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controls", "Examples\Controls\Controls.csproj", "{AE9352EB-6081-4B7C-9EE4-01E934768AD8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Controls", "Examples\Controls\Controls.csproj", "{AE9352EB-6081-4B7C-9EE4-01E934768AD8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PropertyGrid", "Examples\PropertyGrid\PropertyGrid.csproj", "{53456D2D-A19F-4D2A-8E06-F43784EEE95C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dialogs", "Examples\Dialogs\Dialogs.csproj", "{35956CA4-4B0A-4CCA-8ACA-89052E26A33A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -461,6 +463,10 @@ Global
 		{53456D2D-A19F-4D2A-8E06-F43784EEE95C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{53456D2D-A19F-4D2A-8E06-F43784EEE95C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{53456D2D-A19F-4D2A-8E06-F43784EEE95C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35956CA4-4B0A-4CCA-8ACA-89052E26A33A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35956CA4-4B0A-4CCA-8ACA-89052E26A33A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35956CA4-4B0A-4CCA-8ACA-89052E26A33A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35956CA4-4B0A-4CCA-8ACA-89052E26A33A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -538,6 +544,7 @@ Global
 		{4D879F83-CB0A-45B1-A2E6-CEC396AFFCF9} = {25D5F0A6-A601-424B-9431-8EFE139A58A7}
 		{AE9352EB-6081-4B7C-9EE4-01E934768AD8} = {25D5F0A6-A601-424B-9431-8EFE139A58A7}
 		{53456D2D-A19F-4D2A-8E06-F43784EEE95C} = {25D5F0A6-A601-424B-9431-8EFE139A58A7}
+		{35956CA4-4B0A-4CCA-8ACA-89052E26A33A} = {25D5F0A6-A601-424B-9431-8EFE139A58A7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A7CE7732-0982-4703-8EFD-7715D569BAB5}

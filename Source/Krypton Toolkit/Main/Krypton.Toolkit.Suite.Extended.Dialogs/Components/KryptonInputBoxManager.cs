@@ -52,7 +52,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         #endregion
 
         #region Methods
-        public void DisplayMessageBox()
+        public void DisplayInputBox()
         {
             KryptonInputBoxExtended kryptonInputBox = new KryptonInputBoxExtended(_inputBoxIconLocation, _message, _title, _iconType,
                                                                                   _customImage, _imageSize, _inputBoxLanguage,
