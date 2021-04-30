@@ -231,12 +231,19 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         /// <param name="showInTaskBar">if set to <c>true</c> [show in task bar].</param>
         /// <param name="controlTypeface">The control typeface.</param>
         /// <param name="messageTypeface">The message typeface.</param>
+        /// <param name="headerTypeface">The header typeface.</param>
         /// <param name="okText">The ok text.</param>
         /// <param name="yesText">The yes text.</param>
         /// <param name="noText">The no text.</param>
         /// <param name="cancelText">The cancel text.</param>
         /// <param name="hintText">The hint text.</param>
-        public KryptonInputBoxExtended(string message, string title = "", InputBoxLanguage language = InputBoxLanguage.ENGLISH, InputBoxInputType type = InputBoxInputType.NONE, string[] listItems = null, bool showInTaskBar = false, Font controlTypeface = null, Font messageTypeface = null, string okText = "&Ok", string yesText = "&Yes", string noText = "N&o", string cancelText = "&Cancel", string hintText = "")
+        /// <param name="headerText">The header text.</param>
+        public KryptonInputBoxExtended(string message, string title = "", InputBoxLanguage language = InputBoxLanguage.ENGLISH, 
+                                       InputBoxInputType type = InputBoxInputType.NONE, string[] listItems = null, 
+                                       bool showInTaskBar = false, Font controlTypeface = null, Font messageTypeface = null,
+                                       Font headerTypeface = null, string okText = "&Ok", string yesText = "&Yes", 
+                                       string noText = "N&o", string cancelText = "&Cancel", string hintText = "",
+                                       string headerText = null)
         {
             InitializeComponent();
 
@@ -262,7 +269,11 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
             SetMessageTypeface(messageTypeface);
 
+            SetHeaderTypeface(headerTypeface);
+
             SetHint(hintText);
+
+            SetHeaderText(headerText);
         }
 
         /// <summary>Initializes a new instance of the <see cref="KryptonInputBoxExtended"/> class.</summary>
@@ -575,6 +586,86 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             SetWrappedMessageTextAlignment(wrappedMessageTextAlignment);
 
             SetStartPosition(startPosition);
+        }
+
+        /// <summary>Initializes a new instance of the <see cref="KryptonInputBoxExtended" /> class.</summary>
+        /// <param name="inputBoxIconLocation">The input box icon location.</param>
+        /// <param name="message">The message.</param>
+        /// <param name="title">The title.</param>
+        /// <param name="iconType">Type of the icon.</param>
+        /// <param name="customImage">The custom image.</param>
+        /// <param name="imageSize">Size of the image.</param>
+        /// <param name="inputBoxLanguage">The input box language.</param>
+        /// <param name="buttons">The buttons.</param>
+        /// <param name="inputType">Type of the input.</param>
+        /// <param name="displayType">The display type.</param>
+        /// <param name="itemList">The item list.</param>
+        /// <param name="showInTaskBar">if set to <c>true</c> [show in task bar].</param>
+        /// <param name="controlTypeface">The control typeface.</param>
+        /// <param name="messageTypeface">The message typeface.</param>
+        /// <param name="headerTypeface">The header typeface.</param>
+        /// <param name="okText">The ok text.</param>
+        /// <param name="yesText">The yes text.</param>
+        /// <param name="noText">The no text.</param>
+        /// <param name="cancelText">The cancel text.</param>
+        /// <param name="hintText">The hint text.</param>
+        /// <param name="headerText">The header text.</param>
+        /// <param name="startPosition">The start position.</param>
+        /// <param name="textAlignment">The text alignment.</param>
+        /// <param name="messageTextAlignment">The message text alignment.</param>
+        /// <param name="wrappedMessageTextAlignment">The wrapped message text alignment.</param>
+        public KryptonInputBoxExtended(Point inputBoxIconLocation, string message, string title, InputBoxIconType iconType,
+                                       Image customImage, InputBoxIconImageSize imageSize, InputBoxLanguage inputBoxLanguage, 
+                                       InputBoxButtons buttons, InputBoxInputType inputType, InputBoxMessageDisplayType displayType,
+                                       string[] itemList, bool showInTaskBar, Font controlTypeface, Font messageTypeface,
+                                       Font headerTypeface, string okText, string yesText, string noText, string cancelText,
+                                       string hintText, string headerText, FormStartPosition startPosition, 
+                                       InputBoxTextAlignment textAlignment, InputBoxNormalMessageTextAlignment messageTextAlignment,
+                                       InputBoxWrappedMessageTextAlignment wrappedMessageTextAlignment)
+        {
+            InitializeComponent();
+
+            PropagateIconImageArray(IconImages);
+
+            SetMessage(message);
+
+            SetTitle(title);
+
+            SetIconType(iconType, customImage);
+
+            SetCustomImageSize(imageSize, customImage);
+
+            SetLanguage(inputBoxLanguage, okText, yesText, noText, cancelText);
+
+            AdaptButtons(buttons, inputBoxLanguage);
+
+            ChangeButtonVisibility(buttons);
+
+            AdaptUI(inputType, itemList);
+
+            SetShowInTaskbar(showInTaskBar);
+
+            SetControlTypeface(controlTypeface);
+
+            SetMessageTypeface(messageTypeface);
+
+            SetDisplayType(displayType);
+
+            SetHint(hintText);
+
+            RelocateIcon(inputBoxIconLocation);
+
+            SetTextAlignment(textAlignment);
+
+            SetMessageTextAlignment(messageTextAlignment);
+
+            SetWrappedMessageTextAlignment(wrappedMessageTextAlignment);
+
+            SetStartPosition(startPosition);
+
+            SetHeaderTypeface(headerTypeface);
+
+            SetHeaderText(headerText);
         }
         #endregion
 
@@ -1347,6 +1438,10 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
                     break;
             }
         }
+
+        private void SetHeaderTypeface(Font headerTypeface) { }
+
+        private void SetHeaderText(string text) { }
         #endregion
 
         #region Show

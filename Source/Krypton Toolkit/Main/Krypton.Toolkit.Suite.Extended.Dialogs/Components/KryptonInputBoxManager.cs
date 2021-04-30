@@ -11,7 +11,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
         private FormStartPosition _startPosition;
 
-        private Font _controlTypeface, _messageTypeface;
+        private Font _controlTypeface, _messageTypeface, _headerTypeface;
 
         private InputBoxButtons _buttons;
 
@@ -35,7 +35,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
         private Point _inputBoxIconLocation;
 
-        private string _message, _title, _okText, _yesText, _noText, _cancelText, _hintText;
+        private string _message, _headerText, _title, _okText, _yesText, _noText, _cancelText, _hintText;
 
         private string[] _itemList;
         #endregion
@@ -46,6 +46,10 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         public FormStartPosition StartPosition { get => _startPosition; set => _startPosition = value; }
 
         public Font ControlTypeface { get => _controlTypeface; set => _controlTypeface = value; }
+
+        public Font HeaderTypeface { get => _headerTypeface; set => _headerTypeface = value; }
+
+        public Font MessageTypeface { get => _messageTypeface; set => _messageTypeface = value; }
 
         public InputBoxButtons InputBoxButtons { get => _buttons; set => _buttons = value; }
 
@@ -96,6 +100,8 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
         public string HintText { get => _hintText; set => _hintText = value; }
 
+        public string HeaderText { get => _headerText; set => _headerText = value; }
+
         public string[] ItemList { get => _itemList; set => _itemList = value; }
         #endregion
 
@@ -106,9 +112,11 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
             _cancelText = "C&ancel";
 
-            _controlTypeface = new Font("Microsoft Sans Serif", 11.25f, FontStyle.Bold);
+            _controlTypeface = new Font("Microsoft Sans Serif", 8.25f);
 
             _messageTypeface = new Font("Microsoft Sans Serif", 8.25f);
+
+            _headerTypeface = new Font("Microsoft Sans Serif", 11.25f, FontStyle.Bold);
 
             _customImage = null;
 
@@ -136,6 +144,8 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
             _okText = "&Ok";
 
+            _headerText = "Header Text Here";
+
             _showInTaskBar = false;
 
             _startPosition = FormStartPosition.Manual;
@@ -157,8 +167,9 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
                                                                                   _customImage, _imageSize, _inputBoxLanguage,
                                                                                   _buttons, _inputType, _displayType,
                                                                                   _itemList, _showInTaskBar, _controlTypeface,
-                                                                                  _messageTypeface, _okText, _yesText, _noText, _cancelText,
-                                                                                  _hintText, _startPosition, _textAlignment,
+                                                                                  _messageTypeface, _headerTypeface, _okText, 
+                                                                                  _yesText, _noText, _cancelText,
+                                                                                  _hintText, _headerText, _startPosition, _textAlignment,
                                                                                   _messageTextAlignment, _wrappedMessageTextAlignment);
 
             kryptonInputBox.Show();

@@ -29,32 +29,13 @@ namespace Dialogs
         /// </summary>
         private void InitializeComponent()
         {
-            this.kabm = new Krypton.Toolkit.Suite.Extended.Dialogs.KryptonAboutBoxManager();
-            this.kibm = new Krypton.Toolkit.Suite.Extended.Dialogs.KryptonInputBoxManager();
             this.kryptonButton1 = new Krypton.Toolkit.KryptonButton();
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             this.kryptonButton2 = new Krypton.Toolkit.KryptonButton();
+            this.kabm = new Krypton.Toolkit.Suite.Extended.Dialogs.KryptonAboutBoxManager();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // kabm
-            // 
-            this.kabm.AboutText = "About";
-            this.kabm.ApplicationIcon = null;
-            this.kabm.ApplicationText = "Application";
-            this.kabm.Assembly = null;
-            this.kabm.CopyrightText = "Copyright (c)";
-            this.kabm.FrameworkVersionText = "Framework Version";
-            this.kabm.ShowDescription = true;
-            this.kabm.ShowFrameworkVersion = true;
-            this.kabm.ShowSystemInformation = false;
-            this.kabm.ShowSystemInformationText = "&Show System Information";
-            this.kabm.VersionText = "Version";
-            // 
-            // kibm
-            // 
-            this.kibm.ShowInTaskBar = false;
             // 
             // kryptonButton1
             // 
@@ -82,6 +63,20 @@ namespace Dialogs
             this.kryptonButton2.TabIndex = 1;
             this.kryptonButton2.Values.Text = "kryptonButton2";
             // 
+            // kabm
+            // 
+            this.kabm.AboutText = "About";
+            this.kabm.ApplicationIcon = null;
+            this.kabm.ApplicationText = "Application";
+            this.kabm.Assembly = null;
+            this.kabm.CopyrightText = "Copyright (c)";
+            this.kabm.FrameworkVersionText = "Framework Version";
+            this.kabm.ShowDescription = true;
+            this.kabm.ShowFrameworkVersion = true;
+            this.kabm.ShowSystemInformation = false;
+            this.kabm.ShowSystemInformationText = "&Show System Information";
+            this.kabm.VersionText = "Version";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -99,7 +94,6 @@ namespace Dialogs
         #endregion
 
         private Krypton.Toolkit.Suite.Extended.Dialogs.KryptonAboutBoxManager kabm;
-        private Krypton.Toolkit.Suite.Extended.Dialogs.KryptonInputBoxManager kibm;
         private Krypton.Toolkit.KryptonButton kryptonButton1;
         private Krypton.Toolkit.KryptonPanel kryptonPanel1;
         private Krypton.Toolkit.KryptonButton kryptonButton2;
