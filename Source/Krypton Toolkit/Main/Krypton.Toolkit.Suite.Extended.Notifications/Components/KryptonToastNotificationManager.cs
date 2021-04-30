@@ -9,7 +9,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         #region Variables
         private ActionButtonLocation _buttonLocation;
         private ActionType _actionType;
-        private bool _fade, _showActionButton, _showSubScript, _showTimeoutProgress;
+        private bool _fade, _showActionButton, _showSubScript, _showTimeoutProgress, _showControlBox;
         private string _headerText, _contentText, _dismissButtonText, _processName;
         private Image _image;
         private int _cornerRadius, _seconds, _timeOutProgress;
@@ -53,6 +53,8 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         public bool ShowSubScript { get => _showSubScript; set => _showSubScript = value; }
 
         public bool ShowTimeOutProgress { get => _showTimeoutProgress; set => _showTimeoutProgress = value; }
+
+        public bool ShowControlBox { get => _showControlBox; set => _showControlBox = value; }
 
         /// <summary>
         /// Gets or sets the sound path.
@@ -130,6 +132,26 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
 
         /// <summary>Gets or sets a value indicating whether control's elements are aligned to support locales using right-to-left fonts.</summary>
         public RightToLeftSupport RightToLeft { get => _rightToLeftSupport; set => _rightToLeftSupport = value; }
+        #endregion
+
+
+        #region Methods
+        public void DisplayNotification()
+        {
+            if (_showTimeoutProgress)
+            {
+
+            }
+            else
+            {
+                KryptonToastNotificationVersion1 kryptonToast = new KryptonToastNotificationVersion1(_fade, _image, _headerText, _contentText,
+                                                                                                     _dismissButtonText, _buttonLocation, _showActionButton,
+                                                                                                     _actionType, _processName, _showControlBox, _cornerRadius,
+                                                                                                     _drawBorders);
+
+                kryptonToast.ShowDialog();
+            }
+        }
         #endregion
     }
 }
