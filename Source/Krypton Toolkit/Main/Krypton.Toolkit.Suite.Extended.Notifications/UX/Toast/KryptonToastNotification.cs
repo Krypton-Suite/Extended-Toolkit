@@ -19,18 +19,20 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         private KryptonPanel kpnlContent;
         private KryptonWrapLabel kwlNotificationMessage;
         private KryptonWrapLabel kwlNotificationHeader;
+        private ProgressBar pbxTimeout;
         private System.Windows.Forms.PictureBox pbxNotificationIcon;
 
         private void InitializeComponent()
         {
             this.kpnlButtons = new Krypton.Toolkit.KryptonPanel();
+            this.kbtnAction = new Krypton.Toolkit.KryptonButton();
+            this.kbtnDismiss = new Krypton.Toolkit.KryptonButton();
             this.pnlSplitter = new System.Windows.Forms.Panel();
             this.kpnlContent = new Krypton.Toolkit.KryptonPanel();
-            this.pbxNotificationIcon = new System.Windows.Forms.PictureBox();
-            this.kwlNotificationHeader = new Krypton.Toolkit.KryptonWrapLabel();
             this.kwlNotificationMessage = new Krypton.Toolkit.KryptonWrapLabel();
-            this.kbtnDismiss = new Krypton.Toolkit.KryptonButton();
-            this.kbtnAction = new Krypton.Toolkit.KryptonButton();
+            this.kwlNotificationHeader = new Krypton.Toolkit.KryptonWrapLabel();
+            this.pbxNotificationIcon = new System.Windows.Forms.PictureBox();
+            this.pbxTimeout = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.kpnlButtons)).BeginInit();
             this.kpnlButtons.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kpnlContent)).BeginInit();
@@ -43,70 +45,11 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
             this.kpnlButtons.Controls.Add(this.kbtnAction);
             this.kpnlButtons.Controls.Add(this.kbtnDismiss);
             this.kpnlButtons.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.kpnlButtons.Location = new System.Drawing.Point(0, 299);
+            this.kpnlButtons.Location = new System.Drawing.Point(0, 303);
             this.kpnlButtons.Name = "kpnlButtons";
             this.kpnlButtons.PanelBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelAlternate;
-            this.kpnlButtons.Size = new System.Drawing.Size(667, 45);
+            this.kpnlButtons.Size = new System.Drawing.Size(663, 45);
             this.kpnlButtons.TabIndex = 0;
-            // 
-            // pnlSplitter
-            // 
-            this.pnlSplitter.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.pnlSplitter.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlSplitter.Location = new System.Drawing.Point(0, 296);
-            this.pnlSplitter.Name = "pnlSplitter";
-            this.pnlSplitter.Size = new System.Drawing.Size(667, 3);
-            this.pnlSplitter.TabIndex = 1;
-            // 
-            // kpnlContent
-            // 
-            this.kpnlContent.Controls.Add(this.kwlNotificationMessage);
-            this.kpnlContent.Controls.Add(this.kwlNotificationHeader);
-            this.kpnlContent.Controls.Add(this.pbxNotificationIcon);
-            this.kpnlContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kpnlContent.Location = new System.Drawing.Point(0, 0);
-            this.kpnlContent.Name = "kpnlContent";
-            this.kpnlContent.Size = new System.Drawing.Size(667, 296);
-            this.kpnlContent.TabIndex = 2;
-            // 
-            // pbxNotificationIcon
-            // 
-            this.pbxNotificationIcon.BackColor = System.Drawing.Color.Transparent;
-            this.pbxNotificationIcon.Location = new System.Drawing.Point(12, 12);
-            this.pbxNotificationIcon.Name = "pbxNotificationIcon";
-            this.pbxNotificationIcon.Size = new System.Drawing.Size(64, 64);
-            this.pbxNotificationIcon.TabIndex = 0;
-            this.pbxNotificationIcon.TabStop = false;
-            // 
-            // kwlNotificationHeader
-            // 
-            this.kwlNotificationHeader.AutoSize = false;
-            this.kwlNotificationHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kwlNotificationHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
-            this.kwlNotificationHeader.Location = new System.Drawing.Point(83, 13);
-            this.kwlNotificationHeader.Name = "kwlNotificationHeader";
-            this.kwlNotificationHeader.Size = new System.Drawing.Size(572, 63);
-            this.kwlNotificationHeader.StateCommon.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kwlNotificationHeader.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // kwlNotificationMessage
-            // 
-            this.kwlNotificationMessage.AutoSize = false;
-            this.kwlNotificationMessage.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.kwlNotificationMessage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
-            this.kwlNotificationMessage.Location = new System.Drawing.Point(83, 80);
-            this.kwlNotificationMessage.Name = "kwlNotificationMessage";
-            this.kwlNotificationMessage.Size = new System.Drawing.Size(572, 203);
-            this.kwlNotificationMessage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // kbtnDismiss
-            // 
-            this.kbtnDismiss.Location = new System.Drawing.Point(480, 8);
-            this.kbtnDismiss.Name = "kbtnDismiss";
-            this.kbtnDismiss.Size = new System.Drawing.Size(175, 25);
-            this.kbtnDismiss.TabIndex = 0;
-            this.kbtnDismiss.Values.Text = "{0} ({1})";
-            this.kbtnDismiss.Click += new System.EventHandler(this.kbtnDismiss_Click);
             // 
             // kbtnAction
             // 
@@ -120,9 +63,78 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
             this.kbtnAction.Visible = false;
             this.kbtnAction.Click += new System.EventHandler(this.kbtnAction_Click);
             // 
+            // kbtnDismiss
+            // 
+            this.kbtnDismiss.Location = new System.Drawing.Point(480, 8);
+            this.kbtnDismiss.Name = "kbtnDismiss";
+            this.kbtnDismiss.Size = new System.Drawing.Size(175, 25);
+            this.kbtnDismiss.TabIndex = 0;
+            this.kbtnDismiss.Values.Text = "{0} ({1})";
+            this.kbtnDismiss.Click += new System.EventHandler(this.kbtnDismiss_Click);
+            // 
+            // pnlSplitter
+            // 
+            this.pnlSplitter.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.pnlSplitter.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlSplitter.Location = new System.Drawing.Point(0, 300);
+            this.pnlSplitter.Name = "pnlSplitter";
+            this.pnlSplitter.Size = new System.Drawing.Size(663, 3);
+            this.pnlSplitter.TabIndex = 1;
+            // 
+            // kpnlContent
+            // 
+            this.kpnlContent.Controls.Add(this.pbxTimeout);
+            this.kpnlContent.Controls.Add(this.kwlNotificationMessage);
+            this.kpnlContent.Controls.Add(this.kwlNotificationHeader);
+            this.kpnlContent.Controls.Add(this.pbxNotificationIcon);
+            this.kpnlContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kpnlContent.Location = new System.Drawing.Point(0, 0);
+            this.kpnlContent.Name = "kpnlContent";
+            this.kpnlContent.Size = new System.Drawing.Size(663, 300);
+            this.kpnlContent.TabIndex = 2;
+            // 
+            // kwlNotificationMessage
+            // 
+            this.kwlNotificationMessage.AutoSize = false;
+            this.kwlNotificationMessage.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.kwlNotificationMessage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.kwlNotificationMessage.Location = new System.Drawing.Point(83, 80);
+            this.kwlNotificationMessage.Name = "kwlNotificationMessage";
+            this.kwlNotificationMessage.Size = new System.Drawing.Size(572, 203);
+            this.kwlNotificationMessage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // kwlNotificationHeader
+            // 
+            this.kwlNotificationHeader.AutoSize = false;
+            this.kwlNotificationHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kwlNotificationHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.kwlNotificationHeader.Location = new System.Drawing.Point(83, 13);
+            this.kwlNotificationHeader.Name = "kwlNotificationHeader";
+            this.kwlNotificationHeader.Size = new System.Drawing.Size(572, 63);
+            this.kwlNotificationHeader.StateCommon.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kwlNotificationHeader.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pbxNotificationIcon
+            // 
+            this.pbxNotificationIcon.BackColor = System.Drawing.Color.Transparent;
+            this.pbxNotificationIcon.Location = new System.Drawing.Point(12, 12);
+            this.pbxNotificationIcon.Name = "pbxNotificationIcon";
+            this.pbxNotificationIcon.Size = new System.Drawing.Size(64, 64);
+            this.pbxNotificationIcon.TabIndex = 0;
+            this.pbxNotificationIcon.TabStop = false;
+            // 
+            // pbxTimeout
+            // 
+            this.pbxTimeout.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pbxTimeout.Location = new System.Drawing.Point(0, 290);
+            this.pbxTimeout.Name = "pbxTimeout";
+            this.pbxTimeout.Size = new System.Drawing.Size(663, 10);
+            this.pbxTimeout.TabIndex = 2;
+            this.pbxTimeout.Value = 100;
+            // 
             // KryptonToastNotification
             // 
-            this.ClientSize = new System.Drawing.Size(667, 344);
+            this.ClientSize = new System.Drawing.Size(663, 348);
             this.ControlBox = false;
             this.Controls.Add(this.kpnlContent);
             this.Controls.Add(this.pnlSplitter);
@@ -148,10 +160,10 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         #region Variables
         private ActionButtonLocation _buttonLocation;
         private ActionType _actionType;
-        private bool _fade, _showActionButton, _showSubScript;
+        private bool _fade, _showActionButton, _showSubScript, _showTimeoutProgress;
         private string _headerText, _contentText, _dismissButtonText, _processName;
         private Image _image;
-        private int _time, _cornerRadius, _seconds;
+        private int _time, _cornerRadius, _seconds, _timeOutProgress;
         private Timer _timer;
         private SoundPlayer _player;
         private IconType _iconType;
@@ -192,6 +204,8 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// <summary>Gets or sets a value indicating whether show the seconds subscript.</summary>
         /// <value><c>true</c> if [show sub script]; otherwise, <c>false</c>.</value>
         public bool ShowSubScript { get => _showSubScript; set => _showSubScript = value; }
+
+        public bool ShowTimeOutProgress { get => _showTimeoutProgress; set => _showTimeoutProgress = value; }
 
         /// <summary>
         /// Gets or sets the sound path.
@@ -256,6 +270,8 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// <summary>Gets or sets the corner radius.</summary>
         /// <value>The corner radius.</value>
         public int CornerRadius { get => _cornerRadius; set { _cornerRadius = value; Invalidate(); } }
+
+        public int TimeOutProgress { get => _timeOutProgress; set => _timeOutProgress = value; }
 
         /// <summary>Gets or sets the palette draw borders.</summary>
         /// <value>The palette draw borders.</value>
@@ -620,6 +636,13 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
                 _timer.Tick += (sender, e) =>
                 {
                     _time++;
+
+                    while (_timeOutProgress > 0)
+                    {
+                        _timeOutProgress--;
+
+                        pbxTimeout.Value = _timeOutProgress;
+                    }
 
                     kbtnDismiss.Text = $"Dismiss ({ Seconds - _time }s)";
 
