@@ -19,7 +19,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         private KryptonPanel kpnlContent;
         private KryptonWrapLabel kwlNotificationMessage;
         private KryptonWrapLabel kwlNotificationHeader;
-        private ProgressBar pbxTimeout;
+        private ProgressBar pbTimeout;
         private System.Windows.Forms.PictureBox pbxNotificationIcon;
 
         private void InitializeComponent()
@@ -32,7 +32,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
             this.kwlNotificationMessage = new Krypton.Toolkit.KryptonWrapLabel();
             this.kwlNotificationHeader = new Krypton.Toolkit.KryptonWrapLabel();
             this.pbxNotificationIcon = new System.Windows.Forms.PictureBox();
-            this.pbxTimeout = new System.Windows.Forms.ProgressBar();
+            this.pbTimeout = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.kpnlButtons)).BeginInit();
             this.kpnlButtons.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kpnlContent)).BeginInit();
@@ -83,7 +83,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
             // 
             // kpnlContent
             // 
-            this.kpnlContent.Controls.Add(this.pbxTimeout);
+            this.kpnlContent.Controls.Add(this.pbTimeout);
             this.kpnlContent.Controls.Add(this.kwlNotificationMessage);
             this.kpnlContent.Controls.Add(this.kwlNotificationHeader);
             this.kpnlContent.Controls.Add(this.pbxNotificationIcon);
@@ -123,14 +123,14 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
             this.pbxNotificationIcon.TabIndex = 0;
             this.pbxNotificationIcon.TabStop = false;
             // 
-            // pbxTimeout
+            // pbTimeout
             // 
-            this.pbxTimeout.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pbxTimeout.Location = new System.Drawing.Point(0, 290);
-            this.pbxTimeout.Name = "pbxTimeout";
-            this.pbxTimeout.Size = new System.Drawing.Size(663, 10);
-            this.pbxTimeout.TabIndex = 2;
-            this.pbxTimeout.Value = 100;
+            this.pbTimeout.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pbTimeout.Location = new System.Drawing.Point(0, 290);
+            this.pbTimeout.Name = "pbTimeout";
+            this.pbTimeout.Size = new System.Drawing.Size(663, 10);
+            this.pbTimeout.TabIndex = 2;
+            this.pbTimeout.Value = 100;
             // 
             // KryptonToastNotification
             // 
@@ -641,7 +641,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
                     {
                         _timeOutProgress--;
 
-                        pbxTimeout.Value = _timeOutProgress;
+                        pbTimeout.Value = _timeOutProgress;
                     }
 
                     kbtnDismiss.Text = $"Dismiss ({ Seconds - _time }s)";
