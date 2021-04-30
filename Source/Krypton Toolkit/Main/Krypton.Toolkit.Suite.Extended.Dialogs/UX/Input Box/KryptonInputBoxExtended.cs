@@ -1383,16 +1383,19 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
                 switch (type)
                 {
                     case InputBoxInputType.COMBOBOX:
-                        result = inputBoxExtended.ShowDialog(showOwner) == DialogResult.OK ? inputBoxExtended.GetUserResponse() : string.Empty;
+                        result = inputBoxExtended.ShowDialog(showOwner) == DialogResult.OK ? inputBoxExtended.GetUserChoice() : string.Empty;
                         break;
                     case InputBoxInputType.TEXTBOX:
                         result = inputBoxExtended.ShowDialog(showOwner) == DialogResult.OK ? inputBoxExtended.GetUserResponse() : string.Empty;
                         break;
                     case InputBoxInputType.MASKEDTEXTBOX:
+                        result = inputBoxExtended.ShowDialog(showOwner) == DialogResult.OK ? inputBoxExtended.GetUserResponse() : string.Empty;
                         break;
                     case InputBoxInputType.NONE:
+                        result = inputBoxExtended.ShowDialog(showOwner) == DialogResult.OK ? "" : string.Empty;
                         break;
                     default:
+                        result = inputBoxExtended.ShowDialog(showOwner) == DialogResult.OK ? inputBoxExtended.GetUserResponse() : string.Empty;
                         result = inputBoxExtended.ShowDialog(showOwner) == DialogResult.OK ? inputBoxExtended.GetUserResponse() : string.Empty;
                         break;
                 }
