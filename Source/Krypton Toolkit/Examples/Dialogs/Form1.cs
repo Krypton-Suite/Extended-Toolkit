@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,5 +19,19 @@ namespace Dialogs
             InitializeComponent();
         }
 
+        private void kbtnAboutBox_Click(object sender, EventArgs e)
+        {
+            kabm.DisplayAboutBox();
+        }
+
+        private void kbtnShowInputBox_Click(object sender, EventArgs e)
+        {
+            kibm.DisplayInputBox();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            kabm.Assembly = Assembly.GetExecutingAssembly();
+        }
     }
 }

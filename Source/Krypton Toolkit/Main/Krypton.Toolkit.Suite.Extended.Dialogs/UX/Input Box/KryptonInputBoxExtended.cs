@@ -1449,7 +1449,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         #region Internal Show
         private static string InternalShow(string message, string title = "", InputBoxLanguage language = InputBoxLanguage.ENGLISH, InputBoxInputType type = InputBoxInputType.NONE, string[] listItems = null, bool showInTaskBar = false, Font controlTypeface = null, Font messageTypeface = null, string okText = "&Ok", string yesText = "&Yes", string noText = "N&o", string cancelText = "&Cancel", string hintText = "")
         {
-            using (KryptonInputBoxExtended ib = new KryptonInputBoxExtended(message, title, language, type, listItems, showInTaskBar, controlTypeface, messageTypeface, okText, yesText, noText, cancelText, hintText))
+            using (KryptonInputBoxExtended ib = new KryptonInputBoxExtended(message, title, language, type, listItems, showInTaskBar, controlTypeface, messageTypeface, null, okText, yesText, noText, cancelText, hintText))
             {
                 return ib.ShowDialog() == DialogResult.OK ? ib.GetUserResponse() : string.Empty;
             }
