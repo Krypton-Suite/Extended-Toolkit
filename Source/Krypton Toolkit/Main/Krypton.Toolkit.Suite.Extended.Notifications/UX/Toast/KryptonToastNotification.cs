@@ -644,6 +644,13 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
                         pbTimeout.Value = _timeOutProgress;
                     }
 
+                    if (pbTimeout.Value == 0)
+                    {
+                        _timer.Stop();
+
+                        FadeOutAndClose();
+                    }
+
                     kbtnDismiss.Text = $"Dismiss ({ Seconds - _time }s)";
 
                     if (_time == Seconds)
