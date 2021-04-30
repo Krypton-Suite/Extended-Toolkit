@@ -55,13 +55,13 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         public void DisplayMessageBox()
         {
             KryptonInputBoxExtended kryptonInputBox = new KryptonInputBoxExtended(_inputBoxIconLocation, _message, _title, _iconType,
-                                                                                  _customImage, _imageSize, _inputBoxLanguage, 
+                                                                                  _customImage, _imageSize, _inputBoxLanguage,
                                                                                   _buttons, _inputType, _displayType,
                                                                                   _itemList, _showInTaskBar, _controlTypeface,
                                                                                   _messageTypeface, _okText, _yesText, _noText, _cancelText,
                                                                                   _hintText, _startPosition, _textAlignment,
                                                                                   _messageTextAlignment, _wrappedMessageTextAlignment);
-            
+
             kryptonInputBox.Show();
         }
         #endregion

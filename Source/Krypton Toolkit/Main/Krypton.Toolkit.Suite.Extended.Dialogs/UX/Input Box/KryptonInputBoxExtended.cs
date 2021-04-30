@@ -1,16 +1,8 @@
-﻿#region BSD License
-/*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
- */
-#endregion
-
+﻿using Krypton.Toolkit.Suite.Extended.Controls;
+using Krypton.Toolkit.Suite.Extended.Dialogs.Properties;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
-
-using Krypton.Toolkit.Suite.Extended.Dialogs.Properties;
 
 namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
@@ -27,7 +19,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         private KryptonWrapLabel kwlMessage;
         private System.Windows.Forms.PictureBox pbxImage;
         private KryptonMaskedTextBox kmtxtInput;
-        private Controls.KryptonBorderedLabel kblMessage;
+        private KryptonBorderedLabel kblMessage;
         private KryptonLabel klblMessage;
         private KryptonPanel kryptonPanel2;
 
@@ -146,7 +138,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.kcmbInput.Size = new System.Drawing.Size(393, 21);
             this.kcmbInput.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
             this.kcmbInput.TabIndex = 2;
-            this.kcmbInput.KeyDown += new System.Windows.Forms.KeyEventHandler(this.kcmbInput_KeyDown);
+            this.kcmbInput.KeyDown += kcmbInput_KeyDown;
             // 
             // ktxtInput
             // 
@@ -154,7 +146,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             this.ktxtInput.Name = "ktxtInput";
             this.ktxtInput.Size = new System.Drawing.Size(393, 23);
             this.ktxtInput.TabIndex = 2;
-            this.ktxtInput.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ktxtInput_KeyDown);
+            this.ktxtInput.KeyDown += ktxtInput_KeyDown;
             // 
             // kmtxtInput
             // 
@@ -786,7 +778,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
                 case InputBoxIconType.QUESTION:
                     AdaptUI(true);
 
-                    SetIconImage(Resources.Input_Box_Question_128_x_128);;
+                    SetIconImage(Resources.Input_Box_Question_128_x_128); ;
                     break;
                 case InputBoxIconType.NONE:
                     AdaptUI(false);
@@ -1099,97 +1091,6 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             }
         }
 
-        /*
-        /// <summary>Sets the message text alignment.</summary>
-        /// <param name="alignment">The alignment.</param>
-        private void SetMessageTextAlignment(MessageTextAlignment alignment)
-        {
-            switch (alignment)
-            {
-                case MessageTextAlignment.INHERIT:
-                    kwlMessage.StateCommon.ShortText.TextH = PaletteRelativeAlign.Inherit;
-
-                    kwlMessage.StateCommon.ShortText.TextV = PaletteRelativeAlign.Inherit;
-                    break;
-                case MessageTextAlignment.NEARNEAR:
-                    kwlMessage.StateCommon.ShortText.TextH = PaletteRelativeAlign.Near;
-
-                    kwlMessage.StateCommon.ShortText.TextV = PaletteRelativeAlign.Near;
-                    break;
-                case MessageTextAlignment.NEARCENTRE:
-                    kwlMessage.StateCommon.ShortText.TextH = PaletteRelativeAlign.Near;
-
-                    kwlMessage.StateCommon.ShortText.TextV = PaletteRelativeAlign.Center;
-                    break;
-                case MessageTextAlignment.NEARFAR:
-                    kwlMessage.StateCommon.ShortText.TextH = PaletteRelativeAlign.Near;
-
-                    kwlMessage.StateCommon.ShortText.TextV = PaletteRelativeAlign.Far;
-                    break;
-                case MessageTextAlignment.CENTRENEAR:
-                    kwlMessage.StateCommon.ShortText.TextH = PaletteRelativeAlign.Center;
-
-                    kwlMessage.StateCommon.ShortText.TextV = PaletteRelativeAlign.Near;
-                    break;
-                case MessageTextAlignment.CENTRECENTRE:
-                    kwlMessage.StateCommon.ShortText.TextH = PaletteRelativeAlign.Center;
-
-                    kwlMessage.StateCommon.ShortText.TextV = PaletteRelativeAlign.Center;
-                    break;
-                case MessageTextAlignment.CENTREFAR:
-                    kwlMessage.StateCommon.ShortText.TextH = PaletteRelativeAlign.Center;
-
-                    kwlMessage.StateCommon.ShortText.TextV = PaletteRelativeAlign.Far;
-                    break;
-                case MessageTextAlignment.FARNEAR:
-                    kwlMessage.StateCommon.ShortText.TextH = PaletteRelativeAlign.Far;
-
-                    kwlMessage.StateCommon.ShortText.TextV = PaletteRelativeAlign.Near;
-                    break;
-                case MessageTextAlignment.FARCENTRE:
-                    kwlMessage.StateCommon.ShortText.TextH = PaletteRelativeAlign.Far;
-
-                    kwlMessage.StateCommon.ShortText.TextV = PaletteRelativeAlign.Center;
-                    break;
-                case MessageTextAlignment.FARFAR:
-                    kwlMessage.StateCommon.ShortText.TextH = PaletteRelativeAlign.Far;
-
-                    kwlMessage.StateCommon.ShortText.TextV = PaletteRelativeAlign.Far;
-                    break;
-                case MessageTextAlignment.INHERITNEAR:
-                    kwlMessage.StateCommon.ShortText.TextH = PaletteRelativeAlign.Inherit;
-
-                    kwlMessage.StateCommon.ShortText.TextV = PaletteRelativeAlign.Near;
-                    break;
-                case MessageTextAlignment.INHERITCENTRE:
-                    kwlMessage.StateCommon.ShortText.TextH = PaletteRelativeAlign.Inherit;
-
-                    kwlMessage.StateCommon.ShortText.TextV = PaletteRelativeAlign.Center;
-                    break;
-                case MessageTextAlignment.INHERITFAR:
-                    kwlMessage.StateCommon.ShortText.TextH = PaletteRelativeAlign.Inherit;
-
-                    kwlMessage.StateCommon.ShortText.TextV = PaletteRelativeAlign.Far;
-                    break;
-                case MessageTextAlignment.NEARINHERIT:
-                    kwlMessage.StateCommon.ShortText.TextH = PaletteRelativeAlign.Near;
-
-                    kwlMessage.StateCommon.ShortText.TextV = PaletteRelativeAlign.Inherit;
-                    break;
-                case MessageTextAlignment.CENTREINHERIT:
-                    kwlMessage.StateCommon.ShortText.TextH = PaletteRelativeAlign.Center;
-
-                    kwlMessage.StateCommon.ShortText.TextV = PaletteRelativeAlign.Inherit;
-                    break;
-                case MessageTextAlignment.FARINHERIT:
-                    kwlMessage.StateCommon.ShortText.TextH = PaletteRelativeAlign.Far;
-
-                    kwlMessage.StateCommon.ShortText.TextV = PaletteRelativeAlign.Inherit;
-                    break;
-            }
-        }
-        */
-
         /// <summary>Sets the message text alignment.</summary>
         /// <param name="alignment">The alignment.</param>
         private void SetWrappedMessageTextAlignment(InputBoxWrappedMessageTextAlignment alignment)
@@ -1247,6 +1148,205 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         }
 
         private Image[] ReturnIconImageArray() => IconImages;
+
+        private void SetMessageTextAlignment(InputBoxWrappedMessageTextAlignment textAlignment)
+        {
+            switch (textAlignment)
+            {
+                case InputBoxWrappedMessageTextAlignment.TOPLEFT:
+                    kwlMessage.TextAlign = ContentAlignment.TopLeft;
+                    break;
+                case InputBoxWrappedMessageTextAlignment.TOPCENTRE:
+                    kwlMessage.TextAlign = ContentAlignment.TopCenter;
+                    break;
+                case InputBoxWrappedMessageTextAlignment.TOPRIGHT:
+                    kwlMessage.TextAlign = ContentAlignment.TopRight;
+                    break;
+                case InputBoxWrappedMessageTextAlignment.MIDDLELEFT:
+                    kwlMessage.TextAlign = ContentAlignment.MiddleLeft;
+                    break;
+                case InputBoxWrappedMessageTextAlignment.MIDDLECENTRE:
+                    kwlMessage.TextAlign = ContentAlignment.MiddleCenter;
+                    break;
+                case InputBoxWrappedMessageTextAlignment.MIDDLERIGHT:
+                    kwlMessage.TextAlign = ContentAlignment.MiddleRight;
+                    break;
+                case InputBoxWrappedMessageTextAlignment.BOTTOMLEFT:
+                    kwlMessage.TextAlign = ContentAlignment.BottomLeft;
+                    break;
+                case InputBoxWrappedMessageTextAlignment.BOTTOMCENTRE:
+                    kwlMessage.TextAlign = ContentAlignment.BottomCenter;
+                    break;
+                case InputBoxWrappedMessageTextAlignment.BOTTOMRIGHT:
+                    kwlMessage.TextAlign = ContentAlignment.BottomRight;
+                    break;
+                default:
+                    kwlMessage.TextAlign = ContentAlignment.MiddleLeft;
+                    break;
+            }
+        }
+
+        private void SetMessageTextAlignment(InputBoxNormalMessageTextAlignment messageTextAlignment)
+        {
+            switch (messageTextAlignment)
+            {
+                case InputBoxNormalMessageTextAlignment.INHERIT:
+                    klblMessage.StateCommon.ShortText.TextH = PaletteRelativeAlign.Inherit;
+
+                    klblMessage.StateCommon.ShortText.TextV = PaletteRelativeAlign.Inherit;
+                    break;
+                case InputBoxNormalMessageTextAlignment.NEARNEAR:
+                    klblMessage.StateCommon.ShortText.TextH = PaletteRelativeAlign.Near;
+
+                    klblMessage.StateCommon.ShortText.TextV = PaletteRelativeAlign.Near;
+                    break;
+                case InputBoxNormalMessageTextAlignment.NEARCENTRE:
+                    klblMessage.StateCommon.ShortText.TextH = PaletteRelativeAlign.Near;
+
+                    klblMessage.StateCommon.ShortText.TextV = PaletteRelativeAlign.Center;
+                    break;
+                case InputBoxNormalMessageTextAlignment.NEARFAR:
+                    klblMessage.StateCommon.ShortText.TextH = PaletteRelativeAlign.Near;
+
+                    klblMessage.StateCommon.ShortText.TextV = PaletteRelativeAlign.Far;
+                    break;
+                case InputBoxNormalMessageTextAlignment.CENTRENEAR:
+                    klblMessage.StateCommon.ShortText.TextH = PaletteRelativeAlign.Center;
+
+                    klblMessage.StateCommon.ShortText.TextV = PaletteRelativeAlign.Near;
+                    break;
+                case InputBoxNormalMessageTextAlignment.CENTRECENTRE:
+                    klblMessage.StateCommon.ShortText.TextH = PaletteRelativeAlign.Center;
+
+                    klblMessage.StateCommon.ShortText.TextV = PaletteRelativeAlign.Center;
+                    break;
+                case InputBoxNormalMessageTextAlignment.CENTREFAR:
+                    klblMessage.StateCommon.ShortText.TextH = PaletteRelativeAlign.Center;
+
+                    klblMessage.StateCommon.ShortText.TextV = PaletteRelativeAlign.Far;
+                    break;
+                case InputBoxNormalMessageTextAlignment.FARNEAR:
+                    klblMessage.StateCommon.ShortText.TextH = PaletteRelativeAlign.Far;
+
+                    klblMessage.StateCommon.ShortText.TextV = PaletteRelativeAlign.Near;
+                    break;
+                case InputBoxNormalMessageTextAlignment.FARCENTRE:
+                    klblMessage.StateCommon.ShortText.TextH = PaletteRelativeAlign.Far;
+
+                    klblMessage.StateCommon.ShortText.TextV = PaletteRelativeAlign.Center;
+                    break;
+                case InputBoxNormalMessageTextAlignment.FARFAR:
+                    klblMessage.StateCommon.ShortText.TextH = PaletteRelativeAlign.Far;
+
+                    klblMessage.StateCommon.ShortText.TextV = PaletteRelativeAlign.Far;
+                    break;
+                case InputBoxNormalMessageTextAlignment.INHERITNEAR:
+                    klblMessage.StateCommon.ShortText.TextH = PaletteRelativeAlign.Inherit;
+
+                    klblMessage.StateCommon.ShortText.TextV = PaletteRelativeAlign.Near;
+                    break;
+                case InputBoxNormalMessageTextAlignment.INHERITCENTRE:
+                    klblMessage.StateCommon.ShortText.TextH = PaletteRelativeAlign.Inherit;
+
+                    klblMessage.StateCommon.ShortText.TextV = PaletteRelativeAlign.Center;
+                    break;
+                case InputBoxNormalMessageTextAlignment.INHERITFAR:
+                    klblMessage.StateCommon.ShortText.TextH = PaletteRelativeAlign.Inherit;
+
+                    klblMessage.StateCommon.ShortText.TextV = PaletteRelativeAlign.Far;
+                    break;
+                case InputBoxNormalMessageTextAlignment.NEARINHERIT:
+                    klblMessage.StateCommon.ShortText.TextH = PaletteRelativeAlign.Near;
+
+                    klblMessage.StateCommon.ShortText.TextV = PaletteRelativeAlign.Inherit;
+                    break;
+                case InputBoxNormalMessageTextAlignment.CENTREINHERIT:
+                    klblMessage.StateCommon.ShortText.TextH = PaletteRelativeAlign.Center;
+
+                    klblMessage.StateCommon.ShortText.TextV = PaletteRelativeAlign.Inherit;
+                    break;
+                case InputBoxNormalMessageTextAlignment.FARINHERIT:
+                    klblMessage.StateCommon.ShortText.TextH = PaletteRelativeAlign.Far;
+
+                    klblMessage.StateCommon.ShortText.TextV = PaletteRelativeAlign.Inherit;
+                    break;
+                default:
+                    klblMessage.StateCommon.ShortText.TextH = PaletteRelativeAlign.Inherit;
+
+                    klblMessage.StateCommon.ShortText.TextV = PaletteRelativeAlign.Inherit;
+                    break;
+            }
+        }
+
+        private void SetDisplayType(InputBoxMessageDisplayType displayType)
+        {
+            switch (displayType)
+            {
+                case InputBoxMessageDisplayType.LABEL:
+                    kblMessage.Visible = false;
+
+                    klblMessage.Visible = true;
+
+                    kwlMessage.Visible = false;
+                    break;
+                case InputBoxMessageDisplayType.BORDEREDLABEL:
+                    kblMessage.Visible = true;
+
+                    klblMessage.Visible = false;
+
+                    kwlMessage.Visible = false;
+                    break;
+                case InputBoxMessageDisplayType.WRAPPEDLABEL:
+                    kblMessage.Visible = false;
+
+                    klblMessage.Visible = false;
+
+                    kwlMessage.Visible = true;
+                    break;
+                default:
+                    kblMessage.Visible = false;
+
+                    klblMessage.Visible = true;
+
+                    kwlMessage.Visible = false;
+                    break;
+            }
+        }
+
+        // TODO: Resize other components, depending on pbxImage size
+        private void SetCustomImageSize(InputBoxIconImageSize imageSize, Image customImage = null)
+        {
+            switch (imageSize)
+            {
+                case InputBoxIconImageSize.CUSTOM:
+                    if (customImage != null)
+                    {
+                        pbxImage.Size = customImage.Size;
+                    }
+                    else
+                    {
+                        throw new ArgumentNullException();
+
+                        pbxImage.Size = new Size(32, 32);
+                    }
+                    break;
+                case InputBoxIconImageSize.THIRTYTWO:
+                    pbxImage.Size = new Size(32, 32);
+                    break;
+                case InputBoxIconImageSize.FOURTYEIGHT:
+                    pbxImage.Size = new Size(48, 48);
+                    break;
+                case InputBoxIconImageSize.SIXTYFOUR:
+                    pbxImage.Size = new Size(64, 64);
+                    break;
+                case InputBoxIconImageSize.ONEHUNDREDANDTWENTYEIGHT:
+                    pbxImage.Size = new Size(128, 128);
+                    break;
+                default:
+                    pbxImage.Size = new Size(32, 32);
+                    break;
+            }
+        }
         #endregion
 
         #region Show
@@ -1286,7 +1386,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
                         result = inputBoxExtended.ShowDialog(showOwner) == DialogResult.OK ? inputBoxExtended.GetUserResponse() : string.Empty;
                         break;
                     case InputBoxInputType.TEXTBOX:
-                        result = inputBoxExtended.ShowDialog(showOwner) == DialogResult.OK ? inputBoxExtended.GetUserResponse() : string.Empty; 
+                        result = inputBoxExtended.ShowDialog(showOwner) == DialogResult.OK ? inputBoxExtended.GetUserResponse() : string.Empty;
                         break;
                     case InputBoxInputType.MASKEDTEXTBOX:
                         break;

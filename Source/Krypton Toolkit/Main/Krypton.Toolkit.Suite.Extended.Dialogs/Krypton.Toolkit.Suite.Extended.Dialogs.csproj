@@ -56,12 +56,8 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Shared\Krypton.Toolkit.Suite.Extended.Global.Utilities\Krypton.Toolkit.Suite.Extended.Global.Utilities.csproj" />
+    <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Controls\Krypton.Toolkit.Suite.Extended.Controls.csproj" />
     <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Developer.Utilities\Krypton.Toolkit.Suite.Extended.Developer.Utilities.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="Krypton.Toolkit.Suite.Extended.Controls">
-      <HintPath>..\Krypton.Toolkit.Suite.Extended.Controls\obj\Debug\net45\Krypton.Toolkit.Suite.Extended.Controls.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
