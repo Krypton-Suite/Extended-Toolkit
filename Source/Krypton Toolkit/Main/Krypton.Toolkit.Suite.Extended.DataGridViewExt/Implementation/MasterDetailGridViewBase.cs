@@ -162,6 +162,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt.Implementation
             if ((SelectionMode == DataGridViewSelectionMode.FullRowSelect)
                 && ExpandDetailsWhenFullRowSelectClicked
                 && (e.ColumnIndex >= 0)
+                && (e.RowIndex >= 0)
                 )
             {
                 ExpandAndCollapseOther(e.RowIndex);
