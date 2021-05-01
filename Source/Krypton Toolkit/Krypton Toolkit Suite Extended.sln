@@ -229,7 +229,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PropertyGrid", "Examples\Pr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dialogs", "Examples\Dialogs\Dialogs.csproj", "{35956CA4-4B0A-4CCA-8ACA-89052E26A33A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FloatingToolbars", "Examples\FloatingToolbars\FloatingToolbars.csproj", "{429E0980-3124-4FEA-8679-04ACFC4E0D35}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A6244CDF-A1C2-4BCE-A3FD-BB1E2DD29DDC}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
