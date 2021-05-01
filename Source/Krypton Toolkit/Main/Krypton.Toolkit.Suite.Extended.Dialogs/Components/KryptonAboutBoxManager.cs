@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
+using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
@@ -14,15 +11,19 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         #region Variables
         private Assembly _assembly;
 
+        private Application _application;
+
         private bool _showDescription, _showFrameworkVersion, _showSystemInformation;
 
         private Image _applicationIcon;
 
-        private string _aboutText, _applicationText, _versionText, _copyrightText, _frameworkVersionText, _showSystemInformationText;
+        private string _aboutText, _applicationText, _applicationDescription, _versionText, _copyrightText, _frameworkVersionText, _showSystemInformationText;
         #endregion
 
         #region Properties
         public Assembly Assembly { get => _assembly; set => _assembly = value; }
+
+        public Application Application { get => _application; set => _application = value; }
 
         public bool ShowDescription { get => _showDescription; set => _showDescription = value; }
 
@@ -36,6 +37,8 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
         public string ApplicationText { get => _applicationText; set => _applicationText = value; }
 
+        public string ApplicationDescription { get => _applicationDescription; set => _applicationDescription = value; }
+
         public string CopyrightText { get => _copyrightText; set => _copyrightText = value; }
 
         public string FrameworkVersionText { get => _frameworkVersionText; set => _frameworkVersionText = value; }
@@ -48,7 +51,9 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         #region Constructor
         public KryptonAboutBoxManager()
         {
-            _assembly = null;
+            _assembly = Assembly.GetExecutingAssembly();
+
+            FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(_assembly.Location);
 
             _showDescription = true;
 
@@ -56,9 +61,11 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
             _showSystemInformation = false;
 
-            _applicationIcon = null;
+            _applicationIcon = Icon.ExtractAssociatedIcon(Application.ExecutablePath).ToBitmap();
 
             _applicationText = "Application";
+
+            _applicationDescription = fvi.FileDescription;
 
             _aboutText = "About";
 

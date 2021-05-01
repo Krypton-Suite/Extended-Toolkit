@@ -45,10 +45,13 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
         public FormStartPosition StartPosition { get => _startPosition; set => _startPosition = value; }
 
+        [DefaultValue(typeof(Font), "Microsoft Sans Serif, 8.25f")]
         public Font ControlTypeface { get => _controlTypeface; set => _controlTypeface = value; }
 
+        [DefaultValue(typeof(Font), "Microsoft Sans Serif, 11.25f, FontStyle.Bold")]
         public Font HeaderTypeface { get => _headerTypeface; set => _headerTypeface = value; }
 
+        [DefaultValue(typeof(Font), "Microsoft Sans Serif, 8.25f")]
         public Font MessageTypeface { get => _messageTypeface; set => _messageTypeface = value; }
 
         public InputBoxButtons InputBoxButtons { get => _buttons; set => _buttons = value; }

@@ -69,6 +69,8 @@ namespace Dialogs
             // kabm
             // 
             this.kabm.AboutText = "About";
+            this.kabm.Application = null;
+            this.kabm.ApplicationDescription = "Krypton.Toolkit.Suite.Extended.Dialogs";
             this.kabm.ApplicationIcon = null;
             this.kabm.ApplicationText = "Application";
             this.kabm.Assembly = null;
@@ -83,7 +85,6 @@ namespace Dialogs
             // kibm
             // 
             this.kibm.CancelText = "C&ancel";
-            this.kibm.ControlTypeface = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
             this.kibm.CustomImage = null;
             this.kibm.HeaderText = "Header Text Here";
             this.kibm.HeaderTypeface = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
