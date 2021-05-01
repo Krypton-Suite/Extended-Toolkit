@@ -6,7 +6,6 @@
  */
 #endregion
 
-using Krypton.Toolkit.Values;
 using System.ComponentModel;
 
 namespace Krypton.Toolkit.Suite.Extended.Core
