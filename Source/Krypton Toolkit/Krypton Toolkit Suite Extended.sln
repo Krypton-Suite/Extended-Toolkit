@@ -229,10 +229,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PropertyGrid", "Examples\Pr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dialogs", "Examples\Dialogs\Dialogs.csproj", "{35956CA4-4B0A-4CCA-8ACA-89052E26A33A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A6244CDF-A1C2-4BCE-A3FD-BB1E2DD29DDC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FloatingToolbars", "Examples\FloatingToolbars\FloatingToolbars.csproj", "{429E0980-3124-4FEA-8679-04ACFC4E0D35}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FDDE0872-007C-4945-9D20-C9011C37204B}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton.Toolkit.Suite.Extended.Dock.Extender", "Main\Krypton.Toolkit.Suite.Extended.Dock.Extender\Krypton.Toolkit.Suite.Extended.Dock.Extender.csproj", "{AA0C40E7-7D6B-480D-BD91-3D1F8B2A66A6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -472,6 +476,14 @@ Global
 		{35956CA4-4B0A-4CCA-8ACA-89052E26A33A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{35956CA4-4B0A-4CCA-8ACA-89052E26A33A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{35956CA4-4B0A-4CCA-8ACA-89052E26A33A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{429E0980-3124-4FEA-8679-04ACFC4E0D35}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{429E0980-3124-4FEA-8679-04ACFC4E0D35}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{429E0980-3124-4FEA-8679-04ACFC4E0D35}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{429E0980-3124-4FEA-8679-04ACFC4E0D35}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA0C40E7-7D6B-480D-BD91-3D1F8B2A66A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA0C40E7-7D6B-480D-BD91-3D1F8B2A66A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA0C40E7-7D6B-480D-BD91-3D1F8B2A66A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA0C40E7-7D6B-480D-BD91-3D1F8B2A66A6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -550,6 +562,8 @@ Global
 		{AE9352EB-6081-4B7C-9EE4-01E934768AD8} = {25D5F0A6-A601-424B-9431-8EFE139A58A7}
 		{53456D2D-A19F-4D2A-8E06-F43784EEE95C} = {25D5F0A6-A601-424B-9431-8EFE139A58A7}
 		{35956CA4-4B0A-4CCA-8ACA-89052E26A33A} = {25D5F0A6-A601-424B-9431-8EFE139A58A7}
+		{429E0980-3124-4FEA-8679-04ACFC4E0D35} = {25D5F0A6-A601-424B-9431-8EFE139A58A7}
+		{AA0C40E7-7D6B-480D-BD91-3D1F8B2A66A6} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A7CE7732-0982-4703-8EFD-7715D569BAB5}

@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <Choose>
     <When Condition="'$(TFMs)' == 'all'">
@@ -15,15 +15,15 @@
   <PropertyGroup>
     <LangVersion>latest</LangVersion>
     <OutputType>library</OutputType>
-    <RootNamespace>Krypton.Toolkit.Suite.Extended.Scroll.Bars</RootNamespace>
-    <AssemblyName>Krypton.Toolkit.Suite.Extended.Scroll.Bars</AssemblyName>
+    <RootNamespace>Krypton.Toolkit.Suite.Extended.Dock.Extender</RootNamespace>
+    <AssemblyName>Krypton.Toolkit.Suite.Extended.Dock.Extender</AssemblyName>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
   <!--Package Data-->
   <PropertyGroup>
-    <PackageId>Krypton.Toolkit.Suite.Extended.Scroll.Bars</PackageId>
-    <Description>An extension to the Krypton standard toolkit. This package holds extensions to the Krypton.Scroll.Bars module.</Description>
+    <PackageId>Krypton.Toolkit.Suite.Extended.Dock.Extender</PackageId>
+    <Description>An extension to the Krypton standard toolkit. This package holds extensions to docking operations.</Description>
   </PropertyGroup>
 
   <!--Version Information-->
@@ -48,14 +48,8 @@
 
   <!--Binary/Documentation Output-->
   <PropertyGroup>
-    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.Scroll.Bars\Krypton.Toolkit.Suite.Extended.Scroll.Bars.xml</DocumentationFile>
-    <OutputPath>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.Scroll.Bars\</OutputPath>
+    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.Dock.Extender\Krypton.Toolkit.Suite.Extended.Dock.Extender.xml</DocumentationFile>
+    <OutputPath>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.Dock.Extender\</OutputPath>
   </PropertyGroup>
-  
-  <ItemGroup>
-    <Compile Update="Controls Toolkit\KryptonScrollBar.cs">
-      <SubType>Component</SubType>
-    </Compile>
-  </ItemGroup>
 
 </Project>
