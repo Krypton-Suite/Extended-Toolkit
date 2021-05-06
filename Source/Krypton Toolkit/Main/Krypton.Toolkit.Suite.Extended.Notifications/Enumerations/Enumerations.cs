@@ -1,6 +1,6 @@
 ﻿namespace Krypton.Toolkit.Suite.Extended.Notifications
 {
-    /// <summary>The <see cref="KryptonToastNotification" /> action button type.</summary>
+    /// <summary>The <see cref="KryptonToastNotificationVersion1" /> action button type.</summary>
     public enum ActionType
     {
         /// <summary>The default action.</summary>
@@ -11,7 +11,7 @@
         OPEN
     }
 
-    /// <summary>Defines the <see cref="KryptonToastNotification"/> action button location.</summary>
+    /// <summary>Defines the <see cref="KryptonToastNotificationVersion1"/> action button location.</summary>
     public enum ActionButtonLocation
     {
         /// <summary>Place the action button to the left.</summary>
@@ -20,7 +20,7 @@
         RIGHT
     }
 
-    /// <summary>Defines the <see cref="KryptonToastNotification"/> default button.</summary>
+    /// <summary>Defines the <see cref="KryptonToastNotificationVersion1"/> default button.</summary>
     // TODO: Implement this feature into `KryptonToastNotification`
     public enum DefaultNotificationButton
     {
@@ -32,7 +32,7 @@
         NONE
     }
 
-    /// <summary>Specifies the icon shown on the <see cref="KryptonToastNotification"/>.</summary>
+    /// <summary>Specifies the icon shown on the <see cref="KryptonToastNotificationVersion1"/>.</summary>
     public enum IconType
     {
         /// <summary>Use a custom icon.</summary>
@@ -59,12 +59,12 @@
         WARNING
     }
 
-    /// <summary>The layout of the UI elements on the <see cref="KryptonToastNotification"/>.</summary>
+    /// <summary>The layout of the UI elements on the <see cref="KryptonToastNotificationVersion1"/>.</summary>
     public enum RightToLeftSupport
     {
-        /// <summary>Configure the <see cref="KryptonToastNotification"/> UX for left-to-right.</summary>
+        /// <summary>Configure the <see cref="KryptonToastNotificationVersion1"/> UX for left-to-right.</summary>
         LEFTTORIGHT,
-        /// <summary>Configure the <see cref="KryptonToastNotification"/> UX for right-to-left.</summary>
+        /// <summary>Configure the <see cref="KryptonToastNotificationVersion1"/> UX for right-to-left.</summary>
         RIGHTTOLEFT
     }
 
