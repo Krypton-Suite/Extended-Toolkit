@@ -56,10 +56,6 @@
     </ItemGroup>
   
     <ItemGroup>
-      <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Developer.Utilities\Krypton.Toolkit.Suite.Extended.Developer.Utilities.csproj" />
-    </ItemGroup>
-  
-    <ItemGroup>
       <Compile Update="Properties\Resources.Designer.cs">
         <DesignTime>True</DesignTime>
         <AutoGen>True</AutoGen>

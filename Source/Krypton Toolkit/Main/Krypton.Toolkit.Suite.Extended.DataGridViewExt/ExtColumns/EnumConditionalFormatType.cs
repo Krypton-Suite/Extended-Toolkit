@@ -9,7 +9,7 @@
 */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt.ExtColumns
+namespace Krypton.Toolkit.Suite.Extended.Data.Grid.View
 {
     /// <summary>
     /// Conditional Formatting type

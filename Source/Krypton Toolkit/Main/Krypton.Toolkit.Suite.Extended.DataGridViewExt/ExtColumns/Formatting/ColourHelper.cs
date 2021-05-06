@@ -12,7 +12,7 @@
 using System;
 using System.Drawing;
 
-namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt.ExtColumns.Formatting
+namespace Krypton.Toolkit.Suite.Extended.Data.Grid.View
 {
     /// <summary>
     /// Helper for color manipulations

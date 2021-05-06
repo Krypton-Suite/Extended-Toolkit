@@ -12,7 +12,7 @@
 using System;
 using System.Xml;
 
-namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt.ExtColumns
+namespace Krypton.Toolkit.Suite.Extended.Data.Grid.View
 {
     /// <summary>
     /// Parameter class for Conditional Formatting

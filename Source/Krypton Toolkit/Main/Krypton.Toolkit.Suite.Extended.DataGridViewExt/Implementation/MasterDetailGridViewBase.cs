@@ -17,7 +17,7 @@ using System.Windows.Forms;
 // ReSharper disable MemberCanBePrivate.Global
 // ReSharper disable UnusedAutoPropertyAccessor.Global
 
-namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt.Implementation
+namespace Krypton.Toolkit.Suite.Extended.Data.Grid.View
 {
     /// <summary>
     /// DO NOT use in your application code base: This is a base class to allows passthrough

@@ -11,7 +11,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt.Implementation
+namespace Krypton.Toolkit.Suite.Extended.Data.Grid.View
 {
     /// <summary>
     /// DO NOT use in your application code base: This is a base class to allows passthrough to the master KryptonDataGridView

@@ -17,7 +17,7 @@ using System.Globalization;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt.ExtColumns
+namespace Krypton.Toolkit.Suite.Extended.Data.Grid.View
 {
     /// <summary>
     /// Hosts a collection of KryptonDataGridViewPercentageColumn cells.
