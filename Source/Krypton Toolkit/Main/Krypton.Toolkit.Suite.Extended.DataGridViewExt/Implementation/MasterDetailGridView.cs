@@ -26,7 +26,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
 
         private protected override void MasterDetailGridView_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
-            var grid = (DataGridView)sender;
+            var grid = (System.Windows.Forms.DataGridView)sender;
             bool found = true;
             if (!RowCurrent.TryGetValue(e.RowIndex, out var refValues))
             {

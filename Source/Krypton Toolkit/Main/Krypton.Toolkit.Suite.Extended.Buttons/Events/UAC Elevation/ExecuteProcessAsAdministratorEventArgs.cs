@@ -12,6 +12,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Security.Principal;
+
 using Krypton.Toolkit.Suite.Extended.Developer.Utilities;
 
 namespace Krypton.Toolkit.Suite.Extended.Buttons

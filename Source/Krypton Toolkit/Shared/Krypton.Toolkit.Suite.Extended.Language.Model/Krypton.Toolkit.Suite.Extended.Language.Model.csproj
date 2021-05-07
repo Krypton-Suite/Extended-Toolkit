@@ -51,5 +51,8 @@
     <DocumentationFile>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.Language.Model\Krypton.Toolkit.Suite.Extended.Language.Model.xml</DocumentationFile>
     <OutputPath>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.Language.Model\</OutputPath>
   </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Developer.Utilities\Krypton.Toolkit.Suite.Extended.Developer.Utilities.csproj" />
+  </ItemGroup>
 
 </Project>
