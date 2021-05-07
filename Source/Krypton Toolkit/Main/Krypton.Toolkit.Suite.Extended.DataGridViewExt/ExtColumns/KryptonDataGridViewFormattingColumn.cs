@@ -13,7 +13,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Suite.Extended.Data.Grid.View
+namespace Krypton.Toolkit.Suite.Extended.DataGridView
 {
     /// <summary>
     /// Class for a KryptonDataGridViewFormattingColumn : KryptonDataGridViewTextBoxColumn with conditional formatting abilities

@@ -14,7 +14,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Suite.Extended.Data.Grid.View
+namespace Krypton.Toolkit.Suite.Extended.DataGridView
 {
     /// <summary>
     /// Token object

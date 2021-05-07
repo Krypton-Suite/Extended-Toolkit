@@ -15,14 +15,14 @@
     <PropertyGroup>
         <LangVersion>latest</LangVersion>
         <OutputType>library</OutputType>
-        <RootNamespace>Krypton.Toolkit.Suite.Extended.Combo.Box</RootNamespace>
-        <AssemblyName>Krypton.Toolkit.Suite.Extended.Combo.Box</AssemblyName>
+        <RootNamespace>Krypton.Toolkit.Suite.Extended.ComboBox</RootNamespace>
+        <AssemblyName>Krypton.Toolkit.Suite.Extended.ComboBox</AssemblyName>
         <UseWindowsForms>true</UseWindowsForms>
     </PropertyGroup>
 
     <!--Package Data-->
     <PropertyGroup>
-        <PackageId>Krypton.Toolkit.Suite.Extended.Combo.Box</PackageId>
+        <PackageId>Krypton.Toolkit.Suite.Extended.ComboBox</PackageId>
         <Description>An extension to the Krypton standard toolkit ComboBox. This package implements additional Drop Down types and views.</Description>
     </PropertyGroup>
 
@@ -48,7 +48,7 @@
 
     <!--Binary/Documentation Output-->
     <PropertyGroup>
-        <DocumentationFile>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.Combo.Box\Krypton.Toolkit.Suite.Extended.Combo.Box.xml</DocumentationFile>
-        <OutputPath>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.Combo.Box\</OutputPath>
+        <DocumentationFile>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.ComboBox\Krypton.Toolkit.Suite.Extended.ComboBox.xml</DocumentationFile>
+        <OutputPath>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.ComboBox\</OutputPath>
     </PropertyGroup>
 </Project>

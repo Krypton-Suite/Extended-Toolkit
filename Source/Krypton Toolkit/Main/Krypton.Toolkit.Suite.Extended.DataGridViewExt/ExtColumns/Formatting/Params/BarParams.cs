@@ -12,7 +12,7 @@
 using System.Drawing;
 using System.Xml;
 
-namespace Krypton.Toolkit.Suite.Extended.Data.Grid.View
+namespace Krypton.Toolkit.Suite.Extended.DataGridView
 {
     /// <summary>
     /// Parameters for Bar formatting

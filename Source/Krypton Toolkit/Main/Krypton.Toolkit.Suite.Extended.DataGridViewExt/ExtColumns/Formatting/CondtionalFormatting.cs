@@ -11,7 +11,7 @@
 
 using System.Xml;
 
-namespace Krypton.Toolkit.Suite.Extended.Data.Grid.View
+namespace Krypton.Toolkit.Suite.Extended.DataGridView
 {
     /// <summary>
     /// Conditional Formatting class

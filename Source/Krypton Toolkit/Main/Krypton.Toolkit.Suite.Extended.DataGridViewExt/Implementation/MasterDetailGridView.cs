@@ -11,10 +11,10 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Suite.Extended.Data.Grid.View
+namespace Krypton.Toolkit.Suite.Extended.DataGridView
 {
     /// <summary>
-    /// DO NOT use in your application code base: This is a base class to allows passthrough to the master KryptonDataGridView
+    /// DO NOT use in your application code base: This is a base class to allows pass-through to the master KryptonDataGridView
     /// </summary>
     /// <remarks>
     /// Abstract implementation class to allow access to the Control Constraint here only.

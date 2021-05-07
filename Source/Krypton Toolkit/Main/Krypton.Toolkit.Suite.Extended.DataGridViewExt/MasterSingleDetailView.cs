@@ -12,7 +12,7 @@ using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Suite.Extended.Data.Grid.View
+namespace Krypton.Toolkit.Suite.Extended.DataGridView
 {
     /// <summary>
     /// This is a MasterDetail DataGridView that allows a single detail block to be displayed under each master row

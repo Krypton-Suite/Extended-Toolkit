@@ -8,7 +8,7 @@
 
 using System.Windows.Forms.Design;
 
-namespace Krypton.Toolkit.Suite.Extended.Data.Grid.View
+namespace Krypton.Toolkit.Suite.Extended.DataGridView
 {
     internal class MasterSingleDetailViewDesigner : ControlDesigner
     {
