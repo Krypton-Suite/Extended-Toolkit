@@ -48,7 +48,7 @@ namespace DataGridViewExt
             this.buttonClearCellColors = new Krypton.Toolkit.KryptonButton();
             this.buttonRandomCellColors = new Krypton.Toolkit.KryptonButton();
             this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
-            this.masterSingleDetailView1 = new Krypton.Toolkit.Suite.Extended.DataGridViewExt.MasterSingleDetailView();
+            this.masterSingleDetailView1 = new Krypton.Toolkit.Suite.Extended.DataGridView.MasterSingleDetailView();
             this.colDateTime = new Krypton.Toolkit.KryptonDataGridViewDateTimePickerColumn();
             this.colComboBox = new Krypton.Toolkit.KryptonDataGridViewComboBoxColumn();
             this.colTextBox = new Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
@@ -278,6 +278,7 @@ namespace DataGridViewExt
             this.masterSingleDetailView1.KryptonContextMenu = this.kryptonContextMenu1;
             this.masterSingleDetailView1.Location = new System.Drawing.Point(12, 20);
             this.masterSingleDetailView1.Name = "masterSingleDetailView1";
+            this.masterSingleDetailView1.DetailRowExpandedMaxHeight = 200;
             this.masterSingleDetailView1.RowHeadersWidth = 51;
             this.masterSingleDetailView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.masterSingleDetailView1.Size = new System.Drawing.Size(1058, 272);
@@ -621,7 +622,7 @@ namespace DataGridViewExt
 
         #endregion
 
-        private Krypton.Toolkit.Suite.Extended.DataGridViewExt.MasterSingleDetailView masterSingleDetailView1;
+        private Krypton.Toolkit.Suite.Extended.DataGridView.MasterSingleDetailView masterSingleDetailView1;
         private System.Windows.Forms.GroupBox groupBoxPalette;
         private System.Windows.Forms.RadioButton rbSystem;
         private System.Windows.Forms.RadioButton rbOffice2003;

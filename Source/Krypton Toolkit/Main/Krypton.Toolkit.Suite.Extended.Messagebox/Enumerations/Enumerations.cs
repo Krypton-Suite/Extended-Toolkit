@@ -55,19 +55,22 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
     /// <summary>Specifies a custom button layout.</summary>
     public enum ExtendedMessageBoxCustomButtonOptions
     {
+        /// <summary>Do not use custom buttons, instead default to an 'OK' only button.</summary>
+        NONE = 0,
         /// <summary>Use a one button layout.</summary>
-        ONEBUTTON = 0,
+        ONEBUTTON = 1,
         /// <summary>Use a two button layout.</summary>
-        TWOBUTTONS = 1,
+        TWOBUTTONS = 2,
         /// <summary>Use a three button layout.</summary>
         THREEBUTTONS = 3
     }
 
     public enum ExtendedMessageBoxTimeoutAction
     {
-        NOACTION = 0,
-        DEFAULT = 1,
-        CLOSE = 2
+        BUTTONONE = 0,
+        BUTTONTWO = 1,
+        BUTTONTHREE = 2,
+        CLOSE = 3
     }
 
     public enum ExtendedMessageBoxTimeoutButton

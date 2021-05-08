@@ -35,6 +35,7 @@
 - Demonstrates the use of FullRowSelect, and clicking on any cell, expands / collapses the details
 - Demonstrates the usage of an ExtColumn type (Rating)
 - Shows how to hide columns 
+- Demonstrates the Detail DataGridView MaxHeight; (Min is 100)
 - How to implement the re-sortable single list
   - Mandy has 1 Item
   - Mark has 4

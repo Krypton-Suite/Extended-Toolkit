@@ -16,7 +16,7 @@ using System.Globalization;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt.ExtColumns
+namespace Krypton.Toolkit.Suite.Extended.DataGridView
 {
     /// <summary>
     /// Hosts a collection of KryptonDataGridViewTextAndImageCell cells.

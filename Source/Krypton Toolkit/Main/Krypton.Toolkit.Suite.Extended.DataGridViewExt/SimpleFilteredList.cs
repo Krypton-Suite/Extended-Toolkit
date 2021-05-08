@@ -4,8 +4,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Reflection;
 using System.Text.RegularExpressions;
+// ReSharper disable UnusedType.Global
 
-namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt
+namespace Krypton.Toolkit.Suite.Extended.DataGridView
 {
     /// <summary>
     /// Stolen from here https://docs.microsoft.com/en-gb/archive/blogs/winformsue/filtering-code
@@ -20,7 +21,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt
         {
             get { return sourceItems ??= new List<T>(Items); }
         }
-        // TODO: Have to deal with updates to the intial source list !
+        // TODO: Have to deal with updates to the initial source list !
         #endregion sourceItems
 
         #region Searching
@@ -34,8 +35,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt
             return FindCore(0, prop, key);
         }
 
-        /// <inheritdoc />
-        protected int FindCore(int startIndex, PropertyDescriptor prop, object key)
+        private int FindCore(int startIndex, PropertyDescriptor prop, object key)
         {
             // Get the property info for the specified property.
             PropertyInfo propInfo = typeof(T).GetProperty(prop.Name);
@@ -56,7 +56,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt
             return -1;
         }
 
-        public int Find(int startIndex, string property, object key)
+        private int Find(int startIndex, string property, object key)
         {
             // Check the properties for a property with the specified name.
             PropertyDescriptorCollection properties = TypeDescriptor.GetProperties(typeof(T));
@@ -84,11 +84,11 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt
 
         #region Sorting
 
-        ArrayList sortedList;
-        ArrayList unsortedItems;
-        bool isSortedValue;
-        ListSortDirection sortDirectionValue;
-        PropertyDescriptor sortPropertyValue;
+        private ArrayList sortedList;
+        private ArrayList unsortedItems;
+        private bool isSortedValue;
+        private ListSortDirection sortDirectionValue;
+        private PropertyDescriptor sortPropertyValue;
 
         /// <inheritdoc />
         protected override bool SupportsSortingCore => true;
@@ -137,7 +137,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt
                 unsortedItems = new ArrayList(Count);
 
                 // Loop through each item, adding it the the sortedItems ArrayList.
-                foreach (Object item in SourceItems)
+                foreach (object item in SourceItems)
                 {
                     sortedList.Add(prop.GetValue(item));
                     unsortedItems.Add(item);
@@ -217,11 +217,13 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt
             }
         }
 
+        /// <inheritdoc />
         public void RemoveSort()
         {
             RemoveSortCore();
         }
 
+        /// <inheritdoc />
         public override void EndNew(int itemIndex)
         {
             // Check to see if the item is added to the end of the list,
@@ -238,10 +240,13 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt
 
         #region AdvancedSorting
 
+        /// <inheritdoc />
         public bool SupportsAdvancedSorting => false;
 
+        /// <inheritdoc />
         public ListSortDescriptionCollection SortDescriptions => null;
 
+        /// <inheritdoc />
         public void ApplySort(ListSortDescriptionCollection sorts)
         {
             throw new NotImplementedException();
@@ -251,30 +256,26 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt
 
         #region Filtering
 
-        private string filterValue = string.Empty;
+        private List<T> UnfilteredList { get; } = new();
 
-        /// <summary>
-        /// Should be in the format columnName ='desiredValue'
-        /// </summary>
-        private string filterPropertyNameValue;
-
-        private Object filterCompareValue;
-
-        List<T> unfilteredListValue = new List<T>();
-
-        public List<T> UnfilteredList => unfilteredListValue;
-
+        /// <inheritdoc />
         public bool SupportsFiltering => true;
 
+        /// <inheritdoc />
         public void RemoveFilter()
         {
             if (Filter != null) Filter = null;
         }
 
-        public string FilterPropertyName => filterPropertyNameValue;
+        /// <summary>
+        /// Should be in the format columnName ='desiredValue'
+        /// </summary>
+        private string FilterPropertyName { get; set; }
 
-        public Object FilterCompare => filterCompareValue;
+        private object FilterCompare { get; set; }
 
+        private string filterValue = string.Empty;
+        /// <inheritdoc />
         public string Filter
         {
             get => filterValue;
@@ -287,7 +288,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt
                     if (value == null)
                     {
                         ClearItems();
-                        foreach (T t in unfilteredListValue)
+                        foreach (T t in UnfilteredList)
                         {
                             Items.Add(t);
                         }
@@ -308,8 +309,8 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt
                              && value != string.Empty)
                     {
                         // If the filter is not set.
-                        unfilteredListValue.Clear();
-                        unfilteredListValue.AddRange(Items);
+                        UnfilteredList.Clear();
+                        UnfilteredList.AddRange(Items);
                         filterValue = value;
                         GetFilterParts();
                         ApplyFilter();
@@ -332,25 +333,25 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt
             }
         }
 
-        void FilteredListView_ListChanged(object sender, ListChangedEventArgs e)
+        private void FilteredListView_ListChanged(object sender, ListChangedEventArgs e)
         {
             // Add the new item
             if (e.ListChangedType == ListChangedType.ItemAdded)
             {
-                unfilteredListValue.Add(this[e.NewIndex]);
+                UnfilteredList.Add(this[e.NewIndex]);
             }
             // Remove the new item
 
             if (e.ListChangedType == ListChangedType.ItemDeleted)
             {
-                unfilteredListValue.RemoveAt(e.NewIndex);
+                UnfilteredList.RemoveAt(e.NewIndex);
             }
         }
 
         private void ApplyFilter()
         {
-            unfilteredListValue.Clear();
-            unfilteredListValue.AddRange(SourceItems);
+            UnfilteredList.Clear();
+            UnfilteredList.AddRange(SourceItems);
 
             List<T> results = new List<T>();
 
@@ -381,21 +382,21 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt
 
         }
 
-        public void GetFilterParts()
+        private void GetFilterParts()
         {
             string[] filterParts = Filter.Split(new char[] { '=' }, StringSplitOptions.RemoveEmptyEntries);
-            filterPropertyNameValue = filterParts[0].Replace("[", string.Empty)
+            FilterPropertyName = filterParts[0].Replace("[", string.Empty)
                                         .Replace("]", string.Empty)
                                         .Trim();
 
-            PropertyDescriptor propDesc = TypeDescriptor.GetProperties(typeof(T))[filterPropertyNameValue.ToString()];
+            PropertyDescriptor propDesc = TypeDescriptor.GetProperties(typeof(T))[FilterPropertyName.ToString()];
 
             if (propDesc != null)
             {
                 try
                 {
                     TypeConverter converter = TypeDescriptor.GetConverter(propDesc.PropertyType);
-                    filterCompareValue = converter.ConvertFromString(filterParts[1].Replace("'", string.Empty).Trim());
+                    FilterCompare = converter.ConvertFromString(filterParts[1].Replace("'", string.Empty).Trim());
                 }
                 catch (NotSupportedException)
                 {

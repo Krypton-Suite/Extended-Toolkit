@@ -117,4 +117,50 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="kryptonSplitButton2.Values.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wwAADsMBx2+oZAAAAYRJREFUOE+NkztPwlAUx8/gakIYWFwYHB1w8FUQCEpI1KiTYpSHQVQisviYjZsJ
+        k4OJMT6ILhgTFheDiongc4AP4HdgcO/xnPZWaG81/JN/Qu49v1972wJ2iUQiQWqFiqL82yO2/w4Nuann
+        DA3MrqMrWcDaSRB30uOGiPfcYrwVWuQr1HnIPxXFnsQxQvYDYeMd1Scf1Yt3hwGMz4UNEc9WBK4JsHfx
+        AJ0r1wibBAoYMizwolpR9D6OYOPCh5f7AU0kcF0AuU8JhsybCVYfhvXeD9kIbGBYEwILrJYHZYEzVZRg
+        WH21hRtniixwJQoSDGkSWGBu7cgrCUr57THpgTEIqReE5RpCkpqoIsSr2Dezy4KSwDVBko1fxVHpzFa4
+        e+FGuzozAtdDC/VMLCyduR2G2DMqk3GG6wJrhRY91GZ+K/QL83nbYXHrTZ4VmDmGZC8bwu9bISC4a6mM
+        /dO5/2EjhoQ/28apgs7oFfon5juDjdCgg2r9NzrEduchiN+O+WmbAvADQWOC4qBCLEQAAAAASUVORK5C
+        YII=
+</value>
+  </data>
+  <data name="kryptonUACButtonVersion21.Values.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wwAADsMBx2+oZAAAAvpJREFUWEfVl0toE1EUhu+iGxcB6aKbLty6yMJNfSSxCU2TKIiBYGtFa8dHa5P6
+        KNgIBRfZKoHgQhtErQ9QiqKCC22rjRiDT0iyL2Tpsovuc3rOnTPJzCSZ3NR00R9+EiZzz/fPvWfuZMSu
+        kt/v3xuJRFLoIhpspmMpOodP767C4fAsAjaCx6OwfywFvZeWoFwuS5ee+2Hh9hDEomEKsoHWeNj/ia9Y
+        Q3gFPyW4Z+YbiKu/pQ1Vv/qkNz/5ZBA6l8doyjOCJwdMpml+h5bF3CPzsGd6BcQ1HSw984vxRgCv7pwX
+        /r33QXpOD8KmWlSzxmBsXXiwNsAT1cA9Og/9Ew/xivM62AYXCXOAOrya8+he88DmRw8s3xuE9M0hiI8P
+        mwMBY+uSB2f/6r7xB8R1dgt4QwAbvLp2RPcX8mHdn8mH2gRQhIu4KUAHcOcAHcBF/CfjKYA63DlAB3Ax
+        bQugCK+uHmwTQBFuCdAB3DlAB3BxxRxAHe4YgHY3VbiY+sF4DqAILz3xKARQgFsCKMJlgMcOAfq0Z8pw
+        MWkOoAavrgxA4YG3eQDcu3PZbJZL7pyIQSzG1oWpMolEgk/bORGDWIytKxQKHaCpWV8abLm327vdkLhY
+        AHGBrZG/g5hgnyfj82Q8D64zb+T0E4uxVuGPxfRcUHlvN6QCJ7ujtyhAkXGNwh81SkiP03ZwajhDKnDX
+        mH71xGBcc1GDJCeH28Kpyw21g4tzeRg4MdW8+ewyeuHt3YAj3BrAGb4vlnZee7swKf3/g9LToy3hlgAO
+        8N7RFxJONbm8mnDAYuxkGNZfYTM2gdPGYqgV3HX6NQSPRQm+yGU7E62ZDPESQ9jglgDO8Pbr3kr0j9YI
+        UVjAO8MEtwawwvtGHtXgXXlPoCmUjXkHN6lmAUxwo+FoDA/vjrCgbMzk5SBsfsCZwAeLIYL3nF2Vt9q2
+        Gk5VWDyAxSu0JMsZH+MB+k/dN6a8onyrbVf8tpSRs5FMStN3OtaV9VYVzQaaXkjJjW86u0NCbAEpeZM4
+        dtbsfAAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="kryptonUACButtonVersion11.Values.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wwAADsMBx2+oZAAAAYRJREFUOE+NkztPwlAUx8/gakIYWFwYHB1w8FUQCEpI1KiTYpSHQVQisviYjZsJ
+        k4OJMT6ILhgTFheDiongc4AP4HdgcO/xnPZWaG81/JN/Qu49v1972wJ2iUQiQWqFiqL82yO2/w4Nuann
+        DA3MrqMrWcDaSRB30uOGiPfcYrwVWuQr1HnIPxXFnsQxQvYDYeMd1Scf1Yt3hwGMz4UNEc9WBK4JsHfx
+        AJ0r1wibBAoYMizwolpR9D6OYOPCh5f7AU0kcF0AuU8JhsybCVYfhvXeD9kIbGBYEwILrJYHZYEzVZRg
+        WH21hRtniixwJQoSDGkSWGBu7cgrCUr57THpgTEIqReE5RpCkpqoIsSr2Dezy4KSwDVBko1fxVHpzFa4
+        e+FGuzozAtdDC/VMLCyduR2G2DMqk3GG6wJrhRY91GZ+K/QL83nbYXHrTZ4VmDmGZC8bwu9bISC4a6mM
+        /dO5/2EjhoQ/28apgs7oFfon5juDjdCgg2r9NzrEduchiN+O+WmbAvADQWOC4qBCLEQAAAAASUVORK5C
+        YII=
+</value>
+  </data>
 </root>

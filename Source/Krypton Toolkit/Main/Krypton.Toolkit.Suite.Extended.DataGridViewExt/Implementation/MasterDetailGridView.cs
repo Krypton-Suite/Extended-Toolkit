@@ -11,10 +11,10 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt.Implementation
+namespace Krypton.Toolkit.Suite.Extended.DataGridView
 {
     /// <summary>
-    /// DO NOT use in your application code base: This is a base class to allows passthrough to the master KryptonDataGridView
+    /// DO NOT use in your application code base: This is a base class to allows pass-through to the master KryptonDataGridView
     /// </summary>
     /// <remarks>
     /// Abstract implementation class to allow access to the Control Constraint here only.
@@ -26,7 +26,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt.Implementation
 
         private protected override void MasterDetailGridView_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
-            var grid = (DataGridView)sender;
+            var grid = (System.Windows.Forms.DataGridView)sender;
             bool found = true;
             if (!RowCurrent.TryGetValue(e.RowIndex, out var refValues))
             {

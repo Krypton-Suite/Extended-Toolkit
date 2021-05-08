@@ -11,10 +11,8 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
-using Krypton.Toolkit.Suite.Extended.DataGridViewExt.Designers;
-using Krypton.Toolkit.Suite.Extended.DataGridViewExt.Implementation;
 
-namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt
+namespace Krypton.Toolkit.Suite.Extended.DataGridView
 {
     /// <summary>
     /// This is a MasterDetail DataGridView that allows a single detail block to be displayed under each master row

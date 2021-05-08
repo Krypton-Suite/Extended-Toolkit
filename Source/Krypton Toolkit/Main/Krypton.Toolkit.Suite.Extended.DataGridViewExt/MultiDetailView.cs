@@ -9,9 +9,8 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
-using Krypton.Toolkit.Suite.Extended.DataGridViewExt.Implementation;
 
-namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt
+namespace Krypton.Toolkit.Suite.Extended.DataGridView
 {
     /// <summary>
     /// TODO: use Krypton.Navigator
