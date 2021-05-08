@@ -106,8 +106,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Exten
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Tool.Box", "Main\Krypton.Toolkit.Suite.Extended.Tool.Box\Krypton.Toolkit.Suite.Extended.Tool.Box.csproj", "{572B0D12-A04B-4EB9-B5FB-87F66FF91078}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Developer.Utilities", "Main\Krypton.Toolkit.Suite.Extended.Developer.Utilities\Krypton.Toolkit.Suite.Extended.Developer.Utilities.csproj", "{02E3E01C-A4F8-46CD-B157-17E5540C5BFF}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Buttons", "Main\Krypton.Toolkit.Suite.Extended.Buttons\Krypton.Toolkit.Suite.Extended.Buttons.csproj", "{FDD335B3-3293-4E93-B81F-54F84DC6276A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Property.Grid", "Main\Krypton.Toolkit.Suite.Extended.Property.Grid\Krypton.Toolkit.Suite.Extended.Property.Grid.csproj", "{1F967ACE-79F7-4C71-9032-3E5705D13C9F}"
@@ -120,15 +118,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Windows.API.Code.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataGridViewExt", "Examples\DataGridView\DataGridViewExt.csproj", "{755941EF-B990-4475-9C13-C20837FF037D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.DataGridViewExt", "Main\Krypton.Toolkit.Suite.Extended.DataGridViewExt\Krypton.Toolkit.Suite.Extended.DataGridViewExt.csproj", "{82490B7F-D0E2-42D0-803F-3DCD773CB8D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.DataGridView", "Main\Krypton.Toolkit.Suite.Extended.DataGridViewExt\Krypton.Toolkit.Suite.Extended.DataGridView.csproj", "{82490B7F-D0E2-42D0-803F-3DCD773CB8D6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Buttons", "Examples\Buttons\Buttons.csproj", "{4DF9BA8E-1AD4-49DF-BAD8-0EB1C7FC02D6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessageBox", "Examples\MessageBox\MessageBox.csproj", "{45DCBB10-3B3F-47FB-8C96-D10F1FE5C60A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Tree.Grid.View", "Main\Krypton.Toolkit.Suite.Extended.Tree.Grid.View\Krypton.Toolkit.Suite.Extended.Tree.Grid.View.csproj", "{239FD995-7B65-4EC8-AB87-D85810400E34}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.TreeGridView", "Main\Krypton.Toolkit.Suite.Extended.Tree.Grid.View\Krypton.Toolkit.Suite.Extended.TreeGridView.csproj", "{239FD995-7B65-4EC8-AB87-D85810400E34}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.ComboBoxExt", "Main\Krypton.Toolkit.Suite.Extended.ComboBoxExt\Krypton.Toolkit.Suite.Extended.ComboBoxExt.csproj", "{B72B4C28-D185-49FC-B51E-6D1CA2A8434B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.ComboBox", "Main\Krypton.Toolkit.Suite.Extended.ComboBoxExt\Krypton.Toolkit.Suite.Extended.ComboBox.csproj", "{B72B4C28-D185-49FC-B51E-6D1CA2A8434B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Z_Examples", "Z_Examples", "{25D5F0A6-A601-424B-9431-8EFE139A58A7}"
 EndProject
@@ -236,7 +234,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton.Toolkit.Suite.Extended.Dock.Extender", "Main\Krypton.Toolkit.Suite.Extended.Dock.Extender\Krypton.Toolkit.Suite.Extended.Dock.Extender.csproj", "{AA0C40E7-7D6B-480D-BD91-3D1F8B2A66A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Dock.Extender", "Main\Krypton.Toolkit.Suite.Extended.Dock.Extender\Krypton.Toolkit.Suite.Extended.Dock.Extender.csproj", "{AA0C40E7-7D6B-480D-BD91-3D1F8B2A66A6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Developer.Utilities", "Shared\Krypton.Toolkit.Suite.Extended.Developer.Utilities\Krypton.Toolkit.Suite.Extended.Developer.Utilities.csproj", "{D47E4D42-7ABB-4795-94BA-9FC99D08D686}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -396,10 +396,6 @@ Global
 		{572B0D12-A04B-4EB9-B5FB-87F66FF91078}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{572B0D12-A04B-4EB9-B5FB-87F66FF91078}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{572B0D12-A04B-4EB9-B5FB-87F66FF91078}.Release|Any CPU.Build.0 = Release|Any CPU
-		{02E3E01C-A4F8-46CD-B157-17E5540C5BFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{02E3E01C-A4F8-46CD-B157-17E5540C5BFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{02E3E01C-A4F8-46CD-B157-17E5540C5BFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{02E3E01C-A4F8-46CD-B157-17E5540C5BFF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FDD335B3-3293-4E93-B81F-54F84DC6276A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FDD335B3-3293-4E93-B81F-54F84DC6276A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FDD335B3-3293-4E93-B81F-54F84DC6276A}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -484,6 +480,10 @@ Global
 		{AA0C40E7-7D6B-480D-BD91-3D1F8B2A66A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AA0C40E7-7D6B-480D-BD91-3D1F8B2A66A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AA0C40E7-7D6B-480D-BD91-3D1F8B2A66A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D47E4D42-7ABB-4795-94BA-9FC99D08D686}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D47E4D42-7ABB-4795-94BA-9FC99D08D686}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D47E4D42-7ABB-4795-94BA-9FC99D08D686}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D47E4D42-7ABB-4795-94BA-9FC99D08D686}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -529,7 +529,6 @@ Global
 		{4C65A943-E114-4535-9C84-1D5CE0612FE0} = {E311F8C7-1F27-48CD-86BE-CC3D798163BE}
 		{838FCD3C-9306-427D-9A99-9E68CEFA584C} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 		{572B0D12-A04B-4EB9-B5FB-87F66FF91078} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
-		{02E3E01C-A4F8-46CD-B157-17E5540C5BFF} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 		{FDD335B3-3293-4E93-B81F-54F84DC6276A} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 		{1F967ACE-79F7-4C71-9032-3E5705D13C9F} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 		{D3F14B97-D6F3-47F8-85CB-E9A7903D372D} = {E311F8C7-1F27-48CD-86BE-CC3D798163BE}
@@ -564,6 +563,7 @@ Global
 		{35956CA4-4B0A-4CCA-8ACA-89052E26A33A} = {25D5F0A6-A601-424B-9431-8EFE139A58A7}
 		{429E0980-3124-4FEA-8679-04ACFC4E0D35} = {25D5F0A6-A601-424B-9431-8EFE139A58A7}
 		{AA0C40E7-7D6B-480D-BD91-3D1F8B2A66A6} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
+		{D47E4D42-7ABB-4795-94BA-9FC99D08D686} = {726DC0AA-2B0D-4EAC-BB7A-7C49AE13A390}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A7CE7732-0982-4703-8EFD-7715D569BAB5}

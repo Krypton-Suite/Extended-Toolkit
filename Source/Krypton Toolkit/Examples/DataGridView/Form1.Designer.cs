@@ -29,8 +29,8 @@ namespace DataGridViewExt
         /// </summary>
         private void InitializeComponent()
         {
-            this.kryptonDataGridView1 = new Krypton.Toolkit.Suite.Extended.DataGridViewExt.MasterSingleDetailView();
-            this.kryptonDataGridView2 = new Krypton.Toolkit.Suite.Extended.DataGridViewExt.MasterMultiDetailView();
+            this.kryptonDataGridView1 = new Krypton.Toolkit.Suite.Extended.DataGridView.MasterSingleDetailView();
+            this.kryptonDataGridView2 = new Krypton.Toolkit.Suite.Extended.DataGridView.MasterMultiDetailView();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.buttonSpecAny1 = new Krypton.Toolkit.ButtonSpecAny();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonDataGridView1)).BeginInit();
@@ -108,8 +108,8 @@ namespace DataGridViewExt
 
         #endregion
 
-        private Krypton.Toolkit.Suite.Extended.DataGridViewExt.MasterSingleDetailView kryptonDataGridView1;
-        private Krypton.Toolkit.Suite.Extended.DataGridViewExt.MasterMultiDetailView kryptonDataGridView2;
+        private Krypton.Toolkit.Suite.Extended.DataGridView.MasterSingleDetailView kryptonDataGridView1;
+        private Krypton.Toolkit.Suite.Extended.DataGridView.MasterMultiDetailView kryptonDataGridView2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private Krypton.Toolkit.ButtonSpecAny buttonSpecAny1;
     }

@@ -17,7 +17,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\Main\Krypton.Toolkit.Suite.Extended.DataGridViewExt\Krypton.Toolkit.Suite.Extended.DataGridViewExt.csproj" />
+        <ProjectReference Include="..\..\Main\Krypton.Toolkit.Suite.Extended.DataGridViewExt\Krypton.Toolkit.Suite.Extended.DataGridView.csproj" />
     </ItemGroup>
 
     <ItemGroup>

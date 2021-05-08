@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt.Implementation
+namespace Krypton.Toolkit.Suite.Extended.DataGridView
 {
     public interface IDetailView<T> where T : Control
     {

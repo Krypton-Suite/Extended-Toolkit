@@ -1,9 +1,10 @@
-﻿using Krypton.Toolkit.Suite.Extended.Developer.Utilities;
-using Krypton.Toolkit.Suite.Extended.Global.Utilities;
-using System;
+﻿using System;
 using System.Diagnostics;
 using System.Drawing;
 using System.Reflection;
+
+using Krypton.Toolkit.Suite.Extended.Developer.Utilities;
+using Krypton.Toolkit.Suite.Extended.Global.Utilities;
 
 namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {

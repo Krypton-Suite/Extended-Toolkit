@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Text.RegularExpressions;
 // ReSharper disable UnusedType.Global
 
-namespace Krypton.Toolkit.Suite.Extended.DataGridViewExt
+namespace Krypton.Toolkit.Suite.Extended.DataGridView
 {
     /// <summary>
     /// Stolen from here https://docs.microsoft.com/en-gb/archive/blogs/winformsue/filtering-code

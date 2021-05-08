@@ -54,9 +54,8 @@
     <ItemGroup>
       <PackageReference Include="System.Management" Version="5.0.0" />
     </ItemGroup>
-  
     <ItemGroup>
-      <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Developer.Utilities\Krypton.Toolkit.Suite.Extended.Developer.Utilities.csproj" />
+      <ProjectReference Include="..\..\Shared\Krypton.Toolkit.Suite.Extended.Developer.Utilities\Krypton.Toolkit.Suite.Extended.Developer.Utilities.csproj" />
     </ItemGroup>
   
     <ItemGroup>

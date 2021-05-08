@@ -6,11 +6,11 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Developer.Utilities.Properties;
-using Krypton.Toolkit.Suite.Extended.Messagebox;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+
+using Krypton.Toolkit.Suite.Extended.Developer.Utilities.Properties;
 
 namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
 {

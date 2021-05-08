@@ -15,14 +15,14 @@
   <PropertyGroup>
     <LangVersion>latest</LangVersion>
     <OutputType>library</OutputType>
-    <RootNamespace>Krypton.Toolkit.Suite.Extended.Tree.Grid.View</RootNamespace>
-    <AssemblyName>Krypton.Toolkit.Suite.Extended.Tree.Grid.View</AssemblyName>
+    <RootNamespace>Krypton.Toolkit.Suite.Extended.TreeGridView</RootNamespace>
+    <AssemblyName>Krypton.Toolkit.Suite.Extended.TreeGridView</AssemblyName>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
   <!--Package Data-->
   <PropertyGroup>
-    <PackageId>Krypton.Toolkit.Suite.Extended.Tree.Grid.View</PackageId>
+    <PackageId>Krypton.Toolkit.Suite.Extended.TreeGridView</PackageId>
     <Description>An extension to the Krypton standard toolkit. This package holds items to create tree grid views for your applications.</Description>
   </PropertyGroup>
 
@@ -48,8 +48,8 @@
 
   <!--Binary/Documentation Output-->
   <PropertyGroup>
-    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.Tree.Grid.View\Krypton.Toolkit.Suite.Extended.Tree.Grid.View.xml</DocumentationFile>
-    <OutputPath>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.Tree.Grid.View\</OutputPath>
+    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.TreeGridView\Krypton.Toolkit.Suite.Extended.TreeGridView.xml</DocumentationFile>
+    <OutputPath>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.TreeGridView\</OutputPath>
   </PropertyGroup>
 
 </Project>
