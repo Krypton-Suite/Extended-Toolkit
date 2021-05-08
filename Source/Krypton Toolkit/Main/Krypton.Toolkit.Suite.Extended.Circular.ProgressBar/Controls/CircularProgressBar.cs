@@ -1,4 +1,12 @@
-﻿using System;
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ */
+#endregion
+
+using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -7,13 +15,13 @@ using System.Windows.Forms;
 
 using Windows.Forms.Animation.Library;
 
-namespace Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar
+namespace Krypton.Toolkit.Suite.Extended.Circular.ProgressBar
 {
     /// <summary>The circular progress bar windows form control.</summary>
     [Description("A circular progress bar for your applications."), ToolboxItem(true),
      ToolboxBitmap(typeof(CircularProgressBar), "ToolboxBitmaps.CircularProgressBar.bmp"),
      DefaultBindingProperty("Value")]
-    public class CircularProgressBar : ProgressBar
+    public class CircularProgressBar : System.Windows.Forms.ProgressBar
     {
         #region Variables
         private readonly Animator _animator;
