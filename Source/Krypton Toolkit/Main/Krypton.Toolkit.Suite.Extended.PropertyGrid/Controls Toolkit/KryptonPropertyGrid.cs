@@ -11,10 +11,10 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Suite.Extended.Property.Grid
+namespace Krypton.Toolkit.Suite.Extended.PropertyGrid
 {
-    [ToolboxBitmap(typeof(PropertyGrid), "ToolboxBitmaps.PropertyGridVersionTwo.bmp")]
-    public class KryptonPropertyGrid : PropertyGrid
+    [ToolboxBitmap(typeof(System.Windows.Forms.PropertyGrid), "ToolboxBitmaps.PropertyGridVersionTwo.bmp")]
+    public class KryptonPropertyGrid : System.Windows.Forms.PropertyGrid
     {
         #region Variables
         private IPalette _palette;

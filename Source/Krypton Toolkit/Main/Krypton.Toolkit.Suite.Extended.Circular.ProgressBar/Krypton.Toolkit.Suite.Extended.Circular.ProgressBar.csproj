@@ -15,14 +15,14 @@
   <PropertyGroup>
     <LangVersion>latest</LangVersion>
     <OutputType>library</OutputType>
-    <RootNamespace>Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar</RootNamespace>
-    <AssemblyName>Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar</AssemblyName>
+    <RootNamespace>Krypton.Toolkit.Suite.Extended.Circular.ProgressBar</RootNamespace>
+    <AssemblyName>Krypton.Toolkit.Suite.Extended.Circular.ProgressBar</AssemblyName>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
   <!--Package Data-->
   <PropertyGroup>
-    <PackageId>Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar</PackageId>
+    <PackageId>Krypton.Toolkit.Suite.Extended.Circular.ProgressBar</PackageId>
     <Description>An extension to the Krypton standard toolkit. This package holds the circular progress bar control.</Description>
   </PropertyGroup>
 
@@ -48,8 +48,8 @@
 
   <!--Binary/Documentation Output-->
   <PropertyGroup>
-    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar\Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar.xml</DocumentationFile>
-    <OutputPath>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar\</OutputPath>
+    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.Circular.ProgressBar\Krypton.Toolkit.Suite.Extended.Circular.ProgressBar.xml</DocumentationFile>
+    <OutputPath>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.Circular.ProgressBar\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Third Party\Windows.Forms.Animation.Library\Windows.Forms.Animation.Library.csproj" />
