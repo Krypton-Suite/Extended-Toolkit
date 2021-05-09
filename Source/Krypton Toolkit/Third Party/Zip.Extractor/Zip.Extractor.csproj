@@ -12,7 +12,6 @@
       </PropertyGroup>
     </Otherwise>
   </Choose>
-  
   <PropertyGroup>
     <LangVersion>latest</LangVersion>
     <OutputType>WinExe</OutputType>
@@ -20,38 +19,36 @@
     <AssemblyName>Zip.Extractor</AssemblyName>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
-  
+
+  <!--Version Information-->
+  <PropertyGroup>
+    <AssemblyVersion>6.0.0</AssemblyVersion>
+    <FileVersion>6.0.0</FileVersion>
+  </PropertyGroup>
+
   <!--Krypton Toolkit Import-->
-    <Choose>
-      <When Condition="'$(TFMs)' == 'all'">
-        <ItemGroup>
-          <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2106" />
-        </ItemGroup>
-      </When>
-      <Otherwise>
-        <ItemGroup>
-          <PackageReference Include="Krypton.Toolkit.Canary.Lite" Version="6.0.2106" />
-        </ItemGroup>
-      </Otherwise>
-    </Choose>
+  <Choose>
+    <When Condition="'$(TFMs)' == 'all'">
+      <ItemGroup>
+        <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2106" />
+      </ItemGroup>
+    </When>
+    <Otherwise>
+      <ItemGroup>
+        <PackageReference Include="Krypton.Toolkit.Canary.Lite" Version="6.0.2106" />
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
 
   <!--Binary/Documentation Output-->
   <PropertyGroup>
     <DocumentationFile>..\..\..\..\Bin\$(configuration)\Third Party\Zip.Extractor\Zip.Extractor.xml</DocumentationFile>
     <OutputPath>..\..\..\..\Bin\$(configuration)\Third Party\Zip.Extractor\</OutputPath>
-  </PropertyGroup>
-
-  <PropertyGroup>
-    <AssemblyVersion>6.0.0</AssemblyVersion>
-    <FileVersion>6.0.0</FileVersion>
-    <Version>6.0.0</Version>
     <ApplicationIcon>Resources\ZipExtractor.ico</ApplicationIcon>
   </PropertyGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\Zip.Storer\Zip.Storer.csproj" />
   </ItemGroup>
-
   <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
@@ -59,7 +56,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
   </ItemGroup>
-
   <ItemGroup>
     <EmbeddedResource Update="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

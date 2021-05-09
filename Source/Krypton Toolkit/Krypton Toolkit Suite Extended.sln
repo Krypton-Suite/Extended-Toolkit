@@ -234,9 +234,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Exten
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Fast.Coloured.TextBox", "Main\Krypton.Toolkit.Suite.Extended.Fast.Coloured.TextBox\Krypton.Toolkit.Suite.Extended.Fast.Coloured.TextBox.csproj", "{FF6A9F4F-3E04-4F91-8CC2-1D7DFA6D92D4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zip.Extractor", "Third Party\Zip.Extractor\Zip.Extractor.csproj", "{1D9C6045-E808-4FF1-8CDF-393A0A7E2C9F}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.TaskDialogs", "Main\Krypton.Toolkit.Suite.Extended.TaskDialogs\Krypton.Toolkit.Suite.Extended.TaskDialogs.csproj", "{D1CC77DF-89E9-453B-9902-314130880C77}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zip.Extractor", "Third Party\Zip.Extractor\Zip.Extractor.csproj", "{C93DFC52-BC89-45C8-AE25-D87B72D7C17E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -480,14 +480,14 @@ Global
 		{FF6A9F4F-3E04-4F91-8CC2-1D7DFA6D92D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF6A9F4F-3E04-4F91-8CC2-1D7DFA6D92D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FF6A9F4F-3E04-4F91-8CC2-1D7DFA6D92D4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1D9C6045-E808-4FF1-8CDF-393A0A7E2C9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1D9C6045-E808-4FF1-8CDF-393A0A7E2C9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1D9C6045-E808-4FF1-8CDF-393A0A7E2C9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1D9C6045-E808-4FF1-8CDF-393A0A7E2C9F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D1CC77DF-89E9-453B-9902-314130880C77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D1CC77DF-89E9-453B-9902-314130880C77}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D1CC77DF-89E9-453B-9902-314130880C77}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D1CC77DF-89E9-453B-9902-314130880C77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C93DFC52-BC89-45C8-AE25-D87B72D7C17E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C93DFC52-BC89-45C8-AE25-D87B72D7C17E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C93DFC52-BC89-45C8-AE25-D87B72D7C17E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C93DFC52-BC89-45C8-AE25-D87B72D7C17E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -567,8 +567,8 @@ Global
 		{372946D1-BA66-4A00-BB4D-6EB42FB87602} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 		{33976DD6-6AEA-4E3B-9C73-3A98B0D324D7} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 		{FF6A9F4F-3E04-4F91-8CC2-1D7DFA6D92D4} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
-		{1D9C6045-E808-4FF1-8CDF-393A0A7E2C9F} = {E311F8C7-1F27-48CD-86BE-CC3D798163BE}
 		{D1CC77DF-89E9-453B-9902-314130880C77} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
+		{C93DFC52-BC89-45C8-AE25-D87B72D7C17E} = {E311F8C7-1F27-48CD-86BE-CC3D798163BE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A7CE7732-0982-4703-8EFD-7715D569BAB5}

@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /**
  * MIT License
  *
@@ -37,10 +37,9 @@ namespace Zip.Extractor
         [STAThread]
         static void Main()
         {
-            //Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainWindow());
+            Application.Run(new ZipFileExtractor());
         }
     }
 }
