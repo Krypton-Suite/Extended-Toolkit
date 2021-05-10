@@ -4,12 +4,12 @@ using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Messagebox
 {
-    /// <summary>Allows the creation of a <see cref="KryptonMessageBoxExtended"/> through the designer.</summary>
+    /// <summary>Allows the creation of a <see cref="InternalKryptonMessageBoxExtended"/> through the designer.</summary>
     /// <seealso cref="System.ComponentModel.Component" />
-    [ToolboxBitmap(typeof(KryptonMessageBoxManager), "ToolboxBitmaps.KryptonMessageBox.bmp"),
+    [ToolboxBitmap(typeof(KryptonMessageBoxExtendedManager), "ToolboxBitmaps.KryptonMessageBox.bmp"),
      DefaultEvent("ShowMessageBox"), DefaultProperty("MessageBoxContentText"),
      Description("Allows the creation of a KryptonMessageBoxExtended through the designer.")] //, Designer(typeof(KryptonMessageBoxConfiguratorDesigner))]
-    public class KryptonMessageBoxManager : Component
+    public class KryptonMessageBoxExtendedManager : Component
     {
         #region Variables
         private AnchorStyles _optionalCheckBoxAnchor;
@@ -58,9 +58,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         [DefaultValue(false), Description("Allows the user to use 'CTRL + C' to copy the message box content.")]
         public bool ShowCtrlCopy { get => _showCtrlCopy; set => _showCtrlCopy = value; }
 
-        /// <summary>Gets or sets a value indicating whether this <see cref="KryptonMessageBoxManager" /> is fade.</summary>
-        /// <value>
-        ///   <c>true</c> if fade; otherwise, <c>false</c>.</value>
+        /// <summary>Gets or sets a value indicating whether this <see cref="KryptonMessageBoxExtendedManager" /> is fade.</summary>
+        /// <value><c>true</c> if fade; otherwise, <c>false</c>.</value>
         [DefaultValue(false), Description("Fades the message box in and out. (Under construction)")]
         public bool Fade { get => _fade; set => _fade = value; }
 
@@ -225,8 +224,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         #endregion
 
         #region Constructor
-        /// <summary>Initializes a new instance of the <see cref="KryptonMessageBoxManager" /> class.</summary>
-        public KryptonMessageBoxManager()
+        /// <summary>Initializes a new instance of the <see cref="KryptonMessageBoxExtendedManager" /> class.</summary>
+        public KryptonMessageBoxExtendedManager()
         {
             Fade = false;
 
