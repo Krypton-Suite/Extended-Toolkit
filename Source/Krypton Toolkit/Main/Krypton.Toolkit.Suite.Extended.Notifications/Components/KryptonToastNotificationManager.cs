@@ -1,4 +1,12 @@
-﻿using System.ComponentModel;
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ */
+#endregion
+
+using System.ComponentModel;
 using System.Drawing;
 using System.IO;
 
@@ -134,13 +142,24 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         public RightToLeftSupport RightToLeft { get => _rightToLeftSupport; set => _rightToLeftSupport = value; }
         #endregion
 
+        #region Constructor
+        public KryptonToastNotificationManager()
+        {
+
+        }
+        #endregion
 
         #region Methods
         public void DisplayNotification()
         {
             if (_showTimeoutProgress)
             {
+                KryptonToastNotificationVersion2 kryptonToast = new KryptonToastNotificationVersion2(_fade, _image, _headerText, _contentText,
+                                                                                                     _dismissButtonText, _buttonLocation, _showActionButton,
+                                                                                                     _actionType, _processName, _showControlBox, _cornerRadius,
+                                                                                                     _drawBorders, _timeOutProgress);
 
+                kryptonToast.ShowDialog();
             }
             else
             {

@@ -1,4 +1,12 @@
-﻿using Krypton.Toolkit.Suite.Extended.Notifications.Properties;
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ */
+#endregion
+
+using Krypton.Toolkit.Suite.Extended.Notifications.Properties;
 using System;
 using System.Diagnostics;
 using System.Drawing;
@@ -542,7 +550,32 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// <param name="borders">The borders.</param>
         public KryptonToastNotificationVersion2(bool fade, Image image, string headerText, string contentText, string dismissButtonText, ActionButtonLocation actionButtonLocation, bool showActionButton, ActionType actionType, string processName, bool showControlBox = false, int cornerRadius = -1, PaletteDrawBorders borders = PaletteDrawBorders.All) : this(fade, image, headerText, contentText, dismissButtonText, actionButtonLocation, showActionButton, actionType, processName, showControlBox)
         {
+            CornerRadius = cornerRadius;
+
             PaletteDrawBorders = borders;
+        }
+
+        /// <summary>Initializes a new instance of the <see cref="KryptonToastNotificationVersion2" /> class.</summary>
+        /// <param name="fade">if set to <c>true</c> [fade].</param>
+        /// <param name="image">The image.</param>
+        /// <param name="headerText">The header text.</param>
+        /// <param name="contentText">The content text.</param>
+        /// <param name="dismissButtonText">The dismiss button text.</param>
+        /// <param name="actionButtonLocation">The action button location.</param>
+        /// <param name="showActionButton">if set to <c>true</c> [show action button].</param>
+        /// <param name="actionType">Type of the action.</param>
+        /// <param name="processName">Name of the process.</param>
+        /// <param name="showControlBox">if set to <c>true</c> [show control box].</param>
+        /// <param name="cornerRadius">The corner radius.</param>
+        /// <param name="borders">The borders.</param>
+        /// <param name="timeoutProgress">The timeout progress.</param>
+        public KryptonToastNotificationVersion2(bool fade, Image image, string headerText, string contentText, string dismissButtonText, ActionButtonLocation actionButtonLocation, bool showActionButton, ActionType actionType, string processName, bool showControlBox = false, int cornerRadius = -1, PaletteDrawBorders borders = PaletteDrawBorders.All, int timeoutProgress = 100) : this(fade, image, headerText, contentText, dismissButtonText, actionButtonLocation, showActionButton, actionType, processName, showControlBox)
+        {
+            CornerRadius = cornerRadius;
+
+            PaletteDrawBorders = borders;
+
+            TimeOutProgress = timeoutProgress;
         }
         #endregion
 

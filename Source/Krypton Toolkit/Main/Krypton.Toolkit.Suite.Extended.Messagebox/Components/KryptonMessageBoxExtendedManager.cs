@@ -1,4 +1,12 @@
-﻿using System.ComponentModel;
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ */
+#endregion
+
+using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -14,7 +22,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         #region Variables
         private AnchorStyles _optionalCheckBoxAnchor;
 
-        private bool _showCtrlCopy, _fade, _showOptionalCheckBox, _isOptionalCheckBoxChecked, _showCopyButton;
+        private bool _showCtrlCopy, _fade, _showOptionalCheckBox, _showToolTips, _isOptionalCheckBoxChecked, _showCopyButton, _useBlur;
 
         private CheckState _optionalCheckBoxCheckState;
 
@@ -36,7 +44,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         private Image _customMessageBoxIcon;
 
-        private int _fadeSleepTimer, _timeout;
+        private int _blurRadius, _cornerRadius, _fadeSleepTimer, _timeOut;
 
         private IWin32Window _owner;
 
@@ -45,6 +53,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         private object _helpParam;
 
         private Point _optionalCheckBoxLocation;
+
+        private KryptonForm _parentWindow;
         #endregion
 
         #region Properties
@@ -68,6 +78,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         [DefaultValue(false), Description("Shows a optional check box in the message box footer.")]
         public bool ShowOptionalCheckBox { get => _showOptionalCheckBox; set => _showOptionalCheckBox = value; }
 
+        /// <summary>Gets or sets a value indicating whether [show tool tips].</summary>
+        /// <value><c>true</c> if [show tool tips]; otherwise, <c>false</c>.</value>
+        [DefaultValue(false), Description("Allow tooltips to be shown on the controls.")]
+        public bool ShowToolTips { get => _showToolTips; set => _showToolTips = value; }
+
         /// <summary>Gets or sets a value indicating whether this instance is optional CheckBox checked.</summary>
         /// <value><c>true</c> if this instance is optional CheckBox checked; otherwise, <c>false</c>.</value>
         [DefaultValue(false), Description("Is the optional check box checked by default?")]
@@ -79,6 +94,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         [DefaultValue(false), Description("Show the copy button.")]
         public bool ShowCopyButton { get => _showCopyButton; set => _showCopyButton = value; }
         */
+
+        /// <summary>Gets or sets a value indicating whether [use blur].</summary>
+        /// <value><c>true</c> if [use blur]; otherwise, <c>false</c>.</value>
+        [DefaultValue(false), Description("Use the blur functionality on the parent window.")]
+        public bool UseBlur { get => _useBlur; set => _useBlur = value; }
 
         /// <summary>Gets or sets the custom button one result.</summary>
         /// <value>The custom button one result.</value>
@@ -140,6 +160,16 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         [DefaultValue(null), Description("Gets or sets a custom message box icon.")]
         public Image CustomMessageBoxIcon { get => _customMessageBoxIcon; set => _customMessageBoxIcon = value; }
 
+        /// <summary>Gets or sets the blur radius.</summary>
+        /// <value>The blur radius.</value>
+        [DefaultValue(0), Description("The blur radius of the parent window.")]
+        public int BlurRadius { get => _blurRadius; set => _blurRadius = value; }
+
+        /// <summary>Gets or sets the corner radius.</summary>
+        /// <value>The corner radius.</value>
+        [DefaultValue(-1), Description("The corner radius of the message box.")]
+        public int CornerRadius { get => _cornerRadius; set => _cornerRadius = value; }
+
         /// <summary>Gets or sets the speed of the fading animation in milliseconds.</summary>
         /// <value>The speed of the fading animation in milliseconds.</value>
         [DefaultValue(50), Description("Gets or sets the speed of the fading animation in milliseconds.")]
@@ -148,7 +178,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <summary>Gets or sets the time out. (This feature is under construction)</summary>
         /// <value>The time out.</value>
         [DefaultValue(60), Description("Gets or sets the time out. (This feature is under construction)")]
-        public int TimeOut { get => _timeout; set => _timeout = value; }
+        public int TimeOut { get => _timeOut; set => _timeOut = value; }
 
         /// <summary>Gets or sets the owner of the message box.</summary>
         /// <value>The owner.</value>
@@ -206,6 +236,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <value>The optional CheckBox location.</value>
         [DefaultValue(typeof(Point), "12, 0"), Description("Gets or sets the optional CheckBox location.")]
         public Point OptionalCheckBoxLocation { get => _optionalCheckBoxLocation; set => _optionalCheckBoxLocation = value; }
+
+        /// <summary>Gets or sets the parent window.</summary>
+        /// <value>The parent window.</value>
+        [DefaultValue(null), Description("The parent window of the message box.")]
+        public KryptonForm ParentWindow { get => _parentWindow; set => _parentWindow = value; }
         #endregion
 
         #region Custom Event Setup
@@ -229,6 +264,14 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         {
             Fade = false;
 
+            ShowToolTips = false;
+
+            UseBlur = false;
+
+            BlurRadius = 0;
+
+            CornerRadius = -1;
+
             FadeSleepTimer = 50;
 
             OptionalCheckBoxAnchor = AnchorStyles.Left;
@@ -242,10 +285,31 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             HelpNavigator = HelpNavigator.AssociateIndex;
 
             MessageBoxIcon = ExtendedMessageBoxIcon.NONE;
+
+            ParentWindow = null;
         }
         #endregion
 
         #region Methods
+        /// <summary>Displays the krypton message box.</summary>
+        /// <returns>The users' dialog result</returns>
+        public DialogResult DisplayKryptonMessageBox()
+        {
+            DialogResult result = InternalKryptonMessageBoxExtended.Show(_owner, _messageBoxContentText, _messageBoxCaption, _buttons,
+                                                                         _customButtonOptions, _messageBoxIcon, _defaultButton,
+                                                                         _options, _helpPath, _helpNavigator, _helpPath, _showCtrlCopy,
+                                                                         _messageBoxTypeface, _showOptionalCheckBox, _optionalCheckBoxText,
+                                                                         _isOptionalCheckBoxChecked, _optionalCheckBoxCheckState,
+                                                                         _optionalCheckBoxAnchor, _optionalCheckBoxLocation, _customMessageBoxIcon,
+                                                                         _showCopyButton, _copyButtonText, _fade, _fadeSleepTimer, 
+                                                                         _messageBoxButtonOneCustomText, _messageBoxButtonTwoCustomText,
+                                                                         _messageBoxButtonThreeCustomText, _customButtonOneResult,
+                                                                         _customButtonTwoResult, _customButtonThreeResult, _cornerRadius,
+                                                                         _showToolTips, _useBlur, _blurRadius, _parentWindow);
+
+            return result;
+        }
+
         /// <summary>Displays the message box.</summary>
         public void DisplayMessageBox()
         {
@@ -257,7 +321,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                                                     _optionalCheckBoxLocation, _customMessageBoxIcon, _showCopyButton,
                                                                     _copyButtonText, _fade, _fadeSleepTimer, _messageBoxButtonOneCustomText,
                                                                     _messageBoxButtonTwoCustomText, _messageBoxButtonThreeCustomText,
-                                                                    _customButtonOneResult, _customButtonTwoResult, _customButtonThreeResult);
+                                                                    _customButtonOneResult, _customButtonTwoResult, _customButtonThreeResult, 
+                                                                    _cornerRadius, _showToolTips, _useBlur, _blurRadius, _parentWindow);
 
             e.ShowMessageBox();
         }

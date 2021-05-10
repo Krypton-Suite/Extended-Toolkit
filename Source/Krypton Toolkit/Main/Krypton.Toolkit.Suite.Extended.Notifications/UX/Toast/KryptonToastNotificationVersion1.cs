@@ -1,4 +1,12 @@
-﻿using Krypton.Toolkit.Suite.Extended.Notifications.Properties;
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ */
+#endregion
+
+using Krypton.Toolkit.Suite.Extended.Notifications.Properties;
 using System;
 using System.Diagnostics;
 using System.Drawing;
@@ -278,6 +286,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
 
         protected virtual void OnDismiss(EventArgs e) => Dismiss?.Invoke(e);
         #endregion
+
         #endregion
 
         #region Constructors
@@ -524,6 +533,8 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// <param name="borders">The borders.</param>
         public KryptonToastNotificationVersion1(bool fade, Image image, string headerText, string contentText, string dismissButtonText, ActionButtonLocation actionButtonLocation, bool showActionButton, ActionType actionType, string processName, bool showControlBox = false, int cornerRadius = -1, PaletteDrawBorders borders = PaletteDrawBorders.All) : this(fade, image, headerText, contentText, dismissButtonText, actionButtonLocation, showActionButton, actionType, processName, showControlBox)
         {
+            CornerRadius = cornerRadius;
+
             PaletteDrawBorders = borders;
         }
         #endregion
