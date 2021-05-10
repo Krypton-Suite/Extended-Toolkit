@@ -8,10 +8,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\Main\Krypton.Toolkit.Suite.Extended.ComboBoxExt\Krypton.Toolkit.Suite.Extended.ComboBoxExt.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
       <Compile Update="Form1.cs" />
     </ItemGroup>
 

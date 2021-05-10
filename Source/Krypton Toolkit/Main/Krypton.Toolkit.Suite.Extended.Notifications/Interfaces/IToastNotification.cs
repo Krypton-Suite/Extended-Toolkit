@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Notifications
 {
-    /// <summary>Contains elements of <see cref="KryptonToastNotification"/>.</summary>
+    /// <summary>Contains elements of <see cref="KryptonToastNotificationVersion1"/>.</summary>
     public interface IToastNotification
     {
         /// <summary>Gets or sets the button location.</summary>
@@ -20,7 +20,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         public ActionType Action { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether this <see cref="KryptonToastNotification"/> is fade.
+        /// Gets or sets a value indicating whether this <see cref="KryptonToastNotificationVersion1"/> is fade.
         /// </summary>
         /// <value>
         ///   <c>true</c> if fade; otherwise, <c>false</c>.
