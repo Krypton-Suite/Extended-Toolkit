@@ -165,6 +165,16 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
             this.ResumeLayout(false);
 
         }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+
+            }
+
+            base.Dispose(disposing);
+        }
         #endregion
 
         #region Variables
