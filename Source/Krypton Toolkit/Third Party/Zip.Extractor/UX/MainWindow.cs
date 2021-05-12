@@ -30,31 +30,32 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using Krypton.Toolkit;
-
 using Zip.Extractor.Properties;
 using Zip.Storer;
 
 namespace Zip.Extractor
 {
-    public class ZipFileExtractor : KryptonForm
+    public class MainWindow : KryptonForm
     {
         #region Design Code
         private KryptonPanel kryptonPanel1;
-        private System.Windows.Forms.ProgressBar pbProgress;
+        private KryptonLabel klblInformation;
         private System.Windows.Forms.PictureBox pbxIcon;
-        private KryptonLabel ktxtInformation;
+        private System.Windows.Forms.ProgressBar pbInstallProgress;
 
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ZipFileExtractor));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
-            this.pbProgress = new System.Windows.Forms.ProgressBar();
+            this.klblInformation = new Krypton.Toolkit.KryptonLabel();
             this.pbxIcon = new System.Windows.Forms.PictureBox();
-            this.ktxtInformation = new Krypton.Toolkit.KryptonLabel();
+            this.pbInstallProgress = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxIcon)).BeginInit();
@@ -62,55 +63,54 @@ namespace Zip.Extractor
             // 
             // kryptonPanel1
             // 
-            this.kryptonPanel1.Controls.Add(this.pbProgress);
+            this.kryptonPanel1.Controls.Add(this.klblInformation);
             this.kryptonPanel1.Controls.Add(this.pbxIcon);
-            this.kryptonPanel1.Controls.Add(this.ktxtInformation);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel1.Name = "kryptonPanel1";
-            this.kryptonPanel1.Size = new System.Drawing.Size(628, 104);
+            this.kryptonPanel1.Size = new System.Drawing.Size(612, 104);
             this.kryptonPanel1.TabIndex = 0;
             // 
-            // pbProgress
+            // klblInformation
             // 
-            this.pbProgress.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pbProgress.Location = new System.Drawing.Point(0, 81);
-            this.pbProgress.Name = "pbProgress";
-            this.pbProgress.Size = new System.Drawing.Size(628, 23);
-            this.pbProgress.TabIndex = 4;
+            this.klblInformation.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
+            this.klblInformation.Location = new System.Drawing.Point(69, 28);
+            this.klblInformation.Name = "klblInformation";
+            this.klblInformation.Size = new System.Drawing.Size(83, 20);
+            this.klblInformation.TabIndex = 2;
+            this.klblInformation.Values.Text = "Extracting ...";
             // 
             // pbxIcon
             // 
             this.pbxIcon.BackColor = System.Drawing.Color.Transparent;
-            this.pbxIcon.Location = new System.Drawing.Point(13, 7);
+            this.pbxIcon.Location = new System.Drawing.Point(12, 12);
             this.pbxIcon.Name = "pbxIcon";
             this.pbxIcon.Size = new System.Drawing.Size(50, 50);
-            this.pbxIcon.TabIndex = 3;
+            this.pbxIcon.TabIndex = 1;
             this.pbxIcon.TabStop = false;
             // 
-            // ktxtInformation
+            // pbInstallProgress
             // 
-            this.ktxtInformation.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
-            this.ktxtInformation.Location = new System.Drawing.Point(69, 21);
-            this.ktxtInformation.Name = "ktxtInformation";
-            this.ktxtInformation.Size = new System.Drawing.Size(80, 20);
-            this.ktxtInformation.TabIndex = 2;
-            this.ktxtInformation.Values.Text = "Extracting...";
+            this.pbInstallProgress.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pbInstallProgress.Location = new System.Drawing.Point(0, 81);
+            this.pbInstallProgress.Name = "pbInstallProgress";
+            this.pbInstallProgress.Size = new System.Drawing.Size(612, 23);
+            this.pbInstallProgress.TabIndex = 1;
             // 
-            // ZipFileExtractor
+            // MainWindow
             // 
-            this.ClientSize = new System.Drawing.Size(628, 104);
+            this.ClientSize = new System.Drawing.Size(612, 104);
+            this.Controls.Add(this.pbInstallProgress);
             this.Controls.Add(this.kryptonPanel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "ZipFileExtractor";
-            this.ShowInTaskbar = false;
+            this.Name = "MainWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Installing Update ...";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ZipFileExtractor_FormClosing);
-            this.Shown += new System.EventHandler(this.ZipFileExtractor_Shown);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);
+            this.Shown += new System.EventHandler(this.MainWindow_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
@@ -127,7 +127,7 @@ namespace Zip.Extractor
         #endregion
 
         #region Constructor
-        public ZipFileExtractor(Icon appIcon = null, Bitmap applicationIcon = null)
+        public MainWindow(Icon appIcon = null, Bitmap applicationIcon = null)
         {
             InitializeComponent();
 
@@ -154,7 +154,7 @@ namespace Zip.Extractor
         #endregion
 
         #region Event Handlers
-        private void ZipFileExtractor_Shown(object sender, EventArgs e)
+        private void MainWindow_Shown(object sender, EventArgs e)
         {
             _logBuilder.AppendLine(DateTime.Now.ToString("F"));
             _logBuilder.AppendLine();
@@ -235,8 +235,8 @@ namespace Zip.Extractor
 
                 _worker.ProgressChanged += (o, eventArgs) =>
                 {
-                    pbProgress.Value = eventArgs.ProgressPercentage;
-                    ktxtInformation.Text = eventArgs.UserState.ToString();
+                    pbInstallProgress.Value = eventArgs.ProgressPercentage;
+                    klblInformation.Text = eventArgs.UserState.ToString();
                     //? ktxtInformation.SelectionStart = ktxtInformation.Text.Length;
                     //? ktxtInformation.SelectionLength = 0;
                 };
@@ -252,7 +252,7 @@ namespace Zip.Extractor
 
                         if (!eventArgs.Cancelled)
                         {
-                            ktxtInformation.Text = @"Finished";
+                            klblInformation.Text = @"Finished";
                             try
                             {
                                 ProcessStartInfo processStartInfo = new ProcessStartInfo(executablePath);
@@ -293,7 +293,7 @@ namespace Zip.Extractor
             }
         }
 
-        private void ZipFileExtractor_FormClosing(object sender, FormClosingEventArgs e)
+        private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
         {
             _worker?.CancelAsync();
 
