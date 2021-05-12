@@ -91,4 +91,10 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         ERROR,
         CUSTOM
     }
+
+    public enum ActionButtonType
+    {
+        NORMAL =  0,
+        UACELEVATED = 1
+    }
 }
