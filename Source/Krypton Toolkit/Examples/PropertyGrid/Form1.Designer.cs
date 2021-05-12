@@ -53,11 +53,11 @@ namespace PropertyGrid
 
         #endregion
 
-        private Krypton.Toolkit.Suite.Extended.Property.Grid.KryptonPropertyGrid kpg;
+        private Krypton.Toolkit.Suite.Extended.PropertyGrid.KryptonPropertyGrid kpg;
         private Krypton.Toolkit.Suite.Extended.Controls.CircularPictureBox circularPictureBox1;
         private Krypton.Toolkit.Suite.Extended.Controls.KryptonBorderedLabel kryptonBorderedLabel1;
         private Krypton.Toolkit.Suite.Extended.Buttons.KryptonCommandLinkButton kryptonCommandLinkButton1;
-        private Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar.CircularProgressBar circularProgressBar1;
+        private Krypton.Toolkit.Suite.Extended.Circular.ProgressBar.CircularProgressBar circularProgressBar1;
         private Krypton.Toolkit.KryptonPanel kryptonPanel1;
     }
 }
