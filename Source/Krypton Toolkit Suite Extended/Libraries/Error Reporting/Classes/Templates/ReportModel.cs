@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Globalization;
 
+#pragma warning disable 1591
+
 namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
 {
     /// <summary>

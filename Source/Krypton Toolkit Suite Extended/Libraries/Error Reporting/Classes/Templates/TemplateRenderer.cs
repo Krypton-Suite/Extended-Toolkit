@@ -1,6 +1,9 @@
-﻿using System.IO;
+﻿using HandlebarsDotNet;
+using System.IO;
 using System.Reflection;
 using System.Text;
+
+#pragma warning disable 1591
 
 namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
 {

@@ -82,12 +82,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Exten
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build Tools", "Build Tools", "{58D37E1D-0CBA-4ECB-8D89-4F63C62B42F5}"
 	ProjectSection(SolutionItems) = preProject
-		..\..\build-complete.cmd = ..\..\build-complete.cmd
-		..\..\build.cmd = ..\..\build.cmd
-		..\..\build.proj = ..\..\build.proj
-		..\..\pack.cmd = ..\..\pack.cmd
-		..\..\publish.cmd = ..\..\publish.cmd
-		..\..\purge.cmd = ..\..\purge.cmd
+		..\..\Scripts\Build Files\build-complete.cmd = ..\..\Scripts\Build Files\build-complete.cmd
+		..\..\Scripts\Build Files\build.cmd = ..\..\Scripts\Build Files\build.cmd
+		Build.cmd = Build.cmd
+		..\..\Scripts\Build Files\build.proj = ..\..\Scripts\Build Files\build.proj
+		..\..\Scripts\Build Files\Build.ps1 = ..\..\Scripts\Build Files\Build.ps1
+		..\..\Scripts\Build Files\Directory.Build.props = ..\..\Scripts\Build Files\Directory.Build.props
+		Directory.Build.props = Directory.Build.props
+		..\..\Scripts\Build Files\pack.cmd = ..\..\Scripts\Build Files\pack.cmd
+		..\..\Scripts\Build Files\publish.cmd = ..\..\Scripts\Build Files\publish.cmd
+		..\..\Scripts\Build Files\purge.cmd = ..\..\Scripts\Build Files\purge.cmd
 		..\..\upload-to-nuget.cmd = ..\..\upload-to-nuget.cmd
 	EndProjectSection
 EndProject
@@ -99,8 +103,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Exten
 	ProjectSection(ProjectDependencies) = postProject
 		{5E8758D3-BE51-474E-9CED-4E55EE1297DF} = {5E8758D3-BE51-474E-9CED-4E55EE1297DF}
 	EndProjectSection
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Object.ListView", "Libraries\Object ListView\Krypton.Toolkit.Suite.Extended.Object.ListView.csproj", "{8ED47FF7-8B20-4CFF-A6B1-6D8421932F50}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Rounded.Controls", "Libraries\Rounded Controls\Krypton.Toolkit.Suite.Extended.Rounded.Controls.csproj", "{47B82158-2402-4472-9FFE-29D81504602B}"
 EndProject
@@ -148,6 +150,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.List.View", "Libraries\List View\Krypton.Toolkit.Suite.Extended.List.View.csproj", "{E31BBA93-2EB1-4536-960E-FBC43303A80E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Drawing.Suite", "Libraries\Drawing Suite\Krypton.Toolkit.Suite.Extended.Drawing.Suite.csproj", "{A09DDD9B-E4E2-4E83-BF2B-C2E29D8899D9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Simple.MAPI.NET", "Third Party\Simple.MAPI.NET\Simple.MAPI.NET.csproj", "{80BCFEDD-D4B2-46D6-A44E-C39D5DF02CAD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -267,10 +271,6 @@ Global
 		{A1512DD6-7B4B-43E5-9C87-E85D83E82030}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A1512DD6-7B4B-43E5-9C87-E85D83E82030}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A1512DD6-7B4B-43E5-9C87-E85D83E82030}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8ED47FF7-8B20-4CFF-A6B1-6D8421932F50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8ED47FF7-8B20-4CFF-A6B1-6D8421932F50}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8ED47FF7-8B20-4CFF-A6B1-6D8421932F50}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8ED47FF7-8B20-4CFF-A6B1-6D8421932F50}.Release|Any CPU.Build.0 = Release|Any CPU
 		{47B82158-2402-4472-9FFE-29D81504602B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{47B82158-2402-4472-9FFE-29D81504602B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{47B82158-2402-4472-9FFE-29D81504602B}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -323,6 +323,10 @@ Global
 		{A09DDD9B-E4E2-4E83-BF2B-C2E29D8899D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A09DDD9B-E4E2-4E83-BF2B-C2E29D8899D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A09DDD9B-E4E2-4E83-BF2B-C2E29D8899D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80BCFEDD-D4B2-46D6-A44E-C39D5DF02CAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80BCFEDD-D4B2-46D6-A44E-C39D5DF02CAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80BCFEDD-D4B2-46D6-A44E-C39D5DF02CAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80BCFEDD-D4B2-46D6-A44E-C39D5DF02CAD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -357,7 +361,6 @@ Global
 		{344A1AFD-6F59-4B7A-ADAD-C1C76A873D9B} = {1F1DCECC-C25F-4E91-9C8A-ECCBB9827BBA}
 		{7AFE829E-3C03-4DC8-B76F-4B8E6D97A525} = {1F1DCECC-C25F-4E91-9C8A-ECCBB9827BBA}
 		{A1512DD6-7B4B-43E5-9C87-E85D83E82030} = {1F1DCECC-C25F-4E91-9C8A-ECCBB9827BBA}
-		{8ED47FF7-8B20-4CFF-A6B1-6D8421932F50} = {1F1DCECC-C25F-4E91-9C8A-ECCBB9827BBA}
 		{47B82158-2402-4472-9FFE-29D81504602B} = {1F1DCECC-C25F-4E91-9C8A-ECCBB9827BBA}
 		{353629A2-A05E-4D18-8071-5CDF0C2914FC} = {35C5D580-4B81-4E33-AB75-BD5D316A2ABC}
 		{D548C9DB-138F-4480-86A3-884F7258CC4F} = {353629A2-A05E-4D18-8071-5CDF0C2914FC}
@@ -374,6 +377,7 @@ Global
 		{395C2FFD-71E3-4D94-A453-4669789DE982} = {1F1DCECC-C25F-4E91-9C8A-ECCBB9827BBA}
 		{E31BBA93-2EB1-4536-960E-FBC43303A80E} = {1F1DCECC-C25F-4E91-9C8A-ECCBB9827BBA}
 		{A09DDD9B-E4E2-4E83-BF2B-C2E29D8899D9} = {1F1DCECC-C25F-4E91-9C8A-ECCBB9827BBA}
+		{80BCFEDD-D4B2-46D6-A44E-C39D5DF02CAD} = {0E036EC5-549F-405A-82FA-87A03CE379E1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9A189168-3746-4F9F-8C61-863D83D8ABD2}

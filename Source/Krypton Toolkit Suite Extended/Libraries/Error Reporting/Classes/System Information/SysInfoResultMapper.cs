@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Text;
-using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
 {
@@ -53,20 +52,20 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
         /// <summary>
         /// Add a tree node to an existing parentNode, by passing the SysInfoResult
         /// </summary>
-        public static void AddTreeViewNode(TreeNode parentNode, SysInfoResult result)
+        public static void AddTreeViewNode(KryptonTreeNode parentNode, SysInfoResult result)
         {
-            var nodeRoot = new TreeNode(result.Name);
+            var nodeRoot = new KryptonTreeNode(result.Name);
 
             foreach (var nodeValueParent in result.Nodes)
             {
-                var nodeLeaf = new TreeNode(nodeValueParent);
+                var nodeLeaf = new KryptonTreeNode(nodeValueParent);
                 nodeRoot.Nodes.Add(nodeLeaf);
 
                 foreach (var childResult in result.ChildResults)
                 {
                     foreach (var nodeValue in childResult.Nodes)
                     {
-                        nodeLeaf.Nodes.Add(new TreeNode(nodeValue));
+                        nodeLeaf.Nodes.Add(new KryptonTreeNode(nodeValue));
                     }
                 }
             }

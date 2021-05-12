@@ -18,12 +18,13 @@
   <!--Canary package configuration-->
   <PropertyGroup>
     <PackageId>Krypton.Toolkit.Suite.Extended.Persistence.Canary</PackageId>
-    <TargetFrameworks>net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows;net6.0-windows</TargetFrameworks>
+      <TargetFrameworks>net45;netcoreapp3.1;net5.0-windows;net6.0-windows</TargetFrameworks>
+      <TargetFrameworks Condition="'$(TFMs)' == 'all'">net35;net40;net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows;net6.0-windows</TargetFrameworks>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Canary</PackageOutputPath>
     <PackageIcon>Canary.png</PackageIcon>
-    <AssemblyVersion>6.0.2105</AssemblyVersion>
-    <FileVersion>6.0.2105</FileVersion>
-    <Version>6.0.2105</Version>
+    <AssemblyVersion>6.0.2106</AssemblyVersion>
+    <FileVersion>6.0.2106</FileVersion>
+    <Version>6.0.2106</Version>
   </PropertyGroup>
 
   <!--Nightly package configuration-
@@ -37,24 +38,27 @@
   <!--Stable package configuration-
   <PropertyGroup>
     <PackageId>Krypton.Toolkit.Suite.Extended.Persistence</PackageId>
-    <TargetFrameworks>net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows</TargetFrameworks>
+      <TargetFrameworks>net45;netcoreapp3.1;net5.0-windows</TargetFrameworks>
+      <TargetFrameworks Condition="'$(TFMs)' == 'all'">net35;net40;net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows</TargetFrameworks>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Stable</PackageOutputPath>
     <PackageIcon>Stable.png</PackageIcon>
-    <AssemblyVersion>5.550.2105</AssemblyVersion>
-    <FileVersion>5.550.2105</FileVersion>
-    <Version>5.550.2105</Version>
+    <AssemblyVersion>5.550.2106</AssemblyVersion>
+    <FileVersion>5.550.2106</FileVersion>
+    <Version>5.550.2106</Version>
   </PropertyGroup>-->
 
   <!--Signed package configuration-
   <PropertyGroup Condition="'$(Configuration)' == 'Release'">
     <OutputPath>..\..\..\..\Bin\$(configuration)\Build\Lib\Signed</OutputPath>
+    <DebugType>pdbonly</DebugType>
     <PackageId>Krypton.Toolkit.Suite.Extended.Persistence.Signed</PackageId>
-    <TargetFrameworks>net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows</TargetFrameworks>
+      <TargetFrameworks>net45;netcoreapp3.1;net5.0-windows</TargetFrameworks>
+      <TargetFrameworks Condition="'$(TFMs)' == 'all'">net35;net40;net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows</TargetFrameworks>
     <PackageOutputPath>..\..\..\..\Bin\NuGet\Signed</PackageOutputPath>
     <PackageIcon>Stable.png</PackageIcon>
-    <AssemblyVersion>5.550.2105</AssemblyVersion>
-    <FileVersion>5.550.2105</FileVersion>
-    <Version>5.550.2105</Version>
+    <AssemblyVersion>5.550.2106</AssemblyVersion>
+    <FileVersion>5.550.2106</FileVersion>
+    <Version>5.550.2106</Version>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>StrongKrypton.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>-->
@@ -66,7 +70,7 @@
 
   <!--Canary NuGet package configuration-->
   <ItemGroup>
-    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2101" />
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2106" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using HandlebarsDotNET.Compiler.Lexer;
+using System.Text;
 
 namespace HandlebarsDotNet.Compiler.Lexer
 {
