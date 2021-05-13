@@ -32,84 +32,84 @@ namespace Notifications
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
             this.kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
-            this.kryptonRichTextBox1 = new Krypton.Toolkit.KryptonRichTextBox();
-            this.kryptonTextBox1 = new Krypton.Toolkit.KryptonTextBox();
+            this.krtbContentText = new Krypton.Toolkit.KryptonRichTextBox();
+            this.ktxtHeaderText = new Krypton.Toolkit.KryptonTextBox();
             this.kryptonLabel3 = new Krypton.Toolkit.KryptonLabel();
-            this.kryptonComboBox1 = new Krypton.Toolkit.KryptonComboBox();
+            this.kcmActionType = new Krypton.Toolkit.KryptonComboBox();
             this.kcbBorderColourOne = new Krypton.Toolkit.KryptonColorButton();
             this.kcbBorderColour2 = new Krypton.Toolkit.KryptonColorButton();
-            this.kryptonComboBox2 = new Krypton.Toolkit.KryptonComboBox();
+            this.kcmbIconType = new Krypton.Toolkit.KryptonComboBox();
             this.kryptonLabel4 = new Krypton.Toolkit.KryptonLabel();
-            this.kryptonTextBox2 = new Krypton.Toolkit.KryptonTextBox();
+            this.ktxActionButtonText = new Krypton.Toolkit.KryptonTextBox();
             this.kryptonLabel5 = new Krypton.Toolkit.KryptonLabel();
             this.kryptonLabel6 = new Krypton.Toolkit.KryptonLabel();
-            this.kryptonNumericUpDown1 = new Krypton.Toolkit.KryptonNumericUpDown();
-            this.kryptonNumericUpDown2 = new Krypton.Toolkit.KryptonNumericUpDown();
+            this.knudSeconds = new Krypton.Toolkit.KryptonNumericUpDown();
+            this.knudCornerRadius = new Krypton.Toolkit.KryptonNumericUpDown();
             this.kryptonLabel7 = new Krypton.Toolkit.KryptonLabel();
-            this.kryptonTextBox3 = new Krypton.Toolkit.KryptonTextBox();
+            this.ktxtDismissButtonText = new Krypton.Toolkit.KryptonTextBox();
             this.kryptonLabel8 = new Krypton.Toolkit.KryptonLabel();
-            this.kryptonTextBox4 = new Krypton.Toolkit.KryptonTextBox();
+            this.ktxtProcessName = new Krypton.Toolkit.KryptonTextBox();
             this.kryptonLabel9 = new Krypton.Toolkit.KryptonLabel();
-            this.kryptonButton1 = new Krypton.Toolkit.KryptonButton();
-            this.kryptonButton2 = new Krypton.Toolkit.KryptonButton();
-            this.kryptonTextBox5 = new Krypton.Toolkit.KryptonTextBox();
+            this.kbtnBrowseProcess = new Krypton.Toolkit.KryptonButton();
+            this.kbtnBrowseIconImage = new Krypton.Toolkit.KryptonButton();
+            this.ktxtIconImage = new Krypton.Toolkit.KryptonTextBox();
             this.kryptonLabel10 = new Krypton.Toolkit.KryptonLabel();
-            this.kryptonButton3 = new Krypton.Toolkit.KryptonButton();
-            this.kryptonTextBox6 = new Krypton.Toolkit.KryptonTextBox();
+            this.kbtnBrowseSoundPath = new Krypton.Toolkit.KryptonButton();
+            this.ktxtSoundPath = new Krypton.Toolkit.KryptonTextBox();
             this.kryptonLabel11 = new Krypton.Toolkit.KryptonLabel();
-            this.kryptonCheckBox1 = new Krypton.Toolkit.KryptonCheckBox();
-            this.kryptonNumericUpDown3 = new Krypton.Toolkit.KryptonNumericUpDown();
+            this.kchkShowActionButton = new Krypton.Toolkit.KryptonCheckBox();
+            this.knudTimeout = new Krypton.Toolkit.KryptonNumericUpDown();
             this.kryptonLabel12 = new Krypton.Toolkit.KryptonLabel();
-            this.kryptonCheckBox2 = new Krypton.Toolkit.KryptonCheckBox();
-            this.kryptonCheckBox3 = new Krypton.Toolkit.KryptonCheckBox();
-            this.kryptonCheckBox4 = new Krypton.Toolkit.KryptonCheckBox();
-            this.kryptonButton4 = new Krypton.Toolkit.KryptonButton();
-            this.kryptonTextBox7 = new Krypton.Toolkit.KryptonTextBox();
+            this.kchkShowControlBox = new Krypton.Toolkit.KryptonCheckBox();
+            this.kchkShowSubScript = new Krypton.Toolkit.KryptonCheckBox();
+            this.kchkShowTimeoutProgress = new Krypton.Toolkit.KryptonCheckBox();
+            this.kbtnBrowseSoundStream = new Krypton.Toolkit.KryptonButton();
+            this.ktxtSoundStream = new Krypton.Toolkit.KryptonTextBox();
             this.kryptonLabel13 = new Krypton.Toolkit.KryptonLabel();
-            this.kryptonButton5 = new Krypton.Toolkit.KryptonButton();
+            this.kbtnShowToast = new Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonComboBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonComboBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kcmActionType)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kcmbIconType)).BeginInit();
             this.SuspendLayout();
             // 
             // kryptonPanel1
             // 
-            this.kryptonPanel1.Controls.Add(this.kryptonButton5);
-            this.kryptonPanel1.Controls.Add(this.kryptonButton4);
-            this.kryptonPanel1.Controls.Add(this.kryptonTextBox7);
+            this.kryptonPanel1.Controls.Add(this.kbtnShowToast);
+            this.kryptonPanel1.Controls.Add(this.kbtnBrowseSoundStream);
+            this.kryptonPanel1.Controls.Add(this.ktxtSoundStream);
             this.kryptonPanel1.Controls.Add(this.kryptonLabel13);
-            this.kryptonPanel1.Controls.Add(this.kryptonCheckBox4);
-            this.kryptonPanel1.Controls.Add(this.kryptonCheckBox3);
-            this.kryptonPanel1.Controls.Add(this.kryptonCheckBox2);
-            this.kryptonPanel1.Controls.Add(this.kryptonNumericUpDown3);
+            this.kryptonPanel1.Controls.Add(this.kchkShowTimeoutProgress);
+            this.kryptonPanel1.Controls.Add(this.kchkShowSubScript);
+            this.kryptonPanel1.Controls.Add(this.kchkShowControlBox);
+            this.kryptonPanel1.Controls.Add(this.knudTimeout);
             this.kryptonPanel1.Controls.Add(this.kryptonLabel12);
-            this.kryptonPanel1.Controls.Add(this.kryptonCheckBox1);
-            this.kryptonPanel1.Controls.Add(this.kryptonButton3);
-            this.kryptonPanel1.Controls.Add(this.kryptonTextBox6);
+            this.kryptonPanel1.Controls.Add(this.kchkShowActionButton);
+            this.kryptonPanel1.Controls.Add(this.kbtnBrowseSoundPath);
+            this.kryptonPanel1.Controls.Add(this.ktxtSoundPath);
             this.kryptonPanel1.Controls.Add(this.kryptonLabel11);
-            this.kryptonPanel1.Controls.Add(this.kryptonButton2);
-            this.kryptonPanel1.Controls.Add(this.kryptonTextBox5);
+            this.kryptonPanel1.Controls.Add(this.kbtnBrowseIconImage);
+            this.kryptonPanel1.Controls.Add(this.ktxtIconImage);
             this.kryptonPanel1.Controls.Add(this.kryptonLabel10);
-            this.kryptonPanel1.Controls.Add(this.kryptonButton1);
-            this.kryptonPanel1.Controls.Add(this.kryptonTextBox4);
+            this.kryptonPanel1.Controls.Add(this.kbtnBrowseProcess);
+            this.kryptonPanel1.Controls.Add(this.ktxtProcessName);
             this.kryptonPanel1.Controls.Add(this.kryptonLabel9);
-            this.kryptonPanel1.Controls.Add(this.kryptonTextBox3);
+            this.kryptonPanel1.Controls.Add(this.ktxtDismissButtonText);
             this.kryptonPanel1.Controls.Add(this.kryptonLabel8);
-            this.kryptonPanel1.Controls.Add(this.kryptonNumericUpDown2);
+            this.kryptonPanel1.Controls.Add(this.knudCornerRadius);
             this.kryptonPanel1.Controls.Add(this.kryptonLabel7);
-            this.kryptonPanel1.Controls.Add(this.kryptonNumericUpDown1);
+            this.kryptonPanel1.Controls.Add(this.knudSeconds);
             this.kryptonPanel1.Controls.Add(this.kryptonLabel6);
-            this.kryptonPanel1.Controls.Add(this.kryptonTextBox2);
+            this.kryptonPanel1.Controls.Add(this.ktxActionButtonText);
             this.kryptonPanel1.Controls.Add(this.kryptonLabel5);
-            this.kryptonPanel1.Controls.Add(this.kryptonComboBox2);
+            this.kryptonPanel1.Controls.Add(this.kcmbIconType);
             this.kryptonPanel1.Controls.Add(this.kryptonLabel4);
             this.kryptonPanel1.Controls.Add(this.kcbBorderColour2);
             this.kryptonPanel1.Controls.Add(this.kcbBorderColourOne);
-            this.kryptonPanel1.Controls.Add(this.kryptonComboBox1);
+            this.kryptonPanel1.Controls.Add(this.kcmActionType);
             this.kryptonPanel1.Controls.Add(this.kryptonLabel3);
-            this.kryptonPanel1.Controls.Add(this.kryptonTextBox1);
-            this.kryptonPanel1.Controls.Add(this.kryptonRichTextBox1);
+            this.kryptonPanel1.Controls.Add(this.ktxtHeaderText);
+            this.kryptonPanel1.Controls.Add(this.krtbContentText);
             this.kryptonPanel1.Controls.Add(this.kryptonLabel2);
             this.kryptonPanel1.Controls.Add(this.kryptonLabel1);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -136,21 +136,20 @@ namespace Notifications
             this.kryptonLabel2.TabIndex = 1;
             this.kryptonLabel2.Values.Text = "Content Text:";
             // 
-            // kryptonRichTextBox1
+            // krtbContentText
             // 
-            this.kryptonRichTextBox1.Location = new System.Drawing.Point(108, 52);
-            this.kryptonRichTextBox1.Name = "kryptonRichTextBox1";
-            this.kryptonRichTextBox1.Size = new System.Drawing.Size(417, 156);
-            this.kryptonRichTextBox1.TabIndex = 2;
-            this.kryptonRichTextBox1.Text = "kryptonRichTextBox1";
+            this.krtbContentText.Location = new System.Drawing.Point(108, 52);
+            this.krtbContentText.Name = "krtbContentText";
+            this.krtbContentText.Size = new System.Drawing.Size(417, 156);
+            this.krtbContentText.TabIndex = 2;
+            this.krtbContentText.Text = "";
             // 
-            // kryptonTextBox1
+            // ktxtHeaderText
             // 
-            this.kryptonTextBox1.Location = new System.Drawing.Point(108, 13);
-            this.kryptonTextBox1.Name = "kryptonTextBox1";
-            this.kryptonTextBox1.Size = new System.Drawing.Size(417, 23);
-            this.kryptonTextBox1.TabIndex = 3;
-            this.kryptonTextBox1.Text = "kryptonTextBox1";
+            this.ktxtHeaderText.Location = new System.Drawing.Point(108, 13);
+            this.ktxtHeaderText.Name = "ktxtHeaderText";
+            this.ktxtHeaderText.Size = new System.Drawing.Size(417, 23);
+            this.ktxtHeaderText.TabIndex = 3;
             // 
             // kryptonLabel3
             // 
@@ -161,17 +160,17 @@ namespace Notifications
             this.kryptonLabel3.TabIndex = 4;
             this.kryptonLabel3.Values.Text = "Action Type:";
             // 
-            // kryptonComboBox1
+            // kcmActionType
             // 
-            this.kryptonComboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.kryptonComboBox1.DropDownWidth = 213;
-            this.kryptonComboBox1.IntegralHeight = false;
-            this.kryptonComboBox1.Location = new System.Drawing.Point(532, 40);
-            this.kryptonComboBox1.Name = "kryptonComboBox1";
-            this.kryptonComboBox1.Size = new System.Drawing.Size(213, 21);
-            this.kryptonComboBox1.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
-            this.kryptonComboBox1.TabIndex = 5;
-            this.kryptonComboBox1.Text = "kryptonComboBox1";
+            this.kcmActionType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.kcmActionType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.kcmActionType.DropDownWidth = 213;
+            this.kcmActionType.IntegralHeight = false;
+            this.kcmActionType.Location = new System.Drawing.Point(532, 40);
+            this.kcmActionType.Name = "kcmActionType";
+            this.kcmActionType.Size = new System.Drawing.Size(213, 21);
+            this.kcmActionType.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
+            this.kcmActionType.TabIndex = 5;
             // 
             // kcbBorderColourOne
             // 
@@ -191,17 +190,17 @@ namespace Notifications
             this.kcbBorderColour2.TabIndex = 7;
             this.kcbBorderColour2.Values.Text = "Border Colour 2";
             // 
-            // kryptonComboBox2
+            // kcmbIconType
             // 
-            this.kryptonComboBox2.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.kryptonComboBox2.DropDownWidth = 213;
-            this.kryptonComboBox2.IntegralHeight = false;
-            this.kryptonComboBox2.Location = new System.Drawing.Point(532, 94);
-            this.kryptonComboBox2.Name = "kryptonComboBox2";
-            this.kryptonComboBox2.Size = new System.Drawing.Size(213, 21);
-            this.kryptonComboBox2.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
-            this.kryptonComboBox2.TabIndex = 9;
-            this.kryptonComboBox2.Text = "kryptonComboBox2";
+            this.kcmbIconType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.kcmbIconType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.kcmbIconType.DropDownWidth = 213;
+            this.kcmbIconType.IntegralHeight = false;
+            this.kcmbIconType.Location = new System.Drawing.Point(532, 94);
+            this.kcmbIconType.Name = "kcmbIconType";
+            this.kcmbIconType.Size = new System.Drawing.Size(213, 21);
+            this.kcmbIconType.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
+            this.kcmbIconType.TabIndex = 9;
             // 
             // kryptonLabel4
             // 
@@ -212,13 +211,12 @@ namespace Notifications
             this.kryptonLabel4.TabIndex = 8;
             this.kryptonLabel4.Values.Text = "Icon Type:";
             // 
-            // kryptonTextBox2
+            // ktxActionButtonText
             // 
-            this.kryptonTextBox2.Location = new System.Drawing.Point(149, 219);
-            this.kryptonTextBox2.Name = "kryptonTextBox2";
-            this.kryptonTextBox2.Size = new System.Drawing.Size(376, 23);
-            this.kryptonTextBox2.TabIndex = 11;
-            this.kryptonTextBox2.Text = "kryptonTextBox2";
+            this.ktxActionButtonText.Location = new System.Drawing.Point(149, 219);
+            this.ktxActionButtonText.Name = "ktxActionButtonText";
+            this.ktxActionButtonText.Size = new System.Drawing.Size(376, 23);
+            this.ktxActionButtonText.TabIndex = 11;
             // 
             // kryptonLabel5
             // 
@@ -238,40 +236,40 @@ namespace Notifications
             this.kryptonLabel6.TabIndex = 12;
             this.kryptonLabel6.Values.Text = "Seconds:";
             // 
-            // kryptonNumericUpDown1
+            // knudSeconds
             // 
-            this.kryptonNumericUpDown1.Location = new System.Drawing.Point(601, 121);
-            this.kryptonNumericUpDown1.Maximum = new decimal(new int[] {
+            this.knudSeconds.Location = new System.Drawing.Point(601, 121);
+            this.knudSeconds.Maximum = new decimal(new int[] {
             60,
             0,
             0,
             0});
-            this.kryptonNumericUpDown1.Name = "kryptonNumericUpDown1";
-            this.kryptonNumericUpDown1.Size = new System.Drawing.Size(144, 22);
-            this.kryptonNumericUpDown1.TabIndex = 13;
-            this.kryptonNumericUpDown1.Value = new decimal(new int[] {
+            this.knudSeconds.Name = "knudSeconds";
+            this.knudSeconds.Size = new System.Drawing.Size(144, 22);
+            this.knudSeconds.TabIndex = 13;
+            this.knudSeconds.Value = new decimal(new int[] {
             60,
             0,
             0,
             0});
             // 
-            // kryptonNumericUpDown2
+            // knudCornerRadius
             // 
-            this.kryptonNumericUpDown2.Location = new System.Drawing.Point(633, 147);
-            this.kryptonNumericUpDown2.Maximum = new decimal(new int[] {
+            this.knudCornerRadius.Location = new System.Drawing.Point(633, 147);
+            this.knudCornerRadius.Maximum = new decimal(new int[] {
             60,
             0,
             0,
             0});
-            this.kryptonNumericUpDown2.Minimum = new decimal(new int[] {
+            this.knudCornerRadius.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             -2147483648});
-            this.kryptonNumericUpDown2.Name = "kryptonNumericUpDown2";
-            this.kryptonNumericUpDown2.Size = new System.Drawing.Size(112, 22);
-            this.kryptonNumericUpDown2.TabIndex = 15;
-            this.kryptonNumericUpDown2.Value = new decimal(new int[] {
+            this.knudCornerRadius.Name = "knudCornerRadius";
+            this.knudCornerRadius.Size = new System.Drawing.Size(112, 22);
+            this.knudCornerRadius.TabIndex = 15;
+            this.knudCornerRadius.Value = new decimal(new int[] {
             1,
             0,
             0,
@@ -286,118 +284,114 @@ namespace Notifications
             this.kryptonLabel7.TabIndex = 14;
             this.kryptonLabel7.Values.Text = "Corner Radius:";
             // 
-            // kryptonTextBox3
+            // ktxtDismissButtonText
             // 
-            this.kryptonTextBox3.Location = new System.Drawing.Point(149, 254);
-            this.kryptonTextBox3.Name = "kryptonTextBox3";
-            this.kryptonTextBox3.Size = new System.Drawing.Size(376, 23);
-            this.kryptonTextBox3.TabIndex = 17;
-            this.kryptonTextBox3.Text = "kryptonTextBox3";
+            this.ktxtDismissButtonText.Location = new System.Drawing.Point(149, 254);
+            this.ktxtDismissButtonText.Name = "ktxtDismissButtonText";
+            this.ktxtDismissButtonText.Size = new System.Drawing.Size(376, 23);
+            this.ktxtDismissButtonText.TabIndex = 17;
             // 
             // kryptonLabel8
             // 
             this.kryptonLabel8.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
-            this.kryptonLabel8.Location = new System.Drawing.Point(13, 250);
+            this.kryptonLabel8.Location = new System.Drawing.Point(13, 254);
             this.kryptonLabel8.Name = "kryptonLabel8";
             this.kryptonLabel8.Size = new System.Drawing.Size(130, 20);
             this.kryptonLabel8.TabIndex = 16;
             this.kryptonLabel8.Values.Text = "Dismiss Button Text:";
             // 
-            // kryptonTextBox4
+            // ktxtProcessName
             // 
-            this.kryptonTextBox4.Location = new System.Drawing.Point(149, 289);
-            this.kryptonTextBox4.Name = "kryptonTextBox4";
-            this.kryptonTextBox4.Size = new System.Drawing.Size(376, 23);
-            this.kryptonTextBox4.TabIndex = 19;
-            this.kryptonTextBox4.Text = "kryptonTextBox4";
+            this.ktxtProcessName.Location = new System.Drawing.Point(149, 289);
+            this.ktxtProcessName.Name = "ktxtProcessName";
+            this.ktxtProcessName.Size = new System.Drawing.Size(376, 23);
+            this.ktxtProcessName.TabIndex = 19;
             // 
             // kryptonLabel9
             // 
             this.kryptonLabel9.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
-            this.kryptonLabel9.Location = new System.Drawing.Point(13, 286);
+            this.kryptonLabel9.Location = new System.Drawing.Point(13, 289);
             this.kryptonLabel9.Name = "kryptonLabel9";
             this.kryptonLabel9.Size = new System.Drawing.Size(95, 20);
             this.kryptonLabel9.TabIndex = 18;
             this.kryptonLabel9.Values.Text = "Process Name:";
             // 
-            // kryptonButton1
+            // kbtnBrowseProcess
             // 
-            this.kryptonButton1.AutoSize = true;
-            this.kryptonButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.kryptonButton1.Location = new System.Drawing.Point(532, 286);
-            this.kryptonButton1.Name = "kryptonButton1";
-            this.kryptonButton1.Size = new System.Drawing.Size(19, 24);
-            this.kryptonButton1.TabIndex = 20;
-            this.kryptonButton1.Values.Text = ".&..";
+            this.kbtnBrowseProcess.AutoSize = true;
+            this.kbtnBrowseProcess.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.kbtnBrowseProcess.Location = new System.Drawing.Point(532, 289);
+            this.kbtnBrowseProcess.Name = "kbtnBrowseProcess";
+            this.kbtnBrowseProcess.Size = new System.Drawing.Size(19, 24);
+            this.kbtnBrowseProcess.TabIndex = 20;
+            this.kbtnBrowseProcess.Values.Text = ".&..";
             // 
-            // kryptonButton2
+            // kbtnBrowseIconImage
             // 
-            this.kryptonButton2.AutoSize = true;
-            this.kryptonButton2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.kryptonButton2.Location = new System.Drawing.Point(532, 323);
-            this.kryptonButton2.Name = "kryptonButton2";
-            this.kryptonButton2.Size = new System.Drawing.Size(19, 24);
-            this.kryptonButton2.TabIndex = 23;
-            this.kryptonButton2.Values.Text = ".&..";
+            this.kbtnBrowseIconImage.AutoSize = true;
+            this.kbtnBrowseIconImage.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.kbtnBrowseIconImage.Location = new System.Drawing.Point(532, 323);
+            this.kbtnBrowseIconImage.Name = "kbtnBrowseIconImage";
+            this.kbtnBrowseIconImage.Size = new System.Drawing.Size(19, 24);
+            this.kbtnBrowseIconImage.TabIndex = 23;
+            this.kbtnBrowseIconImage.Values.Text = ".&..";
             // 
-            // kryptonTextBox5
+            // ktxtIconImage
             // 
-            this.kryptonTextBox5.Location = new System.Drawing.Point(149, 324);
-            this.kryptonTextBox5.Name = "kryptonTextBox5";
-            this.kryptonTextBox5.Size = new System.Drawing.Size(376, 23);
-            this.kryptonTextBox5.TabIndex = 22;
-            this.kryptonTextBox5.Text = "kryptonTextBox5";
+            this.ktxtIconImage.Location = new System.Drawing.Point(149, 324);
+            this.ktxtIconImage.Name = "ktxtIconImage";
+            this.ktxtIconImage.Size = new System.Drawing.Size(376, 23);
+            this.ktxtIconImage.TabIndex = 22;
             // 
             // kryptonLabel10
             // 
             this.kryptonLabel10.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
-            this.kryptonLabel10.Location = new System.Drawing.Point(13, 315);
+            this.kryptonLabel10.Location = new System.Drawing.Point(13, 323);
             this.kryptonLabel10.Name = "kryptonLabel10";
             this.kryptonLabel10.Size = new System.Drawing.Size(78, 20);
             this.kryptonLabel10.TabIndex = 21;
             this.kryptonLabel10.Values.Text = "Icon Image:";
             // 
-            // kryptonButton3
+            // kbtnBrowseSoundPath
             // 
-            this.kryptonButton3.AutoSize = true;
-            this.kryptonButton3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.kryptonButton3.Location = new System.Drawing.Point(532, 358);
-            this.kryptonButton3.Name = "kryptonButton3";
-            this.kryptonButton3.Size = new System.Drawing.Size(19, 24);
-            this.kryptonButton3.TabIndex = 26;
-            this.kryptonButton3.Values.Text = ".&..";
+            this.kbtnBrowseSoundPath.AutoSize = true;
+            this.kbtnBrowseSoundPath.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.kbtnBrowseSoundPath.Location = new System.Drawing.Point(532, 358);
+            this.kbtnBrowseSoundPath.Name = "kbtnBrowseSoundPath";
+            this.kbtnBrowseSoundPath.Size = new System.Drawing.Size(19, 24);
+            this.kbtnBrowseSoundPath.TabIndex = 26;
+            this.kbtnBrowseSoundPath.Values.Text = ".&..";
             // 
-            // kryptonTextBox6
+            // ktxtSoundPath
             // 
-            this.kryptonTextBox6.Location = new System.Drawing.Point(149, 359);
-            this.kryptonTextBox6.Name = "kryptonTextBox6";
-            this.kryptonTextBox6.Size = new System.Drawing.Size(376, 23);
-            this.kryptonTextBox6.TabIndex = 25;
-            this.kryptonTextBox6.Text = "kryptonTextBox6";
+            this.ktxtSoundPath.Location = new System.Drawing.Point(149, 359);
+            this.ktxtSoundPath.Name = "ktxtSoundPath";
+            this.ktxtSoundPath.Size = new System.Drawing.Size(376, 23);
+            this.ktxtSoundPath.TabIndex = 25;
             // 
             // kryptonLabel11
             // 
             this.kryptonLabel11.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
-            this.kryptonLabel11.Location = new System.Drawing.Point(13, 356);
+            this.kryptonLabel11.Location = new System.Drawing.Point(13, 358);
             this.kryptonLabel11.Name = "kryptonLabel11";
             this.kryptonLabel11.Size = new System.Drawing.Size(81, 20);
             this.kryptonLabel11.TabIndex = 24;
             this.kryptonLabel11.Values.Text = "Sound Path:";
             // 
-            // kryptonCheckBox1
+            // kchkShowActionButton
             // 
-            this.kryptonCheckBox1.Location = new System.Drawing.Point(571, 286);
-            this.kryptonCheckBox1.Name = "kryptonCheckBox1";
-            this.kryptonCheckBox1.Size = new System.Drawing.Size(132, 20);
-            this.kryptonCheckBox1.TabIndex = 27;
-            this.kryptonCheckBox1.Values.Text = "&Show Action Button";
+            this.kchkShowActionButton.Location = new System.Drawing.Point(571, 286);
+            this.kchkShowActionButton.Name = "kchkShowActionButton";
+            this.kchkShowActionButton.Size = new System.Drawing.Size(132, 20);
+            this.kchkShowActionButton.TabIndex = 27;
+            this.kchkShowActionButton.Values.Text = "&Show Action Button";
             // 
-            // kryptonNumericUpDown3
+            // knudTimeout
             // 
-            this.kryptonNumericUpDown3.Location = new System.Drawing.Point(633, 173);
-            this.kryptonNumericUpDown3.Name = "kryptonNumericUpDown3";
-            this.kryptonNumericUpDown3.Size = new System.Drawing.Size(112, 22);
-            this.kryptonNumericUpDown3.TabIndex = 29;
+            this.knudTimeout.Location = new System.Drawing.Point(633, 173);
+            this.knudTimeout.Name = "knudTimeout";
+            this.knudTimeout.Size = new System.Drawing.Size(112, 22);
+            this.knudTimeout.TabIndex = 29;
             // 
             // kryptonLabel12
             // 
@@ -408,64 +402,63 @@ namespace Notifications
             this.kryptonLabel12.TabIndex = 28;
             this.kryptonLabel12.Values.Text = "Timeout:";
             // 
-            // kryptonCheckBox2
+            // kchkShowControlBox
             // 
-            this.kryptonCheckBox2.Location = new System.Drawing.Point(571, 312);
-            this.kryptonCheckBox2.Name = "kryptonCheckBox2";
-            this.kryptonCheckBox2.Size = new System.Drawing.Size(121, 20);
-            this.kryptonCheckBox2.TabIndex = 30;
-            this.kryptonCheckBox2.Values.Text = "Show Con&trol Box";
+            this.kchkShowControlBox.Location = new System.Drawing.Point(571, 312);
+            this.kchkShowControlBox.Name = "kchkShowControlBox";
+            this.kchkShowControlBox.Size = new System.Drawing.Size(121, 20);
+            this.kchkShowControlBox.TabIndex = 30;
+            this.kchkShowControlBox.Values.Text = "Show Con&trol Box";
             // 
-            // kryptonCheckBox3
+            // kchkShowSubScript
             // 
-            this.kryptonCheckBox3.Location = new System.Drawing.Point(571, 338);
-            this.kryptonCheckBox3.Name = "kryptonCheckBox3";
-            this.kryptonCheckBox3.Size = new System.Drawing.Size(107, 20);
-            this.kryptonCheckBox3.TabIndex = 31;
-            this.kryptonCheckBox3.Values.Text = "Show Subs&cript";
+            this.kchkShowSubScript.Location = new System.Drawing.Point(571, 338);
+            this.kchkShowSubScript.Name = "kchkShowSubScript";
+            this.kchkShowSubScript.Size = new System.Drawing.Size(107, 20);
+            this.kchkShowSubScript.TabIndex = 31;
+            this.kchkShowSubScript.Values.Text = "Show Subs&cript";
             // 
-            // kryptonCheckBox4
+            // kchkShowTimeoutProgress
             // 
-            this.kryptonCheckBox4.Location = new System.Drawing.Point(571, 364);
-            this.kryptonCheckBox4.Name = "kryptonCheckBox4";
-            this.kryptonCheckBox4.Size = new System.Drawing.Size(152, 20);
-            this.kryptonCheckBox4.TabIndex = 32;
-            this.kryptonCheckBox4.Values.Text = "Show &Timeout Progress";
+            this.kchkShowTimeoutProgress.Location = new System.Drawing.Point(571, 364);
+            this.kchkShowTimeoutProgress.Name = "kchkShowTimeoutProgress";
+            this.kchkShowTimeoutProgress.Size = new System.Drawing.Size(152, 20);
+            this.kchkShowTimeoutProgress.TabIndex = 32;
+            this.kchkShowTimeoutProgress.Values.Text = "Show &Timeout Progress";
             // 
-            // kryptonButton4
+            // kbtnBrowseSoundStream
             // 
-            this.kryptonButton4.AutoSize = true;
-            this.kryptonButton4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.kryptonButton4.Location = new System.Drawing.Point(532, 394);
-            this.kryptonButton4.Name = "kryptonButton4";
-            this.kryptonButton4.Size = new System.Drawing.Size(19, 24);
-            this.kryptonButton4.TabIndex = 35;
-            this.kryptonButton4.Values.Text = ".&..";
+            this.kbtnBrowseSoundStream.AutoSize = true;
+            this.kbtnBrowseSoundStream.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.kbtnBrowseSoundStream.Location = new System.Drawing.Point(532, 394);
+            this.kbtnBrowseSoundStream.Name = "kbtnBrowseSoundStream";
+            this.kbtnBrowseSoundStream.Size = new System.Drawing.Size(19, 24);
+            this.kbtnBrowseSoundStream.TabIndex = 35;
+            this.kbtnBrowseSoundStream.Values.Text = ".&..";
             // 
-            // kryptonTextBox7
+            // ktxtSoundStream
             // 
-            this.kryptonTextBox7.Location = new System.Drawing.Point(149, 394);
-            this.kryptonTextBox7.Name = "kryptonTextBox7";
-            this.kryptonTextBox7.Size = new System.Drawing.Size(376, 23);
-            this.kryptonTextBox7.TabIndex = 34;
-            this.kryptonTextBox7.Text = "kryptonTextBox7";
+            this.ktxtSoundStream.Location = new System.Drawing.Point(149, 394);
+            this.ktxtSoundStream.Name = "ktxtSoundStream";
+            this.ktxtSoundStream.Size = new System.Drawing.Size(376, 23);
+            this.ktxtSoundStream.TabIndex = 34;
             // 
             // kryptonLabel13
             // 
             this.kryptonLabel13.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
-            this.kryptonLabel13.Location = new System.Drawing.Point(13, 398);
+            this.kryptonLabel13.Location = new System.Drawing.Point(13, 394);
             this.kryptonLabel13.Name = "kryptonLabel13";
-            this.kryptonLabel13.Size = new System.Drawing.Size(81, 20);
+            this.kryptonLabel13.Size = new System.Drawing.Size(96, 20);
             this.kryptonLabel13.TabIndex = 33;
-            this.kryptonLabel13.Values.Text = "Sound Path:";
+            this.kryptonLabel13.Values.Text = "Sound Stream:";
             // 
-            // kryptonButton5
+            // kbtnShowToast
             // 
-            this.kryptonButton5.Location = new System.Drawing.Point(655, 423);
-            this.kryptonButton5.Name = "kryptonButton5";
-            this.kryptonButton5.Size = new System.Drawing.Size(90, 25);
-            this.kryptonButton5.TabIndex = 36;
-            this.kryptonButton5.Values.Text = "Show &Toast";
+            this.kbtnShowToast.Location = new System.Drawing.Point(655, 423);
+            this.kbtnShowToast.Name = "kbtnShowToast";
+            this.kbtnShowToast.Size = new System.Drawing.Size(90, 25);
+            this.kbtnShowToast.TabIndex = 36;
+            this.kbtnShowToast.Values.Text = "Show &Toast";
             // 
             // Form1
             // 
@@ -483,50 +476,50 @@ namespace Notifications
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonComboBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonComboBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kcmActionType)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kcmbIconType)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private Krypton.Toolkit.KryptonPanel kryptonPanel1;
-        private Krypton.Toolkit.KryptonTextBox kryptonTextBox1;
-        private Krypton.Toolkit.KryptonRichTextBox kryptonRichTextBox1;
+        private Krypton.Toolkit.KryptonTextBox ktxtHeaderText;
+        private Krypton.Toolkit.KryptonRichTextBox krtbContentText;
         private Krypton.Toolkit.KryptonLabel kryptonLabel2;
         private Krypton.Toolkit.KryptonLabel kryptonLabel1;
-        private Krypton.Toolkit.KryptonComboBox kryptonComboBox2;
+        private Krypton.Toolkit.KryptonComboBox kcmbIconType;
         private Krypton.Toolkit.KryptonLabel kryptonLabel4;
         private Krypton.Toolkit.KryptonColorButton kcbBorderColour2;
         private Krypton.Toolkit.KryptonColorButton kcbBorderColourOne;
-        private Krypton.Toolkit.KryptonComboBox kryptonComboBox1;
+        private Krypton.Toolkit.KryptonComboBox kcmActionType;
         private Krypton.Toolkit.KryptonLabel kryptonLabel3;
-        private Krypton.Toolkit.KryptonNumericUpDown kryptonNumericUpDown1;
+        private Krypton.Toolkit.KryptonNumericUpDown knudSeconds;
         private Krypton.Toolkit.KryptonLabel kryptonLabel6;
-        private Krypton.Toolkit.KryptonTextBox kryptonTextBox2;
+        private Krypton.Toolkit.KryptonTextBox ktxActionButtonText;
         private Krypton.Toolkit.KryptonLabel kryptonLabel5;
-        private Krypton.Toolkit.KryptonTextBox kryptonTextBox3;
+        private Krypton.Toolkit.KryptonTextBox ktxtDismissButtonText;
         private Krypton.Toolkit.KryptonLabel kryptonLabel8;
-        private Krypton.Toolkit.KryptonNumericUpDown kryptonNumericUpDown2;
+        private Krypton.Toolkit.KryptonNumericUpDown knudCornerRadius;
         private Krypton.Toolkit.KryptonLabel kryptonLabel7;
-        private Krypton.Toolkit.KryptonNumericUpDown kryptonNumericUpDown3;
+        private Krypton.Toolkit.KryptonNumericUpDown knudTimeout;
         private Krypton.Toolkit.KryptonLabel kryptonLabel12;
-        private Krypton.Toolkit.KryptonCheckBox kryptonCheckBox1;
-        private Krypton.Toolkit.KryptonButton kryptonButton3;
-        private Krypton.Toolkit.KryptonTextBox kryptonTextBox6;
+        private Krypton.Toolkit.KryptonCheckBox kchkShowActionButton;
+        private Krypton.Toolkit.KryptonButton kbtnBrowseSoundPath;
+        private Krypton.Toolkit.KryptonTextBox ktxtSoundPath;
         private Krypton.Toolkit.KryptonLabel kryptonLabel11;
-        private Krypton.Toolkit.KryptonButton kryptonButton2;
-        private Krypton.Toolkit.KryptonTextBox kryptonTextBox5;
+        private Krypton.Toolkit.KryptonButton kbtnBrowseIconImage;
+        private Krypton.Toolkit.KryptonTextBox ktxtIconImage;
         private Krypton.Toolkit.KryptonLabel kryptonLabel10;
-        private Krypton.Toolkit.KryptonButton kryptonButton1;
-        private Krypton.Toolkit.KryptonTextBox kryptonTextBox4;
+        private Krypton.Toolkit.KryptonButton kbtnBrowseProcess;
+        private Krypton.Toolkit.KryptonTextBox ktxtProcessName;
         private Krypton.Toolkit.KryptonLabel kryptonLabel9;
-        private Krypton.Toolkit.KryptonCheckBox kryptonCheckBox4;
-        private Krypton.Toolkit.KryptonCheckBox kryptonCheckBox3;
-        private Krypton.Toolkit.KryptonCheckBox kryptonCheckBox2;
-        private Krypton.Toolkit.KryptonButton kryptonButton5;
-        private Krypton.Toolkit.KryptonButton kryptonButton4;
-        private Krypton.Toolkit.KryptonTextBox kryptonTextBox7;
+        private Krypton.Toolkit.KryptonCheckBox kchkShowTimeoutProgress;
+        private Krypton.Toolkit.KryptonCheckBox kchkShowSubScript;
+        private Krypton.Toolkit.KryptonCheckBox kchkShowControlBox;
+        private Krypton.Toolkit.KryptonButton kbtnShowToast;
+        private Krypton.Toolkit.KryptonButton kbtnBrowseSoundStream;
+        private Krypton.Toolkit.KryptonTextBox ktxtSoundStream;
         private Krypton.Toolkit.KryptonLabel kryptonLabel13;
     }
 }
