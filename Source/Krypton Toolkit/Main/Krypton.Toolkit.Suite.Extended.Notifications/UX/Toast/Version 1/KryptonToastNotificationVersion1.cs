@@ -7,17 +7,14 @@
 #endregion
 
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Media;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using Krypton.Toolkit.Suite.Extended.Developer.Utilities;
+using Krypton.Toolkit.Suite.Extended.Notifications.Properties;
 
 namespace Krypton.Toolkit.Suite.Extended.Notifications
 {
@@ -36,13 +33,13 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         private void InitializeComponent()
         {
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            this.kbtnAction = new Krypton.Toolkit.KryptonButton();
+            this.kbtnDismiss = new Krypton.Toolkit.KryptonButton();
             this.kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
-            this.kbtnDismiss = new Krypton.Toolkit.KryptonButton();
-            this.kbtnAction = new Krypton.Toolkit.KryptonButton();
-            this.pbxIcon = new System.Windows.Forms.PictureBox();
-            this.kwlContent = new Krypton.Toolkit.KryptonWrapLabel();
             this.klblHeader = new Krypton.Toolkit.KryptonLabel();
+            this.kwlContent = new Krypton.Toolkit.KryptonWrapLabel();
+            this.pbxIcon = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
@@ -56,41 +53,11 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
             this.kryptonPanel1.Controls.Add(this.kbtnDismiss);
             this.kryptonPanel1.Controls.Add(this.kryptonBorderEdge1);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.kryptonPanel1.Location = new System.Drawing.Point(0, 269);
+            this.kryptonPanel1.Location = new System.Drawing.Point(0, 265);
             this.kryptonPanel1.Name = "kryptonPanel1";
             this.kryptonPanel1.PanelBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelAlternate;
-            this.kryptonPanel1.Size = new System.Drawing.Size(625, 50);
+            this.kryptonPanel1.Size = new System.Drawing.Size(621, 50);
             this.kryptonPanel1.TabIndex = 0;
-            // 
-            // kryptonBorderEdge1
-            // 
-            this.kryptonBorderEdge1.BorderStyle = Krypton.Toolkit.PaletteBorderStyle.HeaderPrimary;
-            this.kryptonBorderEdge1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.kryptonBorderEdge1.Location = new System.Drawing.Point(0, 0);
-            this.kryptonBorderEdge1.Name = "kryptonBorderEdge1";
-            this.kryptonBorderEdge1.Size = new System.Drawing.Size(625, 1);
-            this.kryptonBorderEdge1.Text = "kryptonBorderEdge1";
-            // 
-            // kryptonPanel2
-            // 
-            this.kryptonPanel2.Controls.Add(this.klblHeader);
-            this.kryptonPanel2.Controls.Add(this.kwlContent);
-            this.kryptonPanel2.Controls.Add(this.pbxIcon);
-            this.kryptonPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonPanel2.Location = new System.Drawing.Point(0, 0);
-            this.kryptonPanel2.Name = "kryptonPanel2";
-            this.kryptonPanel2.Size = new System.Drawing.Size(625, 269);
-            this.kryptonPanel2.TabIndex = 1;
-            // 
-            // kbtnDismiss
-            // 
-            this.kbtnDismiss.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.kbtnDismiss.Location = new System.Drawing.Point(409, 13);
-            this.kbtnDismiss.Name = "kbtnDismiss";
-            this.kbtnDismiss.Size = new System.Drawing.Size(204, 25);
-            this.kbtnDismiss.TabIndex = 1;
-            this.kbtnDismiss.Values.Text = "{0} ({1})";
-            this.kbtnDismiss.Click += new System.EventHandler(this.kbtnDismiss_Click);
             // 
             // kbtnAction
             // 
@@ -104,25 +71,35 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
             this.kbtnAction.Visible = false;
             this.kbtnAction.Click += new System.EventHandler(this.kbtnAction_Click);
             // 
-            // pbxIcon
+            // kbtnDismiss
             // 
-            this.pbxIcon.BackColor = System.Drawing.Color.Transparent;
-            this.pbxIcon.Location = new System.Drawing.Point(13, 13);
-            this.pbxIcon.Name = "pbxIcon";
-            this.pbxIcon.Size = new System.Drawing.Size(125, 125);
-            this.pbxIcon.TabIndex = 0;
-            this.pbxIcon.TabStop = false;
+            this.kbtnDismiss.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.kbtnDismiss.Location = new System.Drawing.Point(405, 13);
+            this.kbtnDismiss.Name = "kbtnDismiss";
+            this.kbtnDismiss.Size = new System.Drawing.Size(204, 25);
+            this.kbtnDismiss.TabIndex = 1;
+            this.kbtnDismiss.Values.Text = "{0} ({1})";
+            this.kbtnDismiss.Click += new System.EventHandler(this.kbtnDismiss_Click);
             // 
-            // kwlContent
+            // kryptonBorderEdge1
             // 
-            this.kwlContent.AutoSize = false;
-            this.kwlContent.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.kwlContent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
-            this.kwlContent.Location = new System.Drawing.Point(145, 83);
-            this.kwlContent.Name = "kwlContent";
-            this.kwlContent.Size = new System.Drawing.Size(468, 174);
-            this.kwlContent.Text = "{0}";
-            this.kwlContent.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.kryptonBorderEdge1.BorderStyle = Krypton.Toolkit.PaletteBorderStyle.HeaderPrimary;
+            this.kryptonBorderEdge1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.kryptonBorderEdge1.Location = new System.Drawing.Point(0, 0);
+            this.kryptonBorderEdge1.Name = "kryptonBorderEdge1";
+            this.kryptonBorderEdge1.Size = new System.Drawing.Size(621, 1);
+            this.kryptonBorderEdge1.Text = "kryptonBorderEdge1";
+            // 
+            // kryptonPanel2
+            // 
+            this.kryptonPanel2.Controls.Add(this.klblHeader);
+            this.kryptonPanel2.Controls.Add(this.kwlContent);
+            this.kryptonPanel2.Controls.Add(this.pbxIcon);
+            this.kryptonPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonPanel2.Location = new System.Drawing.Point(0, 0);
+            this.kryptonPanel2.Name = "kryptonPanel2";
+            this.kryptonPanel2.Size = new System.Drawing.Size(621, 265);
+            this.kryptonPanel2.TabIndex = 1;
             // 
             // klblHeader
             // 
@@ -135,9 +112,29 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
             this.klblHeader.TabIndex = 2;
             this.klblHeader.Values.Text = "{0}";
             // 
+            // kwlContent
+            // 
+            this.kwlContent.AutoSize = false;
+            this.kwlContent.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.kwlContent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.kwlContent.Location = new System.Drawing.Point(145, 83);
+            this.kwlContent.Name = "kwlContent";
+            this.kwlContent.Size = new System.Drawing.Size(468, 174);
+            this.kwlContent.Text = "{0}";
+            this.kwlContent.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // pbxIcon
+            // 
+            this.pbxIcon.BackColor = System.Drawing.Color.Transparent;
+            this.pbxIcon.Location = new System.Drawing.Point(13, 13);
+            this.pbxIcon.Name = "pbxIcon";
+            this.pbxIcon.Size = new System.Drawing.Size(128, 128);
+            this.pbxIcon.TabIndex = 0;
+            this.pbxIcon.TabStop = false;
+            // 
             // KryptonToastNotificationVersion1
             // 
-            this.ClientSize = new System.Drawing.Size(625, 319);
+            this.ClientSize = new System.Drawing.Size(621, 315);
             this.ControlBox = false;
             this.Controls.Add(this.kryptonPanel2);
             this.Controls.Add(this.kryptonPanel1);
@@ -173,11 +170,13 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
 
         private Image _iconImage;
 
+        private IconType _iconType;
+
         private Timer _timer;
 
         private SoundPlayer _player;
 
-        private string _title, _text;        
+        private string _actionButtonText, _dismissButtonText, _title, _text, _process;        
         #endregion
 
         #region Properties
@@ -204,6 +203,10 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
             }
         }
 
+        public string ActionButtonText { get => _actionButtonText; set => _actionButtonText = value; }
+
+        public string DismissButtonText { get => _dismissButtonText; set => _dismissButtonText = value; }
+
         public string Title
         {
             get => _title;
@@ -227,6 +230,8 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
                 kwlContent.Text = _text;
             }
         }
+
+        public string ProcessToStart { get => _process; set => _process = value; }
 
         public Color BorderColourOne
         {
@@ -263,14 +268,43 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
                 Invalidate();
             }
         }
+
+        public IconType IconType
+        {
+            get => _iconType;
+
+            set
+            {
+                if (_iconType != value)
+                {
+                    _iconType = value;
+
+                    SetIconType(value);
+                }
+            }
+        }
         #endregion
 
         #region Constructors
-        public KryptonToastNotificationVersion1(Image image, string header, string message, Color? borderColourOne, Color? borderColourTwo, int? cornerRadius, ActionButtonType? actionButtonType, ActionType? actionType, bool? showActionButton)
+        /// <summary>Initializes a new instance of the <see cref="KryptonToastNotificationVersion1" /> class.</summary>
+        /// <param name="image">The image.</param>
+        /// <param name="header">The header.</param>
+        /// <param name="message">The message.</param>
+        /// <param name="borderColourOne">The border colour one.</param>
+        /// <param name="borderColourTwo">The border colour two.</param>
+        /// <param name="cornerRadius">The corner radius.</param>
+        /// <param name="actionButtonType">Type of the action button.</param>
+        /// <param name="actionType">Type of the action.</param>
+        /// <param name="showActionButton">The show action button.</param>
+        public KryptonToastNotificationVersion1(Image image, string header, string message, Color? borderColourOne, Color? borderColourTwo, int? cornerRadius, ActionButtonType? actionButtonType, ActionType? actionType, bool? showActionButton, string actionButtonText, string dismissButtonText, IconType? iconType)
         {
             InitializeComponent();
 
             IconImage = image;
+
+            ActionButtonText = actionButtonText ?? string.Empty;
+
+            DismissButtonText = dismissButtonText ?? string.Empty;
 
             Title = header;
 
@@ -288,6 +322,8 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
 
             ShowActionButton = showActionButton ?? false;
 
+            IconType = iconType ?? IconType.CUSTOM;
+
             TopMost = true;
 
             DoubleBuffered = true;
@@ -295,29 +331,31 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
             Resize += ToastNotification_Resize;
 
             GotFocus += ToastNotification_GotFocus;
+
+            SetActionText(actionType, actionButtonText);
         }
 
-        public KryptonToastNotificationVersion1(Image image, string header, string message, Color? borderColourOne, Color? borderColourTwo, int? cornerRadius, ActionButtonType? actionButtonType, ActionType? actionType, bool? showActionButton, int seconds) : this(image, header, message, borderColourOne, borderColourTwo, cornerRadius, actionButtonType, actionType, showActionButton)
+        public KryptonToastNotificationVersion1(Image image, string header, string message, Color? borderColourOne, Color? borderColourTwo, int? cornerRadius, ActionButtonType? actionButtonType, ActionType? actionType, bool? showActionButton, string actionButtonText, string dismissButtonText, IconType? iconType, int seconds) : this(image, header, message, borderColourOne, borderColourTwo, cornerRadius, actionButtonType, actionType, showActionButton, actionButtonText, dismissButtonText, iconType)
         {
             Seconds = seconds;
         }
 
-        public KryptonToastNotificationVersion1(Image image, string header, string message, Color? borderColourOne, Color? borderColourTwo, int? cornerRadius, ActionButtonType? actionButtonType, ActionType? actionType, bool? showActionButton, int seconds, string soundPath) : this(image, header, message, borderColourOne, borderColourTwo, cornerRadius, actionButtonType, actionType, showActionButton, seconds)
+        public KryptonToastNotificationVersion1(Image image, string header, string message, Color? borderColourOne, Color? borderColourTwo, int? cornerRadius, ActionButtonType? actionButtonType, ActionType? actionType, bool? showActionButton, string actionButtonText, string dismissButtonText, IconType? iconType, int seconds, string soundPath) : this(image, header, message, borderColourOne, borderColourTwo, cornerRadius, actionButtonType, actionType, showActionButton, actionButtonText, dismissButtonText, iconType, seconds)
         {
             SoundPath = soundPath;
         }
 
-        public KryptonToastNotificationVersion1(Image image, string header, string message, Color? borderColourOne, Color? borderColourTwo, int? cornerRadius, ActionButtonType? actionButtonType, ActionType? actionType, bool? showActionButton, string soundPath) : this(image, header, message, borderColourOne, borderColourTwo, cornerRadius, actionButtonType, actionType, showActionButton)
+        public KryptonToastNotificationVersion1(Image image, string header, string message, Color? borderColourOne, Color? borderColourTwo, int? cornerRadius, ActionButtonType? actionButtonType, ActionType? actionType, bool? showActionButton, string actionButtonText, string dismissButtonText, IconType? iconType, string soundPath) : this(image, header, message, borderColourOne, borderColourTwo, cornerRadius, actionButtonType, actionType, showActionButton, actionButtonText, dismissButtonText, iconType)
         {
             SoundPath = soundPath;
         }
 
-        public KryptonToastNotificationVersion1(Image image, string header, string message, Color? borderColourOne, Color? borderColourTwo, int? cornerRadius, ActionButtonType? actionButtonType, ActionType? actionType, bool? showActionButton, Stream soundStream) : this(image, header, message, borderColourOne, borderColourTwo, cornerRadius, actionButtonType, actionType, showActionButton)
+        public KryptonToastNotificationVersion1(Image image, string header, string message, Color? borderColourOne, Color? borderColourTwo, int? cornerRadius, ActionButtonType? actionButtonType, ActionType? actionType, bool? showActionButton, string actionButtonText, string dismissButtonText, IconType? iconType, Stream soundStream) : this(image, header, message, borderColourOne, borderColourTwo, cornerRadius, actionButtonType, actionType, showActionButton, actionButtonText, dismissButtonText, iconType)
         {
             SoundStream = soundStream;
         }
 
-        public KryptonToastNotificationVersion1(Image image, string header, string message, Color? borderColourOne, Color? borderColourTwo, int? cornerRadius, ActionButtonType? actionButtonType, ActionType? actionType, bool? showActionButton, int seconds, Stream soundStream) : this(image, header, message, borderColourOne, borderColourTwo, cornerRadius, actionButtonType, actionType, showActionButton, seconds)
+        public KryptonToastNotificationVersion1(Image image, string header, string message, Color? borderColourOne, Color? borderColourTwo, int? cornerRadius, ActionButtonType? actionButtonType, ActionType? actionType, bool? showActionButton, string actionButtonText, string dismissButtonText, IconType? iconType, int seconds, Stream soundStream) : this(image, header, message, borderColourOne, borderColourTwo, cornerRadius, actionButtonType, actionType, showActionButton, actionButtonText, dismissButtonText, iconType, seconds)
         {
             SoundStream = soundStream;
         }
@@ -368,15 +406,30 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
 
         private void kbtnAction_Click(object sender, EventArgs e)
         {
-            switch (_actionType)
+            switch (_actionButtonType)
             {
-                case ActionType.DEFAULT:
+                case ActionButtonType.NORMAL:
+                    switch (_actionType)
+                    {
+                        case ActionType.DEFAULT:
+                            StartProcess(ProcessToStart);
+                            break;
+                        case ActionType.LAUCHPROCESS:
+                            break;
+                        case ActionType.OPEN:
+                            break;
+                    }
                     break;
-                case ActionType.LAUCHPROCESS:
-                    break;
-                case ActionType.OPEN:
-                    break;
-                default:
+                case ActionButtonType.UACELEVATED:
+                    switch (_actionType)
+                    {
+                        case ActionType.DEFAULT:
+                            break;
+                        case ActionType.LAUCHPROCESS:
+                            break;
+                        case ActionType.OPEN:
+                            break;
+                    }
                     break;
             }
         }
@@ -432,7 +485,14 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         {
             Opacity = 0;
 
-            pbxIcon.Image = IconImage;
+            if (IconImage != null)
+            {
+                SetIconType(IconType.CUSTOM, IconImage);
+            }
+            else
+            {
+                SetIconType(_iconType);
+            }
 
             klblHeader.Text = Title;
 
@@ -448,7 +508,14 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
 
             if (Seconds != 0)
             {
-                kbtnDismiss.Text = $"Dismiss ({Seconds - _time}s)";
+                if (_dismissButtonText != null)
+                {
+                    kbtnDismiss.Text = $"{_dismissButtonText} ({Seconds - _time}s)";
+                }
+                else
+                {
+                    kbtnDismiss.Text = $"&Dismiss ({Seconds - _time}s)";
+                }
 
                 _timer = new Timer();
 
@@ -458,7 +525,14 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
                 {
                     _time++;
 
-                    kbtnDismiss.Text = $"Dismiss ({Seconds - _time}s)";
+                    if (_dismissButtonText != null)
+                    {
+                        kbtnDismiss.Text = $"{_dismissButtonText} ({Seconds - _time}s)";
+                    }
+                    else
+                    {
+                        kbtnDismiss.Text = $"&Dismiss ({Seconds - _time}s)";
+                    }
 
                     if (_time == Seconds)
                     {
@@ -524,6 +598,89 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         }
 
         private void StartProcessInExplorer(string process) => Process.Start("explorer.exe", process);
+
+        private void SetIconType(IconType iconType, Image customImage = null)
+        {
+            switch (iconType)
+            {
+                case IconType.CUSTOM:
+                    if (customImage != null)
+                    {
+                        pbxIcon.Image = customImage;
+                    }
+                    else
+                    {
+                        pbxIcon.Image = Resources.Information_128_x_128;
+                    }
+                    break;
+                case IconType.OK:
+                    pbxIcon.Image = Resources.Ok_128_x_128;
+                    break;
+                case IconType.ERROR:
+                    pbxIcon.Image = Resources.Critical_128_x_128;
+                    break;
+                case IconType.EXCLAMATION:
+                    pbxIcon.Image = Resources.Warning_128_x_128;
+                    break;
+                case IconType.INFORMATION:
+                    pbxIcon.Image = Resources.Information_128_x_128;
+                    break;
+                case IconType.QUESTION:
+                    pbxIcon.Image = Resources.Question_128_x_128;
+                    break;
+                case IconType.NOTHING:
+                    pbxIcon.Image = null;
+                    break;
+                case IconType.NONE:
+                    break;
+                case IconType.STOP:
+                    pbxIcon.Image = Resources.Stop_128_x_128;
+                    break;
+                case IconType.HAND:
+                    pbxIcon.Image = Resources.Hand_128_x_128;
+                    break;
+                case IconType.WARNING:
+                    pbxIcon.Image = Resources.Input_Box_Warning_128_x_115;
+                    break;
+            }
+        }
+
+        private void SetActionText(ActionType? type, string buttonText = null)
+        {
+            switch (type)
+            {
+                case ActionType.DEFAULT:
+                    if (buttonText != null)
+                    {
+                        kbtnAction.Text = $"{buttonText} {Path.GetFileName(ProcessToStart)}";
+                    }
+                    else
+                    {
+                        kbtnAction.Text = $"&Open {Path.GetFileName(ProcessToStart)}";
+                    }
+                    break;
+                case ActionType.LAUCHPROCESS:
+                    if (buttonText != null)
+                    {
+                        kbtnAction.Text = $"{buttonText} {Path.GetFileName(ProcessToStart)}";
+                    }
+                    else
+                    {
+                        kbtnAction.Text = $"L&aunch {Path.GetFileName(ProcessToStart)}";
+                    }
+                    break;
+                case ActionType.OPEN:
+                    if (buttonText != null)
+                    {
+                        kbtnAction.Text = $"{buttonText} {Path.GetFileName(ProcessToStart)}";
+                    }
+                    else
+                    {
+                        kbtnAction.Text = $"&Open {Path.GetFileName(ProcessToStart)}";
+                    }
+                    break;
+            }
+        }
         #endregion
 
         #region Overrides
