@@ -23,10 +23,5 @@ namespace Notifications
         {
             
         }
-
-        private void kbtnTestNotificationToastV1_Click(object sender, EventArgs e)
-        {
-            ktnmVersion1.DisplayNotification();
-        }
     }
 }
