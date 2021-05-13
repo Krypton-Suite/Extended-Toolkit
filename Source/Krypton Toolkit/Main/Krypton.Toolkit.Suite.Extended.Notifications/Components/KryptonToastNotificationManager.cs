@@ -152,24 +152,24 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         #region Methods
         public void DisplayNotification()
         {
-            if (_showTimeoutProgress)
-            {
-                KryptonToastNotificationVersion2 kryptonToast = new KryptonToastNotificationVersion2(_fade, _image, _headerText, _contentText,
-                                                                                                     _dismissButtonText, _buttonLocation, _showActionButton,
-                                                                                                     _actionType, _processName, _showControlBox, _cornerRadius,
-                                                                                                     _drawBorders, _timeOutProgress);
+            //if (_showTimeoutProgress)
+            //{
+            //    KryptonToastNotificationVersion2 kryptonToast = new KryptonToastNotificationVersion2(_fade, _image, _headerText, _contentText,
+            //                                                                                         _dismissButtonText, _buttonLocation, _showActionButton,
+            //                                                                                         _actionType, _processName, _showControlBox, _cornerRadius,
+            //                                                                                         _drawBorders, _timeOutProgress);
 
-                kryptonToast.ShowDialog();
-            }
-            else
-            {
-                KryptonToastNotificationVersion1 kryptonToast = new KryptonToastNotificationVersion1(_fade, _image, _headerText, _contentText,
-                                                                                                     _dismissButtonText, _buttonLocation, _showActionButton,
-                                                                                                     _actionType, _processName, _showControlBox, _cornerRadius,
-                                                                                                     _drawBorders);
+            //    kryptonToast.ShowDialog();
+            //}
+            //else
+            //{
+            //    KryptonToastNotificationVersion1 kryptonToast = new KryptonToastNotificationVersion1(_fade, _image, _headerText, _contentText,
+            //                                                                                         _dismissButtonText, _buttonLocation, _showActionButton,
+            //                                                                                         _actionType, _processName, _showControlBox, _cornerRadius,
+            //                                                                                         _drawBorders);
 
-                kryptonToast.ShowDialog();
-            }
+            //    kryptonToast.ShowDialog();
+            //}
         }
         #endregion
     }

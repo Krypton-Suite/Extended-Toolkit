@@ -9,7 +9,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Main\Krypton.Toolkit.Suite.Extended.Buttons\Krypton.Toolkit.Suite.Extended.Buttons.csproj" />
+    <ProjectReference Include="..\..\Main\Krypton.Toolkit.Suite.Extended.Circular.ProgressBar\Krypton.Toolkit.Suite.Extended.Circular.ProgressBar.csproj" />
     <ProjectReference Include="..\..\Main\Krypton.Toolkit.Suite.Extended.Controls\Krypton.Toolkit.Suite.Extended.Controls.csproj" />
+    <ProjectReference Include="..\..\Main\Krypton.Toolkit.Suite.Extended.PropertyGrid\Krypton.Toolkit.Suite.Extended.PropertyGrid.csproj" />
   </ItemGroup>
 
   <ItemGroup>

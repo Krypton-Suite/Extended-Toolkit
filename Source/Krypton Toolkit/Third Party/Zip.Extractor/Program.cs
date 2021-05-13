@@ -39,7 +39,7 @@ namespace Zip.Extractor
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ZipFileExtractor());
+            Application.Run(new MainWindow());
         }
     }
 }

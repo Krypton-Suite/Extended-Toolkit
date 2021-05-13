@@ -30,7 +30,7 @@ namespace CircularProgressBar
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.ccbTest = new Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar.CircularProgressBar();
+            this.ccbTest = new Krypton.Toolkit.Suite.Extended.Circular.ProgressBar.CircularProgressBar();
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             this.kcbColourTrio = new Krypton.Toolkit.KryptonCheckBox();
             this.kbtnStart = new Krypton.Toolkit.KryptonButton();
@@ -148,7 +148,7 @@ namespace CircularProgressBar
 
         #endregion
 
-        private Krypton.Toolkit.Suite.Extended.Circular.Progress.Bar.CircularProgressBar ccbTest;
+        private Krypton.Toolkit.Suite.Extended.Circular.ProgressBar.CircularProgressBar ccbTest;
         private Krypton.Toolkit.KryptonPanel kryptonPanel1;
         private Krypton.Toolkit.KryptonCheckBox kcbColourTrio;
         private Krypton.Toolkit.KryptonButton kbtnReset;
