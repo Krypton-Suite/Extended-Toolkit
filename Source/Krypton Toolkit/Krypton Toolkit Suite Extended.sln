@@ -236,7 +236,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Exten
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.TaskDialogs", "Main\Krypton.Toolkit.Suite.Extended.TaskDialogs\Krypton.Toolkit.Suite.Extended.TaskDialogs.csproj", "{D1CC77DF-89E9-453B-9902-314130880C77}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zip.Extractor", "Third Party\Zip.Extractor\Zip.Extractor.csproj", "{877A925C-60C2-4423-B9D1-F673966C3C77}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zip.Extractor", "Third Party\Zip.Extractor\Zip.Extractor.csproj", "{877A925C-60C2-4423-B9D1-F673966C3C77}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notifications", "Examples\Notifications\Notifications.csproj", "{93FE697F-A3B2-4663-AE60-4D421C6F01D5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -488,6 +490,10 @@ Global
 		{877A925C-60C2-4423-B9D1-F673966C3C77}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{877A925C-60C2-4423-B9D1-F673966C3C77}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{877A925C-60C2-4423-B9D1-F673966C3C77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93FE697F-A3B2-4663-AE60-4D421C6F01D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93FE697F-A3B2-4663-AE60-4D421C6F01D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93FE697F-A3B2-4663-AE60-4D421C6F01D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93FE697F-A3B2-4663-AE60-4D421C6F01D5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -569,6 +575,7 @@ Global
 		{FF6A9F4F-3E04-4F91-8CC2-1D7DFA6D92D4} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 		{D1CC77DF-89E9-453B-9902-314130880C77} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 		{877A925C-60C2-4423-B9D1-F673966C3C77} = {E311F8C7-1F27-48CD-86BE-CC3D798163BE}
+		{93FE697F-A3B2-4663-AE60-4D421C6F01D5} = {25D5F0A6-A601-424B-9431-8EFE139A58A7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A7CE7732-0982-4703-8EFD-7715D569BAB5}

@@ -15,23 +15,17 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
     public class KryptonToastNotificationManager : Component
     {
         #region Variables
-        private ActionButtonLocation _buttonLocation;
+        private ActionButtonType _actionButtonType;
         private ActionType _actionType;
+        private Color _borderColourOne, _borderColourTwo;
         private bool _fade, _showActionButton, _showSubScript, _showTimeoutProgress, _showControlBox;
-        private string _headerText, _contentText, _dismissButtonText, _processName;
+        private string _headerText, _contentText, _dismissButtonText, _processName, _actionButtonText, _soundPath;
         private Image _image;
         private int _cornerRadius, _seconds, _timeOutProgress;
         private IconType _iconType;
-        private IToastNotification _toastNotificationOptions;
-        private RightToLeftSupport _rightToLeftSupport;
-        private PaletteDrawBorders _drawBorders;
         #endregion
 
-        #region Properties       
-        /// <summary>Gets or sets the aaction button location.</summary>
-        /// <value>The action button location.</value>
-        public ActionButtonLocation ButtonLocation { get => _buttonLocation; set => _buttonLocation = value; }
-
+        #region Properties
         /// <summary>
         /// Gets or sets the type of the action.
         /// </summary>
@@ -39,14 +33,6 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// The type of the action.
         /// </value>
         public ActionType Action { get => _actionType; set => _actionType = value; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether this <see cref="KryptonToastNotificationVersion2"/> is fade.
-        /// </summary>
-        /// <value>
-        ///   <c>true</c> if fade; otherwise, <c>false</c>.
-        /// </value>
-        public bool Fade { get => _fade; set => _fade = value; }
 
         /// <summary>
         /// Gets or sets a value indicating whether [show action button].
@@ -60,6 +46,10 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// <value><c>true</c> if [show sub script]; otherwise, <c>false</c>.</value>
         public bool ShowSubScript { get => _showSubScript; set => _showSubScript = value; }
 
+        public Color BorderColourOne { get => _borderColourOne; set => _borderColourOne = value; }
+
+        public Color BorderColourTwo { get => _borderColourTwo; set => _borderColourTwo = value; }
+
         public bool ShowTimeOutProgress { get => _showTimeoutProgress; set => _showTimeoutProgress = value; }
 
         public bool ShowControlBox { get => _showControlBox; set => _showControlBox = value; }
@@ -70,7 +60,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// <value>
         /// The sound path.
         /// </value>
-        public string SoundPath { get; set; }
+        public string SoundPath { get => _soundPath; set => _soundPath = value; }
 
         /// <summary>
         /// Gets or sets the sound stream.
@@ -130,16 +120,11 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
 
         public int TimeOutProgress { get => _timeOutProgress; set => _timeOutProgress = value; }
 
-        /// <summary>Gets or sets the palette draw borders.</summary>
-        /// <value>The palette draw borders.</value>
-        public PaletteDrawBorders PaletteDrawBorders { get => _drawBorders; set => _drawBorders = value; }
+        public string ActionButtonText { get => _actionButtonText; set => _actionButtonText = value; }
 
         /// <summary>Gets or sets the type of the icon.</summary>
         /// <value>The type of the icon.</value>
         public IconType IconType { get => _iconType; set => _iconType = value; }
-
-        /// <summary>Gets or sets a value indicating whether control's elements are aligned to support locales using right-to-left fonts.</summary>
-        public RightToLeftSupport RightToLeft { get => _rightToLeftSupport; set => _rightToLeftSupport = value; }
         #endregion
 
         #region Constructor
@@ -152,24 +137,21 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         #region Methods
         public void DisplayNotification()
         {
-            //if (_showTimeoutProgress)
-            //{
-            //    KryptonToastNotificationVersion2 kryptonToast = new KryptonToastNotificationVersion2(_fade, _image, _headerText, _contentText,
-            //                                                                                         _dismissButtonText, _buttonLocation, _showActionButton,
-            //                                                                                         _actionType, _processName, _showControlBox, _cornerRadius,
-            //                                                                                         _drawBorders, _timeOutProgress);
+            if (_showTimeoutProgress)
+            {
+               
+            }
+            else
+            {
+                KryptonToastNotificationVersion1 kryptonToast = new KryptonToastNotificationVersion1(_image, _headerText, _contentText,
+                                                                                                     _borderColourOne, _borderColourTwo,
+                                                                                                     _cornerRadius, _actionButtonType,
+                                                                                                     _actionType, _showActionButton,
+                                                                                                     _actionButtonText, _dismissButtonText,
+                                                                                                     _iconType, _seconds, _soundPath);
 
-            //    kryptonToast.ShowDialog();
-            //}
-            //else
-            //{
-            //    KryptonToastNotificationVersion1 kryptonToast = new KryptonToastNotificationVersion1(_fade, _image, _headerText, _contentText,
-            //                                                                                         _dismissButtonText, _buttonLocation, _showActionButton,
-            //                                                                                         _actionType, _processName, _showControlBox, _cornerRadius,
-            //                                                                                         _drawBorders);
-
-            //    kryptonToast.ShowDialog();
-            //}
+                kryptonToast.Show();
+            }
         }
         #endregion
     }
