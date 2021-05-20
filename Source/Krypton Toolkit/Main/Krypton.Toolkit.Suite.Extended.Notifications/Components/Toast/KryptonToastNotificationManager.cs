@@ -47,12 +47,21 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// <value><c>true</c> if [show sub script]; otherwise, <c>false</c>.</value>
         public bool ShowSubScript { get => _showSubScript; set => _showSubScript = value; }
 
+        /// <summary>Gets or sets the border colour one.</summary>
+        /// <value>The border colour one.</value>
         public Color BorderColourOne { get => _borderColourOne; set => _borderColourOne = value; }
 
+        /// <summary>Gets or sets the border colour two.</summary>
+        /// <value>The border colour two.</value>
         public Color BorderColourTwo { get => _borderColourTwo; set => _borderColourTwo = value; }
 
+        /// <summary>Gets or sets a value indicating whether [show time out progress].</summary>
+        /// <value><c>true</c> if [show time out progress]; otherwise, <c>false</c>.</value>
         public bool ShowTimeOutProgress { get => _showTimeoutProgress; set => _showTimeoutProgress = value; }
 
+        /// <summary>Gets or sets a value indicating whether [show control box].</summary>
+        /// <value>
+        ///   <c>true</c> if [show control box]; otherwise, <c>false</c>.</value>
         public bool ShowControlBox { get => _showControlBox; set => _showControlBox = value; }
 
         /// <summary>
@@ -85,7 +94,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// <value>
         /// The content text.
         /// </value>
-        public string ContentText { get => _contentText; set => _contentText = value; }
+        public string ContentText { get; set; } //? { get => _contentText; set => _contentText = value; }
 
         /// <summary>
         /// Gets or sets the name of the process.

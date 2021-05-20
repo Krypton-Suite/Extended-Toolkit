@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Krypton.Toolkit;
+using Krypton.Toolkit.Suite.Extended.Notifications;
 
 namespace Notifications
 {
@@ -14,7 +15,7 @@ namespace Notifications
         private KryptonButton kbtnToastV2;
         private KryptonButton kbtnToastV1;
         private Krypton.Toolkit.Suite.Extended.Notifications.KryptonToastNotificationManager ktnmVersionOne;
-        private Krypton.Toolkit.Suite.Extended.Notifications.KryptonToastNotificationManager ktnmVersion2;
+        private Krypton.Toolkit.Suite.Extended.Notifications.KryptonToastNotificationManager ktnmVersionTwo;
         private KryptonPanel kryptonPanel1;
 
         private void InitializeComponent()
@@ -23,7 +24,7 @@ namespace Notifications
             this.kbtnToastV2 = new Krypton.Toolkit.KryptonButton();
             this.kbtnToastV1 = new Krypton.Toolkit.KryptonButton();
             this.ktnmVersionOne = new Krypton.Toolkit.Suite.Extended.Notifications.KryptonToastNotificationManager();
-            this.ktnmVersion2 = new Krypton.Toolkit.Suite.Extended.Notifications.KryptonToastNotificationManager();
+            this.ktnmVersionTwo = new Krypton.Toolkit.Suite.Extended.Notifications.KryptonToastNotificationManager();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -45,6 +46,7 @@ namespace Notifications
             this.kbtnToastV2.Size = new System.Drawing.Size(260, 25);
             this.kbtnToastV2.TabIndex = 1;
             this.kbtnToastV2.Values.Text = "Show Toast V2";
+            this.kbtnToastV2.Visible = false;
             this.kbtnToastV2.Click += new System.EventHandler(this.kbtnToastV2_Click);
             // 
             // kbtnToastV1
@@ -62,13 +64,14 @@ namespace Notifications
             this.ktnmVersionOne.ActionButtonText = "Launch";
             this.ktnmVersionOne.BorderColourOne = System.Drawing.Color.Empty;
             this.ktnmVersionOne.BorderColourTwo = System.Drawing.Color.Empty;
-            this.ktnmVersionOne.ContentText = null;
+            this.ktnmVersionOne.ContentText = "Hello World!\\n\\nThis is a sample Krypton Toast Notification.\\n\\nYou can use this " +
+    "area for your own messages.\\n\\nThe supported maximum image size is 128 x 128.";
             this.ktnmVersionOne.CornerRadius = -1;
             this.ktnmVersionOne.CustomIconImage = null;
             this.ktnmVersionOne.DismissButtonText = "&Dismiss";
             this.ktnmVersionOne.HeaderText = "Hello World!";
             this.ktnmVersionOne.IconType = Krypton.Toolkit.Suite.Extended.Notifications.IconType.INFORMATION;
-            this.ktnmVersionOne.ProcessPath = "C:\\\\Windows\\\\notepad.exe";
+            this.ktnmVersionOne.ProcessPath = "C:\\Windows\\notepad.exe";
             this.ktnmVersionOne.Seconds = 60;
             this.ktnmVersionOne.ShowActionButton = true;
             this.ktnmVersionOne.ShowControlBox = false;
@@ -78,27 +81,27 @@ namespace Notifications
             this.ktnmVersionOne.SoundStream = null;
             this.ktnmVersionOne.TimeOutProgress = 0;
             // 
-            // ktnmVersion2
+            // ktnmVersionTwo
             // 
-            this.ktnmVersion2.Action = Krypton.Toolkit.Suite.Extended.Notifications.ActionType.DEFAULT;
-            this.ktnmVersion2.ActionButtonText = null;
-            this.ktnmVersion2.BorderColourOne = System.Drawing.Color.Empty;
-            this.ktnmVersion2.BorderColourTwo = System.Drawing.Color.Empty;
-            this.ktnmVersion2.ContentText = null;
-            this.ktnmVersion2.CornerRadius = 0;
-            this.ktnmVersion2.CustomIconImage = null;
-            this.ktnmVersion2.DismissButtonText = "&Dismiss";
-            this.ktnmVersion2.HeaderText = "Krypton Toast Notification";
-            this.ktnmVersion2.IconType = Krypton.Toolkit.Suite.Extended.Notifications.IconType.INFORMATION;
-            this.ktnmVersion2.ProcessPath = null;
-            this.ktnmVersion2.Seconds = 0;
-            this.ktnmVersion2.ShowActionButton = false;
-            this.ktnmVersion2.ShowControlBox = false;
-            this.ktnmVersion2.ShowSubScript = false;
-            this.ktnmVersion2.ShowTimeOutProgress = true;
-            this.ktnmVersion2.SoundPath = null;
-            this.ktnmVersion2.SoundStream = null;
-            this.ktnmVersion2.TimeOutProgress = 100;
+            this.ktnmVersionTwo.Action = Krypton.Toolkit.Suite.Extended.Notifications.ActionType.DEFAULT;
+            this.ktnmVersionTwo.ActionButtonText = null;
+            this.ktnmVersionTwo.BorderColourOne = System.Drawing.Color.Empty;
+            this.ktnmVersionTwo.BorderColourTwo = System.Drawing.Color.Empty;
+            this.ktnmVersionTwo.ContentText = null;
+            this.ktnmVersionTwo.CornerRadius = 0;
+            this.ktnmVersionTwo.CustomIconImage = null;
+            this.ktnmVersionTwo.DismissButtonText = "&Dismiss";
+            this.ktnmVersionTwo.HeaderText = "Krypton Toast Notification";
+            this.ktnmVersionTwo.IconType = Krypton.Toolkit.Suite.Extended.Notifications.IconType.INFORMATION;
+            this.ktnmVersionTwo.ProcessPath = null;
+            this.ktnmVersionTwo.Seconds = 0;
+            this.ktnmVersionTwo.ShowActionButton = false;
+            this.ktnmVersionTwo.ShowControlBox = false;
+            this.ktnmVersionTwo.ShowSubScript = false;
+            this.ktnmVersionTwo.ShowTimeOutProgress = true;
+            this.ktnmVersionTwo.SoundPath = null;
+            this.ktnmVersionTwo.SoundStream = null;
+            this.ktnmVersionTwo.TimeOutProgress = 100;
             // 
             // Form2
             // 
@@ -130,7 +133,7 @@ namespace Notifications
 
         private void kbtnToastV2_Click(object sender, EventArgs e)
         {
-            ktnmVersion2.DisplayNotification();
+            ktnmVersionTwo.DisplayNotification();
         }
     }
 }
