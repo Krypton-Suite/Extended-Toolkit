@@ -19,8 +19,9 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         private ActionType _actionType;
         private Color _borderColourOne, _borderColourTwo;
         private bool _fade, _showActionButton, _showSubScript, _showTimeoutProgress, _showControlBox;
-        private string _headerText, _contentText, _dismissButtonText, _processName, _actionButtonText, _soundPath;
-        private Image _image;
+        private string _headerText, _contentText, _dismissButtonText, _processPath, _actionButtonText, _soundPath;
+        private Stream _soundStream;
+        private Image _customIconImage;
         private int _cornerRadius, _seconds, _timeOutProgress;
         private IconType _iconType;
         #endregion
@@ -68,7 +69,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// <value>
         /// The sound stream.
         /// </value>
-        public Stream SoundStream { get; set; }
+        public Stream SoundStream { get => _soundStream; set => _soundStream = value; }
 
         /// <summary>
         /// Gets or sets the header text.
@@ -92,7 +93,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// <value>
         /// The name of the process.
         /// </value>
-        public string ProcessName { get => _processName; set => _processName = value; }
+        public string ProcessPath { get => _processPath; set => _processPath = value; }
 
         /// <summary>Gets or sets the dismiss button text.</summary>
         /// <value>The dismiss button text.</value>
@@ -104,7 +105,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// <value>
         /// The icon image.
         /// </value>
-        public Image IconImage { get => _image; set => _image = value; }
+        public Image CustomIconImage { get => _customIconImage; set => _customIconImage = value; }
 
         /// <summary>
         /// Gets or sets the seconds.
@@ -132,18 +133,93 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         {
 
         }
+
+        /// <summary>Initializes a new instance of the <see cref="KryptonToastNotificationManager" /> class.</summary>
+        /// <param name="actionType">Type of the action.</param>
+        /// <param name="showActionButton">if set to <c>true</c> [show action button].</param>
+        /// <param name="showSubScript">The show sub script.</param>
+        /// <param name="showControlBox">The show control box.</param>
+        /// <param name="showTimeOutProgress">The show time out progress.</param>
+        /// <param name="borderColourOne">The border colour one.</param>
+        /// <param name="borderColourTwo">The border colour two.</param>
+        /// <param name="soundPath">The sound path.</param>
+        /// <param name="contentText">The content text.</param>
+        /// <param name="headerText">The header text.</param>
+        /// <param name="actionButtonText">The action button text.</param>
+        /// <param name="dismissButtonText">The dismiss button text.</param>
+        /// <param name="processPath">The process path.</param>
+        /// <param name="soundStream">The sound stream.</param>
+        /// <param name="customIconImage">The custom icon image.</param>
+        /// <param name="iconType">Type of the icon.</param>
+        /// <param name="seconds">The seconds.</param>
+        /// <param name="timeOutProgress">The time out progress.</param>
+        /// <param name="cornerRadius">The corner radius.</param>
+        public KryptonToastNotificationManager(ActionType actionType, bool showActionButton, bool? showSubScript, bool? showControlBox,
+                                               bool? showTimeOutProgress, Color? borderColourOne, Color? borderColourTwo,
+                                               string soundPath, string contentText, string headerText, string actionButtonText,
+                                               string dismissButtonText, string processPath, Stream soundStream, 
+                                               Image customIconImage, IconType iconType, int? seconds, int? timeOutProgress, 
+                                               int? cornerRadius)
+        {
+            // Store values
+            _actionType = actionType;
+
+            _showActionButton = showActionButton;
+
+            _showSubScript = showSubScript ?? true;
+
+            _showControlBox = showControlBox ?? false;
+
+            _showTimeoutProgress = showTimeOutProgress ?? false;
+
+            _borderColourOne = borderColourOne ?? Color.Empty;
+
+            _borderColourTwo = borderColourTwo ?? Color.Empty;
+
+            _soundPath = soundPath;
+
+            _contentText = contentText;
+
+            _headerText = headerText;
+
+            _actionButtonText = actionButtonText;
+
+            _dismissButtonText = dismissButtonText;
+
+            _processPath = processPath;
+
+            _soundStream = soundStream;
+
+            _customIconImage = customIconImage;
+
+            _iconType = iconType;
+
+            _seconds = seconds ?? 60;
+
+            _timeOutProgress = timeOutProgress ?? 100;
+
+            _cornerRadius = cornerRadius ?? -1;
+        }
         #endregion
 
         #region Methods
+        /// <summary>Displays the notification.</summary>
         public void DisplayNotification()
         {
             if (_showTimeoutProgress)
             {
-               
+                KryptonToastNotificationVersion2 kryptonToast = new KryptonToastNotificationVersion2(_customIconImage, _headerText, _contentText,
+                                                                                                     _borderColourOne, _borderColourTwo,
+                                                                                                     _cornerRadius, _actionButtonType,
+                                                                                                     _actionType, _showActionButton,
+                                                                                                     _actionButtonText, _dismissButtonText,
+                                                                                                     _iconType, _timeOutProgress, _soundPath);
+
+                kryptonToast.Show();
             }
             else
             {
-                KryptonToastNotificationVersion1 kryptonToast = new KryptonToastNotificationVersion1(_image, _headerText, _contentText,
+                KryptonToastNotificationVersion1 kryptonToast = new KryptonToastNotificationVersion1(_customIconImage, _headerText, _contentText,
                                                                                                      _borderColourOne, _borderColourTwo,
                                                                                                      _cornerRadius, _actionButtonType,
                                                                                                      _actionType, _showActionButton,
