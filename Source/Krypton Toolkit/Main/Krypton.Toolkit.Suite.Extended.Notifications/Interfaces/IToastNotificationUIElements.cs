@@ -1,8 +1,16 @@
-﻿using System.Windows.Forms;
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ */
+#endregion
+
+using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Notifications
 {
-    /// <summary>Controls the UI elements of an <see cref="KryptonToastNotification"/>.</summary>
+    /// <summary>Controls the UI elements of an <see cref="KryptonToastNotificationVersion1"/>.</summary>
     public interface IToastNotificationUIElements
     {
         /// <summary>Gets the base window.</summary>

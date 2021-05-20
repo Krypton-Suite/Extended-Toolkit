@@ -1,4 +1,11 @@
-﻿using Krypton.Toolkit.Suite.Extended.Messagebox.Properties;
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ */
+#endregion
+
 using System;
 using System.ComponentModel;
 using System.Drawing;
@@ -6,6 +13,8 @@ using System.Media;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
+
+using Krypton.Toolkit.Suite.Extended.Messagebox.Properties;
 
 namespace Krypton.Toolkit.Suite.Extended.Messagebox
 {
@@ -261,7 +270,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         private KryptonPanel _panelMessageText;
         private KryptonWrapLabel _messageText;
         private KryptonPanel _panelMessageIcon;
-        private int _fadeSleepTimer, _timeOut;
+        private int _fadeSleepTimer, _timeOut, _cornerRadius, _blurRadius;
         private PictureBox _messageIcon;
         private KryptonPanel _panelButtons;
         private KryptonPanel _panelCheckBox;
@@ -276,6 +285,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         private Font _messageboxTypeface;
         private Image _customMessageBoxIcon;
         private Point _optionalCheckBoxLocation;
+        private bool _useBlur;
+        private KryptonForm _parentWindow;
         #endregion
 
         #region Static Fields
@@ -443,19 +454,28 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="buttonOneCustomDialogResult">The action for the first button to take.</param>
         /// <param name="buttonTwoCustomDialogResult">The action for the second button to take.</param>
         /// <param name="buttonThreeCustomDialogResult">The action for the third button to take.</param>
+        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to -1.</param>
+        /// <param name="showToolTips">Displays tool-tips on the controls.</param>
+        /// <param name="useBlur">Use the blur functionality on the parent window.</param>
+        /// <param name="blurRadius">The radius of the blur effect. By default, this is set to 0.</param>
+        /// <param name="parentWindow">The parent window of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
         private InternalKryptonMessageBoxExtended(IWin32Window showOwner, string text, string caption,
-                                          ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions? customButtonOptions,
-                                          ExtendedMessageBoxIcon icon,
-                                          MessageBoxDefaultButton defaultButton,
-                                          MessageBoxOptions options, HelpInformation helpInformation, bool? showCtrlCopy,
-                                          Font messageboxTypeface, bool showOptionalCheckBox, string optionalCheckBoxText,
-                                          bool isOptionalCheckBoxChecked, CheckState? optionalCheckBoxCheckState,
-                                          AnchorStyles? optionalCheckBoxAnchor, Point? optionalCheckBoxLocation,
-                                          Image customMessageBoxIcon, bool showCopyButton, string copyButtonText,
-                                          bool? fade, int? fadeSleepTimer, string buttonOneCustomText,
-                                          string buttonTwoCustomText, string buttonThreeCustomText,
-                                          DialogResult? buttonOneCustomDialogResult, DialogResult? buttonTwoCustomDialogResult,
-                                          DialogResult? buttonThreeCustomDialogResult, bool? showToolTips)
+                                                  ExtendedMessageBoxButtons buttons, 
+                                                  ExtendedMessageBoxCustomButtonOptions? customButtonOptions,
+                                                  ExtendedMessageBoxIcon icon,
+                                                  MessageBoxDefaultButton defaultButton,
+                                                  MessageBoxOptions options, HelpInformation helpInformation,
+                                                  bool? showCtrlCopy, Font messageboxTypeface, 
+                                                  bool showOptionalCheckBox, string optionalCheckBoxText,
+                                                  bool isOptionalCheckBoxChecked, CheckState? optionalCheckBoxCheckState,
+                                                  AnchorStyles? optionalCheckBoxAnchor, Point? optionalCheckBoxLocation,
+                                                  Image customMessageBoxIcon, bool showCopyButton, string copyButtonText,
+                                                  bool? fade, int? fadeSleepTimer, string buttonOneCustomText,
+                                                  string buttonTwoCustomText, string buttonThreeCustomText,
+                                                  DialogResult? buttonOneCustomDialogResult, DialogResult? buttonTwoCustomDialogResult,
+                                                  DialogResult? buttonThreeCustomDialogResult, int? cornerRadius,
+                                                  bool? showToolTips, bool? useBlur,
+                                                  int? blurRadius, KryptonForm parentWindow = null)
         {
             #region Store Values
             _text = text;
@@ -511,6 +531,14 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             _buttonThreeResult = buttonThreeCustomDialogResult ?? DialogResult.None;
 
             _showToolTips = showToolTips ?? false;
+
+            _cornerRadius = cornerRadius ?? -1;
+
+            _useBlur = useBlur ?? false;
+            
+            _blurRadius = blurRadius ?? 0;
+            
+            _parentWindow = parentWindow;
             #endregion
 
             // Create the form contents
@@ -535,6 +563,34 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             ShowOptionalCheckBoxUI(showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation);
 
             ShowCopyButton(showCopyButton, copyButtonText);
+
+            // Define a corner radius, default is -1
+            StateCommon.Border.Rounding = _cornerRadius;
+
+            // Blur window
+            if (_useBlur)
+            {
+                if (showOwner is KryptonForm)
+                {
+                    _parentWindow = (KryptonForm)showOwner;
+
+                    _parentWindow.BlurValues.EnableBlur = _useBlur;
+
+                    _parentWindow.BlurValues.BlurWhenFocusLost = _useBlur;
+
+                    _parentWindow.BlurValues.Radius = Convert.ToByte(_blurRadius);
+                }
+                else if (_parentWindow != null)
+                {
+                    showOwner = parentWindow;
+
+                    _parentWindow.BlurValues.EnableBlur = _useBlur;
+
+                    _parentWindow.BlurValues.BlurWhenFocusLost = _useBlur;
+
+                    _parentWindow.BlurValues.Radius = Convert.ToByte(_blurRadius);
+                }
+            }
         }
 
         /// <summary>
@@ -553,7 +609,6 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         #endregion
 
         #region Public
-
         /// <summary>
         /// Displays a message box with specified text.
         /// </summary>
@@ -570,14 +625,27 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="copyButtonText">The text shown on the copy button.</param>
         /// <param name="fade">Allows the message box to fade in and out.</param>
         /// <param name="fadeSleepTimer">The speed of the fading effect.</param>
+        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to -1.</param>
+        /// <param name="showToolTips">Displays tool-tips on the controls.</param>
+        /// <param name="useBlur">Use the blur functionality on the parent window.</param>
+        /// <param name="blurRadius">The radius of the blur effect. By default, this is set to 0.</param>
+        /// <param name="parentWindow">The parent window of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(string text, bool? showCtrlCopy = null, Font messageboxTypeface = null,
                                         bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
                                         bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null, Point? optionalCheckBoxLocation = null,
-                                        bool showCopyButton = false, string copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50)
+                                        bool showCopyButton = false, string copyButtonText = null, bool? fade = false, 
+                                        int? fadeSleepTimer = 50, int? cornerRadius = -1, bool? showToolTips = null, 
+                                        bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
         {
-            return InternalShow(null, text, string.Empty, ExtendedMessageBoxButtons.OK, null, ExtendedMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText, fade, fadeSleepTimer);
+            return InternalShow(null, text, string.Empty, ExtendedMessageBoxButtons.OK, null, ExtendedMessageBoxIcon.NONE, 
+                                MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox,
+                                optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, 
+                                optionalCheckBoxLocation, null, showCopyButton, copyButtonText, fade, fadeSleepTimer,
+                                null, null, null, null,
+                                null, null, cornerRadius, showToolTips, useBlur, blurRadius, 
+                                parentWindow);
         }
 
         /// <summary>
@@ -597,15 +665,28 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="copyButtonText">The text shown on the copy button.</param>
         /// <param name="fade">Allows the message box to fade in and out.</param>
         /// <param name="fadeSleepTimer">The speed of the fading effect.</param>
+        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to -1.</param>
+        /// <param name="showToolTips">Displays tool-tips on the controls.</param>
+        /// <param name="useBlur">Use the blur functionality on the parent window.</param>
+        /// <param name="blurRadius">The radius of the blur effect. By default, this is set to 0.</param>
+        /// <param name="parentWindow">The parent window of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(IWin32Window owner, string text, bool? showCtrlCopy = null, Font messageboxTypeface = null,
                                         bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
                                         bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null,
                                         Point? optionalCheckBoxLocation = null, bool showCopyButton = false,
-                                        string copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50)
+                                        string copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50, 
+                                        int? cornerRadius = -1, bool? showToolTips = null,
+                                        bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
         {
-            return InternalShow(owner, text, string.Empty, ExtendedMessageBoxButtons.OK, null, ExtendedMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText, fade, fadeSleepTimer);
+            return InternalShow(owner, text, string.Empty, ExtendedMessageBoxButtons.OK, null, 
+                                ExtendedMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0, null, 
+                                showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, 
+                                optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, 
+                                showCopyButton, copyButtonText, fade, fadeSleepTimer, null, null, null, null,
+                                null, null, cornerRadius, showToolTips, useBlur, blurRadius,
+                                parentWindow);
         }
 
         /// <summary>
@@ -625,15 +706,28 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="copyButtonText">The text shown on the copy button.</param>
         /// <param name="fade">Allows the message box to fade in and out.</param>
         /// <param name="fadeSleepTimer">The speed of the fading effect.</param>
+        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to -1.</param>
+        /// <param name="showToolTips">Displays tool-tips on the controls.</param>
+        /// <param name="useBlur">Use the blur functionality on the parent window.</param>
+        /// <param name="blurRadius">The radius of the blur effect. By default, this is set to 0.</param>
+        /// <param name="parentWindow">The parent window of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(string text, string caption, bool? showCtrlCopy = null, Font messageboxTypeface = null,
                                         bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
                                         bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null,
                                         Point? optionalCheckBoxLocation = null, bool showCopyButton = false,
-                                        string copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50)
+                                        string copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50, 
+                                        int? cornerRadius = -1, bool? showToolTips = null,
+                                        bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
         {
-            return InternalShow(null, text, caption, ExtendedMessageBoxButtons.OK, null, ExtendedMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText, fade, fadeSleepTimer);
+            return InternalShow(null, text, caption, ExtendedMessageBoxButtons.OK, null, 
+                                ExtendedMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0, null, 
+                                showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked,
+                                optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, 
+                                showCopyButton, copyButtonText, fade, fadeSleepTimer, null, null, null, null,
+                                null, null, cornerRadius, showToolTips, useBlur, blurRadius,
+                                parentWindow);
         }
 
         /// <summary>
@@ -654,6 +748,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="copyButtonText">The text shown on the copy button.</param>
         /// <param name="fade">Allows the message box to fade in and out.</param>
         /// <param name="fadeSleepTimer">The speed of the fading effect.</param>
+        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to -1.</param>
+        /// <param name="showToolTips">Displays tool-tips on the controls.</param>
+        /// <param name="useBlur">Use the blur functionality on the parent window.</param>
+        /// <param name="blurRadius">The radius of the blur effect. By default, this is set to 0.</param>
+        /// <param name="parentWindow">The parent window of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(IWin32Window owner,
                                         string text, string caption, bool? showCtrlCopy = null, Font messageboxTypeface = null,
@@ -661,9 +760,17 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null,
                                         Point? optionalCheckBoxLocation = null, bool showCopyButton = false,
-                                        string copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50)
+                                        string copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50,
+                                        int? cornerRadius = -1, bool? showToolTips = null,
+                                        bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
         {
-            return InternalShow(owner, text, caption, ExtendedMessageBoxButtons.OK, null, ExtendedMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText, fade, fadeSleepTimer);
+            return InternalShow(owner, text, caption, ExtendedMessageBoxButtons.OK, null, ExtendedMessageBoxIcon.NONE, 
+                                MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, 
+                                showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, 
+                                optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText, 
+                                fade, fadeSleepTimer, null, null, null, null,
+                                null, null, cornerRadius, showToolTips, useBlur, blurRadius,
+                                parentWindow);
         }
 
         /// <summary>
@@ -691,6 +798,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="buttonOneCustomDialogResult">The action for the first button to take.</param>
         /// <param name="buttonTwoCustomDialogResult">The action for the second button to take.</param>
         /// <param name="buttonThreeCustomDialogResult">The action for the third button to take.</param>
+        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to -1.</param>
+        /// <param name="showToolTips">Displays tool-tips on the controls.</param>
+        /// <param name="useBlur">Use the blur functionality on the parent window.</param>
+        /// <param name="blurRadius">The radius of the blur effect. By default, this is set to 0.</param>
+        /// <param name="parentWindow">The parent window of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(string text, string caption,
                                         ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions customButtonOptions,
@@ -703,13 +815,15 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         string buttonOneCustomText = null, string buttonTwoCustomText = null,
                                         string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                         DialogResult? buttonTwoCustomDialogResult = null,
-                                        DialogResult? buttonThreeCustomDialogResult = null)
+                                        DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = -1, bool? showToolTips = null,
+                                        bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
         {
             return InternalShow(null, text, caption, buttons, customButtonOptions, ExtendedMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1,
                          0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText,
                                 isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation,
                 null, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText,
-                                buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
+                                buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, 
+                                buttonThreeCustomDialogResult, cornerRadius, showToolTips, useBlur, blurRadius, parentWindow);
         }
 
         /// <summary>
@@ -738,6 +852,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="buttonOneCustomDialogResult">The action for the first button to take.</param>
         /// <param name="buttonTwoCustomDialogResult">The action for the second button to take.</param>
         /// <param name="buttonThreeCustomDialogResult">The action for the third button to take.</param>
+        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to -1.</param>
+        /// <param name="showToolTips">Displays tool-tips on the controls.</param>
+        /// <param name="useBlur">Use the blur functionality on the parent window.</param>
+        /// <param name="blurRadius">The radius of the blur effect. By default, this is set to 0.</param>
+        /// <param name="parentWindow">The parent window of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(IWin32Window owner,
                                         string text, string caption,
@@ -751,9 +870,16 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         string buttonOneCustomText = null, string buttonTwoCustomText = null,
                                         string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                         DialogResult? buttonTwoCustomDialogResult = null,
-                                        DialogResult? buttonThreeCustomDialogResult = null)
+                                        DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = -1, bool? showToolTips = null,
+                                        bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
         {
-            return InternalShow(owner, text, caption, buttons, customButtonOptions, ExtendedMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
+            return InternalShow(owner, text, caption, buttons, customButtonOptions, ExtendedMessageBoxIcon.NONE, 
+                                MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, 
+                                showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, 
+                                optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText,
+                                fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText,
+                                buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult, 
+                                cornerRadius, showToolTips, useBlur, blurRadius, parentWindow);
         }
 
         /// <summary>
@@ -783,6 +909,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="buttonOneCustomDialogResult">The action for the first button to take.</param>
         /// <param name="buttonTwoCustomDialogResult">The action for the second button to take.</param>
         /// <param name="buttonThreeCustomDialogResult">The action for the third button to take.</param>
+        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to -1.</param>
+        /// <param name="showToolTips">Displays tool-tips on the controls.</param>
+        /// <param name="useBlur">Use the blur functionality on the parent window.</param>
+        /// <param name="blurRadius">The radius of the blur effect. By default, this is set to 0.</param>
+        /// <param name="parentWindow">The parent window of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(string text, string caption,
                                         ExtendedMessageBoxButtons buttons,
@@ -797,9 +928,15 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         string buttonOneCustomText = null, string buttonTwoCustomText = null,
                                         string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                         DialogResult? buttonTwoCustomDialogResult = null,
-                                        DialogResult? buttonThreeCustomDialogResult = null)
+                                        DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = -1, bool? showToolTips = null,
+                                        bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
         {
-            return InternalShow(null, text, caption, buttons, customButtonOptions, icon, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
+            return InternalShow(null, text, caption, buttons, customButtonOptions, icon, MessageBoxDefaultButton.Button1, 0,
+                                null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, 
+                                isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation,
+                                customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText,
+                                buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult,
+                                buttonThreeCustomDialogResult, cornerRadius, showToolTips, useBlur, blurRadius, parentWindow);
         }
 
         /// <summary>
@@ -830,6 +967,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="buttonOneCustomDialogResult">The action for the first button to take.</param>
         /// <param name="buttonTwoCustomDialogResult">The action for the second button to take.</param>
         /// <param name="buttonThreeCustomDialogResult">The action for the third button to take.</param>
+        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to -1.</param>
+        /// <param name="showToolTips">Displays tool-tips on the controls.</param>
+        /// <param name="useBlur">Use the blur functionality on the parent window.</param>
+        /// <param name="blurRadius">The radius of the blur effect. By default, this is set to 0.</param>
+        /// <param name="parentWindow">The parent window of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(IWin32Window owner,
                                         string text, string caption,
@@ -844,9 +986,15 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         string buttonOneCustomText = null, string buttonTwoCustomText = null,
                                         string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                         DialogResult? buttonTwoCustomDialogResult = null,
-                                        DialogResult? buttonThreeCustomDialogResult = null)
+                                        DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = -1, bool? showToolTips = null,
+                                        bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
         {
-            return InternalShow(owner, text, caption, buttons, customButtonOptions, icon, MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
+            return InternalShow(owner, text, caption, buttons, customButtonOptions, icon, MessageBoxDefaultButton.Button1, 0,
+                                null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText,
+                                isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, 
+                                customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, 
+                                buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, 
+                                buttonThreeCustomDialogResult, cornerRadius, showToolTips, useBlur, blurRadius, parentWindow);
         }
 
         /// <summary>
@@ -877,6 +1025,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="buttonOneCustomDialogResult">The action for the first button to take.</param>
         /// <param name="buttonTwoCustomDialogResult">The action for the second button to take.</param>
         /// <param name="buttonThreeCustomDialogResult">The action for the third button to take.</param>
+        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to -1.</param>
+        /// <param name="showToolTips">Displays tool-tips on the controls.</param>
+        /// <param name="useBlur">Use the blur functionality on the parent window.</param>
+        /// <param name="blurRadius">The radius of the blur effect. By default, this is set to 0.</param>
+        /// <param name="parentWindow">The parent window of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(string text, string caption,
                                         ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions customButtonOptions,
@@ -890,9 +1043,15 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         string buttonOneCustomText = null, string buttonTwoCustomText = null,
                                         string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                         DialogResult? buttonTwoCustomDialogResult = null,
-                                        DialogResult? buttonThreeCustomDialogResult = null)
+                                        DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = -1, bool? showToolTips = null,
+                                        bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
         {
-            return InternalShow(null, text, caption, buttons, customButtonOptions, icon, defaultButton, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
+            return InternalShow(null, text, caption, buttons, customButtonOptions, icon, defaultButton, 0, null, 
+                                showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked,
+                                optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon,
+                                showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, 
+                                buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult,
+                                buttonThreeCustomDialogResult, cornerRadius, showToolTips, useBlur, blurRadius, parentWindow);
         }
 
         /// <summary>
@@ -924,6 +1083,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="buttonOneCustomDialogResult">The action for the first button to take.</param>
         /// <param name="buttonTwoCustomDialogResult">The action for the second button to take.</param>
         /// <param name="buttonThreeCustomDialogResult">The action for the third button to take.</param>
+        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to -1.</param>
+        /// <param name="showToolTips">Displays tool-tips on the controls.</param>
+        /// <param name="useBlur">Use the blur functionality on the parent window.</param>
+        /// <param name="blurRadius">The radius of the blur effect. By default, this is set to 0.</param>
+        /// <param name="parentWindow">The parent window of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(IWin32Window owner,
                                         string text, string caption,
@@ -939,9 +1103,15 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         string buttonOneCustomText = null, string buttonTwoCustomText = null,
                                         string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                         DialogResult? buttonTwoCustomDialogResult = null,
-                                        DialogResult? buttonThreeCustomDialogResult = null)
+                                        DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = -1, bool? showToolTips = null,
+                                        bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
         {
-            return InternalShow(owner, text, caption, buttons, customButtonOptions, icon, defaultButton, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
+            return InternalShow(owner, text, caption, buttons, customButtonOptions, icon, defaultButton, 0, null, 
+                                showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, 
+                                optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, 
+                                showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, 
+                                buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, 
+                                buttonThreeCustomDialogResult, cornerRadius, showToolTips, useBlur, blurRadius, parentWindow);
         }
 
         /// <summary>
@@ -973,6 +1143,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="buttonOneCustomDialogResult">The action for the first button to take.</param>
         /// <param name="buttonTwoCustomDialogResult">The action for the second button to take.</param>
         /// <param name="buttonThreeCustomDialogResult">The action for the third button to take.</param>
+        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to -1.</param>
+        /// <param name="showToolTips">Displays tool-tips on the controls.</param>
+        /// <param name="useBlur">Use the blur functionality on the parent window.</param>
+        /// <param name="blurRadius">The radius of the blur effect. By default, this is set to 0.</param>
+        /// <param name="parentWindow">The parent window of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(string text, string caption,
                                         ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions customButtonOptions,
@@ -988,9 +1163,15 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         string buttonOneCustomText = null, string buttonTwoCustomText = null,
                                         string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                         DialogResult? buttonTwoCustomDialogResult = null,
-                                        DialogResult? buttonThreeCustomDialogResult = null)
+                                        DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = -1, bool? showToolTips = null,
+                                        bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
         {
-            return InternalShow(null, text, caption, buttons, customButtonOptions, icon, defaultButton, options, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
+            return InternalShow(null, text, caption, buttons, customButtonOptions, icon, defaultButton, options, null, 
+                                showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, 
+                                optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon,
+                                showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, 
+                                buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, 
+                                buttonThreeCustomDialogResult, cornerRadius, showToolTips, useBlur, blurRadius, parentWindow);
         }
 
         /// <summary>
@@ -1023,6 +1204,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="buttonOneCustomDialogResult">The action for the first button to take.</param>
         /// <param name="buttonTwoCustomDialogResult">The action for the second button to take.</param>
         /// <param name="buttonThreeCustomDialogResult">The action for the third button to take.</param>
+        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to -1.</param>
+        /// <param name="showToolTips">Displays tool-tips on the controls.</param>
+        /// <param name="useBlur">Use the blur functionality on the parent window.</param>
+        /// <param name="blurRadius">The radius of the blur effect. By default, this is set to 0.</param>
+        /// <param name="parentWindow">The parent window of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(IWin32Window owner,
                                         string text, string caption,
@@ -1039,9 +1225,15 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         string buttonOneCustomText = null, string buttonTwoCustomText = null,
                                         string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                         DialogResult? buttonTwoCustomDialogResult = null,
-                                        DialogResult? buttonThreeCustomDialogResult = null)
+                                        DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = -1, bool? showToolTips = null,
+                                        bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
         {
-            return InternalShow(owner, text, caption, buttons, customButtonOptions, icon, defaultButton, options, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
+            return InternalShow(owner, text, caption, buttons, customButtonOptions, icon, defaultButton, options, null, 
+                                showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, 
+                                optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, 
+                                showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, 
+                                buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult,
+                                buttonThreeCustomDialogResult, cornerRadius, showToolTips, useBlur, blurRadius, parentWindow);
         }
 
         /// <summary>
@@ -1074,6 +1266,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="buttonOneCustomDialogResult">The action for the first button to take.</param>
         /// <param name="buttonTwoCustomDialogResult">The action for the second button to take.</param>
         /// <param name="buttonThreeCustomDialogResult">The action for the third button to take.</param>
+        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to -1.</param>
+        /// <param name="showToolTips">Displays tool-tips on the controls.</param>
+        /// <param name="useBlur">Use the blur functionality on the parent window.</param>
+        /// <param name="blurRadius">The radius of the blur effect. By default, this is set to 0.</param>
+        /// <param name="parentWindow">The parent window of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(string text, string caption,
                                         ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions customButtonOptions,
@@ -1089,9 +1286,16 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         string buttonOneCustomText = null, string buttonTwoCustomText = null,
                                         string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                         DialogResult? buttonTwoCustomDialogResult = null,
-                                        DialogResult? buttonThreeCustomDialogResult = null)
+                                        DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = -1, bool? showToolTips = null,
+                                        bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
         {
-            return InternalShow(null, text, caption, buttons, customButtonOptions, icon, defaultButton, options, displayHelpButton ? new HelpInformation() : null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
+            return InternalShow(null, text, caption, buttons, customButtonOptions, icon, defaultButton, options, 
+                                displayHelpButton ? new HelpInformation() : null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, 
+                                optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, 
+                                optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer,
+                                buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, 
+                                buttonTwoCustomDialogResult, buttonThreeCustomDialogResult, cornerRadius, showToolTips, useBlur,
+                                blurRadius, parentWindow);
         }
 
         /// <summary>
@@ -1124,6 +1328,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="buttonOneCustomDialogResult">The action for the first button to take.</param>
         /// <param name="buttonTwoCustomDialogResult">The action for the second button to take.</param>
         /// <param name="buttonThreeCustomDialogResult">The action for the third button to take.</param>
+        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to -1.</param>
+        /// <param name="showToolTips">Displays tool-tips on the controls.</param>
+        /// <param name="useBlur">Use the blur functionality on the parent window.</param>
+        /// <param name="blurRadius">The radius of the blur effect. By default, this is set to 0.</param>
+        /// <param name="parentWindow">The parent window of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(string text, string caption,
                                         ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions customButtonOptions,
@@ -1139,9 +1348,16 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         string buttonOneCustomText = null, string buttonTwoCustomText = null,
                                         string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                         DialogResult? buttonTwoCustomDialogResult = null,
-                                        DialogResult? buttonThreeCustomDialogResult = null)
+                                        DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = -1, bool? showToolTips = null,
+                                        bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
         {
-            return InternalShow(null, text, caption, buttons, customButtonOptions, icon, defaultButton, options, new HelpInformation(helpFilePath), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
+            return InternalShow(null, text, caption, buttons, customButtonOptions, icon, defaultButton, options,
+                                new HelpInformation(helpFilePath), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, 
+                                optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, 
+                                optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer,
+                                buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, 
+                                buttonTwoCustomDialogResult, buttonThreeCustomDialogResult, cornerRadius, showToolTips, useBlur, 
+                                blurRadius, parentWindow);
         }
 
         /// <summary>
@@ -1175,6 +1391,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="buttonOneCustomDialogResult">The action for the first button to take.</param>
         /// <param name="buttonTwoCustomDialogResult">The action for the second button to take.</param>
         /// <param name="buttonThreeCustomDialogResult">The action for the third button to take.</param>
+        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to -1.</param>
+        /// <param name="showToolTips">Displays tool-tips on the controls.</param>
+        /// <param name="useBlur">Use the blur functionality on the parent window.</param>
+        /// <param name="blurRadius">The radius of the blur effect. By default, this is set to 0.</param>
+        /// <param name="parentWindow">The parent window of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(IWin32Window owner,
                                         string text, string caption,
@@ -1191,9 +1412,16 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         string buttonOneCustomText = null, string buttonTwoCustomText = null,
                                         string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                         DialogResult? buttonTwoCustomDialogResult = null,
-                                        DialogResult? buttonThreeCustomDialogResult = null)
+                                        DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = -1, bool? showToolTips = null,
+                                        bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
         {
-            return InternalShow(owner, text, caption, buttons, customButtonOptions, icon, defaultButton, options, new HelpInformation(helpFilePath), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
+            return InternalShow(owner, text, caption, buttons, customButtonOptions, icon, defaultButton, options,
+                   new HelpInformation(helpFilePath), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, 
+                                optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor,
+                                optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, 
+                                buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult,
+                                buttonTwoCustomDialogResult, buttonThreeCustomDialogResult, cornerRadius, showToolTips, useBlur,
+                                blurRadius, parentWindow);
         }
 
         /// <summary>
@@ -1227,6 +1455,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="buttonOneCustomDialogResult">The action for the first button to take.</param>
         /// <param name="buttonTwoCustomDialogResult">The action for the second button to take.</param>
         /// <param name="buttonThreeCustomDialogResult">The action for the third button to take.</param>
+        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to -1.</param>
+        /// <param name="showToolTips">Displays tool-tips on the controls.</param>
+        /// <param name="useBlur">Use the blur functionality on the parent window.</param>
+        /// <param name="blurRadius">The radius of the blur effect. By default, this is set to 0.</param>
+        /// <param name="parentWindow">The parent window of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(string text, string caption,
                                         ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions customButtonOptions,
@@ -1242,9 +1475,16 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         string buttonOneCustomText = null, string buttonTwoCustomText = null,
                                         string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                         DialogResult? buttonTwoCustomDialogResult = null,
-                                        DialogResult? buttonThreeCustomDialogResult = null)
+                                        DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = -1, bool? showToolTips = null,
+                                        bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
         {
-            return InternalShow(null, text, caption, buttons, customButtonOptions, icon, defaultButton, options, new HelpInformation(helpFilePath, navigator), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
+            return InternalShow(null, text, caption, buttons, customButtonOptions, icon, defaultButton, options, 
+                                new HelpInformation(helpFilePath, navigator), showCtrlCopy, messageboxTypeface, 
+                                showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, 
+                                optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, 
+                                fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText,
+                                buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult, 
+                                cornerRadius, showToolTips, useBlur, blurRadius, parentWindow);
         }
 
         /// <summary>
@@ -1278,6 +1518,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="buttonOneCustomDialogResult">The action for the first button to take.</param>
         /// <param name="buttonTwoCustomDialogResult">The action for the second button to take.</param>
         /// <param name="buttonThreeCustomDialogResult">The action for the third button to take.</param>
+        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to -1.</param>
+        /// <param name="showToolTips">Displays tool-tips on the controls.</param>
+        /// <param name="useBlur">Use the blur functionality on the parent window.</param>
+        /// <param name="blurRadius">The radius of the blur effect. By default, this is set to 0.</param>
+        /// <param name="parentWindow">The parent window of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(string text, string caption,
                                         ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions customButtonOptions,
@@ -1293,9 +1538,16 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         string buttonOneCustomText = null, string buttonTwoCustomText = null,
                                         string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                         DialogResult? buttonTwoCustomDialogResult = null,
-                                        DialogResult? buttonThreeCustomDialogResult = null)
+                                        DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = -1, bool? showToolTips = null,
+                                        bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
         {
-            return InternalShow(null, text, caption, buttons, customButtonOptions, icon, defaultButton, options, new HelpInformation(helpFilePath, keyword), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
+            return InternalShow(null, text, caption, buttons, customButtonOptions, icon, defaultButton, options, 
+                                new HelpInformation(helpFilePath, keyword), showCtrlCopy, messageboxTypeface, showOptionalCheckBox,
+                                optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, 
+                                optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer,
+                                buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult,
+                                buttonTwoCustomDialogResult, buttonThreeCustomDialogResult, cornerRadius, showToolTips, useBlur,
+                                blurRadius, parentWindow);
         }
 
         /// <summary>
@@ -1330,6 +1582,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="buttonOneCustomDialogResult">The action for the first button to take.</param>
         /// <param name="buttonTwoCustomDialogResult">The action for the second button to take.</param>
         /// <param name="buttonThreeCustomDialogResult">The action for the third button to take.</param>
+        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to -1.</param>
+        /// <param name="showToolTips">Displays tool-tips on the controls.</param>
+        /// <param name="useBlur">Use the blur functionality on the parent window.</param>
+        /// <param name="blurRadius">The radius of the blur effect. By default, this is set to 0.</param>
+        /// <param name="parentWindow">The parent window of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(IWin32Window owner,
                                         string text, string caption,
@@ -1346,9 +1603,16 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         string buttonOneCustomText = null, string buttonTwoCustomText = null,
                                         string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                         DialogResult? buttonTwoCustomDialogResult = null,
-                                        DialogResult? buttonThreeCustomDialogResult = null)
+                                        DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = -1, bool? showToolTips = null,
+                                        bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
         {
-            return InternalShow(owner, text, caption, buttons, customButtonOptions, icon, defaultButton, options, new HelpInformation(helpFilePath, navigator), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
+            return InternalShow(owner, text, caption, buttons, customButtonOptions, icon, defaultButton, options, 
+                                new HelpInformation(helpFilePath, navigator), showCtrlCopy, messageboxTypeface, 
+                                showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState,
+                                optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText,
+                                fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText,
+                                buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult,
+                                cornerRadius, showToolTips, useBlur, blurRadius, parentWindow);
         }
 
         /// <summary>
@@ -1383,6 +1647,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="buttonOneCustomDialogResult">The action for the first button to take.</param>
         /// <param name="buttonTwoCustomDialogResult">The action for the second button to take.</param>
         /// <param name="buttonThreeCustomDialogResult">The action for the third button to take.</param>
+        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to -1.</param>
+        /// <param name="showToolTips">Displays tool-tips on the controls.</param>
+        /// <param name="useBlur">Use the blur functionality on the parent window.</param>
+        /// <param name="blurRadius">The radius of the blur effect. By default, this is set to 0.</param>
+        /// <param name="parentWindow">The parent window of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(IWin32Window owner,
                                         string text, string caption,
@@ -1399,9 +1668,16 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         string buttonOneCustomText = null, string buttonTwoCustomText = null,
                                         string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                         DialogResult? buttonTwoCustomDialogResult = null,
-                                        DialogResult? buttonThreeCustomDialogResult = null)
+                                        DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = -1, bool? showToolTips = null,
+                                        bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
         {
-            return InternalShow(owner, text, caption, buttons, customButtonOptions, icon, defaultButton, options, new HelpInformation(helpFilePath, keyword), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
+            return InternalShow(owner, text, caption, buttons, customButtonOptions, icon, defaultButton, options,
+                                new HelpInformation(helpFilePath, keyword), showCtrlCopy, messageboxTypeface, 
+                                showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState,
+                                optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, 
+                                fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, 
+                                buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult, 
+                                cornerRadius, showToolTips, useBlur, blurRadius, parentWindow);
         }
 
         /// <summary>
@@ -1436,6 +1712,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="buttonOneCustomDialogResult">The action for the first button to take.</param>
         /// <param name="buttonTwoCustomDialogResult">The action for the second button to take.</param>
         /// <param name="buttonThreeCustomDialogResult">The action for the third button to take.</param>
+        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to -1.</param>
+        /// <param name="showToolTips">Displays tool-tips on the controls.</param>
+        /// <param name="useBlur">Use the blur functionality on the parent window.</param>
+        /// <param name="blurRadius">The radius of the blur effect. By default, this is set to 0.</param>
+        /// <param name="parentWindow">The parent window of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(string text, string caption,
                                         ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions customButtonOptions,
@@ -1452,9 +1733,16 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         string buttonOneCustomText = null, string buttonTwoCustomText = null,
                                         string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                         DialogResult? buttonTwoCustomDialogResult = null,
-                                        DialogResult? buttonThreeCustomDialogResult = null)
+                                        DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = -1, bool? showToolTips = null,
+                                        bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
         {
-            return InternalShow(null, text, caption, buttons, customButtonOptions, icon, defaultButton, options, new HelpInformation(helpFilePath, navigator, param), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
+            return InternalShow(null, text, caption, buttons, customButtonOptions, icon, defaultButton, options, 
+                                new HelpInformation(helpFilePath, navigator, param), showCtrlCopy, messageboxTypeface, 
+                                showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, 
+                                optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText,
+                                fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, 
+                                buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult, 
+                                cornerRadius, showToolTips, useBlur, blurRadius, parentWindow);
         }
 
         /// <summary>
@@ -1472,7 +1760,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="navigator">One of the System.Windows.Forms.HelpNavigator values.</param>
         /// <param name="param">The numeric ID of the Help topic to display when the user clicks the Help button.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
-        /// <param name="messageboxTypeface">Defines the messagebox font.</param>
+        /// <param name="messageboxTypeface">Defines the message box font.</param>
         /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
         /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
         /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
@@ -1490,6 +1778,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="buttonOneCustomDialogResult">The action for the first button to take.</param>
         /// <param name="buttonTwoCustomDialogResult">The action for the second button to take.</param>
         /// <param name="buttonThreeCustomDialogResult">The action for the third button to take.</param>
+        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to -1.</param>
+        /// <param name="showToolTips">Displays tool-tips on the controls.</param>
+        /// <param name="useBlur">Use the blur functionality on the parent window.</param>
+        /// <param name="blurRadius">The radius of the blur effect. By default, this is set to 0.</param>
+        /// <param name="parentWindow">The parent window of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(IWin32Window owner,
                                         string text, string caption,
@@ -1506,9 +1799,16 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         string buttonOneCustomText = null, string buttonTwoCustomText = null,
                                         string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                         DialogResult? buttonTwoCustomDialogResult = null,
-                                        DialogResult? buttonThreeCustomDialogResult = null)
+                                        DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = -1, bool? showToolTips = null,
+                                        bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
         {
-            return InternalShow(owner, text, caption, buttons, customButtonOptions, icon, defaultButton, options, new HelpInformation(helpFilePath, navigator, param), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
+            return InternalShow(owner, text, caption, buttons, customButtonOptions, icon, defaultButton, options, 
+                   new HelpInformation(helpFilePath, navigator, param), showCtrlCopy, messageboxTypeface, 
+                                showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, 
+                                optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, 
+                                fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, 
+                                buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult, 
+                                cornerRadius, showToolTips, useBlur, blurRadius, parentWindow);
         }
 
         /// <summary>
@@ -1524,7 +1824,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="options">One of the System.Windows.Forms.MessageBoxOptions values that specifies which display and association options will be used for the message box. You may pass in 0 if you wish to use the defaults.</param>
         /// <param name="helpInformation">The path and name of the Help file to display when the user clicks the Help button.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
-        /// <param name="messageBoxTypeface">Defines the messagebox font.</param>
+        /// <param name="messageBoxTypeface">Defines the message box font.</param>
         /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
         /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
         /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
@@ -1542,6 +1842,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="buttonOneCustomDialogResult">The action for the first button to take.</param>
         /// <param name="buttonTwoCustomDialogResult">The action for the second button to take.</param>
         /// <param name="buttonThreeCustomDialogResult">The action for the third button to take.</param>
+        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to -1.</param>
+        /// <param name="showToolTips">Displays tool-tips on the controls.</param>
+        /// <param name="useBlur">Use the blur functionality on the parent window.</param>
+        /// <param name="blurRadius">The radius of the blur effect. By default, this is set to 0.</param>
+        /// <param name="parentWindow">The parent window of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         internal static DialogResult Show(IWin32Window owner,
                                           string text, string caption,
@@ -1557,12 +1862,14 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                           string buttonOneCustomText = null, string buttonTwoCustomText = null,
                                           string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                           DialogResult? buttonTwoCustomDialogResult = null,
-                                          DialogResult? buttonThreeCustomDialogResult = null)
+                                          DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = -1, bool? showToolTips = null,
+                                          bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
         {
             return InternalShow(owner, text, caption, buttons, customButtonOptions, icon, defaultButton, options, helpInformation, showCtrlCopy, messageBoxTypeface, showOptionalCheckBox,
                                 optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation,
                                 customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText,
-                                buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult);
+                                buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult, 
+                                cornerRadius, showToolTips, useBlur, blurRadius, parentWindow);
         }
         #endregion
 
@@ -1582,7 +1889,9 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                                  string buttonOneCustomText = null, string buttonTwoCustomText = null,
                                                  string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                                  DialogResult? buttonTwoCustomDialogResult = null,
-                                                 DialogResult? buttonThreeCustomDialogResult = null, bool? showToolTips = null)
+                                                 DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = -1, 
+                                                 bool? showToolTips = null, bool? useBlur = null,
+                                                 int? blurRadius = 0, KryptonForm parentWindow = null)
         {
             // Check if trying to show a message box from a non-interactive process, this is not possible
             if (!SystemInformation.UserInteractive && ((options & (MessageBoxOptions.ServiceNotification | MessageBoxOptions.DefaultDesktopOnly)) == 0))
@@ -1619,7 +1928,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                                                                   copyButtonText, fade, fadeSleepTimer, buttonOneCustomText,
                                                                                   buttonTwoCustomText, buttonThreeCustomText,
                                                                                   buttonOneCustomDialogResult, buttonTwoCustomDialogResult,
-                                                                                  buttonThreeCustomDialogResult, showToolTips))
+                                                                                  buttonThreeCustomDialogResult, cornerRadius, showToolTips,
+                                                                                  useBlur, blurRadius, parentWindow))
             {
                 ekmb.StartPosition = showOwner == null ? FormStartPosition.CenterScreen : FormStartPosition.CenterParent;
 

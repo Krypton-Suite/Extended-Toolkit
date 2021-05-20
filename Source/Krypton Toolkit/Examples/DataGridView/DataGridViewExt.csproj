@@ -13,11 +13,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="System.Data.SQLite.Core" Version="1.0.113.7" />
+      <ProjectReference Include="..\..\Main\Krypton.Toolkit.Suite.Extended.DataGridView\Krypton.Toolkit.Suite.Extended.DataGridView.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\Main\Krypton.Toolkit.Suite.Extended.DataGridViewExt\Krypton.Toolkit.Suite.Extended.DataGridViewExt.csproj" />
+        <PackageReference Include="System.Data.SQLite.Core" Version="1.0.113.7" />
     </ItemGroup>
 
     <ItemGroup>

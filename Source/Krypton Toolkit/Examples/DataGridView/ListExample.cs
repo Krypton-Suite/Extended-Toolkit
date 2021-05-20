@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
 using Krypton.Toolkit;
-using Krypton.Toolkit.Suite.Extended.DataGridViewExt;
-using Krypton.Toolkit.Suite.Extended.DataGridViewExt.ExtColumns;
+using Krypton.Toolkit.Suite.Extended.DataGridView;
 
 namespace DataGridViewExt
 {

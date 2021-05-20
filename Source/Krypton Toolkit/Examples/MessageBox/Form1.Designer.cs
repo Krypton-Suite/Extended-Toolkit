@@ -76,7 +76,7 @@ namespace MessageBox
             this.kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
             this.ktxtCaption = new Krypton.Toolkit.KryptonTextBox();
             this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
-            this.kmbc = new Krypton.Toolkit.Suite.Extended.Messagebox.KryptonMessageBoxManager();
+            this.kmbc = new Krypton.Toolkit.Suite.Extended.Messagebox.KryptonMessageBoxExtendedManager();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
@@ -667,7 +667,7 @@ namespace MessageBox
         private Krypton.Toolkit.KryptonTextBox ktxtOptionalCheckBoxText;
         private Krypton.Toolkit.KryptonRadioButton krbIconHand;
         private Krypton.Toolkit.KryptonRadioButton krbIconStop;
-        private Krypton.Toolkit.Suite.Extended.Messagebox.KryptonMessageBoxManager kmbc;
+        private Krypton.Toolkit.Suite.Extended.Messagebox.KryptonMessageBoxExtendedManager kmbc;
         private Krypton.Toolkit.KryptonGroupBox kryptonGroupBox4;
         private Krypton.Toolkit.KryptonNumericUpDown knudFadeSleepTimerValue;
         private Krypton.Toolkit.KryptonLabel klblFadeSleepTimer;

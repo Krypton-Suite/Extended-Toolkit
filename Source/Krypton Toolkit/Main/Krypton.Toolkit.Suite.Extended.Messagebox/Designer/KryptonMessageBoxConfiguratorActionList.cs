@@ -1,4 +1,12 @@
-﻿using System.ComponentModel.Design;
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ */
+#endregion
+
+using System.ComponentModel.Design;
 using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Messagebox
@@ -6,7 +14,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
     internal class KryptonMessageBoxConfiguratorActionList : DesignerActionList
     {
         #region Instance Fields
-        private readonly KryptonMessageBoxManager _messageBoxConfigurator;
+        private readonly KryptonMessageBoxExtendedManager _messageBoxConfigurator;
 
         private readonly IComponentChangeService _service;
         #endregion
@@ -14,7 +22,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         #region Identity
         public KryptonMessageBoxConfiguratorActionList(KryptonMessageBoxConfiguratorDesigner owner) : base(owner.Component)
         {
-            _messageBoxConfigurator = owner.Component as KryptonMessageBoxManager;
+            _messageBoxConfigurator = owner.Component as KryptonMessageBoxExtendedManager;
 
             _service = (IComponentChangeService)GetService(typeof(IComponentChangeService));
         }

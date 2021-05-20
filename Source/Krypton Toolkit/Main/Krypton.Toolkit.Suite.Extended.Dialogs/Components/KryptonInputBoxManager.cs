@@ -11,7 +11,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
         private FormStartPosition _startPosition;
 
-        private Font _controlTypeface, _messageTypeface;
+        private Font _controlTypeface, _messageTypeface, _headerTypeface;
 
         private InputBoxButtons _buttons;
 
@@ -35,31 +35,144 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
         private Point _inputBoxIconLocation;
 
-        private string _message, _title, _okText, _yesText, _noText, _cancelText, _hintText;
+        private string _message, _headerText, _title, _okText, _yesText, _noText, _cancelText, _hintText;
 
         private string[] _itemList;
         #endregion
 
         #region Properties
         public bool ShowInTaskBar { get => _showInTaskBar; set => _showInTaskBar = value; }
+
+        public FormStartPosition StartPosition { get => _startPosition; set => _startPosition = value; }
+
+        [DefaultValue(typeof(Font), "Microsoft Sans Serif, 8.25f")]
+        public Font ControlTypeface { get => _controlTypeface; set => _controlTypeface = value; }
+
+        [DefaultValue(typeof(Font), "Microsoft Sans Serif, 11.25f, FontStyle.Bold")]
+        public Font HeaderTypeface { get => _headerTypeface; set => _headerTypeface = value; }
+
+        [DefaultValue(typeof(Font), "Microsoft Sans Serif, 8.25f")]
+        public Font MessageTypeface { get => _messageTypeface; set => _messageTypeface = value; }
+
+        public InputBoxButtons InputBoxButtons { get => _buttons; set => _buttons = value; }
+
+        public InputBoxIconImageSize InputBoxIconImageSize { get => _imageSize; set => _imageSize = value; }
+
+        public InputBoxIconType InputBoxIconType { get => _iconType; set => _iconType = value; }
+
+        public InputBoxInputType InputBoxInputType { get => _inputType; set => _inputType = value; }
+
+        public InputBoxLanguage InputBoxLanguage { get => _inputBoxLanguage; set => _inputBoxLanguage = value; }
+
+        public InputBoxMessageDisplayType InputBoxMessageDisplayType { get => _displayType; set => _displayType = value; }
+
+        public InputBoxNormalMessageTextAlignment InputBoxNormalMessageTextAlignment { get => _messageTextAlignment; set => _messageTextAlignment = value; }
+
+        public InputBoxTextAlignment InputBoxTextAlignment { get => _textAlignment; set => _textAlignment = value; }
+
+        public InputBoxWrappedMessageTextAlignment InputBoxWrappedMessageTextAlignment { get => _wrappedMessageTextAlignment; set => _wrappedMessageTextAlignment = value; }
+
+        public Image CustomImage
+        {
+            get => _customImage;
+
+            set
+            {
+                if (_customImage != value)
+                {
+                    _customImage = value;
+
+                    _iconType = InputBoxIconType.CUSTOM;
+                }
+            }
+        }
+
+        public Point InputBoxIconLocation { get => _inputBoxIconLocation; set => _inputBoxIconLocation = value; }
+
+        public string Message { get => _message; set => _message = value; }
+
+        public string Title { get => _title; set => _title = value; }
+
+        public string OkText { get => _okText; set => _okText = value; }
+
+        public string YesText { get => _yesText; set => _yesText = value; }
+
+        public string NoText { get => _noText; set => _noText = value; }
+
+        public string CancelText { get => _cancelText; set => _cancelText = value; }
+
+        public string HintText { get => _hintText; set => _hintText = value; }
+
+        public string HeaderText { get => _headerText; set => _headerText = value; }
+
+        public string[] ItemList { get => _itemList; set => _itemList = value; }
         #endregion
 
         #region Constructor
         public KryptonInputBoxManager()
         {
+            _buttons = InputBoxButtons.OK;
 
+            _cancelText = "C&ancel";
+
+            _controlTypeface = new Font("Microsoft Sans Serif", 8.25f);
+
+            _messageTypeface = new Font("Microsoft Sans Serif", 8.25f);
+
+            _headerTypeface = new Font("Microsoft Sans Serif", 11.25f, FontStyle.Bold);
+
+            _customImage = null;
+
+            _displayType = InputBoxMessageDisplayType.LABEL;
+
+            _hintText = "Hint";
+
+            _iconType = InputBoxIconType.NONE;
+
+            _imageSize = InputBoxIconImageSize.SIXTYFOUR;
+
+            _inputBoxIconLocation = new Point(12, 12);
+
+            _inputBoxLanguage = InputBoxLanguage.ENGLISH;
+
+            _inputType = InputBoxInputType.TEXTBOX;
+
+            _itemList = null;
+
+            _message = "Your message here...";
+
+            _messageTextAlignment = InputBoxNormalMessageTextAlignment.CENTRENEAR;
+
+            _noText = "N&o";
+
+            _okText = "&Ok";
+
+            _headerText = "Header Text Here";
+
+            _showInTaskBar = false;
+
+            _startPosition = FormStartPosition.Manual;
+
+            _textAlignment = InputBoxTextAlignment.CENTRE;
+
+            _title = "";
+
+            _wrappedMessageTextAlignment = InputBoxWrappedMessageTextAlignment.MIDDLELEFT;
+
+            _yesText = "Y&es";
         }
         #endregion
 
         #region Methods
-        public void DisplayMessageBox()
+        public void DisplayInputBox()
         {
             KryptonInputBoxExtended kryptonInputBox = new KryptonInputBoxExtended(_inputBoxIconLocation, _message, _title, _iconType,
                                                                                   _customImage, _imageSize, _inputBoxLanguage,
                                                                                   _buttons, _inputType, _displayType,
                                                                                   _itemList, _showInTaskBar, _controlTypeface,
-                                                                                  _messageTypeface, _okText, _yesText, _noText, _cancelText,
-                                                                                  _hintText, _startPosition, _textAlignment,
+                                                                                  _messageTypeface, _headerTypeface, _okText, 
+                                                                                  _yesText, _noText, _cancelText,
+                                                                                  _hintText, _headerText, _startPosition, _textAlignment,
                                                                                   _messageTextAlignment, _wrappedMessageTextAlignment);
 
             kryptonInputBox.Show();

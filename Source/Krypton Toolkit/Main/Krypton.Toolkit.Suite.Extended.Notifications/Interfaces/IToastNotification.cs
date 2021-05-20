@@ -1,10 +1,18 @@
-﻿using System.Drawing;
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ */
+#endregion
+
+using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Notifications
 {
-    /// <summary>Contains elements of <see cref="KryptonToastNotification"/>.</summary>
+    /// <summary>Contains elements of <see cref="KryptonToastNotificationVersion1"/>.</summary>
     public interface IToastNotification
     {
         /// <summary>Gets or sets the button location.</summary>
@@ -20,7 +28,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         public ActionType Action { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether this <see cref="KryptonToastNotification"/> is fade.
+        /// Gets or sets a value indicating whether this <see cref="KryptonToastNotificationVersion1"/> is fade.
         /// </summary>
         /// <value>
         ///   <c>true</c> if fade; otherwise, <c>false</c>.
