@@ -112,7 +112,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
 		public static extern bool ValidateRect(IntPtr hwnd, ref Rectangle rect);
 
 		[DllImport("user32.dll", CharSet = CharSet.Auto)]
-		internal static extern bool GetWindowRect(IntPtr hWnd, [In, Out] ref Rectangle rect);
+		public static extern bool GetWindowRect(IntPtr hWnd, [In, Out] ref Rectangle rect);
 
 		[DllImport("uxtheme.dll", ExactSpelling = true, CharSet = CharSet.Unicode)]
 		public static extern int SetWindowTheme(IntPtr hWnd, String pszSubAppName, String pszSubIdList);
@@ -372,8 +372,8 @@ namespace Krypton.Toolkit.Suite.Extended.Common
 	}
 
 	#region SubClass Classing Handler Class
-	internal class SubClass : System.Windows.Forms.NativeWindow
-	{
+	public class SubClass : NativeWindow
+    {
 		public delegate int SubClassWndProcEventHandler(ref System.Windows.Forms.Message m);
 		public event SubClassWndProcEventHandler SubClassedWndProc;
 		private bool IsSubClassed = false;
