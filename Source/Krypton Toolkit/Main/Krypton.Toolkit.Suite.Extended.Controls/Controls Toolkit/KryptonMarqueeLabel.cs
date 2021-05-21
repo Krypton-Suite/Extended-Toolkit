@@ -12,17 +12,23 @@ using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Controls
 {
-    [ToolboxItem(false)]
     public class KryptonMarqueeLabel : KryptonLabel
     {
         int offset;
 
+        /// <summary>Gets or sets the marquee timer.</summary>
+        /// <value>The marquee timer.</value>
         public Timer MarqueeTimer { get; set; }
 
+        /// <summary>Gets or sets the speed of the marquee.</summary>
+        /// <value>The speed.</value>
         public int Speed { get; set; }
 
+        /// <summary>Gets or sets the y offset.</summary>
+        /// <value>The y offset.</value>
         public int YOffset { get; set; }
 
+        /// <summary>Initializes a new instance of the <see cref="KryptonMarqueeLabel" /> class.</summary>
         public KryptonMarqueeLabel()
         {
             YOffset = 0;
@@ -38,6 +44,9 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             MarqueeTimer.Tick += MarqueeTimer_Tick;
         }
 
+        /// <summary>Handles the Tick event of the MarqueeTimer control.</summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void MarqueeTimer_Tick(object sender, EventArgs e)
         {
             offset = (offset - Speed);
@@ -50,8 +59,10 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             Invalidate();
         }
 
+        /// <summary>Starts the marquee animation.</summary>
         public void Start() => MarqueeTimer.Start();
 
+        /// <summary>Stops the marquee animation.</summary>
         public void Stop() => MarqueeTimer.Stop();
 
 
