@@ -1,4 +1,12 @@
-﻿using System;
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ */
+#endregion
+
+using System;
 using System.Diagnostics;
 
 namespace Krypton.Toolkit.Suite.Extended.Calendar.Library
@@ -318,6 +326,12 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar.Library
             //}
 
             knudEndMinute.Value = knudStartMinute.Value + 30;
+
+            // Stop unforeseen errors
+            if (knudEndMinute.Value > knudEndMinute.Maximum)
+            {
+                knudEndMinute.Value = 0;
+            }
         }
     }
 }

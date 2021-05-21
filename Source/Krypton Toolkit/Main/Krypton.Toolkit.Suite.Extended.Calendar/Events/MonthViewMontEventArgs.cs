@@ -6,14 +6,9 @@
  */
 #endregion
 
-using System;
-
-namespace Krypton.Toolkit.Suite.Extended.Calendar.Library
+namespace Krypton.Toolkit.Suite.Extended.Calendar
 {
-    internal class CalendarTimeSpan
+    public class MonthViewMontEventArgs
     {
-        public DateTime Start { get; set; }
-
-        public DateTime End { get; set; }
     }
 }
