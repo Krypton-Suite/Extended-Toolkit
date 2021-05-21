@@ -240,11 +240,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zip.Extractor", "Third Part
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Notifications", "Examples\Notifications\Notifications.csproj", "{93FE697F-A3B2-4663-AE60-4D421C6F01D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton.Toolkit.Suite.Extended.Calendar", "Main\Krypton.Toolkit.Suite.Extended.Calendar\Krypton.Toolkit.Suite.Extended.Calendar.csproj", "{AECF814E-30FB-4916-8F27-4DBB7003748D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Calendar", "Main\Krypton.Toolkit.Suite.Extended.Calendar\Krypton.Toolkit.Suite.Extended.Calendar.csproj", "{AECF814E-30FB-4916-8F27-4DBB7003748D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton.Toolkit.Suite.Extended.Drawing", "Shared\Krypton.Toolkit.Suite.Extended.Drawing\Krypton.Toolkit.Suite.Extended.Drawing.csproj", "{2003534B-DF12-4D31-AF02-C31B57D4DDBE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Drawing", "Shared\Krypton.Toolkit.Suite.Extended.Drawing\Krypton.Toolkit.Suite.Extended.Drawing.csproj", "{2003534B-DF12-4D31-AF02-C31B57D4DDBE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComboBox", "Examples\ComboBox\ComboBox.csproj", "{151EA3F8-FA27-4273-BA26-BBCF83E75676}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComboBox", "Examples\ComboBox\ComboBox.csproj", "{151EA3F8-FA27-4273-BA26-BBCF83E75676}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Navigator", "Examples\Navigator\Navigator.csproj", "{655317E7-16DF-4876-AF1F-AD31CA792204}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -512,6 +514,10 @@ Global
 		{151EA3F8-FA27-4273-BA26-BBCF83E75676}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{151EA3F8-FA27-4273-BA26-BBCF83E75676}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{151EA3F8-FA27-4273-BA26-BBCF83E75676}.Release|Any CPU.Build.0 = Release|Any CPU
+		{655317E7-16DF-4876-AF1F-AD31CA792204}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{655317E7-16DF-4876-AF1F-AD31CA792204}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{655317E7-16DF-4876-AF1F-AD31CA792204}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{655317E7-16DF-4876-AF1F-AD31CA792204}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -597,6 +603,7 @@ Global
 		{AECF814E-30FB-4916-8F27-4DBB7003748D} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 		{2003534B-DF12-4D31-AF02-C31B57D4DDBE} = {726DC0AA-2B0D-4EAC-BB7A-7C49AE13A390}
 		{151EA3F8-FA27-4273-BA26-BBCF83E75676} = {25D5F0A6-A601-424B-9431-8EFE139A58A7}
+		{655317E7-16DF-4876-AF1F-AD31CA792204} = {25D5F0A6-A601-424B-9431-8EFE139A58A7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A7CE7732-0982-4703-8EFD-7715D569BAB5}

@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net48</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="Krypton.Toolkit.Suite.Extended.Navigator">
+      <HintPath>..\..\Main\Krypton.Toolkit.Suite.Extended.Navigator\obj\Debug\net45\Krypton.Toolkit.Suite.Extended.Navigator.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
