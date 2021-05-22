@@ -91,24 +91,17 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// Gets the short version of week's string representation
         /// </summary>
         /// <returns></returns>
-        // TODO: Convert to C# 9
         public string ToStringShort()
         {
             DateTime saturday = StartDate.AddDays(6);
 
             if (saturday.Month != StartDate.Month)
             {
-                return string.Format("{0} - {1}",
-                    StartDate.ToString("d/M"),
-                    saturday.ToString("d/M")
-                    );
+                return $"{StartDate.ToString("d/M")} - {saturday.ToString("d/M")}";
             }
             else
             {
-                return string.Format("{0} - {1}",
-                    StartDate.Day,
-                    saturday.ToString("d/M")
-                    );
+                return $"{StartDate.Day} - {saturday.ToString("d/M")}";
             }
         }
 
@@ -116,24 +109,17 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// Gets the large version of string representation
         /// </summary>
         /// <returns>The week in a string format</returns>
-        // TODO: Convert to C# 9
         public string ToStringLarge()
         {
             DateTime saturday = StartDate.AddDays(6);
 
             if (saturday.Month != StartDate.Month)
             {
-                return string.Format("{0} - {1}",
-                    StartDate.ToString("d MMM"),
-                    saturday.ToString("d MMM")
-                    );
+                return $"{StartDate.ToString("d MMM")} - {saturday.ToString("d MMM")}";
             }
             else
             {
-                return string.Format("{0} - {1}",
-                    StartDate.Day,
-                    saturday.ToString("d MMM")
-                    );
+                return $"{StartDate.Day} - {saturday.ToString("d MMM")}";
             }
         }
 

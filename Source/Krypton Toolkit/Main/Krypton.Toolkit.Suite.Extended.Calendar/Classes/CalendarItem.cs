@@ -663,8 +663,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
         public override string ToString()
         {
-            // TODO: Convert to C# 9
-            return string.Format("{0} - {1}", StartDate.ToShortTimeString(), EndDate.ToShortTimeString());
+            return $"{StartDate.ToShortTimeString()} - {EndDate.ToShortTimeString()}";
         }
 
         #endregion
