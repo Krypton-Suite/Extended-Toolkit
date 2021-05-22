@@ -1,19 +1,29 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
+  <Choose>
+    <When Condition="'$(TFMs)' == 'all'">
+      <PropertyGroup>
+        <TargetFrameworks>net35;net40;net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows;net6.0-windows</TargetFrameworks>
+      </PropertyGroup>
+    </When>
+    <Otherwise>
+      <PropertyGroup>
+        <TargetFrameworks>net48;netcoreapp3.1;net5.0-windows;net6.0-windows</TargetFrameworks>
+      </PropertyGroup>
+    </Otherwise>
+  </Choose>
   <PropertyGroup>
-    <TargetFrameworks>net45;netcoreapp3.1;net5.0-windows;net6.0-windows</TargetFrameworks>
-    <TargetFrameworks Condition="'$(TFMs)' == 'all'">net35;net40;net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows;net6.0-windows</TargetFrameworks>
     <LangVersion>latest</LangVersion>
     <OutputType>library</OutputType>
-    <RootNamespace>Krypton.Toolkit.Suite.Extended.Task.Dialogs</RootNamespace>
-    <AssemblyName>Krypton.Toolkit.Suite.Extended.Task.Dialogs</AssemblyName>
+    <RootNamespace>Krypton.Toolkit.Suite.Extended.TaskDialogs</RootNamespace>
+    <AssemblyName>Krypton.Toolkit.Suite.Extended.TaskDialogs</AssemblyName>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
   <!--Package Data-->
   <PropertyGroup>
-    <PackageId>Krypton.Toolkit.Suite.Extended.Task.Dialogs</PackageId>
-    <Description>An extension to the Krypton standard toolkit. This is the task dialogs module.</Description>
+    <PackageId>Krypton.Toolkit.Suite.Extended.TaskDialogs</PackageId>
+    <Description>An extension to the Krypton standard toolkit. This package implements Krypton.TaskDialog enhancements.</Description>
   </PropertyGroup>
 
   <!--Version Information-->
@@ -23,10 +33,18 @@
   </PropertyGroup>
 
   <!--Krypton Toolkit Import-->
-  <ItemGroup>
-    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2106" />
-    <!--<PackageReference Include="Krypton.Toolkit" Version="5.550.2103" />-->
-  </ItemGroup>
+  <Choose>
+    <When Condition="'$(TFMs)' == 'all'">
+      <ItemGroup>
+        <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2106" />
+      </ItemGroup>
+    </When>
+    <Otherwise>
+      <ItemGroup>
+        <PackageReference Include="Krypton.Toolkit.Canary.Lite" Version="6.0.2106" />
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
 
   <!--Binary/Documentation Output-->
   <PropertyGroup>
