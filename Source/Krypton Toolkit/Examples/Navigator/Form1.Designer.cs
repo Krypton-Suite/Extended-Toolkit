@@ -38,8 +38,12 @@ namespace Navigator
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.outlookBar1 = new Krypton.Toolkit.Suite.Extended.Navigator.OutlookBar();
+            this.kryptonTabPage3 = new Krypton.Toolkit.Suite.Extended.Navigator.KryptonTabPage();
+            this.kryptonTabPage4 = new Krypton.Toolkit.Suite.Extended.Navigator.KryptonTabPage();
+            this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             this.kryptonTabControl1.SuspendLayout();
             this.kryptonTabControlLite1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.SuspendLayout();
             // 
             // kryptonTabControl1
@@ -53,7 +57,9 @@ namespace Navigator
             this.kryptonTabControl1.Controls.Add(this.tabPage2);
             this.kryptonTabControl1.CornerRoundRadiusWidth = 12;
             this.kryptonTabControl1.CornerSymmetry = Krypton.Toolkit.Suite.Extended.Navigator.KryptonTabControl.CornSymmetry.Both;
+            this.kryptonTabControl1.CornerType = Krypton.Toolkit.Suite.Extended.Drawing.DrawingMethods.CornerType.Rounded;
             this.kryptonTabControl1.CornerWidth = Krypton.Toolkit.Suite.Extended.Navigator.KryptonTabControl.CornWidth.Thin;
+            this.kryptonTabControl1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.kryptonTabControl1.HotTrack = true;
             this.kryptonTabControl1.Location = new System.Drawing.Point(12, 12);
             this.kryptonTabControl1.Name = "kryptonTabControl1";
@@ -150,6 +156,30 @@ namespace Navigator
             this.outlookBar1.TabIndex = 2;
             this.outlookBar1.Text = "outlookBar1";
             // 
+            // kryptonTabPage3
+            // 
+            this.kryptonTabPage3.Location = new System.Drawing.Point(0, 0);
+            this.kryptonTabPage3.Name = "kryptonTabPage3";
+            this.kryptonTabPage3.Size = new System.Drawing.Size(200, 100);
+            this.kryptonTabPage3.TabIndex = 0;
+            this.kryptonTabPage3.Text = "kryptonTabPage3";
+            // 
+            // kryptonTabPage4
+            // 
+            this.kryptonTabPage4.Location = new System.Drawing.Point(0, 0);
+            this.kryptonTabPage4.Name = "kryptonTabPage4";
+            this.kryptonTabPage4.Size = new System.Drawing.Size(200, 100);
+            this.kryptonTabPage4.TabIndex = 0;
+            this.kryptonTabPage4.Text = "kryptonTabPage4";
+            // 
+            // kryptonPanel1
+            // 
+            this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
+            this.kryptonPanel1.Name = "kryptonPanel1";
+            this.kryptonPanel1.Size = new System.Drawing.Size(428, 248);
+            this.kryptonPanel1.TabIndex = 3;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -158,10 +188,15 @@ namespace Navigator
             this.Controls.Add(this.outlookBar1);
             this.Controls.Add(this.kryptonTabControlLite1);
             this.Controls.Add(this.kryptonTabControl1);
+            this.Controls.Add(this.kryptonPanel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Navigator";
             this.kryptonTabControl1.ResumeLayout(false);
             this.kryptonTabControlLite1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -177,6 +212,9 @@ namespace Navigator
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabPage tabPage4;
         private Krypton.Toolkit.Suite.Extended.Navigator.OutlookBar outlookBar1;
+        private Krypton.Toolkit.Suite.Extended.Navigator.KryptonTabPage kryptonTabPage3;
+        private Krypton.Toolkit.Suite.Extended.Navigator.KryptonTabPage kryptonTabPage4;
+        private Krypton.Toolkit.KryptonPanel kryptonPanel1;
     }
 }
 
