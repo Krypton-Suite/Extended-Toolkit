@@ -110,7 +110,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         {
             Size preferredSize = base.GetPreferredSize(proposedSize);
 
-            if (ShowSplitOption && !string.IsNullOrEmpty(Text) && TextRenderer.MeasureText(Text, Font).Width + PUSH_BUTTON_WIDTH > preferredSize.Width)
+            if (ShowSplitOption && !MissingFrameWorkAPIs.IsNullOrWhiteSpace(Text) && TextRenderer.MeasureText(Text, Font).Width + PUSH_BUTTON_WIDTH > preferredSize.Width)
             {
                 return preferredSize + new Size(PUSH_BUTTON_WIDTH + BORDER_SIZE * 2, 0);
             }

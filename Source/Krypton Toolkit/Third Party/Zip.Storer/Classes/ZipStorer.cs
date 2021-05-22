@@ -299,7 +299,7 @@ namespace Zip.Storer
             else
                 foldername = _pathname;
 
-            if (!string.IsNullOrEmpty(_pathnameInZip))
+            if (!MissingFrameWorkAPIs.IsNullOrWhiteSpace(_pathnameInZip))
                 foldername = _pathnameInZip + foldername;
 
             if (!foldername.EndsWith(separator, StringComparison.CurrentCulture))

@@ -32,7 +32,7 @@ namespace HandlebarsDotNet
                 var formatter = UnresolvedBindingFormatter;
                 if (formatter == null)
                 {
-                    if(string.IsNullOrEmpty(undefined.Value)) return string.Empty;
+                    if(MissingFrameWorkAPIs.IsNullOrWhiteSpace(undefined.Value)) return string.Empty;
                     formatter = string.Empty;
                 }
 	        

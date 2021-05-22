@@ -74,7 +74,7 @@ namespace Krypton.Toolkit.Suite.Extended.Language.Model
             {
                 foreach (string value in _buttonTextArray)
                 {
-                    if (!string.IsNullOrEmpty(value))
+                    if (!MissingFrameWorkAPIs.IsNullOrWhiteSpace(value))
                     {
                         switch (language)
                         {

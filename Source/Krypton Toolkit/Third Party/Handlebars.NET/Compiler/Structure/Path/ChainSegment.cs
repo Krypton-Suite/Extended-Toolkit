@@ -79,12 +79,12 @@ namespace HandlebarsDotNet.Compiler.Structure.Path
         {
             WellKnownVariable = wellKnownVariable;
             
-            var segmentValue = string.IsNullOrEmpty(value) ? "this" : value.TrimStart(TrimStart);
+            var segmentValue = MissingFrameWorkAPIs.IsNullOrWhiteSpace(value) ? "this" : value.TrimStart(TrimStart);
             var segmentTrimmedValue = TrimSquareBrackets(segmentValue);
 
             _value = segmentValue;
-            IsThis = string.IsNullOrEmpty(value) || string.Equals(value, "this", StringComparison.OrdinalIgnoreCase);
-            IsVariable = !string.IsNullOrEmpty(value) && value.StartsWith("@");
+            IsThis = MissingFrameWorkAPIs.IsNullOrWhiteSpace(value) || string.Equals(value, "this", StringComparison.OrdinalIgnoreCase);
+            IsVariable = !MissingFrameWorkAPIs.IsNullOrWhiteSpace(value) && value.StartsWith("@");
             TrimmedValue = segmentTrimmedValue;
             LowerInvariant = segmentTrimmedValue.ToLowerInvariant();
             

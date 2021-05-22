@@ -210,7 +210,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
                     break;
             }
 
-            if (string.IsNullOrEmpty(headerText))
+            if (MissingFrameWorkAPIs.IsNullOrWhiteSpace(headerText))
             {
                 kwlContent.Visible = true;
 

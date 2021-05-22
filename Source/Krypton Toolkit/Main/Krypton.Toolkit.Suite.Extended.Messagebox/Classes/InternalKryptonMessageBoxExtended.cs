@@ -1939,7 +1939,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         private void UpdateText()
         {
-            Text = (string.IsNullOrEmpty(_caption) ? string.Empty : _caption.Split(Environment.NewLine.ToCharArray())[0]);
+            Text = (MissingFrameWorkAPIs.IsNullOrWhiteSpace(_caption) ? string.Empty : _caption.Split(Environment.NewLine.ToCharArray())[0]);
             _messageText.StateCommon.Font = _messageboxTypeface;
             _messageText.Text = _text;
         }

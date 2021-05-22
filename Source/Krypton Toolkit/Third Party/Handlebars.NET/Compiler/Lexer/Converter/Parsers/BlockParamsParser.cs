@@ -8,7 +8,7 @@ namespace HandlebarsDotNet.Compiler.Lexer
         {
             var context = reader.GetContext();
             var buffer = AccumulateWord(reader);
-            return !string.IsNullOrEmpty(buffer) 
+            return !MissingFrameWorkAPIs.IsNullOrWhiteSpace(buffer) 
                 ? Token.BlockParams(buffer, context) 
                 : null;
         }
@@ -31,7 +31,7 @@ namespace HandlebarsDotNet.Compiler.Lexer
                 reader.Read();
 
                 var accumulateWord = buffer.ToString().Trim();
-                if(string.IsNullOrEmpty(accumulateWord)) throw new HandlebarsParserException($"BlockParams expression is not valid", reader.GetContext());
+                if(MissingFrameWorkAPIs.IsNullOrWhiteSpace(accumulateWord)) throw new HandlebarsParserException($"BlockParams expression is not valid", reader.GetContext());
             
                 return accumulateWord;
             }

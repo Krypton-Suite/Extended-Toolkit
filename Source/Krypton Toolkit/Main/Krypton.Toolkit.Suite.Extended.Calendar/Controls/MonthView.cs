@@ -610,7 +610,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                 }
             }
 
-            if (!e.TextColour.IsEmpty && !string.IsNullOrEmpty(e.Text))
+            if (!e.TextColour.IsEmpty && !MissingFrameWorkAPIs.IsNullOrWhiteSpace(e.Text))
             {
                 TextRenderer.DrawText(e.Graphics, e.Text, e.Font != null ? e.Font : Font, e.Bounds, e.TextColour, e.TextFlags);
             }

@@ -148,7 +148,7 @@ namespace Microsoft.Windows.API.Code.Pack.Core
             string library;
             int index;
 
-            if (string.IsNullOrEmpty(resourceId)) { return string.Empty; }
+            if (MissingFrameWorkAPIs.IsNullOrWhiteSpace(resourceId)) { return string.Empty; }
 
             // Known folder "Recent" has a malformed resource id
             // for its tooltip. This causes the resource id to

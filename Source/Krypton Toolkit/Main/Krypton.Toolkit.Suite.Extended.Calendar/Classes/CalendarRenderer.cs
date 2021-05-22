@@ -1329,7 +1329,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                 string hours = unit.Hours.ToString("00");
                 string minutes = unit.Minutes == 0 ? "00" : string.Empty;
 
-                if (!string.IsNullOrEmpty(minutes))
+                if (!MissingFrameWorkAPIs.IsNullOrWhiteSpace(minutes))
                 {
                     if (hours == "00") hours = "12";
 

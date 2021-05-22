@@ -42,7 +42,7 @@ namespace HandlebarsDotNet.Compiler.Structure.Path
             
             ContextChangeDepth = segments?.Count(o => o.IsContextChange) ?? 0;
             HasContextChange = ContextChangeDepth > 0;
-            var plainSegments = segments?.Where(o => !o.IsContextChange && !string.IsNullOrEmpty(o.ToString())).ToArray() ?? ArrayEx.Empty<PathSegment>();
+            var plainSegments = segments?.Where(o => !o.IsContextChange && !MissingFrameWorkAPIs.IsNullOrWhiteSpace(o.ToString())).ToArray() ?? ArrayEx.Empty<PathSegment>();
             IsThis = string.Equals(path, "this", StringComparison.OrdinalIgnoreCase) || path == "." || plainSegments.Any(o => o.IsThis);
             IsPureThis = string.Equals(path, "this", StringComparison.OrdinalIgnoreCase) || path == ".";
 

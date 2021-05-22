@@ -125,19 +125,19 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 
                     OnExecuteProcessAsAdministrator(this, administrativeTask);
                 }
-                else if (_assemblyToElevate != null && !string.IsNullOrEmpty(_extraArguments))
+                else if (_assemblyToElevate != null && !MissingFrameWorkAPIs.IsNullOrWhiteSpace(_extraArguments))
                 {
                     ExecuteProcessAsAdministratorEventArgs administrativeTaskWithExtraArguments = new ExecuteProcessAsAdministratorEventArgs(Path.GetFullPath(_assemblyToElevate.Location), _extraArguments);
 
                     OnExecuteProcessAsAdministrator(this, administrativeTaskWithExtraArguments);
                 }
-                else if (!string.IsNullOrEmpty(_processName))
+                else if (!MissingFrameWorkAPIs.IsNullOrWhiteSpace(_processName))
                 {
                     ExecuteProcessAsAdministratorEventArgs administrativeTask = new ExecuteProcessAsAdministratorEventArgs(_processName);
 
                     OnExecuteProcessAsAdministrator(this, administrativeTask);
                 }
-                else if (!string.IsNullOrEmpty(_processName) && !string.IsNullOrEmpty(_extraArguments))
+                else if (!MissingFrameWorkAPIs.IsNullOrWhiteSpace(_processName) && !MissingFrameWorkAPIs.IsNullOrWhiteSpace(_extraArguments))
                 {
                     ExecuteProcessAsAdministratorEventArgs administrativeTaskWithExtraArguments = new ExecuteProcessAsAdministratorEventArgs(_processName, _extraArguments);
 

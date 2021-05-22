@@ -235,7 +235,7 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
 
             bool isValid = false;
 
-            if (string.IsNullOrEmpty(input))
+            if (MissingFrameWorkAPIs.IsNullOrWhiteSpace(input))
             {
                 isValid = false;
             }
