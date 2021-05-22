@@ -28,96 +28,80 @@ namespace Krypton.Toolkit.Suite.Extended.ComboBox
 
         #region Public Properties
         [Browsable(true), Description("Gets the TreeView Nodes collection"), Category("TreeView"), DesignerSerializationVisibility(DesignerSerializationVisibility.Content), Editor(typeof(TreeNodeCollection), typeof(TreeNodeCollection))]
-        public TreeNodeCollection Nodes
-        {
-            get
-            {
-                return this.tvTreeView.Nodes;
-            }
-        }
+        public TreeNodeCollection Nodes => tvTreeView.Nodes;
 
         [Browsable(true), Description("Gets or sets the TreeView's Selected Node"), Category("TreeView")]
         public TreeNode SelectedNode
         {
             set
             {
-                this.tvTreeView.SelectedNode = value;
+                tvTreeView.SelectedNode = value;
+
                 TreeViewNodeSelect(null, null);
             }
-            get
-            {
-                return this.tvTreeView.SelectedNode;
-            }
+
+            get => tvTreeView.SelectedNode;
         }
 
         [Browsable(false)]
-        public Toolkit.KryptonComboBox ComboBox
-        {
-            get { return combobox; }
-            set { combobox = value; }
-        }
+        public Toolkit.KryptonComboBox ComboBox { get => combobox; set => combobox = value; }
 
         [Browsable(true), Description("Gets or sets the TreeView's Selected Node"), Category("TreeView")]
-        public ImageList Imagelist
-        {
-            get { return this.tvTreeView.ImageList; }
-            set { this.tvTreeView.ImageList = value; }
-        }
+        public ImageList Imagelist { get => tvTreeView.ImageList; set => tvTreeView.ImageList = value; }
 
         [Browsable(true), Description("Gets or sets the separator for the selected node's value"), Category("Appearance")]
         public string BranchSeparator
         {
-            get { return this._branchSeparator; }
+            get => _branchSeparator;
+
             set
             {
                 if (!string.IsNullOrEmpty(value) && value.Length > 0)
-                    this._branchSeparator = value.Substring(0, 1);
+                {
+                    _branchSeparator = value.Substring(0, 1);
+                }
             }
         }
         [Browsable(true), Description("Gets or sets the separator for the selected node's value"), Category("Behavior")]
-        public bool AbsoluteChildrenSelectableOnly
-        {
-            get { return this._absoluteChildrenSelectableOnly; }
-            set { this._absoluteChildrenSelectableOnly = value; }
-        }
+        public bool AbsoluteChildrenSelectableOnly { get => _absoluteChildrenSelectableOnly; set => _absoluteChildrenSelectableOnly = value; }
         #endregion
 
         public KryptonComboBoxTree()
         {
             SetStyle(ControlStyles.DoubleBuffer | ControlStyles.ResizeRedraw, true);
 
-            this.InitializeComponent();
+            InitializeComponent();
 
             // Initializing Controls
-            this.pnlBack = new Krypton.Toolkit.KryptonPanel();
-            this.pnlBack.BorderStyle = BorderStyle.None;
-            this.pnlBack.Dock = DockStyle.Fill;
-            this.pnlBack.AutoScroll = false;
-            //this.pnlBack.BackColor = txtSelectedValue.BackColor;
+            pnlBack = new Krypton.Toolkit.KryptonPanel();
+            pnlBack.BorderStyle = BorderStyle.None;
+            pnlBack.Dock = DockStyle.Fill;
+            pnlBack.AutoScroll = false;
+            //pnlBack.BackColor = txtSelectedValue.BackColor;
 
-            this.lblSizingGrip = new LabelEx();
-            this.lblSizingGrip.Size = new Size(9, 9);
-            this.lblSizingGrip.Cursor = Cursors.SizeNWSE;
-            this.lblSizingGrip.Text = "";
-            this.lblSizingGrip.MouseMove += new MouseEventHandler(SizingGripMouseMove);
-            this.lblSizingGrip.MouseDown += new MouseEventHandler(SizingGripMouseDown);
+            lblSizingGrip = new LabelEx();
+            lblSizingGrip.Size = new Size(9, 9);
+            lblSizingGrip.Cursor = Cursors.SizeNWSE;
+            lblSizingGrip.Text = "";
+            lblSizingGrip.MouseMove += new MouseEventHandler(SizingGripMouseMove);
+            lblSizingGrip.MouseDown += new MouseEventHandler(SizingGripMouseDown);
 
-            this.tvTreeView = new KryptonTreeView();
-            this.tvTreeView.BorderStyle = PaletteBorderStyle.ControlClient;
-            this.tvTreeView.DoubleClick += new EventHandler(TreeViewNodeSelect);
-            this.tvTreeView.Location = new Point(0, 0);
-            this.tvTreeView.LostFocus += new EventHandler(TreeViewLostFocus);
-            //this.tvTreeView.Scrollable = false;
+            tvTreeView = new KryptonTreeView();
+            tvTreeView.BorderStyle = PaletteBorderStyle.ControlClient;
+            tvTreeView.DoubleClick += new EventHandler(TreeViewNodeSelect);
+            tvTreeView.Location = new Point(0, 0);
+            tvTreeView.LostFocus += new EventHandler(TreeViewLostFocus);
+            //tvTreeView.Scrollable = false;
 
-            this.frmTreeView = new Form();
-            this.frmTreeView.FormBorderStyle = FormBorderStyle.None;
-            this.frmTreeView.StartPosition = FormStartPosition.Manual;
-            this.frmTreeView.ShowInTaskbar = false;
+            frmTreeView = new Form();
+            frmTreeView.FormBorderStyle = FormBorderStyle.None;
+            frmTreeView.StartPosition = FormStartPosition.Manual;
+            frmTreeView.ShowInTaskbar = false;
 
-            this.pnlTree = new Panel();
-            this.pnlTree.Dock = DockStyle.Fill;
-            this.pnlTree.BorderStyle = BorderStyle.FixedSingle;
-            this.pnlTree.BackColor = Color.White;
+            pnlTree = new Panel();
+            pnlTree.Dock = DockStyle.Fill;
+            pnlTree.BorderStyle = BorderStyle.FixedSingle;
+            pnlTree.BackColor = Color.White;
 
             combobox = new Krypton.Toolkit.KryptonComboBox();
             combobox.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -125,11 +109,11 @@ namespace Krypton.Toolkit.Suite.Extended.ComboBox
             combobox.ComboBox.Click += new EventHandler(ToggleTreeView);
 
             // Adding Controls to UserControl
-            this.pnlTree.Controls.Add(this.lblSizingGrip);
-            this.pnlTree.Controls.Add(this.tvTreeView);
-            this.frmTreeView.Controls.Add(this.pnlTree);
-            this.pnlBack.Controls.Add(combobox);
-            this.Controls.Add(this.pnlBack);
+            pnlTree.Controls.Add(lblSizingGrip);
+            pnlTree.Controls.Add(tvTreeView);
+            frmTreeView.Controls.Add(pnlTree);
+            pnlBack.Controls.Add(combobox);
+            Controls.Add(pnlBack);
         }
 
         public KryptonTreeView TreeView => tvTreeView;
@@ -141,38 +125,38 @@ namespace Krypton.Toolkit.Suite.Extended.ComboBox
 
         private void RelocateGrip()
         {
-            this.lblSizingGrip.Top = this.frmTreeView.Height - lblSizingGrip.Height - 1;
-            this.lblSizingGrip.Left = this.frmTreeView.Width - lblSizingGrip.Width - 1;
+            lblSizingGrip.Top = frmTreeView.Height - lblSizingGrip.Height - 1;
+            lblSizingGrip.Left = frmTreeView.Width - lblSizingGrip.Width - 1;
         }
 
         private void ToggleTreeView(object sender, EventArgs e)
         {
-            if (!this.frmTreeView.Visible)
+            if (!frmTreeView.Visible)
             {
-                Rectangle CBRect = this.RectangleToScreen(this.ClientRectangle);
-                this.frmTreeView.Location = new System.Drawing.Point(CBRect.X, CBRect.Y + this.pnlBack.Height);
+                Rectangle CBRect = RectangleToScreen(ClientRectangle);
+                frmTreeView.Location = new Point(CBRect.X, CBRect.Y + pnlBack.Height);
 
-                this.frmTreeView.Show();
-                this.frmTreeView.BringToFront();
+                frmTreeView.Show();
+                frmTreeView.BringToFront();
 
-                this.RelocateGrip();
-                //this.tbSelectedValue.Text = "";
+                RelocateGrip();
+                //tbSelectedValue.Text = "";
             }
             else
             {
-                this.frmTreeView.Hide();
+                frmTreeView.Hide();
             }
         }
 
         public bool ValidateText()
         {
-            string validatorText = this.Text;
-            TreeNodeCollection nodes = this.tvTreeView.Nodes;
+            string validatorText = Text;
+            TreeNodeCollection nodes = tvTreeView.Nodes;
 
-            for (int i = 0; i < validatorText.Split(this._branchSeparator.ToCharArray()[0]).Length; i++)
+            for (int i = 0; i < validatorText.Split(_branchSeparator.ToCharArray()[0]).Length; i++)
             {
                 bool nodeFound = false;
-                string NodeToFind = validatorText.Split(this._branchSeparator.ToCharArray()[0])[i];
+                string NodeToFind = validatorText.Split(_branchSeparator.ToCharArray()[0])[i];
                 for (int j = 0; j < nodes.Count; j++)
                 {
                     if (nodes[j].Text == NodeToFind)
@@ -196,19 +180,19 @@ namespace Krypton.Toolkit.Suite.Extended.ComboBox
             if (e.Button == MouseButtons.Left)
             {
                 int TvWidth, TvHeight;
-                TvWidth = Cursor.Position.X - this.frmTreeView.Location.X;
-                TvWidth = TvWidth + this.DragOffset.X;
-                TvHeight = Cursor.Position.Y - this.frmTreeView.Location.Y;
-                TvHeight = TvHeight + this.DragOffset.Y;
+                TvWidth = Cursor.Position.X - frmTreeView.Location.X;
+                TvWidth = TvWidth + DragOffset.X;
+                TvHeight = Cursor.Position.Y - frmTreeView.Location.Y;
+                TvHeight = TvHeight + DragOffset.Y;
 
                 if (TvWidth < 50)
                     TvWidth = 50;
                 if (TvHeight < 50)
                     TvHeight = 50;
 
-                this.frmTreeView.Size = new System.Drawing.Size(TvWidth, TvHeight);
-                this.pnlTree.Size = this.frmTreeView.Size;
-                this.tvTreeView.Size = new System.Drawing.Size(this.frmTreeView.Size.Width - this.lblSizingGrip.Width, this.frmTreeView.Size.Height - this.lblSizingGrip.Width); ;
+                frmTreeView.Size = new Size(TvWidth, TvHeight);
+                pnlTree.Size = frmTreeView.Size;
+                tvTreeView.Size = new Size(frmTreeView.Size.Width - lblSizingGrip.Width, frmTreeView.Size.Height - lblSizingGrip.Width); ;
                 RelocateGrip();
             }
         }
@@ -217,10 +201,10 @@ namespace Krypton.Toolkit.Suite.Extended.ComboBox
         {
             if (e.Button == MouseButtons.Left)
             {
-                int OffsetX = System.Math.Abs(Cursor.Position.X - this.frmTreeView.RectangleToScreen(this.frmTreeView.ClientRectangle).Right);
-                int OffsetY = System.Math.Abs(Cursor.Position.Y - this.frmTreeView.RectangleToScreen(this.frmTreeView.ClientRectangle).Bottom);
+                int OffsetX = Math.Abs(Cursor.Position.X - frmTreeView.RectangleToScreen(frmTreeView.ClientRectangle).Right);
+                int OffsetY = Math.Abs(Cursor.Position.Y - frmTreeView.RectangleToScreen(frmTreeView.ClientRectangle).Bottom);
 
-                this.DragOffset = new Point(OffsetX, OffsetY);
+                DragOffset = new Point(OffsetX, OffsetY);
             }
         }
 
@@ -228,9 +212,9 @@ namespace Krypton.Toolkit.Suite.Extended.ComboBox
         {
             if (!IsDisposed && Created)
             {
-                if (!this.combobox.RectangleToScreen(this.combobox.ClientRectangle).Contains(Cursor.Position))
+                if (!combobox.RectangleToScreen(combobox.ClientRectangle).Contains(Cursor.Position))
                 {
-                    this.frmTreeView.Hide();
+                    frmTreeView.Hide();
                 }
             }
         }
@@ -239,22 +223,22 @@ namespace Krypton.Toolkit.Suite.Extended.ComboBox
         {
             if (tvTreeView.SelectedNode != null)
             {
-                if (this._absoluteChildrenSelectableOnly)
+                if (_absoluteChildrenSelectableOnly)
                 {
-                    if (this.tvTreeView.SelectedNode.Nodes.Count == 0)
+                    if (tvTreeView.SelectedNode.Nodes.Count == 0)
                     {
                         combobox.Items.Clear();
-                        combobox.Items.Add(tvTreeView.SelectedNode.FullPath.Replace(@"\", this._branchSeparator));
+                        combobox.Items.Add(tvTreeView.SelectedNode.FullPath.Replace(@"\", _branchSeparator));
                         combobox.SelectedIndex = 0;
-                        this.ToggleTreeView(sender, null);
+                        ToggleTreeView(sender, null);
                     }
                 }
                 else
                 {
                     combobox.Items.Clear();
-                    combobox.Items.Add(tvTreeView.SelectedNode.FullPath.Replace(@"\", this._branchSeparator));
+                    combobox.Items.Add(tvTreeView.SelectedNode.FullPath.Replace(@"\", _branchSeparator));
                     combobox.SelectedIndex = 0;
-                    this.ToggleTreeView(sender, null);
+                    ToggleTreeView(sender, null);
                 }
             }
         }
@@ -264,22 +248,22 @@ namespace Krypton.Toolkit.Suite.Extended.ComboBox
             //
             // ComboBoxTree
             //
-            this.Name = "ComboBoxTree";
-            this._absoluteChildrenSelectableOnly = true;
-            this.Layout += new System.Windows.Forms.LayoutEventHandler(this.ComboBoxTree_Layout);
+            Name = "ComboBoxTree";
+            _absoluteChildrenSelectableOnly = true;
+            Layout += new System.Windows.Forms.LayoutEventHandler(ComboBoxTree_Layout);
 
         }
 
         private void ComboBoxTree_Layout(object sender, LayoutEventArgs e)
         {
-            //this.Height = this.combobox.Height + 10;
-            this.pnlBack.Size = new Size(this.Width, this.Height - 2);
+            //Height = combobox.Height + 10;
+            pnlBack.Size = new Size(Width, Height - 2);
 
-            this.frmTreeView.Size = new Size(this.Width, this.tvTreeView.Height + 30);
-            this.pnlTree.Size = this.frmTreeView.Size;
-            this.tvTreeView.Width = this.frmTreeView.Width - this.lblSizingGrip.Width;
-            this.tvTreeView.Height = this.frmTreeView.Height - this.lblSizingGrip.Width;
-            this.RelocateGrip();
+            frmTreeView.Size = new Size(Width, tvTreeView.Height + 30);
+            pnlTree.Size = frmTreeView.Size;
+            tvTreeView.Width = frmTreeView.Width - lblSizingGrip.Width;
+            tvTreeView.Height = frmTreeView.Height - lblSizingGrip.Width;
+            RelocateGrip();
         }
 
         #endregion
@@ -292,9 +276,7 @@ namespace Krypton.Toolkit.Suite.Extended.ComboBox
             /// </summary>
             public LabelEx()
             {
-                this.SetStyle(ControlStyles.UserPaint, true);
-                this.SetStyle(ControlStyles.DoubleBuffer, true);
-                this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);
+                SetStyle(ControlStyles.UserPaint | ControlStyles.DoubleBuffer | ControlStyles.AllPaintingInWmPaint, true);
             }
 
             /// <summary>
@@ -304,7 +286,7 @@ namespace Krypton.Toolkit.Suite.Extended.ComboBox
             protected override void OnPaint(PaintEventArgs e)
             {
                 base.OnPaint(e);
-                ControlPaint.DrawSizeGrip(e.Graphics, Color.White, 0, 0, this.Size.Width, this.Size.Height);
+                ControlPaint.DrawSizeGrip(e.Graphics, Color.White, 0, 0, Size.Width, Size.Height);
             }
         }
         #endregion
