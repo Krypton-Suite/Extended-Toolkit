@@ -51,8 +51,5 @@
     <DocumentationFile>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.Calendar\Krypton.Toolkit.Suite.Extended.Calendar.xml</DocumentationFile>
     <OutputPath>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.Calendar\</OutputPath>
   </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="Microsoft.VisualBasic" />
-  </ItemGroup>
 
 </Project>

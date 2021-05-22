@@ -8,9 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="Krypton.Toolkit.Suite.Extended.Navigator">
-      <HintPath>..\..\Main\Krypton.Toolkit.Suite.Extended.Navigator\obj\Debug\net45\Krypton.Toolkit.Suite.Extended.Navigator.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\..\Main\Krypton.Toolkit.Suite.Extended.Navigator\Krypton.Toolkit.Suite.Extended.Navigator.csproj" />
   </ItemGroup>
 
 </Project>
