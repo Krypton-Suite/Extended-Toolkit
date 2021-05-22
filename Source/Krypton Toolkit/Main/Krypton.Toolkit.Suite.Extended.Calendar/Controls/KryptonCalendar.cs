@@ -271,6 +271,8 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         public KryptonCalendar()
         {
+            AutoSize = true;
+
             SetStyle(ControlStyles.ResizeRedraw, true);
             SetStyle(ControlStyles.Selectable, true);
 
