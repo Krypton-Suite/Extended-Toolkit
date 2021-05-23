@@ -4,14 +4,15 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Globalization;
-using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
+
+using Krypton.Toolkit.Suite.Extended.Tools;
 
 namespace Krypton.Toolkit.Suite.Extended.Calendar
 {
     [System.Drawing.ToolboxBitmap(typeof(System.Windows.Forms.MonthCalendar)), ToolboxItem(false)]
-    public partial class CalendarControl : KryptonDataGridView
+    public partial class CalendarControl : DataGridView
     {
         #region Design Code
         /// <summary>
@@ -577,7 +578,9 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             {
                 m_clickedItemsList = ClickedValues;
                 //less the last ,
-                m_clickedItemsCSV = Microsoft.VisualBasic.Strings.Left(ClickedValuesString, Microsoft.VisualBasic.Strings.Len(ClickedValuesString) - 1);
+
+                // TODO: Need help with a C# 'Microsoft.VisualBasic.Strings.Len` equivalent
+                m_clickedItemsCSV = MissingFrameWorkAPIs.Left(ClickedValuesString, Microsoft.VisualBasic.Strings.Len(ClickedValuesString) - 1);
 
                 //raise event Change List
                 this.ListChanged(m_clickedItemsCSV);
