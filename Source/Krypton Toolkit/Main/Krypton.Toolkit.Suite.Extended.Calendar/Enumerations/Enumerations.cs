@@ -25,7 +25,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
     }
 
     /// <summary>
-    /// Possible alignment for <see cref="CalendarItem"/> images
+    /// Possible alignment for <see cref="CalendarItemAlternative"/> images
     /// </summary>
     public enum CalendarItemImageAlign
     {

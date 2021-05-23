@@ -217,7 +217,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// Occurs after the items are positioned
         /// </summary>
         /// <remarks>
-        /// Items bounds can be altered using the <see cref="CalendarItem.SetBounds"/> method.
+        /// Items bounds can be altered using the <see cref="CalendarItemAlternative.SetBounds"/> method.
         /// </remarks>
         [Description("Occurs after the items are positioned")]
         public event EventHandler ItemsPositioned;
@@ -238,7 +238,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         private bool _creatingItem;
         private CalendarDay[] _days;
         private CalendarDaysMode _daysMode;
-        private CalendarItem _editModeItem;
+        private CalendarItemAlternative _editModeItem;
         private bool _finalizingEdition;
         private DayOfWeek _firstDayOfWeek;
         private CalendarHighlightRange[] _highlightRanges;
@@ -260,7 +260,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         private ICalendarSelectableElement _selectedElementEnd;
         private ICalendarSelectableElement _selectedElementStart;
         private Rectangle _selectedElementSquare;
-        private CalendarItem itemOnState;
+        private CalendarItemAlternative itemOnState;
         private bool itemOnStateChanged;
         #endregion
 
@@ -400,7 +400,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets the item being edited (if any)
         /// </summary>
-        public CalendarItem EditModeItem
+        public CalendarItemAlternative EditModeItem
         {
             get
             {
@@ -671,7 +671,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <param name="item"></param>
         public void ActivateEditMode()
         {
-            foreach (CalendarItem item in Items)
+            foreach (CalendarItemAlternative item in Items)
             {
                 if (item.Selected)
                 {
@@ -685,7 +685,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// Activates the edit mode on the specified item
         /// </summary>
         /// <param name="item"></param>
-        public void ActivateEditMode(CalendarItem item)
+        public void ActivateEditMode(CalendarItemAlternative item)
         {
             CalendarItemCancelEventArgs evt = new CalendarItemCancelEventArgs(item);
 
@@ -732,7 +732,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             CalendarDayTop dayTop = SelectedElementEnd as CalendarDayTop;
             CalendarDay day = SelectedElementEnd as CalendarDay;
             TimeSpan duration = unitEnd != null ? unitEnd.Duration : new TimeSpan(23, 59, 59);
-            CalendarItem item = new CalendarItem(this);
+            CalendarItemAlternative item = new CalendarItemAlternative(this);
 
             DateTime dstart = SelectedElementStart.Date;
             DateTime dend = SelectedElementEnd.Date;
@@ -798,7 +798,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             _finalizingEdition = true;
 
             string cancelText = _editModeItem.Text;
-            CalendarItem itemBuffer = _editModeItem;
+            CalendarItemAlternative itemBuffer = _editModeItem;
             _editModeItem = null;
             CalendarItemCancelEventArgs evt = new CalendarItemCancelEventArgs(itemBuffer);
 
@@ -865,11 +865,11 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// Gets the items that are currently selected
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<CalendarItem> GetSelectedItems()
+        public IEnumerable<CalendarItemAlternative> GetSelectedItems()
         {
-            List<CalendarItem> items = new List<CalendarItem>();
+            List<CalendarItemAlternative> items = new List<CalendarItemAlternative>();
 
-            foreach (CalendarItem item in Items)
+            foreach (CalendarItemAlternative item in Items)
             {
                 if (item.Selected)
                 {
@@ -927,7 +927,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         public ICalendarSelectableElement HitTest(Point p, bool ignoreItems)
         {
             if (!ignoreItems)
-                foreach (CalendarItem item in Items)
+                foreach (CalendarItemAlternative item in Items)
                 {
                     foreach (Rectangle r in item.GetAllBounds())
                     {
@@ -977,9 +977,9 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         /// <param name="p">Location to serach for items</param>
         /// <returns>Hitted item at the location. Null if no item hitted.</returns>
-        public CalendarItem ItemAt(Point p)
+        public CalendarItemAlternative ItemAt(Point p)
         {
-            return HitTest(p) as CalendarItem;
+            return HitTest(p) as CalendarItemAlternative;
         }
 
         /// <summary>
@@ -1004,7 +1004,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// Invalidates the area of the specified item
         /// </summary>
         /// <param name="item"></param>
-        public void Invalidate(CalendarItem item)
+        public void Invalidate(CalendarItemAlternative item)
         {
             Rectangle r = item.Bounds;
 
@@ -1054,7 +1054,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// Returns a value indicating if the view range intersect the date range of the specified item
         /// </summary>
         /// <param name="item"></param>
-        public bool ViewIntersects(CalendarItem item)
+        public bool ViewIntersects(CalendarItemAlternative item)
         {
             return ViewIntersects(item.StartDate, item.EndDate);
         }
@@ -1096,7 +1096,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         {
             Rectangle r = Rectangle.Empty;
 
-            foreach (CalendarItem item in Items)
+            foreach (CalendarItemAlternative item in Items)
             {
                 if (item.Selected)
                 {
@@ -1121,9 +1121,9 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         private void DeleteSelectedItems()
         {
-            Stack<CalendarItem> toDelete = new Stack<CalendarItem>();
+            Stack<CalendarItemAlternative> toDelete = new Stack<CalendarItemAlternative>();
 
-            foreach (CalendarItem item in Items)
+            foreach (CalendarItemAlternative item in Items)
             {
                 if (item.Selected)
                 {
@@ -1142,7 +1142,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             {
                 while (toDelete.Count > 0)
                 {
-                    CalendarItem item = toDelete.Pop();
+                    CalendarItemAlternative item = toDelete.Pop();
 
                     Items.Remove(item);
 
@@ -1669,7 +1669,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         {
             base.OnMouseDoubleClick(e);
 
-            CalendarItem item = ItemAt(e.Location);
+            CalendarItemAlternative item = ItemAt(e.Location);
 
             if (item != null)
             {
@@ -1682,7 +1682,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             base.OnMouseDown(e);
 
             ICalendarSelectableElement hitted = HitTest(e.Location);
-            CalendarItem hittedItem = hitted as CalendarItem;
+            CalendarItemAlternative hittedItem = hitted as CalendarItemAlternative;
             bool shiftPressed = (ModifierKeys & Keys.Shift) == Keys.Shift;
 
             if (!Focused)
@@ -1762,7 +1762,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             base.OnMouseMove(e);
 
             ICalendarSelectableElement hitted = HitTest(e.Location, State != CalendarState.Idle);
-            CalendarItem hittedItem = hitted as CalendarItem;
+            CalendarItemAlternative hittedItem = hitted as CalendarItemAlternative;
             CalendarDayTop hittedTop = hitted as CalendarDayTop;
             bool shiftPressed = (ModifierKeys & Keys.Shift) == Keys.Shift;
 
@@ -1822,7 +1822,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             base.OnMouseUp(e);
 
             ICalendarSelectableElement hitted = HitTest(e.Location, State == CalendarState.DraggingTimeSelection);
-            CalendarItem hittedItem = hitted as CalendarItem;
+            CalendarItemAlternative hittedItem = hitted as CalendarItemAlternative;
             CalendarDay hittedDay = hitted as CalendarDay;
             bool shiftPressed = (ModifierKeys & Keys.Shift) == Keys.Shift;
 

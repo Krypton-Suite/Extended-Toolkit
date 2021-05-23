@@ -14,13 +14,13 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
     public class CalendarRendererItemEventArgs : CalendarRendererEventArgs
     {
         #region Fields
-        private CalendarItem _item;
+        private CalendarItemAlternative _item;
         #endregion
 
         #region Ctor
 
 
-        public CalendarRendererItemEventArgs(CalendarRendererEventArgs original, CalendarItem item)
+        public CalendarRendererItemEventArgs(CalendarRendererEventArgs original, CalendarItemAlternative item)
             : base(original)
         {
             _item = item;
@@ -33,7 +33,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets the Item being rendered
         /// </summary>
-        public CalendarItem Item
+        public CalendarItemAlternative Item
         {
             get { return _item; }
         }

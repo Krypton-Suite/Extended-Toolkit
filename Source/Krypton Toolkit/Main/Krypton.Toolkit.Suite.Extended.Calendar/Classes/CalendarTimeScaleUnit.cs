@@ -27,7 +27,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         private int _hours;
         private int _index;
         private int _minutes;
-        private List<CalendarItem> _passingItems;
+        private List<CalendarItemAlternative> _passingItems;
         private bool _visible;
         #endregion
 
@@ -48,7 +48,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             _hours = hours;
             _minutes = minutes;
 
-            _passingItems = new List<CalendarItem>();
+            _passingItems = new List<CalendarItemAlternative>();
         }
 
         #endregion
@@ -128,7 +128,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets or sets the amount of items that pass over the unit
         /// </summary>
-        internal List<CalendarItem> PassingItems
+        internal List<CalendarItemAlternative> PassingItems
         {
             get { return _passingItems; }
             set { _passingItems = value; }
@@ -200,7 +200,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         #endregion
 
 
-        internal void AddPassingItem(CalendarItem item)
+        internal void AddPassingItem(CalendarItemAlternative item)
         {
             if (!PassingItems.Contains(item))
             {
@@ -213,7 +213,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// Clears existance of item from this unit and it's corresponding day.
         /// </summary>
         /// <param name="item"></param>
-        internal void ClearItemExistance(CalendarItem item)
+        internal void ClearItemExistance(CalendarItemAlternative item)
         {
             if (PassingItems.Contains(item))
             {

@@ -30,7 +30,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         #endregion
 
         #region Fields
-        private List<CalendarItem> _containedItems;
+        private List<CalendarItemAlternative> _containedItems;
         private KryptonCalendar _calendar;
         private DateTime _date;
         private CalendarDayTop _dayTop;
@@ -51,7 +51,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <param name="index">Index of the day on the current calendar's view</param>
         internal CalendarDay(KryptonCalendar calendar, DateTime date, int index) : base(calendar)
         {
-            _containedItems = new List<CalendarItem>();
+            _containedItems = new List<CalendarItemAlternative>();
             _calendar = calendar;
             _dayTop = new CalendarDayTop(this);
             _date = date;
@@ -67,7 +67,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets a list of items contained on the day
         /// </summary>
-        internal List<CalendarItem> ContainedItems
+        internal List<CalendarItemAlternative> ContainedItems
         {
             get { return _containedItems; }
         }
@@ -216,7 +216,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// Adds an item to the <see cref="ContainedItems"/> list if not in yet
         /// </summary>
         /// <param name="item"></param>
-        internal void AddContainedItem(CalendarItem item)
+        internal void AddContainedItem(CalendarItemAlternative item)
         {
             if (!ContainedItems.Contains(item))
             {

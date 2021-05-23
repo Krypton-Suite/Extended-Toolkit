@@ -51,7 +51,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <param name="item1"></param>
         /// <param name="item2"></param>
         /// <returns></returns>
-        private static int CompareItems(CalendarItem item1, CalendarItem item2)
+        private static int CompareItems(CalendarItemAlternative item1, CalendarItemAlternative item2)
         {
             return item1.StartDate.CompareTo(item2.StartDate) * -1;
         }
@@ -704,7 +704,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             if (Calendar.Days == null || Calendar.Items.Count == 0) return;
             bool alldaychanged = false;
             int offset = Math.Abs(Calendar.TimeUnitsOffset);
-            List<CalendarItem> itemsOnScene = new List<CalendarItem>();
+            List<CalendarItemAlternative> itemsOnScene = new List<CalendarItemAlternative>();
 
             foreach (CalendarDay day in Calendar.Days)
                 day.ContainedItems.Clear();
@@ -717,7 +717,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
                 int maxItemsOnDayTop = 0;
 
-                foreach (CalendarItem item in Calendar.Items)
+                foreach (CalendarItemAlternative item in Calendar.Items)
                 {
                     item.ClearBounds();
                     item.ClearPassings();
@@ -783,7 +783,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
                 if (tmatix.GetLength(1) > 0)
                 {
-                    foreach (CalendarItem item in Calendar.Items)
+                    foreach (CalendarItemAlternative item in Calendar.Items)
                     {
                         if (!item.IsOnDayTop) continue;
 
@@ -805,7 +805,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
                     int itemHeight = StandardItemHeight;//Convert.ToInt32(Math.Floor(Convert.ToSingle(DayTopHeight) / Convert.ToSingle(tmatix.GetLength(1))));
 
-                    foreach (CalendarItem item in Calendar.Items)
+                    foreach (CalendarItemAlternative item in Calendar.Items)
                     {
                         if (!item.IsOnDayTop) continue;
 
@@ -831,24 +831,24 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
                     maxItemsOnDayTop = Math.Max(maxItemsOnDayTop, day.DayTop.PassingItems.Count);
 
-                    List<List<CalendarItem>> groups = new List<List<CalendarItem>>();
-                    List<CalendarItem> items = new List<CalendarItem>(day.ContainedItems);
+                    List<List<CalendarItemAlternative>> groups = new List<List<CalendarItemAlternative>>();
+                    List<CalendarItemAlternative> items = new List<CalendarItemAlternative>(day.ContainedItems);
 
                     while (items.Count > 0)
                     {
-                        List<CalendarItem> group = new List<CalendarItem>();
+                        List<CalendarItemAlternative> group = new List<CalendarItemAlternative>();
 
                         CollectIntersectingGroup(items[0], items, group);
 
                         groups.Add(group);
 
-                        foreach (CalendarItem item in group)
+                        foreach (CalendarItemAlternative item in group)
                             items.Remove(item);
                     }
 
                     #endregion
 
-                    foreach (List<CalendarItem> group in groups)
+                    foreach (List<CalendarItemAlternative> group in groups)
                     {
                         #region Create group matrix
 
@@ -861,7 +861,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
                         int[,] matix = new int[maxConcurrent, endIndex - startIndex + 1];
 
-                        foreach (CalendarItem item in group)
+                        foreach (CalendarItemAlternative item in group)
                         {
                             int x = 0;
                             item.UnitsPassing.Sort(CompareUnits);
@@ -902,7 +902,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                         #endregion
 
                         #region Expand Items
-                        foreach (CalendarItem item in group)
+                        foreach (CalendarItemAlternative item in group)
                         {
                             int index = group.IndexOf(item);
                             int left, top;
@@ -939,7 +939,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
                         int itemWidth = Convert.ToInt32(Math.Floor(Convert.ToSingle(day.Bounds.Width - ItemsPadding) / Convert.ToSingle(matix.GetLength(0))));
 
-                        foreach (CalendarItem item in group)
+                        foreach (CalendarItemAlternative item in group)
                         {
                             int index = group.IndexOf(item);
                             int top, left;
@@ -991,7 +991,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
                 int maxItems = 0;
 
-                foreach (CalendarItem item in Calendar.Items)
+                foreach (CalendarItemAlternative item in Calendar.Items)
                 {
                     CalendarDay dayStart = item.DayStart;
                     CalendarDay dayEnd = item.DayEnd;
@@ -1006,7 +1006,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
                 int[,] matix = new int[Calendar.Days.Length, maxItems];
                 int curIndex = 0;
-                foreach (CalendarItem item in Calendar.Items)
+                foreach (CalendarItemAlternative item in Calendar.Items)
                 {
                     CalendarDay dayStart = item.DayStart;
                     CalendarDay dayEnd = item.DayEnd;
@@ -1032,7 +1032,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
                     #endregion
 
-                    foreach (CalendarItem item in Calendar.Items)
+                    foreach (CalendarItemAlternative item in Calendar.Items)
                     {
                         int left, top, width = 0;
 
@@ -1063,7 +1063,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                     }
                 }
 
-                foreach (CalendarItem item in Calendar.Items)
+                foreach (CalendarItemAlternative item in Calendar.Items)
                     item.FirstAndLastRectangleGapping();
 
                 Calendar.Items.Reverse();
@@ -1223,12 +1223,12 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <param name="group"></param>
         /// <param name="startIndex"></param>
         /// <param name="endIndex"></param>
-        private void GetGroupBoundUnits(List<CalendarItem> group, out int startIndex, out int endIndex)
+        private void GetGroupBoundUnits(List<CalendarItemAlternative> group, out int startIndex, out int endIndex)
         {
             startIndex = int.MaxValue;
             endIndex = int.MinValue;
 
-            foreach (CalendarItem item in group)
+            foreach (CalendarItemAlternative item in group)
             {
                 foreach (CalendarTimeScaleUnit unit in item.UnitsPassing)
                 {
@@ -1244,12 +1244,12 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <param name="calendarItem"></param>
         /// <param name="items"></param>
         /// <param name="grouped"></param>
-        private void CollectIntersectingGroup(CalendarItem calendarItem, List<CalendarItem> items, List<CalendarItem> grouped)
+        private void CollectIntersectingGroup(CalendarItemAlternative calendarItem, List<CalendarItemAlternative> items, List<CalendarItemAlternative> grouped)
         {
             if (!grouped.Contains(calendarItem))
                 grouped.Add(calendarItem);
 
-            foreach (CalendarItem item in items)
+            foreach (CalendarItemAlternative item in items)
             {
                 if (!grouped.Contains(item) &&
                     calendarItem.IntersectsWith(item.StartDate.TimeOfDay, item.EndDate.TimeOfDay))
@@ -1527,7 +1527,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             bool clipped = false;
 
             #region Shadows
-            foreach (CalendarItem item in e.Calendar.Items)
+            foreach (CalendarItemAlternative item in e.Calendar.Items)
             {
                 clipped = false;
 
@@ -1555,7 +1555,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             #endregion
 
             #region Items
-            foreach (CalendarItem item in e.Calendar.Items)
+            foreach (CalendarItemAlternative item in e.Calendar.Items)
             {
                 clipped = false;
 
@@ -1573,7 +1573,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             #endregion
 
             #region Borders of selected items
-            foreach (CalendarItem item in e.Calendar.Items)
+            foreach (CalendarItemAlternative item in e.Calendar.Items)
             {
                 if (!item.Selected) continue;
 

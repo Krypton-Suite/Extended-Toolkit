@@ -22,7 +22,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
         #region Fields
         private CalendarDay _day;
-        private List<CalendarItem> _passingItems;
+        private List<CalendarItemAlternative> _passingItems;
         #endregion
 
         #region Ctor
@@ -34,7 +34,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         public CalendarDayTop(CalendarDay day) : base(day.Calendar)
         {
             _day = day;
-            _passingItems = new List<CalendarItem>();
+            _passingItems = new List<CalendarItemAlternative>();
         }
 
         #endregion
@@ -61,7 +61,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets the list of items passing on this daytop
         /// </summary>
-        public List<CalendarItem> PassingItems
+        public List<CalendarItemAlternative> PassingItems
         {
             get { return _passingItems; }
         }
@@ -75,7 +75,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
         #region Private Methods
 
-        internal void AddPassingItem(CalendarItem item)
+        internal void AddPassingItem(CalendarItemAlternative item)
         {
             if (!PassingItems.Contains(item))
             {

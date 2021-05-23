@@ -39,17 +39,5 @@ namespace Krypton.Toolkit.Suite.Extended.Tools
             return true;
 
         }
-
-        /// <summary>Splits the array.</summary>
-        /// <param name="inputValue">The input value.</param>
-        /// <param name="delimiter">The delimiter.</param>
-        /// <param name="limit">The limit.</param>
-        /// <returns>The values.</returns>
-        public static string[] SplitArray(string inputValue, string delimiter, int limit = -1)
-        {
-            string[] output = Microsoft.VisualBasic.Strings.Split(inputValue, delimiter, limit, Microsoft.VisualBasic.CompareMethod.Text);
-
-            return output;
-        }
     }
 }

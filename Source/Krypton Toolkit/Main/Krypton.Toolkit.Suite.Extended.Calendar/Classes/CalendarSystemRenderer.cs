@@ -331,7 +331,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
         public override void OnDrawItemText(CalendarRendererBoxEventArgs e)
         {
-            CalendarItem item = e.Tag as CalendarItem;
+            CalendarItemAlternative item = e.Tag as CalendarItemAlternative;
 
             if (item != null)
             {

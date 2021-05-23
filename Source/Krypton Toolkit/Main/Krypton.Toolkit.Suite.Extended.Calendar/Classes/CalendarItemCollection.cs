@@ -11,7 +11,7 @@ using System.Collections.Generic;
 
 namespace Krypton.Toolkit.Suite.Extended.Calendar
 {
-    public class CalendarItemCollection : List<CalendarItem>
+    public class CalendarItemCollection : List<CalendarItemAlternative>
     {
         #region Events
 
@@ -53,7 +53,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// Adds an item to the end of the list
         /// </summary>
         /// <param name="item">The object to be added to the end of the collection. The value can be null for reference types.</param>
-        public new void Add(CalendarItem item)
+        public new void Add(CalendarItemAlternative item)
         {
             base.Add(item); CollectionChanged();
         }
@@ -62,7 +62,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// Adds the items of the specified collection to the end of the list.
         /// </summary>
         /// <param name="items">The items whose elements should be added to the end of the collection. The collection itself cannont be null, but it can contain elements that are null.</param>
-        public new void AddRange(IEnumerable<CalendarItem> items)
+        public new void AddRange(IEnumerable<CalendarItemAlternative> items)
         {
             base.AddRange(items); CollectionChanged();
         }
@@ -80,7 +80,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         /// <param name="index">The zero-based index at which item should be inserted.</param>
         /// <param name="item">The object to insert. The value can be null for reference types.</param>
-        public new void Insert(int index, CalendarItem item)
+        public new void Insert(int index, CalendarItemAlternative item)
         {
             base.Insert(index, item); CollectionChanged();
         }
@@ -90,7 +90,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         /// <param name="index">The zero-based index at which the new elements should be inserted.</param>
         /// <param name="items"></param>
-        public new void InsertRange(int index, IEnumerable<CalendarItem> items)
+        public new void InsertRange(int index, IEnumerable<CalendarItemAlternative> items)
         {
             base.InsertRange(index, items); CollectionChanged();
         }
@@ -100,7 +100,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         /// <param name="item">The item to remove from the collection. The value can be null for reference types.</param>
         /// <returns><c>true</c> if item is successfully removed; otherwise, <c>false</c>. This method also returns false if item was not found in the collection.</returns>
-        public new bool Remove(CalendarItem item)
+        public new bool Remove(CalendarItemAlternative item)
         {
             bool result = base.Remove(item);
 
@@ -124,7 +124,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         /// <param name="match">The Predicate delegate that defines the conditions of the items to remove.</param>
         /// <returns>The number of items removed from the collection.</returns>
-        public new int RemoveAll(Predicate<CalendarItem> match)
+        public new int RemoveAll(Predicate<CalendarItemAlternative> match)
         {
             int result = base.RemoveAll(match);
 
