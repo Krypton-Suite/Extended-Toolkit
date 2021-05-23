@@ -49,68 +49,19 @@ namespace ComboBox
             treeNode8,
             treeNode9,
             treeNode10});
-            this.kryptonComboBox1 = new Krypton.Toolkit.Suite.Extended.ComboBox.KryptonComboBox();
-            this.kryptonComboBoxEnhanced1 = new Krypton.Toolkit.Suite.Extended.ComboBox.KryptonComboBoxEnhanced();
             this.kryptonComboBoxTree1 = new Krypton.Toolkit.Suite.Extended.ComboBox.KryptonComboBoxTree();
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonComboBoxEnhanced1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // kryptonComboBox1
-            // 
-            this.kryptonComboBox1.DisableBorderColour = false;
-            this.kryptonComboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.kryptonComboBox1.FormattingEnabled = true;
-            this.kryptonComboBox1.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10"});
-            this.kryptonComboBox1.Location = new System.Drawing.Point(12, 12);
-            this.kryptonComboBox1.Name = "kryptonComboBox1";
-            this.kryptonComboBox1.PersistentColours = false;
-            this.kryptonComboBox1.Size = new System.Drawing.Size(201, 21);
-            this.kryptonComboBox1.TabIndex = 0;
-            this.kryptonComboBox1.UseStyledColours = false;
-            // 
-            // kryptonComboBoxEnhanced1
-            // 
-            this.kryptonComboBoxEnhanced1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.kryptonComboBoxEnhanced1.DropDownWidth = 201;
-            this.kryptonComboBoxEnhanced1.IntegralHeight = false;
-            this.kryptonComboBoxEnhanced1.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10"});
-            this.kryptonComboBoxEnhanced1.Location = new System.Drawing.Point(12, 39);
-            this.kryptonComboBoxEnhanced1.Name = "kryptonComboBoxEnhanced1";
-            this.kryptonComboBoxEnhanced1.PersistentColours = false;
-            this.kryptonComboBoxEnhanced1.Size = new System.Drawing.Size(201, 21);
-            this.kryptonComboBoxEnhanced1.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
-            this.kryptonComboBoxEnhanced1.TabIndex = 1;
-            this.kryptonComboBoxEnhanced1.UseStyledColours = false;
             // 
             // kryptonComboBoxTree1
             // 
             this.kryptonComboBoxTree1.AbsoluteChildrenSelectableOnly = true;
             this.kryptonComboBoxTree1.BranchSeparator = null;
             this.kryptonComboBoxTree1.Imagelist = null;
-            this.kryptonComboBoxTree1.Location = new System.Drawing.Point(12, 66);
+            this.kryptonComboBoxTree1.Location = new System.Drawing.Point(13, 12);
+            this.kryptonComboBoxTree1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.kryptonComboBoxTree1.Name = "kryptonComboBoxTree1";
             treeNode1.Name = "Node8";
             treeNode1.Text = "Node8";
@@ -138,33 +89,32 @@ namespace ComboBox
             treeNode7,
             treeNode11});
             this.kryptonComboBoxTree1.SelectedNode = null;
-            this.kryptonComboBoxTree1.Size = new System.Drawing.Size(201, 24);
+            this.kryptonComboBoxTree1.Size = new System.Drawing.Size(234, 28);
             this.kryptonComboBoxTree1.TabIndex = 2;
             this.kryptonComboBoxTree1.Text = "kryptonComboBoxTree1";
             // 
             // kryptonPanel1
             // 
             this.kryptonPanel1.Controls.Add(this.kryptonComboBoxTree1);
-            this.kryptonPanel1.Controls.Add(this.kryptonComboBox1);
-            this.kryptonPanel1.Controls.Add(this.kryptonComboBoxEnhanced1);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
+            this.kryptonPanel1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.kryptonPanel1.Name = "kryptonPanel1";
-            this.kryptonPanel1.Size = new System.Drawing.Size(256, 99);
+            this.kryptonPanel1.Size = new System.Drawing.Size(299, 57);
             this.kryptonPanel1.TabIndex = 3;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(256, 99);
+            this.ClientSize = new System.Drawing.Size(299, 57);
             this.Controls.Add(this.kryptonPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form1";
             this.Text = "ComboBoxes";
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonComboBoxEnhanced1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -173,8 +123,6 @@ namespace ComboBox
 
         #endregion
 
-        private Krypton.Toolkit.Suite.Extended.ComboBox.KryptonComboBox kryptonComboBox1;
-        private Krypton.Toolkit.Suite.Extended.ComboBox.KryptonComboBoxEnhanced kryptonComboBoxEnhanced1;
         private Krypton.Toolkit.Suite.Extended.ComboBox.KryptonComboBoxTree kryptonComboBoxTree1;
         private Krypton.Toolkit.KryptonPanel kryptonPanel1;
     }
