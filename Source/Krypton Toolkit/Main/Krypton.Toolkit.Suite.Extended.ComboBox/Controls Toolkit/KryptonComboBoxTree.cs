@@ -242,6 +242,8 @@ namespace Krypton.Toolkit.Suite.Extended.ComboBox
                     combobox.SelectedIndex = 0;
                     ToggleTreeView(sender, null);
                 }
+
+                combobox.Text = tvTreeView.SelectedNode.Text;
             }
         }
 
