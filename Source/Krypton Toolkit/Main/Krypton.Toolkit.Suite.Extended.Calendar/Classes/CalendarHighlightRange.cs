@@ -20,7 +20,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         #endregion
 
         #region Fields
-        private KryptonCalendar _calendar;
+        private KryptonCalendarAlternative _calendar;
         private DayOfWeek _dayOfWeek;
         private TimeSpan _startTime;
         private TimeSpan _endTime;
@@ -57,7 +57,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets the calendar that this range is assigned to. (If any)
         /// </summary>
-        public KryptonCalendar Calendar
+        public KryptonCalendarAlternative Calendar
         {
             get { return _calendar; }
         }
@@ -109,10 +109,10 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         }
 
         /// <summary>
-        /// Sets the value of the <see cref="KryptonCalendar"/> property
+        /// Sets the value of the <see cref="KryptonCalendarAlternative"/> property
         /// </summary>
         /// <param name="calendar">Calendar that this range belongs to</param>
-        internal void SetCalendar(KryptonCalendar calendar)
+        internal void SetCalendar(KryptonCalendarAlternative calendar)
         {
             _calendar = calendar;
         }

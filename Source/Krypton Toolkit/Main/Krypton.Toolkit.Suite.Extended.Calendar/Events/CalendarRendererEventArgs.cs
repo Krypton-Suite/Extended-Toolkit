@@ -21,7 +21,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         #endregion
 
         #region Fields
-        private KryptonCalendar _calendar;
+        private KryptonCalendarAlternative _calendar;
         private Rectangle _clip;
         private Graphics _graphics;
         private object _tag;
@@ -43,7 +43,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <param name="calendar">Calendar where painting</param>
         /// <param name="g">Device where to paint</param>
         /// <param name="clip">Paint event clip area</param>
-        public CalendarRendererEventArgs(KryptonCalendar calendar, Graphics g, Rectangle clipRectangle)
+        public CalendarRendererEventArgs(KryptonCalendarAlternative calendar, Graphics g, Rectangle clipRectangle)
         {
             _calendar = calendar;
             _graphics = g;
@@ -56,7 +56,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <param name="calendar">Calendar where painting</param>
         /// <param name="g">Device where to paint</param>
         /// <param name="clip">Paint event clip area</param>
-        public CalendarRendererEventArgs(KryptonCalendar calendar, Graphics g, Rectangle clipRectangle, object tag)
+        public CalendarRendererEventArgs(KryptonCalendarAlternative calendar, Graphics g, Rectangle clipRectangle, object tag)
         {
             _calendar = calendar;
             _graphics = g;
@@ -83,7 +83,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets the calendar where painting
         /// </summary>
-        public KryptonCalendar Calendar
+        public KryptonCalendarAlternative Calendar
         {
             get { return _calendar; }
         }

@@ -155,7 +155,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         private int _standardItemHeight;
         private int _dayTopHeight;
         private int _dayTopMinHeight;
-        private KryptonCalendar _calendar;
+        private KryptonCalendarAlternative _calendar;
         private Rectangle[] _dayNameHeaderColumns;
         private int _dayHeaderHeight;
         private int _dayNameHeadersHeight;
@@ -176,7 +176,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// Creates a new renderer for the specified calendar
         /// </summary>
         /// <param name="calendar"></param>
-        public CalendarRenderer(KryptonCalendar calendar)
+        public CalendarRenderer(KryptonCalendarAlternative calendar)
         {
             if (calendar == null)
             {
@@ -259,7 +259,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets the <see cref="Calendar"/> this renderer belongs to
         /// </summary>
-        public KryptonCalendar Calendar
+        public KryptonCalendarAlternative Calendar
         {
             get { return _calendar; }
         }

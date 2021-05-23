@@ -67,7 +67,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// Creates a new Item that belongs to the specified calendar
         /// </summary>
         /// <param name="calendar">Calendar to reference item</param>
-        public CalendarItemAlternative(KryptonCalendar calendar) : base(calendar)
+        public CalendarItemAlternative(KryptonCalendarAlternative calendar) : base(calendar)
         {
             _unitsPassing = new List<CalendarTimeScaleUnit>();
             _topsPassing = new List<CalendarDayTop>();
@@ -85,7 +85,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <param name="startDate">Start date of the item</param>
         /// <param name="endDate">End date of the item</param>
         /// <param name="text">Text of the item</param>
-        public CalendarItemAlternative(KryptonCalendar calendar, DateTime startDate, DateTime endDate, string text) : this(calendar)
+        public CalendarItemAlternative(KryptonCalendarAlternative calendar, DateTime startDate, DateTime endDate, string text) : this(calendar)
         {
             StartDate = startDate;
             EndDate = endDate;
@@ -99,7 +99,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <param name="startDate">Start date of the item</param>
         /// <param name="duration">Duration of the item</param>
         /// <param name="text">Text of the item</param>
-        public CalendarItemAlternative(KryptonCalendar calendar, DateTime startDate, TimeSpan duration, string text) : this(calendar, startDate, startDate.Add(duration), text)
+        public CalendarItemAlternative(KryptonCalendarAlternative calendar, DateTime startDate, TimeSpan duration, string text) : this(calendar, startDate, startDate.Add(duration), text)
         { }
 
         #endregion
@@ -159,7 +159,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         }
 
         /// <summary>
-        /// Gets the day on the <see cref="KryptonCalendar"/> where this item ends
+        /// Gets the day on the <see cref="KryptonCalendarAlternative"/> where this item ends
         /// </summary>
         /// <remarks>
         /// This day is not necesarily the day corresponding to the day on <see cref="EndDate"/>, 
@@ -186,7 +186,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         }
 
         /// <summary>
-        /// Gets the day on the <see cref="KryptonCalendar"/> where this item starts
+        /// Gets the day on the <see cref="KryptonCalendarAlternative"/> where this item starts
         /// </summary>
         /// <remarks>
         /// This day is not necesarily the day corresponding to the day on <see cref="StartDate"/>, 

@@ -8,8 +8,16 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Calendar
 {
+    public enum DateMode
+    {
+        OneDay = 0,
+        FiveDay = 1,
+        SevenDay = 2,
+        Month = 3
+    }
+
     /// <summary>
-    /// Enumerates the possible modes of the days visualization on the <see cref="KryptonCalendar"/>
+    /// Enumerates the possible modes of the days visualization on the <see cref="KryptonCalendarAlternative"/>
     /// </summary>
     public enum CalendarDaysMode
     {
@@ -51,7 +59,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
     }
 
     /// <summary>
-    /// Enumerates possible timescales for <see cref="KryptonCalendar"/> control
+    /// Enumerates possible timescales for <see cref="KryptonCalendarAlternative"/> control
     /// </summary>
     public enum CalendarTimeScale
     {

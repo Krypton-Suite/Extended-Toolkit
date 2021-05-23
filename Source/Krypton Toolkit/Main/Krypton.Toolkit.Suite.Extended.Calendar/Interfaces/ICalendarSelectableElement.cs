@@ -19,7 +19,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets the calendar this element belongs to
         /// </summary>
-        KryptonCalendar Calendar { get; }
+        KryptonCalendarAlternative Calendar { get; }
 
         /// <summary>
         /// Gets the calendar

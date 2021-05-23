@@ -12,7 +12,7 @@ using System.Drawing;
 namespace Krypton.Toolkit.Suite.Extended.Calendar
 {
     /// <summary>
-    /// Represents a week displayed on the <see cref="KryptonCalendar"/>
+    /// Represents a week displayed on the <see cref="KryptonCalendarAlternative"/>
     /// </summary>
     public class CalendarWeek
     {
@@ -22,7 +22,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
         #region Fields
         private Rectangle _bounds;
-        private KryptonCalendar _calendar;
+        private KryptonCalendarAlternative _calendar;
         private DateTime _firstDay;
         #endregion
 
@@ -33,7 +33,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         /// <param name="calendar">Calendar this week belongs to</param>
         /// <param name="sunday">Start day of the week</param>
-        internal CalendarWeek(KryptonCalendar calendar, DateTime firstDay)
+        internal CalendarWeek(KryptonCalendarAlternative calendar, DateTime firstDay)
         {
             _calendar = calendar;
             _firstDay = firstDay;
@@ -54,7 +54,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets the calendar this week belongs to
         /// </summary>
-        public KryptonCalendar Calendar
+        public KryptonCalendarAlternative Calendar
         {
             get { return _calendar; }
         }

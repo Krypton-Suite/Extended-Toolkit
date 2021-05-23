@@ -16,7 +16,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
     public class CalendarLoadEventArgs : EventArgs
     {
         #region Fields
-        private KryptonCalendar _calendar;
+        private KryptonCalendarAlternative _calendar;
         private DateTime _dateStart;
         private DateTime _dateEnd;
 
@@ -24,7 +24,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
         #region Ctor
 
-        public CalendarLoadEventArgs(KryptonCalendar calendar, DateTime dateStart, DateTime dateEnd)
+        public CalendarLoadEventArgs(KryptonCalendarAlternative calendar, DateTime dateStart, DateTime dateEnd)
         {
             _calendar = calendar;
             _dateEnd = dateEnd;
@@ -38,7 +38,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets the calendar that originated the event
         /// </summary>
-        public KryptonCalendar Calendar
+        public KryptonCalendarAlternative Calendar
         {
             get { return _calendar; }
         }

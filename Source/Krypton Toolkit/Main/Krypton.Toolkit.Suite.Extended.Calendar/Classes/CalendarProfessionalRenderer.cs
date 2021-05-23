@@ -30,7 +30,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
         #region Ctor
 
-        public CalendarProfessionalRenderer(KryptonCalendar c) : base(c)
+        public CalendarProfessionalRenderer(KryptonCalendarAlternative c) : base(c)
         {
 
             ColourTable.Background = FromHex("#E3EFFF");

@@ -16,7 +16,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 {
     [DefaultEvent("LoadItems")]
     [ToolboxBitmap(typeof(MonthCalendar))]
-    public class KryptonCalendar : ScrollableControl
+    public class KryptonCalendarAlternative : ScrollableControl
     {
         #region "Reload Palette"
         private void Calendar_Invalidated(object sender, InvalidateEventArgs e)
@@ -267,9 +267,9 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         #region Ctor
 
         /// <summary>
-        /// Creates a new <see cref="KryptonCalendar"/> control
+        /// Creates a new <see cref="KryptonCalendarAlternative"/> control
         /// </summary>
-        public KryptonCalendar()
+        public KryptonCalendarAlternative()
         {
             AutoSize = true;
 

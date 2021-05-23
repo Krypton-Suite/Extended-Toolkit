@@ -34,7 +34,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
         #region "Ctor"
 
-        public CalendarKryptonRenderer(KryptonCalendar c)
+        public CalendarKryptonRenderer(KryptonCalendarAlternative c)
             : base(c)
         {
 

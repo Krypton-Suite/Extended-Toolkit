@@ -18,7 +18,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         #endregion
 
         #region Fields
-        private KryptonCalendar _calendar;
+        private KryptonCalendarAlternative _calendar;
         #endregion
 
         #region Ctor
@@ -27,7 +27,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// Creates a new collection that will belong to the specified calendar.
         /// </summary>
         /// <param name="c">Calendar this collection will belong to.</param>
-        internal CalendarItemCollection(KryptonCalendar c)
+        internal CalendarItemCollection(KryptonCalendarAlternative c)
         {
             _calendar = c;
         }
@@ -39,7 +39,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets the calendar this collection belongs to
         /// </summary>
-        public KryptonCalendar Calendar
+        public KryptonCalendarAlternative Calendar
         {
             get { return _calendar; }
         }

@@ -17,7 +17,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
     public abstract class CalendarSelectableElement : ICalendarSelectableElement
     {
         #region Fields
-        private KryptonCalendar _calendar;
+        private KryptonCalendarAlternative _calendar;
         private Rectangle _bounds;
         private DateTime _date = DateTime.Now;
         private bool _selected;
@@ -29,7 +29,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// Creates a new Element
         /// </summary>
         /// <param name="calendar"></param>
-        public CalendarSelectableElement(KryptonCalendar calendar)
+        public CalendarSelectableElement(KryptonCalendarAlternative calendar)
         {
             if (calendar == null) throw new ArgumentNullException("calendar");
 
@@ -50,7 +50,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets the Calendar this element belongs to
         /// </summary>
-        public virtual KryptonCalendar Calendar
+        public virtual KryptonCalendarAlternative Calendar
         {
             get { return _calendar; }
         }

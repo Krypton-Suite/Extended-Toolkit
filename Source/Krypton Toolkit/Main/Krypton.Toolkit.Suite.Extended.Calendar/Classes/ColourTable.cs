@@ -275,7 +275,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                 _hourEndingColour = value;
             }
         }
-        public Color LeftMarginFillColor
+        public Color LeftMarginFillColour
         {
             get
             {

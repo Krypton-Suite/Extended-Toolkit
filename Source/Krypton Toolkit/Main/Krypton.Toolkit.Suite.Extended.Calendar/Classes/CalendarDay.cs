@@ -14,7 +14,7 @@ using System.Windows.Forms;
 namespace Krypton.Toolkit.Suite.Extended.Calendar
 {
     /// <summary>
-    /// Represents a day present on the <see cref="KryptonCalendar"/> control's view.
+    /// Represents a day present on the <see cref="KryptonCalendarAlternative"/> control's view.
     /// </summary>
     public class CalendarDay : CalendarSelectableElement
     {
@@ -31,7 +31,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
         #region Fields
         private List<CalendarItemAlternative> _containedItems;
-        private KryptonCalendar _calendar;
+        private KryptonCalendarAlternative _calendar;
         private DateTime _date;
         private CalendarDayTop _dayTop;
         private int _index;
@@ -49,7 +49,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <param name="calendar">Calendar this day belongs to</param>
         /// <param name="date">Date of the day</param>
         /// <param name="index">Index of the day on the current calendar's view</param>
-        internal CalendarDay(KryptonCalendar calendar, DateTime date, int index) : base(calendar)
+        internal CalendarDay(KryptonCalendarAlternative calendar, DateTime date, int index) : base(calendar)
         {
             _containedItems = new List<CalendarItemAlternative>();
             _calendar = calendar;

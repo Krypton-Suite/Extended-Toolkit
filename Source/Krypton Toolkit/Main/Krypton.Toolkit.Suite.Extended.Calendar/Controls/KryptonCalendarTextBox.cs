@@ -11,16 +11,16 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
     public class KryptonCalendarTextBox : KryptonTextBox //TextBox
     {
         #region Fields
-        private KryptonCalendar _calendar;
+        private KryptonCalendarAlternative _calendar;
         #endregion
 
         #region Ctor
 
         /// <summary>
-        /// Creates a new <see cref="KryptonCalendarTextBox"/> for the specified <see cref="KryptonCalendar"/>
+        /// Creates a new <see cref="KryptonCalendarTextBox"/> for the specified <see cref="KryptonCalendarAlternative"/>
         /// </summary>
         /// <param name="calendar">Calendar where this control lives</param>
-        public KryptonCalendarTextBox(KryptonCalendar calendar)
+        public KryptonCalendarTextBox(KryptonCalendarAlternative calendar)
         {
             _calendar = calendar;
         }
@@ -32,7 +32,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets the calendar where this control lives
         /// </summary>
-        public KryptonCalendar Calendar
+        public KryptonCalendarAlternative Calendar
         {
             get { return _calendar; }
         }

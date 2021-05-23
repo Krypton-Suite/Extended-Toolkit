@@ -24,7 +24,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
         #region Ctor
 
-        public CalendarSystemRenderer(KryptonCalendar calendar) : base(calendar)
+        public CalendarSystemRenderer(KryptonCalendarAlternative calendar) : base(calendar)
         {
             ColourTable = new CalendarColourTable();
             SelectedItemBorder = 1;
