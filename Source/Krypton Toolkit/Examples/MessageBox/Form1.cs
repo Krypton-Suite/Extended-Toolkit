@@ -127,7 +127,7 @@ namespace MessageBox
                     }
                     if (krbIconCustom.Checked)
                     {
-                        if (!string.IsNullOrEmpty(klblCustomIconPath.Text))
+                        if (!MissingFrameWorkAPIs.IsNullOrWhiteSpace(klblCustomIconPath.Text))
                         {
                             kmbc.MessageBoxContentText = ktxtMessage.Text;
 
@@ -250,7 +250,7 @@ namespace MessageBox
                     }
                     if (krbIconCustom.Checked && krbButtonsOk.Checked)
                     {
-                        if (!string.IsNullOrEmpty(klblCustomIconPath.Text))
+                        if (!MissingFrameWorkAPIs.IsNullOrWhiteSpace(klblCustomIconPath.Text))
                         {
                             kmbc.MessageBoxContentText = ktxtMessage.Text;
 
@@ -374,7 +374,7 @@ namespace MessageBox
                     }
                     if (krbIconCustom.Checked && krbButtonsAbortRetryIgnore.Checked)
                     {
-                        if (!string.IsNullOrEmpty(klblCustomIconPath.Text))
+                        if (!MissingFrameWorkAPIs.IsNullOrWhiteSpace(klblCustomIconPath.Text))
                         {
                             kmbc.MessageBoxContentText = ktxtMessage.Text;
 

@@ -13,6 +13,8 @@ using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
+using Krypton.Toolkit.Suite.Extended.Tools;
+
 namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
 {
     /// <summary>
@@ -235,7 +237,7 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
 
             bool isValid = false;
 
-            if (string.IsNullOrEmpty(input))
+            if (MissingFrameWorkAPIs.IsNullOrWhiteSpace(input))
             {
                 isValid = false;
             }

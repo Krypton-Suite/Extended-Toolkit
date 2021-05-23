@@ -14,6 +14,7 @@ using System.Reflection;
 using System.Security.Principal;
 
 using Krypton.Toolkit.Suite.Extended.Developer.Utilities;
+using Krypton.Toolkit.Suite.Extended.Tools;
 
 namespace Krypton.Toolkit.Suite.Extended.Buttons
 {
@@ -108,7 +109,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 
             bool hasAdministrativeRights = principal.IsInRole(WindowsBuiltInRole.Administrator);
 
-            if (string.IsNullOrEmpty(processName)) throw new ArgumentNullException();
+            if (MissingFrameWorkAPIs.IsNullOrWhiteSpace(processName)) throw new ArgumentNullException();
 
             if (!hasAdministrativeRights)
             {
