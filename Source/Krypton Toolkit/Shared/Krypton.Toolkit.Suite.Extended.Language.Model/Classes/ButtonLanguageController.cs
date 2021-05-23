@@ -9,6 +9,7 @@
 using System;
 
 using Krypton.Toolkit.Suite.Extended.Developer.Utilities;
+using Krypton.Toolkit.Suite.Extended.Tools;
 
 namespace Krypton.Toolkit.Suite.Extended.Language.Model
 {

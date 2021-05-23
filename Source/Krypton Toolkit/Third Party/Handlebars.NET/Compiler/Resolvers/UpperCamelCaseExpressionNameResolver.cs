@@ -6,7 +6,7 @@ namespace HandlebarsDotNet.Compiler.Resolvers
     {
         public string ResolveExpressionName(object instance, string expressionName)
         {
-            if (MissingFrameWorkAPIs.IsNullOrWhiteSpace(expressionName))
+            if (string.IsNullOrEmpty(expressionName))
             {
                 return expressionName;
             }

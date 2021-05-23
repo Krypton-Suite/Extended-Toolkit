@@ -38,7 +38,7 @@ namespace HandlebarsDotNet
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void Encode(string text, TextWriter target)
         {
-            if(MissingFrameWorkAPIs.IsNullOrWhiteSpace(text)) return;
+            if(string.IsNullOrEmpty(text)) return;
             
             EncodeImpl(new StringWrapper(text), target);
         }

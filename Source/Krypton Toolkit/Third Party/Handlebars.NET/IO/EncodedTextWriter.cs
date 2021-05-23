@@ -151,7 +151,7 @@ namespace HandlebarsDotNet
 				
 				default:
 					var @string = value.ToString();
-					if(MissingFrameWorkAPIs.IsNullOrWhiteSpace(@string)) return;
+					if(string.IsNullOrEmpty(@string)) return;
 			
 					Write(@string);
 					return;

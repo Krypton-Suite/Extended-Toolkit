@@ -12,6 +12,8 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
+using Krypton.Toolkit.Suite.Extended.Tools;
+
 namespace Krypton.Toolkit.Suite.Extended.Calendar
 {
     /// <summary>
