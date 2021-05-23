@@ -8,6 +8,8 @@
 
 using System.Runtime.CompilerServices;
 
+using Microsoft.VisualBasic;
+
 namespace Krypton.Toolkit.Suite.Extended.Tools
 {
     public static class MissingFrameWorkAPIs
@@ -38,6 +40,18 @@ namespace Krypton.Toolkit.Suite.Extended.Tools
 
             return true;
 
+        }
+
+        /// <summary>Splits the array.</summary>
+        /// <param name="inputValue">The input value.</param>
+        /// <param name="delimiter">The delimiter.</param>
+        /// <param name="limit">The limit.</param>
+        /// <returns>The values.</returns>
+        public static string[] SplitArray(string inputValue, string delimiter, int limit = -1)
+        {
+            string[] output = Strings.Split(inputValue, delimiter, limit, CompareMethod.Text);
+
+            return output;
         }
     }
 }
