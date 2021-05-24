@@ -17,6 +17,7 @@ namespace Zip.Extractor
 
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ZipExtractor));
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             this.pbxExtractIcon = new System.Windows.Forms.PictureBox();
             this.klblCurentStatus = new Krypton.Toolkit.KryptonLabel();
@@ -68,10 +69,12 @@ namespace Zip.Extractor
             this.ClientSize = new System.Drawing.Size(543, 93);
             this.Controls.Add(this.kryptonPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ZipExtractor";
             this.ShowInTaskbar = false;
+            this.Text = "Zip Extraction";
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
