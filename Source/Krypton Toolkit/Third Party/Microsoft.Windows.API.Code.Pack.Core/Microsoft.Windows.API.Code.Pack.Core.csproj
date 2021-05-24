@@ -12,6 +12,7 @@
       </PropertyGroup>
     </Otherwise>
   </Choose>
+  
   <PropertyGroup>
     <LangVersion>latest</LangVersion>
     <OutputType>library</OutputType>
