@@ -533,10 +533,10 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         private void MouseClickManagement(MouseEventArgs e)
         {
             //reinit values
-            List<string> ClickedValues = new List<string>();
+            List<string> _clickedValues = new List<string>();
             m_clickedItemsList = new List<string>();
 
-            string ClickedValuesString = "";
+            string _clickedValuesString = "";
             m_clickedItemsCSV = "";
 
             //get the Cell
@@ -554,8 +554,8 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                 HalfHourCell hhc = (HalfHourCell)clickedCell;
                 for (int i = 0; i < hhc.CalendarItems.Count; i++)
                 {
-                    ClickedValues.Add(hhc.CalendarItems[i].Key);
-                    ClickedValuesString += hhc.CalendarItems[i].Key + ",";
+                    _clickedValues.Add(hhc.CalendarItems[i].Key);
+                    _clickedValuesString += hhc.CalendarItems[i].Key + ",";
                 }
 
             }
@@ -568,19 +568,17 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                 DayCell hhc = (DayCell)clickedCell;
                 for (int i = 0; i < hhc.CalendarItems.Count; i++)
                 {
-                    ClickedValues.Add(hhc.CalendarItems[i].Key);
-                    ClickedValuesString += hhc.CalendarItems[i].Key + ",";
+                    _clickedValues.Add(hhc.CalendarItems[i].Key);
+                    _clickedValuesString += hhc.CalendarItems[i].Key + ",";
                 }
             }
             catch { }
 
-            if (ClickedValues.Count > 0)
+            if (_clickedValues.Count > 0)
             {
-                m_clickedItemsList = ClickedValues;
+                m_clickedItemsList = _clickedValues;
                 //less the last ,
-
-                // TODO: Need help with a C# 'Microsoft.VisualBasic.Strings.Len` equivalent
-                m_clickedItemsCSV = MissingFrameWorkAPIs.Left(ClickedValuesString, Microsoft.VisualBasic.Strings.Len(ClickedValuesString) - 1);
+                m_clickedItemsCSV = MissingFrameWorkAPIs.Left(_clickedValuesString, MissingFrameWorkAPIs.Len(_clickedValuesString) - 1);
 
                 //raise event Change List
                 this.ListChanged(m_clickedItemsCSV);

@@ -44,13 +44,14 @@ namespace Calendar
             this.monthView1.DaySelectedColour = System.Drawing.SystemColors.WindowText;
             this.monthView1.DaySelectedTextColour = System.Drawing.SystemColors.HighlightText;
             this.monthView1.ItemPadding = new System.Windows.Forms.Padding(2);
-            this.monthView1.Location = new System.Drawing.Point(12, 12);
+            this.monthView1.Location = new System.Drawing.Point(14, 14);
+            this.monthView1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.monthView1.MonthTitleColour = System.Drawing.SystemColors.ActiveCaption;
             this.monthView1.MonthTitleColourInactive = System.Drawing.SystemColors.InactiveCaption;
             this.monthView1.MonthTitleTextColour = System.Drawing.SystemColors.ActiveCaptionText;
             this.monthView1.MonthTitleTextColourInactive = System.Drawing.SystemColors.InactiveCaptionText;
             this.monthView1.Name = "monthView1";
-            this.monthView1.Size = new System.Drawing.Size(221, 151);
+            this.monthView1.Size = new System.Drawing.Size(258, 174);
             this.monthView1.TabIndex = 0;
             this.monthView1.Text = "monthView1";
             this.monthView1.TodayBorderColour = System.Drawing.Color.Maroon;
@@ -59,18 +60,20 @@ namespace Calendar
             // 
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
+            this.kryptonPanel1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.kryptonPanel1.Name = "kryptonPanel1";
-            this.kryptonPanel1.Size = new System.Drawing.Size(243, 174);
+            this.kryptonPanel1.Size = new System.Drawing.Size(284, 413);
             this.kryptonPanel1.TabIndex = 1;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(243, 174);
+            this.ClientSize = new System.Drawing.Size(284, 413);
             this.Controls.Add(this.monthView1);
             this.Controls.Add(this.kryptonPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form1";

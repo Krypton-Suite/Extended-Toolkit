@@ -48,5 +48,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tools
         ///   <br />
         /// </returns>
         public static string Left(this string value, int length) => value.Substring(0, Math.Min(length, value.Length));
+
+        public static int Len(string value) => value.Length;
     }
 }
