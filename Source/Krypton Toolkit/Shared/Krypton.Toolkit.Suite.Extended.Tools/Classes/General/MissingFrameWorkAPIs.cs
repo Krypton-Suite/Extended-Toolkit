@@ -44,11 +44,12 @@ namespace Krypton.Toolkit.Suite.Extended.Tools
         /// <summary>C# equivalent of Microsoft.VisualBasic.Strings.Left: https://stackoverflow.com/questions/844059/net-equivalent-of-the-old-vb-leftstring-length-function</summary>
         /// <param name="value">The value.</param>
         /// <param name="length">The length.</param>
-        /// <returns>
-        ///   <br />
-        /// </returns>
+        /// <returns></returns>
         public static string Left(this string value, int length) => value.Substring(0, Math.Min(length, value.Length));
 
+        /// <summary>Gets the length of a specified string.</summary>
+        /// <param name="value">The string to get the length of.</param>
+        /// <returns>The length of the specified string.</returns>
         public static int Len(string value) => value.Length;
     }
 }
