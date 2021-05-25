@@ -1,3 +1,4 @@
+﻿extensions: .cs
 #region MIT License
 /**
  * MIT License
@@ -23,23 +24,3 @@
  * SOFTWARE.
  */
 #endregion
-
-using System;
-using System.Windows.Forms;
-
-namespace Zip.Extractor
-{
-    static class Program
-    {
-        /// <summary>
-        ///  The main entry point for the application.
-        /// </summary>
-        [STAThread]
-        static void Main()
-        {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ZipExtractor());
-        }
-    }
-}
