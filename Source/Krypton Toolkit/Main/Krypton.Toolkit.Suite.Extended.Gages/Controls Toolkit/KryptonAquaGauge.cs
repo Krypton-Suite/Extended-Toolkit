@@ -7,27 +7,22 @@
 #endregion
 
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Suite.Extended.Calendar
+namespace Krypton.Toolkit.Suite.Extended.Gages
 {
-    [System.Drawing.ToolboxBitmap(typeof(MonthCalendar))]
-    public class KryptonTimeFrame : TimeFrame
+    [ToolboxBitmap(typeof(Timer))]
+    public class KryptonAquaGauge : AquaGauge
     {
         private IPalette _palette;
         private PaletteRedirect _paletteRedirect;
-        private PaletteBackInheritRedirect _paletteBack;
-        private PaletteBorderInheritRedirect _paletteBorder;
-        private PaletteContentInheritRedirect _paletteContent;
 
         #region ... Constructor ...
-        public KryptonTimeFrame()
+        public KryptonAquaGauge()
         {
-            SetStyle(ControlStyles.UserPaint, true);
-            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
-            SetStyle(ControlStyles.SupportsTransparentBackColor, true);
+            SetStyle(ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.SupportsTransparentBackColor, true);
             UpdateStyles();
-
             // add Palette Handler
             if (_palette != null)
                 _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
@@ -36,9 +31,6 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
             _palette = KryptonManager.CurrentGlobalPalette;
             _paletteRedirect = new PaletteRedirect(_palette);
-            _paletteBack = new PaletteBackInheritRedirect(_paletteRedirect);
-            _paletteBorder = new PaletteBorderInheritRedirect(_paletteRedirect);
-            _paletteContent = new PaletteContentInheritRedirect(_paletteRedirect);
 
             InitColours();
 
@@ -48,14 +40,15 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
         private void InitColours()
         {
-            this.BackColor = _palette.ColorTable.ToolStripGradientBegin;
-            this.ForeColor = _palette.GetContentShortTextColor1(PaletteContentStyle.LabelNormalControl, PaletteState.Normal);
-            this.Font = _palette.ColorTable.MenuStripFont;
-            this.HotTrack = _palette.GetBackColor1(PaletteBackStyle.ButtonStandalone, PaletteState.Tracking);
-            this.Selected = _palette.GetBackColor2(PaletteBackStyle.ButtonNavigatorStack, PaletteState.Pressed);
-            this.GridDarkColour = _palette.ColorTable.ToolStripGradientEnd;
-            this.GridLightColour = _palette.ColorTable.ToolStripGradientMiddle;
-
+            this.DialColor = _palette.ColorTable.ToolStripGradientBegin;
+            this.ForeColor = _palette.ColorTable.StatusStripText;
+            this.DigitColor = _palette.ColorTable.StatusStripText;
+            /*
+            this.ThickCalibrationColor = _palette.ColorTable.StatusStripGradientEnd;
+            this.ThinCalibrationColor = _palette.ColorTable.ToolStripGradientEnd;
+            this.HandColor = _palette.ColorTable.MenuStripGradientEnd;
+            this.CenterPointColor = _palette.ColorTable.MenuStripGradientEnd;
+            */
         }
 
 

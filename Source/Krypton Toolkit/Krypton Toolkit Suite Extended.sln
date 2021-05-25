@@ -46,8 +46,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Exten
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Floating.Toolbars", "Main\Krypton.Toolkit.Suite.Extended.Floating.Toolbars\Krypton.Toolkit.Suite.Extended.Floating.Toolbars.csproj", "{EBD380E1-55D3-4C3A-98C0-1B669ABF59BE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Guages", "Main\Krypton.Toolkit.Suite.Extended.Guages\Krypton.Toolkit.Suite.Extended.Guages.csproj", "{B45A35ED-07C6-4CDA-A75B-56EBFF601232}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.IO", "Main\Krypton.Toolkit.Suite.Extended.IO\Krypton.Toolkit.Suite.Extended.IO.csproj", "{83B92DB2-6318-4F7D-B169-9874637FF17F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Wizard", "Main\Krypton.Toolkit.Suite.Extended.Wizard\Krypton.Toolkit.Suite.Extended.Wizard.csproj", "{B6FB3BE1-3E55-459C-BB8E-83E21D41C9E6}"
@@ -250,7 +248,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calendar", "Examples\Calend
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Tools", "Shared\Krypton.Toolkit.Suite.Extended.Tools\Krypton.Toolkit.Suite.Extended.Tools.csproj", "{CEBB2E17-AE7B-4A02-B44E-35DE61A5A303}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zip.Extractor", "Third Party\Zip.Extractor\Zip.Extractor.csproj", "{5E89A43D-8283-4818-BABA-218B53599113}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zip.Extractor", "Third Party\Zip.Extractor\Zip.Extractor.csproj", "{5E89A43D-8283-4818-BABA-218B53599113}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gages", "Examples\Gages\Gages.csproj", "{7F888962-A2AF-45DC-80CF-851E37E16B47}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Gages", "Main\Krypton.Toolkit.Suite.Extended.Gages\Krypton.Toolkit.Suite.Extended.Gages.csproj", "{5A3E96CC-C577-4A24-B164-8610C43B2C2C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -294,10 +296,6 @@ Global
 		{EBD380E1-55D3-4C3A-98C0-1B669ABF59BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EBD380E1-55D3-4C3A-98C0-1B669ABF59BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EBD380E1-55D3-4C3A-98C0-1B669ABF59BE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B45A35ED-07C6-4CDA-A75B-56EBFF601232}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B45A35ED-07C6-4CDA-A75B-56EBFF601232}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B45A35ED-07C6-4CDA-A75B-56EBFF601232}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B45A35ED-07C6-4CDA-A75B-56EBFF601232}.Release|Any CPU.Build.0 = Release|Any CPU
 		{83B92DB2-6318-4F7D-B169-9874637FF17F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{83B92DB2-6318-4F7D-B169-9874637FF17F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{83B92DB2-6318-4F7D-B169-9874637FF17F}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -530,6 +528,14 @@ Global
 		{5E89A43D-8283-4818-BABA-218B53599113}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5E89A43D-8283-4818-BABA-218B53599113}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5E89A43D-8283-4818-BABA-218B53599113}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F888962-A2AF-45DC-80CF-851E37E16B47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F888962-A2AF-45DC-80CF-851E37E16B47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F888962-A2AF-45DC-80CF-851E37E16B47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F888962-A2AF-45DC-80CF-851E37E16B47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A3E96CC-C577-4A24-B164-8610C43B2C2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A3E96CC-C577-4A24-B164-8610C43B2C2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A3E96CC-C577-4A24-B164-8610C43B2C2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A3E96CC-C577-4A24-B164-8610C43B2C2C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -546,7 +552,6 @@ Global
 		{A2E6AB58-8DDC-4E0F-B69A-E355761D1148} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 		{80813DE0-350B-4D3B-8D36-9518B2B6A17C} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 		{EBD380E1-55D3-4C3A-98C0-1B669ABF59BE} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
-		{B45A35ED-07C6-4CDA-A75B-56EBFF601232} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 		{83B92DB2-6318-4F7D-B169-9874637FF17F} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 		{B6FB3BE1-3E55-459C-BB8E-83E21D41C9E6} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 		{8AE413C9-1F7D-4F91-BD16-760FB3789F93} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
@@ -618,6 +623,8 @@ Global
 		{46277ED4-0B99-4418-8176-182CE8B69A49} = {25D5F0A6-A601-424B-9431-8EFE139A58A7}
 		{CEBB2E17-AE7B-4A02-B44E-35DE61A5A303} = {726DC0AA-2B0D-4EAC-BB7A-7C49AE13A390}
 		{5E89A43D-8283-4818-BABA-218B53599113} = {E311F8C7-1F27-48CD-86BE-CC3D798163BE}
+		{7F888962-A2AF-45DC-80CF-851E37E16B47} = {25D5F0A6-A601-424B-9431-8EFE139A58A7}
+		{5A3E96CC-C577-4A24-B164-8610C43B2C2C} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A7CE7732-0982-4703-8EFD-7715D569BAB5}

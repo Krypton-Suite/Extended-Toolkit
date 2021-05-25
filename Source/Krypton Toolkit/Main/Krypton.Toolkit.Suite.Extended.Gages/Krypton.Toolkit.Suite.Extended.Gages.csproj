@@ -15,15 +15,15 @@
   <PropertyGroup>
     <LangVersion>latest</LangVersion>
     <OutputType>library</OutputType>
-    <RootNamespace>Krypton.Toolkit.Suite.Extended.Guages</RootNamespace>
-    <AssemblyName>Krypton.Toolkit.Suite.Extended.Guages</AssemblyName>
+    <RootNamespace>Krypton.Toolkit.Suite.Extended.Gages</RootNamespace>
+    <AssemblyName>Krypton.Toolkit.Suite.Extended.Gages</AssemblyName>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
   <!--Package Data-->
   <PropertyGroup>
-    <PackageId>Krypton.Toolkit.Suite.Extended.Guages</PackageId>
-    <Description>An extension to the Krypton standard toolkit. This package implements guage controls.</Description>
+    <PackageId>Krypton.Toolkit.Suite.Extended.Gages</PackageId>
+    <Description>An extension to the Krypton standard toolkit. This package implements gage controls.</Description>
   </PropertyGroup>
 
   <!--Version Information-->
@@ -48,8 +48,8 @@
 
   <!--Binary/Documentation Output-->
   <PropertyGroup>
-    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.Guages\Krypton.Toolkit.Suite.Extended.Guages.xml</DocumentationFile>
-    <OutputPath>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.Guages\</OutputPath>
+    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.Gages\Krypton.Toolkit.Suite.Extended.Gages.xml</DocumentationFile>
+    <OutputPath>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.Gages\</OutputPath>
   </PropertyGroup>
 
 </Project>
