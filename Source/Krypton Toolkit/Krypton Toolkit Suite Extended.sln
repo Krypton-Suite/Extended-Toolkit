@@ -254,6 +254,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gages", "Examples\Gages\Gag
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Gages", "Main\Krypton.Toolkit.Suite.Extended.Gages\Krypton.Toolkit.Suite.Extended.Gages.csproj", "{5A3E96CC-C577-4A24-B164-8610C43B2C2C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataVisualisation", "Examples\DataVisualisation\DataVisualisation.csproj", "{4A9BBBBE-241C-43EE-9D00-0BAE28119F41}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -536,6 +538,10 @@ Global
 		{5A3E96CC-C577-4A24-B164-8610C43B2C2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A3E96CC-C577-4A24-B164-8610C43B2C2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A3E96CC-C577-4A24-B164-8610C43B2C2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A9BBBBE-241C-43EE-9D00-0BAE28119F41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A9BBBBE-241C-43EE-9D00-0BAE28119F41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A9BBBBE-241C-43EE-9D00-0BAE28119F41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A9BBBBE-241C-43EE-9D00-0BAE28119F41}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -625,6 +631,7 @@ Global
 		{5E89A43D-8283-4818-BABA-218B53599113} = {E311F8C7-1F27-48CD-86BE-CC3D798163BE}
 		{7F888962-A2AF-45DC-80CF-851E37E16B47} = {25D5F0A6-A601-424B-9431-8EFE139A58A7}
 		{5A3E96CC-C577-4A24-B164-8610C43B2C2C} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
+		{4A9BBBBE-241C-43EE-9D00-0BAE28119F41} = {25D5F0A6-A601-424B-9431-8EFE139A58A7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A7CE7732-0982-4703-8EFD-7715D569BAB5}

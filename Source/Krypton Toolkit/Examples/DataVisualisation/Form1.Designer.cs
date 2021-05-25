@@ -1,5 +1,5 @@
 ﻿
-namespace Gages
+namespace DataVisualisation
 {
     partial class Form1
     {
@@ -33,11 +33,11 @@ namespace Gages
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Data Visualisation";
             this.ResumeLayout(false);
 
         }

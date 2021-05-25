@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
@@ -6,5 +6,18 @@
     <LangVersion>latest</LangVersion>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Main\Krypton.Toolkit.Suite.Extended.Gages\Krypton.Toolkit.Suite.Extended.Gages.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Krypton.Toolkit.Suite.Extended.Controls">
+      <HintPath>..\..\Main\Krypton.Toolkit.Suite.Extended.Controls\obj\Debug\net48\Krypton.Toolkit.Suite.Extended.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Krypton.Toolkit.Suite.Extended.Data.Visualisation">
+      <HintPath>..\..\Main\Krypton.Toolkit.Suite.Extended.Data.Visualisation\obj\Debug\net48\Krypton.Toolkit.Suite.Extended.Data.Visualisation.dll</HintPath>
+    </Reference>
+  </ItemGroup>
 
 </Project>
