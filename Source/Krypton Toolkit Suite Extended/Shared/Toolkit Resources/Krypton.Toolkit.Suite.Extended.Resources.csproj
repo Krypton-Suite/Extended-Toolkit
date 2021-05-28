@@ -17,14 +17,14 @@
 
   <!--Canary package configuration-->
   <PropertyGroup>
-    <PackageId>Krypton.Toolkit.Suite.Extended.Resources.Canary</PackageId>
-      <TargetFrameworks>net45;netcoreapp3.1;net5.0-windows;net6.0-windows</TargetFrameworks>
-      <TargetFrameworks Condition="'$(TFMs)' == 'all'">net35;net40;net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows;net6.0-windows</TargetFrameworks>
-    <PackageOutputPath>..\..\..\..\Bin\NuGet\Canary</PackageOutputPath>
-    <PackageIcon>Canary.png</PackageIcon>
-    <AssemblyVersion>6.0.2106</AssemblyVersion>
-    <FileVersion>6.0.2106</FileVersion>
-    <Version>6.0.2106</Version>
+    <PackageId>Krypton.Toolkit.Suite.Extended.Resources</PackageId>
+      <TargetFrameworks>net45;netcoreapp3.1;net5.0-windows</TargetFrameworks>
+      <TargetFrameworks Condition="'$(TFMs)' == 'all'">net35;net40;net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows</TargetFrameworks>
+    <PackageOutputPath>..\..\..\..\Bin\NuGet\Stable</PackageOutputPath>
+    <PackageIcon>Stable.png</PackageIcon>
+    <AssemblyVersion>5.550.2106</AssemblyVersion>
+    <FileVersion>5.550.2106</FileVersion>
+    <Version>5.550.2106</Version>
   </PropertyGroup>
 
   <!--Nightly package configuration-
@@ -65,7 +65,7 @@
 
   <ItemGroup>
     <!--Canary icon-->
-    <None Include="Package Icons\Canary.png" Pack="true" PackagePath="\" />
+    <None Include="Package Icons\Stable.png" Pack="true" PackagePath="\" />
 
     <!--Stable icon-->
     <None Include="Package Icons\Stable.png" Pack="true" PackagePath="\" />
