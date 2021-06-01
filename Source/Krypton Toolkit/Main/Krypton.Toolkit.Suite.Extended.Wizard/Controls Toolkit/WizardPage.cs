@@ -63,7 +63,7 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
         {
             InitializeComponent();
             Margin = Padding.Empty;
-            base.Text = Properties.Resources.WizardHeader;
+            base.Text = Properties.Resources.WizardHeaderText;
         }
 
         /// <summary>

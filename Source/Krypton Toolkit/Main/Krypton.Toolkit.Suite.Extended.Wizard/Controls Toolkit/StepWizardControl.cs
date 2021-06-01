@@ -196,3 +196,4 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
 
         private bool ShouldSerializeStepText(WizardPage page) => (GetStepText(page) != page.Text);
     }
+}

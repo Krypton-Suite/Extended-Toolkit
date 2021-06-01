@@ -6,10 +6,11 @@
  */
 #endregion
 
+
 namespace Krypton.Toolkit.Suite.Extended.Wizard
 {
-	/// <summary>Styles that can be applied to the body of a <see cref="WizardControl"/> when on XP or earlier or when a Basic theme is applied.</summary>
-	public enum WizardClassicStyle
+    /// <summary>Styles that can be applied to the body of a <see cref="WizardControl"/> when on XP or earlier or when a Basic theme is applied.</summary>
+    public enum WizardClassicStyle
 	{
 		/// <summary>Windows Vista style theme with large fonts and white background.</summary>
 		AeroStyle,
@@ -944,7 +945,9 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
 
 		private void ResetTitleIcon()
 		{
-			TitleIcon = Properties.Resources.WizardHat;
+			Bitmap icon = new Bitmap(Resources.WizardControl);
+
+			TitleIcon = Icon.FromHandle(icon.GetHicon());
 			titleImageIconSet = false;
 		}
 
