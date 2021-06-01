@@ -37,7 +37,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KryptonRunDialog));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KryptonRunDialogOldVersion));
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             this.kbtnRun = new Krypton.Toolkit.Suite.Extended.Standard.Controls.KryptonButtonExtended();
             this.kuacRun = new Krypton.Toolkit.Suite.Extended.Base.KryptonUACElevatedButtonVersion1();

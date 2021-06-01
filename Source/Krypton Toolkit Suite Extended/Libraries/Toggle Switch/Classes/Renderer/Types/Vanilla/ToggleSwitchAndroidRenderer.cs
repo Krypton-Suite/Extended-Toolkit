@@ -5,10 +5,17 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
 {
     public class ToggleSwitchAndroidRenderer : ToggleSwitchRendererBase, IAndroidValues
     {
+        #region Variables
+        private IPalette _palette;
+        private PaletteRedirect _paletteRedirect;
+
+        #endregion
+
         #region Constructor
 
         public ToggleSwitchAndroidRenderer()
         {
+            /*
             BorderColour = Color.FromArgb(255, 166, 166, 166);
             BackColour = Color.FromArgb(255, 32, 32, 32);
             LeftSideColour = Color.FromArgb(255, 32, 32, 32);
@@ -17,6 +24,26 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
             OnButtonColour = Color.FromArgb(255, 27, 161, 226);
             OffButtonBorderColour = Color.FromArgb(255, 70, 70, 70);
             OnButtonBorderColour = Color.FromArgb(255, 27, 161, 226);
+            */
+
+            BorderColour = _palette.ColorTable.MenuBorder;
+            BackColour = _palette.ColorTable.MenuStripGradientBegin;
+            LeftSideColour = _palette.ColorTable.MenuStripGradientBegin;
+            RightSideColour = _palette.ColorTable.MenuStripGradientEnd;
+            OffButtonColour = Color.FromArgb(255, 70, 70, 70);
+            OnButtonColour = Color.FromArgb(255, 27, 161, 226);
+            OffButtonBorderColour = Color.FromArgb(255, 70, 70, 70);
+            OnButtonBorderColour = Color.FromArgb(255, 27, 161, 226);
+
+            if (_palette != null)
+            {
+                _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+            }
+
+            _palette = KryptonManager.CurrentGlobalPalette;
+
+            _paletteRedirect = new PaletteRedirect(_paletteRedirect);
+
             SlantAngle = 8;
         }
 
@@ -290,5 +317,44 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
         }
 
         #endregion Helper Method Implementations
+
+        #region Krypton
+        //Kripton Palette Events
+        private void OnGlobalPaletteChanged(object sender, EventArgs e)
+        {
+            if (_palette != null)
+                _palette.PalettePaint -= new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+
+            _palette = KryptonManager.CurrentGlobalPalette;
+            _paletteRedirect.Target = _palette;
+
+            if (_palette != null)
+            {
+                _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                //repaint with new values
+
+                InitialiseColours();
+            }
+        }
+
+        //Kripton Palette Events
+        private void OnPalettePaint(object sender, PaletteLayoutEventArgs e)
+        {
+
+        }
+
+        /// <summary>Initialises the colours.</summary>
+        private void InitialiseColours()
+        {
+            BorderColour = _palette.ColorTable.MenuBorder;
+            BackColour = _palette.ColorTable.MenuStripGradientBegin;
+            LeftSideColour = _palette.ColorTable.MenuStripGradientBegin;
+            RightSideColour = _palette.ColorTable.MenuStripGradientEnd;
+            OffButtonColour = Color.FromArgb(255, 70, 70, 70);
+            OnButtonColour = Color.FromArgb(255, 27, 161, 226);
+            OffButtonBorderColour = Color.FromArgb(255, 70, 70, 70);
+            OnButtonBorderColour = Color.FromArgb(255, 27, 161, 226);
+        }
+        #endregion
     }
 }

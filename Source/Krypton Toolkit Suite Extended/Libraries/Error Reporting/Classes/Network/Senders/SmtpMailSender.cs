@@ -11,10 +11,7 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
             base(reportInfo, sendEvent)
         { }
 
-        public override string Description
-        {
-            get { return "SMTP"; }
-        }
+        public override string Description => "SMTP";
 
         /// <summary>
         /// Send SMTP email, uses native .NET SmtpClient library
@@ -31,9 +28,14 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
             };
 
             if (_config.SmtpPort != 0)      // the default port is used if not set in config
+            {
                 smtp.Port = _config.SmtpPort;
+            }
+
             if (!_config.SmtpUseDefaultCredentials)
+            {
                 smtp.Credentials = new NetworkCredential(_config.SmtpUsername, _config.SmtpPassword);
+            }
 
             var message = new MailMessage(_config.SmtpFromAddress, _config.EmailReportAddress)
             {
@@ -64,7 +66,8 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
                     else
                     {
                         _sendEvent.Completed(success: false);
-                        _sendEvent.ShowError($"{ Description }: { (e.Error.InnerException != null ? e.Error.InnerException.Message : e.Error.Message),e.Error }");
+                        _sendEvent.ShowError(string.Format("{0}: ", Description) +
+                            (e.Error.InnerException != null ? e.Error.InnerException.Message : e.Error.Message), e.Error);
                     }
                 }
                 finally

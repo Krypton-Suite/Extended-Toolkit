@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
+#pragma warning disable 1591
+
 namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
 {
     /// <summary>
@@ -24,3 +26,5 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
         void ShowWindow();
     }
 }
+
+#pragma warning restore 1591

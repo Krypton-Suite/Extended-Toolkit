@@ -3,7 +3,7 @@
 namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
 {
     /// <summary>
-    /// A fake/slient version of the events responding to sending
+    /// A fake/silent version of the events responding to sending
     /// </summary>
     public class SilentSendEvent : IReportSendEvent
     {

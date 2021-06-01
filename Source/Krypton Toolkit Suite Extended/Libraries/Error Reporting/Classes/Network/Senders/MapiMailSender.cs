@@ -1,4 +1,6 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
+﻿using Simple.MAPI.NET;
+
+namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
 {
     internal class MapiMailSender : MailSender, IReportSender
     {
@@ -6,15 +8,9 @@
             base(reportInfo, sendEvent)
         { }
 
-        public override string Description
-        {
-            get { return "Email Client"; }
-        }
+        public override string Description => "Email Client";
 
-        public override string ConnectingMessage
-        {
-            get { return $"Launching { Description }..."; }
-        }
+        public override string ConnectingMessage => $"Launching { Description }...";
 
         /// <summary>
         /// Try send via installed Email client
@@ -24,7 +20,7 @@
         {
             if (_config.EmailReportAddress.IsEmpty())
             {
-                _sendEvent.ShowError("EmailReportAddress not set", new ConfigurationErrorsException("EmailReportAddress"));
+                _sendEvent.ShowError("EmailReportAddress not set", new System.Configuration.ConfigurationErrorsException("EmailReportAddress"));
                 return;
             }
 

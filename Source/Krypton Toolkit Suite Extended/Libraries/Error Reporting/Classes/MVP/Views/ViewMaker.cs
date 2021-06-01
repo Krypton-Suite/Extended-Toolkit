@@ -26,19 +26,10 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
     {
         private readonly ExceptionReportInfo _reportInfo;
 
-        public ViewMaker(ExceptionReportInfo reportInfo)
-        {
-            _reportInfo = reportInfo;
-        }
+        public ViewMaker(ExceptionReportInfo reportInfo) => _reportInfo = reportInfo;
 
-        public IExceptionReportView Create()
-        {
-            return new KryptonFullReportView(_reportInfo);
-        }
+        public IExceptionReportView Create() => new ExceptionReportView(_reportInfo);
 
-        public void ShowError(string message, string description)
-        {
-            KryptonMessageBoxExtended.Show(message, description, MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
+        public void ShowError(string message, string description) => KryptonMessageBoxExtended.Show(message, description, MessageBoxButtons.OK, MessageBoxIcon.Error);
     }
 }

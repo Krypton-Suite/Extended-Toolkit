@@ -21,10 +21,7 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
     /// </summary>
     internal class FileService : IFileService
     {
-        public bool Exists(string file)
-        {
-            return File.Exists(file);
-        }
+        public bool Exists(string file) => File.Exists(file);
 
         /// <summary>
         /// Returns a file with given name, in system TEMP path

@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
+#pragma warning disable 1591
+
 namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
 {
     /// <summary>
@@ -8,32 +10,17 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
     /// </summary>
     public class SysInfoResult
     {
-        public SysInfoResult(string name)
-        {
-            Name = name;
-        }
+        public SysInfoResult(string name) => Name = name;
 
-        public void AddNode(string node)
-        {
-            Nodes.Add(node);
-        }
+        public void AddNode(string node) => Nodes.Add(node);
 
-        public void AddChildren(IEnumerable<SysInfoResult> children)
-        {
-            ChildResults.AddRange(children);
-        }
+        public void AddChildren(IEnumerable<SysInfoResult> children) => ChildResults.AddRange(children);
 
         public List<string> Nodes { get; } = new List<string>();
 
-        private void Clear()
-        {
-            Nodes.Clear();
-        }
+        private void Clear() => Nodes.Clear();
 
-        private void AddRange(IEnumerable<string> nodes)
-        {
-            Nodes.AddRange(nodes);
-        }
+        private void AddRange(IEnumerable<string> nodes) => Nodes.AddRange(nodes);
 
         public string Name { get; }
 

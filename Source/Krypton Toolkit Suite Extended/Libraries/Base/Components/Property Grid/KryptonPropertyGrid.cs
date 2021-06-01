@@ -16,38 +16,39 @@ namespace Krypton.Toolkit.Suite.Extended.Base
     [ToolboxBitmap(typeof(PropertyGrid), "ToolboxBitmaps.PropertyGridVersionTwo.bmp")]
     public class KryptonPropertyGrid : PropertyGrid
     {
+        #region Variables
         private IPalette _palette;
+
         private PaletteRedirect _paletteRedirect;
 
-        #region ... Properties...
-        private Color _gradientMiddleColor = Color.Gray;
-        /// <summary>Gets or sets the gradient middle colour.</summary>
-        /// <value>The gradient middle colour.</value>
-        [Browsable(true), Category("Appearance-Extended")]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        [DefaultValue("Color.Gray")]
-        public Color GradientMiddleColour
-        {
-            get { return _gradientMiddleColor; }
-            set { _gradientMiddleColor = value; Invalidate(); }
-        }
+        private Color _gradientMiddleColour = Color.Gray;
         #endregion
 
-        #region ... Constructor ...
+        #region Properties
+        /// <summary>Gets or sets the gradient middle colour.</summary>
+        /// <value>The gradient middle colour.</value>
+        [Browsable(true), Category("Appearance-Extended"), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), DefaultValue("Color.Gray")]
+        public Color GradientMiddleColour { get => _gradientMiddleColour; set { _gradientMiddleColour = value; Invalidate(); } }
+        #endregion
+
+        #region Constructor
+        /// <summary>Initializes a new instance of the <see cref="KryptonPropertyGrid" /> class.</summary>
         public KryptonPropertyGrid()
         {
-            SetStyle(ControlStyles.UserPaint, true);
-            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
-            SetStyle(ControlStyles.SupportsTransparentBackColor, true);
+            SetStyle(ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.SupportsTransparentBackColor, true);
+
             UpdateStyles();
 
-            // add Palette Handler
+            // Add Palette Handler
             if (_palette != null)
+            {
                 _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+            }
 
             KryptonManager.GlobalPaletteChanged += new EventHandler(OnGlobalPaletteChanged);
 
             _palette = KryptonManager.CurrentGlobalPalette;
+
             _paletteRedirect = new PaletteRedirect(_palette);
 
             InitColours();
@@ -56,33 +57,31 @@ namespace Krypton.Toolkit.Suite.Extended.Base
         }
         #endregion
 
-        private void InitColours()
-        {
-            this.ToolStripRenderer = ToolStripManager.Renderer;
-            _gradientMiddleColor = _palette.ColorTable.ToolStripGradientMiddle;
-            this.HelpBackColor = _palette.ColorTable.MenuStripGradientBegin;
-            this.HelpForeColor = _palette.ColorTable.StatusStripText;
-            this.LineColor = _palette.ColorTable.ToolStripGradientMiddle;
-            this.CategoryForeColor = _palette.ColorTable.StatusStripText;
-        }
-
+        #region Overrides
+        /// <summary>Raises the <see cref="E:System.Windows.Forms.Control.Paint">Paint</see> event.</summary>
+        /// <param name="e">A <see cref="T:System.Windows.Forms.PaintEventArgs">PaintEventArgs</see> that contains the event data.</param>
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
-            e.Graphics.FillRectangle(new SolidBrush(_gradientMiddleColor), e.ClipRectangle);
-            //
+
+            e.Graphics.FillRectangle(new SolidBrush(_gradientMiddleColour), e.ClipRectangle);
         }
 
+        /// <summary>Paints the background of the control.</summary>
+        /// <param name="e">A <see cref="T:System.Windows.Forms.PaintEventArgs">PaintEventArgs</see> that contains the event data.</param>
         protected override void OnPaintBackground(PaintEventArgs e)
         {
             base.OnPaintBackground(e);
+
             //e.Graphics.FillRectangle(new SolidBrush(_gradientMiddleColor), e.ClipRectangle);
-            //
         }
+        #endregion
 
-        #region ... Krypton ...
-
-        //Kripton Palette Events
+        #region Krypton
+        // Krypton Palette Events
+        /// <summary>Called when [global palette changed].</summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void OnGlobalPaletteChanged(object sender, EventArgs e)
         {
             if (_palette != null)
@@ -103,10 +102,26 @@ namespace Krypton.Toolkit.Suite.Extended.Base
             Invalidate();
         }
 
-        //Kripton Palette Events
-        private void OnPalettePaint(object sender, PaletteLayoutEventArgs e)
+        // Krypton Palette Events
+        /// <summary>Called when [palette paint].</summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="PaletteLayoutEventArgs" /> instance containing the event data.</param>
+        private void OnPalettePaint(object sender, PaletteLayoutEventArgs e) => Invalidate();
+
+        /// <summary>Initialises the colours.</summary>
+        private void InitColours()
         {
-            Invalidate();
+            ToolStripRenderer = ToolStripManager.Renderer;
+
+            _gradientMiddleColour = _palette.ColorTable.ToolStripGradientMiddle;
+
+            HelpBackColor = _palette.ColorTable.MenuStripGradientBegin;
+
+            HelpForeColor = _palette.ColorTable.StatusStripText;
+
+            LineColor = _palette.ColorTable.ToolStripGradientMiddle;
+
+            CategoryForeColor = _palette.ColorTable.StatusStripText;
         }
         #endregion
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Krypton.Toolkit.Suite.Extended.Error.Reporting.Resources;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -48,7 +49,8 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
 
             if (!result.Saved)
             {
-                View.ShowError(string.Format("Unable to save file '{0}'", fileName), result.Exception);
+                //View.ShowError(string.Format("Unable to save file '{0}'", fileName), result.Exception);
+                View.ShowError(Strings.Unable_to_save_file + $" '{fileName}'", result.Exception);
             }
         }
 
@@ -71,8 +73,10 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
             catch (Exception exception)
             {       // most exceptions will be thrown in the Sender - this is just a backup
                 View.Completed(false);
-                View.ShowError(string.Format("Unable to setup {0}", sender.Description) +
-                                Environment.NewLine + exception.Message, exception);
+                //View.ShowError($"Unable to setup" + $" {sender.Description}" + 
+                //               Environment.NewLine + exception.Message, exception);
+                View.ShowError(Strings.Unable_to_setup + $" {sender.Description}" +
+                               Environment.NewLine + exception.Message, exception);
             }
             finally
             {
@@ -90,7 +94,8 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
         {
             var report = CreateReport();
             WinFormsClipboard.CopyTo(report);
-            View.ProgressMessage = "Copied to clipboard";
+            //View.ProgressMessage = "Copied to clipboard";
+            View.ProgressMessage = Strings.Copied_to_clipboard;
         }
 
         /// <summary>
@@ -117,10 +122,7 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
         /// <summary>
         /// Fetch the WMI system information
         /// </summary>
-        public IEnumerable<SysInfoResult> GetSysInfoResults()
-        {
-            return _reportGenerator.GetOrFetchSysInfoResults();
-        }
+        public IEnumerable<SysInfoResult> GetSysInfoResults() => _reportGenerator.GetOrFetchSysInfoResults();
 
         /// <summary>
         /// The main entry point, populates the report with everything it needs
@@ -142,9 +144,6 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
             }
         }
 
-        public List<AssemblyRef> GetReferencedAssemblies()
-        {
-            return new AssemblyDigger(ReportInfo.AppAssembly).GetAssemblyRefs().ToList();
-        }
+        public List<AssemblyRef> GetReferencedAssemblies() => new AssemblyDigger(ReportInfo.AppAssembly).GetAssemblyRefs().ToList();
     }
 }

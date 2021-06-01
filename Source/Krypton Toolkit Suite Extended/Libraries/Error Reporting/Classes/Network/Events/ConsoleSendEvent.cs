@@ -11,17 +11,11 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
         /// <summary>
         /// email send completed
         /// </summary>
-        public virtual void Completed(bool success)
-        {
-            Console.WriteLine("Report sent: " + success);
-        }
+        public virtual void Completed(bool success) => Console.WriteLine("Report sent: " + success);
 
         /// <summary>
         /// Shows an error - only if occurred
         /// </summary>
-        public virtual void ShowError(string message, Exception exception)
-        {
-            Console.WriteLine("Report error: " + message + Environment.NewLine + exception);
-        }
+        public virtual void ShowError(string message, Exception exception) => Console.WriteLine("Report error: " + message + Environment.NewLine + exception);
     }
 }

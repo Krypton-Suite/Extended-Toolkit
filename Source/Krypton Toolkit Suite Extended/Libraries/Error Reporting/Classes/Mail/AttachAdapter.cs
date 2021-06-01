@@ -1,4 +1,5 @@
-﻿using System.Net.Mail;
+﻿using Simple.MAPI.NET;
+using System.Net.Mail;
 
 namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
 {
@@ -12,23 +13,24 @@ namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
     /// </summary>
     internal class AttachAdapter : IAttach
     {
-        readonly Win32Mapi.SimpleMapi _mapi;
+        readonly SimpleMapi _mapi;
         readonly MailMessage _mailMessage;
 
-        public AttachAdapter(MailMessage mailMessage)
-        {
-            _mailMessage = mailMessage;
-        }
+        public AttachAdapter(MailMessage mailMessage) => _mailMessage = mailMessage;
 
-        public AttachAdapter(Win32Mapi.SimpleMapi mapi)
-        {
-            _mapi = mapi;
-        }
+        public AttachAdapter(SimpleMapi mapi) => _mapi = mapi;
 
         public void Attach(string filename)
         {
-            if (_mapi != null) _mapi.Attach(filename);
-            if (_mailMessage != null) _mailMessage.Attachments.Add(new Attachment(filename));
+            if (_mapi != null)
+            {
+                _mapi.Attach(filename);
+            }
+
+            if (_mailMessage != null)
+            {
+                _mailMessage.Attachments.Add(new Attachment(filename));
+            }
         }
     }
 }
