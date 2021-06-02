@@ -52,7 +52,6 @@
 
 <a href="https://github.com/Krypton-Suite/Help-Files/releases/download/5.550.2102/Krypton.Extended.Toolkit.Help.exe"><img src="https://img.shields.io/badge/Documentation-Download File-orange.svg?style=flat-square" alt="Download the extended toolkit documentation installer" /></a>
 
-<!--
 
 =======
 
@@ -61,14 +60,9 @@
 * New `KryptonFormExtended` to expose properties, which cannot be fulfilled by a action list over time
 * Renamed both `KryptonTabControl` in the `Krypton.Toolkit.Suite.Extended.Navigator` module to 'Version1'/'Version2' respectively to avoid confusion
 * Cleanup `ExtendedKryptonMessageBox` to remove redundant arguments (some features will return in a future version.)
-* Updated standard toolkit to build `2106`-->
-
-=======
-
-## 2021-05-01 - Build 2105 - May 2021
 * New `Krypton.Toolkit.Suite.Extended.Toggle.Switch` module
 * Fixes for the `Krypton.Toolkit.Suite.Extended.Outlook.Grid` module
-
+* Updated standard toolkit to build `2106`
 =======
 
 ## 2021-04-01 - Build 2104 - April 2021
