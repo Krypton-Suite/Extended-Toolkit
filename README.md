@@ -63,6 +63,7 @@
 * New `Krypton.Toolkit.Suite.Extended.Toggle.Switch` module
 * Fixes for the `Krypton.Toolkit.Suite.Extended.Outlook.Grid` module
 * Updated standard toolkit to build `2106`
+
 =======
 
 ## 2021-04-01 - Build 2104 - April 2021
