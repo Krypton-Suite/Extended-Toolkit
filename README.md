@@ -22,13 +22,9 @@
 * New `KryptonFormExtended` to expose properties, which cannot be fulfilled by a action list over time
 * Renamed both `KryptonTabControl` in the `Krypton.Toolkit.Suite.Extended.Navigator` module to 'Version1'/'Version2' respectively to avoid confusion
 * Cleanup `ExtendedKryptonMessageBox` to remove redundant arguments (some features will return in a future version.)
-* Updated standard toolkit to build `2106`
-
-=======
-
-## 2021-05-01 - Build 2105 - May 2021
 * New `Krypton.Toolkit.Suite.Extended.Toggle.Switch` module
 * Fixes for the `Krypton.Toolkit.Suite.Extended.Outlook.Grid` module
+* Updated standard toolkit to build `2106`
 
 =======
 
