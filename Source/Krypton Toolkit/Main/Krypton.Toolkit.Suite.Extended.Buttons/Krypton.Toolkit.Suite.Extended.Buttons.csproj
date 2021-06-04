@@ -13,7 +13,7 @@
       </Otherwise>
     </Choose>
     <PropertyGroup>
-      <LangVersion>preview</LangVersion>
+      <LangVersion>latest</LangVersion>
       <OutputType>library</OutputType>
       <RootNamespace>Krypton.Toolkit.Suite.Extended.Buttons</RootNamespace>
       <AssemblyName>Krypton.Toolkit.Suite.Extended.Buttons</AssemblyName>

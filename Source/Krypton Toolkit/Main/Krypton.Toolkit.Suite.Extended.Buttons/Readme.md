@@ -14,7 +14,6 @@
 - x2 Command link style buttons
 - x2 Types of dropdown buttons - x1 normal button + x1 elevated button
 - x2 Types of elevated buttons
-- x1 `KryptonViewButtons`
 
 ## Usage
 - Drag and drop control on a `KryptonForm`

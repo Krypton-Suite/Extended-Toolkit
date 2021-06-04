@@ -6,6 +6,15 @@
  */
 #endregion
 
+using System;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.Management;
+using System.Security.Principal;
+using System.Windows.Forms;
+
+using Krypton.Toolkit.Suite.Extended.Developer.Utilities;
+
 namespace Krypton.Toolkit.Suite.Extended.Buttons
 {
     /// <summary>
