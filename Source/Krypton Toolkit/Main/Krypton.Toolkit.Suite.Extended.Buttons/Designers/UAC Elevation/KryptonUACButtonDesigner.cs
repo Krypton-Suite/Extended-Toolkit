@@ -6,8 +6,6 @@
  */
 #endregion
 
-using System.ComponentModel.Design;
-using System.Windows.Forms.Design;
 
 namespace Krypton.Toolkit.Suite.Extended.Buttons
 {
