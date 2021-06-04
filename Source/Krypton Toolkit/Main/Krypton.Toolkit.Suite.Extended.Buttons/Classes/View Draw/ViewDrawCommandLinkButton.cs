@@ -6,16 +6,13 @@
  */
 #endregion
 
-using System;
-using System.Diagnostics;
-using System.Drawing;
 
 namespace Krypton.Toolkit.Suite.Extended.Buttons
 {
-	/// <summary>
-	/// View element that can draw a CommandLinkButton.
-	/// </summary>
-	public class ViewDrawCommandLinkButton : ViewComposite
+    /// <summary>
+    /// View element that can draw a CommandLinkButton.
+    /// </summary>
+    public class ViewDrawCommandLinkButton : ViewComposite
 	{
 		#region Instance Fields
 
