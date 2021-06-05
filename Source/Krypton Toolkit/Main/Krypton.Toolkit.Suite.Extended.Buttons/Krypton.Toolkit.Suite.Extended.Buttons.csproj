@@ -13,7 +13,7 @@
       </Otherwise>
     </Choose>
     <PropertyGroup>
-      <LangVersion>latest</LangVersion>
+      <LangVersion>preview</LangVersion>
       <OutputType>library</OutputType>
       <RootNamespace>Krypton.Toolkit.Suite.Extended.Buttons</RootNamespace>
       <AssemblyName>Krypton.Toolkit.Suite.Extended.Buttons</AssemblyName>
@@ -36,12 +36,12 @@
     <Choose>
       <When Condition="'$(TFMs)' == 'all'">
         <ItemGroup>
-          <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2106" />
+          <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2106.1" />
         </ItemGroup>
       </When>
       <Otherwise>
         <ItemGroup>
-          <PackageReference Include="Krypton.Toolkit.Canary.Lite" Version="6.0.2106" />
+          <PackageReference Include="Krypton.Toolkit.Canary.Lite" Version="6.0.2106.1" />
         </ItemGroup>
       </Otherwise>
     </Choose>
@@ -57,6 +57,9 @@
     <ItemGroup>
       <ProjectReference Include="..\..\Shared\Krypton.Toolkit.Suite.Extended.Developer.Utilities\Krypton.Toolkit.Suite.Extended.Developer.Utilities.csproj" />
       <ProjectReference Include="..\..\Shared\Krypton.Toolkit.Suite.Extended.Tools\Krypton.Toolkit.Suite.Extended.Tools.csproj" />
+    </ItemGroup>
+    <ItemGroup>
+      <Reference Include="System.Design" />
     </ItemGroup>
   
     <ItemGroup>
