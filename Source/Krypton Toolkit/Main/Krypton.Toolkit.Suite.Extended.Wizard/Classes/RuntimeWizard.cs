@@ -35,7 +35,7 @@
             {
                 _wizard.BackButtonEnabled = true;
                 _wizard.FinishButtonEnabled = true;
-                _wizard.SetButtonText("_btnNext", _wizard.FinishButtonText);
+                _wizard.SetButtonText("kbtnNext", _wizard.FinishButtonText);
                 return;
             }
 
@@ -43,7 +43,7 @@
             {
                 _wizard.BackButtonEnabled = false;
                 _wizard.NextButtonEnabled = _wizard.WizardPages.Count > 1;
-                _wizard.SetButtonText("_btnNext", _wizard.ReadNextText());
+                _wizard.SetButtonText("kbtnNext", _wizard.ReadNextText());
                 return;
             }
 
@@ -51,13 +51,13 @@
             {
                 _wizard.BackButtonEnabled = true;
                 _wizard.NextButtonEnabled = _wizard.NextButtonEnabledState;
-                _wizard.SetButtonText("_btnNext", _wizard.ReadNextText());
+                _wizard.SetButtonText("kbtnNext", _wizard.ReadNextText());
             }
         }
 
         public override void Back(ISelectionService selection)
         {
-            if (UserAllowsMoveToProceed(Direction.Backward, out var args))
+            if (UserAllowsMoveToProceed(Direction.BACKWARD, out var args))
             {
                 MoveToPreviousPage(args);
                 SetButtonStates();
@@ -68,7 +68,7 @@
         {
             if (Finishing()) return;
 
-            if (UserAllowsMoveToProceed(Direction.Forward, out var args) && _wizard.MoreThanOnePageExists())
+            if (UserAllowsMoveToProceed(Direction.FORWARD, out var args) && _wizard.MoreThanOnePageExists())
             {
                 MoveToNextPage(args);
                 SetButtonStates();
@@ -102,7 +102,7 @@
 
         private bool UserAllowsMoveToProceed(Direction direction, out WizardEventArgs eventArgs)
         {
-            eventArgs = direction == Direction.Forward
+            eventArgs = direction == Direction.FORWARD
                 ? AttemptMoveToNextPage()
                 : AttemptMoveToPreviousPage();
 
