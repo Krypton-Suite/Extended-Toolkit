@@ -12,6 +12,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="Krypton.Toolkit.Suite.Extended.Controls">
+      <HintPath>..\..\Main\Krypton.Toolkit.Suite.Extended.Controls\obj\Debug\net48\Krypton.Toolkit.Suite.Extended.Controls.dll</HintPath>
+    </Reference>
     <Reference Include="System.Design" />
   </ItemGroup>
 

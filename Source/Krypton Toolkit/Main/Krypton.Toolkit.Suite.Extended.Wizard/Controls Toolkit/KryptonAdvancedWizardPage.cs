@@ -10,7 +10,7 @@
  */
 #endregion
 
-using System.IO;
+using Krypton.Toolkit.Suite.Extended.Wizard.Properties;
 
 namespace Krypton.Toolkit.Suite.Extended.Wizard
 {
@@ -43,7 +43,7 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
         /// Allow an Image to be assigned to the wizard header
         /// </summary>
         [Category("WizardPage")]
-        [DefaultValue(null)]
+        [DefaultValue("Resouces.Installer48.png")]
         [Description("A 48x48 image for the wizard header")]
         public Image HeaderImage
         {
@@ -166,10 +166,11 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
             _wizardImage.BackColor = Color.Transparent;
 
             // load the wizImage bitmap that we have embedded in the control
-            Stream stream = GetType().Assembly.GetManifestResourceStream("Resources.Installer48.png");
+            //Stream stream = GetType().Assembly.GetManifestResourceStream("Resources.Installer48.png");
             try
             {
-                if (stream != null) _wizardImage.Image = Image.FromStream(stream);
+                //if (stream != null) _wizardImage.Image = Image.FromStream(stream);
+                _wizardImage.Image = Resources.Installer48;
             }
             catch (Exception e)
             {

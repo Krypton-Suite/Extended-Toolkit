@@ -10,6 +10,7 @@
  */
 #endregion
 
+
 namespace Krypton.Toolkit.Suite.Extended.Wizard
 {
     /// <summary>
@@ -26,6 +27,8 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
             InitializeComponent();
             WizardPages = new KryptonAdvancedWizardPageCollection();
             _wizardStrategy = WizardStrategy.CreateWizard(DesignMode, this);
+
+            Dock = DockStyle.Fill;
         }
 
         /// <summary>
@@ -50,8 +53,12 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
                                 else if (NextButtonEnabled)
                                     _wizardStrategy.Next(null);
                                 break;
+                            default:
+                                break;
                         }
                     }
+                    break;
+                default:
                     break;
             }
             return false;
