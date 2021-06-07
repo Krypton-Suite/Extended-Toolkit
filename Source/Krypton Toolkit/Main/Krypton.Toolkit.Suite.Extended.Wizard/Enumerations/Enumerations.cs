@@ -3,8 +3,7 @@
     public enum ButtonLayoutKind
     {
         DEFAULT,
-        OFFICE97,
-        KRYPTON
+        OFFICE97
     }
 
     public enum Direction

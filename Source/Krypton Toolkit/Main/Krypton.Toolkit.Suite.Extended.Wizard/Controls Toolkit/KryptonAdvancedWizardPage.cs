@@ -11,10 +11,21 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
     {
         public KryptonAdvancedWizardPage()
         {
+            _headerColourOne = Color.White;
+
+            _headerColourTwo = Color.White;
+
             SetupHeader();
             SetupHeaderImage();
             SetupWizardText();
         }
+
+        [Category("WizardPage")]
+        [DefaultValue(typeof(Color), "Color.White")]
+        [Description("A 48x48 image for the wizard header")]
+        public Color HeaderColourOne { get => _headerPanel.StateCommon.Color1; set => _headerPanel.StateCommon.Color1 = value; }
+
+        public Color HeaderColourTwo { get => _headerPanel.StateCommon.Color2; set => _headerPanel.StateCommon.Color2 = value; }
 
         /// <summary>
         /// Allow an Image to be assigned to the wizard header
@@ -24,8 +35,8 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
         [Description("A 48x48 image for the wizard header")]
         public Image HeaderImage
         {
-            get => WizardImage.Image;
-            set => WizardImage.Image = value;
+            get => _wizardImage.Image;
+            set => _wizardImage.Image = value;
         }
 
         // Specify whether or not image is shown
@@ -37,7 +48,7 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
             set
             {
                 _imageVisible = value;
-                WizardImage.Visible = _imageVisible;
+                _wizardImage.Visible = _imageVisible;
             }
         }
 
@@ -46,8 +57,8 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
         [Description("The background color for the header")]
         public Color HeaderBackgroundColor
         {
-            get => HeaderPanel.BackColor;
-            set => HeaderPanel.BackColor = value;
+            get => _headerPanel.BackColor;
+            set => _headerPanel.BackColor = value;
         }
 
         // Specify the main text for the page
@@ -56,8 +67,8 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
         [Localizable(true)]
         public string HeaderTitle
         {
-            get => WizardText.Text;
-            set => WizardText.Text = value;
+            get => _wizardText.Text;
+            set => _wizardText.Text = value;
         }
 
         // Specify the font used for text on the Header
@@ -65,8 +76,8 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
         [Description("The font for the header title")]
         public Font HeaderFont
         {
-            get => WizardText.Font;
-            set => WizardText.Font = value;
+            get => _wizardText.Font;
+            set => _wizardText.Font = value;
         }
 
         // Specify the subtext for the page
@@ -75,8 +86,8 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
         [Localizable(true)]
         public string SubTitle
         {
-            get => WizardSubText.Text;
-            set => WizardSubText.Text = value;
+            get => _wizardSubText.Text;
+            set => _wizardSubText.Text = value;
         }
 
         // Specify the font used for text on the subtitle
@@ -84,8 +95,8 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
         [Description("The font for the subtitle")]
         public Font SubTitleFont
         {
-            get => WizardSubText.Font;
-            set => WizardSubText.Font = value;
+            get => _wizardSubText.Font;
+            set => _wizardSubText.Font = value;
         }
 
         // Specify whether or not the header is shown
@@ -98,7 +109,7 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
             set
             {
                 _headerVisible = value;
-                HeaderPanel.Visible = _headerVisible;
+                _headerPanel.Visible = _headerVisible;
             }
         }
 
@@ -112,31 +123,41 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
 
         internal void FirePageShowEvent() => PageShow(this, new WizardPageEventArgs(this));
 
-        internal KryptonPanel HeaderPanel;
-        internal PictureBox WizardImage;
-        internal KryptonLabel WizardSubText;
-        internal KryptonLabel WizardText;
+        internal KryptonPanel _headerPanel;
+        internal PictureBox _wizardImage;
+        internal KryptonLabel _wizardSubText, _wizardText;
 
         private void SetupHeader()
         {
-            HeaderPanel = new KryptonPanel { Parent = this, Dock = DockStyle.Top, Height = 70, BackColor = Color.White };
+            _headerPanel = new KryptonPanel();
+
+            _headerPanel.Parent = this;
+
+            _headerPanel.Dock = DockStyle.Top;
+
+            _headerPanel.Height = 70;
+
+            _headerPanel.StateCommon.Color1 = _headerColourOne;
+
+            _headerPanel.StateCommon.Color2 = _headerColourTwo;
+
             _headerVisible = true;
             _imageVisible = true;
         }
 
         private void SetupHeaderImage()
         {
-            WizardImage = new PictureBox { Parent = HeaderPanel, Size = new Size(48, 48) };
-            WizardImage.Left = Width - WizardImage.Width - 10;
-            WizardImage.Anchor = AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Bottom;
-            WizardImage.Top = HeaderPanel.Height - WizardImage.Height - 10;
-            WizardImage.BackColor = Color.Transparent;
+            _wizardImage = new PictureBox { Parent = _headerPanel, Size = new Size(48, 48) };
+            _wizardImage.Left = Width - _wizardImage.Width - 10;
+            _wizardImage.Anchor = AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Bottom;
+            _wizardImage.Top = _headerPanel.Height - _wizardImage.Height - 10;
+            _wizardImage.BackColor = Color.Transparent;
 
             // load the wizImage bitmap that we have embedded in the control
-            Stream stream = GetType().Assembly.GetManifestResourceStream("AdvancedWizardControl.Resources.wiz.gif");
+            Stream stream = GetType().Assembly.GetManifestResourceStream("Resources.Installer48.png");
             try
             {
-                if (stream != null) WizardImage.Image = Image.FromStream(stream);
+                if (stream != null) _wizardImage.Image = Image.FromStream(stream);
             }
             catch (Exception e)
             {
@@ -146,27 +167,36 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
 
         private void SetupWizardText()
         {
-            WizardText = new KryptonLabel
-            {
-                Font = new Font("tahoma", 10, FontStyle.Bold),
-                Left = HeaderPanel.Left + 20,
-                Top = 20,
-                AutoSize = true,
-                Parent = HeaderPanel,
-                Text = "Welcome to Advanced Wizard"
-            };
+            _wizardText = new KryptonLabel();
 
-            WizardSubText = new KryptonLabel
-            {
-                Font = new Font("tahoma", 8),
-                Left = HeaderPanel.Left + 40,
-                Top = 38,
-                AutoSize = true,
-                Parent = HeaderPanel,
-                Text = "Your page description goes here"
-            };
+            _wizardText.StateCommon.ShortText.Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
+
+            _wizardText.Left = _headerPanel.Left + 20;
+
+            _wizardText.Top = 20;
+
+            _wizardText.AutoSize = true;
+
+            _wizardText.Parent = _headerPanel;
+
+            _wizardText.Text = "Welcome to the Krypton Wizard";
+
+            _wizardSubText = new KryptonLabel();
+
+            _wizardSubText.StateCommon.ShortText.Font = new Font("Microsoft Sans Serif", 8.25f); ;
+
+            _wizardSubText.Left = _headerPanel.Left + 40;
+
+            _wizardSubText.Top = 40;
+
+            _wizardSubText.AutoSize = true;
+
+            _wizardSubText.Parent = _headerPanel;
+
+            _wizardSubText.Text = "Your page description goes here";
         }
 
+        private Color _headerColourOne, _headerColourTwo;
         private bool _headerVisible;
         private bool _imageVisible;
     }

@@ -1,5 +1,4 @@
-﻿
-using Krypton.Toolkit;
+﻿using Krypton.Toolkit;
 
 namespace Wizard
 {
