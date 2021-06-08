@@ -153,29 +153,14 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
             newTabIndex = ev.NextPageIndex;
         }
 
-        internal void BtnNextClick(object sender, EventArgs e)
-        {
-            _wizardStrategy.Next(_selectionService);
-        }
+        internal void KbtnNextClick(object sender, EventArgs e) => _wizardStrategy.Next(_selectionService);
 
-        internal void BtnBackClick(object sender, EventArgs e)
-        {
-            _wizardStrategy.Back(_selectionService);
-        }
+        internal void KbtnBackClick(object sender, EventArgs e) => _wizardStrategy.Back(_selectionService);
 
-        internal void BtnFinishClick(object sender, EventArgs e)
-        {
-            _wizardStrategy.Finish();
-        }
+        internal void KbtnFinishClick(object sender, EventArgs e) => _wizardStrategy.Finish();
 
-        internal void BtnCancelClick(object sender, EventArgs e)
-        {
-            _wizardStrategy.Cancel();
-        }
+        internal void KbtnCancelClick(object sender, EventArgs e) => _wizardStrategy.Cancel();
 
-        internal void BtnHelpClick(object sender, EventArgs e)
-        {
-            _wizardStrategy.Help();
-        }
+        internal void KbtnHelpClick(object sender, EventArgs e) => _wizardStrategy.Help();
     }
 }

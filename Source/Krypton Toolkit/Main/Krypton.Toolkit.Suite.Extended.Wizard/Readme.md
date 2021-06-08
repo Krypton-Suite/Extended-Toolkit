@@ -17,8 +17,6 @@
 ## Usage
 - Drag and drop control on a `KryptonForm`
 - Add pages to the `KryptonWizard` control
-- Navigate in the designer using the `Back` and `Next` buttons
 
 # ToDo
-- Custom button text
-- Hide the `Back` button on the first page
+- Add more features

@@ -30,21 +30,21 @@ namespace Wizard
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.kryptonAdvancedWizard1 = new Krypton.Toolkit.Suite.Extended.Wizard.KryptonAdvancedWizard();
+            this.kawExample = new Krypton.Toolkit.Suite.Extended.Wizard.KryptonAdvancedWizard();
             this.kryptonAdvancedWizardPage1 = new Krypton.Toolkit.Suite.Extended.Wizard.KryptonAdvancedWizardPage();
             this.kryptonAdvancedWizardPage2 = new Krypton.Toolkit.Suite.Extended.Wizard.KryptonAdvancedWizardPage();
             this.kryptonAdvancedWizardPage3 = new Krypton.Toolkit.Suite.Extended.Wizard.KryptonAdvancedWizardPage();
             this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
-            this.kryptonRadioButton1 = new Krypton.Toolkit.KryptonRadioButton();
-            this.kryptonRadioButton2 = new Krypton.Toolkit.KryptonRadioButton();
-            this.kryptonCheckBox1 = new Krypton.Toolkit.KryptonCheckBox();
-            this.kryptonCheckBox2 = new Krypton.Toolkit.KryptonCheckBox();
-            this.kryptonCheckBox3 = new Krypton.Toolkit.KryptonCheckBox();
+            this.kradDefaultLayout = new Krypton.Toolkit.KryptonRadioButton();
+            this.kradOffice97Layout = new Krypton.Toolkit.KryptonRadioButton();
+            this.kchkHelpButton = new Krypton.Toolkit.KryptonCheckBox();
+            this.kchkCancelButton = new Krypton.Toolkit.KryptonCheckBox();
+            this.kchkFinishButton = new Krypton.Toolkit.KryptonCheckBox();
             this.kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
             this.kryptonRichTextBox1 = new Krypton.Toolkit.KryptonRichTextBox();
             this.kryptonLabel3 = new Krypton.Toolkit.KryptonLabel();
             this.circularPictureBox1 = new Krypton.Toolkit.Suite.Extended.Controls.CircularPictureBox();
-            this.kryptonAdvancedWizard1.SuspendLayout();
+            this.kawExample.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonAdvancedWizardPage1)).BeginInit();
             this.kryptonAdvancedWizardPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonAdvancedWizardPage2)).BeginInit();
@@ -54,43 +54,46 @@ namespace Wizard
             ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // kryptonAdvancedWizard1
+            // kawExample
             // 
-            this.kryptonAdvancedWizard1.BackButtonEnabled = true;
-            this.kryptonAdvancedWizard1.BackButtonText = "< &Back";
-            this.kryptonAdvancedWizard1.ButtonLayout = Krypton.Toolkit.Suite.Extended.Wizard.ButtonLayoutKind.DEFAULT;
-            this.kryptonAdvancedWizard1.ButtonsVisible = true;
-            this.kryptonAdvancedWizard1.CancelButton = true;
-            this.kryptonAdvancedWizard1.CancelButtonText = "&Cancel";
-            this.kryptonAdvancedWizard1.Controls.Add(this.kryptonAdvancedWizardPage3);
-            this.kryptonAdvancedWizard1.Controls.Add(this.kryptonAdvancedWizardPage2);
-            this.kryptonAdvancedWizard1.Controls.Add(this.kryptonAdvancedWizardPage1);
-            this.kryptonAdvancedWizard1.CurrentPageIsFinishPage = false;
-            this.kryptonAdvancedWizard1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonAdvancedWizard1.FinishButton = true;
-            this.kryptonAdvancedWizard1.FinishButtonEnabled = true;
-            this.kryptonAdvancedWizard1.FinishButtonText = "Fi&nish";
-            this.kryptonAdvancedWizard1.HelpButton = true;
-            this.kryptonAdvancedWizard1.HelpButtonText = "H&elp";
-            this.kryptonAdvancedWizard1.Location = new System.Drawing.Point(0, 0);
-            this.kryptonAdvancedWizard1.Name = "kryptonAdvancedWizard1";
-            this.kryptonAdvancedWizard1.NextButtonEnabled = false;
-            this.kryptonAdvancedWizard1.NextButtonText = "N&ext >";
-            this.kryptonAdvancedWizard1.ProcessKeys = false;
-            this.kryptonAdvancedWizard1.Size = new System.Drawing.Size(630, 545);
-            this.kryptonAdvancedWizard1.TabIndex = 0;
-            this.kryptonAdvancedWizard1.TouchScreen = false;
-            this.kryptonAdvancedWizard1.WizardPages.Add(this.kryptonAdvancedWizardPage1);
-            this.kryptonAdvancedWizard1.WizardPages.Add(this.kryptonAdvancedWizardPage2);
-            this.kryptonAdvancedWizard1.WizardPages.Add(this.kryptonAdvancedWizardPage3);
+            this.kawExample.BackButtonEnabled = false;
+            this.kawExample.BackButtonText = "< &Back";
+            this.kawExample.ButtonLayout = Krypton.Toolkit.Suite.Extended.Wizard.ButtonLayoutKind.DEFAULT;
+            this.kawExample.ButtonsVisible = true;
+            this.kawExample.CancelButton = true;
+            this.kawExample.CancelButtonText = "&Cancel";
+            this.kawExample.Controls.Add(this.kryptonAdvancedWizardPage1);
+            this.kawExample.Controls.Add(this.kryptonAdvancedWizardPage2);
+            this.kawExample.Controls.Add(this.kryptonAdvancedWizardPage3);
+            this.kawExample.CurrentPageIsFinishPage = false;
+            this.kawExample.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kawExample.FinishButton = true;
+            this.kawExample.FinishButtonEnabled = true;
+            this.kawExample.FinishButtonText = "Fi&nish";
+            this.kawExample.HelpButton = true;
+            this.kawExample.HelpButtonText = "H&elp";
+            this.kawExample.Location = new System.Drawing.Point(0, 0);
+            this.kawExample.Name = "kawExample";
+            this.kawExample.NextButtonEnabled = true;
+            this.kawExample.NextButtonText = "N&ext >";
+            this.kawExample.ProcessKeys = false;
+            this.kawExample.Size = new System.Drawing.Size(630, 545);
+            this.kawExample.TabIndex = 0;
+            this.kawExample.TouchScreen = false;
+            this.kawExample.WizardPages.Add(this.kryptonAdvancedWizardPage1);
+            this.kawExample.WizardPages.Add(this.kryptonAdvancedWizardPage2);
+            this.kawExample.WizardPages.Add(this.kryptonAdvancedWizardPage3);
+            this.kawExample.Cancel += new System.EventHandler(this.kawExample_Cancel);
+            this.kawExample.Finish += new System.EventHandler(this.kawExample_Finish);
+            this.kawExample.Help += new System.EventHandler(this.kawExample_Help);
             // 
             // kryptonAdvancedWizardPage1
             // 
-            this.kryptonAdvancedWizardPage1.Controls.Add(this.kryptonCheckBox3);
-            this.kryptonAdvancedWizardPage1.Controls.Add(this.kryptonCheckBox2);
-            this.kryptonAdvancedWizardPage1.Controls.Add(this.kryptonCheckBox1);
-            this.kryptonAdvancedWizardPage1.Controls.Add(this.kryptonRadioButton2);
-            this.kryptonAdvancedWizardPage1.Controls.Add(this.kryptonRadioButton1);
+            this.kryptonAdvancedWizardPage1.Controls.Add(this.kchkFinishButton);
+            this.kryptonAdvancedWizardPage1.Controls.Add(this.kchkCancelButton);
+            this.kryptonAdvancedWizardPage1.Controls.Add(this.kchkHelpButton);
+            this.kryptonAdvancedWizardPage1.Controls.Add(this.kradOffice97Layout);
+            this.kryptonAdvancedWizardPage1.Controls.Add(this.kradDefaultLayout);
             this.kryptonAdvancedWizardPage1.Controls.Add(this.kryptonLabel1);
             this.kryptonAdvancedWizardPage1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonAdvancedWizardPage1.Header = true;
@@ -104,10 +107,10 @@ namespace Wizard
             this.kryptonAdvancedWizardPage1.Location = new System.Drawing.Point(0, 0);
             this.kryptonAdvancedWizardPage1.Name = "kryptonAdvancedWizardPage1";
             this.kryptonAdvancedWizardPage1.PreviousPage = 0;
-            this.kryptonAdvancedWizardPage1.Size = new System.Drawing.Size(630, 505);
-            this.kryptonAdvancedWizardPage1.SubTitle = "This is an example wizard - Page 1 of 3";
+            this.kryptonAdvancedWizardPage1.Size = new System.Drawing.Size(630, 495);
+            this.kryptonAdvancedWizardPage1.SubTitle = "An example wizard - Page 1 of 3";
             this.kryptonAdvancedWizardPage1.SubTitleFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonAdvancedWizardPage1.TabIndex = 2;
+            this.kryptonAdvancedWizardPage1.TabIndex = 1;
             // 
             // kryptonAdvancedWizardPage2
             // 
@@ -125,10 +128,10 @@ namespace Wizard
             this.kryptonAdvancedWizardPage2.Location = new System.Drawing.Point(0, 0);
             this.kryptonAdvancedWizardPage2.Name = "kryptonAdvancedWizardPage2";
             this.kryptonAdvancedWizardPage2.PreviousPage = 0;
-            this.kryptonAdvancedWizardPage2.Size = new System.Drawing.Size(630, 505);
-            this.kryptonAdvancedWizardPage2.SubTitle = "This is an example wizard - Page 2 of 3";
+            this.kryptonAdvancedWizardPage2.Size = new System.Drawing.Size(630, 495);
+            this.kryptonAdvancedWizardPage2.SubTitle = "An example wizard - Page 2 of 3";
             this.kryptonAdvancedWizardPage2.SubTitleFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonAdvancedWizardPage2.TabIndex = 3;
+            this.kryptonAdvancedWizardPage2.TabIndex = 2;
             // 
             // kryptonAdvancedWizardPage3
             // 
@@ -146,75 +149,80 @@ namespace Wizard
             this.kryptonAdvancedWizardPage3.Location = new System.Drawing.Point(0, 0);
             this.kryptonAdvancedWizardPage3.Name = "kryptonAdvancedWizardPage3";
             this.kryptonAdvancedWizardPage3.PreviousPage = 1;
-            this.kryptonAdvancedWizardPage3.Size = new System.Drawing.Size(630, 505);
-            this.kryptonAdvancedWizardPage3.SubTitle = "This is an example wizard - Page 3 of 3";
+            this.kryptonAdvancedWizardPage3.Size = new System.Drawing.Size(630, 495);
+            this.kryptonAdvancedWizardPage3.SubTitle = "An example wizard - Page 3 of 3";
             this.kryptonAdvancedWizardPage3.SubTitleFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonAdvancedWizardPage3.TabIndex = 4;
+            this.kryptonAdvancedWizardPage3.TabIndex = 3;
             // 
             // kryptonLabel1
             // 
-            this.kryptonLabel1.Location = new System.Drawing.Point(25, 98);
+            this.kryptonLabel1.Location = new System.Drawing.Point(12, 91);
             this.kryptonLabel1.Name = "kryptonLabel1";
-            this.kryptonLabel1.Size = new System.Drawing.Size(113, 23);
+            this.kryptonLabel1.Size = new System.Drawing.Size(126, 23);
             this.kryptonLabel1.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kryptonLabel1.TabIndex = 1;
-            this.kryptonLabel1.Values.Text = "Wizard Style:";
+            this.kryptonLabel1.Values.Text = "Wizard Layout:";
             // 
-            // kryptonRadioButton1
+            // kradDefaultLayout
             // 
-            this.kryptonRadioButton1.Checked = true;
-            this.kryptonRadioButton1.Location = new System.Drawing.Point(90, 128);
-            this.kryptonRadioButton1.Name = "kryptonRadioButton1";
-            this.kryptonRadioButton1.Size = new System.Drawing.Size(123, 21);
-            this.kryptonRadioButton1.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonRadioButton1.TabIndex = 2;
-            this.kryptonRadioButton1.Values.Text = "&Default Layout";
+            this.kradDefaultLayout.Checked = true;
+            this.kradDefaultLayout.Location = new System.Drawing.Point(136, 138);
+            this.kradDefaultLayout.Name = "kradDefaultLayout";
+            this.kradDefaultLayout.Size = new System.Drawing.Size(123, 21);
+            this.kradDefaultLayout.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kradDefaultLayout.TabIndex = 2;
+            this.kradDefaultLayout.Values.Text = "&Default Layout";
+            this.kradDefaultLayout.CheckedChanged += new System.EventHandler(this.kradDefaultLayout_CheckedChanged);
             // 
-            // kryptonRadioButton2
+            // kradOffice97Layout
             // 
-            this.kryptonRadioButton2.Location = new System.Drawing.Point(90, 155);
-            this.kryptonRadioButton2.Name = "kryptonRadioButton2";
-            this.kryptonRadioButton2.Size = new System.Drawing.Size(136, 21);
-            this.kryptonRadioButton2.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonRadioButton2.TabIndex = 3;
-            this.kryptonRadioButton2.Values.Text = "Office &97 Layout";
+            this.kradOffice97Layout.Location = new System.Drawing.Point(135, 165);
+            this.kradOffice97Layout.Name = "kradOffice97Layout";
+            this.kradOffice97Layout.Size = new System.Drawing.Size(136, 21);
+            this.kradOffice97Layout.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kradOffice97Layout.TabIndex = 3;
+            this.kradOffice97Layout.Values.Text = "Office &97 Layout";
+            this.kradOffice97Layout.CheckedChanged += new System.EventHandler(this.kradOffice97Layout_CheckedChanged);
             // 
-            // kryptonCheckBox1
+            // kchkHelpButton
             // 
-            this.kryptonCheckBox1.Checked = true;
-            this.kryptonCheckBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.kryptonCheckBox1.Location = new System.Drawing.Point(147, 203);
-            this.kryptonCheckBox1.Name = "kryptonCheckBox1";
-            this.kryptonCheckBox1.Size = new System.Drawing.Size(105, 21);
-            this.kryptonCheckBox1.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonCheckBox1.TabIndex = 4;
-            this.kryptonCheckBox1.Values.Text = "He&lp Button";
+            this.kchkHelpButton.Checked = true;
+            this.kchkHelpButton.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.kchkHelpButton.Location = new System.Drawing.Point(193, 206);
+            this.kchkHelpButton.Name = "kchkHelpButton";
+            this.kchkHelpButton.Size = new System.Drawing.Size(105, 21);
+            this.kchkHelpButton.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kchkHelpButton.TabIndex = 4;
+            this.kchkHelpButton.Values.Text = "&Help Button";
+            this.kchkHelpButton.CheckedChanged += new System.EventHandler(this.kchkHelpButton_CheckedChanged);
             // 
-            // kryptonCheckBox2
+            // kchkCancelButton
             // 
-            this.kryptonCheckBox2.Checked = true;
-            this.kryptonCheckBox2.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.kryptonCheckBox2.Location = new System.Drawing.Point(146, 230);
-            this.kryptonCheckBox2.Name = "kryptonCheckBox2";
-            this.kryptonCheckBox2.Size = new System.Drawing.Size(121, 21);
-            this.kryptonCheckBox2.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonCheckBox2.TabIndex = 5;
-            this.kryptonCheckBox2.Values.Text = "&Cancel Button";
+            this.kchkCancelButton.Checked = true;
+            this.kchkCancelButton.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.kchkCancelButton.Location = new System.Drawing.Point(193, 233);
+            this.kchkCancelButton.Name = "kchkCancelButton";
+            this.kchkCancelButton.Size = new System.Drawing.Size(121, 21);
+            this.kchkCancelButton.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kchkCancelButton.TabIndex = 5;
+            this.kchkCancelButton.Values.Text = "Ca&ncel Button";
+            this.kchkCancelButton.CheckedChanged += new System.EventHandler(this.kchkCancelButton_CheckedChanged);
             // 
-            // kryptonCheckBox3
+            // kchkFinishButton
             // 
-            this.kryptonCheckBox3.Checked = true;
-            this.kryptonCheckBox3.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.kryptonCheckBox3.Location = new System.Drawing.Point(147, 257);
-            this.kryptonCheckBox3.Name = "kryptonCheckBox3";
-            this.kryptonCheckBox3.Size = new System.Drawing.Size(115, 21);
-            this.kryptonCheckBox3.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonCheckBox3.TabIndex = 6;
-            this.kryptonCheckBox3.Values.Text = "Finis&h Button";
+            this.kchkFinishButton.Checked = true;
+            this.kchkFinishButton.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.kchkFinishButton.Location = new System.Drawing.Point(193, 260);
+            this.kchkFinishButton.Name = "kchkFinishButton";
+            this.kchkFinishButton.Size = new System.Drawing.Size(115, 21);
+            this.kchkFinishButton.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kchkFinishButton.TabIndex = 6;
+            this.kchkFinishButton.Values.Text = "Fin&ish Button";
+            this.kchkFinishButton.CheckedChanged += new System.EventHandler(this.kchkFinishButton_CheckedChanged);
             // 
             // kryptonLabel2
             // 
-            this.kryptonLabel2.Location = new System.Drawing.Point(12, 84);
+            this.kryptonLabel2.Location = new System.Drawing.Point(12, 91);
             this.kryptonLabel2.Name = "kryptonLabel2";
             this.kryptonLabel2.Size = new System.Drawing.Size(164, 23);
             this.kryptonLabel2.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -223,28 +231,31 @@ namespace Wizard
             // 
             // kryptonRichTextBox1
             // 
-            this.kryptonRichTextBox1.Location = new System.Drawing.Point(12, 113);
+            this.kryptonRichTextBox1.Location = new System.Drawing.Point(12, 120);
             this.kryptonRichTextBox1.Name = "kryptonRichTextBox1";
-            this.kryptonRichTextBox1.Size = new System.Drawing.Size(606, 375);
+            this.kryptonRichTextBox1.ReadOnly = true;
+            this.kryptonRichTextBox1.Size = new System.Drawing.Size(606, 359);
             this.kryptonRichTextBox1.TabIndex = 3;
-            this.kryptonRichTextBox1.Text = "Sample text";
+            this.kryptonRichTextBox1.Text = "Sample Text";
             // 
             // kryptonLabel3
             // 
-            this.kryptonLabel3.Location = new System.Drawing.Point(225, 98);
+            this.kryptonLabel3.Location = new System.Drawing.Point(250, 91);
             this.kryptonLabel3.Name = "kryptonLabel3";
-            this.kryptonLabel3.Size = new System.Drawing.Size(150, 23);
+            this.kryptonLabel3.Size = new System.Drawing.Size(131, 23);
             this.kryptonLabel3.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonLabel3.TabIndex = 2;
-            this.kryptonLabel3.Values.Text = "You\'re good to go!";
+            this.kryptonLabel3.TabIndex = 3;
+            this.kryptonLabel3.Values.Text = "Task Complete!";
             // 
             // circularPictureBox1
             // 
             this.circularPictureBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.circularPictureBox1.Location = new System.Drawing.Point(125, 246);
+            this.circularPictureBox1.Image = global::Wizard.Properties.Resources.Ok_128_x_128;
+            this.circularPictureBox1.Location = new System.Drawing.Point(251, 183);
             this.circularPictureBox1.Name = "circularPictureBox1";
-            this.circularPictureBox1.Size = new System.Drawing.Size(100, 50);
-            this.circularPictureBox1.TabIndex = 3;
+            this.circularPictureBox1.Size = new System.Drawing.Size(128, 128);
+            this.circularPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.circularPictureBox1.TabIndex = 5;
             this.circularPictureBox1.TabStop = false;
             // 
             // Form1
@@ -252,13 +263,13 @@ namespace Wizard
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(630, 545);
-            this.Controls.Add(this.kryptonAdvancedWizard1);
+            this.Controls.Add(this.kawExample);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form1";
             this.ShowIcon = false;
-            this.kryptonAdvancedWizard1.ResumeLayout(false);
+            this.kawExample.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonAdvancedWizardPage1)).EndInit();
             this.kryptonAdvancedWizardPage1.ResumeLayout(false);
             this.kryptonAdvancedWizardPage1.PerformLayout();
@@ -275,20 +286,20 @@ namespace Wizard
 
         #endregion
 
-        private Krypton.Toolkit.Suite.Extended.Wizard.KryptonAdvancedWizard kryptonAdvancedWizard1;
+        private Krypton.Toolkit.Suite.Extended.Wizard.KryptonAdvancedWizard kawExample;
         private Krypton.Toolkit.Suite.Extended.Wizard.KryptonAdvancedWizardPage kryptonAdvancedWizardPage3;
         private Krypton.Toolkit.Suite.Extended.Wizard.KryptonAdvancedWizardPage kryptonAdvancedWizardPage2;
         private Krypton.Toolkit.Suite.Extended.Wizard.KryptonAdvancedWizardPage kryptonAdvancedWizardPage1;
+        private Krypton.Toolkit.KryptonCheckBox kchkFinishButton;
+        private Krypton.Toolkit.KryptonCheckBox kchkCancelButton;
+        private Krypton.Toolkit.KryptonCheckBox kchkHelpButton;
+        private Krypton.Toolkit.KryptonRadioButton kradOffice97Layout;
+        private Krypton.Toolkit.KryptonRadioButton kradDefaultLayout;
+        private Krypton.Toolkit.KryptonLabel kryptonLabel1;
         private Krypton.Toolkit.Suite.Extended.Controls.CircularPictureBox circularPictureBox1;
         private Krypton.Toolkit.KryptonLabel kryptonLabel3;
         private Krypton.Toolkit.KryptonRichTextBox kryptonRichTextBox1;
         private Krypton.Toolkit.KryptonLabel kryptonLabel2;
-        private Krypton.Toolkit.KryptonCheckBox kryptonCheckBox3;
-        private Krypton.Toolkit.KryptonCheckBox kryptonCheckBox2;
-        private Krypton.Toolkit.KryptonCheckBox kryptonCheckBox1;
-        private Krypton.Toolkit.KryptonRadioButton kryptonRadioButton2;
-        private Krypton.Toolkit.KryptonRadioButton kryptonRadioButton1;
-        private Krypton.Toolkit.KryptonLabel kryptonLabel1;
     }
 }
 

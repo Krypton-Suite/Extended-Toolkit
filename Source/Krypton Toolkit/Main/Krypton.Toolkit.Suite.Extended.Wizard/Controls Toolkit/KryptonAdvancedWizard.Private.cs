@@ -21,22 +21,22 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
         private KryptonButton kbtnFinish;
         private KryptonButton kbtnCancel;
         private KryptonButton kbtnBack;
+        private KryptonPanel kryptonPanel1;
         private KryptonButton kbtnNext;
-        private KryptonPanel kpnlContent;
 
         private void InitializeComponent()
         {
             this.kpnlButtons = new Krypton.Toolkit.KryptonPanel();
-            this.kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
-            this.kpnlContent = new Krypton.Toolkit.KryptonPanel();
-            this.kbtnHelp = new Krypton.Toolkit.KryptonButton();
-            this.kbtnFinish = new Krypton.Toolkit.KryptonButton();
-            this.kbtnNext = new Krypton.Toolkit.KryptonButton();
-            this.kbtnBack = new Krypton.Toolkit.KryptonButton();
             this.kbtnCancel = new Krypton.Toolkit.KryptonButton();
+            this.kbtnBack = new Krypton.Toolkit.KryptonButton();
+            this.kbtnNext = new Krypton.Toolkit.KryptonButton();
+            this.kbtnFinish = new Krypton.Toolkit.KryptonButton();
+            this.kbtnHelp = new Krypton.Toolkit.KryptonButton();
+            this.kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
+            this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             ((System.ComponentModel.ISupportInitialize)(this.kpnlButtons)).BeginInit();
             this.kpnlButtons.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kpnlContent)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.SuspendLayout();
             // 
             // kpnlButtons
@@ -54,48 +54,15 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
             this.kpnlButtons.Size = new System.Drawing.Size(557, 50);
             this.kpnlButtons.TabIndex = 0;
             // 
-            // kryptonBorderEdge1
+            // kbtnCancel
             // 
-            this.kryptonBorderEdge1.BorderStyle = Krypton.Toolkit.PaletteBorderStyle.HeaderSecondary;
-            this.kryptonBorderEdge1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.kryptonBorderEdge1.Location = new System.Drawing.Point(0, 0);
-            this.kryptonBorderEdge1.Name = "kryptonBorderEdge1";
-            this.kryptonBorderEdge1.Size = new System.Drawing.Size(557, 1);
-            this.kryptonBorderEdge1.Text = "kryptonBorderEdge1";
-            // 
-            // kpnlContent
-            // 
-            this.kpnlContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kpnlContent.Location = new System.Drawing.Point(0, 0);
-            this.kpnlContent.Name = "kpnlContent";
-            this.kpnlContent.Size = new System.Drawing.Size(557, 277);
-            this.kpnlContent.TabIndex = 1;
-            // 
-            // kbtnHelp
-            // 
-            this.kbtnHelp.Location = new System.Drawing.Point(11, 9);
-            this.kbtnHelp.Name = "kbtnHelp";
-            this.kbtnHelp.Size = new System.Drawing.Size(90, 25);
-            this.kbtnHelp.TabIndex = 1;
-            this.kbtnHelp.Values.Text = "H&elp";
-            // 
-            // kbtnFinish
-            // 
-            this.kbtnFinish.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.kbtnFinish.Location = new System.Drawing.Point(455, 9);
-            this.kbtnFinish.Name = "kbtnFinish";
-            this.kbtnFinish.Size = new System.Drawing.Size(90, 25);
-            this.kbtnFinish.TabIndex = 0;
-            this.kbtnFinish.Values.Text = "Fi&nish";
-            // 
-            // kbtnNext
-            // 
-            this.kbtnNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.kbtnNext.Location = new System.Drawing.Point(359, 9);
-            this.kbtnNext.Name = "kbtnNext";
-            this.kbtnNext.Size = new System.Drawing.Size(90, 25);
-            this.kbtnNext.TabIndex = 0;
-            this.kbtnNext.Values.Text = "N&ext >";
+            this.kbtnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.kbtnCancel.Location = new System.Drawing.Point(167, 9);
+            this.kbtnCancel.Name = "kbtnCancel";
+            this.kbtnCancel.Size = new System.Drawing.Size(90, 25);
+            this.kbtnCancel.TabIndex = 0;
+            this.kbtnCancel.Values.Text = "&Cancel";
+            this.kbtnCancel.Click += KbtnCancelClick;
             // 
             // kbtnBack
             // 
@@ -105,27 +72,65 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
             this.kbtnBack.Size = new System.Drawing.Size(90, 25);
             this.kbtnBack.TabIndex = 0;
             this.kbtnBack.Values.Text = "< &Back";
+            this.kbtnBack.Click += KbtnBackClick;
             // 
-            // kbtnCancel
+            // kbtnNext
             // 
-            this.kbtnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.kbtnCancel.Location = new System.Drawing.Point(167, 9);
-            this.kbtnCancel.Name = "kbtnCancel";
-            this.kbtnCancel.Size = new System.Drawing.Size(90, 25);
-            this.kbtnCancel.TabIndex = 0;
-            this.kbtnCancel.Values.Text = "&Cancel";
+            this.kbtnNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.kbtnNext.Location = new System.Drawing.Point(359, 9);
+            this.kbtnNext.Name = "kbtnNext";
+            this.kbtnNext.Size = new System.Drawing.Size(90, 25);
+            this.kbtnNext.TabIndex = 0;
+            this.kbtnNext.Values.Text = "N&ext >";
+            this.kbtnNext.Click += KbtnNextClick;
+            // 
+            // kbtnFinish
+            // 
+            this.kbtnFinish.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.kbtnFinish.Location = new System.Drawing.Point(455, 9);
+            this.kbtnFinish.Name = "kbtnFinish";
+            this.kbtnFinish.Size = new System.Drawing.Size(90, 25);
+            this.kbtnFinish.TabIndex = 0;
+            this.kbtnFinish.Values.Text = "Fi&nish";
+            this.kbtnFinish.Click += KbtnFinishClick;
+            // 
+            // kbtnHelp
+            // 
+            this.kbtnHelp.Location = new System.Drawing.Point(11, 9);
+            this.kbtnHelp.Name = "kbtnHelp";
+            this.kbtnHelp.Size = new System.Drawing.Size(90, 25);
+            this.kbtnHelp.TabIndex = 1;
+            this.kbtnHelp.Values.Text = "H&elp";
+            this.kbtnHelp.Click += KbtnHelpClick;
+            // 
+            // kryptonBorderEdge1
+            // 
+            this.kryptonBorderEdge1.BorderStyle = Krypton.Toolkit.PaletteBorderStyle.HeaderSecondary;
+            this.kryptonBorderEdge1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.kryptonBorderEdge1.Location = new System.Drawing.Point(0, 0);
+            this.kryptonBorderEdge1.Name = "kryptonBorderEdge1";
+            this.kryptonBorderEdge1.Size = new System.Drawing.Size(557, 1);
+            this.kryptonBorderEdge1.Text = "kryptonBorderEdge1";
+            // 
+            // kryptonPanel1
+            // 
+            this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
+            this.kryptonPanel1.Name = "kryptonPanel1";
+            this.kryptonPanel1.Size = new System.Drawing.Size(557, 277);
+            this.kryptonPanel1.TabIndex = 1;
             // 
             // KryptonAdvancedWizard
             // 
             this.BackColor = System.Drawing.Color.Transparent;
-            this.Controls.Add(this.kpnlContent);
+            this.Controls.Add(this.kryptonPanel1);
             this.Controls.Add(this.kpnlButtons);
             this.Name = "KryptonAdvancedWizard";
             this.Size = new System.Drawing.Size(557, 327);
             ((System.ComponentModel.ISupportInitialize)(this.kpnlButtons)).EndInit();
             this.kpnlButtons.ResumeLayout(false);
             this.kpnlButtons.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kpnlContent)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.ResumeLayout(false);
 
         }
