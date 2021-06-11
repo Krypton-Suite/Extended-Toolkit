@@ -13,7 +13,7 @@
     </Otherwise>
   </Choose>
   <PropertyGroup>
-    <LangVersion>latest</LangVersion>
+    <LangVersion>preview</LangVersion>
     <OutputType>library</OutputType>
     <RootNamespace>Krypton.Toolkit.Suite.Extended.Theme.Switcher</RootNamespace>
     <AssemblyName>Krypton.Toolkit.Suite.Extended.Theme.Switcher</AssemblyName>
@@ -45,6 +45,26 @@
       </ItemGroup>
     </Otherwise>
   </Choose>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\..\Shared\Krypton.Toolkit.Suite.Extended.Settings\Krypton.Toolkit.Suite.Extended.Settings.csproj" />
+    <ProjectReference Include="..\..\Shared\Krypton.Toolkit.Suite.Extended.Tools\Krypton.Toolkit.Suite.Extended.Tools.csproj" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
 
   <!--Binary/Documentation Output-->
   <PropertyGroup>
