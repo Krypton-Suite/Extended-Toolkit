@@ -15,13 +15,13 @@
         private void InitializeComponent()
         {
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            this.kbtnLoadTheme = new Krypton.Toolkit.KryptonButton();
             this.kbtnApply = new Krypton.Toolkit.KryptonButton();
             this.kbtnCancel = new Krypton.Toolkit.KryptonButton();
             this.kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
-            this.kbtnLoadTheme = new Krypton.Toolkit.KryptonButton();
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
-            this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
             this.kcmbPaletteMode = new Krypton.Toolkit.KryptonComboBox();
+            this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
@@ -41,6 +41,15 @@
             this.kryptonPanel1.PanelBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelAlternate;
             this.kryptonPanel1.Size = new System.Drawing.Size(590, 50);
             this.kryptonPanel1.TabIndex = 1;
+            // 
+            // kbtnLoadTheme
+            // 
+            this.kbtnLoadTheme.Location = new System.Drawing.Point(12, 13);
+            this.kbtnLoadTheme.Name = "kbtnLoadTheme";
+            this.kbtnLoadTheme.Size = new System.Drawing.Size(90, 25);
+            this.kbtnLoadTheme.TabIndex = 2;
+            this.kbtnLoadTheme.Values.Text = "Load Th&eme";
+            this.kbtnLoadTheme.Click += new System.EventHandler(this.kbtnLoadTheme_Click);
             // 
             // kbtnApply
             // 
@@ -74,15 +83,6 @@
             this.kryptonBorderEdge1.Size = new System.Drawing.Size(590, 1);
             this.kryptonBorderEdge1.Text = "kryptonBorderEdge1";
             // 
-            // kbtnLoadTheme
-            // 
-            this.kbtnLoadTheme.Location = new System.Drawing.Point(12, 13);
-            this.kbtnLoadTheme.Name = "kbtnLoadTheme";
-            this.kbtnLoadTheme.Size = new System.Drawing.Size(90, 25);
-            this.kbtnLoadTheme.TabIndex = 2;
-            this.kbtnLoadTheme.Values.Text = "Load Th&eme";
-            this.kbtnLoadTheme.Click += new System.EventHandler(this.kbtnLoadTheme_Click);
-            // 
             // kryptonPanel2
             // 
             this.kryptonPanel2.Controls.Add(this.kcmbPaletteMode);
@@ -93,18 +93,9 @@
             this.kryptonPanel2.Size = new System.Drawing.Size(590, 73);
             this.kryptonPanel2.TabIndex = 2;
             // 
-            // kryptonLabel1
-            // 
-            this.kryptonLabel1.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
-            this.kryptonLabel1.Location = new System.Drawing.Point(12, 24);
-            this.kryptonLabel1.Name = "kryptonLabel1";
-            this.kryptonLabel1.Size = new System.Drawing.Size(53, 20);
-            this.kryptonLabel1.TabIndex = 0;
-            this.kryptonLabel1.Values.Text = "Theme:";
-            // 
             // kcmbPaletteMode
             // 
-            this.kcmbPaletteMode.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.kcmbPaletteMode.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.kcmbPaletteMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.kcmbPaletteMode.DropDownWidth = 506;
             this.kcmbPaletteMode.IntegralHeight = false;
@@ -113,7 +104,17 @@
             this.kcmbPaletteMode.Size = new System.Drawing.Size(506, 21);
             this.kcmbPaletteMode.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
             this.kcmbPaletteMode.TabIndex = 1;
+            this.kcmbPaletteMode.SelectedIndexChanged += new System.EventHandler(this.kcmbPaletteMode_SelectedIndexChanged);
             this.kcmbPaletteMode.TextChanged += new System.EventHandler(this.kcmbPaletteMode_TextChanged);
+            // 
+            // kryptonLabel1
+            // 
+            this.kryptonLabel1.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
+            this.kryptonLabel1.Location = new System.Drawing.Point(12, 24);
+            this.kryptonLabel1.Name = "kryptonLabel1";
+            this.kryptonLabel1.Size = new System.Drawing.Size(53, 20);
+            this.kryptonLabel1.TabIndex = 0;
+            this.kryptonLabel1.Values.Text = "Theme:";
             // 
             // ThemeSelector
             // 
@@ -339,5 +340,7 @@
         {
             _settingsManager.SaveSettings();
         }
+
+        private void kcmbPaletteMode_SelectedIndexChanged(object sender, EventArgs e) => kbtnApply.Enabled = true;
     }
 }
