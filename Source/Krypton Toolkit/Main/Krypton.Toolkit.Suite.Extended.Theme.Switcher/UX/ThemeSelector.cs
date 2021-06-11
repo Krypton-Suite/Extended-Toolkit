@@ -1,4 +1,12 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ */
+#endregion
+
+namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 {
     public class ThemeSelector : KryptonForm
     {
@@ -10,6 +18,7 @@
         private KryptonBorderEdge kryptonBorderEdge1;
         private KryptonPanel kryptonPanel2;
         private KryptonComboBox kcmbPaletteMode;
+        private KryptonButton kbtnResetTheme;
         private KryptonLabel kryptonLabel1;
 
         private void InitializeComponent()
@@ -22,6 +31,7 @@
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
             this.kcmbPaletteMode = new Krypton.Toolkit.KryptonComboBox();
             this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
+            this.kbtnResetTheme = new Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
@@ -31,6 +41,7 @@
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(this.kbtnResetTheme);
             this.kryptonPanel1.Controls.Add(this.kbtnLoadTheme);
             this.kryptonPanel1.Controls.Add(this.kbtnApply);
             this.kryptonPanel1.Controls.Add(this.kbtnCancel);
@@ -116,6 +127,16 @@
             this.kryptonLabel1.TabIndex = 0;
             this.kryptonLabel1.Values.Text = "Theme:";
             // 
+            // kbtnResetTheme
+            // 
+            this.kbtnResetTheme.Enabled = false;
+            this.kbtnResetTheme.Location = new System.Drawing.Point(108, 13);
+            this.kbtnResetTheme.Name = "kbtnResetTheme";
+            this.kbtnResetTheme.Size = new System.Drawing.Size(90, 25);
+            this.kbtnResetTheme.TabIndex = 4;
+            this.kbtnResetTheme.Values.Text = "&Reset Theme";
+            this.kbtnResetTheme.Click += new System.EventHandler(this.kbtnResetTheme_Click);
+            // 
             // ThemeSelector
             // 
             this.ClientSize = new System.Drawing.Size(590, 123);
@@ -127,7 +148,7 @@
             this.Name = "ThemeSelector";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Select Theme";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ThemeSelector_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
@@ -148,6 +169,8 @@
         private SettingsManager _settingsManager = new SettingsManager();
 
         private KryptonManager _manager;
+
+        private KryptonPalette _palette;
         #endregion
 
         #region Constructor
@@ -156,6 +179,8 @@
             InitializeComponent();
 
             _manager = manager;
+
+            _palette = new KryptonPalette();
 
             PropagateThemeList();
 
@@ -329,9 +354,15 @@
 
         private void kbtnLoadTheme_Click(object sender, EventArgs e)
         {
-            CustomThemeBrowser themeBrowser = new CustomThemeBrowser();
+            _palette.Import();
 
-            themeBrowser.Show();
+            _manager.GlobalPalette = _palette;
+
+            _manager.GlobalPaletteMode = PaletteModeManager.Custom;
+
+            kcmbPaletteMode.Text = "Custom";
+
+            kbtnResetTheme.Enabled = true;
         }
 
         private void kcmbPaletteMode_TextChanged(object sender, EventArgs e) => kbtnApply.Enabled = MissingFrameWorkAPIs.IsNullOrWhiteSpace(kcmbPaletteMode.Text);
@@ -342,5 +373,22 @@
         }
 
         private void kcmbPaletteMode_SelectedIndexChanged(object sender, EventArgs e) => kbtnApply.Enabled = true;
+
+        private void kbtnResetTheme_Click(object sender, EventArgs e)
+        {
+            _settingsManager.SetTheme(PaletteModeManager.Office365Blue);
+
+            _settingsManager.SetCustomThemePath(string.Empty);
+
+            _settingsManager.SaveSettings();
+
+            _manager.GlobalPalette = null;
+
+            _manager.GlobalPaletteMode = PaletteModeManager.Office365Blue;
+
+            kcmbPaletteMode.Text = "Office 365 - Blue";
+
+            kbtnResetTheme.Enabled = false;
+        }
     }
 }

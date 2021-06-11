@@ -11,8 +11,12 @@
 ![](ThemeSwitcher.gif)
 
 ## Things of note in the picture
-- A `KryptonWizard` control in action
-- All types of controls can be used
+- The theme switcher in action
+- Custom palettes can be used
+- Reset back to the original theme in one click
 
 ## Usage
-- 
+- Use `ThemeSelector` to apply themes
+
+## ToDo
+- Allow user to set a default theme
