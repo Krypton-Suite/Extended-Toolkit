@@ -41,6 +41,22 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
         ///   <br />
         /// </returns>
         public string GetCustomThemePath() => _settings.CustomThemePath;
+
+        /// <summary>Sets the ShowResetButton to the value of value.</summary>
+        /// <param name="value">The desired value of ShowResetButton.</param>
+        public void SetShowResetButton(bool value) => _settings.ShowResetButton = value;
+
+        /// <summary>Returns the value of the ShowResetButton.</summary>
+        /// <returns>The value of the ShowResetButton.</returns>
+        public bool GetShowResetButton() => _settings.ShowResetButton;
+
+        /// <summary>Sets the ShowImportButton to the value of value.</summary>
+        /// <param name="value">The desired value of ShowImportButton.</param>
+        public void SetShowImportButton(bool value) => _settings.ShowImportButton = value;
+
+        /// <summary>Returns the value of the ShowImportButton.</summary>
+        /// <returns>The value of the ShowImportButton.</returns>
+        public bool GetShowImportButton() => _settings.ShowImportButton;
         #endregion
 
         #region Methods

@@ -46,5 +46,29 @@ namespace Krypton.Toolkit.Suite.Extended.Settings.Settings {
                 this["CustomThemePath"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ShowResetButton {
+            get {
+                return ((bool)(this["ShowResetButton"]));
+            }
+            set {
+                this["ShowResetButton"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ShowImportButton {
+            get {
+                return ((bool)(this["ShowImportButton"]));
+            }
+            set {
+                this["ShowImportButton"] = value;
+            }
+        }
     }
 }
