@@ -55,8 +55,8 @@
       <PackageReference Include="System.Management" Version="5.0.0" />
     </ItemGroup>
     <ItemGroup>
-      <ProjectReference Include="..\..\Shared\Krypton.Toolkit.Suite.Extended.Developer.Utilities\Krypton.Toolkit.Suite.Extended.Developer.Utilities.csproj" />
-      <ProjectReference Include="..\..\Shared\Krypton.Toolkit.Suite.Extended.Tools\Krypton.Toolkit.Suite.Extended.Tools.csproj" />
+      <ProjectReference Include="..\..\Shared\Krypton.Toolkit.Suite.Extended.Developer.Utilities\Krypton.Toolkit.Suite.Extended.Developer.Utilities 2019.csproj" />
+      <ProjectReference Include="..\..\Shared\Krypton.Toolkit.Suite.Extended.Tools\Krypton.Toolkit.Suite.Extended.Tools 2019.csproj" />
     </ItemGroup>
     <ItemGroup>
       <Reference Include="System.Design" />

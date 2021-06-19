@@ -15,15 +15,15 @@
   <PropertyGroup>
     <LangVersion>latest</LangVersion>
     <OutputType>library</OutputType>
-    <RootNamespace>Krypton.Toolkit.Suite.Extended.Developer.Utilities</RootNamespace>
-    <AssemblyName>Krypton.Toolkit.Suite.Extended.Developer.Utilities</AssemblyName>
+    <RootNamespace>Krypton.Toolkit.Suite.Extended.Controls</RootNamespace>
+    <AssemblyName>Krypton.Toolkit.Suite.Extended.Controls</AssemblyName>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
   <!--Package Data-->
   <PropertyGroup>
-    <PackageId>Krypton.Toolkit.Suite.Extended.Developer.Utilities</PackageId>
-    <Description>An extension to the Krypton standard toolkit. This package holds utilities for developer usage.</Description>
+    <PackageId>Krypton.Toolkit.Suite.Extended.Controls</PackageId>
+    <Description>An extension to the Krypton standard toolkit. This package holds numerous controls that complement the standard toolkit.</Description>
   </PropertyGroup>
 
   <!--Version Information-->
@@ -48,25 +48,12 @@
 
   <!--Binary/Documentation Output-->
   <PropertyGroup>
-    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Developer.Utilities\Krypton.Toolkit.Suite.Extended.Developer.Utilities.xml</DocumentationFile>
-    <OutputPath>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Developer.Utilities\</OutputPath>
+    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.Controls\Krypton.Toolkit.Suite.Extended.Controls.xml</DocumentationFile>
+    <OutputPath>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.Controls\</OutputPath>
   </PropertyGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Tools\Krypton.Toolkit.Suite.Extended.Tools.csproj" />
-  </ItemGroup>
   
   <ItemGroup>
-    <Compile Update="Properties\Resources.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Update="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
+    <ProjectReference Include="..\..\Shared\Krypton.Toolkit.Suite.Extended.Drawing\Krypton.Toolkit.Suite.Extended.Drawing 2019.csproj" />
   </ItemGroup>
 
 </Project>

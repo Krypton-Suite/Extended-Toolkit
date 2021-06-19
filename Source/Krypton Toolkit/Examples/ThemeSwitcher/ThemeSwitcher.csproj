@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Main\Krypton.Toolkit.Suite.Extended.Theme.Switcher\Krypton.Toolkit.Suite.Extended.Theme.Switcher.csproj" />
+    <ProjectReference Include="..\..\Main\Krypton.Toolkit.Suite.Extended.Theme.Switcher\Krypton.Toolkit.Suite.Extended.Theme.Switcher 2019.csproj" />
   </ItemGroup>
   
 </Project>

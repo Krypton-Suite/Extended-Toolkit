@@ -15,15 +15,15 @@
   <PropertyGroup>
     <LangVersion>latest</LangVersion>
     <OutputType>library</OutputType>
-    <RootNamespace>Krypton.Toolkit.Suite.Extended.Common</RootNamespace>
-    <AssemblyName>Krypton.Toolkit.Suite.Extended.Common</AssemblyName>
+    <RootNamespace>Krypton.Toolkit.Suite.Extended.UI</RootNamespace>
+    <AssemblyName>Krypton.Toolkit.Suite.Extended.UI</AssemblyName>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
   <!--Package Data-->
   <PropertyGroup>
-    <PackageId>Krypton.Toolkit.Suite.Extended.Common</PackageId>
-    <Description>An extension to the Krypton standard toolkit. This package holds common utilities.</Description>
+    <PackageId>Krypton.Toolkit.Suite.Extended.UI</PackageId>
+    <Description>An extension to the Krypton standard toolkit. This package implements additional UI effects, to be used in conjunction with the standard toolkit.</Description>
   </PropertyGroup>
 
   <!--Version Information-->
@@ -45,15 +45,14 @@
       </ItemGroup>
     </Otherwise>
   </Choose>
-  
-  <ItemGroup>
-    <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Developer.Utilities\Krypton.Toolkit.Suite.Extended.Developer.Utilities.csproj" />
-  </ItemGroup>
 
   <!--Binary/Documentation Output-->
   <PropertyGroup>
-    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Common\Krypton.Toolkit.Suite.Extended.Common.xml</DocumentationFile>
-    <OutputPath>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Common\</OutputPath>
+    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.UI\Krypton.Toolkit.Suite.Extended.UI.xml</DocumentationFile>
+    <OutputPath>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.UI\</OutputPath>
   </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Shared\Krypton.Toolkit.Suite.Extended.Effects\Krypton.Toolkit.Suite.Extended.Effects 2019.csproj" />
+  </ItemGroup>
 
 </Project>

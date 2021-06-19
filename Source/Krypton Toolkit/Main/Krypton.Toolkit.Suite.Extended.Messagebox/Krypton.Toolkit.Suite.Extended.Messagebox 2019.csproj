@@ -15,15 +15,15 @@
   <PropertyGroup>
     <LangVersion>latest</LangVersion>
     <OutputType>library</OutputType>
-    <RootNamespace>Krypton.Toolkit.Suite.Extended.Dialogs</RootNamespace>
-    <AssemblyName>Krypton.Toolkit.Suite.Extended.Dialogs</AssemblyName>
+    <RootNamespace>Krypton.Toolkit.Suite.Extended.Messagebox</RootNamespace>
+    <AssemblyName>Krypton.Toolkit.Suite.Extended.Messagebox</AssemblyName>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
   <!--Package Data-->
   <PropertyGroup>
-    <PackageId>Krypton.Toolkit.Suite.Extended.Dialogs</PackageId>
-    <Description>An extension to the Krypton standard toolkit. This package holds extensions to the Krypton.Dialogs module.</Description>
+    <PackageId>Krypton.Toolkit.Suite.Extended.Messagebox</PackageId>
+    <Description>An extension to the Krypton standard toolkit. This package implements additional messagebox features.</Description>
   </PropertyGroup>
 
   <!--Version Information-->
@@ -48,16 +48,13 @@
 
   <!--Binary/Documentation Output-->
   <PropertyGroup>
-    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.Dialogs\Krypton.Toolkit.Suite.Extended.Dialogs.xml</DocumentationFile>
-    <OutputPath>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.Dialogs\</OutputPath>
+    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.Messagebox\Krypton.Toolkit.Suite.Extended.Messagebox.xml</DocumentationFile>
+    <OutputPath>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.Messagebox\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="System.Runtime.InteropServices.RuntimeInformation" Version="4.3.0" />
+    <ProjectReference Include="..\..\Shared\Krypton.Toolkit.Suite.Extended.Tools\Krypton.Toolkit.Suite.Extended.Tools 2019.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Shared\Krypton.Toolkit.Suite.Extended.Global.Utilities\Krypton.Toolkit.Suite.Extended.Global.Utilities.csproj" />
-    <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Controls\Krypton.Toolkit.Suite.Extended.Controls.csproj" />
-  </ItemGroup>
+
   <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
@@ -65,6 +62,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
   </ItemGroup>
+  
   <ItemGroup>
     <EmbeddedResource Update="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

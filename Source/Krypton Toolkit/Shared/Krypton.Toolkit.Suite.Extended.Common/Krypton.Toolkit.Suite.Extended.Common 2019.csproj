@@ -15,15 +15,15 @@
   <PropertyGroup>
     <LangVersion>latest</LangVersion>
     <OutputType>library</OutputType>
-    <RootNamespace>Krypton.Toolkit.Suite.Extended.Messagebox</RootNamespace>
-    <AssemblyName>Krypton.Toolkit.Suite.Extended.Messagebox</AssemblyName>
+    <RootNamespace>Krypton.Toolkit.Suite.Extended.Common</RootNamespace>
+    <AssemblyName>Krypton.Toolkit.Suite.Extended.Common</AssemblyName>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
   <!--Package Data-->
   <PropertyGroup>
-    <PackageId>Krypton.Toolkit.Suite.Extended.Messagebox</PackageId>
-    <Description>An extension to the Krypton standard toolkit. This package implements additional messagebox features.</Description>
+    <PackageId>Krypton.Toolkit.Suite.Extended.Common</PackageId>
+    <Description>An extension to the Krypton standard toolkit. This package holds common utilities.</Description>
   </PropertyGroup>
 
   <!--Version Information-->
@@ -45,29 +45,15 @@
       </ItemGroup>
     </Otherwise>
   </Choose>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Developer.Utilities\Krypton.Toolkit.Suite.Extended.Developer.Utilities 2019.csproj" />
+  </ItemGroup>
 
   <!--Binary/Documentation Output-->
   <PropertyGroup>
-    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.Messagebox\Krypton.Toolkit.Suite.Extended.Messagebox.xml</DocumentationFile>
-    <OutputPath>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.Messagebox\</OutputPath>
+    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Common\Krypton.Toolkit.Suite.Extended.Common.xml</DocumentationFile>
+    <OutputPath>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Common\</OutputPath>
   </PropertyGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Shared\Krypton.Toolkit.Suite.Extended.Tools\Krypton.Toolkit.Suite.Extended.Tools.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Update="Properties\Resources.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  
-  <ItemGroup>
-    <EmbeddedResource Update="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
 
 </Project>

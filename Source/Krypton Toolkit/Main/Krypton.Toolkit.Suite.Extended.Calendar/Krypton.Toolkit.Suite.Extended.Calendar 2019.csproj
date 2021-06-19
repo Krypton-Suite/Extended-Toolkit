@@ -15,15 +15,15 @@
   <PropertyGroup>
     <LangVersion>latest</LangVersion>
     <OutputType>library</OutputType>
-    <RootNamespace>Krypton.Toolkit.Suite.Extended.UI</RootNamespace>
-    <AssemblyName>Krypton.Toolkit.Suite.Extended.UI</AssemblyName>
+    <RootNamespace>Krypton.Toolkit.Suite.Extended.Calendar</RootNamespace>
+    <AssemblyName>Krypton.Toolkit.Suite.Extended.Calendar</AssemblyName>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
   <!--Package Data-->
   <PropertyGroup>
-    <PackageId>Krypton.Toolkit.Suite.Extended.UI</PackageId>
-    <Description>An extension to the Krypton standard toolkit. This package implements additional UI effects, to be used in conjunction with the standard toolkit.</Description>
+    <PackageId>Krypton.Toolkit.Suite.Extended.Calendar</PackageId>
+    <Description>An extension to the Krypton standard toolkit. This package holds extensions to the Krypton.Calendar module.</Description>
   </PropertyGroup>
 
   <!--Version Information-->
@@ -48,11 +48,11 @@
 
   <!--Binary/Documentation Output-->
   <PropertyGroup>
-    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.UI\Krypton.Toolkit.Suite.Extended.UI.xml</DocumentationFile>
-    <OutputPath>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.UI\</OutputPath>
+    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.Calendar\Krypton.Toolkit.Suite.Extended.Calendar.xml</DocumentationFile>
+    <OutputPath>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.Calendar\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Shared\Krypton.Toolkit.Suite.Extended.Effects\Krypton.Toolkit.Suite.Extended.Effects.csproj" />
+    <ProjectReference Include="..\..\Shared\Krypton.Toolkit.Suite.Extended.Tools\Krypton.Toolkit.Suite.Extended.Tools 2019.csproj" />
   </ItemGroup>
 
 </Project>
