@@ -275,7 +275,7 @@
         #region Event Handlers
         private void kcmbPaletteMode_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ApplyTheme(kcmbPaletteMode.Text);
+            _themeManager.ApplyTheme(kcmbPaletteMode.Text, _manager);
 
             EnableApplyButton(true);
 
@@ -358,110 +358,6 @@
 
         private void EnableLocateButton(bool enabled) => kbtnLocate.Enabled = enabled;
 
-        private void ApplyTheme(string themeType)
-        {
-            if (themeType == "Professional - System")
-            {
-                _manager.GlobalPaletteMode = PaletteModeManager.ProfessionalSystem;
-
-                ApplyTheme(PaletteModeManager.ProfessionalSystem);
-            }
-            else if (themeType == "Professional - Office 2003")
-            {
-                _manager.GlobalPaletteMode = PaletteModeManager.ProfessionalOffice2003;
-
-                ApplyTheme(PaletteModeManager.ProfessionalOffice2003);
-            }
-            else if (themeType == "Office 2007 - Black")
-            {
-                _manager.GlobalPaletteMode = PaletteModeManager.Office2007Black;
-
-                ApplyTheme(PaletteModeManager.Office2007Black);
-            }
-            else if (themeType == "Office 2007 - Blue")
-            {
-                _manager.GlobalPaletteMode = PaletteModeManager.Office2007Blue;
-
-                ApplyTheme(PaletteModeManager.Office2007Blue);
-            }
-            else if (themeType == "Office 2007 - Silver")
-            {
-                _manager.GlobalPaletteMode = PaletteModeManager.Office2007Silver;
-
-                ApplyTheme(PaletteModeManager.Office2007Silver);
-            }
-            else if (themeType == "Office 2007 - White")
-            {
-                _manager.GlobalPaletteMode = PaletteModeManager.Office2007White;
-
-                ApplyTheme(PaletteModeManager.Office2007White);
-            }
-            else if (themeType == "Office 2010 - Black")
-            {
-                _manager.GlobalPaletteMode = PaletteModeManager.Office2010Black;
-
-                ApplyTheme(PaletteModeManager.Office2010Black);
-            }
-            else if (themeType == "Office 2010 - Blue")
-            {
-                _manager.GlobalPaletteMode = PaletteModeManager.Office2010Blue;
-
-                ApplyTheme(PaletteModeManager.Office2010Blue);
-            }
-            else if (themeType == "Office 2010 - Silver")
-            {
-                _manager.GlobalPaletteMode = PaletteModeManager.Office2010Silver;
-
-                ApplyTheme(PaletteModeManager.Office2010Silver);
-            }
-            else if (themeType == "Office 2010 - White")
-            {
-                _manager.GlobalPaletteMode = PaletteModeManager.Office2010White;
-
-                ApplyTheme(PaletteModeManager.Office2010White);
-            }
-            else if (themeType == "Office 2013")
-            {
-                _manager.GlobalPaletteMode = PaletteModeManager.Office2013;
-            }
-            else if (themeType == "Office 2013 - White")
-            {
-                _manager.GlobalPaletteMode = PaletteModeManager.Office2013White;
-            }
-            else if (themeType == "Office 365 - Black")
-            {
-                _manager.GlobalPaletteMode = PaletteModeManager.Office365Black;
-            }
-            else if (themeType == "Office 365 - Blue")
-            {
-                _manager.GlobalPaletteMode = PaletteModeManager.Office365Blue;
-            }
-            else if (themeType == "Office 365 - Silver")
-            {
-                _manager.GlobalPaletteMode = PaletteModeManager.Office365Silver;
-            }
-            else if (themeType == "Office 365 - White")
-            {
-                _manager.GlobalPaletteMode = PaletteModeManager.Office365White;
-            }
-            else if (themeType == "Sparkle - Blue")
-            {
-                _manager.GlobalPaletteMode = PaletteModeManager.SparkleBlue;
-            }
-            else if (themeType == "Sparkle - Orange")
-            {
-                _manager.GlobalPaletteMode = PaletteModeManager.SparkleOrange;
-            }
-            else if (themeType == "Sparkle - Purple")
-            {
-                _manager.GlobalPaletteMode = PaletteModeManager.SparklePurple;
-            }
-            else if (themeType == "Custom")
-            {
-                _manager.GlobalPaletteMode = PaletteModeManager.Custom;
-            }
-        }
-
         /// <summary>Applies the theme.</summary>
         /// <param name="theme">The theme.</param>
         private void ApplyTheme(PaletteModeManager theme) => _settingsManager.SetTheme(theme);
@@ -474,6 +370,8 @@
 
         private void ThemeSwitcherOptions_Load(object sender, EventArgs e)
         {
+            ThemeManager.SetPaletteTheme(_settingsManager.GetTheme(), kcmbPaletteMode);
+
             kcmbPaletteMode.Text = _settingsManager.GetTheme().ToString();
 
             kchkImport.Checked = _settingsManager.GetShowImportButton();

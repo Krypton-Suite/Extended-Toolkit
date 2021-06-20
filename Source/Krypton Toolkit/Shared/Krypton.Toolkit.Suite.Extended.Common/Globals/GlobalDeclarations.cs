@@ -8,9 +8,16 @@
 
 global using System;
 global using System.Collections;
+global using System.ComponentModel;
 global using System.Diagnostics;
+global using System.Diagnostics.CodeAnalysis;
 global using System.Drawing;
-global using System.IO;
+global using System.Drawing.Drawing2D;
+global using System.Drawing.Imaging;
+global using System.Reflection;
+global using System.Runtime.InteropServices;
+global using System.Security.Principal;
+global using System.Text;
 global using System.Windows.Forms;
 
-global using Krypton.Toolkit.Suite.Extended.Tools;
+global using Krypton.Toolkit.Suite.Extended.Developer.Utilities;

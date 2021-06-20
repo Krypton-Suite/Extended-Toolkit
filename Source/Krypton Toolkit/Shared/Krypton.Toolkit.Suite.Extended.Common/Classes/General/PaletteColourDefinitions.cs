@@ -6,7 +6,6 @@
  */
 #endregion
 
-using System.Collections;
 
 namespace Krypton.Toolkit.Suite.Extended.Common
 {

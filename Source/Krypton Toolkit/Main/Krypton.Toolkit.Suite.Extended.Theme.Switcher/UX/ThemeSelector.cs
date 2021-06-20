@@ -164,6 +164,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Select Theme";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ThemeSelector_FormClosing);
+            this.Load += new System.EventHandler(this.ThemeSelector_Load);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
@@ -200,116 +201,9 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
         #endregion
 
         #region Methods
-        private void ApplyTheme(string themeType)
-        {
-            if (themeType == "Professional - System")
-            {
-                _manager.GlobalPaletteMode = PaletteModeManager.ProfessionalSystem;
-
-                ApplyTheme(PaletteModeManager.ProfessionalSystem);
-            }
-            else if (themeType == "Professional - Office 2003")
-            {
-                _manager.GlobalPaletteMode = PaletteModeManager.ProfessionalOffice2003;
-
-                ApplyTheme(PaletteModeManager.ProfessionalOffice2003);
-            }
-            else if (themeType == "Office 2007 - Black")
-            {
-                _manager.GlobalPaletteMode = PaletteModeManager.Office2007Black;
-
-                ApplyTheme(PaletteModeManager.Office2007Black);
-            }
-            else if (themeType == "Office 2007 - Blue")
-            {
-                _manager.GlobalPaletteMode = PaletteModeManager.Office2007Blue;
-
-                ApplyTheme(PaletteModeManager.Office2007Blue);
-            }
-            else if (themeType == "Office 2007 - Silver")
-            {
-                _manager.GlobalPaletteMode = PaletteModeManager.Office2007Silver;
-
-                ApplyTheme(PaletteModeManager.Office2007Silver);
-            }
-            else if (themeType == "Office 2007 - White")
-            {
-                _manager.GlobalPaletteMode = PaletteModeManager.Office2007White;
-
-                ApplyTheme(PaletteModeManager.Office2007White);
-            }
-            else if (themeType == "Office 2010 - Black")
-            {
-                _manager.GlobalPaletteMode = PaletteModeManager.Office2010Black;
-
-                ApplyTheme(PaletteModeManager.Office2010Black);
-            }
-            else if (themeType == "Office 2010 - Blue")
-            {
-                _manager.GlobalPaletteMode = PaletteModeManager.Office2010Blue;
-
-                ApplyTheme(PaletteModeManager.Office2010Blue);
-            }
-            else if (themeType == "Office 2010 - Silver")
-            {
-                _manager.GlobalPaletteMode = PaletteModeManager.Office2010Silver;
-
-                ApplyTheme(PaletteModeManager.Office2010Silver);
-            }
-            else if (themeType == "Office 2010 - White")
-            {
-                _manager.GlobalPaletteMode = PaletteModeManager.Office2010White;
-
-                ApplyTheme(PaletteModeManager.Office2010White);
-            }
-            else if (themeType == "Office 2013")
-            {
-                _manager.GlobalPaletteMode = PaletteModeManager.Office2013;
-            }
-            else if (themeType == "Office 2013 - White")
-            {
-                _manager.GlobalPaletteMode = PaletteModeManager.Office2013White;
-            }
-            else if (themeType == "Office 365 - Black")
-            {
-                _manager.GlobalPaletteMode = PaletteModeManager.Office365Black;
-            }
-            else if (themeType == "Office 365 - Blue")
-            {
-                _manager.GlobalPaletteMode = PaletteModeManager.Office365Blue;
-            }
-            else if (themeType == "Office 365 - Silver")
-            {
-                _manager.GlobalPaletteMode = PaletteModeManager.Office365Silver;
-            }
-            else if (themeType == "Office 365 - White")
-            {
-                _manager.GlobalPaletteMode = PaletteModeManager.Office365White;
-            }
-            else if (themeType == "Sparkle - Blue")
-            {
-                _manager.GlobalPaletteMode = PaletteModeManager.SparkleBlue;
-            }
-            else if (themeType == "Sparkle - Orange")
-            {
-                _manager.GlobalPaletteMode = PaletteModeManager.SparkleOrange;
-            }
-            else if (themeType == "Sparkle - Purple")
-            {
-                _manager.GlobalPaletteMode = PaletteModeManager.SparklePurple;
-            }
-            else if (themeType == "Custom")
-            {
-                _manager.GlobalPaletteMode = PaletteModeManager.Custom;
-            }
-        }
-
-        /// <summary>Applies the theme.</summary>
-        /// <param name="theme">The theme.</param>
-        private void ApplyTheme(PaletteModeManager theme) => _settingsManager.SetTheme(theme);
         #endregion
 
-        private void kbtnApply_Click(object sender, EventArgs e) => ApplyTheme(kcmbPaletteMode.Text);
+        private void kbtnApply_Click(object sender, EventArgs e) => _themeManager.ApplyTheme(kcmbPaletteMode.Text, _manager);
 
         private void kbtnCancel_Click(object sender, EventArgs e) => Hide();
 
@@ -330,7 +224,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 
         private void ThemeSelector_FormClosing(object sender, FormClosingEventArgs e) => _settingsManager.SaveSettings(_settingsManager.GetAskMe());
 
-        private void kcmbPaletteMode_SelectedIndexChanged(object sender, EventArgs e) => kbtnApply.Enabled = true;
+        private void kcmbPaletteMode_SelectedIndexChanged(object sender, EventArgs e) => EnableApplyButton(true);
 
         private void kbtnResetTheme_Click(object sender, EventArgs e)
         {
@@ -355,5 +249,38 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 
             options.Show();
         }
+
+        private void ThemeSelector_Load(object sender, EventArgs e)
+        {
+            ThemeManager.SetPaletteTheme(_settingsManager.GetTheme(), kcmbPaletteMode);
+
+            EnableApplyButton(false);
+        }
+
+        #region Methods
+        private void EnableApplyButton(bool enabled) => kbtnApply.Enabled = enabled;
+
+        private void EnableResetButton(bool enabled) => kbtnResetTheme.Enabled = enabled;
+
+        private void UpdateUI()
+        {
+            if (_settingsManager.GetShowImportButton())
+            {
+                kbtnLoadTheme.Visible = true;
+
+                UpdateControlLocation(kbtnResetTheme, new Point(108, 13));
+            }
+            else
+            {
+                kbtnLoadTheme.Visible = false;
+
+                UpdateControlLocation(kbtnResetTheme, new Point(12, 13));
+            }
+
+            kbtnResetTheme.Visible = _settingsManager.GetShowResetButton();
+        }
+
+        private void UpdateControlLocation(Control control, Point location) => control.Location = location;
+        #endregion
     }
 }
