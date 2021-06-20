@@ -203,7 +203,14 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
         #region Methods
         #endregion
 
-        private void kbtnApply_Click(object sender, EventArgs e) => _themeManager.ApplyTheme(kcmbPaletteMode.Text, _manager);
+        private void kbtnApply_Click(object sender, EventArgs e)
+        {
+            _themeManager.ApplyTheme(kcmbPaletteMode.Text, _manager);
+
+            EnableApplyButton(false);
+
+            EnableResetButton(true);
+        }
 
         private void kbtnCancel_Click(object sender, EventArgs e) => Hide();
 
