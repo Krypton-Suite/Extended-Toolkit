@@ -261,6 +261,8 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
         {
             ThemeManager.SetPaletteTheme(_settingsManager.GetTheme(), kcmbPaletteMode);
 
+            _themeManager.ApplyTheme(kcmbPaletteMode.Text, _manager);
+
             EnableApplyButton(false);
         }
 
