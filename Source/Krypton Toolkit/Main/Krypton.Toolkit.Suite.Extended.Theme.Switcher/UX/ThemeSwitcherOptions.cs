@@ -413,7 +413,9 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 
         private void kbtnSubmit_Click(object sender, EventArgs e)
         {
-            ApplicationUtilities.UnderConstruction(this);
+            UploadThemeBrowser uploadTheme = new UploadThemeBrowser();
+
+            uploadTheme.Show();
         }
 
         private void kbtnDownload_Click(object sender, EventArgs e)
