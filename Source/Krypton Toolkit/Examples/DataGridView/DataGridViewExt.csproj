@@ -13,7 +13,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\Main\Krypton.Toolkit.Suite.Extended.DataGridView\Krypton.Toolkit.Suite.Extended.DataGridView.csproj" />
+      <ProjectReference Include="..\..\Main\Krypton.Toolkit.Suite.Extended.DataGridView\Krypton.Toolkit.Suite.Extended.DataGridView 2019.csproj" />
     </ItemGroup>
 
     <ItemGroup>
