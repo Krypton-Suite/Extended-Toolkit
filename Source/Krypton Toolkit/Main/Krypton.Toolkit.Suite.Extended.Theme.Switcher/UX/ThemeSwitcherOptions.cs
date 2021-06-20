@@ -1,4 +1,6 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
+﻿
+
+namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 {
     public class ThemeSwitcherOptions : KryptonForm
     {
@@ -17,6 +19,8 @@
         private KryptonButton kbtnLocate;
         private KryptonWrapLabel kwlPaletteName;
         private KryptonCheckBox kchkAskMe;
+        private KryptonButton kbtnDownload;
+        private KryptonButton kbtnSubmit;
         private KryptonBorderEdge kryptonBorderEdge1;
 
         private void InitializeComponent()
@@ -27,15 +31,17 @@
             this.kbtnCancel = new Krypton.Toolkit.KryptonButton();
             this.kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
             this.klblCustomPalettePath = new Krypton.Toolkit.KryptonPanel();
+            this.kbtnDownload = new Krypton.Toolkit.KryptonButton();
+            this.kbtnSubmit = new Krypton.Toolkit.KryptonButton();
             this.kwlPaletteName = new Krypton.Toolkit.KryptonWrapLabel();
             this.kbtnLocate = new Krypton.Toolkit.KryptonButton();
             this.kbtnImport = new Krypton.Toolkit.KryptonButton();
             this.kryptonGroupBox1 = new Krypton.Toolkit.KryptonGroupBox();
+            this.kchkAskMe = new Krypton.Toolkit.KryptonCheckBox();
             this.kchkReset = new Krypton.Toolkit.KryptonCheckBox();
             this.kchkImport = new Krypton.Toolkit.KryptonCheckBox();
             this.kcmbPaletteMode = new Krypton.Toolkit.KryptonComboBox();
             this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
-            this.kchkAskMe = new Krypton.Toolkit.KryptonCheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.klblCustomPalettePath)).BeginInit();
@@ -104,6 +110,8 @@
             // 
             // klblCustomPalettePath
             // 
+            this.klblCustomPalettePath.Controls.Add(this.kbtnDownload);
+            this.klblCustomPalettePath.Controls.Add(this.kbtnSubmit);
             this.klblCustomPalettePath.Controls.Add(this.kwlPaletteName);
             this.klblCustomPalettePath.Controls.Add(this.kbtnLocate);
             this.klblCustomPalettePath.Controls.Add(this.kbtnImport);
@@ -115,6 +123,24 @@
             this.klblCustomPalettePath.Name = "klblCustomPalettePath";
             this.klblCustomPalettePath.Size = new System.Drawing.Size(626, 309);
             this.klblCustomPalettePath.TabIndex = 3;
+            // 
+            // kbtnDownload
+            // 
+            this.kbtnDownload.Location = new System.Drawing.Point(269, 108);
+            this.kbtnDownload.Name = "kbtnDownload";
+            this.kbtnDownload.Size = new System.Drawing.Size(189, 25);
+            this.kbtnDownload.TabIndex = 7;
+            this.kbtnDownload.Values.Text = "&Download Additional Themes";
+            this.kbtnDownload.Click += new System.EventHandler(this.kbtnDownload_Click);
+            // 
+            // kbtnSubmit
+            // 
+            this.kbtnSubmit.Location = new System.Drawing.Point(464, 108);
+            this.kbtnSubmit.Name = "kbtnSubmit";
+            this.kbtnSubmit.Size = new System.Drawing.Size(138, 25);
+            this.kbtnSubmit.TabIndex = 6;
+            this.kbtnSubmit.Values.Text = "&Submit a Theme";
+            this.kbtnSubmit.Click += new System.EventHandler(this.kbtnSubmit_Click);
             // 
             // kwlPaletteName
             // 
@@ -131,7 +157,7 @@
             // kbtnLocate
             // 
             this.kbtnLocate.Enabled = false;
-            this.kbtnLocate.Location = new System.Drawing.Point(316, 108);
+            this.kbtnLocate.Location = new System.Drawing.Point(125, 108);
             this.kbtnLocate.Name = "kbtnLocate";
             this.kbtnLocate.Size = new System.Drawing.Size(138, 25);
             this.kbtnLocate.TabIndex = 5;
@@ -140,7 +166,7 @@
             // 
             // kbtnImport
             // 
-            this.kbtnImport.Location = new System.Drawing.Point(220, 108);
+            this.kbtnImport.Location = new System.Drawing.Point(29, 108);
             this.kbtnImport.Name = "kbtnImport";
             this.kbtnImport.Size = new System.Drawing.Size(90, 25);
             this.kbtnImport.TabIndex = 4;
@@ -160,6 +186,14 @@
             this.kryptonGroupBox1.Size = new System.Drawing.Size(506, 153);
             this.kryptonGroupBox1.TabIndex = 2;
             this.kryptonGroupBox1.Values.Heading = "User Interface Elements";
+            // 
+            // kchkAskMe
+            // 
+            this.kchkAskMe.Location = new System.Drawing.Point(17, 90);
+            this.kchkAskMe.Name = "kchkAskMe";
+            this.kchkAskMe.Size = new System.Drawing.Size(294, 20);
+            this.kchkAskMe.TabIndex = 5;
+            this.kchkAskMe.Values.Text = "&Always ask me to save or reset my theme settings";
             // 
             // kchkReset
             // 
@@ -200,14 +234,6 @@
             this.kryptonLabel1.Size = new System.Drawing.Size(53, 20);
             this.kryptonLabel1.TabIndex = 0;
             this.kryptonLabel1.Values.Text = "Theme:";
-            // 
-            // kchkAskMe
-            // 
-            this.kchkAskMe.Location = new System.Drawing.Point(17, 90);
-            this.kchkAskMe.Name = "kchkAskMe";
-            this.kchkAskMe.Size = new System.Drawing.Size(294, 20);
-            this.kchkAskMe.TabIndex = 5;
-            this.kchkAskMe.Values.Text = "&Always ask me to save or reset my theme settings";
             // 
             // ThemeSwitcherOptions
             // 
@@ -383,6 +409,18 @@
             EnableApplyButton(false);
 
             EnableResetButton(false);
+        }
+
+        private void kbtnSubmit_Click(object sender, EventArgs e)
+        {
+            ApplicationUtilities.UnderConstruction(this);
+        }
+
+        private void kbtnDownload_Click(object sender, EventArgs e)
+        {
+            DownloadThemePackage downloadThemePackage = new DownloadThemePackage();
+
+            downloadThemePackage.Show();
         }
     }
 }
