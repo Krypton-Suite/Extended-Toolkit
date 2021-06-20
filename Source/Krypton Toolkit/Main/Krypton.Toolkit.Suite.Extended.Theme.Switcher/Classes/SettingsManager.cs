@@ -57,17 +57,81 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
         /// <summary>Returns the value of the ShowImportButton.</summary>
         /// <returns>The value of the ShowImportButton.</returns>
         public bool GetShowImportButton() => _settings.ShowImportButton;
+
+        /// <summary>Sets the PaletteName to the value of value.</summary>
+        /// <param name="value">The desired value of PaletteName.</param>
+        public void SetPaletteName(string value) => _settings.PaletteName = value;
+
+        /// <summary>Returns the value of the PaletteName.</summary>
+        /// <returns>The value of the PaletteName.</returns>
+        public string GetPaletteName() => _settings.PaletteName;
+
+        /// <summary>Sets the AskMe to the value of value.</summary>
+        /// <param name="value">The desired value of AskMe.</param>
+        public void SetAskMe(bool value) => _settings.AskMe = value;
+
+        /// <summary>Returns the value of the AskMe.</summary>
+        /// <returns>The value of the AskMe.</returns>
+        public bool GetAskMe() => _settings.AskMe;
         #endregion
 
         #region Methods
         /// <summary>Saves the settings.</summary>
-        public void SaveSettings()
+        public void SaveSettings(bool askForConfirmation = true)
         {
-            DialogResult result = KryptonMessageBox.Show("Are you sure that you want to save these settings?", "Save Settings", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (askForConfirmation)
+            {
+                DialogResult result = KryptonMessageBox.Show("Are you sure that you want to save these settings?", "Save Settings", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            if (result == DialogResult.Yes)
+                if (result == DialogResult.Yes)
+                {
+                    _settings.Save();
+                }
+            }
+            else
             {
                 _settings.Save();
+            }
+        }
+
+        public void ResetSettings(bool askForConfirmation = true)
+        {
+            if (askForConfirmation)
+            {
+                DialogResult result = KryptonMessageBox.Show("Are you sure that you want to reset the theme settings back to their defaults?", "Reset Theme Settings", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    SetCustomThemePath(string.Empty);
+
+                    SetPaletteName(string.Empty);
+
+                    SetShowImportButton(true);
+
+                    SetShowResetButton(true);
+
+                    SetAskMe(true);
+
+                    SetTheme(PaletteModeManager.Office365Blue);
+
+                    SaveSettings(true);
+                }
+            }
+            else
+            {
+                SetCustomThemePath(string.Empty);
+
+                SetPaletteName(string.Empty);
+
+                SetShowImportButton(true);
+
+                SetShowResetButton(true);
+
+                SetAskMe(true);
+
+                SetTheme(PaletteModeManager.Office365Blue);
+
+                SaveSettings(false);
             }
         }
         #endregion

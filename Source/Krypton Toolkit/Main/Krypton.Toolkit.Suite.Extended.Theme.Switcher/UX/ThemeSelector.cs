@@ -177,9 +177,9 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
         #endregion
 
         #region Variables
-        private ArrayList _themeList = new ArrayList();
-
         private SettingsManager _settingsManager = new SettingsManager();
+
+        ThemeManager _themeManager = new ThemeManager();
 
         private KryptonManager _manager;
 
@@ -195,15 +195,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 
             _palette = new KryptonPalette();
 
-            PropagateThemeList();
-
-            if (_themeList.Count > 0)
-            {
-                foreach (string item in _themeList)
-                {
-                    kcmbPaletteMode.Items.Add(item);
-                }
-            }
+            ThemeManager.PropagateThemeList(kcmbPaletteMode);
         }
         #endregion
 
@@ -315,50 +307,6 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
         /// <summary>Applies the theme.</summary>
         /// <param name="theme">The theme.</param>
         private void ApplyTheme(PaletteModeManager theme) => _settingsManager.SetTheme(theme);
-
-        /// <summary>Propagates the theme list.</summary>
-        private void PropagateThemeList()
-        {
-            _themeList.Add("Professional - System");
-
-            _themeList.Add("Professional - Office 2003");
-
-            _themeList.Add("Office 2007 - Black");
-
-            _themeList.Add("Office 2007 - Blue");
-
-            _themeList.Add("Office 2007 - Silver");
-
-            _themeList.Add("Office 2007 - White");
-
-            _themeList.Add("Office 2010 - Black");
-
-            _themeList.Add("Office 2010 - Blue");
-
-            _themeList.Add("Office 2010 - Silver");
-
-            _themeList.Add("Office 2010 - White");
-
-            _themeList.Add("Office 2013");
-
-            _themeList.Add("Office 2013 - White");
-
-            _themeList.Add("Office 365 - Black");
-
-            _themeList.Add("Office 365 - Blue");
-
-            _themeList.Add("Office 365 - Silver");
-
-            _themeList.Add("Office 365 - White");
-
-            _themeList.Add("Sparkle - Blue");
-
-            _themeList.Add("Sparkle - Orange");
-
-            _themeList.Add("Sparkle - Purple");
-
-            _themeList.Add("Custom");
-        }
         #endregion
 
         private void kbtnApply_Click(object sender, EventArgs e) => ApplyTheme(kcmbPaletteMode.Text);
@@ -380,10 +328,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 
         private void kcmbPaletteMode_TextChanged(object sender, EventArgs e) => kbtnApply.Enabled = MissingFrameWorkAPIs.IsNullOrWhiteSpace(kcmbPaletteMode.Text);
 
-        private void ThemeSelector_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            _settingsManager.SaveSettings();
-        }
+        private void ThemeSelector_FormClosing(object sender, FormClosingEventArgs e) => _settingsManager.SaveSettings(_settingsManager.GetAskMe());
 
         private void kcmbPaletteMode_SelectedIndexChanged(object sender, EventArgs e) => kbtnApply.Enabled = true;
 
@@ -393,7 +338,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 
             _settingsManager.SetCustomThemePath(string.Empty);
 
-            _settingsManager.SaveSettings();
+            _settingsManager.SaveSettings(_settingsManager.GetAskMe());
 
             _manager.GlobalPalette = null;
 
