@@ -24,6 +24,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ThemeSelector));
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             this.kbtnOptions = new Krypton.Toolkit.KryptonButton();
             this.kbtnResetTheme = new Krypton.Toolkit.KryptonButton();
@@ -156,6 +157,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             this.Controls.Add(this.kryptonPanel2);
             this.Controls.Add(this.kryptonPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ThemeSelector";
