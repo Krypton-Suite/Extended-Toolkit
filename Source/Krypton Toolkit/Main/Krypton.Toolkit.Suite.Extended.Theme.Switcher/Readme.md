@@ -19,4 +19,5 @@
 - Use `ThemeSelector` to apply themes
 
 ## ToDo
-- Allow user to set a default theme
+- Allow user to upload a theme
+- Allow the user to download the community curated theme package (in progress)

@@ -1,4 +1,6 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
+﻿
+
+namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 {
     public class ThemeSwitcherOptions : KryptonForm
     {
@@ -13,8 +15,12 @@
         private KryptonCheckBox kchkReset;
         private KryptonCheckBox kchkImport;
         private KryptonButton kbtnReset;
-        private KryptonLabel kryptonLabel2;
         private KryptonButton kbtnImport;
+        private KryptonButton kbtnLocate;
+        private KryptonWrapLabel kwlPaletteName;
+        private KryptonCheckBox kchkAskMe;
+        private KryptonButton kbtnDownload;
+        private KryptonButton kbtnSubmit;
         private KryptonBorderEdge kryptonBorderEdge1;
 
         private void InitializeComponent()
@@ -25,9 +31,13 @@
             this.kbtnCancel = new Krypton.Toolkit.KryptonButton();
             this.kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
             this.klblCustomPalettePath = new Krypton.Toolkit.KryptonPanel();
+            this.kbtnDownload = new Krypton.Toolkit.KryptonButton();
+            this.kbtnSubmit = new Krypton.Toolkit.KryptonButton();
+            this.kwlPaletteName = new Krypton.Toolkit.KryptonWrapLabel();
+            this.kbtnLocate = new Krypton.Toolkit.KryptonButton();
             this.kbtnImport = new Krypton.Toolkit.KryptonButton();
-            this.kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
             this.kryptonGroupBox1 = new Krypton.Toolkit.KryptonGroupBox();
+            this.kchkAskMe = new Krypton.Toolkit.KryptonCheckBox();
             this.kchkReset = new Krypton.Toolkit.KryptonCheckBox();
             this.kchkImport = new Krypton.Toolkit.KryptonCheckBox();
             this.kcmbPaletteMode = new Krypton.Toolkit.KryptonComboBox();
@@ -100,8 +110,11 @@
             // 
             // klblCustomPalettePath
             // 
+            this.klblCustomPalettePath.Controls.Add(this.kbtnDownload);
+            this.klblCustomPalettePath.Controls.Add(this.kbtnSubmit);
+            this.klblCustomPalettePath.Controls.Add(this.kwlPaletteName);
+            this.klblCustomPalettePath.Controls.Add(this.kbtnLocate);
             this.klblCustomPalettePath.Controls.Add(this.kbtnImport);
-            this.klblCustomPalettePath.Controls.Add(this.kryptonLabel2);
             this.klblCustomPalettePath.Controls.Add(this.kryptonGroupBox1);
             this.klblCustomPalettePath.Controls.Add(this.kcmbPaletteMode);
             this.klblCustomPalettePath.Controls.Add(this.kryptonLabel1);
@@ -111,24 +124,54 @@
             this.klblCustomPalettePath.Size = new System.Drawing.Size(626, 309);
             this.klblCustomPalettePath.TabIndex = 3;
             // 
+            // kbtnDownload
+            // 
+            this.kbtnDownload.Location = new System.Drawing.Point(269, 108);
+            this.kbtnDownload.Name = "kbtnDownload";
+            this.kbtnDownload.Size = new System.Drawing.Size(189, 25);
+            this.kbtnDownload.TabIndex = 7;
+            this.kbtnDownload.Values.Text = "&Download Additional Themes";
+            this.kbtnDownload.Click += new System.EventHandler(this.kbtnDownload_Click);
+            // 
+            // kbtnSubmit
+            // 
+            this.kbtnSubmit.Location = new System.Drawing.Point(464, 108);
+            this.kbtnSubmit.Name = "kbtnSubmit";
+            this.kbtnSubmit.Size = new System.Drawing.Size(138, 25);
+            this.kbtnSubmit.TabIndex = 6;
+            this.kbtnSubmit.Values.Text = "&Submit a Theme";
+            this.kbtnSubmit.Click += new System.EventHandler(this.kbtnSubmit_Click);
+            // 
+            // kwlPaletteName
+            // 
+            this.kwlPaletteName.AutoSize = false;
+            this.kwlPaletteName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kwlPaletteName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.kwlPaletteName.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
+            this.kwlPaletteName.Location = new System.Drawing.Point(12, 58);
+            this.kwlPaletteName.Name = "kwlPaletteName";
+            this.kwlPaletteName.Size = new System.Drawing.Size(602, 37);
+            this.kwlPaletteName.StateCommon.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kwlPaletteName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // kbtnLocate
+            // 
+            this.kbtnLocate.Enabled = false;
+            this.kbtnLocate.Location = new System.Drawing.Point(125, 108);
+            this.kbtnLocate.Name = "kbtnLocate";
+            this.kbtnLocate.Size = new System.Drawing.Size(138, 25);
+            this.kbtnLocate.TabIndex = 5;
+            this.kbtnLocate.Values.Text = "&Locate Theme File";
+            this.kbtnLocate.Click += new System.EventHandler(this.kbtnLocate_Click);
+            // 
             // kbtnImport
             // 
-            this.kbtnImport.Location = new System.Drawing.Point(268, 108);
+            this.kbtnImport.Location = new System.Drawing.Point(29, 108);
             this.kbtnImport.Name = "kbtnImport";
             this.kbtnImport.Size = new System.Drawing.Size(90, 25);
             this.kbtnImport.TabIndex = 4;
             this.kbtnImport.Values.Text = "Im&port";
             this.kbtnImport.Click += new System.EventHandler(this.kbtnImport_Click);
-            // 
-            // kryptonLabel2
-            // 
-            this.kryptonLabel2.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
-            this.kryptonLabel2.Location = new System.Drawing.Point(33, 72);
-            this.kryptonLabel2.Name = "kryptonLabel2";
-            this.kryptonLabel2.Size = new System.Drawing.Size(163, 19);
-            this.kryptonLabel2.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonLabel2.TabIndex = 3;
-            this.kryptonLabel2.Values.Text = "Custom Palette Path: {0}";
             // 
             // kryptonGroupBox1
             // 
@@ -137,15 +180,24 @@
             // 
             // kryptonGroupBox1.Panel
             // 
+            this.kryptonGroupBox1.Panel.Controls.Add(this.kchkAskMe);
             this.kryptonGroupBox1.Panel.Controls.Add(this.kchkReset);
             this.kryptonGroupBox1.Panel.Controls.Add(this.kchkImport);
             this.kryptonGroupBox1.Size = new System.Drawing.Size(506, 153);
             this.kryptonGroupBox1.TabIndex = 2;
             this.kryptonGroupBox1.Values.Heading = "User Interface Elements";
             // 
+            // kchkAskMe
+            // 
+            this.kchkAskMe.Location = new System.Drawing.Point(17, 90);
+            this.kchkAskMe.Name = "kchkAskMe";
+            this.kchkAskMe.Size = new System.Drawing.Size(294, 20);
+            this.kchkAskMe.TabIndex = 5;
+            this.kchkAskMe.Values.Text = "&Always ask me to save or reset my theme settings";
+            // 
             // kchkReset
             // 
-            this.kchkReset.Location = new System.Drawing.Point(17, 64);
+            this.kchkReset.Location = new System.Drawing.Point(17, 53);
             this.kchkReset.Name = "kchkReset";
             this.kchkReset.Size = new System.Drawing.Size(182, 20);
             this.kchkReset.TabIndex = 4;
@@ -196,6 +248,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Theme Switcher Options";
+            this.Load += new System.EventHandler(this.ThemeSwitcherOptions_Load);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
@@ -214,9 +267,9 @@
         #endregion
 
         #region Variables
-        private ArrayList _themeList = new ArrayList();
-
         private SettingsManager _settingsManager = new SettingsManager();
+
+        private ThemeManager _themeManager = new ThemeManager();
 
         private KryptonManager _manager = null;
 
@@ -241,22 +294,14 @@
 
             KryptonPalette = palette;
 
-            PropagateThemeList();
-
-            if (_themeList.Count > 0)
-            {
-                foreach (string item in _themeList)
-                {
-                    kcmbPaletteMode.Items.Add(item);
-                }
-            }
+            ThemeManager.PropagateThemeList(kcmbPaletteMode);
         }
         #endregion
 
         #region Event Handlers
         private void kcmbPaletteMode_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ApplyTheme(kcmbPaletteMode.Text);
+            _themeManager.ApplyTheme(kcmbPaletteMode.Text, _manager);
 
             EnableApplyButton(true);
 
@@ -273,29 +318,45 @@
 
             KryptonManager.GlobalPaletteMode = PaletteModeManager.Custom;
 
+            ChangePaletteName(KryptonPalette.GetCustomisedKryptonPaletteFilePath());
+
+            EnableApplyButton(true);
+
+            EnableResetButton(true);
+
+            EnableLocateButton(true);
+        }
+
+        private void kchkImport_CheckedChanged(object sender, EventArgs e)
+        {
+            _settingsManager.SetShowImportButton(kchkImport.Checked);
+
             EnableApplyButton(true);
 
             EnableResetButton(true);
         }
 
-        private void kchkImport_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void kchkReset_CheckedChanged(object sender, EventArgs e)
         {
+            _settingsManager.SetShowResetButton(kchkReset.Checked);
 
+            EnableApplyButton(true);
+
+            EnableResetButton(true);
         }
 
         private void kbtnReset_Click(object sender, EventArgs e)
         {
+            _settingsManager.ResetSettings(_settingsManager.GetAskMe());
 
+            EnableResetButton(false);
         }
 
         private void kbtnApply_Click(object sender, EventArgs e)
         {
+            _settingsManager.SaveSettings(_settingsManager.GetAskMe());
 
+            EnableApplyButton(false);
         }
 
         private void kbtnCancel_Click(object sender, EventArgs e)
@@ -321,157 +382,47 @@
 
         private void EnableResetButton(bool enabled) => kbtnReset.Enabled = enabled;
 
-        private void ApplyTheme(string themeType)
-        {
-            if (themeType == "Professional - System")
-            {
-                _manager.GlobalPaletteMode = PaletteModeManager.ProfessionalSystem;
-
-                ApplyTheme(PaletteModeManager.ProfessionalSystem);
-            }
-            else if (themeType == "Professional - Office 2003")
-            {
-                _manager.GlobalPaletteMode = PaletteModeManager.ProfessionalOffice2003;
-
-                ApplyTheme(PaletteModeManager.ProfessionalOffice2003);
-            }
-            else if (themeType == "Office 2007 - Black")
-            {
-                _manager.GlobalPaletteMode = PaletteModeManager.Office2007Black;
-
-                ApplyTheme(PaletteModeManager.Office2007Black);
-            }
-            else if (themeType == "Office 2007 - Blue")
-            {
-                _manager.GlobalPaletteMode = PaletteModeManager.Office2007Blue;
-
-                ApplyTheme(PaletteModeManager.Office2007Blue);
-            }
-            else if (themeType == "Office 2007 - Silver")
-            {
-                _manager.GlobalPaletteMode = PaletteModeManager.Office2007Silver;
-
-                ApplyTheme(PaletteModeManager.Office2007Silver);
-            }
-            else if (themeType == "Office 2007 - White")
-            {
-                _manager.GlobalPaletteMode = PaletteModeManager.Office2007White;
-
-                ApplyTheme(PaletteModeManager.Office2007White);
-            }
-            else if (themeType == "Office 2010 - Black")
-            {
-                _manager.GlobalPaletteMode = PaletteModeManager.Office2010Black;
-
-                ApplyTheme(PaletteModeManager.Office2010Black);
-            }
-            else if (themeType == "Office 2010 - Blue")
-            {
-                _manager.GlobalPaletteMode = PaletteModeManager.Office2010Blue;
-
-                ApplyTheme(PaletteModeManager.Office2010Blue);
-            }
-            else if (themeType == "Office 2010 - Silver")
-            {
-                _manager.GlobalPaletteMode = PaletteModeManager.Office2010Silver;
-
-                ApplyTheme(PaletteModeManager.Office2010Silver);
-            }
-            else if (themeType == "Office 2010 - White")
-            {
-                _manager.GlobalPaletteMode = PaletteModeManager.Office2010White;
-
-                ApplyTheme(PaletteModeManager.Office2010White);
-            }
-            else if (themeType == "Office 2013")
-            {
-                _manager.GlobalPaletteMode = PaletteModeManager.Office2013;
-            }
-            else if (themeType == "Office 2013 - White")
-            {
-                _manager.GlobalPaletteMode = PaletteModeManager.Office2013White;
-            }
-            else if (themeType == "Office 365 - Black")
-            {
-                _manager.GlobalPaletteMode = PaletteModeManager.Office365Black;
-            }
-            else if (themeType == "Office 365 - Blue")
-            {
-                _manager.GlobalPaletteMode = PaletteModeManager.Office365Blue;
-            }
-            else if (themeType == "Office 365 - Silver")
-            {
-                _manager.GlobalPaletteMode = PaletteModeManager.Office365Silver;
-            }
-            else if (themeType == "Office 365 - White")
-            {
-                _manager.GlobalPaletteMode = PaletteModeManager.Office365White;
-            }
-            else if (themeType == "Sparkle - Blue")
-            {
-                _manager.GlobalPaletteMode = PaletteModeManager.SparkleBlue;
-            }
-            else if (themeType == "Sparkle - Orange")
-            {
-                _manager.GlobalPaletteMode = PaletteModeManager.SparkleOrange;
-            }
-            else if (themeType == "Sparkle - Purple")
-            {
-                _manager.GlobalPaletteMode = PaletteModeManager.SparklePurple;
-            }
-            else if (themeType == "Custom")
-            {
-                _manager.GlobalPaletteMode = PaletteModeManager.Custom;
-            }
-        }
+        private void EnableLocateButton(bool enabled) => kbtnLocate.Enabled = enabled;
 
         /// <summary>Applies the theme.</summary>
         /// <param name="theme">The theme.</param>
         private void ApplyTheme(PaletteModeManager theme) => _settingsManager.SetTheme(theme);
+        private void ChangePaletteName(string paletteName) => kwlPaletteName.Text = $"Custom Palette Name: {Path.GetFileName(paletteName)}";
 
-        /// <summary>Propagates the theme list.</summary>
-        private void PropagateThemeList()
+        private void LocateTheme(string palettePath) => Process.Start("explorer.exe", palettePath);
+        #endregion 
+
+        private void kbtnLocate_Click(object sender, EventArgs e) => LocateTheme(KryptonPalette.CustomisedKryptonPaletteFilePath);
+
+        private void ThemeSwitcherOptions_Load(object sender, EventArgs e)
         {
-            _themeList.Add("Professional - System");
+            ThemeManager.SetPaletteTheme(_settingsManager.GetTheme(), kcmbPaletteMode);
 
-            _themeList.Add("Professional - Office 2003");
+            kcmbPaletteMode.Text = _settingsManager.GetTheme().ToString();
 
-            _themeList.Add("Office 2007 - Black");
+            kchkImport.Checked = _settingsManager.GetShowImportButton();
 
-            _themeList.Add("Office 2007 - Blue");
+            kchkReset.Checked = _settingsManager.GetShowResetButton();
 
-            _themeList.Add("Office 2007 - Silver");
+            kchkAskMe.Checked = _settingsManager.GetAskMe();
 
-            _themeList.Add("Office 2007 - White");
+            EnableApplyButton(false);
 
-            _themeList.Add("Office 2010 - Black");
+            EnableResetButton(false);
+        }
 
-            _themeList.Add("Office 2010 - Blue");
+        private void kbtnSubmit_Click(object sender, EventArgs e)
+        {
+            UploadThemeBrowser uploadTheme = new UploadThemeBrowser();
 
-            _themeList.Add("Office 2010 - Silver");
+            uploadTheme.Show();
+        }
 
-            _themeList.Add("Office 2010 - White");
+        private void kbtnDownload_Click(object sender, EventArgs e)
+        {
+            DownloadThemePackage downloadThemePackage = new DownloadThemePackage();
 
-            _themeList.Add("Office 2013");
-
-            _themeList.Add("Office 2013 - White");
-
-            _themeList.Add("Office 365 - Black");
-
-            _themeList.Add("Office 365 - Blue");
-
-            _themeList.Add("Office 365 - Silver");
-
-            _themeList.Add("Office 365 - White");
-
-            _themeList.Add("Sparkle - Blue");
-
-            _themeList.Add("Sparkle - Orange");
-
-            _themeList.Add("Sparkle - Purple");
-
-            _themeList.Add("Custom");
-            #endregion
+            downloadThemePackage.Show();
         }
     }
 }
