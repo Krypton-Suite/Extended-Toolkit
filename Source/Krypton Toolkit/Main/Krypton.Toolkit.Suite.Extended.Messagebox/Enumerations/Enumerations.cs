@@ -28,7 +28,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
     }
 
     /// <summary>Specifies an icon for the <see cref="KryptonMessageBoxExtended"/>.</summary>
-    public enum ExtendedMessageBoxIcon
+    public enum ExtendedKryptonMessageBoxIcon
     {
         /// <summary>Specify a custom icon.</summary>
         CUSTOM = 0,
@@ -49,7 +49,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <summary>Specify a warning icon.</summary>
         WARNING = 8,
         /// <summary>Specify a information icon.</summary>
-        INFORMATION = 9
+        INFORMATION = 9,
+        /// <summary>Specify a UAC shield icon.</summary>
+        SHIELD = 10,
+        /// <summary>Specify a Windows logo icon.</summary>
+        WINDOWSLOGO = 11
     }
 
     /// <summary>Specifies a custom button layout.</summary>

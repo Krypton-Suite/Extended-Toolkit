@@ -258,7 +258,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         private readonly string _caption;
         private readonly ExtendedMessageBoxButtons _buttons;
         private readonly ExtendedMessageBoxCustomButtonOptions _customButtonOptions;
-        private readonly ExtendedMessageBoxIcon _icon;
+        private readonly ExtendedKryptonMessageBoxIcon _icon;
         private readonly MessageBoxDefaultButton _defaultButton;
         private AnchorStyles _optionalCheckBoxAnchor;
         private MessageBoxOptions _options; // TODO: What is this used for ?
@@ -463,7 +463,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         private InternalKryptonMessageBoxExtended(IWin32Window showOwner, string text, string caption,
                                                   ExtendedMessageBoxButtons buttons, 
                                                   ExtendedMessageBoxCustomButtonOptions? customButtonOptions,
-                                                  ExtendedMessageBoxIcon icon,
+                                                  ExtendedKryptonMessageBoxIcon icon,
                                                   MessageBoxDefaultButton defaultButton,
                                                   MessageBoxOptions options, HelpInformation helpInformation,
                                                   bool? showCtrlCopy, Font messageboxTypeface, 
@@ -640,7 +640,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         int? fadeSleepTimer = 50, int? cornerRadius = -1, bool? showToolTips = null, 
                                         bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
         {
-            return InternalShow(null, text, string.Empty, ExtendedMessageBoxButtons.OK, null, ExtendedMessageBoxIcon.NONE, 
+            return InternalShow(null, text, string.Empty, ExtendedMessageBoxButtons.OK, null, ExtendedKryptonMessageBoxIcon.NONE, 
                                 MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox,
                                 optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, 
                                 optionalCheckBoxLocation, null, showCopyButton, copyButtonText, fade, fadeSleepTimer,
@@ -682,7 +682,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
         {
             return InternalShow(owner, text, string.Empty, ExtendedMessageBoxButtons.OK, null, 
-                                ExtendedMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0, null, 
+                                ExtendedKryptonMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0, null, 
                                 showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, 
                                 optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, 
                                 showCopyButton, copyButtonText, fade, fadeSleepTimer, null, null, null, null,
@@ -723,7 +723,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
         {
             return InternalShow(null, text, caption, ExtendedMessageBoxButtons.OK, null, 
-                                ExtendedMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0, null, 
+                                ExtendedKryptonMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0, null, 
                                 showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked,
                                 optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, 
                                 showCopyButton, copyButtonText, fade, fadeSleepTimer, null, null, null, null,
@@ -765,7 +765,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         int? cornerRadius = -1, bool? showToolTips = null,
                                         bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
         {
-            return InternalShow(owner, text, caption, ExtendedMessageBoxButtons.OK, null, ExtendedMessageBoxIcon.NONE, 
+            return InternalShow(owner, text, caption, ExtendedMessageBoxButtons.OK, null, ExtendedKryptonMessageBoxIcon.NONE, 
                                 MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, 
                                 showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, 
                                 optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText, 
@@ -819,7 +819,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = -1, bool? showToolTips = null,
                                         bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
         {
-            return InternalShow(null, text, caption, buttons, customButtonOptions, ExtendedMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1,
+            return InternalShow(null, text, caption, buttons, customButtonOptions, ExtendedKryptonMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1,
                          0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText,
                                 isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation,
                 null, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText,
@@ -874,7 +874,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = -1, bool? showToolTips = null,
                                         bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
         {
-            return InternalShow(owner, text, caption, buttons, customButtonOptions, ExtendedMessageBoxIcon.NONE, 
+            return InternalShow(owner, text, caption, buttons, customButtonOptions, ExtendedKryptonMessageBoxIcon.NONE, 
                                 MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, 
                                 showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, 
                                 optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText,
@@ -918,7 +918,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(string text, string caption,
                                         ExtendedMessageBoxButtons buttons,
-                                        ExtendedMessageBoxCustomButtonOptions customButtonOptions, ExtendedMessageBoxIcon icon,
+                                        ExtendedMessageBoxCustomButtonOptions customButtonOptions, ExtendedKryptonMessageBoxIcon icon,
                                         bool? showCtrlCopy = null, Font messageboxTypeface = null,
                                         bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
                                         bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
@@ -977,7 +977,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         public static DialogResult Show(IWin32Window owner,
                                         string text, string caption,
                                         ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions customButtonOptions,
-                                        ExtendedMessageBoxIcon icon, bool? showCtrlCopy = null, Font messageboxTypeface = null,
+                                        ExtendedKryptonMessageBoxIcon icon, bool? showCtrlCopy = null, Font messageboxTypeface = null,
                                         bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
                                         bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null,
@@ -1034,7 +1034,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(string text, string caption,
                                         ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions customButtonOptions,
-                                        ExtendedMessageBoxIcon icon, MessageBoxDefaultButton defaultButton, bool? showCtrlCopy = null,
+                                        ExtendedKryptonMessageBoxIcon icon, MessageBoxDefaultButton defaultButton, bool? showCtrlCopy = null,
                                         Font messageboxTypeface = null, bool showOptionalCheckBox = false,
                                         string optionalCheckBoxText = null, bool isOptionalCheckBoxChecked = false,
                                         CheckState? optionalCheckBoxCheckState = null,
@@ -1093,7 +1093,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         public static DialogResult Show(IWin32Window owner,
                                         string text, string caption,
                                         ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions customButtonOptions,
-                                        ExtendedMessageBoxIcon icon,
+                                        ExtendedKryptonMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, bool? showCtrlCopy = null,
                                         Font messageboxTypeface = null, bool showOptionalCheckBox = false,
                                         string optionalCheckBoxText = null, bool isOptionalCheckBoxChecked = false,
@@ -1152,7 +1152,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(string text, string caption,
                                         ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions customButtonOptions,
-                                        ExtendedMessageBoxIcon icon,
+                                        ExtendedKryptonMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                         bool? showCtrlCopy = null, Font messageboxTypeface = null,
                                         bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
@@ -1214,7 +1214,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         public static DialogResult Show(IWin32Window owner,
                                         string text, string caption,
                                         ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions customButtonOptions,
-                                        ExtendedMessageBoxIcon icon,
+                                        ExtendedKryptonMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                         bool? showCtrlCopy = null, Font messageboxTypeface = null,
                                         bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
@@ -1275,7 +1275,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(string text, string caption,
                                         ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions customButtonOptions,
-                                        ExtendedMessageBoxIcon icon,
+                                        ExtendedKryptonMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                         bool displayHelpButton, bool? showCtrlCopy = null, Font messageboxTypeface = null,
                                         bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
@@ -1337,7 +1337,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(string text, string caption,
                                         ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions customButtonOptions,
-                                        ExtendedMessageBoxIcon icon,
+                                        ExtendedKryptonMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                         string helpFilePath, bool? showCtrlCopy = null, Font messageboxTypeface = null,
                                         bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
@@ -1401,7 +1401,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         public static DialogResult Show(IWin32Window owner,
                                         string text, string caption,
                                         ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions customButtonOptions,
-                                        ExtendedMessageBoxIcon icon,
+                                        ExtendedKryptonMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                         string helpFilePath, bool? showCtrlCopy = null, Font messageboxTypeface = null,
                                         bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
@@ -1464,7 +1464,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(string text, string caption,
                                         ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions customButtonOptions,
-                                        ExtendedMessageBoxIcon icon,
+                                        ExtendedKryptonMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                         string helpFilePath, HelpNavigator navigator, bool? showCtrlCopy = null,
                                         Font messageboxTypeface = null, bool showOptionalCheckBox = false,
@@ -1527,7 +1527,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(string text, string caption,
                                         ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions customButtonOptions,
-                                        ExtendedMessageBoxIcon icon,
+                                        ExtendedKryptonMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                         string helpFilePath, string keyword, bool? showCtrlCopy = null, Font messageboxTypeface = null,
                                         bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
@@ -1592,7 +1592,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         public static DialogResult Show(IWin32Window owner,
                                         string text, string caption,
                                         ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions customButtonOptions,
-                                        ExtendedMessageBoxIcon icon,
+                                        ExtendedKryptonMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                         string helpFilePath, HelpNavigator navigator, bool? showCtrlCopy = null,
                                         Font messageboxTypeface = null, bool showOptionalCheckBox = false,
@@ -1657,7 +1657,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         public static DialogResult Show(IWin32Window owner,
                                         string text, string caption,
                                         ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions customButtonOptions,
-                                        ExtendedMessageBoxIcon icon,
+                                        ExtendedKryptonMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                         string helpFilePath, string keyword, bool? showCtrlCopy = null, Font messageboxTypeface = null,
                                         bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
@@ -1721,7 +1721,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(string text, string caption,
                                         ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions customButtonOptions,
-                                        ExtendedMessageBoxIcon icon,
+                                        ExtendedKryptonMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                         string helpFilePath, HelpNavigator navigator, object param,
                                         bool? showCtrlCopy = null, Font messageboxTypeface = null,
@@ -1788,7 +1788,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         public static DialogResult Show(IWin32Window owner,
                                         string text, string caption,
                                         ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions customButtonOptions,
-                                        ExtendedMessageBoxIcon icon,
+                                        ExtendedKryptonMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                         string helpFilePath, HelpNavigator navigator, object param,
                                         bool? showCtrlCopy = null, Font messageboxTypeface = null,
@@ -1852,7 +1852,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         internal static DialogResult Show(IWin32Window owner,
                                           string text, string caption,
                                           ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions customButtonOptions,
-                                          ExtendedMessageBoxIcon icon,
+                                          ExtendedKryptonMessageBoxIcon icon,
                                           MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                           HelpInformation helpInformation, bool showCtrlCopy, Font messageBoxTypeface,
                                           bool showOptionalCheckBox, string optionalCheckBoxText, bool isOptionalCheckBoxChecked,
@@ -1878,7 +1878,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         private static DialogResult InternalShow(IWin32Window owner,
                                                  string text, string caption,
                                                  ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions? customButtonOptions,
-                                                 ExtendedMessageBoxIcon icon,
+                                                 ExtendedKryptonMessageBoxIcon icon,
                                                  MessageBoxDefaultButton defaultButton,
                                                  MessageBoxOptions options,
                                                  HelpInformation helpInformation, bool? showCtrlCopy, Font messageboxTypeface = null,
@@ -1951,8 +1951,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             {
                 switch (_icon)
                 {
-                    case ExtendedMessageBoxIcon.ERROR:
-                    case ExtendedMessageBoxIcon.EXCLAMATION:
+                    case ExtendedKryptonMessageBoxIcon.ERROR:
+                    case ExtendedKryptonMessageBoxIcon.EXCLAMATION:
                         showCtrlCopy = true;
                         break;
                 }
@@ -1968,10 +1968,10 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         {
             switch (_icon)
             {
-                case ExtendedMessageBoxIcon.CUSTOM:
+                case ExtendedKryptonMessageBoxIcon.CUSTOM:
                     _messageIcon.Image = _customMessageBoxIcon;
                     break;
-                case ExtendedMessageBoxIcon.NONE:
+                case ExtendedKryptonMessageBoxIcon.NONE:
                     _panelMessageIcon.Visible = false;
                     _panelMessageText.Left -= _messageIcon.Right;
 
@@ -1982,27 +1982,27 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                     }
 
                     break;
-                case ExtendedMessageBoxIcon.QUESTION:
+                case ExtendedKryptonMessageBoxIcon.QUESTION:
                     _messageIcon.Image = Resources.Question_32_x_32;
                     SystemSounds.Question.Play();
                     break;
-                case ExtendedMessageBoxIcon.INFORMATION:
+                case ExtendedKryptonMessageBoxIcon.INFORMATION:
                     _messageIcon.Image = Resources.Information_32_x_32;
                     SystemSounds.Asterisk.Play();
                     break;
-                case ExtendedMessageBoxIcon.WARNING:
+                case ExtendedKryptonMessageBoxIcon.WARNING:
                     _messageIcon.Image = Resources.Warning_32_x_32;
                     SystemSounds.Exclamation.Play();
                     break;
-                case ExtendedMessageBoxIcon.ERROR:
+                case ExtendedKryptonMessageBoxIcon.ERROR:
                     _messageIcon.Image = Resources.Critical_32_x_32;
                     SystemSounds.Asterisk.Play();
                     break;
-                case ExtendedMessageBoxIcon.HAND:
+                case ExtendedKryptonMessageBoxIcon.HAND:
                     _messageIcon.Image = Resources.Hand_32_x_32;
                     SystemSounds.Hand.Play();
                     break;
-                case ExtendedMessageBoxIcon.STOP:
+                case ExtendedKryptonMessageBoxIcon.STOP:
                     _messageIcon.Image = Resources.Stop_32_x_32;
                     SystemSounds.Asterisk.Play();
                     break;
