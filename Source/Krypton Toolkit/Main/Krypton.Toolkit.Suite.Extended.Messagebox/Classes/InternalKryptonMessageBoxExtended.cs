@@ -1983,28 +1983,53 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
                     break;
                 case ExtendedKryptonMessageBoxIcon.QUESTION:
-                    _messageIcon.Image = Resources.Question_32_x_32;
+                    _messageIcon.Image = Resources.Question;
                     SystemSounds.Question.Play();
                     break;
                 case ExtendedKryptonMessageBoxIcon.INFORMATION:
-                    _messageIcon.Image = Resources.Information_32_x_32;
+                    _messageIcon.Image = Resources.Information;
                     SystemSounds.Asterisk.Play();
                     break;
                 case ExtendedKryptonMessageBoxIcon.WARNING:
-                    _messageIcon.Image = Resources.Warning_32_x_32;
+                    _messageIcon.Image = Resources.Warning;
                     SystemSounds.Exclamation.Play();
                     break;
                 case ExtendedKryptonMessageBoxIcon.ERROR:
-                    _messageIcon.Image = Resources.Critical_32_x_32;
+                    _messageIcon.Image = Resources.Critical;
                     SystemSounds.Asterisk.Play();
                     break;
                 case ExtendedKryptonMessageBoxIcon.HAND:
-                    _messageIcon.Image = Resources.Hand_32_x_32;
+                    _messageIcon.Image = Resources.Hand;
                     SystemSounds.Hand.Play();
                     break;
                 case ExtendedKryptonMessageBoxIcon.STOP:
-                    _messageIcon.Image = Resources.Stop_32_x_32;
+                    _messageIcon.Image = Resources.Stop;
                     SystemSounds.Asterisk.Play();
+                    break;
+                case ExtendedKryptonMessageBoxIcon.ASTERISK:
+                    _messageIcon.Image = Resources.Critical;
+                    SystemSounds.Asterisk.Play();
+                    break;
+                case ExtendedKryptonMessageBoxIcon.SHIELD:
+                    _messageIcon.Image = Resources.UAC_Shield;
+                    break;
+                case ExtendedKryptonMessageBoxIcon.WINDOWSLOGO:
+                    if (Environment.OSVersion.Version.Major == 6 && Environment.OSVersion.Version.Minor == 1)
+                    {
+                        // Use Windows 7 icon
+                        _messageIcon.Image = Resources.Windows_7;
+                    }
+                    else if (Environment.OSVersion.Version.Major >= 6 && Environment.OSVersion.Version.Minor >= 3)
+                    {
+                        // Use Windows 8/8.1/10 icon
+                        _messageIcon.Image = Resources.Windows_10;
+                    }
+                    else
+                    {
+                        // Use Windows 11 icon
+
+                        // TODO: Windows 11 icon
+                    }
                     break;
             }
         }
