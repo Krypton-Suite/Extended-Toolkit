@@ -52,6 +52,6 @@
         <OutputPath>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.DataGridView\</OutputPath>
     </PropertyGroup>
     <ItemGroup>
-      <PackageReference Include="System.ValueTuple" Version="4.5.0" />
+      <Reference Include="System.ValueTuple" />
     </ItemGroup>
 </Project>
