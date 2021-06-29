@@ -577,7 +577,7 @@ namespace MessageBox
             this.kmbc.MessageBoxButtons = Krypton.Toolkit.Suite.Extended.Messagebox.ExtendedMessageBoxButtons.CUSTOM;
             this.kmbc.MessageBoxContentText = "kryptonMessageBoxConfigurator1";
             this.kmbc.MessageBoxDefaultButton = System.Windows.Forms.MessageBoxDefaultButton.Button1;
-            this.kmbc.MessageBoxIcon = Krypton.Toolkit.Suite.Extended.Messagebox.ExtendedMessageBoxIcon.NONE;
+            this.kmbc.MessageBoxIcon = Krypton.Toolkit.Suite.Extended.Messagebox.ExtendedKryptonMessageBoxIcon.NONE;
             this.kmbc.MessageBoxTypeface = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.kmbc.OptionalCheckBoxAnchor = System.Windows.Forms.AnchorStyles.Left;
             this.kmbc.OptionalCheckBoxCheckState = System.Windows.Forms.CheckState.Unchecked;
