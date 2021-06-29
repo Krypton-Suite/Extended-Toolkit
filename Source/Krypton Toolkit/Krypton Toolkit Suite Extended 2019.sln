@@ -20,6 +20,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build System", "Build Syste
 		Directory.Build.props = Directory.Build.props
 		..\..\Directory.Build.props = ..\..\Directory.Build.props
 		Directory.Build.targets = Directory.Build.targets
+		..\..\purge.cmd = ..\..\purge.cmd
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Markdown", "Markdown", "{A7A69BC2-7682-43FB-8E7C-C42FDAA2A215}"
@@ -49,8 +50,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.IO 2019", "Main\Krypton.Toolkit.Suite.Extended.IO\Krypton.Toolkit.Suite.Extended.IO 2019.csproj", "{83B92DB2-6318-4F7D-B169-9874637FF17F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Wizard 2019", "Main\Krypton.Toolkit.Suite.Extended.Wizard\Krypton.Toolkit.Suite.Extended.Wizard 2019.csproj", "{B6FB3BE1-3E55-459C-BB8E-83E21D41C9E6}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.List.View 2019", "Main\Krypton.Toolkit.Suite.Extended.List.View\Krypton.Toolkit.Suite.Extended.List.View 2019.csproj", "{8AE413C9-1F7D-4F91-BD16-760FB3789F93}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Navi.Suite 2019", "Main\Krypton.Toolkit.Suite.Extended.Navi.Suite\Krypton.Toolkit.Suite.Extended.Navi.Suite 2019.csproj", "{9FAC6BA5-4729-4917-8CD6-A3C03F29CC21}"
 EndProject
@@ -300,10 +299,6 @@ Global
 		{B6FB3BE1-3E55-459C-BB8E-83E21D41C9E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B6FB3BE1-3E55-459C-BB8E-83E21D41C9E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B6FB3BE1-3E55-459C-BB8E-83E21D41C9E6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8AE413C9-1F7D-4F91-BD16-760FB3789F93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8AE413C9-1F7D-4F91-BD16-760FB3789F93}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8AE413C9-1F7D-4F91-BD16-760FB3789F93}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8AE413C9-1F7D-4F91-BD16-760FB3789F93}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9FAC6BA5-4729-4917-8CD6-A3C03F29CC21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9FAC6BA5-4729-4917-8CD6-A3C03F29CC21}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9FAC6BA5-4729-4917-8CD6-A3C03F29CC21}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -542,7 +537,6 @@ Global
 		{B45A35ED-07C6-4CDA-A75B-56EBFF601232} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 		{83B92DB2-6318-4F7D-B169-9874637FF17F} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 		{B6FB3BE1-3E55-459C-BB8E-83E21D41C9E6} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
-		{8AE413C9-1F7D-4F91-BD16-760FB3789F93} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 		{9FAC6BA5-4729-4917-8CD6-A3C03F29CC21} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 		{951D4C2F-69F2-4176-9502-CDA760D5233F} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 		{A36AE7CE-8AF8-4711-8A8A-4FCDD14DE209} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
