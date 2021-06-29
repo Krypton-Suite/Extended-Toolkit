@@ -10,12 +10,12 @@ using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
-using System.Management;
-//using System.Management;
 using System.Security.Principal;
 using System.Windows.Forms;
 
 using Krypton.Toolkit.Suite.Extended.Developer.Utilities;
+
+using Microsoft.Win32;
 
 namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
 {
@@ -236,18 +236,34 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
         /// <returns></returns>
         public string GetOSFriendlyName()
         {
-            string result = string.Empty;
+            string productName = HKLM_GetString(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion", "ProductName"),
+                   csdVersion = HKLM_GetString(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion", "CSDVersion");
 
-            ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT Caption FROM Win32_OperatingSystem");
-
-            foreach (ManagementObject os in searcher.Get())
+            if (productName != string.Empty)
             {
-                result = os["Caption"].ToString();
-
-                break;
+                return (productName.StartsWith("Microsoft") ? "" : "Microsoft ") + productName + (csdVersion != "" ? " " + csdVersion : "");
             }
 
-            return result;
+            return string.Empty;
+        }
+
+        private string HKLM_GetString(string path, string key)
+        {
+            try
+            {
+                RegistryKey registryKey = Registry.LocalMachine.OpenSubKey(path);
+
+                if (registryKey == null)
+                {
+                    return string.Empty;
+                }
+
+                return (string)registryKey.GetValue(key);
+            }
+            catch (Exception e)
+            {
+                return string.Empty;
+            }
         }
 
         // TODO: Fix this method
@@ -564,18 +580,34 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
         /// <returns></returns>
         public static string GetOSFriendlyName()
         {
-            string result = string.Empty;
+            string productName = HKLM_GetString(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion", "ProductName"),
+                   csdVersion = HKLM_GetString(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion", "CSDVersion");
 
-            ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT Caption FROM Win32_OperatingSystem");
-
-            foreach (ManagementObject os in searcher.Get())
+            if (productName != string.Empty)
             {
-                result = os["Caption"].ToString();
-
-                break;
+                return (productName.StartsWith("Microsoft") ? "" : "Microsoft ") + productName + (csdVersion != "" ? " " + csdVersion : "");
             }
 
-            return result;
+            return string.Empty;
+        }
+
+        private static string HKLM_GetString(string path, string key)
+        {
+            try
+            {
+                RegistryKey registryKey = Registry.LocalMachine.OpenSubKey(path);
+
+                if (registryKey == null)
+                {
+                    return string.Empty;
+                }
+
+                return (string)registryKey.GetValue(key);
+            }
+            catch (Exception e)
+            {
+                return string.Empty;
+            }
         }
 
         // TODO: Fix this method
