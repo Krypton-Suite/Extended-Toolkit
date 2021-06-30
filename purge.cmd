@@ -12,8 +12,13 @@ rd /s /q "Bin"
 echo Deleted the 'Bin' folder
 
 echo Deleting the main 'obj' directories
+echo Deleting 'Main\Krypton.Toolkit.Suite.Extended.Buttons\obj'
 rd /s /q "Source\Krypton Toolkit\Main\Krypton.Toolkit.Suite.Extended.Buttons\obj"
+echo Deleted 'Main\Krypton.Toolkit.Suite.Extended.Buttons\obj'
+echo Deleting 'Main\Krypton.Toolkit.Suite.Extended.Calandar\obj'
 rd /s /q "Source\Krypton Toolkit\Main\Krypton.Toolkit.Suite.Extended.Calandar\obj"
+echo Deleted 'Main\Krypton.Toolkit.Suite.Extended.Calandar\obj'
+echo Deleting 'Main\Krypton.Toolkit.Suite.Extended.Circular.ProgressBar\obj'
 rd /s /q "Source\Krypton Toolkit\Main\Krypton.Toolkit.Suite.Extended.Circular.ProgressBar\obj"
 rd /s /q "Source\Krypton Toolkit\Main\Krypton.Toolkit.Suite.Extended.ComboBox\obj"
 rd /s /q "Source\Krypton Toolkit\Main\Krypton.Toolkit.Suite.Extended.Controls\obj"
