@@ -37,25 +37,49 @@ namespace TreeGridView
             Krypton.Toolkit.Suite.Extended.Tree.Grid.View.TreeGridNode treeGridNode6 = new Krypton.Toolkit.Suite.Extended.Tree.Grid.View.TreeGridNode();
             Krypton.Toolkit.Suite.Extended.Tree.Grid.View.TreeGridNode treeGridNode7 = new Krypton.Toolkit.Suite.Extended.Tree.Grid.View.TreeGridNode();
             Krypton.Toolkit.Suite.Extended.Tree.Grid.View.TreeGridNode treeGridNode8 = new Krypton.Toolkit.Suite.Extended.Tree.Grid.View.TreeGridNode();
-            this.kryptonTreeGridView1 = new Krypton.Toolkit.Suite.Extended.Tree.Grid.View.KryptonTreeGridView();
             this.colID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colFirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colLastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCountry = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.kryptonTreeGridView1 = new Krypton.Toolkit.Suite.Extended.Tree.Grid.View.KryptonTreeGridView();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonTreeGridView1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // colID
+            // 
+            this.colID.HeaderText = "ID";
+            this.colID.Name = "colID";
+            this.colID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // colFirstName
+            // 
+            this.colFirstName.HeaderText = "First Name";
+            this.colFirstName.Name = "colFirstName";
+            this.colFirstName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // colLastName
+            // 
+            this.colLastName.HeaderText = "Last Name";
+            this.colLastName.Name = "colLastName";
+            this.colLastName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // colCountry
+            // 
+            this.colCountry.HeaderText = "Country";
+            this.colCountry.Name = "colCountry";
+            this.colCountry.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // colPhone
+            // 
+            this.colPhone.HeaderText = "Phone";
+            this.colPhone.Name = "colPhone";
+            this.colPhone.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // kryptonTreeGridView1
             // 
             this.kryptonTreeGridView1.AllowUserToAddRows = false;
             this.kryptonTreeGridView1.AllowUserToDeleteRows = false;
-            this.kryptonTreeGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colID,
-            this.colFirstName,
-            this.colLastName,
-            this.colCountry,
-            this.colPhone});
             this.kryptonTreeGridView1.DataSource = null;
             this.kryptonTreeGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonTreeGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
@@ -92,44 +116,14 @@ namespace TreeGridView
             this.kryptonTreeGridView1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.kryptonTreeGridView1.Name = "kryptonTreeGridView1";
             this.kryptonTreeGridView1.ParentIDColumnName = null;
-            this.kryptonTreeGridView1.Size = new System.Drawing.Size(546, 180);
+            this.kryptonTreeGridView1.Size = new System.Drawing.Size(1103, 479);
             this.kryptonTreeGridView1.TabIndex = 0;
-            // 
-            // colID
-            // 
-            this.colID.HeaderText = "ID";
-            this.colID.Name = "colID";
-            this.colID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // colFirstName
-            // 
-            this.colFirstName.HeaderText = "First Name";
-            this.colFirstName.Name = "colFirstName";
-            this.colFirstName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // colLastName
-            // 
-            this.colLastName.HeaderText = "Last Name";
-            this.colLastName.Name = "colLastName";
-            this.colLastName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // colCountry
-            // 
-            this.colCountry.HeaderText = "Country";
-            this.colCountry.Name = "colCountry";
-            this.colCountry.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // colPhone
-            // 
-            this.colPhone.HeaderText = "Phone";
-            this.colPhone.Name = "colPhone";
-            this.colPhone.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(546, 180);
+            this.ClientSize = new System.Drawing.Size(1103, 479);
             this.Controls.Add(this.kryptonTreeGridView1);
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "Form1";
@@ -140,13 +134,12 @@ namespace TreeGridView
         }
 
         #endregion
-
-        private Krypton.Toolkit.Suite.Extended.Tree.Grid.View.KryptonTreeGridView kryptonTreeGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn colID;
         private System.Windows.Forms.DataGridViewTextBoxColumn colFirstName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colLastName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCountry;
         private System.Windows.Forms.DataGridViewTextBoxColumn colPhone;
+        private Krypton.Toolkit.Suite.Extended.Tree.Grid.View.KryptonTreeGridView kryptonTreeGridView1;
     }
 }
 
