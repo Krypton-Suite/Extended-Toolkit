@@ -29,12 +29,20 @@ namespace TreeGridView
         /// </summary>
         private void InitializeComponent()
         {
+            Krypton.Toolkit.Suite.Extended.Tree.Grid.View.TreeGridNode treeGridNode1 = new Krypton.Toolkit.Suite.Extended.Tree.Grid.View.TreeGridNode();
+            Krypton.Toolkit.Suite.Extended.Tree.Grid.View.TreeGridNode treeGridNode2 = new Krypton.Toolkit.Suite.Extended.Tree.Grid.View.TreeGridNode();
+            Krypton.Toolkit.Suite.Extended.Tree.Grid.View.TreeGridNode treeGridNode3 = new Krypton.Toolkit.Suite.Extended.Tree.Grid.View.TreeGridNode();
+            Krypton.Toolkit.Suite.Extended.Tree.Grid.View.TreeGridNode treeGridNode4 = new Krypton.Toolkit.Suite.Extended.Tree.Grid.View.TreeGridNode();
+            Krypton.Toolkit.Suite.Extended.Tree.Grid.View.TreeGridNode treeGridNode5 = new Krypton.Toolkit.Suite.Extended.Tree.Grid.View.TreeGridNode();
+            Krypton.Toolkit.Suite.Extended.Tree.Grid.View.TreeGridNode treeGridNode6 = new Krypton.Toolkit.Suite.Extended.Tree.Grid.View.TreeGridNode();
+            Krypton.Toolkit.Suite.Extended.Tree.Grid.View.TreeGridNode treeGridNode7 = new Krypton.Toolkit.Suite.Extended.Tree.Grid.View.TreeGridNode();
+            Krypton.Toolkit.Suite.Extended.Tree.Grid.View.TreeGridNode treeGridNode8 = new Krypton.Toolkit.Suite.Extended.Tree.Grid.View.TreeGridNode();
             this.kryptonTreeGridView1 = new Krypton.Toolkit.Suite.Extended.Tree.Grid.View.KryptonTreeGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colFirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colLastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCountry = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonTreeGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -43,15 +51,31 @@ namespace TreeGridView
             this.kryptonTreeGridView1.AllowUserToAddRows = false;
             this.kryptonTreeGridView1.AllowUserToDeleteRows = false;
             this.kryptonTreeGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5});
+            this.colID,
+            this.colFirstName,
+            this.colLastName,
+            this.colCountry,
+            this.colPhone});
             this.kryptonTreeGridView1.DataSource = null;
             this.kryptonTreeGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonTreeGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.kryptonTreeGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.kryptonTreeGridView1.FontParentBold = false;
+            treeGridNode2.UniqueValue = 1027317378;
+            treeGridNode3.UniqueValue = 1057748041;
+            treeGridNode1.Nodes.Add(treeGridNode2);
+            treeGridNode1.Nodes.Add(treeGridNode3);
+            treeGridNode1.UniqueValue = 413721102;
+            treeGridNode4.UniqueValue = 1978116688;
+            treeGridNode5.UniqueValue = 1088269265;
+            treeGridNode6.UniqueValue = 160900246;
+            treeGridNode7.UniqueValue = 535611867;
+            treeGridNode8.UniqueValue = 491167451;
+            this.kryptonTreeGridView1.GridRows.Add(treeGridNode1);
+            this.kryptonTreeGridView1.GridRows.Add(treeGridNode4);
+            this.kryptonTreeGridView1.GridRows.Add(treeGridNode5);
+            this.kryptonTreeGridView1.GridRows.Add(treeGridNode6);
+            this.kryptonTreeGridView1.GridRows.Add(treeGridNode7);
+            this.kryptonTreeGridView1.GridRows.Add(treeGridNode8);
             this.kryptonTreeGridView1.IDColumnName = null;
             this.kryptonTreeGridView1.ImageIndexChild = 0;
             this.kryptonTreeGridView1.ImageList = null;
@@ -62,35 +86,35 @@ namespace TreeGridView
             this.kryptonTreeGridView1.Size = new System.Drawing.Size(527, 477);
             this.kryptonTreeGridView1.TabIndex = 0;
             // 
-            // Column1
+            // colID
             // 
-            this.Column1.HeaderText = "Column1";
-            this.Column1.Name = "Column1";
-            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.colID.HeaderText = "ID";
+            this.colID.Name = "colID";
+            this.colID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // Column2
+            // colFirstName
             // 
-            this.Column2.HeaderText = "Column2";
-            this.Column2.Name = "Column2";
-            this.Column2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.colFirstName.HeaderText = "First Name";
+            this.colFirstName.Name = "colFirstName";
+            this.colFirstName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // Column3
+            // colLastName
             // 
-            this.Column3.HeaderText = "Column3";
-            this.Column3.Name = "Column3";
-            this.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.colLastName.HeaderText = "Last Name";
+            this.colLastName.Name = "colLastName";
+            this.colLastName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // Column4
+            // colCountry
             // 
-            this.Column4.HeaderText = "Column4";
-            this.Column4.Name = "Column4";
-            this.Column4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.colCountry.HeaderText = "Country";
+            this.colCountry.Name = "colCountry";
+            this.colCountry.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // Column5
+            // colPhone
             // 
-            this.Column5.HeaderText = "Column5";
-            this.Column5.Name = "Column5";
-            this.Column5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.colPhone.HeaderText = "Phone";
+            this.colPhone.Name = "colPhone";
+            this.colPhone.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // Form1
             // 
@@ -99,7 +123,7 @@ namespace TreeGridView
             this.ClientSize = new System.Drawing.Size(527, 477);
             this.Controls.Add(this.kryptonTreeGridView1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "TreeGridView";
             ((System.ComponentModel.ISupportInitialize)(this.kryptonTreeGridView1)).EndInit();
             this.ResumeLayout(false);
 
@@ -108,11 +132,11 @@ namespace TreeGridView
         #endregion
 
         private Krypton.Toolkit.Suite.Extended.Tree.Grid.View.KryptonTreeGridView kryptonTreeGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colFirstName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colLastName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCountry;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colPhone;
     }
 }
 
