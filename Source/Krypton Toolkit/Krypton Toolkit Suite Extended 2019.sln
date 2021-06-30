@@ -249,6 +249,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TreeGridView", "Examples\Tr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.WindowsAPICodePack.Core", "Third Party\Microsoft.WindowsAPICodePack.Core\Microsoft.WindowsAPICodePack.Core.csproj", "{FDC6F209-1F39-4A8A-AE61-2FF56412B882}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.WindowsAPICodePack.Shell", "Third Party\Microsoft.WindowsAPICodePack.Shell\Microsoft.WindowsAPICodePack.Shell.csproj", "{90812991-5BBB-4A07-BF82-9420C368E9CB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -519,6 +521,10 @@ Global
 		{FDC6F209-1F39-4A8A-AE61-2FF56412B882}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FDC6F209-1F39-4A8A-AE61-2FF56412B882}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FDC6F209-1F39-4A8A-AE61-2FF56412B882}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90812991-5BBB-4A07-BF82-9420C368E9CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90812991-5BBB-4A07-BF82-9420C368E9CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90812991-5BBB-4A07-BF82-9420C368E9CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90812991-5BBB-4A07-BF82-9420C368E9CB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -605,6 +611,7 @@ Global
 		{4B8F13BD-2E90-47AD-B0D1-32A2E8CFAE0C} = {25D5F0A6-A601-424B-9431-8EFE139A58A7}
 		{9A6A6135-FD9F-4495-B208-784487BFAB19} = {25D5F0A6-A601-424B-9431-8EFE139A58A7}
 		{FDC6F209-1F39-4A8A-AE61-2FF56412B882} = {D3F14B97-D6F3-47F8-85CB-E9A7903D372D}
+		{90812991-5BBB-4A07-BF82-9420C368E9CB} = {D3F14B97-D6F3-47F8-85CB-E9A7903D372D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A7CE7732-0982-4703-8EFD-7715D569BAB5}
