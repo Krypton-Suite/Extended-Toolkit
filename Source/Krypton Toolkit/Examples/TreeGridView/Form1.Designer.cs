@@ -60,15 +60,23 @@ namespace TreeGridView
             this.kryptonTreeGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonTreeGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.kryptonTreeGridView1.FontParentBold = false;
+            treeGridNode1.Height = 25;
+            treeGridNode2.Height = 25;
             treeGridNode2.UniqueValue = 1027317378;
+            treeGridNode3.Height = 25;
             treeGridNode3.UniqueValue = 1057748041;
             treeGridNode1.Nodes.Add(treeGridNode2);
             treeGridNode1.Nodes.Add(treeGridNode3);
             treeGridNode1.UniqueValue = 413721102;
+            treeGridNode4.Height = 25;
             treeGridNode4.UniqueValue = 1978116688;
+            treeGridNode5.Height = 25;
             treeGridNode5.UniqueValue = 1088269265;
+            treeGridNode6.Height = 25;
             treeGridNode6.UniqueValue = 160900246;
+            treeGridNode7.Height = 25;
             treeGridNode7.UniqueValue = 535611867;
+            treeGridNode8.Height = 25;
             treeGridNode8.UniqueValue = 491167451;
             this.kryptonTreeGridView1.GridRows.Add(treeGridNode1);
             this.kryptonTreeGridView1.GridRows.Add(treeGridNode4);
@@ -81,9 +89,10 @@ namespace TreeGridView
             this.kryptonTreeGridView1.ImageList = null;
             this.kryptonTreeGridView1.IsOneLevel = false;
             this.kryptonTreeGridView1.Location = new System.Drawing.Point(0, 0);
+            this.kryptonTreeGridView1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.kryptonTreeGridView1.Name = "kryptonTreeGridView1";
             this.kryptonTreeGridView1.ParentIDColumnName = null;
-            this.kryptonTreeGridView1.Size = new System.Drawing.Size(527, 477);
+            this.kryptonTreeGridView1.Size = new System.Drawing.Size(546, 180);
             this.kryptonTreeGridView1.TabIndex = 0;
             // 
             // colID
@@ -118,10 +127,11 @@ namespace TreeGridView
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(527, 477);
+            this.ClientSize = new System.Drawing.Size(546, 180);
             this.Controls.Add(this.kryptonTreeGridView1);
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "Form1";
             this.Text = "TreeGridView";
             ((System.ComponentModel.ISupportInitialize)(this.kryptonTreeGridView1)).EndInit();
