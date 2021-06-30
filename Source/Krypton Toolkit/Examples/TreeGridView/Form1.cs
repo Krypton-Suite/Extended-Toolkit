@@ -25,8 +25,6 @@ namespace TreeGridView
             {
                 ordAdapter.Fill(customerOrders, @"Orders");
             }
-
-            kryptonTreeGridView1.DataSource dataTable = new kryptonTreeGridView1.DataSource();
         }
 
     }
