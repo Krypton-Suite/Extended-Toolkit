@@ -51,10 +51,6 @@
     <DocumentationFile>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Global.Utilities\Krypton.Toolkit.Suite.Extended.Global.Utilities.xml</DocumentationFile>
     <OutputPath>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Global.Utilities\</OutputPath>
   </PropertyGroup>
-  
-  <ItemGroup>
-    <Reference Include="System.Management" />
-  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Developer.Utilities\Krypton.Toolkit.Suite.Extended.Developer.Utilities 2019.csproj" />
