@@ -7,7 +7,7 @@ global using System.Drawing.Design;
 global using System.Drawing.Drawing2D;
 global using System.Drawing.Imaging;
 global using System.IO;
-global using System.Management;
+//global using System.Management;
 global using System.Reflection;
 global using System.Runtime.InteropServices;
 global using System.Security.Principal;

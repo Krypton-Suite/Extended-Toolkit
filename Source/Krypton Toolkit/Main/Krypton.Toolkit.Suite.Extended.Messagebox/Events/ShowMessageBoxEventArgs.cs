@@ -37,7 +37,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         private MessageBoxOptions _options;
 
-        private ExtendedMessageBoxIcon _messageBoxIcon;
+        private ExtendedKryptonMessageBoxIcon _messageBoxIcon;
 
         private HelpNavigator _helpNavigator;
 
@@ -146,8 +146,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         /// <summary>Gets or sets the message box icon.</summary>
         /// <value>The message box icon.</value>
-        [DefaultValue(typeof(ExtendedMessageBoxIcon), "ExtendedMessageBoxIcon.NONE"), Description("Gets or sets the message box icon.")]
-        public ExtendedMessageBoxIcon MessageBoxIcon { get => _messageBoxIcon; set => _messageBoxIcon = value; }
+        [DefaultValue(typeof(ExtendedKryptonMessageBoxIcon), "ExtendedMessageBoxIcon.NONE"), Description("Gets or sets the message box icon.")]
+        public ExtendedKryptonMessageBoxIcon MessageBoxIcon { get => _messageBoxIcon; set => _messageBoxIcon = value; }
 
         /// <summary>Gets or sets the help navigator.</summary>
         /// <value>The help navigator.</value>
@@ -266,7 +266,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="customMessageBoxIcon">The custom message box icon.</param>
         public ShowMessageBoxEventArgs(IWin32Window owner, string text, string caption,
                                        ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions customButtonOptions,
-                                       ExtendedMessageBoxIcon icon,
+                                       ExtendedKryptonMessageBoxIcon icon,
                                        MessageBoxDefaultButton defaultButton,
                                        MessageBoxOptions options, string helpPath,
                                        HelpNavigator helpNavigator, object helpParam,

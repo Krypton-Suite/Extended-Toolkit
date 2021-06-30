@@ -219,24 +219,36 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             }
         }
 
-        /// <summary>
-        /// Gets the name of the os friendly.
-        /// </summary>
-        /// <returns></returns>
         public string GetOSFriendlyName()
         {
-            string result = string.Empty;
+            string productName = HKLM_GetString(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion", "ProductName"),
+                   csdVersion = HKLM_GetString(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion", "CSDVersion");
 
-            ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT Caption FROM Win32_OperatingSystem");
-
-            foreach (ManagementObject os in searcher.Get())
+            if (productName != string.Empty)
             {
-                result = os["Caption"].ToString();
-
-                break;
+                return (productName.StartsWith("Microsoft") ? "" : "Microsoft ") + productName + (csdVersion != "" ? " " + csdVersion : "");
             }
 
-            return result;
+            return string.Empty;
+        }
+
+        private string HKLM_GetString(string path, string key)
+        {
+            try
+            {
+                RegistryKey registryKey = Registry.LocalMachine.OpenSubKey(path);
+
+                if (registryKey == null)
+                {
+                    return string.Empty;
+                }
+
+                return (string)registryKey.GetValue(key);
+            }
+            catch (Exception e)
+            {
+                return string.Empty;
+            }
         }
 
         // TODO: Fix this method

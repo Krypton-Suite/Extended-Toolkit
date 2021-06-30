@@ -17,6 +17,17 @@
 
 =======
 
+## 2021-08-0x - Build 2108 - August 2021 (Canary)
+* Broken toolkit up into smaller modules - see list for available moldules (Not all modules will be completed yet)
+* Improved documentation
+* New `Krypton.Toolkit.Suite.Extended.DataGridView` module
+* Projects now follow the **Standard-Toolkit** naming convention
+* The `ExtendedKryptonMessageBox` now supports a optional checkbox, custom icon and custom button text
+* New `KryptonMessageBoxExtendedManager` to allows the creation of a `KryptonMessageBoxExtended` through the designer
+* Updated standard toolkit to build `2108`
+
+=======
+
 ## 2021-06-04 - Build 2106 - June 2021
 * Removal/de-listing of `Krypton.Toolkit.Suite.Extended.Rounded.Controls`, see 'standard toolkit' build 2106 for more information
 * New `KryptonFormExtended` to expose properties, which cannot be fulfilled by a action list over time

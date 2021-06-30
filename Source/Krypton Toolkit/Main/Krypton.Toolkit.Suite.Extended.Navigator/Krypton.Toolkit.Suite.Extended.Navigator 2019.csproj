@@ -52,7 +52,7 @@
     <OutputPath>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.Navigator\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.VisualBasic" Version="10.3.0" />
+    <Reference Include="Microsoft.VisualBasic" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Shared\Krypton.Toolkit.Suite.Extended.Common\Krypton.Toolkit.Suite.Extended.Common 2019.csproj" />
