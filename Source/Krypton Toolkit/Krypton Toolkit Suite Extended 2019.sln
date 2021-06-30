@@ -247,9 +247,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThemeSwitcher", "Examples\T
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TreeGridView", "Examples\TreeGridView\TreeGridView.csproj", "{9A6A6135-FD9F-4495-B208-784487BFAB19}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.WindowsAPICodePack.Core", "Third Party\Microsoft.WindowsAPICodePack.Core\Microsoft.WindowsAPICodePack.Core.csproj", "{A52D522A-D4C1-4740-9510-6DC05BFE68D1}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.WindowsAPICodePack.ExtendedLinguisticServices", "Third Party\Microsoft.WindowsAPICodePack.ExtendedLinguisticServices\Microsoft.WindowsAPICodePack.ExtendedLinguisticServices.csproj", "{8DA78698-0779-46A1-BD2F-A644AA3255CE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.WindowsAPICodePack.Core", "Third Party\Microsoft.WindowsAPICodePack.Core\Microsoft.WindowsAPICodePack.Core.csproj", "{FDC6F209-1F39-4A8A-AE61-2FF56412B882}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -517,14 +515,10 @@ Global
 		{9A6A6135-FD9F-4495-B208-784487BFAB19}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A6A6135-FD9F-4495-B208-784487BFAB19}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A6A6135-FD9F-4495-B208-784487BFAB19}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A52D522A-D4C1-4740-9510-6DC05BFE68D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A52D522A-D4C1-4740-9510-6DC05BFE68D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A52D522A-D4C1-4740-9510-6DC05BFE68D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A52D522A-D4C1-4740-9510-6DC05BFE68D1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8DA78698-0779-46A1-BD2F-A644AA3255CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8DA78698-0779-46A1-BD2F-A644AA3255CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8DA78698-0779-46A1-BD2F-A644AA3255CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8DA78698-0779-46A1-BD2F-A644AA3255CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDC6F209-1F39-4A8A-AE61-2FF56412B882}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDC6F209-1F39-4A8A-AE61-2FF56412B882}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDC6F209-1F39-4A8A-AE61-2FF56412B882}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDC6F209-1F39-4A8A-AE61-2FF56412B882}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -610,8 +604,7 @@ Global
 		{5D1D0A4E-7229-4A10-9031-B7E3E618A818} = {25D5F0A6-A601-424B-9431-8EFE139A58A7}
 		{4B8F13BD-2E90-47AD-B0D1-32A2E8CFAE0C} = {25D5F0A6-A601-424B-9431-8EFE139A58A7}
 		{9A6A6135-FD9F-4495-B208-784487BFAB19} = {25D5F0A6-A601-424B-9431-8EFE139A58A7}
-		{A52D522A-D4C1-4740-9510-6DC05BFE68D1} = {D3F14B97-D6F3-47F8-85CB-E9A7903D372D}
-		{8DA78698-0779-46A1-BD2F-A644AA3255CE} = {D3F14B97-D6F3-47F8-85CB-E9A7903D372D}
+		{FDC6F209-1F39-4A8A-AE61-2FF56412B882} = {D3F14B97-D6F3-47F8-85CB-E9A7903D372D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A7CE7732-0982-4703-8EFD-7715D569BAB5}
