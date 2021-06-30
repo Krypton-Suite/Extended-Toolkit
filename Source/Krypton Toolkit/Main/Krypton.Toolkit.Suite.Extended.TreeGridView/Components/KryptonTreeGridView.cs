@@ -243,7 +243,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tree.Grid.View
                     //-------------------------- 
                     //Clear nodes and columns
                     //-------------------------- 
-                    GridRows.Clear();
+                    GridNode.Clear();
                     Columns.Clear();
 
                     if (groupByColumnIndex != 0)
@@ -378,13 +378,13 @@ namespace Krypton.Toolkit.Suite.Extended.Tree.Grid.View
                                 if (isOneLevel)
                                 {
                                     parentNode = new TreeGridNode();
-                                    parentNode = GridRows.Add(p);
+                                    parentNode = GridNode.Add(p);
                                     parentNode.ImageIndex = imageIndexChild;
                                 }
                                 else
                                 {
                                     node = new TreeGridNode();
-                                    node = GridRows.Add(p);
+                                    node = GridNode.Add(p);
                                     node.ImageIndex = imageIndexParent;
                                     //-------------------------- 
                                     //set bold
@@ -493,7 +493,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tree.Grid.View
         DesignerSerializationVisibility(DesignerSerializationVisibility.Content),
         Editor(typeof(CollectionEditor), typeof(UITypeEditor))]
         [Browsable(true), Category("Appearance-Extended")]
-        public TreeGridNodeCollection GridRows
+        public TreeGridNodeCollection GridNode
         {
             get
             {
@@ -556,11 +556,11 @@ namespace Krypton.Toolkit.Suite.Extended.Tree.Grid.View
         [Browsable(true), Category("Appearance-Extended")]
         public new int RowCount
         {
-            get { return GridRows.Count; }
+            get { return GridNode.Count; }
             set
             {
                 for (int i = 0; i < value; i++)
-                    GridRows.Add(new TreeGridNode());
+                    GridNode.Add(new TreeGridNode());
 
             }
         }
@@ -609,7 +609,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tree.Grid.View
                         //Add Node
                         //-------------------------- 
                         TreeGridNode NetItemNode = new TreeGridNode();
-                        TreeGridNode RootNode = GridRows.GetNodeByUniqueValue(UniqueId);
+                        TreeGridNode RootNode = GridNode.GetNodeByUniqueValue(UniqueId);
 
                         if (RootNode.UniqueValue == -10)
                         {
@@ -661,7 +661,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tree.Grid.View
                     //-------------------------- 
                     //Add Node
                     //-------------------------- 
-                    RootNode = GridRows.Add(p);
+                    RootNode = GridNode.Add(p);
 
                     string Item_id = dv[Items][IDColumnName].ToString();
                     BuildPortsNodesOtherLoops(Item_id, dt, IDColumnName, ParentIDColumnName, ref RootNode);
@@ -964,7 +964,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tree.Grid.View
         [Description("Expands all nodes")]
         public void ExpandAll()
         {
-            foreach (TreeGridNode node in GridRows)
+            foreach (TreeGridNode node in GridNode)
             {
                 expandNode(node);
             }
@@ -986,7 +986,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tree.Grid.View
         [Description("Collapse all nodes")]
         public void CollapseAll()
         {
-            foreach (TreeGridNode node in GridRows)
+            foreach (TreeGridNode node in GridNode)
             {
                 collapseNode(node);
             }

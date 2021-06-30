@@ -102,12 +102,12 @@ namespace TreeGridView
             treeGridNode7.UniqueValue = 535611867;
             treeGridNode8.Height = 25;
             treeGridNode8.UniqueValue = 491167451;
-            this.kryptonTreeGridView1.GridRows.Add(treeGridNode1);
-            this.kryptonTreeGridView1.GridRows.Add(treeGridNode4);
-            this.kryptonTreeGridView1.GridRows.Add(treeGridNode5);
-            this.kryptonTreeGridView1.GridRows.Add(treeGridNode6);
-            this.kryptonTreeGridView1.GridRows.Add(treeGridNode7);
-            this.kryptonTreeGridView1.GridRows.Add(treeGridNode8);
+            this.kryptonTreeGridView1.GridNode.Add(treeGridNode1);
+            this.kryptonTreeGridView1.GridNode.Add(treeGridNode4);
+            this.kryptonTreeGridView1.GridNode.Add(treeGridNode5);
+            this.kryptonTreeGridView1.GridNode.Add(treeGridNode6);
+            this.kryptonTreeGridView1.GridNode.Add(treeGridNode7);
+            this.kryptonTreeGridView1.GridNode.Add(treeGridNode8);
             this.kryptonTreeGridView1.IDColumnName = null;
             this.kryptonTreeGridView1.ImageIndexChild = 0;
             this.kryptonTreeGridView1.ImageList = null;
