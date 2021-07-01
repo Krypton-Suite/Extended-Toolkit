@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using Krypton.Toolkit.Suite.Extended.Common;
+
 namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
-    public class KryptonSplashDialog : InternalExtendedKryptonForm
+    public class KryptonSplashDialog : CommonExtendedKryptonForm
     {
         private System.Windows.Forms.ProgressBar pbLoading;
         private System.Windows.Forms.PictureBox pbAppIcon;

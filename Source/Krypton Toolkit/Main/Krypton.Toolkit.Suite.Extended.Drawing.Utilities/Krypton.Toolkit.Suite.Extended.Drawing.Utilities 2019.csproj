@@ -51,5 +51,9 @@
     <DocumentationFile>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.Drawing.Utilities\Krypton.Toolkit.Suite.Extended.Drawing.Utilities.xml</DocumentationFile>
     <OutputPath>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.Drawing.Utilities\</OutputPath>
   </PropertyGroup>
+  <ItemGroup>
+    <!--<PackageReference Include="Cyotek.Windows.Forms.ColorPicker" Version="1.7.2" />-->
+    <PackageReference Include="unofficial.Cyotek.Windows.Forms.ColorPicker" Version="1.9.2" />
+  </ItemGroup>
 
 </Project>
