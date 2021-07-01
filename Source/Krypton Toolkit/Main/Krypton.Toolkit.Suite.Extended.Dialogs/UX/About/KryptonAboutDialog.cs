@@ -1,14 +1,6 @@
-﻿using System;
-using System.Diagnostics;
-using System.Drawing;
-using System.Reflection;
-
-using Krypton.Toolkit.Suite.Extended.Developer.Utilities;
-using Krypton.Toolkit.Suite.Extended.Global.Utilities;
-
-namespace Krypton.Toolkit.Suite.Extended.Dialogs
+﻿namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
-    public class KryptonAboutDialog : KryptonForm
+    public class KryptonAboutDialog : CommonExtendedKryptonForm
     {
         #region Design Code
         private KryptonPanel kryptonPanel1;

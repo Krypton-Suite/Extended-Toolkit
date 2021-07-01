@@ -18,6 +18,7 @@ global using System.Reflection;
 global using System.Runtime.InteropServices;
 global using System.Security.Principal;
 global using System.Text;
+global using System.Threading;
 global using System.Windows.Forms;
 
 global using Krypton.Toolkit.Suite.Extended.Developer.Utilities;

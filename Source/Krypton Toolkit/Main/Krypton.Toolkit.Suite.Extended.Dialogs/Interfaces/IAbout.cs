@@ -1,7 +1,4 @@
-﻿using System;
-using System.Drawing;
-
-namespace Krypton.Toolkit.Suite.Extended.Dialogs
+﻿namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
     /// <summary>
     /// For 'About' windows.

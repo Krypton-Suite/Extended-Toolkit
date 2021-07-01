@@ -1,8 +1,4 @@
-﻿using System.ComponentModel;
-using System.Drawing;
-using System.Windows.Forms;
-
-namespace Krypton.Toolkit.Suite.Extended.Dialogs
+﻿namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
     public class KryptonInputBoxManager : Component
     {
