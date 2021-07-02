@@ -19,6 +19,8 @@ global using System.Windows.Forms.Design;
 
 global using Cyotek.Windows.Forms;
 
+global using Krypton.Toolkit.Suite.Extended.Common;
 global using Krypton.Toolkit.Suite.Extended.Controls;
+global using Krypton.Toolkit.Suite.Extended.Developer.Utilities;
 global using Krypton.Toolkit.Suite.Extended.Drawing.Utilities.Properties;
 global using Krypton.Toolkit.Suite.Extended.Messagebox;
