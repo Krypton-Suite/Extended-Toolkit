@@ -19,13 +19,13 @@
         private KryptonLabel kryptonLabel3;
         private KryptonLabel kryptonLabel2;
         private KryptonLabel kryptonLabel1;
-        private System.Windows.Forms.Panel panel1;
         private ColourWheelControl colourWheelControl1;
         private KryptonTextBox kryptonTextBox1;
         private KryptonLabel kryptonLabel7;
         private KryptonButton kryptonButton1;
         private KryptonButton kryptonButton3;
         private KryptonButton kryptonButton2;
+        private KryptonBorderEdge kryptonBorderEdge1;
         private KryptonButton kryptonCancelDialogButton1;
 
         private void InitializeComponent()
@@ -33,7 +33,6 @@
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             this.kryptonOKDialogButton1 = new Krypton.Toolkit.KryptonButton();
             this.kryptonCancelDialogButton1 = new Krypton.Toolkit.KryptonButton();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
             this.kryptonButton3 = new Krypton.Toolkit.KryptonButton();
             this.kryptonButton2 = new Krypton.Toolkit.KryptonButton();
@@ -54,6 +53,7 @@
             this.kryptonLabel3 = new Krypton.Toolkit.KryptonLabel();
             this.kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
             this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
+            this.kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
@@ -63,19 +63,21 @@
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(this.kryptonBorderEdge1);
             this.kryptonPanel1.Controls.Add(this.kryptonOKDialogButton1);
             this.kryptonPanel1.Controls.Add(this.kryptonCancelDialogButton1);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.kryptonPanel1.Location = new System.Drawing.Point(0, 315);
+            this.kryptonPanel1.Location = new System.Drawing.Point(0, 318);
             this.kryptonPanel1.Name = "kryptonPanel1";
-            this.kryptonPanel1.Size = new System.Drawing.Size(471, 41);
+            this.kryptonPanel1.PanelBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelAlternate;
+            this.kryptonPanel1.Size = new System.Drawing.Size(471, 48);
             this.kryptonPanel1.TabIndex = 0;
             // 
             // kryptonOKDialogButton1
             // 
             this.kryptonOKDialogButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.kryptonOKDialogButton1.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.kryptonOKDialogButton1.Location = new System.Drawing.Point(273, 4);
+            this.kryptonOKDialogButton1.Location = new System.Drawing.Point(273, 11);
             this.kryptonOKDialogButton1.Name = "kryptonOKDialogButton1";
             this.kryptonOKDialogButton1.Size = new System.Drawing.Size(90, 25);
             this.kryptonOKDialogButton1.TabIndex = 1;
@@ -85,20 +87,11 @@
             // 
             this.kryptonCancelDialogButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.kryptonCancelDialogButton1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.kryptonCancelDialogButton1.Location = new System.Drawing.Point(369, 4);
+            this.kryptonCancelDialogButton1.Location = new System.Drawing.Point(369, 11);
             this.kryptonCancelDialogButton1.Name = "kryptonCancelDialogButton1";
             this.kryptonCancelDialogButton1.Size = new System.Drawing.Size(90, 25);
             this.kryptonCancelDialogButton1.TabIndex = 0;
             this.kryptonCancelDialogButton1.Values.Text = "C&ancel";
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 312);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(471, 3);
-            this.panel1.TabIndex = 1;
             // 
             // kryptonPanel2
             // 
@@ -124,7 +117,7 @@
             this.kryptonPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel2.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel2.Name = "kryptonPanel2";
-            this.kryptonPanel2.Size = new System.Drawing.Size(471, 312);
+            this.kryptonPanel2.Size = new System.Drawing.Size(471, 318);
             this.kryptonPanel2.TabIndex = 2;
             // 
             // kryptonButton3
@@ -345,11 +338,19 @@
             this.kryptonLabel1.TabIndex = 3;
             this.kryptonLabel1.Values.Text = "Alpha:";
             // 
+            // kryptonBorderEdge1
+            // 
+            this.kryptonBorderEdge1.BorderStyle = Krypton.Toolkit.PaletteBorderStyle.HeaderPrimary;
+            this.kryptonBorderEdge1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.kryptonBorderEdge1.Location = new System.Drawing.Point(0, 0);
+            this.kryptonBorderEdge1.Name = "kryptonBorderEdge1";
+            this.kryptonBorderEdge1.Size = new System.Drawing.Size(471, 1);
+            this.kryptonBorderEdge1.Text = "kryptonBorderEdge1";
+            // 
             // KryptonColourButtonCustomColourDialog
             // 
-            this.ClientSize = new System.Drawing.Size(471, 356);
+            this.ClientSize = new System.Drawing.Size(471, 366);
             this.Controls.Add(this.kryptonPanel2);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.kryptonPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MinimizeBox = false;
@@ -359,6 +360,7 @@
             this.Text = "Select Colour";
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
+            this.kryptonPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
             this.kryptonPanel2.ResumeLayout(false);
             this.kryptonPanel2.PerformLayout();

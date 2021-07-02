@@ -1,18 +1,10 @@
 ﻿namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 {
-    internal class DrawingNativeMethods
+    internal class DrawingUtilitiesNativeMethods
     {
         #region Constants
 
         public const int R2_NOT = 6; // Inverted drawing mode
-
-        #endregion
-
-        #region Protected Constructors
-
-        protected DrawingNativeMethods()
-        {
-        }
 
         #endregion
 

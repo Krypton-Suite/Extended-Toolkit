@@ -40,7 +40,7 @@
                     {
                         MessageBoxCaption = "Illegal Character",
                         MessageBoxContentText = $"'{ character }' is not a hexadecimal character",
-                        MessageBoxButtons = ExtendedMessageBoxButtons.OK,
+                        MessageBoxButtons = Messagebox.ExtendedMessageBoxButtons.OK,
                         MessageBoxIcon = ExtendedKryptonMessageBoxIcon.INFORMATION
                     };
 

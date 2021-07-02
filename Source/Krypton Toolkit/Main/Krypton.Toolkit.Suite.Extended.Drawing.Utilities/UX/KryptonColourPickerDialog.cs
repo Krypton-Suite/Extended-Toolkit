@@ -5,7 +5,6 @@
     {
         #region Designer Code
         private KryptonPanel kryptonPanel2;
-        private System.Windows.Forms.Panel panel1;
         private ColourWheelControl cwColour;
         private Krypton.Toolkit.Suite.Extended.Controls.CircularPictureBox cpbColour;
         private Cyotek.Windows.Forms.ColorGrid cgColour;
@@ -16,24 +15,24 @@
         private Krypton.Toolkit.Suite.Extended.Buttons.KryptonCancelDialogButton kdbtnCancel;
         private KryptonButton kbtnSavePalette;
         private KryptonButton kbtnLoadPalette;
+        private KryptonBorderEdge kryptonBorderEdge1;
         private KryptonPanel kryptonPanel1;
 
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KryptonColourPickerDialog));
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             this.kdbtnOk = new Krypton.Toolkit.Suite.Extended.Buttons.KryptonOKDialogButton();
             this.kdbtnCancel = new Krypton.Toolkit.Suite.Extended.Buttons.KryptonCancelDialogButton();
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
             this.kbtnSavePalette = new Krypton.Toolkit.KryptonButton();
             this.kbtnLoadPalette = new Krypton.Toolkit.KryptonButton();
-            this.cpbColour = new Krypton.Toolkit.Suite.Extended.Controls.CircularPictureBox();
             this.cgColour = new Cyotek.Windows.Forms.ColorGrid();
-            this.scpColour = new Krypton.Toolkit.Suite.Extended.Drawing.Utilities.ScreenColourPickerControl();
             this.ceColour = new Krypton.Toolkit.Suite.Extended.Drawing.Utilities.ColourEditor();
             this.cwColour = new Krypton.Toolkit.Suite.Extended.Drawing.Utilities.ColourWheelControl();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.cem = new Krypton.Toolkit.Suite.Extended.Drawing.Utilities.ColourEditorManager();
+            this.cpbColour = new Krypton.Toolkit.Suite.Extended.Controls.CircularPictureBox();
+            this.scpColour = new Krypton.Toolkit.Suite.Extended.Drawing.Utilities.ScreenColourPickerControl();
+            this.kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
@@ -43,11 +42,13 @@
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(this.kryptonBorderEdge1);
             this.kryptonPanel1.Controls.Add(this.kdbtnOk);
             this.kryptonPanel1.Controls.Add(this.kdbtnCancel);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 411);
             this.kryptonPanel1.Name = "kryptonPanel1";
+            this.kryptonPanel1.PanelBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelAlternate;
             this.kryptonPanel1.Size = new System.Drawing.Size(644, 43);
             this.kryptonPanel1.TabIndex = 0;
             // 
@@ -122,15 +123,6 @@
             this.kbtnLoadPalette.Values.Text = "";
             this.kbtnLoadPalette.Click += new System.EventHandler(this.kbtnLoadPalette_Click);
             // 
-            // cpbColour
-            // 
-            this.cpbColour.BackColor = System.Drawing.Color.Transparent;
-            this.cpbColour.Location = new System.Drawing.Point(458, 12);
-            this.cpbColour.Name = "cpbColour";
-            this.cpbColour.Size = new System.Drawing.Size(174, 167);
-            this.cpbColour.TabIndex = 3;
-            this.cpbColour.TabStop = false;
-            // 
             // cgColour
             // 
             this.cgColour.BackColor = System.Drawing.Color.Transparent;
@@ -140,14 +132,6 @@
             this.cgColour.TabIndex = 3;
             this.cgColour.EditingColor += new System.EventHandler<Cyotek.Windows.Forms.EditColorCancelEventArgs>(this.cgColour_EditingColor);
             this.cgColour.ColorChanged += new System.EventHandler(this.cgColour_ColorChanged);
-            // 
-            // scpColour
-            // 
-            this.scpColour.Colour = System.Drawing.Color.Empty;
-            this.scpColour.Image = null;
-            this.scpColour.Location = new System.Drawing.Point(267, 261);
-            this.scpColour.Name = "scpColour";
-            this.scpColour.Size = new System.Drawing.Size(185, 135);
             // 
             // ceColour
             // 
@@ -166,15 +150,6 @@
             this.cwColour.TabIndex = 0;
             this.cwColour.ColourChanged += new System.EventHandler(this.cwColour_ColourChanged);
             // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 408);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(644, 3);
-            this.panel1.TabIndex = 2;
-            // 
             // cem
             // 
             this.cem.Color = System.Drawing.Color.Empty;
@@ -183,16 +158,40 @@
             this.cem.ColorChanged += new System.EventHandler(this.cem_ColorChanged);
             this.cem.ColourChanged += new System.EventHandler(this.cem_ColourChanged);
             // 
+            // cpbColour
+            // 
+            this.cpbColour.BackColor = System.Drawing.Color.Transparent;
+            this.cpbColour.Location = new System.Drawing.Point(458, 12);
+            this.cpbColour.Name = "cpbColour";
+            this.cpbColour.Size = new System.Drawing.Size(174, 167);
+            this.cpbColour.TabIndex = 3;
+            this.cpbColour.TabStop = false;
+            // 
+            // scpColour
+            // 
+            this.scpColour.Colour = System.Drawing.Color.Empty;
+            this.scpColour.Image = global::Krypton.Toolkit.Suite.Extended.Drawing.Utilities.Properties.Resources.dropper;
+            this.scpColour.Location = new System.Drawing.Point(267, 261);
+            this.scpColour.Name = "scpColour";
+            this.scpColour.Size = new System.Drawing.Size(185, 135);
+            // 
+            // kryptonBorderEdge1
+            // 
+            this.kryptonBorderEdge1.BorderStyle = Krypton.Toolkit.PaletteBorderStyle.HeaderPrimary;
+            this.kryptonBorderEdge1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.kryptonBorderEdge1.Location = new System.Drawing.Point(0, 0);
+            this.kryptonBorderEdge1.Name = "kryptonBorderEdge1";
+            this.kryptonBorderEdge1.Size = new System.Drawing.Size(644, 1);
+            this.kryptonBorderEdge1.Text = "kryptonBorderEdge1";
+            // 
             // KryptonColourPickerDialog
             // 
             this.AcceptButton = this.kdbtnOk;
             this.CancelButton = this.kdbtnCancel;
             this.ClientSize = new System.Drawing.Size(644, 454);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.kryptonPanel2);
             this.Controls.Add(this.kryptonPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "KryptonColourPickerDialog";
@@ -201,6 +200,7 @@
             this.Text = "Select a Colour";
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
+            this.kryptonPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
             this.kryptonPanel2.ResumeLayout(false);
             this.kryptonPanel2.PerformLayout();

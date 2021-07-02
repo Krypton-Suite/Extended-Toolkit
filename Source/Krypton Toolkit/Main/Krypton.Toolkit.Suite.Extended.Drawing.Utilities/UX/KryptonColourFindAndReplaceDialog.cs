@@ -5,7 +5,6 @@
         #region Design Code
         private KryptonPanel kryptonPanel1;
         private KryptonButton kbtnCancel;
-        private System.Windows.Forms.Panel panel1;
         private KryptonPanel kryptonPanel2;
         private Navigator.KryptonNavigator kryptonNavigator1;
         private Navigator.KryptonPage kryptonPage1;
@@ -15,23 +14,24 @@
         private KryptonTextBox ktxtSearchTerm;
         private KryptonLabel kryptonLabel3;
         private KryptonTextBox kryptonTextBox2;
+        private KryptonBorderEdge kryptonBorderEdge1;
         private Navigator.KryptonPage kryptonPage2;
 
         private void InitializeComponent()
         {
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             this.kbtnCancel = new Krypton.Toolkit.KryptonButton();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
             this.kryptonNavigator1 = new Krypton.Navigator.KryptonNavigator();
             this.kryptonPage1 = new Krypton.Navigator.KryptonPage();
-            this.kryptonPage2 = new Krypton.Navigator.KryptonPage();
-            this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
-            this.ktxtSearchTerm = new Krypton.Toolkit.KryptonTextBox();
-            this.kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
-            this.kryptonTextBox1 = new Krypton.Toolkit.KryptonTextBox();
             this.kryptonLabel3 = new Krypton.Toolkit.KryptonLabel();
             this.kryptonTextBox2 = new Krypton.Toolkit.KryptonTextBox();
+            this.kryptonPage2 = new Krypton.Navigator.KryptonPage();
+            this.kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
+            this.kryptonTextBox1 = new Krypton.Toolkit.KryptonTextBox();
+            this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
+            this.ktxtSearchTerm = new Krypton.Toolkit.KryptonTextBox();
+            this.kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
@@ -46,10 +46,12 @@
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(this.kryptonBorderEdge1);
             this.kryptonPanel1.Controls.Add(this.kbtnCancel);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 273);
             this.kryptonPanel1.Name = "kryptonPanel1";
+            this.kryptonPanel1.PanelBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelAlternate;
             this.kryptonPanel1.Size = new System.Drawing.Size(646, 45);
             this.kryptonPanel1.TabIndex = 0;
             // 
@@ -62,22 +64,13 @@
             this.kbtnCancel.TabIndex = 0;
             this.kbtnCancel.Values.Text = "C&ancel";
             // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 270);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(646, 3);
-            this.panel1.TabIndex = 1;
-            // 
             // kryptonPanel2
             // 
             this.kryptonPanel2.Controls.Add(this.kryptonNavigator1);
             this.kryptonPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel2.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel2.Name = "kryptonPanel2";
-            this.kryptonPanel2.Size = new System.Drawing.Size(646, 270);
+            this.kryptonPanel2.Size = new System.Drawing.Size(646, 273);
             this.kryptonPanel2.TabIndex = 2;
             // 
             // kryptonNavigator1
@@ -108,6 +101,22 @@
             this.kryptonPage1.ToolTipTitle = "Page ToolTip";
             this.kryptonPage1.UniqueName = "7bed424c1b9e45c2ae901122813246ec";
             // 
+            // kryptonLabel3
+            // 
+            this.kryptonLabel3.Location = new System.Drawing.Point(24, 23);
+            this.kryptonLabel3.Name = "kryptonLabel3";
+            this.kryptonLabel3.Size = new System.Drawing.Size(36, 20);
+            this.kryptonLabel3.TabIndex = 3;
+            this.kryptonLabel3.Values.Text = "Find:";
+            // 
+            // kryptonTextBox2
+            // 
+            this.kryptonTextBox2.Location = new System.Drawing.Point(66, 23);
+            this.kryptonTextBox2.Name = "kryptonTextBox2";
+            this.kryptonTextBox2.Size = new System.Drawing.Size(437, 23);
+            this.kryptonTextBox2.TabIndex = 2;
+            this.kryptonTextBox2.Text = "kryptonTextBox1";
+            // 
             // kryptonPage2
             // 
             this.kryptonPage2.AutoHiddenSlideSize = new System.Drawing.Size(200, 200);
@@ -123,22 +132,6 @@
             this.kryptonPage2.Text = "Find && Replace";
             this.kryptonPage2.ToolTipTitle = "Page ToolTip";
             this.kryptonPage2.UniqueName = "90f8d8dffff6464f8c50c10b8b470058";
-            // 
-            // kryptonLabel1
-            // 
-            this.kryptonLabel1.Location = new System.Drawing.Point(24, 23);
-            this.kryptonLabel1.Name = "kryptonLabel1";
-            this.kryptonLabel1.Size = new System.Drawing.Size(36, 20);
-            this.kryptonLabel1.TabIndex = 3;
-            this.kryptonLabel1.Values.Text = "Find:";
-            // 
-            // ktxtSearchTerm
-            // 
-            this.ktxtSearchTerm.Location = new System.Drawing.Point(115, 23);
-            this.ktxtSearchTerm.Name = "ktxtSearchTerm";
-            this.ktxtSearchTerm.Size = new System.Drawing.Size(388, 23);
-            this.ktxtSearchTerm.TabIndex = 2;
-            this.ktxtSearchTerm.Text = "kryptonTextBox1";
             // 
             // kryptonLabel2
             // 
@@ -156,27 +149,35 @@
             this.kryptonTextBox1.TabIndex = 4;
             this.kryptonTextBox1.Text = "kryptonTextBox1";
             // 
-            // kryptonLabel3
+            // kryptonLabel1
             // 
-            this.kryptonLabel3.Location = new System.Drawing.Point(24, 23);
-            this.kryptonLabel3.Name = "kryptonLabel3";
-            this.kryptonLabel3.Size = new System.Drawing.Size(36, 20);
-            this.kryptonLabel3.TabIndex = 3;
-            this.kryptonLabel3.Values.Text = "Find:";
+            this.kryptonLabel1.Location = new System.Drawing.Point(24, 23);
+            this.kryptonLabel1.Name = "kryptonLabel1";
+            this.kryptonLabel1.Size = new System.Drawing.Size(36, 20);
+            this.kryptonLabel1.TabIndex = 3;
+            this.kryptonLabel1.Values.Text = "Find:";
             // 
-            // kryptonTextBox2
+            // ktxtSearchTerm
             // 
-            this.kryptonTextBox2.Location = new System.Drawing.Point(66, 23);
-            this.kryptonTextBox2.Name = "kryptonTextBox2";
-            this.kryptonTextBox2.Size = new System.Drawing.Size(437, 23);
-            this.kryptonTextBox2.TabIndex = 2;
-            this.kryptonTextBox2.Text = "kryptonTextBox1";
+            this.ktxtSearchTerm.Location = new System.Drawing.Point(115, 23);
+            this.ktxtSearchTerm.Name = "ktxtSearchTerm";
+            this.ktxtSearchTerm.Size = new System.Drawing.Size(388, 23);
+            this.ktxtSearchTerm.TabIndex = 2;
+            this.ktxtSearchTerm.Text = "kryptonTextBox1";
+            // 
+            // kryptonBorderEdge1
+            // 
+            this.kryptonBorderEdge1.BorderStyle = Krypton.Toolkit.PaletteBorderStyle.HeaderPrimary;
+            this.kryptonBorderEdge1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.kryptonBorderEdge1.Location = new System.Drawing.Point(0, 0);
+            this.kryptonBorderEdge1.Name = "kryptonBorderEdge1";
+            this.kryptonBorderEdge1.Size = new System.Drawing.Size(646, 1);
+            this.kryptonBorderEdge1.Text = "kryptonBorderEdge1";
             // 
             // KryptonColourFindAndReplaceDialog
             // 
             this.ClientSize = new System.Drawing.Size(646, 318);
             this.Controls.Add(this.kryptonPanel2);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.kryptonPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "KryptonColourFindAndReplaceDialog";
@@ -184,6 +185,7 @@
             this.ShowInTaskbar = false;
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
+            this.kryptonPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
             this.kryptonPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonNavigator1)).EndInit();

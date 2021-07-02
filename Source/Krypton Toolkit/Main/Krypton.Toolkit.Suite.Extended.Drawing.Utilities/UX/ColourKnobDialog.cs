@@ -4,7 +4,6 @@
     {
         #region Design Code
         private KryptonPanel kryptonPanel1;
-        private System.Windows.Forms.Panel panel1;
         private KryptonPanel kryptonPanel2;
         private CircularPictureBox cpbxColourPreview;
         private CommonKryptonKnobControlEnhanced kKnobBlue;
@@ -17,6 +16,7 @@
         private KryptonLabel kryptonLabel6;
         private KryptonLabel kryptonLabel5;
         private KryptonLabel kryptonLabel4;
+        private KryptonBorderEdge kryptonBorderEdge1;
         private KryptonButton kbtnCancel;
 
         private void InitializeComponent()
@@ -24,8 +24,10 @@
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             this.kbtnOk = new Krypton.Toolkit.KryptonButton();
             this.kbtnCancel = new Krypton.Toolkit.KryptonButton();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
+            this.kryptonLabel6 = new Krypton.Toolkit.KryptonLabel();
+            this.kryptonLabel5 = new Krypton.Toolkit.KryptonLabel();
+            this.kryptonLabel4 = new Krypton.Toolkit.KryptonLabel();
             this.kryptonLabel3 = new Krypton.Toolkit.KryptonLabel();
             this.kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
             this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
@@ -33,9 +35,7 @@
             this.kKnobBlue = new Krypton.Toolkit.Suite.Extended.Common.CommonKryptonKnobControlEnhanced();
             this.kKnobGreen = new Krypton.Toolkit.Suite.Extended.Common.CommonKryptonKnobControlEnhanced();
             this.kKnobRed = new Krypton.Toolkit.Suite.Extended.Common.CommonKryptonKnobControlEnhanced();
-            this.kryptonLabel4 = new Krypton.Toolkit.KryptonLabel();
-            this.kryptonLabel5 = new Krypton.Toolkit.KryptonLabel();
-            this.kryptonLabel6 = new Krypton.Toolkit.KryptonLabel();
+            this.kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
@@ -45,11 +45,13 @@
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(this.kryptonBorderEdge1);
             this.kryptonPanel1.Controls.Add(this.kbtnOk);
             this.kryptonPanel1.Controls.Add(this.kbtnCancel);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 216);
             this.kryptonPanel1.Name = "kryptonPanel1";
+            this.kryptonPanel1.PanelBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelAlternate;
             this.kryptonPanel1.Size = new System.Drawing.Size(588, 45);
             this.kryptonPanel1.TabIndex = 1;
             // 
@@ -72,15 +74,6 @@
             this.kbtnCancel.TabIndex = 0;
             this.kbtnCancel.Values.Text = "C&ancel";
             // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 213);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(588, 3);
-            this.panel1.TabIndex = 2;
-            // 
             // kryptonPanel2
             // 
             this.kryptonPanel2.Controls.Add(this.kryptonLabel6);
@@ -96,8 +89,35 @@
             this.kryptonPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel2.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel2.Name = "kryptonPanel2";
-            this.kryptonPanel2.Size = new System.Drawing.Size(588, 213);
+            this.kryptonPanel2.Size = new System.Drawing.Size(588, 216);
             this.kryptonPanel2.TabIndex = 3;
+            // 
+            // kryptonLabel6
+            // 
+            this.kryptonLabel6.Location = new System.Drawing.Point(205, 164);
+            this.kryptonLabel6.Name = "kryptonLabel6";
+            this.kryptonLabel6.Size = new System.Drawing.Size(38, 21);
+            this.kryptonLabel6.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabel6.TabIndex = 9;
+            this.kryptonLabel6.Values.Text = "255";
+            // 
+            // kryptonLabel5
+            // 
+            this.kryptonLabel5.Location = new System.Drawing.Point(363, 164);
+            this.kryptonLabel5.Name = "kryptonLabel5";
+            this.kryptonLabel5.Size = new System.Drawing.Size(38, 21);
+            this.kryptonLabel5.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabel5.TabIndex = 8;
+            this.kryptonLabel5.Values.Text = "255";
+            // 
+            // kryptonLabel4
+            // 
+            this.kryptonLabel4.Location = new System.Drawing.Point(43, 164);
+            this.kryptonLabel4.Name = "kryptonLabel4";
+            this.kryptonLabel4.Size = new System.Drawing.Size(38, 21);
+            this.kryptonLabel4.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabel4.TabIndex = 7;
+            this.kryptonLabel4.Values.Text = "255";
             // 
             // kryptonLabel3
             // 
@@ -213,32 +233,14 @@
             this.kKnobRed.Value = 0;
             this.kKnobRed.ValueChanged += new Krypton.Toolkit.Suite.Extended.Common.ValueChangedEventHandler(this.kKnobRed_ValueChanged);
             // 
-            // kryptonLabel4
+            // kryptonBorderEdge1
             // 
-            this.kryptonLabel4.Location = new System.Drawing.Point(43, 164);
-            this.kryptonLabel4.Name = "kryptonLabel4";
-            this.kryptonLabel4.Size = new System.Drawing.Size(38, 21);
-            this.kryptonLabel4.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonLabel4.TabIndex = 7;
-            this.kryptonLabel4.Values.Text = "255";
-            // 
-            // kryptonLabel5
-            // 
-            this.kryptonLabel5.Location = new System.Drawing.Point(363, 164);
-            this.kryptonLabel5.Name = "kryptonLabel5";
-            this.kryptonLabel5.Size = new System.Drawing.Size(38, 21);
-            this.kryptonLabel5.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonLabel5.TabIndex = 8;
-            this.kryptonLabel5.Values.Text = "255";
-            // 
-            // kryptonLabel6
-            // 
-            this.kryptonLabel6.Location = new System.Drawing.Point(205, 164);
-            this.kryptonLabel6.Name = "kryptonLabel6";
-            this.kryptonLabel6.Size = new System.Drawing.Size(38, 21);
-            this.kryptonLabel6.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonLabel6.TabIndex = 9;
-            this.kryptonLabel6.Values.Text = "255";
+            this.kryptonBorderEdge1.BorderStyle = Krypton.Toolkit.PaletteBorderStyle.HeaderPrimary;
+            this.kryptonBorderEdge1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.kryptonBorderEdge1.Location = new System.Drawing.Point(0, 0);
+            this.kryptonBorderEdge1.Name = "kryptonBorderEdge1";
+            this.kryptonBorderEdge1.Size = new System.Drawing.Size(588, 1);
+            this.kryptonBorderEdge1.Text = "kryptonBorderEdge1";
             // 
             // ColourKnobDialog
             // 
@@ -246,7 +248,6 @@
             this.CancelButton = this.kbtnCancel;
             this.ClientSize = new System.Drawing.Size(588, 261);
             this.Controls.Add(this.kryptonPanel2);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.kryptonPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
@@ -257,6 +258,7 @@
             this.Load += new System.EventHandler(this.ColourKnobDialog_Load);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
+            this.kryptonPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
             this.kryptonPanel2.ResumeLayout(false);
             this.kryptonPanel2.PerformLayout();

@@ -301,7 +301,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                                                          _messageBoxTypeface, _showOptionalCheckBox, _optionalCheckBoxText,
                                                                          _isOptionalCheckBoxChecked, _optionalCheckBoxCheckState,
                                                                          _optionalCheckBoxAnchor, _optionalCheckBoxLocation, _customMessageBoxIcon,
-                                                                         _showCopyButton, _copyButtonText, _fade, _fadeSleepTimer, 
+                                                                         _showCopyButton, _copyButtonText, _fade, _fadeSleepTimer,
                                                                          _messageBoxButtonOneCustomText, _messageBoxButtonTwoCustomText,
                                                                          _messageBoxButtonThreeCustomText, _customButtonOneResult,
                                                                          _customButtonTwoResult, _customButtonThreeResult, _cornerRadius,
@@ -321,7 +321,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                                                     _optionalCheckBoxLocation, _customMessageBoxIcon, _showCopyButton,
                                                                     _copyButtonText, _fade, _fadeSleepTimer, _messageBoxButtonOneCustomText,
                                                                     _messageBoxButtonTwoCustomText, _messageBoxButtonThreeCustomText,
-                                                                    _customButtonOneResult, _customButtonTwoResult, _customButtonThreeResult, 
+                                                                    _customButtonOneResult, _customButtonTwoResult, _customButtonThreeResult,
                                                                     _cornerRadius, _showToolTips, _useBlur, _blurRadius, _parentWindow);
 
             e.ShowMessageBox();
