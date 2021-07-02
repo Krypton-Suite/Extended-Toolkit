@@ -60,8 +60,8 @@
             this.kbtnOpenPalette.ToolTipValues.Description = "Open a custom palette.";
             this.kbtnOpenPalette.ToolTipValues.EnableToolTips = true;
             this.kbtnOpenPalette.ToolTipValues.Heading = "Open Palette";
-            this.kbtnOpenPalette.ToolTipValues.Image = global::Krypton.Toolkit.Suite.Extended.Drawing.Suite.Properties.Resources.palette_load;
-            this.kbtnOpenPalette.Values.Image = global::Krypton.Toolkit.Suite.Extended.Drawing.Suite.Properties.Resources.palette_load;
+            this.kbtnOpenPalette.ToolTipValues.Image = global::Krypton.Toolkit.Suite.Extended.Drawing.Utilities.Properties.Resources.palette_load;
+            this.kbtnOpenPalette.Values.Image = global::Krypton.Toolkit.Suite.Extended.Drawing.Utilities.Properties.Resources.palette_load;
             this.kbtnOpenPalette.Values.Text = "";
             // 
             // kbtnSavePalette
@@ -75,8 +75,8 @@
             this.kbtnSavePalette.ToolTipValues.Description = "Save a custom palette.";
             this.kbtnSavePalette.ToolTipValues.EnableToolTips = true;
             this.kbtnSavePalette.ToolTipValues.Heading = "Save Palette";
-            this.kbtnSavePalette.ToolTipValues.Image = global::Krypton.Toolkit.Suite.Extended.Drawing.Suite.Properties.Resources.palette_save;
-            this.kbtnSavePalette.Values.Image = global::Krypton.Toolkit.Suite.Extended.Drawing.Suite.Properties.Resources.palette_save;
+            this.kbtnSavePalette.ToolTipValues.Image = global::Krypton.Toolkit.Suite.Extended.Drawing.Utilities.Properties.Resources.palette_save;
+            this.kbtnSavePalette.Values.Image = global::Krypton.Toolkit.Suite.Extended.Drawing.Utilities.Properties.Resources.palette_save;
             this.kbtnSavePalette.Values.Text = "";
             // 
             // ColourGridUI

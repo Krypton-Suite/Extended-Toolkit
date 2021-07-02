@@ -86,8 +86,8 @@
 
         #region Private Constructors
 
-        private NativeMethods()
-        { }
+        /*private NativeMethods()
+        { }*/
 
         #endregion
 
