@@ -15,6 +15,7 @@
   
   <PropertyGroup>
     <UseWindowsForms>true</UseWindowsForms>
+    <LangVersion>preview</LangVersion>
   </PropertyGroup>
 
 </Project>

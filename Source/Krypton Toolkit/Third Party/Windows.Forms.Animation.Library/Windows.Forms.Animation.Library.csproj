@@ -13,7 +13,7 @@
     </Otherwise>
   </Choose>
   <PropertyGroup>
-    <LangVersion>latest</LangVersion>
+    <LangVersion>preview</LangVersion>
     <OutputType>library</OutputType>
     <RootNamespace>Windows.Forms.Animation.Library</RootNamespace>
     <AssemblyName>Windows.Forms.Animation.Library</AssemblyName>

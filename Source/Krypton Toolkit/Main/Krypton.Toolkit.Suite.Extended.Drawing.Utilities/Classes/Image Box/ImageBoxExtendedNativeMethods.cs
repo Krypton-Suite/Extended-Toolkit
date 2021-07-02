@@ -1,6 +1,6 @@
 ﻿namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 {
-    internal partial class NativeMethods // partial for when linking this file into other assemblies
+    internal partial class DrawingNativeMethods // partial for when linking this file into other assemblies
                                          // ReSharper restore PartialTypeWithSinglePart
                                          // ReSharper restore ClassNeverInstantiated.Global
     {

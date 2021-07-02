@@ -1,6 +1,6 @@
 ﻿namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 {
-    internal class NativeMethods
+    internal class DrawingNativeMethods
     {
         #region Constants
 
@@ -10,7 +10,7 @@
 
         #region Protected Constructors
 
-        protected NativeMethods()
+        protected DrawingNativeMethods()
         {
         }
 

@@ -79,11 +79,11 @@
 
             switch (m.Msg)
             {
-                case NativeMethods.WM_MOUSEWHEEL: // 0x020A
-                case NativeMethods.WM_MOUSEHWHEEL: // 0x020E
+                case DrawingNativeMethods.WM_MOUSEWHEEL: // 0x020A
+                case DrawingNativeMethods.WM_MOUSEHWHEEL: // 0x020E
                     IntPtr hControlUnderMouse;
 
-                    hControlUnderMouse = NativeMethods.WindowFromPoint(new Point((int)m.LParam));
+                    hControlUnderMouse = DrawingNativeMethods.WindowFromPoint(new Point((int)m.LParam));
                     if (hControlUnderMouse == m.HWnd)
                     {
                         // already headed for the right control
@@ -105,7 +105,7 @@
                         else
                         {
                             // redirect the message to the control under the mouse
-                            NativeMethods.SendMessage(hControlUnderMouse, m.Msg, m.WParam, m.LParam);
+                            DrawingNativeMethods.SendMessage(hControlUnderMouse, m.Msg, m.WParam, m.LParam);
 
                             // eat the message (otherwise it's possible two controls will scroll
                             // at the same time, which looks awful... and is probably confusing!)

@@ -104,11 +104,11 @@
                 switch (_borderStyle)
                 {
                     case BorderStyle.FixedSingle:
-                        createParams.Style |= NativeMethods.WS_BORDER;
+                        createParams.Style |= DrawingNativeMethods.WS_BORDER;
                         break;
 
                     case BorderStyle.Fixed3D:
-                        createParams.ExStyle |= NativeMethods.WS_EX_CLIENTEDGE;
+                        createParams.ExStyle |= DrawingNativeMethods.WS_EX_CLIENTEDGE;
                         break;
                 }
 
@@ -219,8 +219,8 @@
         {
             switch (msg.Msg)
             {
-                case NativeMethods.WM_HSCROLL:
-                case NativeMethods.WM_VSCROLL:
+                case DrawingNativeMethods.WM_HSCROLL:
+                case DrawingNativeMethods.WM_VSCROLL:
                     this.WmScroll(ref msg);
                     break;
                 default:
@@ -252,10 +252,10 @@
 
                     if (value)
                     {
-                        NativeMethods.SCROLLINFO scrollInfo;
+                        DrawingNativeMethods.SCROLLINFO scrollInfo;
 
-                        scrollInfo = new NativeMethods.SCROLLINFO();
-                        scrollInfo.fMask = NativeMethods.SIF.SIF_RANGE | NativeMethods.SIF.SIF_DISABLENOSCROLL;
+                        scrollInfo = new DrawingNativeMethods.SCROLLINFO();
+                        scrollInfo.fMask = DrawingNativeMethods.SIF.SIF_RANGE | DrawingNativeMethods.SIF.SIF_DISABLENOSCROLL;
                         scrollInfo.nMin = 0;
                         scrollInfo.nMax = 0;
                         scrollInfo.nPage = 1;
@@ -291,11 +291,11 @@
                 {
                     if (_alwaysShowVScroll)
                     {
-                        NativeMethods.SCROLLINFO scrollInfo;
+                        DrawingNativeMethods.SCROLLINFO scrollInfo;
 
-                        scrollInfo = new NativeMethods.SCROLLINFO();
+                        scrollInfo = new DrawingNativeMethods.SCROLLINFO();
 
-                        scrollInfo.fMask = NativeMethods.SIF.SIF_RANGE | NativeMethods.SIF.SIF_DISABLENOSCROLL;
+                        scrollInfo.fMask = DrawingNativeMethods.SIF.SIF_RANGE | DrawingNativeMethods.SIF.SIF_DISABLENOSCROLL;
                         scrollInfo.nMin = 0;
                         scrollInfo.nMax = 0;
                         scrollInfo.nPage = 1;
@@ -454,23 +454,23 @@
         [Browsable(false)]
         protected bool HScroll
         {
-            get { return (NativeMethods.GetWindowLong(this.Handle, NativeMethods.GWL_STYLE) & NativeMethods.WS_HSCROLL) == NativeMethods.WS_HSCROLL; }
+            get { return (DrawingNativeMethods.GetWindowLong(this.Handle, DrawingNativeMethods.GWL_STYLE) & DrawingNativeMethods.WS_HSCROLL) == DrawingNativeMethods.WS_HSCROLL; }
             set
             {
-                uint longValue = NativeMethods.GetWindowLong(this.Handle, NativeMethods.GWL_STYLE);
+                uint longValue = DrawingNativeMethods.GetWindowLong(this.Handle, DrawingNativeMethods.GWL_STYLE);
 
                 if (value)
                 {
-                    longValue |= NativeMethods.WS_HSCROLL;
+                    longValue |= DrawingNativeMethods.WS_HSCROLL;
                 }
                 else
                 {
                     unchecked
                     {
-                        longValue &= (uint)~NativeMethods.WS_HSCROLL;
+                        longValue &= (uint)~DrawingNativeMethods.WS_HSCROLL;
                     }
                 }
-                NativeMethods.SetWindowLong(this.Handle, NativeMethods.GWL_STYLE, longValue);
+                DrawingNativeMethods.SetWindowLong(this.Handle, DrawingNativeMethods.GWL_STYLE, longValue);
             }
         }
 
@@ -484,23 +484,23 @@
         [Browsable(false)]
         protected bool VScroll
         {
-            get { return (NativeMethods.GetWindowLong(this.Handle, NativeMethods.GWL_STYLE) & NativeMethods.WS_VSCROLL) == NativeMethods.WS_VSCROLL; }
+            get { return (DrawingNativeMethods.GetWindowLong(this.Handle, DrawingNativeMethods.GWL_STYLE) & DrawingNativeMethods.WS_VSCROLL) == DrawingNativeMethods.WS_VSCROLL; }
             set
             {
-                uint longValue = NativeMethods.GetWindowLong(this.Handle, NativeMethods.GWL_STYLE);
+                uint longValue = DrawingNativeMethods.GetWindowLong(this.Handle, DrawingNativeMethods.GWL_STYLE);
 
                 if (value)
                 {
-                    longValue |= NativeMethods.WS_VSCROLL;
+                    longValue |= DrawingNativeMethods.WS_VSCROLL;
                 }
                 else
                 {
                     unchecked
                     {
-                        longValue &= (uint)~NativeMethods.WS_VSCROLL;
+                        longValue &= (uint)~DrawingNativeMethods.WS_VSCROLL;
                     }
                 }
-                NativeMethods.SetWindowLong(this.Handle, NativeMethods.GWL_STYLE, longValue);
+                DrawingNativeMethods.SetWindowLong(this.Handle, DrawingNativeMethods.GWL_STYLE, longValue);
             }
         }
 
@@ -543,23 +543,23 @@
         {
             switch (wParam.ToInt32() & 0xFFFF)
             {
-                case NativeMethods.SB_BOTTOM:
+                case DrawingNativeMethods.SB_BOTTOM:
                     return ScrollEventType.Last;
-                case NativeMethods.SB_ENDSCROLL:
+                case DrawingNativeMethods.SB_ENDSCROLL:
                     return ScrollEventType.EndScroll;
-                case NativeMethods.SB_LINEDOWN:
+                case DrawingNativeMethods.SB_LINEDOWN:
                     return ScrollEventType.SmallIncrement;
-                case NativeMethods.SB_LINEUP:
+                case DrawingNativeMethods.SB_LINEUP:
                     return ScrollEventType.SmallDecrement;
-                case NativeMethods.SB_PAGEDOWN:
+                case DrawingNativeMethods.SB_PAGEDOWN:
                     return ScrollEventType.LargeIncrement;
-                case NativeMethods.SB_PAGEUP:
+                case DrawingNativeMethods.SB_PAGEUP:
                     return ScrollEventType.LargeDecrement;
-                case NativeMethods.SB_THUMBPOSITION:
+                case DrawingNativeMethods.SB_THUMBPOSITION:
                     return ScrollEventType.ThumbPosition;
-                case NativeMethods.SB_THUMBTRACK:
+                case DrawingNativeMethods.SB_THUMBTRACK:
                     return ScrollEventType.ThumbTrack;
-                case NativeMethods.SB_TOP:
+                case DrawingNativeMethods.SB_TOP:
                     return ScrollEventType.First;
                 default:
                     throw new ArgumentException(string.Format("{0} isn't a valid scroll event type.", wParam), "wparam");
@@ -672,7 +672,7 @@
         /// <param name="value">The value.</param>
         protected virtual void ScrollTo(ScrollOrientation scrollbar, int value)
         {
-            NativeMethods.SCROLLINFO oldInfo;
+            DrawingNativeMethods.SCROLLINFO oldInfo;
 
             oldInfo = this.GetScrollInfo(scrollbar);
 
@@ -687,10 +687,10 @@
 
             if (oldInfo.nPos != value)
             {
-                NativeMethods.SCROLLINFO scrollInfo;
+                DrawingNativeMethods.SCROLLINFO scrollInfo;
 
-                scrollInfo = new NativeMethods.SCROLLINFO();
-                scrollInfo.fMask = NativeMethods.SIF.SIF_POS;
+                scrollInfo = new DrawingNativeMethods.SCROLLINFO();
+                scrollInfo.fMask = DrawingNativeMethods.SIF.SIF_POS;
                 scrollInfo.nPos = value;
                 this.SetScrollInfo(scrollbar, scrollInfo, true);
 
@@ -703,7 +703,7 @@
         /// </summary>
         protected virtual void UpdateHorizontalScroll()
         {
-            NativeMethods.SCROLLINFO scrollInfo;
+            DrawingNativeMethods.SCROLLINFO scrollInfo;
 
             scrollInfo = this.GetScrollInfo(ScrollOrientation.HorizontalScroll);
 
@@ -721,7 +721,7 @@
         /// </summary>
         protected virtual void UpdateHorizontalScrollbar()
         {
-            NativeMethods.SCROLLINFO scrollInfo;
+            DrawingNativeMethods.SCROLLINFO scrollInfo;
             int scrollWidth;
             int pageWidth;
 
@@ -734,11 +734,11 @@
                 pageWidth = 1;
             }
 
-            scrollInfo = new NativeMethods.SCROLLINFO();
-            scrollInfo.fMask = NativeMethods.SIF.SIF_PAGE | NativeMethods.SIF.SIF_RANGE;
+            scrollInfo = new DrawingNativeMethods.SCROLLINFO();
+            scrollInfo.fMask = DrawingNativeMethods.SIF.SIF_PAGE | DrawingNativeMethods.SIF.SIF_RANGE;
             if (this.AlwaysShowHScroll || !this.Enabled)
             {
-                scrollInfo.fMask |= NativeMethods.SIF.SIF_DISABLENOSCROLL;
+                scrollInfo.fMask |= DrawingNativeMethods.SIF.SIF_DISABLENOSCROLL;
             }
             scrollInfo.nMin = 0;
             scrollInfo.nMax = scrollWidth;
@@ -761,7 +761,7 @@
         /// </summary>
         protected virtual void UpdateVerticalScroll()
         {
-            NativeMethods.SCROLLINFO scrollInfo;
+            DrawingNativeMethods.SCROLLINFO scrollInfo;
 
             scrollInfo = this.GetScrollInfo(ScrollOrientation.VerticalScroll);
 
@@ -779,7 +779,7 @@
         /// </summary>
         protected virtual void UpdateVerticalScrollbar()
         {
-            NativeMethods.SCROLLINFO scrollInfo;
+            DrawingNativeMethods.SCROLLINFO scrollInfo;
             int scrollHeight;
             int pageHeight;
 
@@ -792,11 +792,11 @@
                 pageHeight = 1;
             }
 
-            scrollInfo = new NativeMethods.SCROLLINFO();
-            scrollInfo.fMask = NativeMethods.SIF.SIF_PAGE | NativeMethods.SIF.SIF_RANGE;
+            scrollInfo = new DrawingNativeMethods.SCROLLINFO();
+            scrollInfo.fMask = DrawingNativeMethods.SIF.SIF_PAGE | DrawingNativeMethods.SIF.SIF_RANGE;
             if (AlwaysShowVScroll)
             {
-                scrollInfo.fMask |= NativeMethods.SIF.SIF_DISABLENOSCROLL;
+                scrollInfo.fMask |= DrawingNativeMethods.SIF.SIF_DISABLENOSCROLL;
             }
             scrollInfo.nMin = 0;
             scrollInfo.nMax = scrollHeight;
@@ -819,17 +819,17 @@
             ScrollEventType eventType;
 
             eventType = this.GetEventType(msg.WParam);
-            scrollbar = msg.Msg == NativeMethods.WM_HSCROLL ? ScrollOrientation.HorizontalScroll : ScrollOrientation.VerticalScroll;
+            scrollbar = msg.Msg == DrawingNativeMethods.WM_HSCROLL ? ScrollOrientation.HorizontalScroll : ScrollOrientation.VerticalScroll;
 
             if (eventType != ScrollEventType.EndScroll)
             {
                 int step;
-                NativeMethods.SCROLLINFO scrollInfo;
+                DrawingNativeMethods.SCROLLINFO scrollInfo;
 
                 step = scrollbar == ScrollOrientation.HorizontalScroll ? this.StepSize.Width : this.StepSize.Height;
 
                 scrollInfo = this.GetScrollInfo(scrollbar);
-                scrollInfo.fMask = NativeMethods.SIF.SIF_POS;
+                scrollInfo.fMask = DrawingNativeMethods.SIF.SIF_POS;
                 oldValue = scrollInfo.nPos;
 
                 switch (eventType)
@@ -898,14 +898,14 @@
         /// </summary>
         /// <param name="scrollbar">The bar.</param>
         /// <returns></returns>
-        private NativeMethods.SCROLLINFO GetScrollInfo(ScrollOrientation scrollbar)
+        private DrawingNativeMethods.SCROLLINFO GetScrollInfo(ScrollOrientation scrollbar)
         {
-            NativeMethods.SCROLLINFO info;
+            DrawingNativeMethods.SCROLLINFO info;
 
-            info = new NativeMethods.SCROLLINFO();
-            info.fMask = NativeMethods.SIF.SIF_ALL;
+            info = new DrawingNativeMethods.SCROLLINFO();
+            info.fMask = DrawingNativeMethods.SIF.SIF_ALL;
 
-            NativeMethods.GetScrollInfo(this.Handle, (int)scrollbar, info);
+            DrawingNativeMethods.GetScrollInfo(this.Handle, (int)scrollbar, info);
 
             return info;
         }
@@ -920,9 +920,9 @@
         /// </param>
         /// <returns></returns>
         // ReSharper disable UnusedMethodReturnValue.Local
-        private int SetScrollInfo(ScrollOrientation scrollbar, NativeMethods.SCROLLINFO scrollInfo, bool refresh) // ReSharper restore UnusedMethodReturnValue.Local
+        private int SetScrollInfo(ScrollOrientation scrollbar, DrawingNativeMethods.SCROLLINFO scrollInfo, bool refresh) // ReSharper restore UnusedMethodReturnValue.Local
         {
-            return NativeMethods.SetScrollInfo(this.Handle, (int)scrollbar, scrollInfo, refresh);
+            return DrawingNativeMethods.SetScrollInfo(this.Handle, (int)scrollbar, scrollInfo, refresh);
         }
 
         #endregion

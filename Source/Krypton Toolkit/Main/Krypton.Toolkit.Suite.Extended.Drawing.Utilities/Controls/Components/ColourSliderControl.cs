@@ -1300,9 +1300,9 @@
 
                 // draw a XOR'd line using Win32 API as this functionality isn't part of .NET
                 hdc = e.Graphics.GetHdc();
-                NativeMethods.SetROP2(hdc, NativeMethods.R2_NOT);
-                NativeMethods.MoveToEx(hdc, start.X, start.Y, IntPtr.Zero);
-                NativeMethods.LineTo(hdc, end.X, end.Y);
+                DrawingNativeMethods.SetROP2(hdc, DrawingNativeMethods.R2_NOT);
+                DrawingNativeMethods.MoveToEx(hdc, start.X, start.Y, IntPtr.Zero);
+                DrawingNativeMethods.LineTo(hdc, end.X, end.Y);
                 e.Graphics.ReleaseHdc(hdc);
             }
 

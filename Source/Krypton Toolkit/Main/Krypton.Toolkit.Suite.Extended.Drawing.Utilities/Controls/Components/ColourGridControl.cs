@@ -1274,7 +1274,7 @@
             float scaleX;
             float scaleY;
 
-            dpi = NativeMethods.GetDesktopDpi();
+            dpi = DrawingNativeMethods.GetDesktopDpi();
             scaleX = dpi.X / 96F;
             scaleY = dpi.Y / 96F;
 
