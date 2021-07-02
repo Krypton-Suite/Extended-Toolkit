@@ -1,12 +1,6 @@
-﻿using Krypton.Toolkit.Suite.Extended.Controls;
-using Krypton.Toolkit.Suite.Extended.Dialogs.Properties;
-using System;
-using System.Drawing;
-using System.Windows.Forms;
-
-namespace Krypton.Toolkit.Suite.Extended.Dialogs
+﻿namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
-    public class KryptonInputBoxExtended : KryptonForm
+    public class KryptonInputBoxExtended : CommonExtendedKryptonForm
     {
         #region Design Code
         private KryptonPanel kryptonPanel1;

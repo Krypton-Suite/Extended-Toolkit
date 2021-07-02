@@ -9,7 +9,8 @@
 	<Target Name="Clean">
 		<ItemGroup>
 			<!--Library Projects-->
-			<Projects Include="$(RootFolder)\Source\Krypton Toolkit\*\*\*.csproj" />
+			<Projects Include="$(RootFolder)\Source\Krypton Toolkit\Shared\Krypton.*\*.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit\Main\Krypton.*\*.csproj" />
 		</ItemGroup>
 		<MSBuild Projects="@(Projects)" Properties="Configuration=$(Configuration);TFMs=all" Targets="Clean" />
 	</Target>
@@ -17,7 +18,8 @@
 	<Target Name="Restore">
 		<ItemGroup>
 			<!--Library Projects-->
-			<Projects Include="$(RootFolder)\Source\Krypton Toolkit\*\*\*.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit\Shared\Krypton.*\*.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit\Main\Krypton.*\*.csproj" />
 		</ItemGroup>
 		<MSBuild Projects="@(Projects)" Properties="Configuration=$(Configuration);TFMs=all" Targets="Restore" />
 	</Target>
@@ -25,7 +27,8 @@
 	<Target Name="Build" DependsOnTargets="Restore">
 		<ItemGroup>
 			<!--Library Projects-->
-			<Projects Include="$(RootFolder)\Source\Krypton Toolkit\*\*\*.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit\Shared\Krypton.*\*.csproj" />
+      <Projects Include="$(RootFolder)\Source\Krypton Toolkit\Main\Krypton.*\*.csproj" />
 		</ItemGroup>
 		<MSBuild Projects="@(Projects)" Properties="Configuration=$(Configuration);TFMs=all" />
 	</Target>
