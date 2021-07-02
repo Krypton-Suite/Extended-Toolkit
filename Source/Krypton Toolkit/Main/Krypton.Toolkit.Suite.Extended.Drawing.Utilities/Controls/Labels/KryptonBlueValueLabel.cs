@@ -33,7 +33,7 @@
         #region Constructor
         public KryptonBlueValueLabel()
         {
-            Typeface = new Font("Segoe UI", 12f, FontStyle.Bold);
+            Typeface = new Font("Microsoft Sans Serif", 11.25f, FontStyle.Bold);
 
             BlueValue = 0;
 

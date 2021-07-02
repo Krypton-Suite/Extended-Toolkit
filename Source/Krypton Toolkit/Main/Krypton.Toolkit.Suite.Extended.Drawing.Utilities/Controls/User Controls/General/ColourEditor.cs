@@ -69,8 +69,11 @@
             this.pnlRGB = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel19 = new System.Windows.Forms.Panel();
+            this.gColourBar = new Krypton.Toolkit.Suite.Extended.Drawing.Utilities.RGBAColourSliderControl();
             this.panel18 = new System.Windows.Forms.Panel();
+            this.bColourBar = new Krypton.Toolkit.Suite.Extended.Drawing.Utilities.RGBAColourSliderControl();
             this.panel17 = new System.Windows.Forms.Panel();
+            this.rColourBar = new Krypton.Toolkit.Suite.Extended.Drawing.Utilities.RGBAColourSliderControl();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel32 = new System.Windows.Forms.Panel();
             this.knudGreen = new Krypton.Toolkit.KryptonNumericUpDown();
@@ -90,8 +93,11 @@
             this.pnlHSLUI = new System.Windows.Forms.Panel();
             this.panel12 = new System.Windows.Forms.Panel();
             this.panel22 = new System.Windows.Forms.Panel();
+            this.sColourBar = new Krypton.Toolkit.Suite.Extended.Drawing.Utilities.SaturationColourSliderControl();
             this.panel21 = new System.Windows.Forms.Panel();
+            this.lColourBar = new Krypton.Toolkit.Suite.Extended.Drawing.Utilities.LightnessColourSliderControl();
             this.panel20 = new System.Windows.Forms.Panel();
+            this.hColourBar = new Krypton.Toolkit.Suite.Extended.Drawing.Utilities.HueColourSliderControl();
             this.panel11 = new System.Windows.Forms.Panel();
             this.panel34 = new System.Windows.Forms.Panel();
             this.knudSaturation = new Krypton.Toolkit.KryptonNumericUpDown();
@@ -108,6 +114,7 @@
             this.klblHue = new Krypton.Toolkit.KryptonLabel();
             this.pnlAlpha = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.aColourBar = new Krypton.Toolkit.Suite.Extended.Drawing.Utilities.RGBAColourSliderControl();
             this.panel14 = new System.Windows.Forms.Panel();
             this.knudAlpha = new Krypton.Toolkit.KryptonNumericUpDown();
             this.panel13 = new System.Windows.Forms.Panel();
@@ -119,13 +126,6 @@
             this.kcmbHexadecimalValue = new Krypton.Toolkit.KryptonComboBox();
             this.panel15 = new System.Windows.Forms.Panel();
             this.klblHex = new Krypton.Toolkit.KryptonLabel();
-            this.rColourBar = new Krypton.Toolkit.Suite.Extended.Drawing.Utilities.RGBAColourSliderControl();
-            this.gColourBar = new Krypton.Toolkit.Suite.Extended.Drawing.Utilities.RGBAColourSliderControl();
-            this.bColourBar = new Krypton.Toolkit.Suite.Extended.Drawing.Utilities.RGBAColourSliderControl();
-            this.hColourBar = new Krypton.Toolkit.Suite.Extended.Drawing.Utilities.HueColourSliderControl();
-            this.sColourBar = new Krypton.Toolkit.Suite.Extended.Drawing.Utilities.SaturationColourSliderControl();
-            this.lColourBar = new Krypton.Toolkit.Suite.Extended.Drawing.Utilities.LightnessColourSliderControl();
-            this.aColourBar = new Krypton.Toolkit.Suite.Extended.Drawing.Utilities.RGBAColourSliderControl();
             this.pnlRGB.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel19.SuspendLayout();
@@ -199,6 +199,16 @@
             this.panel19.Size = new System.Drawing.Size(159, 23);
             this.panel19.TabIndex = 5;
             // 
+            // gColourBar
+            // 
+            this.gColourBar.BackColor = System.Drawing.Color.Transparent;
+            this.gColourBar.Channel = Krypton.Toolkit.Suite.Extended.Drawing.Utilities.RGBAChannel.Green;
+            this.gColourBar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gColourBar.Location = new System.Drawing.Point(0, 0);
+            this.gColourBar.Name = "gColourBar";
+            this.gColourBar.Size = new System.Drawing.Size(159, 23);
+            this.gColourBar.TabIndex = 1;
+            // 
             // panel18
             // 
             this.panel18.BackColor = System.Drawing.Color.Transparent;
@@ -209,6 +219,16 @@
             this.panel18.Size = new System.Drawing.Size(159, 22);
             this.panel18.TabIndex = 4;
             // 
+            // bColourBar
+            // 
+            this.bColourBar.BackColor = System.Drawing.Color.Transparent;
+            this.bColourBar.Channel = Krypton.Toolkit.Suite.Extended.Drawing.Utilities.RGBAChannel.Blue;
+            this.bColourBar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.bColourBar.Location = new System.Drawing.Point(0, 0);
+            this.bColourBar.Name = "bColourBar";
+            this.bColourBar.Size = new System.Drawing.Size(159, 22);
+            this.bColourBar.TabIndex = 1;
+            // 
             // panel17
             // 
             this.panel17.BackColor = System.Drawing.Color.Transparent;
@@ -218,6 +238,15 @@
             this.panel17.Name = "panel17";
             this.panel17.Size = new System.Drawing.Size(159, 22);
             this.panel17.TabIndex = 3;
+            // 
+            // rColourBar
+            // 
+            this.rColourBar.BackColor = System.Drawing.Color.Transparent;
+            this.rColourBar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rColourBar.Location = new System.Drawing.Point(0, 0);
+            this.rColourBar.Name = "rColourBar";
+            this.rColourBar.Size = new System.Drawing.Size(159, 22);
+            this.rColourBar.TabIndex = 0;
             // 
             // panel6
             // 
@@ -436,6 +465,15 @@
             this.panel22.Size = new System.Drawing.Size(159, 30);
             this.panel22.TabIndex = 6;
             // 
+            // sColourBar
+            // 
+            this.sColourBar.BackColor = System.Drawing.Color.Transparent;
+            this.sColourBar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sColourBar.Location = new System.Drawing.Point(0, 0);
+            this.sColourBar.Name = "sColourBar";
+            this.sColourBar.Size = new System.Drawing.Size(159, 30);
+            this.sColourBar.TabIndex = 0;
+            // 
             // panel21
             // 
             this.panel21.BackColor = System.Drawing.Color.Transparent;
@@ -446,6 +484,15 @@
             this.panel21.Size = new System.Drawing.Size(159, 22);
             this.panel21.TabIndex = 5;
             // 
+            // lColourBar
+            // 
+            this.lColourBar.BackColor = System.Drawing.Color.Transparent;
+            this.lColourBar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lColourBar.Location = new System.Drawing.Point(0, 0);
+            this.lColourBar.Name = "lColourBar";
+            this.lColourBar.Size = new System.Drawing.Size(159, 22);
+            this.lColourBar.TabIndex = 0;
+            // 
             // panel20
             // 
             this.panel20.BackColor = System.Drawing.Color.Transparent;
@@ -455,6 +502,15 @@
             this.panel20.Name = "panel20";
             this.panel20.Size = new System.Drawing.Size(159, 22);
             this.panel20.TabIndex = 4;
+            // 
+            // hColourBar
+            // 
+            this.hColourBar.BackColor = System.Drawing.Color.Transparent;
+            this.hColourBar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.hColourBar.Location = new System.Drawing.Point(0, 0);
+            this.hColourBar.Name = "hColourBar";
+            this.hColourBar.Size = new System.Drawing.Size(159, 22);
+            this.hColourBar.TabIndex = 0;
             // 
             // panel11
             // 
@@ -637,6 +693,16 @@
             this.panel1.Size = new System.Drawing.Size(143, 26);
             this.panel1.TabIndex = 9;
             // 
+            // aColourBar
+            // 
+            this.aColourBar.BackColor = System.Drawing.Color.Transparent;
+            this.aColourBar.Channel = Krypton.Toolkit.Suite.Extended.Drawing.Utilities.RGBAChannel.Alpha;
+            this.aColourBar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.aColourBar.Location = new System.Drawing.Point(0, 0);
+            this.aColourBar.Name = "aColourBar";
+            this.aColourBar.Size = new System.Drawing.Size(143, 26);
+            this.aColourBar.TabIndex = 0;
+            // 
             // panel14
             // 
             this.panel14.BackColor = System.Drawing.Color.Transparent;
@@ -758,72 +824,6 @@
             this.klblHex.StateCommon.ShortText.TextV = Krypton.Toolkit.PaletteRelativeAlign.Center;
             this.klblHex.TabIndex = 1;
             this.klblHex.Values.Text = "Hex:";
-            // 
-            // rColourBar
-            // 
-            this.rColourBar.BackColor = System.Drawing.Color.Transparent;
-            this.rColourBar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rColourBar.Location = new System.Drawing.Point(0, 0);
-            this.rColourBar.Name = "rColourBar";
-            this.rColourBar.Size = new System.Drawing.Size(159, 22);
-            this.rColourBar.TabIndex = 0;
-            // 
-            // gColourBar
-            // 
-            this.gColourBar.BackColor = System.Drawing.Color.Transparent;
-            this.gColourBar.Channel = Krypton.Toolkit.Suite.Extended.Drawing.Utilities.RGBAChannel.Green;
-            this.gColourBar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gColourBar.Location = new System.Drawing.Point(0, 0);
-            this.gColourBar.Name = "gColourBar";
-            this.gColourBar.Size = new System.Drawing.Size(159, 23);
-            this.gColourBar.TabIndex = 1;
-            // 
-            // bColourBar
-            // 
-            this.bColourBar.BackColor = System.Drawing.Color.Transparent;
-            this.bColourBar.Channel = Krypton.Toolkit.Suite.Extended.Drawing.Utilities.RGBAChannel.Blue;
-            this.bColourBar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.bColourBar.Location = new System.Drawing.Point(0, 0);
-            this.bColourBar.Name = "bColourBar";
-            this.bColourBar.Size = new System.Drawing.Size(159, 22);
-            this.bColourBar.TabIndex = 1;
-            // 
-            // hColourBar
-            // 
-            this.hColourBar.BackColor = System.Drawing.Color.Transparent;
-            this.hColourBar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.hColourBar.Location = new System.Drawing.Point(0, 0);
-            this.hColourBar.Name = "hColourBar";
-            this.hColourBar.Size = new System.Drawing.Size(159, 22);
-            this.hColourBar.TabIndex = 0;
-            // 
-            // sColourBar
-            // 
-            this.sColourBar.BackColor = System.Drawing.Color.Transparent;
-            this.sColourBar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.sColourBar.Location = new System.Drawing.Point(0, 0);
-            this.sColourBar.Name = "sColourBar";
-            this.sColourBar.Size = new System.Drawing.Size(159, 30);
-            this.sColourBar.TabIndex = 0;
-            // 
-            // lColourBar
-            // 
-            this.lColourBar.BackColor = System.Drawing.Color.Transparent;
-            this.lColourBar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lColourBar.Location = new System.Drawing.Point(0, 0);
-            this.lColourBar.Name = "lColourBar";
-            this.lColourBar.Size = new System.Drawing.Size(159, 22);
-            this.lColourBar.TabIndex = 0;
-            // 
-            // aColourBar
-            // 
-            this.aColourBar.BackColor = System.Drawing.Color.Transparent;
-            this.aColourBar.Channel = Krypton.Toolkit.Suite.Extended.Drawing.Utilities.RGBAChannel.Alpha;
-            this.aColourBar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.aColourBar.Location = new System.Drawing.Point(0, 0);
-            this.aColourBar.Name = "aColourBar";
-            this.aColourBar.Size = new System.Drawing.Size(143, 26);
-            this.aColourBar.TabIndex = 0;
             // 
             // ColourEditor
             // 
