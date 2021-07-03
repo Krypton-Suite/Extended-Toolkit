@@ -7,6 +7,8 @@
         #endregion
 
         #region Properties
+        public bool UseBlur { get; set; }
+
         [DefaultValue(true), Description("")]
         public bool UseFade { get; set; }
 
@@ -17,6 +19,8 @@
         #region Constructor
         public CommonExtendedKryptonForm()
         {
+            UseBlur = true;
+
             UseFade = true;
 
             SleepInterval = 50;
@@ -37,6 +41,8 @@
                     Thread.Sleep(SleepInterval);
                 }
             }
+
+            BlurValues.EnableBlur = UseBlur;
 
             base.OnLoad(e);
         }
