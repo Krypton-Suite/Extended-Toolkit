@@ -289,7 +289,7 @@
             // aRGBToolStripMenuItem1
             // 
             this.aRGBToolStripMenuItem1.Name = "aRGBToolStripMenuItem1";
-            this.aRGBToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.aRGBToolStripMenuItem1.Size = new System.Drawing.Size(143, 22);
             this.aRGBToolStripMenuItem1.Text = "&ARGB";
             this.aRGBToolStripMenuItem1.Click += new System.EventHandler(this.aRGBToolStripMenuItem1_Click);
             // 
@@ -301,7 +301,7 @@
             // rGBToolStripMenuItem1
             // 
             this.rGBToolStripMenuItem1.Name = "rGBToolStripMenuItem1";
-            this.rGBToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.rGBToolStripMenuItem1.Size = new System.Drawing.Size(143, 22);
             this.rGBToolStripMenuItem1.Text = "R&GB";
             this.rGBToolStripMenuItem1.Click += new System.EventHandler(this.rGBToolStripMenuItem1_Click);
             // 
@@ -313,7 +313,7 @@
             // hexadecimalToolStripMenuItem1
             // 
             this.hexadecimalToolStripMenuItem1.Name = "hexadecimalToolStripMenuItem1";
-            this.hexadecimalToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.hexadecimalToolStripMenuItem1.Size = new System.Drawing.Size(143, 22);
             this.hexadecimalToolStripMenuItem1.Text = "He&xadecimal";
             this.hexadecimalToolStripMenuItem1.Click += new System.EventHandler(this.hexadecimalToolStripMenuItem1_Click);
             // 
@@ -556,7 +556,7 @@
             this.krvnumBase.ToolTipValues.Description = "The red value";
             this.krvnumBase.ToolTipValues.EnableToolTips = true;
             this.krvnumBase.ToolTipValues.Heading = "Red Value";
-            this.krvnumBase.ToolTipValues.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image3")));
+            this.krvnumBase.ToolTipValues.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
             this.krvnumBase.Typeface = null;
             this.krvnumBase.UseAccessibleUI = false;
             this.krvnumBase.ValueChanged += new System.EventHandler(this.krvnumBase_ValueChanged);
@@ -751,7 +751,7 @@
             this.krvnumContrast.ToolTipValues.Description = "The red value";
             this.krvnumContrast.ToolTipValues.EnableToolTips = true;
             this.krvnumContrast.ToolTipValues.Heading = "Red Value";
-            this.krvnumContrast.ToolTipValues.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            this.krvnumContrast.ToolTipValues.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image3")));
             this.krvnumContrast.Typeface = null;
             this.krvnumContrast.UseAccessibleUI = false;
             this.krvnumContrast.ValueChanged += new System.EventHandler(this.krvnumContrast_ValueChanged);
@@ -776,7 +776,7 @@
             this.kgvnumContrast.ToolTipValues.Description = "The green value";
             this.kgvnumContrast.ToolTipValues.EnableToolTips = true;
             this.kgvnumContrast.ToolTipValues.Heading = "Green Value";
-            this.kgvnumContrast.ToolTipValues.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
+            this.kgvnumContrast.ToolTipValues.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image4")));
             this.kgvnumContrast.Typeface = null;
             this.kgvnumContrast.UseAccessibleUI = false;
             this.kgvnumContrast.ValueChanged += new System.EventHandler(this.kgvnumContrast_ValueChanged);
@@ -801,7 +801,7 @@
             this.kbvnumContrast.ToolTipValues.Description = "The blue value";
             this.kbvnumContrast.ToolTipValues.EnableToolTips = true;
             this.kbvnumContrast.ToolTipValues.Heading = "Blue Value";
-            this.kbvnumContrast.ToolTipValues.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
+            this.kbvnumContrast.ToolTipValues.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image5")));
             this.kbvnumContrast.Typeface = null;
             this.kbvnumContrast.UseAccessibleUI = false;
             this.kbvnumContrast.ValueChanged += new System.EventHandler(this.kbvnumContrast_ValueChanged);
@@ -881,22 +881,29 @@
 
             _updateUI.Tick += UpdateUI_Tick;
         }
-
-        private void UpdateUI_Tick(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
         #endregion
 
         #region Event Handlers
         private void cbBaseColour_BackColorChanged(object sender, EventArgs e)
         {
+            kavnumContrast.Value = cbContrastColour.BackColor.A;
 
+            krvnumContrast.Value = cbContrastColour.BackColor.R;
+
+            kgvnumContrast.Value = cbContrastColour.BackColor.G;
+
+            kbvnumContrast.Value = cbContrastColour.BackColor.B;
         }
 
         private void cbContrastColour_BackColorChanged(object sender, EventArgs e)
         {
+            kavnumBase.Value = cbBaseColour.BackColor.A;
 
+            krvnumBase.Value = cbBaseColour.BackColor.R;
+
+            kgvnumBase.Value = cbBaseColour.BackColor.G;
+
+            kbvnumBase.Value = cbBaseColour.BackColor.B;
         }
 
         private void useBaseColourToolStripMenuItem_Click(object sender, EventArgs e)
@@ -949,45 +956,21 @@
 
         }
 
-        private void makeThisTheContrastColourToolStripMenuItem_Click(object sender, EventArgs e)
-        {
+        private void makeThisTheContrastColourToolStripMenuItem_Click(object sender, EventArgs e) => cbContrastColour.BackColor = cbBaseColour.BackColor;
 
-        }
+        private void aRGBToolStripMenuItem_Click(object sender, EventArgs e) => Clipboard.SetText(ColourExtensions.ColourToARGB(cbBaseColour.BackColor));
 
-        private void aRGBToolStripMenuItem_Click(object sender, EventArgs e)
-        {
+        private void rGBToolStripMenuItem_Click(object sender, EventArgs e) => Clipboard.SetText(ColourExtensions.ColourToRGB(cbBaseColour.BackColor));
 
-        }
+        private void hexadecimalToolStripMenuItem_Click(object sender, EventArgs e) => Clipboard.SetText(ColourExtensions.ColourToHexadecimal(cbBaseColour.BackColor));
 
-        private void rGBToolStripMenuItem_Click(object sender, EventArgs e)
-        {
+        private void makeThisTheBaseColourToolStripMenuItem_Click(object sender, EventArgs e) => cbBaseColour.BackColor = cbContrastColour.BackColor;
 
-        }
+        private void aRGBToolStripMenuItem1_Click(object sender, EventArgs e) => Clipboard.SetText(ColourExtensions.ColourToARGB(cbContrastColour.BackColor));
 
-        private void hexadecimalToolStripMenuItem_Click(object sender, EventArgs e)
-        {
+        private void rGBToolStripMenuItem1_Click(object sender, EventArgs e) => Clipboard.SetText(ColourExtensions.ColourToRGB(cbContrastColour.BackColor));
 
-        }
-
-        private void makeThisTheBaseColourToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void aRGBToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void rGBToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void hexadecimalToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-
-        }
+        private void hexadecimalToolStripMenuItem1_Click(object sender, EventArgs e) => Clipboard.SetText(ColourExtensions.ColourToHexadecimal(cbContrastColour.BackColor));
 
         private void kbtnOk_Click(object sender, EventArgs e)
         {
@@ -997,6 +980,16 @@
         private void kbtnCancel_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void UpdateUI_Tick(object sender, EventArgs e)
+        {
+            cbBaseColour.BackColor = Color.FromArgb(Convert.ToInt32(kavnumBase.Value), Convert.ToInt32(krvnumBase.Value), Convert.ToInt32(kgvnumBase.Value), Convert.ToInt32(kbvnumBase.Value));
+
+            if (GetAutomateContrastColour())
+            {
+                cbContrastColour.BackColor = ColourExtensions.GetContrast(cbBaseColour.BackColor, GetKeepOpacityValues());
+            }
         }
         #endregion
 

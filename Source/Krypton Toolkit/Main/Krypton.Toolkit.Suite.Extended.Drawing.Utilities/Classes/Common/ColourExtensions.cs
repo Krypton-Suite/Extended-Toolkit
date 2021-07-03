@@ -325,6 +325,10 @@
         /// <param name="colour">The colour.</param>
         /// <returns></returns>
         public static string ColourToHexadecimal(Color colour) => ColorTranslator.ToHtml(colour);
+
+        public static string ColourToARGB(Color colour) => $"{colour.A}, {colour.R}, {colour.G}, {colour.B}";
+
+        public static string ColourToRGB(Color colour) => $"{colour.R}, {colour.G}, {colour.B}";
         #endregion
     }
 }
