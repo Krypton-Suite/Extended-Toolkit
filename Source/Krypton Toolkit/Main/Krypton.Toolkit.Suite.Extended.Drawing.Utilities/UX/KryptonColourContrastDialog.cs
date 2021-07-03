@@ -50,7 +50,7 @@
         private KryptonButton kbtnOk;
         private KryptonButton kbtnCancel;
         private Buttons.KryptonSplitButton kryptonSplitButton1;
-        private ContextMenuStrip contextMenuStrip1;
+        private ContextMenuStrip cmsPaletteUtilities;
         private ToolStripMenuItem useBaseColourToolStripMenuItem;
         private ToolStripSeparator toolStripMenuItem7;
         private ToolStripMenuItem useContrastColourToolStripMenuItem;
@@ -62,7 +62,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KryptonColourContrastDialog));
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             this.kryptonSplitButton1 = new Krypton.Toolkit.Suite.Extended.Buttons.KryptonSplitButton();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.cmsPaletteUtilities = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.useBaseColourToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripSeparator();
             this.useContrastColourToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -113,7 +113,7 @@
             this.kbvnumContrast = new Krypton.Toolkit.Suite.Extended.Drawing.Utilities.KryptonBlueValueNumericBox();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
-            this.contextMenuStrip1.SuspendLayout();
+            this.cmsPaletteUtilities.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
             this.kryptonPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -141,7 +141,7 @@
             // kryptonSplitButton1
             // 
             this.kryptonSplitButton1.AutoSize = true;
-            this.kryptonSplitButton1.ContextMenuStrip = this.contextMenuStrip1;
+            this.kryptonSplitButton1.ContextMenuStrip = this.cmsPaletteUtilities;
             this.kryptonSplitButton1.Location = new System.Drawing.Point(12, 13);
             this.kryptonSplitButton1.Name = "kryptonSplitButton1";
             this.kryptonSplitButton1.ProcessPath = null;
@@ -151,21 +151,22 @@
             this.kryptonSplitButton1.UseUACElevation = false;
             this.kryptonSplitButton1.Values.Text = "&Use Colours for Palettes";
             // 
-            // contextMenuStrip1
+            // cmsPaletteUtilities
             // 
-            this.contextMenuStrip1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cmsPaletteUtilities.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.cmsPaletteUtilities.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.useBaseColourToolStripMenuItem,
             this.toolStripMenuItem7,
             this.useContrastColourToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 54);
+            this.cmsPaletteUtilities.Name = "contextMenuStrip1";
+            this.cmsPaletteUtilities.Size = new System.Drawing.Size(181, 54);
             // 
             // useBaseColourToolStripMenuItem
             // 
             this.useBaseColourToolStripMenuItem.Name = "useBaseColourToolStripMenuItem";
             this.useBaseColourToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.useBaseColourToolStripMenuItem.Text = "Use &Base colour";
+            this.useBaseColourToolStripMenuItem.Click += new System.EventHandler(this.useBaseColourToolStripMenuItem_Click);
             // 
             // toolStripMenuItem7
             // 
@@ -177,6 +178,7 @@
             this.useContrastColourToolStripMenuItem.Name = "useContrastColourToolStripMenuItem";
             this.useContrastColourToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.useContrastColourToolStripMenuItem.Text = "Use C&ontrast Colour";
+            this.useContrastColourToolStripMenuItem.Click += new System.EventHandler(this.useContrastColourToolStripMenuItem_Click);
             // 
             // kbtnOk
             // 
@@ -186,6 +188,7 @@
             this.kbtnOk.Size = new System.Drawing.Size(90, 25);
             this.kbtnOk.TabIndex = 2;
             this.kbtnOk.Values.Text = "&OK";
+            this.kbtnOk.Click += new System.EventHandler(this.kbtnOk_Click);
             // 
             // kbtnCancel
             // 
@@ -195,6 +198,7 @@
             this.kbtnCancel.Size = new System.Drawing.Size(90, 25);
             this.kbtnCancel.TabIndex = 1;
             this.kbtnCancel.Values.Text = "&Cancel";
+            this.kbtnCancel.Click += new System.EventHandler(this.kbtnCancel_Click);
             // 
             // kryptonBorderEdge1
             // 
@@ -246,6 +250,7 @@
             this.cbContrastColour.Size = new System.Drawing.Size(432, 337);
             this.cbContrastColour.TabIndex = 7;
             this.cbContrastColour.TabStop = false;
+            this.cbContrastColour.BackColorChanged += new System.EventHandler(this.cbContrastColour_BackColorChanged);
             // 
             // cmsContrast
             // 
@@ -262,6 +267,7 @@
             this.makeThisTheBaseColourToolStripMenuItem.Name = "makeThisTheBaseColourToolStripMenuItem";
             this.makeThisTheBaseColourToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
             this.makeThisTheBaseColourToolStripMenuItem.Text = "Make this the &Base Colour";
+            this.makeThisTheBaseColourToolStripMenuItem.Click += new System.EventHandler(this.makeThisTheBaseColourToolStripMenuItem_Click);
             // 
             // toolStripMenuItem4
             // 
@@ -283,8 +289,9 @@
             // aRGBToolStripMenuItem1
             // 
             this.aRGBToolStripMenuItem1.Name = "aRGBToolStripMenuItem1";
-            this.aRGBToolStripMenuItem1.Size = new System.Drawing.Size(143, 22);
+            this.aRGBToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.aRGBToolStripMenuItem1.Text = "&ARGB";
+            this.aRGBToolStripMenuItem1.Click += new System.EventHandler(this.aRGBToolStripMenuItem1_Click);
             // 
             // toolStripMenuItem5
             // 
@@ -294,8 +301,9 @@
             // rGBToolStripMenuItem1
             // 
             this.rGBToolStripMenuItem1.Name = "rGBToolStripMenuItem1";
-            this.rGBToolStripMenuItem1.Size = new System.Drawing.Size(143, 22);
+            this.rGBToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.rGBToolStripMenuItem1.Text = "R&GB";
+            this.rGBToolStripMenuItem1.Click += new System.EventHandler(this.rGBToolStripMenuItem1_Click);
             // 
             // toolStripMenuItem6
             // 
@@ -305,8 +313,9 @@
             // hexadecimalToolStripMenuItem1
             // 
             this.hexadecimalToolStripMenuItem1.Name = "hexadecimalToolStripMenuItem1";
-            this.hexadecimalToolStripMenuItem1.Size = new System.Drawing.Size(143, 22);
+            this.hexadecimalToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.hexadecimalToolStripMenuItem1.Text = "He&xadecimal";
+            this.hexadecimalToolStripMenuItem1.Click += new System.EventHandler(this.hexadecimalToolStripMenuItem1_Click);
             // 
             // cbBaseColour
             // 
@@ -318,6 +327,7 @@
             this.cbBaseColour.Size = new System.Drawing.Size(432, 337);
             this.cbBaseColour.TabIndex = 6;
             this.cbBaseColour.TabStop = false;
+            this.cbBaseColour.BackColorChanged += new System.EventHandler(this.cbBaseColour_BackColorChanged);
             // 
             // cmsBase
             // 
@@ -334,6 +344,7 @@
             this.makeThisTheContrastColourToolStripMenuItem.Name = "makeThisTheContrastColourToolStripMenuItem";
             this.makeThisTheContrastColourToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
             this.makeThisTheContrastColourToolStripMenuItem.Text = "Make this the &Contrast Colour";
+            this.makeThisTheContrastColourToolStripMenuItem.Click += new System.EventHandler(this.makeThisTheContrastColourToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
@@ -355,30 +366,33 @@
             // aRGBToolStripMenuItem
             // 
             this.aRGBToolStripMenuItem.Name = "aRGBToolStripMenuItem";
-            this.aRGBToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.aRGBToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.aRGBToolStripMenuItem.Text = "&ARGB";
+            this.aRGBToolStripMenuItem.Click += new System.EventHandler(this.aRGBToolStripMenuItem_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(140, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(177, 6);
             // 
             // rGBToolStripMenuItem
             // 
             this.rGBToolStripMenuItem.Name = "rGBToolStripMenuItem";
-            this.rGBToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.rGBToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.rGBToolStripMenuItem.Text = "R&GB";
+            this.rGBToolStripMenuItem.Click += new System.EventHandler(this.rGBToolStripMenuItem_Click);
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(140, 6);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(177, 6);
             // 
             // hexadecimalToolStripMenuItem
             // 
             this.hexadecimalToolStripMenuItem.Name = "hexadecimalToolStripMenuItem";
-            this.hexadecimalToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.hexadecimalToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.hexadecimalToolStripMenuItem.Text = "He&xadecimal";
+            this.hexadecimalToolStripMenuItem.Click += new System.EventHandler(this.hexadecimalToolStripMenuItem_Click);
             // 
             // kwlContrastColourHeader
             // 
@@ -520,6 +534,7 @@
             this.kavnumBase.Size = new System.Drawing.Size(210, 42);
             this.kavnumBase.TabIndex = 5;
             this.kavnumBase.Typeface = null;
+            this.kavnumBase.ValueChanged += new System.EventHandler(this.kavnumBase_ValueChanged);
             // 
             // krvnumBase
             // 
@@ -541,9 +556,10 @@
             this.krvnumBase.ToolTipValues.Description = "The red value";
             this.krvnumBase.ToolTipValues.EnableToolTips = true;
             this.krvnumBase.ToolTipValues.Heading = "Red Value";
-            this.krvnumBase.ToolTipValues.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            this.krvnumBase.ToolTipValues.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image3")));
             this.krvnumBase.Typeface = null;
             this.krvnumBase.UseAccessibleUI = false;
+            this.krvnumBase.ValueChanged += new System.EventHandler(this.krvnumBase_ValueChanged);
             // 
             // kgvnumBase
             // 
@@ -568,6 +584,7 @@
             this.kgvnumBase.ToolTipValues.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
             this.kgvnumBase.Typeface = null;
             this.kgvnumBase.UseAccessibleUI = false;
+            this.kgvnumBase.ValueChanged += new System.EventHandler(this.kgvnumBase_ValueChanged);
             // 
             // kbvnumBase
             // 
@@ -592,6 +609,7 @@
             this.kbvnumBase.ToolTipValues.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
             this.kbvnumBase.Typeface = null;
             this.kbvnumBase.UseAccessibleUI = false;
+            this.kbvnumBase.ValueChanged += new System.EventHandler(this.kbvnumBase_ValueChanged);
             // 
             // tableLayoutPanel3
             // 
@@ -711,6 +729,7 @@
             this.kavnumContrast.Size = new System.Drawing.Size(210, 42);
             this.kavnumContrast.TabIndex = 4;
             this.kavnumContrast.Typeface = null;
+            this.kavnumContrast.ValueChanged += new System.EventHandler(this.kavnumContrast_ValueChanged);
             // 
             // krvnumContrast
             // 
@@ -732,9 +751,10 @@
             this.krvnumContrast.ToolTipValues.Description = "The red value";
             this.krvnumContrast.ToolTipValues.EnableToolTips = true;
             this.krvnumContrast.ToolTipValues.Heading = "Red Value";
-            this.krvnumContrast.ToolTipValues.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image3")));
+            this.krvnumContrast.ToolTipValues.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
             this.krvnumContrast.Typeface = null;
             this.krvnumContrast.UseAccessibleUI = false;
+            this.krvnumContrast.ValueChanged += new System.EventHandler(this.krvnumContrast_ValueChanged);
             // 
             // kgvnumContrast
             // 
@@ -756,9 +776,10 @@
             this.kgvnumContrast.ToolTipValues.Description = "The green value";
             this.kgvnumContrast.ToolTipValues.EnableToolTips = true;
             this.kgvnumContrast.ToolTipValues.Heading = "Green Value";
-            this.kgvnumContrast.ToolTipValues.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image4")));
+            this.kgvnumContrast.ToolTipValues.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
             this.kgvnumContrast.Typeface = null;
             this.kgvnumContrast.UseAccessibleUI = false;
+            this.kgvnumContrast.ValueChanged += new System.EventHandler(this.kgvnumContrast_ValueChanged);
             // 
             // kbvnumContrast
             // 
@@ -780,9 +801,10 @@
             this.kbvnumContrast.ToolTipValues.Description = "The blue value";
             this.kbvnumContrast.ToolTipValues.EnableToolTips = true;
             this.kbvnumContrast.ToolTipValues.Heading = "Blue Value";
-            this.kbvnumContrast.ToolTipValues.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image5")));
+            this.kbvnumContrast.ToolTipValues.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
             this.kbvnumContrast.Typeface = null;
             this.kbvnumContrast.UseAccessibleUI = false;
+            this.kbvnumContrast.ValueChanged += new System.EventHandler(this.kbvnumContrast_ValueChanged);
             // 
             // KryptonColourContrastDialog
             // 
@@ -802,7 +824,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
-            this.contextMenuStrip1.ResumeLayout(false);
+            this.cmsPaletteUtilities.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
             this.kryptonPanel2.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -863,6 +885,118 @@
         private void UpdateUI_Tick(object sender, EventArgs e)
         {
             throw new NotImplementedException();
+        }
+        #endregion
+
+        #region Event Handlers
+        private void cbBaseColour_BackColorChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbContrastColour_BackColorChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void useBaseColourToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void useContrastColourToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void kavnumBase_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void krvnumBase_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void kgvnumBase_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void kbvnumBase_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void kavnumContrast_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void krvnumContrast_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void kgvnumContrast_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void kbvnumContrast_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void makeThisTheContrastColourToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void aRGBToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rGBToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void hexadecimalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void makeThisTheBaseColourToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void aRGBToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rGBToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void hexadecimalToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void kbtnOk_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void kbtnCancel_Click(object sender, EventArgs e)
+        {
+
         }
         #endregion
 
