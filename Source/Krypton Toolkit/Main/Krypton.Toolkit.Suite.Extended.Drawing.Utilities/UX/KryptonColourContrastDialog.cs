@@ -49,7 +49,7 @@
         private ToolStripMenuItem hexadecimalToolStripMenuItem;
         private KryptonButton kbtnOk;
         private KryptonButton kbtnCancel;
-        private Buttons.KryptonSplitButton kryptonSplitButton1;
+        private Buttons.KryptonSplitButton ksbtnPalettes;
         private ContextMenuStrip cmsPaletteUtilities;
         private ToolStripMenuItem useBaseColourToolStripMenuItem;
         private ToolStripSeparator toolStripMenuItem7;
@@ -61,7 +61,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KryptonColourContrastDialog));
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
-            this.kryptonSplitButton1 = new Krypton.Toolkit.Suite.Extended.Buttons.KryptonSplitButton();
+            this.ksbtnPalettes = new Krypton.Toolkit.Suite.Extended.Buttons.KryptonSplitButton();
             this.cmsPaletteUtilities = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.useBaseColourToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripSeparator();
@@ -127,7 +127,7 @@
             // 
             // kryptonPanel1
             // 
-            this.kryptonPanel1.Controls.Add(this.kryptonSplitButton1);
+            this.kryptonPanel1.Controls.Add(this.ksbtnPalettes);
             this.kryptonPanel1.Controls.Add(this.kbtnOk);
             this.kryptonPanel1.Controls.Add(this.kbtnCancel);
             this.kryptonPanel1.Controls.Add(this.kryptonBorderEdge1);
@@ -138,18 +138,18 @@
             this.kryptonPanel1.Size = new System.Drawing.Size(876, 50);
             this.kryptonPanel1.TabIndex = 0;
             // 
-            // kryptonSplitButton1
+            // ksbtnPalettes
             // 
-            this.kryptonSplitButton1.AutoSize = true;
-            this.kryptonSplitButton1.ContextMenuStrip = this.cmsPaletteUtilities;
-            this.kryptonSplitButton1.Location = new System.Drawing.Point(12, 13);
-            this.kryptonSplitButton1.Name = "kryptonSplitButton1";
-            this.kryptonSplitButton1.ProcessPath = null;
-            this.kryptonSplitButton1.ShowSplitOption = true;
-            this.kryptonSplitButton1.Size = new System.Drawing.Size(158, 25);
-            this.kryptonSplitButton1.TabIndex = 5;
-            this.kryptonSplitButton1.UseUACElevation = false;
-            this.kryptonSplitButton1.Values.Text = "&Use Colours for Palettes";
+            this.ksbtnPalettes.AutoSize = true;
+            this.ksbtnPalettes.ContextMenuStrip = this.cmsPaletteUtilities;
+            this.ksbtnPalettes.Location = new System.Drawing.Point(12, 13);
+            this.ksbtnPalettes.Name = "ksbtnPalettes";
+            this.ksbtnPalettes.ProcessPath = null;
+            this.ksbtnPalettes.ShowSplitOption = true;
+            this.ksbtnPalettes.Size = new System.Drawing.Size(158, 25);
+            this.ksbtnPalettes.TabIndex = 5;
+            this.ksbtnPalettes.UseUACElevation = false;
+            this.ksbtnPalettes.Values.Text = "&Use Colours for Palettes";
             // 
             // cmsPaletteUtilities
             // 
@@ -1006,14 +1006,13 @@
             }
         }
 
-        public void ShowPaletteButtons(bool visible)
-        {
-            //kbtnUtiliseBaseColour.Visible = visible;
-
-            //kbtnUtiliseContrastColour.Visible = visible;
-        }
+        public void ShowPaletteButtons(bool visible) => ksbtnPalettes.Visible = visible;
 
         public void Refresh() => Invalidate();
+
+        private void UpbateBaseColour(byte alpha, byte red, byte green, byte blue) => cbBaseColour.BackColor = Color.FromArgb(alpha, red, green, blue);
+
+        private void UpdateContrastColour(byte alpha, byte red, byte green, byte blue) => cbContrastColour.BackColor = Color.FromArgb(alpha, red, green, blue);
         #endregion
 
         #region Setters and Getters
