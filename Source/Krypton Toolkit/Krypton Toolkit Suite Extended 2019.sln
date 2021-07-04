@@ -255,6 +255,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.WindowsAPICodePac
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DrawingUtilities", "Examples\DrawingUtilities\DrawingUtilities.csproj", "{5C3D0BA2-67AB-4041-B45B-A3BB243BC750}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cyotek.Windows.Forms.ColorPicker", "Third Party\Cyotek.Windows.Forms.ColorPicker\Cyotek.Windows.Forms.ColorPicker.csproj", "{B44DF744-3944-4EA4-AAD6-80CDC8FED214}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -533,6 +535,10 @@ Global
 		{5C3D0BA2-67AB-4041-B45B-A3BB243BC750}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5C3D0BA2-67AB-4041-B45B-A3BB243BC750}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C3D0BA2-67AB-4041-B45B-A3BB243BC750}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B44DF744-3944-4EA4-AAD6-80CDC8FED214}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B44DF744-3944-4EA4-AAD6-80CDC8FED214}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B44DF744-3944-4EA4-AAD6-80CDC8FED214}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B44DF744-3944-4EA4-AAD6-80CDC8FED214}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -621,6 +627,7 @@ Global
 		{FDC6F209-1F39-4A8A-AE61-2FF56412B882} = {D3F14B97-D6F3-47F8-85CB-E9A7903D372D}
 		{90812991-5BBB-4A07-BF82-9420C368E9CB} = {D3F14B97-D6F3-47F8-85CB-E9A7903D372D}
 		{5C3D0BA2-67AB-4041-B45B-A3BB243BC750} = {25D5F0A6-A601-424B-9431-8EFE139A58A7}
+		{B44DF744-3944-4EA4-AAD6-80CDC8FED214} = {E311F8C7-1F27-48CD-86BE-CC3D798163BE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A7CE7732-0982-4703-8EFD-7715D569BAB5}

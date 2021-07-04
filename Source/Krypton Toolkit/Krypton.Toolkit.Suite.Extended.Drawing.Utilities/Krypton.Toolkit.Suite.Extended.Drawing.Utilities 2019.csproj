@@ -43,7 +43,7 @@
   </PropertyGroup>
   <ItemGroup>
     <!--<PackageReference Include="Cyotek.Windows.Forms.ColorPicker" Version="1.7.2" />-->
-    <PackageReference Include="unofficial.Cyotek.Windows.Forms.ColorPicker" Version="1.9.2" />
+    <!--<PackageReference Include="unofficial.Cyotek.Windows.Forms.ColorPicker" Version="1.9.2" />-->
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Core\Krypton.Toolkit.Suite.Extended.Core 2019.csproj" />
