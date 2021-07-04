@@ -19,6 +19,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build System", "Build Syste
 		..\..\build.proj = ..\..\build.proj
 		Directory.Build.props = Directory.Build.props
 		..\..\Directory.Build.props = ..\..\Directory.Build.props
+		Third Party\Directory.Build.props = Third Party\Directory.Build.props
 		Directory.Build.targets = Directory.Build.targets
 		..\..\purge.cmd = ..\..\purge.cmd
 	EndProjectSection
@@ -251,7 +252,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.WindowsAPICodePac
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.WindowsAPICodePack.Shell", "Third Party\Microsoft.WindowsAPICodePack.Shell\Microsoft.WindowsAPICodePack.Shell.csproj", "{90812991-5BBB-4A07-BF82-9420C368E9CB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrawingUtilities", "Examples\DrawingUtilities\DrawingUtilities.csproj", "{5C3D0BA2-67AB-4041-B45B-A3BB243BC750}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DrawingUtilities", "Examples\DrawingUtilities\DrawingUtilities.csproj", "{5C3D0BA2-67AB-4041-B45B-A3BB243BC750}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
