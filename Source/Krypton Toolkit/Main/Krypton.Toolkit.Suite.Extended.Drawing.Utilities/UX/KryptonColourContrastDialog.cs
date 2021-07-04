@@ -863,7 +863,7 @@
         #endregion
 
         #region Constructor
-        public KryptonColourContrastDialog()
+        public KryptonColourContrastDialog(string baseColourHeader = "Base Colour", string contrastColourHeader = "Contrast Colour")
         {
             InitializeComponent();
 
@@ -873,9 +873,24 @@
 
             SetKeepOpacityValues(true);
 
-            SetBaseColour(Color.Transparent);
+            UpdateUI(Color.Empty, Color.Empty, baseColourHeader, contrastColourHeader, false);
 
-            SetContrastColour(Color.Transparent);
+            _updateUI = new Timer() { Enabled = true, Interval = 256 };
+
+            _updateUI.Tick += UpdateUI_Tick;
+        }
+
+        public KryptonColourContrastDialog(Color baseColour, Color contrastColour, string baseColourHeader = "Base Colour", string contrastColourHeader = "Contrast Colour", bool showPaletteButton = false)
+        {
+            InitializeComponent();
+
+            SetAutomateContrastColour(true);
+
+            SetUseForPalettes(false);
+
+            SetKeepOpacityValues(true);
+
+            UpdateUI(baseColour, contrastColour, baseColourHeader, contrastColourHeader, showPaletteButton);
 
             _updateUI = new Timer() { Enabled = true, Interval = 256 };
 
@@ -918,42 +933,58 @@
 
         private void kavnumBase_ValueChanged(object sender, EventArgs e)
         {
+            byte alpha = (byte)kavnumBase.Value, red = (byte)krvnumBase.Value, green = (byte)kgvnumBase.Value, blue = (byte)kbvnumBase.Value;
 
+            UpdateBaseColour(alpha, red, green, blue);
         }
 
         private void krvnumBase_ValueChanged(object sender, EventArgs e)
         {
+            byte alpha = (byte)kavnumBase.Value, red = (byte)krvnumBase.Value, green = (byte)kgvnumBase.Value, blue = (byte)kbvnumBase.Value;
 
+            UpdateBaseColour(alpha, red, green, blue);
         }
 
         private void kgvnumBase_ValueChanged(object sender, EventArgs e)
         {
+            byte alpha = (byte)kavnumBase.Value, red = (byte)krvnumBase.Value, green = (byte)kgvnumBase.Value, blue = (byte)kbvnumBase.Value;
 
+            UpdateBaseColour(alpha, red, green, blue);
         }
 
         private void kbvnumBase_ValueChanged(object sender, EventArgs e)
         {
+            byte alpha = (byte)kavnumBase.Value, red = (byte)krvnumBase.Value, green = (byte)kgvnumBase.Value, blue = (byte)kbvnumBase.Value;
 
+            UpdateBaseColour(alpha, red, green, blue);
         }
 
         private void kavnumContrast_ValueChanged(object sender, EventArgs e)
         {
+            byte alpha = (byte)kavnumContrast.Value, red = (byte)krvnumContrast.Value, green = (byte)kgvnumContrast.Value, blue = (byte)kbvnumContrast.Value;
 
+            UpdateContrastColour(alpha, red, green, blue);
         }
 
         private void krvnumContrast_ValueChanged(object sender, EventArgs e)
         {
+            byte alpha = (byte)kavnumContrast.Value, red = (byte)krvnumContrast.Value, green = (byte)kgvnumContrast.Value, blue = (byte)kbvnumContrast.Value;
 
+            UpdateContrastColour(alpha, red, green, blue);
         }
 
         private void kgvnumContrast_ValueChanged(object sender, EventArgs e)
         {
+            byte alpha = (byte)kavnumContrast.Value, red = (byte)krvnumContrast.Value, green = (byte)kgvnumContrast.Value, blue = (byte)kbvnumContrast.Value;
 
+            UpdateContrastColour(alpha, red, green, blue);
         }
 
         private void kbvnumContrast_ValueChanged(object sender, EventArgs e)
         {
+            byte alpha = (byte)kavnumContrast.Value, red = (byte)krvnumContrast.Value, green = (byte)kgvnumContrast.Value, blue = (byte)kbvnumContrast.Value;
 
+            UpdateContrastColour(alpha, red, green, blue);
         }
 
         private void makeThisTheContrastColourToolStripMenuItem_Click(object sender, EventArgs e) => cbContrastColour.BackColor = cbBaseColour.BackColor;
@@ -1010,9 +1041,22 @@
 
         public void Refresh() => Invalidate();
 
-        private void UpbateBaseColour(byte alpha, byte red, byte green, byte blue) => cbBaseColour.BackColor = Color.FromArgb(alpha, red, green, blue);
+        private void UpdateBaseColour(byte alpha, byte red, byte green, byte blue) => cbBaseColour.BackColor = Color.FromArgb(alpha, red, green, blue);
 
         private void UpdateContrastColour(byte alpha, byte red, byte green, byte blue) => cbContrastColour.BackColor = Color.FromArgb(alpha, red, green, blue);
+
+        private void UpdateUI(Color baseColour, Color contrastColour, string baseColourHeader, string contrastColourHeader, bool showPaletteButton)
+        {
+            SetBaseColour(baseColour);
+
+            SetContrastColour(contrastColour);
+
+            kwlBaseColourHeader.Text = baseColourHeader;
+
+            kwlContrastColourHeader.Text = contrastColourHeader;
+
+            ShowPaletteButtons(showPaletteButton);
+        }
         #endregion
 
         #region Setters and Getters

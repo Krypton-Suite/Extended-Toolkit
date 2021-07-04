@@ -19,7 +19,7 @@
         #region Constructor
         public CommonExtendedKryptonForm()
         {
-            UseBlur = true;
+            UseBlur = false;
 
             UseFade = true;
 
