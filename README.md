@@ -4,7 +4,7 @@
 
 # NuGet Information 
 
-<a href="https://github.com/Krypton-Suite/Extended-Toolkit/blob/version-next/Documents/Modules/NuGet%20Package%20Information.md"><img src="https://img.shields.io/badge/NuGet-Version Information-orange.svg?label=Version&logo=nuget&style=flat-square" alt="Version information" /></a>
+<a href="https://github.com/Krypton-Suite/Extended-Toolkit/blob/master/Documents/Modules/NuGet%20Package%20Information.md"><img src="https://img.shields.io/badge/NuGet-Version Information-orange.svg?label=Version&logo=nuget&style=flat-square" alt="Version information" /></a>
 
 =======
 
@@ -13,7 +13,7 @@
 <a href="https://github.com/Krypton-Suite/Help-Files/releases/download/5.550.2102/Krypton.Extended.Toolkit.Help.exe"><img src="https://img.shields.io/badge/Documentation-Download File-orange.svg?style=flat-square" alt="Download the extended toolkit documentation installer" /></a>
 
 ## Examples
-<a href="https://github.com/Krypton-Suite/Extended-Toolkit/tree/version-next/Documents/Examples/Examples.md"><img src="https://img.shields.io/badge/Toolkit-Examples-orange.svg?style=flat-square" alt="Browse toolkit examples" /></a>
+<a href="https://github.com/Krypton-Suite/Extended-Toolkit/tree/master/Documents/Examples/Examples.md"><img src="https://img.shields.io/badge/Toolkit-Examples-orange.svg?style=flat-square" alt="Browse toolkit examples" /></a>
 
 =======
 
