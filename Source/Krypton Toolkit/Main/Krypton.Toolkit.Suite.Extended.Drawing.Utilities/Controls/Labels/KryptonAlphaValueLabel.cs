@@ -65,9 +65,23 @@
         #region Overrides
         protected override void OnPaint(PaintEventArgs e)
         {
+            string tmpText = Text;
+
             ShowCurrentColourValueOnLabel(_showCurrentColourValue, _extraText, _showColon);
 
             AlterLabelTypeface(_textSize);
+
+            if (ShowColon)
+            {
+                if (!tmpText.EndsWith(":"))
+                {
+                    Text = tmpText + ":";
+                }
+            }
+            else
+            {
+
+            }
 
             base.OnPaint(e);
         }
