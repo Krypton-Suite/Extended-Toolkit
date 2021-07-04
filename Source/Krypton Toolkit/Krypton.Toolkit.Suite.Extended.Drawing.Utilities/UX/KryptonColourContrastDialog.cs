@@ -969,7 +969,7 @@
 
             kbvnumContrast.Value = cbContrastColour.BackColor.B;
 
-            chtxtBase.Text = ColorTranslator.ToHtml(cbBaseColour.BackColor);
+            chtxtBase.Colour = cbBaseColour.BackColor;
         }
 
         private void cbContrastColour_BackColorChanged(object sender, EventArgs e)
@@ -982,7 +982,7 @@
 
             kbvnumBase.Value = cbBaseColour.BackColor.B;
 
-            chtxtContrast.Text = ColorTranslator.ToHtml(cbContrastColour.BackColor);
+            chtxtContrast.Colour = cbContrastColour.BackColor;
         }
 
         private void useBaseColourToolStripMenuItem_Click(object sender, EventArgs e)

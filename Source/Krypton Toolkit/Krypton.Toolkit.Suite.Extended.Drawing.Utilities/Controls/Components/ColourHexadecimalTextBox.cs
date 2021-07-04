@@ -1,6 +1,4 @@
-﻿using Krypton.Toolkit.Suite.Extended.Tools;
-
-namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
+﻿namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 {
     public class ColourHexadecimalTextBox : KryptonTextBox
     {
@@ -17,24 +15,6 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             StateCommon.Content.TextH = PaletteRelativeAlign.Center;
 
             Text = string.Empty;
-        }
-
-        private bool IsHexadecimal(string input)
-        {
-            Regex hex = new Regex("^[a-fA-F0-9]+$");
-
-            bool isValid = false;
-
-            if (MissingFrameWorkAPIs.IsNullOrWhiteSpace(input))
-            {
-                isValid = false;
-            }
-            else
-            {
-                isValid = hex.IsMatch(input);
-            }
-
-            return isValid;
         }
 
         protected override void OnPaint(PaintEventArgs e)

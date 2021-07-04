@@ -21,6 +21,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build System", "Build Syste
 		..\..\Directory.Build.props = ..\..\Directory.Build.props
 		Third Party\Directory.Build.props = Third Party\Directory.Build.props
 		Directory.Build.targets = Directory.Build.targets
+		Third Party\Directory.Build.targets = Third Party\Directory.Build.targets
 		..\..\purge.cmd = ..\..\purge.cmd
 	EndProjectSection
 EndProject
