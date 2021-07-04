@@ -205,6 +205,10 @@
         public KryptonColourFindAndReplaceDialog()
         {
             InitializeComponent();
+
+            ApplicationUtilities.UnderConstruction(this);
+
+            Hide();
         }
         #endregion
     }

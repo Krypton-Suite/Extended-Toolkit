@@ -29,4 +29,9 @@
   <ItemGroup>
 	  <None Include="../../../Assets/Package Icon/Canary.png" Link="Icon.png" Pack="true" PackagePath="" />
   </ItemGroup>
+
+  <ItemGroup>
+    
+  </ItemGroup>
+  
 </Project>
