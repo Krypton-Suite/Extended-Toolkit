@@ -31,69 +31,69 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Markdown", "Markdown", "{A7
 		..\..\README.md = ..\..\README.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Messagebox 2019", "Main\Krypton.Toolkit.Suite.Extended.Messagebox\Krypton.Toolkit.Suite.Extended.Messagebox 2019.csproj", "{CF885412-B8C5-449B-A7AE-D9E81F405A5C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Messagebox 2019", "Krypton.Toolkit.Suite.Extended.Messagebox\Krypton.Toolkit.Suite.Extended.Messagebox 2019.csproj", "{CF885412-B8C5-449B-A7AE-D9E81F405A5C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Drawing.Utilities 2019", "Main\Krypton.Toolkit.Suite.Extended.Drawing.Utilities\Krypton.Toolkit.Suite.Extended.Drawing.Utilities 2019.csproj", "{D826A960-6CE3-4E8F-8028-ADE82D7BE4C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Drawing.Utilities 2019", "Krypton.Toolkit.Suite.Extended.Drawing.Utilities\Krypton.Toolkit.Suite.Extended.Drawing.Utilities 2019.csproj", "{D826A960-6CE3-4E8F-8028-ADE82D7BE4C1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Error.Reporting 2019", "Main\Krypton.Toolkit.Suite.Extended.Error.Reporting\Krypton.Toolkit.Suite.Extended.Error.Reporting 2019.csproj", "{C3AF5854-C865-4620-B678-26CEB4A1596B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Error.Reporting 2019", "Krypton.Toolkit.Suite.Extended.Error.Reporting\Krypton.Toolkit.Suite.Extended.Error.Reporting 2019.csproj", "{C3AF5854-C865-4620-B678-26CEB4A1596B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Dialogs 2019", "Main\Krypton.Toolkit.Suite.Extended.Dialogs\Krypton.Toolkit.Suite.Extended.Dialogs 2019.csproj", "{48714D9F-E9DF-4F09-B29A-1B77EF522252}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Dialogs 2019", "Krypton.Toolkit.Suite.Extended.Dialogs\Krypton.Toolkit.Suite.Extended.Dialogs 2019.csproj", "{48714D9F-E9DF-4F09-B29A-1B77EF522252}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Data.Visualisation 2019", "Main\Krypton.Toolkit.Suite.Extended.Data.Visualisation\Krypton.Toolkit.Suite.Extended.Data.Visualisation 2019.csproj", "{A2E6AB58-8DDC-4E0F-B69A-E355761D1148}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Data.Visualisation 2019", "Krypton.Toolkit.Suite.Extended.Data.Visualisation\Krypton.Toolkit.Suite.Extended.Data.Visualisation 2019.csproj", "{A2E6AB58-8DDC-4E0F-B69A-E355761D1148}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.File.Explorer 2019", "Main\Krypton.Toolkit.Suite.Extended.File.Explorer\Krypton.Toolkit.Suite.Extended.File.Explorer 2019.csproj", "{80813DE0-350B-4D3B-8D36-9518B2B6A17C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.File.Explorer 2019", "Krypton.Toolkit.Suite.Extended.File.Explorer\Krypton.Toolkit.Suite.Extended.File.Explorer 2019.csproj", "{80813DE0-350B-4D3B-8D36-9518B2B6A17C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Floating.Toolbars 2019", "Main\Krypton.Toolkit.Suite.Extended.Floating.Toolbars\Krypton.Toolkit.Suite.Extended.Floating.Toolbars 2019.csproj", "{EBD380E1-55D3-4C3A-98C0-1B669ABF59BE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Floating.Toolbars 2019", "Krypton.Toolkit.Suite.Extended.Floating.Toolbars\Krypton.Toolkit.Suite.Extended.Floating.Toolbars 2019.csproj", "{EBD380E1-55D3-4C3A-98C0-1B669ABF59BE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Guages 2019", "Main\Krypton.Toolkit.Suite.Extended.Guages\Krypton.Toolkit.Suite.Extended.Guages 2019.csproj", "{B45A35ED-07C6-4CDA-A75B-56EBFF601232}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Guages 2019", "Krypton.Toolkit.Suite.Extended.Guages\Krypton.Toolkit.Suite.Extended.Guages 2019.csproj", "{B45A35ED-07C6-4CDA-A75B-56EBFF601232}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.IO 2019", "Main\Krypton.Toolkit.Suite.Extended.IO\Krypton.Toolkit.Suite.Extended.IO 2019.csproj", "{83B92DB2-6318-4F7D-B169-9874637FF17F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.IO 2019", "Krypton.Toolkit.Suite.Extended.IO\Krypton.Toolkit.Suite.Extended.IO 2019.csproj", "{83B92DB2-6318-4F7D-B169-9874637FF17F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Wizard 2019", "Main\Krypton.Toolkit.Suite.Extended.Wizard\Krypton.Toolkit.Suite.Extended.Wizard 2019.csproj", "{B6FB3BE1-3E55-459C-BB8E-83E21D41C9E6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Wizard 2019", "Krypton.Toolkit.Suite.Extended.Wizard\Krypton.Toolkit.Suite.Extended.Wizard 2019.csproj", "{B6FB3BE1-3E55-459C-BB8E-83E21D41C9E6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Navi.Suite 2019", "Main\Krypton.Toolkit.Suite.Extended.Navi.Suite\Krypton.Toolkit.Suite.Extended.Navi.Suite 2019.csproj", "{9FAC6BA5-4729-4917-8CD6-A3C03F29CC21}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Navi.Suite 2019", "Krypton.Toolkit.Suite.Extended.Navi.Suite\Krypton.Toolkit.Suite.Extended.Navi.Suite 2019.csproj", "{9FAC6BA5-4729-4917-8CD6-A3C03F29CC21}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Navigator 2019", "Main\Krypton.Toolkit.Suite.Extended.Navigator\Krypton.Toolkit.Suite.Extended.Navigator 2019.csproj", "{951D4C2F-69F2-4176-9502-CDA760D5233F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Navigator 2019", "Krypton.Toolkit.Suite.Extended.Navigator\Krypton.Toolkit.Suite.Extended.Navigator 2019.csproj", "{951D4C2F-69F2-4176-9502-CDA760D5233F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Networking 2019", "Main\Krypton.Toolkit.Suite.Extended.Networking\Krypton.Toolkit.Suite.Extended.Networking 2019.csproj", "{A36AE7CE-8AF8-4711-8A8A-4FCDD14DE209}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Networking 2019", "Krypton.Toolkit.Suite.Extended.Networking\Krypton.Toolkit.Suite.Extended.Networking 2019.csproj", "{A36AE7CE-8AF8-4711-8A8A-4FCDD14DE209}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Notifications 2019", "Main\Krypton.Toolkit.Suite.Extended.Notifications\Krypton.Toolkit.Suite.Extended.Notifications 2019.csproj", "{29A9E4C0-5292-4AD6-9915-54035A935BE0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Notifications 2019", "Krypton.Toolkit.Suite.Extended.Notifications\Krypton.Toolkit.Suite.Extended.Notifications 2019.csproj", "{29A9E4C0-5292-4AD6-9915-54035A935BE0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Outlook.Grid 2019", "Main\Krypton.Toolkit.Suite.Extended.Outlook.Grid\Krypton.Toolkit.Suite.Extended.Outlook.Grid 2019.csproj", "{FA183878-9C2A-4401-A091-A178834C7BFB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Outlook.Grid 2019", "Krypton.Toolkit.Suite.Extended.Outlook.Grid\Krypton.Toolkit.Suite.Extended.Outlook.Grid 2019.csproj", "{FA183878-9C2A-4401-A091-A178834C7BFB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Palette.Selectors 2019", "Main\Krypton.Toolkit.Suite.Extended.Palette.Selectors\Krypton.Toolkit.Suite.Extended.Palette.Selectors 2019.csproj", "{DFED7888-9B28-4879-A209-105C3D09CD66}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Palette.Selectors 2019", "Krypton.Toolkit.Suite.Extended.Palette.Selectors\Krypton.Toolkit.Suite.Extended.Palette.Selectors 2019.csproj", "{DFED7888-9B28-4879-A209-105C3D09CD66}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Software.Updater 2019", "Main\Krypton.Toolkit.Suite.Extended.Software.Updater\Krypton.Toolkit.Suite.Extended.Software.Updater 2019.csproj", "{2D272581-227C-4078-8EB0-2867C6BFD4AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Software.Updater 2019", "Krypton.Toolkit.Suite.Extended.Software.Updater\Krypton.Toolkit.Suite.Extended.Software.Updater 2019.csproj", "{2D272581-227C-4078-8EB0-2867C6BFD4AE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Theme.Switcher 2019", "Main\Krypton.Toolkit.Suite.Extended.Theme.Switcher\Krypton.Toolkit.Suite.Extended.Theme.Switcher 2019.csproj", "{C7B5B207-F14D-433D-BA08-41964C9E3FF3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Theme.Switcher 2019", "Krypton.Toolkit.Suite.Extended.Theme.Switcher\Krypton.Toolkit.Suite.Extended.Theme.Switcher 2019.csproj", "{C7B5B207-F14D-433D-BA08-41964C9E3FF3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Toggle.Switch 2019", "Main\Krypton.Toolkit.Suite.Extended.Toggle.Switch\Krypton.Toolkit.Suite.Extended.Toggle.Switch 2019.csproj", "{DEFEFE2A-0C78-4A6D-859A-3B4B86207268}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Toggle.Switch 2019", "Krypton.Toolkit.Suite.Extended.Toggle.Switch\Krypton.Toolkit.Suite.Extended.Toggle.Switch 2019.csproj", "{DEFEFE2A-0C78-4A6D-859A-3B4B86207268}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Tool.Strip.Items 2019", "Main\Krypton.Toolkit.Suite.Extended.Tool.Strip.Items\Krypton.Toolkit.Suite.Extended.Tool.Strip.Items 2019.csproj", "{C673865F-569D-44CE-8002-37B04EE2DEB5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Tool.Strip.Items 2019", "Krypton.Toolkit.Suite.Extended.Tool.Strip.Items\Krypton.Toolkit.Suite.Extended.Tool.Strip.Items 2019.csproj", "{C673865F-569D-44CE-8002-37B04EE2DEB5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Core 2019", "Shared\Krypton.Toolkit.Suite.Extended.Core\Krypton.Toolkit.Suite.Extended.Core 2019.csproj", "{D2A6CAA8-B30A-4F77-9ADD-0D791411D3DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Core 2019", "Krypton.Toolkit.Suite.Extended.Core\Krypton.Toolkit.Suite.Extended.Core 2019.csproj", "{D2A6CAA8-B30A-4F77-9ADD-0D791411D3DD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Common 2019", "Shared\Krypton.Toolkit.Suite.Extended.Common\Krypton.Toolkit.Suite.Extended.Common 2019.csproj", "{4C17F4D3-E158-41F2-BA60-CDF14DE4423A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Common 2019", "Krypton.Toolkit.Suite.Extended.Common\Krypton.Toolkit.Suite.Extended.Common 2019.csproj", "{4C17F4D3-E158-41F2-BA60-CDF14DE4423A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Global.Utilities 2019", "Shared\Krypton.Toolkit.Suite.Extended.Global.Utilities\Krypton.Toolkit.Suite.Extended.Global.Utilities 2019.csproj", "{8C2326B4-ABAD-40DD-8D87-DC8B3B546699}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Global.Utilities 2019", "Krypton.Toolkit.Suite.Extended.Global.Utilities\Krypton.Toolkit.Suite.Extended.Global.Utilities 2019.csproj", "{8C2326B4-ABAD-40DD-8D87-DC8B3B546699}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Language.Model 2019", "Shared\Krypton.Toolkit.Suite.Extended.Language.Model\Krypton.Toolkit.Suite.Extended.Language.Model 2019.csproj", "{472D078C-CA68-42C4-B59F-E94F63D489DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Language.Model 2019", "Krypton.Toolkit.Suite.Extended.Language.Model\Krypton.Toolkit.Suite.Extended.Language.Model 2019.csproj", "{472D078C-CA68-42C4-B59F-E94F63D489DA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Resources 2019", "Shared\Krypton.Toolkit.Suite.Extended.Resources\Krypton.Toolkit.Suite.Extended.Resources 2019.csproj", "{31A508E4-D3F7-4F55-A0C5-1F0ED4E69BFC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Resources 2019", "Krypton.Toolkit.Suite.Extended.Resources\Krypton.Toolkit.Suite.Extended.Resources 2019.csproj", "{31A508E4-D3F7-4F55-A0C5-1F0ED4E69BFC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Settings 2019", "Shared\Krypton.Toolkit.Suite.Extended.Settings\Krypton.Toolkit.Suite.Extended.Settings 2019.csproj", "{0851A3F7-8FB9-4E57-965E-76B835587639}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Settings 2019", "Krypton.Toolkit.Suite.Extended.Settings\Krypton.Toolkit.Suite.Extended.Settings 2019.csproj", "{0851A3F7-8FB9-4E57-965E-76B835587639}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Utilities 2019", "Shared\Krypton.Toolkit.Suite.Extended.Utilities\Krypton.Toolkit.Suite.Extended.Utilities 2019.csproj", "{7BA75AAC-7D3E-4ED3-9562-8176380BC49C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Utilities 2019", "Krypton.Toolkit.Suite.Extended.Utilities\Krypton.Toolkit.Suite.Extended.Utilities 2019.csproj", "{7BA75AAC-7D3E-4ED3-9562-8176380BC49C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ILRepack.Lib.MSBuild.Task", "Third Party\ILRepack.Lib.MSBuild.Task\ILRepack.Lib.MSBuild.Task.csproj", "{66DD6657-39B3-4ACF-9EE9-B60EF96A2262}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scintilla.NET", "Third Party\Scintilla.NET\Scintilla.NET.csproj", "{4C65A943-E114-4535-9C84-1D5CE0612FE0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Controls 2019", "Main\Krypton.Toolkit.Suite.Extended.Controls\Krypton.Toolkit.Suite.Extended.Controls 2019.csproj", "{838FCD3C-9306-427D-9A99-9E68CEFA584C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Controls 2019", "Krypton.Toolkit.Suite.Extended.Controls\Krypton.Toolkit.Suite.Extended.Controls 2019.csproj", "{838FCD3C-9306-427D-9A99-9E68CEFA584C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Tool.Box 2019", "Main\Krypton.Toolkit.Suite.Extended.Tool.Box\Krypton.Toolkit.Suite.Extended.Tool.Box 2019.csproj", "{572B0D12-A04B-4EB9-B5FB-87F66FF91078}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Tool.Box 2019", "Krypton.Toolkit.Suite.Extended.Tool.Box\Krypton.Toolkit.Suite.Extended.Tool.Box 2019.csproj", "{572B0D12-A04B-4EB9-B5FB-87F66FF91078}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Buttons 2019", "Main\Krypton.Toolkit.Suite.Extended.Buttons\Krypton.Toolkit.Suite.Extended.Buttons 2019.csproj", "{FDD335B3-3293-4E93-B81F-54F84DC6276A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Buttons 2019", "Krypton.Toolkit.Suite.Extended.Buttons\Krypton.Toolkit.Suite.Extended.Buttons 2019.csproj", "{FDD335B3-3293-4E93-B81F-54F84DC6276A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API CodePack", "API CodePack", "{D3F14B97-D6F3-47F8-85CB-E9A7903D372D}"
 EndProject
@@ -107,11 +107,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Z_Examples", "Z_Examples", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComboBoxExtApp", "Examples\ComboBoxExtApp\ComboBoxExtApp.csproj", "{52125BA9-5B87-4C08-BCAA-10093832031C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Effects 2019", "Shared\Krypton.Toolkit.Suite.Extended.Effects\Krypton.Toolkit.Suite.Extended.Effects 2019.csproj", "{62106BA1-C710-48FF-A9C2-A43E28FE8C4D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Effects 2019", "Krypton.Toolkit.Suite.Extended.Effects\Krypton.Toolkit.Suite.Extended.Effects 2019.csproj", "{62106BA1-C710-48FF-A9C2-A43E28FE8C4D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Effects", "Examples\Effects\Effects.csproj", "{B17FA051-F9C9-4971-AE90-4A346EA8B8AE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.UI 2019", "Main\Krypton.Toolkit.Suite.Extended.UI\Krypton.Toolkit.Suite.Extended.UI 2019.csproj", "{A4A20AC1-DC76-48AC-9E91-982581AF7D24}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.UI 2019", "Krypton.Toolkit.Suite.Extended.UI\Krypton.Toolkit.Suite.Extended.UI 2019.csproj", "{A4A20AC1-DC76-48AC-9E91-982581AF7D24}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assets", "Assets", "{6B01F113-016E-445F-BE5E-80BA7144B928}"
 	ProjectSection(SolutionItems) = preProject
@@ -209,29 +209,29 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Dock.Extender 2019", "Main\Krypton.Toolkit.Suite.Extended.Dock.Extender\Krypton.Toolkit.Suite.Extended.Dock.Extender 2019.csproj", "{AA0C40E7-7D6B-480D-BD91-3D1F8B2A66A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Dock.Extender 2019", "Krypton.Toolkit.Suite.Extended.Dock.Extender\Krypton.Toolkit.Suite.Extended.Dock.Extender 2019.csproj", "{AA0C40E7-7D6B-480D-BD91-3D1F8B2A66A6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Developer.Utilities 2019", "Shared\Krypton.Toolkit.Suite.Extended.Developer.Utilities\Krypton.Toolkit.Suite.Extended.Developer.Utilities 2019.csproj", "{D47E4D42-7ABB-4795-94BA-9FC99D08D686}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Developer.Utilities 2019", "Krypton.Toolkit.Suite.Extended.Developer.Utilities\Krypton.Toolkit.Suite.Extended.Developer.Utilities 2019.csproj", "{D47E4D42-7ABB-4795-94BA-9FC99D08D686}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.TreeGridView 2019", "Main\Krypton.Toolkit.Suite.Extended.TreeGridView\Krypton.Toolkit.Suite.Extended.TreeGridView 2019.csproj", "{A019F220-E637-4F1A-A010-336E238261F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.TreeGridView 2019", "Krypton.Toolkit.Suite.Extended.TreeGridView\Krypton.Toolkit.Suite.Extended.TreeGridView 2019.csproj", "{A019F220-E637-4F1A-A010-336E238261F5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.DataGridView 2019", "Main\Krypton.Toolkit.Suite.Extended.DataGridView\Krypton.Toolkit.Suite.Extended.DataGridView 2019.csproj", "{2FC865EE-CD9D-4358-B86F-1724EB5E2E5E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.DataGridView 2019", "Krypton.Toolkit.Suite.Extended.DataGridView\Krypton.Toolkit.Suite.Extended.DataGridView 2019.csproj", "{2FC865EE-CD9D-4358-B86F-1724EB5E2E5E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.ComboBox 2019", "Main\Krypton.Toolkit.Suite.Extended.ComboBox\Krypton.Toolkit.Suite.Extended.ComboBox 2019.csproj", "{B96B8A53-9819-4240-8F42-6939F946E919}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.ComboBox 2019", "Krypton.Toolkit.Suite.Extended.ComboBox\Krypton.Toolkit.Suite.Extended.ComboBox 2019.csproj", "{B96B8A53-9819-4240-8F42-6939F946E919}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Circular.ProgressBar 2019", "Main\Krypton.Toolkit.Suite.Extended.Circular.ProgressBar\Krypton.Toolkit.Suite.Extended.Circular.ProgressBar 2019.csproj", "{372946D1-BA66-4A00-BB4D-6EB42FB87602}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Circular.ProgressBar 2019", "Krypton.Toolkit.Suite.Extended.Circular.ProgressBar\Krypton.Toolkit.Suite.Extended.Circular.ProgressBar 2019.csproj", "{372946D1-BA66-4A00-BB4D-6EB42FB87602}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.PropertyGrid 2019", "Main\Krypton.Toolkit.Suite.Extended.PropertyGrid\Krypton.Toolkit.Suite.Extended.PropertyGrid 2019.csproj", "{33976DD6-6AEA-4E3B-9C73-3A98B0D324D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.PropertyGrid 2019", "Krypton.Toolkit.Suite.Extended.PropertyGrid\Krypton.Toolkit.Suite.Extended.PropertyGrid 2019.csproj", "{33976DD6-6AEA-4E3B-9C73-3A98B0D324D7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Fast.Coloured.TextBox 2019", "Main\Krypton.Toolkit.Suite.Extended.Fast.Coloured.TextBox\Krypton.Toolkit.Suite.Extended.Fast.Coloured.TextBox 2019.csproj", "{FF6A9F4F-3E04-4F91-8CC2-1D7DFA6D92D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Fast.Coloured.TextBox 2019", "Krypton.Toolkit.Suite.Extended.Fast.Coloured.TextBox\Krypton.Toolkit.Suite.Extended.Fast.Coloured.TextBox 2019.csproj", "{FF6A9F4F-3E04-4F91-8CC2-1D7DFA6D92D4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.TaskDialogs 2019", "Main\Krypton.Toolkit.Suite.Extended.TaskDialogs\Krypton.Toolkit.Suite.Extended.TaskDialogs 2019.csproj", "{D1CC77DF-89E9-453B-9902-314130880C77}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.TaskDialogs 2019", "Krypton.Toolkit.Suite.Extended.TaskDialogs\Krypton.Toolkit.Suite.Extended.TaskDialogs 2019.csproj", "{D1CC77DF-89E9-453B-9902-314130880C77}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Notifications", "Examples\Notifications\Notifications.csproj", "{93FE697F-A3B2-4663-AE60-4D421C6F01D5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Calendar 2019", "Main\Krypton.Toolkit.Suite.Extended.Calendar\Krypton.Toolkit.Suite.Extended.Calendar 2019.csproj", "{AECF814E-30FB-4916-8F27-4DBB7003748D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Calendar 2019", "Krypton.Toolkit.Suite.Extended.Calendar\Krypton.Toolkit.Suite.Extended.Calendar 2019.csproj", "{AECF814E-30FB-4916-8F27-4DBB7003748D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Drawing 2019", "Shared\Krypton.Toolkit.Suite.Extended.Drawing\Krypton.Toolkit.Suite.Extended.Drawing 2019.csproj", "{2003534B-DF12-4D31-AF02-C31B57D4DDBE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Drawing 2019", "Krypton.Toolkit.Suite.Extended.Drawing\Krypton.Toolkit.Suite.Extended.Drawing 2019.csproj", "{2003534B-DF12-4D31-AF02-C31B57D4DDBE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComboBox", "Examples\ComboBox\ComboBox.csproj", "{151EA3F8-FA27-4273-BA26-BBCF83E75676}"
 EndProject
@@ -239,7 +239,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Navigator", "Examples\Navig
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calendar", "Examples\Calendar\Calendar.csproj", "{46277ED4-0B99-4418-8176-182CE8B69A49}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Tools 2019", "Shared\Krypton.Toolkit.Suite.Extended.Tools\Krypton.Toolkit.Suite.Extended.Tools 2019.csproj", "{CEBB2E17-AE7B-4A02-B44E-35DE61A5A303}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Tools 2019", "Krypton.Toolkit.Suite.Extended.Tools\Krypton.Toolkit.Suite.Extended.Tools 2019.csproj", "{CEBB2E17-AE7B-4A02-B44E-35DE61A5A303}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wizard", "Examples\Wizard\Wizard.csproj", "{5D1D0A4E-7229-4A10-9031-B7E3E618A818}"
 EndProject
