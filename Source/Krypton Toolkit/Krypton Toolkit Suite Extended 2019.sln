@@ -9,8 +9,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{726DC0
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Third Party", "Third Party", "{E311F8C7-1F27-48CD-86BE-CC3D798163BE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Simple.MAPI.NET", "Third Party\Simple.MAPI.NET\Simple.MAPI.NET.csproj", "{4691FCA7-70E4-471A-B716-81FA87293E2E}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repository Items", "Repository Items", "{5D85B551-9AFC-4E96-93C3-D8D81B69971F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build System", "Build System", "{87BE2145-50BE-4A57-9C79-FCE5A64F6065}"
@@ -88,8 +86,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Utilities 2019", "Krypton.Toolkit.Suite.Extended.Utilities\Krypton.Toolkit.Suite.Extended.Utilities 2019.csproj", "{7BA75AAC-7D3E-4ED3-9562-8176380BC49C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ILRepack.Lib.MSBuild.Task", "Third Party\ILRepack.Lib.MSBuild.Task\ILRepack.Lib.MSBuild.Task.csproj", "{66DD6657-39B3-4ACF-9EE9-B60EF96A2262}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scintilla.NET", "Third Party\Scintilla.NET\Scintilla.NET.csproj", "{4C65A943-E114-4535-9C84-1D5CE0612FE0}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Controls 2019", "Krypton.Toolkit.Suite.Extended.Controls\Krypton.Toolkit.Suite.Extended.Controls 2019.csproj", "{838FCD3C-9306-427D-9A99-9E68CEFA584C}"
 EndProject
@@ -257,7 +253,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DrawingUtilities", "Example
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cyotek.Windows.Forms.ColorPicker", "Third Party\Cyotek.Windows.Forms.ColorPicker\Cyotek.Windows.Forms.ColorPicker.csproj", "{B44DF744-3944-4EA4-AAD6-80CDC8FED214}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton.Toolkit.Suite.Extended.File.Copier 2019", "Krypton.Toolkit.Suite.Extended.File.Copier 2019\Krypton.Toolkit.Suite.Extended.File.Copier 2019.csproj", "{19A537AA-0FAD-4B21-AFBB-1DD972C59ACD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.File.Copier 2019", "Krypton.Toolkit.Suite.Extended.File.Copier 2019\Krypton.Toolkit.Suite.Extended.File.Copier 2019.csproj", "{19A537AA-0FAD-4B21-AFBB-1DD972C59ACD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -265,10 +261,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4691FCA7-70E4-471A-B716-81FA87293E2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4691FCA7-70E4-471A-B716-81FA87293E2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4691FCA7-70E4-471A-B716-81FA87293E2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4691FCA7-70E4-471A-B716-81FA87293E2E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CF885412-B8C5-449B-A7AE-D9E81F405A5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CF885412-B8C5-449B-A7AE-D9E81F405A5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF885412-B8C5-449B-A7AE-D9E81F405A5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -381,10 +373,6 @@ Global
 		{66DD6657-39B3-4ACF-9EE9-B60EF96A2262}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{66DD6657-39B3-4ACF-9EE9-B60EF96A2262}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{66DD6657-39B3-4ACF-9EE9-B60EF96A2262}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4C65A943-E114-4535-9C84-1D5CE0612FE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4C65A943-E114-4535-9C84-1D5CE0612FE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4C65A943-E114-4535-9C84-1D5CE0612FE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4C65A943-E114-4535-9C84-1D5CE0612FE0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{838FCD3C-9306-427D-9A99-9E68CEFA584C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{838FCD3C-9306-427D-9A99-9E68CEFA584C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{838FCD3C-9306-427D-9A99-9E68CEFA584C}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -550,7 +538,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{4691FCA7-70E4-471A-B716-81FA87293E2E} = {E311F8C7-1F27-48CD-86BE-CC3D798163BE}
 		{87BE2145-50BE-4A57-9C79-FCE5A64F6065} = {5D85B551-9AFC-4E96-93C3-D8D81B69971F}
 		{A7A69BC2-7682-43FB-8E7C-C42FDAA2A215} = {5D85B551-9AFC-4E96-93C3-D8D81B69971F}
 		{CF885412-B8C5-449B-A7AE-D9E81F405A5C} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
@@ -581,7 +568,6 @@ Global
 		{0851A3F7-8FB9-4E57-965E-76B835587639} = {726DC0AA-2B0D-4EAC-BB7A-7C49AE13A390}
 		{7BA75AAC-7D3E-4ED3-9562-8176380BC49C} = {726DC0AA-2B0D-4EAC-BB7A-7C49AE13A390}
 		{66DD6657-39B3-4ACF-9EE9-B60EF96A2262} = {E311F8C7-1F27-48CD-86BE-CC3D798163BE}
-		{4C65A943-E114-4535-9C84-1D5CE0612FE0} = {E311F8C7-1F27-48CD-86BE-CC3D798163BE}
 		{838FCD3C-9306-427D-9A99-9E68CEFA584C} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 		{572B0D12-A04B-4EB9-B5FB-87F66FF91078} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 		{FDD335B3-3293-4E93-B81F-54F84DC6276A} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}

@@ -5,7 +5,6 @@
         #region Design Code
         private KryptonPanel kryptonPanel1;
         private KryptonButton kdbtnOk;
-        private System.Windows.Forms.Panel panel1;
         private KryptonPanel kryptonPanel2;
         private KryptonButton kbtnCopyFiles;
         private KryptonGroupBox kryptonGroupBox2;
@@ -14,6 +13,7 @@
         private KryptonGroupBox kryptonGroupBox1;
         private KryptonLabel klblFileHash;
         private KryptonFileListing kflListing;
+        private KryptonBorderEdge kryptonBorderEdge1;
         private KryptonButton kdbtnCancel;
 
         private void InitializeComponent()
@@ -21,7 +21,6 @@
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             this.kdbtnOk = new Krypton.Toolkit.KryptonButton();
             this.kdbtnCancel = new Krypton.Toolkit.KryptonButton();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
             this.kbtnCopyFiles = new Krypton.Toolkit.KryptonButton();
             this.kryptonGroupBox2 = new Krypton.Toolkit.KryptonGroupBox();
@@ -30,6 +29,7 @@
             this.kryptonGroupBox1 = new Krypton.Toolkit.KryptonGroupBox();
             this.klblFileHash = new Krypton.Toolkit.KryptonLabel();
             this.kflListing = new Krypton.Toolkit.Suite.Extended.File.Copier.KryptonFileListing();
+            this.kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
@@ -46,11 +46,13 @@
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(this.kryptonBorderEdge1);
             this.kryptonPanel1.Controls.Add(this.kdbtnOk);
             this.kryptonPanel1.Controls.Add(this.kdbtnCancel);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 395);
             this.kryptonPanel1.Name = "kryptonPanel1";
+            this.kryptonPanel1.PanelBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelAlternate;
             this.kryptonPanel1.Size = new System.Drawing.Size(707, 43);
             this.kryptonPanel1.TabIndex = 1;
             // 
@@ -72,15 +74,6 @@
             this.kdbtnCancel.TabIndex = 3;
             this.kdbtnCancel.Values.Text = "C&ancel";
             // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 392);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(707, 3);
-            this.panel1.TabIndex = 3;
-            // 
             // kryptonPanel2
             // 
             this.kryptonPanel2.Controls.Add(this.kbtnCopyFiles);
@@ -91,7 +84,7 @@
             this.kryptonPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel2.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel2.Name = "kryptonPanel2";
-            this.kryptonPanel2.Size = new System.Drawing.Size(707, 392);
+            this.kryptonPanel2.Size = new System.Drawing.Size(707, 395);
             this.kryptonPanel2.TabIndex = 4;
             // 
             // kbtnCopyFiles
@@ -163,15 +156,32 @@
             this.kflListing.Size = new System.Drawing.Size(268, 374);
             this.kflListing.TabIndex = 5;
             // 
-            // KryptonFileMover
+            // kryptonBorderEdge1
             // 
+            this.kryptonBorderEdge1.BorderStyle = Krypton.Toolkit.PaletteBorderStyle.HeaderPrimary;
+            this.kryptonBorderEdge1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.kryptonBorderEdge1.Location = new System.Drawing.Point(0, 0);
+            this.kryptonBorderEdge1.Name = "kryptonBorderEdge1";
+            this.kryptonBorderEdge1.Size = new System.Drawing.Size(707, 1);
+            this.kryptonBorderEdge1.Text = "kryptonBorderEdge1";
+            // 
+            // KryptonFileCopier
+            // 
+            this.AcceptButton = this.kdbtnOk;
+            this.CancelButton = this.kdbtnCancel;
             this.ClientSize = new System.Drawing.Size(707, 438);
             this.Controls.Add(this.kryptonPanel2);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.kryptonPanel1);
-            this.Name = "KryptonFileMover";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "KryptonFileCopier";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
+            this.Text = "Copy Files";
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
+            this.kryptonPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
             this.kryptonPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox2.Panel)).EndInit();
