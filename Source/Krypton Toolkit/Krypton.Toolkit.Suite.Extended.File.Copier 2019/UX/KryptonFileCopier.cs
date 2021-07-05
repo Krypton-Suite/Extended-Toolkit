@@ -198,5 +198,22 @@
 
         }
         #endregion
+
+        #region Variables
+        private string _sourceDirectory, _targetDirectory;
+        #endregion
+
+        #region Properties
+        public string SourceDirectory { get => _sourceDirectory; set => _sourceDirectory = value; }
+
+        public string TargetDirectory { get => _targetDirectory; set => _targetDirectory = value; }
+        #endregion
+
+        #region Constructors
+        public KryptonFileCopier()
+        {
+            InitializeComponent();
+        }
+        #endregion
     }
 }
