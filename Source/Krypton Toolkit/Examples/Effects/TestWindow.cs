@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Windows.Forms;
 
 using Krypton.Toolkit;
-using Krypton.Toolkit.Suite.Extended.Effects;
 
 namespace Effects
 {
@@ -45,12 +43,12 @@ namespace Effects
         private void TestWindow_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
         {
             // this will also be fired from the btnClose as well, but then the window form will be `disposed` or `opacity == 0` of already !
-            FadeController.FadeOut(this, FadeSpeed.Slow);
+            // FadeController.FadeOut(this, FadeSpeed.Slow);
         }
 
         private void kbtnClose_Click(object sender, EventArgs e)
         {
-            FadeController.FadeOutAndClose(this, FadeSpeed.Slow);
+            // FadeController.FadeOutAndClose(this, FadeSpeed.Slow);
         }
 
         public void FadeInComplete()

@@ -40,7 +40,7 @@
     <OutputPath>..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.Circular.ProgressBar\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Third Party\Windows.Forms.Animation.Library\Windows.Forms.Animation.Library.csproj" />
+    <ProjectReference Include="..\Third Party\Windows.Forms.Animation.Library\Windows.Forms.Animation.Library.csproj" />
   </ItemGroup>
 
 </Project>
