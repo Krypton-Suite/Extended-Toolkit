@@ -24,6 +24,7 @@
 * Projects now follow the **Standard-Toolkit** naming convention
 * The `ExtendedKryptonMessageBox` now supports a optional checkbox, custom icon and custom button text
 * New `KryptonMessageBoxExtendedManager` to allows the creation of a `KryptonMessageBoxExtended` through the designer
+* New `KryptonDeveloperDebugConsole` feature - allows devs to see exceptions in a window
 * Updated standard toolkit to build `2108`
 
 =======
