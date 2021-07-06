@@ -10,6 +10,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
         private KryptonBorderEdge kryptonBorderEdge1;
         private KryptonPanel kryptonPanel2;
         private KryptonRichTextBox krtbDebugBox;
+        private KryptonButton kbtnSaveToFile;
         private KryptonPanel kryptonPanel1;
 
         private void InitializeComponent()
@@ -21,6 +22,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
             this.kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
             this.krtbDebugBox = new Krypton.Toolkit.KryptonRichTextBox();
+            this.kbtnSaveToFile = new Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
@@ -29,6 +31,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(this.kbtnSaveToFile);
             this.kryptonPanel1.Controls.Add(this.kbtnClose);
             this.kryptonPanel1.Controls.Add(this.kbtnCopy);
             this.kryptonPanel1.Controls.Add(this.kryptonBorderEdge1);
@@ -48,6 +51,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
             this.kbtnClose.Size = new System.Drawing.Size(90, 25);
             this.kbtnClose.TabIndex = 2;
             this.kbtnClose.Values.Text = "&Close";
+            this.kbtnClose.Click += new System.EventHandler(this.kbtnClose_Click);
             // 
             // kbtnCopy
             // 
@@ -89,6 +93,16 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
             this.krtbDebugBox.TabIndex = 0;
             this.krtbDebugBox.Text = "";
             this.krtbDebugBox.TextChanged += new System.EventHandler(this.krtbDebugBox_TextChanged);
+            // 
+            // kbtnSaveToFile
+            // 
+            this.kbtnSaveToFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.kbtnSaveToFile.Location = new System.Drawing.Point(108, 13);
+            this.kbtnSaveToFile.Name = "kbtnSaveToFile";
+            this.kbtnSaveToFile.Size = new System.Drawing.Size(127, 25);
+            this.kbtnSaveToFile.TabIndex = 4;
+            this.kbtnSaveToFile.Values.Text = "&Save to File";
+            this.kbtnSaveToFile.Click += new System.EventHandler(this.kbtnSaveToFile_Click);
             // 
             // KryptonDeveloperDebugConsole
             // 
@@ -142,5 +156,24 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
         private void krtbDebugBox_TextChanged(object sender, EventArgs e) => kbtnClose.Enabled = MissingFrameWorkAPIs.IsNullOrWhiteSpace(krtbDebugBox.Text);
 
         private void kbtnCopy_Click(object sender, EventArgs e) => Clipboard.SetText(krtbDebugBox.Text);
+
+        private void kbtnClose_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void kbtnSaveToFile_Click(object sender, EventArgs e)
+        {
+            CommonSaveFileDialog csfd = new CommonSaveFileDialog();
+
+            csfd.Filters.Add(new CommonFileDialogFilter("Exception Captures", "txt"));
+
+            csfd.DefaultFileName = $"Exception Capture - {DateTime.Now}";
+
+            if (csfd.ShowDialog() == CommonFileDialogResult.Ok)
+            {
+                krtbDebugBox.SaveFile(csfd.FileName);
+            }
+        }
     }
 }
