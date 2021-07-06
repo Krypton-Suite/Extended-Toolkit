@@ -34,7 +34,7 @@
 		<ItemGroup>
 			<NugetPkgs Include="$(RootFolder)\Bin\Release\*.nupkg" />
 		</ItemGroup>
-		<Delete Files="@(NugetPkgs" />
+		<Delete Files="@(NugetPkgs)" />
 	</Target>
 
 	<Target Name="PackLite">
