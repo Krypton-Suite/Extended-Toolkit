@@ -14,11 +14,13 @@
         private KryptonLabel klblFileHash;
         private KryptonFileListing kflListing;
         private KryptonBorderEdge kryptonBorderEdge1;
+        private KryptonCheckBox kchkUseDebugConsole;
         private KryptonButton kdbtnCancel;
 
         private void InitializeComponent()
         {
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            this.kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
             this.kdbtnOk = new Krypton.Toolkit.KryptonButton();
             this.kdbtnCancel = new Krypton.Toolkit.KryptonButton();
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
@@ -29,7 +31,7 @@
             this.kryptonGroupBox1 = new Krypton.Toolkit.KryptonGroupBox();
             this.klblFileHash = new Krypton.Toolkit.KryptonLabel();
             this.kflListing = new Krypton.Toolkit.Suite.Extended.File.Copier.KryptonFileListing();
-            this.kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
+            this.kchkUseDebugConsole = new Krypton.Toolkit.KryptonCheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
@@ -46,6 +48,7 @@
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(this.kchkUseDebugConsole);
             this.kryptonPanel1.Controls.Add(this.kryptonBorderEdge1);
             this.kryptonPanel1.Controls.Add(this.kdbtnOk);
             this.kryptonPanel1.Controls.Add(this.kdbtnCancel);
@@ -55,6 +58,15 @@
             this.kryptonPanel1.PanelBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelAlternate;
             this.kryptonPanel1.Size = new System.Drawing.Size(707, 43);
             this.kryptonPanel1.TabIndex = 1;
+            // 
+            // kryptonBorderEdge1
+            // 
+            this.kryptonBorderEdge1.BorderStyle = Krypton.Toolkit.PaletteBorderStyle.HeaderPrimary;
+            this.kryptonBorderEdge1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.kryptonBorderEdge1.Location = new System.Drawing.Point(0, 0);
+            this.kryptonBorderEdge1.Name = "kryptonBorderEdge1";
+            this.kryptonBorderEdge1.Size = new System.Drawing.Size(707, 1);
+            this.kryptonBorderEdge1.Text = "kryptonBorderEdge1";
             // 
             // kdbtnOk
             // 
@@ -156,14 +168,13 @@
             this.kflListing.Size = new System.Drawing.Size(268, 374);
             this.kflListing.TabIndex = 5;
             // 
-            // kryptonBorderEdge1
+            // kchkUseDebugConsole
             // 
-            this.kryptonBorderEdge1.BorderStyle = Krypton.Toolkit.PaletteBorderStyle.HeaderPrimary;
-            this.kryptonBorderEdge1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.kryptonBorderEdge1.Location = new System.Drawing.Point(0, 0);
-            this.kryptonBorderEdge1.Name = "kryptonBorderEdge1";
-            this.kryptonBorderEdge1.Size = new System.Drawing.Size(707, 1);
-            this.kryptonBorderEdge1.Text = "kryptonBorderEdge1";
+            this.kchkUseDebugConsole.Location = new System.Drawing.Point(12, 11);
+            this.kchkUseDebugConsole.Name = "kchkUseDebugConsole";
+            this.kchkUseDebugConsole.Size = new System.Drawing.Size(131, 20);
+            this.kchkUseDebugConsole.TabIndex = 5;
+            this.kchkUseDebugConsole.Values.Text = "Use &Debug Console";
             // 
             // KryptonFileCopier
             // 

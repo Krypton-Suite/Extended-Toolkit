@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <LangVersion>preview</LangVersion>
@@ -35,6 +35,9 @@
   </Choose>
   <ItemGroup>
     <PackageReference Include="WindowsAPICodePackShell" Version="1.1.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Developer.Utilities\Krypton.Toolkit.Suite.Extended.Developer.Utilities 2019.csproj" />
   </ItemGroup>
 
 </Project>
