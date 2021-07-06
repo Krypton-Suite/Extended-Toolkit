@@ -287,7 +287,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         private Image _customMessageBoxIcon;
         private Point _optionalCheckBoxLocation;
         private bool _useBlur;
+        private bool? _useYesNoCancelButtonColour;
         private KryptonForm _parentWindow;
+        private Color? _contentMessageColour, _buttonOneTextColour, _buttonTwoTextColour,
+                       _buttonThreeTextColour, _yesButtonColour, _noButtonColour, _textColour,
+                       _yesNoButtonTextColour;
         #endregion
 
         #region Static Fields
@@ -458,15 +462,24 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to -1.</param>
         /// <param name="showToolTips">Displays tool-tips on the controls.</param>
         /// <param name="useBlur">Use the blur functionality on the parent window.</param>
+        /// <param name="useYesNoCancelButtonColour">Allows the user to change the Yes, No and Cancel button colour.</param>
         /// <param name="blurRadius">The radius of the blur effect. By default, this is set to 0.</param>
+        /// <param name="contentMessageColour">The message text colour. By default, this is set to 'Color.Empty'.</param>
+        /// <param name="buttonOneTextColour">The first button text colour. By default, this is set to 'Color.Empty'.</param>
+        /// <param name="buttonTwoTextColour">The seccond button text colour. By default, this is set to 'Color.Empty'.</param>
+        /// <param name="buttonThreeTextColour">The third button text colour. By default, this is set to 'Color.Empty'.</param>
+        /// <param name="yesButtonColour">The Yes button background colour. By default, this is set to 'Color.Empty'.</param>
+        /// <param name="noButtonColour">The Abort/Cancel/No button background colour. By default, this is set to 'Color.Empty'.</param>
+        /// <param name="textColour">The overall text colour. By default, this is set to 'Color.Empty'.</param>
+        /// <param name="yesNoButtonTextColour">The Abort/Cancel/No/Yes button background colour. By default, this is set to 'Color.Empty'.</param>
         /// <param name="parentWindow">The parent window of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
         private InternalKryptonMessageBoxExtended(IWin32Window showOwner, string text, string caption,
-                                                  ExtendedMessageBoxButtons buttons, 
+                                                  ExtendedMessageBoxButtons buttons,
                                                   ExtendedMessageBoxCustomButtonOptions? customButtonOptions,
                                                   ExtendedKryptonMessageBoxIcon icon,
                                                   MessageBoxDefaultButton defaultButton,
                                                   MessageBoxOptions options, HelpInformation helpInformation,
-                                                  bool? showCtrlCopy, Font messageboxTypeface, 
+                                                  bool? showCtrlCopy, Font messageboxTypeface,
                                                   bool showOptionalCheckBox, string optionalCheckBoxText,
                                                   bool isOptionalCheckBoxChecked, CheckState? optionalCheckBoxCheckState,
                                                   AnchorStyles? optionalCheckBoxAnchor, Point? optionalCheckBoxLocation,
@@ -475,8 +488,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                                   string buttonTwoCustomText, string buttonThreeCustomText,
                                                   DialogResult? buttonOneCustomDialogResult, DialogResult? buttonTwoCustomDialogResult,
                                                   DialogResult? buttonThreeCustomDialogResult, int? cornerRadius,
-                                                  bool? showToolTips, bool? useBlur,
-                                                  int? blurRadius, KryptonForm parentWindow = null)
+                                                  bool? showToolTips, bool? useBlur, bool? useYesNoCancelButtonColour,
+                                                  int? blurRadius, Color? contentMessageColour, Color? buttonOneTextColour,
+                                                  Color? buttonTwoTextColour, Color? buttonThreeTextColour,
+                                                  Color? yesButtonColour, Color? noButtonColour, Color? textColour,
+                                                  Color? yesNoButtonTextColour, KryptonForm parentWindow = null)
         {
             #region Store Values
             _text = text;
@@ -536,9 +552,27 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             _cornerRadius = cornerRadius ?? -1;
 
             _useBlur = useBlur ?? false;
-            
+
+            _useYesNoCancelButtonColour = useYesNoCancelButtonColour ?? false;
+
             _blurRadius = blurRadius ?? 0;
-            
+
+            _contentMessageColour = contentMessageColour ?? Color.Empty;
+
+            _buttonOneTextColour = buttonOneTextColour ?? Color.Empty;
+
+            _buttonTwoTextColour = buttonTwoTextColour ?? Color.Empty;
+
+            _buttonThreeTextColour = buttonThreeTextColour ?? Color.Empty;
+
+            _yesButtonColour = yesButtonColour ?? Color.Empty;
+
+            _noButtonColour = noButtonColour ?? Color.Empty;
+
+            _textColour = textColour ?? Color.Empty;
+
+            _yesNoButtonTextColour = yesNoButtonTextColour ?? Color.Empty;
+
             _parentWindow = parentWindow;
             #endregion
 
@@ -592,6 +626,23 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                     _parentWindow.BlurValues.Radius = Convert.ToByte(_blurRadius);
                 }
             }
+
+            // Change Yes, No and Cancel button colours
+            if (_useYesNoCancelButtonColour != null)
+            {
+                if (_yesButtonColour == null && _noButtonColour == null)
+                {
+                    ChangeAbortCancelNoYesButtonColour(Color.Green, Color.Red, Color.White);
+                }
+                else
+                {
+                    ChangeAbortCancelNoYesButtonColour(yesButtonColour, noButtonColour, yesNoButtonTextColour);
+                }
+            }
+            else
+            {
+                ChangeAbortCancelNoYesButtonColour(Color.Empty, Color.Empty, Color.Empty);
+            }
         }
 
         /// <summary>
@@ -636,16 +687,16 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
                                         bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null, Point? optionalCheckBoxLocation = null,
-                                        bool showCopyButton = false, string copyButtonText = null, bool? fade = false, 
-                                        int? fadeSleepTimer = 50, int? cornerRadius = -1, bool? showToolTips = null, 
+                                        bool showCopyButton = false, string copyButtonText = null, bool? fade = false,
+                                        int? fadeSleepTimer = 50, int? cornerRadius = -1, bool? showToolTips = null,
                                         bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
         {
-            return InternalShow(null, text, string.Empty, ExtendedMessageBoxButtons.OK, null, ExtendedKryptonMessageBoxIcon.NONE, 
+            return InternalShow(null, text, string.Empty, ExtendedMessageBoxButtons.OK, null, ExtendedKryptonMessageBoxIcon.NONE,
                                 MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox,
-                                optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, 
+                                optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor,
                                 optionalCheckBoxLocation, null, showCopyButton, copyButtonText, fade, fadeSleepTimer,
                                 null, null, null, null,
-                                null, null, cornerRadius, showToolTips, useBlur, blurRadius, 
+                                null, null, cornerRadius, showToolTips, useBlur, blurRadius,
                                 parentWindow);
         }
 
@@ -677,14 +728,14 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null,
                                         Point? optionalCheckBoxLocation = null, bool showCopyButton = false,
-                                        string copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50, 
+                                        string copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50,
                                         int? cornerRadius = -1, bool? showToolTips = null,
                                         bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
         {
-            return InternalShow(owner, text, string.Empty, ExtendedMessageBoxButtons.OK, null, 
-                                ExtendedKryptonMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0, null, 
-                                showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, 
-                                optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, 
+            return InternalShow(owner, text, string.Empty, ExtendedMessageBoxButtons.OK, null,
+                                ExtendedKryptonMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0, null,
+                                showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked,
+                                optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, null,
                                 showCopyButton, copyButtonText, fade, fadeSleepTimer, null, null, null, null,
                                 null, null, cornerRadius, showToolTips, useBlur, blurRadius,
                                 parentWindow);
@@ -718,14 +769,14 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null,
                                         Point? optionalCheckBoxLocation = null, bool showCopyButton = false,
-                                        string copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50, 
+                                        string copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50,
                                         int? cornerRadius = -1, bool? showToolTips = null,
                                         bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
         {
-            return InternalShow(null, text, caption, ExtendedMessageBoxButtons.OK, null, 
-                                ExtendedKryptonMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0, null, 
+            return InternalShow(null, text, caption, ExtendedMessageBoxButtons.OK, null,
+                                ExtendedKryptonMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0, null,
                                 showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked,
-                                optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, 
+                                optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, null,
                                 showCopyButton, copyButtonText, fade, fadeSleepTimer, null, null, null, null,
                                 null, null, cornerRadius, showToolTips, useBlur, blurRadius,
                                 parentWindow);
@@ -765,10 +816,10 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         int? cornerRadius = -1, bool? showToolTips = null,
                                         bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
         {
-            return InternalShow(owner, text, caption, ExtendedMessageBoxButtons.OK, null, ExtendedKryptonMessageBoxIcon.NONE, 
-                                MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, 
-                                showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, 
-                                optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText, 
+            return InternalShow(owner, text, caption, ExtendedMessageBoxButtons.OK, null, ExtendedKryptonMessageBoxIcon.NONE,
+                                MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface,
+                                showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState,
+                                optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText,
                                 fade, fadeSleepTimer, null, null, null, null,
                                 null, null, cornerRadius, showToolTips, useBlur, blurRadius,
                                 parentWindow);
@@ -823,7 +874,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                          0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText,
                                 isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation,
                 null, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText,
-                                buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, 
+                                buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult,
                                 buttonThreeCustomDialogResult, cornerRadius, showToolTips, useBlur, blurRadius, parentWindow);
         }
 
@@ -874,12 +925,12 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = -1, bool? showToolTips = null,
                                         bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
         {
-            return InternalShow(owner, text, caption, buttons, customButtonOptions, ExtendedKryptonMessageBoxIcon.NONE, 
-                                MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, 
-                                showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, 
+            return InternalShow(owner, text, caption, buttons, customButtonOptions, ExtendedKryptonMessageBoxIcon.NONE,
+                                MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface,
+                                showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState,
                                 optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText,
                                 fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText,
-                                buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult, 
+                                buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult,
                                 cornerRadius, showToolTips, useBlur, blurRadius, parentWindow);
         }
 
@@ -933,7 +984,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
         {
             return InternalShow(null, text, caption, buttons, customButtonOptions, icon, MessageBoxDefaultButton.Button1, 0,
-                                null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, 
+                                null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText,
                                 isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation,
                                 customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText,
                                 buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult,
@@ -992,9 +1043,9 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         {
             return InternalShow(owner, text, caption, buttons, customButtonOptions, icon, MessageBoxDefaultButton.Button1, 0,
                                 null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText,
-                                isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, 
-                                customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, 
-                                buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, 
+                                isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation,
+                                customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText,
+                                buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult,
                                 buttonThreeCustomDialogResult, cornerRadius, showToolTips, useBlur, blurRadius, parentWindow);
         }
 
@@ -1047,10 +1098,10 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = -1, bool? showToolTips = null,
                                         bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
         {
-            return InternalShow(null, text, caption, buttons, customButtonOptions, icon, defaultButton, 0, null, 
+            return InternalShow(null, text, caption, buttons, customButtonOptions, icon, defaultButton, 0, null,
                                 showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked,
                                 optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon,
-                                showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, 
+                                showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText,
                                 buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult,
                                 buttonThreeCustomDialogResult, cornerRadius, showToolTips, useBlur, blurRadius, parentWindow);
         }
@@ -1107,11 +1158,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = -1, bool? showToolTips = null,
                                         bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
         {
-            return InternalShow(owner, text, caption, buttons, customButtonOptions, icon, defaultButton, 0, null, 
-                                showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, 
-                                optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, 
-                                showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, 
-                                buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, 
+            return InternalShow(owner, text, caption, buttons, customButtonOptions, icon, defaultButton, 0, null,
+                                showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked,
+                                optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon,
+                                showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText,
+                                buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult,
                                 buttonThreeCustomDialogResult, cornerRadius, showToolTips, useBlur, blurRadius, parentWindow);
         }
 
@@ -1167,11 +1218,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = -1, bool? showToolTips = null,
                                         bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
         {
-            return InternalShow(null, text, caption, buttons, customButtonOptions, icon, defaultButton, options, null, 
-                                showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, 
+            return InternalShow(null, text, caption, buttons, customButtonOptions, icon, defaultButton, options, null,
+                                showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked,
                                 optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon,
-                                showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, 
-                                buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, 
+                                showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText,
+                                buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult,
                                 buttonThreeCustomDialogResult, cornerRadius, showToolTips, useBlur, blurRadius, parentWindow);
         }
 
@@ -1229,10 +1280,10 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = -1, bool? showToolTips = null,
                                         bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
         {
-            return InternalShow(owner, text, caption, buttons, customButtonOptions, icon, defaultButton, options, null, 
-                                showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, 
-                                optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, 
-                                showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, 
+            return InternalShow(owner, text, caption, buttons, customButtonOptions, icon, defaultButton, options, null,
+                                showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked,
+                                optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon,
+                                showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText,
                                 buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult,
                                 buttonThreeCustomDialogResult, cornerRadius, showToolTips, useBlur, blurRadius, parentWindow);
         }
@@ -1290,11 +1341,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = -1, bool? showToolTips = null,
                                         bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
         {
-            return InternalShow(null, text, caption, buttons, customButtonOptions, icon, defaultButton, options, 
-                                displayHelpButton ? new HelpInformation() : null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, 
-                                optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, 
+            return InternalShow(null, text, caption, buttons, customButtonOptions, icon, defaultButton, options,
+                                displayHelpButton ? new HelpInformation() : null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox,
+                                optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor,
                                 optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer,
-                                buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, 
+                                buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult,
                                 buttonTwoCustomDialogResult, buttonThreeCustomDialogResult, cornerRadius, showToolTips, useBlur,
                                 blurRadius, parentWindow);
         }
@@ -1353,11 +1404,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
         {
             return InternalShow(null, text, caption, buttons, customButtonOptions, icon, defaultButton, options,
-                                new HelpInformation(helpFilePath), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, 
-                                optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, 
+                                new HelpInformation(helpFilePath), showCtrlCopy, messageboxTypeface, showOptionalCheckBox,
+                                optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor,
                                 optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer,
-                                buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, 
-                                buttonTwoCustomDialogResult, buttonThreeCustomDialogResult, cornerRadius, showToolTips, useBlur, 
+                                buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult,
+                                buttonTwoCustomDialogResult, buttonThreeCustomDialogResult, cornerRadius, showToolTips, useBlur,
                                 blurRadius, parentWindow);
         }
 
@@ -1417,9 +1468,9 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
         {
             return InternalShow(owner, text, caption, buttons, customButtonOptions, icon, defaultButton, options,
-                   new HelpInformation(helpFilePath), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, 
+                   new HelpInformation(helpFilePath), showCtrlCopy, messageboxTypeface, showOptionalCheckBox,
                                 optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor,
-                                optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, 
+                                optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer,
                                 buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult,
                                 buttonTwoCustomDialogResult, buttonThreeCustomDialogResult, cornerRadius, showToolTips, useBlur,
                                 blurRadius, parentWindow);
@@ -1479,12 +1530,12 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = -1, bool? showToolTips = null,
                                         bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
         {
-            return InternalShow(null, text, caption, buttons, customButtonOptions, icon, defaultButton, options, 
-                                new HelpInformation(helpFilePath, navigator), showCtrlCopy, messageboxTypeface, 
-                                showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, 
-                                optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, 
+            return InternalShow(null, text, caption, buttons, customButtonOptions, icon, defaultButton, options,
+                                new HelpInformation(helpFilePath, navigator), showCtrlCopy, messageboxTypeface,
+                                showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState,
+                                optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText,
                                 fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText,
-                                buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult, 
+                                buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult,
                                 cornerRadius, showToolTips, useBlur, blurRadius, parentWindow);
         }
 
@@ -1542,9 +1593,9 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = -1, bool? showToolTips = null,
                                         bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
         {
-            return InternalShow(null, text, caption, buttons, customButtonOptions, icon, defaultButton, options, 
+            return InternalShow(null, text, caption, buttons, customButtonOptions, icon, defaultButton, options,
                                 new HelpInformation(helpFilePath, keyword), showCtrlCopy, messageboxTypeface, showOptionalCheckBox,
-                                optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, 
+                                optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor,
                                 optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer,
                                 buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult,
                                 buttonTwoCustomDialogResult, buttonThreeCustomDialogResult, cornerRadius, showToolTips, useBlur,
@@ -1607,8 +1658,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = -1, bool? showToolTips = null,
                                         bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
         {
-            return InternalShow(owner, text, caption, buttons, customButtonOptions, icon, defaultButton, options, 
-                                new HelpInformation(helpFilePath, navigator), showCtrlCopy, messageboxTypeface, 
+            return InternalShow(owner, text, caption, buttons, customButtonOptions, icon, defaultButton, options,
+                                new HelpInformation(helpFilePath, navigator), showCtrlCopy, messageboxTypeface,
                                 showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState,
                                 optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText,
                                 fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText,
@@ -1673,11 +1724,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
         {
             return InternalShow(owner, text, caption, buttons, customButtonOptions, icon, defaultButton, options,
-                                new HelpInformation(helpFilePath, keyword), showCtrlCopy, messageboxTypeface, 
+                                new HelpInformation(helpFilePath, keyword), showCtrlCopy, messageboxTypeface,
                                 showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState,
-                                optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, 
-                                fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, 
-                                buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult, 
+                                optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText,
+                                fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText,
+                                buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult,
                                 cornerRadius, showToolTips, useBlur, blurRadius, parentWindow);
         }
 
@@ -1737,12 +1788,12 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = -1, bool? showToolTips = null,
                                         bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
         {
-            return InternalShow(null, text, caption, buttons, customButtonOptions, icon, defaultButton, options, 
-                                new HelpInformation(helpFilePath, navigator, param), showCtrlCopy, messageboxTypeface, 
-                                showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, 
+            return InternalShow(null, text, caption, buttons, customButtonOptions, icon, defaultButton, options,
+                                new HelpInformation(helpFilePath, navigator, param), showCtrlCopy, messageboxTypeface,
+                                showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState,
                                 optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText,
-                                fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, 
-                                buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult, 
+                                fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText,
+                                buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult,
                                 cornerRadius, showToolTips, useBlur, blurRadius, parentWindow);
         }
 
@@ -1803,12 +1854,12 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = -1, bool? showToolTips = null,
                                         bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
         {
-            return InternalShow(owner, text, caption, buttons, customButtonOptions, icon, defaultButton, options, 
-                   new HelpInformation(helpFilePath, navigator, param), showCtrlCopy, messageboxTypeface, 
-                                showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, 
-                                optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, 
-                                fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, 
-                                buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult, 
+            return InternalShow(owner, text, caption, buttons, customButtonOptions, icon, defaultButton, options,
+                   new HelpInformation(helpFilePath, navigator, param), showCtrlCopy, messageboxTypeface,
+                                showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState,
+                                optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText,
+                                fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText,
+                                buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult,
                                 cornerRadius, showToolTips, useBlur, blurRadius, parentWindow);
         }
 
@@ -1869,7 +1920,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             return InternalShow(owner, text, caption, buttons, customButtonOptions, icon, defaultButton, options, helpInformation, showCtrlCopy, messageBoxTypeface, showOptionalCheckBox,
                                 optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation,
                                 customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText,
-                                buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult, 
+                                buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult,
                                 cornerRadius, showToolTips, useBlur, blurRadius, parentWindow);
         }
         #endregion
@@ -1890,9 +1941,13 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                                  string buttonOneCustomText = null, string buttonTwoCustomText = null,
                                                  string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                                  DialogResult? buttonTwoCustomDialogResult = null,
-                                                 DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = -1, 
-                                                 bool? showToolTips = null, bool? useBlur = null,
-                                                 int? blurRadius = 0, KryptonForm parentWindow = null)
+                                                 DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = -1,
+                                                 bool? showToolTips = null, bool? useBlur = null, bool? useYesNoCancelButtonColour = null,
+                                                 int? blurRadius = 0, Color? contentMessageColour = null,
+                                                 Color? buttonOneTextColour = null, Color? buttonTwoTextColour = null,
+                                                 Color? buttonThreeTextColour = null, Color? yesButtonColour = null,
+                                                 Color? noButtonColour = null, Color? textColour = null,
+                                                 Color? yesNoButtonTextColour = null, KryptonForm parentWindow = null)
         {
             // Check if trying to show a message box from a non-interactive process, this is not possible
             if (!SystemInformation.UserInteractive && ((options & (MessageBoxOptions.ServiceNotification | MessageBoxOptions.DefaultDesktopOnly)) == 0))
@@ -1930,7 +1985,9 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                                                                   buttonTwoCustomText, buttonThreeCustomText,
                                                                                   buttonOneCustomDialogResult, buttonTwoCustomDialogResult,
                                                                                   buttonThreeCustomDialogResult, cornerRadius, showToolTips,
-                                                                                  useBlur, blurRadius, parentWindow))
+                                                                                  useBlur, useYesNoCancelButtonColour, blurRadius, contentMessageColour, buttonOneTextColour,
+                                                                                  buttonTwoTextColour, buttonThreeTextColour, yesButtonColour,
+                                                                                  noButtonColour, textColour, yesNoButtonTextColour, parentWindow))
             {
                 ekmb.StartPosition = showOwner == null ? FormStartPosition.CenterScreen : FormStartPosition.CenterParent;
 
@@ -2313,6 +2370,12 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                     Clipboard.SetText(sb.ToString(), TextDataFormat.UnicodeText);
                 }
             }
+        }
+
+        // TODO: Complete method
+        private void ChangeAbortCancelNoYesButtonColour(Color? yesButtonColour, Color? noButtonColour, Color? yesNoButtonTextColour)
+        {
+            throw new NotImplementedException();
         }
         #endregion
 
