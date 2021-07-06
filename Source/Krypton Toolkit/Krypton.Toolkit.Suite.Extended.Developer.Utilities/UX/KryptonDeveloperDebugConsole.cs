@@ -135,11 +135,30 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
             krtbDebugBox.Text = message;
         }
 
-        public KryptonDeveloperDebugConsole(Exception exception)
+        public KryptonDeveloperDebugConsole(Exception exception, bool showMessageOnly = false, bool showInnerMessage = false, bool useStackTrace = false)
         {
             InitializeComponent();
 
-            krtbDebugBox.Text = exception.StackTrace;
+            if (showMessageOnly)
+            {
+                krtbDebugBox.Text = exception.Message;
+            }
+            else if (showInnerMessage)
+            {
+                krtbDebugBox.Text = exception.InnerException.Message;
+            }
+            else if (useStackTrace)
+            {
+                krtbDebugBox.Text = exception.StackTrace;
+            }
+            else
+            {
+                StringBuilder builder = new StringBuilder();
+
+                builder.Append($"{exception.Message}\n\n{exception.StackTrace}");
+
+                krtbDebugBox.Text = builder.ToString();
+            }
         }
 
         public KryptonDeveloperDebugConsole(string[] content)
