@@ -1,4 +1,6 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.File.Copier
+﻿using Krypton.Toolkit.Suite.Extended.Developer.Utilities;
+
+namespace Krypton.Toolkit.Suite.Extended.File.Copier
 {
     public class KryptonFileCopier : KryptonForm
     {
@@ -20,6 +22,7 @@
         private void InitializeComponent()
         {
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            this.kchkUseDebugConsole = new Krypton.Toolkit.KryptonCheckBox();
             this.kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
             this.kdbtnOk = new Krypton.Toolkit.KryptonButton();
             this.kdbtnCancel = new Krypton.Toolkit.KryptonButton();
@@ -31,7 +34,6 @@
             this.kryptonGroupBox1 = new Krypton.Toolkit.KryptonGroupBox();
             this.klblFileHash = new Krypton.Toolkit.KryptonLabel();
             this.kflListing = new Krypton.Toolkit.Suite.Extended.File.Copier.KryptonFileListing();
-            this.kchkUseDebugConsole = new Krypton.Toolkit.KryptonCheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
@@ -58,6 +60,14 @@
             this.kryptonPanel1.PanelBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelAlternate;
             this.kryptonPanel1.Size = new System.Drawing.Size(707, 43);
             this.kryptonPanel1.TabIndex = 1;
+            // 
+            // kchkUseDebugConsole
+            // 
+            this.kchkUseDebugConsole.Location = new System.Drawing.Point(12, 11);
+            this.kchkUseDebugConsole.Name = "kchkUseDebugConsole";
+            this.kchkUseDebugConsole.Size = new System.Drawing.Size(131, 20);
+            this.kchkUseDebugConsole.TabIndex = 5;
+            this.kchkUseDebugConsole.Values.Text = "Use &Debug Console";
             // 
             // kryptonBorderEdge1
             // 
@@ -106,6 +116,7 @@
             this.kbtnCopyFiles.Size = new System.Drawing.Size(293, 25);
             this.kbtnCopyFiles.TabIndex = 6;
             this.kbtnCopyFiles.Values.Text = "&Copy Files";
+            this.kbtnCopyFiles.Click += new System.EventHandler(this.kbtnCopyFiles_Click);
             // 
             // kryptonGroupBox2
             // 
@@ -168,14 +179,6 @@
             this.kflListing.Size = new System.Drawing.Size(268, 374);
             this.kflListing.TabIndex = 5;
             // 
-            // kchkUseDebugConsole
-            // 
-            this.kchkUseDebugConsole.Location = new System.Drawing.Point(12, 11);
-            this.kchkUseDebugConsole.Name = "kchkUseDebugConsole";
-            this.kchkUseDebugConsole.Size = new System.Drawing.Size(131, 20);
-            this.kchkUseDebugConsole.TabIndex = 5;
-            this.kchkUseDebugConsole.Values.Text = "Use &Debug Console";
-            // 
             // KryptonFileCopier
             // 
             this.AcceptButton = this.kdbtnOk;
@@ -226,5 +229,62 @@
             InitializeComponent();
         }
         #endregion
+
+        #region Methods
+        private void CopyFiles()
+        {
+            if (kflListing.FileListing.Items.Count > 0)
+            {
+                List<string> tempFiles = new List<string>();
+
+                foreach (string item in kflListing.FileListing.Items)
+                {
+                    tempFiles.Add(item);
+                }
+
+                string tempPath = null;
+
+                CommonOpenFileDialog cofd = new CommonOpenFileDialog();
+
+                cofd.IsFolderPicker = true;
+
+                cofd.Title = "Select a destination:";
+
+                if (cofd.ShowDialog() == CommonFileDialogResult.Ok)
+                {
+                    tempPath = Path.GetFullPath(cofd.FileName);
+                }
+
+                CopyFiles copy = new CopyFiles(tempFiles, tempPath);
+
+                KryptonFileMonitor monitor = new KryptonFileMonitor();
+
+                monitor.SynchronizationObject = this;
+
+                copy.CopyAsync(monitor);
+            }
+        }
+        #endregion
+
+        private void kbtnCopyFiles_Click(object sender, EventArgs e)
+        {
+            if (kchkUseDebugConsole.Checked)
+            {
+                List<string> files = new List<string>();
+
+                foreach (string item in kflListing.FileListing.Items)
+                {
+                    files.Add(item);
+                }
+
+                KryptonDeveloperDebugConsole debugConsole = new KryptonDeveloperDebugConsole(HelperUtilites.ReturnDirectoryListing(files));
+
+                debugConsole.Show();
+            }
+            else
+            {
+                CopyFiles();
+            }
+        }
     }
 }

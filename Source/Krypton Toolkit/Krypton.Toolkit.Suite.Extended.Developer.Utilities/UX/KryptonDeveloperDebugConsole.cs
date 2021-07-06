@@ -79,8 +79,8 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
             // 
             // krtbDebugBox
             // 
-            this.krtbDebugBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.krtbDebugBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.krtbDebugBox.Location = new System.Drawing.Point(13, 13);
             this.krtbDebugBox.Name = "krtbDebugBox";
@@ -126,6 +126,16 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
             InitializeComponent();
 
             krtbDebugBox.Text = exception.StackTrace;
+        }
+
+        public KryptonDeveloperDebugConsole(string[] content)
+        {
+            InitializeComponent();
+
+            foreach (string item in content)
+            {
+                krtbDebugBox.Text = item;
+            }
         }
         #endregion
 
