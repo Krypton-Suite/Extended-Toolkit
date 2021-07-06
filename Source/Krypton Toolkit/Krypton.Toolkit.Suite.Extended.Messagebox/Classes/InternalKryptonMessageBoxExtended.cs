@@ -14,6 +14,7 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 
+using Krypton.Toolkit.Suite.Extended.Common;
 using Krypton.Toolkit.Suite.Extended.Messagebox.Properties;
 using Krypton.Toolkit.Suite.Extended.Tools;
 
@@ -1941,7 +1942,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                                  string buttonOneCustomText = null, string buttonTwoCustomText = null,
                                                  string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                                  DialogResult? buttonTwoCustomDialogResult = null,
-                                                 DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = -1,
+                                                 DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = GlobalValues.DEFAULT_CORNER_ROUNDING_VALUE,
                                                  bool? showToolTips = null, bool? useBlur = null, bool? useYesNoCancelButtonColour = null,
                                                  int? blurRadius = 0, Color? contentMessageColour = null,
                                                  Color? buttonOneTextColour = null, Color? buttonTwoTextColour = null,
