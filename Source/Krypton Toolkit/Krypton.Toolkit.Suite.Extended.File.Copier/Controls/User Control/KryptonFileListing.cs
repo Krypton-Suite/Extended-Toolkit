@@ -305,7 +305,22 @@
         {
             try
             {
+                CommonOpenFileDialog cofd = new CommonOpenFileDialog();
 
+                cofd.IsFolderPicker = true;
+
+                cofd.Title = OpenFileDialogTitle;
+
+                if (cofd.ShowDialog() == CommonFileDialogResult.Ok)
+                {
+                    ktxtDirectory.Text = Path.GetFullPath(cofd.FileName);
+
+                    PopulateListBox(FileListing, ktxtDirectory.Text);
+
+                    DirectoryPathChangedEventArgs directoryPathChanged = new DirectoryPathChangedEventArgs(Path.GetFullPath(cofd.FileName));
+
+                    OnDirectoryPathChanged(this, directoryPathChanged);
+                }
             }
             catch (Exception exc)
             {
@@ -313,15 +328,9 @@
             }
         }
 
-        private void klbFileListing_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        private void klbFileListing_SelectedIndexChanged(object sender, EventArgs e) => FileItem = klbFileListing.SelectedItem;
 
-        }
-
-        private void openInExplorerToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
+        private void openInExplorerToolStripMenuItem_Click(object sender, EventArgs e) => OpenInExplorer(klbFileListing.SelectedItem.ToString());
 
         private void renameFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
