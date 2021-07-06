@@ -123,36 +123,38 @@
             this.toolStripMenuItem2,
             this.deleteFileToolStripMenuItem});
             this.ctxActions.Name = "ctxActions";
-            this.ctxActions.Size = new System.Drawing.Size(163, 82);
+            this.ctxActions.Size = new System.Drawing.Size(181, 104);
             // 
             // openInExplorerToolStripMenuItem
             // 
             this.openInExplorerToolStripMenuItem.Name = "openInExplorerToolStripMenuItem";
-            this.openInExplorerToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.openInExplorerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.openInExplorerToolStripMenuItem.Text = "Open in &Explorer";
             this.openInExplorerToolStripMenuItem.Click += new System.EventHandler(this.openInExplorerToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(159, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
             // 
             // renameFileToolStripMenuItem
             // 
             this.renameFileToolStripMenuItem.Name = "renameFileToolStripMenuItem";
-            this.renameFileToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.renameFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.renameFileToolStripMenuItem.Text = "&Rename File...";
+            this.renameFileToolStripMenuItem.Click += new System.EventHandler(this.renameFileToolStripMenuItem_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(159, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(177, 6);
             // 
             // deleteFileToolStripMenuItem
             // 
             this.deleteFileToolStripMenuItem.Name = "deleteFileToolStripMenuItem";
-            this.deleteFileToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.deleteFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.deleteFileToolStripMenuItem.Text = "Delete &File...";
+            this.deleteFileToolStripMenuItem.Click += new System.EventHandler(this.deleteFileToolStripMenuItem_Click);
             // 
             // KryptonFileListing
             // 
@@ -222,37 +224,7 @@
         {
             InitializeComponent();
         }
-        #endregion
-
-        private void kbtnBrowse_Click(object sender, EventArgs e)
-        {
-            CommonOpenFileDialog ofd = new CommonOpenFileDialog();
-
-            ofd.IsFolderPicker = true;
-
-            ofd.Title = OpenFileDialogTitle;
-
-            if (ofd.ShowDialog() == CommonFileDialogResult.Ok)
-            {
-                ktxtDirectory.Text = Path.GetFullPath(ofd.FileName);
-
-                PopulateListBox(FileListing, ktxtDirectory.Text);
-
-                DirectoryPathChangedEventArgs directoryPathChanged = new DirectoryPathChangedEventArgs(Path.GetFullPath(ofd.FileName));
-
-                OnDirectoryPathChanged(this, directoryPathChanged);
-            }
-        }
-
-        private void ktxtDirectory_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void klbFileListing_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            FileItem = klbFileListing.SelectedItem;
-        }
+        #endregion       
 
         #region Methods
         /// <summary>Populates the ListBox.</summary>
@@ -299,12 +271,17 @@
             }
         }
 
-        private void openInExplorerToolStripMenuItem_Click(object sender, EventArgs e)
+        private void OpenInExplorer(string item)
         {
-            OpenInExplorer(klbFileListing.SelectedItem.ToString());
+            try
+            {
+                Process.Start("explorer.exe", item);
+            }
+            catch (Exception ex)
+            {
+                ExceptionCapture.CaptureException(ex);
+            }
         }
-
-        private void OpenInExplorer(string item) => Process.Start("explorer.exe", item);
 
         private void PropagateFileList(List<string> directoryContents, string directory, string fileType = null)
         {
@@ -318,5 +295,42 @@
             }
         }
         #endregion
+
+        private void ktxtDirectory_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void kbtnBrowse_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+            }
+            catch (Exception exc)
+            {
+                ExceptionCapture.CaptureException(exc);
+            }
+        }
+
+        private void klbFileListing_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void openInExplorerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void renameFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void deleteFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

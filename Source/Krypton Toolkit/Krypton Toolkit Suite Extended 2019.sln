@@ -253,11 +253,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DrawingUtilities", "Example
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cyotek.Windows.Forms.ColorPicker", "Third Party\Cyotek.Windows.Forms.ColorPicker\Cyotek.Windows.Forms.ColorPicker.csproj", "{B44DF744-3944-4EA4-AAD6-80CDC8FED214}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.File.Copier 2019", "Krypton.Toolkit.Suite.Extended.File.Copier 2019\Krypton.Toolkit.Suite.Extended.File.Copier 2019.csproj", "{19A537AA-0FAD-4B21-AFBB-1DD972C59ACD}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileCopy", "Examples\FileCopy\FileCopy.csproj", "{B4EB1B6F-095B-434A-B847-A344D4E319B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeveloperUtilities", "Examples\DeveloperUtilities\DeveloperUtilities.csproj", "{3F82B307-2BC8-4BC4-87A9-A80611A79C73}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeveloperUtilities", "Examples\DeveloperUtilities\DeveloperUtilities.csproj", "{3F82B307-2BC8-4BC4-87A9-A80611A79C73}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.File.Copier 2019", "Krypton.Toolkit.Suite.Extended.File.Copier\Krypton.Toolkit.Suite.Extended.File.Copier 2019.csproj", "{672EE617-0450-4B2D-B778-6E5FB5E0FAA2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -533,10 +533,6 @@ Global
 		{B44DF744-3944-4EA4-AAD6-80CDC8FED214}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B44DF744-3944-4EA4-AAD6-80CDC8FED214}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B44DF744-3944-4EA4-AAD6-80CDC8FED214}.Release|Any CPU.Build.0 = Release|Any CPU
-		{19A537AA-0FAD-4B21-AFBB-1DD972C59ACD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{19A537AA-0FAD-4B21-AFBB-1DD972C59ACD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{19A537AA-0FAD-4B21-AFBB-1DD972C59ACD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{19A537AA-0FAD-4B21-AFBB-1DD972C59ACD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B4EB1B6F-095B-434A-B847-A344D4E319B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B4EB1B6F-095B-434A-B847-A344D4E319B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B4EB1B6F-095B-434A-B847-A344D4E319B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -545,6 +541,10 @@ Global
 		{3F82B307-2BC8-4BC4-87A9-A80611A79C73}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F82B307-2BC8-4BC4-87A9-A80611A79C73}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F82B307-2BC8-4BC4-87A9-A80611A79C73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{672EE617-0450-4B2D-B778-6E5FB5E0FAA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{672EE617-0450-4B2D-B778-6E5FB5E0FAA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{672EE617-0450-4B2D-B778-6E5FB5E0FAA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{672EE617-0450-4B2D-B778-6E5FB5E0FAA2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -632,9 +632,9 @@ Global
 		{90812991-5BBB-4A07-BF82-9420C368E9CB} = {D3F14B97-D6F3-47F8-85CB-E9A7903D372D}
 		{5C3D0BA2-67AB-4041-B45B-A3BB243BC750} = {25D5F0A6-A601-424B-9431-8EFE139A58A7}
 		{B44DF744-3944-4EA4-AAD6-80CDC8FED214} = {E311F8C7-1F27-48CD-86BE-CC3D798163BE}
-		{19A537AA-0FAD-4B21-AFBB-1DD972C59ACD} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 		{B4EB1B6F-095B-434A-B847-A344D4E319B4} = {25D5F0A6-A601-424B-9431-8EFE139A58A7}
 		{3F82B307-2BC8-4BC4-87A9-A80611A79C73} = {25D5F0A6-A601-424B-9431-8EFE139A58A7}
+		{672EE617-0450-4B2D-B778-6E5FB5E0FAA2} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A7CE7732-0982-4703-8EFD-7715D569BAB5}

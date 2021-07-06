@@ -43,8 +43,6 @@ namespace DeveloperUtilities
         }
 
         #endregion
-
-        private Krypton.Toolkit.Suite.Extended.Buttons.KryptonUACButtonVersion1 kryptonUACButtonVersion11;
     }
 }
 

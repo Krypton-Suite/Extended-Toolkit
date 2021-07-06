@@ -6,13 +6,9 @@
  */
 #endregion
 
-using System;
-using System.IO;
-using System.Runtime.ExceptionServices;
-using System.Windows.Forms;
-
 namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
 {
+    // TODO: Rewrite this class!
     /// <summary>For use in try/catch blocks. Uses the standard <see cref="KryptonMessageBox"/> to display exception messages.</summary>
     public class ExceptionCapture
     {
@@ -34,7 +30,8 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
         /// <param name="icon">The icon.</param>
         /// <param name="className">Name of the class.</param>
         /// <param name="methodSignature">The method signature.</param>
-        public static void CaptureException(Exception exception, string title = @"Exception Caught", MessageBoxButtons buttons = MessageBoxButtons.OK, MessageBoxIcon icon = MessageBoxIcon.Error, string className = "", string methodSignature = "")
+        /// <param name="useDebugConsole">Use the debug console.</param>
+        public static void CaptureException(Exception exception, string title = @"Exception Caught", MessageBoxButtons buttons = MessageBoxButtons.OK, MessageBoxIcon icon = MessageBoxIcon.Error, string className = "", string methodSignature = "", bool useDebugConsole = false)
         {
             if (className != "")
             {
@@ -51,6 +48,13 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
             else
             {
                 KryptonMessageBox.Show($"An unexpected error has occurred: { exception.Message }.", title, buttons, icon);
+            }
+
+            if (useDebugConsole)
+            {
+                KryptonDeveloperDebugConsole debugConsole = new KryptonDeveloperDebugConsole(exception);
+
+                debugConsole.Show();
             }
         }
 
