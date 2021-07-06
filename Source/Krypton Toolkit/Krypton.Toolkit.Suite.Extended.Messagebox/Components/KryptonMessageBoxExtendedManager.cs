@@ -6,14 +6,11 @@
  */
 #endregion
 
-using System.ComponentModel;
-using System.Drawing;
-using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Messagebox
 {
     /// <summary>Allows the creation of a <see cref="InternalKryptonMessageBoxExtended"/> through the designer.</summary>
-    /// <seealso cref="System.ComponentModel.Component" />
+    /// <seealso cref="Component" />
     [ToolboxBitmap(typeof(KryptonMessageBoxExtendedManager), "ToolboxBitmaps.KryptonMessageBox.bmp"),
      DefaultEvent("ShowMessageBox"), DefaultProperty("MessageBoxContentText"),
      Description("Allows the creation of a KryptonMessageBoxExtended through the designer.")] //, Designer(typeof(KryptonMessageBoxConfiguratorDesigner))]

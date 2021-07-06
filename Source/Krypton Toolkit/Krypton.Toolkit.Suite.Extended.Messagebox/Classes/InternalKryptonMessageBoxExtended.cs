@@ -6,18 +6,6 @@
  */
 #endregion
 
-using System;
-using System.ComponentModel;
-using System.Drawing;
-using System.Media;
-using System.Text;
-using System.Threading;
-using System.Windows.Forms;
-
-using Krypton.Toolkit.Suite.Extended.Common;
-using Krypton.Toolkit.Suite.Extended.Messagebox.Properties;
-using Krypton.Toolkit.Suite.Extended.Tools;
-
 namespace Krypton.Toolkit.Suite.Extended.Messagebox
 {
     /// <summary>
