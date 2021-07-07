@@ -621,16 +621,16 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             {
                 if (_yesButtonColour == null && _noButtonColour == null)
                 {
-                    ChangeAbortCancelNoYesButtonColour(Color.Green, Color.Red, Color.White);
+                    ChangeAbortCancelNoYesButtonColour(buttons, Color.Green, Color.Red, Color.White);
                 }
                 else
                 {
-                    ChangeAbortCancelNoYesButtonColour(yesButtonColour, noButtonColour, yesNoButtonTextColour);
+                    ChangeAbortCancelNoYesButtonColour(_buttons, yesButtonColour, noButtonColour, yesNoButtonTextColour);
                 }
             }
             else
             {
-                ChangeAbortCancelNoYesButtonColour(Color.Empty, Color.Empty, Color.Empty);
+                ChangeAbortCancelNoYesButtonColour(_buttons, Color.Empty, Color.Empty, Color.Empty);
             }
         }
 
@@ -2364,6 +2364,28 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         {
             Text = (MissingFrameWorkAPIs.IsNullOrWhiteSpace(_caption) ? string.Empty : _caption.Split(Environment.NewLine.ToCharArray())[0]);
             _messageText.StateCommon.Font = _messageboxTypeface;
+
+            if (_textColour != null || _textColour != Color.Empty)
+            {
+                _messageText.StateCommon.TextColor = (Color)_textColour;
+
+                _optionalCheckBox.StateCommon.ShortText.Color1 = (Color)_textColour;
+
+                _optionalCheckBox.StateCommon.ShortText.Color2 = (Color)_textColour;
+            }
+            else if (_contentMessageColour != null || _contentMessageColour != Color.Empty)
+            {
+                _messageText.StateCommon.TextColor = (Color)_contentMessageColour;
+            }
+            else
+            {
+                _messageText.StateCommon.TextColor = Color.Empty;
+
+                _optionalCheckBox.StateCommon.ShortText.Color1 = Color.Empty;
+
+                _optionalCheckBox.StateCommon.ShortText.Color2 = Color.Empty;
+            }
+
             _messageText.Text = _text;
         }
 
@@ -2738,9 +2760,31 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         }
 
         // TODO: Complete method
-        private void ChangeAbortCancelNoYesButtonColour(Color? yesButtonColour, Color? noButtonColour, Color? yesNoButtonTextColour)
+        private void ChangeAbortCancelNoYesButtonColour(ExtendedMessageBoxButtons buttons, Color? yesButtonColour, Color? noButtonColour, Color? yesNoButtonTextColour)
         {
-            throw new NotImplementedException();
+            switch (buttons)
+            {
+                case ExtendedMessageBoxButtons.CUSTOM:
+                    break;
+                case ExtendedMessageBoxButtons.OK:
+                    if (yesButtonColour != null || yesButtonColour == Color.Empty)
+                    {
+
+                    }
+                    break;
+                case ExtendedMessageBoxButtons.OKCANCEL:
+                    break;
+                case ExtendedMessageBoxButtons.ABORTRETRYIGNORE:
+                    break;
+                case ExtendedMessageBoxButtons.YESNOCANCEL:
+                    break;
+                case ExtendedMessageBoxButtons.YESNO:
+                    break;
+                case ExtendedMessageBoxButtons.RETRYCANCEL:
+                    break;
+                default:
+                    break;
+            }
         }
         #endregion
 
