@@ -2769,18 +2769,158 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                 case ExtendedMessageBoxButtons.OK:
                     if (yesButtonColour != null || yesButtonColour == Color.Empty)
                     {
+                        _button1.StateCommon.Back.Color1 = (Color)yesButtonColour;
 
+                        _button1.StateCommon.Back.Color2 = (Color)yesButtonColour;
+
+                        _button1.StateCommon.Content.ShortText.Color1 = (Color)yesNoButtonTextColour;
+
+                        _button1.StateCommon.Content.ShortText.Color2 = (Color)yesButtonColour;
+                    }
+                    else
+                    {
+                        _button1.StateCommon.Back.Color1 = Color.Empty;
+
+                        _button1.StateCommon.Back.Color2 = Color.Empty;
+
+                        _button1.StateCommon.Content.ShortText.Color1 = Color.Empty;
+
+                        _button1.StateCommon.Content.ShortText.Color2 = Color.Empty;
                     }
                     break;
                 case ExtendedMessageBoxButtons.OKCANCEL:
+                    if (yesButtonColour != null || yesButtonColour == Color.Empty && noButtonColour != null || noButtonColour == Color.Empty)
+                    {
+                        _button1.StateCommon.Back.Color1 = (Color)noButtonColour;
+
+                        _button1.StateCommon.Back.Color2 = (Color)noButtonColour;
+
+                        _button2.StateCommon.Back.Color1 = (Color)yesButtonColour;
+
+                        _button2.StateCommon.Back.Color2 = (Color)yesButtonColour;
+
+                        _button1.StateCommon.Content.ShortText.Color1 = (Color)yesNoButtonTextColour;
+
+                        _button1.StateCommon.Content.ShortText.Color2 = (Color)yesNoButtonTextColour;
+
+                        _button2.StateCommon.Content.ShortText.Color1 = (Color)yesNoButtonTextColour;
+
+                        _button2.StateCommon.Content.ShortText.Color2 = (Color)yesNoButtonTextColour;
+                    }
+                    else
+                    {
+                        _button1.StateCommon.Back.Color1 = Color.Empty;
+
+                        _button1.StateCommon.Back.Color2 = Color.Empty;
+
+                        _button1.StateCommon.Content.ShortText.Color1 = Color.Empty;
+
+                        _button1.StateCommon.Content.ShortText.Color2 = Color.Empty;
+
+                        _button2.StateCommon.Back.Color1 = Color.Empty;
+
+                        _button2.StateCommon.Back.Color2 = Color.Empty;
+
+                        _button2.StateCommon.Content.ShortText.Color1 = Color.Empty;
+
+                        _button2.StateCommon.Content.ShortText.Color2 = Color.Empty;
+                    }
                     break;
                 case ExtendedMessageBoxButtons.ABORTRETRYIGNORE:
+                    if (yesButtonColour != null || yesButtonColour == Color.Empty && noButtonColour != null || noButtonColour == Color.Empty)
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
                     break;
                 case ExtendedMessageBoxButtons.YESNOCANCEL:
+                    if (yesButtonColour != null || yesButtonColour == Color.Empty && noButtonColour != null || noButtonColour == Color.Empty)
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
                     break;
                 case ExtendedMessageBoxButtons.YESNO:
+                    if (yesButtonColour != null || yesButtonColour == Color.Empty && noButtonColour != null || noButtonColour == Color.Empty)
+                    {
+                        _button1.StateCommon.Back.Color1 = (Color)noButtonColour;
+
+                        _button1.StateCommon.Back.Color2 = (Color)noButtonColour;
+
+                        _button2.StateCommon.Back.Color1 = (Color)yesButtonColour;
+
+                        _button2.StateCommon.Back.Color2 = (Color)yesButtonColour;
+
+                        _button1.StateCommon.Content.ShortText.Color1 = (Color)yesNoButtonTextColour;
+
+                        _button1.StateCommon.Content.ShortText.Color2 = (Color)yesNoButtonTextColour;
+
+                        _button2.StateCommon.Content.ShortText.Color1 = (Color)yesNoButtonTextColour;
+
+                        _button2.StateCommon.Content.ShortText.Color2 = (Color)yesNoButtonTextColour;
+                    }
+                    else
+                    {
+                        _button1.StateCommon.Back.Color1 = Color.Empty;
+
+                        _button1.StateCommon.Back.Color2 = Color.Empty;
+
+                        _button1.StateCommon.Content.ShortText.Color1 = Color.Empty;
+
+                        _button1.StateCommon.Content.ShortText.Color2 = Color.Empty;
+
+                        _button2.StateCommon.Back.Color1 = Color.Empty;
+
+                        _button2.StateCommon.Back.Color2 = Color.Empty;
+
+                        _button2.StateCommon.Content.ShortText.Color1 = Color.Empty;
+
+                        _button2.StateCommon.Content.ShortText.Color2 = Color.Empty;
+                    }
                     break;
                 case ExtendedMessageBoxButtons.RETRYCANCEL:
+                    if (yesButtonColour != null || yesButtonColour == Color.Empty && noButtonColour != null || noButtonColour == Color.Empty)
+                    {
+                        _button1.StateCommon.Back.Color1 = (Color)noButtonColour;
+
+                        _button1.StateCommon.Back.Color2 = (Color)noButtonColour;
+
+                        _button2.StateCommon.Back.Color1 = (Color)yesButtonColour;
+
+                        _button2.StateCommon.Back.Color2 = (Color)yesButtonColour;
+
+                        _button1.StateCommon.Content.ShortText.Color1 = (Color)yesNoButtonTextColour;
+
+                        _button1.StateCommon.Content.ShortText.Color2 = (Color)yesNoButtonTextColour;
+
+                        _button2.StateCommon.Content.ShortText.Color1 = (Color)yesNoButtonTextColour;
+
+                        _button2.StateCommon.Content.ShortText.Color2 = (Color)yesNoButtonTextColour;
+                    }
+                    else
+                    {
+                        _button1.StateCommon.Back.Color1 = Color.Empty;
+
+                        _button1.StateCommon.Back.Color2 = Color.Empty;
+
+                        _button1.StateCommon.Content.ShortText.Color1 = Color.Empty;
+
+                        _button1.StateCommon.Content.ShortText.Color2 = Color.Empty;
+
+                        _button2.StateCommon.Back.Color1 = Color.Empty;
+
+                        _button2.StateCommon.Back.Color2 = Color.Empty;
+
+                        _button2.StateCommon.Content.ShortText.Color1 = Color.Empty;
+
+                        _button2.StateCommon.Content.ShortText.Color2 = Color.Empty;
+                    }
                     break;
                 default:
                     break;
