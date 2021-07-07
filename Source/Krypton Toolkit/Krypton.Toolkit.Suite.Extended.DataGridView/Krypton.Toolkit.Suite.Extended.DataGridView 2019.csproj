@@ -42,15 +42,21 @@
   
   <!--TODO: Help!!-->
   <ItemGroup>
-    <Reference Include="System.ValueTuple, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net4'))">
-      <SpecificVersion>True</SpecificVersion>
-      <Version>4.0.0.0</Version>
-      <TreatAsUsed>True</TreatAsUsed>
-    </Reference>
-    
     <Reference Include="System.ValueTuple" Condition="'$(TargetFramework)' == 'net35'" />
-    
-    <PackageReference Include="System.ValueTuple" Version="4.5.0" />
+    <Reference Include="System.ValueTuple" Condition="'$(TargetFramework)' == 'net40'" />
+    <Reference Include="System.ValueTuple" Condition="'$(TargetFramework)' == 'net45'" />
+    <Reference Include="System.ValueTuple" Condition="'$(TargetFramework)' == 'net451'" />
+    <Reference Include="System.ValueTuple" Condition="'$(TargetFramework)' == 'net452'" />
+    <Reference Include="System.ValueTuple" Condition="'$(TargetFramework)' == 'net46'" />
+    <Reference Include="System.ValueTuple" Condition="'$(TargetFramework)' == 'net461'" />
+    <Reference Include="System.ValueTuple" Condition="'$(TargetFramework)' == 'net462'" />
+    <Reference Include="System.ValueTuple" Condition="'$(TargetFramework)' == 'net47'" />
+    <Reference Include="System.ValueTuple" Condition="'$(TargetFramework)' == 'net471'" />
+    <Reference Include="System.ValueTuple" Condition="'$(TargetFramework)' == 'net472'" />
+    <Reference Include="System.ValueTuple" Condition="'$(TargetFramework)' == 'net48'" />
+    <Reference Include="System.ValueTuple" Condition="'$(TargetFramework)' == 'netcoreapp3.1'" />
+    <Reference Include="System.ValueTuple" Condition="'$(TargetFramework)' == 'net5'" />
+    <Reference Include="System.ValueTuple" Condition="'$(TargetFramework)' == 'net6'" />
   </ItemGroup>
   
 </Project>
