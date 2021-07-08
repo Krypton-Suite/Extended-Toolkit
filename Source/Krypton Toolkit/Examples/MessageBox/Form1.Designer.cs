@@ -34,6 +34,7 @@ namespace MessageBox
             this.kchkDefineTypeface = new Krypton.Toolkit.KryptonCheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
+            this.kryptonGroupBox6 = new Krypton.Toolkit.KryptonGroupBox();
             this.kryptonGroupBox5 = new Krypton.Toolkit.KryptonGroupBox();
             this.kryptonTextBox3 = new Krypton.Toolkit.KryptonTextBox();
             this.kryptonLabel5 = new Krypton.Toolkit.KryptonLabel();
@@ -76,12 +77,16 @@ namespace MessageBox
             this.kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
             this.ktxtCaption = new Krypton.Toolkit.KryptonTextBox();
             this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
-            this.kryptonGroupBox6 = new Krypton.Toolkit.KryptonGroupBox();
             this.kmbc = new Krypton.Toolkit.Suite.Extended.Messagebox.KryptonMessageBoxExtendedManager();
+            this.kryptonColorButton1 = new Krypton.Toolkit.KryptonColorButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
             this.kryptonPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox6.Panel)).BeginInit();
+            this.kryptonGroupBox6.Panel.SuspendLayout();
+            this.kryptonGroupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox5.Panel)).BeginInit();
             this.kryptonGroupBox5.Panel.SuspendLayout();
@@ -102,9 +107,6 @@ namespace MessageBox
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1.Panel)).BeginInit();
             this.kryptonGroupBox1.Panel.SuspendLayout();
             this.kryptonGroupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox6.Panel)).BeginInit();
-            this.kryptonGroupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // kryptonPanel1
@@ -163,6 +165,18 @@ namespace MessageBox
             this.kryptonPanel2.Size = new System.Drawing.Size(963, 580);
             this.kryptonPanel2.TabIndex = 2;
             // 
+            // kryptonGroupBox6
+            // 
+            this.kryptonGroupBox6.Location = new System.Drawing.Point(517, 363);
+            this.kryptonGroupBox6.Name = "kryptonGroupBox6";
+            // 
+            // kryptonGroupBox6.Panel
+            // 
+            this.kryptonGroupBox6.Panel.Controls.Add(this.kryptonColorButton1);
+            this.kryptonGroupBox6.Size = new System.Drawing.Size(436, 126);
+            this.kryptonGroupBox6.TabIndex = 10;
+            this.kryptonGroupBox6.Values.Heading = "Colour Customisation";
+            // 
             // kryptonGroupBox5
             // 
             this.kryptonGroupBox5.Location = new System.Drawing.Point(517, 144);
@@ -179,17 +193,17 @@ namespace MessageBox
             this.kryptonGroupBox5.Panel.Controls.Add(this.kryptonRadioButton1);
             this.kryptonGroupBox5.Panel.Controls.Add(this.kryptonRadioButton2);
             this.kryptonGroupBox5.Panel.Controls.Add(this.kryptonRadioButton3);
-            this.kryptonGroupBox5.Size = new System.Drawing.Size(436, 283);
+            this.kryptonGroupBox5.Size = new System.Drawing.Size(436, 213);
             this.kryptonGroupBox5.TabIndex = 9;
             this.kryptonGroupBox5.Values.Heading = "Custom Buttons";
             // 
             // kryptonTextBox3
             // 
+            this.kryptonTextBox3.Hint = "Button three text";
             this.kryptonTextBox3.Location = new System.Drawing.Point(126, 124);
             this.kryptonTextBox3.Name = "kryptonTextBox3";
             this.kryptonTextBox3.Size = new System.Drawing.Size(162, 23);
             this.kryptonTextBox3.TabIndex = 15;
-            this.kryptonTextBox3.Text = "kryptonTextBox3";
             // 
             // kryptonLabel5
             // 
@@ -201,11 +215,11 @@ namespace MessageBox
             // 
             // kryptonTextBox2
             // 
+            this.kryptonTextBox2.Hint = "Button two text";
             this.kryptonTextBox2.Location = new System.Drawing.Point(126, 81);
             this.kryptonTextBox2.Name = "kryptonTextBox2";
             this.kryptonTextBox2.Size = new System.Drawing.Size(162, 23);
             this.kryptonTextBox2.TabIndex = 13;
-            this.kryptonTextBox2.Text = "kryptonTextBox2";
             // 
             // kryptonLabel4
             // 
@@ -265,7 +279,7 @@ namespace MessageBox
             this.kryptonGroupBox4.Panel.Controls.Add(this.knudFadeSleepTimerValue);
             this.kryptonGroupBox4.Panel.Controls.Add(this.klblFadeSleepTimer);
             this.kryptonGroupBox4.Panel.Controls.Add(this.kchkFadeMessageBox);
-            this.kryptonGroupBox4.Size = new System.Drawing.Size(434, 150);
+            this.kryptonGroupBox4.Size = new System.Drawing.Size(434, 80);
             this.kryptonGroupBox4.TabIndex = 8;
             this.kryptonGroupBox4.Values.Heading = "Fade Values";
             // 
@@ -432,7 +446,7 @@ namespace MessageBox
             // 
             // kryptonGroupBox1
             // 
-            this.kryptonGroupBox1.Location = new System.Drawing.Point(77, 433);
+            this.kryptonGroupBox1.Location = new System.Drawing.Point(77, 363);
             this.kryptonGroupBox1.Name = "kryptonGroupBox1";
             // 
             // kryptonGroupBox1.Panel
@@ -568,14 +582,6 @@ namespace MessageBox
             this.kryptonLabel1.TabIndex = 0;
             this.kryptonLabel1.Values.Text = "Caption:";
             // 
-            // kryptonGroupBox6
-            // 
-            this.kryptonGroupBox6.Location = new System.Drawing.Point(517, 433);
-            this.kryptonGroupBox6.Name = "kryptonGroupBox6";
-            this.kryptonGroupBox6.Size = new System.Drawing.Size(436, 126);
-            this.kryptonGroupBox6.TabIndex = 10;
-            this.kryptonGroupBox6.Values.Heading = "Colour Customisation";
-            // 
             // kmbc
             // 
             this.kmbc.ButtonOneCustomText = "Does";
@@ -607,6 +613,14 @@ namespace MessageBox
             this.kmbc.YesButtonColour = System.Drawing.Color.Green;
             this.kmbc.YesNoButtonTextColour = System.Drawing.Color.White;
             // 
+            // kryptonColorButton1
+            // 
+            this.kryptonColorButton1.Location = new System.Drawing.Point(10, 8);
+            this.kryptonColorButton1.Name = "kryptonColorButton1";
+            this.kryptonColorButton1.Size = new System.Drawing.Size(168, 25);
+            this.kryptonColorButton1.TabIndex = 0;
+            this.kryptonColorButton1.Values.Text = "kryptonColorButton1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -626,6 +640,10 @@ namespace MessageBox
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
             this.kryptonPanel2.ResumeLayout(false);
             this.kryptonPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox6.Panel)).EndInit();
+            this.kryptonGroupBox6.Panel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox6)).EndInit();
+            this.kryptonGroupBox6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox5.Panel)).EndInit();
             this.kryptonGroupBox5.Panel.ResumeLayout(false);
             this.kryptonGroupBox5.Panel.PerformLayout();
@@ -651,9 +669,6 @@ namespace MessageBox
             this.kryptonGroupBox1.Panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1)).EndInit();
             this.kryptonGroupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox6.Panel)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox6)).EndInit();
-            this.kryptonGroupBox6.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -709,6 +724,7 @@ namespace MessageBox
         private Krypton.Toolkit.KryptonRadioButton kryptonRadioButton2;
         private Krypton.Toolkit.KryptonRadioButton kryptonRadioButton3;
         private Krypton.Toolkit.KryptonGroupBox kryptonGroupBox6;
+        private Krypton.Toolkit.KryptonColorButton kryptonColorButton1;
     }
 }
 
