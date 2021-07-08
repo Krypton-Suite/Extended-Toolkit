@@ -107,7 +107,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             _panelButtons.Controls.Add(_button3);
             _panelButtons.Controls.Add(_button1);
             _panelButtons.Controls.Add(_button2);
-            _panelButtons.Controls.Add(_optionalCheckBox);
+            _panelButtons.Controls.Add(_panelCheckBox);
             _panelButtons.Controls.Add(_copyButton);
             _panelButtons.Dock = DockStyle.Top;
             _panelButtons.Location = new Point(0, 52);
@@ -116,17 +116,19 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             _panelButtons.PanelBackStyle = PaletteBackStyle.PanelAlternate;
             _panelButtons.Size = new Size(156, 26);
             _panelButtons.TabIndex = 0;
-            /*//
+            //
             // _panelCheckBox
             //
+            _panelCheckBox.AutoSize = true;
+            _panelCheckBox.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             _panelCheckBox.Controls.Add(_optionalCheckBox);
-            _panelCheckBox.Dock = DockStyle.Top;
+            _panelCheckBox.Dock = DockStyle.Left;
             _panelCheckBox.Location = new Point(0, 52);
             _panelCheckBox.Margin = new Padding(0);
             _panelCheckBox.Name = "_panelCheckBox";
             _panelCheckBox.PanelBackStyle = PaletteBackStyle.PanelAlternate;
             _panelCheckBox.Size = new Size(156, 26);
-            _panelCheckBox.TabIndex = 6;*/
+            _panelCheckBox.TabIndex = 6;
             // 
             // borderEdge
             // 
