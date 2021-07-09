@@ -80,6 +80,6 @@
   
     <!--TODO: Needs looking at, attemping to add the build output to a ZIP file for distribution-->
     <!--<Target Name="PostBuild" AfterTargets="PostBuildEvent">
-      <Exec Command="if $(ConfigurationName) == Debug (powershell -Command Get-ChildItem -Path '$(TargetDir)publish' -Recurse|Compress-Archive -DestinationPath '$(SolutionDir)PublishOutput$(ProjectName)-$(ConfigurationName).zip' -Force)" />
+      <Exec Command="if $(ConfigurationName) == Release (powershell -Command Get-ChildItem -Path '$(TargetDir)publish' -Recurse|Compress-Archive -DestinationPath '$(SolutionDir)PublishOutput$(ProjectName)-$(ConfigurationName).zip' -Force)" />
     </Target>-->
   </Project>

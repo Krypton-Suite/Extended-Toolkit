@@ -42,7 +42,9 @@
   
   <!--TODO: Help!!-->
   <ItemGroup>
-    <Reference Include="System.ValueTuple" />
+    <!--<Reference Include="System.ValueTuple" />-->
+
+    <PackageReference Include="System.ValueTuple" Version="4.5.0" />
   </ItemGroup>
   
 </Project>
