@@ -213,6 +213,8 @@
             // 
             // ktxtFilePath
             // 
+            this.ktxtFilePath.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.ktxtFilePath.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
             this.ktxtFilePath.Hint = "Type a file path here...";
             this.ktxtFilePath.Location = new System.Drawing.Point(83, 12);
             this.ktxtFilePath.Name = "ktxtFilePath";
@@ -332,19 +334,6 @@
             tspbHashProgress.Value = e.ProgressPercentage;
 
             kwlHash.Text = "Please wait...";
-
-            if (tspbHashProgress.Value > 0)
-            {
-                tspbHashProgress.Enabled = true;
-            }
-            else if (tspbHashProgress.Value == 100)
-            {
-                tspbHashProgress.Enabled = false;
-            }
-            else
-            {
-                tspbHashProgress.Enabled = false;
-            }
         }
 
         private void bgMD5Hash_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -379,16 +368,19 @@
 
         private void kcbToggleCase_CheckedChanged(object sender, EventArgs e)
         {
-            if (!MissingFrameWorkAPIs.IsNullOrWhiteSpace(kwlHash.Text))
+            string tempHashString = kwlHash.Text;
+
+            if (kcbToggleCase.Checked)
             {
-                if (kcbToggleCase.Checked)
-                {
-                    kwlHash.Text.ToUpper();
-                }
-                else
-                {
-                    kwlHash.Text.ToLower();
-                }
+                tempHashString.ToUpper();
+
+                kwlHash.Text = tempHashString;
+            }
+            else
+            {
+                tempHashString.ToLower();
+
+                kwlHash.Text = tempHashString;
             }
         }
     }
