@@ -17,7 +17,9 @@
         private KryptonComboBox kcmbAlgorithimType;
         private KryptonLabel kryptonLabel2;
         private KryptonButton kbtnCancel;
-        private System.ComponentModel.BackgroundWorker bgHash;
+        private System.ComponentModel.BackgroundWorker bgMD5Hash;
+        private KryptonCheckBox kcbToggleCase;
+        private KryptonButton kbtnSaveToFile;
         private System.Windows.Forms.ToolStripStatusLabel tsslStatus;
 
         private void InitializeComponent()
@@ -26,18 +28,20 @@
             this.tsslStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.tspbHashProgress = new System.Windows.Forms.ToolStripProgressBar();
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            this.kcbToggleCase = new Krypton.Toolkit.KryptonCheckBox();
+            this.kbtnSaveToFile = new Krypton.Toolkit.KryptonButton();
+            this.kbtnCancel = new Krypton.Toolkit.KryptonButton();
             this.kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
-            this.kbtnBrowseForFile = new Krypton.Toolkit.KryptonButton();
-            this.ktxtFilePath = new Krypton.Toolkit.KryptonTextBox();
-            this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
             this.kryptonGroupBox1 = new Krypton.Toolkit.KryptonGroupBox();
             this.kwlHash = new Krypton.Toolkit.KryptonWrapLabel();
             this.kbtnCompute = new Krypton.Toolkit.KryptonButton();
             this.kcmbAlgorithimType = new Krypton.Toolkit.KryptonComboBox();
             this.kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
-            this.kbtnCancel = new Krypton.Toolkit.KryptonButton();
-            this.bgHash = new System.ComponentModel.BackgroundWorker();
+            this.kbtnBrowseForFile = new Krypton.Toolkit.KryptonButton();
+            this.ktxtFilePath = new Krypton.Toolkit.KryptonTextBox();
+            this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
+            this.bgMD5Hash = new System.ComponentModel.BackgroundWorker();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
@@ -79,6 +83,8 @@
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(this.kcbToggleCase);
+            this.kryptonPanel1.Controls.Add(this.kbtnSaveToFile);
             this.kryptonPanel1.Controls.Add(this.kbtnCancel);
             this.kryptonPanel1.Controls.Add(this.kryptonBorderEdge1);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -87,6 +93,33 @@
             this.kryptonPanel1.PanelBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelAlternate;
             this.kryptonPanel1.Size = new System.Drawing.Size(705, 50);
             this.kryptonPanel1.TabIndex = 1;
+            // 
+            // kcbToggleCase
+            // 
+            this.kcbToggleCase.Location = new System.Drawing.Point(14, 17);
+            this.kcbToggleCase.Name = "kcbToggleCase";
+            this.kcbToggleCase.Size = new System.Drawing.Size(90, 20);
+            this.kcbToggleCase.TabIndex = 4;
+            this.kcbToggleCase.Values.Text = "Toggle &Case";
+            this.kcbToggleCase.CheckedChanged += new System.EventHandler(this.kcbToggleCase_CheckedChanged);
+            // 
+            // kbtnSaveToFile
+            // 
+            this.kbtnSaveToFile.Location = new System.Drawing.Point(507, 12);
+            this.kbtnSaveToFile.Name = "kbtnSaveToFile";
+            this.kbtnSaveToFile.Size = new System.Drawing.Size(90, 25);
+            this.kbtnSaveToFile.TabIndex = 3;
+            this.kbtnSaveToFile.Values.Text = "Save to &File";
+            // 
+            // kbtnCancel
+            // 
+            this.kbtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.kbtnCancel.Location = new System.Drawing.Point(603, 12);
+            this.kbtnCancel.Name = "kbtnCancel";
+            this.kbtnCancel.Size = new System.Drawing.Size(90, 25);
+            this.kbtnCancel.TabIndex = 2;
+            this.kbtnCancel.Values.Text = "C&ancel";
+            this.kbtnCancel.Click += new System.EventHandler(this.kbtnCancel_Click);
             // 
             // kryptonBorderEdge1
             // 
@@ -111,32 +144,6 @@
             this.kryptonPanel2.Name = "kryptonPanel2";
             this.kryptonPanel2.Size = new System.Drawing.Size(705, 208);
             this.kryptonPanel2.TabIndex = 2;
-            // 
-            // kbtnBrowseForFile
-            // 
-            this.kbtnBrowseForFile.Location = new System.Drawing.Point(663, 12);
-            this.kbtnBrowseForFile.Name = "kbtnBrowseForFile";
-            this.kbtnBrowseForFile.Size = new System.Drawing.Size(33, 25);
-            this.kbtnBrowseForFile.TabIndex = 5;
-            this.kbtnBrowseForFile.Values.Text = ".&..";
-            this.kbtnBrowseForFile.Click += new System.EventHandler(this.kbtnBrowseForFile_Click);
-            // 
-            // ktxtFilePath
-            // 
-            this.ktxtFilePath.Hint = "Type a file path here...";
-            this.ktxtFilePath.Location = new System.Drawing.Point(83, 12);
-            this.ktxtFilePath.Name = "ktxtFilePath";
-            this.ktxtFilePath.Size = new System.Drawing.Size(574, 23);
-            this.ktxtFilePath.TabIndex = 4;
-            // 
-            // kryptonLabel1
-            // 
-            this.kryptonLabel1.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
-            this.kryptonLabel1.Location = new System.Drawing.Point(12, 12);
-            this.kryptonLabel1.Name = "kryptonLabel1";
-            this.kryptonLabel1.Size = new System.Drawing.Size(64, 20);
-            this.kryptonLabel1.TabIndex = 3;
-            this.kryptonLabel1.Values.Text = "File Path:";
             // 
             // kryptonGroupBox1
             // 
@@ -195,23 +202,39 @@
             this.kryptonLabel2.TabIndex = 7;
             this.kryptonLabel2.Values.Text = "Algorithim Type:";
             // 
-            // kbtnCancel
+            // kbtnBrowseForFile
             // 
-            this.kbtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.kbtnCancel.Location = new System.Drawing.Point(603, 12);
-            this.kbtnCancel.Name = "kbtnCancel";
-            this.kbtnCancel.Size = new System.Drawing.Size(90, 25);
-            this.kbtnCancel.TabIndex = 2;
-            this.kbtnCancel.Values.Text = "C&ancel";
-            this.kbtnCancel.Click += new System.EventHandler(this.kbtnCancel_Click);
+            this.kbtnBrowseForFile.Location = new System.Drawing.Point(663, 12);
+            this.kbtnBrowseForFile.Name = "kbtnBrowseForFile";
+            this.kbtnBrowseForFile.Size = new System.Drawing.Size(33, 25);
+            this.kbtnBrowseForFile.TabIndex = 5;
+            this.kbtnBrowseForFile.Values.Text = ".&..";
+            this.kbtnBrowseForFile.Click += new System.EventHandler(this.kbtnBrowseForFile_Click);
             // 
-            // bgHash
+            // ktxtFilePath
             // 
-            this.bgHash.WorkerReportsProgress = true;
-            this.bgHash.WorkerSupportsCancellation = true;
-            this.bgHash.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgHash_DoWork);
-            this.bgHash.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgHash_ProgressChanged);
-            this.bgHash.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgHash_RunWorkerCompleted);
+            this.ktxtFilePath.Hint = "Type a file path here...";
+            this.ktxtFilePath.Location = new System.Drawing.Point(83, 12);
+            this.ktxtFilePath.Name = "ktxtFilePath";
+            this.ktxtFilePath.Size = new System.Drawing.Size(574, 23);
+            this.ktxtFilePath.TabIndex = 4;
+            // 
+            // kryptonLabel1
+            // 
+            this.kryptonLabel1.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
+            this.kryptonLabel1.Location = new System.Drawing.Point(12, 12);
+            this.kryptonLabel1.Name = "kryptonLabel1";
+            this.kryptonLabel1.Size = new System.Drawing.Size(64, 20);
+            this.kryptonLabel1.TabIndex = 3;
+            this.kryptonLabel1.Values.Text = "File Path:";
+            // 
+            // bgMD5Hash
+            // 
+            this.bgMD5Hash.WorkerReportsProgress = true;
+            this.bgMD5Hash.WorkerSupportsCancellation = true;
+            this.bgMD5Hash.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgMD5Hash_DoWork);
+            this.bgMD5Hash.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgMD5Hash_ProgressChanged);
+            this.bgMD5Hash.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgMD5Hash_RunWorkerCompleted);
             // 
             // KryptonComputeFileCheckSum
             // 
@@ -256,7 +279,11 @@
 
         private void kbtnCompute_Click(object sender, EventArgs e)
         {
-            bgHash.RunWorkerAsync(ktxtFilePath.Text);
+            bgMD5Hash.RunWorkerAsync(ktxtFilePath.Text);
+
+            tspbHashProgress.Visible = true;
+
+            UpdateStatus($"Computing hash for: {Path.GetFileName(ktxtFilePath.Text)}");
         }
 
         private void kbtnCancel_Click(object sender, EventArgs e)
@@ -264,7 +291,7 @@
 
         }
 
-        private void bgHash_DoWork(object sender, DoWorkEventArgs e)
+        private void bgMD5Hash_DoWork(object sender, DoWorkEventArgs e)
         {
             string filePath = e.Argument.ToString();
 
@@ -278,36 +305,33 @@
             {
                 size = file.Length;
 
-                if (HashingHelpers.ReturnHashType(kcmbAlgorithimType.Text) == SupportedHashAlgorithims.MD5)
+                using (HashAlgorithm hasher = MD5.Create())
                 {
-                    using (HashAlgorithm hasher = MD5.Create())
+                    do
                     {
-                        do
-                        {
-                            buffer = new byte[4096];
+                        buffer = new byte[4096];
 
-                            bytesRead = file.Read(buffer, 0, buffer.Length);
+                        bytesRead = file.Read(buffer, 0, buffer.Length);
 
-                            totalBytesRead += bytesRead;
+                        totalBytesRead += bytesRead;
 
-                            hasher.TransformBlock(buffer, 0, bytesRead, null, 0);
+                        hasher.TransformBlock(buffer, 0, bytesRead, null, 0);
 
-                            bgHash.ReportProgress((int)((double)totalBytesRead / size * 100));
-                        } while (bytesRead != 0);
+                        bgMD5Hash.ReportProgress((int)((double)totalBytesRead / size * 100));
+                    } while (bytesRead != 0);
 
-                        hasher.TransformFinalBlock(buffer, 0, 0);
+                    hasher.TransformFinalBlock(buffer, 0, 0);
 
-                        e.Result = HashingHelpers.BuildMD5HashString(hasher.Hash);
-                    }
+                    e.Result = HashingHelpers.BuildMD5HashString(hasher.Hash);
                 }
             }
         }
 
-        private void bgHash_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        private void bgMD5Hash_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             tspbHashProgress.Value = e.ProgressPercentage;
 
-            UpdateStatus($"Computing hash for: {Path.GetFileName(ktxtFilePath.Text)}");
+            kwlHash.Text = "Please wait...";
 
             if (tspbHashProgress.Value > 0)
             {
@@ -323,11 +347,13 @@
             }
         }
 
-        private void bgHash_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        private void bgMD5Hash_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             kwlHash.Text = e.Result.ToString();
 
             tspbHashProgress.Value = 0;
+
+            tspbHashProgress.Visible = false;
 
             UpdateStatus("Ready");
         }
@@ -349,6 +375,21 @@
         private void kcmbAlgorithimType_TextChanged(object sender, EventArgs e)
         {
             kbtnCancel.Enabled = MissingFrameWorkAPIs.IsNullOrWhiteSpace(kcmbAlgorithimType.Text);
+        }
+
+        private void kcbToggleCase_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!MissingFrameWorkAPIs.IsNullOrWhiteSpace(kwlHash.Text))
+            {
+                if (kcbToggleCase.Checked)
+                {
+                    kwlHash.Text.ToUpper();
+                }
+                else
+                {
+                    kwlHash.Text.ToLower();
+                }
+            }
         }
     }
 }
