@@ -17,6 +17,7 @@
         private KryptonComboBox kcmbAlgorithimType;
         private KryptonLabel kryptonLabel2;
         private KryptonButton kbtnCancel;
+        private System.ComponentModel.BackgroundWorker bgHash;
         private System.Windows.Forms.ToolStripStatusLabel tsslStatus;
 
         private void InitializeComponent()
@@ -36,6 +37,7 @@
             this.kcmbAlgorithimType = new Krypton.Toolkit.KryptonComboBox();
             this.kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
             this.kbtnCancel = new Krypton.Toolkit.KryptonButton();
+            this.bgHash = new System.ComponentModel.BackgroundWorker();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
@@ -117,6 +119,7 @@
             this.kbtnBrowseForFile.Size = new System.Drawing.Size(33, 25);
             this.kbtnBrowseForFile.TabIndex = 5;
             this.kbtnBrowseForFile.Values.Text = ".&..";
+            this.kbtnBrowseForFile.Click += new System.EventHandler(this.kbtnBrowseForFile_Click);
             // 
             // ktxtFilePath
             // 
@@ -181,6 +184,7 @@
             this.kcmbAlgorithimType.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
             this.kcmbAlgorithimType.TabIndex = 8;
             this.kcmbAlgorithimType.SelectedIndexChanged += new System.EventHandler(this.kcmbAlgorithimType_SelectedIndexChanged);
+            this.kcmbAlgorithimType.TextChanged += new System.EventHandler(this.kcmbAlgorithimType_TextChanged);
             // 
             // kryptonLabel2
             // 
@@ -200,6 +204,14 @@
             this.kbtnCancel.TabIndex = 2;
             this.kbtnCancel.Values.Text = "C&ancel";
             this.kbtnCancel.Click += new System.EventHandler(this.kbtnCancel_Click);
+            // 
+            // bgHash
+            // 
+            this.bgHash.WorkerReportsProgress = true;
+            this.bgHash.WorkerSupportsCancellation = true;
+            this.bgHash.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgHash_DoWork);
+            this.bgHash.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgHash_ProgressChanged);
+            this.bgHash.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgHash_RunWorkerCompleted);
             // 
             // KryptonComputeFileCheckSum
             // 
@@ -235,19 +247,108 @@
         public KryptonComputeFileCheckSum()
         {
             InitializeComponent();
+
+            HelperMethods.PropagateHashBox(kcmbAlgorithimType);
         }
         #endregion
 
-        private void kcmbAlgorithimType_SelectedIndexChanged(object sender, EventArgs e) => kbtnCompute.Enabled = MissingFrameWorkAPIs.IsNullOrWhiteSpace(kcmbAlgorithimType.Text);
+        private void kcmbAlgorithimType_SelectedIndexChanged(object sender, EventArgs e) => kbtnCompute.Enabled = true; // = MissingFrameWorkAPIs.IsNullOrWhiteSpace(kcmbAlgorithimType.Text);
 
         private void kbtnCompute_Click(object sender, EventArgs e)
         {
-
+            bgHash.RunWorkerAsync(ktxtFilePath.Text);
         }
 
         private void kbtnCancel_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void bgHash_DoWork(object sender, DoWorkEventArgs e)
+        {
+            string filePath = e.Argument.ToString();
+
+            byte[] buffer;
+
+            int bytesRead;
+
+            long size, totalBytesRead = 0;
+
+            using (Stream file = File.OpenRead(filePath))
+            {
+                size = file.Length;
+
+                if (HashingHelpers.ReturnHashType(kcmbAlgorithimType.Text) == SupportedHashAlgorithims.MD5)
+                {
+                    using (HashAlgorithm hasher = MD5.Create())
+                    {
+                        do
+                        {
+                            buffer = new byte[4096];
+
+                            bytesRead = file.Read(buffer, 0, buffer.Length);
+
+                            totalBytesRead += bytesRead;
+
+                            hasher.TransformBlock(buffer, 0, bytesRead, null, 0);
+
+                            bgHash.ReportProgress((int)((double)totalBytesRead / size * 100));
+                        } while (bytesRead != 0);
+
+                        hasher.TransformFinalBlock(buffer, 0, 0);
+
+                        e.Result = HashingHelpers.BuildMD5HashString(hasher.Hash);
+                    }
+                }
+            }
+        }
+
+        private void bgHash_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            tspbHashProgress.Value = e.ProgressPercentage;
+
+            UpdateStatus($"Computing hash for: {Path.GetFileName(ktxtFilePath.Text)}");
+
+            if (tspbHashProgress.Value > 0)
+            {
+                tspbHashProgress.Enabled = true;
+            }
+            else if (tspbHashProgress.Value == 100)
+            {
+                tspbHashProgress.Enabled = false;
+            }
+            else
+            {
+                tspbHashProgress.Enabled = false;
+            }
+        }
+
+        private void bgHash_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            kwlHash.Text = e.Result.ToString();
+
+            tspbHashProgress.Value = 0;
+
+            UpdateStatus("Ready");
+        }
+
+        private string UpdateStatus(string status) => tsslStatus.Text = status;
+
+        private void kbtnBrowseForFile_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+
+            ofd.Title = "Browse for a File:";
+
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                ktxtFilePath.Text = Path.GetFullPath(ofd.FileName);
+            }
+        }
+
+        private void kcmbAlgorithimType_TextChanged(object sender, EventArgs e)
+        {
+            kbtnCancel.Enabled = MissingFrameWorkAPIs.IsNullOrWhiteSpace(kcmbAlgorithimType.Text);
         }
     }
 }

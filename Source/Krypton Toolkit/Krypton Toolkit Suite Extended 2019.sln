@@ -261,6 +261,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Exten
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton.Toolkit.Suite.Extended.CheckSum.Tools 2019", "Krypton.Toolkit.Suite.Extended.CheckSum.Tools\Krypton.Toolkit.Suite.Extended.CheckSum.Tools 2019.csproj", "{F90F1CDF-7A0B-4C14-A59D-D7AC0B090D44}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheckSum", "Examples\CheckSum\CheckSum.csproj", "{022DBF8D-4DCB-41BA-A7EB-BF40B46C4622}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -551,6 +553,10 @@ Global
 		{F90F1CDF-7A0B-4C14-A59D-D7AC0B090D44}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F90F1CDF-7A0B-4C14-A59D-D7AC0B090D44}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F90F1CDF-7A0B-4C14-A59D-D7AC0B090D44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{022DBF8D-4DCB-41BA-A7EB-BF40B46C4622}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{022DBF8D-4DCB-41BA-A7EB-BF40B46C4622}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{022DBF8D-4DCB-41BA-A7EB-BF40B46C4622}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{022DBF8D-4DCB-41BA-A7EB-BF40B46C4622}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -642,6 +648,7 @@ Global
 		{3F82B307-2BC8-4BC4-87A9-A80611A79C73} = {25D5F0A6-A601-424B-9431-8EFE139A58A7}
 		{672EE617-0450-4B2D-B778-6E5FB5E0FAA2} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 		{F90F1CDF-7A0B-4C14-A59D-D7AC0B090D44} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
+		{022DBF8D-4DCB-41BA-A7EB-BF40B46C4622} = {25D5F0A6-A601-424B-9431-8EFE139A58A7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A7CE7732-0982-4703-8EFD-7715D569BAB5}
