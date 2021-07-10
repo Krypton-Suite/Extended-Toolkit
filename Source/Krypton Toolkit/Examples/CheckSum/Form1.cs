@@ -1,11 +1,12 @@
 ﻿using System;
-using System.Windows.Forms;
+
+using Krypton.Toolkit;
 
 using Krypton.Toolkit.Suite.Extended.CheckSum.Tools;
 
 namespace CheckSum
 {
-    public partial class Form1 : Form
+    public partial class Form1 : KryptonForm
     {
         public Form1()
         {
@@ -17,6 +18,13 @@ namespace CheckSum
             KryptonComputeFileCheckSum computeFileCheckSum = new KryptonComputeFileCheckSum();
 
             computeFileCheckSum.ShowDialog();
+        }
+
+        private void kryptonButton2_Click(object sender, EventArgs e)
+        {
+            KryptonVarifyFileCheckSum varifyFileCheckSum = new KryptonVarifyFileCheckSum();
+
+            varifyFileCheckSum.ShowDialog();
         }
     }
 }
