@@ -192,20 +192,19 @@
             // pasteCheckSumToolStripMenuItem
             // 
             this.pasteCheckSumToolStripMenuItem.Name = "pasteCheckSumToolStripMenuItem";
-            this.pasteCheckSumToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.pasteCheckSumToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.pasteCheckSumToolStripMenuItem.Text = "&Paste CheckSum";
-            this.pasteCheckSumToolStripMenuItem.Click += new System.EventHandler(this.pasteCheckSumToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(159, 6);
             // 
             // clearTextBoxToolStripMenuItem
             // 
             this.clearTextBoxToolStripMenuItem.Enabled = false;
             this.clearTextBoxToolStripMenuItem.Name = "clearTextBoxToolStripMenuItem";
-            this.clearTextBoxToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.clearTextBoxToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.clearTextBoxToolStripMenuItem.Text = "Clear &TextBox";
             this.clearTextBoxToolStripMenuItem.Click += new System.EventHandler(this.clearTextBoxToolStripMenuItem_Click);
             // 
@@ -255,6 +254,7 @@
             this.kcmbAlgorithimType.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
             this.kcmbAlgorithimType.TabIndex = 4;
             this.kcmbAlgorithimType.SelectedIndexChanged += new System.EventHandler(this.kcmbAlgorithimType_SelectedIndexChanged);
+            this.kcmbAlgorithimType.TextChanged += new System.EventHandler(this.kcmbAlgorithimType_TextChanged);
             // 
             // kryptonLabel2
             // 
@@ -403,7 +403,13 @@
         #endregion
 
         #region Variables
+        private string _fileName = string.Empty;
+
         private Settings _settings = new Settings();
+        #endregion
+
+        #region Properties
+        public string FileName { get => _fileName; private set => _fileName = value; }
         #endregion
 
         #region Constructor
@@ -414,6 +420,338 @@
             HelperMethods.PropagateHashBox(kcmbAlgorithimType);
         }
         #endregion
+
+        #region Hashing Work
+        private void bgMD5Hash_DoWork(object sender, DoWorkEventArgs e)
+        {
+            string filePath = e.Argument.ToString();
+
+            byte[] buffer;
+
+            int bytesRead;
+
+            long size, totalBytesRead = 0;
+
+            using (Stream file = File.OpenRead(filePath))
+            {
+                size = file.Length;
+
+                using (HashAlgorithm hasher = MD5.Create())
+                {
+                    do
+                    {
+                        buffer = new byte[4096];
+
+                        bytesRead = file.Read(buffer, 0, buffer.Length);
+
+                        totalBytesRead += bytesRead;
+
+                        hasher.TransformBlock(buffer, 0, bytesRead, null, 0);
+
+                        bgMD5Hash.ReportProgress((int)((double)totalBytesRead / size * 100));
+                    } while (bytesRead != 0);
+
+                    hasher.TransformFinalBlock(buffer, 0, 0);
+
+                    e.Result = HashingHelpers.BuildMD5HashString(hasher.Hash);
+                }
+            }
+
+            UpdateStatus($"Computing hash for: {FileName}");
+        }
+
+        private void bgMD5Hash_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            kwlCalculatedCheckSum.Text = "Please wait...";
+
+            tspbHashProgress.Value = e.ProgressPercentage;
+        }
+
+        private void bgMD5Hash_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            kwlCalculatedCheckSum.Text = e.Result.ToString();
+
+            tspbHashProgress.Value = 0;
+
+            tspbHashProgress.Visible = false;
+
+            UpdateStatus("Ready");
+        }
+
+        private void bgSHA1Hash_DoWork(object sender, DoWorkEventArgs e)
+        {
+            string filePath = e.Argument.ToString();
+
+            byte[] buffer;
+
+            int bytesRead;
+
+            long size, totalBytesRead = 0;
+
+            using (Stream file = File.OpenRead(filePath))
+            {
+                size = file.Length;
+
+                using (HashAlgorithm hasher = SHA1.Create())
+                {
+                    do
+                    {
+                        buffer = new byte[4096];
+
+                        bytesRead = file.Read(buffer, 0, buffer.Length);
+
+                        totalBytesRead += bytesRead;
+
+                        hasher.TransformBlock(buffer, 0, bytesRead, null, 0);
+
+                        bgSHA1Hash.ReportProgress((int)((double)totalBytesRead / size * 100));
+                    } while (bytesRead != 0);
+
+                    hasher.TransformFinalBlock(buffer, 0, 0);
+
+                    e.Result = HashingHelpers.BuildSHA1HashString(hasher.Hash);
+                }
+            }
+        }
+
+        private void bgSHA1Hash_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            kwlCalculatedCheckSum.Text = "Please wait...";
+
+            tspbHashProgress.Value = e.ProgressPercentage;
+        }
+
+        private void bgSHA1Hash_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            kwlCalculatedCheckSum.Text = e.Result.ToString();
+
+            tspbHashProgress.Value = 0;
+
+            tspbHashProgress.Visible = false;
+
+            UpdateStatus("Ready");
+        }
+
+        private void bgSHA256Hash_DoWork(object sender, DoWorkEventArgs e)
+        {
+            string filePath = e.Argument.ToString();
+
+            byte[] buffer;
+
+            int bytesRead;
+
+            long size, totalBytesRead = 0;
+
+            using (Stream file = File.OpenRead(filePath))
+            {
+                size = file.Length;
+
+                using (HashAlgorithm hasher = SHA256.Create())
+                {
+                    do
+                    {
+                        buffer = new byte[4096];
+
+                        bytesRead = file.Read(buffer, 0, buffer.Length);
+
+                        totalBytesRead += bytesRead;
+
+                        hasher.TransformBlock(buffer, 0, bytesRead, null, 0);
+
+                        bgSHA256Hash.ReportProgress((int)((double)totalBytesRead / size * 100));
+                    } while (bytesRead != 0);
+
+                    hasher.TransformFinalBlock(buffer, 0, 0);
+
+                    e.Result = HashingHelpers.BuildSHA256HashString(hasher.Hash);
+                }
+            }
+        }
+
+        private void bgSHA256Hash_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            kwlCalculatedCheckSum.Text = "Please wait...";
+
+            tspbHashProgress.Value = e.ProgressPercentage;
+        }
+
+        private void bgSHA256Hash_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            kwlCalculatedCheckSum.Text = e.Result.ToString();
+
+            tspbHashProgress.Value = 0;
+
+            tspbHashProgress.Visible = false;
+
+            UpdateStatus("Ready");
+        }
+
+        private void bgSHA384Hash_DoWork(object sender, DoWorkEventArgs e)
+        {
+            string filePath = e.Argument.ToString();
+
+            byte[] buffer;
+
+            int bytesRead;
+
+            long size, totalBytesRead = 0;
+
+            using (Stream file = File.OpenRead(filePath))
+            {
+                size = file.Length;
+
+                using (HashAlgorithm hasher = SHA384.Create())
+                {
+                    do
+                    {
+                        buffer = new byte[4096];
+
+                        bytesRead = file.Read(buffer, 0, buffer.Length);
+
+                        totalBytesRead += bytesRead;
+
+                        hasher.TransformBlock(buffer, 0, bytesRead, null, 0);
+
+                        bgSHA384Hash.ReportProgress((int)((double)totalBytesRead / size * 100));
+                    } while (bytesRead != 0);
+
+                    hasher.TransformFinalBlock(buffer, 0, 0);
+
+                    e.Result = HashingHelpers.BuildSHA384HashString(hasher.Hash);
+                }
+            }
+        }
+
+        private void bgSHA384Hash_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            kwlCalculatedCheckSum.Text = "Please wait...";
+
+            tspbHashProgress.Value = e.ProgressPercentage;
+        }
+
+        private void bgSHA384Hash_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            kwlCalculatedCheckSum.Text = e.Result.ToString();
+
+            tspbHashProgress.Value = 0;
+
+            tspbHashProgress.Visible = false;
+
+            UpdateStatus("Ready");
+        }
+
+        private void bgSHA512Hash_DoWork(object sender, DoWorkEventArgs e)
+        {
+            string filePath = e.Argument.ToString();
+
+            byte[] buffer;
+
+            int bytesRead;
+
+            long size, totalBytesRead = 0;
+
+            using (Stream file = File.OpenRead(filePath))
+            {
+                size = file.Length;
+
+                using (HashAlgorithm hasher = SHA512.Create())
+                {
+                    do
+                    {
+                        buffer = new byte[4096];
+
+                        bytesRead = file.Read(buffer, 0, buffer.Length);
+
+                        totalBytesRead += bytesRead;
+
+                        hasher.TransformBlock(buffer, 0, bytesRead, null, 0);
+
+                        bgSHA512Hash.ReportProgress((int)((double)totalBytesRead / size * 100));
+                    } while (bytesRead != 0);
+
+                    hasher.TransformFinalBlock(buffer, 0, 0);
+
+                    e.Result = HashingHelpers.BuildSHA512HashString(hasher.Hash);
+                }
+            }
+        }
+
+        private void bgSHA512Hash_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            kwlCalculatedCheckSum.Text = "Please wait...";
+
+            tspbHashProgress.Value = e.ProgressPercentage;
+        }
+
+        private void bgSHA512Hash_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            kwlCalculatedCheckSum.Text = e.Result.ToString();
+
+            tspbHashProgress.Value = 0;
+
+            tspbHashProgress.Visible = false;
+
+            UpdateStatus("Ready");
+        }
+
+        private void bgRIPEMD160Hash_DoWork(object sender, DoWorkEventArgs e)
+        {
+#if !NETCOREAPP3_0_OR_GREATER
+            string filePath = e.Argument.ToString();
+
+            byte[] buffer;
+
+            int bytesRead;
+
+            long size, totalBytesRead = 0;
+
+            using (Stream file = File.OpenRead(filePath))
+            {
+                size = file.Length;
+
+                using (HashAlgorithm hasher = RIPEMD160Managed.Create())
+                {
+                    do
+                    {
+                        buffer = new byte[4096];
+
+                        bytesRead = file.Read(buffer, 0, buffer.Length);
+
+                        totalBytesRead += bytesRead;
+
+                        hasher.TransformBlock(buffer, 0, bytesRead, null, 0);
+
+                        bgRIPEMD160Hash.ReportProgress((int)((double)totalBytesRead / size * 100));
+                    } while (bytesRead != 0);
+
+                    hasher.TransformFinalBlock(buffer, 0, 0);
+
+                    e.Result = HashingHelpers.BuildRIPEMD160HashString(hasher.Hash);
+                }
+            }
+#endif
+        }
+
+        private void bgRIPEMD160Hash_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            kwlCalculatedCheckSum.Text = "Please wait...";
+
+            tspbHashProgress.Value = e.ProgressPercentage;
+        }
+
+        private void bgRIPEMD160Hash_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            kwlCalculatedCheckSum.Text = e.Result.ToString();
+
+            tspbHashProgress.Value = 0;
+
+            tspbHashProgress.Visible = false;
+
+            UpdateStatus("Ready");
+        }
+        #endregion
+
+        private string UpdateStatus(string status) => tsslStatus.Text = status;
 
         private void kbtnBrowseForFile_Click(object sender, EventArgs e)
         {
@@ -459,7 +797,20 @@
 
         private void kbtnCompute_Click(object sender, EventArgs e)
         {
+            try
+            {
+                UpdateStatus($"Computing hash for: {FileName}");
 
+                tspbHashProgress.Visible = true;
+
+                kbtnCompute.Enabled = false;
+
+                CalculateHash();
+            }
+            catch (Exception ex)
+            {
+                KryptonMessageBox.Show($"An error has occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void kbtnCancel_Click(object sender, EventArgs e)
@@ -483,11 +834,12 @@
 
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
-                    StreamReader reader = new StreamReader(ofd.FileName);
+                    using (StreamReader reader = new StreamReader(Path.GetFullPath(ofd.FileName)))
+                    {
+                        string content = reader.ReadToEnd();
 
-                    string hash = reader.ReadLine();
-
-                    kbtnBrowseForFile.Text = hash;
+                        ktxtVarifyCheckSum.Text = content;
+                    }
                 }
             }
             catch (Exception exc)
@@ -506,96 +858,41 @@
             }
         }
 
-        private void pasteCheckSumToolStripMenuItem_Click(object sender, EventArgs e) => ktxtVarifyCheckSum.Text = Clipboard.GetText();
-
-        private void bgMD5Hash_DoWork(object sender, DoWorkEventArgs e)
+        private void CalculateHash()
         {
-
+            try
+            {
+                if (kcmbAlgorithimType.Text == "MD-5")
+                {
+                    bgMD5Hash.RunWorkerAsync(ktxtFilePath.Text);
+                }
+                else if (kcmbAlgorithimType.Text == "SHA-1")
+                {
+                    bgSHA1Hash.RunWorkerAsync(ktxtFilePath.Text);
+                }
+                else if (kcmbAlgorithimType.Text == "SHA-256")
+                {
+                    bgSHA256Hash.RunWorkerAsync(ktxtFilePath.Text);
+                }
+                else if (kcmbAlgorithimType.Text == "SHA-384")
+                {
+                    bgSHA384Hash.RunWorkerAsync(ktxtFilePath.Text);
+                }
+                else if (kcmbAlgorithimType.Text == "SHA-512")
+                {
+                    bgSHA512Hash.RunWorkerAsync(ktxtFilePath.Text);
+                }
+                else if (kcmbAlgorithimType.Text == "RIPEMD-160")
+                {
+                    bgRIPEMD160Hash.RunWorkerAsync(ktxtFilePath.Text);
+                }
+            }
+            catch (Exception e)
+            {
+                KryptonMessageBox.Show($"An error has occurred: {e.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        private void bgMD5Hash_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        {
-
-        }
-
-        private void bgMD5Hash_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-
-        }
-
-        private void bgSHA1Hash_DoWork(object sender, DoWorkEventArgs e)
-        {
-
-        }
-
-        private void bgSHA1Hash_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        {
-
-        }
-
-        private void bgSHA1Hash_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-
-        }
-
-        private void bgSHA256Hash_DoWork(object sender, DoWorkEventArgs e)
-        {
-
-        }
-
-        private void bgSHA256Hash_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        {
-
-        }
-
-        private void bgSHA256Hash_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-
-        }
-
-        private void bgSHA384Hash_DoWork(object sender, DoWorkEventArgs e)
-        {
-
-        }
-
-        private void bgSHA384Hash_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        {
-
-        }
-
-        private void bgSHA384Hash_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-
-        }
-
-        private void bgSHA512Hash_DoWork(object sender, DoWorkEventArgs e)
-        {
-
-        }
-
-        private void bgSHA512Hash_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        {
-
-        }
-
-        private void bgSHA512Hash_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-
-        }
-
-        private void bgRIPEMD160Hash_DoWork(object sender, DoWorkEventArgs e)
-        {
-
-        }
-
-        private void bgRIPEMD160Hash_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        {
-
-        }
-
-        private void bgRIPEMD160Hash_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-
-        }
+        private void kcmbAlgorithimType_TextChanged(object sender, EventArgs e) => kbtnCompute.Enabled = MissingFrameWorkAPIs.IsNullOrWhiteSpace(kcmbAlgorithimType.Text);
     }
 }
