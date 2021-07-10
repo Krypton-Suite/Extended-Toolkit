@@ -187,18 +187,19 @@
             this.toolStripMenuItem1,
             this.clearTextBoxToolStripMenuItem});
             this.cmsCheckSumValidation.Name = "cmsCheckSumValidation";
-            this.cmsCheckSumValidation.Size = new System.Drawing.Size(181, 76);
+            this.cmsCheckSumValidation.Size = new System.Drawing.Size(163, 54);
             // 
             // pasteCheckSumToolStripMenuItem
             // 
             this.pasteCheckSumToolStripMenuItem.Name = "pasteCheckSumToolStripMenuItem";
-            this.pasteCheckSumToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.pasteCheckSumToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.pasteCheckSumToolStripMenuItem.Text = "&Paste CheckSum";
+            this.pasteCheckSumToolStripMenuItem.Click += new System.EventHandler(this.pasteCheckSumToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(159, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
             // 
             // clearTextBoxToolStripMenuItem
             // 
@@ -321,31 +322,49 @@
             // 
             this.bgRIPEMD160Hash.WorkerReportsProgress = true;
             this.bgRIPEMD160Hash.WorkerSupportsCancellation = true;
+            this.bgRIPEMD160Hash.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgRIPEMD160Hash_DoWork);
+            this.bgRIPEMD160Hash.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgRIPEMD160Hash_ProgressChanged);
+            this.bgRIPEMD160Hash.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgRIPEMD160Hash_RunWorkerCompleted);
             // 
             // bgSHA512Hash
             // 
             this.bgSHA512Hash.WorkerReportsProgress = true;
             this.bgSHA512Hash.WorkerSupportsCancellation = true;
+            this.bgSHA512Hash.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgSHA512Hash_DoWork);
+            this.bgSHA512Hash.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgSHA512Hash_ProgressChanged);
+            this.bgSHA512Hash.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgSHA512Hash_RunWorkerCompleted);
             // 
             // bgSHA384Hash
             // 
             this.bgSHA384Hash.WorkerReportsProgress = true;
             this.bgSHA384Hash.WorkerSupportsCancellation = true;
+            this.bgSHA384Hash.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgSHA384Hash_DoWork);
+            this.bgSHA384Hash.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgSHA384Hash_ProgressChanged);
+            this.bgSHA384Hash.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgSHA384Hash_RunWorkerCompleted);
             // 
             // bgSHA256Hash
             // 
             this.bgSHA256Hash.WorkerReportsProgress = true;
             this.bgSHA256Hash.WorkerSupportsCancellation = true;
+            this.bgSHA256Hash.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgSHA256Hash_DoWork);
+            this.bgSHA256Hash.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgSHA256Hash_ProgressChanged);
+            this.bgSHA256Hash.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgSHA256Hash_RunWorkerCompleted);
             // 
             // bgSHA1Hash
             // 
             this.bgSHA1Hash.WorkerReportsProgress = true;
             this.bgSHA1Hash.WorkerSupportsCancellation = true;
+            this.bgSHA1Hash.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgSHA1Hash_DoWork);
+            this.bgSHA1Hash.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgSHA1Hash_ProgressChanged);
+            this.bgSHA1Hash.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgSHA1Hash_RunWorkerCompleted);
             // 
             // bgMD5Hash
             // 
             this.bgMD5Hash.WorkerReportsProgress = true;
             this.bgMD5Hash.WorkerSupportsCancellation = true;
+            this.bgMD5Hash.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgMD5Hash_DoWork);
+            this.bgMD5Hash.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgMD5Hash_ProgressChanged);
+            this.bgMD5Hash.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgMD5Hash_RunWorkerCompleted);
             // 
             // KryptonVarifyFileCheckSum
             // 
@@ -485,6 +504,98 @@
             {
                 ktxtVarifyCheckSum.Text = string.Empty;
             }
+        }
+
+        private void pasteCheckSumToolStripMenuItem_Click(object sender, EventArgs e) => ktxtVarifyCheckSum.Text = Clipboard.GetText();
+
+        private void bgMD5Hash_DoWork(object sender, DoWorkEventArgs e)
+        {
+
+        }
+
+        private void bgMD5Hash_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+
+        }
+
+        private void bgMD5Hash_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+
+        }
+
+        private void bgSHA1Hash_DoWork(object sender, DoWorkEventArgs e)
+        {
+
+        }
+
+        private void bgSHA1Hash_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+
+        }
+
+        private void bgSHA1Hash_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+
+        }
+
+        private void bgSHA256Hash_DoWork(object sender, DoWorkEventArgs e)
+        {
+
+        }
+
+        private void bgSHA256Hash_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+
+        }
+
+        private void bgSHA256Hash_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+
+        }
+
+        private void bgSHA384Hash_DoWork(object sender, DoWorkEventArgs e)
+        {
+
+        }
+
+        private void bgSHA384Hash_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+
+        }
+
+        private void bgSHA384Hash_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+
+        }
+
+        private void bgSHA512Hash_DoWork(object sender, DoWorkEventArgs e)
+        {
+
+        }
+
+        private void bgSHA512Hash_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+
+        }
+
+        private void bgSHA512Hash_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+
+        }
+
+        private void bgRIPEMD160Hash_DoWork(object sender, DoWorkEventArgs e)
+        {
+
+        }
+
+        private void bgRIPEMD160Hash_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+
+        }
+
+        private void bgRIPEMD160Hash_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+
         }
     }
 }

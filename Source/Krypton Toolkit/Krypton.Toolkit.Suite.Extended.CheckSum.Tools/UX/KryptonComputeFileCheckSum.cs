@@ -25,7 +25,6 @@
         private BackgroundWorker bgSHA384Hash;
         private BackgroundWorker bgSHA512Hash;
         private BackgroundWorker bgRIPEMD160Hash;
-        private KryptonButton kryptonButton1;
         private System.Windows.Forms.ToolStripStatusLabel tsslStatus;
 
         private void InitializeComponent()
@@ -53,7 +52,6 @@
             this.bgSHA384Hash = new System.ComponentModel.BackgroundWorker();
             this.bgSHA512Hash = new System.ComponentModel.BackgroundWorker();
             this.bgRIPEMD160Hash = new System.ComponentModel.BackgroundWorker();
-            this.kryptonButton1 = new Krypton.Toolkit.KryptonButton();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
@@ -95,7 +93,6 @@
             // 
             // kryptonPanel1
             // 
-            this.kryptonPanel1.Controls.Add(this.kryptonButton1);
             this.kryptonPanel1.Controls.Add(this.kcbToggleCase);
             this.kryptonPanel1.Controls.Add(this.kbtnSaveToFile);
             this.kryptonPanel1.Controls.Add(this.kbtnCancel);
@@ -292,15 +289,6 @@
             this.bgRIPEMD160Hash.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgRIPEMD160Hash_ProgressChanged);
             this.bgRIPEMD160Hash.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgRIPEMD160Hash_RunWorkerCompleted);
             // 
-            // kryptonButton1
-            // 
-            this.kryptonButton1.Location = new System.Drawing.Point(411, 12);
-            this.kryptonButton1.Name = "kryptonButton1";
-            this.kryptonButton1.Size = new System.Drawing.Size(90, 25);
-            this.kryptonButton1.TabIndex = 6;
-            this.kryptonButton1.Values.Text = "kryptonButton1";
-            this.kryptonButton1.Click += new System.EventHandler(this.kryptonButton1_Click);
-            // 
             // KryptonComputeFileCheckSum
             // 
             this.ClientSize = new System.Drawing.Size(705, 280);
@@ -331,6 +319,14 @@
         }
         #endregion
 
+        #region Variables
+        private string _fileName = string.Empty;
+        #endregion
+
+        #region Properties
+        public string FileName { get => _fileName; private set => _fileName = value; }
+        #endregion
+
         #region Constructor
         public KryptonComputeFileCheckSum()
         {
@@ -346,7 +342,7 @@
         {
             try
             {
-                UpdateStatus($"Computing hash for: {Path.GetFileName(ktxtFilePath.Text)}");
+                UpdateStatus($"Computing hash for: {FileName}");
 
                 tspbHashProgress.Visible = true;
 
@@ -438,6 +434,8 @@
                     e.Result = HashingHelpers.BuildMD5HashString(hasher.Hash);
                 }
             }
+
+            UpdateStatus($"Computing hash for: {FileName}");
         }
 
         private void bgMD5Hash_ProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -676,6 +674,7 @@
 
         private void bgRIPEMD160Hash_DoWork(object sender, DoWorkEventArgs e)
         {
+#if !NETCOREAPP3_0_OR_GREATER
             string filePath = e.Argument.ToString();
 
             byte[] buffer;
@@ -708,6 +707,7 @@
                     e.Result = HashingHelpers.BuildRIPEMD160HashString(hasher.Hash);
                 }
             }
+#endif
         }
 
         private void bgRIPEMD160Hash_ProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -740,6 +740,8 @@
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 ktxtFilePath.Text = Path.GetFullPath(ofd.FileName);
+
+                FileName = Path.GetFileName(ofd.FileName);
             }
         }
 
@@ -782,6 +784,8 @@
                     dlg.Filter = "MD5 Hash Files|*.md5";
 
                     dlg.Title = "Save to File:";
+
+                    dlg.FileName = $"{FileName} MD5 Hash {DateTime.Now}";
 
                     if (dlg.ShowDialog() == DialogResult.OK)
                     {
@@ -837,11 +841,6 @@
             {
                 KryptonMessageBox.Show($"An error has occurred: {e.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void kryptonButton1_Click(object sender, EventArgs e)
-        {
-            KryptonMessageBox.Show($"{kwlHash.Text.Length}");
         }
     }
 }

@@ -75,7 +75,7 @@
 
         public static string BuildRIPEMD160HashString(byte[] hashBytes)
         {
-            StringBuilder builder = new StringBuilder();
+            StringBuilder builder = new StringBuilder(40);
 
             foreach (byte b in hashBytes)
             {
