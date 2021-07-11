@@ -320,11 +320,13 @@
         #endregion
 
         #region Variables
-        private string _fileName = string.Empty;
+        private string _fileName = string.Empty, _fileNameWithoutExtension = string.Empty;
         #endregion
 
         #region Properties
         public string FileName { get => _fileName; private set => _fileName = value; }
+
+        public string FileNameWithoutExtension { get => _fileNameWithoutExtension; private set => _fileNameWithoutExtension = value; }
         #endregion
 
         #region Constructor
@@ -742,6 +744,8 @@
                 ktxtFilePath.Text = Path.GetFullPath(ofd.FileName);
 
                 FileName = Path.GetFileName(ofd.FileName);
+
+                FileNameWithoutExtension = Path.GetFileNameWithoutExtension(ofd.FileName);
             }
         }
 
@@ -785,7 +789,7 @@
 
                     dlg.Title = "Save to File:";
 
-                    dlg.FileName = $"{FileName} MD5 Hash {DateTime.Now}";
+                    dlg.FileName = $"{FileNameWithoutExtension} MD5 Hash";
 
                     if (dlg.ShowDialog() == DialogResult.OK)
                     {
@@ -798,7 +802,7 @@
 
                     dlg.Title = "Save to File:";
 
-                    dlg.FileName = $"{FileName} SHA1 Hash {DateTime.Now}";
+                    dlg.FileName = $"{FileNameWithoutExtension} SHA1 Hash";
 
                     if (dlg.ShowDialog() == DialogResult.OK)
                     {
@@ -811,7 +815,7 @@
 
                     dlg.Title = "Save to File:";
 
-                    dlg.FileName = $"{FileName} SHA256 Hash {DateTime.Now}";
+                    dlg.FileName = $"{FileNameWithoutExtension} SHA256 Hash";
 
                     if (dlg.ShowDialog() == DialogResult.OK)
                     {
@@ -824,7 +828,7 @@
 
                     dlg.Title = "Save to File:";
 
-                    dlg.FileName = $"{FileName} SHA384 Hash {DateTime.Now}";
+                    dlg.FileName = $"{FileNameWithoutExtension} SHA384 Hash";
 
                     if (dlg.ShowDialog() == DialogResult.OK)
                     {
@@ -837,7 +841,7 @@
 
                     dlg.Title = "Save to File:";
 
-                    dlg.FileName = $"{FileName} SHA512 Hash {DateTime.Now}";
+                    dlg.FileName = $"{FileNameWithoutExtension} SHA512 Hash";
 
                     if (dlg.ShowDialog() == DialogResult.OK)
                     {
@@ -850,7 +854,7 @@
 
                     dlg.Title = "Save to File:";
 
-                    dlg.FileName = $"{FileName} RIPEMD160 Hash {DateTime.Now}";
+                    dlg.FileName = $"{FileNameWithoutExtension} RIPEMD160 Hash";
 
                     if (dlg.ShowDialog() == DialogResult.OK)
                     {
