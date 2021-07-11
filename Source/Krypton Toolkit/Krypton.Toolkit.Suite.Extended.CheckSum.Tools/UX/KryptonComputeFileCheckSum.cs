@@ -794,23 +794,68 @@
                 }
                 else if (kcmbAlgorithimType.Text == "SHA-1")
                 {
-                    bgSHA1Hash.RunWorkerAsync(ktxtFilePath.Text);
+                    dlg.Filter = "SHA-1 Hash Files|*.sha1";
+
+                    dlg.Title = "Save to File:";
+
+                    dlg.FileName = $"{FileName} SHA1 Hash {DateTime.Now}";
+
+                    if (dlg.ShowDialog() == DialogResult.OK)
+                    {
+                        WriteToFile(dlg.FileName, text, toUpper);
+                    }
                 }
                 else if (kcmbAlgorithimType.Text == "SHA-256")
                 {
-                    bgSHA256Hash.RunWorkerAsync(ktxtFilePath.Text);
+                    dlg.Filter = "SHA-256 Hash Files|*.sha256";
+
+                    dlg.Title = "Save to File:";
+
+                    dlg.FileName = $"{FileName} SHA256 Hash {DateTime.Now}";
+
+                    if (dlg.ShowDialog() == DialogResult.OK)
+                    {
+                        WriteToFile(dlg.FileName, text, toUpper);
+                    }
                 }
                 else if (kcmbAlgorithimType.Text == "SHA-384")
                 {
-                    bgSHA384Hash.RunWorkerAsync(ktxtFilePath.Text);
+                    dlg.Filter = "SHA-384 Hash Files|*.sha384";
+
+                    dlg.Title = "Save to File:";
+
+                    dlg.FileName = $"{FileName} SHA384 Hash {DateTime.Now}";
+
+                    if (dlg.ShowDialog() == DialogResult.OK)
+                    {
+                        WriteToFile(dlg.FileName, text, toUpper);
+                    }
                 }
                 else if (kcmbAlgorithimType.Text == "SHA-512")
                 {
-                    bgSHA512Hash.RunWorkerAsync(ktxtFilePath.Text);
+                    dlg.Filter = "SHA-512 Hash Files|*.sha512";
+
+                    dlg.Title = "Save to File:";
+
+                    dlg.FileName = $"{FileName} SHA512 Hash {DateTime.Now}";
+
+                    if (dlg.ShowDialog() == DialogResult.OK)
+                    {
+                        WriteToFile(dlg.FileName, text, toUpper);
+                    }
                 }
                 else if (kcmbAlgorithimType.Text == "RIPEMD-160")
                 {
-                    bgRIPEMD160Hash.RunWorkerAsync(ktxtFilePath.Text);
+                    dlg.Filter = "RIPEMD-160 Hash Files|*.ripemd160";
+
+                    dlg.Title = "Save to File:";
+
+                    dlg.FileName = $"{FileName} RIPEMD160 Hash {DateTime.Now}";
+
+                    if (dlg.ShowDialog() == DialogResult.OK)
+                    {
+                        WriteToFile(dlg.FileName, text, toUpper);
+                    }
                 }
             }
             catch (Exception e)

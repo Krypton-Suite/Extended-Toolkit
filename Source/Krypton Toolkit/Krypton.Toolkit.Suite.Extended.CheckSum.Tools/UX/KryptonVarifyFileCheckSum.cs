@@ -112,6 +112,7 @@
             // 
             // kbtnImportHash
             // 
+            this.kbtnImportHash.Enabled = false;
             this.kbtnImportHash.Location = new System.Drawing.Point(13, 13);
             this.kbtnImportHash.Name = "kbtnImportHash";
             this.kbtnImportHash.Size = new System.Drawing.Size(90, 25);
@@ -767,17 +768,21 @@
 
         private void kbtnValidate_Click(object sender, EventArgs e)
         {
-            if (HelperMethods.IsValid(kwlCalculatedCheckSum.Text, ktxtVarifyCheckSum.Text))
+            if (HelperMethods.IsValid(kwlCalculatedCheckSum.Text, ktxtVarifyCheckSum.Text.ToUpper()))
             {
                 ktxtVarifyCheckSum.StateCommon.Border.Color1 = _settings.ValidColour;
 
                 ktxtVarifyCheckSum.StateCommon.Border.Color2 = _settings.ValidColour;
+
+                UpdateStatus("Hashes matched!");
             }
             else
             {
                 ktxtVarifyCheckSum.StateCommon.Border.Color1 = _settings.InvalidColour;
 
                 ktxtVarifyCheckSum.StateCommon.Border.Color2 = _settings.InvalidColour;
+
+                UpdateStatus("Hashes do not match!");
             }
         }
 
@@ -790,7 +795,7 @@
                 ktxtVarifyCheckSum.StateCommon.Border.Color2 = _settings.IntermediateColour;
             }
 
-            kbtnValidate.Enabled = MissingFrameWorkAPIs.IsNullOrWhiteSpace(ktxtVarifyCheckSum.Text);
+            kbtnValidate.Enabled = true; // MissingFrameWorkAPIs.IsNullOrWhiteSpace(ktxtVarifyCheckSum.Text);
 
             clearTextBoxToolStripMenuItem.Enabled = !MissingFrameWorkAPIs.IsNullOrWhiteSpace(ktxtVarifyCheckSum.Text);
         }
@@ -818,7 +823,7 @@
 
         }
 
-        private void kcmbAlgorithimType_SelectedIndexChanged(object sender, EventArgs e) => kbtnCompute.Enabled = MissingFrameWorkAPIs.IsNullOrWhiteSpace(kcmbAlgorithimType.Text);
+        private void kcmbAlgorithimType_SelectedIndexChanged(object sender, EventArgs e) => kbtnCompute.Enabled = true; // MissingFrameWorkAPIs.IsNullOrWhiteSpace(kcmbAlgorithimType.Text);
 
         private void kbtnImportHash_Click(object sender, EventArgs e)
         {
@@ -886,6 +891,8 @@
                 {
                     bgRIPEMD160Hash.RunWorkerAsync(ktxtFilePath.Text);
                 }
+
+                kbtnImportHash.Enabled = true;
             }
             catch (Exception e)
             {
