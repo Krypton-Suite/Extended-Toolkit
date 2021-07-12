@@ -3,8 +3,8 @@
     public class KryptonComputeFileCheckSum : KryptonForm
     {
         #region Design Code
-        private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripProgressBar tspbHashProgress;
+        private StatusStrip statusStrip1;
+        private ToolStripProgressBar tspbHashProgress;
         private KryptonPanel kryptonPanel1;
         private KryptonBorderEdge kryptonBorderEdge1;
         private KryptonPanel kryptonPanel2;
@@ -17,7 +17,7 @@
         private KryptonComboBox kcmbAlgorithimType;
         private KryptonLabel kryptonLabel2;
         private KryptonButton kbtnCancel;
-        private System.ComponentModel.BackgroundWorker bgMD5Hash;
+        private BackgroundWorker bgMD5Hash;
         private KryptonCheckBox kcbToggleCase;
         private KryptonButton kbtnSaveToFile;
         private BackgroundWorker bgSHA1Hash;
@@ -25,7 +25,7 @@
         private BackgroundWorker bgSHA384Hash;
         private BackgroundWorker bgSHA512Hash;
         private BackgroundWorker bgRIPEMD160Hash;
-        private System.Windows.Forms.ToolStripStatusLabel tsslStatus;
+        private ToolStripStatusLabel tsslStatus;
 
         private void InitializeComponent()
         {
@@ -115,6 +115,7 @@
             // 
             // kbtnSaveToFile
             // 
+            this.kbtnSaveToFile.Enabled = false;
             this.kbtnSaveToFile.Location = new System.Drawing.Point(507, 12);
             this.kbtnSaveToFile.Name = "kbtnSaveToFile";
             this.kbtnSaveToFile.Size = new System.Drawing.Size(90, 25);
@@ -195,6 +196,7 @@
             this.kcmbAlgorithimType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.kcmbAlgorithimType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.kcmbAlgorithimType.DropDownWidth = 121;
+            this.kcmbAlgorithimType.Enabled = false;
             this.kcmbAlgorithimType.IntegralHeight = false;
             this.kcmbAlgorithimType.Location = new System.Drawing.Point(127, 59);
             this.kcmbAlgorithimType.Name = "kcmbAlgorithimType";
@@ -246,48 +248,48 @@
             this.bgMD5Hash.WorkerReportsProgress = true;
             this.bgMD5Hash.WorkerSupportsCancellation = true;
             this.bgMD5Hash.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgMD5Hash_DoWork);
-            this.bgMD5Hash.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgMD5Hash_ProgressChanged);
-            this.bgMD5Hash.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgMD5Hash_RunWorkerCompleted);
+            this.bgMD5Hash.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.ProgressChanged);
+            this.bgMD5Hash.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.RunWorkerCompleted);
             // 
             // bgSHA1Hash
             // 
             this.bgSHA1Hash.WorkerReportsProgress = true;
             this.bgSHA1Hash.WorkerSupportsCancellation = true;
             this.bgSHA1Hash.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgSHA1Hash_DoWork);
-            this.bgSHA1Hash.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgSHA1Hash_ProgressChanged);
-            this.bgSHA1Hash.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgSHA1Hash_RunWorkerCompleted);
+            this.bgSHA1Hash.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.ProgressChanged);
+            this.bgSHA1Hash.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.RunWorkerCompleted);
             // 
             // bgSHA256Hash
             // 
             this.bgSHA256Hash.WorkerReportsProgress = true;
             this.bgSHA256Hash.WorkerSupportsCancellation = true;
             this.bgSHA256Hash.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgSHA256Hash_DoWork);
-            this.bgSHA256Hash.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgSHA256Hash_ProgressChanged);
-            this.bgSHA256Hash.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgSHA256Hash_RunWorkerCompleted);
+            this.bgSHA256Hash.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.ProgressChanged);
+            this.bgSHA256Hash.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.RunWorkerCompleted);
             // 
             // bgSHA384Hash
             // 
             this.bgSHA384Hash.WorkerReportsProgress = true;
             this.bgSHA384Hash.WorkerSupportsCancellation = true;
             this.bgSHA384Hash.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgSHA384Hash_DoWork);
-            this.bgSHA384Hash.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgSHA384Hash_ProgressChanged);
-            this.bgSHA384Hash.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgSHA384Hash_RunWorkerCompleted);
+            this.bgSHA384Hash.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.ProgressChanged);
+            this.bgSHA384Hash.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.RunWorkerCompleted);
             // 
             // bgSHA512Hash
             // 
             this.bgSHA512Hash.WorkerReportsProgress = true;
             this.bgSHA512Hash.WorkerSupportsCancellation = true;
             this.bgSHA512Hash.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgSHA512Hash_DoWork);
-            this.bgSHA512Hash.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgSHA512Hash_ProgressChanged);
-            this.bgSHA512Hash.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgSHA512Hash_RunWorkerCompleted);
+            this.bgSHA512Hash.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.ProgressChanged);
+            this.bgSHA512Hash.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.RunWorkerCompleted);
             // 
             // bgRIPEMD160Hash
             // 
             this.bgRIPEMD160Hash.WorkerReportsProgress = true;
             this.bgRIPEMD160Hash.WorkerSupportsCancellation = true;
             this.bgRIPEMD160Hash.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgRIPEMD160Hash_DoWork);
-            this.bgRIPEMD160Hash.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgRIPEMD160Hash_ProgressChanged);
-            this.bgRIPEMD160Hash.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgRIPEMD160Hash_RunWorkerCompleted);
+            this.bgRIPEMD160Hash.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.ProgressChanged);
+            this.bgRIPEMD160Hash.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.RunWorkerCompleted);
             // 
             // KryptonComputeFileCheckSum
             // 
@@ -299,7 +301,9 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "KryptonComputeFileCheckSum";
+            this.ShowIcon = false;
             this.ShowInTaskbar = false;
+            this.Text = "Calculate CheckSum";
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
@@ -440,24 +444,6 @@
             UpdateStatus($"Computing hash for: {FileName}");
         }
 
-        private void bgMD5Hash_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        {
-            kwlHash.Text = "Please wait...";
-
-            tspbHashProgress.Value = e.ProgressPercentage;
-        }
-
-        private void bgMD5Hash_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            kwlHash.Text = e.Result.ToString();
-
-            tspbHashProgress.Value = 0;
-
-            tspbHashProgress.Visible = false;
-
-            UpdateStatus("Ready");
-        }
-
         private void bgSHA1Hash_DoWork(object sender, DoWorkEventArgs e)
         {
             string filePath = e.Argument.ToString();
@@ -492,24 +478,6 @@
                     e.Result = HashingHelpers.BuildSHA1HashString(hasher.Hash);
                 }
             }
-        }
-
-        private void bgSHA1Hash_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        {
-            kwlHash.Text = "Please wait...";
-
-            tspbHashProgress.Value = e.ProgressPercentage;
-        }
-
-        private void bgSHA1Hash_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            kwlHash.Text = e.Result.ToString();
-
-            tspbHashProgress.Value = 0;
-
-            tspbHashProgress.Visible = false;
-
-            UpdateStatus("Ready");
         }
 
         private void bgSHA256Hash_DoWork(object sender, DoWorkEventArgs e)
@@ -548,24 +516,6 @@
             }
         }
 
-        private void bgSHA256Hash_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        {
-            kwlHash.Text = "Please wait...";
-
-            tspbHashProgress.Value = e.ProgressPercentage;
-        }
-
-        private void bgSHA256Hash_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            kwlHash.Text = e.Result.ToString();
-
-            tspbHashProgress.Value = 0;
-
-            tspbHashProgress.Visible = false;
-
-            UpdateStatus("Ready");
-        }
-
         private void bgSHA384Hash_DoWork(object sender, DoWorkEventArgs e)
         {
             string filePath = e.Argument.ToString();
@@ -602,24 +552,6 @@
             }
         }
 
-        private void bgSHA384Hash_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        {
-            kwlHash.Text = "Please wait...";
-
-            tspbHashProgress.Value = e.ProgressPercentage;
-        }
-
-        private void bgSHA384Hash_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            kwlHash.Text = e.Result.ToString();
-
-            tspbHashProgress.Value = 0;
-
-            tspbHashProgress.Visible = false;
-
-            UpdateStatus("Ready");
-        }
-
         private void bgSHA512Hash_DoWork(object sender, DoWorkEventArgs e)
         {
             string filePath = e.Argument.ToString();
@@ -654,24 +586,6 @@
                     e.Result = HashingHelpers.BuildSHA512HashString(hasher.Hash);
                 }
             }
-        }
-
-        private void bgSHA512Hash_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        {
-            kwlHash.Text = "Please wait...";
-
-            tspbHashProgress.Value = e.ProgressPercentage;
-        }
-
-        private void bgSHA512Hash_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            kwlHash.Text = e.Result.ToString();
-
-            tspbHashProgress.Value = 0;
-
-            tspbHashProgress.Visible = false;
-
-            UpdateStatus("Ready");
         }
 
         private void bgRIPEMD160Hash_DoWork(object sender, DoWorkEventArgs e)
@@ -712,20 +626,22 @@
 #endif
         }
 
-        private void bgRIPEMD160Hash_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        private void ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             kwlHash.Text = "Please wait...";
 
             tspbHashProgress.Value = e.ProgressPercentage;
         }
 
-        private void bgRIPEMD160Hash_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        private void RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             kwlHash.Text = e.Result.ToString();
 
             tspbHashProgress.Value = 0;
 
             tspbHashProgress.Visible = false;
+
+            kbtnSaveToFile.Enabled = true; kbtnSaveToFile.Enabled = true;
 
             UpdateStatus("Ready");
         }
@@ -746,6 +662,8 @@
                 FileName = Path.GetFileName(ofd.FileName);
 
                 FileNameWithoutExtension = Path.GetFileNameWithoutExtension(ofd.FileName);
+
+                kcmbAlgorithimType.Enabled = true;
             }
         }
 
