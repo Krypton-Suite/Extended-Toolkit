@@ -253,6 +253,7 @@
             this.kcmbInstalledVoices.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
             this.kcmbInstalledVoices.TabIndex = 0;
             this.kcmbInstalledVoices.SelectedIndexChanged += new System.EventHandler(this.kcmbInstalledVoices_SelectedIndexChanged);
+            this.kcmbInstalledVoices.TextChanged += new System.EventHandler(this.kcmbInstalledVoices_TextChanged);
             // 
             // KryptonTextToSpeechDialog
             // 
@@ -394,11 +395,14 @@
 
         private void kcmbInstalledVoices_SelectedIndexChanged(object sender, EventArgs e)
         {
-            kgbAdjustments.Enabled = MissingFrameWorkAPIs.IsNullOrWhiteSpace(kcmbInstalledVoices.Text);
-
-            kgbInput.Enabled = MissingFrameWorkAPIs.IsNullOrWhiteSpace(kcmbInstalledVoices.Text);
-
-            kbtnPreview.Enabled = MissingFrameWorkAPIs.IsNullOrWhiteSpace(kcmbInstalledVoices.Text);
+            if (string.IsNullOrWhiteSpace(kcmbInstalledVoices.Text))
+            {
+                kbtnPreview.Enabled = true;
+            }
+            else
+            {
+                kbtnPreview.Enabled = false;
+            }
         }
 
         private void ktrkRate_ValueChanged(object sender, EventArgs e)
@@ -434,6 +438,18 @@
             ktrkVolume.Value = _speechVolume;
 
             kwlVolume.Text = _speechVolume.ToString();
+        }
+
+        private void kcmbInstalledVoices_TextChanged(object sender, EventArgs e)
+        {
+            if (MissingFrameWorkAPIs.IsNullOrWhiteSpace(kcmbInstalledVoices.Text))
+            {
+                kbtnPreview.Enabled = true;
+            }
+            else
+            {
+                kbtnPreview.Enabled = false;
+            }
         }
 
         private void kbtnCancel_Click(object sender, EventArgs e)
