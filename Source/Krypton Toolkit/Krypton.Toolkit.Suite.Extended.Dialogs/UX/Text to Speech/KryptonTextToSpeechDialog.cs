@@ -74,7 +74,6 @@
             // 
             // kbtnPreview
             // 
-            this.kbtnPreview.Enabled = false;
             this.kbtnPreview.Location = new System.Drawing.Point(12, 13);
             this.kbtnPreview.Name = "kbtnPreview";
             this.kbtnPreview.Size = new System.Drawing.Size(90, 25);
@@ -229,7 +228,7 @@
             // 
             // kryptonGroupBox1
             // 
-            this.kryptonGroupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.kryptonGroupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.kryptonGroupBox1.Location = new System.Drawing.Point(13, 13);
             this.kryptonGroupBox1.Name = "kryptonGroupBox1";
