@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+
 using Krypton.Toolkit;
+using Krypton.Toolkit.Suite.Extended.Dialogs;
 
 namespace Dialogs
 {
@@ -32,6 +26,13 @@ namespace Dialogs
         private void Form1_Load(object sender, EventArgs e)
         {
             kabm.Assembly = Assembly.GetExecutingAssembly();
+        }
+
+        private void kryptonButton1_Click(object sender, EventArgs e)
+        {
+            KryptonTextToSpeechDialog textToSpeechDialog = new KryptonTextToSpeechDialog();
+
+            textToSpeechDialog.ShowDialog();
         }
     }
 }

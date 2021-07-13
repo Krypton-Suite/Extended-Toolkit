@@ -34,6 +34,7 @@ namespace Dialogs
             this.kbtnShowInputBox = new Krypton.Toolkit.KryptonButton();
             this.kabm = new Krypton.Toolkit.Suite.Extended.Dialogs.KryptonAboutBoxManager();
             this.kibm = new Krypton.Toolkit.Suite.Extended.Dialogs.KryptonInputBoxManager();
+            this.kryptonButton1 = new Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -49,12 +50,13 @@ namespace Dialogs
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(this.kryptonButton1);
             this.kryptonPanel1.Controls.Add(this.kbtnShowInputBox);
             this.kryptonPanel1.Controls.Add(this.kbtnAboutBox);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel1.Name = "kryptonPanel1";
-            this.kryptonPanel1.Size = new System.Drawing.Size(275, 60);
+            this.kryptonPanel1.Size = new System.Drawing.Size(275, 114);
             this.kryptonPanel1.TabIndex = 1;
             // 
             // kbtnShowInputBox
@@ -85,6 +87,7 @@ namespace Dialogs
             // kibm
             // 
             this.kibm.CancelText = "C&ancel";
+            this.kibm.ControlTypeface = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.kibm.CustomImage = null;
             this.kibm.HeaderText = "Header Text Here";
             this.kibm.HeaderTypeface = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
@@ -109,11 +112,20 @@ namespace Dialogs
             this.kibm.Title = "Hello World!";
             this.kibm.YesText = "Y&es";
             // 
+            // kryptonButton1
+            // 
+            this.kryptonButton1.Location = new System.Drawing.Point(12, 43);
+            this.kryptonButton1.Name = "kryptonButton1";
+            this.kryptonButton1.Size = new System.Drawing.Size(138, 25);
+            this.kryptonButton1.TabIndex = 2;
+            this.kryptonButton1.Values.Text = "Show Text to Speech";
+            this.kryptonButton1.Click += new System.EventHandler(this.kryptonButton1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(275, 60);
+            this.ClientSize = new System.Drawing.Size(275, 114);
             this.Controls.Add(this.kryptonPanel1);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -131,6 +143,7 @@ namespace Dialogs
         private Krypton.Toolkit.KryptonPanel kryptonPanel1;
         private Krypton.Toolkit.KryptonButton kbtnShowInputBox;
         private Krypton.Toolkit.Suite.Extended.Dialogs.KryptonInputBoxManager kibm;
+        private Krypton.Toolkit.KryptonButton kryptonButton1;
     }
 }
 
