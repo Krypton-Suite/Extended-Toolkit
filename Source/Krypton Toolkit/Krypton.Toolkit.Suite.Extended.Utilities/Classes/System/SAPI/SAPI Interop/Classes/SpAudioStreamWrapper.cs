@@ -6,15 +6,15 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Utilities.AudioFormat;
-using Krypton.Toolkit.Suite.Extended.Utilities.Synthesis;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.AudioFormat;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis;
 using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech;
 using System;
-using System;
+using System.IO;
 using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.ComTypes;
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.SAPIInterop
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop
 {
     internal class SpAudioStreamWrapper : SpStreamWrapper, ISpStreamFormat, IStream
     {

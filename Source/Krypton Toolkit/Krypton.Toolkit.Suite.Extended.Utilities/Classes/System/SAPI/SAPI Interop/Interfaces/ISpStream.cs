@@ -15,7 +15,7 @@ using System.Text;
 using System.Threading.Tasks;
 using STATSTG = System.Runtime.InteropServices.ComTypes.STATSTG;
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.SAPIInterop
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop
 {
 	[ComImport, Guid("BED530BE-2606-4F4D-A1C0-54C5CDA5566F"), InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 	internal interface ISpStream : ISpStreamFormat, IStream

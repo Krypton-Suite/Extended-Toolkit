@@ -6,7 +6,7 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.AudioFormat
 {
     public enum EncodingFormat
     {

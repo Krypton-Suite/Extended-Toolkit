@@ -6,7 +6,7 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.SrgsGrammar
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
 {
 	public enum SrgsRuleScope
 	{

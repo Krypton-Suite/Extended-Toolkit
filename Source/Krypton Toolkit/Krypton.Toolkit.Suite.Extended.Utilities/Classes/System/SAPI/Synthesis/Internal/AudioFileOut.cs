@@ -6,13 +6,13 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Utilities.AudioFormat;
-using Krypton.Toolkit.Suite.Extended.Utilities;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.AudioFormat;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
 using System;
-using System;
+using System.IO;
 using System.Threading;
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.Synthesis
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
 {
     internal class AudioFileOut : AudioBase, IDisposable
     {

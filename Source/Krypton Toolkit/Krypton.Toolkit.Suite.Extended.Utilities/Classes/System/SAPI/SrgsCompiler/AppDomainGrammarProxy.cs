@@ -6,8 +6,8 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Utilities;
-using Krypton.Toolkit.Suite.Extended.Utilities.SrgsGrammar;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar;
 using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech;
 using System;
 using System.Globalization;
@@ -17,7 +17,7 @@ using System.Security.Permissions;
 using System.Security.Policy;
 using System.Text;
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.SrgsCompiler
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 {
     internal class AppDomainGrammarProxy : MarshalByRefObject
     {

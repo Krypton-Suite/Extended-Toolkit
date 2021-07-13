@@ -6,8 +6,8 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Utilities;
-using Krypton.Toolkit.Suite.Extended.Utilities.SrgsGrammar;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar;
 using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech;
 using System;
 using System.Collections.Generic;
@@ -15,7 +15,7 @@ using System.Globalization;
 using System.Text;
 using System.Xml;
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.SrgsParser
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser
 {
     internal class XmlParser : ISrgsParser
     {

@@ -8,7 +8,7 @@
 
 using System.Runtime.InteropServices;
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.SAPIInterop
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop
 {
     [StructLayout(LayoutKind.Sequential)]
     internal class SPSERIALIZEDPHRASEPROPERTY

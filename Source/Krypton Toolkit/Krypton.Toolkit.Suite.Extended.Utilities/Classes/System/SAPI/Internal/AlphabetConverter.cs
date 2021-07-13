@@ -9,11 +9,11 @@
 using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech;
 using System;
 using System.Collections;
-using System;
+using System.IO;
 using System.Reflection;
 using System.Text;
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
 {
     internal class AlphabetConverter
     {

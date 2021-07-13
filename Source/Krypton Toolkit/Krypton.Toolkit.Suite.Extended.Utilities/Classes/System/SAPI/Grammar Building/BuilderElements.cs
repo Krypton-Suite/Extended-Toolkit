@@ -6,13 +6,13 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Utilities;
-using Krypton.Toolkit.Suite.Extended.Utilities.SrgsParser;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.GrammarBuilding
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.GrammarBuilding
 {
     internal abstract class BuilderElements : GrammarBuilderBase
     {
@@ -124,7 +124,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.GrammarBuilding
 
         internal void Add(GrammarBuilder builder)
         {
-            foreach (GrammarBuilderBase item in builderBuilder.Items)
+            foreach (GrammarBuilderBase item in builder.InternalBuilder.Items)
             {
                 _items.Add(item);
             }

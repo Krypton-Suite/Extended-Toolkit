@@ -6,11 +6,11 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Utilities;
-using Krypton.Toolkit.Suite.Extended.Utilities.SrgsParser;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser;
 using System.Collections.Generic;
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.GrammarBuilding
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.GrammarBuilding
 {
     internal sealed class ItemElement : BuilderElements
     {
@@ -50,7 +50,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.GrammarBuilding
 
         internal ItemElement(GrammarBuilder builders)
         {
-            foreach (GrammarBuilderBase item in buildersBuilder.Items)
+            foreach (GrammarBuilderBase item in builders.InternalBuilder.Items)
             {
                 base.Items.Add(item);
             }

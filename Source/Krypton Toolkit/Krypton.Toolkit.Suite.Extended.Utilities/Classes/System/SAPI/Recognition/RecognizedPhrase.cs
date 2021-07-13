@@ -6,9 +6,9 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Utilities.SAPIInterop;
-using Krypton.Toolkit.Suite.Extended.Utilities.SrgsCompiler;
-using Krypton.Toolkit.Suite.Extended.Utilities.SrgsParser;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser;
 using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech;
 using System;
 using System.Collections.Generic;
@@ -21,7 +21,7 @@ using System.Text;
 using System.Xml;
 using System.Xml.XPath;
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
 {
     [Serializable]
     [DebuggerDisplay("{Text}")]

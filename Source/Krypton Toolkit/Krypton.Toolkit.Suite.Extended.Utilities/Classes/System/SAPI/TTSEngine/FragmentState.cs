@@ -6,11 +6,11 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Utilities;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
 using System;
 using System.ComponentModel;
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.TTSEngine
 {
     [ImmutableObject(true)]
     public struct FragmentState : IEquatable<FragmentState>

@@ -6,13 +6,13 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Utilities;
-using Krypton.Toolkit.Suite.Extended.Utilities.SrgsParser;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser;
 using System;
 using System.Diagnostics;
 using System.Xml;
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.SrgsGrammar
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
 {
     [Serializable]
     [DebuggerDisplay("{DebuggerDisplayString ()}")]

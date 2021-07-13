@@ -8,7 +8,7 @@
 
 using System;
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.SrgsParser
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser
 {
     internal interface IElementFactory
     {

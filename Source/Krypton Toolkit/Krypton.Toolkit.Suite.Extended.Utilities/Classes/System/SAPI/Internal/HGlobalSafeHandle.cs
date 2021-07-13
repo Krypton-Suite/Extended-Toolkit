@@ -6,7 +6,10 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities
+using System;
+using System.Runtime.InteropServices;
+
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
 {
     internal sealed class HGlobalSafeHandle : SafeHandle
     {

@@ -9,7 +9,7 @@
 using System;
 using System.Threading;
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
 {
     internal class OperationLock : IDisposable
     {

@@ -6,9 +6,9 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Utilities.SAPIInterop;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop;
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
 {
     internal class InternalGrammarData
     {

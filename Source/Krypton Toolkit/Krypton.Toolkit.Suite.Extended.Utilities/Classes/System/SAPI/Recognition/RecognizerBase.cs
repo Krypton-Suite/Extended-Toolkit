@@ -7,9 +7,9 @@
 #endregion
 
 #define TRACE
-using Krypton.Toolkit.Suite.Extended.Utilities.AudioFormat;
-using Krypton.Toolkit.Suite.Extended.Utilities;
-using Krypton.Toolkit.Suite.Extended.Utilities.SAPIInterop;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.AudioFormat;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop;
 using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech;
 using System;
 using System.Collections.Generic;
@@ -17,13 +17,13 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Globalization;
-using System;
+using System.IO;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.ComTypes;
 using System.Threading;
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
 {
     internal class RecognizerBase : IRecognizerInternal, IDisposable, ISpGrammarResourceLoader
     {
@@ -173,7 +173,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities
                     {
                         foreach (Grammar grammar in _grammars)
                         {
-                            SapiGrammar sapiGrammar = grammarData._sapiGrammar;
+                            SapiGrammar sapiGrammar = grammar.InternalData._sapiGrammar;
                             ActivateRule(sapiGrammar, grammar.Uri, grammar.RuleName);
                         }
                     }
@@ -587,10 +587,10 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities
                 {
                     sapiGrammar.Dispose();
                     grammar.State = GrammarState.Unloaded;
-                    grammarData = null;
+                    grammar.InternalData = null;
                     throw;
                 }
-                grammarData = new InternalGrammarData(grammarId, sapiGrammar, grammar.Enabled, grammar.Weight, grammar.Priority);
+                grammar.InternalData = new InternalGrammarData(grammarId, sapiGrammar, grammar.Enabled, grammar.Weight, grammar.Priority);
                 lock (SapiRecognizer)
                 {
                     _grammars.Add(grammar);
@@ -614,7 +614,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities
             ValidateGrammar(grammar, default(GrammarState));
             ulong grammarId;
             SapiGrammar sapiGrammar = CreateNewSapiGrammar(out grammarId);
-            grammarData = new InternalGrammarData(grammarId, sapiGrammar, grammar.Enabled, grammar.Weight, grammar.Priority);
+            grammar.InternalData = new InternalGrammarData(grammarId, sapiGrammar, grammar.Enabled, grammar.Weight, grammar.Priority);
             lock (SapiRecognizer)
             {
                 _grammars.Add(grammar);
@@ -631,13 +631,13 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities
         internal void UnloadGrammar(Grammar grammar)
         {
             ValidateGrammar(grammar, GrammarState.Loaded, GrammarState.LoadFailed);
-            grammarData?._sapiGrammar.Dispose();
+            grammar.InternalData?._sapiGrammar.Dispose();
             lock (SapiRecognizer)
             {
                 _grammars.Remove(grammar);
             }
             grammar.State = GrammarState.Unloaded;
-            grammarData = null;
+            grammar.InternalData = null;
         }
 
         internal void UnloadAllGrammars()
@@ -656,7 +656,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities
 
         void IRecognizerInternal.SetGrammarState(Grammar grammar, bool enabled)
         {
-            InternalGrammarData internalData = grammarData;
+            InternalGrammarData internalData = grammar.InternalData;
             lock (_grammarDataLock)
             {
                 if (grammar.Loaded)
@@ -673,7 +673,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities
             {
                 throw new NotSupportedException(SR.Get(SRID.NotSupportedWithThisVersionOfSAPI2, "Weight"));
             }
-            InternalGrammarData internalData = grammarData;
+            InternalGrammarData internalData = grammar.InternalData;
             lock (_grammarDataLock)
             {
                 if (grammar.Loaded)
@@ -697,7 +697,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities
             {
                 throw new NotSupportedException(SR.Get(SRID.NotSupportedWithThisVersionOfSAPI2, "Priority"));
             }
-            InternalGrammarData internalData = grammarData;
+            InternalGrammarData internalData = grammar.InternalData;
             lock (_grammarDataLock)
             {
                 if (grammar.Loaded)
@@ -718,7 +718,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities
             {
                 foreach (Grammar grammar in _grammars)
                 {
-                    InternalGrammarData internalData = grammarData;
+                    InternalGrammarData internalData = grammar.InternalData;
                     if (internalData._grammarId == id)
                     {
                         return grammar;
@@ -740,7 +740,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities
             }
             SPTEXTSELECTIONINFO info = new SPTEXTSELECTIONINFO(0u, 0u, (uint)precedingText.Length, 0u);
             string text = precedingText + subsequentText + "\0\0";
-            SapiGrammar sapiGrammar = grammarData._sapiGrammar;
+            SapiGrammar sapiGrammar = grammar.InternalData._sapiGrammar;
             sapiGrammar.SetWordSequenceData(text, info);
         }
 
@@ -850,7 +850,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities
             {
                 if (!_supportsSapi53 && ex.ErrorCode == -2147200966)
                 {
-                    throw new PlatformNotSupportedException(SR.Get(SRIDNotSupported));
+                    throw new PlatformNotSupportedException(SR.Get(SRID.RecognitionNotSupported));
                 }
                 throw ExceptionFromSapiCreateRecognizerError(ex);
             }
@@ -1163,9 +1163,9 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities
                         OperatingSystem oSVersion = Environment.OSVersion;
                         if (IntPtr.Size == 8 && oSVersion.Platform == PlatformID.Win32NT && oSVersion.Version.Major == 5)
                         {
-                            return new NotSupportedException(SR.Get(SRIDNotSupportedOn64bit));
+                            return new NotSupportedException(SR.Get(SRID.RecognitionNotSupportedOn64bit));
                         }
-                        return new PlatformNotSupportedException(SR.Get(SRIDNotSupported));
+                        return new PlatformNotSupportedException(SR.Get(SRID.RecognitionNotSupported));
                     }
                 case SAPIErrorCodes.SPERR_SHARED_ENGINE_DISABLED:
                 case SAPIErrorCodes.SPERR_RECOGNIZER_NOT_FOUND:
@@ -1438,7 +1438,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities
         private void LoadGrammarAsyncCallback(object grammarObject)
         {
             Grammar grammar = (Grammar)grammarObject;
-            InternalGrammarData internalData = grammarData;
+            InternalGrammarData internalData = grammar.InternalData;
             Exception ex = null;
             try
             {
@@ -1481,7 +1481,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities
                 {
                     foreach (Grammar grammar in _grammars)
                     {
-                        if (_currentGrammarId == grammarData._grammarId)
+                        if (_currentGrammarId == grammar.InternalData._grammarId)
                         {
                             flag = true;
                             break;

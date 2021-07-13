@@ -6,7 +6,7 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.Synthesis
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
 {
 	public class SpeakCompletedEventArgs : PromptEventArgs
 	{

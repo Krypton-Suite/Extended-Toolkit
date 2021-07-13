@@ -8,10 +8,10 @@
 
 using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech;
 using System;
-using System;
+using System.IO;
 using System.Net;
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
 {
     internal class ResourceLoader
     {

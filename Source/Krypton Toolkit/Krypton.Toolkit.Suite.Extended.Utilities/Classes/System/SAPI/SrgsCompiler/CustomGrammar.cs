@@ -6,9 +6,9 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Utilities;
-using Krypton.Toolkit.Suite.Extended.Utilities.SrgsParser;
-using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser;
+using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.IO;
 using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech;
 using Microsoft.CSharp;
 using Microsoft.VisualBasic;
@@ -17,11 +17,11 @@ using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
-using System;
+using System.IO;
 using System.Reflection;
 using System.Text;
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.SrgsCompiler
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 {
     internal class CustomGrammar
     {
@@ -344,7 +344,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.SrgsCompiler
                 }
                 SRID sRID = SRID.ArrayOfNullIllegal;
                 string @namespace = sRID.GetType().Namespace;
-                string text = string.Format(CultureInfo.InvariantCulture, "#line 1 \"{0}\"\nusing System;\nusing System.Collections.Generic;\nusing System.Diagnostics;\nusing {1};\nusing {1};\nusing {1}.SrgsGrammar;\n", new object[2]
+                string text = string.Format(CultureInfo.InvariantCulture, "#line 1 \"{0}\"\nusing System;\nusing System.Collections.Generic;\nusing System.Diagnostics;\nusing {1};\nusing {1}.Recognition;\nusing {1}.Recognition.SrgsGrammar;\n", new object[2]
                 {
                     "<Does Not Exist>",
                     @namespace
@@ -408,7 +408,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.SrgsCompiler
                 }
                 SRID sRID = SRID.ArrayOfNullIllegal;
                 string @namespace = sRID.GetType().Namespace;
-                string text = string.Format(CultureInfo.InvariantCulture, "#ExternalSource (\"{0}\", 1)\nImports System\nImports System.Collections.Generic\nImports System.Diagnostics\nImports {1}\nImports {1}\nImports {1}.SrgsGrammar\n", new object[2]
+                string text = string.Format(CultureInfo.InvariantCulture, "#ExternalSource (\"{0}\", 1)\nImports System\nImports System.Collections.Generic\nImports System.Diagnostics\nImports {1}\nImports {1}.Recognition\nImports {1}.Recognition.SrgsGrammar\n", new object[2]
                 {
                     "<Does Not Exist>",
                     @namespace
@@ -531,7 +531,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.SrgsCompiler
             try
             {
                 appDomain = AppDomain.CreateDomain("Loading Domain");
-                AppDomainCompilerProxy appDomainCompilerProxy = (AppDomainCompilerProxy)appDomain.CreateInstanceFromAndUnwrap(executingAssembly.GetName().CodeBase, "System.Speech.SrgsCompiler.AppDomainCompilerProxy");
+                AppDomainCompilerProxy appDomainCompilerProxy = (AppDomainCompilerProxy)appDomain.CreateInstanceFromAndUnwrap(executingAssembly.GetName().CodeBase, "System.Speech.Internal.SrgsCompiler.AppDomainCompilerProxy");
                 int count = _scriptRefs.Count;
                 string[] array = new string[count];
                 string[] array2 = new string[count];

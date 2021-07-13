@@ -6,20 +6,20 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Utilities;
-using Krypton.Toolkit.Suite.Extended.Utilities.SrgsCompiler;
-using Krypton.Toolkit.Suite.Extended.Utilities.SrgsGrammar;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar;
 using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Globalization;
-using System;
+using System.IO;
 using System.Reflection;
 using System.Text;
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
 {
     [DebuggerDisplay("Grammar: {(_uri != null ? \"uri=\" + _uri.ToString () + \" \" : \"\") + \"rule=\" + _ruleName }")]
     public class Grammar
@@ -791,7 +791,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities
             {
                 Assembly executingAssembly = Assembly.GetExecutingAssembly();
                 _appDomain = AppDomain.CreateDomain("sandbox");
-                _proxy = (AppDomainGrammarProxy)_appDomain.CreateInstanceFromAndUnwrap(executingAssembly.GetName().CodeBase, "System.Speech.SrgsCompiler.AppDomainGrammarProxy");
+                _proxy = (AppDomainGrammarProxy)_appDomain.CreateInstanceFromAndUnwrap(executingAssembly.GetName().CodeBase, "System.Speech.Internal.SrgsCompiler.AppDomainGrammarProxy");
                 _proxy.Init(_ruleName, assemblyContent, assemblyDebugSymbols);
                 _scripts = scripts;
             }

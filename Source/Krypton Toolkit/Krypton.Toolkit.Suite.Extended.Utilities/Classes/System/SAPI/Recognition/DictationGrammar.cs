@@ -6,7 +6,10 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities
+using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech;
+using System;
+
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
 {
     public class DictationGrammar : Grammar
     {

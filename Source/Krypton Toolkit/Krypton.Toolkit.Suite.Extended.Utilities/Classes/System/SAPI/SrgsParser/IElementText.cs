@@ -6,7 +6,7 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.SrgsParser
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser
 {
     internal interface IElementText : IElement
     {

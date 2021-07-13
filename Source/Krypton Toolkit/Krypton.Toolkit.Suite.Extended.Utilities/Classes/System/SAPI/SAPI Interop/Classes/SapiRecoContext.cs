@@ -6,11 +6,11 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Utilities;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
 using System;
 using System.Runtime.InteropServices;
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.SAPIInterop
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop
 {
     internal class SapiRecoContext : IDisposable
     {

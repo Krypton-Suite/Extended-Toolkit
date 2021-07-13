@@ -6,13 +6,13 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Utilities;
-using Krypton.Toolkit.Suite.Extended.Utilities.SrgsGrammar;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar;
 using System;
 using System.Collections.ObjectModel;
 using System.Globalization;
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.SrgsParser
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser
 {
     internal interface IGrammar : IElement
     {

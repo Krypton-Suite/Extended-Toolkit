@@ -6,7 +6,9 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities
+using System;
+
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
 {
     internal interface IAsyncDispatch
     {

@@ -9,7 +9,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.SAPIInterop
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop
 {
     [ComImport, Guid("BE7A9CCE-5F9E-11D2-960F-00C04F8EE628"), InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     internal interface ISpEventSource : ISpNotifySource

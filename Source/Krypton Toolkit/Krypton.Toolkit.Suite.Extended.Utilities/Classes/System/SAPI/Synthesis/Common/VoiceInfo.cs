@@ -6,9 +6,9 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Utilities.AudioFormat;
-using Krypton.Toolkit.Suite.Extended.Utilities;
-using Krypton.Toolkit.Suite.Extended.Utilities.ObjectTokens;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.AudioFormat;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.ObjectTokens;
 using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech;
 using System;
 using System.Collections.Generic;
@@ -17,7 +17,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Globalization;
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.Synthesis
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
 {
     [Serializable]
     [DebuggerDisplay("{(_name != null ? \"'\" + _name + \"' \" : \"\") +  (_culture != null ? \" '\" + _culture.ToString () + \"' \" : \"\") + (_gender != VoiceGender.NotSet ? \" '\" + _gender.ToString () + \"' \" : \"\") + (_age != VoiceAge.NotSet ? \" '\" + _age.ToString () + \"' \" : \"\") + (_variant > 0 ? \" \" + _variant.ToString () : \"\")}")]

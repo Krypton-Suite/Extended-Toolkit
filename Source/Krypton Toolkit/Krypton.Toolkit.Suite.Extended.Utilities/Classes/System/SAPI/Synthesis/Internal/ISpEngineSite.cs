@@ -10,7 +10,7 @@ using System;
 using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.ComTypes;
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.Synthesis
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
 {
     [ComImport]
     [Guid("9880499B-CCE9-11D2-B503-00C04F797396")]

@@ -6,7 +6,12 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities
+using Krypton.Toolkit.Suite.Extended.Utilities.System.AudioFormat;
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
 {
     internal static class SapiAttributeParser
     {

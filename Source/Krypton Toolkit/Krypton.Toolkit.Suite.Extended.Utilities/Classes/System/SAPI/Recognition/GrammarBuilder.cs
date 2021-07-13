@@ -6,21 +6,21 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Utilities.GrammarBuilding;
-using Krypton.Toolkit.Suite.Extended.Utilities;
-using Krypton.Toolkit.Suite.Extended.Utilities.SrgsCompiler;
-using Krypton.Toolkit.Suite.Extended.Utilities.SrgsGrammar;
-using Krypton.Toolkit.Suite.Extended.Utilities.SrgsParser;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.GrammarBuilding;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser;
 using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Globalization;
-using System;
+using System.IO;
 using System.Text;
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
 {
     [DebuggerDisplay("{DebugSummary}")]
     public class GrammarBuilder
@@ -195,16 +195,16 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities
         public void Append(GrammarBuilder builder)
         {
             Helpers.ThrowIfNull(builder, "builder");
-            Helpers.ThrowIfNull(builderBuilder, "builderBuilder");
-            Helpers.ThrowIfNull(builderBuilder.Items, "builderBuilder.Items");
-            foreach (GrammarBuilderBase item in builderBuilder.Items)
+            Helpers.ThrowIfNull(builder.InternalBuilder, "builder.InternalBuilder");
+            Helpers.ThrowIfNull(builder.InternalBuilder.Items, "builder.InternalBuilder.Items");
+            foreach (GrammarBuilderBase item in builder.InternalBuilder.Items)
             {
                 if (item == null)
                 {
                     throw new ArgumentException(SR.Get(SRID.ArrayOfNullIllegal), "builder");
                 }
             }
-            List<GrammarBuilderBase> list = (builder == this) ? builder.Clone()Builder.Items : builderBuilder.Items;
+            List<GrammarBuilderBase> list = (builder == this) ? builder.Clone().InternalBuilder.Items : builder.InternalBuilder.Items;
             foreach (GrammarBuilderBase item2 in list)
             {
                 AddItem(item2);
@@ -233,10 +233,10 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities
         {
             Helpers.ThrowIfNull(builder, "builder");
             ValidateRepeatArguments(minRepeat, maxRepeat, "minRepeat", "maxRepeat");
-            Helpers.ThrowIfNull(builderBuilder, "builderBuilder");
+            Helpers.ThrowIfNull(builder.InternalBuilder, "builder.InternalBuilder");
             if (minRepeat != 1 || maxRepeat != 1)
             {
-                AddItem(new ItemElement(builderBuilder.Items, minRepeat, maxRepeat));
+                AddItem(new ItemElement(builder.InternalBuilder.Items, minRepeat, maxRepeat));
             }
             else
             {

@@ -6,11 +6,11 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Utilities.AudioFormat;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.AudioFormat;
 using System;
 using System.Runtime.InteropServices;
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.SAPIInterop
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop
 {
     internal class SpeechEvent : IDisposable
     {

@@ -9,7 +9,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.SAPIInterop
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop
 {
     [ComImport, Guid("B638799F-6598-4c56-B3ED-509CA3F35B22"), InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     internal interface ISpCategory

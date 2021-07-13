@@ -8,7 +8,7 @@
 
 using System;
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
 {
     public class SpeechDetectedEventArgs : EventArgs
     {

@@ -6,7 +6,9 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities
+using Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser;
+
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.GrammarBuilding
 {
     internal abstract class GrammarBuilderBase
     {

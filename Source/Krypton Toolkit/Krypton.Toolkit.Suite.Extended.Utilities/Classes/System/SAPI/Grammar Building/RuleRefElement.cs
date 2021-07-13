@@ -6,7 +6,11 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities
+using Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser;
+using System;
+using System.Diagnostics;
+
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.GrammarBuilding
 {
     [DebuggerDisplay("{DebugSummary}")]
     internal sealed class RuleRefElement : GrammarBuilderBase

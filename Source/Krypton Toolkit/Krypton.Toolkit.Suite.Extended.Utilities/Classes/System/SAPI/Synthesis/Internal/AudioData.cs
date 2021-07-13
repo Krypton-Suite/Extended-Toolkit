@@ -6,11 +6,11 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Utilities;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
 using System;
-using System;
+using System.IO;
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.Synthesis
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
 {
     internal class AudioData : IDisposable
     {

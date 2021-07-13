@@ -8,7 +8,7 @@
 
 using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech;
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.SAPIInterop
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop
 {
     internal static class SapiConstants
     {

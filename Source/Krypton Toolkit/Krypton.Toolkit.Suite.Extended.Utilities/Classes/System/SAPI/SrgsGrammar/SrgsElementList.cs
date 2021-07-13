@@ -6,11 +6,11 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Utilities;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
 using System;
 using System.Collections.ObjectModel;
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.SrgsGrammar
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
 {
     [Serializable]
     internal class SrgsElementList : Collection<SrgsElement>

@@ -9,7 +9,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.SAPIInterop
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop
 {
     [ComImport, Guid("2D5F1C0C-BD75-4b08-9478-3B11FEA2586C"), InterfaceType(ComInterfaceType.InterfaceIsDual)]
     internal interface ISpeechRecognizer

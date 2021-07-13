@@ -7,9 +7,9 @@
 #endregion
 
 using System;
-using System;
+using System.IO;
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.TTSEngine
 {
     public interface ITtsEngineSite
     {

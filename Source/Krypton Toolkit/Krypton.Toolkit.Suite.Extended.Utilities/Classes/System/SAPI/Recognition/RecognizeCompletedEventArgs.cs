@@ -9,7 +9,7 @@
 using System;
 using System.ComponentModel;
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
 {
     public class RecognizeCompletedEventArgs : AsyncCompletedEventArgs
     {

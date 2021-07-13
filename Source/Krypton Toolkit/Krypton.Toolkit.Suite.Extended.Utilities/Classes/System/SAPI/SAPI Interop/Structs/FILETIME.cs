@@ -8,7 +8,7 @@
 
 using System;
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.SAPIInterop
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop
 {
     [Serializable]
     internal struct FILETIME

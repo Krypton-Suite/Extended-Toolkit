@@ -6,10 +6,10 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Utilities.SrgsParser;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser;
 using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech;
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.SrgsCompiler
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 {
     internal class OneOf : ParseElementCollection, IOneOf, IElement
     {

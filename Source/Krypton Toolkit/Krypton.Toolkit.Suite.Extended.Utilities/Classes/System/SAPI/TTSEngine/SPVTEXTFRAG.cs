@@ -9,7 +9,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.TTSEngine
 {
     [StructLayout(LayoutKind.Sequential)]
     internal class SPVTEXTFRAG

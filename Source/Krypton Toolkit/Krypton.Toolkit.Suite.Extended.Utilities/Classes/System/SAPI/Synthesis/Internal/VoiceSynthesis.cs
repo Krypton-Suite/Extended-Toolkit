@@ -6,23 +6,23 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Utilities.AudioFormat;
-using Krypton.Toolkit.Suite.Extended.Utilities;
-using Krypton.Toolkit.Suite.Extended.Utilities.ObjectTokens;
-using Krypton.Toolkit.Suite.Extended.Utilities;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.AudioFormat;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.ObjectTokens;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.TTSEngine;
 using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Globalization;
-using System;
+using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.Synthesis
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
 {
     internal sealed class VoiceSynthesis : IDisposable
     {
@@ -834,7 +834,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.Synthesis
                             voice.UpdateLexicons(lexicons);
                             _site.SetEventsInterest(_ttsInterest);
                             byte[] wfx = voice.WaveFormat(_waveOut.WaveFormat);
-                            ITtsEngineProxy ttsEngine = voice;
+                            ITtsEngineProxy ttsEngine = voice.TtsEngine;
                             if ((_ttsInterest & 0x40) != 0 && ttsEngine.EngineAlphabet != AlphabetType.Ipa)
                             {
                                 _site.EventMapper = new PhonemeEventMapper(_site, PhonemeEventMapper.PhonemeConversion.SapiToIpa, ttsEngine.AlphabetConverter);
@@ -1431,7 +1431,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.Synthesis
                         {
                             if (item.Value != null)
                             {
-                                item.Value.ReleaseInterface();
+                                item.Value.TtsEngine.ReleaseInterface();
                             }
                         }
                         _voiceDictionary.Clear();

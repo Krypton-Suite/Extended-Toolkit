@@ -9,7 +9,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.TTSEngine
 {
     [ComImport]
     [Guid("2D0FA0DB-AEA2-4AE2-9F8A-7AFC7794E56B")]

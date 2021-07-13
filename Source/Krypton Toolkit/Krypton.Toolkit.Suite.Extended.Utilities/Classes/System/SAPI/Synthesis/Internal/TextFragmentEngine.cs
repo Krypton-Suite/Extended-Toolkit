@@ -6,16 +6,16 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Utilities;
-using Krypton.Toolkit.Suite.Extended.Utilities;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.TTSEngine;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System;
+using System.IO;
 using System.Text;
 using System.Xml;
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.Synthesis
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
 {
     internal class TextFragmentEngine : ISsmlParser
     {
@@ -162,7 +162,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.Synthesis
         public void ProcessPhoneme(ref FragmentState fragmentState, AlphabetType alphabet, string ph, char[] phoneIds)
         {
             fragmentState.Action = TtsEngineAction.Pronounce;
-            fragmentState.Phoneme = _speakInfo.Voice.ConvertPhonemes(phoneIds, alphabet);
+            fragmentState.Phoneme = _speakInfo.Voice.TtsEngine.ConvertPhonemes(phoneIds, alphabet);
         }
 
         public void ProcessProsody(string pitch, string range, string rate, string volume, string duration, string points)

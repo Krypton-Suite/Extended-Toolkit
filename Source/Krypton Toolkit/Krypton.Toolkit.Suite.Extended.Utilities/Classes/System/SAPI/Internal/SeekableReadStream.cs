@@ -9,9 +9,9 @@
 using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech;
 using System;
 using System.Collections.Generic;
-using System;
+using System.IO;
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
 {
     internal class SeekableReadStream : Stream
     {

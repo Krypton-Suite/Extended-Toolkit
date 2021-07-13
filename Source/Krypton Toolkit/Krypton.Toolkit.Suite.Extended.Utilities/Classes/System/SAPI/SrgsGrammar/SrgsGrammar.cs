@@ -6,8 +6,8 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Utilities;
-using Krypton.Toolkit.Suite.Extended.Utilities.SrgsParser;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser;
 using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech;
 using System;
 using System.Collections.Generic;
@@ -15,7 +15,7 @@ using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Xml;
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.SrgsGrammar
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
 {
     [Serializable]
     internal sealed class SrgsGrammar : IGrammar, IElement

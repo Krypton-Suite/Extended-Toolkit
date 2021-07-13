@@ -6,15 +6,15 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Utilities.ObjectTokens;
-using Krypton.Toolkit.Suite.Extended.Utilities;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.ObjectTokens;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition;
 using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech;
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Threading;
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.SAPIInterop
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop
 {
     internal class SapiRecognizer : IDisposable
     {

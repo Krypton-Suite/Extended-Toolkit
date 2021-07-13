@@ -8,7 +8,7 @@
 
 using System.ComponentModel;
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities.Synthesis
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
 {
 	/// <filterpriority>2</filterpriority>
 	public abstract class PromptEventArgs : AsyncCompletedEventArgs

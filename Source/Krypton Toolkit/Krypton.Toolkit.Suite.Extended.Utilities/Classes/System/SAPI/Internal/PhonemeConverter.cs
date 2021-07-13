@@ -6,7 +6,12 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities
+using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
 {
     internal sealed class PhonemeConverter
     {

@@ -6,10 +6,10 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Utilities.SAPIInterop;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop;
 using System.Runtime.InteropServices;
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
 {
     [ComImport]
     [Guid("06B64F9E-7FDA-11D2-B4F2-00C04F797396")]

@@ -6,7 +6,11 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities
+using Krypton.Toolkit.Suite.Extended.Utilities.System.GrammarBuilding;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
+using System.Diagnostics;
+
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
 {
     [DebuggerDisplay("{_oneOf.DebugSummary}")]
     public class Choices

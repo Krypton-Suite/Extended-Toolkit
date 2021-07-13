@@ -6,11 +6,11 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Utilities.GrammarBuilding;
-using Krypton.Toolkit.Suite.Extended.Utilities;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.GrammarBuilding;
+using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
 using System.Diagnostics;
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
 {
     [DebuggerDisplay("{_tag.DebugSummary}")]
     public class SemanticResultValue

@@ -8,7 +8,7 @@
 
 using System.Runtime.InteropServices;
 
-namespace Krypton.Toolkit.Suite.Extended.Utilities
+namespace Krypton.Toolkit.Suite.Extended.Utilities.System.TTSEngine
 {
 	[TypeLibType(16)]
 	internal enum SPPARTOFSPEECH
