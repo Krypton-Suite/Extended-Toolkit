@@ -1,0 +1,40 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <LangVersion>preview</LangVersion>
+    <OutputType>library</OutputType>
+    <RootNamespace>Krypton.Toolkit.Suite.Extended.Specialised.Dialogs</RootNamespace>
+    <AssemblyName>Krypton.Toolkit.Suite.Extended.Specialised.Dialogs</AssemblyName>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <!--Package Data-->
+  <PropertyGroup>
+    <PackageId>Krypton.Toolkit.Suite.Extended.Specialised.Dialogs</PackageId>
+    <Description>An extension to the Krypton standard toolkit. This package holds system dialogs.</Description>
+  </PropertyGroup>
+
+  <!--Version Information-->
+  <PropertyGroup>
+    <AssemblyVersion>6.0.2108</AssemblyVersion>
+    <FileVersion>6.0.2108</FileVersion>
+  </PropertyGroup>
+
+  <!--Krypton Toolkit Import-->
+  <Choose>
+    <When Condition="'$(TFMs)' == 'all'">
+      <ItemGroup>
+        <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2106.1" />
+      </ItemGroup>
+    </When>
+    <Otherwise>
+      <ItemGroup>
+        <PackageReference Include="Krypton.Toolkit.Canary.Lite" Version="6.0.2106.1" />
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
+  <ItemGroup>
+    <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Common\Krypton.Toolkit.Suite.Extended.Common 2019.csproj" />
+  </ItemGroup>
+
+</Project>
