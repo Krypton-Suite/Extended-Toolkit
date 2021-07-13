@@ -1,0 +1,16 @@
+﻿global using System;
+global using System.Collections;
+global using System.Collections.Generic;
+global using System.Collections.ObjectModel;
+global using System.ComponentModel;
+global using System.Diagnostics;
+global using System.Globalization;
+global using System.IO;
+global using System.Net;
+global using System.Reflection;
+global using System.Runtime.InteropServices;
+global using System.Runtime.Versioning;
+global using System.Security;
+global using System.Security.Permissions;
+global using System.Text;
+global using System.Threading;
