@@ -20,24 +20,24 @@
         private void InitializeComponent()
         {
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            this.kbtnFirstButton = new Krypton.Toolkit.KryptonButton();
+            this.kbtnThirdButton = new Krypton.Toolkit.KryptonButton();
+            this.kbtnSecondButton = new Krypton.Toolkit.KryptonButton();
             this.kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
-            this.kbtnFirstButton = new Krypton.Toolkit.KryptonButton();
-            this.kbtnSecondButton = new Krypton.Toolkit.KryptonButton();
-            this.kbtnThirdButton = new Krypton.Toolkit.KryptonButton();
-            this.pbxImage = new System.Windows.Forms.PictureBox();
-            this.kwlMessage = new Krypton.Toolkit.KryptonWrapLabel();
-            this.kcmbInput = new Krypton.Toolkit.KryptonComboBox();
-            this.ktxtInput = new Krypton.Toolkit.KryptonTextBox();
-            this.kmtxtInput = new Krypton.Toolkit.KryptonMaskedTextBox();
-            this.klblMessage = new Krypton.Toolkit.KryptonLabel();
             this.kblMessage = new Krypton.Toolkit.Suite.Extended.Controls.KryptonBorderedLabel();
+            this.klblMessage = new Krypton.Toolkit.KryptonLabel();
+            this.kmtxtInput = new Krypton.Toolkit.KryptonMaskedTextBox();
+            this.ktxtInput = new Krypton.Toolkit.KryptonTextBox();
+            this.kcmbInput = new Krypton.Toolkit.KryptonComboBox();
+            this.kwlMessage = new Krypton.Toolkit.KryptonWrapLabel();
+            this.pbxImage = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
             this.kryptonPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kcmbInput)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxImage)).BeginInit();
             this.SuspendLayout();
             // 
             // kryptonPanel1
@@ -49,12 +49,37 @@
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 189);
             this.kryptonPanel1.Name = "kryptonPanel1";
+            this.kryptonPanel1.PanelBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelAlternate;
             this.kryptonPanel1.Size = new System.Drawing.Size(551, 50);
             this.kryptonPanel1.TabIndex = 0;
             // 
+            // kbtnFirstButton
+            // 
+            this.kbtnFirstButton.Location = new System.Drawing.Point(170, 13);
+            this.kbtnFirstButton.Name = "kbtnFirstButton";
+            this.kbtnFirstButton.Size = new System.Drawing.Size(119, 25);
+            this.kbtnFirstButton.TabIndex = 1;
+            this.kbtnFirstButton.Values.Text = "kryptonButton1";
+            // 
+            // kbtnThirdButton
+            // 
+            this.kbtnThirdButton.Location = new System.Drawing.Point(420, 13);
+            this.kbtnThirdButton.Name = "kbtnThirdButton";
+            this.kbtnThirdButton.Size = new System.Drawing.Size(119, 25);
+            this.kbtnThirdButton.TabIndex = 3;
+            this.kbtnThirdButton.Values.Text = "kryptonButton3";
+            // 
+            // kbtnSecondButton
+            // 
+            this.kbtnSecondButton.Location = new System.Drawing.Point(295, 13);
+            this.kbtnSecondButton.Name = "kbtnSecondButton";
+            this.kbtnSecondButton.Size = new System.Drawing.Size(119, 25);
+            this.kbtnSecondButton.TabIndex = 2;
+            this.kbtnSecondButton.Values.Text = "kryptonButton2";
+            // 
             // kryptonBorderEdge1
             // 
-            this.kryptonBorderEdge1.BorderStyle = Krypton.Toolkit.PaletteBorderStyle.HeaderPrimary;
+            this.kryptonBorderEdge1.BorderStyle = Krypton.Toolkit.PaletteBorderStyle.HeaderSecondary;
             this.kryptonBorderEdge1.Dock = System.Windows.Forms.DockStyle.Top;
             this.kryptonBorderEdge1.Location = new System.Drawing.Point(0, 0);
             this.kryptonBorderEdge1.Name = "kryptonBorderEdge1";
@@ -76,38 +101,53 @@
             this.kryptonPanel2.Size = new System.Drawing.Size(551, 189);
             this.kryptonPanel2.TabIndex = 1;
             // 
-            // kbtnFirstButton
+            // kblMessage
             // 
-            this.kbtnFirstButton.Location = new System.Drawing.Point(170, 13);
-            this.kbtnFirstButton.Name = "kbtnFirstButton";
-            this.kbtnFirstButton.Size = new System.Drawing.Size(119, 25);
-            this.kbtnFirstButton.TabIndex = 1;
-            this.kbtnFirstButton.Values.Text = "kryptonButton1";
+            this.kblMessage.AutoSize = false;
+            this.kblMessage.BackColor = System.Drawing.Color.Transparent;
+            this.kblMessage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(192)))), ((int)(((byte)(214)))));
+            this.kblMessage.Location = new System.Drawing.Point(146, 12);
+            this.kblMessage.Name = "kblMessage";
+            this.kblMessage.Size = new System.Drawing.Size(393, 128);
+            this.kblMessage.TabIndex = 2;
+            this.kblMessage.Values.Text = "kryptonBorderedLabel1";
             // 
-            // kbtnSecondButton
+            // klblMessage
             // 
-            this.kbtnSecondButton.Location = new System.Drawing.Point(295, 13);
-            this.kbtnSecondButton.Name = "kbtnSecondButton";
-            this.kbtnSecondButton.Size = new System.Drawing.Size(119, 25);
-            this.kbtnSecondButton.TabIndex = 2;
-            this.kbtnSecondButton.Values.Text = "kryptonButton2";
+            this.klblMessage.AutoSize = false;
+            this.klblMessage.Location = new System.Drawing.Point(146, 12);
+            this.klblMessage.Name = "klblMessage";
+            this.klblMessage.Size = new System.Drawing.Size(393, 128);
+            this.klblMessage.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.klblMessage.StateCommon.ShortText.Trim = Krypton.Toolkit.PaletteTextTrim.EllipsisWord;
+            this.klblMessage.TabIndex = 2;
+            this.klblMessage.Values.Text = "kryptonLabel1";
             // 
-            // kbtnThirdButton
+            // kmtxtInput
             // 
-            this.kbtnThirdButton.Location = new System.Drawing.Point(420, 13);
-            this.kbtnThirdButton.Name = "kbtnThirdButton";
-            this.kbtnThirdButton.Size = new System.Drawing.Size(119, 25);
-            this.kbtnThirdButton.TabIndex = 3;
-            this.kbtnThirdButton.Values.Text = "kryptonButton3";
+            this.kmtxtInput.Location = new System.Drawing.Point(146, 144);
+            this.kmtxtInput.Name = "kmtxtInput";
+            this.kmtxtInput.Size = new System.Drawing.Size(393, 23);
+            this.kmtxtInput.TabIndex = 2;
+            this.kmtxtInput.KeyDown += new System.Windows.Forms.KeyEventHandler(this.kmtxtInput_KeyDown);
             // 
-            // pbxImage
+            // ktxtInput
             // 
-            this.pbxImage.BackColor = System.Drawing.Color.Transparent;
-            this.pbxImage.Location = new System.Drawing.Point(12, 12);
-            this.pbxImage.Name = "pbxImage";
-            this.pbxImage.Size = new System.Drawing.Size(128, 128);
-            this.pbxImage.TabIndex = 0;
-            this.pbxImage.TabStop = false;
+            this.ktxtInput.Location = new System.Drawing.Point(146, 144);
+            this.ktxtInput.Name = "ktxtInput";
+            this.ktxtInput.Size = new System.Drawing.Size(393, 23);
+            this.ktxtInput.TabIndex = 2;
+            // 
+            // kcmbInput
+            // 
+            this.kcmbInput.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.kcmbInput.DropDownWidth = 393;
+            this.kcmbInput.IntegralHeight = false;
+            this.kcmbInput.Location = new System.Drawing.Point(146, 144);
+            this.kcmbInput.Name = "kcmbInput";
+            this.kcmbInput.Size = new System.Drawing.Size(393, 21);
+            this.kcmbInput.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
+            this.kcmbInput.TabIndex = 2;
             // 
             // kwlMessage
             // 
@@ -122,55 +162,14 @@
             this.kwlMessage.Text = "kryptonWrapLabel1";
             this.kwlMessage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // kcmbInput
+            // pbxImage
             // 
-            this.kcmbInput.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.kcmbInput.DropDownWidth = 393;
-            this.kcmbInput.IntegralHeight = false;
-            this.kcmbInput.Location = new System.Drawing.Point(146, 144);
-            this.kcmbInput.Name = "kcmbInput";
-            this.kcmbInput.Size = new System.Drawing.Size(393, 21);
-            this.kcmbInput.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
-            this.kcmbInput.TabIndex = 2;
-            this.kcmbInput.KeyDown += kcmbInput_KeyDown;
-            // 
-            // ktxtInput
-            // 
-            this.ktxtInput.Location = new System.Drawing.Point(146, 144);
-            this.ktxtInput.Name = "ktxtInput";
-            this.ktxtInput.Size = new System.Drawing.Size(393, 23);
-            this.ktxtInput.TabIndex = 2;
-            this.ktxtInput.KeyDown += ktxtInput_KeyDown;
-            // 
-            // kmtxtInput
-            // 
-            this.kmtxtInput.Location = new System.Drawing.Point(146, 144);
-            this.kmtxtInput.Name = "kmtxtInput";
-            this.kmtxtInput.Size = new System.Drawing.Size(393, 23);
-            this.kmtxtInput.TabIndex = 2;
-            this.kmtxtInput.KeyDown += new System.Windows.Forms.KeyEventHandler(this.kmtxtInput_KeyDown);
-            // 
-            // klblMessage
-            // 
-            this.klblMessage.AutoSize = false;
-            this.klblMessage.Location = new System.Drawing.Point(146, 12);
-            this.klblMessage.Name = "klblMessage";
-            this.klblMessage.Size = new System.Drawing.Size(393, 128);
-            this.klblMessage.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.klblMessage.StateCommon.ShortText.Trim = Krypton.Toolkit.PaletteTextTrim.EllipsisWord;
-            this.klblMessage.TabIndex = 2;
-            this.klblMessage.Values.Text = "kryptonLabel1";
-            // 
-            // kblMessage
-            // 
-            this.kblMessage.AutoSize = false;
-            this.kblMessage.BackColor = System.Drawing.Color.Transparent;
-            this.kblMessage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(192)))), ((int)(((byte)(214)))));
-            this.kblMessage.Location = new System.Drawing.Point(146, 12);
-            this.kblMessage.Name = "kblMessage";
-            this.kblMessage.Size = new System.Drawing.Size(393, 128);
-            this.kblMessage.TabIndex = 2;
-            this.kblMessage.Values.Text = "kryptonBorderedLabel1";
+            this.pbxImage.BackColor = System.Drawing.Color.Transparent;
+            this.pbxImage.Location = new System.Drawing.Point(12, 12);
+            this.pbxImage.Name = "pbxImage";
+            this.pbxImage.Size = new System.Drawing.Size(128, 128);
+            this.pbxImage.TabIndex = 0;
+            this.pbxImage.TabStop = false;
             // 
             // KryptonInputBoxExtended
             // 
@@ -190,8 +189,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
             this.kryptonPanel2.ResumeLayout(false);
             this.kryptonPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.kcmbInput)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxImage)).EndInit();
             this.ResumeLayout(false);
 
         }
