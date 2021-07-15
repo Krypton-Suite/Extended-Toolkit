@@ -15,6 +15,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build System", "Build Syste
 	ProjectSection(SolutionItems) = preProject
 		..\..\build.cmd = ..\..\build.cmd
 		..\..\build.proj = ..\..\build.proj
+		..\..\build.proj.old = ..\..\build.proj.old
+		..\..\debug.cmd = ..\..\debug.cmd
+		..\..\debug.proj = ..\..\debug.proj
 		Directory.Build.props = Directory.Build.props
 		..\..\Directory.Build.props = ..\..\Directory.Build.props
 		Third Party\Directory.Build.props = Third Party\Directory.Build.props
@@ -84,8 +87,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Settings 2019", "Krypton.Toolkit.Suite.Extended.Settings\Krypton.Toolkit.Suite.Extended.Settings 2019.csproj", "{0851A3F7-8FB9-4E57-965E-76B835587639}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Utilities 2019", "Krypton.Toolkit.Suite.Extended.Utilities\Krypton.Toolkit.Suite.Extended.Utilities 2019.csproj", "{7BA75AAC-7D3E-4ED3-9562-8176380BC49C}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ILRepack.Lib.MSBuild.Task", "Third Party\ILRepack.Lib.MSBuild.Task\ILRepack.Lib.MSBuild.Task.csproj", "{66DD6657-39B3-4ACF-9EE9-B60EF96A2262}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Controls 2019", "Krypton.Toolkit.Suite.Extended.Controls\Krypton.Toolkit.Suite.Extended.Controls 2019.csproj", "{838FCD3C-9306-427D-9A99-9E68CEFA584C}"
 EndProject
@@ -190,8 +191,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Arrows", "Arrows", "{0451E8
 		..\..\Assets\PSD\Arrows\Template.psd = ..\..\Assets\PSD\Arrows\Template.psd
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Windows.Forms.Animation.Library", "Third Party\Windows.Forms.Animation.Library\Windows.Forms.Animation.Library.csproj", "{8A4898BB-6D5A-45DD-AC0B-2F94FC3D7177}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CircularProgressBar", "Examples\CircularProgressBar\CircularProgressBar.csproj", "{4D879F83-CB0A-45B1-A2E6-CEC396AFFCF9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Controls", "Examples\Controls\Controls.csproj", "{AE9352EB-6081-4B7C-9EE4-01E934768AD8}"
@@ -263,7 +262,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Exten
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CheckSum", "Examples\CheckSum\CheckSum.csproj", "{022DBF8D-4DCB-41BA-A7EB-BF40B46C4622}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton.Toolkit.Suite.Extended.Memory.Box 2019", "Krypton.Toolkit.Suite.Extended.Memory.Box\Krypton.Toolkit.Suite.Extended.Memory.Box 2019.csproj", "{CB14B073-F49D-4EBA-B823-B6CF6887F37E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Memory.Box 2019", "Krypton.Toolkit.Suite.Extended.Memory.Box\Krypton.Toolkit.Suite.Extended.Memory.Box 2019.csproj", "{CB14B073-F49D-4EBA-B823-B6CF6887F37E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Specialised.Dialogs 2019", "Krypton.Toolkit.Suite.Extended.Specialised.Dialogs\Krypton.Toolkit.Suite.Extended.Specialised.Dialogs 2019.csproj", "{6B9ABEC8-79A1-44DD-9341-F1F834B14A9F}"
 EndProject
@@ -381,10 +380,6 @@ Global
 		{7BA75AAC-7D3E-4ED3-9562-8176380BC49C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7BA75AAC-7D3E-4ED3-9562-8176380BC49C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7BA75AAC-7D3E-4ED3-9562-8176380BC49C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{66DD6657-39B3-4ACF-9EE9-B60EF96A2262}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{66DD6657-39B3-4ACF-9EE9-B60EF96A2262}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{66DD6657-39B3-4ACF-9EE9-B60EF96A2262}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{66DD6657-39B3-4ACF-9EE9-B60EF96A2262}.Release|Any CPU.Build.0 = Release|Any CPU
 		{838FCD3C-9306-427D-9A99-9E68CEFA584C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{838FCD3C-9306-427D-9A99-9E68CEFA584C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{838FCD3C-9306-427D-9A99-9E68CEFA584C}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -425,10 +420,6 @@ Global
 		{A4A20AC1-DC76-48AC-9E91-982581AF7D24}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4A20AC1-DC76-48AC-9E91-982581AF7D24}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4A20AC1-DC76-48AC-9E91-982581AF7D24}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8A4898BB-6D5A-45DD-AC0B-2F94FC3D7177}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8A4898BB-6D5A-45DD-AC0B-2F94FC3D7177}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8A4898BB-6D5A-45DD-AC0B-2F94FC3D7177}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8A4898BB-6D5A-45DD-AC0B-2F94FC3D7177}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4D879F83-CB0A-45B1-A2E6-CEC396AFFCF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4D879F83-CB0A-45B1-A2E6-CEC396AFFCF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D879F83-CB0A-45B1-A2E6-CEC396AFFCF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -603,7 +594,6 @@ Global
 		{31A508E4-D3F7-4F55-A0C5-1F0ED4E69BFC} = {726DC0AA-2B0D-4EAC-BB7A-7C49AE13A390}
 		{0851A3F7-8FB9-4E57-965E-76B835587639} = {726DC0AA-2B0D-4EAC-BB7A-7C49AE13A390}
 		{7BA75AAC-7D3E-4ED3-9562-8176380BC49C} = {726DC0AA-2B0D-4EAC-BB7A-7C49AE13A390}
-		{66DD6657-39B3-4ACF-9EE9-B60EF96A2262} = {E311F8C7-1F27-48CD-86BE-CC3D798163BE}
 		{838FCD3C-9306-427D-9A99-9E68CEFA584C} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 		{572B0D12-A04B-4EB9-B5FB-87F66FF91078} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 		{FDD335B3-3293-4E93-B81F-54F84DC6276A} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
@@ -627,7 +617,6 @@ Global
 		{378BEE59-0131-4497-80B8-69B3124325D7} = {734B2F67-D055-44B2-818A-FE569C479937}
 		{69F98672-EBB9-4B12-BD04-45AEF3C37FC6} = {15346861-5444-49D7-9686-3835EE271259}
 		{0451E883-C718-4679-962F-E2825B1513B2} = {247BBF4E-22B0-49CC-981B-0420AD7FF4E8}
-		{8A4898BB-6D5A-45DD-AC0B-2F94FC3D7177} = {E311F8C7-1F27-48CD-86BE-CC3D798163BE}
 		{4D879F83-CB0A-45B1-A2E6-CEC396AFFCF9} = {25D5F0A6-A601-424B-9431-8EFE139A58A7}
 		{AE9352EB-6081-4B7C-9EE4-01E934768AD8} = {25D5F0A6-A601-424B-9431-8EFE139A58A7}
 		{53456D2D-A19F-4D2A-8E06-F43784EEE95C} = {25D5F0A6-A601-424B-9431-8EFE139A58A7}
