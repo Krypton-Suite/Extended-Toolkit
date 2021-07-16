@@ -353,7 +353,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
             UnfilteredList.Clear();
             UnfilteredList.AddRange(SourceItems);
 
-            List<T> results = new List<T>();
+            List<T> results = new();
 
             PropertyDescriptor propDesc = TypeDescriptor.GetProperties(typeof(T))[FilterPropertyName];
 

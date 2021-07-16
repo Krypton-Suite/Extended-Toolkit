@@ -153,13 +153,13 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
             Token tok = (Token)Value;
             if (tok != null)
             {
-                Rectangle rectangle = new Rectangle();
+                Rectangle rectangle = new();
                 Size s = TextRenderer.MeasureText(tok.Text, f);
                 rectangle.Width = s.Width + (int)(10 * factorX);
                 rectangle.X = nextPosition;
                 rectangle.Y = cellBounds.Y + (int)(2 * factorY);
                 rectangle.Height = (int)(17 * factorY);
-                nextPosition += rectangle.Width + (int)(5 * factorX);
+                //nextPosition += rectangle.Width + (int)(5 * factorX);
 
                 graphics.FillRectangle(new SolidBrush(tok.BackColour), rectangle);
                 TextRenderer.DrawText(graphics, tok.Text, f, rectangle, tok.ForeColour);
@@ -177,7 +177,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         protected override Size GetPreferredSize(Graphics graphics, DataGridViewCellStyle cellStyle, int rowIndex, Size constraintSize)
         {
             float factorX = graphics.DpiX > 96 ? (1f * graphics.DpiX / 96) : 1f;
-            float factorY = graphics.DpiY > 96 ? (1f * graphics.DpiY / 96) : 1f;
+            //float factorY = graphics.DpiY > 96 ? (1f * graphics.DpiY / 96) : 1f;
 
             Size tmpSize = base.GetPreferredSize(graphics, cellStyle, rowIndex, constraintSize);
             Font f = KryptonManager.CurrentGlobalPalette.GetContentShortTextFont(PaletteContentStyle.GridDataCellList, PaletteState.Normal);
@@ -264,7 +264,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
 
             foreach (Token tok in (List<Token>)Value)
             {
-                Rectangle rectangle = new Rectangle();
+                Rectangle rectangle = new();
                 Size s = TextRenderer.MeasureText(tok.Text, f);
                 rectangle.Width = s.Width + (int)(10 * factorX);
                 rectangle.X = nextPosition;
@@ -288,7 +288,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         protected override Size GetPreferredSize(Graphics graphics, DataGridViewCellStyle cellStyle, int rowIndex, Size constraintSize)
         {
             float factorX = graphics.DpiX > 96 ? (1f * graphics.DpiX / 96) : 1f;
-            float factorY = graphics.DpiY > 96 ? (1f * graphics.DpiY / 96) : 1f;
+            //float factorY = graphics.DpiY > 96 ? (1f * graphics.DpiY / 96) : 1f;
 
             Size tmpSize = base.GetPreferredSize(graphics, cellStyle, rowIndex, constraintSize);
             Font f = KryptonManager.CurrentGlobalPalette.GetContentShortTextFont(PaletteContentStyle.GridDataCellList, PaletteState.Normal);
