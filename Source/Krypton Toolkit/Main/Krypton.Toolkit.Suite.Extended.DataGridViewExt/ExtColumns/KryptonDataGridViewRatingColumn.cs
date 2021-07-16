@@ -141,11 +141,11 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
 
         #region Private Implementation
 
-        static Image[] starImages;
-        static Image[] starHotImages;
-        const int Imagewidth = 58;
+        private static readonly Image[] starImages;
+        private static readonly Image[] starHotImages;
+        private const int Imagewidth = 58;
 
-        private int GetStarFromMouse(Rectangle cellBounds, Point mouseLocation)
+        private static int GetStarFromMouse(Rectangle cellBounds, Point mouseLocation)
         {
             if (cellBounds.Contains(mouseLocation))
             {

@@ -271,7 +271,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
             newGrid.ForeColor = ForeColor;
             newGrid.Font = Font;
             newGrid.GridColor = GridColor;
-            BorderStyle = BorderStyle;
+            newGrid.BorderStyle = BorderStyle;
             newGrid.CellBorderStyle = CellBorderStyle;
             newGrid.ColumnHeadersBorderStyle = ColumnHeadersBorderStyle;
             newGrid.ColumnHeadersDefaultCellStyle = ColumnHeadersDefaultCellStyle;

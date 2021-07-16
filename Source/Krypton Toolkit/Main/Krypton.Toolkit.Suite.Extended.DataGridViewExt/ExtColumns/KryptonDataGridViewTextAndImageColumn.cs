@@ -53,7 +53,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         /// <returns>A String that represents the current Object.</returns>
         public override string ToString()
         {
-            StringBuilder builder = new StringBuilder(0x40);
+            StringBuilder builder = new(0x40);
             builder.Append("KryptonDataGridViewTextAndImageColumn { Name=");
             builder.Append(Name);
             builder.Append(", Index=");
@@ -144,8 +144,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
                         int count = rows.Count;
                         for (int i = 0; i < count; i++)
                         {
-                            DataGridViewTextBoxCell cell = rows.SharedRow(i).Cells[Index] as DataGridViewTextBoxCell;
-                            if (cell != null)
+                            if (rows.SharedRow(i).Cells[Index] is DataGridViewTextBoxCell cell)
                                 cell.MaxInputLength = value;
                         }
                     }
@@ -199,8 +198,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         #region Internal
         internal void PerfomButtonSpecClick(DataGridViewButtonSpecClickEventArgs args)
         {
-            if (ButtonSpecClick != null)
-                ButtonSpecClick(this, args);
+            ButtonSpecClick?.Invoke(this, args);
         }
 
         internal Size ImageSize { get; private set; }

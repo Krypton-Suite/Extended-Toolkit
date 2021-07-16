@@ -1138,7 +1138,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
 
         #region Other
 
-        /**
+        /*
         #region Constants
         internal const uint WS_POPUP = 0x80000000;
         internal const uint WS_MINIMIZE = 0x20000000;
@@ -3117,7 +3117,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
             SW_SHOWMAXIMIZED = 3,
             /// <summary>
             /// Displays a window in its most recent size and position. This value
-            /// is similar to <see cref="PI.ShowWindowCommands.SW_NORMAL"/>, except
+            /// is similar to <see cref="ShowWindowCommands.SW_NORMAL"/>, except
             /// the window is not activated.
             /// </summary>
             SW_SHOWNOACTIVATE = 4,
@@ -3132,13 +3132,13 @@ namespace Krypton.Toolkit.Suite.Extended.Common
             SW_MINIMIZE = 6,
             /// <summary>
             /// Displays the window as a minimized window. This value is similar to
-            /// <see cref="PI.ShowWindowCommands.SW_SHOWMINIMIZED"/>, except the
+            /// <see cref="ShowWindowCommands.SW_SHOWMINIMIZED"/>, except the
             /// window is not activated.
             /// </summary>
             SW_SHOWMINNOACTIVE = 7,
             /// <summary>
             /// Displays the window in its current size and position. This value is
-            /// similar to <see cref="PI.ShowWindowCommands.SW_SHOW"/>, except the
+            /// similar to <see cref="ShowWindowCommands.SW_SHOW"/>, except the
             /// window is not activated.
             /// </summary>
             SW_SHOWNA = 8,

@@ -15,16 +15,16 @@
     <PropertyGroup>
         <LangVersion>latest</LangVersion>
         <OutputType>library</OutputType>
-        <RootNamespace>Krypton.Toolkit.Suite.Extended.DataGridView</RootNamespace>
-        <AssemblyName>Krypton.Toolkit.Suite.Extended.DataGridView</AssemblyName>
+        <RootNamespace>Krypton.Toolkit.Suite.Extended.TreeGridView</RootNamespace>
+        <AssemblyName>Krypton.Toolkit.Suite.Extended.TreeGridView</AssemblyName>
         <UseWindowsForms>true</UseWindowsForms>
         <NeutralLanguage>en</NeutralLanguage>
     </PropertyGroup>
 
     <!--Package Data-->
     <PropertyGroup>
-        <PackageId>Krypton.Toolkit.Suite.Extended.DataGridView</PackageId>
-        <Description>An extension to the Krypton standard toolkit DataGridView. This package implements additional Column types and Master-Detail views.</Description>
+        <PackageId>Krypton.Toolkit.Suite.Extended.TreeGridView</PackageId>
+        <Description>An extension to the Krypton standard toolkit. This package holds items to create tree grid views for your applications.</Description>
     </PropertyGroup>
 
     <!--Version Information-->
@@ -49,10 +49,8 @@
 
     <!--Binary/Documentation Output-->
     <PropertyGroup>
-        <DocumentationFile>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.DataGridView\Krypton.Toolkit.Suite.Extended.DataGridView.xml</DocumentationFile>
-        <OutputPath>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.DataGridView\</OutputPath>
+        <DocumentationFile>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.TreeGridView\Krypton.Toolkit.Suite.Extended.TreeGridView.xml</DocumentationFile>
+        <OutputPath>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.TreeGridView\</OutputPath>
     </PropertyGroup>
-    <ItemGroup>
-      <PackageReference Include="System.ValueTuple" Version="4.5.0" />
-    </ItemGroup>
+
 </Project>

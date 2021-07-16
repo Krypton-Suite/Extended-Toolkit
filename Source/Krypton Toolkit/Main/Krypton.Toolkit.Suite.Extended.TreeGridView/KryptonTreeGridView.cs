@@ -16,53 +16,61 @@ using System.Drawing.Design;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 
-namespace Krypton.Toolkit.Suite.Extended.Tree.Grid.View
+using Krypton.Toolkit.Suite.Extended.TreeGridView.Components;
+using Krypton.Toolkit.Suite.Extended.TreeGridView.Events;
+
+// ReSharper disable AutoPropertyCanBeMadeGetOnly.Global
+// ReSharper disable UnusedAutoPropertyAccessor.Global
+
+namespace Krypton.Toolkit.Suite.Extended.TreeGridView
 {
     /// <summary>
     /// Summary description for TreeGridView.
     /// </summary>
-    [System.ComponentModel.DesignerCategory("code"),
+    [DesignerCategory("code"),
     Designer(typeof(System.Windows.Forms.Design.ControlDesigner)),
     ComplexBindingProperties(),
     Docking(DockingBehavior.Ask)]
     public class KryptonTreeGridView : KryptonDataGridView
     {
         //private int _indentWidth;
-        private TreeGridNode _root;
-        private TreeGridColumn _expandableColumn;
+        private readonly KryptonTreeGridNodeRow _root;
+        private KryptonTreeGridColumn _expandableColumn;
 
-        internal ImageList _imageList;
-        private bool _inExpandCollapse = false;
-        internal bool _inExpandCollapseMouseCapture = false;
-        private Control hideScrollBarControl;
+        private bool _inExpandCollapse;
+        internal bool InExpandCollapseMouseCapture;
+        private Control _hideScrollBarControl;
         private bool _showLines = true;
-        private bool _virtualNodes = false;
 
 
-        internal VisualStyleRenderer rOpen; // = new VisualStyleRenderer(VisualStyleElement.TreeView.Glyph.Opened);
-        internal VisualStyleRenderer rClosed; // = new VisualStyleRenderer(VisualStyleElement.TreeView.Glyph.Closed);
+        internal VisualStyleRenderer ROpen; // = new VisualStyleRenderer(VisualStyleElement.TreeView.Glyph.Opened);
+        internal VisualStyleRenderer RClosed; // = new VisualStyleRenderer(VisualStyleElement.TreeView.Glyph.Closed);
 
         #region Constructor
         public KryptonTreeGridView()
         {
             // Control when edit occurs because edit mode shouldn't start when expanding/collapsing
             EditMode = DataGridViewEditMode.EditProgrammatically;
-            RowTemplate = new TreeGridNode() as DataGridViewRow;
+            RowTemplate = new KryptonTreeGridNodeRow();
             // This sample does not support adding or deleting rows by the user.
             AllowUserToAddRows = false;
             AllowUserToDeleteRows = false;
-            _root = new TreeGridNode(this);
-            _root.IsRoot = true;
-
+            _root = new KryptonTreeGridNodeRow(this)
+            {
+                IsRoot = true
+            };
+            ShowLines = true;
             // Ensures that all rows are added unshared by listening to the CollectionChanged event.
-            base.Rows.CollectionChanged += delegate (object sender, System.ComponentModel.CollectionChangeEventArgs e) { };
+            base.Rows.CollectionChanged += delegate { };
             try
             {
-                rOpen = new VisualStyleRenderer(VisualStyleElement.TreeView.Glyph.Opened);
-                rClosed = new VisualStyleRenderer(VisualStyleElement.TreeView.Glyph.Closed);
+                // TODO: This should be the one from the Theme - See KryptonTree
+                ROpen = new VisualStyleRenderer(VisualStyleElement.TreeView.Glyph.Opened);
+                RClosed = new VisualStyleRenderer(VisualStyleElement.TreeView.Glyph.Closed);
             }
             catch
             {
+                // TODO: Empty - Why ?
             }
 
         }
@@ -99,141 +107,50 @@ namespace Krypton.Toolkit.Suite.Extended.Tree.Grid.View
         #endregion
 
         #region Shadow and hide DGV properties
-        private bool useParentRelationship;
+
         [DefaultValue(false)]
-        [Browsable(true), Category("Appearance-Extended")]
-        public bool UseParentRelationship
-        {
-            get
-            {
-                return useParentRelationship;
-            }
-            set
-            {
-                useParentRelationship = value;
-            }
-        }
+        [Browsable(true), Category(@"DataSource-Usage")]
+        public bool UseParentRelationship { get; set; } = false;
 
-        private string iDColumnName;
-        [DefaultValue("ID")]
-        [Browsable(true), Category("Appearance-Extended")]
-        public string IDColumnName
-        {
-            get
-            {
-                return iDColumnName;
-            }
-            set
-            {
-                iDColumnName = value;
-            }
-        }
+        [DefaultValue(@"ID")]
+        [Browsable(true), Category(@"DataSource-Usage")]
+        public string IdColumnName { get; set; } = @"ID";
 
-        private string _parentIDColumnName;
-        [DefaultValue("ParentID")]
-        [Browsable(true), Category("Appearance-Extended")]
-        public string ParentIDColumnName
-        {
-            get
-            {
-                return _parentIDColumnName;
-            }
-            set
-            {
-                _parentIDColumnName = value;
-            }
-        }
+        [DefaultValue(@"ParentID")]
+        [Browsable(true), Category(@"DataSource-Usage")]
+        public string ParentIdColumnName { get; set; } = @"ParentID";
 
-        private bool isOneLevel;
         [DefaultValue(true)]
-        [Browsable(true), Category("Appearance-Extended")]
-        public bool IsOneLevel
-        {
-            get
-            {
-                return isOneLevel;
-            }
-            set
-            {
-                isOneLevel = value;
-            }
-        }
+        [Browsable(true), Category(@"DataSource-Usage")]
+        public bool IsOneLevel { get; set; } = true;
 
-        private int imageIndexChild;
         [DefaultValue(1)]
         [Browsable(true), Category("Appearance-Extended")]
         [RefreshProperties(RefreshProperties.Repaint)]
-        public int ImageIndexChild
-        {
-            get
-            {
-                return imageIndexChild;
-            }
-            set
-            {
-                imageIndexChild = value;
-            }
-        }
+        public int ImageIndexChild { get; set; } = 1;
 
-        private int imageIndexParent;
         [DefaultValue(0)]
         [Browsable(true), Category("Appearance-Extended")]
         [RefreshProperties(RefreshProperties.Repaint)]
-        public int ImageIndexParent
-        {
-            get
-            {
-                return imageIndexParent;
-            }
-            set
-            {
-                imageIndexParent = value;
-            }
-        }
+        public int ImageIndexParent { get; set; } = 0;
 
-        private bool fontParentBold;
         [DefaultValue(true)]
         [Browsable(true), Category("Appearance-Extended")]
         [RefreshProperties(RefreshProperties.Repaint)]
-        public bool FontParentBold
-        {
-            get
-            {
-                return fontParentBold;
-            }
-            set
-            {
-                fontParentBold = value;
-            }
-        }
+        public bool FontParentBold { get; set; } = true;
 
-        private int groupByColumnIndex;
         [DefaultValue(0)]
-        [Browsable(true), Category("Appearance-Extended")]
+        [Browsable(true), Category(@"DataSource-Usage")]
         [RefreshProperties(RefreshProperties.Repaint)]
-        public int GroupByColumnIndex
-        {
-            get
-            {
-                return groupByColumnIndex;
-            }
-            set
-            {
-                groupByColumnIndex = value;
-            }
-        }
+        public int GroupByColumnIndex { get; set; } = 0;
 
         private DataTable dataSource;
-        [DefaultValue("")]
-        [Browsable(true), Category("Appearance-Extended")]
+        [Browsable(true), Category(@"DataSource-Usage")]
         [RefreshProperties(RefreshProperties.Repaint)]
         [AttributeProvider(typeof(IListSource))]
         public new DataTable DataSource
         {
-            get
-            {
-                return dataSource;
-            }
+            get => dataSource;
             set
             {
                 if (value != null)
@@ -243,33 +160,35 @@ namespace Krypton.Toolkit.Suite.Extended.Tree.Grid.View
                     //-------------------------- 
                     //Clear nodes and columns
                     //-------------------------- 
-                    Nodes.Clear();
+                    GridNodes.Clear();
                     Columns.Clear();
 
-                    if (groupByColumnIndex != 0)
+                    if (GroupByColumnIndex != 0)
                     {
-                        dataSource.Columns[groupByColumnIndex].SetOrdinal(0);
+                        dataSource.Columns[GroupByColumnIndex].SetOrdinal(0);
                     }
 
                     //-------------------------- 
                     //Sort Data
                     //-------------------------- 
-                    dataSource = FilterSortData(dataSource, "", dataSource.Columns[0].ColumnName);
+                    dataSource = FilterSortData(dataSource, string.Empty, dataSource.Columns[0].ColumnName);
 
                     //-------------------------- 
                     //Add Columns
                     //-------------------------- 
-                    for (int i = 0; i < dataSource.Columns.Count; i++)
+                    for (var i = 0; i < dataSource.Columns.Count; i++)
                     {
                         if (i == 0)
                         {
                             //-------------------------- 
                             //Add new Columns - 0
                             //-------------------------- 
-                            TreeGridColumn clm = new TreeGridColumn();
-                            clm.HeaderText = dataSource.Columns[i].ColumnName;
-                            clm.DataPropertyName = dataSource.Columns[i].ColumnName;
-                            clm.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+                            var clm = new KryptonTreeGridColumn
+                            {
+                                HeaderText = dataSource.Columns[i].ColumnName,
+                                DataPropertyName = dataSource.Columns[i].ColumnName,
+                                AutoSizeMode = DataGridViewAutoSizeColumnMode.None
+                            };
                             Columns.Add(clm);
                         }
                         else
@@ -277,61 +196,63 @@ namespace Krypton.Toolkit.Suite.Extended.Tree.Grid.View
                             //-------------------------- 
                             //Others
                             //-------------------------- 
-                            DataGridViewTextBoxColumn dgvtbc = new DataGridViewTextBoxColumn();
-                            dgvtbc.HeaderText = dataSource.Columns[i].ColumnName;
-                            dgvtbc.DataPropertyName = dataSource.Columns[i].ColumnName;
-                            dgvtbc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+                            var dgvtbc = new DataGridViewTextBoxColumn
+                            {
+                                HeaderText = dataSource.Columns[i].ColumnName,
+                                DataPropertyName = dataSource.Columns[i].ColumnName,
+                                AutoSizeMode = DataGridViewAutoSizeColumnMode.None
+                            };
                             Columns.Add(dgvtbc);
                         }
                     }
 
-                    if (useParentRelationship)
+                    if (UseParentRelationship)
                     {
                         //-------------------------- 
                         //Sort Data
                         //-------------------------- 
-                        dataSource = FilterSortData(dataSource, "", _parentIDColumnName);
+                        dataSource = FilterSortData(dataSource, string.Empty, ParentIdColumnName);
                         //-------------------------- 
                         //Init nodes
                         //-------------------------- 
-                        BuildPortsNodesInitialLoop("", dataSource, iDColumnName, _parentIDColumnName, 0);
+                        BuildPortsNodesInitialLoop(dataSource, IdColumnName, ParentIdColumnName);
                     }
                     else
                     {
                         //-------------------------- 
                         //Setup font
                         //-------------------------- 
-                        Font boldFont = new Font(DefaultCellStyle.Font, FontStyle.Bold);
+                        var boldFont = new Font(DefaultCellStyle.Font, FontStyle.Bold);
 
                         //-------------------------- 
                         //for hierarchy
                         //-------------------------- 
-                        bool isChild = false;
+                        var isChild = false;
 
                         //-------------------------- 
                         //Init nodes
                         //-------------------------- 
-                        TreeGridNode node = new TreeGridNode();
-                        TreeGridNode parentNode = new TreeGridNode();
+                        var node = new KryptonTreeGridNodeRow();
+                        var parentNode = new KryptonTreeGridNodeRow();
 
                         //-------------------------- 
                         //Columns Collection
                         //-------------------------- 
-                        string[] c = new string[dataSource.Columns.Count];
+                        var c = new string[dataSource.Columns.Count];
 
                         //-------------------------- 
                         //Init RowCounter
                         //-------------------------- 
-                        int k = 0;
+                        var k = 0;
 
                         foreach (DataRow dr in dataSource.Rows)
                         {
                             //-------------------------- 
                             // Retrieve columns
                             //-------------------------- 
-                            string[] p = new string[dataSource.Columns.Count];
+                            var p = new string[dataSource.Columns.Count];
 
-                            for (int i = 0; i < dataSource.Columns.Count; i++)
+                            for (var i = 0; i < dataSource.Columns.Count; i++)
                             {
                                 p[i] = dr[i].ToString().Trim();
                                 if (k > 0 && i == 0 && p[i] == c[i])
@@ -344,20 +265,24 @@ namespace Krypton.Toolkit.Suite.Extended.Tree.Grid.View
                             //-------------------------- 
                             if (isChild)
                             {
-                                if (isOneLevel)
+                                if (IsOneLevel)
                                 {
                                     //-------------------------- 
                                     //set Child values
                                     //-------------------------- 
                                     node = parentNode.Nodes.Add(p);
-                                    node.ImageIndex = imageIndexChild;
+                                    node.ImageIndex = ImageIndexChild;
                                     //-------------------------- 
                                     //set parent values
                                     //-------------------------- 
                                     //set bold
                                     //-------------------------- 
-                                    if (fontParentBold) parentNode.DefaultCellStyle.Font = new Font(DefaultCellStyle.Font, FontStyle.Bold);
-                                    parentNode.ImageIndex = imageIndexParent;
+                                    if (FontParentBold)
+                                    {
+                                        parentNode.DefaultCellStyle.Font = new Font(DefaultCellStyle.Font, FontStyle.Bold);
+                                    }
+
+                                    parentNode.ImageIndex = ImageIndexParent;
                                 }
                                 else
                                 {
@@ -365,32 +290,32 @@ namespace Krypton.Toolkit.Suite.Extended.Tree.Grid.View
                                     //set Child values
                                     //-------------------------- 
                                     node = node.Nodes.Add(p);
-                                    node.ImageIndex = imageIndexChild;
+                                    node.ImageIndex = ImageIndexChild;
                                     //-------------------------- 
                                     //set parent values
                                     //-------------------------- 
-                                    parentNode.ImageIndex = imageIndexParent;
+                                    parentNode.ImageIndex = ImageIndexParent;
                                 }
                                 isChild = false;
                             }
                             else
                             {
-                                if (isOneLevel)
+                                if (IsOneLevel)
                                 {
-                                    parentNode = new TreeGridNode();
-                                    parentNode = Nodes.Add(p);
-                                    parentNode.ImageIndex = imageIndexChild;
+                                    parentNode = GridNodes.Add(p);
+                                    parentNode.ImageIndex = ImageIndexChild;
                                 }
                                 else
                                 {
-                                    node = new TreeGridNode();
-                                    node = Nodes.Add(p);
-                                    node.ImageIndex = imageIndexParent;
+                                    node = GridNodes.Add(p);
+                                    node.ImageIndex = ImageIndexParent;
                                     //-------------------------- 
                                     //set bold
                                     //-------------------------- 
-                                    if (fontParentBold) node.DefaultCellStyle.Font = new Font(DefaultCellStyle.Font, FontStyle.Bold);
-
+                                    if (FontParentBold)
+                                    {
+                                        node.DefaultCellStyle.Font = new Font(DefaultCellStyle.Font, FontStyle.Bold);
+                                    }
                                 }
                             }
                             //Nodes.Add(p);
@@ -404,41 +329,27 @@ namespace Krypton.Toolkit.Suite.Extended.Tree.Grid.View
         }
 
         // This sample does not support databinding
-        /*
-        [Browsable(false),
-        DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden),
-        EditorBrowsable(EditorBrowsableState.Never)]
-        public new object DataSource
-        {
-            get { return null; }
-            set { throw new NotSupportedException("The TreeGridView does not support databinding"); }
-        }
-        */
-
         [Browsable(false),
         DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden),
         EditorBrowsable(EditorBrowsableState.Never)]
         public new object DataMember
         {
-            get { return null; }
-            set { throw new NotSupportedException("The TreeGridView does not support databinding"); }
+            get => null;
+            set => throw new NotSupportedException(@"The TreeGridView does not support databinding");
         }
 
         [Browsable(false),
         DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden),
         EditorBrowsable(EditorBrowsableState.Never)]
-        public new DataGridViewRowCollection Rows
-        {
-            get { return base.Rows; }
-        }
+        public new DataGridViewRowCollection Rows => base.Rows;
 
         [Browsable(false),
-        DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden),
-        EditorBrowsable(EditorBrowsableState.Never)]
+         DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden),
+         EditorBrowsable(EditorBrowsableState.Never)]
         public new bool VirtualMode
         {
-            get { return false; }
-            set { throw new NotSupportedException("The TreeGridView does not support virtual mode"); }
+            get => false;
+            set => throw new NotSupportedException(@"The TreeGridView does not support virtual mode");
         }
 
         // none of the rows/nodes created use the row template, so it is hidden.
@@ -447,25 +358,18 @@ namespace Krypton.Toolkit.Suite.Extended.Tree.Grid.View
         EditorBrowsable(EditorBrowsableState.Never)]
         public new DataGridViewRow RowTemplate
         {
-            get { return base.RowTemplate; }
-            set { base.RowTemplate = value; }
+            get => base.RowTemplate;
+            set => base.RowTemplate = value;
         }
 
         #endregion
 
         #region Public methods
         [Description("Returns the TreeGridNode for the given DataGridViewRow")]
-        public TreeGridNode GetNodeForRow(DataGridViewRow row)
-        {
-            return row as TreeGridNode;
-        }
+        public KryptonTreeGridNodeRow GetNodeForRow(DataGridViewRow row) => row as KryptonTreeGridNodeRow;
 
         [Description("Returns the TreeGridNode for the given DataGridViewRow")]
-        public TreeGridNode GetNodeForRow(int index)
-        {
-            return GetNodeForRow(base.Rows[index]);
-        }
-
+        public KryptonTreeGridNodeRow GetNodeForRow(int index) => GetNodeForRow(base.Rows[index]);
 
 
         /// <summary>
@@ -478,7 +382,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tree.Grid.View
         public static DataTable FilterSortData(DataTable dtStart, string filter, string sort)
         {
             DataTable dt = dtStart.Clone();
-            DataRow[] drs = dtStart.Select(filter, sort);
+            var drs = dtStart.Select(filter, sort);
             foreach (DataRow dr in drs)
             {
                 dt.ImportRow(dr);
@@ -493,44 +397,22 @@ namespace Krypton.Toolkit.Suite.Extended.Tree.Grid.View
         DesignerSerializationVisibility(DesignerSerializationVisibility.Content),
         Editor(typeof(CollectionEditor), typeof(UITypeEditor))]
         [Browsable(true), Category("Appearance-Extended")]
-        public TreeGridNodeCollection Nodes
-        {
-            get
-            {
-                return _root.Nodes;
-            }
-        }
+        public TreeGridNodeCollection GridNodes => _root.Nodes;
 
-        public new TreeGridNode CurrentRow
-        {
-            get
-            {
-                return base.CurrentRow as TreeGridNode;
-            }
-        }
+        public new KryptonTreeGridNodeRow CurrentRow => base.CurrentRow as KryptonTreeGridNodeRow;
 
         [DefaultValue(false),
-        Description("Causes nodes to always show as expandable. Use the NodeExpanding event to add nodes.")]
+         Description("Causes nodes to always show as expandable. Use the NodeExpanding event to add nodes.")]
         [Browsable(true), Category("Appearance-Extended")]
-        public bool VirtualNodes
-        {
-            get { return _virtualNodes; }
-            set { _virtualNodes = value; }
-        }
+        public bool VirtualNodes { get; set; }
 
-        public TreeGridNode CurrentNode
-        {
-            get
-            {
-                return CurrentRow;
-            }
-        }
+        public KryptonTreeGridNodeRow CurrentNode => CurrentRow;
 
         [DefaultValue(true)]
         [Browsable(true), Category("Appearance-Extended")]
         public bool ShowLines
         {
-            get { return _showLines; }
+            get => _showLines;
             set
             {
                 if (value != _showLines)
@@ -542,57 +424,46 @@ namespace Krypton.Toolkit.Suite.Extended.Tree.Grid.View
         }
 
         [Browsable(true), Category("Appearance-Extended")]
-        public ImageList ImageList
-        {
-            get { return _imageList; }
-            set
-            {
-                _imageList = value;
-                //TODO: should we invalidate cell styles when setting the image list?
-
-            }
-        }
+        [RefreshProperties(RefreshProperties.Repaint)]
+        public ImageList ImageList { get; set; } //TODO: should we invalidate cell styles when setting the image list?
 
         [Browsable(true), Category("Appearance-Extended")]
         public new int RowCount
         {
-            get { return Nodes.Count; }
+            get => GridNodes.Count;
             set
             {
-                for (int i = 0; i < value; i++)
-                    Nodes.Add(new TreeGridNode());
-
+                for (var i = 0; i < value; i++)
+                {
+                    GridNodes.Add(new KryptonTreeGridNodeRow());
+                }
             }
         }
         #endregion
 
-
-
         #region
 
-        private void BuildPortsNodes(bool FirstLoop, string Item_Id, DataTable dt, string IDColumnName, string ParentIDColumnName, int UniqueId)
+        private void BuildPortsNodes(bool firstLoop, string itemId, DataTable dt, string idColumnName, string parentIdColumnName, int uniqueId)
         {
-            int NetItems = 0;
+            var netItems = 0;
 
-
-
-            DataView dv = new DataView(dt);
-            if (FirstLoop)
+            var dv = new DataView(dt);
+            if (firstLoop)
             {
-                dv.RowFilter = IDColumnName + "=" + ParentIDColumnName;
-                TreeGridNode RootNode = new TreeGridNode();
-                UniqueId = RootNode.UniqueValue;
+                dv.RowFilter = $"{idColumnName}={parentIdColumnName}";
+                var rootNode = new KryptonTreeGridNodeRow();
+                uniqueId = rootNode.UniqueValue;
             }
             else
             {
-                dv.RowFilter = ParentIDColumnName + "=" + Item_Id + " AND " + IDColumnName + "<>" + Item_Id;
+                dv.RowFilter = $"{parentIdColumnName}={itemId} AND {idColumnName}<>{itemId}";
             }
 
             if (dv.Count > 0)
             {
                 try
                 {
-                    for (NetItems = 0; NetItems <= dv.Count - 1; NetItems++)
+                    for (netItems = 0; netItems <= dv.Count - 1; netItems++)
                     {
 
                         //-------------------------- 
@@ -600,131 +471,115 @@ namespace Krypton.Toolkit.Suite.Extended.Tree.Grid.View
                         //-------------------------- 
 
                         // Retrieve columns
-                        string[] p = new string[dt.Columns.Count];
+                        var p = new string[dt.Columns.Count];
 
-                        for (int i = 0; i < dt.Columns.Count; i++)
+                        for (var i = 0; i < dt.Columns.Count; i++)
                         {
-                            p[i] = dv[NetItems][i].ToString().Trim();
+                            p[i] = dv[netItems][i].ToString().Trim();
                         }
 
                         //-------------------------- 
                         //Add Node
                         //-------------------------- 
-                        TreeGridNode NetItemNode = new TreeGridNode();
-                        TreeGridNode RootNode = Nodes.GetNodeByUniqueValue(UniqueId);
+                        KryptonTreeGridNodeRow rootNode = GridNodes.GetNodeByUniqueValue(uniqueId);
 
-                        if (RootNode.UniqueValue == -10)
+                        if (rootNode.UniqueValue == -10)
                         {
                             //empty node
-                            RootNode = new TreeGridNode();
+                            rootNode = new KryptonTreeGridNodeRow();
                         }
 
-                        NetItemNode = RootNode.Nodes.Add(p);
+                        var netItemNode = rootNode.Nodes.Add(p);
 
-                        UniqueId = NetItemNode.UniqueValue;
+                        uniqueId = netItemNode.UniqueValue;
 
-                        BuildPortsNodes(false, dv[NetItems][IDColumnName].ToString(), dt, IDColumnName, ParentIDColumnName, UniqueId);
+                        BuildPortsNodes(false, dv[netItems][idColumnName].ToString(), dt, idColumnName, parentIdColumnName, uniqueId);
 
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Failed to add item " + NetItems + " : " + ex.Message, " ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message, $@"Failed to add item {netItems}", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
 
-        private void BuildPortsNodesInitialLoop(string Item_Id, DataTable dt, string IDColumnName, string ParentIDColumnName, int UniqueId)
+        private void BuildPortsNodesInitialLoop(DataTable dt, string idColumnName, string parentIdColumnName)
         {
-            int Items = 0;
-
-            DataView dv = new DataView(dt);
-            dv.RowFilter = IDColumnName + "=" + ParentIDColumnName;
-
-
-            TreeGridNode RootNode = new TreeGridNode();
-
+            var dv = new DataView(dt)
+            {
+                RowFilter = $@"{idColumnName}={parentIdColumnName}"
+            };
 
             if (dv.Count > 0)
             {
-
-                for (Items = 0; Items <= dv.Count - 1; Items++)
+                for (int items = 0; items <= dv.Count - 1; items++)
                 {
                     //-------------------------- 
                     // Retrieve columns
                     //-------------------------- 
-                    string[] p = new string[dt.Columns.Count];
+                    var p = new string[dt.Columns.Count];
 
-                    for (int i = 0; i < dt.Columns.Count; i++)
+                    for (var i = 0; i < dt.Columns.Count; i++)
                     {
-                        p[i] = dv[Items][i].ToString().Trim();
+                        p[i] = dv[items][i].ToString().Trim();
                     }
 
                     //-------------------------- 
                     //Add Node
                     //-------------------------- 
-                    RootNode = Nodes.Add(p);
+                    var rootNode = GridNodes.Add(p);
 
-                    string Item_id = dv[Items][IDColumnName].ToString();
-                    BuildPortsNodesOtherLoops(Item_id, dt, IDColumnName, ParentIDColumnName, ref RootNode);
+                    var itemId = dv[items][idColumnName].ToString();
+                    BuildPortsNodesOtherLoops(itemId, dt, idColumnName, parentIdColumnName, rootNode);
                 }
             }
         }
 
-        private void BuildPortsNodesOtherLoops(string Item_Id, DataTable dt, string IDColumnName, string ParentIDColumnName, ref TreeGridNode parentNode)
+        private void BuildPortsNodesOtherLoops(string itemId, DataTable dt, string idColumnName, string parentIdColumnName, KryptonTreeGridNodeRow parentNode)
         {
-            int Items = 0;
-
-            //-------------------------- 
             //create filtered data
-            //-------------------------- 
-            DataView dv = new DataView(dt);
-            dv.RowFilter = ParentIDColumnName + "=" + Item_Id + " AND " + IDColumnName + "<>" + ParentIDColumnName;
+            var dv = new DataView(dt)
+            {
+                RowFilter = $"{parentIdColumnName}={itemId} AND {idColumnName}<>{parentIdColumnName}"
+            };
 
-            //-------------------------- 
             //get the parent node based on unique value
-            //-------------------------- 
-            TreeGridNode node = parentNode;
-
             if (dv.Count > 0)
             {
-                //-------------------------- 
                 //set Image Index
-                //-------------------------- 
-                node.ImageIndex = imageIndexParent;
+                parentNode.ImageIndex = ImageIndexParent;
 
-                //-------------------------- 
                 //set bold
-                //-------------------------- 
-                if (fontParentBold) node.DefaultCellStyle.Font = new Font(DefaultCellStyle.Font, FontStyle.Bold);
-
-                for (Items = 0; Items <= dv.Count - 1; Items++)
+                if (FontParentBold)
                 {
-                    //-------------------------- 
-                    // Retrieve columns
-                    //-------------------------- 
-                    string[] p = new string[dt.Columns.Count];
+                    parentNode.DefaultCellStyle.Font = new Font(DefaultCellStyle.Font, FontStyle.Bold);
+                }
 
-                    for (int i = 0; i < dt.Columns.Count; i++)
+                for (var items = 0; items <= dv.Count - 1; items++)
+                {
+                    // Retrieve columns
+                    var p = new string[dt.Columns.Count];
+
+                    for (var i = 0; i < dt.Columns.Count; i++)
                     {
-                        p[i] = dv[Items][i].ToString().Trim();
+                        p[i] = dv[items][i].ToString().Trim();
                     }
                     //-------------------------- 
                     //Add Node
                     //-------------------------- 
-                    TreeGridNode childNode = new TreeGridNode();
-                    childNode = node.Nodes.Add(p);
+                    KryptonTreeGridNodeRow childNode = parentNode.Nodes.Add(p);
 
-                    string Item = dv[Items][IDColumnName].ToString();
+                    var item = dv[items][idColumnName].ToString();
 
-                    BuildPortsNodesOtherLoops(Item, dt, IDColumnName, ParentIDColumnName, ref childNode);
+                    BuildPortsNodesOtherLoops(item, dt, idColumnName, parentIdColumnName, childNode);
                 }
 
             }
             else
             {
                 //set Image Index
-                node.ImageIndex = imageIndexChild;
+                parentNode.ImageIndex = ImageIndexChild;
             }
         }
         #endregion
@@ -734,12 +589,10 @@ namespace Krypton.Toolkit.Suite.Extended.Tree.Grid.View
         {
             base.OnRowsAdded(e);
             // Notify the row when it is added to the base grid 
-            int count = e.RowCount - 1;
-            TreeGridNode row;
+            var count = e.RowCount - 1;
             while (count >= 0)
             {
-                row = base.Rows[e.RowIndex + count] as TreeGridNode;
-                if (row != null)
+                if (base.Rows[e.RowIndex + count] is KryptonTreeGridNodeRow row)
                 {
                     row.Sited();
                 }
@@ -752,12 +605,12 @@ namespace Krypton.Toolkit.Suite.Extended.Tree.Grid.View
             UnSiteNode(_root);
         }
 
-        protected internal virtual void UnSiteNode(TreeGridNode node)
+        protected internal virtual void UnSiteNode(KryptonTreeGridNodeRow node)
         {
             if (node.IsSited || node.IsRoot)
             {
                 // remove child rows first
-                foreach (TreeGridNode childNode in node.Nodes)
+                foreach (KryptonTreeGridNodeRow childNode in node.Nodes)
                 {
                     UnSiteNode(childNode);
                 }
@@ -773,16 +626,19 @@ namespace Krypton.Toolkit.Suite.Extended.Tree.Grid.View
                         // the index of the expandable row/node.
                         node.UnSited();
                     }
-                    catch { }
+                    catch
+                    {
+                        // TODO: Empty - Why ?
+                    }
                 }
             }
         }
 
-        protected internal virtual bool CollapseNode(TreeGridNode node)
+        protected internal virtual bool CollapseNode(KryptonTreeGridNodeRow node)
         {
             if (node.IsExpanded)
             {
-                CollapsingEventArgs exp = new CollapsingEventArgs(node);
+                var exp = new CollapsingEventArgs(node);
                 OnNodeCollapsing(exp);
 
                 if (!exp.Cancel)
@@ -792,13 +648,13 @@ namespace Krypton.Toolkit.Suite.Extended.Tree.Grid.View
                     _inExpandCollapse = true;
                     node.IsExpanded = false;
 
-                    foreach (TreeGridNode childNode in node.Nodes)
+                    foreach (KryptonTreeGridNodeRow childNode in node.Nodes)
                     {
-                        Debug.Assert(childNode.RowIndex != -1, "Row is NOT in the grid.");
+                        Debug.Assert(childNode.RowIndex != -1, @"Row is NOT in the grid.");
                         UnSiteNode(childNode);
                     }
 
-                    CollapsedEventArgs exped = new CollapsedEventArgs(node);
+                    var exped = new CollapsedEventArgs(node);
                     OnNodeCollapsed(exped);
                     //TODO: Convert this to a specific NodeCell property
                     _inExpandCollapse = false;
@@ -812,70 +668,63 @@ namespace Krypton.Toolkit.Suite.Extended.Tree.Grid.View
             }
             else
             {
-                // row isn't expanded, so we didn't do anything.				
+                // row isn't expanded, so we didn't do anything.
                 return false;
             }
         }
 
-        protected internal virtual void SiteNode(TreeGridNode node)
+        protected internal virtual void SiteNode(KryptonTreeGridNodeRow node)
         {
             //TODO: Raise exception if parent node is not the root or is not sited.
-            int rowIndex = -1;
-            TreeGridNode currentRow;
-            node._grid = this;
+            KryptonTreeGridNodeRow currentRow;
+            node.Grid = this;
 
-            if (node.Parent != null && node.Parent.IsRoot == false)
+            if (node.Parent is { IsRoot: false })
             {
                 // row is a child
-                Debug.Assert(node.Parent != null && node.Parent.IsExpanded == true);
+                Debug.Assert(node.Parent is { IsExpanded: true });
 
-                if (node.Index > 0)
-                {
-                    currentRow = node.Parent.Nodes[node.Index - 1];
-                }
-                else
-                {
-                    currentRow = node.Parent;
-                }
+                currentRow = node.Index > 0 ? node.Parent.Nodes[node.Index - 1] : node.Parent;
             }
             else
             {
                 // row is being added to the root
-                if (node.Index > 0)
-                {
-                    currentRow = node.Parent.Nodes[node.Index - 1];
-                }
-                else
-                {
-                    currentRow = null;
-                }
-
+                currentRow = node.Index > 0 ? node.Parent.Nodes[node.Index - 1] : null;
             }
 
+            int rowIndex;
             if (currentRow != null)
             {
-                while (currentRow.Level >= node.Level)
+                while (currentRow.Level > node.Level)
                 {
                     if (currentRow.RowIndex < base.Rows.Count - 1)
                     {
-                        currentRow = base.Rows[currentRow.RowIndex + 1] as TreeGridNode;
+                        currentRow = base.Rows[currentRow.RowIndex + 1] as KryptonTreeGridNodeRow;
                         Debug.Assert(currentRow != null);
                     }
                     else
+                    {
                         // no more rows, site this node at the end.
                         break;
-
+                    }
                 }
                 if (currentRow == node.Parent)
+                {
                     rowIndex = currentRow.RowIndex + 1;
+                }
                 else if (currentRow.Level < node.Level)
+                {
                     rowIndex = currentRow.RowIndex;
+                }
                 else
+                {
                     rowIndex = currentRow.RowIndex + 1;
+                }
             }
             else
+            {
                 rowIndex = 0;
-
+            }
 
             Debug.Assert(rowIndex != -1);
             SiteNode(node, rowIndex);
@@ -884,7 +733,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tree.Grid.View
             if (node.IsExpanded)
             {
                 // add all child rows to display
-                foreach (TreeGridNode childNode in node.Nodes)
+                foreach (KryptonTreeGridNodeRow childNode in node.Nodes)
                 {
                     //TODO: could use the more efficient SiteRow with index.
                     SiteNode(childNode);
@@ -893,7 +742,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tree.Grid.View
         }
 
 
-        protected internal virtual void SiteNode(TreeGridNode node, int index)
+        protected internal virtual void SiteNode(KryptonTreeGridNodeRow node, int index)
         {
             if (index < base.Rows.Count)
             {
@@ -906,11 +755,11 @@ namespace Krypton.Toolkit.Suite.Extended.Tree.Grid.View
             }
         }
 
-        protected internal virtual bool ExpandNode(TreeGridNode node)
+        protected internal virtual bool ExpandNode(KryptonTreeGridNodeRow node)
         {
-            if (!node.IsExpanded || _virtualNodes)
+            if (!node.IsExpanded || VirtualNodes)
             {
-                ExpandingEventArgs exp = new ExpandingEventArgs(node);
+                var exp = new ExpandingEventArgs(node);
                 OnNodeExpanding(exp);
 
                 if (!exp.Cancel)
@@ -921,9 +770,9 @@ namespace Krypton.Toolkit.Suite.Extended.Tree.Grid.View
                     node.IsExpanded = true;
 
                     //TODO Convert this to a InsertRange
-                    foreach (TreeGridNode childNode in node.Nodes)
+                    foreach (KryptonTreeGridNodeRow childNode in node.Nodes)
                     {
-                        Debug.Assert(childNode.RowIndex == -1, "Row is already in the grid.");
+                        Debug.Assert(childNode.RowIndex == -1, @"Row is already in the grid.");
 
                         SiteNode(childNode);
                         //BaseRows.Insert(rowIndex + 1, childRow);
@@ -931,7 +780,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tree.Grid.View
                         //childNode.Cells[0].Value = "child";
                     }
 
-                    ExpandedEventArgs exped = new ExpandedEventArgs(node);
+                    var exped = new ExpandedEventArgs(node);
                     OnNodeExpanded(exped);
                     //TODO: Convert this to a specific NodeCell property
                     _inExpandCollapse = false;
@@ -953,34 +802,36 @@ namespace Krypton.Toolkit.Suite.Extended.Tree.Grid.View
         {
             // used to keep extra mouse moves from selecting more rows when collapsing
             base.OnMouseUp(e);
-            _inExpandCollapseMouseCapture = false;
+            InExpandCollapseMouseCapture = false;
         }
         protected override void OnMouseMove(MouseEventArgs e)
         {
             // while we are expanding and collapsing a node mouse moves are
             // supressed to keep selections from being messed up.
-            if (!_inExpandCollapseMouseCapture)
-                base.OnMouseMove(e);
-
-        }
-        [Description("Expands all nodes")]
-        public void ExpandAll()
-        {
-            foreach (TreeGridNode node in Nodes)
+            if (!InExpandCollapseMouseCapture)
             {
-                expandNode(node);
+                base.OnMouseMove(e);
             }
         }
 
-        private void expandNode(TreeGridNode node)
+        [Description("Expands all nodes")]
+        public void ExpandAll()
+        {
+            foreach (KryptonTreeGridNodeRow node in GridNodes)
+            {
+                ExpandAllImp(node);
+            }
+        }
+
+        private void ExpandAllImp(KryptonTreeGridNodeRow node)
         {
 
             if (node.Nodes.Count > 0)
             {
                 node.Expand();
-                foreach (TreeGridNode subNode in node.Nodes)
+                foreach (var subNode in node.Nodes)
                 {
-                    expandNode(subNode);
+                    ExpandAllImp(subNode);
                 }
             }
         }
@@ -988,19 +839,19 @@ namespace Krypton.Toolkit.Suite.Extended.Tree.Grid.View
         [Description("Collapse all nodes")]
         public void CollapseAll()
         {
-            foreach (TreeGridNode node in Nodes)
+            foreach (var node in GridNodes)
             {
-                collapseNode(node);
+                CollapseAllImp(node);
             }
         }
 
-        private void collapseNode(TreeGridNode node)
+        private void CollapseAllImp(KryptonTreeGridNodeRow node)
         {
             if (node.Nodes.Count > 0)
             {
-                foreach (TreeGridNode subNode in node.Nodes)
+                foreach (var subNode in node.Nodes)
                 {
-                    collapseNode(subNode);
+                    CollapseAllImp(subNode);
                 }
                 node.Collapse();
             }
@@ -1015,32 +866,20 @@ namespace Krypton.Toolkit.Suite.Extended.Tree.Grid.View
 
         protected virtual void OnNodeExpanding(ExpandingEventArgs e)
         {
-            if (NodeExpanding != null)
-            {
-                NodeExpanding(this, e);
-            }
+            NodeExpanding?.Invoke(this, e);
         }
         protected virtual void OnNodeExpanded(ExpandedEventArgs e)
         {
-            if (NodeExpanded != null)
-            {
-                NodeExpanded(this, e);
-            }
+            NodeExpanded?.Invoke(this, e);
         }
         protected virtual void OnNodeCollapsing(CollapsingEventArgs e)
         {
-            if (NodeCollapsing != null)
-            {
-                NodeCollapsing(this, e);
-            }
+            NodeCollapsing?.Invoke(this, e);
 
         }
         protected virtual void OnNodeCollapsed(CollapsedEventArgs e)
         {
-            if (NodeCollapsed != null)
-            {
-                NodeCollapsed(this, e);
-            }
+            NodeCollapsed?.Invoke(this, e);
         }
         #endregion
 
@@ -1059,22 +898,25 @@ namespace Krypton.Toolkit.Suite.Extended.Tree.Grid.View
         {
             base.OnHandleCreated(e);
 
-            // this control is used to temporarly hide the vertical scroll bar
-            hideScrollBarControl = new Control();
-            hideScrollBarControl.Visible = false;
-            hideScrollBarControl.Enabled = false;
-            hideScrollBarControl.TabStop = false;
+            // this control is used to temporarily hide the vertical scroll bar
+            _hideScrollBarControl = new Control
+            {
+                Visible = false,
+                Enabled = false,
+                TabStop = false
+            };
             // control is disposed automatically when the grid is disposed
-            Controls.Add(hideScrollBarControl);
+            Controls.Add(_hideScrollBarControl);
         }
 
         protected override void OnRowEnter(DataGridViewCellEventArgs e)
         {
             // ensure full row select
             base.OnRowEnter(e);
-            if (SelectionMode == DataGridViewSelectionMode.CellSelect ||
-                (SelectionMode == DataGridViewSelectionMode.FullRowSelect &&
-                base.Rows[e.RowIndex].Selected == false))
+            if (SelectionMode == DataGridViewSelectionMode.CellSelect
+                || (SelectionMode == DataGridViewSelectionMode.FullRowSelect
+                    && base.Rows[e.RowIndex].Selected == false)
+                )
             {
                 SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                 base.Rows[e.RowIndex].Selected = true;
@@ -1083,28 +925,21 @@ namespace Krypton.Toolkit.Suite.Extended.Tree.Grid.View
 
         private void LockVerticalScrollBarUpdate(bool lockUpdate/*, bool delayed*/)
         {
-            // Temporarly hide/show the vertical scroll bar by changing its parent
+            // Temporarily hide/show the vertical scroll bar by changing its parent
             if (!_inExpandCollapse)
             {
-                if (lockUpdate)
-                {
-                    VerticalScrollBar.Parent = hideScrollBarControl;
-                }
-                else
-                {
-                    VerticalScrollBar.Parent = this;
-                }
+                VerticalScrollBar.Parent = lockUpdate ? _hideScrollBarControl : this;
             }
         }
 
         protected override void OnColumnAdded(DataGridViewColumnEventArgs e)
         {
-            if (typeof(TreeGridColumn).IsAssignableFrom(e.Column.GetType()))
+            if (e.Column is KryptonTreeGridColumn column)
             {
                 if (_expandableColumn == null)
                 {
-                    // identify the expanding column.			
-                    _expandableColumn = (TreeGridColumn)e.Column;
+                    // identify the expanding column.
+                    _expandableColumn = column;
                 }
                 else
                 {
@@ -1119,22 +954,6 @@ namespace Krypton.Toolkit.Suite.Extended.Tree.Grid.View
             base.OnColumnAdded(e);
         }
 
-        private static class Win32Helper
-        {
-            public const int WM_SYSKEYDOWN = 0x0104,
-                             WM_KEYDOWN = 0x0100,
-                             WM_SETREDRAW = 0x000B;
-
-            [System.Runtime.InteropServices.DllImport("USER32.DLL", CharSet = System.Runtime.InteropServices.CharSet.Auto)]
-            public static extern IntPtr SendMessage(System.Runtime.InteropServices.HandleRef hWnd, int msg, IntPtr wParam, IntPtr lParam);
-
-            [System.Runtime.InteropServices.DllImport("USER32.DLL", CharSet = System.Runtime.InteropServices.CharSet.Auto)]
-            public static extern IntPtr SendMessage(System.Runtime.InteropServices.HandleRef hWnd, int msg, int wParam, int lParam);
-
-            [System.Runtime.InteropServices.DllImport("USER32.DLL", CharSet = System.Runtime.InteropServices.CharSet.Auto)]
-            public static extern bool PostMessage(System.Runtime.InteropServices.HandleRef hwnd, int msg, IntPtr wparam, IntPtr lparam);
-
-        }
         #endregion
     }
 }

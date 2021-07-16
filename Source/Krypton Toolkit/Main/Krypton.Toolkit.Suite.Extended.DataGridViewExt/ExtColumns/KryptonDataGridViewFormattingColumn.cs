@@ -112,26 +112,20 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
 
                         if (barWidth > 0) //(double)value > 0 &&
                         {
-                            Rectangle r = new Rectangle(cellBounds.X + 3, cellBounds.Y + 3, barWidth, cellBounds.Height - 8);
+                            Rectangle r = new(cellBounds.X + 3, cellBounds.Y + 3, barWidth, cellBounds.Height - 8);
                             if (par.GradientFill)
                             {
-                                using (LinearGradientBrush linearBrush = new LinearGradientBrush(r, par.BarColour, Color.White, LinearGradientMode.Horizontal)) //Color.FromArgb(255, 247, 251, 242)
-                                {
-                                    graphics.FillRectangle(linearBrush, r);
-                                }
+                                using LinearGradientBrush linearBrush = new(r, par.BarColour, Color.White, LinearGradientMode.Horizontal);
+                                graphics.FillRectangle(linearBrush, r);
                             }
                             else
                             {
-                                using (SolidBrush solidBrush = new SolidBrush(par.BarColour)) //Color.FromArgb(255, 247, 251, 242)
-                                {
-                                    graphics.FillRectangle(solidBrush, r);
-                                }
+                                using SolidBrush solidBrush = new(par.BarColour);
+                                graphics.FillRectangle(solidBrush, r);
                             }
 
-                            using (Pen pen = new Pen(par.BarColour)) //Color.FromArgb(255, 140, 197, 66)))
-                            {
-                                graphics.DrawRectangle(pen, r);
-                            }
+                            using Pen pen = new(par.BarColour);
+                            graphics.DrawRectangle(pen, r);
                         }
 
                         break;
