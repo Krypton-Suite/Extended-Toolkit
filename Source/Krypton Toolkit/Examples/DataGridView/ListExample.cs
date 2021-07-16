@@ -169,7 +169,7 @@ namespace DataGridViewExt
 
         private void buttonRandomCellColors_Click(object sender, EventArgs e)
         {
-            Random rand = new Random();
+            Random rand = new();
             for (int i = 0; i < masterSingleDetailView1.Rows.Count; i++)
             {
                 for (int j = 0; j < masterSingleDetailView1.ColumnCount; j++)

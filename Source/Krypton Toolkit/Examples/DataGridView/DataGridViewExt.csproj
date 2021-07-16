@@ -7,17 +7,12 @@
         <UseWindowsForms>true</UseWindowsForms>
     </PropertyGroup>
 
-    <PropertyGroup>
-        <!-- Needed to make the SQLite core work correctly - I Think !-->
-        <Prefer32Bit>true</Prefer32Bit>
-    </PropertyGroup>
-
     <ItemGroup>
-      <ProjectReference Include="..\..\Krypton.Toolkit.Suite.Extended.DataGridView\Krypton.Toolkit.Suite.Extended.DataGridView 2019.csproj" />
+        <PackageReference Include="System.Data.SQLite.Core" Version="1.0.113.7" />
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="System.Data.SQLite.Core" Version="1.0.113.7" />
+        <ProjectReference Include="..\..\Main\Krypton.Toolkit.Suite.Extended.DataGridViewExt\Krypton.Toolkit.Suite.Extended.DataGridView.csproj" />
     </ItemGroup>
 
     <ItemGroup>

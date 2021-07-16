@@ -1,0 +1,53 @@
+<?xml version="1.0" standalone="yes"?>
+<DocumentElement>
+  <category>
+    <ID>1</ID>
+    <CategoryName>Beverages</CategoryName>
+    <ProductName>Outback Lager</ProductName>
+    <ProductSales>5468.4</ProductSales>
+    <ParentID>1</ParentID>
+  </category>
+  <category>
+    <ID>2</ID>
+    <CategoryName>Grains/Cereals</CategoryName>
+    <ProductName>Gnocchi di nonna Alice</ProductName>
+    <ProductSales>32604</ProductSales>
+    <ParentID>1</ParentID>
+  </category>
+  <category>
+    <ID>3</ID>
+    <CategoryName>Dairy Products</CategoryName>
+    <ProductName>Gudbrandsdalsost</ProductName>
+    <ProductSales>13062.6</ProductSales>
+    <ParentID>3</ParentID>
+  </category>
+  <category>
+    <ID>4</ID>
+    <CategoryName>Meat/Poultry</CategoryName>
+    <ProductName>Tourtire</ProductName>
+    <ProductSales>3184.29</ProductSales>
+    <ParentID>3</ParentID>
+  </category>
+  <category>
+    <ID>5</ID>
+    <CategoryName>Meat/Poultry</CategoryName>
+    <ProductName>Thringer Rostbratwurst</ProductName>
+    <ProductSales>34755.92</ProductSales>
+    <ParentID>4</ParentID>
+  </category>
+    <category>
+    <ID>6</ID>
+    <CategoryName>Meat</CategoryName>
+    <ProductName>Thringer Rostbratwurst</ProductName>
+    <ProductSales>4755.2</ProductSales>
+    <ParentID>3</ParentID>
+  </category>
+    <category>
+    <ID>7</ID>
+    <CategoryName>Poultry</CategoryName>
+    <ProductName>Thringer Rostbratwurst</ProductName>
+    <ProductSales>3755.9</ProductSales>
+    <ParentID>7</ParentID>
+  </category>
+ 
+</DocumentElement>

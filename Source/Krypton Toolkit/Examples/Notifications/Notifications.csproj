@@ -7,8 +7,4 @@
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\Krypton.Toolkit.Suite.Extended.Notifications\Krypton.Toolkit.Suite.Extended.Notifications 2019.csproj" />
-  </ItemGroup>
-
 </Project>
