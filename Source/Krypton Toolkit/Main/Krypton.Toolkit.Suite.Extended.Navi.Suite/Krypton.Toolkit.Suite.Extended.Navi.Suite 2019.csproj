@@ -39,5 +39,18 @@
     <DocumentationFile>..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.Navi.Suite\Krypton.Toolkit.Suite.Extended.Navi.Suite.xml</DocumentationFile>
     <OutputPath>..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.Navi.Suite\</OutputPath>
   </PropertyGroup>
+  <ItemGroup>
+    <Compile Update="Resources\ProjectResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ProjectResources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\ProjectResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ProjectResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
 
 </Project>
