@@ -6,10 +6,6 @@
  */
 #endregion
 
-using System.ComponentModel;
-using System.Drawing;
-using System.Windows.Forms;
-
 namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 {
     /// <summary>
@@ -123,14 +119,14 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             //Find horizontal text position offset
             switch (TextAlign)
             {
-                case ContentAlignment.BottomCenter:
-                case ContentAlignment.MiddleCenter:
-                case ContentAlignment.TopCenter:
+                case System.Drawing.ContentAlignment.BottomCenter:
+                case System.Drawing.ContentAlignment.MiddleCenter:
+                case System.Drawing.ContentAlignment.TopCenter:
                     textLeft = (ContentRectangle.Width + textLeft - textSize.Width) / 2;
                     break;
-                case ContentAlignment.BottomRight:
-                case ContentAlignment.MiddleRight:
-                case ContentAlignment.TopRight:
+                case System.Drawing.ContentAlignment.BottomRight:
+                case System.Drawing.ContentAlignment.MiddleRight:
+                case System.Drawing.ContentAlignment.TopRight:
                     textLeft = ContentRectangle.Right - textSize.Width;
                     break;
 
@@ -141,14 +137,14 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
             switch (TextAlign)
             {
-                case ContentAlignment.BottomCenter:
-                case ContentAlignment.BottomLeft:
-                case ContentAlignment.BottomRight:
+                case System.Drawing.ContentAlignment.BottomCenter:
+                case System.Drawing.ContentAlignment.BottomLeft:
+                case System.Drawing.ContentAlignment.BottomRight:
                     yLinePosition = yTextPosition;
                     break;
-                case ContentAlignment.TopCenter:
-                case ContentAlignment.TopLeft:
-                case ContentAlignment.TopRight:
+                case System.Drawing.ContentAlignment.TopCenter:
+                case System.Drawing.ContentAlignment.TopLeft:
+                case System.Drawing.ContentAlignment.TopRight:
                     yLinePosition = yTextPosition + textSize.Height;
                     break;
             }

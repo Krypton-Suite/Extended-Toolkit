@@ -6,9 +6,6 @@
  */
 #endregion
 
-using System.Windows.Forms;
-using System.Windows.Forms.Design;
-
 namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 {
     [ToolStripItemDesignerAvailability(ToolStripItemDesignerAvailability.ContextMenuStrip | ToolStripItemDesignerAvailability.MenuStrip)]

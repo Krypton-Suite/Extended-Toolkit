@@ -6,13 +6,7 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Base;
-using Krypton.Toolkit.Suite.Extended.Common;
-using System;
-using System.ComponentModel;
-using System.Drawing;
-using System.Windows.Forms;
-using System.Windows.Forms.Design;
+using Krypton.Toolkit.Suite.Extended.Global.Utilities;
 
 namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 {

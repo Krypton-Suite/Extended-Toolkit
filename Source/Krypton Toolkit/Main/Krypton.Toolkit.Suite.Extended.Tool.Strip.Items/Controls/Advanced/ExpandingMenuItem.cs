@@ -6,13 +6,8 @@
  */
 #endregion
 
-using System;
-using System.Drawing;
-using System.Runtime.CompilerServices;
-using System.Windows.Forms;
-using System.Windows.Forms.Design;
 
-namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items.Controls
+namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 {
     /// <summary>
     /// Provides expansion in menus, similar to Word and Exel 2003. The parent 

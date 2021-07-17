@@ -6,12 +6,6 @@
  */
 #endregion
 
-using System;
-using System.ComponentModel;
-using System.Drawing;
-using System.Windows.Forms;
-using System.Windows.Forms.Design;
-
 namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 {
     [ToolboxBitmap(typeof(KryptonTrackBar)), ToolStripItemDesignerAvailability(ToolStripItemDesignerAvailability.All)]

@@ -6,10 +6,6 @@
  */
 #endregion
 
-using System;
-using System.ComponentModel;
-using System.Windows.Forms;
-
 namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 {
     [Description("A standard tool strip, with a few enhancements.")]

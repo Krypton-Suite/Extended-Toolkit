@@ -6,10 +6,6 @@
  */
 #endregion
 
-using System.ComponentModel;
-using System.Drawing;
-using System.Windows.Forms;
-
 namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 {
     [ToolboxBitmap(typeof(ToolStrip)), Description("A standard tool strip equipped with the Krypton theme."), ToolboxItem(true)]

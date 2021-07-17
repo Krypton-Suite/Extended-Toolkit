@@ -6,11 +6,6 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Base;
-using System.ComponentModel;
-using System.Drawing;
-using System.Windows.Forms;
-
 namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 {
     [ToolboxBitmap(typeof(BackgroundWorker))]

@@ -6,11 +6,7 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Tool.Strip.Items.Properties;
-using System.Drawing;
-using System.Windows.Forms;
-
-namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items.Controls
+namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 {
     internal class ExpandedItem : ExpandingMenuItem
     {
@@ -18,7 +14,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items.Controls
         {
             Name = "ExpandableMenuItem";
 
-            var bitmap = Resources.Expand_large;
+            var bitmap = ProjectResources.Expand_large;
 
             bitmap.MakeTransparent(Color.Magenta);
 

@@ -6,8 +6,6 @@
  */
 #endregion
 
-using System;
-using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 {
