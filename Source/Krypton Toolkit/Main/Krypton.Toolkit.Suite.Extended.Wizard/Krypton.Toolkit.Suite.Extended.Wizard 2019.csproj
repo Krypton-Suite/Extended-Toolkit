@@ -40,7 +40,7 @@
     <OutputPath>..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.Wizard\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Global.Utilities\Krypton.Toolkit.Suite.Extended.Global.Utilities 2019.csproj" />
+    <ProjectReference Include="..\..\Shared\Krypton.Toolkit.Suite.Extended.Global.Utilities\Krypton.Toolkit.Suite.Extended.Global.Utilities 2019.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">

@@ -5,6 +5,7 @@ global using System.Drawing;
 global using System.Drawing.Drawing2D;
 global using System.Drawing.Text;
 global using System.Runtime.CompilerServices;
+global using System.Security.Principal;
 global using System.Text;
 global using System.Threading.Tasks;
 global using System.Windows.Forms;

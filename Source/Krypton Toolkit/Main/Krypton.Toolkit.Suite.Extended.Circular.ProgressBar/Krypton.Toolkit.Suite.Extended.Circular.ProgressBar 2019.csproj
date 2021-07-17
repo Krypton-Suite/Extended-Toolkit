@@ -39,8 +39,9 @@
     <DocumentationFile>..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.Circular.ProgressBar\Krypton.Toolkit.Suite.Extended.Circular.ProgressBar.xml</DocumentationFile>
     <OutputPath>..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.Circular.ProgressBar\</OutputPath>
   </PropertyGroup>
+
   <ItemGroup>
-    <ProjectReference Include="..\Third Party\Windows.Forms.Animation.Library\Windows.Forms.Animation.Library.csproj" />
+    <PackageReference Include="WinFormAnimation" Version="1.6.0.4" />
   </ItemGroup>
 
 </Project>

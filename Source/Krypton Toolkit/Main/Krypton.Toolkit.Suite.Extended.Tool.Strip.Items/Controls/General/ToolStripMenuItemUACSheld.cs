@@ -6,7 +6,6 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Global.Utilities;
 
 namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 {
@@ -114,7 +113,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
                             TextImageRelation = TextImageRelation.ImageBeforeText;
 
-                            ImageAlign = ContentAlignment.MiddleCenter;
+                            ImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
 
                             _isSystemAbleToLoadShield = true;
 
@@ -127,7 +126,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
                     }
                     catch (Exception exc)
                     {
-                        KryptonMessageBoxExtended.Show($"Your platform is unsupported. Please contact the software vendor for details.\nFor reference, your system is running: { _globalMethods.GetOSFriendlyName() }.\nException message: { exc.Message }.", "Unsupported Software", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        KryptonMessageBox.Show($"Your platform is unsupported. Please contact the software vendor for details.\nFor reference, your system is running: { _globalMethods.GetOSFriendlyName() }.\nException message: { exc.Message }.", "Unsupported Software", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                         _isSystemAbleToLoadShield = false;
                     }

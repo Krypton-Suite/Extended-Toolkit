@@ -268,6 +268,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Exten
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.TreeGridView 2019", "Main\Krypton.Toolkit.Suite.Extended.TreeGridView\Krypton.Toolkit.Suite.Extended.TreeGridView 2019.csproj", "{34F32E4D-79EF-4447-A585-B1A79BF1C3C3}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TreeGridViewApp", "Examples\TreeGridViewApp\TreeGridViewApp.csproj", "{DD275C13-CF07-4F00-B66A-27D25896A6CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToolStripItems", "Examples\ToolStripItems\ToolStripItems.csproj", "{7DD7E446-6272-467B-AA8A-7EB0F5D31D7F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -566,6 +570,14 @@ Global
 		{34F32E4D-79EF-4447-A585-B1A79BF1C3C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{34F32E4D-79EF-4447-A585-B1A79BF1C3C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{34F32E4D-79EF-4447-A585-B1A79BF1C3C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD275C13-CF07-4F00-B66A-27D25896A6CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD275C13-CF07-4F00-B66A-27D25896A6CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD275C13-CF07-4F00-B66A-27D25896A6CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD275C13-CF07-4F00-B66A-27D25896A6CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DD7E446-6272-467B-AA8A-7EB0F5D31D7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DD7E446-6272-467B-AA8A-7EB0F5D31D7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DD7E446-6272-467B-AA8A-7EB0F5D31D7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DD7E446-6272-467B-AA8A-7EB0F5D31D7F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -659,6 +671,8 @@ Global
 		{C7EDCEE0-44FB-4BBA-AA85-07E7AE8CD5C1} = {25D5F0A6-A601-424B-9431-8EFE139A58A7}
 		{A55B5F11-F812-4FF4-900C-B12601B34E52} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 		{34F32E4D-79EF-4447-A585-B1A79BF1C3C3} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
+		{DD275C13-CF07-4F00-B66A-27D25896A6CA} = {25D5F0A6-A601-424B-9431-8EFE139A58A7}
+		{7DD7E446-6272-467B-AA8A-7EB0F5D31D7F} = {25D5F0A6-A601-424B-9431-8EFE139A58A7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A7CE7732-0982-4703-8EFD-7715D569BAB5}
