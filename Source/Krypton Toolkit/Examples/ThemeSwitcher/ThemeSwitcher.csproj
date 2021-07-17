@@ -6,5 +6,9 @@
     <LangVersion>latest</LangVersion>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Main\Krypton.Toolkit.Suite.Extended.Theme.Switcher\Krypton.Toolkit.Suite.Extended.Theme.Switcher 2019.csproj" />
+  </ItemGroup>
   
 </Project>

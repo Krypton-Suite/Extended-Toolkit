@@ -11,4 +11,8 @@
       <Compile Update="Form1.cs" />
     </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Main\Krypton.Toolkit.Suite.Extended.ComboBox\Krypton.Toolkit.Suite.Extended.ComboBox 2019.csproj" />
+  </ItemGroup>
+
 </Project>

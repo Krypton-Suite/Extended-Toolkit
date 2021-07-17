@@ -12,6 +12,10 @@
     </ItemGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\..\Main\Krypton.Toolkit.Suite.Extended.DataGridViewExt\Krypton.Toolkit.Suite.Extended.DataGridView.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
         <None Update="Northwind_small.sqlite">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>

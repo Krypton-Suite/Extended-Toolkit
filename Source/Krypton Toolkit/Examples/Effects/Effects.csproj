@@ -6,4 +6,8 @@
         <OutputType>WinExe</OutputType>
         <UseWindowsForms>true</UseWindowsForms>
     </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Shared\Krypton.Toolkit.Suite.Extended.Effects\Krypton.Toolkit.Suite.Extended.Effects 2019.csproj" />
+  </ItemGroup>
 </Project>

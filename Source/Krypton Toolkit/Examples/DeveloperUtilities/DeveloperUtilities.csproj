@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="..\..\Krypton.Toolkit.Suite.Extended.Buttons\Krypton.Toolkit.Suite.Extended.Buttons 2019.csproj" />
+    <ProjectReference Include="..\..\Shared\Krypton.Toolkit.Suite.Extended.Developer.Utilities\Krypton.Toolkit.Suite.Extended.Developer.Utilities 2019.csproj" />
   </ItemGroup>
 
 </Project>
