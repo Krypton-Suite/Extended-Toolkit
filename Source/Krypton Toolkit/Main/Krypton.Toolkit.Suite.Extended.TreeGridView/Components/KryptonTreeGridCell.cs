@@ -9,7 +9,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Krypton.Toolkit.Suite.Extended.TreeGridView.Components
+namespace Krypton.Toolkit.Suite.Extended.TreeGridView
 {
     /// <summary>
     /// Summary description for TreeGridCell.

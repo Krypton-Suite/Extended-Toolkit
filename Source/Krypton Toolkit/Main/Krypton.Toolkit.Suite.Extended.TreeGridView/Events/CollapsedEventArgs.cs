@@ -6,7 +6,7 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.TreeGridView.Events
+namespace Krypton.Toolkit.Suite.Extended.TreeGridView
 {
     public class CollapsedEventArgs : TreeGridNodeEventBase
     {

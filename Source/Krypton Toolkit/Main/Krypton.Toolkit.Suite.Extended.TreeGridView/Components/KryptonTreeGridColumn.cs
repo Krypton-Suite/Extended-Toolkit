@@ -8,7 +8,7 @@
 
 using System.Drawing;
 
-namespace Krypton.Toolkit.Suite.Extended.TreeGridView.Components
+namespace Krypton.Toolkit.Suite.Extended.TreeGridView
 {
     public class KryptonTreeGridColumn : KryptonDataGridViewTextBoxColumn
     {

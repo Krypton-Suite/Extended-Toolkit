@@ -16,9 +16,6 @@ using System.Drawing.Design;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 
-using Krypton.Toolkit.Suite.Extended.TreeGridView.Components;
-using Krypton.Toolkit.Suite.Extended.TreeGridView.Events;
-
 // ReSharper disable AutoPropertyCanBeMadeGetOnly.Global
 // ReSharper disable UnusedAutoPropertyAccessor.Global
 

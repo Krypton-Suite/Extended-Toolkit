@@ -15,7 +15,6 @@ using System.Drawing.Design;
 using System.Text;
 using System.Windows.Forms;
 
-using Krypton.Toolkit.Suite.Extended.TreeGridView.Components;
 // ReSharper disable ValueParameterNotUsed
 
 namespace Krypton.Toolkit.Suite.Extended.TreeGridView

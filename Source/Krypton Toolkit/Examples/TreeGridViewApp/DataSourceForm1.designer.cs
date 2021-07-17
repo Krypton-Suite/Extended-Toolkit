@@ -24,11 +24,11 @@ namespace TreeGridViewApp
             this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
             this.treeGridView1 = new Krypton.Toolkit.Suite.Extended.TreeGridView.KryptonTreeGridView();
             this.attachmentColumn = new System.Windows.Forms.DataGridViewImageColumn();
-            this.subjectColumn = new Krypton.Toolkit.Suite.Extended.TreeGridView.Components.KryptonTreeGridColumn();
+            this.subjectColumn = new Krypton.Toolkit.Suite.Extended.TreeGridView.KryptonTreeGridColumn();
             this.fromColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
-            this.Column1 = new Krypton.Toolkit.Suite.Extended.TreeGridView.Components.KryptonTreeGridColumn();
+            this.Column1 = new Krypton.Toolkit.Suite.Extended.TreeGridView.KryptonTreeGridColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1.SuspendLayout();
@@ -247,10 +247,10 @@ namespace TreeGridViewApp
         private Krypton.Toolkit.Suite.Extended.TreeGridView.KryptonTreeGridView treeGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
 		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private Krypton.Toolkit.Suite.Extended.TreeGridView.Components.KryptonTreeGridColumn Column1;
+        private Krypton.Toolkit.Suite.Extended.TreeGridView.KryptonTreeGridColumn Column1;
         private System.Windows.Forms.ImageList imageStrip;
         private System.Windows.Forms.DataGridViewImageColumn attachmentColumn;
-        private Krypton.Toolkit.Suite.Extended.TreeGridView.Components.KryptonTreeGridColumn subjectColumn;
+        private Krypton.Toolkit.Suite.Extended.TreeGridView.KryptonTreeGridColumn subjectColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn fromColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateColumn;
         private Krypton.Toolkit.KryptonManager kryptonManager1;

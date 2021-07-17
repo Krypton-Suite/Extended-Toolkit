@@ -38,7 +38,7 @@ namespace TreeGridViewApp
             this.rbOffice2007Black = new System.Windows.Forms.RadioButton();
             this.rbOffice2007Blue = new System.Windows.Forms.RadioButton();
             this.treeGridView1 = new Krypton.Toolkit.Suite.Extended.TreeGridView.KryptonTreeGridView();
-            this.Column2 = new Krypton.Toolkit.Suite.Extended.TreeGridView.Components.KryptonTreeGridColumn();
+            this.Column2 = new Krypton.Toolkit.Suite.Extended.TreeGridView.KryptonTreeGridColumn();
             this.Column3 = new Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
             this.Column4 = new Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
             this.imageStrip = new System.Windows.Forms.ImageList(this.components);
@@ -250,7 +250,7 @@ namespace TreeGridViewApp
         private Krypton.Toolkit.KryptonPalette kryptonPalette;
         private Krypton.Toolkit.KryptonManager kryptonManager1;
         private System.Windows.Forms.ImageList imageStrip;
-        private Krypton.Toolkit.Suite.Extended.TreeGridView.Components.KryptonTreeGridColumn Column2;
+        private Krypton.Toolkit.Suite.Extended.TreeGridView.KryptonTreeGridColumn Column2;
         private Krypton.Toolkit.KryptonDataGridViewTextBoxColumn Column3;
         private Krypton.Toolkit.KryptonDataGridViewTextBoxColumn Column4;
         private Krypton.Toolkit.KryptonButton kryptonButton1;

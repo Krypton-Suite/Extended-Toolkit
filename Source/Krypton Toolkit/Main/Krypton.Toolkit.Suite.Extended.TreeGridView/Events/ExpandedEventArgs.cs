@@ -1,4 +1,4 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.TreeGridView.Events
+﻿namespace Krypton.Toolkit.Suite.Extended.TreeGridView
 {
     public class ExpandedEventArgs : TreeGridNodeEventBase
     {
