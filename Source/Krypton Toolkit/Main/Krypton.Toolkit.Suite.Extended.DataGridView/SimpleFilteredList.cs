@@ -264,7 +264,10 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         /// <inheritdoc />
         public void RemoveFilter()
         {
-            if (Filter != null) Filter = null;
+            if (Filter != null)
+            {
+                Filter = null;
+            }
         }
 
         /// <summary>
