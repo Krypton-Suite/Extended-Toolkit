@@ -18,6 +18,7 @@
         <RootNamespace>Krypton.Toolkit.Suite.Extended.DataGridView</RootNamespace>
         <AssemblyName>Krypton.Toolkit.Suite.Extended.DataGridView</AssemblyName>
         <UseWindowsForms>true</UseWindowsForms>
+		<NeutralLanguage>en</NeutralLanguage>
     </PropertyGroup>
 
     <!--Package Data-->
@@ -36,12 +37,12 @@
     <Choose>
         <When Condition="'$(TFMs)' == 'all'">
             <ItemGroup>
-                <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2106.1" />
+                <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2106.2" />
             </ItemGroup>
         </When>
         <Otherwise>
             <ItemGroup>
-                <PackageReference Include="Krypton.Toolkit.Canary.Lite" Version="6.0.2106.1" />
+                <PackageReference Include="Krypton.Toolkit.Canary.Lite" Version="6.0.2106.2" />
             </ItemGroup>
         </Otherwise>
     </Choose>
