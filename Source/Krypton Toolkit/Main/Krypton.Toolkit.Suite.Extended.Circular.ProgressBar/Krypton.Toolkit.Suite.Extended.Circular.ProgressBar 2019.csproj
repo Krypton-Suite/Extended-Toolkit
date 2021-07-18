@@ -41,7 +41,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="WinFormAnimation" Version="1.6.0.4" />
+    <PackageReference Include="Unofficial.WinFormAnimation-NET" Version="2.0.1" />
   </ItemGroup>
 
 </Project>

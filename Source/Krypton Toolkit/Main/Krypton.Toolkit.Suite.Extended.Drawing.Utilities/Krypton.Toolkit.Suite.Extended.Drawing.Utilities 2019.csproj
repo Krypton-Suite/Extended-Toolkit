@@ -25,13 +25,13 @@
     <When Condition="'$(TFMs)' == 'all'">
       <ItemGroup>
         <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2106.2" />
-        <PackageReference Include="Krypton.Navigator.Canary" Version="6.0.2106.1" />
+        <PackageReference Include="Krypton.Navigator.Canary" Version="6.0.2106.2" />
       </ItemGroup>
     </When>
     <Otherwise>
       <ItemGroup>
         <PackageReference Include="Krypton.Toolkit.Canary.Lite" Version="6.0.2106.2" />
-        <PackageReference Include="Krypton.Navigator.Canary.Lite" Version="6.0.2106.1" />
+        <PackageReference Include="Krypton.Navigator.Canary.Lite" Version="6.0.2106.2" />
       </ItemGroup>
     </Otherwise>
   </Choose>
@@ -43,14 +43,14 @@
   </PropertyGroup>
   <ItemGroup>
     <!--<PackageReference Include="Cyotek.Windows.Forms.ColorPicker" Version="1.7.2" />-->
-    <PackageReference Include="Unofficial.Cyotek.Windows.Forms.ColorPicker.NET" Version="1.8.1" />
+    <PackageReference Include="Unofficial.Cyotek.Windows.Forms.NET" Version="1.8.1" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Shared\Krypton.Toolkit.Suite.Extended.Core\Krypton.Toolkit.Suite.Extended.Core 2019.csproj" />
     <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Buttons\Krypton.Toolkit.Suite.Extended.Buttons 2019.csproj" />
+    <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Controls\Krypton.Toolkit.Suite.Extended.Controls 2019.csproj" />
     <ProjectReference Include="..\..\Shared\Krypton.Toolkit.Suite.Extended.Common\Krypton.Toolkit.Suite.Extended.Common 2019.csproj" />
     <ProjectReference Include="..\..\Shared\Krypton.Toolkit.Suite.Extended.Developer.Utilities\Krypton.Toolkit.Suite.Extended.Developer.Utilities 2019.csproj" />
-    <ProjectReference Include="..\..\Shared\Krypton.Toolkit.Suite.Extended.Controls\Krypton.Toolkit.Suite.Extended.Controls 2019.csproj" />
     <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Floating.Toolbars\Krypton.Toolkit.Suite.Extended.Floating.Toolbars 2019.csproj" />
     <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Messagebox\Krypton.Toolkit.Suite.Extended.Messagebox 2019.csproj" />
   </ItemGroup>

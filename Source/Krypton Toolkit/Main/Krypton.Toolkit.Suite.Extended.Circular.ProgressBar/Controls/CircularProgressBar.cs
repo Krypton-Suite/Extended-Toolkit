@@ -13,7 +13,7 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Text;
 using System.Windows.Forms;
 
-using WinFormAnimation;
+using WinFormAnimation_NET5;
 
 namespace Krypton.Toolkit.Suite.Extended.Circular.ProgressBar
 {
@@ -217,7 +217,7 @@ namespace Krypton.Toolkit.Suite.Extended.Circular.ProgressBar
 
             _animator = DesignMode ? null : new Animator();
 
-            AnimationFunction = KnownAnimationFunctions.Liner;
+            AnimationFunction = KnownAnimationFunctions.Linear;
 
             AnimationSpeed = 500;
 
