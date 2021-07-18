@@ -121,6 +121,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
             }
         }
 
+        /*
 #if !NET40_OR_GREATER
         /// <summary>
         /// Captures a stacktrace of the exception.
@@ -131,7 +132,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
         {
             try
             {
-                ExceptionDispatchInfo exceptionInfo = null;
+                System.Runtime.ExceptionServices.ExceptionDispatchInfo exceptionInfo = null;
 
                 if (!File.Exists(fileName))
                 {
@@ -154,6 +155,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
             }
         }
 #endif
+        */
 
         /// <summary>
         /// Captures a stacktrace of the exception.
