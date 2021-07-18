@@ -73,7 +73,9 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
             cloned.ImageSize = ImageSize;
             // Move the button specs over to the new clone
             foreach (ButtonSpec bs in ButtonSpecs)
+            {
                 cloned.ButtonSpecs.Add(bs.Clone());
+            }
 
             return cloned;
         }
@@ -128,7 +130,9 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
             get
             {
                 if (TextBoxCellTemplate == null)
+                {
                     throw new InvalidOperationException("KryptonDataGridViewTextAndImageColumn cell template required");
+                }
 
                 return TextBoxCellTemplate.MaxInputLength;
             }
@@ -146,7 +150,9 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
                         {
                             DataGridViewTextBoxCell cell = rows.SharedRow(i).Cells[Index] as DataGridViewTextBoxCell;
                             if (cell != null)
+                            {
                                 cell.MaxInputLength = value;
+                            }
                         }
                     }
                 }
@@ -175,7 +181,9 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
             set
             {
                 if ((value != null) && !(value is KryptonDataGridViewTextAndImageCell))
+                {
                     throw new InvalidCastException("Can only assign a object of type KryptonDataGridViewTextAndImageCell");
+                }
 
                 base.CellTemplate = value;
             }
@@ -197,10 +205,9 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         #endregion
 
         #region Internal
-        internal void PerfomButtonSpecClick(DataGridViewButtonSpecClickEventArgs args)
+        internal void PerformButtonSpecClick(DataGridViewButtonSpecClickEventArgs args)
         {
-            if (ButtonSpecClick != null)
-                ButtonSpecClick(this, args);
+            ButtonSpecClick?.Invoke(this, args);
         }
 
         internal Size ImageSize { get; private set; }
@@ -255,7 +262,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         /// <returns>true if equal, false otherwise.</returns>
         public override bool Equals(object obj)
         {
-            return Text.Equals(obj.ToString());
+            return Text.Equals(obj?.ToString());
         }
 
         /// <summary>
@@ -307,7 +314,10 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         protected override bool SetValue(int rowIndex, object value)
         {
             if (value != null)
+            {
                 Image = ((TextAndImage)value).Image;
+            }
+
             return base.SetValue(rowIndex, value);
         }
 
@@ -368,7 +378,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         protected override void Paint(Graphics graphics, Rectangle clipBounds, Rectangle cellBounds, int rowIndex, DataGridViewElementStates cellState, object value, object formattedValue, string errorText, DataGridViewCellStyle cellStyle, DataGridViewAdvancedBorderStyle advancedBorderStyle, DataGridViewPaintParts paintParts)
         {
             //TODO : improve we assume it is a 16x16 image 
-            if (Value != null && ((TextAndImage)Value).Image != null)
+            if (((TextAndImage)Value)?.Image != null)
             {
                 //Padding inheritedPadding = this.InheritedStyle.Padding;
                 //this.Style.Padding = new Padding(18, inheritedPadding.Top, inheritedPadding.Right, inheritedPadding.Bottom);

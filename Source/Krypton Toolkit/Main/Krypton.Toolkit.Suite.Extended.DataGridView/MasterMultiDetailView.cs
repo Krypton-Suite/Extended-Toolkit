@@ -56,7 +56,10 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         public void AddMultiDetail(IBindingListView source, string targetKeyColumn, string tabPageCaption, DataGridViewColumn[] columns = null)
         {
             if (!source.SupportsFiltering)
+            {
                 throw new NotImplementedException(@"'source' must implement Filtering. Use SimpleFilteredList class");
+            }
+
             TabPage tPage = new() { Text = tabPageCaption };
             childViews.TabPages.Add(tPage);
             KryptonDataGridView newGrid = new()

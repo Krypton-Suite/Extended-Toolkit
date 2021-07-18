@@ -57,7 +57,9 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         public void AddSingleDetail(IBindingListView source, string targetKeyColumn, DataGridViewColumn[] columns = null)
         {
             if (!source.SupportsFiltering)
+            {
                 throw new NotImplementedException(@"'source' must implement Filtering. Use SimpleFilteredList class");
+            }
 
             SetStyles(childView);
             if (columns != null)
