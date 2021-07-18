@@ -1,9 +1,11 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Common
+﻿using Krypton.Toolkit.Suite.Extended.Effects;
+
+namespace Krypton.Toolkit.Suite.Extended.Common
 {
     public class CommonExtendedKryptonForm : KryptonForm
     {
         #region Variables
-        private double _fadeIn, _fadeOut;
+
         #endregion
 
         #region Properties
@@ -14,6 +16,8 @@
 
         [DefaultValue(50), Description("")]
         public int SleepInterval { get; set; }
+
+        //public static FadeSpeed FadeSpeed { get; set; }
         #endregion
 
         #region Constructor
@@ -32,14 +36,11 @@
         {
             if (UseFade)
             {
-                for (_fadeIn = 0.0; _fadeIn <= 1.1; _fadeIn += 0.1)
-                {
-                    Opacity = _fadeIn;
-
-                    Refresh();
-
-                    Thread.Sleep(SleepInterval);
-                }
+#if NET40_OR_GREATER
+                FadeController.FadeIn(this, FadeSpeed.Normal, FadeInComplete);
+#else
+                FadeController.FadeWindowInExtended(this, SleepInterval);
+#endif
             }
 
             BlurValues.EnableBlur = UseBlur;
@@ -51,18 +52,17 @@
         {
             if (UseFade)
             {
-                for (_fadeOut = 90; _fadeOut >= 10; _fadeOut += -10)
-                {
-                    Opacity = _fadeOut / 100;
-
-                    Refresh();
-
-                    Thread.Sleep(SleepInterval);
-                }
+#if NET40_OR_GREATER
+                FadeController.FadeOutAndClose(this, FadeSpeed.Normal);
+#else
+                FadeController.FadeWindowOutExtended(this, SleepInterval);
+#endif
             }
 
             base.OnFormClosing(e);
         }
         #endregion
+
+        private void FadeInComplete() { }
     }
 }

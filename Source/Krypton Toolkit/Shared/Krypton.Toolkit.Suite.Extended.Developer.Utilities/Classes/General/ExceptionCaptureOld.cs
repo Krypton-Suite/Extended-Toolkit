@@ -121,7 +121,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
             }
         }
 
-#if !NET40
+#if !NET40_OR_GREATER
         /// <summary>
         /// Captures a stacktrace of the exception.
         /// </summary>
