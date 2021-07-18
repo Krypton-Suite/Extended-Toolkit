@@ -69,7 +69,10 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         public void SetMasterSource(string tableName, string masterColumn, DataGridViewColumn[] columns = null)
         {
             if (DataSet == null)
+            {
                 throw new MissingFieldException(@"DataSet has not been initialised first");
+            }
+
             if (columns != null)
             {
                 AutoGenerateColumns = false;
@@ -215,7 +218,9 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         private void MasterDetailGridView_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (!RowCurrent.TryGetValue(e.RowIndex, out var refValues))
+            {
                 refValues = (Rows[e.RowIndex].Height, Rows[e.RowIndex].DividerHeight);
+            }
 
             var scale = (refValues.Height - 16) / 2;
             var rect = new Rectangle(16, scale, 16, 16);
@@ -233,7 +238,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         private protected bool ShouldDisplayChildDetails(int rowIndex)
         {
             return AllowUserToAddRows
-                       || !HasNoChildDetails(rowIndex);
+                   || !HasNoChildDetails(rowIndex);
         }
 
         private protected abstract bool HasNoChildDetails(int rowIndex);
@@ -271,7 +276,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
             newGrid.ForeColor = ForeColor;
             newGrid.Font = Font;
             newGrid.GridColor = GridColor;
-            newGrid.BorderStyle = BorderStyle;
+            BorderStyle = BorderStyle;
             newGrid.CellBorderStyle = CellBorderStyle;
             newGrid.ColumnHeadersBorderStyle = ColumnHeadersBorderStyle;
             newGrid.ColumnHeadersDefaultCellStyle = ColumnHeadersDefaultCellStyle;
@@ -353,8 +358,11 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
             get => rowExpandedHeight;
             set
             {
-                if (value < 100) 
+                if (value < 100)
+                {
                     throw new ArgumentOutOfRangeException(nameof(DetailRowExpandedMaxHeight));
+                }
+
                 rowExpandedHeight = value;
             }
         }
@@ -386,7 +394,10 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
             set
             {
                 if (value < 32) // Leave room for the Default Selected icon and then drawing the Expand / collapse icon
+                {
                     throw new ArgumentOutOfRangeException(nameof(RowHeadersWidth));
+                }
+
                 base.RowHeadersWidth = value;
             }
         }

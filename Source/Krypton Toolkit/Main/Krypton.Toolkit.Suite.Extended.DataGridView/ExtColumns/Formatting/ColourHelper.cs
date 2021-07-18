@@ -102,16 +102,34 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         public static Color FromHSV(float h, float s, float v)
         {
             // Hue checking
-            if (h < 0f) h = 0f;
-            else if (h > 360f) h = 360f;
+            if (h < 0f)
+            {
+                h = 0f;
+            }
+            else if (h > 360f)
+            {
+                h = 360f;
+            }
 
             // Saturation checking
-            if (s < 0f) s = 0f;
-            else if (s > 1f) s = 1f;
+            if (s < 0f)
+            {
+                s = 0f;
+            }
+            else if (s > 1f)
+            {
+                s = 1f;
+            }
 
             // Value/Brightness checking
-            if (v < 0f) v = 0f;
-            else if (v > 1f) v = 1f;
+            if (v < 0f)
+            {
+                v = 0f;
+            }
+            else if (v > 1f)
+            {
+                v = 1f;
+            }
 
             // === Conversion ===
 
@@ -126,7 +144,11 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
                 float hVal = h / 360f;  // 0 <= hVah < 1
 
                 float varH = hVal * 6f;
-                if (varH == 6f) varH = 0f;
+                if (varH == 6f)
+                {
+                    varH = 0f;
+                }
+
                 int i = (int)varH;             //Or ... vari = floor( varh )
                 float var1 = v * (1f - s);
                 float var2 = v * (1f - s * (varH - (float)i));
@@ -189,12 +211,28 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
                 float deltaG = (((varMax - varG) / 6f) + (deltaMax / 2f)) / deltaMax;
                 float deltaB = (((varMax - varB) / 6f) + (deltaMax / 2f)) / deltaMax;
 
-                if (varR == varMax) h = deltaB - deltaG;
-                else if (varG == varMax) h = (1f / 3f) + deltaR - deltaB;
-                else if (varB == varMax) h = (2f / 3f) + deltaG - deltaR;
+                if (varR == varMax)
+                {
+                    h = deltaB - deltaG;
+                }
+                else if (varG == varMax)
+                {
+                    h = (1f / 3f) + deltaR - deltaB;
+                }
+                else if (varB == varMax)
+                {
+                    h = (2f / 3f) + deltaG - deltaR;
+                }
 
-                if (h < 0f) h += 1;
-                if (h > 1f) h -= 1;
+                if (h < 0f)
+                {
+                    h += 1;
+                }
+
+                if (h > 1f)
+                {
+                    h -= 1;
+                }
             }
 
             return new HSVColour(h * 360f, s, v);
@@ -211,16 +249,34 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         public static Color FromHSL(float h, float s, float l)
         {
             // Hue checking
-            if (h < 0f) h = 0f;
-            else if (h > 360f) h = 360f;
+            if (h < 0f)
+            {
+                h = 0f;
+            }
+            else if (h > 360f)
+            {
+                h = 360f;
+            }
 
             // Saturation checking
-            if (s < 0f) s = 0f;
-            else if (s > 1f) s = 1f;
+            if (s < 0f)
+            {
+                s = 0f;
+            }
+            else if (s > 1f)
+            {
+                s = 1f;
+            }
 
             // Lightness checking
-            if (l < 0f) l = 0f;
-            else if (l > 1f) l = 1f;
+            if (l < 0f)
+            {
+                l = 0f;
+            }
+            else if (l > 1f)
+            {
+                l = 1f;
+            }
 
             // === Conversion ===
             if (s == 0)
@@ -246,17 +302,32 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         {
             float rgbColor;
 
-            if (hue < 0f) hue += 1f;
-            if (hue > 1f) hue -= 1f;
+            if (hue < 0f)
+            {
+                hue += 1f;
+            }
+
+            if (hue > 1f)
+            {
+                hue -= 1f;
+            }
 
             if ((6f * hue) < 1f)
+            {
                 rgbColor = (var1 + (var2 - var1) * 6f * hue);
+            }
             else if ((2f * hue) < 1f)
+            {
                 rgbColor = var2;
+            }
             else if ((3f * hue) < 2f)
+            {
                 rgbColor = (var1 + (var2 - var1) * ((2f / 3f) - hue) * 6f);
+            }
             else
+            {
                 rgbColor = var1;
+            }
 
             return rgbColor;
         }
@@ -293,20 +364,42 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
             else
             {
                 // Saturation
-                if (l < 0.5f) s = deltaMax / (varMax + varMin);
-                else s = deltaMax / (2f - varMax - varMin);
+                if (l < 0.5f)
+                {
+                    s = deltaMax / (varMax + varMin);
+                }
+                else
+                {
+                    s = deltaMax / (2f - varMax - varMin);
+                }
 
                 // Hue
                 float deltaR = (((varMax - varR) / 6f) + (deltaMax / 2f)) / deltaMax;
                 float deltaG = (((varMax - varG) / 6f) + (deltaMax / 2f)) / deltaMax;
                 float deltaB = (((varMax - varB) / 6f) + (deltaMax / 2f)) / deltaMax;
 
-                if (varR == varMax) h = deltaB - deltaG;
-                else if (varG == varMax) h = (1f / 3f) + deltaR - deltaB;
-                else if (varB == varMax) h = (2f / 3f) + deltaG - deltaR;
+                if (varR == varMax)
+                {
+                    h = deltaB - deltaG;
+                }
+                else if (varG == varMax)
+                {
+                    h = (1f / 3f) + deltaR - deltaB;
+                }
+                else if (varB == varMax)
+                {
+                    h = (2f / 3f) + deltaG - deltaR;
+                }
 
-                if (h < 0f) h += 1f;
-                if (h > 1f) h -= 1f;
+                if (h < 0f)
+                {
+                    h += 1f;
+                }
+
+                if (h > 1f)
+                {
+                    h -= 1f;
+                }
             }
 
             return new HSLColour(h * 360f, s, l);

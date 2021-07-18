@@ -264,7 +264,10 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         /// <inheritdoc />
         public void RemoveFilter()
         {
-            if (Filter != null) Filter = null;
+            if (Filter != null)
+            {
+                Filter = null;
+            }
         }
 
         /// <summary>
@@ -353,7 +356,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
             UnfilteredList.Clear();
             UnfilteredList.AddRange(SourceItems);
 
-            List<T> results = new();
+            List<T> results = new List<T>();
 
             PropertyDescriptor propDesc = TypeDescriptor.GetProperties(typeof(T))[FilterPropertyName];
 

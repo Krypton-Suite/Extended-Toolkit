@@ -40,7 +40,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         /// </summary>
         public override string ToString()
         {
-            StringBuilder builder = new(0x40);
+            StringBuilder builder = new StringBuilder(0x40);
             builder.Append("KryptonDataGridViewPercentageColumn { Name=");
             builder.Append(Name);
             builder.Append(", Index=");
@@ -131,15 +131,17 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
 
             if ((double)value > 0 && barWidth > 0)
             {
-                Rectangle r = new(cellBounds.X + 3, cellBounds.Y + 3, barWidth, cellBounds.Height - 8);
+                Rectangle r = new Rectangle(cellBounds.X + 3, cellBounds.Y + 3, barWidth, cellBounds.Height - 8);
 
-                using (LinearGradientBrush linearBrush = new(r, KryptonManager.CurrentGlobalPalette.GetBackColor1(PaletteBackStyle.GridHeaderColumnList, PaletteState.Normal), KryptonManager.CurrentGlobalPalette.GetBackColor2(PaletteBackStyle.GridHeaderColumnList, PaletteState.Normal), LinearGradientMode.Vertical))
+                using (LinearGradientBrush linearBrush = new LinearGradientBrush(r, KryptonManager.CurrentGlobalPalette.GetBackColor1(PaletteBackStyle.GridHeaderColumnList, PaletteState.Normal), KryptonManager.CurrentGlobalPalette.GetBackColor2(PaletteBackStyle.GridHeaderColumnList, PaletteState.Normal), LinearGradientMode.Vertical))
                 {
                     graphics.FillRectangle(linearBrush, r);
                 }
 
-                using Pen pen = new(KryptonManager.CurrentGlobalPalette.GetBorderColor1(PaletteBorderStyle.GridHeaderColumnList, PaletteState.Normal));
-                graphics.DrawRectangle(pen, r);
+                using (Pen pen = new Pen(KryptonManager.CurrentGlobalPalette.GetBorderColor1(PaletteBorderStyle.GridHeaderColumnList, PaletteState.Normal)))
+                {
+                    graphics.DrawRectangle(pen, r);
+                }
 
                 //TODO : implement customization like conditional formatting
                 //using (LinearGradientBrush linearBrush = new LinearGradientBrush(r, Color.FromArgb(255, 140, 197, 66), Color.FromArgb(255, 247, 251, 242), LinearGradientMode.Horizontal))
@@ -177,7 +179,11 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         /// </summary>
         /// <param name="c">The character.</param>
         /// <returns>True if valid digit, false otherwise.</returns>
-        private static bool IsValidForNumberInput(char c) => char.IsDigit(c);
+        private bool IsValidForNumberInput(char c)
+        {
+            return Char.IsDigit(c);
+            // OrElse c = Chr(8) OrElse c = "."c OrElse c = "-"c OrElse c = "("c OrElse c = ")"c
+        }
 
         /// <summary>
         /// Overrides onKeypPress

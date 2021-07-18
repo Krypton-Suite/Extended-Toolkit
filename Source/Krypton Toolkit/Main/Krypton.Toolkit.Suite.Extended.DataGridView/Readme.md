@@ -7,6 +7,7 @@
 		* [Launch List View](#launch-list-view)
 	* [Single Detail View](#single-detail-view)
 	* [Multi Detail View](#multi-detail-view)
+* [Notes](#notes)
 * [ToDO](#todo)
 
 <!-- End Document Outline -->
@@ -46,6 +47,9 @@ This allows a Master Detail view to be seen with very little code from the clien
 
 ## Multi Detail View
 Places Child Detail views into tabs under each Master row.
+
+# Notes
+In order to keep the code working on TFM's before net48, the code base from https://github.com/igor-tkachev/Portable.System.ValueTuple - `Portable.System.ValueTuple.cs` has been taken and adapted to only support `Tuple'T2`
 
 # ToDO
 - Deal with no Details for a Master row

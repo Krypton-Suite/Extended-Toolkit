@@ -60,9 +60,13 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         protected override object GetFormattedValue(object value, int rowIndex, ref DataGridViewCellStyle cellStyle, TypeConverter valueTypeConverter, TypeConverter formattedValueTypeConverter, DataGridViewDataErrorContexts context)
         {
             if (value == null)
+            {
                 return null; //For example it is also the case for group row...
+            }
             else
+            {
                 return starImages[(int)value];
+            }
         }
 
         /// <summary>
@@ -94,9 +98,11 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
                 int starNumber = GetStarFromMouse(cellBounds, DataGridView.PointToClient(Control.MousePosition));
 
                 if (starNumber != -1)
+                {
                     cellImage = starHotImages[starNumber];
+                }
             }
-            //supress painting of selection 
+            // suppress painting of selection 
             base.Paint(graphics, clipBounds, cellBounds, rowIndex, elementState, value, cellImage, errorText, cellStyle, advancedBorderStyle, (paintParts & ~DataGridViewPaintParts.SelectionBackground));
         }
 
@@ -112,7 +118,9 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
                 int starNumber = GetStarFromMouse(DataGridView.GetCellDisplayRectangle(DataGridView.CurrentCellAddress.X, DataGridView.CurrentCellAddress.Y, false), DataGridView.PointToClient(Control.MousePosition));
 
                 if (starNumber != -1)
+                {
                     Value = starNumber;
+                }
             }
         }
 
@@ -141,27 +149,35 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
 
         #region Private Implementation
 
-        private static readonly Image[] starImages;
-        private static readonly Image[] starHotImages;
-        private const int Imagewidth = 58;
+        static Image[] starImages;
+        static Image[] starHotImages;
+        const int Imagewidth = 58;
 
-        private static int GetStarFromMouse(Rectangle cellBounds, Point mouseLocation)
+        private int GetStarFromMouse(Rectangle cellBounds, Point mouseLocation)
         {
             if (cellBounds.Contains(mouseLocation))
             {
                 int mouseXRelativeToCell = (mouseLocation.X - cellBounds.X);
                 int imageXArea = (cellBounds.Width / 2) - (Imagewidth / 2);
                 if (((mouseXRelativeToCell + 4) < imageXArea) || (mouseXRelativeToCell >= (imageXArea + Imagewidth)))
+                {
                     return -1;
+                }
                 else
                 {
                     int oo = (int)Math.Round((((float)(mouseXRelativeToCell - imageXArea + 2) / (float)Imagewidth) * 10f), MidpointRounding.AwayFromZero);
-                    if (oo > 10 || oo < 0) System.Diagnostics.Debugger.Break();
+                    if (oo > 10 || oo < 0)
+                    {
+                        System.Diagnostics.Debugger.Break();
+                    }
+
                     return oo;
                 }
             }
             else
+            {
                 return -1;
+            }
         }
 
         //setup star images 
@@ -175,11 +191,15 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
 
             // load normal stars 
             for (int i = 0; i <= 10; i++)
+            {
                 starImages[i] = (Image)resources.GetObject("star" + i.ToString());
+            }
 
             // load hot normal stars 
             for (int i = 0; i <= 10; i++)
+            {
                 starHotImages[i] = (Image)resources.GetObject("starhot" + i.ToString());
+            }
         }
         #endregion
 
