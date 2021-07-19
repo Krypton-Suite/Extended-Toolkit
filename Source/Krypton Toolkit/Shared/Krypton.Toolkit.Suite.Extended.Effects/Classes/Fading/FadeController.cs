@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Effects
 {
-#if NET40_OR_GREATER
+#if NET40_OR_GREATER || NET5_0_OR_GREATER
     /// <summary>Handles the fading effects. Original library: (https://gist.github.com/nathan-fiscaletti/3c0514862fe88b5664b10444e1098778)</summary>
     public class FadeController
     {
@@ -16,8 +15,8 @@ namespace Krypton.Toolkit.Suite.Extended.Effects
         private float fadeSpeed;                                                     // The speed at which to fade.
         private FadeCompleted fadeFinished;                                          // The delegate to call when a fade has completed.
         private bool shouldClose;                                                    // If set to true, the form will close after fading out.
-        private readonly TaskCompletionSource<DialogResult> showDialogResult         // The Async Task Completion Source for displaying as a dialog.
-            = new TaskCompletionSource<DialogResult>();
+        private readonly System.Threading.Tasks.TaskCompletionSource<DialogResult> showDialogResult         // The Async Task Completion Source for displaying as a dialog.
+            = new System.Threading.Tasks.TaskCompletionSource<DialogResult>();
         #endregion
 
         #region Delegate
@@ -94,7 +93,7 @@ namespace Krypton.Toolkit.Suite.Extended.Effects
         /// Fade the form in at the defined speed as a dialog
         /// based on parent form.
         /// </summary>
-        private async Task<DialogResult> ShowDialog(float fadeSpeed, FadeCompleted finished)
+        private async System.Threading.Tasks.Task<DialogResult> ShowDialog(float fadeSpeed, FadeCompleted finished)
         {
             parentForm.BeginInvoke(new Action(() => showDialogResult.SetResult(form.ShowDialog(parentForm))));
 
@@ -144,7 +143,7 @@ namespace Krypton.Toolkit.Suite.Extended.Effects
         /// <summary>
         /// Fades a dialog in using parent form and defined fade speed.
         /// </summary>
-        public static async Task<DialogResult> ShowDialog(KryptonForm form, KryptonForm parent, float fadeSpeed)
+        public static async System.Threading.Tasks.Task<DialogResult> ShowDialog(KryptonForm form, KryptonForm parent, float fadeSpeed)
         {
             FadeController fader = new FadeController(form, parent);
             return await fader.ShowDialog(fadeSpeed, null);
@@ -154,7 +153,7 @@ namespace Krypton.Toolkit.Suite.Extended.Effects
         /// Fades a dialog in using parent form and defined fade speed
         /// and call the finished delegate.)
         /// </summary>
-        public static async Task<DialogResult> ShowDialog(KryptonForm form, KryptonForm parent, float fadeSpeed, FadeCompleted finished)
+        public static async System.Threading.Tasks.Task<DialogResult> ShowDialog(KryptonForm form, KryptonForm parent, float fadeSpeed, FadeCompleted finished)
         {
             FadeController fader = new FadeController(form, parent);
             return await fader.ShowDialog(fadeSpeed, finished);
@@ -323,7 +322,7 @@ namespace Krypton.Toolkit.Suite.Extended.Effects
         }
         #endregion
     }
-#else
+#elif NET30_OR_GREATER
     public class FadeController
     {
     #region Variables

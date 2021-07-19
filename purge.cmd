@@ -67,16 +67,24 @@ rd /s /q "Source\Krypton Toolkit\Shared\Krypton.Toolkit.Suite.Extended.Utilities
 
 if exist build.log ( goto deletebuildfile )
 if exist debug.log ( goto deletedebugfile )
+if exist package-restore.log ( goto deletepackagerestorefile )
 
 :deletebuildfile
 echo Deleting the 'build.log' file
 del /f build.log
 echo Deleted the 'build.log' file
+goto restorepackages
 
 :deletedebugfile
 echo Deleting the 'debug.log' file
 del /f debug.log
 echo Deleted the 'debug.log' file
+goto restorepackages
+
+:deletepackagerestorefile
+echo Deleting the 'package-restore.log' file
+del /f package-restore.log
+echo Deleted the 'package-restore.log' file
 
 :no
 pause

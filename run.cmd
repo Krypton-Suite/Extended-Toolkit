@@ -67,6 +67,7 @@ rd /s /q "Source\Krypton Toolkit\Shared\Krypton.Toolkit.Suite.Extended.Utilities
 
 if exist build.log ( goto deletebuildfile )
 if exist debug.log ( goto deletedebugfile )
+if exist package-restore.log ( goto deletepackagerestorefile )
 
 :deletebuildfile
 echo Deleting the 'build.log' file
@@ -80,6 +81,11 @@ del /f debug.log
 echo Deleted the 'debug.log' file
 goto restorepackages
 
+:deletepackagerestorefile
+echo Deleting the 'package-restore.log' file
+del /f package-restore.log
+echo Deleted the 'package-restore.log' file
+
 :no
 pause
 
@@ -91,8 +97,10 @@ if /I "%INPUT%"=="n" goto nugetdoesnotexist
 
 :nugetexists
 echo Restoring packages...
-nuget.exe restore "Source\Krypton Toolkit\Krypton Toolkit Suite Extended 2019.sln" -Force
+nuget.exe restore "Source\Krypton Toolkit\Krypton Toolkit Suite Extended 2019.sln" -Force -Verbosity detailed > package-restore.log
 echo All packages have now been restored!
+echo The details can be found in the 'package-restore.log' file
+pause
 
 :nugetdoesnotexist
 echo Please go to https://www.nuget.org/downloads, to download the newest 'nuget.exe'

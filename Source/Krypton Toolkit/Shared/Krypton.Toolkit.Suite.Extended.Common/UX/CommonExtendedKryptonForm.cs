@@ -42,7 +42,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         {
             if (UseFade)
             {
-#if NET40_OR_GREATER
+#if NET40_OR_GREATER || NET5_0_OR_GREATER
                 FadeController.FadeIn(this, _fadeSpeedChoice);
 #else
                 FadeController.FadeWindowInExtended(this, SleepInterval);
@@ -58,7 +58,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         {
             if (UseFade)
             {
-#if NET40_OR_GREATER
+#if NET40_OR_GREATER || NET5_0_OR_GREATER
                 FadeController.FadeOutAndClose(this, _fadeSpeedChoice);
 #else
                 FadeController.FadeWindowOutExtended(this, SleepInterval);
