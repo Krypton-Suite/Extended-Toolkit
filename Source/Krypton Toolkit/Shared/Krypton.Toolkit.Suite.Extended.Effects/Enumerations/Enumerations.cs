@@ -6,6 +6,9 @@
         OUT = 1
     }
 
+    /// <summary>
+    /// Chooses the fading speed of a <see cref="KryptonForm"/>
+    /// </summary>
     public enum FadeSpeedChoice
     {
         /// <summary>
@@ -28,8 +31,17 @@
         /// Use a fast fading speed
         /// </summary>
         Fast = 4,
+        /// <summary>
+        /// Use a slightly faster fading speed
+        /// </summary>
         Faster = 5,
+        /// <summary>
+        /// Use the fastest fading speed possible
+        /// </summary>
         Fastest = 6,
+        /// <summary>
+        /// Define your own fading speed
+        /// </summary>
         Custom = 7
     }
 }
