@@ -50,8 +50,8 @@
 
   <!--Binary/Documentation Output-->
   <PropertyGroup>
-    <DocumentationFile>..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.PropertyGrid\Krypton.Toolkit.Suite.Extended.PropertyGrid.xml</DocumentationFile>
-    <OutputPath>..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.PropertyGrid\</OutputPath>
+    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.PropertyGrid\Krypton.Toolkit.Suite.Extended.PropertyGrid.xml</DocumentationFile>
+    <OutputPath>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.PropertyGrid\</OutputPath>
   </PropertyGroup>
 
 </Project>

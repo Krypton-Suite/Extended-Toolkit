@@ -49,7 +49,14 @@
   </Choose>
   <ItemGroup>
     <ProjectReference Include="..\..\Shared\Krypton.Toolkit.Suite.Extended.Tools\Krypton.Toolkit.Suite.Extended.Tools 2019.csproj" />
-  </ItemGroup>
+  </ItemGroup>  
+
+    <!--Binary/Documentation Output-->
+    <PropertyGroup>
+      <DocumentationFile>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.CheckSum.Tools\Krypton.Toolkit.Suite.Extended.CheckSum.Tools.xml</DocumentationFile>
+      <OutputPath>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.CheckSum.Tools\</OutputPath>
+    </PropertyGroup>
+    
   <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>

@@ -48,6 +48,13 @@
       </ItemGroup>
     </Otherwise>
   </Choose>
+
+  <!--Binary/Documentation Output-->
+  <PropertyGroup>
+    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.File.Copier\Krypton.Toolkit.Suite.Extended.File.Copier.xml</DocumentationFile>
+    <OutputPath>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.File.Copier\</OutputPath>
+  </PropertyGroup>
+  
   <ItemGroup>
     <PackageReference Include="WindowsAPICodePackShell" Version="1.1.2" />
   </ItemGroup>
