@@ -1,6 +1,7 @@
 ﻿using System;
 
 using Krypton.Toolkit;
+using Krypton.Toolkit.Suite.Extended.Effects;
 
 namespace Effects
 {
@@ -20,7 +21,7 @@ namespace Effects
             this.kbtnClose.Name = "kbtnClose";
             this.kbtnClose.Size = new System.Drawing.Size(130, 25);
             this.kbtnClose.TabIndex = 0;
-            this.kbtnClose.Values.Text = "Slow Fade In";
+            this.kbtnClose.Values.Text = "Show Fade Out";
             this.kbtnClose.Click += new System.EventHandler(this.kbtnClose_Click);
             // 
             // TestWindow
@@ -48,7 +49,7 @@ namespace Effects
 
         private void kbtnClose_Click(object sender, EventArgs e)
         {
-            // FadeController.FadeOutAndClose(this, FadeSpeed.Slow);
+            FadeController.FadeOutAndClose(this, FadeSpeed.Slow);
         }
 
         public void FadeInComplete()

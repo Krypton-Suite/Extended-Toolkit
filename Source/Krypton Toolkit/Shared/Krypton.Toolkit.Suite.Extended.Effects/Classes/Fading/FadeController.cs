@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Effects
 {
-#if NET40_OR_GREATER || NET5_0_OR_GREATER
+#if NET40_OR_GREATER || NETCOREAPP3_0_OR_GREATER || NET5_0_OR_GREATER || NET6_0_OR_GREATER
     /// <summary>Handles the fading effects. Original library: (https://gist.github.com/nathan-fiscaletti/3c0514862fe88b5664b10444e1098778)</summary>
     public class FadeController
     {
