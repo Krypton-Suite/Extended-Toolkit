@@ -52,5 +52,8 @@
         <DocumentationFile>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.DataGridView\Krypton.Toolkit.Suite.Extended.DataGridView.xml</DocumentationFile>
         <OutputPath>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.DataGridView\</OutputPath>
     </PropertyGroup>
+    <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+      <Exec Command="nuget restore -Force" />
+    </Target>
 
 </Project>

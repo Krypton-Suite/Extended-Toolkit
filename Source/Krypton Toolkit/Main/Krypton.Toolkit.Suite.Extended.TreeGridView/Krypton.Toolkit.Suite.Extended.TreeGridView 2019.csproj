@@ -18,7 +18,6 @@
         <RootNamespace>Krypton.Toolkit.Suite.Extended.TreeGridView</RootNamespace>
         <AssemblyName>Krypton.Toolkit.Suite.Extended.TreeGridView</AssemblyName>
         <UseWindowsForms>true</UseWindowsForms>
-        <NeutralLanguage>en</NeutralLanguage>
     </PropertyGroup>
 
     <!--Package Data-->

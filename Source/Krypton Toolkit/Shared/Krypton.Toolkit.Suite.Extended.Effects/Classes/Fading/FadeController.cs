@@ -121,6 +121,47 @@ namespace Krypton.Toolkit.Suite.Extended.Effects
             BeginFade();
         }
 
+        private void FadeIn(FadeSpeedChoice fadeSpeedChoice, FadeCompleted finished, float fadeSpeed = 0)
+        {
+            form.Opacity = 0;
+
+            form.Show();
+
+            fadeFinished = finished;
+
+            switch (fadeSpeedChoice)
+            {
+                case FadeSpeedChoice.Slowest:
+                    this.fadeSpeed = FadeSpeed.Slowest;
+                    break;
+                case FadeSpeedChoice.Slower:
+                    this.fadeSpeed = FadeSpeed.Slower;
+                    break;
+                case FadeSpeedChoice.Slow:
+                    this.fadeSpeed = FadeSpeed.Slow;
+                    break;
+                case FadeSpeedChoice.Normal:
+                    this.fadeSpeed = FadeSpeed.Normal;
+                    break;
+                case FadeSpeedChoice.Fast:
+                    this.fadeSpeed = FadeSpeed.Fast;
+                    break;
+                case FadeSpeedChoice.Faster:
+                    this.fadeSpeed = FadeSpeed.Faster;
+                    break;
+                case FadeSpeedChoice.Fastest:
+                    this.fadeSpeed = FadeSpeed.Fastest;
+                    break;
+                case FadeSpeedChoice.Custom:
+                    this.fadeSpeed = fadeSpeed;
+                    break;
+            }
+
+            fadeDirection = FadeDirection.IN;
+
+            BeginFade();
+        }
+
         /// <summary>
         /// Fade the form out at the defined speed.
         /// </summary>
@@ -135,6 +176,52 @@ namespace Krypton.Toolkit.Suite.Extended.Effects
             fadeFinished = finished;
             form.Opacity = 100;
             this.fadeSpeed = fadeSpeed;
+            fadeDirection = FadeDirection.OUT;
+
+            BeginFade();
+        }
+
+        private void FadeOut(FadeSpeedChoice fadeSpeedChoice, FadeCompleted finished, float fadeSpeed = 0)
+        {
+            if (form.Opacity < 0.1)
+            {
+                finished?.Invoke();
+
+                return;
+            }
+
+            fadeFinished = finished;
+
+            form.Opacity = 100;
+
+            switch (fadeSpeedChoice)
+            {
+                case FadeSpeedChoice.Slowest:
+                    this.fadeSpeed = FadeSpeed.Slowest;
+                    break;
+                case FadeSpeedChoice.Slower:
+                    this.fadeSpeed = FadeSpeed.Slower;
+                    break;
+                case FadeSpeedChoice.Slow:
+                    this.fadeSpeed = FadeSpeed.Slow;
+                    break;
+                case FadeSpeedChoice.Normal:
+                    this.fadeSpeed = FadeSpeed.Normal;
+                    break;
+                case FadeSpeedChoice.Fast:
+                    this.fadeSpeed = FadeSpeed.Fast;
+                    break;
+                case FadeSpeedChoice.Faster:
+                    this.fadeSpeed = FadeSpeed.Faster;
+                    break;
+                case FadeSpeedChoice.Fastest:
+                    this.fadeSpeed = FadeSpeed.Fastest;
+                    break;
+                case FadeSpeedChoice.Custom:
+                    this.fadeSpeed = fadeSpeed;
+                    break;
+            }
+
             fadeDirection = FadeDirection.OUT;
 
             BeginFade();
@@ -172,33 +259,7 @@ namespace Krypton.Toolkit.Suite.Extended.Effects
         {
             FadeController fader = new FadeController(form);
 
-            switch (fadeSpeedChoice)
-            {
-                case FadeSpeedChoice.Slowest:
-                    fader.FadeIn(FadeSpeed.Slowest, finished);
-                    break;
-                case FadeSpeedChoice.Slower:
-                    fader.FadeIn(FadeSpeed.Slower, finished);
-                    break;
-                case FadeSpeedChoice.Slow:
-                    fader.FadeIn(FadeSpeed.Slow, finished);
-                    break;
-                case FadeSpeedChoice.Normal:
-                    fader.FadeIn(FadeSpeed.Normal, finished);
-                    break;
-                case FadeSpeedChoice.Fast:
-                    fader.FadeIn(FadeSpeed.Fast, finished);
-                    break;
-                case FadeSpeedChoice.Faster:
-                    fader.FadeIn(FadeSpeed.Faster, finished);
-                    break;
-                case FadeSpeedChoice.Fastest:
-                    fader.FadeIn(FadeSpeed.Fastest, finished);
-                    break;
-                case FadeSpeedChoice.Custom:
-                    fader.FadeIn(fadeSpeed, finished);
-                    break;
-            }
+            fader.FadeIn(fadeSpeedChoice, finished, fadeSpeed);
         }
 
         /// <summary>
@@ -214,33 +275,7 @@ namespace Krypton.Toolkit.Suite.Extended.Effects
         {
             FadeController fader = new FadeController(form);
 
-            switch (fadeSpeedChoice)
-            {
-                case FadeSpeedChoice.Slowest:
-                    fader.FadeOut(FadeSpeed.Slowest, finished);
-                    break;
-                case FadeSpeedChoice.Slower:
-                    fader.FadeOut(FadeSpeed.Slower, finished);
-                    break;
-                case FadeSpeedChoice.Slow:
-                    fader.FadeOut(FadeSpeed.Slow, finished);
-                    break;
-                case FadeSpeedChoice.Normal:
-                    fader.FadeOut(FadeSpeed.Normal, finished);
-                    break;
-                case FadeSpeedChoice.Fast:
-                    fader.FadeOut(FadeSpeed.Fast, finished);
-                    break;
-                case FadeSpeedChoice.Faster:
-                    fader.FadeOut(FadeSpeed.Faster, finished);
-                    break;
-                case FadeSpeedChoice.Fastest:
-                    fader.FadeOut(FadeSpeed.Fastest, finished);
-                    break;
-                case FadeSpeedChoice.Custom:
-                    fader.FadeOut(fadeSpeed, finished);
-                    break;
-            }
+            fader.FadeOut(fadeSpeedChoice, finished, fadeSpeed);
         }
 
         /// <summary>
@@ -292,33 +327,7 @@ namespace Krypton.Toolkit.Suite.Extended.Effects
         {
             FadeController fader = new FadeController(form) { shouldClose = true };
 
-            switch (fadeSpeedChoice)
-            {
-                case FadeSpeedChoice.Slowest:
-                    fader.FadeOut(FadeSpeed.Slowest, finished);
-                    break;
-                case FadeSpeedChoice.Slower:
-                    fader.FadeOut(FadeSpeed.Slower, finished);
-                    break;
-                case FadeSpeedChoice.Slow:
-                    fader.FadeOut(FadeSpeed.Slow, finished);
-                    break;
-                case FadeSpeedChoice.Normal:
-                    fader.FadeOut(FadeSpeed.Normal, finished);
-                    break;
-                case FadeSpeedChoice.Fast:
-                    fader.FadeOut(FadeSpeed.Fast, finished);
-                    break;
-                case FadeSpeedChoice.Faster:
-                    fader.FadeOut(FadeSpeed.Faster, finished);
-                    break;
-                case FadeSpeedChoice.Fastest:
-                    fader.FadeOut(FadeSpeed.Fastest, finished);
-                    break;
-                case FadeSpeedChoice.Custom:
-                    fader.FadeOut(fadeSpeed, finished);
-                    break;
-            }
+            fader.FadeOut(fadeSpeedChoice, finished, fadeSpeed);
         }
         #endregion
     }
