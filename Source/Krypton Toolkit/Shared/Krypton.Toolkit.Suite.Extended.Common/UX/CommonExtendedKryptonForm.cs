@@ -5,7 +5,9 @@ namespace Krypton.Toolkit.Suite.Extended.Common
     public class CommonExtendedKryptonForm : KryptonForm
     {
         #region Variables
+        private float _fadeSpeed;
 
+        private FadeSpeedChoice _fadeSpeedChoice;
         #endregion
 
         #region Properties
@@ -17,7 +19,11 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         [DefaultValue(50), Description("")]
         public int SleepInterval { get; set; }
 
-        //public static FadeSpeed FadeSpeed { get; set; }
+        [DefaultValue(0), Description("")]
+        public float FadeSpeed { get => _fadeSpeed; set => _fadeSpeed = value; }
+
+        [DefaultValue(typeof(FadeSpeedChoice), "FadeSpeedChoice.Normal"), Description("")]
+        public FadeSpeedChoice FadeSpeedChoice { get => _fadeSpeedChoice; set => _fadeSpeedChoice = value; }
         #endregion
 
         #region Constructor
@@ -37,7 +43,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
             if (UseFade)
             {
 #if NET40_OR_GREATER
-                FadeController.FadeIn(this, FadeSpeed.Normal, FadeInComplete);
+                FadeController.FadeIn(this, _fadeSpeedChoice);
 #else
                 FadeController.FadeWindowInExtended(this, SleepInterval);
 #endif
@@ -53,7 +59,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
             if (UseFade)
             {
 #if NET40_OR_GREATER
-                FadeController.FadeOutAndClose(this, FadeSpeed.Normal);
+                FadeController.FadeOutAndClose(this, _fadeSpeedChoice);
 #else
                 FadeController.FadeWindowOutExtended(this, SleepInterval);
 #endif

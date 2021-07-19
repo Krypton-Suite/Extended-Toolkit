@@ -91,9 +91,8 @@ if /I "%INPUT%"=="n" goto nugetdoesnotexist
 
 :nugetexists
 echo Restoring packages...
-nuget.exe restore "Source\Krypton Toolkit\Krypton Toolkit Suite Extended 2019.sln"
+nuget.exe restore "Source\Krypton Toolkit\Krypton Toolkit Suite Extended 2019.sln" -Force
 echo All packages have now been restored!
-pause
 
 :nugetdoesnotexist
 echo Please go to https://www.nuget.org/downloads, to download the newest 'nuget.exe'
