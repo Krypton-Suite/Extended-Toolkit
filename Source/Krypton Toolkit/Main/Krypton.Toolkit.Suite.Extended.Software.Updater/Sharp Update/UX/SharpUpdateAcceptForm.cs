@@ -17,14 +17,14 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SharpUpdateAcceptForm));
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            this.kbtnYes = new Krypton.Toolkit.KryptonButton();
+            this.kbtnNo = new Krypton.Toolkit.KryptonButton();
+            this.kbtnDetails = new Krypton.Toolkit.KryptonButton();
             this.kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
-            this.kbtnDetails = new Krypton.Toolkit.KryptonButton();
-            this.kbtnNo = new Krypton.Toolkit.KryptonButton();
-            this.kbtnYes = new Krypton.Toolkit.KryptonButton();
-            this.kwlblUpdateAvail = new Krypton.Toolkit.KryptonWrapLabel();
-            this.kwlblNewVersion = new Krypton.Toolkit.KryptonWrapLabel();
             this.pictureBox = new System.Windows.Forms.PictureBox();
+            this.kwlblNewVersion = new Krypton.Toolkit.KryptonWrapLabel();
+            this.kwlblUpdateAvail = new Krypton.Toolkit.KryptonWrapLabel();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
@@ -44,6 +44,38 @@
             this.kryptonPanel1.PanelBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelAlternate;
             this.kryptonPanel1.Size = new System.Drawing.Size(399, 50);
             this.kryptonPanel1.TabIndex = 0;
+            // 
+            // kbtnYes
+            // 
+            this.kbtnYes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.kbtnYes.DialogResult = System.Windows.Forms.DialogResult.Yes;
+            this.kbtnYes.Location = new System.Drawing.Point(105, 13);
+            this.kbtnYes.Name = "kbtnYes";
+            this.kbtnYes.Size = new System.Drawing.Size(90, 25);
+            this.kbtnYes.TabIndex = 2;
+            this.kbtnYes.Values.Text = "&Yes";
+            this.kbtnYes.Click += new System.EventHandler(this.kbtnYes_Click);
+            // 
+            // kbtnNo
+            // 
+            this.kbtnNo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.kbtnNo.DialogResult = System.Windows.Forms.DialogResult.No;
+            this.kbtnNo.Location = new System.Drawing.Point(201, 13);
+            this.kbtnNo.Name = "kbtnNo";
+            this.kbtnNo.Size = new System.Drawing.Size(90, 25);
+            this.kbtnNo.TabIndex = 1;
+            this.kbtnNo.Values.Text = "&No";
+            this.kbtnNo.Click += new System.EventHandler(this.kbtnNo_Click);
+            // 
+            // kbtnDetails
+            // 
+            this.kbtnDetails.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.kbtnDetails.Location = new System.Drawing.Point(297, 13);
+            this.kbtnDetails.Name = "kbtnDetails";
+            this.kbtnDetails.Size = new System.Drawing.Size(90, 25);
+            this.kbtnDetails.TabIndex = 0;
+            this.kbtnDetails.Values.Text = "Detai&ls";
+            this.kbtnDetails.Click += new System.EventHandler(this.kbtnDetails_Click);
             // 
             // kryptonBorderEdge1
             // 
@@ -65,34 +97,27 @@
             this.kryptonPanel2.Size = new System.Drawing.Size(399, 153);
             this.kryptonPanel2.TabIndex = 1;
             // 
-            // kbtnDetails
+            // pictureBox
             // 
-            this.kbtnDetails.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.kbtnDetails.Location = new System.Drawing.Point(297, 13);
-            this.kbtnDetails.Name = "kbtnDetails";
-            this.kbtnDetails.Size = new System.Drawing.Size(90, 25);
-            this.kbtnDetails.TabIndex = 0;
-            this.kbtnDetails.Values.Text = "Detai&ls";
+            this.pictureBox.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox.Image = global::Krypton.Toolkit.Suite.Extended.Software.Updater.Properties.Resources.throbber_80;
+            this.pictureBox.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox.InitialImage")));
+            this.pictureBox.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox.Name = "pictureBox";
+            this.pictureBox.Size = new System.Drawing.Size(80, 80);
+            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox.TabIndex = 2;
+            this.pictureBox.TabStop = false;
             // 
-            // kbtnNo
+            // kwlblNewVersion
             // 
-            this.kbtnNo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.kbtnNo.DialogResult = System.Windows.Forms.DialogResult.No;
-            this.kbtnNo.Location = new System.Drawing.Point(201, 13);
-            this.kbtnNo.Name = "kbtnNo";
-            this.kbtnNo.Size = new System.Drawing.Size(90, 25);
-            this.kbtnNo.TabIndex = 1;
-            this.kbtnNo.Values.Text = "&No";
-            // 
-            // kbtnYes
-            // 
-            this.kbtnYes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.kbtnYes.DialogResult = System.Windows.Forms.DialogResult.Yes;
-            this.kbtnYes.Location = new System.Drawing.Point(105, 13);
-            this.kbtnYes.Name = "kbtnYes";
-            this.kbtnYes.Size = new System.Drawing.Size(90, 25);
-            this.kbtnYes.TabIndex = 2;
-            this.kbtnYes.Values.Text = "&Yes";
+            this.kwlblNewVersion.AutoSize = false;
+            this.kwlblNewVersion.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.kwlblNewVersion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.kwlblNewVersion.Location = new System.Drawing.Point(106, 81);
+            this.kwlblNewVersion.Name = "kwlblNewVersion";
+            this.kwlblNewVersion.Size = new System.Drawing.Size(281, 58);
+            this.kwlblNewVersion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // kwlblUpdateAvail
             // 
@@ -105,27 +130,6 @@
             this.kwlblUpdateAvail.StateCommon.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kwlblUpdateAvail.Text = "An update is available!\r\nWould you like to update?";
             this.kwlblUpdateAvail.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // kwlblNewVersion
-            // 
-            this.kwlblNewVersion.AutoSize = false;
-            this.kwlblNewVersion.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.kwlblNewVersion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
-            this.kwlblNewVersion.Location = new System.Drawing.Point(106, 81);
-            this.kwlblNewVersion.Name = "kwlblNewVersion";
-            this.kwlblNewVersion.Size = new System.Drawing.Size(281, 58);
-            this.kwlblNewVersion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // pictureBox
-            // 
-            this.pictureBox.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox.InitialImage")));
-            this.pictureBox.Location = new System.Drawing.Point(12, 12);
-            this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(80, 80);
-            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox.TabIndex = 2;
-            this.pictureBox.TabStop = false;
             // 
             // SharpUpdateAcceptForm
             // 
@@ -185,6 +189,21 @@
             kwlblNewVersion.Text = updateXmlInfo.Tag != JobType.REMOVE ? string.Format(updateXmlInfo.Tag == JobType.UPDATE ? "Update: {0}\nNew Version: {1}" : "New: {0}\nVersion: {1}", Path.GetFileName(applicationInfo.ApplicationPath), updateInfo.Version.ToString()) :
                 $"Remove: {Path.GetFileName(applicationInfo.ApplicationPath)}";
         }
-        #endregion 
+        #endregion
+
+        private void kbtnYes_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void kbtnNo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void kbtnDetails_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -59,5 +59,15 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap throbber_80 {
+            get {
+                object obj = ResourceManager.GetObject("throbber_80", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
