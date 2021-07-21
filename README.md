@@ -17,8 +17,9 @@
 
 =======
 
-## 2021-08-0x - Build 2108 - August 2021 (Canary)
-* Broken toolkit up into smaller modules - see list for available moldules (Not all modules will be completed yet)
+## 2021-08-xx - Build 2108 - August 2021 (Canary)
+* New icon
+* Broken toolkit up into smaller modules - see list for available modules (Not all modules will be completed yet)
 * Improved documentation
 * New `Krypton.Toolkit.Suite.Extended.DataGridView` module
 * Projects now follow the **Standard-Toolkit** naming convention
