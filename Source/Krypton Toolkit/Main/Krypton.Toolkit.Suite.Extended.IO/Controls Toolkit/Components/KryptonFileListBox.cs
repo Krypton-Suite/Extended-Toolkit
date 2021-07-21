@@ -1,5 +1,6 @@
 ﻿namespace Krypton.Toolkit.Suite.Extended.IO
 {
+    /*
     /// <summary>
     /// Represents a ListBox control with file names as items.
     /// </summary>
@@ -311,4 +312,5 @@
 
         #endregion
     }
+    */
 }
