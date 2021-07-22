@@ -1,8 +1,4 @@
-﻿using System;
-using System.ComponentModel;
-using System.Windows.Forms;
-
-namespace Krypton.Toolkit.Suite.Extended.UI
+﻿namespace Krypton.Toolkit.Suite.Extended.Forms
 {
     public class KryptonFormExtended : KryptonForm
     {

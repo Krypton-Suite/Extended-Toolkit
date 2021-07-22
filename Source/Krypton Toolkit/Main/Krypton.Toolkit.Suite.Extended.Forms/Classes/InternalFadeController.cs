@@ -1,6 +1,4 @@
-﻿using System.Threading.Tasks;
-
-namespace Krypton.Toolkit.Suite.Extended.UI
+﻿namespace Krypton.Toolkit.Suite.Extended.Forms
 {
     internal class InternalFadeController
     {

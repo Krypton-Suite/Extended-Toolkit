@@ -17,15 +17,15 @@
   <PropertyGroup>
     <LangVersion>preview</LangVersion>
     <OutputType>library</OutputType>
-    <RootNamespace>Krypton.Toolkit.Suite.Extended.UI</RootNamespace>
-    <AssemblyName>Krypton.Toolkit.Suite.Extended.UI</AssemblyName>
+    <RootNamespace>Krypton.Toolkit.Suite.Extended.Forms</RootNamespace>
+    <AssemblyName>Krypton.Toolkit.Suite.Extended.Forms</AssemblyName>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
   <!--Package Data-->
   <PropertyGroup>
-    <PackageId>Krypton.Toolkit.Suite.Extended.UI</PackageId>
-    <Description>An extension to the Krypton standard toolkit. This package implements additional UI effects, to be used in conjunction with the standard toolkit.</Description>
+    <PackageId>Krypton.Toolkit.Suite.Extended.Forms</PackageId>
+    <Description>An extension to the Krypton standard toolkit. This package implements additional Krypton Forms effects, to be used in conjunction with the standard toolkit.</Description>
   </PropertyGroup>
 
   <!--Version Information-->
@@ -50,8 +50,8 @@
 
   <!--Binary/Documentation Output-->
   <PropertyGroup>
-    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.UI\Krypton.Toolkit.Suite.Extended.UI.xml</DocumentationFile>
-    <OutputPath>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.UI\</OutputPath>
+    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.Forms\Krypton.Toolkit.Suite.Extended.Forms.xml</DocumentationFile>
+    <OutputPath>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.Forms\</OutputPath>
   </PropertyGroup>
   
   <ItemGroup>
