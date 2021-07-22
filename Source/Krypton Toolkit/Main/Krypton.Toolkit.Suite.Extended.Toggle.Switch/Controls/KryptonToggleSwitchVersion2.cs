@@ -1,8 +1,5 @@
-using System;
-using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
 {
@@ -21,6 +18,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
 
         #region Variables
         private float _diameter, _artis;
+        // TODO: This will be fixed after updating to ST, build 2108
         private RoundedRectangleF _rect;
         private RectangleF _circle;
         private bool _toggled, _textEnabled, _useGradientOnKnob;
