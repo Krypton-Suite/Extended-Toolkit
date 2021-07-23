@@ -53,8 +53,9 @@
       <DocumentationFile>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.Compression\Krypton.Toolkit.Suite.Extended.Compression.xml</DocumentationFile>
       <OutputPath>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.Compression\</OutputPath>
     </PropertyGroup>
-    <ItemGroup>
+    
+    <!--<ItemGroup>
       <PackageReference Include="SharpCompress" Version="0.28.3" />
-    </ItemGroup>
+    </ItemGroup>-->
 
 </Project>
