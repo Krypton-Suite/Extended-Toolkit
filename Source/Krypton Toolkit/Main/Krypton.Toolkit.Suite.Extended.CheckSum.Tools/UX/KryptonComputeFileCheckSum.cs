@@ -1,4 +1,6 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
+﻿using Krypton.Toolkit.Suite.Extended.Developer.Utilities;
+
+namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
 {
     public class KryptonComputeFileCheckSum : KryptonForm
     {
@@ -382,7 +384,41 @@
         {
             if (bgMD5Hash.IsBusy || bgSHA1Hash.IsBusy || bgSHA256Hash.IsBusy || bgSHA384Hash.IsBusy || bgSHA512Hash.IsBusy || bgRIPEMD160Hash.IsBusy)
             {
+                DialogResult result = KryptonMessageBox.Show("File hashing is still in progress.\nDo you want to cancel?", "Hashing in Progress", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
+                if (result == DialogResult.Yes)
+                {
+                    try
+                    {
+                        bgMD5Hash.CancelAsync();
+
+                        bgMD5Hash.Dispose();
+
+                        bgSHA1Hash.CancelAsync();
+
+                        bgSHA1Hash.Dispose();
+
+                        bgSHA256Hash.CancelAsync();
+
+                        bgSHA256Hash.Dispose();
+
+                        bgSHA384Hash.CancelAsync();
+
+                        bgSHA384Hash.Dispose();
+
+                        bgSHA512Hash.CancelAsync();
+
+                        bgSHA512Hash.Dispose();
+
+                        bgRIPEMD160Hash.CancelAsync();
+
+                        bgRIPEMD160Hash.Dispose();
+                    }
+                    catch (Exception exc)
+                    {
+                        ExceptionCapture.CaptureException(exc);
+                    }
+                }
             }
         }
 
