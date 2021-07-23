@@ -695,6 +695,7 @@
             SaveHashToFile(kwlHash.Text, kcbToggleCase.Checked);
         }
 
+        #region Methods
         private void SaveHashToFile(string text, bool toUpper)
         {
             try
@@ -809,5 +810,14 @@
                 KryptonMessageBox.Show($"An error has occurred: {e.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+#if NETCOREAPP3_1_OR_GREATER
+        private SafeNETCoreAndNewerSupportedHashAlgorithims ReturnAlgorithim(string hashType)
+        {
+
+        }
+#else
+#endif
+        #endregion
     }
 }
