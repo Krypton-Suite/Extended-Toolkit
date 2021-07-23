@@ -366,30 +366,11 @@
         {
             try
             {
-                if (kcmbAlgorithimType.Text == "MD-5")
-                {
-                    bgMD5Hash.RunWorkerAsync(ktxtFilePath.Text);
-                }
-                else if (kcmbAlgorithimType.Text == "SHA-1")
-                {
-                    bgSHA1Hash.RunWorkerAsync(ktxtFilePath.Text);
-                }
-                else if (kcmbAlgorithimType.Text == "SHA-256")
-                {
-                    bgSHA256Hash.RunWorkerAsync(ktxtFilePath.Text);
-                }
-                else if (kcmbAlgorithimType.Text == "SHA-384")
-                {
-                    bgSHA384Hash.RunWorkerAsync(ktxtFilePath.Text);
-                }
-                else if (kcmbAlgorithimType.Text == "SHA-512")
-                {
-                    bgSHA512Hash.RunWorkerAsync(ktxtFilePath.Text);
-                }
-                else if (kcmbAlgorithimType.Text == "RIPEMD-160")
-                {
-                    bgRIPEMD160Hash.RunWorkerAsync(ktxtFilePath.Text);
-                }
+#if NETCOREAPP3_1_OR_GREATER
+                HashFile((SafeNETCoreAndNewerSupportedHashAlgorithims)Enum.Parse(typeof(SafeNETCoreAndNewerSupportedHashAlgorithims), kcmbAlgorithimType.Text));
+#else
+                HashFile((SupportedHashAlgorithims)Enum.Parse(typeof(SupportedHashAlgorithims), kcmbAlgorithimType.Text));
+#endif
             }
             catch (Exception e)
             {
@@ -812,11 +793,52 @@
         }
 
 #if NETCOREAPP3_1_OR_GREATER
-        private SafeNETCoreAndNewerSupportedHashAlgorithims ReturnAlgorithim(string hashType)
+        private void HashFile(SafeNETCoreAndNewerSupportedHashAlgorithims hashType)
         {
-
+            switch (hashType)
+            {
+                case SafeNETCoreAndNewerSupportedHashAlgorithims.MD5:
+                    bgMD5Hash.RunWorkerAsync(ktxtFilePath.Text);
+                    break;
+                case SafeNETCoreAndNewerSupportedHashAlgorithims.SHA1:
+                    bgSHA1Hash.RunWorkerAsync(ktxtFilePath.Text);
+                    break;
+                case SafeNETCoreAndNewerSupportedHashAlgorithims.SHA256:
+                    bgSHA256Hash.RunWorkerAsync(ktxtFilePath.Text);
+                    break;
+                case SafeNETCoreAndNewerSupportedHashAlgorithims.SHA384:
+                    bgSHA384Hash.RunWorkerAsync(ktxtFilePath.Text);
+                    break;
+                case SafeNETCoreAndNewerSupportedHashAlgorithims.SHA512:
+                    bgSHA512Hash.RunWorkerAsync(ktxtFilePath.Text);
+                    break;
+            }
         }
 #else
+        private void HashFile(SupportedHashAlgorithims hashType)
+        {
+            switch (hashType)
+            {
+                case SupportedHashAlgorithims.MD5:
+                    bgMD5Hash.RunWorkerAsync(ktxtFilePath.Text);
+                    break;
+                case SupportedHashAlgorithims.SHA1:
+                    bgSHA1Hash.RunWorkerAsync(ktxtFilePath.Text);
+                    break;
+                case SupportedHashAlgorithims.SHA256:
+                    bgSHA256Hash.RunWorkerAsync(ktxtFilePath.Text);
+                    break;
+                case SupportedHashAlgorithims.SHA384:
+                    bgSHA384Hash.RunWorkerAsync(ktxtFilePath.Text);
+                    break;
+                case SupportedHashAlgorithims.SHA512:
+                    bgSHA512Hash.RunWorkerAsync(ktxtFilePath.Text);
+                    break;
+                case SupportedHashAlgorithims.RIPEMD160:
+                    bgRIPEMD160Hash.RunWorkerAsync(ktxtFilePath.Text);
+                    break;
+            }
+        }
 #endif
         #endregion
     }
