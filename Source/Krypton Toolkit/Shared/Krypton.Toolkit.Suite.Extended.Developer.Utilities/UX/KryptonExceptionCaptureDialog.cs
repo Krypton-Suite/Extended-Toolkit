@@ -74,6 +74,7 @@
             this.kbtnExportException.Size = new System.Drawing.Size(119, 25);
             this.kbtnExportException.TabIndex = 1;
             this.kbtnExportException.Values.Text = "Export &Exception";
+            this.kbtnExportException.Click += new System.EventHandler(this.kbtnExportException_Click);
             // 
             // kbtnCancel
             // 
@@ -126,10 +127,51 @@
         #endregion
 
         #region Methods
-        private void CaptureException(Exception exception)
+        private void CaptureException(Exception exception, bool showMessageOnly = true,
+                                      bool showStackTrace = false, bool showInnerException = false,
+                                      bool showFullDetails = false)
         {
-            krtbException.Text = exception.Message;
+            if (showMessageOnly)
+            {
+                krtbException.Text = exception.Message;
+            }
+            else if (showStackTrace)
+            {
+                krtbException.Text = exception.StackTrace;
+            }
+            else if (showInnerException)
+            {
+                krtbException.Text = exception.InnerException.ToString();
+            }
+
+            if (showFullDetails)
+            {
+                StringBuilder builder = new StringBuilder();
+
+                builder.Append($"{exception.Message}\n{exception.StackTrace}");
+
+                krtbException.Text = builder.ToString();
+            }
         }
         #endregion
+
+        private void kbtnExportException_Click(object sender, EventArgs e)
+        {
+            if (MissingFrameWorkAPIs.IsNullOrWhiteSpace(krtbException.Text))
+            {
+
+            }
+            else
+            {
+                CommonSaveFileDialog csfd = new CommonSaveFileDialog();
+
+                csfd.Filters.Add(new CommonFileDialogFilter("Text Files, Rich Text Files", "txt|rtf"));
+
+                if (csfd.ShowDialog() == CommonFileDialogResult.Ok)
+                {
+                    krtbException.SaveFile(Path.GetFullPath(csfd.FileName));
+                }
+            }
+        }
     }
 }
