@@ -159,13 +159,13 @@
         {
             if (MissingFrameWorkAPIs.IsNullOrWhiteSpace(krtbException.Text))
             {
-
+                KryptonMessageBox.Show("No content was found!", "Save Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
                 CommonSaveFileDialog csfd = new CommonSaveFileDialog();
 
-                csfd.Filters.Add(new CommonFileDialogFilter("Text Files, Rich Text Files", "txt|rtf"));
+                csfd.Filters.Add(new CommonFileDialogFilter("Text Files|Rich Text Files", "txt|rtf"));
 
                 if (csfd.ShowDialog() == CommonFileDialogResult.Ok)
                 {
