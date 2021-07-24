@@ -6,7 +6,6 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle.Resources;
 
 namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
 {
@@ -147,7 +146,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         {
             Thread thread = new Thread(() =>
             {
-                var toast = new ToastNotifier(_applicationIcon)
+                var toast = new NetSparkleToastNotifier(_applicationIcon)
                 {
                     ClickAction = clickHandler,
                     Updates = updates

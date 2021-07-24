@@ -205,13 +205,22 @@
         #endregion
 
         #region Constructors
-        public DownloadProgressDialog(AppCastItem item, Icon applicationIcon)
+        public DownloadProgressDialog(AppCastItem item, Icon applicationIcon = null)
         {
             InitializeComponent();
 
-            pbxApplicationIcon.Image = applicationIcon.ToBitmap();
+            if (applicationIcon != null)
+            {
+                Icon = applicationIcon;
 
-            Icon = applicationIcon;
+                pbxApplicationIcon.Image = new Icon(applicationIcon, new Size(48, 48)).ToBitmap();
+            }
+            else
+            {
+                Icon = NetSparkleResources.update1;
+
+                pbxApplicationIcon.Image = NetSparkleResources.update_48_x_48;
+            }
 
             kbtnInstall.Visible = false;
 

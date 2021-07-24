@@ -235,6 +235,16 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap update_48_x_48 {
+            get {
+                object obj = ResourceManager.GetObject("update_48_x_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
         internal static System.Drawing.Icon update1 {
