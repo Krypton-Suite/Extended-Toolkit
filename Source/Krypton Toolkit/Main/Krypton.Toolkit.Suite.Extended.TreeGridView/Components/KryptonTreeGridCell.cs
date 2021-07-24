@@ -223,7 +223,7 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
                     }
 
                     // paint lines of previous levels to the root
-                    KryptonTreeGridNodeRow previousNode = node.Parent;
+                    KryptonTreeGridNodeRow? previousNode = node.Parent;
                     var horizontalStop = (glyphRect.X + 4) - INDENT_WIDTH;
 
                     while (!previousNode.IsRoot)

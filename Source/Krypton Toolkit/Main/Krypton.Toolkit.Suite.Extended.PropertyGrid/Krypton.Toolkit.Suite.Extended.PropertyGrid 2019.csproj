@@ -1,57 +1,76 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <!--Setup TFMs for all projects-->
-  <Choose>
-    <When Condition="'$(TFMs)' == 'all'">
-      <PropertyGroup>
-        <TargetFrameworks>net35;net40;net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows;net6.0-windows</TargetFrameworks>
-      </PropertyGroup>
-    </When>
-    <Otherwise>
-      <PropertyGroup>
-        <TargetFrameworks>net48;netcoreapp3.1;net5.0-windows;net6.0-windows</TargetFrameworks>
-      </PropertyGroup>
-    </Otherwise>
-  </Choose>
-  
-  <PropertyGroup>
-    <LangVersion>preview</LangVersion>
-    <OutputType>library</OutputType>
-    <RootNamespace>Krypton.Toolkit.Suite.Extended.PropertyGrid</RootNamespace>
-    <AssemblyName>Krypton.Toolkit.Suite.Extended.PropertyGrid</AssemblyName>
-    <UseWindowsForms>true</UseWindowsForms>
-  </PropertyGroup>
+    <!--Setup TFMs for all projects-->
+    <Choose>
+        <When Condition="'$(TFMs)' == 'all'">
+            <PropertyGroup>
+                <TargetFrameworks>net35;net40;net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows;net6.0-windows</TargetFrameworks>
+            </PropertyGroup>
+        </When>
+        <Otherwise>
+            <PropertyGroup>
+                <TargetFrameworks>net48;netcoreapp3.1;net5.0-windows;net6.0-windows</TargetFrameworks>
+            </PropertyGroup>
+        </Otherwise>
+    </Choose>
 
-  <!--Package Data-->
-  <PropertyGroup>
-    <PackageId>Krypton.Toolkit.Suite.Extended.PropertyGrid</PackageId>
-    <Description>An extension to the Krypton standard toolkit. This package holds extensions to the PropertyGrid control.</Description>
-  </PropertyGroup>
+    <PropertyGroup>
+        <LangVersion>preview</LangVersion>
+        <OutputType>library</OutputType>
+        <RootNamespace>Krypton.Toolkit.Suite.Extended.PropertyGrid</RootNamespace>
+        <AssemblyName>Krypton.Toolkit.Suite.Extended.PropertyGrid</AssemblyName>
+        <UseWindowsForms>true</UseWindowsForms>
+        <NeutralLanguage>en</NeutralLanguage>
+    </PropertyGroup>
 
-  <!--Version Information-->
-  <PropertyGroup>
-    <AssemblyVersion>6.0.2108</AssemblyVersion>
-    <FileVersion>6.0.2108</FileVersion>
-  </PropertyGroup>
+    <!--Package Data-->
+    <PropertyGroup>
+        <PackageId>Krypton.Toolkit.Suite.Extended.PropertyGrid</PackageId>
+        <Description>An extension to the Krypton standard toolkit. This package holds extensions to the PropertyGrid control.</Description>
+    </PropertyGroup>
 
-  <!--Krypton Toolkit Import-->
-  <Choose>
-    <When Condition="'$(TFMs)' == 'all'">
-      <ItemGroup>
-        <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2106.2" />
-      </ItemGroup>
-    </When>
-    <Otherwise>
-      <ItemGroup>
-        <PackageReference Include="Krypton.Toolkit.Canary.Lite" Version="6.0.2106.2" />
-      </ItemGroup>
-    </Otherwise>
-  </Choose>
+    <!--Version Information-->
+    <PropertyGroup>
+        <AssemblyVersion>6.0.2108</AssemblyVersion>
+        <FileVersion>6.0.2108</FileVersion>
+    </PropertyGroup>
 
-  <!--Binary/Documentation Output-->
-  <PropertyGroup>
-    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.PropertyGrid\Krypton.Toolkit.Suite.Extended.PropertyGrid.xml</DocumentationFile>
-    <OutputPath>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.PropertyGrid\</OutputPath>
-  </PropertyGroup>
+    <!--Krypton Toolkit Import-->
+    <Choose>
+        <When Condition="'$(TFMs)' == 'all'">
+            <ItemGroup>
+                <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2106.2" />
+            </ItemGroup>
+        </When>
+        <Otherwise>
+            <ItemGroup>
+                <PackageReference Include="Krypton.Toolkit.Canary.Lite" Version="6.0.2106.2" />
+            </ItemGroup>
+        </Otherwise>
+    </Choose>
+    <ItemGroup>
+        <Reference Include="System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net4'))">
+            <SpecificVersion>True</SpecificVersion>
+            <Version>4.0.0.0</Version>
+            <TreatAsUsed>True</TreatAsUsed>
+        </Reference>
+        <Reference Include="System.Design, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net5'))">
+            <SpecificVersion>True</SpecificVersion>
+            <Version>5.0.0.0</Version>
+            <TreatAsUsed>True</TreatAsUsed>
+        </Reference>
+        <Reference Include="System.Design, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net6'))">
+            <SpecificVersion>True</SpecificVersion>
+            <Version>6.0.0.0</Version>
+            <TreatAsUsed>True</TreatAsUsed>
+        </Reference>
+        <Reference Include="System.Design" Condition="'$(TargetFramework)' == 'net35'" />
+        <!--TODO: Need to specify version here-->
+    </ItemGroup>
+    <!--Binary/Documentation Output-->
+    <PropertyGroup>
+        <DocumentationFile>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.PropertyGrid\Krypton.Toolkit.Suite.Extended.PropertyGrid.xml</DocumentationFile>
+        <OutputPath>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.PropertyGrid\</OutputPath>
+    </PropertyGroup>
 
 </Project>
