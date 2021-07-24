@@ -233,8 +233,8 @@
         /// <param name="headerText">The header text.</param>
         public KryptonInputBoxExtended(string message, string title = "", InputBoxLanguage language = InputBoxLanguage.ENGLISH, 
                                        InputBoxInputType type = InputBoxInputType.NONE, string[] listItems = null, 
-                                       bool showInTaskBar = false, Font controlTypeface = null, Font messageTypeface = null,
-                                       Font headerTypeface = null, string okText = "&Ok", string yesText = "&Yes", 
+                                       bool showInTaskBar = false, Font? controlTypeface = null, Font? messageTypeface = null,
+                                       Font? headerTypeface = null, string okText = "&Ok", string yesText = "&Yes", 
                                        string noText = "N&o", string cancelText = "&Cancel", string hintText = "",
                                        string headerText = null)
         {

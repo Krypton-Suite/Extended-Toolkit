@@ -1,4 +1,4 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
+﻿namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
     /// <summary>
     /// A window that allows the developer to capture an exception, and present it in a window.
@@ -116,17 +116,29 @@
         #endregion
 
         #region Constructors
-        public KryptonExceptionCaptureDialog(Exception exception)
+        /// <summary>Initializes a new instance of the <see cref="KryptonExceptionCaptureDialog" /> class.</summary>
+        /// <param name="exception">The exception.</param>
+        /// <param name="titleText">The title text.</param>
+        /// <param name="showDate">if set to <c>true</c> [show date].</param>
+        public KryptonExceptionCaptureDialog(Exception exception, string titleText = "Exception Capture", bool showDate = false)
         {
             InitializeComponent();
 
             Exception = exception;
+
+            SetupTitle(titleText, showDate);
 
             CaptureException(Exception);
         }
         #endregion
 
         #region Methods
+        /// <summary>Captures the exception.</summary>
+        /// <param name="exception">The exception.</param>
+        /// <param name="showMessageOnly">if set to <c>true</c> [show message only].</param>
+        /// <param name="showStackTrace">if set to <c>true</c> [show stack trace].</param>
+        /// <param name="showInnerException">if set to <c>true</c> [show inner exception].</param>
+        /// <param name="showFullDetails">if set to <c>true</c> [show full details].</param>
         private void CaptureException(Exception exception, bool showMessageOnly = true,
                                       bool showStackTrace = false, bool showInnerException = false,
                                       bool showFullDetails = false)
@@ -151,6 +163,21 @@
                 builder.Append($"{exception.Message}\n{exception.StackTrace}");
 
                 krtbException.Text = builder.ToString();
+            }
+        }
+
+        /// <summary>Setups the title.</summary>
+        /// <param name="text">The text.</param>
+        /// <param name="showDate">if set to <c>true</c> [show date].</param>
+        private void SetupTitle(string text, bool showDate = false)
+        {
+            if (showDate)
+            {
+                Text = $"{text} - {DateTime.Now}";
+            }
+            else
+            {
+                Text = $"{text}";
             }
         }
         #endregion

@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Effects
 {
-#if NET40_OR_GREATER || NETCOREAPP3_0_OR_GREATER || NET5_0_OR_GREATER
     /// <summary>Handles the fading effects. Original library: (https://gist.github.com/nathan-fiscaletti/3c0514862fe88b5664b10444e1098778)</summary>
     public class FadeController
     {
@@ -339,25 +339,25 @@ namespace Krypton.Toolkit.Suite.Extended.Effects
         }
         #endregion
     }
-#elif NET30_OR_GREATER
-    public class FadeController
+
+    public class FadeControllerNETCoreSafe
     {
-    #region Variables
+        #region Variables
         private float _fadeIn, _fadeOut;
 
         private int _fadeSpeed;
-    #endregion
+        #endregion
 
-    #region Properties
+        #region Properties
         public float FadeIn { get => _fadeIn; set => _fadeIn = value; }
 
         public float FadeOut { get => _fadeOut; set => _fadeOut = value; }
 
         public int FadeSpeed { get => _fadeSpeed; set => _fadeSpeed = value; }
-    #endregion
+        #endregion
 
-    #region Constructor
-        public FadeController(float fadeIn, float fadeOut, int fadeSpeed)
+        #region Constructor
+        public FadeControllerNETCoreSafe(float fadeIn, float fadeOut, int fadeSpeed)
         {
             _fadeIn = fadeIn;
 
@@ -366,13 +366,13 @@ namespace Krypton.Toolkit.Suite.Extended.Effects
             _fadeSpeed = fadeSpeed;
         }
 
-        public FadeController()
+        public FadeControllerNETCoreSafe()
         {
 
         }
-    #endregion
+        #endregion
 
-    #region Methods
+        #region Methods
         /// <summary>Fades the window in. Credit: https://stackoverflow.com/questions/12497826/better-algorithm-to-fade-a-winform.</summary>
         /// <param name="owner">The owner.</param>
         public async void FadeWindowIn(KryptonForm owner)
@@ -391,7 +391,7 @@ namespace Krypton.Toolkit.Suite.Extended.Effects
 
         public static void FadeWindowInExtended(KryptonForm owner, int fadeSpeed)
         {
-            FadeController controller = new FadeController();
+            FadeControllerNETCoreSafe controller = new FadeControllerNETCoreSafe();
 
             for (controller._fadeIn = 0.0f; controller._fadeIn <= 1.1f; controller._fadeIn += 0.1f)
             {
@@ -405,7 +405,7 @@ namespace Krypton.Toolkit.Suite.Extended.Effects
 
         public static void FadeWindowOutExtended(KryptonForm owner, int fadeSpeed)
         {
-            FadeController controller = new FadeController();
+            FadeControllerNETCoreSafe controller = new FadeControllerNETCoreSafe();
 
             for (controller._fadeOut = 90; controller._fadeOut >= 10; controller._fadeOut += 10)
             {
@@ -439,7 +439,6 @@ namespace Krypton.Toolkit.Suite.Extended.Effects
                 nextWindow.Show();
             }
         }
-    #endregion
+        #endregion
     }
-#endif
 }
