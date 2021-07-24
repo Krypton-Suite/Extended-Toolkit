@@ -13,6 +13,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Design;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 
@@ -32,16 +33,16 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
     {
         //private int _indentWidth;
         private readonly KryptonTreeGridNodeRow _root;
-        private KryptonTreeGridColumn _expandableColumn;
+        private KryptonTreeGridColumn? _expandableColumn;
 
         private bool _inExpandCollapse;
         internal bool InExpandCollapseMouseCapture;
-        private Control _hideScrollBarControl;
+        private Control? _hideScrollBarControl;
         private bool _showLines = true;
-
-
-        internal VisualStyleRenderer ROpen; // = new VisualStyleRenderer(VisualStyleElement.TreeView.Glyph.Opened);
-        internal VisualStyleRenderer RClosed; // = new VisualStyleRenderer(VisualStyleElement.TreeView.Glyph.Closed);
+        private DataTable _dataSource;
+        
+        internal VisualStyleRenderer? ROpen; // = new VisualStyleRenderer(VisualStyleElement.TreeView.Glyph.Opened);
+        internal VisualStyleRenderer? RClosed; // = new VisualStyleRenderer(VisualStyleElement.TreeView.Glyph.Closed);
 
         #region Constructor
         public KryptonTreeGridView()
@@ -71,6 +72,22 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
             }
 
         }
+
+        protected override void Dispose(bool disposing)
+        {
+            base.Dispose(disposing);
+            //UnSiteAll();
+            if (disposing)
+            {
+                // Dispose managed resources
+                _root?.Dispose();
+                _hideScrollBarControl?.Dispose();
+                _dataSource?.Dispose();
+            }
+
+            // Free native resources
+        }
+
         #endregion
 
         #region Keyboard F2 to begin edit support
@@ -141,18 +158,17 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
         [RefreshProperties(RefreshProperties.Repaint)]
         public int GroupByColumnIndex { get; set; } = 0;
 
-        private DataTable dataSource;
         [Browsable(true), Category(@"DataSource-Usage")]
         [RefreshProperties(RefreshProperties.Repaint)]
         [AttributeProvider(typeof(IListSource))]
         public new DataTable DataSource
         {
-            get => dataSource;
+            get => _dataSource;
             set
             {
                 if (value != null)
                 {
-                    dataSource = value;
+                    _dataSource = value;
 
                     //-------------------------- 
                     //Clear nodes and columns
@@ -162,18 +178,18 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
 
                     if (GroupByColumnIndex != 0)
                     {
-                        dataSource.Columns[GroupByColumnIndex].SetOrdinal(0);
+                        _dataSource.Columns[GroupByColumnIndex].SetOrdinal(0);
                     }
 
                     //-------------------------- 
                     //Sort Data
                     //-------------------------- 
-                    dataSource = FilterSortData(dataSource, string.Empty, dataSource.Columns[0].ColumnName);
+                    _dataSource = FilterSortData(_dataSource, string.Empty, _dataSource.Columns[0].ColumnName);
 
                     //-------------------------- 
                     //Add Columns
                     //-------------------------- 
-                    for (var i = 0; i < dataSource.Columns.Count; i++)
+                    for (var i = 0; i < _dataSource.Columns.Count; i++)
                     {
                         if (i == 0)
                         {
@@ -182,8 +198,8 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
                             //-------------------------- 
                             var clm = new KryptonTreeGridColumn
                             {
-                                HeaderText = dataSource.Columns[i].ColumnName,
-                                DataPropertyName = dataSource.Columns[i].ColumnName,
+                                HeaderText = _dataSource.Columns[i].ColumnName,
+                                DataPropertyName = _dataSource.Columns[i].ColumnName,
                                 AutoSizeMode = DataGridViewAutoSizeColumnMode.None
                             };
                             Columns.Add(clm);
@@ -195,8 +211,8 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
                             //-------------------------- 
                             var dgvtbc = new DataGridViewTextBoxColumn
                             {
-                                HeaderText = dataSource.Columns[i].ColumnName,
-                                DataPropertyName = dataSource.Columns[i].ColumnName,
+                                HeaderText = _dataSource.Columns[i].ColumnName,
+                                DataPropertyName = _dataSource.Columns[i].ColumnName,
                                 AutoSizeMode = DataGridViewAutoSizeColumnMode.None
                             };
                             Columns.Add(dgvtbc);
@@ -208,11 +224,11 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
                         //-------------------------- 
                         //Sort Data
                         //-------------------------- 
-                        dataSource = FilterSortData(dataSource, string.Empty, ParentIdColumnName);
+                        _dataSource = FilterSortData(_dataSource, string.Empty, ParentIdColumnName);
                         //-------------------------- 
                         //Init nodes
                         //-------------------------- 
-                        BuildPortsNodesInitialLoop(dataSource, IdColumnName, ParentIdColumnName);
+                        BuildPortsNodesInitialLoop(_dataSource, IdColumnName, ParentIdColumnName);
                     }
                     else
                     {
@@ -229,27 +245,29 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
                         //-------------------------- 
                         //Init nodes
                         //-------------------------- 
+#pragma warning disable CA2000 // Dispose objects before losing scope
                         var node = new KryptonTreeGridNodeRow();
                         var parentNode = new KryptonTreeGridNodeRow();
+#pragma warning restore CA2000 // Dispose objects before losing scope
 
                         //-------------------------- 
                         //Columns Collection
                         //-------------------------- 
-                        var c = new string[dataSource.Columns.Count];
+                        var c = new string[_dataSource.Columns.Count];
 
                         //-------------------------- 
                         //Init RowCounter
                         //-------------------------- 
                         var k = 0;
 
-                        foreach (DataRow dr in dataSource.Rows)
+                        foreach (DataRow dr in _dataSource.Rows)
                         {
                             //-------------------------- 
                             // Retrieve columns
                             //-------------------------- 
-                            var p = new string[dataSource.Columns.Count];
+                            var p = new string[_dataSource.Columns.Count];
 
-                            for (var i = 0; i < dataSource.Columns.Count; i++)
+                            for (var i = 0; i < _dataSource.Columns.Count; i++)
                             {
                                 p[i] = dr[i].ToString().Trim();
                                 if (k > 0 && i == 0 && p[i] == c[i])
@@ -329,11 +347,13 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
         [Browsable(false),
         DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden),
         EditorBrowsable(EditorBrowsableState.Never)]
+#pragma warning disable CA1061 // Do not hide base class methods
         public new object DataMember
         {
             get => null;
             set => throw new NotSupportedException(@"The TreeGridView does not support databinding");
         }
+#pragma warning restore CA1061 // Do not hide base class methods
 
         [Browsable(false),
         DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden),
@@ -378,7 +398,7 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
         /// <returns>A Sorted/Filtered DataTable</returns>
         public static DataTable FilterSortData(DataTable dtStart, string filter, string sort)
         {
-            DataTable dt = dtStart.Clone();
+            DataTable? dt = dtStart.Clone();
             var drs = dtStart.Select(filter, sort);
             foreach (DataRow dr in drs)
             {
@@ -444,11 +464,11 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
         {
             var netItems = 0;
 
-            var dv = new DataView(dt);
+            using var dv = new DataView(dt);
             if (firstLoop)
             {
                 dv.RowFilter = $"{idColumnName}={parentIdColumnName}";
-                var rootNode = new KryptonTreeGridNodeRow();
+                using var rootNode = new KryptonTreeGridNodeRow();
                 uniqueId = rootNode.UniqueValue;
             }
             else
@@ -478,7 +498,7 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
                         //-------------------------- 
                         //Add Node
                         //-------------------------- 
-                        KryptonTreeGridNodeRow rootNode = GridNodes.GetNodeByUniqueValue(uniqueId);
+                        KryptonTreeGridNodeRow? rootNode = GridNodes.GetNodeByUniqueValue(uniqueId);
 
                         if (rootNode.UniqueValue == -10)
                         {
@@ -503,7 +523,7 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
 
         private void BuildPortsNodesInitialLoop(DataTable dt, string idColumnName, string parentIdColumnName)
         {
-            var dv = new DataView(dt)
+            using var dv = new DataView(dt)
             {
                 RowFilter = $@"{idColumnName}={parentIdColumnName}"
             };
@@ -536,7 +556,7 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
         private void BuildPortsNodesOtherLoops(string itemId, DataTable dt, string idColumnName, string parentIdColumnName, KryptonTreeGridNodeRow parentNode)
         {
             //create filtered data
-            var dv = new DataView(dt)
+            using var dv = new DataView(dt)
             {
                 RowFilter = $"{parentIdColumnName}={itemId} AND {idColumnName}<>{parentIdColumnName}"
             };
@@ -565,7 +585,7 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
                     //-------------------------- 
                     //Add Node
                     //-------------------------- 
-                    KryptonTreeGridNodeRow childNode = parentNode.Nodes.Add(p);
+                    KryptonTreeGridNodeRow? childNode = parentNode.Nodes.Add(p);
 
                     var item = dv[items][idColumnName].ToString();
 
@@ -626,6 +646,7 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
                     catch
                     {
                         // TODO: Empty - Why ?
+                        // Maybe: because the items have been added and then removed (incorrectly) by the owner
                     }
                 }
             }
@@ -640,8 +661,7 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
 
                 if (!exp.Cancel)
                 {
-                    LockVerticalScrollBarUpdate(true);
-                    SuspendLayout();
+                    BeginUpdate();
                     _inExpandCollapse = true;
                     node.IsExpanded = false;
 
@@ -655,8 +675,7 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
                     OnNodeCollapsed(exped);
                     //TODO: Convert this to a specific NodeCell property
                     _inExpandCollapse = false;
-                    LockVerticalScrollBarUpdate(false);
-                    ResumeLayout(true);
+                    EndUpdate();
                     InvalidateCell(node.Cells[0]);
 
                 }
@@ -670,10 +689,30 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
             }
         }
 
+        public void EndUpdate()
+        {
+            LockVerticalScrollBarUpdate(false);
+            ResumeLayout(true);
+            SendMessage(11, -1, 0);
+            Invalidate();
+        }
+
+        public void BeginUpdate()
+        {
+            LockVerticalScrollBarUpdate(true);
+            SuspendLayout();
+            SendMessage(11, 0, 0);
+        }
+
+        private IntPtr SendMessage(int msg, int wParam, int lParam) => SendMessage(new HandleRef(this, Handle), msg, wParam, lParam);
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        [DefaultDllImportSearchPaths(DllImportSearchPath.System32)]
+        private static extern IntPtr SendMessage(HandleRef hWnd, int msg, int wParam, int lParam);
+
         protected internal virtual void SiteNode(KryptonTreeGridNodeRow node)
         {
             //TODO: Raise exception if parent node is not the root or is not sited.
-            KryptonTreeGridNodeRow currentRow;
+            KryptonTreeGridNodeRow? currentRow;
             node.Grid = this;
 
             if (node.Parent is { IsRoot: false })
@@ -761,8 +800,7 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
 
                 if (!exp.Cancel)
                 {
-                    LockVerticalScrollBarUpdate(true);
-                    SuspendLayout();
+                    BeginUpdate();
                     _inExpandCollapse = true;
                     node.IsExpanded = true;
 
@@ -772,17 +810,13 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
                         Debug.Assert(childNode.RowIndex == -1, @"Row is already in the grid.");
 
                         SiteNode(childNode);
-                        //BaseRows.Insert(rowIndex + 1, childRow);
-                        //TODO : remove -- just a test.
-                        //childNode.Cells[0].Value = "child";
                     }
 
                     var exped = new ExpandedEventArgs(node);
                     OnNodeExpanded(exped);
                     //TODO: Convert this to a specific NodeCell property
                     _inExpandCollapse = false;
-                    LockVerticalScrollBarUpdate(false);
-                    ResumeLayout(true);
+                    EndUpdate();
                     InvalidateCell(node.Cells[0]);
                 }
 
@@ -856,10 +890,10 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
         #endregion
 
         #region Collapse/Expand events
-        public event ExpandingEventHandler NodeExpanding;
-        public event ExpandedEventHandler NodeExpanded;
-        public event CollapsingEventHandler NodeCollapsing;
-        public event CollapsedEventHandler NodeCollapsed;
+        public event ExpandingEventHandler? NodeExpanding;
+        public event ExpandedEventHandler? NodeExpanded;
+        public event CollapsingEventHandler? NodeCollapsing;
+        public event CollapsedEventHandler? NodeCollapsed;
 
         protected virtual void OnNodeExpanding(ExpandingEventArgs e)
         {
@@ -881,15 +915,6 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
         #endregion
 
         #region Helper methods
-
-        //private bool _disposing = false;
-
-        protected override void Dispose(bool disposing)
-        {
-            //_disposing = true;
-            base.Dispose(Disposing);
-            UnSiteAll();
-        }
 
         protected override void OnHandleCreated(EventArgs e)
         {

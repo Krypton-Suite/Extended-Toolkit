@@ -123,20 +123,20 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
 
         public KryptonTreeGridNodeRow GetNodeByUniqueValue(int uniqueValue)
         {
-            var returnNode = new KryptonTreeGridNodeRow
-            {
-                UniqueValue = -10
-            };
             foreach (KryptonTreeGridNodeRow node in List.Where(node => node.UniqueValue == uniqueValue))
             {
                 return node;
             }
+            var returnNode = new KryptonTreeGridNodeRow
+            {
+                UniqueValue = -10
+            };
             return returnNode;
         }
 
         public int IndexOf(KryptonTreeGridNodeRow item) => List.IndexOf(item);
 
-        public KryptonTreeGridNodeRow this[int index]
+        public KryptonTreeGridNodeRow? this[int index]
         {
             get => List[index];
             set => throw new Exception(@"The method or operation is not implemented.");
