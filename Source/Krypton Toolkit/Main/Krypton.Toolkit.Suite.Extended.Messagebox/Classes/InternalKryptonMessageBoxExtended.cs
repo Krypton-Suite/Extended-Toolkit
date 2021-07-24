@@ -6,17 +6,6 @@
  */
 #endregion
 
-using System;
-using System.ComponentModel;
-using System.Drawing;
-using System.Media;
-using System.Text;
-using System.Threading;
-using System.Windows.Forms;
-
-using Krypton.Toolkit.Suite.Extended.Messagebox.Properties;
-using Krypton.Toolkit.Suite.Extended.Tools;
-
 namespace Krypton.Toolkit.Suite.Extended.Messagebox
 {
     /// <summary>
@@ -118,7 +107,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             _panelButtons.Controls.Add(_button3);
             _panelButtons.Controls.Add(_button1);
             _panelButtons.Controls.Add(_button2);
-            _panelButtons.Controls.Add(_optionalCheckBox);
+            _panelButtons.Controls.Add(_panelCheckBox);
             _panelButtons.Controls.Add(_copyButton);
             _panelButtons.Dock = DockStyle.Top;
             _panelButtons.Location = new Point(0, 52);
@@ -127,17 +116,19 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             _panelButtons.PanelBackStyle = PaletteBackStyle.PanelAlternate;
             _panelButtons.Size = new Size(156, 26);
             _panelButtons.TabIndex = 0;
-            /*//
+            //
             // _panelCheckBox
             //
+            _panelCheckBox.AutoSize = true;
+            _panelCheckBox.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             _panelCheckBox.Controls.Add(_optionalCheckBox);
-            _panelCheckBox.Dock = DockStyle.Top;
+            _panelCheckBox.Dock = DockStyle.Left;
             _panelCheckBox.Location = new Point(0, 52);
             _panelCheckBox.Margin = new Padding(0);
             _panelCheckBox.Name = "_panelCheckBox";
             _panelCheckBox.PanelBackStyle = PaletteBackStyle.PanelAlternate;
             _panelCheckBox.Size = new Size(156, 26);
-            _panelCheckBox.TabIndex = 6;*/
+            _panelCheckBox.TabIndex = 6;
             // 
             // borderEdge
             // 
@@ -287,7 +278,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         private Image _customMessageBoxIcon;
         private Point _optionalCheckBoxLocation;
         private bool _useBlur;
+        private bool? _useYesNoCancelButtonColour;
         private KryptonForm _parentWindow;
+        private Color? _contentMessageColour, _buttonOneTextColour, _buttonTwoTextColour,
+                       _buttonThreeTextColour, _yesButtonColour, _noButtonColour, _textColour,
+                       _yesNoButtonTextColour;
         #endregion
 
         #region Static Fields
@@ -455,18 +450,27 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="buttonOneCustomDialogResult">The action for the first button to take.</param>
         /// <param name="buttonTwoCustomDialogResult">The action for the second button to take.</param>
         /// <param name="buttonThreeCustomDialogResult">The action for the third button to take.</param>
-        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to -1.</param>
+        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to GlobalValues.DEFAULT_CORNER_ROUNDING_VALUE.</param>
         /// <param name="showToolTips">Displays tool-tips on the controls.</param>
         /// <param name="useBlur">Use the blur functionality on the parent window.</param>
+        /// <param name="useYesNoCancelButtonColour">Allows the user to change the Yes, No and Cancel button colour.</param>
         /// <param name="blurRadius">The radius of the blur effect. By default, this is set to 0.</param>
+        /// <param name="contentMessageColour">The message text colour. By default, this is set to 'Color.Empty'.</param>
+        /// <param name="buttonOneTextColour">The first button text colour. By default, this is set to 'Color.Empty'.</param>
+        /// <param name="buttonTwoTextColour">The seccond button text colour. By default, this is set to 'Color.Empty'.</param>
+        /// <param name="buttonThreeTextColour">The third button text colour. By default, this is set to 'Color.Empty'.</param>
+        /// <param name="yesButtonColour">The Yes button background colour. By default, this is set to 'Color.Empty'.</param>
+        /// <param name="noButtonColour">The Abort/Cancel/No button background colour. By default, this is set to 'Color.Empty'.</param>
+        /// <param name="textColour">The overall text colour. By default, this is set to 'Color.Empty'.</param>
+        /// <param name="yesNoButtonTextColour">The Abort/Cancel/No/Yes button background colour. By default, this is set to 'Color.Empty'.</param>
         /// <param name="parentWindow">The parent window of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
         private InternalKryptonMessageBoxExtended(IWin32Window showOwner, string text, string caption,
-                                                  ExtendedMessageBoxButtons buttons, 
+                                                  ExtendedMessageBoxButtons buttons,
                                                   ExtendedMessageBoxCustomButtonOptions? customButtonOptions,
                                                   ExtendedKryptonMessageBoxIcon icon,
                                                   MessageBoxDefaultButton defaultButton,
                                                   MessageBoxOptions options, HelpInformation helpInformation,
-                                                  bool? showCtrlCopy, Font messageboxTypeface, 
+                                                  bool? showCtrlCopy, Font messageboxTypeface,
                                                   bool showOptionalCheckBox, string optionalCheckBoxText,
                                                   bool isOptionalCheckBoxChecked, CheckState? optionalCheckBoxCheckState,
                                                   AnchorStyles? optionalCheckBoxAnchor, Point? optionalCheckBoxLocation,
@@ -475,8 +479,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                                   string buttonTwoCustomText, string buttonThreeCustomText,
                                                   DialogResult? buttonOneCustomDialogResult, DialogResult? buttonTwoCustomDialogResult,
                                                   DialogResult? buttonThreeCustomDialogResult, int? cornerRadius,
-                                                  bool? showToolTips, bool? useBlur,
-                                                  int? blurRadius, KryptonForm parentWindow = null)
+                                                  bool? showToolTips, bool? useBlur, bool? useYesNoCancelButtonColour,
+                                                  int? blurRadius, Color? contentMessageColour, Color? buttonOneTextColour,
+                                                  Color? buttonTwoTextColour, Color? buttonThreeTextColour,
+                                                  Color? yesButtonColour, Color? noButtonColour, Color? textColour,
+                                                  Color? yesNoButtonTextColour, KryptonForm parentWindow = null)
         {
             #region Store Values
             _text = text;
@@ -533,12 +540,30 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
             _showToolTips = showToolTips ?? false;
 
-            _cornerRadius = cornerRadius ?? -1;
+            _cornerRadius = cornerRadius ?? GlobalValues.DEFAULT_CORNER_ROUNDING_VALUE;
 
             _useBlur = useBlur ?? false;
-            
+
+            _useYesNoCancelButtonColour = useYesNoCancelButtonColour ?? false;
+
             _blurRadius = blurRadius ?? 0;
-            
+
+            _contentMessageColour = contentMessageColour ?? Color.Empty;
+
+            _buttonOneTextColour = buttonOneTextColour ?? Color.Empty;
+
+            _buttonTwoTextColour = buttonTwoTextColour ?? Color.Empty;
+
+            _buttonThreeTextColour = buttonThreeTextColour ?? Color.Empty;
+
+            _yesButtonColour = yesButtonColour ?? Color.Empty;
+
+            _noButtonColour = noButtonColour ?? Color.Empty;
+
+            _textColour = textColour ?? Color.Empty;
+
+            _yesNoButtonTextColour = yesNoButtonTextColour ?? Color.Empty;
+
             _parentWindow = parentWindow;
             #endregion
 
@@ -565,7 +590,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
             ShowCopyButton(showCopyButton, copyButtonText);
 
-            // Define a corner radius, default is -1
+            // Define a corner radius, default is GlobalValues.DEFAULT_CORNER_ROUNDING_VALUE
             StateCommon.Border.Rounding = _cornerRadius;
 
             // Blur window
@@ -591,6 +616,23 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
                     _parentWindow.BlurValues.Radius = Convert.ToByte(_blurRadius);
                 }
+            }
+
+            // Change Yes, No and Cancel button colours
+            if (_useYesNoCancelButtonColour != null)
+            {
+                if (_yesButtonColour == null && _noButtonColour == null)
+                {
+                    ChangeAbortCancelNoYesButtonColour(buttons, Color.Green, Color.Red, Color.White);
+                }
+                else
+                {
+                    ChangeAbortCancelNoYesButtonColour(_buttons, yesButtonColour, noButtonColour, yesNoButtonTextColour);
+                }
+            }
+            else
+            {
+                ChangeAbortCancelNoYesButtonColour(_buttons, Color.Empty, Color.Empty, Color.Empty);
             }
         }
 
@@ -626,26 +668,42 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="copyButtonText">The text shown on the copy button.</param>
         /// <param name="fade">Allows the message box to fade in and out.</param>
         /// <param name="fadeSleepTimer">The speed of the fading effect.</param>
-        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to -1.</param>
+        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to GlobalValues.DEFAULT_CORNER_ROUNDING_VALUE.</param>
         /// <param name="showToolTips">Displays tool-tips on the controls.</param>
         /// <param name="useBlur">Use the blur functionality on the parent window.</param>
-        /// <param name="blurRadius">The radius of the blur effect. By default, this is set to 0.</param>
+        /// <param name="useYesNoCancelButtonColour">The use yes no cancel button colour.</param>
+        /// <param name="blurRadius">The blur radius.</param>
+        /// <param name="contentMessageColour">The content message colour.</param>
+        /// <param name="buttonOneTextColour">The button one text colour.</param>
+        /// <param name="buttonTwoTextColour">The button two text colour.</param>
+        /// <param name="buttonThreeTextColour">The button three text colour.</param>
+        /// <param name="yesButtonColour">The yes button colour.</param>
+        /// <param name="noButtonColour">The no button colour.</param>
+        /// <param name="textColour">The text colour.</param>
+        /// <param name="yesNoButtonTextColour">The yes no button text colour.</param>
         /// <param name="parentWindow">The parent window of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(string text, bool? showCtrlCopy = null, Font messageboxTypeface = null,
                                         bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
                                         bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null, Point? optionalCheckBoxLocation = null,
-                                        bool showCopyButton = false, string copyButtonText = null, bool? fade = false, 
-                                        int? fadeSleepTimer = 50, int? cornerRadius = -1, bool? showToolTips = null, 
-                                        bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
+                                        bool showCopyButton = false, string copyButtonText = null, bool? fade = false,
+                                        int? fadeSleepTimer = 50, int? cornerRadius = GlobalValues.DEFAULT_CORNER_ROUNDING_VALUE,
+                                        bool? showToolTips = null, bool? useBlur = null, bool? useYesNoCancelButtonColour = null,
+                                        int? blurRadius = 0, Color? contentMessageColour = null, Color? buttonOneTextColour = null,
+                                        Color? buttonTwoTextColour = null, Color? buttonThreeTextColour = null,
+                                        Color? yesButtonColour = null, Color? noButtonColour = null, Color? textColour = null,
+                                        Color? yesNoButtonTextColour = null, KryptonForm parentWindow = null)
         {
-            return InternalShow(null, text, string.Empty, ExtendedMessageBoxButtons.OK, null, ExtendedKryptonMessageBoxIcon.NONE, 
+            return InternalShow(null, text, string.Empty, ExtendedMessageBoxButtons.OK, null, ExtendedKryptonMessageBoxIcon.NONE,
                                 MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox,
-                                optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, 
+                                optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor,
                                 optionalCheckBoxLocation, null, showCopyButton, copyButtonText, fade, fadeSleepTimer,
                                 null, null, null, null,
-                                null, null, cornerRadius, showToolTips, useBlur, blurRadius, 
+                                null, null, cornerRadius, showToolTips, useBlur,
+                                useYesNoCancelButtonColour, blurRadius, contentMessageColour, buttonOneTextColour,
+                                buttonTwoTextColour, buttonThreeTextColour, yesButtonColour,
+                                noButtonColour, textColour, yesNoButtonTextColour,
                                 parentWindow);
         }
 
@@ -666,10 +724,19 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="copyButtonText">The text shown on the copy button.</param>
         /// <param name="fade">Allows the message box to fade in and out.</param>
         /// <param name="fadeSleepTimer">The speed of the fading effect.</param>
-        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to -1.</param>
+        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to GlobalValues.DEFAULT_CORNER_ROUNDING_VALUE.</param>
         /// <param name="showToolTips">Displays tool-tips on the controls.</param>
         /// <param name="useBlur">Use the blur functionality on the parent window.</param>
-        /// <param name="blurRadius">The radius of the blur effect. By default, this is set to 0.</param>
+        /// <param name="useYesNoCancelButtonColour">The use yes no cancel button colour.</param>
+        /// <param name="blurRadius">The blur radius.</param>
+        /// <param name="contentMessageColour">The content message colour.</param>
+        /// <param name="buttonOneTextColour">The button one text colour.</param>
+        /// <param name="buttonTwoTextColour">The button two text colour.</param>
+        /// <param name="buttonThreeTextColour">The button three text colour.</param>
+        /// <param name="yesButtonColour">The yes button colour.</param>
+        /// <param name="noButtonColour">The no button colour.</param>
+        /// <param name="textColour">The text colour.</param>
+        /// <param name="yesNoButtonTextColour">The yes no button text colour.</param>
         /// <param name="parentWindow">The parent window of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(IWin32Window owner, string text, bool? showCtrlCopy = null, Font messageboxTypeface = null,
@@ -677,16 +744,22 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null,
                                         Point? optionalCheckBoxLocation = null, bool showCopyButton = false,
-                                        string copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50, 
-                                        int? cornerRadius = -1, bool? showToolTips = null,
-                                        bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
+                                        string copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50,
+                                        int? cornerRadius = GlobalValues.DEFAULT_CORNER_ROUNDING_VALUE, bool? showToolTips = null,
+                                        bool? useBlur = null, bool? useYesNoCancelButtonColour = null,
+                                        int? blurRadius = 0, Color? contentMessageColour = null, Color? buttonOneTextColour = null,
+                                        Color? buttonTwoTextColour = null, Color? buttonThreeTextColour = null,
+                                        Color? yesButtonColour = null, Color? noButtonColour = null, Color? textColour = null,
+                                        Color? yesNoButtonTextColour = null, KryptonForm parentWindow = null)
         {
-            return InternalShow(owner, text, string.Empty, ExtendedMessageBoxButtons.OK, null, 
-                                ExtendedKryptonMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0, null, 
-                                showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, 
-                                optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, 
+            return InternalShow(owner, text, string.Empty, ExtendedMessageBoxButtons.OK, null,
+                                ExtendedKryptonMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0, null,
+                                showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked,
+                                optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, null,
                                 showCopyButton, copyButtonText, fade, fadeSleepTimer, null, null, null, null,
-                                null, null, cornerRadius, showToolTips, useBlur, blurRadius,
+                                null, null, cornerRadius, showToolTips, useBlur,
+                                useYesNoCancelButtonColour, blurRadius, contentMessageColour, buttonOneTextColour, buttonTwoTextColour,
+                                buttonThreeTextColour, yesButtonColour, noButtonColour, textColour, yesNoButtonTextColour,
                                 parentWindow);
         }
 
@@ -707,10 +780,19 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="copyButtonText">The text shown on the copy button.</param>
         /// <param name="fade">Allows the message box to fade in and out.</param>
         /// <param name="fadeSleepTimer">The speed of the fading effect.</param>
-        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to -1.</param>
+        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to GlobalValues.DEFAULT_CORNER_ROUNDING_VALUE.</param>
         /// <param name="showToolTips">Displays tool-tips on the controls.</param>
         /// <param name="useBlur">Use the blur functionality on the parent window.</param>
-        /// <param name="blurRadius">The radius of the blur effect. By default, this is set to 0.</param>
+        /// <param name="useYesNoCancelButtonColour">The use yes no cancel button colour.</param>
+        /// <param name="blurRadius">The blur radius.</param>
+        /// <param name="contentMessageColour">The content message colour.</param>
+        /// <param name="buttonOneTextColour">The button one text colour.</param>
+        /// <param name="buttonTwoTextColour">The button two text colour.</param>
+        /// <param name="buttonThreeTextColour">The button three text colour.</param>
+        /// <param name="yesButtonColour">The yes button colour.</param>
+        /// <param name="noButtonColour">The no button colour.</param>
+        /// <param name="textColour">The text colour.</param>
+        /// <param name="yesNoButtonTextColour">The yes no button text colour.</param>
         /// <param name="parentWindow">The parent window of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(string text, string caption, bool? showCtrlCopy = null, Font messageboxTypeface = null,
@@ -718,17 +800,23 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
                                         AnchorStyles? optionalCheckBoxAnchor = null,
                                         Point? optionalCheckBoxLocation = null, bool showCopyButton = false,
-                                        string copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50, 
-                                        int? cornerRadius = -1, bool? showToolTips = null,
-                                        bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
+                                        string copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50,
+                                        int? cornerRadius = GlobalValues.DEFAULT_CORNER_ROUNDING_VALUE, bool? showToolTips = null,
+                                        bool? useBlur = null, bool? useYesNoCancelButtonColour = null,
+                                        int? blurRadius = 0, Color? contentMessageColour = null, Color? buttonOneTextColour = null,
+                                        Color? buttonTwoTextColour = null, Color? buttonThreeTextColour = null,
+                                        Color? yesButtonColour = null, Color? noButtonColour = null, Color? textColour = null,
+                                        Color? yesNoButtonTextColour = null, KryptonForm parentWindow = null)
         {
-            return InternalShow(null, text, caption, ExtendedMessageBoxButtons.OK, null, 
-                                ExtendedKryptonMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0, null, 
+            return InternalShow(null, text, caption, ExtendedMessageBoxButtons.OK, null,
+                                ExtendedKryptonMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1, 0, null,
                                 showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked,
-                                optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, null, 
+                                optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, null,
                                 showCopyButton, copyButtonText, fade, fadeSleepTimer, null, null, null, null,
-                                null, null, cornerRadius, showToolTips, useBlur, blurRadius,
-                                parentWindow);
+                                null, null, cornerRadius, showToolTips, useBlur,
+                                useYesNoCancelButtonColour, blurRadius, contentMessageColour, buttonOneTextColour,
+                                buttonTwoTextColour, buttonThreeTextColour, yesButtonColour, noButtonColour, textColour,
+                                yesNoButtonTextColour, parentWindow);
         }
 
         /// <summary>
@@ -749,10 +837,19 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="copyButtonText">The text shown on the copy button.</param>
         /// <param name="fade">Allows the message box to fade in and out.</param>
         /// <param name="fadeSleepTimer">The speed of the fading effect.</param>
-        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to -1.</param>
+        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to GlobalValues.DEFAULT_CORNER_ROUNDING_VALUE.</param>
         /// <param name="showToolTips">Displays tool-tips on the controls.</param>
         /// <param name="useBlur">Use the blur functionality on the parent window.</param>
-        /// <param name="blurRadius">The radius of the blur effect. By default, this is set to 0.</param>
+        /// <param name="useYesNoCancelButtonColour">The use yes no cancel button colour.</param>
+        /// <param name="blurRadius">The blur radius.</param>
+        /// <param name="contentMessageColour">The content message colour.</param>
+        /// <param name="buttonOneTextColour">The button one text colour.</param>
+        /// <param name="buttonTwoTextColour">The button two text colour.</param>
+        /// <param name="buttonThreeTextColour">The button three text colour.</param>
+        /// <param name="yesButtonColour">The yes button colour.</param>
+        /// <param name="noButtonColour">The no button colour.</param>
+        /// <param name="textColour">The text colour.</param>
+        /// <param name="yesNoButtonTextColour">The yes no button text colour.</param>
         /// <param name="parentWindow">The parent window of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(IWin32Window owner,
@@ -762,15 +859,21 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         AnchorStyles? optionalCheckBoxAnchor = null,
                                         Point? optionalCheckBoxLocation = null, bool showCopyButton = false,
                                         string copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50,
-                                        int? cornerRadius = -1, bool? showToolTips = null,
-                                        bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
+                                        int? cornerRadius = GlobalValues.DEFAULT_CORNER_ROUNDING_VALUE, bool? showToolTips = null,
+                                        bool? useBlur = null, bool? useYesNoCancelButtonColour = null,
+                                        int? blurRadius = 0, Color? contentMessageColour = null, Color? buttonOneTextColour = null,
+                                        Color? buttonTwoTextColour = null, Color? buttonThreeTextColour = null,
+                                        Color? yesButtonColour = null, Color? noButtonColour = null, Color? textColour = null,
+                                        Color? yesNoButtonTextColour = null, KryptonForm parentWindow = null)
         {
-            return InternalShow(owner, text, caption, ExtendedMessageBoxButtons.OK, null, ExtendedKryptonMessageBoxIcon.NONE, 
-                                MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, 
-                                showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, 
-                                optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText, 
+            return InternalShow(owner, text, caption, ExtendedMessageBoxButtons.OK, null, ExtendedKryptonMessageBoxIcon.NONE,
+                                MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface,
+                                showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState,
+                                optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText,
                                 fade, fadeSleepTimer, null, null, null, null,
-                                null, null, cornerRadius, showToolTips, useBlur, blurRadius,
+                                null, null, cornerRadius, showToolTips, useBlur, useYesNoCancelButtonColour,
+                                blurRadius, contentMessageColour, buttonOneTextColour, buttonTwoTextColour,
+                                buttonThreeTextColour, yesButtonColour, noButtonColour, textColour, yesNoButtonTextColour,
                                 parentWindow);
         }
 
@@ -799,10 +902,19 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="buttonOneCustomDialogResult">The action for the first button to take.</param>
         /// <param name="buttonTwoCustomDialogResult">The action for the second button to take.</param>
         /// <param name="buttonThreeCustomDialogResult">The action for the third button to take.</param>
-        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to -1.</param>
+        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to GlobalValues.DEFAULT_CORNER_ROUNDING_VALUE.</param>
         /// <param name="showToolTips">Displays tool-tips on the controls.</param>
         /// <param name="useBlur">Use the blur functionality on the parent window.</param>
-        /// <param name="blurRadius">The radius of the blur effect. By default, this is set to 0.</param>
+        /// <param name="useYesNoCancelButtonColour">The use yes no cancel button colour.</param>
+        /// <param name="blurRadius">The blur radius.</param>
+        /// <param name="contentMessageColour">The content message colour.</param>
+        /// <param name="buttonOneTextColour">The button one text colour.</param>
+        /// <param name="buttonTwoTextColour">The button two text colour.</param>
+        /// <param name="buttonThreeTextColour">The button three text colour.</param>
+        /// <param name="yesButtonColour">The yes button colour.</param>
+        /// <param name="noButtonColour">The no button colour.</param>
+        /// <param name="textColour">The text colour.</param>
+        /// <param name="yesNoButtonTextColour">The yes no button text colour.</param>
         /// <param name="parentWindow">The parent window of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(string text, string caption,
@@ -816,15 +928,21 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         string buttonOneCustomText = null, string buttonTwoCustomText = null,
                                         string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                         DialogResult? buttonTwoCustomDialogResult = null,
-                                        DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = -1, bool? showToolTips = null,
-                                        bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
+                                        DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = GlobalValues.DEFAULT_CORNER_ROUNDING_VALUE, bool? showToolTips = null,
+                                        bool? useBlur = null, bool? useYesNoCancelButtonColour = null,
+                                        int? blurRadius = 0, Color? contentMessageColour = null, Color? buttonOneTextColour = null,
+                                        Color? buttonTwoTextColour = null, Color? buttonThreeTextColour = null,
+                                        Color? yesButtonColour = null, Color? noButtonColour = null, Color? textColour = null,
+                                        Color? yesNoButtonTextColour = null, KryptonForm parentWindow = null)
         {
             return InternalShow(null, text, caption, buttons, customButtonOptions, ExtendedKryptonMessageBoxIcon.NONE, MessageBoxDefaultButton.Button1,
                          0, null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText,
                                 isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation,
                 null, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText,
-                                buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, 
-                                buttonThreeCustomDialogResult, cornerRadius, showToolTips, useBlur, blurRadius, parentWindow);
+                                buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult,
+                                buttonThreeCustomDialogResult, cornerRadius, showToolTips, useBlur, useYesNoCancelButtonColour, blurRadius,
+                                contentMessageColour, buttonOneTextColour, buttonTwoTextColour,
+                                buttonThreeTextColour, yesButtonColour, noButtonColour, textColour, yesNoButtonTextColour, parentWindow);
         }
 
         /// <summary>
@@ -853,10 +971,19 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="buttonOneCustomDialogResult">The action for the first button to take.</param>
         /// <param name="buttonTwoCustomDialogResult">The action for the second button to take.</param>
         /// <param name="buttonThreeCustomDialogResult">The action for the third button to take.</param>
-        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to -1.</param>
+        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to GlobalValues.DEFAULT_CORNER_ROUNDING_VALUE.</param>
         /// <param name="showToolTips">Displays tool-tips on the controls.</param>
         /// <param name="useBlur">Use the blur functionality on the parent window.</param>
-        /// <param name="blurRadius">The radius of the blur effect. By default, this is set to 0.</param>
+        /// <param name="useYesNoCancelButtonColour">The use yes no cancel button colour.</param>
+        /// <param name="blurRadius">The blur radius.</param>
+        /// <param name="contentMessageColour">The content message colour.</param>
+        /// <param name="buttonOneTextColour">The button one text colour.</param>
+        /// <param name="buttonTwoTextColour">The button two text colour.</param>
+        /// <param name="buttonThreeTextColour">The button three text colour.</param>
+        /// <param name="yesButtonColour">The yes button colour.</param>
+        /// <param name="noButtonColour">The no button colour.</param>
+        /// <param name="textColour">The text colour.</param>
+        /// <param name="yesNoButtonTextColour">The yes no button text colour.</param>
         /// <param name="parentWindow">The parent window of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(IWin32Window owner,
@@ -871,16 +998,21 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         string buttonOneCustomText = null, string buttonTwoCustomText = null,
                                         string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                         DialogResult? buttonTwoCustomDialogResult = null,
-                                        DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = -1, bool? showToolTips = null,
-                                        bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
+                                        DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = GlobalValues.DEFAULT_CORNER_ROUNDING_VALUE, bool? showToolTips = null,
+                                        bool? useBlur = null, bool? useYesNoCancelButtonColour = null,
+                                        int? blurRadius = 0, Color? contentMessageColour = null, Color? buttonOneTextColour = null,
+                                        Color? buttonTwoTextColour = null, Color? buttonThreeTextColour = null,
+                                        Color? yesButtonColour = null, Color? noButtonColour = null, Color? textColour = null,
+                                        Color? yesNoButtonTextColour = null, KryptonForm parentWindow = null)
         {
-            return InternalShow(owner, text, caption, buttons, customButtonOptions, ExtendedKryptonMessageBoxIcon.NONE, 
-                                MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface, 
-                                showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, 
+            return InternalShow(owner, text, caption, buttons, customButtonOptions, ExtendedKryptonMessageBoxIcon.NONE,
+                                MessageBoxDefaultButton.Button1, 0, null, showCtrlCopy, messageboxTypeface,
+                                showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState,
                                 optionalCheckBoxAnchor, optionalCheckBoxLocation, null, showCopyButton, copyButtonText,
                                 fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText,
-                                buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult, 
-                                cornerRadius, showToolTips, useBlur, blurRadius, parentWindow);
+                                buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult,
+                                cornerRadius, showToolTips, useBlur, useYesNoCancelButtonColour, blurRadius, contentMessageColour, buttonOneTextColour, buttonTwoTextColour,
+                                buttonThreeTextColour, yesButtonColour, noButtonColour, textColour, yesNoButtonTextColour, parentWindow);
         }
 
         /// <summary>
@@ -910,10 +1042,19 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="buttonOneCustomDialogResult">The action for the first button to take.</param>
         /// <param name="buttonTwoCustomDialogResult">The action for the second button to take.</param>
         /// <param name="buttonThreeCustomDialogResult">The action for the third button to take.</param>
-        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to -1.</param>
+        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to GlobalValues.DEFAULT_CORNER_ROUNDING_VALUE.</param>
         /// <param name="showToolTips">Displays tool-tips on the controls.</param>
         /// <param name="useBlur">Use the blur functionality on the parent window.</param>
-        /// <param name="blurRadius">The radius of the blur effect. By default, this is set to 0.</param>
+        /// <param name="useYesNoCancelButtonColour">The use yes no cancel button colour.</param>
+        /// <param name="blurRadius">The blur radius.</param>
+        /// <param name="contentMessageColour">The content message colour.</param>
+        /// <param name="buttonOneTextColour">The button one text colour.</param>
+        /// <param name="buttonTwoTextColour">The button two text colour.</param>
+        /// <param name="buttonThreeTextColour">The button three text colour.</param>
+        /// <param name="yesButtonColour">The yes button colour.</param>
+        /// <param name="noButtonColour">The no button colour.</param>
+        /// <param name="textColour">The text colour.</param>
+        /// <param name="yesNoButtonTextColour">The yes no button text colour.</param>
         /// <param name="parentWindow">The parent window of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(string text, string caption,
@@ -929,15 +1070,21 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         string buttonOneCustomText = null, string buttonTwoCustomText = null,
                                         string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                         DialogResult? buttonTwoCustomDialogResult = null,
-                                        DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = -1, bool? showToolTips = null,
-                                        bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
+                                        DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = GlobalValues.DEFAULT_CORNER_ROUNDING_VALUE, bool? showToolTips = null,
+                                        bool? useBlur = null, bool? useYesNoCancelButtonColour = null,
+                                        int? blurRadius = 0, Color? contentMessageColour = null, Color? buttonOneTextColour = null,
+                                        Color? buttonTwoTextColour = null, Color? buttonThreeTextColour = null,
+                                        Color? yesButtonColour = null, Color? noButtonColour = null, Color? textColour = null,
+                                        Color? yesNoButtonTextColour = null, KryptonForm parentWindow = null)
         {
             return InternalShow(null, text, caption, buttons, customButtonOptions, icon, MessageBoxDefaultButton.Button1, 0,
-                                null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, 
+                                null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText,
                                 isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation,
                                 customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText,
                                 buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult,
-                                buttonThreeCustomDialogResult, cornerRadius, showToolTips, useBlur, blurRadius, parentWindow);
+                                buttonThreeCustomDialogResult, cornerRadius, showToolTips, useBlur, useYesNoCancelButtonColour, blurRadius,
+                                contentMessageColour, buttonOneTextColour, buttonTwoTextColour,
+                                buttonThreeTextColour, yesButtonColour, noButtonColour, textColour, yesNoButtonTextColour, parentWindow);
         }
 
         /// <summary>
@@ -968,10 +1115,19 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="buttonOneCustomDialogResult">The action for the first button to take.</param>
         /// <param name="buttonTwoCustomDialogResult">The action for the second button to take.</param>
         /// <param name="buttonThreeCustomDialogResult">The action for the third button to take.</param>
-        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to -1.</param>
+        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to GlobalValues.DEFAULT_CORNER_ROUNDING_VALUE.</param>
         /// <param name="showToolTips">Displays tool-tips on the controls.</param>
         /// <param name="useBlur">Use the blur functionality on the parent window.</param>
-        /// <param name="blurRadius">The radius of the blur effect. By default, this is set to 0.</param>
+        /// <param name="useYesNoCancelButtonColour">The use yes no cancel button colour.</param>
+        /// <param name="blurRadius">The blur radius.</param>
+        /// <param name="contentMessageColour">The content message colour.</param>
+        /// <param name="buttonOneTextColour">The button one text colour.</param>
+        /// <param name="buttonTwoTextColour">The button two text colour.</param>
+        /// <param name="buttonThreeTextColour">The button three text colour.</param>
+        /// <param name="yesButtonColour">The yes button colour.</param>
+        /// <param name="noButtonColour">The no button colour.</param>
+        /// <param name="textColour">The text colour.</param>
+        /// <param name="yesNoButtonTextColour">The yes no button text colour.</param>
         /// <param name="parentWindow">The parent window of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(IWin32Window owner,
@@ -987,15 +1143,21 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         string buttonOneCustomText = null, string buttonTwoCustomText = null,
                                         string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                         DialogResult? buttonTwoCustomDialogResult = null,
-                                        DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = -1, bool? showToolTips = null,
-                                        bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
+                                        DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = GlobalValues.DEFAULT_CORNER_ROUNDING_VALUE, bool? showToolTips = null,
+                                        bool? useBlur = null, bool? useYesNoCancelButtonColour = null,
+                                        int? blurRadius = 0, Color? contentMessageColour = null, Color? buttonOneTextColour = null,
+                                        Color? buttonTwoTextColour = null, Color? buttonThreeTextColour = null,
+                                        Color? yesButtonColour = null, Color? noButtonColour = null, Color? textColour = null,
+                                        Color? yesNoButtonTextColour = null, KryptonForm parentWindow = null)
         {
             return InternalShow(owner, text, caption, buttons, customButtonOptions, icon, MessageBoxDefaultButton.Button1, 0,
                                 null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText,
-                                isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, 
-                                customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, 
-                                buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, 
-                                buttonThreeCustomDialogResult, cornerRadius, showToolTips, useBlur, blurRadius, parentWindow);
+                                isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation,
+                                customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText,
+                                buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult,
+                                buttonThreeCustomDialogResult, cornerRadius, showToolTips, useBlur, useYesNoCancelButtonColour, blurRadius,
+                                contentMessageColour, buttonOneTextColour, buttonTwoTextColour,
+                                buttonThreeTextColour, yesButtonColour, noButtonColour, textColour, yesNoButtonTextColour, parentWindow);
         }
 
         /// <summary>
@@ -1026,10 +1188,19 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="buttonOneCustomDialogResult">The action for the first button to take.</param>
         /// <param name="buttonTwoCustomDialogResult">The action for the second button to take.</param>
         /// <param name="buttonThreeCustomDialogResult">The action for the third button to take.</param>
-        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to -1.</param>
+        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to GlobalValues.DEFAULT_CORNER_ROUNDING_VALUE.</param>
         /// <param name="showToolTips">Displays tool-tips on the controls.</param>
         /// <param name="useBlur">Use the blur functionality on the parent window.</param>
-        /// <param name="blurRadius">The radius of the blur effect. By default, this is set to 0.</param>
+        /// <param name="useYesNoCancelButtonColour">The use yes no cancel button colour.</param>
+        /// <param name="blurRadius">The blur radius.</param>
+        /// <param name="contentMessageColour">The content message colour.</param>
+        /// <param name="buttonOneTextColour">The button one text colour.</param>
+        /// <param name="buttonTwoTextColour">The button two text colour.</param>
+        /// <param name="buttonThreeTextColour">The button three text colour.</param>
+        /// <param name="yesButtonColour">The yes button colour.</param>
+        /// <param name="noButtonColour">The no button colour.</param>
+        /// <param name="textColour">The text colour.</param>
+        /// <param name="yesNoButtonTextColour">The yes no button text colour.</param>
         /// <param name="parentWindow">The parent window of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(string text, string caption,
@@ -1044,15 +1215,21 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         string buttonOneCustomText = null, string buttonTwoCustomText = null,
                                         string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                         DialogResult? buttonTwoCustomDialogResult = null,
-                                        DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = -1, bool? showToolTips = null,
-                                        bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
+                                        DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = GlobalValues.DEFAULT_CORNER_ROUNDING_VALUE, bool? showToolTips = null,
+                                        bool? useBlur = null, bool? useYesNoCancelButtonColour = null,
+                                        int? blurRadius = 0, Color? contentMessageColour = null, Color? buttonOneTextColour = null,
+                                        Color? buttonTwoTextColour = null, Color? buttonThreeTextColour = null,
+                                        Color? yesButtonColour = null, Color? noButtonColour = null, Color? textColour = null,
+                                        Color? yesNoButtonTextColour = null, KryptonForm parentWindow = null)
         {
-            return InternalShow(null, text, caption, buttons, customButtonOptions, icon, defaultButton, 0, null, 
+            return InternalShow(null, text, caption, buttons, customButtonOptions, icon, defaultButton, 0, null,
                                 showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked,
                                 optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon,
-                                showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, 
+                                showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText,
                                 buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult,
-                                buttonThreeCustomDialogResult, cornerRadius, showToolTips, useBlur, blurRadius, parentWindow);
+                                buttonThreeCustomDialogResult, cornerRadius, showToolTips, useBlur, useYesNoCancelButtonColour, blurRadius,
+                                contentMessageColour, buttonOneTextColour, buttonTwoTextColour,
+                                buttonThreeTextColour, yesButtonColour, noButtonColour, textColour, yesNoButtonTextColour, parentWindow);
         }
 
         /// <summary>
@@ -1084,10 +1261,19 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="buttonOneCustomDialogResult">The action for the first button to take.</param>
         /// <param name="buttonTwoCustomDialogResult">The action for the second button to take.</param>
         /// <param name="buttonThreeCustomDialogResult">The action for the third button to take.</param>
-        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to -1.</param>
+        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to GlobalValues.DEFAULT_CORNER_ROUNDING_VALUE.</param>
         /// <param name="showToolTips">Displays tool-tips on the controls.</param>
         /// <param name="useBlur">Use the blur functionality on the parent window.</param>
-        /// <param name="blurRadius">The radius of the blur effect. By default, this is set to 0.</param>
+        /// <param name="useYesNoCancelButtonColour">The use yes no cancel button colour.</param>
+        /// <param name="blurRadius">The blur radius.</param>
+        /// <param name="contentMessageColour">The content message colour.</param>
+        /// <param name="buttonOneTextColour">The button one text colour.</param>
+        /// <param name="buttonTwoTextColour">The button two text colour.</param>
+        /// <param name="buttonThreeTextColour">The button three text colour.</param>
+        /// <param name="yesButtonColour">The yes button colour.</param>
+        /// <param name="noButtonColour">The no button colour.</param>
+        /// <param name="textColour">The text colour.</param>
+        /// <param name="yesNoButtonTextColour">The yes no button text colour.</param>
         /// <param name="parentWindow">The parent window of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(IWin32Window owner,
@@ -1104,15 +1290,21 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         string buttonOneCustomText = null, string buttonTwoCustomText = null,
                                         string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                         DialogResult? buttonTwoCustomDialogResult = null,
-                                        DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = -1, bool? showToolTips = null,
-                                        bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
+                                        DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = GlobalValues.DEFAULT_CORNER_ROUNDING_VALUE, bool? showToolTips = null,
+                                        bool? useBlur = null, bool? useYesNoCancelButtonColour = null,
+                                        int? blurRadius = 0, Color? contentMessageColour = null, Color? buttonOneTextColour = null,
+                                        Color? buttonTwoTextColour = null, Color? buttonThreeTextColour = null,
+                                        Color? yesButtonColour = null, Color? noButtonColour = null, Color? textColour = null,
+                                        Color? yesNoButtonTextColour = null, KryptonForm parentWindow = null)
         {
-            return InternalShow(owner, text, caption, buttons, customButtonOptions, icon, defaultButton, 0, null, 
-                                showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, 
-                                optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, 
-                                showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, 
-                                buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, 
-                                buttonThreeCustomDialogResult, cornerRadius, showToolTips, useBlur, blurRadius, parentWindow);
+            return InternalShow(owner, text, caption, buttons, customButtonOptions, icon, defaultButton, 0, null,
+                                showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked,
+                                optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon,
+                                showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText,
+                                buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult,
+                                buttonThreeCustomDialogResult, cornerRadius, showToolTips, useBlur, useYesNoCancelButtonColour, blurRadius,
+                                contentMessageColour, buttonOneTextColour, buttonTwoTextColour,
+                                buttonThreeTextColour, yesButtonColour, noButtonColour, textColour, yesNoButtonTextColour, parentWindow);
         }
 
         /// <summary>
@@ -1144,10 +1336,19 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="buttonOneCustomDialogResult">The action for the first button to take.</param>
         /// <param name="buttonTwoCustomDialogResult">The action for the second button to take.</param>
         /// <param name="buttonThreeCustomDialogResult">The action for the third button to take.</param>
-        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to -1.</param>
+        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to GlobalValues.DEFAULT_CORNER_ROUNDING_VALUE.</param>
         /// <param name="showToolTips">Displays tool-tips on the controls.</param>
         /// <param name="useBlur">Use the blur functionality on the parent window.</param>
-        /// <param name="blurRadius">The radius of the blur effect. By default, this is set to 0.</param>
+        /// <param name="useYesNoCancelButtonColour">The use yes no cancel button colour.</param>
+        /// <param name="blurRadius">The blur radius.</param>
+        /// <param name="contentMessageColour">The content message colour.</param>
+        /// <param name="buttonOneTextColour">The button one text colour.</param>
+        /// <param name="buttonTwoTextColour">The button two text colour.</param>
+        /// <param name="buttonThreeTextColour">The button three text colour.</param>
+        /// <param name="yesButtonColour">The yes button colour.</param>
+        /// <param name="noButtonColour">The no button colour.</param>
+        /// <param name="textColour">The text colour.</param>
+        /// <param name="yesNoButtonTextColour">The yes no button text colour.</param>
         /// <param name="parentWindow">The parent window of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(string text, string caption,
@@ -1164,15 +1365,21 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         string buttonOneCustomText = null, string buttonTwoCustomText = null,
                                         string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                         DialogResult? buttonTwoCustomDialogResult = null,
-                                        DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = -1, bool? showToolTips = null,
-                                        bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
+                                        DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = GlobalValues.DEFAULT_CORNER_ROUNDING_VALUE, bool? showToolTips = null,
+                                        bool? useBlur = null, bool? useYesNoCancelButtonColour = null,
+                                        int? blurRadius = 0, Color? contentMessageColour = null, Color? buttonOneTextColour = null,
+                                        Color? buttonTwoTextColour = null, Color? buttonThreeTextColour = null,
+                                        Color? yesButtonColour = null, Color? noButtonColour = null, Color? textColour = null,
+                                        Color? yesNoButtonTextColour = null, KryptonForm parentWindow = null)
         {
-            return InternalShow(null, text, caption, buttons, customButtonOptions, icon, defaultButton, options, null, 
-                                showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, 
+            return InternalShow(null, text, caption, buttons, customButtonOptions, icon, defaultButton, options, null,
+                                showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked,
                                 optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon,
-                                showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, 
-                                buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, 
-                                buttonThreeCustomDialogResult, cornerRadius, showToolTips, useBlur, blurRadius, parentWindow);
+                                showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText,
+                                buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult,
+                                buttonThreeCustomDialogResult, cornerRadius, showToolTips, useBlur, useYesNoCancelButtonColour, blurRadius,
+                                contentMessageColour, buttonOneTextColour, buttonTwoTextColour,
+                                buttonThreeTextColour, yesButtonColour, noButtonColour, textColour, yesNoButtonTextColour, parentWindow);
         }
 
         /// <summary>
@@ -1205,10 +1412,19 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="buttonOneCustomDialogResult">The action for the first button to take.</param>
         /// <param name="buttonTwoCustomDialogResult">The action for the second button to take.</param>
         /// <param name="buttonThreeCustomDialogResult">The action for the third button to take.</param>
-        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to -1.</param>
+        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to GlobalValues.DEFAULT_CORNER_ROUNDING_VALUE.</param>
         /// <param name="showToolTips">Displays tool-tips on the controls.</param>
         /// <param name="useBlur">Use the blur functionality on the parent window.</param>
-        /// <param name="blurRadius">The radius of the blur effect. By default, this is set to 0.</param>
+        /// <param name="useYesNoCancelButtonColour">The use yes no cancel button colour.</param>
+        /// <param name="blurRadius">The blur radius.</param>
+        /// <param name="contentMessageColour">The content message colour.</param>
+        /// <param name="buttonOneTextColour">The button one text colour.</param>
+        /// <param name="buttonTwoTextColour">The button two text colour.</param>
+        /// <param name="buttonThreeTextColour">The button three text colour.</param>
+        /// <param name="yesButtonColour">The yes button colour.</param>
+        /// <param name="noButtonColour">The no button colour.</param>
+        /// <param name="textColour">The text colour.</param>
+        /// <param name="yesNoButtonTextColour">The yes no button text colour.</param>
         /// <param name="parentWindow">The parent window of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(IWin32Window owner,
@@ -1226,15 +1442,21 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         string buttonOneCustomText = null, string buttonTwoCustomText = null,
                                         string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                         DialogResult? buttonTwoCustomDialogResult = null,
-                                        DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = -1, bool? showToolTips = null,
-                                        bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
+                                        DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = GlobalValues.DEFAULT_CORNER_ROUNDING_VALUE, bool? showToolTips = null,
+                                        bool? useBlur = null, bool? useYesNoCancelButtonColour = null,
+                                        int? blurRadius = 0, Color? contentMessageColour = null, Color? buttonOneTextColour = null,
+                                        Color? buttonTwoTextColour = null, Color? buttonThreeTextColour = null,
+                                        Color? yesButtonColour = null, Color? noButtonColour = null, Color? textColour = null,
+                                        Color? yesNoButtonTextColour = null, KryptonForm parentWindow = null)
         {
-            return InternalShow(owner, text, caption, buttons, customButtonOptions, icon, defaultButton, options, null, 
-                                showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, 
-                                optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, 
-                                showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, 
+            return InternalShow(owner, text, caption, buttons, customButtonOptions, icon, defaultButton, options, null,
+                                showCtrlCopy, messageboxTypeface, showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked,
+                                optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon,
+                                showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText,
                                 buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult,
-                                buttonThreeCustomDialogResult, cornerRadius, showToolTips, useBlur, blurRadius, parentWindow);
+                                buttonThreeCustomDialogResult, cornerRadius, showToolTips, useBlur, useYesNoCancelButtonColour, blurRadius,
+                                contentMessageColour, buttonOneTextColour, buttonTwoTextColour,
+                                buttonThreeTextColour, yesButtonColour, noButtonColour, textColour, yesNoButtonTextColour, parentWindow);
         }
 
         /// <summary>
@@ -1267,10 +1489,19 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="buttonOneCustomDialogResult">The action for the first button to take.</param>
         /// <param name="buttonTwoCustomDialogResult">The action for the second button to take.</param>
         /// <param name="buttonThreeCustomDialogResult">The action for the third button to take.</param>
-        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to -1.</param>
+        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to GlobalValues.DEFAULT_CORNER_ROUNDING_VALUE.</param>
         /// <param name="showToolTips">Displays tool-tips on the controls.</param>
         /// <param name="useBlur">Use the blur functionality on the parent window.</param>
-        /// <param name="blurRadius">The radius of the blur effect. By default, this is set to 0.</param>
+        /// <param name="useYesNoCancelButtonColour">The use yes no cancel button colour.</param>
+        /// <param name="blurRadius">The blur radius.</param>
+        /// <param name="contentMessageColour">The content message colour.</param>
+        /// <param name="buttonOneTextColour">The button one text colour.</param>
+        /// <param name="buttonTwoTextColour">The button two text colour.</param>
+        /// <param name="buttonThreeTextColour">The button three text colour.</param>
+        /// <param name="yesButtonColour">The yes button colour.</param>
+        /// <param name="noButtonColour">The no button colour.</param>
+        /// <param name="textColour">The text colour.</param>
+        /// <param name="yesNoButtonTextColour">The yes no button text colour.</param>
         /// <param name="parentWindow">The parent window of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(string text, string caption,
@@ -1287,78 +1518,98 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         string buttonOneCustomText = null, string buttonTwoCustomText = null,
                                         string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                         DialogResult? buttonTwoCustomDialogResult = null,
-                                        DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = -1, bool? showToolTips = null,
-                                        bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
-        {
-            return InternalShow(null, text, caption, buttons, customButtonOptions, icon, defaultButton, options, 
-                                displayHelpButton ? new HelpInformation() : null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox, 
-                                optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, 
-                                optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer,
-                                buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, 
-                                buttonTwoCustomDialogResult, buttonThreeCustomDialogResult, cornerRadius, showToolTips, useBlur,
-                                blurRadius, parentWindow);
-        }
-
-        /// <summary>
-        /// Displays a message box with the specified text, caption, buttons, icon, default button, options, and Help button, using the specified Help file.
-        /// </summary>
-        /// <param name="text">The text to display in the message box.</param>
-        /// <param name="caption">The text to display in the title bar of the message box.</param>
-        /// <param name="buttons">One of the System.Windows.Forms.ExtendedMessageBoxButton values that specifies which buttons to display in the message box.</param>
-        /// <param name="customButtonOptions">Custom button options.</param>
-        /// <param name="icon">One of the System.Windows.Forms.ExtendedMessageBoxIcon values that specifies which icon to display in the message box.</param>
-        /// <param name="defaultButton">One of the System.Windows.Forms.MessageBoxDefaultButton values that specifies the default button for the message box.</param>
-        /// <param name="options">One of the System.Windows.Forms.MessageBoxOptions values that specifies which display and association options will be used for the message box. You may pass in 0 if you wish to use the defaults.</param>
-        /// <param name="helpFilePath">The path and name of the Help file to display when the user clicks the Help button.</param>
-        /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
-        /// <param name="messageboxTypeface">The message box typeface. (Can be null)</param>
-        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
-        /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
-        /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
-        /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
-        /// <param name="optionalCheckBoxAnchor">The <see cref="AnchorStyles"/> of the optional check box. (Always keep it to the left.)</param>
-        /// <param name="optionalCheckBoxLocation">The location of the optional check box.</param>
-        /// <param name="customMessageBoxIcon">Set a custom message box icon. (Must be at least a 32 x 32 PNG image.)</param>
-        /// <param name="showCopyButton">Shows an optional copy button, to copy the message box content text to the Windows clipboard.</param>
-        /// <param name="copyButtonText">The text shown on the copy button.</param>
-        /// <param name="fade">Allows the message box to fade in and out.</param>
-        /// <param name="fadeSleepTimer">The speed of the fading effect.</param>
-        /// <param name="buttonOneCustomText">The custom text on the first button.</param>
-        /// <param name="buttonTwoCustomText">The custom text on the second button.</param>
-        /// <param name="buttonThreeCustomText">The custom text on the third button.</param>
-        /// <param name="buttonOneCustomDialogResult">The action for the first button to take.</param>
-        /// <param name="buttonTwoCustomDialogResult">The action for the second button to take.</param>
-        /// <param name="buttonThreeCustomDialogResult">The action for the third button to take.</param>
-        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to -1.</param>
-        /// <param name="showToolTips">Displays tool-tips on the controls.</param>
-        /// <param name="useBlur">Use the blur functionality on the parent window.</param>
-        /// <param name="blurRadius">The radius of the blur effect. By default, this is set to 0.</param>
-        /// <param name="parentWindow">The parent window of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
-        /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
-        public static DialogResult Show(string text, string caption,
-                                        ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions customButtonOptions,
-                                        ExtendedKryptonMessageBoxIcon icon,
-                                        MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
-                                        string helpFilePath, bool? showCtrlCopy = null, Font messageboxTypeface = null,
-                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
-                                        bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
-                                        AnchorStyles? optionalCheckBoxAnchor = null,
-                                        Point? optionalCheckBoxLocation = null, Image customMessageBoxIcon = null,
-                                        bool showCopyButton = false, string copyButtonText = null,
-                                        bool? fade = false, int? fadeSleepTimer = 50,
-                                        string buttonOneCustomText = null, string buttonTwoCustomText = null,
-                                        string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
-                                        DialogResult? buttonTwoCustomDialogResult = null,
-                                        DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = -1, bool? showToolTips = null,
-                                        bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
+                                        DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = GlobalValues.DEFAULT_CORNER_ROUNDING_VALUE,
+                                        bool? showToolTips = null,
+                                        bool? useBlur = null, bool? useYesNoCancelButtonColour = null,
+                                        int? blurRadius = 0, Color? contentMessageColour = null, Color? buttonOneTextColour = null,
+                                        Color? buttonTwoTextColour = null, Color? buttonThreeTextColour = null,
+                                        Color? yesButtonColour = null, Color? noButtonColour = null, Color? textColour = null,
+                                        Color? yesNoButtonTextColour = null, KryptonForm parentWindow = null)
         {
             return InternalShow(null, text, caption, buttons, customButtonOptions, icon, defaultButton, options,
-                                new HelpInformation(helpFilePath), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, 
-                                optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, 
+                                displayHelpButton ? new HelpInformation() : null, showCtrlCopy, messageboxTypeface, showOptionalCheckBox,
+                                optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor,
                                 optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer,
-                                buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult, 
-                                buttonTwoCustomDialogResult, buttonThreeCustomDialogResult, cornerRadius, showToolTips, useBlur, 
-                                blurRadius, parentWindow);
+                                buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult,
+                                buttonTwoCustomDialogResult, buttonThreeCustomDialogResult, cornerRadius, showToolTips, useBlur,
+                                useYesNoCancelButtonColour, blurRadius, contentMessageColour, buttonOneTextColour, buttonTwoTextColour,
+                                buttonThreeTextColour, yesButtonColour, noButtonColour, textColour, yesNoButtonTextColour, parentWindow);
+        }
+
+        /// <summary>
+        /// Displays a message box with the specified text, caption, buttons, icon, default button, options, and Help button, using the specified Help file.
+        /// </summary>
+        /// <param name="text">The text to display in the message box.</param>
+        /// <param name="caption">The text to display in the title bar of the message box.</param>
+        /// <param name="buttons">One of the System.Windows.Forms.ExtendedMessageBoxButton values that specifies which buttons to display in the message box.</param>
+        /// <param name="customButtonOptions">Custom button options.</param>
+        /// <param name="icon">One of the System.Windows.Forms.ExtendedMessageBoxIcon values that specifies which icon to display in the message box.</param>
+        /// <param name="defaultButton">One of the System.Windows.Forms.MessageBoxDefaultButton values that specifies the default button for the message box.</param>
+        /// <param name="options">One of the System.Windows.Forms.MessageBoxOptions values that specifies which display and association options will be used for the message box. You may pass in 0 if you wish to use the defaults.</param>
+        /// <param name="helpFilePath">The path and name of the Help file to display when the user clicks the Help button.</param>
+        /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
+        /// <param name="messageboxTypeface">The message box typeface. (Can be null)</param>
+        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
+        /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
+        /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
+        /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
+        /// <param name="optionalCheckBoxAnchor">The <see cref="AnchorStyles"/> of the optional check box. (Always keep it to the left.)</param>
+        /// <param name="optionalCheckBoxLocation">The location of the optional check box.</param>
+        /// <param name="customMessageBoxIcon">Set a custom message box icon. (Must be at least a 32 x 32 PNG image.)</param>
+        /// <param name="showCopyButton">Shows an optional copy button, to copy the message box content text to the Windows clipboard.</param>
+        /// <param name="copyButtonText">The text shown on the copy button.</param>
+        /// <param name="fade">Allows the message box to fade in and out.</param>
+        /// <param name="fadeSleepTimer">The speed of the fading effect.</param>
+        /// <param name="buttonOneCustomText">The custom text on the first button.</param>
+        /// <param name="buttonTwoCustomText">The custom text on the second button.</param>
+        /// <param name="buttonThreeCustomText">The custom text on the third button.</param>
+        /// <param name="buttonOneCustomDialogResult">The action for the first button to take.</param>
+        /// <param name="buttonTwoCustomDialogResult">The action for the second button to take.</param>
+        /// <param name="buttonThreeCustomDialogResult">The action for the third button to take.</param>
+        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to GlobalValues.DEFAULT_CORNER_ROUNDING_VALUE.</param>
+        /// <param name="showToolTips">Displays tool-tips on the controls.</param>
+        /// <param name="useBlur">Use the blur functionality on the parent window.</param>
+        /// <param name="useYesNoCancelButtonColour">The use yes no cancel button colour.</param>
+        /// <param name="blurRadius">The blur radius.</param>
+        /// <param name="contentMessageColour">The content message colour.</param>
+        /// <param name="buttonOneTextColour">The button one text colour.</param>
+        /// <param name="buttonTwoTextColour">The button two text colour.</param>
+        /// <param name="buttonThreeTextColour">The button three text colour.</param>
+        /// <param name="yesButtonColour">The yes button colour.</param>
+        /// <param name="noButtonColour">The no button colour.</param>
+        /// <param name="textColour">The text colour.</param>
+        /// <param name="yesNoButtonTextColour">The yes no button text colour.</param>
+        /// <param name="parentWindow">The parent window of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
+        /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
+        public static DialogResult Show(string text, string caption,
+                                        ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions customButtonOptions,
+                                        ExtendedKryptonMessageBoxIcon icon,
+                                        MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
+                                        string helpFilePath, bool? showCtrlCopy = null, Font messageboxTypeface = null,
+                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
+                                        bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
+                                        AnchorStyles? optionalCheckBoxAnchor = null,
+                                        Point? optionalCheckBoxLocation = null, Image customMessageBoxIcon = null,
+                                        bool showCopyButton = false, string copyButtonText = null,
+                                        bool? fade = false, int? fadeSleepTimer = 50,
+                                        string buttonOneCustomText = null, string buttonTwoCustomText = null,
+                                        string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
+                                        DialogResult? buttonTwoCustomDialogResult = null,
+                                        DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = GlobalValues.DEFAULT_CORNER_ROUNDING_VALUE, bool? showToolTips = null,
+                                        bool? useBlur = null, bool? useYesNoCancelButtonColour = null,
+                                        int? blurRadius = 0, Color? contentMessageColour = null, Color? buttonOneTextColour = null,
+                                        Color? buttonTwoTextColour = null, Color? buttonThreeTextColour = null,
+                                        Color? yesButtonColour = null, Color? noButtonColour = null, Color? textColour = null,
+                                        Color? yesNoButtonTextColour = null, KryptonForm parentWindow = null)
+        {
+            return InternalShow(null, text, caption, buttons, customButtonOptions, icon, defaultButton, options,
+                                new HelpInformation(helpFilePath), showCtrlCopy, messageboxTypeface, showOptionalCheckBox,
+                                optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor,
+                                optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer,
+                                buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult,
+                                buttonTwoCustomDialogResult, buttonThreeCustomDialogResult, cornerRadius, showToolTips, useBlur,
+                                useYesNoCancelButtonColour, blurRadius, contentMessageColour, buttonOneTextColour, buttonTwoTextColour,
+                                buttonThreeTextColour, yesButtonColour, noButtonColour, textColour, yesNoButtonTextColour, parentWindow);
         }
 
         /// <summary>
@@ -1392,10 +1643,19 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="buttonOneCustomDialogResult">The action for the first button to take.</param>
         /// <param name="buttonTwoCustomDialogResult">The action for the second button to take.</param>
         /// <param name="buttonThreeCustomDialogResult">The action for the third button to take.</param>
-        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to -1.</param>
+        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to GlobalValues.DEFAULT_CORNER_ROUNDING_VALUE.</param>
         /// <param name="showToolTips">Displays tool-tips on the controls.</param>
         /// <param name="useBlur">Use the blur functionality on the parent window.</param>
-        /// <param name="blurRadius">The radius of the blur effect. By default, this is set to 0.</param>
+        /// <param name="useYesNoCancelButtonColour">The use yes no cancel button colour.</param>
+        /// <param name="blurRadius">The blur radius.</param>
+        /// <param name="contentMessageColour">The content message colour.</param>
+        /// <param name="buttonOneTextColour">The button one text colour.</param>
+        /// <param name="buttonTwoTextColour">The button two text colour.</param>
+        /// <param name="buttonThreeTextColour">The button three text colour.</param>
+        /// <param name="yesButtonColour">The yes button colour.</param>
+        /// <param name="noButtonColour">The no button colour.</param>
+        /// <param name="textColour">The text colour.</param>
+        /// <param name="yesNoButtonTextColour">The yes no button text colour.</param>
         /// <param name="parentWindow">The parent window of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(IWin32Window owner,
@@ -1413,148 +1673,26 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         string buttonOneCustomText = null, string buttonTwoCustomText = null,
                                         string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                         DialogResult? buttonTwoCustomDialogResult = null,
-                                        DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = -1, bool? showToolTips = null,
-                                        bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
+                                        DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = GlobalValues.DEFAULT_CORNER_ROUNDING_VALUE, bool? showToolTips = null,
+                                        bool? useBlur = null, bool? useYesNoCancelButtonColour = null,
+                                        int? blurRadius = 0, Color? contentMessageColour = null, Color? buttonOneTextColour = null,
+                                        Color? buttonTwoTextColour = null, Color? buttonThreeTextColour = null,
+                                        Color? yesButtonColour = null, Color? noButtonColour = null, Color? textColour = null,
+                                        Color? yesNoButtonTextColour = null, KryptonForm parentWindow = null)
         {
             return InternalShow(owner, text, caption, buttons, customButtonOptions, icon, defaultButton, options,
-                   new HelpInformation(helpFilePath), showCtrlCopy, messageboxTypeface, showOptionalCheckBox, 
+                   new HelpInformation(helpFilePath), showCtrlCopy, messageboxTypeface, showOptionalCheckBox,
                                 optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor,
-                                optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, 
-                                buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult,
-                                buttonTwoCustomDialogResult, buttonThreeCustomDialogResult, cornerRadius, showToolTips, useBlur,
-                                blurRadius, parentWindow);
-        }
-
-        /// <summary>
-        /// Displays a message box with the specified text, caption, buttons, icon, default button, options, and Help button, using the specified Help file and HelpNavigator.
-        /// </summary>
-        /// <param name="text">The text to display in the message box.</param>
-        /// <param name="caption">The text to display in the title bar of the message box.</param>
-        /// <param name="buttons">One of the System.Windows.Forms.ExtendedMessageBoxButton values that specifies which buttons to display in the message box.</param>
-        /// <param name="customButtonOptions">Custom button options.</param>
-        /// <param name="icon">One of the System.Windows.Forms.ExtendedMessageBoxIcon values that specifies which icon to display in the message box.</param>
-        /// <param name="defaultButton">One of the System.Windows.Forms.MessageBoxDefaultButton values that specifies the default button for the message box.</param>
-        /// <param name="options">One of the System.Windows.Forms.MessageBoxOptions values that specifies which display and association options will be used for the message box. You may pass in 0 if you wish to use the defaults.</param>
-        /// <param name="helpFilePath">The path and name of the Help file to display when the user clicks the Help button.</param>
-        /// <param name="navigator">One of the System.Windows.Forms.HelpNavigator values.</param>
-        /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
-        /// <param name="messageboxTypeface">The message box typeface. (Can be null)</param>
-        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
-        /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
-        /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
-        /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
-        /// <param name="optionalCheckBoxAnchor">The <see cref="AnchorStyles"/> of the optional check box. (Always keep it to the left.)</param>
-        /// <param name="optionalCheckBoxLocation">The location of the optional check box.</param>
-        /// <param name="customMessageBoxIcon">Set a custom message box icon. (Must be at least a 32 x 32 PNG image.)</param>
-        /// <param name="showCopyButton">Shows an optional copy button, to copy the message box content text to the Windows clipboard.</param>
-        /// <param name="copyButtonText">The text shown on the copy button.</param>
-        /// <param name="fade">Allows the message box to fade in and out.</param>
-        /// <param name="fadeSleepTimer">The speed of the fading effect.</param>
-        /// <param name="buttonOneCustomText">The custom text on the first button.</param>
-        /// <param name="buttonTwoCustomText">The custom text on the second button.</param>
-        /// <param name="buttonThreeCustomText">The custom text on the third button.</param>
-        /// <param name="buttonOneCustomDialogResult">The action for the first button to take.</param>
-        /// <param name="buttonTwoCustomDialogResult">The action for the second button to take.</param>
-        /// <param name="buttonThreeCustomDialogResult">The action for the third button to take.</param>
-        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to -1.</param>
-        /// <param name="showToolTips">Displays tool-tips on the controls.</param>
-        /// <param name="useBlur">Use the blur functionality on the parent window.</param>
-        /// <param name="blurRadius">The radius of the blur effect. By default, this is set to 0.</param>
-        /// <param name="parentWindow">The parent window of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
-        /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
-        public static DialogResult Show(string text, string caption,
-                                        ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions customButtonOptions,
-                                        ExtendedKryptonMessageBoxIcon icon,
-                                        MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
-                                        string helpFilePath, HelpNavigator navigator, bool? showCtrlCopy = null,
-                                        Font messageboxTypeface = null, bool showOptionalCheckBox = false,
-                                        string optionalCheckBoxText = null, bool isOptionalCheckBoxChecked = false,
-                                        CheckState? optionalCheckBoxCheckState = null,
-                                        AnchorStyles? optionalCheckBoxAnchor = null, Point? optionalCheckBoxLocation = null,
-                                        Image customMessageBoxIcon = null, bool showCopyButton = false,
-                                        string copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50,
-                                        string buttonOneCustomText = null, string buttonTwoCustomText = null,
-                                        string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
-                                        DialogResult? buttonTwoCustomDialogResult = null,
-                                        DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = -1, bool? showToolTips = null,
-                                        bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
-        {
-            return InternalShow(null, text, caption, buttons, customButtonOptions, icon, defaultButton, options, 
-                                new HelpInformation(helpFilePath, navigator), showCtrlCopy, messageboxTypeface, 
-                                showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, 
-                                optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, 
-                                fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText,
-                                buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult, 
-                                cornerRadius, showToolTips, useBlur, blurRadius, parentWindow);
-        }
-
-        /// <summary>
-        /// Displays a message box with the specified text, caption, buttons, icon, default button, options, and Help button, using the specified Help file and Help keyword.
-        /// </summary>
-        /// <param name="text">The text to display in the message box.</param>
-        /// <param name="caption">The text to display in the title bar of the message box.</param>
-        /// <param name="buttons">One of the System.Windows.Forms.ExtendedMessageBoxButton values that specifies which buttons to display in the message box.</param>
-        /// <param name="customButtonOptions">Custom button options.</param>
-        /// <param name="icon">One of the System.Windows.Forms.ExtendedMessageBoxIcon values that specifies which icon to display in the message box.</param>
-        /// <param name="defaultButton">One of the System.Windows.Forms.MessageBoxDefaultButton values that specifies the default button for the message box.</param>
-        /// <param name="options">One of the System.Windows.Forms.MessageBoxOptions values that specifies which display and association options will be used for the message box. You may pass in 0 if you wish to use the defaults.</param>
-        /// <param name="helpFilePath">The path and name of the Help file to display when the user clicks the Help button.</param>
-        /// <param name="keyword">The Help keyword to display when the user clicks the Help button.</param>
-        /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
-        /// <param name="messageboxTypeface">The message box typeface. (Can be null)</param>
-        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
-        /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
-        /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
-        /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
-        /// <param name="optionalCheckBoxAnchor">The <see cref="AnchorStyles"/> of the optional check box. (Always keep it to the left.)</param>
-        /// <param name="optionalCheckBoxLocation">The location of the optional check box.</param>
-        /// <param name="customMessageBoxIcon">Set a custom message box icon. (Must be at least a 32 x 32 PNG image.)</param>
-        /// <param name="showCopyButton">Shows an optional copy button, to copy the message box content text to the Windows clipboard.</param>
-        /// <param name="copyButtonText">The text shown on the copy button.</param>
-        /// <param name="fade">Allows the message box to fade in and out.</param>
-        /// <param name="fadeSleepTimer">The speed of the fading effect.</param>
-        /// <param name="buttonOneCustomText">The custom text on the first button.</param>
-        /// <param name="buttonTwoCustomText">The custom text on the second button.</param>
-        /// <param name="buttonThreeCustomText">The custom text on the third button.</param>
-        /// <param name="buttonOneCustomDialogResult">The action for the first button to take.</param>
-        /// <param name="buttonTwoCustomDialogResult">The action for the second button to take.</param>
-        /// <param name="buttonThreeCustomDialogResult">The action for the third button to take.</param>
-        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to -1.</param>
-        /// <param name="showToolTips">Displays tool-tips on the controls.</param>
-        /// <param name="useBlur">Use the blur functionality on the parent window.</param>
-        /// <param name="blurRadius">The radius of the blur effect. By default, this is set to 0.</param>
-        /// <param name="parentWindow">The parent window of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
-        /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
-        public static DialogResult Show(string text, string caption,
-                                        ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions customButtonOptions,
-                                        ExtendedKryptonMessageBoxIcon icon,
-                                        MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
-                                        string helpFilePath, string keyword, bool? showCtrlCopy = null, Font messageboxTypeface = null,
-                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
-                                        bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
-                                        AnchorStyles? optionalCheckBoxAnchor = null,
-                                        Point? optionalCheckBoxLocation = null, Image customMessageBoxIcon = null,
-                                        bool showCopyButton = false, string copyButtonText = null,
-                                        bool? fade = false, int? fadeSleepTimer = 50,
-                                        string buttonOneCustomText = null, string buttonTwoCustomText = null,
-                                        string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
-                                        DialogResult? buttonTwoCustomDialogResult = null,
-                                        DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = -1, bool? showToolTips = null,
-                                        bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
-        {
-            return InternalShow(null, text, caption, buttons, customButtonOptions, icon, defaultButton, options, 
-                                new HelpInformation(helpFilePath, keyword), showCtrlCopy, messageboxTypeface, showOptionalCheckBox,
-                                optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, 
                                 optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer,
                                 buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult,
                                 buttonTwoCustomDialogResult, buttonThreeCustomDialogResult, cornerRadius, showToolTips, useBlur,
-                                blurRadius, parentWindow);
+                                useYesNoCancelButtonColour, blurRadius, contentMessageColour, buttonOneTextColour, buttonTwoTextColour,
+                                buttonThreeTextColour, yesButtonColour, noButtonColour, textColour, yesNoButtonTextColour, parentWindow);
         }
 
         /// <summary>
         /// Displays a message box with the specified text, caption, buttons, icon, default button, options, and Help button, using the specified Help file and HelpNavigator.
         /// </summary>
-        /// <param name="owner">Owner of the modal dialog box.</param>
         /// <param name="text">The text to display in the message box.</param>
         /// <param name="caption">The text to display in the title bar of the message box.</param>
         /// <param name="buttons">One of the System.Windows.Forms.ExtendedMessageBoxButton values that specifies which buttons to display in the message box.</param>
@@ -1583,14 +1721,22 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="buttonOneCustomDialogResult">The action for the first button to take.</param>
         /// <param name="buttonTwoCustomDialogResult">The action for the second button to take.</param>
         /// <param name="buttonThreeCustomDialogResult">The action for the third button to take.</param>
-        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to -1.</param>
+        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to GlobalValues.DEFAULT_CORNER_ROUNDING_VALUE.</param>
         /// <param name="showToolTips">Displays tool-tips on the controls.</param>
         /// <param name="useBlur">Use the blur functionality on the parent window.</param>
-        /// <param name="blurRadius">The radius of the blur effect. By default, this is set to 0.</param>
+        /// <param name="useYesNoCancelButtonColour">The use yes no cancel button colour.</param>
+        /// <param name="blurRadius">The blur radius.</param>
+        /// <param name="contentMessageColour">The content message colour.</param>
+        /// <param name="buttonOneTextColour">The button one text colour.</param>
+        /// <param name="buttonTwoTextColour">The button two text colour.</param>
+        /// <param name="buttonThreeTextColour">The button three text colour.</param>
+        /// <param name="yesButtonColour">The yes button colour.</param>
+        /// <param name="noButtonColour">The no button colour.</param>
+        /// <param name="textColour">The text colour.</param>
+        /// <param name="yesNoButtonTextColour">The yes no button text colour.</param>
         /// <param name="parentWindow">The parent window of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
-        public static DialogResult Show(IWin32Window owner,
-                                        string text, string caption,
+        public static DialogResult Show(string text, string caption,
                                         ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions customButtonOptions,
                                         ExtendedKryptonMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
@@ -1604,16 +1750,179 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         string buttonOneCustomText = null, string buttonTwoCustomText = null,
                                         string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                         DialogResult? buttonTwoCustomDialogResult = null,
-                                        DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = -1, bool? showToolTips = null,
-                                        bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
+                                        DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = GlobalValues.DEFAULT_CORNER_ROUNDING_VALUE, bool? showToolTips = null,
+                                        bool? useBlur = null, bool? useYesNoCancelButtonColour = null,
+                                        int? blurRadius = 0, Color? contentMessageColour = null, Color? buttonOneTextColour = null,
+                                        Color? buttonTwoTextColour = null, Color? buttonThreeTextColour = null,
+                                        Color? yesButtonColour = null, Color? noButtonColour = null, Color? textColour = null,
+                                        Color? yesNoButtonTextColour = null, KryptonForm parentWindow = null)
         {
-            return InternalShow(owner, text, caption, buttons, customButtonOptions, icon, defaultButton, options, 
-                                new HelpInformation(helpFilePath, navigator), showCtrlCopy, messageboxTypeface, 
+            return InternalShow(null, text, caption, buttons, customButtonOptions, icon, defaultButton, options,
+                                new HelpInformation(helpFilePath, navigator), showCtrlCopy, messageboxTypeface,
                                 showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState,
                                 optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText,
                                 fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText,
                                 buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult,
-                                cornerRadius, showToolTips, useBlur, blurRadius, parentWindow);
+                                cornerRadius, showToolTips, useBlur, useYesNoCancelButtonColour, blurRadius,
+                                contentMessageColour, buttonOneTextColour, buttonTwoTextColour,
+                                buttonThreeTextColour, yesButtonColour, noButtonColour, textColour, yesNoButtonTextColour, parentWindow);
+        }
+
+        /// <summary>
+        /// Displays a message box with the specified text, caption, buttons, icon, default button, options, and Help button, using the specified Help file and Help keyword.
+        /// </summary>
+        /// <param name="text">The text to display in the message box.</param>
+        /// <param name="caption">The text to display in the title bar of the message box.</param>
+        /// <param name="buttons">One of the System.Windows.Forms.ExtendedMessageBoxButton values that specifies which buttons to display in the message box.</param>
+        /// <param name="customButtonOptions">Custom button options.</param>
+        /// <param name="icon">One of the System.Windows.Forms.ExtendedMessageBoxIcon values that specifies which icon to display in the message box.</param>
+        /// <param name="defaultButton">One of the System.Windows.Forms.MessageBoxDefaultButton values that specifies the default button for the message box.</param>
+        /// <param name="options">One of the System.Windows.Forms.MessageBoxOptions values that specifies which display and association options will be used for the message box. You may pass in 0 if you wish to use the defaults.</param>
+        /// <param name="helpFilePath">The path and name of the Help file to display when the user clicks the Help button.</param>
+        /// <param name="keyword">The Help keyword to display when the user clicks the Help button.</param>
+        /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
+        /// <param name="messageboxTypeface">The message box typeface. (Can be null)</param>
+        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
+        /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
+        /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
+        /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
+        /// <param name="optionalCheckBoxAnchor">The <see cref="AnchorStyles"/> of the optional check box. (Always keep it to the left.)</param>
+        /// <param name="optionalCheckBoxLocation">The location of the optional check box.</param>
+        /// <param name="customMessageBoxIcon">Set a custom message box icon. (Must be at least a 32 x 32 PNG image.)</param>
+        /// <param name="showCopyButton">Shows an optional copy button, to copy the message box content text to the Windows clipboard.</param>
+        /// <param name="copyButtonText">The text shown on the copy button.</param>
+        /// <param name="fade">Allows the message box to fade in and out.</param>
+        /// <param name="fadeSleepTimer">The speed of the fading effect.</param>
+        /// <param name="buttonOneCustomText">The custom text on the first button.</param>
+        /// <param name="buttonTwoCustomText">The custom text on the second button.</param>
+        /// <param name="buttonThreeCustomText">The custom text on the third button.</param>
+        /// <param name="buttonOneCustomDialogResult">The action for the first button to take.</param>
+        /// <param name="buttonTwoCustomDialogResult">The action for the second button to take.</param>
+        /// <param name="buttonThreeCustomDialogResult">The action for the third button to take.</param>
+        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to GlobalValues.DEFAULT_CORNER_ROUNDING_VALUE.</param>
+        /// <param name="showToolTips">Displays tool-tips on the controls.</param>
+        /// <param name="useBlur">Use the blur functionality on the parent window.</param>
+        /// <param name="useYesNoCancelButtonColour">The use yes no cancel button colour.</param>
+        /// <param name="blurRadius">The blur radius.</param>
+        /// <param name="contentMessageColour">The content message colour.</param>
+        /// <param name="buttonOneTextColour">The button one text colour.</param>
+        /// <param name="buttonTwoTextColour">The button two text colour.</param>
+        /// <param name="buttonThreeTextColour">The button three text colour.</param>
+        /// <param name="yesButtonColour">The yes button colour.</param>
+        /// <param name="noButtonColour">The no button colour.</param>
+        /// <param name="textColour">The text colour.</param>
+        /// <param name="yesNoButtonTextColour">The yes no button text colour.</param>
+        /// <param name="parentWindow">The parent window of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
+        /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
+        public static DialogResult Show(string text, string caption,
+                                        ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions customButtonOptions,
+                                        ExtendedKryptonMessageBoxIcon icon,
+                                        MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
+                                        string helpFilePath, string keyword, bool? showCtrlCopy = null, Font messageboxTypeface = null,
+                                        bool showOptionalCheckBox = false, string optionalCheckBoxText = null,
+                                        bool isOptionalCheckBoxChecked = false, CheckState? optionalCheckBoxCheckState = null,
+                                        AnchorStyles? optionalCheckBoxAnchor = null,
+                                        Point? optionalCheckBoxLocation = null, Image customMessageBoxIcon = null,
+                                        bool showCopyButton = false, string copyButtonText = null,
+                                        bool? fade = false, int? fadeSleepTimer = 50,
+                                        string buttonOneCustomText = null, string buttonTwoCustomText = null,
+                                        string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
+                                        DialogResult? buttonTwoCustomDialogResult = null,
+                                        DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = GlobalValues.DEFAULT_CORNER_ROUNDING_VALUE, bool? showToolTips = null,
+                                        bool? useBlur = null, bool? useYesNoCancelButtonColour = null,
+                                        int? blurRadius = 0, Color? contentMessageColour = null, Color? buttonOneTextColour = null,
+                                        Color? buttonTwoTextColour = null, Color? buttonThreeTextColour = null,
+                                        Color? yesButtonColour = null, Color? noButtonColour = null, Color? textColour = null,
+                                        Color? yesNoButtonTextColour = null, KryptonForm parentWindow = null)
+        {
+            return InternalShow(null, text, caption, buttons, customButtonOptions, icon, defaultButton, options,
+                                new HelpInformation(helpFilePath, keyword), showCtrlCopy, messageboxTypeface, showOptionalCheckBox,
+                                optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor,
+                                optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer,
+                                buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, buttonOneCustomDialogResult,
+                                buttonTwoCustomDialogResult, buttonThreeCustomDialogResult, cornerRadius, showToolTips, useBlur,
+                                useYesNoCancelButtonColour, blurRadius, contentMessageColour, buttonOneTextColour, buttonTwoTextColour,
+                                buttonThreeTextColour, yesButtonColour, noButtonColour, textColour, yesNoButtonTextColour, parentWindow);
+        }
+
+        /// <summary>
+        /// Displays a message box with the specified text, caption, buttons, icon, default button, options, and Help button, using the specified Help file and HelpNavigator.
+        /// </summary>
+        /// <param name="owner">Owner of the modal dialog box.</param>
+        /// <param name="text">The text to display in the message box.</param>
+        /// <param name="caption">The text to display in the title bar of the message box.</param>
+        /// <param name="buttons">One of the System.Windows.Forms.ExtendedMessageBoxButton values that specifies which buttons to display in the message box.</param>
+        /// <param name="customButtonOptions">Custom button options.</param>
+        /// <param name="icon">One of the System.Windows.Forms.ExtendedMessageBoxIcon values that specifies which icon to display in the message box.</param>
+        /// <param name="defaultButton">One of the System.Windows.Forms.MessageBoxDefaultButton values that specifies the default button for the message box.</param>
+        /// <param name="options">One of the System.Windows.Forms.MessageBoxOptions values that specifies which display and association options will be used for the message box. You may pass in 0 if you wish to use the defaults.</param>
+        /// <param name="helpFilePath">The path and name of the Help file to display when the user clicks the Help button.</param>
+        /// <param name="navigator">One of the System.Windows.Forms.HelpNavigator values.</param>
+        /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
+        /// <param name="messageboxTypeface">The message box typeface. (Can be null)</param>
+        /// <param name="showOptionalCheckBox">Shows an optional check box in the footer of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
+        /// <param name="optionalCheckBoxText">The text shown on the optional check box.</param>
+        /// <param name="isOptionalCheckBoxChecked">Is the optional check box already checked.</param>
+        /// <param name="optionalCheckBoxCheckState">The check state of the optional check box.</param>
+        /// <param name="optionalCheckBoxAnchor">The <see cref="AnchorStyles"/> of the optional check box. (Always keep it to the left.)</param>
+        /// <param name="optionalCheckBoxLocation">The location of the optional check box.</param>
+        /// <param name="customMessageBoxIcon">Set a custom message box icon. (Must be at least a 32 x 32 PNG image.)</param>
+        /// <param name="showCopyButton">Shows an optional copy button, to copy the message box content text to the Windows clipboard.</param>
+        /// <param name="copyButtonText">The text shown on the copy button.</param>
+        /// <param name="fade">Allows the message box to fade in and out.</param>
+        /// <param name="fadeSleepTimer">The speed of the fading effect.</param>
+        /// <param name="buttonOneCustomText">The custom text on the first button.</param>
+        /// <param name="buttonTwoCustomText">The custom text on the second button.</param>
+        /// <param name="buttonThreeCustomText">The custom text on the third button.</param>
+        /// <param name="buttonOneCustomDialogResult">The action for the first button to take.</param>
+        /// <param name="buttonTwoCustomDialogResult">The action for the second button to take.</param>
+        /// <param name="buttonThreeCustomDialogResult">The action for the third button to take.</param>
+        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to GlobalValues.DEFAULT_CORNER_ROUNDING_VALUE.</param>
+        /// <param name="showToolTips">Displays tool-tips on the controls.</param>
+        /// <param name="useBlur">Use the blur functionality on the parent window.</param>
+        /// <param name="useYesNoCancelButtonColour">The use yes no cancel button colour.</param>
+        /// <param name="blurRadius">The blur radius.</param>
+        /// <param name="contentMessageColour">The content message colour.</param>
+        /// <param name="buttonOneTextColour">The button one text colour.</param>
+        /// <param name="buttonTwoTextColour">The button two text colour.</param>
+        /// <param name="buttonThreeTextColour">The button three text colour.</param>
+        /// <param name="yesButtonColour">The yes button colour.</param>
+        /// <param name="noButtonColour">The no button colour.</param>
+        /// <param name="textColour">The text colour.</param>
+        /// <param name="yesNoButtonTextColour">The yes no button text colour.</param>
+        /// <param name="parentWindow">The parent window of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
+        /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
+        public static DialogResult Show(IWin32Window owner,
+                                        string text, string caption,
+                                        ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions customButtonOptions,
+                                        ExtendedKryptonMessageBoxIcon icon,
+                                        MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
+                                        string helpFilePath, HelpNavigator navigator, bool? showCtrlCopy = null,
+                                        Font messageboxTypeface = null, bool showOptionalCheckBox = false,
+                                        string optionalCheckBoxText = null, bool isOptionalCheckBoxChecked = false,
+                                        CheckState? optionalCheckBoxCheckState = null,
+                                        AnchorStyles? optionalCheckBoxAnchor = null, Point? optionalCheckBoxLocation = null,
+                                        Image customMessageBoxIcon = null, bool showCopyButton = false,
+                                        string copyButtonText = null, bool? fade = false, int? fadeSleepTimer = 50,
+                                        string buttonOneCustomText = null, string buttonTwoCustomText = null,
+                                        string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
+                                        DialogResult? buttonTwoCustomDialogResult = null,
+                                        DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = GlobalValues.DEFAULT_CORNER_ROUNDING_VALUE, bool? showToolTips = null,
+                                        bool? useBlur = null, bool? useYesNoCancelButtonColour = null,
+                                        int? blurRadius = 0, Color? contentMessageColour = null, Color? buttonOneTextColour = null,
+                                        Color? buttonTwoTextColour = null, Color? buttonThreeTextColour = null,
+                                        Color? yesButtonColour = null, Color? noButtonColour = null, Color? textColour = null,
+                                        Color? yesNoButtonTextColour = null, KryptonForm parentWindow = null)
+        {
+            return InternalShow(owner, text, caption, buttons, customButtonOptions, icon, defaultButton, options,
+                                new HelpInformation(helpFilePath, navigator), showCtrlCopy, messageboxTypeface,
+                                showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState,
+                                optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText,
+                                fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText,
+                                buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult,
+                                cornerRadius, showToolTips, useBlur, useYesNoCancelButtonColour, blurRadius,
+                                contentMessageColour, buttonOneTextColour, buttonTwoTextColour,
+                                buttonThreeTextColour, yesButtonColour, noButtonColour, textColour, yesNoButtonTextColour, parentWindow);
         }
 
         /// <summary>
@@ -1648,10 +1957,19 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="buttonOneCustomDialogResult">The action for the first button to take.</param>
         /// <param name="buttonTwoCustomDialogResult">The action for the second button to take.</param>
         /// <param name="buttonThreeCustomDialogResult">The action for the third button to take.</param>
-        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to -1.</param>
+        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to GlobalValues.DEFAULT_CORNER_ROUNDING_VALUE.</param>
         /// <param name="showToolTips">Displays tool-tips on the controls.</param>
         /// <param name="useBlur">Use the blur functionality on the parent window.</param>
-        /// <param name="blurRadius">The radius of the blur effect. By default, this is set to 0.</param>
+        /// <param name="useYesNoCancelButtonColour">The use yes no cancel button colour.</param>
+        /// <param name="blurRadius">The blur radius.</param>
+        /// <param name="contentMessageColour">The content message colour.</param>
+        /// <param name="buttonOneTextColour">The button one text colour.</param>
+        /// <param name="buttonTwoTextColour">The button two text colour.</param>
+        /// <param name="buttonThreeTextColour">The button three text colour.</param>
+        /// <param name="yesButtonColour">The yes button colour.</param>
+        /// <param name="noButtonColour">The no button colour.</param>
+        /// <param name="textColour">The text colour.</param>
+        /// <param name="yesNoButtonTextColour">The yes no button text colour.</param>
         /// <param name="parentWindow">The parent window of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(IWin32Window owner,
@@ -1669,16 +1987,22 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         string buttonOneCustomText = null, string buttonTwoCustomText = null,
                                         string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                         DialogResult? buttonTwoCustomDialogResult = null,
-                                        DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = -1, bool? showToolTips = null,
-                                        bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
+                                        DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = GlobalValues.DEFAULT_CORNER_ROUNDING_VALUE, bool? showToolTips = null,
+                                        bool? useBlur = null, bool? useYesNoCancelButtonColour = null,
+                                        int? blurRadius = 0, Color? contentMessageColour = null, Color? buttonOneTextColour = null,
+                                        Color? buttonTwoTextColour = null, Color? buttonThreeTextColour = null,
+                                        Color? yesButtonColour = null, Color? noButtonColour = null, Color? textColour = null,
+                                        Color? yesNoButtonTextColour = null, KryptonForm parentWindow = null)
         {
             return InternalShow(owner, text, caption, buttons, customButtonOptions, icon, defaultButton, options,
-                                new HelpInformation(helpFilePath, keyword), showCtrlCopy, messageboxTypeface, 
+                                new HelpInformation(helpFilePath, keyword), showCtrlCopy, messageboxTypeface,
                                 showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState,
-                                optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, 
-                                fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, 
-                                buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult, 
-                                cornerRadius, showToolTips, useBlur, blurRadius, parentWindow);
+                                optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText,
+                                fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText,
+                                buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult,
+                                cornerRadius, showToolTips, useBlur, useYesNoCancelButtonColour, blurRadius,
+                                contentMessageColour, buttonOneTextColour, buttonTwoTextColour,
+                                buttonThreeTextColour, yesButtonColour, noButtonColour, textColour, yesNoButtonTextColour, parentWindow);
         }
 
         /// <summary>
@@ -1713,10 +2037,19 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="buttonOneCustomDialogResult">The action for the first button to take.</param>
         /// <param name="buttonTwoCustomDialogResult">The action for the second button to take.</param>
         /// <param name="buttonThreeCustomDialogResult">The action for the third button to take.</param>
-        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to -1.</param>
+        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to GlobalValues.DEFAULT_CORNER_ROUNDING_VALUE.</param>
         /// <param name="showToolTips">Displays tool-tips on the controls.</param>
         /// <param name="useBlur">Use the blur functionality on the parent window.</param>
-        /// <param name="blurRadius">The radius of the blur effect. By default, this is set to 0.</param>
+        /// <param name="useYesNoCancelButtonColour">The use yes no cancel button colour.</param>
+        /// <param name="blurRadius">The blur radius.</param>
+        /// <param name="contentMessageColour">The content message colour.</param>
+        /// <param name="buttonOneTextColour">The button one text colour.</param>
+        /// <param name="buttonTwoTextColour">The button two text colour.</param>
+        /// <param name="buttonThreeTextColour">The button three text colour.</param>
+        /// <param name="yesButtonColour">The yes button colour.</param>
+        /// <param name="noButtonColour">The no button colour.</param>
+        /// <param name="textColour">The text colour.</param>
+        /// <param name="yesNoButtonTextColour">The yes no button text colour.</param>
         /// <param name="parentWindow">The parent window of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(string text, string caption,
@@ -1734,16 +2067,22 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         string buttonOneCustomText = null, string buttonTwoCustomText = null,
                                         string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                         DialogResult? buttonTwoCustomDialogResult = null,
-                                        DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = -1, bool? showToolTips = null,
-                                        bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
+                                        DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = GlobalValues.DEFAULT_CORNER_ROUNDING_VALUE, bool? showToolTips = null,
+                                        bool? useBlur = null, bool? useYesNoCancelButtonColour = null,
+                                        int? blurRadius = 0, Color? contentMessageColour = null, Color? buttonOneTextColour = null,
+                                        Color? buttonTwoTextColour = null, Color? buttonThreeTextColour = null,
+                                        Color? yesButtonColour = null, Color? noButtonColour = null, Color? textColour = null,
+                                        Color? yesNoButtonTextColour = null, KryptonForm parentWindow = null)
         {
-            return InternalShow(null, text, caption, buttons, customButtonOptions, icon, defaultButton, options, 
-                                new HelpInformation(helpFilePath, navigator, param), showCtrlCopy, messageboxTypeface, 
-                                showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, 
+            return InternalShow(null, text, caption, buttons, customButtonOptions, icon, defaultButton, options,
+                                new HelpInformation(helpFilePath, navigator, param), showCtrlCopy, messageboxTypeface,
+                                showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState,
                                 optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText,
-                                fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, 
-                                buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult, 
-                                cornerRadius, showToolTips, useBlur, blurRadius, parentWindow);
+                                fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText,
+                                buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult,
+                                cornerRadius, showToolTips, useBlur, useYesNoCancelButtonColour, blurRadius,
+                                contentMessageColour, buttonOneTextColour, buttonTwoTextColour,
+                                buttonThreeTextColour, yesButtonColour, noButtonColour, textColour, yesNoButtonTextColour, parentWindow);
         }
 
         /// <summary>
@@ -1779,10 +2118,19 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="buttonOneCustomDialogResult">The action for the first button to take.</param>
         /// <param name="buttonTwoCustomDialogResult">The action for the second button to take.</param>
         /// <param name="buttonThreeCustomDialogResult">The action for the third button to take.</param>
-        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to -1.</param>
+        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to GlobalValues.DEFAULT_CORNER_ROUNDING_VALUE.</param>
         /// <param name="showToolTips">Displays tool-tips on the controls.</param>
         /// <param name="useBlur">Use the blur functionality on the parent window.</param>
-        /// <param name="blurRadius">The radius of the blur effect. By default, this is set to 0.</param>
+        /// <param name="useYesNoCancelButtonColour">The use yes no cancel button colour.</param>
+        /// <param name="blurRadius">The blur radius.</param>
+        /// <param name="contentMessageColour">The content message colour.</param>
+        /// <param name="buttonOneTextColour">The button one text colour.</param>
+        /// <param name="buttonTwoTextColour">The button two text colour.</param>
+        /// <param name="buttonThreeTextColour">The button three text colour.</param>
+        /// <param name="yesButtonColour">The yes button colour.</param>
+        /// <param name="noButtonColour">The no button colour.</param>
+        /// <param name="textColour">The text colour.</param>
+        /// <param name="yesNoButtonTextColour">The yes no button text colour.</param>
         /// <param name="parentWindow">The parent window of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(IWin32Window owner,
@@ -1800,16 +2148,22 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         string buttonOneCustomText = null, string buttonTwoCustomText = null,
                                         string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                         DialogResult? buttonTwoCustomDialogResult = null,
-                                        DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = -1, bool? showToolTips = null,
-                                        bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
+                                        DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = GlobalValues.DEFAULT_CORNER_ROUNDING_VALUE, bool? showToolTips = null,
+                                        bool? useBlur = null, bool? useYesNoCancelButtonColour = null,
+                                        int? blurRadius = 0, Color? contentMessageColour = null, Color? buttonOneTextColour = null,
+                                        Color? buttonTwoTextColour = null, Color? buttonThreeTextColour = null,
+                                        Color? yesButtonColour = null, Color? noButtonColour = null, Color? textColour = null,
+                                        Color? yesNoButtonTextColour = null, KryptonForm parentWindow = null)
         {
-            return InternalShow(owner, text, caption, buttons, customButtonOptions, icon, defaultButton, options, 
-                   new HelpInformation(helpFilePath, navigator, param), showCtrlCopy, messageboxTypeface, 
-                                showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, 
-                                optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText, 
-                                fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText, 
-                                buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult, 
-                                cornerRadius, showToolTips, useBlur, blurRadius, parentWindow);
+            return InternalShow(owner, text, caption, buttons, customButtonOptions, icon, defaultButton, options,
+                   new HelpInformation(helpFilePath, navigator, param), showCtrlCopy, messageboxTypeface,
+                                showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState,
+                                optionalCheckBoxAnchor, optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton, copyButtonText,
+                                fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText, buttonThreeCustomText,
+                                buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult,
+                                cornerRadius, showToolTips, useBlur, useYesNoCancelButtonColour, blurRadius,
+                                contentMessageColour, buttonOneTextColour, buttonTwoTextColour,
+                                buttonThreeTextColour, yesButtonColour, noButtonColour, textColour, yesNoButtonTextColour, parentWindow);
         }
 
         /// <summary>
@@ -1843,10 +2197,19 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="buttonOneCustomDialogResult">The action for the first button to take.</param>
         /// <param name="buttonTwoCustomDialogResult">The action for the second button to take.</param>
         /// <param name="buttonThreeCustomDialogResult">The action for the third button to take.</param>
-        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to -1.</param>
+        /// <param name="cornerRadius">The corner radius of the <see cref="InternalKryptonMessageBoxExtended"/>. By default, this is set to GlobalValues.DEFAULT_CORNER_ROUNDING_VALUE.</param>
         /// <param name="showToolTips">Displays tool-tips on the controls.</param>
         /// <param name="useBlur">Use the blur functionality on the parent window.</param>
-        /// <param name="blurRadius">The radius of the blur effect. By default, this is set to 0.</param>
+        /// <param name="useYesNoCancelButtonColour">The use yes no cancel button colour.</param>
+        /// <param name="blurRadius">The blur radius.</param>
+        /// <param name="contentMessageColour">The content message colour.</param>
+        /// <param name="buttonOneTextColour">The button one text colour.</param>
+        /// <param name="buttonTwoTextColour">The button two text colour.</param>
+        /// <param name="buttonThreeTextColour">The button three text colour.</param>
+        /// <param name="yesButtonColour">The yes button colour.</param>
+        /// <param name="noButtonColour">The no button colour.</param>
+        /// <param name="textColour">The text colour.</param>
+        /// <param name="yesNoButtonTextColour">The yes no button text colour.</param>
         /// <param name="parentWindow">The parent window of the <see cref="InternalKryptonMessageBoxExtended"/>.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         internal static DialogResult Show(IWin32Window owner,
@@ -1863,18 +2226,73 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                           string buttonOneCustomText = null, string buttonTwoCustomText = null,
                                           string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                           DialogResult? buttonTwoCustomDialogResult = null,
-                                          DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = -1, bool? showToolTips = null,
-                                          bool? useBlur = null, int? blurRadius = 0, KryptonForm parentWindow = null)
+                                          DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = GlobalValues.DEFAULT_CORNER_ROUNDING_VALUE, bool? showToolTips = null,
+                                          bool? useBlur = null, bool? useYesNoCancelButtonColour = null,
+                                          int? blurRadius = 0, Color? contentMessageColour = null, Color? buttonOneTextColour = null,
+                                          Color? buttonTwoTextColour = null, Color? buttonThreeTextColour = null,
+                                          Color? yesButtonColour = null, Color? noButtonColour = null, Color? textColour = null,
+                                          Color? yesNoButtonTextColour = null, KryptonForm parentWindow = null)
         {
             return InternalShow(owner, text, caption, buttons, customButtonOptions, icon, defaultButton, options, helpInformation, showCtrlCopy, messageBoxTypeface, showOptionalCheckBox,
                                 optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation,
                                 customMessageBoxIcon, showCopyButton, copyButtonText, fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText,
-                                buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult, 
-                                cornerRadius, showToolTips, useBlur, blurRadius, parentWindow);
+                                buttonThreeCustomText, buttonOneCustomDialogResult, buttonTwoCustomDialogResult, buttonThreeCustomDialogResult,
+                                cornerRadius, showToolTips, useBlur, useYesNoCancelButtonColour, blurRadius, contentMessageColour, buttonOneTextColour, buttonTwoTextColour,
+                                buttonThreeTextColour, yesButtonColour, noButtonColour, textColour, yesNoButtonTextColour, parentWindow);
         }
         #endregion
 
         #region Implementation
+        /// <summary> Shows the messagebox.</summary>
+        /// <param name="owner">The owner.</param>
+        /// <param name="text">The text.</param>
+        /// <param name="caption">The caption.</param>
+        /// <param name="buttons">The buttons.</param>
+        /// <param name="customButtonOptions">The custom button options.</param>
+        /// <param name="icon">The icon.</param>
+        /// <param name="defaultButton">The default button.</param>
+        /// <param name="options">The options.</param>
+        /// <param name="helpInformation">The help information.</param>
+        /// <param name="showCtrlCopy">The show control copy.</param>
+        /// <param name="messageboxTypeface">The messagebox typeface.</param>
+        /// <param name="showOptionalCheckBox">if set to <c>true</c> [show optional CheckBox].</param>
+        /// <param name="optionalCheckBoxText">The optional CheckBox text.</param>
+        /// <param name="isOptionalCheckBoxChecked">if set to <c>true</c> [is optional CheckBox checked].</param>
+        /// <param name="optionalCheckBoxCheckState">State of the optional CheckBox check.</param>
+        /// <param name="optionalCheckBoxAnchor">The optional CheckBox anchor.</param>
+        /// <param name="optionalCheckBoxLocation">The optional CheckBox location.</param>
+        /// <param name="customMessageBoxIcon">The custom message box icon.</param>
+        /// <param name="showCopyButton">if set to <c>true</c> [show copy button].</param>
+        /// <param name="copyButtonText">The copy button text.</param>
+        /// <param name="fade">The fade.</param>
+        /// <param name="fadeSleepTimer">The fade sleep timer.</param>
+        /// <param name="buttonOneCustomText">The button one custom text.</param>
+        /// <param name="buttonTwoCustomText">The button two custom text.</param>
+        /// <param name="buttonThreeCustomText">The button three custom text.</param>
+        /// <param name="buttonOneCustomDialogResult">The button one custom dialog result.</param>
+        /// <param name="buttonTwoCustomDialogResult">The button two custom dialog result.</param>
+        /// <param name="buttonThreeCustomDialogResult">The button three custom dialog result.</param>
+        /// <param name="cornerRadius">The corner radius.</param>
+        /// <param name="showToolTips">The show tool tips.</param>
+        /// <param name="useBlur">The use blur.</param>
+        /// <param name="useYesNoCancelButtonColour">The use yes no cancel button colour.</param>
+        /// <param name="blurRadius">The blur radius.</param>
+        /// <param name="contentMessageColour">The content message colour.</param>
+        /// <param name="buttonOneTextColour">The button one text colour.</param>
+        /// <param name="buttonTwoTextColour">The button two text colour.</param>
+        /// <param name="buttonThreeTextColour">The button three text colour.</param>
+        /// <param name="yesButtonColour">The yes button colour.</param>
+        /// <param name="noButtonColour">The no button colour.</param>
+        /// <param name="textColour">The text colour.</param>
+        /// <param name="yesNoButtonTextColour">The yes no button text colour.</param>
+        /// <param name="parentWindow">The parent window.</param>
+        /// <returns>
+        ///   <br />
+        /// </returns>
+        /// <exception cref="System.InvalidOperationException">Cannot show modal dialog when non-interactive</exception>
+        /// <exception cref="System.ArgumentException">Cannot show message box from a service with an owner specified - options
+        /// or
+        /// Cannot show message box from a service with help specified - options</exception>
         private static DialogResult InternalShow(IWin32Window owner,
                                                  string text, string caption,
                                                  ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions? customButtonOptions,
@@ -1890,9 +2308,13 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                                  string buttonOneCustomText = null, string buttonTwoCustomText = null,
                                                  string buttonThreeCustomText = null, DialogResult? buttonOneCustomDialogResult = null,
                                                  DialogResult? buttonTwoCustomDialogResult = null,
-                                                 DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = -1, 
-                                                 bool? showToolTips = null, bool? useBlur = null,
-                                                 int? blurRadius = 0, KryptonForm parentWindow = null)
+                                                 DialogResult? buttonThreeCustomDialogResult = null, int? cornerRadius = GlobalValues.DEFAULT_CORNER_ROUNDING_VALUE,
+                                                 bool? showToolTips = null, bool? useBlur = null, bool? useYesNoCancelButtonColour = null,
+                                                 int? blurRadius = 0, Color? contentMessageColour = null,
+                                                 Color? buttonOneTextColour = null, Color? buttonTwoTextColour = null,
+                                                 Color? buttonThreeTextColour = null, Color? yesButtonColour = null,
+                                                 Color? noButtonColour = null, Color? textColour = null,
+                                                 Color? yesNoButtonTextColour = null, KryptonForm parentWindow = null)
         {
             // Check if trying to show a message box from a non-interactive process, this is not possible
             if (!SystemInformation.UserInteractive && ((options & (MessageBoxOptions.ServiceNotification | MessageBoxOptions.DefaultDesktopOnly)) == 0))
@@ -1930,7 +2352,9 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                                                                   buttonTwoCustomText, buttonThreeCustomText,
                                                                                   buttonOneCustomDialogResult, buttonTwoCustomDialogResult,
                                                                                   buttonThreeCustomDialogResult, cornerRadius, showToolTips,
-                                                                                  useBlur, blurRadius, parentWindow))
+                                                                                  useBlur, useYesNoCancelButtonColour, blurRadius, contentMessageColour, buttonOneTextColour,
+                                                                                  buttonTwoTextColour, buttonThreeTextColour, yesButtonColour,
+                                                                                  noButtonColour, textColour, yesNoButtonTextColour, parentWindow))
             {
                 ekmb.StartPosition = showOwner == null ? FormStartPosition.CenterScreen : FormStartPosition.CenterParent;
 
@@ -1942,6 +2366,28 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         {
             Text = (MissingFrameWorkAPIs.IsNullOrWhiteSpace(_caption) ? string.Empty : _caption.Split(Environment.NewLine.ToCharArray())[0]);
             _messageText.StateCommon.Font = _messageboxTypeface;
+
+            if (_textColour != null || _textColour != Color.Empty)
+            {
+                _messageText.StateCommon.TextColor = (Color)_textColour;
+
+                _optionalCheckBox.StateCommon.ShortText.Color1 = (Color)_textColour;
+
+                _optionalCheckBox.StateCommon.ShortText.Color2 = (Color)_textColour;
+            }
+            else if (_contentMessageColour != null || _contentMessageColour != Color.Empty)
+            {
+                _messageText.StateCommon.TextColor = (Color)_contentMessageColour;
+            }
+            else
+            {
+                _messageText.StateCommon.TextColor = Color.Empty;
+
+                _optionalCheckBox.StateCommon.ShortText.Color1 = Color.Empty;
+
+                _optionalCheckBox.StateCommon.ShortText.Color2 = Color.Empty;
+            }
+
             _messageText.Text = _text;
         }
 
@@ -2314,6 +2760,174 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                 }
             }
         }
+
+        // TODO: Complete method
+        private void ChangeAbortCancelNoYesButtonColour(ExtendedMessageBoxButtons buttons, Color? yesButtonColour, Color? noButtonColour, Color? yesNoButtonTextColour)
+        {
+            switch (buttons)
+            {
+                case ExtendedMessageBoxButtons.CUSTOM:
+                    break;
+                case ExtendedMessageBoxButtons.OK:
+                    if (yesButtonColour != null || yesButtonColour == Color.Empty)
+                    {
+                        _button1.StateCommon.Back.Color1 = (Color)yesButtonColour;
+
+                        _button1.StateCommon.Back.Color2 = (Color)yesButtonColour;
+
+                        _button1.StateCommon.Content.ShortText.Color1 = (Color)yesNoButtonTextColour;
+
+                        _button1.StateCommon.Content.ShortText.Color2 = (Color)yesButtonColour;
+                    }
+                    else
+                    {
+                        _button1.StateCommon.Back.Color1 = Color.Empty;
+
+                        _button1.StateCommon.Back.Color2 = Color.Empty;
+
+                        _button1.StateCommon.Content.ShortText.Color1 = Color.Empty;
+
+                        _button1.StateCommon.Content.ShortText.Color2 = Color.Empty;
+                    }
+                    break;
+                case ExtendedMessageBoxButtons.OKCANCEL:
+                    if (yesButtonColour != null || yesButtonColour == Color.Empty && noButtonColour != null || noButtonColour == Color.Empty)
+                    {
+                        _button1.StateCommon.Back.Color1 = (Color)noButtonColour;
+
+                        _button1.StateCommon.Back.Color2 = (Color)noButtonColour;
+
+                        _button2.StateCommon.Back.Color1 = (Color)yesButtonColour;
+
+                        _button2.StateCommon.Back.Color2 = (Color)yesButtonColour;
+
+                        _button1.StateCommon.Content.ShortText.Color1 = (Color)yesNoButtonTextColour;
+
+                        _button1.StateCommon.Content.ShortText.Color2 = (Color)yesNoButtonTextColour;
+
+                        _button2.StateCommon.Content.ShortText.Color1 = (Color)yesNoButtonTextColour;
+
+                        _button2.StateCommon.Content.ShortText.Color2 = (Color)yesNoButtonTextColour;
+                    }
+                    else
+                    {
+                        _button1.StateCommon.Back.Color1 = Color.Empty;
+
+                        _button1.StateCommon.Back.Color2 = Color.Empty;
+
+                        _button1.StateCommon.Content.ShortText.Color1 = Color.Empty;
+
+                        _button1.StateCommon.Content.ShortText.Color2 = Color.Empty;
+
+                        _button2.StateCommon.Back.Color1 = Color.Empty;
+
+                        _button2.StateCommon.Back.Color2 = Color.Empty;
+
+                        _button2.StateCommon.Content.ShortText.Color1 = Color.Empty;
+
+                        _button2.StateCommon.Content.ShortText.Color2 = Color.Empty;
+                    }
+                    break;
+                case ExtendedMessageBoxButtons.ABORTRETRYIGNORE:
+                    if (yesButtonColour != null || yesButtonColour == Color.Empty && noButtonColour != null || noButtonColour == Color.Empty)
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
+                    break;
+                case ExtendedMessageBoxButtons.YESNOCANCEL:
+                    if (yesButtonColour != null || yesButtonColour == Color.Empty && noButtonColour != null || noButtonColour == Color.Empty)
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
+                    break;
+                case ExtendedMessageBoxButtons.YESNO:
+                    if (yesButtonColour != null || yesButtonColour == Color.Empty && noButtonColour != null || noButtonColour == Color.Empty)
+                    {
+                        _button1.StateCommon.Back.Color1 = (Color)noButtonColour;
+
+                        _button1.StateCommon.Back.Color2 = (Color)noButtonColour;
+
+                        _button2.StateCommon.Back.Color1 = (Color)yesButtonColour;
+
+                        _button2.StateCommon.Back.Color2 = (Color)yesButtonColour;
+
+                        _button1.StateCommon.Content.ShortText.Color1 = (Color)yesNoButtonTextColour;
+
+                        _button1.StateCommon.Content.ShortText.Color2 = (Color)yesNoButtonTextColour;
+
+                        _button2.StateCommon.Content.ShortText.Color1 = (Color)yesNoButtonTextColour;
+
+                        _button2.StateCommon.Content.ShortText.Color2 = (Color)yesNoButtonTextColour;
+                    }
+                    else
+                    {
+                        _button1.StateCommon.Back.Color1 = Color.Empty;
+
+                        _button1.StateCommon.Back.Color2 = Color.Empty;
+
+                        _button1.StateCommon.Content.ShortText.Color1 = Color.Empty;
+
+                        _button1.StateCommon.Content.ShortText.Color2 = Color.Empty;
+
+                        _button2.StateCommon.Back.Color1 = Color.Empty;
+
+                        _button2.StateCommon.Back.Color2 = Color.Empty;
+
+                        _button2.StateCommon.Content.ShortText.Color1 = Color.Empty;
+
+                        _button2.StateCommon.Content.ShortText.Color2 = Color.Empty;
+                    }
+                    break;
+                case ExtendedMessageBoxButtons.RETRYCANCEL:
+                    if (yesButtonColour != null || yesButtonColour == Color.Empty && noButtonColour != null || noButtonColour == Color.Empty)
+                    {
+                        _button1.StateCommon.Back.Color1 = (Color)noButtonColour;
+
+                        _button1.StateCommon.Back.Color2 = (Color)noButtonColour;
+
+                        _button2.StateCommon.Back.Color1 = (Color)yesButtonColour;
+
+                        _button2.StateCommon.Back.Color2 = (Color)yesButtonColour;
+
+                        _button1.StateCommon.Content.ShortText.Color1 = (Color)yesNoButtonTextColour;
+
+                        _button1.StateCommon.Content.ShortText.Color2 = (Color)yesNoButtonTextColour;
+
+                        _button2.StateCommon.Content.ShortText.Color1 = (Color)yesNoButtonTextColour;
+
+                        _button2.StateCommon.Content.ShortText.Color2 = (Color)yesNoButtonTextColour;
+                    }
+                    else
+                    {
+                        _button1.StateCommon.Back.Color1 = Color.Empty;
+
+                        _button1.StateCommon.Back.Color2 = Color.Empty;
+
+                        _button1.StateCommon.Content.ShortText.Color1 = Color.Empty;
+
+                        _button1.StateCommon.Content.ShortText.Color2 = Color.Empty;
+
+                        _button2.StateCommon.Back.Color1 = Color.Empty;
+
+                        _button2.StateCommon.Back.Color2 = Color.Empty;
+
+                        _button2.StateCommon.Content.ShortText.Color1 = Color.Empty;
+
+                        _button2.StateCommon.Content.ShortText.Color2 = Color.Empty;
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
         #endregion
 
         #region Optional CheckBox
@@ -2482,7 +3096,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         {
             if (_fade)
             {
-                for (_fadeOut = 90; _fadeOut >= 10; _fadeOut += -10)
+                for (_fadeOut = 90; _fadeOut >= 10; _fadeOut += 10)
                 {
                     Opacity = _fadeOut / 100;
 

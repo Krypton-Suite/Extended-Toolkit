@@ -6,6 +6,14 @@
  */
 #endregion
 
+using System;
+using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using System.Drawing;
+using System.Reflection;
+using System.Runtime.InteropServices;
+using System.Text;
+using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Common
 {
@@ -239,7 +247,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         internal static extern void AdjustWindowRectEx(ref RECT rect, int dwStyle, bool hasMenu, int dwExSytle);
 
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
-        internal static extern int MapWindowPoints(IntPtr hWndFrom, IntPtr hWndTo, [In, Out] POINTC pt, int cPoints);
+        internal static extern int MapWindowPoints(IntPtr hWndFrom, IntPtr hWndTo, [In, Out]POINTC pt, int cPoints);
 
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
         internal static extern bool TranslateMessage([In] ref MSG lpMsg);
@@ -313,7 +321,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         internal static extern bool IntRestoreDC(HandleRef hDC, int nSavedDC);
 
         [DllImport("gdi32.dll", CharSet = CharSet.Auto, SetLastError = true, ExactSpelling = true)]
-        internal static extern bool GetViewportOrgEx(HandleRef hDC, [In, Out] POINTC point);
+        internal static extern bool GetViewportOrgEx(HandleRef hDC, [In, Out]POINTC point);
 
         [DllImport("gdi32.dll", EntryPoint = "CreateRectRgn", CharSet = CharSet.Auto, SetLastError = true, ExactSpelling = true)]
         internal static extern IntPtr IntCreateRectRgn(int x1, int y1, int x2, int y2);
@@ -322,7 +330,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         internal static extern int GetClipRgn(HandleRef hDC, HandleRef hRgn);
 
         [DllImport("gdi32.dll", CharSet = CharSet.Auto, SetLastError = true, ExactSpelling = true)]
-        internal static extern bool SetViewportOrgEx(HandleRef hDC, int x, int y, [In, Out] POINTC point);
+        internal static extern bool SetViewportOrgEx(HandleRef hDC, int x, int y, [In, Out]POINTC point);
 
         [DllImport("gdi32.dll", CharSet = CharSet.Auto, SetLastError = true, ExactSpelling = true)]
         internal static extern int GetRgnBox(HandleRef hRegion, ref RECT clipRect);
@@ -1130,7 +1138,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
 
         #region Other
 
-        /**
+        /*
         #region Constants
         internal const uint WS_POPUP = 0x80000000;
         internal const uint WS_MINIMIZE = 0x20000000;
@@ -3109,7 +3117,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
             SW_SHOWMAXIMIZED = 3,
             /// <summary>
             /// Displays a window in its most recent size and position. This value
-            /// is similar to <see cref="PI.ShowWindowCommands.SW_NORMAL"/>, except
+            /// is similar to <see cref="ShowWindowCommands.SW_NORMAL"/>, except
             /// the window is not activated.
             /// </summary>
             SW_SHOWNOACTIVATE = 4,
@@ -3124,13 +3132,13 @@ namespace Krypton.Toolkit.Suite.Extended.Common
             SW_MINIMIZE = 6,
             /// <summary>
             /// Displays the window as a minimized window. This value is similar to
-            /// <see cref="PI.ShowWindowCommands.SW_SHOWMINIMIZED"/>, except the
+            /// <see cref="ShowWindowCommands.SW_SHOWMINIMIZED"/>, except the
             /// window is not activated.
             /// </summary>
             SW_SHOWMINNOACTIVE = 7,
             /// <summary>
             /// Displays the window in its current size and position. This value is
-            /// similar to <see cref="PI.ShowWindowCommands.SW_SHOW"/>, except the
+            /// similar to <see cref="ShowWindowCommands.SW_SHOW"/>, except the
             /// window is not activated.
             /// </summary>
             SW_SHOWNA = 8,
@@ -4681,7 +4689,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         internal static extern void AdjustWindowRectEx(ref RECT rect, int dwStyle, bool hasMenu, int dwExSytle);
 
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
-        internal static extern int MapWindowPoints(IntPtr hWndFrom, IntPtr hWndTo, [In, Out] POINTC pt, int cPoints);
+        internal static extern int MapWindowPoints(IntPtr hWndFrom, IntPtr hWndTo, [In, Out]POINTC pt, int cPoints);
 
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
         internal static extern bool TranslateMessage([In] ref MSG lpMsg);
@@ -4875,7 +4883,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         internal static extern bool IntRestoreDC(HandleRef hDC, int nSavedDC);
 
         [DllImport("gdi32.dll", CharSet = CharSet.Auto, SetLastError = true, ExactSpelling = true)]
-        internal static extern bool GetViewportOrgEx(HandleRef hDC, [In, Out] POINTC point);
+        internal static extern bool GetViewportOrgEx(HandleRef hDC, [In, Out]POINTC point);
 
         [DllImport("gdi32.dll")]
         internal static extern bool OffsetViewportOrgEx(IntPtr hdc, int nXOffset, int nYOffset, out POINT lpPoint);
@@ -4887,7 +4895,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         internal static extern int GetClipRgn(HandleRef hDC, HandleRef hRgn);
 
         [DllImport("gdi32.dll", CharSet = CharSet.Auto, SetLastError = true, ExactSpelling = true)]
-        internal static extern bool SetViewportOrgEx(HandleRef hDC, int x, int y, [In, Out] POINTC point);
+        internal static extern bool SetViewportOrgEx(HandleRef hDC, int x, int y, [In, Out]POINTC point);
 
         [DllImport("gdi32.dll", CharSet = CharSet.Auto, SetLastError = true, ExactSpelling = true)]
         internal static extern int GetRgnBox(IntPtr hRegion, ref RECT clipRect);

@@ -8,10 +8,6 @@
 
         public ColourHexadecimalTextBox()
         {
-            Validating += ColourHexadecimalTextBox_Validating;
-
-            //TextChanged += ColourHexadecimalTextBox_TextChanged;
-
             MaxLength = 6;
 
             Hint = "000000";
@@ -21,20 +17,28 @@
             Text = string.Empty;
         }
 
-        //private void ColourHexadecimalTextBox_TextChanged(object sender, EventArgs e)
-        //{
-        //    ColorConverter converter = new ColorConverter();
-
-        //    if (Text.Length == 4 || Text.Length == 6 || Text.Length > 6) Colour = (Color)converter.ConvertFromString(Text);
-        //}
-
-        private void ColourHexadecimalTextBox_Validating(object sender, CancelEventArgs e)
+        protected override void OnPaint(PaintEventArgs e)
         {
-            char[] allowedChars = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
+            if (Colour != Color.Empty || Colour != Color.Transparent || Colour != null)
+            {
+                Text = ColorTranslator.ToHtml(Colour);
+            }
+
+            if (Colour == Color.Empty || Colour == Color.Transparent)
+            {
+                Text = "000000";
+            }
+
+            base.OnPaint(e);
+        }
+
+        protected override void OnValidating(CancelEventArgs e)
+        {
+            char[] allowedCharacters = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'a', 'b', 'c', 'd', 'e', 'f' };
 
             foreach (char character in Text.ToUpper().ToArray())
             {
-                if (!allowedChars.Contains(character))
+                if (!allowedCharacters.Contains(character))
                 {
                     KryptonMessageBoxExtendedManager manager = new KryptonMessageBoxExtendedManager()
                     {
@@ -49,15 +53,15 @@
                     e.Cancel = true;
                 }
             }
+
+            base.OnValidating(e);
         }
 
-        protected override void OnPaint(PaintEventArgs e)
+        protected override void OnKeyDown(KeyEventArgs e)
         {
-            if (Colour != Color.Empty || Colour != Color.Transparent || Colour != null) Text = ColorTranslator.ToHtml(Colour);
 
-            //if (Text == null || Text == string.Empty) Colour = Color.Empty;
 
-            base.OnPaint(e);
+            base.OnKeyDown(e);
         }
     }
 }

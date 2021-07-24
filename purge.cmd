@@ -12,13 +12,13 @@ rd /s /q "Bin"
 echo Deleted the 'Bin' folder
 
 echo Deleting the main 'obj' directories
-echo Deleting 'Main\Krypton.Toolkit.Suite.Extended.Buttons\obj'
+echo Deleting 'Krypton.Toolkit.Suite.Extended.Buttons\obj'
 rd /s /q "Source\Krypton Toolkit\Main\Krypton.Toolkit.Suite.Extended.Buttons\obj"
-echo Deleted 'Main\Krypton.Toolkit.Suite.Extended.Buttons\obj'
-echo Deleting 'Main\Krypton.Toolkit.Suite.Extended.Calandar\obj'
+echo Deleted 'Krypton.Toolkit.Suite.Extended.Buttons\obj'
+echo Deleting 'Krypton.Toolkit.Suite.Extended.Calandar\obj'
 rd /s /q "Source\Krypton Toolkit\Main\Krypton.Toolkit.Suite.Extended.Calandar\obj"
-echo Deleted 'Main\Krypton.Toolkit.Suite.Extended.Calandar\obj'
-echo Deleting 'Main\Krypton.Toolkit.Suite.Extended.Circular.ProgressBar\obj'
+echo Deleted 'Krypton.Toolkit.Suite.Extended.Calandar\obj'
+echo Deleting 'Krypton.Toolkit.Suite.Extended.Circular.ProgressBar\obj'
 rd /s /q "Source\Krypton Toolkit\Main\Krypton.Toolkit.Suite.Extended.Circular.ProgressBar\obj"
 rd /s /q "Source\Krypton Toolkit\Main\Krypton.Toolkit.Suite.Extended.ComboBox\obj"
 rd /s /q "Source\Krypton Toolkit\Main\Krypton.Toolkit.Suite.Extended.Controls\obj"
@@ -67,16 +67,24 @@ rd /s /q "Source\Krypton Toolkit\Shared\Krypton.Toolkit.Suite.Extended.Utilities
 
 if exist build.log ( goto deletebuildfile )
 if exist debug.log ( goto deletedebugfile )
+if exist package-restore.log ( goto deletepackagerestorefile )
 
 :deletebuildfile
 echo Deleting the 'build.log' file
 del /f build.log
 echo Deleted the 'build.log' file
+goto restorepackages
 
 :deletedebugfile
 echo Deleting the 'debug.log' file
 del /f debug.log
 echo Deleted the 'debug.log' file
+goto restorepackages
+
+:deletepackagerestorefile
+echo Deleting the 'package-restore.log' file
+del /f package-restore.log
+echo Deleted the 'package-restore.log' file
 
 :no
 pause

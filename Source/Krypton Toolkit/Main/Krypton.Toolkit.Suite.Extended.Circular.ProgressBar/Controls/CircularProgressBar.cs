@@ -13,7 +13,7 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Text;
 using System.Windows.Forms;
 
-using Windows.Forms.Animation.Library;
+using WinFormAnimation_NET5;
 
 namespace Krypton.Toolkit.Suite.Extended.Circular.ProgressBar
 {

@@ -2,6 +2,7 @@
 using System.Data.SQLite;
 using System.Diagnostics;
 using System.Windows.Forms;
+
 using Krypton.Toolkit;
 
 namespace DataGridViewExt
@@ -15,7 +16,7 @@ namespace DataGridViewExt
             string cs = @"URI=file:Northwind_small.sqlite";
             using var con = new SQLiteConnection(cs);
             con.Open();
-            DataSet customerOrders = new DataSet();
+            DataSet customerOrders = new();
             using (var custAdapter = new SQLiteDataAdapter(@"SELECT * FROM 'Employee'", con))
             {
                 custAdapter.Fill(customerOrders, @"Employees");

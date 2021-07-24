@@ -29,20 +29,20 @@ namespace TreeGridView
         /// </summary>
         private void InitializeComponent()
         {
-            Krypton.Toolkit.Suite.Extended.Tree.Grid.View.TreeGridNode treeGridNode1 = new Krypton.Toolkit.Suite.Extended.Tree.Grid.View.TreeGridNode();
-            Krypton.Toolkit.Suite.Extended.Tree.Grid.View.TreeGridNode treeGridNode2 = new Krypton.Toolkit.Suite.Extended.Tree.Grid.View.TreeGridNode();
-            Krypton.Toolkit.Suite.Extended.Tree.Grid.View.TreeGridNode treeGridNode3 = new Krypton.Toolkit.Suite.Extended.Tree.Grid.View.TreeGridNode();
-            Krypton.Toolkit.Suite.Extended.Tree.Grid.View.TreeGridNode treeGridNode4 = new Krypton.Toolkit.Suite.Extended.Tree.Grid.View.TreeGridNode();
-            Krypton.Toolkit.Suite.Extended.Tree.Grid.View.TreeGridNode treeGridNode5 = new Krypton.Toolkit.Suite.Extended.Tree.Grid.View.TreeGridNode();
-            Krypton.Toolkit.Suite.Extended.Tree.Grid.View.TreeGridNode treeGridNode6 = new Krypton.Toolkit.Suite.Extended.Tree.Grid.View.TreeGridNode();
-            Krypton.Toolkit.Suite.Extended.Tree.Grid.View.TreeGridNode treeGridNode7 = new Krypton.Toolkit.Suite.Extended.Tree.Grid.View.TreeGridNode();
-            Krypton.Toolkit.Suite.Extended.Tree.Grid.View.TreeGridNode treeGridNode8 = new Krypton.Toolkit.Suite.Extended.Tree.Grid.View.TreeGridNode();
+            /*Krypton.Toolkit.Suite.Extended.TreeGridView..TreeGridNode treeGridNode1 = new Krypton.Toolkit.Suite.Extended.TreeGridView.TreeGridNode();
+            Krypton.Toolkit.Suite.Extended.TreeGridView.TreeGridNode treeGridNode2 = new Krypton.Toolkit.Suite.Extended.TreeGridView.TreeGridNode();
+            Krypton.Toolkit.Suite.Extended.TreeGridView.TreeGridNode treeGridNode3 = new Krypton.Toolkit.Suite.Extended.TreeGridView.TreeGridNode();
+            Krypton.Toolkit.Suite.Extended.TreeGridView.TreeGridNode treeGridNode4 = new Krypton.Toolkit.Suite.Extended.TreeGridView.TreeGridNode();
+            Krypton.Toolkit.Suite.Extended.TreeGridView.TreeGridNode treeGridNode5 = new Krypton.Toolkit.Suite.Extended.TreeGridView.TreeGridNode();
+            Krypton.Toolkit.Suite.Extended.TreeGridView.TreeGridNode treeGridNode6 = new Krypton.Toolkit.Suite.Extended.TreeGridView.TreeGridNode();
+            Krypton.Toolkit.Suite.Extended.TreeGridView.TreeGridNode treeGridNode7 = new Krypton.Toolkit.Suite.Extended.TreeGridView.TreeGridNode();
+            Krypton.Toolkit.Suite.Extended.TreeGridView.TreeGridNode treeGridNode8 = new Krypton.Toolkit.Suite.Extended.TreeGridView.TreeGridNode();*/
             this.colID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colFirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colLastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCountry = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.kryptonTreeGridView1 = new Krypton.Toolkit.Suite.Extended.Tree.Grid.View.KryptonTreeGridView();
+            this.kryptonTreeGridView1 = new Krypton.Toolkit.Suite.Extended.TreeGridView.KryptonTreeGridView();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonTreeGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -84,7 +84,7 @@ namespace TreeGridView
             this.kryptonTreeGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonTreeGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.kryptonTreeGridView1.FontParentBold = false;
-            treeGridNode1.Height = 25;
+            /*treeGridNode1.Height = 25;
             treeGridNode2.Height = 25;
             treeGridNode2.UniqueValue = 1027317378;
             treeGridNode3.Height = 25;
@@ -108,14 +108,14 @@ namespace TreeGridView
             this.kryptonTreeGridView1.GridNode.Add(treeGridNode6);
             this.kryptonTreeGridView1.GridNode.Add(treeGridNode7);
             this.kryptonTreeGridView1.GridNode.Add(treeGridNode8);
-            this.kryptonTreeGridView1.IDColumnName = null;
+            this.kryptonTreeGridView1.IDColumnName = null;*/
             this.kryptonTreeGridView1.ImageIndexChild = 0;
             this.kryptonTreeGridView1.ImageList = null;
             this.kryptonTreeGridView1.IsOneLevel = false;
             this.kryptonTreeGridView1.Location = new System.Drawing.Point(0, 0);
             this.kryptonTreeGridView1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.kryptonTreeGridView1.Name = "kryptonTreeGridView1";
-            this.kryptonTreeGridView1.ParentIDColumnName = null;
+            //this.kryptonTreeGridView1.ParentIDColumnName = null;
             this.kryptonTreeGridView1.Size = new System.Drawing.Size(1103, 479);
             this.kryptonTreeGridView1.TabIndex = 0;
             // 
@@ -139,7 +139,7 @@ namespace TreeGridView
         private System.Windows.Forms.DataGridViewTextBoxColumn colLastName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCountry;
         private System.Windows.Forms.DataGridViewTextBoxColumn colPhone;
-        private Krypton.Toolkit.Suite.Extended.Tree.Grid.View.KryptonTreeGridView kryptonTreeGridView1;
+        private Krypton.Toolkit.Suite.Extended.TreeGridView.KryptonTreeGridView kryptonTreeGridView1;
     }
 }
 

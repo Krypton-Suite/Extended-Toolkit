@@ -9,6 +9,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Main\Krypton.Toolkit.Suite.Extended.TreeGridView\Krypton.Toolkit.Suite.Extended.TreeGridView 2019.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="System.Design" />
   </ItemGroup>
 

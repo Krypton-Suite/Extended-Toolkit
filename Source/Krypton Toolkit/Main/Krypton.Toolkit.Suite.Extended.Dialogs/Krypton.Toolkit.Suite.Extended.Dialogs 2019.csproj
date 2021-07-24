@@ -1,5 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
+  <!--Setup TFMs for all projects-->
   <Choose>
     <When Condition="'$(TFMs)' == 'all'">
       <PropertyGroup>
@@ -8,10 +9,11 @@
     </When>
     <Otherwise>
       <PropertyGroup>
-        <TargetFrameworks>net48;net5.0-windows;net6.0-windows</TargetFrameworks>
+        <TargetFrameworks>net48;netcoreapp3.1;net5.0-windows;net6.0-windows</TargetFrameworks>
       </PropertyGroup>
     </Otherwise>
   </Choose>
+  
   <PropertyGroup>
     <LangVersion>preview</LangVersion>
     <OutputType>library</OutputType>
@@ -36,12 +38,12 @@
   <Choose>
     <When Condition="'$(TFMs)' == 'all'">
       <ItemGroup>
-        <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2106.1" />
+        <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2106.2" />
       </ItemGroup>
     </When>
     <Otherwise>
       <ItemGroup>
-        <PackageReference Include="Krypton.Toolkit.Canary.Lite" Version="6.0.2106.1" />
+        <PackageReference Include="Krypton.Toolkit.Canary.Lite" Version="6.0.2106.2" />
       </ItemGroup>
     </Otherwise>
   </Choose>
@@ -57,7 +59,9 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Shared\Krypton.Toolkit.Suite.Extended.Common\Krypton.Toolkit.Suite.Extended.Common 2019.csproj" />
     <ProjectReference Include="..\..\Shared\Krypton.Toolkit.Suite.Extended.Global.Utilities\Krypton.Toolkit.Suite.Extended.Global.Utilities 2019.csproj" />
-    <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Controls\Krypton.Toolkit.Suite.Extended.Controls 2019.csproj" />
+    <ProjectReference Include="..\..\Main\Krypton.Toolkit.Suite.Extended.Controls\Krypton.Toolkit.Suite.Extended.Controls 2019.csproj" />
+    <ProjectReference Include="..\..\Shared\Krypton.Toolkit.Suite.Extended.Tools\Krypton.Toolkit.Suite.Extended.Tools 2019.csproj" />
+    <ProjectReference Include="..\..\Shared\Krypton.Toolkit.Suite.Extended.Utilities\Krypton.Toolkit.Suite.Extended.Utilities 2019.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">

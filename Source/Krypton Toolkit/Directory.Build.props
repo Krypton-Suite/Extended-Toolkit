@@ -1,13 +1,23 @@
 <Project>
   <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../../'))" />
-  
-  <!--<PropertyGroup>
-	<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-	<PackageOutputPath>..\..\..\..\Bin\NuGet</PackageOutputPath>
-    <RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
-    <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
-  </PropertyGroup>-->
+
+  <PropertyGroup>
+    <NeutralLanguage>en</NeutralLanguage>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <Choose>
+    <When Condition="$(Configuration) == 'Debug'">
+      <PropertyGroup>
+        <LangVersion>preview</LangVersion>
+      </PropertyGroup>
+    </When>
+    <Otherwise>
+      <PropertyGroup>
+        <LangVersion>latest</LangVersion>
+      </PropertyGroup>
+    </Otherwise>
+  </Choose>
 
   <PropertyGroup>
 	<!-- common project data -->
@@ -19,7 +29,7 @@
   <PropertyGroup>
 	<!-- common package data -->
 	<PackageProjectUrl>https://github.com/Krypton-Suite/Extended-Toolkit</PackageProjectUrl>
-	  <PackageIcon>Main Icon 64 x 64 Canary.png</PackageIcon>
+	  <PackageIcon>Canary.png</PackageIcon>
 	  <Authors>Peter William Wagner &amp; Simon Coghlan &amp; Thomas Bolon, et al.</Authors>
 	  <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
 	  <PackageTags>Krypton ComponentFactory WinForms Themes Controls DataGrid Ribbon Workspace Tabs .Net Toolkit Core</PackageTags>
@@ -27,6 +37,11 @@
   </PropertyGroup>
   
   <ItemGroup>
-	  <None Include="../../../Assets/Package Icon/Canary.png" Link="Icon.png" Pack="true" PackagePath="" />
+	  <None Include="../../../../Assets/Package Icon/Canary.png" Link="Icon.png" Pack="true" PackagePath="" />
   </ItemGroup>
+
+  <ItemGroup>
+    
+  </ItemGroup>
+  
 </Project>

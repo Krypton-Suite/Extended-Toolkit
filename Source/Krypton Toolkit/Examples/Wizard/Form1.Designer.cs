@@ -43,7 +43,6 @@ namespace Wizard
             this.kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
             this.kryptonRichTextBox1 = new Krypton.Toolkit.KryptonRichTextBox();
             this.kryptonLabel3 = new Krypton.Toolkit.KryptonLabel();
-            this.circularPictureBox1 = new Krypton.Toolkit.Suite.Extended.Controls.CircularPictureBox();
             this.kawExample.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonAdvancedWizardPage1)).BeginInit();
             this.kryptonAdvancedWizardPage1.SuspendLayout();
@@ -51,7 +50,6 @@ namespace Wizard
             this.kryptonAdvancedWizardPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonAdvancedWizardPage3)).BeginInit();
             this.kryptonAdvancedWizardPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // kawExample
@@ -135,7 +133,6 @@ namespace Wizard
             // 
             // kryptonAdvancedWizardPage3
             // 
-            this.kryptonAdvancedWizardPage3.Controls.Add(this.circularPictureBox1);
             this.kryptonAdvancedWizardPage3.Controls.Add(this.kryptonLabel3);
             this.kryptonAdvancedWizardPage3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonAdvancedWizardPage3.Header = true;
@@ -247,17 +244,6 @@ namespace Wizard
             this.kryptonLabel3.TabIndex = 3;
             this.kryptonLabel3.Values.Text = "Task Complete!";
             // 
-            // circularPictureBox1
-            // 
-            this.circularPictureBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.circularPictureBox1.Image = global::Wizard.Properties.Resources.Ok_128_x_128;
-            this.circularPictureBox1.Location = new System.Drawing.Point(251, 183);
-            this.circularPictureBox1.Name = "circularPictureBox1";
-            this.circularPictureBox1.Size = new System.Drawing.Size(128, 128);
-            this.circularPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.circularPictureBox1.TabIndex = 5;
-            this.circularPictureBox1.TabStop = false;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -279,7 +265,6 @@ namespace Wizard
             ((System.ComponentModel.ISupportInitialize)(this.kryptonAdvancedWizardPage3)).EndInit();
             this.kryptonAdvancedWizardPage3.ResumeLayout(false);
             this.kryptonAdvancedWizardPage3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -296,7 +281,6 @@ namespace Wizard
         private Krypton.Toolkit.KryptonRadioButton kradOffice97Layout;
         private Krypton.Toolkit.KryptonRadioButton kradDefaultLayout;
         private Krypton.Toolkit.KryptonLabel kryptonLabel1;
-        private Krypton.Toolkit.Suite.Extended.Controls.CircularPictureBox circularPictureBox1;
         private Krypton.Toolkit.KryptonLabel kryptonLabel3;
         private Krypton.Toolkit.KryptonRichTextBox kryptonRichTextBox1;
         private Krypton.Toolkit.KryptonLabel kryptonLabel2;

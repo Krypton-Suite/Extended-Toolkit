@@ -1,9 +1,9 @@
-﻿using Krypton.Toolkit;
-using Krypton.Toolkit.Suite.Extended.Messagebox;
-using System;
-using System.Drawing;
+﻿using System;
 using System.IO;
 using System.Windows.Forms;
+
+using Krypton.Toolkit;
+using Krypton.Toolkit.Suite.Extended.Messagebox;
 
 namespace MessageBox
 {
@@ -404,7 +404,7 @@ namespace MessageBox
             }
             */
 
-                kmbc.DisplayMessageBox();
+            kmbc.DisplayMessageBox();
         }
 
         private void krbIconCustom_CheckedChanged(object sender, EventArgs e)

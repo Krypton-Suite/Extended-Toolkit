@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Windows.Forms;
 
 using Krypton.Toolkit;
 using Krypton.Toolkit.Suite.Extended.Effects;
@@ -22,7 +21,7 @@ namespace Effects
             this.kbtnClose.Name = "kbtnClose";
             this.kbtnClose.Size = new System.Drawing.Size(130, 25);
             this.kbtnClose.TabIndex = 0;
-            this.kbtnClose.Values.Text = "Slow Fade In";
+            this.kbtnClose.Values.Text = "Show Fade Out";
             this.kbtnClose.Click += new System.EventHandler(this.kbtnClose_Click);
             // 
             // TestWindow
@@ -45,7 +44,7 @@ namespace Effects
         private void TestWindow_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
         {
             // this will also be fired from the btnClose as well, but then the window form will be `disposed` or `opacity == 0` of already !
-            FadeController.FadeOut(this, FadeSpeed.Slow);
+            // FadeController.FadeOut(this, FadeSpeed.Slow);
         }
 
         private void kbtnClose_Click(object sender, EventArgs e)

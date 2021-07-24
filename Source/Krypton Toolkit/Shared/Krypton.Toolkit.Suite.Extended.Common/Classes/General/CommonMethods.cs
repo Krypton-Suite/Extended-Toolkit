@@ -6,6 +6,9 @@
  */
 #endregion
 
+using System;
+using System.Runtime.InteropServices;
+
 namespace Krypton.Toolkit.Suite.Extended.Common
 {
     /// <summary>
@@ -126,10 +129,5 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <returns></returns>
         [DllImport(dwmapi, PreserveSig = false, SetLastError = true)]
         public static extern bool DwmIsCompositionEnabled();
-    }
-
-    public class CommonMethods
-    {
-        public static void UpdateControlLocation(Control control, Point location) => control.Location = location;
     }
 }

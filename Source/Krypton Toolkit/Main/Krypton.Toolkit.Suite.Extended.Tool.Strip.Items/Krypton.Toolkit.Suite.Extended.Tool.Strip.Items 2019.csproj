@@ -1,5 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
+  <!--Setup TFMs for all projects-->
   <Choose>
     <When Condition="'$(TFMs)' == 'all'">
       <PropertyGroup>
@@ -8,10 +9,11 @@
     </When>
     <Otherwise>
       <PropertyGroup>
-        <TargetFrameworks>net48;net5.0-windows;net6.0-windows</TargetFrameworks>
+        <TargetFrameworks>net48;netcoreapp3.1;net5.0-windows;net6.0-windows</TargetFrameworks>
       </PropertyGroup>
     </Otherwise>
   </Choose>
+  
   <PropertyGroup>
     <LangVersion>preview</LangVersion>
     <OutputType>library</OutputType>
@@ -36,12 +38,12 @@
   <Choose>
     <When Condition="'$(TFMs)' == 'all'">
       <ItemGroup>
-        <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2106.1" />
+        <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2106.2" />
       </ItemGroup>
     </When>
     <Otherwise>
       <ItemGroup>
-        <PackageReference Include="Krypton.Toolkit.Canary.Lite" Version="6.0.2106.1" />
+        <PackageReference Include="Krypton.Toolkit.Canary.Lite" Version="6.0.2106.2" />
       </ItemGroup>
     </Otherwise>
   </Choose>
@@ -51,5 +53,22 @@
     <DocumentationFile>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.Tool.Strip.Items\Krypton.Toolkit.Suite.Extended.Tool.Strip.Items.xml</DocumentationFile>
     <OutputPath>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.Tool.Strip.Items\</OutputPath>
   </PropertyGroup>
+  <ItemGroup>
+    <Compile Update="Resources\ProjectResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ProjectResources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\ProjectResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ProjectResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Shared\Krypton.Toolkit.Suite.Extended.Global.Utilities\Krypton.Toolkit.Suite.Extended.Global.Utilities 2019.csproj" />
+    <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Buttons\Krypton.Toolkit.Suite.Extended.Buttons 2019.csproj" />
+  </ItemGroup>
 
 </Project>

@@ -39,7 +39,7 @@
 
             ToolTipValues.EnableToolTips = true;
 
-            ToolTipValues.Image = Properties.Resources.Blue;
+            //ToolTipValues.Image = Properties.Resources.Blue;
         }
         #endregion
 

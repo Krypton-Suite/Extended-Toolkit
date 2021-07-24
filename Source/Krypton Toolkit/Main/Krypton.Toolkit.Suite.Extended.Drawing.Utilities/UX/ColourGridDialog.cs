@@ -1,4 +1,4 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities.UX
+﻿namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 {
     public class ColourGridDialog : CommonExtendedKryptonForm
     {

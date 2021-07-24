@@ -54,12 +54,15 @@
         private ToolStripMenuItem useBaseColourToolStripMenuItem;
         private ToolStripSeparator toolStripMenuItem7;
         private ToolStripMenuItem useContrastColourToolStripMenuItem;
+        private KryptonLabel kryptonLabel1;
+        private KryptonLabel kryptonLabel2;
+        private ColourHexadecimalTextBox chtxtBase;
+        private ColourHexadecimalTextBox chtxtContrast;
         private TableLayoutPanel tableLayoutPanel3;
 
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KryptonColourContrastDialog));
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             this.ksbtnPalettes = new Krypton.Toolkit.Suite.Extended.Buttons.KryptonSplitButton();
             this.cmsPaletteUtilities = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -94,6 +97,9 @@
             this.kwlContrastColourHeader = new Krypton.Toolkit.KryptonWrapLabel();
             this.kwlBaseColourHeader = new Krypton.Toolkit.KryptonWrapLabel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
             this.kavlblBase = new Krypton.Toolkit.Suite.Extended.Drawing.Utilities.KryptonAlphaValueLabel();
             this.krvlblBase = new Krypton.Toolkit.Suite.Extended.Drawing.Utilities.KryptonRedValueLabel();
             this.kgvlblBase = new Krypton.Toolkit.Suite.Extended.Drawing.Utilities.KryptonGreenValueLabel();
@@ -102,7 +108,7 @@
             this.krvnumBase = new Krypton.Toolkit.Suite.Extended.Drawing.Utilities.KryptonRedValueNumericBox();
             this.kgvnumBase = new Krypton.Toolkit.Suite.Extended.Drawing.Utilities.KryptonGreenValueNumericBox();
             this.kbvnumBase = new Krypton.Toolkit.Suite.Extended.Drawing.Utilities.KryptonBlueValueNumericBox();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.chtxtBase = new Krypton.Toolkit.Suite.Extended.Drawing.Utilities.ColourHexadecimalTextBox();
             this.kavlblContrast = new Krypton.Toolkit.Suite.Extended.Drawing.Utilities.KryptonAlphaValueLabel();
             this.krvlblContrast = new Krypton.Toolkit.Suite.Extended.Drawing.Utilities.KryptonRedValueLabel();
             this.kgvlblContrast = new Krypton.Toolkit.Suite.Extended.Drawing.Utilities.KryptonGreenValueLabel();
@@ -111,6 +117,7 @@
             this.krvnumContrast = new Krypton.Toolkit.Suite.Extended.Drawing.Utilities.KryptonRedValueNumericBox();
             this.kgvnumContrast = new Krypton.Toolkit.Suite.Extended.Drawing.Utilities.KryptonGreenValueNumericBox();
             this.kbvnumContrast = new Krypton.Toolkit.Suite.Extended.Drawing.Utilities.KryptonBlueValueNumericBox();
+            this.chtxtContrast = new Krypton.Toolkit.Suite.Extended.Drawing.Utilities.ColourHexadecimalTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             this.cmsPaletteUtilities.SuspendLayout();
@@ -132,7 +139,7 @@
             this.kryptonPanel1.Controls.Add(this.kbtnCancel);
             this.kryptonPanel1.Controls.Add(this.kryptonBorderEdge1);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.kryptonPanel1.Location = new System.Drawing.Point(0, 595);
+            this.kryptonPanel1.Location = new System.Drawing.Point(0, 644);
             this.kryptonPanel1.Name = "kryptonPanel1";
             this.kryptonPanel1.PanelBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelAlternate;
             this.kryptonPanel1.Size = new System.Drawing.Size(876, 50);
@@ -215,7 +222,7 @@
             this.kryptonPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel2.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel2.Name = "kryptonPanel2";
-            this.kryptonPanel2.Size = new System.Drawing.Size(876, 595);
+            this.kryptonPanel2.Size = new System.Drawing.Size(876, 644);
             this.kryptonPanel2.TabIndex = 1;
             // 
             // tableLayoutPanel1
@@ -237,7 +244,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.24042F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 86.75958F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 199F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(876, 595);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(876, 644);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // cbContrastColour
@@ -245,9 +252,9 @@
             this.cbContrastColour.BackColor = System.Drawing.SystemColors.Control;
             this.cbContrastColour.ContextMenuStrip = this.cmsContrast;
             this.cbContrastColour.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbContrastColour.Location = new System.Drawing.Point(441, 55);
+            this.cbContrastColour.Location = new System.Drawing.Point(441, 61);
             this.cbContrastColour.Name = "cbContrastColour";
-            this.cbContrastColour.Size = new System.Drawing.Size(432, 337);
+            this.cbContrastColour.Size = new System.Drawing.Size(432, 380);
             this.cbContrastColour.TabIndex = 7;
             this.cbContrastColour.TabStop = false;
             this.cbContrastColour.BackColorChanged += new System.EventHandler(this.cbContrastColour_BackColorChanged);
@@ -322,9 +329,9 @@
             this.cbBaseColour.BackColor = System.Drawing.SystemColors.Control;
             this.cbBaseColour.ContextMenuStrip = this.cmsBase;
             this.cbBaseColour.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbBaseColour.Location = new System.Drawing.Point(3, 55);
+            this.cbBaseColour.Location = new System.Drawing.Point(3, 61);
             this.cbBaseColour.Name = "cbBaseColour";
-            this.cbBaseColour.Size = new System.Drawing.Size(432, 337);
+            this.cbBaseColour.Size = new System.Drawing.Size(432, 380);
             this.cbBaseColour.TabIndex = 6;
             this.cbBaseColour.TabStop = false;
             this.cbBaseColour.BackColorChanged += new System.EventHandler(this.cbBaseColour_BackColorChanged);
@@ -401,7 +408,7 @@
             this.kwlContrastColourHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
             this.kwlContrastColourHeader.Location = new System.Drawing.Point(441, 0);
             this.kwlContrastColourHeader.Name = "kwlContrastColourHeader";
-            this.kwlContrastColourHeader.Size = new System.Drawing.Size(432, 52);
+            this.kwlContrastColourHeader.Size = new System.Drawing.Size(432, 58);
             this.kwlContrastColourHeader.StateCommon.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kwlContrastColourHeader.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -412,7 +419,7 @@
             this.kwlBaseColourHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
             this.kwlBaseColourHeader.Location = new System.Drawing.Point(3, 0);
             this.kwlBaseColourHeader.Name = "kwlBaseColourHeader";
-            this.kwlBaseColourHeader.Size = new System.Drawing.Size(432, 52);
+            this.kwlBaseColourHeader.Size = new System.Drawing.Size(432, 58);
             this.kwlBaseColourHeader.StateCommon.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kwlBaseColourHeader.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -429,16 +436,66 @@
             this.tableLayoutPanel2.Controls.Add(this.krvnumBase, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.kgvnumBase, 1, 2);
             this.tableLayoutPanel2.Controls.Add(this.kbvnumBase, 1, 3);
+            this.tableLayoutPanel2.Controls.Add(this.kryptonLabel1, 0, 4);
+            this.tableLayoutPanel2.Controls.Add(this.chtxtBase, 1, 4);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 398);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 447);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 4;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.RowCount = 5;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(432, 194);
             this.tableLayoutPanel2.TabIndex = 0;
+            // 
+            // kryptonLabel1
+            // 
+            this.kryptonLabel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonLabel1.Location = new System.Drawing.Point(3, 155);
+            this.kryptonLabel1.Name = "kryptonLabel1";
+            this.kryptonLabel1.Size = new System.Drawing.Size(210, 36);
+            this.kryptonLabel1.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabel1.TabIndex = 9;
+            this.kryptonLabel1.Values.Text = "Hex Value:";
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 2;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Controls.Add(this.kavlblContrast, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.krvlblContrast, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.kgvlblContrast, 0, 2);
+            this.tableLayoutPanel3.Controls.Add(this.kbvlblContrast, 0, 3);
+            this.tableLayoutPanel3.Controls.Add(this.kavnumContrast, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.krvnumContrast, 1, 1);
+            this.tableLayoutPanel3.Controls.Add(this.kgvnumContrast, 1, 2);
+            this.tableLayoutPanel3.Controls.Add(this.kbvnumContrast, 1, 3);
+            this.tableLayoutPanel3.Controls.Add(this.kryptonLabel2, 0, 4);
+            this.tableLayoutPanel3.Controls.Add(this.chtxtContrast, 1, 4);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(441, 447);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 5;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(432, 194);
+            this.tableLayoutPanel3.TabIndex = 1;
+            // 
+            // kryptonLabel2
+            // 
+            this.kryptonLabel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonLabel2.Location = new System.Drawing.Point(3, 155);
+            this.kryptonLabel2.Name = "kryptonLabel2";
+            this.kryptonLabel2.Size = new System.Drawing.Size(210, 36);
+            this.kryptonLabel2.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabel2.TabIndex = 8;
+            this.kryptonLabel2.Values.Text = "Hex Value:";
             // 
             // kavlblBase
             // 
@@ -449,7 +506,7 @@
             this.kavlblBase.Name = "kavlblBase";
             this.kavlblBase.ShowColon = false;
             this.kavlblBase.ShowCurrentColourValue = false;
-            this.kavlblBase.Size = new System.Drawing.Size(210, 42);
+            this.kavlblBase.Size = new System.Drawing.Size(210, 32);
             this.kavlblBase.StateCommon.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
             this.kavlblBase.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
             this.kavlblBase.TabIndex = 1;
@@ -460,12 +517,12 @@
             // 
             this.krvlblBase.Dock = System.Windows.Forms.DockStyle.Fill;
             this.krvlblBase.ExtraText = "Red Value";
-            this.krvlblBase.Location = new System.Drawing.Point(3, 51);
+            this.krvlblBase.Location = new System.Drawing.Point(3, 41);
             this.krvlblBase.Name = "krvlblBase";
             this.krvlblBase.RedValue = 0;
             this.krvlblBase.ShowColon = false;
             this.krvlblBase.ShowCurrentColourValue = false;
-            this.krvlblBase.Size = new System.Drawing.Size(210, 42);
+            this.krvlblBase.Size = new System.Drawing.Size(210, 32);
             this.krvlblBase.StateCommon.LongText.Color1 = System.Drawing.Color.Red;
             this.krvlblBase.StateCommon.LongText.Color2 = System.Drawing.Color.Red;
             this.krvlblBase.StateCommon.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
@@ -482,11 +539,11 @@
             this.kgvlblBase.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kgvlblBase.ExtraText = "Green Value";
             this.kgvlblBase.GreenValue = 0;
-            this.kgvlblBase.Location = new System.Drawing.Point(3, 99);
+            this.kgvlblBase.Location = new System.Drawing.Point(3, 79);
             this.kgvlblBase.Name = "kgvlblBase";
             this.kgvlblBase.ShowColon = false;
             this.kgvlblBase.ShowCurrentColourValue = false;
-            this.kgvlblBase.Size = new System.Drawing.Size(210, 42);
+            this.kgvlblBase.Size = new System.Drawing.Size(210, 32);
             this.kgvlblBase.StateCommon.LongText.Color1 = System.Drawing.Color.Green;
             this.kgvlblBase.StateCommon.LongText.Color2 = System.Drawing.Color.Green;
             this.kgvlblBase.StateCommon.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
@@ -503,11 +560,11 @@
             this.kbvlblBase.BlueValue = 0;
             this.kbvlblBase.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kbvlblBase.ExtraText = "Blue Value";
-            this.kbvlblBase.Location = new System.Drawing.Point(3, 147);
+            this.kbvlblBase.Location = new System.Drawing.Point(3, 117);
             this.kbvlblBase.Name = "kbvlblBase";
             this.kbvlblBase.ShowColon = false;
             this.kbvlblBase.ShowCurrentColourValue = false;
-            this.kbvlblBase.Size = new System.Drawing.Size(210, 44);
+            this.kbvlblBase.Size = new System.Drawing.Size(210, 32);
             this.kbvlblBase.StateCommon.LongText.Color1 = System.Drawing.Color.Blue;
             this.kbvlblBase.StateCommon.LongText.Color2 = System.Drawing.Color.Blue;
             this.kbvlblBase.StateCommon.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
@@ -531,7 +588,7 @@
             0,
             0});
             this.kavnumBase.Name = "kavnumBase";
-            this.kavnumBase.Size = new System.Drawing.Size(210, 42);
+            this.kavnumBase.Size = new System.Drawing.Size(210, 22);
             this.kavnumBase.TabIndex = 5;
             this.kavnumBase.Typeface = null;
             this.kavnumBase.ValueChanged += new System.EventHandler(this.kavnumBase_ValueChanged);
@@ -541,14 +598,14 @@
             this.krvnumBase.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.krvnumBase.Location = new System.Drawing.Point(219, 51);
+            this.krvnumBase.Location = new System.Drawing.Point(219, 41);
             this.krvnumBase.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
             this.krvnumBase.Name = "krvnumBase";
-            this.krvnumBase.Size = new System.Drawing.Size(210, 42);
+            this.krvnumBase.Size = new System.Drawing.Size(210, 22);
             this.krvnumBase.StateCommon.Back.Color1 = System.Drawing.Color.Red;
             this.krvnumBase.StateCommon.Content.Color1 = System.Drawing.Color.White;
             this.krvnumBase.StateCommon.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
@@ -556,7 +613,7 @@
             this.krvnumBase.ToolTipValues.Description = "The red value";
             this.krvnumBase.ToolTipValues.EnableToolTips = true;
             this.krvnumBase.ToolTipValues.Heading = "Red Value";
-            this.krvnumBase.ToolTipValues.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            this.krvnumBase.ToolTipValues.Image = null;
             this.krvnumBase.Typeface = null;
             this.krvnumBase.UseAccessibleUI = false;
             this.krvnumBase.ValueChanged += new System.EventHandler(this.krvnumBase_ValueChanged);
@@ -566,14 +623,14 @@
             this.kgvnumBase.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.kgvnumBase.Location = new System.Drawing.Point(219, 99);
+            this.kgvnumBase.Location = new System.Drawing.Point(219, 79);
             this.kgvnumBase.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
             this.kgvnumBase.Name = "kgvnumBase";
-            this.kgvnumBase.Size = new System.Drawing.Size(210, 42);
+            this.kgvnumBase.Size = new System.Drawing.Size(210, 22);
             this.kgvnumBase.StateCommon.Back.Color1 = System.Drawing.Color.Green;
             this.kgvnumBase.StateCommon.Content.Color1 = System.Drawing.Color.White;
             this.kgvnumBase.StateCommon.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
@@ -581,7 +638,7 @@
             this.kgvnumBase.ToolTipValues.Description = "The green value";
             this.kgvnumBase.ToolTipValues.EnableToolTips = true;
             this.kgvnumBase.ToolTipValues.Heading = "Green Value";
-            this.kgvnumBase.ToolTipValues.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
+            this.kgvnumBase.ToolTipValues.Image = null;
             this.kgvnumBase.Typeface = null;
             this.kgvnumBase.UseAccessibleUI = false;
             this.kgvnumBase.ValueChanged += new System.EventHandler(this.kgvnumBase_ValueChanged);
@@ -591,14 +648,14 @@
             this.kbvnumBase.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.kbvnumBase.Location = new System.Drawing.Point(219, 147);
+            this.kbvnumBase.Location = new System.Drawing.Point(219, 117);
             this.kbvnumBase.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
             this.kbvnumBase.Name = "kbvnumBase";
-            this.kbvnumBase.Size = new System.Drawing.Size(210, 44);
+            this.kbvnumBase.Size = new System.Drawing.Size(210, 22);
             this.kbvnumBase.StateCommon.Back.Color1 = System.Drawing.Color.Blue;
             this.kbvnumBase.StateCommon.Content.Color1 = System.Drawing.Color.White;
             this.kbvnumBase.StateCommon.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
@@ -606,34 +663,24 @@
             this.kbvnumBase.ToolTipValues.Description = "The blue value";
             this.kbvnumBase.ToolTipValues.EnableToolTips = true;
             this.kbvnumBase.ToolTipValues.Heading = "Blue Value";
-            this.kbvnumBase.ToolTipValues.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
+            this.kbvnumBase.ToolTipValues.Image = null;
             this.kbvnumBase.Typeface = null;
             this.kbvnumBase.UseAccessibleUI = false;
             this.kbvnumBase.ValueChanged += new System.EventHandler(this.kbvnumBase_ValueChanged);
             // 
-            // tableLayoutPanel3
+            // chtxtBase
             // 
-            this.tableLayoutPanel3.ColumnCount = 2;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Controls.Add(this.kavlblContrast, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.krvlblContrast, 0, 1);
-            this.tableLayoutPanel3.Controls.Add(this.kgvlblContrast, 0, 2);
-            this.tableLayoutPanel3.Controls.Add(this.kbvlblContrast, 0, 3);
-            this.tableLayoutPanel3.Controls.Add(this.kavnumContrast, 1, 0);
-            this.tableLayoutPanel3.Controls.Add(this.krvnumContrast, 1, 1);
-            this.tableLayoutPanel3.Controls.Add(this.kgvnumContrast, 1, 2);
-            this.tableLayoutPanel3.Controls.Add(this.kbvnumContrast, 1, 3);
-            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(441, 398);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 4;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(432, 194);
-            this.tableLayoutPanel3.TabIndex = 1;
+            this.chtxtBase.Colour = System.Drawing.Color.Empty;
+            this.chtxtBase.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chtxtBase.Hint = "000000";
+            this.chtxtBase.Location = new System.Drawing.Point(219, 155);
+            this.chtxtBase.MaxLength = 6;
+            this.chtxtBase.Name = "chtxtBase";
+            this.chtxtBase.Size = new System.Drawing.Size(210, 23);
+            this.chtxtBase.StateCommon.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
+            this.chtxtBase.TabIndex = 10;
+            this.chtxtBase.Text = "000000";
+            this.chtxtBase.TextChanged += new System.EventHandler(this.chtxtBase_TextChanged);
             // 
             // kavlblContrast
             // 
@@ -644,7 +691,7 @@
             this.kavlblContrast.Name = "kavlblContrast";
             this.kavlblContrast.ShowColon = false;
             this.kavlblContrast.ShowCurrentColourValue = false;
-            this.kavlblContrast.Size = new System.Drawing.Size(210, 42);
+            this.kavlblContrast.Size = new System.Drawing.Size(210, 32);
             this.kavlblContrast.StateCommon.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
             this.kavlblContrast.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
             this.kavlblContrast.TabIndex = 0;
@@ -655,12 +702,12 @@
             // 
             this.krvlblContrast.Dock = System.Windows.Forms.DockStyle.Fill;
             this.krvlblContrast.ExtraText = "Red Value";
-            this.krvlblContrast.Location = new System.Drawing.Point(3, 51);
+            this.krvlblContrast.Location = new System.Drawing.Point(3, 41);
             this.krvlblContrast.Name = "krvlblContrast";
             this.krvlblContrast.RedValue = 0;
             this.krvlblContrast.ShowColon = false;
             this.krvlblContrast.ShowCurrentColourValue = false;
-            this.krvlblContrast.Size = new System.Drawing.Size(210, 42);
+            this.krvlblContrast.Size = new System.Drawing.Size(210, 32);
             this.krvlblContrast.StateCommon.LongText.Color1 = System.Drawing.Color.Red;
             this.krvlblContrast.StateCommon.LongText.Color2 = System.Drawing.Color.Red;
             this.krvlblContrast.StateCommon.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
@@ -677,11 +724,11 @@
             this.kgvlblContrast.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kgvlblContrast.ExtraText = "Green Value";
             this.kgvlblContrast.GreenValue = 0;
-            this.kgvlblContrast.Location = new System.Drawing.Point(3, 99);
+            this.kgvlblContrast.Location = new System.Drawing.Point(3, 79);
             this.kgvlblContrast.Name = "kgvlblContrast";
             this.kgvlblContrast.ShowColon = false;
             this.kgvlblContrast.ShowCurrentColourValue = false;
-            this.kgvlblContrast.Size = new System.Drawing.Size(210, 42);
+            this.kgvlblContrast.Size = new System.Drawing.Size(210, 32);
             this.kgvlblContrast.StateCommon.LongText.Color1 = System.Drawing.Color.Green;
             this.kgvlblContrast.StateCommon.LongText.Color2 = System.Drawing.Color.Green;
             this.kgvlblContrast.StateCommon.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
@@ -698,11 +745,11 @@
             this.kbvlblContrast.BlueValue = 0;
             this.kbvlblContrast.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kbvlblContrast.ExtraText = "Blue Value";
-            this.kbvlblContrast.Location = new System.Drawing.Point(3, 147);
+            this.kbvlblContrast.Location = new System.Drawing.Point(3, 117);
             this.kbvlblContrast.Name = "kbvlblContrast";
             this.kbvlblContrast.ShowColon = false;
             this.kbvlblContrast.ShowCurrentColourValue = false;
-            this.kbvlblContrast.Size = new System.Drawing.Size(210, 44);
+            this.kbvlblContrast.Size = new System.Drawing.Size(210, 32);
             this.kbvlblContrast.StateCommon.LongText.Color1 = System.Drawing.Color.Blue;
             this.kbvlblContrast.StateCommon.LongText.Color2 = System.Drawing.Color.Blue;
             this.kbvlblContrast.StateCommon.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
@@ -726,7 +773,7 @@
             0,
             0});
             this.kavnumContrast.Name = "kavnumContrast";
-            this.kavnumContrast.Size = new System.Drawing.Size(210, 42);
+            this.kavnumContrast.Size = new System.Drawing.Size(210, 22);
             this.kavnumContrast.TabIndex = 4;
             this.kavnumContrast.Typeface = null;
             this.kavnumContrast.ValueChanged += new System.EventHandler(this.kavnumContrast_ValueChanged);
@@ -736,14 +783,14 @@
             this.krvnumContrast.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.krvnumContrast.Location = new System.Drawing.Point(219, 51);
+            this.krvnumContrast.Location = new System.Drawing.Point(219, 41);
             this.krvnumContrast.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
             this.krvnumContrast.Name = "krvnumContrast";
-            this.krvnumContrast.Size = new System.Drawing.Size(210, 42);
+            this.krvnumContrast.Size = new System.Drawing.Size(210, 22);
             this.krvnumContrast.StateCommon.Back.Color1 = System.Drawing.Color.Red;
             this.krvnumContrast.StateCommon.Content.Color1 = System.Drawing.Color.White;
             this.krvnumContrast.StateCommon.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
@@ -751,7 +798,7 @@
             this.krvnumContrast.ToolTipValues.Description = "The red value";
             this.krvnumContrast.ToolTipValues.EnableToolTips = true;
             this.krvnumContrast.ToolTipValues.Heading = "Red Value";
-            this.krvnumContrast.ToolTipValues.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image3")));
+            this.krvnumContrast.ToolTipValues.Image = null;
             this.krvnumContrast.Typeface = null;
             this.krvnumContrast.UseAccessibleUI = false;
             this.krvnumContrast.ValueChanged += new System.EventHandler(this.krvnumContrast_ValueChanged);
@@ -761,14 +808,14 @@
             this.kgvnumContrast.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.kgvnumContrast.Location = new System.Drawing.Point(219, 99);
+            this.kgvnumContrast.Location = new System.Drawing.Point(219, 79);
             this.kgvnumContrast.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
             this.kgvnumContrast.Name = "kgvnumContrast";
-            this.kgvnumContrast.Size = new System.Drawing.Size(210, 42);
+            this.kgvnumContrast.Size = new System.Drawing.Size(210, 22);
             this.kgvnumContrast.StateCommon.Back.Color1 = System.Drawing.Color.Green;
             this.kgvnumContrast.StateCommon.Content.Color1 = System.Drawing.Color.White;
             this.kgvnumContrast.StateCommon.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
@@ -776,7 +823,7 @@
             this.kgvnumContrast.ToolTipValues.Description = "The green value";
             this.kgvnumContrast.ToolTipValues.EnableToolTips = true;
             this.kgvnumContrast.ToolTipValues.Heading = "Green Value";
-            this.kgvnumContrast.ToolTipValues.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image4")));
+            this.kgvnumContrast.ToolTipValues.Image = null;
             this.kgvnumContrast.Typeface = null;
             this.kgvnumContrast.UseAccessibleUI = false;
             this.kgvnumContrast.ValueChanged += new System.EventHandler(this.kgvnumContrast_ValueChanged);
@@ -786,14 +833,14 @@
             this.kbvnumContrast.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.kbvnumContrast.Location = new System.Drawing.Point(219, 147);
+            this.kbvnumContrast.Location = new System.Drawing.Point(219, 117);
             this.kbvnumContrast.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
             this.kbvnumContrast.Name = "kbvnumContrast";
-            this.kbvnumContrast.Size = new System.Drawing.Size(210, 44);
+            this.kbvnumContrast.Size = new System.Drawing.Size(210, 22);
             this.kbvnumContrast.StateCommon.Back.Color1 = System.Drawing.Color.Blue;
             this.kbvnumContrast.StateCommon.Content.Color1 = System.Drawing.Color.White;
             this.kbvnumContrast.StateCommon.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
@@ -801,24 +848,37 @@
             this.kbvnumContrast.ToolTipValues.Description = "The blue value";
             this.kbvnumContrast.ToolTipValues.EnableToolTips = true;
             this.kbvnumContrast.ToolTipValues.Heading = "Blue Value";
-            this.kbvnumContrast.ToolTipValues.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image5")));
+            this.kbvnumContrast.ToolTipValues.Image = null;
             this.kbvnumContrast.Typeface = null;
             this.kbvnumContrast.UseAccessibleUI = false;
             this.kbvnumContrast.ValueChanged += new System.EventHandler(this.kbvnumContrast_ValueChanged);
+            // 
+            // chtxtContrast
+            // 
+            this.chtxtContrast.Colour = System.Drawing.Color.Empty;
+            this.chtxtContrast.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chtxtContrast.Hint = "000000";
+            this.chtxtContrast.Location = new System.Drawing.Point(219, 155);
+            this.chtxtContrast.MaxLength = 6;
+            this.chtxtContrast.Name = "chtxtContrast";
+            this.chtxtContrast.Size = new System.Drawing.Size(210, 23);
+            this.chtxtContrast.StateCommon.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
+            this.chtxtContrast.TabIndex = 9;
+            this.chtxtContrast.Text = "000000";
             // 
             // KryptonColourContrastDialog
             // 
             this.AcceptButton = this.kbtnOk;
             this.BlurValues.EnableBlur = true;
             this.CancelButton = this.kbtnCancel;
-            this.ClientSize = new System.Drawing.Size(876, 645);
+            this.ClientSize = new System.Drawing.Size(876, 694);
             this.Controls.Add(this.kryptonPanel2);
             this.Controls.Add(this.kryptonPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "KryptonColourContrastDialog";
+            this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.Text = "Contrast Colour Configurator";
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
@@ -863,7 +923,7 @@
         #endregion
 
         #region Constructor
-        public KryptonColourContrastDialog()
+        public KryptonColourContrastDialog(string baseColourHeader = "Base Colour", string contrastColourHeader = "Contrast Colour")
         {
             InitializeComponent();
 
@@ -873,9 +933,24 @@
 
             SetKeepOpacityValues(true);
 
-            SetBaseColour(Color.Transparent);
+            UpdateUI(Color.Empty, Color.Empty, baseColourHeader, contrastColourHeader, false);
 
-            SetContrastColour(Color.Transparent);
+            _updateUI = new Timer() { Enabled = true, Interval = 256 };
+
+            _updateUI.Tick += UpdateUI_Tick;
+        }
+
+        public KryptonColourContrastDialog(Color baseColour, Color contrastColour, string baseColourHeader = "Base Colour", string contrastColourHeader = "Contrast Colour", bool showPaletteButton = false)
+        {
+            InitializeComponent();
+
+            SetAutomateContrastColour(true);
+
+            SetUseForPalettes(false);
+
+            SetKeepOpacityValues(true);
+
+            UpdateUI(baseColour, contrastColour, baseColourHeader, contrastColourHeader, showPaletteButton);
 
             _updateUI = new Timer() { Enabled = true, Interval = 256 };
 
@@ -893,6 +968,8 @@
             kgvnumContrast.Value = cbContrastColour.BackColor.G;
 
             kbvnumContrast.Value = cbContrastColour.BackColor.B;
+
+            chtxtBase.Colour = cbBaseColour.BackColor;
         }
 
         private void cbContrastColour_BackColorChanged(object sender, EventArgs e)
@@ -904,6 +981,8 @@
             kgvnumBase.Value = cbBaseColour.BackColor.G;
 
             kbvnumBase.Value = cbBaseColour.BackColor.B;
+
+            chtxtContrast.Colour = cbContrastColour.BackColor;
         }
 
         private void useBaseColourToolStripMenuItem_Click(object sender, EventArgs e)
@@ -918,42 +997,58 @@
 
         private void kavnumBase_ValueChanged(object sender, EventArgs e)
         {
+            byte alpha = (byte)kavnumBase.Value, red = (byte)krvnumBase.Value, green = (byte)kgvnumBase.Value, blue = (byte)kbvnumBase.Value;
 
+            UpdateBaseColour(alpha, red, green, blue);
         }
 
         private void krvnumBase_ValueChanged(object sender, EventArgs e)
         {
+            byte alpha = (byte)kavnumBase.Value, red = (byte)krvnumBase.Value, green = (byte)kgvnumBase.Value, blue = (byte)kbvnumBase.Value;
 
+            UpdateBaseColour(alpha, red, green, blue);
         }
 
         private void kgvnumBase_ValueChanged(object sender, EventArgs e)
         {
+            byte alpha = (byte)kavnumBase.Value, red = (byte)krvnumBase.Value, green = (byte)kgvnumBase.Value, blue = (byte)kbvnumBase.Value;
 
+            UpdateBaseColour(alpha, red, green, blue);
         }
 
         private void kbvnumBase_ValueChanged(object sender, EventArgs e)
         {
+            byte alpha = (byte)kavnumBase.Value, red = (byte)krvnumBase.Value, green = (byte)kgvnumBase.Value, blue = (byte)kbvnumBase.Value;
 
+            UpdateBaseColour(alpha, red, green, blue);
         }
 
         private void kavnumContrast_ValueChanged(object sender, EventArgs e)
         {
+            byte alpha = (byte)kavnumContrast.Value, red = (byte)krvnumContrast.Value, green = (byte)kgvnumContrast.Value, blue = (byte)kbvnumContrast.Value;
 
+            UpdateContrastColour(alpha, red, green, blue);
         }
 
         private void krvnumContrast_ValueChanged(object sender, EventArgs e)
         {
+            byte alpha = (byte)kavnumContrast.Value, red = (byte)krvnumContrast.Value, green = (byte)kgvnumContrast.Value, blue = (byte)kbvnumContrast.Value;
 
+            UpdateContrastColour(alpha, red, green, blue);
         }
 
         private void kgvnumContrast_ValueChanged(object sender, EventArgs e)
         {
+            byte alpha = (byte)kavnumContrast.Value, red = (byte)krvnumContrast.Value, green = (byte)kgvnumContrast.Value, blue = (byte)kbvnumContrast.Value;
 
+            UpdateContrastColour(alpha, red, green, blue);
         }
 
         private void kbvnumContrast_ValueChanged(object sender, EventArgs e)
         {
+            byte alpha = (byte)kavnumContrast.Value, red = (byte)krvnumContrast.Value, green = (byte)kgvnumContrast.Value, blue = (byte)kbvnumContrast.Value;
 
+            UpdateContrastColour(alpha, red, green, blue);
         }
 
         private void makeThisTheContrastColourToolStripMenuItem_Click(object sender, EventArgs e) => cbContrastColour.BackColor = cbBaseColour.BackColor;
@@ -991,6 +1086,14 @@
                 cbContrastColour.BackColor = ColourExtensions.GetContrast(cbBaseColour.BackColor, GetKeepOpacityValues());
             }
         }
+
+        private void chtxtBase_TextChanged(object sender, EventArgs e)
+        {
+            if (chtxtBase.Text.Length == 3 || chtxtBase.Text.Length == 6)
+            {
+                cbBaseColour.BackColor = ColorTranslator.FromHtml($"#{chtxtBase.Text}");
+            }
+        }
         #endregion
 
         #region Methods
@@ -1010,9 +1113,22 @@
 
         public void Refresh() => Invalidate();
 
-        private void UpbateBaseColour(byte alpha, byte red, byte green, byte blue) => cbBaseColour.BackColor = Color.FromArgb(alpha, red, green, blue);
+        private void UpdateBaseColour(byte alpha, byte red, byte green, byte blue) => cbBaseColour.BackColor = Color.FromArgb(alpha, red, green, blue);
 
         private void UpdateContrastColour(byte alpha, byte red, byte green, byte blue) => cbContrastColour.BackColor = Color.FromArgb(alpha, red, green, blue);
+
+        private void UpdateUI(Color baseColour, Color contrastColour, string baseColourHeader, string contrastColourHeader, bool showPaletteButton)
+        {
+            SetBaseColour(baseColour);
+
+            SetContrastColour(contrastColour);
+
+            kwlBaseColourHeader.Text = baseColourHeader;
+
+            kwlContrastColourHeader.Text = contrastColourHeader;
+
+            ShowPaletteButtons(showPaletteButton);
+        }
         #endregion
 
         #region Setters and Getters

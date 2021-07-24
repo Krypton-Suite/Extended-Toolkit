@@ -4,7 +4,6 @@
     {
         #region Design Code
         private KryptonPanel kryptonPanel1;
-        private System.Windows.Forms.Panel panel1;
         private KryptonLabel klblApplicationVersion;
         private KryptonLabel klblApplicationName;
         private System.Windows.Forms.PictureBox pbxApplicationIcon;
@@ -13,6 +12,7 @@
         private KryptonLabel klblCopyright;
         private KryptonButton kbtnSystemInformation;
         private KryptonLabel klblFrameworkVersion;
+        private KryptonBorderEdge kryptonBorderEdge1;
         private KryptonPanel kryptonPanel2;
 
         private void InitializeComponent()
@@ -20,7 +20,6 @@
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             this.kbtnSystemInformation = new Krypton.Toolkit.KryptonButton();
             this.kbtnOk = new Krypton.Toolkit.KryptonButton();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
             this.klblFrameworkVersion = new Krypton.Toolkit.KryptonLabel();
             this.krtbMoreDetails = new Krypton.Toolkit.KryptonRichTextBox();
@@ -28,6 +27,7 @@
             this.klblApplicationVersion = new Krypton.Toolkit.KryptonLabel();
             this.klblApplicationName = new Krypton.Toolkit.KryptonLabel();
             this.pbxApplicationIcon = new System.Windows.Forms.PictureBox();
+            this.kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
@@ -37,6 +37,7 @@
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(this.kryptonBorderEdge1);
             this.kryptonPanel1.Controls.Add(this.kbtnSystemInformation);
             this.kryptonPanel1.Controls.Add(this.kbtnOk);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -65,15 +66,6 @@
             this.kbtnOk.TabIndex = 0;
             this.kbtnOk.Values.Text = "&Ok";
             // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 336);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(622, 3);
-            this.panel1.TabIndex = 1;
-            // 
             // kryptonPanel2
             // 
             this.kryptonPanel2.Controls.Add(this.klblFrameworkVersion);
@@ -85,7 +77,7 @@
             this.kryptonPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel2.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel2.Name = "kryptonPanel2";
-            this.kryptonPanel2.Size = new System.Drawing.Size(622, 336);
+            this.kryptonPanel2.Size = new System.Drawing.Size(622, 339);
             this.kryptonPanel2.TabIndex = 2;
             // 
             // klblFrameworkVersion
@@ -144,12 +136,20 @@
             this.pbxApplicationIcon.TabIndex = 0;
             this.pbxApplicationIcon.TabStop = false;
             // 
+            // kryptonBorderEdge1
+            // 
+            this.kryptonBorderEdge1.BorderStyle = Krypton.Toolkit.PaletteBorderStyle.HeaderSecondary;
+            this.kryptonBorderEdge1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.kryptonBorderEdge1.Location = new System.Drawing.Point(0, 0);
+            this.kryptonBorderEdge1.Name = "kryptonBorderEdge1";
+            this.kryptonBorderEdge1.Size = new System.Drawing.Size(622, 1);
+            this.kryptonBorderEdge1.Text = "kryptonBorderEdge1";
+            // 
             // KryptonAboutDialog
             // 
             this.AcceptButton = this.kbtnOk;
             this.ClientSize = new System.Drawing.Size(622, 385);
             this.Controls.Add(this.kryptonPanel2);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.kryptonPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
@@ -161,6 +161,7 @@
             this.Load += new System.EventHandler(this.KryptonAboutDialog_Load);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
+            this.kryptonPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
             this.kryptonPanel2.ResumeLayout(false);
             this.kryptonPanel2.PerformLayout();
