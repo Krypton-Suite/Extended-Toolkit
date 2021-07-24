@@ -10,6 +10,10 @@ using System.Drawing;
 
 namespace Krypton.Toolkit.Suite.Extended.TreeGridView
 {
+    /// <summary>
+    /// Just like a tree view, I wanted to have the concept of a node. 
+    /// I made the nodes class derive from a DataGridViewRow since a node in the list is the same as a row, just with a bit more info
+    /// </summary>
     public class KryptonTreeGridColumn : KryptonDataGridViewTextBoxColumn
     {
         public KryptonTreeGridColumn()
@@ -17,7 +21,10 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
             CellTemplate = new KryptonTreeGridCell();
         }
 
-        // Need to override Clone for design-time support.
+        /// <summary>
+        /// Need to override Clone for design-time support.
+        /// </summary>
+        /// <returns></returns>
         public override object Clone()
         {
             var c = (KryptonTreeGridColumn)base.Clone();
@@ -25,6 +32,6 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
             return c;
         }
 
-        public Image DefaultNodeImage { get; set; }
+        public Image? DefaultNodeImage { get; set; }
     }
 }

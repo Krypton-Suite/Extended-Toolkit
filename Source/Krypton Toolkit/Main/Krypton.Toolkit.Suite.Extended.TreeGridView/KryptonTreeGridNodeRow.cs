@@ -19,21 +19,24 @@ using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.TreeGridView
 {
+    /// <summary>
+    /// Design of the TreeGridView supported normal TreeView type properties and features, 
+    /// so creating necessary classes to create the “tree view” experience was necessary
+    /// </summary>
     [ToolboxItem(false),
      DesignTimeVisible(false)]
     public class KryptonTreeGridNodeRow : DataGridViewRow//, IComponent
     {
-        internal KryptonTreeGridView Grid;
-        internal TreeGridNodeCollection Owner;
-        internal bool IsExpanded;
+        internal KryptonTreeGridView? Grid;
+        internal TreeGridNodeCollection? Owner;
         internal bool IsRoot;
         private bool _isSited;
-        private Image _image;
+        private Image? _image;
         private int _imageIndex;
 
         private readonly Random _rndSeed = new();
-        private KryptonTreeGridCell _treeCell;
-        private TreeGridNodeCollection _childrenNodes;
+        private KryptonTreeGridCell? _treeCell;
+        private TreeGridNodeCollection? _childrenNodes;
 
         private int _index;
         private int _level;
@@ -52,7 +55,9 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
             _level = -1;
             IsExpanded = false;
             UniqueValue = -1;
+#pragma warning disable CA5394 // Do not use insecure randomness
             UniqueValue = _rndSeed.Next();// +DateTime.Now.Second + DateTime.Now.Millisecond;
+#pragma warning restore CA5394 // Do not use insecure randomness
             _isSited = false;
             _imageIndex = -1;
         }
@@ -60,7 +65,9 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
         public override object Clone()
         {
             var r = (KryptonTreeGridNodeRow)base.Clone();
+#pragma warning disable CA5394 // Do not use insecure randomness
             r.UniqueValue = _rndSeed.Next();// +DateTime.Now.Second + DateTime.Now.Millisecond; 
+#pragma warning restore CA5394 // Do not use insecure randomness
             r._level = _level;
             r.Grid = Grid;
             r.Parent = Parent;
@@ -80,11 +87,9 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
         protected internal virtual void UnSited()
         {
             // This row is being removed from being displayed on the grid.
-            KryptonTreeGridCell cell;
-            foreach (DataGridViewCell dgVcell in Cells)
+            foreach (DataGridViewCell dgvCell in Cells)
             {
-                cell = dgVcell as KryptonTreeGridCell;
-                cell?.UnSited();
+                (dgvCell as KryptonTreeGridCell)?.UnSited();
             }
             _isSited = false;
         }
@@ -96,13 +101,31 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
             _childCellsCreated = true;
             Debug.Assert(Grid != null);
 
-            KryptonTreeGridCell cell;
-            foreach (DataGridViewCell dgVcell in Cells)
+            foreach (DataGridViewCell dgvCell in Cells)
             {
-                cell = dgVcell as KryptonTreeGridCell;
-                cell?.Sited();// Level = Level;
+                (dgvCell as KryptonTreeGridCell)?.Sited();// Level = Level;
             }
 
+        }
+
+        [EditorBrowsable(EditorBrowsableState.Advanced),
+         Browsable(false),
+         DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public bool IsExpanded;
+
+        [Category("Behavior")]
+        [Description("TreeNode Checked")]
+        [DefaultValue(CheckState.Unchecked)]
+        // TODO: Cause redraw of the checkbox if it is being used for these columns
+        public CheckState CheckState { get; set; }
+
+        [Category("Behavior")]
+        [Description("TreeNode Checked")]
+        [DefaultValue(false)]
+        public bool Checked
+        {
+            get => CheckState != CheckState.Unchecked;
+            set => CheckState = value ? CheckState.Checked : CheckState.Unchecked;
         }
 
         // Represents the index of this row in the Grid
@@ -133,7 +156,7 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
         [Browsable(false),
         EditorBrowsable(EditorBrowsableState.Never),
         DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public ImageList ImageList => Grid?.ImageList;
+        public ImageList? ImageList => Grid?.ImageList;
 
         private bool ShouldSerializeImageIndex()
         {
@@ -226,7 +249,7 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
 
             if (e.Action is CollectionChangeAction.Add or CollectionChangeAction.Refresh)
             {
-                KryptonTreeGridCell treeCell = null;
+                KryptonTreeGridCell? treeCell = null;
 
                 if (e.Element == null)
                 {
@@ -272,7 +295,7 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
         // have any cells. We have to fabricate the cell collection ourself.
         [Browsable(false),
          DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public new DataGridViewCellCollection Cells
+        public new DataGridViewCellCollection? Cells
         {
             get
             {
@@ -300,7 +323,7 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
                 {
                     // calculate level
                     var walk = 0;
-                    KryptonTreeGridNodeRow walkRow = Parent;
+                    KryptonTreeGridNodeRow? walkRow = Parent;
                     while (walkRow != null)
                     {
                         walk++;
@@ -314,7 +337,7 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
 
         [Browsable(false),
          DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public KryptonTreeGridNodeRow Parent { get; set; }
+        public KryptonTreeGridNodeRow? Parent { get; set; }
 
         [Browsable(false),
          DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
@@ -331,7 +354,7 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
         {
             get
             {
-                KryptonTreeGridNodeRow parent = Parent;
+                KryptonTreeGridNodeRow? parent = Parent;
                 return parent is not { HasChildren: true } || Index == parent.Nodes.Count - 1;
             }
         }
@@ -342,7 +365,8 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
 
         public virtual bool Collapse()
         {
-            return Grid.CollapseNode(this);
+            Debug.Assert(Grid != null);
+            return Grid!.CollapseNode(this);
         }
 
         public virtual bool Expand()
@@ -356,6 +380,17 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
                 IsExpanded = true;
                 return true;
             }
+        }
+
+        public void EnsureVisible()
+        {
+            if (!Visible
+            || !Cells[0].Visible)
+            {
+                return;
+            }
+
+            Grid.FirstDisplayedScrollingRowIndex = RowIndex;
         }
 
         protected internal virtual bool InsertChildNode(int index, KryptonTreeGridNodeRow node)
@@ -373,9 +408,9 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
                 {
                     Grid.SiteNode(node);
                     // Reindexing...
-                    for (int i = index; i < Nodes.Count; i++)
+                    for (var i = index; i < Nodes.Count; i++)
                     {
-                        Nodes[i].Index = i;
+                        Nodes[i].Index = -1;
                     }
                 }
             }
@@ -429,9 +464,9 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
 
             }
             // Reindexing...
-            for (int i = node.Index; i < node.Parent.Nodes.Count; i++)
+            for (var i = node.Index; i < node.Parent.Nodes.Count; i++)
             {
-                Nodes[i].Index = i - 1;
+                Nodes[i].Index = -1;
             }
 
             node.Grid = null;
@@ -440,7 +475,7 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
 
         }
 
-        internal protected virtual bool ClearNodes()
+        protected internal virtual bool ClearNodes()
         {
             if (HasChildren)
             {
@@ -450,14 +485,6 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
                 }
             }
             return true;
-        }
-
-        [Browsable(false)]
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        public event EventHandler Disposed
-        {
-            add { }
-            remove { }
         }
 
         [Browsable(false)]
@@ -485,25 +512,6 @@ namespace Krypton.Toolkit.Suite.Extended.TreeGridView
             return sb.ToString();
         }
 
-        //protected override void Dispose(bool disposing) {
-        //    if (disposing)
-        //    {
-        //        lock(this)
-        //        {
-        //            if (site != null && site.Container != null)
-        //            {
-        //                site.Container.Remove(this);
-        //            }
-
-        //            if (disposed != null)
-        //            {
-        //                disposed(this, EventArgs.Empty);
-        //            }
-        //        }
-        //    }
-
-        //    base.Dispose(disposing);
-        //}
     }
 
 }
