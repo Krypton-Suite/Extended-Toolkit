@@ -1,4 +1,4 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Software.Updater
+﻿namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
 {
     public class SharpUpdateAcceptForm : KryptonForm
     {
@@ -157,17 +157,17 @@
         /// <summary>
         /// The program to update's info
         /// </summary>
-        private SharpUpdateLocalAppInfo applicationInfo;
+        private SharpUpdateLocalAppInfo _applicationInfo;
 
         /// <summary>
         /// The update info from the update.xml
         /// </summary>
-        private SharpUpdateXml updateInfo;
+        private SharpUpdateXml _updateInfo;
 
         /// <summary>
         /// The update info display form
         /// </summary>
-        private SharpUpdateInfoForm updateInfoForm;
+        private SharpUpdateInfoForm _updateInfoForm;
         #endregion
 
         #region Constructor
@@ -193,17 +193,26 @@
 
         private void kbtnYes_Click(object sender, EventArgs e)
         {
+            DialogResult = DialogResult.Yes;
 
+            Close();
         }
 
         private void kbtnNo_Click(object sender, EventArgs e)
         {
+            DialogResult = DialogResult.No;
 
+            Close();
         }
 
         private void kbtnDetails_Click(object sender, EventArgs e)
         {
+            if (_updateInfoForm == null)
+            {
+                _updateInfoForm = new UpdateInfoForm(_applicationInfo, _updateInfo);
+            }
 
+            _updateInfoForm.Show(this);
         }
     }
 }

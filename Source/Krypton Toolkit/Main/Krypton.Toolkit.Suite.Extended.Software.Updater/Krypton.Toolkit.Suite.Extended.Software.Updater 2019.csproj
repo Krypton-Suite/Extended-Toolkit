@@ -73,6 +73,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Update="Sharp Update\Resources\LanguageEN.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Sharp Update\Resources\SharpUpdateResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
     </EmbeddedResource>
