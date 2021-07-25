@@ -15,9 +15,9 @@
         private void InitializeComponent()
         {
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            this.kbtnBack = new Krypton.Toolkit.KryptonButton();
             this.kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
-            this.kbtnBack = new Krypton.Toolkit.KryptonButton();
             this.ktxtDescription = new Krypton.Toolkit.KryptonTextBox();
             this.klblDescription = new Krypton.Toolkit.KryptonLabel();
             this.klblVersions = new Krypton.Toolkit.KryptonLabel();
@@ -40,6 +40,16 @@
             this.kryptonPanel1.Size = new System.Drawing.Size(284, 50);
             this.kryptonPanel1.TabIndex = 0;
             // 
+            // kbtnBack
+            // 
+            this.kbtnBack.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.kbtnBack.Location = new System.Drawing.Point(97, 13);
+            this.kbtnBack.Name = "kbtnBack";
+            this.kbtnBack.Size = new System.Drawing.Size(90, 25);
+            this.kbtnBack.TabIndex = 1;
+            this.kbtnBack.Values.Text = "B&ack";
+            this.kbtnBack.Click += new System.EventHandler(this.kbtnBack_Click);
+            // 
             // kryptonBorderEdge1
             // 
             this.kryptonBorderEdge1.BorderStyle = Krypton.Toolkit.PaletteBorderStyle.HeaderSecondary;
@@ -61,15 +71,6 @@
             this.kryptonPanel2.Size = new System.Drawing.Size(284, 239);
             this.kryptonPanel2.TabIndex = 1;
             // 
-            // kbtnBack
-            // 
-            this.kbtnBack.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.kbtnBack.Location = new System.Drawing.Point(97, 13);
-            this.kbtnBack.Name = "kbtnBack";
-            this.kbtnBack.Size = new System.Drawing.Size(90, 25);
-            this.kbtnBack.TabIndex = 1;
-            this.kbtnBack.Values.Text = "B&ack";
-            // 
             // ktxtDescription
             // 
             this.ktxtDescription.Location = new System.Drawing.Point(12, 124);
@@ -79,6 +80,7 @@
             this.ktxtDescription.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.ktxtDescription.Size = new System.Drawing.Size(260, 95);
             this.ktxtDescription.TabIndex = 12;
+            this.ktxtDescription.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ktxtDescription_KeyDown);
             // 
             // klblDescription
             // 
@@ -129,11 +131,13 @@
             this.kryptonPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+
         }
 
         #endregion
+
         #region Constructor
-        internal SharpUpdateInfoForm(ISharpUpdatable applicationInfo, SharpUpdateXml updateInfo)
+        internal SharpUpdateInfoForm(SharpUpdateLocalAppInfo applicationInfo, SharpUpdateXml updateInfo)
         {
             InitializeComponent();
 
@@ -141,15 +145,15 @@
             {
                 if (applicationInfo.ApplicationIcon != null) Icon = applicationInfo.ApplicationIcon;
 
-                Text = LanguageEN.SharpUpdateInfoForm_Title;
+                Text = Resources.SharpUpdateInfoForm_Title;
 
-                klblVersions.Text = string.Format(LanguageEN.SharpUpdateInfoForm_Version, applicationInfo.ApplicationAssembly.GetName().Version.ToString(), updateInfo.Version.ToString());
+                klblVersions.Text = string.Format(Resources.SharpUpdateInfoForm_Version, applicationInfo.ApplicationAssembly.GetName().Version.ToString(), updateInfo.Version.ToString());
 
-                klblDescription.Text = LanguageEN.SharpUpdateInfoForm_lblDescription;
+                klblDescription.Text = Resources.SharpUpdateInfoForm_lblDescription;
 
                 ktxtDescription.Text = updateInfo.Description;
 
-                kbtnBack.Text = LanguageEN.SharpUpdateInfoForm_btnBack;
+                kbtnBack.Text = Resources.SharpUpdateInfoForm_btnBack;
             }
             catch (Exception e)
             {
@@ -158,5 +162,20 @@
             }
         }
         #endregion
+
+        private void ktxtDescription_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (!(e.Control && e.KeyCode == Keys.C))
+            {
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void kbtnBack_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+
+            Close();
+        }
     }
 }

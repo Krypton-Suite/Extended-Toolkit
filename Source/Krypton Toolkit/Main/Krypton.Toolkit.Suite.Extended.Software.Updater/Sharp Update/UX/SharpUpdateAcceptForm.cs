@@ -175,19 +175,19 @@
         {
             InitializeComponent();
 
-            applicationInfo = updateLocalAppInfo;
+            _applicationInfo = updateLocalAppInfo;
 
-            updateInfo = updateXmlInfo;
+            _updateInfo = updateXmlInfo;
 
-            Text = $"{applicationInfo.ApplicationName} - ({numCurUpdate}/{totalUpdate} Available Update";
+            Text = $"{_applicationInfo.ApplicationName} - ({numCurUpdate}/{totalUpdate} Available Update";
 
-            if (applicationInfo.ApplicationName != null)
+            if (_applicationInfo.ApplicationName != null)
             {
-                Icon = applicationInfo.ApplicationIcon;
+                Icon = _applicationInfo.ApplicationIcon;
             }
 
-            kwlblNewVersion.Text = updateXmlInfo.Tag != JobType.REMOVE ? string.Format(updateXmlInfo.Tag == JobType.UPDATE ? "Update: {0}\nNew Version: {1}" : "New: {0}\nVersion: {1}", Path.GetFileName(applicationInfo.ApplicationPath), updateInfo.Version.ToString()) :
-                $"Remove: {Path.GetFileName(applicationInfo.ApplicationPath)}";
+            kwlblNewVersion.Text = updateXmlInfo.Tag != JobType.REMOVE ? string.Format(updateXmlInfo.Tag == JobType.UPDATE ? "Update: {0}\nNew Version: {1}" : "New: {0}\nVersion: {1}", Path.GetFileName(_applicationInfo.ApplicationPath), _updateInfo.Version.ToString()) :
+                $"Remove: {Path.GetFileName(_applicationInfo.ApplicationPath)}";
         }
         #endregion
 
@@ -209,7 +209,7 @@
         {
             if (_updateInfoForm == null)
             {
-                _updateInfoForm = new UpdateInfoForm(_applicationInfo, _updateInfo);
+                _updateInfoForm = new SharpUpdateInfoForm(_applicationInfo, _updateInfo);
             }
 
             _updateInfoForm.Show(this);

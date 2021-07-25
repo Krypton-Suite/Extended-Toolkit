@@ -46,9 +46,7 @@
             this.klblProgress.Name = "klblProgress";
             this.klblProgress.Size = new System.Drawing.Size(344, 23);
             this.klblProgress.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.klblProgress.StateCommon.ShortText.ImageStyle = Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.klblProgress.StateCommon.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.klblProgress.StateCommon.ShortText.Trim = Krypton.Toolkit.PaletteTextTrim.Inherit;
             this.klblProgress.TabIndex = 3;
             this.klblProgress.Values.Text = "";
             // 
@@ -67,9 +65,7 @@
             this.klblDownloading.Name = "klblDownloading";
             this.klblDownloading.Size = new System.Drawing.Size(389, 45);
             this.klblDownloading.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.klblDownloading.StateCommon.ShortText.ImageStyle = Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.klblDownloading.StateCommon.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.klblDownloading.StateCommon.ShortText.Trim = Krypton.Toolkit.PaletteTextTrim.Inherit;
             this.klblDownloading.TabIndex = 0;
             this.klblDownloading.Values.Text = "Downloading update...";
             // 
@@ -85,6 +81,8 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Downloading Update";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SharpUpdateDownloadForm_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.SharpUpdateDownloadForm_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -104,51 +102,36 @@
         private BackgroundWorker _bgWorker;
 
         /// <summary>
-        /// Iterating variable in the events
+        /// The MD5 hash of the file to download
         /// </summary>
-        private int _count = 0;
-
-        /// <summary>
-        /// Counting recieved bytes over multiple files
-        /// </summary>
-        private int _bytesRecievedLastTime = 0;
-
-        /// <summary>
-        /// Holds all paths to the tempfiles
-        /// </summary>
-        private List<SharpUpdateFileInfo> _files;
+        private string _md5;
         #endregion
 
         #region Property
         /// <summary>
-        /// Gets the list of all temp file paths for the downloaded files
+        /// Gets the temp file path for the downloaded file
         /// </summary>
-        internal List<SharpUpdateFileInfo> TempFilesPath => _files;
+        internal string TempFilePath { get; }
         #endregion
 
         #region Constructor
-        internal SharpUpdateDownloadForm(List<SharpUpdateFileInfo> files, Icon applicationIcon)
+        internal SharpUpdateDownloadForm(Uri location, string md5, Icon applicationIcon)
         {
             InitializeComponent();
 
-            if (applicationIcon != null) Icon = applicationIcon;
-
-            _files = files;
-
-            klblDownloading.Text = LanguageEN.SharpUpdateDownloadForm_lblDownloading;
-
-            Text = LanguageEN.SharpUpdateDownloadForm_Title;
-
-            // Calculate the overall size and save it to progressBarAll
-            progressBarAll.Maximum = 0;
-
-            foreach (SharpUpdateFileInfo fi in _files)
+            if (applicationIcon != null)
             {
-                progressBarAll.Maximum += Convert.ToInt32(GetSizeOfFile(fi.Url));
+                Icon = applicationIcon;
+            }
+            else
+            {
+                Icon = null;
             }
 
-            // Set the first file to download
-            files[_count].TempFile = Path.GetTempFileName();
+            // Set the temp file name and create new 0-byte file
+            TempFilePath = Path.GetTempFileName();
+
+            _md5 = md5;
 
             // Set up WebClient to download file
             _webClient = new WebClient();
@@ -161,16 +144,8 @@
             _bgWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bgWorker_RunWorkerCompleted);
 
             // Download file
-            try
-            {
-                _webClient.DownloadFileAsync(new Uri(files[_count].Url), files[_count++].TempFile);
-            }
-            catch
-            {
-                DialogResult = DialogResult.No;
-
-                Close();
-            }
+            try { _webClient.DownloadFileAsync(location, this.TempFilePath); }
+            catch { this.DialogResult = DialogResult.No; this.Close(); }
         }
         #endregion
 
@@ -249,5 +224,96 @@
             return String.Format(formatString, newBytes);
         }
         #endregion
+
+        #region Event Handlers
+        /// <summary>
+        /// Downloads file from server
+        /// </summary>
+        private void webClient_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
+        {
+            // Update progressbar on download
+            klblProgress.Text = string.Format("Downloaded {0} of {1}", FormatBytes(e.BytesReceived, 1, true), FormatBytes(e.TotalBytesToReceive, 1, true));
+            progressBar.Value = e.ProgressPercentage;
+        }
+
+        /// <summary>
+        /// Setup webClient to download the next file or start hashing
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void webClient_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
+        {
+            if (e.Error != null)
+            {
+                this.DialogResult = DialogResult.No;
+                this.Close();
+            }
+            else if (e.Cancelled)
+            {
+                this.DialogResult = DialogResult.Abort;
+                this.Close();
+            }
+            else
+            {
+                // Show the "Hashing" label and set the progressbar to marquee
+                this.klblProgress.Text = "Verifying Download...";
+                this.progressBar.Style = ProgressBarStyle.Marquee;
+
+                // Start the hashing
+                _bgWorker.RunWorkerAsync(new string[] { this.TempFilePath, _md5 });
+            }
+        }
+
+        /// <summary>
+        /// Hash file and compare
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e">string[2] {FILENAME, MD5}</param>
+        private void bgWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            string file = ((string[])e.Argument)[0];
+            string updateMD5 = ((string[])e.Argument)[1];
+
+            // Hash the file and compare to the hash in the update xml
+            if (Hasher.HashFile(file, HashType.MD5) != updateMD5.ToUpper())
+                e.Result = DialogResult.No;
+            else
+                e.Result = DialogResult.OK;
+        }
+
+        /// <summary>
+        /// Check if all files are ok and start next
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void bgWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            DialogResult = (DialogResult)e.Result;
+
+            Close();
+        }
+        #endregion
+
+        private void SharpUpdateDownloadForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
+        }
+
+        private void SharpUpdateDownloadForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (_webClient.IsBusy)
+            {
+                _webClient.CancelAsync();
+
+                DialogResult = DialogResult.Abort;
+            }
+
+            if (_bgWorker.IsBusy)
+            {
+                _bgWorker.CancelAsync();
+
+                DialogResult = DialogResult.Abort;
+            }
+        }
     }
 }
