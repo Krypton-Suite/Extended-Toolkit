@@ -33,23 +33,26 @@
             this.kryptonPanel1.Controls.Add(this.kbtnExportException);
             this.kryptonPanel1.Controls.Add(this.kryptonBorderEdge1);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.kryptonPanel1.Location = new System.Drawing.Point(0, 529);
+            this.kryptonPanel1.Location = new System.Drawing.Point(0, 417);
             this.kryptonPanel1.Name = "kryptonPanel1";
             this.kryptonPanel1.PanelBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelAlternate;
-            this.kryptonPanel1.Size = new System.Drawing.Size(764, 50);
+            this.kryptonPanel1.Size = new System.Drawing.Size(549, 50);
             this.kryptonPanel1.TabIndex = 0;
             // 
             // kbtnCancel
             // 
+            this.kbtnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.kbtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.kbtnCancel.Location = new System.Drawing.Point(662, 13);
+            this.kbtnCancel.Location = new System.Drawing.Point(447, 13);
             this.kbtnCancel.Name = "kbtnCancel";
             this.kbtnCancel.Size = new System.Drawing.Size(90, 25);
             this.kbtnCancel.TabIndex = 2;
             this.kbtnCancel.Values.Text = "C&ancel";
+            this.kbtnCancel.Click += new System.EventHandler(this.kbtnCancel_Click);
             // 
             // kbtnExportException
             // 
+            this.kbtnExportException.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.kbtnExportException.Location = new System.Drawing.Point(13, 13);
             this.kbtnExportException.Name = "kbtnExportException";
             this.kbtnExportException.Size = new System.Drawing.Size(119, 25);
@@ -63,7 +66,7 @@
             this.kryptonBorderEdge1.Dock = System.Windows.Forms.DockStyle.Top;
             this.kryptonBorderEdge1.Location = new System.Drawing.Point(0, 0);
             this.kryptonBorderEdge1.Name = "kryptonBorderEdge1";
-            this.kryptonBorderEdge1.Size = new System.Drawing.Size(764, 1);
+            this.kryptonBorderEdge1.Size = new System.Drawing.Size(549, 1);
             this.kryptonBorderEdge1.Text = "kryptonBorderEdge1";
             // 
             // kryptonPanel2
@@ -72,21 +75,25 @@
             this.kryptonPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel2.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel2.Name = "kryptonPanel2";
-            this.kryptonPanel2.Size = new System.Drawing.Size(764, 529);
+            this.kryptonPanel2.Size = new System.Drawing.Size(549, 417);
             this.kryptonPanel2.TabIndex = 1;
             // 
             // krtbException
             // 
+            this.krtbException.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.krtbException.Location = new System.Drawing.Point(13, 13);
             this.krtbException.Name = "krtbException";
             this.krtbException.ReadOnly = true;
-            this.krtbException.Size = new System.Drawing.Size(739, 501);
+            this.krtbException.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
+            this.krtbException.Size = new System.Drawing.Size(524, 389);
             this.krtbException.TabIndex = 0;
             this.krtbException.Text = "";
             // 
             // KryptonExceptionCaptureDialog
             // 
-            this.ClientSize = new System.Drawing.Size(764, 579);
+            this.ClientSize = new System.Drawing.Size(549, 467);
             this.Controls.Add(this.kryptonPanel2);
             this.Controls.Add(this.kryptonPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
@@ -189,15 +196,22 @@
             }
             else
             {
-                CommonSaveFileDialog csfd = new CommonSaveFileDialog();
+                SaveFileDialog csfd = new SaveFileDialog();
 
-                csfd.Filters.Add(new CommonFileDialogFilter("Text Files|Rich Text Files", "txt|rtf"));
+                csfd.FileName = "Exception Capture";
 
-                if (csfd.ShowDialog() == CommonFileDialogResult.Ok)
+                csfd.Filter = "Rich Text Files|*.rtf";
+
+                if (csfd.ShowDialog() == DialogResult.OK)
                 {
                     krtbException.SaveFile(Path.GetFullPath(csfd.FileName));
                 }
             }
+        }
+
+        private void kbtnCancel_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
