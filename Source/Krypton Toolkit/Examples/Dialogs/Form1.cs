@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Reflection;
 
 using Krypton.Toolkit;
@@ -33,6 +34,13 @@ namespace Dialogs
             KryptonTextToSpeechDialog textToSpeechDialog = new KryptonTextToSpeechDialog();
 
             textToSpeechDialog.ShowDialog();
+        }
+
+        private void kbtnException_Click(object sender, EventArgs e)
+        {
+            KryptonExceptionCaptureDialog kryptonException = new KryptonExceptionCaptureDialog(new ArgumentOutOfRangeException());
+
+            kryptonException.Show();
         }
     }
 }

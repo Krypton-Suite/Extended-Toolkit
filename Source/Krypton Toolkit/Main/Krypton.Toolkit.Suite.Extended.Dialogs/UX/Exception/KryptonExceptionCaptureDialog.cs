@@ -15,13 +15,12 @@
 
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KryptonExceptionCaptureDialog));
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            this.kbtnCancel = new Krypton.Toolkit.KryptonButton();
+            this.kbtnExportException = new Krypton.Toolkit.KryptonButton();
             this.kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
             this.krtbException = new Krypton.Toolkit.KryptonRichTextBox();
-            this.kbtnExportException = new Krypton.Toolkit.KryptonButton();
-            this.kbtnCancel = new Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
@@ -39,6 +38,24 @@
             this.kryptonPanel1.PanelBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelAlternate;
             this.kryptonPanel1.Size = new System.Drawing.Size(764, 50);
             this.kryptonPanel1.TabIndex = 0;
+            // 
+            // kbtnCancel
+            // 
+            this.kbtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.kbtnCancel.Location = new System.Drawing.Point(662, 13);
+            this.kbtnCancel.Name = "kbtnCancel";
+            this.kbtnCancel.Size = new System.Drawing.Size(90, 25);
+            this.kbtnCancel.TabIndex = 2;
+            this.kbtnCancel.Values.Text = "C&ancel";
+            // 
+            // kbtnExportException
+            // 
+            this.kbtnExportException.Location = new System.Drawing.Point(13, 13);
+            this.kbtnExportException.Name = "kbtnExportException";
+            this.kbtnExportException.Size = new System.Drawing.Size(119, 25);
+            this.kbtnExportException.TabIndex = 1;
+            this.kbtnExportException.Values.Text = "Export &Exception";
+            this.kbtnExportException.Click += new System.EventHandler(this.kbtnExportException_Click);
             // 
             // kryptonBorderEdge1
             // 
@@ -67,34 +84,16 @@
             this.krtbException.TabIndex = 0;
             this.krtbException.Text = "";
             // 
-            // kbtnExportException
-            // 
-            this.kbtnExportException.Location = new System.Drawing.Point(13, 13);
-            this.kbtnExportException.Name = "kbtnExportException";
-            this.kbtnExportException.Size = new System.Drawing.Size(119, 25);
-            this.kbtnExportException.TabIndex = 1;
-            this.kbtnExportException.Values.Text = "Export &Exception";
-            this.kbtnExportException.Click += new System.EventHandler(this.kbtnExportException_Click);
-            // 
-            // kbtnCancel
-            // 
-            this.kbtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.kbtnCancel.Location = new System.Drawing.Point(662, 13);
-            this.kbtnCancel.Name = "kbtnCancel";
-            this.kbtnCancel.Size = new System.Drawing.Size(90, 25);
-            this.kbtnCancel.TabIndex = 2;
-            this.kbtnCancel.Values.Text = "C&ancel";
-            // 
             // KryptonExceptionCaptureDialog
             // 
             this.ClientSize = new System.Drawing.Size(764, 579);
             this.Controls.Add(this.kryptonPanel2);
             this.Controls.Add(this.kryptonPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "KryptonExceptionCaptureDialog";
+            this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();

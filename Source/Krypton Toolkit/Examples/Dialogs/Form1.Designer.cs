@@ -31,10 +31,11 @@ namespace Dialogs
         {
             this.kbtnAboutBox = new Krypton.Toolkit.KryptonButton();
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            this.kryptonButton1 = new Krypton.Toolkit.KryptonButton();
             this.kbtnShowInputBox = new Krypton.Toolkit.KryptonButton();
             this.kabm = new Krypton.Toolkit.Suite.Extended.Dialogs.KryptonAboutBoxManager();
             this.kibm = new Krypton.Toolkit.Suite.Extended.Dialogs.KryptonInputBoxManager();
-            this.kryptonButton1 = new Krypton.Toolkit.KryptonButton();
+            this.kbtnException = new Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -50,6 +51,7 @@ namespace Dialogs
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(this.kbtnException);
             this.kryptonPanel1.Controls.Add(this.kryptonButton1);
             this.kryptonPanel1.Controls.Add(this.kbtnShowInputBox);
             this.kryptonPanel1.Controls.Add(this.kbtnAboutBox);
@@ -58,6 +60,15 @@ namespace Dialogs
             this.kryptonPanel1.Name = "kryptonPanel1";
             this.kryptonPanel1.Size = new System.Drawing.Size(275, 114);
             this.kryptonPanel1.TabIndex = 1;
+            // 
+            // kryptonButton1
+            // 
+            this.kryptonButton1.Location = new System.Drawing.Point(12, 43);
+            this.kryptonButton1.Name = "kryptonButton1";
+            this.kryptonButton1.Size = new System.Drawing.Size(138, 25);
+            this.kryptonButton1.TabIndex = 2;
+            this.kryptonButton1.Values.Text = "Show Text to Speech";
+            this.kryptonButton1.Click += new System.EventHandler(this.kryptonButton1_Click);
             // 
             // kbtnShowInputBox
             // 
@@ -112,14 +123,14 @@ namespace Dialogs
             this.kibm.Title = "Hello World!";
             this.kibm.YesText = "Y&es";
             // 
-            // kryptonButton1
+            // kbtnException
             // 
-            this.kryptonButton1.Location = new System.Drawing.Point(12, 43);
-            this.kryptonButton1.Name = "kryptonButton1";
-            this.kryptonButton1.Size = new System.Drawing.Size(138, 25);
-            this.kryptonButton1.TabIndex = 2;
-            this.kryptonButton1.Values.Text = "Show Text to Speech";
-            this.kryptonButton1.Click += new System.EventHandler(this.kryptonButton1_Click);
+            this.kbtnException.Location = new System.Drawing.Point(12, 74);
+            this.kbtnException.Name = "kbtnException";
+            this.kbtnException.Size = new System.Drawing.Size(138, 25);
+            this.kbtnException.TabIndex = 2;
+            this.kbtnException.Values.Text = "Test Exception Capture";
+            this.kbtnException.Click += new System.EventHandler(this.kbtnException_Click);
             // 
             // Form1
             // 
@@ -144,6 +155,7 @@ namespace Dialogs
         private Krypton.Toolkit.KryptonButton kbtnShowInputBox;
         private Krypton.Toolkit.Suite.Extended.Dialogs.KryptonInputBoxManager kibm;
         private Krypton.Toolkit.KryptonButton kryptonButton1;
+        private Krypton.Toolkit.KryptonButton kbtnException;
     }
 }
 
