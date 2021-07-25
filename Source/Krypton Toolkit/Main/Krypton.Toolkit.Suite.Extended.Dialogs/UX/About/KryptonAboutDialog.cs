@@ -1,4 +1,6 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Dialogs
+﻿using Krypton.Toolkit.Suite.Extended.Effects;
+
+namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
     public class KryptonAboutDialog : CommonExtendedKryptonForm
     {
@@ -172,9 +174,15 @@
         #endregion
 
         #region Constructors
-        public KryptonAboutDialog(Image applicationIcon, Assembly assembly)
+        public KryptonAboutDialog(Image applicationIcon, Assembly assembly, FadeSpeedChoice speedChoice = FadeSpeedChoice.Normal, float fadeDelay = 50, int fadeSpeed = 50)
         {
             InitializeComponent();
+
+            FadeSpeed = fadeDelay;
+
+            FadeSpeedChoice = speedChoice;
+
+            SleepInterval = fadeSpeed;
 
             try
             {

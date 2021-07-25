@@ -8,10 +8,10 @@
         #region Design Code
         private KryptonBorderEdge kryptonBorderEdge1;
         private KryptonPanel kryptonPanel2;
-        private KryptonRichTextBox krtbException;
         private KryptonButton kbtnCancel;
         private KryptonButton kbtnExportException;
         private KryptonCheckBox kchkDarkMode;
+        private KryptonTextBox ktxtException;
         private KryptonPanel kryptonPanel1;
 
         private void InitializeComponent()
@@ -21,8 +21,8 @@
             this.kbtnExportException = new Krypton.Toolkit.KryptonButton();
             this.kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
-            this.krtbException = new Krypton.Toolkit.KryptonRichTextBox();
             this.kchkDarkMode = new Krypton.Toolkit.KryptonCheckBox();
+            this.ktxtException = new Krypton.Toolkit.KryptonTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
@@ -74,25 +74,12 @@
             // 
             // kryptonPanel2
             // 
-            this.kryptonPanel2.Controls.Add(this.krtbException);
+            this.kryptonPanel2.Controls.Add(this.ktxtException);
             this.kryptonPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel2.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel2.Name = "kryptonPanel2";
             this.kryptonPanel2.Size = new System.Drawing.Size(549, 417);
             this.kryptonPanel2.TabIndex = 1;
-            // 
-            // krtbException
-            // 
-            this.krtbException.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.krtbException.Location = new System.Drawing.Point(13, 13);
-            this.krtbException.Name = "krtbException";
-            this.krtbException.ReadOnly = true;
-            this.krtbException.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
-            this.krtbException.Size = new System.Drawing.Size(524, 389);
-            this.krtbException.TabIndex = 0;
-            this.krtbException.Text = "";
             // 
             // kchkDarkMode
             // 
@@ -102,6 +89,18 @@
             this.kchkDarkMode.TabIndex = 4;
             this.kchkDarkMode.Values.Text = "D&ark Mode";
             this.kchkDarkMode.CheckedChanged += new System.EventHandler(this.kchkDarkMode_CheckedChanged);
+            // 
+            // ktxtException
+            // 
+            this.ktxtException.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ktxtException.Location = new System.Drawing.Point(12, 12);
+            this.ktxtException.Multiline = true;
+            this.ktxtException.Name = "ktxtException";
+            this.ktxtException.ReadOnly = true;
+            this.ktxtException.Size = new System.Drawing.Size(525, 395);
+            this.ktxtException.TabIndex = 0;
             // 
             // KryptonExceptionCaptureDialog
             // 
@@ -120,6 +119,7 @@
             this.kryptonPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
             this.kryptonPanel2.ResumeLayout(false);
+            this.kryptonPanel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -166,15 +166,15 @@
         {
             if (showMessageOnly)
             {
-                krtbException.Text = exception.Message;
+                ktxtException.Text = exception.Message;
             }
             else if (showStackTrace)
             {
-                krtbException.Text = exception.StackTrace;
+                ktxtException.Text = exception.StackTrace;
             }
             else if (showInnerException)
             {
-                krtbException.Text = exception.InnerException.ToString();
+                ktxtException.Text = exception.InnerException.ToString();
             }
 
             if (showFullDetails)
@@ -183,7 +183,7 @@
 
                 builder.Append($"{exception.Message}\n{exception.StackTrace}");
 
-                krtbException.Text = builder.ToString();
+                ktxtException.Text = builder.ToString();
             }
         }
 
@@ -206,17 +206,17 @@
         {
             if (darkMode)
             {
-                krtbException.StateCommon.Back.Color1 = Color.FromArgb(38, 38, 38);
+                ktxtException.StateCommon.Back.Color1 = Color.FromArgb(38, 38, 38);
 
-                krtbException.StateCommon.Content.Color1 = Color.White;
+                ktxtException.StateCommon.Content.Color1 = Color.White;
 
                 kchkDarkMode.Text = "&Light Mode";
             }
             else
             {
-                krtbException.StateCommon.Back.Color1 = Color.White;
+                ktxtException.StateCommon.Back.Color1 = Color.White;
 
-                krtbException.StateCommon.Content.Color1 = SystemColors.ControlText;
+                ktxtException.StateCommon.Content.Color1 = SystemColors.ControlText;
 
                 kchkDarkMode.Text = "D&ark Mode";
             }
@@ -225,7 +225,7 @@
 
         private void kbtnExportException_Click(object sender, EventArgs e)
         {
-            if (MissingFrameWorkAPIs.IsNullOrWhiteSpace(krtbException.Text))
+            if (MissingFrameWorkAPIs.IsNullOrWhiteSpace(ktxtException.Text))
             {
                 KryptonMessageBox.Show("No content was found!", "Save Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -235,11 +235,26 @@
 
                 csfd.FileName = "Exception Capture";
 
-                csfd.Filter = "Rich Text Files|*.rtf";
+                csfd.Filter = "Text Files|*.txt";
 
                 if (csfd.ShowDialog() == DialogResult.OK)
                 {
-                    krtbException.SaveFile(Path.GetFullPath(csfd.FileName));
+                    StreamWriter writer = new StreamWriter(Path.GetFullPath(csfd.FileName));
+
+                    writer.Write(ktxtException.Text);
+
+                    writer.Flush();
+
+                    writer.Close();
+
+                    writer.Dispose();
+
+                    DialogResult result = KryptonMessageBox.Show($"The exception has been written to file: '{Path.GetFullPath(csfd.FileName)}'.\nDo you want to view it now?", "Success", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        Process.Start("notepad.exe", Path.GetFullPath(csfd.FileName));
+                    }
                 }
             }
         }
