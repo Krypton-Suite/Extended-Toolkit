@@ -11,6 +11,7 @@
         private KryptonRichTextBox krtbException;
         private KryptonButton kbtnCancel;
         private KryptonButton kbtnExportException;
+        private KryptonCheckBox kchkDarkMode;
         private KryptonPanel kryptonPanel1;
 
         private void InitializeComponent()
@@ -21,6 +22,7 @@
             this.kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
             this.krtbException = new Krypton.Toolkit.KryptonRichTextBox();
+            this.kchkDarkMode = new Krypton.Toolkit.KryptonCheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
@@ -29,6 +31,7 @@
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(this.kchkDarkMode);
             this.kryptonPanel1.Controls.Add(this.kbtnCancel);
             this.kryptonPanel1.Controls.Add(this.kbtnExportException);
             this.kryptonPanel1.Controls.Add(this.kryptonBorderEdge1);
@@ -90,6 +93,15 @@
             this.krtbException.Size = new System.Drawing.Size(524, 389);
             this.krtbException.TabIndex = 0;
             this.krtbException.Text = "";
+            // 
+            // kchkDarkMode
+            // 
+            this.kchkDarkMode.Location = new System.Drawing.Point(139, 17);
+            this.kchkDarkMode.Name = "kchkDarkMode";
+            this.kchkDarkMode.Size = new System.Drawing.Size(84, 20);
+            this.kchkDarkMode.TabIndex = 4;
+            this.kchkDarkMode.Values.Text = "D&ark Mode";
+            this.kchkDarkMode.CheckedChanged += new System.EventHandler(this.kchkDarkMode_CheckedChanged);
             // 
             // KryptonExceptionCaptureDialog
             // 
@@ -212,6 +224,26 @@
         private void kbtnCancel_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void kchkDarkMode_CheckedChanged(object sender, EventArgs e)
+        {
+            if (kchkDarkMode.Checked)
+            {
+                krtbException.StateCommon.Back.Color1 = Color.FromArgb(38, 38, 38);
+
+                krtbException.StateCommon.Content.Color1 = Color.White;
+
+                kchkDarkMode.Text = "&Light Mode";
+            }
+            else
+            {
+                krtbException.StateCommon.Back.Color1 = Color.White;
+
+                krtbException.StateCommon.Content.Color1 = SystemColors.ControlText;
+
+                kchkDarkMode.Text = "D&ark Mode";
+            }
         }
     }
 }
