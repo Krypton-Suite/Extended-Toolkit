@@ -138,11 +138,14 @@
         /// <param name="exception">The exception.</param>
         /// <param name="titleText">The title text.</param>
         /// <param name="showDate">if set to <c>true</c> [show date].</param>
-        public KryptonExceptionCaptureDialog(Exception exception, string titleText = "Exception Capture", bool showDate = false)
+        /// <param name="darkMode">if set to <c>true</c> [dark mode].</param>
+        public KryptonExceptionCaptureDialog(Exception exception, string titleText = "Exception Capture", bool showDate = false, bool darkMode = false)
         {
             InitializeComponent();
 
             Exception = exception;
+
+            ToggleDarkMode(darkMode);
 
             SetupTitle(titleText, showDate);
 
@@ -198,6 +201,26 @@
                 Text = $"{text}";
             }
         }
+
+        private void ToggleDarkMode(bool darkMode)
+        {
+            if (darkMode)
+            {
+                krtbException.StateCommon.Back.Color1 = Color.FromArgb(38, 38, 38);
+
+                krtbException.StateCommon.Content.Color1 = Color.White;
+
+                kchkDarkMode.Text = "&Light Mode";
+            }
+            else
+            {
+                krtbException.StateCommon.Back.Color1 = Color.White;
+
+                krtbException.StateCommon.Content.Color1 = SystemColors.ControlText;
+
+                kchkDarkMode.Text = "D&ark Mode";
+            }
+        }
         #endregion
 
         private void kbtnExportException_Click(object sender, EventArgs e)
@@ -228,22 +251,7 @@
 
         private void kchkDarkMode_CheckedChanged(object sender, EventArgs e)
         {
-            if (kchkDarkMode.Checked)
-            {
-                krtbException.StateCommon.Back.Color1 = Color.FromArgb(38, 38, 38);
-
-                krtbException.StateCommon.Content.Color1 = Color.White;
-
-                kchkDarkMode.Text = "&Light Mode";
-            }
-            else
-            {
-                krtbException.StateCommon.Back.Color1 = Color.White;
-
-                krtbException.StateCommon.Content.Color1 = SystemColors.ControlText;
-
-                kchkDarkMode.Text = "D&ark Mode";
-            }
+            ToggleDarkMode(kchkDarkMode.Checked);
         }
     }
 }
