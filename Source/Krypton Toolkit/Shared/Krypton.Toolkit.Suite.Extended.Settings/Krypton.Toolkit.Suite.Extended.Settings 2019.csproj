@@ -54,14 +54,41 @@
     <OutputPath>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Settings\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Update="Settings\ThemeSettings.Designer.cs">
+    <Compile Update="Settings\Globals\GlobalBooleanSettings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>GlobalBooleanSettings.settings</DependentUpon>
+    </Compile>
+    <Compile Update="Settings\Globals\GlobalEnumerationSettings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>GlobalEnumerationSettings.settings</DependentUpon>
+    </Compile>
+    <Compile Update="Settings\Globals\GlobalStringSettings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>GlobalStringSettings.settings</DependentUpon>
+    </Compile>
+    <Compile Update="Settings\Theming\ThemeSettings.Designer.cs">
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <AutoGen>True</AutoGen>
       <DependentUpon>ThemeSettings.settings</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Update="Settings\ThemeSettings.settings">
+    <None Update="Settings\Globals\GlobalBooleanSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>GlobalBooleanSettings.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Settings\Globals\GlobalEnumerationSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>GlobalEnumerationSettings.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Settings\Globals\GlobalStringSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>GlobalStringSettings.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Settings\Theming\ThemeSettings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>ThemeSettings.Designer.cs</LastGenOutput>
     </None>
