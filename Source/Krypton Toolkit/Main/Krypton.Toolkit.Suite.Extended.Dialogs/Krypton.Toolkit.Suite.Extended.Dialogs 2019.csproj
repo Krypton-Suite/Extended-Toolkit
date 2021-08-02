@@ -59,9 +59,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Update="UX\Exception\KryptonExceptionCaptureDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Update="UX\Exception\KryptonExceptionCaptureDialog.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Properties\Resources.resx">

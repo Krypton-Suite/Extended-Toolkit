@@ -18,7 +18,7 @@
         <LangVersion>preview</LangVersion>
         <OutputType>library</OutputType>
         <RootNamespace>Krypton.Toolkit.Suite.Extended.Software.Updater</RootNamespace>
-        <AssemblyName>Krypton.Toolkit.Suite.Extended.ComboBox</AssemblyName>
+        <AssemblyName>Krypton.Toolkit.Suite.Extended.Software.Updater</AssemblyName>
         <UseWindowsForms>true</UseWindowsForms>
         <NeutralLanguage>en</NeutralLanguage>
     </PropertyGroup>
