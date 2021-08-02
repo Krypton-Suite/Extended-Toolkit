@@ -198,10 +198,6 @@ namespace TreeGridViewApp
             this.imageStrip.ImageSize = new System.Drawing.Size(16, 16);
             this.imageStrip.TransparentColor = System.Drawing.Color.Transparent;
             // 
-            // kryptonPalette
-            // 
-            this.kryptonPalette.CustomisedKryptonPaletteFilePath = null;
-            // 
             // kryptonManager1
             // 
             this.kryptonManager1.GlobalPalette = this.kryptonPalette;

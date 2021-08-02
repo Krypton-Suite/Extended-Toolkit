@@ -12,8 +12,6 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
-using Krypton.Toolkit.Suite.Extended.Tools;
-
 namespace Krypton.Toolkit.Suite.Extended.Calendar
 {
     /// <summary>
@@ -84,7 +82,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <param name="r"></param>
         /// <param name="radius"></param>
         /// <returns></returns>
-        public static GraphicsPath RoundRectangle(Rectangle r, int radius)
+        public static GraphicsPath RoundRectangle(Rectangle r, float radius)
         {
             return RoundRectangle(r, radius, Corners.All);
         }
@@ -96,21 +94,21 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <param name="radius"></param>
         /// <param name="corners"></param>
         /// <returns></returns>
-        public static GraphicsPath RoundRectangle(Rectangle r, int radius, Corners corners)
+        public static GraphicsPath RoundRectangle(Rectangle r, float radius, Corners corners)
         {
             GraphicsPath path = new GraphicsPath(); if (r.Width <= 0 || r.Height <= 0) return path;
-            int d = radius * 2;
+            float d = radius * 2;
 
-            int nw = (corners & Corners.NorthWest) == Corners.NorthWest ? d : 0;
-            int ne = (corners & Corners.NorthEast) == Corners.NorthEast ? d : 0;
-            int se = (corners & Corners.SouthEast) == Corners.SouthEast ? d : 0;
-            int sw = (corners & Corners.SouthWest) == Corners.SouthWest ? d : 0;
+            float nw = (corners & Corners.NorthWest) == Corners.NorthWest ? d : 0;
+            float ne = (corners & Corners.NorthEast) == Corners.NorthEast ? d : 0;
+            float se = (corners & Corners.SouthEast) == Corners.SouthEast ? d : 0;
+            float sw = (corners & Corners.SouthWest) == Corners.SouthWest ? d : 0;
 
             path.AddLine(r.Left + nw, r.Top, r.Right - ne, r.Top);
 
             if (ne > 0)
             {
-                path.AddArc(Rectangle.FromLTRB(r.Right - ne, r.Top, r.Right, r.Top + ne),
+                path.AddArc(RectangleF.FromLTRB(r.Right - ne, r.Top, r.Right, r.Top + ne),
                     -90, 90);
             }
 
@@ -118,7 +116,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
             if (se > 0)
             {
-                path.AddArc(Rectangle.FromLTRB(r.Right - se, r.Bottom - se, r.Right, r.Bottom),
+                path.AddArc(RectangleF.FromLTRB(r.Right - se, r.Bottom - se, r.Right, r.Bottom),
                     0, 90);
             }
 
@@ -126,7 +124,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
             if (sw > 0)
             {
-                path.AddArc(Rectangle.FromLTRB(r.Left, r.Bottom - sw, r.Left + sw, r.Bottom),
+                path.AddArc(RectangleF.FromLTRB(r.Left, r.Bottom - sw, r.Left + sw, r.Bottom),
                     90, 90);
             }
 
@@ -134,7 +132,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
             if (nw > 0)
             {
-                path.AddArc(Rectangle.FromLTRB(r.Left, r.Top, r.Left + nw, r.Top + nw),
+                path.AddArc(RectangleF.FromLTRB(r.Left, r.Top, r.Left + nw, r.Top + nw),
                     180, 90);
             }
 
@@ -163,7 +161,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         private int _itemsPadding;
         private Padding _itemTextMargin;
         private int _itemShadowPadding;
-        private int _itemRoundness;
+        private float _itemRoundness;
         private Rectangle _timeScaleBounds;
         private int _timeScaleUnitHeight;
         private int _timeScaleWidth;
@@ -354,7 +352,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets or sets the roundness of the item
         /// </summary>
-        public int ItemRoundness
+        public float ItemRoundness
         {
             get { return _itemRoundness; }
             set { _itemRoundness = value; }
@@ -487,7 +485,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                  *     F--------------------E
                 */
 
-                int sq = ItemRoundness * 2;
+                float sq = ItemRoundness * 2;
                 Point a = new Point(bounds.Left, evtData.Item.MinuteStartTop);
                 Point b = new Point(a.X + pointerPadding, a.Y);
                 Point c = new Point(b.X, bounds.Top);
@@ -502,11 +500,11 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
                 path.AddLine(a, b);
                 path.AddLine(b, c);
-                path.AddLine(c, new Point(d.X - sq, d.Y));
-                path.AddArc(new Rectangle(d.X - sq, d.Y, sq, sq), -90, 90);
-                path.AddLine(new Point(d.X, d.Y + sq), new Point(d.X, e.Y - sq));
-                path.AddArc(new Rectangle(e.X - sq, e.Y - sq, sq, sq), 0, 90);
-                path.AddLine(new Point(e.X - sq, e.Y), f);
+                path.AddLine(c, new PointF(d.X - sq, d.Y));
+                path.AddArc(new RectangleF(d.X - sq, d.Y, sq, sq), -90, 90);
+                path.AddLine(new PointF(d.X, d.Y + sq), new PointF(d.X, e.Y - sq));
+                path.AddArc(new RectangleF(e.X - sq, e.Y - sq, sq, sq), 0, 90);
+                path.AddLine(new PointF(e.X - sq, e.Y), f);
                 path.AddLine(f, g);
                 path.AddLine(g, h);
                 path.AddLine(h, a);

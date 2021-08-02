@@ -205,14 +205,17 @@
         // TODO: Rewrite once build 2108 is out
         private void ToggleDarkMode(bool darkMode)
         {
+            ThemeSettingsManager theme = new ThemeSettingsManager();
+
             if (darkMode)
             {
-
+                PaletteMode = theme.GetDarkModeThemePaletteMode();
 
                 kchkDarkMode.Text = "&Light Mode";
             }
             else
             {
+                PaletteMode = theme.GetLightModeThemePaletteMode();
 
                 kchkDarkMode.Text = "D&ark Mode";
             }

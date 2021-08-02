@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Krypton.Toolkit.Suite.Extended.Settings {
+namespace Krypton.Toolkit.Suite.Extended.Settings.Settings.Theming {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -61,7 +61,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Office 365 - Black")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Office 365 - Black (Dark Mode)")]
         public global::Krypton.Toolkit.PaletteMode DarkModeThemePaletteMode {
             get {
                 return ((global::Krypton.Toolkit.PaletteMode)(this["DarkModeThemePaletteMode"]));
@@ -85,18 +85,6 @@ namespace Krypton.Toolkit.Suite.Extended.Settings {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string CustomThemePath {
-            get {
-                return ((string)(this["CustomThemePath"]));
-            }
-            set {
-                this["CustomThemePath"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Office 365 - Blue")]
         public global::Krypton.Toolkit.PaletteModeManager SelectedThemePaletteModeManager {
             get {
@@ -109,7 +97,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Office 365 - Black")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Office 365 - Black (Dark Mode)")]
         public global::Krypton.Toolkit.PaletteModeManager DarkModeThemePaletteModeManager {
             get {
                 return ((global::Krypton.Toolkit.PaletteModeManager)(this["DarkModeThemePaletteModeManager"]));
@@ -128,6 +116,18 @@ namespace Krypton.Toolkit.Suite.Extended.Settings {
             }
             set {
                 this["LightModeThemePaletteModeManager"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string CustomThemePath {
+            get {
+                return ((string)(this["CustomThemePath"]));
+            }
+            set {
+                this["CustomThemePath"] = value;
             }
         }
     }
