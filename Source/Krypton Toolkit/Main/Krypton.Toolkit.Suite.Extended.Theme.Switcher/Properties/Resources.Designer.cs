@@ -63,6 +63,16 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
+        internal static System.Drawing.Icon icons {
+            get {
+                object obj = ResourceManager.GetObject("icons", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
         internal static System.Drawing.Icon Property {
             get {
                 object obj = ResourceManager.GetObject("Property", resourceCulture);

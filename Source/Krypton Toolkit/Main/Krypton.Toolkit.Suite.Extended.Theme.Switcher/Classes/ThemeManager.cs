@@ -28,17 +28,37 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 
             manager._themeList.Add("Office 2007 - Black");
 
+            manager._themeList.Add("Office 2007 - Black (Dark Mode)");
+
             manager._themeList.Add("Office 2007 - Blue");
 
+            manager._themeList.Add("Office 2007 - Blue (Dark Mode)");
+
+            manager._themeList.Add("Office 2007 - Blue (Light Mode)");
+
             manager._themeList.Add("Office 2007 - Silver");
+
+            manager._themeList.Add("Office 2007 - Silver (Dark Mode)");
+
+            manager._themeList.Add("Office 2007 - Silver (Light Mode)");
 
             manager._themeList.Add("Office 2007 - White");
 
             manager._themeList.Add("Office 2010 - Black");
 
+            manager._themeList.Add("Office 2010 - Black (Dark Mode)");
+
             manager._themeList.Add("Office 2010 - Blue");
 
+            manager._themeList.Add("Office 2010 - Blue (Dark Mode)");
+
+            manager._themeList.Add("Office 2010 - Blue (Light Mode)");
+
             manager._themeList.Add("Office 2010 - Silver");
+
+            manager._themeList.Add("Office 2010 - Silver (Dark Mode)");
+
+            manager._themeList.Add("Office 2010 - Silver (Light Mode)");
 
             manager._themeList.Add("Office 2010 - White");
 
@@ -48,9 +68,19 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 
             manager._themeList.Add("Office 365 - Black");
 
+            manager._themeList.Add("Office 365 - Black (Dark Mode)");
+
             manager._themeList.Add("Office 365 - Blue");
 
+            manager._themeList.Add("Office 365 - Blue (Dark Mode)");
+
+            manager._themeList.Add("Office 365 - Blue (Light Mode)");
+
             manager._themeList.Add("Office 365 - Silver");
+
+            manager._themeList.Add("Office 365 - Silver (Dark Mode)");
+
+            manager._themeList.Add("Office 365 - Silver (Light Mode)");
 
             manager._themeList.Add("Office 365 - White");
 
@@ -71,17 +101,37 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 
             themeList.Items.Add("Office 2007 - Black");
 
+            themeList.Items.Add("Office 2007 - Black (Dark Mode)");
+
             themeList.Items.Add("Office 2007 - Blue");
 
+            themeList.Items.Add("Office 2007 - Blue (Dark Mode)");
+
+            themeList.Items.Add("Office 2007 - Blue (Light Mode)");
+
             themeList.Items.Add("Office 2007 - Silver");
+
+            themeList.Items.Add("Office 2007 - Silver (Dark Mode)");
+
+            themeList.Items.Add("Office 2007 - Silver (Light Mode)");
 
             themeList.Items.Add("Office 2007 - White");
 
             themeList.Items.Add("Office 2010 - Black");
 
+            themeList.Items.Add("Office 2010 - Black (Dark Mode)");
+
             themeList.Items.Add("Office 2010 - Blue");
 
+            themeList.Items.Add("Office 2010 - Blue (Dark Mode)");
+
+            themeList.Items.Add("Office 2010 - Blue (Light Mode)");
+
             themeList.Items.Add("Office 2010 - Silver");
+
+            themeList.Items.Add("Office 2010 - Silver (Dark Mode)");
+
+            themeList.Items.Add("Office 2010 - Silver (Light Mode)");
 
             themeList.Items.Add("Office 2010 - White");
 
@@ -91,9 +141,19 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 
             themeList.Items.Add("Office 365 - Black");
 
+            themeList.Items.Add("Office 365 - Black (Dark Mode)");
+
             themeList.Items.Add("Office 365 - Blue");
 
+            themeList.Items.Add("Office 365 - Blue (Dark Mode)");
+
+            themeList.Items.Add("Office 365 - Blue (Light Mode)");
+
             themeList.Items.Add("Office 365 - Silver");
+
+            themeList.Items.Add("Office 365 - Silver (Dark Mode)");
+
+            themeList.Items.Add("Office 365 - Silver (Light Mode)");
 
             themeList.Items.Add("Office 365 - White");
 
@@ -104,6 +164,80 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             themeList.Items.Add("Sparkle - Purple");
 
             themeList.Items.Add("Custom");
+
+            themeList.AutoCompleteCustomSource.Add("Professional - System");
+
+            themeList.AutoCompleteCustomSource.Add("Professional - Office 2003");
+
+            themeList.AutoCompleteCustomSource.Add("Office 2007 - Black");
+
+            themeList.AutoCompleteCustomSource.Add("Office 2007 - Black (Dark Mode)");
+
+            themeList.AutoCompleteCustomSource.Add("Office 2007 - Blue");
+
+            themeList.AutoCompleteCustomSource.Add("Office 2007 - Blue (Dark Mode)");
+
+            themeList.AutoCompleteCustomSource.Add("Office 2007 - Blue (Light Mode)");
+
+            themeList.AutoCompleteCustomSource.Add("Office 2007 - Silver");
+
+            themeList.AutoCompleteCustomSource.Add("Office 2007 - Silver (Dark Mode)");
+
+            themeList.AutoCompleteCustomSource.Add("Office 2007 - Silver (Light Mode)");
+
+            themeList.AutoCompleteCustomSource.Add("Office 2007 - White");
+
+            themeList.AutoCompleteCustomSource.Add("Office 2010 - Black");
+
+            themeList.AutoCompleteCustomSource.Add("Office 2010 - Black (Dark Mode)");
+
+            themeList.AutoCompleteCustomSource.Add("Office 2010 - Blue");
+
+            themeList.AutoCompleteCustomSource.Add("Office 2010 - Blue (Dark Mode)");
+
+            themeList.AutoCompleteCustomSource.Add("Office 2010 - Blue (Light Mode)");
+
+            themeList.AutoCompleteCustomSource.Add("Office 2010 - Silver");
+
+            themeList.AutoCompleteCustomSource.Add("Office 2010 - Silver (Dark Mode)");
+
+            themeList.AutoCompleteCustomSource.Add("Office 2010 - Silver (Light Mode)");
+
+            themeList.AutoCompleteCustomSource.Add("Office 2010 - White");
+
+            themeList.AutoCompleteCustomSource.Add("Office 2013");
+
+            themeList.AutoCompleteCustomSource.Add("Office 2013 - White");
+
+            themeList.AutoCompleteCustomSource.Add("Office 365 - Black");
+
+            themeList.AutoCompleteCustomSource.Add("Office 365 - Black (Dark Mode)");
+
+            themeList.AutoCompleteCustomSource.Add("Office 365 - Blue");
+
+            themeList.AutoCompleteCustomSource.Add("Office 365 - Blue (Dark Mode)");
+
+            themeList.AutoCompleteCustomSource.Add("Office 365 - Blue (Light Mode)");
+
+            themeList.AutoCompleteCustomSource.Add("Office 365 - Silver");
+
+            themeList.AutoCompleteCustomSource.Add("Office 365 - Silver (Dark Mode)");
+
+            themeList.AutoCompleteCustomSource.Add("Office 365 - Silver (Light Mode)");
+
+            themeList.AutoCompleteCustomSource.Add("Office 365 - White");
+
+            themeList.AutoCompleteCustomSource.Add("Sparkle - Blue");
+
+            themeList.AutoCompleteCustomSource.Add("Sparkle - Orange");
+
+            themeList.AutoCompleteCustomSource.Add("Sparkle - Purple");
+
+            themeList.AutoCompleteCustomSource.Add("Custom");
+
+            themeList.AutoCompleteSource = AutoCompleteSource.CustomSource;
+
+            themeList.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
         }
 
         public static void SetPaletteTheme(PaletteModeManager modeManager, KryptonComboBox themeList)
@@ -301,7 +435,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 
         /// <summary>Applies the theme.</summary>
         /// <param name="theme">The theme.</param>
-        private void ApplyTheme(PaletteModeManager theme) => _settingsManager.SetTheme(theme);
+        private void ApplyTheme(PaletteModeManager theme) => _settingsManager.SetSelectedTheme(theme);
         #endregion
 
         #region Setters and Getters

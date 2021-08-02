@@ -92,8 +92,8 @@
             // 
             // ktxtException
             // 
-            this.ktxtException.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.ktxtException.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ktxtException.Location = new System.Drawing.Point(12, 12);
             this.ktxtException.Multiline = true;
@@ -202,21 +202,17 @@
             }
         }
 
+        // TODO: Rewrite once build 2108 is out
         private void ToggleDarkMode(bool darkMode)
         {
             if (darkMode)
             {
-                ktxtException.StateCommon.Back.Color1 = Color.FromArgb(38, 38, 38);
 
-                ktxtException.StateCommon.Content.Color1 = Color.White;
 
                 kchkDarkMode.Text = "&Light Mode";
             }
             else
             {
-                ktxtException.StateCommon.Back.Color1 = Color.White;
-
-                ktxtException.StateCommon.Content.Color1 = SystemColors.ControlText;
 
                 kchkDarkMode.Text = "D&ark Mode";
             }

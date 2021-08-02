@@ -26,7 +26,7 @@
 
         private void UploadThemeBrowser_Load(object sender, EventArgs e)
         {
-            ApplicationUtilities.UnderConstruction(this);
+            ApplicationUtilities.UnderConstruction();
 
             Hide();
         }

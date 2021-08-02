@@ -16,4 +16,5 @@ global using System.Net;
 global using System.Windows.Forms;
 
 global using Krypton.Toolkit.Suite.Extended.Developer.Utilities;
+global using Krypton.Toolkit.Suite.Extended.Settings;
 global using Krypton.Toolkit.Suite.Extended.Tools;

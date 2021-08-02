@@ -39,12 +39,14 @@
     <Choose>
         <When Condition="'$(TFMs)' == 'all'">
             <ItemGroup>
-                <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2106.2" />
+                <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2108" />
+                <PackageReference Include="Krypton.Navigator.Canary" Version="6.0.2108" />
             </ItemGroup>
         </When>
         <Otherwise>
             <ItemGroup>
-                <PackageReference Include="Krypton.Toolkit.Canary.Lite" Version="6.0.2106.2" />
+                <PackageReference Include="Krypton.Toolkit.Canary.Lite" Version="6.0.2108" />
+                <PackageReference Include="Krypton.Navigator.Canary.Lite" Version="6.0.2108" />
             </ItemGroup>
         </Otherwise>
     </Choose>
