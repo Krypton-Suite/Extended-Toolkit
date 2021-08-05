@@ -1,6 +1,18 @@
 <Project>
   <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../../'))" />
 
+  <!--Generate NuGet packages on build-->
+  <PropertyGroup>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+  
+  <!--Global version information-->
+  <PropertyGroup>
+    <AssemblyVersion>6.0.2108.1</AssemblyVersion>
+    <FileVersion>6.0.2108.1</FileVersion>
+    <Version>6.0.2108.1</Version>
+  </PropertyGroup>
+  
   <PropertyGroup>
     <NeutralLanguage>en</NeutralLanguage>
     <Nullable>enable</Nullable>
@@ -38,10 +50,6 @@
   
   <ItemGroup>
 	  <None Include="../../../../Assets/Package Icon/Canary.png" Link="Icon.png" Pack="true" PackagePath="" />
-  </ItemGroup>
-
-  <ItemGroup>
-    
   </ItemGroup>
   
 </Project>
