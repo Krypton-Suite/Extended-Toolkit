@@ -28,12 +28,6 @@
     <Description>An extension to the Krypton standard toolkit. This package holds common utilities.</Description>
   </PropertyGroup>
 
-  <!--Version Information-->
-  <PropertyGroup>
-    <AssemblyVersion>6.0.2108.1</AssemblyVersion>
-    <FileVersion>6.0.2108.1</FileVersion>
-  </PropertyGroup>
-
   <!--Krypton Toolkit Import-->
   <Choose>
     <When Condition="'$(TFMs)' == 'all'">
