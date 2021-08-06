@@ -1,6 +1,6 @@
 ﻿namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
-    public class KryptonInputBoxExtended : CommonExtendedKryptonForm
+    public class KryptonInputBoxExtended : KryptonForm
     {
         #region Design Code
         private KryptonPanel kryptonPanel1;
@@ -203,7 +203,23 @@
 
         private Image[] _iconImageArray = new Image[7];
 
+        private bool _showInTaskbar;
+        private FormStartPosition _startPosition;
         private Image _customImage;
+        private Point _inputBoxIconLocation;
+        private Color _cueHintColour;
+        private InputBoxIconType _iconType;
+        private InputBoxIconImageSize _imageSize;
+        private InputBoxLanguage _inputBoxLanguage;
+        private InputBoxButtons _buttons;
+        private InputBoxInputType _inputType;
+        private InputBoxMessageDisplayType _displayType;
+        private string[] _itemList;
+        private Font _controlTypeface, _messageTypeface, _headerTypeface, _cueHintTypeface;
+        private string _okText, _yesText, _message, _title, _cueHintText, _noText, _cancelText, _headerText;
+        private InputBoxTextAlignment _textAlignment;
+        private InputBoxNormalMessageTextAlignment _messageTextAlignment;
+        private InputBoxWrappedMessageTextAlignment _wrappedMessageTextAlignment;
         #endregion
 
         #region Properties
@@ -231,12 +247,16 @@
         /// <param name="cancelText">The cancel text.</param>
         /// <param name="hintText">The hint text.</param>
         /// <param name="headerText">The header text.</param>
+        /// <param name="cueHintColour">The cue hint colour.</param>
+        /// <param name="cueHintText">The cue hint text.</param>
+        /// <param name="cueHintTypeface">The cue hint typeface.</param>
         public KryptonInputBoxExtended(string message, string title = "", InputBoxLanguage language = InputBoxLanguage.ENGLISH, 
                                        InputBoxInputType type = InputBoxInputType.NONE, string[] listItems = null, 
                                        bool showInTaskBar = false, Font? controlTypeface = null, Font? messageTypeface = null,
                                        Font? headerTypeface = null, string okText = "&Ok", string yesText = "&Yes", 
-                                       string noText = "N&o", string cancelText = "&Cancel", string hintText = "",
-                                       string headerText = null)
+                                       string noText = "N&o", string cancelText = "&Cancel",
+                                       string headerText = null, Color? cueHintColour = null, string cueHintText = null,
+                                       Font cueHintTypeface = null)
         {
             InitializeComponent();
 
@@ -264,13 +284,14 @@
 
             SetHeaderTypeface(headerTypeface);
 
-            SetHint(hintText);
-
             SetHeaderText(headerText);
+
+            SetCueFeatures(type, cueHintColour, cueHintText, cueHintTypeface);
         }
 
-        /// <summary>Initializes a new instance of the <see cref="KryptonInputBoxExtended"/> class.</summary>
+        /// <summary>Initializes a new instance of the <see cref="KryptonInputBoxExtended" /> class.</summary>
         /// <param name="message">The message.</param>
+        /// <param name="cueHintColour">The cue hint colour.</param>
         /// <param name="title">The title.</param>
         /// <param name="icon">The icon.</param>
         /// <param name="image">The image.</param>
@@ -285,7 +306,14 @@
         /// <param name="noText">The no text.</param>
         /// <param name="cancelText">The cancel text.</param>
         /// <param name="hintText">The hint text.</param>
-        public KryptonInputBoxExtended(string message, string title = "", InputBoxIconType icon = InputBoxIconType.NONE, Image image = null, InputBoxLanguage language = InputBoxLanguage.ENGLISH, InputBoxInputType type = InputBoxInputType.NONE, string[] listItems = null, bool showInTaskBar = false, Font controlTypeface = null, Font messageTypeface = null, string okText = "&Ok", string yesText = "&Yes", string noText = "N&o", string cancelText = "&Cancel", string hintText = "")
+        /// <param name="cueHintText">The cue hint text.</param>
+        /// <param name="cueHintTypeface">The cue hint typeface.</param>
+        public KryptonInputBoxExtended(string message, Color? cueHintColour, string title = "", InputBoxIconType icon = InputBoxIconType.NONE, Image image = null, 
+                                       InputBoxLanguage language = InputBoxLanguage.ENGLISH, InputBoxInputType type = InputBoxInputType.NONE, 
+                                       string[] listItems = null, bool showInTaskBar = false, Font controlTypeface = null, 
+                                       Font messageTypeface = null, string okText = "&Ok", string yesText = "&Yes", string noText = "N&o", 
+                                       string cancelText = "&Cancel", string hintText = "", string cueHintText = null,
+                                       Font cueHintTypeface = null)
         {
             InitializeComponent();
 
@@ -312,6 +340,8 @@
             SetMessageTypeface(messageTypeface);
 
             SetHint(hintText);
+
+            SetCueFeatures(type, cueHintColour, cueHintText, cueHintTypeface);
         }
 
         /// <summary>Initializes a new instance of the <see cref="KryptonInputBoxExtended"/> class.</summary>
@@ -331,7 +361,11 @@
         /// <param name="noText">The no text.</param>
         /// <param name="cancelText">The cancel text.</param>
         /// <param name="hintText">The hint text.</param>
-        public KryptonInputBoxExtended(string message, string title = "", InputBoxIconType icon = InputBoxIconType.INFORMATION, Image image = null, InputBoxLanguage language = InputBoxLanguage.ENGLISH, InputBoxButtons buttons = InputBoxButtons.OK, InputBoxInputType type = InputBoxInputType.NONE, string[] listItems = null, bool showInTaskBar = false, Font controlTypeface = null, Font messageTypeface = null, string okText = "&Ok", string yesText = "&Yes", string noText = "N&o", string cancelText = "&Cancel", string hintText = "")
+        public KryptonInputBoxExtended(string message, string title = "", InputBoxIconType icon = InputBoxIconType.INFORMATION, Image image = null, 
+                                       InputBoxLanguage language = InputBoxLanguage.ENGLISH, InputBoxButtons buttons = InputBoxButtons.OK, 
+                                       InputBoxInputType type = InputBoxInputType.NONE, string[] listItems = null, bool showInTaskBar = false, 
+                                       Font controlTypeface = null, Font messageTypeface = null, string okText = "&Ok", string yesText = "&Yes",
+                                       string noText = "N&o", string cancelText = "&Cancel", string hintText = "")
         {
             InitializeComponent();
 
@@ -478,7 +512,14 @@
         /// <param name="hintText">The hint text.</param>
         /// <param name="startPosition">The start position.</param>
         /// <param name="textAlignment">The text alignment.</param>
-        public KryptonInputBoxExtended(Point iconLocation, string message, string title = "", InputBoxIconType icon = InputBoxIconType.INFORMATION, Image image = null, InputBoxLanguage language = InputBoxLanguage.ENGLISH, InputBoxButtons buttons = InputBoxButtons.OK, InputBoxInputType type = InputBoxInputType.NONE, string[] listItems = null, bool showInTaskBar = false, Font controlTypeface = null, Font messageTypeface = null, string okText = "&Ok", string yesText = "&Yes", string noText = "N&o", string cancelText = "&Cancel", string hintText = "", FormStartPosition startPosition = FormStartPosition.WindowsDefaultLocation, InputBoxTextAlignment textAlignment = InputBoxTextAlignment.LEFT)
+        public KryptonInputBoxExtended(Point iconLocation, string message, Color cueHintColour, string title = "", InputBoxIconType icon = InputBoxIconType.INFORMATION, 
+                                       Image image = null, InputBoxLanguage language = InputBoxLanguage.ENGLISH, InputBoxButtons buttons = InputBoxButtons.OK, 
+                                       InputBoxInputType type = InputBoxInputType.NONE, string[] listItems = null, bool showInTaskBar = false,
+                                       Font controlTypeface = null, Font messageTypeface = null, string okText = "&Ok", string yesText = "&Yes", 
+                                       string noText = "N&o", string cancelText = "&Cancel", 
+                                       FormStartPosition startPosition = FormStartPosition.WindowsDefaultLocation, 
+                                       InputBoxTextAlignment textAlignment = InputBoxTextAlignment.LEFT, Font cueHintTypeface = null,
+                                       string cueHintText = null)
         {
             InitializeComponent();
 
@@ -504,7 +545,7 @@
 
             SetMessageTypeface(messageTypeface);
 
-            SetHint(hintText);
+            SetCueFeatures(type, cueHintColour, cueHintText, cueHintTypeface);
 
             RelocateIcon(iconLocation);
 
@@ -659,6 +700,89 @@
             SetHeaderTypeface(headerTypeface);
 
             SetHeaderText(headerText);
+        }
+
+        public KryptonInputBoxExtended(Point inputBoxIconLocation, string message,  string title, InputBoxIconType iconType, 
+                                       Image customImage, InputBoxIconImageSize imageSize, InputBoxLanguage inputBoxLanguage,
+                                       InputBoxButtons buttons, InputBoxInputType inputType, InputBoxMessageDisplayType displayType, 
+                                       string[] itemList, bool showInTaskBar, Font controlTypeface, Font messageTypeface, Font headerTypeface, 
+                                       string okText, string yesText, string noText, string cancelText, string headerText,
+                                       FormStartPosition startPosition, InputBoxTextAlignment textAlignment, 
+                                       InputBoxNormalMessageTextAlignment messageTextAlignment,
+                                       InputBoxWrappedMessageTextAlignment wrappedMessageTextAlignment,
+                                       Color cueHintColour, Font cueHintTypeface, string cueHintText)
+        {
+            #region Store Values
+            _inputBoxIconLocation = inputBoxIconLocation;
+            _message = message;
+            _cueHintColour = cueHintColour;
+            _title = title;
+            _iconType = iconType;
+            _customImage = customImage;
+            _imageSize = imageSize;
+            _inputBoxLanguage = inputBoxLanguage;
+            _buttons = buttons;
+            _inputType = inputType;
+            _displayType = displayType;
+            _itemList = itemList;
+            _showInTaskbar = showInTaskBar;
+            _controlTypeface = controlTypeface;
+            _messageTypeface = messageTypeface;
+            _headerTypeface = headerTypeface;
+            _okText = okText;
+            _yesText = yesText;
+            _noText = noText;
+            _cancelText = cancelText;
+            _headerText = headerText;
+            _startPosition = startPosition;
+            _textAlignment = textAlignment;
+            _messageTextAlignment = messageTextAlignment;
+            _wrappedMessageTextAlignment = wrappedMessageTextAlignment;
+            _cueHintTypeface = cueHintTypeface;
+            _cueHintText = cueHintText;
+#endregion
+
+            InitializeComponent();
+
+            RelocateIcon(_inputBoxIconLocation);
+
+            SetMessage(_message);
+
+            SetTitle(_title);
+
+            SetIconType(_iconType, _customImage);
+
+            SetCustomImageSize(_imageSize, _customImage);
+
+            SetLanguage(_inputBoxLanguage, _okText, _yesText, _noText);
+
+            AdaptButtons(_buttons, _inputBoxLanguage);
+
+            ChangeButtonVisibility(_buttons);
+
+            AdaptUI(_inputType, _itemList);
+
+            SetShowInTaskbar(_showInTaskbar);
+
+            SetControlTypeface(_controlTypeface);
+
+            SetMessageTypeface(_messageTypeface);
+
+            SetDisplayType(_displayType);
+
+            SetTextAlignment(_textAlignment);
+
+            SetMessageTextAlignment(_messageTextAlignment);
+
+            SetWrappedMessageTextAlignment(_wrappedMessageTextAlignment);
+
+            SetStartPosition(_startPosition);
+
+            SetHeaderTypeface(_headerTypeface);
+
+            SetHeaderText(_headerText);
+
+            SetCueFeatures(_inputType, _cueHintColour, _headerText, _cueHintTypeface);
         }
         #endregion
 
@@ -1432,9 +1556,34 @@
             }
         }
 
-        private void SetHeaderTypeface(Font headerTypeface) { }
+        private void SetHeaderTypeface(Font headerTypeface) => kblMessage.StateCommon.ShortText.Font = headerTypeface;
 
-        private void SetHeaderText(string text) { }
+        private void SetHeaderText(string text) => kblMessage.Text = text;
+
+        private void SetCueFeatures(InputBoxInputType inputType, Color? cueHintColour, string cueHintText, Font cueHintTypeface)
+        {
+            Color cueTempColour = cueHintColour ?? Color.Gray;
+
+            switch (inputType)
+            {
+                case InputBoxInputType.COMBOBOX:
+                    kcmbInput.CueHint.CueHintText = cueHintText;
+
+                    kcmbInput.CueHint.Color1 = cueTempColour;
+
+                    kcmbInput.CueHint.Font = cueHintTypeface;
+                    break;
+                case InputBoxInputType.MASKEDTEXTBOX:
+                    break;
+                case InputBoxInputType.TEXTBOX:
+                    ktxtInput.CueHint.CueHintText = cueHintText;
+
+                    ktxtInput.CueHint.Color1 = cueTempColour;
+
+                    ktxtInput.CueHint.Font = cueHintTypeface;
+                    break;
+            }
+        }
         #endregion
 
         #region Show
@@ -1448,27 +1597,45 @@
             }
         }
 
-        private static string InternalShow(string message, string title = "", InputBoxIconType icon = InputBoxIconType.INFORMATION, Image image = null, InputBoxLanguage language = InputBoxLanguage.ENGLISH, InputBoxButtons buttons = InputBoxButtons.OK, InputBoxInputType type = InputBoxInputType.NONE, string[] listItems = null, bool showInTaskBar = false, Font controlTypeface = null, Font messageTypeface = null, string okText = "&Ok", string yesText = "&Yes", string noText = "N&o", string cancelText = "&Cancel", string hintText = "", FormStartPosition startPosition = FormStartPosition.WindowsDefaultLocation, InputBoxTextAlignment textAlignment = InputBoxTextAlignment.LEFT, Point iconLocation = new Point())
+        private static string InternalShow(Point inputBoxIconLocation, string message, string title,
+                                           InputBoxIconType iconType,
+                                           Image customImage, InputBoxIconImageSize imageSize, InputBoxLanguage inputBoxLanguage,
+                                           InputBoxButtons buttons, InputBoxInputType inputType, InputBoxMessageDisplayType displayType,
+                                           string[] itemList, bool showInTaskBar, Font controlTypeface, Font messageTypeface, Font headerTypeface,
+                                           string okText, string yesText, string noText, string cancelText, string headerText,
+                                           FormStartPosition startPosition, InputBoxTextAlignment textAlignment,
+                                           InputBoxNormalMessageTextAlignment messageTextAlignment,
+                                           InputBoxWrappedMessageTextAlignment wrappedMessageTextAlignment,
+                                           Color cueHintColour, Font cueHintTypeface, string cueHintText)
         {
-            using (KryptonInputBoxExtended inputBoxExtended = new KryptonInputBoxExtended(iconLocation, message, title, icon, image, language, buttons, type, listItems, showInTaskBar, controlTypeface, messageTypeface, okText, yesText, noText, cancelText, hintText, startPosition, textAlignment))
+            using (KryptonInputBoxExtended inputBox = new KryptonInputBoxExtended(inputBoxIconLocation, message, title, iconType, customImage, imageSize, inputBoxLanguage, buttons, inputType, displayType, itemList, showInTaskBar, controlTypeface, messageTypeface, headerTypeface, okText, yesText, noText, cancelText, headerText, startPosition, textAlignment, messageTextAlignment, wrappedMessageTextAlignment, cueHintColour, cueHintTypeface, cueHintText))
             {
-                inputBoxExtended.StartPosition = startPosition;
+                inputBox.StartPosition = startPosition;
 
-                return inputBoxExtended.ShowDialog() == DialogResult.OK ? inputBoxExtended.GetUserResponse() : string.Empty;
+                return inputBox.ShowDialog() == DialogResult.OK ? inputBox.GetUserResponse() : String.Empty;
             }
         }
 
-        private static string InternalShow(IWin32Window owner, string message, string title = "", InputBoxIconType icon = InputBoxIconType.INFORMATION, Image image = null, InputBoxLanguage language = InputBoxLanguage.ENGLISH, InputBoxButtons buttons = InputBoxButtons.OK, InputBoxInputType type = InputBoxInputType.NONE, string[] listItems = null, bool showInTaskBar = false, Font controlTypeface = null, Font messageTypeface = null, string okText = "&Ok", string yesText = "&Yes", string noText = "N&o", string cancelText = "&Cancel", string hintText = "", FormStartPosition startPosition = FormStartPosition.WindowsDefaultLocation, InputBoxTextAlignment textAlignment = InputBoxTextAlignment.LEFT, Point iconLocation = new Point())
+        private static string InternalShow(IWin32Window owner, Point inputBoxIconLocation, string message, string title,
+                                           InputBoxIconType iconType,
+                                           Image customImage, InputBoxIconImageSize imageSize, InputBoxLanguage inputBoxLanguage,
+                                           InputBoxButtons buttons, InputBoxInputType inputType, InputBoxMessageDisplayType displayType,
+                                           string[] itemList, bool showInTaskBar, Font controlTypeface, Font messageTypeface, Font headerTypeface,
+                                           string okText, string yesText, string noText, string cancelText, string headerText,
+                                           FormStartPosition startPosition, InputBoxTextAlignment textAlignment,
+                                           InputBoxNormalMessageTextAlignment messageTextAlignment,
+                                           InputBoxWrappedMessageTextAlignment wrappedMessageTextAlignment,
+                                           Color cueHintColour, Font cueHintTypeface, string cueHintText)
         {
             IWin32Window showOwner = owner ?? FromHandle(PlatformInvoke.GetActiveWindow());
 
             string result;
 
-            using (KryptonInputBoxExtended inputBoxExtended = new KryptonInputBoxExtended(iconLocation, message, title, icon, image, language, buttons, type, listItems, showInTaskBar, controlTypeface, messageTypeface, okText, yesText, noText, cancelText, hintText, startPosition, textAlignment))
+            using (KryptonInputBoxExtended inputBoxExtended = new KryptonInputBoxExtended(inputBoxIconLocation, message, title, iconType, customImage, imageSize, inputBoxLanguage, buttons, inputType, displayType, itemList, showInTaskBar, controlTypeface, messageTypeface, headerTypeface, okText, yesText, noText, cancelText, headerText, startPosition, textAlignment, messageTextAlignment, wrappedMessageTextAlignment, cueHintColour, cueHintTypeface, cueHintText))
             {
                 inputBoxExtended.StartPosition = startPosition;
 
-                switch (type)
+                switch (inputType)
                 {
                     case InputBoxInputType.COMBOBOX:
                         result = inputBoxExtended.ShowDialog(showOwner) == DialogResult.OK ? inputBoxExtended.GetUserChoice() : string.Empty;
@@ -1493,9 +1660,119 @@
         }
         #endregion
 
+        /// <summary>Shows the specified message.</summary>
+        /// <param name="message">The message.</param>
+        /// <param name="title">The title.</param>
+        /// <param name="language">The language.</param>
+        /// <param name="type">The type.</param>
+        /// <param name="listItems">The list items.</param>
+        /// <param name="showInTaskBar">if set to <c>true</c> [show in task bar].</param>
+        /// <param name="controlTypeface">The control typeface.</param>
+        /// <param name="messageTypeface">The message typeface.</param>
+        /// <param name="okText">The ok text.</param>
+        /// <param name="yesText">The yes text.</param>
+        /// <param name="noText">The no text.</param>
+        /// <param name="cancelText">The cancel text.</param>
+        /// <param name="hintText">The hint text.</param>
+        /// <returns>
+        ///   <br />
+        /// </returns>
         public static string Show(string message, string title = "", InputBoxLanguage language = InputBoxLanguage.ENGLISH, InputBoxInputType type = InputBoxInputType.NONE, string[] listItems = null, bool showInTaskBar = false, Font controlTypeface = null, Font messageTypeface = null, string okText = "&Ok", string yesText = "&Yes", string noText = "N&o", string cancelText = "&Cancel", string hintText = "") => InternalShow(message, title, language, type, listItems, showInTaskBar, controlTypeface, messageTypeface, okText, yesText, noText, cancelText, hintText);
 
-        public static string Show(string message, string title = "", InputBoxIconType icon = InputBoxIconType.INFORMATION, Image image = null, InputBoxLanguage language = InputBoxLanguage.ENGLISH, InputBoxButtons buttons = InputBoxButtons.OK, InputBoxInputType type = InputBoxInputType.NONE, string[] listItems = null, bool showInTaskBar = false, Font controlTypeface = null, Font messageTypeface = null, string okText = "&Ok", string yesText = "&Yes", string noText = "N&o", string cancelText = "&Cancel", string hintText = "", FormStartPosition startPosition = FormStartPosition.WindowsDefaultLocation, InputBoxTextAlignment textAlignment = InputBoxTextAlignment.LEFT, Point iconLocation = new Point()) => InternalShow(message, title, icon, image, language, buttons, type, listItems, showInTaskBar, controlTypeface, messageTypeface, okText, yesText, noText, cancelText, hintText, startPosition, textAlignment, iconLocation);
+        /// <summary>Shows the specified owner.</summary>
+        /// <param name="owner">The owner.</param>
+        /// <param name="inputBoxIconLocation">The input box icon location.</param>
+        /// <param name="message">The message.</param>
+        /// <param name="title">The title.</param>
+        /// <param name="iconType">Type of the icon.</param>
+        /// <param name="customImage">The custom image.</param>
+        /// <param name="imageSize">Size of the image.</param>
+        /// <param name="inputBoxLanguage">The input box language.</param>
+        /// <param name="buttons">The buttons.</param>
+        /// <param name="inputType">Type of the input.</param>
+        /// <param name="displayType">The display type.</param>
+        /// <param name="itemList">The item list.</param>
+        /// <param name="showInTaskBar">if set to <c>true</c> [show in task bar].</param>
+        /// <param name="controlTypeface">The control typeface.</param>
+        /// <param name="messageTypeface">The message typeface.</param>
+        /// <param name="headerTypeface">The header typeface.</param>
+        /// <param name="okText">The ok text.</param>
+        /// <param name="yesText">The yes text.</param>
+        /// <param name="noText">The no text.</param>
+        /// <param name="cancelText">The cancel text.</param>
+        /// <param name="headerText">The header text.</param>
+        /// <param name="startPosition">The start position.</param>
+        /// <param name="textAlignment">The text alignment.</param>
+        /// <param name="messageTextAlignment">The message text alignment.</param>
+        /// <param name="wrappedMessageTextAlignment">The wrapped message text alignment.</param>
+        /// <param name="cueHintColour">The cue hint colour.</param>
+        /// <param name="cueHintTypeface">The cue hint typeface.</param>
+        /// <param name="cueHintText">The cue hint text.</param>
+        /// <returns>
+        ///   <br />
+        /// </returns>
+        public static string Show(IWin32Window owner, Point inputBoxIconLocation, string message, string title,
+            InputBoxIconType iconType,
+            Image customImage, InputBoxIconImageSize imageSize, InputBoxLanguage inputBoxLanguage,
+            InputBoxButtons buttons, InputBoxInputType inputType, InputBoxMessageDisplayType displayType,
+            string[] itemList, bool showInTaskBar, Font controlTypeface, Font messageTypeface, Font headerTypeface,
+            string okText, string yesText, string noText, string cancelText, string headerText,
+            FormStartPosition startPosition, InputBoxTextAlignment textAlignment,
+            InputBoxNormalMessageTextAlignment messageTextAlignment,
+            InputBoxWrappedMessageTextAlignment wrappedMessageTextAlignment,
+            Color cueHintColour, Font cueHintTypeface, string cueHintText)
+            => InternalShow(owner, inputBoxIconLocation, message, title, iconType, customImage, imageSize,
+                inputBoxLanguage, buttons, inputType, displayType, itemList, showInTaskBar, controlTypeface,
+                messageTypeface, headerTypeface, okText, yesText, noText, cancelText, headerText, startPosition,
+                textAlignment, messageTextAlignment, wrappedMessageTextAlignment, cueHintColour, cueHintTypeface,
+                cueHintText);
+
+        /// <summary>Shows the specified input box icon location.</summary>
+        /// <param name="inputBoxIconLocation">The input box icon location.</param>
+        /// <param name="message">The message.</param>
+        /// <param name="title">The title.</param>
+        /// <param name="iconType">Type of the icon.</param>
+        /// <param name="customImage">The custom image.</param>
+        /// <param name="imageSize">Size of the image.</param>
+        /// <param name="inputBoxLanguage">The input box language.</param>
+        /// <param name="buttons">The buttons.</param>
+        /// <param name="inputType">Type of the input.</param>
+        /// <param name="displayType">The display type.</param>
+        /// <param name="itemList">The item list.</param>
+        /// <param name="showInTaskBar">if set to <c>true</c> [show in task bar].</param>
+        /// <param name="controlTypeface">The control typeface.</param>
+        /// <param name="messageTypeface">The message typeface.</param>
+        /// <param name="headerTypeface">The header typeface.</param>
+        /// <param name="okText">The ok text.</param>
+        /// <param name="yesText">The yes text.</param>
+        /// <param name="noText">The no text.</param>
+        /// <param name="cancelText">The cancel text.</param>
+        /// <param name="headerText">The header text.</param>
+        /// <param name="startPosition">The start position.</param>
+        /// <param name="textAlignment">The text alignment.</param>
+        /// <param name="messageTextAlignment">The message text alignment.</param>
+        /// <param name="wrappedMessageTextAlignment">The wrapped message text alignment.</param>
+        /// <param name="cueHintColour">The cue hint colour.</param>
+        /// <param name="cueHintTypeface">The cue hint typeface.</param>
+        /// <param name="cueHintText">The cue hint text.</param>
+        /// <returns>
+        ///   <br />
+        /// </returns>
+        public static string Show(Point inputBoxIconLocation, string message, string title,
+            InputBoxIconType iconType,
+            Image customImage, InputBoxIconImageSize imageSize, InputBoxLanguage inputBoxLanguage,
+            InputBoxButtons buttons, InputBoxInputType inputType, InputBoxMessageDisplayType displayType,
+            string[] itemList, bool showInTaskBar, Font controlTypeface, Font messageTypeface, Font headerTypeface,
+            string okText, string yesText, string noText, string cancelText, string headerText,
+            FormStartPosition startPosition, InputBoxTextAlignment textAlignment,
+            InputBoxNormalMessageTextAlignment messageTextAlignment,
+            InputBoxWrappedMessageTextAlignment wrappedMessageTextAlignment,
+            Color cueHintColour, Font cueHintTypeface, string cueHintText)
+            => InternalShow(inputBoxIconLocation, message, title, iconType, customImage, imageSize, inputBoxLanguage,
+                buttons, inputType, displayType, itemList, showInTaskBar, controlTypeface, messageTypeface,
+                headerTypeface, okText, yesText, noText, cancelText, headerText, startPosition, textAlignment,
+                messageTextAlignment, wrappedMessageTextAlignment, cueHintColour, cueHintTypeface, cueHintText);
+
         #endregion
     }
 }

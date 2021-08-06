@@ -1,6 +1,6 @@
 <Project>
   <!--Generate NuGet packages on build-->
-  <PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 </Project>

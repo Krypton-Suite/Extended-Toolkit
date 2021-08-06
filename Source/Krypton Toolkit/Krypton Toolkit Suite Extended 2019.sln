@@ -18,11 +18,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build System", "Build Syste
 		..\..\build.proj.old = ..\..\build.proj.old
 		..\..\debug.cmd = ..\..\debug.cmd
 		..\..\debug.proj = ..\..\debug.proj
-		Directory.Build.props = Directory.Build.props
 		..\..\Directory.Build.props = ..\..\Directory.Build.props
 		Third Party\Directory.Build.props = Third Party\Directory.Build.props
-		Main\Directory.Build.props = Main\Directory.Build.props
-		Shared\Directory.Build.props = Shared\Directory.Build.props
 		Directory.Build.targets = Directory.Build.targets
 		Third Party\Directory.Build.targets = Third Party\Directory.Build.targets
 		..\..\purge.cmd = ..\..\purge.cmd
@@ -271,6 +268,17 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Compression", "Main\Krypton.Toolkit.Suite.Extended.Compression\Krypton.Toolkit.Suite.Extended.Compression.csproj", "{18DE1F27-6D6B-44E2-BA62-7A1005EEB8CC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Forms 2019", "Main\Krypton.Toolkit.Suite.Extended.Forms\Krypton.Toolkit.Suite.Extended.Forms 2019.csproj", "{EE0904D6-72EF-4107-A286-CB5EEC2A5CE0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Generic", "Generic", "{4696C160-BC97-414A-8D30-B09A2CA76085}"
+	ProjectSection(SolutionItems) = preProject
+		Directory.Build.props = Directory.Build.props
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Generate Packages", "Generate Packages", "{9ACA6117-D269-4425-8500-6BC57560DEB2}"
+	ProjectSection(SolutionItems) = preProject
+		Main\Directory.Build.props = Main\Directory.Build.props
+		Shared\Directory.Build.props = Shared\Directory.Build.props
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -668,6 +676,8 @@ Global
 		{7DD7E446-6272-467B-AA8A-7EB0F5D31D7F} = {25D5F0A6-A601-424B-9431-8EFE139A58A7}
 		{18DE1F27-6D6B-44E2-BA62-7A1005EEB8CC} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 		{EE0904D6-72EF-4107-A286-CB5EEC2A5CE0} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
+		{4696C160-BC97-414A-8D30-B09A2CA76085} = {87BE2145-50BE-4A57-9C79-FCE5A64F6065}
+		{9ACA6117-D269-4425-8500-6BC57560DEB2} = {87BE2145-50BE-4A57-9C79-FCE5A64F6065}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A7CE7732-0982-4703-8EFD-7715D569BAB5}

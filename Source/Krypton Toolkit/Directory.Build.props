@@ -6,7 +6,7 @@
 		<AssemblyVersion>6.0.2108.1</AssemblyVersion>
 		<FileVersion>6.0.2108.1</FileVersion>
 		<LibraryVersion>6.0.2108.1</LibraryVersion>
-		<Version>6.0.2108.1</Version>
+    <Version>6.0.2108.1</Version>
 	</PropertyGroup>
 	
 	<PropertyGroup>

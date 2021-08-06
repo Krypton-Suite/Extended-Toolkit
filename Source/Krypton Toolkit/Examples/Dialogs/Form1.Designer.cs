@@ -102,7 +102,7 @@ namespace Dialogs
             this.kibm.CustomImage = null;
             this.kibm.HeaderText = "Header Text Here";
             this.kibm.HeaderTypeface = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
-            this.kibm.HintText = "Hint";
+            this.kibm.CueHintText = "Hint";
             this.kibm.InputBoxButtons = Krypton.Toolkit.Suite.Extended.Dialogs.InputBoxButtons.OK;
             this.kibm.InputBoxIconImageSize = Krypton.Toolkit.Suite.Extended.Dialogs.InputBoxIconImageSize.SIXTYFOUR;
             this.kibm.InputBoxIconLocation = new System.Drawing.Point(12, 12);
