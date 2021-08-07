@@ -9,12 +9,12 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Messagebox
 {
-    /// <summary>Allows the creation of a <see cref="InternalKryptonMessageBoxExtended"/> through the designer.</summary>
+    /// <summary>Allows the creation of a <see cref="KryptonMessageBoxExtended"/> through the designer.</summary>
     /// <seealso cref="Component" />
-    [ToolboxBitmap(typeof(KryptonMessageBoxExtendedManager), "ToolboxBitmaps.KryptonMessageBox.bmp"),
+    [ToolboxBitmap(typeof(KryptonMessageBoxManager), "ToolboxBitmaps.KryptonMessageBox.bmp"),
      DefaultEvent("ShowMessageBox"), DefaultProperty("MessageBoxContentText"),
      Description("Allows the creation of a KryptonMessageBoxExtended through the designer.")] //, Designer(typeof(KryptonMessageBoxConfiguratorDesigner))]
-    public class KryptonMessageBoxExtendedManager : Component
+    public class KryptonMessageBoxManager : Component
     {
         #region Variables
         private AnchorStyles _optionalCheckBoxAnchor;
@@ -67,7 +67,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         [DefaultValue(false), Description("Allows the user to use 'CTRL + C' to copy the message box content.")]
         public bool ShowCtrlCopy { get => _showCtrlCopy; set => _showCtrlCopy = value; }
 
-        /// <summary>Gets or sets a value indicating whether this <see cref="KryptonMessageBoxExtendedManager" /> is fade.</summary>
+        /// <summary>Gets or sets a value indicating whether this <see cref="KryptonMessageBoxManager" /> is fade.</summary>
         /// <value><c>true</c> if fade; otherwise, <c>false</c>.</value>
         [DefaultValue(false), Description("Fades the message box in and out. (Under construction)")]
         public bool Fade { get => _fade; set => _fade = value; }
@@ -303,8 +303,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         #endregion
 
         #region Constructor
-        /// <summary>Initializes a new instance of the <see cref="KryptonMessageBoxExtendedManager" /> class.</summary>
-        public KryptonMessageBoxExtendedManager()
+        /// <summary>Initializes a new instance of the <see cref="KryptonMessageBoxManager" /> class.</summary>
+        public KryptonMessageBoxManager()
         {
             Fade = false;
 
@@ -360,7 +360,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <summary>Displays the message box.</summary>
         public void DisplayMessageBox()
         {
-            ShowMessageBoxEventArgs e = new ShowMessageBoxEventArgs(_owner, _messageBoxContentText, _messageBoxCaption, _buttons,
+            ShowMessageBoxEventArgs e = new(_owner, _messageBoxContentText, _messageBoxCaption, _buttons,
                                                                     _customButtonOptions, _messageBoxIcon, _defaultButton,
                                                                     _options, _helpPath, _helpNavigator, _helpParam,
                                                                     _showCtrlCopy, _messageBoxTypeface, _showOptionalCheckBox,

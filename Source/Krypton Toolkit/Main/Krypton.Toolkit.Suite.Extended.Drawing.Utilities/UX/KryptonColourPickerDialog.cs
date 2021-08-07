@@ -284,7 +284,7 @@
                         }
                         else
                         {
-                            KryptonMessageBoxExtendedManager manager = new KryptonMessageBoxExtendedManager()
+                            Messagebox.KryptonMessageBoxManager manager = new Messagebox.KryptonMessageBoxManager()
                             {
                                 MessageBoxCaption = "Load Palette",
                                 MessageBoxContentText = "Sorry, unable to open palette, the file format is not supported or is not recognized.",
@@ -332,7 +332,7 @@
                 }
                 else
                 {
-                    KryptonMessageBoxExtendedManager manager = new KryptonMessageBoxExtendedManager()
+                    Messagebox.KryptonMessageBoxManager manager = new Messagebox.KryptonMessageBoxManager()
                     {
                         MessageBoxCaption = "Save Palette",
                         MessageBoxContentText = "Sorry, unable to save palette, the file format is not supported or is not recognised.",

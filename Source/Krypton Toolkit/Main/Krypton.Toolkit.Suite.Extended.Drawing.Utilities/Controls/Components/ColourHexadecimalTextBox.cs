@@ -40,7 +40,7 @@
             {
                 if (!allowedCharacters.Contains(character))
                 {
-                    KryptonMessageBoxExtendedManager manager = new KryptonMessageBoxExtendedManager()
+                    Messagebox.KryptonMessageBoxManager manager = new Messagebox.KryptonMessageBoxManager()
                     {
                         MessageBoxCaption = "Illegal Character",
                         MessageBoxContentText = $"'{ character }' is not a hexadecimal character",

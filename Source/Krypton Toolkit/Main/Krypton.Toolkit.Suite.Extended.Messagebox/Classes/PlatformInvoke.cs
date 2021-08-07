@@ -567,11 +567,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
             /// <summary>
             /// </summary>            
-            public RECT rcMonitor = new RECT();
+            public RECT rcMonitor = new();
 
             /// <summary>
             /// </summary>            
-            public RECT rcWork = new RECT();
+            public RECT rcWork = new();
 
             /// <summary>
             /// </summary>            

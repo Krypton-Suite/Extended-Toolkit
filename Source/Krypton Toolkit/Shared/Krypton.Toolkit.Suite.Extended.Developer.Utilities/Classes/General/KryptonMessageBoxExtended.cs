@@ -6,17 +6,6 @@
  */
 #endregion
 
-using System;
-using System.ComponentModel;
-using System.Drawing;
-using System.Media;
-using System.Text;
-using System.Threading;
-using System.Windows.Forms;
-
-using Krypton.Toolkit.Suite.Extended.Developer.Utilities.Properties;
-using Krypton.Toolkit.Suite.Extended.Tools;
-
 namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
 {
     internal class KryptonMessageBoxExtended : KryptonForm

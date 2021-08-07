@@ -25,9 +25,10 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         {
             get
             {
-                DesignerActionListCollection actionLists = new DesignerActionListCollection();
-
-                actionLists.Add(new KryptonMessageBoxConfiguratorActionList(this));
+                DesignerActionListCollection actionLists = new()
+                {
+                    new KryptonMessageBoxConfiguratorActionList(this)
+                };
 
                 return actionLists;
             }
