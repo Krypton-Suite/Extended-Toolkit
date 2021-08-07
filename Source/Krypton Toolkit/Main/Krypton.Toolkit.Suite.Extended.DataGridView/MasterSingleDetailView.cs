@@ -18,9 +18,9 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
     /// This is a MasterDetail DataGridView that allows a single detail block to be displayed under each master row
     /// </summary>
     [ToolboxItem(true)]
-    [ToolboxBitmap(typeof(MasterSingleDetailView), "Designers.MasterSingleDetailView.bmp   ")]
+    [ToolboxBitmap(typeof(MasterSingleDetailView), "Designers.MasterSingleDetailView.bmp")]
     [DesignerCategory("code")]
-    [Designer(typeof(MasterSingleDetailViewDesigner))]
+    [Designer("Krypton.Toolkit.Suite.Extended.DataGridView.MasterSingleDetailViewDesigner, Krypton.Toolkit.Suite.Extended.DataGridView")]
     [Description("This is a MasterDetail DataGridView that allows a single detail block to be displayed under each master row.")]
     public class MasterSingleDetailView : MasterDetailGridView<KryptonDataGridView>
     {
