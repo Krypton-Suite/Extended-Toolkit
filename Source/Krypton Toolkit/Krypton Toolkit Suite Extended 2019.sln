@@ -27,6 +27,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build System", "Build Syste
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Markdown", "Markdown", "{A7A69BC2-7682-43FB-8E7C-C42FDAA2A215}"
 	ProjectSection(SolutionItems) = preProject
+		..\..\Documents\Help\Changelog.md = ..\..\Documents\Help\Changelog.md
 		..\..\Documents\Examples\Examples.md = ..\..\Documents\Examples\Examples.md
 		..\..\Documents\Modules\NuGet Package Information.md = ..\..\Documents\Modules\NuGet Package Information.md
 		..\..\Documents\Help\Prerequisites.md = ..\..\Documents\Help\Prerequisites.md
@@ -282,7 +283,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Generate Packages", "Genera
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.InputBox 2019", "Main\Krypton.Toolkit.Suite.Extended.InputBox\Krypton.Toolkit.Suite.Extended.InputBox 2019.csproj", "{2AEC1C12-E8A8-4715-8B8D-9DB405C06FBB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InputBox", "Examples\InputBox\InputBox.csproj", "{523130C1-5B5D-4BBA-A832-F1EA008E8DDA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InputBox", "Examples\InputBox\InputBox.csproj", "{523130C1-5B5D-4BBA-A832-F1EA008E8DDA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
