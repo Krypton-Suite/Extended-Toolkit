@@ -29,6 +29,14 @@
         <Description>An extension to the Krypton standard toolkit. This package implements software updating features.</Description>
     </PropertyGroup>
 
+    <!--Version information-->
+    <PropertyGroup>
+      <AssemblyVersion>6.0.2108.1</AssemblyVersion>
+      <FileVersion>6.0.2108.1</FileVersion>
+      <LibraryVersion>6.0.2108.1</LibraryVersion>
+      <Version>6.0.2108.1</Version>
+    </PropertyGroup>
+
   <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.IO.Compression.FileSystem" />

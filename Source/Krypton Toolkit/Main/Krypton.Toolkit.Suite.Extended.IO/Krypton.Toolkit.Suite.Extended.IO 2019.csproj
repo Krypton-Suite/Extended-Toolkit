@@ -29,6 +29,14 @@
         <Description>An extension to the Krypton standard toolkit. This package implements IO controls.</Description>
     </PropertyGroup>
 
+    <!--Version information-->
+    <PropertyGroup>
+      <AssemblyVersion>6.0.2108.1</AssemblyVersion>
+      <FileVersion>6.0.2108.1</FileVersion>
+      <LibraryVersion>6.0.2108.1</LibraryVersion>
+      <Version>6.0.2108.1</Version>
+    </PropertyGroup>
+
     <!--Krypton Toolkit Import-->
     <Choose>
         <When Condition="'$(TFMs)' == 'all'">

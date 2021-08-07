@@ -14,18 +14,6 @@
     </Otherwise>
   </Choose>
 
-    <Choose>
-        <When Condition="'$(TFMs)' == 'all'">
-            <PropertyGroup>
-                <TargetFrameworks>net35;net40;net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows;net6.0-windows</TargetFrameworks>
-            </PropertyGroup>
-        </When>
-        <Otherwise>
-            <PropertyGroup>
-                <TargetFrameworks>net48;netcoreapp3.1;net5.0-windows;net6.0-windows</TargetFrameworks>
-            </PropertyGroup>
-        </Otherwise>
-    </Choose>
     <PropertyGroup>
         <LangVersion>latest</LangVersion>
         <OutputType>library</OutputType>
@@ -43,6 +31,14 @@
         <PackageId>Krypton.Toolkit.Suite.Extended.TreeGridView</PackageId>
         <Description>An extension to the Krypton standard toolkit. This package holds items to create tree grid views for your applications.</Description>
     </PropertyGroup>
+
+  <!--Version information-->
+  <PropertyGroup>
+    <AssemblyVersion>6.0.2108.1</AssemblyVersion>
+    <FileVersion>6.0.2108.1</FileVersion>
+    <LibraryVersion>6.0.2108.1</LibraryVersion>
+    <Version>6.0.2108.1</Version>
+  </PropertyGroup>
 
     <!--Krypton Toolkit Import-->
     <Choose>
