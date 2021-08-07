@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
     <!--Setup TFMs for all projects-->
     <Choose>
@@ -29,22 +29,57 @@
         <Description>An extension to the Krypton standard toolkit. This package holds extensions to the Krypton.Dialogs module.</Description>
     </PropertyGroup>
 
-    <!--Version Information-->
+    <!--Version information-->
     <PropertyGroup>
-        <AssemblyVersion>6.0.2108</AssemblyVersion>
-        <FileVersion>6.0.2108</FileVersion>
+      <AssemblyVersion>6.0.2108.1</AssemblyVersion>
+      <FileVersion>6.0.2108.1</FileVersion>
+      <LibraryVersion>6.0.2108.1</LibraryVersion>
+      <Version>6.0.2108.1</Version>
     </PropertyGroup>
-
+   
+  <!--Binary/Documentation Output-->
+  <PropertyGroup>
+    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.Dialogs\Krypton.Toolkit.Suite.Extended.Dialogs.xml</DocumentationFile>
+    <OutputPath>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.Dialogs\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation" />
+    <PackageReference Include="WindowsAPICodePackShell" Version="1.1.2" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\..\Shared\Krypton.Toolkit.Suite.Extended.Common\Krypton.Toolkit.Suite.Extended.Common 2019.csproj" />
+    <ProjectReference Include="..\..\Shared\Krypton.Toolkit.Suite.Extended.Global.Utilities\Krypton.Toolkit.Suite.Extended.Global.Utilities 2019.csproj" />
+    <ProjectReference Include="..\..\Main\Krypton.Toolkit.Suite.Extended.Controls\Krypton.Toolkit.Suite.Extended.Controls 2019.csproj" />
+    <ProjectReference Include="..\..\Shared\Krypton.Toolkit.Suite.Extended.Settings\Krypton.Toolkit.Suite.Extended.Settings 2019.csproj" />
+    <ProjectReference Include="..\..\Shared\Krypton.Toolkit.Suite.Extended.Tools\Krypton.Toolkit.Suite.Extended.Tools 2019.csproj" />
+    <ProjectReference Include="..\..\Shared\Krypton.Toolkit.Suite.Extended.Utilities\Krypton.Toolkit.Suite.Extended.Utilities 2019.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="UX\Exception\KryptonExceptionCaptureDialog.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+   
     <!--Krypton Toolkit Import-->
     <Choose>
         <When Condition="'$(TFMs)' == 'all'">
             <ItemGroup>
-                <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2106.2" />
+                <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2108.1" />
             </ItemGroup>
         </When>
         <Otherwise>
             <ItemGroup>
-                <PackageReference Include="Krypton.Toolkit.Canary.Lite" Version="6.0.2106.2" />
+                <PackageReference Include="Krypton.Toolkit.Canary.Lite" Version="6.0.2108.1" />
             </ItemGroup>
         </Otherwise>
     </Choose>
@@ -66,34 +101,6 @@
         </Reference>
         <Reference Include="System.Design" Condition="'$(TargetFramework)' == 'net35'" />
         <!--TODO: Need to specify version here-->
-    </ItemGroup>
-    <!--Binary/Documentation Output-->
-    <PropertyGroup>
-        <DocumentationFile>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.Dialogs\Krypton.Toolkit.Suite.Extended.Dialogs.xml</DocumentationFile>
-        <OutputPath>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.Dialogs\</OutputPath>
-    </PropertyGroup>
-    <ItemGroup>
-        <Reference Include="System.Runtime.InteropServices.RuntimeInformation" />
-    </ItemGroup>
-    <ItemGroup>
-        <ProjectReference Include="..\..\Shared\Krypton.Toolkit.Suite.Extended.Common\Krypton.Toolkit.Suite.Extended.Common 2019.csproj" />
-        <ProjectReference Include="..\..\Shared\Krypton.Toolkit.Suite.Extended.Global.Utilities\Krypton.Toolkit.Suite.Extended.Global.Utilities 2019.csproj" />
-        <ProjectReference Include="..\..\Main\Krypton.Toolkit.Suite.Extended.Controls\Krypton.Toolkit.Suite.Extended.Controls 2019.csproj" />
-        <ProjectReference Include="..\..\Shared\Krypton.Toolkit.Suite.Extended.Tools\Krypton.Toolkit.Suite.Extended.Tools 2019.csproj" />
-        <ProjectReference Include="..\..\Shared\Krypton.Toolkit.Suite.Extended.Utilities\Krypton.Toolkit.Suite.Extended.Utilities 2019.csproj" />
-    </ItemGroup>
-    <ItemGroup>
-        <Compile Update="Properties\Resources.Designer.cs">
-            <DesignTime>True</DesignTime>
-            <AutoGen>True</AutoGen>
-            <DependentUpon>Resources.resx</DependentUpon>
-        </Compile>
-    </ItemGroup>
-    <ItemGroup>
-        <EmbeddedResource Update="Properties\Resources.resx">
-            <Generator>ResXFileCodeGenerator</Generator>
-            <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-        </EmbeddedResource>
     </ItemGroup>
 
 </Project>

@@ -18,13 +18,13 @@
 
   <!--Version Information-->
   <PropertyGroup>
-    <AssemblyVersion>6.0.2108</AssemblyVersion>
-    <FileVersion>6.0.2108</FileVersion>
+    <AssemblyVersion>6.0.2108.1</AssemblyVersion>
+    <FileVersion>6.0.2108.1</FileVersion>
   </PropertyGroup>
 
   <!--Krypton Toolkit Import-->
   <ItemGroup>
-    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2106" />
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2108.1" />
     <!--<PackageReference Include="Krypton.Toolkit" Version="5.550.2103" />-->
   </ItemGroup>
   <ItemGroup>

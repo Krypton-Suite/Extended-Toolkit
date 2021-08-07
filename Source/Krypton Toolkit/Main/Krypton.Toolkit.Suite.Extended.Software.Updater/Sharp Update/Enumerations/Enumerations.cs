@@ -1,4 +1,4 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Software.Updater
+﻿namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
 {
     /// <summary>
     /// The type of hash to create

@@ -206,7 +206,7 @@
         {
             InitializeComponent();
 
-            ApplicationUtilities.UnderConstruction(this);
+            ApplicationUtilities.UnderConstruction();
 
             Hide();
         }

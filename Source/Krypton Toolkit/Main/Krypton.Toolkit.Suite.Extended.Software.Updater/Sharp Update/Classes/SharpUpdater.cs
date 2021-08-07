@@ -1,4 +1,4 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Software.Updater
+﻿namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
 {
     /// <summary>
     /// Provides application update support in C#
@@ -223,9 +223,14 @@
         /// </summary>
         private void InstallUpdate()
         {
-            KryptonMessageBox.Show(ParentForm, "Application restarts in 5 seconds", "Success", 5000);
-            UpdateApplications();
-            Application.Exit();
+            DialogResult result = KryptonMessageBox.Show("The application needs to restart.", "Restart Needed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            if (result == DialogResult.OK)
+            {
+                UpdateApplications();
+
+                Application.Exit();
+            }
         }
 
         /// <summary>

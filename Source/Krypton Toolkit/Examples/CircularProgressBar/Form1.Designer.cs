@@ -43,7 +43,7 @@ namespace CircularProgressBar
             // 
             // ccbTest
             // 
-            this.ccbTest.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
+            this.ccbTest.AnimationFunction = WinFormAnimation_NET5.KnownAnimationFunctions.Linear;
             this.ccbTest.AnimationSpeed = 500;
             this.ccbTest.BackColor = System.Drawing.Color.Transparent;
             this.ccbTest.FirstValueColour = System.Drawing.Color.Red;

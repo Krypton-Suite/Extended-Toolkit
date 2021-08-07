@@ -20,15 +20,22 @@
 # Which packages should I use?
 
 ## Non-Lite
-Only use these packages if you require to target a specific framework version between .NET 3.5 and .NET 6. Please note that these packages are larger than the lite packages.
+Only use these packages if you require to target a specific framework version between .NET 3.5 and .NET 5/6. Please note that these packages are larger than the lite packages.
 
 ## Lite
-These packages only support .NET Framework >= 4.8, .NET Core 3.1 and .NET 6.
+These packages only support .NET Framework >= 4.8, .NET Core 3.1 and .NET 5/6.
 
 =======
 
-## 2021-08-xx - Build 2108 - August 2021 (Canary)
+## 2021-08-07 - Build 2108.1 - August 2021 (Canary - Update 1)
+* Fix possible `KryptonButton` text bugs
+* Update standard toolkit to build `2108.1`
+
+=======
+
+## 2021-08-02 - Build 2108 - August 2021 (Canary)
 * New icon
+* New `KryptonExceptionCaptureDialog` - it is now possible to display an exception in a window along with a typical messagebox
 * Broken toolkit up into smaller modules - see list for available modules (Not all modules will be completed yet)
 * Improved documentation
 * New `Krypton.Toolkit.Suite.Extended.DataGridView` module

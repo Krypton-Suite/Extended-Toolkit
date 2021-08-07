@@ -1,4 +1,4 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Software.Updater
+﻿namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
 {
     public class SharpUpdateAcceptForm : KryptonForm
     {
@@ -157,17 +157,17 @@
         /// <summary>
         /// The program to update's info
         /// </summary>
-        private SharpUpdateLocalAppInfo applicationInfo;
+        private SharpUpdateLocalAppInfo _applicationInfo;
 
         /// <summary>
         /// The update info from the update.xml
         /// </summary>
-        private SharpUpdateXml updateInfo;
+        private SharpUpdateXml _updateInfo;
 
         /// <summary>
         /// The update info display form
         /// </summary>
-        private SharpUpdateInfoForm updateInfoForm;
+        private SharpUpdateInfoForm _updateInfoForm;
         #endregion
 
         #region Constructor
@@ -175,35 +175,44 @@
         {
             InitializeComponent();
 
-            applicationInfo = updateLocalAppInfo;
+            _applicationInfo = updateLocalAppInfo;
 
-            updateInfo = updateXmlInfo;
+            _updateInfo = updateXmlInfo;
 
-            Text = $"{applicationInfo.ApplicationName} - ({numCurUpdate}/{totalUpdate} Available Update";
+            Text = $"{_applicationInfo.ApplicationName} - ({numCurUpdate}/{totalUpdate} Available Update";
 
-            if (applicationInfo.ApplicationName != null)
+            if (_applicationInfo.ApplicationName != null)
             {
-                Icon = applicationInfo.ApplicationIcon;
+                Icon = _applicationInfo.ApplicationIcon;
             }
 
-            kwlblNewVersion.Text = updateXmlInfo.Tag != JobType.REMOVE ? string.Format(updateXmlInfo.Tag == JobType.UPDATE ? "Update: {0}\nNew Version: {1}" : "New: {0}\nVersion: {1}", Path.GetFileName(applicationInfo.ApplicationPath), updateInfo.Version.ToString()) :
-                $"Remove: {Path.GetFileName(applicationInfo.ApplicationPath)}";
+            kwlblNewVersion.Text = updateXmlInfo.Tag != JobType.REMOVE ? string.Format(updateXmlInfo.Tag == JobType.UPDATE ? "Update: {0}\nNew Version: {1}" : "New: {0}\nVersion: {1}", Path.GetFileName(_applicationInfo.ApplicationPath), _updateInfo.Version.ToString()) :
+                $"Remove: {Path.GetFileName(_applicationInfo.ApplicationPath)}";
         }
         #endregion
 
         private void kbtnYes_Click(object sender, EventArgs e)
         {
+            DialogResult = DialogResult.Yes;
 
+            Close();
         }
 
         private void kbtnNo_Click(object sender, EventArgs e)
         {
+            DialogResult = DialogResult.No;
 
+            Close();
         }
 
         private void kbtnDetails_Click(object sender, EventArgs e)
         {
+            if (_updateInfoForm == null)
+            {
+                _updateInfoForm = new SharpUpdateInfoForm(_applicationInfo, _updateInfo);
+            }
 
+            _updateInfoForm.Show(this);
         }
     }
 }

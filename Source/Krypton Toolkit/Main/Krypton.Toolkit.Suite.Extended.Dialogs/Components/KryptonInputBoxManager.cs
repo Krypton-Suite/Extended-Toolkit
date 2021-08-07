@@ -5,9 +5,11 @@
         #region Variables
         private bool _showInTaskBar;
 
+        private Color _cueHintColour;
+
         private FormStartPosition _startPosition;
 
-        private Font _controlTypeface, _messageTypeface, _headerTypeface;
+        private Font _controlTypeface, _cueHintTypeface, _messageTypeface, _headerTypeface;
 
         private InputBoxButtons _buttons;
 
@@ -31,18 +33,32 @@
 
         private Point _inputBoxIconLocation;
 
-        private string _message, _headerText, _title, _okText, _yesText, _noText, _cancelText, _hintText;
+        private string _cueHintText, _message, _headerText, _title, _okText, _yesText, _noText, _cancelText;
 
         private string[] _itemList;
         #endregion
 
         #region Properties
+        /// <summary>Gets or sets a value indicating whether to show in task bar.</summary>
+        /// <value><c>true</c> if [show in task bar]; otherwise, <c>false</c>.</value>
         public bool ShowInTaskBar { get => _showInTaskBar; set => _showInTaskBar = value; }
 
+        public Color CueHintColour
+        {
+            get => _cueHintColour;
+
+            set => _cueHintColour = value;
+        }
+
+        /// <summary>Gets or sets the start position.</summary>
+        /// <value>The start position.</value>
         public FormStartPosition StartPosition { get => _startPosition; set => _startPosition = value; }
 
         [DefaultValue(typeof(Font), "Microsoft Sans Serif, 8.25f")]
         public Font ControlTypeface { get => _controlTypeface; set => _controlTypeface = value; }
+
+        [DefaultValue(typeof(Font), "Microsoft Sans Serif, 8.25f")]
+        public Font CueHintTypeface { get => _cueHintTypeface; set => _cueHintTypeface = value; }
 
         [DefaultValue(typeof(Font), "Microsoft Sans Serif, 11.25f, FontStyle.Bold")]
         public Font HeaderTypeface { get => _headerTypeface; set => _headerTypeface = value; }
@@ -97,7 +113,7 @@
 
         public string CancelText { get => _cancelText; set => _cancelText = value; }
 
-        public string HintText { get => _hintText; set => _hintText = value; }
+        public string CueHintText { get => _cueHintText; set => _cueHintText = value; }
 
         public string HeaderText { get => _headerText; set => _headerText = value; }
 
@@ -121,7 +137,7 @@
 
             _displayType = InputBoxMessageDisplayType.LABEL;
 
-            _hintText = "Hint";
+            _cueHintText = "Hint";
 
             _iconType = InputBoxIconType.NONE;
 
@@ -162,14 +178,16 @@
         #region Methods
         public void DisplayInputBox()
         {
-            KryptonInputBoxExtended kryptonInputBox = new KryptonInputBoxExtended(_inputBoxIconLocation, _message, _title, _iconType,
+            KryptonInputBoxExtended kryptonInputBox = new KryptonInputBoxExtended(_inputBoxIconLocation, _message, 
+                                                                                  _title, _iconType,
                                                                                   _customImage, _imageSize, _inputBoxLanguage,
                                                                                   _buttons, _inputType, _displayType,
                                                                                   _itemList, _showInTaskBar, _controlTypeface,
                                                                                   _messageTypeface, _headerTypeface, _okText, 
                                                                                   _yesText, _noText, _cancelText,
-                                                                                  _hintText, _headerText, _startPosition, _textAlignment,
-                                                                                  _messageTextAlignment, _wrappedMessageTextAlignment);
+                                                                                  _headerText, _startPosition, _textAlignment,
+                                                                                  _messageTextAlignment, _wrappedMessageTextAlignment, 
+                                                                                  _cueHintColour, _cueHintTypeface, _cueHintText);
 
             kryptonInputBox.Show();
         }

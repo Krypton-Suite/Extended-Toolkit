@@ -1,47 +1,43 @@
 <Project>
-  <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../../'))" />
+	<Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../../'))" />
+	
+	<PropertyGroup>
+		<NeutralLanguage>en</NeutralLanguage>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
 
-  <PropertyGroup>
-    <NeutralLanguage>en</NeutralLanguage>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+	<Choose>
+		<When Condition="$(Configuration) == 'Debug'">
+			<PropertyGroup>
+				<LangVersion>preview</LangVersion>
+			</PropertyGroup>
+		</When>
+		<Otherwise>
+			<PropertyGroup>
+				<LangVersion>latest</LangVersion>
+			</PropertyGroup>
+		</Otherwise>
+	</Choose>
 
-  <Choose>
-    <When Condition="$(Configuration) == 'Debug'">
-      <PropertyGroup>
-        <LangVersion>preview</LangVersion>
-      </PropertyGroup>
-    </When>
-    <Otherwise>
-      <PropertyGroup>
-        <LangVersion>latest</LangVersion>
-      </PropertyGroup>
-    </Otherwise>
-  </Choose>
-
-  <PropertyGroup>
+	<PropertyGroup>
 	<!-- common project data -->
-	  <Version>$(LibraryVersion)</Version>
+		<Version>$(LibraryVersion)</Version>
 	<!-- two flavors of TFM are supported : 'all' where the NuGet package include all supported tfms. 'lite' with only .net core and .net 4.5 support -->
 	<TFMs Condition="'$(TFMs)' == ''">lite</TFMs>
-  </PropertyGroup>
-  
-  <PropertyGroup>
+	</PropertyGroup>
+	
+	<PropertyGroup>
 	<!-- common package data -->
 	<PackageProjectUrl>https://github.com/Krypton-Suite/Extended-Toolkit</PackageProjectUrl>
-	  <PackageIcon>Canary.png</PackageIcon>
-	  <Authors>Peter William Wagner &amp; Simon Coghlan &amp; Thomas Bolon, et al.</Authors>
-	  <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
-	  <PackageTags>Krypton ComponentFactory WinForms Themes Controls DataGrid Ribbon Workspace Tabs .Net Toolkit Core</PackageTags>
-	  <PackageReleaseNotes>Get updates here: https://github.com/Krypton-Suite/Extended-Toolkit</PackageReleaseNotes>
-  </PropertyGroup>
-  
-  <ItemGroup>
-	  <None Include="../../../../Assets/Package Icon/Canary.png" Link="Icon.png" Pack="true" PackagePath="" />
-  </ItemGroup>
-
-  <ItemGroup>
-    
-  </ItemGroup>
-  
+		<PackageIcon>Canary.png</PackageIcon>
+		<Authors>Peter William Wagner &amp; Simon Coghlan &amp; Thomas Bolon, et al.</Authors>
+		<PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
+		<PackageTags>Krypton ComponentFactory WinForms Themes Controls DataGrid Ribbon Workspace Tabs .Net Toolkit Core</PackageTags>
+		<PackageReleaseNotes>Get updates here: https://github.com/Krypton-Suite/Extended-Toolkit</PackageReleaseNotes>
+	</PropertyGroup>
+	
+	<ItemGroup>
+		<None Include="../../../../Assets/Package Icon/Canary.png" Link="Icon.png" Pack="true" PackagePath="" />
+	</ItemGroup>
+	
 </Project>

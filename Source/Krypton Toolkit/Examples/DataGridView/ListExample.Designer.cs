@@ -429,7 +429,6 @@ namespace DataGridViewExt
             // 
             // kryptonPalette
             // 
-            this.kryptonPalette.CustomisedKryptonPaletteFilePath = null;
             this.kryptonPalette.GridStyles.GridCustom1.StateCommon.Background.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.kryptonPalette.GridStyles.GridCustom1.StateCommon.Background.ColorStyle = Krypton.Toolkit.PaletteColorStyle.Solid;
             this.kryptonPalette.GridStyles.GridCustom1.StateCommon.BackStyle = Krypton.Toolkit.PaletteBackStyle.GridBackgroundList;
