@@ -28,6 +28,7 @@ These packages only support .NET Framework >= 4.8, .NET Core 3.1 and .NET 5/6.
 =======
 
 ## 2021-08-07 - Build 2108.1 - August 2021 (Canary - Update 1)
+* Fix possible `KryptonButton` text bugs
 * Update standard toolkit to build `2108.1`
 
 =======
