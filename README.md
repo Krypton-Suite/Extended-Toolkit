@@ -27,7 +27,12 @@ These packages only support .NET Framework >= 4.8, .NET Core 3.1 and .NET 6.
 
 =======
 
-## 2021-08-xx - Build 2108 - August 2021 (Canary)
+## 2021-08-07 - Build 2108.1 - August 2021 (Canary - Update 1)
+* Update standard toolkit to build `2108.1`
+
+=======
+
+## 2021-08-02 - Build 2108 - August 2021 (Canary)
 * New icon
 * New `KryptonExceptionCaptureDialog` - it is now possible to display an exception in a window along with a typical messagebox
 * Broken toolkit up into smaller modules - see list for available modules (Not all modules will be completed yet)
