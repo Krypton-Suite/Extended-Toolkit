@@ -65,7 +65,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         [DefaultValue(false), Description("Allows the user to use 'CTRL + C' to copy the message box content.")]
         public bool ShowCtrlCopy { get => _showCtrlCopy; set => _showCtrlCopy = value; }
 
-        /// <summary>Gets or sets a value indicating whether this <see cref="KryptonMessageBoxExtendedManager" /> is fade.</summary>
+        /// <summary>Gets or sets a value indicating whether this <see cref="KryptonMessageBoxManager" /> is fade.</summary>
         /// <value><c>true</c> if fade; otherwise, <c>false</c>.</value>
         [DefaultValue(false), Description("Fades the message box in and out. (Under construction)")]
         public bool Fade { get => _fade; set => _fade = value; }

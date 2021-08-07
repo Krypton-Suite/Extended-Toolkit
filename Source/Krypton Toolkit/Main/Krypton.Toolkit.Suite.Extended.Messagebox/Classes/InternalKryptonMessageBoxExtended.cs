@@ -2343,7 +2343,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             }
 
             // Show message box window as a modal dialog and then dispose of it afterwards
-            using (InternalKryptonMessageBoxExtended ekmb = new InternalKryptonMessageBoxExtended(showOwner, text, caption, buttons, customButtonOptions, icon, defaultButton,
+            using (InternalKryptonMessageBoxExtended ekmb = new(showOwner, text, caption, buttons, customButtonOptions, icon, defaultButton,
                                                                                   options, helpInformation, showCtrlCopy, messageboxTypeface,
                                                                                   showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked,
                                                                                   optionalCheckBoxCheckState, optionalCheckBoxAnchor,
@@ -2639,7 +2639,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
             // Button1 is always visible
             Size button1Size = _button1.GetPreferredSize(Size.Empty);
-            Size maxButtonSize = new Size(button1Size.Width + GAP, button1Size.Height);
+            Size maxButtonSize = new(button1Size.Width + GAP, button1Size.Height);
 
             // TODO: Setup custom buttons
 
@@ -2733,7 +2733,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                 // Pressing Ctrl+C should copy message text into the clipboard
                 if ((e.Modifiers == Keys.Control) && (e.KeyCode == Keys.C))
                 {
-                    StringBuilder sb = new StringBuilder();
+                    StringBuilder sb = new();
 
                     sb.AppendLine("---------------------------");
                     sb.AppendLine(_caption);
@@ -2984,7 +2984,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <returns></returns>
         public static bool GetOptionalCheckBoxState()
         {
-            InternalKryptonMessageBoxExtended box = new InternalKryptonMessageBoxExtended();
+            InternalKryptonMessageBoxExtended box = new();
 
             return box.GetOptionalCheckBoxValue();
         }

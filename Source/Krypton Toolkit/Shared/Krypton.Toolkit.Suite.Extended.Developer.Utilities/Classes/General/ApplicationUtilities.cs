@@ -6,10 +6,6 @@
  */
 #endregion
 
-using System.Drawing;
-
-using Krypton.Toolkit.Suite.Extended.Developer.Utilities.Properties;
-
 namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
 {
     public class ApplicationUtilities
