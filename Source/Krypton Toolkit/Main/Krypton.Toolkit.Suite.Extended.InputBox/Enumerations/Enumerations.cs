@@ -1,4 +1,4 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Dialogs
+﻿namespace Krypton.Toolkit.Suite.Extended.InputBox
 {
     /// <summary>Specifies the input box icon type.</summary>
     public enum InputBoxIconType
@@ -19,6 +19,7 @@
         QUESTION = 6,
         /// <summary>Specifies a stop icon.</summary>
         STOP = 7,
+        /// <summary>Specifies a error icon.</summary>
         ERROR = 8,
         /// <summary>Specifies a warning icon.</summary>
         EXCLAMATION = 9
