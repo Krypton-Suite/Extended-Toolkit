@@ -1,10 +1,11 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Controls
+﻿namespace Krypton.Toolkit.Suite.Extended.InputBox
 {
-    public class KryptonBorderedLabel : KryptonLabel
+    [ToolboxItem(false)]
+    public class InternalKryptonBorderedLabel : KryptonLabel
     {
         #region Identity
 
-        public KryptonBorderedLabel()
+        public InternalKryptonBorderedLabel()
         {
             SetStyle(
                 ControlStyles.DoubleBuffer | ControlStyles.AllPaintingInWmPaint | ControlStyles.ResizeRedraw |
@@ -17,7 +18,6 @@
         #endregion
 
         #region Protected Overrides
-        // TODO: Help to get this 'Kryptonised'
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);

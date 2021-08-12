@@ -107,4 +107,12 @@
         BORDEREDLABEL = 1,
         WRAPPEDLABEL = 2
     }
+
+    public enum InputBoxButtonFocus
+    {
+        BUTTONONE = 0,
+        BUTTONTWO = 1,
+        BUTTONTHREE = 2,
+        BUTTONFOUR = 3
+    }
 }

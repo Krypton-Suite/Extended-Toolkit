@@ -16,6 +16,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         private KryptonButton kbtnButtonThree;
         private KryptonButton kbtnButtonTwo;
         private KryptonButton kbtnButtonFour;
+        private InternalKryptonBorderedLabel kblMessage;
         private PictureBox pbxInputBoxIcon;
 
         private void InitializeComponent()
@@ -32,6 +33,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
             this.kcmbInput = new Krypton.Toolkit.KryptonComboBox();
             this.kwlMessage = new Krypton.Toolkit.KryptonWrapLabel();
             this.pbxInputBoxIcon = new System.Windows.Forms.PictureBox();
+            this.kblMessage = new Krypton.Toolkit.Suite.Extended.InputBox.InternalKryptonBorderedLabel();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
@@ -97,6 +99,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
             // 
             // kryptonPanel2
             // 
+            this.kryptonPanel2.Controls.Add(this.kblMessage);
             this.kryptonPanel2.Controls.Add(this.ktxtInput);
             this.kryptonPanel2.Controls.Add(this.kmtxtInput);
             this.kryptonPanel2.Controls.Add(this.kcmbInput);
@@ -157,6 +160,19 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
             this.pbxInputBoxIcon.TabIndex = 0;
             this.pbxInputBoxIcon.TabStop = false;
             // 
+            // kblMessage
+            // 
+            this.kblMessage.AutoSize = false;
+            this.kblMessage.BackColor = System.Drawing.Color.Transparent;
+            this.kblMessage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(192)))), ((int)(((byte)(214)))));
+            this.kblMessage.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
+            this.kblMessage.Location = new System.Drawing.Point(147, 13);
+            this.kblMessage.Name = "kblMessage";
+            this.kblMessage.Size = new System.Drawing.Size(425, 125);
+            this.kblMessage.TabIndex = 6;
+            this.kblMessage.Values.Text = "internalKryptonBorderedLabel1";
+            this.kblMessage.Visible = false;
+            // 
             // KryptonInputBoxExtended
             // 
             this.ClientSize = new System.Drawing.Size(584, 229);
@@ -192,6 +208,8 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
 
         private Image _customImage;
 
+        private DialogResult _buttonOneResult, _buttonTwoResult, _buttonThreeResult, _buttonFourResult;
+
         #endregion
 
         #region Properties
@@ -200,6 +218,18 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         public Image[] IconImages { get => _iconImageArray; private set => _iconImageArray = value; }
 
         public Image CustomImage { get => _customImage; set => _customImage = value; }
+
+        [DefaultValue(typeof(DialogResult), "DialogResult.None"), Description("")]
+        public DialogResult ButtonOneResult { get => _buttonOneResult; set => _buttonOneResult = value; }
+
+        [DefaultValue(typeof(DialogResult), "DialogResult.None"), Description("")]
+        public DialogResult ButtonTwoResult { get => _buttonTwoResult; set => _buttonTwoResult = value; }
+
+        [DefaultValue(typeof(DialogResult), "DialogResult.None"), Description("")]
+        public DialogResult ButtonThreeResult { get => _buttonThreeResult; set => _buttonThreeResult = value; }
+
+        [DefaultValue(typeof(DialogResult), "DialogResult.None"), Description("")]
+        public DialogResult ButtonFourResult { get => _buttonFourResult; set => _buttonFourResult = value; }
         #endregion
 
         #region Constructor
@@ -217,7 +247,10 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         /// <param name="noText">The no text.</param>
         /// <param name="cancelText">The cancel text.</param>
         /// <param name="hintText">The hint text.</param>
-        public KryptonInputBoxExtended(string message, string title = "", InputBoxLanguage language = InputBoxLanguage.ENGLISH, InputBoxInputType type = InputBoxInputType.NONE, string[] listItems = null, bool showInTaskBar = false, Font controlTypeface = null, Font messageTypeface = null, string okText = "&Ok", string yesText = "&Yes", string noText = "N&o", string cancelText = "&Cancel", string hintText = "")
+        public KryptonInputBoxExtended(string message, string title = "", InputBoxLanguage language = InputBoxLanguage.ENGLISH, 
+            InputBoxInputType type = InputBoxInputType.NONE, string[] listItems = null, bool showInTaskBar = false, 
+            Font controlTypeface = null, Font messageTypeface = null, string okText = "&Ok", string yesText = "&Yes",
+            string noText = "N&o", string cancelText = "&Cancel", string hintText = "")
         {
             InitializeComponent();
 
@@ -244,6 +277,8 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
             SetMessageTypeface(messageTypeface);
 
             SetHint(hintText);
+
+            SetDialogResult(DialogResult.OK, DialogResult.None, DialogResult.None, DialogResult.None);
         }
 
         /// <summary>Initializes a new instance of the <see cref="KryptonInputBoxExtended"/> class.</summary>
@@ -262,7 +297,12 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         /// <param name="noText">The no text.</param>
         /// <param name="cancelText">The cancel text.</param>
         /// <param name="hintText">The hint text.</param>
-        public KryptonInputBoxExtended(string message, string title = "", InputBoxIconType icon = InputBoxIconType.NONE, Image image = null, InputBoxLanguage language = InputBoxLanguage.ENGLISH, InputBoxInputType type = InputBoxInputType.NONE, string[] listItems = null, bool showInTaskBar = false, Font controlTypeface = null, Font messageTypeface = null, string okText = "&Ok", string yesText = "&Yes", string noText = "N&o", string cancelText = "&Cancel", string hintText = "")
+        public KryptonInputBoxExtended(string message, string title = "", InputBoxIconType icon = InputBoxIconType.NONE, 
+            Image image = null, InputBoxLanguage language = InputBoxLanguage.ENGLISH, 
+            InputBoxInputType type = InputBoxInputType.NONE, string[] listItems = null, 
+            bool showInTaskBar = false, Font controlTypeface = null, Font messageTypeface = null, 
+            string okText = "&Ok", string yesText = "&Yes", string noText = "N&o",
+            string cancelText = "&Cancel", string hintText = "")
         {
             InitializeComponent();
 
@@ -289,6 +329,8 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
             SetMessageTypeface(messageTypeface);
 
             SetHint(hintText);
+
+            SetDialogResult(DialogResult.None, DialogResult.None, DialogResult.None, DialogResult.OK);
         }
 
         /// <summary>Initializes a new instance of the <see cref="KryptonInputBoxExtended"/> class.</summary>
@@ -308,7 +350,13 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         /// <param name="noText">The no text.</param>
         /// <param name="cancelText">The cancel text.</param>
         /// <param name="hintText">The hint text.</param>
-        public KryptonInputBoxExtended(string message, string title = "", InputBoxIconType icon = InputBoxIconType.INFORMATION, Image image = null, InputBoxLanguage language = InputBoxLanguage.ENGLISH, InputBoxButtons buttons = InputBoxButtons.OK, InputBoxInputType type = InputBoxInputType.NONE, string[] listItems = null, bool showInTaskBar = false, Font controlTypeface = null, Font messageTypeface = null, string okText = "&Ok", string yesText = "&Yes", string noText = "N&o", string cancelText = "&Cancel", string hintText = "")
+        public KryptonInputBoxExtended(string message, string title = "", InputBoxIconType icon = InputBoxIconType.INFORMATION,
+            Image image = null, InputBoxLanguage language = InputBoxLanguage.ENGLISH, InputBoxButtons buttons = InputBoxButtons.OK, 
+            InputBoxInputType type = InputBoxInputType.NONE, string[] listItems = null, bool showInTaskBar = false, 
+            Font controlTypeface = null, Font messageTypeface = null, string okText = "&Ok", string yesText = "&Yes", 
+            string noText = "N&o", string cancelText = "&Cancel", string hintText = "",
+            DialogResult buttonOneResult = DialogResult.None, DialogResult buttonTwoResult = DialogResult.None,
+            DialogResult buttonThreeResult = DialogResult.None, DialogResult buttonFourResult = DialogResult.None)
         {
             InitializeComponent();
 
@@ -335,6 +383,8 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
             SetMessageTypeface(messageTypeface);
 
             SetHint(hintText);
+
+            SetDialogResult(buttonOneResult, buttonTwoResult, buttonThreeResult, buttonFourResult);
         }
 
         /// <summary>Initializes a new instance of the <see cref="KryptonInputBoxExtended"/> class.</summary>
@@ -355,7 +405,14 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         /// <param name="cancelText">The cancel text.</param>
         /// <param name="hintText">The hint text.</param>
         /// <param name="startPosition">The start position.</param>
-        public KryptonInputBoxExtended(string message, string title = "", InputBoxIconType icon = InputBoxIconType.INFORMATION, Image image = null, InputBoxLanguage language = InputBoxLanguage.ENGLISH, InputBoxButtons buttons = InputBoxButtons.OK, InputBoxInputType type = InputBoxInputType.NONE, string[] listItems = null, bool showInTaskBar = false, Font controlTypeface = null, Font messageTypeface = null, string okText = "&Ok", string yesText = "&Yes", string noText = "N&o", string cancelText = "&Cancel", string hintText = "", FormStartPosition startPosition = FormStartPosition.WindowsDefaultLocation)
+        public KryptonInputBoxExtended(string message, string title = "", InputBoxIconType icon = InputBoxIconType.INFORMATION, 
+            Image image = null, InputBoxLanguage language = InputBoxLanguage.ENGLISH, 
+            InputBoxButtons buttons = InputBoxButtons.OK, InputBoxInputType type = InputBoxInputType.NONE, string[] listItems = null, 
+            bool showInTaskBar = false, Font controlTypeface = null, Font messageTypeface = null, string okText = "&Ok",
+            string yesText = "&Yes", string noText = "N&o", string cancelText = "&Cancel", string hintText = "",
+            FormStartPosition startPosition = FormStartPosition.WindowsDefaultLocation,
+            DialogResult buttonOneResult = DialogResult.None, DialogResult buttonTwoResult = DialogResult.None,
+            DialogResult buttonThreeResult = DialogResult.None, DialogResult buttonFourResult = DialogResult.None)
         {
             InitializeComponent();
 
@@ -384,6 +441,8 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
             SetHint(hintText);
 
             SetStartPosition(startPosition);
+
+            SetDialogResult(buttonOneResult, buttonTwoResult, buttonThreeResult, buttonFourResult);
         }
 
         /// <summary>Initializes a new instance of the <see cref="KryptonInputBoxExtended"/> class.</summary>
@@ -404,7 +463,14 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         /// <param name="cancelText">The cancel text.</param>
         /// <param name="hintText">The hint text.</param>
         /// <param name="textAlignment">The text alignment.</param>
-        public KryptonInputBoxExtended(string message, string title = "", InputBoxIconType icon = InputBoxIconType.INFORMATION, Image image = null, InputBoxLanguage language = InputBoxLanguage.ENGLISH, InputBoxButtons buttons = InputBoxButtons.OK, InputBoxInputType type = InputBoxInputType.NONE, string[] listItems = null, bool showInTaskBar = false, Font controlTypeface = null, Font messageTypeface = null, string okText = "&Ok", string yesText = "&Yes", string noText = "N&o", string cancelText = "&Cancel", string hintText = "", InputBoxWrappedMessageTextAlignment textAlignment = InputBoxWrappedMessageTextAlignment.MIDDLELEFT)
+        public KryptonInputBoxExtended(string message, string title = "", InputBoxIconType icon = InputBoxIconType.INFORMATION, 
+            Image image = null, InputBoxLanguage language = InputBoxLanguage.ENGLISH, InputBoxButtons buttons = InputBoxButtons.OK, 
+            InputBoxInputType type = InputBoxInputType.NONE, string[] listItems = null, bool showInTaskBar = false, 
+            Font controlTypeface = null, Font messageTypeface = null, string okText = "&Ok", string yesText = "&Yes", 
+            string noText = "N&o", string cancelText = "&Cancel", string hintText = "", 
+            InputBoxWrappedMessageTextAlignment textAlignment = InputBoxWrappedMessageTextAlignment.MIDDLELEFT,
+            DialogResult buttonOneResult = DialogResult.None, DialogResult buttonTwoResult = DialogResult.None,
+            DialogResult buttonThreeResult = DialogResult.None, DialogResult buttonFourResult = DialogResult.None)
         {
             InitializeComponent();
 
@@ -433,6 +499,8 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
             SetHint(hintText);
 
             SetMessageTextAlignment(textAlignment);
+
+            SetDialogResult(buttonOneResult, buttonTwoResult, buttonThreeResult, buttonFourResult);
         }
 
         /// <summary>Initializes a new instance of the <see cref="KryptonInputBoxExtended"/> class.</summary>
@@ -455,7 +523,16 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         /// <param name="hintText">The hint text.</param>
         /// <param name="startPosition">The start position.</param>
         /// <param name="textAlignment">The text alignment.</param>
-        public KryptonInputBoxExtended(Point iconLocation, string message, string title = "", InputBoxIconType icon = InputBoxIconType.INFORMATION, Image image = null, InputBoxLanguage language = InputBoxLanguage.ENGLISH, InputBoxButtons buttons = InputBoxButtons.OK, InputBoxInputType type = InputBoxInputType.NONE, string[] listItems = null, bool showInTaskBar = false, Font controlTypeface = null, Font messageTypeface = null, string okText = "&Ok", string yesText = "&Yes", string noText = "N&o", string cancelText = "&Cancel", string hintText = "", FormStartPosition startPosition = FormStartPosition.WindowsDefaultLocation, InputBoxTextAlignment textAlignment = InputBoxTextAlignment.LEFT)
+        public KryptonInputBoxExtended(Point iconLocation, string message, string title = "", 
+            InputBoxIconType icon = InputBoxIconType.INFORMATION, Image image = null, 
+            InputBoxLanguage language = InputBoxLanguage.ENGLISH, InputBoxButtons buttons = InputBoxButtons.OK, 
+            InputBoxInputType type = InputBoxInputType.NONE, string[] listItems = null, bool showInTaskBar = false,
+            Font controlTypeface = null, Font messageTypeface = null, string okText = "&Ok", string yesText = "&Yes", 
+            string noText = "N&o", string cancelText = "&Cancel", string hintText = "", 
+            FormStartPosition startPosition = FormStartPosition.WindowsDefaultLocation, 
+            InputBoxTextAlignment textAlignment = InputBoxTextAlignment.LEFT,
+            DialogResult buttonOneResult = DialogResult.None, DialogResult buttonTwoResult = DialogResult.None,
+            DialogResult buttonThreeResult = DialogResult.None, DialogResult buttonFourResult = DialogResult.None)
         {
             InitializeComponent();
 
@@ -488,7 +565,10 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
             SetTextAlignment(textAlignment);
 
             SetStartPosition(startPosition);
+
+            SetDialogResult(buttonOneResult, buttonTwoResult, buttonThreeResult, buttonFourResult);
         }
+
         #endregion
 
         #region Methods
@@ -1103,11 +1183,69 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
 
         private void SetResponse(DialogResult response) => Response = response;
 
+        /// <summary>Sets the dialog result.</summary>
+        /// <param name="buttonOneResult">The button one result.</param>
+        /// <param name="buttonTwoResult">The button two result.</param>
+        /// <param name="buttonThreeResult">The button three result.</param>
+        /// <param name="buttonFourResult">The button four result.</param>
+        private void SetDialogResult(DialogResult buttonOneResult, DialogResult buttonTwoResult, DialogResult buttonThreeResult, DialogResult buttonFourResult)
+        {
+            kbtnButtonOne.DialogResult = buttonOneResult;
+
+            kbtnButtonTwo.DialogResult = buttonTwoResult;
+
+            kbtnButtonThree.DialogResult = buttonThreeResult;
+
+            kbtnButtonFour.DialogResult = buttonFourResult;
+        }
+
+        /// <summary>Sets the button focus.</summary>
+        /// <param name="buttons">The buttons.</param>
+        private void SetButtonFocus(InputBoxButtonFocus buttons)
+        {
+            switch (buttons)
+            {
+                case InputBoxButtonFocus.BUTTONONE:
+                    kbtnButtonOne.Focus();
+                    break;
+                case InputBoxButtonFocus.BUTTONTWO:
+                    kbtnButtonTwo.Focus();
+                    break;
+                case InputBoxButtonFocus.BUTTONTHREE:
+                    kbtnButtonThree.Focus();
+                    break;
+                case InputBoxButtonFocus.BUTTONFOUR:
+                    kbtnButtonFour.Focus();
+                    break;
+            }
+        }
+
+        /// <summary>Sets the input type focus.</summary>
+        /// <param name="inputType">Type of the input.</param>
+        private void SetInputTypeFocus(InputBoxInputType inputType)
+        {
+            switch (inputType)
+            {
+                case InputBoxInputType.COMBOBOX:
+                    kcmbInput.Focus();
+                    break;
+                case InputBoxInputType.MASKEDTEXTBOX:
+                    kmtxtInput.Focus();
+                    break;
+                case InputBoxInputType.TEXTBOX:
+                    ktxtInput.Focus();
+                    break;
+                case InputBoxInputType.NONE:
+                    kwlMessage.Focus();
+                    break;
+            }
+        }
         #endregion
 
+#region Event Handlers
         private void KryptonInputBoxExtended_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (Response != null)
+            if (Response != DialogResult.None)
             {
                 Response = DialogResult;
             }
@@ -1131,6 +1269,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         {
             ResultKeyDown(e);
         }
+#endregion
 
         private void ResultKeyDown(KeyEventArgs e)
         {
