@@ -6,18 +6,12 @@
  */
 #endregion
 
-using System;
-using System.ComponentModel;
-using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Windows.Forms;
-
 namespace Krypton.Toolkit.Suite.Extended.Controls
 {
     // Delegate type for hooking up ValueChanged notifications.
     public delegate void ValueChangedEventHandler(object sender, KnobValueChangedEventArgs e);
 
-    [DefaultEvent("ValueChanged"), ToolboxBitmap(typeof(Timer))]
+    [DefaultEvent("ValueChanged"), ToolboxBitmap(typeof(System.Windows.Forms.Timer))]
     public class KryptonKnobControlVersion1 : UserControl
     {
         #region " constructor "

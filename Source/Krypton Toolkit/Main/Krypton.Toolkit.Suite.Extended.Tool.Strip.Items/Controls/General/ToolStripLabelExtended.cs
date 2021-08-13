@@ -34,7 +34,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
         int[] _targetColour, _fadeRGB;
 
-        Timer _alertFlashTimer, _fadeAnimationTimer;
+        System.Windows.Forms.Timer _alertFlashTimer, _fadeAnimationTimer;
 
         long _blinkDuration;
 
@@ -484,7 +484,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
             if (EnableFadeAnimation)
             {
-                _fadeAnimationTimer = new Timer();
+                _fadeAnimationTimer = new System.Windows.Forms.Timer();
 
                 _fadeAnimationTimer.Interval = FadeInterval;
 

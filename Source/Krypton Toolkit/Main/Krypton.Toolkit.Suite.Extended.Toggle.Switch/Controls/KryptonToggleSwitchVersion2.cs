@@ -18,7 +18,6 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
 
         #region Variables
         private float _diameter, _artis;
-        // TODO: This will be fixed after updating to ST, build 2108
         private RoundedRectangleF _rect;
         private RectangleF _circle;
         private bool _toggled, _textEnabled, _useGradientOnKnob;
@@ -26,7 +25,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
                       _enabledBackColour, _disabledBackColour, _disabledControlColour,
                       _knobColour, _penColour, _gradientStartColour,
                       _gradientEndColour;
-        private Timer _paintTicker = new Timer();
+        private System.Windows.Forms.Timer _paintTicker = new System.Windows.Forms.Timer();
         private LinearGradientMode _mode;
         private string _onText, _offText;
         #endregion

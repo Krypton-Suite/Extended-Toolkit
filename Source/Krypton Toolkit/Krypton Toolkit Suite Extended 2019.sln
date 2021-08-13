@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31507.150
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31606.5
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Main", "Main", "{252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}"
 EndProject
@@ -284,6 +284,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.InputBox 2019", "Main\Krypton.Toolkit.Suite.Extended.InputBox\Krypton.Toolkit.Suite.Extended.InputBox 2019.csproj", "{2AEC1C12-E8A8-4715-8B8D-9DB405C06FBB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InputBox", "Examples\InputBox\InputBox.csproj", "{523130C1-5B5D-4BBA-A832-F1EA008E8DDA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton.Toolkit.Suite.Extended.Panels 2019", "Main\Krypton.Toolkit.Suite.Extended.Panels\Krypton.Toolkit.Suite.Extended.Panels 2019.csproj", "{335DD135-6475-46D5-A7DB-EA329224D59E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -595,6 +597,10 @@ Global
 		{523130C1-5B5D-4BBA-A832-F1EA008E8DDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{523130C1-5B5D-4BBA-A832-F1EA008E8DDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{523130C1-5B5D-4BBA-A832-F1EA008E8DDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{335DD135-6475-46D5-A7DB-EA329224D59E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{335DD135-6475-46D5-A7DB-EA329224D59E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{335DD135-6475-46D5-A7DB-EA329224D59E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{335DD135-6475-46D5-A7DB-EA329224D59E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -693,6 +699,7 @@ Global
 		{9ACA6117-D269-4425-8500-6BC57560DEB2} = {87BE2145-50BE-4A57-9C79-FCE5A64F6065}
 		{2AEC1C12-E8A8-4715-8B8D-9DB405C06FBB} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 		{523130C1-5B5D-4BBA-A832-F1EA008E8DDA} = {25D5F0A6-A601-424B-9431-8EFE139A58A7}
+		{335DD135-6475-46D5-A7DB-EA329224D59E} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A7CE7732-0982-4703-8EFD-7715D569BAB5}

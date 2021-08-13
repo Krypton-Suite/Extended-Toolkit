@@ -907,7 +907,7 @@
 
         private Color _baseColour, _contrastColour;
 
-        private Timer _updateUI;
+        private System.Windows.Forms.Timer _updateUI;
         #endregion
 
         #region Properties
@@ -935,7 +935,7 @@
 
             UpdateUI(Color.Empty, Color.Empty, baseColourHeader, contrastColourHeader, false);
 
-            _updateUI = new Timer() { Enabled = true, Interval = 256 };
+            _updateUI = new System.Windows.Forms.Timer() { Enabled = true, Interval = 256 };
 
             _updateUI.Tick += UpdateUI_Tick;
         }
@@ -952,7 +952,7 @@
 
             UpdateUI(baseColour, contrastColour, baseColourHeader, contrastColourHeader, showPaletteButton);
 
-            _updateUI = new Timer() { Enabled = true, Interval = 256 };
+            _updateUI = new System.Windows.Forms.Timer() { Enabled = true, Interval = 256 };
 
             _updateUI.Tick += UpdateUI_Tick;
         }

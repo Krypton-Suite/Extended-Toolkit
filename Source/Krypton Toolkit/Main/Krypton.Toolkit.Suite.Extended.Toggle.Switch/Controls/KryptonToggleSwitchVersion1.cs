@@ -22,7 +22,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
 
         #region Private Members
 
-        private readonly Timer _animationTimer = new Timer();
+        private readonly System.Windows.Forms.Timer _animationTimer = new System.Windows.Forms.Timer();
         private ToggleSwitchRendererBase _renderer;
 
         private ToggleSwitchStyle _style = ToggleSwitchStyle.METRO;

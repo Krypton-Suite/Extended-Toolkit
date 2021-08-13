@@ -373,7 +373,7 @@
         #region Variables
         private Color _colour, _hsbValue;
 
-        private Timer _tmrARGB, _tmrHSB, _tmrFillColourValues;
+        private System.Windows.Forms.Timer _tmrARGB, _tmrHSB, _tmrFillColourValues;
         #endregion
 
         #region Properties
@@ -389,7 +389,7 @@
 
             //cwColours.Colour = Color.White;
 
-            _tmrFillColourValues = new Timer();
+            _tmrFillColourValues = new System.Windows.Forms.Timer();
 
             _tmrFillColourValues.Enabled = true;
 
@@ -404,7 +404,7 @@
 
             //cwColours.Colour = colour;
 
-            _tmrFillColourValues = new Timer();
+            _tmrFillColourValues = new System.Windows.Forms.Timer();
 
             _tmrFillColourValues.Enabled = true;
 

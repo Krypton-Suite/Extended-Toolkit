@@ -244,7 +244,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         private TextBox _textBox = null;
 
         [NonSerialized]
-        private Timer _timer = null;
+        private System.Windows.Forms.Timer _timer = null;
 
         [NonSerialized]
         private ImageAttributes _dImgAttr = null;
@@ -1106,7 +1106,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
 
                     if (this.Created)
                     {
-                        _timer = new Timer();
+                        _timer = new System.Windows.Forms.Timer();
                         _timer.Tick += new EventHandler(OnTimer_LayoutElapsed);
                         _timer.Interval = _layoutDelay;
                         _timer.Enabled = true;
@@ -1896,7 +1896,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         private void CreateScrollTimer(ToolBoxScrollDirection dir)
         {
             StopTimer();
-            _timer = new Timer();
+            _timer = new System.Windows.Forms.Timer();
             _timer.Interval = _scrollWait;
 
             _timerIsForLayout = false;

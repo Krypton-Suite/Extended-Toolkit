@@ -1,4 +1,6 @@
-﻿using ContentAlignment = System.Drawing.ContentAlignment;
+﻿using System.Drawing;
+
+using ContentAlignment = System.Drawing.ContentAlignment;
 
 namespace Krypton.Toolkit.Suite.Extended.InputBox
 {
@@ -17,6 +19,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         private KryptonButton kbtnButtonTwo;
         private KryptonButton kbtnButtonFour;
         private InternalKryptonBorderedLabel kblMessage;
+        private KryptonLabel klblMessage;
         private PictureBox pbxInputBoxIcon;
 
         private void InitializeComponent()
@@ -33,6 +36,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
             this.kcmbInput = new Krypton.Toolkit.KryptonComboBox();
             this.kwlMessage = new Krypton.Toolkit.KryptonWrapLabel();
             this.pbxInputBoxIcon = new System.Windows.Forms.PictureBox();
+            this.klblMessage = new Krypton.Toolkit.KryptonLabel();
             this.kblMessage = new Krypton.Toolkit.Suite.Extended.InputBox.InternalKryptonBorderedLabel();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
@@ -63,6 +67,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
             this.kbtnButtonOne.Size = new System.Drawing.Size(134, 25);
             this.kbtnButtonOne.TabIndex = 1;
             this.kbtnButtonOne.Values.Text = "{0}";
+            this.kbtnButtonOne.Click += new System.EventHandler(this.kbtnButtonOne_Click);
             // 
             // kbtnButtonTwo
             // 
@@ -71,6 +76,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
             this.kbtnButtonTwo.Size = new System.Drawing.Size(134, 25);
             this.kbtnButtonTwo.TabIndex = 2;
             this.kbtnButtonTwo.Values.Text = "{1}";
+            this.kbtnButtonTwo.Click += new System.EventHandler(this.kbtnButtonTwo_Click);
             // 
             // kbtnButtonThree
             // 
@@ -79,6 +85,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
             this.kbtnButtonThree.Size = new System.Drawing.Size(134, 25);
             this.kbtnButtonThree.TabIndex = 3;
             this.kbtnButtonThree.Values.Text = "{2}";
+            this.kbtnButtonThree.Click += new System.EventHandler(this.kbtnButtonThree_Click);
             // 
             // kbtnButtonFour
             // 
@@ -87,6 +94,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
             this.kbtnButtonFour.Size = new System.Drawing.Size(134, 25);
             this.kbtnButtonFour.TabIndex = 5;
             this.kbtnButtonFour.Values.Text = "{3}";
+            this.kbtnButtonFour.Click += new System.EventHandler(this.kbtnButtonFour_Click);
             // 
             // kryptonBorderEdge1
             // 
@@ -99,6 +107,7 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
             // 
             // kryptonPanel2
             // 
+            this.kryptonPanel2.Controls.Add(this.klblMessage);
             this.kryptonPanel2.Controls.Add(this.kblMessage);
             this.kryptonPanel2.Controls.Add(this.ktxtInput);
             this.kryptonPanel2.Controls.Add(this.kmtxtInput);
@@ -159,6 +168,16 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
             this.pbxInputBoxIcon.Size = new System.Drawing.Size(128, 128);
             this.pbxInputBoxIcon.TabIndex = 0;
             this.pbxInputBoxIcon.TabStop = false;
+            // 
+            // klblMessage
+            // 
+            this.klblMessage.AutoSize = false;
+            this.klblMessage.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
+            this.klblMessage.Location = new System.Drawing.Point(147, 12);
+            this.klblMessage.Name = "klblMessage";
+            this.klblMessage.Size = new System.Drawing.Size(424, 126);
+            this.klblMessage.TabIndex = 2;
+            this.klblMessage.Values.Text = "kryptonLabel1";
             // 
             // kblMessage
             // 
@@ -839,6 +858,13 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
             {
                 pbxInputBoxIcon.Visible = true;
 
+                ResizeControls(new Size(425, 125), new Point(147, 144), new Point(147, 144));
+            }
+
+            if (showIconBox)
+            {
+                pbxInputBoxIcon.Visible = true;
+
                 ResizeControls(new Size(489, 175), new Point(213, 192), new Point(213, 192));
             }
             else
@@ -897,14 +923,20 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
             switch (displayType)
             {
                 case InputBoxMessageDisplayType.BORDEREDLABEL:
-                    // TODO: Complete
+                    kblMessage.Visible = true;
+
+                    kwlMessage.Visible = false;
                     break;
                 case InputBoxMessageDisplayType.LABEL:
+                    kblMessage.Visible = false;
+
                     kwlMessage.Visible = true;
 
                     kwlMessage.Visible = false;
                     break;
                 case InputBoxMessageDisplayType.WRAPPEDLABEL:
+                    kblMessage.Visible = false;
+
                     kwlMessage.Visible = false;
 
                     kwlMessage.Visible = true;
@@ -918,9 +950,15 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         /// <param name="userInputLocation">The user input location.</param>
         private void ResizeControls(Size messageLabelSize, Point userSelectionLocation, Point userInputLocation)
         {
+            kblMessage.Size = messageLabelSize;
+
+            klblMessage.Size = messageLabelSize;
+
             kwlMessage.Size = messageLabelSize;
 
             kcmbInput.Location = userSelectionLocation;
+
+            kmtxtInput.Location = userInputLocation;
 
             ktxtInput.Location = userInputLocation;
         }
@@ -1240,9 +1278,19 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
                     break;
             }
         }
+
+        private void ResultKeyDown(KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                DialogResult = DialogResult.OK;
+
+                Close();
+            }
+        }
         #endregion
 
-#region Event Handlers
+        #region Event Handlers
         private void KryptonInputBoxExtended_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (Response != DialogResult.None)
@@ -1255,30 +1303,19 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
             }
         }
 
-        private void ktxtInput_KeyDown(object sender, KeyEventArgs e)
-        {
-            ResultKeyDown(e);
-        }
+        private void ktxtInput_KeyDown(object sender, KeyEventArgs e) => ResultKeyDown(e);
 
-        private void kmtxtInput_KeyDown(object sender, KeyEventArgs e)
-        {
-            ResultKeyDown(e);
-        }
+        private void kbtnButtonOne_Click(object sender, EventArgs e) => DialogResult = _buttonOneResult;
 
-        private void kcmbInput_KeyDown(object sender, KeyEventArgs e)
-        {
-            ResultKeyDown(e);
-        }
-#endregion
+        private void kbtnButtonTwo_Click(object sender, EventArgs e) => DialogResult = _buttonTwoResult;
 
-        private void ResultKeyDown(KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                DialogResult = DialogResult.OK;
+        private void kbtnButtonThree_Click(object sender, EventArgs e) => DialogResult = _buttonThreeResult;
 
-                Close();
-            }
-        }
+        private void kbtnButtonFour_Click(object sender, EventArgs e) => DialogResult = _buttonFourResult;
+
+        private void kmtxtInput_KeyDown(object sender, KeyEventArgs e) => ResultKeyDown(e);
+
+        private void kcmbInput_KeyDown(object sender, KeyEventArgs e) => ResultKeyDown(e);
+        #endregion
     }
 }

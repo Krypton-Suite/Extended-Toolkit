@@ -3,6 +3,7 @@
     public class KryptonInputBoxExtendedManager : Component
     {
         #region Variables
+        private DialogResult _buttonOneResult, _buttonTwoResult, _buttonThreeResult, _buttonFourResult;
         private Point _iconLocation;
         private string _message, _title, _okText, _yesText, _noText, _cancelText, _hintText;
         private InputBoxIconType _icon;
@@ -17,17 +18,22 @@
         private InputBoxTextAlignment _textAlignment;
         private InputBoxMessageDisplayType _displayType;
         private InputBoxWrappedMessageTextAlignment _wrappedMessageTextAlignment;
-
         #endregion
 
         #region Properties
+        public bool ShowInTaskBar { get => _showInTaskBar; set => _showInTaskBar = value; }
 
-        public bool ShowInTaskBar
-        {
-            get => _showInTaskBar;
+        [DefaultValue(typeof(DialogResult), "DialogResult.None"), Description("")]
+        public DialogResult ButtonOneResult { get => _buttonOneResult; set => _buttonOneResult = value; }
 
-            set => _showInTaskBar = value;
-        }
+        [DefaultValue(typeof(DialogResult), "DialogResult.None"), Description("")]
+        public DialogResult ButtonTwoResult { get => _buttonTwoResult; set => _buttonTwoResult = value; }
+
+        [DefaultValue(typeof(DialogResult), "DialogResult.None"), Description("")]
+        public DialogResult ButtonThreeResult { get => _buttonThreeResult; set => _buttonThreeResult = value; }
+
+        [DefaultValue(typeof(DialogResult), "DialogResult.None"), Description("")]
+        public DialogResult ButtonFourResult { get => _buttonFourResult; set => _buttonFourResult = value; }
 
         public Font ControlTypeface
         {
@@ -161,6 +167,8 @@
 
             set => _startPosition = value;
         }
+
+        public InputBoxMessageDisplayType MessageDisplayType { get => _displayType; set => _displayType = value; }
         #endregion
 
         #region Constructors
