@@ -17,7 +17,9 @@
         private FormStartPosition _startPosition;
         private InputBoxTextAlignment _textAlignment;
         private InputBoxMessageDisplayType _displayType;
+        private InputBoxNormalMessageTextAlignment _normalMessageTextAlignment;
         private InputBoxWrappedMessageTextAlignment _wrappedMessageTextAlignment;
+        private InputBoxButtonFocus _buttonFocus;
         #endregion
 
         #region Properties
@@ -35,140 +37,49 @@
         [DefaultValue(typeof(DialogResult), "DialogResult.None"), Description("")]
         public DialogResult ButtonFourResult { get => _buttonFourResult; set => _buttonFourResult = value; }
 
-        public Font ControlTypeface
-        {
-            get => _controlTypeface;
+        public Font ControlTypeface { get => _controlTypeface; set => _controlTypeface = value; }
 
-            set => _controlTypeface = value;
-        }
+        public Font MessageTypeface { get => _messageTypeface; set => _messageTypeface = value; }
 
-        public Font MessageTypeface
-        {
-            get => _messageTypeface;
+        public InputBoxWrappedMessageTextAlignment WrappedMessageTextAlignment { get => _wrappedMessageTextAlignment; set => _wrappedMessageTextAlignment = value; }
 
-            set => _messageTypeface = value;
-        }
+        public Image Image { get => _image; set => _image = value; }
 
-        public InputBoxWrappedMessageTextAlignment WrappedMessageTextAlignment
-        {
-            get => _wrappedMessageTextAlignment;
+        public InputBoxTextAlignment TextAlignment { get => _textAlignment; set => _textAlignment = value; }
 
-            set => _wrappedMessageTextAlignment = value;
-        }
+        public string[] ListItems { get => _listItems; set => _listItems = value; }
 
-        public Image Image
-        {
-            get => _image;
+        public string OkText { get => _okText; set => _okText = value; }
 
-            set => _image = value;
-        }
+        public string CancelText { get => _cancelText; set => _cancelText = value; }
 
-        public InputBoxTextAlignment TextAlignment
-        {
-            get => _textAlignment;
+        public string NoText { get => _noText; set => _noText = value; }
 
-            set => _textAlignment = value;
-        }
+        public string YesText { get => _yesText; set => _yesText = value; }
 
-        public string[] ListItems
-        {
-            get => _listItems;
+        public string Title { get => _title; set => _title = value; }
 
-            set => _listItems = value;
-        }
+        public string Message { get => _message; set => _message = value; }
 
-        public string OkText
-        {
-            get => _okText;
+        public string HintText { get => _hintText; set => _hintText = value; }
 
-            set => _okText = value;
-        }
+        public Point IconLocation { get => _iconLocation; set => _iconLocation = value; }
 
-        public string CancelText
-        {
-            get => _cancelText;
+        public InputBoxIconType IconType { get => _icon; set => _icon = value; }
 
-            set => _cancelText = value;
-        }
+        public InputBoxInputType IconInputType { get => _type; set => _type = value; }
 
-        public string NoText
-        {
-            get => _noText;
+        public InputBoxLanguage InputBoxLanguage { get => _language; set => _language = value; }
 
-            set => _noText = value;
-        }
+        public InputBoxButtons InputBoxButtons { get => _buttons; set => _buttons = value; }
 
-        public string YesText
-        {
-            get => _yesText;
+        public FormStartPosition StartPosition { get => _startPosition; set => _startPosition = value; }
 
-            set => _yesText = value;
-        }
-
-        public string Title
-        {
-            get => _title;
-
-            set => _title = value;
-        }
-
-        public string Message
-        {
-            get => _message;
-
-            set => _message = value;
-        }
-
-        public string HintText
-        {
-            get => _hintText;
-
-            set => _hintText = value;
-        }
-
-        public Point IconLocation
-        {
-            get => _iconLocation;
-
-            set => _iconLocation = value;
-        }
-
-        public InputBoxIconType IconType
-        {
-            get => _icon;
-
-            set => _icon = value;
-        }
-
-        public InputBoxInputType IconInputType
-        {
-            get => _type;
-
-            set => _type = value;
-        }
-
-        public InputBoxLanguage InputBoxLanguage
-        {
-            get => _language;
-
-            set => _language = value;
-        }
-
-        public InputBoxButtons InputBoxButtons
-        {
-            get => _buttons;
-
-            set => _buttons = value;
-        }
-
-        public FormStartPosition StartPosition
-        {
-            get => _startPosition;
-
-            set => _startPosition = value;
-        }
-
+        public InputBoxNormalMessageTextAlignment NormalMessageTextAlignment { get => _normalMessageTextAlignment; set => _normalMessageTextAlignment = value; }
+        
         public InputBoxMessageDisplayType MessageDisplayType { get => _displayType; set => _displayType = value; }
+
+        public InputBoxButtonFocus ButtonFocus { get => _buttonFocus; set => _buttonFocus = value; }
         #endregion
 
         #region Constructors
@@ -191,8 +102,25 @@
         /// <param name="cancelText">The cancel text.</param>
         /// <param name="hintText">The hint text.</param>
         /// <param name="startPosition">The start position.</param>
+        /// <param name="boxButtons">The box buttons.</param>
+        /// <param name="buttonFocus">The button focus.</param>
+        /// <param name="messageDisplayType">Display type of the message.</param>
+        /// <param name="normalMessageTextAlignment">The normal message text alignment.</param>
+        /// <param name="wrappedMessageTextAlignment">The wrapped message text alignment.</param>
         /// <param name="textAlignment">The text alignment.</param>
-        public KryptonInputBoxExtendedManager(Point iconLocation, string message, string title, InputBoxIconType icon, Image image, InputBoxLanguage language, InputBoxButtons buttons, InputBoxInputType type, string[] listItems, bool showInTaskBar, Font controlTypeface, Font messageTypeface, string okText, string yesText, string noText, string cancelText, string hintText, FormStartPosition startPosition, InputBoxTextAlignment textAlignment)
+        /// <param name="buttonOneResult">The button one result.</param>
+        /// <param name="buttonTwoResult">The button two result.</param>
+        /// <param name="buttonThreeResult">The button three result.</param>
+        /// <param name="buttonFourResult">The button four result.</param>
+        public KryptonInputBoxExtendedManager(Point iconLocation, string message, string title, InputBoxIconType icon, 
+            Image image, InputBoxLanguage language, InputBoxButtons buttons, InputBoxInputType type, string[] listItems,
+            bool showInTaskBar, Font controlTypeface, Font messageTypeface, string okText, string yesText, string noText,
+            string cancelText, string hintText, FormStartPosition startPosition, InputBoxButtons boxButtons, 
+            InputBoxButtonFocus buttonFocus, InputBoxMessageDisplayType messageDisplayType,
+            InputBoxNormalMessageTextAlignment normalMessageTextAlignment, InputBoxWrappedMessageTextAlignment wrappedMessageTextAlignment, 
+            InputBoxTextAlignment textAlignment,
+            DialogResult buttonOneResult, DialogResult buttonTwoResult,
+            DialogResult buttonThreeResult, DialogResult buttonFourResult)
         {
             _iconLocation = iconLocation;
 
@@ -240,7 +168,25 @@
 
             _startPosition = startPosition;
 
+            _buttons = boxButtons;
+
+            _buttonFocus = buttonFocus;
+
+            _displayType = messageDisplayType;
+
+            _normalMessageTextAlignment = normalMessageTextAlignment;
+
+            _wrappedMessageTextAlignment = wrappedMessageTextAlignment;
+
             _textAlignment = textAlignment;
+
+            _buttonOneResult = buttonOneResult;
+
+            _buttonTwoResult = buttonTwoResult;
+
+            _buttonThreeResult = buttonThreeResult;
+
+            _buttonFourResult = buttonFourResult;
         }
 
         public KryptonInputBoxExtendedManager()
@@ -256,7 +202,8 @@
                                                                                   _language, _buttons, _type, _listItems,
                                                                                   _showInTaskBar, _controlTypeface, _messageTypeface,
                                                                                   _okText, _yesText, _noText, _cancelText, _hintText,
-                                                                                  _startPosition, _textAlignment);
+                                                                                  _startPosition, _textAlignment, _buttonOneResult, _buttonTwoResult,
+                                                                                  _buttonThreeResult, _buttonFourResult);
 
             kryptonInputBox.Show();
         }

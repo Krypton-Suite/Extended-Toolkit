@@ -1,6 +1,4 @@
-﻿using System.Drawing;
-
-using ContentAlignment = System.Drawing.ContentAlignment;
+﻿using ContentAlignment = System.Drawing.ContentAlignment;
 
 namespace Krypton.Toolkit.Suite.Extended.InputBox
 {
