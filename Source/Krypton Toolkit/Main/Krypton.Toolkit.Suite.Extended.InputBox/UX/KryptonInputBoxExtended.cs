@@ -850,8 +850,6 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
         /// <param name="showIconBox">if set to <c>true</c> [show icon box].</param>
         private void AdaptUI(bool showIconBox)
         {
-            // TODO: Review
-
             if (showIconBox)
             {
                 pbxInputBoxIcon.Visible = true;
@@ -1299,13 +1297,13 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
 
         private void ktxtInput_KeyDown(object sender, KeyEventArgs e) => ResultKeyDown(e);
 
-        private void kbtnButtonOne_Click(object sender, EventArgs e) => DialogResult = _buttonOneResult;
+        private void kbtnButtonOne_Click(object sender, EventArgs e) => kbtnButtonOne.DialogResult = _buttonOneResult;
 
-        private void kbtnButtonTwo_Click(object sender, EventArgs e) => DialogResult = _buttonTwoResult;
+        private void kbtnButtonTwo_Click(object sender, EventArgs e) => kbtnButtonTwo.DialogResult = _buttonTwoResult;
 
-        private void kbtnButtonThree_Click(object sender, EventArgs e) => DialogResult = _buttonThreeResult;
+        private void kbtnButtonThree_Click(object sender, EventArgs e) => kbtnButtonThree.DialogResult = _buttonThreeResult;
 
-        private void kbtnButtonFour_Click(object sender, EventArgs e) => DialogResult = _buttonFourResult;
+        private void kbtnButtonFour_Click(object sender, EventArgs e) => kbtnButtonFour.DialogResult = _buttonFourResult;
 
         private void kmtxtInput_KeyDown(object sender, KeyEventArgs e) => ResultKeyDown(e);
 
