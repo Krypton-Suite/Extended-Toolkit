@@ -29,13 +29,13 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
             this.kbtnButtonFour = new Krypton.Toolkit.KryptonButton();
             this.kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
+            this.klblMessage = new Krypton.Toolkit.KryptonLabel();
+            this.kblMessage = new Krypton.Toolkit.Suite.Extended.InputBox.InternalKryptonBorderedLabel();
             this.ktxtInput = new Krypton.Toolkit.KryptonTextBox();
             this.kmtxtInput = new Krypton.Toolkit.KryptonMaskedTextBox();
             this.kcmbInput = new Krypton.Toolkit.KryptonComboBox();
             this.kwlMessage = new Krypton.Toolkit.KryptonWrapLabel();
             this.pbxInputBoxIcon = new System.Windows.Forms.PictureBox();
-            this.klblMessage = new Krypton.Toolkit.KryptonLabel();
-            this.kblMessage = new Krypton.Toolkit.Suite.Extended.InputBox.InternalKryptonBorderedLabel();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
@@ -118,6 +118,29 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
             this.kryptonPanel2.Size = new System.Drawing.Size(584, 179);
             this.kryptonPanel2.TabIndex = 1;
             // 
+            // klblMessage
+            // 
+            this.klblMessage.AutoSize = false;
+            this.klblMessage.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
+            this.klblMessage.Location = new System.Drawing.Point(147, 12);
+            this.klblMessage.Name = "klblMessage";
+            this.klblMessage.Size = new System.Drawing.Size(424, 126);
+            this.klblMessage.TabIndex = 2;
+            this.klblMessage.Values.Text = "kryptonLabel1";
+            // 
+            // kblMessage
+            // 
+            this.kblMessage.AutoSize = false;
+            this.kblMessage.BackColor = System.Drawing.Color.Transparent;
+            this.kblMessage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(192)))), ((int)(((byte)(214)))));
+            this.kblMessage.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
+            this.kblMessage.Location = new System.Drawing.Point(147, 13);
+            this.kblMessage.Name = "kblMessage";
+            this.kblMessage.Size = new System.Drawing.Size(425, 125);
+            this.kblMessage.TabIndex = 6;
+            this.kblMessage.Values.Text = "internalKryptonBorderedLabel1";
+            this.kblMessage.Visible = false;
+            // 
             // ktxtInput
             // 
             this.ktxtInput.Location = new System.Drawing.Point(147, 144);
@@ -166,29 +189,6 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
             this.pbxInputBoxIcon.Size = new System.Drawing.Size(128, 128);
             this.pbxInputBoxIcon.TabIndex = 0;
             this.pbxInputBoxIcon.TabStop = false;
-            // 
-            // klblMessage
-            // 
-            this.klblMessage.AutoSize = false;
-            this.klblMessage.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
-            this.klblMessage.Location = new System.Drawing.Point(147, 12);
-            this.klblMessage.Name = "klblMessage";
-            this.klblMessage.Size = new System.Drawing.Size(424, 126);
-            this.klblMessage.TabIndex = 2;
-            this.klblMessage.Values.Text = "kryptonLabel1";
-            // 
-            // kblMessage
-            // 
-            this.kblMessage.AutoSize = false;
-            this.kblMessage.BackColor = System.Drawing.Color.Transparent;
-            this.kblMessage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(192)))), ((int)(((byte)(214)))));
-            this.kblMessage.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
-            this.kblMessage.Location = new System.Drawing.Point(147, 13);
-            this.kblMessage.Name = "kblMessage";
-            this.kblMessage.Size = new System.Drawing.Size(425, 125);
-            this.kblMessage.TabIndex = 6;
-            this.kblMessage.Values.Text = "internalKryptonBorderedLabel1";
-            this.kblMessage.Visible = false;
             // 
             // KryptonInputBoxExtended
             // 
@@ -856,20 +856,13 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
             {
                 pbxInputBoxIcon.Visible = true;
 
-                ResizeControls(new Size(425, 125), new Point(147, 144), new Point(147, 144));
-            }
-
-            if (showIconBox)
-            {
-                pbxInputBoxIcon.Visible = true;
-
-                ResizeControls(new Size(489, 175), new Point(213, 192), new Point(213, 192));
+                ResizeControls(new Size(425, 125), new Size(425, 23), new Size(425, 23));
             }
             else
             {
                 pbxInputBoxIcon.Visible = false;
 
-                ResizeControls(new Size(560, 175), new Point(180, 192), new Point(180, 192));
+                ResizeControls(new Size(559, 126), new Size(560, 23), new Size(560, 23));
             }
         }
 
@@ -942,11 +935,14 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
             }
         }
 
-        /// <summary>Resizes the controls.</summary>
+        /// <summary>
+        /// Resizes the controls.
+        /// </summary>
         /// <param name="messageLabelSize">Size of the message label.</param>
-        /// <param name="userSelectionLocation">The user selection location.</param>
-        /// <param name="userInputLocation">The user input location.</param>
-        private void ResizeControls(Size messageLabelSize, Point userSelectionLocation, Point userInputLocation)
+        /// <param name="userSelectionSize">Size of the user selection.</param>
+        /// <param name="userInputSize">Size of the user input.</param>
+        /// <returns></returns>
+        private void ResizeControls(Size messageLabelSize, Size userSelectionSize, Size userInputSize)
         {
             kblMessage.Size = messageLabelSize;
 
@@ -954,11 +950,11 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
 
             kwlMessage.Size = messageLabelSize;
 
-            kcmbInput.Location = userSelectionLocation;
+            kcmbInput.Size = userSelectionSize;
 
-            kmtxtInput.Location = userInputLocation;
+            kmtxtInput.Size = userInputSize;
 
-            ktxtInput.Location = userInputLocation;
+            ktxtInput.Size = userInputSize;
         }
 
         /// <summary>
