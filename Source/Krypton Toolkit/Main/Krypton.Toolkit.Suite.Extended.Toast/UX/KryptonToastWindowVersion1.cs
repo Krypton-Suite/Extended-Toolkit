@@ -15,13 +15,13 @@
         private void InitializeComponent()
         {
             this.kpnlButtons = new Krypton.Toolkit.KryptonPanel();
+            this.kbtnAction = new Krypton.Toolkit.KryptonButton();
             this.kbtnDismiss = new Krypton.Toolkit.KryptonButton();
             this.kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
             this.kpnlContent = new Krypton.Toolkit.KryptonPanel();
             this.klblHeader = new Krypton.Toolkit.KryptonLabel();
             this.kwlContent = new Krypton.Toolkit.KryptonWrapLabel();
             this.pbxIcon = new System.Windows.Forms.PictureBox();
-            this.kbtnAction = new Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.kpnlButtons)).BeginInit();
             this.kpnlButtons.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kpnlContent)).BeginInit();
@@ -40,6 +40,18 @@
             this.kpnlButtons.PanelBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelAlternate;
             this.kpnlButtons.Size = new System.Drawing.Size(609, 50);
             this.kpnlButtons.TabIndex = 1;
+            // 
+            // kbtnAction
+            // 
+            this.kbtnAction.AutoSize = true;
+            this.kbtnAction.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.kbtnAction.Location = new System.Drawing.Point(13, 16);
+            this.kbtnAction.Name = "kbtnAction";
+            this.kbtnAction.Size = new System.Drawing.Size(4, 4);
+            this.kbtnAction.TabIndex = 3;
+            this.kbtnAction.Values.Text = "";
+            this.kbtnAction.Visible = false;
+            this.kbtnAction.Click += new System.EventHandler(this.kbtnAction_Click);
             // 
             // kbtnDismiss
             // 
@@ -102,18 +114,6 @@
             this.pbxIcon.Size = new System.Drawing.Size(128, 128);
             this.pbxIcon.TabIndex = 0;
             this.pbxIcon.TabStop = false;
-            // 
-            // kbtnAction
-            // 
-            this.kbtnAction.AutoSize = true;
-            this.kbtnAction.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.kbtnAction.Location = new System.Drawing.Point(12, 13);
-            this.kbtnAction.Name = "kbtnAction";
-            this.kbtnAction.Size = new System.Drawing.Size(4, 4);
-            this.kbtnAction.TabIndex = 3;
-            this.kbtnAction.Values.Text = "";
-            this.kbtnAction.Visible = false;
-            this.kbtnAction.Click += new System.EventHandler(this.kbtnAction_Click);
             // 
             // KryptonToastWindowVersion1
             // 
@@ -649,7 +649,7 @@
             switch (iconType)
             {
                 case IconType.NONE:
-                    AdjustLayout(new Size(622, 58), new Size(622, 153), new Point(12, 6), new Point(470, 6), false);
+                    AdjustLayout(new Size(622, 58), new Size(622, 153), new Point(13, 16), new Point(393, 13), false);
                     break;
                 case IconType.QUESTION:
                     pbxIcon.Image = Resources.Input_Box_Question_64_x_64;
@@ -748,11 +748,11 @@
 
             //klblContent.RightToLeft = RightToLeft.
 
-            kbtnAction.Location = new Point(12, 6);
+            kbtnAction.Location = new Point(13, 16);
 
             //kbtnLaunch.RightToLeft = RightToLeft.
 
-            kbtnDismiss.Location = new Point(470, 6);
+            kbtnDismiss.Location = new Point(393, 13);
 
             //kbtnDismiss.RightToLeft = RightToLeft.No;
         }
@@ -800,7 +800,7 @@
         // TODO: Revisit
         private void ResetDefaultLayout()
         {
-            AdjustLayout(new Size(487, 58), new Size(487, 153), new Point(12, 6), new Point(470, 6));
+            AdjustLayout(new Size(487, 58), new Size(487, 153), new Point(13, 16), new Point(393, 13));
         }
 
         /// <summary>

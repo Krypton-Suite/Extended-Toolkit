@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Krypton.Toolkit.Suite.Extended.Toast
+﻿namespace Krypton.Toolkit.Suite.Extended.Toast
 {
     public class KryptonToastNotificationVersion1Manager : Component
     {
@@ -181,6 +175,8 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
             PaletteDrawBorders = drawBorders;
         }
+
+        public KryptonToastNotificationVersion1Manager() {}
         #endregion
 
         #region Methods
