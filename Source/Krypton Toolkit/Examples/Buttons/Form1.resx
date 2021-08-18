@@ -1,64 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<root>
-  <!-- 
-    Microsoft ResX Schema 
-    
-    Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
-    associated with the data types.
-    
-    Example:
-    
-    ... ado.net/XML headers & schema ...
-    <resheader name="resmimetype">text/microsoft-resx</resheader>
-    <resheader name="version">2.0</resheader>
-    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
-    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
-    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
-    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
-    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
-        <value>[base64 mime encoded serialized .NET Framework object]</value>
-    </data>
-    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
-        <comment>This is a comment</comment>
-    </data>
-                
-    There are any number of "resheader" rows that contain simple 
-    name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
-    mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
-    extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
-    read any of the formats listed below.
-    
-    mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
-            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
-            : and then encoded with base64 encoding.
-    
-    mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
-            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
-            : and then encoded with base64 encoding.
-
-    mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
-            : using a System.ComponentModel.TypeConverter
-            : and then encoded with base64 encoding.
-    -->
+﻿<root>
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
@@ -121,7 +61,7 @@
   <data name="kryptonSplitButton2.Values.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wwAADsMBx2+oZAAAAYRJREFUOE+NkztPwlAUx8/gakIYWFwYHB1w8FUQCEpI1KiTYpSHQVQisviYjZsJ
+        wgAADsIBFShKgAAAAYRJREFUOE+NkztPwlAUx8/gakIYWFwYHB1w8FUQCEpI1KiTYpSHQVQisviYjZsJ
         k4OJMT6ILhgTFheDiongc4AP4HdgcO/xnPZWaG81/JN/Qu49v1972wJ2iUQiQWqFiqL82yO2/w4Nuann
         DA3MrqMrWcDaSRB30uOGiPfcYrwVWuQr1HnIPxXFnsQxQvYDYeMd1Scf1Yt3hwGMz4UNEc9WBK4JsHfx
         AJ0r1wibBAoYMizwolpR9D6OYOPCh5f7AU0kcF0AuU8JhsybCVYfhvXeD9kIbGBYEwILrJYHZYEzVZRg
@@ -133,27 +73,21 @@
   </data>
   <data name="kryptonUACButtonVersion21.Values.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wwAADsMBx2+oZAAAAvpJREFUWEfVl0toE1EUhu+iGxcB6aKbLty6yMJNfSSxCU2TKIiBYGtFa8dHa5P6
-        KNgIBRfZKoHgQhtErQ9QiqKCC22rjRiDT0iyL2Tpsovuc3rOnTPJzCSZ3NR00R9+EiZzz/fPvWfuZMSu
-        kt/v3xuJRFLoIhpspmMpOodP767C4fAsAjaCx6OwfywFvZeWoFwuS5ee+2Hh9hDEomEKsoHWeNj/ia9Y
-        Q3gFPyW4Z+YbiKu/pQ1Vv/qkNz/5ZBA6l8doyjOCJwdMpml+h5bF3CPzsGd6BcQ1HSw984vxRgCv7pwX
-        /r33QXpOD8KmWlSzxmBsXXiwNsAT1cA9Og/9Ew/xivM62AYXCXOAOrya8+he88DmRw8s3xuE9M0hiI8P
-        mwMBY+uSB2f/6r7xB8R1dgt4QwAbvLp2RPcX8mHdn8mH2gRQhIu4KUAHcOcAHcBF/CfjKYA63DlAB3Ax
-        bQugCK+uHmwTQBFuCdAB3DlAB3BxxRxAHe4YgHY3VbiY+sF4DqAILz3xKARQgFsCKMJlgMcOAfq0Z8pw
-        MWkOoAavrgxA4YG3eQDcu3PZbJZL7pyIQSzG1oWpMolEgk/bORGDWIytKxQKHaCpWV8abLm327vdkLhY
-        AHGBrZG/g5hgnyfj82Q8D64zb+T0E4uxVuGPxfRcUHlvN6QCJ7ujtyhAkXGNwh81SkiP03ZwajhDKnDX
-        mH71xGBcc1GDJCeH28Kpyw21g4tzeRg4MdW8+ewyeuHt3YAj3BrAGb4vlnZee7swKf3/g9LToy3hlgAO
-        8N7RFxJONbm8mnDAYuxkGNZfYTM2gdPGYqgV3HX6NQSPRQm+yGU7E62ZDPESQ9jglgDO8Pbr3kr0j9YI
-        UVjAO8MEtwawwvtGHtXgXXlPoCmUjXkHN6lmAUxwo+FoDA/vjrCgbMzk5SBsfsCZwAeLIYL3nF2Vt9q2
-        Gk5VWDyAxSu0JMsZH+MB+k/dN6a8onyrbVf8tpSRs5FMStN3OtaV9VYVzQaaXkjJjW86u0NCbAEpeZM4
-        dtbsfAAAAABJRU5ErkJggg==
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGESURBVDhPjZM7T8JQFMfP4GpCGFhcGBwdcPBVEAhKSNSo
+        k2KUh0FUIrL4mI2bCZODiTE+iC4YExYXg4qJ4HOAD+B3YHDv8Zz2VmhvNfyTf0LuPb9fe9sCdolEIkFq
+        hYqi/Nsjtv8ODbmp5wwNzK6jK1nA2kkQd9Ljhoj33GK8FVrkK9R5yD8VxZ7EMUL2A2HjHdUnH9WLd4cB
+        jM+FDRHPVgSuCbB38QCdK9cImwQKGDIs8KJaUfQ+jmDjwoeX+wFNJHBdALlPCYbMmwlWH4b13g/ZCGxg
+        WBMCC6yWB2WBM1WUYFh9tYUbZ4oscCUKEgxpElhgbu3IKwlK+e0x6YExCKkXhOUaQpKaqCLEq9g3s8uC
+        ksA1QZKNX8VR6cxWuHvhRrs6MwLXQwv1TCwsnbkdhtgzKpNxhusCa4UWPdRmfiv0C/N522Fx602eFZg5
+        hmQvG8LvWyEguGupjP3Tuf9hI4aEP9vGqYLO6BX6J+Y7g43QoINq/Tc6xHbnIYjfjvlpmwLwA0FjguKg
+        QixEAAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="kryptonUACButtonVersion11.Values.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wwAADsMBx2+oZAAAAYRJREFUOE+NkztPwlAUx8/gakIYWFwYHB1w8FUQCEpI1KiTYpSHQVQisviYjZsJ
+        wgAADsIBFShKgAAAAYRJREFUOE+NkztPwlAUx8/gakIYWFwYHB1w8FUQCEpI1KiTYpSHQVQisviYjZsJ
         k4OJMT6ILhgTFheDiongc4AP4HdgcO/xnPZWaG81/JN/Qu49v1972wJ2iUQiQWqFiqL82yO2/w4Nuann
         DA3MrqMrWcDaSRB30uOGiPfcYrwVWuQr1HnIPxXFnsQxQvYDYeMd1Scf1Yt3hwGMz4UNEc9WBK4JsHfx
         AJ0r1wibBAoYMizwolpR9D6OYOPCh5f7AU0kcF0AuU8JhsybCVYfhvXeD9kIbGBYEwILrJYHZYEzVZRg

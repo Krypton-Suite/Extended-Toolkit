@@ -30,6 +30,7 @@ namespace Toast
         private void InitializeComponent()
         {
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            this.kbtnVersion2 = new Krypton.Toolkit.KryptonButton();
             this.kbtnVersion1 = new Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
@@ -37,12 +38,22 @@ namespace Toast
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(this.kbtnVersion2);
             this.kryptonPanel1.Controls.Add(this.kbtnVersion1);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel1.Name = "kryptonPanel1";
             this.kryptonPanel1.Size = new System.Drawing.Size(256, 156);
             this.kryptonPanel1.TabIndex = 0;
+            // 
+            // kbtnVersion2
+            // 
+            this.kbtnVersion2.Location = new System.Drawing.Point(13, 44);
+            this.kbtnVersion2.Name = "kbtnVersion2";
+            this.kbtnVersion2.Size = new System.Drawing.Size(231, 25);
+            this.kbtnVersion2.TabIndex = 1;
+            this.kbtnVersion2.Values.Text = "Show Version 2";
+            this.kbtnVersion2.Click += new System.EventHandler(this.kbtnVersion2_Click);
             // 
             // kbtnVersion1
             // 
@@ -72,6 +83,7 @@ namespace Toast
 
         private Krypton.Toolkit.KryptonPanel kryptonPanel1;
         private Krypton.Toolkit.KryptonButton kbtnVersion1;
+        private Krypton.Toolkit.KryptonButton kbtnVersion2;
     }
 }
 

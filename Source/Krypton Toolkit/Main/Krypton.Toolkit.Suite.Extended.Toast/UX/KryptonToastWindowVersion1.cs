@@ -1,4 +1,12 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Toast
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ */
+#endregion
+
+namespace Krypton.Toolkit.Suite.Extended.Toast
 {
     public class KryptonToastWindowVersion1 : KryptonForm, IToastNotificationUIElements
     {
@@ -10,6 +18,7 @@
         private KryptonWrapLabel kwlContent;
         private PictureBox pbxIcon;
         private KryptonButton kbtnAction;
+        private ProgressBar pbTickDown;
         private KryptonBorderEdge kryptonBorderEdge1;
 
         private void InitializeComponent()
@@ -22,6 +31,7 @@
             this.klblHeader = new Krypton.Toolkit.KryptonLabel();
             this.kwlContent = new Krypton.Toolkit.KryptonWrapLabel();
             this.pbxIcon = new System.Windows.Forms.PictureBox();
+            this.pbTickDown = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.kpnlButtons)).BeginInit();
             this.kpnlButtons.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kpnlContent)).BeginInit();
@@ -44,10 +54,9 @@
             // kbtnAction
             // 
             this.kbtnAction.AutoSize = true;
-            this.kbtnAction.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.kbtnAction.Location = new System.Drawing.Point(13, 16);
+            this.kbtnAction.Location = new System.Drawing.Point(12, 13);
             this.kbtnAction.Name = "kbtnAction";
-            this.kbtnAction.Size = new System.Drawing.Size(4, 4);
+            this.kbtnAction.Size = new System.Drawing.Size(153, 25);
             this.kbtnAction.TabIndex = 3;
             this.kbtnAction.Values.Text = "";
             this.kbtnAction.Visible = false;
@@ -115,9 +124,18 @@
             this.pbxIcon.TabIndex = 0;
             this.pbxIcon.TabStop = false;
             // 
+            // pbTickDown
+            // 
+            this.pbTickDown.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pbTickDown.Location = new System.Drawing.Point(0, 238);
+            this.pbTickDown.Name = "pbTickDown";
+            this.pbTickDown.Size = new System.Drawing.Size(609, 5);
+            this.pbTickDown.TabIndex = 3;
+            // 
             // KryptonToastWindowVersion1
             // 
             this.ClientSize = new System.Drawing.Size(609, 293);
+            this.Controls.Add(this.pbTickDown);
             this.Controls.Add(this.kpnlContent);
             this.Controls.Add(this.kpnlButtons);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -142,16 +160,17 @@
         #region Variables
         private ActionButtonLocation _buttonLocation;
         private ActionType _actionType;
-        private bool _fade, _showActionButton;
+        private bool _fade, _showActionButton, _showProgressBar;
         private string _headerText, _contentText, _processName;
         private Image _image;
-        private int _time;
+        private int _time, _seconds;
         private float _cornerRadius;
         private System.Windows.Forms.Timer _timer;
         private SoundPlayer _player;
         private IconType _iconType;
         private IToastNotification _toastNotificationOptions;
         private RightToLeftSupport _rightToLeftSupport;
+        private InputBoxSystemSounds _systemSounds;
         private PaletteDrawBorders _drawBorders;
         #endregion
 
@@ -181,6 +200,8 @@
         ///   <c>true</c> if [show action button]; otherwise, <c>false</c>.
         /// </value>
         public bool ShowActionButton { get => _showActionButton; set => _showActionButton = value; }
+
+        public bool ShowProgressBar {  get => _showProgressBar; set => _showProgressBar = value; }
 
         /// <summary>
         /// Gets or sets the sound path.
@@ -228,10 +249,7 @@
         /// <value>
         /// The icon image.
         /// </value>
-        public Image IconImage
-        {
-            get => _image; set { _image = value; Invalidate(); }
-        }
+        public Image IconImage { get => _image; set { _image = value; Invalidate(); } }
 
         /// <summary>
         /// Gets or sets the seconds.
@@ -239,13 +257,15 @@
         /// <value>
         /// The seconds.
         /// </value>
-        public int Seconds { get; set; }
+        public int Seconds { get =>  _seconds; set => _seconds = value; }
 
         public float CornerRadius { get => _cornerRadius; set { _cornerRadius = value; Invalidate(); } }
 
         public PaletteDrawBorders PaletteDrawBorders { get => _drawBorders; set { _drawBorders = value; Invalidate(); } }
 
         public IconType Type { get => _iconType; set => _iconType = value; }
+
+        public InputBoxSystemSounds InputBoxSystemSound { get => _systemSounds; set => _systemSounds = value; }
 
         /// <summary>
         /// Gets or sets the right to left support.
@@ -269,7 +289,7 @@
         #endregion
 
         #region Constructors
-        public KryptonToastWindowVersion1(bool fade, Image icon, string headerText, string contentText, bool showControlBox = true)
+        public KryptonToastWindowVersion1(bool fade, Image icon, string headerText, string contentText, bool showProgressBar = true, bool showControlBox = true)
         {
             InitializeComponent();
 
@@ -289,10 +309,12 @@
 
             DoubleBuffered = true;
 
+            pbTickDown.Visible = showProgressBar;
+
             ControlBox = showControlBox;
         }
 
-        public KryptonToastWindowVersion1(bool fade, IconType iconType, string headerText, string contentText, 
+        public KryptonToastWindowVersion1(bool fade, IconType iconType, string headerText, string contentText, bool showProgressBar = true,
                                           bool showControlBox = true)
         {
             InitializeComponent();
@@ -350,6 +372,8 @@
 
             DoubleBuffered = true;
 
+            pbTickDown.Visible = showProgressBar;
+
             ControlBox = showControlBox;
         }
 
@@ -360,8 +384,8 @@
         /// <param name="contentText">The content text.</param>
         /// <param name="seconds">The seconds.</param>
         /// <param name="showControlBox">if set to <c>true</c> [show control box].</param>
-        public KryptonToastWindowVersion1(bool fade, Image image, string headerText, string contentText, int seconds, 
-                                          bool showControlBox = true) : this(fade, image, headerText, contentText, showControlBox)
+        public KryptonToastWindowVersion1(bool fade, Image image, string headerText, string contentText, int seconds, bool showProgressBar = true,
+                                          bool showControlBox = true) : this(fade, image, headerText, contentText, showProgressBar, showControlBox)
         {
             Seconds = seconds;
         }
@@ -375,8 +399,8 @@
         /// <param name="soundPath">The sound path.</param>
         /// <param name="showControlBox">if set to <c>true</c> [show control box].</param>
         public KryptonToastWindowVersion1(bool fade, Image image, string headerText, string contentText, int seconds, 
-                                          string soundPath, bool showControlBox = true) :
-                                          this(fade, image, headerText, contentText, seconds, showControlBox)
+                                          string soundPath, bool showProgressBar = true, bool showControlBox = true) :
+                                          this(fade, image, headerText, contentText, seconds, showProgressBar, showControlBox)
         {
             SoundPath = soundPath;
         }
@@ -388,8 +412,8 @@
         /// <param name="contentText">The content text.</param>
         /// <param name="soundPath">The sound path.</param>
         /// <param name="showControlBox">if set to <c>true</c> [show control box].</param>
-        public KryptonToastWindowVersion1(bool fade, Image image, string headerText, string contentText, string soundPath, 
-                                          bool showControlBox = true) : this(fade, image, headerText, contentText, showControlBox)
+        public KryptonToastWindowVersion1(bool fade, Image image, string headerText, string contentText, string soundPath, bool showProgressBar = true,
+                                          bool showControlBox = true) : this(fade, image, headerText, contentText, showProgressBar, showControlBox)
         {
             SoundPath = soundPath;
         }
@@ -401,8 +425,8 @@
         /// <param name="contentText">The content text.</param>
         /// <param name="soundStream">The sound stream.</param>
         /// <param name="showControlBox">if set to <c>true</c> [show control box].</param>
-        public KryptonToastWindowVersion1(bool fade, Image image, string headerText, string contentText, Stream soundStream, 
-                                          bool showControlBox = true) : this(fade, image, headerText, contentText, showControlBox)
+        public KryptonToastWindowVersion1(bool fade, Image image, string headerText, string contentText, Stream soundStream, bool showProgressBar = true, 
+                                          bool showControlBox = true) : this(fade, image, headerText, contentText, showProgressBar, showControlBox)
         {
             SoundStream = soundStream;
         }
@@ -416,8 +440,8 @@
         /// <param name="soundStream">The sound stream.</param>
         /// <param name="showControlBox">if set to <c>true</c> [show control box].</param>
         public KryptonToastWindowVersion1(bool fade, Image image, string headerText, string contentText, int seconds, 
-                                          Stream soundStream, bool showControlBox = true) : 
-                                          this(fade, image, headerText, contentText, seconds, showControlBox)
+                                          Stream soundStream, bool showProgressBar = true, bool showControlBox = true) : 
+                                          this(fade, image, headerText, contentText, seconds, showProgressBar, showControlBox)
         {
             SoundStream = soundStream;
         }
@@ -434,8 +458,8 @@
         /// <param name="showControlBox">if set to <c>true</c> [show control box].</param>
         public KryptonToastWindowVersion1(bool fade, Image image, string headerText, string contentText, 
                                           ActionButtonLocation actionButtonLocation, bool showActionButton, ActionType actionType, 
-                                          string processName, bool showControlBox = true) : 
-                                          this(fade, image, headerText, contentText, showControlBox)
+                                          string processName, bool showProgressBar = true, bool showControlBox = true) : 
+                                          this(fade, image, headerText, contentText, showProgressBar, showControlBox)
         {
             ButtonLocation = actionButtonLocation;
 
@@ -461,9 +485,9 @@
         /// <param name="cornerRadius">The corner radius.</param>
         public KryptonToastWindowVersion1(bool fade, Image image, string headerText, string contentText, 
                                           ActionButtonLocation actionButtonLocation, bool showActionButton, 
-                                          ActionType actionType, string processName, bool showControlBox = true, 
+                                          ActionType actionType, string processName, bool showProgressBar = true, bool showControlBox = true, 
                                           float cornerRadius = -1) : 
-                                          this(fade, image, headerText, contentText, actionButtonLocation, showActionButton, actionType, processName, showControlBox)
+                                          this(fade, image, headerText, contentText, actionButtonLocation, showActionButton, actionType, processName, showProgressBar, showControlBox)
         {
             CornerRadius = cornerRadius;
         }
@@ -482,9 +506,9 @@
         /// <param name="borders">The borders.</param>
         public KryptonToastWindowVersion1(bool fade, Image image, string headerText, string contentText, 
                                           ActionButtonLocation actionButtonLocation, bool showActionButton,
-                                          ActionType actionType, string processName, bool showControlBox = true, 
+                                          ActionType actionType, string processName, bool showProgressBar = true, bool showControlBox = true, 
                                           float cornerRadius = -1, PaletteDrawBorders borders = PaletteDrawBorders.All) : 
-                                          this(fade, image, headerText, contentText, actionButtonLocation, showActionButton, actionType, processName, showControlBox)
+                                          this(fade, image, headerText, contentText, actionButtonLocation, showActionButton, actionType, processName, showProgressBar, showControlBox)
         {
             CornerRadius = cornerRadius;
 
@@ -507,14 +531,16 @@
         /// <param name="seconds">The seconds.</param>
         public KryptonToastWindowVersion1(bool fade, Image image, string headerText, string contentText, 
                                           ActionButtonLocation actionButtonLocation, bool showActionButton, 
-                                          ActionType actionType, string processName, bool showControlBox = true, 
-                                          float cornerRadius = -1, PaletteDrawBorders borders = PaletteDrawBorders.All, 
-                                          IconType iconType = default, int seconds = 0) :
-                                          this(fade, image, headerText, contentText, actionButtonLocation, showActionButton, actionType, processName, showControlBox, cornerRadius, borders)
+                                          ActionType actionType, string processName, bool showProgressBar = true,
+                                          bool showControlBox = true, float cornerRadius = -1, PaletteDrawBorders borders = PaletteDrawBorders.All, 
+                                          IconType iconType = default, int seconds = 0, InputBoxSystemSounds systemSound = InputBoxSystemSounds.BEEP) :
+                                          this(fade, image, headerText, contentText, actionButtonLocation, showActionButton, actionType, processName, showProgressBar, showControlBox, cornerRadius, borders)
         {
             Type = iconType;
 
             Seconds = seconds;
+
+            InputBoxSystemSound = systemSound;
         }
         #endregion
 
@@ -576,22 +602,22 @@
 
             if (Type != IconType.NONE)
             {
-                UpdateIconType(Type);
+                UpdateIconType(Type, InputBoxSystemSound);
             }
             else
             {
                 pbxIcon.Image = IconImage;
             }
 
-            switch (ButtonLocation)
-            {
-                case ActionButtonLocation.LEFT:
-                    UtilityMethods.ChangeControlLocation(kbtnAction, new Point(12, 8));
-                    break;
-                case ActionButtonLocation.RIGHT:
-                    UtilityMethods.ChangeControlLocation(kbtnAction, new Point(318, 8));
-                    break;
-            }
+            //switch (ButtonLocation)
+            //{
+            //    case ActionButtonLocation.LEFT:
+            //        UtilityMethods.ChangeControlLocation(kbtnAction, new Point(12, 16));
+            //        break;
+            //    case ActionButtonLocation.RIGHT:
+            //        UtilityMethods.ChangeControlLocation(kbtnAction, new Point(318, 16));
+            //        break;
+            //}
 
             klblHeader.Text = HeaderText;
 
@@ -612,6 +638,18 @@
                     _time++;
 
                     kbtnDismiss.Text = $"Dismiss ({ Seconds - _time }s)";
+
+                    if (_showProgressBar)
+                    {
+                        pbTickDown.Value = Seconds = _time;
+
+                        if (pbTickDown.Value == pbTickDown.Maximum)
+                        {
+                            _timer.Stop();
+
+                            FadeOutAndClose();
+                        }
+                    }
 
                     if (_time == Seconds)
                     {
@@ -640,43 +678,205 @@
         /// </summary>
         protected override bool ShowWithoutActivation { get => true; }
 
-        /// <summary>
-        /// Updates the type of the icon.
-        /// </summary>
+
+        /// <summary>Updates the type of the icon.</summary>
         /// <param name="iconType">Type of the icon.</param>
-        public void UpdateIconType(IconType iconType)
+        /// <param name="systemSound">The system sound to play.</param>
+        /// <param name="customSoundStream">The custom sound stream.</param>
+        /// <param name="customSoundLocation">The custom sound location.</param>
+        private void UpdateIconType(IconType iconType, InputBoxSystemSounds systemSound = InputBoxSystemSounds.NONE, Stream customSoundStream = null, string customSoundLocation = null)
         {
             switch (iconType)
             {
                 case IconType.NONE:
                     AdjustLayout(new Size(622, 58), new Size(622, 153), new Point(13, 16), new Point(393, 13), false);
+
+                    if (systemSound != InputBoxSystemSounds.NONE)
+                    {
+                        if (customSoundStream != null)
+                        {
+                            PlaySound(InputBoxSystemSounds.CUSTOM, customSoundStream);
+                        }
+                        else if (customSoundLocation != null)
+                        {
+                            PlaySound(InputBoxSystemSounds.CUSTOM, null, customSoundLocation);
+                        }
+                        else
+                        {
+                            PlaySound(systemSound);
+                        }
+                    }
                     break;
                 case IconType.QUESTION:
                     pbxIcon.Image = Resources.Input_Box_Question_64_x_64;
 
-                    SystemSounds.Question.Play();
+                    if (systemSound != InputBoxSystemSounds.NONE)
+                    {
+                        if (customSoundStream != null)
+                        {
+                            PlaySound(InputBoxSystemSounds.CUSTOM, customSoundStream);
+                        }
+                        else if (customSoundLocation != null)
+                        {
+                            PlaySound(InputBoxSystemSounds.CUSTOM, null, customSoundLocation);
+                        }
+                        else
+                        {
+                            PlaySound(InputBoxSystemSounds.QUESTION);
+                        }
+                    }
                     break;
                 case IconType.INFORMATION:
                     pbxIcon.Image = Resources.Input_Box_Information_64_x_64;
 
-                    SystemSounds.Exclamation.Play();
+                    if (systemSound != InputBoxSystemSounds.NONE)
+                    {
+                        if (customSoundStream != null)
+                        {
+                            PlaySound(InputBoxSystemSounds.CUSTOM, customSoundStream);
+                        }
+                        else if (customSoundLocation != null)
+                        {
+                            PlaySound(InputBoxSystemSounds.CUSTOM, null, customSoundLocation);
+                        }
+                        else
+                        {
+                            PlaySound(InputBoxSystemSounds.EXCLAMATION);
+                        }
+                    }
                     break;
                 case IconType.WARNING:
                     pbxIcon.Image = Resources.Input_Box_Warning_64_x_58;
 
-                    SystemSounds.Exclamation.Play();
+                    if (systemSound != InputBoxSystemSounds.NONE)
+                    {
+                        if (customSoundStream != null)
+                        {
+                            PlaySound(InputBoxSystemSounds.CUSTOM, customSoundStream);
+                        }
+                        else if (customSoundLocation != null)
+                        {
+                            PlaySound(InputBoxSystemSounds.CUSTOM, null, customSoundLocation);
+                        }
+                        else
+                        {
+                            PlaySound(InputBoxSystemSounds.EXCLAMATION);
+                        }
+                    }
                     break;
                 case IconType.ERROR:
                     pbxIcon.Image = Resources.Input_Box_Critical_64_x_64;
+
+                    if (systemSound != InputBoxSystemSounds.NONE)
+                    {
+                        if (customSoundStream != null)
+                        {
+                            PlaySound(InputBoxSystemSounds.CUSTOM, customSoundStream);
+                        }
+                        else if (customSoundLocation != null)
+                        {
+                            PlaySound(InputBoxSystemSounds.CUSTOM, null, customSoundLocation);
+                        }
+                        else
+                        {
+                            PlaySound(InputBoxSystemSounds.ASTERISK);
+                        }
+                    }
                     break;
                 case IconType.HAND:
                     pbxIcon.Image = Resources.Input_Box_Hand_64_x_64;
+
+                    if (systemSound != InputBoxSystemSounds.NONE)
+                    {
+                        if (customSoundStream != null)
+                        {
+                            PlaySound(InputBoxSystemSounds.CUSTOM, customSoundStream);
+                        }
+                        else if (customSoundLocation != null)
+                        {
+                            PlaySound(InputBoxSystemSounds.CUSTOM, null, customSoundLocation);
+                        }
+                        else
+                        {
+                            PlaySound(InputBoxSystemSounds.HAND);
+                        }
+                    }
                     break;
                 case IconType.STOP:
                     pbxIcon.Image = Resources.Input_Box_Stop_64_x_64;
+
+                    if (systemSound != InputBoxSystemSounds.NONE)
+                    {
+                        if (customSoundStream != null)
+                        {
+                            PlaySound(InputBoxSystemSounds.CUSTOM, customSoundStream);
+                        }
+                        else if (customSoundLocation != null)
+                        {
+                            PlaySound(InputBoxSystemSounds.CUSTOM, null, customSoundLocation);
+                        }
+                        else
+                        {
+                            PlaySound(InputBoxSystemSounds.ASTERISK);
+                        }
+                    }
                     break;
                 case IconType.OK:
                     pbxIcon.Image = Resources.Input_Box_Ok_64_x_64;
+
+                    if (systemSound != InputBoxSystemSounds.NONE)
+                    {
+                        if (customSoundStream != null)
+                        {
+                            PlaySound(InputBoxSystemSounds.CUSTOM, customSoundStream);
+                        }
+                        else if (customSoundLocation != null)
+                        {
+                            PlaySound(InputBoxSystemSounds.CUSTOM, null, customSoundLocation);
+                        }
+                        else
+                        {
+                            PlaySound(systemSound);
+                        }
+                    }
+                    break;
+            }
+        }
+
+        private void PlaySound(InputBoxSystemSounds systemSound, Stream customSoundStream = null, string customSoundLocation = null)
+        {
+            switch (systemSound)
+            {
+                case InputBoxSystemSounds.ASTERISK:
+                    SystemSounds.Asterisk.Play();
+                    break;
+                case InputBoxSystemSounds.BEEP:
+                    SystemSounds.Beep.Play();
+                    break;
+                case InputBoxSystemSounds.EXCLAMATION:
+                    SystemSounds.Exclamation.Play();
+                    break;
+                case InputBoxSystemSounds.HAND:
+                    SystemSounds.Hand.Play();
+                    break;
+                case InputBoxSystemSounds.QUESTION:
+                    SystemSounds.Question.Play();
+                    break;
+                case InputBoxSystemSounds.CUSTOM:
+                    if (customSoundStream != null)
+                    {
+                        SoundPlayer player1 = new SoundPlayer(customSoundStream);
+
+                        player1.Play();
+                    }
+                    else if (customSoundLocation != null)
+                    {
+                        SoundPlayer player2 = new SoundPlayer(customSoundLocation);
+
+                        player2.Play();
+                    }
+                    break;
+                case InputBoxSystemSounds.NONE:
                     break;
                 default:
                     break;
@@ -689,7 +889,7 @@
         /// <param name="e">A <see cref="T:System.Windows.Forms.PaintEventArgs" /> that contains the event data.</param>
         protected override void OnPaint(PaintEventArgs e)
         {
-            UpdateIconType(Type);
+            UpdateIconType(Type, InputBoxSystemSound);
 
             ReconfigureUI(RightToLeft);
 
@@ -790,7 +990,7 @@
 
             kwlContent.Size = contentLabelSize;
 
-            kbtnAction.Location = actionButtonLocation;
+            //kbtnAction.Location = actionButtonLocation;
 
             kbtnDismiss.Location = dismissButtonLocation;
 
@@ -816,8 +1016,6 @@
                     break;
                 case ActionType.OPEN:
                     kbtnAction.Text = "&Open";
-                    break;
-                default:
                     break;
             }
         }
@@ -880,6 +1078,10 @@
             {
                 _player.Play();
             }
+
+            pbTickDown.Maximum = _seconds;
+
+            //pbTickDown.Value = pbTickDown.Maximum;
         }
         #endregion
 

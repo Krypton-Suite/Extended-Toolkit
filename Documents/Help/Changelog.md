@@ -2,6 +2,8 @@
 
 ## 2021-09-01 - Build 2109 - September 2021 (Canary)
 * New `Krypton.Toolkit.Suite.Extended.InputBox` module
+* Fix toast 'Dismiss' button location
+* New `Krypton.Toolkit.Suite.Extended.Toast` module
 
 =======
 

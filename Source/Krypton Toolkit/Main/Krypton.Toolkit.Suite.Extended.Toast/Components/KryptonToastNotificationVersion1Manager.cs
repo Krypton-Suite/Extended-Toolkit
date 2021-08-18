@@ -1,17 +1,26 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Toast
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ */
+#endregion
+
+namespace Krypton.Toolkit.Suite.Extended.Toast
 {
     public class KryptonToastNotificationVersion1Manager : Component
     {
         #region Variables
         private ActionButtonLocation _buttonLocation;
         private ActionType _actionType;
-        private bool _fade, _showActionButton, _showControlBox;
+        private bool _fade, _showActionButton, _showControlBox, _showProgressBar;
         private string _headerText, _contentText, _processName;
         private Image _image;
         private int _time, _seconds;
         private float _cornerRadius;
         private System.Windows.Forms.Timer _timer;
         private SoundPlayer _player;
+        private InputBoxSystemSounds _systemSounds;
         private IconType _iconType;
         private IToastNotification _toastNotificationOptions;
         private RightToLeftSupport _rightToLeftSupport;
@@ -46,6 +55,8 @@
         public bool ShowActionButton { get => _showActionButton; set => _showActionButton = value; }
 
         public bool ShowControlBox { get => _showControlBox; set => _showControlBox = value; }
+
+        public bool ShowProgressBar {  get => _showProgressBar; set => _showProgressBar = value; }
 
         /// <summary>
         /// Gets or sets the sound path.
@@ -113,6 +124,8 @@
 
         public IconType Type { get => _iconType; set => _iconType = value; }
 
+        public InputBoxSystemSounds InputBoxSystemSounds { get => _systemSounds; set => _systemSounds = value; }
+
         /// <summary>
         /// Gets or sets the right to left support.
         /// </summary>
@@ -123,27 +136,13 @@
         #endregion
 
         #region Constructor
-        /// <summary>Initializes a new instance of the <see cref="KryptonToastNotificationVersion1Manager" /> class.</summary>
-        /// <param name="actionButtonLocation">The action button location.</param>
-        /// <param name="actionType">Type of the action.</param>
-        /// <param name="fade">if set to <c>true</c> [fade].</param>
-        /// <param name="showActionButton">if set to <c>true</c> [show action button].</param>
-        /// <param name="soundPath">The sound path.</param>
-        /// <param name="soundStream">The sd sound stream.</param>
-        /// <param name="headerText">The header text.</param>
-        /// <param name="contentText">The content text.</param>
-        /// <param name="processName">Name of the process.</param>
-        /// <param name="iconType">Type of the icon.</param>
-        /// <param name="iconImage">The icon image.</param>
-        /// <param name="seconds">The seconds.</param>
-        /// <param name="cornerRadius">The corner radius.</param>
-        /// <param name="drawBorders">The draw borders.</param>
         public KryptonToastNotificationVersion1Manager(ActionButtonLocation actionButtonLocation, ActionType actionType,
-                                                       bool fade, bool showActionButton, bool showControlBox,
+                                                       bool fade, bool showActionButton, bool showProgressBar, bool showControlBox,
                                                        string soundPath, Stream soundStream,
                                                        string headerText, string contentText, string processName,
                                                        IconType iconType, Image iconImage,
-                                                       int seconds, float cornerRadius, PaletteDrawBorders drawBorders)
+                                                       int seconds, float cornerRadius, PaletteDrawBorders drawBorders,
+                                                       InputBoxSystemSounds systemSounds)
         {
             ButtonLocation = actionButtonLocation;
 
@@ -152,6 +151,8 @@
             Fade = fade;
 
             ShowActionButton = showActionButton;
+
+            ShowProgressBar = showProgressBar;
 
             ShowControlBox = showControlBox;
 
@@ -174,6 +175,8 @@
             CornerRadius = cornerRadius;
 
             PaletteDrawBorders = drawBorders;
+
+            InputBoxSystemSounds = systemSounds;
         }
 
         public KryptonToastNotificationVersion1Manager() {}
@@ -185,8 +188,8 @@
         {
             KryptonToastWindowVersion1 toast = new KryptonToastWindowVersion1(_fade, _image, _headerText, _contentText,
                                                                               _buttonLocation, _showActionButton, _actionType,
-                                                                              _processName, _showControlBox, _cornerRadius, 
-                                                                              _drawBorders, _iconType, _seconds);
+                                                                              _processName, _showProgressBar, _showControlBox, _cornerRadius, 
+                                                                              _drawBorders, _iconType, _seconds, _systemSounds);
 
             toast.Show();
         }

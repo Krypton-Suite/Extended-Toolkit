@@ -19,6 +19,7 @@ namespace Toast
                 Action = ActionType.LAUCHPROCESS,
                 ButtonLocation = ActionButtonLocation.LEFT,
                 Fade = true,
+                ShowProgressBar = true,
                 ShowControlBox = true,
                 SoundPath = null,
                 SoundStream = null,
@@ -33,6 +34,25 @@ namespace Toast
             };
 
             toastNotification.DisplayToastNotification();
+        }
+
+        private void kbtnVersion2_Click(object sender, EventArgs e)
+        {
+            KryptonToastNotificationVersion2Manager toastNotification = new KryptonToastNotificationVersion2Manager()
+            {
+                Fade = true,
+                SoundPath = null,
+                SoundStream = null,
+                HeaderText = "Hello World!",
+                ContentText = "This is a test",
+                IconImage = null,
+                Seconds = 60,
+                CornerRadius = -1,
+                PaletteDrawBorders = PaletteDrawBorders.All,
+                Type = IconType.INFORMATION
+            };
+
+            toastNotification.DisplayNotification();
         }
     }
 }
