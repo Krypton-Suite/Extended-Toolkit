@@ -24,14 +24,14 @@
 
   <!--Krypton Toolkit Import-->
   <Choose>
-    <When Condition="'$(TFMs)' == 'all'">
+    <When Condition="'$(SolutionName.Endswith(`Nuget`))'">
       <ItemGroup>
         <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2108.1" />
       </ItemGroup>
     </When>
     <Otherwise>
       <ItemGroup>
-        <PackageReference Include="Krypton.Toolkit.Canary.Lite" Version="6.0.2108.1" />
+        <ProjectReference Include="..\..\..\..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Toolkit\Krypton.Toolkit 2019.csproj" />
       </ItemGroup>
     </Otherwise>
   </Choose>

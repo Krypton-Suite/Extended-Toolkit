@@ -3,8 +3,6 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
-using Krypton.Toolkit.Suite.Extended.Tools;
-
 namespace Krypton.Toolkit.Suite.Extended.ComboBox
 {
     public delegate void NodeSelectEventHandler();

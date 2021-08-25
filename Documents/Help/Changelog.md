@@ -4,6 +4,7 @@
 * New `Krypton.Toolkit.Suite.Extended.InputBox` module
 * Fix toast 'Dismiss' button location
 * New `Krypton.Toolkit.Suite.Extended.Toast` module
+* Fixed [#245](https://github.com/Krypton-Suite/Extended-Toolkit/issues/245), 2108 Canary Nuget lists unecessary dependencies for packages
 
 =======
 

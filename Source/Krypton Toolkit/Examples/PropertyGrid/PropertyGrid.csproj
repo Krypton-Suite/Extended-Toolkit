@@ -15,7 +15,6 @@
     <ProjectReference Include="..\..\Main\Krypton.Toolkit.Suite.Extended.Buttons\Krypton.Toolkit.Suite.Extended.Buttons 2019.csproj" />
     <ProjectReference Include="..\..\Main\Krypton.Toolkit.Suite.Extended.Controls\Krypton.Toolkit.Suite.Extended.Controls 2019.csproj" />
     <ProjectReference Include="..\..\Main\Krypton.Toolkit.Suite.Extended.Circular.ProgressBar\Krypton.Toolkit.Suite.Extended.Circular.ProgressBar 2019.csproj" />
-    <ProjectReference Include="..\..\Main\Krypton.Toolkit.Suite.Extended.PropertyGrid\Krypton.Toolkit.Suite.Extended.PropertyGrid 2019.csproj" />
   </ItemGroup>
   
   <ItemGroup>
