@@ -7,5 +7,15 @@
   <!--Generate NuGet packages on build-->
   <PropertyGroup Condition="'$(Configuration)' == 'Release'">
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+
+    <!--Package icon-->
+    <PackageIcon>Assets\Canary.png</PackageIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\..\Assets\Package Icon\Canary.png" PackagePath="Assets\" />
+
+    <None Include="..\..\..\..\Assets\Package Icon\Stable.png" PackagePath="Assets\" />
+  </ItemGroup>
+
 </Project>

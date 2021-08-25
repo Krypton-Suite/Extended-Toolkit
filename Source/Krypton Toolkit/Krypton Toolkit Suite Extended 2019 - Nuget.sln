@@ -277,6 +277,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Generate Packages", "Genera
 	ProjectSection(SolutionItems) = preProject
 		Main\Directory.Build.props = Main\Directory.Build.props
 		Shared\Directory.Build.props = Shared\Directory.Build.props
+		Main\Directory.Build.targets = Main\Directory.Build.targets
+		Shared\Directory.Build.targets = Shared\Directory.Build.targets
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.InputBox 2019", "Main\Krypton.Toolkit.Suite.Extended.InputBox\Krypton.Toolkit.Suite.Extended.InputBox 2019.csproj", "{2AEC1C12-E8A8-4715-8B8D-9DB405C06FBB}"
