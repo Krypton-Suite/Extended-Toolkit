@@ -1,19 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-    <!--Setup TFMs for all projects-->
-    <Choose>
-        <When Condition="'$(TFMs)' == 'all'">
-            <PropertyGroup>
-                <TargetFrameworks>net35;net40;net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows;net6.0-windows</TargetFrameworks>
-            </PropertyGroup>
-        </When>
-        <Otherwise>
-            <PropertyGroup>
-                <TargetFrameworks>net48;netcoreapp3.1;net5.0-windows;net6.0-windows</TargetFrameworks>
-            </PropertyGroup>
-        </Otherwise>
-    </Choose>
-
+    
     <PropertyGroup>
         <LangVersion>preview</LangVersion>
         <OutputType>library</OutputType>
@@ -39,7 +26,7 @@
 
     <!--Krypton Toolkit Import-->
     <Choose>
-        <When Condition="'$(TFMs)' == 'all'">
+        <When Condition="'$(SolutionName.Endswith(`Nuget`))'">
             <ItemGroup>
                 <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2108.1" />
                 <PackageReference Include="Krypton.Navigator.Canary" Version="6.0.2108.1" />
@@ -47,11 +34,12 @@
         </When>
         <Otherwise>
             <ItemGroup>
-                <PackageReference Include="Krypton.Toolkit.Canary.Lite" Version="6.0.2108.1" />
-                <PackageReference Include="Krypton.Navigator.Canary.Lite" Version="6.0.2108.1" />
+                <ProjectReference Include="..\..\..\..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Toolkit\Krypton.Toolkit 2019.csproj" />
+                <ProjectReference Include="..\..\..\..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Navigator\Krypton.Navigator 2019.csproj" />
             </ItemGroup>
         </Otherwise>
     </Choose>
+
     <ItemGroup>
         <Reference Include="System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net4'))">
             <SpecificVersion>True</SpecificVersion>
