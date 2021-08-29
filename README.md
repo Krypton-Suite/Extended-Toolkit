@@ -17,14 +17,33 @@
 
 =======
 
-# Which packages should I use?
-
-## Non-Lite
-Only use these packages if you require to target a specific framework version between .NET 3.5 and .NET 5/6. Please note that these packages are larger than the lite packages.
-
-## Lite
-These packages only support .NET Framework >= 4.8, .NET Core 3.1 and .NET 5/6.
+# Under Construction
 
 =======
 
-# Under Construction
+## Supporters
+
+Development of the Krypton Extended Toolkit is supported by these generous organisations:
+
+<table>
+<tr>
+	<td width="200px">
+		<a href="https://www.jetbrains.com/">
+		<img src="https://github.com/Krypton-Suite/Extended-Toolkit/blob/master/Assets/PNG/Supporter%20Logos/jetbrains-logo.png" />
+		</a>
+	</td>
+	<td width="200px">
+		<a href="https://www.yourkit.com/">
+		<img src="https://github.com/Krypton-Suite/Extended-Toolkit/blob/master/Assets/PNG/Supporter%20Logos/yourkit-logo.png" />
+		</a>
+	</td>
+</tr>
+<tr>
+	<td width="200px">
+		JetBrains provides cutting-edge IDE and developer productivity tools.
+	</td>
+	<td width="200px">
+		YourKit provides a market-leading intelligent <a href="https://www.yourkit.com/features/">Java Profiler</a> and <a href="https://www.yourkit.com/dotnet/features/">.NET Profiler</a>.
+	</td>
+</tr>
+</table>
