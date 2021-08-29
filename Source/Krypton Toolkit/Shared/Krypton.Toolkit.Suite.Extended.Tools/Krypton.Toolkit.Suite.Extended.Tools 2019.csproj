@@ -16,10 +16,10 @@
 
   <!--Version information-->
   <PropertyGroup>
-    <AssemblyVersion>6.0.2108.1</AssemblyVersion>
-    <FileVersion>6.0.2108.1</FileVersion>
-    <LibraryVersion>6.0.2108.1</LibraryVersion>
-    <Version>6.0.2108.1</Version>
+    <AssemblyVersion>6.0.2109</AssemblyVersion>
+    <FileVersion>6.0.2109</FileVersion>
+    <LibraryVersion>6.0.2109</LibraryVersion>
+    <Version>6.0.2109</Version>
   </PropertyGroup>
   
   <!--Binary/Documentation Output-->
