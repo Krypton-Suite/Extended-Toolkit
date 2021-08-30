@@ -172,7 +172,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
 
         private IconType _iconType;
 
-        private Timer _timer;
+        private System.Windows.Forms.Timer _timer;
 
         private SoundPlayer _player;
 
@@ -443,7 +443,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         #region Methods
         private void FadeIn()
         {
-            Timer timer = new Timer();
+            System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
 
             timer.Interval = 10;
 
@@ -462,7 +462,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
 
         private void FadeOutAndClose()
         {
-            Timer timer = new Timer();
+            System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
             
             timer.Interval = 10;
             
@@ -517,7 +517,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
                     kbtnDismiss.Text = $"&Dismiss ({Seconds - _time}s)";
                 }
 
-                _timer = new Timer();
+                _timer = new System.Windows.Forms.Timer();
 
                 _timer.Interval = 1000;
 

@@ -131,7 +131,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
 
         private int _interval, _positionX, _positionY;
 
-        private Timer _tmrAlert = null;
+        private System.Windows.Forms.Timer _tmrAlert = null;
         #endregion
 
         #region Constructor
@@ -140,7 +140,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         {
             InitializeComponent();
 
-            _tmrAlert = new Timer() { Enabled = true, Interval = 10 };
+            _tmrAlert = new System.Windows.Forms.Timer() { Enabled = true, Interval = 10 };
 
             _tmrAlert.Tick += Alert_Tick;
         }

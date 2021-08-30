@@ -37,7 +37,7 @@
         }
 
         // Attributes ========================================================
-        private Timer m_Timer;
+        private System.Windows.Forms.Timer m_Timer;
         private bool m_IsTimerActive;
         private int m_NumberOfSpoke;
         private int m_SpokeThickness;
@@ -263,7 +263,7 @@
             GetSpokesAngles();
             GetControlCenterPoint();
 
-            m_Timer = new Timer();
+            m_Timer = new System.Windows.Forms.Timer();
             m_Timer.Tick += new EventHandler(aTimer_Tick);
             ActiveTimer();
 

@@ -6,12 +6,6 @@
  */
 #endregion
 
-using System;
-using System.ComponentModel;
-using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Windows.Forms;
-
 using Krypton.Toolkit.Suite.Extended.Common;
 
 namespace Krypton.Toolkit.Suite.Extended.Controls
@@ -19,7 +13,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
     /// <summary>
     /// Summary description for KryptonKnobControlVersion2.
     /// </summary>
-    [DefaultEvent("ValueChanged"), ToolboxBitmap(typeof(Timer))]
+    [DefaultEvent("ValueChanged"), ToolboxBitmap(typeof(System.Windows.Forms.Timer))]
     public class KryptonKnobControlVersion2 : UserControl
     {
         #region Enumerations

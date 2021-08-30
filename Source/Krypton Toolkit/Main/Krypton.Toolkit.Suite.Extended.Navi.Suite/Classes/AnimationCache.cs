@@ -39,7 +39,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         // Fields
 
         Image[] cache;
-        Timer animationTimer;
+        System.Windows.Forms.Timer animationTimer;
         Control control;
         Dictionary<string, int> animatables = new Dictionary<string, int>();
         AnimationEventHandler paintFrame;
@@ -53,7 +53,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 
         public AnimationCache()
         {
-            animationTimer = new Timer();
+            animationTimer = new System.Windows.Forms.Timer();
             animationTimer.Tick += new EventHandler(AnimationTick);
         }
 

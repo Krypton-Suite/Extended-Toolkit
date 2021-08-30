@@ -80,8 +80,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         #region Variables
         private bool disposed = false;
         private KryptonPopUpNotificationWindow frmPopup;
-        private Timer tmrAnimation;
-        private Timer tmrWait;
+        private System.Windows.Forms.Timer tmrAnimation, tmrWait;
 
         private bool isAppearing = true;
         private bool markedForDisposed = false;
@@ -316,10 +315,10 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
             frmPopup.ContextMenuClosed += new EventHandler(frmPopup_ContextMenuClosed);
             frmPopup.VisibleChanged += new EventHandler(frmPopup_VisibleChanged);
 
-            tmrAnimation = new Timer();
+            tmrAnimation = new System.Windows.Forms.Timer();
             tmrAnimation.Tick += new EventHandler(tmAnimation_Tick);
 
-            tmrWait = new Timer();
+            tmrWait = new System.Windows.Forms.Timer();
             tmrWait.Tick += new EventHandler(tmWait_Tick);
         }
         #endregion

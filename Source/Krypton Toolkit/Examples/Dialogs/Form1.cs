@@ -1,5 +1,4 @@
 ﻿using System;
-using System.CodeDom;
 using System.Reflection;
 
 using Krypton.Toolkit;
@@ -17,11 +16,6 @@ namespace Dialogs
         private void kbtnAboutBox_Click(object sender, EventArgs e)
         {
             kabm.DisplayAboutBox();
-        }
-
-        private void kbtnShowInputBox_Click(object sender, EventArgs e)
-        {
-            kibm.DisplayInputBox();
         }
 
         private void Form1_Load(object sender, EventArgs e)
