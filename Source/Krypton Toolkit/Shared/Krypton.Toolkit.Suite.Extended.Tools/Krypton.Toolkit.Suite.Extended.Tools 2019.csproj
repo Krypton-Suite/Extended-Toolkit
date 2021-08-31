@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  
+  <PropertyGroup>
+    <LangVersion>preview</LangVersion>
+    <OutputType>library</OutputType>
+    <RootNamespace>Krypton.Toolkit.Suite.Extended.Tools</RootNamespace>
+    <AssemblyName>Krypton.Toolkit.Suite.Extended.Tools</AssemblyName>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <!--Package Data-->
+  <PropertyGroup>
+    <PackageId>Krypton.Toolkit.Suite.Extended.Tools</PackageId>
+    <Description>An extension to the Krypton standard toolkit. This package holds common tools.</Description>
+  </PropertyGroup>
+
+  <!--Version information-->
+  <PropertyGroup>
+    <AssemblyVersion>6.0.2109</AssemblyVersion>
+    <FileVersion>6.0.2109</FileVersion>
+    <LibraryVersion>6.0.2109</LibraryVersion>
+    <Version>6.0.2109</Version>
+  </PropertyGroup>
+  
+  <!--Binary/Documentation Output-->
+  <PropertyGroup>
+    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Tools\Krypton.Toolkit.Suite.Extended.Tools.xml</DocumentationFile>
+    <OutputPath>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Tools\</OutputPath>
+  </PropertyGroup>
+  
+</Project>

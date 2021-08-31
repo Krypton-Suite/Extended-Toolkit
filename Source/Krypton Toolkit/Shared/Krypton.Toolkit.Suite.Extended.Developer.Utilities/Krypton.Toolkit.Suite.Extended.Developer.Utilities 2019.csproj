@@ -1,0 +1,65 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  
+  <PropertyGroup>
+    <LangVersion>preview</LangVersion>
+    <OutputType>library</OutputType>
+    <RootNamespace>Krypton.Toolkit.Suite.Extended.Developer.Utilities</RootNamespace>
+    <AssemblyName>Krypton.Toolkit.Suite.Extended.Developer.Utilities</AssemblyName>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <!--Package Data-->
+  <PropertyGroup>
+    <PackageId>Krypton.Toolkit.Suite.Extended.Developer.Utilities</PackageId>
+    <Description>An extension to the Krypton standard toolkit. This package holds utilities for developer usage.</Description>
+  </PropertyGroup>
+
+  <!--Version information-->
+  <PropertyGroup>
+    <AssemblyVersion>6.0.2109</AssemblyVersion>
+    <FileVersion>6.0.2109</FileVersion>
+    <LibraryVersion>6.0.2109</LibraryVersion>
+    <Version>6.0.2109</Version>
+  </PropertyGroup>
+
+  <!--Krypton Toolkit Import-->
+  <Choose>
+    <When Condition="'$(SolutionName.Endswith(`Nuget`))'">
+      <ItemGroup>
+        <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2109" />
+      </ItemGroup>
+    </When>
+    <Otherwise>
+      <ItemGroup>
+        <ProjectReference Include="..\..\..\..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Toolkit\Krypton.Toolkit 2019.csproj" />
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
+
+  <!--Binary/Documentation Output-->
+  <PropertyGroup>
+    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Developer.Utilities\Krypton.Toolkit.Suite.Extended.Developer.Utilities.xml</DocumentationFile>
+    <OutputPath>..\..\..\..\Bin\$(configuration)\Shared\Krypton.Toolkit.Suite.Extended.Developer.Utilities\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="WindowsAPICodePackShell" Version="1.1.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Tools\Krypton.Toolkit.Suite.Extended.Tools 2019.csproj" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>
