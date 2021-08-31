@@ -1,5 +1,4 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
     
     <PropertyGroup>
         <LangVersion>preview</LangVersion>
@@ -14,14 +13,6 @@
     <PropertyGroup>
         <PackageId>Krypton.Toolkit.Suite.Extended.File.Explorer</PackageId>
         <Description>An extension to the Krypton standard toolkit. This package implements file explorer features.</Description>
-    </PropertyGroup>
-
-    <!--Version information-->
-    <PropertyGroup>
-      <AssemblyVersion>6.0.2109</AssemblyVersion>
-      <FileVersion>6.0.2109</FileVersion>
-      <LibraryVersion>6.0.2109</LibraryVersion>
-      <Version>6.0.2109</Version>
     </PropertyGroup>
 
     <!--Krypton Toolkit Import-->

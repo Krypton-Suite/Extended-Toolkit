@@ -18,4 +18,12 @@
     <None Include="..\..\..\..\Assets\Package Icon\Stable.png" PackagePath="Assets\" />
   </ItemGroup>
 
+  <!--Version information-->
+  <PropertyGroup>
+    <AssemblyVersion>6.0.2110</AssemblyVersion>
+    <FileVersion>6.0.2110</FileVersion>
+    <LibraryVersion>6.0.2110</LibraryVersion>
+    <Version>6.0.2110</Version>
+  </PropertyGroup>
+
 </Project>

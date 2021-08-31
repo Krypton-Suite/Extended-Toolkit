@@ -16,14 +16,6 @@
         <Description>An extension to the Krypton standard toolkit. This package implements additional tool strip items.</Description>
     </PropertyGroup>
 
-    <!--Version information-->
-    <PropertyGroup>
-      <AssemblyVersion>6.0.2109</AssemblyVersion>
-      <FileVersion>6.0.2109</FileVersion>
-      <LibraryVersion>6.0.2109</LibraryVersion>
-      <Version>6.0.2109</Version>
-    </PropertyGroup>
-
     <!--Krypton Toolkit Import-->
     <Choose>
         <When Condition="'$(SolutionName.Endswith(`Nuget`))'">

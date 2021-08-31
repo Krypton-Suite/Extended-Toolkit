@@ -1,19 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <!--Setup TFMs for all projects-->
-  <Choose>
-    <When Condition="'$(TFMs)' == 'all'">
-      <PropertyGroup>
-        <TargetFrameworks>net35;net40;net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows;net6.0-windows</TargetFrameworks>
-      </PropertyGroup>
-    </When>
-    <Otherwise>
-      <PropertyGroup>
-        <TargetFrameworks>net48;netcoreapp3.1;net5.0-windows;net6.0-windows</TargetFrameworks>
-      </PropertyGroup>
-    </Otherwise>
-  </Choose>
-
   <PropertyGroup>
     <LangVersion>preview</LangVersion>
     <OutputType>library</OutputType>
@@ -27,14 +13,6 @@
   <PropertyGroup>
     <PackageId>Krypton.Toolkit.Suite.Extended.Panels</PackageId>
     <Description>An extension to the Krypton standard toolkit. This package implements palette creation tools.</Description>
-  </PropertyGroup>
-
-  <!--Version information-->
-  <PropertyGroup>
-    <AssemblyVersion>6.0.2109</AssemblyVersion>
-    <FileVersion>6.0.2109</FileVersion>
-    <LibraryVersion>6.0.2109</LibraryVersion>
-    <Version>6.0.2109</Version>
   </PropertyGroup>
 
   <!--Krypton Toolkit Import-->
