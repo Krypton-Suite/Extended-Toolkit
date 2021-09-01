@@ -186,27 +186,27 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
             switch (alertType)
             {
                 case AlertType.SUCESS:
-                    pbxLogo.Image = Resources.sucess48px;
+                    pbxLogo.Image = Properties.Resources.sucess48px;
 
                     ChangeColour(Color.SeaGreen, Color.White);
                     break;
                 case AlertType.INFORMATION:
-                    pbxLogo.Image = Resources.information48px;
+                    pbxLogo.Image = Properties.Resources.information48px;
 
                     ChangeColour(Color.RoyalBlue, Color.White);
                     break;
                 case AlertType.WARNING:
-                    pbxLogo.Image = Resources.warning48px;
+                    pbxLogo.Image = Properties.Resources.warning48px;
 
                     ChangeColour(Color.FromArgb(230, 126, 34), Color.White);
                     break;
                 case AlertType.ERROR:
-                    pbxLogo.Image = Resources.error48px;
+                    pbxLogo.Image = Properties.Resources.error48px;
 
                     ChangeColour(Color.FromArgb(231, 76, 60), Color.White);
                     break;
                 case AlertType.CUSTOM:
-                    pbxLogo.Image = image ?? Resources.information48px;
+                    pbxLogo.Image = image ?? Properties.Resources.information48px;
 
                     ChangeColour(backColour, textColour);
                     break;

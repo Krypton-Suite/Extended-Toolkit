@@ -1088,13 +1088,13 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             switch (this.Renderer)
             {
                 case Renderer.Outlook2003:
-                    return Resources.Grip2003;
+                    return Properties.Resources.Grip2003;
                 case Renderer.Outlook2007:
-                    return Resources.Grip2007;
+                    return Properties.Resources.Grip2007;
                 case Renderer.Krypton:
-                    return Resources.Grip2007;
+                    return Properties.Resources.Grip2007;
                 case Renderer.Custom:
-                    return Resources.Grip2007;
+                    return Properties.Resources.Grip2007;
             }
             return null;
         }
@@ -1123,13 +1123,13 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             switch (this.Renderer)
             {
                 case Renderer.Outlook2003:
-                    return Resources.DropDown2003;
+                    return Properties.Resources.DropDown2003;
                 case Renderer.Outlook2007:
-                    return Resources.DropDown2007;
+                    return Properties.Resources.DropDown2007;
                 case Renderer.Krypton:
-                    return Resources.DropDown2007;
+                    return Properties.Resources.DropDown2007;
                 case Renderer.Custom:
-                    return Resources.DropDown2007;
+                    return Properties.Resources.DropDown2007;
             }
             return null;
         }
@@ -1141,8 +1141,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         private void CreateContextMenu()
         {
             this.oContextMenuStrip = new ContextMenuStrip();
-            this.oContextMenuStrip.Items.Add("Show &More Buttons", Resources.Arrow_Up.ToBitmap(), ShowMoreButtons);
-            this.oContextMenuStrip.Items.Add("Show Fe&wer Buttons", Resources.Arrow_Down.ToBitmap(), ShowFewerButtons);
+            this.oContextMenuStrip.Items.Add("Show &More Buttons", Properties.Resources.Arrow_Up.ToBitmap(), ShowMoreButtons);
+            this.oContextMenuStrip.Items.Add("Show Fe&wer Buttons", Properties.Resources.Arrow_Down.ToBitmap(), ShowFewerButtons);
             if (this.MaxLargeButtonCount >= this.Buttons.CountVisible()) this.oContextMenuStrip.Items[0].Enabled = false;
             if (this.MaxLargeButtonCount == 0) this.oContextMenuStrip.Items[1].Enabled = false;
             this.oContextMenuStrip.Items.Add("Na&vigation Pane Options...", null, NavigationPaneOptions);

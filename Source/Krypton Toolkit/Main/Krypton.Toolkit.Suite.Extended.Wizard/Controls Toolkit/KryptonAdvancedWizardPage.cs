@@ -170,7 +170,7 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
             try
             {
                 //if (stream != null) _wizardImage.Image = Image.FromStream(stream);
-                _wizardImage.Image = Resources.Installer48;
+                _wizardImage.Image = Properties.Resources.Installer48;
             }
             catch (Exception e)
             {

@@ -118,7 +118,7 @@
             _headingRecent = new KryptonContextMenuHeading("Recent Colours");
             _coloursRecent = new KryptonContextMenuColorColumns(ColorScheme.None);
             _separatorNoColour = new KryptonContextMenuSeparator();
-            _itemNoColour = new KryptonContextMenuItem("&No Colour", Resources.ButtonNoColour, OnClickNoColour);
+            _itemNoColour = new KryptonContextMenuItem("&No Colour", Properties.Resources.ButtonNoColour, OnClickNoColour);
             _itemsNoColour = new KryptonContextMenuItems();
             _itemsNoColour.Items.Add(_itemNoColour);
             _separatorMoreColours = new KryptonContextMenuSeparator();

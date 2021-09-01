@@ -11,7 +11,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
     public class ApplicationUtilities
     {
         #region Variables
-        private Image _underConstruction = Resources.UnderConstruction;
+        private Image _underConstruction = Properties.Resources.UnderConstruction;
         #endregion
 
         #region Constructor
@@ -24,7 +24,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
         #region Methods
         public static void UnderConstruction(string message = null, string caption = "Under Construction", Font? typeface = null)
         {
-            Image _underConstruction = Resources.UnderConstruction;
+            Image _underConstruction = Properties.Resources.UnderConstruction;
 
             if (message == null)
             {

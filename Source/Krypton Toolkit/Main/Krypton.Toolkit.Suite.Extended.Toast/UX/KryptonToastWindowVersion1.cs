@@ -350,31 +350,31 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             }
             else if (iconType == IconType.QUESTION)
             {
-                pbxIcon.Image = BitmapToImage(Resources.Input_Box_Question_64_x_64);
+                pbxIcon.Image = BitmapToImage(Properties.Resources.Input_Box_Question_64_x_64);
             }
             else if (iconType == IconType.INFORMATION)
             {
-                pbxIcon.Image = BitmapToImage(Resources.Input_Box_Information_64_x_64);
+                pbxIcon.Image = BitmapToImage(Properties.Resources.Input_Box_Information_64_x_64);
             }
             else if (iconType == IconType.WARNING)
             {
-                pbxIcon.Image = BitmapToImage(Resources.Input_Box_Warning_64_x_58);
+                pbxIcon.Image = BitmapToImage(Properties.Resources.Input_Box_Warning_64_x_58);
             }
             else if (iconType == IconType.ERROR)
             {
-                pbxIcon.Image = BitmapToImage(Resources.Input_Box_Critical_64_x_64);
+                pbxIcon.Image = BitmapToImage(Properties.Resources.Input_Box_Critical_64_x_64);
             }
             else if (iconType == IconType.HAND)
             {
-                pbxIcon.Image = BitmapToImage(Resources.Input_Box_Hand_64_x_64);
+                pbxIcon.Image = BitmapToImage(Properties.Resources.Input_Box_Hand_64_x_64);
             }
             else if (iconType == IconType.STOP)
             {
-                pbxIcon.Image = BitmapToImage(Resources.Input_Box_Stop_64_x_64);
+                pbxIcon.Image = BitmapToImage(Properties.Resources.Input_Box_Stop_64_x_64);
             }
             else if (iconType == IconType.OK)
             {
-                pbxIcon.Image = BitmapToImage(Resources.Input_Box_Ok_64_x_64);
+                pbxIcon.Image = BitmapToImage(Properties.Resources.Input_Box_Ok_64_x_64);
             }
             #endregion
 
@@ -751,7 +751,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                     }
                     break;
                 case IconType.QUESTION:
-                    pbxIcon.Image = Resources.Input_Box_Question_64_x_64;
+                    pbxIcon.Image = Properties.Resources.Input_Box_Question_64_x_64;
 
                     if (systemSound != InputBoxSystemSounds.NONE)
                     {
@@ -770,7 +770,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                     }
                     break;
                 case IconType.INFORMATION:
-                    pbxIcon.Image = Resources.Input_Box_Information_64_x_64;
+                    pbxIcon.Image = Properties.Resources.Input_Box_Information_64_x_64;
 
                     if (systemSound != InputBoxSystemSounds.NONE)
                     {
@@ -789,7 +789,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                     }
                     break;
                 case IconType.WARNING:
-                    pbxIcon.Image = Resources.Input_Box_Warning_64_x_58;
+                    pbxIcon.Image = Properties.Resources.Input_Box_Warning_64_x_58;
 
                     if (systemSound != InputBoxSystemSounds.NONE)
                     {
@@ -808,7 +808,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                     }
                     break;
                 case IconType.ERROR:
-                    pbxIcon.Image = Resources.Input_Box_Critical_64_x_64;
+                    pbxIcon.Image = Properties.Resources.Input_Box_Critical_64_x_64;
 
                     if (systemSound != InputBoxSystemSounds.NONE)
                     {
@@ -827,7 +827,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                     }
                     break;
                 case IconType.HAND:
-                    pbxIcon.Image = Resources.Input_Box_Hand_64_x_64;
+                    pbxIcon.Image = Properties.Resources.Input_Box_Hand_64_x_64;
 
                     if (systemSound != InputBoxSystemSounds.NONE)
                     {
@@ -846,7 +846,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                     }
                     break;
                 case IconType.STOP:
-                    pbxIcon.Image = Resources.Input_Box_Stop_64_x_64;
+                    pbxIcon.Image = Properties.Resources.Input_Box_Stop_64_x_64;
 
                     if (systemSound != InputBoxSystemSounds.NONE)
                     {
@@ -865,7 +865,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                     }
                     break;
                 case IconType.OK:
-                    pbxIcon.Image = Resources.Input_Box_Ok_64_x_64;
+                    pbxIcon.Image = Properties.Resources.Input_Box_Ok_64_x_64;
 
                     if (systemSound != InputBoxSystemSounds.NONE)
                     {

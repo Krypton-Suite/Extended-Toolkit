@@ -9,13 +9,13 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 
     <!--Package icon-->
-    <PackageIcon>Assets\Canary.png</PackageIcon>
+    <PackageIcon>Canary.png</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\..\..\..\Assets\Package Icon\Canary.png" PackagePath="Assets\" />
+    <None Include="..\..\..\..\Assets\Package Icon\Canary.png" Pack="true" PackagePath="\" />
 
-    <None Include="..\..\..\..\Assets\Package Icon\Stable.png" PackagePath="Assets\" />
+    <None Include="..\..\..\..\Assets\Package Icon\Stable.png" Pack="true" PackagePath="\" />
   </ItemGroup>
 
   <!--Version information-->

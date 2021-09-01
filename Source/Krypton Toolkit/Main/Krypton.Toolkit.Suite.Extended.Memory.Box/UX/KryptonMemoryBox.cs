@@ -256,19 +256,19 @@
                     pbxIcon.Image = new Bitmap(iconPath);
                     break;
                 case KryptonMemoryBoxIcon.OK:
-                    pbxIcon.Image = Resources.Input_Box_Ok_64_x_64;
+                    pbxIcon.Image = Properties.Resources.Input_Box_Ok_64_x_64;
                     break;
                 case KryptonMemoryBoxIcon.ERROR:
-                    pbxIcon.Image = Resources.Input_Box_Critical_64_x_64;
+                    pbxIcon.Image = Properties.Resources.Input_Box_Critical_64_x_64;
                     break;
                 case KryptonMemoryBoxIcon.EXCLAMATION:
-                    pbxIcon.Image = Resources.Input_Box_Warning_64_x_58;
+                    pbxIcon.Image = Properties.Resources.Input_Box_Warning_64_x_58;
                     break;
                 case KryptonMemoryBoxIcon.INFORMATION:
-                    pbxIcon.Image = Resources.Input_Box_Information_64_x_64;
+                    pbxIcon.Image = Properties.Resources.Input_Box_Information_64_x_64;
                     break;
                 case KryptonMemoryBoxIcon.QUESTION:
-                    pbxIcon.Image = Resources.Input_Box_Question_64_x_64;
+                    pbxIcon.Image = Properties.Resources.Input_Box_Question_64_x_64;
                     break;
                 case KryptonMemoryBoxIcon.NONE:
                     pbxIcon.Image = null;
@@ -276,10 +276,10 @@
                     UpdateUI();
                     break;
                 case KryptonMemoryBoxIcon.STOP:
-                    pbxIcon.Image = Resources.Input_Box_Stop_64_x_64;
+                    pbxIcon.Image = Properties.Resources.Input_Box_Stop_64_x_64;
                     break;
                 case KryptonMemoryBoxIcon.HAND:
-                    pbxIcon.Image = Resources.Input_Box_Hand_64_x_64;
+                    pbxIcon.Image = Properties.Resources.Input_Box_Hand_64_x_64;
                     break;
             }
 

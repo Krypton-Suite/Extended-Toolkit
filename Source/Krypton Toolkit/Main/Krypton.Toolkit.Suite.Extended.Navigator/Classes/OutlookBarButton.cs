@@ -83,7 +83,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         private string _Text;
         private bool _Visible = true;
         private bool _Allowed = true;
-        private Icon _Image = Resources.DefaultIcon;
+        private Icon _Image = Properties.Resources.DefaultIcon;
         internal Rectangle Rectangle;
         internal bool isLarge;
         private bool _Selected;
@@ -185,7 +185,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             {
                 if (this._Image == null)
                 {
-                    return Resources.DefaultIcon;
+                    return Properties.Resources.DefaultIcon;
                 }
                 else
                 {
