@@ -2457,25 +2457,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                     SystemSounds.Asterisk.Play();
                     break;
                 case ExtendedKryptonMessageBoxIcon.SHIELD:
-                    _messageIcon.Image = Properties.Resources.UAC_Shield;
+                    _messageIcon.Image = SystemIcons.Shield.ToBitmap();
+                    SystemSounds.Beep.Play();
                     break;
                 case ExtendedKryptonMessageBoxIcon.WINDOWSLOGO:
-                    if (Environment.OSVersion.Version.Major == 6 && Environment.OSVersion.Version.Minor == 1)
-                    {
-                        // Use Windows 7 icon
-                        _messageIcon.Image = Properties.Resources.Windows_7;
-                    }
-                    else if (Environment.OSVersion.Version.Major >= 6 && Environment.OSVersion.Version.Minor >= 3)
-                    {
-                        // Use Windows 8/8.1/10 icon
-                        _messageIcon.Image = Properties.Resources.Windows_10;
-                    }
-                    else
-                    {
-                        // Use Windows 11 icon
-
-                        // TODO: Windows 11 icon
-                    }
+                    _messageIcon.Image = SystemIcons.WinLogo.ToBitmap();
                     break;
             }
         }

@@ -49,6 +49,21 @@
         <Reference Include="System.Design" Condition="'$(TargetFramework)' == 'net35'" />
         <!--TODO: Need to specify version here-->
     </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Resources\OutlookGridImageResources.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>OutlookGridImageResources.resx</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Update="Resources\OutlookGridImageResources.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>OutlookGridImageResources.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+    </ItemGroup>
     <!--Binary/Documentation Output-->
     <PropertyGroup>
         <DocumentationFile>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.Outlook.Grid\Krypton.Toolkit.Suite.Extended.Outlook.Grid.xml</DocumentationFile>
