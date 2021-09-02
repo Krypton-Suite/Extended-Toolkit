@@ -3,7 +3,7 @@
     /// <summary>
     /// Special column used to enable nodes in the grid.
     /// </summary>
-    /// <seealso cref="ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn" />
+    /// <seealso cref="KryptonDataGridViewTextBoxColumn" />
     public class KryptonDataGridViewTreeTextColumn : KryptonDataGridViewTextBoxColumn
     {
 
@@ -255,22 +255,22 @@
                 {
                     if (KryptonManager.CurrentGlobalPalette.GetRenderer() == KryptonManager.RenderOffice2010 || KryptonManager.CurrentGlobalPalette.GetRenderer() == KryptonManager.RenderOffice2013)
                     {
-                        graphics.DrawImage(Properties.Resources.collapseIcon2010, glyphRect.X, glyphRect.Y + (glyphRect.Height / 2) - 4, 11, 11);
+                        graphics.DrawImage(Resources.OutlookGridImageResources.CollapseIcon2010, glyphRect.X, glyphRect.Y + (glyphRect.Height / 2) - 4, 11, 11);
                     }
                     else
                     {
-                        graphics.DrawImage(Properties.Resources.expandIcon, glyphRect.X, glyphRect.Y + (glyphRect.Height / 2) - 4, 11, 11);
+                        graphics.DrawImage(Resources.OutlookGridImageResources.ExpandIcon, glyphRect.X, glyphRect.Y + (glyphRect.Height / 2) - 4, 11, 11);
                     }
                 }
                 else
                 {
                     if (KryptonManager.CurrentGlobalPalette.GetRenderer() == KryptonManager.RenderOffice2010 || KryptonManager.CurrentGlobalPalette.GetRenderer() == KryptonManager.RenderOffice2013)
                     {
-                        graphics.DrawImage(Properties.Resources.expandIcon2010, glyphRect.X, glyphRect.Y + (glyphRect.Height / 2) - 4, 11, 11);
+                        graphics.DrawImage(Resources.OutlookGridImageResources.ExpandIcon2010, glyphRect.X, glyphRect.Y + (glyphRect.Height / 2) - 4, 11, 11);
                     }
                     else
                     {
-                        graphics.DrawImage(Properties.Resources.collapseIcon, glyphRect.X, glyphRect.Y + (glyphRect.Height / 2) - 4, 11, 11);
+                        graphics.DrawImage(Resources.OutlookGridImageResources.CollapseIcon, glyphRect.X, glyphRect.Y + (glyphRect.Height / 2) - 4, 11, 11);
                     }
                 }
             }
