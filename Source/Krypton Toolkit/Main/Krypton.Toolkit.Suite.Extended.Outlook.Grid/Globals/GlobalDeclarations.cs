@@ -11,12 +11,15 @@ global using System.Drawing.Imaging;
 global using System.Globalization;
 global using System.IO;
 global using System.Reflection;
+global using System.Resources;
 global using System.Runtime.InteropServices;
 global using System.Security.Principal;
 global using System.Text;
+global using System.Threading;
 global using System.Windows.Forms;
 global using System.Windows.Forms.Design;
 global using System.Windows.Forms.VisualStyles;
 global using System.Xml;
+global using System.Linq;
 
 global using Microsoft.Win32;

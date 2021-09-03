@@ -18,4 +18,19 @@
         /// </summary>
         Bar
     }
+
+    /// <summary>
+    /// Grid filling mode
+    /// </summary>
+    public enum FillMode
+    {
+        /// <summary>
+        /// The grid contains only groups (faster).
+        /// </summary>
+        GroupsOnly,
+        /// <summary>
+        /// The grid contains groups and nodes (no choice, choose this one !)
+        /// </summary>
+        GroupsAndNodes
+    }
 }
