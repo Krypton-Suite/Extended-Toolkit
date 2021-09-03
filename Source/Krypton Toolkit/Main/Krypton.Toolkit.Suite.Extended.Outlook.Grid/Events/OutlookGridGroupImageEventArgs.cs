@@ -1,33 +1,33 @@
 ﻿namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 {
     /// <summary>
-    /// Class for events of the column in the groupbox.
+    /// Class for events of the group image of a group row.
     /// </summary>
-    public class OutlookGridColumnEventArgs : EventArgs
+    public class OutlookGridGroupImageEventArgs : EventArgs
     {
-        private OutlookGridColumn column;
+        private OutlookGridRow row;
 
         /// <summary>
         /// Constructor
         /// </summary>
-        /// <param name="col">The OutlookGridColumn.</param>
-        public OutlookGridColumnEventArgs(OutlookGridColumn col)
+        /// <param name="row">The OutlookGridRow.</param>
+        public OutlookGridGroupImageEventArgs(OutlookGridRow row)
         {
-            this.column = col;
+            this.row = row;
         }
 
         /// <summary>
-        /// Gets or sets the name of the column.
+        /// Gets or sets the row.
         /// </summary>
-        public OutlookGridColumn Column
+        public OutlookGridRow Row
         {
             get
             {
-                return this.column;
+                return this.row;
             }
             set
             {
-                this.column = value;
+                this.row = value;
             }
         }
     }

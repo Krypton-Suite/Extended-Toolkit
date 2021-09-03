@@ -1721,27 +1721,27 @@
             if (_menuItems == null)
             {
                 // Create individual items
-                _menuSortAscending = new KryptonContextMenuItem(LangManager.Instance.GetString("SORTASCENDING"), Properties.Resources.sort_ascending, OnColumnSortAscending);
-                _menuSortDescending = new KryptonContextMenuItem(LangManager.Instance.GetString("SORTDESCENDING"), Properties.Resources.sort_descending, new EventHandler(OnColumnSortDescending));
-                _menuClearSorting = new KryptonContextMenuItem(LangManager.Instance.GetString("CLEARSORTING"), Properties.Resources.sort_up_down_delete_16, new EventHandler(OnColumnClearSorting));
+                _menuSortAscending = new KryptonContextMenuItem(LanguageManager.Instance.GetString("SORTASCENDING"), Resources.OutlookGridImageResources.sort_az_ascending2, OnColumnSortAscending);
+                _menuSortDescending = new KryptonContextMenuItem(LanguageManager.Instance.GetString("SORTDESCENDING"), Resources.OutlookGridImageResources.sort_az_descending2, new EventHandler(OnColumnSortDescending));
+                _menuClearSorting = new KryptonContextMenuItem(LanguageManager.Instance.GetString("CLEARSORTING"), Resources.OutlookGridImageResources.sort_up_down_delete_16, new EventHandler(OnColumnClearSorting));
                 _menuSeparator1 = new KryptonContextMenuSeparator();
-                _menuExpand = new KryptonContextMenuItem(LangManager.Instance.GetString("EXPAND"), Properties.Resources.element_plus_16, new EventHandler(OnGroupExpand));
-                _menuCollapse = new KryptonContextMenuItem(LangManager.Instance.GetString("COLLAPSE"), Properties.Resources.element_minus_16, new EventHandler(OnGroupCollapse));
+                _menuExpand = new KryptonContextMenuItem(LanguageManager.Instance.GetString("EXPAND"), Resources.OutlookGridImageResources.element_plus_16, new EventHandler(OnGroupExpand));
+                _menuCollapse = new KryptonContextMenuItem(LanguageManager.Instance.GetString("COLLAPSE"), Resources.OutlookGridImageResources.element_minus_16, new EventHandler(OnGroupCollapse));
                 _menuSeparator4 = new KryptonContextMenuSeparator();
-                _menuGroupByThisColumn = new KryptonContextMenuItem(LangManager.Instance.GetString("GROUP"), Properties.Resources.element, new EventHandler(OnGroupByThisColumn));
-                _menuUngroupByThisColumn = new KryptonContextMenuItem(LangManager.Instance.GetString("UNGROUP"), Properties.Resources.element_delete, new EventHandler(OnUnGroupByThisColumn));
-                _menuShowGroupBox = new KryptonContextMenuItem(LangManager.Instance.GetString("SHOWGROUPBOX"), null, new EventHandler(OnShowGroupBox));
-                _menuHideGroupBox = new KryptonContextMenuItem(LangManager.Instance.GetString("HIDEGROUPBOX"), null, new EventHandler(OnHideGroupBox));
+                _menuGroupByThisColumn = new KryptonContextMenuItem(LanguageManager.Instance.GetString("GROUP"), Resources.OutlookGridImageResources.element, new EventHandler(OnGroupByThisColumn));
+                _menuUngroupByThisColumn = new KryptonContextMenuItem(LanguageManager.Instance.GetString("UNGROUP"), Resources.OutlookGridImageResources.element_delete, new EventHandler(OnUnGroupByThisColumn));
+                _menuShowGroupBox = new KryptonContextMenuItem(LanguageManager.Instance.GetString("SHOWGROUPBOX"), null, new EventHandler(OnShowGroupBox));
+                _menuHideGroupBox = new KryptonContextMenuItem(LanguageManager.Instance.GetString("HIDEGROUPBOX"), null, new EventHandler(OnHideGroupBox));
                 _menuSeparator2 = new KryptonContextMenuSeparator();
-                _menuBestFitColumn = new KryptonContextMenuItem(LangManager.Instance.GetString("BESTFIT"), null, new EventHandler(OnBestFitColumn));
-                _menuBestFitAllColumns = new KryptonContextMenuItem(LangManager.Instance.GetString("BESTFITALL"), Properties.Resources.fit_to_size, new EventHandler(OnBestFitAllColumns));
+                _menuBestFitColumn = new KryptonContextMenuItem(LanguageManager.Instance.GetString("BESTFIT"), null, new EventHandler(OnBestFitColumn));
+                _menuBestFitAllColumns = new KryptonContextMenuItem(LanguageManager.Instance.GetString("BESTFITALL"), Resources.OutlookGridImageResources.fit_to_size, new EventHandler(OnBestFitAllColumns));
                 _menuSeparator3 = new KryptonContextMenuSeparator();
-                _menuVisibleColumns = new KryptonContextMenuItem(LangManager.Instance.GetString("COLUMNS"), Properties.Resources.table2_selection_column, null);
-                _menuGroupInterval = new KryptonContextMenuItem(LangManager.Instance.GetString("GROUPINTERVAL"));
-                _menuSortBySummary = new KryptonContextMenuItem(LangManager.Instance.GetString("SORTBYSUMMARYCOUNT"), null, new EventHandler(OnSortBySummary));
+                _menuVisibleColumns = new KryptonContextMenuItem(LanguageManager.Instance.GetString("COLUMNS"), Resources.OutlookGridImageResources.table2_selection_column, null);
+                _menuGroupInterval = new KryptonContextMenuItem(LanguageManager.Instance.GetString("GROUPINTERVAL"));
+                _menuSortBySummary = new KryptonContextMenuItem(LanguageManager.Instance.GetString("SORTBYSUMMARYCOUNT"), null, new EventHandler(OnSortBySummary));
                 _menuSortBySummary.CheckOnClick = true;
                 _menuSeparator5 = new KryptonContextMenuSeparator();
-                _menuConditionalFormatting = new KryptonContextMenuItem(LangManager.Instance.GetString("CONDITIONALFORMATTING"), Properties.Resources.table_conditional_16, null);
+                _menuConditionalFormatting = new KryptonContextMenuItem(LanguageManager.Instance.GetString("CONDITIONALFORMATTING"), Resources.OutlookGridImageResources.table_conditional_16, null);
 
                 //Group Interval
                 KryptonContextMenuItems _GroupIntervalItems;
@@ -1750,7 +1750,7 @@
                 KryptonContextMenuItemBase[] arrayOptions = new KryptonContextMenuItemBase[names.Length];
                 for (int i = 0; i < names.Length; i++)
                 {
-                    it = new KryptonContextMenuItem(LangManager.Instance.GetString(names[i]));
+                    it = new KryptonContextMenuItem(LanguageManager.Instance.GetString(names[i]));
                     it.Tag = names[i];
                     it.Click += OnGroupIntervalClick;
                     arrayOptions[i] = it;
@@ -1776,69 +1776,69 @@
                 imgListFormatting.ColorDepth = ColorDepth.Depth32Bit;
                 imgListFormatting.ImageSize = new Size(32, 32);
                 List<ConditionalFormatting> tmpTag = new List<ConditionalFormatting>();
-                imgListFormatting.Images.Add(Properties.Resources.Databar_solid_blue_32);
+                imgListFormatting.Images.Add(Resources.OutlookGridImageResources.Databar_solid_blue_32);
                 tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.Bar, new BarParams(Color.FromArgb(76, 118, 255), false)));
-                imgListFormatting.Images.Add(Properties.Resources.Databar_solid_green_32);
+                imgListFormatting.Images.Add(Resources.OutlookGridImageResources.Databar_solid_green_32);
                 tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.Bar, new BarParams(Color.FromArgb(95, 173, 123), false)));
-                imgListFormatting.Images.Add(Properties.Resources.Databar_solid_red_32);
+                imgListFormatting.Images.Add(Resources.OutlookGridImageResources.Databar_solid_red_32);
                 tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.Bar, new BarParams(Color.FromArgb(248, 108, 103), false)));
-                imgListFormatting.Images.Add(Properties.Resources.Databar_solid_yellow_32);
+                imgListFormatting.Images.Add(Resources.OutlookGridImageResources.Databar_solid_yellow_32);
                 tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.Bar, new BarParams(Color.FromArgb(255, 185, 56), false)));
-                imgListFormatting.Images.Add(Properties.Resources.Databar_solid_violet_32);
+                imgListFormatting.Images.Add(Resources.OutlookGridImageResources.Databar_solid_violet_32);
                 tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.Bar, new BarParams(Color.FromArgb(185, 56, 255), false)));
-                imgListFormatting.Images.Add(Properties.Resources.Databar_solid_pink_32);
+                imgListFormatting.Images.Add(Resources.OutlookGridImageResources.Databar_solid_pink_32);
                 tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.Bar, new BarParams(Color.FromArgb(255, 56, 185), false)));
 
-                imgListFormatting.Images.Add(Properties.Resources.Databar_gradient_blue_32);
+                imgListFormatting.Images.Add(Resources.OutlookGridImageResources.Databar_gradient_blue_32);
                 tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.Bar, new BarParams(Color.FromArgb(76, 118, 255), true)));
-                imgListFormatting.Images.Add(Properties.Resources.Databar_gradient_green_32);
+                imgListFormatting.Images.Add(Resources.OutlookGridImageResources.Databar_gradient_green_32);
                 tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.Bar, new BarParams(Color.FromArgb(95, 173, 123), true)));
-                imgListFormatting.Images.Add(Properties.Resources.Databar_gradient_red_32);
+                imgListFormatting.Images.Add(Resources.OutlookGridImageResources.Databar_gradient_red_32);
                 tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.Bar, new BarParams(Color.FromArgb(248, 108, 103), true)));
-                imgListFormatting.Images.Add(Properties.Resources.Databar_gradient_yellow_32);
+                imgListFormatting.Images.Add(Resources.OutlookGridImageResources.Databar_gradient_yellow_32);
                 tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.Bar, new BarParams(Color.FromArgb(255, 185, 56), true)));
-                imgListFormatting.Images.Add(Properties.Resources.Databar_gradient_violet_32);
+                imgListFormatting.Images.Add(Resources.OutlookGridImageResources.Databar_gradient_violet_32);
                 tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.Bar, new BarParams(Color.FromArgb(185, 56, 255), true)));
-                imgListFormatting.Images.Add(Properties.Resources.Databar_gradient_pink_32);
+                imgListFormatting.Images.Add(Resources.OutlookGridImageResources.Databar_gradient_pink_32);
                 tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.Bar, new BarParams(Color.FromArgb(255, 56, 185), true)));
 
-                imgListFormatting.Images.Add(Properties.Resources.TwoColors_white_blue_32);
-                tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.TwoColorsRange, new TwoColorsParams(Color.White, Color.FromArgb(76, 118, 255))));
-                imgListFormatting.Images.Add(Properties.Resources.TwoColors_blue_white_32);
-                tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.TwoColorsRange, new TwoColorsParams(Color.FromArgb(76, 118, 255), Color.White)));
-                imgListFormatting.Images.Add(Properties.Resources.TwoColors_white_green_32);
-                tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.TwoColorsRange, new TwoColorsParams(Color.White, Color.FromArgb(95, 173, 123))));
-                imgListFormatting.Images.Add(Properties.Resources.TwoColors_green_white_32);
-                tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.TwoColorsRange, new TwoColorsParams(Color.FromArgb(95, 173, 123), Color.White)));
-                imgListFormatting.Images.Add(Properties.Resources.TwoColors_white_red_32);
-                tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.TwoColorsRange, new TwoColorsParams(Color.White, Color.FromArgb(248, 108, 103))));
-                imgListFormatting.Images.Add(Properties.Resources.TwoColors_red_white_32);
-                tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.TwoColorsRange, new TwoColorsParams(Color.FromArgb(248, 108, 103), Color.White)));
-                imgListFormatting.Images.Add(Properties.Resources.TwoColors_white_yellow_32);
-                tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.TwoColorsRange, new TwoColorsParams(Color.White, Color.FromArgb(255, 185, 56))));
-                imgListFormatting.Images.Add(Properties.Resources.TwoColors_yellow_white_32);
-                tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.TwoColorsRange, new TwoColorsParams(Color.FromArgb(255, 185, 56), Color.White)));
-                imgListFormatting.Images.Add(Properties.Resources.TwoColors_white_violet_32);
-                tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.TwoColorsRange, new TwoColorsParams(Color.White, Color.FromArgb(185, 56, 255))));
-                imgListFormatting.Images.Add(Properties.Resources.TwoColors_violet_white_32);
-                tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.TwoColorsRange, new TwoColorsParams(Color.FromArgb(185, 56, 255), Color.White)));
-                imgListFormatting.Images.Add(Properties.Resources.TwoColors_white_pink_32);
-                tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.TwoColorsRange, new TwoColorsParams(Color.White, Color.FromArgb(255, 56, 185))));
-                imgListFormatting.Images.Add(Properties.Resources.TwoColors_pink_white_32);
-                tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.TwoColorsRange, new TwoColorsParams(Color.FromArgb(255, 56, 185), Color.White)));
+                imgListFormatting.Images.Add(Resources.OutlookGridImageResources.TwoColors_white_blue_32);
+                tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.TwoColoursRange, new TwoColoursParams(Color.White, Color.FromArgb(76, 118, 255))));
+                imgListFormatting.Images.Add(Resources.OutlookGridImageResources.TwoColors_blue_white_32);
+                tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.TwoColoursRange, new TwoColoursParams(Color.FromArgb(76, 118, 255), Color.White)));
+                imgListFormatting.Images.Add(Resources.OutlookGridImageResources.TwoColors_white_green_32);
+                tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.TwoColoursRange, new TwoColoursParams(Color.White, Color.FromArgb(95, 173, 123))));
+                imgListFormatting.Images.Add(Resources.OutlookGridImageResources.TwoColors_green_white_32);
+                tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.TwoColoursRange, new TwoColoursParams(Color.FromArgb(95, 173, 123), Color.White)));
+                imgListFormatting.Images.Add(Resources.OutlookGridImageResources.TwoColors_white_red_32);
+                tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.TwoColoursRange, new TwoColoursParams(Color.White, Color.FromArgb(248, 108, 103))));
+                imgListFormatting.Images.Add(Resources.OutlookGridImageResources.TwoColors_red_white_32);
+                tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.TwoColoursRange, new TwoColoursParams(Color.FromArgb(248, 108, 103), Color.White)));
+                imgListFormatting.Images.Add(Resources.OutlookGridImageResources.TwoColors_white_yellow_32);
+                tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.TwoColoursRange, new TwoColoursParams(Color.White, Color.FromArgb(255, 185, 56))));
+                imgListFormatting.Images.Add(Resources.OutlookGridImageResources.TwoColors_yellow_white_32);
+                tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.TwoColoursRange, new TwoColoursParams(Color.FromArgb(255, 185, 56), Color.White)));
+                imgListFormatting.Images.Add(Resources.OutlookGridImageResources.TwoColors_white_violet_32);
+                tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.TwoColoursRange, new TwoColoursParams(Color.White, Color.FromArgb(185, 56, 255))));
+                imgListFormatting.Images.Add(Resources.OutlookGridImageResources.TwoColors_violet_white_32);
+                tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.TwoColoursRange, new TwoColoursParams(Color.FromArgb(185, 56, 255), Color.White)));
+                imgListFormatting.Images.Add(Resources.OutlookGridImageResources.TwoColors_white_pink_32);
+                tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.TwoColoursRange, new TwoColoursParams(Color.White, Color.FromArgb(255, 56, 185))));
+                imgListFormatting.Images.Add(Resources.OutlookGridImageResources.TwoColors_pink_white_32);
+                tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.TwoColoursRange, new TwoColoursParams(Color.FromArgb(255, 56, 185), Color.White)));
 
-                imgListFormatting.Images.Add(Properties.Resources.ThreeColors_green_yellow_red_32);
-                tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.ThreeColorsRange, new ThreeColorsParams(Color.FromArgb(84, 179, 112), Color.FromArgb(252, 229, 130), Color.FromArgb(243, 120, 97))));
-                imgListFormatting.Images.Add(Properties.Resources.ThreeColors_red_yellow_green_32);
-                tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.ThreeColorsRange, new ThreeColorsParams(Color.FromArgb(243, 120, 97), Color.FromArgb(252, 229, 130), Color.FromArgb(84, 179, 112))));
-                imgListFormatting.Images.Add(Properties.Resources.ThreeColors_green_white_red_32);
-                tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.ThreeColorsRange, new ThreeColorsParams(Color.FromArgb(84, 179, 112), Color.White, Color.FromArgb(243, 120, 97))));
-                imgListFormatting.Images.Add(Properties.Resources.ThreeColors_red_white_green_32);
-                tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.ThreeColorsRange, new ThreeColorsParams(Color.FromArgb(243, 120, 97), Color.White, Color.FromArgb(84, 179, 112))));
-                imgListFormatting.Images.Add(Properties.Resources.ThreeColors_blue_white_red_32);
-                tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.ThreeColorsRange, new ThreeColorsParams(Color.FromArgb(134, 166, 253), Color.White, Color.FromArgb(243, 120, 97))));
-                imgListFormatting.Images.Add(Properties.Resources.ThreeColors_red_white_blue_32);
-                tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.ThreeColorsRange, new ThreeColorsParams(Color.FromArgb(243, 120, 97), Color.White, Color.FromArgb(134, 166, 253))));
+                imgListFormatting.Images.Add(Resources.OutlookGridImageResources.ThreeColors_green_yellow_red_32);
+                tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.ThreeColoursRange, new ThreeColoursParams(Color.FromArgb(84, 179, 112), Color.FromArgb(252, 229, 130), Color.FromArgb(243, 120, 97))));
+                imgListFormatting.Images.Add(Resources.OutlookGridImageResources.ThreeColors_red_yellow_green_32);
+                tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.ThreeColoursRange, new ThreeColoursParams(Color.FromArgb(243, 120, 97), Color.FromArgb(252, 229, 130), Color.FromArgb(84, 179, 112))));
+                imgListFormatting.Images.Add(Resources.OutlookGridImageResources.ThreeColors_green_white_red_32);
+                tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.ThreeColoursRange, new ThreeColoursParams(Color.FromArgb(84, 179, 112), Color.White, Color.FromArgb(243, 120, 97))));
+                imgListFormatting.Images.Add(Resources.OutlookGridImageResources.ThreeColors_red_white_green_32);
+                tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.ThreeColoursRange, new ThreeColoursParams(Color.FromArgb(243, 120, 97), Color.White, Color.FromArgb(84, 179, 112))));
+                imgListFormatting.Images.Add(Resources.OutlookGridImageResources.ThreeColors_blue_white_red_32);
+                tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.ThreeColoursRange, new ThreeColoursParams(Color.FromArgb(134, 166, 253), Color.White, Color.FromArgb(243, 120, 97))));
+                imgListFormatting.Images.Add(Resources.OutlookGridImageResources.ThreeColors_red_white_blue_32);
+                tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.ThreeColoursRange, new ThreeColoursParams(Color.FromArgb(243, 120, 97), Color.White, Color.FromArgb(134, 166, 253))));
 
 
                 it = null;
@@ -1846,16 +1846,16 @@
                 arrayOptions = new KryptonContextMenuItemBase[names.Length + 2];
                 for (int i = 0; i < names.Length; i++)
                 {
-                    it = new KryptonContextMenuItem(LangManager.Instance.GetString(names[i]));
+                    it = new KryptonContextMenuItem(LanguageManager.Instance.GetString(names[i]));
                     it.Tag = names[i];
 
                     if (names[i] == EnumConditionalFormatType.Bar.ToString())
                     {
-                        it.Image = Properties.Resources.databar_generic_16;
+                        it.Image = Resources.OutlookGridImageResources.databar_generic_16;
 
                         //Solid
                         KryptonContextMenuHeading KFormattingBarHeadingSolid = new KryptonContextMenuHeading();
-                        KFormattingBarHeadingSolid.Text = LangManager.Instance.GetString("SolidFill");
+                        KFormattingBarHeadingSolid.Text = LanguageManager.Instance.GetString("SolidFill");
                         KryptonContextMenuImageSelect KFormattingBarImgSelectSolid = new KryptonContextMenuImageSelect();
                         KFormattingBarImgSelectSolid.ImageList = imgListFormatting;
                         KFormattingBarImgSelectSolid.ImageIndexStart = 0;
@@ -1866,7 +1866,7 @@
 
                         //Gradient
                         KryptonContextMenuHeading KFormattingBarHeadingGradient = new KryptonContextMenuHeading();
-                        KFormattingBarHeadingGradient.Text = LangManager.Instance.GetString("GradientFill");
+                        KFormattingBarHeadingGradient.Text = LanguageManager.Instance.GetString("GradientFill");
                         KryptonContextMenuImageSelect KFormattingBarImgSelectGradient = new KryptonContextMenuImageSelect();
                         KFormattingBarImgSelectGradient.ImageList = imgListFormatting;
                         KFormattingBarImgSelectGradient.ImageIndexStart = 6;
@@ -1877,17 +1877,17 @@
 
                         //Custom
                         KryptonContextMenuHeading KFormattingBarHeadingOther = new KryptonContextMenuHeading();
-                        KFormattingBarHeadingOther.Text = LangManager.Instance.GetString("Other");
+                        KFormattingBarHeadingOther.Text = LanguageManager.Instance.GetString("Other");
                         KryptonContextMenuItem it2 = null;
-                        it2 = new KryptonContextMenuItem(LangManager.Instance.GetString("CustomThreeDots"));
+                        it2 = new KryptonContextMenuItem(LanguageManager.Instance.GetString("CustomThreeDots"));
                         it2.Tag = "";
-                        it2.Image = Properties.Resources.paint_bucket_green;
+                        it2.Image = Resources.OutlookGridImageResources.paint_bucket_green;
                         it2.Click += OnBarCustomClick;
 
-                        KryptonContextMenuItems _Bars = new KryptonContextMenuItems(new ComponentFactory.Krypton.Toolkit.KryptonContextMenuItemBase[] { it2 });
+                        KryptonContextMenuItems _Bars = new KryptonContextMenuItems(new KryptonContextMenuItemBase[] { it2 });
 
                         //Menu construction
-                        it.Items.AddRange(new ComponentFactory.Krypton.Toolkit.KryptonContextMenuItemBase[] {
+                        it.Items.AddRange(new KryptonContextMenuItemBase[] {
                         KFormattingBarHeadingSolid,
                         KFormattingBarImgSelectSolid,
                         KFormattingBarHeadingGradient,
@@ -1896,9 +1896,9 @@
                         _Bars
                         });
                     }
-                    else if (names[i] == EnumConditionalFormatType.TwoColorsRange.ToString())
+                    else if (names[i] == EnumConditionalFormatType.TwoColoursRange.ToString())
                     {
-                        it.Image = Properties.Resources.color2scale_generic_16;
+                        it.Image = Resources.OutlookGridImageResources.color2scale_generic_16;
 
                         KryptonContextMenuItems _TwoColors;
 
@@ -1915,17 +1915,17 @@
                         sep1.Tag = "";
 
                         KryptonContextMenuItem it2 = null;
-                        it2 = new KryptonContextMenuItem(LangManager.Instance.GetString("CustomThreeDots"));
+                        it2 = new KryptonContextMenuItem(LanguageManager.Instance.GetString("CustomThreeDots"));
                         it2.Tag = "";
-                        it2.Image = Properties.Resources.paint_bucket_green;
+                        it2.Image = Resources.OutlookGridImageResources.paint_bucket_green;
                         it2.Click += OnTwoColorsCustomClick;
 
-                        _TwoColors = new KryptonContextMenuItems(new ComponentFactory.Krypton.Toolkit.KryptonContextMenuItemBase[] { sep1, it2 });
+                        _TwoColors = new KryptonContextMenuItems(new KryptonContextMenuItemBase[] { sep1, it2 });
                         it.Items.Add(_TwoColors);
                     }
-                    else if (names[i] == EnumConditionalFormatType.ThreeColorsRange.ToString())
+                    else if (names[i] == EnumConditionalFormatType.ThreeColoursRange.ToString())
                     {
-                        it.Image = Properties.Resources.color3scale_generic_16;
+                        it.Image = Resources.OutlookGridImageResources.color3scale_generic_16;
 
                         KryptonContextMenuItems _ThreeColors;
 
@@ -1942,12 +1942,12 @@
                         sep1.Tag = "";
 
                         KryptonContextMenuItem it2 = null;
-                        it2 = new KryptonContextMenuItem(LangManager.Instance.GetString("CustomThreeDots"));
+                        it2 = new KryptonContextMenuItem(LanguageManager.Instance.GetString("CustomThreeDots"));
                         it2.Tag = "";
-                        it2.Image = Properties.Resources.paint_bucket_green;
+                        it2.Image = Resources.OutlookGridImageResources.paint_bucket_green;
                         it2.Click += OnThreeColorsCustomClick;
 
-                        _ThreeColors = new KryptonContextMenuItems(new ComponentFactory.Krypton.Toolkit.KryptonContextMenuItemBase[] { sep1, it2 });
+                        _ThreeColors = new KryptonContextMenuItems(new KryptonContextMenuItemBase[] { sep1, it2 });
                         it.Items.Add(_ThreeColors);
                     }
 
@@ -1956,8 +1956,8 @@
                     sep2.Tag = "";
                     arrayOptions[i + 1] = sep2;
                     KryptonContextMenuItem it3 = null;
-                    it3 = new KryptonContextMenuItem(LangManager.Instance.GetString("ClearRules"));
-                    it3.Image = Properties.Resources.eraser;
+                    it3 = new KryptonContextMenuItem(LanguageManager.Instance.GetString("ClearRules"));
+                    it3.Image = Resources.OutlookGridImageResources.eraser;
                     it3.Tag = "";
                     it3.Click += OnClearConditionalClick;
                     arrayOptions[i + 2] = it3;
@@ -2674,7 +2674,7 @@
                                 gr.GroupImage = (System.Drawing.Bitmap)value;
                             //else if (groupedColumns[i].DataGridViewColumn.GetType() == typeof(KryptonDataGridViewRatingColumn))
                             //{
-                            //    gr.GroupImage = (Image)Properties.Resources.ResourceManager.GetObject("star" + value.ToString());
+                            //    gr.GroupImage = (Image)Resources.OutlookGridImageResources.ResourceManager.GetObject("star" + value.ToString());
                             //}
 
                             gr.Level = i;
