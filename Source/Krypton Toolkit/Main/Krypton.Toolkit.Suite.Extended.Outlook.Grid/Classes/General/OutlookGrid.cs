@@ -6,6 +6,23 @@
     /// <seealso cref="KryptonDataGridView" />
     public partial class KryptonOutlookGrid : KryptonDataGridView
     {
+        #region Design Code
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // KryptonOutlookGridGroupBox
+            // 
+            this.AllowDrop = true;
+            this.Name = "KryptonOutlookGridGroupBox";
+            this.Size = new System.Drawing.Size(744, 46);
+            this.DragDrop += new System.Windows.Forms.DragEventHandler(this.KryptonOutlookGridGroupBox_DragDrop);
+            this.DragEnter += new System.Windows.Forms.DragEventHandler(this.KryptonOutlookGridGroupBox_DragEnter);
+            this.ResumeLayout(false);
+
+        }
+        #endregion
+
         private KryptonOutlookGridGroupBox groupBox;
         //Krypton
         private IPalette _palette;
