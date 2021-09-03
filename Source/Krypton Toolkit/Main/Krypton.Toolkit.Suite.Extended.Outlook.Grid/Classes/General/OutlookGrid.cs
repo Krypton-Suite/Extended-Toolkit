@@ -2431,10 +2431,10 @@
                     if (list[i].Cells[formatColumn].Value != null)
                     {
 
-                        if (((TimeSpan)list[i].Cells[formatColumn].Value).TotalMinutes < formatConditions[j].minValue)
-                            formatConditions[j].minValue = ((TimeSpan)list[i].Cells[formatColumn].Value).TotalMinutes;
-                        if (((TimeSpan)list[i].Cells[formatColumn].Value).TotalMinutes > formatConditions[j].maxValue)
-                            formatConditions[j].maxValue = ((TimeSpan)list[i].Cells[formatColumn].Value).TotalMinutes;
+                        if (((TimeSpan)list[i].Cells[formatColumn].Value).TotalMinutes < formatConditions[j].MinValue)
+                            formatConditions[j].MinValue = ((TimeSpan)list[i].Cells[formatColumn].Value).TotalMinutes;
+                        if (((TimeSpan)list[i].Cells[formatColumn].Value).TotalMinutes > formatConditions[j].MaxValue)
+                            formatConditions[j].MaxValue = ((TimeSpan)list[i].Cells[formatColumn].Value).TotalMinutes;
                     }
                     if (list[i].HasChildren)
                         FillMinMaxFormatConditions(typeColumn, j, list[i].Nodes.Nodes, formatColumn);
@@ -2446,10 +2446,10 @@
                 {
                     if (list[i].Cells[formatColumn].Value != null)
                     {
-                        if (Convert.ToDouble(list[i].Cells[formatColumn].Value) < formatConditions[j].minValue)
-                            formatConditions[j].minValue = Convert.ToDouble(list[i].Cells[formatColumn].Value);
-                        if (Convert.ToDouble(list[i].Cells[formatColumn].Value) > formatConditions[j].maxValue)
-                            formatConditions[j].maxValue = Convert.ToDouble(list[i].Cells[formatColumn].Value);
+                        if (Convert.ToDouble(list[i].Cells[formatColumn].Value) < formatConditions[j].MinValue)
+                            formatConditions[j].MinValue = Convert.ToDouble(list[i].Cells[formatColumn].Value);
+                        if (Convert.ToDouble(list[i].Cells[formatColumn].Value) > formatConditions[j].MaxValue)
+                            formatConditions[j].MaxValue = Convert.ToDouble(list[i].Cells[formatColumn].Value);
                     }
                     if (list[i].HasChildren)
                         FillMinMaxFormatConditions(typeColumn, j, list[i].Nodes.Nodes, formatColumn);
@@ -2461,10 +2461,10 @@
                 {
                     if (list[i].Cells[formatColumn].Value != null)
                     {
-                        if ((double)list[i].Cells[formatColumn].Value < formatConditions[j].minValue)
-                            formatConditions[j].minValue = (double)list[i].Cells[formatColumn].Value;
-                        if ((double)list[i].Cells[formatColumn].Value > formatConditions[j].maxValue)
-                            formatConditions[j].maxValue = (double)list[i].Cells[formatColumn].Value;
+                        if ((double)list[i].Cells[formatColumn].Value < formatConditions[j].MinValue)
+                            formatConditions[j].MinValue = (double)list[i].Cells[formatColumn].Value;
+                        if ((double)list[i].Cells[formatColumn].Value > formatConditions[j].MaxValue)
+                            formatConditions[j].MaxValue = (double)list[i].Cells[formatColumn].Value;
                     }
                     if (list[i].HasChildren)
                         FillMinMaxFormatConditions(typeColumn, j, list[i].Nodes.Nodes, formatColumn);
@@ -2490,44 +2490,44 @@
                             case EnumConditionalFormatType.Bar:
                                 if (typeColumn == typeof(TimeSpan))
                                 {
-                                    ((BarParams)fCell.FormatParams).ProportionValue = ColorFormatting.ConvertBar(((TimeSpan)list[i].Cells[formatColumn].Value).TotalMinutes, formatConditions[j].minValue, formatConditions[j].maxValue);
+                                    ((BarParams)fCell.FormatParams).ProportionValue = ColourFormatting.ConvertBar(((TimeSpan)list[i].Cells[formatColumn].Value).TotalMinutes, formatConditions[j].MinValue, formatConditions[j].MaxValue);
                                 }
                                 else if (typeColumn == typeof(Decimal))
                                 {
-                                    ((BarParams)fCell.FormatParams).ProportionValue = ColorFormatting.ConvertBar(Convert.ToDouble(list[i].Cells[formatColumn].Value), formatConditions[j].minValue, formatConditions[j].maxValue);
+                                    ((BarParams)fCell.FormatParams).ProportionValue = ColourFormatting.ConvertBar(Convert.ToDouble(list[i].Cells[formatColumn].Value), formatConditions[j].MinValue, formatConditions[j].MaxValue);
                                 }
                                 else
                                 {
-                                    ((BarParams)fCell.FormatParams).ProportionValue = ColorFormatting.ConvertBar((double)list[i].Cells[formatColumn].Value, formatConditions[j].minValue, formatConditions[j].maxValue);
+                                    ((BarParams)fCell.FormatParams).ProportionValue = ColourFormatting.ConvertBar((double)list[i].Cells[formatColumn].Value, formatConditions[j].MinValue, formatConditions[j].MaxValue);
                                 }
                                 break;
-                            case EnumConditionalFormatType.TwoColorsRange:
+                            case EnumConditionalFormatType.TwoColoursRange:
                                 if (typeColumn == typeof(TimeSpan))
                                 {
-                                    ((TwoColorsParams)fCell.FormatParams).ValueColor = ColorFormatting.ConvertTwoRange(((TimeSpan)list[i].Cells[formatColumn].Value).TotalMinutes, formatConditions[j].minValue, formatConditions[j].maxValue, (TwoColorsParams)formatConditions[j].FormatParams);
+                                    ((TwoColoursParams)fCell.FormatParams).ValueColour = ColourFormatting.ConvertTwoRange(((TimeSpan)list[i].Cells[formatColumn].Value).TotalMinutes, formatConditions[j].MinValue, formatConditions[j].MaxValue, (TwoColoursParams)formatConditions[j].FormatParams);
                                 }
                                 else if (typeColumn == typeof(Decimal))
                                 {
-                                    ((TwoColorsParams)fCell.FormatParams).ValueColor = ColorFormatting.ConvertTwoRange(Convert.ToDouble(list[i].Cells[formatColumn].Value), formatConditions[j].minValue, formatConditions[j].maxValue, (TwoColorsParams)formatConditions[j].FormatParams);
+                                    ((TwoColoursParams)fCell.FormatParams).ValueColour = ColourFormatting.ConvertTwoRange(Convert.ToDouble(list[i].Cells[formatColumn].Value), formatConditions[j].MinValue, formatConditions[j].MaxValue, (TwoColoursParams)formatConditions[j].FormatParams);
                                 }
                                 else
                                 {
-                                    ((TwoColorsParams)fCell.FormatParams).ValueColor = ColorFormatting.ConvertTwoRange((double)list[i].Cells[formatColumn].Value, formatConditions[j].minValue, formatConditions[j].maxValue, (TwoColorsParams)formatConditions[j].FormatParams);
+                                    ((TwoColoursParams)fCell.FormatParams).ValueColour = ColourFormatting.ConvertTwoRange((double)list[i].Cells[formatColumn].Value, formatConditions[j].MinValue, formatConditions[j].MaxValue, (TwoColoursParams)formatConditions[j].FormatParams);
                                 }
                                 //list[i].Cells[formatColumn].Style.SelectionBackColor = list[i].Cells[formatColumn].Style.BackColor;
                                 break;
-                            case EnumConditionalFormatType.ThreeColorsRange:
+                            case EnumConditionalFormatType.ThreeColoursRange:
                                 if (typeColumn == typeof(TimeSpan))
                                 {
-                                    ((ThreeColorsParams)fCell.FormatParams).ValueColor = ColorFormatting.ConvertThreeRange(((TimeSpan)list[i].Cells[formatColumn].Value).TotalMinutes, formatConditions[j].minValue, formatConditions[j].maxValue, (ThreeColorsParams)formatConditions[j].FormatParams);
+                                    ((ThreeColoursParams)fCell.FormatParams).ValueColour = ColourFormatting.ConvertThreeRange(((TimeSpan)list[i].Cells[formatColumn].Value).TotalMinutes, formatConditions[j].MinValue, formatConditions[j].MaxValue, (ThreeColoursParams)formatConditions[j].FormatParams);
                                 }
                                 else if (typeColumn == typeof(Decimal))
                                 {
-                                    ((ThreeColorsParams)fCell.FormatParams).ValueColor = ColorFormatting.ConvertThreeRange(Convert.ToDouble(list[i].Cells[formatColumn].Value), formatConditions[j].minValue, formatConditions[j].maxValue, (ThreeColorsParams)formatConditions[j].FormatParams);
+                                    ((ThreeColoursParams)fCell.FormatParams).ValueColour = ColourFormatting.ConvertThreeRange(Convert.ToDouble(list[i].Cells[formatColumn].Value), formatConditions[j].MinValue, formatConditions[j].MaxValue, (ThreeColoursParams)formatConditions[j].FormatParams);
                                 }
                                 else
                                 {
-                                    ((ThreeColorsParams)fCell.FormatParams).ValueColor = ColorFormatting.ConvertThreeRange((double)list[i].Cells[formatColumn].Value, formatConditions[j].minValue, formatConditions[j].maxValue, (ThreeColorsParams)formatConditions[j].FormatParams);
+                                    ((ThreeColoursParams)fCell.FormatParams).ValueColour = ColourFormatting.ConvertThreeRange((double)list[i].Cells[formatColumn].Value, formatConditions[j].MinValue, formatConditions[j].MaxValue, (ThreeColoursParams)formatConditions[j].FormatParams);
                                 }
                                 //list[i].Cells[formatColumn].Style.SelectionBackColor = list[i].Cells[formatColumn].Style.BackColor;
                                 break;
@@ -2571,8 +2571,8 @@
             {
                 formatColumn = Columns[formatConditions[j].ColumnName].Index;
                 typeColumn = Columns[formatConditions[j].ColumnName].ValueType;
-                formatConditions[j].minValue = double.MaxValue;
-                formatConditions[j].maxValue = double.MinValue;
+                formatConditions[j].MinValue = double.MaxValue;
+                formatConditions[j].MaxValue = double.MinValue;
                 FillMinMaxFormatConditions(typeColumn, j, list, formatColumn);
             }
 
