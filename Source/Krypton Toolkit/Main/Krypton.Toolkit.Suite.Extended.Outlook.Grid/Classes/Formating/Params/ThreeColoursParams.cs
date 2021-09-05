@@ -65,7 +65,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
     }
 }
 
-/// <summary>
+    /// <summary>
     /// Three scale color class parameters
     /// </summary>
     /// <seealso cref="IFormatParams" />

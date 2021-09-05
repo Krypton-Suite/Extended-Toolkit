@@ -3,7 +3,7 @@
     /// <summary>
     /// Parameters for Bar formatting
     /// </summary>
-    /// <seealso cref="JDHSoftware.Krypton.Toolkit.KryptonOutlookGrid.Formatting.IFormatParams" />
+    /// <seealso cref="IFormatParams" />
     public class BarParams : IFormatParams
     {
         /// <summary>

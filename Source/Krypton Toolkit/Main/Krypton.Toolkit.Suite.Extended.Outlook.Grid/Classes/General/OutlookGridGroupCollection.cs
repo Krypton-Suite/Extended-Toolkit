@@ -1,6 +1,6 @@
 ﻿namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 {
-    // <summary>
+    /// <summary>
     /// List of IOutlookGridGroups
     /// </summary>
     public class OutlookGridGroupCollection

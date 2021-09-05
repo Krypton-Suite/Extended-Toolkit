@@ -289,6 +289,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Exten
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Toast", "Examples\Toast\Toast.csproj", "{B83E57B3-8A5B-461B-BA76-6F2307BC4C03}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OutlookGrid", "Examples\OutlookGrid\OutlookGrid.csproj", "{8F855A4B-3A63-4C27-92D6-F0BBC9D15A44}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -603,6 +605,10 @@ Global
 		{B83E57B3-8A5B-461B-BA76-6F2307BC4C03}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B83E57B3-8A5B-461B-BA76-6F2307BC4C03}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B83E57B3-8A5B-461B-BA76-6F2307BC4C03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F855A4B-3A63-4C27-92D6-F0BBC9D15A44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F855A4B-3A63-4C27-92D6-F0BBC9D15A44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F855A4B-3A63-4C27-92D6-F0BBC9D15A44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F855A4B-3A63-4C27-92D6-F0BBC9D15A44}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -702,6 +708,7 @@ Global
 		{335DD135-6475-46D5-A7DB-EA329224D59E} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 		{97917447-2353-4D4D-935F-CF9279F1464F} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 		{B83E57B3-8A5B-461B-BA76-6F2307BC4C03} = {25D5F0A6-A601-424B-9431-8EFE139A58A7}
+		{8F855A4B-3A63-4C27-92D6-F0BBC9D15A44} = {25D5F0A6-A601-424B-9431-8EFE139A58A7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A7CE7732-0982-4703-8EFD-7715D569BAB5}
