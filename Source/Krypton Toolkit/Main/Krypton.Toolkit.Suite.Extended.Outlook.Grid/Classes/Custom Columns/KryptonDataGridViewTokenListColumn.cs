@@ -3,16 +3,17 @@
     /// <summary>
     /// Class for a rating column
     /// </summary>
-    public class KryptonDataGridViewRatingColumn : DataGridViewImageColumn
+    public class KryptonDataGridViewTokenListColumn : KryptonDataGridViewTextBoxColumn
     {
         /// <summary>
         /// Constructor
         /// </summary>
-        public KryptonDataGridViewRatingColumn()
+        public KryptonDataGridViewTokenListColumn()
+            : base()
         {
-            this.CellTemplate = new RatingCell();
+            this.CellTemplate = new TokenListCell();
             this.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            this.ValueType = typeof(int);
+            this.ValueType = typeof(List<TokenListCell>);
         }
     }
 }

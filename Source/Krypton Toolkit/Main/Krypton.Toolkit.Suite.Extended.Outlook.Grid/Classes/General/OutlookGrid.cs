@@ -1,4 +1,6 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
+﻿using System.Linq;
+
+namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 {
     /// <summary>
     /// Krypton DataGridView allowing nested grouping and unlimited sorting
@@ -7,22 +9,16 @@
     public partial class KryptonOutlookGrid : KryptonDataGridView
     {
         #region Design Code
+        private System.ComponentModel.IContainer components = null;
+
         private void InitializeComponent()
         {
-            this.SuspendLayout();
-            // 
-            // KryptonOutlookGridGroupBox
-            // 
-            this.AllowDrop = true;
-            this.Name = "KryptonOutlookGridGroupBox";
-            this.Size = new System.Drawing.Size(744, 46);
-            this.DragDrop += new System.Windows.Forms.DragEventHandler(this.KryptonOutlookGridGroupBox_DragDrop);
-            this.DragEnter += new System.Windows.Forms.DragEventHandler(this.KryptonOutlookGridGroupBox_DragEnter);
-            this.ResumeLayout(false);
+            components = new Container();
 
         }
         #endregion
 
+        #region Variables
         private KryptonOutlookGridGroupBox groupBox;
         //Krypton
         private IPalette _palette;
@@ -79,6 +75,7 @@
 
         //Formatting
         private List<ConditionalFormatting> formatConditions;
+        #endregion
 
         /// <summary>
         /// Group Image Click Event
@@ -1049,7 +1046,7 @@
             ConditionalFormatting newformat = ((List<ConditionalFormatting>)item.Tag)[item.SelectedIndex];
             if (format == null)
             {
-                formatConditions.Add(new Formatting.ConditionalFormatting(col.DataGridViewColumn.Name, newformat.FormatType, newformat.FormatParams));
+                formatConditions.Add(new ConditionalFormatting(col.DataGridViewColumn.Name, newformat.FormatType, newformat.FormatParams));
             }
             else
             {
@@ -1062,7 +1059,7 @@
 
         private void OnTwoColorsCustomClick(object sender, EventArgs e)
         {
-            CustomFormatRule fm = new CustomFormatRule(EnumConditionalFormatType.TwoColorsRange);
+            CustomFormatRule fm = new CustomFormatRule(EnumConditionalFormatType.TwoColoursRange);
             fm.ShowDialog();
             if (fm.DialogResult == DialogResult.OK)
             {
@@ -1070,13 +1067,13 @@
                 ConditionalFormatting format = formatConditions.Where(x => x.ColumnName == col.Name).FirstOrDefault();
                 if (format == null)
                 {
-                    ConditionalFormatting newformat = new Formatting.ConditionalFormatting(col.DataGridViewColumn.Name, EnumConditionalFormatType.TwoColorsRange, new TwoColorsParams(fm.colMin, fm.colMax));
+                    ConditionalFormatting newformat = new ConditionalFormatting(col.DataGridViewColumn.Name, EnumConditionalFormatType.TwoColoursRange, new TwoColoursParams(fm._colMin, fm._colMax));
                     formatConditions.Add(newformat);
                 }
                 else
                 {
-                    format.FormatType = EnumConditionalFormatType.TwoColorsRange;
-                    format.FormatParams = new TwoColorsParams(fm.colMin, fm.colMax);
+                    format.FormatType = EnumConditionalFormatType.TwoColoursRange;
+                    format.FormatParams = new TwoColoursParams(fm._colMin, fm._colMax);
                 }
                 Fill();
             }
@@ -1086,7 +1083,7 @@
 
         private void OnThreeColorsCustomClick(object sender, EventArgs e)
         {
-            CustomFormatRule fm = new CustomFormatRule(EnumConditionalFormatType.ThreeColorsRange);
+            CustomFormatRule fm = new CustomFormatRule(EnumConditionalFormatType.ThreeColoursRange);
             fm.ShowDialog();
             if (fm.DialogResult == DialogResult.OK)
             {
@@ -1094,13 +1091,13 @@
                 ConditionalFormatting format = formatConditions.Where(x => x.ColumnName == col.Name).FirstOrDefault();
                 if (format == null)
                 {
-                    ConditionalFormatting newformat = new Formatting.ConditionalFormatting(col.DataGridViewColumn.Name, EnumConditionalFormatType.ThreeColorsRange, new ThreeColorsParams(Color.FromArgb(248, 105, 107), Color.FromArgb(255, 235, 132), Color.FromArgb(99, 190, 123)));
+                    ConditionalFormatting newformat = new ConditionalFormatting(col.DataGridViewColumn.Name, EnumConditionalFormatType.ThreeColoursRange, new ThreeColoursParams(Color.FromArgb(248, 105, 107), Color.FromArgb(255, 235, 132), Color.FromArgb(99, 190, 123)));
                     formatConditions.Add(newformat);
                 }
                 else
                 {
-                    format.FormatType = EnumConditionalFormatType.ThreeColorsRange;
-                    format.FormatParams = new ThreeColorsParams(Color.FromArgb(248, 105, 107), Color.FromArgb(255, 235, 132), Color.FromArgb(99, 190, 123));
+                    format.FormatType = EnumConditionalFormatType.ThreeColoursRange;
+                    format.FormatParams = new ThreeColoursParams(Color.FromArgb(248, 105, 107), Color.FromArgb(255, 235, 132), Color.FromArgb(99, 190, 123));
                 }
                 Fill();
             }
@@ -1117,13 +1114,13 @@
                 ConditionalFormatting format = formatConditions.Where(x => x.ColumnName == col.Name).FirstOrDefault();
                 if (format == null)
                 {
-                    ConditionalFormatting newformat = new Formatting.ConditionalFormatting(col.DataGridViewColumn.Name, EnumConditionalFormatType.Bar, new BarParams(fm.colMin, fm.gradient));
+                    ConditionalFormatting newformat = new ConditionalFormatting(col.DataGridViewColumn.Name, EnumConditionalFormatType.Bar, new BarParams(fm._colMin, fm._gradient));
                     formatConditions.Add(newformat);
                 }
                 else
                 {
                     format.FormatType = EnumConditionalFormatType.Bar;
-                    format.FormatParams = new BarParams(fm.colMin, fm.gradient);
+                    format.FormatParams = new BarParams(fm._colMin, fm._gradient);
                 }
                 Fill();
             }
@@ -2663,15 +2660,15 @@
                                 Bitmap bmp = new Bitmap(13, 13);
                                 using (Graphics gfx = Graphics.FromImage(bmp))
                                 {
-                                    using (SolidBrush brush = new SolidBrush(((Token)value).BackColor))
+                                    using (SolidBrush brush = new SolidBrush(((Token)value).BackColour))
                                     {
                                         gfx.FillRectangle(brush, 0, 0, bmp.Width, bmp.Height);
                                     }
                                 }
                                 gr.GroupImage = bmp;
                             }
-                            else if (value is System.Drawing.Bitmap)
-                                gr.GroupImage = (System.Drawing.Bitmap)value;
+                            else if (value is Bitmap)
+                                gr.GroupImage = (Bitmap)value;
                             //else if (groupedColumns[i].DataGridViewColumn.GetType() == typeof(KryptonDataGridViewRatingColumn))
                             //{
                             //    gr.GroupImage = (Image)Resources.OutlookGridImageResources.ResourceManager.GetObject("star" + value.ToString());

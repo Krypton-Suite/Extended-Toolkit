@@ -1,4 +1,6 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
+﻿using Krypton.Toolkit.Suite.Extended.Outlook.Grid;
+
+namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 {
     /// <summary>
     /// Three scale color class parameters

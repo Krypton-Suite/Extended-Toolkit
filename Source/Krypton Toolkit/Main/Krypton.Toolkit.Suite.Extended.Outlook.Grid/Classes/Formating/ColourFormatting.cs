@@ -37,8 +37,8 @@
         /// <returns></returns>
         public static Color ConvertTwoRange(double value, double min, double max, TwoColoursParams par)
         {
-            HSVColor A = ColourToHSV(par.MinimumColour);
-            HSVColor B = ColourToHSV(par.MaximumColour);
+            ColourHelper.HSVColour A = ColourToHSV(par.MinimumColour);
+            ColourHelper.HSVColour B = ColourToHSV(par.MaximumColour);
 
             //Ratio
             double percent;
@@ -64,9 +64,9 @@
         /// <returns></returns>
         public static Color ConvertThreeRange(double value, double min, double max, ThreeColoursParams par)
         {
-            HSVColor A = ColourToHSV(par.MinimumColour);
-            HSVColor B = ColourToHSV(par.MaximumColour);
-            HSVColor C = ColourToHSV(par.MediumColour);
+            ColourHelper.HSVColour A = ColourToHSV(par.MinimumColour);
+            ColourHelper.HSVColour B = ColourToHSV(par.MaximumColour);
+            ColourHelper.HSVColour C = ColourToHSV(par.MediumColour);
 
             //Ratio
             double percent;
@@ -94,7 +94,7 @@
             }
         }
 
-        private static HSVColor ColourToHSV(Color colour)
+        private static ColourHelper.HSVColour ColourToHSV(Color colour)
         {
             int max = Math.Max(colour.R, Math.Max(colour.G, colour.B));
             int min = Math.Min(colour.R, Math.Min(colour.G, colour.B));
@@ -103,7 +103,7 @@
             double saturation = (max == 0) ? 0 : 1d - (1d * min / max);
             double value = max / 255d;
 
-            return new HSVColor((float)hue, (float)saturation, (float)value);
+            return new ColourHelper.HSVColour((float)hue, (float)saturation, (float)value);
         }
 
         private static Color ColourFromHSV(double hue, double saturation, double value)
