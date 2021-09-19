@@ -10,9 +10,13 @@
 
     <!--Package icon-->
     <PackageIcon>Canary.png</PackageIcon>
-  </PropertyGroup>
 
-  <ItemGroup>
+		<PackageLicenseFile>..\..\..\..\Documents\Help\License.md</PackageLicenseFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="..\..\..\..\Assets\Package Icon\Nightly.png" Pack="true" PackagePath="\" />
+
     <None Include="..\..\..\..\Assets\Package Icon\Canary.png" Pack="true" PackagePath="\" />
 
     <None Include="..\..\..\..\Assets\Package Icon\Stable.png" Pack="true" PackagePath="\" />
