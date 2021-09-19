@@ -10,6 +10,8 @@
 
 		<!--Package icon-->
 		<PackageIcon>Canary.png</PackageIcon>
+
+		<PackageLicenseFile>..\..\..\..\Documents\Help\License.md</PackageLicenseFile>
 	</PropertyGroup>
 
 	<ItemGroup>
