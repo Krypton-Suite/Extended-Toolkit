@@ -12,6 +12,8 @@
 		<PackageIcon>Canary.png</PackageIcon>
 
 		<PackageLicenseFile>..\..\..\..\Documents\Help\License.md</PackageLicenseFile>
+
+		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 	</PropertyGroup>
 
 	<ItemGroup>
