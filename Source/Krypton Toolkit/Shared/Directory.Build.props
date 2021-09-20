@@ -1,60 +1,87 @@
 <Project>
 
-  <PropertyGroup>
-    <TargetFrameworks>net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows;net6.0-windows</TargetFrameworks>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFrameworks>net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows;net6.0-windows</TargetFrameworks>
+	</PropertyGroup>
 
-  <!--Generate NuGet packages on build-->
-  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	<!--Generate NuGet packages on build-->
+	<PropertyGroup Condition="'$(Configuration)' == 'Release'">
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 
-    <!--Package icon-->
-    <PackageIcon>Canary.png</PackageIcon>
+		<!--Package icon-->
+		<PackageIcon>Canary.png</PackageIcon>
 
 		<PackageLicenseFile>..\..\..\..\Documents\Help\License.md</PackageLicenseFile>
 
-    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<None Include="..\..\..\..\Assets\Package Icon\Nightly.png" Pack="true" PackagePath="\" />
 
-    <None Include="..\..\..\..\Assets\Package Icon\Canary.png" Pack="true" PackagePath="\" />
+		<None Include="..\..\..\..\Assets\Package Icon\Canary.png" Pack="true" PackagePath="\" />
 
-    <None Include="..\..\..\..\Assets\Package Icon\Stable.png" Pack="true" PackagePath="\" />
-  </ItemGroup>
+		<None Include="..\..\..\..\Assets\Package Icon\Stable.png" Pack="true" PackagePath="\" />
+	</ItemGroup>
 
-  <!--Version information-->
-  <PropertyGroup>
-    <!--REMINDER: When packing, use the proper ISO layout, i.e ddHH-->
-    <!--<CurrentDate>$([System.DateTime]::Now.ToString(ddHH))</CurrentDate>-->
+	<!--Generic Toolkit import-->
+	<Choose>
+		<When Condition="'$(SolutionName.Endswith(`Nightly`))'">
+			<ItemGroup>
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="6.2109.262" />
+			</ItemGroup>
+		</When>
+		<Otherwise>
+			<When Condition="'$(SolutionName.Endswith(`Nuget`))'">
+				<ItemGroup>
+					<!--Canary package-->
+					<PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2108.1" />
 
-    <Minor>$([System.DateTime]::Now.ToString(yyMM))</Minor>
-    <Build>$([System.DateTime]::Now.get_DayOfYear().ToString())</Build>
+					<!--Stable package-->
+					<!--<PackageReference Include="Krypton.Toolkit" Version="5.550.2108" />-->
+				</ItemGroup>
+			</When>
+			<Otherwise>
+				<ItemGroup>
+					<When Condition="'$(SolutionName.Endswith(`Dev`))'">
+						<ProjectReference Include="..\..\..\..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Toolkit\Krypton.Toolkit 2019.csproj" />
+					</When>
+				</ItemGroup>
+			</Otherwise>
+		</Otherwise>
+	</Choose>
 
-    <!--Version layout:
-			  6 = Major
-			  2109 = Minor
-			  18 = Build
-			  -alpha = Indicates a pre-release package
-		  -->
-    <LibraryVersion>6.$(Minor).$(Build)</LibraryVersion>
+	<!--Version information-->
+	<PropertyGroup>
+		<!--REMINDER: When packing, use the proper ISO layout, i.e ddHH-->
+		<!--<CurrentDate>$([System.DateTime]::Now.ToString(ddHH))</CurrentDate>-->
 
-    <!--Nightly-->
-    <!--https://docs.microsoft.com/en-us/nuget/create-packages/prerelease-packages-->
-    <PackageVersion>6.$(Minor).$(Build)-alpha</PackageVersion>
+		<Minor>$([System.DateTime]::Now.ToString(yyMM))</Minor>
+		<Build>$([System.DateTime]::Now.get_DayOfYear().ToString())</Build>
 
-    <!--Canary only-->
-    <!--<PackageVersion>6.$(Minor).$(Build)-beta</PackageVersion>-->
+		<!--Version layout:
+				6 = Major
+				2109 = Minor
+				18 = Build
+				-alpha = Indicates a pre-release package
+			-->
+		<LibraryVersion>6.$(Minor).$(Build)</LibraryVersion>
 
-    <!--Stable/Signed-->
-    <!--<PackageVersion>6.$(Minor).$(Build)</PackageVersion>-->
+		<!--Nightly-->
+		<!--https://docs.microsoft.com/en-us/nuget/create-packages/prerelease-packages-->
+		<PackageVersion>6.$(Minor).$(Build)-alpha</PackageVersion>
 
-    <AssemblyVersion>6.$(Minor).$(Build)</AssemblyVersion>
+		<!--Canary only-->
+		<!--<PackageVersion>6.$(Minor).$(Build)-beta</PackageVersion>-->
 
-    <FileVersion>6.$(Minor).$(Build)</FileVersion>
+		<!--Stable/Signed-->
+		<!--<PackageVersion>6.$(Minor).$(Build)</PackageVersion>-->
 
-    <Version>6.$(Minor).$(Build)</Version>
-  </PropertyGroup>
+		<AssemblyVersion>6.$(Minor).$(Build)</AssemblyVersion>
+
+		<FileVersion>6.$(Minor).$(Build)</FileVersion>
+
+		<Version>6.$(Minor).$(Build)</Version>
+	</PropertyGroup>
 
 </Project>

@@ -36,15 +36,15 @@
         <!--TODO: Need to specify version here-->
     </ItemGroup>
 
-    <!--Krypton Toolkit Import-->
+    <!--Krypton Toolkit Import-
     <Choose>
         <When Condition="'$(SolutionName.Endswith(`Nuget`))'">
             <ItemGroup>
-                <!--Canary package-->
+                Canary package
                 <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2108.1" />
 
-                <!--Stable package-->
-                <!--<PackageReference Include="Krypton.Toolkit" Version="5.550.2108" />-->
+                Stable package
+                <PackageReference Include="Krypton.Toolkit" Version="5.550.2108" />-
             </ItemGroup>
         </When>
         <Otherwise>
@@ -52,7 +52,7 @@
                 <ProjectReference Include="..\..\..\..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Toolkit\Krypton.Toolkit 2019.csproj" />
             </ItemGroup>
         </Otherwise>
-    </Choose>
+    </Choose>-->
 
     <!--Binary/Documentation Output-->
     <PropertyGroup>

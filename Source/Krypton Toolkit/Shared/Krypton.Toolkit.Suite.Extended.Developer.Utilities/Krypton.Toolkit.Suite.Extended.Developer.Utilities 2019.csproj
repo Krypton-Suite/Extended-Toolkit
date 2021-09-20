@@ -14,23 +14,23 @@
     <Description>An extension to the Krypton standard toolkit. This package holds utilities for developer usage.</Description>
   </PropertyGroup>
 
-  <!--Krypton Toolkit Import-->
-  <Choose>
-    <When Condition="'$(SolutionName.Endswith(`Nuget`))'">
-      <ItemGroup>
-        <!--Canary package-->
-        <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2108.1" />
+  <!--Krypton Toolkit Import-
+    <Choose>
+        <When Condition="'$(SolutionName.Endswith(`Nuget`))'">
+            <ItemGroup>
+                Canary package
+                <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2108.1" />
 
-        <!--Stable package-->
-        <!--<PackageReference Include="Krypton.Toolkit" Version="5.550.2108" />-->
-      </ItemGroup>
-    </When>
-    <Otherwise>
-      <ItemGroup>
-        <ProjectReference Include="..\..\..\..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Toolkit\Krypton.Toolkit 2019.csproj" />
-      </ItemGroup>
-    </Otherwise>
-  </Choose>
+                Stable package
+                <PackageReference Include="Krypton.Toolkit" Version="5.550.2108" />-
+            </ItemGroup>
+        </When>
+        <Otherwise>
+            <ItemGroup>
+                <ProjectReference Include="..\..\..\..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Toolkit\Krypton.Toolkit 2019.csproj" />
+            </ItemGroup>
+        </Otherwise>
+    </Choose>-->
 
   <!--Binary/Documentation Output-->
   <PropertyGroup>
