@@ -6,6 +6,8 @@
  */
 #endregion
 
+using Krypton.Toolkit.Suite.Extended.Tools;
+
 namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
 {
     internal class KryptonMessageBoxExtended : KryptonForm
@@ -1649,27 +1651,27 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
 
                     break;
                 case ExtendedMessageBoxIcon.QUESTION:
-                    _messageIcon.Image = Resources.Question_32_x_32;
+                    _messageIcon.Image = Properties.Resources.Question_32_x_32;
                     SystemSounds.Question.Play();
                     break;
                 case ExtendedMessageBoxIcon.INFORMATION:
-                    _messageIcon.Image = Resources.Information_32_x_32;
+                    _messageIcon.Image = Properties.Resources.Information_32_x_32;
                     SystemSounds.Asterisk.Play();
                     break;
                 case ExtendedMessageBoxIcon.WARNING:
-                    _messageIcon.Image = Resources.Warning_32_x_32;
+                    _messageIcon.Image = Properties.Resources.Warning_32_x_32;
                     SystemSounds.Exclamation.Play();
                     break;
                 case ExtendedMessageBoxIcon.ERROR:
-                    _messageIcon.Image = Resources.Critical_32_x_32;
+                    _messageIcon.Image = Properties.Resources.Critical_32_x_32;
                     SystemSounds.Asterisk.Play();
                     break;
                 case ExtendedMessageBoxIcon.HAND:
-                    _messageIcon.Image = Resources.Hand_32_x_32;
+                    _messageIcon.Image = Properties.Resources.Hand_32_x_32;
                     SystemSounds.Hand.Play();
                     break;
                 case ExtendedMessageBoxIcon.STOP:
-                    _messageIcon.Image = Resources.Stop_32_x_32;
+                    _messageIcon.Image = Properties.Resources.Stop_32_x_32;
                     SystemSounds.Asterisk.Play();
                     break;
             }

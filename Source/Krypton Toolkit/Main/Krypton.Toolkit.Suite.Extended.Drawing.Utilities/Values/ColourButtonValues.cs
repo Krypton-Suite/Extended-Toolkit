@@ -13,11 +13,11 @@
         #endregion
 
         #region Static Fields
-        private const string DEFAULT_TEXT = "Colour";
+        private const string DEFAULT_TEXT = "&Colour";
 
         private static readonly string _defaultExtraText = string.Empty;
 
-        private static readonly Image _defaultImage = Resources.ColourButton;
+        private static readonly Image _defaultImage = Properties.Resources.ColourButton;
         #endregion
 
         #region Events        

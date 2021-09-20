@@ -1,4 +1,6 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Dialogs
+﻿using Krypton.Toolkit.Suite.Extended.Tools;
+
+namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
     /// <summary>
     /// A window that allows the developer to capture an exception, and present it in a window.

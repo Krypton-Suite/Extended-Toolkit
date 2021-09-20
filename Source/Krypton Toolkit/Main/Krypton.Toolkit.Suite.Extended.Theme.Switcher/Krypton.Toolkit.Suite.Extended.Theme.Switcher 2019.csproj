@@ -16,27 +16,30 @@
         <Description>An extension to the Krypton standard toolkit. This package implements an easy-to-use theme switcher.</Description>
     </PropertyGroup>
 
-    <!--Version information-->
-    <PropertyGroup>
-      <AssemblyVersion>6.0.2109</AssemblyVersion>
-      <FileVersion>6.0.2109</FileVersion>
-      <LibraryVersion>6.0.2109</LibraryVersion>
-      <Version>6.0.2109</Version>
-    </PropertyGroup>
-
     <!--Krypton Toolkit Import-->
     <Choose>
-        <When Condition="'$(SolutionName.Endswith(`Nuget`))'">
+        <When Condition="'$(SolutionName.Endswith(`Nightly`))'">
             <ItemGroup>
-                <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2109" />
-                <PackageReference Include="Krypton.Navigator.Canary" Version="6.0.2109" />
+                <PackageReference Include="Krypton.Navigator.Nightly" Version="6.2109.262" />
             </ItemGroup>
         </When>
         <Otherwise>
-            <ItemGroup>
-                <ProjectReference Include="..\..\..\..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Toolkit\Krypton.Toolkit 2019.csproj" />
-                <ProjectReference Include="..\..\..\..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Navigator\Krypton.Navigator 2019.csproj" />
-            </ItemGroup>
+            <When Condition="'$(SolutionName.Endswith(`Nuget`))'">
+                <ItemGroup>
+                    <!--Canary package-->
+                    <PackageReference Include="Krypton.Navigator.Canary" Version="6.0.2108.1" />
+
+                    <!--Stable package-->
+                    <!--<PackageReference Include="Krypton.Navigator" Version="5.550.2108" />-->
+                </ItemGroup>
+            </When>
+            <Otherwise>
+                <ItemGroup>
+                    <When Condition="'$(SolutionName.Endswith(`Dev`))'">
+                        <ProjectReference Include="..\..\..\..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Navigator\Krypton.Navigator 2019.csproj" />
+                    </When>
+                </ItemGroup>
+            </Otherwise>
         </Otherwise>
     </Choose>
 

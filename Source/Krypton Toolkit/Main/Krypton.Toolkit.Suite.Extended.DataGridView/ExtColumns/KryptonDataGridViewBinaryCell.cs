@@ -149,7 +149,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
             }
             else
             {
-                editor = new ByteViewerForm();
+                editor = new Form();
             }
             // We re-use the Tag property as input/output mechanism, so we don't have to create
             // a new interface just for that. Kind of a hack, I know.

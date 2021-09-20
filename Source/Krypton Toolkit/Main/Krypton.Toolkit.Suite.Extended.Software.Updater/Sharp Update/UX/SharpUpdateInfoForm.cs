@@ -145,15 +145,15 @@
             {
                 if (applicationInfo.ApplicationIcon != null) Icon = applicationInfo.ApplicationIcon;
 
-                Text = Resources.SharpUpdateInfoForm_Title;
+                Text = Properties.Resources.SharpUpdateInfoForm_Title;
 
-                klblVersions.Text = string.Format(Resources.SharpUpdateInfoForm_Version, applicationInfo.ApplicationAssembly.GetName().Version.ToString(), updateInfo.Version.ToString());
+                klblVersions.Text = string.Format(Properties.Resources.SharpUpdateInfoForm_Version, applicationInfo.ApplicationAssembly.GetName().Version.ToString(), updateInfo.Version.ToString());
 
-                klblDescription.Text = Resources.SharpUpdateInfoForm_lblDescription;
+                klblDescription.Text = Properties.Resources.SharpUpdateInfoForm_lblDescription;
 
                 ktxtDescription.Text = updateInfo.Description;
 
-                kbtnBack.Text = Resources.SharpUpdateInfoForm_btnBack;
+                kbtnBack.Text = Properties.Resources.SharpUpdateInfoForm_btnBack;
             }
             catch (Exception e)
             {

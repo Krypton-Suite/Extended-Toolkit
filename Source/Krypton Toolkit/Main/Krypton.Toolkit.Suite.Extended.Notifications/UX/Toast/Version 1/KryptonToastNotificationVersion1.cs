@@ -610,23 +610,23 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
                     }
                     else
                     {
-                        pbxIcon.Image = Resources.Information_128_x_128;
+                        pbxIcon.Image = Properties.Resources.Information_128_x_128;
                     }
                     break;
                 case IconType.OK:
-                    pbxIcon.Image = Resources.Ok_128_x_128;
+                    pbxIcon.Image = Properties.Resources.Ok_128_x_128;
                     break;
                 case IconType.ERROR:
-                    pbxIcon.Image = Resources.Critical_128_x_128;
+                    pbxIcon.Image = Properties.Resources.Critical_128_x_128;
                     break;
                 case IconType.EXCLAMATION:
-                    pbxIcon.Image = Resources.Warning_128_x_128;
+                    pbxIcon.Image = Properties.Resources.Warning_128_x_128;
                     break;
                 case IconType.INFORMATION:
-                    pbxIcon.Image = Resources.Information_128_x_128;
+                    pbxIcon.Image = Properties.Resources.Information_128_x_128;
                     break;
                 case IconType.QUESTION:
-                    pbxIcon.Image = Resources.Question_128_x_128;
+                    pbxIcon.Image = Properties.Resources.Question_128_x_128;
                     break;
                 case IconType.NOTHING:
                     pbxIcon.Image = null;
@@ -634,13 +634,13 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
                 case IconType.NONE:
                     break;
                 case IconType.STOP:
-                    pbxIcon.Image = Resources.Stop_128_x_128;
+                    pbxIcon.Image = Properties.Resources.Stop_128_x_128;
                     break;
                 case IconType.HAND:
-                    pbxIcon.Image = Resources.Hand_128_x_128;
+                    pbxIcon.Image = Properties.Resources.Hand_128_x_128;
                     break;
                 case IconType.WARNING:
-                    pbxIcon.Image = Resources.Input_Box_Warning_128_x_115;
+                    pbxIcon.Image = Properties.Resources.Input_Box_Warning_128_x_115;
                     break;
             }
         }

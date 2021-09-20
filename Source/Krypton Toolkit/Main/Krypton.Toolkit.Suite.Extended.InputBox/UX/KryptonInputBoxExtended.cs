@@ -731,27 +731,27 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
                 case InputBoxIconType.OK:
                     AdaptUI(true);
 
-                    SetIconImage(Resources.Ok);
+                    SetIconImage(Properties.Resources.Ok);
                     break;
                 case InputBoxIconType.ERROR:
                     AdaptUI(true);
 
-                    SetIconImage(Resources.Critical);
+                    SetIconImage(Properties.Resources.Critical);
                     break;
                 case InputBoxIconType.EXCLAMATION:
                     AdaptUI(true);
 
-                    SetIconImage(Resources.Warning);
+                    SetIconImage(Properties.Resources.Warning);
                     break;
                 case InputBoxIconType.INFORMATION:
                     AdaptUI(true);
 
-                    SetIconImage(Resources.Information);
+                    SetIconImage(Properties.Resources.Information);
                     break;
                 case InputBoxIconType.QUESTION:
                     AdaptUI(true);
 
-                    SetIconImage(Resources.Question);
+                    SetIconImage(Properties.Resources.Question);
                     break;
                 case InputBoxIconType.NONE:
                     AdaptUI(false);
@@ -759,12 +759,12 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
                 case InputBoxIconType.STOP:
                     AdaptUI(true);
 
-                    SetIconImage(Resources.Stop);
+                    SetIconImage(Properties.Resources.Stop);
                     break;
                 case InputBoxIconType.HAND:
                     AdaptUI(true);
 
-                    SetIconImage(Resources.Hand);
+                    SetIconImage(Properties.Resources.Hand);
                     break;
             }
         }
@@ -1194,19 +1194,19 @@ namespace Krypton.Toolkit.Suite.Extended.InputBox
 
         private void PropagateIconImageArray(Image[] imageArray)
         {
-            imageArray[0] = Resources.Critical;
+            imageArray[0] = Properties.Resources.Critical;
 
-            imageArray[1] = Resources.Hand;
+            imageArray[1] = Properties.Resources.Hand;
 
-            imageArray[2] = Resources.Information;
+            imageArray[2] = Properties.Resources.Information;
 
-            imageArray[3] = Resources.Ok;
+            imageArray[3] = Properties.Resources.Ok;
 
-            imageArray[4] = Resources.Question;
+            imageArray[4] = Properties.Resources.Question;
 
-            imageArray[5] = Resources.Stop;
+            imageArray[5] = Properties.Resources.Stop;
 
-            imageArray[6] = Resources.Warning;
+            imageArray[6] = Properties.Resources.Warning;
         }
 
         private Image[] ReturnIconImageArray() => IconImages;

@@ -12,7 +12,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
     public class ImageValue : Storage, IContentValues
     {
         #region Static Fields
-        private static readonly Image defaultImage = Resources.Question_32_x_32;
+        private static readonly Image defaultImage = Properties.Resources.Question_32_x_32;
         #endregion
 
         #region Identity

@@ -1,10 +1,16 @@
 =======
 
+## 2021-10-04 - Build 2110 - October 2021 (Canary)
+* New `Krypton.Toolkit.Suite.Extended.Outlook.Grid` module
+* Updated standard toolkit to build `2110`
+
+=======
+
 ## 2021-09-01 - Build 2109 - September 2021 (Canary)
 * New `Krypton.Toolkit.Suite.Extended.InputBox` module
 * Fix toast 'Dismiss' button location
 * New `Krypton.Toolkit.Suite.Extended.Toast` module
-* Fixed [#245](https://github.com/Krypton-Suite/Extended-Toolkit/issues/245), 2108 Canary Nuget lists unecessary dependencies for packages
+* Fixed [#245](https://github.com/Krypton-Suite/Extended-Toolkit/issues/245), 2108 Canary NuGet lists unecessary dependencies for packages
 * Updated standard toolkit to build `2109`
 
 =======
