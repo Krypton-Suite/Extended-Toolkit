@@ -16,33 +16,6 @@
         <Description>An extension to the Krypton standard toolkit. This package holds extensions to the Krypton.Calendar module.</Description>
     </PropertyGroup>
 
-    <!--Generic Toolkit import-->
-    <Choose>
-        <When Condition="'$(SolutionName.Endswith(`Nightly`))'">
-            <ItemGroup>
-                <PackageReference Include="Krypton.Toolkit.Nightly" Version="6.2109.262" />
-            </ItemGroup>
-        </When>
-        <Otherwise>
-            <When Condition="'$(SolutionName.Endswith(`Nuget`))'">
-                <ItemGroup>
-                    <!--Canary package-->
-                    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2108.1" />
-
-                    <!--Stable package-->
-                    <!--<PackageReference Include="Krypton.Toolkit" Version="5.550.2108" />-->
-                </ItemGroup>
-            </When>
-            <Otherwise>
-                <ItemGroup>
-                    <When Condition="'$(SolutionName.Endswith(`Dev`))'">
-                        <ProjectReference Include="..\..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Toolkit\Krypton.Toolkit 2019.csproj" />
-                    </When>
-                </ItemGroup>
-            </Otherwise>
-        </Otherwise>
-    </Choose>
-
     <ItemGroup>
         <Reference Include="System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net4'))">
             <SpecificVersion>True</SpecificVersion>
