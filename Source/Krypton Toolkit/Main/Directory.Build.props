@@ -1,0 +1,78 @@
+<Project>
+
+	<PropertyGroup>
+		<TargetFrameworks>net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows;net6.0-windows</TargetFrameworks>
+	</PropertyGroup>
+
+	<!--Generate NuGet packages on build-->
+	<PropertyGroup Condition="'$(Configuration)' == 'Release'">
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+
+		<!--Package icon-->
+		<PackageIcon>Canary.png</PackageIcon>
+
+		<PackageLicenseFile>..\..\..\..\Documents\Help\License.md</PackageLicenseFile>
+
+		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+	</PropertyGroup>
+
+	<!--Generic Toolkit import-->
+	<Choose>
+		<When Condition="'$(SolutionName.Endswith(`Nightly`))'">
+			<ItemGroup>
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="6.2109.270" />
+			</ItemGroup>
+		</When>
+		<Otherwise>
+			<ItemGroup>
+				<!--Canary package-->
+				<PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2108.1" />
+
+				<!--Stable package-->
+				<!--<PackageReference Include="Krypton.Toolkit" Version="5.550.2108" />-->
+			</ItemGroup>
+		</Otherwise>
+	</Choose>
+
+	<ItemGroup>
+		<None Include="..\..\..\..\Assets\Package Icon\Nightly.png" Pack="true" PackagePath="\" />
+
+		<None Include="..\..\..\..\Assets\Package Icon\Canary.png" Pack="true" PackagePath="\" />
+
+		<None Include="..\..\..\..\Assets\Package Icon\Stable.png" Pack="true" PackagePath="\" />
+	</ItemGroup>
+
+	<!--Version information-->
+	<PropertyGroup>
+		<!--REMINDER: When packing, use the proper ISO layout, i.e ddHH-->
+		<!--<CurrentDate>$([System.DateTime]::Now.ToString(ddHH))</CurrentDate>-->
+
+		<Minor>$([System.DateTime]::Now.ToString(yyMM))</Minor>
+		<Build>$([System.DateTime]::Now.get_DayOfYear().ToString())</Build>
+
+		<!--Version layout:
+				6 = Major
+				2109 = Minor
+				18 = Build
+				-alpha = Indicates a pre-release package
+			-->
+		<LibraryVersion>6.$(Minor).$(Build)</LibraryVersion>
+
+		<!--Nightly-->
+		<!--https://docs.microsoft.com/en-us/nuget/create-packages/prerelease-packages-->
+		<!--<PackageVersion>6.$(Minor).$(Build)-alpha</PackageVersion>-->
+
+		<!--Canary only-->
+		<PackageVersion>6.$(Minor).$(Build)-beta</PackageVersion>
+
+		<!--Stable/Signed-->
+		<!--<PackageVersion>6.$(Minor).$(Build)</PackageVersion>-->
+
+		<AssemblyVersion>6.$(Minor).$(Build)</AssemblyVersion>
+
+		<FileVersion>6.$(Minor).$(Build)</FileVersion>
+
+		<Version>6.$(Minor).$(Build)</Version>
+	</PropertyGroup>
+
+</Project>
