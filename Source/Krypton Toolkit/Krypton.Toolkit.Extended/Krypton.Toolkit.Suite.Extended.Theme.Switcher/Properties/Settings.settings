@@ -1,0 +1,39 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Krypton.Toolkit.Suite.Extended.Theme.Switcher.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="SelectedTheme" Type="Krypton.Toolkit.PaletteModeManager" Scope="User">
+      <Value Profile="(Default)">Office 365 - Blue</Value>
+    </Setting>
+    <Setting Name="CustomThemePath" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="ShowResetButton" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="ShowImportButton" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="PaletteName" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="AskMe" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="DarkTheme" Type="Krypton.Toolkit.PaletteModeManager" Scope="User">
+      <Value Profile="(Default)">Office 365 - Black</Value>
+    </Setting>
+    <Setting Name="LightTheme" Type="Krypton.Toolkit.PaletteModeManager" Scope="User">
+      <Value Profile="(Default)">Office 365 - Blue</Value>
+    </Setting>
+    <Setting Name="DarkModeThemePaletteMode" Type="Krypton.Toolkit.PaletteMode" Scope="User">
+      <Value Profile="(Default)">Office 365 - Black</Value>
+    </Setting>
+    <Setting Name="LightModeThemePaletteMode" Type="Krypton.Toolkit.PaletteMode" Scope="User">
+      <Value Profile="(Default)">Office 365 - Blue</Value>
+    </Setting>
+    <Setting Name="SelectedThemePaletteMode" Type="Krypton.Toolkit.PaletteMode" Scope="User">
+      <Value Profile="(Default)">Office 365 - Blue</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
