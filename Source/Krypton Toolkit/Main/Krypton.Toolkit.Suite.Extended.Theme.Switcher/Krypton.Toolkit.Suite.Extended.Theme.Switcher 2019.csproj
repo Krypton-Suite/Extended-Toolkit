@@ -10,6 +10,23 @@
         <NeutralLanguage>en</NeutralLanguage>
     </PropertyGroup>
 
+  <Choose>
+    <When Condition="'$(SolutionName.Endswith(`Nightly`))'">
+      <ItemGroup>
+        <PackageReference Include="Krypton.Navigator.Nightly" Version="6.2110.274-alpha" />
+      </ItemGroup>
+    </When>
+    <Otherwise>
+      <ItemGroup>
+        <!--Canary package-->
+        <PackageReference Include="Krypton.Navigator.Canary" Version="6.2110.274-beta" />
+
+        <!--Stable package-->
+        <!--<PackageReference Include="Krypton.Navigator" Version="6.2111.xxx" />-->
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
+
     <!--Package Data-->
     <PropertyGroup>
         <PackageId>Krypton.Toolkit.Suite.Extended.Theme.Switcher</PackageId>
