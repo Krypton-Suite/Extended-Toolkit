@@ -11,7 +11,9 @@
 		<!--Package icon-->
 		<PackageIcon>Canary.png</PackageIcon>
 
-		<PackageLicenseFile>..\..\..\..\Documents\Help\License.md</PackageLicenseFile>
+		<!--<PackageLicenseFile>..\..\..\..\Documents\Help\License.md</PackageLicenseFile>-->
+		
+		<PackageLicenseUrl>https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE</PackageLicenseUrl>
 
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 	</PropertyGroup>
