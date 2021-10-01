@@ -22,10 +22,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build System", "Build Syste
 		..\..\build.proj.old = ..\..\build.proj.old
 		..\..\debug.cmd = ..\..\debug.cmd
 		..\..\debug.proj = ..\..\debug.proj
-		..\..\Directory.Build.props = ..\..\Directory.Build.props
-		Third Party\Directory.Build.props = Third Party\Directory.Build.props
-		Directory.Build.targets = Directory.Build.targets
-		Third Party\Directory.Build.targets = Third Party\Directory.Build.targets
 		..\..\purge.cmd = ..\..\purge.cmd
 	EndProjectSection
 EndProject
@@ -280,7 +276,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Generate Packages", "Generate Packages", "{9ACA6117-D269-4425-8500-6BC57560DEB2}"
 	ProjectSection(SolutionItems) = preProject
 		Krypton.Toolkit.Extended\Directory.Build.props = Krypton.Toolkit.Extended\Directory.Build.props
-		Shared\Directory.Build.props = Shared\Directory.Build.props
+		Krypton.Toolkit.Extended\Directory.Build.targets = Krypton.Toolkit.Extended\Directory.Build.targets
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.InputBox 2019", "Krypton.Toolkit.Extended\Krypton.Toolkit.Suite.Extended.InputBox\Krypton.Toolkit.Suite.Extended.InputBox 2019.csproj", "{2AEC1C12-E8A8-4715-8B8D-9DB405C06FBB}"
@@ -292,6 +288,12 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Toast 2019", "Krypton.Toolkit.Extended\Krypton.Toolkit.Suite.Extended.Toast\Krypton.Toolkit.Suite.Extended.Toast 2019.csproj", "{97917447-2353-4D4D-935F-CF9279F1464F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Toast", "Examples\Toast\Toast.csproj", "{B83E57B3-8A5B-461B-BA76-6F2307BC4C03}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Miscellaneous", "Miscellaneous", "{D4FE5CDA-4FFD-4318-8E24-E2779DE0DFA0}"
+	ProjectSection(SolutionItems) = preProject
+		Directory.Build.props = Directory.Build.props
+		Directory.Build.targets = Directory.Build.targets
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -719,6 +721,7 @@ Global
 		{335DD135-6475-46D5-A7DB-EA329224D59E} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 		{97917447-2353-4D4D-935F-CF9279F1464F} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 		{B83E57B3-8A5B-461B-BA76-6F2307BC4C03} = {25D5F0A6-A601-424B-9431-8EFE139A58A7}
+		{D4FE5CDA-4FFD-4318-8E24-E2779DE0DFA0} = {87BE2145-50BE-4A57-9C79-FCE5A64F6065}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A7CE7732-0982-4703-8EFD-7715D569BAB5}

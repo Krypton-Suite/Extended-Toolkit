@@ -33,7 +33,6 @@
 
 	<!--Generic Toolkit import-->
 	<Choose>
-		<When Condition="'$(SolutionName.Endswith(`NuGet`))'">
 			<When Condition="'$(Configuration)' == 'Debug'">
 				<ItemGroup>
 					<PackageReference Include="Krypton.Toolkit.Nightly" Version="6.2110.274-alpha" />
@@ -49,7 +48,6 @@
 					<!--<PackageReference Include="Krypton.Toolkit" Version="5.550.2108" />-->
 				</ItemGroup>
 			</When>
-		</When>
 		<Otherwise>
 			<ItemGroup>
 				<!--Canary package-->
