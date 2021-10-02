@@ -1,4 +1,6 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Dialogs
+﻿using Krypton.Toolkit.Suite.Extended.Common;
+
+namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
     public class KryptonSplashDialog : CommonExtendedKryptonForm
     {
