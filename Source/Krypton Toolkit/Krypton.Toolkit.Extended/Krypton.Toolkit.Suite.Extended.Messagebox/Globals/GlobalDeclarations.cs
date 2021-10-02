@@ -11,11 +11,7 @@ global using System.ComponentModel;
 global using System.Drawing;
 global using System.Media;
 global using System.Runtime.InteropServices;
+global using System.Reflection;
 global using System.Text;
 global using System.Threading;
 global using System.Windows.Forms;
-
-global using Krypton.Toolkit.Suite.Extended.Common;
-global using Krypton.Toolkit.Suite.Extended.Developer.Utilities;
-global using Krypton.Toolkit.Suite.Extended.Messagebox.Properties;
-global using Krypton.Toolkit.Suite.Extended.Tools;

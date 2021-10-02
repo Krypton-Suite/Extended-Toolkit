@@ -8,7 +8,7 @@
   </PropertyGroup>
   
   <ItemGroup>
-    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2109" />
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.2110.274-beta" />
   </ItemGroup>
   
   <ItemGroup>

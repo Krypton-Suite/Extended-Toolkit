@@ -5,49 +5,26 @@
 	</PropertyGroup>
 
 	<!--Generate NuGet packages on build-->
-	<Choose>
-		<When Condition="'$(Configuration)' == 'Debug'">
-			<PropertyGroup>
-				<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	<PropertyGroup Condition="'$(Configuration)' == 'Release'">
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 
-				<PackageIcon>Nightly.png</PackageIcon>
+		<!--Package icon-->
+		<PackageIcon>Canary.png</PackageIcon>
 
-				<PackageLicenseUrl>https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE</PackageLicenseUrl>
+		<!--<PackageLicenseFile>..\..\..\..\Documents\Help\License.md</PackageLicenseFile>-->
 
-				<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-			</PropertyGroup>
-		</When>
-	</Choose>
-	<Otherwise>
-		<PropertyGroup Condition="'$(Configuration)' == 'Release'">
-			<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<PackageLicenseUrl>https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE</PackageLicenseUrl>
 
-			<!--Package icon-->
-			<PackageIcon>Canary.png</PackageIcon>
-
-			<PackageLicenseUrl>https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE</PackageLicenseUrl>
-
-			<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-		</PropertyGroup>
-	</Otherwise>
+		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+	</PropertyGroup>
 
 	<!--Generic Toolkit import-->
 	<Choose>
-			<When Condition="'$(Configuration)' == 'Debug'">
-				<ItemGroup>
-					<PackageReference Include="Krypton.Toolkit.Nightly" Version="6.2110.274-alpha" />
-				</ItemGroup>
-			</When>
-
-			<When Condition="'$(Configuration)' == 'Release'">
-				<ItemGroup>
-					<!--Canary package-->
-					<PackageReference Include="Krypton.Toolkit.Canary" Version="6.2110.274-beta" />
-
-					<!--Stable package-->
-					<!--<PackageReference Include="Krypton.Toolkit" Version="5.550.2108" />-->
-				</ItemGroup>
-			</When>
+		<When Condition="'$(SolutionName.Endswith(`Dev`))'">
+			<ItemGroup>
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="6.2110.274-alpha" />
+			</ItemGroup>
+		</When>
 		<Otherwise>
 			<ItemGroup>
 				<!--Canary package-->
