@@ -385,7 +385,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
 			InitializeComponent();
 
-			RightToLeft = _options.HasFlag(MessageBoxOptions.RtlReading);
+			//RightToLeft = options.HasFlag(MessageBoxOptions.RtlReading);
 
 			#region Setup Contents
 			UpdateText();

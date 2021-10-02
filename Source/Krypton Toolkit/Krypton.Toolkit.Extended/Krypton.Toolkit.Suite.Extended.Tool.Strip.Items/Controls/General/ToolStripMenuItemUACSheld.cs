@@ -6,6 +6,7 @@
  */
 #endregion
 
+using Krypton.Toolkit.Suite.Extended.Global.Utilities;
 
 namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 {
