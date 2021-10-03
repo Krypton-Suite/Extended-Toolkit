@@ -18,10 +18,10 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         private KryptonPanel _panelOptionalCheckBox;
         private KryptonCheckBox _optionalCheckBox;
         private KryptonPanel _panelButtons;
-        private ExtendedMessageButton _button4;
-        private ExtendedMessageButton _button3;
-        private ExtendedMessageButton _button2;
-        private ExtendedMessageButton _button1;
+        private MessageButton _button4;
+        private MessageButton _button3;
+        private MessageButton _button2;
+        private MessageButton _button1;
         private PictureBox _messageIcon;
 
         private void InitializeComponent()
@@ -37,10 +37,10 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             this._panelOptionalCheckBox = new Krypton.Toolkit.KryptonPanel();
             this._optionalCheckBox = new Krypton.Toolkit.KryptonCheckBox();
             this._panelButtons = new Krypton.Toolkit.KryptonPanel();
-            this._button4 = new Krypton.Toolkit.Suite.Extended.Messagebox.ExtendedMessageButton();
-            this._button3 = new Krypton.Toolkit.Suite.Extended.Messagebox.ExtendedMessageButton();
-            this._button2 = new Krypton.Toolkit.Suite.Extended.Messagebox.ExtendedMessageButton();
-            this._button1 = new Krypton.Toolkit.Suite.Extended.Messagebox.ExtendedMessageButton();
+            this._button4 = new Krypton.Toolkit.Suite.Extended.Messagebox.MessageButton();
+            this._button3 = new Krypton.Toolkit.Suite.Extended.Messagebox.MessageButton();
+            this._button2 = new Krypton.Toolkit.Suite.Extended.Messagebox.MessageButton();
+            this._button1 = new Krypton.Toolkit.Suite.Extended.Messagebox.MessageButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -270,5 +270,348 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         }
         #endregion
+
+        #region Static Fields
+        private const int GAP = 10;
+        private static readonly int OS_MAJOR_VERSION;
+        #endregion
+
+        #region Instance Fields
+        private readonly string _text, _optionalCheckBoxText, _copyButtonText, _buttonOneText, _buttonTwoText, _buttonThreeText;
+        private readonly string _caption;
+        private readonly ExtendedMessageBoxButtons _buttons;
+        private readonly ExtendedMessageBoxCustomButtonOptions _customButtonOptions;
+        private readonly ExtendedKryptonMessageBoxIcon _icon;
+        private readonly MessageBoxDefaultButton _defaultButton;
+        private AnchorStyles _optionalCheckBoxAnchor;
+        private MessageBoxOptions _options; // https://github.com/Krypton-Suite/Standard-Toolkit/issues/313
+                                            // If help information provided or we are not a service/default desktop application then grab an owner for showing the message box
+        private bool _fade, _showOptionalCheckBox, _showCopyButton, _hasTimedOut, _showToolTips;
+        private CheckState _optionalCheckBoxCheckState;
+        private DialogResult _buttonOneResult, _buttonTwoResult, _buttonThreeResult;
+        private Double _fadeIn, _fadeOut;
+        public static bool _isOptionalCheckBoxChecked;
+        private int _fadeSleepTimer, _timeOut, _blurRadius;
+        private readonly MessageBoxIcon _messageBoxIcon;
+        private Font _messageboxTypeface;
+        private Image _customMessageBoxIcon;
+        private Point _optionalCheckBoxLocation;
+        private bool _useBlur;
+        private bool? _useYesNoCancelButtonColour;
+        private KryptonForm _parentWindow;
+        private Color? _contentMessageColour, _buttonOneTextColour, _buttonTwoTextColour,
+                       _buttonThreeTextColour, _yesButtonColour, _noButtonColour, _textColour,
+                       _yesNoButtonTextColour;
+        private readonly IWin32Window _showOwner;
+        private readonly HelpInfo _helpInfo;
+        private float _cornerRadius;
+        #endregion
+
+        #region Identity
+        static KryptonMessageBoxExtendedForm() => OS_MAJOR_VERSION = Environment.OSVersion.Version.Major;
+
+        public KryptonMessageBoxExtendedForm()
+        {
+            InitializeComponent();
+        }
+
+        internal KryptonMessageBoxExtendedForm(IWin32Window showOwner, string text, string caption, ExtendedMessageBoxButtons buttons,
+                                               ExtendedKryptonMessageBoxIcon icon, MessageBoxDefaultButton defaultButton,
+                                               MessageBoxOptions options, HelpInfo helpInfo, bool? showCtrlCopy,
+                                               Font messageboxTypeface, bool? showOptionalCheckBox, string optionalCheckBoxText,
+                                               bool? isOptionalCheckBoxChecked, CheckState? optionalCheckBoxCheckState,
+                                               AnchorStyles? optionalCheckBoxAnchor, Point? optionalCheckBoxLocation,
+                                               Image customMessageBoxIcon, bool? showCopyButton, string copyButtonText,
+                                               bool? fade, int? fadeSleepTimer, string buttonOneCustomText,
+                                               string buttonTwoCustomText, string buttonThreeCustomText,
+                                               DialogResult? buttonOneCustomDialogResult, DialogResult? buttonTwoCustomDialogResult,
+                                               DialogResult? buttonThreeCustomDialogResult, float? cornerRadius,
+                                               bool? showToolTips, bool? useBlur, bool? useYesNoCancelButtonColour,
+                                               int? blurRadius, Color? contentMessageColour, Color? buttonOneTextColour,
+                                               Color? buttonTwoTextColour, Color? buttonThreeTextColour,
+                                               Color? yesButtonColour, Color? noButtonColour, Color? textColour,
+                                               Color? yesNoButtonTextColour, KryptonForm? parentWindow)
+        {
+            #region Stored Values
+            _showOwner = showOwner;
+
+            _text = text;
+
+            _caption = caption;
+
+            _buttons = buttons;
+
+            _icon = icon;
+
+            _defaultButton = defaultButton;
+
+            _options = options;
+
+            _helpInfo = helpInfo;
+
+            _messageboxTypeface = messageboxTypeface ?? new Font("Seoge UI", 9f);
+
+            _showOptionalCheckBox = showOptionalCheckBox ?? false;
+
+            _optionalCheckBoxText = optionalCheckBoxText;
+
+            _isOptionalCheckBoxChecked = isOptionalCheckBoxChecked ?? false;
+
+            _optionalCheckBoxCheckState = optionalCheckBoxCheckState ?? CheckState.Unchecked;
+
+            _optionalCheckBoxAnchor = optionalCheckBoxAnchor ?? AnchorStyles.Top | AnchorStyles.Bottom;
+
+            _optionalCheckBoxLocation = optionalCheckBoxLocation ?? new Point(12, 0);
+
+            _customMessageBoxIcon = customMessageBoxIcon;
+
+            _showCopyButton = showCopyButton ?? false;
+
+            _copyButtonText = copyButtonText ?? "&Copy";
+
+            _fade = fade ?? false;
+
+            _fadeSleepTimer = fadeSleepTimer ?? 60;
+
+            _buttonOneText = buttonOneCustomText ?? "&Yes";
+
+            _buttonTwoText = buttonTwoCustomText ?? "&No";
+
+            _buttonThreeText = buttonThreeCustomText ?? "&Cancel";
+
+            _buttonOneResult = buttonOneCustomDialogResult ?? DialogResult.Yes;
+
+            _buttonTwoResult = buttonTwoCustomDialogResult ?? DialogResult.No;
+
+            _buttonThreeResult = buttonThreeCustomDialogResult ?? DialogResult.Cancel;
+
+            _cornerRadius = cornerRadius ?? GlobalStaticValues.PRIMARY_CORNER_ROUNDING_VALUE;
+
+            _showToolTips = showToolTips ?? false;
+
+            _useBlur = useBlur ?? false;
+
+            _useYesNoCancelButtonColour = useYesNoCancelButtonColour ?? false;
+
+            _blurRadius = blurRadius ?? 0;
+
+            _contentMessageColour = contentMessageColour ?? Color.Empty;
+
+            _buttonOneTextColour = buttonOneTextColour ?? Color.Empty;
+
+            _buttonTwoTextColour = buttonTwoTextColour ?? Color.Empty;
+
+            _buttonThreeTextColour = buttonThreeTextColour ?? Color.Empty;
+
+            _yesButtonColour = yesButtonColour ?? Color.Empty;
+
+            _noButtonColour = noButtonColour ?? Color.Empty;
+
+            _textColour = textColour ?? Color.Empty;
+
+            _yesNoButtonTextColour = yesNoButtonTextColour ?? Color.Empty;
+
+            _parentWindow = parentWindow ?? null;
+            #endregion
+
+            InitializeComponent();
+
+            //RightToLeft = options.HasFlag(MessageBoxOptions.RtlReading);
+
+            #region Setup Contents
+            UpdateText();
+
+            UpdateIcon();
+
+            UpdateButtons();
+
+            UpdateDefault();
+
+            UpdateHelp();
+
+            UpdateTextExtra(showCtrlCopy);
+
+            // Finally calculate and set form sizing
+            UpdateSizing(showOwner);
+
+            ShowOptionalCheckBoxUI(showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked, optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation);
+
+            ShowCopyButton(showCopyButton, copyButtonText);
+
+            // Define a corner radius, default is GlobalValues.DEFAULT_CORNER_ROUNDING_VALUE
+            StateCommon.Border.Rounding = _cornerRadius;
+
+            // Blur window
+            if (_useBlur)
+            {
+                if (showOwner is KryptonForm)
+                {
+                    _parentWindow = (KryptonForm)showOwner;
+
+                    _parentWindow.BlurValues.EnableBlur = _useBlur;
+
+                    _parentWindow.BlurValues.BlurWhenFocusLost = _useBlur;
+
+                    _parentWindow.BlurValues.Radius = Convert.ToByte(_blurRadius);
+                }
+                else if (_parentWindow != null)
+                {
+                    showOwner = parentWindow;
+
+                    _parentWindow.BlurValues.EnableBlur = _useBlur;
+
+                    _parentWindow.BlurValues.BlurWhenFocusLost = _useBlur;
+
+                    _parentWindow.BlurValues.Radius = Convert.ToByte(_blurRadius);
+                }
+            }
+
+            // Change Yes, No and Cancel button colours
+            if (_useYesNoCancelButtonColour != null)
+            {
+                if (_yesButtonColour == null && _noButtonColour == null)
+                {
+                    ChangeAbortCancelNoYesButtonColour(buttons, Color.Green, Color.Red, Color.White);
+                }
+                else
+                {
+                    ChangeAbortCancelNoYesButtonColour(_buttons, yesButtonColour, noButtonColour, yesNoButtonTextColour);
+                }
+            }
+            else
+            {
+                ChangeAbortCancelNoYesButtonColour(_buttons, Color.Empty, Color.Empty, Color.Empty);
+            }
+            #endregion
+        }
+        #endregion
     }
+
+    #region Classes
+    internal class HelpInfo
+    {
+        #region Instance Fields
+
+        #endregion
+
+        #region Identity
+
+        /// <summary>
+        /// Initialize a new instance of the HelpInfo class.
+        /// </summary>
+        /// <param name="helpFilePath">Value for HelpFilePath.</param>
+        /// <param name="keyword">Value for Keyword</param>
+        public HelpInfo(string helpFilePath = null, string keyword = null)
+        : this(helpFilePath, keyword, !string.IsNullOrWhiteSpace(keyword) ? HelpNavigator.Topic : HelpNavigator.TableOfContents, null)
+        {
+
+        }
+
+        /// <summary>
+        /// Initialize a new instance of the HelpInfo class.
+        /// </summary>
+        /// <param name="helpFilePath">Value for HelpFilePath.</param>
+        /// <param name="navigator">Value for Navigator</param>
+        /// <param name="param"></param>
+        public HelpInfo(string helpFilePath, HelpNavigator navigator, object param = null)
+            : this(helpFilePath, null, navigator, param)
+        {
+
+        }
+
+        /// <summary>
+        /// Initialize a new instance of the HelpInfo class.
+        /// </summary>
+        /// <param name="helpFilePath">Value for HelpFilePath.</param>
+        /// <param name="navigator">Value for Navigator</param>
+        /// <param name="keyword">Value for Keyword</param>
+        /// <param name="param"></param>
+        private HelpInfo(string helpFilePath, string keyword, HelpNavigator navigator, object param)
+        {
+            HelpFilePath = helpFilePath;
+            Keyword = keyword;
+            Navigator = navigator;
+            Param = param;
+        }
+        #endregion
+
+        #region Properties
+        /// <summary>
+        /// Gets the HelpFilePath property.
+        /// </summary>
+        public string HelpFilePath { get; }
+
+        /// <summary>
+        /// Gets the Keyword property.
+        /// </summary>
+        public string Keyword { get; }
+
+        /// <summary>
+        /// Gets the Navigator property.
+        /// </summary>
+        public HelpNavigator Navigator { get; }
+
+        /// <summary>
+        /// Gets the Param property.
+        /// </summary>
+        public object Param { get; }
+
+        #endregion
+    }
+
+    [ToolboxItem(false)]
+    [DesignTimeVisible(false)]
+    internal class MessageButton : KryptonButton
+    {
+
+        #region Instance Fields
+
+        #endregion
+
+        #region Identity
+        public MessageButton()
+        {
+            IgnoreAltF4 = false;
+            Visible = false;
+            Enabled = false;
+        }
+
+        /// <summary>
+        /// Gets and sets the ignoring of Alt+F4
+        /// </summary>
+        public bool IgnoreAltF4 { get; set; }
+
+        #endregion
+
+        #region Protected
+        /// <summary>
+        /// Processes Windows messages.
+        /// </summary>
+        /// <param name="m">The Windows Message to process. </param>
+        protected override void WndProc(ref Message m)
+        {
+            switch (m.Msg)
+            {
+                case PI.WM_.KEYDOWN:
+                case PI.WM_.SYSKEYDOWN:
+                    if (IgnoreAltF4)
+                    {
+                        // Extract the keys being pressed
+                        Keys keys = ((Keys)((int)m.WParam.ToInt64()));
+
+                        // If the user standard combination ALT + F4
+                        if ((keys == Keys.F4) && ((ModifierKeys & Keys.Alt) == Keys.Alt))
+                        {
+                            // Eat the message, so standard window proc does not close the window
+                            return;
+                        }
+                    }
+                    break;
+            }
+
+            base.WndProc(ref m);
+        }
+        #endregion
+    }
+    #endregion
 }
