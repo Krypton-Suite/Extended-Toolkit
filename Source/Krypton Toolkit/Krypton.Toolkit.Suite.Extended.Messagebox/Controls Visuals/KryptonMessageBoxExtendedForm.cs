@@ -8,6 +8,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 {
     internal partial class KryptonMessageBoxExtendedForm : KryptonForm
     {
+        #region Design Code
         private KryptonPanel kryptonPanel1;
         private TableLayoutPanel tableLayoutPanel1;
         private KryptonWrapLabel _messageText;
@@ -17,10 +18,10 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         private KryptonPanel _panelOptionalCheckBox;
         private KryptonCheckBox _optionalCheckBox;
         private KryptonPanel _panelButtons;
-        private MessageButton _button4;
-        private MessageButton _button3;
-        private MessageButton _button2;
-        private MessageButton _button1;
+        private ExtendedMessageButton _button4;
+        private ExtendedMessageButton _button3;
+        private ExtendedMessageButton _button2;
+        private ExtendedMessageButton _button1;
         private PictureBox _messageIcon;
 
         private void InitializeComponent()
@@ -36,10 +37,10 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             this._panelOptionalCheckBox = new Krypton.Toolkit.KryptonPanel();
             this._optionalCheckBox = new Krypton.Toolkit.KryptonCheckBox();
             this._panelButtons = new Krypton.Toolkit.KryptonPanel();
-            this._button4 = new Krypton.Toolkit.MessageButton();
-            this._button3 = new Krypton.Toolkit.MessageButton();
-            this._button2 = new Krypton.Toolkit.MessageButton();
-            this._button1 = new Krypton.Toolkit.MessageButton();
+            this._button4 = new Krypton.Toolkit.Suite.Extended.Messagebox.ExtendedMessageButton();
+            this._button3 = new Krypton.Toolkit.Suite.Extended.Messagebox.ExtendedMessageButton();
+            this._button2 = new Krypton.Toolkit.Suite.Extended.Messagebox.ExtendedMessageButton();
+            this._button1 = new Krypton.Toolkit.Suite.Extended.Messagebox.ExtendedMessageButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -268,5 +269,6 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             this.ResumeLayout(false);
 
         }
+        #endregion
     }
 }

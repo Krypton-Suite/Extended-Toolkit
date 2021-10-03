@@ -1,5 +1,4 @@
-﻿
-namespace Buttons
+﻿namespace Buttons
 {
     partial class Form1
     {

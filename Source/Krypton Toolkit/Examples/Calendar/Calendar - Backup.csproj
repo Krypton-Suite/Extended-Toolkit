@@ -5,10 +5,7 @@
     <TargetFramework>net5.0-windows</TargetFramework>
     <LangVersion>latest</LangVersion>
     <UseWindowsForms>true</UseWindowsForms>
-  </PropertyGroup>
+  </PropertyGroup>    <ProjectReference Include="..\..\Krypton.Toolkit.Suite.Extended.Calendar\Krypton.Toolkit.Suite.Extended.Calendar 2019.csproj" />
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\Krypton.Toolkit.Suite.Extended.Calendar\Krypton.Toolkit.Suite.Extended.Calendar 2019.csproj" />
-  </ItemGroup>
 
 </Project>

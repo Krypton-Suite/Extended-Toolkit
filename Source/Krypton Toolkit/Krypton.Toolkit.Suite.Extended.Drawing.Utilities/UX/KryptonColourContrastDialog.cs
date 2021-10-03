@@ -49,7 +49,7 @@
         private ToolStripMenuItem hexadecimalToolStripMenuItem;
         private KryptonButton kbtnOk;
         private KryptonButton kbtnCancel;
-        private Buttons.KryptonSplitButton ksbtnPalettes;
+        private KryptonSplitButton ksbtnPalettes;
         private ContextMenuStrip cmsPaletteUtilities;
         private ToolStripMenuItem useBaseColourToolStripMenuItem;
         private ToolStripSeparator toolStripMenuItem7;

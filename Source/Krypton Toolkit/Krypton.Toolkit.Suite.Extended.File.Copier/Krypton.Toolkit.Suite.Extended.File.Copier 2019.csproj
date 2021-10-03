@@ -56,13 +56,14 @@
   <PropertyGroup>
     <DocumentationFile>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.File.Copier\Krypton.Toolkit.Suite.Extended.File.Copier.xml</DocumentationFile>
     <OutputPath>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.File.Copier\</OutputPath>
+    <PackageIcon>Canary.png</PackageIcon>
   </PropertyGroup>
   
   <ItemGroup>
     <PackageReference Include="WindowsAPICodePackShell" Version="1.1.2" />
   </ItemGroup>
+  
   <ItemGroup>
-    <ProjectReference Include="..\..\Shared\Krypton.Toolkit.Suite.Extended.Developer.Utilities\Krypton.Toolkit.Suite.Extended.Developer.Utilities 2019.csproj" />
     <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Developer.Utilities\Krypton.Toolkit.Suite.Extended.Developer.Utilities 2019.csproj" />
   </ItemGroup>
 

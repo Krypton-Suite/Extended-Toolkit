@@ -38,7 +38,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<None Include="...\Assets\Package Icon\Canary.png" Link="Icon.png" Pack="true" PackagePath="" />
+		<None Include="...\Assets\Package Icon\Canary.png" Link="Canary.png" Pack="true" PackagePath="" />
 	</ItemGroup>
 
 	<PropertyGroup>
@@ -76,14 +76,6 @@
 			</ItemGroup>
 		</Otherwise>
 	</Choose>
-
-	<ItemGroup>
-		<None Include="..\Assets\Package Icon\Nightly.png" Pack="true" PackagePath="\" />
-
-		<None Include="..\Assets\Package Icon\Canary.png" Pack="true" PackagePath="\" />
-
-		<None Include="..\Assets\Package Icon\Stable.png" Pack="true" PackagePath="\" />
-	</ItemGroup>
 
 	<!--Version information-->
 	<PropertyGroup>
