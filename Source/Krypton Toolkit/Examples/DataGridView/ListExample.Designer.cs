@@ -80,7 +80,7 @@ namespace DataGridViewExt
             this.colDomainUpDown = new Krypton.Toolkit.KryptonDataGridViewDomainUpDownColumn();
             this.colNumericUpDown = new Krypton.Toolkit.KryptonDataGridViewNumericUpDownColumn();
             this.colCheckBox = new Krypton.Toolkit.KryptonDataGridViewCheckBoxColumn();
-            this.BinaryColumn = new Krypton.Toolkit.KryptonDataGridViewBinaryColumn();
+            this.BinaryColumn = new Krypton.Toolkit.Suite.Extended.DataGridView.KryptonDataGridViewBinaryColumn();
             this.groupBoxPalette.SuspendLayout();
             this.groupBoxGridStyle.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -678,7 +678,7 @@ namespace DataGridViewExt
         private Krypton.Toolkit.KryptonDataGridViewDomainUpDownColumn colDomainUpDown;
         private Krypton.Toolkit.KryptonDataGridViewNumericUpDownColumn colNumericUpDown;
         private Krypton.Toolkit.KryptonDataGridViewCheckBoxColumn colCheckBox;
-        private Krypton.Toolkit.KryptonDataGridViewBinaryColumn BinaryColumn;
+        private Krypton.Toolkit.Suite.Extended.DataGridView.KryptonDataGridViewBinaryColumn BinaryColumn;
     }
 }
 
