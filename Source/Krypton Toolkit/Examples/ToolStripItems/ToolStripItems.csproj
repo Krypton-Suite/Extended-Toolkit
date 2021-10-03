@@ -5,6 +5,7 @@
     <TargetFramework>net48</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
+    <Configurations>Debug;Release;Nightly</Configurations>
   </PropertyGroup>
 
   <ItemGroup>

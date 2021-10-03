@@ -8,6 +8,7 @@
         <AssemblyName>Krypton.Toolkit.Suite.Extended.Palette.Selectors</AssemblyName>
         <UseWindowsForms>true</UseWindowsForms>
         <NeutralLanguage>en</NeutralLanguage>
+        <Configurations>Debug;Release;Nightly</Configurations>
     </PropertyGroup>
 
     <!--Package Data-->

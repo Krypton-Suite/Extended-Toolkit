@@ -61,9 +61,9 @@
 
 	<!--Generic Toolkit import-->
 	<Choose>
-		<When Condition="'$(SolutionName.Endswith(`Dev`))'">
+		<When Condition="'$(Configuration)' == 'Nightly'">
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="6.2110.274-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="6.2110.276-alpha" />
 			</ItemGroup>
 		</When>
 		<Otherwise>

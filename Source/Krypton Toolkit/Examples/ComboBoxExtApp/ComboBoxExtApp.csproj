@@ -5,6 +5,7 @@
         <UseWindowsForms>true</UseWindowsForms>
         <LangVersion>latest</LangVersion>
         <OutputType>WinExe</OutputType>
+        <Configurations>Debug;Release;Nightly</Configurations>
     </PropertyGroup>
 
     <ItemGroup>

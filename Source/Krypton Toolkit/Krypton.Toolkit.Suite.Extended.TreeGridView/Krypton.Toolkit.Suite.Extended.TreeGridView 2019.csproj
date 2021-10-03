@@ -10,6 +10,7 @@
         <EnableNETAnalyzers>true</EnableNETAnalyzers>
         <AnalysisLevel>latest</AnalysisLevel>
         <NeutralLanguage>en</NeutralLanguage>
+        <Configurations>Debug;Release;Nightly</Configurations>
     </PropertyGroup>
 
     <!--Package Data-->
