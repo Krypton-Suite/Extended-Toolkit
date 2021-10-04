@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Krypton.Toolkit.Suite.Extended.Messagebox
+﻿namespace Krypton.Toolkit.Suite.Extended.Messagebox
 {
     internal partial class KryptonMessageBoxExtendedForm : KryptonForm
     {
@@ -484,6 +478,725 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             }
             #endregion
         }
+        #endregion
+
+        #region Implementation
+        private void UpdateText()
+        {
+            Text = (string.IsNullOrEmpty(_caption) ? string.Empty : _caption.Split(Environment.NewLine.ToCharArray())[0]);
+
+            if (_textColour != null || _textColour != Color.Empty)
+            {
+                _messageText.StateCommon.TextColor = (Color)_textColour;
+
+                _optionalCheckBox.StateCommon.ShortText.Color1 = (Color)_textColour;
+
+                _optionalCheckBox.StateCommon.ShortText.Color2 = (Color)_textColour;
+            }
+            else if (_contentMessageColour != null || _contentMessageColour != Color.Empty)
+            {
+                _messageText.StateCommon.TextColor = (Color)_contentMessageColour;
+            }
+            else
+            {
+                _messageText.StateCommon.TextColor = Color.Empty;
+
+                _optionalCheckBox.StateCommon.ShortText.Color1 = Color.Empty;
+
+                _optionalCheckBox.StateCommon.ShortText.Color2 = Color.Empty;
+            }
+        }
+
+        private void UpdateTextExtra(bool? showCtrlCopy)
+        {
+            if (!showCtrlCopy.HasValue)
+            {
+                switch (_icon)
+                {
+                    case ExtendedKryptonMessageBoxIcon.ERROR:
+                    case ExtendedKryptonMessageBoxIcon.EXCLAMATION:
+                        showCtrlCopy = true;
+                        break;
+                }
+            }
+
+            if (showCtrlCopy != null && showCtrlCopy.Value)
+            {
+                TextExtra = @"Ctrl+c to copy";
+            }
+        }
+
+        private void UpdateIcon()
+        {
+            switch (_icon)
+            {
+                case ExtendedKryptonMessageBoxIcon.CUSTOM:
+                    _messageIcon.Image = _customMessageBoxIcon;
+                    break;
+                case ExtendedKryptonMessageBoxIcon.NONE:
+                    _messageIcon.Visible = false;
+                    _messageText.Left -= _messageIcon.Right;
+
+                    // Windows XP and before will Beep, Vista and above do not!
+                    if (OS_MAJOR_VERSION < 6)
+                    {
+                        SystemSounds.Beep.Play();
+                    }
+
+                    break;
+                case ExtendedKryptonMessageBoxIcon.QUESTION:
+                    _messageIcon.Image = Properties.Resources.Question;
+                    SystemSounds.Question.Play();
+                    break;
+                case ExtendedKryptonMessageBoxIcon.INFORMATION:
+                    _messageIcon.Image = Properties.Resources.Information;
+                    SystemSounds.Asterisk.Play();
+                    break;
+                case ExtendedKryptonMessageBoxIcon.WARNING:
+                    _messageIcon.Image = Properties.Resources.Warning;
+                    SystemSounds.Exclamation.Play();
+                    break;
+                case ExtendedKryptonMessageBoxIcon.ERROR:
+                    _messageIcon.Image = Properties.Resources.Critical;
+                    SystemSounds.Asterisk.Play();
+                    break;
+                case ExtendedKryptonMessageBoxIcon.HAND:
+                    _messageIcon.Image = Properties.Resources.Hand;
+                    SystemSounds.Hand.Play();
+                    break;
+                case ExtendedKryptonMessageBoxIcon.STOP:
+                    _messageIcon.Image = Properties.Resources.Stop;
+                    SystemSounds.Asterisk.Play();
+                    break;
+                case ExtendedKryptonMessageBoxIcon.ASTERISK:
+                    _messageIcon.Image = Properties.Resources.Critical;
+                    SystemSounds.Asterisk.Play();
+                    break;
+                case ExtendedKryptonMessageBoxIcon.SHIELD:
+                    _messageIcon.Image = SystemIcons.Shield.ToBitmap();
+                    SystemSounds.Beep.Play();
+                    break;
+                case ExtendedKryptonMessageBoxIcon.WINDOWSLOGO:
+                    _messageIcon.Image = SystemIcons.WinLogo.ToBitmap();
+                    break;
+            }
+        }
+
+        private void UpdateButtons()
+        {
+            switch (_buttons)
+            {
+                case ExtendedMessageBoxButtons.CUSTOM:
+                    SetCustomButtonText(_customButtonOptions, _buttonOneText, _buttonOneResult, _buttonTwoText, _buttonTwoResult, _buttonThreeText, _buttonThreeResult);
+                    break;
+                case ExtendedMessageBoxButtons.OK:
+                    _button1.Text = KryptonManager.Strings.OK;
+                    _button1.DialogResult = DialogResult.OK;
+                    _button1.StateCommon.Content.ShortText.Font = _messageboxTypeface;
+                    _button2.Visible = _button3.Visible = false;
+                    break;
+                case ExtendedMessageBoxButtons.OKCANCEL:
+                    _button1.Text = KryptonManager.Strings.OK;
+                    _button2.Text = KryptonManager.Strings.Cancel;
+                    _button1.DialogResult = DialogResult.OK;
+                    _button2.DialogResult = DialogResult.Cancel;
+                    _button1.StateCommon.Content.ShortText.Font = _messageboxTypeface;
+                    _button2.StateCommon.Content.ShortText.Font = _messageboxTypeface;
+                    _button3.Visible = false;
+                    break;
+                case ExtendedMessageBoxButtons.YESNO:
+                    _button1.Text = KryptonManager.Strings.Yes;
+                    _button2.Text = KryptonManager.Strings.No;
+                    _button1.DialogResult = DialogResult.Yes;
+                    _button2.DialogResult = DialogResult.No;
+                    _button1.StateCommon.Content.ShortText.Font = _messageboxTypeface;
+                    _button2.StateCommon.Content.ShortText.Font = _messageboxTypeface;
+                    _button3.Visible = false;
+                    ControlBox = false;
+                    break;
+                case ExtendedMessageBoxButtons.YESNOCANCEL:
+                    _button1.Text = KryptonManager.Strings.Yes;
+                    _button2.Text = KryptonManager.Strings.No;
+                    _button3.Text = KryptonManager.Strings.Cancel;
+                    _button1.DialogResult = DialogResult.Yes;
+                    _button2.DialogResult = DialogResult.No;
+                    _button3.DialogResult = DialogResult.Cancel;
+                    _button1.StateCommon.Content.ShortText.Font = _messageboxTypeface;
+                    _button2.StateCommon.Content.ShortText.Font = _messageboxTypeface;
+                    _button3.StateCommon.Content.ShortText.Font = _messageboxTypeface;
+                    break;
+                case ExtendedMessageBoxButtons.RETRYCANCEL:
+                    _button1.Text = KryptonManager.Strings.Retry;
+                    _button2.Text = KryptonManager.Strings.Cancel;
+                    _button1.DialogResult = DialogResult.Retry;
+                    _button2.DialogResult = DialogResult.Cancel;
+                    _button1.StateCommon.Content.ShortText.Font = _messageboxTypeface;
+                    _button2.StateCommon.Content.ShortText.Font = _messageboxTypeface;
+                    _button3.Visible = false;
+                    break;
+                case ExtendedMessageBoxButtons.ABORTRETRYIGNORE:
+                    _button1.Text = KryptonManager.Strings.Abort;
+                    _button2.Text = KryptonManager.Strings.Retry;
+                    _button3.Text = KryptonManager.Strings.Ignore;
+                    _button1.DialogResult = DialogResult.Abort;
+                    _button2.DialogResult = DialogResult.Retry;
+                    _button3.DialogResult = DialogResult.Ignore;
+                    _button1.StateCommon.Content.ShortText.Font = _messageboxTypeface;
+                    _button2.StateCommon.Content.ShortText.Font = _messageboxTypeface;
+                    _button3.StateCommon.Content.ShortText.Font = _messageboxTypeface;
+                    ControlBox = false;
+                    break;
+            }
+
+            // Do we ignore the Alt+F4 on the buttons?
+            if (!ControlBox)
+            {
+                _button1.IgnoreAltF4 = true;
+                _button2.IgnoreAltF4 = true;
+                _button3.IgnoreAltF4 = true;
+            }
+        }
+
+        // TODO: Complete this
+        private void SetCustomButtonText(ExtendedMessageBoxCustomButtonOptions customButtonOptions, string buttonOneText, DialogResult buttonOneResult, string buttonTwoText, DialogResult buttonTwoResult, string buttonThreeText, DialogResult buttonThreeResult)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void UpdateDefault()
+        {
+            switch (_defaultButton)
+            {
+                case MessageBoxDefaultButton.Button2:
+                    _button2.Select();
+                    break;
+                case MessageBoxDefaultButton.Button3:
+                    _button3.Select();
+                    break;
+            }
+        }
+
+        private void UpdateHelp()
+        {
+        }
+
+        private void UpdateSizing(IWin32Window showOwner)
+        {
+            Size messageSizing = UpdateMessageSizing(showOwner);
+            Size buttonsSizing = UpdateButtonsSizing();
+
+            // Size of window is calculated from the client area
+            ClientSize = new Size(Math.Max(messageSizing.Width, buttonsSizing.Width),
+                                  messageSizing.Height + buttonsSizing.Height);
+        }
+
+        private Size UpdateMessageSizing(IWin32Window showOwner)
+        {
+            // Update size of the message label but with a maximum width
+            using (Graphics g = CreateGraphics())
+            {
+                // Find size of the label, with a max of 2/3 screen width
+                Screen screen = showOwner != null ? Screen.FromHandle(showOwner.Handle) : Screen.PrimaryScreen;
+                SizeF scaledMonitorSize = screen.Bounds.Size;
+                scaledMonitorSize.Width *= (2 / 3.0f);
+                scaledMonitorSize.Height *= 0.95f;
+                _messageText.UpdateFont();
+                SizeF messageSize = g.MeasureString(_text, _messageText.Font, scaledMonitorSize);
+                // SKC: Don't forget to add the TextExtra into the calculation
+                SizeF captionSize = g.MeasureString($@"{_caption} {TextExtra}", _messageText.Font, scaledMonitorSize);
+
+                float messageXSize = Math.Max(messageSize.Width, captionSize.Width);
+                // Work out DPI adjustment factor
+                float factorX = g.DpiX > 96 ? ((1.0f * g.DpiX) / 96) : 1.0f;
+                float factorY = g.DpiY > 96 ? ((1.0f * g.DpiY) / 96) : 1.0f;
+                messageSize.Width = messageXSize * factorX;
+                messageSize.Height = messageSize.Height * factorY;
+
+                // Always add on ad extra 5 pixels as sometimes the measure size does not draw the last 
+                // character it contains, this ensures there is always definitely enough space for it all
+                messageSize.Width += 5;
+                _messageText.Size = Size.Ceiling(messageSize);
+            }
+
+            // Resize panel containing the message text
+            Padding panelMessagePadding = _messageText.Padding;
+            _messageText.Width = _messageText.Size.Width + panelMessagePadding.Horizontal;
+            _messageText.Height = _messageText.Size.Height + panelMessagePadding.Vertical;
+
+            // Find size of icon area plus the text area added together
+            Size panelSize = _messageText.Size;
+            if (_messageIcon.Image != null)
+            {
+                panelSize.Width += _messageIcon.Width;
+                panelSize.Height = Math.Max(panelSize.Height, _messageIcon.Height);
+            }
+
+            // Enforce a minimum size for the message area
+            panelSize = new Size(Math.Max(_messageText.Size.Width, panelSize.Width),
+                                 Math.Max(_messageText.Size.Height, panelSize.Height));
+
+            // Note that the width will be ignored in this update, but that is fine as 
+            // it will be adjusted by the UpdateSizing method that is the caller.
+            _messageText.Size = panelSize;
+            return panelSize;
+        }
+
+        private Size UpdateButtonsSizing()
+        {
+            int numButtons = 1;
+
+            // Button1 is always visible
+            Size button1Size = _button1.GetPreferredSize(Size.Empty);
+            Size maxButtonSize = new(button1Size.Width + GAP, button1Size.Height);
+
+            // TODO: Setup custom buttons
+
+            // If Button2 is visible
+            switch (_buttons)
+            {
+                case ExtendedMessageBoxButtons.CUSTOM:
+                case ExtendedMessageBoxButtons.OK:
+                case ExtendedMessageBoxButtons.YESNO:
+                case ExtendedMessageBoxButtons.YESNOCANCEL:
+                case ExtendedMessageBoxButtons.RETRYCANCEL:
+                case ExtendedMessageBoxButtons.ABORTRETRYIGNORE:
+                    {
+                        numButtons++;
+                        Size button2Size = _button2.GetPreferredSize(Size.Empty);
+                        maxButtonSize.Width = Math.Max(maxButtonSize.Width, button2Size.Width + GAP);
+                        maxButtonSize.Height = Math.Max(maxButtonSize.Height, button2Size.Height);
+                    }
+                    break;
+            }
+
+            // If Button3 is visible
+            switch (_buttons)
+            {
+                case ExtendedMessageBoxButtons.CUSTOM:
+                case ExtendedMessageBoxButtons.YESNOCANCEL:
+                case ExtendedMessageBoxButtons.ABORTRETRYIGNORE:
+                    {
+                        numButtons++;
+                        Size button3Size = _button2.GetPreferredSize(Size.Empty);
+                        maxButtonSize.Width = Math.Max(maxButtonSize.Width, button3Size.Width + GAP);
+                        maxButtonSize.Height = Math.Max(maxButtonSize.Height, button3Size.Height);
+                    }
+                    break;
+            }
+
+            // Start positioning buttons 10 pixels from right edge
+            int right = _panelButtons.Right - GAP;
+
+            // If Button3 is visible
+            switch (_buttons)
+            {
+                case ExtendedMessageBoxButtons.CUSTOM:
+                case ExtendedMessageBoxButtons.YESNOCANCEL:
+                case ExtendedMessageBoxButtons.ABORTRETRYIGNORE:
+                    {
+                        _button3.Location = new Point(right - maxButtonSize.Width, GAP);
+                        _button3.Size = maxButtonSize;
+                        right -= maxButtonSize.Width + GAP;
+                    }
+                    break;
+            }
+
+            // If Button2 is visible
+            switch (_buttons)
+            {
+                case ExtendedMessageBoxButtons.CUSTOM:
+                case ExtendedMessageBoxButtons.OKCANCEL:
+                case ExtendedMessageBoxButtons.YESNO:
+                case ExtendedMessageBoxButtons.YESNOCANCEL:
+                case ExtendedMessageBoxButtons.RETRYCANCEL:
+                case ExtendedMessageBoxButtons.ABORTRETRYIGNORE:
+                    {
+                        _button2.Location = new Point(right - maxButtonSize.Width, GAP);
+                        _button2.Size = maxButtonSize;
+                        right -= maxButtonSize.Width + GAP;
+                    }
+                    break;
+            }
+
+            // Button1 is always visible
+            _button1.Location = new Point(right - maxButtonSize.Width, GAP);
+            _button1.Size = maxButtonSize;
+
+            // Size the panel for the buttons
+            _panelButtons.Size = new Size((maxButtonSize.Width * numButtons) + (GAP * (numButtons + 1)), maxButtonSize.Height + (GAP * 2));
+
+            // Button area is the number of buttons with gaps between them and 10 pixels around all edges
+            return new Size((maxButtonSize.Width * numButtons) + (GAP * (numButtons + 1)), maxButtonSize.Height + (GAP * 2));
+        }
+
+        private void button_keyDown(object sender, KeyEventArgs e)
+        {
+            // Escape key kills the dialog if we allow it to be closed
+            if ((e.KeyCode == Keys.Escape) && ControlBox)
+            {
+                Close();
+            }
+            else
+            {
+                // Pressing Ctrl+C should copy message text into the clipboard
+                if ((e.Modifiers == Keys.Control) && (e.KeyCode == Keys.C))
+                {
+                    StringBuilder sb = new();
+
+                    sb.AppendLine("---------------------------");
+                    sb.AppendLine(_caption);
+                    sb.AppendLine("---------------------------");
+                    sb.AppendLine(_text);
+                    sb.AppendLine("---------------------------");
+                    sb.Append(_button1.Text);
+                    sb.Append("   ");
+                    if (_button2.Visible)
+                    {
+                        sb.Append(_button2.Text);
+                        sb.Append("   ");
+                        if (_button3.Visible)
+                        {
+                            sb.Append(_button3.Text);
+                            sb.Append("   ");
+                        }
+                    }
+                    sb.AppendLine("");
+                    sb.AppendLine("---------------------------");
+
+                    Clipboard.SetText(sb.ToString(), TextDataFormat.Text);
+                    Clipboard.SetText(sb.ToString(), TextDataFormat.UnicodeText);
+                }
+            }
+        }
+
+        private void ChangeAbortCancelNoYesButtonColour(ExtendedMessageBoxButtons buttons, Color? yesButtonColour, Color? noButtonColour, Color? yesNoButtonTextColour)
+        {
+            switch (buttons)
+            {
+                case ExtendedMessageBoxButtons.CUSTOM:
+                    break;
+                case ExtendedMessageBoxButtons.OK:
+                    if (yesButtonColour != null || yesButtonColour == Color.Empty)
+                    {
+                        _button1.StateCommon.Back.Color1 = (Color)yesButtonColour;
+
+                        _button1.StateCommon.Back.Color2 = (Color)yesButtonColour;
+
+                        _button1.StateCommon.Content.ShortText.Color1 = (Color)yesNoButtonTextColour;
+
+                        _button1.StateCommon.Content.ShortText.Color2 = (Color)yesButtonColour;
+                    }
+                    else
+                    {
+                        _button1.StateCommon.Back.Color1 = Color.Empty;
+
+                        _button1.StateCommon.Back.Color2 = Color.Empty;
+
+                        _button1.StateCommon.Content.ShortText.Color1 = Color.Empty;
+
+                        _button1.StateCommon.Content.ShortText.Color2 = Color.Empty;
+                    }
+                    break;
+                case ExtendedMessageBoxButtons.OKCANCEL:
+                    if (yesButtonColour != null || yesButtonColour == Color.Empty && noButtonColour != null || noButtonColour == Color.Empty)
+                    {
+                        _button1.StateCommon.Back.Color1 = (Color)noButtonColour;
+
+                        _button1.StateCommon.Back.Color2 = (Color)noButtonColour;
+
+                        _button2.StateCommon.Back.Color1 = (Color)yesButtonColour;
+
+                        _button2.StateCommon.Back.Color2 = (Color)yesButtonColour;
+
+                        _button1.StateCommon.Content.ShortText.Color1 = (Color)yesNoButtonTextColour;
+
+                        _button1.StateCommon.Content.ShortText.Color2 = (Color)yesNoButtonTextColour;
+
+                        _button2.StateCommon.Content.ShortText.Color1 = (Color)yesNoButtonTextColour;
+
+                        _button2.StateCommon.Content.ShortText.Color2 = (Color)yesNoButtonTextColour;
+                    }
+                    else
+                    {
+                        _button1.StateCommon.Back.Color1 = Color.Empty;
+
+                        _button1.StateCommon.Back.Color2 = Color.Empty;
+
+                        _button1.StateCommon.Content.ShortText.Color1 = Color.Empty;
+
+                        _button1.StateCommon.Content.ShortText.Color2 = Color.Empty;
+
+                        _button2.StateCommon.Back.Color1 = Color.Empty;
+
+                        _button2.StateCommon.Back.Color2 = Color.Empty;
+
+                        _button2.StateCommon.Content.ShortText.Color1 = Color.Empty;
+
+                        _button2.StateCommon.Content.ShortText.Color2 = Color.Empty;
+                    }
+                    break;
+                case ExtendedMessageBoxButtons.ABORTRETRYIGNORE:
+                    if (yesButtonColour != null || yesButtonColour == Color.Empty && noButtonColour != null || noButtonColour == Color.Empty)
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
+                    break;
+                case ExtendedMessageBoxButtons.YESNOCANCEL:
+                    if (yesButtonColour != null || yesButtonColour == Color.Empty && noButtonColour != null || noButtonColour == Color.Empty)
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
+                    break;
+                case ExtendedMessageBoxButtons.YESNO:
+                    if (yesButtonColour != null || yesButtonColour == Color.Empty && noButtonColour != null || noButtonColour == Color.Empty)
+                    {
+                        _button1.StateCommon.Back.Color1 = (Color)noButtonColour;
+
+                        _button1.StateCommon.Back.Color2 = (Color)noButtonColour;
+
+                        _button2.StateCommon.Back.Color1 = (Color)yesButtonColour;
+
+                        _button2.StateCommon.Back.Color2 = (Color)yesButtonColour;
+
+                        _button1.StateCommon.Content.ShortText.Color1 = (Color)yesNoButtonTextColour;
+
+                        _button1.StateCommon.Content.ShortText.Color2 = (Color)yesNoButtonTextColour;
+
+                        _button2.StateCommon.Content.ShortText.Color1 = (Color)yesNoButtonTextColour;
+
+                        _button2.StateCommon.Content.ShortText.Color2 = (Color)yesNoButtonTextColour;
+                    }
+                    else
+                    {
+                        _button1.StateCommon.Back.Color1 = Color.Empty;
+
+                        _button1.StateCommon.Back.Color2 = Color.Empty;
+
+                        _button1.StateCommon.Content.ShortText.Color1 = Color.Empty;
+
+                        _button1.StateCommon.Content.ShortText.Color2 = Color.Empty;
+
+                        _button2.StateCommon.Back.Color1 = Color.Empty;
+
+                        _button2.StateCommon.Back.Color2 = Color.Empty;
+
+                        _button2.StateCommon.Content.ShortText.Color1 = Color.Empty;
+
+                        _button2.StateCommon.Content.ShortText.Color2 = Color.Empty;
+                    }
+                    break;
+                case ExtendedMessageBoxButtons.RETRYCANCEL:
+                    if (yesButtonColour != null || yesButtonColour == Color.Empty && noButtonColour != null || noButtonColour == Color.Empty)
+                    {
+                        _button1.StateCommon.Back.Color1 = (Color)noButtonColour;
+
+                        _button1.StateCommon.Back.Color2 = (Color)noButtonColour;
+
+                        _button2.StateCommon.Back.Color1 = (Color)yesButtonColour;
+
+                        _button2.StateCommon.Back.Color2 = (Color)yesButtonColour;
+
+                        _button1.StateCommon.Content.ShortText.Color1 = (Color)yesNoButtonTextColour;
+
+                        _button1.StateCommon.Content.ShortText.Color2 = (Color)yesNoButtonTextColour;
+
+                        _button2.StateCommon.Content.ShortText.Color1 = (Color)yesNoButtonTextColour;
+
+                        _button2.StateCommon.Content.ShortText.Color2 = (Color)yesNoButtonTextColour;
+                    }
+                    else
+                    {
+                        _button1.StateCommon.Back.Color1 = Color.Empty;
+
+                        _button1.StateCommon.Back.Color2 = Color.Empty;
+
+                        _button1.StateCommon.Content.ShortText.Color1 = Color.Empty;
+
+                        _button1.StateCommon.Content.ShortText.Color2 = Color.Empty;
+
+                        _button2.StateCommon.Back.Color1 = Color.Empty;
+
+                        _button2.StateCommon.Back.Color2 = Color.Empty;
+
+                        _button2.StateCommon.Content.ShortText.Color1 = Color.Empty;
+
+                        _button2.StateCommon.Content.ShortText.Color2 = Color.Empty;
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+        #endregion
+
+        #region Optional CheckBox
+        private void checkbox_CheckChanged(object sender, EventArgs e) => SetOptionalCheckBoxValue(_optionalCheckBox.Checked);
+
+        private void checkBox_CheckStateChanged(object sender, EventArgs e) => SetOptionalCheckBoxCheckState(_optionalCheckBox.CheckState);
+
+        /// <summary>Shows the optional CheckBox UI.</summary>
+        /// <param name="showOptionalCheckBox">if set to <c>true</c> [show optional CheckBox].</param>
+        /// <param name="optionalCheckBoxText">The optional CheckBox text.</param>
+        /// <param name="isOptionalCheckBoxChecked">if set to <c>true</c> [is optional CheckBox checked].</param>
+        /// <param name="optionalCheckBoxCheckState">State of the optional CheckBox check.</param>
+        /// <param name="optionalCheckBoxAnchor">The optional CheckBox anchor.</param>
+        /// <param name="optionalCheckBoxLocation">The optional CheckBox location.</param>
+        private void ShowOptionalCheckBoxUI(bool? showOptionalCheckBox, string optionalCheckBoxText,
+                                            bool? isOptionalCheckBoxChecked, CheckState? optionalCheckBoxCheckState,
+                                            AnchorStyles? optionalCheckBoxAnchor, Point? optionalCheckBoxLocation)
+        {
+            _optionalCheckBox.Visible = showOptionalCheckBox ?? false;
+
+            _optionalCheckBox.Text = optionalCheckBoxText;
+
+            _optionalCheckBox.Checked = isOptionalCheckBoxChecked ?? false;
+
+            _optionalCheckBox.CheckState = optionalCheckBoxCheckState ?? CheckState.Unchecked;
+
+            _optionalCheckBox.Anchor = optionalCheckBoxAnchor ?? AnchorStyles.Left;
+
+            _optionalCheckBoxLocation = optionalCheckBoxLocation ?? new Point(12, 0);
+
+            _optionalCheckBox.StateCommon.ShortText.Font = _messageboxTypeface;
+        }
+
+        private void checkBox_TextChanged(object sender, EventArgs e)
+        {
+            if (_optionalCheckBox.Text.Length >= 15)
+            {
+
+                _optionalCheckBox.StateCommon.ShortText.Trim = PaletteTextTrim.EllipsisWord;
+            }
+        }
+        #endregion
+
+        #region Setters and Getters
+        /// <summary>Sets the optional CheckBox value.</summary>
+        /// <param name="value">if set to <c>true</c> [value].</param>
+        private void SetOptionalCheckBoxValue(bool value) => _isOptionalCheckBoxChecked = value;
+
+        /// <summary>Gets the optional CheckBox value.</summary>
+        /// <returns>The value of the optional check box.</returns>
+        public bool GetOptionalCheckBoxValue() => _isOptionalCheckBoxChecked;
+
+        /// <summary>Gets the state of the optional CheckBox.</summary>
+        /// <returns></returns>
+        public static bool GetOptionalCheckBoxState()
+        {
+            KryptonMessageBoxExtendedForm box = new();
+
+            return box.GetOptionalCheckBoxValue();
+        }
+
+        /// <summary>Sets the state of the optional CheckBox check.</summary>
+        /// <param name="state">The state.</param>
+        public void SetOptionalCheckBoxCheckState(CheckState state) => _optionalCheckBox.CheckState = state;
+
+        /// <summary>Gets the state of the optional CheckBox check.</summary>
+        /// <returns>
+        ///   <br />
+        /// </returns>
+        public CheckState GetOptionalCheckBoxCheckState() => _optionalCheckBox.CheckState;
+        #endregion
+
+        #region Copy Button
+        /// <summary>Shows the copy button.</summary>
+        /// <param name="showCopyButton">if set to <c>true</c> [show copy button].</param>
+        /// <param name="copyButtonText">The copy button text.</param>
+        private void ShowCopyButton(bool? showCopyButton, string copyButtonText)
+        {
+            // _copyButton.Visible = showCopyButton;
+
+            // _copyButton.Text = copyButtonText;
+        }
+
+        private void copyButton_KeyDown(object sender, KeyEventArgs e) => Clipboard.SetText(_messageText.Text);
+        #endregion
+
+        #region Custom Button Text
+        /// <summary>Sets the custom button text.</summary>
+        /// <param name="customButtonOptions">The custom button options.</param>
+        /// <param name="buttonOneText">The button one text.</param>
+        /// <param name="buttonOneResult">The button one result.</param>
+        /// <param name="buttonTwoText">The button two text.</param>
+        /// <param name="buttonTwoResult">The button two result.</param>
+        /// <param name="buttonThreeText">The button three text.</param>
+        /// <param name="buttonThreeResult">The button three result.</param>
+        private void SetCustomButtonText(ExtendedMessageBoxCustomButtonOptions customButtonOptions,
+                                         string buttonOneText, DialogResult buttonOneResult,
+                                         string buttonTwoText, DialogResult? buttonTwoResult,
+                                         string buttonThreeText, DialogResult? buttonThreeResult)
+        {
+            // As the physical layout of the buttons on the message box is: 
+            // '_button1', '_button2' and '_button3', text that is for the
+            // first button needs to be displayed on either '_button2' or
+            // '_button3 depending on the options, unless you choose a
+            // three button layout
+            switch (customButtonOptions)
+            {
+                case ExtendedMessageBoxCustomButtonOptions.NONE:
+                    _button3.Text = KryptonManager.Strings.OK;
+
+                    _button3.DialogResult = DialogResult.OK;
+
+                    _button3.StateCommon.Content.ShortText.Font = _messageboxTypeface;
+
+                    _button1.Visible = _button2.Visible = false;
+                    break;
+                case ExtendedMessageBoxCustomButtonOptions.ONEBUTTON:
+                    _button3.Text = buttonOneText;
+
+                    _button3.DialogResult = buttonOneResult;
+
+                    _button3.StateCommon.Content.ShortText.Font = _messageboxTypeface;
+
+                    _button1.Visible = _button2.Visible = false;
+                    break;
+                case ExtendedMessageBoxCustomButtonOptions.TWOBUTTONS:
+                    _button2.Text = buttonOneText;
+
+                    _button2.DialogResult = buttonOneResult;
+
+                    _button2.StateCommon.Content.ShortText.Font = _messageboxTypeface;
+
+                    _button3.Text = buttonTwoText;
+
+                    _button3.DialogResult = buttonTwoResult ?? DialogResult.None;
+
+                    _button3.StateCommon.Content.ShortText.Font = _messageboxTypeface;
+
+                    _button1.Visible = false;
+                    break;
+                case ExtendedMessageBoxCustomButtonOptions.THREEBUTTONS:
+                    _button1.Text = buttonOneText;
+
+                    _button1.DialogResult = buttonOneResult;
+
+                    _button1.StateCommon.Content.ShortText.Font = _messageboxTypeface;
+
+                    _button2.Text = buttonTwoText;
+
+                    _button2.DialogResult = buttonTwoResult ?? DialogResult.None;
+
+                    _button2.StateCommon.Content.ShortText.Font = _messageboxTypeface;
+
+                    _button3.Text = buttonThreeText;
+
+                    _button3.DialogResult = buttonThreeResult ?? DialogResult.None;
+
+                    _button3.StateCommon.Content.ShortText.Font = _messageboxTypeface;
+                    break;
+            }
+        }
+
         #endregion
     }
 
