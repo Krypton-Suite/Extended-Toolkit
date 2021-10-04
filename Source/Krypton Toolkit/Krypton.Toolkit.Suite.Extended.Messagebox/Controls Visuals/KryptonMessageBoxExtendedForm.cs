@@ -304,11 +304,51 @@
         #region Identity
         static KryptonMessageBoxExtendedForm() => OS_MAJOR_VERSION = Environment.OSVersion.Version.Major;
 
-        public KryptonMessageBoxExtendedForm()
-        {
-            InitializeComponent();
-        }
+        /// <summary>Initializes a new instance of the <see cref="KryptonMessageBoxExtendedForm" /> class.</summary>
+        public KryptonMessageBoxExtendedForm() => InitializeComponent();
 
+        /// <summary>Initializes a new instance of the <see cref="KryptonMessageBoxExtendedForm" /> class.</summary>
+        /// <param name="showOwner">The show owner.</param>
+        /// <param name="text">The text.</param>
+        /// <param name="caption">The caption.</param>
+        /// <param name="buttons">The buttons.</param>
+        /// <param name="icon">The icon.</param>
+        /// <param name="defaultButton">The default button.</param>
+        /// <param name="options">The options.</param>
+        /// <param name="helpInfo">The help information.</param>
+        /// <param name="showCtrlCopy">The show control copy.</param>
+        /// <param name="messageboxTypeface">The messagebox typeface.</param>
+        /// <param name="showOptionalCheckBox">The show optional CheckBox.</param>
+        /// <param name="optionalCheckBoxText">The optional CheckBox text.</param>
+        /// <param name="isOptionalCheckBoxChecked">The is optional CheckBox checked.</param>
+        /// <param name="optionalCheckBoxCheckState">State of the optional CheckBox check.</param>
+        /// <param name="optionalCheckBoxAnchor">The optional CheckBox anchor.</param>
+        /// <param name="optionalCheckBoxLocation">The optional CheckBox location.</param>
+        /// <param name="customMessageBoxIcon">The custom message box icon.</param>
+        /// <param name="showCopyButton">The show copy button.</param>
+        /// <param name="copyButtonText">The copy button text.</param>
+        /// <param name="fade">The fade.</param>
+        /// <param name="fadeSleepTimer">The fade sleep timer.</param>
+        /// <param name="buttonOneCustomText">The button one custom text.</param>
+        /// <param name="buttonTwoCustomText">The button two custom text.</param>
+        /// <param name="buttonThreeCustomText">The button three custom text.</param>
+        /// <param name="buttonOneCustomDialogResult">The button one custom dialog result.</param>
+        /// <param name="buttonTwoCustomDialogResult">The button two custom dialog result.</param>
+        /// <param name="buttonThreeCustomDialogResult">The button three custom dialog result.</param>
+        /// <param name="cornerRadius">The corner radius.</param>
+        /// <param name="showToolTips">The show tool tips.</param>
+        /// <param name="useBlur">The use blur.</param>
+        /// <param name="useYesNoCancelButtonColour">The use yes no cancel button colour.</param>
+        /// <param name="blurRadius">The blur radius.</param>
+        /// <param name="contentMessageColour">The content message colour.</param>
+        /// <param name="buttonOneTextColour">The button one text colour.</param>
+        /// <param name="buttonTwoTextColour">The button two text colour.</param>
+        /// <param name="buttonThreeTextColour">The button three text colour.</param>
+        /// <param name="yesButtonColour">The yes button colour.</param>
+        /// <param name="noButtonColour">The no button colour.</param>
+        /// <param name="textColour">The text colour.</param>
+        /// <param name="yesNoButtonTextColour">The yes no button text colour.</param>
+        /// <param name="parentWindow">The parent window.</param>
         internal KryptonMessageBoxExtendedForm(IWin32Window showOwner, string text, string caption, ExtendedMessageBoxButtons buttons,
                                                ExtendedKryptonMessageBoxIcon icon, MessageBoxDefaultButton defaultButton,
                                                MessageBoxOptions options, HelpInfo helpInfo, bool? showCtrlCopy,
