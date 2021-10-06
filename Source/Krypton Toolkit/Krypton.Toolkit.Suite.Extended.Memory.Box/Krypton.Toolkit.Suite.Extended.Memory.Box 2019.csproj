@@ -56,8 +56,8 @@
     </ItemGroup>
     <!--Binary/Documentation Output-->
     <PropertyGroup>
-        <DocumentationFile>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.Memory.Box\Krypton.Toolkit.Suite.Extended.Memory.Box.xml</DocumentationFile>
-        <OutputPath>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.Memory.Box\</OutputPath>
+        <DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Memory.Box\Krypton.Toolkit.Suite.Extended.Memory.Box.xml</DocumentationFile>
+        <OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Memory.Box\</OutputPath>
     </PropertyGroup>
 
     <ItemGroup>

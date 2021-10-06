@@ -56,8 +56,8 @@
     </ItemGroup>
     <!--Binary/Documentation Output-->
     <PropertyGroup>
-        <DocumentationFile>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.Dock.Extender\Krypton.Toolkit.Suite.Extended.Dock.Extender.xml</DocumentationFile>
-        <OutputPath>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.Dock.Extender\</OutputPath>
+        <DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Dock.Extender\Krypton.Toolkit.Suite.Extended.Dock.Extender.xml</DocumentationFile>
+        <OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Dock.Extender\</OutputPath>
     </PropertyGroup>
 
 </Project>

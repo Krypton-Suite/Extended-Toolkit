@@ -38,8 +38,8 @@
     </ItemGroup>
     <!--Binary/Documentation Output-->
     <PropertyGroup>
-        <DocumentationFile>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.Compression\Krypton.Toolkit.Suite.Extended.Compression.xml</DocumentationFile>
-        <OutputPath>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.Compression\</OutputPath>
+        <DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Compression\Krypton.Toolkit.Suite.Extended.Compression.xml</DocumentationFile>
+        <OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Compression\</OutputPath>
     </PropertyGroup>
 
     <!--<ItemGroup>
