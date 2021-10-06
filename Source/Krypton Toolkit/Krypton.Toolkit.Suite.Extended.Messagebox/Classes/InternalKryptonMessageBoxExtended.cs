@@ -4777,31 +4777,6 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 												 Color? yesButtonColour, Color? noButtonColour, Color? textColour,
 												 Color? yesNoButtonTextColour, KryptonForm parentWindow)
 		{
-			IWin32Window showOwner = ValidateOptions(owner, options, helpInfo);
-
-			using KryptonMessageBoxExtendedForm kmbe = new(showOwner, text, caption, buttons, customButtonOptions,
-														   icon, defaultButton,
-														   options, helpInfo, showCtrlCopy, messageboxTypeface,
-														   showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked,
-														   optionalCheckBoxCheckState, optionalCheckBoxAnchor, optionalCheckBoxLocation,
-														   customMessageBoxIcon, showCopyButton, copyButtonText,
-														   fade, fadeSleepTimer, buttonOneCustomText, buttonTwoCustomText,
-														   buttonThreeCustomText, buttonOneCustomDialogResult,
-														   buttonTwoCustomDialogResult, buttonThreeCustomDialogResult,
-														   cornerRadius, showToolTips, useBlur, useYesNoCancelButtonColour,
-														   blurRadius, contentMessageColour, buttonOneTextColour,
-														   buttonOneTextColour, buttonThreeTextColour,
-														   yesButtonColour, noButtonColour, textColour, yesNoButtonTextColour,
-														   parentWindow);
-
-			kmbe.StartPosition = showOwner == null ? FormStartPosition.CenterScreen : FormStartPosition.CenterParent;
-
-			kmbe.ShowDialog(showOwner);
-
-		}
-
-		private static IWin32Window ValidateOptions(IWin32Window owner, MessageBoxOptions options, HelpInfo helpInfo)
-		{
 			// Check if trying to show a message box from a non-interactive process, this is not possible
 			if (!SystemInformation.UserInteractive && ((options & (MessageBoxOptions.ServiceNotification | MessageBoxOptions.DefaultDesktopOnly)) == 0))
 			{
@@ -4820,15 +4795,33 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 				throw new ArgumentException(@"Cannot show message box from a service with help specified", nameof(options));
 			}
 
+			// If help information provided or we are not a service/default desktop application then grab an owner for showing the message box
 			IWin32Window showOwner = null;
-
 			if ((helpInfo != null) || ((options & (MessageBoxOptions.ServiceNotification | MessageBoxOptions.DefaultDesktopOnly)) == 0))
 			{
 				// If do not have an owner passed in then get the active window and use that instead
-				showOwner = owner ?? Control.FromHandle(PI.GetActiveWindow());
+				showOwner = owner ?? Control.FromHandle(PlatformInvoke.GetActiveWindow());
 			}
 
-			return showOwner;
+			// Show message box window as a modal dialog and then dispose of it afterwards
+			using (KryptonMessageBoxExtendedForm ekmb = new(owner, text, caption, buttons, customButtonOptions, icon, defaultButton,
+															options, helpInfo, showCtrlCopy, messageboxTypeface,
+															showOptionalCheckBox, optionalCheckBoxText, isOptionalCheckBoxChecked,
+															optionalCheckBoxCheckState, optionalCheckBoxAnchor,
+															optionalCheckBoxLocation, customMessageBoxIcon, showCopyButton,
+															copyButtonText, fade, fadeSleepTimer, buttonOneCustomText,
+															buttonTwoCustomText, buttonThreeCustomText,
+															buttonOneCustomDialogResult, buttonTwoCustomDialogResult,
+															buttonThreeCustomDialogResult, cornerRadius, showToolTips,
+															useBlur, useYesNoCancelButtonColour, blurRadius, contentMessageColour, buttonOneTextColour,
+															buttonTwoTextColour, buttonThreeTextColour, yesButtonColour,
+															noButtonColour, textColour, yesNoButtonTextColour, parentWindow))
+			{
+				ekmb.StartPosition = showOwner == null ? FormStartPosition.CenterScreen : FormStartPosition.CenterParent;
+
+				return ekmb.ShowDialog(showOwner);
+			}
+
 		}
 		#endregion
 	}
