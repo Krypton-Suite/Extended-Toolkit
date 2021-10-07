@@ -5,11 +5,7 @@
     <TargetFramework>net48</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
-    <Configurations>Debug;Release;Nightly</Configurations>
+    <Configurations>Debug;Release;Nightly;Canary;Stable</Configurations>
   </PropertyGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\Main\Krypton.Toolkit.Suite.Extended.Tool.Strip.Items\Krypton.Toolkit.Suite.Extended.Tool.Strip.Items 2019.csproj" />
-  </ItemGroup>
 
 </Project>

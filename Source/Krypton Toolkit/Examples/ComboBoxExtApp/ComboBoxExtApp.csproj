@@ -5,15 +5,11 @@
         <UseWindowsForms>true</UseWindowsForms>
         <LangVersion>latest</LangVersion>
         <OutputType>WinExe</OutputType>
-        <Configurations>Debug;Release;Nightly</Configurations>
+        <Configurations>Debug;Release;Nightly;Canary;Stable</Configurations>
     </PropertyGroup>
 
     <ItemGroup>
       <Compile Update="Form1.cs" />
     </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\Main\Krypton.Toolkit.Suite.Extended.ComboBox\Krypton.Toolkit.Suite.Extended.ComboBox 2019.csproj" />
-  </ItemGroup>
 
 </Project>

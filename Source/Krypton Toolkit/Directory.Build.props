@@ -38,21 +38,46 @@
 	</PropertyGroup>
 
 	<!--Generate NuGet packages on build-->
-	<PropertyGroup Condition="'$(Configuration)' == 'Release'">
-		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	<Choose>
+		<When Condition="'$(Configuration)' == 'Nigtly'">
+			<PropertyGroup>
+				<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 
-		<!--Package icon-->
-		<PackageIcon>Canary.png</PackageIcon>
+				<PackageIcon>Nightly.png</PackageIcon>
 
-		<!--<PackageLicenseFile>..\..\..\..\Documents\Help\License.md</PackageLicenseFile>-->
+				<PackageLicenseUrl>https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE</PackageLicenseUrl>
 
-		<PackageLicenseUrl>https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE</PackageLicenseUrl>
+				<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 
-		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-	</PropertyGroup>
+				<LangVersion>latest</LangVersion>
+				
+				<PackageOutputPath>..\..\..\Bin\NuGet Packages\Nightly</PackageOutputPath>
+			</PropertyGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'Canary'">
+			<PropertyGroup>
+				<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+
+				<!--Package icon-->
+				<PackageIcon>Canary.png</PackageIcon>
+
+				<PackageLicenseUrl>https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE</PackageLicenseUrl>
+
+				<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+			</PropertyGroup>
+		</When>
+		<Otherwise>
+
+		</Otherwise>
+	</Choose>
 
 	<ItemGroup>
-		<None Include="...\Assets\Package Icon\Canary.png" Link="Canary.png" Pack="true" PackagePath="" />
+		<None Include="..\..\..\Assets\Package Icon\Canary.png" Link="Canary.png" Pack="true" PackagePath="" />
+
+		<None Include="..\..\..\Assets\Package Icon\Nightly.png" Link="Nightly.png" Pack="true" PackagePath="" />
+
+		<None Include="..\..\..\Assets\Package Icon\Stable.png" Link="Stable.png" Pack="true" PackagePath="" />
 	</ItemGroup>
 
 	<!--Generic Toolkit import-->

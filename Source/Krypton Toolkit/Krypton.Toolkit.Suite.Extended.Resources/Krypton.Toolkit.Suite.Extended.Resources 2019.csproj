@@ -10,7 +10,7 @@
     <RootNamespace>Krypton.Toolkit.Suite.Extended.Resources</RootNamespace>
     <AssemblyName>Krypton.Toolkit.Suite.Extended.Resources</AssemblyName>
     <UseWindowsForms>true</UseWindowsForms>
-    <Configurations>Debug;Release;Nightly</Configurations>
+    <Configurations>Debug;Release;Nightly;Canary;Stable</Configurations>
   </PropertyGroup>
 
   <!--Package Data-->

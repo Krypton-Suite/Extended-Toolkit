@@ -5,7 +5,7 @@
     <TargetFramework>net5.0-windows</TargetFramework>
     <LangVersion>latest</LangVersion>
     <UseWindowsForms>true</UseWindowsForms>
-    <Configurations>Debug;Release;Nightly</Configurations>
+    <Configurations>Debug;Release;Nightly;Canary;Stable</Configurations>
   </PropertyGroup>
 
   <ItemGroup>
