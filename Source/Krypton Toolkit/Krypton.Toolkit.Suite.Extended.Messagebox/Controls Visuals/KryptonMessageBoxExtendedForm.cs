@@ -26,28 +26,28 @@
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this._messageText = new Krypton.Toolkit.KryptonWrapLabel();
 			this._panelControls = new Krypton.Toolkit.KryptonPanel();
-			this._borderEdge = new Krypton.Toolkit.KryptonBorderEdge();
-			this._messageIcon = new System.Windows.Forms.PictureBox();
 			this.kryptonTableLayoutPanel1 = new Krypton.Toolkit.KryptonTableLayoutPanel();
 			this._panelOptionalCheckBox = new Krypton.Toolkit.KryptonPanel();
 			this._optionalCheckBox = new Krypton.Toolkit.KryptonCheckBox();
+			this._buttonCopy = new Krypton.Toolkit.Suite.Extended.Messagebox.MessageButton();
 			this._panelButtons = new Krypton.Toolkit.KryptonPanel();
 			this._button4 = new Krypton.Toolkit.Suite.Extended.Messagebox.MessageButton();
 			this._button3 = new Krypton.Toolkit.Suite.Extended.Messagebox.MessageButton();
 			this._button2 = new Krypton.Toolkit.Suite.Extended.Messagebox.MessageButton();
 			this._button1 = new Krypton.Toolkit.Suite.Extended.Messagebox.MessageButton();
-			this._buttonCopy = new Krypton.Toolkit.Suite.Extended.Messagebox.MessageButton();
+			this._borderEdge = new Krypton.Toolkit.KryptonBorderEdge();
+			this._messageIcon = new System.Windows.Forms.PictureBox();
 			((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
 			this.kryptonPanel1.SuspendLayout();
 			this.tableLayoutPanel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this._panelControls)).BeginInit();
 			this._panelControls.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this._messageIcon)).BeginInit();
 			this.kryptonTableLayoutPanel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this._panelOptionalCheckBox)).BeginInit();
 			this._panelOptionalCheckBox.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this._panelButtons)).BeginInit();
 			this._panelButtons.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this._messageIcon)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// kryptonPanel1
@@ -85,6 +85,7 @@
 			this._messageText.Dock = System.Windows.Forms.DockStyle.Fill;
 			this._messageText.Font = new System.Drawing.Font("Segoe UI", 9F);
 			this._messageText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+			this._messageText.LabelStyle = Krypton.Toolkit.LabelStyle.NormalControl;
 			this._messageText.Location = new System.Drawing.Point(49, 0);
 			this._messageText.Margin = new System.Windows.Forms.Padding(4, 0, 0, 0);
 			this._messageText.Name = "_messageText";
@@ -104,28 +105,6 @@
 			this._panelControls.PanelBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelAlternate;
 			this._panelControls.Size = new System.Drawing.Size(183, 21);
 			this._panelControls.TabIndex = 0;
-			// 
-			// _borderEdge
-			// 
-			this._borderEdge.BorderStyle = Krypton.Toolkit.PaletteBorderStyle.HeaderPrimary;
-			this._borderEdge.Dock = System.Windows.Forms.DockStyle.Top;
-			this._borderEdge.Location = new System.Drawing.Point(0, 0);
-			this._borderEdge.Margin = new System.Windows.Forms.Padding(2);
-			this._borderEdge.Name = "_borderEdge";
-			this._borderEdge.Size = new System.Drawing.Size(183, 1);
-			this._borderEdge.Text = "kryptonBorderEdge1";
-			// 
-			// _messageIcon
-			// 
-			this._messageIcon.BackColor = System.Drawing.Color.Transparent;
-			this._messageIcon.Dock = System.Windows.Forms.DockStyle.Fill;
-			this._messageIcon.Location = new System.Drawing.Point(8, 4);
-			this._messageIcon.Margin = new System.Windows.Forms.Padding(8, 4, 4, 4);
-			this._messageIcon.Name = "_messageIcon";
-			this._messageIcon.Size = new System.Drawing.Size(33, 34);
-			this._messageIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-			this._messageIcon.TabIndex = 0;
-			this._messageIcon.TabStop = false;
 			// 
 			// kryptonTableLayoutPanel1
 			// 
@@ -147,8 +126,8 @@
 			// 
 			// _panelOptionalCheckBox
 			// 
-			this._panelOptionalCheckBox.Controls.Add(this._optionalCheckBox);
 			this._panelOptionalCheckBox.Controls.Add(this._buttonCopy);
+			this._panelOptionalCheckBox.Controls.Add(this._optionalCheckBox);
 			this._panelOptionalCheckBox.Location = new System.Drawing.Point(3, 3);
 			this._panelOptionalCheckBox.Name = "_panelOptionalCheckBox";
 			this._panelOptionalCheckBox.PanelBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelAlternate;
@@ -164,6 +143,19 @@
 			this._optionalCheckBox.TabIndex = 0;
 			this._optionalCheckBox.Values.Text = "CB1";
 			// 
+			// _buttonCopy
+			// 
+			this._buttonCopy.AutoSize = true;
+			this._buttonCopy.IgnoreAltF4 = false;
+			this._buttonCopy.Location = new System.Drawing.Point(0, 0);
+			this._buttonCopy.Margin = new System.Windows.Forms.Padding(0);
+			this._buttonCopy.MinimumSize = new System.Drawing.Size(38, 21);
+			this._buttonCopy.Name = "_buttonCopy";
+			this._buttonCopy.Size = new System.Drawing.Size(38, 23);
+			this._buttonCopy.TabIndex = 6;
+			this._buttonCopy.Values.Text = "&Copy";
+			this._buttonCopy.Visible = false;
+			// 
 			// _panelButtons
 			// 
 			this._panelButtons.Controls.Add(this._button4);
@@ -176,21 +168,6 @@
 			this._panelButtons.PanelBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelAlternate;
 			this._panelButtons.Size = new System.Drawing.Size(100, 14);
 			this._panelButtons.TabIndex = 1;
-			//
-			// _buttonCopy
-			//
-			this._buttonCopy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
-			this._buttonCopy.AutoSize = true;
-			this._buttonCopy.Enabled = true;
-			this._buttonCopy.IgnoreAltF4 = false;
-			this._buttonCopy.Location = new System.Drawing.Point(0, 0);
-			this._buttonCopy.Margin = new System.Windows.Forms.Padding(0);
-			this._buttonCopy.MinimumSize = new System.Drawing.Size(38, 21);
-			this._buttonCopy.Name = "_buttonCopy";
-			this._buttonCopy.Size = new System.Drawing.Size(38, 23);
-			this._buttonCopy.TabIndex = 6;
-			this._buttonCopy.Values.Text = "&Copy";
-			this._buttonCopy.Visible = false;
 			// 
 			// _button4
 			// 
@@ -252,6 +229,28 @@
 			this._button1.Values.Text = "B1";
 			this._button1.Visible = false;
 			// 
+			// _borderEdge
+			// 
+			this._borderEdge.BorderStyle = Krypton.Toolkit.PaletteBorderStyle.HeaderPrimary;
+			this._borderEdge.Dock = System.Windows.Forms.DockStyle.Top;
+			this._borderEdge.Location = new System.Drawing.Point(0, 0);
+			this._borderEdge.Margin = new System.Windows.Forms.Padding(2);
+			this._borderEdge.Name = "_borderEdge";
+			this._borderEdge.Size = new System.Drawing.Size(183, 1);
+			this._borderEdge.Text = "kryptonBorderEdge1";
+			// 
+			// _messageIcon
+			// 
+			this._messageIcon.BackColor = System.Drawing.Color.Transparent;
+			this._messageIcon.Dock = System.Windows.Forms.DockStyle.Fill;
+			this._messageIcon.Location = new System.Drawing.Point(8, 4);
+			this._messageIcon.Margin = new System.Windows.Forms.Padding(8, 4, 4, 4);
+			this._messageIcon.Name = "_messageIcon";
+			this._messageIcon.Size = new System.Drawing.Size(33, 34);
+			this._messageIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+			this._messageIcon.TabIndex = 0;
+			this._messageIcon.TabStop = false;
+			// 
 			// KryptonMessageBoxExtendedForm
 			// 
 			this.ClientSize = new System.Drawing.Size(183, 63);
@@ -270,7 +269,6 @@
 			((System.ComponentModel.ISupportInitialize)(this._panelControls)).EndInit();
 			this._panelControls.ResumeLayout(false);
 			this._panelControls.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this._messageIcon)).EndInit();
 			this.kryptonTableLayoutPanel1.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this._panelOptionalCheckBox)).EndInit();
 			this._panelOptionalCheckBox.ResumeLayout(false);
@@ -278,6 +276,7 @@
 			((System.ComponentModel.ISupportInitialize)(this._panelButtons)).EndInit();
 			this._panelButtons.ResumeLayout(false);
 			this._panelButtons.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this._messageIcon)).EndInit();
 			this.ResumeLayout(false);
 
 		}

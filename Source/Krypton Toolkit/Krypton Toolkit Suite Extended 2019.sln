@@ -291,6 +291,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Miscellaneous", "Miscellane
 		Directory.Build.targets = Directory.Build.targets
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{4BEBA644-A7B0-4E9F-8571-C77B1732DB8F}"
+	ProjectSection(SolutionItems) = preProject
+		Examples\Directory.Build.targets = Examples\Directory.Build.targets
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Canary|Any CPU = Canary|Any CPU
@@ -1181,6 +1186,7 @@ Global
 		{B83E57B3-8A5B-461B-BA76-6F2307BC4C03} = {25D5F0A6-A601-424B-9431-8EFE139A58A7}
 		{8F855A4B-3A63-4C27-92D6-F0BBC9D15A44} = {25D5F0A6-A601-424B-9431-8EFE139A58A7}
 		{241C9BD1-CB7D-4AF0-8FDB-3BCB4C98AF51} = {5D85B551-9AFC-4E96-93C3-D8D81B69971F}
+		{4BEBA644-A7B0-4E9F-8571-C77B1732DB8F} = {9ACA6117-D269-4425-8500-6BC57560DEB2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A7CE7732-0982-4703-8EFD-7715D569BAB5}

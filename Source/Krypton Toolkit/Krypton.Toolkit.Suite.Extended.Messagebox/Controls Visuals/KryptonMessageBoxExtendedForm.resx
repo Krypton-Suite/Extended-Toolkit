@@ -120,10 +120,12 @@
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="kryptonTableLayoutPanel1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAALcAAAAUCAYAAADP5qzfAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAB5SURBVGhD7dbBCcNADERRt6vmUkTacDEOXohP24A/7/Bg
-        tboOg46Zuf4+3/N5m81vn4/7A4pWc+8W8GaruYWbIuEma4V7t4ACzU2Ss4Qs4SZrhXu3gALNTZKzhCzh
-        JmuFe7eAAs1NkrOELOEmS7hJE26SNDdZM3P9AK0oVzsDfymdAAAAAElFTkSuQmCC
+        iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAD0SURBVHhe7dExAQAgDMAw/ItBBDYmZtjI0SMKcu6bjaMQ
+        TCGYQjCFYArBFIIpBFMIphBMIZhCMIVgCsEUgikEUwimEEwhmEIwhWAKwRSCKQRTCKYQTCGYQjCFYArB
+        FIIpBFMIphBMIZhCMIVgCsEUgikEUwimEEwhmEIwhWAKwRSCKQRTCKYQTCGYQjCFYArBFIIpBFMIphBM
+        IZhCMIVgCsEUgikEUwimEEwhmEIwhWAKwRSCKQRTCKYQTCGYQjCFYArBFIIpBFMIphBMIZhCMIVgCsEU
+        gikEUwimEEwhmEIwhWAKwRSCKQRTCKYQTCGYQiizH+yXgiFwEL30AAAAAElFTkSuQmCC
 </value>
   </data>
 </root>
