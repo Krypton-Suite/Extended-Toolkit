@@ -2,19 +2,22 @@
 {
 	public class KryptonSystemInformation : KryptonForm
 	{
+		#region Design Code
 		private KryptonPanel kryptonPanel1;
 		private KryptonBorderEdge kryptonBorderEdge1;
 		private KryptonButton kbtnClose;
-		private KryptonRichTextBox kryptonRichTextBox1;
+		private KryptonRichTextBox krtbSystemInformation;
+		private KryptonButton kbtnCopy;
 		private KryptonPanel kryptonPanel2;
 
 		private void InitializeComponent()
 		{
 			this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+			this.kbtnCopy = new Krypton.Toolkit.KryptonButton();
+			this.kbtnClose = new Krypton.Toolkit.KryptonButton();
 			this.kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
 			this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
-			this.kryptonRichTextBox1 = new Krypton.Toolkit.KryptonRichTextBox();
-			this.kbtnClose = new Krypton.Toolkit.KryptonButton();
+			this.krtbSystemInformation = new Krypton.Toolkit.KryptonRichTextBox();
 			((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
 			this.kryptonPanel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
@@ -23,6 +26,7 @@
 			// 
 			// kryptonPanel1
 			// 
+			this.kryptonPanel1.Controls.Add(this.kbtnCopy);
 			this.kryptonPanel1.Controls.Add(this.kbtnClose);
 			this.kryptonPanel1.Controls.Add(this.kryptonBorderEdge1);
 			this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -31,6 +35,24 @@
 			this.kryptonPanel1.PanelBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelAlternate;
 			this.kryptonPanel1.Size = new System.Drawing.Size(814, 50);
 			this.kryptonPanel1.TabIndex = 0;
+			// 
+			// kbtnCopy
+			// 
+			this.kbtnCopy.Location = new System.Drawing.Point(12, 13);
+			this.kbtnCopy.Name = "kbtnCopy";
+			this.kbtnCopy.Size = new System.Drawing.Size(90, 25);
+			this.kbtnCopy.TabIndex = 3;
+			this.kbtnCopy.Values.Text = "&Copy";
+			this.kbtnCopy.Click += new System.EventHandler(this.kbtnCopy_Click);
+			// 
+			// kbtnClose
+			// 
+			this.kbtnClose.Location = new System.Drawing.Point(712, 13);
+			this.kbtnClose.Name = "kbtnClose";
+			this.kbtnClose.Size = new System.Drawing.Size(90, 25);
+			this.kbtnClose.TabIndex = 1;
+			this.kbtnClose.Values.Text = "Cl&ose";
+			this.kbtnClose.Click += new System.EventHandler(this.kbtnClose_Click);
 			// 
 			// kryptonBorderEdge1
 			// 
@@ -43,32 +65,24 @@
 			// 
 			// kryptonPanel2
 			// 
-			this.kryptonPanel2.Controls.Add(this.kryptonRichTextBox1);
+			this.kryptonPanel2.Controls.Add(this.krtbSystemInformation);
 			this.kryptonPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.kryptonPanel2.Location = new System.Drawing.Point(0, 0);
 			this.kryptonPanel2.Name = "kryptonPanel2";
 			this.kryptonPanel2.Size = new System.Drawing.Size(814, 556);
 			this.kryptonPanel2.TabIndex = 1;
 			// 
-			// kryptonRichTextBox1
+			// krtbSystemInformation
 			// 
-			this.kryptonRichTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.kryptonRichTextBox1.Location = new System.Drawing.Point(13, 13);
-			this.kryptonRichTextBox1.Name = "kryptonRichTextBox1";
-			this.kryptonRichTextBox1.ReadOnly = true;
-			this.kryptonRichTextBox1.Size = new System.Drawing.Size(789, 527);
-			this.kryptonRichTextBox1.TabIndex = 0;
-			this.kryptonRichTextBox1.Text = "kryptonRichTextBox1";
-			// 
-			// kbtnClose
-			// 
-			this.kbtnClose.Location = new System.Drawing.Point(362, 13);
-			this.kbtnClose.Name = "kbtnClose";
-			this.kbtnClose.Size = new System.Drawing.Size(90, 25);
-			this.kbtnClose.TabIndex = 1;
-			this.kbtnClose.Values.Text = "Cl&ose";
+			this.krtbSystemInformation.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+			| System.Windows.Forms.AnchorStyles.Left)
+			| System.Windows.Forms.AnchorStyles.Right)));
+			this.krtbSystemInformation.Location = new System.Drawing.Point(13, 13);
+			this.krtbSystemInformation.Name = "krtbSystemInformation";
+			this.krtbSystemInformation.ReadOnly = true;
+			this.krtbSystemInformation.Size = new System.Drawing.Size(789, 527);
+			this.krtbSystemInformation.TabIndex = 0;
+			this.krtbSystemInformation.Text = "";
 			// 
 			// KryptonSystemInformation
 			// 
@@ -80,12 +94,40 @@
 			this.MinimizeBox = false;
 			this.Name = "KryptonSystemInformation";
 			this.ShowInTaskbar = false;
+			this.Text = "System Information";
+			this.Load += new System.EventHandler(this.KryptonSystemInformation_Load);
 			((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
 			this.kryptonPanel1.ResumeLayout(false);
 			this.kryptonPanel1.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
 			this.kryptonPanel2.ResumeLayout(false);
 			this.ResumeLayout(false);
+
+		}
+		#endregion
+
+		#region Identity
+		public KryptonSystemInformation()
+		{
+			InitializeComponent();
+		}
+		#endregion
+
+		private void kbtnCopy_Click(object sender, EventArgs e)
+		{
+			if (!string.IsNullOrEmpty(krtbSystemInformation.Text))
+			{
+				Clipboard.SetText(krtbSystemInformation.Text);
+			}
+		}
+
+		private void kbtnClose_Click(object sender, EventArgs e)
+		{
+			Hide();
+		}
+
+		private void KryptonSystemInformation_Load(object sender, EventArgs e)
+		{
 
 		}
 	}
