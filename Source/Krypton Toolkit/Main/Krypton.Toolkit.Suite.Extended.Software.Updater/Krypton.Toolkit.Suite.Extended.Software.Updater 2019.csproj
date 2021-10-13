@@ -1,0 +1,106 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    
+    <PropertyGroup>
+        <LangVersion>preview</LangVersion>
+        <OutputType>library</OutputType>
+        <RootNamespace>Krypton.Toolkit.Suite.Extended.Software.Updater</RootNamespace>
+        <AssemblyName>Krypton.Toolkit.Suite.Extended.Software.Updater</AssemblyName>
+        <UseWindowsForms>true</UseWindowsForms>
+        <NeutralLanguage>en</NeutralLanguage>
+    </PropertyGroup>
+
+    <!--Package Data-->
+    <PropertyGroup>
+        <PackageId>Krypton.Toolkit.Suite.Extended.ComboBox</PackageId>
+        <Description>An extension to the Krypton standard toolkit. This package implements software updating features.</Description>
+    </PropertyGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+  </ItemGroup>
+  
+   <ItemGroup>
+    <PackageReference Include="ILRepack.Lib.MSBuild.Task" Version="2.0.18.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="System.Net.Http" Version="4.3.4" />
+    <PackageReference Include="ZipStorer" Version="3.6.0" />
+  </ItemGroup>
+
+  <!--Binary/Documentation Output-->
+  <PropertyGroup>
+    <DocumentationFile>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.Software.Updater\Krypton.Toolkit.Suite.Extended.Software.Updater.xml</DocumentationFile>
+    <OutputPath>..\..\..\..\Bin\$(configuration)\Main\Krypton.Toolkit.Suite.Extended.Software.Updater\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Update="NetSparkle\Resources\NetSparkleResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>NetSparkleResources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="NetSparkle\Resources\NetSparkleResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>NetSparkleResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Sharp Update\Resources\SharpUpdateResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    
+  </ItemGroup>
+    <!--Krypton Toolkit Import-
+    <Choose>
+        <When Condition="'$(SolutionName.Endswith(`Nuget`))'">
+            <ItemGroup>
+                Canary package
+                <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2108.1" />
+
+                Stable package
+                <PackageReference Include="Krypton.Toolkit" Version="5.550.2108" />-
+            </ItemGroup>
+        </When>
+        <Otherwise>
+            <ItemGroup>
+                <ProjectReference Include="..\..\..\..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Toolkit\Krypton.Toolkit 2019.csproj" />
+            </ItemGroup>
+        </Otherwise>
+    </Choose>-->
+    <ItemGroup>
+        <Reference Include="System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net4'))">
+            <SpecificVersion>True</SpecificVersion>
+            <Version>4.0.0.0</Version>
+            <TreatAsUsed>True</TreatAsUsed>
+        </Reference>
+        <Reference Include="System.Design, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net5'))">
+            <SpecificVersion>True</SpecificVersion>
+            <Version>5.0.0.0</Version>
+            <TreatAsUsed>True</TreatAsUsed>
+        </Reference>
+        <Reference Include="System.Design, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net6'))">
+            <SpecificVersion>True</SpecificVersion>
+            <Version>6.0.0.0</Version>
+            <TreatAsUsed>True</TreatAsUsed>
+        </Reference>
+        <Reference Include="System.Design" Condition="'$(TargetFramework)' == 'net35'" />
+        <!--TODO: Need to specify version here-->
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Include="..\..\..\..\Documents\Help\License.md">
+        <Pack>True</Pack>
+        <PackagePath></PackagePath>
+      </None>
+    </ItemGroup>
+
+</Project>
