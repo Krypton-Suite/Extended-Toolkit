@@ -5,10 +5,11 @@
         <LangVersion>latest</LangVersion>
         <OutputType>WinExe</OutputType>
         <UseWindowsForms>true</UseWindowsForms>
+        <Configurations>Debug;Release;Nightly;Canary;Stable</Configurations>
     </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Shared\Krypton.Toolkit.Suite.Extended.Effects\Krypton.Toolkit.Suite.Extended.Effects 2019.csproj" />
+    <ProjectReference Include="..\..\Krypton.Toolkit.Suite.Extended.Effects\Krypton.Toolkit.Suite.Extended.Effects 2019.csproj" />
   </ItemGroup>
 
 </Project>

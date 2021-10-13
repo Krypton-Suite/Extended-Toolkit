@@ -1,5 +1,4 @@
-﻿
-namespace Calendar
+﻿namespace Calendar
 {
     partial class Form1
     {

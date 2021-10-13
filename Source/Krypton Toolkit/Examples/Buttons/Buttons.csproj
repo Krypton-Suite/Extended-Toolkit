@@ -5,14 +5,15 @@
     <LangVersion>latest</LangVersion>
     <OutputType>WinExe</OutputType>
     <UseWindowsForms>true</UseWindowsForms>
+    <Configurations>Debug;Release;Nightly;Canary;Stable</Configurations>
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="System.Management" />
+    <ProjectReference Include="..\..\Krypton.Toolkit.Suite.Extended.Buttons\Krypton.Toolkit.Suite.Extended.Buttons 2019.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Main\Krypton.Toolkit.Suite.Extended.Buttons\Krypton.Toolkit.Suite.Extended.Buttons 2019.csproj" />
+    <Reference Include="System.Management" />
   </ItemGroup>
 
   <ItemGroup>

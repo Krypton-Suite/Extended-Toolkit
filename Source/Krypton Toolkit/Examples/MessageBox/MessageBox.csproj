@@ -5,14 +5,15 @@
     <LangVersion>latest</LangVersion>
     <OutputType>WinExe</OutputType>
     <UseWindowsForms>true</UseWindowsForms>
+    <Configurations>Debug;Release;Nightly;Canary;Stable</Configurations>
   </PropertyGroup>
   
   <ItemGroup>
-    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2109" />
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.2110.274-beta" />
   </ItemGroup>
   
   <ItemGroup>
-    <ProjectReference Include="..\..\Main\Krypton.Toolkit.Suite.Extended.Messagebox\Krypton.Toolkit.Suite.Extended.Messagebox 2019.csproj" />
+    <ProjectReference Include="..\..\Krypton.Toolkit.Suite.Extended.Messagebox\Krypton.Toolkit.Suite.Extended.Messagebox 2019.csproj" />
   </ItemGroup>
 
   <ItemGroup>
