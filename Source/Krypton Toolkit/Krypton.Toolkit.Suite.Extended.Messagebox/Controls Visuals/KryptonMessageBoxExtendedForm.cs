@@ -204,6 +204,8 @@
         #endregion
 
         #region Instance Fields
+
+        #region Basic Fields
         private readonly string _text;
         private readonly string _caption;
         private readonly ExtendedMessageBoxButtons _buttons;
@@ -214,6 +216,17 @@
         // If help information provided or we are not a service/default desktop application then grab an owner for showing the message box
         private readonly IWin32Window _showOwner;
         private readonly HelpInfo _helpInfo;
+        #endregion
+
+        #region Extended Fields
+        private Color _contentMessageColour, _buttonOneTextColour, _buttonTwoTextColour,
+                      _buttonThreeTextColour, _yesButtonColour, _noButtonColour, _textColour,
+                      _yesNoButtonTextColour;
+        private Font _messageBoxTypeface;
+        private readonly string _optionalCheckBoxText, _copyButtonText, _buttonOneText, _buttonTwoText, _buttonThreeText;
+        private Image _customMessageBoxIcon;
+        #endregion
+
         #endregion
 
         #region Identity
@@ -331,6 +344,8 @@
             {
                 default:
                 case ExtendedKryptonMessageBoxIcon.CUSTOM:
+                    _messageIcon.Image = _customMessageBoxIcon;
+                    break;
                 case ExtendedKryptonMessageBoxIcon.NONE:
                     // Windows XP and before will Beep, Vista and above do not!
                     if (OS_MAJOR_VERSION < 6)
