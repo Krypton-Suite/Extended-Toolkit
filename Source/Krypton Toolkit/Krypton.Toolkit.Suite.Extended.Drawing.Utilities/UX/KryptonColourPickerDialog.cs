@@ -292,7 +292,7 @@
                                 MessageBoxIcon = ExtendedKryptonMessageBoxIcon.EXCLAMATION
                             };
 
-                            manager.DisplayKryptonMessageBox();
+                            // TODO: manager.DisplayKryptonMessageBox();
                         }
                     }
                     catch (Exception exc)
@@ -340,7 +340,7 @@
                         MessageBoxIcon = ExtendedKryptonMessageBoxIcon.EXCLAMATION
                     };
 
-                    manager.DisplayKryptonMessageBox();
+                    //manager.DisplayKryptonMessageBox();
                 }
             }
         }

@@ -335,6 +335,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         #endregion
 
         #region Methods
+        /*
         /// <summary>Displays the krypton message box.</summary>
         /// <returns>The users' dialog result</returns>
         public DialogResult DisplayKryptonMessageBox()
@@ -377,6 +378,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
             e.ShowMessageBox();
         }
+        */
         #endregion
     }
 }
