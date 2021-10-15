@@ -225,6 +225,9 @@
         private Font _messageBoxTypeface;
         private readonly string _optionalCheckBoxText, _copyButtonText, _buttonOneText, _buttonTwoText, _buttonThreeText;
         private Image _customMessageBoxIcon;
+        private SoundPlayer _player;
+        private int _timeoutSeconds;
+        private Timer _timer;
         #endregion
 
         #endregion
@@ -241,7 +244,7 @@
         internal KryptonMessageBoxExtendedForm(IWin32Window showOwner, string text, string caption,
             ExtendedMessageBoxButtons buttons, ExtendedKryptonMessageBoxIcon icon,
             MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
-            HelpInfo helpInfo, bool? showCtrlCopy)
+            HelpInfo helpInfo, bool? showCtrlCopy, Font? messageBoxTypeface)
         {
             // Store incoming values
             _text = text;
@@ -252,6 +255,9 @@
             _options = options;
             _helpInfo = helpInfo;
             _showOwner = showOwner;
+
+            // Extended values
+            _messageBoxTypeface = messageBoxTypeface ?? new Font(@"Segoe UI", 8.25F);
 
             // Create the form contents
             InitializeComponent();
@@ -311,6 +317,9 @@
         private void UpdateText()
         {
             Text = (string.IsNullOrEmpty(_caption) ? string.Empty : _caption.Split(Environment.NewLine.ToCharArray())[0]);
+
+            _messageText.StateCommon.Font = _messageBoxTypeface;
+
             _messageText.Text = _text;
             _messageText.RightToLeft = _options.HasFlag(MessageBoxOptions.RightAlign)
                 ? RightToLeft.Yes
@@ -406,6 +415,7 @@
                 case ExtendedMessageBoxButtons.OK:
                     _button1.Text = KryptonManager.Strings.OK;
                     _button1.DialogResult = DialogResult.OK;
+                    _button1.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
                     _button1.Visible = true;
                     _button1.Enabled = true;
                     break;
@@ -414,6 +424,8 @@
                     _button2.Text = KryptonManager.Strings.Cancel;
                     _button1.DialogResult = DialogResult.OK;
                     _button2.DialogResult = DialogResult.Cancel;
+                    _button1.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
+                    _button2.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
                     _button1.Visible = true;
                     _button1.Enabled = true;
                     _button2.Visible = true;
@@ -424,6 +436,8 @@
                     _button2.Text = KryptonManager.Strings.No;
                     _button1.DialogResult = DialogResult.Yes;
                     _button2.DialogResult = DialogResult.No;
+                    _button1.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
+                    _button2.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
                     _button1.Visible = true;
                     _button1.Enabled = true;
                     _button2.Visible = true;
@@ -437,6 +451,9 @@
                     _button1.DialogResult = DialogResult.Yes;
                     _button2.DialogResult = DialogResult.No;
                     _button3.DialogResult = DialogResult.Cancel;
+                    _button1.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
+                    _button2.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
+                    _button3.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
                     _button1.Visible = true;
                     _button1.Enabled = true;
                     _button2.Visible = true;
@@ -449,6 +466,8 @@
                     _button2.Text = KryptonManager.Strings.Cancel;
                     _button1.DialogResult = DialogResult.Retry;
                     _button2.DialogResult = DialogResult.Cancel;
+                    _button1.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
+                    _button2.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
                     _button1.Visible = true;
                     _button1.Enabled = true;
                     _button2.Visible = true;
@@ -461,6 +480,9 @@
                     _button1.DialogResult = DialogResult.Abort;
                     _button2.DialogResult = DialogResult.Retry;
                     _button3.DialogResult = DialogResult.Ignore;
+                    _button1.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
+                    _button2.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
+                    _button3.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
                     _button1.Visible = true;
                     _button1.Enabled = true;
                     _button2.Visible = true;
