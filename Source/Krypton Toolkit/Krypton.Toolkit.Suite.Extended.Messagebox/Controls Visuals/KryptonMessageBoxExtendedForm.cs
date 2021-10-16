@@ -219,13 +219,25 @@
         #endregion
 
         #region Extended Fields
-        private Color _contentMessageColour, _buttonOneTextColour, _buttonTwoTextColour,
-                      _buttonThreeTextColour, _yesButtonColour, _noButtonColour, _textColour,
-                      _yesNoButtonTextColour;
+        private bool _showUACShieldOnAcceptButton, _useYesNoOrCancelButtonColours;
+        private Color _contentMessageColour, _buttonOneBackColourOne, _buttonOneBackColourTwo,
+                      _buttonOneTextColourOne, _buttonOneTextColourTwo,
+                      _buttonTwoBackColourOne, _buttonTwoBackColourTwo,
+                      _buttonTwoTextColourOne, _buttonTwoTextColourTwo,
+                      _buttonThreeBackColourOne, _buttonThreeBackColourTwo,
+                      _buttonThreeTextColourOne, _buttonThreeTextColourTwo,
+                      _yesButtonBackColourOne, _yesButtonBackColourTwo,
+                      _yesButtonTextColourOne, _yesButtonTextColourTwo,
+                      _noButtonBackColourOne, _noButtonBackColourTwo,
+                      _noButtonTextColourOne, _noButtonTextColourTwo;
+        private DialogResult _buttonOneCustomDialogResult, _buttonTwoCustomDialogResult, _buttonThreeCustomDialogResult;
+        private ExtendedMessageBoxCustomButtonVisibility _visibility;
         private Font _messageBoxTypeface;
+        private float _cornerRounding;
         private readonly string _optionalCheckBoxText, _copyButtonText, _buttonOneText, _buttonTwoText, _buttonThreeText;
         private Image _customMessageBoxIcon;
         private SoundPlayer _player;
+        private Stream _soundStream;
         private int _timeoutSeconds;
         private Timer _timer;
         #endregion
@@ -242,9 +254,23 @@
 
 
         internal KryptonMessageBoxExtendedForm(IWin32Window showOwner, string text, string caption,
-            ExtendedMessageBoxButtons buttons, ExtendedKryptonMessageBoxIcon icon,
-            MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
-            HelpInfo helpInfo, bool? showCtrlCopy, Font? messageBoxTypeface)
+                                               ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonVisibility? customButtonVisibility,
+                                               ExtendedKryptonMessageBoxIcon icon, MessageBoxDefaultButton defaultButton,
+                                               DialogResult? customButtonOneDialogResult, DialogResult? customButtonTwoDialogResult,
+                                               DialogResult? customButtonThreeDialogResult, MessageBoxOptions options,
+                                               HelpInfo helpInfo, bool? showCtrlCopy, Font? messageBoxTypeface,
+                                               bool? useYesNoOrCancelButtonColours, Color? contentMessageColour,
+                                               Color? buttonOneBackColourOne, Color? buttonOneBackColourTwo,
+                                               Color? buttonOneTextColourOne, Color? buttonOneTextColourTwo,
+                                               Color? buttonTwoTextColourOne, Color? buttonTwoTextColourTwo,
+                                               Color? buttonTwoBackColourOne, Color? buttonTwoBackColourTwo,
+                                               Color? buttonThreeTextColourOne, Color? buttonThreeTextColourTwo,
+                                               Color? buttonThreeBackColourOne, Color? buttonThreeBackColourTwo,
+                                               Color? yesButtonBackColourOne, Color? yesButtonBackColourTwo,
+                                               Color? yesButtonTextColourOne, Color? yesButtonTextColourTwo,
+                                               Color? noButtonBackColourOne, Color? noButtonBackColourTwo,
+                                               Color? noButtonTextColourOne, Color? noneButtonTextColourTwo,
+                                               float? cornerRounding, bool? showUACShieldOnAcceptButton)
         {
             // Store incoming values
             _text = text;
@@ -257,7 +283,35 @@
             _showOwner = showOwner;
 
             // Extended values
+            _useYesNoOrCancelButtonColours = useYesNoOrCancelButtonColours ?? false;
+            _showUACShieldOnAcceptButton = showUACShieldOnAcceptButton ?? false;
+            _visibility = customButtonVisibility ?? ExtendedMessageBoxCustomButtonVisibility.NONE;
+            _buttonOneCustomDialogResult = customButtonOneDialogResult ?? DialogResult.None;
+            _buttonTwoCustomDialogResult = customButtonTwoDialogResult ?? DialogResult.None;
+            _buttonThreeCustomDialogResult = customButtonThreeDialogResult ?? DialogResult.None;
             _messageBoxTypeface = messageBoxTypeface ?? new Font(@"Segoe UI", 8.25F);
+            _contentMessageColour = contentMessageColour ?? Color.Empty;
+            _buttonOneTextColourOne = buttonOneTextColourOne ?? Color.Empty;
+            _buttonOneBackColourOne = buttonOneBackColourOne ?? Color.Empty;
+            _buttonOneTextColourTwo = buttonOneTextColourTwo ?? Color.Empty;
+            _buttonOneBackColourTwo = buttonOneBackColourTwo ?? Color.Empty;
+            _buttonTwoTextColourOne = buttonTwoTextColourOne ?? Color.Empty;
+            _buttonTwoBackColourOne = buttonTwoBackColourOne ?? Color.Empty;
+            _buttonTwoTextColourTwo = buttonTwoTextColourTwo ?? Color.Empty;
+            _buttonTwoBackColourTwo = buttonTwoBackColourTwo ?? Color.Empty;
+            _buttonThreeTextColourOne = buttonThreeTextColourOne ?? Color.Empty;
+            _buttonThreeBackColourOne = buttonThreeBackColourOne ?? Color.Empty;
+            _buttonThreeTextColourTwo = buttonThreeTextColourTwo ?? Color.Empty;
+            _buttonThreeBackColourTwo = buttonThreeBackColourTwo ?? Color.Empty;
+            _yesButtonBackColourOne = yesButtonBackColourOne ?? Color.Green;
+            _yesButtonTextColorOne = yesButtonTextColorOne ?? Color.Empty;
+            _yesButtonBackColourTwo = yesButtonBackColourTwo ?? Color.Green;
+            _yesButtonTextColorTwo = yesButtonTextColor ?? Color.Empty;
+            _noButtonBackColourOne = noButtonBackColourOne ?? Color.Red;
+            _noButtonTextColourOne = noButtonTextColourOne ?? Color.Empty;
+            _noButtonBackColourTwo = noButtonBackColourTwo ?? Color.Red;
+            _noButtonTextColourTwo = noButtonTextColourTwo ?? Color.Empty;
+            _cornerRounding = cornerRounding ?? -1;
 
             // Create the form contents
             InitializeComponent();
@@ -271,6 +325,7 @@
             UpdateDefault();
             UpdateHelp();
             UpdateTextExtra(showCtrlCopy);
+            AdjustCornerRounding(_cornerRounding);
 
             // Finally calculate and set form sizing
             UpdateSizing(showOwner);
@@ -354,6 +409,13 @@
                 default:
                 case ExtendedKryptonMessageBoxIcon.CUSTOM:
                     _messageIcon.Image = _customMessageBoxIcon;
+
+                    if (_player != null)
+                    {
+                        _player = new SoundPlayer(_soundStream);
+
+                        _player.Play();
+                    }
                     break;
                 case ExtendedKryptonMessageBoxIcon.NONE:
                     // Windows XP and before will Beep, Vista and above do not!
@@ -412,12 +474,49 @@
         {
             switch (_buttons)
             {
+                case ExtendedMessageBoxButtons.CUSTOM:
+                    _button1.Text = _buttonOneText;
+                    _button1.DialogResult = _buttonOneCustomDialogResult;
+                    _button2.Text = _buttonTwoText;
+                    _button2.DialogResult = _buttonTwoCustomDialogResult;
+                    _button3.Text = _buttonThreeText;
+                    _button3.DialogResult = _buttonThreeCustomDialogResult;
+                    switch (_visibility)
+                    {
+                        case ExtendedMessageBoxCustomButtonVisibility.ONEBUTTON:
+                            _button1.Visible = true;
+                            _button1.Enabled = true;
+                            break;
+                        case ExtendedMessageBoxCustomButtonVisibility.TWOBUTTONS:
+                            _button1.Visible = true;
+                            _button1.Enabled = true;
+                            _button2.Visible = true;
+                            _button2.Enabled = true;
+                            break;
+                        case ExtendedMessageBoxCustomButtonVisibility.THREEBUTTONS:
+                            _button1.Visible = true;
+                            _button1.Enabled = true;
+                            _button2.Visible = true;
+                            _button2.Enabled = true;
+                            _button3.Visible = true;
+                            _button3.Enabled = true;
+                            break;
+                    }
+                    break;
                 case ExtendedMessageBoxButtons.OK:
                     _button1.Text = KryptonManager.Strings.OK;
                     _button1.DialogResult = DialogResult.OK;
                     _button1.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
                     _button1.Visible = true;
                     _button1.Enabled = true;
+
+                    if (_useYesNoOrCancelButtonColours)
+                    {
+                        AlterButtonColours(_buttonOneBackColourOne, _buttonOneBackColourTwo,
+                            null, null, null, null,
+                            _buttonOneTextColourOne, _buttonOneTextColourTwo,
+                            null, null, null, null);
+                    }
                     break;
                 case ExtendedMessageBoxButtons.OKCANCEL:
                     _button1.Text = KryptonManager.Strings.OK;
@@ -742,6 +841,64 @@
                 }
             }
         }
+        #endregion
+
+        #region Extended Methods
+        /// <summary>
+        /// Alters the button colours.
+        /// </summary>
+        /// <param name="buttonOneBackColourOne">The button one back colour one.</param>
+        /// <param name="buttonOneBackColourTwo">The button one back colour two.</param>
+        /// <param name="buttonTwoBackColourOne">The button two back colour one.</param>
+        /// <param name="buttonTwoBackColourTwo">The button two back colour two.</param>
+        /// <param name="buttonThreeBackColourOne">The button three back colour one.</param>
+        /// <param name="buttonThreeBackColourTwo">The button three back colour two.</param>
+        /// <param name="buttonOneTextColourOne">The button one text colour one.</param>
+        /// <param name="buttonOneTextColourTwo">The button one text colour two.</param>
+        /// <param name="buttonTwoTextColourOne">The button two text colour one.</param>
+        /// <param name="buttonTwoTextColourTwo">The button two text colour two.</param>
+        /// <param name="buttonThreeTextColourOne">The button three text colour one.</param>
+        /// <param name="buttonThreeTextColourTwo">The button three text colour two.</param>
+        /// <returns></returns>
+        private void AlterButtonColours(Color buttonOneBackColourOne, Color buttonOneBackColourTwo,
+                                        Color? buttonTwoBackColourOne, Color? buttonTwoBackColourTwo,
+                                        Color? buttonThreeBackColourOne, Color? buttonThreeBackColourTwo,
+                                        Color buttonOneTextColourOne, Color buttonOneTextColourTwo,
+                                        Color? buttonTwoTextColourOne, Color? buttonTwoTextColourTwo,
+                                        Color? buttonThreeTextColourOne, Color? buttonThreeTextColourTwo)
+        {
+            _button1.StateCommon.Back.Color1 = buttonOneBackColourOne;
+
+            _button1.StateCommon.Back.Color2 = buttonOneBackColourTwo;
+
+            _button1.StateCommon.Content.ShortText.Color1 = buttonOneTextColourOne;
+
+            _button1.StateCommon.Content.ShortText.Color2 = buttonOneTextColourTwo;
+
+            _button2.StateCommon.Back.Color1 = buttonTwoBackColourOne ?? Color.Empty;
+
+            _button2.StateCommon.Back.Color2 = buttonTwoBackColourTwo ?? Color.Empty;
+
+            _button2.StateCommon.Content.ShortText.Color1 = buttonTwoTextColourOne ?? Color.Empty;
+
+            _button2.StateCommon.Content.ShortText.Color2 = buttonTwoTextColourTwo ?? Color.Empty;
+
+            _button3.StateCommon.Back.Color1 = buttonThreeBackColourOne ?? Color.Empty;
+
+            _button3.StateCommon.Back.Color2 = buttonThreeBackColourTwo ?? Color.Empty;
+
+            _button3.StateCommon.Content.ShortText.Color1 = buttonThreeTextColourOne ?? Color.Empty;
+
+            _button3.StateCommon.Content.ShortText.Color2 = buttonThreeTextColourTwo ?? Color.Empty;
+        }
+
+        /// <summary>
+        /// Adjusts the corner rounding.
+        /// </summary>
+        /// <param name="cornerRounding">The corner rounding.</param>
+        /// <returns></returns>
+        private void AdjustCornerRounding(float cornerRounding) => StateCommon.Border.Rounding = cornerRounding;
+
         #endregion
 
         #endregion

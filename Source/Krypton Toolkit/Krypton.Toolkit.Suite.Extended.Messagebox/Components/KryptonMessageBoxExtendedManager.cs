@@ -31,7 +31,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         private ExtendedMessageBoxButtons _buttons;
 
-        private ExtendedMessageBoxCustomButtonOptions _customButtonOptions;
+        private ExtendedMessageBoxCustomButtonVisibility _customButtonOptions;
 
         private MessageBoxDefaultButton _defaultButton;
 
@@ -177,7 +177,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <summary>Gets or sets the custom button options.</summary>
         /// <value>The custom button options.</value>
         [DefaultValue(null), Description("Gets or sets the custom button options.")]
-        public ExtendedMessageBoxCustomButtonOptions CustomButtonOptions { get => _customButtonOptions; set => _customButtonOptions = value; }
+        public ExtendedMessageBoxCustomButtonVisibility CustomButtonOptions { get => _customButtonOptions; set => _customButtonOptions = value; }
 
         /// <summary>Gets or sets the message box default button.</summary>
         /// <value>The message box default button.</value>

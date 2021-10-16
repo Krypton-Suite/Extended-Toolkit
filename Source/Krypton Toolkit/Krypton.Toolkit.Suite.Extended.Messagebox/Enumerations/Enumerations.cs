@@ -11,7 +11,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
     /// <summary>Specifies the button layout in the <see cref="KryptonMessageBoxExtended"/>.</summary>
     public enum ExtendedMessageBoxButtons
     {
-        /// <summary>Defines a custom button layout. Linked to <see cref="ExtendedMessageBoxCustomButtonOptions"/> values.</summary>
+        /// <summary>Defines a custom button layout. Linked to <see cref="ExtendedMessageBoxCustomButtonVisibility"/> values.</summary>
         CUSTOM = 0,
         /// <summary>Defines a 'OK' button only.</summary>
         OK = 5,
@@ -57,7 +57,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
     }
 
     /// <summary>Specifies a custom button layout.</summary>
-    public enum ExtendedMessageBoxCustomButtonOptions
+    public enum ExtendedMessageBoxCustomButtonVisibility
     {
         /// <summary>Do not use custom buttons, instead default to an 'OK' only button.</summary>
         NONE = 0,

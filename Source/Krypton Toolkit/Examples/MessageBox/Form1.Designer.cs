@@ -389,7 +389,7 @@ namespace MessageBox
             this.kmbc.ButtonTwoTextColour = System.Drawing.Color.Empty;
             this.kmbc.ContentMessageColour = System.Drawing.Color.Empty;
             this.kmbc.CustomButtonOneResult = System.Windows.Forms.DialogResult.OK;
-            this.kmbc.CustomButtonOptions = Krypton.Toolkit.Suite.Extended.Messagebox.ExtendedMessageBoxCustomButtonOptions.NONE;
+            this.kmbc.CustomButtonOptions = Krypton.Toolkit.Suite.Extended.Messagebox.ExtendedMessageBoxCustomButtonVisibility.NONE;
             this.kmbc.CustomButtonThreeResult = System.Windows.Forms.DialogResult.None;
             this.kmbc.CustomButtonTwoResult = System.Windows.Forms.DialogResult.None;
             this.kmbc.Fade = true;
