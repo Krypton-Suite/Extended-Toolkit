@@ -56,7 +56,6 @@ namespace MessageBox
             this.kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
             this.kryptonTextBox1 = new Krypton.Toolkit.KryptonTextBox();
             this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
-            this.kmbc = new Krypton.Toolkit.Suite.Extended.Messagebox.KryptonMessageBoxManager();
             this.kryptonGroupBox4 = new Krypton.Toolkit.KryptonGroupBox();
             this.kryptonGroupBox5 = new Krypton.Toolkit.KryptonGroupBox();
             this.kryptonGroupBox6 = new Krypton.Toolkit.KryptonGroupBox();
@@ -379,37 +378,6 @@ namespace MessageBox
             this.kryptonLabel1.TabIndex = 0;
             this.kryptonLabel1.Values.Text = "Caption:";
             // 
-            // kmbc
-            // 
-            this.kmbc.ButtonOneCustomText = "Does";
-            this.kmbc.ButtonOneTextColour = System.Drawing.Color.Empty;
-            this.kmbc.ButtonThreeCustomText = "Work?";
-            this.kmbc.ButtonThreeTextColour = System.Drawing.Color.Empty;
-            this.kmbc.ButtonTwoCustomText = "This";
-            this.kmbc.ButtonTwoTextColour = System.Drawing.Color.Empty;
-            this.kmbc.ContentMessageColour = System.Drawing.Color.Empty;
-            this.kmbc.CustomButtonOneResult = System.Windows.Forms.DialogResult.OK;
-            this.kmbc.CustomButtonOptions = Krypton.Toolkit.Suite.Extended.Messagebox.ExtendedMessageBoxCustomButtonVisibility.NONE;
-            this.kmbc.CustomButtonThreeResult = System.Windows.Forms.DialogResult.None;
-            this.kmbc.CustomButtonTwoResult = System.Windows.Forms.DialogResult.None;
-            this.kmbc.Fade = true;
-            this.kmbc.HelpNavigator = System.Windows.Forms.HelpNavigator.AssociateIndex;
-            this.kmbc.MessageBoxButtons = Krypton.Toolkit.Suite.Extended.Messagebox.ExtendedMessageBoxButtons.CUSTOM;
-            this.kmbc.MessageBoxContentText = "kryptonMessageBoxConfigurator1";
-            this.kmbc.MessageBoxDefaultButton = System.Windows.Forms.MessageBoxDefaultButton.Button1;
-            this.kmbc.MessageBoxIcon = Krypton.Toolkit.Suite.Extended.Messagebox.ExtendedKryptonMessageBoxIcon.NONE;
-            this.kmbc.MessageBoxTypeface = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kmbc.NoButtonColour = System.Drawing.Color.Red;
-            this.kmbc.OptionalCheckBoxAnchor = System.Windows.Forms.AnchorStyles.Left;
-            this.kmbc.OptionalCheckBoxCheckState = System.Windows.Forms.CheckState.Unchecked;
-            this.kmbc.OptionalCheckBoxText = "122222222222222222222222222222222222222222222222222";
-            this.kmbc.ShowOptionalCheckBox = true;
-            this.kmbc.TextColour = System.Drawing.Color.Empty;
-            this.kmbc.TimeOut = 0;
-            this.kmbc.UseYesNoCancelButtonColour = true;
-            this.kmbc.YesButtonColour = System.Drawing.Color.Green;
-            this.kmbc.YesNoButtonTextColour = System.Drawing.Color.White;
-            // 
             // kryptonGroupBox4
             // 
             this.kryptonGroupBox4.Location = new System.Drawing.Point(13, 510);
@@ -689,7 +657,6 @@ namespace MessageBox
 
         private Krypton.Toolkit.KryptonPanel kryptonPanel1;
         private Krypton.Toolkit.KryptonPanel kryptonPanel2;
-        private Krypton.Toolkit.Suite.Extended.Messagebox.KryptonMessageBoxManager kmbc;
 		private Krypton.Toolkit.KryptonButton kbtnTest;
 		private Krypton.Toolkit.KryptonBorderEdge kryptonBorderEdge1;
 		private Krypton.Toolkit.KryptonGroupBox kryptonGroupBox1;
