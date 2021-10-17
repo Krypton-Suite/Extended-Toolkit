@@ -232,7 +232,7 @@
                       _noButtonTextColourOne, _noButtonTextColourTwo;
         private DialogResult _buttonOneCustomDialogResult, _buttonTwoCustomDialogResult, _buttonThreeCustomDialogResult;
         private ExtendedMessageBoxCustomButtonVisibility _visibility;
-        private Font _messageBoxTypeface;
+        private Font _messageBoxButtonTypeface, _messageBoxTypeface;
         private float _cornerRounding;
         private readonly string _optionalCheckBoxText, _copyButtonText, _buttonOneText, _buttonTwoText, _buttonThreeText;
         private Image _customMessageBoxIcon;
@@ -247,18 +247,57 @@
         #region Identity
         static KryptonMessageBoxExtendedForm() => OS_MAJOR_VERSION = Environment.OSVersion.Version.Major;
 
-        public KryptonMessageBoxExtendedForm()
-        {
-            InitializeComponent();
-        }
+        public KryptonMessageBoxExtendedForm() => InitializeComponent();
 
 
+        /// <summary>Initializes a new instance of the <see cref="KryptonMessageBoxExtendedForm" /> class.</summary>
+        /// <param name="showOwner">The show owner.</param>
+        /// <param name="text">The text.</param>
+        /// <param name="caption">The caption.</param>
+        /// <param name="buttons">The buttons.</param>
+        /// <param name="customButtonVisibility">The custom button visibility.</param>
+        /// <param name="icon">The icon.</param>
+        /// <param name="defaultButton">The default button.</param>
+        /// <param name="customButtonOneDialogResult">The custom button one dialog result.</param>
+        /// <param name="customButtonTwoDialogResult">The custom button two dialog result.</param>
+        /// <param name="customButtonThreeDialogResult">The custom button three dialog result.</param>
+        /// <param name="options">The options.</param>
+        /// <param name="helpInfo">The help information.</param>
+        /// <param name="showCtrlCopy">The show control copy.</param>
+        /// <param name="messageBoxButtonTypeface">The message box button typeface.</param>
+        /// <param name="messageBoxTypeface">The message box typeface.</param>
+        /// <param name="useYesNoOrCancelButtonColours">The use yes no or cancel button colours.</param>
+        /// <param name="contentMessageColour">The content message colour.</param>
+        /// <param name="buttonOneBackColourOne">The button one back colour one.</param>
+        /// <param name="buttonOneBackColourTwo">The button one back colour two.</param>
+        /// <param name="buttonOneTextColourOne">The button one text colour one.</param>
+        /// <param name="buttonOneTextColourTwo">The button one text colour two.</param>
+        /// <param name="buttonTwoTextColourOne">The button two text colour one.</param>
+        /// <param name="buttonTwoTextColourTwo">The button two text colour two.</param>
+        /// <param name="buttonTwoBackColourOne">The button two back colour one.</param>
+        /// <param name="buttonTwoBackColourTwo">The button two back colour two.</param>
+        /// <param name="buttonThreeTextColourOne">The button three text colour one.</param>
+        /// <param name="buttonThreeTextColourTwo">The button three text colour two.</param>
+        /// <param name="buttonThreeBackColourOne">The button three back colour one.</param>
+        /// <param name="buttonThreeBackColourTwo">The button three back colour two.</param>
+        /// <param name="yesButtonBackColourOne">The yes button back colour one.</param>
+        /// <param name="yesButtonBackColourTwo">The yes button back colour two.</param>
+        /// <param name="yesButtonTextColourOne">The yes button text colour one.</param>
+        /// <param name="yesButtonTextColourTwo">The yes button text colour two.</param>
+        /// <param name="noButtonBackColourOne">The no button back colour one.</param>
+        /// <param name="noButtonBackColourTwo">The no button back colour two.</param>
+        /// <param name="noButtonTextColourOne">The no button text colour one.</param>
+        /// <param name="noButtonTextColourTwo">The no button text colour two.</param>
+        /// <param name="cornerRounding">The corner rounding.</param>
+        /// <param name="showUacShieldOnAcceptButton">The show uac shield on accept button.</param>
         internal KryptonMessageBoxExtendedForm(IWin32Window showOwner, string text, string caption,
-                                               ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonVisibility? customButtonVisibility,
+                                               ExtendedMessageBoxButtons buttons,
+                                               ExtendedMessageBoxCustomButtonVisibility? customButtonVisibility,
                                                ExtendedKryptonMessageBoxIcon icon, MessageBoxDefaultButton defaultButton,
                                                DialogResult? customButtonOneDialogResult, DialogResult? customButtonTwoDialogResult,
                                                DialogResult? customButtonThreeDialogResult, MessageBoxOptions options,
-                                               HelpInfo helpInfo, bool? showCtrlCopy, Font? messageBoxTypeface,
+                                               HelpInfo helpInfo, bool? showCtrlCopy,
+                                               Font? messageBoxButtonTypeface, Font? messageBoxTypeface,
                                                bool? useYesNoOrCancelButtonColours, Color? contentMessageColour,
                                                Color? buttonOneBackColourOne, Color? buttonOneBackColourTwo,
                                                Color? buttonOneTextColourOne, Color? buttonOneTextColourTwo,
@@ -269,8 +308,8 @@
                                                Color? yesButtonBackColourOne, Color? yesButtonBackColourTwo,
                                                Color? yesButtonTextColourOne, Color? yesButtonTextColourTwo,
                                                Color? noButtonBackColourOne, Color? noButtonBackColourTwo,
-                                               Color? noButtonTextColourOne, Color? noneButtonTextColourTwo,
-                                               float? cornerRounding, bool? showUACShieldOnAcceptButton)
+                                               Color? noButtonTextColourOne, Color? noButtonTextColourTwo,
+                                               float? cornerRounding, bool? showUacShieldOnAcceptButton)
         {
             // Store incoming values
             _text = text;
@@ -284,11 +323,12 @@
 
             // Extended values
             _useYesNoOrCancelButtonColours = useYesNoOrCancelButtonColours ?? false;
-            _showUACShieldOnAcceptButton = showUACShieldOnAcceptButton ?? false;
+            _showUACShieldOnAcceptButton = showUacShieldOnAcceptButton ?? false;
             _visibility = customButtonVisibility ?? ExtendedMessageBoxCustomButtonVisibility.NONE;
             _buttonOneCustomDialogResult = customButtonOneDialogResult ?? DialogResult.None;
             _buttonTwoCustomDialogResult = customButtonTwoDialogResult ?? DialogResult.None;
             _buttonThreeCustomDialogResult = customButtonThreeDialogResult ?? DialogResult.None;
+            _messageBoxButtonTypeface = messageBoxButtonTypeface ?? new Font(@"Segoe UI", 8.25F);
             _messageBoxTypeface = messageBoxTypeface ?? new Font(@"Segoe UI", 8.25F);
             _contentMessageColour = contentMessageColour ?? Color.Empty;
             _buttonOneTextColourOne = buttonOneTextColourOne ?? Color.Empty;
@@ -304,9 +344,9 @@
             _buttonThreeTextColourTwo = buttonThreeTextColourTwo ?? Color.Empty;
             _buttonThreeBackColourTwo = buttonThreeBackColourTwo ?? Color.Empty;
             _yesButtonBackColourOne = yesButtonBackColourOne ?? Color.Green;
-            _yesButtonTextColorOne = yesButtonTextColorOne ?? Color.Empty;
+            _yesButtonTextColourOne = yesButtonTextColourOne ?? Color.Empty;
             _yesButtonBackColourTwo = yesButtonBackColourTwo ?? Color.Green;
-            _yesButtonTextColorTwo = yesButtonTextColor ?? Color.Empty;
+            _yesButtonTextColourTwo = yesButtonTextColourTwo ?? Color.Empty;
             _noButtonBackColourOne = noButtonBackColourOne ?? Color.Red;
             _noButtonTextColourOne = noButtonTextColourOne ?? Color.Empty;
             _noButtonBackColourTwo = noButtonBackColourTwo ?? Color.Red;
@@ -330,40 +370,6 @@
             // Finally calculate and set form sizing
             UpdateSizing(showOwner);
         }
-
-        /*
-        internal KryptonMessageBoxExtendedForm(IWin32Window showOwner, string text, string caption,
-            ExtendedMessageBoxButtons buttons, ExtendedKryptonMessageBoxIcon icon,
-            MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
-            HelpInfo helpInfo, bool? showCtrlCopy)
-        {
-            // Store incoming values
-            _text = text;
-            _caption = caption;
-            _buttons = buttons;
-            _messageBoxIcon = icon;
-            _defaultButton = defaultButton;
-            _options = options;
-            _helpInfo = helpInfo;
-            _showOwner = showOwner;
-
-            // Create the form contents
-            InitializeComponent();
-
-            RightToLeftLayout = _options.HasFlag(MessageBoxOptions.RtlReading);
-
-            // Update contents to match requirements
-            UpdateText();
-            UpdateIcon();
-            UpdateButtons();
-            UpdateDefault();
-            UpdateHelp();
-            UpdateTextExtra(showCtrlCopy);
-
-            // Finally calculate and set form sizing
-            UpdateSizing(showOwner);
-
-        }*/
         #endregion Identity
 
         #region Methods
@@ -374,6 +380,8 @@
             Text = (string.IsNullOrEmpty(_caption) ? string.Empty : _caption.Split(Environment.NewLine.ToCharArray())[0]);
 
             _messageText.StateCommon.Font = _messageBoxTypeface;
+
+            _messageText.StateCommon.TextColor = _contentMessageColour;
 
             _messageText.Text = _text;
             _messageText.RightToLeft = _options.HasFlag(MessageBoxOptions.RightAlign)
@@ -506,9 +514,10 @@
                 case ExtendedMessageBoxButtons.OK:
                     _button1.Text = KryptonManager.Strings.OK;
                     _button1.DialogResult = DialogResult.OK;
-                    _button1.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
+                    _button1.StateCommon.Content.ShortText.Font = _messageBoxButtonTypeface;
                     _button1.Visible = true;
                     _button1.Enabled = true;
+                    _button1.UseAsUACElevationButton = _showUACShieldOnAcceptButton;
 
                     if (_useYesNoOrCancelButtonColours)
                     {
@@ -523,24 +532,26 @@
                     _button2.Text = KryptonManager.Strings.Cancel;
                     _button1.DialogResult = DialogResult.OK;
                     _button2.DialogResult = DialogResult.Cancel;
-                    _button1.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
-                    _button2.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
+                    _button1.StateCommon.Content.ShortText.Font = _messageBoxButtonTypeface;
+                    _button2.StateCommon.Content.ShortText.Font = _messageBoxButtonTypeface;
                     _button1.Visible = true;
                     _button1.Enabled = true;
                     _button2.Visible = true;
                     _button2.Enabled = true;
+                    _button1.UseAsUACElevationButton = _showUACShieldOnAcceptButton;
                     break;
                 case ExtendedMessageBoxButtons.YESNO:
                     _button1.Text = KryptonManager.Strings.Yes;
                     _button2.Text = KryptonManager.Strings.No;
                     _button1.DialogResult = DialogResult.Yes;
                     _button2.DialogResult = DialogResult.No;
-                    _button1.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
-                    _button2.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
+                    _button1.StateCommon.Content.ShortText.Font = _messageBoxButtonTypeface;
+                    _button2.StateCommon.Content.ShortText.Font = _messageBoxButtonTypeface;
                     _button1.Visible = true;
                     _button1.Enabled = true;
                     _button2.Visible = true;
                     _button2.Enabled = true;
+                    _button1.UseAsUACElevationButton = _showUACShieldOnAcceptButton;
                     ControlBox = false;
                     break;
                 case ExtendedMessageBoxButtons.YESNOCANCEL:
@@ -550,27 +561,29 @@
                     _button1.DialogResult = DialogResult.Yes;
                     _button2.DialogResult = DialogResult.No;
                     _button3.DialogResult = DialogResult.Cancel;
-                    _button1.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
-                    _button2.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
-                    _button3.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
+                    _button1.StateCommon.Content.ShortText.Font = _messageBoxButtonTypeface;
+                    _button2.StateCommon.Content.ShortText.Font = _messageBoxButtonTypeface;
+                    _button3.StateCommon.Content.ShortText.Font = _messageBoxButtonTypeface;
                     _button1.Visible = true;
                     _button1.Enabled = true;
                     _button2.Visible = true;
                     _button2.Enabled = true;
                     _button3.Visible = true;
                     _button3.Enabled = true;
+                    _button1.UseAsUACElevationButton = _showUACShieldOnAcceptButton;
                     break;
                 case ExtendedMessageBoxButtons.RETRYCANCEL:
                     _button1.Text = KryptonManager.Strings.Retry;
                     _button2.Text = KryptonManager.Strings.Cancel;
                     _button1.DialogResult = DialogResult.Retry;
                     _button2.DialogResult = DialogResult.Cancel;
-                    _button1.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
-                    _button2.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
+                    _button1.StateCommon.Content.ShortText.Font = _messageBoxButtonTypeface;
+                    _button2.StateCommon.Content.ShortText.Font = _messageBoxButtonTypeface;
                     _button1.Visible = true;
                     _button1.Enabled = true;
                     _button2.Visible = true;
                     _button2.Enabled = true;
+                    _button1.UseAsUACElevationButton = _showUACShieldOnAcceptButton;
                     break;
                 case ExtendedMessageBoxButtons.ABORTRETRYIGNORE:
                     _button1.Text = KryptonManager.Strings.Abort;
@@ -579,15 +592,16 @@
                     _button1.DialogResult = DialogResult.Abort;
                     _button2.DialogResult = DialogResult.Retry;
                     _button3.DialogResult = DialogResult.Ignore;
-                    _button1.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
-                    _button2.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
-                    _button3.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
+                    _button1.StateCommon.Content.ShortText.Font = _messageBoxButtonTypeface;
+                    _button2.StateCommon.Content.ShortText.Font = _messageBoxButtonTypeface;
+                    _button3.StateCommon.Content.ShortText.Font = _messageBoxButtonTypeface;
                     _button1.Visible = true;
                     _button1.Enabled = true;
                     _button2.Visible = true;
                     _button2.Enabled = true;
                     _button3.Visible = true;
                     _button3.Enabled = true;
+                    _button2.UseAsUACElevationButton = _showUACShieldOnAcceptButton;
                     ControlBox = false;
                     break;
             }
