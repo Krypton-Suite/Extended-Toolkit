@@ -9,6 +9,14 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <None Remove="Stable.ico" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="Stable.ico" />
+    </ItemGroup>
+
+    <ItemGroup>
       <Compile Update="Form1.cs" />
     </ItemGroup>
 

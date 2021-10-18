@@ -8,4 +8,12 @@
     <Configurations>Debug;Release;Nightly;Canary;Stable</Configurations>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Stable.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Stable.ico" />
+  </ItemGroup>
+
 </Project>

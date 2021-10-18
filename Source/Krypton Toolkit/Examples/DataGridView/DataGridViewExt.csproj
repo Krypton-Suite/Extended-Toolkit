@@ -9,6 +9,14 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <None Remove="Stable.ico" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="Stable.ico" />
+    </ItemGroup>
+
+    <ItemGroup>
         <PackageReference Include="System.Data.SQLite.Core" Version="1.0.115" />
     </ItemGroup>
 
