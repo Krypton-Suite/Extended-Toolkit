@@ -240,6 +240,7 @@
         private Stream _soundStream;
         private int _timeoutSeconds;
         private Timer _timer;
+        private KryptonCommand _buttonCommandOne, _buttonCommandTwo, _buttonCommandThree;
         #endregion
 
         #endregion

@@ -1,5 +1,6 @@
 ## 2022-01-05 - Build 2201 - January 2022
 * Reimplemented `KryptonMessageBoxExtended`
+* Implemented [#256](https://github.com/Krypton-Suite/Extended-Toolkit/issues/256), `KryptonMessageBox` Message Size needs to be controllable by the developer
 * Updated copyright year from `2021` to `2022`
 * Updated project names from `2021` to `2022`
 * Restructured directory structure to fall into line with how the `Standard-Toolkit` is structured
