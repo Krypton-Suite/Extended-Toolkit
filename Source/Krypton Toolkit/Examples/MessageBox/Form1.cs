@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 using Krypton.Toolkit;
@@ -98,6 +99,18 @@ namespace MessageBox
             }
         }
 
+        private void kbtnBrowseForCustomIcon_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+
+            ofd.Filter = "Portable Network Graphics|*.png";
+
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                ktxtCustomIconLocation.Text = Path.GetFullPath(ofd.FileName);
+            }
+        }
+
         #region Button Options
         private void krbButtonRetryCancel_CheckedChanged(object sender, EventArgs e) => SetButtons(ExtendedMessageBoxButtons.RETRYCANCEL);
 
@@ -120,64 +133,31 @@ namespace MessageBox
         #endregion
 
         #region Icon Type
-        private void krbInformationIcon_CheckedChanged(object sender, EventArgs e)
-        {
+        private void krbInformationIcon_CheckedChanged(object sender, EventArgs e) => SetIcon(ExtendedKryptonMessageBoxIcon.INFORMATION);
 
-        }
+        private void krbShieldIcon_CheckedChanged(object sender, EventArgs e) => SetIcon(ExtendedKryptonMessageBoxIcon.SHIELD);
 
-        private void krbShieldIcon_CheckedChanged(object sender, EventArgs e)
-        {
+        private void krbWindowsLogoIcon_CheckedChanged(object sender, EventArgs e) => SetIcon(ExtendedKryptonMessageBoxIcon.WINDOWSLOGO);
 
-        }
+        private void krbWarningIcon_CheckedChanged(object sender, EventArgs e) => SetIcon(ExtendedKryptonMessageBoxIcon.WARNING);
 
-        private void krbWindowsLogoIcon_CheckedChanged(object sender, EventArgs e)
-        {
+        private void krbErrorIcon_CheckedChanged(object sender, EventArgs e) => SetIcon(ExtendedKryptonMessageBoxIcon.ERROR);
 
-        }
+        private void krbStopIcon_CheckedChanged(object sender, EventArgs e) => SetIcon(ExtendedKryptonMessageBoxIcon.STOP);
 
-        private void krbWarningIcon_CheckedChanged(object sender, EventArgs e)
-        {
+        private void krbAsteriskIcon_CheckedChanged(object sender, EventArgs e) => SetIcon(ExtendedKryptonMessageBoxIcon.ASTERISK);
 
-        }
+        private void krbExclamationIcon_CheckedChanged(object sender, EventArgs e) => SetIcon(ExtendedKryptonMessageBoxIcon.EXCLAMATION);
 
-        private void krbErrorIcon_CheckedChanged(object sender, EventArgs e)
-        {
+        private void krbQuestionIcon_CheckedChanged(object sender, EventArgs e) => SetIcon(ExtendedKryptonMessageBoxIcon.QUESTION);
 
-        }
+        private void krbHandIcon_CheckedChanged(object sender, EventArgs e) => SetIcon(ExtendedKryptonMessageBoxIcon.HAND);
 
-        private void krbStopIcon_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void krbAsteriskIcon_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void krbExclamationIcon_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void krbQuestionIcon_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void krbHandIcon_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void krbNoIcon_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
+        private void krbNoIcon_CheckedChanged(object sender, EventArgs e) => SetIcon(ExtendedKryptonMessageBoxIcon.NONE);
 
         private void krbCustomIcon_CheckedChanged(object sender, EventArgs e)
         {
-
+            SetIcon(ExtendedKryptonMessageBoxIcon.CUSTOM);
         }
         #endregion
 

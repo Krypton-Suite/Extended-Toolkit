@@ -446,6 +446,7 @@ namespace MessageBox
             this.kbtnBrowseForCustomIcon.Size = new System.Drawing.Size(22, 25);
             this.kbtnBrowseForCustomIcon.TabIndex = 3;
             this.kbtnBrowseForCustomIcon.Values.Text = "...";
+            this.kbtnBrowseForCustomIcon.Click += new System.EventHandler(this.kbtnBrowseForCustomIcon_Click);
             // 
             // kryptonLabel11
             // 
