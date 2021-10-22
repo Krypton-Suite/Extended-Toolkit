@@ -644,11 +644,13 @@
                 ExtendedMessageBoxButtons.ABORTRETRYIGNORE or ExtendedMessageBoxButtons.YESNOCANCEL => _button4,
                 _ => throw new ArgumentOutOfRangeException()
             };
+
             if (helpButton != null)
             {
                 helpButton.Visible = true;
                 helpButton.Enabled = true;
                 helpButton.Text = KryptonManager.Strings.Help;
+                helpButton.StateCommon.Content.ShortText.Font = _messageBoxButtonTypeface;
                 helpButton.KeyPress += (_, _) => LaunchHelp();
                 helpButton.Click += (_, _) => LaunchHelp();
             }

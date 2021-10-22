@@ -60,6 +60,14 @@ namespace MessageBox
             PropagateDialogResults(kcmbButtonTwoResult);
 
             PropagateDialogResults(kcmbButtonThreeResult);
+
+            kcmbButtonOneResult.SelectedIndex = 0;
+
+            kcmbButtonTwoResult.SelectedIndex = 0;
+
+            kcmbButtonThreeResult.SelectedIndex = 0;
+
+            kcmbSelectedTheme.SelectedIndex = 27;
         }
 
         private void kcmbSelectedTheme_SelectedIndexChanged(object sender, EventArgs e) => ThemeManager.ApplyTheme(kcmbSelectedTheme.Text, kryptonManager1);
@@ -110,6 +118,8 @@ namespace MessageBox
                 ktxtCustomIconLocation.Text = Path.GetFullPath(ofd.FileName);
             }
         }
+
+        private void kcbUseYesNoOrCancelColours_CheckedChanged(object sender, EventArgs e) => kgrpYesNoAndCancelButtonOptions.Enabled = kcbUseYesNoOrCancelColours.Checked;
 
         #region Button Options
         private void krbButtonRetryCancel_CheckedChanged(object sender, EventArgs e) => SetButtons(ExtendedMessageBoxButtons.RETRYCANCEL);
@@ -196,6 +206,44 @@ namespace MessageBox
         private void kcbtnButtonThreeBackColorOne_SelectedColorChanged(object sender, ColorEventArgs e) => SetButtonThreeBackColourOne(kcbtnButtonThreeBackColorOne.SelectedColor);
 
         private void kcbtnButtonThreeBackColorTwo_SelectedColorChanged(object sender, ColorEventArgs e) => SetButtonThreeBackColourTwo(kcbtnButtonThreeBackColorTwo.SelectedColor);
+        #endregion
+
+        #region Yes, No & Cancel Button Colours
+        private void kcbtnYesTextOne_SelectedColorChanged(object sender, ColorEventArgs e) => SetYesButtonTextColourOne(kcbtnYesTextOne.SelectedColor);
+
+        private void kcbtnYesTextTwo_SelectedColorChanged(object sender, ColorEventArgs e) => SetYesButtonTextColourTwo(kcbtnYesTextTwo.SelectedColor);
+
+        private void kcbtnYesBackOne_SelectedColorChanged(object sender, ColorEventArgs e) => SetYesButtonBackColourOne(kcbtnYesBackOne.SelectedColor);
+
+        private void kcbtnYesBackTwo_SelectedColorChanged(object sender, ColorEventArgs e) => SetYesButtonBackColourTwo(kcbtnYesBackTwo.SelectedColor);
+
+        private void kcbtnNoTextOne_SelectedColorChanged(object sender, ColorEventArgs e) => SetNoButtonTextColourOne(kcbtnNoTextOne.SelectedColor);
+
+        private void kcbtnNoTextTwo_SelectedColorChanged(object sender, ColorEventArgs e) => SetNoButtonTextColourTwo(kcbtnNoTextTwo.SelectedColor);
+
+        private void kcbtnNoBackOne_SelectedColorChanged(object sender, ColorEventArgs e) => SetNoButtonBackColourOne(kcbtnNoBackOne.SelectedColor);
+
+        private void kcbtnNoBackTwo_SelectedColorChanged(object sender, ColorEventArgs e) => SetNoButtonBackColourTwo(kcbtnNoBackTwo.SelectedColor);
+
+        private void kcbtnCancelTextOne_SelectedColorChanged(object sender, ColorEventArgs e)
+        {
+
+        }
+
+        private void kcbtnCancelTextTwo_SelectedColorChanged(object sender, ColorEventArgs e)
+        {
+
+        }
+
+        private void kcbtnCancelBackOne_SelectedColorChanged(object sender, ColorEventArgs e)
+        {
+
+        }
+
+        private void kcbtnCancelBackTwo_SelectedColorChanged(object sender, ColorEventArgs e)
+        {
+
+        }
         #endregion
 
         #region Setters & Getters
