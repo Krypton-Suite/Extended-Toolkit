@@ -35,7 +35,16 @@ namespace MessageBox
             this.kbtnTest = new Krypton.Toolkit.KryptonButton();
             this.kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
+            this.kryptonGroupBox4 = new Krypton.Toolkit.KryptonGroupBox();
+            this.kbtnRoundingTest = new Krypton.Toolkit.KryptonButton();
+            this.knudButtonRounding = new Krypton.Toolkit.KryptonNumericUpDown();
+            this.kryptonLabel13 = new Krypton.Toolkit.KryptonLabel();
+            this.knudWindowRounding = new Krypton.Toolkit.KryptonNumericUpDown();
+            this.kryptonLabel12 = new Krypton.Toolkit.KryptonLabel();
             this.kryptonGroupBox3 = new Krypton.Toolkit.KryptonGroupBox();
+            this.kryptonTextBox1 = new Krypton.Toolkit.KryptonTextBox();
+            this.kryptonButton1 = new Krypton.Toolkit.KryptonButton();
+            this.kryptonLabel14 = new Krypton.Toolkit.KryptonLabel();
             this.kcbShowHelpButton = new Krypton.Toolkit.KryptonCheckBox();
             this.kgrpYesNoAndCancelButtonOptions = new Krypton.Toolkit.KryptonGroupBox();
             this.kcbtnCancelBackTwo = new Krypton.Toolkit.KryptonColorButton();
@@ -130,6 +139,10 @@ namespace MessageBox
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
             this.kryptonPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox4.Panel)).BeginInit();
+            this.kryptonGroupBox4.Panel.SuspendLayout();
+            this.kryptonGroupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox3.Panel)).BeginInit();
             this.kryptonGroupBox3.Panel.SuspendLayout();
@@ -213,6 +226,7 @@ namespace MessageBox
             // 
             // kryptonPanel2
             // 
+            this.kryptonPanel2.Controls.Add(this.kryptonGroupBox4);
             this.kryptonPanel2.Controls.Add(this.kryptonGroupBox3);
             this.kryptonPanel2.Controls.Add(this.kgrpYesNoAndCancelButtonOptions);
             this.kryptonPanel2.Controls.Add(this.kryptonGroupBox9);
@@ -230,6 +244,93 @@ namespace MessageBox
             this.kryptonPanel2.Size = new System.Drawing.Size(1406, 755);
             this.kryptonPanel2.TabIndex = 2;
             // 
+            // kryptonGroupBox4
+            // 
+            this.kryptonGroupBox4.Location = new System.Drawing.Point(939, 421);
+            this.kryptonGroupBox4.Name = "kryptonGroupBox4";
+            // 
+            // kryptonGroupBox4.Panel
+            // 
+            this.kryptonGroupBox4.Panel.Controls.Add(this.kbtnRoundingTest);
+            this.kryptonGroupBox4.Panel.Controls.Add(this.knudButtonRounding);
+            this.kryptonGroupBox4.Panel.Controls.Add(this.kryptonLabel13);
+            this.kryptonGroupBox4.Panel.Controls.Add(this.knudWindowRounding);
+            this.kryptonGroupBox4.Panel.Controls.Add(this.kryptonLabel12);
+            this.kryptonGroupBox4.Size = new System.Drawing.Size(455, 106);
+            this.kryptonGroupBox4.TabIndex = 11;
+            this.kryptonGroupBox4.Values.Heading = "Rounding";
+            // 
+            // kbtnRoundingTest
+            // 
+            this.kbtnRoundingTest.Location = new System.Drawing.Point(107, 41);
+            this.kbtnRoundingTest.Name = "kbtnRoundingTest";
+            this.kbtnRoundingTest.Size = new System.Drawing.Size(239, 25);
+            this.kbtnRoundingTest.TabIndex = 6;
+            this.kbtnRoundingTest.Values.Text = "Rounding Test";
+            // 
+            // knudButtonRounding
+            // 
+            this.knudButtonRounding.Location = new System.Drawing.Point(340, 13);
+            this.knudButtonRounding.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.knudButtonRounding.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
+            this.knudButtonRounding.Name = "knudButtonRounding";
+            this.knudButtonRounding.Size = new System.Drawing.Size(70, 22);
+            this.knudButtonRounding.TabIndex = 5;
+            this.knudButtonRounding.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
+            this.knudButtonRounding.ValueChanged += new System.EventHandler(this.knudButtonRounding_ValueChanged);
+            // 
+            // kryptonLabel13
+            // 
+            this.kryptonLabel13.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
+            this.kryptonLabel13.Location = new System.Drawing.Point(220, 13);
+            this.kryptonLabel13.Name = "kryptonLabel13";
+            this.kryptonLabel13.Size = new System.Drawing.Size(114, 20);
+            this.kryptonLabel13.TabIndex = 4;
+            this.kryptonLabel13.Values.Text = "Button Rounding:";
+            // 
+            // knudWindowRounding
+            // 
+            this.knudWindowRounding.Location = new System.Drawing.Point(144, 13);
+            this.knudWindowRounding.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.knudWindowRounding.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
+            this.knudWindowRounding.Name = "knudWindowRounding";
+            this.knudWindowRounding.Size = new System.Drawing.Size(70, 22);
+            this.knudWindowRounding.TabIndex = 3;
+            this.knudWindowRounding.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
+            // 
+            // kryptonLabel12
+            // 
+            this.kryptonLabel12.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
+            this.kryptonLabel12.Location = new System.Drawing.Point(14, 13);
+            this.kryptonLabel12.Name = "kryptonLabel12";
+            this.kryptonLabel12.Size = new System.Drawing.Size(123, 20);
+            this.kryptonLabel12.TabIndex = 2;
+            this.kryptonLabel12.Values.Text = "Window Rounding:";
+            // 
             // kryptonGroupBox3
             // 
             this.kryptonGroupBox3.Location = new System.Drawing.Point(939, 292);
@@ -237,10 +338,39 @@ namespace MessageBox
             // 
             // kryptonGroupBox3.Panel
             // 
+            this.kryptonGroupBox3.Panel.Controls.Add(this.kryptonTextBox1);
+            this.kryptonGroupBox3.Panel.Controls.Add(this.kryptonButton1);
+            this.kryptonGroupBox3.Panel.Controls.Add(this.kryptonLabel14);
             this.kryptonGroupBox3.Panel.Controls.Add(this.kcbShowHelpButton);
-            this.kryptonGroupBox3.Size = new System.Drawing.Size(457, 74);
+            this.kryptonGroupBox3.Size = new System.Drawing.Size(457, 123);
             this.kryptonGroupBox3.TabIndex = 10;
             this.kryptonGroupBox3.Values.Heading = "Help Options";
+            // 
+            // kryptonTextBox1
+            // 
+            this.kryptonTextBox1.CueHint.CueHintText = "Custom icon location...";
+            this.kryptonTextBox1.CueHint.Padding = new System.Windows.Forms.Padding(0);
+            this.kryptonTextBox1.Location = new System.Drawing.Point(115, 40);
+            this.kryptonTextBox1.Name = "kryptonTextBox1";
+            this.kryptonTextBox1.Size = new System.Drawing.Size(288, 23);
+            this.kryptonTextBox1.TabIndex = 12;
+            // 
+            // kryptonButton1
+            // 
+            this.kryptonButton1.Location = new System.Drawing.Point(409, 37);
+            this.kryptonButton1.Name = "kryptonButton1";
+            this.kryptonButton1.Size = new System.Drawing.Size(22, 25);
+            this.kryptonButton1.TabIndex = 11;
+            this.kryptonButton1.Values.Text = "...";
+            // 
+            // kryptonLabel14
+            // 
+            this.kryptonLabel14.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
+            this.kryptonLabel14.Location = new System.Drawing.Point(14, 40);
+            this.kryptonLabel14.Name = "kryptonLabel14";
+            this.kryptonLabel14.Size = new System.Drawing.Size(95, 20);
+            this.kryptonLabel14.TabIndex = 10;
+            this.kryptonLabel14.Values.Text = "Help File Path:";
             // 
             // kcbShowHelpButton
             // 
@@ -1341,6 +1471,11 @@ namespace MessageBox
             this.kryptonPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
             this.kryptonPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox4.Panel)).EndInit();
+            this.kryptonGroupBox4.Panel.ResumeLayout(false);
+            this.kryptonGroupBox4.Panel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox4)).EndInit();
+            this.kryptonGroupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox3.Panel)).EndInit();
             this.kryptonGroupBox3.Panel.ResumeLayout(false);
             this.kryptonGroupBox3.Panel.PerformLayout();
@@ -1500,6 +1635,15 @@ namespace MessageBox
         private Krypton.Toolkit.KryptonColorButton kcbtnYesBackOne;
         private Krypton.Toolkit.KryptonGroupBox kryptonGroupBox3;
         private Krypton.Toolkit.KryptonCheckBox kcbShowHelpButton;
+        private Krypton.Toolkit.KryptonGroupBox kryptonGroupBox4;
+        private Krypton.Toolkit.KryptonButton kbtnRoundingTest;
+        private Krypton.Toolkit.KryptonNumericUpDown knudButtonRounding;
+        private Krypton.Toolkit.KryptonLabel kryptonLabel13;
+        private Krypton.Toolkit.KryptonNumericUpDown knudWindowRounding;
+        private Krypton.Toolkit.KryptonLabel kryptonLabel12;
+        private Krypton.Toolkit.KryptonTextBox kryptonTextBox1;
+        private Krypton.Toolkit.KryptonButton kryptonButton1;
+        private Krypton.Toolkit.KryptonLabel kryptonLabel14;
     }
 }
 

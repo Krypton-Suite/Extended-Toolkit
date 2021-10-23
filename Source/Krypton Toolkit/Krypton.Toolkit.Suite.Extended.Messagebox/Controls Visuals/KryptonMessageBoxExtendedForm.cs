@@ -541,10 +541,13 @@
 
                     if (_useYesNoOrCancelButtonColours)
                     {
-                        AlterButtonColours(_buttonOneBackColourOne, _buttonOneBackColourTwo,
-                            null, null, null, null,
-                            _buttonOneTextColourOne, _buttonOneTextColourTwo,
-                            null, null, null, null);
+                        _button1.StateCommon.Back.Color1 = _buttonOneBackColourOne;
+
+                        _button1.StateCommon.Back.Color2 = _buttonOneBackColourTwo;
+
+                        _button1.StateCommon.Content.ShortText.Color1 = _buttonOneTextColourOne;
+
+                        _button1.StateCommon.Content.ShortText.Color2 = _buttonOneTextColourTwo;
                     }
                     break;
                 case ExtendedMessageBoxButtons.OKCANCEL:

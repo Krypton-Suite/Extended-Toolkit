@@ -16,7 +16,7 @@ namespace MessageBox
         private MessageBoxOptions _options = 0;
         private MessageBoxDefaultButton _defaultButton;
         private Font _buttonTypeface, _textTypeface;
-
+        private float _buttonCornerRounding, _windowCornerRounding;
         private Color _contentMessageColour, _buttonOneBackColourOne, _buttonOneBackColourTwo, _buttonOneTextColourOne,
                       _buttonOneTextColourTwo, _buttonTwoTextColourOne, _buttonTwoTextColourTwo, _buttonTwoBackColourOne,
                       _buttonTwoBackColourTwo, _buttonThreeTextColourOne, _buttonThreeTextColourTwo, _buttonThreeBackColourOne,
@@ -37,20 +37,26 @@ namespace MessageBox
 
         private void kbtnTest_Click(object sender, EventArgs e)
         {
-            /*KryptonMessageBoxExtended.Show(null, ktxtMessageText.Text, ktxtCaption.Text, GetButtons(), GetIcon(),
-                GetDefaultButton(),
-                GetMessageBoxOptions(), kcbShowHelpButton.Checked, GetCustomDialogResultOne(),
-                GetCustomDialogResultTwo(), GetCustomDialogResultThree(), kcbShowCtrlCopy.Checked,
-                GetButtonTypeface(), GetTextTypeface(), GetButtonVisibility(), GetCustomButtonOneText(), GetCustomButtonTwoText(), GetCustomButtonThreeText(),
-                kcbUseYesNoOrCancelColours.Checked,
-                GetContentMessageColour(), GetButtonOneBackColourOne(), GetButtonOneBackColourTwo(),
-                GetButtonOneTextColourOne(), GetButtonOneTextColourTwo(), GetButtonTwoTextColourOne(),
-                GetButtonThreeTextColourTwo(), GetButtonTwoBackColourOne(), GetButtonTwoBackColourTwo(),
-                GetButtonThreeTextColourOne(), GetButtonThreeTextColourTwo(), GetButtonThreeBackColourOne(),
-                GetButtonThreeBackColourOne(), GetYesButtonBackColourOne(), GetYesButtonBackColourTwo(),
-                GetYesButtonTextColourOne(), GetYesButtonBackColourTwo(), GetNoButtonBackColourOne(),
-                GetNoButtonBackColourTwo(), GetNoButtonTextColourOne(), GetNoButtonTextColourTwo(),
-                -1, -1, kcbShowUACShieldOnAcceptButton.Checked);*/
+            KryptonMessageBoxExtended.Show(null, ktxtMessageText.Text, ktxtCaption.Text, GetButtons(), GetIcon(),
+                                           GetDefaultButton(), GetMessageBoxOptions(), kcbShowHelpButton.Checked,
+                                           null, HelpNavigator.AssociateIndex, null, GetCustomDialogResultOne(),
+                                           GetCustomDialogResultTwo(), GetCustomDialogResultThree(),
+                                           kcbShowCtrlCopy.Checked, GetButtonTypeface(), GetTextTypeface(),
+                                           GetButtonVisibility(), GetCustomButtonOneText(),
+                                           GetCustomButtonTwoText(), GetCustomButtonThreeText(),
+                                           kcbUseYesNoOrCancelColours.Checked, GetContentMessageColour(),
+                                           GetButtonOneBackColourOne(), GetButtonOneBackColourTwo(),
+                                           GetButtonOneTextColourOne(), GetButtonOneTextColourTwo(),
+                                           GetButtonTwoTextColourOne(), GetButtonTwoTextColourTwo(),
+                                           GetButtonTwoBackColourOne(), GetButtonTwoBackColourTwo(),
+                                           GetButtonThreeTextColourOne(), GetButtonThreeTextColourTwo(),
+                                           GetButtonThreeBackColourOne(), GetButtonThreeBackColourTwo(),
+                                           GetYesButtonBackColourOne(), GetYesButtonBackColourTwo(),
+                                           GetYesButtonTextColourOne(), GetYesButtonTextColourTwo(),
+                                           GetNoButtonBackColourOne(), GetNoButtonBackColourTwo(),
+                                           GetNoButtonTextColourOne(), GetNoButtonTextColourTwo(),
+                                           GetButtonCornerRounding(), GetWindowCornerRounding(),
+                                           kcbShowUACShieldOnAcceptButton.Checked);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -130,6 +136,13 @@ namespace MessageBox
         private void ktxtCustomButtonTwoText_TextChanged(object sender, EventArgs e) => SetCustomButtonTwoText(ktxtCustomButtonTwoText.Text);
 
         private void ktxtCustomButtonThreeText_TextChanged(object sender, EventArgs e) => SetCustomButtonThreeText(ktxtCustomButtonThreeText.Text);
+
+        private void knudButtonRounding_ValueChanged(object sender, EventArgs e)
+        {
+            SetButtonCornerRounding((float)knudButtonRounding.Value);
+
+            kbtnRoundingTest.StateCommon.Border.Rounding = (float)knudButtonRounding.Value;
+        }
 
         #region Button Options
         private void krbButtonRetryCancel_CheckedChanged(object sender, EventArgs e) => SetButtons(ExtendedMessageBoxButtons.RETRYCANCEL);
@@ -437,7 +450,7 @@ namespace MessageBox
         /// Returns the value of the ButtonThreeBackColourTwo.
         /// </summary>
         /// <returns>The value of the ButtonThreeBackColourTwo.</returns>
-        private object GetButtonThreeBackColourTwo() => _buttonThreeBackColourTwo;
+        private Color GetButtonThreeBackColourTwo() => _buttonThreeBackColourTwo;
 
         /// <summary>
         /// Sets the YesButtonBackColourOne to the value of yesButtonBackColourOne.
@@ -631,6 +644,30 @@ namespace MessageBox
         /// <returns>The value of the CustomButtonThreeText.</returns>
         private string GetCustomButtonThreeText() => _customButtonThreeText;
 
+        /// <summary>
+        /// Sets the ButtonCornerRounding to the value of buttonCornerRounding.
+        /// </summary>
+        /// <param name="buttonCornerRounding">The desired value of ButtonCornerRounding.</param>
+        private void SetButtonCornerRounding(float buttonCornerRounding) => _buttonCornerRounding = buttonCornerRounding;
+
+        /// <summary>
+        /// Returns the value of the ButtonCornerRounding.
+        /// </summary>
+        /// <returns>The value of the ButtonCornerRounding.</returns>
+        private float GetButtonCornerRounding() => _buttonCornerRounding;
+
+        /// <summary>
+        /// Sets the WindowCornerRounding to the value of windowCornerRounding.
+        /// </summary>
+        /// <param name="windowCornerRounding">The desired value of WindowCornerRounding.</param>
+        private void SetWindowCornerRounding(float windowCornerRounding) => _windowCornerRounding = windowCornerRounding;
+
+        /// <summary>
+        /// Returns the value of the WindowCornerRounding.
+        /// </summary>
+        /// <returns>The value of the WindowCornerRounding.</returns>
+        private float GetWindowCornerRounding() => _windowCornerRounding;
+
         #endregion
 
         private void EnableCustomButtonFeatures(bool enabled)
@@ -663,6 +700,16 @@ namespace MessageBox
         private void PropagateDialogResults(KryptonComboBox target)
         {
             string[] values = Enum.GetNames(typeof(DialogResult));
+
+            foreach (string value in values)
+            {
+                target.Items.Add(value);
+            }
+        }
+
+        private void PropagateHelpNavigatorValues(KryptonComboBox target)
+        {
+            string[] values = Enum.GetNames(typeof(HelpNavigator));
 
             foreach (string value in values)
             {
