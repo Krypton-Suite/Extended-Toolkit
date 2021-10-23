@@ -35,6 +35,8 @@ namespace MessageBox
             this.kbtnTest = new Krypton.Toolkit.KryptonButton();
             this.kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
+            this.kryptonGroupBox3 = new Krypton.Toolkit.KryptonGroupBox();
+            this.kcbShowHelpButton = new Krypton.Toolkit.KryptonCheckBox();
             this.kgrpYesNoAndCancelButtonOptions = new Krypton.Toolkit.KryptonGroupBox();
             this.kcbtnCancelBackTwo = new Krypton.Toolkit.KryptonColorButton();
             this.kcbtnCancelBackOne = new Krypton.Toolkit.KryptonColorButton();
@@ -128,6 +130,10 @@ namespace MessageBox
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
             this.kryptonPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox3.Panel)).BeginInit();
+            this.kryptonGroupBox3.Panel.SuspendLayout();
+            this.kryptonGroupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kgrpYesNoAndCancelButtonOptions)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kgrpYesNoAndCancelButtonOptions.Panel)).BeginInit();
             this.kgrpYesNoAndCancelButtonOptions.Panel.SuspendLayout();
@@ -207,6 +213,7 @@ namespace MessageBox
             // 
             // kryptonPanel2
             // 
+            this.kryptonPanel2.Controls.Add(this.kryptonGroupBox3);
             this.kryptonPanel2.Controls.Add(this.kgrpYesNoAndCancelButtonOptions);
             this.kryptonPanel2.Controls.Add(this.kryptonGroupBox9);
             this.kryptonPanel2.Controls.Add(this.kgrpCustomButtonResult);
@@ -222,6 +229,26 @@ namespace MessageBox
             this.kryptonPanel2.Name = "kryptonPanel2";
             this.kryptonPanel2.Size = new System.Drawing.Size(1406, 755);
             this.kryptonPanel2.TabIndex = 2;
+            // 
+            // kryptonGroupBox3
+            // 
+            this.kryptonGroupBox3.Location = new System.Drawing.Point(939, 292);
+            this.kryptonGroupBox3.Name = "kryptonGroupBox3";
+            // 
+            // kryptonGroupBox3.Panel
+            // 
+            this.kryptonGroupBox3.Panel.Controls.Add(this.kcbShowHelpButton);
+            this.kryptonGroupBox3.Size = new System.Drawing.Size(457, 74);
+            this.kryptonGroupBox3.TabIndex = 10;
+            this.kryptonGroupBox3.Values.Heading = "Help Options";
+            // 
+            // kcbShowHelpButton
+            // 
+            this.kcbShowHelpButton.Location = new System.Drawing.Point(14, 13);
+            this.kcbShowHelpButton.Name = "kcbShowHelpButton";
+            this.kcbShowHelpButton.Size = new System.Drawing.Size(122, 20);
+            this.kcbShowHelpButton.TabIndex = 9;
+            this.kcbShowHelpButton.Values.Text = "Show Help Button";
             // 
             // kgrpYesNoAndCancelButtonOptions
             // 
@@ -257,7 +284,7 @@ namespace MessageBox
             this.kcbtnCancelBackTwo.Size = new System.Drawing.Size(211, 25);
             this.kcbtnCancelBackTwo.Splitter = false;
             this.kcbtnCancelBackTwo.TabIndex = 15;
-            this.kcbtnCancelBackTwo.Values.Image = ((System.Drawing.Image)(resources.GetObject("kryptonColorButton11.Values.Image")));
+            this.kcbtnCancelBackTwo.Values.Image = ((System.Drawing.Image)(resources.GetObject("kcbtnCancelBackTwo.Values.Image")));
             this.kcbtnCancelBackTwo.Values.RoundedCorners = 8;
             this.kcbtnCancelBackTwo.Values.Text = "Cancel Button Back Color Two";
             this.kcbtnCancelBackTwo.SelectedColorChanged += new System.EventHandler<Krypton.Toolkit.ColorEventArgs>(this.kcbtnCancelBackTwo_SelectedColorChanged);
@@ -272,7 +299,7 @@ namespace MessageBox
             this.kcbtnCancelBackOne.Size = new System.Drawing.Size(211, 25);
             this.kcbtnCancelBackOne.Splitter = false;
             this.kcbtnCancelBackOne.TabIndex = 14;
-            this.kcbtnCancelBackOne.Values.Image = ((System.Drawing.Image)(resources.GetObject("kryptonColorButton12.Values.Image")));
+            this.kcbtnCancelBackOne.Values.Image = ((System.Drawing.Image)(resources.GetObject("kcbtnCancelBackOne.Values.Image")));
             this.kcbtnCancelBackOne.Values.RoundedCorners = 8;
             this.kcbtnCancelBackOne.Values.Text = "Cancel Button Back Color One";
             this.kcbtnCancelBackOne.SelectedColorChanged += new System.EventHandler<Krypton.Toolkit.ColorEventArgs>(this.kcbtnCancelBackOne_SelectedColorChanged);
@@ -287,7 +314,7 @@ namespace MessageBox
             this.kcbtnNoBackTwo.Size = new System.Drawing.Size(211, 25);
             this.kcbtnNoBackTwo.Splitter = false;
             this.kcbtnNoBackTwo.TabIndex = 13;
-            this.kcbtnNoBackTwo.Values.Image = ((System.Drawing.Image)(resources.GetObject("kryptonColorButton9.Values.Image")));
+            this.kcbtnNoBackTwo.Values.Image = ((System.Drawing.Image)(resources.GetObject("kcbtnNoBackTwo.Values.Image")));
             this.kcbtnNoBackTwo.Values.RoundedCorners = 8;
             this.kcbtnNoBackTwo.Values.Text = "No Button Back Color Two";
             this.kcbtnNoBackTwo.SelectedColorChanged += new System.EventHandler<Krypton.Toolkit.ColorEventArgs>(this.kcbtnNoBackTwo_SelectedColorChanged);
@@ -302,7 +329,7 @@ namespace MessageBox
             this.kcbtnNoBackOne.Size = new System.Drawing.Size(211, 25);
             this.kcbtnNoBackOne.Splitter = false;
             this.kcbtnNoBackOne.TabIndex = 12;
-            this.kcbtnNoBackOne.Values.Image = ((System.Drawing.Image)(resources.GetObject("kryptonColorButton10.Values.Image")));
+            this.kcbtnNoBackOne.Values.Image = ((System.Drawing.Image)(resources.GetObject("kcbtnNoBackOne.Values.Image")));
             this.kcbtnNoBackOne.Values.RoundedCorners = 8;
             this.kcbtnNoBackOne.Values.Text = "No Button Back Color One";
             this.kcbtnNoBackOne.SelectedColorChanged += new System.EventHandler<Krypton.Toolkit.ColorEventArgs>(this.kcbtnNoBackOne_SelectedColorChanged);
@@ -347,7 +374,7 @@ namespace MessageBox
             this.kcbtnCancelTextTwo.Size = new System.Drawing.Size(211, 25);
             this.kcbtnCancelTextTwo.Splitter = false;
             this.kcbtnCancelTextTwo.TabIndex = 9;
-            this.kcbtnCancelTextTwo.Values.Image = ((System.Drawing.Image)(resources.GetObject("kryptonColorButton5.Values.Image")));
+            this.kcbtnCancelTextTwo.Values.Image = ((System.Drawing.Image)(resources.GetObject("kcbtnCancelTextTwo.Values.Image")));
             this.kcbtnCancelTextTwo.Values.RoundedCorners = 8;
             this.kcbtnCancelTextTwo.Values.Text = "Cancel Button Text Color Two";
             this.kcbtnCancelTextTwo.SelectedColorChanged += new System.EventHandler<Krypton.Toolkit.ColorEventArgs>(this.kcbtnCancelTextTwo_SelectedColorChanged);
@@ -362,7 +389,7 @@ namespace MessageBox
             this.kcbtnCancelTextOne.Size = new System.Drawing.Size(211, 25);
             this.kcbtnCancelTextOne.Splitter = false;
             this.kcbtnCancelTextOne.TabIndex = 8;
-            this.kcbtnCancelTextOne.Values.Image = ((System.Drawing.Image)(resources.GetObject("kryptonColorButton6.Values.Image")));
+            this.kcbtnCancelTextOne.Values.Image = ((System.Drawing.Image)(resources.GetObject("kcbtnCancelTextOne.Values.Image")));
             this.kcbtnCancelTextOne.Values.RoundedCorners = 8;
             this.kcbtnCancelTextOne.Values.Text = "Cancel Button Text Color One";
             this.kcbtnCancelTextOne.SelectedColorChanged += new System.EventHandler<Krypton.Toolkit.ColorEventArgs>(this.kcbtnCancelTextOne_SelectedColorChanged);
@@ -377,7 +404,7 @@ namespace MessageBox
             this.kcbtnNoTextTwo.Size = new System.Drawing.Size(211, 25);
             this.kcbtnNoTextTwo.Splitter = false;
             this.kcbtnNoTextTwo.TabIndex = 7;
-            this.kcbtnNoTextTwo.Values.Image = ((System.Drawing.Image)(resources.GetObject("kryptonColorButton3.Values.Image")));
+            this.kcbtnNoTextTwo.Values.Image = ((System.Drawing.Image)(resources.GetObject("kcbtnNoTextTwo.Values.Image")));
             this.kcbtnNoTextTwo.Values.RoundedCorners = 8;
             this.kcbtnNoTextTwo.Values.Text = "No Button Text Color Two";
             this.kcbtnNoTextTwo.SelectedColorChanged += new System.EventHandler<Krypton.Toolkit.ColorEventArgs>(this.kcbtnNoTextTwo_SelectedColorChanged);
@@ -392,7 +419,7 @@ namespace MessageBox
             this.kcbtnNoTextOne.Size = new System.Drawing.Size(211, 25);
             this.kcbtnNoTextOne.Splitter = false;
             this.kcbtnNoTextOne.TabIndex = 6;
-            this.kcbtnNoTextOne.Values.Image = ((System.Drawing.Image)(resources.GetObject("kryptonColorButton4.Values.Image")));
+            this.kcbtnNoTextOne.Values.Image = ((System.Drawing.Image)(resources.GetObject("kcbtnNoTextOne.Values.Image")));
             this.kcbtnNoTextOne.Values.RoundedCorners = 8;
             this.kcbtnNoTextOne.Values.Text = "No Button Text Color One";
             this.kcbtnNoTextOne.SelectedColorChanged += new System.EventHandler<Krypton.Toolkit.ColorEventArgs>(this.kcbtnNoTextOne_SelectedColorChanged);
@@ -1112,6 +1139,7 @@ namespace MessageBox
             this.ktxtCustomButtonThreeText.Name = "ktxtCustomButtonThreeText";
             this.ktxtCustomButtonThreeText.Size = new System.Drawing.Size(350, 23);
             this.ktxtCustomButtonThreeText.TabIndex = 7;
+            this.ktxtCustomButtonThreeText.TextChanged += new System.EventHandler(this.ktxtCustomButtonThreeText_TextChanged);
             // 
             // kryptonLabel5
             // 
@@ -1130,6 +1158,7 @@ namespace MessageBox
             this.ktxtCustomButtonTwoText.Name = "ktxtCustomButtonTwoText";
             this.ktxtCustomButtonTwoText.Size = new System.Drawing.Size(350, 23);
             this.ktxtCustomButtonTwoText.TabIndex = 4;
+            this.ktxtCustomButtonTwoText.TextChanged += new System.EventHandler(this.ktxtCustomButtonTwoText_TextChanged);
             // 
             // kryptonLabel4
             // 
@@ -1148,6 +1177,7 @@ namespace MessageBox
             this.ktxtCustomButtonOneText.Name = "ktxtCustomButtonOneText";
             this.ktxtCustomButtonOneText.Size = new System.Drawing.Size(350, 23);
             this.ktxtCustomButtonOneText.TabIndex = 1;
+            this.ktxtCustomButtonOneText.TextChanged += new System.EventHandler(this.ktxtCustomButtonOneText_TextChanged);
             // 
             // kryptonLabel3
             // 
@@ -1311,6 +1341,11 @@ namespace MessageBox
             this.kryptonPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
             this.kryptonPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox3.Panel)).EndInit();
+            this.kryptonGroupBox3.Panel.ResumeLayout(false);
+            this.kryptonGroupBox3.Panel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox3)).EndInit();
+            this.kryptonGroupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kgrpYesNoAndCancelButtonOptions.Panel)).EndInit();
             this.kgrpYesNoAndCancelButtonOptions.Panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kgrpYesNoAndCancelButtonOptions)).EndInit();
@@ -1463,6 +1498,8 @@ namespace MessageBox
         private Krypton.Toolkit.KryptonColorButton kcbtnNoBackOne;
         private Krypton.Toolkit.KryptonColorButton kcbtnYesBackTwo;
         private Krypton.Toolkit.KryptonColorButton kcbtnYesBackOne;
+        private Krypton.Toolkit.KryptonGroupBox kryptonGroupBox3;
+        private Krypton.Toolkit.KryptonCheckBox kcbShowHelpButton;
     }
 }
 

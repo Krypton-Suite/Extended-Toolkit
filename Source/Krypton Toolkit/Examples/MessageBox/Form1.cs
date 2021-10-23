@@ -28,6 +28,7 @@ namespace MessageBox
 
         private HelpNavigator _helpNavigator;
 
+        private string _customButtonOneText, _customButtonTwoText, _customButtonThreeText;
 
         public Form1()
         {
@@ -36,11 +37,12 @@ namespace MessageBox
 
         private void kbtnTest_Click(object sender, EventArgs e)
         {
-            KryptonMessageBoxExtended.Show(null, ktxtMessageText.Text, ktxtCaption.Text, GetButtons(), GetIcon(),
+            /*KryptonMessageBoxExtended.Show(null, ktxtMessageText.Text, ktxtCaption.Text, GetButtons(), GetIcon(),
                 GetDefaultButton(),
-                GetMessageBoxOptions(), String.Empty, GetHelpNavigator(), null, GetCustomDialogResultOne(),
+                GetMessageBoxOptions(), kcbShowHelpButton.Checked, GetCustomDialogResultOne(),
                 GetCustomDialogResultTwo(), GetCustomDialogResultThree(), kcbShowCtrlCopy.Checked,
-                GetButtonTypeface(), GetTextTypeface(), GetButtonVisibility(), kcbUseYesNoOrCancelColours.Checked,
+                GetButtonTypeface(), GetTextTypeface(), GetButtonVisibility(), GetCustomButtonOneText(), GetCustomButtonTwoText(), GetCustomButtonThreeText(),
+                kcbUseYesNoOrCancelColours.Checked,
                 GetContentMessageColour(), GetButtonOneBackColourOne(), GetButtonOneBackColourTwo(),
                 GetButtonOneTextColourOne(), GetButtonOneTextColourTwo(), GetButtonTwoTextColourOne(),
                 GetButtonThreeTextColourTwo(), GetButtonTwoBackColourOne(), GetButtonTwoBackColourTwo(),
@@ -48,7 +50,7 @@ namespace MessageBox
                 GetButtonThreeBackColourOne(), GetYesButtonBackColourOne(), GetYesButtonBackColourTwo(),
                 GetYesButtonTextColourOne(), GetYesButtonBackColourTwo(), GetNoButtonBackColourOne(),
                 GetNoButtonBackColourTwo(), GetNoButtonTextColourOne(), GetNoButtonTextColourTwo(),
-                -1, kcbShowUACShieldOnAcceptButton.Checked);
+                -1, -1, kcbShowUACShieldOnAcceptButton.Checked);*/
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -68,6 +70,8 @@ namespace MessageBox
             kcmbButtonThreeResult.SelectedIndex = 0;
 
             kcmbSelectedTheme.SelectedIndex = 27;
+
+            kcmbDefaultButton.SelectedIndex = 0;
         }
 
         private void kcmbSelectedTheme_SelectedIndexChanged(object sender, EventArgs e) => ThemeManager.ApplyTheme(kcmbSelectedTheme.Text, kryptonManager1);
@@ -120,6 +124,12 @@ namespace MessageBox
         }
 
         private void kcbUseYesNoOrCancelColours_CheckedChanged(object sender, EventArgs e) => kgrpYesNoAndCancelButtonOptions.Enabled = kcbUseYesNoOrCancelColours.Checked;
+
+        private void ktxtCustomButtonOneText_TextChanged(object sender, EventArgs e) => SetCustomButtonOneText(ktxtCustomButtonOneText.Text);
+
+        private void ktxtCustomButtonTwoText_TextChanged(object sender, EventArgs e) => SetCustomButtonTwoText(ktxtCustomButtonTwoText.Text);
+
+        private void ktxtCustomButtonThreeText_TextChanged(object sender, EventArgs e) => SetCustomButtonThreeText(ktxtCustomButtonThreeText.Text);
 
         #region Button Options
         private void krbButtonRetryCancel_CheckedChanged(object sender, EventArgs e) => SetButtons(ExtendedMessageBoxButtons.RETRYCANCEL);
@@ -584,6 +594,42 @@ namespace MessageBox
         /// </summary>
         /// <returns>The value of the HelpNavigator.</returns>
         private HelpNavigator GetHelpNavigator() => _helpNavigator;
+
+        /// <summary>
+        /// Sets the CustomButtonOneText to the value of customButtonOneText.
+        /// </summary>
+        /// <param name="customButtonOneText">The desired value of CustomButtonOneText.</param>
+        private void SetCustomButtonOneText(string customButtonOneText) => _customButtonOneText = customButtonOneText;
+
+        /// <summary>
+        /// Returns the value of the CustomButtonOneText.
+        /// </summary>
+        /// <returns>The value of the CustomButtonOneText.</returns>
+        private string GetCustomButtonOneText() => _customButtonOneText;
+
+        /// <summary>
+        /// Sets the CustomButtonTwoText to the value of customButtonTwoText.
+        /// </summary>
+        /// <param name="customButtonTwoText">The desired value of CustomButtonTwoText.</param>
+        private void SetCustomButtonTwoText(string customButtonTwoText) => _customButtonTwoText = customButtonTwoText;
+
+        /// <summary>
+        /// Returns the value of the CustomButtonTwoText.
+        /// </summary>
+        /// <returns>The value of the CustomButtonTwoText.</returns>
+        private string GetCustomButtonTwoText() => _customButtonTwoText;
+
+        /// <summary>
+        /// Sets the CustomButtonThreeText to the value of customButtonThreeText.
+        /// </summary>
+        /// <param name="customButtonThreeText">The desired value of CustomButtonThreeText.</param>
+        private void SetCustomButtonThreeText(string customButtonThreeText) => _customButtonThreeText = customButtonThreeText;
+
+        /// <summary>
+        /// Returns the value of the CustomButtonThreeText.
+        /// </summary>
+        /// <returns>The value of the CustomButtonThreeText.</returns>
+        private string GetCustomButtonThreeText() => _customButtonThreeText;
 
         #endregion
 

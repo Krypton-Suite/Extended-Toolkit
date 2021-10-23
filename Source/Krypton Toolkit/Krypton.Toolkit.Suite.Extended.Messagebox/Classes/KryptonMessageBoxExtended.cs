@@ -27,14 +27,15 @@
                                         bool? showCtrlCopy = null,
                                         Font? messageBoxButtonTypeface = null, Font? messageBoxTypeface = null)
             =>
-                InternalShow(null, text, caption, buttons, null, icon, defaultButton,
+                InternalShow(null, text, caption, buttons, null, string.Empty, string.Empty, string.Empty,
+                             icon, defaultButton,
                              null, null, null,
                              options, displayHelpButton ? new HelpInfo() : null, showCtrlCopy,
                              messageBoxButtonTypeface, messageBoxTypeface, null, null,
                              null, null, null, null, null, null,
                              null, null, null, null, null, null,
                              null, null, null, null, null, null,
-                             null, null, null, null);
+                             null, null, null, null, null);
 
 
         /// <summary>
@@ -58,7 +59,8 @@
             bool displayHelpButton = false,
             bool? showCtrlCopy = null)
             =>
-                InternalShow(null, text, caption, buttons, null, icon,
+                InternalShow(null, text, caption, buttons, null, string.Empty, string.Empty, string.Empty,
+                             icon,
                              defaultButton, null, null, null,
                              options, displayHelpButton ? new HelpInfo() : null,
                              showCtrlCopy, null, null, null,
@@ -67,7 +69,7 @@
                              null, null, null, null,
                              null, null, null, null,
                              null, null, null, null,
-                             null);
+                             null, null);
 
         /// <summary>
         /// Displays a message box in front+center of the specified object and with the specified text, caption, buttons, icon, default button, and options.
@@ -94,13 +96,14 @@
             Font? messageBoxButtonTypeface = null,
             Font? messageBoxTypeface = null)
             =>
-                InternalShow(owner, text, caption, buttons, null, icon, defaultButton, null,
+                InternalShow(owner, text, caption, buttons, null, string.Empty, string.Empty, string.Empty,
+                             icon, defaultButton, null,
                              null, null, options, displayHelpButton ? new HelpInfo() : null, showCtrlCopy,
                              messageBoxButtonTypeface, messageBoxTypeface, null, null,
                              null, null, null, null, null, null,
                              null, null, null, null, null, null,
                              null, null, null, null, null, null,
-                             null, null, null, null);
+                             null, null, null, null, null);
 
         /// <summary>
         /// Displays a message box in front+center of the specified object and with the specified text, caption, buttons, icon, default button, and options.
@@ -124,7 +127,8 @@
             bool displayHelpButton = false,
             bool? showCtrlCopy = null)
             =>
-                InternalShow(owner, text, caption, buttons, null, icon,
+                InternalShow(owner, text, caption, buttons, null, string.Empty, string.Empty, string.Empty,
+                             icon,
                     defaultButton, null, null, null,
                     options, displayHelpButton ? new HelpInfo() : null,
                     showCtrlCopy, null, null, null,
@@ -133,7 +137,7 @@
                     null, null, null, null,
                     null, null, null, null,
                     null, null, null, null,
-                    null);
+                    null, null);
 
         /// <param name="text">The text to display in the message box.</param>
         /// <param name="caption">The text to display in the title bar of the message box. default="string.Empty"</param>
@@ -151,7 +155,7 @@
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options, string helpFilePath,
                                         HelpNavigator navigator, object param, bool? showCtrlCopy = null,
                                         Font? messageBoxButtonTypeface = null, Font? messageBoxTypeface = null)
-            => InternalShow(null, text, caption, buttons, null,
+            => InternalShow(null, text, caption, buttons, null, string.Empty, string.Empty, string.Empty,
                             icon, defaultButton, null, null, null, options,
                             new HelpInfo(helpFilePath, navigator, param),
                             showCtrlCopy, messageBoxButtonTypeface,
@@ -161,7 +165,7 @@
                             null, null, null, null,
                             null, null, null, null,
                             null, null, null, null,
-                            null);
+                            null, null);
 
 
         /// <param name="text">The text to display in the message box.</param>
@@ -179,7 +183,7 @@
                                         ExtendedKryptonMessageBoxIcon icon, MessageBoxDefaultButton defaultButton,
                                         MessageBoxOptions options, string helpFilePath, HelpNavigator navigator, object param,
                                         bool? showCtrlCopy = null)
-            => InternalShow(null, text, caption, buttons, null,
+            => InternalShow(null, text, caption, buttons, null, string.Empty, string.Empty, string.Empty,
                             icon, defaultButton, null, null, null,
                             options, new HelpInfo(helpFilePath, navigator, param),
                             showCtrlCopy, null, null, null,
@@ -188,7 +192,7 @@
                             null, null, null, null,
                             null, null, null, null,
                             null, null, null, null,
-                            null);
+                            null, null);
 
         /// <summary>
         /// Displays a message box with the specified text, caption, buttons, icon, default button, options, and Help button, using the specified Help file, HelpNavigator, and Help topic.
@@ -211,7 +215,8 @@
                                         MessageBoxOptions options, string helpFilePath, HelpNavigator navigator, object param,
                                         bool? showCtrlCopy = null,
                                         Font? messageBoxButtonTypeface = null, Font? messageBoxTypeface = null)
-            => InternalShow(owner, text, caption, buttons, null, icon, defaultButton,
+            => InternalShow(owner, text, caption, buttons, null, string.Empty, string.Empty, string.Empty,
+                            icon, defaultButton,
                             null, null, null, options,
                             new HelpInfo(helpFilePath, navigator, param),
                             showCtrlCopy,
@@ -221,7 +226,7 @@
                             null, null, null, null,
                             null, null, null, null,
                             null, null, null, null,
-                            null);
+                            null, null);
 
         /// <summary>
         /// Displays a message box with the specified text, caption, buttons, icon, default button, options, and Help button, using the specified Help file, HelpNavigator, and Help topic.
@@ -242,17 +247,17 @@
                                         ExtendedKryptonMessageBoxIcon icon, MessageBoxDefaultButton defaultButton,
                                         MessageBoxOptions options, string helpFilePath, HelpNavigator navigator, object param,
                                         bool? showCtrlCopy = null)
-            => InternalShow(owner, text, caption, buttons, null, icon,
-                            defaultButton, null, null, null,
-                            options,
-                            new HelpInfo(helpFilePath, navigator, param),
+            => InternalShow(owner, text, caption, buttons, null, string.Empty, string.Empty, string.Empty,
+                            icon, defaultButton, null, null, null,
+                            options, new HelpInfo(helpFilePath, navigator, param),
                             showCtrlCopy, null, null, null,
                             null, null, null, null, null,
                             null, null, null, null, null,
                             null, null, null, null,
                             null, null, null, null,
                             null, null, null, null,
-                            null);
+                            null, null);
+
 
         /// <summary>Shows the specified owner.</summary>
         /// <param name="owner">The owner.</param>
@@ -262,6 +267,7 @@
         /// <param name="icon">The icon.</param>
         /// <param name="defaultButton">The default button.</param>
         /// <param name="options">The options.</param>
+        /// <param name="displayHelpButton">if set to <c>true</c> [display help button].</param>
         /// <param name="helpFilePath">The help file path.</param>
         /// <param name="navigator">The navigator.</param>
         /// <param name="param">The parameter.</param>
@@ -272,6 +278,9 @@
         /// <param name="messageBoxButtonTypeface">The message box button typeface.</param>
         /// <param name="messageBoxTypeface">The message box typeface.</param>
         /// <param name="customButtonVisibility">The custom button visibility.</param>
+        /// <param name="buttonOneText">The button one text.</param>
+        /// <param name="buttonTwoText">The button two text.</param>
+        /// <param name="buttonThreeText">The button three text.</param>
         /// <param name="useYesNoOrCancelButtonColours">The use yes no or cancel button colours.</param>
         /// <param name="contentMessageColour">The content message colour.</param>
         /// <param name="buttonOneBackColourOne">The button one back colour one.</param>
@@ -302,11 +311,13 @@
         public static DialogResult Show(IWin32Window owner, string text, string caption,
             ExtendedMessageBoxButtons buttons,
             ExtendedKryptonMessageBoxIcon icon, MessageBoxDefaultButton defaultButton,
-            MessageBoxOptions options, string helpFilePath, HelpNavigator navigator, object param,
+            MessageBoxOptions options, bool displayHelpButton,
+            string helpFilePath, HelpNavigator navigator, object param,
             DialogResult? customButtonOneDialogResult, DialogResult? customButtonTwoDialogResult,
             DialogResult? customButtonThreeDialogResult, bool? showCtrlCopy,
             Font? messageBoxButtonTypeface, Font? messageBoxTypeface,
             ExtendedMessageBoxCustomButtonVisibility? customButtonVisibility,
+            string buttonOneText, string buttonTwoText, string buttonThreeText,
             bool? useYesNoOrCancelButtonColours, Color? contentMessageColour,
             Color? buttonOneBackColourOne, Color? buttonOneBackColourTwo,
             Color? buttonOneTextColourOne, Color? buttonOneTextColourTwo,
@@ -318,10 +329,11 @@
             Color? yesButtonTextColourOne, Color? yesButtonTextColourTwo,
             Color? noButtonBackColourOne, Color? noButtonBackColourTwo,
             Color? noButtonTextColourOne, Color? noButtonTextColourTwo,
-            float? cornerRounding, bool? showUacShieldOnAcceptButton)
-            => InternalShow(owner, text, caption, buttons, customButtonVisibility, icon,
+            float? buttonCornerRounding, float? windowCornerRounding,
+            bool? showUacShieldOnAcceptButton)
+            => InternalShow(owner, text, caption, buttons, customButtonVisibility, buttonOneText, buttonTwoText, buttonThreeText, icon,
                 defaultButton, customButtonOneDialogResult, customButtonTwoDialogResult,
-                customButtonThreeDialogResult, options, new HelpInfo(helpFilePath, navigator, param),
+                customButtonThreeDialogResult, options, displayHelpButton ? new HelpInfo(helpFilePath, navigator, param) : null,
                 showCtrlCopy, messageBoxButtonTypeface, messageBoxTypeface, useYesNoOrCancelButtonColours,
                 contentMessageColour, buttonOneBackColourOne, buttonOneBackColourTwo,
                 buttonOneTextColourOne, buttonOneTextColourTwo, buttonTwoTextColourOne,
@@ -329,7 +341,8 @@
                 buttonThreeTextColourOne, buttonThreeTextColourTwo, buttonThreeBackColourOne,
                 buttonThreeBackColourTwo, yesButtonBackColourOne, yesButtonBackColourTwo,
                 yesButtonTextColourOne, yesButtonTextColourTwo, noButtonBackColourOne, noButtonBackColourTwo,
-                noButtonTextColourOne, noButtonTextColourTwo, cornerRounding, showUacShieldOnAcceptButton);
+                noButtonTextColourOne, noButtonTextColourTwo, buttonCornerRounding, windowCornerRounding,
+                showUacShieldOnAcceptButton);
         #endregion
 
         #region Implementation
@@ -339,6 +352,9 @@
         /// <param name="caption">The caption.</param>
         /// <param name="buttons">The buttons.</param>
         /// <param name="customButtonVisibility">The custom button visibility.</param>
+        /// <param name="buttonOneText">The button one text.</param>
+        /// <param name="buttonTwoText">The button two text.</param>
+        /// <param name="buttonThreeText">The button three text.</param>
         /// <param name="icon">The icon.</param>
         /// <param name="defaultButton">The default button.</param>
         /// <param name="customButtonOneDialogResult">The custom button one dialog result.</param>
@@ -379,6 +395,7 @@
         private static DialogResult InternalShow(IWin32Window owner, string text, string caption,
                                                ExtendedMessageBoxButtons buttons,
                                                ExtendedMessageBoxCustomButtonVisibility? customButtonVisibility,
+                                               string buttonOneText, string buttonTwoText, string buttonThreeText,
                                                ExtendedKryptonMessageBoxIcon icon, MessageBoxDefaultButton defaultButton,
                                                DialogResult? customButtonOneDialogResult, DialogResult? customButtonTwoDialogResult,
                                                DialogResult? customButtonThreeDialogResult, MessageBoxOptions options,
@@ -395,11 +412,13 @@
                                                Color? yesButtonTextColourOne, Color? yesButtonTextColourTwo,
                                                Color? noButtonBackColourOne, Color? noButtonBackColourTwo,
                                                Color? noButtonTextColourOne, Color? noButtonTextColourTwo,
-                                               float? cornerRounding, bool? showUacShieldOnAcceptButton)
+                                               float? buttonCornerRounding, float? windowCornerRounding,
+                                               bool? showUacShieldOnAcceptButton)
         {
             IWin32Window showOwner = ValidateOptions(owner, options, helpInfo);
 
             using KryptonMessageBoxExtendedForm kmbe = new(showOwner, text, caption, buttons, customButtonVisibility,
+                                                           buttonOneText, buttonTwoText, buttonThreeText,
                                                            icon, defaultButton, customButtonOneDialogResult,
                                                            customButtonTwoDialogResult, customButtonThreeDialogResult,
                                                            options, helpInfo, showCtrlCopy, messageBoxButtonTypeface,
@@ -414,8 +433,8 @@
                                                            yesButtonBackColourTwo, yesButtonTextColourOne,
                                                            yesButtonTextColourTwo, noButtonBackColourOne,
                                                            noButtonBackColourTwo, noButtonTextColourOne,
-                                                           noButtonTextColourTwo, cornerRounding,
-                                                           showUacShieldOnAcceptButton);
+                                                           noButtonTextColourTwo, buttonCornerRounding,
+                                                           windowCornerRounding, showUacShieldOnAcceptButton);
 
             kmbe.StartPosition = showOwner == null ? FormStartPosition.CenterScreen : FormStartPosition.CenterParent;
 

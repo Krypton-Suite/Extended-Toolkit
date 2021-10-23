@@ -219,6 +219,7 @@
         #endregion
 
         #region Extended Fields
+
         private bool _showUACShieldOnAcceptButton, _useYesNoOrCancelButtonColours;
         private Color _contentMessageColour, _buttonOneBackColourOne, _buttonOneBackColourTwo,
                       _buttonOneTextColourOne, _buttonOneTextColourTwo,
@@ -233,7 +234,7 @@
         private DialogResult _buttonOneCustomDialogResult, _buttonTwoCustomDialogResult, _buttonThreeCustomDialogResult;
         private ExtendedMessageBoxCustomButtonVisibility _visibility;
         private Font _messageBoxButtonTypeface, _messageBoxTypeface;
-        private float _cornerRounding;
+        private float _buttonCornerRounding, _windowCornerRounding;
         private readonly string _optionalCheckBoxText, _copyButtonText, _buttonOneText, _buttonTwoText, _buttonThreeText;
         private Image _customMessageBoxIcon;
         private SoundPlayer _player;
@@ -246,8 +247,10 @@
         #endregion
 
         #region Identity
+        /// <summary>Initializes the <see cref="KryptonMessageBoxExtendedForm" /> class.</summary>
         static KryptonMessageBoxExtendedForm() => OS_MAJOR_VERSION = Environment.OSVersion.Version.Major;
 
+        /// <summary>Initializes a new instance of the <see cref="KryptonMessageBoxExtendedForm" /> class.</summary>
         public KryptonMessageBoxExtendedForm() => InitializeComponent();
 
 
@@ -257,6 +260,9 @@
         /// <param name="caption">The caption.</param>
         /// <param name="buttons">The buttons.</param>
         /// <param name="customButtonVisibility">The custom button visibility.</param>
+        /// <param name="buttonOneText">The button one text.</param>
+        /// <param name="buttonTwoText">The button two text.</param>
+        /// <param name="buttonThreeText">The button three text.</param>
         /// <param name="icon">The icon.</param>
         /// <param name="defaultButton">The default button.</param>
         /// <param name="customButtonOneDialogResult">The custom button one dialog result.</param>
@@ -294,6 +300,7 @@
         internal KryptonMessageBoxExtendedForm(IWin32Window showOwner, string text, string caption,
                                                ExtendedMessageBoxButtons buttons,
                                                ExtendedMessageBoxCustomButtonVisibility? customButtonVisibility,
+                                               string buttonOneText, string buttonTwoText, string buttonThreeText,
                                                ExtendedKryptonMessageBoxIcon icon, MessageBoxDefaultButton defaultButton,
                                                DialogResult? customButtonOneDialogResult, DialogResult? customButtonTwoDialogResult,
                                                DialogResult? customButtonThreeDialogResult, MessageBoxOptions options,
@@ -310,7 +317,8 @@
                                                Color? yesButtonTextColourOne, Color? yesButtonTextColourTwo,
                                                Color? noButtonBackColourOne, Color? noButtonBackColourTwo,
                                                Color? noButtonTextColourOne, Color? noButtonTextColourTwo,
-                                               float? cornerRounding, bool? showUacShieldOnAcceptButton)
+                                               float? buttonCornerRounding, float? windowCornerRounding,
+                                               bool? showUacShieldOnAcceptButton)
         {
             // Store incoming values
             _text = text;
@@ -326,6 +334,9 @@
             _useYesNoOrCancelButtonColours = useYesNoOrCancelButtonColours ?? false;
             _showUACShieldOnAcceptButton = showUacShieldOnAcceptButton ?? false;
             _visibility = customButtonVisibility ?? ExtendedMessageBoxCustomButtonVisibility.NONE;
+            _buttonOneText = buttonOneText ?? string.Empty;
+            _buttonTwoText = buttonTwoText ?? string.Empty;
+            _buttonThreeText = buttonThreeText ?? string.Empty;
             _buttonOneCustomDialogResult = customButtonOneDialogResult ?? DialogResult.None;
             _buttonTwoCustomDialogResult = customButtonTwoDialogResult ?? DialogResult.None;
             _buttonThreeCustomDialogResult = customButtonThreeDialogResult ?? DialogResult.None;
@@ -352,7 +363,8 @@
             _noButtonTextColourOne = noButtonTextColourOne ?? Color.Empty;
             _noButtonBackColourTwo = noButtonBackColourTwo ?? Color.Red;
             _noButtonTextColourTwo = noButtonTextColourTwo ?? Color.Empty;
-            _cornerRounding = cornerRounding ?? -1;
+            _buttonCornerRounding = buttonCornerRounding ?? -1;
+            _windowCornerRounding = windowCornerRounding ?? -1;
 
             // Create the form contents
             InitializeComponent();
@@ -366,7 +378,7 @@
             UpdateDefault();
             UpdateHelp();
             UpdateTextExtra(showCtrlCopy);
-            AdjustCornerRounding(_cornerRounding);
+            AdjustCornerRounding(_windowCornerRounding);
 
             // Finally calculate and set form sizing
             UpdateSizing(showOwner);
@@ -492,6 +504,13 @@
                     _button3.DialogResult = _buttonThreeCustomDialogResult;
                     switch (_visibility)
                     {
+                        case ExtendedMessageBoxCustomButtonVisibility.NONE:
+                            _button1.Text = KryptonManager.Strings.OK;
+                            _button1.DialogResult = DialogResult.OK;
+                            _button1.StateCommon.Content.ShortText.Font = _messageBoxButtonTypeface;
+                            _button1.Visible = true;
+                            _button1.Enabled = true;
+                            break;
                         case ExtendedMessageBoxCustomButtonVisibility.ONEBUTTON:
                             _button1.Visible = true;
                             _button1.Enabled = true;
@@ -540,6 +559,16 @@
                     _button2.Visible = true;
                     _button2.Enabled = true;
                     _button1.UseAsUACElevationButton = _showUACShieldOnAcceptButton;
+
+                    if (_useYesNoOrCancelButtonColours)
+                    {
+                        AlterButtonColours(_buttonOneBackColourOne, _buttonOneBackColourTwo,
+                                           _buttonTwoBackColourOne, _buttonTwoBackColourTwo,
+                                           null, null,
+                                           _buttonOneTextColourOne, _buttonOneTextColourTwo,
+                                           _buttonTwoTextColourOne, _buttonTwoTextColourTwo,
+                                           null, null);
+                    }
                     break;
                 case ExtendedMessageBoxButtons.YESNO:
                     _button1.Text = KryptonManager.Strings.Yes;
@@ -554,6 +583,16 @@
                     _button2.Enabled = true;
                     _button1.UseAsUACElevationButton = _showUACShieldOnAcceptButton;
                     ControlBox = false;
+
+                    if (_useYesNoOrCancelButtonColours)
+                    {
+                        AlterButtonColours(_buttonOneBackColourOne, _buttonOneBackColourTwo,
+                            _buttonTwoBackColourOne, _buttonTwoBackColourTwo,
+                            null, null,
+                            _buttonOneTextColourOne, _buttonOneTextColourTwo,
+                            _buttonTwoTextColourOne, _buttonTwoTextColourTwo,
+                            null, null);
+                    }
                     break;
                 case ExtendedMessageBoxButtons.YESNOCANCEL:
                     _button1.Text = KryptonManager.Strings.Yes;
@@ -572,6 +611,16 @@
                     _button3.Visible = true;
                     _button3.Enabled = true;
                     _button1.UseAsUACElevationButton = _showUACShieldOnAcceptButton;
+
+                    if (_useYesNoOrCancelButtonColours)
+                    {
+                        AlterButtonColours(_buttonOneBackColourOne, _buttonOneBackColourTwo,
+                            _buttonTwoBackColourOne, _buttonTwoBackColourTwo,
+                            _buttonThreeBackColourOne, _buttonThreeBackColourTwo,
+                            _buttonOneTextColourOne, _buttonOneTextColourTwo,
+                            _buttonTwoTextColourOne, _buttonTwoTextColourTwo,
+                            _buttonThreeTextColourOne, _buttonThreeTextColourTwo);
+                    }
                     break;
                 case ExtendedMessageBoxButtons.RETRYCANCEL:
                     _button1.Text = KryptonManager.Strings.Retry;
@@ -585,6 +634,16 @@
                     _button2.Visible = true;
                     _button2.Enabled = true;
                     _button1.UseAsUACElevationButton = _showUACShieldOnAcceptButton;
+
+                    if (_useYesNoOrCancelButtonColours)
+                    {
+                        AlterButtonColours(_buttonOneBackColourOne, _buttonOneBackColourTwo,
+                            _buttonTwoBackColourOne, _buttonTwoBackColourTwo,
+                            _buttonThreeBackColourOne, _buttonThreeBackColourTwo,
+                            _buttonOneTextColourOne, _buttonOneTextColourTwo,
+                            _buttonTwoTextColourOne, _buttonTwoTextColourTwo,
+                            _buttonThreeTextColourOne, _buttonThreeTextColourTwo);
+                    }
                     break;
                 case ExtendedMessageBoxButtons.ABORTRETRYIGNORE:
                     _button1.Text = KryptonManager.Strings.Abort;
@@ -604,6 +663,16 @@
                     _button3.Enabled = true;
                     _button2.UseAsUACElevationButton = _showUACShieldOnAcceptButton;
                     ControlBox = false;
+
+                    if (_useYesNoOrCancelButtonColours)
+                    {
+                        AlterButtonColours(_buttonOneBackColourOne, _buttonOneBackColourTwo,
+                            _buttonTwoBackColourOne, _buttonTwoBackColourTwo,
+                            _buttonThreeBackColourOne, _buttonThreeBackColourTwo,
+                            _buttonOneTextColourOne, _buttonOneTextColourTwo,
+                            _buttonTwoTextColourOne, _buttonTwoTextColourTwo,
+                            _buttonThreeTextColourOne, _buttonThreeTextColourTwo);
+                    }
                     break;
             }
 
@@ -648,6 +717,7 @@
             if (helpButton != null)
             {
                 helpButton.Visible = true;
+
                 helpButton.Enabled = true;
                 helpButton.Text = KryptonManager.Strings.Help;
                 helpButton.StateCommon.Content.ShortText.Font = _messageBoxButtonTypeface;
