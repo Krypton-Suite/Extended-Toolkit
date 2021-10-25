@@ -1029,6 +1029,9 @@
         /// <returns></returns>
         private void AdjustCornerRounding(float cornerRounding) => StateCommon.Border.Rounding = cornerRounding;
 
+        /// <summary>
+        /// Configures the optional CheckBox.
+        /// </summary>
         private void ConfigureOptionalCheckBox()
         {
             _panelOptionalCheckBox.Visible = _showOptionalCheckBox;
@@ -1043,6 +1046,18 @@
 
             _optionalCheckBox.StateCommon.ShortText.Font = _optionalCheckBoxTypeface;
         }
+
+        /// <summary>
+        /// Returns the optional CheckBox checked status.
+        /// </summary>
+        /// <returns>The optional CheckBox checked status.</returns>
+        public bool ReturnOptionalCheckBoxCheckedStatus() => _optionalCheckBox.Checked;
+
+        /// <summary>
+        /// Returns the state of the optional CheckBox check.
+        /// </summary>
+        /// <returns>The check state of the optional CheckBox.</returns>
+        public CheckState ReturnOptionalCheckBoxCheckState() => _optionalCheckBox.CheckState;
         #endregion
 
         #endregion
