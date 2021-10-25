@@ -15,14 +15,14 @@ namespace MessageBox
         private ExtendedMessageBoxButtons _buttons;
         private MessageBoxOptions _options = 0;
         private MessageBoxDefaultButton _defaultButton;
-        private Font _buttonTypeface, _textTypeface;
+        private Font _buttonTypeface, _textTypeface, _optionalCheckBoxTypeface;
         private float _buttonCornerRounding, _windowCornerRounding;
         private Color _contentMessageColour, _buttonOneBackColourOne, _buttonOneBackColourTwo, _buttonOneTextColourOne,
                       _buttonOneTextColourTwo, _buttonTwoTextColourOne, _buttonTwoTextColourTwo, _buttonTwoBackColourOne,
                       _buttonTwoBackColourTwo, _buttonThreeTextColourOne, _buttonThreeTextColourTwo, _buttonThreeBackColourOne,
                       _buttonThreeBackColourTwo, _yesButtonBackColourOne, _yesButtonBackColourTwo, _yesButtonTextColourOne,
                       _yesButtonTextColourTwo, _noButtonBackColourOne, _noButtonBackColourTwo, _noButtonTextColourOne,
-                      _noButtonTextColourTwo;
+                      _noButtonTextColourTwo, _optionalCheckBoxTextColourOne, _optionalCheckBoxTextColourTwo;
 
         private DialogResult _customDialogResultOne, _customDialogResultTwo, _customDialogResultThree;
 
@@ -56,7 +56,10 @@ namespace MessageBox
                                            GetNoButtonBackColourOne(), GetNoButtonBackColourTwo(),
                                            GetNoButtonTextColourOne(), GetNoButtonTextColourTwo(),
                                            GetButtonCornerRounding(), GetWindowCornerRounding(),
-                                           kcbShowUACShieldOnAcceptButton.Checked);
+                                           kcbShowUACShieldOnAcceptButton.Checked, kcbShowOptionalCheckBox.Checked,
+                                           kcbIsOptionalCheckBoxChecked.Checked, GetOptionalCheckBoxTextColourOne(),
+                                           GetOptionalCheckBoxTextColourTwo(),
+                                           GetOptionalCheckBoxTypeface(), ktxtOptionalCheckBoxText.Text);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -96,6 +99,20 @@ namespace MessageBox
         private void kcmbButtonThreeResult_SelectedIndexChanged(object sender, EventArgs e) => SetCustomButtonThreeResult(kcmbButtonThreeResult.Text);
 
         private void kcbtnTextColor_SelectedColorChanged(object sender, ColorEventArgs e) => SetContentMessageColour(kcbtnTextColor.SelectedColor);
+
+        private void kbtnOptionalCheckBoxTypeface_Click(object sender, EventArgs e)
+        {
+            KryptonFontDialog kfd = new KryptonFontDialog();
+
+            if (kfd.ShowDialog() == DialogResult.OK)
+            {
+                SetOptionalCheckBoxTypeface(kfd.Font);
+            }
+        }
+
+        private void kcbtnOptionalCheckBoxTextColorOne_SelectedColorChanged(object sender, ColorEventArgs e) => SetOptionalCheckBoxTextColourOne(kcbtnOptionalCheckBoxTextColorOne.SelectedColor);
+
+        private void kcbtnOptionalCheckBoxTextColorTwo_SelectedColorChanged(object sender, ColorEventArgs e) => SetOptionalCheckBoxTextColourTwo(kcbtnOptionalCheckBoxTextColorTwo.SelectedColor);
 
         private void kbtnTextTypeface_Click(object sender, EventArgs e)
         {
@@ -667,6 +684,42 @@ namespace MessageBox
         /// </summary>
         /// <returns>The value of the WindowCornerRounding.</returns>
         private float GetWindowCornerRounding() => _windowCornerRounding;
+
+        /// <summary>
+        /// Sets the OptionalCheckBoxTypeface to the value of optionalCheckBoxTypeface.
+        /// </summary>
+        /// <param name="optionalCheckBoxTypeface">The desired value of OptionalCheckBoxTypeface.</param>
+        private void SetOptionalCheckBoxTypeface(Font optionalCheckBoxTypeface) => _optionalCheckBoxTypeface = optionalCheckBoxTypeface;
+
+        /// <summary>
+        /// Returns the value of the OptionalCheckBoxTypeface.
+        /// </summary>
+        /// <returns>The value of the OptionalCheckBoxTypeface.</returns>
+        private Font GetOptionalCheckBoxTypeface() => _optionalCheckBoxTypeface;
+
+        /// <summary>
+        /// Sets the OptionalCheckBoxTextColourOne to the value of optionalCheckBoxTextColourOne.
+        /// </summary>
+        /// <param name="optionalCheckBoxTextColourOne">The desired value of OptionalCheckBoxTextColourOne.</param>
+        private void SetOptionalCheckBoxTextColourOne(Color optionalCheckBoxTextColourOne) => _optionalCheckBoxTextColourOne = optionalCheckBoxTextColourOne;
+
+        /// <summary>
+        /// Returns the value of the OptionalCheckBoxTextColourOne.
+        /// </summary>
+        /// <returns>The value of the OptionalCheckBoxTextColourOne.</returns>
+        private Color GetOptionalCheckBoxTextColourOne() => _optionalCheckBoxTextColourOne;
+
+        /// <summary>
+        /// Sets the OptionalCheckBoxTextColourTwo to the value of optionalCheckBoxTextColourTwo.
+        /// </summary>
+        /// <param name="optionalCheckBoxTextColourTwo">The desired value of OptionalCheckBoxTextColourTwo.</param>
+        private void SetOptionalCheckBoxTextColourTwo(Color optionalCheckBoxTextColourTwo) => _optionalCheckBoxTextColourTwo = optionalCheckBoxTextColourTwo;
+
+        /// <summary>
+        /// Returns the value of the OptionalCheckBoxTextColourTwo.
+        /// </summary>
+        /// <returns>The value of the OptionalCheckBoxTextColourTwo.</returns>
+        private Color GetOptionalCheckBoxTextColourTwo() => _optionalCheckBoxTextColourTwo;
 
         #endregion
 

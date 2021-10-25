@@ -27,6 +27,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="options" default="0">One of the System.Windows.Forms.MessageBoxOptions values that specifies which display and association options will be used for the message box. You may pass in 0 if you wish to use the defaults.</param>
         /// <param name="displayHelpButton" default="false">Displays a message box with the specified text, caption, buttons, icon, default button, options, and Help button.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
+        /// <param name="messageBoxButtonTypeface" default="null">The messagebox button typeface.</param>
         /// <param name="messageBoxTypeface" default="null">The messagebox typeface.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(string text,
@@ -47,7 +48,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                              null, null, null, null, null, null,
                              null, null, null, null, null, null,
                              null, null, null, null, null, null,
-                             null, null, null, null, null);
+                             null, null, null, null, null, null,
+                             null, null, null, null, string.Empty);
 
 
         /// <summary>
@@ -81,7 +83,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                              null, null, null, null,
                              null, null, null, null,
                              null, null, null, null,
-                             null, null);
+                             null, null, null, null,
+                             null, null, null, string.Empty);
 
         /// <summary>
         /// Displays a message box in front+center of the specified object and with the specified text, caption, buttons, icon, default button, and options.
@@ -95,6 +98,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="options" default="0">One of the System.Windows.Forms.MessageBoxOptions values that specifies which display and association options will be used for the message box. You may pass in 0 if you wish to use the defaults.</param>
         /// <param name="displayHelpButton" default="false">Displays a message box with the specified text, caption, buttons, icon, default button, options, and Help button.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
+        /// <param name="messageBoxButtonTypeface" default="null">The messagebox button typeface.</param>
         /// <param name="messageBoxTypeface" default="null">The messagebox typeface.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(IWin32Window owner, string text,
@@ -115,7 +119,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                              null, null, null, null, null, null,
                              null, null, null, null, null, null,
                              null, null, null, null, null, null,
-                             null, null, null, null, null);
+                             null, null, null, null, null, null,
+                             null, null, null, null, string.Empty);
 
         /// <summary>
         /// Displays a message box in front+center of the specified object and with the specified text, caption, buttons, icon, default button, and options.
@@ -139,17 +144,18 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             bool displayHelpButton = false,
             bool? showCtrlCopy = null)
             =>
-                InternalShow(owner, text, caption, buttons, null, string.Empty, string.Empty, string.Empty,
-                             icon,
-                    defaultButton, null, null, null,
-                    options, displayHelpButton ? new HelpInfo() : null,
-                    showCtrlCopy, null, null, null,
-                    null, null, null, null, null,
-                    null, null, null, null, null,
-                    null, null, null, null,
-                    null, null, null, null,
-                    null, null, null, null,
-                    null, null);
+                InternalShow(owner, text, caption, buttons, null,
+                             string.Empty, string.Empty, string.Empty,
+                             icon, defaultButton, null, null, null,
+                             options, displayHelpButton ? new HelpInfo() : null,
+                             showCtrlCopy, null, null, null,
+                             null, null, null, null, null,
+                             null, null, null, null, null,
+                             null, null, null, null,
+                             null, null, null, null,
+                             null, null, null, null,
+                             null, null, null,
+                             null, null, null, null, string.Empty);
 
         /// <param name="text">The text to display in the message box.</param>
         /// <param name="caption">The text to display in the title bar of the message box. default="string.Empty"</param>
@@ -161,6 +167,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="navigator">One of the System.Windows.Forms.HelpNavigator values.</param>
         /// <param name="param">The numeric ID of the Help topic to display when the user clicks the Help button.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
+        /// <param name="messageBoxButtonTypeface" default="null">The messagebox button typeface.</param>
         /// <param name="messageBoxTypeface" default="null">The messagebox typeface.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(string text, string caption, ExtendedMessageBoxButtons buttons, ExtendedKryptonMessageBoxIcon icon,
@@ -177,7 +184,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                             null, null, null, null,
                             null, null, null, null,
                             null, null, null, null,
-                            null, null);
+                            null, null, null, null,
+                            null, null, null, string.Empty);
 
 
         /// <param name="text">The text to display in the message box.</param>
@@ -204,7 +212,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                             null, null, null, null,
                             null, null, null, null,
                             null, null, null, null,
-                            null, null);
+                            null, null, null, null,
+                            null, null, null, string.Empty);
 
         /// <summary>
         /// Displays a message box with the specified text, caption, buttons, icon, default button, options, and Help button, using the specified Help file, HelpNavigator, and Help topic.
@@ -220,6 +229,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="navigator">One of the System.Windows.Forms.HelpNavigator values.</param>
         /// <param name="param">The numeric ID of the Help topic to display when the user clicks the Help button.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
+        /// <param name="messageBoxButtonTypeface" default="null">The messagebox button typeface.</param>
         /// <param name="messageBoxTypeface" default="null">The messagebox typeface.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(IWin32Window owner, string text, string caption, ExtendedMessageBoxButtons buttons,
@@ -238,7 +248,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                             null, null, null, null,
                             null, null, null, null,
                             null, null, null, null,
-                            null, null);
+                            null, null, null, null,
+                            null, null, null, string.Empty);
 
         /// <summary>
         /// Displays a message box with the specified text, caption, buttons, icon, default button, options, and Help button, using the specified Help file, HelpNavigator, and Help topic.
@@ -268,10 +279,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                             null, null, null, null,
                             null, null, null, null,
                             null, null, null, null,
-                            null, null);
+                            null, null, null, null,
+                            null, null, null, string.Empty);
 
 
-        /// <summary>Shows the specified owner.</summary>
+        /// <summary>Displays a message box</summary>
         /// <param name="owner">The owner.</param>
         /// <param name="text">The text.</param>
         /// <param name="caption">The caption.</param>
@@ -315,11 +327,16 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="noButtonBackColourTwo">The no button back colour two.</param>
         /// <param name="noButtonTextColourOne">The no button text colour one.</param>
         /// <param name="noButtonTextColourTwo">The no button text colour two.</param>
-        /// <param name="cornerRounding">The corner rounding.</param>
+        /// <param name="buttonCornerRounding">The button corner rounding.</param>
+        /// <param name="windowCornerRounding">The window corner rounding.</param>
         /// <param name="showUacShieldOnAcceptButton">The show uac shield on accept button.</param>
-        /// <returns>
-        ///   <br />
-        /// </returns>
+        /// <param name="showOptionalCheckBox">The show optional CheckBox.</param>
+        /// <param name="isOptionalCheckBoxChecked">The is optional CheckBox checked.</param>
+        /// <param name="optionalCheckBoxTextColourOne">The optional CheckBox text colour one.</param>
+        /// <param name="optionalCheckBoxTextColourTwo">The optional CheckBox text colour two.</param>
+        /// <param name="optionalCheckBoxTypeface">The optional CheckBox typeface.</param>
+        /// <param name="optionalCheckBoxText">The optional CheckBox text.</param>
+        /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(IWin32Window owner, string text, string caption,
             ExtendedMessageBoxButtons buttons,
             ExtendedKryptonMessageBoxIcon icon, MessageBoxDefaultButton defaultButton,
@@ -342,7 +359,10 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             Color? noButtonBackColourOne, Color? noButtonBackColourTwo,
             Color? noButtonTextColourOne, Color? noButtonTextColourTwo,
             float? buttonCornerRounding, float? windowCornerRounding,
-            bool? showUacShieldOnAcceptButton)
+            bool? showUacShieldOnAcceptButton, bool? showOptionalCheckBox,
+            bool? isOptionalCheckBoxChecked, Color? optionalCheckBoxTextColourOne,
+            Color? optionalCheckBoxTextColourTwo, Font? optionalCheckBoxTypeface,
+            string optionalCheckBoxText)
             => InternalShow(owner, text, caption, buttons, customButtonVisibility, buttonOneText, buttonTwoText, buttonThreeText, icon,
                 defaultButton, customButtonOneDialogResult, customButtonTwoDialogResult,
                 customButtonThreeDialogResult, options, displayHelpButton ? new HelpInfo(helpFilePath, navigator, param) : null,
@@ -354,10 +374,62 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                 buttonThreeBackColourTwo, yesButtonBackColourOne, yesButtonBackColourTwo,
                 yesButtonTextColourOne, yesButtonTextColourTwo, noButtonBackColourOne, noButtonBackColourTwo,
                 noButtonTextColourOne, noButtonTextColourTwo, buttonCornerRounding, windowCornerRounding,
-                showUacShieldOnAcceptButton);
+                showUacShieldOnAcceptButton, showOptionalCheckBox, isOptionalCheckBoxChecked,
+                optionalCheckBoxTextColourOne, optionalCheckBoxTextColourTwo, optionalCheckBoxTypeface,
+                optionalCheckBoxText);
         #endregion
 
         #region Implementation
+        /// <summary>Shows the messagebox.</summary>
+        /// <param name="owner">The owner.</param>
+        /// <param name="text">The text.</param>
+        /// <param name="caption">The caption.</param>
+        /// <param name="buttons">The buttons.</param>
+        /// <param name="customButtonVisibility">The custom button visibility.</param>
+        /// <param name="buttonOneText">The button one text.</param>
+        /// <param name="buttonTwoText">The button two text.</param>
+        /// <param name="buttonThreeText">The button three text.</param>
+        /// <param name="icon">The icon.</param>
+        /// <param name="defaultButton">The default button.</param>
+        /// <param name="customButtonOneDialogResult">The custom button one dialog result.</param>
+        /// <param name="customButtonTwoDialogResult">The custom button two dialog result.</param>
+        /// <param name="customButtonThreeDialogResult">The custom button three dialog result.</param>
+        /// <param name="options">The options.</param>
+        /// <param name="helpInfo">The help information.</param>
+        /// <param name="showCtrlCopy">The show control copy.</param>
+        /// <param name="messageBoxButtonTypeface">The message box button typeface.</param>
+        /// <param name="messageBoxTypeface">The message box typeface.</param>
+        /// <param name="useYesNoOrCancelButtonColours">The use yes no or cancel button colours.</param>
+        /// <param name="contentMessageColour">The content message colour.</param>
+        /// <param name="buttonOneBackColourOne">The button one back colour one.</param>
+        /// <param name="buttonOneBackColourTwo">The button one back colour two.</param>
+        /// <param name="buttonOneTextColourOne">The button one text colour one.</param>
+        /// <param name="buttonOneTextColourTwo">The button one text colour two.</param>
+        /// <param name="buttonTwoTextColourOne">The button two text colour one.</param>
+        /// <param name="buttonTwoTextColourTwo">The button two text colour two.</param>
+        /// <param name="buttonTwoBackColourOne">The button two back colour one.</param>
+        /// <param name="buttonTwoBackColourTwo">The button two back colour two.</param>
+        /// <param name="buttonThreeTextColourOne">The button three text colour one.</param>
+        /// <param name="buttonThreeTextColourTwo">The button three text colour two.</param>
+        /// <param name="buttonThreeBackColourOne">The button three back colour one.</param>
+        /// <param name="buttonThreeBackColourTwo">The button three back colour two.</param>
+        /// <param name="yesButtonBackColourOne">The yes button back colour one.</param>
+        /// <param name="yesButtonBackColourTwo">The yes button back colour two.</param>
+        /// <param name="yesButtonTextColourOne">The yes button text colour one.</param>
+        /// <param name="yesButtonTextColourTwo">The yes button text colour two.</param>
+        /// <param name="noButtonBackColourOne">The no button back colour one.</param>
+        /// <param name="noButtonBackColourTwo">The no button back colour two.</param>
+        /// <param name="noButtonTextColourOne">The no button text colour one.</param>
+        /// <param name="noButtonTextColourTwo">The no button text colour two.</param>
+        /// <param name="buttonCornerRounding">The button corner rounding.</param>
+        /// <param name="windowCornerRounding">The window corner rounding.</param>
+        /// <param name="showUacShieldOnAcceptButton">The show uac shield on accept button.</param>
+        /// <param name="showOptionalCheckBox">The show optional CheckBox.</param>
+        /// <param name="isOptionalCheckBoxChecked">The is optional CheckBox checked.</param>
+        /// <param name="optionalCheckBoxTextColourOne">The optional CheckBox text colour one.</param>
+        /// <param name="optionalCheckBoxTextColourTwo">The optional CheckBox text colour two.</param>
+        /// <param name="optionalCheckBoxTypeface">The optional CheckBox typeface.</param>
+        /// <param name="optionalCheckBoxText">The optional CheckBox text.</param>
         private static DialogResult InternalShow(IWin32Window owner, string text, string caption,
                                                ExtendedMessageBoxButtons buttons,
                                                ExtendedMessageBoxCustomButtonVisibility? customButtonVisibility,
@@ -379,7 +451,10 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                                Color? noButtonBackColourOne, Color? noButtonBackColourTwo,
                                                Color? noButtonTextColourOne, Color? noButtonTextColourTwo,
                                                float? buttonCornerRounding, float? windowCornerRounding,
-                                               bool? showUacShieldOnAcceptButton)
+                                               bool? showUacShieldOnAcceptButton, bool? showOptionalCheckBox,
+                                               bool? isOptionalCheckBoxChecked, Color? optionalCheckBoxTextColourOne,
+                                               Color? optionalCheckBoxTextColourTwo, Font? optionalCheckBoxTypeface,
+                                               string optionalCheckBoxText)
         {
             IWin32Window showOwner = ValidateOptions(owner, options, helpInfo);
 
@@ -400,7 +475,10 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                                            yesButtonTextColourTwo, noButtonBackColourOne,
                                                            noButtonBackColourTwo, noButtonTextColourOne,
                                                            noButtonTextColourTwo, buttonCornerRounding,
-                                                           windowCornerRounding, showUacShieldOnAcceptButton);
+                                                           windowCornerRounding, showUacShieldOnAcceptButton,
+                                                           showOptionalCheckBox, isOptionalCheckBoxChecked,
+                                                           optionalCheckBoxTextColourOne, optionalCheckBoxTextColourTwo,
+                                                           optionalCheckBoxTypeface, optionalCheckBoxText);
 
             kmbe.StartPosition = showOwner == null ? FormStartPosition.CenterScreen : FormStartPosition.CenterParent;
 

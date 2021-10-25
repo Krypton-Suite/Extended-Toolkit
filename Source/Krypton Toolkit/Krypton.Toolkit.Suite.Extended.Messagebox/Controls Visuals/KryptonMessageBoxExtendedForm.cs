@@ -6,12 +6,15 @@
         private KryptonPanel kryptonPanel1;
         private TableLayoutPanel tableLayoutPanel1;
         private KryptonWrapLabel _messageText;
-        private KryptonPanel _panelButtons;
+        private KryptonPanel _panelFooter;
         private KryptonBorderEdge _borderEdge;
         private MessageButton _button4;
         private MessageButton _button3;
         private MessageButton _button1;
         private MessageButton _button2;
+        private KryptonPanel _panelButtons;
+        private KryptonPanel _panelOptionalCheckBox;
+        private KryptonCheckBox _optionalCheckBox;
         private PictureBox _messageIcon;
 
         private void InitializeComponent()
@@ -19,19 +22,26 @@
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this._messageText = new Krypton.Toolkit.KryptonWrapLabel();
-            this._panelButtons = new Krypton.Toolkit.KryptonPanel();
+            this._panelFooter = new Krypton.Toolkit.KryptonPanel();
             this._borderEdge = new Krypton.Toolkit.KryptonBorderEdge();
             this._button4 = new Krypton.Toolkit.Suite.Extended.Messagebox.MessageButton();
             this._button3 = new Krypton.Toolkit.Suite.Extended.Messagebox.MessageButton();
             this._button1 = new Krypton.Toolkit.Suite.Extended.Messagebox.MessageButton();
             this._button2 = new Krypton.Toolkit.Suite.Extended.Messagebox.MessageButton();
             this._messageIcon = new System.Windows.Forms.PictureBox();
+            this._panelOptionalCheckBox = new Krypton.Toolkit.KryptonPanel();
+            this._optionalCheckBox = new Krypton.Toolkit.KryptonCheckBox();
+            this._panelButtons = new Krypton.Toolkit.KryptonPanel();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this._panelFooter)).BeginInit();
+            this._panelFooter.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this._messageIcon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._panelOptionalCheckBox)).BeginInit();
+            this._panelOptionalCheckBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._panelButtons)).BeginInit();
             this._panelButtons.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this._messageIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // kryptonPanel1
@@ -51,7 +61,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this._messageText, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this._panelButtons, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this._panelFooter, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this._messageIcon, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
@@ -69,6 +79,7 @@
             this._messageText.Dock = System.Windows.Forms.DockStyle.Fill;
             this._messageText.Font = new System.Drawing.Font("Segoe UI", 9F);
             this._messageText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this._messageText.LabelStyle = Krypton.Toolkit.LabelStyle.NormalControl;
             this._messageText.Location = new System.Drawing.Point(49, 0);
             this._messageText.Margin = new System.Windows.Forms.Padding(4, 0, 0, 0);
             this._messageText.Name = "_messageText";
@@ -76,21 +87,19 @@
             this._messageText.Text = "Message Text";
             this._messageText.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // _panelButtons
+            // _panelFooter
             // 
-            this.tableLayoutPanel1.SetColumnSpan(this._panelButtons, 2);
-            this._panelButtons.Controls.Add(this._borderEdge);
-            this._panelButtons.Controls.Add(this._button4);
-            this._panelButtons.Controls.Add(this._button3);
-            this._panelButtons.Controls.Add(this._button1);
-            this._panelButtons.Controls.Add(this._button2);
-            this._panelButtons.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._panelButtons.Location = new System.Drawing.Point(0, 42);
-            this._panelButtons.Margin = new System.Windows.Forms.Padding(0);
-            this._panelButtons.Name = "_panelButtons";
-            this._panelButtons.PanelBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelAlternate;
-            this._panelButtons.Size = new System.Drawing.Size(183, 21);
-            this._panelButtons.TabIndex = 0;
+            this.tableLayoutPanel1.SetColumnSpan(this._panelFooter, 2);
+            this._panelFooter.Controls.Add(this._panelButtons);
+            this._panelFooter.Controls.Add(this._panelOptionalCheckBox);
+            this._panelFooter.Controls.Add(this._borderEdge);
+            this._panelFooter.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._panelFooter.Location = new System.Drawing.Point(0, 42);
+            this._panelFooter.Margin = new System.Windows.Forms.Padding(0);
+            this._panelFooter.Name = "_panelFooter";
+            this._panelFooter.PanelBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelAlternate;
+            this._panelFooter.Size = new System.Drawing.Size(183, 21);
+            this._panelFooter.TabIndex = 0;
             // 
             // _borderEdge
             // 
@@ -106,14 +115,19 @@
             // 
             this._button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this._button4.AutoSize = true;
+            this._button4.BackColourOne = System.Drawing.Color.Empty;
+            this._button4.BackColourTwo = System.Drawing.Color.Empty;
+            this._button4.CornerRounding = -1F;
             this._button4.Enabled = false;
             this._button4.IgnoreAltF4 = false;
-            this._button4.Location = new System.Drawing.Point(183, 0);
+            this._button4.Location = new System.Drawing.Point(150, 0);
             this._button4.Margin = new System.Windows.Forms.Padding(0);
             this._button4.MinimumSize = new System.Drawing.Size(38, 21);
             this._button4.Name = "_button4";
             this._button4.Size = new System.Drawing.Size(38, 23);
             this._button4.TabIndex = 2;
+            this._button4.TextColourOne = System.Drawing.Color.Empty;
+            this._button4.TextColourTwo = System.Drawing.Color.Empty;
             this._button4.Values.Text = "B4";
             this._button4.Visible = false;
             // 
@@ -121,14 +135,19 @@
             // 
             this._button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this._button3.AutoSize = true;
+            this._button3.BackColourOne = System.Drawing.Color.Empty;
+            this._button3.BackColourTwo = System.Drawing.Color.Empty;
+            this._button3.CornerRounding = -1F;
             this._button3.Enabled = false;
             this._button3.IgnoreAltF4 = false;
-            this._button3.Location = new System.Drawing.Point(146, 0);
+            this._button3.Location = new System.Drawing.Point(105, 0);
             this._button3.Margin = new System.Windows.Forms.Padding(0);
             this._button3.MinimumSize = new System.Drawing.Size(38, 21);
             this._button3.Name = "_button3";
             this._button3.Size = new System.Drawing.Size(38, 23);
             this._button3.TabIndex = 2;
+            this._button3.TextColourOne = System.Drawing.Color.Empty;
+            this._button3.TextColourTwo = System.Drawing.Color.Empty;
             this._button3.Values.Text = "B3";
             this._button3.Visible = false;
             // 
@@ -136,14 +155,22 @@
             // 
             this._button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this._button1.AutoSize = true;
+            this._button1.BackColourOne = System.Drawing.Color.Empty;
+            this._button1.BackColourTwo = System.Drawing.Color.Empty;
+            this._button1.CornerRounding = -1F;
             this._button1.Enabled = false;
             this._button1.IgnoreAltF4 = false;
-            this._button1.Location = new System.Drawing.Point(70, 0);
+            this._button1.Location = new System.Drawing.Point(29, 0);
             this._button1.Margin = new System.Windows.Forms.Padding(0);
             this._button1.MinimumSize = new System.Drawing.Size(38, 21);
             this._button1.Name = "_button1";
             this._button1.Size = new System.Drawing.Size(38, 23);
+            this._button1.StateCommon.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom)
+            | Krypton.Toolkit.PaletteDrawBorders.Left)
+            | Krypton.Toolkit.PaletteDrawBorders.Right)));
             this._button1.TabIndex = 0;
+            this._button1.TextColourOne = System.Drawing.Color.Empty;
+            this._button1.TextColourTwo = System.Drawing.Color.Empty;
             this._button1.Values.Text = "B1";
             this._button1.Visible = false;
             // 
@@ -151,14 +178,19 @@
             // 
             this._button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this._button2.AutoSize = true;
+            this._button2.BackColourOne = System.Drawing.Color.Empty;
+            this._button2.BackColourTwo = System.Drawing.Color.Empty;
+            this._button2.CornerRounding = -1F;
             this._button2.Enabled = false;
             this._button2.IgnoreAltF4 = false;
-            this._button2.Location = new System.Drawing.Point(108, 0);
+            this._button2.Location = new System.Drawing.Point(67, 0);
             this._button2.Margin = new System.Windows.Forms.Padding(0);
             this._button2.MinimumSize = new System.Drawing.Size(38, 21);
             this._button2.Name = "_button2";
             this._button2.Size = new System.Drawing.Size(38, 23);
             this._button2.TabIndex = 1;
+            this._button2.TextColourOne = System.Drawing.Color.Empty;
+            this._button2.TextColourTwo = System.Drawing.Color.Empty;
             this._button2.Values.Text = "B2";
             this._button2.Visible = false;
             // 
@@ -173,6 +205,39 @@
             this._messageIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this._messageIcon.TabIndex = 0;
             this._messageIcon.TabStop = false;
+            // 
+            // _panelOptionalCheckBox
+            // 
+            this._panelOptionalCheckBox.AutoSize = true;
+            this._panelOptionalCheckBox.Controls.Add(this._optionalCheckBox);
+            this._panelOptionalCheckBox.Dock = System.Windows.Forms.DockStyle.Left;
+            this._panelOptionalCheckBox.Location = new System.Drawing.Point(0, 1);
+            this._panelOptionalCheckBox.Name = "_panelOptionalCheckBox";
+            this._panelOptionalCheckBox.PanelBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelAlternate;
+            this._panelOptionalCheckBox.Size = new System.Drawing.Size(38, 20);
+            this._panelOptionalCheckBox.TabIndex = 3;
+            // 
+            // _optionalCheckBox
+            // 
+            this._optionalCheckBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._optionalCheckBox.Location = new System.Drawing.Point(0, 0);
+            this._optionalCheckBox.Name = "_optionalCheckBox";
+            this._optionalCheckBox.Size = new System.Drawing.Size(38, 20);
+            this._optionalCheckBox.TabIndex = 0;
+            this._optionalCheckBox.Values.Text = "C1";
+            // 
+            // _panelButtons
+            // 
+            this._panelButtons.Controls.Add(this._button4);
+            this._panelButtons.Controls.Add(this._button3);
+            this._panelButtons.Controls.Add(this._button2);
+            this._panelButtons.Controls.Add(this._button1);
+            this._panelButtons.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._panelButtons.Location = new System.Drawing.Point(38, 1);
+            this._panelButtons.Name = "_panelButtons";
+            this._panelButtons.PanelBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelAlternate;
+            this._panelButtons.Size = new System.Drawing.Size(145, 20);
+            this._panelButtons.TabIndex = 4;
             // 
             // KryptonMessageBoxExtendedForm
             // 
@@ -189,10 +254,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this._panelFooter)).EndInit();
+            this._panelFooter.ResumeLayout(false);
+            this._panelFooter.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this._messageIcon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._panelOptionalCheckBox)).EndInit();
+            this._panelOptionalCheckBox.ResumeLayout(false);
+            this._panelOptionalCheckBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this._panelButtons)).EndInit();
             this._panelButtons.ResumeLayout(false);
             this._panelButtons.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this._messageIcon)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -220,7 +291,8 @@
 
         #region Extended Fields
 
-        private bool _showUACShieldOnAcceptButton, _useYesNoOrCancelButtonColours;
+        private bool _showUACShieldOnAcceptButton, _useYesNoOrCancelButtonColours, _showOptionalCheckBox,
+                     _isOptionalCheckBoxChecked;
         private Color _contentMessageColour, _buttonOneBackColourOne, _buttonOneBackColourTwo,
                       _buttonOneTextColourOne, _buttonOneTextColourTwo,
                       _buttonTwoBackColourOne, _buttonTwoBackColourTwo,
@@ -230,10 +302,11 @@
                       _yesButtonBackColourOne, _yesButtonBackColourTwo,
                       _yesButtonTextColourOne, _yesButtonTextColourTwo,
                       _noButtonBackColourOne, _noButtonBackColourTwo,
-                      _noButtonTextColourOne, _noButtonTextColourTwo;
+                      _noButtonTextColourOne, _noButtonTextColourTwo,
+                      _optionalCheckBoxTextColourOne, _optionalCheckBoxTextColourTwo;
         private DialogResult _buttonOneCustomDialogResult, _buttonTwoCustomDialogResult, _buttonThreeCustomDialogResult;
         private ExtendedMessageBoxCustomButtonVisibility _visibility;
-        private Font _messageBoxButtonTypeface, _messageBoxTypeface;
+        private Font _messageBoxButtonTypeface, _messageBoxTypeface, _optionalCheckBoxTypeface;
         private float _buttonCornerRounding, _windowCornerRounding;
         private readonly string _optionalCheckBoxText, _copyButtonText, _buttonOneText, _buttonTwoText, _buttonThreeText;
         private Image _customMessageBoxIcon;
@@ -253,50 +326,6 @@
         /// <summary>Initializes a new instance of the <see cref="KryptonMessageBoxExtendedForm" /> class.</summary>
         public KryptonMessageBoxExtendedForm() => InitializeComponent();
 
-
-        /// <summary>Initializes a new instance of the <see cref="KryptonMessageBoxExtendedForm" /> class.</summary>
-        /// <param name="showOwner">The show owner.</param>
-        /// <param name="text">The text.</param>
-        /// <param name="caption">The caption.</param>
-        /// <param name="buttons">The buttons.</param>
-        /// <param name="customButtonVisibility">The custom button visibility.</param>
-        /// <param name="buttonOneText">The button one text.</param>
-        /// <param name="buttonTwoText">The button two text.</param>
-        /// <param name="buttonThreeText">The button three text.</param>
-        /// <param name="icon">The icon.</param>
-        /// <param name="defaultButton">The default button.</param>
-        /// <param name="customButtonOneDialogResult">The custom button one dialog result.</param>
-        /// <param name="customButtonTwoDialogResult">The custom button two dialog result.</param>
-        /// <param name="customButtonThreeDialogResult">The custom button three dialog result.</param>
-        /// <param name="options">The options.</param>
-        /// <param name="helpInfo">The help information.</param>
-        /// <param name="showCtrlCopy">The show control copy.</param>
-        /// <param name="messageBoxButtonTypeface">The message box button typeface.</param>
-        /// <param name="messageBoxTypeface">The message box typeface.</param>
-        /// <param name="useYesNoOrCancelButtonColours">The use yes no or cancel button colours.</param>
-        /// <param name="contentMessageColour">The content message colour.</param>
-        /// <param name="buttonOneBackColourOne">The button one back colour one.</param>
-        /// <param name="buttonOneBackColourTwo">The button one back colour two.</param>
-        /// <param name="buttonOneTextColourOne">The button one text colour one.</param>
-        /// <param name="buttonOneTextColourTwo">The button one text colour two.</param>
-        /// <param name="buttonTwoTextColourOne">The button two text colour one.</param>
-        /// <param name="buttonTwoTextColourTwo">The button two text colour two.</param>
-        /// <param name="buttonTwoBackColourOne">The button two back colour one.</param>
-        /// <param name="buttonTwoBackColourTwo">The button two back colour two.</param>
-        /// <param name="buttonThreeTextColourOne">The button three text colour one.</param>
-        /// <param name="buttonThreeTextColourTwo">The button three text colour two.</param>
-        /// <param name="buttonThreeBackColourOne">The button three back colour one.</param>
-        /// <param name="buttonThreeBackColourTwo">The button three back colour two.</param>
-        /// <param name="yesButtonBackColourOne">The yes button back colour one.</param>
-        /// <param name="yesButtonBackColourTwo">The yes button back colour two.</param>
-        /// <param name="yesButtonTextColourOne">The yes button text colour one.</param>
-        /// <param name="yesButtonTextColourTwo">The yes button text colour two.</param>
-        /// <param name="noButtonBackColourOne">The no button back colour one.</param>
-        /// <param name="noButtonBackColourTwo">The no button back colour two.</param>
-        /// <param name="noButtonTextColourOne">The no button text colour one.</param>
-        /// <param name="noButtonTextColourTwo">The no button text colour two.</param>
-        /// <param name="cornerRounding">The corner rounding.</param>
-        /// <param name="showUacShieldOnAcceptButton">The show uac shield on accept button.</param>
         internal KryptonMessageBoxExtendedForm(IWin32Window showOwner, string text, string caption,
                                                ExtendedMessageBoxButtons buttons,
                                                ExtendedMessageBoxCustomButtonVisibility? customButtonVisibility,
@@ -318,7 +347,10 @@
                                                Color? noButtonBackColourOne, Color? noButtonBackColourTwo,
                                                Color? noButtonTextColourOne, Color? noButtonTextColourTwo,
                                                float? buttonCornerRounding, float? windowCornerRounding,
-                                               bool? showUacShieldOnAcceptButton)
+                                               bool? showUacShieldOnAcceptButton, bool? showOptionalCheckBox,
+                                               bool? isOptionalCheckBoxChecked, Color? optionalCheckBoxTextColourOne,
+                                               Color? optionalCheckBoxTextColourTwo, Font? optionalCheckBoxTypeface,
+                                               string optionalCheckBoxText)
         {
             // Store incoming values
             _text = text;
@@ -333,15 +365,19 @@
             // Extended values
             _useYesNoOrCancelButtonColours = useYesNoOrCancelButtonColours ?? false;
             _showUACShieldOnAcceptButton = showUacShieldOnAcceptButton ?? false;
+            _showOptionalCheckBox = showOptionalCheckBox ?? false;
+            _isOptionalCheckBoxChecked = isOptionalCheckBoxChecked ?? false;
             _visibility = customButtonVisibility ?? ExtendedMessageBoxCustomButtonVisibility.NONE;
             _buttonOneText = buttonOneText ?? string.Empty;
             _buttonTwoText = buttonTwoText ?? string.Empty;
             _buttonThreeText = buttonThreeText ?? string.Empty;
+            _optionalCheckBoxText = optionalCheckBoxText ?? string.Empty;
             _buttonOneCustomDialogResult = customButtonOneDialogResult ?? DialogResult.None;
             _buttonTwoCustomDialogResult = customButtonTwoDialogResult ?? DialogResult.None;
             _buttonThreeCustomDialogResult = customButtonThreeDialogResult ?? DialogResult.None;
             _messageBoxButtonTypeface = messageBoxButtonTypeface ?? new Font(@"Segoe UI", 8.25F);
             _messageBoxTypeface = messageBoxTypeface ?? new Font(@"Segoe UI", 8.25F);
+            _optionalCheckBoxTypeface = optionalCheckBoxTypeface ?? new Font(@"Segoe UI", 8.25F);
             _contentMessageColour = contentMessageColour ?? Color.Empty;
             _buttonOneTextColourOne = buttonOneTextColourOne ?? Color.Empty;
             _buttonOneBackColourOne = buttonOneBackColourOne ?? Color.Empty;
@@ -363,6 +399,8 @@
             _noButtonTextColourOne = noButtonTextColourOne ?? Color.Empty;
             _noButtonBackColourTwo = noButtonBackColourTwo ?? Color.Red;
             _noButtonTextColourTwo = noButtonTextColourTwo ?? Color.Empty;
+            _optionalCheckBoxTextColourOne = optionalCheckBoxTextColourOne ?? Color.Empty;
+            _optionalCheckBoxTextColourTwo = optionalCheckBoxTextColourTwo ?? Color.Empty;
             _buttonCornerRounding = buttonCornerRounding ?? -1;
             _windowCornerRounding = windowCornerRounding ?? -1;
 
@@ -379,6 +417,8 @@
             UpdateHelp();
             UpdateTextExtra(showCtrlCopy);
             AdjustCornerRounding(_windowCornerRounding);
+
+            ConfigureOptionalCheckBox();
 
             // Finally calculate and set form sizing
             UpdateSizing(showOwner);
@@ -541,13 +581,13 @@
 
                     if (_useYesNoOrCancelButtonColours)
                     {
-                        _button1.StateCommon.Back.Color1 = _buttonOneBackColourOne;
+                        _button1.BackColourOne = _buttonOneBackColourOne;
 
-                        _button1.StateCommon.Back.Color2 = _buttonOneBackColourTwo;
+                        _button1.BackColourTwo = _buttonOneBackColourTwo;
 
-                        _button1.StateCommon.Content.ShortText.Color1 = _buttonOneTextColourOne;
+                        _button1.TextColourOne = _buttonOneTextColourOne;
 
-                        _button1.StateCommon.Content.ShortText.Color2 = _buttonOneTextColourTwo;
+                        _button1.TextColourTwo = _buttonOneTextColourTwo;
                     }
                     break;
                 case ExtendedMessageBoxButtons.OKCANCEL:
@@ -850,7 +890,7 @@
             }
 
             // Start positioning buttons 10 pixels from right edge
-            var right = _panelButtons.Right - GAP;
+            var right = _panelFooter.Right - GAP;
 
             // If Button4 is visible
             if (_button4.Enabled)
@@ -881,7 +921,7 @@
             _button1.Size = maxButtonSize;
 
             // Size the panel for the buttons
-            _panelButtons.Size = new Size((maxButtonSize.Width * numButtons) + (GAP * (numButtons + 1)), maxButtonSize.Height + (GAP * 2));
+            _panelFooter.Size = new Size((maxButtonSize.Width * numButtons) + (GAP * (numButtons + 1)), maxButtonSize.Height + (GAP * 2));
 
             // Button area is the number of buttons with gaps between them and 10 pixels around all edges
             return new Size((maxButtonSize.Width * numButtons) + (GAP * (numButtons + 1)), maxButtonSize.Height + (GAP * 2));
@@ -989,6 +1029,20 @@
         /// <returns></returns>
         private void AdjustCornerRounding(float cornerRounding) => StateCommon.Border.Rounding = cornerRounding;
 
+        private void ConfigureOptionalCheckBox()
+        {
+            _panelOptionalCheckBox.Visible = _showOptionalCheckBox;
+
+            _optionalCheckBox.Checked = _isOptionalCheckBoxChecked;
+
+            _optionalCheckBox.Text = _optionalCheckBoxText;
+
+            _optionalCheckBox.StateCommon.ShortText.Color1 = _optionalCheckBoxTextColourOne;
+
+            _optionalCheckBox.StateCommon.ShortText.Color2 = _optionalCheckBoxTextColourTwo;
+
+            _optionalCheckBox.StateCommon.ShortText.Font = _optionalCheckBoxTypeface;
+        }
         #endregion
 
         #endregion
@@ -1075,6 +1129,57 @@
     {
 
         #region Instance Fields
+        private Color _backColourOne, _backColourTwo, _textColourOne, _textColourTwo;
+
+        private float _cornerRounding;
+        #endregion
+
+        #region Properties
+
+        /// <summary>Gets or sets BackColourOne.</summary>
+        /// <value>The value of _backColourOne.</value>
+        public Color BackColourOne
+        {
+            get => _backColourOne;
+
+            set { _backColourOne = value; Invalidate(); }
+        }
+
+        /// <summary>Gets or sets BackColourTwo.</summary>
+        /// <value>The value of _backColourTwo.</value>
+        public Color BackColourTwo
+        {
+            get => _backColourTwo;
+
+            set { _backColourTwo = value; Invalidate(); }
+        }
+
+        /// <summary>Gets or sets TextColourOne.</summary>
+        /// <value>The value of _textColourOne.</value>
+        public Color TextColourOne
+        {
+            get => _textColourOne;
+
+            set { _textColourOne = value; Invalidate(); }
+        }
+
+        /// <summary>Gets or sets TextColourTwo.</summary>
+        /// <value>The value of _textColourTwo.</value>
+        public Color TextColourTwo
+        {
+            get => _textColourTwo;
+
+            set { _textColourTwo = value; Invalidate(); }
+        }
+
+        /// <summary>Gets or sets CornerRounding.</summary>
+        /// <value>The value of _cornerRounding.</value>
+        public float CornerRounding
+        {
+            get => _cornerRounding;
+
+            set { _cornerRounding = value; Invalidate(); }
+        }
 
         #endregion
 
@@ -1084,6 +1189,16 @@
             IgnoreAltF4 = false;
             Visible = false;
             Enabled = false;
+
+            BackColourOne = Color.Empty;
+
+            BackColourTwo = Color.Empty;
+
+            TextColourOne = Color.Empty;
+
+            TextColourTwo = Color.Empty;
+
+            CornerRounding = -1;
         }
 
         /// <summary>
@@ -1094,6 +1209,22 @@
         #endregion
 
         #region Protected
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            StateCommon.Back.Color1 = BackColourOne;
+
+            StateCommon.Back.Color2 = BackColourTwo;
+
+            StateCommon.Content.ShortText.Color1 = TextColourOne;
+
+            StateCommon.Content.ShortText.Color2 = TextColourTwo;
+
+            StateCommon.Border.Rounding = CornerRounding;
+
+            base.OnPaint(e);
+        }
+
         /// <summary>
         /// Processes Windows messages.
         /// </summary>

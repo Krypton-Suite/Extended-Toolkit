@@ -35,6 +35,14 @@ namespace MessageBox
             this.kbtnTest = new Krypton.Toolkit.KryptonButton();
             this.kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
+            this.kryptonGroupBox7 = new Krypton.Toolkit.KryptonGroupBox();
+            this.kcbtnOptionalCheckBoxTextColorTwo = new Krypton.Toolkit.KryptonColorButton();
+            this.kcbtnOptionalCheckBoxTextColorOne = new Krypton.Toolkit.KryptonColorButton();
+            this.kbtnOptionalCheckBoxTypeface = new Krypton.Toolkit.KryptonButton();
+            this.kcbIsOptionalCheckBoxChecked = new Krypton.Toolkit.KryptonCheckBox();
+            this.ktxtOptionalCheckBoxText = new Krypton.Toolkit.KryptonTextBox();
+            this.kryptonLabel15 = new Krypton.Toolkit.KryptonLabel();
+            this.kcbShowOptionalCheckBox = new Krypton.Toolkit.KryptonCheckBox();
             this.kryptonGroupBox4 = new Krypton.Toolkit.KryptonGroupBox();
             this.kbtnRoundingTest = new Krypton.Toolkit.KryptonButton();
             this.knudButtonRounding = new Krypton.Toolkit.KryptonNumericUpDown();
@@ -139,6 +147,10 @@ namespace MessageBox
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
             this.kryptonPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox7.Panel)).BeginInit();
+            this.kryptonGroupBox7.Panel.SuspendLayout();
+            this.kryptonGroupBox7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox4.Panel)).BeginInit();
             this.kryptonGroupBox4.Panel.SuspendLayout();
@@ -226,6 +238,7 @@ namespace MessageBox
             // 
             // kryptonPanel2
             // 
+            this.kryptonPanel2.Controls.Add(this.kryptonGroupBox7);
             this.kryptonPanel2.Controls.Add(this.kryptonGroupBox4);
             this.kryptonPanel2.Controls.Add(this.kryptonGroupBox3);
             this.kryptonPanel2.Controls.Add(this.kgrpYesNoAndCancelButtonOptions);
@@ -243,6 +256,97 @@ namespace MessageBox
             this.kryptonPanel2.Name = "kryptonPanel2";
             this.kryptonPanel2.Size = new System.Drawing.Size(1406, 755);
             this.kryptonPanel2.TabIndex = 2;
+            // 
+            // kryptonGroupBox7
+            // 
+            this.kryptonGroupBox7.Location = new System.Drawing.Point(939, 533);
+            this.kryptonGroupBox7.Name = "kryptonGroupBox7";
+            // 
+            // kryptonGroupBox7.Panel
+            // 
+            this.kryptonGroupBox7.Panel.Controls.Add(this.kcbtnOptionalCheckBoxTextColorTwo);
+            this.kryptonGroupBox7.Panel.Controls.Add(this.kcbtnOptionalCheckBoxTextColorOne);
+            this.kryptonGroupBox7.Panel.Controls.Add(this.kbtnOptionalCheckBoxTypeface);
+            this.kryptonGroupBox7.Panel.Controls.Add(this.kcbIsOptionalCheckBoxChecked);
+            this.kryptonGroupBox7.Panel.Controls.Add(this.ktxtOptionalCheckBoxText);
+            this.kryptonGroupBox7.Panel.Controls.Add(this.kryptonLabel15);
+            this.kryptonGroupBox7.Panel.Controls.Add(this.kcbShowOptionalCheckBox);
+            this.kryptonGroupBox7.Size = new System.Drawing.Size(457, 155);
+            this.kryptonGroupBox7.TabIndex = 12;
+            this.kryptonGroupBox7.Values.Heading = "CheckBox Options";
+            // 
+            // kcbtnOptionalCheckBoxTextColorTwo
+            // 
+            this.kcbtnOptionalCheckBoxTextColorTwo.EmptyBorderColor = System.Drawing.Color.Transparent;
+            this.kcbtnOptionalCheckBoxTextColorTwo.Location = new System.Drawing.Point(14, 100);
+            this.kcbtnOptionalCheckBoxTextColorTwo.Name = "kcbtnOptionalCheckBoxTextColorTwo";
+            this.kcbtnOptionalCheckBoxTextColorTwo.SelectedColor = System.Drawing.Color.Empty;
+            this.kcbtnOptionalCheckBoxTextColorTwo.SelectedRect = new System.Drawing.Rectangle(0, 0, 16, 16);
+            this.kcbtnOptionalCheckBoxTextColorTwo.Size = new System.Drawing.Size(211, 25);
+            this.kcbtnOptionalCheckBoxTextColorTwo.Splitter = false;
+            this.kcbtnOptionalCheckBoxTextColorTwo.TabIndex = 16;
+            this.kcbtnOptionalCheckBoxTextColorTwo.Values.Image = ((System.Drawing.Image)(resources.GetObject("kcbtnOptionalCheckBoxTextColorTwo.Values.Image")));
+            this.kcbtnOptionalCheckBoxTextColorTwo.Values.RoundedCorners = 8;
+            this.kcbtnOptionalCheckBoxTextColorTwo.Values.Text = "CheckBox Text Color Two";
+            this.kcbtnOptionalCheckBoxTextColorTwo.SelectedColorChanged += new System.EventHandler<Krypton.Toolkit.ColorEventArgs>(this.kcbtnOptionalCheckBoxTextColorTwo_SelectedColorChanged);
+            // 
+            // kcbtnOptionalCheckBoxTextColorOne
+            // 
+            this.kcbtnOptionalCheckBoxTextColorOne.EmptyBorderColor = System.Drawing.Color.Transparent;
+            this.kcbtnOptionalCheckBoxTextColorOne.Location = new System.Drawing.Point(144, 69);
+            this.kcbtnOptionalCheckBoxTextColorOne.Name = "kcbtnOptionalCheckBoxTextColorOne";
+            this.kcbtnOptionalCheckBoxTextColorOne.SelectedColor = System.Drawing.Color.Empty;
+            this.kcbtnOptionalCheckBoxTextColorOne.SelectedRect = new System.Drawing.Rectangle(0, 0, 16, 16);
+            this.kcbtnOptionalCheckBoxTextColorOne.Size = new System.Drawing.Size(211, 25);
+            this.kcbtnOptionalCheckBoxTextColorOne.Splitter = false;
+            this.kcbtnOptionalCheckBoxTextColorOne.TabIndex = 15;
+            this.kcbtnOptionalCheckBoxTextColorOne.Values.Image = ((System.Drawing.Image)(resources.GetObject("kcbtnOptionalCheckBoxTextColorOne.Values.Image")));
+            this.kcbtnOptionalCheckBoxTextColorOne.Values.RoundedCorners = 8;
+            this.kcbtnOptionalCheckBoxTextColorOne.Values.Text = "CheckBox Text Color One";
+            this.kcbtnOptionalCheckBoxTextColorOne.SelectedColorChanged += new System.EventHandler<Krypton.Toolkit.ColorEventArgs>(this.kcbtnOptionalCheckBoxTextColorOne_SelectedColorChanged);
+            // 
+            // kbtnOptionalCheckBoxTypeface
+            // 
+            this.kbtnOptionalCheckBoxTypeface.Location = new System.Drawing.Point(14, 69);
+            this.kbtnOptionalCheckBoxTypeface.Name = "kbtnOptionalCheckBoxTypeface";
+            this.kbtnOptionalCheckBoxTypeface.Size = new System.Drawing.Size(123, 25);
+            this.kbtnOptionalCheckBoxTypeface.TabIndex = 14;
+            this.kbtnOptionalCheckBoxTypeface.Values.Text = "CheckBox Typeface";
+            this.kbtnOptionalCheckBoxTypeface.Click += new System.EventHandler(this.kbtnOptionalCheckBoxTypeface_Click);
+            // 
+            // kcbIsOptionalCheckBoxChecked
+            // 
+            this.kcbIsOptionalCheckBoxChecked.Location = new System.Drawing.Point(130, 13);
+            this.kcbIsOptionalCheckBoxChecked.Name = "kcbIsOptionalCheckBoxChecked";
+            this.kcbIsOptionalCheckBoxChecked.Size = new System.Drawing.Size(142, 20);
+            this.kcbIsOptionalCheckBoxChecked.TabIndex = 13;
+            this.kcbIsOptionalCheckBoxChecked.Values.Text = "Is CheckBox checked?";
+            // 
+            // ktxtOptionalCheckBoxText
+            // 
+            this.ktxtOptionalCheckBoxText.CueHint.CueHintText = "Optional CheckBox text...";
+            this.ktxtOptionalCheckBoxText.CueHint.Padding = new System.Windows.Forms.Padding(0);
+            this.ktxtOptionalCheckBoxText.Location = new System.Drawing.Point(120, 40);
+            this.ktxtOptionalCheckBoxText.Name = "ktxtOptionalCheckBoxText";
+            this.ktxtOptionalCheckBoxText.Size = new System.Drawing.Size(311, 23);
+            this.ktxtOptionalCheckBoxText.TabIndex = 12;
+            // 
+            // kryptonLabel15
+            // 
+            this.kryptonLabel15.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
+            this.kryptonLabel15.Location = new System.Drawing.Point(14, 40);
+            this.kryptonLabel15.Name = "kryptonLabel15";
+            this.kryptonLabel15.Size = new System.Drawing.Size(100, 20);
+            this.kryptonLabel15.TabIndex = 10;
+            this.kryptonLabel15.Values.Text = "CheckBox Text:";
+            // 
+            // kcbShowOptionalCheckBox
+            // 
+            this.kcbShowOptionalCheckBox.Location = new System.Drawing.Point(14, 13);
+            this.kcbShowOptionalCheckBox.Name = "kcbShowOptionalCheckBox";
+            this.kcbShowOptionalCheckBox.Size = new System.Drawing.Size(110, 20);
+            this.kcbShowOptionalCheckBox.TabIndex = 9;
+            this.kcbShowOptionalCheckBox.Values.Text = "Show CheckBox";
             // 
             // kryptonGroupBox4
             // 
@@ -1471,6 +1575,11 @@ namespace MessageBox
             this.kryptonPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
             this.kryptonPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox7.Panel)).EndInit();
+            this.kryptonGroupBox7.Panel.ResumeLayout(false);
+            this.kryptonGroupBox7.Panel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox7)).EndInit();
+            this.kryptonGroupBox7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox4.Panel)).EndInit();
             this.kryptonGroupBox4.Panel.ResumeLayout(false);
             this.kryptonGroupBox4.Panel.PerformLayout();
@@ -1644,6 +1753,14 @@ namespace MessageBox
         private Krypton.Toolkit.KryptonTextBox kryptonTextBox1;
         private Krypton.Toolkit.KryptonButton kryptonButton1;
         private Krypton.Toolkit.KryptonLabel kryptonLabel14;
+        private Krypton.Toolkit.KryptonGroupBox kryptonGroupBox7;
+        private Krypton.Toolkit.KryptonColorButton kcbtnOptionalCheckBoxTextColorTwo;
+        private Krypton.Toolkit.KryptonColorButton kcbtnOptionalCheckBoxTextColorOne;
+        private Krypton.Toolkit.KryptonButton kbtnOptionalCheckBoxTypeface;
+        private Krypton.Toolkit.KryptonCheckBox kcbIsOptionalCheckBoxChecked;
+        private Krypton.Toolkit.KryptonTextBox ktxtOptionalCheckBoxText;
+        private Krypton.Toolkit.KryptonLabel kryptonLabel15;
+        private Krypton.Toolkit.KryptonCheckBox kcbShowOptionalCheckBox;
     }
 }
 
