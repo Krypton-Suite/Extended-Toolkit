@@ -304,6 +304,7 @@
                       _noButtonBackColourOne, _noButtonBackColourTwo,
                       _noButtonTextColourOne, _noButtonTextColourTwo,
                       _optionalCheckBoxTextColourOne, _optionalCheckBoxTextColourTwo;
+        private CheckState _optionalCheckBoxCheckState;
         private DialogResult _buttonOneCustomDialogResult, _buttonTwoCustomDialogResult, _buttonThreeCustomDialogResult;
         private ExtendedMessageBoxCustomButtonVisibility _visibility;
         private Font _messageBoxButtonTypeface, _messageBoxTypeface, _optionalCheckBoxTypeface;
@@ -326,6 +327,57 @@
         /// <summary>Initializes a new instance of the <see cref="KryptonMessageBoxExtendedForm" /> class.</summary>
         public KryptonMessageBoxExtendedForm() => InitializeComponent();
 
+        /// <summary>Initializes a new instance of the <see cref="KryptonMessageBoxExtendedForm" /> class.</summary>
+        /// <param name="showOwner">The show owner.</param>
+        /// <param name="text">The text.</param>
+        /// <param name="caption">The caption.</param>
+        /// <param name="buttons">The buttons.</param>
+        /// <param name="customButtonVisibility">The custom button visibility.</param>
+        /// <param name="buttonOneText">The button one text.</param>
+        /// <param name="buttonTwoText">The button two text.</param>
+        /// <param name="buttonThreeText">The button three text.</param>
+        /// <param name="icon">The icon.</param>
+        /// <param name="defaultButton">The default button.</param>
+        /// <param name="customButtonOneDialogResult">The custom button one dialog result.</param>
+        /// <param name="customButtonTwoDialogResult">The custom button two dialog result.</param>
+        /// <param name="customButtonThreeDialogResult">The custom button three dialog result.</param>
+        /// <param name="options">The options.</param>
+        /// <param name="helpInfo">The help information.</param>
+        /// <param name="showCtrlCopy">The show control copy.</param>
+        /// <param name="messageBoxButtonTypeface">The message box button typeface.</param>
+        /// <param name="messageBoxTypeface">The message box typeface.</param>
+        /// <param name="useYesNoOrCancelButtonColours">The use yes no or cancel button colours.</param>
+        /// <param name="contentMessageColour">The content message colour.</param>
+        /// <param name="buttonOneBackColourOne">The button one back colour one.</param>
+        /// <param name="buttonOneBackColourTwo">The button one back colour two.</param>
+        /// <param name="buttonOneTextColourOne">The button one text colour one.</param>
+        /// <param name="buttonOneTextColourTwo">The button one text colour two.</param>
+        /// <param name="buttonTwoTextColourOne">The button two text colour one.</param>
+        /// <param name="buttonTwoTextColourTwo">The button two text colour two.</param>
+        /// <param name="buttonTwoBackColourOne">The button two back colour one.</param>
+        /// <param name="buttonTwoBackColourTwo">The button two back colour two.</param>
+        /// <param name="buttonThreeTextColourOne">The button three text colour one.</param>
+        /// <param name="buttonThreeTextColourTwo">The button three text colour two.</param>
+        /// <param name="buttonThreeBackColourOne">The button three back colour one.</param>
+        /// <param name="buttonThreeBackColourTwo">The button three back colour two.</param>
+        /// <param name="yesButtonBackColourOne">The yes button back colour one.</param>
+        /// <param name="yesButtonBackColourTwo">The yes button back colour two.</param>
+        /// <param name="yesButtonTextColourOne">The yes button text colour one.</param>
+        /// <param name="yesButtonTextColourTwo">The yes button text colour two.</param>
+        /// <param name="noButtonBackColourOne">The no button back colour one.</param>
+        /// <param name="noButtonBackColourTwo">The no button back colour two.</param>
+        /// <param name="noButtonTextColourOne">The no button text colour one.</param>
+        /// <param name="noButtonTextColourTwo">The no button text colour two.</param>
+        /// <param name="buttonCornerRounding">The button corner rounding.</param>
+        /// <param name="windowCornerRounding">The window corner rounding.</param>
+        /// <param name="showUacShieldOnAcceptButton">The show uac shield on accept button.</param>
+        /// <param name="showOptionalCheckBox">The show optional CheckBox.</param>
+        /// <param name="isOptionalCheckBoxChecked">The is optional CheckBox checked.</param>
+        /// <param name="optionalCheckBoxTextColourOne">The optional CheckBox text colour one.</param>
+        /// <param name="optionalCheckBoxTextColourTwo">The optional CheckBox text colour two.</param>
+        /// <param name="optionalCheckBoxTypeface">The optional CheckBox typeface.</param>
+        /// <param name="optionalCheckBoxText">The optional CheckBox text.</param>
+        /// <param name="optionalCheckBoxCheckState">State of the optional CheckBox check.</param>
         internal KryptonMessageBoxExtendedForm(IWin32Window showOwner, string text, string caption,
                                                ExtendedMessageBoxButtons buttons,
                                                ExtendedMessageBoxCustomButtonVisibility? customButtonVisibility,
@@ -350,7 +402,7 @@
                                                bool? showUacShieldOnAcceptButton, bool? showOptionalCheckBox,
                                                bool? isOptionalCheckBoxChecked, Color? optionalCheckBoxTextColourOne,
                                                Color? optionalCheckBoxTextColourTwo, Font? optionalCheckBoxTypeface,
-                                               string optionalCheckBoxText)
+                                               string optionalCheckBoxText, CheckState? optionalCheckBoxCheckState)
         {
             // Store incoming values
             _text = text;
@@ -372,6 +424,7 @@
             _buttonTwoText = buttonTwoText ?? string.Empty;
             _buttonThreeText = buttonThreeText ?? string.Empty;
             _optionalCheckBoxText = optionalCheckBoxText ?? string.Empty;
+            _optionalCheckBoxCheckState = optionalCheckBoxCheckState ?? CheckState.Unchecked;
             _buttonOneCustomDialogResult = customButtonOneDialogResult ?? DialogResult.None;
             _buttonTwoCustomDialogResult = customButtonTwoDialogResult ?? DialogResult.None;
             _buttonThreeCustomDialogResult = customButtonThreeDialogResult ?? DialogResult.None;
@@ -1045,6 +1098,8 @@
             _optionalCheckBox.StateCommon.ShortText.Color2 = _optionalCheckBoxTextColourTwo;
 
             _optionalCheckBox.StateCommon.ShortText.Font = _optionalCheckBoxTypeface;
+
+            _optionalCheckBox.CheckState = _optionalCheckBoxCheckState;
         }
 
         /// <summary>

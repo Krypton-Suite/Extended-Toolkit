@@ -37,7 +37,8 @@
                              null, null, null, null, null, null,
                              null, null, null, null, null, null,
                              null, null, null, null, null, null,
-                             null, null, null, null, string.Empty);
+                             null, null, null, null, string.Empty,
+                             null);
 
 
         /// <summary>
@@ -72,7 +73,8 @@
                              null, null, null, null,
                              null, null, null, null,
                              null, null, null, null,
-                             null, null, null, string.Empty);
+                             null, null, null, string.Empty,
+                             null);
 
         /// <summary>
         /// Displays a message box in front+center of the specified object and with the specified text, caption, buttons, icon, default button, and options.
@@ -108,7 +110,8 @@
                              null, null, null, null, null, null,
                              null, null, null, null, null, null,
                              null, null, null, null, null, null,
-                             null, null, null, null, string.Empty);
+                             null, null, null, null, string.Empty,
+                             null);
 
         /// <summary>
         /// Displays a message box in front+center of the specified object and with the specified text, caption, buttons, icon, default button, and options.
@@ -143,7 +146,8 @@
                              null, null, null, null,
                              null, null, null, null,
                              null, null, null,
-                             null, null, null, null, string.Empty);
+                             null, null, null, null, string.Empty,
+                             null);
 
         /// <param name="text">The text to display in the message box.</param>
         /// <param name="caption">The text to display in the title bar of the message box. default="string.Empty"</param>
@@ -173,7 +177,8 @@
                             null, null, null, null,
                             null, null, null, null,
                             null, null, null, null,
-                            null, null, null, string.Empty);
+                            null, null, null, string.Empty,
+                            null);
 
 
         /// <param name="text">The text to display in the message box.</param>
@@ -201,7 +206,8 @@
                             null, null, null, null,
                             null, null, null, null,
                             null, null, null, null,
-                            null, null, null, string.Empty);
+                            null, null, null, string.Empty,
+                            null);
 
         /// <summary>
         /// Displays a message box with the specified text, caption, buttons, icon, default button, options, and Help button, using the specified Help file, HelpNavigator, and Help topic.
@@ -237,7 +243,8 @@
                             null, null, null, null,
                             null, null, null, null,
                             null, null, null, null,
-                            null, null, null, string.Empty);
+                            null, null, null, string.Empty,
+                            null);
 
         /// <summary>
         /// Displays a message box with the specified text, caption, buttons, icon, default button, options, and Help button, using the specified Help file, HelpNavigator, and Help topic.
@@ -268,10 +275,11 @@
                             null, null, null, null,
                             null, null, null, null,
                             null, null, null, null,
-                            null, null, null, string.Empty);
+                            null, null, null, string.Empty,
+                            null);
 
 
-        /// <summary>Displays a message box</summary>
+        /// <summary>Displays a message box, with all options.</summary>
         /// <param name="owner">The owner.</param>
         /// <param name="text">The text.</param>
         /// <param name="caption">The caption.</param>
@@ -324,6 +332,7 @@
         /// <param name="optionalCheckBoxTextColourTwo">The optional CheckBox text colour two.</param>
         /// <param name="optionalCheckBoxTypeface">The optional CheckBox typeface.</param>
         /// <param name="optionalCheckBoxText">The optional CheckBox text.</param>
+        /// <param name="optionalCheckBoxCheckState">State of the optional CheckBox check.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(IWin32Window owner, string text, string caption,
             ExtendedMessageBoxButtons buttons,
@@ -350,7 +359,7 @@
             bool? showUacShieldOnAcceptButton, bool? showOptionalCheckBox,
             bool? isOptionalCheckBoxChecked, Color? optionalCheckBoxTextColourOne,
             Color? optionalCheckBoxTextColourTwo, Font? optionalCheckBoxTypeface,
-            string optionalCheckBoxText)
+            string optionalCheckBoxText, CheckState? optionalCheckBoxCheckState)
             => InternalShow(owner, text, caption, buttons, customButtonVisibility, buttonOneText, buttonTwoText, buttonThreeText, icon,
                 defaultButton, customButtonOneDialogResult, customButtonTwoDialogResult,
                 customButtonThreeDialogResult, options, displayHelpButton ? new HelpInfo(helpFilePath, navigator, param) : null,
@@ -364,7 +373,7 @@
                 noButtonTextColourOne, noButtonTextColourTwo, buttonCornerRounding, windowCornerRounding,
                 showUacShieldOnAcceptButton, showOptionalCheckBox, isOptionalCheckBoxChecked,
                 optionalCheckBoxTextColourOne, optionalCheckBoxTextColourTwo, optionalCheckBoxTypeface,
-                optionalCheckBoxText);
+                optionalCheckBoxText, optionalCheckBoxCheckState);
         #endregion
 
         #region Implementation
@@ -442,7 +451,7 @@
                                                bool? showUacShieldOnAcceptButton, bool? showOptionalCheckBox,
                                                bool? isOptionalCheckBoxChecked, Color? optionalCheckBoxTextColourOne,
                                                Color? optionalCheckBoxTextColourTwo, Font? optionalCheckBoxTypeface,
-                                               string optionalCheckBoxText)
+                                               string optionalCheckBoxText, CheckState? optionalCheckBoxCheckState)
         {
             IWin32Window showOwner = ValidateOptions(owner, options, helpInfo);
 
@@ -466,7 +475,8 @@
                                                            windowCornerRounding, showUacShieldOnAcceptButton,
                                                            showOptionalCheckBox, isOptionalCheckBoxChecked,
                                                            optionalCheckBoxTextColourOne, optionalCheckBoxTextColourTwo,
-                                                           optionalCheckBoxTypeface, optionalCheckBoxText);
+                                                           optionalCheckBoxTypeface, optionalCheckBoxText,
+                                                           optionalCheckBoxCheckState);
 
             kmbe.StartPosition = showOwner == null ? FormStartPosition.CenterScreen : FormStartPosition.CenterParent;
 
