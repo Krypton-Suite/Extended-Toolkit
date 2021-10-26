@@ -24,6 +24,8 @@ namespace MessageBox
                       _yesButtonTextColourTwo, _noButtonBackColourOne, _noButtonBackColourTwo, _noButtonTextColourOne,
                       _noButtonTextColourTwo, _optionalCheckBoxTextColourOne, _optionalCheckBoxTextColourTwo;
 
+        private CheckState _optionalCheckBoxCheckState;
+
         private DialogResult _customDialogResultOne, _customDialogResultTwo, _customDialogResultThree;
 
         private HelpNavigator _helpNavigator;
@@ -59,7 +61,8 @@ namespace MessageBox
                                            kcbShowUACShieldOnAcceptButton.Checked, kcbShowOptionalCheckBox.Checked,
                                            kcbIsOptionalCheckBoxChecked.Checked, GetOptionalCheckBoxTextColourOne(),
                                            GetOptionalCheckBoxTextColourTwo(),
-                                           GetOptionalCheckBoxTypeface(), ktxtOptionalCheckBoxText.Text);
+                                           GetOptionalCheckBoxTypeface(), ktxtOptionalCheckBoxText.Text,
+                                           GetOptionalCheckBoxCheckState());
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -71,6 +74,8 @@ namespace MessageBox
             PropagateDialogResults(kcmbButtonTwoResult);
 
             PropagateDialogResults(kcmbButtonThreeResult);
+
+            PropagateCheckStateValues(kcmbOptionalCheckBoxCheckState);
 
             kcmbButtonOneResult.SelectedIndex = 0;
 
@@ -721,6 +726,18 @@ namespace MessageBox
         /// <returns>The value of the OptionalCheckBoxTextColourTwo.</returns>
         private Color GetOptionalCheckBoxTextColourTwo() => _optionalCheckBoxTextColourTwo;
 
+        /// <summary>
+        /// Sets the OptionalCheckBoxCheckState to the value of optionalCheckBoxCheckState.
+        /// </summary>
+        /// <param name="obj2">The desired value of OptionalCheckBoxCheckState.</param>
+        private void SetOptionalCheckBoxCheckState(CheckState obj2) => _optionalCheckBoxCheckState = obj2;
+
+        /// <summary>
+        /// Returns the value of the OptionalCheckBoxCheckState.
+        /// </summary>
+        /// <returns>The value of the OptionalCheckBoxCheckState.</returns>
+        private CheckState GetOptionalCheckBoxCheckState() => _optionalCheckBoxCheckState;
+
         #endregion
 
         private void EnableCustomButtonFeatures(bool enabled)
@@ -763,6 +780,16 @@ namespace MessageBox
         private void PropagateHelpNavigatorValues(KryptonComboBox target)
         {
             string[] values = Enum.GetNames(typeof(HelpNavigator));
+
+            foreach (string value in values)
+            {
+                target.Items.Add(value);
+            }
+        }
+
+        private void PropagateCheckStateValues(KryptonComboBox target)
+        {
+            string[] values = Enum.GetNames(typeof(CheckState));
 
             foreach (string value in values)
             {

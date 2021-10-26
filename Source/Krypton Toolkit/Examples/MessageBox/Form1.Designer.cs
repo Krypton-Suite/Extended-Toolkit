@@ -143,6 +143,8 @@ namespace MessageBox
             this.ktxtCaption = new Krypton.Toolkit.KryptonTextBox();
             this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
             this.kryptonManager1 = new Krypton.Toolkit.KryptonManager(this.components);
+            this.kryptonLabel16 = new Krypton.Toolkit.KryptonLabel();
+            this.kcmbOptionalCheckBoxCheckState = new Krypton.Toolkit.KryptonComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
@@ -204,6 +206,7 @@ namespace MessageBox
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1.Panel)).BeginInit();
             this.kryptonGroupBox1.Panel.SuspendLayout();
             this.kryptonGroupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kcmbOptionalCheckBoxCheckState)).BeginInit();
             this.SuspendLayout();
             // 
             // kryptonPanel1
@@ -259,11 +262,16 @@ namespace MessageBox
             // 
             // kryptonGroupBox7
             // 
+            this.kryptonGroupBox7.CaptionStyle = Krypton.Toolkit.LabelStyle.GroupBoxCaption;
+            this.kryptonGroupBox7.GroupBackStyle = Krypton.Toolkit.PaletteBackStyle.ControlGroupBox;
+            this.kryptonGroupBox7.GroupBorderStyle = Krypton.Toolkit.PaletteBorderStyle.ControlGroupBox;
             this.kryptonGroupBox7.Location = new System.Drawing.Point(939, 533);
             this.kryptonGroupBox7.Name = "kryptonGroupBox7";
             // 
             // kryptonGroupBox7.Panel
             // 
+            this.kryptonGroupBox7.Panel.Controls.Add(this.kcmbOptionalCheckBoxCheckState);
+            this.kryptonGroupBox7.Panel.Controls.Add(this.kryptonLabel16);
             this.kryptonGroupBox7.Panel.Controls.Add(this.kcbtnOptionalCheckBoxTextColorTwo);
             this.kryptonGroupBox7.Panel.Controls.Add(this.kcbtnOptionalCheckBoxTextColorOne);
             this.kryptonGroupBox7.Panel.Controls.Add(this.kbtnOptionalCheckBoxTypeface);
@@ -271,14 +279,14 @@ namespace MessageBox
             this.kryptonGroupBox7.Panel.Controls.Add(this.ktxtOptionalCheckBoxText);
             this.kryptonGroupBox7.Panel.Controls.Add(this.kryptonLabel15);
             this.kryptonGroupBox7.Panel.Controls.Add(this.kcbShowOptionalCheckBox);
-            this.kryptonGroupBox7.Size = new System.Drawing.Size(457, 155);
+            this.kryptonGroupBox7.Size = new System.Drawing.Size(457, 216);
             this.kryptonGroupBox7.TabIndex = 12;
             this.kryptonGroupBox7.Values.Heading = "CheckBox Options";
             // 
             // kcbtnOptionalCheckBoxTextColorTwo
             // 
             this.kcbtnOptionalCheckBoxTextColorTwo.EmptyBorderColor = System.Drawing.Color.Transparent;
-            this.kcbtnOptionalCheckBoxTextColorTwo.Location = new System.Drawing.Point(14, 100);
+            this.kcbtnOptionalCheckBoxTextColorTwo.Location = new System.Drawing.Point(13, 148);
             this.kcbtnOptionalCheckBoxTextColorTwo.Name = "kcbtnOptionalCheckBoxTextColorTwo";
             this.kcbtnOptionalCheckBoxTextColorTwo.SelectedColor = System.Drawing.Color.Empty;
             this.kcbtnOptionalCheckBoxTextColorTwo.SelectedRect = new System.Drawing.Rectangle(0, 0, 16, 16);
@@ -293,7 +301,7 @@ namespace MessageBox
             // kcbtnOptionalCheckBoxTextColorOne
             // 
             this.kcbtnOptionalCheckBoxTextColorOne.EmptyBorderColor = System.Drawing.Color.Transparent;
-            this.kcbtnOptionalCheckBoxTextColorOne.Location = new System.Drawing.Point(144, 69);
+            this.kcbtnOptionalCheckBoxTextColorOne.Location = new System.Drawing.Point(143, 117);
             this.kcbtnOptionalCheckBoxTextColorOne.Name = "kcbtnOptionalCheckBoxTextColorOne";
             this.kcbtnOptionalCheckBoxTextColorOne.SelectedColor = System.Drawing.Color.Empty;
             this.kcbtnOptionalCheckBoxTextColorOne.SelectedRect = new System.Drawing.Rectangle(0, 0, 16, 16);
@@ -307,7 +315,7 @@ namespace MessageBox
             // 
             // kbtnOptionalCheckBoxTypeface
             // 
-            this.kbtnOptionalCheckBoxTypeface.Location = new System.Drawing.Point(14, 69);
+            this.kbtnOptionalCheckBoxTypeface.Location = new System.Drawing.Point(13, 117);
             this.kbtnOptionalCheckBoxTypeface.Name = "kbtnOptionalCheckBoxTypeface";
             this.kbtnOptionalCheckBoxTypeface.Size = new System.Drawing.Size(123, 25);
             this.kbtnOptionalCheckBoxTypeface.TabIndex = 14;
@@ -350,6 +358,9 @@ namespace MessageBox
             // 
             // kryptonGroupBox4
             // 
+            this.kryptonGroupBox4.CaptionStyle = Krypton.Toolkit.LabelStyle.GroupBoxCaption;
+            this.kryptonGroupBox4.GroupBackStyle = Krypton.Toolkit.PaletteBackStyle.ControlGroupBox;
+            this.kryptonGroupBox4.GroupBorderStyle = Krypton.Toolkit.PaletteBorderStyle.ControlGroupBox;
             this.kryptonGroupBox4.Location = new System.Drawing.Point(939, 421);
             this.kryptonGroupBox4.Name = "kryptonGroupBox4";
             // 
@@ -437,6 +448,9 @@ namespace MessageBox
             // 
             // kryptonGroupBox3
             // 
+            this.kryptonGroupBox3.CaptionStyle = Krypton.Toolkit.LabelStyle.GroupBoxCaption;
+            this.kryptonGroupBox3.GroupBackStyle = Krypton.Toolkit.PaletteBackStyle.ControlGroupBox;
+            this.kryptonGroupBox3.GroupBorderStyle = Krypton.Toolkit.PaletteBorderStyle.ControlGroupBox;
             this.kryptonGroupBox3.Location = new System.Drawing.Point(939, 292);
             this.kryptonGroupBox3.Name = "kryptonGroupBox3";
             // 
@@ -486,7 +500,10 @@ namespace MessageBox
             // 
             // kgrpYesNoAndCancelButtonOptions
             // 
+            this.kgrpYesNoAndCancelButtonOptions.CaptionStyle = Krypton.Toolkit.LabelStyle.GroupBoxCaption;
             this.kgrpYesNoAndCancelButtonOptions.Enabled = false;
+            this.kgrpYesNoAndCancelButtonOptions.GroupBackStyle = Krypton.Toolkit.PaletteBackStyle.ControlGroupBox;
+            this.kgrpYesNoAndCancelButtonOptions.GroupBorderStyle = Krypton.Toolkit.PaletteBorderStyle.ControlGroupBox;
             this.kgrpYesNoAndCancelButtonOptions.Location = new System.Drawing.Point(939, 13);
             this.kgrpYesNoAndCancelButtonOptions.Name = "kgrpYesNoAndCancelButtonOptions";
             // 
@@ -690,7 +707,10 @@ namespace MessageBox
             // 
             // kryptonGroupBox9
             // 
+            this.kryptonGroupBox9.CaptionStyle = Krypton.Toolkit.LabelStyle.GroupBoxCaption;
             this.kryptonGroupBox9.Enabled = false;
+            this.kryptonGroupBox9.GroupBackStyle = Krypton.Toolkit.PaletteBackStyle.ControlGroupBox;
+            this.kryptonGroupBox9.GroupBorderStyle = Krypton.Toolkit.PaletteBorderStyle.ControlGroupBox;
             this.kryptonGroupBox9.Location = new System.Drawing.Point(476, 510);
             this.kryptonGroupBox9.Name = "kryptonGroupBox9";
             // 
@@ -732,7 +752,10 @@ namespace MessageBox
             // 
             // kgrpCustomButtonResult
             // 
+            this.kgrpCustomButtonResult.CaptionStyle = Krypton.Toolkit.LabelStyle.GroupBoxCaption;
             this.kgrpCustomButtonResult.Enabled = false;
+            this.kgrpCustomButtonResult.GroupBackStyle = Krypton.Toolkit.PaletteBackStyle.ControlGroupBox;
+            this.kgrpCustomButtonResult.GroupBorderStyle = Krypton.Toolkit.PaletteBorderStyle.ControlGroupBox;
             this.kgrpCustomButtonResult.Location = new System.Drawing.Point(476, 354);
             this.kgrpCustomButtonResult.Name = "kgrpCustomButtonResult";
             // 
@@ -816,7 +839,10 @@ namespace MessageBox
             // 
             // kgrpCustomButtonColors
             // 
+            this.kgrpCustomButtonColors.CaptionStyle = Krypton.Toolkit.LabelStyle.GroupBoxCaption;
             this.kgrpCustomButtonColors.Enabled = false;
+            this.kgrpCustomButtonColors.GroupBackStyle = Krypton.Toolkit.PaletteBackStyle.ControlGroupBox;
+            this.kgrpCustomButtonColors.GroupBorderStyle = Krypton.Toolkit.PaletteBorderStyle.ControlGroupBox;
             this.kgrpCustomButtonColors.Location = new System.Drawing.Point(13, 599);
             this.kgrpCustomButtonColors.Name = "kgrpCustomButtonColors";
             // 
@@ -1020,6 +1046,9 @@ namespace MessageBox
             // 
             // kryptonGroupBox6
             // 
+            this.kryptonGroupBox6.CaptionStyle = Krypton.Toolkit.LabelStyle.GroupBoxCaption;
+            this.kryptonGroupBox6.GroupBackStyle = Krypton.Toolkit.PaletteBackStyle.ControlGroupBox;
+            this.kryptonGroupBox6.GroupBorderStyle = Krypton.Toolkit.PaletteBorderStyle.ControlGroupBox;
             this.kryptonGroupBox6.Location = new System.Drawing.Point(476, 169);
             this.kryptonGroupBox6.Name = "kryptonGroupBox6";
             // 
@@ -1166,6 +1195,9 @@ namespace MessageBox
             // 
             // kryptonGroupBox5
             // 
+            this.kryptonGroupBox5.CaptionStyle = Krypton.Toolkit.LabelStyle.GroupBoxCaption;
+            this.kryptonGroupBox5.GroupBackStyle = Krypton.Toolkit.PaletteBackStyle.ControlGroupBox;
+            this.kryptonGroupBox5.GroupBorderStyle = Krypton.Toolkit.PaletteBorderStyle.ControlGroupBox;
             this.kryptonGroupBox5.Location = new System.Drawing.Point(476, 13);
             this.kryptonGroupBox5.Name = "kryptonGroupBox5";
             // 
@@ -1297,7 +1329,10 @@ namespace MessageBox
             // 
             // kgrpCustomButtonVisibility
             // 
+            this.kgrpCustomButtonVisibility.CaptionStyle = Krypton.Toolkit.LabelStyle.GroupBoxCaption;
             this.kgrpCustomButtonVisibility.Enabled = false;
+            this.kgrpCustomButtonVisibility.GroupBackStyle = Krypton.Toolkit.PaletteBackStyle.ControlGroupBox;
+            this.kgrpCustomButtonVisibility.GroupBorderStyle = Krypton.Toolkit.PaletteBorderStyle.ControlGroupBox;
             this.kgrpCustomButtonVisibility.Location = new System.Drawing.Point(13, 510);
             this.kgrpCustomButtonVisibility.Name = "kgrpCustomButtonVisibility";
             // 
@@ -1349,7 +1384,10 @@ namespace MessageBox
             // 
             // kgrpCustomButtonOptions
             // 
+            this.kgrpCustomButtonOptions.CaptionStyle = Krypton.Toolkit.LabelStyle.GroupBoxCaption;
             this.kgrpCustomButtonOptions.Enabled = false;
+            this.kgrpCustomButtonOptions.GroupBackStyle = Krypton.Toolkit.PaletteBackStyle.ControlGroupBox;
+            this.kgrpCustomButtonOptions.GroupBorderStyle = Krypton.Toolkit.PaletteBorderStyle.ControlGroupBox;
             this.kgrpCustomButtonOptions.Location = new System.Drawing.Point(13, 354);
             this.kgrpCustomButtonOptions.Name = "kgrpCustomButtonOptions";
             // 
@@ -1424,6 +1462,9 @@ namespace MessageBox
             // 
             // kryptonGroupBox2
             // 
+            this.kryptonGroupBox2.CaptionStyle = Krypton.Toolkit.LabelStyle.GroupBoxCaption;
+            this.kryptonGroupBox2.GroupBackStyle = Krypton.Toolkit.PaletteBackStyle.ControlGroupBox;
+            this.kryptonGroupBox2.GroupBorderStyle = Krypton.Toolkit.PaletteBorderStyle.ControlGroupBox;
             this.kryptonGroupBox2.Location = new System.Drawing.Point(13, 229);
             this.kryptonGroupBox2.Name = "kryptonGroupBox2";
             // 
@@ -1505,6 +1546,9 @@ namespace MessageBox
             // 
             // kryptonGroupBox1
             // 
+            this.kryptonGroupBox1.CaptionStyle = Krypton.Toolkit.LabelStyle.GroupBoxCaption;
+            this.kryptonGroupBox1.GroupBackStyle = Krypton.Toolkit.PaletteBackStyle.ControlGroupBox;
+            this.kryptonGroupBox1.GroupBorderStyle = Krypton.Toolkit.PaletteBorderStyle.ControlGroupBox;
             this.kryptonGroupBox1.Location = new System.Drawing.Point(13, 13);
             this.kryptonGroupBox1.Name = "kryptonGroupBox1";
             // 
@@ -1554,6 +1598,27 @@ namespace MessageBox
             this.kryptonLabel1.Size = new System.Drawing.Size(59, 20);
             this.kryptonLabel1.TabIndex = 0;
             this.kryptonLabel1.Values.Text = "Caption:";
+            // 
+            // kryptonLabel16
+            // 
+            this.kryptonLabel16.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
+            this.kryptonLabel16.Location = new System.Drawing.Point(14, 69);
+            this.kryptonLabel16.Name = "kryptonLabel16";
+            this.kryptonLabel16.Size = new System.Drawing.Size(142, 20);
+            this.kryptonLabel16.TabIndex = 17;
+            this.kryptonLabel16.Values.Text = "CheckBox Check State:";
+            // 
+            // kcmbOptionalCheckBoxCheckState
+            // 
+            this.kcmbOptionalCheckBoxCheckState.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.kcmbOptionalCheckBoxCheckState.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.kcmbOptionalCheckBoxCheckState.DropDownWidth = 256;
+            this.kcmbOptionalCheckBoxCheckState.IntegralHeight = false;
+            this.kcmbOptionalCheckBoxCheckState.Location = new System.Drawing.Point(162, 69);
+            this.kcmbOptionalCheckBoxCheckState.Name = "kcmbOptionalCheckBoxCheckState";
+            this.kcmbOptionalCheckBoxCheckState.Size = new System.Drawing.Size(256, 21);
+            this.kcmbOptionalCheckBoxCheckState.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
+            this.kcmbOptionalCheckBoxCheckState.TabIndex = 18;
             // 
             // Form1
             // 
@@ -1643,6 +1708,7 @@ namespace MessageBox
             this.kryptonGroupBox1.Panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1)).EndInit();
             this.kryptonGroupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kcmbOptionalCheckBoxCheckState)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1761,6 +1827,8 @@ namespace MessageBox
         private Krypton.Toolkit.KryptonTextBox ktxtOptionalCheckBoxText;
         private Krypton.Toolkit.KryptonLabel kryptonLabel15;
         private Krypton.Toolkit.KryptonCheckBox kcbShowOptionalCheckBox;
+        private Krypton.Toolkit.KryptonComboBox kcmbOptionalCheckBoxCheckState;
+        private Krypton.Toolkit.KryptonLabel kryptonLabel16;
     }
 }
 
