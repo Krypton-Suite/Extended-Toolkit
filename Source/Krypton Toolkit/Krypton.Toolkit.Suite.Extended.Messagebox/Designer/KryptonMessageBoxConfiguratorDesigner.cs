@@ -6,11 +6,10 @@
  */
 #endregion
 
-using System.ComponentModel.Design;
-using System.Windows.Forms.Design;
 
 namespace Krypton.Toolkit.Suite.Extended.Messagebox
 {
+    /*
     public class KryptonMessageBoxConfiguratorDesigner : ControlDesigner
     {
         #region Identity
@@ -35,4 +34,5 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         }
         #endregion
     }
+    */
 }

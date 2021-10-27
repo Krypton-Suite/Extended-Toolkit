@@ -170,7 +170,7 @@
             // ktxtVarifyCheckSum
             // 
             this.ktxtVarifyCheckSum.ContextMenuStrip = this.cmsCheckSumValidation;
-            this.ktxtVarifyCheckSum.Hint = "Type or paste checksum here...";
+            this.ktxtVarifyCheckSum.CueHint.CueHintText = "Type or paste checksum here...";
             this.ktxtVarifyCheckSum.Location = new System.Drawing.Point(6, 23);
             this.ktxtVarifyCheckSum.Name = "ktxtVarifyCheckSum";
             this.ktxtVarifyCheckSum.Size = new System.Drawing.Size(665, 24);
@@ -278,7 +278,7 @@
             // 
             // ktxtFilePath
             // 
-            this.ktxtFilePath.Hint = "Type a file path here...";
+            this.ktxtFilePath.CueHint.CueHintText = "Type a file path here...";
             this.ktxtFilePath.Location = new System.Drawing.Point(84, 13);
             this.ktxtFilePath.Name = "ktxtFilePath";
             this.ktxtFilePath.Size = new System.Drawing.Size(574, 23);

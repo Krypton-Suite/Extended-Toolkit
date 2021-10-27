@@ -6,12 +6,12 @@
  */
 #endregion
 
-using System.ComponentModel.Design;
 
 namespace Krypton.Toolkit.Suite.Extended.Messagebox
 {
+    /*
     internal class KryptonMessageBoxConfiguratorActionList : DesignerActionList
-    {
+    {        
         #region Instance Fields
         private readonly KryptonMessageBoxManager _messageBoxConfigurator;
 
@@ -105,4 +105,5 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         }
         #endregion
     }
+*/
 }

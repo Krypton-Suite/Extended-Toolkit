@@ -42,9 +42,9 @@
                 {
                     Messagebox.KryptonMessageBoxManager manager = new Messagebox.KryptonMessageBoxManager()
                     {
-                        MessageBoxCaption = "Illegal Character",
-                        MessageBoxContentText = $"'{ character }' is not a hexadecimal character",
-                        MessageBoxButtons = Messagebox.ExtendedMessageBoxButtons.OK,
+                        Caption = "Illegal Character",
+                        Text = $"'{ character }' is not a hexadecimal character",
+                        Buttons = Messagebox.ExtendedMessageBoxButtons.OK,
                         MessageBoxIcon = ExtendedKryptonMessageBoxIcon.INFORMATION
                     };
 

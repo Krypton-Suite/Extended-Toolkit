@@ -11,7 +11,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 {
     /// <summary>Allows the creation of a <see cref="KryptonMessageBoxExtended"/> through the designer.</summary>
     /// <seealso cref="Component" />
-    [ToolboxBitmap(typeof(KryptonMessageBoxManager), "ToolboxBitmaps.KryptonMessageBox.bmp"),
+    [/*ToolboxBitmap(typeof(KryptonMessageBoxManager), "ToolboxBitmaps.KryptonMessageBox.bmp"),*/
      DefaultEvent("ShowMessageBox"), DefaultProperty("MessageBoxContentText"),
      Description("Allows the creation of a KryptonMessageBoxExtended through the designer.")] //, Designer(typeof(KryptonMessageBoxConfiguratorDesigner))]
     public class KryptonMessageBoxManager : Component
@@ -35,7 +35,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         #region Extended Fields
 
         private bool _showUACShieldOnAcceptButton, _useYesNoOrCancelButtonColours, _showOptionalCheckBox,
-                     _isOptionalCheckBoxChecked;
+                     _isOptionalCheckBoxChecked, _showCtrlCopy;
         private Color _contentMessageColour, _buttonOneBackColourOne, _buttonOneBackColourTwo,
                       _buttonOneTextColourOne, _buttonOneTextColourTwo,
                       _buttonTwoBackColourOne, _buttonTwoBackColourTwo,
@@ -79,9 +79,9 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <value>The value of _buttons.</value>
         public ExtendedMessageBoxButtons Buttons { get => _buttons; set => _buttons = value; }
 
-        /// <summary>Gets or sets KryptonMessageBoxIcon.</summary>
+        /// <summary>Gets or sets MessageBoxIcon.</summary>
         /// <value>The value of _kryptonMessageBoxIcon.</value>
-        public ExtendedKryptonMessageBoxIcon KryptonMessageBoxIcon { get => _kryptonMessageBoxIcon; set => _kryptonMessageBoxIcon = value; }
+        public ExtendedKryptonMessageBoxIcon MessageBoxIcon { get => _kryptonMessageBoxIcon; set => _kryptonMessageBoxIcon = value; }
 
         /// <summary>Gets or sets DefaultButton.</summary>
         /// <value>The value of _defaultButton.</value>
@@ -130,6 +130,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <summary>Gets or sets IsOptionalCheckBoxChecked.</summary>
         /// <value>The value of _isOptionalCheckBoxChecked.</value>
         public bool IsOptionalCheckBoxChecked { get => _isOptionalCheckBoxChecked; set => _isOptionalCheckBoxChecked = value; }
+
+        /// <summary>Gets or sets ShowCtrlCopy.</summary>
+        /// <value>The value of _showCtrlCopy.</value>
+        public bool ShowCtrlCopy { get => _showCtrlCopy; set => _showCtrlCopy = value; }
+
 
         /// <summary>Gets or sets the content message colour.</summary>
         /// <value>The content message colour.</value>
@@ -242,8 +247,309 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <summary>Gets or sets the optional CheckBox text colour two.</summary>
         /// <value>The optional CheckBox text colour two.</value>
         public Color OptionalCheckBoxTextColourTwo { get => _optionalCheckBoxTextColourTwo; set => _optionalCheckBoxTextColourTwo = value; }
+
+        /// <summary>Gets or sets OptionalCheckBoxCheckState.</summary>
+        /// <value>The value of _optionalCheckBoxCheckState.</value>
+        public CheckState OptionalCheckBoxCheckState { get => _optionalCheckBoxCheckState; set => _optionalCheckBoxCheckState = value; }
+
+        /// <summary>Gets or sets ButtonOneCustomDialogResult.</summary>
+        /// <value>The value of _buttonOneCustomDialogResult.</value>
+        public DialogResult ButtonOneCustomDialogResult { get => _buttonOneCustomDialogResult; set => _buttonOneCustomDialogResult = value; }
+
+        /// <summary>Gets or sets ButtonTwoCustomDialogResult.</summary>
+        /// <value>The value of _buttonTwoCustomDialogResult.</value>
+        public DialogResult ButtonTwoCustomDialogResult { get => _buttonTwoCustomDialogResult; set => _buttonTwoCustomDialogResult = value; }
+
+        /// <summary>Gets or sets ButtonThreeCustomDialogResult.</summary>
+        /// <value>The value of _buttonThreeCustomDialogResult.</value>
+        public DialogResult ButtonThreeCustomDialogResult { get => _buttonThreeCustomDialogResult; set => _buttonThreeCustomDialogResult = value; }
+
+        /// <summary>Gets or sets ButtonVisibility.</summary>
+        /// <value>The value of _visibility.</value>
+        public ExtendedMessageBoxCustomButtonVisibility ButtonVisibility { get => _visibility; set => _visibility = value; }
+
+        /// <summary>Gets or sets MessageBoxButtonTypeface.</summary>
+        /// <value>The value of _messageBoxButtonTypeface.</value>
+        public Font MessageBoxButtonTypeface { get => _messageBoxButtonTypeface; set => _messageBoxButtonTypeface = value; }
+
+        /// <summary>Gets or sets MessageBoxTypeface.</summary>
+        /// <value>The value of _messageBoxTypeface.</value>
+        public Font MessageBoxTypeface { get => _messageBoxTypeface; set => _messageBoxTypeface = value; }
+
+        /// <summary>Gets or sets OptionalCheckBoxTypeface.</summary>
+        /// <value>The value of _optionalCheckBoxTypeface.</value>
+        public Font OptionalCheckBoxTypeface { get => _optionalCheckBoxTypeface; set => _optionalCheckBoxTypeface = value; }
+
+        /// <summary>Gets or sets ButtonCornerRounding.</summary>
+        /// <value>The value of _buttonCornerRounding.</value>
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public float ButtonCornerRounding { get => _buttonCornerRounding; set => _buttonCornerRounding = value; }
+
+        /// <summary>Gets or sets WindowCornerRounding.</summary>
+        /// <value>The value of _windowCornerRounding.</value>
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public float WindowCornerRounding { get => _windowCornerRounding; set => _windowCornerRounding = value; }
+
+        /// <summary>Gets or sets OptionalCheckBoxText.</summary>
+        /// <value>The value of _optionalCheckBoxText.</value>
+        public string OptionalCheckBoxText { get => _optionalCheckBoxText; set => _optionalCheckBoxText = value; }
+
+        /// <summary>Gets or sets CopyButtonText.</summary>
+        /// <value>The value of _copyButtonText.</value>
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public string CopyButtonText { get => _copyButtonText; set => _copyButtonText = value; }
+
+        /// <summary>Gets or sets ButtonOneText.</summary>
+        /// <value>The value of _buttonOneText.</value>
+        public string ButtonOneText { get => _buttonOneText; set => _buttonOneText = value; }
+
+        /// <summary>Gets or sets ButtonTwoText.</summary>
+        /// <value>The value of _buttonTwoText.</value>
+        public string ButtonTwoText { get => _buttonTwoText; set => _buttonTwoText = value; }
+
+        /// <summary>Gets or sets ButtonThreeText.</summary>
+        /// <value>The value of _buttonThreeText.</value>
+        public string ButtonThreeText { get => _buttonThreeText; set => _buttonThreeText = value; }
+
+        /// <summary>Gets or sets CustomMessageBoxIcon.</summary>
+        /// <value>The value of _customMessageBoxIcon.</value>
+        public Image CustomMessageBoxIcon { get => _customMessageBoxIcon; set => _customMessageBoxIcon = value; }
+
+        /// <summary>Gets or sets Player.</summary>
+        /// <value>The value of _player.</value>
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public SoundPlayer Player { get => _player; set => _player = value; }
+
+        /// <summary>Gets or sets SoundStream.</summary>
+        /// <value>The value of _soundStream.</value>
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public Stream SoundStream { get => _soundStream; set => _soundStream = value; }
+
+        /// <summary>Gets or sets TimeoutSeconds.</summary>
+        /// <value>The value of _timeoutSeconds.</value>
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never), DefaultValue(60)]
+        public int TimeoutSeconds { get => _timeoutSeconds; set => _timeoutSeconds = value; }
+
+        /// <summary>Gets or sets Timer.</summary>
+        /// <value>The value of _timer.</value>
+        public Timer Timer { get => _timer; private set => _timer = value; }
+
+        /// <summary>Gets or sets ButtonOneCommand.</summary>
+        /// <value>The value of _buttonCommandOne.</value>
+        public KryptonCommand ButtonOneCommand { get => _buttonCommandOne; set => _buttonCommandOne = value; }
+
+        /// <summary>Gets or sets ButtonTwoCommand.</summary>
+        /// <value>The value of _buttonCommandTwo.</value>
+        public KryptonCommand ButtonTwoCommand { get => _buttonCommandTwo; set => _buttonCommandTwo = value; }
+
+        /// <summary>Gets or sets ButtonThreeCommand.</summary>
+        /// <value>The value of _buttonCommandThree.</value>
+        public KryptonCommand ButtonThreeCommand { get => _buttonCommandThree; set => _buttonCommandThree = value; }
+
         #endregion
 
+        #endregion
+
+        #region Custom Event
+        /// <summary>Shows a messagebox.</summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="ShowMessageBoxEventArgs" /> instance containing the event data.</param>
+        public delegate void ShowMessageBoxEvent(object sender, ShowMessageBoxEventArgs e);
+
+        /// <summary>Occurs when [show message box].</summary>
+        public event ShowMessageBoxEvent ShowMessageBox;
+
+        /// <summary>Called when [show message box].</summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="ShowMessageBoxEventArgs" /> instance containing the event data.</param>
+        protected virtual void OnShowMessageBox(object sender, ShowMessageBoxEventArgs e) => ShowMessageBox?.Invoke(sender, e);
+        #endregion
+
+        #region Constructor
+
+        public KryptonMessageBoxManager()
+        {
+            Text = string.Empty;
+
+            Caption = string.Empty;
+
+            Buttons = ExtendedMessageBoxButtons.OK;
+
+            MessageBoxIcon = ExtendedKryptonMessageBoxIcon.NONE;
+
+            DefaultButton = MessageBoxDefaultButton.Button1;
+
+            Owner = null;
+
+            ShowCtrlCopy = false;
+
+            DisplayHelpButton = false;
+
+            HelpFilePath = string.Empty;
+
+            Navigator = HelpNavigator.AssociateIndex;
+
+            Param = null;
+
+            Options = MessageBoxOptions.DefaultDesktopOnly;
+
+            ShowUACShieldOnAcceptButton = false;
+
+            UseYesNoOrCancelButtonColours = false;
+
+            ShowOptionalCheckBox = false;
+
+            ContentMessageColour = Color.Empty;
+
+            ButtonOneBackColourOne = Color.Empty;
+
+            ButtonOneBackColourTwo = Color.Empty;
+
+            ButtonOneTextColourOne = Color.Empty;
+
+            ButtonOneTextColourTwo = Color.Empty;
+
+            ButtonTwoBackColourOne = Color.Empty;
+
+            ButtonTwoBackColourTwo = Color.Empty;
+
+            ButtonTwoTextColourOne = Color.Empty;
+
+            ButtonTwoTextColourTwo = Color.Empty;
+
+            ButtonThreeBackColourOne = Color.Empty;
+
+            ButtonThreeBackColourTwo = Color.Empty;
+
+            ButtonThreeTextColourOne = Color.Empty;
+
+            ButtonThreeTextColourTwo = Color.Empty;
+
+            YesButtonBackColourOne = Color.Empty;
+
+            YesButtonBackColourTwo = Color.Empty;
+
+            YesButtonTextColourOne = Color.Empty;
+
+            YesButtonTextColourTwo = Color.Empty;
+
+            NoButtonBackColourOne = Color.Empty;
+
+            NoButtonBackColourTwo = Color.Empty;
+
+            NoButtonTextColourOne = Color.Empty;
+
+            NoButtonTextColourTwo = Color.Empty;
+
+            OptionalCheckBoxTextColourOne = Color.Empty;
+
+            OptionalCheckBoxTextColourTwo = Color.Empty;
+
+            OptionalCheckBoxCheckState = CheckState.Unchecked;
+
+            OptionalCheckBoxText = string.Empty;
+
+            ButtonOneCustomDialogResult = DialogResult.None;
+
+            ButtonTwoCustomDialogResult = DialogResult.None;
+
+            ButtonThreeCustomDialogResult = DialogResult.None;
+
+            ButtonVisibility = ExtendedMessageBoxCustomButtonVisibility.NONE;
+
+            MessageBoxButtonTypeface = new Font("Segoe UI", 8.25f);
+
+            MessageBoxTypeface = new Font("Segoe UI", 8.25f);
+
+            OptionalCheckBoxTypeface = new Font("Segoe UI", 8.25f);
+
+            ButtonCornerRounding = -1;
+
+            WindowCornerRounding = -1;
+
+            CopyButtonText = string.Empty;
+
+            ButtonOneText = string.Empty;
+
+            ButtonTwoText = string.Empty;
+
+            ButtonThreeText = string.Empty;
+
+            CustomMessageBoxIcon = null;
+
+            Player = new SoundPlayer();
+
+            SoundStream = Stream.Null;
+
+            TimeoutSeconds = 60;
+
+            Timer = new Timer();
+
+            ButtonOneCommand = null;
+
+            ButtonTwoCommand = null;
+
+            ButtonThreeCommand = null;
+        }
+        #endregion
+
+        #region Methods
+
+        public void ShowMessagebox() => InternalKryptonMessageBoxExtended.Show(_showOwner, _text, _caption, _buttons,
+            _kryptonMessageBoxIcon, _defaultButton,
+            _options, _displayHelpButton, _helpFilePath,
+            _navigator, _param, _buttonOneCustomDialogResult,
+            _buttonTwoCustomDialogResult, _buttonThreeCustomDialogResult,
+            _showCtrlCopy, _messageBoxButtonTypeface,
+            _messageBoxTypeface, _visibility,
+            _buttonOneText, _buttonTwoText, _buttonThreeText,
+            _useYesNoOrCancelButtonColours, _contentMessageColour,
+            _buttonOneBackColourOne, _buttonTwoBackColourTwo,
+            _buttonOneTextColourOne, _buttonOneTextColourTwo,
+            _buttonThreeTextColourOne, _buttonTwoTextColourTwo,
+            _buttonTwoBackColourOne, _buttonTwoBackColourTwo,
+            _buttonThreeTextColourOne, _buttonThreeTextColourTwo,
+            _buttonThreeBackColourOne, _buttonThreeTextColourTwo,
+            _yesButtonBackColourOne, _yesButtonBackColourTwo,
+            _yesButtonTextColourOne, _yesButtonTextColourTwo,
+            _noButtonBackColourOne, _noButtonBackColourTwo,
+            _noButtonTextColourOne, _noButtonTextColourTwo,
+            _buttonCornerRounding, _windowCornerRounding,
+            _showUACShieldOnAcceptButton, _showOptionalCheckBox,
+            _isOptionalCheckBoxChecked, _optionalCheckBoxTextColourOne,
+            _optionalCheckBoxTextColourTwo, _optionalCheckBoxTypeface,
+            _optionalCheckBoxText, _optionalCheckBoxCheckState);
+
+
+        public DialogResult ShowMessageboxResult()
+        {
+            DialogResult result = InternalKryptonMessageBoxExtended.Show(_showOwner, _text, _caption, _buttons,
+                _kryptonMessageBoxIcon, _defaultButton,
+                _options, _displayHelpButton, _helpFilePath,
+                _navigator, _param, _buttonOneCustomDialogResult,
+                _buttonTwoCustomDialogResult, _buttonThreeCustomDialogResult,
+                _showCtrlCopy, _messageBoxButtonTypeface,
+                _messageBoxTypeface, _visibility,
+                _buttonOneText, _buttonTwoText, _buttonThreeText,
+                _useYesNoOrCancelButtonColours, _contentMessageColour,
+                _buttonOneBackColourOne, _buttonTwoBackColourTwo,
+                _buttonOneTextColourOne, _buttonOneTextColourTwo,
+                _buttonThreeTextColourOne, _buttonTwoTextColourTwo,
+                _buttonTwoBackColourOne, _buttonTwoBackColourTwo,
+                _buttonThreeTextColourOne, _buttonThreeTextColourTwo,
+                _buttonThreeBackColourOne, _buttonThreeTextColourTwo,
+                _yesButtonBackColourOne, _yesButtonBackColourTwo,
+                _yesButtonTextColourOne, _yesButtonTextColourTwo,
+                _noButtonBackColourOne, _noButtonBackColourTwo,
+                _noButtonTextColourOne, _noButtonTextColourTwo,
+                _buttonCornerRounding, _windowCornerRounding,
+                _showUACShieldOnAcceptButton, _showOptionalCheckBox,
+                _isOptionalCheckBoxChecked, _optionalCheckBoxTextColourOne,
+                _optionalCheckBoxTextColourTwo, _optionalCheckBoxTypeface,
+                _optionalCheckBoxText, _optionalCheckBoxCheckState);
+
+            return result;
+        }
         #endregion
     }
 }
