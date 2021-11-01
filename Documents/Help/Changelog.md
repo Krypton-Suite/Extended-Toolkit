@@ -8,7 +8,7 @@
 
 =======
 
-## 2021-11-01 - Build 2110 - November 2021
+## 2021-11-08 - Build 2110 - November 2021
 * New `Krypton.Toolkit.Suite.Extended.Outlook.Grid` module
 * New `Krypton.Toolkit.Suite.Extended.InputBox` module
 * Fix toast 'Dismiss' button location
