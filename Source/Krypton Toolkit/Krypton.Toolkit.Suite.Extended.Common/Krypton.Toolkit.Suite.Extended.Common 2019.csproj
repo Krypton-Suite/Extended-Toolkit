@@ -42,6 +42,10 @@
     <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Effects\Krypton.Toolkit.Suite.Extended.Effects 2019.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Update="Krypton.Toolkit.Canary" Version="6.2111.310-beta" />
+  </ItemGroup>
+
   <!--Binary/Documentation Output-->
   <PropertyGroup>
     <DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Common\Krypton.Toolkit.Suite.Extended.Common.xml</DocumentationFile>

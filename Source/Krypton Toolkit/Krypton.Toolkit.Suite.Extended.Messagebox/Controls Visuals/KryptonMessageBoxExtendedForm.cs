@@ -1,249 +1,227 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Messagebox
+﻿using System.Windows.Forms;
+
+namespace Krypton.Toolkit.Suite.Extended.Messagebox
 {
     internal partial class KryptonMessageBoxExtendedForm : KryptonForm
     {
         #region Design Code
         private KryptonPanel kryptonPanel1;
-        private TableLayoutPanel tableLayoutPanel1;
         private KryptonWrapLabel _messageText;
-        private KryptonPanel _panelFooter;
-        private KryptonBorderEdge _borderEdge;
-        private MessageButton _button4;
-        private MessageButton _button3;
-        private MessageButton _button1;
-        private MessageButton _button2;
-        private KryptonPanel _panelButtons;
-        private KryptonPanel _panelOptionalCheckBox;
+        private KryptonButton _button4;
+        private KryptonButton _button3;
+        private KryptonButton _button1;
+        private KryptonButton _button2;
         private KryptonCheckBox _optionalCheckBox;
+        private TableLayoutPanel tableLayoutPanel2;
+        private KryptonPanel kryptonPanel2;
+        private KryptonPanel kryptonPanel3;
+        private TableLayoutPanel tableLayoutPanel1;
         private PictureBox _messageIcon;
 
         private void InitializeComponent()
         {
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
             this._messageText = new Krypton.Toolkit.KryptonWrapLabel();
-            this._panelFooter = new Krypton.Toolkit.KryptonPanel();
-            this._panelButtons = new Krypton.Toolkit.KryptonPanel();
-            this._button4 = new Krypton.Toolkit.Suite.Extended.Messagebox.MessageButton();
-            this._button3 = new Krypton.Toolkit.Suite.Extended.Messagebox.MessageButton();
-            this._button2 = new Krypton.Toolkit.Suite.Extended.Messagebox.MessageButton();
-            this._button1 = new Krypton.Toolkit.Suite.Extended.Messagebox.MessageButton();
-            this._panelOptionalCheckBox = new Krypton.Toolkit.KryptonPanel();
-            this._optionalCheckBox = new Krypton.Toolkit.KryptonCheckBox();
-            this._borderEdge = new Krypton.Toolkit.KryptonBorderEdge();
             this._messageIcon = new System.Windows.Forms.PictureBox();
+            this.kryptonPanel3 = new Krypton.Toolkit.KryptonPanel();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this._button2 = new Krypton.Toolkit.KryptonButton();
+            this._button4 = new Krypton.Toolkit.KryptonButton();
+            this._button3 = new Krypton.Toolkit.KryptonButton();
+            this._button1 = new Krypton.Toolkit.KryptonButton();
+            this._optionalCheckBox = new Krypton.Toolkit.KryptonCheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this._panelFooter)).BeginInit();
-            this._panelFooter.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this._panelButtons)).BeginInit();
-            this._panelButtons.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this._panelOptionalCheckBox)).BeginInit();
-            this._panelOptionalCheckBox.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
+            this.kryptonPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._messageIcon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel3)).BeginInit();
+            this.kryptonPanel3.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // kryptonPanel1
             // 
-            this.kryptonPanel1.Controls.Add(this.tableLayoutPanel1);
+            this.kryptonPanel1.Controls.Add(this.tableLayoutPanel2);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.kryptonPanel1.Name = "kryptonPanel1";
-            this.kryptonPanel1.Size = new System.Drawing.Size(183, 63);
+            this.kryptonPanel1.Size = new System.Drawing.Size(299, 55);
             this.kryptonPanel1.TabIndex = 2;
             // 
-            // tableLayoutPanel1
+            // tableLayoutPanel2
             // 
-            this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this._messageText, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this._panelFooter, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this._messageIcon, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(183, 63);
-            this.tableLayoutPanel1.TabIndex = 0;
+            this.tableLayoutPanel2.AutoSize = true;
+            this.tableLayoutPanel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.tableLayoutPanel2.BackColor = System.Drawing.Color.Transparent;
+            this.tableLayoutPanel2.ColumnCount = 1;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel2.Controls.Add(this.kryptonPanel2, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.kryptonPanel3, 0, 1);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.Padding = new System.Windows.Forms.Padding(10, 0, 10, 10);
+            this.tableLayoutPanel2.RowCount = 2;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(308, 60);
+            this.tableLayoutPanel2.TabIndex = 1;
+            // 
+            // kryptonPanel2
+            // 
+            this.kryptonPanel2.AutoSize = true;
+            this.kryptonPanel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.kryptonPanel2.Controls.Add(this._messageText);
+            this.kryptonPanel2.Controls.Add(this._messageIcon);
+            this.kryptonPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonPanel2.Location = new System.Drawing.Point(10, 0);
+            this.kryptonPanel2.Margin = new System.Windows.Forms.Padding(0);
+            this.kryptonPanel2.Name = "kryptonPanel2";
+            this.kryptonPanel2.Size = new System.Drawing.Size(288, 20);
+            this.kryptonPanel2.TabIndex = 0;
             // 
             // _messageText
             // 
-            this._messageText.AutoSize = false;
             this._messageText.Dock = System.Windows.Forms.DockStyle.Fill;
             this._messageText.Font = new System.Drawing.Font("Segoe UI", 9F);
             this._messageText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
             this._messageText.LabelStyle = Krypton.Toolkit.LabelStyle.NormalControl;
-            this._messageText.Location = new System.Drawing.Point(49, 0);
+            this._messageText.Location = new System.Drawing.Point(30, 0);
             this._messageText.Margin = new System.Windows.Forms.Padding(4, 0, 0, 0);
             this._messageText.Name = "_messageText";
-            this._messageText.Size = new System.Drawing.Size(134, 42);
+            this._messageText.Size = new System.Drawing.Size(98, 20);
             this._messageText.Text = "Message Text";
             this._messageText.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // _panelFooter
+            // _messageIcon
             // 
-            this.tableLayoutPanel1.SetColumnSpan(this._panelFooter, 2);
-            this._panelFooter.Controls.Add(this._panelButtons);
-            this._panelFooter.Controls.Add(this._panelOptionalCheckBox);
-            this._panelFooter.Controls.Add(this._borderEdge);
-            this._panelFooter.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._panelFooter.Location = new System.Drawing.Point(0, 42);
-            this._panelFooter.Margin = new System.Windows.Forms.Padding(0);
-            this._panelFooter.Name = "_panelFooter";
-            this._panelFooter.PanelBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelAlternate;
-            this._panelFooter.Size = new System.Drawing.Size(183, 21);
-            this._panelFooter.TabIndex = 0;
+            this._messageIcon.BackColor = System.Drawing.Color.Transparent;
+            this._messageIcon.Dock = System.Windows.Forms.DockStyle.Left;
+            this._messageIcon.Location = new System.Drawing.Point(0, 0);
+            this._messageIcon.Margin = new System.Windows.Forms.Padding(8, 4, 4, 4);
+            this._messageIcon.Name = "_messageIcon";
+            this._messageIcon.Size = new System.Drawing.Size(30, 20);
+            this._messageIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this._messageIcon.TabIndex = 0;
+            this._messageIcon.TabStop = false;
             // 
-            // _panelButtons
+            // kryptonPanel3
             // 
-            this._panelButtons.AutoSize = true;
-            this._panelButtons.Controls.Add(this._button4);
-            this._panelButtons.Controls.Add(this._button3);
-            this._panelButtons.Controls.Add(this._button2);
-            this._panelButtons.Controls.Add(this._button1);
-            this._panelButtons.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._panelButtons.Location = new System.Drawing.Point(43, 1);
-            this._panelButtons.Name = "_panelButtons";
-            this._panelButtons.PanelBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelAlternate;
-            this._panelButtons.Size = new System.Drawing.Size(140, 20);
-            this._panelButtons.TabIndex = 4;
+            this.kryptonPanel3.AutoSize = true;
+            this.kryptonPanel3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.kryptonPanel3.Controls.Add(this.tableLayoutPanel1);
+            this.kryptonPanel3.Controls.Add(this._optionalCheckBox);
+            this.kryptonPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonPanel3.Location = new System.Drawing.Point(10, 20);
+            this.kryptonPanel3.Margin = new System.Windows.Forms.Padding(0);
+            this.kryptonPanel3.MinimumSize = new System.Drawing.Size(0, 30);
+            this.kryptonPanel3.Name = "kryptonPanel3";
+            this.kryptonPanel3.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.kryptonPanel3.PanelBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelAlternate;
+            this.kryptonPanel3.Size = new System.Drawing.Size(288, 30);
+            this.kryptonPanel3.TabIndex = 1;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.AutoSize = true;
+            this.tableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
+            this.tableLayoutPanel1.ColumnCount = 4;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.Controls.Add(this._button2, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this._button4, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this._button3, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this._button1, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(36, 3);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.Padding = new System.Windows.Forms.Padding(10, 2, 2, 3);
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(252, 24);
+            this.tableLayoutPanel1.TabIndex = 3;
+            // 
+            // _button2
+            // 
+            this._button2.AutoSize = true;
+            this._button2.Enabled = false;
+            this._button2.Location = new System.Drawing.Point(70, 2);
+            this._button2.Margin = new System.Windows.Forms.Padding(0, 0, 10, 3);
+            this._button2.MinimumSize = new System.Drawing.Size(50, 26);
+            this._button2.Name = "_button2";
+            this._button2.Size = new System.Drawing.Size(50, 26);
+            this._button2.TabIndex = 1;
+            this._button2.Values.Text = "B2";
+            this._button2.Visible = false;
             // 
             // _button4
             // 
-            this._button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this._button4.AutoSize = true;
-            this._button4.BackColourOne = System.Drawing.Color.Empty;
-            this._button4.BackColourTwo = System.Drawing.Color.Empty;
-            this._button4.CornerRounding = -1F;
+            this._button4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this._button4.Enabled = false;
-            this._button4.IgnoreAltF4 = false;
-            this._button4.Location = new System.Drawing.Point(145, 0);
-            this._button4.Margin = new System.Windows.Forms.Padding(0);
-            this._button4.MinimumSize = new System.Drawing.Size(38, 21);
+            this._button4.Location = new System.Drawing.Point(190, 2);
+            this._button4.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this._button4.MinimumSize = new System.Drawing.Size(50, 26);
             this._button4.Name = "_button4";
-            this._button4.Size = new System.Drawing.Size(38, 23);
+            this._button4.Size = new System.Drawing.Size(50, 26);
             this._button4.TabIndex = 2;
-            this._button4.TextColourOne = System.Drawing.Color.Empty;
-            this._button4.TextColourTwo = System.Drawing.Color.Empty;
             this._button4.Values.Text = "B4";
             this._button4.Visible = false;
             // 
             // _button3
             // 
-            this._button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this._button3.AutoSize = true;
-            this._button3.BackColourOne = System.Drawing.Color.Empty;
-            this._button3.BackColourTwo = System.Drawing.Color.Empty;
-            this._button3.CornerRounding = -1F;
             this._button3.Enabled = false;
-            this._button3.IgnoreAltF4 = false;
-            this._button3.Location = new System.Drawing.Point(100, 0);
-            this._button3.Margin = new System.Windows.Forms.Padding(0);
-            this._button3.MinimumSize = new System.Drawing.Size(38, 21);
+            this._button3.Location = new System.Drawing.Point(130, 2);
+            this._button3.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this._button3.MinimumSize = new System.Drawing.Size(50, 26);
             this._button3.Name = "_button3";
-            this._button3.Size = new System.Drawing.Size(38, 23);
+            this._button3.Size = new System.Drawing.Size(50, 26);
             this._button3.TabIndex = 2;
-            this._button3.TextColourOne = System.Drawing.Color.Empty;
-            this._button3.TextColourTwo = System.Drawing.Color.Empty;
             this._button3.Values.Text = "B3";
             this._button3.Visible = false;
             // 
-            // _button2
-            // 
-            this._button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this._button2.AutoSize = true;
-            this._button2.BackColourOne = System.Drawing.Color.Empty;
-            this._button2.BackColourTwo = System.Drawing.Color.Empty;
-            this._button2.CornerRounding = -1F;
-            this._button2.Enabled = false;
-            this._button2.IgnoreAltF4 = false;
-            this._button2.Location = new System.Drawing.Point(62, 0);
-            this._button2.Margin = new System.Windows.Forms.Padding(0);
-            this._button2.MinimumSize = new System.Drawing.Size(38, 21);
-            this._button2.Name = "_button2";
-            this._button2.Size = new System.Drawing.Size(38, 23);
-            this._button2.TabIndex = 1;
-            this._button2.TextColourOne = System.Drawing.Color.Empty;
-            this._button2.TextColourTwo = System.Drawing.Color.Empty;
-            this._button2.Values.Text = "B2";
-            this._button2.Visible = false;
-            // 
             // _button1
             // 
-            this._button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this._button1.AutoSize = true;
-            this._button1.BackColourOne = System.Drawing.Color.Empty;
-            this._button1.BackColourTwo = System.Drawing.Color.Empty;
-            this._button1.CornerRounding = -1F;
             this._button1.Enabled = false;
-            this._button1.IgnoreAltF4 = false;
-            this._button1.Location = new System.Drawing.Point(24, 0);
-            this._button1.Margin = new System.Windows.Forms.Padding(0);
-            this._button1.MinimumSize = new System.Drawing.Size(38, 21);
+            this._button1.Location = new System.Drawing.Point(10, 2);
+            this._button1.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this._button1.MinimumSize = new System.Drawing.Size(50, 26);
             this._button1.Name = "_button1";
-            this._button1.Size = new System.Drawing.Size(38, 23);
-            this._button1.StateCommon.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom)
-            | Krypton.Toolkit.PaletteDrawBorders.Left)
+            this._button1.Size = new System.Drawing.Size(50, 26);
+            this._button1.StateCommon.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | Krypton.Toolkit.PaletteDrawBorders.Left) 
             | Krypton.Toolkit.PaletteDrawBorders.Right)));
             this._button1.TabIndex = 0;
-            this._button1.TextColourOne = System.Drawing.Color.Empty;
-            this._button1.TextColourTwo = System.Drawing.Color.Empty;
             this._button1.Values.Text = "B1";
             this._button1.Visible = false;
             // 
-            // _panelOptionalCheckBox
-            // 
-            this._panelOptionalCheckBox.AutoSize = true;
-            this._panelOptionalCheckBox.Controls.Add(this._optionalCheckBox);
-            this._panelOptionalCheckBox.Dock = System.Windows.Forms.DockStyle.Left;
-            this._panelOptionalCheckBox.Location = new System.Drawing.Point(0, 1);
-            this._panelOptionalCheckBox.Name = "_panelOptionalCheckBox";
-            this._panelOptionalCheckBox.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this._panelOptionalCheckBox.PanelBackStyle = Krypton.Toolkit.PaletteBackStyle.ControlClient;
-            this._panelOptionalCheckBox.Size = new System.Drawing.Size(43, 20);
-            this._panelOptionalCheckBox.TabIndex = 3;
-            // 
             // _optionalCheckBox
             // 
-            this._optionalCheckBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._optionalCheckBox.Location = new System.Drawing.Point(5, 0);
+            this._optionalCheckBox.Dock = System.Windows.Forms.DockStyle.Left;
+            this._optionalCheckBox.Location = new System.Drawing.Point(0, 3);
+            this._optionalCheckBox.Margin = new System.Windows.Forms.Padding(0);
+            this._optionalCheckBox.MinimumSize = new System.Drawing.Size(0, 21);
             this._optionalCheckBox.Name = "_optionalCheckBox";
-            this._optionalCheckBox.Size = new System.Drawing.Size(38, 20);
+            this._optionalCheckBox.Size = new System.Drawing.Size(36, 24);
+            this._optionalCheckBox.StateCommon.Padding = new System.Windows.Forms.Padding(0);
             this._optionalCheckBox.TabIndex = 0;
             this._optionalCheckBox.Values.Text = "C1";
             // 
-            // _borderEdge
-            // 
-            this._borderEdge.BorderStyle = Krypton.Toolkit.PaletteBorderStyle.HeaderPrimary;
-            this._borderEdge.Dock = System.Windows.Forms.DockStyle.Top;
-            this._borderEdge.Location = new System.Drawing.Point(0, 0);
-            this._borderEdge.Margin = new System.Windows.Forms.Padding(2);
-            this._borderEdge.Name = "_borderEdge";
-            this._borderEdge.Size = new System.Drawing.Size(183, 1);
-            this._borderEdge.Text = "kryptonBorderEdge1";
-            // 
-            // _messageIcon
-            // 
-            this._messageIcon.BackColor = System.Drawing.Color.Transparent;
-            this._messageIcon.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._messageIcon.Location = new System.Drawing.Point(8, 4);
-            this._messageIcon.Margin = new System.Windows.Forms.Padding(8, 4, 4, 4);
-            this._messageIcon.Name = "_messageIcon";
-            this._messageIcon.Size = new System.Drawing.Size(33, 34);
-            this._messageIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this._messageIcon.TabIndex = 0;
-            this._messageIcon.TabStop = false;
-            // 
             // KryptonMessageBoxExtendedForm
             // 
-            this.ClientSize = new System.Drawing.Size(183, 63);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(299, 55);
             this.Controls.Add(this.kryptonPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
@@ -253,19 +231,21 @@
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Load += new System.EventHandler(this.KryptonMessageBoxExtendedForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this._panelFooter)).EndInit();
-            this._panelFooter.ResumeLayout(false);
-            this._panelFooter.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this._panelButtons)).EndInit();
-            this._panelButtons.ResumeLayout(false);
-            this._panelButtons.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this._panelOptionalCheckBox)).EndInit();
-            this._panelOptionalCheckBox.ResumeLayout(false);
-            this._panelOptionalCheckBox.PerformLayout();
+            this.kryptonPanel1.PerformLayout();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
+            this.kryptonPanel2.ResumeLayout(false);
+            this.kryptonPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this._messageIcon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel3)).EndInit();
+            this.kryptonPanel3.ResumeLayout(false);
+            this.kryptonPanel3.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -293,18 +273,13 @@
 
         #region Extended Fields
 
-        private bool _showUACShieldOnAcceptButton, _useYesNoOrCancelButtonColours, _showOptionalCheckBox,
-                     _isOptionalCheckBoxChecked;
+        private bool _showUACShieldOnAcceptButton, _showOptionalCheckBox, _isOptionalCheckBoxChecked;
         private Color _contentMessageColour, _buttonOneBackColourOne, _buttonOneBackColourTwo,
                       _buttonOneTextColourOne, _buttonOneTextColourTwo,
                       _buttonTwoBackColourOne, _buttonTwoBackColourTwo,
                       _buttonTwoTextColourOne, _buttonTwoTextColourTwo,
                       _buttonThreeBackColourOne, _buttonThreeBackColourTwo,
                       _buttonThreeTextColourOne, _buttonThreeTextColourTwo,
-                      _yesButtonBackColourOne, _yesButtonBackColourTwo,
-                      _yesButtonTextColourOne, _yesButtonTextColourTwo,
-                      _noButtonBackColourOne, _noButtonBackColourTwo,
-                      _noButtonTextColourOne, _noButtonTextColourTwo,
                       _optionalCheckBoxTextColourOne, _optionalCheckBoxTextColourTwo;
         private CheckState _optionalCheckBoxCheckState;
         private DialogResult _buttonOneCustomDialogResult, _buttonTwoCustomDialogResult, _buttonThreeCustomDialogResult;
@@ -312,6 +287,13 @@
         private Font _messageBoxButtonTypeface, _messageBoxTypeface, _optionalCheckBoxTypeface;
         private float _buttonCornerRounding, _windowCornerRounding;
         private readonly string _optionalCheckBoxText, _copyButtonText, _buttonOneText, _buttonTwoText, _buttonThreeText;
+
+        private void KryptonMessageBoxExtendedForm_Load(object sender, EventArgs e)
+        {
+            // Make sure that the "Form" is set to the auto size of the table
+            ClientSize = tableLayoutPanel2.Size;
+        }
+
         private Image _customMessageBoxIcon;
         private SoundPlayer _player;
         private Stream _soundStream;
@@ -348,7 +330,6 @@
         /// <param name="showCtrlCopy">The show control copy.</param>
         /// <param name="messageBoxButtonTypeface">The message box button typeface.</param>
         /// <param name="messageBoxTypeface">The message box typeface.</param>
-        /// <param name="useYesNoOrCancelButtonColours">The use yes no or cancel button colours.</param>
         /// <param name="contentMessageColour">The content message colour.</param>
         /// <param name="buttonOneBackColourOne">The button one back colour one.</param>
         /// <param name="buttonOneBackColourTwo">The button one back colour two.</param>
@@ -362,14 +343,6 @@
         /// <param name="buttonThreeTextColourTwo">The button three text colour two.</param>
         /// <param name="buttonThreeBackColourOne">The button three back colour one.</param>
         /// <param name="buttonThreeBackColourTwo">The button three back colour two.</param>
-        /// <param name="yesButtonBackColourOne">The yes button back colour one.</param>
-        /// <param name="yesButtonBackColourTwo">The yes button back colour two.</param>
-        /// <param name="yesButtonTextColourOne">The yes button text colour one.</param>
-        /// <param name="yesButtonTextColourTwo">The yes button text colour two.</param>
-        /// <param name="noButtonBackColourOne">The no button back colour one.</param>
-        /// <param name="noButtonBackColourTwo">The no button back colour two.</param>
-        /// <param name="noButtonTextColourOne">The no button text colour one.</param>
-        /// <param name="noButtonTextColourTwo">The no button text colour two.</param>
         /// <param name="buttonCornerRounding">The button corner rounding.</param>
         /// <param name="windowCornerRounding">The window corner rounding.</param>
         /// <param name="showUacShieldOnAcceptButton">The show uac shield on accept button.</param>
@@ -389,17 +362,13 @@
                                                DialogResult? customButtonThreeDialogResult, MessageBoxOptions options,
                                                HelpInfo helpInfo, bool? showCtrlCopy,
                                                Font? messageBoxButtonTypeface, Font? messageBoxTypeface,
-                                               bool? useYesNoOrCancelButtonColours, Color? contentMessageColour,
+                                               Color? contentMessageColour,
                                                Color? buttonOneBackColourOne, Color? buttonOneBackColourTwo,
                                                Color? buttonOneTextColourOne, Color? buttonOneTextColourTwo,
                                                Color? buttonTwoTextColourOne, Color? buttonTwoTextColourTwo,
                                                Color? buttonTwoBackColourOne, Color? buttonTwoBackColourTwo,
                                                Color? buttonThreeTextColourOne, Color? buttonThreeTextColourTwo,
                                                Color? buttonThreeBackColourOne, Color? buttonThreeBackColourTwo,
-                                               Color? yesButtonBackColourOne, Color? yesButtonBackColourTwo,
-                                               Color? yesButtonTextColourOne, Color? yesButtonTextColourTwo,
-                                               Color? noButtonBackColourOne, Color? noButtonBackColourTwo,
-                                               Color? noButtonTextColourOne, Color? noButtonTextColourTwo,
                                                float? buttonCornerRounding, float? windowCornerRounding,
                                                bool? showUacShieldOnAcceptButton, bool? showOptionalCheckBox,
                                                bool? isOptionalCheckBoxChecked, Color? optionalCheckBoxTextColourOne,
@@ -417,7 +386,6 @@
             _showOwner = showOwner;
 
             // Extended values
-            _useYesNoOrCancelButtonColours = useYesNoOrCancelButtonColours ?? false;
             _showUACShieldOnAcceptButton = showUacShieldOnAcceptButton ?? false;
             _showOptionalCheckBox = showOptionalCheckBox ?? false;
             _isOptionalCheckBoxChecked = isOptionalCheckBoxChecked ?? false;
@@ -446,14 +414,6 @@
             _buttonThreeBackColourOne = buttonThreeBackColourOne ?? Color.Empty;
             _buttonThreeTextColourTwo = buttonThreeTextColourTwo ?? Color.Empty;
             _buttonThreeBackColourTwo = buttonThreeBackColourTwo ?? Color.Empty;
-            _yesButtonBackColourOne = yesButtonBackColourOne ?? Color.Green;
-            _yesButtonTextColourOne = yesButtonTextColourOne ?? Color.Empty;
-            _yesButtonBackColourTwo = yesButtonBackColourTwo ?? Color.Green;
-            _yesButtonTextColourTwo = yesButtonTextColourTwo ?? Color.Empty;
-            _noButtonBackColourOne = noButtonBackColourOne ?? Color.Red;
-            _noButtonTextColourOne = noButtonTextColourOne ?? Color.Empty;
-            _noButtonBackColourTwo = noButtonBackColourTwo ?? Color.Red;
-            _noButtonTextColourTwo = noButtonTextColourTwo ?? Color.Empty;
             _optionalCheckBoxTextColourOne = optionalCheckBoxTextColourOne ?? Color.Empty;
             _optionalCheckBoxTextColourTwo = optionalCheckBoxTextColourTwo ?? Color.Empty;
             _buttonCornerRounding = buttonCornerRounding ?? -1;
@@ -475,8 +435,6 @@
 
             ConfigureOptionalCheckBox();
 
-            // Finally calculate and set form sizing
-            UpdateSizing(showOwner);
         }
         #endregion Identity
 
@@ -539,41 +497,33 @@
                     {
                         SystemSounds.Beep.Play();
                     }
-
                     break;
+
+                case ExtendedKryptonMessageBoxIcon.WARNING:
                 case ExtendedKryptonMessageBoxIcon.QUESTION:
                     _messageIcon.Image = Properties.Resources.Question;
                     SystemSounds.Question.Play();
                     break;
-                case ExtendedKryptonMessageBoxIcon.EXCLAMATION:
-                    _messageIcon.Image = Properties.Resources.Warning;
 
-                    SystemSounds.Exclamation.Play();
-                    break;
+                case ExtendedKryptonMessageBoxIcon.EXCLAMATION:
                 case ExtendedKryptonMessageBoxIcon.INFORMATION:
                     _messageIcon.Image = Properties.Resources.Information;
-                    SystemSounds.Asterisk.Play();
-                    break;
-                case ExtendedKryptonMessageBoxIcon.WARNING:
-                    _messageIcon.Image = Properties.Resources.Warning;
                     SystemSounds.Exclamation.Play();
                     break;
+
+
                 case ExtendedKryptonMessageBoxIcon.ERROR:
-                    _messageIcon.Image = Properties.Resources.Critical;
-                    SystemSounds.Hand.Play();
-                    break;
                 case ExtendedKryptonMessageBoxIcon.ASTERISK:
                     _messageIcon.Image = Properties.Resources.Asterisk;
                     SystemSounds.Asterisk.Play();
                     break;
+
                 case ExtendedKryptonMessageBoxIcon.HAND:
-                    _messageIcon.Image = Properties.Resources.Hand;
-                    SystemSounds.Hand.Play();
-                    break;
                 case ExtendedKryptonMessageBoxIcon.STOP:
                     _messageIcon.Image = Properties.Resources.Stop;
                     SystemSounds.Hand.Play();
                     break;
+
                 case ExtendedKryptonMessageBoxIcon.SHIELD:
                     _messageIcon.Image = SystemIcons.Shield.ToBitmap();
                     break;
@@ -633,18 +583,8 @@
                     _button1.Visible = true;
                     _button1.Enabled = true;
                     _button1.UseAsUACElevationButton = _showUACShieldOnAcceptButton;
-
-                    if (_useYesNoOrCancelButtonColours)
-                    {
-                        _button1.BackColourOne = _buttonOneBackColourOne;
-
-                        _button1.BackColourTwo = _buttonOneBackColourTwo;
-
-                        _button1.TextColourOne = _buttonOneTextColourOne;
-
-                        _button1.TextColourTwo = _buttonOneTextColourTwo;
-                    }
                     break;
+
                 case ExtendedMessageBoxButtons.OKCANCEL:
                     _button1.Text = KryptonManager.Strings.OK;
                     _button2.Text = KryptonManager.Strings.Cancel;
@@ -657,17 +597,8 @@
                     _button2.Visible = true;
                     _button2.Enabled = true;
                     _button1.UseAsUACElevationButton = _showUACShieldOnAcceptButton;
-
-                    if (_useYesNoOrCancelButtonColours)
-                    {
-                        AlterButtonColours(_buttonOneBackColourOne, _buttonOneBackColourTwo,
-                                           _buttonTwoBackColourOne, _buttonTwoBackColourTwo,
-                                           null, null,
-                                           _buttonOneTextColourOne, _buttonOneTextColourTwo,
-                                           _buttonTwoTextColourOne, _buttonTwoTextColourTwo,
-                                           null, null);
-                    }
                     break;
+
                 case ExtendedMessageBoxButtons.YESNO:
                     _button1.Text = KryptonManager.Strings.Yes;
                     _button2.Text = KryptonManager.Strings.No;
@@ -681,17 +612,8 @@
                     _button2.Enabled = true;
                     _button1.UseAsUACElevationButton = _showUACShieldOnAcceptButton;
                     ControlBox = false;
-
-                    if (_useYesNoOrCancelButtonColours)
-                    {
-                        AlterButtonColours(_buttonOneBackColourOne, _buttonOneBackColourTwo,
-                            _buttonTwoBackColourOne, _buttonTwoBackColourTwo,
-                            null, null,
-                            _buttonOneTextColourOne, _buttonOneTextColourTwo,
-                            _buttonTwoTextColourOne, _buttonTwoTextColourTwo,
-                            null, null);
-                    }
                     break;
+
                 case ExtendedMessageBoxButtons.YESNOCANCEL:
                     _button1.Text = KryptonManager.Strings.Yes;
                     _button2.Text = KryptonManager.Strings.No;
@@ -709,17 +631,8 @@
                     _button3.Visible = true;
                     _button3.Enabled = true;
                     _button1.UseAsUACElevationButton = _showUACShieldOnAcceptButton;
-
-                    if (_useYesNoOrCancelButtonColours)
-                    {
-                        AlterButtonColours(_buttonOneBackColourOne, _buttonOneBackColourTwo,
-                            _buttonTwoBackColourOne, _buttonTwoBackColourTwo,
-                            _buttonThreeBackColourOne, _buttonThreeBackColourTwo,
-                            _buttonOneTextColourOne, _buttonOneTextColourTwo,
-                            _buttonTwoTextColourOne, _buttonTwoTextColourTwo,
-                            _buttonThreeTextColourOne, _buttonThreeTextColourTwo);
-                    }
                     break;
+
                 case ExtendedMessageBoxButtons.RETRYCANCEL:
                     _button1.Text = KryptonManager.Strings.Retry;
                     _button2.Text = KryptonManager.Strings.Cancel;
@@ -732,17 +645,8 @@
                     _button2.Visible = true;
                     _button2.Enabled = true;
                     _button1.UseAsUACElevationButton = _showUACShieldOnAcceptButton;
-
-                    if (_useYesNoOrCancelButtonColours)
-                    {
-                        AlterButtonColours(_buttonOneBackColourOne, _buttonOneBackColourTwo,
-                            _buttonTwoBackColourOne, _buttonTwoBackColourTwo,
-                            _buttonThreeBackColourOne, _buttonThreeBackColourTwo,
-                            _buttonOneTextColourOne, _buttonOneTextColourTwo,
-                            _buttonTwoTextColourOne, _buttonTwoTextColourTwo,
-                            _buttonThreeTextColourOne, _buttonThreeTextColourTwo);
-                    }
                     break;
+
                 case ExtendedMessageBoxButtons.ABORTRETRYIGNORE:
                     _button1.Text = KryptonManager.Strings.Abort;
                     _button2.Text = KryptonManager.Strings.Retry;
@@ -761,27 +665,17 @@
                     _button3.Enabled = true;
                     _button2.UseAsUACElevationButton = _showUACShieldOnAcceptButton;
                     ControlBox = false;
-
-                    if (_useYesNoOrCancelButtonColours)
-                    {
-                        AlterButtonColours(_buttonOneBackColourOne, _buttonOneBackColourTwo,
-                            _buttonTwoBackColourOne, _buttonTwoBackColourTwo,
-                            _buttonThreeBackColourOne, _buttonThreeBackColourTwo,
-                            _buttonOneTextColourOne, _buttonOneTextColourTwo,
-                            _buttonTwoTextColourOne, _buttonTwoTextColourTwo,
-                            _buttonThreeTextColourOne, _buttonThreeTextColourTwo);
-                    }
                     break;
             }
 
-            // Do we ignore the Alt+F4 on the buttons?
-            if (!ControlBox)
-            {
-                _button1.IgnoreAltF4 = true;
-                _button2.IgnoreAltF4 = true;
-                _button3.IgnoreAltF4 = true;
-                _button4.IgnoreAltF4 = true;
-            }
+            AlterButtonColours(_buttonOneBackColourOne, _buttonOneBackColourTwo,
+                _buttonTwoBackColourOne, _buttonTwoBackColourTwo,
+                _buttonThreeBackColourOne, _buttonThreeBackColourTwo,
+                _buttonOneTextColourOne, _buttonOneTextColourTwo,
+                _buttonTwoTextColourOne, _buttonTwoTextColourTwo,
+                _buttonThreeTextColourOne, _buttonThreeTextColourTwo,
+                _buttonCornerRounding);
+
         }
 
         private void UpdateDefault()
@@ -813,18 +707,27 @@
             //}
             //else
             //{
-            MessageButton helpButton = _buttons switch
-            {
-                ExtendedMessageBoxButtons.OK => _button2,
-                ExtendedMessageBoxButtons.OKCANCEL or ExtendedMessageBoxButtons.YESNO
-                    or ExtendedMessageBoxButtons.RETRYCANCEL => _button3,
-                ExtendedMessageBoxButtons.ABORTRETRYIGNORE or ExtendedMessageBoxButtons.YESNOCANCEL => _button4,
-                //ExtendedMessageBoxButtons.CUSTOM => switch {},
-                _ => throw new ArgumentOutOfRangeException()
-            };
-            //}
 
-            if (helpButton != null)
+            KryptonButton helpButton = _buttons switch
+            {
+                ExtendedMessageBoxButtons.CUSTOM => _visibility switch
+                {
+                    ExtendedMessageBoxCustomButtonVisibility.NONE => _button1,
+                    ExtendedMessageBoxCustomButtonVisibility.ONEBUTTON => _button2,
+                    ExtendedMessageBoxCustomButtonVisibility.TWOBUTTONS => _button3,
+                    ExtendedMessageBoxCustomButtonVisibility.THREEBUTTONS => _button4,
+                    _ => _button1 //throw new ArgumentOutOfRangeException()
+                },
+                ExtendedMessageBoxButtons.OK => _button2,
+                ExtendedMessageBoxButtons.YESNO => _button3,
+                ExtendedMessageBoxButtons.OKCANCEL => _button3,
+                ExtendedMessageBoxButtons.RETRYCANCEL => _button3,
+                ExtendedMessageBoxButtons.ABORTRETRYIGNORE => _button4,
+                ExtendedMessageBoxButtons.YESNOCANCEL => _button4,
+                _ => _button1 //throw new ArgumentOutOfRangeException()
+            };
+
+            if (helpButton != _button1)
             {
                 helpButton.Visible = true;
 
@@ -874,16 +777,6 @@
 
         }
 
-        private void UpdateSizing(IWin32Window showOwner)
-        {
-            Size messageSizing = UpdateMessageSizing(showOwner);
-            Size buttonsSizing = UpdateButtonsSizing();
-
-            // Size of window is calculated from the client area
-            ClientSize = new Size(Math.Max(messageSizing.Width, buttonsSizing.Width),
-                                  messageSizing.Height + buttonsSizing.Height);
-        }
-
         private Size UpdateMessageSizing(IWin32Window showOwner)
         {
             // Update size of the message label but with a maximum width
@@ -920,78 +813,6 @@
             }
 
             return textSize;
-        }
-
-        private Size UpdateButtonsSizing()
-        {
-            var numButtons = 1;
-
-            // Button1 is always visible
-            Size button1Size = _button1.GetPreferredSize(Size.Empty);
-            Size maxButtonSize = new(button1Size.Width + GAP, button1Size.Height);
-
-            // If Button2 is visible
-            if (_button2.Enabled)
-            {
-                numButtons++;
-                Size button2Size = _button2.GetPreferredSize(Size.Empty);
-                maxButtonSize.Width = Math.Max(maxButtonSize.Width, button2Size.Width + GAP);
-                maxButtonSize.Height = Math.Max(maxButtonSize.Height, button2Size.Height);
-            }
-
-            // If Button3 is visible
-            if (_button3.Enabled)
-            {
-                numButtons++;
-                Size button3Size = _button3.GetPreferredSize(Size.Empty);
-                maxButtonSize.Width = Math.Max(maxButtonSize.Width, button3Size.Width + GAP);
-                maxButtonSize.Height = Math.Max(maxButtonSize.Height, button3Size.Height);
-            }
-            // If Button4 is visible
-            if (_button4.Enabled)
-            {
-                numButtons++;
-                Size button4Size = _button4.GetPreferredSize(Size.Empty);
-                maxButtonSize.Width = Math.Max(maxButtonSize.Width, button4Size.Width + GAP);
-                maxButtonSize.Height = Math.Max(maxButtonSize.Height, button4Size.Height);
-            }
-
-            // Start positioning buttons 10 pixels from right edge
-            var right = _panelFooter.Right - GAP;
-
-            // If Button4 is visible
-            if (_button4.Enabled)
-            {
-                _button4.Location = new Point(right - maxButtonSize.Width, GAP);
-                _button4.Size = maxButtonSize;
-                right -= maxButtonSize.Width + GAP;
-            }
-
-            // If Button3 is visible
-            if (_button3.Enabled)
-            {
-                _button3.Location = new Point(right - maxButtonSize.Width, GAP);
-                _button3.Size = maxButtonSize;
-                right -= maxButtonSize.Width + GAP;
-            }
-
-            // If Button2 is visible
-            if (_button2.Enabled)
-            {
-                _button2.Location = new Point(right - maxButtonSize.Width, GAP);
-                _button2.Size = maxButtonSize;
-                right -= maxButtonSize.Width + GAP;
-            }
-
-            // Button1 is always visible
-            _button1.Location = new Point(right - maxButtonSize.Width, GAP);
-            _button1.Size = maxButtonSize;
-
-            // Size the panel for the buttons
-            _panelFooter.Size = new Size((maxButtonSize.Width * numButtons) + (GAP * (numButtons + 1)), maxButtonSize.Height + (GAP * 2));
-
-            // Button area is the number of buttons with gaps between them and 10 pixels around all edges
-            return new Size((maxButtonSize.Width * numButtons) + (GAP * (numButtons + 1)), maxButtonSize.Height + (GAP * 2));
         }
 
         private void button_keyDown(object sender, KeyEventArgs e)
@@ -1041,6 +862,7 @@
         #endregion
 
         #region Extended Methods
+
         /// <summary>
         /// Alters the button colours.
         /// </summary>
@@ -1056,37 +878,33 @@
         /// <param name="buttonTwoTextColourTwo">The button two text colour two.</param>
         /// <param name="buttonThreeTextColourOne">The button three text colour one.</param>
         /// <param name="buttonThreeTextColourTwo">The button three text colour two.</param>
+        /// <param name="buttonCornerRounding"></param>
         /// <returns></returns>
         private void AlterButtonColours(Color buttonOneBackColourOne, Color buttonOneBackColourTwo,
-                                        Color? buttonTwoBackColourOne, Color? buttonTwoBackColourTwo,
-                                        Color? buttonThreeBackColourOne, Color? buttonThreeBackColourTwo,
-                                        Color buttonOneTextColourOne, Color buttonOneTextColourTwo,
-                                        Color? buttonTwoTextColourOne, Color? buttonTwoTextColourTwo,
-                                        Color? buttonThreeTextColourOne, Color? buttonThreeTextColourTwo)
+            Color? buttonTwoBackColourOne, Color? buttonTwoBackColourTwo,
+            Color? buttonThreeBackColourOne, Color? buttonThreeBackColourTwo,
+            Color buttonOneTextColourOne, Color buttonOneTextColourTwo,
+            Color? buttonTwoTextColourOne, Color? buttonTwoTextColourTwo,
+            Color? buttonThreeTextColourOne, Color? buttonThreeTextColourTwo, float buttonCornerRounding)
         {
+            _button1.StateCommon.Border.Rounding = buttonCornerRounding;
             _button1.StateCommon.Back.Color1 = buttonOneBackColourOne;
-
             _button1.StateCommon.Back.Color2 = buttonOneBackColourTwo;
-
             _button1.StateCommon.Content.ShortText.Color1 = buttonOneTextColourOne;
-
             _button1.StateCommon.Content.ShortText.Color2 = buttonOneTextColourTwo;
 
+            _button2.StateCommon.Border.Rounding = buttonCornerRounding;
             _button2.StateCommon.Back.Color1 = buttonTwoBackColourOne ?? Color.Empty;
-
             _button2.StateCommon.Back.Color2 = buttonTwoBackColourTwo ?? Color.Empty;
-
             _button2.StateCommon.Content.ShortText.Color1 = buttonTwoTextColourOne ?? Color.Empty;
-
             _button2.StateCommon.Content.ShortText.Color2 = buttonTwoTextColourTwo ?? Color.Empty;
 
+            _button3.StateCommon.Border.Rounding = buttonCornerRounding;
             _button3.StateCommon.Back.Color1 = buttonThreeBackColourOne ?? Color.Empty;
-
             _button3.StateCommon.Back.Color2 = buttonThreeBackColourTwo ?? Color.Empty;
-
             _button3.StateCommon.Content.ShortText.Color1 = buttonThreeTextColourOne ?? Color.Empty;
-
             _button3.StateCommon.Content.ShortText.Color2 = buttonThreeTextColourTwo ?? Color.Empty;
+            // TODO: What values should be used for the help Button if it is #4
         }
 
         /// <summary>
@@ -1101,7 +919,7 @@
         /// </summary>
         private void ConfigureOptionalCheckBox()
         {
-            _panelOptionalCheckBox.Visible = _showOptionalCheckBox;
+            _optionalCheckBox.Visible = _showOptionalCheckBox;
 
             _optionalCheckBox.Checked = _isOptionalCheckBoxChecked;
 
@@ -1132,211 +950,5 @@
         #endregion
     }
 
-    #region Types
-    internal class HelpInfo
-    {
-        #region Instance Fields
 
-        #endregion
-
-        #region Identity
-
-        /// <summary>
-        /// Initialize a new instance of the HelpInfo class.
-        /// </summary>
-        /// <param name="helpFilePath">Value for HelpFilePath.</param>
-        /// <param name="keyword">Value for Keyword</param>
-        public HelpInfo(string helpFilePath = null, string keyword = null)
-        : this(helpFilePath, keyword, !string.IsNullOrWhiteSpace(keyword) ? HelpNavigator.Topic : HelpNavigator.TableOfContents, null)
-        {
-
-        }
-
-        /// <summary>
-        /// Initialize a new instance of the HelpInfo class.
-        /// </summary>
-        /// <param name="helpFilePath">Value for HelpFilePath.</param>
-        /// <param name="navigator">Value for Navigator</param>
-        /// <param name="param"></param>
-        public HelpInfo(string helpFilePath, HelpNavigator navigator, object param = null)
-            : this(helpFilePath, null, navigator, param)
-        {
-
-        }
-
-        /// <summary>
-        /// Initialize a new instance of the HelpInfo class.
-        /// </summary>
-        /// <param name="helpFilePath">Value for HelpFilePath.</param>
-        /// <param name="navigator">Value for Navigator</param>
-        /// <param name="keyword">Value for Keyword</param>
-        /// <param name="param"></param>
-        private HelpInfo(string helpFilePath, string keyword, HelpNavigator navigator, object param)
-        {
-            HelpFilePath = helpFilePath;
-            Keyword = keyword;
-            Navigator = navigator;
-            Param = param;
-        }
-        #endregion
-
-        #region Properties
-        /// <summary>
-        /// Gets the HelpFilePath property.
-        /// </summary>
-        public string HelpFilePath { get; }
-
-        /// <summary>
-        /// Gets the Keyword property.
-        /// </summary>
-        public string Keyword { get; }
-
-        /// <summary>
-        /// Gets the Navigator property.
-        /// </summary>
-        public HelpNavigator Navigator { get; }
-
-        /// <summary>
-        /// Gets the Param property.
-        /// </summary>
-        public object Param { get; }
-
-        #endregion
-    }
-
-    #endregion
-
-    #region MessageButton
-    [ToolboxItem(false)]
-    [DesignTimeVisible(false)]
-    internal class MessageButton : KryptonButton
-    {
-
-        #region Instance Fields
-        private Color _backColourOne, _backColourTwo, _textColourOne, _textColourTwo;
-
-        private float _cornerRounding;
-        #endregion
-
-        #region Properties
-
-        /// <summary>Gets or sets BackColourOne.</summary>
-        /// <value>The value of _backColourOne.</value>
-        public Color BackColourOne
-        {
-            get => _backColourOne;
-
-            set { _backColourOne = value; Invalidate(); }
-        }
-
-        /// <summary>Gets or sets BackColourTwo.</summary>
-        /// <value>The value of _backColourTwo.</value>
-        public Color BackColourTwo
-        {
-            get => _backColourTwo;
-
-            set { _backColourTwo = value; Invalidate(); }
-        }
-
-        /// <summary>Gets or sets TextColourOne.</summary>
-        /// <value>The value of _textColourOne.</value>
-        public Color TextColourOne
-        {
-            get => _textColourOne;
-
-            set { _textColourOne = value; Invalidate(); }
-        }
-
-        /// <summary>Gets or sets TextColourTwo.</summary>
-        /// <value>The value of _textColourTwo.</value>
-        public Color TextColourTwo
-        {
-            get => _textColourTwo;
-
-            set { _textColourTwo = value; Invalidate(); }
-        }
-
-        /// <summary>Gets or sets CornerRounding.</summary>
-        /// <value>The value of _cornerRounding.</value>
-        public float CornerRounding
-        {
-            get => _cornerRounding;
-
-            set { _cornerRounding = value; Invalidate(); }
-        }
-
-        #endregion
-
-        #region Identity
-        public MessageButton()
-        {
-            IgnoreAltF4 = false;
-            Visible = false;
-            Enabled = false;
-
-            BackColourOne = Color.Empty;
-
-            BackColourTwo = Color.Empty;
-
-            TextColourOne = Color.Empty;
-
-            TextColourTwo = Color.Empty;
-
-            CornerRounding = -1;
-        }
-
-        /// <summary>
-        /// Gets and sets the ignoring of Alt+F4
-        /// </summary>
-        public bool IgnoreAltF4 { get; set; }
-
-        #endregion
-
-        #region Protected
-
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            StateCommon.Back.Color1 = BackColourOne;
-
-            StateCommon.Back.Color2 = BackColourTwo;
-
-            StateCommon.Content.ShortText.Color1 = TextColourOne;
-
-            StateCommon.Content.ShortText.Color2 = TextColourTwo;
-
-            StateCommon.Border.Rounding = CornerRounding;
-
-            base.OnPaint(e);
-        }
-
-        /// <summary>
-        /// Processes Windows messages.
-        /// </summary>
-        /// <param name="m">The Windows Message to process. </param>
-        protected override void WndProc(ref Message m)
-        {
-            switch (m.Msg)
-            {
-                case PI.WM_.KEYDOWN:
-                case PI.WM_.SYSKEYDOWN:
-                    if (IgnoreAltF4)
-                    {
-                        // Extract the keys being pressed
-                        Keys keys = ((Keys)((int)m.WParam.ToInt64()));
-
-                        // If the user standard combination ALT + F4
-                        if ((keys == Keys.F4) && ((ModifierKeys & Keys.Alt) == Keys.Alt))
-                        {
-                            // Eat the message, so standard window proc does not close the window
-                            return;
-                        }
-                    }
-                    break;
-            }
-
-            base.WndProc(ref m);
-        }
-        #endregion
-    }
-    #endregion
 }

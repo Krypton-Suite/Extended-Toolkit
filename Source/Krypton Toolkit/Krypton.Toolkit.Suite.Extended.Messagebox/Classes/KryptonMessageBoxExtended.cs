@@ -32,11 +32,9 @@
                              icon, defaultButton,
                              null, null, null,
                              options, displayHelpButton ? new HelpInfo() : null, showCtrlCopy,
-                             messageBoxButtonTypeface, messageBoxTypeface, null, null,
+                             messageBoxButtonTypeface, messageBoxTypeface, null,
                              null, null, null, null, null, null,
-                             null, null, null, null, null, null,
-                             null, null, null, null, null, null,
-                             null, null, null, null, null, null,
+                             null, null, null, null, null, null, null, null, null, null,
                              null, null, null, null, string.Empty,
                              null);
 
@@ -66,11 +64,9 @@
                              icon,
                              defaultButton, null, null, null,
                              options, displayHelpButton ? new HelpInfo() : null,
-                             showCtrlCopy, null, null, null,
+                             showCtrlCopy, null, null,
                              null, null, null, null, null,
                              null, null, null, null, null,
-                             null, null, null, null,
-                             null, null, null, null,
                              null, null, null, null,
                              null, null, null, null,
                              null, null, null, string.Empty,
@@ -105,11 +101,9 @@
                 InternalShow(owner, text, caption, buttons, null, string.Empty, string.Empty, string.Empty,
                              icon, defaultButton, null,
                              null, null, options, displayHelpButton ? new HelpInfo() : null, showCtrlCopy,
-                             messageBoxButtonTypeface, messageBoxTypeface, null, null,
+                             messageBoxButtonTypeface, messageBoxTypeface, null,
                              null, null, null, null, null, null,
-                             null, null, null, null, null, null,
-                             null, null, null, null, null, null,
-                             null, null, null, null, null, null,
+                             null, null, null, null, null, null, null, null, null, null,
                              null, null, null, null, string.Empty,
                              null);
 
@@ -139,11 +133,9 @@
                              string.Empty, string.Empty, string.Empty,
                              icon, defaultButton, null, null, null,
                              options, displayHelpButton ? new HelpInfo() : null,
-                             showCtrlCopy, null, null, null,
+                             showCtrlCopy, null, null,
                              null, null, null, null, null,
                              null, null, null, null, null,
-                             null, null, null, null,
-                             null, null, null, null,
                              null, null, null, null,
                              null, null, null,
                              null, null, null, null, string.Empty,
@@ -170,11 +162,9 @@
                             icon, defaultButton, null, null, null, options,
                             new HelpInfo(helpFilePath, navigator, param),
                             showCtrlCopy, messageBoxButtonTypeface,
-                            messageBoxTypeface, null,
+                            messageBoxTypeface,
                             null, null, null, null, null,
                             null, null, null, null, null,
-                            null, null, null, null,
-                            null, null, null, null,
                             null, null, null, null,
                             null, null, null, null,
                             null, null, null, string.Empty,
@@ -199,11 +189,9 @@
             => InternalShow(null, text, caption, buttons, null, string.Empty, string.Empty, string.Empty,
                             icon, defaultButton, null, null, null,
                             options, new HelpInfo(helpFilePath, navigator, param),
-                            showCtrlCopy, null, null, null,
+                            showCtrlCopy, null, null,
                             null, null, null, null, null,
                             null, null, null, null, null,
-                            null, null, null, null,
-                            null, null, null, null,
                             null, null, null, null,
                             null, null, null, null,
                             null, null, null, string.Empty,
@@ -236,11 +224,9 @@
                             null, null, null, options,
                             new HelpInfo(helpFilePath, navigator, param),
                             showCtrlCopy,
-                            messageBoxButtonTypeface, messageBoxTypeface, null,
+                            messageBoxButtonTypeface, messageBoxTypeface,
                             null, null, null, null, null,
                             null, null, null, null, null,
-                            null, null, null, null,
-                            null, null, null, null,
                             null, null, null, null,
                             null, null, null, null,
                             null, null, null, string.Empty,
@@ -268,11 +254,9 @@
             => InternalShow(owner, text, caption, buttons, null, string.Empty, string.Empty, string.Empty,
                             icon, defaultButton, null, null, null,
                             options, new HelpInfo(helpFilePath, navigator, param),
-                            showCtrlCopy, null, null, null,
+                            showCtrlCopy, null, null,
                             null, null, null, null, null,
                             null, null, null, null, null,
-                            null, null, null, null,
-                            null, null, null, null,
                             null, null, null, null,
                             null, null, null, null,
                             null, null, null, string.Empty,
@@ -315,14 +299,6 @@
         /// <param name="buttonThreeTextColourTwo">The button three text colour two.</param>
         /// <param name="buttonThreeBackColourOne">The button three back colour one.</param>
         /// <param name="buttonThreeBackColourTwo">The button three back colour two.</param>
-        /// <param name="yesButtonBackColourOne">The yes button back colour one.</param>
-        /// <param name="yesButtonBackColourTwo">The yes button back colour two.</param>
-        /// <param name="yesButtonTextColourOne">The yes button text colour one.</param>
-        /// <param name="yesButtonTextColourTwo">The yes button text colour two.</param>
-        /// <param name="noButtonBackColourOne">The no button back colour one.</param>
-        /// <param name="noButtonBackColourTwo">The no button back colour two.</param>
-        /// <param name="noButtonTextColourOne">The no button text colour one.</param>
-        /// <param name="noButtonTextColourTwo">The no button text colour two.</param>
         /// <param name="buttonCornerRounding">The button corner rounding.</param>
         /// <param name="windowCornerRounding">The window corner rounding.</param>
         /// <param name="showUacShieldOnAcceptButton">The show uac shield on accept button.</param>
@@ -351,10 +327,6 @@
             Color? buttonTwoBackColourOne, Color? buttonTwoBackColourTwo,
             Color? buttonThreeTextColourOne, Color? buttonThreeTextColourTwo,
             Color? buttonThreeBackColourOne, Color? buttonThreeBackColourTwo,
-            Color? yesButtonBackColourOne, Color? yesButtonBackColourTwo,
-            Color? yesButtonTextColourOne, Color? yesButtonTextColourTwo,
-            Color? noButtonBackColourOne, Color? noButtonBackColourTwo,
-            Color? noButtonTextColourOne, Color? noButtonTextColourTwo,
             float? buttonCornerRounding, float? windowCornerRounding,
             bool? showUacShieldOnAcceptButton, bool? showOptionalCheckBox,
             bool? isOptionalCheckBoxChecked, Color? optionalCheckBoxTextColourOne,
@@ -363,20 +335,19 @@
             => InternalShow(owner, text, caption, buttons, customButtonVisibility, buttonOneText, buttonTwoText, buttonThreeText, icon,
                 defaultButton, customButtonOneDialogResult, customButtonTwoDialogResult,
                 customButtonThreeDialogResult, options, displayHelpButton ? new HelpInfo(helpFilePath, navigator, param) : null,
-                showCtrlCopy, messageBoxButtonTypeface, messageBoxTypeface, useYesNoOrCancelButtonColours,
+                showCtrlCopy, messageBoxButtonTypeface, messageBoxTypeface,
                 contentMessageColour, buttonOneBackColourOne, buttonOneBackColourTwo,
                 buttonOneTextColourOne, buttonOneTextColourTwo, buttonTwoTextColourOne,
                 buttonTwoTextColourTwo, buttonTwoBackColourOne, buttonTwoBackColourTwo,
                 buttonThreeTextColourOne, buttonThreeTextColourTwo, buttonThreeBackColourOne,
-                buttonThreeBackColourTwo, yesButtonBackColourOne, yesButtonBackColourTwo,
-                yesButtonTextColourOne, yesButtonTextColourTwo, noButtonBackColourOne, noButtonBackColourTwo,
-                noButtonTextColourOne, noButtonTextColourTwo, buttonCornerRounding, windowCornerRounding,
+                buttonThreeBackColourTwo, buttonCornerRounding, windowCornerRounding,
                 showUacShieldOnAcceptButton, showOptionalCheckBox, isOptionalCheckBoxChecked,
                 optionalCheckBoxTextColourOne, optionalCheckBoxTextColourTwo, optionalCheckBoxTypeface,
                 optionalCheckBoxText, optionalCheckBoxCheckState);
         #endregion
 
         #region Implementation
+
         /// <summary>Shows the messagebox.</summary>
         /// <param name="owner">The owner.</param>
         /// <param name="text">The text.</param>
@@ -396,7 +367,6 @@
         /// <param name="showCtrlCopy">The show control copy.</param>
         /// <param name="messageBoxButtonTypeface">The message box button typeface.</param>
         /// <param name="messageBoxTypeface">The message box typeface.</param>
-        /// <param name="useYesNoOrCancelButtonColours">The use yes no or cancel button colours.</param>
         /// <param name="contentMessageColour">The content message colour.</param>
         /// <param name="buttonOneBackColourOne">The button one back colour one.</param>
         /// <param name="buttonOneBackColourTwo">The button one back colour two.</param>
@@ -410,14 +380,6 @@
         /// <param name="buttonThreeTextColourTwo">The button three text colour two.</param>
         /// <param name="buttonThreeBackColourOne">The button three back colour one.</param>
         /// <param name="buttonThreeBackColourTwo">The button three back colour two.</param>
-        /// <param name="yesButtonBackColourOne">The yes button back colour one.</param>
-        /// <param name="yesButtonBackColourTwo">The yes button back colour two.</param>
-        /// <param name="yesButtonTextColourOne">The yes button text colour one.</param>
-        /// <param name="yesButtonTextColourTwo">The yes button text colour two.</param>
-        /// <param name="noButtonBackColourOne">The no button back colour one.</param>
-        /// <param name="noButtonBackColourTwo">The no button back colour two.</param>
-        /// <param name="noButtonTextColourOne">The no button text colour one.</param>
-        /// <param name="noButtonTextColourTwo">The no button text colour two.</param>
         /// <param name="buttonCornerRounding">The button corner rounding.</param>
         /// <param name="windowCornerRounding">The window corner rounding.</param>
         /// <param name="showUacShieldOnAcceptButton">The show uac shield on accept button.</param>
@@ -427,6 +389,7 @@
         /// <param name="optionalCheckBoxTextColourTwo">The optional CheckBox text colour two.</param>
         /// <param name="optionalCheckBoxTypeface">The optional CheckBox typeface.</param>
         /// <param name="optionalCheckBoxText">The optional CheckBox text.</param>
+        /// <param name="optionalCheckBoxCheckState"></param>
         private static DialogResult InternalShow(IWin32Window owner, string text, string caption,
                                                ExtendedMessageBoxButtons buttons,
                                                ExtendedMessageBoxCustomButtonVisibility? customButtonVisibility,
@@ -436,17 +399,13 @@
                                                DialogResult? customButtonThreeDialogResult, MessageBoxOptions options,
                                                HelpInfo helpInfo, bool? showCtrlCopy,
                                                Font? messageBoxButtonTypeface, Font? messageBoxTypeface,
-                                               bool? useYesNoOrCancelButtonColours, Color? contentMessageColour,
+                                               Color? contentMessageColour,
                                                Color? buttonOneBackColourOne, Color? buttonOneBackColourTwo,
                                                Color? buttonOneTextColourOne, Color? buttonOneTextColourTwo,
                                                Color? buttonTwoTextColourOne, Color? buttonTwoTextColourTwo,
                                                Color? buttonTwoBackColourOne, Color? buttonTwoBackColourTwo,
                                                Color? buttonThreeTextColourOne, Color? buttonThreeTextColourTwo,
                                                Color? buttonThreeBackColourOne, Color? buttonThreeBackColourTwo,
-                                               Color? yesButtonBackColourOne, Color? yesButtonBackColourTwo,
-                                               Color? yesButtonTextColourOne, Color? yesButtonTextColourTwo,
-                                               Color? noButtonBackColourOne, Color? noButtonBackColourTwo,
-                                               Color? noButtonTextColourOne, Color? noButtonTextColourTwo,
                                                float? buttonCornerRounding, float? windowCornerRounding,
                                                bool? showUacShieldOnAcceptButton, bool? showOptionalCheckBox,
                                                bool? isOptionalCheckBoxChecked, Color? optionalCheckBoxTextColourOne,
@@ -460,23 +419,20 @@
                                                            icon, defaultButton, customButtonOneDialogResult,
                                                            customButtonTwoDialogResult, customButtonThreeDialogResult,
                                                            options, helpInfo, showCtrlCopy, messageBoxButtonTypeface,
-                                                           messageBoxTypeface, useYesNoOrCancelButtonColours,
+                                                           messageBoxTypeface,
                                                            contentMessageColour, buttonOneBackColourOne,
                                                            buttonOneBackColourTwo, buttonOneTextColourOne,
                                                            buttonOneTextColourTwo, buttonTwoTextColourOne,
                                                            buttonTwoTextColourTwo, buttonTwoBackColourOne,
                                                            buttonTwoBackColourTwo, buttonThreeTextColourOne,
                                                            buttonThreeTextColourTwo, buttonThreeBackColourOne,
-                                                           buttonThreeBackColourTwo, yesButtonBackColourOne,
-                                                           yesButtonBackColourTwo, yesButtonTextColourOne,
-                                                           yesButtonTextColourTwo, noButtonBackColourOne,
-                                                           noButtonBackColourTwo, noButtonTextColourOne,
-                                                           noButtonTextColourTwo, buttonCornerRounding,
-                                                           windowCornerRounding, showUacShieldOnAcceptButton,
-                                                           showOptionalCheckBox, isOptionalCheckBoxChecked,
-                                                           optionalCheckBoxTextColourOne, optionalCheckBoxTextColourTwo,
-                                                           optionalCheckBoxTypeface, optionalCheckBoxText,
-                                                           optionalCheckBoxCheckState);
+                                                           buttonThreeBackColourTwo,
+                                                           buttonCornerRounding, windowCornerRounding,
+                                                           showUacShieldOnAcceptButton, showOptionalCheckBox,
+                                                           isOptionalCheckBoxChecked, optionalCheckBoxTextColourOne,
+                                                           optionalCheckBoxTextColourTwo, optionalCheckBoxTypeface,
+                                                           optionalCheckBoxText, optionalCheckBoxCheckState
+                                                           );
 
             kmbe.StartPosition = showOwner == null ? FormStartPosition.CenterScreen : FormStartPosition.CenterParent;
 

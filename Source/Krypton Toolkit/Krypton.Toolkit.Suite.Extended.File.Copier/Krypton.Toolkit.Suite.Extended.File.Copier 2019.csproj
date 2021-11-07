@@ -71,5 +71,9 @@
   <ItemGroup>
     <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Developer.Utilities\Krypton.Toolkit.Suite.Extended.Developer.Utilities 2019.csproj" />
   </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Update="Krypton.Toolkit.Canary" Version="6.2111.310-beta" />
+  </ItemGroup>
 
 </Project>

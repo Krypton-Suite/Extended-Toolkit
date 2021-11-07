@@ -93,7 +93,6 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         /// <br></br>
         /// 1000 * ScrolStep/RefreshInterval
         /// </summary>
-        /// </summary>
         [Browsable(true)]
         [DefaultValue(DEFAULT_SCROLL_STEP)]
         [Description("Number of pixels text position shifts when new position is calculated and refreshed")]

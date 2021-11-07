@@ -7,7 +7,7 @@
 
 // Original license
 
-/**
+/*
 * MIT License
 *
 * Copyright (c) 2017 - 2018 Jacob Mesu
@@ -252,6 +252,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// </summary>
         /// <param name="g">The graphics surface to draw on</param>
         /// <param name="bounds">The bounds that the drawing should apply to</param>
+        /// <param name="state"></param>
+        /// <param name="inputState"></param>
         public override void DrawButtonBg(Graphics g, Rectangle bounds, ControlState state, InputState inputState)
         {
             Color[] endColors = new Color[1];

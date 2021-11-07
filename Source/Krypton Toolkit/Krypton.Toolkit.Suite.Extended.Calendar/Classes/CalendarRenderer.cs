@@ -577,7 +577,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Draws the specified rectangle with item border roundnesss
         /// </summary>
-        /// <param name="g"></param>
+        /// <param name="e"></param>
         /// <param name="bounds"></param>
         /// <param name="color"></param>
         /// <param name="width"></param>
@@ -1252,7 +1252,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             foreach (CalendarItemAlternative item in items)
             {
                 if (!grouped.Contains(item) &&
-                    calendarItem.IntersectsWith(item.StartDate.TimeOfDay, item.EndDate.TimeOfDay))
+                    calendarItem.IntersectsWith(timeStart: item.StartDate.TimeOfDay, item.EndDate.TimeOfDay))
                 {
                     grouped.Add(item);
 

@@ -7,7 +7,7 @@
 
 // Original license
 
-/**
+/*
 * MIT License
 *
 * Copyright (c) 2017 - 2018 Jacob Mesu
@@ -204,7 +204,6 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// </summary>
         /// <param name="g">The graphics surface to draw on</param>
         /// <param name="bounds">The bounds that the drawing should apply to</param>
-        /// <param name="state"></param>
         public override void DrawNaviBandClientAreaBg(Graphics g, Rectangle bounds)
         {
             // Gradient background

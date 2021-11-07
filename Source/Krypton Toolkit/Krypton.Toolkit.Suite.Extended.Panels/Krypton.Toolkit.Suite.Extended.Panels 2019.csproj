@@ -43,5 +43,8 @@
     <DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Panels\Krypton.Toolkit.Suite.Extended.Panels.xml</DocumentationFile>
     <OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Panels\</OutputPath>
   </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Update="Krypton.Toolkit.Canary" Version="6.2111.310-beta" />
+  </ItemGroup>
 
 </Project>

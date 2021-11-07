@@ -20,4 +20,8 @@
     <ProjectReference Include="..\..\Krypton.Toolkit.Suite.Extended.Floating.Toolbars\Krypton.Toolkit.Suite.Extended.Floating.Toolbars 2019.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Update="Krypton.Toolkit.Canary" Version="6.2111.310-beta" />
+  </ItemGroup>
+
 </Project>

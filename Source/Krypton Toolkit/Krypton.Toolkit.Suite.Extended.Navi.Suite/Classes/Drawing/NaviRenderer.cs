@@ -7,7 +7,7 @@
 
 // Original license
 
-/**
+/*
 * MIT License
 *
 * Copyright (c) 2017 - 2018 Jacob Mesu
@@ -81,6 +81,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// <param name="g">The graphics surface to draw on</param>
         /// <param name="bounds">The bounds of the text</param>
         /// <param name="font">The font of the text</param>
+        /// <param name="color"></param>
         /// <param name="text">The text to draw</param>
         /// <param name="rightToLeft">Rigth to left or left to right layout</param>
         public virtual void DrawText(Graphics g, Rectangle bounds, Font font, Color color, string text, bool rightToLeft)
@@ -152,7 +153,6 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// </summary>
         /// <param name="g">The graphics surface to draw on</param>
         /// <param name="bounds">The bounds that the drawing should apply to</param>
-        /// <param name="state"></param>
         public virtual void DrawNaviBandClientAreaBg(Graphics g, Rectangle bounds)
         {
             using (Brush b = new SolidBrush(ColourTable.Background))
@@ -170,7 +170,6 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// </summary>
         /// <param name="g">The graphics surface to draw on</param>
         /// <param name="bounds">The bounds that the drawing should apply to</param>
-        /// <param name="state"></param>
         public virtual void DrawNaviBandBg(Graphics g, Rectangle bounds)
         {
             using (Brush b = new SolidBrush(ColourTable.Background))
@@ -190,6 +189,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// <param name="bounds">The bounds of the drawing</param>
         /// <param name="text">The text that should appear into the bar</param>
         /// <param name="font">The font to use when drawing the text</param>
+        /// <param name="rightToLeft"></param>
         /// <param name="state">The inputstate of the collapsed band</param>
         public virtual void DrawNaviBandCollapsedBg(Graphics g, Rectangle bounds, string text, Font font,
            bool rightToLeft, InputState state)
@@ -227,6 +227,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// </summary>
         /// <param name="g">The graphics surface to draw on</param>
         /// <param name="bounds">The bounds that the drawing should apply to</param>
+        /// <param name="state"></param>
+        /// <param name="inputState"></param>
         public virtual void DrawButtonBg(Graphics g, Rectangle bounds, ControlState state, InputState inputState)
         {
         }

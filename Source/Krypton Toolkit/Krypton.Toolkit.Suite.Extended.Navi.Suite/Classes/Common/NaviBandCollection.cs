@@ -141,7 +141,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         }
 
         /// <summary>
-        // Sorts the elements in the entire collection using the specified comparer.
+        /// Sorts the elements in the entire collection using the specified comparer.
         /// </summary>
         /// <param name="comparer">The IComparer implementation to use when comparing elements.</param>
         public virtual void Sort(IComparer comparer)

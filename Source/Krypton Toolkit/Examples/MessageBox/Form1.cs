@@ -11,7 +11,7 @@ namespace MessageBox
     public partial class Form1 : KryptonForm
     {
         private ExtendedMessageBoxCustomButtonVisibility _buttonVisibility;
-        private ExtendedKryptonMessageBoxIcon _icon;
+        private ExtendedKryptonMessageBoxIcon _icon = ExtendedKryptonMessageBoxIcon.NONE;
         private ExtendedMessageBoxButtons _buttons;
         private MessageBoxOptions _options = 0;
         private MessageBoxDefaultButton _defaultButton;
@@ -20,9 +20,7 @@ namespace MessageBox
         private Color _contentMessageColour, _buttonOneBackColourOne, _buttonOneBackColourTwo, _buttonOneTextColourOne,
                       _buttonOneTextColourTwo, _buttonTwoTextColourOne, _buttonTwoTextColourTwo, _buttonTwoBackColourOne,
                       _buttonTwoBackColourTwo, _buttonThreeTextColourOne, _buttonThreeTextColourTwo, _buttonThreeBackColourOne,
-                      _buttonThreeBackColourTwo, _yesButtonBackColourOne, _yesButtonBackColourTwo, _yesButtonTextColourOne,
-                      _yesButtonTextColourTwo, _noButtonBackColourOne, _noButtonBackColourTwo, _noButtonTextColourOne,
-                      _noButtonTextColourTwo, _optionalCheckBoxTextColourOne, _optionalCheckBoxTextColourTwo;
+                      _buttonThreeBackColourTwo, _optionalCheckBoxTextColourOne, _optionalCheckBoxTextColourTwo;
 
         private CheckState _optionalCheckBoxCheckState;
 
@@ -53,10 +51,6 @@ namespace MessageBox
                                            GetButtonTwoBackColourOne(), GetButtonTwoBackColourTwo(),
                                            GetButtonThreeTextColourOne(), GetButtonThreeTextColourTwo(),
                                            GetButtonThreeBackColourOne(), GetButtonThreeBackColourTwo(),
-                                           GetYesButtonBackColourOne(), GetYesButtonBackColourTwo(),
-                                           GetYesButtonTextColourOne(), GetYesButtonTextColourTwo(),
-                                           GetNoButtonBackColourOne(), GetNoButtonBackColourTwo(),
-                                           GetNoButtonTextColourOne(), GetNoButtonTextColourTwo(),
                                            GetButtonCornerRounding(), GetWindowCornerRounding(),
                                            kcbShowUACShieldOnAcceptButton.Checked, kcbShowOptionalCheckBox.Checked,
                                            kcbIsOptionalCheckBoxChecked.Checked, GetOptionalCheckBoxTextColourOne(),
@@ -151,7 +145,7 @@ namespace MessageBox
             }
         }
 
-        private void kcbUseYesNoOrCancelColours_CheckedChanged(object sender, EventArgs e) => kgrpYesNoAndCancelButtonOptions.Enabled = kcbUseYesNoOrCancelColours.Checked;
+        private void kcbUseYesNoOrCancelColours_CheckedChanged(object sender, EventArgs e) => kgrpButtonColors.Enabled = kcbUseYesNoOrCancelColours.Checked;
 
         private void ktxtCustomButtonOneText_TextChanged(object sender, EventArgs e) => SetCustomButtonOneText(ktxtCustomButtonOneText.Text);
 
@@ -227,7 +221,7 @@ namespace MessageBox
 
         #endregion
 
-        #region Custom Button Colours
+        #region Button Colours
         private void kcbtnButtonOneTextColorOne_SelectedColorChanged(object sender, ColorEventArgs e) => SetButtonOneTextColourOne(kcbtnButtonOneTextColorOne.SelectedColor);
 
         private void kcbtnButtonOneTextColorTwo_SelectedColorChanged(object sender, ColorEventArgs e) => SetButtonOneTextColourTwo(kcbtnButtonOneTextColorTwo.SelectedColor);
@@ -251,45 +245,7 @@ namespace MessageBox
         private void kcbtnButtonThreeBackColorOne_SelectedColorChanged(object sender, ColorEventArgs e) => SetButtonThreeBackColourOne(kcbtnButtonThreeBackColorOne.SelectedColor);
 
         private void kcbtnButtonThreeBackColorTwo_SelectedColorChanged(object sender, ColorEventArgs e) => SetButtonThreeBackColourTwo(kcbtnButtonThreeBackColorTwo.SelectedColor);
-        #endregion
-
-        #region Yes, No & Cancel Button Colours
-        private void kcbtnYesTextOne_SelectedColorChanged(object sender, ColorEventArgs e) => SetYesButtonTextColourOne(kcbtnYesTextOne.SelectedColor);
-
-        private void kcbtnYesTextTwo_SelectedColorChanged(object sender, ColorEventArgs e) => SetYesButtonTextColourTwo(kcbtnYesTextTwo.SelectedColor);
-
-        private void kcbtnYesBackOne_SelectedColorChanged(object sender, ColorEventArgs e) => SetYesButtonBackColourOne(kcbtnYesBackOne.SelectedColor);
-
-        private void kcbtnYesBackTwo_SelectedColorChanged(object sender, ColorEventArgs e) => SetYesButtonBackColourTwo(kcbtnYesBackTwo.SelectedColor);
-
-        private void kcbtnNoTextOne_SelectedColorChanged(object sender, ColorEventArgs e) => SetNoButtonTextColourOne(kcbtnNoTextOne.SelectedColor);
-
-        private void kcbtnNoTextTwo_SelectedColorChanged(object sender, ColorEventArgs e) => SetNoButtonTextColourTwo(kcbtnNoTextTwo.SelectedColor);
-
-        private void kcbtnNoBackOne_SelectedColorChanged(object sender, ColorEventArgs e) => SetNoButtonBackColourOne(kcbtnNoBackOne.SelectedColor);
-
-        private void kcbtnNoBackTwo_SelectedColorChanged(object sender, ColorEventArgs e) => SetNoButtonBackColourTwo(kcbtnNoBackTwo.SelectedColor);
-
-        private void kcbtnCancelTextOne_SelectedColorChanged(object sender, ColorEventArgs e)
-        {
-
-        }
-
-        private void kcbtnCancelTextTwo_SelectedColorChanged(object sender, ColorEventArgs e)
-        {
-
-        }
-
-        private void kcbtnCancelBackOne_SelectedColorChanged(object sender, ColorEventArgs e)
-        {
-
-        }
-
-        private void kcbtnCancelBackTwo_SelectedColorChanged(object sender, ColorEventArgs e)
-        {
-
-        }
-        #endregion
+        #endregion Button Colours
 
         #region Setters & Getters
         /// <summary>
@@ -475,102 +431,6 @@ namespace MessageBox
         private Color GetButtonThreeBackColourTwo() => _buttonThreeBackColourTwo;
 
         /// <summary>
-        /// Sets the YesButtonBackColourOne to the value of yesButtonBackColourOne.
-        /// </summary>
-        /// <param name="yesButtonBackColourOne">The desired value of YesButtonBackColourOne.</param>
-        private void SetYesButtonBackColourOne(Color yesButtonBackColourOne) => _yesButtonBackColourOne = yesButtonBackColourOne;
-
-        /// <summary>
-        /// Returns the value of the YesButtonBackColourOne.
-        /// </summary>
-        /// <returns>The value of the YesButtonBackColourOne.</returns>
-        private Color GetYesButtonBackColourOne() => _yesButtonBackColourOne;
-
-        /// <summary>
-        /// Sets the YesButtonBackColourTwo to the value of yesButtonBackColourTwo.
-        /// </summary>
-        /// <param name="yesButtonBackColourTwo">The desired value of YesButtonBackColourTwo.</param>
-        private void SetYesButtonBackColourTwo(Color yesButtonBackColourTwo) => _yesButtonBackColourTwo = yesButtonBackColourTwo;
-
-        /// <summary>
-        /// Returns the value of the YesButtonBackColourTwo.
-        /// </summary>
-        /// <returns>The value of the YesButtonBackColourTwo.</returns>
-        private Color GetYesButtonBackColourTwo() => _yesButtonBackColourTwo;
-
-        /// <summary>
-        /// Sets the YesButtonTextColourOne to the value of yesButtonTextColourOne.
-        /// </summary>
-        /// <param name="yesButtonTextColourOne">The desired value of YesButtonTextColourOne.</param>
-        private void SetYesButtonTextColourOne(Color yesButtonTextColourOne) => _yesButtonTextColourOne = yesButtonTextColourOne;
-
-        /// <summary>
-        /// Returns the value of the YesButtonTextColourOne.
-        /// </summary>
-        /// <returns>The value of the YesButtonTextColourOne.</returns>
-        private Color GetYesButtonTextColourOne() => _yesButtonTextColourOne;
-
-        /// <summary>
-        /// Sets the YesButtonTextColourTwo to the value of yesButtonTextColourTwo.
-        /// </summary>
-        /// <param name="yesButtonTextColourTwo">The desired value of YesButtonTextColourTwo.</param>
-        private void SetYesButtonTextColourTwo(Color yesButtonTextColourTwo) => _yesButtonTextColourTwo = yesButtonTextColourTwo;
-
-        /// <summary>
-        /// Returns the value of the YesButtonTextColourTwo.
-        /// </summary>
-        /// <returns>The value of the YesButtonTextColourTwo.</returns>
-        private Color GetYesButtonTextColourTwo() => _yesButtonTextColourTwo;
-
-        /// <summary>
-        /// Sets the NoButtonBackColourOne to the value of noButtonBackColourOne.
-        /// </summary>
-        /// <param name="noButtonBackColourOne">The desired value of NoButtonBackColourOne.</param>
-        private void SetNoButtonBackColourOne(Color noButtonBackColourOne) => _noButtonBackColourOne = noButtonBackColourOne;
-
-        /// <summary>
-        /// Returns the value of the NoButtonBackColourOne.
-        /// </summary>
-        /// <returns>The value of the NoButtonBackColourOne.</returns>
-        private Color GetNoButtonBackColourOne() => _noButtonBackColourOne;
-
-        /// <summary>
-        /// Sets the NoButtonBackColourTwo to the value of noButtonBackColourTwo.
-        /// </summary>
-        /// <param name="noButtonBackColourTwo">The desired value of NoButtonBackColourTwo.</param>
-        private void SetNoButtonBackColourTwo(Color noButtonBackColourTwo) => _noButtonBackColourTwo = noButtonBackColourTwo;
-
-        /// <summary>
-        /// Returns the value of the NoButtonBackColourTwo.
-        /// </summary>
-        /// <returns>The value of the NoButtonBackColourTwo.</returns>
-        private Color GetNoButtonBackColourTwo() => _noButtonBackColourTwo;
-
-        /// <summary>
-        /// Sets the NoButtonTextColourOne to the value of noButtonTextColourOne.
-        /// </summary>
-        /// <param name="noButtonTextColourOne">The desired value of NoButtonTextColourOne.</param>
-        private void SetNoButtonTextColourOne(Color noButtonTextColourOne) => _noButtonTextColourOne = noButtonTextColourOne;
-
-        /// <summary>
-        /// Returns the value of the NoButtonTextColourOne.
-        /// </summary>
-        /// <returns>The value of the NoButtonTextColourOne.</returns>
-        private Color GetNoButtonTextColourOne() => _noButtonTextColourOne;
-
-        /// <summary>
-        /// Sets the NoButtonTextColourTwo to the value of noButtonTextColourTwo.
-        /// </summary>
-        /// <param name="noButtonTextColourTwo">The desired value of NoButtonTextColourTwo.</param>
-        private void SetNoButtonTextColourTwo(Color noButtonTextColourTwo) => _noButtonTextColourTwo = noButtonTextColourTwo;
-
-        /// <summary>
-        /// Returns the value of the NoButtonTextColourTwo.
-        /// </summary>
-        /// <returns>The value of the NoButtonTextColourTwo.</returns>
-        private Color GetNoButtonTextColourTwo() => _noButtonTextColourTwo;
-
-        /// <summary>
         /// Sets the DefaultButton to the value of defaultButton.
         /// </summary>
         /// <param name="defaultButton">The desired value of DefaultButton.</param>
@@ -742,7 +602,7 @@ namespace MessageBox
 
         private void EnableCustomButtonFeatures(bool enabled)
         {
-            kgrpCustomButtonColors.Enabled = enabled;
+            kgrpButtonColors.Enabled = enabled;
 
             kgrpCustomButtonOptions.Enabled = enabled;
 

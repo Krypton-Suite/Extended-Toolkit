@@ -462,7 +462,7 @@
         /// <summary>
         /// Gets the spoke angles.
         /// </summary>
-        /// <param name="_shtNumberSpoke">The number spoke.</param>
+        /// <param name="_intNumberSpoke">The number spoke.</param>
         /// <returns>An array of angle.</returns>
         private double[] GetSpokesAngles(int _intNumberSpoke)
         {

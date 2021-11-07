@@ -24,7 +24,7 @@
     <Otherwise>
       <ItemGroup>
         <!--Canary package-->
-        <PackageReference Include="Krypton.Navigator.Canary" Version="6.2110.274-beta" />
+        <PackageReference Include="Krypton.Navigator.Canary" Version="6.2111.310-beta" />
 
         <!--Stable package-->
         <!--<PackageReference Include="Krypton.Navigator" Version="5.550.2108" />-->
@@ -89,6 +89,10 @@
         </Reference>
         <Reference Include="System.Design" Condition="'$(TargetFramework)' == 'net35'" />
         <!--TODO: Need to specify version here-->
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Update="Krypton.Toolkit.Canary" Version="6.2111.310-beta" />
     </ItemGroup>
     <!--Binary/Documentation Output-->
     <PropertyGroup>

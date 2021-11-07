@@ -52,6 +52,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         /// </summary>
         /// <param name="source"></param>
         /// <param name="targetKeyColumn">The foreign key fieldname to be used for the master -> child relationship</param>
+        /// <param name="tabPageCaption"></param>
         /// <param name="columns">optional columns if not already added via designer</param>
         public void AddMultiDetail(IBindingListView source, string targetKeyColumn, string tabPageCaption, DataGridViewColumn[] columns = null)
         {

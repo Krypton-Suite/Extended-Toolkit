@@ -7,6 +7,11 @@
 <a href="https://github.com/Krypton-Suite/Extended-Toolkit/blob/master/Documents/Modules/NuGet%20Package%20Information.md"><img src="https://img.shields.io/badge/NuGet-Version Information-orange.svg?label=Version&logo=nuget&style=flat-square" alt="Version information" /></a>
 
 =======
+# Example Images
+
+<a href="https://github.com/Krypton-Suite/Extended-Toolkit/blob/alpha/Documents/Examples/Examples.md">Alpha Doc</a>
+
+=======
 
 ## Supporters
 

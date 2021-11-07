@@ -30,7 +30,7 @@
     <Otherwise>
       <ItemGroup>
         <!--Canary package-->
-        <PackageReference Include="Krypton.Navigator.Canary" Version="6.2110.274-beta" />
+        <PackageReference Include="Krypton.Navigator.Canary" Version="6.2111.310-beta" />
 
         <!--Stable package-->
         <!--<PackageReference Include="Krypton.Navigator" Version="5.550.2108" />-->
@@ -88,6 +88,9 @@
             <Generator>ResXFileCodeGenerator</Generator>
             <LastGenOutput>Resources.Designer.cs</LastGenOutput>
         </EmbeddedResource>
+    </ItemGroup>
+    <ItemGroup>
+      <PackageReference Update="Krypton.Toolkit.Canary" Version="6.2111.310-beta" />
     </ItemGroup>
 
 </Project>

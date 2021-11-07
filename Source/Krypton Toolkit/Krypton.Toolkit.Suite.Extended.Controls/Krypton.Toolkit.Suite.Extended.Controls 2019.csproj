@@ -50,4 +50,8 @@
         <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Drawing\Krypton.Toolkit.Suite.Extended.Drawing 2019.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Update="Krypton.Toolkit.Canary" Version="6.2111.310-beta" />
+    </ItemGroup>
+
 </Project>

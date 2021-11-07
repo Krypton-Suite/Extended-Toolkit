@@ -72,8 +72,8 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
         /// <summary>
         /// Separator is not selectable, therefore CanSelect always returns false.
-        [EditorBrowsable(EditorBrowsableState.Never)]
         /// </summary>
+        [EditorBrowsable(EditorBrowsableState.Never)]
         [Browsable(false)]
         public override bool CanSelect
         {

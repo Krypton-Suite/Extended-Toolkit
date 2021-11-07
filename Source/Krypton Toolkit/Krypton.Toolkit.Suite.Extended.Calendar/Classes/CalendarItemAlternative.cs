@@ -107,10 +107,10 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         #region Properties
 
         /// <summary>
-        /// Gets or sets an array of rectangles containing bounds additional to <see cref="Bounds"/> property.
+        /// Gets or sets an array of rectangles containing bounds additional to <see cref="AditionalBounds"/> property.
         /// </summary>
         /// <remarks>
-        /// Items may contain additional bounds because of several graphical occourences, mostly when <see cref="Calendar"/> in 
+        /// Items may contain additional bounds because of several graphical occurrences, mostly when <see cref="Calendar"/> in 
         /// <see cref="CalendarDaysMode.Short"/> mode, due to the duration of the item; e.g. when an all day item lasts several weeks, 
         /// one rectangle for week must be drawn to indicate the presence of the item.
         /// </remarks>
@@ -652,7 +652,6 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Indicates if the time of the item intersects with the provided time
         /// </summary>
-        /// <param name="time"></param>
         /// <returns></returns>
         public bool IntersectsWith(TimeSpan timeStart, TimeSpan timeEnd)
         {

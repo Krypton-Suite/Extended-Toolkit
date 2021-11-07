@@ -545,9 +545,9 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         }
 
         /// <summary>
-        /// Sets the value of the <see cref=""/> property
+        /// Sets the value of the <see cref="ForwardButtonBounds"/> property
         /// </summary>
-        /// <param name="bounds">Value indicating if button is selected</param>
+        /// <param name="selected">Value indicating if button is selected</param>
         private void SetForwardButtonSelected(bool selected)
         {
             _forwardButtonSelected = selected;
@@ -555,9 +555,9 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         }
 
         /// <summary>
-        /// Sets the value of the <see cref=""/> property
+        /// Sets the value of the <see cref="BackwardButtonBounds"/> property
         /// </summary>
-        /// <param name="bounds">Value indicating if button is selected</param>
+        /// <param name="selected">Value indicating if button is selected</param>
         private void SetBackwardButtonSelected(bool selected)
         {
             _backwardButtonSelected = selected;
