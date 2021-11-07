@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Krypton.Toolkit.Suite.Extended.Wizard\Krypton.Toolkit.Suite.Extended.Wizard 2019.csproj" />
+    <ProjectReference Include="..\..\Krypton.Toolkit.Suite.Extended.Wizard\Krypton.Toolkit.Suite.Extended.Wizard 2022.csproj" />
   </ItemGroup>
 
   <ItemGroup>
