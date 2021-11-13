@@ -155,7 +155,10 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
                 for (int i = 0; i < Count; i++)
                 {
                     int position = Find(0, prop.Name, sortedList[i]);
-                    if (position != i)
+                    if (position != i
+                        && position > -1
+                        && position < Count
+                        )
                     {
                         var temp = this[i];
                         this[i] = this[position];
@@ -356,7 +359,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
             UnfilteredList.Clear();
             UnfilteredList.AddRange(SourceItems);
 
-            List<T> results = new List<T>();
+            List<T> results = new();
 
             PropertyDescriptor propDesc = TypeDescriptor.GetProperties(typeof(T))[FilterPropertyName];
 
