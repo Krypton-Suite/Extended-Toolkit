@@ -9,6 +9,7 @@
 using System;
 using System.ComponentModel;
 using System.Drawing;
+using System.Globalization;
 using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.DataGridView
@@ -91,9 +92,10 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
 
             if (RowCurrent.TryGetValue(CurrentRow.Index, out _))
             {
+                var s = string.Format(CultureInfo.InvariantCulture, FilterFormat, this[ForeignKey, CurrentRow.Index].Value);
                 foreach (var cGrid in ChildView.ChildGrids)
                 {
-                    ((IBindingListView)cGrid.Key.DataSource).Filter = $@"{cGrid.Value}{string.Format(FilterFormat, this[ForeignKey, CurrentRow.Index].Value)}";
+                    ((IBindingListView)cGrid.Key.DataSource).Filter = $@"{cGrid.Value}{s}";
                     if (SelectionMode == DataGridViewSelectionMode.FullRowSelect)
                     {
                         cGrid.Key.ClearSelection();
@@ -111,11 +113,12 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
             }
 
             var noDetails = true;
+            var s = string.Format( CultureInfo.InvariantCulture, FilterFormat, this[ForeignKey, rowIndex].Value);
             foreach (var cGrid in ChildView.ChildGrids)
             {
                 var bindingListView = (IBindingListView)cGrid.Key.DataSource;
                 //var filterBefore = bindingListView.Filter;
-                bindingListView.Filter = $@"{cGrid.Value}{string.Format(FilterFormat, this[ForeignKey, rowIndex].Value)}";
+                bindingListView.Filter = $@"{cGrid.Value}{s}";
                 //noDetails = (bindingListView.Count <= 0);
                 noDetails = cGrid.Key.RowCount <= 0;
 

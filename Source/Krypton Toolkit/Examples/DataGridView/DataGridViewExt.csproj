@@ -6,6 +6,7 @@
         <OutputType>WinExe</OutputType>
         <UseWindowsForms>true</UseWindowsForms>
         <Configurations>Debug;Release;Nightly;Canary;Stable</Configurations>
+        <ApplicationManifest>app.manifest</ApplicationManifest>
     </PropertyGroup>
 
     <ItemGroup>
