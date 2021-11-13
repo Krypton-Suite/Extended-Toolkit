@@ -90,3 +90,6 @@
 
 ![](https://github.com/Krypton-Suite/Extended-Toolkit/blob/master/Assets/Examples/KryptonViewBar.png)
 
+## `VirtualTreeColumnView`
+[A Tree and List View combined into a GridView](https://github.com/Krypton-Suite/Extended-Toolkit/tree/version-next/Source/Krypton%20Toolkit/Main/Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView)
+
