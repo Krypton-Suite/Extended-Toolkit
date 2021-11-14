@@ -81,22 +81,22 @@
 	</ItemGroup>
 
 	<!--Generic Toolkit import-->
-	<Choose>
+	<!--<Choose>
 		<When Condition="'$(Configuration)' == 'Nightly'">
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="6.2110.276-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="6.2111.316-alpha" />
 			</ItemGroup>
 		</When>
 		<Otherwise>
 			<ItemGroup>
-				<!--Canary package-->
-				<PackageReference Include="Krypton.Toolkit.Canary" Version="6.2110.274-beta" />
+               Canary package
+				<PackageReference Include="Krypton.Toolkit.Canary" Version="6.2111.310-beta" />
 
-				<!--Stable package-->
-				<!--<PackageReference Include="Krypton.Toolkit" Version="5.550.2108" />-->
+				Stable package
+				<PackageReference Include="Krypton.Toolkit" Version="5.550.2108" />
 			</ItemGroup>
 		</Otherwise>
-	</Choose>
+	</Choose>-->
 
 	<!--Version information-->
 	<PropertyGroup>

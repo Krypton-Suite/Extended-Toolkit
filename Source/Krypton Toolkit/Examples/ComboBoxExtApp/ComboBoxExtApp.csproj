@@ -9,6 +9,10 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="Krypton.Toolkit.Canary" Version="6.2111.310-beta" />
+    </ItemGroup>
+
+    <ItemGroup>
       <Compile Update="Form1.cs" />
     </ItemGroup>
 
