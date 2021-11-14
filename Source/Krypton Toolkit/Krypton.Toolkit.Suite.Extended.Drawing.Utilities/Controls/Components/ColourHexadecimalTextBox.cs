@@ -48,7 +48,10 @@
                         MessageBoxIcon = ExtendedKryptonMessageBoxIcon.INFORMATION
                     };
 
-                    manager.DisplayKryptonMessageBox();
+                    //manager.DisplayKryptonMessageBox(); // TODO: Re-enable **once** when `KryptonMessageBoxManager` is ready
+
+                    KryptonMessageBox.Show($"'{character}' is not a hexadecimal character", "Illegal Character",
+                        MessageBoxButtons.OK, KryptonMessageBoxIcon.INFORMATION);
 
                     e.Cancel = true;
                 }

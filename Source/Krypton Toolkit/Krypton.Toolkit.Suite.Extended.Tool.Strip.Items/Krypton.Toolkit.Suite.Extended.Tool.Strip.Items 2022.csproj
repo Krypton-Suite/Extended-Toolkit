@@ -5,7 +5,6 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-        <LangVersion>preview</LangVersion>
         <OutputType>library</OutputType>
         <RootNamespace>Krypton.Toolkit.Suite.Extended.Tool.Strip.Items</RootNamespace>
         <AssemblyName>Krypton.Toolkit.Suite.Extended.Tool.Strip.Items</AssemblyName>
@@ -19,9 +18,27 @@
         <PackageId>Krypton.Toolkit.Suite.Extended.Tool.Strip.Items</PackageId>
         <Description>An extension to the Krypton standard toolkit. This package implements additional tool strip items.</Description>
     </PropertyGroup>
-    <ItemGroup>
-      <PackageReference Include="Krypton.Toolkit.Canary" Version="6.2111.310-beta" />
-    </ItemGroup>
+
+    <Choose>
+        <When Condition="'$(Configuration)' == 'Release'">
+            <PropertyGroup>
+                <LangVersion>latest</LangVersion>
+            </PropertyGroup>
+
+            <ItemGroup>
+                <PackageReference Include="Krypton.Toolkit" Version="6.2111.312" />
+            </ItemGroup>
+        </When>
+        <Otherwise>
+            <PropertyGroup>
+                <LangVersion>preview</LangVersion>
+            </PropertyGroup>
+
+            <ItemGroup>
+                <PackageReference Include="Krypton.Toolkit.Canary" Version="6.2111.310-beta" />
+            </ItemGroup>
+        </Otherwise>
+    </Choose>
   
     <ItemGroup>
       <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Global.Utilities\Krypton.Toolkit.Suite.Extended.Global.Utilities 2022.csproj" />

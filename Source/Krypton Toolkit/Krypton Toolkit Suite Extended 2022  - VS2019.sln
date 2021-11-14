@@ -258,7 +258,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TreeGridViewApp", "Examples
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToolStripItems", "Examples\ToolStripItems\ToolStripItems.csproj", "{7DD7E446-6272-467B-AA8A-7EB0F5D31D7F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Compression", "Krypton.Toolkit.Suite.Extended.Compression\Krypton.Toolkit.Suite.Extended.Compression.csproj", "{18DE1F27-6D6B-44E2-BA62-7A1005EEB8CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Compression 2022", "Krypton.Toolkit.Suite.Extended.Compression\Krypton.Toolkit.Suite.Extended.Compression 2022.csproj", "{18DE1F27-6D6B-44E2-BA62-7A1005EEB8CC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Forms 2022", "Krypton.Toolkit.Suite.Extended.Forms\Krypton.Toolkit.Suite.Extended.Forms 2022.csproj", "{EE0904D6-72EF-4107-A286-CB5EEC2A5CE0}"
 EndProject
@@ -297,7 +297,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{4B
 		Examples\Directory.Build.targets = Examples\Directory.Build.targets
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView", "Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView\Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView.csproj", "{CB1E8B1F-E019-498A-8E4E-117012F6368C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView 2022", "Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView\Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView 2022.csproj", "{CB1E8B1F-E019-498A-8E4E-117012F6368C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualTreeColumnViewApp", "Examples\VirtualTreeColumnViewApp\VirtualTreeColumnViewApp.csproj", "{34B0DB6C-1C9A-421B-8CBE-FBBD9EDBFB33}"
 EndProject

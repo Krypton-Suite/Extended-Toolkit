@@ -5,7 +5,6 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-        <LangVersion>preview</LangVersion>
         <OutputType>library</OutputType>
         <RootNamespace>Krypton.Toolkit.Suite.Extended.Specialised.Dialogs</RootNamespace>
         <AssemblyName>Krypton.Toolkit.Suite.Extended.Specialised.Dialogs</AssemblyName>
@@ -20,32 +19,32 @@
         <Description>An extension to the Krypton standard toolkit. This package holds system dialogs.</Description>
     </PropertyGroup>
 
-    <!--Krypton Toolkit Import-
     <Choose>
-        <When Condition="'$(SolutionName.Endswith(`Nuget`))'">
-            <ItemGroup>
-                Canary package
-                <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2108.1" />
+        <When Condition="'$(Configuration)' == 'Release'">
+            <PropertyGroup>
+                <LangVersion>latest</LangVersion>
+            </PropertyGroup>
 
-                Stable package
-                <PackageReference Include="Krypton.Toolkit" Version="5.550.2108" />-
+            <ItemGroup>
+                <PackageReference Include="Krypton.Toolkit" Version="6.2111.312" />
             </ItemGroup>
         </When>
         <Otherwise>
+            <PropertyGroup>
+                <LangVersion>preview</LangVersion>
+            </PropertyGroup>
+
             <ItemGroup>
-                <ProjectReference Include="..\..\..\..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Toolkit\Krypton.Toolkit 2022.csproj" />
+                <PackageReference Include="Krypton.Toolkit.Canary" Version="6.2111.310-beta" />
             </ItemGroup>
         </Otherwise>
-    </Choose>-->
+    </Choose>
 
     <!--Binary/Documentation Output-->
     <PropertyGroup>
         <DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Specialised.Dialogs\Krypton.Toolkit.Suite.Extended.Specialised.Dialogs.xml</DocumentationFile>
         <OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Specialised.Dialogs\</OutputPath>
     </PropertyGroup>
-    <ItemGroup>
-      <PackageReference Include="Krypton.Toolkit.Canary" Version="6.2111.310-beta" />
-    </ItemGroup>
 
     <ItemGroup>
         <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Global.Utilities\Krypton.Toolkit.Suite.Extended.Global.Utilities 2022.csproj" />

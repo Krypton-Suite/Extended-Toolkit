@@ -5,7 +5,6 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-    <LangVersion>preview</LangVersion>
     <OutputType>library</OutputType>
     <RootNamespace>Krypton.Toolkit.Suite.Extended.Common</RootNamespace>
     <AssemblyName>Krypton.Toolkit.Suite.Extended.Common</AssemblyName>
@@ -18,27 +17,27 @@
     <PackageId>Krypton.Toolkit.Suite.Extended.Common</PackageId>
     <Description>An extension to the Krypton standard toolkit. This package holds common utilities.</Description>
   </PropertyGroup>
-  <ItemGroup>
-    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.2111.310-beta" />
-  </ItemGroup>
 
-  <!--Krypton Toolkit Import-
-    <Choose>
-        <When Condition="'$(SolutionName.Endswith(`Nuget`))'">
-            <ItemGroup>
-                Canary package
-                <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2108.1" />
+  <Choose>
+      <When Condition="'$(Configuration)' == 'Release'">
+          <PropertyGroup>
+              <LangVersion>latest</LangVersion>
+          </PropertyGroup>
 
-                Stable package
-                <PackageReference Include="Krypton.Toolkit" Version="5.550.2108" />-
-            </ItemGroup>
-        </When>
-        <Otherwise>
-            <ItemGroup>
-                <ProjectReference Include="..\..\..\..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Toolkit\Krypton.Toolkit 2022.csproj" />
-            </ItemGroup>
-        </Otherwise>
-    </Choose>-->
+          <ItemGroup>
+              <PackageReference Include="Krypton.Toolkit" Version="6.2111.312" />
+          </ItemGroup>
+      </When>
+      <Otherwise>
+          <PropertyGroup>
+              <LangVersion>preview</LangVersion>
+          </PropertyGroup>
+
+          <ItemGroup>
+              <PackageReference Include="Krypton.Toolkit.Canary" Version="6.2111.310-beta" />
+          </ItemGroup>
+      </Otherwise>
+  </Choose>
 
   <ItemGroup>
     <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Developer.Utilities\Krypton.Toolkit.Suite.Extended.Developer.Utilities 2022.csproj" />

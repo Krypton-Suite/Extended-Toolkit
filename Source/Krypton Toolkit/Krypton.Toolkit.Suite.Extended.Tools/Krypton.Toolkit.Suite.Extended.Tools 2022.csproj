@@ -5,7 +5,6 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-    <LangVersion>preview</LangVersion>
     <OutputType>library</OutputType>
     <RootNamespace>Krypton.Toolkit.Suite.Extended.Tools</RootNamespace>
     <AssemblyName>Krypton.Toolkit.Suite.Extended.Tools</AssemblyName>
@@ -18,14 +17,32 @@
     <PackageId>Krypton.Toolkit.Suite.Extended.Tools</PackageId>
     <Description>An extension to the Krypton standard toolkit. This package holds common tools.</Description>
   </PropertyGroup>
+
+  <Choose>
+      <When Condition="'$(Configuration)' == 'Release'">
+          <PropertyGroup>
+              <LangVersion>latest</LangVersion>
+          </PropertyGroup>
+
+          <ItemGroup>
+              <PackageReference Include="Krypton.Toolkit" Version="6.2111.312" />
+          </ItemGroup>
+      </When>
+      <Otherwise>
+          <PropertyGroup>
+              <LangVersion>preview</LangVersion>
+          </PropertyGroup>
+
+          <ItemGroup>
+              <PackageReference Include="Krypton.Toolkit.Canary" Version="6.2111.310-beta" />
+          </ItemGroup>
+      </Otherwise>
+  </Choose>
   
   <!--Binary/Documentation Output-->
   <PropertyGroup>
     <DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Tools\Krypton.Toolkit.Suite.Extended.Tools.xml</DocumentationFile>
     <OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Tools\</OutputPath>
   </PropertyGroup>
-  <ItemGroup>
-    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.2111.310-beta" />
-  </ItemGroup>
   
 </Project>

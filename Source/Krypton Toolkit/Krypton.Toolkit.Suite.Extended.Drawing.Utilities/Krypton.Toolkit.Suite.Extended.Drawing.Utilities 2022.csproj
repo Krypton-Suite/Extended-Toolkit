@@ -5,7 +5,6 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-        <LangVersion>preview</LangVersion>
         <OutputType>library</OutputType>
         <RootNamespace>Krypton.Toolkit.Suite.Extended.Drawing.Utilities</RootNamespace>
         <AssemblyName>Krypton.Toolkit.Suite.Extended.Drawing.Utilities</AssemblyName>
@@ -20,23 +19,30 @@
         <Description>An extension to the Krypton standard toolkit. This package implements additional drawing utilities.</Description>
     </PropertyGroup>
 
-  <!--Generic Navigator import-->
-  <Choose>
-    <When Condition="'$(SolutionName.Endswith(`Dev`))'">
-      <ItemGroup>
-        <PackageReference Include="Krypton.Navigator.Nightly" Version="6.2110.316-alpha" />
-      </ItemGroup>
-    </When>
-    <Otherwise>
-      <ItemGroup>
-        <!--Canary package-->
-        <PackageReference Include="Krypton.Navigator.Canary" Version="6.2110.310-beta" />
+    <Choose>
+        <When Condition="'$(Configuration)' == 'Release'">
+            <PropertyGroup>
+                <LangVersion>latest</LangVersion>
+            </PropertyGroup>
 
-        <!--Stable package-->
-        <!--<PackageReference Include="Krypton.Navigator" Version="5.550.2108" />-->
-      </ItemGroup>
-    </Otherwise>
-  </Choose>
+            <ItemGroup>
+                <PackageReference Include="Krypton.Toolkit" Version="6.2111.312" />
+
+                <PackageReference Include="Krypton.Navigator" Version="6.2110.312" />
+            </ItemGroup>
+        </When>
+        <Otherwise>
+            <PropertyGroup>
+                <LangVersion>preview</LangVersion>
+            </PropertyGroup>
+
+            <ItemGroup>
+                <PackageReference Include="Krypton.Toolkit.Canary" Version="6.2111.310-beta" />
+
+                <PackageReference Include="Krypton.Navigator.Canary" Version="6.2110.310-beta" />
+            </ItemGroup>
+        </Otherwise>
+    </Choose>
 
     <ItemGroup>
         <Reference Include="System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net4'))">
@@ -64,7 +70,6 @@
     </PropertyGroup>
     <ItemGroup>
         <!--<PackageReference Include="Cyotek.Windows.Forms.ColorPicker" Version="1.7.2" />-->
-        <PackageReference Include="Krypton.Toolkit.Canary" Version="6.2111.310-beta" />
         <PackageReference Include="Unofficial.Cyotek.Windows.Forms.NET" Version="1.8.1" />
     </ItemGroup>
     <ItemGroup>

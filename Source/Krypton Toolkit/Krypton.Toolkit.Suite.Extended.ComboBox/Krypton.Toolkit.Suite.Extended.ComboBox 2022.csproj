@@ -5,7 +5,6 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-        <LangVersion>preview</LangVersion>
         <OutputType>library</OutputType>
         <RootNamespace>Krypton.Toolkit.Suite.Extended.ComboBox</RootNamespace>
         <AssemblyName>Krypton.Toolkit.Suite.Extended.ComboBox</AssemblyName>

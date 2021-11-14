@@ -5,7 +5,6 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-        <LangVersion>preview</LangVersion>
         <OutputType>library</OutputType>
         <RootNamespace>Krypton.Toolkit.Suite.Extended.Controls</RootNamespace>
         <AssemblyName>Krypton.Toolkit.Suite.Extended.Controls</AssemblyName>
@@ -19,9 +18,27 @@
         <PackageId>Krypton.Toolkit.Suite.Extended.Controls</PackageId>
         <Description>An extension to the Krypton standard toolkit. This package holds numerous controls that complement the standard toolkit.</Description>
     </PropertyGroup>
-    <ItemGroup>
-      <PackageReference Include="Krypton.Toolkit.Canary" Version="6.2111.310-beta" />
-    </ItemGroup>
+
+    <Choose>
+        <When Condition="'$(Configuration)' == 'Release'">
+            <PropertyGroup>
+                <LangVersion>latest</LangVersion>
+            </PropertyGroup>
+
+            <ItemGroup>
+                <PackageReference Include="Krypton.Toolkit" Version="6.2111.312" />
+            </ItemGroup>
+        </When>
+        <Otherwise>
+            <PropertyGroup>
+                <LangVersion>preview</LangVersion>
+            </PropertyGroup>
+
+            <ItemGroup>
+                <PackageReference Include="Krypton.Toolkit.Canary" Version="6.2111.310-beta" />
+            </ItemGroup>
+        </Otherwise>
+    </Choose>
 
     <ItemGroup>
         <Reference Include="System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net4'))">
