@@ -27,6 +27,7 @@
   
    <ItemGroup>
     <PackageReference Include="ILRepack.Lib.MSBuild.Task" Version="2.0.18.2" />
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.2111.310-beta" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="System.Net.Http" Version="4.3.4" />
     <PackageReference Include="ZipStorer" Version="3.6.0" />

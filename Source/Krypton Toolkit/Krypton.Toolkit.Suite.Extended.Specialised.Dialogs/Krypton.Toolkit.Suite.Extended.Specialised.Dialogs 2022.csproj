@@ -43,6 +43,9 @@
         <DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Specialised.Dialogs\Krypton.Toolkit.Suite.Extended.Specialised.Dialogs.xml</DocumentationFile>
         <OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Specialised.Dialogs\</OutputPath>
     </PropertyGroup>
+    <ItemGroup>
+      <PackageReference Include="Krypton.Toolkit.Canary" Version="6.2111.310-beta" />
+    </ItemGroup>
 
     <ItemGroup>
         <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Global.Utilities\Krypton.Toolkit.Suite.Extended.Global.Utilities 2022.csproj" />

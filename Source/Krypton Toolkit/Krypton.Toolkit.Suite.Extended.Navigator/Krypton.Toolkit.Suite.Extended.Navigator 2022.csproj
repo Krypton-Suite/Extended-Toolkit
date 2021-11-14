@@ -19,6 +19,9 @@
         <PackageId>Krypton.Toolkit.Suite.Extended.Navigator</PackageId>
         <Description>An extension to the Krypton standard toolkit. This package holds extensions to the Krypton.Navigator module.</Description>
     </PropertyGroup>
+    <ItemGroup>
+      <PackageReference Include="Krypton.Toolkit.Canary" Version="6.2111.310-beta" />
+    </ItemGroup>
   
     <ItemGroup>
       <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Drawing\Krypton.Toolkit.Suite.Extended.Drawing 2022.csproj" />

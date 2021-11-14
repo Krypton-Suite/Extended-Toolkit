@@ -44,6 +44,9 @@
     <OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Toast\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.2111.310-beta" />
+  </ItemGroup>
+  <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>

@@ -42,5 +42,8 @@
     <DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Utilities\Krypton.Toolkit.Suite.Extended.Utilities.xml</DocumentationFile>
     <OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Utilities\</OutputPath>
   </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.2111.310-beta" />
+  </ItemGroup>
 
 </Project>

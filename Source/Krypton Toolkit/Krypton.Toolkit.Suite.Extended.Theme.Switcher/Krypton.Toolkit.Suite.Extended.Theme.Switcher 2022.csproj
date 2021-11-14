@@ -37,6 +37,9 @@
         <PackageId>Krypton.Toolkit.Suite.Extended.Theme.Switcher</PackageId>
         <Description>An extension to the Krypton standard toolkit. This package implements an easy-to-use theme switcher.</Description>
     </PropertyGroup>
+    <ItemGroup>
+      <PackageReference Include="Krypton.Toolkit.Canary" Version="6.2111.310-beta" />
+    </ItemGroup>
   
     <ItemGroup>
         <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Developer.Utilities\Krypton.Toolkit.Suite.Extended.Developer.Utilities 2022.csproj" />

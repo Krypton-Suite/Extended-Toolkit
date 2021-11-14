@@ -43,6 +43,9 @@
     <OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Settings\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.2111.310-beta" />
+  </ItemGroup>
+  <ItemGroup>
     <Compile Update="Settings\Globals\GlobalBooleanSettings.Designer.cs">
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <AutoGen>True</AutoGen>

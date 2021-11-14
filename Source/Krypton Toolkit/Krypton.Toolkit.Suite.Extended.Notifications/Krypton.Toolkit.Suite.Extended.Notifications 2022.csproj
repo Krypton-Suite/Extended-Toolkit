@@ -19,6 +19,9 @@
         <PackageId>Krypton.Toolkit.Suite.Extended.Notifications</PackageId>
         <Description>An extension to the Krypton standard toolkit. This package holds items to create notifications for your applications.</Description>
     </PropertyGroup>
+    <ItemGroup>
+      <PackageReference Include="Krypton.Toolkit.Canary" Version="6.2111.310-beta" />
+    </ItemGroup>
 
     <!--Krypton Toolkit Import-
     <Choose>

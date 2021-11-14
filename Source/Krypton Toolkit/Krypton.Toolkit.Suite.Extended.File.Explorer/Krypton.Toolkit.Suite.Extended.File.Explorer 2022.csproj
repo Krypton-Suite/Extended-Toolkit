@@ -19,6 +19,9 @@
         <PackageId>Krypton.Toolkit.Suite.Extended.File.Explorer</PackageId>
         <Description>An extension to the Krypton standard toolkit. This package implements file explorer features.</Description>
     </PropertyGroup>
+    <ItemGroup>
+      <PackageReference Include="Krypton.Toolkit.Canary" Version="6.2111.310-beta" />
+    </ItemGroup>
 
     <!--Krypton Toolkit Import-
     <Choose>
