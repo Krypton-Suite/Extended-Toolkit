@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31829.152
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.31903.286
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Main", "Main", "{252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}"
 EndProject
@@ -287,6 +287,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OutlookGrid", "Examples\Out
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Miscellaneous", "Miscellaneous", "{241C9BD1-CB7D-4AF0-8FDB-3BCB4C98AF51}"
 	ProjectSection(SolutionItems) = preProject
+		..\.editorconfig = ..\.editorconfig
 		Directory.Build.props = Directory.Build.props
 		Directory.Build.targets = Directory.Build.targets
 	EndProjectSection
@@ -298,7 +299,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{4B
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView", "Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView\Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView.csproj", "{CB1E8B1F-E019-498A-8E4E-117012F6368C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualTreeColumnViewApp", "Examples\VirtualTreeColumnViewApp\VirtualTreeColumnViewApp.csproj", "{34B0DB6C-1C9A-421B-8CBE-FBBD9EDBFB33}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualTreeColumnViewApp", "Examples\VirtualTreeColumnViewApp\VirtualTreeColumnViewApp.csproj", "{34B0DB6C-1C9A-421B-8CBE-FBBD9EDBFB33}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
