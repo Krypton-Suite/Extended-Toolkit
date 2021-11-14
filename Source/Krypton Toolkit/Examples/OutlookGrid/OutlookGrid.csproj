@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFrameworks>net48;net5.0-windows</TargetFrameworks>
-    <LangVersion>latest</LangVersion>
+    <LangVersion>preview</LangVersion>
     <UseWindowsForms>true</UseWindowsForms>
     <Configurations>Debug;Release;Nightly;Canary;Stable</Configurations>
   </PropertyGroup>

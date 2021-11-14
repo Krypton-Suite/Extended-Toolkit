@@ -183,11 +183,11 @@
         #endregion
 
         #region Constructor
-        public ThemeSelector(KryptonManager manager)
+        public ThemeSelector(KryptonManager? manager)
         {
             InitializeComponent();
 
-            _manager = manager;
+            _manager = manager ?? new KryptonManager();
 
             _palette = new KryptonPalette();
 

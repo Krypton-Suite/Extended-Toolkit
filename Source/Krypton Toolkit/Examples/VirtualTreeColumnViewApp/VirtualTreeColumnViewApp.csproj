@@ -5,7 +5,7 @@
         <!--<TargetFramework>net5.0-windows</TargetFramework>-->
         <TargetFramework>net48</TargetFramework>
         <UseWindowsForms>true</UseWindowsForms>
-        <LangVersion>latest</LangVersion>
+        <LangVersion>preview</LangVersion>
         <OutputType>WinExe</OutputType>
         <Configurations>Debug;Release;Nightly;Canary;Stable</Configurations>
         <ApplicationManifest>app.manifest</ApplicationManifest>

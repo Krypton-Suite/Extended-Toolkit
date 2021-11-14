@@ -22,11 +22,13 @@
     <Choose>
         <When Condition="'$(Configuration)' == 'Release'">
             <PropertyGroup>
-                <LangVersion>latest</LangVersion>
+                <LangVersion>preview</LangVersion>
             </PropertyGroup>
 
             <ItemGroup>
                 <PackageReference Include="Krypton.Toolkit" Version="6.2111.312" />
+
+                <PackageReference Include="Krypton.Navigator" Version="6.2111.312" />
             </ItemGroup>
         </When>
         <Otherwise>
@@ -36,6 +38,8 @@
 
             <ItemGroup>
                 <PackageReference Include="Krypton.Toolkit.Canary" Version="6.2111.310-beta" />
+
+                <PackageReference Include="Krypton.Navigator.Canary" Version="6.2111.310-beta" />
             </ItemGroup>
         </Otherwise>
     </Choose>

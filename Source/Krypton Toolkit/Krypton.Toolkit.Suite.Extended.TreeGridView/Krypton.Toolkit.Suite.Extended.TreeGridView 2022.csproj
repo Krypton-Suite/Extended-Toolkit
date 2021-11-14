@@ -25,7 +25,7 @@
     <Choose>
         <When Condition="'$(Configuration)' == 'Release'">
             <PropertyGroup>
-                <LangVersion>latest</LangVersion>
+                <LangVersion>preview</LangVersion>
             </PropertyGroup>
 
             <ItemGroup>
