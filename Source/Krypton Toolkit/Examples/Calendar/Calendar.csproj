@@ -3,13 +3,17 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
-    <LangVersion>latest</LangVersion>
+    <LangVersion>preview</LangVersion>
     <UseWindowsForms>true</UseWindowsForms>
     <Configurations>Debug;Release;Nightly;Canary;Stable</Configurations>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Krypton.Toolkit.Suite.Extended.Calendar\Krypton.Toolkit.Suite.Extended.Calendar 2019.csproj" />
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.2111.310-beta" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Krypton.Toolkit.Suite.Extended.Calendar\Krypton.Toolkit.Suite.Extended.Calendar 2022.csproj" />
   </ItemGroup>
 
 </Project>

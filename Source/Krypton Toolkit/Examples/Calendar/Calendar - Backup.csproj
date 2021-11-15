@@ -3,9 +3,9 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
-    <LangVersion>latest</LangVersion>
+    <LangVersion>preview</LangVersion>
     <UseWindowsForms>true</UseWindowsForms>
-  </PropertyGroup>    <ProjectReference Include="..\..\Krypton.Toolkit.Suite.Extended.Calendar\Krypton.Toolkit.Suite.Extended.Calendar 2019.csproj" />
+  </PropertyGroup>    <ProjectReference Include="..\..\Krypton.Toolkit.Suite.Extended.Calendar\Krypton.Toolkit.Suite.Extended.Calendar 2022.csproj" />
 
 
 </Project>

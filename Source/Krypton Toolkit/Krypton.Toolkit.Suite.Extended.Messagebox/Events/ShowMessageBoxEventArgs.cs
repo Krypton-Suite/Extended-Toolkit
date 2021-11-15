@@ -445,6 +445,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         #endregion
 
         #region Methods
+        /*
         /// <summary>Shows the message box.</summary>
         public void ShowMessageBox() => InternalKryptonMessageBoxExtended.Show(_owner, _messageBoxContentText, _messageBoxCaption, _buttons,
                                                                                _customButtonOptions, _messageBoxIcon, _defaultButton,
@@ -480,7 +481,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                                                                _buttonTwoTextColour, _buttonThreeTextColour, _yesButtonColour,
                                                                                _noButtonColour, _textColour, _yesNoButtonTextColour, _parentWindow);
             return result;
-        }
+        }*/
         #endregion
     }
 }

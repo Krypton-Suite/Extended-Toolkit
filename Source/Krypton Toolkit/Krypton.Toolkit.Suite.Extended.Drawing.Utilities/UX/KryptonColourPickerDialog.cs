@@ -292,7 +292,11 @@
                                 MessageBoxIcon = ExtendedKryptonMessageBoxIcon.EXCLAMATION
                             };
 
-                            manager.DisplayKryptonMessageBox();
+                            //manager.DisplayKryptonMessageBox(); // TODO: Re-enable **once** when `KryptonMessageBoxManager` is ready
+
+                            KryptonMessageBox.Show(
+                                "Sorry, unable to save palette, the file format is not supported or is not recognised.",
+                                "Load Palette", MessageBoxButtons.OK, KryptonMessageBoxIcon.EXCLAMATION);
                         }
                     }
                     catch (Exception exc)
@@ -340,7 +344,11 @@
                         MessageBoxIcon = ExtendedKryptonMessageBoxIcon.EXCLAMATION
                     };
 
-                    manager.DisplayKryptonMessageBox();
+                    //manager.DisplayKryptonMessageBox(); // TODO: Re-enable **once** when `KryptonMessageBoxManager` is ready
+
+                    KryptonMessageBox.Show(
+                        "Sorry, unable to save palette, the file format is not supported or is not recognised.",
+                        "Save Palette", MessageBoxButtons.OK, KryptonMessageBoxIcon.EXCLAMATION);
                 }
             }
         }
