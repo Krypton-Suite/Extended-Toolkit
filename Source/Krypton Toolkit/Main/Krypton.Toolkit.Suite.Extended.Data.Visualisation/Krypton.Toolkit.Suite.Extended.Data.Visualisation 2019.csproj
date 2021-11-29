@@ -8,6 +8,7 @@
         <AssemblyName>Krypton.Toolkit.Suite.Extended.Data.Visualisation</AssemblyName>
         <UseWindowsForms>true</UseWindowsForms>
         <NeutralLanguage>en</NeutralLanguage>
+        <Configurations>Debug;Release;Canary</Configurations>
     </PropertyGroup>
 
     <!--Package Data-->

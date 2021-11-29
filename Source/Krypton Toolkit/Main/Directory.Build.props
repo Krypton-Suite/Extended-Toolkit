@@ -5,7 +5,7 @@
 	</PropertyGroup>
 
 	<!--Generate NuGet packages on build-->
-	<PropertyGroup Condition="'$(Configuration)' == 'Release'">
+	<PropertyGroup Condition="'$(Configuration)' == 'Canary'">
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 
 		<!--Package icon-->

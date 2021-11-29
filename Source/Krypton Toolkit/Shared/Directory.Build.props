@@ -5,7 +5,7 @@
 	</PropertyGroup>
 
 	<!--Generate NuGet packages on build-->
-	<PropertyGroup Condition="'$(Configuration)' == 'Release'">
+	<PropertyGroup Condition="'$(Configuration)' == 'Canary'">
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 
 		<!--Package icon-->
@@ -25,24 +25,6 @@
 
 		<None Include="..\..\..\..\Assets\Package Icon\Stable.png" Pack="true" PackagePath="\" />
 	</ItemGroup>
-
-	<!--Generic Toolkit import-->
-	<Choose>
-		<When Condition="'$(SolutionName.Endswith(`Nightly`))'">
-			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="6.2109.262" />
-			</ItemGroup>
-		</When>
-		<Otherwise>
-				<ItemGroup>
-					<!--Canary package-->
-					<PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2108.1" />
-
-					<!--Stable package-->
-					<!--<PackageReference Include="Krypton.Toolkit" Version="5.550.2108" />-->
-				</ItemGroup>
-		</Otherwise>
-	</Choose>
 
 	<!--Version information-->
 	<PropertyGroup>

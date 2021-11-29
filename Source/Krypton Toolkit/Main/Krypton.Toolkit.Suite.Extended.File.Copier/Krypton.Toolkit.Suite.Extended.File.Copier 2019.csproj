@@ -7,6 +7,7 @@
     <RootNamespace>Krypton.Toolkit.Suite.Extended.File.Copier</RootNamespace>
     <AssemblyName>Krypton.Toolkit.Suite.Extended.File.Copier</AssemblyName>
     <UseWindowsForms>true</UseWindowsForms>
+    <Configurations>Debug;Release;Canary</Configurations>
   </PropertyGroup>
 
   <!--Package Data-->

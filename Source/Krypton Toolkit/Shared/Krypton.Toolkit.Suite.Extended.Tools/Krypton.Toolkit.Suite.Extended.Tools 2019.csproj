@@ -6,6 +6,7 @@
     <RootNamespace>Krypton.Toolkit.Suite.Extended.Tools</RootNamespace>
     <AssemblyName>Krypton.Toolkit.Suite.Extended.Tools</AssemblyName>
     <UseWindowsForms>true</UseWindowsForms>
+    <Configurations>Debug;Release;Canary</Configurations>
   </PropertyGroup>
 
   <!--Package Data-->
