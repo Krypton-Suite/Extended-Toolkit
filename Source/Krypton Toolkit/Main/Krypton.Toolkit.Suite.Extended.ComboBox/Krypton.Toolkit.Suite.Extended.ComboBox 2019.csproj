@@ -16,6 +16,19 @@
         <Description>An extension to the Krypton standard toolkit ComboBox. This package implements additional Drop Down types and views.</Description>
     </PropertyGroup>
 
+    <Choose>
+        <When Condition="'$(Configuration)' == 'Canary'">
+            <ItemGroup>
+                <PackageReference Include="Krypton.Toolkit.Canary" Version="6.2111.330-beta" />
+            </ItemGroup>
+        </When>
+        <Otherwise>
+            <ItemGroup>
+                <PackageReference Include="Krypton.Toolkit" Version="6.2111.312" />
+            </ItemGroup>
+        </Otherwise>
+    </Choose>
+
     <ItemGroup>
         <Reference Include="System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net4'))">
             <SpecificVersion>True</SpecificVersion>

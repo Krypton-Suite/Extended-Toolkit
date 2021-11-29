@@ -18,25 +18,7 @@
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 	</PropertyGroup>
 
-	<!--Generic Toolkit import-->
-	<Choose>
-		<When Condition="'$(SolutionName.Endswith(`Nightly`))'">
-			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="6.2110.274-alpha" />
-			</ItemGroup>
-		</When>
-		<Otherwise>
-			<ItemGroup>
-				<!--Canary package-->
-				<PackageReference Include="Krypton.Toolkit.Canary" Version="6.2110.274-beta" />
-
-				<!--Stable package-->
-				<!--<PackageReference Include="Krypton.Toolkit" Version="5.550.2108" />-->
-			</ItemGroup>
-		</Otherwise>
-	</Choose>
-
-	<ItemGroup>
+    <ItemGroup>
 		<None Include="..\..\..\..\Assets\Package Icon\Nightly.png" Pack="true" PackagePath="\" />
 
 		<None Include="..\..\..\..\Assets\Package Icon\Canary.png" Pack="true" PackagePath="\" />

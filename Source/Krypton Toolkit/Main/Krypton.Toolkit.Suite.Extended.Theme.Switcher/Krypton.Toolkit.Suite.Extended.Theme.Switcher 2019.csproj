@@ -10,22 +10,23 @@
         <NeutralLanguage>en</NeutralLanguage>
     </PropertyGroup>
 
-  <Choose>
-    <When Condition="'$(SolutionName.Endswith(`Nightly`))'">
-      <ItemGroup>
-        <PackageReference Include="Krypton.Navigator.Nightly" Version="6.2110.274-alpha" />
-      </ItemGroup>
-    </When>
-    <Otherwise>
-      <ItemGroup>
-        <!--Canary package-->
-        <PackageReference Include="Krypton.Navigator.Canary" Version="6.2110.274-beta" />
 
-        <!--Stable package-->
-        <!--<PackageReference Include="Krypton.Navigator" Version="6.2111.xxx" />-->
-      </ItemGroup>
-    </Otherwise>
-  </Choose>
+    <Choose>
+        <When Condition="'$(Configuration)' == 'Canary'">
+            <ItemGroup>
+                <PackageReference Include="Krypton.Toolkit.Canary" Version="6.2111.330-beta" />
+
+                <PackageReference Include="Krypton.Navigator.Canary" Version="6.2111.330-beta" />
+            </ItemGroup>
+        </When>
+        <Otherwise>
+            <ItemGroup>
+                <PackageReference Include="Krypton.Toolkit" Version="6.2111.312" />
+
+                <PackageReference Include="Krypton.Navigator" Version="6.2111.312" />
+            </ItemGroup>
+        </Otherwise>
+    </Choose>
 
     <!--Package Data-->
     <PropertyGroup>
