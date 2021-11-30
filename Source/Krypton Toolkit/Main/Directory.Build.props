@@ -1,22 +1,36 @@
 <Project>
 
-	<PropertyGroup>
-		<TargetFrameworks>net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows;net6.0-windows</TargetFrameworks>
-	</PropertyGroup>
+    <Choose>
+        <When Condition="'$(Configuration)' == 'Canary'">
+        <!--Generate NuGet packages on build-->
+            <PropertyGroup>
+                <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 
-	<!--Generate NuGet packages on build-->
-	<PropertyGroup Condition="'$(Configuration)' == 'Canary'">
-		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+                <!--Package icon-->
+                <PackageIcon>Canary.png</PackageIcon>
 
-		<!--Package icon-->
-		<PackageIcon>Canary.png</PackageIcon>
+                <!--<PackageLicenseFile>..\..\..\..\Documents\Help\License.md</PackageLicenseFile>-->
 
-		<!--<PackageLicenseFile>..\..\..\..\Documents\Help\License.md</PackageLicenseFile>-->
-		
-		<PackageLicenseUrl>https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE</PackageLicenseUrl>
+                <PackageLicenseUrl>https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE</PackageLicenseUrl>
 
-		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-	</PropertyGroup>
+                <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+            </PropertyGroup>
+		</When>
+        <Otherwise>
+            <PropertyGroup>
+                <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+
+                <!--Package icon-->
+                <PackageIcon>Stable.png</PackageIcon>
+
+                <!--<PackageLicenseFile>..\..\..\..\Documents\Help\License.md</PackageLicenseFile>-->
+
+                <PackageLicenseUrl>https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE</PackageLicenseUrl>
+
+                <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+            </PropertyGroup>
+        </Otherwise>
+    </Choose>
 
     <ItemGroup>
 		<None Include="..\..\..\..\Assets\Package Icon\Nightly.png" Pack="true" PackagePath="\" />
