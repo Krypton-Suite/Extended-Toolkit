@@ -8,7 +8,7 @@
 	</PropertyGroup>
 
 	<Choose>
-		<When Condition="$(Configuration) == 'Debug'">
+		<When Condition="'$(Configuration)' == 'Canary'">
 			<PropertyGroup>
 				<LangVersion>preview</LangVersion>
 			</PropertyGroup>
@@ -65,38 +65,40 @@
 				<PackageLicenseUrl>https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE</PackageLicenseUrl>
 
 				<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+
+				<PackageOutputPath>..\..\..\Bin\NuGet Packages\Canary</PackageOutputPath>
 			</PropertyGroup>
 		</When>
 		<Otherwise>
+			<PropertyGroup>
+				<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 
+				<!--Package icon-->
+				<PackageIcon>Stable.png</PackageIcon>
+
+				<PackageLicenseUrl>https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE</PackageLicenseUrl>
+
+				<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+
+				<PackageOutputPath>..\..\..\Bin\NuGet Packages\Stable</PackageOutputPath>
+			</PropertyGroup>
 		</Otherwise>
 	</Choose>
 
-	<ItemGroup>
-		<None Include="..\..\..\Assets\Package Icon\Canary.png" Link="Canary.png" Pack="true" PackagePath="" />
-
-		<None Include="..\..\..\Assets\Package Icon\Nightly.png" Link="Nightly.png" Pack="true" PackagePath="" />
-
-		<None Include="..\..\..\Assets\Package Icon\Stable.png" Link="Stable.png" Pack="true" PackagePath="" />
-	</ItemGroup>
-
-	<!--Generic Toolkit import-->
-	<!--<Choose>
-		<When Condition="'$(Configuration)' == 'Nightly'">
+	<Choose>
+		<When Condition="'$(Configuration)' == 'Canary'">
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="6.2111.316-alpha" />
+				<None Include="..\..\..\Assets\Package Icon\Canary.png" Link="Canary.png" Pack="true" PackagePath="" />
 			</ItemGroup>
 		</When>
 		<Otherwise>
 			<ItemGroup>
-			   Canary package
-				<PackageReference Include="Krypton.Toolkit.Canary" Version="6.2111.310-beta" />
+				<!--<None Include="..\..\..\Assets\Package Icon\Nightly.png" Link="Nightly.png" Pack="true" PackagePath="" />-->
 
-				Stable package
-				<PackageReference Include="Krypton.Toolkit" Version="5.550.2108" />
+				<None Include="..\..\..\Assets\Package Icon\Stable.png" Link="Stable.png" Pack="true" PackagePath="" />
 			</ItemGroup>
 		</Otherwise>
-	</Choose>-->
+	</Choose>
 
 	<!--Version information-->
 	<PropertyGroup>
