@@ -14,8 +14,20 @@
     </PropertyGroup>
 
     <!--Package Data-->
+    <Choose>
+        <When Condition="'$(Configuration)' == 'Canary'">
+            <PropertyGroup>
+                <PackageId>Krypton.Toolkit.Suite.Extended.Data.Visualisation.Canary</PackageId>
+            </PropertyGroup>
+        </When>
+        <Otherwise>
+            <PropertyGroup>
+                <PackageId>Krypton.Toolkit.Suite.Extended.Data.Visualisation</PackageId>
+            </PropertyGroup>
+        </Otherwise>
+    </Choose>
+
     <PropertyGroup>
-        <PackageId>Krypton.Toolkit.Suite.Extended.Data.Visualisation</PackageId>
         <Description>An extension to the Krypton standard toolkit. This package implements charts, graphs and other additional data visualisation tools.</Description>
     </PropertyGroup>
 

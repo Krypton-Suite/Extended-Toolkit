@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-	<PropertyGroup>
-		<TargetFrameworks>net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows;net6.0-windows</TargetFrameworks>
-	</PropertyGroup>
+    <PropertyGroup>
+        <TargetFrameworks>net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows;net6.0-windows</TargetFrameworks>
+    </PropertyGroup>
 
     <PropertyGroup>
         <OutputType>library</OutputType>
@@ -14,8 +14,20 @@
     </PropertyGroup>
 
     <!--Package Data-->
+    <Choose>
+        <When Condition="'$(Configuration)' == 'Canary'">
+            <PropertyGroup>
+                <PackageId>Krypton.Toolkit.Suite.Extended.Calendar.Canary</PackageId>
+            </PropertyGroup>
+        </When>
+        <Otherwise>
+            <PropertyGroup>
+                <PackageId>Krypton.Toolkit.Suite.Extended.Calendar</PackageId>
+            </PropertyGroup>
+        </Otherwise>
+    </Choose>
+
     <PropertyGroup>
-        <PackageId>Krypton.Toolkit.Suite.Extended.Calendar</PackageId>
         <Description>An extension to the Krypton standard toolkit. This package holds extensions to the Krypton.Calendar module.</Description>
     </PropertyGroup>
 

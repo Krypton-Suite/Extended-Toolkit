@@ -14,8 +14,20 @@
     </PropertyGroup>
 
     <!--Package Data-->
+    <Choose>
+        <When Condition="'$(Configuration)' == 'Canary'">
+            <PropertyGroup>
+                <PackageId>Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView.Canary</PackageId>
+            </PropertyGroup>
+        </When>
+        <Otherwise>
+            <PropertyGroup>
+                <PackageId>Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView</PackageId>
+            </PropertyGroup>
+        </Otherwise>
+    </Choose>
+
     <PropertyGroup>
-        <PackageId>Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView</PackageId>
         <Description>An extension to the Krypton standard toolkit. This package holds items to create a 'virtual tree column view' for your applications.</Description>
     </PropertyGroup>
 

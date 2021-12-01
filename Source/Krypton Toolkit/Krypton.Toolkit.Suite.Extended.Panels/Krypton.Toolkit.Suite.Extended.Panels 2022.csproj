@@ -14,8 +14,20 @@
   </PropertyGroup>
 
   <!--Package Data-->
-  <PropertyGroup>
-    <PackageId>Krypton.Toolkit.Suite.Extended.Panels</PackageId>
+  <Choose>
+      <When Condition="'$(Configuration)' == 'Canary'">
+          <PropertyGroup>
+              <PackageId>Krypton.Toolkit.Suite.Extended.Panels.Canary</PackageId>
+          </PropertyGroup>
+      </When>
+      <Otherwise>
+          <PropertyGroup>
+              <PackageId>Krypton.Toolkit.Suite.Extended.Panels</PackageId>
+          </PropertyGroup>
+      </Otherwise>
+  </Choose>
+
+    <PropertyGroup>
     <Description>An extension to the Krypton standard toolkit. This package implements palette creation tools.</Description>
   </PropertyGroup>
 

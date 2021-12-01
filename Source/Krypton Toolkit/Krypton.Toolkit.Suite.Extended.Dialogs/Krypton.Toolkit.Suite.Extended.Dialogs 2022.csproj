@@ -14,8 +14,20 @@
 	</PropertyGroup>
 
 	<!--Package Data-->
-	<PropertyGroup>
-		<PackageId>Krypton.Toolkit.Suite.Extended.Dialogs</PackageId>
+    <Choose>
+        <When Condition="'$(Configuration)' == 'Canary'">
+            <PropertyGroup>
+                <PackageId>Krypton.Toolkit.Suite.Extended.Dialogs.Canary</PackageId>
+            </PropertyGroup>
+        </When>
+        <Otherwise>
+            <PropertyGroup>
+                <PackageId>Krypton.Toolkit.Suite.Extended.Dialogs</PackageId>
+            </PropertyGroup>
+        </Otherwise>
+    </Choose>
+
+    <PropertyGroup>
 		<Description>An extension to the Krypton standard toolkit. This package holds extensions to the Krypton.Dialogs module.</Description>
 	</PropertyGroup>
 

@@ -14,8 +14,20 @@
     </PropertyGroup>
 
     <!--Package Data-->
+    <Choose>
+        <When Condition="'$(Configuration)' == 'Canary'">
+            <PropertyGroup>
+                <PackageId>Krypton.Toolkit.Suite.Extended.Theme.Switcher.Canary</PackageId>
+            </PropertyGroup>
+        </When>
+        <Otherwise>
+            <PropertyGroup>
+                <PackageId>Krypton.Toolkit.Suite.Extended.Theme.Switcher</PackageId>
+            </PropertyGroup>
+        </Otherwise>
+    </Choose>
+
     <PropertyGroup>
-        <PackageId>Krypton.Toolkit.Suite.Extended.Theme.Switcher</PackageId>
         <Description>An extension to the Krypton standard toolkit. This package implements an easy-to-use theme switcher.</Description>
     </PropertyGroup>
 

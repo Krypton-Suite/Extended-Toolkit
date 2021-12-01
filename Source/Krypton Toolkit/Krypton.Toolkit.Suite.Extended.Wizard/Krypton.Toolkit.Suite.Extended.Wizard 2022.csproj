@@ -14,8 +14,20 @@
     </PropertyGroup>
 
     <!--Package Data-->
+    <Choose>
+        <When Condition="'$(Configuration)' == 'Canary'">
+            <PropertyGroup>
+                <PackageId>Krypton.Toolkit.Suite.Extended.Wizard.Canary</PackageId>
+            </PropertyGroup>
+        </When>
+        <Otherwise>
+            <PropertyGroup>
+                <PackageId>Krypton.Toolkit.Suite.Extended.Wizard</PackageId>
+            </PropertyGroup>
+        </Otherwise>
+    </Choose>
+
     <PropertyGroup>
-        <PackageId>Krypton.Toolkit.Suite.Extended.Wizard</PackageId>
         <Description>An extension to the Krypton standard toolkit. This package implements a wizard control.</Description>
     </PropertyGroup>
 
