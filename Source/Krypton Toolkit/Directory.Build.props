@@ -101,6 +101,29 @@
 	</Choose>
 
 	<!--Version information-->
+	<Choose>
+		<When Condition="'$(Configuration)' == 'Canary'">
+			<PropertyGroup>
+				<Minor>$([System.DateTime]::Now.ToString(yyMM))</Minor>
+
+				<Build>$([System.DateTime]::Now.get_DayOfYear().ToString())</Build>
+
+				<!--Canary only-->
+				<PackageVersion>6.$(Minor).$(Build)-beta</PackageVersion>
+			</PropertyGroup>
+		</When>
+		<Otherwise>
+			<PropertyGroup>
+				<Minor>$([System.DateTime]::Now.ToString(yyMM))</Minor>
+
+				<Build>$([System.DateTime]::Now.get_DayOfYear().ToString())</Build>
+
+				<!--Stable/Signed-->
+				<PackageVersion>6.$(Minor).$(Build)</PackageVersion>
+			</PropertyGroup>
+		</Otherwise>
+	</Choose>
+
 	<PropertyGroup>
 		<!--REMINDER: When packing, use the proper ISO layout, i.e ddHH-->
 		<!--<CurrentDate>$([System.DateTime]::Now.ToString(ddHH))</CurrentDate>-->
@@ -119,12 +142,6 @@
 		<!--Nightly-->
 		<!--https://docs.microsoft.com/en-us/nuget/create-packages/prerelease-packages-->
 		<!--<PackageVersion>6.$(Minor).$(Build)-alpha</PackageVersion>-->
-
-		<!--Canary only-->
-		<PackageVersion>6.$(Minor).$(Build)-beta</PackageVersion>
-
-		<!--Stable/Signed-->
-		<!--<PackageVersion>6.$(Minor).$(Build)</PackageVersion>-->
 
 		<AssemblyVersion>6.$(Minor).$(Build)</AssemblyVersion>
 
