@@ -1,27 +1,12 @@
 =======
 
-## 2021-10-04 - Build 2110 - October 2021 (Canary)
+## 2021-12-07 - Build 2112 - December 2021
 * New `Krypton.Toolkit.Suite.Extended.Outlook.Grid` module
-* Updated standard toolkit to build `2110`
-
-=======
-
-## 2021-09-01 - Build 2109 - September 2021 (Canary)
 * New `Krypton.Toolkit.Suite.Extended.InputBox` module
 * Fix toast 'Dismiss' button location
 * New `Krypton.Toolkit.Suite.Extended.Toast` module
 * Fixed [#245](https://github.com/Krypton-Suite/Extended-Toolkit/issues/245), 2108 Canary NuGet lists unecessary dependencies for packages
-* Updated standard toolkit to build `2109`
-
-=======
-
-## 2021-08-07 - Build 2108.1 - August 2021 (Canary - Update 1)
 * Fix possible `KryptonButton` text bugs
-* Update standard toolkit to build `2108.1`
-
-=======
-
-## 2021-08-02 - Build 2108 - August 2021 (Canary)
 * New icon
 * New `KryptonExceptionCaptureDialog` - it is now possible to display an exception in a window along with a typical messagebox
 * Broken toolkit up into smaller modules - see list for available modules (Not all modules will be completed yet)
@@ -31,7 +16,7 @@
 * The `ExtendedKryptonMessageBox` now supports a optional checkbox, custom icon and custom button text
 * New `KryptonMessageBoxExtendedManager` to allows the creation of a `KryptonMessageBoxExtended` through the designer
 * New `KryptonDeveloperDebugConsole` feature - allows devs to see exceptions in a window
-* Updated standard toolkit to build `2108`
+* Updated standard toolkit to build `2111`
 
 =======
 

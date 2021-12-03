@@ -14,10 +14,22 @@
   </PropertyGroup>
 
   <!--Package Data-->
-  <PropertyGroup>
-    <PackageId>Krypton.Toolkit.Suite.Extended.InputBox</PackageId>
-    <Description>An extension to the Krypton standard toolkit. This package holds extensions to the Krypton.InputBox module.</Description>
-  </PropertyGroup>
+  <Choose>
+      <When Condition="'$(Configuration)' == 'Canary'">
+          <PropertyGroup>
+              <PackageId>Krypton.Toolkit.Suite.Extended.InputBox.Canary</PackageId>
+          </PropertyGroup>
+      </When>
+      <Otherwise>
+          <PropertyGroup>
+              <PackageId>Krypton.Toolkit.Suite.Extended.InputBox</PackageId>
+          </PropertyGroup>
+      </Otherwise>
+  </Choose>
+
+    <PropertyGroup>
+        <Description>An extension to the Krypton standard toolkit. This package holds extensions to the Krypton.InputBox module.</Description>
+    </PropertyGroup>
 
   <Choose>
       <When Condition="'$(Configuration)' == 'Release'">

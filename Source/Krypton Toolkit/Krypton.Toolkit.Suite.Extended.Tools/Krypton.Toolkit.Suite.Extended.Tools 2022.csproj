@@ -13,8 +13,20 @@
   </PropertyGroup>
 
   <!--Package Data-->
+  <Choose>
+      <When Condition="'$(Configuration)' == 'Canary'">
+          <PropertyGroup>
+              <PackageId>Krypton.Toolkit.Suite.Extended.Tools.Canary</PackageId>
+          </PropertyGroup>
+      </When>
+      <Otherwise>
+          <PropertyGroup>
+              <PackageId>Krypton.Toolkit.Suite.Extended.Tools</PackageId>
+          </PropertyGroup>
+      </Otherwise>
+  </Choose>
+
   <PropertyGroup>
-    <PackageId>Krypton.Toolkit.Suite.Extended.Tools</PackageId>
     <Description>An extension to the Krypton standard toolkit. This package holds common tools.</Description>
   </PropertyGroup>
 

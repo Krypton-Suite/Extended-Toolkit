@@ -14,8 +14,20 @@
 	</PropertyGroup>
 
 	<!--Package Data-->
-	<PropertyGroup>
-		<PackageId>Krypton.Toolkit.Suite.Extended.ComboBox</PackageId>
+    <Choose>
+        <When Condition="'$(Configuration)' == 'Canary'">
+            <PropertyGroup>
+                <PackageId>Krypton.Toolkit.Suite.Extended.Software.Updater.Canary</PackageId>
+            </PropertyGroup>
+        </When>
+        <Otherwise>
+            <PropertyGroup>
+                <PackageId>Krypton.Toolkit.Suite.Extended.Software.Updater</PackageId>
+            </PropertyGroup>
+        </Otherwise>
+    </Choose>
+
+    <PropertyGroup>
 		<Description>An extension to the Krypton standard toolkit. This package implements software updating features.</Description>
 	</PropertyGroup>
 
@@ -118,13 +130,6 @@
 		</Reference>
 		<Reference Include="System.Design" Condition="'$(TargetFramework)' == 'net35'" />
 		<!--TODO: Need to specify version here-->
-	</ItemGroup>
-
-	<ItemGroup>
-	  <None Include="..\..\..\..\Documents\Help\License.md">
-		<Pack>True</Pack>
-		<PackagePath></PackagePath>
-	  </None>
 	</ItemGroup>
 
 </Project>
