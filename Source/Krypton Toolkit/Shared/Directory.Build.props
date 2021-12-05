@@ -60,11 +60,11 @@
 		<!--https://docs.microsoft.com/en-us/nuget/create-packages/prerelease-packages-->
 		<!--<PackageVersion>6.$(Minor).$(Build)-alpha</PackageVersion>-->
 
-		<!--Canary only-->
-		<PackageVersion>6.$(Minor).$(Build)-beta</PackageVersion>
+		<!--Canary only
+		<PackageVersion>6.$(Minor).$(Build)-beta</PackageVersion>-->
 
 		<!--Stable/Signed-->
-		<!--<PackageVersion>6.$(Minor).$(Build)</PackageVersion>-->
+		<PackageVersion>6.$(Minor).$(Build)</PackageVersion>
 
 		<AssemblyVersion>6.$(Minor).$(Build)</AssemblyVersion>
 
