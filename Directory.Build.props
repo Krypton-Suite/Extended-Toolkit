@@ -17,12 +17,12 @@
 
 		<!--https://docs.microsoft.com/en-us/nuget/create-packages/prerelease-packages-->
 		<!--Nightly only-->
-    <PackageVersion>6.$(Minor).$(Build)-alpha</PackageVersion>
+    <!--<PackageVersion>6.$(Minor).$(Build)-alpha</PackageVersion>-->
 
 		<!--Canary only-->
 		<!--<PackageVersion>6.$(Minor).$(Build)-beta</PackageVersion>-->
 
 		<!--Stable/Signed-->
-		<!--<PackageVersion>6.$(Minor).$(Build)</PackageVersion>-->
+		<PackageVersion>6.$(Minor).$(Build)</PackageVersion>
 	</PropertyGroup>
 </Project>
