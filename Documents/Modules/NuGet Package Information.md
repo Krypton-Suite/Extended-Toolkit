@@ -1,4 +1,4 @@
-## <img src="https://github.com/Wagnerp/Krypton-NET-Version-Dashboard/blob/master/Assets/Icons/PNG/KR%2064%20%20x%2064%20Orange.png" /> .NET Extended Toolkit 6.0.x Nuget Module Information
+## <img src="https://github.com/Krypton-Suite/Extended-Toolkit/blob/master/Assets/PNG/Main%20Icon/64%20x%2064/Stable.png" /> .NET Extended Toolkit 6.22xx.x NuGet Module Information
 
 ===============================================================================
 
