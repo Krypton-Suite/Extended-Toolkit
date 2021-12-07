@@ -6,7 +6,17 @@
  */
 #endregion
 
-global using System;
-global using System.Drawing;
-global using Krypton.Toolkit;
-global using EasyScintilla;
+using System;
+
+namespace Krypton.Toolkit.Suite.Extended.Core
+{
+    public class AuthorAttribute : Attribute
+    {
+        #region Constructor
+        public AuthorAttribute(string authorName)
+        {
+
+        }
+        #endregion
+    }
+}

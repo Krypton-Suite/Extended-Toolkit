@@ -6,7 +6,6 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Core.Settings;
 using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Core

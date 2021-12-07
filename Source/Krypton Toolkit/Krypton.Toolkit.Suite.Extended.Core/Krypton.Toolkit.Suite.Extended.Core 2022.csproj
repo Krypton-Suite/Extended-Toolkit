@@ -62,4 +62,8 @@
       <PackageReference Include="WindowsAPICodePack" Version="1.1.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Controls\Krypton.Toolkit.Suite.Extended.Controls 2022.csproj" />
+  </ItemGroup>
+
 </Project>
