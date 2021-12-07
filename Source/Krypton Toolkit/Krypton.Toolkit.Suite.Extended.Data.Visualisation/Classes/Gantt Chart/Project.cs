@@ -873,7 +873,7 @@
                 split.End = parts.Last().End;
                 split.Duration = split.End - split.Start;
 
-                _RecalculateDependantsOf(split);
+                RecalculateDependantsOf(split);
                 RecalculateAncestorsSchedule();
             }
         }
