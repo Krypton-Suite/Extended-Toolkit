@@ -53,6 +53,10 @@
     </Choose>
 
     <ItemGroup>
+      <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Core\Krypton.Toolkit.Suite.Extended.Core 2022.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
         <Reference Include="mscorlib">
           <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\mscorlib.dll</HintPath>
         </Reference>
