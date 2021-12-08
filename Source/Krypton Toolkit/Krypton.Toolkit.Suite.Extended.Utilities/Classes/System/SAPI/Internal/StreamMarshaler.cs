@@ -6,11 +6,6 @@
  */
 #endregion
 
-using System;
-using System.IO;
-using System.Runtime.InteropServices;
-using System.Text;
-
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
 {
     internal sealed class StreamMarshaler : IDisposable

@@ -7,7 +7,8 @@
 #endregion
 
 using System;
-using System.Windows.Forms;
+
+using Krypton.Toolkit.Suite.Extended.Settings.Settings.Globals;
 
 namespace Krypton.Toolkit.Suite.Extended.Settings
 {

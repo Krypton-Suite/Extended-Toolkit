@@ -88,14 +88,14 @@
 	<Choose>
 		<When Condition="'$(Configuration)' == 'Canary'">
 			<ItemGroup>
-				<None Include="..\..\..\..\Assets\Package Icon\Canary.png" Link="Canary.png" Pack="true" PackagePath="" />
+				<None Include="..\..\..\Assets\Package Icon\Canary.png" Link="Canary.png" Pack="true" PackagePath="" />
 			</ItemGroup>
 		</When>
 		<Otherwise>
 			<ItemGroup>
 				<!--<None Include="..\..\..\Assets\Package Icon\Nightly.png" Link="Nightly.png" Pack="true" PackagePath="" />-->
 
-				<None Include="..\..\..\..\Assets\Package Icon\Stable.png" Link="Stable.png" Pack="true" PackagePath="" />
+				<None Include="..\..\..\Assets\Package Icon\Stable.png" Link="Stable.png" Pack="true" PackagePath="" />
 			</ItemGroup>
 		</Otherwise>
 	</Choose>

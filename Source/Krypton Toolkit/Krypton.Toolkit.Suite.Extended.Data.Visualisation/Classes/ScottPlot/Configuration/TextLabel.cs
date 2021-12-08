@@ -6,7 +6,7 @@
 
         private Color _colour, _borderColour, _backgroundColour;
 
-        private bool _bold, _visable;
+        private bool _bold, _visible;
 
         private float _fontSize;
 
@@ -17,6 +17,34 @@
         #endregion
 
         #region Properties
+
+        public Color Colour
+        {
+            get => _colour;
+
+            set => _colour = value;
+        }
+
+        public bool Visible
+        {
+            get => _visible;
+
+            set => _visible = value;
+        }
+
+        public Color BorderColour
+        {
+            get => _borderColour;
+
+            set => _borderColour = value;
+        }
+
+        public Color BackgroundColour
+        {
+            get => _backgroundColour;
+
+            set => _backgroundColour = value;
+        }
 
         public string FontName
         {
@@ -45,6 +73,27 @@
 
         public float Height => Size.Height;
 
+        public string Text
+        {
+            get => _text;
+
+            set => _text = value;
+        }
+
+        public float FontSize
+        {
+            get => _fontSize;
+
+            set => _fontSize = value;
+        }
+
+        public bool Bold
+        {
+            get => _bold;
+
+            set => _bold = value;
+        }
+
         #endregion
 
         #region Constructor
@@ -53,7 +102,7 @@
         {
             _text = "";
 
-            _visable = true;
+            _visible = true;
 
             _fontSize = 12;
 

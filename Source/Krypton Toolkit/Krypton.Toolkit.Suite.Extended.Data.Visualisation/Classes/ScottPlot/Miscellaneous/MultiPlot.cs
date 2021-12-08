@@ -6,10 +6,6 @@
  */
 #endregion
 
-using System;
-using System.Drawing;
-using System.Drawing.Imaging;
-
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
 {
     public class MultiPlot

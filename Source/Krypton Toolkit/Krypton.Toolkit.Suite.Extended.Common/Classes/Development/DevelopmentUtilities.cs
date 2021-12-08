@@ -1,6 +1,4 @@
-﻿using System.Windows.Forms;
-
-namespace Krypton.Toolkit.Suite.Extended.Common
+﻿namespace Krypton.Toolkit.Suite.Extended.Common
 {
     public class DevelopmentUtilities
     {

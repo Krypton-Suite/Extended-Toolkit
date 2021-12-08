@@ -6,11 +6,9 @@
  */
 #endregion
 
-using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Security.Principal;
-using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Core
 {

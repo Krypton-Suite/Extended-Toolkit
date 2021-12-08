@@ -1,8 +1,4 @@
-﻿using Krypton.Toolkit.Suite.Extended.Settings;
-using System;
-using System.Drawing;
-
-namespace Krypton.Toolkit.Suite.Extended.Core
+﻿namespace Krypton.Toolkit.Suite.Extended.Core
 {
     public class InternalBasicPaletteCreator : KryptonForm
     {

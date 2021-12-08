@@ -6,11 +6,6 @@
  */
 #endregion
 
-using System;
-using System.Diagnostics;
-using System.Drawing;
-using System.Runtime.InteropServices;
-
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
 {
     [Obsolete("Renderables should implement IRenderable")]
@@ -54,37 +49,37 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
             int dataCenterX = settings.dataSize.Width / 2 + settings.dataOrigin.X;
             int dataCenterY = settings.dataSize.Height / 2 + settings.dataOrigin.Y;
 
-            if (settings.title.visible)
+            if (settings.title.Visible)
             {
                 settings.gfxFigure.DrawString(
-                        settings.title.text,
-                        settings.title.font,
-                        new SolidBrush(settings.title.color),
+                        settings.title.Text,
+                        settings.title.Font,
+                        new SolidBrush(settings.title.Colour),
                         settings.layout.title.Center,
                         settings.misc.sfCenterCenter
                     );
             }
 
-            if (settings.xLabel.visible)
+            if (settings.xLabel.Visible)
             {
                 settings.gfxFigure.DrawString(
-                        settings.xLabel.text,
-                        settings.xLabel.font,
-                        new SolidBrush(settings.xLabel.color),
+                        settings.xLabel.Text,
+                        settings.xLabel.Font,
+                        new SolidBrush(settings.xLabel.Colour),
                         settings.layout.xLabel.Center,
                         settings.misc.sfCenterCenter
                     );
             }
 
-            if (settings.yLabel.visible)
+            if (settings.yLabel.Visible)
             {
                 Point originalLocation = settings.layout.yLabel.Center;
                 Point rotatedLocation = new Point(-originalLocation.Y, settings.layout.yLabel.Width - originalLocation.X);
                 settings.gfxFigure.RotateTransform(-90);
                 settings.gfxFigure.DrawString(
-                        settings.yLabel.text,
-                        settings.yLabel.font,
-                        new SolidBrush(settings.yLabel.color),
+                        settings.yLabel.Text,
+                        settings.yLabel.Font,
+                        new SolidBrush(settings.yLabel.Colour),
                         rotatedLocation,
                         settings.misc.sfCenterCenter
                     );

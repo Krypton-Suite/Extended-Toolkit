@@ -6,11 +6,6 @@
  */
 #endregion
 
-using System;
-using System.ComponentModel;
-using System.Drawing;
-using System.Windows.Forms;
-
 namespace Krypton.Toolkit.Suite.Extended.Controls
 {
     /// <summary>Provides a panel to contain buttons, similar to a KryptonMessageBox button panel.</summary>

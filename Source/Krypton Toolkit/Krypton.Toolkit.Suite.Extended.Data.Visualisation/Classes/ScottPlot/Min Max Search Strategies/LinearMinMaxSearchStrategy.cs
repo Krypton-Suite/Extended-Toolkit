@@ -6,7 +6,6 @@
  */
 #endregion
 
-using System;
 using System.Linq.Expressions;
 
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation

@@ -6,11 +6,6 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Settings;
-using System;
-using System.Drawing;
-using System.Windows.Forms;
-
 namespace Krypton.Toolkit.Suite.Extended.Core
 {
     public class CombineColourSettings

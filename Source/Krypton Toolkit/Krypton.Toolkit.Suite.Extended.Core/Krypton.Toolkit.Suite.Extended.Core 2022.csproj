@@ -37,7 +37,13 @@
           </PropertyGroup>
 
           <ItemGroup>
+              <PackageReference Include="Krypton.Docking" Version="6.2111.312" />
+
               <PackageReference Include="Krypton.Toolkit" Version="6.2111.312" />
+
+              <PackageReference Include="Krypton.Ribbon" Version="6.2111.312" />
+
+              <PackageReference Include="Krypton.Navigator" Version="6.2111.312" />
           </ItemGroup>
       </When>
       <Otherwise>
@@ -46,7 +52,13 @@
           </PropertyGroup>
 
           <ItemGroup>
+              <PackageReference Include="Krypton.Docking.Canary" Version="6.2111.310-beta" />
+
               <PackageReference Include="Krypton.Toolkit.Canary" Version="6.2111.310-beta" />
+
+              <PackageReference Include="Krypton.Ribbon.Canary" Version="6.2111.310-beta" />
+
+              <PackageReference Include="Krypton.Navigator.Canary" Version="6.2111.310-beta" />
           </ItemGroup>
       </Otherwise>
   </Choose>

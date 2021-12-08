@@ -6,11 +6,6 @@
  */
 #endregion
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
 {
     public class PopulationMultiSeries

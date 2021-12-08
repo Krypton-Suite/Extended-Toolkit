@@ -6,11 +6,8 @@
  */
 #endregion
 
-using System;
-using System.Diagnostics;
 using System.Globalization;
 using System.IO;
-using System.Reflection;
 
 namespace Krypton.Toolkit.Suite.Extended.Common
 {
@@ -71,7 +68,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
             }
             catch (Exception exc)
             {
-                ExceptionHandler.CaptureException(exc);
+                KryptonMessageBox.Show(exc.Message, "Exception Caught", MessageBoxButtons.OK, KryptonMessageBoxIcon.ERROR);
             }
         }
 
@@ -111,29 +108,18 @@ namespace Krypton.Toolkit.Suite.Extended.Common
             }
             catch (Exception exc)
             {
-                ExceptionHandler.CaptureException(exc);
+                KryptonMessageBox.Show(exc.Message, "Exception Caught", MessageBoxButtons.OK, KryptonMessageBoxIcon.ERROR);
             }
         }
 
-        public static FileInfo GetFileInfomation(string filePath)
-        {
-            return new FileInfo(filePath);
-        }
+        public static FileInfo GetFileInfomation(string filePath) => new FileInfo(filePath);
 
-        public static FileVersionInfo GetFileVersionInformation(string filePath)
-        {
-            return FileVersionInfo.GetVersionInfo(filePath);
-        }
+        public static FileVersionInfo GetFileVersionInformation(string filePath) => FileVersionInfo.GetVersionInfo(filePath);
 
-        public static Version GetFileVersion(FileVersionInfo fileVersionInfo)
-        {
-            return Version.Parse(fileVersionInfo.ProductVersion);
-        }
+        public static Version GetFileVersion(FileVersionInfo fileVersionInfo) => Version.Parse(fileVersionInfo.ProductVersion);
 
-        public static Version GetAssemblyVersion(Assembly executablePath)
-        {
-            return executablePath.GetName().Version;
-        }
+        public static Version GetAssemblyVersion(Assembly executablePath) => executablePath.GetName().Version;
+
         #endregion
     }
 }

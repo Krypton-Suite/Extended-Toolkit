@@ -1,6 +1,4 @@
-﻿using Krypton.Toolkit.Suite.Extended.Settings;
-
-namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
+﻿namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 {
     internal class ThemeSettingsParser
     {

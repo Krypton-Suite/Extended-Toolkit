@@ -6,11 +6,6 @@
  */
 #endregion
 
-using System;
-using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Linq;
-
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
 {
 #pragma warning disable CS0618 // Type or member is obsolete

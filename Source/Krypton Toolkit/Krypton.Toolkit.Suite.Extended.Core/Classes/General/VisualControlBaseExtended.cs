@@ -7,13 +7,10 @@
 #endregion
 
 using Microsoft.Win32;
-using System;
+
 using System.ComponentModel;
 using System.Diagnostics;
-using System.Drawing;
-using System.Reflection;
 using System.Runtime.InteropServices;
-using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Core
 {

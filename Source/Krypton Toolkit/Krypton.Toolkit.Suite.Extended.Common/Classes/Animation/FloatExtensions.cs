@@ -1,6 +1,4 @@
-﻿using System.Drawing;
-
-namespace Krypton.Toolkit.Suite.Extended.Common
+﻿namespace Krypton.Toolkit.Suite.Extended.Common
 {
     /// <summary>
     ///     Contains public extension methods about Float2D and Fload3D classes

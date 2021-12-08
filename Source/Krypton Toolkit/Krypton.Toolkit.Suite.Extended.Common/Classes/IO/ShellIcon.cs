@@ -1,8 +1,4 @@
-﻿using System;
-using System.Drawing;
-using System.Runtime.InteropServices;
-
-namespace Krypton.Toolkit.Suite.Extended.Common
+﻿namespace Krypton.Toolkit.Suite.Extended.Common
 {
     /// <summary>
     /// Provides static methods to read system icons for both folders and files.

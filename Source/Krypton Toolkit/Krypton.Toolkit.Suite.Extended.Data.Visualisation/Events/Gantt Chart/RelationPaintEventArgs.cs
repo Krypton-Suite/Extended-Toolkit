@@ -6,7 +6,6 @@
  */
 #endregion
 
-using System.Drawing;
 using System.Threading.Tasks;
 
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation

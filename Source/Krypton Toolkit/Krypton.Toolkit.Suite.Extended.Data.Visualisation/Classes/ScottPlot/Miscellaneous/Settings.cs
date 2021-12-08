@@ -6,10 +6,6 @@
  */
 #endregion
 
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
 {
     /// <summary>
@@ -46,9 +42,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
         public readonly List<Plottable> plottables = new List<Plottable>();
 
         // TODO: STRANGLE CONFIG OBJECTS AS PART OF https://github.com/swharden/ScottPlot/pull/511
-        public TextLabel title = new TextLabel() { fontSize = 16, bold = true };
-        public TextLabel xLabel = new TextLabel() { fontSize = 16 };
-        public TextLabel yLabel = new TextLabel() { fontSize = 16 };
+        public TextLabel title = new TextLabel() { FontSize = 16, Bold = true };
+        public TextLabel xLabel = new TextLabel() { FontSize = 16 };
+        public TextLabel yLabel = new TextLabel() { FontSize = 16 };
         public Misc misc = new Misc();
         //public Benchmark benchmark = new Benchmark();
         //public Grid grid = new Grid();
@@ -83,10 +79,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
                 // it is probably not needed...
 
                 string sampleString = "IPjg8.8";
-                layout.yLabelWidth = (int)GDI.MeasureString(gfxData, sampleString, yLabel.font).Height;
-                layout.y2LabelWidth = (int)GDI.MeasureString(gfxData, sampleString, yLabel.font).Height; // currently y2 isn't supported
-                layout.titleHeight = (int)GDI.MeasureString(gfxData, sampleString, title.font).Height;
-                layout.xLabelHeight = (int)GDI.MeasureString(gfxData, sampleString, xLabel.font).Height;
+                layout.yLabelWidth = (int)GDI.MeasureString(gfxData, sampleString, yLabel.Font).Height;
+                layout.y2LabelWidth = (int)GDI.MeasureString(gfxData, sampleString, yLabel.Font).Height; // currently y2 isn't supported
+                layout.titleHeight = (int)GDI.MeasureString(gfxData, sampleString, title.Font).Height;
+                layout.xLabelHeight = (int)GDI.MeasureString(gfxData, sampleString, xLabel.Font).Height;
 
                 var tickSize = GDI.MeasureString(gfxData, "0.001", ticks.font);
                 layout.yScaleWidth = (int)tickSize.Width;
@@ -116,14 +112,14 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
 
             // update the layout with sizes based on configuration in settings
 
-            layout.titleHeight = (int)title.size.Height + 3;
+            layout.titleHeight = (int)title.Size.Height + 3;
 
             // disable y2 label and scale by default
             layout.y2LabelWidth = 0;
             layout.y2ScaleWidth = 0;
 
-            layout.yLabelWidth = (int)yLabel.size.Height + 3;
-            layout.xLabelHeight = (int)xLabel.size.Height + 3;
+            layout.yLabelWidth = (int)yLabel.Size.Height + 3;
+            layout.xLabelHeight = (int)xLabel.Size.Height + 3;
 
             // automatically set yScale size to tick labels
             int minYtickWidth = 40;
@@ -138,11 +134,11 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
                 layout.xScaleHeight = 0;
             if (!ticks.displayYmajor)
                 layout.yScaleWidth = 0;
-            if (title.text == "")
+            if (title.Text == "")
                 layout.titleHeight = 0;
-            if (yLabel.text == "")
+            if (yLabel.Text == "")
                 layout.yLabelWidth = 0;
-            if (xLabel.text == "")
+            if (xLabel.Text == "")
                 layout.xLabelHeight = 0;
 
             // eliminate all right-side pixels if right-frame is not drawn

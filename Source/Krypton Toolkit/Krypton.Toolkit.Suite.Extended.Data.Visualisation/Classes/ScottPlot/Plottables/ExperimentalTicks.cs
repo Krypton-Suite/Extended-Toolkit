@@ -6,9 +6,6 @@
  */
 #endregion
 
-using System.Collections.Generic;
-using System.Drawing;
-
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
 {
     // This class is intended for experimentation with new tick-determination systems

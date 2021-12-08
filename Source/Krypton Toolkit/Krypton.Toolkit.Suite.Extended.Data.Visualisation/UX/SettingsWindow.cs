@@ -6,9 +6,6 @@
  */
 #endregion
 
-using System;
-using System.Windows.Forms;
-
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
 {
     public class SettingsWindow : KryptonForm
@@ -769,14 +766,14 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
         private void PopualteGuiFromPlot()
         {
             // vertical axis
-            ktxtVerticalAxisLabelText.Text = Plot.GetSettings().yLabel.text;
+            ktxtVerticalAxisLabelText.Text = Plot.GetSettings().yLabel.Text;
             ktxtVerticalAxisUpperLimit.Text = Math.Round(Plot.Axis()[3], 4).ToString();
             ktxtVerticalAxisLowerLimit.Text = Math.Round(Plot.Axis()[2], 4).ToString();
             kchkVerticalAxisShowMinorTicks.Checked = Plot.GetSettings().ticks.displayYminor;
             kchkVerticalAxisDateAndTimeFormat.Checked = Plot.GetSettings().ticks.y.dateFormat;
 
             // horizontal axis
-            ktxtHorizontalAxisLabelText.Text = Plot.GetSettings().xLabel.text;
+            ktxtHorizontalAxisLabelText.Text = Plot.GetSettings().xLabel.Text;
             ktxtHorizontalAxisUpperLimit.Text = Math.Round(Plot.Axis()[1], 4).ToString();
             ktxtHorizontalAxisLowerLimit.Text = Math.Round(Plot.Axis()[0], 4).ToString();
             kchkHorizontalAxisShowMinorTicks.Checked = Plot.GetSettings().ticks.displayXminor;

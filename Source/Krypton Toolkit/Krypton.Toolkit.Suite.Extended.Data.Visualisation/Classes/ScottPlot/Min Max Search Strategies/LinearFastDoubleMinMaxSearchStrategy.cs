@@ -6,8 +6,6 @@
  */
 #endregion
 
-using System;
-
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
 {
     public class LinearFastDoubleMinMaxSearchStrategy<T> : LinearMinMaxSearchStrategy<T> where T : struct, IComparable

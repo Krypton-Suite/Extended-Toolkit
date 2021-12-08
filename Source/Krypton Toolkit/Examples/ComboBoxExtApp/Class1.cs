@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ComboBoxExtApp
+﻿namespace ComboBoxExtApp
 {
     public class Class1
     {

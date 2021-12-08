@@ -6,9 +6,6 @@
  */
 #endregion
 
-using System;
-using System.Drawing;
-
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
 {
     public class PlottableSignalXYConst<TX, TY> : PlottableSignalXYGeneric<TX, TY> where TX : struct, IComparable where TY : struct, IComparable

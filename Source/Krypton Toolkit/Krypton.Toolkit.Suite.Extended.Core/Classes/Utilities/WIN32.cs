@@ -6,10 +6,7 @@
  */
 #endregion
 
-using System;
-using System.Drawing;
 using System.Runtime.InteropServices;
-using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Core
 {

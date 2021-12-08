@@ -1,8 +1,4 @@
-﻿using System;
-using System.Reflection;
-using System.Threading;
-
-namespace Krypton.Toolkit.Suite.Extended.Common
+﻿namespace Krypton.Toolkit.Suite.Extended.Common
 {
     /// <summary>
     ///     The safe invoker class is a delegate reference holder that always

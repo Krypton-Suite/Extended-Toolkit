@@ -6,10 +6,6 @@
  */
 #endregion
 
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 {
     internal class Graph : IEnumerable<State>, IEnumerable

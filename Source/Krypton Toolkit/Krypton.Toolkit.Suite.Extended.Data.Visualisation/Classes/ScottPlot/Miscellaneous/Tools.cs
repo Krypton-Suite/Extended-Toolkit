@@ -6,14 +6,6 @@
  */
 #endregion
 
-using System;
-using System.Diagnostics;
-using System.Drawing;
-using System.Drawing.Imaging;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
 {
     public static class Tools

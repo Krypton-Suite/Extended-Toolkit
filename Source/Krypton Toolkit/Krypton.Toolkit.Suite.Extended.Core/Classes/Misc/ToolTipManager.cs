@@ -6,12 +6,6 @@
  */
 #endregion
 
-using System;
-using System.Drawing;
-using System.Windows.Forms;
-
-using Krypton.Toolkit.Suite.Extended.Controls;
-
 namespace Krypton.Toolkit.Suite.Extended.Core
 {
     public class ToolTipManager

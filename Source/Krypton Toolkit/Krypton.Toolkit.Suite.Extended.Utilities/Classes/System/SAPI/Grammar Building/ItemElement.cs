@@ -8,7 +8,6 @@
 
 using Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition;
 using Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser;
-using System.Collections.Generic;
 
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.GrammarBuilding
 {

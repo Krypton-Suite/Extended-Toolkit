@@ -6,9 +6,6 @@
  */
 #endregion
 
-using System.Diagnostics;
-using System.Drawing;
-
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
 {
     public class Benchmark : IRenderable

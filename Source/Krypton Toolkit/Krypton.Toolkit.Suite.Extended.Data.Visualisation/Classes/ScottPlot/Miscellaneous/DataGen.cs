@@ -6,10 +6,6 @@
  */
 #endregion
 
-using System;
-using System.Drawing;
-using System.Linq;
-
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
 {
     public static class DataGen

@@ -6,8 +6,6 @@
  */
 #endregion
 
-using System;
-
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
 {
     public class SegmentedTreeMinMaxSearchStrategy<T> : IMinMaxSearchStrategy<T> where T : struct, IComparable

@@ -12,12 +12,12 @@ namespace Krypton.Toolkit.Suite.Extended.Settings.Settings.Theming {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.0.1.0")]
-    internal sealed partial class ThemeSettings : global::System.Configuration.ApplicationSettingsBase {
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.1.0.0")]
+    internal sealed partial class GlobalThemeSettings : global::System.Configuration.ApplicationSettingsBase {
         
-        private static ThemeSettings defaultInstance = ((ThemeSettings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new ThemeSettings())));
+        private static GlobalThemeSettings defaultInstance = ((GlobalThemeSettings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new GlobalThemeSettings())));
         
-        public static ThemeSettings Default {
+        public static GlobalThemeSettings Default {
             get {
                 return defaultInstance;
             }

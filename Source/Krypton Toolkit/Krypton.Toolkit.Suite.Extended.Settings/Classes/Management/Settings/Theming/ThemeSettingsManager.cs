@@ -4,6 +4,8 @@
     {
         #region Variables
         private ThemeSettings _themeSettings = new ThemeSettings();
+
+        private GlobalThemeSettings _globalThemeSettings = new GlobalThemeSettings();
         #endregion
 
         #region Constuctor
@@ -16,51 +18,51 @@
         #region Setters & Getters
         /// <summary>Sets the ShowResetButton to the value of value.</summary>
         /// <param name="value">The desired value of ShowResetButton.</param>
-        public void SetShowResetButton(bool value) => _themeSettings.ShowResetButton = value;
+        public void SetShowResetButton(bool value) => _globalThemeSettings.ShowResetButton = value;
 
         /// <summary>Returns the value of the ShowResetButton.</summary>
         /// <returns>The value of the ShowResetButton.</returns>
-        public bool GetShowResetButton() => _themeSettings.ShowResetButton;
+        public bool GetShowResetButton() => _globalThemeSettings.ShowResetButton;
 
         /// <summary>Sets the ShowImportButton to the value of value.</summary>
         /// <param name="value">The desired value of ShowImportButton.</param>
-        public void SetShowImportButton(bool value) => _themeSettings.ShowImportButton = value;
+        public void SetShowImportButton(bool value) => _globalThemeSettings.ShowImportButton = value;
 
         /// <summary>Returns the value of the ShowImportButton.</summary>
         /// <returns>The value of the ShowImportButton.</returns>
-        public bool GetShowImportButton() => _themeSettings.ShowImportButton;
+        public bool GetShowImportButton() => _globalThemeSettings.ShowImportButton;
 
         /// <summary>Sets the CustomThemePath to the value of value.</summary>
         /// <param name="value">The desired value of CustomThemePath.</param>
-        public void SetCustomThemePath(string value) => _themeSettings.CustomThemePath = value;
+        public void SetCustomThemePath(string value) => _globalThemeSettings.CustomThemePath = value;
 
         /// <summary>Returns the value of the CustomThemePath.</summary>
         /// <returns>The value of the CustomThemePath.</returns>
-        public string GetCustomThemePath() => _themeSettings.CustomThemePath;
+        public string GetCustomThemePath() => _globalThemeSettings.CustomThemePath;
 
         /// <summary>Sets the SelectedThemePaletteMode to the value of value.</summary>
         /// <param name="value">The desired value of SelectedThemePaletteMode.</param>
-        public void SetSelectedThemePaletteMode(PaletteMode value) => _themeSettings.SelectedThemePaletteMode = value;
+        public void SetSelectedThemePaletteMode(PaletteMode value) => _globalThemeSettings.SelectedThemePaletteMode = value;
 
         /// <summary>Returns the value of the SelectedThemePaletteMode.</summary>
         /// <returns>The value of the SelectedThemePaletteMode.</returns>
-        public PaletteMode GetSelectedThemePaletteMode() => _themeSettings.SelectedThemePaletteMode;
+        public PaletteMode GetSelectedThemePaletteMode() => _globalThemeSettings.SelectedThemePaletteMode;
 
         /// <summary>Sets the DarkModeThemePaletteMode to the value of value.</summary>
         /// <param name="value">The desired value of DarkModeThemePaletteMode.</param>
-        public void SetDarkModeThemePaletteMode(PaletteMode value) => _themeSettings.DarkModeThemePaletteMode = value;
+        public void SetDarkModeThemePaletteMode(PaletteMode value) => _globalThemeSettings.DarkModeThemePaletteMode = value;
 
         /// <summary>Returns the value of the DarkModeThemePaletteMode.</summary>
         /// <returns>The value of the DarkModeThemePaletteMode.</returns>
-        public PaletteMode GetDarkModeThemePaletteMode() => _themeSettings.DarkModeThemePaletteMode;
+        public PaletteMode GetDarkModeThemePaletteMode() => _globalThemeSettings.DarkModeThemePaletteMode;
 
         /// <summary>Sets the LightModeThemePaletteMode to the value of value.</summary>
         /// <param name="value">The desired value of LightModeThemePaletteMode.</param>
-        public void SetLightModeThemePaletteMode(PaletteMode value) => _themeSettings.LightModeThemePaletteMode = value;
+        public void SetLightModeThemePaletteMode(PaletteMode value) => _globalThemeSettings.LightModeThemePaletteMode = value;
 
         /// <summary>Returns the value of the LightModeThemePaletteMode.</summary>
         /// <returns>The value of the LightModeThemePaletteMode.</returns>
-        public PaletteMode GetLightModeThemePaletteMode() => _themeSettings.LightModeThemePaletteMode;
+        public PaletteMode GetLightModeThemePaletteMode() => _globalThemeSettings.LightModeThemePaletteMode;
         #endregion
 
         #region Save & Reset Methods
@@ -72,7 +74,7 @@
 
                 if (result == DialogResult.Yes)
                 {
-                    _themeSettings.Save();
+                    _globalThemeSettings.Save();
                 }
                 else
                 {
@@ -81,7 +83,7 @@
             }
             else
             {
-                _themeSettings.Save();
+                _globalThemeSettings.Save();
             }
         }
 

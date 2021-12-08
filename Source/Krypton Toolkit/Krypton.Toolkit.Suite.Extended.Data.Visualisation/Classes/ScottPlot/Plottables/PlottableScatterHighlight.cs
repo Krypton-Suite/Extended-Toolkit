@@ -6,11 +6,6 @@
  */
 #endregion
 
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
 {
     public class PlottableScatterHighlight : PlottableScatter, IExportable, IHighlightable

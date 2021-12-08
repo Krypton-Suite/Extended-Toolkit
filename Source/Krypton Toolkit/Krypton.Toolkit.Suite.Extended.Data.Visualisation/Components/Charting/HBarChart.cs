@@ -6,13 +6,6 @@
  */
 #endregion
 
-using System;
-using System.Diagnostics;
-using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Globalization;
-using System.Windows.Forms;
-
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
 {
     [ToolboxBitmap(typeof(PerformanceCounter))]

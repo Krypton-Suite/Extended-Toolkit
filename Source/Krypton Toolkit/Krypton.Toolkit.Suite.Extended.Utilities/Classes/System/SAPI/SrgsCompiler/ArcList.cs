@@ -7,9 +7,6 @@
 #endregion
 
 using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 {

@@ -7,10 +7,6 @@
 #endregion
 
 using Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Runtime.InteropServices;
 
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop
 {

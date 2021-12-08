@@ -32,11 +32,6 @@
 */
 #endregion
 
-using System.ComponentModel;
-using System.Drawing;
-using System.Drawing.Design;
-using System.Windows.Forms;
-
 namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 {
     public class LargeImageIndexEditor : UITypeEditor

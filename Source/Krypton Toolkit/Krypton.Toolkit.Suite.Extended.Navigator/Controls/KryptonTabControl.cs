@@ -16,7 +16,6 @@ using System.Runtime.InteropServices;
 using System.Security.Permissions;
 using System.Windows.Forms;
 
-using Krypton.Toolkit.Suite.Extended.Common;
 using Krypton.Toolkit.Suite.Extended.Drawing;
 
 namespace Krypton.Toolkit.Suite.Extended.Navigator

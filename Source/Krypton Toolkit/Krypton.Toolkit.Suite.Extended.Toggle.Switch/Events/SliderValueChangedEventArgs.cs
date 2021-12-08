@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
+﻿namespace Krypton.Toolkit.Suite.Extended.Toggle.Switch
 {
     public class SliderValueChangedEventArgs : EventArgs
     {

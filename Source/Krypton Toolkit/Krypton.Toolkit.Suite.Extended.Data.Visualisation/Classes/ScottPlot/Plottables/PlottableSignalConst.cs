@@ -6,9 +6,6 @@
  */
 #endregion
 
-using System;
-using System.Drawing;
-
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
 {
     // Variation of PlottableSignal that uses a segmented tree for faster min/max range queries

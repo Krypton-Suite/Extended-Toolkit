@@ -6,8 +6,6 @@
  */
 #endregion
 
-using System;
-
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
 {
     // A simpler double-precision floating point alternative to the System.Numerics.Vectors package

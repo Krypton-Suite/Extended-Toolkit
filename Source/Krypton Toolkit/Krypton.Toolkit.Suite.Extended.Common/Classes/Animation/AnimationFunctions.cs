@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Krypton.Toolkit.Suite.Extended.Common
+﻿namespace Krypton.Toolkit.Suite.Extended.Common
 {
     /// <summary>
     ///     The functions gallery for animation

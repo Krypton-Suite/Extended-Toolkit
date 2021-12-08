@@ -1,6 +1,4 @@
-﻿using Krypton.Toolkit.Suite.Extended.Developer.Utilities;
-
-namespace Krypton.Toolkit.Suite.Extended.File.Copier
+﻿namespace Krypton.Toolkit.Suite.Extended.File.Copier
 {
     internal static class HelperUtilites
     {

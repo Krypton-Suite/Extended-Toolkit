@@ -1,6 +1,4 @@
-﻿using System.Linq;
-
-namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
+﻿namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 {
     /// <summary>
     /// List of the current columns of the OutlookGrid

@@ -9,7 +9,6 @@
 using System.ComponentModel;
 using System.IO;
 using System.Security.Cryptography;
-using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Core
 {

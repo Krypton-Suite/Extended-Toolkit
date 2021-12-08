@@ -10,8 +10,6 @@ using System;
 using System.ComponentModel;
 using System.Drawing;
 
-using Krypton.Toolkit.Suite.Extended.Navigator.Properties;
-
 namespace Krypton.Toolkit.Suite.Extended.Navigator
 {
     [DesignTimeVisible(false), DefaultProperty("Text")]

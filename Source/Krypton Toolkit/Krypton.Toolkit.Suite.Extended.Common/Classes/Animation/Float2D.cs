@@ -1,7 +1,4 @@
-﻿using System;
-using System.Drawing;
-
-namespace Krypton.Toolkit.Suite.Extended.Common
+﻿namespace Krypton.Toolkit.Suite.Extended.Common
 {
     /// <summary>
     ///     The Float2D class contains two <see langword="float" /> values and

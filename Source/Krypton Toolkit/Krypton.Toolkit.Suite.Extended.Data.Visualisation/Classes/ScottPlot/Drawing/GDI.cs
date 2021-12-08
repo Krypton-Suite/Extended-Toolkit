@@ -6,9 +6,6 @@
  */
 #endregion
 
-using System;
-using System.Runtime.InteropServices;
-
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
 {
     public static class GDI

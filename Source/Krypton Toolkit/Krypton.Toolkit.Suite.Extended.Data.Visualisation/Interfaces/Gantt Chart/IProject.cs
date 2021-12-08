@@ -6,9 +6,6 @@
  */
 #endregion
 
-using System;
-using System.Collections.Generic;
-
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
 {
     /// <summary>

@@ -6,8 +6,6 @@
  */
 #endregion
 
-using System;
-
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop
 {
     internal struct SPEVENTEX

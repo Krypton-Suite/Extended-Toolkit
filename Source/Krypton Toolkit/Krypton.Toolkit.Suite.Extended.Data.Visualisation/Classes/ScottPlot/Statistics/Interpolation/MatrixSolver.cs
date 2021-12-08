@@ -6,8 +6,6 @@
  */
 #endregion
 
-using System;
-
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
 {
     // Matrix equation solver using the Gaussian elimination algorithm

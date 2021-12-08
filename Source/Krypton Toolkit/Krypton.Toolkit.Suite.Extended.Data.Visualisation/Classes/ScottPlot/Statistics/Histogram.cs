@@ -6,9 +6,6 @@
  */
 #endregion
 
-using System;
-using System.Linq;
-
 namespace ScottPlot
 {
     [Obsolete("ScottPlot.Histogram is now ScottPlot.Statistics.Histogram", true)]

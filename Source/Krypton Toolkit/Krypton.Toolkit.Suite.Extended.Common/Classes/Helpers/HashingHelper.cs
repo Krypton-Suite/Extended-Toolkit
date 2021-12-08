@@ -6,13 +6,6 @@
  */
 #endregion
 
-using System;
-using System.ComponentModel;
-using System.Drawing;
-using System.Text;
-
-using Krypton.Toolkit.Suite.Extended.Developer.Utilities;
-
 namespace Krypton.Toolkit.Suite.Extended.Common
 {
     public class HashingHelper

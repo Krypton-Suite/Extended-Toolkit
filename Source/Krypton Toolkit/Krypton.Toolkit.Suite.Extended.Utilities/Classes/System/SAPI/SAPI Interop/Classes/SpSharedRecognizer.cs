@@ -6,9 +6,6 @@
  */
 #endregion
 
-using System;
-using System.Runtime.InteropServices;
-
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop
 {
     [ComImport, Guid("3BEE4890-4FE9-4A37-8C1E-5E7E12791C1F")]

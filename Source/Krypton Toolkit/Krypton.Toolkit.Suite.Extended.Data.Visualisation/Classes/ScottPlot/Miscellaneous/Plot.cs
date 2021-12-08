@@ -6,14 +6,6 @@
  */
 #endregion
 
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Drawing.Imaging;
-using System.Linq;
-
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
 {
     public class Plot
@@ -50,9 +42,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
             // TODO: add a Copy() method to the settings module, or perhaps Update(existingSettings).
 
             // copy over only the most relevant styles
-            plt2.Title(settings.title.text);
-            plt2.XLabel(settings.xLabel.text);
-            plt2.YLabel(settings.yLabel.text);
+            plt2.Title(settings.title.Text);
+            plt2.XLabel(settings.xLabel.Text);
+            plt2.YLabel(settings.yLabel.Text);
 
             plt2.TightenLayout();
             plt2.AxisAuto();
@@ -1864,12 +1856,12 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
             )
         {
 
-            settings.title.text = title ?? settings.title.text;
-            settings.title.visible = enable ?? settings.title.visible;
-            settings.title.fontName = fontName ?? settings.title.fontName;
-            settings.title.fontSize = fontSize ?? settings.title.fontSize;
-            settings.title.color = color ?? settings.title.color;
-            settings.title.bold = bold ?? settings.title.bold;
+            settings.title.Text = title ?? settings.title.Text;
+            settings.title.Visible = enable ?? settings.title.Visible;
+            settings.title.FontName = fontName ?? settings.title.FontName;
+            settings.title.FontSize = fontSize ?? settings.title.FontSize;
+            settings.title.Colour = color ?? settings.title.Colour;
+            settings.title.Bold = bold ?? settings.title.Bold;
 
             TightenLayout();
         }
@@ -1883,12 +1875,12 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
             bool? bold = null
             )
         {
-            settings.xLabel.text = xLabel ?? settings.xLabel.text;
-            settings.xLabel.color = color ?? settings.xLabel.color;
-            settings.xLabel.visible = enable ?? settings.xLabel.visible;
-            settings.xLabel.fontName = fontName ?? settings.xLabel.fontName;
-            settings.xLabel.fontSize = fontSize ?? settings.xLabel.fontSize;
-            settings.xLabel.bold = bold ?? settings.xLabel.bold;
+            settings.xLabel.Text = xLabel ?? settings.xLabel.Text;
+            settings.xLabel.Colour = color ?? settings.xLabel.Colour;
+            settings.xLabel.Visible = enable ?? settings.xLabel.Visible;
+            settings.xLabel.FontName = fontName ?? settings.xLabel.FontName;
+            settings.xLabel.FontSize = fontSize ?? settings.xLabel.FontSize;
+            settings.xLabel.Bold = bold ?? settings.xLabel.Bold;
 
             TightenLayout();
         }
@@ -1902,12 +1894,12 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
             bool? bold = null
             )
         {
-            settings.yLabel.text = yLabel ?? settings.yLabel.text;
-            settings.yLabel.color = color ?? settings.yLabel.color;
-            settings.yLabel.visible = enable ?? settings.yLabel.visible;
-            settings.yLabel.fontName = fontName ?? settings.yLabel.fontName;
-            settings.yLabel.fontSize = fontSize ?? settings.yLabel.fontSize;
-            settings.yLabel.bold = bold ?? settings.yLabel.bold;
+            settings.yLabel.Text = yLabel ?? settings.yLabel.Text;
+            settings.yLabel.Colour = color ?? settings.yLabel.Colour;
+            settings.yLabel.Visible = enable ?? settings.yLabel.Visible;
+            settings.yLabel.FontName = fontName ?? settings.yLabel.FontName;
+            settings.yLabel.FontSize = fontSize ?? settings.yLabel.FontSize;
+            settings.yLabel.Bold = bold ?? settings.yLabel.Bold;
 
             TightenLayout();
         }
@@ -2331,11 +2323,11 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
             if (tick != null)
                 settings.ticks.colour = (Color)tick;
             if (label != null)
-                settings.xLabel.color = (Color)label;
+                settings.xLabel.Colour = (Color)label;
             if (label != null)
-                settings.yLabel.color = (Color)label;
+                settings.yLabel.Colour = (Color)label;
             if (title != null)
-                settings.title.color = (Color)title;
+                settings.title.Colour = (Color)title;
             if (dataBg != null)
                 settings.Legend.FillColor = (Color)dataBg;
             if (tick != null)

@@ -1,6 +1,4 @@
-﻿using System.Linq;
-
-namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
+﻿namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 {
     /// <summary>
     /// Krypton DataGridView allowing nested grouping and unlimited sorting

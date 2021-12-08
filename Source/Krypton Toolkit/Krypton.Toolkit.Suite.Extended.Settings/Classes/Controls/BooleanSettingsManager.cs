@@ -6,8 +6,6 @@
  */
 #endregion
 
-using System.Windows.Forms;
-
 namespace Krypton.Toolkit.Suite.Extended.Settings
 {
     public class BooleanSettingsManager

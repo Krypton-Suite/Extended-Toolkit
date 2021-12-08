@@ -58,6 +58,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Update="Resources\ToolkitSettingsResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ToolkitSettingsResources.resx</DependentUpon>
+    </Compile>
     <Compile Update="Settings\Globals\GlobalBooleanSettings.Designer.cs">
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <AutoGen>True</AutoGen>
@@ -73,10 +78,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>GlobalStringSettings.settings</DependentUpon>
     </Compile>
-    <Compile Update="Settings\Theming\ThemeSettings.Designer.cs">
+    <Compile Update="Settings\Theming\GlobalThemeSettings.Designer.cs">
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <AutoGen>True</AutoGen>
-      <DependentUpon>ThemeSettings.settings</DependentUpon>
+      <DependentUpon>GlobalThemeSettings.settings</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -92,10 +97,26 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>GlobalStringSettings.Designer.cs</LastGenOutput>
     </None>
-    <None Update="Settings\Theming\ThemeSettings.settings">
+    <None Update="Settings\Theming\GlobalThemeSettings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>ThemeSettings.Designer.cs</LastGenOutput>
+      <LastGenOutput>GlobalThemeSettings.Designer.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+      <PackageReference Include="WindowsAPICodePack" Version="1.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Common\Krypton.Toolkit.Suite.Extended.Common 2022.csproj" />
+    <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Global.Utilities\Krypton.Toolkit.Suite.Extended.Global.Utilities 2022.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\ToolkitSettingsResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ToolkitSettingsResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

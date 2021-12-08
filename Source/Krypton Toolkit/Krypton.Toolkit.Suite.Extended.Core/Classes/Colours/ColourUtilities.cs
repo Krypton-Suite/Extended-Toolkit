@@ -6,14 +6,6 @@
  */
 #endregion
 
-using Krypton.Ribbon;
-using Krypton.Toolkit.Suite.Extended.Settings;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Reflection;
-using System.Windows.Forms;
-
 namespace Krypton.Toolkit.Suite.Extended.Core
 {
     public static class ColourUtilities

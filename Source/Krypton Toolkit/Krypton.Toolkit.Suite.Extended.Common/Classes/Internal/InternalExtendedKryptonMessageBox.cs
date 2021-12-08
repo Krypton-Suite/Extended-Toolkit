@@ -7,12 +7,10 @@
 #endregion
 
 using Krypton.Toolkit.Suite.Extended.Common.Resources;
-using System;
-using System.ComponentModel;
-using System.Drawing;
+
 using System.Media;
-using System.Text;
-using System.Windows.Forms;
+
+using Timer = System.Windows.Forms.Timer;
 
 namespace Krypton.Toolkit.Suite.Extended.Common
 {

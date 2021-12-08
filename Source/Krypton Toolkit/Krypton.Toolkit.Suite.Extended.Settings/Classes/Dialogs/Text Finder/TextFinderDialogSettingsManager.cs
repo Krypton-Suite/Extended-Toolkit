@@ -8,7 +8,6 @@
 
 using Krypton.Toolkit.Suite.Extended.Settings.Settings.Dialogs.Text_Finder;
 using System.Drawing;
-using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Settings
 {

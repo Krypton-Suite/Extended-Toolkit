@@ -10,6 +10,7 @@
  */
 #endregion
 
+#if NETFRAMEWORK // https://docs.microsoft.com/en-us/dotnet/standard/frameworks#how-to-specify-target-frameworks
 using System;
 using System.ComponentModel;
 using System.ComponentModel.Design;
@@ -21,7 +22,6 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
 
-#if NETFRAMEWORK // https://docs.microsoft.com/en-us/dotnet/standard/frameworks#how-to-specify-target-frameworks
 namespace Krypton.Toolkit.Suite.Extended.DataGridView
 {
     /// <summary>

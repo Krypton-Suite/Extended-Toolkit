@@ -7,12 +7,10 @@
 #endregion
 
 using Microsoft.WindowsAPICodePack.Dialogs;
-using System;
+
 using System.Collections;
-using System.Drawing;
 using System.IO;
 using System.Text;
-using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Core
 {

@@ -9,11 +9,7 @@
 using Krypton.Toolkit.Suite.Extended.Common;
 using Krypton.Toolkit.Suite.Extended.Global.Utilities;
 
-using System;
 using System.ComponentModel;
-using System.Drawing;
-using System.Reflection;
-using System.Windows.Forms;
 
 namespace Krypton.Toolkit.Suite.Extended.Core
 {

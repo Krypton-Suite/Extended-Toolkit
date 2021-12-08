@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Krypton.Toolkit.Suite.Extended.Buttons
+﻿namespace Krypton.Toolkit.Suite.Extended.Buttons
 {
     [ToolboxItem(true), ToolboxBitmap(typeof(Button))]
     public partial class KryptonViewButtons : UserControl

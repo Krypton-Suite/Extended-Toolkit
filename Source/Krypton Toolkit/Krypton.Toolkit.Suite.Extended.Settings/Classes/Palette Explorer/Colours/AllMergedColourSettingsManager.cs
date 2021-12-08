@@ -12,7 +12,8 @@ using Microsoft.WindowsAPICodePack.Dialogs;
 using System;
 using System.Drawing;
 using System.IO;
-using System.Windows.Forms;
+
+using Krypton.Toolkit.Suite.Extended.Developer.Utilities;
 
 namespace Krypton.Toolkit.Suite.Extended.Settings
 {
