@@ -5,7 +5,7 @@
         #region Design Code
         private KryptonPanel kryptonPanel1;
         private KryptonPanel kryptonPanel2;
-        private CircularPictureBox cpbxColourPreview;
+        private Controls.CircularPictureBox cpbxColourPreview;
         private CommonKryptonKnobControlEnhanced kKnobBlue;
         private CommonKryptonKnobControlEnhanced kKnobGreen;
         private CommonKryptonKnobControlEnhanced kKnobRed;

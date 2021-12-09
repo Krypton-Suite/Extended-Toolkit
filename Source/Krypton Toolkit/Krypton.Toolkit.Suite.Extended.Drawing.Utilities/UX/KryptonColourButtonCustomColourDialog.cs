@@ -6,7 +6,7 @@
         private KryptonPanel kryptonPanel1;
         private KryptonButton kryptonOKDialogButton1;
         private KryptonPanel kryptonPanel2;
-        private CircularPictureBox circularPictureBox1;
+        private Controls.CircularPictureBox circularPictureBox1;
         private KryptonNumericUpDown kryptonNumericUpDown6;
         private KryptonNumericUpDown kryptonNumericUpDown5;
         private KryptonNumericUpDown kryptonNumericUpDown4;

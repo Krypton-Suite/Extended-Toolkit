@@ -11,7 +11,7 @@
 
     <ItemGroup>
         <PackageReference Include="Krypton.Toolkit.Canary" Version="6.2111.310-beta" />
-        <PackageReference Include="System.Data.SQLite.Core" Version="1.0.115" />
+        <PackageReference Include="System.Data.SQLite.Core" Version="1.0.115.5" />
     </ItemGroup>
 
     <ItemGroup>

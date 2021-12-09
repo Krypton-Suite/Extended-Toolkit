@@ -2,6 +2,8 @@
 global using System.ComponentModel;
 global using System.ComponentModel.Design;
 global using System.Collections.Generic;
+global using System.Collections.ObjectModel;
+global using System.Collections.Specialized;
 global using System.Diagnostics;
 global using System.Drawing;
 global using System.Drawing.Design;
@@ -11,6 +13,7 @@ global using System.IO;
 global using System.Reflection;
 global using System.Globalization;
 global using System.Runtime.InteropServices;
+global using System.Runtime.Serialization;
 global using System.Security.Principal;
 global using System.Text;
 global using System.Linq;
@@ -20,3 +23,5 @@ global using System.Windows.Forms.VisualStyles;
 
 
 global using Microsoft.Win32;
+
+global using Krypton.Toolkit.Suite.Extended.Data.Visualisation;
