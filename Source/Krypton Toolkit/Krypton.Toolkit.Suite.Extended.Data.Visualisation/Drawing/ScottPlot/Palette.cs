@@ -10,7 +10,7 @@
         public static Palette Aurora => new(new Aurora());
         public static Palette Category10 => new(new Category10());
         public static Palette Category20 => new(new Category20());
-        public static Palette ColorblindFriendly => new(new ColorblindFriendly());
+        public static Palette ColorblindFriendly => new(new ColourBlindFriendly());
         public static Palette Dark => new(new Dark());
         public static Palette DarkPastel => new(new DarkPastel());
         public static Palette Frost => new(new Frost());

@@ -8,6 +8,7 @@ global using System.Diagnostics;
 global using System.Drawing;
 global using System.Drawing.Design;
 global using System.Drawing.Drawing2D;
+global using System.Drawing.Text;
 global using System.Drawing.Imaging;
 global using System.IO;
 global using System.Reflection;
