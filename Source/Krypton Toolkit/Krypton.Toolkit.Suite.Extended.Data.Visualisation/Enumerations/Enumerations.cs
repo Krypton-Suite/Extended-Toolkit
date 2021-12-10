@@ -18,4 +18,23 @@
         TRIUP,
         TRIDOWN,
     }
+
+    public enum QualityMode
+    {
+        /// <summary>
+        /// Anti-aliasing always off
+        /// </summary>
+        LOW,
+
+
+        /// <summary>
+        /// Anti-aliasing off while dragging (more responsive) but on otherwise
+        /// </summary>
+        LOWWHILEDRAGGING,
+
+        /// <summary>
+        /// Anti-aliasing always on
+        /// </summary>
+        HIGH,
+    }
 }

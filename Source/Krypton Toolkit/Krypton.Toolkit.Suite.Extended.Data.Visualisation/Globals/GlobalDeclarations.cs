@@ -16,6 +16,7 @@ global using System.Runtime.InteropServices;
 global using System.Runtime.Serialization;
 global using System.Security.Principal;
 global using System.Text;
+global using System.Threading.Tasks;
 global using System.Linq;
 global using System.Windows.Forms;
 global using System.Windows.Forms.Design;
