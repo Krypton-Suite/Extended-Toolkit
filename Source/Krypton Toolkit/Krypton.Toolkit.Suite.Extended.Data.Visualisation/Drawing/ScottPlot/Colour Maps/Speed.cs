@@ -5,7 +5,7 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
-    public class Speed : IColormap
+    public class Speed : IColourMap
     {
         public string Name => "Speed";
 

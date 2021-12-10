@@ -26,3 +26,4 @@ global using System.Windows.Forms.VisualStyles;
 global using Microsoft.Win32;
 
 global using Krypton.Toolkit.Suite.Extended.Data.Visualisation;
+global using Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot.Drawing;

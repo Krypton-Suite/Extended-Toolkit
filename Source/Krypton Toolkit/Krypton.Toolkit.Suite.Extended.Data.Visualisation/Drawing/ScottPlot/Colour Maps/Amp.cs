@@ -5,7 +5,7 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
-    public class Amp : IColormap
+    public class Amp : IColourMap
     {
         public string Name => "Amp";
 

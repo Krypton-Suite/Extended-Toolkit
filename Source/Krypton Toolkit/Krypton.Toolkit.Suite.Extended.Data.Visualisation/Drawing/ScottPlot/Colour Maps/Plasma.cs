@@ -10,7 +10,7 @@ using System;
 
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
-    public class Plasma : IColormap
+    public class Plasma : IColourMap
     {
         public string Name => "Plasma";
 

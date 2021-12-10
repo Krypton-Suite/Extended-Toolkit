@@ -9,7 +9,7 @@ using System;
 
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
-    public class Jet : IColormap
+    public class Jet : IColourMap
     {
         public string Name => "Jet";
 

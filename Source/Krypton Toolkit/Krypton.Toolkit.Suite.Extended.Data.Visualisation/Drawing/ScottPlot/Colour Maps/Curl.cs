@@ -5,7 +5,7 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
-    public class Curl : IColormap
+    public class Curl : IColourMap
     {
         public string Name => "Curl";
 

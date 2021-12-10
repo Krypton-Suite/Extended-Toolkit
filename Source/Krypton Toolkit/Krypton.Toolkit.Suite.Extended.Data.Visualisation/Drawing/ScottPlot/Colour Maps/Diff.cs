@@ -5,7 +5,7 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
-    public class Diff : IColormap
+    public class Diff : IColourMap
     {
         public string Name => "Diff";
 

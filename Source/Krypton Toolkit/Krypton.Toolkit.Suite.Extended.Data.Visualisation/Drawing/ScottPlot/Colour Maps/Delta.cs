@@ -5,7 +5,7 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
-    public class Delta : IColormap
+    public class Delta : IColourMap
     {
         public string Name => "Delta";
 

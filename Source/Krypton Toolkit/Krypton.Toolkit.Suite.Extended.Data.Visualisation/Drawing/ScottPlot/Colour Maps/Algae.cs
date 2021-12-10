@@ -5,7 +5,7 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
-    public class Algae : IColormap
+    public class Algae : IColourMap
     {
         public string Name => "Algae";
 

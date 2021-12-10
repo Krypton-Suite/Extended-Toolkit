@@ -5,7 +5,7 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
-    public class Dense : IColormap
+    public class Dense : IColourMap
     {
         public string Name => "Dense";
 

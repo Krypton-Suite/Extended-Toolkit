@@ -5,7 +5,7 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
-    public class Thermal : IColormap
+    public class Thermal : IColourMap
     {
         public string Name => "Thermal";
 

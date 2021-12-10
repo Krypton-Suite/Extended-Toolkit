@@ -6,7 +6,7 @@ using System;
 
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
-    public class Turbo : IColormap
+    public class Turbo : IColourMap
     {
         public string Name => "Turbo";
 

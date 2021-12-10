@@ -3,7 +3,7 @@ using System;
 
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
-    public class Blues : IColormap
+    public class Blues : IColourMap
     {
         public string Name => "Blues";
 

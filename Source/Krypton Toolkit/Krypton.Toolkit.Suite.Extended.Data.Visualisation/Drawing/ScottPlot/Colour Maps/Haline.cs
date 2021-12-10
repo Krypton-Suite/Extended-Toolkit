@@ -5,7 +5,7 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
-    public class Haline : IColormap
+    public class Haline : IColourMap
     {
         public string Name => "Haline";
 

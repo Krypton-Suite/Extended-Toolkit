@@ -5,7 +5,7 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
-    public class Phase : IColormap
+    public class Phase : IColourMap
     {
         public string Name => "Phase";
 

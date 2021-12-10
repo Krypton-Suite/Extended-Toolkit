@@ -520,7 +520,7 @@
         /// <param name="data">The data to use.</param>
         /// <param name="cmap">The colormap to use.</param>
         /// <returns>A Bitmap</returns>
-        public static Bitmap BitmapFrom2dArray(double[,] data, Colormap cmap)
+        public static Bitmap BitmapFrom2dArray(double[,] data, ColourMap cmap)
         {
             int width = data.GetLength(1);
             int height = data.GetLength(0);
@@ -551,7 +551,7 @@
         /// Generates a sample Bitmap.
         /// </summary>
         /// <returns>A sample Bitmap</returns>
-        public static Bitmap SampleImage() => BitmapFrom2dArray(SampleImageData(), Colormap.Viridis);
+        public static Bitmap SampleImage() => BitmapFrom2dArray(SampleImageData(), ColourMap.Viridis);
 
         /// <summary>
         /// Returns a sample 2D array of grayscale values.

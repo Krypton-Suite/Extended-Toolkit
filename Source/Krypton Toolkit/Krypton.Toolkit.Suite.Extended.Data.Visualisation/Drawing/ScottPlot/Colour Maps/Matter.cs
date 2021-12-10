@@ -5,7 +5,7 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
-    public class Matter : IColormap
+    public class Matter : IColourMap
     {
         public string Name => "Matter";
 

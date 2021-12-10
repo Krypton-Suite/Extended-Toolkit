@@ -10,7 +10,7 @@ using System;
 
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
-    public class Viridis : IColormap
+    public class Viridis : IColourMap
     {
         public string Name => "Viridis";
 

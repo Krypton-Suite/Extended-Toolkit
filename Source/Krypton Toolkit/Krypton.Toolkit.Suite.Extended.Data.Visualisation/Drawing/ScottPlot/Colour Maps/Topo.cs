@@ -5,7 +5,7 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
-    public class Topo : IColormap
+    public class Topo : IColourMap
     {
         public string Name => "Topo";
 

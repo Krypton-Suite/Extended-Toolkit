@@ -5,7 +5,7 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
-    public class Turbid : IColormap
+    public class Turbid : IColourMap
     {
         public string Name => "Turbid";
 

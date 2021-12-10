@@ -10,7 +10,7 @@ using System;
 
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
-    public class Magma : IColormap
+    public class Magma : IColourMap
     {
         public string Name => "Magma";
 

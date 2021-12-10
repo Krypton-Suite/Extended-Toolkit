@@ -2,7 +2,7 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
-    public class GrayscaleR : IColormap
+    public class GrayscaleR : IColourMap
     {
         public string Name => "GrayscaleR";
 

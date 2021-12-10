@@ -5,7 +5,7 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
-    public class Oxy : IColormap
+    public class Oxy : IColourMap
     {
         public string Name => "Oxy";
 
