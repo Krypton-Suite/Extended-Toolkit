@@ -1,6 +1,6 @@
 ﻿using ScottPlot.MinMaxSearchStrategies;
 
-namespace ScottPlot.Plottable
+namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
     /// <summary>
     /// A variation of the SignalPlot optimized for unevenly-spaced ascending X values.

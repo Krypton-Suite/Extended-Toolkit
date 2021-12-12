@@ -4,7 +4,7 @@ using System;
 using System.Diagnostics;
 using System.Drawing;
 
-namespace ScottPlot.Plottable
+namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
     /// <summary>
     /// Shaded horizontal region between two X values

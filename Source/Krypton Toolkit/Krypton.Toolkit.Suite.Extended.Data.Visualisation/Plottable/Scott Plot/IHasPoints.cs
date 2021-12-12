@@ -1,4 +1,4 @@
-﻿namespace ScottPlot.Plottable
+﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
     /// <summary>
     /// Indicates a plottable has data distributed along both axes

@@ -2,7 +2,7 @@
 using System;
 using System.Drawing;
 
-namespace ScottPlot.Plottable
+namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
     /// <summary>
     /// Text placed at a location relative to the data area that does not move when the axis limits change

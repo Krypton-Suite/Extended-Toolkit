@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Linq;
 using ScottPlot.Drawing;
 
-namespace ScottPlot.Plottable
+namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
     /// <summary>
     /// Polygons are multiple Polygon objects.

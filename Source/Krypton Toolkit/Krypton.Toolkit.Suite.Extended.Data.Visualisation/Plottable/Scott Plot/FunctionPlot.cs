@@ -4,7 +4,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 
-namespace ScottPlot.Plottable
+namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
     /// <summary>
     /// A function plot displays a curve using a function (Y as a function of X)

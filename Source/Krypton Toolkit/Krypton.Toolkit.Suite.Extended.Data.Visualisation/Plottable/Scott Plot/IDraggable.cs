@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ScottPlot.Plottable
+namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
     public interface IDraggable
     {

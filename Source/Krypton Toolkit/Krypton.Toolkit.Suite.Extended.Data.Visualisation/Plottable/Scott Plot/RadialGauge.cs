@@ -3,7 +3,7 @@ using System;
 using System.Drawing;
 using System.Linq;
 
-namespace ScottPlot.Plottable
+namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
     /// <summary>
     /// This class represents a single radial gauge.

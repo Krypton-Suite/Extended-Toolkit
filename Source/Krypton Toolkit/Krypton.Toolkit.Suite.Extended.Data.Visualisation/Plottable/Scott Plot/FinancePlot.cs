@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Linq;
 using ScottPlot.Drawing;
 
-namespace ScottPlot.Plottable
+namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
     /// <summary>
     /// Finance plots display open/high/low/close (OHLC) data

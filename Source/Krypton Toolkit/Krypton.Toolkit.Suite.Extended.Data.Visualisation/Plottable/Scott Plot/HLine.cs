@@ -1,4 +1,4 @@
-﻿namespace ScottPlot.Plottable
+﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
     /// <summary>
     /// Horizontal line at a Y position

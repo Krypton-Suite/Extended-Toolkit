@@ -3,7 +3,7 @@ using ScottPlot.Renderable;
 using System;
 using System.Drawing;
 
-namespace ScottPlot.Plottable
+namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
     /// <summary>
     /// A polygon is a collection of X/Y points that are all connected to form a closed shape.

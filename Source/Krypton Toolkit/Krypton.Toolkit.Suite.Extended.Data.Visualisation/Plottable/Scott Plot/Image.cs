@@ -4,7 +4,7 @@ using ScottPlot.Drawing;
 using System;
 using System.Data;
 
-namespace ScottPlot.Plottable
+namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
     /// <summary>
     /// Display a Bitmap at X/Y coordinates in unit space

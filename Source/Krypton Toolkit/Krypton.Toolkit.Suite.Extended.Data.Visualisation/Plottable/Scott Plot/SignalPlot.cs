@@ -1,6 +1,6 @@
 ﻿using ScottPlot.MinMaxSearchStrategies;
 
-namespace ScottPlot.Plottable
+namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
     /// <summary>
     /// A signal plot displays evenly-spaced data.

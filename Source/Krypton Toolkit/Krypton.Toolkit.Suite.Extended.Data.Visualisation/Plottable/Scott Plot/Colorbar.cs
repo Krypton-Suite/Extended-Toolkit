@@ -5,7 +5,7 @@ using System.Drawing;
 using ScottPlot.Ticks;
 using System.Linq;
 
-namespace ScottPlot.Plottable
+namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
     /// <summary>
     /// A colorbar translates numeric intensity values to colors.

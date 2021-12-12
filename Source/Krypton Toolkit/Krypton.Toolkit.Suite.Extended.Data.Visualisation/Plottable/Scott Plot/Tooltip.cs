@@ -3,7 +3,7 @@ using System;
 using System.Drawing;
 using System.Linq;
 
-namespace ScottPlot.Plottable
+namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
     /// <summary>
     /// A tooltip displays a text bubble pointing to a specific location in X/Y space.

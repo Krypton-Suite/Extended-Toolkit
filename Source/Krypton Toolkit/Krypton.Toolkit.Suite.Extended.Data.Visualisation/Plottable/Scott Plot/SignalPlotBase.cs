@@ -8,7 +8,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Runtime.InteropServices;
 
-namespace ScottPlot.Plottable
+namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
     public abstract class SignalPlotBase<T> : IPlottable, IHasPointsGenericX<double, T> where T : struct, IComparable
     {

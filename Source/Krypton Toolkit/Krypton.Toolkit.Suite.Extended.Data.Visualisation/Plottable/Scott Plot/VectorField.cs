@@ -4,7 +4,7 @@ using System;
 using System.Drawing;
 using System.Linq;
 
-namespace ScottPlot.Plottable
+namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
     /// <summary>
     /// The VectorField displays arrows representing a 2D array of 2D vectors

@@ -2,7 +2,7 @@
 using System.Drawing;
 using ScottPlot.Drawing;
 
-namespace ScottPlot.Plottable
+namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
     /// <summary>
     /// An L-shaped scalebar rendered in the corner of the data area

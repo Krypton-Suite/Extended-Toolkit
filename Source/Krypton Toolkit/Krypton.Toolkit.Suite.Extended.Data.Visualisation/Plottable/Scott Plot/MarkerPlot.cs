@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace ScottPlot.Plottable
+namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
     public class MarkerPlot : IPlottable
     {

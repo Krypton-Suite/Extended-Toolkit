@@ -1,6 +1,6 @@
 ﻿using ScottPlot.Drawing;
 
-namespace ScottPlot.Plottable
+namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
     /// <summary>
     /// This class describes a single item that appears in the figure legend.

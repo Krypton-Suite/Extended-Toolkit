@@ -6,7 +6,7 @@ using System.Data;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ScottPlot.Plottable
+namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
     /// <summary>
     /// Display circles of user-defined sizes and colors at specific X/Y positions

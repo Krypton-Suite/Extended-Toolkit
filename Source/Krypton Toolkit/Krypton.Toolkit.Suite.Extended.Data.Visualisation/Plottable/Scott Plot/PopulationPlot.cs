@@ -4,7 +4,7 @@ using System.Linq;
 using ScottPlot.Drawing;
 using ScottPlot.Statistics;
 
-namespace ScottPlot.Plottable
+namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
     /// <summary>
     /// Population plots are designed to show collections of data.

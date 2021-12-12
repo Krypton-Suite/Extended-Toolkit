@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Linq;
 using ScottPlot.Drawing;
 
-namespace ScottPlot.Plottable
+namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
     /// <summary>
     /// A radar chart is a graphical method of displaying multivariate data in the form of 

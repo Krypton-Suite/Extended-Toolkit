@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 
-namespace ScottPlot.Plottable
+namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
     [Obsolete("This plot type has been deprecated. Min/max and interpolation settings are exposed in the regular Heatmap.")]
     public class CoordinatedHeatmap : Heatmap

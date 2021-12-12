@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Data;
 using System.Linq;
 
-namespace ScottPlot.Plottable
+namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
     /// <summary>
     /// Bar plots display a series of bars. 

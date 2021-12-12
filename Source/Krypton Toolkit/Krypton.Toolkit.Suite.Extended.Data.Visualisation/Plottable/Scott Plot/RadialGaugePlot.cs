@@ -7,7 +7,7 @@ using ScottPlot.Drawing;
 // This plot type was inspired by MicroCharts:
 // https://github.com/dotnet-ad/Microcharts/blob/main/Sources/Microcharts/Charts/RadialGaugeChart.cs
 
-namespace ScottPlot.Plottable
+namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
     /// <summary>
     /// A radial gauge chart is a graphical method of displaying scalar data in the form of 
