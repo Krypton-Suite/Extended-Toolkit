@@ -15,7 +15,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         // tick label styling
         public bool TickLabelVisible = true;
         public float TickLabelRotation = 0;
-        public Drawing.Font TickLabelFont = new Drawing.Font() { Size = 11 };
+        public Font TickLabelFont = new Font() { Size = 11 };
 
         // major tick/grid styling
         public bool MajorTickVisible = true;

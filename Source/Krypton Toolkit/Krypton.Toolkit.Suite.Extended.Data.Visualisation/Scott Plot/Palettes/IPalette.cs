@@ -6,7 +6,7 @@
  * 
  **/
 
-namespace ScottPlot.Drawing
+namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
     public interface IPalette
     {

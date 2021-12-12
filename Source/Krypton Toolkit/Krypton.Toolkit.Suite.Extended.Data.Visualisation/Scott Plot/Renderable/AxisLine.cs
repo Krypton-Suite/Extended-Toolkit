@@ -1,6 +1,6 @@
 ﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
-    public class AxisLine : IRenderable
+    public class AxisLineOptional : IRenderable
     {
         public bool IsVisible { get; set; } = true;
         public Color Color = Color.Black;

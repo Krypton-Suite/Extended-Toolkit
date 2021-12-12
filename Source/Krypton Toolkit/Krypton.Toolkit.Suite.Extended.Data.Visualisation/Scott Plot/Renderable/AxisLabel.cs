@@ -20,7 +20,7 @@
         /// <summary>
         /// Font options for the axis title
         /// </summary>
-        public Drawing.Font Font = new Drawing.Font() { Size = 16 };
+        public Font Font = new Font() { Size = 16 };
 
         /// <summary>
         /// Set this field to display a bitmap instead of a text axis label

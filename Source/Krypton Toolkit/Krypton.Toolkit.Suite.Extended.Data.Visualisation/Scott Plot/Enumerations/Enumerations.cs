@@ -268,4 +268,38 @@
         Lower,
         Middle
     }
+
+    public enum DateTimeUnit
+    {
+        ThousandYear,
+        HundredYear, 
+        TenYear, 
+        Year,
+        Month, 
+        Day, 
+        Hour, 
+        Minute,
+        Second, 
+        Decisecond, 
+        Centisecond,
+        Millisecond
+    }
+
+    public enum TickLabelFormat
+    {
+        Numeric, 
+        DateTime
+    } // TODO: add hex, binary, scientific notation, etc?
+
+    public enum AxisOrientation
+    {
+        Vertical, 
+        Horizontal
+    }
+
+    public enum MinorTickDistribution
+    {
+        even, 
+        log
+    };
 }

@@ -16,7 +16,7 @@
         public int YAxisIndex { get; set; } = 0;
         public bool BackgroundFill = false;
         public Color BackgroundColor;
-        public Drawing.Font Font = new Drawing.Font();
+        public Font Font = new Font();
         public Color Color { set => Font.Color = value; }
         public string FontName { set => Font.Name = value; }
         public float FontSize { set => Font.Size = value; }

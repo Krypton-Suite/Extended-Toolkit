@@ -14,7 +14,7 @@
         public float ShadowOffsetX = 2;
         public float ShadowOffsetY = 2;
 
-        public Drawing.Font Font = new Drawing.Font();
+        public Font Font = new Font();
         public string FontName { set { Font.Name = value; } }
         public float FontSize { set { Font.Size = value; } }
         public Color FontColor { set { Font.Color = value; } }
@@ -144,7 +144,7 @@
                         // and perhaps a marker in the middle of the line
                         float lineXcenter = (lineX1 + lineX2) / 2;
                         PointF markerPoint = new PointF(lineXcenter, lineY);
-                        if ((item.markerShape != MarkerShape.none) && (item.markerSize > 0))
+                        if ((item.markerShape != MarkerShape.NONE) && (item.markerSize > 0))
                             MarkerTools.DrawMarker(gfx, markerPoint, item.markerShape, MarkerWidth, item.color);
                     }
                 }

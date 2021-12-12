@@ -69,9 +69,9 @@
             }
         }
 
-        public static void RenderTickLabels(PlotDimensions dims, Graphics gfx, TickCollection tc, Drawing.Font tickFont, Edge edge, float rotation, bool rulerMode, float PixelOffset, float MajorTickLength, float MinorTickLength)
+        public static void RenderTickLabels(PlotDimensions dims, Graphics gfx, TickCollection tc, Font tickFont, Edge edge, float rotation, bool rulerMode, float PixelOffset, float MajorTickLength, float MinorTickLength)
         {
-            if (tc.tickLabels is null || tc.tickLabels.Length == 0)
+            if (TickCollectionStorage.tickLabels is null || TickCollectionStorage.tickLabels.Length == 0)
                 return;
 
             using var font = GDI.Font(tickFont);
