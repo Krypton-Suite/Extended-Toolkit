@@ -1,6 +1,4 @@
-﻿using System.Configuration;
-
-namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
+﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
     /// <summary>
     /// This event describes what happens when the mouse button is lifted after 

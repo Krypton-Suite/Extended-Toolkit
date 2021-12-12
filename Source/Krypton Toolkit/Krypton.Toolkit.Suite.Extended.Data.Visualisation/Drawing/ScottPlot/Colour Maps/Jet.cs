@@ -5,8 +5,6 @@
  * https://ai.googleblog.com/2019/08/turbo-improved-rainbow-colormap-for.html
  */
 
-using System;
-
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
     public class Jet : IColourMap

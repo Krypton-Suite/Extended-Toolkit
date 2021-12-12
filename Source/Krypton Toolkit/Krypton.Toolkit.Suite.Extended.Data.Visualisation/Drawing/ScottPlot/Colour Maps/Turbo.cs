@@ -2,8 +2,6 @@
 // It was designed to mimic Turbo, but is not a copy of or derived from Turbo source code.
 // https://ai.googleblog.com/2019/08/turbo-improved-rainbow-colormap-for.html
 
-using System;
-
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
     public class Turbo : IColourMap

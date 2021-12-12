@@ -167,7 +167,7 @@
                 return new HatchBrush(ConvertToSDHatchStyle(pattern).Value, hatchColor, fillColor);
         }
 
-        public static System.Drawing.Drawing2D.HatchStyle? ConvertToSDHatchStyle(Drawing.HatchStyle pattern)
+        public static System.Drawing.Drawing2D.HatchStyle? ConvertToSDHatchStyle(HatchStyle pattern)
         {
             switch (pattern)
             {
@@ -197,7 +197,7 @@
             }
         }
 
-        public static System.Drawing.Font Font(ScottPlot.Drawing.Font font) =>
+        public static System.Drawing.Font Font(Font font) =>
             Font(font.Name, font.Size, font.Bold);
 
         public static System.Drawing.Font Font(string fontName = null, float fontSize = 12, bool bold = false)

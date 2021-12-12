@@ -1,7 +1,4 @@
-﻿using System;
-using System.Drawing;
-
-namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
+﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
     // hex colorsets store web-formatted colors (e.g., '#FFAA66') in a string array.
 
