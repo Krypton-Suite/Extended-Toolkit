@@ -6,7 +6,6 @@
  */
 #endregion
 
-
 namespace Krypton.Toolkit.Suite.Extended.Buttons
 {
     public class KryptonBrowseButton : KryptonButton

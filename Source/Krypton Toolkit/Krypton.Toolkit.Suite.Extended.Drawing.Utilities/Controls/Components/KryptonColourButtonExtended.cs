@@ -1,4 +1,12 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ */
+#endregion
+
+namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 {
     [ToolboxItem(true), ToolboxBitmap(typeof(KryptonColourButtonExtended), "ToolboxBitmaps.KryptonColourButtonExtended.bmp"), DefaultEvent("SelectedColourChanged"), DefaultProperty("SelectedColour"), Designer(typeof(KryptonColourButtonExtendedDesigner)), DesignerCategory("code"), Description("Raises an event when the user clicks it."), ClassInterface(ClassInterfaceType.AutoDispatch), ComVisible(true)]
     public partial class KryptonColourButtonExtended : VisualSimpleBase, IButtonControl, IContentValues
