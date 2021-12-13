@@ -1,8 +1,11 @@
-﻿/* This color palette was sourced from the examples provided by Microcharts:
- * https://github.com/microcharts-dotnet/Microcharts/blob/main/Sources/Microcharts.Samples/Data.cs
- * At the time the license file was accessed (2021-09-02) the original work was
- * released under a MIT License, Copyright (c) 2017 Aloïs Deniel.
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
  */
+#endregion
+
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
     public class Microcharts : HexColourset, IPalette

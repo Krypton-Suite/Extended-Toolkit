@@ -1,4 +1,12 @@
-﻿/* This color palette was sourced from the examples provided in:
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ */
+#endregion
+
+/* This color palette was sourced from the examples provided in:
  * Wong 2011, https://www.nature.com/articles/nmeth.1618.pdf
  * This 8-color palette has good overall variability and can be 
  * differentiated by individuals with red-green color blindness.

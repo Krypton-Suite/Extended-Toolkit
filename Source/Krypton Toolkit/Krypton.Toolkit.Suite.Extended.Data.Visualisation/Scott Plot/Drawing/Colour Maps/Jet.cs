@@ -1,9 +1,10 @@
-﻿/* The Jet colormap is provided under a MIT license.
- * Do not use this colormap for heatmap data! See references:
- * https://jakevdp.github.io/blog/2014/10/16/how-bad-is-your-colormap/
- * https://bids.github.io/colormap/
- * https://ai.googleblog.com/2019/08/turbo-improved-rainbow-colormap-for.html
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
  */
+#endregion
 
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {

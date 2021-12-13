@@ -1,7 +1,10 @@
-﻿//This is a cmocean colormap
-//All credit to Kristen Thyng
-//This colormap is under the MIT License
-//All cmocean colormaps are available at https://github.com/matplotlib/cmocean/tree/master/cmocean/rgb
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ */
+#endregion
 
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {

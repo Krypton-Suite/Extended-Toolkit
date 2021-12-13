@@ -1,10 +1,10 @@
-﻿/* Viridis is a colormap by Nathaniel J. Smith, Stefan van der Walt, and Eric Firing
- * https://bids.github.io/colormap/
- * https://github.com/BIDS/colormap/blob/master/colormaps.py
- * 
- * This colormap is provided under the CC0 license / public domain dedication
- * http://creativecommons.org/publicdomain/zero/1.0/
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
  */
+#endregion
 
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {

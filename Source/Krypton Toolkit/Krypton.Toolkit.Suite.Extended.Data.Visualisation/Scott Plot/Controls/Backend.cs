@@ -1,4 +1,12 @@
-﻿/* This file describes the ScottPlot back-end control module.
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ */
+#endregion
+
+/* This file describes the ScottPlot back-end control module.
  * 
  *  Goals for this module:
  *    - Interact with the Plot object so controls don't have to.

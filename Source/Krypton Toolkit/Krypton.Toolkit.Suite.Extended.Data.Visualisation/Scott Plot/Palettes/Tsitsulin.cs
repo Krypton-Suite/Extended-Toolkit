@@ -1,4 +1,12 @@
-﻿/* A 25-color pelette based on Anton Tsitsulin's 12-color palette
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ */
+#endregion
+
+/* A 25-color pelette based on Anton Tsitsulin's 12-color palette
  * http://tsitsul.in/blog/coloropt
  * https://github.com/xgfs/coloropt
  */

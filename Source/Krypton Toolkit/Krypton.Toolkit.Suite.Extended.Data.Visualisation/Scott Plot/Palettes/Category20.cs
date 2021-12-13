@@ -1,21 +1,10 @@
-﻿// These colors were originally developed by Tableau:
-//   https://www.tableau.com/about/blog/2016/7/colors-upgrade-tableau-10-56782
-//
-// Vega obtained permission to release this color set under a BSD license:
-//   https://github.com/d3/d3-scale-chromatic/pull/16
-//
-// Vega placed these color values here under a BSD (3-clause) license:
-//   https://github.com/vega/vega/blob/af5cc1df42eb5aaf2f478d0bda69313643fe0532/docs/releases/v1.2.1/vega.js#L170-L205
-//
-// ScottPlot obtained this list of colors from Vega (not Tableau) and includes them here along with a copy
-//   of the Vega's BSD 3-clause license.
-// 
-// D3 also uses this default color set under a BSD (3-clause) license:
-//   https://github.com/d3/d3-3.x-api-reference/blob/master/Ordinal-Scales.md#category10
-//
-// Matplotlib also uses this color set:
-//   https://github.com/matplotlib/matplotlib/blob/b34895dbfaba1293ea2ab8c35d1b2df5a246054c/lib/matplotlib/_color_data.py#L16-L28
-// 
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ */
+#endregion
 
 /*
 Copyright (c) 2015-2018, University of Washington Interactive Data Lab

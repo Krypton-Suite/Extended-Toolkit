@@ -1,7 +1,11 @@
-﻿/* This a qualitative 8-color palette generated using https://colorbrewer2.org
- * © Cynthia Brewer, Mark Harrower and The Pennsylvania State University
- * It is is both LCD and print friendly but not blind nor photocopy friendly
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
  */
+#endregion
+
 namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
     public class Dark : HexColourset, IPalette

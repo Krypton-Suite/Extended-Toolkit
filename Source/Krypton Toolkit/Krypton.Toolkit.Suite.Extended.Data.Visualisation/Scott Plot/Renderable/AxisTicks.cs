@@ -1,4 +1,12 @@
-﻿/* The AxisTicks object contains:
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ */
+#endregion
+
+/* The AxisTicks object contains:
  *   - A TickCollection responsible for calculating tick positions and labels
  *   - major tick label styling
  *   - major/minor tick mark styling
