@@ -6,7 +6,6 @@
  */
 #endregion
 
-
 namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
 {
     /// <summary>Provides useful methods for specified tasks.</summary>
