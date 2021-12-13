@@ -74,7 +74,7 @@
         /// <summary>
         /// Font used for labeling values on the plot
         /// </summary>
-        public Drawing.Font Font = new();
+        public Font Font = new();
 
         /// <summary>
         /// If true, each value will be written in text on the plot.
@@ -221,7 +221,7 @@
                     label = GroupLabels[i],
                     color = FillColors[i],
                     lineWidth = 10,
-                    markerShape = MarkerShape.none
+                    markerShape = MarkerShape.NONE
                 };
                 legendItems.Add(item);
             }

@@ -4,14 +4,14 @@
     {
         [Obsolete("Use AddHeatmapCoordinated (note capitalization)")]
         [EditorBrowsable(EditorBrowsableState.Never)] // Prevents suggestions in Intellisense for downstream users. Still shows up while editing this assembly.
-        public CoordinatedHeatmap AddHeatMapCoordinated(double?[,] intensities, double? xMin = null, double? xMax = null, double? yMin = null, double? yMax = null, Drawing.Colormap colormap = null)
+        public CoordinatedHeatmap AddHeatMapCoordinated(double?[,] intensities, double? xMin = null, double? xMax = null, double? yMin = null, double? yMax = null, ColourMap colormap = null)
         {
             return AddHeatmapCoordinated(intensities, xMin, xMax, yMin, yMax, colormap);
         }
 
         [Obsolete("Use AddHeatmapCoordinated (note capitalization)")]
         [EditorBrowsable(EditorBrowsableState.Never)] // Prevents suggestions in Intellisense for downstream users. Still shows up while editing this assembly.
-        public CoordinatedHeatmap AddHeatMapCoordinated(double[,] intensities, double? xMin = null, double? xMax = null, double? yMin = null, double? yMax = null, Drawing.Colormap colormap = null)
+        public CoordinatedHeatmap AddHeatMapCoordinated(double[,] intensities, double? xMin = null, double? xMax = null, double? yMin = null, double? yMax = null, ColourMap colormap = null)
         {
             return AddHeatmapCoordinated(intensities, xMin, xMax, yMin, yMax, colormap);
         }
@@ -210,7 +210,7 @@
         }
 
         [Obsolete("Use AddImage() and customize the object it returns.")]
-        public Plottable.Image PlotBitmap(
+        public Image PlotBitmap(
            Bitmap bitmap,
            double x,
            double y,
@@ -221,7 +221,7 @@
            int frameSize = 0
            )
         {
-            Plottable.Image plottableImage = new Plottable.Image()
+            Image plottableImage = new Image()
             {
                 Bitmap = bitmap,
                 X = x,
@@ -386,11 +386,11 @@
             double lineWidth = 1,
             double markerSize = 0,
             string label = "f(x)",
-            MarkerShape markerShape = MarkerShape.none,
+            MarkerShape markerShape = MarkerShape.NONE,
             LineStyle lineStyle = LineStyle.Solid
         )
         {
-            if (markerShape != MarkerShape.none || markerSize != 0)
+            if (markerShape != MarkerShape.NONE || markerSize != 0)
                 throw new ArgumentException("function plots do not use markers");
 
             FunctionPlot functionPlot = new FunctionPlot(function)
@@ -408,7 +408,7 @@
         [Obsolete("Use AddHeatmap() and customize the object it returns")]
         public Heatmap PlotHeatmap(
             double[,] intensities,
-            Drawing.Colormap colormap = null,
+            ColourMap colormap = null,
             string label = null,
             double[] axisOffsets = null,
             double[] axisMultipliers = null,
@@ -435,7 +435,7 @@
         [Obsolete("Create this plottable manually with new, then Add() it to the plot.")]
         public Heatmap PlotHeatmap(
             double?[,] intensities,
-            Drawing.Colormap colormap = null,
+            ColourMap colormap = null,
             string label = null,
             double[] axisOffsets = null,
             double[] axisMultipliers = null,
@@ -455,7 +455,7 @@
                 DisplayImageAbove = displayImageAbove,
                 ShowAxisLabels = drawAxisLabels,
             };
-            heatmap.Update(intensities, colormap ?? Drawing.Colormap.Viridis, scaleMin, scaleMax);
+            heatmap.Update(intensities, colormap ?? ColourMap.Viridis, scaleMin, scaleMax);
 
             Add(heatmap);
             Layout(top: 180);
@@ -615,7 +615,7 @@
         [Obsolete("Use AddPoint() and customize the object it returns")]
         public ScatterPlot PlotPoint(double x, double y, Color? color = null, double markerSize = 5, string label = null,
             double? errorX = null, double? errorY = null, double errorLineWidth = 1, double errorCapSize = 3,
-            MarkerShape markerShape = MarkerShape.filledCircle, LineStyle lineStyle = LineStyle.Solid)
+            MarkerShape markerShape = MarkerShape.FILLEDCIRCLE, LineStyle lineStyle = LineStyle.Solid)
             => throw new NotImplementedException();
 
         [Obsolete("Use AddScatter() and customize the object it returns")]
@@ -630,7 +630,7 @@
             double[] errorY = null,
             double errorLineWidth = 1,
             double errorCapSize = 3,
-            MarkerShape markerShape = MarkerShape.filledCircle,
+            MarkerShape markerShape = MarkerShape.FILLEDCIRCLE,
             LineStyle lineStyle = LineStyle.Solid
             )
         {
@@ -662,9 +662,9 @@
            double[] errorY = null,
            double errorLineWidth = 1,
            double errorCapSize = 3,
-           MarkerShape markerShape = MarkerShape.filledCircle,
+           MarkerShape markerShape = MarkerShape.FILLEDCIRCLE,
            LineStyle lineStyle = LineStyle.Solid,
-           MarkerShape highlightedShape = MarkerShape.openCircle,
+           MarkerShape highlightedShape = MarkerShape.OPENCIRCLE,
            Color? highlightedColor = null,
            double? highlightedMarkerSize = null
            )
@@ -860,7 +860,7 @@
                 ErrorLineWidth = 0,
                 ErrorCapSize = 0,
                 StepDisplay = true,
-                MarkerShape = MarkerShape.none,
+                MarkerShape = MarkerShape.NONE,
                 LineStyle = LineStyle.Solid
             };
 
@@ -1053,7 +1053,7 @@
             double[] ys,
             string label = null,
             Color? color = null,
-            Drawing.Colormap colormap = null,
+            ColourMap colormap = null,
             double scaleFactor = 1
             )
         {

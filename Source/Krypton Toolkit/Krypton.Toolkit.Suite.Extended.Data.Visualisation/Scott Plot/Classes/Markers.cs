@@ -58,35 +58,35 @@
 
                     break;
                 case MarkerShape.ASTERISK:
-                    Font drawFont = new Font("CourierNew", size * 3);
+                    System.Drawing.Font drawFont = new System.Drawing.Font("CourierNew", size * 3);
                     SizeF textSize = GDI.MeasureString(gfx, "*", drawFont);
                     PointF asteriskPoint = new PointF(pixelLocation.X - textSize.Width / 2, pixelLocation.Y - textSize.Height / 4);
                     gfx.DrawString("*", drawFont, brush, asteriskPoint);
 
                     break;
                 case MarkerShape.HASHTAG:
-                    Font drawFont2 = new Font("CourierNew", size * 2);
+                    System.Drawing.Font drawFont2 = new System.Drawing.Font("CourierNew", size * 2);
                     SizeF textSize2 = GDI.MeasureString(gfx, "#", drawFont2);
                     PointF asteriskPoint2 = new PointF(pixelLocation.X - textSize2.Width / 2, pixelLocation.Y - textSize2.Height / 3);
                     gfx.DrawString("#", drawFont2, brush, asteriskPoint2);
 
                     break;
                 case MarkerShape.CROSS:
-                    Font drawFont3 = new Font("CourierNew", size * 2);
+                    System.Drawing.Font drawFont3 = new System.Drawing.Font("CourierNew", size * 2);
                     SizeF textSize3 = GDI.MeasureString(gfx, "+", drawFont3);
                     PointF asteriskPoint3 = new PointF(pixelLocation.X - textSize3.Width / (5 / 2), pixelLocation.Y - textSize3.Height / 2);
                     gfx.DrawString("+", drawFont3, brush, asteriskPoint3);
 
                     break;
                 case MarkerShape.EKS:
-                    Font drawFont4 = new Font("CourierNew", size * 2);
+                    System.Drawing.Font drawFont4 = new System.Drawing.Font("CourierNew", size * 2);
                     SizeF textSize4 = GDI.MeasureString(gfx, "x", drawFont4);
                     PointF asteriskPoint4 = new PointF(pixelLocation.X - textSize4.Width / (5 / 2), pixelLocation.Y - textSize4.Height / 2);
                     gfx.DrawString("x", drawFont4, brush, asteriskPoint4);
 
                     break;
                 case MarkerShape.VERTICALBAR:
-                    Font drawFont5 = new Font("CourierNew", size * 2);
+                    System.Drawing.Font drawFont5 = new System.Drawing.Font("CourierNew", size * 2);
                     SizeF textSize5 = GDI.MeasureString(gfx, "|", drawFont5);
                     PointF asteriskPoint5 = new PointF(pixelLocation.X - textSize5.Width / (5 / 2), pixelLocation.Y - textSize5.Height / 2);
                     gfx.DrawString("|", drawFont5, brush, asteriskPoint5);

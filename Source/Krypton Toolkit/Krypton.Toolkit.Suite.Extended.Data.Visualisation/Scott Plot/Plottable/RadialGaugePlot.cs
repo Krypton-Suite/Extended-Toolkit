@@ -94,7 +94,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <summary>
         /// Describes labels drawn on each gauge.
         /// </summary>
-        public readonly Drawing.Font Font = new() { Bold = true, Color = Color.White };
+        public readonly Font Font = new() { Bold = true, Color = Color.White };
 
         /// <summary>
         /// Controls if value labels are shown inside the gauges.
@@ -231,7 +231,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                     label = Labels[i],
                     color = Colors[i],
                     lineWidth = 10,
-                    markerShape = MarkerShape.none
+                    markerShape = MarkerShape.NONE
                 };
                 legendItems.Add(item);
             }

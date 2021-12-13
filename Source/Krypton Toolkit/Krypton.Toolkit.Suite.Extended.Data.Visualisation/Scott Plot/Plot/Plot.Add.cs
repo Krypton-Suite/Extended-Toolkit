@@ -220,7 +220,7 @@
         /// <param name="colormap">Colormap to display in this colorbar</param>
         /// <param name="space">The size of the right axis will be set to this number of pixels to make room for the colorbar</param>
         /// <returns>the colorbar that was just created</returns>
-        public Colorbar AddColorbar(Drawing.Colormap colormap = null, int space = 100)
+        public Colorbar AddColorbar(ColourMap colormap = null, int space = 100)
         {
             var cb = new Colorbar(colormap);
             Add(cb);
@@ -362,7 +362,7 @@
         /// Returns the heatmap that was added to the plot.
         /// Act on its public fields and methods to customize it or update its data.
         /// </returns>
-        public Heatmap AddHeatmap(double?[,] intensities, Drawing.Colormap colormap = null, bool lockScales = true)
+        public Heatmap AddHeatmap(double?[,] intensities, ColourMap colormap = null, bool lockScales = true)
         {
             var plottable = new Heatmap();
             plottable.Update(intensities, colormap);
@@ -385,7 +385,7 @@
         /// Returns the heatmap that was added to the plot.
         /// Act on its public fields and methods to customize it or update its data.
         /// </returns>
-        public Heatmap AddHeatmap(double[,] intensities, Drawing.Colormap colormap = null, bool lockScales = true)
+        public Heatmap AddHeatmap(double[,] intensities, ColourMap colormap = null, bool lockScales = true)
         {
             var plottable = new Heatmap();
             plottable.Update(intensities, colormap);
@@ -414,7 +414,7 @@
         /// Act on its public fields and methods to customize it or update its data.
         /// </returns>
         [Obsolete("This plot type has been deprecated. (min/max functionality now exists in Heatmap)")]
-        public CoordinatedHeatmap AddHeatmapCoordinated(double?[,] intensities, double? xMin = null, double? xMax = null, double? yMin = null, double? yMax = null, Drawing.Colormap colormap = null)
+        public CoordinatedHeatmap AddHeatmapCoordinated(double?[,] intensities, double? xMin = null, double? xMax = null, double? yMin = null, double? yMax = null, ColourMap colormap = null)
         {
             var plottable = new CoordinatedHeatmap();
 
@@ -484,7 +484,7 @@
         /// Act on its public fields and methods to customize it or update its data.
         /// </returns>
         [Obsolete("This plot type has been deprecated. Use a regular heatmap and modify its Offset and CellSize fields.")]
-        public CoordinatedHeatmap AddHeatmapCoordinated(double[,] intensities, double? xMin = null, double? xMax = null, double? yMin = null, double? yMax = null, Drawing.Colormap colormap = null)
+        public CoordinatedHeatmap AddHeatmapCoordinated(double[,] intensities, double? xMin = null, double? xMax = null, double? yMin = null, double? yMax = null, ColourMap colormap = null)
         {
             var plottable = new CoordinatedHeatmap();
 
@@ -573,9 +573,9 @@
         /// <summary>
         /// Display an image at a specific coordinate
         /// </summary>
-        public Plottable.Image AddImage(Bitmap bitmap, double x, double y)
+        public Image AddImage(Bitmap bitmap, double x, double y)
         {
-            Plottable.Image plottable = new Plottable.Image()
+            Image plottable = new Image()
             {
                 Bitmap = bitmap,
                 X = x,
@@ -608,7 +608,7 @@
         /// Add a marker at a specific X/Y position.
         /// This method really creates a scatter plot with a single point.
         /// </summary>
-        public MarkerPlot AddMarker(double x, double y, MarkerShape shape = MarkerShape.filledCircle, double size = 10, Color? color = null, string label = null)
+        public MarkerPlot AddMarker(double x, double y, MarkerShape shape = MarkerShape.FILLEDCIRCLE, double size = 10, Color? color = null, string label = null)
         {
             var plottable = new MarkerPlot()
             {
@@ -672,7 +672,7 @@
         /// The scatter plot that was created and added to the plot. 
         /// Interact with its public fields and methods to customize style and update data.
         /// </returns>
-        public MarkerPlot AddPoint(double x, double y, Color? color = null, float size = 5, MarkerShape shape = MarkerShape.filledCircle, string label = null)
+        public MarkerPlot AddPoint(double x, double y, Color? color = null, float size = 5, MarkerShape shape = MarkerShape.FILLEDCIRCLE, string label = null)
         {
             var plottable = new MarkerPlot()
             {
@@ -785,10 +785,10 @@
         /// <param name="values">Array of gauge values</param>
         /// <param name="disableFrameAndGrid">Also make the plot frameless and disable its grid</param>
         /// <returns>The radial gaugle plot that was just created and added to the plot</returns>
-        public ScottPlot.Plottable.RadialGaugePlot AddRadialGauge(double[] values, bool disableFrameAndGrid = true)
+        public RadialGaugePlot AddRadialGauge(double[] values, bool disableFrameAndGrid = true)
         {
             Color[] colors = Palette.GetColors(values.Length);
-            ScottPlot.Plottable.RadialGaugePlot plottable = new(values, colors);
+            RadialGaugePlot plottable = new(values, colors);
             Add(plottable);
 
             if (disableFrameAndGrid)
@@ -851,7 +851,7 @@
             Color? color = null,
             float lineWidth = 1,
             float markerSize = 5,
-            MarkerShape markerShape = MarkerShape.filledCircle,
+            MarkerShape markerShape = MarkerShape.FILLEDCIRCLE,
             LineStyle lineStyle = LineStyle.Solid,
             string label = null)
         {
@@ -901,7 +901,7 @@
             double[] ys,
             Color? color = null,
             float markerSize = 5,
-            MarkerShape markerShape = MarkerShape.filledCircle,
+            MarkerShape markerShape = MarkerShape.FILLEDCIRCLE,
             string label = null)
         {
             var plottable = new ScatterPlot(xs, ys, null, null)
@@ -946,7 +946,7 @@
             float lineWidth = 1,
             float markerSize = 5,
             string label = null,
-            MarkerShape markerShape = MarkerShape.filledCircle,
+            MarkerShape markerShape = MarkerShape.FILLEDCIRCLE,
             LineStyle lineStyle = LineStyle.Solid)
         {
             var spl = new ScatterPlotList()
@@ -1046,12 +1046,12 @@
         /// Display text at specific X/Y coordinates
         /// </summary>
         public Text AddText(string label, double x, double y, float size = 12, Color? color = null) =>
-            AddText(label, x, y, new Drawing.Font() { Size = size, Color = color ?? GetNextColor() });
+            AddText(label, x, y, new Font() { Size = size, Color = color ?? GetNextColor() });
 
         /// <summary>
         /// Display text at specific X/Y coordinates
         /// </summary>
-        public Text AddText(string label, double x, double y, Drawing.Font font)
+        public Text AddText(string label, double x, double y, Font font)
         {
             var plottable = new Text()
             {
@@ -1083,7 +1083,7 @@
             double[] ys,
             string label = null,
             Color? color = null,
-            Drawing.Colormap colormap = null,
+            ColourMap colormap = null,
             double scaleFactor = 1
             )
         {

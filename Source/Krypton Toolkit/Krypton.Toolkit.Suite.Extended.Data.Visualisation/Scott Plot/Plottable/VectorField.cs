@@ -14,7 +14,7 @@
         public int XAxisIndex { get; set; } = 0;
         public int YAxisIndex { get; set; } = 0;
 
-        private readonly Renderable.ArrowStyle ArrowStyle = new();
+        private readonly ArrowStyle ArrowStyle = new();
 
         /// <summary>
         /// Describes which part of the vector line will be placed at the data coordinates.
@@ -46,7 +46,7 @@
         /// </summary>
         public float MarkerSize { get => ArrowStyle.MarkerSize; set => ArrowStyle.MarkerSize = value; }
 
-        public VectorField(Vector2[,] vectors, double[] xs, double[] ys, Colormap colormap, double scaleFactor, Color defaultColor)
+        public VectorField(Vector2[,] vectors, double[] xs, double[] ys, ColourMap colormap, double scaleFactor, Color defaultColor)
         {
             double minMagnitudeSquared = vectors[0, 0].LengthSquared();
             double maxMagnitudeSquared = vectors[0, 0].LengthSquared();
@@ -77,7 +77,7 @@
             double[] flattenedIntensities = intensities.Cast<double>().ToArray();
             VectorColors = colormap is null ?
                 Enumerable.Range(0, flattenedIntensities.Length).Select(x => defaultColor).ToArray() :
-                Colormap.GetColors(flattenedIntensities, colormap);
+                ColourMap.GetColours(flattenedIntensities, colormap);
 
             this.Vectors = vectors;
             this.Xs = xs;
@@ -93,7 +93,7 @@
                 label = Label,
                 color = VectorColors[0],
                 lineWidth = 10,
-                markerShape = MarkerShape.none
+                markerShape = MarkerShape.NONE
             };
             return new LegendItem[] { singleLegendItem };
         }

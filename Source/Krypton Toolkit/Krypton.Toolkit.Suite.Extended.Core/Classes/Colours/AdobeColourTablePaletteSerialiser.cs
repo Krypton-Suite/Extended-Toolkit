@@ -147,7 +147,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="palette">The <see cref="ColourCollection" /> to serialize.</param>
         public override void Serialise(Stream stream, ColourCollection palette)
         {
-            int count;
+            int count = 0;
 
             if (stream == null)
             {

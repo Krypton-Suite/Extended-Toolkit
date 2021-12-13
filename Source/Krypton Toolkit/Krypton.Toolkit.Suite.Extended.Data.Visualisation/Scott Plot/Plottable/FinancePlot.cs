@@ -279,7 +279,7 @@
                 throw new ArgumentException("can not analyze more points than are available in the OHLCs");
 
             double[] xs = OHLCs.Skip(N).Select(x => x.DateTime.ToOADate()).ToArray();
-            double[] ys = Statistics.Finance.SMA(OHLCs.ToArray(), N);
+            double[] ys = Finance.SMA(OHLCs.ToArray(), N);
             return (xs, ys);
         }
 
@@ -296,7 +296,7 @@
                 throw new ArgumentException("can not analyze more points than are available in the OHLCs");
 
             double[] xs = OHLCs.Skip(N).Select(x => x.DateTime.ToOADate()).ToArray();
-            (var sma, var lower, var upper) = Statistics.Finance.Bollinger(OHLCs.ToArray(), N);
+            (var sma, var lower, var upper) = Finance.Bollinger(OHLCs.ToArray(), N);
             return (xs, sma, lower, upper);
         }
     }

@@ -62,7 +62,7 @@
         /// <summary>
         /// Marker to use for the series 1 data
         /// </summary>
-        private MarkerShape MarkerShape1 = MarkerShape.filledCircle;
+        private MarkerShape MarkerShape1 = MarkerShape.FILLEDCIRCLE;
 
         /// <summary>
         /// Text to display in the legend associated with the series 2 data
@@ -77,7 +77,7 @@
         /// <summary>
         /// Marker to use for the series 2 data
         /// </summary>
-        private MarkerShape MarkerShape2 = MarkerShape.filledCircle;
+        private MarkerShape MarkerShape2 = MarkerShape.FILLEDCIRCLE;
 
         /// <summary>
         /// Allows customizing the first point (set by ys1)

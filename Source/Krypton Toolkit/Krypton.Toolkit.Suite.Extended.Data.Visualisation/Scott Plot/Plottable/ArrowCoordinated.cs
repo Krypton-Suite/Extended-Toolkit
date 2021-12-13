@@ -53,7 +53,7 @@
         /// <summary>
         /// Marker to be drawn at the base (if MarkerSize > 0)
         /// </summary>
-        public MarkerShape MarkerShape = MarkerShape.filledCircle;
+        public MarkerShape MarkerShape = MarkerShape.FILLEDCIRCLE;
 
         /// <summary>
         /// Size of marker (in pixels) to draw at the base
@@ -109,8 +109,8 @@
             if (IsVisible == false)
                 return;
 
-            using Graphics gfx = Drawing.GDI.Graphics(bmp, dims, lowQuality);
-            using Pen penLine = Drawing.GDI.Pen(Color, LineWidth, LineStyle, true);
+            using Graphics gfx = GDI.Graphics(bmp, dims, lowQuality);
+            using Pen penLine = GDI.Pen(Color, LineWidth, LineStyle, true);
 
             Pixel basePixel = dims.GetPixel(Base);
             Pixel tipPixel = dims.GetPixel(Tip);

@@ -393,7 +393,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             using var gfx = System.Drawing.Graphics.FromImage(bmp);
             gfx.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
 
-            using System.Drawing.StringFormat sf = Drawing.GDI.StringFormat(HorizontalAlignment.Center, VerticalAlignment.Middle);
+            using System.Drawing.StringFormat sf = GDI.StringFormat(HorizontalAlignment.Center, VerticalAlignment.Middle);
             using System.Drawing.Font font = new(System.Drawing.FontFamily.GenericSansSerif, 16, System.Drawing.FontStyle.Bold);
             System.Drawing.SizeF messageSize = gfx.MeasureString(message, font);
             System.Drawing.RectangleF messageRect = new(
@@ -601,17 +601,17 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                     return;
 
                 bool lowQuality =
-                    uiEvent is EventProcess.Events.MouseMovedToZoomRectangle ||
-                    uiEvent is EventProcess.Events.MousePanEvent ||
-                    uiEvent is EventProcess.Events.MouseZoomEvent ||
-                    uiEvent is EventProcess.Events.PlottableDragEvent ||
-                    uiEvent is EventProcess.Events.RenderLowQuality;
+                    uiEvent is MouseMovedToZoomRectangle ||
+                    uiEvent is MousePanEvent ||
+                    uiEvent is MouseZoomEvent ||
+                    uiEvent is PlottableDragEvent ||
+                    uiEvent is RenderLowQuality;
 
                 bool allowSkip = lowQuality && Configuration.AllowDroppedFramesWhileDragging;
 
                 Render(lowQuality: lowQuality, skipIfCurrentlyRendering: allowSkip);
 
-                if (uiEvent is EventProcess.Events.PlottableDragEvent)
+                if (uiEvent is PlottableDragEvent)
                     PlottableDragged(PlottableBeingDragged, EventArgs.Empty);
             }
         }

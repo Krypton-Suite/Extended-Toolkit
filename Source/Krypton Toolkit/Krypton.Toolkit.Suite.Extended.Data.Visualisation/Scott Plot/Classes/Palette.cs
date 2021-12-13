@@ -3,23 +3,23 @@
     /* This module will be expanded in ScottPlot 5 */
     public static class Palette
     {
-        public static ScottPlot.Drawing.Palette Amber => new(new ScottPlot.Drawing.Colorsets.Amber());
-        public static ScottPlot.Drawing.Palette Aurora => new(new ScottPlot.Drawing.Colorsets.Aurora());
-        public static ScottPlot.Drawing.Palette Category10 => new(new ScottPlot.Drawing.Colorsets.Category10());
-        public static ScottPlot.Drawing.Palette Category20 => new(new ScottPlot.Drawing.Colorsets.Category20());
-        public static ScottPlot.Drawing.Palette ColorblindFriendly => new(new ScottPlot.Drawing.Colorsets.ColorblindFriendly());
-        public static ScottPlot.Drawing.Palette Dark => new(new ScottPlot.Drawing.Colorsets.Dark());
-        public static ScottPlot.Drawing.Palette DarkPastel => new(new ScottPlot.Drawing.Colorsets.DarkPastel());
-        public static ScottPlot.Drawing.Palette Frost => new(new ScottPlot.Drawing.Colorsets.Frost());
-        public static ScottPlot.Drawing.Palette Microcharts => new(new ScottPlot.Drawing.Colorsets.Microcharts());
-        public static ScottPlot.Drawing.Palette Nero => new(new ScottPlot.Drawing.Colorsets.Nero());
-        public static ScottPlot.Drawing.Palette Nord => new(new ScottPlot.Drawing.Colorsets.Nord());
-        public static ScottPlot.Drawing.Palette OneHalf => new(new ScottPlot.Drawing.Colorsets.OneHalf());
-        public static ScottPlot.Drawing.Palette OneHalfDark => new(new ScottPlot.Drawing.Colorsets.OneHalfDark());
-        public static ScottPlot.Drawing.Palette PolarNight => new(new ScottPlot.Drawing.Colorsets.PolarNight());
-        public static ScottPlot.Drawing.Palette Redness => new(new ScottPlot.Drawing.Colorsets.Redness());
-        public static ScottPlot.Drawing.Palette SnowStorm => new(new ScottPlot.Drawing.Colorsets.Snowstorm());
-        public static ScottPlot.Drawing.Palette Tsitsulin => new(new ScottPlot.Drawing.Colorsets.Tsitsulin());
+        public static ScottPlot.Drawing.Palette Amber => new(new Amber());
+        public static ScottPlot.Drawing.Palette Aurora => new(new Aurora());
+        public static ScottPlot.Drawing.Palette Category10 => new(new Category10());
+        public static ScottPlot.Drawing.Palette Category20 => new(new Category20());
+        public static ScottPlot.Drawing.Palette ColorblindFriendly => new(new ColourBlindFriendly());
+        public static ScottPlot.Drawing.Palette Dark => new(new Dark());
+        public static ScottPlot.Drawing.Palette DarkPastel => new(new DarkPastel());
+        public static ScottPlot.Drawing.Palette Frost => new(new Frost());
+        public static ScottPlot.Drawing.Palette Microcharts => new(new Microcharts());
+        public static ScottPlot.Drawing.Palette Nero => new(new Nero());
+        public static ScottPlot.Drawing.Palette Nord => new(new Nord());
+        public static ScottPlot.Drawing.Palette OneHalf => new(new OneHalf());
+        public static ScottPlot.Drawing.Palette OneHalfDark => new(new OneHalfDark());
+        public static ScottPlot.Drawing.Palette PolarNight => new(new PolarNight());
+        public static ScottPlot.Drawing.Palette Redness => new(new Redness());
+        public static ScottPlot.Drawing.Palette SnowStorm => new(new Snowstorm());
+        public static ScottPlot.Drawing.Palette Tsitsulin => new(new Tsitsulin());
 
         /// <summary>
         /// Create a new color palette from an array of HTML colors
@@ -38,9 +38,9 @@
                 .GetTypes()
                 .Where(x => x.IsClass)
                 .Where(x => !x.IsAbstract)
-                .Where(x => x.GetInterfaces().Contains(typeof(ScottPlot.Drawing.IPalette)))
-                .Select(x => (ScottPlot.Drawing.IPalette)FormatterServices.GetUninitializedObject(x))
-                .Select(x => new ScottPlot.Drawing.Palette(x))
+                .Where(x => x.GetInterfaces().Contains(typeof(IPalette)))
+                .Select(x => (IPalette)FormatterServices.GetUninitializedObject(x))
+                .Select(x => new Drawing.Palette(x))
                 .Where(x => x.Count() > 0)
                 .ToArray();
         }

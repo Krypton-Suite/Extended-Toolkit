@@ -63,7 +63,7 @@
 
         public static byte[] BitmapToBytes(Bitmap bmp)
         {
-            int bytesPerPixel = Image.GetPixelFormatSize(bmp.PixelFormat) / 8;
+            int bytesPerPixel = System.Drawing.Image.GetPixelFormatSize(bmp.PixelFormat) / 8;
             byte[] bytes = new byte[bmp.Width * bmp.Height * bytesPerPixel];
             Rectangle rect = new Rectangle(0, 0, bmp.Width, bmp.Height);
             BitmapData bmpData = bmp.LockBits(rect, ImageLockMode.ReadOnly, bmp.PixelFormat);

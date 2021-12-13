@@ -61,7 +61,7 @@
                 label = Label,
                 color = Fill ? FillColor : LineColor,
                 lineWidth = Fill ? 10 : LineWidth,
-                markerShape = MarkerShape.none,
+                markerShape = MarkerShape.NONE,
                 hatchColor = HatchColor,
                 hatchStyle = HatchStyle
             };

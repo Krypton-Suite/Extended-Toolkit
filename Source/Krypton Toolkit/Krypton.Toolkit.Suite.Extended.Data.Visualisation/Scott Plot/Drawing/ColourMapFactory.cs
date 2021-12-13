@@ -59,6 +59,6 @@
         public IEnumerable<string> GetAvailableNames() => ColourMaps.Keys;
 
         public IEnumerable<ColourMap> GetAvailableColourMaps() =>
-            ColourMaps.Values.Select(f => new Colormap(f()));
+            ColourMaps.Values.Select(f => new ColourMap(f()));
     }
 }

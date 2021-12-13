@@ -19,7 +19,7 @@
         /// <summary>
         /// Marker to draw at this point
         /// </summary>
-        public MarkerShape MarkerShape { get; set; } = MarkerShape.filledCircle;
+        public MarkerShape MarkerShape { get; set; } = MarkerShape.FILLEDCIRCLE;
 
         /// <summary>
         /// Size of the marker in pixel units
@@ -63,7 +63,7 @@
 
             PointF point = new(dims.GetPixelX(X), dims.GetPixelY(Y));
 
-            using Graphics gfx = Drawing.GDI.Graphics(bmp, lowQuality);
+            using Graphics gfx = GDI.Graphics(bmp, lowQuality);
             MarkerTools.DrawMarker(gfx, point, MarkerShape, (float)MarkerSize, Color);
         }
     }

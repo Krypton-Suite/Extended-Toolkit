@@ -24,7 +24,7 @@
         /// <summary>
         /// Controls how to translate positions to strings
         /// </summary>
-        public TickLabelFormat LabelFormat = TickLabelFormat.Numeric;
+        public TickLabelFormatOptions LabelFormat = TickLabelFormatOptions.Numeric;
 
         /// <summary>
         /// If True, these ticks are placed along a vertical (Y) axis.
@@ -86,14 +86,14 @@
             if (TickCollectionStorage.manualTickPositions is null)
             {
                 // first pass uses forced density with manual label sizes to consistently approximate labels
-                if (LabelFormat == TickLabelFormat.DateTime)
+                if (LabelFormat == TickLabelFormatOptions.DateTime)
                     RecalculatePositionsAutomaticDatetime(dims, 20, 24, (int)(10 * TickDensity));
                 else
                     RecalculatePositionsAutomaticNumeric(dims, 15, 12, (int)(10 * TickDensity));
 
                 // second pass calculates density using measured labels produced by the first pass
                 (LargestLabelWidth, LargestLabelHeight) = MaxLabelSize(tickFont);
-                if (LabelFormat == TickLabelFormat.DateTime)
+                if (LabelFormat == TickLabelFormatOptions.DateTime)
                     RecalculatePositionsAutomaticDatetime(dims, LargestLabelWidth, LargestLabelHeight, null);
                 else
                     RecalculatePositionsAutomaticNumeric(dims, LargestLabelWidth, LargestLabelHeight, null);
@@ -145,7 +145,7 @@
                 if (s.Length > largestString.Length)
                     largestString = s;
 
-            if (LabelFormat == TickLabelFormat.DateTime)
+            if (LabelFormat == TickLabelFormatOptions.DateTime)
             {
                 // widen largest string based on the longest month name
                 foreach (string s in new DateTimeFormatInfo().MonthGenitiveNames)
@@ -511,7 +511,7 @@
                     position: TickCollectionStorage.tickPositionsMajor[i],
                     label: TickCollectionStorage.tickLabels[i],
                     isMajor: true,
-                    isDateTime: LabelFormat == TickLabelFormat.DateTime);
+                    isDateTime: LabelFormat == TickLabelFormatOptions.DateTime);
             }
 
             return ticks;
@@ -529,7 +529,7 @@
                     position: TickCollectionStorage.tickPositionsMinor[i],
                     label: null,
                     isMajor: false,
-                    isDateTime: LabelFormat == TickLabelFormat.DateTime);
+                    isDateTime: LabelFormat == TickLabelFormatOptions.DateTime);
             }
 
             return ticks;

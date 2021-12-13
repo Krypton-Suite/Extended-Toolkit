@@ -24,7 +24,7 @@
         public string VerticalLabel;
         public float LineWidth = 2;
         public Color LineColor = Color.Black;
-        public readonly Drawing.Font Font = new Drawing.Font();
+        public readonly Font Font = new Font();
         public float FontSize { set => Font.Size = value; }
         public Color FontColor { set => Font.Color = value; }
         public bool FontBold { set => Font.Bold = value; }

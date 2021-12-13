@@ -124,7 +124,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             byte[] randomBytes = new byte[4];
 
             // Generate 4 random bytes.
+#pragma warning disable SYSLIB00
             RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider();
+#pragma warning restore SYSLIB00
             rng.GetBytes(randomBytes);
 
             // Convert 4 bytes into a 32-bit integer value.
@@ -134,7 +136,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             Random random = new Random(seed);
 
             // This array will hold password characters.
-            char[] password = null;
+            char[]? password = null;
 
             // Allocate appropriate memory for the password.
             if (minLength < maxLength)

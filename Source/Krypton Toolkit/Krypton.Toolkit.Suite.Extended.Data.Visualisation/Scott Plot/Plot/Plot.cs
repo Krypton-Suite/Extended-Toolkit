@@ -203,7 +203,7 @@
         /// <summary>
         /// Set the colors and fonts of many plot components at once using a predefined theme
         /// </summary>
-        public void Style(Styles.IStyle style)
+        public void Style(IStyle style)
         {
             if (style is null)
                 throw new ArgumentException(nameof(style));
@@ -281,7 +281,7 @@
         /// <param name="enable">whether or not the legend is visible</param>
         /// <param name="location">position of the legend relative to the data area</param>
         /// <returns>The legend itself. Use public fields to further customize its appearance and behavior.</returns>
-        public Renderable.Legend Legend(bool enable = true, Alignment location = Alignment.LowerRight)
+        public Legend Legend(bool enable = true, Alignment location = Alignment.LowerRight)
         {
             settings.CornerLegend.IsVisible = enable;
             settings.CornerLegend.Location = location;

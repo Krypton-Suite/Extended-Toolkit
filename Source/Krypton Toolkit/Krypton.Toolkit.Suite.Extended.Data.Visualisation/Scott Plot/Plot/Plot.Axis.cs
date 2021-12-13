@@ -7,22 +7,22 @@
         /// <summary>
         /// Axis on the bottom edge of the plot
         /// </summary>
-        public Renderable.Axis XAxis => settings.XAxis;
+        public Axis XAxis => settings.XAxis;
 
         /// <summary>
         /// Axis on the top edge of the plot
         /// </summary>
-        public Renderable.Axis XAxis2 => settings.XAxis2;
+        public Axis XAxis2 => settings.XAxis2;
 
         /// <summary>
         /// Axis on the left edge of the plot
         /// </summary>
-        public Renderable.Axis YAxis => settings.YAxis;
+        public Axis YAxis => settings.YAxis;
 
         /// <summary>
         /// Axis on the right edge of the plot
         /// </summary>
-        public Renderable.Axis YAxis2 => settings.YAxis2;
+        public Axis YAxis2 => settings.YAxis2;
 
         #endregion
 
@@ -62,7 +62,7 @@
         [Obsolete("This method has been deprecated. Visibility and customization can be controlled with methods like YAxis.Hide(), YAxis.Line(), etc.", true)]
         public void Frame(bool? visible = null, Color? color = null, bool? left = null, bool? right = null, bool? bottom = null, bool? top = null)
         {
-            var primaryAxes = new Renderable.Axis[] { XAxis, XAxis2, YAxis, YAxis2 };
+            var primaryAxes = new Axis[] { XAxis, XAxis2, YAxis, YAxis2 };
 
             foreach (var axis in primaryAxes)
                 axis.Line(visible, color);
@@ -236,21 +236,21 @@
         /// <param name="title">defualt label to use for the axis</param>
         /// <param name="color">defualt color to use for the axis</param>
         /// <returns>The axis that was just created and added to the plot. You can further customize it by interacting with it.</returns>
-        public Renderable.Axis AddAxis(Renderable.Edge edge, int axisIndex, string title = null, Color? color = null)
+        public Axis AddAxis(Edge edge, int axisIndex, string title = null, Color? color = null)
         {
             if (axisIndex <= 1)
                 throw new ArgumentException("The default axes already occupy indexes 0 and 1. Additional axes require higher indexes.");
 
-            Renderable.Axis axis;
+            Axis axis;
 
-            if (edge == Renderable.Edge.Left)
-                axis = new Renderable.AdditionalLeftAxis(axisIndex, title);
-            else if (edge == Renderable.Edge.Right)
-                axis = new Renderable.AdditionalRightAxis(axisIndex, title);
-            else if (edge == Renderable.Edge.Bottom)
-                axis = new Renderable.AdditionalBottomAxis(axisIndex, title);
-            else if (edge == Renderable.Edge.Top)
-                axis = new Renderable.AdditionalTopAxis(axisIndex, title);
+            if (edge == Edge.Left)
+                axis = new AdditionalLeftAxis(axisIndex, title);
+            else if (edge == Edge.Right)
+                axis = new AdditionalRightAxis(axisIndex, title);
+            else if (edge == Edge.Bottom)
+                axis = new AdditionalBottomAxis(axisIndex, title);
+            else if (edge == Edge.Top)
+                axis = new AdditionalTopAxis(axisIndex, title);
             else
                 throw new NotImplementedException("unsupported edge");
 

@@ -80,7 +80,7 @@
         /// <summary>
         /// Font settings for labels drawn above the bars
         /// </summary>
-        public readonly Drawing.Font Font = new();
+        public readonly Font Font = new();
 
         public virtual AxisLimits GetAxisLimits()
         {

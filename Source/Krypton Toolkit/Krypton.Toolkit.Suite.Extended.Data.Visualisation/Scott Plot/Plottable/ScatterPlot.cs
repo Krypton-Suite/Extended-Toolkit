@@ -31,7 +31,7 @@
         public string Label;
         public Color Color = Color.Black;
         public LineStyle LineStyle = LineStyle.Solid;
-        public MarkerShape MarkerShape = MarkerShape.filledCircle;
+        public MarkerShape MarkerShape = MarkerShape.FILLEDCIRCLE;
         public double LineWidth = 1;
         public float ErrorLineWidth = 1;
         public float ErrorCapSize = 3;
@@ -273,7 +273,7 @@
                 }
 
                 // draw a marker at each point
-                if ((MarkerSize > 0) && (MarkerShape != MarkerShape.none))
+                if ((MarkerSize > 0) && (MarkerShape != MarkerShape.NONE))
                     for (int i = 0; i < points.Length; i++)
                         MarkerTools.DrawMarker(gfx, points[i], MarkerShape, MarkerSize, Color);
             }

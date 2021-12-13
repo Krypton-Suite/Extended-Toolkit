@@ -2,7 +2,7 @@
 {
     public interface IHasColormap
     {
-        Drawing.Colormap Colormap { get; }
+        ColourMap Colormap { get; }
         double ColormapMin { get; }
         double ColormapMax { get; }
         bool ColormapMinIsClipped { get; }

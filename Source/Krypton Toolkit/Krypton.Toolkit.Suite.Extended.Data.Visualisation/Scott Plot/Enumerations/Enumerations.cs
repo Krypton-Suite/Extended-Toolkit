@@ -285,7 +285,7 @@
         Millisecond
     }
 
-    public enum TickLabelFormat
+    public enum TickLabelFormatOptions
     {
         Numeric, 
         DateTime

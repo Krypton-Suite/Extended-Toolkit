@@ -60,7 +60,7 @@
         /// <summary>
         /// Sets font of the position labels for horizontal and vertical lines
         /// </summary>
-        public Drawing.Font LabelFont
+        public Font LabelFont
         {
             set
             {

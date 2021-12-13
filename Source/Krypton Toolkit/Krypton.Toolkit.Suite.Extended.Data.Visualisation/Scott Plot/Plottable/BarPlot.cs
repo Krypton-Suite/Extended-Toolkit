@@ -145,7 +145,7 @@
                 label = Label,
                 color = FillColor,
                 lineWidth = 10,
-                markerShape = MarkerShape.none,
+                markerShape = MarkerShape.NONE,
                 hatchColor = FillColorHatch,
                 hatchStyle = HatchStyle,
                 borderColor = BorderColor,

@@ -89,7 +89,7 @@
         /// <summary>
         /// Colormap used to translate heatmap values to colors
         /// </summary>
-        public Colormap Colormap { get; private set; } = Colormap.Viridis;
+        public ColourMap Colormap { get; private set; } = ColourMap.Viridis;
 
         /// <summary>
         /// If defined, colors will be "clipped" to this value such that lower values (lower colors) will not be shown
@@ -163,7 +163,7 @@
         /// <param name="colormap">update the Colormap to use this colormap</param>
         /// <param name="min">minimum intensity (according to the colormap)</param>
         /// <param name="max">maximum intensity (according to the colormap)</param>
-        public void Update(double?[,] intensities, Colormap colormap = null, double? min = null, double? max = null)
+        public void Update(double?[,] intensities, ColourMap colormap = null, double? min = null, double? max = null)
         {
             DataWidth = intensities.GetLength(1);
             DataHeight = intensities.GetLength(0);
@@ -198,9 +198,9 @@
 
             double?[] NormalizedIntensities = Normalize(intensitiesFlattened, null, null, ScaleMin, ScaleMax);
 
-            int[] flatARGB = Colormap.GetRGBAs(NormalizedIntensities, Colormap, minimumIntensity: TransparencyThreshold ?? 0);
+            int[] flatARGB = ColourMap.GetRGBAs(NormalizedIntensities, Colormap, minimumIntensity: TransparencyThreshold ?? 0);
             double?[] normalizedValues = Normalize(Enumerable.Range(0, 256).Select(i => (double?)i).Reverse().ToArray(), null, null, ScaleMin, ScaleMax);
-            int[] scaleRGBA = Colormap.GetRGBAs(normalizedValues, Colormap);
+            int[] scaleRGBA = ColourMap.GetRGBAs(normalizedValues, Colormap);
 
             BmpHeatmap?.Dispose();
             BmpHeatmap = new Bitmap(DataWidth, DataHeight, PixelFormat.Format32bppArgb);
@@ -220,7 +220,7 @@
         /// <param name="colormap">update the Colormap to use this colormap</param>
         /// <param name="min">minimum intensity (according to the colormap)</param>
         /// <param name="max">maximum intensity (according to the colormap)</param>
-        public void Update(double[,] intensities, Colormap colormap = null, double? min = null, double? max = null)
+        public void Update(double[,] intensities, ColourMap colormap = null, double? min = null, double? max = null)
         {
             double?[,] tmp = new double?[intensities.GetLength(0), intensities.GetLength(1)];
             for (int i = 0; i < intensities.GetLength(0); i++)
@@ -273,7 +273,7 @@
                 label = Label,
                 color = Color.Gray,
                 lineWidth = 10,
-                markerShape = MarkerShape.none
+                markerShape = MarkerShape.NONE
             };
             return new LegendItem[] { singleLegendItem };
         }

@@ -406,10 +406,12 @@
             Debug.Assert(palettePressed != null);
 
             // Remember the new palette settings
+#pragma warning disable CS8601 // Possible null reference assignment.
             _paletteDisabled = paletteDisabled;
             _paletteNormal = paletteNormal;
             _paletteTracking = paletteTracking;
             _palettePressed = palettePressed;
+#pragma warning restore CS8601 // Possible null reference assignment.
 
             // Must force update of palettes to use latest ones provided
             _forcePaletteUpdate = true;
@@ -430,9 +432,11 @@
             Debug.Assert(paletteCheckedPressed != null);
 
             // Remember the new palette settings
+#pragma warning disable CS8601 // Possible null reference assignment.
             _paletteCheckedNormal = paletteCheckedNormal;
             _paletteCheckedTracking = paletteCheckedTracking;
             _paletteCheckedPressed = paletteCheckedPressed;
+#pragma warning restore CS8601 // Possible null reference assignment.
 
             // Must force update of palettes to use latest ones provided
             _forcePaletteUpdate = true;
@@ -445,7 +449,9 @@
             Debug.Assert(context != null);
 
             // Ensure that child elements have correct palette state
+#pragma warning disable CS8604 // Possible null reference argument.
             CheckPaletteState(context);
+#pragma warning restore CS8604 // Possible null reference argument.
 
             // Ask the renderer to evaluate the given palette
             return _drawCanvas.EvalTransparentPaint(context);
@@ -459,10 +465,14 @@
             Debug.Assert(_drawCanvas != null);
 
             // Ensure that child elements have correct palette state
+#pragma warning disable CS8604 // Possible null reference argument.
             CheckPaletteState(context);
+#pragma warning restore CS8604 // Possible null reference argument.
 
             // Delegate work to the child canvas
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
             return _drawCanvas.GetPreferredSize(context);
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
         }
 
         public override void Layout(ViewLayoutContext context)

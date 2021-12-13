@@ -48,7 +48,7 @@
                 label = Label,
                 color = LollipopColor,
                 lineWidth = 10,
-                markerShape = MarkerShape.none,
+                markerShape = MarkerShape.NONE,
                 borderColor = BorderColor,
                 borderWith = 1
             };

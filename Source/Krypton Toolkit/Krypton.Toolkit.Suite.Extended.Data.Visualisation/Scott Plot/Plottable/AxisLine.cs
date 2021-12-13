@@ -15,7 +15,7 @@
         /// <summary>
         /// Font to use for position labels (labels drawn over the axis)
         /// </summary>
-        public Drawing.Font PositionLabelFont = new() { Color = Color.White, Bold = true };
+        public Font PositionLabelFont = new() { Color = Color.White, Bold = true };
 
         /// <summary>
         /// Color to use behind the position labels
@@ -253,7 +253,7 @@
                 color = Color,
                 lineStyle = LineStyle,
                 lineWidth = LineWidth,
-                markerShape = MarkerShape.none
+                markerShape = MarkerShape.NONE
             };
             return new LegendItem[] { singleItem };
         }

@@ -21,8 +21,8 @@
 
         public double DonutSize;
         public string DonutLabel;
-        public readonly Drawing.Font CenterFont = new Drawing.Font();
-        public readonly Drawing.Font SliceFont = new Drawing.Font();
+        public readonly Font CenterFont = new Font();
+        public readonly Font SliceFont = new Font();
 
         public float OutlineSize = 0;
         public Color OutlineColor = Color.Black;

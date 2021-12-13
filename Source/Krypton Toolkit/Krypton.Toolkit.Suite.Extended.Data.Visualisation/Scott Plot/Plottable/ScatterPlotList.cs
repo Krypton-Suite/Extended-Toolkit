@@ -18,7 +18,7 @@
         public float LineWidth = 1;
         public LineStyle LineStyle = LineStyle.Solid;
         public float MarkerSize = 3;
-        public MarkerShape MarkerShape = MarkerShape.filledCircle;
+        public MarkerShape MarkerShape = MarkerShape.FILLEDCIRCLE;
 
         public void ValidateData(bool deep = false)
         {
@@ -107,7 +107,7 @@
                     gfx.DrawLines(linePen, points);
                 }
 
-                if (MarkerShape != MarkerShape.none && MarkerSize > 0 && Count > 0)
+                if (MarkerShape != MarkerShape.NONE && MarkerSize > 0 && Count > 0)
                 {
                     foreach (PointF point in points)
                         MarkerTools.DrawMarker(gfx, point, MarkerShape, MarkerSize, Color);

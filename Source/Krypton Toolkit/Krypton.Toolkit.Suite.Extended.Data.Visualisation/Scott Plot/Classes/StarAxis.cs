@@ -22,7 +22,7 @@
         /// Icons for each category.
         /// Length must be equal to the number of columns (categories) in the original data.
         /// </summary>
-        public Image[] CategoryImages;
+        public System.Drawing.Image[] CategoryImages;
 
         /// <summary>
         /// Controls rendering style of the concentric circles (ticks) of the web
@@ -62,7 +62,7 @@
         /// <summary>
         /// Font used for labeling values on the plot
         /// </summary>
-        public Drawing.Font Font = new();
+        public Font Font = new();
 
         /// <summary>
         /// Determines the width of each spoke and the axis lines.

@@ -52,7 +52,7 @@
         /// <summary>
         /// Font used to render values at the tip of the gauge
         /// </summary>
-        public Drawing.Font Font;
+        public Font Font;
 
         /// <summary>
         /// Size of the font relative to the line thickness

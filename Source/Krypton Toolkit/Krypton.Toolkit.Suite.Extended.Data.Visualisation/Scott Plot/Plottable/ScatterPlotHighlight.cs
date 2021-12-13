@@ -3,7 +3,7 @@
     [Obsolete("This plot type is deprecated: Use a regular scatter plot and call GetPointNearest(). See examples in documentation.", true)]
     public class ScatterPlotHighlight : ScatterPlot, IPlottable, IHasPoints, IHasHighlightablePoints
     {
-        public MarkerShape highlightedShape = MarkerShape.openCircle;
+        public MarkerShape highlightedShape = MarkerShape.OPENCIRCLE;
         public float highlightedMarkerSize = 10;
         public Color highlightedColor = Color.Red;
         protected bool[] isHighlighted;

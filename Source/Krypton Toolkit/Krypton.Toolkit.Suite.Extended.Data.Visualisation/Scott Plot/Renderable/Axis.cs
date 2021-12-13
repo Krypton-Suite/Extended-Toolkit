@@ -52,13 +52,13 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         // private renderable components
         private readonly AxisLabel AxisLabel = new AxisLabel();
         private readonly AxisTicks AxisTicks = new AxisTicks();
-        private readonly AxisLine AxisLine = new AxisLine();
+        private readonly AxisLineOptional AxisLine = new AxisLineOptional();
 
         /// <summary>
         /// Return configuration objects to allow deep customization of axis settings.
         /// WARNING: This API may not be stable across future versions.
         /// </summary>
-        public (AxisLabel, AxisTicks, AxisLine) GetSettings(bool showWarning = true)
+        public (AxisLabel, AxisTicks, AxisLineOptional) GetSettings(bool showWarning = true)
         {
             if (showWarning)
             {
@@ -139,9 +139,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// DateTime format assumes axis represents DateTime.ToOATime() units and displays tick labels accordingly.
         /// </summary>
         public void DateTimeFormat(bool enable) => AxisTicks.TickCollection.LabelFormat =
-            enable
-            ? ScottPlot.Ticks.TickLabelFormat.DateTime
-            : ScottPlot.Ticks.TickLabelFormat.Numeric;
+            enable 
+            ? TickLabelFormatOptions.DateTime
+            : TickLabelFormatOptions.Numeric;
 
         /// <summary>
         /// Configure the label of this axis
@@ -253,8 +253,8 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// </summary>
         public void ManualTickPositions(double[] positions, string[] labels)
         {
-            AxisTicks.TickCollection.manualTickPositions = positions;
-            AxisTicks.TickCollection.manualTickLabels = labels;
+            TickCollectionStorage.manualTickPositions = positions;
+            TickCollectionStorage.manualTickLabels = labels;
         }
 
         /// <summary>

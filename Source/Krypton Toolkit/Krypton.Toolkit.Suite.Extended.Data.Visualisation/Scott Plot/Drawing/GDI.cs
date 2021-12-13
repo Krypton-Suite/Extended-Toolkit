@@ -150,7 +150,9 @@
                 if (hatchColor is null)
                     throw new ArgumentException("hatch color must be defined if hatch style is used");
                 else
+#pragma warning disable CS8629 // Nullable value type may be null.
                     return new HatchBrush(ConvertToSDHatchStyle(hatchStyle).Value, hatchColor.Value, color);
+#pragma warning restore CS8629 // Nullable value type may be null.
             }
             else
             {
@@ -159,12 +161,12 @@
         }
 
         [Obsolete("use Brush()", true)]
-        public static System.Drawing.Brush HatchBrush(HatchStyle pattern, Color fillColor, Color hatchColor)
+        public static Brush HatchBrush(HatchStyle pattern, Color fillColor, Color hatchColor)
         {
             if (pattern == HatchStyle.None)
                 return new SolidBrush(fillColor);
             else
-                return new HatchBrush(ConvertToSDHatchStyle(pattern).Value, hatchColor, fillColor);
+                return new HatchBrush(ConvertToSDHatchStyle(pattern)!.Value, hatchColor, fillColor);
         }
 
         public static System.Drawing.Drawing2D.HatchStyle? ConvertToSDHatchStyle(HatchStyle pattern)

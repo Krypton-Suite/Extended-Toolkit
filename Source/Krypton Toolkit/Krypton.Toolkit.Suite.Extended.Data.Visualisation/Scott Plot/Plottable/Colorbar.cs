@@ -6,9 +6,9 @@
     /// </summary>
     public class Colorbar : IPlottable
     {
-        public Renderable.Edge Edge = Renderable.Edge.Right;
+        public Edge Edge = Edge.Right;
 
-        private Colormap Colormap;
+        private ColourMap Colormap;
         private Bitmap BmpScale;
 
         public bool IsVisible { get; set; } = true;
@@ -20,7 +20,7 @@
         /// </summary>
         public int Width = 20;
 
-        public readonly Drawing.Font TickLabelFont = new();
+        public readonly Font TickLabelFont = new();
         public Color TickMarkColor = Color.Black;
         public float TickMarkLength = 3;
         public float TickMarkWidth = 1;
@@ -69,9 +69,9 @@
         /// </summary>
         private IHasColormap Plottable;
 
-        public Colorbar(Colormap colormap = null)
+        public Colorbar(ColourMap colormap = null)
         {
-            UpdateColormap(colormap ?? Colormap.Viridis);
+            UpdateColormap(colormap ?? ColourMap.Viridis);
         }
 
         public Colorbar(IHasColormap plottable)
@@ -154,9 +154,9 @@
         /// <summary>
         /// Re-Render the colorbar using a new colormap
         /// </summary>
-        public void UpdateColormap(Colormap newColormap)
+        public void UpdateColormap(ColourMap newColormap)
         {
-            Colormap = newColormap ?? Colormap.Viridis;
+            Colormap = newColormap ?? ColourMap.Viridis;
             UpdateBitmap();
         }
 
@@ -173,7 +173,7 @@
         /// </summary>
         /// <returns></returns>
         public Bitmap GetBitmap() =>
-            Colormap.Colorbar(Colormap, Width, 256, true, MinColor, MaxColor);
+            ColourMap.Colorbar(Colormap, Width, 256, true, MinColor, MaxColor);
 
         /// <summary>
         /// Return a Bitmap of just the color portion of the colorbar
@@ -183,7 +183,7 @@
         /// <param name="vertical">if true, colormap will be vertically oriented (tall and skinny)</param>
         /// <returns></returns>
         public Bitmap GetBitmap(int width, int height, bool vertical = true) =>
-            Colormap.Colorbar(Colormap, width, height, vertical, MinColor, MaxColor);
+            ColourMap.Colorbar(Colormap, width, height, vertical, MinColor, MaxColor);
 
         public void Render(PlotDimensions dims, Bitmap bmp, bool lowQuality = false)
         {

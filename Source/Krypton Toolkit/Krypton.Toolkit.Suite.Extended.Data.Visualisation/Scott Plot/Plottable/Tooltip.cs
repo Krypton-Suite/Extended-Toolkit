@@ -14,7 +14,7 @@
         public int XAxisIndex { get; set; }
         public int YAxisIndex { get; set; }
 
-        public readonly Drawing.Font Font = new Drawing.Font();
+        public readonly Font Font = new Font();
         public int ArrowSize = 5;
         public int LabelPadding = 10;
 
