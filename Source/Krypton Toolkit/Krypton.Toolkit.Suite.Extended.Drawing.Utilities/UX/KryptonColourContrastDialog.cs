@@ -672,7 +672,7 @@
             // 
             this.chtxtBase.Colour = System.Drawing.Color.Empty;
             this.chtxtBase.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chtxtBase.Hint = "000000";
+            this.chtxtBase.CueHint.CueHintText = "000000";
             this.chtxtBase.Location = new System.Drawing.Point(219, 155);
             this.chtxtBase.MaxLength = 6;
             this.chtxtBase.Name = "chtxtBase";
@@ -857,7 +857,7 @@
             // 
             this.chtxtContrast.Colour = System.Drawing.Color.Empty;
             this.chtxtContrast.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chtxtContrast.Hint = "000000";
+            this.chtxtContrast.CueHint.CueHintText = "000000";
             this.chtxtContrast.Location = new System.Drawing.Point(219, 155);
             this.chtxtContrast.MaxLength = 6;
             this.chtxtContrast.Name = "chtxtContrast";

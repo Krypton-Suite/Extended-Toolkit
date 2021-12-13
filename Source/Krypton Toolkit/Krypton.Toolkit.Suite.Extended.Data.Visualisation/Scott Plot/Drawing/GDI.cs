@@ -202,9 +202,9 @@
         public static System.Drawing.Font Font(Font font) =>
             Font(font.Name, font.Size, font.Bold);
 
-        public static System.Drawing.Font Font(string fontName = null, float fontSize = 12, bool bold = false)
+        public static System.Drawing.Font Font(string? fontName = null, float fontSize = 12, bool bold = false)
         {
-            string validFontName = InstalledFont.ValidFontName(fontName);
+            string validFontName = InstalledFont.ValidFontName(fontName) ?? Font().SystemFontName;
             FontStyle fontStyle = bold ? FontStyle.Bold : FontStyle.Regular;
             return new System.Drawing.Font(validFontName, fontSize, fontStyle, GraphicsUnit.Pixel);
         }

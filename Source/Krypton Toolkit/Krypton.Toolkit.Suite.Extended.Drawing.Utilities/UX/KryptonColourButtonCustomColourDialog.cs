@@ -152,7 +152,7 @@
             // 
             // kryptonTextBox1
             // 
-            this.kryptonTextBox1.Hint = "#000000";
+            this.kryptonTextBox1.CueHint.CueHintText = "#000000";
             this.kryptonTextBox1.Location = new System.Drawing.Point(12, 171);
             this.kryptonTextBox1.MaxLength = 7;
             this.kryptonTextBox1.Name = "kryptonTextBox1";

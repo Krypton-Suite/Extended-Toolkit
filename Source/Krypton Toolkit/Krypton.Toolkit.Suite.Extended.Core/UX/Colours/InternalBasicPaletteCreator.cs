@@ -456,7 +456,7 @@
             // 
             // ktxtHexadecimalValue
             // 
-            this.ktxtHexadecimalValue.Hint = "000000";
+            this.ktxtHexadecimalValue.CueHint.CueHintText = "000000";
             this.ktxtHexadecimalValue.Location = new System.Drawing.Point(623, 450);
             this.ktxtHexadecimalValue.MaxLength = 6;
             this.ktxtHexadecimalValue.Name = "ktxtHexadecimalValue";

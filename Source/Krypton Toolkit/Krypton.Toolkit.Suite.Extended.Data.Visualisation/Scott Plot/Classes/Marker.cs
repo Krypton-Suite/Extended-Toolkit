@@ -4,8 +4,8 @@
     {
         // TODO: refactor this in the next major version of ScottPlot to add support for LineWidth, etc
         public static MarkerShape None => MarkerShape.NONE;
-        public static MarkerShape FILLEDCIRCLE => MarkerShape.FILLEDCIRCLE;
-        public static MarkerShape OPENCIRCLE => MarkerShape.OPENCIRCLE;
+        public static MarkerShape FilledCircle => MarkerShape.FILLEDCIRCLE;
+        public static MarkerShape OpenCircle => MarkerShape.OPENCIRCLE;
         public static MarkerShape FilledSquare => MarkerShape.FILLEDSQUARE;
         public static MarkerShape OpenSquare => MarkerShape.OPENSQUARE;
         public static MarkerShape FilledDiamond => MarkerShape.FILLEDDIAMOND;

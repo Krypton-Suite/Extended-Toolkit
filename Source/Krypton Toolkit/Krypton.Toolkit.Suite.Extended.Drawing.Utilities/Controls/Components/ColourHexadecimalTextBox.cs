@@ -10,7 +10,7 @@
         {
             MaxLength = 6;
 
-            Hint = "000000";
+            CueHint.CueHintText = "000000";
 
             StateCommon.Content.TextH = PaletteRelativeAlign.Center;
 

@@ -8,7 +8,7 @@
         /// Initializes a new instance of the <see cref="ColourCollectionEventArgs"/> class for the specified color.
         /// </summary>
         /// <param name="index">The color index that the event is responding to.</param>
-        /// <param name="color">The %Color% that the event is responding to.</param>
+        /// <param name="colour">The %Color% that the event is responding to.</param>
         public ColourCollectionEventArgs(int index, Color colour)
         {
             this.Index = index;

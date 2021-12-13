@@ -110,7 +110,7 @@
             // 
             // ktxtHexValue
             // 
-            this.ktxtHexValue.Hint = "#000000";
+            this.ktxtHexValue.CueHint.CueHintText = "#000000";
             this.ktxtHexValue.Location = new System.Drawing.Point(240, 233);
             this.ktxtHexValue.MaxLength = 7;
             this.ktxtHexValue.Name = "ktxtHexValue";
