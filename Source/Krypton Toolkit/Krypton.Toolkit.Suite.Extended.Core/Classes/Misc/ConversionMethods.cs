@@ -6,7 +6,6 @@
  */
 #endregion
 
-
 namespace Krypton.Toolkit.Suite.Extended.Core
 {
     public class ConversionMethods

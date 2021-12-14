@@ -1,4 +1,12 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Common
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ */
+#endregion
+
+namespace Krypton.Toolkit.Suite.Extended.Common
 {
     /// <summary>The AnimationPath class is a representation of a line in a 1D plane and the speed in which the animator plays it.</summary>
     public class AnimationPath
