@@ -36,7 +36,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         // Le constructeur est Private
         private LanguageManager()
         {
-            rm = new ResourceManager("Krypton.Toolkit.Suite.Extended.Outlook.Grid.Language.Strings.en-US", Assembly.GetExecutingAssembly());
+            rm = new ResourceManager("Krypton.Toolkit.Suite.Extended.Outlook.Grid.Resources.Language.Strings.en-US", Assembly.GetExecutingAssembly());
             ci = Thread.CurrentThread.CurrentCulture; //CultureInfo.CurrentCulture;
         }
 
