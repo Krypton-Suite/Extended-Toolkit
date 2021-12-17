@@ -5,12 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using Krypton.Toolkit;
+
 namespace DataVisualisation
 {
-    public class ScottPlotDemo : Form
+    public class ScottPlotDemo : KryptonForm
     {
-        private Krypton.Toolkit.KryptonPanel kryptonPanel1;
-        private Krypton.Toolkit.KryptonPanel kpContent;
+        private KryptonPanel kryptonPanel1;
+        private KryptonPanel kpContent;
 
         private void InitializeComponent()
         {
