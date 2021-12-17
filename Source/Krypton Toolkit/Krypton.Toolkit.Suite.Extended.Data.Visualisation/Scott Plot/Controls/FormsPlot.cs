@@ -251,6 +251,8 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 [ScottPlot.Cursor.Question] = System.Windows.Forms.Cursors.Help,
             };
 
+            SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.ResizeRedraw | ControlStyles.UserPaint | ControlStyles.SupportsTransparentBackColor | ControlStyles.OptimizedDoubleBuffer, true);
+
             InitializeComponent();
 
             krtbErrorMessage.Visible = false;
