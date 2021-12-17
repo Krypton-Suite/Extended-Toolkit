@@ -6,7 +6,7 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation
+namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
     public enum MarkerShape
     {
