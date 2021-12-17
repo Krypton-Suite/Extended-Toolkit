@@ -9,6 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="Stable.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\Krypton.Toolkit.Suite.Extended.TreeGridView\Krypton.Toolkit.Suite.Extended.TreeGridView 2022.csproj" />
   </ItemGroup>
 
@@ -19,6 +23,7 @@
   <PropertyGroup>
     <!-- Needed to make the SQLite core work correctly - I Think !-->
     <Prefer32Bit>true</Prefer32Bit>
+    <ApplicationIcon>Stable.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>

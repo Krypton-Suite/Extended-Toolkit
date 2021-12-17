@@ -9,7 +9,13 @@
         <OutputType>WinExe</OutputType>
         <Configurations>Debug;Release;Nightly;Canary;Stable</Configurations>
         <ApplicationManifest>app.manifest</ApplicationManifest>
+        <ApplicationIcon>Stable.ico</ApplicationIcon>
     </PropertyGroup>
+
+
+    <ItemGroup>
+      <Content Include="Stable.ico" />
+    </ItemGroup>
 
 
     <ItemGroup>
