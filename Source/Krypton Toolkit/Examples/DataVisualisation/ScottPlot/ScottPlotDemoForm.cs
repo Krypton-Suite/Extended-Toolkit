@@ -27,5 +27,12 @@ namespace DataVisualisation.ScottPlot
 
             axisLimits.Show();
         }
+
+        private void kbtnColourMapViewer_Click(object sender, EventArgs e)
+        {
+            ColourMapViewer colourMapViewer = new ColourMapViewer();
+
+            colourMapViewer.Show();
+        }
     }
 }

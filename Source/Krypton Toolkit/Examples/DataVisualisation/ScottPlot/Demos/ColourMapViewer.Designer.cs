@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
-            this.klbColourMapNames = new Krypton.Toolkit.KryptonListBox();
-            this.klblColourMap = new Krypton.Toolkit.KryptonLabel();
-            this.pbColormap = new System.Windows.Forms.PictureBox();
-            this.krbSampleImage = new Krypton.Toolkit.KryptonRadioButton();
-            this.krbSampleData = new Krypton.Toolkit.KryptonRadioButton();
-            this.formsPlot1 = new Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot.FormsPlot();
-            this.formsPlot2 = new Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot.FormsPlot();
             this.formsPlot3 = new Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot.FormsPlot();
+            this.formsPlot2 = new Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot.FormsPlot();
+            this.formsPlot1 = new Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot.FormsPlot();
+            this.krbSampleData = new Krypton.Toolkit.KryptonRadioButton();
+            this.krbSampleImage = new Krypton.Toolkit.KryptonRadioButton();
+            this.pbColormap = new System.Windows.Forms.PictureBox();
+            this.klblColourMap = new Krypton.Toolkit.KryptonLabel();
+            this.klbColourMapNames = new Krypton.Toolkit.KryptonListBox();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbColormap)).BeginInit();
@@ -58,22 +58,50 @@
             this.kryptonPanel1.Size = new System.Drawing.Size(1292, 657);
             this.kryptonPanel1.TabIndex = 1;
             // 
-            // klbColourMapNames
+            // formsPlot3
             // 
-            this.klbColourMapNames.Location = new System.Drawing.Point(12, 12);
-            this.klbColourMapNames.Name = "klbColourMapNames";
-            this.klbColourMapNames.Size = new System.Drawing.Size(148, 633);
-            this.klbColourMapNames.StateCommon.Item.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.klbColourMapNames.TabIndex = 0;
+            this.formsPlot3.BackColor = System.Drawing.Color.Transparent;
+            this.formsPlot3.Location = new System.Drawing.Point(605, 94);
+            this.formsPlot3.Name = "formsPlot3";
+            this.formsPlot3.Size = new System.Drawing.Size(671, 336);
+            this.formsPlot3.TabIndex = 8;
             // 
-            // klblColourMap
+            // formsPlot2
             // 
-            this.klblColourMap.Location = new System.Drawing.Point(167, 13);
-            this.klblColourMap.Name = "klblColourMap";
-            this.klblColourMap.Size = new System.Drawing.Size(143, 32);
-            this.klblColourMap.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 15F);
-            this.klblColourMap.TabIndex = 1;
-            this.klblColourMap.Values.Text = "kryptonLabel1";
+            this.formsPlot2.BackColor = System.Drawing.Color.Transparent;
+            this.formsPlot2.Location = new System.Drawing.Point(171, 431);
+            this.formsPlot2.Name = "formsPlot2";
+            this.formsPlot2.Size = new System.Drawing.Size(1109, 215);
+            this.formsPlot2.TabIndex = 7;
+            // 
+            // formsPlot1
+            // 
+            this.formsPlot1.BackColor = System.Drawing.Color.Transparent;
+            this.formsPlot1.Location = new System.Drawing.Point(167, 94);
+            this.formsPlot1.Name = "formsPlot1";
+            this.formsPlot1.Size = new System.Drawing.Size(432, 336);
+            this.formsPlot1.TabIndex = 6;
+            // 
+            // krbSampleData
+            // 
+            this.krbSampleData.Location = new System.Drawing.Point(980, 13);
+            this.krbSampleData.Name = "krbSampleData";
+            this.krbSampleData.Size = new System.Drawing.Size(140, 32);
+            this.krbSampleData.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 15F);
+            this.krbSampleData.TabIndex = 5;
+            this.krbSampleData.Values.Text = "Sample &Data";
+            this.krbSampleData.CheckedChanged += new System.EventHandler(this.krbSampleData_CheckedChanged);
+            // 
+            // krbSampleImage
+            // 
+            this.krbSampleImage.Checked = true;
+            this.krbSampleImage.Location = new System.Drawing.Point(1126, 13);
+            this.krbSampleImage.Name = "krbSampleImage";
+            this.krbSampleImage.Size = new System.Drawing.Size(154, 32);
+            this.krbSampleImage.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 15F);
+            this.krbSampleImage.TabIndex = 4;
+            this.krbSampleImage.Values.Text = "&Sample Image";
+            this.krbSampleImage.CheckedChanged += new System.EventHandler(this.krbSampleImage_CheckedChanged);
             // 
             // pbColormap
             // 
@@ -87,48 +115,23 @@
             this.pbColormap.TabIndex = 3;
             this.pbColormap.TabStop = false;
             // 
-            // krbSampleImage
+            // klblColourMap
             // 
-            this.krbSampleImage.Checked = true;
-            this.krbSampleImage.Location = new System.Drawing.Point(1126, 13);
-            this.krbSampleImage.Name = "krbSampleImage";
-            this.krbSampleImage.Size = new System.Drawing.Size(154, 32);
-            this.krbSampleImage.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 15F);
-            this.krbSampleImage.TabIndex = 4;
-            this.krbSampleImage.Values.Text = "&Sample Image";
+            this.klblColourMap.Location = new System.Drawing.Point(167, 13);
+            this.klblColourMap.Name = "klblColourMap";
+            this.klblColourMap.Size = new System.Drawing.Size(143, 32);
+            this.klblColourMap.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 15F);
+            this.klblColourMap.TabIndex = 1;
+            this.klblColourMap.Values.Text = "kryptonLabel1";
             // 
-            // krbSampleData
+            // klbColourMapNames
             // 
-            this.krbSampleData.Location = new System.Drawing.Point(980, 13);
-            this.krbSampleData.Name = "krbSampleData";
-            this.krbSampleData.Size = new System.Drawing.Size(140, 32);
-            this.krbSampleData.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 15F);
-            this.krbSampleData.TabIndex = 5;
-            this.krbSampleData.Values.Text = "Sample &Data";
-            // 
-            // formsPlot1
-            // 
-            this.formsPlot1.BackColor = System.Drawing.Color.Transparent;
-            this.formsPlot1.Location = new System.Drawing.Point(167, 94);
-            this.formsPlot1.Name = "formsPlot1";
-            this.formsPlot1.Size = new System.Drawing.Size(432, 336);
-            this.formsPlot1.TabIndex = 6;
-            // 
-            // formsPlot2
-            // 
-            this.formsPlot2.BackColor = System.Drawing.Color.Transparent;
-            this.formsPlot2.Location = new System.Drawing.Point(171, 431);
-            this.formsPlot2.Name = "formsPlot2";
-            this.formsPlot2.Size = new System.Drawing.Size(1109, 215);
-            this.formsPlot2.TabIndex = 7;
-            // 
-            // formsPlot3
-            // 
-            this.formsPlot3.BackColor = System.Drawing.Color.Transparent;
-            this.formsPlot3.Location = new System.Drawing.Point(605, 94);
-            this.formsPlot3.Name = "formsPlot3";
-            this.formsPlot3.Size = new System.Drawing.Size(671, 336);
-            this.formsPlot3.TabIndex = 8;
+            this.klbColourMapNames.Location = new System.Drawing.Point(12, 12);
+            this.klbColourMapNames.Name = "klbColourMapNames";
+            this.klbColourMapNames.Size = new System.Drawing.Size(148, 633);
+            this.klbColourMapNames.StateCommon.Item.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.klbColourMapNames.TabIndex = 0;
+            this.klbColourMapNames.SelectedIndexChanged += new System.EventHandler(this.klbColourMapNames_SelectedIndexChanged);
             // 
             // ColourMapViewer
             // 
@@ -140,6 +143,8 @@
             this.MaximizeBox = false;
             this.Name = "ColourMapViewer";
             this.Text = "ColourMapViewer";
+            this.Load += new System.EventHandler(this.ColourMapViewer_Load);
+            this.SizeChanged += new System.EventHandler(this.ColourMapViewer_SizeChanged);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();

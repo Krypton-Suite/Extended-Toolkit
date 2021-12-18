@@ -62,7 +62,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// Create new instances of every colormap and return them as an array.
         /// </summary>
         /// <returns></returns>
-        public static ColourMap[] GetColormaps() => ColourMapFactory.GetAvailableColourMaps().ToArray();
+        public static ColourMap[] GetColourMaps() => ColourMapFactory.GetAvailableColourMaps().ToArray();
 
         /// <summary>
         /// Return the names of all available 
