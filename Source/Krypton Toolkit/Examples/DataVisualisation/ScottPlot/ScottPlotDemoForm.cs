@@ -8,15 +8,24 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using DataVisualisation.ScottPlot.Demos;
+
 using Krypton.Toolkit;
 
 namespace DataVisualisation.ScottPlot
 {
-    public partial class DemoForm : KryptonForm
+    public partial class ScottPlotDemoForm : KryptonForm
     {
-        public DemoForm()
+        public ScottPlotDemoForm()
         {
             InitializeComponent();
+        }
+
+        private void kbtnAxisLimits_Click(object sender, EventArgs e)
+        {
+            AxisLimits axisLimits = new AxisLimits();
+
+            axisLimits.Show();
         }
     }
 }
