@@ -29,14 +29,16 @@
         private void InitializeComponent()
         {
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
-            this.kbtnAxisLimits = new Krypton.Toolkit.KryptonButton();
             this.kbtnColourMapViewer = new Krypton.Toolkit.KryptonButton();
+            this.kbtnAxisLimits = new Krypton.Toolkit.KryptonButton();
+            this.kbtnPlotConfiguration = new Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(this.kbtnPlotConfiguration);
             this.kryptonPanel1.Controls.Add(this.kbtnColourMapViewer);
             this.kryptonPanel1.Controls.Add(this.kbtnAxisLimits);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -44,6 +46,15 @@
             this.kryptonPanel1.Name = "kryptonPanel1";
             this.kryptonPanel1.Size = new System.Drawing.Size(800, 450);
             this.kryptonPanel1.TabIndex = 1;
+            // 
+            // kbtnColourMapViewer
+            // 
+            this.kbtnColourMapViewer.Location = new System.Drawing.Point(108, 12);
+            this.kbtnColourMapViewer.Name = "kbtnColourMapViewer";
+            this.kbtnColourMapViewer.Size = new System.Drawing.Size(152, 25);
+            this.kbtnColourMapViewer.TabIndex = 1;
+            this.kbtnColourMapViewer.Values.Text = "&ColourMap Viewer";
+            this.kbtnColourMapViewer.Click += new System.EventHandler(this.kbtnColourMapViewer_Click);
             // 
             // kbtnAxisLimits
             // 
@@ -54,14 +65,14 @@
             this.kbtnAxisLimits.Values.Text = "Axis &Limits";
             this.kbtnAxisLimits.Click += new System.EventHandler(this.kbtnAxisLimits_Click);
             // 
-            // kbtnColourMapViewer
+            // kbtnPlotConfiguration
             // 
-            this.kbtnColourMapViewer.Location = new System.Drawing.Point(108, 12);
-            this.kbtnColourMapViewer.Name = "kbtnColourMapViewer";
-            this.kbtnColourMapViewer.Size = new System.Drawing.Size(152, 25);
-            this.kbtnColourMapViewer.TabIndex = 1;
-            this.kbtnColourMapViewer.Values.Text = "&ColourMap Viewer";
-            this.kbtnColourMapViewer.Click += new System.EventHandler(this.kbtnColourMapViewer_Click);
+            this.kbtnPlotConfiguration.Location = new System.Drawing.Point(266, 12);
+            this.kbtnPlotConfiguration.Name = "kbtnPlotConfiguration";
+            this.kbtnPlotConfiguration.Size = new System.Drawing.Size(152, 25);
+            this.kbtnPlotConfiguration.TabIndex = 2;
+            this.kbtnPlotConfiguration.Values.Text = "Pl&ot Configuration";
+            this.kbtnPlotConfiguration.Click += new System.EventHandler(this.kbtnPlotConfiguration_Click);
             // 
             // ScottPlotDemoForm
             // 
@@ -82,5 +93,6 @@
         private Krypton.Toolkit.KryptonPanel kryptonPanel1;
         private Krypton.Toolkit.KryptonButton kbtnAxisLimits;
         private Krypton.Toolkit.KryptonButton kbtnColourMapViewer;
+        private Krypton.Toolkit.KryptonButton kbtnPlotConfiguration;
     }
 }

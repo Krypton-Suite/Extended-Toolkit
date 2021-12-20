@@ -34,5 +34,12 @@ namespace DataVisualisation.ScottPlot
 
             colourMapViewer.Show();
         }
+
+        private void kbtnPlotConfiguration_Click(object sender, EventArgs e)
+        {
+            FormsPlotConfig plotConfig = new FormsPlotConfig();
+
+            plotConfig.Show();
+        }
     }
 }

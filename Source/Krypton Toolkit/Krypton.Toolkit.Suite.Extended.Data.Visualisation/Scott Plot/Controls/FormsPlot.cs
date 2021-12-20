@@ -326,7 +326,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             Backend.RenderRequest(renderType);
         }
 
-        private void DefaultRightClickedEvent(object sender, EventArgs e)
+        public void DefaultRightClickedEvent(object sender, EventArgs e)
         {
             DefaultRightClickMenu.Show(System.Windows.Forms.Cursor.Position);
         }

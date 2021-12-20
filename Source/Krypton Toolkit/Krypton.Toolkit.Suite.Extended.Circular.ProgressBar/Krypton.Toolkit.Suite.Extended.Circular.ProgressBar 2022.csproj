@@ -17,12 +17,12 @@
     <Choose>
         <When Condition="'$(Configuration)' == 'Canary'">
             <PropertyGroup>
-                <PackageId>Krypton.Toolkit.Suite.Extended.ProgressBar.Canary</PackageId>
+                <PackageId>Krypton.Toolkit.Suite.Extended.Circular.ProgressBar.Canary</PackageId>
             </PropertyGroup>
         </When>
         <Otherwise>
             <PropertyGroup>
-                <PackageId>Krypton.Toolkit.Suite.Extended.ProgressBar</PackageId>
+                <PackageId>Krypton.Toolkit.Suite.Extended.Circular.ProgressBar</PackageId>
             </PropertyGroup>
         </Otherwise>
     </Choose>
