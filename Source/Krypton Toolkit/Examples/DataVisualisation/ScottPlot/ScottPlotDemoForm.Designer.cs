@@ -29,15 +29,17 @@
         private void InitializeComponent()
         {
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            this.kbtnPlotConfiguration = new Krypton.Toolkit.KryptonButton();
             this.kbtnColourMapViewer = new Krypton.Toolkit.KryptonButton();
             this.kbtnAxisLimits = new Krypton.Toolkit.KryptonButton();
-            this.kbtnPlotConfiguration = new Krypton.Toolkit.KryptonButton();
+            this.kbtnLayout = new Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(this.kbtnLayout);
             this.kryptonPanel1.Controls.Add(this.kbtnPlotConfiguration);
             this.kryptonPanel1.Controls.Add(this.kbtnColourMapViewer);
             this.kryptonPanel1.Controls.Add(this.kbtnAxisLimits);
@@ -46,6 +48,15 @@
             this.kryptonPanel1.Name = "kryptonPanel1";
             this.kryptonPanel1.Size = new System.Drawing.Size(800, 450);
             this.kryptonPanel1.TabIndex = 1;
+            // 
+            // kbtnPlotConfiguration
+            // 
+            this.kbtnPlotConfiguration.Location = new System.Drawing.Point(266, 12);
+            this.kbtnPlotConfiguration.Name = "kbtnPlotConfiguration";
+            this.kbtnPlotConfiguration.Size = new System.Drawing.Size(152, 25);
+            this.kbtnPlotConfiguration.TabIndex = 2;
+            this.kbtnPlotConfiguration.Values.Text = "Pl&ot Configuration";
+            this.kbtnPlotConfiguration.Click += new System.EventHandler(this.kbtnPlotConfiguration_Click);
             // 
             // kbtnColourMapViewer
             // 
@@ -65,14 +76,14 @@
             this.kbtnAxisLimits.Values.Text = "Axis &Limits";
             this.kbtnAxisLimits.Click += new System.EventHandler(this.kbtnAxisLimits_Click);
             // 
-            // kbtnPlotConfiguration
+            // kbtnLayout
             // 
-            this.kbtnPlotConfiguration.Location = new System.Drawing.Point(266, 12);
-            this.kbtnPlotConfiguration.Name = "kbtnPlotConfiguration";
-            this.kbtnPlotConfiguration.Size = new System.Drawing.Size(152, 25);
-            this.kbtnPlotConfiguration.TabIndex = 2;
-            this.kbtnPlotConfiguration.Values.Text = "Pl&ot Configuration";
-            this.kbtnPlotConfiguration.Click += new System.EventHandler(this.kbtnPlotConfiguration_Click);
+            this.kbtnLayout.Location = new System.Drawing.Point(424, 12);
+            this.kbtnLayout.Name = "kbtnLayout";
+            this.kbtnLayout.Size = new System.Drawing.Size(90, 25);
+            this.kbtnLayout.TabIndex = 3;
+            this.kbtnLayout.Values.Text = "&Layout";
+            this.kbtnLayout.Click += new System.EventHandler(this.kbtnLayout_Click);
             // 
             // ScottPlotDemoForm
             // 
@@ -94,5 +105,6 @@
         private Krypton.Toolkit.KryptonButton kbtnAxisLimits;
         private Krypton.Toolkit.KryptonButton kbtnColourMapViewer;
         private Krypton.Toolkit.KryptonButton kbtnPlotConfiguration;
+        private Krypton.Toolkit.KryptonButton kbtnLayout;
     }
 }

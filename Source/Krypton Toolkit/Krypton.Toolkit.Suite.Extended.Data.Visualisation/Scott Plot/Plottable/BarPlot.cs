@@ -41,7 +41,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             using Graphics gfx = GDI.Graphics(bmp, dims, lowQuality);
             for (int barIndex = 0; barIndex < Values.Length; barIndex++)
             {
-                if (Orientation == Orientation.Vertical)
+                if (Orientation == PlotOrientation.Vertical)
                     RenderBarVertical(dims, gfx, Positions[barIndex] + PositionOffset, Values[barIndex], ValueErrors[barIndex], ValueOffsets[barIndex]);
                 else
                     RenderBarHorizontal(dims, gfx, Positions[barIndex] + PositionOffset, Values[barIndex], ValueErrors[barIndex], ValueOffsets[barIndex]);

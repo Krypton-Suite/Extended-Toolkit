@@ -18,7 +18,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// Orientation of the bars.
         /// Default behavior is vertical so values are on the Y axis and positions are on the X axis.
         /// </summary>
-        public Orientation Orientation = Orientation.Vertical;
+        public PlotOrientation Orientation = PlotOrientation.Vertical;
 
         /// <summary>
         /// The position of each bar defines where the left edge of the bar should be.
@@ -117,7 +117,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             positionMin += PositionOffset;
             positionMax += PositionOffset;
 
-            return Orientation == Orientation.Vertical ?
+            return Orientation == PlotOrientation.Vertical ?
                 new AxisLimits(positionMin, positionMax, valueMin, valueMax) :
                 new AxisLimits(valueMin, valueMax, positionMin, positionMax);
         }
@@ -125,15 +125,15 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         [Obsolete("Reference the 'Orientation' field instead of this field")]
         public bool VerticalOrientation
         {
-            get => Orientation == Orientation.Vertical;
-            set => Orientation = value ? Orientation.Vertical : Orientation.Horizontal;
+            get => Orientation == PlotOrientation.Vertical;
+            set => Orientation = value ? PlotOrientation.Vertical : PlotOrientation.Horizontal;
         }
 
         [Obsolete("Reference the 'Orientation' field instead of this field")]
         public bool HorizontalOrientation
         {
-            get => Orientation == Orientation.Horizontal;
-            set => Orientation = value ? Orientation.Horizontal : Orientation.Vertical;
+            get => Orientation == PlotOrientation.Horizontal;
+            set => Orientation = value ? PlotOrientation.Horizontal : PlotOrientation.Vertical;
         }
 
         [Obsolete("Reference the 'Values' field instead of this field")]

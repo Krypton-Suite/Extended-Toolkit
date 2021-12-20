@@ -148,7 +148,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             positionMin += PositionOffset;
             positionMax += PositionOffset;
 
-            return Orientation == Orientation.Vertical ?
+            return Orientation == PlotOrientation.Vertical ?
                 new AxisLimits(positionMin, positionMax, valueMin, valueMax) :
                 new AxisLimits(valueMin, valueMax, positionMin, positionMax);
         }
@@ -185,7 +185,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             using Graphics gfx = GDI.Graphics(bmp, dims, lowQuality);
             for (int barIndex = 0; barIndex < Values.Length; barIndex++)
             {
-                if (Orientation == Orientation.Vertical)
+                if (Orientation == PlotOrientation.Vertical)
                     RenderBarVertical(dims, gfx, Positions[barIndex] + PositionOffset, Values[barIndex], ValueErrors[barIndex], ValueOffsets[barIndex]);
                 else
                     RenderBarHorizontal(dims, gfx, Positions[barIndex] + PositionOffset, Values[barIndex], ValueErrors[barIndex], ValueOffsets[barIndex]);
@@ -194,7 +194,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
         private void RenderBarFromRect(RectangleF rect, bool negative, Graphics gfx)
         {
-            float centerPx = Orientation == Orientation.Horizontal
+            float centerPx = Orientation == PlotOrientation.Horizontal
                 ? rect.Y + rect.Height / 2
                 : rect.X + rect.Width / 2;
 
@@ -202,7 +202,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             using var dot1Brush = GDI.Brush(Color1);
             using var dot2Brush = GDI.Brush(Color2);
             PointF[] points = new PointF[2];
-            if (Orientation == Orientation.Horizontal)
+            if (Orientation == PlotOrientation.Horizontal)
             {
                 points[0] = new PointF(negative ? rect.X + rect.Width : rect.X, centerPx - DotRadius / 2);
                 points[1] = new PointF(negative ? rect.X : rect.X + rect.Width, centerPx - DotRadius / 2);

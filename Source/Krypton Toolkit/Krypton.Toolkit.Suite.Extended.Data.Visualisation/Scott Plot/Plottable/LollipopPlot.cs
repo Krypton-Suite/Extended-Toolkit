@@ -73,7 +73,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             using Graphics gfx = GDI.Graphics(bmp, dims, lowQuality);
             for (int barIndex = 0; barIndex < Values.Length; barIndex++)
             {
-                if (Orientation == Orientation.Vertical)
+                if (Orientation == PlotOrientation.Vertical)
                     RenderBarVertical(dims, gfx, Positions[barIndex] + PositionOffset, Values[barIndex], ValueErrors[barIndex], ValueOffsets[barIndex]);
                 else
                     RenderBarHorizontal(dims, gfx, Positions[barIndex] + PositionOffset, Values[barIndex], ValueErrors[barIndex], ValueOffsets[barIndex]);
@@ -82,14 +82,14 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
         private void RenderBarFromRect(RectangleF rect, bool negative, Graphics gfx)
         {
-            float centerPx = Orientation == Orientation.Horizontal
+            float centerPx = Orientation == PlotOrientation.Horizontal
                 ? rect.Y + rect.Height / 2
                 : rect.X + rect.Width / 2;
 
             using var fillPen = new Pen(LollipopColor);
             using var fillBrush = GDI.Brush(LollipopColor);
 
-            if (Orientation == Orientation.Horizontal)
+            if (Orientation == PlotOrientation.Horizontal)
             {
                 gfx.FillEllipse(fillBrush, negative ? rect.X : rect.X + rect.Width, centerPx - LollipopRadius / 2, LollipopRadius, LollipopRadius);
                 gfx.DrawLine(fillPen, rect.X, centerPx, rect.X + rect.Width, centerPx);

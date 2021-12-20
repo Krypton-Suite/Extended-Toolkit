@@ -41,5 +41,12 @@ namespace DataVisualisation.ScottPlot
 
             plotConfig.Show();
         }
+
+        private void kbtnLayout_Click(object sender, EventArgs e)
+        {
+            Demos.Layout layout = new Demos.Layout();
+
+            layout.Show();
+        }
     }
 }

@@ -194,7 +194,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         Dot
     }
 
-    public enum Orientation
+    public enum PlotOrientation
     {
         Horizontal,
         Vertical
