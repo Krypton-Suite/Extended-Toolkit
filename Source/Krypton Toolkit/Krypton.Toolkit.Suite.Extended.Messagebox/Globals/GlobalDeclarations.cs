@@ -18,3 +18,5 @@ global using System.Text;
 global using System.Windows.Forms;
 
 global using Timer = System.Windows.Forms.Timer;
+
+global using Krypton.Toolkit;
