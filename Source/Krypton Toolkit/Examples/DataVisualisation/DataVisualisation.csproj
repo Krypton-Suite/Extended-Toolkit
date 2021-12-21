@@ -1,14 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>WinExe</OutputType>
-    <TargetFramework>net48</TargetFramework>
-    <UseWindowsForms>true</UseWindowsForms>
-    <ApplicationIcon>Stable.ico</ApplicationIcon>
+	<OutputType>WinExe</OutputType>
+	<TargetFramework>net48</TargetFramework>
+	<UseWindowsForms>true</UseWindowsForms>
+	<ApplicationIcon>Stable.ico</ApplicationIcon>
+	  <Configurations>Debug;Release;Nightly;Canary;Stable</Configurations>
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="Stable.ico" />
+	<Content Include="Stable.ico" />
   </ItemGroup>
 
 	<ItemGroup>

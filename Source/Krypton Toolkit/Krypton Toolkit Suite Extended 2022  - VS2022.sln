@@ -301,7 +301,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Exten
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualTreeColumnViewApp", "Examples\VirtualTreeColumnViewApp\VirtualTreeColumnViewApp.csproj", "{34B0DB6C-1C9A-421B-8CBE-FBBD9EDBFB33}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataVisualisation", "Examples\DataVisualisation\DataVisualisation.csproj", "{7EEF52BF-3FB1-4D31-A1B1-1F1DF3F3FD61}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataVisualisation", "Examples\DataVisualisation\DataVisualisation.csproj", "{7EEF52BF-3FB1-4D31-A1B1-1F1DF3F3FD61}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -935,8 +935,8 @@ Global
 		{8F855A4B-3A63-4C27-92D6-F0BBC9D15A44}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8F855A4B-3A63-4C27-92D6-F0BBC9D15A44}.Stable|Any CPU.ActiveCfg = Stable|Any CPU
 		{8F855A4B-3A63-4C27-92D6-F0BBC9D15A44}.Stable|Any CPU.Build.0 = Stable|Any CPU
-		{CB1E8B1F-E019-498A-8E4E-117012F6368C}.Canary|Any CPU.ActiveCfg = Debug|Any CPU
-		{CB1E8B1F-E019-498A-8E4E-117012F6368C}.Canary|Any CPU.Build.0 = Debug|Any CPU
+		{CB1E8B1F-E019-498A-8E4E-117012F6368C}.Canary|Any CPU.ActiveCfg = Canary|Any CPU
+		{CB1E8B1F-E019-498A-8E4E-117012F6368C}.Canary|Any CPU.Build.0 = Canary|Any CPU
 		{CB1E8B1F-E019-498A-8E4E-117012F6368C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CB1E8B1F-E019-498A-8E4E-117012F6368C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CB1E8B1F-E019-498A-8E4E-117012F6368C}.Release|Any CPU.ActiveCfg = Release|Any CPU
