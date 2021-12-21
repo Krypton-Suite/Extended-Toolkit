@@ -47,7 +47,7 @@
             </PropertyGroup>
 
             <ItemGroup>
-                <PackageReference Include="Krypton.Toolkit.Canary" Version="6.2111.310-beta" />
+                <PackageReference Include="Krypton.Toolkit.Canary" Version="6.2111.355-beta" />
             </ItemGroup>
         </Otherwise>
     </Choose>
