@@ -5,7 +5,7 @@
 	<TargetFramework>net48</TargetFramework>
 	<UseWindowsForms>true</UseWindowsForms>
 	<ApplicationIcon>Stable.ico</ApplicationIcon>
-	  <Configurations>Debug;Release;Nightly;Canary;Stable</Configurations>
+	<Configurations>Debug;Release;Nightly;Canary;Stable</Configurations>
   </PropertyGroup>
 
   <ItemGroup>
