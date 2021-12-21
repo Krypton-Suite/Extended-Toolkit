@@ -4,14 +4,11 @@
         <!--<TargetFramework>net5.0-windows</TargetFramework>-->
         <TargetFramework>net48</TargetFramework>
         <UseWindowsForms>true</UseWindowsForms>
-        <LangVersion>latest</LangVersion>
+        <LangVersion>preview</LangVersion>
         <OutputType>WinExe</OutputType>
-        <Configurations>Debug;Release;Canary;Stable</Configurations>
+        <Configurations>Debug;Release;Nightly;Canary;Stable</Configurations>
+        <ApplicationIcon>Stable.ico</ApplicationIcon>
     </PropertyGroup>
-
-    <ItemGroup>
-      <None Remove="Stable.ico" />
-    </ItemGroup>
 
     <ItemGroup>
       <Content Include="Stable.ico" />
@@ -26,6 +23,11 @@
     <ItemGroup>
       <Folder Include="DataSource\" />
       <Folder Include="Resources\" />
+    </ItemGroup>
+
+
+    <ItemGroup>
+      <PackageReference Include="Krypton.Toolkit.Canary" Version="6.2111.310-beta" />
     </ItemGroup>
 
 
@@ -56,11 +58,6 @@
       <None Update="DataSource\test.xml">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
-    </ItemGroup>
-
-
-    <ItemGroup>
-      <PackageReference Update="Krypton.Toolkit.Canary" Version="6.2111.310-beta" />
     </ItemGroup>
 
 </Project>

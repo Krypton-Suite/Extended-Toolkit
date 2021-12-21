@@ -1,4 +1,12 @@
-﻿using System;
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ */
+#endregion
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -155,7 +163,10 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
                 for (int i = 0; i < Count; i++)
                 {
                     int position = Find(0, prop.Name, sortedList[i]);
-                    if (position != i)
+                    if (position != i
+                        && position > -1
+                        && position < Count
+                        )
                     {
                         var temp = this[i];
                         this[i] = this[position];
@@ -356,7 +367,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
             UnfilteredList.Clear();
             UnfilteredList.AddRange(SourceItems);
 
-            List<T> results = new List<T>();
+            List<T> results = new();
 
             PropertyDescriptor propDesc = TypeDescriptor.GetProperties(typeof(T))[FilterPropertyName];
 

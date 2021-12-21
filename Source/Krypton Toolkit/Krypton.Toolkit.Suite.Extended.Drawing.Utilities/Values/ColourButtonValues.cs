@@ -1,4 +1,12 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ */
+#endregion
+
+namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 {
     public class ColourButtonValues : Storage, IContentValues
     {
@@ -250,7 +258,9 @@
             set
             {
                 _selectedColour = value;
+#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
                 _compositeImage = null;
+#pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
             }
         }
         #endregion
@@ -266,7 +276,9 @@
             set
             {
                 _emptyBorderColour = value;
+#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
                 _compositeImage = null;
+#pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
             }
         }
         #endregion
@@ -303,7 +315,9 @@
         /// <returns>Image value.</returns>
         public virtual Image GetImage(PaletteState state)
         {
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
             Image image = null;
+#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
 
             // Try and find a state specific image
             switch (state)
@@ -336,7 +350,9 @@
 
                 if (image == null)
                 {
+#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
                     _compositeImage = null;
+#pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
                 }
                 else
                 {
@@ -375,7 +391,9 @@
                 }
             }
 
+#pragma warning disable CS8603 // Possible null reference return.
             return _compositeImage;
+#pragma warning restore CS8603 // Possible null reference return.
         }
 
         /// <summary>

@@ -1,4 +1,12 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ */
+#endregion
+
+namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
 {
     public class KryptonVarifyFileCheckSum : KryptonForm
     {
@@ -170,7 +178,7 @@
             // ktxtVarifyCheckSum
             // 
             this.ktxtVarifyCheckSum.ContextMenuStrip = this.cmsCheckSumValidation;
-            this.ktxtVarifyCheckSum.CueHint.CueHintText = "Type or paste checksum here...";
+            this.ktxtVarifyCheckSum.Hint = "Type or paste checksum here...";
             this.ktxtVarifyCheckSum.Location = new System.Drawing.Point(6, 23);
             this.ktxtVarifyCheckSum.Name = "ktxtVarifyCheckSum";
             this.ktxtVarifyCheckSum.Size = new System.Drawing.Size(665, 24);
@@ -278,7 +286,7 @@
             // 
             // ktxtFilePath
             // 
-            this.ktxtFilePath.CueHint.CueHintText = "Type a file path here...";
+            this.ktxtFilePath.Hint = "Type a file path here...";
             this.ktxtFilePath.Location = new System.Drawing.Point(84, 13);
             this.ktxtFilePath.Name = "ktxtFilePath";
             this.ktxtFilePath.Size = new System.Drawing.Size(574, 23);

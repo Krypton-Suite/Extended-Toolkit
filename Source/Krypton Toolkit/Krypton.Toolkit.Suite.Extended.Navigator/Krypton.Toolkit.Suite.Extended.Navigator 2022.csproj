@@ -5,20 +5,73 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-        <LangVersion>preview</LangVersion>
         <OutputType>library</OutputType>
         <RootNamespace>Krypton.Toolkit.Suite.Extended.Navigator</RootNamespace>
         <AssemblyName>Krypton.Toolkit.Suite.Extended.Navigator</AssemblyName>
         <UseWindowsForms>true</UseWindowsForms>
         <NeutralLanguage>en</NeutralLanguage>
-        <Configurations>Debug;Release;Canary;Stable</Configurations>
+        <Configurations>Debug;Release;Nightly;Canary;Stable</Configurations>
     </PropertyGroup>
 
     <!--Package Data-->
+    <Choose>
+        <When Condition="'$(Configuration)' == 'Canary'">
+            <PropertyGroup>
+                <PackageId>Krypton.Toolkit.Suite.Extended.Navigator.Canary</PackageId>
+            </PropertyGroup>
+        </When>
+        <Otherwise>
+            <PropertyGroup>
+                <PackageId>Krypton.Toolkit.Suite.Extended.Navigator</PackageId>
+            </PropertyGroup>
+        </Otherwise>
+    </Choose>
+
     <PropertyGroup>
-        <PackageId>Krypton.Toolkit.Suite.Extended.Navigator</PackageId>
         <Description>An extension to the Krypton standard toolkit. This package holds extensions to the Krypton.Navigator module.</Description>
     </PropertyGroup>
+
+    <Choose>
+	    <When Condition="'$(Configuration)' == 'Canary'">
+		    <ItemGroup>
+			    <None Include="Package Icons\Canary.png" Link="Canary.png" Pack="true" PackagePath="" />
+		    </ItemGroup>
+
+		    <PropertyGroup>
+			    <PackageIcon>Canary.png</PackageIcon>
+		    </PropertyGroup>
+	    </When>
+	    <Otherwise>
+		    <ItemGroup>
+			    <None Include="Package Icons\Stable.png" Link="Stable.png" Pack="true" PackagePath="" />
+		    </ItemGroup>
+
+		    <PropertyGroup>
+			    <PackageIcon>Stable.png</PackageIcon>
+		    </PropertyGroup>
+	    </Otherwise>
+    </Choose>
+
+    <Choose>
+        <When Condition="'$(Configuration)' == 'Release'">
+            <PropertyGroup>
+                <LangVersion>preview</LangVersion>
+            </PropertyGroup>
+
+            <ItemGroup>
+                <PackageReference Include="Krypton.Toolkit" Version="6.2111.312" />
+            </ItemGroup>
+        </When>
+        <Otherwise>
+            <PropertyGroup>
+                <LangVersion>preview</LangVersion>
+            </PropertyGroup>
+
+            <ItemGroup>
+                <PackageReference Include="Krypton.Toolkit.Canary" Version="6.2111.310-beta" />
+            </ItemGroup>
+        </Otherwise>
+    </Choose>
   
     <ItemGroup>
       <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Drawing\Krypton.Toolkit.Suite.Extended.Drawing 2022.csproj" />
@@ -82,9 +135,6 @@
             <Generator>ResXFileCodeGenerator</Generator>
             <LastGenOutput>Resources.Designer.cs</LastGenOutput>
         </EmbeddedResource>
-    </ItemGroup>
-    <ItemGroup>
-      <PackageReference Update="Krypton.Toolkit.Canary" Version="6.2111.310-beta" />
     </ItemGroup>
 
 </Project>

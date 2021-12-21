@@ -6,9 +6,7 @@
  */
 #endregion
 
-using System.Globalization;
 using System.Resources;
-using System.Text;
 
 namespace Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech
 {

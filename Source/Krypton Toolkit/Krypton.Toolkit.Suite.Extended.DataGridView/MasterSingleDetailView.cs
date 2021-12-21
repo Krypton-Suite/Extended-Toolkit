@@ -37,6 +37,8 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
             Controls.Add(childView);
         }
 
+        public SingleDetailView SingleChildView => childView;
+
         /// <summary>
         /// Add the tableName to be used for the Details from within the DataSource
         /// </summary>

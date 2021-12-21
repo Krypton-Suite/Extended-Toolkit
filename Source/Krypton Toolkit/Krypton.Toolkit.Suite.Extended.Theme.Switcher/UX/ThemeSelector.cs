@@ -1,4 +1,12 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ */
+#endregion
+
+namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 {
     public class ThemeSelector : KryptonForm
     {
@@ -183,11 +191,11 @@
         #endregion
 
         #region Constructor
-        public ThemeSelector(KryptonManager manager)
+        public ThemeSelector(KryptonManager? manager)
         {
             InitializeComponent();
 
-            _manager = manager;
+            _manager = manager ?? new KryptonManager();
 
             _palette = new KryptonPalette();
 

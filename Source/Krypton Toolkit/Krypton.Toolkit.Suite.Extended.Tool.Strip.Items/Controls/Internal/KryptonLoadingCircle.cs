@@ -1,4 +1,12 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ */
+#endregion
+
+namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 {
     [ToolboxBitmap(typeof(BackgroundWorker)), ToolboxItem(false)]
     public partial class KryptonLoadingCircle : Control
@@ -462,7 +470,7 @@
         /// <summary>
         /// Gets the spoke angles.
         /// </summary>
-        /// <param name="_intNumberSpoke">The number spoke.</param>
+        /// <param name="_shtNumberSpoke">The number spoke.</param>
         /// <returns>An array of angle.</returns>
         private double[] GetSpokesAngles(int _intNumberSpoke)
         {

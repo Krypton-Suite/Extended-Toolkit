@@ -6,9 +6,6 @@
  */
 #endregion
 
-using System;
-using System.Diagnostics;
-
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
 {
     /// <filterpriority>2</filterpriority>

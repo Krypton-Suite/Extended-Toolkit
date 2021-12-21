@@ -5,20 +5,55 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-        <LangVersion>preview</LangVersion>
         <OutputType>library</OutputType>
         <RootNamespace>Krypton.Toolkit.Suite.Extended.ComboBox</RootNamespace>
         <AssemblyName>Krypton.Toolkit.Suite.Extended.ComboBox</AssemblyName>
         <UseWindowsForms>true</UseWindowsForms>
         <NeutralLanguage>en</NeutralLanguage>
-        <Configurations>Debug;Release;Canary;Stable</Configurations>
+        <Configurations>Debug;Release;Nightly;Canary;Stable</Configurations>
     </PropertyGroup>
 
     <!--Package Data-->
+    <Choose>
+        <When Condition="'$(Configuration)' == 'Canary'">
+            <PropertyGroup>
+                <PackageId>Krypton.Toolkit.Suite.Extended.ComboBox.Canary</PackageId>
+            </PropertyGroup>
+        </When>
+        <Otherwise>
+            <PropertyGroup>
+                <PackageId>Krypton.Toolkit.Suite.Extended.ComboBox</PackageId>
+            </PropertyGroup>
+        </Otherwise>
+    </Choose>
+
+    <Choose>
+	    <When Condition="'$(Configuration)' == 'Canary'">
+		    <ItemGroup>
+			    <None Include="Package Icons\Canary.png" Link="Canary.png" Pack="true" PackagePath="" />
+		    </ItemGroup>
+
+		    <PropertyGroup>
+			    <PackageIcon>Canary.png</PackageIcon>
+		    </PropertyGroup>
+	    </When>
+	    <Otherwise>
+		    <ItemGroup>
+			    <None Include="Package Icons\Stable.png" Link="Stable.png" Pack="true" PackagePath="" />
+		    </ItemGroup>
+
+		    <PropertyGroup>
+			    <PackageIcon>Stable.png</PackageIcon>
+		    </PropertyGroup>
+	    </Otherwise>
+    </Choose>
+
     <PropertyGroup>
-        <PackageId>Krypton.Toolkit.Suite.Extended.ComboBox</PackageId>
         <Description>An extension to the Krypton standard toolkit ComboBox. This package implements additional Drop Down types and views.</Description>
     </PropertyGroup>
+    <ItemGroup>
+      <PackageReference Include="Krypton.Toolkit.Canary" Version="6.2111.310-beta" />
+    </ItemGroup>
 
     <ItemGroup>
         <Reference Include="System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net4'))">
@@ -38,10 +73,6 @@
         </Reference>
         <Reference Include="System.Design" Condition="'$(TargetFramework)' == 'net35'" />
         <!--TODO: Need to specify version here-->
-    </ItemGroup>
-
-    <ItemGroup>
-      <PackageReference Update="Krypton.Toolkit.Canary" Version="6.2111.310-beta" />
     </ItemGroup>
     <!--Binary/Documentation Output-->
     <PropertyGroup>

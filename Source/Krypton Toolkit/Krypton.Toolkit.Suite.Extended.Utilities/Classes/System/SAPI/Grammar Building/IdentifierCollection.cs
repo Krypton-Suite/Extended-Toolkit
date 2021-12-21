@@ -6,8 +6,6 @@
  */
 #endregion
 
-using System.Collections.Generic;
-
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.GrammarBuilding
 {
     internal class IdentifierCollection

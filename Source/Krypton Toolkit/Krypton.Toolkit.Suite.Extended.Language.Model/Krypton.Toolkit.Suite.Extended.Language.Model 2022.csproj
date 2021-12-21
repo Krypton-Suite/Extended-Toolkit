@@ -5,49 +5,82 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-    <LangVersion>preview</LangVersion>
     <OutputType>library</OutputType>
     <RootNamespace>Krypton.Toolkit.Suite.Extended.Language.Model</RootNamespace>
     <AssemblyName>Krypton.Toolkit.Suite.Extended.Language.Model</AssemblyName>
     <UseWindowsForms>true</UseWindowsForms>
-    <Configurations>Debug;Release;Canary;Stable</Configurations>
+    <Configurations>Debug;Release;Nightly;Canary;Stable</Configurations>
   </PropertyGroup>
 
   <!--Package Data-->
+  <Choose>
+      <When Condition="'$(Configuration)' == 'Canary'">
+          <PropertyGroup>
+              <PackageId>Krypton.Toolkit.Suite.Extended.Language.Model.Canary</PackageId>
+          </PropertyGroup>
+      </When>
+      <Otherwise>
+          <PropertyGroup>
+              <PackageId>Krypton.Toolkit.Suite.Extended.Language.Model</PackageId>
+          </PropertyGroup>
+      </Otherwise>
+  </Choose>
+
   <PropertyGroup>
-    <PackageId>Krypton.Toolkit.Suite.Extended.Language.Model</PackageId>
     <Description>An extension to the Krypton standard toolkit. This package contains language options for certain Krypton button controls.</Description>
   </PropertyGroup>
 
-  <!--Krypton Toolkit Import-
-    <Choose>
-        <When Condition="'$(SolutionName.Endswith(`Nuget`))'">
-            <ItemGroup>
-                Canary package
-                <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2108.1" />
+  <Choose>
+	  <When Condition="'$(Configuration)' == 'Canary'">
+		  <ItemGroup>
+			  <None Include="Package Icons\Canary.png" Link="Canary.png" Pack="true" PackagePath="" />
+		  </ItemGroup>
 
-                Stable package
-                <PackageReference Include="Krypton.Toolkit" Version="5.550.2108" />-
-            </ItemGroup>
-        </When>
-        <Otherwise>
-            <ItemGroup>
-                <ProjectReference Include="..\..\..\..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Toolkit\Krypton.Toolkit 2022.csproj" />
-            </ItemGroup>
-        </Otherwise>
-    </Choose>-->
+		  <PropertyGroup>
+			  <PackageIcon>Canary.png</PackageIcon>
+		  </PropertyGroup>
+	  </When>
+	  <Otherwise>
+		  <ItemGroup>
+			  <None Include="Package Icons\Stable.png" Link="Stable.png" Pack="true" PackagePath="" />
+		  </ItemGroup>
+
+		  <PropertyGroup>
+			  <PackageIcon>Stable.png</PackageIcon>
+		  </PropertyGroup>
+	  </Otherwise>
+  </Choose>
+
+  <Choose>
+      <When Condition="'$(Configuration)' == 'Release'">
+          <PropertyGroup>
+              <LangVersion>preview</LangVersion>
+          </PropertyGroup>
+
+          <ItemGroup>
+              <PackageReference Include="Krypton.Toolkit" Version="6.2111.312" />
+          </ItemGroup>
+      </When>
+      <Otherwise>
+          <PropertyGroup>
+              <LangVersion>preview</LangVersion>
+          </PropertyGroup>
+
+          <ItemGroup>
+              <PackageReference Include="Krypton.Toolkit.Canary" Version="6.2111.310-beta" />
+          </ItemGroup>
+      </Otherwise>
+  </Choose>
 
   <!--Binary/Documentation Output-->
   <PropertyGroup>
     <DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Language.Model\Krypton.Toolkit.Suite.Extended.Language.Model.xml</DocumentationFile>
     <OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Language.Model\</OutputPath>
   </PropertyGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Developer.Utilities\Krypton.Toolkit.Suite.Extended.Developer.Utilities 2022.csproj" />
     <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Tools\Krypton.Toolkit.Suite.Extended.Tools 2022.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Update="Krypton.Toolkit.Canary" Version="6.2111.310-beta" />
   </ItemGroup>
 
 </Project>

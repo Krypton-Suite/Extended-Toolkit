@@ -3,25 +3,22 @@
     <PropertyGroup>
         <TargetFramework>net5.0-windows</TargetFramework>
         <UseWindowsForms>true</UseWindowsForms>
-        <LangVersion>latest</LangVersion>
+        <LangVersion>preview</LangVersion>
         <OutputType>WinExe</OutputType>
-        <Configurations>Debug;Release;Canary;Stable</Configurations>
+        <Configurations>Debug;Release;Nightly;Canary;Stable</Configurations>
+        <ApplicationIcon>Stable.ico</ApplicationIcon>
     </PropertyGroup>
-
-    <ItemGroup>
-      <None Remove="Stable.ico" />
-    </ItemGroup>
 
     <ItemGroup>
       <Content Include="Stable.ico" />
     </ItemGroup>
 
     <ItemGroup>
-      <Compile Update="Form1.cs" />
+      <PackageReference Include="Krypton.Toolkit.Canary" Version="6.2111.310-beta" />
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Update="Krypton.Toolkit.Canary" Version="6.2111.310-beta" />
+      <Compile Update="Form1.cs" />
     </ItemGroup>
 
 </Project>

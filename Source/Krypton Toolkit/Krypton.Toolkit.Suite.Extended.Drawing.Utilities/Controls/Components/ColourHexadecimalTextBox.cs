@@ -1,4 +1,12 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ */
+#endregion
+
+namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 {
     public class ColourHexadecimalTextBox : KryptonTextBox
     {
@@ -10,7 +18,7 @@
         {
             MaxLength = 6;
 
-            Hint = "000000";
+            CueHint.CueHintText = "000000";
 
             StateCommon.Content.TextH = PaletteRelativeAlign.Center;
 
@@ -42,13 +50,16 @@
                 {
                     Messagebox.KryptonMessageBoxManager manager = new Messagebox.KryptonMessageBoxManager()
                     {
-                        Caption = "Illegal Character",
-                        Text = $"'{ character }' is not a hexadecimal character",
-                        Buttons = Messagebox.ExtendedMessageBoxButtons.OK,
+                        MessageBoxCaption = "Illegal Character",
+                        MessageBoxContentText = $"'{ character }' is not a hexadecimal character",
+                        MessageBoxButtons = Messagebox.ExtendedMessageBoxButtons.OK,
                         MessageBoxIcon = ExtendedKryptonMessageBoxIcon.INFORMATION
                     };
 
-                    // TODO: manager.DisplayKryptonMessageBox();
+                    //manager.DisplayKryptonMessageBox(); // TODO: Re-enable **once** when `KryptonMessageBoxManager` is ready
+
+                    KryptonMessageBox.Show($"'{character}' is not a hexadecimal character", "Illegal Character",
+                        MessageBoxButtons.OK, KryptonMessageBoxIcon.INFORMATION);
 
                     e.Cancel = true;
                 }

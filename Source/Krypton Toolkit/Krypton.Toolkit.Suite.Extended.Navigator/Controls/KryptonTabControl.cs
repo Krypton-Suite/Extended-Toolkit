@@ -16,7 +16,6 @@ using System.Runtime.InteropServices;
 using System.Security.Permissions;
 using System.Windows.Forms;
 
-using Krypton.Toolkit.Suite.Extended.Common;
 using Krypton.Toolkit.Suite.Extended.Drawing;
 
 namespace Krypton.Toolkit.Suite.Extended.Navigator
@@ -1400,7 +1399,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 		protected override void OnHandleCreated(System.EventArgs e)
 		{
 			base.OnHandleCreated(e);
-			//if (this.Multiline == false)
+			///if (this.Multiline == false)
 			//{
 			//Scroller.Font = new Font("Marlett", this.Font.Size, FontStyle.Regular, GraphicsUnit.Pixel, this.Font.GdiCharSet);
 			WIN32.SetParent(Scroller.Handle, this.Handle);

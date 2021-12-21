@@ -9,10 +9,6 @@
 using Krypton.Toolkit.Suite.Extended.Utilities.System.ObjectTokens;
 using Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition;
 using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech;
-using System;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using System.Threading;
 
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop
 {

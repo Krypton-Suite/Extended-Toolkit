@@ -1,4 +1,12 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ */
+#endregion
+
+namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 {
     public class ThemeSwitcherOptions : KryptonForm
     {
@@ -8,10 +16,10 @@
         private KryptonButton kbtnApply;
         private KryptonButton kbtnCancel;
         private KryptonPanel kryptonPanel2;
-        private Navigator.KryptonNavigator kryptonNavigator1;
-        private Navigator.KryptonPage kryptonPage1;
-        private Navigator.KryptonPage kryptonPage2;
-        private Navigator.KryptonPage kryptonPage3;
+        private KryptonNavigator kryptonNavigator1;
+        private KryptonPage kryptonPage1;
+        private KryptonPage kryptonPage2;
+        private KryptonPage kryptonPage3;
         private KryptonButton kbtnDownload;
         private KryptonButton kbtnSubmit;
         private KryptonWrapLabel kwlPaletteName;
@@ -445,13 +453,13 @@
         #endregion
 
         #region Constructors
-        public ThemeSwitcherOptions(KryptonManager manager, KryptonPalette palette)
+        public ThemeSwitcherOptions(KryptonManager? manager, KryptonPalette? palette)
         {
             InitializeComponent();
 
-            _manager = manager;
+            _manager = manager ?? new KryptonManager();
 
-            _palette = palette;
+            _palette = palette ?? new KryptonPalette();
 
             PropagateThemeLists();
         }

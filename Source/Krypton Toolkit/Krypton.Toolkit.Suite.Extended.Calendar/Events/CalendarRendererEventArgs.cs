@@ -42,7 +42,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         /// <param name="calendar">Calendar where painting</param>
         /// <param name="g">Device where to paint</param>
-        /// <param name="clipRectangle">Paint event clip area</param>
+        /// <param name="clip">Paint event clip area</param>
         public CalendarRendererEventArgs(KryptonCalendar calendar, Graphics g, Rectangle clipRectangle)
         {
             _calendar = calendar;
@@ -55,8 +55,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         /// <param name="calendar">Calendar where painting</param>
         /// <param name="g">Device where to paint</param>
-        /// <param name="clipRectangle">Paint event clip area</param>
-        /// <param name="tag"></param>
+        /// <param name="clip">Paint event clip area</param>
         public CalendarRendererEventArgs(KryptonCalendar calendar, Graphics g, Rectangle clipRectangle, object tag)
         {
             _calendar = calendar;

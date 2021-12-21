@@ -1,4 +1,12 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.File.Copier
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ */
+#endregion
+
+namespace Krypton.Toolkit.Suite.Extended.File.Copier
 {
     [ToolboxItem(false)]
     public class KryptonFileListing : UserControl
@@ -66,7 +74,7 @@
             // ktxtDirectory
             // 
             this.ktxtDirectory.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ktxtDirectory.CueHint.CueHintText = "Please enter or browse to a directory...";
+            this.ktxtDirectory.Hint = "Please enter or browse to a directory...";
             this.ktxtDirectory.Location = new System.Drawing.Point(0, 0);
             this.ktxtDirectory.Name = "ktxtDirectory";
             this.ktxtDirectory.Size = new System.Drawing.Size(224, 23);

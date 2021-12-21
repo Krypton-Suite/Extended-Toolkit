@@ -2,18 +2,19 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0-Windows</TargetFramework>
-    <LangVersion>latest</LangVersion>
+    <LangVersion>preview</LangVersion>
     <OutputType>WinExe</OutputType>
     <UseWindowsForms>true</UseWindowsForms>
-    <Configurations>Debug;Release;Canary;Stable</Configurations>
+    <Configurations>Debug;Release;Nightly;Canary;Stable</Configurations>
+    <ApplicationIcon>Stable.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Stable.ico" />
+    <Content Include="Stable.ico" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Stable.ico" />
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.2111.310-beta" />
   </ItemGroup>
 
   <ItemGroup>
@@ -37,10 +38,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Update="Krypton.Toolkit.Canary" Version="6.2111.310-beta" />
   </ItemGroup>
 
 </Project>

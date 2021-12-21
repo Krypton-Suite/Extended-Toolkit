@@ -1,4 +1,12 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ */
+#endregion
+
+namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 {
     [DefaultEvent("SelectedColourChanged"), DefaultProperty("Colour")]
     public class ScreenColourPickerDialog : CommonExtendedKryptonForm
@@ -110,7 +118,7 @@
             // 
             // ktxtHexValue
             // 
-            this.ktxtHexValue.Hint = "#000000";
+            this.ktxtHexValue.CueHint.CueHintText = "#000000";
             this.ktxtHexValue.Location = new System.Drawing.Point(240, 233);
             this.ktxtHexValue.MaxLength = 7;
             this.ktxtHexValue.Name = "ktxtHexValue";

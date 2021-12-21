@@ -5,43 +5,83 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-        <LangVersion>preview</LangVersion>
         <OutputType>library</OutputType>
         <RootNamespace>Krypton.Toolkit.Suite.Extended.Theme.Switcher</RootNamespace>
         <AssemblyName>Krypton.Toolkit.Suite.Extended.Theme.Switcher</AssemblyName>
         <UseWindowsForms>true</UseWindowsForms>
         <NeutralLanguage>en</NeutralLanguage>
-        <Configurations>Debug;Release;Canary;Stable</Configurations>
+        <Configurations>Debug;Release;Nightly;Canary;Stable</Configurations>
     </PropertyGroup>
-
-  <!--Generic Navigator import-->
-  <Choose>
-    <When Condition="'$(SolutionName.Endswith(`Dev`))'">
-      <ItemGroup>
-        <PackageReference Include="Krypton.Navigator.Nightly" Version="6.2110.274-alpha" />
-      </ItemGroup>
-    </When>
-    <Otherwise>
-      <ItemGroup>
-        <!--Canary package-->
-        <PackageReference Include="Krypton.Navigator.Canary" Version="6.2111.310-beta" />
-
-        <!--Stable package-->
-        <!--<PackageReference Include="Krypton.Navigator" Version="5.550.2108" />-->
-      </ItemGroup>
-    </Otherwise>
-  </Choose>
 
     <!--Package Data-->
+    <Choose>
+        <When Condition="'$(Configuration)' == 'Canary'">
+            <PropertyGroup>
+                <PackageId>Krypton.Toolkit.Suite.Extended.Theme.Switcher.Canary</PackageId>
+            </PropertyGroup>
+        </When>
+        <Otherwise>
+            <PropertyGroup>
+                <PackageId>Krypton.Toolkit.Suite.Extended.Theme.Switcher</PackageId>
+            </PropertyGroup>
+        </Otherwise>
+    </Choose>
+
     <PropertyGroup>
-        <PackageId>Krypton.Toolkit.Suite.Extended.Theme.Switcher</PackageId>
         <Description>An extension to the Krypton standard toolkit. This package implements an easy-to-use theme switcher.</Description>
     </PropertyGroup>
+
+    <Choose>
+	    <When Condition="'$(Configuration)' == 'Canary'">
+		    <ItemGroup>
+			    <None Include="Package Icons\Canary.png" Link="Canary.png" Pack="true" PackagePath="" />
+		    </ItemGroup>
+
+		    <PropertyGroup>
+			    <PackageIcon>Canary.png</PackageIcon>
+		    </PropertyGroup>
+	    </When>
+	    <Otherwise>
+		    <ItemGroup>
+			    <None Include="Package Icons\Stable.png" Link="Stable.png" Pack="true" PackagePath="" />
+		    </ItemGroup>
+
+		    <PropertyGroup>
+			    <PackageIcon>Stable.png</PackageIcon>
+		    </PropertyGroup>
+	    </Otherwise>
+    </Choose>
+
+    <Choose>
+        <When Condition="'$(Configuration)' == 'Release'">
+            <PropertyGroup>
+                <LangVersion>preview</LangVersion>
+            </PropertyGroup>
+
+            <ItemGroup>
+                <PackageReference Include="Krypton.Toolkit" Version="6.2111.312" />
+
+                <PackageReference Include="Krypton.Navigator" Version="6.2111.312" />
+            </ItemGroup>
+        </When>
+        <Otherwise>
+            <PropertyGroup>
+                <LangVersion>preview</LangVersion>
+            </PropertyGroup>
+
+            <ItemGroup>
+                <PackageReference Include="Krypton.Toolkit.Canary" Version="6.2111.310-beta" />
+
+                <PackageReference Include="Krypton.Navigator.Canary" Version="6.2111.310-beta" />
+            </ItemGroup>
+        </Otherwise>
+    </Choose>
   
     <ItemGroup>
         <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Developer.Utilities\Krypton.Toolkit.Suite.Extended.Developer.Utilities 2022.csproj" />
         <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Settings\Krypton.Toolkit.Suite.Extended.Settings 2022.csproj" />
         <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Tools\Krypton.Toolkit.Suite.Extended.Tools 2022.csproj" />
+        <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Navigator\Krypton.Toolkit.Suite.Extended.Navigator 2022.csproj" />
     </ItemGroup>
 
     <ItemGroup>
@@ -89,10 +129,6 @@
         </Reference>
         <Reference Include="System.Design" Condition="'$(TargetFramework)' == 'net35'" />
         <!--TODO: Need to specify version here-->
-    </ItemGroup>
-
-    <ItemGroup>
-      <PackageReference Update="Krypton.Toolkit.Canary" Version="6.2111.310-beta" />
     </ItemGroup>
     <!--Binary/Documentation Output-->
     <PropertyGroup>

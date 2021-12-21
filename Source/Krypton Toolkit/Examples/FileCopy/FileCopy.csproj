@@ -2,26 +2,23 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0-windows</TargetFramework>
-    <LangVersion>latest</LangVersion>
+    <LangVersion>preview</LangVersion>
     <OutputType>WinExe</OutputType>
     <UseWindowsForms>true</UseWindowsForms>
-    <Configurations>Debug;Release;Canary;Stable</Configurations>
+    <Configurations>Debug;Release;Nightly;Canary;Stable</Configurations>
+    <ApplicationIcon>Stable.ico</ApplicationIcon>
   </PropertyGroup>
-
-  <ItemGroup>
-    <None Remove="Stable.ico" />
-  </ItemGroup>
 
   <ItemGroup>
     <Content Include="Stable.ico" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Krypton.Toolkit.Suite.Extended.File.Copier\Krypton.Toolkit.Suite.Extended.File.Copier 2022.csproj" />
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.2111.310-beta" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Update="Krypton.Toolkit.Canary" Version="6.2111.310-beta" />
+    <ProjectReference Include="..\..\Krypton.Toolkit.Suite.Extended.File.Copier\Krypton.Toolkit.Suite.Extended.File.Copier 2022.csproj" />
   </ItemGroup>
 
 </Project>

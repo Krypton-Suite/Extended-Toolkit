@@ -5,38 +5,73 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-        <LangVersion>preview</LangVersion>
         <OutputType>library</OutputType>
         <RootNamespace>Krypton.Toolkit.Suite.Extended.Fast.Coloured.TextBox</RootNamespace>
         <AssemblyName>Krypton.Toolkit.Suite.Extended.Fast.Coloured.TextBox</AssemblyName>
         <UseWindowsForms>true</UseWindowsForms>
         <NeutralLanguage>en</NeutralLanguage>
-        <Configurations>Debug;Release;Canary;Stable</Configurations>
+        <Configurations>Debug;Release;Nightly;Canary;Stable</Configurations>
     </PropertyGroup>
 
     <!--Package Data-->
+    <Choose>
+        <When Condition="'$(Configuration)' == 'Canary'">
+            <PropertyGroup>
+                <PackageId>Krypton.Toolkit.Suite.Extended.Fast.Coloured.TextBox.Canary</PackageId>
+            </PropertyGroup>
+        </When>
+        <Otherwise>
+            <PropertyGroup>
+                <PackageId>Krypton.Toolkit.Suite.Extended.Fast.Coloured.TextBox</PackageId>
+            </PropertyGroup>
+        </Otherwise>
+    </Choose>
+
     <PropertyGroup>
-        <PackageId>Krypton.Toolkit.Suite.Extended.Fast.Coloured.TextBox</PackageId>
         <Description>An extension to the Krypton standard toolkit. This package holds extensions to the Krypton.Fast.Coloured.TextBox module.</Description>
     </PropertyGroup>
 
-    <!--Krypton Toolkit Import-
     <Choose>
-        <When Condition="'$(SolutionName.Endswith(`Nuget`))'">
-            <ItemGroup>
-                Canary package
-                <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2108.1" />
+	    <When Condition="'$(Configuration)' == 'Canary'">
+		    <ItemGroup>
+			    <None Include="Package Icons\Canary.png" Link="Canary.png" Pack="true" PackagePath="" />
+		    </ItemGroup>
 
-                Stable package
-                <PackageReference Include="Krypton.Toolkit" Version="5.550.2108" />-
+		    <PropertyGroup>
+			    <PackageIcon>Canary.png</PackageIcon>
+		    </PropertyGroup>
+	    </When>
+	    <Otherwise>
+		    <ItemGroup>
+			    <None Include="Package Icons\Stable.png" Link="Stable.png" Pack="true" PackagePath="" />
+		    </ItemGroup>
+
+		    <PropertyGroup>
+			    <PackageIcon>Stable.png</PackageIcon>
+		    </PropertyGroup>
+	    </Otherwise>
+    </Choose>
+
+    <Choose>
+        <When Condition="'$(Configuration)' == 'Release'">
+            <PropertyGroup>
+                <LangVersion>preview</LangVersion>
+            </PropertyGroup>
+
+            <ItemGroup>
+                <PackageReference Include="Krypton.Toolkit" Version="6.2111.312" />
             </ItemGroup>
         </When>
         <Otherwise>
+            <PropertyGroup>
+                <LangVersion>preview</LangVersion>
+            </PropertyGroup>
+
             <ItemGroup>
-                <ProjectReference Include="..\..\..\..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Toolkit\Krypton.Toolkit 2022.csproj" />
+                <PackageReference Include="Krypton.Toolkit.Canary" Version="6.2111.310-beta" />
             </ItemGroup>
         </Otherwise>
-    </Choose>-->
+    </Choose>
 
     <ItemGroup>
         <Reference Include="System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net4'))">
@@ -56,10 +91,6 @@
         </Reference>
         <Reference Include="System.Design" Condition="'$(TargetFramework)' == 'net35'" />
         <!--TODO: Need to specify version here-->
-    </ItemGroup>
-
-    <ItemGroup>
-      <PackageReference Update="Krypton.Toolkit.Canary" Version="6.2111.310-beta" />
     </ItemGroup>
     <!--Binary/Documentation Output-->
     <PropertyGroup>

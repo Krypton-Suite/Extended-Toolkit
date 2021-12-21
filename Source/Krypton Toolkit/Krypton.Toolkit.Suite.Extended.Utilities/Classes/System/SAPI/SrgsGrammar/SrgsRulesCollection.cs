@@ -8,8 +8,6 @@
 
 using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
 using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech;
-using System;
-using System.Collections.ObjectModel;
 
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
 {

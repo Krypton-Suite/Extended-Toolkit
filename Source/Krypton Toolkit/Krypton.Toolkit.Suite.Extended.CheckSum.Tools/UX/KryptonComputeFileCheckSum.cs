@@ -1,4 +1,12 @@
-﻿using Krypton.Toolkit.Suite.Extended.Developer.Utilities;
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ */
+#endregion
+
+using Krypton.Toolkit.Suite.Extended.Developer.Utilities;
 
 namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
 {
@@ -230,7 +238,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             // 
             this.ktxtFilePath.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.ktxtFilePath.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
-            this.ktxtFilePath.CueHint.CueHintText = "Type a file path here...";
+            this.ktxtFilePath.Hint = "Type a file path here...";
             this.ktxtFilePath.Location = new System.Drawing.Point(83, 12);
             this.ktxtFilePath.Name = "ktxtFilePath";
             this.ktxtFilePath.Size = new System.Drawing.Size(574, 23);

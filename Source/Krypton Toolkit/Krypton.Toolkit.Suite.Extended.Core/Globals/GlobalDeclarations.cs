@@ -8,3 +8,11 @@
 
 global using System;
 global using System.Drawing;
+global using Krypton.Toolkit;
+global using EasyScintilla;
+global using Krypton.Ribbon;
+global using Krypton.Toolkit.Suite.Extended.Settings;
+
+global using System.Collections.Generic;
+global using System.Reflection;
+global using System.Windows.Forms;

@@ -7,8 +7,6 @@
 #endregion
 
 using Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser;
-using System;
-using System.Diagnostics;
 
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.GrammarBuilding
 {

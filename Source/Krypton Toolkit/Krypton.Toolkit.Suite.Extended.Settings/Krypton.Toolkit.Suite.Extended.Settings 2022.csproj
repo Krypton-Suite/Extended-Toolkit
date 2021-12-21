@@ -5,44 +5,85 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-    <LangVersion>preview</LangVersion>
     <OutputType>library</OutputType>
     <RootNamespace>Krypton.Toolkit.Suite.Extended.Settings</RootNamespace>
     <AssemblyName>Krypton.Toolkit.Suite.Extended.Settings</AssemblyName>
     <UseWindowsForms>true</UseWindowsForms>
-    <Configurations>Debug;Release;Canary;Stable</Configurations>
+    <Configurations>Debug;Release;Nightly;Canary;Stable</Configurations>
   </PropertyGroup>
 
   <!--Package Data-->
+  <Choose>
+      <When Condition="'$(Configuration)' == 'Canary'">
+          <PropertyGroup>
+              <PackageId>Krypton.Toolkit.Suite.Extended.Settings.Canary</PackageId>
+          </PropertyGroup>
+      </When>
+      <Otherwise>
+          <PropertyGroup>
+              <PackageId>Krypton.Toolkit.Suite.Extended.Settings</PackageId>
+          </PropertyGroup>
+      </Otherwise>
+  </Choose>
+
   <PropertyGroup>
-    <PackageId>Krypton.Toolkit.Suite.Extended.Settings</PackageId>
     <Description>An extension to the Krypton standard toolkit. This package implements additional toolkit settings.</Description>
   </PropertyGroup>
 
-  <!--Krypton Toolkit Import-
-    <Choose>
-        <When Condition="'$(SolutionName.Endswith(`Nuget`))'">
-            <ItemGroup>
-                Canary package
-                <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2108.1" />
+  <Choose>
+	  <When Condition="'$(Configuration)' == 'Canary'">
+		  <ItemGroup>
+			  <None Include="Package Icons\Canary.png" Link="Canary.png" Pack="true" PackagePath="" />
+		  </ItemGroup>
 
-                Stable package
-                <PackageReference Include="Krypton.Toolkit" Version="5.550.2108" />-
-            </ItemGroup>
-        </When>
-        <Otherwise>
-            <ItemGroup>
-                <ProjectReference Include="..\..\..\..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Toolkit\Krypton.Toolkit 2022.csproj" />
-            </ItemGroup>
-        </Otherwise>
-    </Choose>-->
+		  <PropertyGroup>
+			  <PackageIcon>Canary.png</PackageIcon>
+		  </PropertyGroup>
+	  </When>
+	  <Otherwise>
+		  <ItemGroup>
+			  <None Include="Package Icons\Stable.png" Link="Stable.png" Pack="true" PackagePath="" />
+		  </ItemGroup>
+
+		  <PropertyGroup>
+			  <PackageIcon>Stable.png</PackageIcon>
+		  </PropertyGroup>
+	  </Otherwise>
+  </Choose>
+
+  <Choose>
+      <When Condition="'$(Configuration)' == 'Release'">
+          <PropertyGroup>
+              <LangVersion>preview</LangVersion>
+          </PropertyGroup>
+
+          <ItemGroup>
+              <PackageReference Include="Krypton.Toolkit" Version="6.2111.312" />
+          </ItemGroup>
+      </When>
+      <Otherwise>
+          <PropertyGroup>
+              <LangVersion>preview</LangVersion>
+          </PropertyGroup>
+
+          <ItemGroup>
+              <PackageReference Include="Krypton.Toolkit.Canary" Version="6.2111.310-beta" />
+          </ItemGroup>
+      </Otherwise>
+  </Choose>
 
   <!--Binary/Documentation Output-->
   <PropertyGroup>
     <DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Settings\Krypton.Toolkit.Suite.Extended.Settings.xml</DocumentationFile>
     <OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Settings\</OutputPath>
   </PropertyGroup>
+
   <ItemGroup>
+    <Compile Update="Resources\ToolkitSettingsResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ToolkitSettingsResources.resx</DependentUpon>
+    </Compile>
     <Compile Update="Settings\Globals\GlobalBooleanSettings.Designer.cs">
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <AutoGen>True</AutoGen>
@@ -58,10 +99,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>GlobalStringSettings.settings</DependentUpon>
     </Compile>
-    <Compile Update="Settings\Theming\ThemeSettings.Designer.cs">
+    <Compile Update="Settings\Theming\GlobalThemeSettings.Designer.cs">
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <AutoGen>True</AutoGen>
-      <DependentUpon>ThemeSettings.settings</DependentUpon>
+      <DependentUpon>GlobalThemeSettings.settings</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -77,13 +118,26 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>GlobalStringSettings.Designer.cs</LastGenOutput>
     </None>
-    <None Update="Settings\Theming\ThemeSettings.settings">
+    <None Update="Settings\Theming\GlobalThemeSettings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>ThemeSettings.Designer.cs</LastGenOutput>
+      <LastGenOutput>GlobalThemeSettings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
+
   <ItemGroup>
-    <PackageReference Update="Krypton.Toolkit.Canary" Version="6.2111.310-beta" />
+      <PackageReference Include="WindowsAPICodePack" Version="1.1.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Common\Krypton.Toolkit.Suite.Extended.Common 2022.csproj" />
+    <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Global.Utilities\Krypton.Toolkit.Suite.Extended.Global.Utilities 2022.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\ToolkitSettingsResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ToolkitSettingsResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

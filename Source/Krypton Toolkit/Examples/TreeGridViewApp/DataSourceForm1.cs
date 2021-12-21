@@ -1,10 +1,8 @@
 using System;
 using System.Data;
 using System.Drawing;
-using System.Windows.Forms;
 
 using Krypton.Toolkit;
-using Krypton.Toolkit.Suite.Extended.TreeGridView;
 
 namespace TreeGridViewApp
 {

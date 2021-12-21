@@ -31,11 +31,13 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
             var resources = new ComponentResourceManager(typeof(MasterDetailGridViewBase));
             RowHeaderIconList = new ImageList(components)
             {
-                ImageStream = (ImageListStreamer)resources.GetObject("RowHeaderIconList.ImageStream"),
+#pragma warning disable CA1304 // Specify CultureInfo
+                ImageStream = (ImageListStreamer)resources.GetObject(@"RowHeaderIconList.ImageStream"),
+#pragma warning restore CA1304 // Specify CultureInfo
                 TransparentColor = Color.Transparent
             };
-            RowHeaderIconList.Images.SetKeyName(0, "expand.png");
-            RowHeaderIconList.Images.SetKeyName(1, "collapse.png");
+            RowHeaderIconList.Images.SetKeyName(0, @"expand.png");
+            RowHeaderIconList.Images.SetKeyName(1, @"collapse.png");
 
             RowHeaderMouseClick += MasterDetailGridView_RowHeaderMouseClick;
             RowPostPaint += MasterDetailGridView_RowPostPaint;
@@ -57,7 +59,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         public new object DataSource
         {
             get => base.DataSource;
-            private set => throw new AccessViolationException(@"Not allowed to set externally!");
+            private set => throw new NotSupportedException(@"Not allowed to set externally!");
         }
 
         /// <summary>
@@ -107,6 +109,8 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         {
             if (columns != null)
             {
+                RowCurrent.Clear();
+                CollapseRow = true;
                 AutoGenerateColumns = false;
                 Columns.Clear();
                 Columns.AddRange(columns);
@@ -137,6 +141,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
         {
             if (disposing)
             {
+                RowHeaderIconList?.Dispose();
                 RowHeaderMouseClick -= MasterDetailGridView_RowHeaderMouseClick;
                 RowPostPaint -= MasterDetailGridView_RowPostPaint;
                 Scroll -= MasterDetailGridView_Scroll;
@@ -276,7 +281,7 @@ namespace Krypton.Toolkit.Suite.Extended.DataGridView
             newGrid.ForeColor = ForeColor;
             newGrid.Font = Font;
             newGrid.GridColor = GridColor;
-            BorderStyle = BorderStyle;
+            newGrid.BorderStyle = BorderStyle;
             newGrid.CellBorderStyle = CellBorderStyle;
             newGrid.ColumnHeadersBorderStyle = ColumnHeadersBorderStyle;
             newGrid.ColumnHeadersDefaultCellStyle = ColumnHeadersDefaultCellStyle;
