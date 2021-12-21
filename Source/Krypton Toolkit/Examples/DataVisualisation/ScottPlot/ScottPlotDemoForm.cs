@@ -48,5 +48,12 @@ namespace DataVisualisation.ScottPlot
 
             layout.Show();
         }
+
+        private void kbtnLinkedPlots_Click(object sender, EventArgs e)
+        {
+            LinkedPlots linkedPlots = new LinkedPlots();
+
+            linkedPlots.Show();
+        }
     }
 }

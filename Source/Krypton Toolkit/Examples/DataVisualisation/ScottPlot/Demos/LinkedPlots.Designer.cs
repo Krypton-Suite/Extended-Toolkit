@@ -30,10 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LinkedPlots));
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
-            this.kryptonCheckBox1 = new Krypton.Toolkit.KryptonCheckBox();
             this.kryptonTableLayoutPanel1 = new Krypton.Toolkit.KryptonTableLayoutPanel();
             this.formsPlot1 = new Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot.FormsPlot();
             this.formsPlot2 = new Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot.FormsPlot();
+            this.kcbLinkAxes = new Krypton.Toolkit.KryptonCheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             this.kryptonTableLayoutPanel1.SuspendLayout();
@@ -42,22 +42,12 @@
             // kryptonPanel1
             // 
             this.kryptonPanel1.Controls.Add(this.kryptonTableLayoutPanel1);
-            this.kryptonPanel1.Controls.Add(this.kryptonCheckBox1);
+            this.kryptonPanel1.Controls.Add(this.kcbLinkAxes);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel1.Name = "kryptonPanel1";
             this.kryptonPanel1.Size = new System.Drawing.Size(800, 450);
             this.kryptonPanel1.TabIndex = 0;
-            // 
-            // kryptonCheckBox1
-            // 
-            this.kryptonCheckBox1.Checked = true;
-            this.kryptonCheckBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.kryptonCheckBox1.Location = new System.Drawing.Point(13, 13);
-            this.kryptonCheckBox1.Name = "kryptonCheckBox1";
-            this.kryptonCheckBox1.Size = new System.Drawing.Size(127, 20);
-            this.kryptonCheckBox1.TabIndex = 0;
-            this.kryptonCheckBox1.Values.Text = "&Link Axes Together";
             // 
             // kryptonTableLayoutPanel1
             // 
@@ -96,6 +86,16 @@
             this.formsPlot2.Size = new System.Drawing.Size(769, 193);
             this.formsPlot2.TabIndex = 1;
             // 
+            // kcbLinkAxes
+            // 
+            this.kcbLinkAxes.Checked = true;
+            this.kcbLinkAxes.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.kcbLinkAxes.Location = new System.Drawing.Point(13, 13);
+            this.kcbLinkAxes.Name = "kcbLinkAxes";
+            this.kcbLinkAxes.Size = new System.Drawing.Size(127, 20);
+            this.kcbLinkAxes.TabIndex = 0;
+            this.kcbLinkAxes.Values.Text = "&Link Axes Together";
+            // 
             // LinkedPlots
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -118,6 +118,6 @@
         private Krypton.Toolkit.KryptonTableLayoutPanel kryptonTableLayoutPanel1;
         private Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot.FormsPlot formsPlot1;
         private Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot.FormsPlot formsPlot2;
-        private Krypton.Toolkit.KryptonCheckBox kryptonCheckBox1;
+        private Krypton.Toolkit.KryptonCheckBox kcbLinkAxes;
     }
 }
