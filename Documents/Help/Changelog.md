@@ -1,14 +1,15 @@
+=======
+
 ## 2022-01-05 - Build 2201 - January 2022
-* Reimplemented `KryptonMessageBoxExtended`
-* Implemented [#256](https://github.com/Krypton-Suite/Extended-Toolkit/issues/256), `KryptonMessageBox` Message Size needs to be controllable by the developer
-* Updated copyright year from `2021` to `2022`
-* Updated project names from `2021` to `2022`
-* Restructured directory structure to fall into line with how the `Standard-Toolkit` is structured
+* Fix [#268](https://github.com/Krypton-Suite/Extended-Toolkit/issues/268), Crashes using Outlook Grid control
+* Implemented [#271](https://github.com/Krypton-Suite/Extended-Toolkit/issues/271), NuGet Package Information needs to have direct download links
+* Fixed issues where some canary NuGet packages were accidentally uploaded as stable packages
+* Refined build configurations
 * Updated standard toolkit to build `2201`
 
 =======
 
-## 2021-11-08 - Build 2110 - November 2021
+## 2021-12-07 - Build 2112 - December 2021
 * New `Krypton.Toolkit.Suite.Extended.Outlook.Grid` module
 * New `Krypton.Toolkit.Suite.Extended.InputBox` module
 * Fix toast 'Dismiss' button location
@@ -23,7 +24,7 @@
 * Projects now follow the **Standard-Toolkit** naming convention
 * The `ExtendedKryptonMessageBox` now supports a optional checkbox, custom icon and custom button text
 * New `KryptonMessageBoxExtendedManager` to allows the creation of a `KryptonMessageBoxExtended` through the designer
-* New `KryptonDeveloperDebugConsole` feature - allows devs to see exceptions in a window
+* New `KryptonDeveloperDebugConsole` feature - allows developers to see exceptions in a window
 * Updated standard toolkit to build `2111`
 
 =======

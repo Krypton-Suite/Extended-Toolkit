@@ -285,8 +285,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         #region Instance Fields
 
         #region Basic Fields
-        private readonly string _text;
-        private readonly string _caption;
+        private readonly bool _isOptionalCheckBoxChecked;
+        private readonly string _text, _caption;
         private readonly ExtendedMessageBoxButtons _buttons;
         private readonly ExtendedKryptonMessageBoxIcon _kryptonMessageBoxIcon;
 
@@ -299,7 +299,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         #region Extended Fields
 
-        private bool _showUACShieldOnAcceptButton, _showOptionalCheckBox, _isOptionalCheckBoxChecked;
+        private bool _showUACShieldOnAcceptButton, _showOptionalCheckBox;
         private Color _contentMessageColour, _buttonOneBackColourOne, _buttonOneBackColourTwo,
                       _buttonOneTextColourOne, _buttonOneTextColourTwo,
                       _buttonTwoBackColourOne, _buttonTwoBackColourTwo,
