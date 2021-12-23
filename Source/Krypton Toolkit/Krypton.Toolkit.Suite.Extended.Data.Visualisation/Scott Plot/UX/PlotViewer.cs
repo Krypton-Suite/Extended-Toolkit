@@ -45,6 +45,12 @@
         }
         #endregion
 
+        #region Property
+
+        public FormsPlot Plot => fpViewer;
+
+        #endregion
+
         #region Constructor
 
         public PlotViewer(Plot plot, int windowWidth = 600, int windowHeight = 400, string windowTitle = "ScottPlot Viewer")
