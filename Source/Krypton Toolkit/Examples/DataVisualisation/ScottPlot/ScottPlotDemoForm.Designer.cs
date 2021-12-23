@@ -29,17 +29,21 @@
         private void InitializeComponent()
         {
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            this.kbtnLiveIncomingData = new Krypton.Toolkit.KryptonButton();
+            this.kbtnLinkedPlots = new Krypton.Toolkit.KryptonButton();
             this.kbtnLayout = new Krypton.Toolkit.KryptonButton();
             this.kbtnPlotConfiguration = new Krypton.Toolkit.KryptonButton();
             this.kbtnColourMapViewer = new Krypton.Toolkit.KryptonButton();
             this.kbtnAxisLimits = new Krypton.Toolkit.KryptonButton();
-            this.kbtnLinkedPlots = new Krypton.Toolkit.KryptonButton();
+            this.kbtnLiveDataUpdate = new Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(this.kbtnLiveDataUpdate);
+            this.kryptonPanel1.Controls.Add(this.kbtnLiveIncomingData);
             this.kryptonPanel1.Controls.Add(this.kbtnLinkedPlots);
             this.kryptonPanel1.Controls.Add(this.kbtnLayout);
             this.kryptonPanel1.Controls.Add(this.kbtnPlotConfiguration);
@@ -48,8 +52,26 @@
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel1.Name = "kryptonPanel1";
-            this.kryptonPanel1.Size = new System.Drawing.Size(800, 450);
+            this.kryptonPanel1.Size = new System.Drawing.Size(759, 450);
             this.kryptonPanel1.TabIndex = 1;
+            // 
+            // kbtnLiveIncomingData
+            // 
+            this.kbtnLiveIncomingData.Location = new System.Drawing.Point(616, 12);
+            this.kbtnLiveIncomingData.Name = "kbtnLiveIncomingData";
+            this.kbtnLiveIncomingData.Size = new System.Drawing.Size(130, 25);
+            this.kbtnLiveIncomingData.TabIndex = 5;
+            this.kbtnLiveIncomingData.Values.Text = "&Live Incoming Data";
+            this.kbtnLiveIncomingData.Click += new System.EventHandler(this.kbtnLiveIncomingData_Click);
+            // 
+            // kbtnLinkedPlots
+            // 
+            this.kbtnLinkedPlots.Location = new System.Drawing.Point(520, 12);
+            this.kbtnLinkedPlots.Name = "kbtnLinkedPlots";
+            this.kbtnLinkedPlots.Size = new System.Drawing.Size(90, 25);
+            this.kbtnLinkedPlots.TabIndex = 4;
+            this.kbtnLinkedPlots.Values.Text = "L&inked Plots";
+            this.kbtnLinkedPlots.Click += new System.EventHandler(this.kbtnLinkedPlots_Click);
             // 
             // kbtnLayout
             // 
@@ -87,20 +109,20 @@
             this.kbtnAxisLimits.Values.Text = "Axis &Limits";
             this.kbtnAxisLimits.Click += new System.EventHandler(this.kbtnAxisLimits_Click);
             // 
-            // kbtnLinkedPlots
+            // kbtnLiveDataUpdate
             // 
-            this.kbtnLinkedPlots.Location = new System.Drawing.Point(520, 12);
-            this.kbtnLinkedPlots.Name = "kbtnLinkedPlots";
-            this.kbtnLinkedPlots.Size = new System.Drawing.Size(90, 25);
-            this.kbtnLinkedPlots.TabIndex = 4;
-            this.kbtnLinkedPlots.Values.Text = "L&inked Plots";
-            this.kbtnLinkedPlots.Click += new System.EventHandler(this.kbtnLinkedPlots_Click);
+            this.kbtnLiveDataUpdate.Location = new System.Drawing.Point(12, 43);
+            this.kbtnLiveDataUpdate.Name = "kbtnLiveDataUpdate";
+            this.kbtnLiveDataUpdate.Size = new System.Drawing.Size(130, 25);
+            this.kbtnLiveDataUpdate.TabIndex = 6;
+            this.kbtnLiveDataUpdate.Values.Text = "Live &Data Update";
+            this.kbtnLiveDataUpdate.Click += new System.EventHandler(this.kbtnLiveDataUpdate_Click);
             // 
             // ScottPlotDemoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(759, 450);
             this.Controls.Add(this.kryptonPanel1);
             this.Name = "ScottPlotDemoForm";
             this.Text = "DemoForm";
@@ -118,5 +140,7 @@
         private Krypton.Toolkit.KryptonButton kbtnPlotConfiguration;
         private Krypton.Toolkit.KryptonButton kbtnLayout;
         private Krypton.Toolkit.KryptonButton kbtnLinkedPlots;
+        private Krypton.Toolkit.KryptonButton kbtnLiveIncomingData;
+        private Krypton.Toolkit.KryptonButton kbtnLiveDataUpdate;
     }
 }

@@ -55,5 +55,19 @@ namespace DataVisualisation.ScottPlot
 
             linkedPlots.Show();
         }
+
+        private void kbtnLiveIncomingData_Click(object sender, EventArgs e)
+        {
+            LiveDataIncoming liveData = new LiveDataIncoming();
+
+            liveData.Show();
+        }
+
+        private void kbtnLiveDataUpdate_Click(object sender, EventArgs e)
+        {
+            LiveDataUpdate liveDataUpdate = new LiveDataUpdate();
+
+            liveDataUpdate.Show();
+        }
     }
 }

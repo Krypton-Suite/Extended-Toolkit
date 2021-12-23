@@ -14,6 +14,7 @@ echo Deleted the 'Bin' folder
 echo Deleting the main 'obj' directories
 echo Deleting 'Krypton.Toolkit.Suite.Extended.Buttons\obj'
 rd /s /q "Source\Krypton Toolkit\Toolkit\Krypton.Toolkit.Suite.Extended.*\obj"
+rd /s /q "Source\Bin"
 
 if exist build.log ( goto deletebuildfile )
 if exist debug.log ( goto deletedebugfile )
