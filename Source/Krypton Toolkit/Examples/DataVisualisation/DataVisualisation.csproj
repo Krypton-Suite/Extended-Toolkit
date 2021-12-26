@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net48</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ApplicationIcon>Stable.ico</ApplicationIcon>
+    <Configurations>Debug;Release;Nightly;Canary;Stable</Configurations>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="Stable.ico" />
+  </ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\Krypton.Toolkit.Suite.Extended.Data.Visualisation\Krypton.Toolkit.Suite.Extended.Data.Visualisation 2022.csproj" />
+	</ItemGroup>
+
+</Project>

@@ -1,0 +1,140 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows;net6.0-windows</TargetFrameworks>
+	</PropertyGroup>
+
+	<PropertyGroup>
+        <OutputType>library</OutputType>
+        <RootNamespace>Krypton.Toolkit.Suite.Extended.Navigator</RootNamespace>
+        <AssemblyName>Krypton.Toolkit.Suite.Extended.Navigator</AssemblyName>
+        <UseWindowsForms>true</UseWindowsForms>
+        <NeutralLanguage>en</NeutralLanguage>
+        <Configurations>Debug;Release;Nightly;Canary;Stable</Configurations>
+    </PropertyGroup>
+
+    <!--Package Data-->
+    <Choose>
+        <When Condition="'$(Configuration)' == 'Canary'">
+            <PropertyGroup>
+                <PackageId>Krypton.Toolkit.Suite.Extended.Navigator.Canary</PackageId>
+            </PropertyGroup>
+        </When>
+        <Otherwise>
+            <PropertyGroup>
+                <PackageId>Krypton.Toolkit.Suite.Extended.Navigator</PackageId>
+            </PropertyGroup>
+        </Otherwise>
+    </Choose>
+
+    <PropertyGroup>
+        <Description>An extension to the Krypton standard toolkit. This package holds extensions to the Krypton.Navigator module.</Description>
+    </PropertyGroup>
+
+    <Choose>
+	    <When Condition="'$(Configuration)' == 'Canary'">
+		    <ItemGroup>
+			    <None Include="Package Icons\Canary.png" Link="Canary.png" Pack="true" PackagePath="" />
+		    </ItemGroup>
+
+		    <PropertyGroup>
+			    <PackageIcon>Canary.png</PackageIcon>
+		    </PropertyGroup>
+	    </When>
+	    <Otherwise>
+		    <ItemGroup>
+			    <None Include="Package Icons\Stable.png" Link="Stable.png" Pack="true" PackagePath="" />
+		    </ItemGroup>
+
+		    <PropertyGroup>
+			    <PackageIcon>Stable.png</PackageIcon>
+		    </PropertyGroup>
+	    </Otherwise>
+    </Choose>
+
+    <Choose>
+        <When Condition="'$(Configuration)' == 'Release'">
+            <PropertyGroup>
+                <LangVersion>preview</LangVersion>
+            </PropertyGroup>
+
+            <ItemGroup>
+                <PackageReference Include="Krypton.Toolkit" Version="6.2111.312" />
+            </ItemGroup>
+        </When>
+        <Otherwise>
+            <PropertyGroup>
+                <LangVersion>preview</LangVersion>
+            </PropertyGroup>
+
+            <ItemGroup>
+                <PackageReference Include="Krypton.Toolkit.Canary" Version="6.2111.310-beta" />
+            </ItemGroup>
+        </Otherwise>
+    </Choose>
+  
+    <ItemGroup>
+      <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Drawing\Krypton.Toolkit.Suite.Extended.Drawing 2022.csproj" />
+    </ItemGroup>
+
+    <!--Krypton Toolkit Import-
+    <Choose>
+        <When Condition="'$(SolutionName.Endswith(`Nuget`))'">
+            <ItemGroup>
+                Canary package
+                <PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2108.1" />
+
+                Stable package
+                <PackageReference Include="Krypton.Toolkit" Version="5.550.2108" />-
+            </ItemGroup>
+        </When>
+        <Otherwise>
+            <ItemGroup>
+                <ProjectReference Include="..\..\..\..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Toolkit\Krypton.Toolkit 2022.csproj" />
+            </ItemGroup>
+        </Otherwise>
+    </Choose>-->
+
+    <ItemGroup>
+        <Reference Include="System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net4'))">
+            <SpecificVersion>True</SpecificVersion>
+            <Version>4.0.0.0</Version>
+            <TreatAsUsed>True</TreatAsUsed>
+        </Reference>
+        <Reference Include="System.Design, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net5'))">
+            <SpecificVersion>True</SpecificVersion>
+            <Version>5.0.0.0</Version>
+            <TreatAsUsed>True</TreatAsUsed>
+        </Reference>
+        <Reference Include="System.Design, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net6'))">
+            <SpecificVersion>True</SpecificVersion>
+            <Version>6.0.0.0</Version>
+            <TreatAsUsed>True</TreatAsUsed>
+        </Reference>
+        <Reference Include="System.Design" Condition="'$(TargetFramework)' == 'net35'" />
+        <!--TODO: Need to specify version here-->
+    </ItemGroup>
+    <!--Binary/Documentation Output-->
+    <PropertyGroup>
+        <DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Navigator\Krypton.Toolkit.Suite.Extended.Navigator.xml</DocumentationFile>
+        <OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Navigator\</OutputPath>
+    </PropertyGroup>
+    <ItemGroup>
+        <Reference Include="Microsoft.VisualBasic" />
+    </ItemGroup>
+  
+    <ItemGroup>
+        <Compile Update="Properties\Resources.Designer.cs">
+            <DesignTime>True</DesignTime>
+            <AutoGen>True</AutoGen>
+            <DependentUpon>Resources.resx</DependentUpon>
+        </Compile>
+    </ItemGroup>
+    <ItemGroup>
+        <EmbeddedResource Update="Properties\Resources.resx">
+            <Generator>ResXFileCodeGenerator</Generator>
+            <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+        </EmbeddedResource>
+    </ItemGroup>
+
+</Project>

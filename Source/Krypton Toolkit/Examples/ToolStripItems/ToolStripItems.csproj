@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net48</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <Configurations>Debug;Release;Nightly;Canary;Stable</Configurations>
+    <ApplicationIcon>Stable.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="Stable.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.2111.310-beta" />
+  </ItemGroup>
+
+</Project>
