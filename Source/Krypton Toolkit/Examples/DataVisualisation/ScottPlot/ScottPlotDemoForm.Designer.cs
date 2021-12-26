@@ -29,19 +29,25 @@
         private void InitializeComponent()
         {
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            this.kbtnMultiAxisLock = new Krypton.Toolkit.KryptonButton();
+            this.kbtnMouseTracker = new Krypton.Toolkit.KryptonButton();
+            this.kbtnLiveDataUpdate = new Krypton.Toolkit.KryptonButton();
             this.kbtnLiveIncomingData = new Krypton.Toolkit.KryptonButton();
             this.kbtnLinkedPlots = new Krypton.Toolkit.KryptonButton();
             this.kbtnLayout = new Krypton.Toolkit.KryptonButton();
             this.kbtnPlotConfiguration = new Krypton.Toolkit.KryptonButton();
             this.kbtnColourMapViewer = new Krypton.Toolkit.KryptonButton();
             this.kbtnAxisLimits = new Krypton.Toolkit.KryptonButton();
-            this.kbtnLiveDataUpdate = new Krypton.Toolkit.KryptonButton();
+            this.kbtnPlotsInScrollViewer = new Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(this.kbtnPlotsInScrollViewer);
+            this.kryptonPanel1.Controls.Add(this.kbtnMultiAxisLock);
+            this.kryptonPanel1.Controls.Add(this.kbtnMouseTracker);
             this.kryptonPanel1.Controls.Add(this.kbtnLiveDataUpdate);
             this.kryptonPanel1.Controls.Add(this.kbtnLiveIncomingData);
             this.kryptonPanel1.Controls.Add(this.kbtnLinkedPlots);
@@ -54,6 +60,33 @@
             this.kryptonPanel1.Name = "kryptonPanel1";
             this.kryptonPanel1.Size = new System.Drawing.Size(759, 450);
             this.kryptonPanel1.TabIndex = 1;
+            // 
+            // kbtnMultiAxisLock
+            // 
+            this.kbtnMultiAxisLock.Location = new System.Drawing.Point(284, 43);
+            this.kbtnMultiAxisLock.Name = "kbtnMultiAxisLock";
+            this.kbtnMultiAxisLock.Size = new System.Drawing.Size(130, 25);
+            this.kbtnMultiAxisLock.TabIndex = 8;
+            this.kbtnMultiAxisLock.Values.Text = "Multi &Axis Lock";
+            this.kbtnMultiAxisLock.Click += new System.EventHandler(this.kbtnMultiAxisLock_Click);
+            // 
+            // kbtnMouseTracker
+            // 
+            this.kbtnMouseTracker.Location = new System.Drawing.Point(148, 43);
+            this.kbtnMouseTracker.Name = "kbtnMouseTracker";
+            this.kbtnMouseTracker.Size = new System.Drawing.Size(130, 25);
+            this.kbtnMouseTracker.TabIndex = 7;
+            this.kbtnMouseTracker.Values.Text = "&Mouse Tracker";
+            this.kbtnMouseTracker.Click += new System.EventHandler(this.kbtnMouseTracker_Click);
+            // 
+            // kbtnLiveDataUpdate
+            // 
+            this.kbtnLiveDataUpdate.Location = new System.Drawing.Point(12, 43);
+            this.kbtnLiveDataUpdate.Name = "kbtnLiveDataUpdate";
+            this.kbtnLiveDataUpdate.Size = new System.Drawing.Size(130, 25);
+            this.kbtnLiveDataUpdate.TabIndex = 6;
+            this.kbtnLiveDataUpdate.Values.Text = "Live &Data Update";
+            this.kbtnLiveDataUpdate.Click += new System.EventHandler(this.kbtnLiveDataUpdate_Click);
             // 
             // kbtnLiveIncomingData
             // 
@@ -109,14 +142,14 @@
             this.kbtnAxisLimits.Values.Text = "Axis &Limits";
             this.kbtnAxisLimits.Click += new System.EventHandler(this.kbtnAxisLimits_Click);
             // 
-            // kbtnLiveDataUpdate
+            // kbtnPlotsInScrollViewer
             // 
-            this.kbtnLiveDataUpdate.Location = new System.Drawing.Point(12, 43);
-            this.kbtnLiveDataUpdate.Name = "kbtnLiveDataUpdate";
-            this.kbtnLiveDataUpdate.Size = new System.Drawing.Size(130, 25);
-            this.kbtnLiveDataUpdate.TabIndex = 6;
-            this.kbtnLiveDataUpdate.Values.Text = "Live &Data Update";
-            this.kbtnLiveDataUpdate.Click += new System.EventHandler(this.kbtnLiveDataUpdate_Click);
+            this.kbtnPlotsInScrollViewer.Location = new System.Drawing.Point(420, 43);
+            this.kbtnPlotsInScrollViewer.Name = "kbtnPlotsInScrollViewer";
+            this.kbtnPlotsInScrollViewer.Size = new System.Drawing.Size(130, 25);
+            this.kbtnPlotsInScrollViewer.TabIndex = 9;
+            this.kbtnPlotsInScrollViewer.Values.Text = "Plots in &Scroll Viewer";
+            this.kbtnPlotsInScrollViewer.Click += new System.EventHandler(this.kbtnPlotsInScrollViewer_Click);
             // 
             // ScottPlotDemoForm
             // 
@@ -142,5 +175,8 @@
         private Krypton.Toolkit.KryptonButton kbtnLinkedPlots;
         private Krypton.Toolkit.KryptonButton kbtnLiveIncomingData;
         private Krypton.Toolkit.KryptonButton kbtnLiveDataUpdate;
+        private Krypton.Toolkit.KryptonButton kbtnMouseTracker;
+        private Krypton.Toolkit.KryptonButton kbtnMultiAxisLock;
+        private Krypton.Toolkit.KryptonButton kbtnPlotsInScrollViewer;
     }
 }

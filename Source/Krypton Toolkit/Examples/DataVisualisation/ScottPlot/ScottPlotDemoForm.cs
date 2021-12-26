@@ -69,5 +69,26 @@ namespace DataVisualisation.ScottPlot
 
             liveDataUpdate.Show();
         }
+
+        private void kbtnMouseTracker_Click(object sender, EventArgs e)
+        {
+            MouseTracker mouseTracker = new MouseTracker();
+
+            mouseTracker.Show();
+        }
+
+        private void kbtnMultiAxisLock_Click(object sender, EventArgs e)
+        {
+            MultiAxisLock multiAxisLock = new MultiAxisLock();
+
+            multiAxisLock.Show();
+        }
+
+        private void kbtnPlotsInScrollViewer_Click(object sender, EventArgs e)
+        {
+            PlotsInScrollViewer plotsInScrollViewer = new PlotsInScrollViewer();
+
+            plotsInScrollViewer.Show();
+        }
     }
 }
