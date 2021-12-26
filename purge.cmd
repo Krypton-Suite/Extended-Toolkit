@@ -30,7 +30,6 @@ goto restorepackages
 echo Deleting the 'debug.log' file
 del /f debug.log
 echo Deleted the 'debug.log' file
-goto restorepackages
 
 :deletepackagerestorefile
 echo Deleting the 'package-restore.log' file
