@@ -32,7 +32,7 @@ namespace DataVisualisation.ScottPlot.Demos
         private void UpdatePlot()
         {
             var style = (IStyle)klbStyles.SelectedItem;
-            var palette = (Palette)klbPalettes.SelectedItem;
+            var palette = (ScottPlotPalette)klbPalettes.SelectedItem;
 
             if (style is null || palette is null)
                 return;

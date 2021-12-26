@@ -36,7 +36,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public readonly ErrorMessage ErrorMessage = new ErrorMessage();
         public readonly Legend CornerLegend = new Legend();
         public readonly ZoomRectangle ZoomRectangle = new ZoomRectangle();
-        public Drawing.Palette PlottablePalette = Palette.Category10;
+        public ScottPlotPalette PlottablePalette = Palette.Category10;
 
         /// <summary>
         /// List of all axes used in this plot.

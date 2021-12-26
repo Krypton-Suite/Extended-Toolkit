@@ -90,5 +90,47 @@ namespace DataVisualisation.ScottPlot
 
             plotsInScrollViewer.Show();
         }
+
+        private void kbtnPlotViewer_Click(object sender, EventArgs e)
+        {
+            PlotViewerDemo plotViewer = new PlotViewerDemo();
+
+            plotViewer.Show();
+        }
+
+        private void kbtnRightClickMenu_Click(object sender, EventArgs e)
+        {
+            RightClickMenu rightClickMenu = new RightClickMenu();
+
+            rightClickMenu.Show();
+        }
+
+        private void kbtnShowValueOnHover_Click(object sender, EventArgs e)
+        {
+            ShowValueOnHover2 showValueOnHover = new ShowValueOnHover2();
+
+            showValueOnHover.Show();
+        }
+
+        private void kbtnStyles_Click(object sender, EventArgs e)
+        {
+            Styles styles = new Styles();
+
+            styles.Show();
+        }
+
+        private void kbtnToggleVisibility_Click(object sender, EventArgs e)
+        {
+            ToggleVisibility toggleVisibility = new ToggleVisibility();
+
+            toggleVisibility.Show();
+        }
+
+        private void kbtnTransparentBackground_Click(object sender, EventArgs e)
+        {
+            TransparentBackground transparentBackground = new TransparentBackground();
+
+            transparentBackground.Show();
+        }
     }
 }

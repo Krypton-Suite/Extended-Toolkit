@@ -11,36 +11,36 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
     /* This module will be expanded in ScottPlot 5 */
     public static class Palette
     {
-        public static ScottPlot.Drawing.Palette Amber => new(new Amber());
-        public static ScottPlot.Drawing.Palette Aurora => new(new Aurora());
-        public static ScottPlot.Drawing.Palette Category10 => new(new Category10());
-        public static ScottPlot.Drawing.Palette Category20 => new(new Category20());
-        public static ScottPlot.Drawing.Palette ColorblindFriendly => new(new ColourBlindFriendly());
-        public static ScottPlot.Drawing.Palette Dark => new(new Dark());
-        public static ScottPlot.Drawing.Palette DarkPastel => new(new DarkPastel());
-        public static ScottPlot.Drawing.Palette Frost => new(new Frost());
-        public static ScottPlot.Drawing.Palette Microcharts => new(new Microcharts());
-        public static ScottPlot.Drawing.Palette Nero => new(new Nero());
-        public static ScottPlot.Drawing.Palette Nord => new(new Nord());
-        public static ScottPlot.Drawing.Palette OneHalf => new(new OneHalf());
-        public static ScottPlot.Drawing.Palette OneHalfDark => new(new OneHalfDark());
-        public static ScottPlot.Drawing.Palette PolarNight => new(new PolarNight());
-        public static ScottPlot.Drawing.Palette Redness => new(new Redness());
-        public static ScottPlot.Drawing.Palette SnowStorm => new(new Snowstorm());
-        public static ScottPlot.Drawing.Palette Tsitsulin => new(new Tsitsulin());
+        public static ScottPlotPalette Amber => new(new Amber());
+        public static ScottPlotPalette Aurora => new(new Aurora());
+        public static ScottPlotPalette Category10 => new(new Category10());
+        public static ScottPlotPalette Category20 => new(new Category20());
+        public static ScottPlotPalette ColorblindFriendly => new(new ColourBlindFriendly());
+        public static ScottPlotPalette Dark => new(new Dark());
+        public static ScottPlotPalette DarkPastel => new(new DarkPastel());
+        public static ScottPlotPalette Frost => new(new Frost());
+        public static ScottPlotPalette Microcharts => new(new Microcharts());
+        public static ScottPlotPalette Nero => new(new Nero());
+        public static ScottPlotPalette Nord => new(new Nord());
+        public static ScottPlotPalette OneHalf => new(new OneHalf());
+        public static ScottPlotPalette OneHalfDark => new(new OneHalfDark());
+        public static ScottPlotPalette PolarNight => new(new PolarNight());
+        public static ScottPlotPalette Redness => new(new Redness());
+        public static ScottPlotPalette SnowStorm => new(new Snowstorm());
+        public static ScottPlotPalette Tsitsulin => new(new Tsitsulin());
 
         /// <summary>
         /// Create a new color palette from an array of HTML colors
         /// </summary>
-        public static ScottPlot.Drawing.Palette FromHtmlColors(string[] htmlColors)
+        public static ScottPlotPalette FromHtmlColors(string[] htmlColors)
         {
-            return new ScottPlot.Drawing.Palette(htmlColors);
+            return new ScottPlotPalette(htmlColors);
         }
 
         /// <summary>
         /// Return an array containing every available style
         /// </summary>
-        public static ScottPlot.Drawing.Palette[] GetPalettes()
+        public static ScottPlotPalette[] GetPalettes()
         {
             return Assembly.GetExecutingAssembly()
                 .GetTypes()
@@ -48,7 +48,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 .Where(x => !x.IsAbstract)
                 .Where(x => x.GetInterfaces().Contains(typeof(IPalette)))
                 .Select(x => (IPalette)FormatterServices.GetUninitializedObject(x))
-                .Select(x => new Drawing.Palette(x))
+                .Select(x => new ScottPlotPalette(x))
                 .Where(x => x.Count() > 0)
                 .ToArray();
         }

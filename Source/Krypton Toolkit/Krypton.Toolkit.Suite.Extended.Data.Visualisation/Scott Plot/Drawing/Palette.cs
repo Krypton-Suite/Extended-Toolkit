@@ -6,39 +6,39 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot.Drawing
+namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
     /* This module will be retired in ScottPlot 5 in favor of ScottPlot.Palette */
-    public class Palette
+    public class ScottPlotPalette
     {
         /* These properties have been included for backwards compatibility.
          * They are named identical to members of the old enumeration with the same name as this class.
          * This list does not have to be expanded as new palettes are added.
          */
-        public static Palette Aurora => new(new Aurora());
-        public static Palette Category10 => new(new Category10());
-        public static Palette Category20 => new(new Category20());
-        public static Palette ColorblindFriendly => new(new ColourBlindFriendly());
-        public static Palette Dark => new(new Dark());
-        public static Palette DarkPastel => new(new DarkPastel());
-        public static Palette Frost => new(new Frost());
-        public static Palette Microcharts => new(new Microcharts());
-        public static Palette Nord => new(new Nord());
-        public static Palette OneHalf => new(new OneHalf());
-        public static Palette OneHalfDark => new(new OneHalfDark());
-        public static Palette PolarNight => new(new PolarNight());
-        public static Palette SnowStorm => new(new Snowstorm());
+        public static ScottPlotPalette Aurora => new(new Aurora());
+        public static ScottPlotPalette Category10 => new(new Category10());
+        public static ScottPlotPalette Category20 => new(new Category20());
+        public static ScottPlotPalette ColorblindFriendly => new(new ColourBlindFriendly());
+        public static ScottPlotPalette Dark => new(new Dark());
+        public static ScottPlotPalette DarkPastel => new(new DarkPastel());
+        public static ScottPlotPalette Frost => new(new Frost());
+        public static ScottPlotPalette Microcharts => new(new Microcharts());
+        public static ScottPlotPalette Nord => new(new Nord());
+        public static ScottPlotPalette OneHalf => new(new OneHalf());
+        public static ScottPlotPalette OneHalfDark => new(new OneHalfDark());
+        public static ScottPlotPalette PolarNight => new(new PolarNight());
+        public static ScottPlotPalette SnowStorm => new(new Snowstorm());
 
         private readonly IPalette cset;
         public readonly string Name;
 
-        public Palette(IPalette colorset)
+        public ScottPlotPalette(IPalette colorset)
         {
             cset = colorset ?? new Category10();
             Name = cset.GetType().Name;
         }
 
-        public Palette(string[] htmlColors, string name = "Custom")
+        public ScottPlotPalette(string[] htmlColors, string name = "Custom")
         {
             cset = new Custom(htmlColors);
             Name = name;
