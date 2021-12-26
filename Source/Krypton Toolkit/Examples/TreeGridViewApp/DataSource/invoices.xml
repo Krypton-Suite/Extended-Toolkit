@@ -1,0 +1,333 @@
+<?xml version="1.0" standalone="yes"?>
+<DocumentElement>
+  <invoice>
+    <CustomerID>VINET</CustomerID>
+    <CustomerName>Vins et alcools Chevalier</CustomerName>
+    <Address>59 rue de l'Abbaye</Address>
+    <City>Reims</City>
+    <Country>France</Country>
+    <OrderDate>7/4/1996</OrderDate>
+    <ProductName>Queso Cabrales</ProductName>
+    <Price>168</Price>
+  </invoice>
+  <invoice>
+    <CustomerID>VINET</CustomerID>
+    <CustomerName>Vins et alcools Chevalier</CustomerName>
+    <Address>59 rue de l'Abbaye</Address>
+    <City>Reims</City>
+    <Country>France</Country>
+    <OrderDate>7/4/1996</OrderDate>
+    <ProductName>Singaporean Hokkien Fried Mee</ProductName>
+    <Price>98</Price>
+  </invoice>
+  <invoice>
+    <CustomerID>VINET</CustomerID>
+    <CustomerName>Vins et alcools Chevalier</CustomerName>
+    <Address>59 rue de l'Abbaye</Address>
+    <City>Reims</City>
+    <Country>France</Country>
+    <OrderDate>7/4/1996</OrderDate>
+    <ProductName>Mozzarella di Giovanni</ProductName>
+    <Price>174</Price>
+  </invoice>
+  <invoice>
+    <CustomerID>TOMSP</CustomerID>
+    <CustomerName>Toms Spezialitten</CustomerName>
+    <Address>Luisenstr. 48</Address>
+    <City>Mnster</City>
+    <Country>Germany</Country>
+    <OrderDate>7/5/1996</OrderDate>
+    <ProductName>Tofu</ProductName>
+    <Price>167.4</Price>
+  </invoice>
+  <invoice>
+    <CustomerID>TOMSP</CustomerID>
+    <CustomerName>Toms Spezialitten</CustomerName>
+    <Address>Luisenstr. 48</Address>
+    <City>Mnster</City>
+    <Country>Germany</Country>
+    <OrderDate>7/5/1996</OrderDate>
+    <ProductName>Manjimup Dried Apples</ProductName>
+    <Price>1696</Price>
+  </invoice>
+  <invoice>
+    <CustomerID>HANAR</CustomerID>
+    <CustomerName>Hanari Carnes</CustomerName>
+    <Address>"Rua do Pao, 67"</Address>
+    <City>Rio de Janeiro</City>
+    <Country>Brazil</Country>
+    <OrderDate>7/8/1996</OrderDate>
+    <ProductName>Tofu</ProductName>
+    <Price>77</Price>
+  </invoice>
+  <invoice>
+    <CustomerID>HANAR</CustomerID>
+    <CustomerName>Hanari Carnes</CustomerName>
+    <Address>"Rua do Pao, 67"</Address>
+    <City>Rio de Janeiro</City>
+    <Country>Brazil</Country>
+    <OrderDate>7/8/1996</OrderDate>
+    <ProductName>Manjimup Dried Apples</ProductName>
+    <Price>1261.4</Price>
+  </invoice>
+  <invoice>
+    <CustomerID>HANAR</CustomerID>
+    <CustomerName>Hanari Carnes</CustomerName>
+    <Address>"Rua do Pao, 67"</Address>
+    <City>Rio de Janeiro</City>
+    <Country>Brazil</Country>
+    <OrderDate>7/8/1996</OrderDate>
+    <ProductName>Louisiana Fiery Hot Pepper Sauce</ProductName>
+    <Price>214.2</Price>
+  </invoice>
+  <invoice>
+    <CustomerID>VICTE</CustomerID>
+    <CustomerName>Victuailles en stock</CustomerName>
+    <Address>"2, rue du Commerce"</Address>
+    <City>Lyon</City>
+    <Country>France</Country>
+    <OrderDate>7/8/1996</OrderDate>
+    <ProductName>Gustaf's Knckebrd</ProductName>
+    <Price>95.76</Price>
+  </invoice>
+  <invoice>
+    <CustomerID>VICTE</CustomerID>
+    <CustomerName>Victuailles en stock</CustomerName>
+    <Address>"2, rue du Commerce"</Address>
+    <City>Lyon</City>
+    <Country>France</Country>
+    <OrderDate>7/8/1996</OrderDate>
+    <ProductName>Ravioli Angelo</ProductName>
+    <Price>222.3</Price>
+  </invoice>
+  <invoice>
+    <CustomerID>VICTE</CustomerID>
+    <CustomerName>Victuailles en stock</CustomerName>
+    <Address>"2, rue du Commerce"</Address>
+    <City>Lyon</City>
+    <Country>France</Country>
+    <OrderDate>7/8/1996</OrderDate>
+    <ProductName>Louisiana Fiery Hot Pepper Sauce</ProductName>
+    <Price>336</Price>
+  </invoice>
+  <invoice>
+    <CustomerID>SUPRD</CustomerID>
+    <CustomerName>Suprmes dlices</CustomerName>
+    <Address>"Boulevard Tirou, 255"</Address>
+    <City>Charleroi</City>
+    <Country>Belgium</Country>
+    <OrderDate>7/9/1996</OrderDate>
+    <ProductName>Sir Rodney's Marmalade</ProductName>
+    <Price>2462.4</Price>
+  </invoice>
+  <invoice>
+    <CustomerID>SUPRD</CustomerID>
+    <CustomerName>Suprmes dlices</CustomerName>
+    <Address>"Boulevard Tirou, 255"</Address>
+    <City>Charleroi</City>
+    <Country>Belgium</Country>
+    <OrderDate>7/9/1996</OrderDate>
+    <ProductName>Geitost</ProductName>
+    <Price>47.5</Price>
+  </invoice>
+  <invoice>
+    <CustomerID>SUPRD</CustomerID>
+    <CustomerName>Suprmes dlices</CustomerName>
+    <Address>"Boulevard Tirou, 255"</Address>
+    <City>Charleroi</City>
+    <Country>Belgium</Country>
+    <OrderDate>7/9/1996</OrderDate>
+    <ProductName>Camembert Pierrot</ProductName>
+    <Price>1088</Price>
+  </invoice>
+  <invoice>
+    <CustomerID>HANAR</CustomerID>
+    <CustomerName>Hanari Carnes</CustomerName>
+    <Address>"Rua do Pao, 67"</Address>
+    <City>Rio de Janeiro</City>
+    <Country>Brazil</Country>
+    <OrderDate>7/10/1996</OrderDate>
+    <ProductName>Gorgonzola Telino</ProductName>
+    <Price>200</Price>
+  </invoice>
+  <invoice>
+    <CustomerID>HANAR</CustomerID>
+    <CustomerName>Hanari Carnes</CustomerName>
+    <Address>"Rua do Pao, 67"</Address>
+    <City>Rio de Janeiro</City>
+    <Country>Brazil</Country>
+    <OrderDate>7/10/1996</OrderDate>
+    <ProductName>Chartreuse verte</ProductName>
+    <Price>604.8</Price>
+  </invoice>
+  <invoice>
+    <CustomerID>HANAR</CustomerID>
+    <CustomerName>Hanari Carnes</CustomerName>
+    <Address>"Rua do Pao, 67"</Address>
+    <City>Rio de Janeiro</City>
+    <Country>Brazil</Country>
+    <OrderDate>7/10/1996</OrderDate>
+    <ProductName>Maxilaku</ProductName>
+    <Price>640</Price>
+  </invoice>
+  <invoice>
+    <CustomerID>CHOPS</CustomerID>
+    <CustomerName>Chop-suey Chinese</CustomerName>
+    <Address>Hauptstr. 29</Address>
+    <City>Bern</City>
+    <Country>Switzerland</Country>
+    <OrderDate>7/11/1996</OrderDate>
+    <ProductName>Guaran Fantstica</ProductName>
+    <Price>45.9</Price>
+  </invoice>
+  <invoice>
+    <CustomerID>CHOPS</CustomerID>
+    <CustomerName>Chop-suey Chinese</CustomerName>
+    <Address>Hauptstr. 29</Address>
+    <City>Bern</City>
+    <Country>Switzerland</Country>
+    <OrderDate>7/11/1996</OrderDate>
+    <ProductName>Pt chinois</ProductName>
+    <Price>342.72</Price>
+  </invoice>
+  <invoice>
+    <CustomerID>CHOPS</CustomerID>
+    <CustomerName>Chop-suey Chinese</CustomerName>
+    <Address>Hauptstr. 29</Address>
+    <City>Bern</City>
+    <Country>Switzerland</Country>
+    <OrderDate>7/11/1996</OrderDate>
+    <ProductName>Longlife Tofu</ProductName>
+    <Price>168</Price>
+  </invoice>
+  <invoice>
+    <CustomerID>RICSU</CustomerID>
+    <CustomerName>Richter Supermarkt</CustomerName>
+    <Address>Grenzacherweg 237</Address>
+    <City>Genve</City>
+    <Country>Switzerland</Country>
+    <OrderDate>7/12/1996</OrderDate>
+    <ProductName>Chang</ProductName>
+    <Price>304</Price>
+  </invoice>
+  <invoice>
+    <CustomerID>RICSU</CustomerID>
+    <CustomerName>Richter Supermarkt</CustomerName>
+    <Address>Grenzacherweg 237</Address>
+    <City>Genve</City>
+    <Country>Switzerland</Country>
+    <OrderDate>7/12/1996</OrderDate>
+    <ProductName>Pavlova</ProductName>
+    <Price>486.5</Price>
+  </invoice>
+  <invoice>
+    <CustomerID>RICSU</CustomerID>
+    <CustomerName>Richter Supermarkt</CustomerName>
+    <Address>Grenzacherweg 237</Address>
+    <City>Genve</City>
+    <Country>Switzerland</Country>
+    <OrderDate>7/12/1996</OrderDate>
+    <ProductName>Inlagd Sill</ProductName>
+    <Price>380</Price>
+  </invoice>
+  <invoice>
+    <CustomerID>RICSU</CustomerID>
+    <CustomerName>Richter Supermarkt</CustomerName>
+    <Address>Grenzacherweg 237</Address>
+    <City>Genve</City>
+    <Country>Switzerland</Country>
+    <OrderDate>7/12/1996</OrderDate>
+    <ProductName>Raclette Courdavault</ProductName>
+    <Price>1320</Price>
+  </invoice>
+  <invoice>
+    <CustomerID>WELLI</CustomerID>
+    <CustomerName>Wellington Importadora</CustomerName>
+    <Address>"Rua do Mercado, 12"</Address>
+    <City>Resende</City>
+    <Country>Brazil</Country>
+    <OrderDate>7/15/1996</OrderDate>
+    <ProductName>Perth Pasties</ProductName>
+    <Price>393</Price>
+  </invoice>
+  <invoice>
+    <CustomerID>HILAA</CustomerID>
+    <CustomerName>HILARION-Abastos</CustomerName>
+    <Address>Carrera 22 con Ave. Carlos Soublette #8-35</Address>
+    <City>San Cristbal</City>
+    <Country>Venezuela</Country>
+    <OrderDate>7/16/1996</OrderDate>
+    <ProductName>Schoggi Schokolade</ProductName>
+    <Price>877.5</Price>
+  </invoice>
+  <invoice>
+    <CustomerID>HILAA</CustomerID>
+    <CustomerName>HILARION-Abastos</CustomerName>
+    <Address>Carrera 22 con Ave. Carlos Soublette #8-35</Address>
+    <City>San Cristbal</City>
+    <Country>Venezuela</Country>
+    <OrderDate>7/16/1996</OrderDate>
+    <ProductName>Chartreuse verte</ProductName>
+    <Price>86.4</Price>
+  </invoice>
+  <invoice>
+    <CustomerID>HILAA</CustomerID>
+    <CustomerName>HILARION-Abastos</CustomerName>
+    <Address>Carrera 22 con Ave. Carlos Soublette #8-35</Address>
+    <City>San Cristbal</City>
+    <Country>Venezuela</Country>
+    <OrderDate>7/16/1996</OrderDate>
+    <ProductName>Original Frankfurter grne Soe</ProductName>
+    <Price>156</Price>
+  </invoice>
+  <invoice>
+    <CustomerID>ERNSH</CustomerID>
+    <CustomerName>Ernst Handel</CustomerName>
+    <Address>Kirchgasse 6</Address>
+    <City>Graz</City>
+    <Country>Austria</Country>
+    <OrderDate>7/17/1996</OrderDate>
+    <ProductName>Chang</ProductName>
+    <Price>608</Price>
+  </invoice>
+  <invoice>
+    <CustomerID>ERNSH</CustomerID>
+    <CustomerName>Ernst Handel</CustomerName>
+    <Address>Kirchgasse 6</Address>
+    <City>Graz</City>
+    <Country>Austria</Country>
+    <OrderDate>7/17/1996</OrderDate>
+    <ProductName>Chef Anton's Gumbo Mix</ProductName>
+    <Price>884</Price>
+  </invoice>
+  <invoice>
+    <CustomerID>ERNSH</CustomerID>
+    <CustomerName>Ernst Handel</CustomerName>
+    <Address>Kirchgasse 6</Address>
+    <City>Graz</City>
+    <Country>Austria</Country>
+    <OrderDate>7/17/1996</OrderDate>
+    <ProductName>Mascarpone Fabioli</ProductName>
+    <Price>122.88</Price>
+  </invoice>
+  <invoice>
+    <CustomerID>CENTC</CustomerID>
+    <CustomerName>Centro comercial Moctezuma</CustomerName>
+    <Address>Sierras de Granada 9993</Address>
+    <City>Mxico D.F.</City>
+    <Country>Mexico</Country>
+    <OrderDate>7/18/1996</OrderDate>
+    <ProductName>Sir Rodney's Scones</ProductName>
+    <Price>80</Price>
+  </invoice>
+  <invoice>
+    <CustomerID>CENTC</CustomerID>
+    <CustomerName>Centro comercial Moctezuma</CustomerName>
+    <Address>Sierras de Granada 9993</Address>
+    <City>Mxico D.F.</City>
+    <Country>Mexico</Country>
+    <OrderDate>7/18/1996</OrderDate>
+    <ProductName>Gravad lax</ProductName>
+    <Price>20.8</Price>
+  </invoice>
+</DocumentElement>

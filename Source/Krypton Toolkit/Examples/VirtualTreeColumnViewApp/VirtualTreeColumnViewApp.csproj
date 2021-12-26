@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+
+    <PropertyGroup>
+        <!--<TargetFramework>net5.0-windows</TargetFramework>-->
+        <TargetFramework>net48</TargetFramework>
+        <UseWindowsForms>true</UseWindowsForms>
+        <LangVersion>preview</LangVersion>
+        <OutputType>WinExe</OutputType>
+        <Configurations>Debug;Release;Nightly;Canary;Stable</Configurations>
+        <ApplicationManifest>app.manifest</ApplicationManifest>
+    </PropertyGroup>
+
+
+    <ItemGroup>
+      <PackageReference Include="FontAwesome.Sharp" Version="5.15.3" />
+      <PackageReference Include="Krypton.Toolkit.Canary" Version="6.2111.310-beta" />
+    </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView\Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView 2022.csproj" />
+  </ItemGroup>
+
+</Project>

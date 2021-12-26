@@ -1,0 +1,60 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows;net6.0-windows</TargetFrameworks>
+	</PropertyGroup>
+
+	<PropertyGroup>
+    <OutputType>library</OutputType>
+    <RootNamespace>Krypton.Toolkit.Suite.Extended.Drawing</RootNamespace>
+    <AssemblyName>Krypton.Toolkit.Suite.Extended.Drawing</AssemblyName>
+    <UseWindowsForms>true</UseWindowsForms>
+    <Configurations>Debug;Release;Nightly;Canary;Stable</Configurations>
+  </PropertyGroup>
+
+  <!--Package Data-->
+  <Choose>
+      <When Condition="'$(Configuration)' == 'Canary'">
+          <PropertyGroup>
+              <PackageId>Krypton.Toolkit.Suite.Extended.Drawing.Canary</PackageId>
+          </PropertyGroup>
+      </When>
+      <Otherwise>
+          <PropertyGroup>
+              <PackageId>Krypton.Toolkit.Suite.Extended.Drawing</PackageId>
+          </PropertyGroup>
+      </Otherwise>
+  </Choose>
+
+  <PropertyGroup>
+    <Description>An extension to the Krypton standard toolkit. This package holds drawing utilities.</Description>
+  </PropertyGroup>
+
+  <Choose>
+      <When Condition="'$(Configuration)' == 'Release'">
+          <PropertyGroup>
+              <LangVersion>preview</LangVersion>
+          </PropertyGroup>
+
+          <ItemGroup>
+              <PackageReference Include="Krypton.Toolkit" Version="6.2111.312" />
+          </ItemGroup>
+      </When>
+      <Otherwise>
+          <PropertyGroup>
+              <LangVersion>preview</LangVersion>
+          </PropertyGroup>
+
+          <ItemGroup>
+              <PackageReference Include="Krypton.Toolkit.Canary" Version="6.2111.310-beta" />
+          </ItemGroup>
+      </Otherwise>
+  </Choose>
+
+  <!--Binary/Documentation Output-->
+  <PropertyGroup>
+    <DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Drawing\Krypton.Toolkit.Suite.Extended.Drawing.xml</DocumentationFile>
+    <OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Drawing\</OutputPath>
+  </PropertyGroup>
+
+</Project>
