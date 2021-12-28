@@ -60,7 +60,7 @@
 				<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 
 				<!--Package icon-->
-				<PackageIcon>Canary.png</PackageIcon>
+				<!--<PackageIcon>Canary.png</PackageIcon>-->
 
 				<PackageLicenseUrl>https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE</PackageLicenseUrl>
 
@@ -74,7 +74,7 @@
 				<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 
 				<!--Package icon-->
-				<PackageIcon>Stable.png</PackageIcon>
+				<!--<PackageIcon>Stable.png</PackageIcon>-->
 
 				<PackageLicenseUrl>https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE</PackageLicenseUrl>
 
@@ -85,7 +85,7 @@
 		</Otherwise>
 	</Choose>
 
-	<Choose>
+	<!--<Choose>
 		<When Condition="'$(Configuration)' == 'Canary'">
 			<ItemGroup>
 				<None Include="..\..\..\Assets\Package Icon\Canary.png" Link="Canary.png" Pack="true" PackagePath="" />
@@ -93,12 +93,12 @@
 		</When>
 		<Otherwise>
 			<ItemGroup>
-				<!--<None Include="..\..\..\Assets\Package Icon\Nightly.png" Link="Nightly.png" Pack="true" PackagePath="" />-->
+				~1~<None Include="..\..\..\Assets\Package Icon\Nightly.png" Link="Nightly.png" Pack="true" PackagePath="" />@1@
 
 				<None Include="..\..\..\Assets\Package Icon\Stable.png" Link="Stable.png" Pack="true" PackagePath="" />
 			</ItemGroup>
 		</Otherwise>
-	</Choose>
+	</Choose>-->
 
 	<!--Version information-->
 	<Choose>

@@ -1,4 +1,12 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ */
+#endregion
+
+namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 {
     public class KryptonColourContrastDialog : CommonExtendedKryptonForm
     {
@@ -672,7 +680,7 @@
             // 
             this.chtxtBase.Colour = System.Drawing.Color.Empty;
             this.chtxtBase.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chtxtBase.Hint = "000000";
+            this.chtxtBase.CueHint.CueHintText = "000000";
             this.chtxtBase.Location = new System.Drawing.Point(219, 155);
             this.chtxtBase.MaxLength = 6;
             this.chtxtBase.Name = "chtxtBase";
@@ -857,7 +865,7 @@
             // 
             this.chtxtContrast.Colour = System.Drawing.Color.Empty;
             this.chtxtContrast.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chtxtContrast.Hint = "000000";
+            this.chtxtContrast.CueHint.CueHintText = "000000";
             this.chtxtContrast.Location = new System.Drawing.Point(219, 155);
             this.chtxtContrast.MaxLength = 6;
             this.chtxtContrast.Name = "chtxtContrast";

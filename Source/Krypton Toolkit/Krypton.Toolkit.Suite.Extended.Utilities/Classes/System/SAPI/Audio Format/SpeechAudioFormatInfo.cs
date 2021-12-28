@@ -8,8 +8,6 @@
 
 using Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis;
 using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech;
-using System;
-using System.ComponentModel;
 
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.AudioFormat
 {

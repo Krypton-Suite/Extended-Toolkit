@@ -14,6 +14,7 @@ echo Deleted the 'Bin' folder
 echo Deleting the main 'obj' directories
 echo Deleting 'Krypton.Toolkit.Suite.Extended.Buttons\obj'
 rd /s /q "Source\Krypton Toolkit\Toolkit\Krypton.Toolkit.Suite.Extended.*\obj"
+rd /s /q "Source\Bin"
 
 if exist build.log ( goto deletebuildfile )
 if exist debug.log ( goto deletedebugfile )
@@ -29,7 +30,6 @@ goto restorepackages
 echo Deleting the 'debug.log' file
 del /f debug.log
 echo Deleted the 'debug.log' file
-goto restorepackages
 
 :deletepackagerestorefile
 echo Deleting the 'package-restore.log' file

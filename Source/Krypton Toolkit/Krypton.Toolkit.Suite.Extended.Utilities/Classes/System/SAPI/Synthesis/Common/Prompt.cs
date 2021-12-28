@@ -8,9 +8,6 @@
 
 using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
 using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech;
-using System;
-using System.Diagnostics;
-using System.IO;
 
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
 {

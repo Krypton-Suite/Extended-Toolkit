@@ -6,7 +6,6 @@
  */
 #endregion
 
-
 namespace Krypton.Toolkit.Suite.Extended.Controls
 {
     public class KryptonMarqueeLabel : KryptonLabel

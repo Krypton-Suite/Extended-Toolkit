@@ -7,10 +7,6 @@
 #endregion
 
 using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Globalization;
 
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
 {

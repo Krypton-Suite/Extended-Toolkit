@@ -10,8 +10,6 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Wizard.Properties;
-
 namespace Krypton.Toolkit.Suite.Extended.Wizard
 {
     /// <summary>

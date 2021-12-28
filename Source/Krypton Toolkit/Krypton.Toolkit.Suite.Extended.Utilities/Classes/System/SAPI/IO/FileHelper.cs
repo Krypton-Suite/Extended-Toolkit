@@ -6,11 +6,6 @@
  */
 #endregion
 
-using System;
-using System.IO;
-using System.Security;
-using System.Security.Permissions;
-
 namespace Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.IO
 {
     internal static class FileHelper

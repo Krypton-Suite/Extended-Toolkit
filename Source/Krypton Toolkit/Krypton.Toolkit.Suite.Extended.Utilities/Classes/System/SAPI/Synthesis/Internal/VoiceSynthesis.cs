@@ -11,16 +11,6 @@ using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
 using Krypton.Toolkit.Suite.Extended.Utilities.System.ObjectTokens;
 using Krypton.Toolkit.Suite.Extended.Utilities.System.TTSEngine;
 using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Globalization;
-using System.IO;
-using System.Reflection;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading;
 
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
 {

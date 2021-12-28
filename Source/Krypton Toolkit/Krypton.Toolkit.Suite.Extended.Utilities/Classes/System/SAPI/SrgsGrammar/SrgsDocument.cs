@@ -11,10 +11,6 @@ using Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition;
 using Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler;
 using Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser;
 using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech;
-using System;
-using System.Collections.ObjectModel;
-using System.Globalization;
-using System.Xml;
 
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
 {

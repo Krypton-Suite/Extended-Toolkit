@@ -6,7 +6,6 @@
  */
 #endregion
 
-
 namespace Krypton.Toolkit.Suite.Extended.Buttons
 {
     internal class KryptonCommandLinkButtonActionList : DesignerActionList

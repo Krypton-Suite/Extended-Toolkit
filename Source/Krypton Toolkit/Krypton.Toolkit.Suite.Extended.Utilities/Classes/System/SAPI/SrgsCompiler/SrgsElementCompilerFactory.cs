@@ -8,8 +8,6 @@
 
 using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
 using Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser;
-using System;
-using System.Globalization;
 
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 {

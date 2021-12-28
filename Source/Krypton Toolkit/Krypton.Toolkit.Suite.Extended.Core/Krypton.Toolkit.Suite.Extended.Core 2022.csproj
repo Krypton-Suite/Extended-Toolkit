@@ -31,13 +31,40 @@
   </PropertyGroup>
 
   <Choose>
+	  <When Condition="'$(Configuration)' == 'Canary'">
+		  <ItemGroup>
+			  <None Include="Package Icons\Canary.png" Link="Canary.png" Pack="true" PackagePath="" />
+		  </ItemGroup>
+
+		  <PropertyGroup>
+			  <PackageIcon>Canary.png</PackageIcon>
+		  </PropertyGroup>
+	  </When>
+	  <Otherwise>
+		  <ItemGroup>
+			  <None Include="Package Icons\Stable.png" Link="Stable.png" Pack="true" PackagePath="" />
+		  </ItemGroup>
+
+		  <PropertyGroup>
+			  <PackageIcon>Stable.png</PackageIcon>
+		  </PropertyGroup>
+	  </Otherwise>
+  </Choose>
+
+  <Choose>
       <When Condition="'$(Configuration)' == 'Release'">
           <PropertyGroup>
               <LangVersion>preview</LangVersion>
           </PropertyGroup>
 
           <ItemGroup>
+              <PackageReference Include="Krypton.Docking" Version="6.2111.312" />
+
               <PackageReference Include="Krypton.Toolkit" Version="6.2111.312" />
+
+              <PackageReference Include="Krypton.Ribbon" Version="6.2111.312" />
+
+              <PackageReference Include="Krypton.Navigator" Version="6.2111.312" />
           </ItemGroup>
       </When>
       <Otherwise>
@@ -46,7 +73,13 @@
           </PropertyGroup>
 
           <ItemGroup>
+              <PackageReference Include="Krypton.Docking.Canary" Version="6.2111.310-beta" />
+
               <PackageReference Include="Krypton.Toolkit.Canary" Version="6.2111.310-beta" />
+
+              <PackageReference Include="Krypton.Ribbon.Canary" Version="6.2111.310-beta" />
+
+              <PackageReference Include="Krypton.Navigator.Canary" Version="6.2111.310-beta" />
           </ItemGroup>
       </Otherwise>
   </Choose>
@@ -56,8 +89,16 @@
     <DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Common\Krypton.Toolkit.Suite.Extended.Common.xml</DocumentationFile>
     <OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Common\</OutputPath>
   </PropertyGroup>
+
   <ItemGroup>
-    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.2111.310-beta" />
+      <PackageReference Include="EasyScintilla" Version="1.0.5" />
+      <PackageReference Include="WindowsAPICodePack" Version="1.1.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Controls\Krypton.Toolkit.Suite.Extended.Controls 2022.csproj" />
+    <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Global.Utilities\Krypton.Toolkit.Suite.Extended.Global.Utilities 2022.csproj" />
+    <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Settings\Krypton.Toolkit.Suite.Extended.Settings 2022.csproj" />
   </ItemGroup>
 
 </Project>
