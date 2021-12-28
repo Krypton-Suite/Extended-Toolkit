@@ -123,6 +123,7 @@
             // 
             // FormsPlot
             // 
+            this.ContextMenuStrip = this.DefaultRightClickMenu;
             this.Controls.Add(this.krtbErrorMessage);
             this.Controls.Add(this.pictureBox1);
             this.Name = "FormsPlot";
