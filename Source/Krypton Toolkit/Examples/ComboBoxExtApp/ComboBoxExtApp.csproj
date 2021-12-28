@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0-windows</TargetFramework>
+        <UseWindowsForms>true</UseWindowsForms>
+        <LangVersion>preview</LangVersion>
+        <OutputType>WinExe</OutputType>
+        <Configurations>Debug;Release;Nightly;Canary;Stable</Configurations>
+        <ApplicationIcon>Stable.ico</ApplicationIcon>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Content Include="Stable.ico" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Krypton.Toolkit.Canary" Version="6.2112.355-beta" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Form1.cs" />
+    </ItemGroup>
+
+</Project>

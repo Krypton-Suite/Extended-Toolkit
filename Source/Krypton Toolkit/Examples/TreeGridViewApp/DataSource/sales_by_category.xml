@@ -1,0 +1,465 @@
+<?xml version="1.0" standalone="yes"?>
+<DocumentElement>
+  <category>
+    <CategoryID>1</CategoryID>
+    <CategoryName>Beverages</CategoryName>
+    <ProductName>Outback Lager</ProductName>
+    <ProductSales>5468.4</ProductSales>
+  </category>
+  <category>
+    <CategoryID>5</CategoryID>
+    <CategoryName>Grains/Cereals</CategoryName>
+    <ProductName>Gnocchi di nonna Alice</ProductName>
+    <ProductSales>32604</ProductSales>
+  </category>
+  <category>
+    <CategoryID>4</CategoryID>
+    <CategoryName>Dairy Products</CategoryName>
+    <ProductName>Gudbrandsdalsost</ProductName>
+    <ProductSales>13062.6</ProductSales>
+  </category>
+  <category>
+    <CategoryID>6</CategoryID>
+    <CategoryName>Meat/Poultry</CategoryName>
+    <ProductName>Tourtire</ProductName>
+    <ProductSales>3184.29</ProductSales>
+  </category>
+  <category>
+    <CategoryID>6</CategoryID>
+    <CategoryName>Meat/Poultry</CategoryName>
+    <ProductName>Thringer Rostbratwurst</ProductName>
+    <ProductSales>34755.92</ProductSales>
+  </category>
+  <category>
+    <CategoryID>8</CategoryID>
+    <CategoryName>Seafood</CategoryName>
+    <ProductName>Boston Crab Meat</ProductName>
+    <ProductSales>9814.73</ProductSales>
+  </category>
+  <category>
+    <CategoryID>6</CategoryID>
+    <CategoryName>Meat/Poultry</CategoryName>
+    <ProductName>Alice Mutton</ProductName>
+    <ProductSales>17604.6</ProductSales>
+  </category>
+  <category>
+    <CategoryID>1</CategoryID>
+    <CategoryName>Beverages</CategoryName>
+    <ProductName>Chai</ProductName>
+    <ProductSales>4887</ProductSales>
+  </category>
+  <category>
+    <CategoryID>3</CategoryID>
+    <CategoryName>Confections</CategoryName>
+    <ProductName>Schoggi Schokolade</ProductName>
+    <ProductSales>10974</ProductSales>
+  </category>
+  <category>
+    <CategoryID>5</CategoryID>
+    <CategoryName>Grains/Cereals</CategoryName>
+    <ProductName>Ravioli Angelo</ProductName>
+    <ProductSales>2156.7</ProductSales>
+  </category>
+  <category>
+    <CategoryID>3</CategoryID>
+    <CategoryName>Confections</CategoryName>
+    <ProductName>Chocolade</ProductName>
+    <ProductSales>1282.01</ProductSales>
+  </category>
+  <category>
+    <CategoryID>1</CategoryID>
+    <CategoryName>Beverages</CategoryName>
+    <ProductName>Chang</ProductName>
+    <ProductSales>7038.55</ProductSales>
+  </category>
+  <category>
+    <CategoryID>8</CategoryID>
+    <CategoryName>Seafood</CategoryName>
+    <ProductName>Inlagd Sill</ProductName>
+    <ProductSales>6894.15</ProductSales>
+  </category>
+  <category>
+    <CategoryID>3</CategoryID>
+    <CategoryName>Confections</CategoryName>
+    <ProductName>Sir Rodney's Scones</ProductName>
+    <ProductSales>5273</ProductSales>
+  </category>
+  <category>
+    <CategoryID>1</CategoryID>
+    <CategoryName>Beverages</CategoryName>
+    <ProductName>Ipoh Coffee</ProductName>
+    <ProductSales>11069.9</ProductSales>
+  </category>
+  <category>
+    <CategoryID>4</CategoryID>
+    <CategoryName>Dairy Products</CategoryName>
+    <ProductName>Mozzarella di Giovanni</ProductName>
+    <ProductSales>11602.8</ProductSales>
+  </category>
+  <category>
+    <CategoryID>4</CategoryID>
+    <CategoryName>Dairy Products</CategoryName>
+    <ProductName>Raclette Courdavault</ProductName>
+    <ProductSales>35775.3</ProductSales>
+  </category>
+  <category>
+    <CategoryID>1</CategoryID>
+    <CategoryName>Beverages</CategoryName>
+    <ProductName>Cte de Blaye</ProductName>
+    <ProductSales>49198.09</ProductSales>
+  </category>
+  <category>
+    <CategoryID>2</CategoryID>
+    <CategoryName>Condiments</CategoryName>
+    <ProductName>Louisiana Fiery Hot Pepper Sauce</ProductName>
+    <ProductSales>9373.18</ProductSales>
+  </category>
+  <category>
+    <CategoryID>7</CategoryID>
+    <CategoryName>Produce</CategoryName>
+    <ProductName>Tofu</ProductName>
+    <ProductSales>6234.48</ProductSales>
+  </category>
+  <category>
+    <CategoryID>4</CategoryID>
+    <CategoryName>Dairy Products</CategoryName>
+    <ProductName>Queso Cabrales</ProductName>
+    <ProductSales>6911.94</ProductSales>
+  </category>
+  <category>
+    <CategoryID>8</CategoryID>
+    <CategoryName>Seafood</CategoryName>
+    <ProductName>Nord-Ost Matjeshering</ProductName>
+    <ProductSales>6034.39</ProductSales>
+  </category>
+  <category>
+    <CategoryID>5</CategoryID>
+    <CategoryName>Grains/Cereals</CategoryName>
+    <ProductName>Singaporean Hokkien Fried Mee</ProductName>
+    <ProductSales>5408.2</ProductSales>
+  </category>
+  <category>
+    <CategoryID>7</CategoryID>
+    <CategoryName>Produce</CategoryName>
+    <ProductName>Manjimup Dried Apples</ProductName>
+    <ProductSales>24570.8</ProductSales>
+  </category>
+  <category>
+    <CategoryID>8</CategoryID>
+    <CategoryName>Seafood</CategoryName>
+    <ProductName>Carnarvon Tigers</ProductName>
+    <ProductSales>15950</ProductSales>
+  </category>
+  <category>
+    <CategoryID>1</CategoryID>
+    <CategoryName>Beverages</CategoryName>
+    <ProductName>Chartreuse verte</ProductName>
+    <ProductSales>4475.7</ProductSales>
+  </category>
+  <category>
+    <CategoryID>3</CategoryID>
+    <CategoryName>Confections</CategoryName>
+    <ProductName>Gumbr Gummibrchen</ProductName>
+    <ProductSales>10443.07</ProductSales>
+  </category>
+  <category>
+    <CategoryID>8</CategoryID>
+    <CategoryName>Seafood</CategoryName>
+    <ProductName>Jack's New England Clam Chowder</ProductName>
+    <ProductSales>4957.25</ProductSales>
+  </category>
+  <category>
+    <CategoryID>3</CategoryID>
+    <CategoryName>Confections</CategoryName>
+    <ProductName>Valkoinen suklaa</ProductName>
+    <ProductSales>2173.44</ProductSales>
+  </category>
+  <category>
+    <CategoryID>3</CategoryID>
+    <CategoryName>Confections</CategoryName>
+    <ProductName>Scottish Longbreads</ProductName>
+    <ProductSales>4157.5</ProductSales>
+  </category>
+  <category>
+    <CategoryID>8</CategoryID>
+    <CategoryName>Seafood</CategoryName>
+    <ProductName>Gravad lax</ProductName>
+    <ProductSales>629.2</ProductSales>
+  </category>
+  <category>
+    <CategoryID>3</CategoryID>
+    <CategoryName>Confections</CategoryName>
+    <ProductName>Tarte au sucre</ProductName>
+    <ProductSales>21638.29</ProductSales>
+  </category>
+  <category>
+    <CategoryID>1</CategoryID>
+    <CategoryName>Beverages</CategoryName>
+    <ProductName>Laughing Lumberjack Lager</ProductName>
+    <ProductSales>910</ProductSales>
+  </category>
+  <category>
+    <CategoryID>6</CategoryID>
+    <CategoryName>Meat/Poultry</CategoryName>
+    <ProductName>Mishi Kobe Niku</ProductName>
+    <ProductSales>6935.5</ProductSales>
+  </category>
+  <category>
+    <CategoryID>8</CategoryID>
+    <CategoryName>Seafood</CategoryName>
+    <ProductName>Konbu</ProductName>
+    <ProductSales>812.94</ProductSales>
+  </category>
+  <category>
+    <CategoryID>2</CategoryID>
+    <CategoryName>Condiments</CategoryName>
+    <ProductName>Grandma's Boysenberry Spread</ProductName>
+    <ProductSales>2500</ProductSales>
+  </category>
+  <category>
+    <CategoryID>4</CategoryID>
+    <CategoryName>Dairy Products</CategoryName>
+    <ProductName>Geitost</ProductName>
+    <ProductSales>786</ProductSales>
+  </category>
+  <category>
+    <CategoryID>8</CategoryID>
+    <CategoryName>Seafood</CategoryName>
+    <ProductName>Rogede sild</ProductName>
+    <ProductSales>3355.87</ProductSales>
+  </category>
+  <category>
+    <CategoryID>4</CategoryID>
+    <CategoryName>Dairy Products</CategoryName>
+    <ProductName>Gorgonzola Telino</ProductName>
+    <ProductSales>7300.75</ProductSales>
+  </category>
+  <category>
+    <CategoryID>8</CategoryID>
+    <CategoryName>Seafood</CategoryName>
+    <ProductName>Ikura</ProductName>
+    <ProductSales>9935.5</ProductSales>
+  </category>
+  <category>
+    <CategoryID>5</CategoryID>
+    <CategoryName>Grains/Cereals</CategoryName>
+    <ProductName>Gustaf's Knckebrd</ProductName>
+    <ProductSales>4233.6</ProductSales>
+  </category>
+  <category>
+    <CategoryID>1</CategoryID>
+    <CategoryName>Beverages</CategoryName>
+    <ProductName>Steeleye Stout</ProductName>
+    <ProductSales>5274.9</ProductSales>
+  </category>
+  <category>
+    <CategoryID>2</CategoryID>
+    <CategoryName>Condiments</CategoryName>
+    <ProductName>Aniseed Syrup</ProductName>
+    <ProductSales>1724</ProductSales>
+  </category>
+  <category>
+    <CategoryID>6</CategoryID>
+    <CategoryName>Meat/Poultry</CategoryName>
+    <ProductName>Perth Pasties</ProductName>
+    <ProductSales>10661.93</ProductSales>
+  </category>
+  <category>
+    <CategoryID>8</CategoryID>
+    <CategoryName>Seafood</CategoryName>
+    <ProductName>Spegesild</ProductName>
+    <ProductSales>2981.4</ProductSales>
+  </category>
+  <category>
+    <CategoryID>1</CategoryID>
+    <CategoryName>Beverages</CategoryName>
+    <ProductName>Rhnbru Klosterbier</ProductName>
+    <ProductSales>4485.54</ProductSales>
+  </category>
+  <category>
+    <CategoryID>4</CategoryID>
+    <CategoryName>Dairy Products</CategoryName>
+    <ProductName>Camembert Pierrot</ProductName>
+    <ProductSales>20505.4</ProductSales>
+  </category>
+  <category>
+    <CategoryID>5</CategoryID>
+    <CategoryName>Grains/Cereals</CategoryName>
+    <ProductName>Tunnbrd</ProductName>
+    <ProductSales>2288.7</ProductSales>
+  </category>
+  <category>
+    <CategoryID>3</CategoryID>
+    <CategoryName>Confections</CategoryName>
+    <ProductName>Pavlova</ProductName>
+    <ProductSales>8663.42</ProductSales>
+  </category>
+  <category>
+    <CategoryID>2</CategoryID>
+    <CategoryName>Condiments</CategoryName>
+    <ProductName>Northwoods Cranberry Sauce</ProductName>
+    <ProductSales>4260</ProductSales>
+  </category>
+  <category>
+    <CategoryID>7</CategoryID>
+    <CategoryName>Produce</CategoryName>
+    <ProductName>Rssle Sauerkraut</ProductName>
+    <ProductSales>13948.68</ProductSales>
+  </category>
+  <category>
+    <CategoryID>3</CategoryID>
+    <CategoryName>Confections</CategoryName>
+    <ProductName>Sir Rodney's Marmalade</ProductName>
+    <ProductSales>7314.3</ProductSales>
+  </category>
+  <category>
+    <CategoryID>5</CategoryID>
+    <CategoryName>Grains/Cereals</CategoryName>
+    <ProductName>Wimmers gute Semmelkndel</ProductName>
+    <ProductSales>8056.47</ProductSales>
+  </category>
+  <category>
+    <CategoryID>5</CategoryID>
+    <CategoryName>Grains/Cereals</CategoryName>
+    <ProductName>Filo Mix</ProductName>
+    <ProductSales>2124.15</ProductSales>
+  </category>
+  <category>
+    <CategoryID>2</CategoryID>
+    <CategoryName>Condiments</CategoryName>
+    <ProductName>Gula Malacca</ProductName>
+    <ProductSales>6737.95</ProductSales>
+  </category>
+  <category>
+    <CategoryID>8</CategoryID>
+    <CategoryName>Seafood</CategoryName>
+    <ProductName>Rd Kaviar</ProductName>
+    <ProductSales>3517.5</ProductSales>
+  </category>
+  <category>
+    <CategoryID>4</CategoryID>
+    <CategoryName>Dairy Products</CategoryName>
+    <ProductName>Queso Manchego La Pastora</ProductName>
+    <ProductSales>8335.3</ProductSales>
+  </category>
+  <category>
+    <CategoryID>1</CategoryID>
+    <CategoryName>Beverages</CategoryName>
+    <ProductName>Lakkalikri</ProductName>
+    <ProductSales>7379.1</ProductSales>
+  </category>
+  <category>
+    <CategoryID>3</CategoryID>
+    <CategoryName>Confections</CategoryName>
+    <ProductName>Zaanse koeken</ProductName>
+    <ProductSales>2930.75</ProductSales>
+  </category>
+  <category>
+    <CategoryID>2</CategoryID>
+    <CategoryName>Condiments</CategoryName>
+    <ProductName>Sirop d'rable</ProductName>
+    <ProductSales>9091.5</ProductSales>
+  </category>
+  <category>
+    <CategoryID>3</CategoryID>
+    <CategoryName>Confections</CategoryName>
+    <ProductName>Teatime Chocolate Biscuits</ProductName>
+    <ProductSales>2986.75</ProductSales>
+  </category>
+  <category>
+    <CategoryID>3</CategoryID>
+    <CategoryName>Confections</CategoryName>
+    <ProductName>Maxilaku</ProductName>
+    <ProductSales>3128.6</ProductSales>
+  </category>
+  <category>
+    <CategoryID>4</CategoryID>
+    <CategoryName>Dairy Products</CategoryName>
+    <ProductName>Flotemysost</ProductName>
+    <ProductSales>8438.76</ProductSales>
+  </category>
+  <category>
+    <CategoryID>6</CategoryID>
+    <CategoryName>Meat/Poultry</CategoryName>
+    <ProductName>Pt chinois</ProductName>
+    <ProductSales>7832.88</ProductSales>
+  </category>
+  <category>
+    <CategoryID>2</CategoryID>
+    <CategoryName>Condiments</CategoryName>
+    <ProductName>Genen Shouyu</ProductName>
+    <ProductSales>1474.83</ProductSales>
+  </category>
+  <category>
+    <CategoryID>2</CategoryID>
+    <CategoryName>Condiments</CategoryName>
+    <ProductName>Vegie-spread</ProductName>
+    <ProductSales>6899.25</ProductSales>
+  </category>
+  <category>
+    <CategoryID>2</CategoryID>
+    <CategoryName>Condiments</CategoryName>
+    <ProductName>Chef Anton's Cajun Seasoning</ProductName>
+    <ProductSales>5214.88</ProductSales>
+  </category>
+  <category>
+    <CategoryID>3</CategoryID>
+    <CategoryName>Confections</CategoryName>
+    <ProductName>NuNuCa Nu-Nougat-Creme</ProductName>
+    <ProductSales>1692.6</ProductSales>
+  </category>
+  <category>
+    <CategoryID>1</CategoryID>
+    <CategoryName>Beverages</CategoryName>
+    <ProductName>Sasquatch Ale</ProductName>
+    <ProductSales>2107</ProductSales>
+  </category>
+  <category>
+    <CategoryID>8</CategoryID>
+    <CategoryName>Seafood</CategoryName>
+    <ProductName>Escargots de Bourgogne</ProductName>
+    <ProductSales>2076.28</ProductSales>
+  </category>
+  <category>
+    <CategoryID>2</CategoryID>
+    <CategoryName>Condiments</CategoryName>
+    <ProductName>Louisiana Hot Spiced Okra</ProductName>
+    <ProductSales>2958</ProductSales>
+  </category>
+  <category>
+    <CategoryID>2</CategoryID>
+    <CategoryName>Condiments</CategoryName>
+    <ProductName>Chef Anton's Gumbo Mix</ProductName>
+    <ProductSales>373.63</ProductSales>
+  </category>
+  <category>
+    <CategoryID>2</CategoryID>
+    <CategoryName>Condiments</CategoryName>
+    <ProductName>Original Frankfurter grne Soe</ProductName>
+    <ProductSales>4761.38</ProductSales>
+  </category>
+  <category>
+    <CategoryID>7</CategoryID>
+    <CategoryName>Produce</CategoryName>
+    <ProductName>Uncle Bob's Organic Dried Pears</ProductName>
+    <ProductSales>9186.3</ProductSales>
+  </category>
+  <category>
+    <CategoryID>4</CategoryID>
+    <CategoryName>Dairy Products</CategoryName>
+    <ProductName>Mascarpone Fabioli</ProductName>
+    <ProductSales>2668.8</ProductSales>
+  </category>
+  <category>
+    <CategoryID>7</CategoryID>
+    <CategoryName>Produce</CategoryName>
+    <ProductName>Longlife Tofu</ProductName>
+    <ProductSales>1000.5</ProductSales>
+  </category>
+  <category>
+    <CategoryID>1</CategoryID>
+    <CategoryName>Beverages</CategoryName>
+    <ProductName>Guaran Fantstica</ProductName>
+    <ProductSales>1630.13</ProductSales>
+  </category>
+</DocumentElement>
