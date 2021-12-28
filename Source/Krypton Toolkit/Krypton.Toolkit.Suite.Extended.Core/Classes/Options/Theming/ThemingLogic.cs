@@ -169,8 +169,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 case PaletteMode.Office2010Black:
                     _themeOptions.KryptonManager.GlobalPaletteMode = PaletteModeManager.Office2010Black;
                     break;
-                case PaletteMode.Office2013:
-                    _themeOptions.KryptonManager.GlobalPaletteMode = PaletteModeManager.Office2013;
                     break;
                 case PaletteMode.Office2013White:
                     _themeOptions.KryptonManager.GlobalPaletteMode = PaletteModeManager.Office2013White;
@@ -249,9 +247,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                     break;
                 case PaletteMode.Office2010Black:
                     mode = "Office 2010 Black";
-                    break;
-                case PaletteMode.Office2013:
-                    mode = "Office 2013";
                     break;
                 case PaletteMode.Office2013White:
                     mode = "Office 2013 White";

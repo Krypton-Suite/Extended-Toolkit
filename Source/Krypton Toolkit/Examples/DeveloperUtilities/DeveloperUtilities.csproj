@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.2111.310-beta" />
+    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.2112.355-beta" />
   </ItemGroup>
 
   <ItemGroup>

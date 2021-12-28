@@ -52,7 +52,7 @@
         <Description>An extension to the Krypton standard toolkit ComboBox. This package implements additional Drop Down types and views.</Description>
     </PropertyGroup>
     <ItemGroup>
-      <PackageReference Include="Krypton.Toolkit.Canary" Version="6.2111.310-beta" />
+      <PackageReference Include="Krypton.Toolkit.Canary" Version="6.2112.355-beta" />
     </ItemGroup>
 
     <ItemGroup>

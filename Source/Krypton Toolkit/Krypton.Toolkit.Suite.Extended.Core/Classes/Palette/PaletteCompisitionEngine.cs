@@ -705,12 +705,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
                 SwitchPaletteMode(PaletteMode.Office2010Silver);
             }
-            else if (themeChoice.Text == "Office 2013")
-            {
-                palette.BasePaletteMode = PaletteMode.Office2013;
-
-                SwitchPaletteMode(PaletteMode.Office2013);
-            }
             else if (themeChoice.Text == "Office 2013 White")
             {
                 palette.BasePaletteMode = PaletteMode.Office2013White;

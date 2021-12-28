@@ -274,37 +274,32 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
                 case PaletteModeManager.Office2010Black:
                     themeList.SelectedIndex = 6;
                     break;
-                case PaletteModeManager.Office2013:
+                case PaletteModeManager.Office2013White:
                     themeList.SelectedIndex = 10;
                     break;
-                case PaletteModeManager.Office2013White:
+                case PaletteModeManager.Office365Black:
                     themeList.SelectedIndex = 11;
                     break;
-                case PaletteModeManager.Office365Black:
+                case PaletteModeManager.Office365Blue:
                     themeList.SelectedIndex = 12;
                     break;
-                case PaletteModeManager.Office365Blue:
+                case PaletteModeManager.Office365Silver:
                     themeList.SelectedIndex = 13;
                     break;
-                case PaletteModeManager.Office365Silver:
+                case PaletteModeManager.Office365White:
                     themeList.SelectedIndex = 14;
                     break;
-                case PaletteModeManager.Office365White:
+                case PaletteModeManager.SparkleBlue:
                     themeList.SelectedIndex = 15;
                     break;
-                case PaletteModeManager.SparkleBlue:
+                case PaletteModeManager.SparkleOrange:
                     themeList.SelectedIndex = 16;
                     break;
-                case PaletteModeManager.SparkleOrange:
+                case PaletteModeManager.SparklePurple:
                     themeList.SelectedIndex = 17;
                     break;
-                case PaletteModeManager.SparklePurple:
-                    themeList.SelectedIndex = 18;
-                    break;
                 case PaletteModeManager.Custom:
-                    themeList.SelectedIndex = 19;
-                    break;
-                default:
+                    themeList.SelectedIndex = 18;
                     break;
             }
         }
@@ -370,12 +365,6 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
                 manager.GlobalPaletteMode = PaletteModeManager.Office2010White;
 
                 ApplyTheme(PaletteModeManager.Office2010White);
-            }
-            else if (themeType == "Office 2013")
-            {
-                manager.GlobalPaletteMode = PaletteModeManager.Office2013;
-
-                ApplyTheme(PaletteModeManager.Office2013);
             }
             else if (themeType == "Office 2013 - White")
             {

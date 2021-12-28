@@ -614,9 +614,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 case PaletteMode.Office2010Black:
                     mode = "Office 2010 Black";
                     break;
-                case PaletteMode.Office2013:
-                    mode = "Office 2013";
-                    break;
                 case PaletteMode.Office2013White:
                     mode = "Office 2013 White";
                     break;
