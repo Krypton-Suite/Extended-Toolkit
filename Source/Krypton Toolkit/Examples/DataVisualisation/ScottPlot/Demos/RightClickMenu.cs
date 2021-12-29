@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using Krypton.Toolkit;
@@ -32,7 +25,8 @@ namespace DataVisualisation.ScottPlot.Demos
             ContextMenuStrip customMenu = new ContextMenuStrip();
             customMenu.Items.Add(new ToolStripMenuItem("Add Sine Wave", null, new EventHandler(AddSine)));
             customMenu.Items.Add(new ToolStripMenuItem("Clear Plot", null, new EventHandler(ClearPlot)));
-            customMenu.Show(System.Windows.Forms.Cursor.Position);
+            formsPlot1.ContextMenuStrip = customMenu;
+            //customMenu.Show(System.Windows.Forms.Cursor.Position);
         }
 
         private void AddSine(object sender, EventArgs e)
