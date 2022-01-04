@@ -69,6 +69,21 @@
 				<PackageOutputPath>..\..\..\Bin\NuGet Packages\Canary</PackageOutputPath>
 			</PropertyGroup>
 		</When>
+
+		<When Condition="'$(Configuration)' == 'Release'">
+			<PropertyGroup>
+				<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+
+				<!--Package icon-->
+				<PackageIcon>Stable.png</PackageIcon>
+
+				<PackageLicenseUrl>https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE</PackageLicenseUrl>
+
+				<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+
+				<PackageOutputPath>..\..\..\Bin\NuGet Packages\Release</PackageOutputPath>
+			</PropertyGroup>
+		</When>
 		<Otherwise>
 			<PropertyGroup>
 				<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
