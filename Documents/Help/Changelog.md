@@ -3,17 +3,12 @@
 ## 2022-02-03 - Build 2202 - February 2022
 * New `Krypton.Toolkit.Suite.Extended.Error.Reporting` module
 * Removal of unused 'using' statements
-* Updated standard toolkit to build `2202`
-
-=======
-
-## 2022-01-20 - Build 2201 - January 2022
 * New `Krypton.Toolkit.Suite.Extended.Data.Visualisation` module (ScottPlot only)
 * Fix [#268](https://github.com/Krypton-Suite/Extended-Toolkit/issues/268), Crashes using Outlook Grid control
 * Implemented [#271](https://github.com/Krypton-Suite/Extended-Toolkit/issues/271), NuGet Package Information needs to have direct download links
 * Fixed issues where some canary NuGet packages were accidentally uploaded as stable packages
 * Refined build configurations
-* Updated standard toolkit to build `2201`
+* Updated standard toolkit to build `2202`
 
 =======
 
