@@ -58,13 +58,13 @@
           </PropertyGroup>
 
           <ItemGroup>
-              <PackageReference Include="Krypton.Docking" Version="6.2111.312" />
+              <PackageReference Include="Krypton.Docking" Version="6.2201.4" />
 
-              <PackageReference Include="Krypton.Toolkit" Version="6.2111.312" />
+              <PackageReference Include="Krypton.Toolkit" Version="6.2201.4" />
 
-              <PackageReference Include="Krypton.Ribbon" Version="6.2111.312" />
+              <PackageReference Include="Krypton.Ribbon" Version="6.2201.4" />
 
-              <PackageReference Include="Krypton.Navigator" Version="6.2111.312" />
+              <PackageReference Include="Krypton.Navigator" Version="6.2201.4" />
           </ItemGroup>
       </When>
       <Otherwise>
