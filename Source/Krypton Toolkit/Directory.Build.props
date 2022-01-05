@@ -104,32 +104,48 @@
 	<Choose>
 		<When Condition="'$(Configuration)' == 'Canary'">
 			<PropertyGroup>
-				<Minor>$([System.DateTime]::Now.ToString(yyMM))</Minor>
+				<Minor>$([System.DateTime]::Now.ToString(yy))</Minor>
+				<Build>$([System.DateTime]::Now.ToString(MM))</Build>
+				<Revision>$([System.DateTime]::Now.get_DayOfYear().ToString())</Revision>
 
-				<Build>$([System.DateTime]::Now.get_DayOfYear().ToString())</Build>
+				<!--Version layout schema:
+				6 = Major
+				22 = Minor - Year of release
+				01 = Build - Month of release
+				1 = Revision - Day of release (day of year)
+				-beta = Indicates a pre-release package
+				-->
+				<LibraryVersion>6.$(Minor).$(Build).$(Revision)</LibraryVersion>
 
-				<!--Canary only-->
-				<PackageVersion>6.$(Minor).$(Build)-beta</PackageVersion>
+				<!--https://docs.microsoft.com/en-us/nuget/create-packages/prerelease-packages-->
+				<PackageVersion>6.$(Minor).$(Build).$(Revision)-beta</PackageVersion>
 			</PropertyGroup>
 		</When>
 		<Otherwise>
 			<PropertyGroup>
-				<Minor>$([System.DateTime]::Now.ToString(yyMM))</Minor>
+				<Minor>$([System.DateTime]::Now.ToString(yy))</Minor>
+				<Build>$([System.DateTime]::Now.ToString(MM))</Build>
+				<Revision>$([System.DateTime]::Now.get_DayOfYear().ToString())</Revision>
 
-				<Build>$([System.DateTime]::Now.get_DayOfYear().ToString())</Build>
+				<!--Version layout schema:
+				6 = Major
+				22 = Minor - Year of release
+				01 = Build - Month of release
+				1 = Revision - Day of release (day of year)
+				-beta = Indicates a pre-release package
+				-->
+				<LibraryVersion>6.$(Minor).$(Build).$(Revision)</LibraryVersion>
 
-				<!--Stable/Signed-->
-				<PackageVersion>6.$(Minor).$(Build)</PackageVersion>
+				<!--https://docs.microsoft.com/en-us/nuget/create-packages/prerelease-packages-->
+				<PackageVersion>6.$(Minor).$(Build).$(Revision)</PackageVersion>
 			</PropertyGroup>
 		</Otherwise>
 	</Choose>
 
 	<PropertyGroup>
-		<!--REMINDER: When packing, use the proper ISO layout, i.e ddHH-->
-		<!--<CurrentDate>$([System.DateTime]::Now.ToString(ddHH))</CurrentDate>-->
-
-		<Minor>$([System.DateTime]::Now.ToString(yyMM))</Minor>
-		<Build>$([System.DateTime]::Now.get_DayOfYear().ToString())</Build>
+		<Minor>$([System.DateTime]::Now.ToString(yy))</Minor>
+		<Build>$([System.DateTime]::Now.ToString(MM))</Build>
+		<Revision>$([System.DateTime]::Now.get_DayOfYear().ToString())</Revision>
 
 		<!--Version layout:
 				6 = Major
@@ -137,17 +153,17 @@
 				18 = Build
 				-alpha = Indicates a pre-release package
 			-->
-		<LibraryVersion>6.$(Minor).$(Build)</LibraryVersion>
+		<LibraryVersion>6.$(Minor).$(Build).$(Revision)</LibraryVersion>
 
 		<!--Nightly-->
 		<!--https://docs.microsoft.com/en-us/nuget/create-packages/prerelease-packages-->
 		<!--<PackageVersion>6.$(Minor).$(Build)-alpha</PackageVersion>-->
 
-		<AssemblyVersion>6.$(Minor).$(Build)</AssemblyVersion>
+		<AssemblyVersion>6.$(Minor).$(Build).$(Revision)</AssemblyVersion>
 
-		<FileVersion>6.$(Minor).$(Build)</FileVersion>
+		<FileVersion>6.$(Minor).$(Build).$(Revision)</FileVersion>
 
-		<Version>6.$(Minor).$(Build)</Version>
+		<Version>6.$(Minor).$(Build).$(Revision)</Version>
 	</PropertyGroup>
 
 </Project>
