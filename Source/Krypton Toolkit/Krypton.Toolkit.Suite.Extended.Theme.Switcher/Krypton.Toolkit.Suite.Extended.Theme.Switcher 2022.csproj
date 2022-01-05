@@ -53,18 +53,7 @@
     </Choose>
 
     <Choose>
-        <When Condition="'$(Configuration)' == 'Release'">
-            <PropertyGroup>
-                <LangVersion>preview</LangVersion>
-            </PropertyGroup>
-
-            <ItemGroup>
-                <PackageReference Include="Krypton.Toolkit" Version="6.2201.4" />
-
-                <PackageReference Include="Krypton.Navigator" Version="6.2201.4" />
-            </ItemGroup>
-        </When>
-        <Otherwise>
+        <When Condition="'$(Configuration)' == 'Canary'">
             <PropertyGroup>
                 <LangVersion>preview</LangVersion>
             </PropertyGroup>
@@ -73,6 +62,17 @@
                 <PackageReference Include="Krypton.Toolkit.Canary" Version="6.2201.1-beta" />
 
                 <PackageReference Include="Krypton.Navigator.Canary" Version="6.2201.1-beta" />
+            </ItemGroup>
+        </When>
+        <Otherwise>
+            <PropertyGroup>
+                <LangVersion>preview</LangVersion>
+            </PropertyGroup>
+
+            <ItemGroup>
+                <PackageReference Include="Krypton.Toolkit" Version="6.2201.4" />
+
+                <PackageReference Include="Krypton.Navigator" Version="6.2201.4" />
             </ItemGroup>
         </Otherwise>
     </Choose>

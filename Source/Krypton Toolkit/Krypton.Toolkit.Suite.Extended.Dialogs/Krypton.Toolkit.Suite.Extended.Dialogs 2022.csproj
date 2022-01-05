@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFrameworks>net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows;net6.0-windows</TargetFrameworks>
@@ -53,13 +53,13 @@
 	</Choose>
 
 	<Choose>
-		<When Condition="'$(Configuration)' == 'Release'">
+		<When Condition="'$(Configuration)' == 'Canary'">
 			<PropertyGroup>
 				<LangVersion>preview</LangVersion>
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit" Version="6.2201.4" />
+				<PackageReference Include="Krypton.Toolkit.Canary" Version="6.2201.1-beta" />
 			</ItemGroup>
 		</When>
 		<Otherwise>
@@ -68,7 +68,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Canary" Version="6.2201.1-beta" />
+				<PackageReference Include="Krypton.Toolkit" Version="6.2201.4" />
 			</ItemGroup>
 		</Otherwise>
 	</Choose>
