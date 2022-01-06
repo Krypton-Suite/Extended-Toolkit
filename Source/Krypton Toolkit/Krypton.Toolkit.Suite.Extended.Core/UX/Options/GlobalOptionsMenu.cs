@@ -1137,10 +1137,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             {
                 ThemeManager.SwitchTheme(PaletteModeManager.Office2010Silver, _manager);
             }
-            else if (kcmbPaletteTheme.Text == "Office 2013")
-            {
-                ThemeManager.SwitchTheme(PaletteModeManager.Office2013, _manager);
-            }
             else if (kcmbPaletteTheme.Text == "Office 2013 White")
             {
                 ThemeManager.SwitchTheme(PaletteModeManager.Office2013White, _manager);

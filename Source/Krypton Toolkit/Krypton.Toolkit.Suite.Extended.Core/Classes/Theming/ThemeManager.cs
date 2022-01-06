@@ -154,9 +154,6 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 case PaletteModeManager.Office2010Black:
                     manager.GlobalPaletteMode = PaletteModeManager.Office2010Black;
                     break;
-                case PaletteModeManager.Office2013:
-                    manager.GlobalPaletteMode = PaletteModeManager.Office2013;
-                    break;
                 case PaletteModeManager.Office2013White:
                     manager.GlobalPaletteMode = PaletteModeManager.Office2013White;
                     break;

@@ -53,24 +53,24 @@
   </Choose>
 
   <Choose>
-      <When Condition="'$(Configuration)' == 'Release'">
-          <PropertyGroup>
-              <LangVersion>preview</LangVersion>
-          </PropertyGroup>
+	  <When Condition="'$(Configuration)' == 'Canary'">
+		  <PropertyGroup>
+			  <LangVersion>preview</LangVersion>
+		  </PropertyGroup>
 
-          <ItemGroup>
-              <PackageReference Include="Krypton.Toolkit" Version="6.2111.312" />
-          </ItemGroup>
-      </When>
-      <Otherwise>
-          <PropertyGroup>
-              <LangVersion>preview</LangVersion>
-          </PropertyGroup>
+		  <ItemGroup>
+			  <PackageReference Include="Krypton.Toolkit.Canary" Version="6.22.1.5-beta" />
+		  </ItemGroup>
+	  </When>
+	  <Otherwise>
+		  <PropertyGroup>
+			  <LangVersion>preview</LangVersion>
+		  </PropertyGroup>
 
-          <ItemGroup>
-              <PackageReference Include="Krypton.Toolkit.Canary" Version="6.2111.310-beta" />
-          </ItemGroup>
-      </Otherwise>
+		  <ItemGroup>
+			  <PackageReference Include="Krypton.Toolkit" Version="6.2201.4" />
+		  </ItemGroup>
+	  </Otherwise>
   </Choose>
   
   <!--Binary/Documentation Output-->

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
+﻿namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 {
     public class FormsPlot : UserControl
     {
@@ -75,7 +69,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             this.toolStripSeparator3,
             this.openInNewWindowMenuItem});
             this.DefaultRightClickMenu.Name = "contextMenuStrip1";
-            this.DefaultRightClickMenu.Size = new System.Drawing.Size(191, 154);
+            this.DefaultRightClickMenu.Size = new System.Drawing.Size(191, 132);
             // 
             // copyMenuItem
             // 
@@ -159,6 +153,22 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         private readonly Dictionary<Cursor, System.Windows.Forms.Cursor> Cursors;
         private readonly bool IsDesignerMode = Process.GetCurrentProcess().ProcessName == "devenv";
 
+        private bool _showContextMenu;
+
+        #endregion
+
+        #region Properties
+        public bool ShowContextMenu
+        {
+            get => _showContextMenu;
+
+            set
+            {
+                _showContextMenu = value;
+
+                Invalidate();
+            }
+        }
         #endregion
 
         #region Events
@@ -250,9 +260,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
                 [ScottPlot.Cursor.Hand] = System.Windows.Forms.Cursors.Hand,
                 [ScottPlot.Cursor.Question] = System.Windows.Forms.Cursors.Help,
             };
-
-            SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.ResizeRedraw | ControlStyles.UserPaint | ControlStyles.SupportsTransparentBackColor | ControlStyles.OptimizedDoubleBuffer, true);
-
+            
             InitializeComponent();
 
             krtbErrorMessage.Visible = false;
@@ -278,6 +286,8 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             pictureBox1.MouseLeave += PictureBox1_MouseLeave;
 
             RightClicked += DefaultRightClickedEvent;
+
+            ShowContextMenu = true;
 
             Backend.StartProcessingEvents();
         }
@@ -469,13 +479,36 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
         private void helpMenuItem_Click(object sender, EventArgs e)
         {
-            KryptonMessageBox.Show("To be implemented.", "Help", MessageBoxButtons.OK,
-                KryptonMessageBoxIcon.INFORMATION);
+            ScottPlotHelp help = new ScottPlotHelp();
+
+            help.ShowDialog();
         }
 
         private void openInNewWindowMenuItem_Click(object sender, EventArgs e)
         {
             new PlotViewer(Plot).Show();
         }
+
+        #region Overrides
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            if (_showContextMenu)
+            {
+                ContextMenuStrip = DefaultRightClickMenu;
+
+                pictureBox1.ContextMenuStrip = DefaultRightClickMenu;
+            }
+            else
+            {
+                ContextMenuStrip = null;
+
+                pictureBox1.ContextMenuStrip = null;
+            }
+
+            base.OnPaint(e);
+        }
+
+        #endregion
     }
 }

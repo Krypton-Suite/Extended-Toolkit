@@ -53,13 +53,14 @@
     </Choose>
 
     <Choose>
-        <When Condition="'$(Configuration)' == 'Release'">
+        <When Condition="'$(Configuration)' == 'Canary'">
             <PropertyGroup>
                 <LangVersion>preview</LangVersion>
             </PropertyGroup>
 
             <ItemGroup>
-                <PackageReference Include="Krypton.Toolkit" Version="6.2111.312" />
+                <PackageReference Include="Krypton.Toolkit.Canary" Version="6.22.1.5-beta" />
+                <PackageReference Include="Krypton.Navigator.Canary" Version="6.22.1.5-beta" />
             </ItemGroup>
         </When>
         <Otherwise>
@@ -68,12 +69,21 @@
             </PropertyGroup>
 
             <ItemGroup>
-                <PackageReference Include="Krypton.Toolkit.Canary" Version="6.2111.310-beta" />
+                <PackageReference Include="Krypton.Toolkit" Version="6.2201.4" />
+                <PackageReference Include="Krypton.Navigator" Version="6.2201.4" />
             </ItemGroup>
         </Otherwise>
     </Choose>
 
     <ItemGroup>
+      <PackageReference Include="DotNetZip" Version="1.16.0" />
+      <PackageReference Include="Handlebars.Net" Version="2.0.10" />
+      <PackageReference Include="Simple-MAPI.NET" Version="1.2.0" />
+      <PackageReference Include="System.Management" Version="6.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Reference Include="System.Deployment" />
         <Reference Include="System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net4'))">
             <SpecificVersion>True</SpecificVersion>
             <Version>4.0.0.0</Version>
@@ -91,6 +101,21 @@
         </Reference>
         <Reference Include="System.Design" Condition="'$(TargetFramework)' == 'net35'" />
         <!--TODO: Need to specify version here-->
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Properties\Resources.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>Resources.resx</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Update="Properties\Resources.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
     </ItemGroup>
     <!--Binary/Documentation Output-->
     <PropertyGroup>
