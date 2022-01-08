@@ -59,4 +59,12 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         CUSTOM = 5,
         NONE = 6
     }
+
+    public enum ContentAreaType
+    {
+        LABEL = 0,
+        WRAPPEDLABEL = 1,
+        MULTILINEDTEXTBOX = 2,
+        RICHTEXTBOX = 3
+    }
 }

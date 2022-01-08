@@ -1,6 +1,7 @@
 =======
 
 ## 2022-02-03 - Build 2202 - February 2022
+* Updated NuGet package information to aid deployment to GitHub
 * New `Krypton.Toolkit.Suite.Extended.Error.Reporting` module
 * Removal of unused 'using' statements
 * New `Krypton.Toolkit.Suite.Extended.Data.Visualisation` module (ScottPlot only)
