@@ -34,6 +34,7 @@
 		<!--<PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>-->
 		<PackageTags>Krypton ComponentFactory WinForms Themes Controls DataGrid Ribbon Workspace Tabs .Net Toolkit Core</PackageTags>
 		<PackageReleaseNotes>Get updates here: https://github.com/Krypton-Suite/Extended-Toolkit</PackageReleaseNotes>
+		<RepositoryURL>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryURL>
 	</PropertyGroup>
 
 	<!--Generate NuGet packages on build-->
