@@ -40,6 +40,16 @@
 			  <PackageIcon>Canary.png</PackageIcon>
 		  </PropertyGroup>
 	  </When>
+
+	  <When Condition="'$(Configuration)' == 'Nightly'">
+		  <ItemGroup>
+			  <None Include="Package Icons\Nightly.png" Link="Nightly.png" PackagePath="" />
+		  </ItemGroup>
+
+		  <PropertyGroup>
+			  <PackageIcon>Nightly.png</PackageIcon>
+		  </PropertyGroup>
+	  </When>
 	  <Otherwise>
 		  <ItemGroup>
 			  <None Include="Package Icons\Stable.png" Link="Stable.png" Pack="true" PackagePath="" />
