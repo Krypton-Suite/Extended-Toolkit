@@ -19,6 +19,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         private KryptonLabel klblHeader;
         private KryptonWrapLabel kwlContent;
         private PictureBox pbxIcon;
+        private KryptonRichTextBox krtxtContent;
         private KryptonBorderEdge kryptonBorderEdge1;
 
         private void InitializeComponent()
@@ -32,6 +33,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             this.klblHeader = new Krypton.Toolkit.KryptonLabel();
             this.kwlContent = new Krypton.Toolkit.KryptonWrapLabel();
             this.pbxIcon = new System.Windows.Forms.PictureBox();
+            this.krtxtContent = new Krypton.Toolkit.KryptonRichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
@@ -83,6 +85,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             // 
             // kryptonPanel2
             // 
+            this.kryptonPanel2.Controls.Add(this.krtxtContent);
             this.kryptonPanel2.Controls.Add(this.pbTimeout);
             this.kryptonPanel2.Controls.Add(this.klblHeader);
             this.kryptonPanel2.Controls.Add(this.kwlContent);
@@ -133,12 +136,25 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             this.pbxIcon.TabIndex = 0;
             this.pbxIcon.TabStop = false;
             // 
+            // krtxtContent
+            // 
+            this.krtxtContent.InputControlStyle = Krypton.Toolkit.InputControlStyle.Custom1;
+            this.krtxtContent.Location = new System.Drawing.Point(145, 95);
+            this.krtxtContent.Name = "krtxtContent";
+            this.krtxtContent.ReadOnly = true;
+            this.krtxtContent.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.krtxtContent.Size = new System.Drawing.Size(450, 146);
+            this.krtxtContent.TabIndex = 5;
+            this.krtxtContent.Text = "";
+            this.krtxtContent.Visible = false;
+            // 
             // KryptonToastWindowVersion2
             // 
             this.ClientSize = new System.Drawing.Size(609, 302);
             this.Controls.Add(this.kryptonPanel2);
             this.Controls.Add(this.kryptonPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Location = new System.Drawing.Point(0, 0);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "KryptonToastWindowVersion2";
