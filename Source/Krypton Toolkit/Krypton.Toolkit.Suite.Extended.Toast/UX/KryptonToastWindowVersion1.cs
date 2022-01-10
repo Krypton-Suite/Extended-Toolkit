@@ -105,6 +105,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             // 
             // kwlContent
             // 
+            this.kwlContent.AutoEllipsis = true;
             this.kwlContent.AutoSize = false;
             this.kwlContent.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.kwlContent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
@@ -139,6 +140,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             this.Controls.Add(this.kpnlContent);
             this.Controls.Add(this.kpnlButtons);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Location = new System.Drawing.Point(0, 0);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "KryptonToastWindowVersion1";
@@ -160,7 +162,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         #region Variables
         private ActionButtonLocation _buttonLocation;
         private ActionType _actionType;
-        private bool _fade, _showActionButton, _showProgressBar;
+        private bool _fade, _showActionButton, _showProgressBar, _showControlBox;
         private string _headerText, _contentText, _processName, _actionButtonLaunchProcessText, _actionButtonOpenText;
         private Image _image;
         private int _time, _seconds;
@@ -300,7 +302,8 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <param name="contentText">The content text.</param>
         /// <param name="showControlBox">if set to <c>true</c> [show control box].</param>
         /// <param name="showProgressBar">if set to <c>true</c> [show progress bar].</param>
-        public KryptonToastWindowVersion1(bool fade, Image icon, string headerText, string contentText,  bool showControlBox = true,  bool showProgressBar = false)
+        public KryptonToastWindowVersion1(bool fade, Image icon, string headerText, string contentText,  bool showControlBox = true, 
+                                          bool showProgressBar = false)
         {
             InitializeComponent();
 
@@ -404,7 +407,8 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <param name="showControlBox">if set to <c>true</c> [show control box].</param>
         /// <param name="showProgressBar">if set to <c>true</c> [show progress bar].</param>
         public KryptonToastWindowVersion1(bool fade, Image image, string headerText, string contentText, int seconds, bool showControlBox = true,
-                                          bool showProgressBar = false) : this(fade, image, headerText, contentText, showControlBox,  showProgressBar)
+                                          bool showProgressBar = false) : 
+                                          this(fade, image, headerText, contentText, showControlBox, showProgressBar)
         {
             Seconds = seconds;
         }
@@ -419,8 +423,8 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <param name="showControlBox">if set to <c>true</c> [show control box].</param>
         /// <param name="showProgressBar">if set to <c>true</c> [show progress bar].</param>
         public KryptonToastWindowVersion1(bool fade, Image image, string headerText, string contentText, int seconds, 
-                                          string soundPath,  bool showControlBox = true,  bool showProgressBar = false) :
-                                          this(fade, image, headerText, contentText, seconds, showControlBox,  showProgressBar)
+                                          string soundPath,  bool showControlBox = true, bool showProgressBar = false) :
+                                          this(fade, image, headerText, contentText, seconds, showControlBox, showProgressBar)
         {
             SoundPath = soundPath;
         }
@@ -434,7 +438,8 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <param name="showProgressBar">if set to <c>true</c> [show progress bar].</param>
         /// <param name="showControlBox">if set to <c>true</c> [show control box].</param>
         public KryptonToastWindowVersion1(bool fade, Image image, string headerText, string contentText, string soundPath, bool showProgressBar = true,
-                                          bool showControlBox = true) : this(fade, image, headerText, contentText, showControlBox,  showProgressBar)
+                                          bool showControlBox = true) : 
+                                          this(fade, image, headerText, contentText, showControlBox, showProgressBar)
         {
             SoundPath = soundPath;
         }
@@ -447,8 +452,9 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <param name="soundStream">The sound stream.</param>
         /// <param name="showProgressBar">if set to <c>true</c> [show progress bar].</param>
         /// <param name="showControlBox">if set to <c>true</c> [show control box].</param>
-        public KryptonToastWindowVersion1(bool fade, Image image, string headerText, string contentText, Stream soundStream, bool showProgressBar = true, 
-                                          bool showControlBox = true) : this(fade, image, headerText, contentText, showControlBox,  showProgressBar)
+        public KryptonToastWindowVersion1(bool fade, Image image, string headerText, string contentText, Stream soundStream, bool showProgressBar = true,
+                                          bool showControlBox = true) : 
+                                          this(fade, image, headerText, contentText, showControlBox, showProgressBar)
         {
             SoundStream = soundStream;
         }
@@ -463,8 +469,8 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <param name="showControlBox">if set to <c>true</c> [show control box].</param>
         /// <param name="showProgressBar">if set to <c>true</c> [show progress bar].</param>
         public KryptonToastWindowVersion1(bool fade, Image image, string headerText, string contentText, int seconds, 
-                                          Stream soundStream,  bool showControlBox = true,  bool showProgressBar = false) : 
-                                          this(fade, image, headerText, contentText, seconds, showControlBox,  showProgressBar)
+                                          Stream soundStream,  bool showControlBox = true, bool showProgressBar = false) : 
+                                          this(fade, image, headerText, contentText, seconds, showControlBox, showProgressBar)
         {
             SoundStream = soundStream;
         }
@@ -484,9 +490,9 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <param name="actionButtonOpenText">The action button open text.</param>
         public KryptonToastWindowVersion1(bool fade, Image image, string headerText, string contentText, 
                                           ActionButtonLocation actionButtonLocation, bool showActionButton, ActionType actionType, 
-                                          string processName,  bool showControlBox = true,  bool showProgressBar = false, 
+                                          string processName,  bool showControlBox = true, bool showProgressBar = false, 
                                           string actionButtonLaunchProcessText = "&Launch Process", string actionButtonOpenText = "&Open") : 
-                                          this(fade, image, headerText, contentText, showControlBox,  showProgressBar)
+                                          this(fade, image, headerText, contentText, showControlBox, showProgressBar)
         {
             ButtonLocation = actionButtonLocation;
 
@@ -519,9 +525,10 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <param name="actionButtonOpenText">The action button open text.</param>
         public KryptonToastWindowVersion1(bool fade, Image image, string headerText, string contentText, 
                                           ActionButtonLocation actionButtonLocation, bool showActionButton, 
-                                          ActionType actionType, string processName,  bool showControlBox = true,  bool showProgressBar = false, 
-                                          float cornerRadius = -1, string actionButtonLaunchProcessText = "&Launch Process", string actionButtonOpenText = "&Open") : 
-                                          this(fade, image, headerText, contentText, actionButtonLocation, showActionButton, actionType, processName, showControlBox,  showProgressBar, actionButtonLaunchProcessText, actionButtonOpenText)
+                                          ActionType actionType, string processName,  bool showControlBox = true,
+                                          bool showProgressBar = false, float cornerRadius = -1, string actionButtonLaunchProcessText = "&Launch Process", 
+                                          string actionButtonOpenText = "&Open") : 
+                                          this(fade, image, headerText, contentText, actionButtonLocation, showActionButton, actionType, processName, showControlBox, showProgressBar, actionButtonLaunchProcessText, actionButtonOpenText)
         {
             CornerRadius = cornerRadius;
         }
@@ -543,10 +550,10 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <param name="borders">The borders.</param>
         public KryptonToastWindowVersion1(bool fade, Image image, string headerText, string contentText, 
                                           ActionButtonLocation actionButtonLocation, bool showActionButton,
-                                          ActionType actionType, string processName,  bool showControlBox = true,  bool showProgressBar = false,
+                                          ActionType actionType, string processName,  bool showControlBox = true, bool showProgressBar = false,
                                           string actionButtonLaunchProcessText = "&Launch Process", string actionButtonOpenText = "&Open",
                                           float cornerRadius = -1, PaletteDrawBorders borders = PaletteDrawBorders.All) : 
-                                          this(fade, image, headerText, contentText, actionButtonLocation, showActionButton, actionType, processName, showControlBox,  showProgressBar, actionButtonLaunchProcessText, actionButtonOpenText)
+                                          this(fade, image, headerText, contentText, actionButtonLocation, showActionButton, actionType, processName, showControlBox, showProgressBar, actionButtonLaunchProcessText, actionButtonOpenText)
         {
             CornerRadius = cornerRadius;
 
@@ -574,10 +581,11 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         public KryptonToastWindowVersion1(bool fade, Image image, string headerText, string contentText, 
                                           ActionButtonLocation actionButtonLocation, bool showActionButton, 
                                           ActionType actionType, string processName, bool showProgressBar = true,
-                                          bool showControlBox = true, string actionButtonLaunchProcessText = "&Launch Process", string actionButtonOpenText = "&Open",
+                                          bool showControlBox = true,
+                                          string actionButtonLaunchProcessText = "&Launch Process", string actionButtonOpenText = "&Open",
                                           float cornerRadius = -1, PaletteDrawBorders borders = PaletteDrawBorders.All, 
                                           IconType iconType = default, int seconds = 0, InputBoxSystemSounds systemSound = InputBoxSystemSounds.BEEP) :
-                                          this(fade, image, headerText, contentText, actionButtonLocation, showActionButton, actionType, processName, showControlBox,  showProgressBar, actionButtonLaunchProcessText, actionButtonOpenText, cornerRadius, borders)
+                                          this(fade, image, headerText, contentText, actionButtonLocation, showActionButton, actionType, processName, showControlBox, showProgressBar, actionButtonLaunchProcessText, actionButtonOpenText, cornerRadius, borders)
         {
             Type = iconType;
 
@@ -1092,10 +1100,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             }
         }
 
-        private void kbtnDismiss_Click(object sender, EventArgs e)
-        {
-            FadeOutAndClose();
-        }
+        private void kbtnDismiss_Click(object sender, EventArgs e) => FadeOutAndClose();
 
         private void KryptonToastWindowVersion1_Resize(object sender, EventArgs e)
         {
@@ -1140,7 +1145,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         public KryptonLabel HeaderLabel { get => klblHeader; }
 
         public KryptonWrapLabel ContentLabel { get => kwlContent; }
-        public KryptonButton ActionButton { get => null; }
+        public KryptonButton ActionButton { get => kbtnAction; }
         public KryptonButton DismissButton { get => kbtnDismiss; }
         public PictureBox IconBox { get => pbxIcon; }
         #endregion

@@ -13,27 +13,13 @@ namespace Toast
 
         private void kbtnVersion1_Click(object sender, EventArgs e)
         {
-            KryptonToastNotificationVersion1Manager toastNotification = new KryptonToastNotificationVersion1Manager()
-            {
-                ShowActionButton = true,
-                Action = ActionType.LAUCHPROCESS,
-                ButtonLocation = ActionButtonLocation.LEFT,
-                Fade = true,
-                ShowProgressBar = true,
-                ShowControlBox = true,
-                SoundPath = null,
-                SoundStream = null,
-                HeaderText = "Hello World!",
-                ContentText = "This is a test",
-                ProcessName = @"C:\Windows\notepad.exe",
-                IconImage = null,
-                Seconds = 60,
-                CornerRadius = -1,
-                PaletteDrawBorders = PaletteDrawBorders.All,
-                Type = IconType.INFORMATION
-            };
+            KryptonToastWindowVersion1 toastNotification = new KryptonToastWindowVersion1(true, null, "Hello World!",
+                "This is a basic notification that launches notepad.exe.",
+                ActionButtonLocation.LEFT, true, ActionType.LAUCHPROCESS, @"C:\Windows\notepad.exe",
+                false, false, "&Launch Notepad", String.Empty, -1, PaletteDrawBorders.All,
+                IconType.INFORMATION, 60, InputBoxSystemSounds.BEEP);
 
-            toastNotification.DisplayToastNotification();
+            toastNotification.Show();
         }
 
         private void kbtnVersion2_Click(object sender, EventArgs e)

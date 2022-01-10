@@ -7,6 +7,7 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
     <ApplicationIcon>Stable.ico</ApplicationIcon>
+    <Configurations>Debug;Release;Nightly</Configurations>
   </PropertyGroup>
 
   <ItemGroup>

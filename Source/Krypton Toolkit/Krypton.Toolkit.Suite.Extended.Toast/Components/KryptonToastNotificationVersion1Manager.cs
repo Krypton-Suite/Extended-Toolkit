@@ -160,8 +160,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                                                        bool fade, bool showActionButton, bool showProgressBar, bool showControlBox,
                                                        string soundPath, Stream soundStream,
                                                        string headerText, string contentText, string processName,
-                                                       IconType iconType, Image iconImage,
-                                                       int seconds, float cornerRadius,
+                                                       IconType iconType, Image iconImage, int seconds, float cornerRadius,
                                                        string actionButtonLaunchProcessText, string actionButtonOpenText,
                                                        PaletteDrawBorders drawBorders, InputBoxSystemSounds systemSounds)
         {
@@ -214,7 +213,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         {
             KryptonToastWindowVersion1 toast = new KryptonToastWindowVersion1(_fade, _image, _headerText, _contentText,
                                                                               _buttonLocation, _showActionButton, _actionType,
-                                                                              _processName, _showProgressBar, _showControlBox, 
+                                                                              _processName, _showProgressBar, _showControlBox,
                                                                               _actionButtonLaunchProcessText, _actionButtonOpenText, 
                                                                               _cornerRadius, _drawBorders,
                                                                               _iconType, _seconds, _systemSounds);
