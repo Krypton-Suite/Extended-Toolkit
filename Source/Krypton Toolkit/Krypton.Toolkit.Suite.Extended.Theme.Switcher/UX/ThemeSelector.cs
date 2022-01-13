@@ -15,25 +15,25 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
         private KryptonButton kbtnOptions;
         private KryptonButton kbtnResetTheme;
         private KryptonButton kbtnLoadTheme;
-        private KryptonButton kbtnApply;
         private KryptonButton kbtnCancel;
         private KryptonPanel kryptonPanel2;
         private KryptonLabel kryptonLabel1;
-        private KryptonComboBox kcmbSelectedTheme;
+        private KryptonThemeComboBox kcmbSelectedTheme;
+        private IContainer components;
         private KryptonBorderEdge kryptonBorderEdge1;
 
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             this.kbtnOptions = new Krypton.Toolkit.KryptonButton();
             this.kbtnResetTheme = new Krypton.Toolkit.KryptonButton();
             this.kbtnLoadTheme = new Krypton.Toolkit.KryptonButton();
-            this.kbtnApply = new Krypton.Toolkit.KryptonButton();
             this.kbtnCancel = new Krypton.Toolkit.KryptonButton();
             this.kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
-            this.kcmbSelectedTheme = new Krypton.Toolkit.KryptonComboBox();
             this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
+            this.kcmbSelectedTheme = new Krypton.Toolkit.KryptonThemeComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
@@ -46,20 +46,19 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             this.kryptonPanel1.Controls.Add(this.kbtnOptions);
             this.kryptonPanel1.Controls.Add(this.kbtnResetTheme);
             this.kryptonPanel1.Controls.Add(this.kbtnLoadTheme);
-            this.kryptonPanel1.Controls.Add(this.kbtnApply);
             this.kryptonPanel1.Controls.Add(this.kbtnCancel);
             this.kryptonPanel1.Controls.Add(this.kryptonBorderEdge1);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 82);
             this.kryptonPanel1.Name = "kryptonPanel1";
             this.kryptonPanel1.PanelBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelAlternate;
-            this.kryptonPanel1.Size = new System.Drawing.Size(576, 50);
+            this.kryptonPanel1.Size = new System.Drawing.Size(470, 50);
             this.kryptonPanel1.TabIndex = 2;
             // 
             // kbtnOptions
             // 
             this.kbtnOptions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.kbtnOptions.Location = new System.Drawing.Point(282, 13);
+            this.kbtnOptions.Location = new System.Drawing.Point(272, 13);
             this.kbtnOptions.Name = "kbtnOptions";
             this.kbtnOptions.Size = new System.Drawing.Size(90, 25);
             this.kbtnOptions.TabIndex = 6;
@@ -88,23 +87,11 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             this.kbtnLoadTheme.Values.Text = "Load Th&eme";
             this.kbtnLoadTheme.Click += new System.EventHandler(this.kbtnLoadTheme_Click);
             // 
-            // kbtnApply
-            // 
-            this.kbtnApply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.kbtnApply.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.kbtnApply.Enabled = false;
-            this.kbtnApply.Location = new System.Drawing.Point(378, 13);
-            this.kbtnApply.Name = "kbtnApply";
-            this.kbtnApply.Size = new System.Drawing.Size(90, 25);
-            this.kbtnApply.TabIndex = 2;
-            this.kbtnApply.Values.Text = "A&pply";
-            this.kbtnApply.Click += new System.EventHandler(this.kbtnApply_Click);
-            // 
             // kbtnCancel
             // 
             this.kbtnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.kbtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.kbtnCancel.Location = new System.Drawing.Point(474, 13);
+            this.kbtnCancel.Location = new System.Drawing.Point(368, 13);
             this.kbtnCancel.Name = "kbtnCancel";
             this.kbtnCancel.Size = new System.Drawing.Size(90, 25);
             this.kbtnCancel.TabIndex = 1;
@@ -117,7 +104,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             this.kryptonBorderEdge1.Dock = System.Windows.Forms.DockStyle.Top;
             this.kryptonBorderEdge1.Location = new System.Drawing.Point(0, 0);
             this.kryptonBorderEdge1.Name = "kryptonBorderEdge1";
-            this.kryptonBorderEdge1.Size = new System.Drawing.Size(576, 1);
+            this.kryptonBorderEdge1.Size = new System.Drawing.Size(470, 1);
             this.kryptonBorderEdge1.Text = "kryptonBorderEdge1";
             // 
             // kryptonPanel2
@@ -127,22 +114,8 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             this.kryptonPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel2.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel2.Name = "kryptonPanel2";
-            this.kryptonPanel2.Size = new System.Drawing.Size(576, 82);
+            this.kryptonPanel2.Size = new System.Drawing.Size(470, 82);
             this.kryptonPanel2.TabIndex = 3;
-            // 
-            // kcmbSelectedTheme
-            // 
-            this.kcmbSelectedTheme.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.kcmbSelectedTheme.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.kcmbSelectedTheme.DropDownWidth = 552;
-            this.kcmbSelectedTheme.IntegralHeight = false;
-            this.kcmbSelectedTheme.Location = new System.Drawing.Point(12, 38);
-            this.kcmbSelectedTheme.Name = "kcmbSelectedTheme";
-            this.kcmbSelectedTheme.Size = new System.Drawing.Size(552, 21);
-            this.kcmbSelectedTheme.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
-            this.kcmbSelectedTheme.TabIndex = 1;
-            this.kcmbSelectedTheme.SelectedIndexChanged += new System.EventHandler(this.kcmbSelectedTheme_SelectedIndexChanged);
-            this.kcmbSelectedTheme.TextChanged += new System.EventHandler(this.kcmbSelectedTheme_TextChanged);
             // 
             // kryptonLabel1
             // 
@@ -153,9 +126,24 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             this.kryptonLabel1.TabIndex = 0;
             this.kryptonLabel1.Values.Text = "Selected Theme:";
             // 
+            // kcmbSelectedTheme
+            // 
+            this.kcmbSelectedTheme.AutoCompleteCustomSource.AddRange(new string[] {
+            "System.String[]"});
+            this.kcmbSelectedTheme.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.kcmbSelectedTheme.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.kcmbSelectedTheme.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.kcmbSelectedTheme.DropDownWidth = 446;
+            this.kcmbSelectedTheme.IntegralHeight = false;
+            this.kcmbSelectedTheme.Location = new System.Drawing.Point(12, 38);
+            this.kcmbSelectedTheme.Name = "kcmbSelectedTheme";
+            this.kcmbSelectedTheme.Size = new System.Drawing.Size(446, 21);
+            this.kcmbSelectedTheme.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
+            this.kcmbSelectedTheme.TabIndex = 1;
+            // 
             // ThemeSelector
             // 
-            this.ClientSize = new System.Drawing.Size(576, 132);
+            this.ClientSize = new System.Drawing.Size(470, 132);
             this.Controls.Add(this.kryptonPanel2);
             this.Controls.Add(this.kryptonPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
@@ -204,8 +192,6 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
         #endregion
 
         #region Methods
-        private void EnableApplyButton(bool enabled) => kbtnApply.Enabled = enabled;
-
         private void EnableResetButton(bool enabled) => kbtnResetTheme.Enabled = enabled;
 
         private void UpdateUI()
@@ -228,15 +214,6 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 
         private void UpdateControlLocation(Control control, Point location) => control.Location = location;
         #endregion
-
-        private void kbtnApply_Click(object sender, EventArgs e)
-        {
-            _themeManager.ApplyTheme(kcmbSelectedTheme.Text, _manager);
-
-            EnableApplyButton(false);
-
-            EnableResetButton(true);
-        }
 
         private void kbtnCancel_Click(object sender, EventArgs e)
         {
@@ -287,8 +264,6 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
             ThemeManager.SetPaletteTheme(_settingsManager.GetSelectedTheme(), kcmbSelectedTheme);
 
             _themeManager.ApplyTheme(kcmbSelectedTheme.Text, _manager);
-
-            EnableApplyButton(false);
         }
 
         private void ThemeSelector_FormClosing(object sender, FormClosingEventArgs e)
@@ -299,11 +274,6 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
         private void kcmbSelectedTheme_SelectedIndexChanged(object sender, EventArgs e)
         {
             EnableResetButton(true);
-        }
-
-        private void kcmbSelectedTheme_TextChanged(object sender, EventArgs e)
-        {
-            EnableResetButton(MissingFrameWorkAPIs.IsNullOrWhiteSpace(kcmbSelectedTheme.Text));
         }
     }
 }

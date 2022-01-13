@@ -16,7 +16,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build System", "Build Syste
 		..\..\build.proj.old = ..\..\build.proj.old
 		..\..\debug.cmd = ..\..\debug.cmd
 		..\..\debug.proj = ..\..\debug.proj
-		..\..\Directory.Build.props = ..\..\Directory.Build.props
 		..\..\purge.cmd = ..\..\purge.cmd
 	EndProjectSection
 EndProject
@@ -257,7 +256,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Exten
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Generic", "Generic", "{4696C160-BC97-414A-8D30-B09A2CA76085}"
 	ProjectSection(SolutionItems) = preProject
-		Directory.Build.props = Directory.Build.props
+		..\..\Directory.Build.props = ..\..\Directory.Build.props
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Generate Packages", "Generate Packages", "{9ACA6117-D269-4425-8500-6BC57560DEB2}"
