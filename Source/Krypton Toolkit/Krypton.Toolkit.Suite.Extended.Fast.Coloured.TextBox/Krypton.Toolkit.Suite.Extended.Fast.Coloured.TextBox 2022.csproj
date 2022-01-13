@@ -14,20 +14,8 @@
     </PropertyGroup>
 
     <!--Package Data-->
-    <Choose>
-        <When Condition="'$(Configuration)' == 'Canary'">
-            <PropertyGroup>
-                <PackageId>Krypton.Toolkit.Suite.Extended.Fast.Coloured.TextBox.Canary</PackageId>
-            </PropertyGroup>
-        </When>
-        <Otherwise>
-            <PropertyGroup>
-                <PackageId>Krypton.Toolkit.Suite.Extended.Fast.Coloured.TextBox</PackageId>
-            </PropertyGroup>
-        </Otherwise>
-    </Choose>
-
     <PropertyGroup>
+        <PackageId>Krypton.Toolkit.Suite.Extended.Fast.Coloured.TextBox</PackageId>
         <Description>An extension to the Krypton standard toolkit. This package holds extensions to the Krypton.Fast.Coloured.TextBox module.</Description>
     </PropertyGroup>
 

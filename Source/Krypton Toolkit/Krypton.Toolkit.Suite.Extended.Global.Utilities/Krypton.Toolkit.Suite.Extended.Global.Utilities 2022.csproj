@@ -5,29 +5,17 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-    <OutputType>library</OutputType>
-    <RootNamespace>Krypton.Toolkit.Suite.Extended.Global.Utilities</RootNamespace>
-    <AssemblyName>Krypton.Toolkit.Suite.Extended.Global.Utilities</AssemblyName>
-    <UseWindowsForms>true</UseWindowsForms>
-    <Configurations>Debug;Release;Nightly;Canary;Stable</Configurations>
+	<OutputType>library</OutputType>
+	<RootNamespace>Krypton.Toolkit.Suite.Extended.Global.Utilities</RootNamespace>
+	<AssemblyName>Krypton.Toolkit.Suite.Extended.Global.Utilities</AssemblyName>
+	<UseWindowsForms>true</UseWindowsForms>
+	<Configurations>Debug;Release;Nightly;Canary;Stable</Configurations>
   </PropertyGroup>
 
   <!--Package Data-->
-  <Choose>
-      <When Condition="'$(Configuration)' == 'Canary'">
-          <PropertyGroup>
-              <PackageId>Krypton.Toolkit.Suite.Extended.Global.Utilities.Canary</PackageId>
-          </PropertyGroup>
-      </When>
-      <Otherwise>
-          <PropertyGroup>
-              <PackageId>Krypton.Toolkit.Suite.Extended.Global.Utilities</PackageId>
-          </PropertyGroup>
-      </Otherwise>
-  </Choose>
-
   <PropertyGroup>
-    <Description>An extension to the Krypton standard toolkit. This package holds extensions to the global utilities module.</Description>
+	 <PackageId>Krypton.Toolkit.Suite.Extended.Global.Utilities</PackageId>
+	 <Description>An extension to the Krypton standard toolkit. This package holds extensions to the global utilities module.</Description>
   </PropertyGroup>
 
 	<Choose>
@@ -84,13 +72,13 @@
 
   <!--Binary/Documentation Output-->
   <PropertyGroup>
-    <DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Global.Utilities\Krypton.Toolkit.Suite.Extended.Global.Utilities.xml</DocumentationFile>
-    <OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Global.Utilities\</OutputPath>
+	<DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Global.Utilities\Krypton.Toolkit.Suite.Extended.Global.Utilities.xml</DocumentationFile>
+	<OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Global.Utilities\</OutputPath>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Developer.Utilities\Krypton.Toolkit.Suite.Extended.Developer.Utilities 2022.csproj" />
-    <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Tools\Krypton.Toolkit.Suite.Extended.Tools 2022.csproj" />
+	<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Developer.Utilities\Krypton.Toolkit.Suite.Extended.Developer.Utilities 2022.csproj" />
+	<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Tools\Krypton.Toolkit.Suite.Extended.Tools 2022.csproj" />
   </ItemGroup>
 
 </Project>

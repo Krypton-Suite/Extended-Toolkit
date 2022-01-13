@@ -1,156 +1,71 @@
 <Project>
-
 	<Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../../'))" />
-
+	
+<!--Handle AssemblyInfo-->
 	<PropertyGroup>
+		<GenerateAssemblyInfo>true</GenerateAssemblyInfo>
 		<NeutralLanguage>en</NeutralLanguage>
-		<Nullable>enable</Nullable>
+		<Authors>Peter Wagner (A.K.A Wagnerp) and Simon Coghlan (A.K.A Smurf-IV), et al.</Authors>
+		<Copyright>© Component Factory Pty Ltd, 2006 - 2016. Then modifications by Peter Wagner (aka Wagnerp) and Simon Coghlan (aka Smurf-IV) 2017 - 2022. All rights reserved.</Copyright>
 	</PropertyGroup>
-
-	<Choose>
-		<When Condition="'$(Configuration)' == 'Canary'">
-			<PropertyGroup>
-				<LangVersion>preview</LangVersion>
-			</PropertyGroup>
-		</When>
-		<Otherwise>
-			<PropertyGroup>
-				<LangVersion>latest</LangVersion>
-			</PropertyGroup>
-		</Otherwise>
-	</Choose>
 
 	<PropertyGroup>
 		<!-- common project data -->
 		<Version>$(LibraryVersion)</Version>
-		<!-- two flavors of TFM are supported : 'all' where the NuGet package include all supported tfms. 'lite' with only .net core and .net 4.5 support -->
-		<TFMs Condition="'$(TFMs)' == ''">lite</TFMs>
 	</PropertyGroup>
 
-	<PropertyGroup>
-		<!-- common package data -->
-		<PackageProjectUrl>https://github.com/Krypton-Suite/Extended-Toolkit</PackageProjectUrl>
-		<PackageIcon>Canary.png</PackageIcon>
-		<Authors>Peter William Wagner &amp; Simon Coghlan &amp; Thomas Bolon, et al.</Authors>
-		<!--<PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>-->
-		<PackageTags>Krypton ComponentFactory WinForms Themes Controls DataGrid Ribbon Workspace Tabs .Net Toolkit Core</PackageTags>
-		<PackageReleaseNotes>Get updates here: https://github.com/Krypton-Suite/Extended-Toolkit</PackageReleaseNotes>
-		<RepositoryType>git</RepositoryType>
-		<RepositoryUrl>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryUrl>
-	</PropertyGroup>
-
-	<!--Generate NuGet packages on build-->
 	<Choose>
-		<When Condition="'$(Configuration)' == 'Nigtly'">
+		<When Condition="'$(Configuration)' == 'Canary'">
+			<ItemGroup>
+				<None Include="../../../Assets/PNG/NuGet Package Icons/Krypton Canary.png" Link="Icon.png" Pack="true" PackagePath="" />
+			</ItemGroup>
+
 			<PropertyGroup>
-				<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-
-				<PackageIcon>Nightly.png</PackageIcon>
-
-				<PackageLicenseUrl>https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE</PackageLicenseUrl>
-
-				<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-
-				<LangVersion>latest</LangVersion>
-				
-				<PackageOutputPath>..\..\..\Bin\NuGet Packages\Nightly</PackageOutputPath>
+				<!-- common package data -->
+				<PackageProjectUrl>https://github.com/Krypton-Suite/Extended-Toolkit</PackageProjectUrl>
+				<PackageIcon>Krypton Canary.png</PackageIcon>
+				<Authors>Peter William Wagner &amp; Simon Coghlan &amp; Thomas Bolon</Authors>
+				<PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
+				<PackageTags>Krypton ComponentFactory WinForms Themes Controls DataGrid Ribbon Workspace Tabs .Net Toolkit Core</PackageTags>
+				<PackageReleaseNotes>Get updates here: https://github.com/Krypton-Suite/Extended-Toolkit</PackageReleaseNotes>
+				<RepositoryType>git</RepositoryType>
+				<RepositoryURL>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryURL>
 			</PropertyGroup>
 		</When>
 
-		<When Condition="'$(Configuration)' == 'Canary'">
+		<When Condition="'$(Configuration)' == 'Nightly'">
+			<ItemGroup>
+				<None Include="../../../Assets/PNG/NuGet Package Icons/Krypton Nightly.png" Link="Icon.png" Pack="true" PackagePath="" />
+			</ItemGroup>
+
 			<PropertyGroup>
-				<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-
-				<!--Package icon-->
-				<!--<PackageIcon>Canary.png</PackageIcon>-->
-
-				<PackageLicenseUrl>https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE</PackageLicenseUrl>
-
-				<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-
-				<PackageOutputPath>..\..\..\Bin\NuGet Packages\Canary</PackageOutputPath>
+				<!-- common package data -->
+				<PackageProjectUrl>https://github.com/Krypton-Suite/Extended-Toolkit</PackageProjectUrl>
+				<PackageIcon>Krypton Nightly.png</PackageIcon>
+				<Authors>Peter William Wagner &amp; Simon Coghlan &amp; Thomas Bolon</Authors>
+				<PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
+				<PackageTags>Krypton ComponentFactory WinForms Themes Controls DataGrid Ribbon Workspace Tabs .Net Toolkit Core</PackageTags>
+				<PackageReleaseNotes>Get updates here: https://github.com/Krypton-Suite/Extended-Toolkit</PackageReleaseNotes>
+				<RepositoryType>git</RepositoryType>
+				<RepositoryURL>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryURL>
 			</PropertyGroup>
 		</When>
 		<Otherwise>
+			<ItemGroup>
+				<None Include="../../../Assets/PNG/NuGet Package Icons/Krypton Stable.png" Link="Icon.png" Pack="true" PackagePath="" />
+			</ItemGroup>
+
 			<PropertyGroup>
-				<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-
-				<!--Package icon-->
-				<!--<PackageIcon>Stable.png</PackageIcon>-->
-
-				<PackageLicenseUrl>https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE</PackageLicenseUrl>
-
-				<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-
-				<PackageOutputPath>..\..\..\Bin\NuGet Packages\Stable</PackageOutputPath>
+				<!-- common package data -->
+				<PackageProjectUrl>https://github.com/Krypton-Suite/Extended-Toolkit</PackageProjectUrl>
+				<PackageIcon>Krypton Stable.png</PackageIcon>
+				<Authors>Peter William Wagner &amp; Simon Coghlan &amp; Thomas Bolon</Authors>
+				<PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
+				<PackageTags>Krypton ComponentFactory WinForms Themes Controls DataGrid Ribbon Workspace Tabs .Net Toolkit Core</PackageTags>
+				<PackageReleaseNotes>Get updates here: https://github.com/Krypton-Suite/Extended-Toolkit</PackageReleaseNotes>
+				<RepositoryType>git</RepositoryType>
+				<RepositoryURL>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryURL>
 			</PropertyGroup>
 		</Otherwise>
 	</Choose>
-
-	<!--Version information-->
-	<Choose>
-		<When Condition="'$(Configuration)' == 'Canary'">
-			<PropertyGroup>
-				<Minor>$([System.DateTime]::Now.ToString(yy))</Minor>
-				<Build>$([System.DateTime]::Now.ToString(MM))</Build>
-				<Revision>$([System.DateTime]::Now.get_DayOfYear().ToString())</Revision>
-
-				<!--Version layout schema:
-				60 = Major
-				22 = Minor - Year of release
-				01 = Build - Month of release
-				1 = Revision - Day of release (day of year)
-				-beta = Indicates a pre-release package
-				-->
-				<LibraryVersion>60.$(Minor).$(Build).$(Revision)</LibraryVersion>
-
-				<!--https://docs.microsoft.com/en-us/nuget/create-packages/prerelease-packages-->
-				<PackageVersion>60.$(Minor).$(Build).$(Revision)-beta</PackageVersion>
-			</PropertyGroup>
-		</When>
-		<Otherwise>
-			<PropertyGroup>
-				<Minor>$([System.DateTime]::Now.ToString(yy))</Minor>
-				<Build>$([System.DateTime]::Now.ToString(MM))</Build>
-				<Revision>$([System.DateTime]::Now.get_DayOfYear().ToString())</Revision>
-
-				<!--Version layout schema:
-				60 = Major
-				22 = Minor - Year of release
-				01 = Build - Month of release
-				1 = Revision - Day of release (day of year)
-				-beta = Indicates a pre-release package
-				-->
-				<LibraryVersion>60.$(Minor).$(Build).$(Revision)</LibraryVersion>
-
-				<!--https://docs.microsoft.com/en-us/nuget/create-packages/prerelease-packages-->
-				<PackageVersion>60.$(Minor).$(Build).$(Revision)</PackageVersion>
-			</PropertyGroup>
-		</Otherwise>
-	</Choose>
-
-	<PropertyGroup>
-		<Minor>$([System.DateTime]::Now.ToString(yy))</Minor>
-		<Build>$([System.DateTime]::Now.ToString(MM))</Build>
-		<Revision>$([System.DateTime]::Now.get_DayOfYear().ToString())</Revision>
-
-		<!--Version layout:
-				60 = Major
-				2109 = Minor
-				18 = Build
-				-alpha = Indicates a pre-release package
-			-->
-		<LibraryVersion>60.$(Minor).$(Build).$(Revision)</LibraryVersion>
-
-		<!--Nightly-->
-		<!--https://docs.microsoft.com/en-us/nuget/create-packages/prerelease-packages-->
-		<!--<PackageVersion>60.$(Minor).$(Build)-alpha</PackageVersion>-->
-
-		<AssemblyVersion>60.$(Minor).$(Build).$(Revision)</AssemblyVersion>
-
-		<FileVersion>60.$(Minor).$(Build).$(Revision)</FileVersion>
-
-		<Version>60.$(Minor).$(Build).$(Revision)</Version>
-	</PropertyGroup>
-
 </Project>

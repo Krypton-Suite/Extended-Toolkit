@@ -14,21 +14,9 @@
   </PropertyGroup>
 
   <!--Package Data-->
-  <Choose>
-	  <When Condition="'$(Configuration)' == 'Canary'">
-		  <PropertyGroup>
-			  <PackageId>Krypton.Toolkit.Suite.Extended.Toast.Canary</PackageId>
-		  </PropertyGroup>
-	  </When>
-	  <Otherwise>
-		  <PropertyGroup>
-			  <PackageId>Krypton.Toolkit.Suite.Extended.Toast</PackageId>
-		  </PropertyGroup>
-	  </Otherwise>
-  </Choose>
-
   <PropertyGroup>
-	<Description>An extension to the Krypton standard toolkit. This package holds a framework that allows the creation of toast notifications.</Description>
+	  <PackageId>Krypton.Toolkit.Suite.Extended.Toast</PackageId>
+	  <Description>An extension to the Krypton standard toolkit. This package holds a framework that allows the creation of toast notifications.</Description>
   </PropertyGroup>
 
 	<Choose>

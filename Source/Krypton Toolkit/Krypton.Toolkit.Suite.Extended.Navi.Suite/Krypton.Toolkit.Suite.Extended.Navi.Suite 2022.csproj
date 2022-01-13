@@ -14,20 +14,8 @@
     </PropertyGroup>
 
     <!--Package Data-->
-    <Choose>
-        <When Condition="'$(Configuration)' == 'Canary'">
-            <PropertyGroup>
-                <PackageId>Krypton.Toolkit.Suite.Extended.Navi.Suite.Canary</PackageId>
-            </PropertyGroup>
-        </When>
-        <Otherwise>
-            <PropertyGroup>
-                <PackageId>Krypton.Toolkit.Suite.Extended.Navi.Suite</PackageId>
-            </PropertyGroup>
-        </Otherwise>
-    </Choose>
-
     <PropertyGroup>
+        <PackageId>Krypton.Toolkit.Suite.Extended.Navi.Suite</PackageId>
         <Description>An extension to the Krypton standard toolkit. This package implements the navi suite control.</Description>
     </PropertyGroup>
 

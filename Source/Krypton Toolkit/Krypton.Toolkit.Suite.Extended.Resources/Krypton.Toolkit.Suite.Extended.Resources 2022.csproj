@@ -5,29 +5,17 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-    <OutputType>library</OutputType>
-    <RootNamespace>Krypton.Toolkit.Suite.Extended.Resources</RootNamespace>
-    <AssemblyName>Krypton.Toolkit.Suite.Extended.Resources</AssemblyName>
-    <UseWindowsForms>true</UseWindowsForms>
-    <Configurations>Debug;Release;Nightly;Canary;Stable</Configurations>
+	<OutputType>library</OutputType>
+	<RootNamespace>Krypton.Toolkit.Suite.Extended.Resources</RootNamespace>
+	<AssemblyName>Krypton.Toolkit.Suite.Extended.Resources</AssemblyName>
+	<UseWindowsForms>true</UseWindowsForms>
+	<Configurations>Debug;Release;Nightly;Canary;Stable</Configurations>
   </PropertyGroup>
 
   <!--Package Data-->
-  <Choose>
-      <When Condition="'$(Configuration)' == 'Canary'">
-          <PropertyGroup>
-              <PackageId>Krypton.Toolkit.Suite.Extended.Resources.Canary</PackageId>
-          </PropertyGroup>
-      </When>
-      <Otherwise>
-          <PropertyGroup>
-              <PackageId>Krypton.Toolkit.Suite.Extended.Resources</PackageId>
-          </PropertyGroup>
-      </Otherwise>
-  </Choose>
-
   <PropertyGroup>
-    <Description>An extension to the Krypton standard toolkit. This package implements resources for the toolkit.</Description>
+	<PackageId>Krypton.Toolkit.Suite.Extended.Resources</PackageId>
+	<Description>An extension to the Krypton standard toolkit. This package implements resources for the toolkit.</Description>
   </PropertyGroup>
 
 	<Choose>
@@ -84,22 +72,22 @@
 
   <!--Binary/Documentation Output-->
   <PropertyGroup>
-    <DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Resources\Krypton.Toolkit.Suite.Extended.Resources.xml</DocumentationFile>
-    <OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Resources\</OutputPath>
+	<DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Resources\Krypton.Toolkit.Suite.Extended.Resources.xml</DocumentationFile>
+	<OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Resources\</OutputPath>
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Update="Images\ImageResources.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>ImageResources.resx</DependentUpon>
-    </Compile>
+	<Compile Update="Images\ImageResources.Designer.cs">
+	  <DesignTime>True</DesignTime>
+	  <AutoGen>True</AutoGen>
+	  <DependentUpon>ImageResources.resx</DependentUpon>
+	</Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Update="Images\ImageResources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>ImageResources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
+	<EmbeddedResource Update="Images\ImageResources.resx">
+	  <Generator>ResXFileCodeGenerator</Generator>
+	  <LastGenOutput>ImageResources.Designer.cs</LastGenOutput>
+	</EmbeddedResource>
   </ItemGroup>
 
 </Project>

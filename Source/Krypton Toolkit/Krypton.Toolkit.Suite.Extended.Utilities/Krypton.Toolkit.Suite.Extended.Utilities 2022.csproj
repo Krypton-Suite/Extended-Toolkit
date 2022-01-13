@@ -5,29 +5,17 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-    <OutputType>library</OutputType>
-    <RootNamespace>Krypton.Toolkit.Suite.Extended.Utilities</RootNamespace>
-    <AssemblyName>Krypton.Toolkit.Suite.Extended.Utilities</AssemblyName>
-    <UseWindowsForms>true</UseWindowsForms>
-    <Configurations>Debug;Release;Nightly;Canary;Stable</Configurations>
+	<OutputType>library</OutputType>
+	<RootNamespace>Krypton.Toolkit.Suite.Extended.Utilities</RootNamespace>
+	<AssemblyName>Krypton.Toolkit.Suite.Extended.Utilities</AssemblyName>
+	<UseWindowsForms>true</UseWindowsForms>
+	<Configurations>Debug;Release;Nightly;Canary;Stable</Configurations>
   </PropertyGroup>
 
   <!--Package Data-->
-  <Choose>
-      <When Condition="'$(Configuration)' == 'Canary'">
-          <PropertyGroup>
-              <PackageId>Krypton.Toolkit.Suite.Extended.Utilities.Canary</PackageId>
-          </PropertyGroup>
-      </When>
-      <Otherwise>
-          <PropertyGroup>
-              <PackageId>Krypton.Toolkit.Suite.Extended.Utilities</PackageId>
-          </PropertyGroup>
-      </Otherwise>
-  </Choose>
-
   <PropertyGroup>
-    <Description>An extension to the Krypton standard toolkit. This package implements additional toolkit utilities.</Description>
+	<PackageId>Krypton.Toolkit.Suite.Extended.Utilities</PackageId>
+	<Description>An extension to the Krypton standard toolkit. This package implements additional toolkit utilities.</Description>
   </PropertyGroup>
 
   <Choose>
@@ -84,8 +72,8 @@
 
   <!--Binary/Documentation Output-->
   <PropertyGroup>
-    <DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Utilities\Krypton.Toolkit.Suite.Extended.Utilities.xml</DocumentationFile>
-    <OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Utilities\</OutputPath>
+	<DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Utilities\Krypton.Toolkit.Suite.Extended.Utilities.xml</DocumentationFile>
+	<OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Utilities\</OutputPath>
   </PropertyGroup>
 
 </Project>

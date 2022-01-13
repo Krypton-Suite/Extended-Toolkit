@@ -5,29 +5,17 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-    <OutputType>library</OutputType>
-    <RootNamespace>Krypton.Toolkit.Suite.Extended.Tools</RootNamespace>
-    <AssemblyName>Krypton.Toolkit.Suite.Extended.Tools</AssemblyName>
-    <UseWindowsForms>true</UseWindowsForms>
-    <Configurations>Debug;Release;Nightly;Canary;Stable</Configurations>
+	<OutputType>library</OutputType>
+	<RootNamespace>Krypton.Toolkit.Suite.Extended.Tools</RootNamespace>
+	<AssemblyName>Krypton.Toolkit.Suite.Extended.Tools</AssemblyName>
+	<UseWindowsForms>true</UseWindowsForms>
+	<Configurations>Debug;Release;Nightly;Canary;Stable</Configurations>
   </PropertyGroup>
 
   <!--Package Data-->
-  <Choose>
-      <When Condition="'$(Configuration)' == 'Canary'">
-          <PropertyGroup>
-              <PackageId>Krypton.Toolkit.Suite.Extended.Tools.Canary</PackageId>
-          </PropertyGroup>
-      </When>
-      <Otherwise>
-          <PropertyGroup>
-              <PackageId>Krypton.Toolkit.Suite.Extended.Tools</PackageId>
-          </PropertyGroup>
-      </Otherwise>
-  </Choose>
-
   <PropertyGroup>
-    <Description>An extension to the Krypton standard toolkit. This package holds common tools.</Description>
+	<PackageId>Krypton.Toolkit.Suite.Extended.Tools</PackageId>
+	<Description>An extension to the Krypton standard toolkit. This package holds common tools.</Description>
   </PropertyGroup>
 
   <Choose>
@@ -84,8 +72,8 @@
   
   <!--Binary/Documentation Output-->
   <PropertyGroup>
-    <DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Tools\Krypton.Toolkit.Suite.Extended.Tools.xml</DocumentationFile>
-    <OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Tools\</OutputPath>
+	<DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Tools\Krypton.Toolkit.Suite.Extended.Tools.xml</DocumentationFile>
+	<OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Tools\</OutputPath>
   </PropertyGroup>
   
 </Project>

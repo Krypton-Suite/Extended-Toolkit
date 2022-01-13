@@ -14,18 +14,9 @@
     </PropertyGroup>
 
     <!--Package Data-->
-    <Choose>
-        <When Condition="'$(Configuration)' == 'Canary'">
-            <PropertyGroup>
-                <PackageId>Krypton.Toolkit.Suite.Extended.ComboBox.Canary</PackageId>
-            </PropertyGroup>
-        </When>
-        <Otherwise>
-            <PropertyGroup>
-                <PackageId>Krypton.Toolkit.Suite.Extended.ComboBox</PackageId>
-            </PropertyGroup>
-        </Otherwise>
-    </Choose>
+    <PropertyGroup>
+        <PackageId>Krypton.Toolkit.Suite.Extended.ComboBox</PackageId>
+    </PropertyGroup>
 
 	<Choose>
 		<When Condition="'$(Configuration)' == 'Canary'">
