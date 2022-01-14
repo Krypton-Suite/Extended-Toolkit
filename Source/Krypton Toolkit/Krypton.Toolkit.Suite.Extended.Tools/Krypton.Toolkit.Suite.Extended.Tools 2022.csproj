@@ -5,61 +5,18 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-    <OutputType>library</OutputType>
-    <RootNamespace>Krypton.Toolkit.Suite.Extended.Tools</RootNamespace>
-    <AssemblyName>Krypton.Toolkit.Suite.Extended.Tools</AssemblyName>
-    <UseWindowsForms>true</UseWindowsForms>
-    <Configurations>Debug;Release;Nightly;Canary;Stable</Configurations>
+	<OutputType>library</OutputType>
+	<RootNamespace>Krypton.Toolkit.Suite.Extended.Tools</RootNamespace>
+	<AssemblyName>Krypton.Toolkit.Suite.Extended.Tools</AssemblyName>
+	<UseWindowsForms>true</UseWindowsForms>
+	<Configurations>Debug;Release;Nightly;Canary;Stable</Configurations>
   </PropertyGroup>
 
   <!--Package Data-->
-  <Choose>
-      <When Condition="'$(Configuration)' == 'Canary'">
-          <PropertyGroup>
-              <PackageId>Krypton.Toolkit.Suite.Extended.Tools.Canary</PackageId>
-          </PropertyGroup>
-      </When>
-      <Otherwise>
-          <PropertyGroup>
-              <PackageId>Krypton.Toolkit.Suite.Extended.Tools</PackageId>
-          </PropertyGroup>
-      </Otherwise>
-  </Choose>
-
   <PropertyGroup>
-    <Description>An extension to the Krypton standard toolkit. This package holds common tools.</Description>
+	<PackageId>Krypton.Toolkit.Suite.Extended.Tools</PackageId>
+	<Description>An extension to the Krypton standard toolkit. This package holds common tools.</Description>
   </PropertyGroup>
-
-  <Choose>
-	  <When Condition="'$(Configuration)' == 'Canary'">
-		  <ItemGroup>
-			  <None Include="Package Icons\Canary.png" Link="Canary.png" Pack="true" PackagePath="" />
-		  </ItemGroup>
-
-		  <PropertyGroup>
-			  <PackageIcon>Canary.png</PackageIcon>
-		  </PropertyGroup>
-	  </When>
-
-	  <When Condition="'$(Configuration)' == 'Nightly'">
-		  <ItemGroup>
-			  <None Include="Package Icons\Nightly.png" Link="Nightly.png" PackagePath="" />
-		  </ItemGroup>
-
-		  <PropertyGroup>
-			  <PackageIcon>Nightly.png</PackageIcon>
-		  </PropertyGroup>
-	  </When>
-	  <Otherwise>
-		  <ItemGroup>
-			  <None Include="Package Icons\Stable.png" Link="Stable.png" Pack="true" PackagePath="" />
-		  </ItemGroup>
-
-		  <PropertyGroup>
-			  <PackageIcon>Stable.png</PackageIcon>
-		  </PropertyGroup>
-	  </Otherwise>
-  </Choose>
 
   <Choose>
 	  <When Condition="'$(Configuration)' == 'Canary'">
@@ -69,6 +26,16 @@
 
 		  <ItemGroup>
 			  <PackageReference Include="Krypton.Toolkit.Canary" Version="6.22.1.10-beta" />
+		  </ItemGroup>
+	  </When>
+
+	  <When Condition="'$(Configuration)' == 'Nightly'">
+		  <PropertyGroup>
+			  <LangVersion>preview</LangVersion>
+		  </PropertyGroup>
+
+		  <ItemGroup>
+			  <PackageReference Include="Krypton.Toolkit.Canary" Version="6.22.1.13-alpha" />
 		  </ItemGroup>
 	  </When>
 	  <Otherwise>
@@ -84,8 +51,8 @@
   
   <!--Binary/Documentation Output-->
   <PropertyGroup>
-    <DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Tools\Krypton.Toolkit.Suite.Extended.Tools.xml</DocumentationFile>
-    <OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Tools\</OutputPath>
+	<DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Tools\Krypton.Toolkit.Suite.Extended.Tools.xml</DocumentationFile>
+	<OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Tools\</OutputPath>
   </PropertyGroup>
   
 </Project>

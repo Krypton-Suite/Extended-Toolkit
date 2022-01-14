@@ -14,20 +14,8 @@
     </PropertyGroup>
 
     <!--Package Data-->
-    <Choose>
-        <When Condition="'$(Configuration)' == 'Canary'">
-            <PropertyGroup>
-                <PackageId>Krypton.Toolkit.Suite.Extended.Buttons.Canary</PackageId>
-            </PropertyGroup>
-        </When>
-        <Otherwise>
-            <PropertyGroup>
-                <PackageId>Krypton.Toolkit.Suite.Extended.Buttons</PackageId>
-            </PropertyGroup>
-        </Otherwise>
-    </Choose>
-
     <PropertyGroup>
+        <PackageId>Krypton.Toolkit.Suite.Extended.Buttons</PackageId>
         <Description>An extension to the Krypton standard toolkit. This package holds extensions to the Krypton.Buttons module.</Description>
     </PropertyGroup>
 
@@ -39,6 +27,16 @@
 
 			<ItemGroup>
 				<PackageReference Include="Krypton.Toolkit.Canary" Version="6.22.1.10-beta" />
+			</ItemGroup>
+		</When>
+		
+		<When Condition="'$(Configuration)' == 'Nightly'">
+			<PropertyGroup>
+				<LangVersion>preview</LangVersion>
+			</PropertyGroup>
+
+			<ItemGroup>
+				<PackageReference Include="Krypton.Toolkit.Canary" Version="6.22.1.13-alpha" />
 			</ItemGroup>
 		</When>
 		<Otherwise>
@@ -78,37 +76,6 @@
         <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
         <!--<PackageIcon>Stable.png</PackageIcon>-->
     </PropertyGroup>
-
-    <Choose>
-	    <When Condition="'$(Configuration)' == 'Canary'">
-		    <ItemGroup>
-			    <None Include="Package Icons\Canary.png" Link="Canary.png" Pack="true" PackagePath="" />
-		    </ItemGroup>
-
-		    <PropertyGroup>
-			    <PackageIcon>Canary.png</PackageIcon>
-		    </PropertyGroup>
-	    </When>
-
-	    <When Condition="'$(Configuration)' == 'Nightly'">
-		    <ItemGroup>
-			    <None Include="Package Icons\Nightly.png" Link="Nightly.png" PackagePath="" />
-		    </ItemGroup>
-
-		    <PropertyGroup>
-			    <PackageIcon>Nightly.png</PackageIcon>
-		    </PropertyGroup>
-	    </When>
-	    <Otherwise>
-		    <ItemGroup>
-			    <None Include="Package Icons\Stable.png" Link="Stable.png" Pack="true" PackagePath="" />
-		    </ItemGroup>
-
-		    <PropertyGroup>
-			    <PackageIcon>Stable.png</PackageIcon>
-		    </PropertyGroup>
-	    </Otherwise>
-    </Choose>
 
 	<ItemGroup>
 		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Developer.Utilities\Krypton.Toolkit.Suite.Extended.Developer.Utilities 2022.csproj" />

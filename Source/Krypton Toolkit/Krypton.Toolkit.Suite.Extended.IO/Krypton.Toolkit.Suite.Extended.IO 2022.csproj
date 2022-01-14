@@ -14,53 +14,10 @@
     </PropertyGroup>
 
     <!--Package Data-->
-    <Choose>
-        <When Condition="'$(Configuration)' == 'Canary'">
-            <PropertyGroup>
-                <PackageId>Krypton.Toolkit.Suite.Extended.IO.Canary</PackageId>
-            </PropertyGroup>
-        </When>
-        <Otherwise>
-            <PropertyGroup>
-                <PackageId>Krypton.Toolkit.Suite.Extended.IO</PackageId>
-            </PropertyGroup>
-        </Otherwise>
-    </Choose>
-
     <PropertyGroup>
+        <PackageId>Krypton.Toolkit.Suite.Extended.IO</PackageId>
         <Description>An extension to the Krypton standard toolkit. This package implements IO controls.</Description>
     </PropertyGroup>
-
-    <Choose>
-	    <When Condition="'$(Configuration)' == 'Canary'">
-		    <ItemGroup>
-			    <None Include="Package Icons\Canary.png" Link="Canary.png" Pack="true" PackagePath="" />
-		    </ItemGroup>
-
-		    <PropertyGroup>
-			    <PackageIcon>Canary.png</PackageIcon>
-		    </PropertyGroup>
-	    </When>
-
-	    <When Condition="'$(Configuration)' == 'Nightly'">
-		    <ItemGroup>
-			    <None Include="Package Icons\Nightly.png" Link="Nightly.png" PackagePath="" />
-		    </ItemGroup>
-
-		    <PropertyGroup>
-			    <PackageIcon>Nightly.png</PackageIcon>
-		    </PropertyGroup>
-	    </When>
-	    <Otherwise>
-		    <ItemGroup>
-			    <None Include="Package Icons\Stable.png" Link="Stable.png" Pack="true" PackagePath="" />
-		    </ItemGroup>
-
-		    <PropertyGroup>
-			    <PackageIcon>Stable.png</PackageIcon>
-		    </PropertyGroup>
-	    </Otherwise>
-    </Choose>
 
     <Choose>
 	    <When Condition="'$(Configuration)' == 'Canary'">
@@ -72,6 +29,16 @@
 			    <PackageReference Include="Krypton.Toolkit.Canary" Version="6.22.1.10-beta" />
 		    </ItemGroup>
 	    </When>
+
+		<When Condition="'$(Configuration)' == 'Nightly'">
+			<PropertyGroup>
+				<LangVersion>preview</LangVersion>
+			</PropertyGroup>
+
+			<ItemGroup>
+				<PackageReference Include="Krypton.Toolkit.Canary" Version="6.22.1.13-alpha" />
+			</ItemGroup>
+		</When>
 	    <Otherwise>
 		    <PropertyGroup>
 			    <LangVersion>preview</LangVersion>

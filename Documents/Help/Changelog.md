@@ -1,5 +1,12 @@
 =======
 
+## 2022-04-04 - Build 2204 - April 2022
+* The `ThemeSelector` now uses the native `KryptonThemeComboBox` control
+* Nightly packages are now available both on GitHub and nuget.org
+* Updated standard toolkit to build `2204`
+
+=======
+
 ## 2022-02-03 - Build 2202 - February 2022
 * Updated NuGet package information to aid deployment to GitHub
 * New `Krypton.Toolkit.Suite.Extended.Error.Reporting` module

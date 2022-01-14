@@ -5,62 +5,19 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-        <OutputType>library</OutputType>
-        <RootNamespace>Krypton.Toolkit.Suite.Extended.Drawing.Utilities</RootNamespace>
-        <AssemblyName>Krypton.Toolkit.Suite.Extended.Drawing.Utilities</AssemblyName>
-        <UseWindowsForms>true</UseWindowsForms>
-        <NeutralLanguage>en</NeutralLanguage>
-        <Configurations>Debug;Release;Nightly;Canary;Stable</Configurations>
-    </PropertyGroup>
+		<OutputType>library</OutputType>
+		<RootNamespace>Krypton.Toolkit.Suite.Extended.Drawing.Utilities</RootNamespace>
+		<AssemblyName>Krypton.Toolkit.Suite.Extended.Drawing.Utilities</AssemblyName>
+		<UseWindowsForms>true</UseWindowsForms>
+		<NeutralLanguage>en</NeutralLanguage>
+		<Configurations>Debug;Release;Nightly;Canary;Stable</Configurations>
+	</PropertyGroup>
 
-    <!--Package Data-->
-    <Choose>
-        <When Condition="'$(Configuration)' == 'Canary'">
-            <PropertyGroup>
-                <PackageId>Krypton.Toolkit.Suite.Extended.Drawing.Utilities.Canary</PackageId>
-            </PropertyGroup>
-        </When>
-        <Otherwise>
-            <PropertyGroup>
-                <PackageId>Krypton.Toolkit.Suite.Extended.Drawing.Utilities</PackageId>
-            </PropertyGroup>
-        </Otherwise>
-    </Choose>
-
-    <PropertyGroup>
-        <Description>An extension to the Krypton standard toolkit. This package implements additional drawing utilities.</Description>
-    </PropertyGroup>
-
-    <Choose>
-	    <When Condition="'$(Configuration)' == 'Canary'">
-		    <ItemGroup>
-			    <None Include="Package Icons\Canary.png" Link="Canary.png" Pack="true" PackagePath="" />
-		    </ItemGroup>
-
-		    <PropertyGroup>
-			    <PackageIcon>Canary.png</PackageIcon>
-		    </PropertyGroup>
-	    </When>
-
-	    <When Condition="'$(Configuration)' == 'Nightly'">
-		    <ItemGroup>
-			    <None Include="Package Icons\Nightly.png" Link="Nightly.png" PackagePath="" />
-		    </ItemGroup>
-
-		    <PropertyGroup>
-			    <PackageIcon>Nightly.png</PackageIcon>
-		    </PropertyGroup>
-	    </When>
-	    <Otherwise>
-		    <ItemGroup>
-			    <None Include="Package Icons\Stable.png" Link="Stable.png" Pack="true" PackagePath="" />
-		    </ItemGroup>
-
-		    <PropertyGroup>
-			    <PackageIcon>Stable.png</PackageIcon>
-		    </PropertyGroup>
-	    </Otherwise>
-    </Choose>
+	<!--Package Data-->
+	<PropertyGroup>
+		<PackageId>Krypton.Toolkit.Suite.Extended.Drawing.Utilities</PackageId>
+		<Description>An extension to the Krypton standard toolkit. This package implements additional drawing utilities.</Description>
+	</PropertyGroup>
 
 	<Choose>
 		<When Condition="'$(Configuration)' == 'Canary'">
@@ -70,6 +27,16 @@
 
 			<ItemGroup>
 				<PackageReference Include="Krypton.Toolkit.Canary" Version="6.22.1.10-beta" />
+			</ItemGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'Nightly'">
+			<PropertyGroup>
+				<LangVersion>preview</LangVersion>
+			</PropertyGroup>
+
+			<ItemGroup>
+				<PackageReference Include="Krypton.Toolkit.Canary" Version="6.22.1.13-alpha" />
 			</ItemGroup>
 		</When>
 		<Otherwise>
@@ -83,56 +50,56 @@
 		</Otherwise>
 	</Choose>
 
-    <ItemGroup>
-        <Reference Include="System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net4'))">
-            <SpecificVersion>True</SpecificVersion>
-            <Version>4.0.0.0</Version>
-            <TreatAsUsed>True</TreatAsUsed>
-        </Reference>
-        <Reference Include="System.Design, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net5'))">
-            <SpecificVersion>True</SpecificVersion>
-            <Version>5.0.0.0</Version>
-            <TreatAsUsed>True</TreatAsUsed>
-        </Reference>
-        <Reference Include="System.Design, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net6'))">
-            <SpecificVersion>True</SpecificVersion>
-            <Version>6.0.0.0</Version>
-            <TreatAsUsed>True</TreatAsUsed>
-        </Reference>
-        <Reference Include="System.Design" Condition="'$(TargetFramework)' == 'net35'" />
-        <!--TODO: Need to specify version here-->
-    </ItemGroup>
-    <!--Binary/Documentation Output-->
-    <PropertyGroup>
-        <DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Drawing.Utilities\Krypton.Toolkit.Suite.Extended.Drawing.Utilities.xml</DocumentationFile>
-        <OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Drawing.Utilities\</OutputPath>
-    </PropertyGroup>
-    <ItemGroup>
-        <!--<PackageReference Include="Cyotek.Windows.Forms.ColorPicker" Version="1.7.2" />-->
-        <PackageReference Include="Unofficial.Cyotek.Windows.Forms.NET" Version="1.8.1" />
-    </ItemGroup>
-    <ItemGroup>
-      <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Buttons\Krypton.Toolkit.Suite.Extended.Buttons 2022.csproj" />
-      <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Common\Krypton.Toolkit.Suite.Extended.Common 2022.csproj" />
-      <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Controls\Krypton.Toolkit.Suite.Extended.Controls 2022.csproj" />
-      <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Core\Krypton.Toolkit.Suite.Extended.Core 2022.csproj" />
-      <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Developer.Utilities\Krypton.Toolkit.Suite.Extended.Developer.Utilities 2022.csproj" />
-      <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Floating.Toolbars\Krypton.Toolkit.Suite.Extended.Floating.Toolbars 2022.csproj" />
-      <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Messagebox\Krypton.Toolkit.Suite.Extended.Messagebox 2022.csproj" />
-    </ItemGroup>
+	<ItemGroup>
+		<Reference Include="System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net4'))">
+			<SpecificVersion>True</SpecificVersion>
+			<Version>4.0.0.0</Version>
+			<TreatAsUsed>True</TreatAsUsed>
+		</Reference>
+		<Reference Include="System.Design, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net5'))">
+			<SpecificVersion>True</SpecificVersion>
+			<Version>5.0.0.0</Version>
+			<TreatAsUsed>True</TreatAsUsed>
+		</Reference>
+		<Reference Include="System.Design, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net6'))">
+			<SpecificVersion>True</SpecificVersion>
+			<Version>6.0.0.0</Version>
+			<TreatAsUsed>True</TreatAsUsed>
+		</Reference>
+		<Reference Include="System.Design" Condition="'$(TargetFramework)' == 'net35'" />
+		<!--TODO: Need to specify version here-->
+	</ItemGroup>
+	<!--Binary/Documentation Output-->
+	<PropertyGroup>
+		<DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Drawing.Utilities\Krypton.Toolkit.Suite.Extended.Drawing.Utilities.xml</DocumentationFile>
+		<OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Drawing.Utilities\</OutputPath>
+	</PropertyGroup>
+	<ItemGroup>
+		<!--<PackageReference Include="Cyotek.Windows.Forms.ColorPicker" Version="1.7.2" />-->
+		<PackageReference Include="Unofficial.Cyotek.Windows.Forms.NET" Version="1.8.1" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Buttons\Krypton.Toolkit.Suite.Extended.Buttons 2022.csproj" />
+	  <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Common\Krypton.Toolkit.Suite.Extended.Common 2022.csproj" />
+	  <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Controls\Krypton.Toolkit.Suite.Extended.Controls 2022.csproj" />
+	  <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Core\Krypton.Toolkit.Suite.Extended.Core 2022.csproj" />
+	  <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Developer.Utilities\Krypton.Toolkit.Suite.Extended.Developer.Utilities 2022.csproj" />
+	  <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Floating.Toolbars\Krypton.Toolkit.Suite.Extended.Floating.Toolbars 2022.csproj" />
+	  <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Messagebox\Krypton.Toolkit.Suite.Extended.Messagebox 2022.csproj" />
+	</ItemGroup>
   
-    <ItemGroup>
-        <Compile Update="Properties\Resources.Designer.cs">
-            <DesignTime>True</DesignTime>
-            <AutoGen>True</AutoGen>
-            <DependentUpon>Resources.resx</DependentUpon>
-        </Compile>
-    </ItemGroup>
-    <ItemGroup>
-        <EmbeddedResource Update="Properties\Resources.resx">
-            <Generator>ResXFileCodeGenerator</Generator>
-            <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-        </EmbeddedResource>
-    </ItemGroup>
+	<ItemGroup>
+		<Compile Update="Properties\Resources.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>Resources.resx</DependentUpon>
+		</Compile>
+	</ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Update="Properties\Resources.resx">
+			<Generator>ResXFileCodeGenerator</Generator>
+			<LastGenOutput>Resources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+	</ItemGroup>
 
 </Project>
