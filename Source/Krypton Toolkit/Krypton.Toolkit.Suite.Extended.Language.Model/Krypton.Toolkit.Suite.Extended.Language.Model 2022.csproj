@@ -13,8 +13,26 @@
   </PropertyGroup>
 
   <!--Package Data-->
-  <PropertyGroup>
-	<PackageId>Krypton.Toolkit.Suite.Extended.Language.Model</PackageId>
+	<Choose>
+		<When Condition="'$(Configuration)' == 'Canary'">
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Language.Model.Canary</PackageId>
+			</PropertyGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'Nightly'">
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Language.Model.Nightly</PackageId>
+			</PropertyGroup>
+		</When>
+		<Otherwise>
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Language.Model</PackageId>
+			</PropertyGroup>
+		</Otherwise>
+	</Choose>
+
+	<PropertyGroup>
 	<Description>An extension to the Krypton standard toolkit. This package contains language options for certain Krypton button controls.</Description>
   </PropertyGroup>
 

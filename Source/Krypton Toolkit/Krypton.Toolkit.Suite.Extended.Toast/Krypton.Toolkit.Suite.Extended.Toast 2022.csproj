@@ -14,8 +14,26 @@
   </PropertyGroup>
 
   <!--Package Data-->
-  <PropertyGroup>
-	  <PackageId>Krypton.Toolkit.Suite.Extended.Toast</PackageId>
+	<Choose>
+		<When Condition="'$(Configuration)' == 'Canary'">
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Toast.Canary</PackageId>
+			</PropertyGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'Nightly'">
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Toast.Nightly</PackageId>
+			</PropertyGroup>
+		</When>
+		<Otherwise>
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Toast</PackageId>
+			</PropertyGroup>
+		</Otherwise>
+	</Choose>
+
+	<PropertyGroup>
 	  <Description>An extension to the Krypton standard toolkit. This package holds a framework that allows the creation of toast notifications.</Description>
   </PropertyGroup>
 

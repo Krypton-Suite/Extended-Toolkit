@@ -14,8 +14,26 @@
     </PropertyGroup>
 
     <!--Package Data-->
-    <PropertyGroup>
-        <PackageId>Krypton.Toolkit.Suite.Extended.Tool.Box</PackageId>
+	<Choose>
+		<When Condition="'$(Configuration)' == 'Canary'">
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Tool.Box.Canary</PackageId>
+			</PropertyGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'Nightly'">
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Tool.Box.Nightly</PackageId>
+			</PropertyGroup>
+		</When>
+		<Otherwise>
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Tool.Box</PackageId>
+			</PropertyGroup>
+		</Otherwise>
+	</Choose>
+
+	<PropertyGroup>
         <Description>An extension to the Krypton standard toolkit. This package holds extensions to the tool box module.</Description>
     </PropertyGroup>
 

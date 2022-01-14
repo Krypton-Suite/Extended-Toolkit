@@ -14,11 +14,26 @@
     </PropertyGroup>
 
     <!--Package Data-->
-    <PropertyGroup>
-        <PackageId>Krypton.Toolkit.Suite.Extended.ComboBox</PackageId>
-    </PropertyGroup>
+	<Choose>
+		<When Condition="'$(Configuration)' == 'Canary'">
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.ComboBox.Canary</PackageId>
+			</PropertyGroup>
+		</When>
 
-    <PropertyGroup>
+		<When Condition="'$(Configuration)' == 'Nightly'">
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.ComboBox.Nightly</PackageId>
+			</PropertyGroup>
+		</When>
+		<Otherwise>
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.ComboBox</PackageId>
+			</PropertyGroup>
+		</Otherwise>
+	</Choose>
+
+	<PropertyGroup>
         <Description>An extension to the Krypton standard toolkit ComboBox. This package implements additional Drop Down types and views.</Description>
     </PropertyGroup>
 

@@ -14,8 +14,26 @@
     </PropertyGroup>
 
     <!--Package Data-->
-    <PropertyGroup>
-        <PackageId>Krypton.Toolkit.Suite.Extended.Outlook.Grid</PackageId>
+	<Choose>
+		<When Condition="'$(Configuration)' == 'Canary'">
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Outlook.Grid.Canary</PackageId>
+			</PropertyGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'Nightly'">
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Outlook.Grid.Nightly</PackageId>
+			</PropertyGroup>
+		</When>
+		<Otherwise>
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Outlook.Grid</PackageId>
+			</PropertyGroup>
+		</Otherwise>
+	</Choose>
+
+	<PropertyGroup>
         <Description>An extension to the Krypton standard toolkit. This package implements the outlook grid control.</Description>
     </PropertyGroup>
 

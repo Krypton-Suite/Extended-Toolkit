@@ -14,8 +14,26 @@
   </PropertyGroup>
 
   <!--Package Data-->
-  <PropertyGroup>
-       <PackageId>Krypton.Toolkit.Suite.Extended.File.Copier</PackageId>
+	<Choose>
+		<When Condition="'$(Configuration)' == 'Canary'">
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.File.Copier.Canary</PackageId>
+			</PropertyGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'Nightly'">
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.File.Copier.Nightly</PackageId>
+			</PropertyGroup>
+		</When>
+		<Otherwise>
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.File.Copier</PackageId>
+			</PropertyGroup>
+		</Otherwise>
+	</Choose>
+
+	<PropertyGroup>
        <Description>An extension to the Krypton standard toolkit. This package holds tools to copy or move files.</Description>
   </PropertyGroup>
 	
@@ -77,7 +95,6 @@
   <PropertyGroup>
     <DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.File.Copier\Krypton.Toolkit.Suite.Extended.File.Copier.xml</DocumentationFile>
     <OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.File.Copier\</OutputPath>
-    <PackageIcon>Canary.png</PackageIcon>
   </PropertyGroup>
   
   <ItemGroup>

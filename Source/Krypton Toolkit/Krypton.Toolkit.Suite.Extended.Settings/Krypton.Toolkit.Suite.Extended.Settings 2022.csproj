@@ -13,8 +13,26 @@
   </PropertyGroup>
 
   <!--Package Data-->
-  <PropertyGroup>
-	<PackageId>Krypton.Toolkit.Suite.Extended.Settings</PackageId>
+	<Choose>
+		<When Condition="'$(Configuration)' == 'Canary'">
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Settings.Canary</PackageId>
+			</PropertyGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'Nightly'">
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Settings.Nightly</PackageId>
+			</PropertyGroup>
+		</When>
+		<Otherwise>
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Settings</PackageId>
+			</PropertyGroup>
+		</Otherwise>
+	</Choose>
+
+	<PropertyGroup>
 	<Description>An extension to the Krypton standard toolkit. This package implements additional toolkit settings.</Description>
   </PropertyGroup>
 

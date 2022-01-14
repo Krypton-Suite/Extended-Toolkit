@@ -14,8 +14,26 @@
     </PropertyGroup>
 
     <!--Package Data-->
-    <PropertyGroup>
-        <PackageId>Krypton.Toolkit.Suite.Extended.Controls</PackageId>
+	<Choose>
+		<When Condition="'$(Configuration)' == 'Canary'">
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Controls.Canary</PackageId>
+			</PropertyGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'Nightly'">
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Controls.Nightly</PackageId>
+			</PropertyGroup>
+		</When>
+		<Otherwise>
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Controls</PackageId>
+			</PropertyGroup>
+		</Otherwise>
+	</Choose>
+
+	<PropertyGroup>
         <Description>An extension to the Krypton standard toolkit. This package holds numerous controls that complement the standard toolkit.</Description>
     </PropertyGroup>
 

@@ -14,8 +14,26 @@
     </PropertyGroup>
 
     <!--Package Data-->
-    <PropertyGroup>
-         <PackageId>Krypton.Toolkit.Suite.Extended.Forms</PackageId>
+	<Choose>
+		<When Condition="'$(Configuration)' == 'Canary'">
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Forms.Canary</PackageId>
+			</PropertyGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'Nightly'">
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Forms.Nightly</PackageId>
+			</PropertyGroup>
+		</When>
+		<Otherwise>
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Forms</PackageId>
+			</PropertyGroup>
+		</Otherwise>
+	</Choose>
+
+	<PropertyGroup>
         <Description>An extension to the Krypton standard toolkit. This package implements additional Krypton Forms effects, to be used in conjunction with the standard toolkit.</Description>
     </PropertyGroup>
 
