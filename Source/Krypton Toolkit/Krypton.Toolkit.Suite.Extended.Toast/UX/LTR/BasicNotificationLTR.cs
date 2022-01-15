@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Krypton.Toolkit.Suite.Extended.Toast
 {
-    internal class BaseNotificationWindowLTR : KryptonForm
+    /*internal*/ public class BasicNotificationLTR : KryptonForm
     {
         #region Designer Code
         private KryptonPanel kryptonPanel1;
@@ -76,8 +76,8 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             // 
             // krtbContent
             // 
-            this.krtbContent.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.krtbContent.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.krtbContent.Location = new System.Drawing.Point(146, 89);
             this.krtbContent.Name = "krtbContent";
@@ -89,8 +89,8 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             // 
             // kwlTitle
             // 
-            this.kwlTitle.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.kwlTitle.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.kwlTitle.AutoSize = false;
             this.kwlTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -112,7 +112,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             this.pbxToastImage.TabIndex = 1;
             this.pbxToastImage.TabStop = false;
             // 
-            // BaseNotificationWindowLTR
+            // BasicNotificationLTR
             // 
             this.AcceptButton = this.kbtnDismiss;
             this.CancelButton = this.kbtnDismiss;
@@ -122,11 +122,11 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "BaseNotificationWindowLTR";
+            this.Name = "BasicNotificationLTR";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Load += new System.EventHandler(this.BaseNotificationWindowLTR_Load);
+            this.Load += new System.EventHandler(this.BasicNotificationLTR_Load);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
@@ -161,7 +161,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
         public int Seconds { get => _seconds; set => _seconds = value; }
 
-        public string Title { get => _title; set => _title = value;}
+        public string Title { get => _title; set => _title = value; }
 
         public string ContentText { get => _contentText; set => _contentText = value; }
 
@@ -175,7 +175,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         #endregion
 
         #region Constructor
-        public BaseNotificationWindowLTR(IconType iconType, string title, string contentText, Image customImage = null, string dismissText = "&Dismiss")
+        public BasicNotificationLTR(IconType iconType, string title, string contentText, Image customImage = null, string dismissText = "&Dismiss")
         {
             InitializeComponent();
 
@@ -191,28 +191,28 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
             TopMost = true;
 
-            Resize += BaseNotificationWindowLTR_Resize;
+            Resize += BasicNotificationLTR_Resize;
 
-            GotFocus += BaseNotificationWindowLTR_GotFocus;
+            GotFocus += BasicNotificationLTR_GotFocus;
 
             DoubleBuffered = true;
         }
 
-        public BaseNotificationWindowLTR(IconType iconType, string title, string contentText, int seconds, Image customImage = null, string dismissText = "&Dismiss")
+        public BasicNotificationLTR(IconType iconType, string title, string contentText, int seconds, Image customImage = null, string dismissText = "&Dismiss")
             : this(iconType, title, contentText, customImage, dismissText) => Seconds = seconds;
 
-        public BaseNotificationWindowLTR(IconType iconType, string title, string contentText, int seconds, string soundPath, Image customImage = null, string dismissText = "&Dismiss")
+        public BasicNotificationLTR(IconType iconType, string title, string contentText, int seconds, string soundPath, Image customImage = null, string dismissText = "&Dismiss")
             : this(iconType, title, contentText, seconds, customImage, dismissText) => SoundPath = soundPath;
 
-        public BaseNotificationWindowLTR(IconType iconType, string title, string contentText, Stream soundStream, Image customImage = null, string dismissText = "&Dismiss") 
+        public BasicNotificationLTR(IconType iconType, string title, string contentText, Stream soundStream, Image customImage = null, string dismissText = "&Dismiss")
             : this(iconType, title, contentText, customImage, dismissText) => SoundStream = soundStream;
 
-        public BaseNotificationWindowLTR(IconType iconType, string title, string contentText, int seconds, Stream soundStream, Image customImage = null, string dismissText = "&Dismiss")
+        public BasicNotificationLTR(IconType iconType, string title, string contentText, int seconds, Stream soundStream, Image customImage = null, string dismissText = "&Dismiss")
             : this(iconType, title, contentText, seconds, customImage, dismissText) => SoundStream = soundStream;
         #endregion
 
         #region Event Handlers
-        private void BaseNotificationWindowLTR_Load(object sender, EventArgs e)
+        private void BasicNotificationLTR_Load(object sender, EventArgs e)
         {
             //Once loaded, position the form to the bottom left of the screen with added padding
             Location = new Point(Screen.PrimaryScreen.WorkingArea.Width - Width - 5, Screen.PrimaryScreen.WorkingArea.Height - Height - 5);
@@ -230,9 +230,9 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             }
         }
 
-        private void BaseNotificationWindowLTR_GotFocus(object sender, EventArgs e) => kbtnDismiss.Focus();
+        private void BasicNotificationLTR_GotFocus(object sender, EventArgs e) => kbtnDismiss.Focus();
 
-        private void BaseNotificationWindowLTR_Resize(object sender, EventArgs e)
+        private void BasicNotificationLTR_Resize(object sender, EventArgs e)
         {
             if (WindowState == FormWindowState.Maximized)
             {

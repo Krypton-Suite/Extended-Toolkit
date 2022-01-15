@@ -33,6 +33,7 @@
 				<!--Package generation-->
 				<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 				<PackageLicenseUrl>https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE</PackageLicenseUrl>
+				<License Type="File">License\License.txt</License>
 				<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 				<LangVersion>latest</LangVersion>
 				<PackageOutputPath>..\..\..\Bin\NuGet Packages\Canary</PackageOutputPath>

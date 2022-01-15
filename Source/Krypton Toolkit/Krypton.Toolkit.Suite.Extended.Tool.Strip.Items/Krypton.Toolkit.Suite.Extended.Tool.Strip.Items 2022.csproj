@@ -17,18 +17,18 @@
 	<Choose>
 		<When Condition="'$(Configuration)' == 'Canary'">
 			<PropertyGroup>
-				<PackageId>Krypton.Toolkit.Suite.Extended.Tool.Switch.Items.Canary</PackageId>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Tool.Strip.Items.Canary</PackageId>
 			</PropertyGroup>
 		</When>
 
 		<When Condition="'$(Configuration)' == 'Nightly'">
 			<PropertyGroup>
-				<PackageId>Krypton.Toolkit.Suite.Extended.Tool.Switch.Items.Nightly</PackageId>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Tool.Strip.Items.Nightly</PackageId>
 			</PropertyGroup>
 		</When>
 		<Otherwise>
 			<PropertyGroup>
-				<PackageId>Krypton.Toolkit.Suite.Extended.Tool.Switch.Items</PackageId>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Tool.Strip.Items</PackageId>
 			</PropertyGroup>
 		</Otherwise>
 	</Choose>
