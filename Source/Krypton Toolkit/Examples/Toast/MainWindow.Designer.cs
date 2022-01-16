@@ -30,12 +30,14 @@
         {
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             this.kbtnLTRBasicNotificationConfiguration = new Krypton.Toolkit.KryptonButton();
+            this.kbtnBasicNotificationWithProgressBarConfiguration = new Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(this.kbtnBasicNotificationWithProgressBarConfiguration);
             this.kryptonPanel1.Controls.Add(this.kbtnLTRBasicNotificationConfiguration);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
@@ -51,6 +53,15 @@
             this.kbtnLTRBasicNotificationConfiguration.TabIndex = 1;
             this.kbtnLTRBasicNotificationConfiguration.Values.Text = "LTR Basic Notification Configuration";
             this.kbtnLTRBasicNotificationConfiguration.Click += new System.EventHandler(this.kbtnLTRBasicNotificationConfiguration_Click);
+            // 
+            // kbtnBasicNotificationWithProgressBarConfiguration
+            // 
+            this.kbtnBasicNotificationWithProgressBarConfiguration.Location = new System.Drawing.Point(12, 43);
+            this.kbtnBasicNotificationWithProgressBarConfiguration.Name = "kbtnBasicNotificationWithProgressBarConfiguration";
+            this.kbtnBasicNotificationWithProgressBarConfiguration.Size = new System.Drawing.Size(315, 25);
+            this.kbtnBasicNotificationWithProgressBarConfiguration.TabIndex = 2;
+            this.kbtnBasicNotificationWithProgressBarConfiguration.Values.Text = "LTR Basic Notification with ProgressBar Configuration";
+            this.kbtnBasicNotificationWithProgressBarConfiguration.Click += new System.EventHandler(this.kbtnBasicNotificationWithProgressBarConfiguration_Click);
             // 
             // MainWindow
             // 
@@ -70,5 +81,6 @@
 
         private Krypton.Toolkit.KryptonPanel kryptonPanel1;
         private Krypton.Toolkit.KryptonButton kbtnLTRBasicNotificationConfiguration;
+        private Krypton.Toolkit.KryptonButton kbtnBasicNotificationWithProgressBarConfiguration;
     }
 }

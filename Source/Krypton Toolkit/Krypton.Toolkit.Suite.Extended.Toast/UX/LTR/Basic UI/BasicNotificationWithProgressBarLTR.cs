@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Krypton.Toolkit.Suite.Extended.Toast
+﻿namespace Krypton.Toolkit.Suite.Extended.Toast
 {
-    internal class BasicNotificationWithProgressBarLTR : KryptonForm
+    public class BasicNotificationWithProgressBarLTR : KryptonForm
     {
         #region Design Code
         private KryptonPanel kryptonPanel1;
@@ -24,10 +18,10 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             this.kbtnDismiss = new Krypton.Toolkit.KryptonButton();
             this.kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
+            this.pbCountdown = new System.Windows.Forms.ProgressBar();
             this.krtbContent = new Krypton.Toolkit.KryptonRichTextBox();
             this.kwlTitle = new Krypton.Toolkit.KryptonWrapLabel();
             this.pbxToastImage = new System.Windows.Forms.PictureBox();
-            this.pbCountdown = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
@@ -54,6 +48,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             this.kbtnDismiss.Size = new System.Drawing.Size(174, 25);
             this.kbtnDismiss.TabIndex = 1;
             this.kbtnDismiss.Values.Text = "{0} ({1})";
+            this.kbtnDismiss.Click += new System.EventHandler(this.kbtnDismiss_Click);
             // 
             // kryptonBorderEdge1
             // 
@@ -75,6 +70,14 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             this.kryptonPanel2.Name = "kryptonPanel2";
             this.kryptonPanel2.Size = new System.Drawing.Size(609, 243);
             this.kryptonPanel2.TabIndex = 3;
+            // 
+            // pbCountdown
+            // 
+            this.pbCountdown.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pbCountdown.Location = new System.Drawing.Point(0, 238);
+            this.pbCountdown.Name = "pbCountdown";
+            this.pbCountdown.Size = new System.Drawing.Size(609, 5);
+            this.pbCountdown.TabIndex = 4;
             // 
             // krtbContent
             // 
@@ -114,14 +117,6 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             this.pbxToastImage.TabIndex = 1;
             this.pbxToastImage.TabStop = false;
             // 
-            // pbCountdown
-            // 
-            this.pbCountdown.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pbCountdown.Location = new System.Drawing.Point(0, 238);
-            this.pbCountdown.Name = "pbCountdown";
-            this.pbCountdown.Size = new System.Drawing.Size(609, 5);
-            this.pbCountdown.TabIndex = 4;
-            // 
             // BasicNotificationWithProgressBarLTR
             // 
             this.AcceptButton = this.kbtnDismiss;
@@ -135,6 +130,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.Load += new System.EventHandler(this.BasicNotificationWithProgressBarLTR_Load);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
@@ -143,6 +139,169 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             ((System.ComponentModel.ISupportInitialize)(this.pbxToastImage)).EndInit();
             this.ResumeLayout(false);
 
+        }
+        #endregion
+
+        #region Variables
+        private IconType _iconType;
+
+        private int _time, _seconds;
+
+        private Timer _timer;
+
+        private SoundPlayer _soundPlayer;
+
+        private string _title, _contentText, _soundPath, _dismissText;
+
+        private Stream _soundStream;
+
+        private Image _customImage;
+        #endregion
+
+        #region Properties
+        public IconType IconType { get => _iconType; set => _iconType = value; }
+
+        public int Time { get => _time; set => _time = value; }
+
+        public int Seconds { get => _seconds; set => _seconds = value; }
+
+        public string Title { get => _title; set => _title = value; }
+
+        public string ContentText { get => _contentText; set => _contentText = value; }
+
+        public string SoundPath { get => _soundPath; set => _soundPath = value; }
+
+        public string DismissText { get => _dismissText; set => _dismissText = value; }
+
+        public Stream SoundStream { get => _soundStream; set => _soundStream = value; }
+
+        public Image CustomImage { get => _customImage; set => _customImage = value; }
+        #endregion
+
+        #region Constructor
+        public BasicNotificationWithProgressBarLTR(IconType iconType, string title, string contentText, Image customImage = null, string dismissText = "&Dismiss")
+        {
+            InitializeComponent();
+
+            IconType = iconType;
+
+            Title = title;
+
+            ContentText = contentText;
+
+            CustomImage = customImage;
+
+            DismissText = dismissText;
+
+            TopMost = true;
+
+            Resize += BasicNotificationWithProgressBarLTR_Resize;
+
+            GotFocus += BasicNotificationWithProgressBarLTR_GotFocus;
+
+            DoubleBuffered = true;
+        }
+
+        public BasicNotificationWithProgressBarLTR(IconType iconType, string title, string contentText, int seconds, Image customImage = null, string dismissText = "&Dismiss")
+            : this(iconType, title, contentText, customImage, dismissText) => Seconds = seconds;
+
+        public BasicNotificationWithProgressBarLTR(IconType iconType, string title, string contentText, int seconds, string soundPath, Image customImage = null, string dismissText = "&Dismiss")
+            : this(iconType, title, contentText, seconds, customImage, dismissText) => SoundPath = soundPath;
+
+        public BasicNotificationWithProgressBarLTR(IconType iconType, string title, string contentText, Stream soundStream, Image customImage = null, string dismissText = "&Dismiss")
+            : this(iconType, title, contentText, customImage, dismissText) => SoundStream = soundStream;
+
+        public BasicNotificationWithProgressBarLTR(IconType iconType, string title, string contentText, int seconds, Stream soundStream, Image customImage = null, string dismissText = "&Dismiss")
+            : this(iconType, title, contentText, seconds, customImage, dismissText) => SoundStream = soundStream;
+        #endregion
+
+        #region Event Handlers
+        private void BasicNotificationWithProgressBarLTR_GotFocus(object sender, EventArgs e) => kbtnDismiss.Focus();
+
+        private void BasicNotificationWithProgressBarLTR_Resize(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Maximized)
+            {
+                WindowState = FormWindowState.Normal;
+            }
+        }
+
+        private void BasicNotificationWithProgressBarLTR_Load(object sender, EventArgs e)
+        {
+            //Once loaded, position the form to the bottom left of the screen with added padding
+            Location = new Point(Screen.PrimaryScreen.WorkingArea.Width - Width - 5, Screen.PrimaryScreen.WorkingArea.Height - Height - 5);
+
+            UtilityMethods.FadeIn(this);
+
+            if (_timer != null)
+            {
+                _timer.Start();
+            }
+
+            if (_soundPlayer != null)
+            {
+                _soundPlayer.Play();
+            }
+        }
+
+        private void kbtnDismiss_Click(object sender, EventArgs e) => UtilityMethods.FadeOutAndClose(this);
+        #endregion
+
+        #region Methods
+        public new void Show()
+        {
+            int currentValue;
+
+            Opacity = 0;
+
+            UtilityMethods.SetIconType(IconType, CustomImage, pbxToastImage);
+
+            kwlTitle.Text = Title;
+
+            krtbContent.Text = ContentText;
+
+            if (Seconds != 0)
+            {
+                pbCountdown.Maximum = Seconds;
+
+                currentValue = pbCountdown.Maximum;
+
+                pbCountdown.Value = currentValue;
+
+                kbtnDismiss.Text = $"{ DismissText } ({ Seconds - Time })";
+
+                _timer = new Timer();
+
+                _timer.Interval = 1000;
+
+                _timer.Tick += (sender, e) =>
+                {
+                    _time++;
+
+                    kbtnDismiss.Text = $"{ DismissText } ({ Seconds - Time }s)";
+
+                    pbCountdown.Value = Seconds - Time;
+
+                    if (_time == Seconds)
+                    {
+                        _timer.Stop();
+
+                        UtilityMethods.FadeOutAndClose(this);
+                    }
+                };
+            }
+
+            if (SoundPath != null)
+            {
+                _soundPlayer = new SoundPlayer(SoundPath);
+            }
+
+            if (SoundStream != null)
+            {
+                _soundPlayer = new SoundPlayer(SoundStream);
+            }
+
+            base.Show();
         }
         #endregion
     }

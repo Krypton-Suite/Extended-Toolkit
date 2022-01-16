@@ -27,5 +27,12 @@ namespace Toast
 
             notificationConfiguration.Show();
         }
+
+        private void kbtnBasicNotificationWithProgressBarConfiguration_Click(object sender, EventArgs e)
+        {
+            BasicNotificationWithProgressBarConfiguration configuration = new BasicNotificationWithProgressBarConfiguration();
+
+            configuration.Show();
+        }
     }
 }
