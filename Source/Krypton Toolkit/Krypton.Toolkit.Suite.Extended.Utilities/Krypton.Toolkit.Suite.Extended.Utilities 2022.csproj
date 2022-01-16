@@ -33,8 +33,15 @@
 	</Choose>
 
 	<PropertyGroup>
-	<Description>An extension to the Krypton standard toolkit. This package implements additional toolkit utilities.</Description>
-  </PropertyGroup>
+		<Description>
+			An extension to the Standard Toolkit, which supports .NET Framework 4.6.2 - 4.8, .NET Core 3.1 and .NET 5/6. This package implements global utilities used by the extended toolkit.
+
+			This package supports all .NET Framework versions starting .NET Framework 4.6.2 - 4.8, .NET Core 3.1 and .NET 5/6.
+			Also, all libraries are included targeting each specific framework version for performance purposes.
+
+			To view all of the extended toolkit package latest version information, please visit: https://github.com/Krypton-Suite/Krypton-Toolkit-Suite-Version-Dashboard/blob/main/Documents/Modules/Extended/Krypton-Toolkit-Suite-Extended-Modules.md
+		</Description>
+	</PropertyGroup>
 
   <Choose>
 	  <When Condition="'$(Configuration)' == 'Canary'">
