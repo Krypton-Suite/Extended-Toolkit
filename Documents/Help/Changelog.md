@@ -3,6 +3,8 @@
 ## 2022-04-04 - Build 2204 - April 2022
 * The `ThemeSelector` now uses the native `KryptonThemeComboBox` control
 * Nightly packages are now available both on GitHub and nuget.org
+* Reworked the `Toast` module (RTL support coming soon!)
+* Updated NuGet package descriptions to provide more information
 * Updated standard toolkit to build `2204`
 
 =======
@@ -12,9 +14,9 @@
 * New `Krypton.Toolkit.Suite.Extended.Error.Reporting` module
 * Removal of unused 'using' statements
 * New `Krypton.Toolkit.Suite.Extended.Data.Visualisation` module (ScottPlot only)
-* Fix [#268](https://github.com/Krypton-Suite/Extended-Toolkit/issues/268), Crashes using Outlook Grid control
+* Resolve [#268](https://github.com/Krypton-Suite/Extended-Toolkit/issues/268), Crashes using Outlook Grid control
 * Implemented [#271](https://github.com/Krypton-Suite/Extended-Toolkit/issues/271), NuGet Package Information needs to have direct download links
-* Fixed issues where some canary NuGet packages were accidentally uploaded as stable packages
+* Resolved issues where some canary NuGet packages were accidentally uploaded as stable packages
 * Refined build configurations
 * Updated standard toolkit to build `2202`
 
@@ -23,10 +25,10 @@
 ## 2021-12-07 - Build 2112 - December 2021
 * New `Krypton.Toolkit.Suite.Extended.Outlook.Grid` module
 * New `Krypton.Toolkit.Suite.Extended.InputBox` module
-* Fix toast 'Dismiss' button location
+* Resolve toast 'Dismiss' button location
 * New `Krypton.Toolkit.Suite.Extended.Toast` module
-* Fixed [#245](https://github.com/Krypton-Suite/Extended-Toolkit/issues/245), 2108 Canary NuGet lists unnecessary dependencies for packages
-* Fix possible `KryptonButton` text bugs
+* Resolved [#245](https://github.com/Krypton-Suite/Extended-Toolkit/issues/245), 2108 Canary NuGet lists unnecessary dependencies for packages
+* Resolve possible `KryptonButton` text bugs
 * New icon
 * New `KryptonExceptionCaptureDialog` - it is now possible to display an exception in a window along with a typical messagebox
 * Broken toolkit up into smaller modules - see list for available modules (Not all modules will be completed yet)
@@ -46,7 +48,7 @@
 * Renamed both `KryptonTabControl` in the `Krypton.Toolkit.Suite.Extended.Navigator` module to 'Version1'/'Version2' respectively to avoid confusion
 * Cleanup `ExtendedKryptonMessageBox` to remove redundant arguments (some features will return in a future version.)
 * New `Krypton.Toolkit.Suite.Extended.Toggle.Switch` module
-* Fixes for the `Krypton.Toolkit.Suite.Extended.Outlook.Grid` module
+* Resolve issues with the `Krypton.Toolkit.Suite.Extended.Outlook.Grid` module
 * Updated standard toolkit to build `2106`
 
 =======
@@ -60,7 +62,7 @@
 =======
 
 ## 2021-03-04 - Build 2103 - March 2021
-* Fixed package descriptions
+* Resolved package descriptions
 * New `KryptonEnhancedToolStrip` control
 * New `KryptonEnhancedToolStripProgressBar` control
 * New `KryptonStatusStrip` control
@@ -95,7 +97,7 @@
 =======
 
 ## 2020-12-01 - Build 2012 - December 2020
-* Fixes for `FastColouredTextBox`
+* Resolve issues with `FastColouredTextBox`
 * New Gantt chart control for `Data Visualisation`
 * Removed `Notification` elements from `Dialogs` module
 
@@ -105,7 +107,7 @@
 * New `Networking` NuGet package
 * Stable packages will now use the stable `Krypton.*` standard toolkit & vice-versa
 * General bugfixes
-* Fix for 'ZipExtractor' in `Software.Updaters` package
+* Resolve for 'ZipExtractor' in `Software.Updaters` package
 * Updated standard toolkit to build `2011`
 * ***Important! If you're upgrading from a older legacy version, please uninstall your currently installed packages BEFORE intalling these packages. Please also follow [this](https://github.com/Krypton-Suite/Standard-Toolkit-Online-Help/blob/master/Source/Documentation/Standard%20Toolkit%20Migration%20Guide.md) guidence, as the toolkit now uses different namespaces!***
 
@@ -113,7 +115,7 @@
 
 ## 2020-10-01 - Build 2010 - October 2020
 * Improved NuGet package descriptions
-* Fixed [#21](https://github.com/Krypton-Suite/Extended-Toolkit/issues/21), OutlookGrid Column right click causes error. Thanks to [dax-leo](https://github.com/dax-leo)
+* Resolved [#21](https://github.com/Krypton-Suite/Extended-Toolkit/issues/21), OutlookGrid Column right click causes error. Thanks to [dax-leo](https://github.com/dax-leo)
 * New `Data Visualisation` NuGet package for charts & graphs
 * New `KryptonDriveComboBox` & `KryptonImageComboBox` in `Base`
 * New `Notifications` NuGet package
@@ -169,13 +171,13 @@
 =======
 
 ## 2020-05-01 am - Build 2005 - May 2020
-* Fix for [#3](https://github.com/Krypton-Suite/Extended-Toolkit/issues/3), Missing controls
+* Resolved [#3](https://github.com/Krypton-Suite/Extended-Toolkit/issues/3), Missing controls
 * Add `IO Components` module
 * Add `Outlook Grid` module
 * Add `Wizard` module
 * Add `Palette Controls` module
-* Fixed names for `KryptonComboBoxExtended`, `KryptonPanelExtended` and `KryptonRichTextBoxExtended` to <ControlName>`Enhanced` to avoid confusion
-* Fix [#5](https://github.com/Krypton-Suite/Extended-Toolkit/issues/5), `NuGet Packaging Issue`
+* Resolved names for `KryptonComboBoxExtended`, `KryptonPanelExtended` and `KryptonRichTextBoxExtended` to <ControlName>`Enhanced` to avoid confusion
+* Resolved [#5](https://github.com/Krypton-Suite/Extended-Toolkit/issues/5), `NuGet Packaging Issue`
 * General fixes
 * Updated standard toolkit to build **2005**
 
