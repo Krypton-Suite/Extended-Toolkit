@@ -66,15 +66,15 @@
 		  </PropertyGroup>
 
 		  <ItemGroup>
-			  <PackageReference Include="Krypton.Docking.Canary" Version="60.22.1.17-alpha" />
+			  <PackageReference Include="Krypton.Docking.Nightly" Version="60.22.1.17-alpha" />
 			  
-			  <PackageReference Include="Krypton.Toolkit.Canary" Version="60.22.1.17-alpha" />
+			  <PackageReference Include="Krypton.Toolkit.Nightly" Version="60.22.1.17-alpha" />
 
-			  <PackageReference Include="Krypton.Toolkit.Canary" Version="60.22.1.17-alpha" />
+			  <PackageReference Include="Krypton.Toolkit.Nightly" Version="60.22.1.17-alpha" />
 
-			  <PackageReference Include="Krypton.Ribbon.Canary" Version="60.22.1.17-alpha" />
+			  <PackageReference Include="Krypton.Ribbon.Nightly" Version="60.22.1.17-alpha" />
 
-			  <PackageReference Include="Krypton.Navigator.Canary" Version="60.22.1.17-alpha" />
+			  <PackageReference Include="Krypton.Navigator.Nightly" Version="60.22.1.17-alpha" />
 		  </ItemGroup>
 	  </When>
       <Otherwise>
