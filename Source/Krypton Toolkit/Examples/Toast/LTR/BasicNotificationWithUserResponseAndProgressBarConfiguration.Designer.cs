@@ -1,6 +1,6 @@
 ﻿namespace Toast.LTR
 {
-    partial class BasicNotificationWithUserResponseConfiguration
+    partial class BasicNotificationWithUserResponseAndProgressBarConfiguration
     {
         /// <summary>
         /// Required designer variable.
@@ -83,8 +83,8 @@
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel1.Name = "kryptonPanel1";
-            this.kryptonPanel1.Size = new System.Drawing.Size(719, 312);
-            this.kryptonPanel1.TabIndex = 1;
+            this.kryptonPanel1.Size = new System.Drawing.Size(723, 316);
+            this.kryptonPanel1.TabIndex = 2;
             // 
             // kbtnPromptFont
             // 
@@ -124,7 +124,7 @@
             this.kcmbPromptAlignHorizontal.IntegralHeight = false;
             this.kcmbPromptAlignHorizontal.Location = new System.Drawing.Point(493, 209);
             this.kcmbPromptAlignHorizontal.Name = "kcmbPromptAlignHorizontal";
-            this.kcmbPromptAlignHorizontal.Size = new System.Drawing.Size(214, 21);
+            this.kcmbPromptAlignHorizontal.Size = new System.Drawing.Size(218, 21);
             this.kcmbPromptAlignHorizontal.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
             this.kcmbPromptAlignHorizontal.TabIndex = 18;
             // 
@@ -143,7 +143,6 @@
             this.kcbtnCueColour.Name = "kcbtnCueColour";
             this.kcbtnCueColour.SelectedColor = System.Drawing.Color.Gray;
             this.kcbtnCueColour.Size = new System.Drawing.Size(224, 25);
-            this.kcbtnCueColour.Splitter = false;
             this.kcbtnCueColour.TabIndex = 16;
             this.kcbtnCueColour.Values.Text = "User Response Cue Text &Colour";
             // 
@@ -153,7 +152,7 @@
             this.ktxtCueText.CueHint.Padding = new System.Windows.Forms.Padding(0);
             this.ktxtCueText.Location = new System.Drawing.Point(437, 178);
             this.ktxtCueText.Name = "ktxtCueText";
-            this.ktxtCueText.Size = new System.Drawing.Size(270, 23);
+            this.ktxtCueText.Size = new System.Drawing.Size(274, 23);
             this.ktxtCueText.TabIndex = 15;
             // 
             // kryptonLabel6
@@ -168,7 +167,7 @@
             // kbtnPickSound
             // 
             this.kbtnPickSound.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.kbtnPickSound.Location = new System.Drawing.Point(521, 275);
+            this.kbtnPickSound.Location = new System.Drawing.Point(525, 279);
             this.kbtnPickSound.Name = "kbtnPickSound";
             this.kbtnPickSound.Size = new System.Drawing.Size(90, 25);
             this.kbtnPickSound.TabIndex = 13;
@@ -178,7 +177,7 @@
             // kbtnShowNotification
             // 
             this.kbtnShowNotification.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.kbtnShowNotification.Location = new System.Drawing.Point(617, 275);
+            this.kbtnShowNotification.Location = new System.Drawing.Point(621, 279);
             this.kbtnShowNotification.Name = "kbtnShowNotification";
             this.kbtnShowNotification.Size = new System.Drawing.Size(90, 25);
             this.kbtnShowNotification.TabIndex = 12;
@@ -212,7 +211,7 @@
             this.ktxtNotificationDismissButtonText.CueHint.Padding = new System.Windows.Forms.Padding(0);
             this.ktxtNotificationDismissButtonText.Location = new System.Drawing.Point(437, 144);
             this.ktxtNotificationDismissButtonText.Name = "ktxtNotificationDismissButtonText";
-            this.ktxtNotificationDismissButtonText.Size = new System.Drawing.Size(270, 23);
+            this.ktxtNotificationDismissButtonText.Size = new System.Drawing.Size(274, 23);
             this.ktxtNotificationDismissButtonText.TabIndex = 9;
             // 
             // kryptonLabel4
@@ -260,7 +259,7 @@
             this.krtbNotificationContentText.CueHint.Padding = new System.Windows.Forms.Padding(0);
             this.krtbNotificationContentText.Location = new System.Drawing.Point(107, 41);
             this.krtbNotificationContentText.Name = "krtbNotificationContentText";
-            this.krtbNotificationContentText.Size = new System.Drawing.Size(600, 96);
+            this.krtbNotificationContentText.Size = new System.Drawing.Size(604, 96);
             this.krtbNotificationContentText.TabIndex = 4;
             this.krtbNotificationContentText.Text = "";
             // 
@@ -279,7 +278,7 @@
             this.ktxtNotificationTitle.CueHint.Padding = new System.Windows.Forms.Padding(0);
             this.ktxtNotificationTitle.Location = new System.Drawing.Point(107, 12);
             this.ktxtNotificationTitle.Name = "ktxtNotificationTitle";
-            this.ktxtNotificationTitle.Size = new System.Drawing.Size(600, 23);
+            this.ktxtNotificationTitle.Size = new System.Drawing.Size(604, 23);
             this.ktxtNotificationTitle.TabIndex = 2;
             // 
             // kryptonLabel1
@@ -291,16 +290,16 @@
             this.kryptonLabel1.TabIndex = 1;
             this.kryptonLabel1.Values.Text = "Title:";
             // 
-            // BasicNotificationWithUserResponseConfiguration
+            // BasicNotificationWithUserResponseAndProgressBarConfiguration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(719, 312);
+            this.ClientSize = new System.Drawing.Size(723, 316);
             this.Controls.Add(this.kryptonPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "BasicNotificationWithUserResponseConfiguration";
+            this.Name = "BasicNotificationWithUserResponseAndProgressBarConfiguration";
             this.Text = "BasicNotificationWithUserResponseAndProgressBarConfiguration";
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
@@ -315,6 +314,14 @@
         #endregion
 
         private Krypton.Toolkit.KryptonPanel kryptonPanel1;
+        private Krypton.Toolkit.KryptonButton kbtnPromptFont;
+        private Krypton.Toolkit.KryptonComboBox kcmbPromptAlignVertical;
+        private Krypton.Toolkit.KryptonLabel kryptonLabel8;
+        private Krypton.Toolkit.KryptonComboBox kcmbPromptAlignHorizontal;
+        private Krypton.Toolkit.KryptonLabel kryptonLabel7;
+        private Krypton.Toolkit.KryptonColorButton kcbtnCueColour;
+        private Krypton.Toolkit.KryptonTextBox ktxtCueText;
+        private Krypton.Toolkit.KryptonLabel kryptonLabel6;
         private Krypton.Toolkit.KryptonButton kbtnPickSound;
         private Krypton.Toolkit.KryptonButton kbtnShowNotification;
         private Krypton.Toolkit.KryptonNumericUpDown knudNotificationTimeOut;
@@ -328,13 +335,5 @@
         private Krypton.Toolkit.KryptonLabel kryptonLabel2;
         private Krypton.Toolkit.KryptonTextBox ktxtNotificationTitle;
         private Krypton.Toolkit.KryptonLabel kryptonLabel1;
-        private Krypton.Toolkit.KryptonTextBox ktxtCueText;
-        private Krypton.Toolkit.KryptonLabel kryptonLabel6;
-        private Krypton.Toolkit.KryptonComboBox kcmbPromptAlignHorizontal;
-        private Krypton.Toolkit.KryptonLabel kryptonLabel7;
-        private Krypton.Toolkit.KryptonColorButton kcbtnCueColour;
-        private Krypton.Toolkit.KryptonButton kbtnPromptFont;
-        private Krypton.Toolkit.KryptonComboBox kcmbPromptAlignVertical;
-        private Krypton.Toolkit.KryptonLabel kryptonLabel8;
     }
 }

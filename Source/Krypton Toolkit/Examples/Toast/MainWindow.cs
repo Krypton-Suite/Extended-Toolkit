@@ -41,5 +41,12 @@ namespace Toast
 
             configuration.Show();
         }
+
+        private void kbtnBasicNotificationWithUserResponseAndProgressBar_Click(object sender, EventArgs e)
+        {
+            BasicNotificationWithUserResponseAndProgressBarConfiguration configuration = new BasicNotificationWithUserResponseAndProgressBarConfiguration();
+
+            configuration.Show();
+        }
     }
 }

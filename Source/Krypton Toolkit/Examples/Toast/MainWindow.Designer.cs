@@ -29,15 +29,17 @@
         private void InitializeComponent()
         {
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            this.kbtnBasicNotificationWithUserResponseConfiguration = new Krypton.Toolkit.KryptonButton();
             this.kbtnBasicNotificationWithProgressBarConfiguration = new Krypton.Toolkit.KryptonButton();
             this.kbtnLTRBasicNotificationConfiguration = new Krypton.Toolkit.KryptonButton();
-            this.kbtnBasicNotificationWithUserResponseConfiguration = new Krypton.Toolkit.KryptonButton();
+            this.kbtnBasicNotificationWithUserResponseAndProgressBar = new Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(this.kbtnBasicNotificationWithUserResponseAndProgressBar);
             this.kryptonPanel1.Controls.Add(this.kbtnBasicNotificationWithUserResponseConfiguration);
             this.kryptonPanel1.Controls.Add(this.kbtnBasicNotificationWithProgressBarConfiguration);
             this.kryptonPanel1.Controls.Add(this.kbtnLTRBasicNotificationConfiguration);
@@ -46,6 +48,15 @@
             this.kryptonPanel1.Name = "kryptonPanel1";
             this.kryptonPanel1.Size = new System.Drawing.Size(464, 358);
             this.kryptonPanel1.TabIndex = 0;
+            // 
+            // kbtnBasicNotificationWithUserResponseConfiguration
+            // 
+            this.kbtnBasicNotificationWithUserResponseConfiguration.Location = new System.Drawing.Point(12, 74);
+            this.kbtnBasicNotificationWithUserResponseConfiguration.Name = "kbtnBasicNotificationWithUserResponseConfiguration";
+            this.kbtnBasicNotificationWithUserResponseConfiguration.Size = new System.Drawing.Size(328, 25);
+            this.kbtnBasicNotificationWithUserResponseConfiguration.TabIndex = 3;
+            this.kbtnBasicNotificationWithUserResponseConfiguration.Values.Text = "LTR Basic Notification with User Response Configuration";
+            this.kbtnBasicNotificationWithUserResponseConfiguration.Click += new System.EventHandler(this.kbtnBasicNotificationWithUserResponseConfiguration_Click);
             // 
             // kbtnBasicNotificationWithProgressBarConfiguration
             // 
@@ -65,14 +76,14 @@
             this.kbtnLTRBasicNotificationConfiguration.Values.Text = "LTR Basic Notification Configuration";
             this.kbtnLTRBasicNotificationConfiguration.Click += new System.EventHandler(this.kbtnLTRBasicNotificationConfiguration_Click);
             // 
-            // kbtnBasicNotificationWithUserResponseConfiguration
+            // kbtnBasicNotificationWithUserResponseAndProgressBar
             // 
-            this.kbtnBasicNotificationWithUserResponseConfiguration.Location = new System.Drawing.Point(12, 74);
-            this.kbtnBasicNotificationWithUserResponseConfiguration.Name = "kbtnBasicNotificationWithUserResponseConfiguration";
-            this.kbtnBasicNotificationWithUserResponseConfiguration.Size = new System.Drawing.Size(328, 25);
-            this.kbtnBasicNotificationWithUserResponseConfiguration.TabIndex = 3;
-            this.kbtnBasicNotificationWithUserResponseConfiguration.Values.Text = "LTR Basic Notification with User Response Configuration";
-            this.kbtnBasicNotificationWithUserResponseConfiguration.Click += new System.EventHandler(this.kbtnBasicNotificationWithUserResponseConfiguration_Click);
+            this.kbtnBasicNotificationWithUserResponseAndProgressBar.Location = new System.Drawing.Point(12, 105);
+            this.kbtnBasicNotificationWithUserResponseAndProgressBar.Name = "kbtnBasicNotificationWithUserResponseAndProgressBar";
+            this.kbtnBasicNotificationWithUserResponseAndProgressBar.Size = new System.Drawing.Size(407, 25);
+            this.kbtnBasicNotificationWithUserResponseAndProgressBar.TabIndex = 4;
+            this.kbtnBasicNotificationWithUserResponseAndProgressBar.Values.Text = "LTR Basic Notification with User Response and ProgressBar Configuration";
+            this.kbtnBasicNotificationWithUserResponseAndProgressBar.Click += new System.EventHandler(this.kbtnBasicNotificationWithUserResponseAndProgressBar_Click);
             // 
             // MainWindow
             // 
@@ -94,5 +105,6 @@
         private Krypton.Toolkit.KryptonButton kbtnLTRBasicNotificationConfiguration;
         private Krypton.Toolkit.KryptonButton kbtnBasicNotificationWithProgressBarConfiguration;
         private Krypton.Toolkit.KryptonButton kbtnBasicNotificationWithUserResponseConfiguration;
+        private Krypton.Toolkit.KryptonButton kbtnBasicNotificationWithUserResponseAndProgressBar;
     }
 }
