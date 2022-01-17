@@ -34,5 +34,12 @@ namespace Toast
 
             configuration.Show();
         }
+
+        private void kbtnBasicNotificationWithUserResponseConfiguration_Click(object sender, EventArgs e)
+        {
+            BasicNotificationWithUserResponseConfiguration configuration = new BasicNotificationWithUserResponseConfiguration();
+
+            configuration.Show();
+        }
     }
 }
