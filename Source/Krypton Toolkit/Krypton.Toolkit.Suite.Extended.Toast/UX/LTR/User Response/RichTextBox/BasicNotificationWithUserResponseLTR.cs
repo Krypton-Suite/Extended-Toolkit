@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Krypton.Toolkit.Suite.Extended.Toast
+﻿namespace Krypton.Toolkit.Suite.Extended.Toast
 {
-    public class BasicNotificationWithUserResponseAndProgressBarLTR : KryptonForm
+    public class BasicNotificationWithUserResponseLTR : KryptonForm
     {
         #region Designer Code
         private KryptonPanel kryptonPanel1;
@@ -16,7 +10,6 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         private KryptonRichTextBox krtbContent;
         private KryptonButton kbtnDismiss;
         private KryptonTextBox ktxtUserResponse;
-        private ProgressBar pbCountdown;
         private KryptonBorderEdge kryptonBorderEdge1;
 
         private void InitializeComponent()
@@ -25,11 +18,10 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             this.kbtnDismiss = new Krypton.Toolkit.KryptonButton();
             this.kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
-            this.ktxtUserResponse = new Krypton.Toolkit.KryptonTextBox();
             this.krtbContent = new Krypton.Toolkit.KryptonRichTextBox();
             this.kwlTitle = new Krypton.Toolkit.KryptonWrapLabel();
             this.pbxToastImage = new System.Windows.Forms.PictureBox();
-            this.pbCountdown = new System.Windows.Forms.ProgressBar();
+            this.ktxtUserResponse = new Krypton.Toolkit.KryptonTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
@@ -42,7 +34,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             this.kryptonPanel1.Controls.Add(this.kbtnDismiss);
             this.kryptonPanel1.Controls.Add(this.kryptonBorderEdge1);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.kryptonPanel1.Location = new System.Drawing.Point(0, 281);
+            this.kryptonPanel1.Location = new System.Drawing.Point(0, 277);
             this.kryptonPanel1.Name = "kryptonPanel1";
             this.kryptonPanel1.PanelBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelAlternate;
             this.kryptonPanel1.Size = new System.Drawing.Size(609, 50);
@@ -69,7 +61,6 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             // 
             // kryptonPanel2
             // 
-            this.kryptonPanel2.Controls.Add(this.pbCountdown);
             this.kryptonPanel2.Controls.Add(this.ktxtUserResponse);
             this.kryptonPanel2.Controls.Add(this.krtbContent);
             this.kryptonPanel2.Controls.Add(this.kwlTitle);
@@ -77,15 +68,8 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             this.kryptonPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel2.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel2.Name = "kryptonPanel2";
-            this.kryptonPanel2.Size = new System.Drawing.Size(609, 281);
+            this.kryptonPanel2.Size = new System.Drawing.Size(609, 277);
             this.kryptonPanel2.TabIndex = 2;
-            // 
-            // ktxtUserResponse
-            // 
-            this.ktxtUserResponse.Location = new System.Drawing.Point(146, 247);
-            this.ktxtUserResponse.Name = "ktxtUserResponse";
-            this.ktxtUserResponse.Size = new System.Drawing.Size(451, 23);
-            this.ktxtUserResponse.TabIndex = 3;
             // 
             // krtbContent
             // 
@@ -125,29 +109,28 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             this.pbxToastImage.TabIndex = 1;
             this.pbxToastImage.TabStop = false;
             // 
-            // pbCountdown
+            // ktxtUserResponse
             // 
-            this.pbCountdown.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pbCountdown.Location = new System.Drawing.Point(0, 276);
-            this.pbCountdown.Name = "pbCountdown";
-            this.pbCountdown.Size = new System.Drawing.Size(609, 5);
-            this.pbCountdown.TabIndex = 6;
+            this.ktxtUserResponse.Location = new System.Drawing.Point(146, 247);
+            this.ktxtUserResponse.Name = "ktxtUserResponse";
+            this.ktxtUserResponse.Size = new System.Drawing.Size(451, 23);
+            this.ktxtUserResponse.TabIndex = 3;
             // 
-            // BasicNotificationWithUserResponseAndProgressBarLTR
+            // BasicNotificationWithUserResponseLTR
             // 
             this.AcceptButton = this.kbtnDismiss;
             this.CancelButton = this.kbtnDismiss;
-            this.ClientSize = new System.Drawing.Size(609, 331);
+            this.ClientSize = new System.Drawing.Size(609, 327);
             this.Controls.Add(this.kryptonPanel2);
             this.Controls.Add(this.kryptonPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "BasicNotificationWithUserResponseAndProgressBarLTR";
+            this.Name = "BasicNotificationWithUserResponseLTR";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Load += new System.EventHandler(this.BasicNotificationWithUserResponseAndProgressBarLTR_Load);
+            this.Load += new System.EventHandler(this.BasicNotificationWithUserResponseLTR_Load);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
@@ -187,9 +170,9 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
         public PaletteRelativeAlign UserResponsePromptAlignHorizontal { get => _userResponsePromptAlignHorizontal; set => _userResponsePromptAlignHorizontal = value; }
 
-        public PaletteRelativeAlign UserResponsePromptAlignVertical { get => _userResponsePromptAlignVertical; set => _userResponsePromptAlignVertical = value; }
+        public PaletteRelativeAlign UserResponsePromptAlignVertical { get => _userResponsePromptAlignVertical; set => _userResponsePromptAlignVertical = value;}
 
-        public Font UserResponsePromptFont { get => _userResponsePromptFont; set => _userResponsePromptFont = value; }
+        public Font UserResponsePromptFont { get => _userResponsePromptFont; set => _userResponsePromptFont = value;}
 
         public IconType IconType { get => _iconType; set => _iconType = value; }
 
@@ -213,9 +196,9 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         #endregion
 
         #region Constructors
-        public BasicNotificationWithUserResponseAndProgressBarLTR(IconType iconType, string title, string contentText, Image customImage = null,
+        public BasicNotificationWithUserResponseLTR(IconType iconType, string title, string contentText, Image customImage = null, 
                                                     string dismissText = "&Dismiss", string userResponseCueText = "",
-                                                    Color? userResponseCueColour = null,
+                                                    Color? userResponseCueColour = null, 
                                                     PaletteRelativeAlign? userResponseCueAlignHorizontal = null,
                                                     PaletteRelativeAlign? userResponseCueAlignVertical = null,
                                                     Font userResponseCueFont = null)
@@ -244,24 +227,24 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
             TopMost = true;
 
-            Resize += BasicNotificationWithUserResponseAndProgressBarLTR_Resize;
+            Resize += BasicNotificationWithUserResponseLTR_Resize;
 
-            GotFocus += BasicNotificationWithUserResponseAndProgressBarLTR_GotFocus;
+            GotFocus += BasicNotificationWithUserResponseLTR_GotFocus;
 
             DoubleBuffered = true;
         }
 
-        public BasicNotificationWithUserResponseAndProgressBarLTR(IconType iconType, string title, string contentText, int seconds, Image customImage = null,
-                                                                string dismissText = "&Dismiss", string userResponseCueText = "",
-                                                                Color? userResponseCueColour = null,
-                                                                PaletteRelativeAlign? userResponseCueAlignHorizontal = null,
-                                                                PaletteRelativeAlign? userResponseCueAlignVertical = null,
-                                                                Font userResponseCueFont = null)
-            : this(iconType, title, contentText, customImage, dismissText, userResponseCueText,
+        public BasicNotificationWithUserResponseLTR(IconType iconType, string title, string contentText, int seconds, Image customImage = null, 
+                                                    string dismissText = "&Dismiss", string userResponseCueText = "",
+                                                    Color? userResponseCueColour = null,
+                                                    PaletteRelativeAlign? userResponseCueAlignHorizontal = null,
+                                                    PaletteRelativeAlign? userResponseCueAlignVertical = null,
+                                                    Font userResponseCueFont = null)
+            : this(iconType, title, contentText, customImage, dismissText, userResponseCueText, 
                    userResponseCueColour, userResponseCueAlignHorizontal,
                    userResponseCueAlignVertical, userResponseCueFont) => Seconds = seconds;
 
-        public BasicNotificationWithUserResponseAndProgressBarLTR(IconType iconType, string title, string contentText, int seconds, string soundPath, Image customImage = null,
+        public BasicNotificationWithUserResponseLTR(IconType iconType, string title, string contentText, int seconds, string soundPath, Image customImage = null, 
                                                     string dismissText = "&Dismiss", string userResponseCueText = "",
                                                     Color? userResponseCueColour = null,
                                                     PaletteRelativeAlign? userResponseCueAlignHorizontal = null,
@@ -271,7 +254,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                    userResponseCueColour, userResponseCueAlignHorizontal,
                    userResponseCueAlignVertical, userResponseCueFont) => SoundPath = soundPath;
 
-        public BasicNotificationWithUserResponseAndProgressBarLTR(IconType iconType, string title, string contentText, Stream soundStream, Image customImage = null,
+        public BasicNotificationWithUserResponseLTR(IconType iconType, string title, string contentText, Stream soundStream, Image customImage = null, 
                                                     string dismissText = "&Dismiss", string userResponseCueText = "",
                                                     Color? userResponseCueColour = null,
                                                     PaletteRelativeAlign? userResponseCueAlignHorizontal = null,
@@ -281,7 +264,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                    userResponseCueColour, userResponseCueAlignHorizontal,
                    userResponseCueAlignVertical, userResponseCueFont) => SoundStream = soundStream;
 
-        public BasicNotificationWithUserResponseAndProgressBarLTR(IconType iconType, string title, string contentText, int seconds, Stream soundStream, Image customImage = null,
+        public BasicNotificationWithUserResponseLTR(IconType iconType, string title, string contentText, int seconds, Stream soundStream, Image customImage = null, 
                                                     string dismissText = "&Dismiss", string userResponseCueText = "",
                                                     Color? userResponseCueColour = null,
                                                     PaletteRelativeAlign? userResponseCueAlignHorizontal = null,
@@ -293,17 +276,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         #endregion
 
         #region Event Handlers
-        private void BasicNotificationWithUserResponseAndProgressBarLTR_GotFocus(object sender, EventArgs e) => kbtnDismiss.Focus();
-
-        private void BasicNotificationWithUserResponseAndProgressBarLTR_Resize(object sender, EventArgs e)
-        {
-            if (WindowState == FormWindowState.Maximized)
-            {
-                WindowState = FormWindowState.Normal;
-            }
-        }
-
-        private void BasicNotificationWithUserResponseAndProgressBarLTR_Load(object sender, EventArgs e)
+        private void BasicNotificationWithUserResponseLTR_Load(object sender, EventArgs e)
         {
             //Once loaded, position the form to the bottom left of the screen with added padding
             Location = new Point(Screen.PrimaryScreen.WorkingArea.Width - Width - 5, Screen.PrimaryScreen.WorkingArea.Height - Height - 5);
@@ -321,14 +294,22 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             }
         }
 
+        private void BasicNotificationWithUserResponseLTR_GotFocus(object sender, EventArgs e) => kbtnDismiss.Focus();
+
+        private void BasicNotificationWithUserResponseLTR_Resize(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Maximized)
+            {
+                WindowState = FormWindowState.Normal;
+            }
+        }
+
         private void kbtnDismiss_Click(object sender, EventArgs e) => UtilityMethods.FadeOutAndClose(this);
         #endregion
 
         #region Methods
         public new void Show()
         {
-            int currentValue;
-
             Opacity = 0;
 
             UtilityMethods.SetIconType(IconType, CustomImage, pbxToastImage);
@@ -349,12 +330,6 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
             if (Seconds != 0)
             {
-                pbCountdown.Maximum = Seconds;
-
-                currentValue = pbCountdown.Maximum;
-
-                pbCountdown.Value = currentValue;
-
                 kbtnDismiss.Text = $"{ DismissText } ({ Seconds - Time })";
 
                 _timer = new Timer();
@@ -366,8 +341,6 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                     _time++;
 
                     kbtnDismiss.Text = $"{ DismissText } ({ Seconds - Time }s)";
-
-                    pbCountdown.Value = Seconds - Time;
 
                     if (_time == Seconds)
                     {
@@ -393,8 +366,6 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
         public new DialogResult ShowDialog()
         {
-            int currentValue;
-
             Opacity = 0;
 
             UtilityMethods.SetIconType(IconType, CustomImage, pbxToastImage);
@@ -415,12 +386,6 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
             if (Seconds != 0)
             {
-                pbCountdown.Maximum = Seconds;
-
-                currentValue = pbCountdown.Maximum;
-
-                pbCountdown.Value = currentValue;
-
                 kbtnDismiss.Text = $"{ DismissText } ({ Seconds - Time })";
 
                 _timer = new Timer();
@@ -432,8 +397,6 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                     _time++;
 
                     kbtnDismiss.Text = $"{ DismissText } ({ Seconds - Time }s)";
-
-                    pbCountdown.Value = Seconds - Time;
 
                     if (_time == Seconds)
                     {

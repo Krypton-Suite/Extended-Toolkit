@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Krypton.Toolkit.Suite.Extended.Toast
+﻿namespace Krypton.Toolkit.Suite.Extended.Toast
 {
-    /*internal*/ public class BasicNotificationLTR : KryptonForm
+    /*internal*/
+    public class BasicNotificationLTR : KryptonForm
     {
         #region Designer Code
         private KryptonPanel kryptonPanel1;

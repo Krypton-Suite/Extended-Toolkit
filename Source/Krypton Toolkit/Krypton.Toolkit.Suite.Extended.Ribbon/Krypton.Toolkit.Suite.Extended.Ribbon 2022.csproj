@@ -65,7 +65,7 @@
 			<ItemGroup>
 				<PackageReference Include="Krypton.Toolkit.Nightly" Version="60.22.1.17-alpha" />
 
-				<PackageReference Include="Krypton.Ribbon.Nightly" Version="60.22.1.17-beta" />
+				<PackageReference Include="Krypton.Ribbon.Nightly" Version="60.22.1.17-alpha" />
 			</ItemGroup>
 		</When>
 		<Otherwise>
