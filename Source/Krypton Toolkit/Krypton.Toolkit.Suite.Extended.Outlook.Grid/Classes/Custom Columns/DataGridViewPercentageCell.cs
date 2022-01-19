@@ -28,33 +28,24 @@ public class DataGridViewPercentageCell : KryptonDataGridViewTextBoxCell
     /// </summary>
     public DataGridViewPercentageCell()
     {
-        this.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+        Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
     }
 
     /// <summary>
     /// Specify the type of object used for editing. This is how the WinForms
     /// framework figures out what type of edit control to make.
     /// </summary>
-    public override Type EditType
-    {
-        get { return typeof(PercentageEditingControl); }
-    }
+    public override Type EditType => typeof(PercentageEditingControl);
 
     /// <summary>
     /// Overrides TypeValue
     /// </summary>
-    public override Type ValueType
-    {
-        get { return typeof(double); }
-    }
+    public override Type ValueType => typeof(double);
 
     /// <summary>
     /// Specify the default cell contents upon creation of a new cell.
     /// </summary>
-    public override object DefaultNewRowValue
-    {
-        get { return 0; }
-    }
+    public override object DefaultNewRowValue => 0;
 
     /// <summary>
     /// Overrides Paint
@@ -70,8 +61,8 @@ public class DataGridViewPercentageCell : KryptonDataGridViewTextBoxCell
     /// <param name="cellStyle"></param>
     /// <param name="advancedBorderStyle"></param>
     /// <param name="paintParts"></param>
-    protected override void Paint(System.Drawing.Graphics graphics, System.Drawing.Rectangle clipBounds, System.Drawing.Rectangle cellBounds, int rowIndex, System.Windows.Forms.DataGridViewElementStates cellState, object value, object formattedValue, string errorText, System.Windows.Forms.DataGridViewCellStyle cellStyle, System.Windows.Forms.DataGridViewAdvancedBorderStyle advancedBorderStyle,
-        System.Windows.Forms.DataGridViewPaintParts paintParts)
+    protected override void Paint(Graphics graphics, Rectangle clipBounds, Rectangle cellBounds, int rowIndex, DataGridViewElementStates cellState, object value, object formattedValue, string errorText, DataGridViewCellStyle cellStyle, DataGridViewAdvancedBorderStyle advancedBorderStyle,
+                                  DataGridViewPaintParts paintParts)
     {
         //Draw the bar
         int barWidth;

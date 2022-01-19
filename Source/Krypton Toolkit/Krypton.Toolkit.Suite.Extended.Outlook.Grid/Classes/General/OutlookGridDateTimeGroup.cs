@@ -28,34 +28,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
     /// 
     public class OutlookGridDateTimeGroup : OutlookGridDefaultGroup
     {
-        TextInfo ti = CultureInfo.CurrentCulture.TextInfo;
-
-        /// <summary>
-        /// Enum of Date interval for the OutlookGridDateTimeGroup
-        /// </summary>
-        public enum DateInterval
-        {
-            /// <summary>
-            /// Day
-            /// </summary>
-            Day,
-            /// <summary>
-            /// Month
-            /// </summary>
-            Month,
-            /// <summary>
-            /// Quarter
-            /// </summary>
-            Quarter,
-            /// <summary>
-            /// Year
-            /// </summary>
-            Year,
-            /// <summary>
-            /// Smart : intelligent grouping like Outlook for dates
-            /// </summary>
-            Smart
-        }
+        private readonly TextInfo _ti = CultureInfo.CurrentCulture.TextInfo;
 
         /// <summary>
         /// The Date Interval of OutlookGridDateTimeGroup
@@ -86,17 +59,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         ///<summary>
         ///Gets or sets the displayed text.
         ///</summary>
-        public override string Text
-        {
-            get
-            {
-                return string.Format("{0}: {1} ({2})", Column.DataGridViewColumn.HeaderText, Value.ToString(), ItemCount == 1 ? OneItemText : ItemCount.ToString() + XXXItemsText);
-            }
-            //set
-            //{
-            //    text = value;
-            //}
-        }
+        public override string Text => $"{Column.DataGridViewColumn.HeaderText}: {Value} ({(ItemCount == 1 ? OneItemText : ItemCount.ToString() + XXXItemsText)})";
 
         private DateTime valDateTime;
 
@@ -105,10 +68,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// </summary>
         public override object Value
         {
-            get
-            {
-                return base.Value;
-            }
+            get => base.Value;
+
             set
             {
                 switch (Interval)
@@ -140,7 +101,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                         if (value != null && value != DBNull.Value)
                         {
                             valDateTime = DateTime.Parse(value.ToString());
-                            base.Value = ti.ToTitleCase(valDateTime.ToString("MMMM")) + " " + valDateTime.Year;
+                            base.Value = _ti.ToTitleCase(valDateTime.ToString("MMMM")) + " " + valDateTime.Year;
                         }
                         else
                         {

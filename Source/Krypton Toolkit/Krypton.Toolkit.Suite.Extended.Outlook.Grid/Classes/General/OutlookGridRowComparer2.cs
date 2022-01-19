@@ -42,8 +42,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <exception cref="System.Exception">OutlookGridRowComparer:  + this.ToString()</exception>
         public int Compare(OutlookGridRow x, OutlookGridRow y)
         {
-            int compareResult = 0;
-            int orderModifier;
+            int compareResult = 0, orderModifier;
+
             try
             {
                 for (int i = 0; i < sortColumnIndexAndOrder.Count; i++)

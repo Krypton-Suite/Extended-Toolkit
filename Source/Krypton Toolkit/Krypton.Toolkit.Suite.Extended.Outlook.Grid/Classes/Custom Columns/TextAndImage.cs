@@ -26,11 +26,11 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <summary>
         /// The text
         /// </summary>
-        public string Text;
+        public string _text;
         /// <summary>
         /// The image
         /// </summary>
-        public Image Image;
+        public Image _image;
 
         /// <summary>
         /// Constructor
@@ -45,46 +45,34 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <param name="img">The image.</param>
         public TextAndImage(string text, Image img)
         {
-            Text = text;
-            Image = img;
+            _text = text;
+            _image = img;
         }
 
         /// <summary>
         /// Overrides ToString
         /// </summary>
         /// <returns>String that represents TextAndImage</returns>
-        public override string ToString()
-        {
-            return Text;
-        }
+        public override string ToString() => _text;
 
         /// <summary>
         /// Overrides Equals
         /// </summary>
         /// <param name="obj">The object to compare</param>
         /// <returns>true if equal, false otherwise.</returns>
-        public override bool Equals(object obj)
-        {
-            return Text.Equals(obj.ToString());
-        }
+        public override bool Equals(object obj) => _text.Equals(obj.ToString());
 
         /// <summary>
         /// Overrides GetHashCode
         /// </summary>
         /// <returns></returns>
-        public override int GetHashCode()
-        {
-            return base.GetHashCode();
-        }
+        public override int GetHashCode() => base.GetHashCode();
 
         /// <summary>
         /// Compares to.
         /// </summary>
         /// <param name="other">The other.</param>
         /// <returns></returns>
-        public int CompareTo(TextAndImage other)
-        {
-            return Text.CompareTo(other.Text);
-        }
+        public int CompareTo(TextAndImage other) => _text.CompareTo(other._text);
     }
 }

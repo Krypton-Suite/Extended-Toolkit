@@ -76,10 +76,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <summary>
         /// Gets or sets if the column is grouped
         /// </summary>
-        public bool IsGrouped
-        {
-            get { return GroupIndex > -1; }
-        }
+        public bool IsGrouped => GroupIndex > -1;
 
         /// <summary>
         /// Gets or sets the sort direction

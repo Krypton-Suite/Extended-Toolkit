@@ -41,9 +41,6 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <value>
         /// The node.
         /// </value>
-        public OutlookGridRow Node
-        {
-            get { return _row; }
-        }
+        public OutlookGridRow Node => _row;
     }
 }

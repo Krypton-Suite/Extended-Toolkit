@@ -21,7 +21,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
     /// <summary>
     /// Hosts a collection of KryptonDataGridViewPercentageColumn cells.
     /// </summary>
-    /// <seealso cref="System.Windows.Forms.DataGridViewColumn" />
+    /// <seealso cref="DataGridViewColumn" />
     public class KryptonDataGridViewPercentageColumn : DataGridViewColumn// KryptonDataGridViewTextBoxColumn
     {
         #region Identity
@@ -29,7 +29,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// Initialize a new instance of the KryptonDataGridViewPercentageColumn class.
         /// </summary>
         public KryptonDataGridViewPercentageColumn()
-            : base(new DataGridViewPercentageCell()) => this.DefaultCellStyle.Format = "P";
+            : base(new DataGridViewPercentageCell()) => DefaultCellStyle.Format = "P";
 
         /// <summary>
         /// Returns a standard compact string representation of the column.

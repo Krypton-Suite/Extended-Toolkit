@@ -23,7 +23,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
     /// </summary>
     public class OutlookGridGroupImageEventArgs : EventArgs
     {
-        private OutlookGridRow row;
+        private OutlookGridRow _row;
 
         /// <summary>
         /// Constructor
@@ -31,7 +31,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <param name="row">The OutlookGridRow.</param>
         public OutlookGridGroupImageEventArgs(OutlookGridRow row)
         {
-            this.row = row;
+            _row = row;
         }
 
         /// <summary>
@@ -39,14 +39,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// </summary>
         public OutlookGridRow Row
         {
-            get
-            {
-                return this.row;
-            }
-            set
-            {
-                this.row = value;
-            }
+            get => _row;
+            set => _row = value;
         }
     }
 }

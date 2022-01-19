@@ -23,8 +23,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
     /// </summary>
     public class OutlookGridColumnCollection : List<OutlookGridColumn>
     {
-        private int maxGroupIndex;
-        private int maxSortIndex;
+        private int _maxGroupIndex, _maxSortIndex;
 
         /// <summary>
         /// Constructor
@@ -32,8 +31,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         public OutlookGridColumnCollection()
             : base()
         {
-            maxGroupIndex = -1;
-            maxSortIndex = -1;
+            _maxGroupIndex = -1;
+            _maxSortIndex = -1;
         }
 
         /// <summary>
@@ -41,13 +40,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// </summary>
         /// <param name="columnName">The column name.</param>
         /// <returns>OutlookGridColumn</returns>
-        public OutlookGridColumn this[string columnName]
-        {
-            get
-            {
-                return this.Find(c => c.DataGridViewColumn.Name.Equals(columnName));
-            }
-        }
+        public OutlookGridColumn this[string columnName] => Find(c => c.DataGridViewColumn.Name.Equals(columnName));
 
         /// <summary>
         /// Add an OutlookGridColumn to the collection.
@@ -58,58 +51,37 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             base.Add(item);
 
             if (item.GroupIndex > -1)
-                maxGroupIndex++;
+            {
+                _maxGroupIndex++;
+            }
+
             if (item.SortIndex > -1)
-                maxSortIndex++;
+            {
+                _maxSortIndex++;
+            }
         }
 
         /// <summary>
         /// Gets or Sets the maximum GroupIndex in the collection
         /// </summary>
-        public int MaxGroupIndex
-        {
-            get
-            {
-                return maxGroupIndex;
-            }
-            set
-            {
-                maxGroupIndex = value;
-            }
-        }
+        public int MaxGroupIndex { get => _maxGroupIndex; set => _maxGroupIndex = value; }
 
         /// <summary>
         /// Gets or sets the maximum SortIndex in the collection
         /// </summary>
-        public int MaxSortIndex
-        {
-            get
-            {
-                return maxSortIndex;
-            }
-            set
-            {
-                maxSortIndex = value;
-            }
-        }
+        public int MaxSortIndex { get => _maxSortIndex; set => _maxSortIndex = value; }
 
         /// <summary>
         /// Gets the number of columns grouped
         /// </summary>
         /// <returns>the number of columns grouped.</returns>
-        public int CountGrouped()
-        {
-            return this.Count(c => c.IsGrouped == true);
-        }
+        public int CountGrouped() => this.Count(c => c.IsGrouped == true);
 
         /// <summary>
         /// Gets the list of grouped columns
         /// </summary>
         /// <returns>The list of grouped columns.</returns>
-        public List<OutlookGridColumn> FindGroupedColumns()
-        {
-            return this.Where(c => c.IsGrouped).OrderBy(c => c.GroupIndex).ToList();
-        }
+        public List<OutlookGridColumn> FindGroupedColumns() => this.Where(c => c.IsGrouped).OrderBy(c => c.GroupIndex).ToList();
 
         /// <summary>
         /// Gets a list of columns which are sorted and not grouped.
@@ -122,7 +94,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             foreach (OutlookGridColumn col in tmp)
             {
                 if (col.IsGrouped && col.GroupIndex > -1)
+                {
                     res.Add(Tuple.Create<int, SortOrder, IComparer>(col.DataGridViewColumn.Index, col.SortDirection, col.RowsComparer));
+                }
             }
             return res;
         }
@@ -132,20 +106,14 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// </summary>
         /// <param name="index">The index</param>
         /// <returns>The OutlookGridColumn.</returns>
-        public OutlookGridColumn FindFromColumnIndex(int index)
-        {
-            return this.FirstOrDefault(c => c.DataGridViewColumn.Index == index);
-        }
+        public OutlookGridColumn FindFromColumnIndex(int index) => this.FirstOrDefault(c => c.DataGridViewColumn.Index == index);
 
         /// <summary>
         /// Gets the column from its name
         /// </summary>
         /// <param name="name">The name of the column.</param>
         /// <returns>The associated OutlookGridColumn.</returns>
-        public OutlookGridColumn FindFromColumnName(string name)
-        {
-            return this.FirstOrDefault(x => x.Name == name);
-        }
+        public OutlookGridColumn FindFromColumnName(string name) => this.FirstOrDefault(x => x.Name == name);
 
         /// <summary>
         /// Gets a list of columns which are sorted and not grouped.
@@ -179,7 +147,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                     this[i].GroupIndex--;
                 }
             }
-            maxGroupIndex--;
+            _maxGroupIndex--;
             col.GroupIndex = -1;
         }
 
@@ -197,7 +165,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                     this[i].SortIndex--;
                 }
             }
-            maxSortIndex--;
+            _maxSortIndex--;
             col.SortIndex = -1;
         }
 
@@ -257,7 +225,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             {
                 Console.WriteLine(this[i].Name + " , GroupIndex=" + this[i].GroupIndex.ToString() + ", SortIndex=" + this[i].SortIndex.ToString());
             }
-            Console.WriteLine("MaxGroupIndex=" + maxGroupIndex.ToString() + ", MaxSortIndex=" + maxSortIndex.ToString());
+            Console.WriteLine("MaxGroupIndex=" + _maxGroupIndex.ToString() + ", MaxSortIndex=" + _maxSortIndex.ToString());
         }
     }
 }

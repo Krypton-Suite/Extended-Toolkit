@@ -82,9 +82,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <returns></returns>
         public static Color ConvertThreeRange(double value, double min, double max, ThreeColoursParams par)
         {
-            ColourHelper.HSVColour A = ColourToHSV(par.MinimumColour);
-            ColourHelper.HSVColour B = ColourToHSV(par.MaximumColour);
-            ColourHelper.HSVColour C = ColourToHSV(par.MediumColour);
+            ColourHelper.HSVColour A = ColourToHSV(par._minimumColour);
+            ColourHelper.HSVColour B = ColourToHSV(par._maximumColour);
+            ColourHelper.HSVColour C = ColourToHSV(par._mediumColour);
 
             //Ratio
             double percent;
@@ -100,15 +100,15 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
             if (percent == 0.5)
             {
-                return par.MediumColour;
+                return par._mediumColour;
             }
             else if (percent <= 0.5)
             {
-                return Color.FromArgb((int)Math.Round(par.MinimumColour.A + (par.MediumColour.A - par.MinimumColour.A) * percent), (int)Math.Round(par.MinimumColour.R + (par.MediumColour.R - par.MinimumColour.R) * percent), (int)Math.Round(par.MinimumColour.G + (par.MediumColour.G - par.MinimumColour.G) * percent), (int)Math.Round(par.MinimumColour.B + (par.MediumColour.B - par.MinimumColour.B) * percent));
+                return Color.FromArgb((int)Math.Round(par._minimumColour.A + (par._mediumColour.A - par._minimumColour.A) * percent), (int)Math.Round(par._minimumColour.R + (par._mediumColour.R - par._minimumColour.R) * percent), (int)Math.Round(par._minimumColour.G + (par._mediumColour.G - par._minimumColour.G) * percent), (int)Math.Round(par._minimumColour.B + (par._mediumColour.B - par._minimumColour.B) * percent));
             }
             else
             {
-                return Color.FromArgb((int)Math.Round(par.MediumColour.A + (par.MaximumColour.A - par.MediumColour.A) * percent), (int)Math.Round(par.MediumColour.R + (par.MaximumColour.R - par.MediumColour.R) * percent), (int)Math.Round(par.MediumColour.G + (par.MaximumColour.G - par.MediumColour.G) * percent), (int)Math.Round(par.MediumColour.B + (par.MaximumColour.B - par.MediumColour.B) * percent));
+                return Color.FromArgb((int)Math.Round(par._mediumColour.A + (par._maximumColour.A - par._mediumColour.A) * percent), (int)Math.Round(par._mediumColour.R + (par._maximumColour.R - par._mediumColour.R) * percent), (int)Math.Round(par._mediumColour.G + (par._maximumColour.G - par._mediumColour.G) * percent), (int)Math.Round(par._mediumColour.B + (par._maximumColour.B - par._mediumColour.B) * percent));
             }
         }
 

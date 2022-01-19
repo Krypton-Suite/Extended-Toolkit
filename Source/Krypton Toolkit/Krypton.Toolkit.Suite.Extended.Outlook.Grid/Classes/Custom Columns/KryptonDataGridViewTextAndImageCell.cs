@@ -23,8 +23,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
     /// </summary>
     public class KryptonDataGridViewTextAndImageCell : KryptonDataGridViewTextBoxCell
     {
-        private Image imageValue;
-        private Size imageSize;
+        private Image _imageValue;
+        private Size _imageSize;
 
         /// <summary>
         /// Constructor
@@ -37,10 +37,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <summary>
         /// Overrides ValueType
         /// </summary>
-        public override Type ValueType
-        {
-            get { return typeof(TextAndImage); }
-        }
+        public override Type ValueType => typeof(TextAndImage);
 
         /// <summary>
         /// Sets the value.
@@ -51,7 +48,10 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         protected override bool SetValue(int rowIndex, object value)
         {
             if (value != null && !((OutlookGridRow)OwningRow).IsGroupRow) //Test to catch crash when first column is text and image when grouping
-                Image = ((TextAndImage)value).Image;
+            {
+                Image = ((TextAndImage)value)._image;
+            }
+
             return base.SetValue(rowIndex, value);
         }
 
@@ -62,8 +62,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         public override object Clone()
         {
             KryptonDataGridViewTextAndImageCell c = base.Clone() as KryptonDataGridViewTextAndImageCell;
-            c.imageValue = imageValue;
-            c.imageSize = imageSize;
+            c._imageValue = _imageValue;
+            c._imageSize = _imageSize;
             return c;
         }
 
@@ -75,19 +75,20 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// </value>
         public Image Image
         {
-            get { return imageValue; }
+            get => _imageValue;
+
             set
             {
                 if (Image != value)
                 {
-                    imageValue = value;
-                    imageSize = value.Size;
+                    _imageValue = value;
+                    _imageSize = value.Size;
 
                     //if (this.InheritedStyle != null)
                     //{
                     Padding inheritedPadding = Style.Padding;
                     //Padding inheritedPadding = this.InheritedStyle.Padding;
-                    Style.Padding = new Padding(imageSize.Width + 2,
+                    Style.Padding = new Padding(_imageSize.Width + 2,
                         inheritedPadding.Top, inheritedPadding.Right,
                         inheritedPadding.Bottom);
                     //}
@@ -112,18 +113,18 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         protected override void Paint(Graphics graphics, Rectangle clipBounds, Rectangle cellBounds, int rowIndex, DataGridViewElementStates cellState, object value, object formattedValue, string errorText, DataGridViewCellStyle cellStyle, DataGridViewAdvancedBorderStyle advancedBorderStyle, DataGridViewPaintParts paintParts)
         {
             //TODO : improve we assume it is a 16x16 image 
-            if (Value != null && ((TextAndImage)Value).Image != null)
+            if (Value != null && ((TextAndImage)Value)._image != null)
             {
                 Padding inheritedPadding = Style.Padding;
-                Style.Padding = new Padding(imageSize.Width + 2,
+                Style.Padding = new Padding(_imageSize.Width + 2,
                     inheritedPadding.Top, inheritedPadding.Right,
                     inheritedPadding.Bottom);
                 //To be in phase with highlight feature who forces the style.
 
                 // Draw the image clipped to the cell.
-                System.Drawing.Drawing2D.GraphicsContainer container = graphics.BeginContainer();
+                GraphicsContainer container = graphics.BeginContainer();
                 graphics.SetClip(cellBounds);
-                graphics.DrawImage(((TextAndImage)Value).Image, new Rectangle(cellBounds.Location.X + 2, cellBounds.Location.Y + ((cellBounds.Height - 16) / 2) - 1, 16, 16));
+                graphics.DrawImage(((TextAndImage)Value)._image, new Rectangle(cellBounds.Location.X + 2, cellBounds.Location.Y + ((cellBounds.Height - 16) / 2) - 1, 16, 16));
                 graphics.EndContainer(container);
             }
 

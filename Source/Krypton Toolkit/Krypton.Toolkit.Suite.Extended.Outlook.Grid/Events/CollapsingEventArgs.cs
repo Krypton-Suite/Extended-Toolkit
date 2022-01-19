@@ -21,7 +21,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
     /// <summary>
     /// Class for Node collapsing events
     /// </summary>
-    /// <seealso cref="JDHSoftware.Krypton.Toolkit.KryptonOutlookGrid.OutlookGridRowNodeCancelEventBase" />
+    /// <seealso cref="KryptonOutlookGrid.OutlookGridRowNodeCancelEventBase" />
     public class CollapsingEventArgs : OutlookGridRowNodeCancelEventBase
     {
         /// <summary>

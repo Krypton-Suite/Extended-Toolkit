@@ -16,40 +16,43 @@
 //--------------------------------------------------------------------------------
 #endregion
 
-/// <summary>
-/// Public class for the underlying editing control
-/// </summary>
-[ToolboxItem(false)]
-public class PercentageEditingControl : DataGridViewTextBoxEditingControl
+namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 {
     /// <summary>
-    /// Constructor
+    /// Public class for the underlying editing control
     /// </summary>
-    public PercentageEditingControl()
-        : base()
+    [ToolboxItem(false)]
+    public class PercentageEditingControl : DataGridViewTextBoxEditingControl
     {
-    }
-
-    /// <summary>
-    /// Returns if the character is a valid digit
-    /// </summary>
-    /// <param name="c">The character.</param>
-    /// <returns>True if valid digit, false otherwise.</returns>
-    private bool IsValidForNumberInput(char c)
-    {
-        return Char.IsDigit(c);
-        // OrElse c = Chr(8) OrElse c = "."c OrElse c = "-"c OrElse c = "("c OrElse c = ")"c
-    }
-
-    /// <summary>
-    /// Overrides onKeypPress
-    /// </summary>
-    /// <param name="e"></param>
-    protected override void OnKeyPress(KeyPressEventArgs e)
-    {
-        if (!IsValidForNumberInput(e.KeyChar))
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public PercentageEditingControl()
+            : base()
         {
-            e.Handled = true;
+        }
+
+        /// <summary>
+        /// Returns if the character is a valid digit
+        /// </summary>
+        /// <param name="c">The character.</param>
+        /// <returns>True if valid digit, false otherwise.</returns>
+        private bool IsValidForNumberInput(char c)
+        {
+            return Char.IsDigit(c);
+            // OrElse c = Chr(8) OrElse c = "."c OrElse c = "-"c OrElse c = "("c OrElse c = ")"c
+        }
+
+        /// <summary>
+        /// Overrides onKeypPress
+        /// </summary>
+        /// <param name="e"></param>
+        protected override void OnKeyPress(KeyPressEventArgs e)
+        {
+            if (!IsValidForNumberInput(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

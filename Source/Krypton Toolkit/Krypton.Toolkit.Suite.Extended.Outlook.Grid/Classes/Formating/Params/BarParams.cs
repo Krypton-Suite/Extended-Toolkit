@@ -27,15 +27,15 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <summary>
         /// The bar color
         /// </summary>
-        public Color BarColour;
+        public Color _barColour;
         /// <summary>
         /// The gradient fill
         /// </summary>
-        public bool GradientFill;
+        public bool _gradientFill;
         /// <summary>
         /// The proportion value
         /// </summary>
-        public double ProportionValue;
+        public double _proportionValue;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="BarParams"/> class.
@@ -44,8 +44,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <param name="gradientFill">if set to <c>true</c> [gradient fill].</param>
         public BarParams(Color barColour, bool gradientFill)
         {
-            BarColour = barColour;
-            GradientFill = gradientFill;
+            _barColour = barColour;
+            _gradientFill = gradientFill;
         }
 
         /// <summary>
@@ -54,10 +54,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <returns>
         /// Nouvel objet qui est une copie de cette instance.
         /// </returns>
-        public object Clone()
-        {
-            return MemberwiseClone();
-        }
+        public object Clone() => MemberwiseClone();
 
         /// <summary>
         /// Persists the parameters.
@@ -65,8 +62,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <param name="writer">The XML writer.</param>
         void IFormatParams.Persist(XmlWriter writer)
         {
-            writer.WriteElementString("BarColour", BarColour.ToArgb().ToString());
-            writer.WriteElementString("GradientFill", CommonHelper.BoolToString(GradientFill));
+            writer.WriteElementString("BarColour", _barColour.ToArgb().ToString());
+            writer.WriteElementString("GradientFill", CommonHelper.BoolToString(_gradientFill));
         }
     }
 }

@@ -32,7 +32,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         {
             //Value type is an integer. 
             //Formatted value type is an image since we derive from the ImageCell 
-            this.ValueType = typeof(TokenCell);
+            ValueType = typeof(TokenCell);
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             int nextPosition = cellBounds.X + (int)(1 * factorX);
             Font f = KryptonManager.CurrentGlobalPalette.GetContentShortTextFont(PaletteContentStyle.GridDataCellList, PaletteState.Normal);
 
-            Token tok = (Token)this.Value;
+            Token tok = (Token)Value;
             if (tok != null)
             {
                 Rectangle rectangle = new Rectangle();
@@ -108,7 +108,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             Size tmpSize = base.GetPreferredSize(graphics, cellStyle, rowIndex, constraintSize);
             Font f = KryptonManager.CurrentGlobalPalette.GetContentShortTextFont(PaletteContentStyle.GridDataCellList, PaletteState.Normal);
             int nextPosition = (int)(1 * factorX);
-            if (this.Value != null)
+            if (Value != null)
             {
                 Token tok = (Token)this.Value;
                 Size s = TextRenderer.MeasureText(tok.Text, f);
@@ -123,10 +123,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// Update cell's value when the user clicks on a star 
         /// </summary>
         /// <param name="e">A DataGridViewCellEventArgs that contains the event data.</param>
-        protected override void OnContentClick(DataGridViewCellEventArgs e)
-        {
-            base.OnContentClick(e);
-        }
+        protected override void OnContentClick(DataGridViewCellEventArgs e) => base.OnContentClick(e);
 
         #region Invalidate cells when mouse moves or leaves the cell
 

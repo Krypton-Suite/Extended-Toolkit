@@ -24,8 +24,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
     public class OutlookGridGroupCollection
     {
         #region "Variables"
-        private IOutlookGridGroup parentGroup;
-        private List<IOutlookGridGroup> groupList;
+        private IOutlookGridGroup _parentGroup;
+        private List<IOutlookGridGroup> _groupList;
         #endregion
 
         #region "Constructor"        
@@ -34,7 +34,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// </summary>
         public OutlookGridGroupCollection()
         {
-            groupList = new List<IOutlookGridGroup>();
+            _groupList = new List<IOutlookGridGroup>();
         }
 
         /// <summary>
@@ -43,8 +43,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <param name="parentGroup">The parent group, if any.</param>
         public OutlookGridGroupCollection(IOutlookGridGroup parentGroup)
         {
-            groupList = new List<IOutlookGridGroup>();
-            this.parentGroup = parentGroup;
+            _groupList = new List<IOutlookGridGroup>();
+            this._parentGroup = parentGroup;
         }
         #endregion
 
@@ -53,39 +53,17 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <summary>
         /// Gets or Sets the parent group
         /// </summary>
-        public IOutlookGridGroup ParentGroup
-        {
-            get
-            {
-                return this.parentGroup;
-            }
-            internal set
-            {
-                this.parentGroup = value;
-            }
-        }
+        public IOutlookGridGroup ParentGroup { get => _parentGroup; internal set => _parentGroup = value; }
 
         /// <summary>
         /// Gets the list of IOutlookGridGroup.
         /// </summary>
-        public List<IOutlookGridGroup> List
-        {
-            get
-            {
-                return groupList;
-            }
-        }
+        public List<IOutlookGridGroup> List => _groupList;
 
         /// <summary>
         /// Gets the number of groups
         /// </summary>
-        public int Count
-        {
-            get
-            {
-                return groupList.Count;
-            }
-        }
+        public int Count => _groupList.Count;
 
         #endregion
 
@@ -100,7 +78,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         {
             get
             {
-                return groupList[index];
+                return _groupList[index];
             }
         }
 
@@ -110,7 +88,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <param name="group">The IOutlookGridGroup.</param>
         public void Add(IOutlookGridGroup group)
         {
-            groupList.Add(group);
+            _groupList.Add(group);
         }
 
         /// <summary>
@@ -118,7 +96,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// </summary>
         public void Sort()
         {
-            groupList.Sort();
+            _groupList.Sort();
         }
 
         /// <summary>
@@ -126,7 +104,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// </summary>
         internal void Sort(OutlookGridGroupCountComparer comparer)
         {
-            groupList.Sort(comparer);
+            _groupList.Sort(comparer);
         }
 
         /// <summary>
@@ -139,11 +117,11 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             //We must return null if no group exist, then the OutlookGrid will create one. But we must return a group even for a null value.
             if (value == null)
             {
-                return groupList.Find(x => x.Value == null);
+                return _groupList.Find(x => x.Value == null);
                 //return null;
             }
             //return groupList.Find(x => x.Value.Equals(value));
-            return groupList.Find(x => x.Value != null && x.Value.Equals(value));
+            return _groupList.Find(x => x.Value != null && x.Value.Equals(value));
         }
 
         #endregion
@@ -152,13 +130,13 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
         internal void Clear()
         {
-            parentGroup = null;
+            _parentGroup = null;
             //If a group is collapsed the rows will not appear. Then if we clear the group the rows should not remain "collapsed"
-            for (int i = 0; i < groupList.Count; i++)
+            for (int i = 0; i < _groupList.Count; i++)
             {
-                groupList[i].Collapsed = false;
+                _groupList[i].Collapsed = false;
             }
-            groupList.Clear();
+            _groupList.Clear();
         }
 
         #endregion

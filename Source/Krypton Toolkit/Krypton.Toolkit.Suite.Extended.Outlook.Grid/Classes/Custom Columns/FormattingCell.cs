@@ -82,8 +82,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <param name="cellStyle">The cell style.</param>
         /// <param name="advancedBorderStyle">The advanced border style.</param>
         /// <param name="paintParts">The paint parts.</param>
-        protected override void Paint(System.Drawing.Graphics graphics, System.Drawing.Rectangle clipBounds, System.Drawing.Rectangle cellBounds, int rowIndex, System.Windows.Forms.DataGridViewElementStates cellState, object value, object formattedValue, string errorText, System.Windows.Forms.DataGridViewCellStyle cellStyle, System.Windows.Forms.DataGridViewAdvancedBorderStyle advancedBorderStyle,
-            System.Windows.Forms.DataGridViewPaintParts paintParts)
+        protected override void Paint(Graphics graphics, Rectangle clipBounds, Rectangle cellBounds, int rowIndex, DataGridViewElementStates cellState, object value, object formattedValue, string errorText, DataGridViewCellStyle cellStyle, DataGridViewAdvancedBorderStyle advancedBorderStyle,
+            DataGridViewPaintParts paintParts)
         {
             if (FormatParams != null)  // null can happen when cell set to Formatting but no condition has been set !
             {
@@ -92,14 +92,14 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                     case EnumConditionalFormatType.Bar:
                         int barWidth;
                         BarParams par = (BarParams)FormatParams;
-                        barWidth = (int)((cellBounds.Width - 10) * par.ProportionValue);
+                        barWidth = (int)((cellBounds.Width - 10) * par._proportionValue);
                         Style.BackColor = this.DataGridView.DefaultCellStyle.BackColor;
                         Style.ForeColor = this.DataGridView.DefaultCellStyle.ForeColor;
 
                         if (barWidth > 0) //(double)value > 0 &&
                         {
                             Rectangle r = new Rectangle(cellBounds.X + 3, cellBounds.Y + 3, barWidth, cellBounds.Height - 8);
-                            if (par.GradientFill)
+                            if (par._gradientFill)
                             {
                                 using (LinearGradientBrush linearBrush = new LinearGradientBrush(r, par.BarColour, Color.White, LinearGradientMode.Horizontal)) //Color.FromArgb(255, 247, 251, 242)
                                 {
@@ -129,12 +129,12 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                         break;
                     case EnumConditionalFormatType.ThreeColoursRange:
                         ThreeColoursParams THCpar = (ThreeColoursParams)FormatParams;
-                        Style.BackColor = THCpar.ValueColour;
-                        Style.ForeColor = ContrastColour(THCpar.ValueColour);
+                        Style.BackColor = THCpar._valueColour;
+                        Style.ForeColor = ContrastColour(THCpar._valueColour);
                         break;
                     default:
-                        Style.BackColor = this.DataGridView.DefaultCellStyle.BackColor;
-                        Style.ForeColor = this.DataGridView.DefaultCellStyle.ForeColor;
+                        Style.BackColor = DataGridView.DefaultCellStyle.BackColor;
+                        Style.ForeColor = DataGridView.DefaultCellStyle.ForeColor;
                         break;
                 }
             }
