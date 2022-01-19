@@ -18,6 +18,8 @@
 		<When Condition="'$(Configuration)' == 'Canary'">
 			<ItemGroup>
 				<None Include="../../../Assets/PNG/NuGet Package Icons/Krypton Canary.png" Link="Icon.png" Pack="true" PackagePath="" />
+			
+				<None Include="License\License.txt" Pack="true" PackagePath="" />
 			</ItemGroup>
 
 			<PropertyGroup>
@@ -32,7 +34,7 @@
 
 				<!--Package generation-->
 				<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-				<PackageLicenseUrl>https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE</PackageLicenseUrl>
+				<PackageLicenseFile>License.txt</PackageLicenseFile>
 				<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 				<LangVersion>latest</LangVersion>
 				<PackageOutputPath>..\..\..\Bin\NuGet Packages\Canary</PackageOutputPath>
@@ -42,6 +44,8 @@
 		<When Condition="'$(Configuration)' == 'Nightly'">
 			<ItemGroup>
 				<None Include="../../../Assets/PNG/NuGet Package Icons/Krypton Nightly.png" Link="Icon.png" Pack="true" PackagePath="" />
+			
+				<None Include="License\License.txt" Pack="true" PackagePath="" />
 			</ItemGroup>
 
 			<PropertyGroup>
@@ -56,7 +60,7 @@
 				
 				<!--Package generation-->
 				<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-				<PackageLicenseUrl>https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE</PackageLicenseUrl>
+				<PackageLicenseFile>License.txt</PackageLicenseFile>
 				<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 				<LangVersion>latest</LangVersion>
 				<PackageOutputPath>..\..\..\Bin\NuGet Packages\Nightly</PackageOutputPath>
@@ -65,6 +69,8 @@
 		<Otherwise>
 			<ItemGroup>
 				<None Include="../../../Assets/PNG/NuGet Package Icons/Krypton Stable.png" Link="Icon.png" Pack="true" PackagePath="" />
+			
+				<None Include="License\License.txt" Pack="true" PackagePath="" />
 			</ItemGroup>
 
 			<PropertyGroup>
@@ -72,7 +78,7 @@
 				<PackageProjectUrl>https://github.com/Krypton-Suite/Extended-Toolkit</PackageProjectUrl>
 				<PackageIcon>Krypton Stable.png</PackageIcon>
 				<Authors>Peter William Wagner &amp; Simon Coghlan &amp; Thomas Bolon</Authors>
-				<PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
+				<PackageLicenseFile>License.txt</PackageLicenseFile>
 				<PackageTags>Krypton ComponentFactory WinForms Themes Controls DataGrid Ribbon Workspace Tabs .Net Toolkit Core</PackageTags>
 				<PackageReleaseNotes>Get updates here: https://github.com/Krypton-Suite/Extended-Toolkit</PackageReleaseNotes>
 				<RepositoryType>git</RepositoryType>

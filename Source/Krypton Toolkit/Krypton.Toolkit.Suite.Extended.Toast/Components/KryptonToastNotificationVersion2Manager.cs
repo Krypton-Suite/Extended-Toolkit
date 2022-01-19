@@ -6,7 +6,7 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Toast
+/*namespace Krypton.Toolkit.Suite.Extended.Toast
 {
     public class KryptonToastNotificationVersion2Manager : Component
     {
@@ -152,4 +152,4 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         }
         #endregion
     }
-}
+}*/

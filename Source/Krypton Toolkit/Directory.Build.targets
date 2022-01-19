@@ -27,7 +27,7 @@
 
 				<AnalysLevel>preview</AnalysLevel>
 
-				<IncludeSymbols>true</IncludeSymbols>
+				<IncludeSymbols>false</IncludeSymbols>
 			</PropertyGroup>
 		</When>
 
@@ -58,7 +58,7 @@
 				
 				<AnalysLevel>preview</AnalysLevel>
 				
-				<IncludeSymbols>true</IncludeSymbols>
+				<IncludeSymbols>false</IncludeSymbols>
 			</PropertyGroup>
 		</When>
 

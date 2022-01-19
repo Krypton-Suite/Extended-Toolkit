@@ -206,7 +206,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Exten
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Floating.Toolbars 2022", "Krypton.Toolkit.Suite.Extended.Floating.Toolbars\Krypton.Toolkit.Suite.Extended.Floating.Toolbars 2022.csproj", "{8A8F148A-D3BB-4FDA-BB6A-9431EA0A0185}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Guages 2022", "Krypton.Toolkit.Suite.Extended.Guages\Krypton.Toolkit.Suite.Extended.Guages 2022.csproj", "{7E1B169E-AD04-4C98-9971-DC7F450BF610}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Gages 2022", "Krypton.Toolkit.Suite.Extended.Gages\Krypton.Toolkit.Suite.Extended.Gages 2022.csproj", "{7E1B169E-AD04-4C98-9971-DC7F450BF610}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.IO 2022", "Krypton.Toolkit.Suite.Extended.IO\Krypton.Toolkit.Suite.Extended.IO 2022.csproj", "{C187BD0B-3965-489A-B8F3-5C82A986D5C2}"
 EndProject
@@ -296,6 +296,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataVisualisation", "Examples\DataVisualisation\DataVisualisation.csproj", "{7EEF52BF-3FB1-4D31-A1B1-1F1DF3F3FD61}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ErrorReporting", "Examples\ErrorReporting\ErrorReporting.csproj", "{2372AA8B-2C85-4C73-82CC-C7448389C54B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Ribbon 2022", "Krypton.Toolkit.Suite.Extended.Ribbon\Krypton.Toolkit.Suite.Extended.Ribbon 2022.csproj", "{9FCE31CF-18F7-4F24-8B73-799B3CB19D57}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -1081,6 +1083,16 @@ Global
 		{2372AA8B-2C85-4C73-82CC-C7448389C54B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2372AA8B-2C85-4C73-82CC-C7448389C54B}.Stable|Any CPU.ActiveCfg = Debug|Any CPU
 		{2372AA8B-2C85-4C73-82CC-C7448389C54B}.Stable|Any CPU.Build.0 = Debug|Any CPU
+		{9FCE31CF-18F7-4F24-8B73-799B3CB19D57}.Canary|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FCE31CF-18F7-4F24-8B73-799B3CB19D57}.Canary|Any CPU.Build.0 = Debug|Any CPU
+		{9FCE31CF-18F7-4F24-8B73-799B3CB19D57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FCE31CF-18F7-4F24-8B73-799B3CB19D57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FCE31CF-18F7-4F24-8B73-799B3CB19D57}.Nightly|Any CPU.ActiveCfg = Nightly|Any CPU
+		{9FCE31CF-18F7-4F24-8B73-799B3CB19D57}.Nightly|Any CPU.Build.0 = Nightly|Any CPU
+		{9FCE31CF-18F7-4F24-8B73-799B3CB19D57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FCE31CF-18F7-4F24-8B73-799B3CB19D57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FCE31CF-18F7-4F24-8B73-799B3CB19D57}.Stable|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FCE31CF-18F7-4F24-8B73-799B3CB19D57}.Stable|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1184,6 +1196,7 @@ Global
 		{34B0DB6C-1C9A-421B-8CBE-FBBD9EDBFB33} = {25D5F0A6-A601-424B-9431-8EFE139A58A7}
 		{7EEF52BF-3FB1-4D31-A1B1-1F1DF3F3FD61} = {25D5F0A6-A601-424B-9431-8EFE139A58A7}
 		{2372AA8B-2C85-4C73-82CC-C7448389C54B} = {25D5F0A6-A601-424B-9431-8EFE139A58A7}
+		{9FCE31CF-18F7-4F24-8B73-799B3CB19D57} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A7CE7732-0982-4703-8EFD-7715D569BAB5}

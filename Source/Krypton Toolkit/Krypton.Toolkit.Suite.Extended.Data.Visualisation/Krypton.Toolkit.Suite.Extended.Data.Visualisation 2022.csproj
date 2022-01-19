@@ -14,10 +14,35 @@
     </PropertyGroup>
 
     <!--Package Data-->
-    <PropertyGroup>
-        <PackageId>Krypton.Toolkit.Suite.Extended.Data.Visualisation</PackageId>
-        <Description>An extension to the Krypton standard toolkit. This package implements charts, graphs and other additional data visualisation tools.</Description>
-    </PropertyGroup>
+	<Choose>
+		<When Condition="'$(Configuration)' == 'Canary'">
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Data.Visualisation.Canary</PackageId>
+			</PropertyGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'Nightly'">
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Data.Visualisation.Nightly</PackageId>
+			</PropertyGroup>
+		</When>
+		<Otherwise>
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Data.Visualisation</PackageId>
+			</PropertyGroup>
+		</Otherwise>
+	</Choose>
+
+	<PropertyGroup>
+		<Description>
+			An extension to the Standard Toolkit, which supports .NET Framework 4.6.2 - 4.8, .NET Core 3.1 and .NET 5/6. This package implements charts, graphs and other additional data visualisation tools.
+
+			This package supports all .NET Framework versions starting .NET Framework 4.6.2 - 4.8, .NET Core 3.1 and .NET 5/6.
+			Also, all libraries are included targeting each specific framework version for performance purposes.
+
+			To view all of the extended toolkit package latest version information, please visit: https://github.com/Krypton-Suite/Krypton-Toolkit-Suite-Version-Dashboard/blob/main/Documents/Modules/Extended/Krypton-Toolkit-Suite-Extended-Modules.md
+		</Description>
+	</PropertyGroup>
 
 	<Choose>
 		<When Condition="'$(Configuration)' == 'Canary'">
@@ -26,7 +51,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Canary" Version="6.22.1.10-beta" />
+				<PackageReference Include="Krypton.Toolkit.Canary" Version="60.22.1.17-beta" />
 			</ItemGroup>
 		</When>
 
@@ -36,7 +61,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Canary" Version="6.22.1.13-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="60.22.1.17-alpha" />
 			</ItemGroup>
 		</When>
 		<Otherwise>
