@@ -92,14 +92,14 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                     case EnumConditionalFormatType.Bar:
                         int barWidth;
                         BarParams par = (BarParams)FormatParams;
-                        barWidth = (int)((cellBounds.Width - 10) * par._proportionValue);
+                        barWidth = (int)((cellBounds.Width - 10) * par.ProportionValue);
                         Style.BackColor = this.DataGridView.DefaultCellStyle.BackColor;
                         Style.ForeColor = this.DataGridView.DefaultCellStyle.ForeColor;
 
                         if (barWidth > 0) //(double)value > 0 &&
                         {
                             Rectangle r = new Rectangle(cellBounds.X + 3, cellBounds.Y + 3, barWidth, cellBounds.Height - 8);
-                            if (par._gradientFill)
+                            if (par.GradientFill)
                             {
                                 using (LinearGradientBrush linearBrush = new LinearGradientBrush(r, par.BarColour, Color.White, LinearGradientMode.Horizontal)) //Color.FromArgb(255, 247, 251, 242)
                                 {
@@ -129,8 +129,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                         break;
                     case EnumConditionalFormatType.ThreeColoursRange:
                         ThreeColoursParams THCpar = (ThreeColoursParams)FormatParams;
-                        Style.BackColor = THCpar._valueColour;
-                        Style.ForeColor = ContrastColour(THCpar._valueColour);
+                        Style.BackColor = THCpar.ValueColour;
+                        Style.ForeColor = ContrastColour(THCpar.ValueColour);
                         break;
                     default:
                         Style.BackColor = DataGridView.DefaultCellStyle.BackColor;

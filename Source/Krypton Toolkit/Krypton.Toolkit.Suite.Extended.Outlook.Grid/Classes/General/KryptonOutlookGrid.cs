@@ -2503,15 +2503,15 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                             case EnumConditionalFormatType.Bar:
                                 if (typeColumn == typeof(TimeSpan))
                                 {
-                                    ((BarParams)fCell.FormatParams)._proportionValue = ColourFormatting.ConvertBar(((TimeSpan)list[i].Cells[formatColumn].Value).TotalMinutes, formatConditions[j].MinValue, formatConditions[j].MaxValue);
+                                    ((BarParams)fCell.FormatParams).ProportionValue = ColourFormatting.ConvertBar(((TimeSpan)list[i].Cells[formatColumn].Value).TotalMinutes, formatConditions[j].MinValue, formatConditions[j].MaxValue);
                                 }
                                 else if (typeColumn == typeof(Decimal))
                                 {
-                                    ((BarParams)fCell.FormatParams)._proportionValue = ColourFormatting.ConvertBar(Convert.ToDouble(list[i].Cells[formatColumn].Value), formatConditions[j].MinValue, formatConditions[j].MaxValue);
+                                    ((BarParams)fCell.FormatParams).ProportionValue = ColourFormatting.ConvertBar(Convert.ToDouble(list[i].Cells[formatColumn].Value), formatConditions[j].MinValue, formatConditions[j].MaxValue);
                                 }
                                 else
                                 {
-                                    ((BarParams)fCell.FormatParams)._proportionValue = ColourFormatting.ConvertBar((double)list[i].Cells[formatColumn].Value, formatConditions[j].MinValue, formatConditions[j].MaxValue);
+                                    ((BarParams)fCell.FormatParams).ProportionValue = ColourFormatting.ConvertBar((double)list[i].Cells[formatColumn].Value, formatConditions[j].MinValue, formatConditions[j].MaxValue);
                                 }
                                 break;
                             case EnumConditionalFormatType.TwoColoursRange:
@@ -2532,15 +2532,15 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                             case EnumConditionalFormatType.ThreeColoursRange:
                                 if (typeColumn == typeof(TimeSpan))
                                 {
-                                    ((ThreeColoursParams)fCell.FormatParams)._valueColour = ColourFormatting.ConvertThreeRange(((TimeSpan)list[i].Cells[formatColumn].Value).TotalMinutes, formatConditions[j].MinValue, formatConditions[j].MaxValue, (ThreeColoursParams)formatConditions[j].FormatParams);
+                                    ((ThreeColoursParams)fCell.FormatParams).ValueColour = ColourFormatting.ConvertThreeRange(((TimeSpan)list[i].Cells[formatColumn].Value).TotalMinutes, formatConditions[j].MinValue, formatConditions[j].MaxValue, (ThreeColoursParams)formatConditions[j].FormatParams);
                                 }
                                 else if (typeColumn == typeof(Decimal))
                                 {
-                                    ((ThreeColoursParams)fCell.FormatParams)._valueColour = ColourFormatting.ConvertThreeRange(Convert.ToDouble(list[i].Cells[formatColumn].Value), formatConditions[j].MinValue, formatConditions[j].MaxValue, (ThreeColoursParams)formatConditions[j].FormatParams);
+                                    ((ThreeColoursParams)fCell.FormatParams).ValueColour = ColourFormatting.ConvertThreeRange(Convert.ToDouble(list[i].Cells[formatColumn].Value), formatConditions[j].MinValue, formatConditions[j].MaxValue, (ThreeColoursParams)formatConditions[j].FormatParams);
                                 }
                                 else
                                 {
-                                    ((ThreeColoursParams)fCell.FormatParams)._valueColour = ColourFormatting.ConvertThreeRange((double)list[i].Cells[formatColumn].Value, formatConditions[j].MinValue, formatConditions[j].MaxValue, (ThreeColoursParams)formatConditions[j].FormatParams);
+                                    ((ThreeColoursParams)fCell.FormatParams).ValueColour = ColourFormatting.ConvertThreeRange((double)list[i].Cells[formatColumn].Value, formatConditions[j].MinValue, formatConditions[j].MaxValue, (ThreeColoursParams)formatConditions[j].FormatParams);
                                 }
                                 //list[i].Cells[formatColumn].Style.SelectionBackColor = list[i].Cells[formatColumn].Style.BackColor;
                                 break;

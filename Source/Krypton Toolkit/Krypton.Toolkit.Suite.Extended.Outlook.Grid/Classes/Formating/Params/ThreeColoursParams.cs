@@ -29,22 +29,22 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <summary>
         /// The minimum color
         /// </summary>
-        public Color _minimumColour;
+        public Color MinimumColour;
 
         /// <summary>
         /// The medium color
         /// </summary>
-        public Color _mediumColour;
+        public Color MediumColour;
 
         /// <summary>
         /// The maximum color
         /// </summary>
-        public Color _maximumColour;
+        public Color MaximumColour;
 
         /// <summary>
         /// The color associated to the value
         /// </summary>
-        public Color _valueColour;
+        public Color ValueColour;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ThreeColoursParams"/> class.
@@ -54,9 +54,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <param name="maxColour">The maximum color.</param>
         public ThreeColoursParams(Color minColour, Color mediumColour, Color maxColour)
         {
-            _minimumColour = minColour;
-            _mediumColour = mediumColour;
-            _maximumColour = maxColour;
+            MinimumColour = minColour;
+            MediumColour = mediumColour;
+            MaximumColour = maxColour;
         }
 
         /// <summary>
@@ -76,9 +76,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <param name="writer">The XML writer.</param>
         void IFormatParams.Persist(XmlWriter writer)
         {
-            writer.WriteElementString("MinimumColour", _minimumColour.ToArgb().ToString());
-            writer.WriteElementString("MediumColour", _mediumColour.ToArgb().ToString());
-            writer.WriteElementString("MaximumColour", _maximumColour.ToArgb().ToString());
+            writer.WriteElementString("MinimumColour", MinimumColour.ToArgb().ToString());
+            writer.WriteElementString("MediumColour", MediumColour.ToArgb().ToString());
+            writer.WriteElementString("MaximumColour", MaximumColour.ToArgb().ToString());
         }
     }
 }
