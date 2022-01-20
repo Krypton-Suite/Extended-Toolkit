@@ -49,7 +49,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         {
             if (value != null && !((OutlookGridRow)OwningRow).IsGroupRow) //Test to catch crash when first column is text and image when grouping
             {
-                Image = ((TextAndImage)value)._image;
+                Image = ((TextAndImage)value).Image;
             }
 
             return base.SetValue(rowIndex, value);
@@ -113,7 +113,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         protected override void Paint(Graphics graphics, Rectangle clipBounds, Rectangle cellBounds, int rowIndex, DataGridViewElementStates cellState, object value, object formattedValue, string errorText, DataGridViewCellStyle cellStyle, DataGridViewAdvancedBorderStyle advancedBorderStyle, DataGridViewPaintParts paintParts)
         {
             //TODO : improve we assume it is a 16x16 image 
-            if (Value != null && ((TextAndImage)Value)._image != null)
+            if (Value != null && ((TextAndImage)Value).Image != null)
             {
                 Padding inheritedPadding = Style.Padding;
                 Style.Padding = new Padding(_imageSize.Width + 2,
@@ -124,7 +124,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 // Draw the image clipped to the cell.
                 GraphicsContainer container = graphics.BeginContainer();
                 graphics.SetClip(cellBounds);
-                graphics.DrawImage(((TextAndImage)Value)._image, new Rectangle(cellBounds.Location.X + 2, cellBounds.Location.Y + ((cellBounds.Height - 16) / 2) - 1, 16, 16));
+                graphics.DrawImage(((TextAndImage)Value).Image, new Rectangle(cellBounds.Location.X + 2, cellBounds.Location.Y + ((cellBounds.Height - 16) / 2) - 1, 16, 16));
                 graphics.EndContainer(container);
             }
 

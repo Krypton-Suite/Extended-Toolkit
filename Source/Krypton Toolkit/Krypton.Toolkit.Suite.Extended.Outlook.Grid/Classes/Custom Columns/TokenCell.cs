@@ -36,14 +36,14 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         }
 
         /// <summary>
-        /// Returns a <see cref="System.String" /> that represents this instance.
+        /// Returns a <see cref="string" /> that represents this instance.
         /// </summary>
         /// <returns>
-        /// A <see cref="System.String" /> that represents this instance.
+        /// A <see cref="string" /> that represents this instance.
         /// </returns>
         public override string ToString()
         {
-            Token tok = (Token)this.Value;
+            Token tok = (Token)Value;
             if (tok != null)
             {
                 return tok.Text;
@@ -79,7 +79,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             Token tok = (Token)Value;
             if (tok != null)
             {
-                Rectangle rectangle = new Rectangle();
+                Rectangle rectangle = new();
                 Size s = TextRenderer.MeasureText(tok.Text, f);
                 rectangle.Width = s.Width + (int)(10 * factorX);
                 rectangle.X = nextPosition;
@@ -110,7 +110,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             int nextPosition = (int)(1 * factorX);
             if (Value != null)
             {
-                Token tok = (Token)this.Value;
+                Token tok = (Token)Value;
                 Size s = TextRenderer.MeasureText(tok.Text, f);
                 nextPosition += s.Width + (int)(10 * factorX) + (int)(5 * factorX);
 
@@ -131,19 +131,13 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// Overrides OnMouseLeave
         /// </summary>
         /// <param name="rowIndex">the row that contains the cell.</param>
-        protected override void OnMouseLeave(int rowIndex)
-        {
-            base.OnMouseLeave(rowIndex);
-        }
+        protected override void OnMouseLeave(int rowIndex) => base.OnMouseLeave(rowIndex);
 
         /// <summary>
         /// Overrides OnMouseMove
         /// </summary>
         /// <param name="e">A DataGridViewCellMouseEventArgs that contains the event data.</param>
-        protected override void OnMouseMove(DataGridViewCellMouseEventArgs e)
-        {
-            base.OnMouseMove(e);
-        }
+        protected override void OnMouseMove(DataGridViewCellMouseEventArgs e) => base.OnMouseMove(e);
         #endregion
     }
 }

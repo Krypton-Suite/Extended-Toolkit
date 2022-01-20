@@ -26,11 +26,11 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <summary>
         /// The text
         /// </summary>
-        public string _text;
+        public string Text;
         /// <summary>
         /// The image
         /// </summary>
-        public Image _image;
+        public Image Image;
 
         /// <summary>
         /// Constructor
@@ -45,22 +45,22 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <param name="img">The image.</param>
         public TextAndImage(string text, Image img)
         {
-            _text = text;
-            _image = img;
+            Text = text;
+            Image = img;
         }
 
         /// <summary>
         /// Overrides ToString
         /// </summary>
         /// <returns>String that represents TextAndImage</returns>
-        public override string ToString() => _text;
+        public override string ToString() => Text;
 
         /// <summary>
         /// Overrides Equals
         /// </summary>
         /// <param name="obj">The object to compare</param>
         /// <returns>true if equal, false otherwise.</returns>
-        public override bool Equals(object obj) => _text.Equals(obj.ToString());
+        public override bool Equals(object obj) => Text.Equals(obj.ToString());
 
         /// <summary>
         /// Overrides GetHashCode
@@ -73,6 +73,6 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// </summary>
         /// <param name="other">The other.</param>
         /// <returns></returns>
-        public int CompareTo(TextAndImage other) => _text.CompareTo(other._text);
+        public int CompareTo(TextAndImage other) => Text.CompareTo(other.Text);
     }
 }

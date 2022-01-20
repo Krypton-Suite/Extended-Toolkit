@@ -2670,7 +2670,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                             gr.Value = value;
                             gr.FormatStyle = groupedColumns[i].DataGridViewColumn.DefaultCellStyle.Format; //We can the formatting applied to the cell to the group
                             if (value is TextAndImage)
-                                gr.GroupImage = ((TextAndImage)value)._image;
+                                gr.GroupImage = ((TextAndImage)value).Image;
                             else if (value is Token)
                             {
                                 Bitmap bmp = new Bitmap(13, 13);
