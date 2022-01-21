@@ -349,6 +349,10 @@
                         UtilityMethods.FadeOutAndClose(this);
                     }
                 };
+
+                MouseEnter += (sender, e) => { _timer.Enabled = false; };
+
+                MouseLeave += (sender, e) => { _timer.Enabled = true; };
             }
 
             if (SoundPath != null)
