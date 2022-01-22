@@ -82,8 +82,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <param name="cellStyle">The cell style.</param>
         /// <param name="advancedBorderStyle">The advanced border style.</param>
         /// <param name="paintParts">The paint parts.</param>
-        protected override void Paint(System.Drawing.Graphics graphics, System.Drawing.Rectangle clipBounds, System.Drawing.Rectangle cellBounds, int rowIndex, System.Windows.Forms.DataGridViewElementStates cellState, object value, object formattedValue, string errorText, System.Windows.Forms.DataGridViewCellStyle cellStyle, System.Windows.Forms.DataGridViewAdvancedBorderStyle advancedBorderStyle,
-            System.Windows.Forms.DataGridViewPaintParts paintParts)
+        protected override void Paint(Graphics graphics, Rectangle clipBounds, Rectangle cellBounds, int rowIndex, DataGridViewElementStates cellState, object value, object formattedValue, string errorText, DataGridViewCellStyle cellStyle, DataGridViewAdvancedBorderStyle advancedBorderStyle,
+            DataGridViewPaintParts paintParts)
         {
             if (FormatParams != null)  // null can happen when cell set to Formatting but no condition has been set !
             {
@@ -133,8 +133,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                         Style.ForeColor = ContrastColour(THCpar.ValueColour);
                         break;
                     default:
-                        Style.BackColor = this.DataGridView.DefaultCellStyle.BackColor;
-                        Style.ForeColor = this.DataGridView.DefaultCellStyle.ForeColor;
+                        Style.BackColor = DataGridView.DefaultCellStyle.BackColor;
+                        Style.ForeColor = DataGridView.DefaultCellStyle.ForeColor;
                         break;
                 }
             }

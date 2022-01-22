@@ -54,10 +54,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <returns>
         /// Nouvel objet qui est une copie de cette instance.
         /// </returns>
-        public object Clone()
-        {
-            return MemberwiseClone();
-        }
+        public object Clone() => MemberwiseClone();
 
         /// <summary>
         /// Persists the parameters.

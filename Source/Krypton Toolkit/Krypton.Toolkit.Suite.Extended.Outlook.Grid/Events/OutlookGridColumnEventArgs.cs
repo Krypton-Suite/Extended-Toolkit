@@ -23,7 +23,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
     /// </summary>
     public class OutlookGridColumnEventArgs : EventArgs
     {
-        private OutlookGridColumn column;
+        private OutlookGridColumn _column;
 
         /// <summary>
         /// Constructor
@@ -31,7 +31,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <param name="col">The OutlookGridColumn.</param>
         public OutlookGridColumnEventArgs(OutlookGridColumn col)
         {
-            this.column = col;
+            _column = col;
         }
 
         /// <summary>
@@ -39,14 +39,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// </summary>
         public OutlookGridColumn Column
         {
-            get
-            {
-                return this.column;
-            }
-            set
-            {
-                this.column = value;
-            }
+            get => _column;
+            set => _column = value;
         }
     }
 }

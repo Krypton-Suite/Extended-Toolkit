@@ -28,9 +28,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// </summary>
         public KryptonDataGridViewRatingColumn()
         {
-            this.CellTemplate = new RatingCell();
-            this.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            this.ValueType = typeof(int);
+            CellTemplate = new RatingCell();
+            DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            ValueType = typeof(int);
         }
     }
 }

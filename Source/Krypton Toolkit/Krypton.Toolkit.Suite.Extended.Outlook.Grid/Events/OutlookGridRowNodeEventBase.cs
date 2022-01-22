@@ -21,7 +21,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
     /// <summary>
     /// Base class for OutlookGridRowNode events
     /// </summary>
-    /// <seealso cref="System.EventArgs" />
+    /// <seealso cref="EventArgs" />
     public class OutlookGridRowNodeEventBase : EventArgs
     {
         private OutlookGridRow _row;
@@ -41,9 +41,6 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <value>
         /// The node.
         /// </value>
-        public OutlookGridRow Node
-        {
-            get { return _row; }
-        }
+        public OutlookGridRow Node => _row;
     }
 }

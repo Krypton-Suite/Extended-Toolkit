@@ -22,33 +22,27 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
     /// Handle localization (singleton)
     /// </summary>
     public class LanguageManager
-    {
-        // Variable locale pour stocker une référence vers l'instance
-        private static LanguageManager mInstance = null;
+    {        
+        private static LanguageManager _mInstance = null;
 
-        private static readonly object mylock = new object();
-        private ResourceManager rm;
+        private static readonly object _mylock = new object();
+        private ResourceManager _rm;
 
-        private CultureInfo ci;
+        private CultureInfo _ci;
         //Used for blocking critical sections on updates
-        private object locker = new object();
+        private object _locker = new object();
 
-        // Le constructeur est Private
         private LanguageManager()
         {
-            rm = new ResourceManager("Krypton.Toolkit.Suite.Extended.Outlook.Grid.Resources.Language.Strings.en-US", Assembly.GetExecutingAssembly());
-            ci = Thread.CurrentThread.CurrentCulture; //CultureInfo.CurrentCulture;
+            _rm = new ResourceManager("Krypton.Toolkit.Suite.Extended.Outlook.Grid.Resources.Language.Strings.en-Neutral", Assembly.GetExecutingAssembly());
+            _ci = Thread.CurrentThread.CurrentCulture; //CultureInfo.CurrentCulture;
         }
 
         /// <summary>
         /// Gets or sets the P locker.
         /// </summary>
         /// <value>The P locker.</value>
-        public object PLocker
-        {
-            get { return this.locker; }
-            set { this.locker = value; }
-        }
+        public object PLocker { get => _locker; set => _locker = value; }
 
         /// <summary>
         /// Gets the instance of the singleton.
@@ -57,18 +51,18 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         {
             get
             {
-                if (mInstance == null)
+                if (_mInstance == null)
                 {
-                    lock (mylock)
+                    lock (_mylock)
                     {
-                        if (mInstance == null)
+                        if (_mInstance == null)
                         {
-                            mInstance = new LanguageManager();
+                            _mInstance = new LanguageManager();
                         }
                     }
                 }
 
-                return mInstance;
+                return _mInstance;
             }
         }
 
@@ -78,9 +72,6 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <param name="name"></param>
         /// <returns></returns>
         /// <remarks></remarks>
-        public string GetString(string name)
-        {
-            return rm.GetString(name, ci);
-        }
+        public string GetString(string name) => _rm.GetString(name, _ci);
     }
 }

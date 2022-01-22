@@ -32,9 +32,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         public KryptonDataGridViewFormattingColumn()
             : base()
         {
-            this.CellTemplate = new FormattingCell();
-            this.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            this.ValueType = typeof(FormattingCell);
+            CellTemplate = new FormattingCell();
+            DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            ValueType = typeof(FormattingCell);
             ContrastTextColour = false;
         }
 
@@ -44,17 +44,6 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <value>
         ///   <c>true</c> if [contrast text color]; otherwise, <c>false</c>.
         /// </value>
-        public bool ContrastTextColour
-        {
-            get
-            {
-                return _contrastTextColour;
-            }
-
-            set
-            {
-                _contrastTextColour = value;
-            }
-        }
+        public bool ContrastTextColour { get => _contrastTextColour; set => _contrastTextColour = value; }
     }
 }

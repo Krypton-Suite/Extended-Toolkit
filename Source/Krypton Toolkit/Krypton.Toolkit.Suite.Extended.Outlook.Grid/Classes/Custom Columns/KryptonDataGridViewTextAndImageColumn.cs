@@ -26,8 +26,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         #region Instance Fields
 
         private DataGridViewColumnSpecCollection _buttonSpecs;
-        private Image imageValue;
-        private Size imageSize;
+        private Image _imageValue;
+        private Size _imageSize;
 
         #endregion
 
@@ -71,8 +71,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         public override object Clone()
         {
             KryptonDataGridViewTextAndImageColumn cloned = base.Clone() as KryptonDataGridViewTextAndImageColumn;
-            cloned.imageValue = imageValue;
-            cloned.imageSize = imageSize;
+            cloned._imageValue = _imageValue;
+            cloned._imageSize = _imageSize;
             // Move the button specs over to the new clone
             foreach (ButtonSpec bs in ButtonSpecs)
                 cloned.ButtonSpecs.Add(bs.Clone());
@@ -206,13 +206,12 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         internal void PerfomButtonSpecClick(DataGridViewButtonSpecClickEventArgs args)
         {
             if (ButtonSpecClick != null)
+            {
                 ButtonSpecClick(this, args);
+            }
         }
 
-        internal Size ImageSize
-        {
-            get { return imageSize; }
-        }
+        internal Size ImageSize => _imageSize;
         #endregion
     }
 }

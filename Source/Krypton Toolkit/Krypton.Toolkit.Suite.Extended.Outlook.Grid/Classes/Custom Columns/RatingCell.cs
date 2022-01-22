@@ -30,7 +30,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         {
             //Value type is an integer. 
             //Formatted value type is an image since we derive from the ImageCell 
-            this.ValueType = typeof(int);
+            ValueType = typeof(int);
         }
 
         /// <summary>
@@ -46,9 +46,13 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         protected override object GetFormattedValue(object value, int rowIndex, ref DataGridViewCellStyle cellStyle, TypeConverter valueTypeConverter, TypeConverter formattedValueTypeConverter, DataGridViewDataErrorContexts context)
         {
             if (value == null)
+            {
                 return null; //For example it is also the case for group row...
+            }
             else
+            {
                 return starImages[(int)value];
+            }
         }
 
         /// <summary>
@@ -77,12 +81,14 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         protected override void Paint(Graphics graphics, Rectangle clipBounds, Rectangle cellBounds, int rowIndex, DataGridViewElementStates elementState, object value, object formattedValue, string errorText, DataGridViewCellStyle cellStyle, DataGridViewAdvancedBorderStyle advancedBorderStyle, DataGridViewPaintParts paintParts)
         {
             Image cellImage = (Image)formattedValue;
-            if (!this.ReadOnly)
+            if (!ReadOnly)
             {
-                int starNumber = GetStarFromMouse(cellBounds, this.DataGridView.PointToClient(Control.MousePosition));
+                int starNumber = GetStarFromMouse(cellBounds, DataGridView.PointToClient(Control.MousePosition));
 
                 if (starNumber != -1)
+                {
                     cellImage = starHotImages[starNumber];
+                }
             }
             //supress painting of selection 
             base.Paint(graphics, clipBounds, cellBounds, rowIndex, elementState, value, cellImage, errorText, cellStyle, advancedBorderStyle, (paintParts & ~DataGridViewPaintParts.SelectionBackground));
@@ -95,12 +101,14 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         protected override void OnContentClick(DataGridViewCellEventArgs e)
         {
             base.OnContentClick(e);
-            if (!this.ReadOnly)
+            if (!ReadOnly)
             {
-                int starNumber = GetStarFromMouse(this.DataGridView.GetCellDisplayRectangle(this.DataGridView.CurrentCellAddress.X, this.DataGridView.CurrentCellAddress.Y, false), this.DataGridView.PointToClient(Control.MousePosition));
+                int starNumber = GetStarFromMouse(DataGridView.GetCellDisplayRectangle(DataGridView.CurrentCellAddress.X, DataGridView.CurrentCellAddress.Y, false), DataGridView.PointToClient(Control.MousePosition));
 
                 if (starNumber != -1)
-                    this.Value = starNumber;
+                {
+                    Value = starNumber;
+                }
             }
         }
 
@@ -113,7 +121,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         protected override void OnMouseLeave(int rowIndex)
         {
             base.OnMouseLeave(rowIndex);
-            this.DataGridView.InvalidateCell(this);
+            DataGridView.InvalidateCell(this);
         }
 
         /// <summary>
@@ -123,7 +131,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         protected override void OnMouseMove(DataGridViewCellMouseEventArgs e)
         {
             base.OnMouseMove(e);
-            this.DataGridView.InvalidateCell(this);
+            DataGridView.InvalidateCell(this);
         }
         #endregion
 

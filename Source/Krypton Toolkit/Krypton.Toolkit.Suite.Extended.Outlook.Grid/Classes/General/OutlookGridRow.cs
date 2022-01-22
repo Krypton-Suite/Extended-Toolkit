@@ -49,8 +49,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public IOutlookGridGroup Group
         {
-            get { return group; }
-            set { group = value; }
+            get => group;
+            set => group = value;
         }
 
 
@@ -63,8 +63,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool IsGroupRow
         {
-            get { return isGroupRow; }
-            set { isGroupRow = value; }
+            get => isGroupRow;
+            set => isGroupRow = value;
         }
 
         /// <summary>
@@ -74,11 +74,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         ///   <c>true</c> if collapsed; otherwise, <c>false</c>.
         /// </value>
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public bool Collapsed
-        {
-            get { return _collapsed; }
-            set { _collapsed = value; }
-        }
+        public bool Collapsed { get => _collapsed; set => _collapsed = value; }
 
         /// <summary>
         /// Gets or sets the nodes.
@@ -87,11 +83,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// The nodes.
         /// </value>
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public OutlookGridRowNodeCollection Nodes
-        {
-            get { return nodeCollection; }
-            set { nodeCollection = value; }
-        }
+        public OutlookGridRowNodeCollection Nodes { get => nodeCollection; set => nodeCollection = value; }
 
         /// <summary>
         /// Gets a value indicating whether this instance is first sibling.
@@ -101,13 +93,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// </value>
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public bool IsFirstSibling
-        {
-            get
-            {
-                return (NodeIndex == 0);
-            }
-        }
+        public bool IsFirstSibling => (NodeIndex == 0);
 
         /// <summary>
         /// Gets a value indicating whether this instance is last sibling.
@@ -127,7 +113,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                     return (NodeIndex == parent.Nodes.Count - 1);
                 }
                 else
+                {
                     return true;
+                }
             }
         }
 
@@ -139,13 +127,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// </value>
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public bool HasChildren
-        {
-            get
-            {
-                return nodeCollection.Count > 0;
-            }
-        }
+        public bool HasChildren => nodeCollection.Count > 0;
 
         /// <summary>
         /// Gets or sets the node level.
@@ -154,11 +136,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// The node level.
         /// </value>
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public int NodeLevel
-        {
-            get { return _nodeLevel; }
-            set { _nodeLevel = value; }
-        }
+        public int NodeLevel { get => _nodeLevel; set => _nodeLevel = value; }
 
         /// <summary>
         /// Gets or sets the parent node.
@@ -168,11 +146,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// </value>
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public OutlookGridRow ParentNode
-        {
-            get { return _parentNode; }
-            set { _parentNode = value; }
-        }
+        public OutlookGridRow ParentNode { get => _parentNode; set => _parentNode = value; }
 
         /// <summary>
         /// Gets the index of the node.
@@ -185,9 +159,13 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             get
             {
                 if (_parentNode != null)
+                {
                     return _parentNode.Nodes.IndexOf(this);
+                }
                 else
+                {
                     return 0;
+                }
             }
         }
         #endregion

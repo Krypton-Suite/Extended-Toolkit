@@ -48,17 +48,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <value>
         /// The parent node.
         /// </value>
-        public OutlookGridRow ParentNode
-        {
-            get
-            {
-                return _parentNode;
-            }
-            internal set
-            {
-                _parentNode = value;
-            }
-        }
+        public OutlookGridRow ParentNode { get => _parentNode; set => _parentNode = value; }
 
         /// <summary>
         /// Gets the nodes.
@@ -66,13 +56,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <value>
         /// The nodes.
         /// </value>
-        public List<OutlookGridRow> Nodes
-        {
-            get
-            {
-                return subNodes;
-            }
-        }
+        public List<OutlookGridRow> Nodes => subNodes;
 
 
         /// <summary>
@@ -81,13 +65,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <value>
         /// The count.
         /// </value>
-        public int Count
-        {
-            get
-            {
-                return subNodes.Count;
-            }
-        }
+        public int Count => subNodes.Count;
 
         #endregion
 

@@ -290,6 +290,10 @@
                     }
                 };
             }
+            else
+            {
+                kbtnDismiss.Text = DismissText;
+            }
 
             if (SoundPath != null)
             {

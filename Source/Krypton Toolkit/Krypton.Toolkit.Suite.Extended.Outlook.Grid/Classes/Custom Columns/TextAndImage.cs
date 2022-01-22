@@ -53,38 +53,26 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// Overrides ToString
         /// </summary>
         /// <returns>String that represents TextAndImage</returns>
-        public override string ToString()
-        {
-            return Text;
-        }
+        public override string ToString() => Text;
 
         /// <summary>
         /// Overrides Equals
         /// </summary>
         /// <param name="obj">The object to compare</param>
         /// <returns>true if equal, false otherwise.</returns>
-        public override bool Equals(object obj)
-        {
-            return Text.Equals(obj.ToString());
-        }
+        public override bool Equals(object obj) => Text.Equals(obj.ToString());
 
         /// <summary>
         /// Overrides GetHashCode
         /// </summary>
         /// <returns></returns>
-        public override int GetHashCode()
-        {
-            return base.GetHashCode();
-        }
+        public override int GetHashCode() => base.GetHashCode();
 
         /// <summary>
         /// Compares to.
         /// </summary>
         /// <param name="other">The other.</param>
         /// <returns></returns>
-        public int CompareTo(TextAndImage other)
-        {
-            return Text.CompareTo(other.Text);
-        }
+        public int CompareTo(TextAndImage other) => Text.CompareTo(other.Text);
     }
 }

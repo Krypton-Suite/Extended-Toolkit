@@ -38,9 +38,11 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <param name="fg">Foreground text color</param>
         public Token(string text, Color bg, Color fg)
         {
-            this.Text = text;
-            this.BackColour = bg;
-            this.ForeColour = fg;
+            Text = text;
+            
+            BackColour = bg;
+
+            ForeColour = fg;
         }
 
         /// <summary>
@@ -61,37 +63,25 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// </summary>
         /// <param name="other"></param>
         /// <returns></returns>
-        public int CompareTo(Token other)
-        {
-            return this.Text.CompareTo(other.Text);
-        }
+        public int CompareTo(Token other) => Text.CompareTo(other.Text);
 
         /// <summary>
         /// Overrides ToString
         /// </summary>
         /// <returns>String that represents TextAndImage</returns>
-        public override string ToString()
-        {
-            return Text;
-        }
+        public override string ToString() => Text;
 
         /// <summary>
         /// Overrides Equals
         /// </summary>
         /// <param name="obj">The object to compare</param>
         /// <returns>true if equal, false otherwise.</returns>
-        public override bool Equals(object obj)
-        {
-            return this.Text.Equals(obj.ToString());
-        }
+        public override bool Equals(object obj) => Text.Equals(obj.ToString());
 
         /// <summary>
         /// Overrides GetHashCode
         /// </summary>
         /// <returns></returns>
-        public override int GetHashCode()
-        {
-            return base.GetHashCode();
-        }
+        public override int GetHashCode() => base.GetHashCode();
     }
 }

@@ -206,106 +206,40 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <summary>
         /// Gets or sets the Value of the group
         /// </summary>
-        public virtual object Value
-        {
-            get
-            {
-                return _val;
-            }
-            set
-            {
-                _val = value;
-            }
-        }
+        public virtual object Value { get => _val; set => _val = value; }
 
         /// <summary>
         /// Boolean if the group is collapsed or not
         /// </summary>
-        public virtual bool Collapsed
-        {
-            get
-            {
-                return _collapsed;
-            }
-            set
-            {
-                _collapsed = value;
-            }
-        }
+        public virtual bool Collapsed { get => _collapsed; set => _collapsed = value; }
 
         /// <summary>
         /// Gets or sets the associated DataGridView column.
         /// </summary>
-        public virtual OutlookGridColumn Column
-        {
-            get
-            {
-                return _column;
-            }
-            set
-            {
-                _column = value;
-            }
-        }
+        public virtual OutlookGridColumn Column { get => _column; set => _column = value; }
 
         /// <summary>
         /// Gets or set the number of items in this group.
         /// </summary>
-        public virtual int ItemCount
-        {
-            get
-            {
-                return _itemCount;
-            }
-            set
-            {
-                _itemCount = value;
-            }
-        }
+        public virtual int ItemCount { get => _itemCount; set => _itemCount = value; }
 
         /// <summary>
         /// Gets or sets the height (in pixels).
         /// </summary>
-        public virtual int Height
-        {
-            get
-            {
-                return _height;
-            }
-            set
-            {
-                _height = value;
-            }
-        }
+        public virtual int Height { get => _height; set => _height = value; }
 
         /// <summary>
         /// Gets or sets the Format Info.
         /// </summary>
-        public virtual string FormatStyle
-        {
-            get
-            {
-                return _formatStyle;
-            }
-            set
-            {
-                _formatStyle = value;
-            }
-        }
+        public virtual string FormatStyle { get => _formatStyle; set => _formatStyle = value; }
 
         /// <summary>
         /// Gets or sets the picture.
         /// </summary>
         public virtual Image GroupImage
         {
-            get
-            {
-                return _groupImage;
-            }
-            set
-            {
-                _groupImage = value;
-            }
+            get => _groupImage;
+            set => _groupImage = value;
         }
 
         /// <summary>
@@ -313,8 +247,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// </summary>
         public virtual string OneItemText
         {
-            get { return _oneItemText; }
-            set { _oneItemText = value; }
+            get => _oneItemText;
+            set => _oneItemText = value;
         }
 
         /// <summary>
@@ -322,8 +256,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// </summary>
         public virtual string XXXItemsText
         {
-            get { return _xXxItemsText; }
-            set { _xXxItemsText = value; }
+            get => _xXxItemsText;
+            set => _xXxItemsText = value;
         }
 
         /// <summary>
@@ -331,8 +265,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// </summary>
         public virtual bool AllowHiddenWhenGrouped
         {
-            get { return _allowHiddenWhenGrouped; }
-            set { _allowHiddenWhenGrouped = value; }
+            get => _allowHiddenWhenGrouped;
+            set => _allowHiddenWhenGrouped = value;
         }
 
         /// <summary>
@@ -340,8 +274,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// </summary>
         public virtual bool SortBySummaryCount
         {
-            get { return _sortBySummaryCount; }
-            set { _sortBySummaryCount = value; }
+            get => _sortBySummaryCount;
+            set => _sortBySummaryCount = value;
         }
 
         ///// <summary>
