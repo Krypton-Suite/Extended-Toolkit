@@ -242,6 +242,8 @@
             {
                 _soundPlayer.Play();
             }
+
+            kbtnDismiss.Text = _dismissText;
         }
 
         private void kbtnDismiss_Click(object sender, EventArgs e) => UtilityMethods.FadeOutAndClose(this);

@@ -231,6 +231,8 @@
 
             GotFocus += BasicNotificationWithUserResponseLTR_GotFocus;
 
+            LostFocus += BasicNotificationWithUserResponseLTR_LostFocus;
+
             DoubleBuffered = true;
         }
 
@@ -292,9 +294,27 @@
             {
                 _soundPlayer.Play();
             }
+
+            kbtnDismiss.Text = _dismissText;
         }
 
-        private void BasicNotificationWithUserResponseLTR_GotFocus(object sender, EventArgs e) => kbtnDismiss.Focus();
+        private void BasicNotificationWithUserResponseLTR_GotFocus(object sender, EventArgs e)
+        {
+            kbtnDismiss.Focus();
+
+            if (_timer != null)
+            {
+                _timer.Stop();
+            }
+        }
+
+        private void BasicNotificationWithUserResponseLTR_LostFocus(object sender, EventArgs e)
+        {
+            if (_timer != null)
+            {
+                _timer.Start();
+            }
+        }
 
         private void BasicNotificationWithUserResponseLTR_Resize(object sender, EventArgs e)
         {

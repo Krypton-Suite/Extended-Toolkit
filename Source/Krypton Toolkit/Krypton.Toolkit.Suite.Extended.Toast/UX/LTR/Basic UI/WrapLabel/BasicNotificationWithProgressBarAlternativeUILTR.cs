@@ -1,15 +1,21 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Toast
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Krypton.Toolkit.Suite.Extended.Toast
 {
-    /*internal*/
-    public class BasicNotificationLTR : KryptonForm
+    public class BasicNotificationWithProgressBarAlternativeUILTR : KryptonForm
     {
-        #region Designer Code
+        #region Design Code
         private KryptonPanel kryptonPanel1;
-        private KryptonPanel kryptonPanel2;
-        private PictureBox pbxToastImage;
-        private KryptonWrapLabel kwlTitle;
-        private KryptonRichTextBox krtbContent;
         private KryptonButton kbtnDismiss;
+        private KryptonPanel kryptonPanel2;
+        private ProgressBar pbCountdown;
+        private KryptonWrapLabel kwlTitle;
+        private PictureBox pbxToastImage;
+        private KryptonWrapLabel kwlContent;
         private KryptonBorderEdge kryptonBorderEdge1;
 
         private void InitializeComponent()
@@ -18,9 +24,10 @@
             this.kbtnDismiss = new Krypton.Toolkit.KryptonButton();
             this.kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
-            this.krtbContent = new Krypton.Toolkit.KryptonRichTextBox();
+            this.pbCountdown = new System.Windows.Forms.ProgressBar();
             this.kwlTitle = new Krypton.Toolkit.KryptonWrapLabel();
             this.pbxToastImage = new System.Windows.Forms.PictureBox();
+            this.kwlContent = new Krypton.Toolkit.KryptonWrapLabel();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
@@ -37,7 +44,7 @@
             this.kryptonPanel1.Name = "kryptonPanel1";
             this.kryptonPanel1.PanelBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelAlternate;
             this.kryptonPanel1.Size = new System.Drawing.Size(609, 50);
-            this.kryptonPanel1.TabIndex = 1;
+            this.kryptonPanel1.TabIndex = 3;
             // 
             // kbtnDismiss
             // 
@@ -47,7 +54,6 @@
             this.kbtnDismiss.Size = new System.Drawing.Size(174, 25);
             this.kbtnDismiss.TabIndex = 1;
             this.kbtnDismiss.Values.Text = "{0} ({1})";
-            this.kbtnDismiss.Click += new System.EventHandler(this.kbtnDismiss_Click);
             // 
             // kryptonBorderEdge1
             // 
@@ -60,32 +66,28 @@
             // 
             // kryptonPanel2
             // 
-            this.kryptonPanel2.Controls.Add(this.krtbContent);
+            this.kryptonPanel2.Controls.Add(this.kwlContent);
+            this.kryptonPanel2.Controls.Add(this.pbCountdown);
             this.kryptonPanel2.Controls.Add(this.kwlTitle);
             this.kryptonPanel2.Controls.Add(this.pbxToastImage);
             this.kryptonPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel2.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel2.Name = "kryptonPanel2";
             this.kryptonPanel2.Size = new System.Drawing.Size(609, 243);
-            this.kryptonPanel2.TabIndex = 2;
+            this.kryptonPanel2.TabIndex = 4;
             // 
-            // krtbContent
+            // pbCountdown
             // 
-            this.krtbContent.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.krtbContent.Location = new System.Drawing.Point(146, 89);
-            this.krtbContent.Name = "krtbContent";
-            this.krtbContent.ReadOnly = true;
-            this.krtbContent.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
-            this.krtbContent.Size = new System.Drawing.Size(451, 148);
-            this.krtbContent.TabIndex = 4;
-            this.krtbContent.Text = "";
+            this.pbCountdown.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pbCountdown.Location = new System.Drawing.Point(0, 238);
+            this.pbCountdown.Name = "pbCountdown";
+            this.pbCountdown.Size = new System.Drawing.Size(609, 5);
+            this.pbCountdown.TabIndex = 4;
             // 
             // kwlTitle
             // 
-            this.kwlTitle.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.kwlTitle.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.kwlTitle.AutoSize = false;
             this.kwlTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -107,21 +109,34 @@
             this.pbxToastImage.TabIndex = 1;
             this.pbxToastImage.TabStop = false;
             // 
-            // BasicNotificationLTR
+            // kwlContent
             // 
-            this.AcceptButton = this.kbtnDismiss;
-            this.CancelButton = this.kbtnDismiss;
+            this.kwlContent.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.kwlContent.AutoSize = false;
+            this.kwlContent.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kwlContent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.kwlContent.LabelStyle = Krypton.Toolkit.LabelStyle.NormalControl;
+            this.kwlContent.Location = new System.Drawing.Point(146, 95);
+            this.kwlContent.Name = "kwlContent";
+            this.kwlContent.Size = new System.Drawing.Size(451, 140);
+            this.kwlContent.StateCommon.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kwlContent.Text = "{0}";
+            this.kwlContent.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // BasicNotificationWithProgressBarAlternativeUILTR
+            // 
             this.ClientSize = new System.Drawing.Size(609, 293);
             this.Controls.Add(this.kryptonPanel2);
             this.Controls.Add(this.kryptonPanel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "BasicNotificationLTR";
+            this.Name = "BasicNotificationWithProgressBarAlternativeUILTR";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Load += new System.EventHandler(this.BasicNotificationLTR_Load);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
@@ -170,7 +185,7 @@
         #endregion
 
         #region Constructor
-        public BasicNotificationLTR(IconType iconType, string title, string contentText, Image customImage = null, string dismissText = "&Dismiss")
+        public BasicNotificationWithProgressBarAlternativeUILTR(IconType iconType, string title, string contentText, Image customImage = null, string dismissText = "&Dismiss")
         {
             InitializeComponent();
 
@@ -186,28 +201,28 @@
 
             TopMost = true;
 
-            Resize += BasicNotificationLTR_Resize;
+            Resize += BasicNotificationWithProgressBarAlternativeUILTR_Resize;
 
-            GotFocus += BasicNotificationLTR_GotFocus;
+            GotFocus += BasicNotificationWithProgressBarAlternativeUILTR_GotFocus;
 
             DoubleBuffered = true;
         }
 
-        public BasicNotificationLTR(IconType iconType, string title, string contentText, int seconds, Image customImage = null, string dismissText = "&Dismiss")
+        public BasicNotificationWithProgressBarAlternativeUILTR(IconType iconType, string title, string contentText, int seconds, Image customImage = null, string dismissText = "&Dismiss")
             : this(iconType, title, contentText, customImage, dismissText) => Seconds = seconds;
 
-        public BasicNotificationLTR(IconType iconType, string title, string contentText, int seconds, string soundPath, Image customImage = null, string dismissText = "&Dismiss")
+        public BasicNotificationWithProgressBarAlternativeUILTR(IconType iconType, string title, string contentText, int seconds, string soundPath, Image customImage = null, string dismissText = "&Dismiss")
             : this(iconType, title, contentText, seconds, customImage, dismissText) => SoundPath = soundPath;
 
-        public BasicNotificationLTR(IconType iconType, string title, string contentText, Stream soundStream, Image customImage = null, string dismissText = "&Dismiss")
+        public BasicNotificationWithProgressBarAlternativeUILTR(IconType iconType, string title, string contentText, Stream soundStream, Image customImage = null, string dismissText = "&Dismiss")
             : this(iconType, title, contentText, customImage, dismissText) => SoundStream = soundStream;
 
-        public BasicNotificationLTR(IconType iconType, string title, string contentText, int seconds, Stream soundStream, Image customImage = null, string dismissText = "&Dismiss")
+        public BasicNotificationWithProgressBarAlternativeUILTR(IconType iconType, string title, string contentText, int seconds, Stream soundStream, Image customImage = null, string dismissText = "&Dismiss")
             : this(iconType, title, contentText, seconds, customImage, dismissText) => SoundStream = soundStream;
         #endregion
 
         #region Event Handlers
-        private void BasicNotificationLTR_Load(object sender, EventArgs e)
+        private void BasicNotificationWithProgressBarAlternativeUILTR_Load(object sender, EventArgs e)
         {
             //Once loaded, position the form to the bottom left of the screen with added padding
             Location = new Point(Screen.PrimaryScreen.WorkingArea.Width - Width - 5, Screen.PrimaryScreen.WorkingArea.Height - Height - 5);
@@ -227,9 +242,9 @@
             kbtnDismiss.Text = _dismissText;
         }
 
-        private void BasicNotificationLTR_GotFocus(object sender, EventArgs e) => kbtnDismiss.Focus();
+        private void BasicNotificationWithProgressBarAlternativeUILTR_GotFocus(object sender, EventArgs e) => kbtnDismiss.Focus();
 
-        private void BasicNotificationLTR_Resize(object sender, EventArgs e)
+        private void BasicNotificationWithProgressBarAlternativeUILTR_Resize(object sender, EventArgs e)
         {
             if (WindowState == FormWindowState.Maximized)
             {
@@ -243,16 +258,24 @@
         #region Methods
         public new void Show()
         {
+            int currentValue;
+
             Opacity = 0;
 
             UtilityMethods.SetIconType(IconType, CustomImage, pbxToastImage);
 
             kwlTitle.Text = Title;
 
-            krtbContent.Text = ContentText;
+            kwlContent.Text = ContentText;
 
             if (Seconds != 0)
             {
+                pbCountdown.Maximum = Seconds;
+
+                currentValue = pbCountdown.Maximum;
+
+                pbCountdown.Value = currentValue;
+
                 kbtnDismiss.Text = $"{ DismissText } ({ Seconds - Time })";
 
                 _timer = new Timer();
