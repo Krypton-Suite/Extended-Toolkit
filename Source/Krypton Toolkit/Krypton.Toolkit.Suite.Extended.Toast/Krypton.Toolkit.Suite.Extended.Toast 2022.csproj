@@ -61,7 +61,7 @@
 		  </PropertyGroup>
 
 		  <ItemGroup>
-			  <PackageReference Include="Krypton.Toolkit.Nightly" Version="60.22.1.22-alpha" />
+			  <PackageReference Include="Krypton.Toolkit.Nightly" Version="60.22.1.26-alpha" />
 		  </ItemGroup>
 	  </When>
 	  <Otherwise>
@@ -80,6 +80,9 @@
 	<DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Toast\Krypton.Toolkit.Suite.Extended.Toast.xml</DocumentationFile>
 	<OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Toast\</OutputPath>
   </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Developer.Utilities\Krypton.Toolkit.Suite.Extended.Developer.Utilities 2022.csproj" />
+  </ItemGroup>
 
   <ItemGroup>
 	<Compile Update="Properties\Resources.Designer.cs">

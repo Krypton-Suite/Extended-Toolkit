@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Krypton.Toolkit.Suite.Extended.Toast
+﻿namespace Krypton.Toolkit.Suite.Extended.Toast
 {
     public class KryptonToastNotificationManager : Component
     {
@@ -131,45 +125,122 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         {
             if (_rightToLeftSupport == RightToLeftSupport.LEFTTORIGHT)
             {
-                if (_useProgressBar)
+                if (!_useUserResponse)
                 {
-                    if (_contentAreaType == ContentAreaType.LABEL)
+                    if (!_useProgressBar)
                     {
+                        if (_contentAreaType == ContentAreaType.LABEL)
+                        {
+                            ApplicationUtilities.UnderConstruction();
+                        }
+                        else if (_contentAreaType == ContentAreaType.WRAPPEDLABEL)
+                        {
+                            BasicNotificationAlternativeUILTR notification = new BasicNotificationAlternativeUILTR(
+                                IconType,
+                                Title, ContentText, Seconds, SoundPath,
+                                CustomImage, DismissText);
 
+                            notification.Show();
+                        }
+                        else if (_contentAreaType == ContentAreaType.MULTILINEDTEXTBOX)
+                        {
+                            ApplicationUtilities.UnderConstruction();
+                        }
+                        else if (_contentAreaType == ContentAreaType.RICHTEXTBOX)
+                        {
+                            BasicNotificationLTR notification = new BasicNotificationLTR(IconType, Title, ContentText,
+                                Seconds, SoundPath,
+                                CustomImage, DismissText);
+
+                            notification.Show();
+                        }
                     }
-                    else if (_contentAreaType == ContentAreaType.WRAPPEDLABEL)
+                    else
                     {
+                        if (_contentAreaType == ContentAreaType.LABEL)
+                        {
+                            ApplicationUtilities.UnderConstruction();
+                        }
+                        else if (_contentAreaType == ContentAreaType.WRAPPEDLABEL)
+                        {
+                            BasicNotificationWithProgressBarAlternativeUILTR notification =
+                                new BasicNotificationWithProgressBarAlternativeUILTR(IconType, Title, ContentText,
+                                    Seconds,
+                                    SoundStream, CustomImage, DismissText);
 
-                    }
-                    else if (_contentAreaType == ContentAreaType.MULTILINEDTEXTBOX)
-                    {
+                            notification.Show();
+                        }
+                        else if (_contentAreaType == ContentAreaType.MULTILINEDTEXTBOX)
+                        {
+                            ApplicationUtilities.UnderConstruction();
+                        }
+                        else if (_contentAreaType == ContentAreaType.RICHTEXTBOX)
+                        {
+                            BasicNotificationWithProgressBarLTR notification = new BasicNotificationWithProgressBarLTR(
+                                IconType, Title, ContentText, Seconds, SoundStream,
+                                CustomImage, DismissText);
 
-                    }
-                    else if (_contentAreaType == ContentAreaType.RICHTEXTBOX)
-                    {
-
+                            notification.Show();
+                        }
                     }
                 }
                 else
                 {
-                    if (_contentAreaType == ContentAreaType.LABEL)
+                    if (!_useProgressBar)
                     {
+                        if (_contentAreaType == ContentAreaType.LABEL)
+                        {
+                            ApplicationUtilities.UnderConstruction();
+                        }
+                        else if (_contentAreaType == ContentAreaType.WRAPPEDLABEL)
+                        {
+                            BasicNotificationWithUserResponseWrappedLabelLTR notification = new BasicNotificationWithUserResponseWrappedLabelLTR(IconType, Title, ContentText, Seconds,
+                                                                                                                                                 SoundPath, CustomImage,
+                                                                                                                                                 DismissText, UserResponsePromptText,
+                                                                                                                                                 UserResponsePromptColour,
+                                                                                                                                                 UserResponsePromptAlignHorizontal, 
+                                                                                                                                                 UserResponsePromptAlignVertical,
+                                                                                                                                                 UserResponsePromptFont);
 
-                    }
-                    else if (_contentAreaType == ContentAreaType.WRAPPEDLABEL)
-                    {
+                            notification.Show();
+                        }
+                        else if (_contentAreaType == ContentAreaType.MULTILINEDTEXTBOX)
+                        {
+                            ApplicationUtilities.UnderConstruction();
+                        }
+                        else if (_contentAreaType == ContentAreaType.RICHTEXTBOX)
+                        {
+                            BasicNotificationWithUserResponseLTR notification = new BasicNotificationWithUserResponseLTR(IconType, Title, ContentText, Seconds,
+                                                                                                                         SoundPath, CustomImage,
+                                                                                                                         DismissText, UserResponsePromptText, 
+                                                                                                                         UserResponsePromptColour,
+                                                                                                                         UserResponsePromptAlignHorizontal, UserResponsePromptAlignVertical,
+                                                                                                                         UserResponsePromptFont);
 
-                    }
-                    else if (_contentAreaType == ContentAreaType.MULTILINEDTEXTBOX)
-                    {
-
-                    }
-                    else if (_contentAreaType == ContentAreaType.RICHTEXTBOX)
-                    {
-
+                            notification.Show();
+                        }
                     }
                 }
             }
+            else
+            {
+                if (!_useUserResponse)
+                {
+                    
+                }
+                else
+                {
+                    
+                }
+            }
+        }
+
+        public DialogResult DisplayNotificationToastResult()
+        {
+            DialogResult result = DialogResult.None;
+
+
+            return result;
         }
         #endregion
     }
