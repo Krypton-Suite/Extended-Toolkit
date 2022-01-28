@@ -13,7 +13,7 @@
         <EnableNETAnalyzers>true</EnableNETAnalyzers>
         <AnalysisLevel>latest</AnalysisLevel>
         <NeutralLanguage>en</NeutralLanguage>
-        <Configurations>Debug;Release;Nightly;Canary;Stable</Configurations>
+        <Configurations>Debug;Release;Nightly;Canary;Stable;Signed</Configurations>
     </PropertyGroup>
 
     <!--Package Data-->

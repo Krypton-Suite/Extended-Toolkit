@@ -9,7 +9,7 @@
     <RootNamespace>Krypton.Toolkit.Suite.Extended.Effects</RootNamespace>
     <AssemblyName>Krypton.Toolkit.Suite.Extended.Effects</AssemblyName>
     <UseWindowsForms>true</UseWindowsForms>
-    <Configurations>Debug;Release;Nightly;Canary;Stable</Configurations>
+    <Configurations>Debug;Release;Nightly;Canary;Stable;Signed</Configurations>
   </PropertyGroup>
 
   <!--Package Data-->

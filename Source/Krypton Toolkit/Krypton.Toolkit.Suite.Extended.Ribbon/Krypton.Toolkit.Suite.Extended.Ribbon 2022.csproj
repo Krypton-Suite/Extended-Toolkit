@@ -10,7 +10,7 @@
 		<AssemblyName>Krypton.Toolkit.Suite.Extended.Ribbon</AssemblyName>
 		<UseWindowsForms>true</UseWindowsForms>
 		<NeutralLanguage>en</NeutralLanguage>
-		<Configurations>Debug;Release;Nightly;Canary;Stable</Configurations>
+		<Configurations>Debug;Release;Nightly;Canary;Stable;Signed</Configurations>
 	</PropertyGroup>
 
 	<!--Package Data-->
