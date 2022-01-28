@@ -326,6 +326,8 @@
             {
                 _soundPlayer.Play();
             }
+
+            kbtnDismiss.Text = _dismissText;
         }
 
         private void kbtnDismiss_Click(object sender, EventArgs e) => UtilityMethods.FadeOutAndClose(this);
@@ -482,6 +484,20 @@
 
         #region Overrides
         protected override bool ShowWithoutActivation => true;
+
+        protected override void OnMouseEnter(EventArgs e)
+        {
+            _timer?.Stop();
+
+            base.OnMouseEnter(e);
+        }
+
+        protected override void OnMouseLeave(EventArgs e)
+        {
+            _timer?.Start();
+
+            base.OnMouseLeave(e);
+        }
         #endregion
     }
 }

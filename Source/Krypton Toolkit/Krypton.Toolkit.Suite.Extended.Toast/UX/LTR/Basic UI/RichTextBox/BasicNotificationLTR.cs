@@ -223,6 +223,8 @@
             {
                 _soundPlayer.Play();
             }
+
+            kbtnDismiss.Text = _dismissText;
         }
 
         private void BasicNotificationLTR_GotFocus(object sender, EventArgs e) => kbtnDismiss.Focus();

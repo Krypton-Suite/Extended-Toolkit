@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Krypton.Toolkit.Suite.Extended.Toast
+﻿namespace Krypton.Toolkit.Suite.Extended.Toast
 {
     public class BasicNotificationAlternativeUILTR : KryptonForm
     {
+        #region Design Code
         private KryptonPanel kryptonPanel2;
         private KryptonWrapLabel kwlTitle;
         private PictureBox pbxToastImage;
@@ -19,12 +14,12 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         private void InitializeComponent()
         {
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
+            this.kwlContent = new Krypton.Toolkit.KryptonWrapLabel();
             this.kwlTitle = new Krypton.Toolkit.KryptonWrapLabel();
             this.pbxToastImage = new System.Windows.Forms.PictureBox();
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             this.kbtnDismiss = new Krypton.Toolkit.KryptonButton();
             this.kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
-            this.kwlContent = new Krypton.Toolkit.KryptonWrapLabel();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
             this.kryptonPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxToastImage)).BeginInit();
@@ -42,6 +37,22 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             this.kryptonPanel2.Name = "kryptonPanel2";
             this.kryptonPanel2.Size = new System.Drawing.Size(609, 243);
             this.kryptonPanel2.TabIndex = 4;
+            // 
+            // kwlContent
+            // 
+            this.kwlContent.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.kwlContent.AutoSize = false;
+            this.kwlContent.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kwlContent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.kwlContent.LabelStyle = Krypton.Toolkit.LabelStyle.NormalControl;
+            this.kwlContent.Location = new System.Drawing.Point(146, 89);
+            this.kwlContent.Name = "kwlContent";
+            this.kwlContent.Size = new System.Drawing.Size(451, 148);
+            this.kwlContent.StateCommon.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kwlContent.Text = "{0}";
+            this.kwlContent.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // kwlTitle
             // 
@@ -97,22 +108,6 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             this.kryptonBorderEdge1.Size = new System.Drawing.Size(609, 1);
             this.kryptonBorderEdge1.Text = "kryptonBorderEdge1";
             // 
-            // kwlContent
-            // 
-            this.kwlContent.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.kwlContent.AutoSize = false;
-            this.kwlContent.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kwlContent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
-            this.kwlContent.LabelStyle = Krypton.Toolkit.LabelStyle.NormalControl;
-            this.kwlContent.Location = new System.Drawing.Point(146, 89);
-            this.kwlContent.Name = "kwlContent";
-            this.kwlContent.Size = new System.Drawing.Size(451, 148);
-            this.kwlContent.StateCommon.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kwlContent.Text = "{0}";
-            this.kwlContent.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // BasicNotificationAlternativeUILTR
             // 
             this.ClientSize = new System.Drawing.Size(609, 293);
@@ -125,6 +120,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.Load += new System.EventHandler(this.BasicNotificationAlternativeUILTR_Load);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
             this.kryptonPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbxToastImage)).EndInit();
@@ -134,5 +130,169 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             this.ResumeLayout(false);
 
         }
+        #endregion
+
+        #region Variables
+        private IconType _iconType;
+
+        private int _time, _seconds;
+
+        private Timer _timer;
+
+        private SoundPlayer _soundPlayer;
+
+        private string _title, _contentText, _soundPath, _dismissText;
+
+        private Stream _soundStream;
+
+        private Image _customImage;
+        #endregion
+
+        #region Properties
+        public IconType IconType { get => _iconType; set => _iconType = value; }
+
+        public int Time { get => _time; set => _time = value; }
+
+        public int Seconds { get => _seconds; set => _seconds = value; }
+
+        public string Title { get => _title; set => _title = value; }
+
+        public string ContentText { get => _contentText; set => _contentText = value; }
+
+        public string SoundPath { get => _soundPath; set => _soundPath = value; }
+
+        public string DismissText { get => _dismissText; set => _dismissText = value; }
+
+        public Stream SoundStream { get => _soundStream; set => _soundStream = value; }
+
+        public Image CustomImage { get => _customImage; set => _customImage = value; }
+        #endregion
+
+        #region Constructor
+        public BasicNotificationAlternativeUILTR(IconType iconType, string title, string contentText, Image customImage = null, string dismissText = "&Dismiss")
+        {
+            InitializeComponent();
+
+            IconType = iconType;
+
+            Title = title;
+
+            ContentText = contentText;
+
+            CustomImage = customImage;
+
+            DismissText = dismissText;
+
+            TopMost = true;
+
+            Resize += BasicNotificationAlternativeUILTR_Resize;
+
+            GotFocus += BasicNotificationAlternativeUILTR_GotFocus;
+
+            DoubleBuffered = true;
+        }
+
+        public BasicNotificationAlternativeUILTR(IconType iconType, string title, string contentText, int seconds, Image customImage = null, string dismissText = "&Dismiss")
+            : this(iconType, title, contentText, customImage, dismissText) => Seconds = seconds;
+
+        public BasicNotificationAlternativeUILTR(IconType iconType, string title, string contentText, int seconds, string soundPath, Image customImage = null, string dismissText = "&Dismiss")
+            : this(iconType, title, contentText, seconds, customImage, dismissText) => SoundPath = soundPath;
+
+        public BasicNotificationAlternativeUILTR(IconType iconType, string title, string contentText, Stream soundStream, Image customImage = null, string dismissText = "&Dismiss")
+            : this(iconType, title, contentText, customImage, dismissText) => SoundStream = soundStream;
+
+        public BasicNotificationAlternativeUILTR(IconType iconType, string title, string contentText, int seconds, Stream soundStream, Image customImage = null, string dismissText = "&Dismiss")
+            : this(iconType, title, contentText, seconds, customImage, dismissText) => SoundStream = soundStream;
+        #endregion
+
+        #region Event Handlers
+        private void BasicNotificationAlternativeUILTR_Load(object sender, EventArgs e)
+        {
+            //Once loaded, position the form to the bottom left of the screen with added padding
+            Location = new Point(Screen.PrimaryScreen.WorkingArea.Width - Width - 5, Screen.PrimaryScreen.WorkingArea.Height - Height - 5);
+
+            UtilityMethods.FadeIn(this);
+
+            if (_timer != null)
+            {
+                _timer.Start();
+            }
+
+            if (_soundPlayer != null)
+            {
+                _soundPlayer.Play();
+            }
+
+            kbtnDismiss.Text = _dismissText;
+        }
+
+        private void BasicNotificationAlternativeUILTR_GotFocus(object sender, EventArgs e) => kbtnDismiss.Focus();
+
+        private void BasicNotificationAlternativeUILTR_Resize(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Maximized)
+            {
+                WindowState = FormWindowState.Normal;
+            }
+        }
+
+        private void kbtnDismiss_Click(object sender, EventArgs e) => UtilityMethods.FadeOutAndClose(this);
+        #endregion
+
+        #region Methods
+        public new void Show()
+        {
+            Opacity = 0;
+
+            UtilityMethods.SetIconType(IconType, CustomImage, pbxToastImage);
+
+            kwlTitle.Text = Title;
+
+            kwlContent.Text = ContentText;
+
+            if (Seconds != 0)
+            {
+                kbtnDismiss.Text = $"{ DismissText } ({ Seconds - Time })";
+
+                _timer = new Timer();
+
+                _timer.Interval = 1000;
+
+                _timer.Tick += (sender, e) =>
+                {
+                    _time++;
+
+                    kbtnDismiss.Text = $"{ DismissText } ({ Seconds - Time }s)";
+
+                    if (_time == Seconds)
+                    {
+                        _timer.Stop();
+
+                        UtilityMethods.FadeOutAndClose(this);
+                    }
+                };
+            }
+            else
+            {
+                kbtnDismiss.Text = DismissText;
+            }
+
+            if (SoundPath != null)
+            {
+                _soundPlayer = new SoundPlayer(SoundPath);
+            }
+
+            if (SoundStream != null)
+            {
+                _soundPlayer = new SoundPlayer(SoundStream);
+            }
+
+            base.Show();
+        }
+        #endregion
+
+        #region Overrides
+        protected override bool ShowWithoutActivation => true;
+        #endregion
     }
 }
