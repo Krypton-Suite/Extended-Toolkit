@@ -9,7 +9,7 @@
 	<RootNamespace>Krypton.Toolkit.Suite.Extended.Language.Model</RootNamespace>
 	<AssemblyName>Krypton.Toolkit.Suite.Extended.Language.Model</AssemblyName>
 	<UseWindowsForms>true</UseWindowsForms>
-	<Configurations>Debug;Release;Nightly;Canary;Stable</Configurations>
+	<Configurations>Debug;Release;Nightly;Canary;Stable;Signed</Configurations>
   </PropertyGroup>
 
   <!--Package Data-->
@@ -23,6 +23,12 @@
 		<When Condition="'$(Configuration)' == 'Nightly'">
 			<PropertyGroup>
 				<PackageId>Krypton.Toolkit.Suite.Extended.Language.Model.Nightly</PackageId>
+			</PropertyGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'Signed'">
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Language.Model.Signed</PackageId>
 			</PropertyGroup>
 		</When>
 		<Otherwise>
@@ -60,7 +66,17 @@
 		  </PropertyGroup>
 
 		  <ItemGroup>
-			  <PackageReference Include="Krypton.Toolkit.Nightly" Version="60.22.1.26-alpha" />
+			  <PackageReference Include="Krypton.Toolkit.Nightly" Version="60.22.1.28-alpha" />
+		  </ItemGroup>
+	  </When>
+
+	  <When Condition="'$(Configuration)' == 'Signed'">
+		  <PropertyGroup>
+			  <LangVersion>preview</LangVersion>
+		  </PropertyGroup>
+
+		  <ItemGroup>
+			  <PackageReference Include="Krypton.Toolkit.Signed" Version="60.22.4.4" />
 		  </ItemGroup>
 	  </When>
 	  <Otherwise>
