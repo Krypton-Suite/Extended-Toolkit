@@ -1,12 +1,14 @@
 =======
 
 ## 2022-04-04 - Build 2204 - April 2022
+* Added 'Signed' configuration
 * Resolved [#268](https://github.com/Krypton-Suite/Extended-Toolkit/issues/268), Crashes using Outlook Grid control
 * Resolved [#226](https://github.com/Krypton-Suite/Extended-Toolkit/issues/226), `KryptonOutlookGrid` throws a `MissingManifestResourceException` when trying to configure its columns
 * The `ThemeSelector` now uses the native `KryptonThemeComboBox` control
 * Nightly packages are now available both on GitHub and nuget.org
 * Reworked the `Toast` module (RTL support coming soon!)
 * Updated NuGet package descriptions to provide more information
+* Removed examples from source, you can find the example source code [here](https://github.com/Krypton-Suite/Extended-Toolkit-Demos)
 * Fix errant typos
 * Updated standard toolkit to build `2204`
 

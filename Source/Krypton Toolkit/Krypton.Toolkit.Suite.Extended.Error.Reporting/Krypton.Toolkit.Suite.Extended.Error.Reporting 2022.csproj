@@ -26,6 +26,12 @@
 				<PackageId>Krypton.Toolkit.Suite.Extended.Error.Reporting.Nightly</PackageId>
 			</PropertyGroup>
 		</When>
+
+		<When Condition="'$(Configuration)' == 'Signed'">
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Error.Reporting.Signed</PackageId>
+			</PropertyGroup>
+		</When>
 		<Otherwise>
 			<PropertyGroup>
 				<PackageId>Krypton.Toolkit.Suite.Extended.Error.Reporting</PackageId>
@@ -51,8 +57,8 @@
             </PropertyGroup>
 
             <ItemGroup>
-                <PackageReference Include="Krypton.Toolkit.Canary" Version="60.22.1.17-beta" />
-                <PackageReference Include="Krypton.Navigator.Canary" Version="60.22.1.17-beta" />
+                <PackageReference Include="Krypton.Toolkit.Canary" Version="60.22.1.23-beta" />
+                <PackageReference Include="Krypton.Navigator.Canary" Version="60.22.1.23-beta" />
             </ItemGroup>
         </When>
 
@@ -62,10 +68,21 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="60.22.1.17-alpha" />
-				<PackageReference Include="Krypton.Navigator.Nightly" Version="60.22.1.17-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="60.22.1.28-alpha" />
+				<PackageReference Include="Krypton.Navigator.Nightly" Version="60.22.1.28-alpha" />
 			</ItemGroup>
 		</When>
+
+	    <When Condition="'$(Configuration)' == 'Signed'">
+		    <PropertyGroup>
+			    <LangVersion>preview</LangVersion>
+		    </PropertyGroup>
+
+		    <ItemGroup>
+			    <PackageReference Include="Krypton.Toolkit.Signed" Version="60.22.4.4" />
+                <PackageReference Include="Krypton.Navigator.Signed" Version="60.22.4.4" />
+		    </ItemGroup>
+	    </When>
         <Otherwise>
             <PropertyGroup>
                 <LangVersion>preview</LangVersion>

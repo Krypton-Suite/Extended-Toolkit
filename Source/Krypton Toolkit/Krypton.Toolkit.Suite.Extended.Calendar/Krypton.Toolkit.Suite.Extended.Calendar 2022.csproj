@@ -26,6 +26,12 @@
 				<PackageId>Krypton.Toolkit.Suite.Extended.Calendar.Nightly</PackageId>
 			</PropertyGroup>
 		</When>
+
+		<When Condition="'$(Configuration)' == 'Signed'">
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Calendar.Signed</PackageId>
+			</PropertyGroup>
+		</When>
 		<Otherwise>
 			<PropertyGroup>
 				<PackageId>Krypton.Toolkit.Suite.Extended.Calendar</PackageId>
@@ -51,7 +57,7 @@
 		    </PropertyGroup>
 
 		    <ItemGroup>
-			    <PackageReference Include="Krypton.Toolkit.Canary" Version="60.22.1.17-beta" />
+			    <PackageReference Include="Krypton.Toolkit.Canary" Version="60.22.1.23-beta" />
 		    </ItemGroup>
 	    </When>
 
@@ -61,9 +67,19 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="60.22.1.17-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="60.22.1.28-alpha" />
 			</ItemGroup>
 		</When>
+
+	    <When Condition="'$(Configuration)' == 'Signed'">
+		    <PropertyGroup>
+			    <LangVersion>preview</LangVersion>
+		    </PropertyGroup>
+
+		    <ItemGroup>
+			    <PackageReference Include="Krypton.Toolkit.Signed" Version="60.22.4.4" />
+		    </ItemGroup>
+	    </When>
 	    <Otherwise>
 		    <PropertyGroup>
 			    <LangVersion>preview</LangVersion>
