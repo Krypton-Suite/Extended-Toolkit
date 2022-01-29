@@ -6,10 +6,8 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Controls
-{
-    [ToolboxItem(false)]
-    public class KryptonScrollingLabel : KryptonLabel
-    {
-    }
-}
+global using System;
+global using System.ComponentModel;
+global using System.Drawing;
+global using System.Drawing.Drawing2D;
+global using System.Windows.Forms;

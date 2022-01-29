@@ -8,7 +8,7 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Controls
 {
-    [ToolboxBitmap(typeof(FlowLayoutPanel))]
+    [ToolboxBitmap(typeof(FlowLayoutPanel)), Obsolete("Please use the FlowLayoutPanel as provided in Krypton.Toolkit.")]
     public class KryptonFlowLayoutPanel : FlowLayoutPanel
     {
         #region Variables

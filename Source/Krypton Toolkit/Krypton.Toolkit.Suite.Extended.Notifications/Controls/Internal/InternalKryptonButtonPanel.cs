@@ -12,7 +12,7 @@ using System.Windows.Forms;
 namespace Krypton.Toolkit.Suite.Extended.Notifications
 {
     [ToolboxItem(false)]
-    public class KryptonButtonPanel : UserControl
+    public class InternalKryptonButtonPanel : UserControl
     {
         private KryptonBorderEdge kbeBorder;
         private KryptonPanel kryptonPanel1;
