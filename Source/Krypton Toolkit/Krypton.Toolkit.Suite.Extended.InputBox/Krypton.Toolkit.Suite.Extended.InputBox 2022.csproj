@@ -38,7 +38,7 @@
           </PropertyGroup>
 
           <ItemGroup>
-              <PackageReference Include="Krypton.Toolkit" Version="6.2201.4" />
+              <PackageReference Include="Krypton.Toolkit" Version="60.22.2.32" />
           </ItemGroup>
       </When>
       <Otherwise>
