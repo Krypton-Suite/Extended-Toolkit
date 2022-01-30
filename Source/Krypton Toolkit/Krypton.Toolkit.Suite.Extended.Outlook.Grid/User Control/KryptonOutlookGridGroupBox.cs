@@ -42,6 +42,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         }
         #endregion
 
+        #region Instance Fields
         private List<OutlookGridGroupBoxColumn> _columnsList;
         private string _dragColumnToGroupText;
 
@@ -81,7 +82,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         private KryptonContextMenuItem _menuHideGroupBox;
         private KryptonContextMenuItem _menuGroupInterval;
         private KryptonContextMenuItem _menuSortBySummary;
+        #endregion
 
+        #region Custom Events
         /// <summary>
         /// Column Sort Changed Event
         /// </summary>
@@ -126,6 +129,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// Sort by Summary Count event
         /// </summary>
         public event EventHandler<OutlookGridColumnEventArgs> SortBySummaryCount;
+        #endregion
 
         #region Constructor
 
@@ -996,6 +1000,40 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             return false;
         }
 
+        public void CreateGroupBox(DataGridViewColumn column, string groupingType, SortOrder order, bool sortBySummary = true)
+        {
+            string columnToMove = column.Name, columnName = column.Name, columnText = column.HeaderText;
+
+            SortOrder sortOrder = order;
+
+            DataGridViewColumnSortMode sortMode;
+
+            string[] resources = columnToMove.Split('|');
+
+            if (sortOrder == SortOrder.None)
+            {
+                sortOrder = SortOrder.Ascending;
+            }
+
+            sortMode = (DataGridViewColumnSortMode) Enum.Parse(typeof(DataGridViewColumnSortMode),
+                column.SortMode.ToString());
+
+            OutlookGridGroupBoxColumn columnToAdd =
+                new OutlookGridGroupBoxColumn(columnName, columnText, sortOrder, groupingType);
+
+            columnToAdd.GroupInterval = resources[0];
+
+            columnToAdd.SortBySummaryCount = sortBySummary;
+
+            if (!string.IsNullOrEmpty(columnToMove) && !_columnsList.Contains(columnToAdd) && sortMode != DataGridViewColumnSortMode.NotSortable)
+            {
+                _columnsList.Insert(0, columnToAdd);
+
+                //OnColumnGroupAdded(new OutlookGridColumnEventArgs(new OutlookGridColumn(columnName, null, null, sortOrder, 0, -1)));
+
+                Invalidate();
+            }
+        }
         #endregion
     }
 }
