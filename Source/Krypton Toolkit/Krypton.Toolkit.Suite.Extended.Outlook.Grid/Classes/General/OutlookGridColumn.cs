@@ -64,7 +64,6 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             SortIndex = sortIndex;
             RowsComparer = comparer;
         }
-
         #endregion
 
         #region Properties

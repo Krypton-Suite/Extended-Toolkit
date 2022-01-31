@@ -844,9 +844,10 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                             }
                         }
 
-#if DEBUG
-                        internalColumns.DebugOutput();
-#endif
+                        // Note Can we remove this?
+//#if DEBUG
+//                        internalColumns.DebugOutput();
+//#endif
 
                         //Refresh the groupBox if the column is grouped
                         if (col.IsGrouped)
@@ -1507,9 +1508,11 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 if (_hideColumnOnGrouping && col.GroupingType.AllowHiddenWhenGrouped)
                     col.DataGridViewColumn.Visible = false;
             }
-#if DEBUG
-            internalColumns.DebugOutput();
-#endif
+
+            // Note Can we remove this?
+            //#if DEBUG
+            //            internalColumns.DebugOutput();
+            //#endif
         }
 
         /// <summary>

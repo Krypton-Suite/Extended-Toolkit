@@ -1,7 +1,8 @@
 =======
 
 ## 2022-04-04 - Build 2204 - April 2022
-* Added 'Signed' configuration
+* Moved `KryptonPanelExtended` & `KryptonButtonPanel` to `Krypton.Toolkit.Suite.Extended.Panels` module
+* Added `Signed` configuration
 * Resolved [#268](https://github.com/Krypton-Suite/Extended-Toolkit/issues/268), Crashes using Outlook Grid control
 * Resolved [#226](https://github.com/Krypton-Suite/Extended-Toolkit/issues/226), `KryptonOutlookGrid` throws a `MissingManifestResourceException` when trying to configure its columns
 * The `ThemeSelector` now uses the native `KryptonThemeComboBox` control
@@ -194,3 +195,4 @@
 * Changed `490` to `500`
 * Builds from now on will be labelled as `YYMM`
 * ***Before installing, please follow [this](https://github.com/Krypton-Suite/Standard-Toolkit-Online-Help/blob/master/Source/Documentation/Standard%20Toolkit%20Migration%20Guide.md) as the toolkit now uses different namespaces!***
+ module

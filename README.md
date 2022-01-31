@@ -44,6 +44,9 @@ Development of the Krypton Extended Toolkit is supported by these generous organ
 ## Examples
 <a href="https://github.com/Krypton-Suite/Extended-Toolkit/tree/master/Documents/Examples/Examples.md"><img src="https://img.shields.io/badge/Toolkit-Examples-orange.svg?style=flat-square" alt="Browse toolkit examples" /></a>
 
+## Version Information
+<a href="https://github.com/Krypton-Suite/Krypton-Toolkit-Suite-Version-Dashboard/blob/main/Documents/Modules/Extended/Krypton-Toolkit-Suite-Extended-Modules.md"><img src="https://img.shields.io/badge/Version-Information-purple.svg?style=flat-square" alt="Version Information" /></a>
+
 =======
 
 # Under Construction

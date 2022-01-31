@@ -6,8 +6,10 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Controls
+
+namespace Krypton.Toolkit.Suite.Extended.Panels
 {
+    [ToolboxBitmap(typeof(KryptonPanel))]
     public class KryptonPanelExtended : KryptonPanel
     {
         #region Variables

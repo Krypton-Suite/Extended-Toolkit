@@ -11,7 +11,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
     /// <summary>Provides a panel to contain buttons, similar to a KryptonMessageBox button panel.</summary>
     /// <seealso cref="System.Windows.Forms.UserControl" />
     [Description("Provides a panel to contain buttons, similar to a KryptonMessageBox button panel."),
-     ToolboxBitmap(typeof(KryptonPanel))]
+     ToolboxBitmap(typeof(KryptonPanel)),ToolboxItem(false)]
     public class KryptonButtonPanel : UserControl
     {
         #region Design Code
