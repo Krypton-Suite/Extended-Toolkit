@@ -47,7 +47,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Canary" Version="6.2201.1-beta" />
+				<PackageReference Include="Krypton.Toolkit" Version="60.22.2.32" />
 			</ItemGroup>
 		</Otherwise>
 	</Choose>
@@ -90,7 +90,7 @@
 		<When Condition="'$(SolutionName.Endswith(`Nuget`))'">
 			<ItemGroup>
 				Canary package
-				<PackageReference Include="Krypton.Toolkit.Canary" Version="6.0.2108.1" />
+				<PackageReference Include="Krypton.Toolkit" Version="6.0.2108.1" />
 
 				Stable package
 				<PackageReference Include="Krypton.Toolkit" Version="5.550.2108" />-
