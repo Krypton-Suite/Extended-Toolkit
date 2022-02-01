@@ -1,0 +1,246 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows;net6.0-windows</TargetFrameworks>
+	</PropertyGroup>
+
+	<PropertyGroup>
+        <OutputType>library</OutputType>
+        <RootNamespace>Krypton.Toolkit.Suite.Extended.Circular.ProgressBar</RootNamespace>
+        <AssemblyName>Krypton.Toolkit.Suite.Extended.Circular.ProgressBar</AssemblyName>
+        <UseWindowsForms>true</UseWindowsForms>
+        <NeutralLanguage>en</NeutralLanguage>
+        <Configurations>Debug;Release;Nightly;Canary;Stable</Configurations>
+    </PropertyGroup>
+
+    <!--Package Data-->
+    <Choose>
+        <When Condition="'$(Configuration)' == 'Canary'">
+            <PropertyGroup>
+                <PackageId>Krypton.Toolkit.Suite.Extended.ProgressBar.Canary</PackageId>
+            </PropertyGroup>
+        </When>
+        <Otherwise>
+            <PropertyGroup>
+                <PackageId>Krypton.Toolkit.Suite.Extended.ProgressBar</PackageId>
+            </PropertyGroup>
+        </Otherwise>
+    </Choose>
+
+    <PropertyGroup>
+        <Description>An extension to the Krypton standard toolkit. This package holds the circular progress bar control.</Description>
+    </PropertyGroup>
+
+    <Choose>
+        <When Condition="'$(Configuration)' == 'Release'">
+            <PropertyGroup>
+                <LangVersion>preview</LangVersion>
+            </PropertyGroup>
+
+            <ItemGroup>
+                <PackageReference Include="Krypton.Toolkit" Version="60.22.2.32" />
+            </ItemGroup>
+        </When>
+        <Otherwise>
+            <PropertyGroup>
+                <LangVersion>preview</LangVersion>
+            </PropertyGroup>
+
+            <ItemGroup>
+                <PackageReference Include="Krypton.Toolkit.Canary" Version="6.2201.1-beta" />
+            </ItemGroup>
+        </Otherwise>
+    </Choose>
+
+    <ItemGroup>
+        <Reference Include="System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net4'))">
+            <SpecificVersion>True</SpecificVersion>
+            <Version>4.0.0.0</Version>
+            <TreatAsUsed>True</TreatAsUsed>
+        </Reference>
+        <Reference Include="System.Design, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net5'))">
+            <SpecificVersion>True</SpecificVersion>
+            <Version>5.0.0.0</Version>
+            <TreatAsUsed>True</TreatAsUsed>
+        </Reference>
+        <Reference Include="System.Design, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net6'))">
+            <SpecificVersion>True</SpecificVersion>
+            <Version>6.0.0.0</Version>
+            <TreatAsUsed>True</TreatAsUsed>
+        </Reference>
+        <Reference Include="System.Design" Condition="'$(TargetFramework)' == 'net35'" />
+        <!--TODO: Need to specify version here-->
+    </ItemGroup>
+    <!--Binary/Documentation Output-->
+    <PropertyGroup>
+        <DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Circular.ProgressBar\Krypton.Toolkit.Suite.Extended.Circular.ProgressBar.xml</DocumentationFile>
+        <OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Circular.ProgressBar\</OutputPath>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Unofficial.WinFormAnimation-NET" Version="2.0.1" />
+    </ItemGroup>
+
+	<PropertyGroup>
+		<NeutralLanguage>en</NeutralLanguage>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<Choose>
+		<When Condition="'$(Configuration)' == 'Canary'">
+			<PropertyGroup>
+				<LangVersion>preview</LangVersion>
+			</PropertyGroup>
+		</When>
+		<Otherwise>
+			<PropertyGroup>
+				<LangVersion>latest</LangVersion>
+			</PropertyGroup>
+		</Otherwise>
+	</Choose>
+
+	<PropertyGroup>
+		<!-- common project data -->
+		<Version>$(LibraryVersion)</Version>
+		<!-- two flavors of TFM are supported : 'all' where the NuGet package include all supported tfms. 'lite' with only .net core and .net 4.5 support -->
+		<TFMs Condition="'$(TFMs)' == ''">lite</TFMs>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<!-- common package data -->
+		<PackageProjectUrl>https://github.com/Krypton-Suite/Extended-Toolkit</PackageProjectUrl>
+		<PackageIcon>Canary.png</PackageIcon>
+		<Authors>Peter William Wagner &amp; Simon Coghlan &amp; Thomas Bolon, et al.</Authors>
+		<!--<PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>-->
+		<PackageTags>Krypton ComponentFactory WinForms Themes Controls DataGrid Ribbon Workspace Tabs .Net Toolkit Core</PackageTags>
+		<PackageReleaseNotes>Get updates here: https://github.com/Krypton-Suite/Extended-Toolkit</PackageReleaseNotes>
+	</PropertyGroup>
+
+	<!--Generate NuGet packages on build-->
+	<Choose>
+		<When Condition="'$(Configuration)' == 'Nigtly'">
+			<PropertyGroup>
+				<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+
+				<PackageIcon>Nightly.png</PackageIcon>
+
+				<PackageLicenseUrl>https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE</PackageLicenseUrl>
+
+				<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+
+				<LangVersion>latest</LangVersion>
+
+				<PackageOutputPath>..\..\..\Bin\NuGet Packages\Nightly</PackageOutputPath>
+			</PropertyGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'Canary'">
+			<PropertyGroup>
+				<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+
+				<!--Package icon-->
+				<PackageIcon>Canary.png</PackageIcon>
+
+				<PackageLicenseUrl>https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE</PackageLicenseUrl>
+
+				<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+
+				<PackageOutputPath>..\..\..\Bin\NuGet Packages\Canary</PackageOutputPath>
+			</PropertyGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'Release'">
+			<PropertyGroup>
+				<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+
+				<!--Package icon-->
+				<PackageIcon>Stable.png</PackageIcon>
+
+				<PackageLicenseUrl>https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE</PackageLicenseUrl>
+
+				<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+
+				<PackageOutputPath>..\..\..\Bin\NuGet Packages\Release</PackageOutputPath>
+			</PropertyGroup>
+		</When>
+		<Otherwise>
+			<PropertyGroup>
+				<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+
+				<!--Package icon-->
+				<PackageIcon>Stable.png</PackageIcon>
+
+				<PackageLicenseUrl>https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE</PackageLicenseUrl>
+
+				<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+
+				<PackageOutputPath>bin\Package\Stable</PackageOutputPath>
+			</PropertyGroup>
+		</Otherwise>
+	</Choose>
+
+	<Choose>
+		<When Condition="'$(Configuration)' == 'Canary'">
+			<ItemGroup>
+				<None Include="..\..\..\Assets\Package Icon\Canary.png" Link="Canary.png" Pack="true" PackagePath="" />
+			</ItemGroup>
+		</When>
+		<Otherwise>
+			<ItemGroup>
+				<!--<None Include="..\..\..\Assets\Package Icon\Nightly.png" Link="Nightly.png" Pack="true" PackagePath="" />-->
+
+				<None Include="..\..\..\Assets\Package Icon\Stable.png" Link="Stable.png" Pack="true" PackagePath="" />
+			</ItemGroup>
+		</Otherwise>
+	</Choose>
+
+	<!--Version information-->
+	<Choose>
+		<When Condition="'$(Configuration)' == 'Canary'">
+			<PropertyGroup>
+				<Minor>$([System.DateTime]::Now.ToString(yyMM))</Minor>
+
+				<Build>$([System.DateTime]::Now.get_DayOfYear().ToString())</Build>
+
+				<!--Canary only-->
+				<PackageVersion>6.$(Minor).$(Build)-beta</PackageVersion>
+			</PropertyGroup>
+		</When>
+		<Otherwise>
+			<PropertyGroup>
+				<Minor>$([System.DateTime]::Now.ToString(yyMM))</Minor>
+
+				<Build>$([System.DateTime]::Now.get_DayOfYear().ToString())</Build>
+
+				<!--Stable/Signed-->
+				<PackageVersion>60.$(Minor).$(Build)</PackageVersion>
+			</PropertyGroup>
+		</Otherwise>
+	</Choose>
+
+	<PropertyGroup>
+		<!--REMINDER: When packing, use the proper ISO layout, i.e ddHH-->
+		<!--<CurrentDate>$([System.DateTime]::Now.ToString(ddHH))</CurrentDate>-->
+
+		<Minor>$([System.DateTime]::Now.ToString(yyMM))</Minor>
+		<Build>$([System.DateTime]::Now.get_DayOfYear().ToString())</Build>
+
+		<!--Version layout:
+				6 = Major
+				2109 = Minor
+				18 = Build
+				-alpha = Indicates a pre-release package
+			-->
+		<LibraryVersion>60.$(Minor).$(Build)</LibraryVersion>
+
+		<!--Nightly-->
+		<!--https://docs.microsoft.com/en-us/nuget/create-packages/prerelease-packages-->
+		<!--<PackageVersion>6.$(Minor).$(Build)-alpha</PackageVersion>-->
+
+		<AssemblyVersion>60.$(Minor).$(Build)</AssemblyVersion>
+
+		<FileVersion>60.$(Minor).$(Build)</FileVersion>
+
+		<Version>60.$(Minor).$(Build)</Version>
+	</PropertyGroup>
+</Project>
