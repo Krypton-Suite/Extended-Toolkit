@@ -1,4 +1,9 @@
-## 2022-02-03 - Build 2202 - February 2022
+## 2022-02-02 - Build 2202.1 - February 2022
+* Fixed [#299](https://github.com/Krypton-Suite/Extended-Toolkit/issues/299), Toolkit used is the wrong version
+
+======
+
+## 2022-02-01 - Build 2202 - February 2022
 * Updated NuGet package information to aid deployment to GitHub
 * New `Krypton.Toolkit.Suite.Extended.Error.Reporting` module
 * Removal of unused 'using' statements
