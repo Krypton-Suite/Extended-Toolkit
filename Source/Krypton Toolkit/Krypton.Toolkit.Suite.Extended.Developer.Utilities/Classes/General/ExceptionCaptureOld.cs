@@ -109,7 +109,7 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
             }
             else if (useExtendedKryptonMessageBox)
             {
-                // TODO: Enter code
+                // Note: Enter code
             }
             else if (useWin32MessageBox)
             {
@@ -117,9 +117,17 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
             }
             else if (useConsole)
             {
-                Console.WriteLine($"[ { DateTime.Now.ToString() } ]: { exceptionMessage }");
+                Console.WriteLine($"[ { DateTime.Now } ]: { exceptionMessage }");
             }
         }
+
+        /// <summary>Captures the exception.</summary>
+        /// <param name="exceptionMessage">The exception message.</param>
+        /// <param name="title">The title.</param>
+        /// <param name="buttons">The buttons.</param>
+        /// <param name="icon">The icon.</param>
+        public static void CaptureException(string exceptionMessage, string title, MessageBoxButtons buttons,
+                                     KryptonMessageBoxIcon icon) => KryptonMessageBox.Show(exceptionMessage, title, buttons, icon);
 
         /*
 #if !NET40_OR_GREATER
