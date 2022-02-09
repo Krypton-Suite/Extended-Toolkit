@@ -863,6 +863,43 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
         #region Methods
 
+        /// <summary>Creates the group box.</summary>
+        /// <param name="column">The column.</param>
+        /// <param name="groupingType">Type of the grouping.</param>
+        /// <param name="order">The order.</param>
+        /// <param name="sortBySummary">if set to <c>true</c> [sort by summary].</param>
+        public void CreateGroupBox(DataGridViewColumn column, string groupingType, SortOrder order, bool sortBySummary)
+        {
+            string columnToMove = column.Name, columnName = column.Name, columnText = column.HeaderText;
+            SortOrder sortOrder;
+            DataGridViewColumnSortMode sortMode;
+            string[] res = columnToMove.Split('|');
+            sortOrder = order;
+
+            if (sortOrder == SortOrder.None)
+            {
+                sortOrder = SortOrder.Ascending;
+            }
+
+            sortMode = (DataGridViewColumnSortMode)Enum.Parse(typeof(DataGridViewColumnSortMode), column.SortMode.ToString());
+            OutlookGridGroupBoxColumn colToAdd = new OutlookGridGroupBoxColumn(columnName, columnText, sortOrder, groupingType);
+
+            colToAdd.GroupInterval = res[0];
+            colToAdd.SortBySummaryCount = sortBySummary;
+            if (!string.IsNullOrEmpty(columnToMove) && !_columnsList.Contains(colToAdd) &&
+                sortMode != DataGridViewColumnSortMode.NotSortable)
+            {
+                _columnsList.Insert(0, colToAdd);
+
+
+                //Warns the grid of a new grouping
+                OnColumnGroupAdded(
+                    new OutlookGridColumnEventArgs(new OutlookGridColumn(columnName, null, null, sortOrder, 0, -1, null)));
+
+                Invalidate();
+            }
+        }
+
         /// <summary>
         /// Show the context menu for column box
         /// </summary>
@@ -998,41 +1035,6 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                     return true;
             }
             return false;
-        }
-
-        public void CreateGroupBox(DataGridViewColumn column, string groupingType, SortOrder order, bool sortBySummary = true)
-        {
-            string columnToMove = column.Name, columnName = column.Name, columnText = column.HeaderText;
-
-            SortOrder sortOrder = order;
-
-            DataGridViewColumnSortMode sortMode;
-
-            string[] resources = columnToMove.Split('|');
-
-            if (sortOrder == SortOrder.None)
-            {
-                sortOrder = SortOrder.Ascending;
-            }
-
-            sortMode = (DataGridViewColumnSortMode) Enum.Parse(typeof(DataGridViewColumnSortMode),
-                column.SortMode.ToString());
-
-            OutlookGridGroupBoxColumn columnToAdd =
-                new OutlookGridGroupBoxColumn(columnName, columnText, sortOrder, groupingType);
-
-            columnToAdd.GroupInterval = resources[0];
-
-            columnToAdd.SortBySummaryCount = sortBySummary;
-
-            if (!string.IsNullOrEmpty(columnToMove) && !_columnsList.Contains(columnToAdd) && sortMode != DataGridViewColumnSortMode.NotSortable)
-            {
-                _columnsList.Insert(0, columnToAdd);
-
-                //OnColumnGroupAdded(new OutlookGridColumnEventArgs(new OutlookGridColumn(columnName, null, null, sortOrder, 0, -1)));
-
-                Invalidate();
-            }
         }
         #endregion
     }
