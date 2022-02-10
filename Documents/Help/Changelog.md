@@ -1,6 +1,7 @@
 =======
 
 ## 2022-04-04 - Build 2204 - April 2022
+* Implemented [#290](https://github.com/Krypton-Suite/Extended-Toolkit/issues/290), `KryptonOutlookGridGroupBox` 'CreateGroupBox' method not found
 * New `Krypton.Toolkit.Suite.Extended.Networking` module
 * Moved `KryptonPanelExtended` & `KryptonButtonPanel` to `Krypton.Toolkit.Suite.Extended.Panels` module
 * Added `Signed` configuration
