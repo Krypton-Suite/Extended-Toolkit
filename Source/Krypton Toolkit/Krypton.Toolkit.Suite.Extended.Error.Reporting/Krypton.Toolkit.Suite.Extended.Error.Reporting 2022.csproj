@@ -57,8 +57,8 @@
             </PropertyGroup>
 
             <ItemGroup>
-                <PackageReference Include="Krypton.Toolkit.Canary" Version="60.22.1.23-beta" />
-                <PackageReference Include="Krypton.Navigator.Canary" Version="60.22.1.23-beta" />
+                <PackageReference Include="Krypton.Toolkit.Canary" Version="60.22.2.41-beta" />
+                <PackageReference Include="Krypton.Navigator.Canary" Version="60.22.2.41-beta" />
             </ItemGroup>
         </When>
 
@@ -68,8 +68,8 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="60.22.2.40-alpha" />
-				<PackageReference Include="Krypton.Navigator.Nightly" Version="60.22.2.40-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="60.22.2.41-alpha" />
+				<PackageReference Include="Krypton.Navigator.Nightly" Version="60.22.2.41-alpha" />
 			</ItemGroup>
 		</When>
 
