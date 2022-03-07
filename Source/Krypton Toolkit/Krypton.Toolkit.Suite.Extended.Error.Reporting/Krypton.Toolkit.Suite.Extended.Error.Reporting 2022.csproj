@@ -106,7 +106,7 @@
 
     <ItemGroup>
       <PackageReference Include="DotNetZip" Version="1.16.0" />
-      <PackageReference Include="Handlebars.Net" Version="2.0.10" />
+      <PackageReference Include="Handlebars.Net" Version="2.1.0" />
       <PackageReference Include="Simple-MAPI.NET" Version="1.2.0" />
       <PackageReference Include="System.Management" Version="6.0.0" />
     </ItemGroup>

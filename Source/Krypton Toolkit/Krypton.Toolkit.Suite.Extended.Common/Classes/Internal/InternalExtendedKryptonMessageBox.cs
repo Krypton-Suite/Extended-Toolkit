@@ -6,10 +6,6 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Common.Resources;
-
-using System.Media;
-
 using Timer = System.Windows.Forms.Timer;
 
 namespace Krypton.Toolkit.Suite.Extended.Common
