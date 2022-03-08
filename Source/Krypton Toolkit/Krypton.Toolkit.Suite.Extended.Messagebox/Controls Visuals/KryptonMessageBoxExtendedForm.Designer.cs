@@ -1,6 +1,6 @@
 ﻿namespace Krypton.Toolkit.Suite.Extended.Messagebox
 {
-    partial class KryptonMessageBoxFormExtended
+    partial class KryptonMessageBoxExtendedForm
     {
         /// <summary>
         /// Required designer variable.
