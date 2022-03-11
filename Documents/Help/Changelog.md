@@ -12,6 +12,7 @@
 * Reworked the `Toast` module (RTL support coming soon!)
 * Updated NuGet package descriptions to provide more information
 * Removed examples from source, you can find the example source code [here](https://github.com/Krypton-Suite/Extended-Toolkit-Demos)
+* Reimplemented `KryptonMessageBoxExtended`, due to too many options (font and custom icons are supported at the moment)
 * Fix errant typos
 * Updated standard toolkit to build `2204`
 
