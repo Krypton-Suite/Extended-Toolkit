@@ -115,6 +115,22 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                 InternalShow(owner, text, caption, buttons, icon, defaultButton, options,
                     displayHelpButton ? new HelpInfo() : null, showCtrlCopy, null, null);
 
+        /// <summary>Shows a messagebox.</summary>
+        /// <param name="text">The text.</param>
+        /// <param name="caption">The caption.</param>
+        /// <param name="buttons">The buttons.</param>
+        /// <param name="icon">The icon.</param>
+        /// <param name="defaultButton">The default button.</param>
+        /// <param name="options">The options.</param>
+        /// <param name="helpFilePath">The help file path.</param>
+        /// <param name="navigator">The navigator.</param>
+        /// <param name="param">The parameter.</param>
+        /// <param name="showCtrlCopy">The show control copy.</param>
+        /// <param name="messageBoxTypeface">The message box typeface.</param>
+        /// <param name="customImageIcon">The custom image icon.</param>
+        /// <returns>
+        ///   <br />
+        /// </returns>
         public DialogResult Show(string text, string caption = @"",
             ExtendedMessageBoxButtons buttons = ExtendedMessageBoxButtons.OK,
             ExtendedKryptonMessageBoxIcon icon = ExtendedKryptonMessageBoxIcon.NONE,
@@ -130,6 +146,23 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                 InternalShow(null, text, caption, buttons, icon, defaultButton, options,
                     new HelpInfo(helpFilePath, navigator, param), showCtrlCopy, messageBoxTypeface, customImageIcon);
 
+        /// <summary>Shows a messagebox.</summary>
+        /// <param name="owner">The owner.</param>
+        /// <param name="text">The text.</param>
+        /// <param name="caption">The caption.</param>
+        /// <param name="buttons">The buttons.</param>
+        /// <param name="icon">The icon.</param>
+        /// <param name="defaultButton">The default button.</param>
+        /// <param name="options">The options.</param>
+        /// <param name="helpFilePath">The help file path.</param>
+        /// <param name="navigator">The navigator.</param>
+        /// <param name="param">The parameter.</param>
+        /// <param name="showCtrlCopy">The show control copy.</param>
+        /// <param name="messageBoxTypeface">The message box typeface.</param>
+        /// <param name="customImageIcon">The custom image icon.</param>
+        /// <returns>
+        ///   <br />
+        /// </returns>
         public DialogResult Show(IWin32Window owner, string text, string caption = @"",
             ExtendedMessageBoxButtons buttons = ExtendedMessageBoxButtons.OK,
             ExtendedKryptonMessageBoxIcon icon = ExtendedKryptonMessageBoxIcon.NONE,

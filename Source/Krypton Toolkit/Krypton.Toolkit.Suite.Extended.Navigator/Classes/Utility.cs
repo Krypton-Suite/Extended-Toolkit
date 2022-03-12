@@ -6,9 +6,6 @@
  */
 #endregion
 
-using System;
-using System.Drawing;
-
 namespace Krypton.Toolkit.Suite.Extended.Navigator
 {
     internal class Utility
@@ -52,57 +49,57 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             }
             return result;
         }
-        public static StringFormat GetStringFormat(ContentAlignment contentAlignment)
+        public static StringFormat GetStringFormat(System.Drawing.ContentAlignment contentAlignment)
         {
-            if (!Enum.IsDefined(typeof(ContentAlignment), (int)contentAlignment))
+            if (!Enum.IsDefined(typeof(System.Drawing.ContentAlignment), (int)contentAlignment))
                 throw new System.ComponentModel.InvalidEnumArgumentException(
-                    "contentAlignment", (int)contentAlignment, typeof(ContentAlignment));
+                    "contentAlignment", (int)contentAlignment, typeof(System.Drawing.ContentAlignment));
 
             StringFormat stringFormat = new StringFormat();
 
             switch (contentAlignment)
             {
-                case ContentAlignment.MiddleCenter:
+                case System.Drawing.ContentAlignment.MiddleCenter:
                     stringFormat.LineAlignment = StringAlignment.Center;
                     stringFormat.Alignment = StringAlignment.Center;
                     break;
 
-                case ContentAlignment.MiddleLeft:
+                case System.Drawing.ContentAlignment.MiddleLeft:
                     stringFormat.LineAlignment = StringAlignment.Center;
                     stringFormat.Alignment = StringAlignment.Near;
                     break;
 
-                case ContentAlignment.MiddleRight:
+                case System.Drawing.ContentAlignment.MiddleRight:
                     stringFormat.LineAlignment = StringAlignment.Center;
                     stringFormat.Alignment = StringAlignment.Far;
                     break;
 
-                case ContentAlignment.TopCenter:
+                case System.Drawing.ContentAlignment.TopCenter:
                     stringFormat.LineAlignment = StringAlignment.Near;
                     stringFormat.Alignment = StringAlignment.Center;
                     break;
 
-                case ContentAlignment.TopLeft:
+                case System.Drawing.ContentAlignment.TopLeft:
                     stringFormat.LineAlignment = StringAlignment.Near;
                     stringFormat.Alignment = StringAlignment.Near;
                     break;
 
-                case ContentAlignment.TopRight:
+                case System.Drawing.ContentAlignment.TopRight:
                     stringFormat.LineAlignment = StringAlignment.Near;
                     stringFormat.Alignment = StringAlignment.Far;
                     break;
 
-                case ContentAlignment.BottomCenter:
+                case System.Drawing.ContentAlignment.BottomCenter:
                     stringFormat.LineAlignment = StringAlignment.Far;
                     stringFormat.Alignment = StringAlignment.Center;
                     break;
 
-                case ContentAlignment.BottomLeft:
+                case System.Drawing.ContentAlignment.BottomLeft:
                     stringFormat.LineAlignment = StringAlignment.Far;
                     stringFormat.Alignment = StringAlignment.Near;
                     break;
 
-                case ContentAlignment.BottomRight:
+                case System.Drawing.ContentAlignment.BottomRight:
                     stringFormat.LineAlignment = StringAlignment.Far;
                     stringFormat.Alignment = StringAlignment.Far;
                     break;

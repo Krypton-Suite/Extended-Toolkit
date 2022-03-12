@@ -6,9 +6,6 @@
  */
 #endregion
 
-using System;
-using System.Windows.Forms;
-
 namespace Krypton.Toolkit.Suite.Extended.Navigator
 {
     internal class SubClass : System.Windows.Forms.NativeWindow

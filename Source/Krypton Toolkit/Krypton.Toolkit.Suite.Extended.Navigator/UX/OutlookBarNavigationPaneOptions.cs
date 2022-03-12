@@ -6,8 +6,6 @@
  */
 #endregion
 
-using System;
-
 using Microsoft.VisualBasic;
 
 namespace Krypton.Toolkit.Suite.Extended.Navigator

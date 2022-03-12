@@ -6,10 +6,6 @@
  */
 #endregion
 
-using System.ComponentModel;
-using System.Drawing;
-using System.Windows.Forms;
-
 namespace Krypton.Toolkit.Suite.Extended.Navigator
 {
     [ToolboxBitmap(typeof(Button)), ToolboxItem(false)]
@@ -26,7 +22,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             this.GradientBottom = GradientEndColour;
             this.Size = new System.Drawing.Size(23, 23);
             this.ForeColor = TextColour;
-            this.TextAlign = ContentAlignment.MiddleCenter;
+            this.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.Font = new System.Drawing.Font("Marlett", 11.25f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (byte)2);
 
         }
@@ -35,7 +31,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         {
             this.AutoSize = false;
             this.Size = new System.Drawing.Size(23, 23);
-            this.TextAlign = ContentAlignment.MiddleCenter;
+            this.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.Font = new System.Drawing.Font("Marlett", 11.25f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (byte)2);
 
         }
