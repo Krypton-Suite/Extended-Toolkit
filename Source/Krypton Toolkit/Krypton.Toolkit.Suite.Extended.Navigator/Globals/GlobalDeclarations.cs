@@ -17,4 +17,6 @@ global using System.Windows.Forms;
 global using System.Windows.Forms.Design;
 global using System.Windows.Forms.VisualStyles;
 
+global using Microsoft.VisualBasic;
+
 global using Krypton.Navigator;

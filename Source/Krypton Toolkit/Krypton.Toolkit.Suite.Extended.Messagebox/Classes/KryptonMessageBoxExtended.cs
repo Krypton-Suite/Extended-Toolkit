@@ -8,6 +8,7 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Messagebox
 {
+    /// <summary>Displays a message box that can contain text, buttons, and symbols that inform and instruct the user.</summary>
     [DesignerCategory(@"code"), ToolboxItem(false)]
     public static class KryptonMessageBoxExtended
     {
