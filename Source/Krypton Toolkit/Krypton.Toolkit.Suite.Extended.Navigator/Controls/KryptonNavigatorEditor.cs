@@ -10,6 +10,15 @@
 
         #endregion
 
+        #region Constructor
+
+        public KryptonNavigatorEditor()
+        {
+            
+        }
+
+        #endregion
+
         #region Methods
 
         public KryptonRichTextBox CreateKryptonRichTextBox()

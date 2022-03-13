@@ -23,9 +23,23 @@
 
         #region Extended Fields
 
+        private readonly bool _showOptionalCheckBox;
+
+        private readonly bool _showOptionalLinkLabel;
+
+        private readonly bool _isOptionalCheckBoxChecked;
+
+        private readonly CheckState _optionalCheckBoxCheckState;
+
         private readonly Font _messageBoxTypeface;
 
         private readonly Image _customImageIcon;
+
+        private readonly string _optionalCheckBoxText;
+
+        private readonly string _optionalLinkLabelText;
+
+        private readonly string _optionalLinkLabelDestination;
 
         #endregion
 
@@ -48,9 +62,15 @@
         /// <param name="messageBoxTypeface">The message box typeface.</param>
         /// <param name="customImageIcon">The custom image icon.</param>
         internal KryptonMessageBoxExtendedForm(IWin32Window showOwner, string text, string caption,
-            ExtendedMessageBoxButtons buttons, ExtendedKryptonMessageBoxIcon icon,
-            MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
-            HelpInfo helpInfo, bool? showCtrlCopy, Font messageBoxTypeface, Image customImageIcon)
+                                               ExtendedMessageBoxButtons buttons,
+                                               ExtendedKryptonMessageBoxIcon icon,
+                                               MessageBoxDefaultButton defaultButton, 
+                                               MessageBoxOptions options,
+                                               HelpInfo helpInfo, bool? showCtrlCopy, 
+                                               Font messageBoxTypeface, Image customImageIcon,
+                                               bool? showOptionalCheckBox, bool? optionalCheckBoxChecked,
+                                               CheckState? optionalCheckBoxCheckState,
+                                               string optionalCheckBoxText)
         {
             // Store incoming values
             _text = text;
@@ -65,6 +85,14 @@
 
             _messageBoxTypeface = messageBoxTypeface ?? new Font(@"Segoe UI", 8.25F);
 
+            _showOptionalCheckBox = showOptionalCheckBox ?? false;
+
+            _isOptionalCheckBoxChecked = optionalCheckBoxChecked ?? false;
+
+            _optionalCheckBoxCheckState = optionalCheckBoxCheckState ?? CheckState.Unchecked;
+
+            _optionalCheckBoxText = optionalCheckBoxText;
+
             // Create the form contents
             InitializeComponent();
 
@@ -78,10 +106,14 @@
             UpdateHelp();
             UpdateTextExtra(showCtrlCopy);
 
+            SetupCheckBox();
+
             // Finally calculate and set form sizing
             UpdateSizing(showOwner);
         }
         #endregion Identity
+
+        #region Methods
 
         private void UpdateText()
         {
@@ -137,6 +169,7 @@
                     SystemSounds.Question.Play();
                     break;
                 case ExtendedKryptonMessageBoxIcon.EXCLAMATION:
+                    // _messageIcon.Image = Properties.Resources.e
                 case ExtendedKryptonMessageBoxIcon.INFORMATION:
                     _messageIcon.Image = Properties.Resources.Information;
                     SystemSounds.Asterisk.Play();
@@ -365,8 +398,16 @@
             Size buttonsSizing = UpdateButtonsSizing();
 
             // Size of window is calculated from the client area
-            ClientSize = new Size(Math.Max(messageSizing.Width, buttonsSizing.Width),
-                                  messageSizing.Height + buttonsSizing.Height);
+            if (_showOptionalCheckBox)
+            {
+                ClientSize = new Size(Math.Max(messageSizing.Width, buttonsSizing.Width), // We assume that the '_panelCheckBox' width is the same as the _panelButtons width
+                    messageSizing.Height + buttonsSizing.Height + _panelCheckBox.Height);
+            }
+            else
+            {
+                ClientSize = new Size(Math.Max(messageSizing.Width, buttonsSizing.Width),
+                    messageSizing.Height + buttonsSizing.Height); 
+            }
         }
 
         private Size UpdateMessageSizing(IWin32Window showOwner)
@@ -400,7 +441,7 @@
 
             return new Size(textSize.Width + _messageIcon.Width + _messageIcon.Margin.Left + _messageIcon.Margin.Right +
                             _messageText.Margin.Left + _messageText.Margin.Right,
-                            Math.Max(_messageIcon.Height + 10, textSize.Height));
+                Math.Max(_messageIcon.Height + 10, textSize.Height));
         }
 
         private Size UpdateButtonsSizing()
@@ -480,13 +521,13 @@
             // Escape key kills the dialog if we allow it to be closed
             if (ControlBox
                 && (e.KeyCode == Keys.Escape)
-                )
+               )
             {
                 Close();
             }
             else if (!e.Control
                      || (e.KeyCode != Keys.C)
-                     )
+                    )
             {
                 return;
             }
@@ -524,6 +565,34 @@
             Clipboard.SetText(sb.ToString(), TextDataFormat.UnicodeText);
         }
 
+        /// <summary>Setups the CheckBox.</summary>
+        private void SetupCheckBox()
+        {
+            _panelCheckBox.Visible = _showOptionalCheckBox;
+
+            _optionalCheckBox.StateCommon.ShortText.Font = _messageBoxTypeface;
+
+            _optionalCheckBox.StateCommon.LongText.Font = _messageBoxTypeface;
+
+            _optionalCheckBox.Text = _optionalCheckBoxText;
+
+            _optionalCheckBox.CheckState = _optionalCheckBoxCheckState;
+
+            _optionalCheckBox.Checked = _isOptionalCheckBoxChecked;
+        }
+
+        /// <summary>Gets the optional CheckBox checked state.</summary>
+        /// <returns>
+        ///   <br />
+        /// </returns>
+        internal bool GetOptionalCheckBoxChecked() => _optionalCheckBox.Checked;
+
+        /// <summary>Gets the state of the optional CheckBox check state.</summary>
+        /// <returns>
+        ///   <br />
+        /// </returns>
+        internal CheckState GetOptionalCheckBoxCheckState() => _optionalCheckBox.CheckState;
+        #endregion
     }
 
     #region Types
@@ -600,6 +669,8 @@
 
     #endregion
 
+    #region Class: MessageButton
+
     [ToolboxItem(false)]
     [DesignTimeVisible(false)]
     internal class MessageButton : KryptonButton
@@ -654,4 +725,6 @@
         }
         #endregion
     }
+
+    #endregion
 }
