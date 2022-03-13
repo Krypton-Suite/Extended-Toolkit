@@ -48,7 +48,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             {
                 if (!allowedCharacters.Contains(character))
                 {
-                    Messagebox.KryptonMessageBoxManager manager = new Messagebox.KryptonMessageBoxManager()
+                    Messagebox.KryptonMessageBoxManagerOld manager = new Messagebox.KryptonMessageBoxManagerOld()
                     {
                         MessageBoxCaption = "Illegal Character",
                         MessageBoxContentText = $"'{ character }' is not a hexadecimal character",

@@ -8,10 +8,12 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Messagebox
 {
-    /// <summary>
-    ///   <br />
-    /// </summary>
-    public class ShowMessageBoxEventArgs : EventArgs
+    /// <summary>Allows the creation of a <see cref="KryptonMessageBoxExtended"/> through the designer.</summary>
+    /// <seealso cref="Component" />
+    [ToolboxBitmap(typeof(KryptonMessageBoxManagerOld), "ToolboxBitmaps.KryptonMessageBox.bmp"),
+     DefaultEvent("ShowMessageBox"), DefaultProperty("MessageBoxContentText"),
+     Description("Allows the creation of a KryptonMessageBoxExtended through the designer.")] //, Designer(typeof(KryptonMessageBoxConfiguratorDesigner))]
+    public class KryptonMessageBoxManagerOld : Component
     {
         #region Variables
         private AnchorStyles _optionalCheckBoxAnchor;
@@ -284,202 +286,95 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         public KryptonForm ParentWindow { get => _parentWindow; set => _parentWindow = value; }
         #endregion
 
-        #region Constructors
-        /// <summary>Initializes a new instance of the <see cref="ShowMessageBoxEventArgs" /> class.</summary>
-        public ShowMessageBoxEventArgs()
+        #region Custom Event Setup
+        /// <summary>Shows a messagebox.</summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="ShowMessageBoxEventArgs" /> instance containing the event data.</param>
+        public delegate void ShowMessageBoxEvent(object sender, ShowMessageBoxEventArgs e);
+
+        /// <summary>Occurs when [show message box].</summary>
+        public event ShowMessageBoxEvent ShowMessageBox;
+
+        /// <summary>Called when [show message box].</summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="ShowMessageBoxEventArgs" /> instance containing the event data.</param>
+        protected virtual void OnShowMessageBox(object sender, ShowMessageBoxEventArgs e) => ShowMessageBox?.Invoke(sender, e);
+        #endregion
+
+        #region Constructor
+        /// <summary>Initializes a new instance of the <see cref="KryptonMessageBoxManagerOld" /> class.</summary>
+        public KryptonMessageBoxManagerOld()
         {
+            Fade = false;
 
-        }
+            ShowToolTips = false;
 
-        /// <summary>Initializes a new instance of the <see cref="ShowMessageBoxEventArgs" /> class.</summary>
-        /// <param name="owner">The owner.</param>
-        /// <param name="text">The text.</param>
-        /// <param name="caption">The caption.</param>
-        /// <param name="buttons">The buttons.</param>
-        /// <param name="customButtonOptions">The custom button options.</param>
-        /// <param name="icon">The icon.</param>
-        /// <param name="defaultButton">The default button.</param>
-        /// <param name="options">The options.</param>
-        /// <param name="helpPath">The help path.</param>
-        /// <param name="helpNavigator">The help navigator.</param>
-        /// <param name="helpParam">The help parameter.</param>
-        /// <param name="showCtrlCopy">if set to <c>true</c> [show control copy].</param>
-        /// <param name="messageboxTypeface">The messagebox typeface.</param>
-        /// <param name="showOptionalCheckBox">if set to <c>true</c> [show optional CheckBox].</param>
-        /// <param name="optionalCheckBoxText">The optional CheckBox text.</param>
-        /// <param name="isOptionalCheckBoxChecked">if set to <c>true</c> [is optional CheckBox checked].</param>
-        /// <param name="optionalCheckBoxAnchor">The optional CheckBox anchor.</param>
-        /// <param name="optionalCheckBoxLocation">The optional CheckBox location.</param>
-        /// <param name="customMessageBoxIcon">The custom message box icon.</param>
-        /// <param name="showCopyButton">if set to <c>true</c> [show copy button].</param>
-        /// <param name="copyButtonText">The copy button text.</param>
-        /// <param name="fade">if set to <c>true</c> [fade].</param>
-        /// <param name="fadeSleepTimer">The fade sleep timer.</param>
-        /// <param name="buttonOneCustomText">The button one custom text.</param>
-        /// <param name="buttonTwoCustomText">The button two custom text.</param>
-        /// <param name="buttonThreeCustomText">The button three custom text.</param>
-        /// <param name="buttonOneCustomDialogResult">The button one custom dialog result.</param>
-        /// <param name="buttonTwoCustomDialogResult">The button two custom dialog result.</param>
-        /// <param name="buttonThreeCustomDialogResult">The button three custom dialog result.</param>
-        /// <param name="cornerRadius">The corner radius.</param>
-        /// <param name="showToolTips">The show tool tips.</param>
-        /// <param name="useBlur">The use blur.</param>
-        /// <param name="useYesNoCancelButtonColour">The use yes no cancel button colour.</param>
-        /// <param name="blurRadius">The blur radius.</param>
-        /// <param name="contentMessageColour">The content message colour.</param>
-        /// <param name="buttonOneTextColour">The button one text colour.</param>
-        /// <param name="buttonTwoTextColour">The button two text colour.</param>
-        /// <param name="buttonThreeTextColour">The button three text colour.</param>
-        /// <param name="yesButtonColour">The yes button colour.</param>
-        /// <param name="noButtonColour">The no button colour.</param>
-        /// <param name="textColour">The text colour.</param>
-        /// <param name="yesNoButtonTextColour">The yes no button text colour.</param>
-        /// <param name="parentWindow">The parent window.</param>
-        public ShowMessageBoxEventArgs(IWin32Window owner, string text, string caption,
-                                       ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions customButtonOptions,
-                                       ExtendedKryptonMessageBoxIcon icon,
-                                       MessageBoxDefaultButton defaultButton,
-                                       MessageBoxOptions options, string helpPath,
-                                       HelpNavigator helpNavigator, object helpParam,
-                                       bool showCtrlCopy, Font messageboxTypeface, bool showOptionalCheckBox,
-                                       string optionalCheckBoxText, bool isOptionalCheckBoxChecked,
-                                       AnchorStyles optionalCheckBoxAnchor, Point optionalCheckBoxLocation,
-                                       Image customMessageBoxIcon, bool showCopyButton, string copyButtonText,
-                                       bool fade, int fadeSleepTimer, string buttonOneCustomText,
-                                       string buttonTwoCustomText, string buttonThreeCustomText,
-                                       DialogResult? buttonOneCustomDialogResult, DialogResult? buttonTwoCustomDialogResult,
-                                       DialogResult? buttonThreeCustomDialogResult, int? cornerRadius,
-                                       bool? showToolTips, bool? useBlur, bool? useYesNoCancelButtonColour,
-                                       int? blurRadius, Color? contentMessageColour, Color? buttonOneTextColour,
-                                       Color? buttonTwoTextColour, Color? buttonThreeTextColour,
-                                       Color? yesButtonColour, Color? noButtonColour, Color? textColour,
-                                       Color? yesNoButtonTextColour, KryptonForm parentWindow = null)
-        {
-            Owner = owner;
+            UseBlur = false;
 
-            MessageBoxContentText = text;
+            BlurRadius = 0;
 
-            MessageBoxCaption = caption;
+            CornerRadius = -1;
 
-            MessageBoxButtons = buttons;
+            FadeSleepTimer = 50;
 
-            CustomButtonOptions = customButtonOptions;
+            OptionalCheckBoxAnchor = AnchorStyles.Left;
 
-            MessageBoxIcon = icon;
+            OptionalCheckBoxCheckState = CheckState.Unchecked;
 
-            MessageBoxDefaultButton = defaultButton;
+            OptionalCheckBoxLocation = new Point(12, 0);
 
-            MessageBoxOptions = options;
+            MessageBoxTypeface = new Font("Microsoft Sans Serif", 8.25f);
 
-            HelpPath = helpPath;
+            HelpNavigator = HelpNavigator.AssociateIndex;
 
-            HelpNavigator = helpNavigator;
+            MessageBoxIcon = ExtendedKryptonMessageBoxIcon.NONE;
 
-            HelpParam = helpParam;
-
-            ShowCtrlCopy = showCtrlCopy;
-
-            MessageBoxTypeface = messageboxTypeface;
-
-            ShowOptionalCheckBox = showOptionalCheckBox;
-
-            OptionalCheckBoxText = optionalCheckBoxText;
-
-            IsOptionalCheckBoxChecked = isOptionalCheckBoxChecked;
-
-            OptionalCheckBoxAnchor = optionalCheckBoxAnchor;
-
-            OptionalCheckBoxLocation = optionalCheckBoxLocation;
-
-            CustomMessageBoxIcon = customMessageBoxIcon;
-
-            //ShowCopyButton = showCopyButton;
-
-            //CopyButtonText = copyButtonText;
-
-            Fade = fade;
-
-            FadeSleepTimer = fadeSleepTimer;
-
-            ButtonOneCustomText = buttonOneCustomText;
-
-            ButtonTwoCustomText = buttonTwoCustomText;
-
-            ButtonThreeCustomText = buttonThreeCustomText;
-
-            CustomButtonOneResult = buttonOneCustomDialogResult ?? DialogResult.None;
-
-            CustomButtonTwoResult = buttonTwoCustomDialogResult ?? DialogResult.None;
-
-            CustomButtonThreeResult = buttonThreeCustomDialogResult ?? DialogResult.None;
-
-            CornerRadius = cornerRadius ?? -1;
-
-            ShowToolTips = showToolTips ?? false;
-
-            UseBlur = useBlur ?? false;
-
-            UseYesNoCancelButtonColour = useYesNoCancelButtonColour ?? false;
-
-            BlurRadius = blurRadius ?? 0;
-
-            ContentMessageColour = contentMessageColour ?? Color.Empty;
-
-            ButtonOneTextColour = buttonOneTextColour ?? Color.Empty;
-
-            ButtonTwoTextColour = buttonTwoTextColour ?? Color.Empty;
-
-            ButtonThreeTextColour = buttonThreeTextColour ?? Color.Empty;
-
-            YesButtonColour = yesButtonColour ?? Color.Empty;
-
-            NoButtonColour = noButtonColour ?? Color.Empty;
-
-            TextColour = textColour ?? Color.Empty;
-
-            YesNoButtonTextColour = yesNoButtonTextColour ?? Color.Empty;
-
-            ParentWindow = parentWindow ?? null;
+            ParentWindow = null;
         }
         #endregion
 
         #region Methods
-        /*
-        /// <summary>Shows the message box.</summary>
-        public void ShowMessageBox() => InternalKryptonMessageBoxExtended.Show(_owner, _messageBoxContentText, _messageBoxCaption, _buttons,
-                                                                               _customButtonOptions, _messageBoxIcon, _defaultButton,
-                                                                               _options, _helpPath, _helpNavigator, _helpParam, _showCtrlCopy,
-                                                                               _messageBoxTypeface, _showOptionalCheckBox, _optionalCheckBoxText,
-                                                                               _isOptionalCheckBoxChecked, _optionalCheckBoxCheckState,
-                                                                               _optionalCheckBoxAnchor, _optionalCheckBoxLocation, _customMessageBoxIcon,
-                                                                               _showCopyButton, _copyButtonText, _fade, _fadeSleepTimer,
-                                                                               _messageBoxButtonOneCustomText, _messageBoxButtonTwoCustomText,
-                                                                               _messageBoxButtonThreeCustomText, _customButtonOneResult,
-                                                                               _customButtonTwoResult, _customButtonThreeResult, _cornerRadius,
-                                                                               _showToolTips, _useBlur, _useYesNoCancelButtonColour,
-                                                                               _blurRadius, _contentMessageColour, _buttonOneTextColour,
-                                                                               _buttonTwoTextColour, _buttonThreeTextColour, _yesButtonColour,
-                                                                               _noButtonColour, _textColour, _yesNoButtonTextColour, _parentWindow);
-
-        /// <summary>Gets the message box dialog result.</summary>
-        /// <returns>The message box dialog result.</returns>
-        public DialogResult GetMessageBoxResult()
+        /// <summary>Displays the krypton message box.</summary>
+        /// <returns>The users' dialog result</returns>
+        /*public DialogResult DisplayKryptonMessageBox()
         {
             DialogResult result = InternalKryptonMessageBoxExtended.Show(_owner, _messageBoxContentText, _messageBoxCaption, _buttons,
-                                                                               _customButtonOptions, _messageBoxIcon, _defaultButton,
-                                                                               _options, _helpPath, _helpNavigator, _helpParam, _showCtrlCopy,
-                                                                               _messageBoxTypeface, _showOptionalCheckBox, _optionalCheckBoxText,
-                                                                               _isOptionalCheckBoxChecked, _optionalCheckBoxCheckState,
-                                                                               _optionalCheckBoxAnchor, _optionalCheckBoxLocation, _customMessageBoxIcon,
-                                                                               _showCopyButton, _copyButtonText, _fade, _fadeSleepTimer,
-                                                                               _messageBoxButtonOneCustomText, _messageBoxButtonTwoCustomText,
-                                                                               _messageBoxButtonThreeCustomText, _customButtonOneResult,
-                                                                               _customButtonTwoResult, _customButtonThreeResult, _cornerRadius,
-                                                                               _showToolTips, _useBlur, _useYesNoCancelButtonColour,
-                                                                               _blurRadius, _contentMessageColour, _buttonOneTextColour,
-                                                                               _buttonTwoTextColour, _buttonThreeTextColour, _yesButtonColour,
-                                                                               _noButtonColour, _textColour, _yesNoButtonTextColour, _parentWindow);
+                                                                         _customButtonOptions, _messageBoxIcon, _defaultButton,
+                                                                         _options, _helpPath, _helpNavigator, _helpParam, _showCtrlCopy,
+                                                                         _messageBoxTypeface, _showOptionalCheckBox, _optionalCheckBoxText,
+                                                                         _isOptionalCheckBoxChecked, _optionalCheckBoxCheckState,
+                                                                         _optionalCheckBoxAnchor, _optionalCheckBoxLocation, _customMessageBoxIcon,
+                                                                         _showCopyButton, _copyButtonText, _fade, _fadeSleepTimer,
+                                                                         _messageBoxButtonOneCustomText, _messageBoxButtonTwoCustomText,
+                                                                         _messageBoxButtonThreeCustomText, _customButtonOneResult,
+                                                                         _customButtonTwoResult, _customButtonThreeResult, _cornerRadius,
+                                                                         _showToolTips, _useBlur, _useYesNoCancelButtonColour,
+                                                                         _blurRadius, _contentMessageColour, _buttonOneTextColour,
+                                                                         _buttonTwoTextColour, _buttonThreeTextColour, _yesButtonColour,
+                                                                         _noButtonColour, _textColour, _yesNoButtonTextColour, _parentWindow);
+
             return result;
+        }
+
+        /// <summary>Displays the message box.</summary>
+        public void DisplayMessageBox()
+        {
+            ShowMessageBoxEventArgs e = new(_owner, _messageBoxContentText, _messageBoxCaption, _buttons,
+                                                                    _customButtonOptions, _messageBoxIcon, _defaultButton,
+                                                                    _options, _helpPath, _helpNavigator, _helpParam,
+                                                                    _showCtrlCopy, _messageBoxTypeface, _showOptionalCheckBox,
+                                                                    _optionalCheckBoxText, _isOptionalCheckBoxChecked,
+                                                                    _optionalCheckBoxAnchor, _optionalCheckBoxLocation,
+                                                                    _customMessageBoxIcon, _showCopyButton, _copyButtonText,
+                                                                    _fade, _fadeSleepTimer, _messageBoxButtonOneCustomText,
+                                                                    _messageBoxButtonTwoCustomText, _messageBoxButtonThreeCustomText,
+                                                                    _customButtonOneResult, _customButtonTwoResult, _customButtonThreeResult,
+                                                                    _cornerRadius, _showToolTips, _useBlur, _useYesNoCancelButtonColour,
+                                                                    _blurRadius, _contentMessageColour, _buttonOneTextColour,
+                                                                    _buttonTwoTextColour, _buttonThreeTextColour, _yesButtonColour,
+                                                                    _noButtonColour, _textColour, _yesNoButtonTextColour, _parentWindow);
+
+            e.ShowMessageBox();
         }*/
         #endregion
     }

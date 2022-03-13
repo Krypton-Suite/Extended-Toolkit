@@ -8,8 +8,8 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Messagebox
 {
-    [DesignerCategory("code"), ToolboxItem(false)]
-    public partial class KryptonMessageBoxExtended
+    [DesignerCategory(@"code"), ToolboxItem(false)]
+    public static class KryptonMessageBoxExtended
     {
         #region Public
 
@@ -31,7 +31,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <returns>
         ///   <br />
         /// </returns>
-        public DialogResult Show(string text, string caption = @"",
+        public static DialogResult Show(string text, string caption = @"",
                                  ExtendedMessageBoxButtons buttons = ExtendedMessageBoxButtons.OK,
                                  ExtendedKryptonMessageBoxIcon icon = ExtendedKryptonMessageBoxIcon.NONE,
                                  MessageBoxDefaultButton defaultButton = MessageBoxDefaultButton.Button1,
@@ -63,7 +63,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <returns>
         ///   <br />
         /// </returns>
-        public DialogResult Show(string text, string caption,
+        public static DialogResult Show(string text, string caption,
             ExtendedMessageBoxButtons buttons,
             ExtendedKryptonMessageBoxIcon icon,
             MessageBoxDefaultButton defaultButton = MessageBoxDefaultButton.Button1,
@@ -92,7 +92,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <returns>
         ///   <br />
         /// </returns>
-        public DialogResult Show(IWin32Window owner, string text, string caption = @"",
+        public static DialogResult Show(IWin32Window owner, string text, string caption = @"",
             ExtendedMessageBoxButtons buttons = ExtendedMessageBoxButtons.OK,
             ExtendedKryptonMessageBoxIcon icon = ExtendedKryptonMessageBoxIcon.NONE,
             MessageBoxDefaultButton defaultButton = MessageBoxDefaultButton.Button1,
@@ -121,7 +121,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <returns>
         ///   <br />
         /// </returns>
-        public DialogResult Show(IWin32Window owner, string text, string caption,
+        public static DialogResult Show(IWin32Window owner, string text, string caption,
             ExtendedMessageBoxButtons buttons,
             ExtendedKryptonMessageBoxIcon icon,
             MessageBoxDefaultButton defaultButton = MessageBoxDefaultButton.Button1,
@@ -155,7 +155,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <returns>
         ///   <br />
         /// </returns>
-        public DialogResult Show(string text, string caption = @"",
+        public static DialogResult Show(string text, string caption = @"",
                                  ExtendedMessageBoxButtons buttons = ExtendedMessageBoxButtons.OK,
                                  ExtendedKryptonMessageBoxIcon icon = ExtendedKryptonMessageBoxIcon.NONE,
                                  MessageBoxDefaultButton defaultButton = MessageBoxDefaultButton.Button1,
@@ -198,7 +198,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <returns>
         ///   <br />
         /// </returns>
-        public DialogResult Show(IWin32Window owner, string text, string caption = @"",
+        public static DialogResult Show(IWin32Window owner, string text, string caption = @"",
                                  ExtendedMessageBoxButtons buttons = ExtendedMessageBoxButtons.OK,
                                  ExtendedKryptonMessageBoxIcon icon = ExtendedKryptonMessageBoxIcon.NONE,
                                  MessageBoxDefaultButton defaultButton = MessageBoxDefaultButton.Button1,
@@ -238,7 +238,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <returns>
         ///   <br />
         /// </returns>
-        internal DialogResult InternalShow(IWin32Window owner, string text, string caption,
+        internal static DialogResult InternalShow(IWin32Window owner, string text, string caption,
                                            ExtendedMessageBoxButtons buttons,
                                            ExtendedKryptonMessageBoxIcon icon,
                                            MessageBoxDefaultButton defaultButton,
