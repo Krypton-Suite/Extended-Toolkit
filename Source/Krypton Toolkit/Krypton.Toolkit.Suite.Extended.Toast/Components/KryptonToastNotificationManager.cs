@@ -3,7 +3,7 @@
     public class KryptonToastNotificationManager : Component
     {
         #region Variables
-        private bool _useUserResponse, _useProgressBar;
+        private bool _useUserResponse, _useProgressBar, _usePanelColourInTextArea;
 
         private Color _userResponsePromptColour;
 
@@ -34,6 +34,8 @@
         public bool UseUserResponsePrompt { get => _useUserResponse; set => _useUserResponse = value; }
 
         public bool UseProgressBar { get => _useProgressBar; set => _useProgressBar = value; }
+
+        public bool UsePanelColourInTextArea { get => _usePanelColourInTextArea; set => _usePanelColourInTextArea = value; }
 
         public Color UserResponsePromptColour { get => _userResponsePromptColour; set => _userResponsePromptColour = value; }
 
@@ -73,7 +75,8 @@
         #endregion
 
         #region Constructor
-        public KryptonToastNotificationManager(bool useUserResponse, string title, string contentText, Color? userResponsePromptColour = null,
+        public KryptonToastNotificationManager(bool useUserResponse, string title, string contentText,
+                                               bool? usePanelColourInTextArea, Color? userResponsePromptColour = null,
                                                PaletteRelativeAlign userResponsePromptAlignHorizontal = PaletteRelativeAlign.Near,
                                                PaletteRelativeAlign userResponsePromptAlignVertical = PaletteRelativeAlign.Near,
                                                Font userResponsePromptFont = null, IconType iconType = IconType.NONE,
@@ -89,6 +92,8 @@
             Title = title;
 
             ContentText = contentText;
+
+            UsePanelColourInTextArea = usePanelColourInTextArea ?? false;
 
             UserResponsePromptColour = userResponsePromptColour ?? Color.Gray;
 
@@ -148,9 +153,10 @@
                         }
                         else if (_contentAreaType == ContentAreaType.RICHTEXTBOX)
                         {
-                            BasicNotificationLTR notification = new BasicNotificationLTR(IconType, Title, ContentText,
-                                Seconds, SoundPath,
-                                CustomImage, DismissText);
+                            BasicNotificationLTR notification = new BasicNotificationLTR(IconType, Title, ContentText, 
+                                                                                         UsePanelColourInTextArea,
+                                                                                         Seconds, SoundPath,
+                                                                                         CustomImage, DismissText);
 
                             notification.Show();
                         }
@@ -177,8 +183,10 @@
                         else if (_contentAreaType == ContentAreaType.RICHTEXTBOX)
                         {
                             BasicNotificationWithProgressBarLTR notification = new BasicNotificationWithProgressBarLTR(
-                                IconType, Title, ContentText, Seconds, SoundStream,
-                                CustomImage, DismissText);
+                                                                                                                       IconType, Title, ContentText,
+                                                                                                                       UsePanelColourInTextArea,
+                                                                                                                       Seconds, SoundStream,
+                                                                                                                       CustomImage, DismissText);
 
                             notification.Show();
                         }
