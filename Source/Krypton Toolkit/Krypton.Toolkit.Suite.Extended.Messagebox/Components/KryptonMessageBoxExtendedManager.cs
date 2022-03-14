@@ -118,12 +118,50 @@
 
         /// <summary>Gets or sets the owner of the modal dialog box.</summary>
         /// <value>The owner of the modal dialog box.</value>
-        [DefaultValue(0), Description(@"Owner of the modal dialog box.")]
+        [DefaultValue(null), Description(@"Owner of the modal dialog box.")]
         public IWin32Window Owner { get => _owner; set => _owner = value; }
 
         #endregion
 
-        #region Constructor
+        #region Constructors
+
+        /// <summary>Initializes a new instance of the <see cref="KryptonMessageBoxManager" /> class.</summary>
+        public KryptonMessageBoxManager()
+        {
+            _showCtrlCopy = false;
+
+            _showOptionalCheckBox = false;
+
+            _isOptionalCheckBoxChecked = false;
+
+            _optionalCheckBoxCheckState = CheckState.Unchecked;
+
+            _buttons = ExtendedMessageBoxButtons.OK;
+
+            _icon = ExtendedKryptonMessageBoxIcon.NONE;
+
+            _defaultButton = MessageBoxDefaultButton.Button1;
+
+            _options = 0;
+
+            _messageBoxTypeface = new Font(@"Segoe UI", 8.25F);
+
+            _customImageIcon = null;
+
+            _text = @"";
+
+            _captionText = @"";
+
+            _helpFilePath = @"";
+
+            _optionalCheckBoxText = @"";
+
+            _parameters = null;
+
+            _helpNavigator = 0;
+
+            _owner = null;
+        }
 
         /// <summary>Initializes a new instance of the <see cref="KryptonMessageBoxManager" /> class.</summary>
         /// <param name="owner">The owner.</param>
