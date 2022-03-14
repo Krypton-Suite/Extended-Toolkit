@@ -292,7 +292,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                         }
                         else
                         {
-                            Messagebox.KryptonMessageBoxManager manager = new Messagebox.KryptonMessageBoxManager()
+                            Messagebox.KryptonMessageBoxManagerOld manager = new Messagebox.KryptonMessageBoxManagerOld()
                             {
                                 MessageBoxCaption = "Load Palette",
                                 MessageBoxContentText = "Sorry, unable to open palette, the file format is not supported or is not recognized.",
@@ -344,7 +344,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                 }
                 else
                 {
-                    Messagebox.KryptonMessageBoxManager manager = new Messagebox.KryptonMessageBoxManager()
+                    Messagebox.KryptonMessageBoxManagerOld manager = new Messagebox.KryptonMessageBoxManagerOld()
                     {
                         MessageBoxCaption = "Save Palette",
                         MessageBoxContentText = "Sorry, unable to save palette, the file format is not supported or is not recognised.",

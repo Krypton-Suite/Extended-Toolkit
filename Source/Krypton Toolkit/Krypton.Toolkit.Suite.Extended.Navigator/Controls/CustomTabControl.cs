@@ -6,15 +6,7 @@
  */
 #endregion
 
-using System;
-using System.ComponentModel;
-using System.ComponentModel.Design;
-using System.Drawing;
-using System.Drawing.Design;
-using System.Drawing.Drawing2D;
-using System.Runtime.InteropServices;
 using System.Security.Permissions;
-using System.Windows.Forms;
 
 using Krypton.Toolkit.Suite.Extended.Drawing;
 

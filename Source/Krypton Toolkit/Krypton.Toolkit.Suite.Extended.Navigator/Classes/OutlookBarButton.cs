@@ -6,10 +6,6 @@
  */
 #endregion
 
-using System;
-using System.ComponentModel;
-using System.Drawing;
-
 namespace Krypton.Toolkit.Suite.Extended.Navigator
 {
     [DesignTimeVisible(false), DefaultProperty("Text")]
