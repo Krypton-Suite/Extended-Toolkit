@@ -3,7 +3,7 @@
     public class KryptonToastNotificationManager : Component
     {
         #region Variables
-        private bool _useUserResponse, _useProgressBar, _usePanelColourInTextArea;
+        private bool _useUserResponse, _useProgressBar, _usePanelColourInTextArea, _useNativeBackColourInUserResponseArea;
 
         private Color _userResponsePromptColour;
 
@@ -39,6 +39,9 @@
 
         [DefaultValue(false), Description(@"")]
         public bool UsePanelColourInTextArea { get => _usePanelColourInTextArea; set => _usePanelColourInTextArea = value; }
+
+        [DefaultValue(false), Description(@"")]
+        public bool UseNativeBackColourInUserResponseArea { get => _useNativeBackColourInUserResponseArea; set => _useNativeBackColourInUserResponseArea = value; }
 
         [DefaultValue(typeof(Color), "Color.Gray"), Description(@"")]
         public Color UserResponsePromptColour { get => _userResponsePromptColour; set => _userResponsePromptColour = value; }
@@ -103,6 +106,8 @@
 
             UsePanelColourInTextArea = false;
 
+            UseNativeBackColourInUserResponseArea = false;
+
             UserResponsePromptColour = Color.Gray;
 
             UserResponsePromptAlignHorizontal = PaletteRelativeAlign.Center;
@@ -137,7 +142,8 @@
         }
 
         public KryptonToastNotificationManager(bool useUserResponse, string title, string contentText,
-                                               bool? usePanelColourInTextArea, Color? userResponsePromptColour = null,
+                                               bool? usePanelColourInTextArea, bool? useNativeBackColourInUserResponseArea,
+                                               Color? userResponsePromptColour = null,
                                                PaletteRelativeAlign userResponsePromptAlignHorizontal = PaletteRelativeAlign.Near,
                                                PaletteRelativeAlign userResponsePromptAlignVertical = PaletteRelativeAlign.Near,
                                                Font userResponsePromptFont = null, IconType iconType = IconType.NONE,
@@ -155,6 +161,8 @@
             ContentText = contentText;
 
             UsePanelColourInTextArea = usePanelColourInTextArea ?? false;
+
+            UseNativeBackColourInUserResponseArea = useNativeBackColourInUserResponseArea ?? false;
 
             UserResponsePromptColour = userResponsePromptColour ?? Color.Gray;
 
@@ -279,7 +287,9 @@
                         }
                         else if (_contentAreaType == ContentAreaType.RICHTEXTBOX)
                         {
-                            BasicNotificationWithUserResponseLTR notification = new BasicNotificationWithUserResponseLTR(IconType, Title, ContentText, Seconds,
+                            BasicNotificationWithUserResponseLTR notification = new BasicNotificationWithUserResponseLTR(IconType, Title, ContentText,
+                                                                                                                         UsePanelColourInTextArea, UseNativeBackColourInUserResponseArea,
+                                                                                                                         Seconds,
                                                                                                                          SoundPath, CustomImage,
                                                                                                                          DismissText, UserResponsePromptText, 
                                                                                                                          UserResponsePromptColour,
