@@ -1,6 +1,5 @@
 ﻿namespace Krypton.Toolkit.Suite.Extended.Toast
 {
-    /*internal*/
     public class BasicNotificationLTR : KryptonForm
     {
         #region Designer Code
@@ -318,9 +317,9 @@
                 {
                     krtbContent.InputControlStyle = InputControlStyle.PanelClient;
                 }
-                else if (krtbContent.InputControlStyle == InputControlStyle.PanelAlternative)
+                else if (kpnlContent.PanelBackStyle == PaletteBackStyle.PanelAlternate)
                 {
-                    krtbContent.InputControlStyle = InputControlStyle.PanelAlternative;
+                    krtbContent.InputControlStyle = InputControlStyle.PanelAlternate;
                 }
                 else
                 {
