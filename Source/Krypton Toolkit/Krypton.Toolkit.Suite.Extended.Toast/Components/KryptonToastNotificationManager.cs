@@ -160,9 +160,9 @@
 
             ContentText = contentText;
 
-            UsePanelColourInTextArea = usePanelColourInTextArea ?? false;
+            UsePanelColourInTextArea = usePanelColourInTextArea ?? usePanelColourInTextArea.GetValueOrDefault();
 
-            UseNativeBackColourInUserResponseArea = useNativeBackColourInUserResponseArea ?? false;
+            UseNativeBackColourInUserResponseArea = useNativeBackColourInUserResponseArea ?? useNativeBackColourInUserResponseArea.GetValueOrDefault();
 
             UserResponsePromptColour = userResponsePromptColour ?? Color.Gray;
 
@@ -170,7 +170,7 @@
 
             UserResponsePromptAlignVertical = userResponsePromptAlignVertical;
 
-            UserResponsePromptFont = userResponsePromptFont ?? new Font("Segoe UI", 8F);
+            UserResponsePromptFont = userResponsePromptFont ?? new Font("Segoe UI", 8.25F);
 
             IconType = iconType;
 
