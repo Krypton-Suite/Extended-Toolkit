@@ -5,7 +5,7 @@
         #region Design Code
         private KryptonPanel kryptonPanel1;
         private KryptonButton kbtnDismiss;
-        private KryptonPanel kryptonPanel2;
+        private KryptonPanel kpnlContent;
         private KryptonRichTextBox krtbContent;
         private KryptonWrapLabel kwlTitle;
         private PictureBox pbxToastImage;
@@ -17,15 +17,15 @@
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             this.kbtnDismiss = new Krypton.Toolkit.KryptonButton();
             this.kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
-            this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
+            this.kpnlContent = new Krypton.Toolkit.KryptonPanel();
             this.pbCountdown = new System.Windows.Forms.ProgressBar();
             this.krtbContent = new Krypton.Toolkit.KryptonRichTextBox();
             this.kwlTitle = new Krypton.Toolkit.KryptonWrapLabel();
             this.pbxToastImage = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
-            this.kryptonPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kpnlContent)).BeginInit();
+            this.kpnlContent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxToastImage)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,17 +59,17 @@
             this.kryptonBorderEdge1.Size = new System.Drawing.Size(609, 1);
             this.kryptonBorderEdge1.Text = "kryptonBorderEdge1";
             // 
-            // kryptonPanel2
+            // kpnlContent
             // 
-            this.kryptonPanel2.Controls.Add(this.pbCountdown);
-            this.kryptonPanel2.Controls.Add(this.krtbContent);
-            this.kryptonPanel2.Controls.Add(this.kwlTitle);
-            this.kryptonPanel2.Controls.Add(this.pbxToastImage);
-            this.kryptonPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonPanel2.Location = new System.Drawing.Point(0, 0);
-            this.kryptonPanel2.Name = "kryptonPanel2";
-            this.kryptonPanel2.Size = new System.Drawing.Size(609, 243);
-            this.kryptonPanel2.TabIndex = 3;
+            this.kpnlContent.Controls.Add(this.pbCountdown);
+            this.kpnlContent.Controls.Add(this.krtbContent);
+            this.kpnlContent.Controls.Add(this.kwlTitle);
+            this.kpnlContent.Controls.Add(this.pbxToastImage);
+            this.kpnlContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kpnlContent.Location = new System.Drawing.Point(0, 0);
+            this.kpnlContent.Name = "kpnlContent";
+            this.kpnlContent.Size = new System.Drawing.Size(609, 243);
+            this.kpnlContent.TabIndex = 3;
             // 
             // pbCountdown
             // 
@@ -121,7 +121,7 @@
             // 
             this.AcceptButton = this.kbtnDismiss;
             this.ClientSize = new System.Drawing.Size(609, 293);
-            this.Controls.Add(this.kryptonPanel2);
+            this.Controls.Add(this.kpnlContent);
             this.Controls.Add(this.kryptonPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
@@ -134,8 +134,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
-            this.kryptonPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kpnlContent)).EndInit();
+            this.kpnlContent.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbxToastImage)).EndInit();
             this.ResumeLayout(false);
 
@@ -143,6 +143,9 @@
         #endregion
 
         #region Variables
+
+        private bool _usePanelColourInTextArea;
+
         private IconType _iconType;
 
         private int _time, _seconds;
@@ -159,6 +162,8 @@
         #endregion
 
         #region Properties
+        public bool UsePanelColourInTextArea { get => _usePanelColourInTextArea; set => _usePanelColourInTextArea = value; }
+
         public IconType IconType { get => _iconType; set => _iconType = value; }
 
         public int Time { get => _time; set => _time = value; }
@@ -179,7 +184,17 @@
         #endregion
 
         #region Constructor
-        public BasicNotificationWithProgressBarLTR(IconType iconType, string title, string contentText, Image customImage = null, string dismissText = "&Dismiss")
+        /// <summary>Initializes a new instance of the <see cref="BasicNotificationWithProgressBarLTR" /> class.</summary>
+        /// <param name="iconType">Type of the icon.</param>
+        /// <param name="title">The title.</param>
+        /// <param name="contentText">The content text.</param>
+        /// <param name="usePanelColourInTextArea">The use panel colour in text area.</param>
+        /// <param name="customImage">The custom image.</param>
+        /// <param name="dismissText">The dismiss text.</param>
+        public BasicNotificationWithProgressBarLTR(IconType iconType, string title, string contentText,
+                                                   bool? usePanelColourInTextArea, 
+                                                   Image customImage = null, 
+                                                   string dismissText = "&Dismiss")
         {
             InitializeComponent();
 
@@ -188,6 +203,8 @@
             Title = title;
 
             ContentText = contentText;
+
+            UsePanelColourInTextArea = usePanelColourInTextArea ?? false;
 
             CustomImage = customImage;
 
@@ -200,19 +217,65 @@
             GotFocus += BasicNotificationWithProgressBarLTR_GotFocus;
 
             DoubleBuffered = true;
+
+            SetupTextArea();
         }
 
-        public BasicNotificationWithProgressBarLTR(IconType iconType, string title, string contentText, int seconds, Image customImage = null, string dismissText = "&Dismiss")
-            : this(iconType, title, contentText, customImage, dismissText) => Seconds = seconds;
+        /// <summary>Initializes a new instance of the <see cref="BasicNotificationWithProgressBarLTR" /> class.</summary>
+        /// <param name="iconType">Type of the icon.</param>
+        /// <param name="title">The title.</param>
+        /// <param name="contentText">The content text.</param>
+        /// <param name="usePanelColourInTextArea">The use panel colour in text area.</param>
+        /// <param name="seconds">The seconds.</param>
+        /// <param name="customImage">The custom image.</param>
+        /// <param name="dismissText">The dismiss text.</param>
+        public BasicNotificationWithProgressBarLTR(IconType iconType, string title, string contentText,
+                                                   bool? usePanelColourInTextArea, int seconds, 
+                                                   Image customImage = null, string dismissText = "&Dismiss")
+            : this(iconType, title, contentText, usePanelColourInTextArea, customImage, dismissText) => Seconds = seconds;
 
-        public BasicNotificationWithProgressBarLTR(IconType iconType, string title, string contentText, int seconds, string soundPath, Image customImage = null, string dismissText = "&Dismiss")
-            : this(iconType, title, contentText, seconds, customImage, dismissText) => SoundPath = soundPath;
+        /// <summary>Initializes a new instance of the <see cref="BasicNotificationWithProgressBarLTR" /> class.</summary>
+        /// <param name="iconType">Type of the icon.</param>
+        /// <param name="title">The title.</param>
+        /// <param name="contentText">The content text.</param>
+        /// <param name="usePanelColourInTextArea">The use panel colour in text area.</param>
+        /// <param name="seconds">The seconds.</param>
+        /// <param name="soundPath">The sound path.</param>
+        /// <param name="customImage">The custom image.</param>
+        /// <param name="dismissText">The dismiss text.</param>
+        public BasicNotificationWithProgressBarLTR(IconType iconType, string title, string contentText,
+                                                   bool? usePanelColourInTextArea, int seconds,
+                                                   string soundPath, Image customImage = null, 
+                                                   string dismissText = "&Dismiss")
+            : this(iconType, title, contentText, usePanelColourInTextArea, seconds, customImage, dismissText) => SoundPath = soundPath;
 
-        public BasicNotificationWithProgressBarLTR(IconType iconType, string title, string contentText, Stream soundStream, Image customImage = null, string dismissText = "&Dismiss")
-            : this(iconType, title, contentText, customImage, dismissText) => SoundStream = soundStream;
+        /// <summary>Initializes a new instance of the <see cref="BasicNotificationWithProgressBarLTR" /> class.</summary>
+        /// <param name="iconType">Type of the icon.</param>
+        /// <param name="title">The title.</param>
+        /// <param name="contentText">The content text.</param>
+        /// <param name="usePanelColourInTextArea">The use panel colour in text area.</param>
+        /// <param name="soundStream">The sound stream.</param>
+        /// <param name="customImage">The custom image.</param>
+        /// <param name="dismissText">The dismiss text.</param>
+        public BasicNotificationWithProgressBarLTR(IconType iconType, string title, string contentText,
+                                                   bool? usePanelColourInTextArea, Stream soundStream, 
+                                                   Image customImage = null, string dismissText = "&Dismiss")
+            : this(iconType, title, contentText, usePanelColourInTextArea, customImage, dismissText) => SoundStream = soundStream;
 
-        public BasicNotificationWithProgressBarLTR(IconType iconType, string title, string contentText, int seconds, Stream soundStream, Image customImage = null, string dismissText = "&Dismiss")
-            : this(iconType, title, contentText, seconds, customImage, dismissText) => SoundStream = soundStream;
+        /// <summary>Initializes a new instance of the <see cref="BasicNotificationWithProgressBarLTR" /> class.</summary>
+        /// <param name="iconType">Type of the icon.</param>
+        /// <param name="title">The title.</param>
+        /// <param name="contentText">The content text.</param>
+        /// <param name="usePanelColourInTextArea">The use panel colour in text area.</param>
+        /// <param name="seconds">The seconds.</param>
+        /// <param name="soundStream">The sound stream.</param>
+        /// <param name="customImage">The custom image.</param>
+        /// <param name="dismissText">The dismiss text.</param>
+        public BasicNotificationWithProgressBarLTR(IconType iconType, string title, string contentText,
+                                                   bool? usePanelColourInTextArea, int seconds, 
+                                                   Stream soundStream, Image customImage = null, 
+                                                   string dismissText = "&Dismiss")
+            : this(iconType, title, contentText, usePanelColourInTextArea, seconds, customImage, dismissText) => SoundStream = soundStream;
         #endregion
 
         #region Event Handlers
@@ -250,6 +313,29 @@
         #endregion
 
         #region Methods
+        private void SetupTextArea()
+        {
+            if (!_usePanelColourInTextArea)
+            {
+                krtbContent.InputControlStyle = InputControlStyle.Standalone;
+            }
+            else
+            {
+                if (kpnlContent.PanelBackStyle == PaletteBackStyle.PanelClient)
+                {
+                    krtbContent.InputControlStyle = InputControlStyle.PanelClient;
+                }
+                else if (kpnlContent.PanelBackStyle == PaletteBackStyle.PanelAlternate)
+                {
+                    krtbContent.InputControlStyle = InputControlStyle.PanelAlternate;
+                }
+                else
+                {
+                    krtbContent.InputControlStyle = InputControlStyle.Standalone;
+                }
+            }
+        }
+
         public new void Show()
         {
             int currentValue;
