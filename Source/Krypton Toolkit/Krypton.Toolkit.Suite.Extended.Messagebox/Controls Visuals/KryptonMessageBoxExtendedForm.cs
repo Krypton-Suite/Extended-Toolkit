@@ -401,7 +401,7 @@
             if (_showOptionalCheckBox)
             {
                 ClientSize = new Size(Math.Max(messageSizing.Width, buttonsSizing.Width), // We assume that the '_panelCheckBox' width is the same as the _panelButtons width
-                    messageSizing.Height + buttonsSizing.Height + _panelCheckBox.Height);
+                    messageSizing.Height + buttonsSizing.Height + _panelOptionalFooter.Height);
             }
             else
             {
@@ -568,7 +568,7 @@
         /// <summary>Setups the CheckBox.</summary>
         private void SetupCheckBox()
         {
-            _panelCheckBox.Visible = _showOptionalCheckBox;
+            _panelOptionalFooter.Visible = _showOptionalCheckBox;
 
             _optionalCheckBox.StateCommon.ShortText.Font = _messageBoxTypeface;
 
