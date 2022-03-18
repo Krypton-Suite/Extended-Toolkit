@@ -4,12 +4,13 @@
     /// <seealso cref="Component" />
     [ToolboxBitmap(typeof(KryptonMessageBoxManager), "ToolboxBitmaps.KryptonMessageBox.bmp"),
      DefaultEvent("ShowMessageBox"), DefaultProperty("MessageBoxContentText"),
-     Description("Allows the creation of a KryptonMessageBoxExtended through the designer.")] //, Designer(typeof(KryptonMessageBoxConfiguratorDesigner))]
+     Description("Allows the creation of a KryptonMessageBoxExtended through the designer.")] 
+    //, Designer(typeof(KryptonMessageBoxConfiguratorDesigner))]
     public class KryptonMessageBoxManager : Component
     {
         #region Fields
 
-        private bool _showCtrlCopy, _showOptionalCheckBox, _isOptionalCheckBoxChecked;
+        private bool _showCtrlCopy, _showOptionalCheckBox, _isOptionalCheckBoxChecked, _showHelpButton;
 
         private CheckState _optionalCheckBoxCheckState;
 
@@ -50,6 +51,9 @@
         /// <value><c>true</c> if this instance is optional CheckBox checked; otherwise, <c>false</c>.</value>
         [DefaultValue(false), Description(@"Sets whether the optional check box is checked or not.")]
         public bool IsOptionalCheckBoxChecked { get => _isOptionalCheckBoxChecked; set => _isOptionalCheckBoxChecked = value; }
+
+        [DefaultValue(false), Description(@"")]
+        public bool ShowHelpButton { get => _showHelpButton; set => _showHelpButton = value; }
 
         /// <summary>Gets or sets the state of the optional CheckBox check.</summary>
         /// <value>The state of the optional CheckBox check.</value>
@@ -134,6 +138,8 @@
 
             _isOptionalCheckBoxChecked = false;
 
+            _showHelpButton = false;
+
             _optionalCheckBoxCheckState = CheckState.Unchecked;
 
             _buttons = ExtendedMessageBoxButtons.OK;
@@ -175,6 +181,7 @@
         /// <param name="navigator">The navigator.</param>
         /// <param name="param">The parameter.</param>
         /// <param name="showCtrlCopy">The show control copy.</param>
+        /// <param name="displayHelpButton"></param>
         /// <param name="messageBoxTypeface">The message box typeface.</param>
         /// <param name="customImageIcon">The custom image icon.</param>
         /// <param name="showOptionalCheckBox">if set to <c>true</c> [show optional CheckBox].</param>
@@ -189,6 +196,7 @@
                                         string helpFilePath,
                                         HelpNavigator navigator,
                                         object param, bool? showCtrlCopy,
+                                        bool? displayHelpButton,
                                         Font messageBoxTypeface,
                                         Image customImageIcon,
                                         bool showOptionalCheckBox,
@@ -228,7 +236,9 @@
 
             IsOptionalCheckBoxChecked = isOptionalCheckBoxChecked;
 
-            ShowCtrlCopy = showCtrlCopy ?? false;
+            ShowCtrlCopy = showCtrlCopy ?? showCtrlCopy.GetValueOrDefault();
+
+            ShowHelpButton = displayHelpButton ?? displayHelpButton.GetValueOrDefault();
         }
 
         #endregion
@@ -237,19 +247,41 @@
 
         /// <summary>Shows the message box.</summary>
         /// <returns></returns>
-        public virtual DialogResult ShowMessageBox() =>
-            KryptonMessageBoxExtended.InternalShow(_owner, _text, _captionText,
-                                                   _buttons, _icon, _defaultButton,
-                                                   _options,
-                                                   new HelpInfo(_helpFilePath,
-                                                                _helpNavigator,
-                                                                _parameters),
-                                                   _showCtrlCopy, _messageBoxTypeface,
-                                                   _customImageIcon,
-                                                   _showOptionalCheckBox,
-                                                   _isOptionalCheckBoxChecked,
-                                                   _optionalCheckBoxCheckState,
-                                                   _optionalCheckBoxText);
+        public virtual DialogResult ShowMessageBox()
+        {
+            if (!ShowHelpButton)
+            {
+
+                return KryptonMessageBoxExtended.Show(Text, CaptionText, MessageBoxButtons,
+                                                      MessageBoxIcon, DefaultButton,
+                                                      Options, false,
+                                                      ShowCtrlCopy);
+            }
+            else if (MessageBoxTypeface != null)
+            {
+                return KryptonMessageBoxExtended.Show(Text, CaptionText, MessageBoxButtons,
+                                                      MessageBoxIcon, DefaultButton, Options,
+                                                      ShowHelpButton, ShowCtrlCopy,
+                                                      MessageBoxTypeface, CustomImageIcon,
+                                                      ShowOptionalCheckBox,
+                                                      IsOptionalCheckBoxChecked,
+                                                      OptionalCheckBoxCheckState,
+                                                      OptionalCheckBoxText);
+            }
+            else
+            {
+                return KryptonMessageBoxExtended.Show(Owner, Text, CaptionText,
+                                                     MessageBoxButtons, MessageBoxIcon,
+                                                     DefaultButton, Options,
+                                                     HelpFilePath, HelpNavigator,
+                                                     Parameters, ShowHelpButton,
+                                                     ShowCtrlCopy, MessageBoxTypeface,
+                                                     CustomImageIcon, ShowOptionalCheckBox,
+                                                     IsOptionalCheckBoxChecked,
+                                                     OptionalCheckBoxCheckState,
+                                                     OptionalCheckBoxText);
+            }
+        }
 
         #endregion
 
@@ -257,19 +289,41 @@
 
         /// <summary>Displays the message box.</summary>
         /// <returns></returns>
-        public DialogResult DisplayMessageBox() =>
-            KryptonMessageBoxExtended.InternalShow(_owner, _text, _captionText,
-                                                   _buttons, _icon, _defaultButton,
-                                                   _options,
-                                                   new HelpInfo(_helpFilePath,
-                                                                _helpNavigator,
-                                                                _parameters),
-                                                   _showCtrlCopy, _messageBoxTypeface,
-                                                   _customImageIcon,
-                                                   _showOptionalCheckBox,
-                                                   _isOptionalCheckBoxChecked,
-                                                   _optionalCheckBoxCheckState,
-                                                   _optionalCheckBoxText);
+        public DialogResult DisplayMessageBox()
+        {
+            if (!ShowHelpButton)
+            {
+               
+                return KryptonMessageBoxExtended.Show(Text, CaptionText, MessageBoxButtons,
+                                                      MessageBoxIcon, DefaultButton,
+                                                      Options, false,
+                                                      ShowCtrlCopy);
+            }
+            else if (MessageBoxTypeface != null)
+            {
+                return KryptonMessageBoxExtended.Show(Text, CaptionText, MessageBoxButtons,
+                                                      MessageBoxIcon, DefaultButton, Options,
+                                                      ShowHelpButton, ShowCtrlCopy,
+                                                      MessageBoxTypeface, CustomImageIcon,
+                                                      ShowOptionalCheckBox,
+                                                      IsOptionalCheckBoxChecked,
+                                                      OptionalCheckBoxCheckState,
+                                                      OptionalCheckBoxText);
+            }
+            else
+            {
+                return KryptonMessageBoxExtended.Show(Owner, Text, CaptionText,
+                                                     MessageBoxButtons, MessageBoxIcon,
+                                                     DefaultButton, Options,
+                                                     HelpFilePath, HelpNavigator,
+                                                     Parameters, ShowHelpButton,
+                                                     ShowCtrlCopy, MessageBoxTypeface,
+                                                     CustomImageIcon, ShowOptionalCheckBox,
+                                                     IsOptionalCheckBoxChecked,
+                                                     OptionalCheckBoxCheckState,
+                                                     OptionalCheckBoxText);
+            }
+        }
 
         #endregion
     }

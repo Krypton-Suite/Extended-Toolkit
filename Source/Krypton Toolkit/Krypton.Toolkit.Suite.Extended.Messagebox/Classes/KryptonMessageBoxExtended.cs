@@ -207,6 +207,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                  string helpFilePath = @"",
                                  HelpNavigator navigator = 0,
                                  object param = null,
+                                 bool displayHelpButton = false,
                                  bool? showCtrlCopy = null,
                                  Font messageBoxTypeface = null,
                                  Image customImageIcon = null,
@@ -216,7 +217,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                  string optionalCheckBoxText = @"")
             =>
                 InternalShow(owner, text, caption, buttons, icon, defaultButton, options,
-                             new HelpInfo(helpFilePath, navigator, param), showCtrlCopy, 
+                             displayHelpButton ? new HelpInfo(helpFilePath, navigator, param) : null,
+                             showCtrlCopy, 
                              messageBoxTypeface, customImageIcon, showOptionalCheckBox,
                              isOptionalCheckBoxChecked, optionalCheckBoxCheckState,
                              optionalCheckBoxText);
@@ -243,7 +245,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                            ExtendedMessageBoxButtons buttons,
                                            ExtendedKryptonMessageBoxIcon icon,
                                            MessageBoxDefaultButton defaultButton,
-                                           MessageBoxOptions options,
+                                           MessageBoxOptions options,                          
                                            HelpInfo helpInfo,
                                            bool? showCtrlCopy, Font messageBoxTypeface,
                                            Image customImageIcon, bool? showOptionalCheckBox, 
