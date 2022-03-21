@@ -10,9 +10,7 @@
         #region Instance Fields
         private readonly string _text;
         private readonly string _caption;
-        private readonly ExtendedMessageBoxButtons _buttons;
-        private readonly ExtendedKryptonMessageBoxIcon _kryptonMessageBoxIcon;
-
+        
         private readonly MessageBoxDefaultButton _defaultButton;
         private readonly MessageBoxOptions _options; // https://github.com/Krypton-Suite/Standard-Toolkit/issues/313
         // If help information provided or we are not a service/default desktop application then grab an owner for showing the message box
@@ -22,76 +20,41 @@
         #endregion
 
         #region Extended Fields
-
-        private readonly bool _showOptionalCheckBox;
-
-        private readonly bool _showOptionalLinkLabel;
-
-        private readonly bool _isOptionalCheckBoxChecked;
-
-        private readonly CheckState _optionalCheckBoxCheckState;
-
         private readonly Font _messageBoxTypeface;
 
-        private readonly Image _customImageIcon;
-
-        private readonly string _optionalCheckBoxText;
-
-        private readonly string _optionalLinkLabelText;
-
-        private readonly string _optionalLinkLabelDestination;
-
+        private readonly ExtendedMessageBoxButtons _buttons;
+        private readonly ExtendedKryptonMessageBoxIcon _kryptonMessageBoxIcon;
         #endregion
 
         #region Identity
         static KryptonMessageBoxExtendedForm() => OS_MAJOR_VERSION = Environment.OSVersion.Version.Major;
 
-        public KryptonMessageBoxExtendedForm() => InitializeComponent();
+        public KryptonMessageBoxExtendedForm()
+        {
+            InitializeComponent();
+        }
 
 
-        /// <summary>Initializes a new instance of the <see cref="KryptonMessageBoxExtendedForm" /> class.</summary>
-        /// <param name="showOwner">The show owner.</param>
-        /// <param name="text">The text.</param>
-        /// <param name="caption">The caption.</param>
-        /// <param name="buttons">The buttons.</param>
-        /// <param name="icon">The icon.</param>
-        /// <param name="defaultButton">The default button.</param>
-        /// <param name="options">The options.</param>
-        /// <param name="helpInfo">The help information.</param>
-        /// <param name="showCtrlCopy">The show control copy.</param>
-        /// <param name="messageBoxTypeface">The message box typeface.</param>
-        /// <param name="customImageIcon">The custom image icon.</param>
         internal KryptonMessageBoxExtendedForm(IWin32Window showOwner, string text, string caption,
                                                ExtendedMessageBoxButtons buttons,
                                                ExtendedKryptonMessageBoxIcon icon,
-                                               MessageBoxDefaultButton defaultButton, 
+                                               MessageBoxDefaultButton defaultButton,
                                                MessageBoxOptions options,
-                                               HelpInfo helpInfo, bool? showCtrlCopy, 
-                                               Font messageBoxTypeface, Image customImageIcon,
-                                               bool? showOptionalCheckBox, bool? optionalCheckBoxChecked,
-                                               CheckState? optionalCheckBoxCheckState,
-                                               string optionalCheckBoxText)
+                                               HelpInfo helpInfo, bool? showCtrlCopy,
+                                               Font messageBoxTypeface)
         {
             // Store incoming values
             _text = text;
             _caption = caption;
             _buttons = buttons;
             _kryptonMessageBoxIcon = icon;
-            _customImageIcon = customImageIcon;
             _defaultButton = defaultButton;
             _options = options;
             _helpInfo = helpInfo;
             _showOwner = showOwner;
 
-            _messageBoxTypeface = messageBoxTypeface ?? new Font(@"Segoe UI", 8.25F);
-
-            _showOptionalCheckBox = showOptionalCheckBox ?? false;
-
-            _isOptionalCheckBoxChecked = optionalCheckBoxChecked ?? false;
-
-            _optionalCheckBoxCheckState = optionalCheckBoxCheckState ?? CheckState.Unchecked;
-
-            _optionalCheckBoxText = optionalCheckBoxText;
+            // Extended values
+            _messageBoxTypeface = messageBoxTypeface ?? new Font("Segoe UI", 8.25F);
 
             // Create the form contents
             InitializeComponent();
@@ -106,21 +69,15 @@
             UpdateHelp();
             UpdateTextExtra(showCtrlCopy);
 
-            SetupCheckBox();
-
             // Finally calculate and set form sizing
             UpdateSizing(showOwner);
         }
         #endregion Identity
 
         #region Methods
-
         private void UpdateText()
         {
             Text = string.IsNullOrEmpty(_caption) ? string.Empty : _caption.Split(Environment.NewLine.ToCharArray())[0];
-
-            _messageText.StateCommon.Font = _messageBoxTypeface;
-
             _messageText.Text = _text;
             _messageText.RightToLeft = _options.HasFlag(MessageBoxOptions.RightAlign)
                 ? RightToLeft.Yes
@@ -161,37 +118,33 @@
                     }
 
                     break;
-                case ExtendedKryptonMessageBoxIcon.CUSTOM:
-                    _messageIcon.Image = _customImageIcon;
-                    break;
                 case ExtendedKryptonMessageBoxIcon.QUESTION:
-                    _messageIcon.Image = Properties.Resources.Question;
+                    _messageIcon.Image = MessageBoxResources.Question;
                     SystemSounds.Question.Play();
                     break;
                 case ExtendedKryptonMessageBoxIcon.EXCLAMATION:
-                    // _messageIcon.Image = Properties.Resources.e
                 case ExtendedKryptonMessageBoxIcon.INFORMATION:
-                    _messageIcon.Image = Properties.Resources.Information;
+                    _messageIcon.Image = MessageBoxResources.Information;
                     SystemSounds.Asterisk.Play();
                     break;
                 case ExtendedKryptonMessageBoxIcon.WARNING:
-                    _messageIcon.Image = Properties.Resources.Warning;
+                    _messageIcon.Image = MessageBoxResources.Warning;
                     SystemSounds.Exclamation.Play();
                     break;
                 case ExtendedKryptonMessageBoxIcon.ERROR:
-                    _messageIcon.Image = Properties.Resources.Critical;
+                    _messageIcon.Image = MessageBoxResources.Critical;
                     SystemSounds.Hand.Play();
                     break;
                 case ExtendedKryptonMessageBoxIcon.ASTERISK:
-                    _messageIcon.Image = Properties.Resources.Asterisk;
+                    _messageIcon.Image = MessageBoxResources.Asterisk;
                     SystemSounds.Asterisk.Play();
                     break;
                 case ExtendedKryptonMessageBoxIcon.HAND:
-                    _messageIcon.Image = Properties.Resources.Hand;
+                    _messageIcon.Image = MessageBoxResources.Hand;
                     SystemSounds.Hand.Play();
                     break;
                 case ExtendedKryptonMessageBoxIcon.STOP:
-                    _messageIcon.Image = Properties.Resources.Stop;
+                    _messageIcon.Image = MessageBoxResources.Stop;
                     SystemSounds.Hand.Play();
                     break;
                 case ExtendedKryptonMessageBoxIcon.SHIELD:
@@ -202,12 +155,12 @@
                     // we need to rely on a image instead
                     if (Environment.OSVersion.Version.Major >= 10 && Environment.OSVersion.Version.Build >= 22000)
                     {
-                        _messageIcon.Image = Properties.Resources.Windows11;
+                        _messageIcon.Image = MessageBoxResources.Windows11;
                     }
                     // Windows 10
                     else if (Environment.OSVersion.Version.Major == 10 && Environment.OSVersion.Version.Build <= 19044 /* RTM - 21H2 */)
                     {
-                        _messageIcon.Image = Properties.Resources.Windows_8_and_10_Logo;
+                        _messageIcon.Image = MessageBoxResources.Windows_8_and_10_Logo;
                     }
                     else
                     {
@@ -228,45 +181,37 @@
                 case ExtendedMessageBoxButtons.OK:
                     _button1.Text = KryptonManager.Strings.OK;
                     _button1.DialogResult = DialogResult.OK;
-                    _button1.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
                     _button1.Visible = true;
                     _button1.Enabled = true;
                     break;
-                case ExtendedMessageBoxButtons.OKCANCEL:
+                case ExtendedMessageBoxButtons.OKCancel:
                     _button1.Text = KryptonManager.Strings.OK;
                     _button2.Text = KryptonManager.Strings.Cancel;
                     _button1.DialogResult = DialogResult.OK;
                     _button2.DialogResult = DialogResult.Cancel;
-                    _button1.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
-                    _button2.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
                     _button1.Visible = true;
                     _button1.Enabled = true;
                     _button2.Visible = true;
                     _button2.Enabled = true;
                     break;
-                case ExtendedMessageBoxButtons.YESNO:
+                case ExtendedMessageBoxButtons.YesNo:
                     _button1.Text = KryptonManager.Strings.Yes;
                     _button2.Text = KryptonManager.Strings.No;
                     _button1.DialogResult = DialogResult.Yes;
                     _button2.DialogResult = DialogResult.No;
-                    _button1.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
-                    _button2.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
                     _button1.Visible = true;
                     _button1.Enabled = true;
                     _button2.Visible = true;
                     _button2.Enabled = true;
                     ControlBox = false;
                     break;
-                case ExtendedMessageBoxButtons.YESNOCANCEL:
+                case ExtendedMessageBoxButtons.YesNoCancel:
                     _button1.Text = KryptonManager.Strings.Yes;
                     _button2.Text = KryptonManager.Strings.No;
                     _button3.Text = KryptonManager.Strings.Cancel;
                     _button1.DialogResult = DialogResult.Yes;
                     _button2.DialogResult = DialogResult.No;
                     _button3.DialogResult = DialogResult.Cancel;
-                    _button1.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
-                    _button2.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
-                    _button3.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
                     _button1.Visible = true;
                     _button1.Enabled = true;
                     _button2.Visible = true;
@@ -274,29 +219,23 @@
                     _button3.Visible = true;
                     _button3.Enabled = true;
                     break;
-                case ExtendedMessageBoxButtons.RETRYCANCEL:
+                case ExtendedMessageBoxButtons.RetryCancel:
                     _button1.Text = KryptonManager.Strings.Retry;
                     _button2.Text = KryptonManager.Strings.Cancel;
                     _button1.DialogResult = DialogResult.Retry;
                     _button2.DialogResult = DialogResult.Cancel;
-                    _button1.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
-                    _button2.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
-                    _button3.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
                     _button1.Visible = true;
                     _button1.Enabled = true;
                     _button2.Visible = true;
                     _button2.Enabled = true;
                     break;
-                case ExtendedMessageBoxButtons.ABORTRETRYIGNORE:
+                case ExtendedMessageBoxButtons.AbortRetryIgnore:
                     _button1.Text = KryptonManager.Strings.Abort;
                     _button2.Text = KryptonManager.Strings.Retry;
                     _button3.Text = KryptonManager.Strings.Ignore;
                     _button1.DialogResult = DialogResult.Abort;
                     _button2.DialogResult = DialogResult.Retry;
                     _button3.DialogResult = DialogResult.Ignore;
-                    _button1.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
-                    _button2.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
-                    _button3.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
                     _button1.Visible = true;
                     _button1.Enabled = true;
                     _button2.Visible = true;
@@ -340,8 +279,8 @@
             MessageButton helpButton = _buttons switch
             {
                 ExtendedMessageBoxButtons.OK => _button2,
-                ExtendedMessageBoxButtons.OKCANCEL or ExtendedMessageBoxButtons.YESNO or ExtendedMessageBoxButtons.RETRYCANCEL => _button3,
-                ExtendedMessageBoxButtons.ABORTRETRYIGNORE or ExtendedMessageBoxButtons.YESNO => _button4,
+                ExtendedMessageBoxButtons.OKCancel or ExtendedMessageBoxButtons.YesNo or ExtendedMessageBoxButtons.RetryCancel => _button3,
+                ExtendedMessageBoxButtons.AbortRetryIgnore or ExtendedMessageBoxButtons.YesNoCancel => _button4,
                 _ => throw new ArgumentOutOfRangeException()
             };
             if (helpButton != null)
@@ -398,16 +337,8 @@
             Size buttonsSizing = UpdateButtonsSizing();
 
             // Size of window is calculated from the client area
-            if (_showOptionalCheckBox)
-            {
-                ClientSize = new Size(Math.Max(messageSizing.Width, buttonsSizing.Width), // We assume that the '_panelCheckBox' width is the same as the _panelButtons width
-                    messageSizing.Height + buttonsSizing.Height + _panelOptionalFooter.Height);
-            }
-            else
-            {
-                ClientSize = new Size(Math.Max(messageSizing.Width, buttonsSizing.Width),
-                    messageSizing.Height + buttonsSizing.Height); 
-            }
+            ClientSize = new Size(Math.Max(messageSizing.Width, buttonsSizing.Width),
+                                  messageSizing.Height + buttonsSizing.Height);
         }
 
         private Size UpdateMessageSizing(IWin32Window showOwner)
@@ -428,10 +359,8 @@
 
                 var messageXSize = Math.Max(messageSize.Width, captionSize.Width);
                 // Work out DPI adjustment factor
-                var factorX = g.DpiX > 96 ? (1.0f * g.DpiX / 96) : 1.0f;
-                var factorY = g.DpiY > 96 ? (1.0f * g.DpiY / 96) : 1.0f;
-                messageSize.Width = messageXSize * factorX;
-                messageSize.Height *= factorY;
+                messageSize.Width = messageXSize * FactorDpiX;
+                messageSize.Height *= FactorDpiY;
 
                 // Always add on ad extra 5 pixels as sometimes the measure size does not draw the last 
                 // character it contains, this ensures there is always definitely enough space for it all
@@ -439,9 +368,13 @@
                 textSize = Size.Ceiling(messageSize);
             }
 
-            return new Size(textSize.Width + _messageIcon.Width + _messageIcon.Margin.Left + _messageIcon.Margin.Right +
-                            _messageText.Margin.Left + _messageText.Margin.Right,
-                Math.Max(_messageIcon.Height + 10, textSize.Height));
+            // Find size of icon area plus the text area added together
+            if (_messageIcon.Image != null)
+            {
+                return new Size(textSize.Width + _messageIcon.Width, Math.Max(_messageIcon.Height + 10, textSize.Height));
+            }
+
+            return textSize;
         }
 
         private Size UpdateButtonsSizing()
@@ -521,13 +454,13 @@
             // Escape key kills the dialog if we allow it to be closed
             if (ControlBox
                 && (e.KeyCode == Keys.Escape)
-               )
+                )
             {
                 Close();
             }
             else if (!e.Control
                      || (e.KeyCode != Keys.C)
-                    )
+                     )
             {
                 return;
             }
@@ -564,167 +497,6 @@
             Clipboard.SetText(sb.ToString(), TextDataFormat.Text);
             Clipboard.SetText(sb.ToString(), TextDataFormat.UnicodeText);
         }
-
-        /// <summary>Setups the CheckBox.</summary>
-        private void SetupCheckBox()
-        {
-            _panelOptionalFooter.Visible = _showOptionalCheckBox;
-
-            _optionalCheckBox.StateCommon.ShortText.Font = _messageBoxTypeface;
-
-            _optionalCheckBox.StateCommon.LongText.Font = _messageBoxTypeface;
-
-            _optionalCheckBox.Text = _optionalCheckBoxText;
-
-            _optionalCheckBox.CheckState = _optionalCheckBoxCheckState;
-
-            _optionalCheckBox.Checked = _isOptionalCheckBoxChecked;
-        }
-
-        /// <summary>Gets the optional CheckBox checked state.</summary>
-        /// <returns>
-        ///   <br />
-        /// </returns>
-        internal bool GetOptionalCheckBoxChecked() => _optionalCheckBox.Checked;
-
-        /// <summary>Gets the state of the optional CheckBox check state.</summary>
-        /// <returns>
-        ///   <br />
-        /// </returns>
-        internal CheckState GetOptionalCheckBoxCheckState() => _optionalCheckBox.CheckState;
         #endregion
     }
-
-    #region Types
-    internal class HelpInfo
-    {
-        #region Instance Fields
-
-        #endregion
-
-        #region Identity
-
-        /// <summary>
-        /// Initialize a new instance of the HelpInfo class.
-        /// </summary>
-        /// <param name="helpFilePath">Value for HelpFilePath.</param>
-        /// <param name="keyword">Value for Keyword</param>
-        public HelpInfo(string helpFilePath = null, string keyword = null)
-        : this(helpFilePath, keyword, !string.IsNullOrWhiteSpace(keyword) ? HelpNavigator.Topic : HelpNavigator.TableOfContents, null)
-        {
-
-        }
-
-        /// <summary>
-        /// Initialize a new instance of the HelpInfo class.
-        /// </summary>
-        /// <param name="helpFilePath">Value for HelpFilePath.</param>
-        /// <param name="navigator">Value for Navigator</param>
-        /// <param name="param"></param>
-        public HelpInfo(string helpFilePath, HelpNavigator navigator, object param = null)
-            : this(helpFilePath, null, navigator, param)
-        {
-
-        }
-
-        /// <summary>
-        /// Initialize a new instance of the HelpInfo class.
-        /// </summary>
-        /// <param name="helpFilePath">Value for HelpFilePath.</param>
-        /// <param name="navigator">Value for Navigator</param>
-        /// <param name="keyword">Value for Keyword</param>
-        /// <param name="param"></param>
-        private HelpInfo(string helpFilePath, string keyword, HelpNavigator navigator, object param)
-        {
-            HelpFilePath = helpFilePath;
-            Keyword = keyword;
-            Navigator = navigator;
-            Param = param;
-        }
-        #endregion
-
-        #region Properties
-        /// <summary>
-        /// Gets the HelpFilePath property.
-        /// </summary>
-        public string HelpFilePath { get; }
-
-        /// <summary>
-        /// Gets the Keyword property.
-        /// </summary>
-        public string Keyword { get; }
-
-        /// <summary>
-        /// Gets the Navigator property.
-        /// </summary>
-        public HelpNavigator Navigator { get; }
-
-        /// <summary>
-        /// Gets the Param property.
-        /// </summary>
-        public object Param { get; }
-
-        #endregion
-    }
-
-    #endregion
-
-    #region Class: MessageButton
-
-    [ToolboxItem(false)]
-    [DesignTimeVisible(false)]
-    internal class MessageButton : KryptonButton
-    {
-
-        #region Instance Fields
-
-        #endregion
-
-        #region Identity
-        public MessageButton()
-        {
-            IgnoreAltF4 = false;
-            Visible = false;
-            Enabled = false;
-        }
-
-        /// <summary>
-        /// Gets and sets the ignoring of Alt+F4
-        /// </summary>
-        public bool IgnoreAltF4 { get; set; }
-
-        #endregion
-
-        #region Protected
-        /// <summary>
-        /// Processes Windows messages.
-        /// </summary>
-        /// <param name="m">The Windows Message to process. </param>
-        protected override void WndProc(ref Message m)
-        {
-            switch (m.Msg)
-            {
-                case PI.WM_.KEYDOWN:
-                case PI.WM_.SYSKEYDOWN:
-                    if (IgnoreAltF4)
-                    {
-                        // Extract the keys being pressed
-                        Keys keys = (Keys)(int)m.WParam.ToInt64();
-
-                        // If the user standard combination ALT + F4
-                        if ((keys == Keys.F4) && ((ModifierKeys & Keys.Alt) == Keys.Alt))
-                        {
-                            // Eat the message, so standard window proc does not close the window
-                            return;
-                        }
-                    }
-                    break;
-            }
-
-            base.WndProc(ref m);
-        }
-        #endregion
-    }
-
-    #endregion
 }

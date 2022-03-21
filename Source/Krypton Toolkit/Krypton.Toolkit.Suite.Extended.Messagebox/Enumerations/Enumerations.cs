@@ -8,7 +8,7 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Messagebox
 {
-    /// <summary>Specifies the button layout in the <see cref="KryptonMessageBoxExtended"/>.</summary>
+    /// <summary>Specifies the button layout in the <see cref="KryptonMessageBoxExtendedTest"/>.</summary>
     public enum ExtendedMessageBoxButtons
     {
         /// <summary>Defines a custom button layout. Linked to <see cref="ExtendedMessageBoxCustomButtonOptions"/> values.</summary>
@@ -27,7 +27,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         RETRYCANCEL = 10
     }
 
-    /// <summary>Specifies an icon for the <see cref="KryptonMessageBoxExtended"/>.</summary>
+    /// <summary>Specifies an icon for the <see cref="KryptonMessageBoxExtendedTest"/>.</summary>
     public enum ExtendedKryptonMessageBoxIcon
     {
         /// <summary>Specify a custom icon.</summary>

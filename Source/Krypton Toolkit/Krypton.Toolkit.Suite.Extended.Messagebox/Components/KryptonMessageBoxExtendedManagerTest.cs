@@ -1,16 +1,16 @@
 ﻿namespace Krypton.Toolkit.Suite.Extended.Messagebox
 {
-    /// <summary>Allows the creation of a <see cref="KryptonMessageBoxExtended"/> through the designer.</summary>
+    /// <summary>Allows the creation of a <see cref="KryptonMessageBoxExtendedTest"/> through the designer.</summary>
     /// <seealso cref="Component" />
-    [ToolboxBitmap(typeof(KryptonMessageBoxManager), "ToolboxBitmaps.KryptonMessageBox.bmp"),
+    [ToolboxBitmap(typeof(KryptonMessageBox), "ToolboxBitmaps.KryptonMessageBox.bmp"),
      DefaultEvent("ShowMessageBox"), DefaultProperty("MessageBoxContentText"),
      Description("Allows the creation of a KryptonMessageBoxExtended through the designer.")] 
     //, Designer(typeof(KryptonMessageBoxConfiguratorDesigner))]
-    public class KryptonMessageBoxManager : Component
+    public class KryptonMessageBoxManagerTest : Component
     {
         #region Fields
 
-        private bool _showCtrlCopy, _showOptionalCheckBox, _isOptionalCheckBoxChecked, _showHelpButton;
+        private bool _showCtrlCopy, _showOptionalCheckBox, _isOptionalCheckBoxChecked, _showHelpButton, _showOptionalLinkLabel;
 
         private CheckState _optionalCheckBoxCheckState;
 
@@ -26,7 +26,7 @@
 
         private Image _customImageIcon;
 
-        private string _text, _captionText, _helpFilePath, _optionalCheckBoxText;
+        private string _text, _captionText, _helpFilePath, _optionalCheckBoxText, _optionalLinkLabelText, _optionalLinkLabelDestination;
 
         private object _parameters;
 
@@ -54,6 +54,9 @@
 
         [DefaultValue(false), Description(@"")]
         public bool ShowHelpButton { get => _showHelpButton; set => _showHelpButton = value; }
+
+        [DefaultValue(false), Description(@"")]
+        public bool ShowOptionalLinkLabel { get => _showOptionalLinkLabel; set => _showOptionalLinkLabel = value; }
 
         /// <summary>Gets or sets the state of the optional CheckBox check.</summary>
         /// <value>The state of the optional CheckBox check.</value>
@@ -110,6 +113,12 @@
         [DefaultValue(null), Description(@"Specifies the message box optional check box text.")]
         public string OptionalCheckBoxText { get => _optionalCheckBoxText; set => _optionalCheckBoxText = value; }
 
+        [DefaultValue(null), Description(@"")]
+        public string OptionalLinkLabelText { get => _optionalLinkLabelText; set => _optionalLinkLabelText = value; }
+
+        [DefaultValue(null), Description(@"")]
+        public string OptionalLinkLabelDestination { get => _optionalLinkLabelDestination; set => _optionalLinkLabelDestination = value; }
+
         /// <summary>Gets or sets the parameters.</summary>
         /// <value>The parameters.</value>
         [DefaultValue(null), Description(@"The numeric ID of the Help topic to display when the user clicks the Help button.")]
@@ -129,8 +138,8 @@
 
         #region Constructors
 
-        /// <summary>Initializes a new instance of the <see cref="KryptonMessageBoxManager" /> class.</summary>
-        public KryptonMessageBoxManager()
+        /// <summary>Initializes a new instance of the <see cref="KryptonMessageBoxManagerTest" /> class.</summary>
+        public KryptonMessageBoxManagerTest()
         {
             _showCtrlCopy = false;
 
@@ -139,6 +148,8 @@
             _isOptionalCheckBoxChecked = false;
 
             _showHelpButton = false;
+
+            _showOptionalLinkLabel = false;
 
             _optionalCheckBoxCheckState = CheckState.Unchecked;
 
@@ -162,6 +173,10 @@
 
             _optionalCheckBoxText = @"";
 
+            _optionalLinkLabelDestination = @"";
+
+            _optionalLinkLabelText = @"";
+
             _parameters = null;
 
             _helpNavigator = 0;
@@ -169,7 +184,7 @@
             _owner = null;
         }
 
-        /// <summary>Initializes a new instance of the <see cref="KryptonMessageBoxManager" /> class.</summary>
+        /// <summary>Initializes a new instance of the <see cref="KryptonMessageBoxManagerTest" /> class.</summary>
         /// <param name="owner">The owner.</param>
         /// <param name="text">The text.</param>
         /// <param name="caption">The caption.</param>
@@ -188,7 +203,7 @@
         /// <param name="isOptionalCheckBoxChecked">if set to <c>true</c> [is optional CheckBox checked].</param>
         /// <param name="optionalCheckBoxCheckState">State of the optional CheckBox check.</param>
         /// <param name="optionalCheckBoxText">The optional CheckBox text.</param>
-        public KryptonMessageBoxManager(IWin32Window owner, string text, string caption,
+        public KryptonMessageBoxManagerTest(IWin32Window owner, string text, string caption,
                                         ExtendedMessageBoxButtons buttons,
                                         ExtendedKryptonMessageBoxIcon icon,
                                         MessageBoxDefaultButton defaultButton,
@@ -202,7 +217,8 @@
                                         bool showOptionalCheckBox,
                                         bool isOptionalCheckBoxChecked,
                                         CheckState optionalCheckBoxCheckState,
-                                        string optionalCheckBoxText)
+                                        string optionalCheckBoxText, bool? showOptionalLinkLabel,
+                                        string optionalLinkLabelText, string optionalLinkLabelDestination)
         {
             Owner = owner;
 
@@ -239,6 +255,12 @@
             ShowCtrlCopy = showCtrlCopy ?? showCtrlCopy.GetValueOrDefault();
 
             ShowHelpButton = displayHelpButton ?? displayHelpButton.GetValueOrDefault();
+
+            ShowOptionalLinkLabel = showOptionalLinkLabel ?? showOptionalLinkLabel.GetValueOrDefault();
+
+            OptionalLinkLabelDestination = optionalLinkLabelDestination;
+
+            OptionalLinkLabelText = optionalLinkLabelText;
         }
 
         #endregion
@@ -252,25 +274,28 @@
             if (!ShowHelpButton)
             {
 
-                return KryptonMessageBoxExtended.Show(Text, CaptionText, MessageBoxButtons,
+                return KryptonMessageBoxExtendedTest.Show(Text, CaptionText, MessageBoxButtons,
                                                       MessageBoxIcon, DefaultButton,
                                                       Options, false,
                                                       ShowCtrlCopy);
             }
             else if (MessageBoxTypeface != null)
             {
-                return KryptonMessageBoxExtended.Show(Text, CaptionText, MessageBoxButtons,
+                return KryptonMessageBoxExtendedTest.Show(Text, CaptionText, MessageBoxButtons,
                                                       MessageBoxIcon, DefaultButton, Options,
                                                       ShowHelpButton, ShowCtrlCopy,
                                                       MessageBoxTypeface, CustomImageIcon,
                                                       ShowOptionalCheckBox,
                                                       IsOptionalCheckBoxChecked,
                                                       OptionalCheckBoxCheckState,
-                                                      OptionalCheckBoxText);
+                                                      OptionalCheckBoxText,
+                                                      ShowOptionalLinkLabel,
+                                                      OptionalLinkLabelText,
+                                                      OptionalLinkLabelDestination);
             }
             else
             {
-                return KryptonMessageBoxExtended.Show(Owner, Text, CaptionText,
+                return KryptonMessageBoxExtendedTest.Show(Owner, Text, CaptionText,
                                                      MessageBoxButtons, MessageBoxIcon,
                                                      DefaultButton, Options,
                                                      HelpFilePath, HelpNavigator,
@@ -279,7 +304,10 @@
                                                      CustomImageIcon, ShowOptionalCheckBox,
                                                      IsOptionalCheckBoxChecked,
                                                      OptionalCheckBoxCheckState,
-                                                     OptionalCheckBoxText);
+                                                     OptionalCheckBoxText,
+                                                     ShowOptionalLinkLabel,
+                                                     OptionalLinkLabelText,
+                                                     OptionalLinkLabelDestination);
             }
         }
 
@@ -294,25 +322,28 @@
             if (!ShowHelpButton)
             {
                
-                return KryptonMessageBoxExtended.Show(Text, CaptionText, MessageBoxButtons,
+                return KryptonMessageBoxExtendedTest.Show(Text, CaptionText, MessageBoxButtons,
                                                       MessageBoxIcon, DefaultButton,
                                                       Options, false,
                                                       ShowCtrlCopy);
             }
             else if (MessageBoxTypeface != null)
             {
-                return KryptonMessageBoxExtended.Show(Text, CaptionText, MessageBoxButtons,
+                return KryptonMessageBoxExtendedTest.Show(Text, CaptionText, MessageBoxButtons,
                                                       MessageBoxIcon, DefaultButton, Options,
                                                       ShowHelpButton, ShowCtrlCopy,
                                                       MessageBoxTypeface, CustomImageIcon,
                                                       ShowOptionalCheckBox,
                                                       IsOptionalCheckBoxChecked,
                                                       OptionalCheckBoxCheckState,
-                                                      OptionalCheckBoxText);
+                                                      OptionalCheckBoxText,
+                                                      ShowOptionalLinkLabel,
+                                                      OptionalLinkLabelText,
+                                                      OptionalLinkLabelDestination);
             }
             else
             {
-                return KryptonMessageBoxExtended.Show(Owner, Text, CaptionText,
+                return KryptonMessageBoxExtendedTest.Show(Owner, Text, CaptionText,
                                                      MessageBoxButtons, MessageBoxIcon,
                                                      DefaultButton, Options,
                                                      HelpFilePath, HelpNavigator,
@@ -321,7 +352,10 @@
                                                      CustomImageIcon, ShowOptionalCheckBox,
                                                      IsOptionalCheckBoxChecked,
                                                      OptionalCheckBoxCheckState,
-                                                     OptionalCheckBoxText);
+                                                     OptionalCheckBoxText,
+                                                     ShowOptionalLinkLabel,
+                                                     OptionalLinkLabelText,
+                                                     OptionalLinkLabelDestination);
             }
         }
 
