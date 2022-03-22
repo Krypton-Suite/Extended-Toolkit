@@ -23,7 +23,10 @@
         private readonly Font _messageBoxTypeface;
 
         private readonly ExtendedMessageBoxButtons _buttons;
+
         private readonly ExtendedKryptonMessageBoxIcon _kryptonMessageBoxIcon;
+
+        private readonly Image _customKryptonMessageBoxIcon;
         #endregion
 
         #region Identity
@@ -41,7 +44,8 @@
                                                MessageBoxDefaultButton defaultButton,
                                                MessageBoxOptions options,
                                                HelpInfo helpInfo, bool? showCtrlCopy,
-                                               Font messageBoxTypeface)
+                                               Font messageBoxTypeface, 
+                                               Image customKryptonMessageBoxIcon)
         {
             // Store incoming values
             _text = text;
@@ -55,6 +59,7 @@
 
             // Extended values
             _messageBoxTypeface = messageBoxTypeface ?? new Font("Segoe UI", 8.25F);
+            _customKryptonMessageBoxIcon = customKryptonMessageBoxIcon;
 
             // Create the form contents
             InitializeComponent();
@@ -78,6 +83,9 @@
         private void UpdateText()
         {
             Text = string.IsNullOrEmpty(_caption) ? string.Empty : _caption.Split(Environment.NewLine.ToCharArray())[0];
+
+            _messageText.StateCommon.Font = _messageBoxTypeface;
+
             _messageText.Text = _text;
             _messageText.RightToLeft = _options.HasFlag(MessageBoxOptions.RightAlign)
                 ? RightToLeft.Yes
@@ -118,33 +126,36 @@
                     }
 
                     break;
+                case ExtendedKryptonMessageBoxIcon.CUSTOM:
+                    _messageIcon.Image = _customKryptonMessageBoxIcon;
+                    break;
                 case ExtendedKryptonMessageBoxIcon.QUESTION:
-                    _messageIcon.Image = MessageBoxResources.Question;
+                    _messageIcon.Image = Properties.Resources.Question;
                     SystemSounds.Question.Play();
                     break;
                 case ExtendedKryptonMessageBoxIcon.EXCLAMATION:
                 case ExtendedKryptonMessageBoxIcon.INFORMATION:
-                    _messageIcon.Image = MessageBoxResources.Information;
+                    _messageIcon.Image = Properties.Resources.Information;
                     SystemSounds.Asterisk.Play();
                     break;
                 case ExtendedKryptonMessageBoxIcon.WARNING:
-                    _messageIcon.Image = MessageBoxResources.Warning;
+                    _messageIcon.Image = Properties.Resources.Warning;
                     SystemSounds.Exclamation.Play();
                     break;
                 case ExtendedKryptonMessageBoxIcon.ERROR:
-                    _messageIcon.Image = MessageBoxResources.Critical;
+                    _messageIcon.Image = Properties.Resources.Critical;
                     SystemSounds.Hand.Play();
                     break;
                 case ExtendedKryptonMessageBoxIcon.ASTERISK:
-                    _messageIcon.Image = MessageBoxResources.Asterisk;
+                    _messageIcon.Image = Properties.Resources.Asterisk;
                     SystemSounds.Asterisk.Play();
                     break;
                 case ExtendedKryptonMessageBoxIcon.HAND:
-                    _messageIcon.Image = MessageBoxResources.Hand;
+                    _messageIcon.Image = Properties.Resources.Hand;
                     SystemSounds.Hand.Play();
                     break;
                 case ExtendedKryptonMessageBoxIcon.STOP:
-                    _messageIcon.Image = MessageBoxResources.Stop;
+                    _messageIcon.Image = Properties.Resources.Stop;
                     SystemSounds.Hand.Play();
                     break;
                 case ExtendedKryptonMessageBoxIcon.SHIELD:
@@ -155,12 +166,12 @@
                     // we need to rely on a image instead
                     if (Environment.OSVersion.Version.Major >= 10 && Environment.OSVersion.Version.Build >= 22000)
                     {
-                        _messageIcon.Image = MessageBoxResources.Windows11;
+                        _messageIcon.Image = Properties.Resources.Windows11;
                     }
                     // Windows 10
                     else if (Environment.OSVersion.Version.Major == 10 && Environment.OSVersion.Version.Build <= 19044 /* RTM - 21H2 */)
                     {
-                        _messageIcon.Image = MessageBoxResources.Windows_8_and_10_Logo;
+                        _messageIcon.Image = Properties.Resources.Windows_8_and_10_Logo;
                     }
                     else
                     {
@@ -181,37 +192,45 @@
                 case ExtendedMessageBoxButtons.OK:
                     _button1.Text = KryptonManager.Strings.OK;
                     _button1.DialogResult = DialogResult.OK;
+                    _button1.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
                     _button1.Visible = true;
                     _button1.Enabled = true;
                     break;
-                case ExtendedMessageBoxButtons.OKCancel:
+                case ExtendedMessageBoxButtons.OKCANCEL:
                     _button1.Text = KryptonManager.Strings.OK;
                     _button2.Text = KryptonManager.Strings.Cancel;
                     _button1.DialogResult = DialogResult.OK;
                     _button2.DialogResult = DialogResult.Cancel;
+                    _button1.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
+                    _button2.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
                     _button1.Visible = true;
                     _button1.Enabled = true;
                     _button2.Visible = true;
                     _button2.Enabled = true;
                     break;
-                case ExtendedMessageBoxButtons.YesNo:
+                case ExtendedMessageBoxButtons.YESNO:
                     _button1.Text = KryptonManager.Strings.Yes;
                     _button2.Text = KryptonManager.Strings.No;
                     _button1.DialogResult = DialogResult.Yes;
                     _button2.DialogResult = DialogResult.No;
+                    _button1.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
+                    _button2.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
                     _button1.Visible = true;
                     _button1.Enabled = true;
                     _button2.Visible = true;
                     _button2.Enabled = true;
                     ControlBox = false;
                     break;
-                case ExtendedMessageBoxButtons.YesNoCancel:
+                case ExtendedMessageBoxButtons.YESNOCANCEL:
                     _button1.Text = KryptonManager.Strings.Yes;
                     _button2.Text = KryptonManager.Strings.No;
                     _button3.Text = KryptonManager.Strings.Cancel;
                     _button1.DialogResult = DialogResult.Yes;
                     _button2.DialogResult = DialogResult.No;
                     _button3.DialogResult = DialogResult.Cancel;
+                    _button1.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
+                    _button2.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
+                    _button3.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
                     _button1.Visible = true;
                     _button1.Enabled = true;
                     _button2.Visible = true;
@@ -219,23 +238,28 @@
                     _button3.Visible = true;
                     _button3.Enabled = true;
                     break;
-                case ExtendedMessageBoxButtons.RetryCancel:
+                case ExtendedMessageBoxButtons.RETRYCANCEL:
                     _button1.Text = KryptonManager.Strings.Retry;
                     _button2.Text = KryptonManager.Strings.Cancel;
                     _button1.DialogResult = DialogResult.Retry;
                     _button2.DialogResult = DialogResult.Cancel;
+                    _button1.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
+                    _button2.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
                     _button1.Visible = true;
                     _button1.Enabled = true;
                     _button2.Visible = true;
                     _button2.Enabled = true;
                     break;
-                case ExtendedMessageBoxButtons.AbortRetryIgnore:
+                case ExtendedMessageBoxButtons.ABORTRETRYIGNORE:
                     _button1.Text = KryptonManager.Strings.Abort;
                     _button2.Text = KryptonManager.Strings.Retry;
                     _button3.Text = KryptonManager.Strings.Ignore;
                     _button1.DialogResult = DialogResult.Abort;
                     _button2.DialogResult = DialogResult.Retry;
                     _button3.DialogResult = DialogResult.Ignore;
+                    _button1.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
+                    _button2.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
+                    _button3.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
                     _button1.Visible = true;
                     _button1.Enabled = true;
                     _button2.Visible = true;
@@ -279,8 +303,8 @@
             MessageButton helpButton = _buttons switch
             {
                 ExtendedMessageBoxButtons.OK => _button2,
-                ExtendedMessageBoxButtons.OKCancel or ExtendedMessageBoxButtons.YesNo or ExtendedMessageBoxButtons.RetryCancel => _button3,
-                ExtendedMessageBoxButtons.AbortRetryIgnore or ExtendedMessageBoxButtons.YesNoCancel => _button4,
+                ExtendedMessageBoxButtons.OKCANCEL or ExtendedMessageBoxButtons.YESNO or ExtendedMessageBoxButtons.RETRYCANCEL => _button3,
+                ExtendedMessageBoxButtons.ABORTRETRYIGNORE or ExtendedMessageBoxButtons.YESNOCANCEL => _button4,
                 _ => throw new ArgumentOutOfRangeException()
             };
             if (helpButton != null)

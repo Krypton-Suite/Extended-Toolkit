@@ -1,6 +1,4 @@
-﻿using Krypton.Toolkit.Suite.Extended.Messagebox.Classes;
-
-namespace Krypton.Toolkit.Suite.Extended.Messagebox
+﻿namespace Krypton.Toolkit.Suite.Extended.Messagebox
 {
     partial class KryptonMessageBoxExtendedFormDevelopment
     {
