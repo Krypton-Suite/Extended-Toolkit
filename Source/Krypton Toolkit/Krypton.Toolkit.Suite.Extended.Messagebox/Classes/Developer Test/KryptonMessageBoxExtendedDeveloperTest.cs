@@ -11,7 +11,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 {
     /// <summary>Displays a message box that can contain text, buttons, and symbols that inform and instruct the user.</summary>
     [DesignerCategory(@"code"), ToolboxItem(false)]
-    public static class KryptonMessageBoxExtendedTest
+    public static class KryptonMessageBoxExtendedDeveloperTest
     {
         #region Public
 
@@ -270,7 +270,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         {
             IWin32Window showOwner = ValidateOptions(owner, options, helpInfo);
 
-            using KryptonMessageBoxExtendedFormTest kmbef = new(showOwner, text, caption, buttons,
+            using KryptonMessageBoxExtendedFormDeveloperTest kmbef = new(showOwner, text, caption, buttons,
                                                             icon, defaultButton, options,
                                                             helpInfo, showCtrlCopy,
                                                             messageBoxTypeface,

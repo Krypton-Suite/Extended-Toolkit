@@ -1,6 +1,6 @@
 ﻿namespace Krypton.Toolkit.Suite.Extended.Messagebox
 {
-    internal partial class KryptonMessageBoxExtendedFormTest : KryptonForm
+    internal partial class KryptonMessageBoxExtendedFormDeveloperTest : KryptonForm
     {
         #region Static Fields
         private const int GAP = 10;
@@ -44,12 +44,12 @@
         #endregion
 
         #region Identity
-        static KryptonMessageBoxExtendedFormTest() => OS_MAJOR_VERSION = Environment.OSVersion.Version.Major;
+        static KryptonMessageBoxExtendedFormDeveloperTest() => OS_MAJOR_VERSION = Environment.OSVersion.Version.Major;
 
-        public KryptonMessageBoxExtendedFormTest() => InitializeComponent();
+        public KryptonMessageBoxExtendedFormDeveloperTest() => InitializeComponent();
 
 
-        /// <summary>Initializes a new instance of the <see cref="KryptonMessageBoxExtendedFormTest" /> class.</summary>
+        /// <summary>Initializes a new instance of the <see cref="KryptonMessageBoxExtendedFormDeveloperTest" /> class.</summary>
         /// <param name="showOwner">The show owner.</param>
         /// <param name="text">The text.</param>
         /// <param name="caption">The caption.</param>
@@ -68,7 +68,7 @@
         /// <param name="showOptionalLinkLabel">The show optional link label.</param>
         /// <param name="optionalLinkLabelText">The optional link label text.</param>
         /// <param name="optionalLinkLabelDestination">The optional link label destination.</param>
-        internal KryptonMessageBoxExtendedFormTest(IWin32Window showOwner, string text, string caption,
+        internal KryptonMessageBoxExtendedFormDeveloperTest(IWin32Window showOwner, string text, string caption,
                                                ExtendedMessageBoxButtons buttons,
                                                ExtendedKryptonMessageBoxIcon icon,
                                                MessageBoxDefaultButton defaultButton, 

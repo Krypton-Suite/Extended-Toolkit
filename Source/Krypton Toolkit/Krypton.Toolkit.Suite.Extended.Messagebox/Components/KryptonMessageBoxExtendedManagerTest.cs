@@ -1,10 +1,11 @@
 ﻿namespace Krypton.Toolkit.Suite.Extended.Messagebox
 {
-    /// <summary>Allows the creation of a <see cref="KryptonMessageBoxExtendedTest"/> through the designer.</summary>
+    /// <summary>Allows the creation of a <see cref="KryptonMessageBoxExtendedDeveloperTest"/> through the designer.</summary>
     /// <seealso cref="Component" />
     [ToolboxBitmap(typeof(KryptonMessageBox), "ToolboxBitmaps.KryptonMessageBox.bmp"),
      DefaultEvent("ShowMessageBox"), DefaultProperty("MessageBoxContentText"),
-     Description("Allows the creation of a KryptonMessageBoxExtended through the designer.")] 
+     Description("Allows the creation of a KryptonMessageBoxExtended through the designer."),
+     ToolboxItem(false)] 
     //, Designer(typeof(KryptonMessageBoxConfiguratorDesigner))]
     public class KryptonMessageBoxManagerTest : Component
     {
@@ -274,14 +275,14 @@
             if (!ShowHelpButton)
             {
 
-                return KryptonMessageBoxExtendedTest.Show(Text, CaptionText, MessageBoxButtons,
+                return KryptonMessageBoxExtendedDeveloperTest.Show(Text, CaptionText, MessageBoxButtons,
                                                       MessageBoxIcon, DefaultButton,
                                                       Options, false,
                                                       ShowCtrlCopy);
             }
             else if (MessageBoxTypeface != null)
             {
-                return KryptonMessageBoxExtendedTest.Show(Text, CaptionText, MessageBoxButtons,
+                return KryptonMessageBoxExtendedDeveloperTest.Show(Text, CaptionText, MessageBoxButtons,
                                                       MessageBoxIcon, DefaultButton, Options,
                                                       ShowHelpButton, ShowCtrlCopy,
                                                       MessageBoxTypeface, CustomImageIcon,
@@ -295,7 +296,7 @@
             }
             else
             {
-                return KryptonMessageBoxExtendedTest.Show(Owner, Text, CaptionText,
+                return KryptonMessageBoxExtendedDeveloperTest.Show(Owner, Text, CaptionText,
                                                      MessageBoxButtons, MessageBoxIcon,
                                                      DefaultButton, Options,
                                                      HelpFilePath, HelpNavigator,
@@ -322,14 +323,14 @@
             if (!ShowHelpButton)
             {
                
-                return KryptonMessageBoxExtendedTest.Show(Text, CaptionText, MessageBoxButtons,
+                return KryptonMessageBoxExtendedDeveloperTest.Show(Text, CaptionText, MessageBoxButtons,
                                                       MessageBoxIcon, DefaultButton,
                                                       Options, false,
                                                       ShowCtrlCopy);
             }
             else if (MessageBoxTypeface != null)
             {
-                return KryptonMessageBoxExtendedTest.Show(Text, CaptionText, MessageBoxButtons,
+                return KryptonMessageBoxExtendedDeveloperTest.Show(Text, CaptionText, MessageBoxButtons,
                                                       MessageBoxIcon, DefaultButton, Options,
                                                       ShowHelpButton, ShowCtrlCopy,
                                                       MessageBoxTypeface, CustomImageIcon,
@@ -343,7 +344,7 @@
             }
             else
             {
-                return KryptonMessageBoxExtendedTest.Show(Owner, Text, CaptionText,
+                return KryptonMessageBoxExtendedDeveloperTest.Show(Owner, Text, CaptionText,
                                                      MessageBoxButtons, MessageBoxIcon,
                                                      DefaultButton, Options,
                                                      HelpFilePath, HelpNavigator,
