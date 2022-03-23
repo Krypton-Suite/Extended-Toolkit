@@ -14,6 +14,27 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
     public static class KryptonMessageBoxExtendedDeveloperTest
     {
         #region Public
+        /// <summary>Shows a messagebox.</summary>
+        /// <param name="messageText">The text.</param>
+        /// <param name="caption">The caption.</param>
+        /// <param name="buttons">The buttons.</param>
+        /// <param name="icon">The icon.</param>
+        /// <param name="showCtrlCopy">The show control copy.</param>
+        public static DialogResult Show(string messageText, string caption, ExtendedMessageBoxButtons buttons,
+            ExtendedKryptonMessageBoxIcon icon, bool? showCtrlCopy = null)
+            => InternalShow(null, messageText, caption, buttons, icon, MessageBoxDefaultButton.Button1, 0,
+                null, showCtrlCopy, null, null, null, null,
+                null, String.Empty, null, String.Empty, String.Empty);
+
+        public static DialogResult Show(string messageText, string caption, ExtendedMessageBoxButtons buttons,
+            ExtendedKryptonMessageBoxIcon icon, bool showOptionalCheckBox,
+            bool isOptionalCheckBoxChecked,
+            CheckState optionalCheckBoxCheckState, string optionalCheckBoxText, bool ? showCtrlCopy = null)
+            =>
+                InternalShow(null, messageText, caption, buttons, icon, MessageBoxDefaultButton.Button1, 0,
+                    null, showCtrlCopy, null, null, showOptionalCheckBox, isOptionalCheckBoxChecked,
+                    optionalCheckBoxCheckState, optionalCheckBoxText, null, String.Empty, String.Empty);
+
 
         /// <summary>Shows a messagebox.</summary>
         /// <param name="text">The text.</param>
