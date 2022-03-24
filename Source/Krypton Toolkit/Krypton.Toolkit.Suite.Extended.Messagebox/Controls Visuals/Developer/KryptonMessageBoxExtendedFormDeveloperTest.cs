@@ -1,6 +1,6 @@
 ﻿namespace Krypton.Toolkit.Suite.Extended.Messagebox
 {
-    internal partial class KryptonMessageBoxExtendedForm : KryptonForm
+    internal partial class KryptonMessageBoxExtendedFormDeveloperTest : KryptonForm
     {
         #region Static Fields
         private const int GAP = 10;
@@ -10,7 +10,9 @@
         #region Instance Fields
         private readonly string _text;
         private readonly string _caption;
-        
+        private readonly ExtendedMessageBoxButtons _buttons;
+        private readonly ExtendedKryptonMessageBoxIcon _kryptonMessageBoxIcon;
+
         private readonly MessageBoxDefaultButton _defaultButton;
         private readonly MessageBoxOptions _options; // https://github.com/Krypton-Suite/Standard-Toolkit/issues/313
         // If help information provided or we are not a service/default desktop application then grab an owner for showing the message box
@@ -20,46 +22,90 @@
         #endregion
 
         #region Extended Fields
+
+        private readonly bool _showOptionalCheckBox;
+
+        private readonly bool _showOptionalLinkLabel;
+
+        private readonly bool _isOptionalCheckBoxChecked;
+
+        private readonly CheckState _optionalCheckBoxCheckState;
+
         private readonly Font _messageBoxTypeface;
 
-        private readonly ExtendedMessageBoxButtons _buttons;
+        private readonly Image _customImageIcon;
 
-        private readonly ExtendedKryptonMessageBoxIcon _kryptonMessageBoxIcon;
+        private readonly string _optionalCheckBoxText;
 
-        private readonly Image _customKryptonMessageBoxIcon;
+        private readonly string _optionalLinkLabelText;
+
+        private readonly string _optionalLinkLabelDestination;
+
         #endregion
 
         #region Identity
-        static KryptonMessageBoxExtendedForm() => OS_MAJOR_VERSION = Environment.OSVersion.Version.Major;
+        static KryptonMessageBoxExtendedFormDeveloperTest() => OS_MAJOR_VERSION = Environment.OSVersion.Version.Major;
 
-        public KryptonMessageBoxExtendedForm()
-        {
-            InitializeComponent();
-        }
+        public KryptonMessageBoxExtendedFormDeveloperTest() => InitializeComponent();
 
 
-        internal KryptonMessageBoxExtendedForm(IWin32Window showOwner, string text, string caption,
+        /// <summary>Initializes a new instance of the <see cref="KryptonMessageBoxExtendedFormDeveloperTest" /> class.</summary>
+        /// <param name="showOwner">The show owner.</param>
+        /// <param name="text">The text.</param>
+        /// <param name="caption">The caption.</param>
+        /// <param name="buttons">The buttons.</param>
+        /// <param name="icon">The icon.</param>
+        /// <param name="defaultButton">The default button.</param>
+        /// <param name="options">The options.</param>
+        /// <param name="helpInfo">The help information.</param>
+        /// <param name="showCtrlCopy">The show control copy.</param>
+        /// <param name="messageBoxTypeface">The message box typeface.</param>
+        /// <param name="customImageIcon">The custom image icon.</param>
+        /// <param name="showOptionalCheckBox">The show optional CheckBox.</param>
+        /// <param name="optionalCheckBoxChecked">The optional CheckBox checked.</param>
+        /// <param name="optionalCheckBoxCheckState">State of the optional CheckBox check.</param>
+        /// <param name="optionalCheckBoxText">The optional CheckBox text.</param>
+        /// <param name="showOptionalLinkLabel">The show optional link label.</param>
+        /// <param name="optionalLinkLabelText">The optional link label text.</param>
+        /// <param name="optionalLinkLabelDestination">The optional link label destination.</param>
+        internal KryptonMessageBoxExtendedFormDeveloperTest(IWin32Window showOwner, string text, string caption,
                                                ExtendedMessageBoxButtons buttons,
                                                ExtendedKryptonMessageBoxIcon icon,
-                                               MessageBoxDefaultButton defaultButton,
+                                               MessageBoxDefaultButton defaultButton, 
                                                MessageBoxOptions options,
-                                               HelpInfo helpInfo, bool? showCtrlCopy,
-                                               Font messageBoxTypeface, 
-                                               Image customKryptonMessageBoxIcon)
+                                               HelpInfo helpInfo, bool? showCtrlCopy, 
+                                               Font messageBoxTypeface, Image customImageIcon,
+                                               bool? showOptionalCheckBox, bool? optionalCheckBoxChecked,
+                                               CheckState? optionalCheckBoxCheckState,
+                                               string optionalCheckBoxText, bool? showOptionalLinkLabel,
+                                               string optionalLinkLabelText, string optionalLinkLabelDestination)
         {
             // Store incoming values
             _text = text;
             _caption = caption;
             _buttons = buttons;
             _kryptonMessageBoxIcon = icon;
+            _customImageIcon = customImageIcon;
             _defaultButton = defaultButton;
             _options = options;
             _helpInfo = helpInfo;
             _showOwner = showOwner;
 
-            // Extended values
-            _messageBoxTypeface = messageBoxTypeface ?? new Font("Segoe UI", 8.25F);
-            _customKryptonMessageBoxIcon = customKryptonMessageBoxIcon;
+            _messageBoxTypeface = messageBoxTypeface ?? new Font(@"Segoe UI", 8.25F);
+
+            _showOptionalCheckBox = showOptionalCheckBox ?? showOptionalCheckBox.GetValueOrDefault();
+
+            _isOptionalCheckBoxChecked = optionalCheckBoxChecked ?? optionalCheckBoxChecked.GetValueOrDefault();
+
+            _showOptionalLinkLabel = showOptionalLinkLabel ?? showOptionalLinkLabel.GetValueOrDefault();
+
+            _optionalCheckBoxCheckState = optionalCheckBoxCheckState ?? optionalCheckBoxCheckState.GetValueOrDefault();
+
+            _optionalCheckBoxText = optionalCheckBoxText;
+
+            _optionalLinkLabelText = optionalLinkLabelText;
+
+            _optionalLinkLabelDestination = optionalLinkLabelDestination;
 
             // Create the form contents
             InitializeComponent();
@@ -74,12 +120,17 @@
             UpdateHelp();
             UpdateTextExtra(showCtrlCopy);
 
+            SetupCheckBox();
+
+            SetupOptionalLink();
+
             // Finally calculate and set form sizing
             UpdateSizing(showOwner);
         }
         #endregion Identity
 
         #region Methods
+
         private void UpdateText()
         {
             Text = string.IsNullOrEmpty(_caption) ? string.Empty : _caption.Split(Environment.NewLine.ToCharArray())[0];
@@ -124,16 +175,16 @@
                     {
                         SystemSounds.Beep.Play();
                     }
-
                     break;
                 case ExtendedKryptonMessageBoxIcon.CUSTOM:
-                    _messageIcon.Image = _customKryptonMessageBoxIcon;
+                    _messageIcon.Image = _customImageIcon;
                     break;
                 case ExtendedKryptonMessageBoxIcon.QUESTION:
                     _messageIcon.Image = Properties.Resources.Question;
                     SystemSounds.Question.Play();
                     break;
                 case ExtendedKryptonMessageBoxIcon.EXCLAMATION:
+                    // _messageIcon.Image = Properties.Resources.e
                 case ExtendedKryptonMessageBoxIcon.INFORMATION:
                     _messageIcon.Image = Properties.Resources.Information;
                     SystemSounds.Asterisk.Play();
@@ -245,6 +296,7 @@
                     _button2.DialogResult = DialogResult.Cancel;
                     _button1.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
                     _button2.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
+                    _button3.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
                     _button1.Visible = true;
                     _button1.Enabled = true;
                     _button2.Visible = true;
@@ -304,7 +356,7 @@
             {
                 ExtendedMessageBoxButtons.OK => _button2,
                 ExtendedMessageBoxButtons.OKCANCEL or ExtendedMessageBoxButtons.YESNO or ExtendedMessageBoxButtons.RETRYCANCEL => _button3,
-                ExtendedMessageBoxButtons.ABORTRETRYIGNORE or ExtendedMessageBoxButtons.YESNOCANCEL => _button4,
+                ExtendedMessageBoxButtons.ABORTRETRYIGNORE or ExtendedMessageBoxButtons.YESNO => _button4,
                 _ => throw new ArgumentOutOfRangeException()
             };
             if (helpButton != null)
@@ -361,8 +413,26 @@
             Size buttonsSizing = UpdateButtonsSizing();
 
             // Size of window is calculated from the client area
-            ClientSize = new Size(Math.Max(messageSizing.Width, buttonsSizing.Width),
-                                  messageSizing.Height + buttonsSizing.Height);
+            if (_showOptionalLinkLabel)
+            {
+                ClientSize = new Size(Math.Max(messageSizing.Width, buttonsSizing.Width),
+                    messageSizing.Height + buttonsSizing.Height + _panelOptionalLinkLabel.Height);
+            }
+            else if (_showOptionalCheckBox)
+            {
+                ClientSize = new Size(Math.Max(messageSizing.Width, buttonsSizing.Width), // We assume that the '_panelCheckBox' width is the same as the _panelButtons width
+                    messageSizing.Height + buttonsSizing.Height + _panelOptionalCheckbox.Height);
+            }
+            else if (_showOptionalCheckBox && _showOptionalLinkLabel)
+            {
+                ClientSize = new Size(Math.Max(messageSizing.Width, buttonsSizing.Width),
+                    messageSizing.Height + buttonsSizing.Height + _panelOptionalCheckbox.Height + _panelOptionalLinkLabel.Height);
+            }
+            else
+            {
+                ClientSize = new Size(Math.Max(messageSizing.Width, buttonsSizing.Width),
+                    messageSizing.Height + buttonsSizing.Height); 
+            }
         }
 
         private Size UpdateMessageSizing(IWin32Window showOwner)
@@ -383,8 +453,10 @@
 
                 var messageXSize = Math.Max(messageSize.Width, captionSize.Width);
                 // Work out DPI adjustment factor
-                messageSize.Width = messageXSize * FactorDpiX;
-                messageSize.Height *= FactorDpiY;
+                var factorX = g.DpiX > 96 ? (1.0f * g.DpiX / 96) : 1.0f;
+                var factorY = g.DpiY > 96 ? (1.0f * g.DpiY / 96) : 1.0f;
+                messageSize.Width = messageXSize * factorX;
+                messageSize.Height *= factorY;
 
                 // Always add on ad extra 5 pixels as sometimes the measure size does not draw the last 
                 // character it contains, this ensures there is always definitely enough space for it all
@@ -392,13 +464,9 @@
                 textSize = Size.Ceiling(messageSize);
             }
 
-            // Find size of icon area plus the text area added together
-            if (_messageIcon.Image != null)
-            {
-                return new Size(textSize.Width + _messageIcon.Width, Math.Max(_messageIcon.Height + 10, textSize.Height));
-            }
-
-            return textSize;
+            return new Size(textSize.Width + _messageIcon.Width + _messageIcon.Margin.Left + _messageIcon.Margin.Right +
+                            _messageText.Margin.Left + _messageText.Margin.Right,
+                Math.Max(_messageIcon.Height + 10, textSize.Height));
         }
 
         private Size UpdateButtonsSizing()
@@ -478,13 +546,13 @@
             // Escape key kills the dialog if we allow it to be closed
             if (ControlBox
                 && (e.KeyCode == Keys.Escape)
-                )
+               )
             {
                 Close();
             }
             else if (!e.Control
                      || (e.KeyCode != Keys.C)
-                     )
+                    )
             {
                 return;
             }
@@ -520,6 +588,71 @@
 
             Clipboard.SetText(sb.ToString(), TextDataFormat.Text);
             Clipboard.SetText(sb.ToString(), TextDataFormat.UnicodeText);
+        }
+
+        /// <summary>Setups the CheckBox.</summary>
+        private void SetupCheckBox()
+        {
+            _panelOptionalCheckbox.Visible = _showOptionalCheckBox;
+
+            _optionalCheckBox.StateCommon.ShortText.Font = _messageBoxTypeface;
+
+            _optionalCheckBox.StateCommon.LongText.Font = _messageBoxTypeface;
+
+            _optionalCheckBox.Text = _optionalCheckBoxText;
+
+            _optionalCheckBox.CheckState = _optionalCheckBoxCheckState;
+
+            _optionalCheckBox.Checked = _isOptionalCheckBoxChecked;
+        }
+
+        /// <summary>Gets the optional CheckBox checked state.</summary>
+        /// <returns>
+        ///   <br />
+        /// </returns>
+        internal bool GetOptionalCheckBoxChecked() => _optionalCheckBox.Checked;
+
+        /// <summary>Gets the state of the optional CheckBox check state.</summary>
+        /// <returns>
+        ///   <br />
+        /// </returns>
+        internal CheckState GetOptionalCheckBoxCheckState() => _optionalCheckBox.CheckState;
+
+        private void SetupOptionalLink()
+        {
+            _panelOptionalLinkLabel.Visible = _showOptionalLinkLabel;
+
+            _optionalLinkLabel.StateCommon.ShortText.Font = _messageBoxTypeface;
+
+            _optionalLinkLabel.StateCommon.LongText.Font = _messageBoxTypeface;
+
+            _optionalLinkLabel.Text = _optionalLinkLabelText;
+
+            _optionalLinkLabel.LinkClicked += OptionalLink_LinkClicked;
+        }
+
+        public new DialogResult ShowDialog(IWin32Window owner)
+        {
+            if (_showOptionalCheckBox)
+            {
+                GetOptionalCheckBoxChecked();
+            }
+
+            return base.ShowDialog(owner);
+        }
+        #endregion
+
+        #region Event Handlers
+        private void OptionalLink_LinkClicked(object sender, EventArgs e)
+        {
+            try
+            {
+                Process.Start(_optionalLinkLabelDestination);
+            }
+            catch (Exception exc)
+            {
+                Debug.Write(exc.ToString());
+            }
         }
         #endregion
     }

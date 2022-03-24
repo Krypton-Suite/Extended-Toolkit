@@ -1,10 +1,19 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Messagebox
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ */
+#endregion
+
+
+namespace Krypton.Toolkit.Suite.Extended.Messagebox
 {
     /// <summary>Displays a message box that can contain text, buttons, and symbols that inform and instruct the user.</summary>
     [DesignerCategory(@"code"), ToolboxItem(false)]
-    public static class KryptonMessageBoxExtended
+    public static class KryptonMessageBoxExtendedDeveloperTest
     {
-        #region Public 
+        #region Public
         /// <summary>Shows a messagebox.</summary>
         /// <param name="messageText">The text.</param>
         /// <param name="caption">The caption.</param>
@@ -14,10 +23,21 @@
         public static DialogResult Show(string messageText, string caption, ExtendedMessageBoxButtons buttons,
             ExtendedKryptonMessageBoxIcon icon, bool? showCtrlCopy = null)
             => InternalShow(null, messageText, caption, buttons, icon, MessageBoxDefaultButton.Button1, 0,
-                null, showCtrlCopy, null, null);
+                null, showCtrlCopy, null, null, null, null,
+                null, String.Empty, null, String.Empty, String.Empty);
+
+        public static DialogResult Show(string messageText, string caption, ExtendedMessageBoxButtons buttons,
+            ExtendedKryptonMessageBoxIcon icon, bool showOptionalCheckBox,
+            bool isOptionalCheckBoxChecked,
+            CheckState optionalCheckBoxCheckState, string optionalCheckBoxText, bool ? showCtrlCopy = null)
+            =>
+                InternalShow(null, messageText, caption, buttons, icon, MessageBoxDefaultButton.Button1, 0,
+                    null, showCtrlCopy, null, null, showOptionalCheckBox, isOptionalCheckBoxChecked,
+                    optionalCheckBoxCheckState, optionalCheckBoxText, null, String.Empty, String.Empty);
+
 
         /// <summary>Shows a messagebox.</summary>
-        /// <param name="messageText">The text.</param>
+        /// <param name="text">The text.</param>
         /// <param name="caption">The caption.</param>
         /// <param name="buttons">The buttons.</param>
         /// <param name="icon">The icon.</param>
@@ -27,10 +47,14 @@
         /// <param name="showCtrlCopy">The show control copy.</param>
         /// <param name="messageBoxTypeface">The message box typeface.</param>
         /// <param name="customImageIcon">The custom image icon.</param>
+        /// <param name="showOptionalCheckBox">if set to <c>true</c> [show optional CheckBox].</param>
+        /// <param name="isOptionalCheckBoxChecked">if set to <c>true</c> [is optional CheckBox checked].</param>
+        /// <param name="optionalCheckBoxCheckState">State of the optional CheckBox check.</param>
+        /// <param name="optionalCheckBoxText">The optional CheckBox text.</param>
         /// <returns>
         ///   <br />
         /// </returns>
-        public static DialogResult Show(string messageText, string caption = @"",
+        public static DialogResult Show(string text, string caption = @"",
                                  ExtendedMessageBoxButtons buttons = ExtendedMessageBoxButtons.OK,
                                  ExtendedKryptonMessageBoxIcon icon = ExtendedKryptonMessageBoxIcon.NONE,
                                  MessageBoxDefaultButton defaultButton = MessageBoxDefaultButton.Button1,
@@ -38,14 +62,22 @@
                                  bool displayHelpButton = false,
                                  bool? showCtrlCopy = null,
                                  Font messageBoxTypeface = null,
-                                 Image customImageIcon = null)
+                                 Image customImageIcon = null,
+                                 bool showOptionalCheckBox = false,
+                                 bool isOptionalCheckBoxChecked = false,
+                                 CheckState optionalCheckBoxCheckState = CheckState.Unchecked,
+                                 string optionalCheckBoxText = @"", bool? showOptionalLinkLabel = null,
+                                                  string optionalLinkLabelText = @"", string optionalLinkLabelDestination = @"")
             =>
-                InternalShow(null, messageText, caption, buttons, icon, defaultButton, options,
-                             displayHelpButton ? new HelpInfo() : null, showCtrlCopy,
-                             messageBoxTypeface, customImageIcon);
+                InternalShow(null, text, caption, buttons, icon, defaultButton, options,
+                             displayHelpButton ? new HelpInfo() : null, showCtrlCopy, 
+                             messageBoxTypeface, customImageIcon, showOptionalCheckBox,
+                             isOptionalCheckBoxChecked, optionalCheckBoxCheckState,
+                             optionalCheckBoxText, showOptionalLinkLabel,
+                             optionalLinkLabelText, optionalLinkLabelDestination);
 
         /// <summary>Shows a messagebox.</summary>
-        /// <param name="messageText">The text.</param>
+        /// <param name="text">The text.</param>
         /// <param name="caption">The caption.</param>
         /// <param name="buttons">The buttons.</param>
         /// <param name="icon">The icon.</param>
@@ -56,7 +88,7 @@
         /// <returns>
         ///   <br />
         /// </returns>
-        public static DialogResult Show(string messageText, string caption,
+        public static DialogResult Show(string text, string caption,
             ExtendedMessageBoxButtons buttons,
             ExtendedKryptonMessageBoxIcon icon,
             MessageBoxDefaultButton defaultButton = MessageBoxDefaultButton.Button1,
@@ -64,13 +96,15 @@
             bool displayHelpButton = false,
             bool? showCtrlCopy = null)
             =>
-                InternalShow(null, messageText, caption, buttons, icon, defaultButton, options,
+                InternalShow(null, text, caption, buttons, icon, defaultButton, options,
                              displayHelpButton ? new HelpInfo() : null, showCtrlCopy,
-                             null, null);
+                             null, null, false,
+                             false, CheckState.Unchecked,
+                             @"", null, @"", @"");
 
         /// <summary>Shows a messagebox.</summary>
         /// <param name="owner">The owner.</param>
-        /// <param name="messageText">The text.</param>
+        /// <param name="text">The text.</param>
         /// <param name="caption">The caption.</param>
         /// <param name="buttons">The buttons.</param>
         /// <param name="icon">The icon.</param>
@@ -83,7 +117,7 @@
         /// <returns>
         ///   <br />
         /// </returns>
-        public static DialogResult Show(IWin32Window owner, string messageText, string caption = @"",
+        public static DialogResult Show(IWin32Window owner, string text, string caption = @"",
             ExtendedMessageBoxButtons buttons = ExtendedMessageBoxButtons.OK,
             ExtendedKryptonMessageBoxIcon icon = ExtendedKryptonMessageBoxIcon.NONE,
             MessageBoxDefaultButton defaultButton = MessageBoxDefaultButton.Button1,
@@ -93,13 +127,15 @@
             Font messageBoxTypeface = null,
             Image customImageIcon = null)
             =>
-                InternalShow(owner, messageText, caption, buttons, icon, defaultButton, options,
+                InternalShow(owner, text, caption, buttons, icon, defaultButton, options,
                              displayHelpButton ? new HelpInfo() : null, showCtrlCopy,
-                             messageBoxTypeface, customImageIcon);
+                             messageBoxTypeface, customImageIcon, false,
+                             false, CheckState.Unchecked,
+                             @"", null, @"", @"");
 
         /// <summary>Shows a messagebox.</summary>
         /// <param name="owner">The owner.</param>
-        /// <param name="messageText">The text.</param>
+        /// <param name="text">The text.</param>
         /// <param name="caption">The caption.</param>
         /// <param name="buttons">The buttons.</param>
         /// <param name="icon">The icon.</param>
@@ -110,7 +146,7 @@
         /// <returns>
         ///   <br />
         /// </returns>
-        public static DialogResult Show(IWin32Window owner, string messageText, string caption,
+        public static DialogResult Show(IWin32Window owner, string text, string caption,
             ExtendedMessageBoxButtons buttons,
             ExtendedKryptonMessageBoxIcon icon,
             MessageBoxDefaultButton defaultButton = MessageBoxDefaultButton.Button1,
@@ -118,12 +154,14 @@
             bool displayHelpButton = false,
             bool? showCtrlCopy = null)
             =>
-                InternalShow(owner, messageText, caption, buttons, icon, defaultButton, options,
-                    displayHelpButton ? new HelpInfo() : null, showCtrlCopy,
-                    null, null);
+                InternalShow(owner, text, caption, buttons, icon, defaultButton, options,
+                             displayHelpButton ? new HelpInfo() : null, showCtrlCopy, 
+                             null, null, false,
+                             false, CheckState.Unchecked,
+                             @"", null, @"", @"");
 
         /// <summary>Shows a messagebox.</summary>
-        /// <param name="messageText">The text.</param>
+        /// <param name="text">The text.</param>
         /// <param name="caption">The caption.</param>
         /// <param name="buttons">The buttons.</param>
         /// <param name="icon">The icon.</param>
@@ -135,10 +173,14 @@
         /// <param name="showCtrlCopy">The show control copy.</param>
         /// <param name="messageBoxTypeface">The message box typeface.</param>
         /// <param name="customImageIcon">The custom image icon.</param>
+        /// <param name="showOptionalCheckBox">if set to <c>true</c> [show optional CheckBox].</param>
+        /// <param name="isOptionalCheckBoxChecked">if set to <c>true</c> [is optional CheckBox checked].</param>
+        /// <param name="optionalCheckBoxCheckState">State of the optional CheckBox check.</param>
+        /// <param name="optionalCheckBoxText">The optional CheckBox text.</param>
         /// <returns>
         ///   <br />
         /// </returns>
-        public static DialogResult Show(string messageText, string caption = @"",
+        public static DialogResult Show(string text, string caption = @"",
                                  ExtendedMessageBoxButtons buttons = ExtendedMessageBoxButtons.OK,
                                  ExtendedKryptonMessageBoxIcon icon = ExtendedKryptonMessageBoxIcon.NONE,
                                  MessageBoxDefaultButton defaultButton = MessageBoxDefaultButton.Button1,
@@ -148,15 +190,23 @@
                                  object param = null,
                                  bool? showCtrlCopy = null,
                                  Font messageBoxTypeface = null,
-                                 Image customImageIcon = null)
+                                 Image customImageIcon = null,
+                                 bool showOptionalCheckBox = false,
+                                 bool isOptionalCheckBoxChecked = false,
+                                 CheckState optionalCheckBoxCheckState = CheckState.Unchecked,
+                                 string optionalCheckBoxText = @"", bool showOptionalLinkLabel = false,
+                                          string optionalLinkLabelText = @"", string optionalLinkLabelDestination = @"")
             =>
-                InternalShow(null, messageText, caption, buttons, icon, defaultButton, options,
+                InternalShow(null, text, caption, buttons, icon, defaultButton, options,
                              new HelpInfo(helpFilePath, navigator, param), showCtrlCopy,
-                             messageBoxTypeface, customImageIcon);
+                             messageBoxTypeface, customImageIcon, showOptionalCheckBox,
+                             isOptionalCheckBoxChecked, optionalCheckBoxCheckState,
+                             optionalCheckBoxText, showOptionalLinkLabel,
+                             optionalLinkLabelText, optionalLinkLabelDestination);
 
         /// <summary>Shows a messagebox.</summary>
         /// <param name="owner">The owner.</param>
-        /// <param name="messageText">The text.</param>
+        /// <param name="text">The text.</param>
         /// <param name="caption">The caption.</param>
         /// <param name="buttons">The buttons.</param>
         /// <param name="icon">The icon.</param>
@@ -168,10 +218,14 @@
         /// <param name="showCtrlCopy">The show control copy.</param>
         /// <param name="messageBoxTypeface">The message box typeface.</param>
         /// <param name="customImageIcon">The custom image icon.</param>
+        /// <param name="showOptionalCheckBox">if set to <c>true</c> [show optional CheckBox].</param>
+        /// <param name="isOptionalCheckBoxChecked">if set to <c>true</c> [is optional CheckBox checked].</param>
+        /// <param name="optionalCheckBoxCheckState">State of the optional CheckBox check.</param>
+        /// <param name="optionalCheckBoxText">The optional CheckBox text.</param>
         /// <returns>
         ///   <br />
         /// </returns>
-        public static DialogResult Show(IWin32Window owner, string messageText, string caption = @"",
+        public static DialogResult Show(IWin32Window owner, string text, string caption = @"",
                                  ExtendedMessageBoxButtons buttons = ExtendedMessageBoxButtons.OK,
                                  ExtendedKryptonMessageBoxIcon icon = ExtendedKryptonMessageBoxIcon.NONE,
                                  MessageBoxDefaultButton defaultButton = MessageBoxDefaultButton.Button1,
@@ -182,12 +236,20 @@
                                  bool displayHelpButton = false,
                                  bool? showCtrlCopy = null,
                                  Font messageBoxTypeface = null,
-                                 Image customImageIcon = null)
+                                 Image customImageIcon = null,
+                                 bool showOptionalCheckBox = false,
+                                 bool isOptionalCheckBoxChecked = false,
+                                 CheckState optionalCheckBoxCheckState = CheckState.Unchecked,
+                                 string optionalCheckBoxText = @"", bool showOptionalLinkLabel = false,
+                                 string optionalLinkLabelText = @"", string optionalLinkLabelDestination = @"")
             =>
-                InternalShow(owner, messageText, caption, buttons, icon, defaultButton, options,
+                InternalShow(owner, text, caption, buttons, icon, defaultButton, options,
                              displayHelpButton ? new HelpInfo(helpFilePath, navigator, param) : null,
-                             showCtrlCopy,
-                             messageBoxTypeface, customImageIcon);
+                             showCtrlCopy, 
+                             messageBoxTypeface, customImageIcon, showOptionalCheckBox,
+                             isOptionalCheckBoxChecked, optionalCheckBoxCheckState,
+                             optionalCheckBoxText, showOptionalLinkLabel, optionalLinkLabelText,
+                             optionalLinkLabelDestination);
         #endregion
 
         #region Implementation
@@ -204,6 +266,13 @@
         /// <param name="showCtrlCopy">The show control copy.</param>
         /// <param name="messageBoxTypeface">The message box typeface.</param>
         /// <param name="customImageIcon">The custom image icon.</param>
+        /// <param name="showOptionalCheckBox">The show optional CheckBox.</param>
+        /// <param name="optionalCheckBoxChecked">The optional CheckBox checked.</param>
+        /// <param name="optionalCheckBoxCheckState">State of the optional CheckBox check.</param>
+        /// <param name="optionalCheckBoxText">The optional CheckBox text.</param>
+        /// <param name="showOptionalLinkLabel">The show optional link label.</param>
+        /// <param name="optionalLinkLabelText">The optional link label text.</param>
+        /// <param name="optionalLinkLabelDestination">The optional link label destination.</param>
         /// <returns>
         ///   <br />
         /// </returns>
@@ -211,18 +280,25 @@
                                                   ExtendedMessageBoxButtons buttons,
                                                   ExtendedKryptonMessageBoxIcon icon,
                                                   MessageBoxDefaultButton defaultButton,
-                                                  MessageBoxOptions options,
+                                                  MessageBoxOptions options,                          
                                                   HelpInfo helpInfo,
                                                   bool? showCtrlCopy, Font messageBoxTypeface,
-                                                  Image customImageIcon)
+                                                  Image customImageIcon, bool? showOptionalCheckBox, 
+                                                  bool? optionalCheckBoxChecked,
+                                                  CheckState? optionalCheckBoxCheckState,
+                                                  string optionalCheckBoxText, bool? showOptionalLinkLabel,
+                                                  string optionalLinkLabelText, string optionalLinkLabelDestination)
         {
             IWin32Window showOwner = ValidateOptions(owner, options, helpInfo);
 
-            using KryptonMessageBoxExtendedForm kmbef = new(showOwner, text, caption, buttons,
+            using KryptonMessageBoxExtendedFormDeveloperTest kmbef = new(showOwner, text, caption, buttons,
                                                             icon, defaultButton, options,
                                                             helpInfo, showCtrlCopy,
                                                             messageBoxTypeface,
-                                                            customImageIcon);
+                                                            customImageIcon, showOptionalCheckBox,
+                                                            optionalCheckBoxChecked, optionalCheckBoxCheckState,
+                                                            optionalCheckBoxText, showOptionalLinkLabel,
+                                                            optionalLinkLabelText, optionalLinkLabelDestination);
 
             return kmbef.ShowDialog(showOwner);
         }
@@ -263,5 +339,6 @@
             return showOwner;
         }
         #endregion
+
     }
 }
