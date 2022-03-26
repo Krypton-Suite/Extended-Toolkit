@@ -59,43 +59,58 @@
 		</Description>
 	</PropertyGroup>
 
-	<Choose>
-	    <When Condition="'$(Configuration)' == 'Canary'">
-		    <PropertyGroup>
-			    <LangVersion>preview</LangVersion>
-		    </PropertyGroup>
+    <Choose>
+	    <When Condition="'$(SolutionName.Endswith(`NuGet`))'">
+		    <Choose>
+			    <When Condition="'$(Configuration)' == 'Nightly'">
+				    <PropertyGroup>
+					    <LangVersion>preview</LangVersion>
+				    </PropertyGroup>
 
-		    <ItemGroup>
-			    <PackageReference Include="Krypton.Toolkit.Canary" Version="60.22.3.81-beta" />
-		    </ItemGroup>
+				    <ItemGroup>
+					    <PackageReference Include="Krypton.Toolkit.Nightly" Version="65.22.3.77-alpha" />
+				    </ItemGroup>
+			    </When>
+			    <Otherwise>
+				    <Choose>
+					    <When Condition="'$(Configuration)' == 'Canary'">
+						    <PropertyGroup>
+							    <LangVersion>preview</LangVersion>
+						    </PropertyGroup>
+
+						    <ItemGroup>
+							    <PackageReference Include="Krypton.Toolkit.Canary" Version="60.22.3.81-beta" />
+						    </ItemGroup>
+					    </When>
+					    <Otherwise>
+						    <Choose>
+							    <When Condition="'$(Configuration)' == 'Signed'">
+								    <PropertyGroup>
+									    <LangVersion>preview</LangVersion>
+								    </PropertyGroup>
+
+								    <ItemGroup>
+									    <PackageReference Include="Krypton.Toolkit.Signed" Version="60.22.4.4" />
+								    </ItemGroup>
+							    </When>
+							    <Otherwise>
+								    <PropertyGroup>
+									    <LangVersion>preview</LangVersion>
+								    </PropertyGroup>
+
+								    <ItemGroup>
+									    <PackageReference Include="Krypton.Toolkit" Version="60.22.2.32" />
+								    </ItemGroup>
+							    </Otherwise>
+						    </Choose>
+					    </Otherwise>
+				    </Choose>
+			    </Otherwise>
+		    </Choose>
 	    </When>
-
-		<When Condition="'$(Configuration)' == 'Nightly'">
-			<PropertyGroup>
-				<LangVersion>preview</LangVersion>
-			</PropertyGroup>
-
-			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="65.22.3.77-alpha" />
-			</ItemGroup>
-		</When>
-
-		<When Condition="'$(Configuration)' == 'Signed'">
-			<PropertyGroup>
-				<LangVersion>preview</LangVersion>
-			</PropertyGroup>
-
-			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Signed" Version="60.22.4.4" />
-			</ItemGroup>
-		</When>
 	    <Otherwise>
-		    <PropertyGroup>
-			    <LangVersion>preview</LangVersion>
-		    </PropertyGroup>
-
 		    <ItemGroup>
-			    <PackageReference Include="Krypton.Toolkit" Version="60.22.2.32" />
+			    <ProjectReference Include="..\..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Toolkit\Krypton.Toolkit 2022.csproj" />
 		    </ItemGroup>
 	    </Otherwise>
     </Choose>
@@ -121,37 +136,42 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Compile Update="Properties\Resources.Designer.cs">
-        <DesignTime>True</DesignTime>
-        <AutoGen>True</AutoGen>
-        <DependentUpon>Resources.resx</DependentUpon>
-      </Compile>
-      <Compile Update="Resources\Language\Strings.en-Neutral.Designer.cs">
-        <DesignTime>True</DesignTime>
-        <AutoGen>True</AutoGen>
-        <DependentUpon>Strings.en-Neutral.resx</DependentUpon>
-      </Compile>
-      <Compile Update="Resources\OutlookGridImageResources.Designer.cs">
-        <DesignTime>True</DesignTime>
-        <AutoGen>True</AutoGen>
-        <DependentUpon>OutlookGridImageResources.resx</DependentUpon>
-      </Compile>
+	    <Compile Update="Properties\Resources.Designer.cs">
+		    <DesignTime>True</DesignTime>
+		    <AutoGen>True</AutoGen>
+		    <DependentUpon>Resources.resx</DependentUpon>
+	    </Compile>
+	    
+	    <Compile Update="Resources\Language\Strings.en-Neutral.Designer.cs">
+		    <DesignTime>True</DesignTime>
+		    <AutoGen>True</AutoGen>
+		    <DependentUpon>Strings.en-Neutral.resx</DependentUpon>
+	    </Compile>
+	    
+	    <Compile Update="Resources\OutlookGridImageResources.Designer.cs">
+		    <DesignTime>True</DesignTime>
+		    <AutoGen>True</AutoGen>
+		    <DependentUpon>OutlookGridImageResources.resx</DependentUpon>
+	    </Compile>
     </ItemGroup>
 
     <ItemGroup>
-      <EmbeddedResource Update="Properties\Resources.resx">
-        <Generator>ResXFileCodeGenerator</Generator>
-        <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      </EmbeddedResource>
-      <EmbeddedResource Update="Resources\Language\Strings.en-Neutral.resx">
-        <Generator>ResXFileCodeGenerator</Generator>
-        <LastGenOutput>Strings.en-Neutral.Designer.cs</LastGenOutput>
-      </EmbeddedResource>
-      <EmbeddedResource Update="Resources\OutlookGridImageResources.resx">
-        <Generator>ResXFileCodeGenerator</Generator>
-        <LastGenOutput>OutlookGridImageResources.Designer.cs</LastGenOutput>
-      </EmbeddedResource>
+	    <EmbeddedResource Update="Properties\Resources.resx">
+		    <Generator>ResXFileCodeGenerator</Generator>
+		    <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+	    </EmbeddedResource>
+	    
+	    <EmbeddedResource Update="Resources\Language\Strings.en-Neutral.resx">
+		    <Generator>ResXFileCodeGenerator</Generator>
+		    <LastGenOutput>Strings.en-Neutral.Designer.cs</LastGenOutput>
+	    </EmbeddedResource>
+	    
+	    <EmbeddedResource Update="Resources\OutlookGridImageResources.resx">
+		    <Generator>ResXFileCodeGenerator</Generator>
+		    <LastGenOutput>OutlookGridImageResources.Designer.cs</LastGenOutput>
+	    </EmbeddedResource>
     </ItemGroup>
+    
     <!--Binary/Documentation Output-->
     <PropertyGroup>
         <DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Outlook.Grid\Krypton.Toolkit.Suite.Extended.Outlook.Grid.xml</DocumentationFile>

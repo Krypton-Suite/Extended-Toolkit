@@ -58,90 +58,105 @@
 		</Description>
 	</PropertyGroup>
 
-  <Choose>
-      <When Condition="'$(Configuration)' == 'Canary'">
-          <PropertyGroup>
-              <LangVersion>preview</LangVersion>
-          </PropertyGroup>
+    <Choose>
+	    <When Condition="'$(SolutionName.Endswith(`NuGet`))'">
+		    <Choose>
+			    <When Condition="'$(Configuration)' == 'Nightly'">
+				    <PropertyGroup>
+					    <LangVersion>preview</LangVersion>
+				    </PropertyGroup>
+				    
+				    <ItemGroup>
+					    <PackageReference Include="Krypton.Toolkit.Nightly" Version="65.22.3.77-alpha" />
 
-          <ItemGroup>
-	          <PackageReference Include="Krypton.Docking.Canary" Version="60.22.3.81-beta" />
+					    <PackageReference Include="Krypton.Toolkit.Nightly" Version="65.22.3.77-alpha" />
 
-	          <PackageReference Include="Krypton.Toolkit.Canary" Version="60.22.3.81-beta" />
+					    <PackageReference Include="Krypton.Toolkit.Nightly" Version="65.22.3.77-alpha" />
 
-	          <PackageReference Include="Krypton.Ribbon.Canary" Version="60.22.3.81-beta" />
+					    <PackageReference Include="Krypton.Ribbon.Nightly" Version="65.22.3.77-alpha" />
 
-	          <PackageReference Include="Krypton.Navigator.Canary" Version="60.22.3.81-beta" />
-          </ItemGroup>
-      </When>
+					    <PackageReference Include="Krypton.Navigator.Nightly" Version="65.22.3.77-alpha" />
+				    </ItemGroup>
+			    </When>
+			    <Otherwise>
+				    <Choose>
+					    <When Condition="'$(Configuration)' == 'Canary'">
+						    <PropertyGroup>
+							    <LangVersion>preview</LangVersion>
+						    </PropertyGroup>
 
-	  <When Condition="'$(Configuration)' == 'Nightly'">
-		  <PropertyGroup>
-			  <LangVersion>preview</LangVersion>
-		  </PropertyGroup>
+						    <ItemGroup>
+							    <PackageReference Include="Krypton.Toolkit.Canary" Version="60.22.3.81-beta" />
 
-		  <ItemGroup>
-			  <PackageReference Include="Krypton.Docking.Nightly" Version="65.22.3.77-alpha" />
-			  
-			  <PackageReference Include="Krypton.Toolkit.Nightly" Version="65.22.3.77-alpha" />
+							    <PackageReference Include="Krypton.Toolkit.Canary" Version="60.22.3.81-beta" />
 
-			  <PackageReference Include="Krypton.Toolkit.Nightly" Version="65.22.3.77-alpha" />
+							    <PackageReference Include="Krypton.Ribbon.Canary" Version="60.22.3.81-beta" />
 
-			  <PackageReference Include="Krypton.Ribbon.Nightly" Version="65.22.3.77-alpha" />
+							    <PackageReference Include="Krypton.Navigator.Canary" Version="60.22.3.81-beta" />
+						    </ItemGroup>
+					    </When>
+					    <Otherwise>
+						    <Choose>
+							    <When Condition="'$(Configuration)' == 'Signed'">
+								    <PropertyGroup>
+									    <LangVersion>preview</LangVersion>
+								    </PropertyGroup>
 
-			  <PackageReference Include="Krypton.Navigator.Nightly" Version="65.22.3.77-alpha" />
-		  </ItemGroup>
-	  </When>
+								    <ItemGroup>
+									    <PackageReference Include="Krypton.Toolkit.Signed" Version="60.22.4.4" />
 
-	  <When Condition="'$(Configuration)' == 'Signed'">
-		  <PropertyGroup>
-			  <LangVersion>preview</LangVersion>
-		  </PropertyGroup>
+									    <PackageReference Include="Krypton.Toolkit.Signed" Version="60.22.4.4" />
 
-		  <ItemGroup>
-			  <PackageReference Include="Krypton.Docking.Signed" Version="60.22.4.4" />
+									    <PackageReference Include="Krypton.Toolkit.Signed" Version="60.22.4.4" />
 
-			  <PackageReference Include="Krypton.Toolkit.Signed" Version="60.22.4.4" />
+									    <PackageReference Include="Krypton.Ribbon.Signed" Version="60.22.4.4" />
 
-			  <PackageReference Include="Krypton.Toolkit.Signed" Version="60.22.4.4" />
+									    <PackageReference Include="Krypton.Navigator.Signed" Version="60.22.4.4" />
+								    </ItemGroup>
+							    </When>
+							    <Otherwise>
+								    <PropertyGroup>
+									    <LangVersion>preview</LangVersion>
+								    </PropertyGroup>
+								    
+								    <ItemGroup>
+									    <PackageReference Include="Krypton.Toolkit" Version="60.22.2.32" />
 
-			  <PackageReference Include="Krypton.Ribbon.Signed" Version="60.22.4.4" />
+									    <PackageReference Include="Krypton.Toolkit" Version="60.22.2.32" />
 
-			  <PackageReference Include="Krypton.Navigator.Signed" Version="60.22.4.4" />
-		  </ItemGroup>
-	  </When>
-      <Otherwise>
-          <PropertyGroup>
-              <LangVersion>preview</LangVersion>
-          </PropertyGroup>
+									    <PackageReference Include="Krypton.Ribbon" Version="60.22.2.32" />
 
-          <ItemGroup>
-	          <PackageReference Include="Krypton.Docking" Version="60.22.2.32" />
+									    <PackageReference Include="Krypton.Navigator" Version="60.22.2.32" />
+								    </ItemGroup>
+							    </Otherwise>
+						    </Choose>
+					    </Otherwise>
+				    </Choose>
+			    </Otherwise>
+		    </Choose>
+	    </When>
+	    <Otherwise>
+		    <ItemGroup>
+			    <ProjectReference Include="..\..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Toolkit\Krypton.Toolkit 2022.csproj" />
+		    </ItemGroup>
+	    </Otherwise>
+    </Choose>
 
-	          <PackageReference Include="Krypton.Toolkit" Version="60.22.2.32" />
+    <!--Binary/Documentation Output-->
+    <PropertyGroup>
+	    <DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Common\Krypton.Toolkit.Suite.Extended.Common.xml</DocumentationFile>
+	    <OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Common\</OutputPath>
+    </PropertyGroup>
 
-	          <PackageReference Include="Krypton.Ribbon" Version="60.22.2.32" />
+    <ItemGroup>
+	    <PackageReference Include="EasyScintilla" Version="1.0.5" />
+	    <PackageReference Include="WindowsAPICodePack" Version="1.1.2" />
+    </ItemGroup>
 
-	          <PackageReference Include="Krypton.Navigator" Version="60.22.2.32" />
-          </ItemGroup>
-      </Otherwise>
-  </Choose>
-
-  <!--Binary/Documentation Output-->
-  <PropertyGroup>
-    <DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Common\Krypton.Toolkit.Suite.Extended.Common.xml</DocumentationFile>
-    <OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Common\</OutputPath>
-  </PropertyGroup>
-
-  <ItemGroup>
-      <PackageReference Include="EasyScintilla" Version="1.0.5" />
-      <PackageReference Include="WindowsAPICodePack" Version="1.1.2" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Controls\Krypton.Toolkit.Suite.Extended.Controls 2022.csproj" />
-    <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Global.Utilities\Krypton.Toolkit.Suite.Extended.Global.Utilities 2022.csproj" />
-    <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Settings\Krypton.Toolkit.Suite.Extended.Settings 2022.csproj" />
-  </ItemGroup>
+    <ItemGroup>
+	    <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Controls\Krypton.Toolkit.Suite.Extended.Controls 2022.csproj" />
+	    <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Global.Utilities\Krypton.Toolkit.Suite.Extended.Global.Utilities 2022.csproj" />
+	    <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Settings\Krypton.Toolkit.Suite.Extended.Settings 2022.csproj" />
+    </ItemGroup>
 
 </Project>
