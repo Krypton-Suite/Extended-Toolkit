@@ -301,8 +301,6 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
                 case PaletteModeManager.Custom:
                     themeList.SelectedIndex = 18;
                     break;
-                default:
-                    break;
             }
         }
 

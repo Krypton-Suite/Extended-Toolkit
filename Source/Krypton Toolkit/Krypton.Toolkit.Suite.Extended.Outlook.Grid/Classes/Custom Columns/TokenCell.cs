@@ -1,4 +1,22 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ */
+
+//--------------------------------------------------------------------------------
+// Copyright (C) 2013-2021 JDH Software - <support@jdhsoftware.com>
+//
+// This program is provided to you under the terms of the Microsoft Public
+// License (Ms-PL) as published at https://github.com/Cocotteseb/Krypton-OutlookGrid/blob/master/LICENSE.md
+//
+// Visit https://www.jdhsoftware.com and follow @jdhsoftware on Twitter
+//
+//--------------------------------------------------------------------------------
+#endregion
+
+namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 {
     /// <summary>
     /// Class for a Token cell
@@ -14,18 +32,18 @@
         {
             //Value type is an integer. 
             //Formatted value type is an image since we derive from the ImageCell 
-            this.ValueType = typeof(TokenCell);
+            ValueType = typeof(TokenCell);
         }
 
         /// <summary>
-        /// Returns a <see cref="System.String" /> that represents this instance.
+        /// Returns a <see cref="string" /> that represents this instance.
         /// </summary>
         /// <returns>
-        /// A <see cref="System.String" /> that represents this instance.
+        /// A <see cref="string" /> that represents this instance.
         /// </returns>
         public override string ToString()
         {
-            Token tok = (Token)this.Value;
+            Token tok = (Token)Value;
             if (tok != null)
             {
                 return tok.Text;
@@ -58,10 +76,10 @@
             int nextPosition = cellBounds.X + (int)(1 * factorX);
             Font f = KryptonManager.CurrentGlobalPalette.GetContentShortTextFont(PaletteContentStyle.GridDataCellList, PaletteState.Normal);
 
-            Token tok = (Token)this.Value;
+            Token tok = (Token)Value;
             if (tok != null)
             {
-                Rectangle rectangle = new Rectangle();
+                Rectangle rectangle = new();
                 Size s = TextRenderer.MeasureText(tok.Text, f);
                 rectangle.Width = s.Width + (int)(10 * factorX);
                 rectangle.X = nextPosition;
@@ -90,9 +108,9 @@
             Size tmpSize = base.GetPreferredSize(graphics, cellStyle, rowIndex, constraintSize);
             Font f = KryptonManager.CurrentGlobalPalette.GetContentShortTextFont(PaletteContentStyle.GridDataCellList, PaletteState.Normal);
             int nextPosition = (int)(1 * factorX);
-            if (this.Value != null)
+            if (Value != null)
             {
-                Token tok = (Token)this.Value;
+                Token tok = (Token)Value;
                 Size s = TextRenderer.MeasureText(tok.Text, f);
                 nextPosition += s.Width + (int)(10 * factorX) + (int)(5 * factorX);
 
@@ -105,10 +123,7 @@
         /// Update cell's value when the user clicks on a star 
         /// </summary>
         /// <param name="e">A DataGridViewCellEventArgs that contains the event data.</param>
-        protected override void OnContentClick(DataGridViewCellEventArgs e)
-        {
-            base.OnContentClick(e);
-        }
+        protected override void OnContentClick(DataGridViewCellEventArgs e) => base.OnContentClick(e);
 
         #region Invalidate cells when mouse moves or leaves the cell
 
@@ -116,19 +131,13 @@
         /// Overrides OnMouseLeave
         /// </summary>
         /// <param name="rowIndex">the row that contains the cell.</param>
-        protected override void OnMouseLeave(int rowIndex)
-        {
-            base.OnMouseLeave(rowIndex);
-        }
+        protected override void OnMouseLeave(int rowIndex) => base.OnMouseLeave(rowIndex);
 
         /// <summary>
         /// Overrides OnMouseMove
         /// </summary>
         /// <param name="e">A DataGridViewCellMouseEventArgs that contains the event data.</param>
-        protected override void OnMouseMove(DataGridViewCellMouseEventArgs e)
-        {
-            base.OnMouseMove(e);
-        }
+        protected override void OnMouseMove(DataGridViewCellMouseEventArgs e) => base.OnMouseMove(e);
         #endregion
     }
 }

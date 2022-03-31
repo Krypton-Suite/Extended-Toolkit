@@ -7,7 +7,6 @@
 #endregion
 
 using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
-using System.Runtime.InteropServices;
 
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.TTSEngine
 {

@@ -6,7 +6,6 @@
  */
 #endregion
 
-
 namespace Krypton.Toolkit.Suite.Extended.Common
 {
     public class WIN32

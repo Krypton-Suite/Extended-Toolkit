@@ -1,4 +1,22 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ */
+
+//--------------------------------------------------------------------------------
+// Copyright (C) 2013-2021 JDH Software - <support@jdhsoftware.com>
+//
+// This program is provided to you under the terms of the Microsoft Public
+// License (Ms-PL) as published at https://github.com/Cocotteseb/Krypton-OutlookGrid/blob/master/LICENSE.md
+//
+// Visit https://www.jdhsoftware.com and follow @jdhsoftware on Twitter
+//
+//--------------------------------------------------------------------------------
+#endregion
+
+namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 {
     /// <summary>
     /// Class for a TextAndImage cell
@@ -7,7 +25,7 @@
     {
         private const int INDENT_WIDTH = 20;
         private const int INDENT_MARGIN = 5;
-        private Padding defaultPadding;
+        private Padding _defaultPadding;
         // private int glyphWidth;
 
         /// <summary>
@@ -16,7 +34,7 @@
         public KryptonDataGridViewTreeTextCell()
             : base()
         {
-            defaultPadding = Style.Padding;
+            _defaultPadding = Style.Padding;
         }
 
         /// <summary>
@@ -35,15 +53,7 @@
         /// <value>
         /// The glyph margin.
         /// </value>
-        protected virtual int GlyphMargin
-        {
-            get
-            {
-                return ((Level - 1) * INDENT_WIDTH) + INDENT_MARGIN;
-            }
-
-
-        }
+        protected virtual int GlyphMargin => ((Level - 1) * INDENT_WIDTH) + INDENT_MARGIN;
 
         /// <summary>
         /// Gets the level.
@@ -61,7 +71,9 @@
                     return row.NodeLevel + 1; //during calculation 0 level must be 1 for multiplication
                 }
                 else
+                {
                     return -1;
+                }
             }
         }
 
@@ -78,8 +90,8 @@
             int plus = 0;
             //if (hasChildNodes)
             //    plus = 15;
-            Style.Padding = new Padding(defaultPadding.Left + (level * INDENT_WIDTH) + INDENT_MARGIN + plus,
-                defaultPadding.Top, defaultPadding.Right, defaultPadding.Bottom);
+            Style.Padding = new Padding(_defaultPadding.Left + (level * INDENT_WIDTH) + INDENT_MARGIN + plus,
+                _defaultPadding.Top, _defaultPadding.Right, _defaultPadding.Bottom);
 
 
         }
@@ -311,9 +323,6 @@
         /// <value>
         /// The owning node.
         /// </value>
-        public OutlookGridRow OwningNode
-        {
-            get { return base.OwningRow as OutlookGridRow; }
-        }
+        public OutlookGridRow OwningNode => base.OwningRow as OutlookGridRow;
     }
 }

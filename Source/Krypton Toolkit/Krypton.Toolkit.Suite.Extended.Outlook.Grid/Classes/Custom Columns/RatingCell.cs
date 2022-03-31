@@ -1,4 +1,22 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ */
+
+//--------------------------------------------------------------------------------
+// Copyright (C) 2013-2021 JDH Software - <support@jdhsoftware.com>
+//
+// This program is provided to you under the terms of the Microsoft Public
+// License (Ms-PL) as published at https://github.com/Cocotteseb/Krypton-OutlookGrid/blob/master/LICENSE.md
+//
+// Visit https://www.jdhsoftware.com and follow @jdhsoftware on Twitter
+//
+//--------------------------------------------------------------------------------
+#endregion
+
+namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 {
     /// <summary>
     /// Class for a rating celle
@@ -12,7 +30,7 @@
         {
             //Value type is an integer. 
             //Formatted value type is an image since we derive from the ImageCell 
-            this.ValueType = typeof(int);
+            ValueType = typeof(int);
         }
 
         /// <summary>
@@ -28,9 +46,13 @@
         protected override object GetFormattedValue(object value, int rowIndex, ref DataGridViewCellStyle cellStyle, TypeConverter valueTypeConverter, TypeConverter formattedValueTypeConverter, DataGridViewDataErrorContexts context)
         {
             if (value == null)
+            {
                 return null; //For example it is also the case for group row...
+            }
             else
+            {
                 return starImages[(int)value];
+            }
         }
 
         /// <summary>
@@ -59,12 +81,14 @@
         protected override void Paint(Graphics graphics, Rectangle clipBounds, Rectangle cellBounds, int rowIndex, DataGridViewElementStates elementState, object value, object formattedValue, string errorText, DataGridViewCellStyle cellStyle, DataGridViewAdvancedBorderStyle advancedBorderStyle, DataGridViewPaintParts paintParts)
         {
             Image cellImage = (Image)formattedValue;
-            if (!this.ReadOnly)
+            if (!ReadOnly)
             {
-                int starNumber = GetStarFromMouse(cellBounds, this.DataGridView.PointToClient(Control.MousePosition));
+                int starNumber = GetStarFromMouse(cellBounds, DataGridView.PointToClient(Control.MousePosition));
 
                 if (starNumber != -1)
+                {
                     cellImage = starHotImages[starNumber];
+                }
             }
             //supress painting of selection 
             base.Paint(graphics, clipBounds, cellBounds, rowIndex, elementState, value, cellImage, errorText, cellStyle, advancedBorderStyle, (paintParts & ~DataGridViewPaintParts.SelectionBackground));
@@ -77,12 +101,14 @@
         protected override void OnContentClick(DataGridViewCellEventArgs e)
         {
             base.OnContentClick(e);
-            if (!this.ReadOnly)
+            if (!ReadOnly)
             {
-                int starNumber = GetStarFromMouse(this.DataGridView.GetCellDisplayRectangle(this.DataGridView.CurrentCellAddress.X, this.DataGridView.CurrentCellAddress.Y, false), this.DataGridView.PointToClient(Control.MousePosition));
+                int starNumber = GetStarFromMouse(DataGridView.GetCellDisplayRectangle(DataGridView.CurrentCellAddress.X, DataGridView.CurrentCellAddress.Y, false), DataGridView.PointToClient(Control.MousePosition));
 
                 if (starNumber != -1)
-                    this.Value = starNumber;
+                {
+                    Value = starNumber;
+                }
             }
         }
 
@@ -95,7 +121,7 @@
         protected override void OnMouseLeave(int rowIndex)
         {
             base.OnMouseLeave(rowIndex);
-            this.DataGridView.InvalidateCell(this);
+            DataGridView.InvalidateCell(this);
         }
 
         /// <summary>
@@ -105,7 +131,7 @@
         protected override void OnMouseMove(DataGridViewCellMouseEventArgs e)
         {
             base.OnMouseMove(e);
-            this.DataGridView.InvalidateCell(this);
+            DataGridView.InvalidateCell(this);
         }
         #endregion
 

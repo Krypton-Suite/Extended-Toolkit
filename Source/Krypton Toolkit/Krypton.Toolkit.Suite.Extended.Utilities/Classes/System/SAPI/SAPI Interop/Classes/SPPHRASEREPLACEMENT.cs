@@ -6,8 +6,6 @@
  */
 #endregion
 
-using System.Runtime.InteropServices;
-
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop
 {
     [StructLayout(LayoutKind.Sequential)]

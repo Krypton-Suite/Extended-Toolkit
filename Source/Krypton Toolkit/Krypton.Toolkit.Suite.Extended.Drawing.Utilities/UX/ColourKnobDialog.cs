@@ -1,11 +1,19 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ */
+#endregion
+
+namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 {
     public class ColourKnobDialog : CommonExtendedKryptonForm
     {
         #region Design Code
         private KryptonPanel kryptonPanel1;
         private KryptonPanel kryptonPanel2;
-        private CircularPictureBox cpbxColourPreview;
+        private Controls.CircularPictureBox cpbxColourPreview;
         private CommonKryptonKnobControlEnhanced kKnobBlue;
         private CommonKryptonKnobControlEnhanced kKnobGreen;
         private CommonKryptonKnobControlEnhanced kKnobRed;

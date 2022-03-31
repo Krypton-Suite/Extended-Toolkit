@@ -6,7 +6,6 @@
  */
 #endregion
 
-
 namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 {
     public class ClearClipboard : ToolStripItem // MenuItem

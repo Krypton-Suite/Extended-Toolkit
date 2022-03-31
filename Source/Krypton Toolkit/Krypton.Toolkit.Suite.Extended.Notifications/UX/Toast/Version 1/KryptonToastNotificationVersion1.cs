@@ -14,7 +14,6 @@ using System.Media;
 using System.Windows.Forms;
 
 using Krypton.Toolkit.Suite.Extended.Developer.Utilities;
-using Krypton.Toolkit.Suite.Extended.Notifications.Properties;
 
 namespace Krypton.Toolkit.Suite.Extended.Notifications
 {

@@ -1,4 +1,22 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ */
+
+//--------------------------------------------------------------------------------
+// Copyright (C) 2013-2021 JDH Software - <support@jdhsoftware.com>
+//
+// This program is provided to you under the terms of the Microsoft Public
+// License (Ms-PL) as published at https://github.com/Cocotteseb/Krypton-OutlookGrid/blob/master/LICENSE.md
+//
+// Visit https://www.jdhsoftware.com and follow @jdhsoftware on Twitter
+//
+//--------------------------------------------------------------------------------
+#endregion
+
+namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 {
     /// this group simple example of an implementation which groups the items into day categories
     /// based on, today, yesterday, last week etc
@@ -10,34 +28,7 @@
     /// 
     public class OutlookGridDateTimeGroup : OutlookGridDefaultGroup
     {
-        TextInfo ti = CultureInfo.CurrentCulture.TextInfo;
-
-        /// <summary>
-        /// Enum of Date interval for the OutlookGridDateTimeGroup
-        /// </summary>
-        public enum DateInterval
-        {
-            /// <summary>
-            /// Day
-            /// </summary>
-            Day,
-            /// <summary>
-            /// Month
-            /// </summary>
-            Month,
-            /// <summary>
-            /// Quarter
-            /// </summary>
-            Quarter,
-            /// <summary>
-            /// Year
-            /// </summary>
-            Year,
-            /// <summary>
-            /// Smart : intelligent grouping like Outlook for dates
-            /// </summary>
-            Smart
-        }
+        private readonly TextInfo _ti = CultureInfo.CurrentCulture.TextInfo;
 
         /// <summary>
         /// The Date Interval of OutlookGridDateTimeGroup
@@ -68,17 +59,7 @@
         ///<summary>
         ///Gets or sets the displayed text.
         ///</summary>
-        public override string Text
-        {
-            get
-            {
-                return string.Format("{0}: {1} ({2})", Column.DataGridViewColumn.HeaderText, Value.ToString(), ItemCount == 1 ? OneItemText : ItemCount.ToString() + XXXItemsText);
-            }
-            //set
-            //{
-            //    text = value;
-            //}
-        }
+        public override string Text => $"{Column.DataGridViewColumn.HeaderText}: {Value} ({(ItemCount == 1 ? OneItemText : ItemCount.ToString() + XXXItemsText)})";
 
         private DateTime valDateTime;
 
@@ -87,10 +68,8 @@
         /// </summary>
         public override object Value
         {
-            get
-            {
-                return base.Value;
-            }
+            get => base.Value;
+
             set
             {
                 switch (Interval)
@@ -122,7 +101,7 @@
                         if (value != null && value != DBNull.Value)
                         {
                             valDateTime = DateTime.Parse(value.ToString());
-                            base.Value = ti.ToTitleCase(valDateTime.ToString("MMMM")) + " " + valDateTime.Year;
+                            base.Value = _ti.ToTitleCase(valDateTime.ToString("MMMM")) + " " + valDateTime.Year;
                         }
                         else
                         {

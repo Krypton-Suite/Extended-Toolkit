@@ -1,8 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-	<PropertyGroup>
-		<TargetFrameworks>net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows;net6.0-windows</TargetFrameworks>
-	</PropertyGroup>
+	<Choose>
+		<When Condition="'$(Configuration)' == 'Nightly'">
+			<PropertyGroup>
+				<TargetFrameworks>net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows;net6.0-windows;net7.0-windows</TargetFrameworks>
+			</PropertyGroup>
+		</When>
+		<Otherwise>
+			<PropertyGroup>
+				<TargetFrameworks>net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows;net6.0-windows</TargetFrameworks>
+			</PropertyGroup>
+		</Otherwise>
+	</Choose>
 
 	<PropertyGroup>
         <OutputType>library</OutputType>
@@ -10,49 +19,103 @@
         <AssemblyName>Krypton.Toolkit.Suite.Extended.Fast.Coloured.TextBox</AssemblyName>
         <UseWindowsForms>true</UseWindowsForms>
         <NeutralLanguage>en</NeutralLanguage>
-        <Configurations>Debug;Release;Nightly;Canary;Stable</Configurations>
+        <Configurations>Debug;Release;Nightly;Canary;Stable;Signed</Configurations>
     </PropertyGroup>
 
     <!--Package Data-->
+	<Choose>
+		<When Condition="'$(Configuration)' == 'Canary'">
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Fast.Coloured.TextBox.Canary</PackageId>
+			</PropertyGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'Nightly'">
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Fast.Coloured.TextBox.Nightly</PackageId>
+			</PropertyGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'Signed'">
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Fast.Coloured.TextBox.Signed</PackageId>
+			</PropertyGroup>
+		</When>
+		<Otherwise>
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Fast.Coloured.TextBox</PackageId>
+			</PropertyGroup>
+		</Otherwise>
+	</Choose>
+
+	<PropertyGroup>
+		<Description>
+			An extension to the Standard Toolkit, which supports .NET Framework 4.6.2 - 4.8, .NET Core 3.1 and .NET 5/6. This package implements the FastColouredTextBox control.
+
+			This package supports all .NET Framework versions starting .NET Framework 4.6.2 - 4.8, .NET Core 3.1 and .NET 5/6.
+			Also, all libraries are included targeting each specific framework version for performance purposes.
+
+			To view all of the extended toolkit package latest version information, please visit: https://github.com/Krypton-Suite/Krypton-Toolkit-Suite-Version-Dashboard/blob/main/Documents/Modules/Extended/Krypton-Toolkit-Suite-Extended-Modules.md
+		</Description>
+	</PropertyGroup>
+
     <Choose>
-        <When Condition="'$(Configuration)' == 'Canary'">
-            <PropertyGroup>
-                <PackageId>Krypton.Toolkit.Suite.Extended.Fast.Coloured.TextBox.Canary</PackageId>
-            </PropertyGroup>
-        </When>
-        <Otherwise>
-            <PropertyGroup>
-                <PackageId>Krypton.Toolkit.Suite.Extended.Fast.Coloured.TextBox</PackageId>
-            </PropertyGroup>
-        </Otherwise>
+	    <When Condition="'$(SolutionName.Endswith(`NuGet`))'">
+		    <Choose>
+			    <When Condition="'$(Configuration)' == 'Nightly'">
+				    <PropertyGroup>
+					    <LangVersion>preview</LangVersion>
+				    </PropertyGroup>
+
+				    <ItemGroup>
+					    <PackageReference Include="Krypton.Toolkit.Nightly" Version="65.22.3.89-alpha" />
+				    </ItemGroup>
+			    </When>
+			    <Otherwise>
+				    <Choose>
+					    <When Condition="'$(Configuration)' == 'Canary'">
+						    <PropertyGroup>
+							    <LangVersion>preview</LangVersion>
+						    </PropertyGroup>
+
+						    <ItemGroup>
+							    <PackageReference Include="Krypton.Toolkit.Canary" Version="65.22.3.89-beta" />
+						    </ItemGroup>
+					    </When>
+					    <Otherwise>
+						    <Choose>
+							    <When Condition="'$(Configuration)' == 'Signed'">
+								    <PropertyGroup>
+									    <LangVersion>preview</LangVersion>
+								    </PropertyGroup>
+
+								    <ItemGroup>
+									    <PackageReference Include="Krypton.Toolkit.Signed" Version="65.22.4.94" />
+								    </ItemGroup>
+							    </When>
+							    <Otherwise>
+								    <PropertyGroup>
+									    <LangVersion>preview</LangVersion>
+								    </PropertyGroup>
+
+								    <ItemGroup>
+									    <PackageReference Include="Krypton.Toolkit" Version="65.22.4.94" />
+								    </ItemGroup>
+							    </Otherwise>
+						    </Choose>
+					    </Otherwise>
+				    </Choose>
+			    </Otherwise>
+		    </Choose>
+	    </When>
+	    <Otherwise>
+		    <ItemGroup>
+			    <ProjectReference Include="..\..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Toolkit\Krypton.Toolkit 2022.csproj" />
+		    </ItemGroup>
+	    </Otherwise>
     </Choose>
 
-    <PropertyGroup>
-        <Description>An extension to the Krypton standard toolkit. This package holds extensions to the Krypton.Fast.Coloured.TextBox module.</Description>
-    </PropertyGroup>
-
-    <Choose>
-        <When Condition="'$(Configuration)' == 'Release'">
-            <PropertyGroup>
-                <LangVersion>preview</LangVersion>
-            </PropertyGroup>
-
-            <ItemGroup>
-                <PackageReference Include="Krypton.Toolkit" Version="60.22.2.32" />
-            </ItemGroup>
-        </When>
-        <Otherwise>
-            <PropertyGroup>
-                <LangVersion>preview</LangVersion>
-            </PropertyGroup>
-
-            <ItemGroup>
-                <PackageReference Include="Krypton.Toolkit.Canary" Version="6.2201.1-beta" />
-            </ItemGroup>
-        </Otherwise>
-    </Choose>
-
-    <ItemGroup>
+	<ItemGroup>
         <Reference Include="System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net4'))">
             <SpecificVersion>True</SpecificVersion>
             <Version>4.0.0.0</Version>
@@ -76,168 +139,5 @@
         <DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Fast.Coloured.TextBox\Krypton.Toolkit.Suite.Extended.Fast.Coloured.TextBox.xml</DocumentationFile>
         <OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Fast.Coloured.TextBox\</OutputPath>
     </PropertyGroup>
-
-	<PropertyGroup>
-		<NeutralLanguage>en</NeutralLanguage>
-		<Nullable>enable</Nullable>
-	</PropertyGroup>
-
-	<Choose>
-		<When Condition="'$(Configuration)' == 'Canary'">
-			<PropertyGroup>
-				<LangVersion>preview</LangVersion>
-			</PropertyGroup>
-		</When>
-		<Otherwise>
-			<PropertyGroup>
-				<LangVersion>latest</LangVersion>
-			</PropertyGroup>
-		</Otherwise>
-	</Choose>
-
-	<PropertyGroup>
-		<!-- common project data -->
-		<Version>$(LibraryVersion)</Version>
-		<!-- two flavors of TFM are supported : 'all' where the NuGet package include all supported tfms. 'lite' with only .net core and .net 4.5 support -->
-		<TFMs Condition="'$(TFMs)' == ''">lite</TFMs>
-	</PropertyGroup>
-
-	<PropertyGroup>
-		<!-- common package data -->
-		<PackageProjectUrl>https://github.com/Krypton-Suite/Extended-Toolkit</PackageProjectUrl>
-		<PackageIcon>Canary.png</PackageIcon>
-		<Authors>Peter William Wagner &amp; Simon Coghlan &amp; Thomas Bolon, et al.</Authors>
-		<!--<PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>-->
-		<PackageTags>Krypton ComponentFactory WinForms Themes Controls DataGrid Ribbon Workspace Tabs .Net Toolkit Core</PackageTags>
-		<PackageReleaseNotes>Get updates here: https://github.com/Krypton-Suite/Extended-Toolkit</PackageReleaseNotes>
-	</PropertyGroup>
-
-	<!--Generate NuGet packages on build-->
-	<Choose>
-		<When Condition="'$(Configuration)' == 'Nigtly'">
-			<PropertyGroup>
-				<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-
-				<PackageIcon>Nightly.png</PackageIcon>
-
-				<PackageLicenseUrl>https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE</PackageLicenseUrl>
-
-				<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-
-				<LangVersion>latest</LangVersion>
-
-				<PackageOutputPath>..\..\..\Bin\NuGet Packages\Nightly</PackageOutputPath>
-			</PropertyGroup>
-		</When>
-
-		<When Condition="'$(Configuration)' == 'Canary'">
-			<PropertyGroup>
-				<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-
-				<!--Package icon-->
-				<PackageIcon>Canary.png</PackageIcon>
-
-				<PackageLicenseUrl>https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE</PackageLicenseUrl>
-
-				<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-
-				<PackageOutputPath>..\..\..\Bin\NuGet Packages\Canary</PackageOutputPath>
-			</PropertyGroup>
-		</When>
-
-		<When Condition="'$(Configuration)' == 'Release'">
-			<PropertyGroup>
-				<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-
-				<!--Package icon-->
-				<PackageIcon>Stable.png</PackageIcon>
-
-				<PackageLicenseUrl>https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE</PackageLicenseUrl>
-
-				<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-
-				<PackageOutputPath>..\..\..\Bin\NuGet Packages\Release</PackageOutputPath>
-			</PropertyGroup>
-		</When>
-		<Otherwise>
-			<PropertyGroup>
-				<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-
-				<!--Package icon-->
-				<PackageIcon>Stable.png</PackageIcon>
-
-				<PackageLicenseUrl>https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE</PackageLicenseUrl>
-
-				<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-
-				<PackageOutputPath>bin\Package\Stable</PackageOutputPath>
-			</PropertyGroup>
-		</Otherwise>
-	</Choose>
-
-	<Choose>
-		<When Condition="'$(Configuration)' == 'Canary'">
-			<ItemGroup>
-				<None Include="..\..\..\Assets\Package Icon\Canary.png" Link="Canary.png" Pack="true" PackagePath="" />
-			</ItemGroup>
-		</When>
-		<Otherwise>
-			<ItemGroup>
-				<!--<None Include="..\..\..\Assets\Package Icon\Nightly.png" Link="Nightly.png" Pack="true" PackagePath="" />-->
-
-				<None Include="..\..\..\Assets\Package Icon\Stable.png" Link="Stable.png" Pack="true" PackagePath="" />
-			</ItemGroup>
-		</Otherwise>
-	</Choose>
-
-	<!--Version information-->
-	<Choose>
-		<When Condition="'$(Configuration)' == 'Canary'">
-			<PropertyGroup>
-				<Minor>$([System.DateTime]::Now.ToString(yyMM))</Minor>
-
-				<Build>$([System.DateTime]::Now.get_DayOfYear().ToString())</Build>
-
-				<!--Canary only-->
-				<PackageVersion>6.$(Minor).$(Build)-beta</PackageVersion>
-			</PropertyGroup>
-		</When>
-		<Otherwise>
-			<PropertyGroup>
-				<Minor>$([System.DateTime]::Now.ToString(yyMM))</Minor>
-
-				<Build>$([System.DateTime]::Now.get_DayOfYear().ToString())</Build>
-
-				<!--Stable/Signed-->
-				<PackageVersion>60.$(Minor).$(Build)</PackageVersion>
-			</PropertyGroup>
-		</Otherwise>
-	</Choose>
-
-	<PropertyGroup>
-		<!--REMINDER: When packing, use the proper ISO layout, i.e ddHH-->
-		<!--<CurrentDate>$([System.DateTime]::Now.ToString(ddHH))</CurrentDate>-->
-
-		<Minor>$([System.DateTime]::Now.ToString(yyMM))</Minor>
-		<Build>$([System.DateTime]::Now.get_DayOfYear().ToString())</Build>
-
-		<!--Version layout:
-				6 = Major
-				2109 = Minor
-				18 = Build
-				-alpha = Indicates a pre-release package
-			-->
-		<LibraryVersion>60.$(Minor).$(Build)</LibraryVersion>
-
-		<!--Nightly-->
-		<!--https://docs.microsoft.com/en-us/nuget/create-packages/prerelease-packages-->
-		<!--<PackageVersion>6.$(Minor).$(Build)-alpha</PackageVersion>-->
-
-		<AssemblyVersion>60.$(Minor).$(Build)</AssemblyVersion>
-
-		<FileVersion>60.$(Minor).$(Build)</FileVersion>
-
-		<Version>60.$(Minor).$(Build)</Version>
-	</PropertyGroup>
 
 </Project>

@@ -6,7 +6,6 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Notifications.Properties;
 using Krypton.Toolkit.Suite.Extended.Tools;
 
 using System;

@@ -6,8 +6,6 @@
  */
 #endregion
 
-using System;
-
 namespace Krypton.Toolkit.Suite.Extended.Controls
 {
     /// <summary>Handles the value property for the <see cref="KryptonKnobControlVersion1" /></summary>

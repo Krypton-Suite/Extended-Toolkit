@@ -1,4 +1,22 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ */
+
+//--------------------------------------------------------------------------------
+// Copyright (C) 2013-2021 JDH Software - <support@jdhsoftware.com>
+//
+// This program is provided to you under the terms of the Microsoft Public
+// License (Ms-PL) as published at https://github.com/Cocotteseb/Krypton-OutlookGrid/blob/master/LICENSE.md
+//
+// Visit https://www.jdhsoftware.com and follow @jdhsoftware on Twitter
+//
+//--------------------------------------------------------------------------------
+#endregion
+
+namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 {
     /// <summary>
     /// Token object
@@ -20,9 +38,11 @@
         /// <param name="fg">Foreground text color</param>
         public Token(string text, Color bg, Color fg)
         {
-            this.Text = text;
-            this.BackColour = bg;
-            this.ForeColour = fg;
+            Text = text;
+            
+            BackColour = bg;
+
+            ForeColour = fg;
         }
 
         /// <summary>
@@ -43,37 +63,25 @@
         /// </summary>
         /// <param name="other"></param>
         /// <returns></returns>
-        public int CompareTo(Token other)
-        {
-            return this.Text.CompareTo(other.Text);
-        }
+        public int CompareTo(Token other) => Text.CompareTo(other.Text);
 
         /// <summary>
         /// Overrides ToString
         /// </summary>
         /// <returns>String that represents TextAndImage</returns>
-        public override string ToString()
-        {
-            return Text;
-        }
+        public override string ToString() => Text;
 
         /// <summary>
         /// Overrides Equals
         /// </summary>
         /// <param name="obj">The object to compare</param>
         /// <returns>true if equal, false otherwise.</returns>
-        public override bool Equals(object obj)
-        {
-            return this.Text.Equals(obj.ToString());
-        }
+        public override bool Equals(object obj) => Text.Equals(obj.ToString());
 
         /// <summary>
         /// Overrides GetHashCode
         /// </summary>
         /// <returns></returns>
-        public override int GetHashCode()
-        {
-            return base.GetHashCode();
-        }
+        public override int GetHashCode() => base.GetHashCode();
     }
 }

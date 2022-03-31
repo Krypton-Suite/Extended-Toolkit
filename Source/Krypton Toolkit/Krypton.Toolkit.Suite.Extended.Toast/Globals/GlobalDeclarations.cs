@@ -15,3 +15,4 @@ global using System.Media;
 global using System.Windows.Forms;
 
 global using Krypton.Toolkit.Suite.Extended.Toast.Properties;
+global using Krypton.Toolkit.Suite.Extended.Developer.Utilities;

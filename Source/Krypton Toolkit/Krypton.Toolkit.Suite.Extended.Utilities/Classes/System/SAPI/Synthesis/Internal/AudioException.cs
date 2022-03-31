@@ -7,9 +7,6 @@
 #endregion
 
 using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech;
-using System;
-using System.Globalization;
-using System.Runtime.Serialization;
 
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
 {

@@ -10,12 +10,6 @@ using Krypton.Toolkit.Suite.Extended.Utilities.System.AudioFormat;
 using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
 using Krypton.Toolkit.Suite.Extended.Utilities.System.ObjectTokens;
 using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Globalization;
 
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
 {

@@ -38,6 +38,88 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
             return tmp;
         }
+        
+        public static void SetIconType(IconType iconType, Image customImage, PictureBox target)
+        {
+            switch (iconType)
+            {
+                case IconType.CUSTOM:
+                    SetIconImage(target, customImage);
+                    break;
+                case IconType.OK:
+                    SetIconImage(target, Properties.Resources.Input_Box_Ok_128_x_128);
+                    break;
+                case IconType.ERROR:
+                    SetIconImage(target, Properties.Resources.Input_Box_Critical_128_x_128);
+                    break;
+                case IconType.EXCLAMATION:
+                    SetIconImage(target, Properties.Resources.Input_Box_Warning_128_x_115);
+                    break;
+                case IconType.INFORMATION:
+                    SetIconImage(target, Properties.Resources.Input_Box_Information_128_x_128);
+                    break;
+                case IconType.QUESTION:
+                    SetIconImage(target, Properties.Resources.Input_Box_Question_128_x_128);
+                    break;
+                case IconType.NOTHING:
+                    SetIconImage(target, null);
+                    break;
+                case IconType.NONE:
+                    SetIconImage(target, null);
+                    break;
+                case IconType.STOP:
+                    SetIconImage(target, Properties.Resources.Input_Box_Stop_128_x_128);
+                    break;
+                case IconType.HAND:
+                    SetIconImage(target, Properties.Resources.Input_Box_Hand_128_x_128);
+                    break;
+                case IconType.WARNING:
+                    SetIconImage(target, Properties.Resources.Input_Box_Warning_128_x_115);
+                    break;
+            }
+        }
+
+        private static void SetIconImage(PictureBox pictureBox, Image image) => pictureBox.Image = image;
+
+        public static void FadeIn(KryptonForm activeWindow)
+        {
+            Timer timer = new Timer();
+
+            timer.Interval = 10;
+            
+            timer.Tick += (sender, args) =>
+            {
+                if (activeWindow.Opacity == 1d)
+                {
+                    timer.Stop();
+                }
+
+                activeWindow.Opacity += 0.02d;
+            };
+
+            timer.Start();
+        }
+
+        public static void FadeOutAndClose(KryptonForm activeWindow)
+        {
+            Timer timer = new Timer();
+
+            timer.Interval = 10;
+            
+            timer.Tick += (sender, args) =>
+            {
+                if (activeWindow.Opacity == 0d)
+                {
+                    timer.Stop();
+                  
+                    activeWindow.Close();
+                }
+
+                activeWindow.Opacity -= 0.02d;
+            };
+
+            timer.Start();
+        }
         #endregion
     }
 }

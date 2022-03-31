@@ -15,4 +15,11 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         LARGE = 2,
         CUSTOM = 3
     }
+
+    public enum BrowseButtonAction
+    {
+        OPENFILE = 0,
+        OPENDIRECTORY = 1,
+        SAVEFILE = 2
+    }
 }

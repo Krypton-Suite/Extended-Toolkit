@@ -1,4 +1,22 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ */
+
+//--------------------------------------------------------------------------------
+// Copyright (C) 2013-2021 JDH Software - <support@jdhsoftware.com>
+//
+// This program is provided to you under the terms of the Microsoft Public
+// License (Ms-PL) as published at https://github.com/Cocotteseb/Krypton-OutlookGrid/blob/master/LICENSE.md
+//
+// Visit https://www.jdhsoftware.com and follow @jdhsoftware on Twitter
+//
+//--------------------------------------------------------------------------------
+#endregion
+
+namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 {
     /// <summary>
     /// Class for a KryptonDataGridViewFormattingColumn : KryptonDataGridViewTextBoxColumn with conditionnal formatting abilities
@@ -14,9 +32,9 @@
         public KryptonDataGridViewFormattingColumn()
             : base()
         {
-            this.CellTemplate = new FormattingCell();
-            this.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            this.ValueType = typeof(FormattingCell);
+            CellTemplate = new FormattingCell();
+            DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            ValueType = typeof(FormattingCell);
             ContrastTextColour = false;
         }
 
@@ -26,17 +44,6 @@
         /// <value>
         ///   <c>true</c> if [contrast text color]; otherwise, <c>false</c>.
         /// </value>
-        public bool ContrastTextColour
-        {
-            get
-            {
-                return _contrastTextColour;
-            }
-
-            set
-            {
-                _contrastTextColour = value;
-            }
-        }
+        public bool ContrastTextColour { get => _contrastTextColour; set => _contrastTextColour = value; }
     }
 }

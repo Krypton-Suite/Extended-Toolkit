@@ -6,12 +6,6 @@
  */
 #endregion
 
-using System;
-using System.ComponentModel;
-using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Windows.Forms;
-
 using Krypton.Toolkit.Suite.Extended.Drawing;
 
 namespace Krypton.Toolkit.Suite.Extended.Navigator
@@ -460,7 +454,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                 Point ImagePoint = new Point(6, 4);
                 switch (this.ImageAlign)
                 {
-                    case ContentAlignment.MiddleRight:
+                    case System.Drawing.ContentAlignment.MiddleRight:
                         {
                             rc.Width = this.ClientRectangle.Width - this.Image.Width - 8;
                             rc.Height = this.ClientRectangle.Height;
@@ -470,7 +464,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                             ImagePoint.Y = this.ClientRectangle.Height / 2 - Image.Height / 2;
                             break;
                         }
-                    case ContentAlignment.TopCenter:
+                    case System.Drawing.ContentAlignment.TopCenter:
                         {
                             ImagePoint.Y = 2;
                             ImagePoint.X = (this.ClientRectangle.Width - this.Image.Width) / 2;
@@ -481,7 +475,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
                             break;
                         }
-                    case ContentAlignment.MiddleCenter:
+                    case System.Drawing.ContentAlignment.MiddleCenter:
                         { // no text in this alignment
                             ImagePoint.X = (this.ClientRectangle.Width - this.Image.Width) / 2;
                             ImagePoint.Y = (this.ClientRectangle.Height - this.Image.Height) / 2;
@@ -508,7 +502,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                     g.DrawImage(this.Image, ImagePoint.X, ImagePoint.Y);
                 else
                     System.Windows.Forms.ControlPaint.DrawImageDisabled(g, this.Image, ImagePoint.X, ImagePoint.Y, this.BackColor);
-                if (ContentAlignment.MiddleCenter != this.ImageAlign)
+                if (System.Drawing.ContentAlignment.MiddleCenter != this.ImageAlign)
                 {
                     g.DrawString(this.Text, this.Font, brushText, rc, sf);
                 }

@@ -8,9 +8,6 @@
 
 using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
 using Krypton.Toolkit.Suite.Extended.Utilities.System.TTSEngine;
-using System;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
 
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
 {

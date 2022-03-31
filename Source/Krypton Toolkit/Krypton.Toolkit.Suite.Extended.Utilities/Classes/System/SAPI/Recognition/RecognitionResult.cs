@@ -11,15 +11,6 @@ using Krypton.Toolkit.Suite.Extended.Utilities.System.AudioFormat;
 using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
 using Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop;
 using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech;
-using System;
-using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Globalization;
-using System.Reflection;
-using System.Runtime.InteropServices;
-using System.Runtime.Serialization;
-using System.Security.Permissions;
-using System.Text;
 
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
 {

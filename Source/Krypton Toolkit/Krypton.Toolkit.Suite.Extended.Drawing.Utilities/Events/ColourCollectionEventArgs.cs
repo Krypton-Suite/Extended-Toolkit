@@ -1,4 +1,12 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ */
+#endregion
+
+namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 {
     public class ColourCollectionEventArgs : EventArgs
     {
@@ -8,7 +16,7 @@
         /// Initializes a new instance of the <see cref="ColourCollectionEventArgs"/> class for the specified color.
         /// </summary>
         /// <param name="index">The color index that the event is responding to.</param>
-        /// <param name="color">The %Color% that the event is responding to.</param>
+        /// <param name="colour">The %Color% that the event is responding to.</param>
         public ColourCollectionEventArgs(int index, Color colour)
         {
             this.Index = index;

@@ -1,4 +1,12 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ */
+#endregion
+
+namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
 {
     /*
     /// <summary>For use in try/catch blocks. Uses the standard <see cref="KryptonMessageBox"/> to display exception messages.</summary>

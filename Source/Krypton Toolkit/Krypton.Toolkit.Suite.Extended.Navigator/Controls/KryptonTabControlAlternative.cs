@@ -6,16 +6,6 @@
  */
 #endregion
 
-using System;
-using System.ComponentModel;
-using System.ComponentModel.Design;
-using System.Drawing;
-using System.Drawing.Design;
-using System.Drawing.Drawing2D;
-using System.Runtime.InteropServices;
-using System.Windows.Forms;
-using System.Windows.Forms.Design;
-
 namespace Krypton.Toolkit.Suite.Extended.Navigator
 {
     [Designer(typeof(KryptonTabControlDesigner), typeof(IDesigner)), ToolboxBitmap(typeof(TabControl))]

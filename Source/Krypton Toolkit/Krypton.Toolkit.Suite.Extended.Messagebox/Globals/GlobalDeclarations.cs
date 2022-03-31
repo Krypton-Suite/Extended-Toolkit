@@ -9,6 +9,7 @@
 global using System;
 global using System.ComponentModel;
 global using System.Drawing;
+global using System.Diagnostics;
 global using System.Media;
 global using System.Runtime.InteropServices;
 global using System.Reflection;
