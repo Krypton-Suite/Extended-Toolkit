@@ -1,5 +1,10 @@
 =======
 
+## 2022-06-xx - Build 2206 - June 2022
+* Add new configurations to aid creation of full/lite NuGet packages
+
+=======
+
 ## 2022-04-04 - Build 2204 - April 2022
 * Implemented [#290](https://github.com/Krypton-Suite/Extended-Toolkit/issues/290), `KryptonOutlookGridGroupBox` 'CreateGroupBox' method not found
 * New `Krypton.Toolkit.Suite.Extended.Networking` module

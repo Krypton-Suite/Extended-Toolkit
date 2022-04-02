@@ -19,7 +19,7 @@
         <AssemblyName>Krypton.Toolkit.Suite.Extended.ComboBox</AssemblyName>
         <UseWindowsForms>true</UseWindowsForms>
         <NeutralLanguage>en</NeutralLanguage>
-        <Configurations>Debug;Release;Nightly;Canary;Stable;Signed</Configurations>
+        <Configurations>Debug;Release;Nightly;Canary;Stable;Signed;StableFull;StableLite;SignedFull;SignedLite</Configurations>
     </PropertyGroup>
 
     <!--Package Data-->
