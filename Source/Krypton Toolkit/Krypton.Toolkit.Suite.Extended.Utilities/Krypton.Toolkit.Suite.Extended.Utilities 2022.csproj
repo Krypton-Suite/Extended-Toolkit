@@ -18,7 +18,7 @@
 	<RootNamespace>Krypton.Toolkit.Suite.Extended.Utilities</RootNamespace>
 	<AssemblyName>Krypton.Toolkit.Suite.Extended.Utilities</AssemblyName>
 	<UseWindowsForms>true</UseWindowsForms>
-	<Configurations>Debug;Release;Nightly;Canary;Stable;Signed;StableFull;StableLite;SignedFull;SignedLite</Configurations>
+	<Configurations>Debug;Release;Nightly;Canary;StableFull;StableLite;SignedFull;SignedLite</Configurations>
   </PropertyGroup>
 
   <!--Package Data-->
