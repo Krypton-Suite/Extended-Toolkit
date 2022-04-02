@@ -7,21 +7,61 @@
 			</PropertyGroup>
 		</When>
 		<Otherwise>
-			<PropertyGroup>
-				<TargetFrameworks>net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows;net6.0-windows</TargetFrameworks>
-			</PropertyGroup>
+			<Choose>
+				<When Condition="'$(Configuration)' == 'Canary'">
+					<PropertyGroup>
+						<TargetFrameworks>net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows;net6.0-windows</TargetFrameworks>
+					</PropertyGroup>
+				</When>
+				<Otherwise>
+					<Choose>
+						<When Condition="'$(Configuration)' == 'StableFull'">
+							<PropertyGroup>
+								<TargetFrameworks>net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows;net6.0-windows</TargetFrameworks>
+							</PropertyGroup>
+						</When>
+						<Otherwise>
+							<Choose>
+								<When Condition="'$(Configuration)' == 'StableLite'">
+									<PropertyGroup>
+										<TargetFrameworks>net48;netcoreapp3.1;net6.0-windows</TargetFrameworks>
+									</PropertyGroup>
+								</When>
+								<Otherwise>
+									<Choose>
+										<When Condition="'$(Configuration)' == 'SignedFull'">
+											<PropertyGroup>
+												<TargetFrameworks>net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows;net6.0-windows</TargetFrameworks>
+											</PropertyGroup>
+										</When>
+										<Otherwise>
+											<Choose>
+												<When Condition="'$(Configuration)' == 'SignedLite'">
+													<PropertyGroup>
+														<TargetFrameworks>net48;netcoreapp3.1;net6.0-windows</TargetFrameworks>
+													</PropertyGroup>
+												</When>
+											</Choose>
+										</Otherwise>
+									</Choose>
+								</Otherwise>
+							</Choose>
+						</Otherwise>
+					</Choose>
+				</Otherwise>
+			</Choose>
 		</Otherwise>
 	</Choose>
 
 	<PropertyGroup>
-	<OutputType>library</OutputType>
-	<RootNamespace>Krypton.Toolkit.Suite.Extended.Global.Utilities</RootNamespace>
-	<AssemblyName>Krypton.Toolkit.Suite.Extended.Global.Utilities</AssemblyName>
-	<UseWindowsForms>true</UseWindowsForms>
-	<Configurations>Debug;Release;Nightly;Canary;StableFull;StableLite;SignedFull;SignedLite</Configurations>
-  </PropertyGroup>
+		<OutputType>library</OutputType>
+		<RootNamespace>Krypton.Toolkit.Suite.Extended.Global.Utilities</RootNamespace>
+		<AssemblyName>Krypton.Toolkit.Suite.Extended.Global.Utilities</AssemblyName>
+		<UseWindowsForms>true</UseWindowsForms>
+		<Configurations>Debug;Release;Nightly;Canary;StableFull;StableLite;SignedFull;SignedLite</Configurations>
+	</PropertyGroup>
 
-  <!--Package Data-->
+	<!--Package Data-->
 	<Choose>
 		<When Condition="'$(Configuration)' == 'Canary'">
 			<PropertyGroup>
@@ -58,65 +98,65 @@
 		</Description>
 	</PropertyGroup>
 
-    <Choose>
-	    <When Condition="'$(SolutionName.Endswith(`NuGet`))'">
-		    <Choose>
-			    <When Condition="'$(Configuration)' == 'Nightly'">
-				    <PropertyGroup>
-					    <LangVersion>preview</LangVersion>
-				    </PropertyGroup>
+	<Choose>
+		<When Condition="'$(SolutionName.Endswith(`NuGet`))'">
+			<Choose>
+				<When Condition="'$(Configuration)' == 'Nightly'">
+					<PropertyGroup>
+						<LangVersion>preview</LangVersion>
+					</PropertyGroup>
 
-				    <ItemGroup>
-					    <PackageReference Include="Krypton.Toolkit.Nightly" Version="65.22.4.91-alpha" />
-				    </ItemGroup>
-			    </When>
-			    <Otherwise>
-				    <Choose>
-					    <When Condition="'$(Configuration)' == 'Canary'">
-						    <PropertyGroup>
-							    <LangVersion>preview</LangVersion>
-						    </PropertyGroup>
+					<ItemGroup>
+						<PackageReference Include="Krypton.Toolkit.Nightly" Version="65.22.4.91-alpha" />
+					</ItemGroup>
+				</When>
+				<Otherwise>
+					<Choose>
+						<When Condition="'$(Configuration)' == 'Canary'">
+							<PropertyGroup>
+								<LangVersion>preview</LangVersion>
+							</PropertyGroup>
 
-						    <ItemGroup>
-							    <PackageReference Include="Krypton.Toolkit.Canary" Version="65.22.3.87-beta" />
-						    </ItemGroup>
-					    </When>
-					    <Otherwise>
-						    <Choose>
-							    <When Condition="'$(Configuration)' == 'Signed'">
-								    <PropertyGroup>
-									    <LangVersion>preview</LangVersion>
-								    </PropertyGroup>
+							<ItemGroup>
+								<PackageReference Include="Krypton.Toolkit.Canary" Version="65.22.3.87-beta" />
+							</ItemGroup>
+						</When>
+						<Otherwise>
+							<Choose>
+								<When Condition="'$(Configuration)' == 'Signed'">
+									<PropertyGroup>
+										<LangVersion>preview</LangVersion>
+									</PropertyGroup>
 
-								    <ItemGroup>
-									    <PackageReference Include="Krypton.Toolkit.Signed" Version="60.22.4.4" />
-								    </ItemGroup>
-							    </When>
-							    <Otherwise>
-								    <PropertyGroup>
-									    <LangVersion>preview</LangVersion>
-								    </PropertyGroup>
+									<ItemGroup>
+										<PackageReference Include="Krypton.Toolkit.Signed" Version="60.22.4.4" />
+									</ItemGroup>
+								</When>
+								<Otherwise>
+									<PropertyGroup>
+										<LangVersion>preview</LangVersion>
+									</PropertyGroup>
 
-								    <ItemGroup>
-									    <PackageReference Include="Krypton.Toolkit" Version="60.22.2.32" />
-								    </ItemGroup>
-							    </Otherwise>
-						    </Choose>
-					    </Otherwise>
-				    </Choose>
-			    </Otherwise>
-		    </Choose>
-	    </When>
-	    <Otherwise>
-		    <ItemGroup>
-			    <ProjectReference Include="..\..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Toolkit\Krypton.Toolkit 2022.csproj" />
-		    </ItemGroup>
-	    </Otherwise>
-    </Choose>
+									<ItemGroup>
+										<PackageReference Include="Krypton.Toolkit" Version="60.22.2.32" />
+									</ItemGroup>
+								</Otherwise>
+							</Choose>
+						</Otherwise>
+					</Choose>
+				</Otherwise>
+			</Choose>
+		</When>
+		<Otherwise>
+			<ItemGroup>
+				<ProjectReference Include="..\..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Toolkit\Krypton.Toolkit 2022.csproj" />
+			</ItemGroup>
+		</Otherwise>
+	</Choose>
 
-    <!--Binary/Documentation Output-->
-    <PropertyGroup>
-	    <DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Global.Utilities\Krypton.Toolkit.Suite.Extended.Global.Utilities.xml</DocumentationFile>
+	<!--Binary/Documentation Output-->
+	<PropertyGroup>
+		<DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Global.Utilities\Krypton.Toolkit.Suite.Extended.Global.Utilities.xml</DocumentationFile>
 		<OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Global.Utilities\</OutputPath>
 	</PropertyGroup>
 

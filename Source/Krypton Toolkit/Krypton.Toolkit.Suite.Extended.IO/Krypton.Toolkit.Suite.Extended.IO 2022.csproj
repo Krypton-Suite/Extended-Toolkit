@@ -7,22 +7,62 @@
 			</PropertyGroup>
 		</When>
 		<Otherwise>
-			<PropertyGroup>
-				<TargetFrameworks>net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows;net6.0-windows</TargetFrameworks>
-			</PropertyGroup>
+			<Choose>
+				<When Condition="'$(Configuration)' == 'Canary'">
+					<PropertyGroup>
+						<TargetFrameworks>net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows;net6.0-windows</TargetFrameworks>
+					</PropertyGroup>
+				</When>
+				<Otherwise>
+					<Choose>
+						<When Condition="'$(Configuration)' == 'StableFull'">
+							<PropertyGroup>
+								<TargetFrameworks>net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows;net6.0-windows</TargetFrameworks>
+							</PropertyGroup>
+						</When>
+						<Otherwise>
+							<Choose>
+								<When Condition="'$(Configuration)' == 'StableLite'">
+									<PropertyGroup>
+										<TargetFrameworks>net48;netcoreapp3.1;net6.0-windows</TargetFrameworks>
+									</PropertyGroup>
+								</When>
+								<Otherwise>
+									<Choose>
+										<When Condition="'$(Configuration)' == 'SignedFull'">
+											<PropertyGroup>
+												<TargetFrameworks>net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows;net6.0-windows</TargetFrameworks>
+											</PropertyGroup>
+										</When>
+										<Otherwise>
+											<Choose>
+												<When Condition="'$(Configuration)' == 'SignedLite'">
+													<PropertyGroup>
+														<TargetFrameworks>net48;netcoreapp3.1;net6.0-windows</TargetFrameworks>
+													</PropertyGroup>
+												</When>
+											</Choose>
+										</Otherwise>
+									</Choose>
+								</Otherwise>
+							</Choose>
+						</Otherwise>
+					</Choose>
+				</Otherwise>
+			</Choose>
 		</Otherwise>
 	</Choose>
 
 	<PropertyGroup>
-        <OutputType>library</OutputType>
-        <RootNamespace>Krypton.Toolkit.Suite.Extended.IO</RootNamespace>
-        <AssemblyName>Krypton.Toolkit.Suite.Extended.IO</AssemblyName>
-        <UseWindowsForms>true</UseWindowsForms>
-        <NeutralLanguage>en</NeutralLanguage>
-        <Configurations>Debug;Release;Nightly;Canary;StableFull;StableLite;SignedFull;SignedLite</Configurations>
-    </PropertyGroup>
+		<OutputType>library</OutputType>
+		<RootNamespace>Krypton.Toolkit.Suite.Extended.IO</RootNamespace>
+		<AssemblyName>Krypton.Toolkit.Suite.Extended.IO</AssemblyName>
+		<UseWindowsForms>true</UseWindowsForms>
+		<NeutralLanguage>en</NeutralLanguage>
+		<Configurations>Debug;Release;Nightly;Canary;StableFull;StableLite;SignedFull;SignedLite</Configurations>
+	</PropertyGroup>
 
-    <!--Package Data-->
+	<!--Package Data-->
 	<Choose>
 		<When Condition="'$(Configuration)' == 'Canary'">
 			<PropertyGroup>
@@ -115,29 +155,29 @@
 		</Otherwise>
 	</Choose>
 
-    <ItemGroup>
-        <Reference Include="System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net4'))">
-            <SpecificVersion>True</SpecificVersion>
-            <Version>4.0.0.0</Version>
-            <TreatAsUsed>True</TreatAsUsed>
-        </Reference>
-        <Reference Include="System.Design, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net5'))">
-            <SpecificVersion>True</SpecificVersion>
-            <Version>5.0.0.0</Version>
-            <TreatAsUsed>True</TreatAsUsed>
-        </Reference>
-        <Reference Include="System.Design, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net6'))">
-            <SpecificVersion>True</SpecificVersion>
-            <Version>6.0.0.0</Version>
-            <TreatAsUsed>True</TreatAsUsed>
-        </Reference>
-        <Reference Include="System.Design" Condition="'$(TargetFramework)' == 'net35'" />
-        <!--TODO: Need to specify version here-->
-    </ItemGroup>
-    <!--Binary/Documentation Output-->
-    <PropertyGroup>
-        <DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.IO\Krypton.Toolkit.Suite.Extended.IO.xml</DocumentationFile>
-        <OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.IO\</OutputPath>
-    </PropertyGroup>
+	<ItemGroup>
+		<Reference Include="System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net4'))">
+			<SpecificVersion>True</SpecificVersion>
+			<Version>4.0.0.0</Version>
+			<TreatAsUsed>True</TreatAsUsed>
+		</Reference>
+		<Reference Include="System.Design, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net5'))">
+			<SpecificVersion>True</SpecificVersion>
+			<Version>5.0.0.0</Version>
+			<TreatAsUsed>True</TreatAsUsed>
+		</Reference>
+		<Reference Include="System.Design, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net6'))">
+			<SpecificVersion>True</SpecificVersion>
+			<Version>6.0.0.0</Version>
+			<TreatAsUsed>True</TreatAsUsed>
+		</Reference>
+		<Reference Include="System.Design" Condition="'$(TargetFramework)' == 'net35'" />
+		<!--TODO: Need to specify version here-->
+	</ItemGroup>
+	<!--Binary/Documentation Output-->
+	<PropertyGroup>
+		<DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.IO\Krypton.Toolkit.Suite.Extended.IO.xml</DocumentationFile>
+		<OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.IO\</OutputPath>
+	</PropertyGroup>
 
 </Project>
