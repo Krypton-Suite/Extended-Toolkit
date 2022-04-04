@@ -6,8 +6,6 @@
  */
 #endregion
 
-using System.Runtime.InteropServices;
-
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.TTSEngine
 {
 	[TypeLibType(16)]

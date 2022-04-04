@@ -6,9 +6,6 @@
  */
 #endregion
 
-using System;
-using System.Runtime.InteropServices;
-
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
 {
     /// <filterpriority>2</filterpriority>

@@ -1,4 +1,22 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ */
+
+//--------------------------------------------------------------------------------
+// Copyright (C) 2013-2021 JDH Software - <support@jdhsoftware.com>
+//
+// This program is provided to you under the terms of the Microsoft Public
+// License (Ms-PL) as published at https://github.com/Cocotteseb/Krypton-OutlookGrid/blob/master/LICENSE.md
+//
+// Visit https://www.jdhsoftware.com and follow @jdhsoftware on Twitter
+//
+//--------------------------------------------------------------------------------
+#endregion
+
+namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 {
     /// <summary>
     /// GroupBox for the Krypton OutlookGrid
@@ -24,7 +42,8 @@
         }
         #endregion
 
-        private List<OutlookGridGroupBoxColumn> columnsList;
+        #region Instance Fields
+        private List<OutlookGridGroupBoxColumn> _columnsList;
         private string _dragColumnToGroupText;
 
         //Krypton
@@ -40,11 +59,11 @@
 
         //Mouse
         private Point _mouse;
-        private bool isDragging;
-        private int indexselected;
+        private bool _isDragging;
+        private int _indexselected;
 
         //Dpi scaling
-        private float factorX, factorY;
+        private float _factorX, _factorY;
 
         //Context menu
         private KryptonContextMenu KCtxMenu;
@@ -63,7 +82,9 @@
         private KryptonContextMenuItem _menuHideGroupBox;
         private KryptonContextMenuItem _menuGroupInterval;
         private KryptonContextMenuItem _menuSortBySummary;
+        #endregion
 
+        #region Custom Events
         /// <summary>
         /// Column Sort Changed Event
         /// </summary>
@@ -108,6 +129,7 @@
         /// Sort by Summary Count event
         /// </summary>
         public event EventHandler<OutlookGridColumnEventArgs> SortBySummaryCount;
+        #endregion
 
         #region Constructor
 
@@ -124,7 +146,7 @@
 
             InitializeComponent();
 
-            columnsList = new List<OutlookGridGroupBoxColumn>();
+            _columnsList = new List<OutlookGridGroupBoxColumn>();
 
             // Cache the current global palette setting
             _palette = KryptonManager.CurrentGlobalPalette;
@@ -153,8 +175,8 @@
             
             using (Graphics g = CreateGraphics())
             {
-                factorX = g.DpiX > 96 ? (1f * g.DpiX / 96) : 1f;
-                factorY = g.DpiY > 96 ? (1f * g.DpiY / 96) : 1f;
+                _factorX = g.DpiX > 96 ? (1f * g.DpiX / 96) : 1f;
+                _factorY = g.DpiY > 96 ? (1f * g.DpiY / 96) : 1f;
             }
         }
 
@@ -229,7 +251,7 @@
         /// <param name="e">PaintEventArgs</param>
         protected override void OnPaint(PaintEventArgs e)
         {
-            int nextPosition = (int)(5 * factorX);
+            int nextPosition = (int)(5 * _factorX);
             if (_palette != null)
             {
                 // (3) Get the renderer associated with this palette
@@ -253,7 +275,7 @@
                     renderer.RenderStandardBorder.DrawBorder(renderContext, ClientRectangle, _border, VisualOrientation.Top, PaletteState.Normal);
 
                     //If no grouped columns, draw to the indicating text
-                    if (columnsList.Count == 0)
+                    if (_columnsList.Count == 0)
                     {
                         TextRenderer.DrawText(e.Graphics, _dragColumnToGroupText, _palette.GetContentShortTextFont(PaletteContentStyle.LabelNormalPanel, PaletteState.Normal), e.ClipRectangle, _palette.GetContentShortTextColor1(PaletteContentStyle.LabelNormalPanel, PaletteState.Normal),
                             TextFormatFlags.EndEllipsis | TextFormatFlags.VerticalCenter | TextFormatFlags.SingleLine | TextFormatFlags.PreserveGraphicsClipping);
@@ -267,14 +289,14 @@
 
 
                     //Draw the column boxes
-                    foreach (OutlookGridGroupBoxColumn current in this.columnsList)
+                    foreach (OutlookGridGroupBoxColumn current in this._columnsList)
                     {
                         Rectangle rectangle = default(Rectangle);
-                        rectangle.Width = (int)(100 * factorX);
+                        rectangle.Width = (int)(100 * _factorX);
                         rectangle.X = nextPosition;
-                        rectangle.Y = (e.ClipRectangle.Height - (int)(25 * factorY)) / 2;
-                        rectangle.Height = (int)(25 * factorY);
-                        nextPosition += (int)(105 * factorX); //next position
+                        rectangle.Y = (e.ClipRectangle.Height - (int)(25 * _factorY)) / 2;
+                        rectangle.Height = (int)(25 * _factorY);
+                        nextPosition += (int)(105 * _factorX); //next position
                         current.Rect = rectangle;
 
                         if (current.IsHovered)
@@ -335,7 +357,7 @@
         /// <param name="e">A MouseEventArgs that contains the event data.</param>
         protected override void OnMouseDown(MouseEventArgs e)
         {
-            foreach (OutlookGridGroupBoxColumn c in this.columnsList)
+            foreach (OutlookGridGroupBoxColumn c in this._columnsList)
             {
                 if (c.Rect != null)
                 {
@@ -358,7 +380,7 @@
             List<OutlookGridGroupBoxColumn> l = new List<OutlookGridGroupBoxColumn>();
             OutlookGridGroupBoxColumn columnMovingInsideGroupBox = null;
 
-            foreach (OutlookGridGroupBoxColumn c in this.columnsList)
+            foreach (OutlookGridGroupBoxColumn c in this._columnsList)
             {
                 if (c.Rect != null)
                 {
@@ -379,7 +401,7 @@
             }
 
             //no more dragging
-            isDragging = false;
+            _isDragging = false;
 
             //Ungroup columns dragged outside the box
             if (l.Count > 0)
@@ -389,7 +411,7 @@
                     //Warn the Grid
                     OnColumnGroupRemoved(new OutlookGridColumnEventArgs(new OutlookGridColumn(c.ColumnName, null, null, SortOrder.None, -1, -1, null)));
 
-                    columnsList.Remove(c);
+                    _columnsList.Remove(c);
                 }
             }
 
@@ -400,7 +422,7 @@
                 {
                     int i = 0; //first group order is 0
 
-                    foreach (OutlookGridGroupBoxColumn existingColumns in this.columnsList)
+                    foreach (OutlookGridGroupBoxColumn existingColumns in this._columnsList)
                     {
                         if (e.Location.X > (existingColumns.Rect.X + existingColumns.Rect.Width / 2) && existingColumns != columnMovingInsideGroupBox)
                         {
@@ -424,12 +446,12 @@
         {
             if (e.Button == System.Windows.Forms.MouseButtons.Right)
             {
-                indexselected = -1;
-                for (int i = 0; i < this.columnsList.Count; i++)
+                _indexselected = -1;
+                for (int i = 0; i < this._columnsList.Count; i++)
                 {
-                    if (columnsList[i].Rect != null && columnsList[i].Rect.Contains(e.X, e.Y))
+                    if (_columnsList[i].Rect != null && _columnsList[i].Rect.Contains(e.X, e.Y))
                     {
-                        indexselected = i;
+                        _indexselected = i;
                     }
                 }
                 ShowColumnBoxContextMenu();
@@ -438,7 +460,7 @@
             {
                 //On MouseClick is before OnMouseUp, so if it is moving, don't click...
                 bool somethingIsMoving = false;
-                foreach (OutlookGridGroupBoxColumn c in columnsList)
+                foreach (OutlookGridGroupBoxColumn c in _columnsList)
                 {
                     if (c.IsMoving)
                         somethingIsMoving = true;
@@ -446,7 +468,7 @@
 
                 if (!somethingIsMoving)
                 {
-                    foreach (OutlookGridGroupBoxColumn c in this.columnsList)
+                    foreach (OutlookGridGroupBoxColumn c in this._columnsList)
                     {
                         if (c.Rect != null && c.Rect.Contains(e.X, e.Y))
                         {
@@ -469,7 +491,7 @@
         {
             base.OnMouseMove(e);
             _mouse = e.Location;
-            foreach (OutlookGridGroupBoxColumn c in this.columnsList)
+            foreach (OutlookGridGroupBoxColumn c in this._columnsList)
             {
                 if (c.Rect != null)
                 {
@@ -477,9 +499,9 @@
                     c.IsHovered = c.Rect.Contains(e.X, e.Y);
 
                     //declare dragging
-                    if (c.Rect.Contains(e.X, e.Y) && (e.Button == System.Windows.Forms.MouseButtons.Left) && !isDragging)
+                    if (c.Rect.Contains(e.X, e.Y) && (e.Button == System.Windows.Forms.MouseButtons.Left) && !_isDragging)
                     {
-                        isDragging = true;
+                        _isDragging = true;
                         c.IsMoving = true;
                         //Console.WriteLine(_mouse.ToString());
                     }
@@ -653,7 +675,7 @@
         private void OnClearGrouping(object sender, EventArgs e)
         {
             OnClearGrouping(new EventArgs());
-            columnsList.Clear();
+            _columnsList.Clear();
             this.Invalidate();
         }
 
@@ -684,7 +706,7 @@
         /// <param name="e">A OutlookGridColumnEventArgs that contains the event data.</param>
         private void OnGroupCollapse(object sender, EventArgs e)
         {
-            OnGroupCollapse(new OutlookGridColumnEventArgs(new OutlookGridColumn(columnsList[indexselected].ColumnName, null, null, SortOrder.None, -1, -1, null)));
+            OnGroupCollapse(new OutlookGridColumnEventArgs(new OutlookGridColumn(_columnsList[_indexselected].ColumnName, null, null, SortOrder.None, -1, -1, null)));
         }
 
         /// <summary>
@@ -694,7 +716,7 @@
         /// <param name="e">A OutlookGridColumnEventArgs that contains the event data.</param>
         private void OnGroupExpand(object sender, EventArgs e)
         {
-            OnGroupExpand(new OutlookGridColumnEventArgs(new OutlookGridColumn(columnsList[indexselected].ColumnName, null, null, SortOrder.None, -1, -1, null)));
+            OnGroupExpand(new OutlookGridColumnEventArgs(new OutlookGridColumn(_columnsList[_indexselected].ColumnName, null, null, SortOrder.None, -1, -1, null)));
         }
 
         /// <summary>
@@ -705,7 +727,7 @@
         private void OnSortAscending(object sender, EventArgs e)
         {
             //Change the sortOrder in the list
-            OutlookGridGroupBoxColumn col = columnsList[indexselected];
+            OutlookGridGroupBoxColumn col = _columnsList[_indexselected];
             col.SortDirection = SortOrder.Ascending;
             //Raise event
             OnColumnSortChanged(new OutlookGridColumnEventArgs(new OutlookGridColumn(col.ColumnName, null, null, SortOrder.Ascending, -1, -1, null)));
@@ -721,7 +743,7 @@
         private void OnSortDescending(object sender, EventArgs e)
         {
             //Change the sortOrder in the list
-            OutlookGridGroupBoxColumn col = columnsList[indexselected];
+            OutlookGridGroupBoxColumn col = _columnsList[_indexselected];
             col.SortDirection = SortOrder.Descending;
             //Raise event
             OnColumnSortChanged(new OutlookGridColumnEventArgs(new OutlookGridColumn(col.ColumnName, null, null, SortOrder.Descending, -1, -1, null)));
@@ -736,9 +758,9 @@
         /// <param name="e">A EventArgs that contains the event data.</param>
         private void OnUngroup(object sender, EventArgs e)
         {
-            OutlookGridGroupBoxColumn col = columnsList[indexselected];
+            OutlookGridGroupBoxColumn col = _columnsList[_indexselected];
             OnColumnGroupRemoved(new OutlookGridColumnEventArgs(new OutlookGridColumn(col.ColumnName, null, null, SortOrder.None, -1, -1, null)));
-            columnsList.Remove(col);
+            _columnsList.Remove(col);
             this.Invalidate();
         }
 
@@ -750,9 +772,9 @@
         private void OnGroupIntervalClick(object sender, EventArgs e)
         {
             KryptonContextMenuItem item = (KryptonContextMenuItem)sender;
-            OutlookGridGroupBoxColumn col = columnsList[indexselected];
+            OutlookGridGroupBoxColumn col = _columnsList[_indexselected];
             OutlookGridColumn colEvent = new OutlookGridColumn(col.ColumnName, null, null, SortOrder.None, -1, -1, null);
-            colEvent.GroupingType = new OutlookGridDateTimeGroup(null) { Interval = ((OutlookGridDateTimeGroup.DateInterval)Enum.Parse(typeof(OutlookGridDateTimeGroup.DateInterval), item.Tag.ToString())) };
+            colEvent.GroupingType = new OutlookGridDateTimeGroup(null) { Interval = ((DateInterval)Enum.Parse(typeof(DateInterval), item.Tag.ToString())) };
             col.GroupInterval = ((OutlookGridDateTimeGroup)colEvent.GroupingType).Interval.ToString();
             //Raise event
             OnGroupIntervalClick(new OutlookGridColumnEventArgs(colEvent));
@@ -766,7 +788,7 @@
         private void OnSortBySummaryCount(object sender, EventArgs e)
         {
             KryptonContextMenuItem item = (KryptonContextMenuItem)sender;
-            OutlookGridGroupBoxColumn col = columnsList[indexselected];
+            OutlookGridGroupBoxColumn col = _columnsList[_indexselected];
             OutlookGridColumn colEvent = new OutlookGridColumn(col.ColumnName, null, null, SortOrder.None, -1, -1, null);
             colEvent.GroupingType = new OutlookGridDefaultGroup(null) { SortBySummaryCount = item.Checked };
             col.SortBySummaryCount = item.Checked;
@@ -797,19 +819,19 @@
             //if (res[4] == typeof(OutlookGridDateTimeGroup).Name)
             colToAdd.GroupInterval = res[5];
             colToAdd.SortBySummaryCount = CommonHelper.StringToBool(res[6]);
-            if (!String.IsNullOrEmpty(columnToMove) && !columnsList.Contains(colToAdd) && sortMode != DataGridViewColumnSortMode.NotSortable)
+            if (!String.IsNullOrEmpty(columnToMove) && !_columnsList.Contains(colToAdd) && sortMode != DataGridViewColumnSortMode.NotSortable)
             {
                 //Determine the position of the new Group amongst the others 
                 int i = 0; //first group order is 0
                 //We are sure that we are going to browse the columns from left to right
-                foreach (OutlookGridGroupBoxColumn existingColumn in this.columnsList)
+                foreach (OutlookGridGroupBoxColumn existingColumn in this._columnsList)
                 {
                     if (e.X > (existingColumn.Rect.X + existingColumn.Rect.Width / 2))
                     {
                         i++;
                     }
                 }
-                columnsList.Insert(i, colToAdd);
+                _columnsList.Insert(i, colToAdd);
 
                 //try
                 //{
@@ -841,6 +863,43 @@
 
         #region Methods
 
+        /// <summary>Creates the group box.</summary>
+        /// <param name="column">The column.</param>
+        /// <param name="groupingType">Type of the grouping.</param>
+        /// <param name="order">The order.</param>
+        /// <param name="sortBySummary">if set to <c>true</c> [sort by summary].</param>
+        public void CreateGroupBox(DataGridViewColumn column, string groupingType, SortOrder order, bool sortBySummary)
+        {
+            string columnToMove = column.Name, columnName = column.Name, columnText = column.HeaderText;
+            SortOrder sortOrder;
+            DataGridViewColumnSortMode sortMode;
+            string[] res = columnToMove.Split('|');
+            sortOrder = order;
+
+            if (sortOrder == SortOrder.None)
+            {
+                sortOrder = SortOrder.Ascending;
+            }
+
+            sortMode = (DataGridViewColumnSortMode)Enum.Parse(typeof(DataGridViewColumnSortMode), column.SortMode.ToString());
+            OutlookGridGroupBoxColumn colToAdd = new OutlookGridGroupBoxColumn(columnName, columnText, sortOrder, groupingType);
+
+            colToAdd.GroupInterval = res[0];
+            colToAdd.SortBySummaryCount = sortBySummary;
+            if (!string.IsNullOrEmpty(columnToMove) && !_columnsList.Contains(colToAdd) &&
+                sortMode != DataGridViewColumnSortMode.NotSortable)
+            {
+                _columnsList.Insert(0, colToAdd);
+
+
+                //Warns the grid of a new grouping
+                OnColumnGroupAdded(
+                    new OutlookGridColumnEventArgs(new OutlookGridColumn(columnName, null, null, sortOrder, 0, -1, null)));
+
+                Invalidate();
+            }
+        }
+
         /// <summary>
         /// Show the context menu for column box
         /// </summary>
@@ -868,7 +927,7 @@
                 //Group Interval
                 KryptonContextMenuItems _GroupIntervalItems;
                 KryptonContextMenuItem it = null;
-                string[] names = Enum.GetNames(typeof(OutlookGridDateTimeGroup.DateInterval));
+                string[] names = Enum.GetNames(typeof(DateInterval));
                 KryptonContextMenuItemBase[] arrayOptions = new KryptonContextMenuItemBase[names.Length];
                 for (int i = 0; i < names.Length; i++)
                 {
@@ -905,8 +964,8 @@
 
             // Update the individual menu options
             OutlookGridGroupBoxColumn col = null;
-            if (indexselected > -1)
-                col = columnsList[indexselected];
+            if (_indexselected > -1)
+                col = _columnsList[_indexselected];
 
             _menuSortAscending.Visible = col != null;
             _menuSortDescending.Visible = col != null;
@@ -925,9 +984,9 @@
                 }
             }
             _menuUnGroup.Visible = col != null;
-            _menuFullExpand.Enabled = columnsList.Count > 0;
-            _menuFullCollapse.Enabled = columnsList.Count > 0;
-            _menuClearGrouping.Enabled = columnsList.Count > 0;
+            _menuFullExpand.Enabled = _columnsList.Count > 0;
+            _menuFullCollapse.Enabled = _columnsList.Count > 0;
+            _menuClearGrouping.Enabled = _columnsList.Count > 0;
 
             _menuSeparator1.Visible = (_menuSortAscending.Visible || _menuSortDescending.Visible);
             _menuSeparator2.Visible = (_menuExpand.Visible || _menuCollapse.Visible || _menuUnGroup.Visible);
@@ -947,7 +1006,7 @@
         /// <param name="list">The list of OutlookGridColumn</param>
         public void UpdateGroupingColumns(List<OutlookGridColumn> list)
         {
-            columnsList.Clear();
+            _columnsList.Clear();
             OutlookGridGroupBoxColumn colToAdd;
             for (int i = 0; i < list.Count; i++)
             {
@@ -956,7 +1015,7 @@
                     colToAdd = new OutlookGridGroupBoxColumn(list[i].DataGridViewColumn.Name, list[i].DataGridViewColumn.HeaderText, list[i].SortDirection, list[i].GroupingType.GetType().Name);
                     if (colToAdd.GroupingType == typeof(OutlookGridDateTimeGroup).Name)
                         colToAdd.GroupInterval = ((OutlookGridDateTimeGroup)list[i].GroupingType).Interval.ToString();
-                    columnsList.Add(colToAdd);
+                    _columnsList.Add(colToAdd);
                 }
             }
             this.Invalidate();
@@ -970,14 +1029,13 @@
         /// <returns>True if exists, otherwise false.</returns>
         public bool Contains(string columnName)
         {
-            for (int i = 0; i < columnsList.Count; i++)
+            for (int i = 0; i < _columnsList.Count; i++)
             {
-                if (columnsList[i].ColumnName == columnName)
+                if (_columnsList[i].ColumnName == columnName)
                     return true;
             }
             return false;
         }
-
         #endregion
     }
 }

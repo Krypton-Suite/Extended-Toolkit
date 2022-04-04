@@ -6,9 +6,6 @@
  */
 #endregion
 
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
-
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
 {
 	[ComImport]

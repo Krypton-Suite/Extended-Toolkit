@@ -6,10 +6,6 @@
  */
 #endregion
 
-using System;
-using System.Runtime.InteropServices;
-using System.Runtime.InteropServices.ComTypes;
-
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
 {
     [ComImport]

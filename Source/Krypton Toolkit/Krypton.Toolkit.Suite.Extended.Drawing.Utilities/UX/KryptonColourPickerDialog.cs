@@ -1,4 +1,14 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ */
+#endregion
+
+using ExtendedMessageBoxButtons = Krypton.Toolkit.Suite.Extended.Messagebox.ExtendedMessageBoxButtons;
+
+namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 {
     [DefaultEvent("SelectedColourChanged"), DefaultProperty("Colour")]
     public class KryptonColourPickerDialog : CommonExtendedKryptonForm
@@ -284,19 +294,10 @@
                         }
                         else
                         {
-                            Messagebox.KryptonMessageBoxManager manager = new Messagebox.KryptonMessageBoxManager()
-                            {
-                                MessageBoxCaption = "Load Palette",
-                                MessageBoxContentText = "Sorry, unable to open palette, the file format is not supported or is not recognized.",
-                                MessageBoxButtons = Messagebox.ExtendedMessageBoxButtons.OK,
-                                MessageBoxIcon = ExtendedKryptonMessageBoxIcon.EXCLAMATION
-                            };
-
-                            //manager.DisplayKryptonMessageBox(); // TODO: Re-enable **once** when `KryptonMessageBoxManager` is ready
-
-                            KryptonMessageBox.Show(
-                                "Sorry, unable to save palette, the file format is not supported or is not recognised.",
-                                "Load Palette", MessageBoxButtons.OK, KryptonMessageBoxIcon.EXCLAMATION);
+                            KryptonMessageBoxExtended.Show(
+                                "Sorry, unable to open palette, the file format is not supported or is not recognized.",
+                                "Unable to Load Palette",
+                                ExtendedMessageBoxButtons.OK, ExtendedKryptonMessageBoxIcon.ERROR, null);
                         }
                     }
                     catch (Exception exc)
@@ -336,19 +337,10 @@
                 }
                 else
                 {
-                    Messagebox.KryptonMessageBoxManager manager = new Messagebox.KryptonMessageBoxManager()
-                    {
-                        MessageBoxCaption = "Save Palette",
-                        MessageBoxContentText = "Sorry, unable to save palette, the file format is not supported or is not recognised.",
-                        MessageBoxButtons = Messagebox.ExtendedMessageBoxButtons.OK,
-                        MessageBoxIcon = ExtendedKryptonMessageBoxIcon.EXCLAMATION
-                    };
-
-                    //manager.DisplayKryptonMessageBox(); // TODO: Re-enable **once** when `KryptonMessageBoxManager` is ready
-
-                    KryptonMessageBox.Show(
+                    KryptonMessageBoxExtended.Show(
                         "Sorry, unable to save palette, the file format is not supported or is not recognised.",
-                        "Save Palette", MessageBoxButtons.OK, KryptonMessageBoxIcon.EXCLAMATION);
+                        "Unable to Save Palette", ExtendedMessageBoxButtons.OK,
+                        ExtendedKryptonMessageBoxIcon.ERROR, null);
                 }
             }
         }

@@ -1,4 +1,22 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ */
+
+//--------------------------------------------------------------------------------
+// Copyright (C) 2013-2021 JDH Software - <support@jdhsoftware.com>
+//
+// This program is provided to you under the terms of the Microsoft Public
+// License (Ms-PL) as published at https://github.com/Cocotteseb/Krypton-OutlookGrid/blob/master/LICENSE.md
+//
+// Visit https://www.jdhsoftware.com and follow @jdhsoftware on Twitter
+//
+//--------------------------------------------------------------------------------
+#endregion
+
+namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 {
     /// <summary>
     /// Class for a rating celle
@@ -14,7 +32,7 @@
         {
             //Value type is an integer. 
             //Formatted value type is an image since we derive from the ImageCell 
-            this.ValueType = typeof(List<TokenListCell>);
+            ValueType = typeof(List<TokenListCell>);
         }
 
         /// <summary>
@@ -70,7 +88,7 @@
             Size tmpSize = base.GetPreferredSize(graphics, cellStyle, rowIndex, constraintSize);
             Font f = KryptonManager.CurrentGlobalPalette.GetContentShortTextFont(PaletteContentStyle.GridDataCellList, PaletteState.Normal);
             int nextPosition = (int)(1 * factorX);
-            if (this.Value != null)
+            if (Value != null)
             {
                 foreach (Token tok in (List<Token>)this.Value)
                 {
@@ -86,10 +104,7 @@
         /// Update cell's value when the user clicks on a star 
         /// </summary>
         /// <param name="e">A DataGridViewCellEventArgs that contains the event data.</param>
-        protected override void OnContentClick(DataGridViewCellEventArgs e)
-        {
-            base.OnContentClick(e);
-        }
+        protected override void OnContentClick(DataGridViewCellEventArgs e) => base.OnContentClick(e);
 
         #region Invalidate cells when mouse moves or leaves the cell
 

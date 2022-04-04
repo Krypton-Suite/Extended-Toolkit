@@ -6,9 +6,7 @@
  */
 #endregion
 
-using System;
 using System.Collections;
-using System.Drawing;
 
 namespace Krypton.Toolkit.Suite.Extended.Navigator
 {

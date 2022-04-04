@@ -6,11 +6,6 @@
  */
 #endregion
 
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Runtime.InteropServices;
-
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.TTSEngine
 {
 	internal struct TextFragmentInterop

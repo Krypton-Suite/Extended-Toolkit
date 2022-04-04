@@ -6,9 +6,6 @@
  */
 #endregion
 
-using System;
-using System.Threading;
-
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop
 {
     internal class SpNotifySink : ISpNotifySink

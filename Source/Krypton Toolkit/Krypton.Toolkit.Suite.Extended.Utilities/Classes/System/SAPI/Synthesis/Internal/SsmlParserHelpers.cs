@@ -6,8 +6,6 @@
  */
 #endregion
 
-using System;
-
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
 {
     internal static class SsmlParserHelpers

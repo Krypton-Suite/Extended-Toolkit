@@ -1,4 +1,22 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ */
+
+//--------------------------------------------------------------------------------
+// Copyright (C) 2013-2021 JDH Software - <support@jdhsoftware.com>
+//
+// This program is provided to you under the terms of the Microsoft Public
+// License (Ms-PL) as published at https://github.com/Cocotteseb/Krypton-OutlookGrid/blob/master/LICENSE.md
+//
+// Visit https://www.jdhsoftware.com and follow @jdhsoftware on Twitter
+//
+//--------------------------------------------------------------------------------
+#endregion
+
+namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 {
     /// <summary>
     /// OutlookGridRow - subclasses the DataGridView's DataGridViewRow class
@@ -31,8 +49,8 @@
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public IOutlookGridGroup Group
         {
-            get { return group; }
-            set { group = value; }
+            get => group;
+            set => group = value;
         }
 
 
@@ -45,8 +63,8 @@
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool IsGroupRow
         {
-            get { return isGroupRow; }
-            set { isGroupRow = value; }
+            get => isGroupRow;
+            set => isGroupRow = value;
         }
 
         /// <summary>
@@ -56,11 +74,7 @@
         ///   <c>true</c> if collapsed; otherwise, <c>false</c>.
         /// </value>
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public bool Collapsed
-        {
-            get { return _collapsed; }
-            set { _collapsed = value; }
-        }
+        public bool Collapsed { get => _collapsed; set => _collapsed = value; }
 
         /// <summary>
         /// Gets or sets the nodes.
@@ -69,11 +83,7 @@
         /// The nodes.
         /// </value>
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public OutlookGridRowNodeCollection Nodes
-        {
-            get { return nodeCollection; }
-            set { nodeCollection = value; }
-        }
+        public OutlookGridRowNodeCollection Nodes { get => nodeCollection; set => nodeCollection = value; }
 
         /// <summary>
         /// Gets a value indicating whether this instance is first sibling.
@@ -83,13 +93,7 @@
         /// </value>
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public bool IsFirstSibling
-        {
-            get
-            {
-                return (NodeIndex == 0);
-            }
-        }
+        public bool IsFirstSibling => (NodeIndex == 0);
 
         /// <summary>
         /// Gets a value indicating whether this instance is last sibling.
@@ -109,7 +113,9 @@
                     return (NodeIndex == parent.Nodes.Count - 1);
                 }
                 else
+                {
                     return true;
+                }
             }
         }
 
@@ -121,13 +127,7 @@
         /// </value>
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public bool HasChildren
-        {
-            get
-            {
-                return nodeCollection.Count > 0;
-            }
-        }
+        public bool HasChildren => nodeCollection.Count > 0;
 
         /// <summary>
         /// Gets or sets the node level.
@@ -136,11 +136,7 @@
         /// The node level.
         /// </value>
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public int NodeLevel
-        {
-            get { return _nodeLevel; }
-            set { _nodeLevel = value; }
-        }
+        public int NodeLevel { get => _nodeLevel; set => _nodeLevel = value; }
 
         /// <summary>
         /// Gets or sets the parent node.
@@ -150,11 +146,7 @@
         /// </value>
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public OutlookGridRow ParentNode
-        {
-            get { return _parentNode; }
-            set { _parentNode = value; }
-        }
+        public OutlookGridRow ParentNode { get => _parentNode; set => _parentNode = value; }
 
         /// <summary>
         /// Gets the index of the node.
@@ -167,9 +159,13 @@
             get
             {
                 if (_parentNode != null)
+                {
                     return _parentNode.Nodes.IndexOf(this);
+                }
                 else
+                {
                     return 0;
+                }
             }
         }
         #endregion

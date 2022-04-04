@@ -6,7 +6,6 @@
  */
 #endregion
 
-
 namespace Krypton.Toolkit.Suite.Extended.Buttons
 {
     /// <summary>Handles the user account control event for the <see cref="KryptonUACElevatedButton" />.</summary>

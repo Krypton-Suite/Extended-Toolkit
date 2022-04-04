@@ -6,9 +6,6 @@
  */
 #endregion
 
-using System;
-using System.ComponentModel;
-
 namespace Krypton.Toolkit.Suite.Extended.Navigator
 {
     [System.Drawing.ToolboxBitmap(typeof(KryptonButton)), ToolboxItem(false)]

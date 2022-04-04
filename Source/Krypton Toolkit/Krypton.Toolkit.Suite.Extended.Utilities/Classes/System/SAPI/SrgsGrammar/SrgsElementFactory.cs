@@ -10,7 +10,6 @@ using Krypton.Toolkit.Suite.Extended.Utilities.System.Internal;
 using Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition;
 using Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser;
 using Krypton.Toolkit.Suite.Extended.Utilities.SystemInternal.Speech;
-using System;
 
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
 {

@@ -1,4 +1,12 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ */
+#endregion
+
+namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 {
     public class KryptonColourButtonCustomColourDialog : CommonExtendedKryptonForm
     {
@@ -6,7 +14,7 @@
         private KryptonPanel kryptonPanel1;
         private KryptonButton kryptonOKDialogButton1;
         private KryptonPanel kryptonPanel2;
-        private CircularPictureBox circularPictureBox1;
+        private Controls.CircularPictureBox circularPictureBox1;
         private KryptonNumericUpDown kryptonNumericUpDown6;
         private KryptonNumericUpDown kryptonNumericUpDown5;
         private KryptonNumericUpDown kryptonNumericUpDown4;
@@ -152,7 +160,7 @@
             // 
             // kryptonTextBox1
             // 
-            this.kryptonTextBox1.Hint = "#000000";
+            this.kryptonTextBox1.CueHint.CueHintText = "#000000";
             this.kryptonTextBox1.Location = new System.Drawing.Point(12, 171);
             this.kryptonTextBox1.MaxLength = 7;
             this.kryptonTextBox1.Name = "kryptonTextBox1";

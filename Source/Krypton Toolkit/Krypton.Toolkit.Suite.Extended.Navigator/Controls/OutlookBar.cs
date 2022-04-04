@@ -6,14 +6,6 @@
  */
 #endregion
 
-using System;
-using System.ComponentModel;
-using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Windows.Forms;
-
-using Krypton.Toolkit.Suite.Extended.Navigator.Properties;
-
 namespace Krypton.Toolkit.Suite.Extended.Navigator
 {
     [DefaultEvent("ButtonClicked")]

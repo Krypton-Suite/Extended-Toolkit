@@ -6,14 +6,6 @@
  */
 #endregion
 
-using System;
-using System.ComponentModel;
-using System.ComponentModel.Design;
-using System.Drawing;
-using System.Drawing.Design;
-using System.Windows.Forms;
-
-using Krypton.Toolkit.Suite.Extended.Common;
 using Krypton.Toolkit.Suite.Extended.Drawing;
 
 namespace Krypton.Toolkit.Suite.Extended.Navigator

@@ -6,10 +6,6 @@
  */
 #endregion
 
-using System;
-using System.Runtime.InteropServices;
-using System.Threading;
-
 namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop
 {
     internal abstract class SapiProxy : IDisposable
