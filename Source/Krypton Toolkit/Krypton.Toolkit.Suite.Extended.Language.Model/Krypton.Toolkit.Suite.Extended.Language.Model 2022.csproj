@@ -107,7 +107,7 @@
 					</PropertyGroup>
 
 					<ItemGroup>
-						<PackageReference Include="Krypton.Toolkit.Nightly" Version="65.22.4.97-alpha" />
+						<PackageReference Include="Krypton.Toolkit.Nightly" Version="65.22.4.110-alpha" />
 					</ItemGroup>
 				</When>
 				<Otherwise>
@@ -118,7 +118,7 @@
 							</PropertyGroup>
 
 							<ItemGroup>
-								<PackageReference Include="Krypton.Toolkit.Canary" Version="65.22.3.87-beta" />
+								<PackageReference Include="Krypton.Toolkit.Canary" Version="65.22.4.103-beta" />
 							</ItemGroup>
 							</When>
 							<Otherwise>
