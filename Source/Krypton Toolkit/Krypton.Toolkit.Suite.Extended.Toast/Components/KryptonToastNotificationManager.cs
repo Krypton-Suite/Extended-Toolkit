@@ -305,11 +305,104 @@
             {
                 if (!_useUserResponse)
                 {
-                    
+                    if (!_useProgressBar)
+                    {
+                        if (_contentAreaType == ContentAreaType.LABEL)
+                        {
+                            ApplicationUtilities.UnderConstruction();
+                        }
+                        else if (_contentAreaType == ContentAreaType.WRAPPEDLABEL)
+                        {
+                            BasicNotificationAlternativeUIRTL notification = new BasicNotificationAlternativeUIRTL(
+                                IconType,
+                                Title, ContentText, Seconds, SoundPath,
+                                CustomImage, DismissText);
+
+                            notification.Show();
+                        }
+                        else if (_contentAreaType == ContentAreaType.MULTILINEDTEXTBOX)
+                        {
+                            ApplicationUtilities.UnderConstruction();
+                        }
+                        else if (_contentAreaType == ContentAreaType.RICHTEXTBOX)
+                        {
+                            BasicNotificationRTL notification = new BasicNotificationRTL(IconType, Title, ContentText,
+                                UsePanelColourInTextArea,
+                                Seconds, SoundPath,
+                                CustomImage, DismissText);
+
+                            notification.Show();
+                        }
+                    }
+                    else
+                    {
+                        if (_contentAreaType == ContentAreaType.LABEL)
+                        {
+                            ApplicationUtilities.UnderConstruction();
+                        }
+                        else if (_contentAreaType == ContentAreaType.WRAPPEDLABEL)
+                        {
+                            BasicNotificationWithProgressBarAlternativeUIRTL notification =
+                                new BasicNotificationWithProgressBarAlternativeUIRTL(IconType, Title, ContentText,
+                                    Seconds,
+                                    SoundStream, CustomImage, DismissText);
+
+                            notification.Show();
+                        }
+                        else if (_contentAreaType == ContentAreaType.MULTILINEDTEXTBOX)
+                        {
+                            ApplicationUtilities.UnderConstruction();
+                        }
+                        else if (_contentAreaType == ContentAreaType.RICHTEXTBOX)
+                        {
+                            BasicNotificationWithProgressBarRTL notification = new BasicNotificationWithProgressBarRTL(
+                                IconType, Title, ContentText,
+                                UsePanelColourInTextArea,
+                                Seconds, SoundStream,
+                                CustomImage, DismissText);
+
+                            notification.Show();
+                        }
+                    }
                 }
                 else
                 {
-                    
+                    if (!_useProgressBar)
+                    {
+                        if (_contentAreaType == ContentAreaType.LABEL)
+                        {
+                            ApplicationUtilities.UnderConstruction();
+                        }
+                        else if (_contentAreaType == ContentAreaType.WRAPPEDLABEL)
+                        {
+                            BasicNotificationWithUserResponseWrappedLabelRTL notification = new BasicNotificationWithUserResponseWrappedLabelRTL(IconType, Title, ContentText, Seconds,
+                                                                                                                                                 SoundPath, CustomImage,
+                                                                                                                                                 DismissText, UserResponsePromptText,
+                                                                                                                                                 UserResponsePromptColour,
+                                                                                                                                                 UserResponsePromptAlignHorizontal,
+                                                                                                                                                 UserResponsePromptAlignVertical,
+                                                                                                                                                 UserResponsePromptFont);
+
+                            notification.Show();
+                        }
+                        else if (_contentAreaType == ContentAreaType.MULTILINEDTEXTBOX)
+                        {
+                            ApplicationUtilities.UnderConstruction();
+                        }
+                        else if (_contentAreaType == ContentAreaType.RICHTEXTBOX)
+                        {
+                            BasicNotificationWithUserResponseRTL notification = new BasicNotificationWithUserResponseRTL(IconType, Title, ContentText,
+                                                                                                                         UsePanelColourInTextArea, UseNativeBackColourInUserResponseArea,
+                                                                                                                         Seconds,
+                                                                                                                         SoundPath, CustomImage,
+                                                                                                                         DismissText, UserResponsePromptText,
+                                                                                                                         UserResponsePromptColour,
+                                                                                                                         UserResponsePromptAlignHorizontal, UserResponsePromptAlignVertical,
+                                                                                                                         UserResponsePromptFont);
+
+                            notification.Show();
+                        }
+                    }
                 }
             }
         }
