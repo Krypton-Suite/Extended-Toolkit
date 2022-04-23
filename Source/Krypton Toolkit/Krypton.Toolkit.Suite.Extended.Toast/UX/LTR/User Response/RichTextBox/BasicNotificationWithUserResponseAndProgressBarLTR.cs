@@ -270,6 +270,12 @@
 
             GotFocus += BasicNotificationWithUserResponseAndProgressBarLTR_GotFocus;
 
+            MouseEnter += BasicNotificationWithUserResponseAndProgressBarLTR_MouseEnter;
+
+            MouseHover += BasicNotificationWithUserResponseAndProgressBarLTR_MouseHover;
+
+            MouseLeave += BasicNotificationWithUserResponseAndProgressBarLTR_MouseLeave;
+
             DoubleBuffered = true;
 
             SetupTextArea();
@@ -302,7 +308,22 @@
             : this(iconType, title, contentText, usePanelColourInTextArea, useNativeBackColourInUserResponseArea,
                    customImage, dismissText, userResponseCueText,
                    userResponseCueColour, userResponseCueAlignHorizontal,
-                   userResponseCueAlignVertical, userResponseCueFont) => Seconds = seconds;
+                   userResponseCueAlignVertical, userResponseCueFont)
+        {
+            Seconds = seconds;
+
+            if (seconds > 0)
+            {
+                // Setup the timer
+                _timer = new Timer();
+
+                _timer.Interval = 1000;
+
+                _timer.Enabled = true;
+
+                _timer.Tick += CountdownTimer_Tick;
+            }
+        }
 
         /// <summary>Initializes a new instance of the <see cref="BasicNotificationWithUserResponseAndProgressBarLTR" /> class.</summary>
         /// <param name="iconType">Type of the icon.</param>
@@ -435,6 +456,26 @@
         }
 
         private void kbtnDismiss_Click(object sender, EventArgs e) => UtilityMethods.FadeOutAndClose(this);
+
+        private void BasicNotificationWithUserResponseAndProgressBarLTR_MouseLeave(object sender, EventArgs e) => _timer.Enabled = true;
+
+        private void BasicNotificationWithUserResponseAndProgressBarLTR_MouseHover(object sender, EventArgs e) => _timer.Enabled = false;
+
+        private void BasicNotificationWithUserResponseAndProgressBarLTR_MouseEnter(object sender, EventArgs e) => _timer.Enabled = false;
+
+        private void CountdownTimer_Tick(object sender, EventArgs e)
+        {
+            _time++;
+
+            kbtnDismiss.Text = $"{DismissText} ({Seconds - Time}s)";
+
+            if (_time == Seconds)
+            {
+                _timer.Stop();
+
+                UtilityMethods.FadeOutAndClose(this);
+            }
+        }
         #endregion
 
         #region Methods
@@ -592,7 +633,7 @@
 
                 kbtnDismiss.Text = $"{ DismissText } ({ Seconds - Time })";
 
-                _timer = new Timer();
+                /*_timer = new Timer();
 
                 _timer.Interval = 1000;
 
@@ -610,7 +651,7 @@
 
                         UtilityMethods.FadeOutAndClose(this);
                     }
-                };
+                };*/
             }
 
             if (SoundPath != null)

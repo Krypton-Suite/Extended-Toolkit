@@ -199,11 +199,33 @@
 
             GotFocus += BasicNotificationWithProgressBarAlternativeUILTR_GotFocus;
 
+            MouseEnter += BasicNotificationWithProgressBarAlternativeUILTR_MouseEnter;
+
+            MouseHover += BasicNotificationWithProgressBarAlternativeUILTR_MouseHover;
+
+            MouseLeave += BasicNotificationWithProgressBarAlternativeUILTR_MouseLeave;
+
             DoubleBuffered = true;
         }
 
-        public BasicNotificationWithProgressBarAlternativeUILTR(IconType iconType, string title, string contentText, int seconds, Image customImage = null, string dismissText = "&Dismiss")
-            : this(iconType, title, contentText, customImage, dismissText) => Seconds = seconds;
+        public BasicNotificationWithProgressBarAlternativeUILTR(IconType iconType, string title, string contentText,
+            int seconds, Image customImage = null, string dismissText = "&Dismiss")
+            : this(iconType, title, contentText, customImage, dismissText)
+        {
+            Seconds = seconds;
+
+            if (seconds > 0)
+            {
+                // Setup the timer
+                _timer = new Timer();
+
+                _timer.Interval = 1000;
+
+                _timer.Enabled = true;
+
+                _timer.Tick += CountdownTimer_Tick;
+            }
+        }
 
         public BasicNotificationWithProgressBarAlternativeUILTR(IconType iconType, string title, string contentText, int seconds, string soundPath, Image customImage = null, string dismissText = "&Dismiss")
             : this(iconType, title, contentText, seconds, customImage, dismissText) => SoundPath = soundPath;
@@ -247,6 +269,26 @@
         }
 
         private void kbtnDismiss_Click(object sender, EventArgs e) => UtilityMethods.FadeOutAndClose(this);
+
+        private void BasicNotificationWithProgressBarAlternativeUILTR_MouseLeave(object sender, EventArgs e) => _timer.Enabled = true;
+
+        private void BasicNotificationWithProgressBarAlternativeUILTR_MouseHover(object sender, EventArgs e) => _timer.Enabled = false;
+
+        private void BasicNotificationWithProgressBarAlternativeUILTR_MouseEnter(object sender, EventArgs e) => _timer.Enabled = false;
+
+        private void CountdownTimer_Tick(object sender, EventArgs e)
+        {
+            _time++;
+
+            kbtnDismiss.Text = $"{DismissText} ({Seconds - Time}s)";
+
+            if (_time == Seconds)
+            {
+                _timer.Stop();
+
+                UtilityMethods.FadeOutAndClose(this);
+            }
+        }
         #endregion
 
         #region Methods
@@ -272,7 +314,7 @@
 
                 kbtnDismiss.Text = $"{ DismissText } ({ Seconds - Time })";
 
-                _timer = new Timer();
+                /*_timer = new Timer();
 
                 _timer.Interval = 1000;
 
@@ -288,7 +330,7 @@
 
                         UtilityMethods.FadeOutAndClose(this);
                     }
-                };
+                };*/
             }
             else
             {
