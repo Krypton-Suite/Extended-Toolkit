@@ -278,7 +278,7 @@
                                                                                                                                                  UserResponsePromptColour,
                                                                                                                                                  UserResponsePromptAlignHorizontal, 
                                                                                                                                                  UserResponsePromptAlignVertical,
-                                                                                                                                                 UserResponsePromptFont);
+                                                                                                                                                 UserResponsePromptFont, RightToLeftSupport);
 
                             notification.Show();
                         }
@@ -295,7 +295,7 @@
                                                                                                                          DismissText, UserResponsePromptText, 
                                                                                                                          UserResponsePromptColour,
                                                                                                                          UserResponsePromptAlignHorizontal, UserResponsePromptAlignVertical,
-                                                                                                                         UserResponsePromptFont);
+                                                                                                                         UserResponsePromptFont, RightToLeftSupport);
 
                             notification.Show();
                         }

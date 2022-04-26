@@ -2,6 +2,7 @@
 
 ## 2022-06-xx - Build 2206 - June 2022
 * Add new configurations to aid creation of full/lite NuGet packages
+* Toasts now support `RightToLeft` layouts
 
 =======
 

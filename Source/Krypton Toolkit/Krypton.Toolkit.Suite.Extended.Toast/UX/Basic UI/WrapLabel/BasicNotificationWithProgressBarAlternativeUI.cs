@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace Krypton.Toolkit.Suite.Extended.Toast
+﻿namespace Krypton.Toolkit.Suite.Extended.Toast
 {
     public partial class BasicNotificationWithProgressBarAlternativeUI : KryptonForm
     {
@@ -232,10 +222,18 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             {
                 _soundPlayer = new SoundPlayer(SoundPath);
             }
+            else
+            {
+                _soundPlayer = null;
+            }
 
             if (SoundStream != null)
             {
                 _soundPlayer = new SoundPlayer(SoundStream);
+            }
+            else
+            {
+                _soundPlayer = null;
             }
 
             base.Show();
