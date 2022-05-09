@@ -1,20 +1,36 @@
 ﻿namespace Krypton.Toolkit.Suite.Extended.Toast
 {
-    public class BasicNotificationAlternativeUILTR : KryptonForm
+    partial class BasicNotificationWithProgressBarAlternativeUI
     {
-        #region Design Code
-        private KryptonPanel kryptonPanel2;
-        private KryptonWrapLabel kwlTitle;
-        private PictureBox pbxToastImage;
-        private KryptonPanel kryptonPanel1;
-        private KryptonButton kbtnDismiss;
-        private KryptonWrapLabel kwlContent;
-        private KryptonBorderEdge kryptonBorderEdge1;
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
 
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
         private void InitializeComponent()
         {
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
             this.kwlContent = new Krypton.Toolkit.KryptonWrapLabel();
+            this.pbCountdown = new System.Windows.Forms.ProgressBar();
             this.kwlTitle = new Krypton.Toolkit.KryptonWrapLabel();
             this.pbxToastImage = new System.Windows.Forms.PictureBox();
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
@@ -30,13 +46,14 @@
             // kryptonPanel2
             // 
             this.kryptonPanel2.Controls.Add(this.kwlContent);
+            this.kryptonPanel2.Controls.Add(this.pbCountdown);
             this.kryptonPanel2.Controls.Add(this.kwlTitle);
             this.kryptonPanel2.Controls.Add(this.pbxToastImage);
             this.kryptonPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel2.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel2.Name = "kryptonPanel2";
             this.kryptonPanel2.Size = new System.Drawing.Size(609, 243);
-            this.kryptonPanel2.TabIndex = 4;
+            this.kryptonPanel2.TabIndex = 6;
             // 
             // kwlContent
             // 
@@ -47,12 +64,20 @@
             this.kwlContent.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kwlContent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
             this.kwlContent.LabelStyle = Krypton.Toolkit.LabelStyle.NormalControl;
-            this.kwlContent.Location = new System.Drawing.Point(146, 89);
+            this.kwlContent.Location = new System.Drawing.Point(146, 95);
             this.kwlContent.Name = "kwlContent";
-            this.kwlContent.Size = new System.Drawing.Size(451, 148);
+            this.kwlContent.Size = new System.Drawing.Size(451, 140);
             this.kwlContent.StateCommon.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kwlContent.Text = "{0}";
             this.kwlContent.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // pbCountdown
+            // 
+            this.pbCountdown.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pbCountdown.Location = new System.Drawing.Point(0, 238);
+            this.pbCountdown.Name = "pbCountdown";
+            this.pbCountdown.Size = new System.Drawing.Size(609, 5);
+            this.pbCountdown.TabIndex = 4;
             // 
             // kwlTitle
             // 
@@ -88,7 +113,7 @@
             this.kryptonPanel1.Name = "kryptonPanel1";
             this.kryptonPanel1.PanelBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelAlternate;
             this.kryptonPanel1.Size = new System.Drawing.Size(609, 50);
-            this.kryptonPanel1.TabIndex = 3;
+            this.kryptonPanel1.TabIndex = 5;
             // 
             // kbtnDismiss
             // 
@@ -98,6 +123,7 @@
             this.kbtnDismiss.Size = new System.Drawing.Size(174, 25);
             this.kbtnDismiss.TabIndex = 1;
             this.kbtnDismiss.Values.Text = "{0} ({1})";
+            this.kbtnDismiss.Click += new System.EventHandler(this.kbtnDismiss_Click);
             // 
             // kryptonBorderEdge1
             // 
@@ -108,19 +134,21 @@
             this.kryptonBorderEdge1.Size = new System.Drawing.Size(609, 1);
             this.kryptonBorderEdge1.Text = "kryptonBorderEdge1";
             // 
-            // BasicNotificationAlternativeUILTR
+            // BasicNotificationWithProgressBarAlternativeUI
             // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(609, 293);
             this.Controls.Add(this.kryptonPanel2);
             this.Controls.Add(this.kryptonPanel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "BasicNotificationAlternativeUILTR";
+            this.Name = "BasicNotificationWithProgressBarAlternativeUI";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Load += new System.EventHandler(this.BasicNotificationAlternativeUILTR_Load);
+            this.Load += new System.EventHandler(this.BasicNotificationWithProgressBarAlternativeUI_Load);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
             this.kryptonPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbxToastImage)).EndInit();
@@ -130,169 +158,16 @@
             this.ResumeLayout(false);
 
         }
+
         #endregion
 
-        #region Variables
-        private IconType _iconType;
-
-        private int _time, _seconds;
-
-        private Timer _timer;
-
-        private SoundPlayer _soundPlayer;
-
-        private string _title, _contentText, _soundPath, _dismissText;
-
-        private Stream _soundStream;
-
-        private Image _customImage;
-        #endregion
-
-        #region Properties
-        public IconType IconType { get => _iconType; set => _iconType = value; }
-
-        public int Time { get => _time; set => _time = value; }
-
-        public int Seconds { get => _seconds; set => _seconds = value; }
-
-        public string Title { get => _title; set => _title = value; }
-
-        public string ContentText { get => _contentText; set => _contentText = value; }
-
-        public string SoundPath { get => _soundPath; set => _soundPath = value; }
-
-        public string DismissText { get => _dismissText; set => _dismissText = value; }
-
-        public Stream SoundStream { get => _soundStream; set => _soundStream = value; }
-
-        public Image CustomImage { get => _customImage; set => _customImage = value; }
-        #endregion
-
-        #region Constructor
-        public BasicNotificationAlternativeUILTR(IconType iconType, string title, string contentText, Image customImage = null, string dismissText = "&Dismiss")
-        {
-            InitializeComponent();
-
-            IconType = iconType;
-
-            Title = title;
-
-            ContentText = contentText;
-
-            CustomImage = customImage;
-
-            DismissText = dismissText;
-
-            TopMost = true;
-
-            Resize += BasicNotificationAlternativeUILTR_Resize;
-
-            GotFocus += BasicNotificationAlternativeUILTR_GotFocus;
-
-            DoubleBuffered = true;
-        }
-
-        public BasicNotificationAlternativeUILTR(IconType iconType, string title, string contentText, int seconds, Image customImage = null, string dismissText = "&Dismiss")
-            : this(iconType, title, contentText, customImage, dismissText) => Seconds = seconds;
-
-        public BasicNotificationAlternativeUILTR(IconType iconType, string title, string contentText, int seconds, string soundPath, Image customImage = null, string dismissText = "&Dismiss")
-            : this(iconType, title, contentText, seconds, customImage, dismissText) => SoundPath = soundPath;
-
-        public BasicNotificationAlternativeUILTR(IconType iconType, string title, string contentText, Stream soundStream, Image customImage = null, string dismissText = "&Dismiss")
-            : this(iconType, title, contentText, customImage, dismissText) => SoundStream = soundStream;
-
-        public BasicNotificationAlternativeUILTR(IconType iconType, string title, string contentText, int seconds, Stream soundStream, Image customImage = null, string dismissText = "&Dismiss")
-            : this(iconType, title, contentText, seconds, customImage, dismissText) => SoundStream = soundStream;
-        #endregion
-
-        #region Event Handlers
-        private void BasicNotificationAlternativeUILTR_Load(object sender, EventArgs e)
-        {
-            //Once loaded, position the form to the bottom left of the screen with added padding
-            Location = new Point(Screen.PrimaryScreen.WorkingArea.Width - Width - 5, Screen.PrimaryScreen.WorkingArea.Height - Height - 5);
-
-            UtilityMethods.FadeIn(this);
-
-            if (_timer != null)
-            {
-                _timer.Start();
-            }
-
-            if (_soundPlayer != null)
-            {
-                _soundPlayer.Play();
-            }
-
-            kbtnDismiss.Text = _dismissText;
-        }
-
-        private void BasicNotificationAlternativeUILTR_GotFocus(object sender, EventArgs e) => kbtnDismiss.Focus();
-
-        private void BasicNotificationAlternativeUILTR_Resize(object sender, EventArgs e)
-        {
-            if (WindowState == FormWindowState.Maximized)
-            {
-                WindowState = FormWindowState.Normal;
-            }
-        }
-
-        private void kbtnDismiss_Click(object sender, EventArgs e) => UtilityMethods.FadeOutAndClose(this);
-        #endregion
-
-        #region Methods
-        public new void Show()
-        {
-            Opacity = 0;
-
-            UtilityMethods.SetIconType(IconType, CustomImage, pbxToastImage);
-
-            kwlTitle.Text = Title;
-
-            kwlContent.Text = ContentText;
-
-            if (Seconds != 0)
-            {
-                kbtnDismiss.Text = $"{ DismissText } ({ Seconds - Time })";
-
-                _timer = new Timer();
-
-                _timer.Interval = 1000;
-
-                _timer.Tick += (sender, e) =>
-                {
-                    _time++;
-
-                    kbtnDismiss.Text = $"{ DismissText } ({ Seconds - Time }s)";
-
-                    if (_time == Seconds)
-                    {
-                        _timer.Stop();
-
-                        UtilityMethods.FadeOutAndClose(this);
-                    }
-                };
-            }
-            else
-            {
-                kbtnDismiss.Text = DismissText;
-            }
-
-            if (SoundPath != null)
-            {
-                _soundPlayer = new SoundPlayer(SoundPath);
-            }
-
-            if (SoundStream != null)
-            {
-                _soundPlayer = new SoundPlayer(SoundStream);
-            }
-
-            base.Show();
-        }
-        #endregion
-
-        #region Overrides
-        protected override bool ShowWithoutActivation => true;
-        #endregion
+        private KryptonPanel kryptonPanel2;
+        private KryptonWrapLabel kwlContent;
+        private ProgressBar pbCountdown;
+        private KryptonWrapLabel kwlTitle;
+        private PictureBox pbxToastImage;
+        private KryptonPanel kryptonPanel1;
+        private KryptonButton kbtnDismiss;
+        private KryptonBorderEdge kryptonBorderEdge1;
     }
 }

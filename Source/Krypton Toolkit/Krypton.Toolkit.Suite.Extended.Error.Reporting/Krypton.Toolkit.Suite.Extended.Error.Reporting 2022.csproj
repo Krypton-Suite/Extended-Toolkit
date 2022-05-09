@@ -108,9 +108,9 @@
 					</PropertyGroup>
 
 					<ItemGroup>
-						<PackageReference Include="Krypton.Toolkit.Nightly" Version="65.22.4.110-alpha" />
+						<PackageReference Include="Krypton.Toolkit.Nightly" Version="65.22.5.126-alpha" />
 						
-						<PackageReference Include="Krypton.Navigator.Nightly" Version="65.22.4.110-alpha" />
+						<PackageReference Include="Krypton.Navigator.Nightly" Version="65.22.5.126-alpha" />
 					</ItemGroup>
 				</When>
 				<Otherwise>
@@ -121,9 +121,9 @@
 							</PropertyGroup>
 
 							<ItemGroup>
-								<PackageReference Include="Krypton.Toolkit.Canary" Version="65.22.4.103-beta" />
+								<PackageReference Include="Krypton.Toolkit.Canary" Version="65.22.5.123-beta" />
 								
-								<PackageReference Include="Krypton.Navigator.Canary" Version="65.22.4.103-beta" />
+								<PackageReference Include="Krypton.Navigator.Canary" Version="65.22.5.123-beta" />
 							</ItemGroup>
 						</When>
 						<Otherwise>
@@ -164,10 +164,10 @@
 	</Choose>
 
 	<ItemGroup>
-	  <PackageReference Include="DotNetZip" Version="1.16.0" />
-	  <PackageReference Include="Handlebars.Net" Version="2.1.1" />
-	  <PackageReference Include="Simple-MAPI.NET" Version="1.2.0" />
-	  <PackageReference Include="System.Management" Version="6.0.0" />
+	    <PackageReference Include="DotNetZip" Version="1.16.0" />
+	    <PackageReference Include="Handlebars.Net" Version="2.1.2" />
+	    <PackageReference Include="Simple-MAPI.NET" Version="1.2.0" />
+	    <PackageReference Include="System.Management" Version="6.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>
