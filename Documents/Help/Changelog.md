@@ -4,6 +4,7 @@
 * Add new configurations to aid creation of full/lite NuGet packages
 * Toasts now support `RightToLeft` layouts
 * New `KryptonThemeComboBox` control in `Krypton.Toolkit.Suite.Extended.Tool.Strip.Items` package, to allow users to switch between themes
+* Implemented [#315](https://github.com/Krypton-Suite/Extended-Toolkit/issues/315), Is it possible to add es-ES language. Thanks to [NintendoPlayer](https://github.com/NintendoPlayer) (More translations are welcome :)
 * Updated standard toolkit to build `2206`
 
 =======
