@@ -1,6 +1,6 @@
 =======
 
-## 2022-06-xx - Build 2206 - June 2022
+## 2022-06-01 - Build 2206 - June 2022
 * Add new configurations to aid creation of full/lite NuGet packages
 * Toasts now support `RightToLeft` layouts
 * New `KryptonThemeComboBox` control in `Krypton.Toolkit.Suite.Extended.Tool.Strip.Items` package, to allow users to switch between themes
