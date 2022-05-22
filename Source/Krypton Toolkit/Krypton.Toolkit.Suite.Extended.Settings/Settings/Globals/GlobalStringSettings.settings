@@ -1,0 +1,45 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Krypton.Toolkit.Suite.Extended.Settings.Settings.Globals" GeneratedClassName="GlobalStringSettings">
+  <Profiles />
+  <Settings>
+    <Setting Name="BasePaletteMode" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="FeedbackText" Type="System.String" Scope="User">
+      <Value Profile="(Default)">This will become informative...</Value>
+    </Setting>
+    <Setting Name="PaletteExportPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="HashReadableFileTypesFilterList" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="HashFileTypeExtensionList" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="HashReadableFileTypesFilterListCollection" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;MD5 Files&lt;/string&gt;
+  &lt;string&gt;RIPEMD-160 Files&lt;/string&gt;
+  &lt;string&gt;SHA-1 Files&lt;/string&gt;
+  &lt;string&gt;SHA-256 Files&lt;/string&gt;
+  &lt;string&gt;SHA-384 Files&lt;/string&gt;
+  &lt;string&gt;SHA-512 Files&lt;/string&gt;
+  &lt;string&gt;All Files&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="HashFileTypeExtensionListCollection" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;.md5&lt;/string&gt;
+  &lt;string&gt;.ripemd160&lt;/string&gt;
+  &lt;string&gt;.sha1&lt;/string&gt;
+  &lt;string&gt;.sha256&lt;/string&gt;
+  &lt;string&gt;.sha384&lt;/string&gt;
+  &lt;string&gt;.sha512&lt;/string&gt;
+  &lt;string&gt;*.*&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
