@@ -1,148 +1,7 @@
 ﻿namespace Krypton.Toolkit.Suite.Extended.Toast
 {
-    public class BasicNotificationWithUserResponseLTR : KryptonForm
+    public partial class BasicNotificationWithUserResponse : KryptonForm
     {
-        #region Designer Code
-        private KryptonPanel kryptonPanel1;
-        private KryptonPanel kpnlContent;
-        private PictureBox pbxToastImage;
-        private KryptonWrapLabel kwlTitle;
-        private KryptonRichTextBox krtbContent;
-        private KryptonButton kbtnDismiss;
-        private KryptonTextBox ktxtUserResponse;
-        private KryptonBorderEdge kryptonBorderEdge1;
-
-        private void InitializeComponent()
-        {
-            this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
-            this.kbtnDismiss = new Krypton.Toolkit.KryptonButton();
-            this.kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
-            this.kpnlContent = new Krypton.Toolkit.KryptonPanel();
-            this.ktxtUserResponse = new Krypton.Toolkit.KryptonTextBox();
-            this.krtbContent = new Krypton.Toolkit.KryptonRichTextBox();
-            this.kwlTitle = new Krypton.Toolkit.KryptonWrapLabel();
-            this.pbxToastImage = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
-            this.kryptonPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kpnlContent)).BeginInit();
-            this.kpnlContent.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxToastImage)).BeginInit();
-            this.SuspendLayout();
-            // 
-            // kryptonPanel1
-            // 
-            this.kryptonPanel1.Controls.Add(this.kbtnDismiss);
-            this.kryptonPanel1.Controls.Add(this.kryptonBorderEdge1);
-            this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.kryptonPanel1.Location = new System.Drawing.Point(0, 277);
-            this.kryptonPanel1.Name = "kryptonPanel1";
-            this.kryptonPanel1.PanelBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelAlternate;
-            this.kryptonPanel1.Size = new System.Drawing.Size(609, 50);
-            this.kryptonPanel1.TabIndex = 1;
-            // 
-            // kbtnDismiss
-            // 
-            this.kbtnDismiss.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.kbtnDismiss.Location = new System.Drawing.Point(423, 13);
-            this.kbtnDismiss.Name = "kbtnDismiss";
-            this.kbtnDismiss.Size = new System.Drawing.Size(174, 25);
-            this.kbtnDismiss.TabIndex = 1;
-            this.kbtnDismiss.Values.Text = "{0} ({1})";
-            this.kbtnDismiss.Click += new System.EventHandler(this.kbtnDismiss_Click);
-            // 
-            // kryptonBorderEdge1
-            // 
-            this.kryptonBorderEdge1.BorderStyle = Krypton.Toolkit.PaletteBorderStyle.HeaderPrimary;
-            this.kryptonBorderEdge1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.kryptonBorderEdge1.Location = new System.Drawing.Point(0, 0);
-            this.kryptonBorderEdge1.Name = "kryptonBorderEdge1";
-            this.kryptonBorderEdge1.Size = new System.Drawing.Size(609, 1);
-            this.kryptonBorderEdge1.Text = "kryptonBorderEdge1";
-            // 
-            // kpnlContent
-            // 
-            this.kpnlContent.Controls.Add(this.ktxtUserResponse);
-            this.kpnlContent.Controls.Add(this.krtbContent);
-            this.kpnlContent.Controls.Add(this.kwlTitle);
-            this.kpnlContent.Controls.Add(this.pbxToastImage);
-            this.kpnlContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kpnlContent.Location = new System.Drawing.Point(0, 0);
-            this.kpnlContent.Name = "kpnlContent";
-            this.kpnlContent.Size = new System.Drawing.Size(609, 277);
-            this.kpnlContent.TabIndex = 2;
-            // 
-            // ktxtUserResponse
-            // 
-            this.ktxtUserResponse.Location = new System.Drawing.Point(146, 247);
-            this.ktxtUserResponse.Name = "ktxtUserResponse";
-            this.ktxtUserResponse.Size = new System.Drawing.Size(451, 23);
-            this.ktxtUserResponse.TabIndex = 3;
-            // 
-            // krtbContent
-            // 
-            this.krtbContent.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.krtbContent.Location = new System.Drawing.Point(146, 89);
-            this.krtbContent.Name = "krtbContent";
-            this.krtbContent.ReadOnly = true;
-            this.krtbContent.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
-            this.krtbContent.Size = new System.Drawing.Size(451, 152);
-            this.krtbContent.TabIndex = 4;
-            this.krtbContent.Text = "";
-            // 
-            // kwlTitle
-            // 
-            this.kwlTitle.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.kwlTitle.AutoSize = false;
-            this.kwlTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kwlTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
-            this.kwlTitle.LabelStyle = Krypton.Toolkit.LabelStyle.NormalControl;
-            this.kwlTitle.Location = new System.Drawing.Point(146, 12);
-            this.kwlTitle.Name = "kwlTitle";
-            this.kwlTitle.Size = new System.Drawing.Size(451, 74);
-            this.kwlTitle.StateCommon.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kwlTitle.Text = "{0}";
-            this.kwlTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // pbxToastImage
-            // 
-            this.pbxToastImage.BackColor = System.Drawing.Color.Transparent;
-            this.pbxToastImage.Location = new System.Drawing.Point(12, 12);
-            this.pbxToastImage.Name = "pbxToastImage";
-            this.pbxToastImage.Size = new System.Drawing.Size(128, 128);
-            this.pbxToastImage.TabIndex = 1;
-            this.pbxToastImage.TabStop = false;
-            // 
-            // BasicNotificationWithUserResponseLTR
-            // 
-            this.AcceptButton = this.kbtnDismiss;
-            this.CancelButton = this.kbtnDismiss;
-            this.ClientSize = new System.Drawing.Size(609, 327);
-            this.Controls.Add(this.kpnlContent);
-            this.Controls.Add(this.kryptonPanel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "BasicNotificationWithUserResponseLTR";
-            this.ShowIcon = false;
-            this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Load += new System.EventHandler(this.BasicNotificationWithUserResponseLTR_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
-            this.kryptonPanel1.ResumeLayout(false);
-            this.kryptonPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kpnlContent)).EndInit();
-            this.kpnlContent.ResumeLayout(false);
-            this.kpnlContent.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxToastImage)).EndInit();
-            this.ResumeLayout(false);
-
-        }
-        #endregion
-
         #region Variables
         private bool _usePanelColourInTextArea, _useNativeBackColourInUserResponseArea;
 
@@ -165,6 +24,8 @@
         private Stream _soundStream;
 
         private Image _customImage;
+
+        private RightToLeftSupport _rightToLeftSupport;
         #endregion
 
         #region Properties
@@ -176,9 +37,9 @@
 
         public PaletteRelativeAlign UserResponsePromptAlignHorizontal { get => _userResponsePromptAlignHorizontal; set => _userResponsePromptAlignHorizontal = value; }
 
-        public PaletteRelativeAlign UserResponsePromptAlignVertical { get => _userResponsePromptAlignVertical; set => _userResponsePromptAlignVertical = value;}
+        public PaletteRelativeAlign UserResponsePromptAlignVertical { get => _userResponsePromptAlignVertical; set => _userResponsePromptAlignVertical = value; }
 
-        public Font UserResponsePromptFont { get => _userResponsePromptFont; set => _userResponsePromptFont = value;}
+        public Font UserResponsePromptFont { get => _userResponsePromptFont; set => _userResponsePromptFont = value; }
 
         public IconType IconType { get => _iconType; set => _iconType = value; }
 
@@ -199,10 +60,12 @@
         public Stream SoundStream { get => _soundStream; set => _soundStream = value; }
 
         public Image CustomImage { get => _customImage; set => _customImage = value; }
+
+        public RightToLeftSupport RightToLeftSupport { get => _rightToLeftSupport; set { _rightToLeftSupport = value; Invalidate(); } }
         #endregion
 
         #region Constructors
-        /// <summary>Initializes a new instance of the <see cref="BasicNotificationWithUserResponseLTR" /> class.</summary>
+        /// <summary>Initializes a new instance of the <see cref="BasicNotificationWithUserResponse" /> class.</summary>
         /// <param name="iconType">Type of the icon.</param>
         /// <param name="title">The title.</param>
         /// <param name="contentText">The content text.</param>
@@ -215,16 +78,17 @@
         /// <param name="userResponseCueAlignHorizontal">The user response cue align horizontal.</param>
         /// <param name="userResponseCueAlignVertical">The user response cue align vertical.</param>
         /// <param name="userResponseCueFont">The user response cue font.</param>
-        public BasicNotificationWithUserResponseLTR(IconType iconType, string title, string contentText,
-                                                    bool? usePanelColourInTextArea,
-                                                    bool? useNativeBackColourInUserResponseArea, 
-                                                    Image customImage = null, 
-                                                    string dismissText = "&Dismiss", 
-                                                    string userResponseCueText = "",
-                                                    Color? userResponseCueColour = null, 
-                                                    PaletteRelativeAlign? userResponseCueAlignHorizontal = null,
-                                                    PaletteRelativeAlign? userResponseCueAlignVertical = null,
-                                                    Font userResponseCueFont = null)
+        public BasicNotificationWithUserResponse(IconType iconType, string title, string contentText,
+                                                 bool? usePanelColourInTextArea,
+                                                 bool? useNativeBackColourInUserResponseArea,
+                                                 Image customImage = null,
+                                                 string dismissText = "&Dismiss",
+                                                 string userResponseCueText = "",
+                                                 Color? userResponseCueColour = null,
+                                                 PaletteRelativeAlign? userResponseCueAlignHorizontal = null,
+                                                 PaletteRelativeAlign? userResponseCueAlignVertical = null,
+                                                 Font userResponseCueFont = null,
+                                                 RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LEFTTORIGHT)
         {
             InitializeComponent();
 
@@ -252,20 +116,24 @@
 
             UserResponsePromptFont = userResponseCueFont;
 
+            RightToLeftSupport = rightToLeftSupport ?? RightToLeftSupport.LEFTTORIGHT;
+
             TopMost = true;
 
-            Resize += BasicNotificationWithUserResponseLTR_Resize;
+            Resize += BasicNotificationWithUserResponse_Resize;
 
-            GotFocus += BasicNotificationWithUserResponseLTR_GotFocus;
+            GotFocus += BasicNotificationWithUserResponse_GotFocus;
 
-            LostFocus += BasicNotificationWithUserResponseLTR_LostFocus;
+            LostFocus += BasicNotificationWithUserResponse_LostFocus;
 
             DoubleBuffered = true;
 
             SetupTextArea();
+
+            ReconfigureUI(rightToLeftSupport);
         }
 
-        /// <summary>Initializes a new instance of the <see cref="BasicNotificationWithUserResponseLTR" /> class.</summary>
+        /// <summary>Initializes a new instance of the <see cref="BasicNotificationWithUserResponse" /> class.</summary>
         /// <param name="iconType">Type of the icon.</param>
         /// <param name="title">The title.</param>
         /// <param name="contentText">The content text.</param>
@@ -279,20 +147,21 @@
         /// <param name="userResponseCueAlignHorizontal">The user response cue align horizontal.</param>
         /// <param name="userResponseCueAlignVertical">The user response cue align vertical.</param>
         /// <param name="userResponseCueFont">The user response cue font.</param>
-        public BasicNotificationWithUserResponseLTR(IconType iconType, string title, string contentText,
-                                                    bool? usePanelColourInTextArea,
-                                                    bool? useNativeBackColourInUserResponseArea,
-                                                    int seconds, Image customImage = null, 
-                                                    string dismissText = "&Dismiss", string userResponseCueText = "",
-                                                    Color? userResponseCueColour = null,
-                                                    PaletteRelativeAlign? userResponseCueAlignHorizontal = null,
-                                                    PaletteRelativeAlign? userResponseCueAlignVertical = null,
-                                                    Font userResponseCueFont = null)
-            : this(iconType, title, contentText, usePanelColourInTextArea, useNativeBackColourInUserResponseArea, customImage, dismissText, userResponseCueText, 
+        public BasicNotificationWithUserResponse(IconType iconType, string title, string contentText,
+                                                 bool? usePanelColourInTextArea,
+                                                 bool? useNativeBackColourInUserResponseArea,
+                                                 int seconds, Image customImage = null,
+                                                 string dismissText = "&Dismiss", string userResponseCueText = "",
+                                                 Color? userResponseCueColour = null,
+                                                 PaletteRelativeAlign? userResponseCueAlignHorizontal = null,
+                                                 PaletteRelativeAlign? userResponseCueAlignVertical = null,
+                                                 Font userResponseCueFont = null,
+                                                 RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LEFTTORIGHT)
+            : this(iconType, title, contentText, usePanelColourInTextArea, useNativeBackColourInUserResponseArea, customImage, dismissText, userResponseCueText,
                    userResponseCueColour, userResponseCueAlignHorizontal,
-                   userResponseCueAlignVertical, userResponseCueFont) => Seconds = seconds;
+                   userResponseCueAlignVertical, userResponseCueFont, rightToLeftSupport) => Seconds = seconds;
 
-        /// <summary>Initializes a new instance of the <see cref="BasicNotificationWithUserResponseLTR" /> class.</summary>
+        /// <summary>Initializes a new instance of the <see cref="BasicNotificationWithUserResponse" /> class.</summary>
         /// <param name="iconType">Type of the icon.</param>
         /// <param name="title">The title.</param>
         /// <param name="contentText">The content text.</param>
@@ -307,20 +176,21 @@
         /// <param name="userResponseCueAlignHorizontal">The user response cue align horizontal.</param>
         /// <param name="userResponseCueAlignVertical">The user response cue align vertical.</param>
         /// <param name="userResponseCueFont">The user response cue font.</param>
-        public BasicNotificationWithUserResponseLTR(IconType iconType, string title, string contentText,
-                                                    bool? usePanelColourInTextArea,
-                                                    bool? useNativeBackColourInUserResponseArea, 
-                                                    int seconds, string soundPath, Image customImage = null, 
-                                                    string dismissText = "&Dismiss", string userResponseCueText = "",
-                                                    Color? userResponseCueColour = null,
-                                                    PaletteRelativeAlign? userResponseCueAlignHorizontal = null,
-                                                    PaletteRelativeAlign? userResponseCueAlignVertical = null,
-                                                    Font userResponseCueFont = null)
+        public BasicNotificationWithUserResponse(IconType iconType, string title, string contentText,
+                                                 bool? usePanelColourInTextArea,
+                                                 bool? useNativeBackColourInUserResponseArea,
+                                                 int seconds, string soundPath, Image customImage = null,
+                                                 string dismissText = "&Dismiss", string userResponseCueText = "",
+                                                 Color? userResponseCueColour = null,
+                                                 PaletteRelativeAlign? userResponseCueAlignHorizontal = null, 
+                                                 PaletteRelativeAlign? userResponseCueAlignVertical = null,
+                                                 Font userResponseCueFont = null,
+                                                 RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LEFTTORIGHT)
             : this(iconType, title, contentText, usePanelColourInTextArea, useNativeBackColourInUserResponseArea, seconds, customImage, dismissText, userResponseCueText,
                    userResponseCueColour, userResponseCueAlignHorizontal,
-                   userResponseCueAlignVertical, userResponseCueFont) => SoundPath = soundPath;
+                   userResponseCueAlignVertical, userResponseCueFont, rightToLeftSupport) => SoundPath = soundPath;
 
-        /// <summary>Initializes a new instance of the <see cref="BasicNotificationWithUserResponseLTR" /> class.</summary>
+        /// <summary>Initializes a new instance of the <see cref="BasicNotificationWithUserResponse" /> class.</summary>
         /// <param name="iconType">Type of the icon.</param>
         /// <param name="title">The title.</param>
         /// <param name="contentText">The content text.</param>
@@ -334,20 +204,21 @@
         /// <param name="userResponseCueAlignHorizontal">The user response cue align horizontal.</param>
         /// <param name="userResponseCueAlignVertical">The user response cue align vertical.</param>
         /// <param name="userResponseCueFont">The user response cue font.</param>
-        public BasicNotificationWithUserResponseLTR(IconType iconType, string title, string contentText,
-                                                    bool? usePanelColourInTextArea,
-                                                    bool? useNativeBackColourInUserResponseArea, 
-                                                    Stream soundStream, Image customImage = null, 
-                                                    string dismissText = "&Dismiss", string userResponseCueText = "",
-                                                    Color? userResponseCueColour = null,
-                                                    PaletteRelativeAlign? userResponseCueAlignHorizontal = null,
-                                                    PaletteRelativeAlign? userResponseCueAlignVertical = null,
-                                                    Font userResponseCueFont = null)
+        public BasicNotificationWithUserResponse(IconType iconType, string title, string contentText,
+                                                 bool? usePanelColourInTextArea,
+                                                 bool? useNativeBackColourInUserResponseArea,
+                                                 Stream soundStream, Image customImage = null,
+                                                 string dismissText = "&Dismiss", string userResponseCueText = "",
+                                                 Color? userResponseCueColour = null,
+                                                 PaletteRelativeAlign? userResponseCueAlignHorizontal = null,
+                                                 PaletteRelativeAlign? userResponseCueAlignVertical = null,
+                                                 Font userResponseCueFont = null,
+                                                 RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LEFTTORIGHT)
             : this(iconType, title, contentText, usePanelColourInTextArea, useNativeBackColourInUserResponseArea, customImage, dismissText, userResponseCueText,
                    userResponseCueColour, userResponseCueAlignHorizontal,
-                   userResponseCueAlignVertical, userResponseCueFont) => SoundStream = soundStream;
+                   userResponseCueAlignVertical, userResponseCueFont, rightToLeftSupport) => SoundStream = soundStream;
 
-        /// <summary>Initializes a new instance of the <see cref="BasicNotificationWithUserResponseLTR" /> class.</summary>
+        /// <summary>Initializes a new instance of the <see cref="BasicNotificationWithUserResponse" /> class.</summary>
         /// <param name="iconType">Type of the icon.</param>
         /// <param name="title">The title.</param>
         /// <param name="contentText">The content text.</param>
@@ -362,22 +233,23 @@
         /// <param name="userResponseCueAlignHorizontal">The user response cue align horizontal.</param>
         /// <param name="userResponseCueAlignVertical">The user response cue align vertical.</param>
         /// <param name="userResponseCueFont">The user response cue font.</param>
-        public BasicNotificationWithUserResponseLTR(IconType iconType, string title, string contentText,
-                                                    bool? usePanelColourInTextArea,
-                                                    bool? useNativeBackColourInUserResponseArea,
-                                                    int seconds, Stream soundStream, Image customImage = null, 
-                                                    string dismissText = "&Dismiss", string userResponseCueText = "",
-                                                    Color? userResponseCueColour = null,
-                                                    PaletteRelativeAlign? userResponseCueAlignHorizontal = null,
-                                                    PaletteRelativeAlign? userResponseCueAlignVertical = null,
-                                                    Font userResponseCueFont = null)
+        public BasicNotificationWithUserResponse(IconType iconType, string title, string contentText,
+                                                 bool? usePanelColourInTextArea,
+                                                 bool? useNativeBackColourInUserResponseArea,
+                                                 int seconds, Stream soundStream, Image customImage = null,
+                                                 string dismissText = "&Dismiss", string userResponseCueText = "",
+                                                 Color? userResponseCueColour = null,
+                                                 PaletteRelativeAlign? userResponseCueAlignHorizontal = null,
+                                                 PaletteRelativeAlign? userResponseCueAlignVertical = null,
+                                                 Font userResponseCueFont = null,
+                                                 RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LEFTTORIGHT)
             : this(iconType, title, contentText, usePanelColourInTextArea, useNativeBackColourInUserResponseArea, seconds, customImage, dismissText, userResponseCueText,
                    userResponseCueColour, userResponseCueAlignHorizontal,
-                   userResponseCueAlignVertical, userResponseCueFont) => SoundStream = soundStream;
+                   userResponseCueAlignVertical, userResponseCueFont, rightToLeftSupport) => SoundStream = soundStream;
         #endregion
 
         #region Event Handlers
-        private void BasicNotificationWithUserResponseLTR_Load(object sender, EventArgs e)
+        private void BasicNotificationWithUserResponse_Load(object sender, EventArgs e)
         {
             //Once loaded, position the form to the bottom left of the screen with added padding
             Location = new Point(Screen.PrimaryScreen.WorkingArea.Width - Width - 5, Screen.PrimaryScreen.WorkingArea.Height - Height - 5);
@@ -397,7 +269,7 @@
             kbtnDismiss.Text = _dismissText;
         }
 
-        private void BasicNotificationWithUserResponseLTR_GotFocus(object sender, EventArgs e)
+        private void BasicNotificationWithUserResponse_GotFocus(object sender, EventArgs e)
         {
             kbtnDismiss.Focus();
 
@@ -407,7 +279,7 @@
             }
         }
 
-        private void BasicNotificationWithUserResponseLTR_LostFocus(object sender, EventArgs e)
+        private void BasicNotificationWithUserResponse_LostFocus(object sender, EventArgs e)
         {
             if (_timer != null)
             {
@@ -415,7 +287,7 @@
             }
         }
 
-        private void BasicNotificationWithUserResponseLTR_Resize(object sender, EventArgs e)
+        private void BasicNotificationWithUserResponse_Resize(object sender, EventArgs e)
         {
             if (WindowState == FormWindowState.Maximized)
             {
@@ -492,7 +364,7 @@
 
             if (Seconds != 0)
             {
-                kbtnDismiss.Text = $"{ DismissText } ({ Seconds - Time })";
+                kbtnDismiss.Text = $"{DismissText} ({Seconds - Time})";
 
                 _timer = new Timer();
 
@@ -502,7 +374,7 @@
                 {
                     _time++;
 
-                    kbtnDismiss.Text = $"{ DismissText } ({ Seconds - Time }s)";
+                    kbtnDismiss.Text = $"{DismissText} ({Seconds - Time}s)";
 
                     if (_time == Seconds)
                     {
@@ -521,10 +393,18 @@
             {
                 _soundPlayer = new SoundPlayer(SoundPath);
             }
+            else
+            {
+                _soundPlayer = null;
+            }
 
             if (SoundStream != null)
             {
                 _soundPlayer = new SoundPlayer(SoundStream);
+            }
+            else
+            {
+                _soundPlayer = null;
             }
 
             base.Show();
@@ -552,7 +432,7 @@
 
             if (Seconds != 0)
             {
-                kbtnDismiss.Text = $"{ DismissText } ({ Seconds - Time })";
+                kbtnDismiss.Text = $"{DismissText} ({Seconds - Time})";
 
                 _timer = new Timer();
 
@@ -562,7 +442,7 @@
                 {
                     _time++;
 
-                    kbtnDismiss.Text = $"{ DismissText } ({ Seconds - Time }s)";
+                    kbtnDismiss.Text = $"{DismissText} ({Seconds - Time}s)";
 
                     if (_time == Seconds)
                     {
@@ -577,16 +457,60 @@
             {
                 _soundPlayer = new SoundPlayer(SoundPath);
             }
+            else
+            {
+                _soundPlayer = null;
+            }
 
             if (SoundStream != null)
             {
                 _soundPlayer = new SoundPlayer(SoundStream);
+            }
+            else
+            {
+                _soundPlayer = null;
             }
 
             return base.ShowDialog();
         }
 
         public string GetUserResponse() => ktxtUserResponse.Text;
+
+        private void ReconfigureUI(RightToLeftSupport? rightToLeftSupport)
+        {
+            if (rightToLeftSupport == RightToLeftSupport.LEFTTORIGHT)
+            {
+                RightToLeft = RightToLeft.No;
+
+                RightToLeftLayout = false;
+
+                pbxToastImage.Location = new Point(12, 12);
+
+                kwlTitle.Location = new Point(146, 12);
+
+                krtbContent.Location = new Point(146, 89);
+
+                ktxtUserResponse.Location = new Point(146, 247);
+
+                kbtnDismiss.Location = new Point(423, 13);
+            }
+            else
+            {
+                RightToLeft = RightToLeft.Yes;
+
+                RightToLeftLayout = true;
+
+                pbxToastImage.Location = new Point(469, 12);
+
+                kwlTitle.Location = new Point(12, 12);
+
+                krtbContent.Location = new Point(12, 89);
+
+                ktxtUserResponse.Location = new Point(12, 247);
+
+                kbtnDismiss.Location = new Point(12, 13);
+            }
+        }
         #endregion
 
         #region Overrides

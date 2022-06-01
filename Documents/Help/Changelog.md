@@ -1,5 +1,14 @@
 =======
 
+## 2022-06-01 - Build 2206 - June 2022
+* Add new configurations to aid creation of full/lite NuGet packages
+* Toasts now support `RightToLeft` layouts
+* New `KryptonThemeComboBox` control in `Krypton.Toolkit.Suite.Extended.Tool.Strip.Items` package, to allow users to switch between themes
+* Implemented [#315](https://github.com/Krypton-Suite/Extended-Toolkit/issues/315), Is it possible to add `es-ES` language. Thanks to [NintendoPlayer](https://github.com/NintendoPlayer) (More translations are welcome :))
+* Updated standard toolkit to build `2206`
+
+=======
+
 ## 2022-04-04 - Build 2204 - April 2022
 * Implemented [#290](https://github.com/Krypton-Suite/Extended-Toolkit/issues/290), `KryptonOutlookGridGroupBox` 'CreateGroupBox' method not found
 * New `Krypton.Toolkit.Suite.Extended.Networking` module

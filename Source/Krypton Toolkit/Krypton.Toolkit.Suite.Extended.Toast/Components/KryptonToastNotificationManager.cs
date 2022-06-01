@@ -209,10 +209,11 @@
                         }
                         else if (_contentAreaType == ContentAreaType.WRAPPEDLABEL)
                         {
-                            BasicNotificationAlternativeUILTR notification = new BasicNotificationAlternativeUILTR(
+                            BasicNotificationAlternativeUI notification = new BasicNotificationAlternativeUI(
                                 IconType,
                                 Title, ContentText, Seconds, SoundPath,
-                                CustomImage, DismissText);
+                                CustomImage, DismissText,
+                                RightToLeftSupport);
 
                             notification.Show();
                         }
@@ -222,10 +223,10 @@
                         }
                         else if (_contentAreaType == ContentAreaType.RICHTEXTBOX)
                         {
-                            BasicNotificationLTR notification = new BasicNotificationLTR(IconType, Title, ContentText, 
-                                                                                         UsePanelColourInTextArea,
-                                                                                         Seconds, SoundPath,
-                                                                                         CustomImage, DismissText);
+                            BasicNotification notification = new BasicNotification(IconType, Title, ContentText, 
+                                                                                   UsePanelColourInTextArea,
+                                                                                   Seconds, SoundPath,
+                                                                                   CustomImage, DismissText, RightToLeftSupport);
 
                             notification.Show();
                         }
@@ -238,10 +239,10 @@
                         }
                         else if (_contentAreaType == ContentAreaType.WRAPPEDLABEL)
                         {
-                            BasicNotificationWithProgressBarAlternativeUILTR notification =
-                                new BasicNotificationWithProgressBarAlternativeUILTR(IconType, Title, ContentText,
+                            BasicNotificationWithProgressBarAlternativeUI notification =
+                                new BasicNotificationWithProgressBarAlternativeUI(IconType, Title, ContentText,
                                     Seconds,
-                                    SoundStream, CustomImage, DismissText);
+                                    SoundStream, CustomImage, DismissText, RightToLeftSupport);
 
                             notification.Show();
                         }
@@ -251,11 +252,11 @@
                         }
                         else if (_contentAreaType == ContentAreaType.RICHTEXTBOX)
                         {
-                            BasicNotificationWithProgressBarLTR notification = new BasicNotificationWithProgressBarLTR(
-                                                                                                                       IconType, Title, ContentText,
-                                                                                                                       UsePanelColourInTextArea,
-                                                                                                                       Seconds, SoundStream,
-                                                                                                                       CustomImage, DismissText);
+                            BasicNotificationWithProgressBar notification = new BasicNotificationWithProgressBar(
+                                                                                                                 IconType, Title, ContentText,
+                                                                                                                 UsePanelColourInTextArea,
+                                                                                                                 Seconds, SoundStream,
+                                                                                                                 CustomImage, DismissText, RightToLeftSupport);
 
                             notification.Show();
                         }
@@ -271,13 +272,13 @@
                         }
                         else if (_contentAreaType == ContentAreaType.WRAPPEDLABEL)
                         {
-                            BasicNotificationWithUserResponseWrappedLabelLTR notification = new BasicNotificationWithUserResponseWrappedLabelLTR(IconType, Title, ContentText, Seconds,
+                            BasicNotificationWithUserResponseWrappedLabel notification = new BasicNotificationWithUserResponseWrappedLabel(IconType, Title, ContentText, Seconds,
                                                                                                                                                  SoundPath, CustomImage,
                                                                                                                                                  DismissText, UserResponsePromptText,
                                                                                                                                                  UserResponsePromptColour,
                                                                                                                                                  UserResponsePromptAlignHorizontal, 
                                                                                                                                                  UserResponsePromptAlignVertical,
-                                                                                                                                                 UserResponsePromptFont);
+                                                                                                                                                 UserResponsePromptFont, RightToLeftSupport);
 
                             notification.Show();
                         }
@@ -287,14 +288,14 @@
                         }
                         else if (_contentAreaType == ContentAreaType.RICHTEXTBOX)
                         {
-                            BasicNotificationWithUserResponseLTR notification = new BasicNotificationWithUserResponseLTR(IconType, Title, ContentText,
+                            BasicNotificationWithUserResponse notification = new BasicNotificationWithUserResponse(IconType, Title, ContentText,
                                                                                                                          UsePanelColourInTextArea, UseNativeBackColourInUserResponseArea,
                                                                                                                          Seconds,
                                                                                                                          SoundPath, CustomImage,
                                                                                                                          DismissText, UserResponsePromptText, 
                                                                                                                          UserResponsePromptColour,
                                                                                                                          UserResponsePromptAlignHorizontal, UserResponsePromptAlignVertical,
-                                                                                                                         UserResponsePromptFont);
+                                                                                                                         UserResponsePromptFont, RightToLeftSupport);
 
                             notification.Show();
                         }
