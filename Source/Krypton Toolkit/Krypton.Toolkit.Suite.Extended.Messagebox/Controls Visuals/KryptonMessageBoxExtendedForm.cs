@@ -268,6 +268,25 @@
                     _button3.Enabled = true;
                     ControlBox = false;
                     break;
+#if NET60_OR_GREATER
+                case ExtendedMessageBoxButtons.CANCELTRYCONTINUE:
+                    _button1.Text = KryptonManager.Strings.Cancel;
+                    _button2.Text = KryptonManager.Strings.TryAgain;
+                    _button3.Text = KryptonManager.Strings.Continue;
+                    _button1.DialogResult = DialogResult.Cancel;
+                    _button2.DialogResult = DialogResult.TryAgain;
+                    _button3.DialogResult = DialogResult.Continue;
+                    _button1.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
+                    _button2.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
+                    _button3.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
+                    _button1.Visible = true;
+                    _button1.Enabled = true;
+                    _button2.Visible = true;
+                    _button2.Enabled = true;
+                    _button3.Visible = true;
+                    _button3.Enabled = true;
+                    break;
+#endif
             }
 
             // Do we ignore the Alt+F4 on the buttons?
@@ -521,6 +540,6 @@
             Clipboard.SetText(sb.ToString(), TextDataFormat.Text);
             Clipboard.SetText(sb.ToString(), TextDataFormat.UnicodeText);
         }
-        #endregion
+#endregion
     }
 }
