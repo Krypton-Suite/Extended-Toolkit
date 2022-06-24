@@ -219,6 +219,8 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             }
         }
 
+        /// <summary>Gets the human readable name of the OS.</summary>
+        /// <returns>The human readable name of the OS.</returns>
         public string GetOSFriendlyName()
         {
             string productName = HKLM_GetString(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion", "ProductName"),
@@ -247,6 +249,9 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             }
             catch (Exception e)
             {
+
+                ExceptionCapture.CaptureException(e);
+
                 return string.Empty;
             }
         }

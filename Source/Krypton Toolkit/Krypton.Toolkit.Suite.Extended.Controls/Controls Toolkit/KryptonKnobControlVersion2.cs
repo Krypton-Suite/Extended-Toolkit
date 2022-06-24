@@ -1074,6 +1074,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         /// <summary>
         /// return 2 points of a line starting from the center of the knob to the periphery
         /// </summary>
+        /// <param name="Gr"></param>
         /// <param name="l"></param>
         /// <returns></returns>
         private Point[] GetKnobLine(Graphics Gr, int l)
@@ -1084,7 +1085,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             float cy = _pKnob.Y;
 
 
-            float radius = (float)(_rKnob.Width / 2);
+            float radius = _rKnob.Width / 2;
 
             // FAB: 21/08/18            
             float degree = _deltaAngle * (this.Value - _minimum) / (_maximum - _minimum);
@@ -1093,7 +1094,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
 
             double val = _maximum;
-            String str = String.Format("{0,0:D}", (int)val);
+            string str = string.Format("{0,0:D}", (int)val);
             float fSize;
             SizeF strsize;
 

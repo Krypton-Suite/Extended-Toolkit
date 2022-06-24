@@ -3,42 +3,42 @@
 	<Choose>
 		<When Condition="'$(Configuration)' == 'Nightly'">
 			<PropertyGroup>
-				<TargetFrameworks>net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows;net6.0-windows;net7.0-windows</TargetFrameworks>
+				<TargetFrameworks>net462;net47;net471;net472;net48;net481;netcoreapp3.1;net5.0-windows;net6.0-windows;net7.0-windows</TargetFrameworks>
 			</PropertyGroup>
 		</When>
 		<Otherwise>
 			<Choose>
 				<When Condition="'$(Configuration)' == 'Canary'">
 					<PropertyGroup>
-						<TargetFrameworks>net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows;net6.0-windows;net7.0-windows</TargetFrameworks>
+						<TargetFrameworks>net462;net47;net471;net472;net48;net481;netcoreapp3.1;net5.0-windows;net6.0-windows;net7.0-windows</TargetFrameworks>
 					</PropertyGroup>
 				</When>
 				<Otherwise>
 					<Choose>
 						<When Condition="'$(Configuration)' == 'StableFull'">
 							<PropertyGroup>
-								<TargetFrameworks>net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows;net6.0-windows;net7.0-windows</TargetFrameworks>
+								<TargetFrameworks>net462;net47;net471;net472;net48;net481;netcoreapp3.1;net5.0-windows;net6.0-windows;net7.0-windows</TargetFrameworks>
 							</PropertyGroup>
 						</When>
 						<Otherwise>
 							<Choose>
 								<When Condition="'$(Configuration)' == 'StableLite'">
 									<PropertyGroup>
-										<TargetFrameworks>net48;netcoreapp3.1;net6.0-windows;net7.0-windows</TargetFrameworks>
+										<TargetFrameworks>net48;net481;netcoreapp3.1;net6.0-windows;net7.0-windows</TargetFrameworks>
 									</PropertyGroup>
 								</When>
 								<Otherwise>
 									<Choose>
 										<When Condition="'$(Configuration)' == 'SignedFull'">
 											<PropertyGroup>
-												<TargetFrameworks>net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows;net6.0-windows;net7.0-windows</TargetFrameworks>
+												<TargetFrameworks>net462;net47;net471;net472;net48;net481;netcoreapp3.1;net5.0-windows;net6.0-windows;net7.0-windows</TargetFrameworks>
 											</PropertyGroup>
 										</When>
 										<Otherwise>
 											<Choose>
 												<When Condition="'$(Configuration)' == 'SignedLite'">
 													<PropertyGroup>
-														<TargetFrameworks>net48;netcoreapp3.1;net6.0-windows;net7.0-windows</TargetFrameworks>
+														<TargetFrameworks>net48;net481;netcoreapp3.1;net6.0-windows;net7.0-windows</TargetFrameworks>
 													</PropertyGroup>
 												</When>
 											</Choose>
@@ -90,9 +90,9 @@
 
 	<PropertyGroup>
 		<Description>
-			An extension to the Standard Toolkit, which supports .NET Framework 4.6.2 - 4.8, .NET Core 3.1 and .NET 5/6. This package allows the usage of floating toolbars.
+			An extension to the Standard Toolkit, which supports .NET Framework 4.6.2 - 4.8.1, .NET Core 3.1 and .NET 5 - 7. This package allows the usage of floating toolbars.
 
-			This package supports all .NET Framework versions starting .NET Framework 4.6.2 - 4.8, .NET Core 3.1 and .NET 5/6.
+			This package supports all .NET Framework versions starting .NET Framework 4.6.2 - 4.8.1, .NET Core 3.1 and .NET 5 - 7.
 			Also, all libraries are included targeting each specific framework version for performance purposes.
 
 			To view all of the extended toolkit package latest version information, please visit: https://github.com/Krypton-Suite/Krypton-Toolkit-Suite-Version-Dashboard/blob/main/Documents/Modules/Extended/Krypton-Toolkit-Suite-Extended-Modules.md
@@ -108,7 +108,7 @@
 					</PropertyGroup>
 
 					<ItemGroup>
-						<PackageReference Include="Krypton.Toolkit.Nightly" Version="70.22.6.165-alpha" />
+						<PackageReference Include="Krypton.Toolkit.Nightly" Version="70.22.6.175-alpha" />
 					</ItemGroup>
 				</When>
 				<Otherwise>
@@ -130,7 +130,7 @@
 									</PropertyGroup>
 
 									<ItemGroup>
-										<PackageReference Include="Krypton.Toolkit.Signed" Version="60.22.4.4" />
+										<PackageReference Include="Krypton.Toolkit.Signed" Version="65.22.6.152" />
 									</ItemGroup>
 								</When>
 								<Otherwise>
@@ -139,7 +139,7 @@
 									</PropertyGroup>
 
 									<ItemGroup>
-										<PackageReference Include="Krypton.Toolkit" Version="60.22.2.32" />
+										<PackageReference Include="Krypton.Toolkit" Version="65.22.6.152" />
 									</ItemGroup>
 								</Otherwise>
 							</Choose>

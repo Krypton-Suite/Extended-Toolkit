@@ -59,8 +59,10 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             {
                 Process p = Process.Start(startInfo);
             }
-            catch (System.ComponentModel.Win32Exception ex)
+            catch (Win32Exception ex)
             {
+                ExceptionCapture.CaptureException(ex);
+
                 return; //If cancelled, do nothing
             }
 

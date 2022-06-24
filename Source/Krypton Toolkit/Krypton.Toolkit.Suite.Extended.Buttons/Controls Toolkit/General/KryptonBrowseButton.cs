@@ -25,6 +25,10 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         #endregion
 
         #region Properties
+        public bool UseAsOpenFileBrowseButton { get => _openFile; set => _openFile = value; }
+
+        public bool UseAsSaveFileBrowseButton { get => _saveFile; set => _saveFile = value; }
+
         /// <summary>Gets or sets a value indicating whether [use system folder browser].</summary>
         /// <value><c>true</c> if [use system folder browser]; otherwise, <c>false</c>.</value>
         [DefaultValue(true), Description("Use the standard WinForms folder browser dialog.")]
@@ -38,7 +42,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         /// <summary>Gets or sets a value indicating whether [use windows API code pack dialogs].</summary>
         /// <value><c>true</c> if [use windows API code pack dialogs]; otherwise, <c>false</c>.</value>
         [DefaultValue(false), Description("Use the Windows API Code Pack versions of system dialogs. (These provide further extensibility over the standard Windows versions)")]
-        public bool UseWindowsAPICodePackDialogs { get => _useSystemFolderBrowser; set => _useSystemFolderBrowser = value; }
+        public bool UseWindowsAPICodePackDialogs { get => _useWindowsAPICodePackDialogs; set => _useWindowsAPICodePackDialogs = value; }
 
         [DefaultValue(false), Description("Allows the user to select multiple files in a open file dialog. To be used in conjunction with the Windows API Code Pack version.")]
         public bool AllowMultiSelect { get => _allowMultiSelect; set => _allowMultiSelect = value; }
@@ -92,7 +96,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         #endregion
 
         #region Overrides
-        // TODO: Replace with WindowsAPICodePack dialogs 
+        // Note: Replace with WindowsAPICodePack dialogs 
         protected override void OnClick(EventArgs e)
         {
             switch (_browseButtonAction)

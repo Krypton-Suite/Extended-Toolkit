@@ -57,10 +57,10 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <summary>
         /// If defined, this function will be used to generate tick labels from positions
         /// </summary>
-        public Func<double, string>? ManualTickFormatter = null;
+        public Func<double, string> ManualTickFormatter = null;
 
         public int radix = 10;
-        public string? prefix = null;
+        public string prefix = null;
 
         public double manualSpacingX = 0;
         public double manualSpacingY = 0;
@@ -124,13 +124,15 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         }
 
         public void SetCulture(
-            string? shortDatePattern = null,
-            string? decimalSeparator = null,
-            string? numberGroupSeparator = null,
+            string shortDatePattern = null,
+            string decimalSeparator = null,
+            string numberGroupSeparator = null,
             int? decimalDigits = null,
             int? numberNegativePattern = null,
+#pragma warning disable CS8632
             int[]? numberGroupSizes = null
-            )
+#pragma warning restore CS8632
+        )
         {
             // Culture may be null if the thread culture is the same is the system culture.
             // If it is null, assigning it to a clone of the current culture solves this and also makes it mutable.
@@ -408,7 +410,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             return (labels, cornerLabel);
         }
 
+#pragma warning disable CS8632
         public double[]? MinorFromMajor(double[] majorTicks, double minorTicksPerMajorTick, double lowerLimit, double upperLimit)
+#pragma warning restore CS8632
         {
             if ((majorTicks == null) || (majorTicks.Length < 2))
                 return null;
@@ -469,7 +473,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         {
 
             TimeSpan dtTickSep;
-            string? dtFmt = null;
+            string dtFmt = null;
 
             try
             {

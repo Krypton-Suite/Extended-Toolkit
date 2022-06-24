@@ -1,5 +1,14 @@
 =======
 
+## 2022-11-xx - Build 2211 - November 2022
+* Add new states to `Krypton.Toolkit.Suite.Extended.Messagebox` to bring into line with new options added into .NET 6
+* Add support for .NET Framework 4.8.1
+* Support for .NET 7
+* General tidy up to fix some compiler warnings
+* Updated standard toolkit to build `2211`
+
+=======
+
 ## 2022-06-01 - Build 2206 - June 2022
 * Add new configurations to aid creation of full/lite NuGet packages
 * Toasts now support `RightToLeft` layouts

@@ -538,7 +538,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 
                 if (_useAsUACElevatedButton)
                 {
-                    CommandLinkImageValue.Image = UtilityMethods.ResizeImage(SystemIcons.Shield.ToBitmap(), _uacShieldSize.Width, _uacShieldSize.Height);
+                    CommandLinkImageValue.Image = UACUtilityMethods.ResizeImage(SystemIcons.Shield.ToBitmap(), _uacShieldSize.Width, _uacShieldSize.Height);
                 }
             }
         }
@@ -646,7 +646,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
                     }
                     catch (Exception exc)
                     {
-
+                        ExceptionCapture.CaptureException(exc);
                     }
                 }
             }

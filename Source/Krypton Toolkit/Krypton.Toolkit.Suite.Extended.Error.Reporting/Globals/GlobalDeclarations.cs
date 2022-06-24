@@ -7,9 +7,7 @@
 #endregion
 
 global using System;
-global using System.Collections;
 global using System.Collections.Generic;
-global using System.ComponentModel;
 global using System.Diagnostics;
 //global using System.Deployment.Application;
 global using System.Drawing;
@@ -20,8 +18,6 @@ global using System.Management;
 global using System.Net;
 global using System.Net.Mail;
 global using System.Reflection;
-global using System.Runtime.CompilerServices;
-global using System.Runtime.InteropServices;
 global using System.Runtime.Serialization;
 global using System.Runtime.Serialization.Json;
 global using System.Text;

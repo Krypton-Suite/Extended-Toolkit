@@ -40,7 +40,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             {
                 _useAsUACElevatedButton = value;
 
-                // TODO: Store the original icon
+                // Note: Store the original icon
 
                 Values.Image = SystemIcons.Shield.ToBitmap();
             }
@@ -61,7 +61,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 
                 if (_useAsUACElevatedButton)
                 {
-                    Values.Image = UtilityMethods.ResizeImage(SystemIcons.Shield.ToBitmap(), _uacShieldSize.Width, _uacShieldSize.Height);
+                    Values.Image = UACUtilityMethods.ResizeImage(SystemIcons.Shield.ToBitmap(), _uacShieldSize.Width, _uacShieldSize.Height);
                 }
             }
         }
@@ -167,7 +167,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
                     }
                     catch (Exception exc)
                     {
-
+                        ExceptionCapture.CaptureException(exc);
                     }
                 }
             }

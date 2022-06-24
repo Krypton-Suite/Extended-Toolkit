@@ -8,6 +8,14 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Buttons
 {
+    /// <summary>
+    /// A standard Krypton button control with UAC shield, which can be resized.
+    /// Modified from the AeroSuite project.
+    /// </summary>
+    /// <remarks>
+    /// The shield is extracted from the system with LoadImage if possible. Otherwise the shield will be enabled by sending the BCM_SETSHIELD Message to the control.
+    /// If the operating system is not Windows Vista or higher, no shield will be displayed as there's no such thing as UAC on the target system -> the shield is obsolete.
+    /// </remarks>
     [Designer(typeof(KryptonUACButtonDesigner)), DesignerCategory("code"), ToolboxBitmap(typeof(KryptonButton))]
     public class KryptonUACButtonVersion2 : KryptonButton
     {
@@ -20,7 +28,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 
         private GlobalMethods _globalMethods = new GlobalMethods();
 
-        private UtilityMethods _utilityMethods = new UtilityMethods();
+        private UACUtilityMethods _utilityMethods = new UACUtilityMethods();
 
         private UACShieldSize _shieldSize;
         #endregion
@@ -71,8 +79,11 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         #endregion
 
         #region Methods
-        /// <summary>Shows the uac shield.</summary>
+        /// <summary>Shows the UAC shield.</summary>
         /// <param name="showUACShield">if set to <c>true</c> [show uac shield].</param>
+        /// <param name="shieldSize">Size of the shield.</param>
+        /// <param name="height">The height.</param>
+        /// <param name="width">The width.</param>
         private void ShowUACShield(bool showUACShield, UACShieldSize shieldSize = UACShieldSize.SMALL, int? height = null, int? width = null)
         {
             int h = height ?? 16, w = width ?? 16;
@@ -91,7 +102,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
                 {
                     Image shield = SystemIcons.Shield.ToBitmap();
 
-                    Values.Image = UtilityMethods.ResizeImage(shield, 32, 32);
+                    Values.Image = UACUtilityMethods.ResizeImage(shield, 32, 32);
 
                     Invalidate();
                 }
@@ -99,7 +110,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
                 {
                     Image shield = SystemIcons.Shield.ToBitmap();
 
-                    Values.Image = UtilityMethods.ResizeImage(shield, 64, 64);
+                    Values.Image = UACUtilityMethods.ResizeImage(shield, 64, 64);
 
                     Invalidate();
                 }
@@ -107,7 +118,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
                 {
                     Image shield = SystemIcons.Shield.ToBitmap();
 
-                    Values.Image = UtilityMethods.ResizeImage(shield, w, h);
+                    Values.Image = UACUtilityMethods.ResizeImage(shield, w, h);
                 }
             }
             else

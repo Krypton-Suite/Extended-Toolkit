@@ -22,7 +22,6 @@ global using System.Collections.Generic;
 global using System.ComponentModel;
 global using System.Diagnostics;
 global using System.Drawing;
-global using System.Drawing.Design;
 global using System.Drawing.Drawing2D;
 global using System.Globalization;
 global using System.Reflection;

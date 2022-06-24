@@ -6,15 +6,6 @@
  */
 #endregion
 
-using System;
-using System.ComponentModel;
-using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Drawing.Text;
-using System.Windows.Forms;
-
-using WinFormAnimation_NET5;
-
 namespace Krypton.Toolkit.Suite.Extended.Circular.ProgressBar
 {
     /// <summary>The circular progress bar windows form control.</summary>
@@ -608,7 +599,7 @@ namespace Krypton.Toolkit.Suite.Extended.Circular.ProgressBar
 
         /// <summary>Increments the specified value.</summary>
         /// <param name="step">The step.</param>
-        public void Increment(int step) => Value = Value + step;
+        public new void Increment(int step) => Value = Value + step;
         #endregion
 
         #region Overrides
@@ -666,8 +657,7 @@ namespace Krypton.Toolkit.Suite.Extended.Circular.ProgressBar
             }
             catch (Exception exc)
             {
-
-                throw;
+                ExceptionCapture.CaptureException(exc);
             }
         }
 

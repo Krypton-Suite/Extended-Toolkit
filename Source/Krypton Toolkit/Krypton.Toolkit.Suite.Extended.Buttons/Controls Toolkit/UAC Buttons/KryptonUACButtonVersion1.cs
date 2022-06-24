@@ -31,7 +31,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 
         private GlobalMethods _globalMethods = new GlobalMethods();
 
-        private UtilityMethods _utilityMethods = new UtilityMethods();
+        private UACUtilityMethods _utilityMethods = new UACUtilityMethods();
         #endregion
 
         #region Constants
