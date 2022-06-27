@@ -75,14 +75,14 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
         {
             _wizard.SelectPreviousPage();
             SetButtonStates();
-            SelectPageInProperyGrid(selection);
+            SelectPageInPropertyGrid(selection);
         }
 
         public override void Next(ISelectionService selection)
         {
             _wizard.SelectNextPage();
             SetButtonStates();
-            SelectPageInProperyGrid(selection);
+            SelectPageInPropertyGrid(selection);
         }
 
         public override void Cancel() { /* stub - not required at design time */ }
@@ -95,7 +95,7 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
 
         public override void GoToPage(KryptonAdvancedWizardPage page) { /* stub - not required at design time */ }
 
-        private void SelectPageInProperyGrid(ISelectionService selection) => selection.SetSelectedComponents(new object[] { _wizard.CurrentPage }, SelectionTypes.MouseDown);
+        private void SelectPageInPropertyGrid(ISelectionService selection) => selection.SetSelectedComponents(new object[] { _wizard.CurrentPage }, SelectionTypes.MouseDown);
 
         private readonly KryptonAdvancedWizard _wizard;
     }

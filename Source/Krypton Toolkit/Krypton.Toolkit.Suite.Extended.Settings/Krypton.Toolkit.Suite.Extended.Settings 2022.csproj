@@ -6,50 +6,41 @@
 				<TargetFrameworks>net462;net47;net471;net472;net48;net481;netcoreapp3.1;net5.0-windows;net6.0-windows;net7.0-windows</TargetFrameworks>
 			</PropertyGroup>
 		</When>
+
+		<When Condition="'$(Configuration)' == 'Canary'">
+			<PropertyGroup>
+				<TargetFrameworks>net462;net47;net471;net472;net48;net481;netcoreapp3.1;net5.0-windows;net6.0-windows;net7.0-windows</TargetFrameworks>
+			</PropertyGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'StableFull'">
+			<PropertyGroup>
+				<TargetFrameworks>net462;net47;net471;net472;net48;net481;netcoreapp3.1;net5.0-windows;net6.0-windows;net7.0-windows</TargetFrameworks>
+			</PropertyGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'StableLite'">
+			<PropertyGroup>
+				<TargetFrameworks>net48;net481;netcoreapp3.1;net6.0-windows;net7.0-windows</TargetFrameworks>
+			</PropertyGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'SignedFull'">
+			<PropertyGroup>
+				<TargetFrameworks>net462;net47;net471;net472;net48;net481;netcoreapp3.1;net5.0-windows;net6.0-windows;net7.0-windows</TargetFrameworks>
+			</PropertyGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'SignedLite'">
+			<PropertyGroup>
+				<TargetFrameworks>net48;net481;netcoreapp3.1;net6.0-windows;net7.0-windows</TargetFrameworks>
+			</PropertyGroup>
+		</When>
 		<Otherwise>
-			<Choose>
-				<When Condition="'$(Configuration)' == 'Canary'">
-					<PropertyGroup>
-						<TargetFrameworks>net462;net47;net471;net472;net48;net481;netcoreapp3.1;net5.0-windows;net6.0-windows;net7.0-windows</TargetFrameworks>
-					</PropertyGroup>
-				</When>
-				<Otherwise>
-					<Choose>
-						<When Condition="'$(Configuration)' == 'StableFull'">
-							<PropertyGroup>
-								<TargetFrameworks>net462;net47;net471;net472;net48;net481;netcoreapp3.1;net5.0-windows;net6.0-windows;net7.0-windows</TargetFrameworks>
-							</PropertyGroup>
-						</When>
-						<Otherwise>
-							<Choose>
-								<When Condition="'$(Configuration)' == 'StableLite'">
-									<PropertyGroup>
-										<TargetFrameworks>net48;net481;netcoreapp3.1;net6.0-windows;net7.0-windows</TargetFrameworks>
-									</PropertyGroup>
-								</When>
-								<Otherwise>
-									<Choose>
-										<When Condition="'$(Configuration)' == 'SignedFull'">
-											<PropertyGroup>
-												<TargetFrameworks>net462;net47;net471;net472;net48;net481;netcoreapp3.1;net5.0-windows;net6.0-windows;net7.0-windows</TargetFrameworks>
-											</PropertyGroup>
-										</When>
-										<Otherwise>
-											<Choose>
-												<When Condition="'$(Configuration)' == 'SignedLite'">
-													<PropertyGroup>
-														<TargetFrameworks>net48;net481;netcoreapp3.1;net6.0-windows;net7.0-windows</TargetFrameworks>
-													</PropertyGroup>
-												</When>
-											</Choose>
-										</Otherwise>
-									</Choose>
-								</Otherwise>
-							</Choose>
-						</Otherwise>
-					</Choose>
-				</Otherwise>
-			</Choose>
+			<!--If all else fails-->
+			<PropertyGroup>
+				<TargetFrameworks>net462;net47;net471;net472;net48;net481;netcoreapp3.1;net5.0-windows;net6.0-windows;net7.0-windows</TargetFrameworks>
+			</PropertyGroup>
 		</Otherwise>
 	</Choose>
 
@@ -153,12 +144,12 @@
 			</ItemGroup>
 		</Otherwise>
 	</Choose>
-
-  <!--Binary/Documentation Output-->
-  <PropertyGroup>
-	<DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Settings\Krypton.Toolkit.Suite.Extended.Settings.xml</DocumentationFile>
-	<OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Settings\</OutputPath>
-  </PropertyGroup>
+	
+	<!--Binary/Documentation Output-->
+	<PropertyGroup>
+		<DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Settings\Krypton.Toolkit.Suite.Extended.Settings.xml</DocumentationFile>
+		<OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Settings\</OutputPath>
+	</PropertyGroup>
 
   <ItemGroup>
 	<Compile Update="Resources\ToolkitSettingsResources.Designer.cs">

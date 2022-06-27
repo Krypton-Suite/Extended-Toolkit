@@ -9,9 +9,9 @@
 namespace Krypton.Toolkit.Suite.Extended.Common
 {
     // <summary>
-    ///     The Path2D class is a representation of a line in a 2D plane and the
-    ///     speed in which the animator plays it
-    /// </summary>
+    // The Path2D class is a representation of a line in a 2D plane and the
+    // speed in which the animator plays it
+    // </summary>
     public class Path2D
     {
         /// <summary>
