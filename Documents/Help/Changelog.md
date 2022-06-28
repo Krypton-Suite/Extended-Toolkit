@@ -4,6 +4,7 @@
 =======
 
 ## 2022-11-xx - Build 2211 - November 2022
+* Implemented [#330](https://github.com/Krypton-Suite/Extended-Toolkit/issues/330), `KryptonProgressBar` add text attribute
 * Resolved [#324](https://github.com/Krypton-Suite/Extended-Toolkit/issues/324), NuGet Installation Error in v65.22.6.152 Version - NU1103 Rollback 
 * Add new states to `Krypton.Toolkit.Suite.Extended.Messagebox` to bring into line with new options added into .NET 6
 * Add support for .NET Framework 4.8.1
