@@ -91,65 +91,88 @@
 	</PropertyGroup>
 
 	<Choose>
-		<When Condition="'$(SolutionName.Endswith(`NuGet`))'">
-			<Choose>
-				<When Condition="'$(Configuration)' == 'Nightly'">
-					<PropertyGroup>
-						<LangVersion>preview</LangVersion>
-					</PropertyGroup>
+		<When Condition="'$(Configuration)' == 'Nightly'">
+			<PropertyGroup>
+				<LangVersion>preview</LangVersion>
+			</PropertyGroup>
 
-					<ItemGroup>
-						<PackageReference Include="Krypton.Toolkit.Nightly" Version="70.22.6.175-alpha" />
-
-						<PackageReference Include="Krypton.Navigator.Nightly" Version="70.22.6.175-alpha" />
-					</ItemGroup>
-				</When>
-				<Otherwise>
-					<Choose>
-						<When Condition="'$(Configuration)' == 'Canary'">
-							<PropertyGroup>
-								<LangVersion>preview</LangVersion>
-							</PropertyGroup>
-
-							<ItemGroup>
-								<PackageReference Include="Krypton.Toolkit.Canary" Version="65.22.5.123-beta" />
-
-								<PackageReference Include="Krypton.Navigator.Canary" Version="65.22.5.123-beta" />
-							</ItemGroup>
-						</When>
-						<Otherwise>
-							<Choose>
-								<When Condition="'$(Configuration)' == 'Signed'">
-									<PropertyGroup>
-										<LangVersion>preview</LangVersion>
-									</PropertyGroup>
-
-									<ItemGroup>
-										<PackageReference Include="Krypton.Toolkit.Signed" Version="65.22.6.152" />
-
-										<PackageReference Include="Krypton.Navigator.Signed" Version="65.22.6.152" />
-									</ItemGroup>
-								</When>
-								<Otherwise>
-									<PropertyGroup>
-										<LangVersion>preview</LangVersion>
-									</PropertyGroup>
-
-									<ItemGroup>
-										<PackageReference Include="Krypton.Toolkit" Version="65.22.6.152" />
-
-										<PackageReference Include="Krypton.Navigator" Version="65.22.6.152" />
-									</ItemGroup>
-								</Otherwise>
-							</Choose>
-						</Otherwise>
-					</Choose>
-				</Otherwise>
-			</Choose>
-		</When>
-		<Otherwise>
 			<ItemGroup>
-				<ProjectReference Include="..\..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Toolkit\Krypton.Toolkit 2022.csproj" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="70.22.6.175-alpha" />
+
+				<PackageReference Include="Krypton.Navigator.Nightly" Version="70.22.6.175-alpha" />
+			</ItemGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'Canary'">
+			<PropertyGroup>
+				<LangVersion>preview</LangVersion>
+			</PropertyGroup>
+
+			<ItemGroup>
+				<PackageReference Include="Krypton.Toolkit.Canary" Version="65.22.5.123-beta" />
+
+				<PackageReference Include="Krypton.Navigator.Canary" Version="65.22.5.123-beta" />
+			</ItemGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'StableFull'">
+			<PropertyGroup>
+				<LangVersion>preview</LangVersion>
+			</PropertyGroup>
+
+			<ItemGroup>
+				<PackageReference Include="Krypton.Toolkit" Version="65.22.6.152" />
+
+				<PackageReference Include="Krypton.Navigator" Version="65.22.6.152" />
+			</ItemGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'StableLite'">
+			<PropertyGroup>
+				<LangVersion>preview</LangVersion>
+			</PropertyGroup>
+
+			<ItemGroup>
+				<PackageReference Include="Krypton.Toolkit.Lite" Version="65.22.6.152" />
+
+				<PackageReference Include="Krypton.Navigator.Lite" Version="65.22.6.152" />
+			</ItemGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'SignedFull'">
+			<PropertyGroup>
+				<LangVersion>preview</LangVersion>
+			</PropertyGroup>
+
+			<ItemGroup>
+				<PackageReference Include="Krypton.Toolkit.Signed" Version="65.22.6.152" />
+
+				<PackageReference Include="Krypton.Navigator.Signed" Version="65.22.6.152" />
+			</ItemGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'SignedLite'">
+			<PropertyGroup>
+				<LangVersion>preview</LangVersion>
+			</PropertyGroup>
+
+			<ItemGroup>
+				<PackageReference Include="Krypton.Toolkit.Signed.Lite" Version="65.22.6.152" />
+
+				<PackageReference Include="Krypton.Navigator.Signed.Lite" Version="65.22.6.152" />
+			</ItemGroup>
+		</When>
+
+		<Otherwise>
+			<!--If all else fails-->
+			<PropertyGroup>
+				<LangVersion>preview</LangVersion>
+			</PropertyGroup>
+
+			<ItemGroup>
+				<PackageReference Include="Krypton.Toolkit" Version="65.22.6.152" />
+
+				<PackageReference Include="Krypton.Navigator" Version="65.22.6.152" />
 			</ItemGroup>
 		</Otherwise>
 	</Choose>

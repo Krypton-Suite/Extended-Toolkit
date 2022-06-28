@@ -14,5 +14,3 @@ global using System.Globalization;
 global using System.Runtime.CompilerServices;
 global using System.Linq;
 global using System.Windows.Forms;
-
-global using Krypton.Ribbon;

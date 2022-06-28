@@ -27,6 +27,8 @@
 // 
 #endregion
 
+using Krypton.Ribbon;
+
 namespace Krypton.Toolkit.Suite.Extended.Ribbon
 {
     /// <summary>
