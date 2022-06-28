@@ -13,8 +13,6 @@ using Microsoft.WindowsAPICodePack.Dialogs;
 
 using System.IO;
 
-using Krypton.Toolkit.Suite.Extended.Developer.Utilities;
-
 namespace Krypton.Toolkit.Suite.Extended.Core
 {
     public class AllMergedPaletteColourSettingsManager

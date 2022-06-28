@@ -8,7 +8,6 @@
 
 using Krypton.Toolkit.Suite.Extended.Core.Resources;
 
-using System.ComponentModel;
 using System.Media;
 using System.Text;
 

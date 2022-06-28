@@ -9,8 +9,6 @@
 using Krypton.Toolkit.Suite.Extended.Common;
 using Krypton.Toolkit.Suite.Extended.Global.Utilities;
 
-using System.ComponentModel;
-
 namespace Krypton.Toolkit.Suite.Extended.Core
 {
     /// <summary>

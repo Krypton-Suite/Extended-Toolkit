@@ -6,10 +6,6 @@
  */
 #endregion
 
-using System.ComponentModel;
-using System.Drawing.Drawing2D;
-using System.Drawing.Imaging;
-
 namespace Krypton.Toolkit.Suite.Extended.Core
 {
     /// <summary>

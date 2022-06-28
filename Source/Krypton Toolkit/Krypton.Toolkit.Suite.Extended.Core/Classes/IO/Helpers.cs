@@ -6,7 +6,6 @@
  */
 #endregion
 
-using System.Diagnostics;
 using System.Runtime.CompilerServices;
 
 namespace Krypton.Toolkit.Suite.Extended.Core
