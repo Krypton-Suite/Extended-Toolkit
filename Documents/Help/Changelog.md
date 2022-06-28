@@ -1,5 +1,7 @@
 
-<!--* Checkbox option for `KryptonMessageBoxExtended` (***Note:*** This feature is experimental, and may not fully work)-->=======
+<!--* Checkbox option for `KryptonMessageBoxExtended` (***Note:*** This feature is experimental, and may not fully work)-->
+
+=======
 
 ## 2022-11-xx - Build 2211 - November 2022
 * Resolved [#324](https://github.com/Krypton-Suite/Extended-Toolkit/issues/324), NuGet Installation Error in v65.22.6.152 Version - NU1103 Rollback 
