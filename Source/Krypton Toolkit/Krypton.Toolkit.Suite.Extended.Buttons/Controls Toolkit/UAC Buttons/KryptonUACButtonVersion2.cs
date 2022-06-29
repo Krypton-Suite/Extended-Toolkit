@@ -42,6 +42,8 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             {
                 _useAsUACElevatedButton = value;
 
+                // TODO: Store the original icon
+
                 ShowUACShield(value);
             }
         }
