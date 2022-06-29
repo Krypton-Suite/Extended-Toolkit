@@ -9,18 +9,8 @@
 namespace Krypton.Toolkit.Suite.Extended.Core
 {
     /// <summary>Utility methods for the user account control.</summary>
-    internal class UACUtilityMethods
+    public static class UACUtilityMethods
     {
-        #region Constructor
-        /// <summary>
-        /// Initialises a new instance of <see cref="UACUtilityMethods"/>.
-        /// </summary>
-        public UACUtilityMethods()
-        {
-
-        }
-        #endregion
-
         #region Methods
         /// <summary>
         /// Elevates the application to use administrative privileges. To be used with <see cref="KryptonUACButtonVersion1"/> or <see cref="ToolStripMenuItemUACSheld"/> button click.

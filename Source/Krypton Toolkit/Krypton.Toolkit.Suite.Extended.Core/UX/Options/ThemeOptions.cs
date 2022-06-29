@@ -6,11 +6,6 @@
  */
 #endregion
 
-using Microsoft.WindowsAPICodePack.Dialogs;
-
-using System.Collections;
-using System.IO;
-
 namespace Krypton.Toolkit.Suite.Extended.Core
 {
     public partial class ThemeOptions : KryptonForm

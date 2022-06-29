@@ -6,8 +6,6 @@
  */
 #endregion
 
-using System.Collections;
-
 namespace Krypton.Toolkit.Suite.Extended.Core
 {
     internal class ThemeManager

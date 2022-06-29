@@ -6,10 +6,6 @@
  */
 #endregion
 
-using Microsoft.WindowsAPICodePack.Dialogs;
-
-using System.Collections;
-using System.IO;
 using System.Text;
 
 namespace Krypton.Toolkit.Suite.Extended.Core

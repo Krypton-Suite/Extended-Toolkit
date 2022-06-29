@@ -6,7 +6,6 @@
  */
 #endregion
 
-using System.IO;
 using System.Runtime.ExceptionServices;
 
 namespace Krypton.Toolkit.Suite.Extended.Core

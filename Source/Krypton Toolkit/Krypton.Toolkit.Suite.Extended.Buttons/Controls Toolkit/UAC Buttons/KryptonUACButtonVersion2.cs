@@ -28,8 +28,6 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 
         private GlobalMethods _globalMethods = new GlobalMethods();
 
-        private UACUtilityMethods _utilityMethods = new UACUtilityMethods();
-
         private UACShieldSize _shieldSize;
         #endregion
 
