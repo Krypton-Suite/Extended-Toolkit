@@ -96,13 +96,13 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Docking.Nightly" Version="70.22.6.179-alpha" />
+				<PackageReference Include="Krypton.Docking.Nightly" Version="70.22.6.180-alpha" />
 
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="70.22.6.179-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="70.22.6.180-alpha" />
 
-				<PackageReference Include="Krypton.Ribbon.Nightly" Version="70.22.6.179-alpha" />
+				<PackageReference Include="Krypton.Ribbon.Nightly" Version="70.22.6.180-alpha" />
 
-				<PackageReference Include="Krypton.Navigator.Nightly" Version="70.22.6.179-alpha" />
+				<PackageReference Include="Krypton.Navigator.Nightly" Version="70.22.6.180-alpha" />
 			</ItemGroup>
 		</When>
 
@@ -212,7 +212,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="EasyScintilla" Version="1.0.5" />
-		<PackageReference Include="WindowsAPICodePack" Version="1.1.3" />
+		<PackageReference Include="WindowsAPICodePack" Version="1.1.2" />
 	</ItemGroup>
 
 	<ItemGroup>
