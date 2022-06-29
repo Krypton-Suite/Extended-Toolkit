@@ -6,10 +6,6 @@
  */
 #endregion
 
-using System;
-
-using Krypton.Toolkit.Suite.Extended.Settings.Settings.Globals;
-
 namespace Krypton.Toolkit.Suite.Extended.Settings
 {
     public class GlobalStringSettingsManager

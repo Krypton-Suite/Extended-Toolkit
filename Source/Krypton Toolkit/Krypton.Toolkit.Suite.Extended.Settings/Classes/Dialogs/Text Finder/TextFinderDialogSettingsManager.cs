@@ -6,9 +6,6 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Settings.Settings.Dialogs.Text_Finder;
-using System.Drawing;
-
 namespace Krypton.Toolkit.Suite.Extended.Settings
 {
     public class TextFinderDialogSettingsManager

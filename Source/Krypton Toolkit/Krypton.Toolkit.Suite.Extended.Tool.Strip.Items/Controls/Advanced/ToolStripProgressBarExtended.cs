@@ -13,6 +13,15 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
     [ToolStripItemDesignerAvailability(ToolStripItemDesignerAvailability.All)]
     public class ToolStripProgressBarExtended : ToolStripProgressBar
     {
+        private string _displayText;
+
+        public string DisplayText
+        {
+            get => _displayText;
+
+            set => _displayText = value;
+        }
+
         public ToolStripProgressBarExtended() : base()
         {
             Control.HandleCreated += Control_HandleCreated;
@@ -20,16 +29,20 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
         private void Control_HandleCreated(object sender, EventArgs e)
         {
-            var s = new ProgressBarHelper((ProgressBar) Control);
+            var s = new ProgressBarHelper((ProgressBar) Control, _displayText);
         }
 
         public class ProgressBarHelper : NativeWindow
         {
+            private string _displyText;
+
             private ProgressBar _progressBar;
 
-            public ProgressBarHelper(ProgressBar progressBar)
+            public ProgressBarHelper(ProgressBar progressBar, string displyText)
             {
                 _progressBar = progressBar;
+
+                _displyText = displyText;
 
                 AssignHandle(_progressBar.Handle);
             }
@@ -42,7 +55,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
                 {
                     using (var g = _progressBar.CreateGraphics())
                     {
-                        TextRenderer.DrawText(g, $"{_progressBar.Value}%", _progressBar.Font, _progressBar.ClientRectangle, _progressBar.ForeColor);
+                        TextRenderer.DrawText(g, $"{_displyText}", _progressBar.Font, _progressBar.ClientRectangle, _progressBar.ForeColor);
                     }
                 }
             }

@@ -168,7 +168,7 @@
 	<OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Developer.Utilities\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-	<PackageReference Include="WindowsAPICodePackShell" Version="1.1.2" />
+	<PackageReference Include="WindowsAPICodePackShell" Version="1.1.3" />
   </ItemGroup>
   <ItemGroup>
 	<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Tools\Krypton.Toolkit.Suite.Extended.Tools 2022.csproj" />

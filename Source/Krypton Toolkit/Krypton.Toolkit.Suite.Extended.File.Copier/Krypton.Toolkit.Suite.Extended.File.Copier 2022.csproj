@@ -194,7 +194,7 @@
 	</PropertyGroup>
   
 	<ItemGroup>
-		<PackageReference Include="WindowsAPICodePackShell" Version="1.1.2" />
+		<PackageReference Include="WindowsAPICodePackShell" Version="1.1.3" />
 	</ItemGroup>
   
 	<ItemGroup>

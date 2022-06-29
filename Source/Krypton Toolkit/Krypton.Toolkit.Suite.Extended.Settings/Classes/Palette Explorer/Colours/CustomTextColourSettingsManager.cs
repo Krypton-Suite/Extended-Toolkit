@@ -6,12 +6,6 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Common;
-using Krypton.Toolkit.Suite.Extended.Global.Utilities;
-using Microsoft.WindowsAPICodePack.Dialogs;
-using System;
-using System.Drawing;
-
 namespace Krypton.Toolkit.Suite.Extended.Settings
 {
     public class CustomTextColourSettingsManager

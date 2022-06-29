@@ -170,7 +170,7 @@
   </PropertyGroup>
   <ItemGroup>
 	<Reference Include="System.Runtime.InteropServices.RuntimeInformation" />
-	<PackageReference Include="WindowsAPICodePackShell" Version="1.1.2" />
+	<PackageReference Include="WindowsAPICodePackShell" Version="1.1.3" />
   </ItemGroup>
   
   <ItemGroup>

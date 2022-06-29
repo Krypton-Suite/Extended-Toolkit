@@ -212,7 +212,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="EasyScintilla" Version="1.0.5" />
-		<PackageReference Include="WindowsAPICodePack" Version="1.1.2" />
+		<PackageReference Include="WindowsAPICodePack" Version="1.1.3" />
 	</ItemGroup>
 
 	<ItemGroup>

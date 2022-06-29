@@ -6,15 +6,6 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Common;
-using Krypton.Toolkit.Suite.Extended.Global.Utilities;
-using Microsoft.WindowsAPICodePack.Dialogs;
-using System;
-using System.Drawing;
-using System.IO;
-
-using Krypton.Toolkit.Suite.Extended.Developer.Utilities;
-
 namespace Krypton.Toolkit.Suite.Extended.Settings
 {
     public class AllMergedColourSettingsManager

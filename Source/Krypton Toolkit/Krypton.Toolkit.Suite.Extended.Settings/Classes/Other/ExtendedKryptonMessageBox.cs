@@ -6,13 +6,6 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Settings.Resources;
-using System;
-using System.ComponentModel;
-using System.Drawing;
-using System.Media;
-using System.Text;
-
 namespace Krypton.Toolkit.Suite.Extended.Settings
 {
     /// <summary>

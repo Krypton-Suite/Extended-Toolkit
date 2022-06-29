@@ -6,10 +6,6 @@
  */
 #endregion
 
-using System;
-using System.Runtime.InteropServices;
-using System.Text;
-
 namespace Krypton.Toolkit.Suite.Extended
 {
     internal class PI
