@@ -52,7 +52,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// </summary>
         public override DataGridViewCell CellTemplate
         {
-            get { return base.CellTemplate; }
+            get => base.CellTemplate;
 
             set
             {

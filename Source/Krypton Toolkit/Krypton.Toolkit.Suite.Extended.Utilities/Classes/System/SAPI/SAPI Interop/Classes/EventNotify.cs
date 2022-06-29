@@ -25,10 +25,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SAPIInterop
 
         internal SpeechAudioFormatInfo AudioFormat
         {
-            set
-            {
-                _audioFormat = value;
-            }
+            set => _audioFormat = value;
         }
 
         internal EventNotify(ISpEventSource sapiEventSource, IAsyncDispatch dispatcher, bool additionalSapiFeatures)

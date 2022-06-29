@@ -18,9 +18,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
     public class PopulationPlot : IPlottable
     {
         public readonly PopulationMultiSeries MultiSeries;
-        public int GroupCount { get { return MultiSeries.groupCount; } }
-        public int SeriesCount { get { return MultiSeries.seriesCount; } }
-        public string[] SeriesLabels { get { return MultiSeries.seriesLabels; } }
+        public int GroupCount => MultiSeries.groupCount;
+        public int SeriesCount => MultiSeries.seriesCount;
+        public string[] SeriesLabels => MultiSeries.seriesLabels;
         public bool IsVisible { get; set; } = true;
         public int XAxisIndex { get; set; } = 0;
         public int YAxisIndex { get; set; } = 0;

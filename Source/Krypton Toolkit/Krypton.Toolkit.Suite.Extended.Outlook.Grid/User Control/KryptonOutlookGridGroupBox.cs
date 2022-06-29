@@ -190,10 +190,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         [Category("Visuals")]
         [Description("Overrides borders settings.")]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
-        public PaletteBorder Border
-        {
-            get { return _border; }
-        }
+        public PaletteBorder Border => _border;
 
         /// <summary>
         /// Getsor sets the text that appears when no column is grouped.
@@ -204,8 +201,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         [Localizable(true)]
         public String DragColumnToGroupText
         {
-            get { return _dragColumnToGroupText; }
-            set { _dragColumnToGroupText = value; }
+            get => _dragColumnToGroupText;
+            set => _dragColumnToGroupText = value;
         }
 
         #endregion

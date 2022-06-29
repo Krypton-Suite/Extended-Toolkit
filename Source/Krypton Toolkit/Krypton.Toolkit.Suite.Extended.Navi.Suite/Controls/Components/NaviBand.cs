@@ -64,8 +64,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// </summary>
         internal int Order
         {
-            get { return order; }
-            set { order = value; }
+            get => order;
+            set => order = value;
         }
 
         /// <summary>
@@ -73,8 +73,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// </summary>
         internal int OriginalOrder
         {
-            get { return originalOrder; }
-            set { originalOrder = value; }
+            get => originalOrder;
+            set => originalOrder = value;
         }
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         ]
         public Image LargeImage
         {
-            get { return largeImage; }
+            get => largeImage;
             set
             {
                 largeImage = value;
@@ -108,7 +108,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         ]
         public Image SmallImage
         {
-            get { return smallImage; }
+            get => smallImage;
             set
             {
                 smallImage = value;
@@ -129,7 +129,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         ]
         public int LargeImageIndex
         {
-            get { return largeImageIndex; }
+            get => largeImageIndex;
             set
             {
                 largeImageIndex = value;
@@ -149,7 +149,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         ]
         public int SmallImageIndex
         {
-            get { return smallImageIndex; }
+            get => smallImageIndex;
             set
             {
                 smallImageIndex = value;
@@ -165,10 +165,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         Browsable(false),
         DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)
         ]
-        public ImageList LargeImages
-        {
-            get { return ownerBar.LargeImages; }
-        }
+        public ImageList LargeImages => ownerBar.LargeImages;
 
         /// <summary>
         /// Gets the list of small images
@@ -177,10 +174,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         Browsable(false),
         DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)
         ]
-        public ImageList SmallImages
-        {
-            get { return ownerBar.SmallImages; }
-        }
+        public ImageList SmallImages => ownerBar.SmallImages;
 
         /// <summary>
         /// Gets the button which is associated with this band
@@ -191,7 +185,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         ]
         public NaviButton Button
         {
-            get { return button; }
+            get => button;
             internal set
             {
                 button = value;
@@ -206,8 +200,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         ]
         public NaviBandClientArea ClientArea
         {
-            get { return clientArea; }
-            set { clientArea = value; }
+            get => clientArea;
+            set => clientArea = value;
         }
 
         /// <summary>
@@ -219,7 +213,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         ]
         public override NaviRenderer Renderer
         {
-            get { return base.Renderer; }
+            get => base.Renderer;
             set { base.Renderer = value; clientArea.Renderer = value; Invalidate(); }
         }
 
@@ -232,8 +226,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         ]
         public NaviBar OwnerBar
         {
-            get { return ownerBar; }
-            internal set { ownerBar = value; }
+            get => ownerBar;
+            internal set => ownerBar = value;
         }
 
         #endregion

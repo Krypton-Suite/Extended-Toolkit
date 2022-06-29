@@ -23,14 +23,8 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
 
         public bool Enabled
         {
-            get
-            {
-                return _enabled;
-            }
-            set
-            {
-                SetEnabledFlag(value, true);
-            }
+            get => _enabled;
+            set => SetEnabledFlag(value, true);
         }
 
         internal InstalledVoice(VoiceSynthesis voiceSynthesizer, VoiceInfo voice)

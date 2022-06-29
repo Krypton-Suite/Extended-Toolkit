@@ -122,127 +122,127 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         [Category("Property Changed")]
         public event EventHandler BarBoundsChanged
         {
-            add { this.Events.AddHandler(_eventBarBoundsChanged, value); }
-            remove { this.Events.RemoveHandler(_eventBarBoundsChanged, value); }
+            add => this.Events.AddHandler(_eventBarBoundsChanged, value);
+            remove => this.Events.RemoveHandler(_eventBarBoundsChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler BarPaddingChanged
         {
-            add { this.Events.AddHandler(_eventBarPaddingChanged, value); }
-            remove { this.Events.RemoveHandler(_eventBarPaddingChanged, value); }
+            add => this.Events.AddHandler(_eventBarPaddingChanged, value);
+            remove => this.Events.RemoveHandler(_eventBarPaddingChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler BarStyleChanged
         {
-            add { this.Events.AddHandler(_eventBarStyleChanged, value); }
-            remove { this.Events.RemoveHandler(_eventBarStyleChanged, value); }
+            add => this.Events.AddHandler(_eventBarStyleChanged, value);
+            remove => this.Events.RemoveHandler(_eventBarStyleChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler Colour1Changed
         {
-            add { this.Events.AddHandler(_eventColour1Changed, value); }
-            remove { this.Events.RemoveHandler(_eventColour1Changed, value); }
+            add => this.Events.AddHandler(_eventColour1Changed, value);
+            remove => this.Events.RemoveHandler(_eventColour1Changed, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler Colour2Changed
         {
-            add { this.Events.AddHandler(_eventColour2Changed, value); }
-            remove { this.Events.RemoveHandler(_eventColour2Changed, value); }
+            add => this.Events.AddHandler(_eventColour2Changed, value);
+            remove => this.Events.RemoveHandler(_eventColour2Changed, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler Colour3Changed
         {
-            add { this.Events.AddHandler(_eventColour3Changed, value); }
-            remove { this.Events.RemoveHandler(_eventColour3Changed, value); }
+            add => this.Events.AddHandler(_eventColour3Changed, value);
+            remove => this.Events.RemoveHandler(_eventColour3Changed, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler CustomColoursChanged
         {
-            add { this.Events.AddHandler(_eventCustomColoursChanged, value); }
-            remove { this.Events.RemoveHandler(_eventCustomColoursChanged, value); }
+            add => this.Events.AddHandler(_eventCustomColoursChanged, value);
+            remove => this.Events.RemoveHandler(_eventCustomColoursChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler DividerStyleChanged
         {
-            add { this.Events.AddHandler(_eventDividerStyleChanged, value); }
-            remove { this.Events.RemoveHandler(_eventDividerStyleChanged, value); }
+            add => this.Events.AddHandler(_eventDividerStyleChanged, value);
+            remove => this.Events.RemoveHandler(_eventDividerStyleChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler LargeChangeChanged
         {
-            add { this.Events.AddHandler(_eventLargeChangeChanged, value); }
-            remove { this.Events.RemoveHandler(_eventLargeChangeChanged, value); }
+            add => this.Events.AddHandler(_eventLargeChangeChanged, value);
+            remove => this.Events.RemoveHandler(_eventLargeChangeChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler MaximumChanged
         {
-            add { this.Events.AddHandler(_eventMaximumChanged, value); }
-            remove { this.Events.RemoveHandler(_eventMaximumChanged, value); }
+            add => this.Events.AddHandler(_eventMaximumChanged, value);
+            remove => this.Events.RemoveHandler(_eventMaximumChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler MinimumChanged
         {
-            add { this.Events.AddHandler(_eventMinimumChanged, value); }
-            remove { this.Events.RemoveHandler(_eventMinimumChanged, value); }
+            add => this.Events.AddHandler(_eventMinimumChanged, value);
+            remove => this.Events.RemoveHandler(_eventMinimumChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler NubColourChanged
         {
-            add { this.Events.AddHandler(_eventNubColourChanged, value); }
-            remove { this.Events.RemoveHandler(_eventNubColourChanged, value); }
+            add => this.Events.AddHandler(_eventNubColourChanged, value);
+            remove => this.Events.RemoveHandler(_eventNubColourChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler NubSizeChanged
         {
-            add { this.Events.AddHandler(_eventNubSizeChanged, value); }
-            remove { this.Events.RemoveHandler(_eventNubSizeChanged, value); }
+            add => this.Events.AddHandler(_eventNubSizeChanged, value);
+            remove => this.Events.RemoveHandler(_eventNubSizeChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler NubStyleChanged
         {
-            add { this.Events.AddHandler(_eventNubStyleChanged, value); }
-            remove { this.Events.RemoveHandler(_eventNubStyleChanged, value); }
+            add => this.Events.AddHandler(_eventNubStyleChanged, value);
+            remove => this.Events.RemoveHandler(_eventNubStyleChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler OrientationChanged
         {
-            add { this.Events.AddHandler(_eventOrientationChanged, value); }
-            remove { this.Events.RemoveHandler(_eventOrientationChanged, value); }
+            add => this.Events.AddHandler(_eventOrientationChanged, value);
+            remove => this.Events.RemoveHandler(_eventOrientationChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler ShowValueDividerChanged
         {
-            add { this.Events.AddHandler(_eventShowValueDividerChanged, value); }
-            remove { this.Events.RemoveHandler(_eventShowValueDividerChanged, value); }
+            add => this.Events.AddHandler(_eventShowValueDividerChanged, value);
+            remove => this.Events.RemoveHandler(_eventShowValueDividerChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler SmallChangeChanged
         {
-            add { this.Events.AddHandler(_eventSmallChangeChanged, value); }
-            remove { this.Events.RemoveHandler(_eventSmallChangeChanged, value); }
+            add => this.Events.AddHandler(_eventSmallChangeChanged, value);
+            remove => this.Events.RemoveHandler(_eventSmallChangeChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler ValueChanged
         {
-            add { this.Events.AddHandler(_eventValueChanged, value); }
-            remove { this.Events.RemoveHandler(_eventValueChanged, value); }
+            add => this.Events.AddHandler(_eventValueChanged, value);
+            remove => this.Events.RemoveHandler(_eventValueChanged, value);
         }
 
         #endregion
@@ -257,7 +257,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public virtual Rectangle BarBounds
         {
-            get { return _barBounds; }
+            get => _barBounds;
             protected set
             {
                 if (this.BarBounds != value)
@@ -277,7 +277,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public virtual Padding BarPadding
         {
-            get { return _barPadding; }
+            get => _barPadding;
             protected set
             {
                 if (this.BarPadding != value)
@@ -297,7 +297,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         [DefaultValue(typeof(ColourBarStyle), "TWOCOLOUR")]
         public virtual ColourBarStyle BarStyle
         {
-            get { return _barStyle; }
+            get => _barStyle;
             set
             {
                 if (this.BarStyle != value)
@@ -318,7 +318,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         [DefaultValue(typeof(Color), "Black")]
         public virtual Color Colour1
         {
-            get { return _colour1; }
+            get => _colour1;
             set
             {
                 if (this.Colour1 != value)
@@ -339,7 +339,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         [DefaultValue(typeof(Color), "127, 127, 127")]
         public virtual Color Colour2
         {
-            get { return _colour2; }
+            get => _colour2;
             set
             {
                 if (this.Colour2 != value)
@@ -360,7 +360,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         [DefaultValue(typeof(Color), "White")]
         public virtual Color Colour3
         {
-            get { return _colour3; }
+            get => _colour3;
             set
             {
                 if (this.Colour3 != value)
@@ -381,7 +381,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public virtual ColourCollection CustomColours
         {
-            get { return _customColours; }
+            get => _customColours;
             set
             {
                 if (this.CustomColours != value)
@@ -402,8 +402,8 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public override Font Font
         {
-            get { return base.Font; }
-            set { base.Font = value; }
+            get => base.Font;
+            set => base.Font = value;
         }
 
         /// <summary>
@@ -415,8 +415,8 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public override Color ForeColor
         {
-            get { return base.ForeColor; }
-            set { base.ForeColor = value; }
+            get => base.ForeColor;
+            set => base.ForeColor = value;
         }
 
         /// <summary>
@@ -427,7 +427,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         [DefaultValue(10)]
         public virtual int LargeChange
         {
-            get { return _largeChange; }
+            get => _largeChange;
             set
             {
                 if (this.LargeChange != value)
@@ -447,7 +447,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         [DefaultValue(100F)]
         public virtual float Maximum
         {
-            get { return _maximum; }
+            get => _maximum;
             set
             {
                 // ReSharper disable CompareOfFloatsByEqualityOperator
@@ -469,7 +469,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         [DefaultValue(0F)]
         public virtual float Minimum
         {
-            get { return _minimum; }
+            get => _minimum;
             set
             {
                 // ReSharper disable CompareOfFloatsByEqualityOperator
@@ -491,7 +491,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         [DefaultValue(typeof(Color), "Black")]
         public virtual Color NubColor
         {
-            get { return _nubColour; }
+            get => _nubColour;
             set
             {
                 if (this.NubColor != value)
@@ -511,7 +511,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         [DefaultValue(typeof(Size), "8, 8")]
         public virtual Size NubSize
         {
-            get { return _nubSize; }
+            get => _nubSize;
             set
             {
                 if (this.NubSize != value)
@@ -531,7 +531,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         [DefaultValue(typeof(ColourSliderNubStyle), "BOTTOMRIGHT")]
         public virtual ColourSliderNubStyle NubStyle
         {
-            get { return _nubStyle; }
+            get => _nubStyle;
             set
             {
                 if (this.NubStyle != value)
@@ -551,7 +551,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         [DefaultValue(typeof(Orientation), "Horizontal")]
         public virtual Orientation Orientation
         {
-            get { return _orientation; }
+            get => _orientation;
             set
             {
                 if (this.Orientation != value)
@@ -571,7 +571,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         [DefaultValue(false)]
         public virtual bool ShowValueDivider
         {
-            get { return _showValueDivider; }
+            get => _showValueDivider;
             set
             {
                 if (this.ShowValueDivider != value)
@@ -591,7 +591,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         [DefaultValue(1)]
         public virtual int SmallChange
         {
-            get { return _smallChange; }
+            get => _smallChange;
             set
             {
                 if (this.SmallChange != value)
@@ -612,8 +612,8 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public override string Text
         {
-            get { return base.Text; }
-            set { base.Text = value; }
+            get => base.Text;
+            set => base.Text = value;
         }
 
         /// <summary>
@@ -624,7 +624,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         [DefaultValue(0F)]
         public virtual float Value
         {
-            get { return _value; }
+            get => _value;
             set
             {
                 if (value < this.Minimum)

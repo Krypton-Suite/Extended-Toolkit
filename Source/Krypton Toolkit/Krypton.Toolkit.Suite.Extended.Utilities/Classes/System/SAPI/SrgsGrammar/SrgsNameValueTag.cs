@@ -22,22 +22,13 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
 
         public string Name
         {
-            get
-            {
-                return _name;
-            }
-            set
-            {
-                _name = GetTrimmedName(value, "value");
-            }
+            get => _name;
+            set => _name = GetTrimmedName(value, "value");
         }
 
         public object Value
         {
-            get
-            {
-                return _value;
-            }
+            get => _value;
             set
             {
                 Helpers.ThrowIfNull(value, "value");

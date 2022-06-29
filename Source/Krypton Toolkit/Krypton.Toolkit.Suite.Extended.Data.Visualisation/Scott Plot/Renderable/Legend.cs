@@ -23,15 +23,15 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public float ShadowOffsetY = 2;
 
         public Font Font = new Font();
-        public string FontName { set { Font.Name = value; } }
-        public float FontSize { set { Font.Size = value; } }
-        public Color FontColor { set { Font.Color = value; } }
-        public bool FontBold { set { Font.Bold = value; } }
+        public string FontName { set => Font.Name = value; }
+        public float FontSize { set => Font.Size = value; }
+        public Color FontColor { set => Font.Color = value; }
+        public bool FontBold { set => Font.Bold = value; }
 
         public float Padding = 5;
-        private float SymbolWidth { get { return 40 * Font.Size / 12; } }
-        private float SymbolPad { get { return Font.Size / 3; } }
-        private float MarkerWidth { get { return Font.Size / 2; } }
+        private float SymbolWidth => 40 * Font.Size / 12;
+        private float SymbolPad => Font.Size / 3;
+        private float MarkerWidth => Font.Size / 2;
 
         public void Render(PlotDimensions dims, Bitmap bmp, bool lowQuality = false)
         {

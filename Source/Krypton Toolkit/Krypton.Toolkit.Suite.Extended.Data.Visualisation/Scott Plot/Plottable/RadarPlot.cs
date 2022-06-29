@@ -240,7 +240,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public AxisLimits GetAxisLimits() =>
             (GroupLabels != null) ? new AxisLimits(-3.5, 3.5, -3.5, 3.5) : new AxisLimits(-2.5, 2.5, -2.5, 2.5);
 
-        public int PointCount { get => Norm.Length; }
+        public int PointCount => Norm.Length;
 
         public void Render(PlotDimensions dims, Bitmap bmp, bool lowQuality = false)
         {

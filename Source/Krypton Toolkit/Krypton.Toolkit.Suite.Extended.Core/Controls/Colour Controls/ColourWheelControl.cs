@@ -84,36 +84,36 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         [Category("Property Changed")]
         public event EventHandler ColourStepChanged
         {
-            add { this.Events.AddHandler(_eventColourStepChanged, value); }
-            remove { this.Events.RemoveHandler(_eventColourStepChanged, value); }
+            add => this.Events.AddHandler(_eventColourStepChanged, value);
+            remove => this.Events.RemoveHandler(_eventColourStepChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler HSLColourChanged
         {
-            add { this.Events.AddHandler(_eventHslColourChanged, value); }
-            remove { this.Events.RemoveHandler(_eventHslColourChanged, value); }
+            add => this.Events.AddHandler(_eventHslColourChanged, value);
+            remove => this.Events.RemoveHandler(_eventHslColourChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler LargeChangeChanged
         {
-            add { this.Events.AddHandler(_eventLargeChangeChanged, value); }
-            remove { this.Events.RemoveHandler(_eventLargeChangeChanged, value); }
+            add => this.Events.AddHandler(_eventLargeChangeChanged, value);
+            remove => this.Events.RemoveHandler(_eventLargeChangeChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler SelectionSizeChanged
         {
-            add { this.Events.AddHandler(_eventSelectionSizeChanged, value); }
-            remove { this.Events.RemoveHandler(_eventSelectionSizeChanged, value); }
+            add => this.Events.AddHandler(_eventSelectionSizeChanged, value);
+            remove => this.Events.RemoveHandler(_eventSelectionSizeChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler SmallChangeChanged
         {
-            add { this.Events.AddHandler(_eventSmallChangeChanged, value); }
-            remove { this.Events.RemoveHandler(_eventSmallChangeChanged, value); }
+            add => this.Events.AddHandler(_eventSmallChangeChanged, value);
+            remove => this.Events.RemoveHandler(_eventSmallChangeChanged, value);
         }
 
         #endregion
@@ -129,7 +129,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         [DefaultValue(4)]
         public virtual int ColourStep
         {
-            get { return _colourStep; }
+            get => _colourStep;
             set
             {
                 if (value < 1 || value > 359)
@@ -150,16 +150,16 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public override Font Font
         {
-            get { return base.Font; }
-            set { base.Font = value; }
+            get => base.Font;
+            set => base.Font = value;
         }
 
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public override Color ForeColor
         {
-            get { return base.ForeColor; }
-            set { base.ForeColor = value; }
+            get => base.ForeColor;
+            set => base.ForeColor = value;
         }
 
         /// <summary>
@@ -172,7 +172,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public virtual HSLColourStructure HSLColour
         {
-            get { return _hslColour; }
+            get => _hslColour;
             set
             {
                 if (_hslColour != value)
@@ -192,7 +192,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         [DefaultValue(5)]
         public virtual int LargeChange
         {
-            get { return _largeChange; }
+            get => _largeChange;
             set
             {
                 if (_largeChange != value)
@@ -212,7 +212,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         [DefaultValue(10)]
         public virtual int SelectionSize
         {
-            get { return _selectionSize; }
+            get => _selectionSize;
             set
             {
                 if (_selectionSize != value)
@@ -232,7 +232,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         [DefaultValue(1)]
         public virtual int SmallChange
         {
-            get { return _smallChange; }
+            get => _smallChange;
             set
             {
                 if (_smallChange != value)
@@ -248,8 +248,8 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public override string Text
         {
-            get { return base.Text; }
-            set { base.Text = value; }
+            get => base.Text;
+            set => base.Text = value;
         }
 
         /// <summary>
@@ -258,37 +258,34 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <value>
         ///   <c>true</c> if painting of the control is allowed; otherwise, <c>false</c>.
         /// </value>
-        protected virtual bool AllowPainting
-        {
-            get { return _updateCount == 0; }
-        }
+        protected virtual bool AllowPainting => _updateCount == 0;
 
         [Obsolete("Do not use. This property will be removed in a future update.")]
         protected Color[] Colours
         {
-            get { return _colours; }
-            set { _colours = value; }
+            get => _colours;
+            set => _colours = value;
         }
 
         [Obsolete("Do not use. This property will be removed in a future update.")]
         protected bool LockUpdates
         {
-            get { return _lockUpdates; }
-            set { _lockUpdates = value; }
+            get => _lockUpdates;
+            set => _lockUpdates = value;
         }
 
         [Obsolete("Do not use. This property will be removed in a future update.")]
         protected PointF[] Points
         {
-            get { return _points; }
-            set { _points = value; }
+            get => _points;
+            set => _points = value;
         }
 
         [Obsolete("Do not use. This property will be removed in a future update.")]
         protected Image SelectionGlyph
         {
-            get { return _selectionGlyph; }
-            set { _selectionGlyph = value; }
+            get => _selectionGlyph;
+            set => _selectionGlyph = value;
         }
 
         #endregion
@@ -938,8 +935,8 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         [Category("Property Changed")]
         public event EventHandler ColourChanged
         {
-            add { this.Events.AddHandler(_eventColourChanged, value); }
-            remove { this.Events.RemoveHandler(_eventColourChanged, value); }
+            add => this.Events.AddHandler(_eventColourChanged, value);
+            remove => this.Events.RemoveHandler(_eventColourChanged, value);
         }
 
         /// <summary>
@@ -950,7 +947,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         [DefaultValue(typeof(Color), "Black")]
         public virtual Color Colour
         {
-            get { return _colour; }
+            get => _colour;
             set
             {
                 if (_colour != value)

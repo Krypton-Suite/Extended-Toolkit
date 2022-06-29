@@ -13,8 +13,8 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public PopulationSeries[] multiSeries;
 
         public string[] seriesLabels { get { return multiSeries.Select(x => x.seriesLabel).ToArray(); } }
-        public int seriesCount { get { return multiSeries.Length; } }
-        public int groupCount { get { return multiSeries[0].populations.Length; } }
+        public int seriesCount => multiSeries.Length;
+        public int groupCount => multiSeries[0].populations.Length;
 
         public PopulationMultiSeries(PopulationSeries[] multiSeries)
         {

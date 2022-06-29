@@ -68,10 +68,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
          Description("Sets the color of spoke.")]
         public Color Color
         {
-            get
-            {
-                return m_Color;
-            }
+            get => m_Color;
             set
             {
                 m_Color = value;
@@ -161,10 +158,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         System.ComponentModel.Category("LoadingCircle")]
         public bool Active
         {
-            get
-            {
-                return m_IsTimerActive;
-            }
+            get => m_IsTimerActive;
             set
             {
                 m_IsTimerActive = value;
@@ -202,10 +196,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         System.ComponentModel.Category("LoadingCircle")]
         public int RotationSpeed
         {
-            get
-            {
-                return m_Timer.Interval;
-            }
+            get => m_Timer.Interval;
             set
             {
                 if (value > 0)
@@ -222,7 +213,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
          DefaultValue(typeof(StylePresets), "Custom")]
         public StylePresets StylePreset
         {
-            get { return m_StylePreset; }
+            get => m_StylePreset;
             set
             {
                 m_StylePreset = value;

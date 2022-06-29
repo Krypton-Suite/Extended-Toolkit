@@ -19,10 +19,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// Gets the default extension for files generated with this palette format.
         /// </summary>
         /// <value>The default extension for files generated with this palette format.</value>
-        public override string DefaultExtension
-        {
-            get { return "act"; }
-        }
+        public override string DefaultExtension => "act";
 
         /// <summary>
         /// Gets the maximum number of colors supported by this format.
@@ -30,10 +27,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <value>
         /// The maximum value number of colors supported by this format.
         /// </value>
-        public override int Maximum
-        {
-            get { return 256; }
-        }
+        public override int Maximum => 256;
 
         /// <summary>
         /// Gets the minimum numbers of colors supported by this format.
@@ -41,19 +35,13 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <value>
         /// The minimum number of colors supported by this format.
         /// </value>
-        public override int Minimum
-        {
-            get { return 1; }
-        }
+        public override int Minimum => 1;
 
         /// <summary>
         /// Gets a descriptive name of the palette format
         /// </summary>
         /// <value>The descriptive name of the palette format.</value>
-        public override string Name
-        {
-            get { return "Adobe Color Table"; }
-        }
+        public override string Name => "Adobe Color Table";
 
         #endregion
 

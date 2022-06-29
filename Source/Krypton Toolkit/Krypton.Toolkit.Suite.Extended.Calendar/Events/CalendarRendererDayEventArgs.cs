@@ -37,11 +37,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets the day to paint
         /// </summary>
-        public CalendarDay Day
-        {
-            get { return _day; }
-        }
-
+        public CalendarDay Day => _day;
 
         #endregion
     }

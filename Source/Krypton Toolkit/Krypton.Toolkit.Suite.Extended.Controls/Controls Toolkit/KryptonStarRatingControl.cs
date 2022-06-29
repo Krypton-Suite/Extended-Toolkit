@@ -18,8 +18,8 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public override Color BackColor
         {
-            get { return base.BackColor; }
-            set { base.BackColor = value; }
+            get => base.BackColor;
+            set => base.BackColor = value;
         }
 
         Color _firstColour = Color.Red;
@@ -27,7 +27,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         [DefaultValue("Color.Red")]
         public Color FirstColour
         {
-            get { return _firstColour; }
+            get => _firstColour;
             set { _firstColour = value; ReInit(); Invalidate(); }
         }
 
@@ -36,7 +36,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         [DefaultValue("Color.Blue")]
         public Color SecondColour
         {
-            get { return _secondColour; }
+            get => _secondColour;
             set { _secondColour = value; ReInit(); Invalidate(); }
         }
 
@@ -45,7 +45,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         [DefaultValue("Color.Green")]
         public Color ThirdColour
         {
-            get { return _thirdColour; }
+            get => _thirdColour;
             set { _thirdColour = value; ReInit(); Invalidate(); }
         }
 
@@ -54,7 +54,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         [DefaultValue("2")]
         public int FirstColourQuantity
         {
-            get { return _firstColourQuantity; }
+            get => _firstColourQuantity;
             set { _firstColourQuantity = value; ReInit(); Invalidate(); }
         }
 
@@ -63,7 +63,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         [DefaultValue("1")]
         public int SecondColourQuantity
         {
-            get { return _secondColourQuantity; }
+            get => _secondColourQuantity;
             set { _secondColourQuantity = value; ReInit(); Invalidate(); }
         }
 
@@ -72,7 +72,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         [DefaultValue("2")]
         public int ThirdColourQuantity
         {
-            get { return _thirdColourQuantity; }
+            get => _thirdColourQuantity;
             set { _thirdColourQuantity = value; ReInit(); Invalidate(); }
         }
 
@@ -81,7 +81,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         [DefaultValue("15")]
         public int StartSize
         {
-            get { return _starSize; }
+            get => _starSize;
             set { _starSize = value; ReInit(); Invalidate(); }
         }
 
@@ -114,7 +114,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         [Browsable(true), Category("Appearance-Extended")]
         public int StarCount
         {
-            get { return _starCount; }
+            get => _starCount;
             set
             {
                 _starCount = value;
@@ -126,7 +126,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         [Browsable(true), Category("Appearance-Extended")]
         public int CurrentStarValue
         {
-            get { return _currentStarValue; }
+            get => _currentStarValue;
             set
             {
                 _currentStarValue = value;

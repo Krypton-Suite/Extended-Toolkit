@@ -112,7 +112,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DefaultValue(true)]
         public bool ShowButtonToolTips { get => _showButtonToolTips; set { _showButtonToolTips = value; Invalidate(); } }
 
-        public ColorGrid ColourGrid { get => cgColour; }
+        public ColorGrid ColourGrid => cgColour;
+
         #endregion
 
         #region Constructor

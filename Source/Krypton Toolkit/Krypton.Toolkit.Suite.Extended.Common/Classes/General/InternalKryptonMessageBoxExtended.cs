@@ -214,7 +214,9 @@
         #endregion
 
         #region Properties
-        public Font MessageBoxTypeface { get { return _messageboxTypeface; } set { _messageboxTypeface = value; } }
+        public Font MessageBoxTypeface { get => _messageboxTypeface;
+            set => _messageboxTypeface = value;
+        }
         #endregion
 
         #region Internal Classes

@@ -44,25 +44,13 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// <summary>
         /// Gets the popup form
         /// </summary>
-        public KryptonForm Popup
-        {
-            get
-            {
-                return this.popup;
-            }
-        }
+        public KryptonForm Popup => this.popup;
 
         /// <summary>
         /// Gets the location that the mouse down which would cancel this 
         /// popup occurred
         /// </summary>
-        public Point CursorLocation
-        {
-            get
-            {
-                return this.location;
-            }
-        }
+        public Point CursorLocation => this.location;
 
         /// <summary>
         /// Gets/sets whether to cancel closing the form. Set to
@@ -70,14 +58,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// </summary>
         public bool Cancel
         {
-            get
-            {
-                return this.cancel;
-            }
-            set
-            {
-                this.cancel = value;
-            }
+            get => this.cancel;
+            set => this.cancel = value;
         }
     }
 

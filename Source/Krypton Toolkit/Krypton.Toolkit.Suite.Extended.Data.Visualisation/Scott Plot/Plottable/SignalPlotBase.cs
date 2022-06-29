@@ -717,7 +717,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             return $"PlottableSignalBase{label} with {PointCount} points ({typeof(T).Name})";
         }
 
-        public int PointCount { get => _Ys.Length; }
+        public int PointCount => _Ys.Length;
 
         public LegendItem[] GetLegendItems()
         {

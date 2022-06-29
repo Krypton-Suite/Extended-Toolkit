@@ -46,42 +46,27 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets the bounds of the week
         /// </summary>
-        public Rectangle Bounds
-        {
-            get { return _bounds; }
-        }
+        public Rectangle Bounds => _bounds;
 
         /// <summary>
         /// Gets the calendar this week belongs to
         /// </summary>
-        public KryptonCalendar Calendar
-        {
-            get { return _calendar; }
-        }
+        public KryptonCalendar Calendar => _calendar;
 
         /// <summary>
         /// Gets the bounds of the week header
         /// </summary>
-        public Rectangle HeaderBounds
-        {
-            get
-            {
-                return new Rectangle(
-                    Bounds.Left,
-                    Bounds.Top + Calendar.Renderer.DayHeaderHeight,
-                    Calendar.Renderer.WeekHeaderWidth,
-                    Bounds.Height - Calendar.Renderer.DayHeaderHeight);
-            }
-        }
+        public Rectangle HeaderBounds =>
+            new Rectangle(
+                Bounds.Left,
+                Bounds.Top + Calendar.Renderer.DayHeaderHeight,
+                Calendar.Renderer.WeekHeaderWidth,
+                Bounds.Height - Calendar.Renderer.DayHeaderHeight);
 
         /// <summary>
         /// Gets the sunday that starts the week
         /// </summary>
-        public DateTime StartDate
-        {
-            get { return _firstDay; }
-        }
-
+        public DateTime StartDate => _firstDay;
 
         #endregion
 

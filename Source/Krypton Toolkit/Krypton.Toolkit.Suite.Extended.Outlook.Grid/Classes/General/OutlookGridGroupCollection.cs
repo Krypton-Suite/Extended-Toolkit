@@ -74,13 +74,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// </summary>
         /// <param name="index">Index in the list of groups.</param>
         /// <returns>The IOutlookGridGroup.</returns>
-        public IOutlookGridGroup this[int index]
-        {
-            get
-            {
-                return _groupList[index];
-            }
-        }
+        public IOutlookGridGroup this[int index] => _groupList[index];
 
         /// <summary>
         /// Adds a new group

@@ -116,8 +116,8 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </remarks>
         public virtual Rectangle[] AditionalBounds
         {
-            get { return _additionalBounds; }
-            set { _additionalBounds = value; }
+            get => _additionalBounds;
+            set => _additionalBounds = value;
         }
 
         /// <summary>
@@ -125,8 +125,8 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         public Color BackgroundColour
         {
-            get { return _backgroundColour; }
-            set { _backgroundColour = value; }
+            get => _backgroundColour;
+            set => _backgroundColour = value;
         }
 
         /// <summary>
@@ -134,8 +134,8 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         public Color BackgroundColourLighter
         {
-            get { return _backgroundColourLighter; }
-            set { _backgroundColourLighter = value; }
+            get => _backgroundColourLighter;
+            set => _backgroundColourLighter = value;
         }
 
         /// <summary>
@@ -143,20 +143,14 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         public Color BorderColour
         {
-            get { return _borderColour; }
-            set { _borderColour = value; }
+            get => _borderColour;
+            set => _borderColour = value;
         }
 
         /// <summary>
         /// Gets the StartDate of the item. Implemented
         /// </summary>
-        public override DateTime Date
-        {
-            get
-            {
-                return StartDate;
-            }
-        }
+        public override DateTime Date => StartDate;
 
         /// <summary>
         /// Gets the day on the <see cref="KryptonCalendar"/> where this item ends
@@ -233,7 +227,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         public DateTime EndDate
 
         {
-            get { return _endDate; }
+            get => _endDate;
             set
             {
                 _endDate = value;
@@ -271,11 +265,8 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         public Color ForeColour
         {
-            get { return _oreColour; }
-            set
-            {
-                _oreColour = value;
-            }
+            get => _oreColour;
+            set => _oreColour = value;
         }
 
         /// <summary>
@@ -283,8 +274,8 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         public Image Image
         {
-            get { return _image; }
-            set { _image = value; }
+            get => _image;
+            set => _image = value;
         }
 
         /// <summary>
@@ -292,36 +283,24 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         public CalendarItemImageAlign ImageAlign
         {
-            get { return _imageAlign; }
-            set { _imageAlign = value; }
+            get => _imageAlign;
+            set => _imageAlign = value;
         }
 
         /// <summary>
         /// Gets a value indicating if the item is being dragged
         /// </summary>
-        public bool IsDragging
-        {
-            get { return _isDragging; }
-        }
+        public bool IsDragging => _isDragging;
 
         /// <summary>
         /// Gets a value indicating if the item is currently being edited by the user
         /// </summary>
-        public bool IsEditing
-        {
-            get { return _isEditing; }
-        }
+        public bool IsEditing => _isEditing;
 
         /// <summary>
         /// Gets a value indicating if the item goes on the DayTop area of the <see cref="CalendarDay"/>
         /// </summary>
-        public bool IsOnDayTop
-        {
-            get
-            {
-                return StartDate.Day != EndDate.AddSeconds(1).Day;
-            }
-        }
+        public bool IsOnDayTop => StartDate.Day != EndDate.AddSeconds(1).Day;
 
         /// <summary>
         /// Gets a value indicating if the item is currently on view.
@@ -329,10 +308,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <remarks>
         /// The item may not be on view because of scrolling
         /// </remarks>
-        public bool IsOnView
-        {
-            get { return _isOnView; }
-        }
+        public bool IsOnView => _isOnView;
 
         /// <summary>
         /// Gets a value indicating if the item is on the range specified by <see cref="Calendar.ViewStart"/> and <see cref="Calendar.ViewEnd"/>
@@ -353,40 +329,22 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets a value indicating if the item's <see cref="StartDate"/> is before the <see cref="Calendar.ViewStart"/> date.
         /// </summary>
-        public bool IsOpenStart
-        {
-            get
-            {
-                return StartDate.CompareTo(Calendar.Days[0].Date) < 0;
-            }
-        }
+        public bool IsOpenStart => StartDate.CompareTo(Calendar.Days[0].Date) < 0;
 
         /// <summary>
         /// Gets a value indicating if the item's <see cref="EndDate"/> is aftter the <see cref="Calendar.ViewEnd"/> date.
         /// </summary>
-        public bool IsOpenEnd
-        {
-            get
-            {
-                return EndDate.CompareTo(Calendar.Days[Calendar.Days.Length - 1].Date.Add(new TimeSpan(23, 59, 59))) > 0;
-            }
-        }
+        public bool IsOpenEnd => EndDate.CompareTo(Calendar.Days[Calendar.Days.Length - 1].Date.Add(new TimeSpan(23, 59, 59))) > 0;
 
         /// <summary>
         /// Gets a value indicating if item is being resized by the <see cref="StartDate"/>
         /// </summary>
-        public bool IsResizingStartDate
-        {
-            get { return _isResizingStartDate; }
-        }
+        public bool IsResizingStartDate => _isResizingStartDate;
 
         /// <summary>
         /// Gets a value indicating if item is being resized by the <see cref="EndDate"/>
         /// </summary>
-        public bool IsResizingEndDate
-        {
-            get { return _isResizingEndDate; }
-        }
+        public bool IsResizingEndDate => _isResizingEndDate;
 
         /// <summary>
         /// Gets a value indicating if this item is locked.
@@ -396,26 +354,20 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </remarks>
         public bool Locked
         {
-            get { return _locked; }
-            set { _locked = value; }
+            get => _locked;
+            set => _locked = value;
         }
 
         /// <summary>
         /// Gets the top correspoinding to the ending minute
         /// </summary>
-        public int MinuteEndTop
-        {
-            get { return _minuteEndTop; }
-        }
+        public int MinuteEndTop => _minuteEndTop;
 
 
         /// <summary>
         /// Gets the top corresponding to the starting minute
         /// </summary>
-        public int MinuteStartTop
-        {
-            get { return _minuteStartTop; }
-        }
+        public int MinuteStartTop => _minuteStartTop;
 
 
         /// <summary>
@@ -423,8 +375,8 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         internal List<CalendarTimeScaleUnit> UnitsPassing
         {
-            get { return _unitsPassing; }
-            set { _unitsPassing = value; }
+            get => _unitsPassing;
+            set => _unitsPassing = value;
         }
 
         /// <summary>
@@ -432,8 +384,8 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         public HatchStyle Pattern
         {
-            get { return _pattern; }
-            set { _pattern = value; }
+            get => _pattern;
+            set => _pattern = value;
         }
 
 
@@ -442,42 +394,28 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         public Color PatternColor
         {
-            get { return _patternColor; }
-            set { _patternColor = value; }
+            get => _patternColor;
+            set => _patternColor = value;
         }
 
 
         /// <summary>
         /// Gets the list of DayTops that this item passes thru
         /// </summary>
-        internal List<CalendarDayTop> TopsPassing
-        {
-            get { return _topsPassing; }
-        }
+        internal List<CalendarDayTop> TopsPassing => _topsPassing;
 
         /// <summary>
         /// Gets a value indicating if the item should show the time of the <see cref="StartDate"/>
         /// </summary>
-        public bool ShowStartTime
-        {
-            get
-            {
-                return IsOpenStart || ((IsOnDayTop || Calendar.DaysMode == CalendarDaysMode.SHORT) && !StartDate.TimeOfDay.Equals(new TimeSpan(0, 0, 0)));
-            }
-        }
+        public bool ShowStartTime => IsOpenStart || ((IsOnDayTop || Calendar.DaysMode == CalendarDaysMode.SHORT) && !StartDate.TimeOfDay.Equals(new TimeSpan(0, 0, 0)));
 
         /// <summary>
         /// Gets a value indicating if the item should show the time of the <see cref="EndDate"/>
         /// </summary>
-        public virtual bool ShowEndTime
-        {
-            get
-            {
-                return (IsOpenEnd ||
-                    ((IsOnDayTop || Calendar.DaysMode == CalendarDaysMode.SHORT) && !EndDate.TimeOfDay.Equals(new TimeSpan(23, 59, 59)))) &&
-                    !(Calendar.DaysMode == CalendarDaysMode.SHORT && StartDate.Date == EndDate.Date);
-            }
-        }
+        public virtual bool ShowEndTime =>
+            (IsOpenEnd ||
+             ((IsOnDayTop || Calendar.DaysMode == CalendarDaysMode.SHORT) && !EndDate.TimeOfDay.Equals(new TimeSpan(23, 59, 59)))) &&
+            !(Calendar.DaysMode == CalendarDaysMode.SHORT && StartDate.Date == EndDate.Date);
 
         /// <summary>
         /// Gets the text of the start date
@@ -508,7 +446,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         public virtual DateTime StartDate
         {
-            get { return _startDate; }
+            get => _startDate;
             set
             {
                 _startDate = value;
@@ -522,8 +460,8 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         public object Tag
         {
-            get { return _tag; }
-            set { _tag = value; }
+            get => _tag;
+            set => _tag = value;
         }
 
         /// <summary>
@@ -531,8 +469,8 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         public virtual string Text
         {
-            get { return _text; }
-            set { _text = value; }
+            get => _text;
+            set => _text = value;
         }
 
         #endregion

@@ -86,7 +86,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// <returns>The item if found</returns>
         public NaviBand this[int index]
         {
-            get { return (NaviBand)innerList[index]; }
+            get => (NaviBand)innerList[index];
             set
             {
                 if (!(value is NaviBand))
@@ -161,15 +161,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             ((IList)innerList).Insert(index, value);
         }
 
-        bool IList.IsFixedSize
-        {
-            get { return false; }
-        }
+        bool IList.IsFixedSize => false;
 
-        bool IList.IsReadOnly
-        {
-            get { return false; }
-        }
+        bool IList.IsReadOnly => false;
 
         void IList.Remove(object value)
         {
@@ -187,7 +181,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 
         Object IList.this[int index]
         {
-            get { return ((IList)innerList)[index]; }
+            get => ((IList)innerList)[index];
             set
             {
                 if (!(value is NaviBand))
@@ -205,20 +199,11 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             innerList.CopyTo(array, index);
         }
 
-        public int Count
-        {
-            get { return innerList.Count; }
-        }
+        public int Count => innerList.Count;
 
-        public bool IsSynchronized
-        {
-            get { return false; }
-        }
+        public bool IsSynchronized => false;
 
-        public object SyncRoot
-        {
-            get { return this; }
-        }
+        public object SyncRoot => this;
 
         #endregion
 

@@ -32,14 +32,8 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
 
         public bool IsCompleted
         {
-            get
-            {
-                return _completed;
-            }
-            internal set
-            {
-                _completed = value;
-            }
+            get => _completed;
+            internal set => _completed = value;
         }
 
         internal object Synthesizer

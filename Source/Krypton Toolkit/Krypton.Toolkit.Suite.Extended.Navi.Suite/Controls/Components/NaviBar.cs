@@ -76,7 +76,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         [DefaultValue(NaviLayoutStyle.Office2007Blue)]
         public new NaviLayoutStyle LayoutStyle
         {
-            get { return layoutStyle; }
+            get => layoutStyle;
             set
             {
                 layoutStyle = value; layoutEngineDirty = true;
@@ -96,7 +96,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         ]
         public NaviLayoutEngine NaviLayoutEngine
         {
-            get { return naviLayoutEngine; }
+            get => naviLayoutEngine;
             internal set
             {
                 if (value == null)
@@ -119,10 +119,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         Browsable(false),
         DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden),
         ]
-        public NaviControlCollection InternalControls
-        {
-            get { return Controls as NaviControlCollection; }
-        }
+        public NaviControlCollection InternalControls => Controls as NaviControlCollection;
 
         /// <summary>
         /// Infrastructure. Requests the LayoutEngine to reinitialize the bands. 
@@ -137,8 +134,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         ]
         public bool BandInitRequired
         {
-            get { return bandInitRequired; }
-            set { bandInitRequired = value; }
+            get => bandInitRequired;
+            set => bandInitRequired = value;
         }
 
         #endregion
@@ -158,7 +155,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         ]
         public int HeaderHeight
         {
-            get { return headerHeight; }
+            get => headerHeight;
             set
             {
                 headerHeight = value;
@@ -179,7 +176,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         ]
         public int MinimizedPanelHeight
         {
-            get { return minimizedPanelHeight; }
+            get => minimizedPanelHeight;
             set
             {
                 minimizedPanelHeight = value;
@@ -201,7 +198,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         ]
         public int ButtonHeight
         {
-            get { return buttonHeight; }
+            get => buttonHeight;
             set
             {
                 buttonHeight = value;
@@ -222,7 +219,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         ]
         public int PopupHeight
         {
-            get { return popupHeight; }
+            get => popupHeight;
             set
             {
                 popupHeight = value;
@@ -243,7 +240,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         ]
         public int PopupMinWidth
         {
-            get { return popupMinWidth; }
+            get => popupMinWidth;
             set
             {
                 popupMinWidth = value;
@@ -254,15 +251,15 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public virtual ImageList SmallImages
         {
-            get { return smallImages; }
-            set { smallImages = value; }
+            get => smallImages;
+            set => smallImages = value;
         }
         //TODO
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public virtual ImageList LargeImages
         {
-            get { return largeImages; }
-            set { largeImages = value; }
+            get => largeImages;
+            set => largeImages = value;
         }
 
         // Read only
@@ -278,8 +275,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         ]
         public int MinimizedButtonWidth
         {
-            get { return minimizedButtonWidth; }
-            set { minimizedButtonWidth = value; }
+            get => minimizedButtonWidth;
+            set => minimizedButtonWidth = value;
         }
 
         #endregion
@@ -299,7 +296,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         ]
         public bool ShowMoreOptionsButton
         {
-            get { return showMoreOptionsButton; }
+            get => showMoreOptionsButton;
             set
             {
                 showMoreOptionsButton = value;
@@ -320,7 +317,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         ]
         public bool Collapsed
         {
-            get { return collapsed; }
+            get => collapsed;
             set
             {
                 bool raise = collapsed != value;
@@ -346,7 +343,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         ]
         public bool ShowCollapseButton
         {
-            get { return showCollapseButton; }
+            get => showCollapseButton;
             set
             {
                 showCollapseButton = value;
@@ -368,7 +365,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         ]
         public int VisibleLargeButtons
         {
-            get { return visibleLargeButtons; }
+            get => visibleLargeButtons;
             set
             {
                 visibleLargeButtons = value;
@@ -411,10 +408,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 
                 return settings;
             }
-            set
-            {
-                settings = value;
-            }
+            set => settings = value;
         }
 
         #endregion
@@ -434,10 +428,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         Category("General"),
         Description("The bands of this Navigaion bar")
         ]
-        public NaviBandCollection Bands
-        {
-            get { return bands; }
-        }
+        public NaviBandCollection Bands => bands;
 
         /// <summary>
         /// Gets or sets the active band
@@ -449,8 +440,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         ]
         public NaviBand ActiveBand
         {
-            get { return activeBand; }
-            set { SetActiveBand(value); }
+            get => activeBand;
+            set => SetActiveBand(value);
         }
 
         #endregion
@@ -829,10 +820,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// <summary>
         /// Gets the list of observers
         /// </summary>
-        public List<IObserver> Observers
-        {
-            get { return observers; }
-        }
+        public List<IObserver> Observers => observers;
 
         /// <summary>
         /// Notifies the Observers

@@ -34,10 +34,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
             DownloadFileCompleted?.Invoke(sender, e);
         }
 
-        public bool IsDownloading
-        {
-            get => _webClient.IsBusy;
-        }
+        public bool IsDownloading => _webClient.IsBusy;
 
         public event DownloadProgressEvent DownloadProgressChanged;
         public event AsyncCompletedEventHandler DownloadFileCompleted;

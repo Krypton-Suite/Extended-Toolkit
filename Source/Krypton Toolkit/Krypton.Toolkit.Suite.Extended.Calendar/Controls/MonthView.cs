@@ -147,10 +147,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// Gets the size of days rectangles
         /// </summary>
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public Size DaySize
-        {
-            get { return _daySize; }
-        }
+        public Size DaySize => _daySize;
 
         /// <summary>
         /// Gets or sets the format of day names
@@ -158,8 +155,8 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         [DefaultValue("ddd")]
         public string DayNamesFormat
         {
-            get { return _dayNamesFormat; }
-            set { _dayNamesFormat = value; }
+            get => _dayNamesFormat;
+            set => _dayNamesFormat = value;
         }
 
         /// <summary>
@@ -168,8 +165,8 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         [DefaultValue(true)]
         public bool DayNamesVisible
         {
-            get { return _dayNamesVisible; }
-            set { _dayNamesVisible = value; }
+            get => _dayNamesVisible;
+            set => _dayNamesVisible = value;
         }
 
         /// <summary>
@@ -178,7 +175,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         [DefaultValue(2)]
         public int DayNamesLength
         {
-            get { return _dayNamesLength; }
+            get => _dayNamesLength;
             set { _dayNamesLength = value; UpdateMonths(); }
         }
 
@@ -188,45 +185,33 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         [DefaultValue(DayOfWeek.Sunday)]
         public DayOfWeek FirstDayOfWeek
         {
-            get { return _weekStart; }
-            set { _weekStart = value; }
+            get => _weekStart;
+            set => _weekStart = value;
         }
 
         /// <summary>
         /// Gets a value indicating if the backward button is selected
         /// </summary>
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public bool BackwardButtonSelected
-        {
-            get { return _backwardButtonSelected; }
-        }
+        public bool BackwardButtonSelected => _backwardButtonSelected;
 
         /// <summary>
         /// Gets the bounds of the backward button
         /// </summary>
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public Rectangle BackwardButtonBounds
-        {
-            get { return _backwardButtonBounds; }
-        }
+        public Rectangle BackwardButtonBounds => _backwardButtonBounds;
 
         /// <summary>
         /// Gets a value indicating if the forward button is selected
         /// </summary>
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public bool ForwardButtonSelected
-        {
-            get { return _forwardButtonSelected; }
-        }
+        public bool ForwardButtonSelected => _forwardButtonSelected;
 
         /// <summary>
         /// Gets the bounds of the forward button
         /// </summary>
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public Rectangle ForwardButtonBounds
-        {
-            get { return _forwardButtonBounds; }
-        }
+        public Rectangle ForwardButtonBounds => _forwardButtonBounds;
 
 
         /// <summary>
@@ -234,10 +219,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         public override Font Font
         {
-            get
-            {
-                return base.Font;
-            }
+            get => base.Font;
             set
             {
                 base.Font = value;
@@ -252,8 +234,8 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         public Padding ItemPadding
         {
-            get { return _itemPadding; }
-            set { _itemPadding = value; }
+            get => _itemPadding;
+            set => _itemPadding = value;
         }
 
         /// <summary>
@@ -262,27 +244,21 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         [DefaultValue(0)]
         public int MaxSelectionCount
         {
-            get { return _maxSelectionCount; }
-            set { _maxSelectionCount = value; }
+            get => _maxSelectionCount;
+            set => _maxSelectionCount = value;
         }
 
         /// <summary>
         /// Gets the Months currently displayed on the calendar
         /// </summary>
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public MonthViewMonth[] Months
-        {
-            get { return _months; }
-        }
+        public MonthViewMonth[] Months => _months;
 
         /// <summary>
         /// Gets the size of an entire month inside the <see cref="MonthView"/>
         /// </summary>
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public Size MonthSize
-        {
-            get { return _monthSize; }
-        }
+        public Size MonthSize => _monthSize;
 
         /// <summary>
         /// Gets or sets the format of month titles
@@ -290,7 +266,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         [DefaultValue("MMMM yyyy")]
         public string MonthTitleFormat
         {
-            get { return _monthTitleFormat; }
+            get => _monthTitleFormat;
             set { _monthTitleFormat = value; UpdateMonths(); }
         }
 
@@ -300,7 +276,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public DateTime SelectionStart
         {
-            get { return _selectionStart; }
+            get => _selectionStart;
             set
             {
                 if (MaxSelectionCount > 0)
@@ -323,7 +299,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public DateTime SelectionEnd
         {
-            get { return _selectionEnd; }
+            get => _selectionEnd;
             set
             {
                 if (MaxSelectionCount > 0)
@@ -346,8 +322,8 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         [DefaultValue(MonthViewSelection.Manual)]
         public MonthViewSelection SelectionMode
         {
-            get { return _selectionMode; }
-            set { _selectionMode = value; }
+            get => _selectionMode;
+            set => _selectionMode = value;
         }
 
         /// <summary>
@@ -356,7 +332,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public DateTime ViewStart
         {
-            get { return _viewStart; }
+            get => _viewStart;
             set { _viewStart = value; UpdateMonths(); Invalidate(); }
         }
 
@@ -378,8 +354,8 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         [DefaultValue(DayOfWeek.Monday)]
         public DayOfWeek WorkWeekStart
         {
-            get { return _workWeekStart; }
-            set { _workWeekStart = value; }
+            get => _workWeekStart;
+            set => _workWeekStart = value;
         }
 
         /// <summary>
@@ -388,8 +364,8 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         [DefaultValue(DayOfWeek.Friday)]
         public DayOfWeek WorkWeekEnd
         {
-            get { return _workWeekEnd; }
-            set { _workWeekEnd = value; }
+            get => _workWeekEnd;
+            set => _workWeekEnd = value;
         }
 
         #endregion
@@ -398,74 +374,74 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
         public Color ArrowsSelectedColour
         {
-            get { return _arrowsSelectedColour; }
-            set { _arrowsSelectedColour = value; }
+            get => _arrowsSelectedColour;
+            set => _arrowsSelectedColour = value;
         }
 
 
         public Color ArrowsColour
         {
-            get { return _arrowsColour; }
-            set { _arrowsColour = value; }
+            get => _arrowsColour;
+            set => _arrowsColour = value;
         }
 
 
         public Color DaySelectedTextColour
         {
-            get { return _daySelectedTextColour; }
-            set { _daySelectedTextColour = value; }
+            get => _daySelectedTextColour;
+            set => _daySelectedTextColour = value;
         }
 
 
         public Color DaySelectedColour
         {
-            get { return _dayTextColour; }
-            set { _dayTextColour = value; }
+            get => _dayTextColour;
+            set => _dayTextColour = value;
         }
 
 
         public Color DaySelectedBackgroundColour
         {
-            get { return _daySelectedBackgroundColour; }
-            set { _daySelectedBackgroundColour = value; }
+            get => _daySelectedBackgroundColour;
+            set => _daySelectedBackgroundColour = value;
         }
 
         public Color DayBackgroundColour
         {
-            get { return _dayBackgroundColour; }
-            set { _dayBackgroundColour = value; }
+            get => _dayBackgroundColour;
+            set => _dayBackgroundColour = value;
         }
 
 
         public Color DayGrayedText
         {
-            get { return _dayGrayedText; }
-            set { _dayGrayedText = value; }
+            get => _dayGrayedText;
+            set => _dayGrayedText = value;
         }
 
         public Color MonthTitleColour
         {
-            get { return _monthTitleColour; }
-            set { _monthTitleColour = value; }
+            get => _monthTitleColour;
+            set => _monthTitleColour = value;
         }
 
         public Color MonthTitleTextColourInactive
         {
-            get { return _monthTitleTextColourInactive; }
-            set { _monthTitleTextColourInactive = value; }
+            get => _monthTitleTextColourInactive;
+            set => _monthTitleTextColourInactive = value;
         }
 
         public Color MonthTitleTextColour
         {
-            get { return _monthTitleTextColour; }
-            set { _monthTitleTextColour = value; }
+            get => _monthTitleTextColour;
+            set => _monthTitleTextColour = value;
         }
 
 
         public Color MonthTitleColourInactive
         {
-            get { return _monthTitleColourInactive; }
-            set { _monthTitleColourInactive = value; }
+            get => _monthTitleColourInactive;
+            set => _monthTitleColourInactive = value;
         }
 
         /// <summary>
@@ -473,8 +449,8 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         public Color TodayBorderColour
         {
-            get { return _todayBorderColour; }
-            set { _todayBorderColour = value; }
+            get => _todayBorderColour;
+            set => _todayBorderColour = value;
         }
 
 

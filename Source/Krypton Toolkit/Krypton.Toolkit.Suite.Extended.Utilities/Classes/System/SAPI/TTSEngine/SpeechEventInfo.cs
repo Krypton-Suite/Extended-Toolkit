@@ -21,50 +21,26 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.TTSEngine
 
         public short EventId
         {
-            get
-            {
-                return _eventId;
-            }
-            internal set
-            {
-                _eventId = value;
-            }
+            get => _eventId;
+            internal set => _eventId = value;
         }
 
         public short ParameterType
         {
-            get
-            {
-                return _parameterType;
-            }
-            internal set
-            {
-                _parameterType = value;
-            }
+            get => _parameterType;
+            internal set => _parameterType = value;
         }
 
         public int Param1
         {
-            get
-            {
-                return _param1;
-            }
-            internal set
-            {
-                _param1 = value;
-            }
+            get => _param1;
+            internal set => _param1 = value;
         }
 
         public IntPtr Param2
         {
-            get
-            {
-                return _param2;
-            }
-            internal set
-            {
-                _param2 = value;
-            }
+            get => _param2;
+            internal set => _param2 = value;
         }
 
         public SpeechEventInfo(short eventId, short parameterType, int param1, IntPtr param2)

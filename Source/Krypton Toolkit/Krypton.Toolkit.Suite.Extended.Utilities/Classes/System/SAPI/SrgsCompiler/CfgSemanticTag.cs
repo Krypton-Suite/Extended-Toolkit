@@ -41,10 +41,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 
         internal uint StartArcIndex
         {
-            get
-            {
-                return _flag1 & 0x3FFFFF;
-            }
+            get => _flag1 & 0x3FFFFF;
             set
             {
                 if (value > 4194303)
@@ -58,10 +55,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 
         internal bool StartParallelEpsilonArc
         {
-            get
-            {
-                return (_flag1 & 0x400000) != 0;
-            }
+            get => (_flag1 & 0x400000) != 0;
             set
             {
                 if (value)
@@ -77,10 +71,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 
         internal uint EndArcIndex
         {
-            get
-            {
-                return _flag2 & 0x3FFFFF;
-            }
+            get => _flag2 & 0x3FFFFF;
             set
             {
                 if (value > 4194303)
@@ -94,10 +85,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 
         internal bool EndParallelEpsilonArc
         {
-            get
-            {
-                return (_flag2 & 0x400000) != 0;
-            }
+            get => (_flag2 & 0x400000) != 0;
             set
             {
                 if (value)
@@ -113,10 +101,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 
         internal VarEnum PropVariantType
         {
-            get
-            {
-                return (VarEnum)(_flag3 & 0xFF);
-            }
+            get => (VarEnum)(_flag3 & 0xFF);
             set
             {
                 if ((uint)value > 255u)
@@ -130,10 +115,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 
         internal uint ArcIndex
         {
-            get
-            {
-                return (_flag3 >> 8) & 0x3FFFFF;
-            }
+            get => (_flag3 >> 8) & 0x3FFFFF;
             set
             {
                 if (value > 4194303)

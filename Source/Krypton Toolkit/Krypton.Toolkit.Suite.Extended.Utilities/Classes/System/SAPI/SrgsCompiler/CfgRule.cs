@@ -21,10 +21,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 
         internal bool TopLevel
         {
-            get
-            {
-                return (_flag & 1) != 0;
-            }
+            get => (_flag & 1) != 0;
             set
             {
                 if (value)
@@ -70,10 +67,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 
         internal bool Import
         {
-            get
-            {
-                return (_flag & 8) != 0;
-            }
+            get => (_flag & 8) != 0;
             set
             {
                 if (value)
@@ -89,10 +83,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 
         internal bool Export
         {
-            get
-            {
-                return (_flag & 0x10) != 0;
-            }
+            get => (_flag & 0x10) != 0;
             set
             {
                 if (value)
@@ -110,10 +101,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 
         internal bool Dynamic
         {
-            get
-            {
-                return (_flag & 0x40) != 0;
-            }
+            get => (_flag & 0x40) != 0;
             set
             {
                 if (value)
@@ -129,10 +117,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 
         internal bool HasDynamicRef
         {
-            get
-            {
-                return (_flag & 0x80) != 0;
-            }
+            get => (_flag & 0x80) != 0;
             set
             {
                 if (value)
@@ -148,10 +133,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 
         internal uint FirstArcIndex
         {
-            get
-            {
-                return (_flag >> 8) & 0x3FFFFF;
-            }
+            get => (_flag >> 8) & 0x3FFFFF;
             set
             {
                 if (value > 4194303)

@@ -34,38 +34,23 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
         [EditorBrowsable(EditorBrowsableState.Advanced)]
         public TimeSpan InitialSilenceTimeout
         {
-            get
-            {
-                return RecoBase.InitialSilenceTimeout;
-            }
-            set
-            {
-                RecoBase.InitialSilenceTimeout = value;
-            }
+            get => RecoBase.InitialSilenceTimeout;
+            set => RecoBase.InitialSilenceTimeout = value;
         }
 
         /// <filterpriority>2</filterpriority>
         [EditorBrowsable(EditorBrowsableState.Advanced)]
         public TimeSpan BabbleTimeout
         {
-            get
-            {
-                return RecoBase.BabbleTimeout;
-            }
-            set
-            {
-                RecoBase.BabbleTimeout = value;
-            }
+            get => RecoBase.BabbleTimeout;
+            set => RecoBase.BabbleTimeout = value;
         }
 
         /// <filterpriority>2</filterpriority>
         [EditorBrowsable(EditorBrowsableState.Advanced)]
         public TimeSpan EndSilenceTimeout
         {
-            get
-            {
-                return TimeSpan.FromMilliseconds(RecoBase.QueryRecognizerSettingAsInt("ResponseSpeed"));
-            }
+            get => TimeSpan.FromMilliseconds(RecoBase.QueryRecognizerSettingAsInt("ResponseSpeed"));
             set
             {
                 if (value.TotalMilliseconds < 0.0 || value.TotalMilliseconds > 10000.0)
@@ -80,10 +65,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
         [EditorBrowsable(EditorBrowsableState.Advanced)]
         public TimeSpan EndSilenceTimeoutAmbiguous
         {
-            get
-            {
-                return TimeSpan.FromMilliseconds(RecoBase.QueryRecognizerSettingAsInt("ComplexResponseSpeed"));
-            }
+            get => TimeSpan.FromMilliseconds(RecoBase.QueryRecognizerSettingAsInt("ComplexResponseSpeed"));
             set
             {
                 if (value.TotalMilliseconds < 0.0 || value.TotalMilliseconds > 10000.0)
@@ -112,14 +94,8 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
 
         public int MaxAlternates
         {
-            get
-            {
-                return RecoBase.MaxAlternates;
-            }
-            set
-            {
-                RecoBase.MaxAlternates = value;
-            }
+            get => RecoBase.MaxAlternates;
+            set => RecoBase.MaxAlternates = value;
         }
 
         private RecognizerBase RecoBase

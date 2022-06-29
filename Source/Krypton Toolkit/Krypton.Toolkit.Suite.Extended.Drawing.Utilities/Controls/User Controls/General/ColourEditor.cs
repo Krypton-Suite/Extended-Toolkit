@@ -922,15 +922,15 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Property Changed")]
         public event EventHandler OrientationChanged
         {
-            add { this.Events.AddHandler(_eventOrientationChanged, value); }
-            remove { this.Events.RemoveHandler(_eventOrientationChanged, value); }
+            add => this.Events.AddHandler(_eventOrientationChanged, value);
+            remove => this.Events.RemoveHandler(_eventOrientationChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler ShowAlphaChannelChanged
         {
-            add { this.Events.AddHandler(_eventShowAlphaChannelChanged, value); }
-            remove { this.Events.RemoveHandler(_eventShowAlphaChannelChanged, value); }
+            add => this.Events.AddHandler(_eventShowAlphaChannelChanged, value);
+            remove => this.Events.RemoveHandler(_eventShowAlphaChannelChanged, value);
         }
 
         /// <summary>
@@ -939,8 +939,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Property Changed")]
         public event EventHandler ShowColourSpaceLabelsChanged
         {
-            add { this.Events.AddHandler(_eventShowColourSpaceLabelsChanged, value); }
-            remove { this.Events.RemoveHandler(_eventShowColourSpaceLabelsChanged, value); }
+            add => this.Events.AddHandler(_eventShowColourSpaceLabelsChanged, value);
+            remove => this.Events.RemoveHandler(_eventShowColourSpaceLabelsChanged, value);
         }
 
         [Category("Property Changed")]
@@ -1034,7 +1034,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DefaultValue(typeof(Orientation), "Vertical")]
         public virtual Orientation Orientation
         {
-            get { return _orientation; }
+            get => _orientation;
             set
             {
                 if (this.Orientation != value)
@@ -1050,7 +1050,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DefaultValue(true)]
         public virtual bool ShowAlphaChannel
         {
-            get { return _showAlphaChannel; }
+            get => _showAlphaChannel;
             set
             {
                 if (_showAlphaChannel != value)

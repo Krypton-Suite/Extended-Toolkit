@@ -18,10 +18,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
 
         internal uint Position
         {
-            set
-            {
-                _stream.Position = value;
-            }
+            set => _stream.Position = value;
         }
 
         internal StreamMarshaler()

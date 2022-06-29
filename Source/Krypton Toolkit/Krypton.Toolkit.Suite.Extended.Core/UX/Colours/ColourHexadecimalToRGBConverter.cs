@@ -180,13 +180,8 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #endregion
 
         #region Properties
-        public string[] DisallowedCharacters
-        {
-            get
-            {
-                return _disallowedCharacters;
-            }
-        }
+        public string[] DisallowedCharacters => _disallowedCharacters;
+
         #endregion
 
         public ColourHexadecimalToRGBConverter()

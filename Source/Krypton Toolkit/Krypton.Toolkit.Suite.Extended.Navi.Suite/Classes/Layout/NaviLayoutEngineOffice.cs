@@ -53,10 +53,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 
         #region Public Properties
 
-        public NaviBar Bar
-        {
-            get { return OwnerBar; }
-        }
+        public NaviBar Bar => OwnerBar;
 
         #endregion
 

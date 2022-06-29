@@ -12,13 +12,8 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
     public class KryptonToolStripTextBox : ToolStripControlHost
     {
         #region Properties
-        public KryptonTextBox KryptonTextBox
-        {
-            get
-            {
-                return Control as KryptonTextBox;
-            }
-        }
+        public KryptonTextBox KryptonTextBox => Control as KryptonTextBox;
+
         #endregion
 
         #region Constructor

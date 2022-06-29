@@ -23,22 +23,13 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
 
         public Uri XmlBase
         {
-            get
-            {
-                return _grammar.XmlBase;
-            }
-            set
-            {
-                _grammar.XmlBase = value;
-            }
+            get => _grammar.XmlBase;
+            set => _grammar.XmlBase = value;
         }
 
         public CultureInfo Culture
         {
-            get
-            {
-                return _grammar.Culture;
-            }
+            get => _grammar.Culture;
             set
             {
                 Helpers.ThrowIfNull(value, "value");
@@ -52,14 +43,8 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
 
         public SrgsRule Root
         {
-            get
-            {
-                return _grammar.Root;
-            }
-            set
-            {
-                _grammar.Root = value;
-            }
+            get => _grammar.Root;
+            set => _grammar.Root = value;
         }
 
         public SrgsGrammarMode Mode
@@ -72,18 +57,12 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
                 }
                 return SrgsGrammarMode.Voice;
             }
-            set
-            {
-                _grammar.Mode = ((value != 0) ? GrammarType.DtmfGrammar : GrammarType.VoiceGrammar);
-            }
+            set => _grammar.Mode = ((value != 0) ? GrammarType.DtmfGrammar : GrammarType.VoiceGrammar);
         }
 
         public SrgsPhoneticAlphabet PhoneticAlphabet
         {
-            get
-            {
-                return (SrgsPhoneticAlphabet)_grammar.PhoneticAlphabet;
-            }
+            get => (SrgsPhoneticAlphabet)_grammar.PhoneticAlphabet;
             set
             {
                 _grammar.PhoneticAlphabet = (AlphabetType)value;
@@ -95,48 +74,27 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
 
         public string Language
         {
-            get
-            {
-                return _grammar.Language;
-            }
-            set
-            {
-                _grammar.Language = value;
-            }
+            get => _grammar.Language;
+            set => _grammar.Language = value;
         }
 
         public string Namespace
         {
-            get
-            {
-                return _grammar.Namespace;
-            }
-            set
-            {
-                _grammar.Namespace = value;
-            }
+            get => _grammar.Namespace;
+            set => _grammar.Namespace = value;
         }
 
         public Collection<string> CodeBehind => _grammar.CodeBehind;
 
         public bool Debug
         {
-            get
-            {
-                return _grammar.Debug;
-            }
-            set
-            {
-                _grammar.Debug = value;
-            }
+            get => _grammar.Debug;
+            set => _grammar.Debug = value;
         }
 
         public string Script
         {
-            get
-            {
-                return _grammar.Script;
-            }
+            get => _grammar.Script;
             set
             {
                 Helpers.ThrowIfEmptyOrNull(value, "value");
@@ -150,10 +108,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
 
         internal SrgsTagFormat TagFormat
         {
-            set
-            {
-                _grammar.TagFormat = value;
-            }
+            set => _grammar.TagFormat = value;
         }
 
         internal Uri BaseUri => _baseUri;

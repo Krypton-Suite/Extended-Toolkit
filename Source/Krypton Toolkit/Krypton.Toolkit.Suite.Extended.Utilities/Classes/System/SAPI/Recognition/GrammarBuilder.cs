@@ -77,10 +77,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
 
         public CultureInfo Culture
         {
-            get
-            {
-                return _culture;
-            }
+            get => _culture;
             set
             {
                 if (value == null)

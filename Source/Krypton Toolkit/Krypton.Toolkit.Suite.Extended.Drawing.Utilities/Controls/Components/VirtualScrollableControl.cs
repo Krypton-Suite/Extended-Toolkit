@@ -171,7 +171,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DefaultValue(true)]
         public virtual bool AutoScroll
         {
-            get { return _autoScroll; }
+            get => _autoScroll;
             set
             {
                 if (this.AutoScroll != value)
@@ -194,7 +194,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DefaultValue(typeof(Size), "0, 0")]
         public virtual Size AutoScrollMargin
         {
-            get { return _autoScrollMargin; }
+            get => _autoScrollMargin;
             set
             {
                 if (value.Width < 0)
@@ -225,7 +225,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DefaultValue(typeof(Size), "0, 0")]
         public virtual Size AutoScrollMinSize
         {
-            get { return _autoScrollMinSize; }
+            get => _autoScrollMinSize;
             set
             {
                 if (this.AutoScrollMinSize != value)
@@ -247,7 +247,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public virtual Point AutoScrollPosition
         {
-            get { return _autoScrollPosition; }
+            get => _autoScrollPosition;
             set
             {
                 Point translated;
@@ -295,10 +295,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         ///   Gets the view port rectangle.
         /// </summary>
         /// <value>The view port rectangle.</value>
-        protected Rectangle ViewPortRectangle
-        {
-            get { return new Rectangle(-_autoScrollPosition.X, -_autoScrollPosition.Y, this.DisplayRectangle.Width, this.DisplayRectangle.Height); }
-        }
+        protected Rectangle ViewPortRectangle => new Rectangle(-_autoScrollPosition.X, -_autoScrollPosition.Y, this.DisplayRectangle.Width, this.DisplayRectangle.Height);
 
         #endregion
 

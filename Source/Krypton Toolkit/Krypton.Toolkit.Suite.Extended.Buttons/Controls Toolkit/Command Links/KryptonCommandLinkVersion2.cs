@@ -72,15 +72,9 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         [Category("Command Link"), Description("Gets or sets the note text of the command link."), DefaultValue("")]
         public string NoteText
         {
-            get
-            {
-                return GetNoteText();
-            }
+            get => GetNoteText();
 
-            set
-            {
-                SetNoteText(value);
-            }
+            set => SetNoteText(value);
         }
 
         /// <summary>Gets or sets the process path to elevate.</summary>
@@ -133,13 +127,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         #endregion
 
         #region Overrides
-        protected override Size DefaultSize
-        {
-            get
-            {
-                return new Size(160, 60);
-            }
-        }
+        protected override Size DefaultSize => new Size(160, 60);
 
         protected override CreateParams CreateParams
         {

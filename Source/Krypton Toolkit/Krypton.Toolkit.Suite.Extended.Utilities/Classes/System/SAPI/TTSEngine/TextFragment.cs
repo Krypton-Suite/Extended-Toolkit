@@ -24,23 +24,14 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.TTSEngine
 
 		public FragmentState State
 		{
-			get
-			{
-				return _state;
-			}
-			set
-			{
-				_state = value;
-			}
-		}
+			get => _state;
+            set => _state = value;
+        }
 
 		public string TextToSpeak
 		{
-			get
-			{
-				return _textToSpeak;
-			}
-			set
+			get => _textToSpeak;
+            set
 			{
 				Helpers.ThrowIfEmptyOrNull(value, "value");
 				_textToSpeak = value;
@@ -49,27 +40,15 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.TTSEngine
 
 		public int TextOffset
 		{
-			get
-			{
-				return _textOffset;
-			}
-			set
-			{
-				_textOffset = value;
-			}
-		}
+			get => _textOffset;
+            set => _textOffset = value;
+        }
 
 		public int TextLength
 		{
-			get
-			{
-				return _textLength;
-			}
-			set
-			{
-				_textLength = value;
-			}
-		}
+			get => _textLength;
+            set => _textLength = value;
+        }
 
 		public TextFragment()
 		{

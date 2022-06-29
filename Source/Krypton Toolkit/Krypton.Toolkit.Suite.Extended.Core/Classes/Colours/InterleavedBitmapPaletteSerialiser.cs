@@ -21,28 +21,19 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// Gets a value indicating whether this serializer can be used to write palettes.
         /// </summary>
         /// <value><c>true</c> if palettes can be written using this serializer; otherwise, <c>false</c>.</value>
-        public override bool CanWrite
-        {
-            get { return false; }
-        }
+        public override bool CanWrite => false;
 
         /// <summary>
         /// Gets the default extension for files generated with this palette format.
         /// </summary>
         /// <value>The default extension for files generated with this palette format.</value>
-        public override string DefaultExtension
-        {
-            get { return "bbm;lbm"; }
-        }
+        public override string DefaultExtension => "bbm;lbm";
 
         /// <summary>
         /// Gets a descriptive name of the palette format
         /// </summary>
         /// <value>The descriptive name of the palette format.</value>
-        public override string Name
-        {
-            get { return "Interleaved Bitmap Palette"; }
-        }
+        public override string Name => "Interleaved Bitmap Palette";
 
         #endregion
 

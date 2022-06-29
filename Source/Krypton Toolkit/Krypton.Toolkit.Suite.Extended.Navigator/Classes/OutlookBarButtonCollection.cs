@@ -37,10 +37,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             return this.List.IndexOf(item);
         }
 
-        public OutlookBarButton this[int index]
-        {
-            get { return (OutlookBarButton)List[index]; }
-        }
+        public OutlookBarButton this[int index] => (OutlookBarButton)List[index];
 
         public OutlookBarButton this[string text]
         {

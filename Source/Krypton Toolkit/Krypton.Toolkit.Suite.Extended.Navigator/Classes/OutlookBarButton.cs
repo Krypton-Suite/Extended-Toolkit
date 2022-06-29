@@ -89,44 +89,41 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [DefaultValue(typeof(string), ""), Browsable(true)]
         public string Tag1
         {
-            get { return this._Tag1; }
-            set { this._Tag1 = value; }
+            get => this._Tag1;
+            set => this._Tag1 = value;
         }
 
         [DefaultValue(typeof(string), ""), Browsable(true)]
         public string Tag2
         {
-            get { return this._Tag2; }
-            set { this._Tag2 = value; }
+            get => this._Tag2;
+            set => this._Tag2 = value;
         }
 
         [DefaultValue(typeof(string), ""), Browsable(true)]
         public string BuddyPage1
         {
-            get { return this._BuddyPage1; }
-            set { this._BuddyPage1 = value; }
+            get => this._BuddyPage1;
+            set => this._BuddyPage1 = value;
         }
 
         [DefaultValue(typeof(string), ""), Browsable(true)]
         public string BuddyPage2
         {
-            get { return this._BuddyPage2; }
-            set { this._BuddyPage2 = value; }
+            get => this._BuddyPage2;
+            set => this._BuddyPage2 = value;
         }
 
         public string Text
         {
-            get { return this._Text; }
-            set { this._Text = value; }
+            get => this._Text;
+            set => this._Text = value;
         }
 
         [DefaultValue(typeof(bool), "True")]
         public bool Visible
         {
-            get
-            {
-                return this._Visible;
-            }
+            get => this._Visible;
             set
             {
                 this._Visible = value;
@@ -141,7 +138,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [DefaultValue(typeof(bool), "False"), Browsable(true)]
         public bool Selected
         {
-            get { return this._Selected; }
+            get => this._Selected;
             set
             {
                 this._Selected = value;
@@ -161,7 +158,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [DefaultValue(typeof(bool), "True")]
         public bool Allowed
         {
-            get { return this._Allowed; }
+            get => this._Allowed;
             set
             {
                 this._Allowed = value;
@@ -186,7 +183,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                     return this._Image;
                 }
             }
-            set { this._Image = value; }
+            set => this._Image = value;
         }
 
         public override string ToString()

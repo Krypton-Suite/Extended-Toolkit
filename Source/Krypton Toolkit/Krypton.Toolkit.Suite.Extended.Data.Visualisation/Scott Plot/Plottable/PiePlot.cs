@@ -72,7 +72,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
 
         public AxisLimits GetAxisLimits() => new AxisLimits(-0.5, 0.5, -1, 1);
 
-        public int PointCount { get => Values.Length; }
+        public int PointCount => Values.Length;
 
         public void ValidateData(bool deep = false)
         {

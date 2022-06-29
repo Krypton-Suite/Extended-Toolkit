@@ -20,10 +20,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         /// <value>The KryptonTrackBar control.</value>
         [RefreshProperties(RefreshProperties.All),
         DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
-        public KryptonTrackBar KryptonTrackBarControl
-        {
-            get { return Control as KryptonTrackBar; }
-        }
+        public KryptonTrackBar KryptonTrackBarControl => Control as KryptonTrackBar;
 
         // Constructor ========================================================
         /// <summary>
@@ -76,62 +73,62 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         #region ... exposed properties ...
         public int Value
         {
-            get { return ((KryptonTrackBar)this.Control).Value; }
-            set { ((KryptonTrackBar)this.Control).Value = value; }
+            get => ((KryptonTrackBar)this.Control).Value;
+            set => ((KryptonTrackBar)this.Control).Value = value;
         }
 
         public int LargeChange
         {
-            get { return ((KryptonTrackBar)this.Control).LargeChange; }
-            set { ((KryptonTrackBar)this.Control).LargeChange = value; }
+            get => ((KryptonTrackBar)this.Control).LargeChange;
+            set => ((KryptonTrackBar)this.Control).LargeChange = value;
         }
 
         public int SmallChange
         {
-            get { return ((KryptonTrackBar)this.Control).SmallChange; }
-            set { ((KryptonTrackBar)this.Control).SmallChange = value; }
+            get => ((KryptonTrackBar)this.Control).SmallChange;
+            set => ((KryptonTrackBar)this.Control).SmallChange = value;
         }
 
         public int Maximum
         {
-            get { return ((KryptonTrackBar)this.Control).Maximum; }
-            set { ((KryptonTrackBar)this.Control).Maximum = value; }
+            get => ((KryptonTrackBar)this.Control).Maximum;
+            set => ((KryptonTrackBar)this.Control).Maximum = value;
         }
 
         public int Minimum
         {
-            get { return ((KryptonTrackBar)this.Control).Minimum; }
-            set { ((KryptonTrackBar)this.Control).Minimum = value; }
+            get => ((KryptonTrackBar)this.Control).Minimum;
+            set => ((KryptonTrackBar)this.Control).Minimum = value;
         }
 
         public bool VolumeControl
         {
-            get { return ((KryptonTrackBar)this.Control).VolumeControl; }
-            set { ((KryptonTrackBar)this.Control).VolumeControl = value; }
+            get => ((KryptonTrackBar)this.Control).VolumeControl;
+            set => ((KryptonTrackBar)this.Control).VolumeControl = value;
         }
 
         public PaletteTrackBarSize TrackBarSize
         {
-            get { return ((KryptonTrackBar)this.Control).TrackBarSize; }
-            set { ((KryptonTrackBar)this.Control).TrackBarSize = value; }
+            get => ((KryptonTrackBar)this.Control).TrackBarSize;
+            set => ((KryptonTrackBar)this.Control).TrackBarSize = value;
         }
 
         public TickStyle TickStyle
         {
-            get { return ((KryptonTrackBar)this.Control).TickStyle; }
-            set { ((KryptonTrackBar)this.Control).TickStyle = value; }
+            get => ((KryptonTrackBar)this.Control).TickStyle;
+            set => ((KryptonTrackBar)this.Control).TickStyle = value;
         }
 
         public int TickFrequency
         {
-            get { return ((KryptonTrackBar)this.Control).TickFrequency; }
-            set { ((KryptonTrackBar)this.Control).TickFrequency = value; }
+            get => ((KryptonTrackBar)this.Control).TickFrequency;
+            set => ((KryptonTrackBar)this.Control).TickFrequency = value;
         }
 
         public Orientation Orientation
         {
-            get { return ((KryptonTrackBar)this.Control).Orientation; }
-            set { ((KryptonTrackBar)this.Control).Orientation = value; }
+            get => ((KryptonTrackBar)this.Control).Orientation;
+            set => ((KryptonTrackBar)this.Control).Orientation = value;
         }
         #endregion
 

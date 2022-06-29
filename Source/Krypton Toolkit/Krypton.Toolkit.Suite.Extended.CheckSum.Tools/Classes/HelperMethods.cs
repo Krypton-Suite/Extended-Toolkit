@@ -15,9 +15,10 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
         #endregion
 
         #region Properties
-        public string[] HashTypes { get => _hashTypes; }
+        public string[] HashTypes => _hashTypes;
 
-        public string[] SafeNetCoreAndNewerHashTypes { get => _safeNETCoreAndNewerHashTypes; }
+        public string[] SafeNetCoreAndNewerHashTypes => _safeNETCoreAndNewerHashTypes;
+
         #endregion
 
         #region Methods

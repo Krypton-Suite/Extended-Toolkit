@@ -30,32 +30,29 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         [Browsable(false), XmlIgnore]
         public bool MouseDown
         {
-            get { return _mouseDown; }
-            set { _mouseDown = value; }
+            get => _mouseDown;
+            set => _mouseDown = value;
         }
 
         [Browsable(false), XmlIgnore]
         public bool MouseHover
         {
-            get { return _mouseHover; }
-            set { _mouseHover = value; }
+            get => _mouseHover;
+            set => _mouseHover = value;
         }
 
         [Category("General")]
         public bool Enabled
         {
-            get { return _enabled; }
-            set
-            {
-                _enabled = value;
-            }
+            get => _enabled;
+            set => _enabled = value;
         }
 
         [Category("General")]
         public ToolBoxScrollDirection ScrollDirection
         {
-            get { return _direction; }
-            set { _direction = value; }
+            get => _direction;
+            set => _direction = value;
         }
 
         #endregion //Properties

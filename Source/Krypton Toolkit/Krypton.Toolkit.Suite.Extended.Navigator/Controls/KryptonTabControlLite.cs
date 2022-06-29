@@ -72,7 +72,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [System.ComponentModel.DefaultValue(false)]
         public bool DrawTabPage
         {
-            get { return _DrawTabPage; }
+            get => _DrawTabPage;
             set
             {
                 _DrawTabPage = value;

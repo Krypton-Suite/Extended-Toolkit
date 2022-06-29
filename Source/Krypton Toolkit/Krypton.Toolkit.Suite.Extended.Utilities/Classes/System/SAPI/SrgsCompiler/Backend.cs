@@ -70,82 +70,46 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 
         internal int LangId
         {
-            get
-            {
-                return _langId;
-            }
-            set
-            {
-                _langId = value;
-            }
+            get => _langId;
+            set => _langId = value;
         }
 
         internal GrammarOptions GrammarOptions
         {
-            get
-            {
-                return _grammarOptions;
-            }
-            set
-            {
-                _grammarOptions = value;
-            }
+            get => _grammarOptions;
+            set => _grammarOptions = value;
         }
 
         internal GrammarType GrammarMode
         {
-            set
-            {
-                _grammarMode = value;
-            }
+            set => _grammarMode = value;
         }
 
         internal AlphabetType Alphabet
         {
-            get
-            {
-                return _alphabet;
-            }
-            set
-            {
-                _alphabet = value;
-            }
+            get => _alphabet;
+            set => _alphabet = value;
         }
 
         internal Collection<string> GlobalTags
         {
-            get
-            {
-                return _globalTags;
-            }
-            set
-            {
-                _globalTags = value;
-            }
+            get => _globalTags;
+            set => _globalTags = value;
         }
 
         internal Collection<ScriptRef> ScriptRefs
         {
-            set
-            {
-                _scriptRefs = value;
-            }
+            set => _scriptRefs = value;
         }
 
         internal byte[] IL
         {
-            set
-            {
-                _il = value;
-            }
+            set => _il = value;
         }
 
         internal byte[] PDB
         {
-            set
-            {
-                _pdb = value;
-            }
+            set => _pdb = value;
         }
 
         internal Backend()

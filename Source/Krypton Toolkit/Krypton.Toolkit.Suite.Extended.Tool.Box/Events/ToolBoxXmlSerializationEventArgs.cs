@@ -20,25 +20,16 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         #endregion //Private Attributes
 
         #region Properties
-        public bool IsLoading
-        {
-            get { return _isLoading; }
-        }
+        public bool IsLoading => _isLoading;
 
-        public bool IsSaving
-        {
-            get { return !_isLoading; }
-        }
+        public bool IsSaving => !_isLoading;
 
-        public XmlNode Node
-        {
-            get { return _xmlNode; }
-        }
+        public XmlNode Node => _xmlNode;
 
         public object Object
         {
-            get { return _object; }
-            set { _object = value; }
+            get => _object;
+            set => _object = value;
         }
 
         #endregion //Properties

@@ -67,56 +67,32 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets a list of items contained on the day
         /// </summary>
-        internal List<CalendarItemAlternative> ContainedItems
-        {
-            get { return _containedItems; }
-        }
+        internal List<CalendarItemAlternative> ContainedItems => _containedItems;
 
         /// <summary>
         /// Gets the DayTop of the day, the place where multi-day and all-day items are placed
         /// </summary>
-        public CalendarDayTop DayTop
-        {
-            get { return _dayTop; }
-        }
+        public CalendarDayTop DayTop => _dayTop;
 
         /// <summary>
         /// Gets the bounds of the body of the day (where time-based CalendarItems are placed)
         /// </summary>
-        public Rectangle BodyBounds
-        {
-            get
-            {
-                return Rectangle.FromLTRB(Bounds.Left, DayTop.Bounds.Bottom, Bounds.Right, Bounds.Bottom);
-            }
-        }
+        public Rectangle BodyBounds => Rectangle.FromLTRB(Bounds.Left, DayTop.Bounds.Bottom, Bounds.Right, Bounds.Bottom);
 
         /// <summary>
         /// Gets the date this day represents
         /// </summary>
-        public override DateTime Date
-        {
-            get { return _date; }
-        }
+        public override DateTime Date => _date;
 
         /// <summary>
         /// Gets the bounds of the header of the day
         /// </summary>
-        public Rectangle HeaderBounds
-        {
-            get
-            {
-                return new Rectangle(Bounds.Left, Bounds.Top, Bounds.Width, Calendar.Renderer.DayHeaderHeight);
-            }
-        }
+        public Rectangle HeaderBounds => new Rectangle(Bounds.Left, Bounds.Top, Bounds.Width, Calendar.Renderer.DayHeaderHeight);
 
         /// <summary>
         /// Gets the index of this day on the calendar
         /// </summary>
-        public int Index
-        {
-            get { return _index; }
-        }
+        public int Index => _index;
 
         /// <summary>
         /// Gets a value indicating if the day is specified on the view (See remarks).
@@ -125,39 +101,24 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// A day may not be specified on the view, but still present to make up a square calendar.
         /// This days should be drawn in a way that indicates it's necessary but unrequested presence.
         /// </remarks>
-        public bool SpecifiedOnView
-        {
-            get
-            {
-                return Date.CompareTo(Calendar.ViewStart) >= 0 && Date.CompareTo(Calendar.ViewEnd) <= 0;
-            }
-        }
+        public bool SpecifiedOnView => Date.CompareTo(Calendar.ViewStart) >= 0 && Date.CompareTo(Calendar.ViewEnd) <= 0;
 
         /// <summary>
         /// Gets the time units contained on the day
         /// </summary>
-        public CalendarTimeScaleUnit[] TimeUnits
-        {
-            get { return _timeUnits; }
-        }
+        public CalendarTimeScaleUnit[] TimeUnits => _timeUnits;
 
         /// <summary>
         /// /// <summary>
         /// Gets a value indicating if the day contains items not shown through the start of the day
         /// </summary>
         /// </summary>
-        public bool OverflowStart
-        {
-            get { return _overflowStart; }
-        }
+        public bool OverflowStart => _overflowStart;
 
         /// <summary>
         /// Gets the bounds of the <see cref="OverflowStart"/> indicator
         /// </summary>
-        public virtual Rectangle OverflowStartBounds
-        {
-            get { return new Rectangle(new Point(Bounds.Right - overflowPadding.Right - overflowSize.Width, Bounds.Top + overflowPadding.Top), overflowSize); }
-        }
+        public virtual Rectangle OverflowStartBounds => new Rectangle(new Point(Bounds.Right - overflowPadding.Right - overflowSize.Width, Bounds.Top + overflowPadding.Top), overflowSize);
 
         /// <summary>
         /// Gets a value indicating if the <see cref="OverflowStart"/> indicator is currently selected
@@ -165,27 +126,18 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <remarks>
         /// This value set to <c>true</c> when user hovers the mouse on the <see cref="OverflowStartBounds"/> area
         /// </remarks>
-        public bool OverflowStartSelected
-        {
-            get { return _overflowStartSelected; }
-        }
+        public bool OverflowStartSelected => _overflowStartSelected;
 
 
         /// <summary>
         /// Gets a value indicating if the day contains items not shown through the end of the day
         /// </summary>
-        public bool OverflowEnd
-        {
-            get { return _overflowEnd; }
-        }
+        public bool OverflowEnd => _overflowEnd;
 
         /// <summary>
         /// Gets the bounds of the <see cref="OverflowEnd"/> indicator
         /// </summary>
-        public virtual Rectangle OverflowEndBounds
-        {
-            get { return new Rectangle(new Point(Bounds.Right - overflowPadding.Right - overflowSize.Width, Bounds.Bottom - overflowPadding.Bottom - overflowSize.Height), overflowSize); }
-        }
+        public virtual Rectangle OverflowEndBounds => new Rectangle(new Point(Bounds.Right - overflowPadding.Right - overflowSize.Width, Bounds.Bottom - overflowPadding.Bottom - overflowSize.Height), overflowSize);
 
         /// <summary>
         /// Gets a value indicating if the <see cref="OverflowEnd"/> indicator is currently selected
@@ -193,11 +145,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <remarks>
         /// This value set to <c>true</c> when user hovers the mouse on the <see cref="OverflowStartBounds"/> area
         /// </remarks>
-        public bool OverflowEndSelected
-        {
-            get { return _overlowEndSelected; }
-        }
-
+        public bool OverflowEndSelected => _overlowEndSelected;
 
         #endregion
 

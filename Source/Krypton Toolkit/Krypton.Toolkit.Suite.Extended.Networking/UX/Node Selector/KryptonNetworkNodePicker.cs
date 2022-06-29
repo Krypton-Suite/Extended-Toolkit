@@ -267,7 +267,8 @@
         #region Properties
         /// <summary>Gets the name of the selected computer.</summary>
         /// <value>The name of the selected computer.</value>
-        public string SelectedComputerName { get => _selectedComputerName; }
+        public string SelectedComputerName => _selectedComputerName;
+
         #endregion
 
         #region Constructor

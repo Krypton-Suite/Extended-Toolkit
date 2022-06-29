@@ -86,14 +86,8 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 
         internal int SerializeId
         {
-            get
-            {
-                return _iSerialize;
-            }
-            set
-            {
-                _iSerialize = value;
-            }
+            get => _iSerialize;
+            set => _iSerialize = value;
         }
 
         internal State(Rule rule, uint hState, int iSerialize)

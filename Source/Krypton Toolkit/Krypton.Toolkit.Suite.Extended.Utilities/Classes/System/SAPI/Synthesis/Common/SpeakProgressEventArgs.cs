@@ -24,26 +24,14 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
 
         public int CharacterCount
         {
-            get
-            {
-                return _cWordLen;
-            }
-            internal set
-            {
-                _cWordLen = value;
-            }
+            get => _cWordLen;
+            internal set => _cWordLen = value;
         }
 
         public string Text
         {
-            get
-            {
-                return _word;
-            }
-            internal set
-            {
-                _word = value;
-            }
+            get => _word;
+            internal set => _word = value;
         }
 
         internal SpeakProgressEventArgs(Prompt prompt, TimeSpan audioPosition, int iWordPos, int cWordLen)

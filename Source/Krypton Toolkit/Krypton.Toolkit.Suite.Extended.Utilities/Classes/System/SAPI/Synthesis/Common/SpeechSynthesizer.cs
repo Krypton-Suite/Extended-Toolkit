@@ -30,10 +30,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
         /// <filterpriority>2</filterpriority>
         public int Rate
         {
-            get
-            {
-                return VoiceSynthesizer.Rate;
-            }
+            get => VoiceSynthesizer.Rate;
             set
             {
                 if (value < -10 || value > 10)
@@ -47,10 +44,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
         /// <filterpriority>2</filterpriority>
         public int Volume
         {
-            get
-            {
-                return VoiceSynthesizer.Volume;
-            }
+            get => VoiceSynthesizer.Volume;
             set
             {
                 if (value < 0 || value > 100)

@@ -47,8 +47,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// </summary>
         public Object Item
         {
-            get { return m_item; }
-            set { m_item = value; }
+            get => m_item;
+            set => m_item = value;
         }
 
         #endregion

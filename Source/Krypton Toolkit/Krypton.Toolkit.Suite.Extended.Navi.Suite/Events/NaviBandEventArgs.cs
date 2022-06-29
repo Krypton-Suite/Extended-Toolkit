@@ -43,8 +43,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// </summary>
         public NaviBand NewActiveBand
         {
-            get { return newActiveBand; }
-            set { newActiveBand = value; }
+            get => newActiveBand;
+            set => newActiveBand = value;
         }
 
         /// <summary>
@@ -52,8 +52,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// </summary>
         public bool Canceled
         {
-            get { return cancel; }
-            set { cancel = value; }
+            get => cancel;
+            set => cancel = value;
         }
 
         #endregion

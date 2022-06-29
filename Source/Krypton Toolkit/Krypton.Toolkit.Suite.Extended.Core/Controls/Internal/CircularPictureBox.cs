@@ -13,7 +13,8 @@ namespace Krypton.Toolkit.Suite.Extended.Core
     {
         private ToolTipValues _values;
 
-        public ToolTipValues ToolTipValues { get => _values; set { _values = value; } }
+        public ToolTipValues ToolTipValues { get => _values; set => _values = value;
+        }
 
         public CircularPictureBox()
         {

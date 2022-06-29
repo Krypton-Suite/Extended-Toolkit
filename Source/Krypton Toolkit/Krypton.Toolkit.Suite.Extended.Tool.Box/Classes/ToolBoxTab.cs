@@ -66,7 +66,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         [Category("ToolBoxTab")]
         public ToolBoxViewMode View
         {
-            get { return _viewMode; }
+            get => _viewMode;
             set
             {
                 if (value != _viewMode)
@@ -124,7 +124,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         [Category("ToolBoxTab")]
         public Color ItemBackgroundColour
         {
-            get { return _itemBgColour; }
+            get => _itemBgColour;
             set
             {
                 if (value != _itemBgColour)
@@ -142,7 +142,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         [Category("ToolBoxTab")]
         public Color ItemNormalColour
         {
-            get { return _itemNormColour; }
+            get => _itemNormColour;
             set
             {
                 if (value != _itemNormColour)
@@ -160,7 +160,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         [Category("ToolBoxTab")]
         public Color ItemBorderColour
         {
-            get { return _itemBorderColour; }
+            get => _itemBorderColour;
             set
             {
                 if (value != _itemBorderColour)
@@ -178,7 +178,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         [Category("ToolBoxTab")]
         public Color ItemSelectedColour
         {
-            get { return _itemSelColour; }
+            get => _itemSelColour;
             set
             {
                 if (value != _itemSelColour)
@@ -195,7 +195,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         [Category("ToolBoxTab")]
         public Color ItemHoverColour
         {
-            get { return _itemHoverColour; }
+            get => _itemHoverColour;
             set
             {
                 if (value != _itemHoverColour)
@@ -272,7 +272,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         [Category("ToolBoxTab"), Browsable(false), XmlIgnore]
         public Rectangle ItemArea
         {
-            get { return _itemArea; }
+            get => _itemArea;
             set
             {
                 _itemArea = value;
@@ -287,7 +287,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         [Category("ToolBoxTab")]
         public int ItemSpacing
         {
-            get { return _itemSpacing; }
+            get => _itemSpacing;
             set
             {
                 if (value != _itemSpacing)
@@ -332,7 +332,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         [Category("General")]
         public override bool Enabled
         {
-            get { return _enabled; }
+            get => _enabled;
             set
             {
                 if (value != _enabled)
@@ -358,10 +358,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         [Category("General"), XmlIgnore]
         public override bool Selected
         {
-            get
-            {
-                return _selected;
-            }
+            get => _selected;
             set
             {
                 if (value != _selected)
@@ -382,7 +379,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         [Category("ToolBoxTab"), XmlIgnore]
         public ToolBoxItem SelectedItem
         {
-            get { return this[_selItemIndex]; }
+            get => this[_selItemIndex];
             set
             {
                 if (null != _toolItems)
@@ -395,7 +392,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         [Category("ToolBoxTab")]
         public int SelectedItemIndex
         {
-            get { return _selItemIndex; }
+            get => _selItemIndex;
             set
             {
                 if (null != _toolItems && value != _selItemIndex && -1 != value && value < _toolItems.Count)
@@ -418,7 +415,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         [Category("ToolBoxTab")]
         public bool ShowOnlyOneItemPerRow
         {
-            get { return _onlyOneItemPerRow; }
+            get => _onlyOneItemPerRow;
             set
             {
                 if (value != _onlyOneItemPerRow)
@@ -435,7 +432,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         [Category("ToolBoxTab")]
         public Control Control
         {
-            get { return _control; }
+            get => _control;
             set
             {
                 Control oldCtrl;
@@ -483,23 +480,9 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
             }
         }
 
-        public override bool CanMoveUp
-        {
-            get
-            {
-                return null != _parent ? _parent.CanMoveTabUp(this) : false;
-            }
-        }
+        public override bool CanMoveUp => null != _parent ? _parent.CanMoveTabUp(this) : false;
 
-        public override bool CanMoveDown
-        {
-            get
-            {
-                return null != _parent ? _parent.CanMoveTabDown(this) : false;
-            }
-        }
-
-
+        public override bool CanMoveDown => null != _parent ? _parent.CanMoveTabDown(this) : false;
 
         #endregion //Properties
 

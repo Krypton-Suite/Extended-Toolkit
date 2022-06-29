@@ -37,10 +37,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// Gets a bitmap containing the background of the ClientArea, 
         /// </summary>
         /// <remarks>This bitmap is used for faking opacity of the NaviGroup</remarks>
-        public Bitmap BackgroundCanvas
-        {
-            get { return backgroundCanvas; }
-        }
+        public Bitmap BackgroundCanvas => backgroundCanvas;
 
         #endregion
 

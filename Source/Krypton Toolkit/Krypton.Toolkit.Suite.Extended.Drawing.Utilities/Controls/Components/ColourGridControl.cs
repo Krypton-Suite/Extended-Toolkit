@@ -166,29 +166,29 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Property Changed")]
         public event EventHandler AutoAddColoursChanged
         {
-            add { this.Events.AddHandler(_eventAutoAddColoursChanged, value); }
-            remove { this.Events.RemoveHandler(_eventAutoAddColoursChanged, value); }
+            add => this.Events.AddHandler(_eventAutoAddColoursChanged, value);
+            remove => this.Events.RemoveHandler(_eventAutoAddColoursChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler AutoFitChanged
         {
-            add { this.Events.AddHandler(_eventAutoFitChanged, value); }
-            remove { this.Events.RemoveHandler(_eventAutoFitChanged, value); }
+            add => this.Events.AddHandler(_eventAutoFitChanged, value);
+            remove => this.Events.RemoveHandler(_eventAutoFitChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler CellBorderColourChanged
         {
-            add { this.Events.AddHandler(_eventCellBorderColourChanged, value); }
-            remove { this.Events.RemoveHandler(_eventCellBorderColourChanged, value); }
+            add => this.Events.AddHandler(_eventCellBorderColourChanged, value);
+            remove => this.Events.RemoveHandler(_eventCellBorderColourChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler CellBorderStyleChanged
         {
-            add { this.Events.AddHandler(_eventCellBorderStyleChanged, value); }
-            remove { this.Events.RemoveHandler(_eventCellBorderStyleChanged, value); }
+            add => this.Events.AddHandler(_eventCellBorderStyleChanged, value);
+            remove => this.Events.RemoveHandler(_eventCellBorderStyleChanged, value);
         }
 
         /// <summary>
@@ -197,99 +197,99 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Property Changed")]
         public event EventHandler CellContextMenuStripChanged
         {
-            add { this.Events.AddHandler(_eventCellContextMenuStripChanged, value); }
-            remove { this.Events.RemoveHandler(_eventCellContextMenuStripChanged, value); }
+            add => this.Events.AddHandler(_eventCellContextMenuStripChanged, value);
+            remove => this.Events.RemoveHandler(_eventCellContextMenuStripChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler CellSizeChanged
         {
-            add { this.Events.AddHandler(_eventCellSizeChanged, value); }
-            remove { this.Events.RemoveHandler(_eventCellSizeChanged, value); }
+            add => this.Events.AddHandler(_eventCellSizeChanged, value);
+            remove => this.Events.RemoveHandler(_eventCellSizeChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler ColourIndexChanged
         {
-            add { this.Events.AddHandler(_eventColourIndexChanged, value); }
-            remove { this.Events.RemoveHandler(_eventColourIndexChanged, value); }
+            add => this.Events.AddHandler(_eventColourIndexChanged, value);
+            remove => this.Events.RemoveHandler(_eventColourIndexChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler ColoursChanged
         {
-            add { this.Events.AddHandler(_eventColoursChanged, value); }
-            remove { this.Events.RemoveHandler(_eventColoursChanged, value); }
+            add => this.Events.AddHandler(_eventColoursChanged, value);
+            remove => this.Events.RemoveHandler(_eventColoursChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler ColumnsChanged
         {
-            add { this.Events.AddHandler(_eventColumnsChanged, value); }
-            remove { this.Events.RemoveHandler(_eventColumnsChanged, value); }
+            add => this.Events.AddHandler(_eventColumnsChanged, value);
+            remove => this.Events.RemoveHandler(_eventColumnsChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler CustomColoursChanged
         {
-            add { this.Events.AddHandler(_eventCustomColoursChanged, value); }
-            remove { this.Events.RemoveHandler(_eventCustomColoursChanged, value); }
+            add => this.Events.AddHandler(_eventCustomColoursChanged, value);
+            remove => this.Events.RemoveHandler(_eventCustomColoursChanged, value);
         }
 
         [Category("Action")]
         public event EventHandler<EditColourCancelEventArgs> EditingColour
         {
-            add { this.Events.AddHandler(_eventEditingColour, value); }
-            remove { this.Events.RemoveHandler(_eventEditingColour, value); }
+            add => this.Events.AddHandler(_eventEditingColour, value);
+            remove => this.Events.RemoveHandler(_eventEditingColour, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler EditModeChanged
         {
-            add { this.Events.AddHandler(_eventEditModeChanged, value); }
-            remove { this.Events.RemoveHandler(_eventEditModeChanged, value); }
+            add => this.Events.AddHandler(_eventEditModeChanged, value);
+            remove => this.Events.RemoveHandler(_eventEditModeChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler HotIndexChanged
         {
-            add { this.Events.AddHandler(_eventHotIndexChanged, value); }
-            remove { this.Events.RemoveHandler(_eventHotIndexChanged, value); }
+            add => this.Events.AddHandler(_eventHotIndexChanged, value);
+            remove => this.Events.RemoveHandler(_eventHotIndexChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler PaletteChanged
         {
-            add { this.Events.AddHandler(_eventPaletteChanged, value); }
-            remove { this.Events.RemoveHandler(_eventPaletteChanged, value); }
+            add => this.Events.AddHandler(_eventPaletteChanged, value);
+            remove => this.Events.RemoveHandler(_eventPaletteChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler SelectedCellStyleChanged
         {
-            add { this.Events.AddHandler(_eventSelectedCellStyleChanged, value); }
-            remove { this.Events.RemoveHandler(_eventSelectedCellStyleChanged, value); }
+            add => this.Events.AddHandler(_eventSelectedCellStyleChanged, value);
+            remove => this.Events.RemoveHandler(_eventSelectedCellStyleChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler ShowCustomColoursChanged
         {
-            add { this.Events.AddHandler(_eventShowCustomColoursChanged, value); }
-            remove { this.Events.RemoveHandler(_eventShowCustomColoursChanged, value); }
+            add => this.Events.AddHandler(_eventShowCustomColoursChanged, value);
+            remove => this.Events.RemoveHandler(_eventShowCustomColoursChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler ShowToolTipsChanged
         {
-            add { this.Events.AddHandler(_eventShowToolTipsChanged, value); }
-            remove { this.Events.RemoveHandler(_eventShowToolTipsChanged, value); }
+            add => this.Events.AddHandler(_eventShowToolTipsChanged, value);
+            remove => this.Events.RemoveHandler(_eventShowToolTipsChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler SpacingChanged
         {
-            add { this.Events.AddHandler(_eventSpacingChanged, value); }
-            remove { this.Events.RemoveHandler(_eventSpacingChanged, value); }
+            add => this.Events.AddHandler(_eventSpacingChanged, value);
+            remove => this.Events.RemoveHandler(_eventSpacingChanged, value);
         }
 
         #endregion
@@ -304,7 +304,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DefaultValue(true)]
         public virtual bool AutoAddColours
         {
-            get { return _autoAddColours; }
+            get => _autoAddColours;
             set
             {
                 if (this.AutoAddColours != value)
@@ -320,7 +320,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DefaultValue(false)]
         public virtual bool AutoFit
         {
-            get { return _autoFit; }
+            get => _autoFit;
             set
             {
                 if (this.AutoFit != value)
@@ -337,15 +337,15 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public override bool AutoSize
         {
-            get { return base.AutoSize; }
-            set { base.AutoSize = value; }
+            get => base.AutoSize;
+            set => base.AutoSize = value;
         }
 
         [Category("Appearance")]
         [DefaultValue(typeof(Color), "ButtonShadow")]
         public virtual Color CellBorderColour
         {
-            get { return _cellBorderColour; }
+            get => _cellBorderColour;
             set
             {
                 if (this.CellBorderColour != value)
@@ -361,7 +361,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DefaultValue(typeof(ColourCellBorderStyle), "FixedSingle")]
         public virtual ColourCellBorderStyle CellBorderStyle
         {
-            get { return _cellBorderStyle; }
+            get => _cellBorderStyle;
             set
             {
                 if (this.CellBorderStyle != value)
@@ -377,7 +377,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DefaultValue(typeof(ContextMenuStrip), null)]
         public ContextMenuStrip CellContextMenuStrip
         {
-            get { return _cellContextMenuStrip; }
+            get => _cellContextMenuStrip;
             set
             {
                 if (_cellContextMenuStrip != value)
@@ -393,7 +393,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DefaultValue(typeof(Size), "12, 12")]
         public virtual Size CellSize
         {
-            get { return _cellSize; }
+            get => _cellSize;
             set
             {
                 if (_cellSize != value)
@@ -409,7 +409,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public virtual int ColourIndex
         {
-            get { return _colourIndex; }
+            get => _colourIndex;
             set
             {
                 if (this.ColourIndex != value)
@@ -431,7 +431,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public virtual ColourCollection Colours
         {
-            get { return _colours; }
+            get => _colours;
             set
             {
                 if (value == null)
@@ -454,7 +454,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DefaultValue(16)]
         public virtual int Columns
         {
-            get { return _columns; }
+            get => _columns;
             set
             {
                 if (value < 0)
@@ -473,16 +473,13 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         }
 
         [Browsable(false)]
-        public Point CurrentCell
-        {
-            get { return this.GetCell(this.ColourIndex); }
-        }
+        public Point CurrentCell => this.GetCell(this.ColourIndex);
 
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public virtual ColourCollection CustomColours
         {
-            get { return _customColours; }
+            get => _customColours;
             set
             {
                 if (this.CustomColours != value)
@@ -500,7 +497,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DefaultValue(typeof(ColourEditingMode), "CustomOnly")]
         public virtual ColourEditingMode EditMode
         {
-            get { return _editMode; }
+            get => _editMode;
             set
             {
                 if (this.EditMode != value)
@@ -516,23 +513,23 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public override Font Font
         {
-            get { return base.Font; }
-            set { base.Font = value; }
+            get => base.Font;
+            set => base.Font = value;
         }
 
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public override Color ForeColor
         {
-            get { return base.ForeColor; }
-            set { base.ForeColor = value; }
+            get => base.ForeColor;
+            set => base.ForeColor = value;
         }
 
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public virtual int HotIndex
         {
-            get { return _hotIndex; }
+            get => _hotIndex;
             set
             {
                 if (this.HotIndex != value)
@@ -548,15 +545,15 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DefaultValue(typeof(Padding), "5, 5, 5, 5")]
         public new Padding Padding
         {
-            get { return base.Padding; }
-            set { base.Padding = value; }
+            get => base.Padding;
+            set => base.Padding = value;
         }
 
         [Category("Appearance")]
         [DefaultValue(typeof(ColourPalette), "Named")]
         public virtual ColourPalette Palette
         {
-            get { return _palette; }
+            get => _palette;
             set
             {
                 if (this.Palette != value)
@@ -572,7 +569,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DefaultValue(typeof(ColourGridSelectedCellStyle), "Zoomed")]
         public virtual ColourGridSelectedCellStyle SelectedCellStyle
         {
-            get { return _selectedCellStyle; }
+            get => _selectedCellStyle;
             set
             {
                 if (this.SelectedCellStyle != value)
@@ -588,7 +585,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DefaultValue(true)]
         public virtual bool ShowCustomColours
         {
-            get { return _showCustomColours; }
+            get => _showCustomColours;
             set
             {
                 if (this.ShowCustomColours != value)
@@ -604,7 +601,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DefaultValue(true)]
         public virtual bool ShowToolTips
         {
-            get { return _showToolTips; }
+            get => _showToolTips;
             set
             {
                 if (this.ShowToolTips != value)
@@ -620,7 +617,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DefaultValue(typeof(Size), "3, 3")]
         public virtual Size Spacing
         {
-            get { return _spacing; }
+            get => _spacing;
             set
             {
                 if (this.Spacing != value)
@@ -636,8 +633,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public override string Text
         {
-            get { return base.Text; }
-            set { base.Text = value; }
+            get => base.Text;
+            set => base.Text = value;
         }
 
         /// <summary>
@@ -646,15 +643,9 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// <value>
         ///   <c>true</c> if painting of the control is allowed; otherwise, <c>false</c>.
         /// </value>
-        protected virtual bool AllowPainting
-        {
-            get { return _updateCount == 0; }
-        }
+        protected virtual bool AllowPainting => _updateCount == 0;
 
-        protected IDictionary<int, Rectangle> ColourRegions
-        {
-            get { return _colourRegions; }
-        }
+        protected IDictionary<int, Rectangle> ColourRegions => _colourRegions;
 
         protected int CustomRows { get; set; }
 
@@ -2115,15 +2106,15 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Property Changed")]
         public event EventHandler ColourChanged
         {
-            add { this.Events.AddHandler(_eventColourChanged, value); }
-            remove { this.Events.RemoveHandler(_eventColourChanged, value); }
+            add => this.Events.AddHandler(_eventColourChanged, value);
+            remove => this.Events.RemoveHandler(_eventColourChanged, value);
         }
 
         [Category("Appearance")]
         [DefaultValue(typeof(Color), "Black")]
         public virtual Color Colour
         {
-            get { return _colour; }
+            get => _colour;
             set
             {
                 int newIndex;

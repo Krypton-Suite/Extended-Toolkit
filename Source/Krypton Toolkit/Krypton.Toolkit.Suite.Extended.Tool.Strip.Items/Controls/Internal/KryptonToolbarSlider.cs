@@ -625,7 +625,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
         public int Value
         {
-            get { return m_value; }
+            get => m_value;
             set
             {
                 if (m_value != value)
@@ -638,7 +638,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
         public bool SingleClick
         {
-            get { return m_singleClick; }
+            get => m_singleClick;
             set
             {
                 m_singleClick = value;
@@ -651,7 +651,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
         public int FireInterval
         {
-            get { return m_fireInterval; }
+            get => m_fireInterval;
             set
             {
                 m_fireInterval = value;
@@ -664,7 +664,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
         public int Range
         {
-            get { return m_range; }
+            get => m_range;
             set
             {
                 if (m_range != value)
@@ -676,7 +676,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         }
         public int Steps
         {
-            get { return m_step; }
+            get => m_step;
             set
             {
                 if (m_step != value)
@@ -686,14 +686,9 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
                 }
             }
         }
-        public int Maximum
-        {
-            get { return (int)m_range / 2; }
-        }
-        public int Minimum
-        {
-            get { return -1 * (int)m_range / 2; }
-        }
+        public int Maximum => (int)m_range / 2;
+
+        public int Minimum => -1 * (int)m_range / 2;
 
         #endregion
 
@@ -736,25 +731,13 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
             //Properties
             private int m_newvalue;
-            public int NewValue
-            {
-                get { return m_newvalue; }
-            }
+            public int NewValue => m_newvalue;
             private int m_oldvalue;
-            public int OldValue
-            {
-                get { return m_oldvalue; }
-            }
+            public int OldValue => m_oldvalue;
             private int m_range;
-            public int Range
-            {
-                get { return m_range; }
-            }
+            public int Range => m_range;
             private int m_steps;
-            public int Steps
-            {
-                get { return m_steps; }
-            }
+            public int Steps => m_steps;
 
             //ToString
             public override string ToString()

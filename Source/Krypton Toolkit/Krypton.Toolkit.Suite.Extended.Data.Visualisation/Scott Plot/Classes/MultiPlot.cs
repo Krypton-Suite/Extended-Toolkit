@@ -18,9 +18,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         private readonly Bitmap bmp;
         private readonly Graphics gfx;
 
-        public int subplotCount { get { return rows * cols; } }
-        public int subplotWidth { get { return width / cols; } }
-        public int subplotHeight { get { return height / rows; } }
+        public int subplotCount => rows * cols;
+        public int subplotWidth => width / cols;
+        public int subplotHeight => height / rows;
 
         public MultiPlot(int width = 800, int height = 600, int rows = 1, int cols = 1)
         {

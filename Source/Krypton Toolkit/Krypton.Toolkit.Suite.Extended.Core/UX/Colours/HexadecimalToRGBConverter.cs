@@ -227,8 +227,12 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #endregion
 
         #region Properties
-        public bool Modified { get { return _modified; } set { _modified = value; } }
-        public Color TargetColour { get { return _targetColour; } set { _targetColour = value; } }
+        public bool Modified { get => _modified;
+            set => _modified = value;
+        }
+        public Color TargetColour { get => _targetColour;
+            set => _targetColour = value;
+        }
         #endregion
 
         public HexadecimalToRGBConverter()

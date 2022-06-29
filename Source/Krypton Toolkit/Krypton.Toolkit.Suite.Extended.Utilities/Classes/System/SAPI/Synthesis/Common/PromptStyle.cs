@@ -20,38 +20,20 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
 
         public PromptRate Rate
         {
-            get
-            {
-                return _rate;
-            }
-            set
-            {
-                _rate = value;
-            }
+            get => _rate;
+            set => _rate = value;
         }
 
         public PromptVolume Volume
         {
-            get
-            {
-                return _volume;
-            }
-            set
-            {
-                _volume = value;
-            }
+            get => _volume;
+            set => _volume = value;
         }
 
         public PromptEmphasis Emphasis
         {
-            get
-            {
-                return _emphasis;
-            }
-            set
-            {
-                _emphasis = value;
-            }
+            get => _emphasis;
+            set => _emphasis = value;
         }
 
         public PromptStyle()

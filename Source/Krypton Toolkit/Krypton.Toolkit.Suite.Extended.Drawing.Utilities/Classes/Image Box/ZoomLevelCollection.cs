@@ -67,10 +67,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// <returns>
         /// The number of elements contained in the <see cref="ZoomLevelCollection" />.
         /// </returns>
-        public int Count
-        {
-            get { return this.List.Count; }
-        }
+        public int Count => this.List.Count;
 
         /// <summary>
         /// Gets a value indicating whether the <see cref="T:System.Collections.Generic.ICollection`1" /> is read-only.
@@ -78,10 +75,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// <value><c>true</c> if this instance is read only; otherwise, <c>false</c>.</value>
         /// <returns>true if the <see cref="T:System.Collections.Generic.ICollection`1" /> is read-only; otherwise, false.
         /// </returns>
-        public bool IsReadOnly
-        {
-            get { return false; }
-        }
+        public bool IsReadOnly => false;
 
         /// <summary>
         /// Gets or sets the zoom level at the specified index.
@@ -89,7 +83,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// <param name="index">The index.</param>
         public int this[int index]
         {
-            get { return this.List.Values[index]; }
+            get => this.List.Values[index];
             set
             {
                 this.List.RemoveAt(index);

@@ -19,7 +19,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
         public new TabAppearance Appearance
         {
-            get { return base.Appearance; }
+            get => base.Appearance;
             set
             {
                 TabAppearance ta = value;
@@ -34,23 +34,23 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [Browsable(true), Category("Appearance-Extended")]
         public Color HotForeColour
         {
-            get { return _hotForeColour; }
-            set { _hotForeColour = value; }
+            get => _hotForeColour;
+            set => _hotForeColour = value;
         }
 
         private Color _globalBackColour;
         [Browsable(true), Category("Appearance-Extended")]
         public Color GlobalBackColour
         {
-            get { return _globalBackColour; }
-            set { _globalBackColour = value; }
+            get => _globalBackColour;
+            set => _globalBackColour = value;
         }
 
         private Color _backColor;
         [Browsable(true), Category("Appearance-Extended")]
         public override Color BackColor
         {
-            get { return _backColor; }
+            get => _backColor;
             set { _backColor = value; Invalidate(); }
         }
 
@@ -58,15 +58,15 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [Browsable(true), Category("Appearance-Extended")]
         public Boolean UseKrypton
         {
-            get { return _useKrypton; }
-            set { _useKrypton = value; }
+            get => _useKrypton;
+            set => _useKrypton = value;
         }
 
         private Boolean _useExtendedLayout = false;
         [Browsable(true), Category("Appearance-Extended")]
         public Boolean UseExtendedLayout
         {
-            get { return _useExtendedLayout; }
+            get => _useExtendedLayout;
             set
             {
                 Boolean result = value;

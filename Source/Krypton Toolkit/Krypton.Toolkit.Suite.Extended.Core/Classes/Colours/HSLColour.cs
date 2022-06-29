@@ -22,11 +22,17 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #endregion
 
         #region Properties
-        public double Hue { get { return _hue * SCALE; } set { _hue = CheckRange(value / SCALE); } }
+        public double Hue { get => _hue * SCALE;
+            set => _hue = CheckRange(value / SCALE);
+        }
 
-        public double Saturation { get { return _saturation * SCALE; } set { _saturation = CheckRange(value / SCALE); } }
+        public double Saturation { get => _saturation * SCALE;
+            set => _saturation = CheckRange(value / SCALE);
+        }
 
-        public double Luminosity { get { return _luminosity * SCALE; } set { _luminosity = CheckRange(value / SCALE); } }
+        public double Luminosity { get => _luminosity * SCALE;
+            set => _luminosity = CheckRange(value / SCALE);
+        }
         #endregion
 
         #region Constructors

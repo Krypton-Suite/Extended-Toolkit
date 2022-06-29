@@ -30,15 +30,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// </value>
         public int Red
         {
-            get
-            {
-                return _red;
-            }
+            get => _red;
 
-            set
-            {
-                _red = value;
-            }
+            set => _red = value;
         }
 
         /// <summary>
@@ -49,15 +43,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// </value>
         public int Green
         {
-            get
-            {
-                return _green;
-            }
+            get => _green;
 
-            set
-            {
-                _green = value;
-            }
+            set => _green = value;
         }
 
         /// <summary>
@@ -68,15 +56,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// </value>
         public int Blue
         {
-            get
-            {
-                return _blue;
-            }
+            get => _blue;
 
-            set
-            {
-                _blue = value;
-            }
+            set => _blue = value;
         }
 
         /// <summary>
@@ -87,15 +69,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// </value>
         public double Alpha
         {
-            get
-            {
-                return _alpha;
-            }
+            get => _alpha;
 
-            set
-            {
-                _alpha = value;
-            }
+            set => _alpha = value;
         }
         #endregion
 

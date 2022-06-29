@@ -639,15 +639,15 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Property Changed")]
         public event EventHandler OrientationChanged
         {
-            add { this.Events.AddHandler(_eventOrientationChanged, value); }
-            remove { this.Events.RemoveHandler(_eventOrientationChanged, value); }
+            add => this.Events.AddHandler(_eventOrientationChanged, value);
+            remove => this.Events.RemoveHandler(_eventOrientationChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler ShowAlphaChannelChanged
         {
-            add { this.Events.AddHandler(_eventShowAlphaChannelChanged, value); }
-            remove { this.Events.RemoveHandler(_eventShowAlphaChannelChanged, value); }
+            add => this.Events.AddHandler(_eventShowAlphaChannelChanged, value);
+            remove => this.Events.RemoveHandler(_eventShowAlphaChannelChanged, value);
         }
 
         /// <summary>
@@ -656,8 +656,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Property Changed")]
         public event EventHandler ShowColourSpaceLabelsChanged
         {
-            add { this.Events.AddHandler(_eventShowColourSpaceLabelsChanged, value); }
-            remove { this.Events.RemoveHandler(_eventShowColourSpaceLabelsChanged, value); }
+            add => this.Events.AddHandler(_eventShowColourSpaceLabelsChanged, value);
+            remove => this.Events.RemoveHandler(_eventShowColourSpaceLabelsChanged, value);
         }
 
         #endregion
@@ -671,7 +671,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public virtual HSLColour HslColour
         {
-            get { return _hslColour; }
+            get => _hslColour;
             set
             {
                 if (this.HslColour != value)
@@ -701,7 +701,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DefaultValue(typeof(Orientation), "Vertical")]
         public virtual Orientation Orientation
         {
-            get { return _orientation; }
+            get => _orientation;
             set
             {
                 if (this.Orientation != value)
@@ -717,7 +717,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DefaultValue(true)]
         public virtual bool ShowAlphaChannel
         {
-            get { return _showAlphaChannel; }
+            get => _showAlphaChannel;
             set
             {
                 if (_showAlphaChannel != value)
@@ -734,7 +734,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Appearance"), DefaultValue(true)]
         public bool ShowColourSpaceLabels
         {
-            get { return _showColourSpaceLabels; }
+            get => _showColourSpaceLabels;
             set
             {
                 if (_showColourSpaceLabels != value)

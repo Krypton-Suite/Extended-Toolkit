@@ -201,8 +201,8 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         public int DayTopItemsPadding
         {
-            get { return _allDayItemsPadding; }
-            set { _allDayItemsPadding = value; }
+            get => _allDayItemsPadding;
+            set => _allDayItemsPadding = value;
         }
 
         /// <summary>
@@ -218,10 +218,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                 }
                 return _dayTopHeight;
             }
-            set
-            {
-                _dayTopHeight = value;
-            }
+            set => _dayTopHeight = value;
         }
 
         /// <summary>
@@ -259,18 +256,12 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets the <see cref="Calendar"/> this renderer belongs to
         /// </summary>
-        public KryptonCalendar Calendar
-        {
-            get { return _calendar; }
-        }
+        public KryptonCalendar Calendar => _calendar;
 
         /// <summary>
         /// Gets the bounds for day name headers
         /// </summary>
-        public Rectangle[] DayNameHeaderColumns
-        {
-            get { return _dayNameHeaderColumns; }
-        }
+        public Rectangle[] DayNameHeaderColumns => _dayNameHeaderColumns;
 
         /// <summary>
         /// Gets the height of the header of days
@@ -291,10 +282,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets a value indicating if the day names headers are visible (e.g. Monday, Tuesday, Wednesday ...)
         /// </summary>
-        public bool DayNameHeadersVisible
-        {
-            get { return Calendar.DaysMode == CalendarDaysMode.SHORT; }
-        }
+        public bool DayNameHeadersVisible => Calendar.DaysMode == CalendarDaysMode.SHORT;
 
         /// <summary>
         /// Gets the height of the day name headers
@@ -317,11 +305,8 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         public virtual Padding ItemTextMargin
         {
-            get { return _itemTextMargin; }
-            set
-            {
-                _itemTextMargin = value;
-            }
+            get => _itemTextMargin;
+            set => _itemTextMargin = value;
         }
 
         /// <summary>
@@ -329,8 +314,8 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         public virtual int ItemShadowPadding
         {
-            get { return _itemShadowPadding; }
-            set { _itemShadowPadding = value; }
+            get => _itemShadowPadding;
+            set => _itemShadowPadding = value;
         }
 
         /// <summary>
@@ -338,8 +323,8 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         public int ItemInvalidateMargin
         {
-            get { return _itemInvalidateMargin; }
-            set { _itemInvalidateMargin = value; }
+            get => _itemInvalidateMargin;
+            set => _itemInvalidateMargin = value;
         }
 
         /// <summary>
@@ -347,8 +332,8 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         public int ItemsPadding
         {
-            get { return _itemsPadding; }
-            set { _itemsPadding = value; }
+            get => _itemsPadding;
+            set => _itemsPadding = value;
         }
 
         /// <summary>
@@ -356,8 +341,8 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         public float ItemRoundness
         {
-            get { return _itemRoundness; }
-            set { _itemRoundness = value; }
+            get => _itemRoundness;
+            set => _itemRoundness = value;
         }
 
 
@@ -366,8 +351,8 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         public Rectangle TimeScaleBounds
         {
-            get { return _timeScaleBounds; }
-            set { _timeScaleBounds = value; }
+            get => _timeScaleBounds;
+            set => _timeScaleBounds = value;
         }
 
         /// <summary>
@@ -389,10 +374,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets if the <see cref="TimeScale"/> is currently visible.
         /// </summary>
-        public bool TimeScaleVisible
-        {
-            get { return Calendar.DaysMode == CalendarDaysMode.EXPANDED; }
-        }
+        public bool TimeScaleVisible => Calendar.DaysMode == CalendarDaysMode.EXPANDED;
 
         /// <summary>
         /// Gets the width of the timescale

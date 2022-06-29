@@ -23,10 +23,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
 
         public SubsetMatchingMode MatchingMode
         {
-            get
-            {
-                return _matchMode;
-            }
+            get => _matchMode;
             set
             {
                 if (value != SubsetMatchingMode.OrderedSubset && value != 0 && value != SubsetMatchingMode.OrderedSubsetContentRequired && value != SubsetMatchingMode.SubsequenceContentRequired)
@@ -39,10 +36,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
 
         public string Text
         {
-            get
-            {
-                return _text;
-            }
+            get => _text;
             set
             {
                 Helpers.ThrowIfEmptyOrNull(value, "value");

@@ -21,15 +21,25 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #endregion
 
         #region Properties
-        public int AlphaValue { get { return _alphaValue; } set { _alphaValue = value; } }
+        public int AlphaValue { get => _alphaValue;
+            set => _alphaValue = value;
+        }
 
-        public int RedValue { get { return _redValue; } set { _redValue = value; } }
+        public int RedValue { get => _redValue;
+            set => _redValue = value;
+        }
 
-        public int GreenValue { get { return _greenValue; } set { _greenValue = value; } }
+        public int GreenValue { get => _greenValue;
+            set => _greenValue = value;
+        }
 
-        public int BlueValue { get { return _blueValue; } set { _blueValue = value; } }
+        public int BlueValue { get => _blueValue;
+            set => _blueValue = value;
+        }
 
-        public int HueValue { get { return _hueValue; } set { _hueValue = value; } }
+        public int HueValue { get => _hueValue;
+            set => _hueValue = value;
+        }
         #endregion
 
         #region Constructor

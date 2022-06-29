@@ -91,7 +91,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// </summary>
         public Control Content
         {
-            get { return content; }
+            get => content;
             set
             {
                 content = value;
@@ -109,8 +109,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// </summary>
         public bool Resizable
         {
-            get { return resizable; }
-            set { resizable = value; }
+            get => resizable;
+            set => resizable = value;
         }
 
         /// <summary>
@@ -118,7 +118,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// </summary>
         public NaviRenderer Renderer
         {
-            get { return renderer; }
+            get => renderer;
             set { renderer = value; Invalidate(); }
         }
 
@@ -166,10 +166,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
             base.OnPaint(e);
         }
 
-        protected override bool ShowWithoutActivation
-        {
-            get { return true; }
-        }
+        protected override bool ShowWithoutActivation => true;
 
         /// <summary>
         /// Overriden. Raises the PaintBackground and draws the background of the Navigation band

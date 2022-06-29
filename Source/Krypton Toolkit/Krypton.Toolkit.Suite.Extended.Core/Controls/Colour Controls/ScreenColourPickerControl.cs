@@ -74,36 +74,36 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         [Category("Property Changed")]
         public event EventHandler GridColorChanged
         {
-            add { this.Events.AddHandler(_eventGridColourChanged, value); }
-            remove { this.Events.RemoveHandler(_eventGridColourChanged, value); }
+            add => this.Events.AddHandler(_eventGridColourChanged, value);
+            remove => this.Events.RemoveHandler(_eventGridColourChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler ImageChanged
         {
-            add { this.Events.AddHandler(_eventImageChanged, value); }
-            remove { this.Events.RemoveHandler(_eventImageChanged, value); }
+            add => this.Events.AddHandler(_eventImageChanged, value);
+            remove => this.Events.RemoveHandler(_eventImageChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler ShowGridChanged
         {
-            add { this.Events.AddHandler(_eventShowGridChanged, value); }
-            remove { this.Events.RemoveHandler(_eventShowGridChanged, value); }
+            add => this.Events.AddHandler(_eventShowGridChanged, value);
+            remove => this.Events.RemoveHandler(_eventShowGridChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler ShowTextWithSnapshotChanged
         {
-            add { this.Events.AddHandler(_eventShowTextWithSnapshotChanged, value); }
-            remove { this.Events.RemoveHandler(_eventShowTextWithSnapshotChanged, value); }
+            add => this.Events.AddHandler(_eventShowTextWithSnapshotChanged, value);
+            remove => this.Events.RemoveHandler(_eventShowTextWithSnapshotChanged, value);
         }
 
         [Category("Property Changed")]
         public event EventHandler ZoomChanged
         {
-            add { this.Events.AddHandler(_eventZoomChanged, value); }
-            remove { this.Events.RemoveHandler(_eventZoomChanged, value); }
+            add => this.Events.AddHandler(_eventZoomChanged, value);
+            remove => this.Events.RemoveHandler(_eventZoomChanged, value);
         }
 
         #endregion
@@ -118,7 +118,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         [DefaultValue(typeof(Color), "ControlDark")]
         public virtual Color GridColour
         {
-            get { return _gridColour; }
+            get => _gridColour;
             set
             {
                 if (this.GridColour != value)
@@ -145,7 +145,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         [DefaultValue(typeof(Image), null)]
         public virtual Image Image
         {
-            get { return _image; }
+            get => _image;
             set
             {
                 if (this.Image != value)
@@ -165,7 +165,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         [DefaultValue(true)]
         public virtual bool ShowGrid
         {
-            get { return _showGrid; }
+            get => _showGrid;
             set
             {
                 if (this.ShowGrid != value)
@@ -185,7 +185,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         [DefaultValue(false)]
         public virtual bool ShowTextWithSnapshot
         {
-            get { return _showTextWithSnapshot; }
+            get => _showTextWithSnapshot;
             set
             {
                 if (this.ShowTextWithSnapshot != value)
@@ -207,8 +207,8 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         [DefaultValue(0)]
         public new int TabIndex
         {
-            get { return base.TabIndex; }
-            set { base.TabIndex = value; }
+            get => base.TabIndex;
+            set => base.TabIndex = value;
         }
 
         /// <summary>
@@ -221,8 +221,8 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         [DefaultValue(false)]
         public new bool TabStop
         {
-            get { return base.TabStop; }
-            set { base.TabStop = value; }
+            get => base.TabStop;
+            set => base.TabStop = value;
         }
 
         /// <summary>
@@ -233,7 +233,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         [DefaultValue(8)]
         public virtual int Zoom
         {
-            get { return _zoom; }
+            get => _zoom;
             set
             {
                 if (this.Zoom != value)
@@ -661,8 +661,8 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         [Category("Property Changed")]
         public event EventHandler ColourChanged
         {
-            add { this.Events.AddHandler(_eventColourChanged, value); }
-            remove { this.Events.RemoveHandler(_eventColourChanged, value); }
+            add => this.Events.AddHandler(_eventColourChanged, value);
+            remove => this.Events.RemoveHandler(_eventColourChanged, value);
         }
 
         /// <summary>
@@ -673,7 +673,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         [DefaultValue(typeof(Color), "Empty")]
         public virtual Color Colour
         {
-            get { return _colour; }
+            get => _colour;
             set
             {
                 if (this.Colour != value)

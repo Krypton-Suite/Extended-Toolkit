@@ -65,7 +65,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// </summary>
         protected object TargetControl
         {
-            get { return _targetControl; }
+            get => _targetControl;
             set
             {
                 _invokeRequiredProperty = value.GetType()

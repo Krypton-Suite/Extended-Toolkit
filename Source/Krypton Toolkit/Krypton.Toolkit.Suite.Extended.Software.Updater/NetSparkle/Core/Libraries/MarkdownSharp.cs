@@ -183,8 +183,8 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// </summary>
         public string EmptyElementSuffix
         {
-            get { return _emptyElementSuffix; }
-            set { _emptyElementSuffix = value; }
+            get => _emptyElementSuffix;
+            set => _emptyElementSuffix = value;
         }
         private string _emptyElementSuffix = " />";
 
@@ -194,8 +194,8 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// </summary>
         public bool LinkEmails
         {
-            get { return _linkEmails; }
-            set { _linkEmails = value; }
+            get => _linkEmails;
+            set => _linkEmails = value;
         }
         private bool _linkEmails = true;
 
@@ -205,8 +205,8 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// </summary>
         public bool StrictBoldItalic
         {
-            get { return _strictBoldItalic; }
-            set { _strictBoldItalic = value; }
+            get => _strictBoldItalic;
+            set => _strictBoldItalic = value;
         }
         private bool _strictBoldItalic = false;
 
@@ -216,8 +216,8 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// </summary>
         public bool AutoNewLines
         {
-            get { return _autoNewlines; }
-            set { _autoNewlines = value; }
+            get => _autoNewlines;
+            set => _autoNewlines = value;
         }
         private bool _autoNewlines = false;
 
@@ -227,8 +227,8 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// </summary>
         public bool AutoHyperlink
         {
-            get { return _autoHyperlink; }
-            set { _autoHyperlink = value; }
+            get => _autoHyperlink;
+            set => _autoHyperlink = value;
         }
         private bool _autoHyperlink = false;
 
@@ -238,8 +238,8 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// </summary>
         public bool EncodeProblemUrlCharacters
         {
-            get { return _encodeProblemUrlCharacters; }
-            set { _encodeProblemUrlCharacters = value; }
+            get => _encodeProblemUrlCharacters;
+            set => _encodeProblemUrlCharacters = value;
         }
         private bool _encodeProblemUrlCharacters = false;
 
@@ -313,10 +313,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// current version of MarkdownSharp;  
         /// see http://code.google.com/p/markdownsharp/ for the latest code or to contribute
         /// </summary>
-        public string Version
-        {
-            get { return _version; }
-        }
+        public string Version => _version;
 
         /// <summary>
         /// Transforms the provided Markdown-formatted text to HTML;  

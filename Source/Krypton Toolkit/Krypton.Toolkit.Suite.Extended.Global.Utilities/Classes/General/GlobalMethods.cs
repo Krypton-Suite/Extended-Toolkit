@@ -34,15 +34,9 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
         /// </summary>
         private bool IsTargetPlatformSupported
         {
-            get
-            {
-                return _isTargetPlatformSupported;
-            }
+            get => _isTargetPlatformSupported;
 
-            set
-            {
-                _isTargetPlatformSupported = value;
-            }
+            set => _isTargetPlatformSupported = value;
         }
 
         /// <summary>
@@ -50,15 +44,9 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
         /// </summary>
         private bool IsTargetPlatform64BIT
         {
-            get
-            {
-                return _isTargetPlatform64BIT;
-            }
+            get => _isTargetPlatform64BIT;
 
-            set
-            {
-                _isTargetPlatform64BIT = value;
-            }
+            set => _isTargetPlatform64BIT = value;
         }
 
         /// <summary>
@@ -66,16 +54,9 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
         /// </summary>
         private bool IsAssemblies64BIT
         {
-            get
-            {
-                return _isAssemblies64BIT;
-            }
+            get => _isAssemblies64BIT;
 
-            set
-            {
-                _isAssemblies64BIT = value;
-            }
-
+            set => _isAssemblies64BIT = value;
         }
 
         /// <summary>
@@ -86,15 +67,9 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
         /// </value>
         private bool InternetConnectionState
         {
-            get
-            {
-                return _internetConnectionState;
-            }
+            get => _internetConnectionState;
 
-            set
-            {
-                _internetConnectionState = value;
-            }
+            set => _internetConnectionState = value;
         }
         #endregion
 
@@ -388,15 +363,9 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
         /// </summary>
         private static bool IsTargetPlatformSupported
         {
-            get
-            {
-                return _isTargetPlatformSupported;
-            }
+            get => _isTargetPlatformSupported;
 
-            set
-            {
-                _isTargetPlatformSupported = value;
-            }
+            set => _isTargetPlatformSupported = value;
         }
 
         /// <summary>
@@ -404,15 +373,9 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
         /// </summary>
         private static bool IsTargetPlatform64BIT
         {
-            get
-            {
-                return _isTargetPlatform64BIT;
-            }
+            get => _isTargetPlatform64BIT;
 
-            set
-            {
-                _isTargetPlatform64BIT = value;
-            }
+            set => _isTargetPlatform64BIT = value;
         }
 
         /// <summary>
@@ -420,16 +383,9 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
         /// </summary>
         private static bool IsAssemblies64BIT
         {
-            get
-            {
-                return _isAssemblies64BIT;
-            }
+            get => _isAssemblies64BIT;
 
-            set
-            {
-                _isAssemblies64BIT = value;
-            }
-
+            set => _isAssemblies64BIT = value;
         }
 
         /// <summary>
@@ -440,15 +396,9 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
         /// </value>
         private static bool InternetConnectionState
         {
-            get
-            {
-                return _internetConnectionState;
-            }
+            get => _internetConnectionState;
 
-            set
-            {
-                _internetConnectionState = value;
-            }
+            set => _internetConnectionState = value;
         }
         #endregion
 

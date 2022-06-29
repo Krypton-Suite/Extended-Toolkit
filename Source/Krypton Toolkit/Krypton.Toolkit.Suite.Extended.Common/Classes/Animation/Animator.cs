@@ -117,7 +117,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <exception cref="InvalidOperationException">Animation is running</exception>
         public AnimationPath[] Paths
         {
-            get { return _paths.ToArray(); }
+            get => _paths.ToArray();
             set
             {
                 if (CurrentStatus == AnimatorStatus.Stopped)

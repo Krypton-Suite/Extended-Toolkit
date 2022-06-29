@@ -107,7 +107,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         #endregion
 
         #region Properties
-        public ColorGrid ColourGrid { get => cgColour; }
+        public ColorGrid ColourGrid => cgColour;
+
         #endregion
 
         #region Constructors

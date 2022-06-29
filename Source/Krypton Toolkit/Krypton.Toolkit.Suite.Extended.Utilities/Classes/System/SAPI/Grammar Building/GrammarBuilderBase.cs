@@ -20,38 +20,20 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.GrammarBuilding
 
         internal virtual int Count
         {
-            get
-            {
-                return _count;
-            }
-            set
-            {
-                _count = value;
-            }
+            get => _count;
+            set => _count = value;
         }
 
         internal virtual bool Marked
         {
-            get
-            {
-                return _marker;
-            }
-            set
-            {
-                _marker = value;
-            }
+            get => _marker;
+            set => _marker = value;
         }
 
         internal virtual BuilderElements Parent
         {
-            get
-            {
-                return _parent;
-            }
-            set
-            {
-                _parent = value;
-            }
+            get => _parent;
+            set => _parent = value;
         }
 
         internal abstract string DebugSummary

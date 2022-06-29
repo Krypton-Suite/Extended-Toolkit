@@ -79,35 +79,29 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets or sets the bounds of the box
         /// </summary>
-        public Rectangle Bounds
-        {
-            get { return _bounds; }
-        }
+        public Rectangle Bounds => _bounds;
 
         /// <summary>
         /// Gets or sets the font of the text. If null, default will be used.
         /// </summary>
         public Font Font
         {
-            get { return _font; }
-            set { _font = value; }
+            get => _font;
+            set => _font = value;
         }
 
         /// <summary>
         /// Gets or sets the Graphics object where to draw
         /// </summary>
-        public Graphics Graphics
-        {
-            get { return _graphics; }
-        }
+        public Graphics Graphics => _graphics;
 
         /// <summary>
         /// Gets or sets the border color of the box
         /// </summary>
         public Color BorderColour
         {
-            get { return _borderColor; }
-            set { _borderColor = value; }
+            get => _borderColor;
+            set => _borderColor = value;
         }
 
         /// <summary>
@@ -115,8 +109,8 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         public string Text
         {
-            get { return _text; }
-            set { _text = value; }
+            get => _text;
+            set => _text = value;
         }
 
         /// <summary>
@@ -124,8 +118,8 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         public Color BackgroundColour
         {
-            get { return _backgroundColor; }
-            set { _backgroundColor = value; }
+            get => _backgroundColor;
+            set => _backgroundColor = value;
         }
 
         /// <summary>
@@ -133,8 +127,8 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         public Color TextColour
         {
-            get { return _textColor; }
-            set { _textColor = value; }
+            get => _textColor;
+            set => _textColor = value;
         }
 
         /// <summary>
@@ -142,8 +136,8 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         public TextFormatFlags TextFlags
         {
-            get { return _TextFlags; }
-            set { _TextFlags = value; }
+            get => _TextFlags;
+            set => _TextFlags = value;
         }
 
 

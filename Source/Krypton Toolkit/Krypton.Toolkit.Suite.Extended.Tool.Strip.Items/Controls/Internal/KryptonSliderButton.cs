@@ -131,7 +131,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         //Properties
         public bool SingleClick
         {
-            get { return m_singleClick; }
+            get => m_singleClick;
             set
             {
                 m_singleClick = value;
@@ -140,7 +140,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         }
         public VisualOrientation Orientation
         {
-            get { return m_orientation; }
+            get => m_orientation;
             set
             {
                 if (m_orientation != value)
@@ -153,7 +153,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         }
         public ButtonStyles ButtonStyle
         {
-            get { return m_buttonstyle; }
+            get => m_buttonstyle;
             set
             {
                 m_buttonstyle = value;
@@ -162,7 +162,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         }
         public PaletteBackStyle VisualLook
         {
-            get { return m_visuallook; }
+            get => m_visuallook;
             set
             {
                 if (m_visuallook != value)
@@ -174,7 +174,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         }
         public int EventFireRate
         {
-            get { return FireTimer.Interval; }
+            get => FireTimer.Interval;
             set
             {
                 if (FireTimer.Interval != value & !m_down)

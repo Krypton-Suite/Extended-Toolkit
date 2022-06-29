@@ -23,7 +23,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #region Properties        
         /// <summary>Gets or sets the palette mode.</summary>
         /// <value>The palette mode.</value>
-        public PaletteMode PaletteMode { get { return _paletteMode; } set { _paletteMode = value; } }
+        public PaletteMode PaletteMode { get => _paletteMode;
+            set => _paletteMode = value;
+        }
         #endregion
 
         #region System

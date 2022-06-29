@@ -70,28 +70,16 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
 
         public object Value
         {
-            get
-            {
-                return _value;
-            }
-            internal set
-            {
-                _value = value;
-            }
+            get => _value;
+            internal set => _value = value;
         }
 
         public float Confidence => _confidence;
 
         public SemanticValue this[string key]
         {
-            get
-            {
-                return _dictionary[key];
-            }
-            set
-            {
-                throw new InvalidOperationException(SR.Get(SRID.CollectionReadOnly));
-            }
+            get => _dictionary[key];
+            set => throw new InvalidOperationException(SR.Get(SRID.CollectionReadOnly));
         }
 
         public int Count => _dictionary.Count;

@@ -32,7 +32,7 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
         #endregion
 
         #region Properties
-        internal Control OriginalParent { get => _originalParent; }
+        internal Control OriginalParent => _originalParent;
 
         /// <summary>
         /// Gets or sets the tool strip panel extened list.
@@ -49,7 +49,7 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
         /// <value>
         ///   <c>true</c> if this instance is floating; otherwise, <c>false</c>.
         /// </value>
-        public bool IsFloating { get => _isFloating; }
+        public bool IsFloating => _isFloating;
 
         /// <summary>
         /// Gets or sets a value indicating whether the control and all its child controls are displayed.

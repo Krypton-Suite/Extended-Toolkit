@@ -79,10 +79,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
 
         public float RepeatProbability
         {
-            get
-            {
-                return _repeatProbability;
-            }
+            get => _repeatProbability;
             set
             {
                 if (value < 0f || value > 1f)
@@ -119,10 +116,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
 
         public float Weight
         {
-            get
-            {
-                return _weight;
-            }
+            get => _weight;
             set
             {
                 if (value <= 0f)

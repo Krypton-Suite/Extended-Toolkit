@@ -541,15 +541,25 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #endregion
 
         #region Properties
-        public int AlphaChannelValue { get { return _alphaChannelValue; } set { _alphaChannelValue = value; } }
+        public int AlphaChannelValue { get => _alphaChannelValue;
+            set => _alphaChannelValue = value;
+        }
 
-        public int RedColourChannelValue { get { return _redColourChannelValue; } set { _redColourChannelValue = value; } }
+        public int RedColourChannelValue { get => _redColourChannelValue;
+            set => _redColourChannelValue = value;
+        }
 
-        public int GreenColourChannelValue { get { return _greenColourChannelValue; } set { _greenColourChannelValue = value; } }
+        public int GreenColourChannelValue { get => _greenColourChannelValue;
+            set => _greenColourChannelValue = value;
+        }
 
-        public int BlueColourChannelValue { get { return _blueColourChannelValue; } set { _blueColourChannelValue = value; } }
+        public int BlueColourChannelValue { get => _blueColourChannelValue;
+            set => _blueColourChannelValue = value;
+        }
 
-        public bool PaletteColourSelector { get { return _paletteColourSelector; } set { _paletteColourSelector = value; } }
+        public bool PaletteColourSelector { get => _paletteColourSelector;
+            set => _paletteColourSelector = value;
+        }
         #endregion
 
         #region Constructors        

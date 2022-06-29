@@ -101,8 +101,8 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         public Color BackgroundColour
         {
-            get { return _backgroundColour; }
-            set { _backgroundColour = value; }
+            get => _backgroundColour;
+            set => _backgroundColour = value;
         }
 
         /// <summary>
@@ -110,8 +110,8 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         public Rectangle Bounds
         {
-            get { return _bounds; }
-            set { _bounds = value; }
+            get => _bounds;
+            set => _bounds = value;
         }
 
         /// <summary>
@@ -119,7 +119,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         public Font Font
         {
-            get { return _font; }
+            get => _font;
             set { _font = value; _textSize = Size.Empty; }
         }
 
@@ -128,7 +128,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         public TextFormatFlags Format
         {
-            get { return _format; }
+            get => _format;
             set { _format = value; _textSize = Size.Empty; }
         }
 
@@ -137,7 +137,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         public string Text
         {
-            get { return _text; }
+            get => _text;
             set { _text = value; _textSize = Size.Empty; }
         }
 
@@ -162,8 +162,8 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         public Color TextColour
         {
-            get { return _textColour; }
-            set { _textColour = value; }
+            get => _textColour;
+            set => _textColour = value;
         }
 
 

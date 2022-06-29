@@ -174,10 +174,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// </summary>
         public float DpiStretchRatio
         {
-            get
-            {
-                return DpiStretch ? 1.0f : _dpiStretchRatio;
-            }
+            get => DpiStretch ? 1.0f : _dpiStretchRatio;
             set
             {
                 if (_dpiStretchRatio != value)

@@ -137,10 +137,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
 
         public CultureInfo Culture
         {
-            get
-            {
-                return _culture;
-            }
+            get => _culture;
             set
             {
                 if (value == null)

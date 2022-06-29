@@ -101,28 +101,19 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
         //Public Members...
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content), Category("Behavior")]
-        public OutlookBarButtonCollection Buttons
-        {
-            get { return this._Buttons; }
-        }
+        public OutlookBarButtonCollection Buttons => this._Buttons;
 
         [Browsable(true)]
-        public OutlookBarButton SelectedButton
-        {
-            get { return this._SelectedButton; }
-        }
+        public OutlookBarButton SelectedButton => this._SelectedButton;
 
         [Browsable(true)]
-        public int SelectedIndex
-        {
-            get { return this.Buttons.SelectedIndex(_SelectedButton); }
-        }
+        public int SelectedIndex => this.Buttons.SelectedIndex(_SelectedButton);
 
         [Category("Appearance")]
         [DefaultValue(typeof(bool), "False")]
         public bool DrawBorders
         {
-            get { return this._DrawBorders; }
+            get => this._DrawBorders;
             set
             {
                 this._DrawBorders = value;
@@ -133,7 +124,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [DefaultValue(typeof(bool), "False")]
         public bool RemoveTopBorder
         {
-            get { return this._RemoveTopBorder; }
+            get => this._RemoveTopBorder;
             set
             {
                 this._RemoveTopBorder = value;
@@ -144,7 +135,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [Category("Appearance")]
         public Renderer Renderer
         {
-            get { return this._Renderer; }
+            get => this._Renderer;
             set
             {
                 this._Renderer = value;
@@ -154,14 +145,14 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         }
         public override Size MinimumSize
         {
-            get { return new Size(this.GetBottomContainerLeftMargin(), this.GetBottomContainerRectangle().Height + GetGripRectangle().Height); }
+            get => new Size(this.GetBottomContainerLeftMargin(), this.GetBottomContainerRectangle().Height + GetGripRectangle().Height);
             //do nothing...
             set { }
         }
         [Category("Appearance"), DisplayName("LineColour")]
         public Color OutlookBarLineColour
         {
-            get { return this._OutlookBarLineColour; }
+            get => this._OutlookBarLineColour;
             set
             {
                 this._OutlookBarLineColour = value;
@@ -171,7 +162,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [Category("Appearance")]
         public int ButtonHeight
         {
-            get { return this._ButtonHeight; }
+            get => this._ButtonHeight;
             set
             {
                 if (value < 5) value = 5;
@@ -182,7 +173,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [DisplayName("ForeColorNotSelected")]
         public override Color ForeColor
         {
-            get { return base.ForeColor; }
+            get => base.ForeColor;
             set
             {
                 base.ForeColor = value;
@@ -192,7 +183,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [Category("Appearance")]
         public Color ForeColourSelected
         {
-            get { return this._ForeColourSelected; }
+            get => this._ForeColourSelected;
             set
             {
                 this._ForeColourSelected = value;
@@ -202,7 +193,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [DisplayName("ButtonFont")]
         public override Font Font
         {
-            get { return base.Font; }
+            get => base.Font;
             set
             {
                 base.Font = value;
@@ -212,7 +203,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [Category("Appearance"), DisplayName("ButtonHovering1")]
         public Color ButtonColourHoveringTop
         {
-            get { return this._ButtonColourHoveringTop; }
+            get => this._ButtonColourHoveringTop;
             set
             {
                 this._ButtonColourHoveringTop = value;
@@ -222,7 +213,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [Category("Appearance"), DisplayName("ButtonSelected1")]
         public Color ButtonColourSelectedTop
         {
-            get { return this._ButtonColourSelectedTop; }
+            get => this._ButtonColourSelectedTop;
             set
             {
                 this._ButtonColourSelectedTop = value;
@@ -232,7 +223,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [Category("Appearance"), DisplayName("ButtonSelectedHovering1")]
         public Color ButtonColourSelectedAndHoveringTop
         {
-            get { return this._ButtonColourSelectedAndHoveringTop; }
+            get => this._ButtonColourSelectedAndHoveringTop;
             set
             {
                 this._ButtonColourSelectedAndHoveringTop = value;
@@ -242,7 +233,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [Category("Appearance"), DisplayName("ButtonPassive1")]
         public Color ButtonColourPassiveTop
         {
-            get { return this._ButtonColourPassiveTop; }
+            get => this._ButtonColourPassiveTop;
             set
             {
                 this._ButtonColourPassiveTop = value;
@@ -252,7 +243,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [Category("Appearance"), DisplayName("ButtonHovering2")]
         public Color ButtonColourHoveringBottom
         {
-            get { return this._ButtonColourHoveringBottom; }
+            get => this._ButtonColourHoveringBottom;
             set
             {
                 this._ButtonColourHoveringBottom = value;
@@ -262,7 +253,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [Category("Appearance"), DisplayName("ButtonSelected2")]
         public Color ButtonColourSelectedBottom
         {
-            get { return this._ButtonColourSelectedBottom; }
+            get => this._ButtonColourSelectedBottom;
             set
             {
                 this._ButtonColourSelectedBottom = value;
@@ -272,7 +263,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [Category("Appearance"), DisplayName("ButtonSelectedHovering2")]
         public Color ButtonColourSelectedAndHoveringBottom
         {
-            get { return this._ButtonColourSelectedAndHoveringBottom; }
+            get => this._ButtonColourSelectedAndHoveringBottom;
             set
             {
                 this._ButtonColourSelectedAndHoveringBottom = value;
@@ -282,7 +273,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [Category("Appearance"), DisplayName("ButtonPassive2")]
         public Color ButtonColourPassiveBottom
         {
-            get { return this._ButtonColoruPassiveBottom; }
+            get => this._ButtonColoruPassiveBottom;
             set
             {
                 this._ButtonColoruPassiveBottom = value;

@@ -57,17 +57,14 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets the calendar that this range is assigned to. (If any)
         /// </summary>
-        public KryptonCalendar Calendar
-        {
-            get { return _calendar; }
-        }
+        public KryptonCalendar Calendar => _calendar;
 
         /// <summary>
         /// Gets or sets the day of the week for this range
         /// </summary>
         public DayOfWeek DayOfWeek
         {
-            get { return _dayOfWeek; }
+            get => _dayOfWeek;
             set { _dayOfWeek = value; Update(); }
         }
 
@@ -76,7 +73,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         public TimeSpan StartTime
         {
-            get { return _startTime; }
+            get => _startTime;
             set { _startTime = value; Update(); }
         }
 
@@ -85,7 +82,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         public TimeSpan EndTime
         {
-            get { return _endTime; }
+            get => _endTime;
             set { _endTime = value; Update(); }
         }
 

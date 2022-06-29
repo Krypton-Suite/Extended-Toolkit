@@ -19,10 +19,10 @@ public class Error
     //===== calculated variables
     public Exception Exception { get; set; }
 
-    public string Message { get { return Exception.Message; } }
+    public string Message => Exception.Message;
 
-    public string Date { get { return When.ToShortDateString(); } }
+    public string Date => When.ToShortDateString();
 
-    public string Time { get { return When.ToShortTimeString(); } }
+    public string Time => When.ToShortTimeString();
     //=====
 }

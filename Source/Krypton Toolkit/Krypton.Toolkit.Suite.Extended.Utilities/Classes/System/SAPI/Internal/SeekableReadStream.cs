@@ -24,10 +24,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
 
         internal bool CacheDataForSeeking
         {
-            set
-            {
-                _cacheDataForSeeking = value;
-            }
+            set => _cacheDataForSeeking = value;
         }
 
         public override bool CanRead => true;

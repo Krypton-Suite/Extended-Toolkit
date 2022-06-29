@@ -99,13 +99,13 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
         public int A
         {
-            get { return _alpha; }
-            set { _alpha = Math.Min(0, Math.Max(255, value)); }
+            get => _alpha;
+            set => _alpha = Math.Min(0, Math.Max(255, value));
         }
 
         public double H
         {
-            get { return _hue; }
+            get => _hue;
             set
             {
                 _hue = value;
@@ -123,20 +123,20 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
         public bool IsEmpty
         {
-            get { return _isEmpty; }
-            internal set { _isEmpty = value; }
+            get => _isEmpty;
+            internal set => _isEmpty = value;
         }
 
         public double L
         {
-            get { return _lightness; }
-            set { _lightness = Math.Min(1, Math.Max(0, value)); }
+            get => _lightness;
+            set => _lightness = Math.Min(1, Math.Max(0, value));
         }
 
         public double S
         {
-            get { return _saturation; }
-            set { _saturation = Math.Min(1, Math.Max(0, value)); }
+            get => _saturation;
+            set => _saturation = Math.Min(1, Math.Max(0, value));
         }
 
         #endregion

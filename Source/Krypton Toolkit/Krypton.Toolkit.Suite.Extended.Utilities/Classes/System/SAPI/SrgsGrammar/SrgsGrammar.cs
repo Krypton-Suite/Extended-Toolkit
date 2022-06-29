@@ -61,34 +61,19 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
 
         string IGrammar.Root
         {
-            get
-            {
-                return _sRoot;
-            }
-            set
-            {
-                _sRoot = value;
-            }
+            get => _sRoot;
+            set => _sRoot = value;
         }
 
         public Uri XmlBase
         {
-            get
-            {
-                return _xmlBase;
-            }
-            set
-            {
-                _xmlBase = value;
-            }
+            get => _xmlBase;
+            set => _xmlBase = value;
         }
 
         public CultureInfo Culture
         {
-            get
-            {
-                return _culture;
-            }
+            get => _culture;
             set
             {
                 Helpers.ThrowIfNull(value, "value");
@@ -115,106 +100,55 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
 
         public AlphabetType PhoneticAlphabet
         {
-            get
-            {
-                return (AlphabetType)_phoneticAlphabet;
-            }
-            set
-            {
-                _phoneticAlphabet = (SrgsPhoneticAlphabet)value;
-            }
+            get => (AlphabetType)_phoneticAlphabet;
+            set => _phoneticAlphabet = (SrgsPhoneticAlphabet)value;
         }
 
         public SrgsRule Root
         {
-            get
-            {
-                return _root;
-            }
-            set
-            {
-                _root = value;
-            }
+            get => _root;
+            set => _root = value;
         }
 
         public SrgsTagFormat TagFormat
         {
-            get
-            {
-                return _tagFormat;
-            }
-            set
-            {
-                _tagFormat = value;
-            }
+            get => _tagFormat;
+            set => _tagFormat = value;
         }
 
         public Collection<string> GlobalTags
         {
-            get
-            {
-                return _globalTags;
-            }
-            set
-            {
-                _globalTags = value;
-            }
+            get => _globalTags;
+            set => _globalTags = value;
         }
 
         public string Language
         {
-            get
-            {
-                return _language;
-            }
-            set
-            {
-                _language = value;
-            }
+            get => _language;
+            set => _language = value;
         }
 
         public string Namespace
         {
-            get
-            {
-                return _namespace;
-            }
-            set
-            {
-                _namespace = value;
-            }
+            get => _namespace;
+            set => _namespace = value;
         }
 
         public Collection<string> CodeBehind
         {
-            get
-            {
-                return _codebehind;
-            }
-            set
-            {
-                throw new InvalidOperationException();
-            }
+            get => _codebehind;
+            set => throw new InvalidOperationException();
         }
 
         public bool Debug
         {
-            get
-            {
-                return _fDebug;
-            }
-            set
-            {
-                _fDebug = value;
-            }
+            get => _fDebug;
+            set => _fDebug = value;
         }
 
         public string Script
         {
-            get
-            {
-                return _script;
-            }
+            get => _script;
             set
             {
                 Helpers.ThrowIfEmptyOrNull(value, "value");
@@ -224,60 +158,33 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
 
         public Collection<string> ImportNamespaces
         {
-            get
-            {
-                return _usings;
-            }
-            set
-            {
-                throw new InvalidOperationException();
-            }
+            get => _usings;
+            set => throw new InvalidOperationException();
         }
 
         public Collection<string> AssemblyReferences
         {
-            get
-            {
-                return _assemblyReferences;
-            }
-            set
-            {
-                throw new InvalidOperationException();
-            }
+            get => _assemblyReferences;
+            set => throw new InvalidOperationException();
         }
 
         internal SrgsRulesCollection Rules => _rules;
 
         internal bool HasPronunciation
         {
-            get
-            {
-                return _hasPronunciation;
-            }
-            set
-            {
-                _hasPronunciation = value;
-            }
+            get => _hasPronunciation;
+            set => _hasPronunciation = value;
         }
 
         internal bool HasPhoneticAlphabetBeenSet
         {
-            set
-            {
-                _hasPhoneticAlphabetBeenSet = value;
-            }
+            set => _hasPhoneticAlphabetBeenSet = value;
         }
 
         internal bool HasSapiExtension
         {
-            get
-            {
-                return _isSapiExtensionUsed;
-            }
-            set
-            {
-                _isSapiExtensionUsed = value;
-            }
+            get => _isSapiExtensionUsed;
+            set => _isSapiExtensionUsed = value;
         }
 
         internal SrgsGrammar()

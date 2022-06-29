@@ -50,21 +50,21 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         [Category("ToolBoxItem"), Browsable(false), XmlIgnore]
         public virtual KryptonToolBox Parent
         {
-            get { return _parent; }
-            set { _parent = value; }
+            get => _parent;
+            set => _parent = value;
         }
 
         [Category("General"), Browsable(false), XmlIgnore]
         public virtual ToolBoxItem ParentItem
         {
-            get { return _parentItem; }
-            set { _parentItem = value; }
+            get => _parentItem;
+            set => _parentItem = value;
         }
 
         [Category("General")]
         public override string Caption
         {
-            get { return _caption; }
+            get => _caption;
             set
             {
                 if (!value.Equals(_caption))
@@ -80,7 +80,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         [Category("General")]
         public virtual int SmallImageIndex
         {
-            get { return _smallImageIndex; }
+            get => _smallImageIndex;
             set
             {
                 if (value != _smallImageIndex)
@@ -94,7 +94,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         [Category("General")]
         public virtual int LargeImageIndex
         {
-            get { return _largeImageIndex; }
+            get => _largeImageIndex;
             set
             {
                 if (value != _largeImageIndex)
@@ -108,7 +108,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         [Category("General"), Browsable(false)]
         public virtual bool Selected
         {
-            get { return _selected; }
+            get => _selected;
             set
             {
                 if (value != _selected)
@@ -122,21 +122,21 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         [Category("General"), Browsable(false), XmlIgnore]
         public virtual bool MouseDown
         {
-            get { return _mouseDown; }
-            set { _mouseDown = value; }
+            get => _mouseDown;
+            set => _mouseDown = value;
         }
 
         [Category("General"), Browsable(false), XmlIgnore]
         public virtual bool MouseHover
         {
-            get { return _mouseHover; }
-            set { _mouseHover = value; }
+            get => _mouseHover;
+            set => _mouseHover = value;
         }
 
         [Category("General")]
         public virtual bool Enabled
         {
-            get { return _enabled; }
+            get => _enabled;
             set
             {
                 if (value != _enabled)
@@ -150,55 +150,49 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         [Category("General")]
         public virtual bool AllowDrag
         {
-            get { return _allowDrag; }
-            set { _allowDrag = value; }
+            get => _allowDrag;
+            set => _allowDrag = value;
         }
 
         [Category("General"), Browsable(false), XmlIgnore]
         public virtual bool IsDragging
         {
-            get { return _isDragging; }
-            set { _isDragging = value; }
+            get => _isDragging;
+            set => _isDragging = value;
         }
 
         [Category("General")]
         public virtual bool Renamable
         {
-            get { return _renamable; }
-            set { _renamable = value; }
+            get => _renamable;
+            set => _renamable = value;
         }
 
         [Category("General")]
         public virtual bool Movable
         {
-            get { return _movable; }
-            set { _movable = value; }
+            get => _movable;
+            set => _movable = value;
         }
 
         [Category("General")]
-        public virtual bool CanMoveUp
-        {
-            get { return null != _parentItem ? ((ToolBoxTab)_parentItem).CanMoveItemUp(this) : false; }
-        }
+        public virtual bool CanMoveUp => null != _parentItem ? ((ToolBoxTab)_parentItem).CanMoveItemUp(this) : false;
 
         [Category("General")]
-        public virtual bool CanMoveDown
-        {
-            get { return null != _parentItem ? ((ToolBoxTab)_parentItem).CanMoveItemDown(this) : false; }
-        }
+        public virtual bool CanMoveDown => null != _parentItem ? ((ToolBoxTab)_parentItem).CanMoveItemDown(this) : false;
 
         [Category("General")]
         public virtual bool Deletable
         {
-            get { return _deletable; }
-            set { _deletable = value; }
+            get => _deletable;
+            set => _deletable = value;
         }
 
         [Category("General")]
         public virtual object Object
         {
-            get { return _object; }
-            set { _object = value; }
+            get => _object;
+            set => _object = value;
         }
 
         [Category("General")]

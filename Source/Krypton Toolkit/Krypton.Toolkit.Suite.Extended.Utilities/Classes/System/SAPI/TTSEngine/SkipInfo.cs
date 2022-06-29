@@ -16,27 +16,15 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.TTSEngine
 
 		public int Type
 		{
-			get
-			{
-				return _type;
-			}
-			set
-			{
-				_type = value;
-			}
-		}
+			get => _type;
+            set => _type = value;
+        }
 
 		public int Count
 		{
-			get
-			{
-				return _count;
-			}
-			set
-			{
-				_count = value;
-			}
-		}
+			get => _count;
+            set => _count = value;
+        }
 
 		internal SkipInfo(int type, int count)
 		{

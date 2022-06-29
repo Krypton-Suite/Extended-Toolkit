@@ -27,62 +27,32 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.TTSEngine
 
         public ProsodyNumber Pitch
         {
-            get
-            {
-                return _pitch;
-            }
-            set
-            {
-                _pitch = value;
-            }
+            get => _pitch;
+            set => _pitch = value;
         }
 
         public ProsodyNumber Range
         {
-            get
-            {
-                return _range;
-            }
-            set
-            {
-                _range = value;
-            }
+            get => _range;
+            set => _range = value;
         }
 
         public ProsodyNumber Rate
         {
-            get
-            {
-                return _rate;
-            }
-            set
-            {
-                _rate = value;
-            }
+            get => _rate;
+            set => _rate = value;
         }
 
         public int Duration
         {
-            get
-            {
-                return _duration;
-            }
-            set
-            {
-                _duration = value;
-            }
+            get => _duration;
+            set => _duration = value;
         }
 
         public ProsodyNumber Volume
         {
-            get
-            {
-                return _volume;
-            }
-            set
-            {
-                _volume = value;
-            }
+            get => _volume;
+            set => _volume = value;
         }
 
         public ContourPoint[] GetContourPoints()

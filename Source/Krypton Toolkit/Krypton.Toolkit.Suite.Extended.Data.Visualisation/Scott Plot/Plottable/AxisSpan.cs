@@ -35,8 +35,8 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         // location and orientation
         protected double Position1;
         protected double Position2;
-        private double Min { get => Math.Min(Position1, Position2); }
-        private double Max { get => Math.Max(Position1, Position2); }
+        private double Min => Math.Min(Position1, Position2);
+        private double Max => Math.Max(Position1, Position2);
         readonly bool IsHorizontal;
 
         /// <summary>

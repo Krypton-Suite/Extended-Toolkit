@@ -20,7 +20,8 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
         #endregion
 
         #region Property
-        public Rectangle ActiveRectangle { get => _activeRectangle; }
+        public Rectangle ActiveRectangle => _activeRectangle;
+
         #endregion
 
         #region Overrides

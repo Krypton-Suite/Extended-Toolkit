@@ -34,8 +34,8 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public double[] highOutliers { get; private set; }
         public double maxNonOutlier { get; private set; }
         public double minNonOutlier { get; private set; }
-        public int n { get { return values.Length; } }
-        public double span { get { return sortedValues.Last() - sortedValues.First(); } }
+        public int n => values.Length;
+        public double span => sortedValues.Last() - sortedValues.First();
 
         /// <summary>
         /// Generate random values with a normal distribution

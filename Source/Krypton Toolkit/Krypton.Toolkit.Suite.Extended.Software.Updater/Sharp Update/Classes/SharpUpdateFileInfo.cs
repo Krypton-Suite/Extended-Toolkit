@@ -43,37 +43,28 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
         /// <summary>
         /// The download url for the file
         /// </summary>
-        internal string Url
-        {
-            get { return url; }
-            //set { url = value; }
-        }
+        internal string Url => url;
 
+        //set { url = value; }
         /// <summary>
         /// The filename
         /// </summary>
-        internal string FileName
-        {
-            get { return fileName; }
-            //set { fileName = value; }
-        }
+        internal string FileName => fileName;
 
+        //set { fileName = value; }
         /// <summary>
         /// The Md5-Checksum of the file
         /// </summary>
-        internal string Md5
-        {
-            get { return md5; }
-            //set { md5 = value; }
-        }
+        internal string Md5 => md5;
 
+        //set { md5 = value; }
         /// <summary>
         /// Path to the downloaded file
         /// </summary>
         internal string TempFile
         {
-            get { return tempFile; }
-            set { tempFile = value; }
+            get => tempFile;
+            set => tempFile = value;
         }
     }
 }

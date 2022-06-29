@@ -41,31 +41,18 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
         #region Properties
 
-        public override DateTime Date
-        {
-            get
-            {
-                return new DateTime(Day.Date.Year, Day.Date.Month, Day.Date.Day);
-            }
-        }
+        public override DateTime Date => new DateTime(Day.Date.Year, Day.Date.Month, Day.Date.Day);
 
         /// <summary>
         /// Gets the Day of this DayTop
         /// </summary>
-        public CalendarDay Day
-        {
-            get { return _day; }
-        }
+        public CalendarDay Day => _day;
 
 
         /// <summary>
         /// Gets the list of items passing on this daytop
         /// </summary>
-        public List<CalendarItemAlternative> PassingItems
-        {
-            get { return _passingItems; }
-        }
-
+        public List<CalendarItemAlternative> PassingItems => _passingItems;
 
         #endregion
 

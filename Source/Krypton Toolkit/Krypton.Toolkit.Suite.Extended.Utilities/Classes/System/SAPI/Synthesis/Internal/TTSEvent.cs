@@ -58,14 +58,8 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
 
         internal string NextPhoneme
         {
-            get
-            {
-                return _nextPhoneme;
-            }
-            set
-            {
-                _nextPhoneme = value;
-            }
+            get => _nextPhoneme;
+            set => _nextPhoneme = value;
         }
 
         internal TimeSpan PhonemeDuration => _phonemeDuration;

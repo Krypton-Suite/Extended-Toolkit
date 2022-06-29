@@ -118,10 +118,7 @@
         [Category("Value"), DefaultValue(100), Description("The maximum value for the Value property.")]
         public int MaximumValue
         {
-            get
-            {
-                return _maximumValue;
-            }
+            get => _maximumValue;
             set
             {
                 _maximumValue = value;
@@ -148,10 +145,7 @@
         [Category("Value"), DefaultValue(0), Description("The minimum value for the Value property.")]
         public int MinimumValue
         {
-            get
-            {
-                return _minimumValue;
-            }
+            get => _minimumValue;
             set
             {
                 _minimumValue = value;
@@ -178,10 +172,7 @@
         [Category("Bar"), DefaultValue(typeof(Color), "210, 0, 0"), Description("The start color for the progress bar." + "210, 000, 000 = Red" + "\n" + "210, 202, 000 = Yellow" + "\n" + "000, 163, 211 = Blue" + "\n" + "000, 211, 040 = Green" + "\n")]
         public Color StartColour
         {
-            get
-            {
-                return _startColour;
-            }
+            get => _startColour;
             set
             {
                 _startColour = value;
@@ -198,10 +189,7 @@
         [Category("Bar"), DefaultValue(typeof(Color), "0, 211, 40"), Description("The end color for the progress bar." + "210, 000, 000 = Red" + "\n" + "210, 202, 000 = Yellow" + "\n" + "000, 163, 211 = Blue" + "\n" + "000, 211, 040 = Green" + "\n")]
         public Color EndColour
         {
-            get
-            {
-                return _endColour;
-            }
+            get => _endColour;
             set
             {
                 _endColour = value;
@@ -215,10 +203,7 @@
         [Category("Highlights and Glows"), DefaultValue(typeof(Color), "White"), Description("The color of the highlights.")]
         public Color HighlightColour
         {
-            get
-            {
-                return _lighlightColour;
-            }
+            get => _lighlightColour;
             set
             {
                 _lighlightColour = value;
@@ -232,10 +217,7 @@
         [Category("Highlights and Glows"), DefaultValue(typeof(Color), "201,201,201"), Description("The color of the background.")]
         public Color BackgroundColour
         {
-            get
-            {
-                return _backgroundColour;
-            }
+            get => _backgroundColour;
             set
             {
                 _backgroundColour = value;
@@ -249,10 +231,7 @@
         [Category("Highlights and Glows"), DefaultValue(typeof(bool), "true"), Description("Whether the glow is animated or not.")]
         public bool Animate
         {
-            get
-            {
-                return _animate;
-            }
+            get => _animate;
             set
             {
                 _animate = value;
@@ -274,10 +253,7 @@
         [Category("Highlights and Glows"), DefaultValue(typeof(Color), "150, 255, 255, 255"), Description("The color of the glow.")]
         public Color GlowColour
         {
-            get
-            {
-                return _glowColour;
-            }
+            get => _glowColour;
             set
             {
                 _glowColour = value;

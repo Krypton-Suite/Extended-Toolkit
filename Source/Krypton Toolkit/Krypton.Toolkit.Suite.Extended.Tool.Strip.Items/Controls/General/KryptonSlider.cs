@@ -21,56 +21,50 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
         #region Properties
         [Category("Control")]
-        public KryptonToolbarSlider Tracker
-        {
-            get { return Control as KryptonToolbarSlider; }
-        }
+        public KryptonToolbarSlider Tracker => Control as KryptonToolbarSlider;
+
         [Category("Slider Values"), DefaultValue(typeof(bool), "false")]
         public bool SingleClick
         {
-            get { return (Control as KryptonToolbarSlider).SingleClick; }
-            set { (Control as KryptonToolbarSlider).SingleClick = value; }
+            get => (Control as KryptonToolbarSlider).SingleClick;
+            set => (Control as KryptonToolbarSlider).SingleClick = value;
         }
         [Category("Slider Values"), DefaultValue(typeof(int), "200")]
         public int FireInterval
         {
-            get { return (Control as KryptonToolbarSlider).FireInterval; }
-            set { (Control as KryptonToolbarSlider).FireInterval = value; }
+            get => (Control as KryptonToolbarSlider).FireInterval;
+            set => (Control as KryptonToolbarSlider).FireInterval = value;
         }
         [Category("Slider Values"), DefaultValue(typeof(Size), "140, 16")]
         public Size TrackerSize
         {
-            get { return (Control as KryptonToolbarSlider).Size; }
-            set { (Control as KryptonToolbarSlider).Size = value; }
+            get => (Control as KryptonToolbarSlider).Size;
+            set => (Control as KryptonToolbarSlider).Size = value;
         }
         [Category("Slider Values"), DefaultValue(0)]
         public int Value
         {
-            get { return (this.Control as KryptonToolbarSlider).Value; }
-            set { (this.Control as KryptonToolbarSlider).Value = value; }
+            get => (this.Control as KryptonToolbarSlider).Value;
+            set => (this.Control as KryptonToolbarSlider).Value = value;
         }
         [Category("Slider Values"), DefaultValue(100)]
         public int Range
         {
-            get { return (this.Control as KryptonToolbarSlider).Range; }
-            set { (this.Control as KryptonToolbarSlider).Range = value; }
+            get => (this.Control as KryptonToolbarSlider).Range;
+            set => (this.Control as KryptonToolbarSlider).Range = value;
         }
         [Category("Slider Values"), DefaultValue(5)]
         public int Steps
         {
-            get { return (this.Control as KryptonToolbarSlider).Steps; }
-            set { (this.Control as KryptonToolbarSlider).Steps = value; }
+            get => (this.Control as KryptonToolbarSlider).Steps;
+            set => (this.Control as KryptonToolbarSlider).Steps = value;
         }
         [Category("Slider Values")]
-        public int Maximum
-        {
-            get { return (this.Control as KryptonToolbarSlider).Maximum; }
-        }
+        public int Maximum => (this.Control as KryptonToolbarSlider).Maximum;
+
         [Category("Slider Values")]
-        public int Minimum
-        {
-            get { return (this.Control as KryptonToolbarSlider).Minimum; }
-        }
+        public int Minimum => (this.Control as KryptonToolbarSlider).Minimum;
+
         #endregion
 
         #region Constructor

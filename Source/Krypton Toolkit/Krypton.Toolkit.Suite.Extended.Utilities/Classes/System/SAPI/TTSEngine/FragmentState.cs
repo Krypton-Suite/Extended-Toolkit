@@ -29,58 +29,31 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.TTSEngine
 
         public TtsEngineAction Action
         {
-            get
-            {
-                return _action;
-            }
-            internal set
-            {
-                _action = value;
-            }
+            get => _action;
+            internal set => _action = value;
         }
 
         public int LangId
         {
-            get
-            {
-                return _langId;
-            }
-            internal set
-            {
-                _langId = value;
-            }
+            get => _langId;
+            internal set => _langId = value;
         }
 
         public int Emphasis
         {
-            get
-            {
-                return _emphasis;
-            }
-            internal set
-            {
-                _emphasis = value;
-            }
+            get => _emphasis;
+            internal set => _emphasis = value;
         }
 
         public int Duration
         {
-            get
-            {
-                return _duration;
-            }
-            internal set
-            {
-                _duration = value;
-            }
+            get => _duration;
+            internal set => _duration = value;
         }
 
         public SayAs SayAs
         {
-            get
-            {
-                return _sayAs;
-            }
+            get => _sayAs;
             internal set
             {
                 Helpers.ThrowIfNull(value, "value");
@@ -90,10 +63,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.TTSEngine
 
         public Prosody Prosody
         {
-            get
-            {
-                return _prosody;
-            }
+            get => _prosody;
             internal set
             {
                 Helpers.ThrowIfNull(value, "value");
@@ -103,10 +73,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.TTSEngine
 
         public char[] Phoneme
         {
-            get
-            {
-                return _phoneme;
-            }
+            get => _phoneme;
             internal set
             {
                 Helpers.ThrowIfNull(value, "value");

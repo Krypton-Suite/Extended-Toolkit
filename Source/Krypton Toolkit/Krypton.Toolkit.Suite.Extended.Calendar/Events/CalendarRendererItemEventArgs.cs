@@ -33,11 +33,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets the Item being rendered
         /// </summary>
-        public CalendarItemAlternative Item
-        {
-            get { return _item; }
-        }
-
+        public CalendarItemAlternative Item => _item;
 
         #endregion
     }

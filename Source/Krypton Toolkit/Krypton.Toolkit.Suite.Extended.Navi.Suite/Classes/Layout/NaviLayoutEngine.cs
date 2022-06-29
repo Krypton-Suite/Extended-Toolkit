@@ -34,10 +34,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// <summary>
         /// The NaviBar to which this layout logic applies
         /// </summary>
-        protected NaviBar OwnerBar
-        {
-            get { return ownerBar; }
-        }
+        protected NaviBar OwnerBar => ownerBar;
 
         #endregion
 
