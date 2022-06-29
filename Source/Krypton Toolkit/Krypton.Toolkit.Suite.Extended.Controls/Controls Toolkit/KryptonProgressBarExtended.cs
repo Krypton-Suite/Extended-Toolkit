@@ -56,7 +56,7 @@
 
         private int _glowPosition = -325;
 
-        private int _value = 0;
+        private float _value = 0;
 
         private int _maximumValue = 100;
 
@@ -83,8 +83,8 @@
         /// <summary>
         /// The value that is displayed on the progress bar.
         /// </summary>
-        [Category("Value"), DefaultValue(0), Description("The value that is displayed on the progress bar.")]
-        public int Value
+        [Category("Value"), DefaultValue(0F), Description("The value that is displayed on the progress bar.")]
+        public float Value
         {
             get => _value;
 

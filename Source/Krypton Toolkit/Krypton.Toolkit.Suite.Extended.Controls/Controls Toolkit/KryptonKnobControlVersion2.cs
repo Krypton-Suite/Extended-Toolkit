@@ -1074,10 +1074,10 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         /// <summary>
         /// return 2 points of a line starting from the center of the knob to the periphery
         /// </summary>
-        /// <param name="Gr"></param>
+        /// <param name="g"></param>
         /// <param name="l"></param>
         /// <returns></returns>
-        private Point[] GetKnobLine(Graphics Gr, int l)
+        private Point[] GetKnobLine(Graphics g, int l)
         {
             Point[] pret = new Point[2];
 
@@ -1101,7 +1101,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             if (!_scaleTypefaceAutoSize)
             {
                 fSize = _scaleTypeface.Size;
-                strsize = Gr.MeasureString(str, _scaleTypeface);
+                strsize = g.MeasureString(str, _scaleTypeface);
             }
             else
             {
@@ -1110,7 +1110,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
                     fSize = 6;
 
                 _knobTypeface = new Font(_scaleTypeface.FontFamily, fSize);
-                strsize = Gr.MeasureString(str, _knobTypeface);
+                strsize = g.MeasureString(str, _knobTypeface);
             }
 
             int strw = (int)strsize.Width;
