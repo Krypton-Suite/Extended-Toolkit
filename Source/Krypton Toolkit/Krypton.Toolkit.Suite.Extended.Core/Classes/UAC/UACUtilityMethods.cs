@@ -9,7 +9,7 @@
 namespace Krypton.Toolkit.Suite.Extended.Core
 {
     /// <summary>Utility methods for the user account control.</summary>
-    internal static class UACUtilityMethods
+    public static class UACUtilityMethods
     {
         #region Methods
         /// <summary>
