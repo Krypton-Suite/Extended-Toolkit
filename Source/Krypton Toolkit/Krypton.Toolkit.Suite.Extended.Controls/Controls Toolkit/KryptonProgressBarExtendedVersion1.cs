@@ -1,6 +1,6 @@
 ﻿namespace Krypton.Toolkit.Suite.Extended.Controls
 {
-    public class KryptonProgressBarExtended : UserControl
+    public class KryptonProgressBarExtendedVersion1 : UserControl
     {
         #region Designer Code
         /// <summary> 
@@ -296,7 +296,7 @@
 
         #region Identity
 
-        public KryptonProgressBarExtended()
+        public KryptonProgressBarExtendedVersion1()
         {
             InitializeComponent();
 
