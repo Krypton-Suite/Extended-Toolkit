@@ -32,7 +32,12 @@
         {
             if (disposing)
             {
-                components.Dispose();
+                if (components != null)
+                {
+                    components.Dispose();
+
+                    components = null;
+                }
             }
 
             base.Dispose(disposing);
