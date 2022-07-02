@@ -18,3 +18,5 @@ global using System.Drawing;
 global using System.Drawing.Design;
 global using System.Windows.Forms;
 global using System.Windows.Forms.Design;
+
+global using Krypton.Toolkit.Suite.Extended.Developer.Utilities;

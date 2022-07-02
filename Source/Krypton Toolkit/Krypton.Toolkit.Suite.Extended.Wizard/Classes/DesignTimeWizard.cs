@@ -14,15 +14,14 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
 {
     public class DesignTimeWizardStrategy : WizardStrategy
     {
-        public DesignTimeWizardStrategy(KryptonAdvancedWizard wizard)
-        {
-            _wizard = wizard;
-        }
+        public DesignTimeWizardStrategy(KryptonAdvancedWizard wizard) => _wizard = wizard;
 
         public override void Loading()
         {
             if (_wizard.HasPages())
+            {
                 _wizard.SelectFirstPage();
+            }
         }
 
         public override void SetButtonStates()

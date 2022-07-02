@@ -102,7 +102,9 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
                 _wizard.ClickBack();
                 Verbs[VerbNext].Enabled = true;
                 if (_wizard.OnFirstPage())
+                {
                     Verbs[VerbPrevious].Enabled = false;
+                }
             }
         }
 
@@ -113,7 +115,9 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
                 _wizard.ClickNext();
                 Verbs[VerbPrevious].Enabled = true;
                 if (_wizard.OnLastPage())
+                {
                     Verbs[VerbNext].Enabled = false;
+                }
             }
         }
 
@@ -127,7 +131,7 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                ExceptionCapture.CaptureException(ex);
             }
         }
 
@@ -146,7 +150,10 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
         private void GetReferenceToIComponentChangeService()
         {
             _changeService = (IComponentChangeService)GetService(typeof(IComponentChangeService));
-            if (_changeService == null) return;
+            if (_changeService == null)
+            {
+                return;
+            }
             _changeService.ComponentAdded += ChangeServiceComponentAdded;
             _changeService.ComponentRemoved += ChangeServiceComponentRemoved;
         }
@@ -171,10 +178,16 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
 
         private void ChangeServiceComponentAdded(object sender, ComponentEventArgs e)
         {
-            if (((IDesignerHost)sender).Loading) return;
-            if (!(e.Component is KryptonAdvancedWizardPage)) return;
+            if (((IDesignerHost)sender).Loading) {
+                return;
+            }
+            if (!(e.Component is KryptonAdvancedWizardPage)) {
+                return;
+            }
             var page = e.Component as KryptonAdvancedWizardPage;
-            if (_wizard.WizardPages.Contains(page)) return;
+            if (_wizard.WizardPages.Contains(page)) {
+                return;
+            }
 
             AddPageToContainers(page);
             DisplayPage(page);
@@ -184,9 +197,13 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
 
         private void ChangeServiceComponentRemoved(object sender, ComponentEventArgs e)
         {
-            if (((IDesignerHost)sender).Loading) return;
+            if (((IDesignerHost)sender).Loading) {
+                return;
+            }
             var advancedWizardPage = e.Component as KryptonAdvancedWizardPage;
-            if (advancedWizardPage == null) return;
+            if (advancedWizardPage == null) {
+                return;
+            }
 
             _wizard.WizardPages.Remove(advancedWizardPage);
             _wizard.SelectPreviousPage();

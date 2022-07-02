@@ -108,7 +108,7 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
             _items.Insert(index, @object);
         }
 
-        void IList.Remove(Object @object)
+        void IList.Remove(object @object)
         {
             if (!(@object is KryptonAdvancedWizardPage)) return;
             _items.Remove(@object);

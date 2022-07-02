@@ -24,10 +24,12 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
         public abstract void GoToPage(int pageIndex);
         public abstract void GoToPage(KryptonAdvancedWizardPage page);
 
-        public static WizardStrategy CreateWizard(bool DesignMode, KryptonAdvancedWizard wizard)
+        public static WizardStrategy CreateWizard(bool designMode, KryptonAdvancedWizard wizard)
         {
-            if (DesignMode)
+            if (designMode)
+            {
                 return new DesignTimeWizardStrategy(wizard);
+            }
 
             return new RuntimeWizardStrategy(wizard);
         }
