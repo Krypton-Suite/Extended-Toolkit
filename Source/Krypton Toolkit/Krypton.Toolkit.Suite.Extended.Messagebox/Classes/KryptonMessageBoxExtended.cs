@@ -1,4 +1,12 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Messagebox
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ */
+#endregion
+
+namespace Krypton.Toolkit.Suite.Extended.Messagebox
 {
     /// <summary>Displays a message box that can contain text, buttons, and symbols that inform and instruct the user.</summary>
     [DesignerCategory(@"code"), ToolboxItem(false)]

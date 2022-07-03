@@ -1,13 +1,9 @@
-﻿#region Description
-
-// ************************************************************************************************************
-// Filename:    SafeNativeMethods.cs
-// Description: P/Invoke method declarations which are harmless for any code to call.
-// Author:      Hiske Bekkering
-// License:     Code Project Open License (CPOL)
-// History:     March 1, 2016 - Initial Release
-// ************************************************************************************************************
-
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ */
 #endregion
 
 namespace Krypton.Toolkit.Suite.Extended.Controls

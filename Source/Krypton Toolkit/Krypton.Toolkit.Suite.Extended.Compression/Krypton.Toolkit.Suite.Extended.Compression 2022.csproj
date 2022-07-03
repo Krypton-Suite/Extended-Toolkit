@@ -164,10 +164,6 @@
 	</Choose>
 
 	<ItemGroup>
-	  <None Include="..\Krypton.Toolkit.Suite.Extended.Compression\Krypton.Toolkit.Suite.Extended.Compression.licenseheader" Link="Krypton.Toolkit.Suite.Extended.Compression.licenseheader" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<Reference Include="System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net4'))">
 			<SpecificVersion>True</SpecificVersion>
 			<Version>4.0.0.0</Version>

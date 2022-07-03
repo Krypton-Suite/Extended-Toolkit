@@ -1,13 +1,9 @@
-﻿#region Description
-
-// ************************************************************************************************************
-// Filename:    CustomProgressBarDesigner.cs
-// Description: Provides design-time support for the CustomProgressBar control.
-// Author:      Hiske Bekkering
-// License:     Code Project Open License (CPOL)
-// History:     March 1, 2016 - Initial Release
-// ************************************************************************************************************
-
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ */
 #endregion
 
 using System.Collections;

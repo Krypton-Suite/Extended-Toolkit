@@ -1,4 +1,12 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ */
+#endregion
+
+namespace Krypton.Toolkit.Suite.Extended.Error.Reporting
 {
     /// <summary>
     /// A class at a lower-level than ExceptionReporter due to the need to abstract out the option for the

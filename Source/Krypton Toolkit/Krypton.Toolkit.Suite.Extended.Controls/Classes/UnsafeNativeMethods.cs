@@ -1,13 +1,9 @@
-﻿#region Description
-
-// ************************************************************************************************************
-// Filename:    UnsafeNativeMethods.cs
-// Description: Potentially dangerous P/Invoke method declarations; be careful not to expose these publicly.
-// Author:      Hiske Bekkering
-// License:     Code Project Open License (CPOL)
-// History:     March 1, 2016 - Initial Release
-// ************************************************************************************************************
-
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ */
 #endregion
 
 namespace Krypton.Toolkit.Suite.Extended.Controls
