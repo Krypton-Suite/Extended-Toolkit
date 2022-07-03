@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Krypton.Toolkit.Suite.Extended.Developer.Utilities;
-
-using Microsoft.Win32;
-
-namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
+﻿namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 {
     /// <summary>
     /// Deals with the back-end logic of a most recently used file <see cref="MRUMenuItem"/>.

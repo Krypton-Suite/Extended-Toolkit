@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
+﻿namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 {
     [ToolStripItemDesignerAvailability(ToolStripItemDesignerAvailability.MenuStrip)]
     public class MRUSaveFileMenuItem : ToolStripMenuItem

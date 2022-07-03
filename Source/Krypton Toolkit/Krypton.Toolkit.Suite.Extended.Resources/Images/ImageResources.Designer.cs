@@ -823,6 +823,16 @@ namespace Krypton.Toolkit.Suite.Extended.Resources.Images {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Copy {
+            get {
+                object obj = ResourceManager.GetObject("Copy", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Copy_16_x_16 {
             get {
                 object obj = ResourceManager.GetObject("Copy_16_x_16", resourceCulture);
@@ -876,6 +886,16 @@ namespace Krypton.Toolkit.Suite.Extended.Resources.Images {
         internal static System.Drawing.Bitmap Cube_16x {
             get {
                 object obj = ResourceManager.GetObject("Cube_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Cut {
+            get {
+                object obj = ResourceManager.GetObject("Cut", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -2353,6 +2373,16 @@ namespace Krypton.Toolkit.Suite.Extended.Resources.Images {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap New {
+            get {
+                object obj = ResourceManager.GetObject("New", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap New_File_16_x_16 {
             get {
                 object obj = ResourceManager.GetObject("New_File_16_x_16", resourceCulture);
@@ -2463,6 +2493,16 @@ namespace Krypton.Toolkit.Suite.Extended.Resources.Images {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Open_V2 {
+            get {
+                object obj = ResourceManager.GetObject("Open_V2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap paint_bucket_green {
             get {
                 object obj = ResourceManager.GetObject("paint_bucket_green", resourceCulture);
@@ -2543,6 +2583,16 @@ namespace Krypton.Toolkit.Suite.Extended.Resources.Images {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Paste {
+            get {
+                object obj = ResourceManager.GetObject("Paste", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Paste_16_x_16 {
             get {
                 object obj = ResourceManager.GetObject("Paste_16_x_16", resourceCulture);
@@ -2596,6 +2646,26 @@ namespace Krypton.Toolkit.Suite.Extended.Resources.Images {
         internal static System.Drawing.Bitmap popupcontainerbuttons {
             get {
                 object obj = ResourceManager.GetObject("popupcontainerbuttons", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Print {
+            get {
+                object obj = ResourceManager.GetObject("Print", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Print_Preview {
+            get {
+                object obj = ResourceManager.GetObject("Print_Preview", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -2816,6 +2886,16 @@ namespace Krypton.Toolkit.Suite.Extended.Resources.Images {
         internal static System.Drawing.Bitmap restore {
             get {
                 object obj = ResourceManager.GetObject("restore", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Save {
+            get {
+                object obj = ResourceManager.GetObject("Save", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

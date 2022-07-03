@@ -6,10 +6,6 @@
  */
 #endregion
 
-using System.IO;
-
-using Krypton.Toolkit.Suite.Extended.Developer.Utilities;
-
 namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 {
     [ToolStripItemDesignerAvailability(ToolStripItemDesignerAvailability.ContextMenuStrip | ToolStripItemDesignerAvailability.MenuStrip)]
@@ -78,6 +74,10 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
                         StreamReader sr = new StreamReader(filePath);
 
                         outputControl.Text = sr.ReadToEnd();
+
+                        sr.Close();
+
+                        sr.Dispose();
                     }
 
                     _recentlyUsedFileManager.AddRecentFile(filePath);
