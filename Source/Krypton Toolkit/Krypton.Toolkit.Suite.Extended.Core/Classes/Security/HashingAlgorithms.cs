@@ -6,8 +6,6 @@
  */
 #endregion
 
-using System.ComponentModel;
-using System.IO;
 using System.Security.Cryptography;
 
 namespace Krypton.Toolkit.Suite.Extended.Core

@@ -37,8 +37,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             /// </summary>
             public float Hue
             {
-                get { return hue; }
-                set { hue = value; }
+                get => hue;
+                set => hue = value;
             }
 
             private float saturation;
@@ -48,8 +48,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             /// </summary>
             public float Saturation
             {
-                get { return saturation; }
-                set { saturation = value; }
+                get => saturation;
+                set => saturation = value;
             }
 
             private float valueOrBrightness;
@@ -59,8 +59,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             /// </summary>
             public float ValueOrBrightness
             {
-                get { return valueOrBrightness; }
-                set { valueOrBrightness = value; }
+                get => valueOrBrightness;
+                set => valueOrBrightness = value;
             }
 
             /// <summary>
@@ -89,8 +89,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             /// </summary>
             public float Hue
             {
-                get { return hue; }
-                set { hue = value; }
+                get => hue;
+                set => hue = value;
             }
 
             private float saturation;
@@ -100,8 +100,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             /// </summary>
             public float Saturation
             {
-                get { return saturation; }
-                set { saturation = value; }
+                get => saturation;
+                set => saturation = value;
             }
 
             private float lightness;
@@ -111,8 +111,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             /// </summary>
             public float Lightness
             {
-                get { return lightness; }
-                set { lightness = value; }
+                get => lightness;
+                set => lightness = value;
             }
 
             /// <summary>

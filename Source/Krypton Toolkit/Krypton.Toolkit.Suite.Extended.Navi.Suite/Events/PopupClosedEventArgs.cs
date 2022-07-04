@@ -21,10 +21,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// <summary>
         /// Gets the popup form which is being closed.
         /// </summary>
-        public KryptonForm Popup
-        {
-            get { return popup; }
-        }
+        public KryptonForm Popup => popup;
 
         /// <summary>
         /// Constructs a new instance of this class for the specified

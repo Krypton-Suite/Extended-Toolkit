@@ -6,13 +6,6 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Settings.Resources;
-using System;
-using System.ComponentModel;
-using System.Drawing;
-using System.Media;
-using System.Text;
-
 namespace Krypton.Toolkit.Suite.Extended.Settings
 {
     /// <summary>
@@ -259,13 +252,21 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         /// <value>
         ///   <c>true</c> if [do not show again option result]; otherwise, <c>false</c>.
         /// </value>
-        public bool DoNotShowAgainOptionResult { get { return _doNotShowAgainOptionResult; } set { _doNotShowAgainOptionResult = value; } }
+        public bool DoNotShowAgainOptionResult { get => _doNotShowAgainOptionResult;
+            set => _doNotShowAgainOptionResult = value;
+        }
 
-        public bool ShowDoNotShowAgainOption { get { return _showDoNotShowAgainOption; } set { _showDoNotShowAgainOption = value; } }
+        public bool ShowDoNotShowAgainOption { get => _showDoNotShowAgainOption;
+            set => _showDoNotShowAgainOption = value;
+        }
 
-        public bool UseTimeOutOption { get { return _useTimeOutOption; } set { _useTimeOutOption = value; } }
+        public bool UseTimeOutOption { get => _useTimeOutOption;
+            set => _useTimeOutOption = value;
+        }
 
-        public DialogResult DefaultTimeOutResponse { get { return _defaultTimeOutResponse; } set { _defaultTimeOutResponse = value; } }
+        public DialogResult DefaultTimeOutResponse { get => _defaultTimeOutResponse;
+            set => _defaultTimeOutResponse = value;
+        }
 
         /// <summary>
         /// Gets or sets the message box typeface.
@@ -273,7 +274,9 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         /// <value>
         /// The message box typeface.
         /// </value>
-        public Font MessageBoxTypeface { get { return _messageboxTypeface; } set { _messageboxTypeface = value; } }
+        public Font MessageBoxTypeface { get => _messageboxTypeface;
+            set => _messageboxTypeface = value;
+        }
 
         /// <summary>
         /// Gets or sets the time out for the <see cref="ExtendedKryptonMessageBox"/>.
@@ -281,7 +284,9 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         /// <value>
         /// The time out.
         /// </value>
-        public int TimeOut { get { return _timeOut; } set { _timeOut = value; } }
+        public int TimeOut { get => _timeOut;
+            set => _timeOut = value;
+        }
 
         /// <summary>
         /// Gets or sets the time out timer delay.
@@ -289,7 +294,9 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         /// <value>
         /// The time out timer delay.
         /// </value>
-        public int TimeOutTimerDelay { get { return _timeOutTimerDelay; } set { _timeOutTimerDelay = value; } }
+        public int TimeOutTimerDelay { get => _timeOutTimerDelay;
+            set => _timeOutTimerDelay = value;
+        }
 
         /// <summary>
         /// Gets or sets the do not show again option text.
@@ -297,7 +304,9 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         /// <value>
         /// The do not show again option text.
         /// </value>
-        public string DoNotShowAgainOptionText { get { return _doNotShowAgainOptionText; } set { _doNotShowAgainOptionText = value; } }
+        public string DoNotShowAgainOptionText { get => _doNotShowAgainOptionText;
+            set => _doNotShowAgainOptionText = value;
+        }
         #endregion
 
         #region Internal Classes

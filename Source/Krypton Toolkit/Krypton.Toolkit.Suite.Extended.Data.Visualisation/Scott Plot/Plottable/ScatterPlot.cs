@@ -47,7 +47,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public bool StepDisplay = false;
 
         [Obsolete("Scatter plot arrowheads have been deprecated. Use the Arrow plot type instead.", true)]
-        public bool IsArrow { get => ArrowheadWidth > 0 && ArrowheadLength > 0; }
+        public bool IsArrow => ArrowheadWidth > 0 && ArrowheadLength > 0;
 
         [Obsolete("Scatter plot arrowheads have been deprecated. Use the Arrow plot type instead.", true)]
         public float ArrowheadWidth = 0;

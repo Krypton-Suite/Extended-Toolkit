@@ -6,11 +6,6 @@
  */
 #endregion
 
-using Microsoft.WindowsAPICodePack.Dialogs;
-
-using System.Collections;
-using System.IO;
-
 namespace Krypton.Toolkit.Suite.Extended.Core
 {
     public partial class ThemeOptions : KryptonForm
@@ -28,7 +23,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #region Properties        
         /// <summary>Gets or sets the palette mode.</summary>
         /// <value>The palette mode.</value>
-        public PaletteMode PaletteMode { get { return _paletteMode; } set { _paletteMode = value; } }
+        public PaletteMode PaletteMode { get => _paletteMode;
+            set => _paletteMode = value;
+        }
         #endregion
 
         #region System

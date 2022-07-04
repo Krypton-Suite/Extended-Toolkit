@@ -1,3 +1,18 @@
+
+<!--* Checkbox option for `KryptonMessageBoxExtended` (***Note:*** This feature is experimental, and may not fully work)-->
+
+=======
+
+## 2022-11-xx - Build 2211 - November 2022
+* Implemented [#334](https://github.com/Krypton-Suite/Extended-Toolkit/issues/334), `Krypton.Toolkit.Suite.Extended.Outlook.Grid` - language support German. Thanks to [mikel3361](https://github.com/mikel3361)
+* Implemented [#330](https://github.com/Krypton-Suite/Extended-Toolkit/issues/330), `KryptonProgressBar` add text attribute
+* Resolved [#324](https://github.com/Krypton-Suite/Extended-Toolkit/issues/324), NuGet Installation Error in v65.22.6.152 Version - NU1103 Rollback 
+* Add new states to `Krypton.Toolkit.Suite.Extended.Messagebox` to bring into line with new options added into .NET 6
+* Add support for .NET Framework 4.8.1
+* Support for .NET 7
+* General tidy up to fix some compiler warnings
+* Updated standard toolkit to build `2211`
+
 =======
 
 ## 2022-06-01 - Build 2206 - June 2022
@@ -22,7 +37,6 @@
 * Updated NuGet package descriptions to provide more information
 * Removed examples from source, you can find the example source code [here](https://github.com/Krypton-Suite/Extended-Toolkit-Demos)
 * Reimplemented `KryptonMessageBoxExtended`, due to too many options (font and custom icons are supported at the moment)
-<!--* Checkbox option for `KryptonMessageBoxExtended` (***Note:*** This feature is experimental, and may not fully work)-->
 * Fix errant typos
 * Updated standard toolkit to build `2204`
 

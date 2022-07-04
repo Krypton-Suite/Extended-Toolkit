@@ -16,21 +16,37 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #endregion
 
         #region Properties
-        public int MinimumDarkColourHueValue { get { return _minimumDarkColourHueValue; } set { _minimumDarkColourHueValue = value; } }
+        public int MinimumDarkColourHueValue { get => _minimumDarkColourHueValue;
+            set => _minimumDarkColourHueValue = value;
+        }
 
-        public int MaximumDarkColourHueValue { get { return _maximumDarkColourHueValue; } set { _maximumDarkColourHueValue = value; } }
+        public int MaximumDarkColourHueValue { get => _maximumDarkColourHueValue;
+            set => _maximumDarkColourHueValue = value;
+        }
 
-        public int MinimumMediumColourHueValue { get { return _minimumMediumColourHueValue; } set { _minimumMediumColourHueValue = value; } }
+        public int MinimumMediumColourHueValue { get => _minimumMediumColourHueValue;
+            set => _minimumMediumColourHueValue = value;
+        }
 
-        public int MaximumMediumColourHueValue { get { return _maximumMediumColourHueValue; } set { _maximumMediumColourHueValue = value; } }
+        public int MaximumMediumColourHueValue { get => _maximumMediumColourHueValue;
+            set => _maximumMediumColourHueValue = value;
+        }
 
-        public int MinimumLightColourHueValue { get { return _minimumLightColourHueValue; } set { _minimumLightColourHueValue = value; } }
+        public int MinimumLightColourHueValue { get => _minimumLightColourHueValue;
+            set => _minimumLightColourHueValue = value;
+        }
 
-        public int MaximumLightColourHueValue { get { return _maximumLightColourHueValue; } set { _maximumLightColourHueValue = value; } }
+        public int MaximumLightColourHueValue { get => _maximumLightColourHueValue;
+            set => _maximumLightColourHueValue = value;
+        }
 
-        public int MinimumLightestColourHueValue { get { return _minimumLightestColourHueValue; } set { _minimumLightestColourHueValue = value; } }
+        public int MinimumLightestColourHueValue { get => _minimumLightestColourHueValue;
+            set => _minimumLightestColourHueValue = value;
+        }
 
-        public int MaximumLightestColourHueValue { get { return _maximumLightestColourHueValue; } set { _maximumLightestColourHueValue = value; } }
+        public int MaximumLightestColourHueValue { get => _maximumLightestColourHueValue;
+            set => _maximumLightestColourHueValue = value;
+        }
         #endregion
 
         #region Constructor

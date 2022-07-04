@@ -66,7 +66,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         ]
         public Image LargeImage
         {
-            get { return largeImage; }
+            get => largeImage;
             set
             {
                 largeImage = value;
@@ -84,7 +84,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         ]
         public Image SmallImage
         {
-            get { return smallImage; }
+            get => smallImage;
             set
             {
                 smallImage = value;
@@ -101,7 +101,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         ]
         public bool ShowImage
         {
-            get { return showImage; }
+            get => showImage;
             set { showImage = value; Invalidate(); }
         }
 
@@ -114,8 +114,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         ]
         public NaviBand Band
         {
-            get { return band; }
-            internal set { band = value; }
+            get => band;
+            internal set => band = value;
         }
 
         // Non design time
@@ -129,7 +129,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         ]
         public bool Active
         {
-            get { return active; }
+            get => active;
             set
             {
                 active = value;
@@ -156,7 +156,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         ]
         public bool Small
         {
-            get { return small; }
+            get => small;
             set
             {
                 small = value;
@@ -173,7 +173,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         ]
         public virtual bool Collapsed
         {
-            get { return collapsed; }
+            get => collapsed;
             set
             {
                 collapsed = value;

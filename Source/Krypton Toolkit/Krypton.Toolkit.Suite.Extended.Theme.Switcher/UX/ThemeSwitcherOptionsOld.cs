@@ -6,8 +6,6 @@
  */
 #endregion
 
-
-
 namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 {
     public class ThemeSwitcherOptionsOld : KryptonForm

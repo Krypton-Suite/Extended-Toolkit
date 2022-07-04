@@ -32,11 +32,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets the calendar where this control lives
         /// </summary>
-        public KryptonCalendar Calendar
-        {
-            get { return _calendar; }
-        }
-
+        public KryptonCalendar Calendar => _calendar;
 
         #endregion
 

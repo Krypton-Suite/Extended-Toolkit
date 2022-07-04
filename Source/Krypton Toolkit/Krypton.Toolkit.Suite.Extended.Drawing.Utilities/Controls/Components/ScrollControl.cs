@@ -251,7 +251,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DefaultValue(false)]
         public bool AlwaysShowHScroll
         {
-            get { return _alwaysShowHScroll; }
+            get => _alwaysShowHScroll;
             set
             {
                 if (_alwaysShowHScroll != value)
@@ -289,7 +289,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DefaultValue(false)]
         public bool AlwaysShowVScroll
         {
-            get { return _alwaysShowVScroll; }
+            get => _alwaysShowVScroll;
             set
             {
                 bool shown = VScroll;
@@ -327,7 +327,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DefaultValue(typeof(BorderStyle), "Fixed3D")]
         public virtual BorderStyle BorderStyle
         {
-            get { return _borderStyle; }
+            get => _borderStyle;
             set
             {
                 if (this.BorderStyle != value)
@@ -356,7 +356,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public virtual Size PageSize
         {
-            get { return _pageSize; }
+            get => _pageSize;
             set
             {
                 if (value.Width < 0)
@@ -387,7 +387,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public virtual Size ScrollSize
         {
-            get { return _scrollSize; }
+            get => _scrollSize;
             set
             {
                 if (value.Width < 0)
@@ -418,7 +418,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DefaultValue(typeof(Size), "10, 10")]
         public virtual Size StepSize
         {
-            get { return _stepSize; }
+            get => _stepSize;
             set
             {
                 if (value.Width < 0)
@@ -462,7 +462,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Browsable(false)]
         protected bool HScroll
         {
-            get { return (DrawingNativeMethods.GetWindowLong(this.Handle, DrawingNativeMethods.GWL_STYLE) & DrawingNativeMethods.WS_HSCROLL) == DrawingNativeMethods.WS_HSCROLL; }
+            get => (DrawingNativeMethods.GetWindowLong(this.Handle, DrawingNativeMethods.GWL_STYLE) & DrawingNativeMethods.WS_HSCROLL) == DrawingNativeMethods.WS_HSCROLL;
             set
             {
                 uint longValue = DrawingNativeMethods.GetWindowLong(this.Handle, DrawingNativeMethods.GWL_STYLE);
@@ -492,7 +492,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Browsable(false)]
         protected bool VScroll
         {
-            get { return (DrawingNativeMethods.GetWindowLong(this.Handle, DrawingNativeMethods.GWL_STYLE) & DrawingNativeMethods.WS_VSCROLL) == DrawingNativeMethods.WS_VSCROLL; }
+            get => (DrawingNativeMethods.GetWindowLong(this.Handle, DrawingNativeMethods.GWL_STYLE) & DrawingNativeMethods.WS_VSCROLL) == DrawingNativeMethods.WS_VSCROLL;
             set
             {
                 uint longValue = DrawingNativeMethods.GetWindowLong(this.Handle, DrawingNativeMethods.GWL_STYLE);

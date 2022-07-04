@@ -30,15 +30,9 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
         /// </value>
         private Double FadeIn
         {
-            get
-            {
-                return _fadeIn;
-            }
+            get => _fadeIn;
 
-            set
-            {
-                _fadeIn = value;
-            }
+            set => _fadeIn = value;
         }
 
         /// <summary>
@@ -49,15 +43,9 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
         /// </value>
         private Double FadeOut
         {
-            get
-            {
-                return _fadeOut;
-            }
+            get => _fadeOut;
 
-            set
-            {
-                _fadeOut = value;
-            }
+            set => _fadeOut = value;
         }
         #endregion
 

@@ -65,10 +65,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [DefaultValue(typeof(Color), "0x2C55B1")]
         public Color GradientTop
         {
-            get
-            {
-                return gradientTop;
-            }
+            get => gradientTop;
             set
             {
                 gradientTop = value;
@@ -82,10 +79,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [DefaultValue(typeof(Color), "0x99C6F1")]
         public Color GradientBottom
         {
-            get
-            {
-                return gradientBottom;
-            }
+            get => gradientBottom;
             set
             {
                 gradientBottom = value;
@@ -98,10 +92,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [Description("The color to use for the bottom portion of the gradient fill of the component.")]
         public Color GradientBorderColour
         {
-            get
-            {
-                return gradientBorderColor;
-            }
+            get => gradientBorderColor;
             set
             {
                 gradientBorderColor = value;
@@ -115,10 +106,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [DefaultValue(typeof(Color), "0x2C55B1")]
         public Color HotGradientTop
         {
-            get
-            {
-                return _hotGradientTop;
-            }
+            get => _hotGradientTop;
             set
             {
                 _hotGradientTop = value;
@@ -132,10 +120,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [DefaultValue(typeof(Color), "0x99C6F1")]
         public Color HotGradientBottom
         {
-            get
-            {
-                return _hotGradientBottom;
-            }
+            get => _hotGradientBottom;
             set
             {
                 _hotGradientBottom = value;
@@ -148,10 +133,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [Description("The color to use for the bottom portion of the gradient fill of the component.")]
         public Color HotGradientBorderColour
         {
-            get
-            {
-                return _hotGradientBorderColor;
-            }
+            get => _hotGradientBorderColor;
             set
             {
                 _hotGradientBorderColor = value;
@@ -164,10 +146,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [Description("The color to use for the bottom portion of the gradient fill of the component.")]
         public Color HotForeColour
         {
-            get
-            {
-                return _hotForeColor;
-            }
+            get => _hotForeColor;
             set
             {
                 _hotForeColor = value;
@@ -179,10 +158,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [DefaultValue(typeof(Color), "0x2C55B1")]
         public Color PressedGradientTop
         {
-            get
-            {
-                return _pressedGradientTop;
-            }
+            get => _pressedGradientTop;
             set
             {
                 _pressedGradientTop = value;
@@ -196,10 +172,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [DefaultValue(typeof(Color), "0x99C6F1")]
         public Color PressedGradientBottom
         {
-            get
-            {
-                return _pressedGradientBottom;
-            }
+            get => _pressedGradientBottom;
             set
             {
                 _pressedGradientBottom = value;
@@ -212,10 +185,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [Description("The color to use for the bottom portion of the gradient fill of the component.")]
         public Color PressedGradientBorderColour
         {
-            get
-            {
-                return _pressedGradientBorderColor;
-            }
+            get => _pressedGradientBorderColor;
             set
             {
                 _pressedGradientBorderColor = value;
@@ -228,10 +198,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [Description("The color to use for the bottom portion of the gradient fill of the component.")]
         public Color PressedForeColour
         {
-            get
-            {
-                return _pressedForeColor;
-            }
+            get => _pressedForeColor;
             set
             {
                 _pressedForeColor = value;
@@ -241,10 +208,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         }
         public override Color ForeColor
         {
-            get
-            {
-                return base.ForeColor;
-            }
+            get => base.ForeColor;
             set
             {
                 base.ForeColor = value;

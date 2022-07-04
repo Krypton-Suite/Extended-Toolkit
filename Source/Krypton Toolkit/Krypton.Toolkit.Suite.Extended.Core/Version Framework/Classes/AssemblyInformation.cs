@@ -15,11 +15,17 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #endregion
 
         #region Properties
-        public string Name { get { return _name; } set { _name = value; } }
+        public string Name { get => _name;
+            set => _name = value;
+        }
 
-        public string Version { get { return _version; } set { _version = value; } }
+        public string Version { get => _version;
+            set => _version = value;
+        }
 
-        public string FullName { get { return _fullName; } set { _fullName = value; } }
+        public string FullName { get => _fullName;
+            set => _fullName = value;
+        }
         #endregion
     }
 }

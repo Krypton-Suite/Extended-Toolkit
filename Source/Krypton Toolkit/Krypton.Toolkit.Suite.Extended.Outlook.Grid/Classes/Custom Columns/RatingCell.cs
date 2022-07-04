@@ -58,11 +58,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <summary>
         /// Overrides DefaultNewRowValue
         /// </summary>
-        public override object DefaultNewRowValue
-        {
+        public override object DefaultNewRowValue =>
             //default new row to 3 stars 
-            get { return 3; }
-        }
+            3;
 
         /// <summary>
         /// Overrides Paint

@@ -91,13 +91,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         }
 
         [Editor(typeof(KryptonTabPageCollectionEditor), typeof(UITypeEditor))]
-        public new TabPageCollection TabPages
-        {
-            get
-            {
-                return base.TabPages;
-            }
-        }
+        public new TabPageCollection TabPages => base.TabPages;
 
         internal class KryptonTabPageCollectionEditor : CollectionEditor
         {
@@ -115,10 +109,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [Category("Visuals"), DefaultValue(PaletteBackStyle.PanelClient)]
         public PaletteBackStyle PanelBackStyle
         {
-            get
-            {
-                return m_PaletteTabControlBackground.Style;
-            }
+            get => m_PaletteTabControlBackground.Style;
             set
             {
                 m_PaletteTabControlBackground.Style = value;
@@ -129,10 +120,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [Category("Visuals"), DefaultValue(PaletteMode.Global)]
         public PaletteMode PaletteMode
         {
-            get
-            {
-                return m_PaletteMode;
-            }
+            get => m_PaletteMode;
             set
             {
                 m_PaletteMode = value;
@@ -143,10 +131,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [Category("Visuals"), DefaultValue(true)]
         public bool TransparentBackground
         {
-            get
-            {
-                return m_TransparentBackground;
-            }
+            get => m_TransparentBackground;
             set
             {
                 m_TransparentBackground = value;
@@ -361,10 +346,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             }
         }
 
-        private KryptonTabControl KryptonTabControl
-        {
-            get { return (KryptonTabControl)this.Component; }
-        }
+        private KryptonTabControl KryptonTabControl => (KryptonTabControl)this.Component;
 
         #region TabControl designer fix
 
@@ -452,20 +434,20 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
         public PaletteBackStyle PanelBackStyle
         {
-            get { return this.KryptonTabControl.PanelBackStyle; }
-            set { SetProperty("PanelBackStyle", value); }
+            get => this.KryptonTabControl.PanelBackStyle;
+            set => SetProperty("PanelBackStyle", value);
         }
 
         public PaletteMode PaletteMode
         {
-            get { return this.KryptonTabControl.PaletteMode; }
-            set { SetProperty("PaletteMode", value); }
+            get => this.KryptonTabControl.PaletteMode;
+            set => SetProperty("PaletteMode", value);
         }
 
         public bool TransparentBackground
         {
-            get { return this.KryptonTabControl.TransparentBackground; }
-            set { SetProperty("TransparentBackground", value); }
+            get => this.KryptonTabControl.TransparentBackground;
+            set => SetProperty("TransparentBackground", value);
         }
 
         public void AddTab()
@@ -546,11 +528,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             }
         }
 
-        private KryptonTabControlAlternative KryptonTabControl
-        {
-            get { return (KryptonTabControlAlternative)this.Component; }
-        }
-
+        private KryptonTabControlAlternative KryptonTabControl => (KryptonTabControlAlternative)this.Component;
     }
 
 }

@@ -44,74 +44,38 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
         public DateTime StartTime
         {
-            get
-            {
-                return _startTime;
-            }
-            set
-            {
-                _startTime = value;
-            }
+            get => _startTime;
+            set => _startTime = value;
         }
 
         public DateTime EndTime
         {
-            get
-            {
-                return _endTime;
-            }
-            set
-            {
-                _endTime = value;
-            }
+            get => _endTime;
+            set => _endTime = value;
         }
 
         public string Description
         {
-            get
-            {
-                return _description;
-            }
-            set
-            {
-                _description = value;
-            }
+            get => _description;
+            set => _description = value;
         }
 
         public string Key
         {
-            get
-            {
-                return _key;
-            }
-            set
-            {
-                _key = value;
-            }
+            get => _key;
+            set => _key = value;
         }
 
         public Color Colour
         {
-            get
-            {
-                return _colour;
-            }
-            set
-            {
-                _colour = value;
-            }
+            get => _colour;
+            set => _colour = value;
         }
 
         public bool IsTentative
         {
-            get
-            {
-                return _isTentative;
-            }
-            set
-            {
-                _isTentative = value;
-            }
+            get => _isTentative;
+            set => _isTentative = value;
         }
     }
 }

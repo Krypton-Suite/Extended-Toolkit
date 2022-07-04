@@ -44,14 +44,8 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 
         string IRule.BaseClass
         {
-            get
-            {
-                return _baseclass;
-            }
-            set
-            {
-                _baseclass = value;
-            }
+            get => _baseclass;
+            set => _baseclass = value;
         }
 
         internal string BaseClass => _baseclass;

@@ -158,7 +158,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         [Category("ViewButtons"), DefaultValue(typeof(string), "100%")]
         public string PercentageLabel
         {
-            get { return _percentageLabel; }
+            get => _percentageLabel;
             set
             {
                 this.kcmdpercentage.Text = value;

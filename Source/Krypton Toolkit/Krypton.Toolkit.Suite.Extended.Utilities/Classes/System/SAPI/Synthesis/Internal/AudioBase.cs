@@ -74,14 +74,8 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
 
         internal virtual bool IsAborted
         {
-            get
-            {
-                return _aborted;
-            }
-            set
-            {
-                _aborted = false;
-            }
+            get => _aborted;
+            set => _aborted = false;
         }
 
         internal virtual byte[] WaveFormat => null;

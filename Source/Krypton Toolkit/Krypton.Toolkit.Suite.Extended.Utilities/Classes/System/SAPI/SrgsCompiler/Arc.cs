@@ -75,10 +75,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 
         internal State Start
         {
-            get
-            {
-                return _start;
-            }
+            get => _start;
             set
             {
                 if (value != _start)
@@ -98,10 +95,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 
         internal State End
         {
-            get
-            {
-                return _end;
-            }
+            get => _end;
             set
             {
                 if (value != _end)
@@ -123,10 +117,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 
         internal Rule RuleRef
         {
-            get
-            {
-                return _ruleRef;
-            }
+            get => _ruleRef;
             set
             {
                 if ((_start != null && !_start.OutArcs.IsEmpty) || (_end != null && !_end.InArcs.IsEmpty))
@@ -139,14 +130,8 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 
         internal float Weight
         {
-            get
-            {
-                return _flWeight;
-            }
-            set
-            {
-                _flWeight = value;
-            }
+            get => _flWeight;
+            set => _flWeight = value;
         }
 
         internal int SpecialTransitionIndex => _specialTransitionIndex;

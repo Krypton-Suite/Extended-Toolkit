@@ -329,8 +329,8 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         [Description("Allows the user to create new items on the view")]
         public bool AllowNew
         {
-            get { return _allowNew; }
-            set { _allowNew = value; }
+            get => _allowNew;
+            set => _allowNew = value;
         }
 
         /// <summary>
@@ -340,8 +340,8 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         [Description("Allows or denies the user the edition of items text or date ranges.")]
         public bool AllowItemEdit
         {
-            get { return _allowItemEdit; }
-            set { _allowItemEdit = value; }
+            get => _allowItemEdit;
+            set => _allowItemEdit = value;
         }
 
         /// <summary>
@@ -351,27 +351,21 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         [Description("Allows or denies the user to resize items on the calendar")]
         public bool AllowItemResize
         {
-            get { return _allowItemResize; }
-            set { _allowItemResize = value; }
+            get => _allowItemResize;
+            set => _allowItemResize = value;
         }
 
         /// <summary>
         /// Gets the days visible on the ccurrent view
         /// </summary>
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public CalendarDay[] Days
-        {
-            get { return _days; }
-        }
+        public CalendarDay[] Days => _days;
 
         /// <summary>
         /// Gets the mode in which days are drawn.
         /// </summary>
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public CalendarDaysMode DaysMode
-        {
-            get { return _daysMode; }
-        }
+        public CalendarDaysMode DaysMode => _daysMode;
 
         /// <summary>
         /// Gets the union of day body rectangles
@@ -392,21 +386,12 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// Gets if the calendar is currently in edit mode of some item
         /// </summary>
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public bool EditMode
-        {
-            get { return TextBox != null; }
-        }
+        public bool EditMode => TextBox != null;
 
         /// <summary>
         /// Gets the item being edited (if any)
         /// </summary>
-        public CalendarItemAlternative EditModeItem
-        {
-            get
-            {
-                return _editModeItem;
-            }
-        }
+        public CalendarItemAlternative EditModeItem => _editModeItem;
 
         /// <summary>
         /// Gets or sets the first day of weeks
@@ -415,8 +400,8 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         [DefaultValue(DayOfWeek.Sunday)]
         public DayOfWeek FirstDayOfWeek
         {
-            set { _firstDayOfWeek = value; }
-            get { return _firstDayOfWeek; }
+            set => _firstDayOfWeek = value;
+            get => _firstDayOfWeek;
         }
 
 
@@ -426,7 +411,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         public CalendarHighlightRange[] HighlightRanges
         {
-            get { return _highlightRanges; }
+            get => _highlightRanges;
             set { _highlightRanges = value; UpdateHighlights(); }
         }
 
@@ -437,10 +422,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// This collection changes every time the view is changed
         /// </remarks>
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public CalendarItemCollection Items
-        {
-            get { return _items; }
-        }
+        public CalendarItemCollection Items => _items;
 
         /// <summary>
         /// Gets or sets the format in which time is shown in the items, when applicable
@@ -448,8 +430,8 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         [DefaultValue("dd/MMM")]
         public string ItemsDateFormat
         {
-            get { return _itemsDateFormat; }
-            set { _itemsDateFormat = value; }
+            get => _itemsDateFormat;
+            set => _itemsDateFormat = value;
         }
 
         /// <summary>
@@ -458,8 +440,8 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         [DefaultValue("hh:mm tt")]
         public string ItemsTimeFormat
         {
-            get { return _itemsTimeFormat; }
-            set { _itemsTimeFormat = value; }
+            get => _itemsTimeFormat;
+            set => _itemsTimeFormat = value;
         }
 
         /// <summary>
@@ -469,8 +451,8 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         [DefaultValue(8)]
         public int MaximumFullDays
         {
-            get { return _maximumFullDays; }
-            set { _maximumFullDays = value; }
+            get => _maximumFullDays;
+            set => _maximumFullDays = value;
         }
 
         /// <summary>
@@ -480,7 +462,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         [DefaultValue(35)]
         public int MaximumViewDays
         {
-            get { return _maximumViewDays; }
+            get => _maximumViewDays;
             set
             {
                 if (value % 7 != 0)
@@ -497,7 +479,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public CalendarRenderer Renderer
         {
-            get { return _renderer; }
+            get => _renderer;
             set
             {
                 _renderer = value;
@@ -515,7 +497,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public ICalendarSelectableElement SelectedElementEnd
         {
-            get { return _selectedElementEnd; }
+            get => _selectedElementEnd;
             set
             {
                 _selectedElementEnd = value;
@@ -530,7 +512,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public ICalendarSelectableElement SelectedElementStart
         {
-            get { return _selectedElementStart; }
+            get => _selectedElementStart;
             set
             {
                 _selectedElementStart = value;
@@ -545,8 +527,8 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public DateTime SelectionEnd
         {
-            get { return _selEnd; }
-            set { _selEnd = value; }
+            get => _selEnd;
+            set => _selEnd = value;
         }
 
         /// <summary>
@@ -555,26 +537,23 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public DateTime SelectionStart
         {
-            get { return _selStart; }
-            set { _selStart = value; }
+            get => _selStart;
+            set => _selStart = value;
         }
 
         /// <summary>
         /// Gets or sets the state of the calendar
         /// </summary>
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public CalendarState State
-        {
-            get { return _state; }
-        }
+        public CalendarState State => _state;
 
         /// <summary>
         /// Gets the TextBox of the edit mode
         /// </summary>
         internal KryptonCalendarTextBox TextBox
         {
-            get { return _textBox; }
-            set { _textBox = value; }
+            get => _textBox;
+            set => _textBox = value;
         }
 
         /// <summary>
@@ -583,7 +562,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         [DefaultValue(CalendarTimeScale.THIRTYMINUTES)]
         public CalendarTimeScale TimeScale
         {
-            get { return _timeScale; }
+            get => _timeScale;
             set
             {
                 _timeScale = value;
@@ -607,7 +586,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public int TimeUnitsOffset
         {
-            get { return _timeUnitsOffset; }
+            get => _timeUnitsOffset;
             set
             {
                 _timeUnitsOffset = value;
@@ -622,7 +601,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public DateTime ViewEnd
         {
-            get { return _viewEnd; }
+            get => _viewEnd;
             set
             {
                 _viewEnd = value.Date.Add(new TimeSpan(23, 59, 59));
@@ -640,7 +619,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public DateTime ViewStart
         {
-            get { return _viewStart; }
+            get => _viewStart;
             set
             {
                 _viewStart = value.Date;
@@ -655,11 +634,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets the weeks currently visible on the calendar, if <see cref="DaysMode"/> is <see cref="CalendarDaysMode.Short"/>
         /// </summary>
-        public CalendarWeek[] Weeks
-        {
-            get { return _weeks; }
-        }
-
+        public CalendarWeek[] Weeks => _weeks;
 
         #endregion
 

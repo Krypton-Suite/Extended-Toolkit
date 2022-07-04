@@ -75,10 +75,8 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         [EditorBrowsable(EditorBrowsableState.Never)]
         /// </summary>
         [Browsable(false)]
-        public override bool CanSelect
-        {
-            get { return false; }
-        }
+        public override bool CanSelect => false;
+
         #endregion
 
         #region Constructor

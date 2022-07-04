@@ -83,34 +83,25 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets the calendar where painting
         /// </summary>
-        public KryptonCalendar Calendar
-        {
-            get { return _calendar; }
-        }
+        public KryptonCalendar Calendar => _calendar;
 
         /// <summary>
         /// Gets the clip of the paint event
         /// </summary>
-        public Rectangle ClipRectangle
-        {
-            get { return _clip; }
-        }
+        public Rectangle ClipRectangle => _clip;
 
         /// <summary>
         /// Gets the device where to paint
         /// </summary>
-        public Graphics Graphics
-        {
-            get { return _graphics; }
-        }
+        public Graphics Graphics => _graphics;
 
         /// <summary>
         /// Gets or sets a tag for the event
         /// </summary>
         public object Tag
         {
-            get { return _tag; }
-            set { _tag = value; }
+            get => _tag;
+            set => _tag = value;
         }
 
 

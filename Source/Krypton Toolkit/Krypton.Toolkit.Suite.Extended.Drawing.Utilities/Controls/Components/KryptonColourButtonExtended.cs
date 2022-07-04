@@ -230,7 +230,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public override ContextMenuStrip ContextMenuStrip
         {
-            get { return null; }
+            get => null;
             set { }
         }
 
@@ -242,7 +242,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public override KryptonContextMenu KryptonContextMenu
         {
-            get { return null; }
+            get => null;
             set { }
         }
 

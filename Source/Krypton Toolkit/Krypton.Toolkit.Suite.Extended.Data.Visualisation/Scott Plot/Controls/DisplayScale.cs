@@ -35,10 +35,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// </summary>
         public bool Enabled
         {
-            get
-            {
-                return _enabled;
-            }
+            get => _enabled;
             set
             {
                 if (value != _enabled)
@@ -52,10 +49,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <summary>
         /// Current display scale ratio. 
         /// </summary>
-        public float ScaleRatio
-        {
-            get => Enabled ? SystemScaleRatio : ManualScaleRatio;
-        }
+        public float ScaleRatio => Enabled ? SystemScaleRatio : ManualScaleRatio;
 
         /// <summary>
         /// This event is invoked whenever the display scale is changed.

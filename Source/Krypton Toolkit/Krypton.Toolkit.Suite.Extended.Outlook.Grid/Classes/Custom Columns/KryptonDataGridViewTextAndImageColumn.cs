@@ -161,8 +161,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         [DefaultValue(typeof(DataGridViewColumnSortMode), "Automatic")]
         public new DataGridViewColumnSortMode SortMode
         {
-            get { return base.SortMode; }
-            set { base.SortMode = value; }
+            get => base.SortMode;
+            set => base.SortMode = value;
         }
 
         /// <summary>
@@ -172,7 +172,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public override DataGridViewCell CellTemplate
         {
-            get { return base.CellTemplate; }
+            get => base.CellTemplate;
 
             set
             {
@@ -189,17 +189,13 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         [Category("Data")]
         [Description("Set of extra button specs to appear with control.")]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
-        public DataGridViewColumnSpecCollection ButtonSpecs
-        {
-            get { return _buttonSpecs; }
-        }
+        public DataGridViewColumnSpecCollection ButtonSpecs => _buttonSpecs;
+
         #endregion
 
         #region Private
-        private KryptonDataGridViewTextAndImageCell TextBoxCellTemplate
-        {
-            get { return (KryptonDataGridViewTextAndImageCell)CellTemplate; }
-        }
+        private KryptonDataGridViewTextAndImageCell TextBoxCellTemplate => (KryptonDataGridViewTextAndImageCell)CellTemplate;
+
         #endregion
 
         #region Internal

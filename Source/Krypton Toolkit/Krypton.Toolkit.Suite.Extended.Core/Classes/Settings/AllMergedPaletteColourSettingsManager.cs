@@ -9,11 +9,6 @@
 using Krypton.Toolkit.Suite.Extended.Common;
 using Krypton.Toolkit.Suite.Extended.Core.Settings;
 using Krypton.Toolkit.Suite.Extended.Global.Utilities;
-using Microsoft.WindowsAPICodePack.Dialogs;
-
-using System.IO;
-
-using Krypton.Toolkit.Suite.Extended.Developer.Utilities;
 
 namespace Krypton.Toolkit.Suite.Extended.Core
 {
@@ -34,15 +29,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// </value>
         public bool AlwaysUsePrompt
         {
-            get
-            {
-                return _alwaysUsePrompt;
-            }
+            get => _alwaysUsePrompt;
 
-            set
-            {
-                _alwaysUsePrompt = value;
-            }
+            set => _alwaysUsePrompt = value;
         }
 
         /// <summary>
@@ -53,15 +42,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// </value>
         public bool SettingsModified
         {
-            get
-            {
-                return _settingsModified;
-            }
+            get => _settingsModified;
 
-            set
-            {
-                _settingsModified = value;
-            }
+            set => _settingsModified = value;
         }
         #endregion
 

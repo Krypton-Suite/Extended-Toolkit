@@ -53,15 +53,9 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         [DefaultValue(false), Description("Alerts the user."), Category("Appearance")]
         public bool Alert
         {
-            get
-            {
-                return _alert;
-            }
+            get => _alert;
 
-            set
-            {
-                _alert = value;
-            }
+            set => _alert = value;
         }
 
         /// <summary>
@@ -73,28 +67,16 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         [DefaultValue(false), Description("Enables a blinking mode."), Category("Blinking Settings")]
         public bool EnableBlinking
         {
-            get
-            {
-                return _enableBlinking;
-            }
+            get => _enableBlinking;
 
-            set
-            {
-                _enableBlinking = value;
-            }
+            set => _enableBlinking = value;
         }
 
         public bool BkClr
         {
-            get
-            {
-                return _bkClr;
-            }
+            get => _bkClr;
 
-            set
-            {
-                _bkClr = value;
-            }
+            set => _bkClr = value;
         }
 
         /// <summary>
@@ -106,15 +88,9 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         [DefaultValue(false), Description("Enables a fade text animation."), Category("Fade Settings")]
         public bool EnableFadeAnimation
         {
-            get
-            {
-                return _fadeText;
-            }
+            get => _fadeText;
 
-            set
-            {
-                _fadeText = value;
-            }
+            set => _fadeText = value;
         }
 
         /// <summary>
@@ -126,10 +102,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         [DefaultValue(typeof(Color), "White"), Description("Defined alert first colour."), Category("Blinking Settings")]
         public Color AlertColourOne
         {
-            get
-            {
-                return _alertColour1;
-            }
+            get => _alertColour1;
 
             set
             {
@@ -148,10 +121,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         [DefaultValue(typeof(Color), "Black"), Description("Defined alert second colour."), Category("Blinking Settings")]
         public Color AlertColourTwo
         {
-            get
-            {
-                return _alertColour2;
-            }
+            get => _alertColour2;
 
             set
             {
@@ -170,10 +140,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         [DefaultValue(typeof(Color), "Red"), Description("Defined alert text colour."), Category("Blinking Settings")]
         public Color AlertTextColour
         {
-            get
-            {
-                return _alertTextColour;
-            }
+            get => _alertTextColour;
 
             set
             {
@@ -192,10 +159,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         [DefaultValue(typeof(Color), "White"), Description("The first gradient colour."), Category("Appearance")]
         public Color GradientColourOne
         {
-            get
-            {
-                return _backGradient1;
-            }
+            get => _backGradient1;
 
             set
             {
@@ -214,10 +178,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         [DefaultValue(typeof(Color), "Blue"), Description("The second gradient colour."), Category("Appearance")]
         public Color GradientColourTwo
         {
-            get
-            {
-                return _backGradient2;
-            }
+            get => _backGradient2;
 
             set
             {
@@ -236,10 +197,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         [DefaultValue(typeof(Color), "White"), Description("The text glow colour."), Category("Appearance")]
         public Color TextGlow
         {
-            get
-            {
-                return _textGlow;
-            }
+            get => _textGlow;
 
             set
             {
@@ -258,10 +216,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         [DefaultValue(typeof(LinearGradientMode), "ForwardDiagonal"), Description("Gradient mode"), Category("Appearance")]
         public LinearGradientMode GradientMode
         {
-            get
-            {
-                return _linearGradientMode;
-            }
+            get => _linearGradientMode;
 
             set
             {
@@ -280,15 +235,9 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         [DefaultValue(5), Description("The text glow spread"), Category("Appearance")]
         public int TextGlowSpread
         {
-            get
-            {
-                return _textGlowSpread;
-            }
+            get => _textGlowSpread;
 
-            set
-            {
-                _textGlowSpread = value;
-            }
+            set => _textGlowSpread = value;
         }
 
         /// <summary>
@@ -300,15 +249,9 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         [DefaultValue(256), Description("The blink interval."), Category("Blinking Settings")]
         public int AlertBlinkInterval
         {
-            get
-            {
-                return _flashInterval;
-            }
+            get => _flashInterval;
 
-            set
-            {
-                _flashInterval = value;
-            }
+            set => _flashInterval = value;
         }
 
         /// <summary>
@@ -320,15 +263,9 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         [DefaultValue(10), Description("The fade timer interval."), Category("Fade Settings")]
         public int FadeInterval
         {
-            get
-            {
-                return _fadeInteval;
-            }
+            get => _fadeInteval;
 
-            set
-            {
-                _fadeInteval = value;
-            }
+            set => _fadeInteval = value;
         }
 
         /// <summary>
@@ -340,41 +277,23 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         [DefaultValue(10), Description("Defines how long the blinking lasts for."), Category("Blinking Settings")]
         public long BlinkDuration
         {
-            get
-            {
-                return _blinkDuration;
-            }
+            get => _blinkDuration;
 
-            set
-            {
-                _blinkDuration = value;
-            }
+            set => _blinkDuration = value;
         }
 
         public BlinkState BlinkState
         {
-            get
-            {
-                return _blinkState;
-            }
+            get => _blinkState;
 
-            set
-            {
-                _blinkState = value;
-            }
+            set => _blinkState = value;
         }
 
         public short CycleInterval
         {
-            get
-            {
-                return _cycleInterval;
-            }
+            get => _cycleInterval;
 
-            set
-            {
-                _cycleInterval = value;
-            }
+            set => _cycleInterval = value;
         }
         #endregion
 

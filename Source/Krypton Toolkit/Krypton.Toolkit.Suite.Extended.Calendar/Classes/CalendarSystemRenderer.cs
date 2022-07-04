@@ -39,8 +39,8 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         public CalendarColourTable ColourTable
         {
-            get { return _colourTable; }
-            set { _colourTable = value; }
+            get => _colourTable;
+            set => _colourTable = value;
         }
 
         /// <summary>
@@ -48,8 +48,8 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         public float SelectedItemBorder
         {
-            get { return _selectedItemBorder; }
-            set { _selectedItemBorder = value; }
+            get => _selectedItemBorder;
+            set => _selectedItemBorder = value;
         }
 
 

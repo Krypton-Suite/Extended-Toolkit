@@ -29,14 +29,8 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 
         string IGrammar.Root
         {
-            get
-            {
-                return _sRoot;
-            }
-            set
-            {
-                _sRoot = value;
-            }
+            get => _sRoot;
+            set => _sRoot = value;
         }
 
         Uri IGrammar.XmlBase
@@ -61,42 +55,24 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 
         GrammarType IGrammar.Mode
         {
-            set
-            {
-                _backend.GrammarMode = value;
-            }
+            set => _backend.GrammarMode = value;
         }
 
         AlphabetType IGrammar.PhoneticAlphabet
         {
-            set
-            {
-                _backend.Alphabet = value;
-            }
+            set => _backend.Alphabet = value;
         }
 
         SrgsTagFormat IGrammar.TagFormat
         {
-            get
-            {
-                return SrgsDocument.GrammarOptions2TagFormat(_backend.GrammarOptions);
-            }
-            set
-            {
-                _backend.GrammarOptions = SrgsDocument.TagFormat2GrammarOptions(value);
-            }
+            get => SrgsDocument.GrammarOptions2TagFormat(_backend.GrammarOptions);
+            set => _backend.GrammarOptions = SrgsDocument.TagFormat2GrammarOptions(value);
         }
 
         Collection<string> IGrammar.GlobalTags
         {
-            get
-            {
-                return _backend.GlobalTags;
-            }
-            set
-            {
-                _backend.GlobalTags = value;
-            }
+            get => _backend.GlobalTags;
+            set => _backend.GlobalTags = value;
         }
 
         internal List<Rule> UndefRules => _undefRules;
@@ -105,70 +81,37 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 
         string IGrammar.Language
         {
-            get
-            {
-                return _cg._language;
-            }
-            set
-            {
-                _cg._language = value;
-            }
+            get => _cg._language;
+            set => _cg._language = value;
         }
 
         string IGrammar.Namespace
         {
-            get
-            {
-                return _cg._namespace;
-            }
-            set
-            {
-                _cg._namespace = value;
-            }
+            get => _cg._namespace;
+            set => _cg._namespace = value;
         }
 
         Collection<string> IGrammar.CodeBehind
         {
-            get
-            {
-                return _cg._codebehind;
-            }
-            set
-            {
-                _cg._codebehind = value;
-            }
+            get => _cg._codebehind;
+            set => _cg._codebehind = value;
         }
 
         bool IGrammar.Debug
         {
-            set
-            {
-                _cg._fDebugScript = value;
-            }
+            set => _cg._fDebugScript = value;
         }
 
         Collection<string> IGrammar.ImportNamespaces
         {
-            get
-            {
-                return _cg._importNamespaces;
-            }
-            set
-            {
-                _cg._importNamespaces = value;
-            }
+            get => _cg._importNamespaces;
+            set => _cg._importNamespaces = value;
         }
 
         Collection<string> IGrammar.AssemblyReferences
         {
-            get
-            {
-                return _cg._assemblyReferences;
-            }
-            set
-            {
-                _cg._assemblyReferences = value;
-            }
+            get => _cg._assemblyReferences;
+            set => _cg._assemblyReferences = value;
         }
 
         internal CustomGrammar CustomGrammar => _cg;

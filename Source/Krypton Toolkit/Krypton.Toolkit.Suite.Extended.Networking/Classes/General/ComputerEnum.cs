@@ -275,10 +275,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
         /// <summary>
         /// Last error message
         /// </summary>
-        public string LastError
-        {
-            get { return _lastError; }
-        }
+        public string LastError => _lastError;
 
         /// <summary>
         /// Obtains the enumerator for ComputerEnumerator class
@@ -295,13 +292,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
             _computers = null;
         }
 
-        public NetworkComputers this[int item]
-        {
-            get
-            {
-                return _computers[item];
-            }
-        }
+        public NetworkComputers this[int item] => _computers[item];
 
         // holds computer info.
         public struct NetworkComputers
@@ -315,31 +306,22 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
             /// <summary>
             /// Name of computer
             /// </summary>
-            public string Name
-            {
-                get { return _computerinfo.sv101_name; }
-            }
+            public string Name => _computerinfo.sv101_name;
+
             /// <summary>
             /// Server comment
             /// </summary>
-            public string Comment
-            {
-                get { return _computerinfo.sv101_comment; }
-            }
+            public string Comment => _computerinfo.sv101_comment;
+
             /// <summary>
             /// Major version number of OS
             /// </summary>
-            public int VersionMajor
-            {
-                get { return _computerinfo.sv101_version_major; }
-            }
+            public int VersionMajor => _computerinfo.sv101_version_major;
+
             /// <summary>
             /// Minor version number of OS
             /// </summary>
-            public int VersionMinor
-            {
-                get { return _computerinfo.sv101_version_minor; }
-            }
+            public int VersionMinor => _computerinfo.sv101_version_minor;
         }
 
         /// <summary>
@@ -361,13 +343,8 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
                 indexer = -1;
             }
 
-            public object Current
-            {
-                get
-                {
-                    return aryComputers[indexer];
-                }
-            }
+            public object Current => aryComputers[indexer];
+
             public bool MoveNext()
             {
                 if (aryComputers == null)

@@ -42,7 +42,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             return $"PlottablePolygon{label} with {PointCount} points";
         }
 
-        public int PointCount { get => Xs.Length; }
+        public int PointCount => Xs.Length;
 
         public AxisLimits GetAxisLimits()
         {

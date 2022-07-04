@@ -21,7 +21,8 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <value>
         /// The hash type array.
         /// </value>
-        public static string[] HashTypeArray { get => _hashTypeArray; }
+        public static string[] HashTypeArray => _hashTypeArray;
+
         #endregion
 
         #region Constructors        

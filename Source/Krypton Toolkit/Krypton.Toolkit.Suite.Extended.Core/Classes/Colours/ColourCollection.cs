@@ -7,7 +7,6 @@
 #endregion
 
 using System.Collections.ObjectModel;
-using System.IO;
 using System.Linq;
 
 namespace Krypton.Toolkit.Suite.Extended.Core

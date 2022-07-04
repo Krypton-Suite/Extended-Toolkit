@@ -177,26 +177,14 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
 
         internal int Rate
         {
-            get
-            {
-                return _site.VoiceRate;
-            }
-            set
-            {
-                _site.VoiceRate = (_defaultRate = value);
-            }
+            get => _site.VoiceRate;
+            set => _site.VoiceRate = (_defaultRate = value);
         }
 
         internal int Volume
         {
-            get
-            {
-                return _site.VoiceVolume;
-            }
-            set
-            {
-                _site.VoiceVolume = value;
-            }
+            get => _site.VoiceVolume;
+            set => _site.VoiceVolume = value;
         }
 
         internal TTSVoice Voice

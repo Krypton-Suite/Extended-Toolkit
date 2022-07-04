@@ -35,14 +35,8 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
 
         internal TtsEventMapper EventMapper
         {
-            get
-            {
-                return _eventMapper;
-            }
-            set
-            {
-                _eventMapper = value;
-            }
+            get => _eventMapper;
+            set => _eventMapper = value;
         }
 
         public int EventInterest => _eventInterest;
@@ -69,10 +63,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
 
         internal int VoiceRate
         {
-            get
-            {
-                return _defaultRate;
-            }
+            get => _defaultRate;
             set
             {
                 _defaultRate = value;
@@ -82,10 +73,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
 
         internal int VoiceVolume
         {
-            get
-            {
-                return _volume;
-            }
+            get => _volume;
             set
             {
                 _volume = value;
@@ -95,14 +83,8 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis
 
         internal Exception LastException
         {
-            get
-            {
-                return _exception;
-            }
-            set
-            {
-                _exception = value;
-            }
+            get => _exception;
+            set => _exception = value;
         }
 
         internal EngineSite(ResourceLoader resourceLoader)

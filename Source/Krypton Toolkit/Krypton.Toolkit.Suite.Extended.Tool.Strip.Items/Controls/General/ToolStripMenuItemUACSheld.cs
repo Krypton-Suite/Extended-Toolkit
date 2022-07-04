@@ -46,15 +46,9 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         [DefaultValue(true)]
         public bool ElevateApplicationOnClick
         {
-            get
-            {
-                return _elevateApplicationOnClick;
-            }
+            get => _elevateApplicationOnClick;
 
-            set
-            {
-                _elevateApplicationOnClick = value;
-            }
+            set => _elevateApplicationOnClick = value;
         }
 
         /// <summary>
@@ -68,15 +62,9 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         [DefaultValue("")]
         public string ProcessName
         {
-            get
-            {
-                return _processName;
-            }
+            get => _processName;
 
-            set
-            {
-                _processName = value;
-            }
+            set => _processName = value;
         }
         #endregion
 

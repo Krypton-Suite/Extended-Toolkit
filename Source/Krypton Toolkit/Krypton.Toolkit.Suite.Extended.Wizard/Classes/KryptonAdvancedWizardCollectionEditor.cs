@@ -27,9 +27,6 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
         {
         }
 
-        protected override Type[] CreateNewItemTypes()
-        {
-            return new[] { typeof(KryptonAdvancedWizardPage) };
-        }
+        protected override Type[] CreateNewItemTypes() => new[] { typeof(KryptonAdvancedWizardPage) };
     }
 }

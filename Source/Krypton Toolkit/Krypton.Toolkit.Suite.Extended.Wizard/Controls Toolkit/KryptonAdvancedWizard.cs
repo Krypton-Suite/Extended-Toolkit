@@ -355,7 +355,7 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
         [Browsable(false)]
         public bool FinishButtonEnabled
         {
-            get { return _finishButton ? kbtnFinish.Enabled : kbtnNext.Enabled; }
+            get => _finishButton ? kbtnFinish.Enabled : kbtnNext.Enabled;
             set
             {
                 if (_finishButton)

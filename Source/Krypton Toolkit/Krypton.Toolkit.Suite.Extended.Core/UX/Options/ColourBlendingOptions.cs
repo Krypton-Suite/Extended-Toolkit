@@ -6,10 +6,6 @@
  */
 #endregion
 
-using Microsoft.WindowsAPICodePack.Dialogs;
-
-using System.IO;
-
 namespace Krypton.Toolkit.Suite.Extended.Core
 {
     public partial class ColourBlendingOptions : KryptonForm

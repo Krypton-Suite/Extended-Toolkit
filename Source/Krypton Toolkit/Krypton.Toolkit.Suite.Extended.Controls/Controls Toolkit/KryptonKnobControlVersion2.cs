@@ -91,7 +91,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         [Category("KryptonKnobControlEnhanced")]
         public Font ScaleTypeface
         {
-            get { return _scaleTypeface; }
+            get => _scaleTypeface;
             set
             {
                 _scaleTypeface = value;
@@ -109,7 +109,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         [DefaultValue(true)]
         public bool ScaleTypefaceAutoSize
         {
-            get { return _scaleTypefaceAutoSize; }
+            get => _scaleTypefaceAutoSize;
             set
             {
                 _scaleTypefaceAutoSize = value;
@@ -128,7 +128,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         [DefaultValue(135)]
         public float StartAngle
         {
-            get { return _startAngle; }
+            get => _startAngle;
             set
             {
                 if (value >= 90 && value < _endAngle)
@@ -150,7 +150,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         [DefaultValue(405)]
         public float EndAngle
         {
-            get { return _endAngle; }
+            get => _endAngle;
             set
             {
                 if (value <= 450 && value > _startAngle)
@@ -171,7 +171,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         [Category("KryptonKnobControlEnhanced")]
         public KnobPointerStyles PointerStyle
         {
-            get { return _pointerStyle; }
+            get => _pointerStyle;
             set
             {
                 _pointerStyle = value;
@@ -191,7 +191,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         [DefaultValue(10)]
         public int MouseWheelBarPartitions
         {
-            get { return _mouseWheelBarPartitions; }
+            get => _mouseWheelBarPartitions;
             set
             {
                 if (value > 0)
@@ -209,7 +209,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         [DefaultValue(false)]
         public bool DrawDivInside
         {
-            get { return _drawDivInside; }
+            get => _drawDivInside;
             set
             {
                 _drawDivInside = value;
@@ -226,7 +226,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         [Category("KryptonKnobControlEnhanced")]
         public Color ScaleColour
         {
-            get { return _scaleColour; }
+            get => _scaleColour;
             set
             {
                 _scaleColour = value;
@@ -242,7 +242,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         [Category("KryptonKnobControlEnhanced")]
         public Color KnobBackColour
         {
-            get { return _knobBackColour; }
+            get => _knobBackColour;
             set
             {
                 _knobBackColour = value;
@@ -261,7 +261,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         [Category("KryptonKnobControlEnhanced")]
         public int ScaleDivisions
         {
-            get { return _scaleDivisions; }
+            get => _scaleDivisions;
             set
             {
                 if (value > 1)
@@ -280,7 +280,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         [Category("KryptonKnobControlEnhanced")]
         public int ScaleSubDivisions
         {
-            get { return _scaleSubDivisions; }
+            get => _scaleSubDivisions;
             set
             {
                 if (value > 0 && _scaleDivisions > 0 && (_maximum - _minimum) / (value * _scaleDivisions) > 0)
@@ -299,7 +299,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         [Category("KryptonKnobControlEnhanced")]
         public bool ShowSmallScale
         {
-            get { return _showSmallScale; }
+            get => _showSmallScale;
             set
             {
                 if (value == true)
@@ -327,7 +327,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         [Category("KryptonKnobControlEnhanced")]
         public bool ShowLargeScale
         {
-            get { return _showLargeScale; }
+            get => _showLargeScale;
             set
             {
                 _showLargeScale = value;
@@ -345,7 +345,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         [Category("KryptonKnobControlEnhanced")]
         public int Minimum
         {
-            get { return _minimum; }
+            get => _minimum;
             set
             {
                 _minimum = value;
@@ -361,7 +361,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         [Category("KryptonKnobControlEnhanced")]
         public int Maximum
         {
-            get { return _maximum; }
+            get => _maximum;
             set
             {
                 if (value > _minimum)
@@ -388,7 +388,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         [Category("KryptonKnobControlEnhanced")]
         public int LargeChange
         {
-            get { return _largeChange; }
+            get => _largeChange;
             set
             {
                 _largeChange = value;
@@ -404,7 +404,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         [Category("KryptonKnobControlEnhanced")]
         public int SmallChange
         {
-            get { return _smallChange; }
+            get => _smallChange;
             set
             {
                 _smallChange = value;
@@ -420,7 +420,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         [Category("KryptonKnobControlEnhanced")]
         public int Value
         {
-            get { return _value; }
+            get => _value;
             set
             {
                 if (value >= _minimum && value <= _maximum)
@@ -444,7 +444,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         [Category("KryptonKnobControlEnhanced")]
         public Color PointerColour
         {
-            get { return _pointerColour; }
+            get => _pointerColour;
             set
             {
                 _pointerColour = value;
@@ -1074,9 +1074,10 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         /// <summary>
         /// return 2 points of a line starting from the center of the knob to the periphery
         /// </summary>
+        /// <param name="g"></param>
         /// <param name="l"></param>
         /// <returns></returns>
-        private Point[] GetKnobLine(Graphics Gr, int l)
+        private Point[] GetKnobLine(Graphics g, int l)
         {
             Point[] pret = new Point[2];
 
@@ -1084,7 +1085,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             float cy = _pKnob.Y;
 
 
-            float radius = (float)(_rKnob.Width / 2);
+            float radius = _rKnob.Width / 2;
 
             // FAB: 21/08/18            
             float degree = _deltaAngle * (this.Value - _minimum) / (_maximum - _minimum);
@@ -1093,14 +1094,14 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
 
             double val = _maximum;
-            String str = String.Format("{0,0:D}", (int)val);
+            string str = string.Format("{0,0:D}", (int)val);
             float fSize;
             SizeF strsize;
 
             if (!_scaleTypefaceAutoSize)
             {
                 fSize = _scaleTypeface.Size;
-                strsize = Gr.MeasureString(str, _scaleTypeface);
+                strsize = g.MeasureString(str, _scaleTypeface);
             }
             else
             {
@@ -1109,7 +1110,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
                     fSize = 6;
 
                 _knobTypeface = new Font(_scaleTypeface.FontFamily, fSize);
-                strsize = Gr.MeasureString(str, _knobTypeface);
+                strsize = g.MeasureString(str, _knobTypeface);
             }
 
             int strw = (int)strsize.Width;

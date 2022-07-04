@@ -154,7 +154,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         /// <summary>
         /// Configure the label of this axis
         /// </summary>
-        public string Label(string? label = null, Color? color = null, float? size = null, bool? bold = null, string? fontName = null)
+        public string Label(string label = null, Color? color = null, float? size = null, bool? bold = null, string fontName = null)
         {
             AxisLabel.IsVisible = true;
 #pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.

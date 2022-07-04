@@ -30,8 +30,6 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         private static bool? _isSystemAbleToLoadShield = null;
 
         private GlobalMethods _globalMethods = new GlobalMethods();
-
-        private UtilityMethods _utilityMethods = new UtilityMethods();
         #endregion
 
         #region Constants

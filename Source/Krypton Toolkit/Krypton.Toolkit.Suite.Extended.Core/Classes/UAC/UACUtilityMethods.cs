@@ -6,24 +6,14 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Buttons
+namespace Krypton.Toolkit.Suite.Extended.Core
 {
-    /// <summary>Provides useful methods for specified tasks.</summary>
-    public class UtilityMethods
+    /// <summary>Utility methods for the user account control.</summary>
+    public static class UACUtilityMethods
     {
-        #region Constructor
-        /// <summary>
-        /// Initialises a new instance of <see cref="UtilityMethods"/>.
-        /// </summary>
-        public UtilityMethods()
-        {
-
-        }
-        #endregion
-
         #region Methods
         /// <summary>
-        /// Elevates the application to use administrative privileges. To be used with <see cref="Krypton.Toolkit.Suite.Extended.Buttons.KryptonUACElevatedButton"/> or <see cref="Krypton.Toolkit.Suite.Extended.Tool.Strip.Items.ToolStripMenuItemUACSheld"/> button click.
+        /// Elevates the application to use administrative privileges. To be used with <see cref="KryptonUACButtonVersion1"/> or <see cref="ToolStripMenuItemUACSheld"/> button click.
         /// </summary>
         /// <param name="processName">The process name that you wish to elevate.</param>
         public static void ElevateProcessWithAdministrativeRights(string processName)
@@ -47,7 +37,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
                 }
                 catch (Win32Exception wexc)
                 {
-                    KryptonMessageBox.Show("Error: " + wexc.Message, "An Error has Occurred", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ExceptionCapture.CaptureException(wexc);
                 }
 
                 return;

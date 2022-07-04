@@ -89,10 +89,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             /// Gets the control to which this scroll information applies.
             /// </summary>
             /// <value>A <see cref="ScrollControl"/>.</value>
-            public ScrollControl ParentControl
-            {
-                get { return _container; }
-            }
+            public ScrollControl ParentControl => _container;
 
             /// <summary>
             /// Gets or sets the distance to move a scroll bar in response to a small scroll command.

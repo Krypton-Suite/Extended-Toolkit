@@ -1,4 +1,12 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Error.Reporting;
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ */
+#endregion
+
+namespace Krypton.Toolkit.Suite.Extended.Error.Reporting;
 
 public class Error
 {
@@ -19,10 +27,10 @@ public class Error
     //===== calculated variables
     public Exception Exception { get; set; }
 
-    public string Message { get { return Exception.Message; } }
+    public string Message => Exception.Message;
 
-    public string Date { get { return When.ToShortDateString(); } }
+    public string Date => When.ToShortDateString();
 
-    public string Time { get { return When.ToShortTimeString(); } }
+    public string Time => When.ToShortTimeString();
     //=====
 }

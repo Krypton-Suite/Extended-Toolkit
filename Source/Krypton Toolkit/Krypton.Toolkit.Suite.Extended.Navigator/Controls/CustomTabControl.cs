@@ -36,19 +36,13 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         #region ... Properties ...
 
         [Editor(typeof(TabpageExCollectionEditor), typeof(UITypeEditor))]
-        public new TabPageCollection TabPages
-        {
-            get
-            {
-                return base.TabPages;
-            }
-        }
+        public new TabPageCollection TabPages => base.TabPages;
 
         private Boolean _preserveTabColour = false;
         [Browsable(true), Category("Appearance-Extended")]
         public Boolean PreserveTabColour
         {
-            get { return _preserveTabColour; }
+            get => _preserveTabColour;
             set { _preserveTabColour = value; Invalidate(); }
         }
 
@@ -56,7 +50,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [Browsable(true), Category("Appearance-Extended")]
         public Color ButtonsBackColour
         {
-            get { return _buttonsBackColour; }
+            get => _buttonsBackColour;
             set { _buttonsBackColour = value; Invalidate(); }
         }
 
@@ -64,7 +58,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [Browsable(true), Category("Appearance-Extended")]
         public Color ButtonsBorderColour
         {
-            get { return _buttonsBorderColour; }
+            get => _buttonsBorderColour;
             set { _buttonsBorderColour = value; Invalidate(); }
         }
 
@@ -72,7 +66,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [Browsable(true), Category("Appearance-Extended")]
         public Color BorderColour
         {
-            get { return _borderColour; }
+            get => _borderColour;
             set { _borderColour = value; Invalidate(); }
         }
 
@@ -80,7 +74,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [Browsable(false), Category("Appearance-Extended")]
         public int BorderWidth
         {
-            get { return _borderWidth; }
+            get => _borderWidth;
             set { _borderWidth = value; Invalidate(); }
         }
 
@@ -88,7 +82,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [Browsable(true), Category("Appearance-Extended")]
         public int CornerRoundRadiusWidth
         {
-            get { return _cornerRoundRadiusWidth; }
+            get => _cornerRoundRadiusWidth;
             set { _cornerRoundRadiusWidth = value; Invalidate(); }
         }
 
@@ -96,7 +90,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [Browsable(true), Category("Appearance-Extended")]
         public DrawingMethods.CornerType CornerType
         {
-            get { return _cornerType; }
+            get => _cornerType;
             set { _cornerType = value; Invalidate(); }
         }
 
@@ -104,7 +98,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [Browsable(true), Category("Appearance-Extended")]
         public Boolean UseExtendedLayout
         {
-            get { return _useExtendedLayout; }
+            get => _useExtendedLayout;
             set
             {
                 Boolean result = value;
@@ -133,7 +127,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [Browsable(true), Category("Appearance-Extended")]
         public Color TabColourHotLight
         {
-            get { return _tabColourHotLight; }
+            get => _tabColourHotLight;
             set { _tabColourHotLight = value; Invalidate(); }
         }
 
@@ -141,7 +135,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [Browsable(true), Category("Appearance-Extended")]
         public Color TabColourHotDark
         {
-            get { return _tabColourHotDark; }
+            get => _tabColourHotDark;
             set { _tabColourHotDark = value; Invalidate(); }
         }
 
@@ -149,7 +143,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [Browsable(true), Category("Appearance-Extended")]
         public Color TabColourSelectedLight
         {
-            get { return _tabColourSelectedLight; }
+            get => _tabColourSelectedLight;
             set { _tabColourSelectedLight = value; Invalidate(); }
         }
 
@@ -157,7 +151,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [Browsable(true), Category("Appearance-Extended")]
         public Color TabColourSelectedDark
         {
-            get { return _tabColourSelectedDark; }
+            get => _tabColourSelectedDark;
             set { _tabColourSelectedDark = value; Invalidate(); }
         }
 
@@ -165,7 +159,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [Browsable(true), Category("Appearance-Extended")]
         public Color TabColourPressedLight
         {
-            get { return _tabColourPressedLight; }
+            get => _tabColourPressedLight;
             set { _tabColourPressedLight = value; Invalidate(); }
         }
 
@@ -173,7 +167,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [Browsable(true), Category("Appearance-Extended")]
         public Color TabColourPressedDark
         {
-            get { return _tabColourPressedDark; }
+            get => _tabColourPressedDark;
             set { _tabColourPressedDark = value; Invalidate(); }
         }
 
@@ -181,7 +175,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [Browsable(true), Category("Appearance-Extended")]
         public Color TabColourDefaultLight
         {
-            get { return _tabColourDefaultLight; }
+            get => _tabColourDefaultLight;
             set { _tabColourDefaultLight = value; Invalidate(); }
         }
 
@@ -189,7 +183,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [Browsable(true), Category("Appearance-Extended")]
         public Color TabColourDefaultDark
         {
-            get { return _tabColourDefaultDark; }
+            get => _tabColourDefaultDark;
             set { _tabColourDefaultDark = value; Invalidate(); }
         }
 
@@ -197,7 +191,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [Browsable(true), Category("Appearance-Extended")]
         public Color TabHotForeColour
         {
-            get { return _tabHotForeColour; }
+            get => _tabHotForeColour;
             set { _tabHotForeColour = value; Invalidate(); }
         }
 
@@ -205,7 +199,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [Browsable(true), Category("Appearance-Extended")]
         public Color TabSelectedForeColour
         {
-            get { return _tabSelectedForeColour; }
+            get => _tabSelectedForeColour;
             set { _tabSelectedForeColour = value; Invalidate(); }
         }
 
@@ -213,7 +207,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [Browsable(true), Category("Appearance-Extended")]
         public Color TabForeColour
         {
-            get { return _tabForeColour; }
+            get => _tabForeColour;
             set { _tabForeColour = value; Invalidate(); }
         }
 
@@ -221,7 +215,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [Browsable(true), Category("Appearance-Extended")]
         public Color StandardBackColour
         {
-            get { return _standardBackColour; }
+            get => _standardBackColour;
             set { _standardBackColour = value; Invalidate(); }
         }
 
@@ -231,7 +225,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [Browsable(true), Category("Appearance-Extended")]
         public CornWidth CornerWidth
         {
-            get { return (CornWidth)_cornerWidth; }
+            get => (CornWidth)_cornerWidth;
             set
             {
                 _cornerWidth = (int)value;
@@ -265,7 +259,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [Browsable(true), Category("Appearance-Extended")]
         public CornSymmetry CornerSymmetry
         {
-            get { return (CornSymmetry)_cornerSymmetry; }
+            get => (CornSymmetry)_cornerSymmetry;
             set
             {
                 _cornerSymmetry = (int)value;
@@ -300,7 +294,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [Browsable(true), Category("Appearance-Extended")]
         public Boolean AllowSelectedTabHigh
         {
-            get { return _allowSelectedTabHigh; }
+            get => _allowSelectedTabHigh;
             set { _allowSelectedTabHigh = value; Invalidate(); }
         }
 
@@ -308,7 +302,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [Browsable(true), Category("Appearance-Extended")]
         public Boolean AllowCloseButton
         {
-            get { return _allowCloseButton; }
+            get => _allowCloseButton;
             set { _allowCloseButton = value; Invalidate(); }
         }
 
@@ -317,7 +311,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [Browsable(true), Category("Appearance-Extended")]
         public Boolean AllowNavigatorButtons
         {
-            get { return _allowNavigatorButtons; }
+            get => _allowNavigatorButtons;
             set { _allowNavigatorButtons = value; Invalidate(); }
         }
 
@@ -325,7 +319,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [Browsable(true), Category("Appearance-Extended")]
         public Boolean AllowContextButton
         {
-            get { return _allowContextButton; }
+            get => _allowContextButton;
             set { _allowContextButton = value; Invalidate(); }
         }
 
@@ -1771,11 +1765,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
 
             private Rectangle _bounds;
-            internal Rectangle Bounds
-            {
-                get { return _bounds; }
-            }
-
+            internal Rectangle Bounds => _bounds;
         }
 
         #endregion

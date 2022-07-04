@@ -50,30 +50,14 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         public RoundedRectangleF()
         {
         }
-        public GraphicsPath Path
-        {
-            get
-            {
-                return grPath;
-            }
-        }
-        public RectangleF Rect
-        {
-            get
-            {
-                return new RectangleF(x, y, width, height);
-            }
-        }
+        public GraphicsPath Path => grPath;
+
+        public RectangleF Rect => new RectangleF(x, y, width, height);
+
         public float Radius
         {
-            get
-            {
-                return radius;
-            }
-            set
-            {
-                radius = value;
-            }
+            get => radius;
+            set => radius = value;
         }
 
     }

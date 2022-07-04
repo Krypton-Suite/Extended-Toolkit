@@ -149,10 +149,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
 
         internal bool PauseRecognizerOnRecognition
         {
-            get
-            {
-                return _pauseRecognizerOnRecognition;
-            }
+            get => _pauseRecognizerOnRecognition;
             set
             {
                 if (value != _pauseRecognizerOnRecognition)
@@ -302,10 +299,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
                 }
                 return _audioState;
             }
-            set
-            {
-                _audioState = value;
-            }
+            set => _audioState = value;
         }
 
         internal int AudioLevel
@@ -404,10 +398,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
 
         internal int MaxAlternates
         {
-            get
-            {
-                return _maxAlternates;
-            }
+            get => _maxAlternates;
             set
             {
                 if (value < 0)
@@ -529,15 +520,9 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
         internal event EventHandler<AudioStateChangedEventArgs> AudioStateChanged
         {
             [MethodImpl(MethodImplOptions.Synchronized)]
-            add
-            {
-                _audioStateChangedDelegate = (EventHandler<AudioStateChangedEventArgs>)Delegate.Combine(_audioStateChangedDelegate, value);
-            }
+            add => _audioStateChangedDelegate = (EventHandler<AudioStateChangedEventArgs>)Delegate.Combine(_audioStateChangedDelegate, value);
             [MethodImpl(MethodImplOptions.Synchronized)]
-            remove
-            {
-                _audioStateChangedDelegate = (EventHandler<AudioStateChangedEventArgs>)Delegate.Remove(_audioStateChangedDelegate, value);
-            }
+            remove => _audioStateChangedDelegate = (EventHandler<AudioStateChangedEventArgs>)Delegate.Remove(_audioStateChangedDelegate, value);
         }
 
         internal event EventHandler<RecognizerUpdateReachedEventArgs> RecognizerUpdateReached;

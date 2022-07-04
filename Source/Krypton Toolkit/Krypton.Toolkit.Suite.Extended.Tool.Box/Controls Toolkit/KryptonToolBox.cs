@@ -394,28 +394,28 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         [Category("ToolBox")]
         public int LayoutDelay
         {
-            get { return _layoutDelay; }
-            set { _layoutDelay = value; }
+            get => _layoutDelay;
+            set => _layoutDelay = value;
         }
 
         [Category("ToolBox")]
         public int ScrollDelay
         {
-            get { return _scrollDelay; }
-            set { _scrollDelay = value; }
+            get => _scrollDelay;
+            set => _scrollDelay = value;
         }
 
         [Category("ToolBox")]
         public int InitialScrollDelay
         {
-            get { return _scrollWait; }
-            set { _scrollWait = value; }
+            get => _scrollWait;
+            set => _scrollWait = value;
         }
 
         [Category("ToolBox")]
         public Color ItemBackgroundColour
         {
-            get { return _itemBgColour; }
+            get => _itemBgColour;
             set
             {
                 if (value != _itemBgColour)
@@ -429,7 +429,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         [Category("ToolBox")]
         public Color ItemBorderColour
         {
-            get { return _itemBorderColour; }
+            get => _itemBorderColour;
             set
             {
                 if (value != _itemBorderColour)
@@ -443,7 +443,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         [Category("ToolBox")]
         public Color ItemSelectedColour
         {
-            get { return _selectedItemColour; }
+            get => _selectedItemColour;
             set
             {
                 if (value != _selectedItemColour)
@@ -457,7 +457,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         [Category("ToolBox")]
         public bool ShowOnlyOneItemPerRow
         {
-            get { return _onlyOneItemPerRow; }
+            get => _onlyOneItemPerRow;
             set
             {
                 if (value != _onlyOneItemPerRow)
@@ -472,7 +472,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         [Category("ToolBox")]
         public Color ItemHoverColour
         {
-            get { return _itemHoverColour; }
+            get => _itemHoverColour;
             set
             {
                 if (value != _itemHoverColour)
@@ -486,7 +486,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         [Category("ToolBox")]
         public Color ItemNormalColour
         {
-            get { return _itemNormalColour; }
+            get => _itemNormalColour;
             set
             {
                 if (value != _itemNormalColour)
@@ -500,7 +500,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         [Category("ToolBox")]
         public Color TabSelectedTextColour
         {
-            get { return _tabTxtSelectColour.IsEmpty ? SystemColors.ControlText : _tabTxtSelectColour; }
+            get => _tabTxtSelectColour.IsEmpty ? SystemColors.ControlText : _tabTxtSelectColour;
             set
             {
                 if (value != _tabTxtSelectColour)
@@ -521,7 +521,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         [Category("ToolBox")]
         public Color TabNormalTextColour
         {
-            get { return _tabTxtNormalColour.IsEmpty ? SystemColors.ControlText : _tabTxtNormalColour; }
+            get => _tabTxtNormalColour.IsEmpty ? SystemColors.ControlText : _tabTxtNormalColour;
             set
             {
                 if (value != _tabTxtNormalColour)
@@ -542,7 +542,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         [Category("ToolBox")]
         public Color TabHoverTextColour
         {
-            get { return _tabTxtHoverColour.IsEmpty ? SystemColors.ControlText : _tabTxtHoverColour; }
+            get => _tabTxtHoverColour.IsEmpty ? SystemColors.ControlText : _tabTxtHoverColour;
             set
             {
                 if (value != _tabTxtHoverColour)
@@ -563,7 +563,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         [Category("ToolBox")]
         public Color ItemSelectedTextColour
         {
-            get { return _itemTxtSelectColour.IsEmpty ? SystemColors.ControlText : _itemTxtSelectColour; }
+            get => _itemTxtSelectColour.IsEmpty ? SystemColors.ControlText : _itemTxtSelectColour;
             set
             {
                 if (value != _itemTxtSelectColour)
@@ -584,7 +584,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         [Category("ToolBox")]
         public Color ItemNormalTextColour
         {
-            get { return _itemTxtNormalColour.IsEmpty ? SystemColors.ControlText : _itemTxtNormalColour; }
+            get => _itemTxtNormalColour.IsEmpty ? SystemColors.ControlText : _itemTxtNormalColour;
             set
             {
                 if (value != _itemTxtNormalColour)
@@ -605,7 +605,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         [Category("ToolBox")]
         public Color ItemHoverTextColour
         {
-            get { return _itemTxtHoverColor.IsEmpty ? SystemColors.ControlText : _itemTxtHoverColor; }
+            get => _itemTxtHoverColor.IsEmpty ? SystemColors.ControlText : _itemTxtHoverColor;
             set
             {
                 if (value != _itemHoverColour)
@@ -626,7 +626,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         [Category("ToolBox"), XmlIgnore]
         public ImageList SmallImageList
         {
-            get { return _smallImageList; }
+            get => _smallImageList;
             set
             {
                 if (value != _smallImageList)
@@ -642,7 +642,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         [Category("ToolBox"), XmlIgnore]
         public ImageList LargeImageList
         {
-            get { return _largeImageList; }
+            get => _largeImageList;
             set
             {
                 if (value != _largeImageList)
@@ -658,7 +658,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         [Category("ToolBox")]
         public int TabHeight
         {
-            get { return _tabHeight; }
+            get => _tabHeight;
             set
             {
                 if (value != _tabHeight && IsHeightValid(value, false))
@@ -674,7 +674,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         [Category("ToolBox")]
         public int ItemHeight
         {
-            get { return _itemHeight; }
+            get => _itemHeight;
             set
             {
                 if (value != _itemHeight && IsHeightValid(value, false))
@@ -691,7 +691,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         [Category("ToolBox")]
         public Size LargeItemSize
         {
-            get { return _largeItemSize; }
+            get => _largeItemSize;
             set
             {
                 if (value != _largeItemSize && IsHeightValid(value.Height, true))
@@ -708,7 +708,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         [Category("ToolBox")]
         public Size SmallItemSize
         {
-            get { return _smallItemSize; }
+            get => _smallItemSize;
             set
             {
                 if (value != _smallItemSize && IsHeightValid(value.Height, false))
@@ -725,7 +725,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         [Category("ToolBox")]
         public int ItemSpacing
         {
-            get { return _itemSpacing; }
+            get => _itemSpacing;
             set
             {
                 if (value != _itemSpacing)
@@ -740,7 +740,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         [Category("ToolBox")]
         public int TabSpacing
         {
-            get { return _tabSpacing; }
+            get => _tabSpacing;
             set
             {
                 if (value != _tabSpacing)
@@ -815,16 +815,10 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         }
 
         [Category("ToolBox"), XmlIgnore]
-        public ToolBoxTab SelectedTab
-        {
-            get { return _selectedTab; }
-        }
+        public ToolBoxTab SelectedTab => _selectedTab;
 
         [Category("ToolBox"), Browsable(false), XmlIgnore]
-        public ToolBoxItem EditingItem
-        {
-            get { return _textBox.Tag as ToolBoxItem; }
-        }
+        public ToolBoxItem EditingItem => _textBox.Tag as ToolBoxItem;
 
         [Category("ToolBox")]
         public int SelectedTabIndex
@@ -875,16 +869,10 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         }
 
         [Category("ToolBox"), Browsable(false), XmlIgnore]
-        public int SmallImageWidth
-        {
-            get { return _smallImageList.ImageSize.Width; }
-        }
+        public int SmallImageWidth => _smallImageList.ImageSize.Width;
 
         [Category("ToolBox"), Browsable(false), XmlIgnore]
-        public int SmallImageHeight
-        {
-            get { return _smallImageList.ImageSize.Height; }
-        }
+        public int SmallImageHeight => _smallImageList.ImageSize.Height;
 
         [Category("ToolBox"), Browsable(false), XmlIgnore]
         public ImageAttributes DisabledImageAttribs
@@ -913,49 +901,37 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         }
 
         [Category("ToolBox"), Browsable(false)]
-        public ToolScrollButton UpScroll
-        {
-            get { return _upScroll; }
-        }
+        public ToolScrollButton UpScroll => _upScroll;
 
         [Category("ToolBox"), Browsable(false)]
-        public ToolScrollButton DownScroll
-        {
-            get { return _dnScroll; }
-        }
+        public ToolScrollButton DownScroll => _dnScroll;
 
         [Category("ToolBox"), Browsable(false), XmlIgnore]
-        public bool LayoutTimerActive
-        {
-            get { return null != _timer && _timerIsForLayout; }
-        }
+        public bool LayoutTimerActive => null != _timer && _timerIsForLayout;
 
         [Category("ToolBox")]
         public bool SelectAllTextWhileRenaming
         {
-            get { return _selAllTextInRename; }
-            set { _selAllTextInRename = value; }
+            get => _selAllTextInRename;
+            set => _selAllTextInRename = value;
         }
 
         [Category("ToolBox")]
         public bool AllowSwappingByDragDrop
         {
-            get { return _allowDragSwap; }
-            set { _allowDragSwap = value; }
+            get => _allowDragSwap;
+            set => _allowDragSwap = value;
         }
 
         [Category("ToolBox")]
         public bool UseItemColorInRename
         {
-            get { return _useItemClrInRename; }
-            set { _useItemClrInRename = value; }
+            get => _useItemClrInRename;
+            set => _useItemClrInRename = value;
         }
 
         [Category("ToolBox"), XmlIgnore, Browsable(false)]
-        public bool IsLoading
-        {
-            get { return _isLoading; }
-        }
+        public bool IsLoading => _isLoading;
 
         #endregion //Properties
 

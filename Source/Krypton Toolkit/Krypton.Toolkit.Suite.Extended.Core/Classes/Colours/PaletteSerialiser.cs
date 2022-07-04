@@ -6,8 +6,6 @@
  */
 #endregion
 
-using System.ComponentModel;
-using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -39,10 +37,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// Gets all loaded serializers.
         /// </summary>
         /// <value>The loaded serializers.</value>
-        public static IEnumerable<IPaletteSerialiser> AllSerializers
-        {
-            get { return _serializerCache.AsReadOnly(); }
-        }
+        public static IEnumerable<IPaletteSerialiser> AllSerializers => _serializerCache.AsReadOnly();
 
         /// <summary>
         /// Returns a filter suitable for use with the <see cref="System.Windows.Forms.OpenFileDialog"/>.
@@ -255,20 +250,14 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// </summary>
         /// <value><c>true</c> if palettes can be read using this serializer; otherwise, <c>false</c>.</value>
         [Browsable(false)]
-        public virtual bool CanRead
-        {
-            get { return true; }
-        }
+        public virtual bool CanRead => true;
 
         /// <summary>
         /// Gets a value indicating whether this serializer can be used to write palettes.
         /// </summary>
         /// <value><c>true</c> if palettes can be written using this serializer; otherwise, <c>false</c>.</value>
         [Browsable(false)]
-        public virtual bool CanWrite
-        {
-            get { return true; }
-        }
+        public virtual bool CanWrite => true;
 
         /// <summary>
         /// Gets the default extension for files generated with this palette format.
@@ -448,10 +437,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <value>
         /// The maximum value number of colors supported by this format.
         /// </value>
-        public virtual int Maximum
-        {
-            get { return int.MaxValue; }
-        }
+        public virtual int Maximum => int.MaxValue;
 
         /// <summary>
         /// Gets the minimum numbers of colors supported by this format.
@@ -459,46 +445,31 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <value>
         /// The minimum number of colors supported by this format.
         /// </value>
-        public virtual int Minimum
-        {
-            get { return 1; }
-        }
+        public virtual int Minimum => 1;
 
         /// <summary>
         /// Gets a value indicating whether this serializer can be used to read palettes.
         /// </summary>
         /// <value><c>true</c> if palettes can be read using this serializer; otherwise, <c>false</c>.</value>
-        bool IPaletteSerialiser.CanRead
-        {
-            get { return this.CanRead; }
-        }
+        bool IPaletteSerialiser.CanRead => this.CanRead;
 
         /// <summary>
         /// Gets a value indicating whether this serializer can be used to write palettes.
         /// </summary>
         /// <value><c>true</c> if palettes can be written using this serializer; otherwise, <c>false</c>.</value>
-        bool IPaletteSerialiser.CanWrite
-        {
-            get { return this.CanWrite; }
-        }
+        bool IPaletteSerialiser.CanWrite => this.CanWrite;
 
         /// <summary>
         /// Gets the default extension for files generated with this palette format.
         /// </summary>
         /// <value>The default extension for files generated with this palette format.</value>
-        string IPaletteSerialiser.DefaultExtension
-        {
-            get { return this.DefaultExtension; }
-        }
+        string IPaletteSerialiser.DefaultExtension => this.DefaultExtension;
 
         /// <summary>
         /// Gets a descriptive name of the palette format
         /// </summary>
         /// <value>The descriptive name of the palette format.</value>
-        string IPaletteSerialiser.Name
-        {
-            get { return this.Name; }
-        }
+        string IPaletteSerialiser.Name => this.Name;
 
         #endregion
 

@@ -195,26 +195,14 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// </summary>
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public new DataGridViewRow RowTemplate
-        {
-            get
-            {
-                return base.RowTemplate;
-            }
-        }
+        public new DataGridViewRow RowTemplate => base.RowTemplate;
 
         /// <summary>
         /// Gets if the grid is grouped
         /// </summary>
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public bool IsGridGrouped
-        {
-            get
-            {
-                return !(_groupCollection.Count == 0);
-            }
-        }
+        public bool IsGridGrouped => !(_groupCollection.Count == 0);
 
         /// <summary>
         /// Gets or sets the OutlookGridGroupBox
@@ -224,14 +212,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         [DefaultValue(null)]
         public KryptonOutlookGridGroupBox GroupBox
         {
-            get
-            {
-                return groupBox;
-            }
-            set
-            {
-                groupBox = value;
-            }
+            get => groupBox;
+            set => groupBox = value;
         }
 
         /// <summary>
@@ -241,8 +223,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public List<OutlookGridRow> InternalRows
         {
-            get { return _internalRows; }
-            set { _internalRows = value; }
+            get => _internalRows;
+            set => _internalRows = value;
         }
 
         /// <summary>
@@ -251,23 +233,16 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         [Browsable(false)]
         public int PreviousSelectedGroupRow
         {
-            get
-            {
-                return _previousGroupRowSelected;
-            }
+            get => _previousGroupRowSelected;
 
-            set
-            {
-                _previousGroupRowSelected = value;
-            }
+            set => _previousGroupRowSelected = value;
         }
 
         /// <summary>
         /// Gets the Krypton Palette of the OutlookGrid
         /// </summary>
         [Browsable(false)]
-        public IPalette GridPalette
-        { get { return _palette; } }
+        public IPalette GridPalette => _palette;
 
         /// <summary>
         /// Gets or sets the group collection.
@@ -276,14 +251,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         [Browsable(false)]
         public OutlookGridGroupCollection GroupCollection
         {
-            get
-            {
-                return _groupCollection;
-            }
-            set
-            {
-                _groupCollection = value;
-            }
+            get => _groupCollection;
+            set => _groupCollection = value;
         }
 
         /// <summary>
@@ -295,14 +264,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         [DefaultValue(false)]
         public bool HideColumnOnGrouping
         {
-            get
-            {
-                return _hideColumnOnGrouping;
-            }
-            set
-            {
-                _hideColumnOnGrouping = value;
-            }
+            get => _hideColumnOnGrouping;
+            set => _hideColumnOnGrouping = value;
         }
 
         /// <summary>
@@ -316,14 +279,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
         public List<ConditionalFormatting> ConditionalFormatting
         {
-            get
-            {
-                return formatConditions;
-            }
-            set
-            {
-                formatConditions = value;
-            }
+            get => formatConditions;
+            set => formatConditions = value;
         }
 
 
@@ -336,7 +293,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         [DefaultValue(true)]
         public bool ShowLines
         {
-            get { return _showLines; }
+            get => _showLines;
             set
             {
                 if (value != _showLines)
@@ -355,7 +312,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// </value>
         public FillMode FillMode
         {
-            get { return _fillMode; }
+            get => _fillMode;
             set
             {
                 if (value != _fillMode)

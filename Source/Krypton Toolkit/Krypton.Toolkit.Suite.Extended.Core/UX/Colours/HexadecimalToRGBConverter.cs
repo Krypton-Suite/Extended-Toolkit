@@ -6,10 +6,6 @@
  */
 #endregion
 
-using Microsoft.WindowsAPICodePack.Dialogs;
-
-using System.Collections;
-using System.IO;
 using System.Text;
 
 namespace Krypton.Toolkit.Suite.Extended.Core
@@ -231,8 +227,12 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #endregion
 
         #region Properties
-        public bool Modified { get { return _modified; } set { _modified = value; } }
-        public Color TargetColour { get { return _targetColour; } set { _targetColour = value; } }
+        public bool Modified { get => _modified;
+            set => _modified = value;
+        }
+        public Color TargetColour { get => _targetColour;
+            set => _targetColour = value;
+        }
         #endregion
 
         public HexadecimalToRGBConverter()

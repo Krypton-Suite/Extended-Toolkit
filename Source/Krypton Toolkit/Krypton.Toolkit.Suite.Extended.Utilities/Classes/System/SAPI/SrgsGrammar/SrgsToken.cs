@@ -24,10 +24,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
 
         public string Text
         {
-            get
-            {
-                return _text;
-            }
+            get => _text;
             set
             {
                 Helpers.ThrowIfEmptyOrNull(value, "value");
@@ -42,10 +39,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
 
         public string Pronunciation
         {
-            get
-            {
-                return _pronunciation;
-            }
+            get => _pronunciation;
             set
             {
                 Helpers.ThrowIfEmptyOrNull(value, "value");
@@ -55,10 +49,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
 
         public string Display
         {
-            get
-            {
-                return _display;
-            }
+            get => _display;
             set
             {
                 Helpers.ThrowIfEmptyOrNull(value, "value");

@@ -19,10 +19,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
 
         public string Text
         {
-            get
-            {
-                return _text;
-            }
+            get => _text;
             set
             {
                 Helpers.ThrowIfNull(value, "value");

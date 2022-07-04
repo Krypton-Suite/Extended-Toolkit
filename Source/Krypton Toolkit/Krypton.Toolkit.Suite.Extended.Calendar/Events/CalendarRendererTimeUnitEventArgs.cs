@@ -36,11 +36,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets the unit that is about to be painted
         /// </summary>
-        public CalendarTimeScaleUnit Unit
-        {
-            get { return _unit; }
-        }
-
+        public CalendarTimeScaleUnit Unit => _unit;
 
         #endregion
 

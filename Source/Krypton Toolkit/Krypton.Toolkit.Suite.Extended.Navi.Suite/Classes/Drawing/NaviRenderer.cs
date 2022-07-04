@@ -19,8 +19,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// </summary>
         public NaviColourTable ColourTable
         {
-            get { return coloursTable; }
-            set { coloursTable = value; }
+            get => coloursTable;
+            set => coloursTable = value;
         }
 
         #endregion

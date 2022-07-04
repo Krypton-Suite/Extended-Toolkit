@@ -44,10 +44,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <remarks>
         /// Items may have more than one bounds due to week segmentation.
         /// </remarks>
-        public Rectangle Bounds
-        {
-            get { return _bounds; }
-        }
+        public Rectangle Bounds => _bounds;
 
         /// <summary>
         /// Gets a value indicating if the bounds are the first of the item.
@@ -55,10 +52,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <remarks>
         /// Items may have more than one bounds due to week segmentation.
         /// </remarks>
-        public bool IsFirst
-        {
-            get { return _isFirst; }
-        }
+        public bool IsFirst => _isFirst;
 
         /// <summary>
         /// Gets a value indicating if the bounds are the last of the item.
@@ -68,8 +62,8 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </remarks>
         public bool IsLast
         {
-            get { return _isLast; }
-            set { _isLast = value; }
+            get => _isLast;
+            set => _isLast = value;
         }
 
 

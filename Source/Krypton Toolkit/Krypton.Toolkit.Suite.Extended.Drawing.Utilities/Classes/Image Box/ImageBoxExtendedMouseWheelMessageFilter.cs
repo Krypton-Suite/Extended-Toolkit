@@ -42,7 +42,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// </value>
         public static bool Active
         {
-            get { return _active; }
+            get => _active;
             set
             {
                 if (_active != value)

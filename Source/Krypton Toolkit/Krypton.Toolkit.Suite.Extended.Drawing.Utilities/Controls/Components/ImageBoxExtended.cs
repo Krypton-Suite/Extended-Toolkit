@@ -250,8 +250,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Property Changed")]
         public event EventHandler AllowClickZoomChanged
         {
-            add { this.Events.AddHandler(_eventAllowClickZoomChanged, value); }
-            remove { this.Events.RemoveHandler(_eventAllowClickZoomChanged, value); }
+            add => this.Events.AddHandler(_eventAllowClickZoomChanged, value);
+            remove => this.Events.RemoveHandler(_eventAllowClickZoomChanged, value);
         }
 
         /// <summary>
@@ -260,8 +260,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Property Changed")]
         public event EventHandler AllowDoubleClickChanged
         {
-            add { this.Events.AddHandler(_eventAllowDoubleClickChanged, value); }
-            remove { this.Events.RemoveHandler(_eventAllowDoubleClickChanged, value); }
+            add => this.Events.AddHandler(_eventAllowDoubleClickChanged, value);
+            remove => this.Events.RemoveHandler(_eventAllowDoubleClickChanged, value);
         }
 
         /// <summary>
@@ -270,8 +270,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Property Changed")]
         public event EventHandler AllowUnfocusedMouseWheelChanged
         {
-            add { this.Events.AddHandler(_eventAllowUnfocusedMouseWheelChanged, value); }
-            remove { this.Events.RemoveHandler(_eventAllowUnfocusedMouseWheelChanged, value); }
+            add => this.Events.AddHandler(_eventAllowUnfocusedMouseWheelChanged, value);
+            remove => this.Events.RemoveHandler(_eventAllowUnfocusedMouseWheelChanged, value);
         }
 
         /// <summary>
@@ -280,8 +280,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Property Changed")]
         public event EventHandler AllowZoomChanged
         {
-            add { this.Events.AddHandler(_eventAllowZoomChanged, value); }
-            remove { this.Events.RemoveHandler(_eventAllowZoomChanged, value); }
+            add => this.Events.AddHandler(_eventAllowZoomChanged, value);
+            remove => this.Events.RemoveHandler(_eventAllowZoomChanged, value);
         }
 
         /// <summary>
@@ -290,8 +290,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Property Changed")]
         public event EventHandler AutoCenterChanged
         {
-            add { this.Events.AddHandler(_eventAutoCenterChanged, value); }
-            remove { this.Events.RemoveHandler(_eventAutoCenterChanged, value); }
+            add => this.Events.AddHandler(_eventAutoCenterChanged, value);
+            remove => this.Events.RemoveHandler(_eventAutoCenterChanged, value);
         }
 
         /// <summary>
@@ -300,8 +300,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Property Changed")]
         public event EventHandler AutoPanChanged
         {
-            add { this.Events.AddHandler(_eventAutoPanChanged, value); }
-            remove { this.Events.RemoveHandler(_eventAutoPanChanged, value); }
+            add => this.Events.AddHandler(_eventAutoPanChanged, value);
+            remove => this.Events.RemoveHandler(_eventAutoPanChanged, value);
         }
 
         /// <summary>
@@ -310,8 +310,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Property Changed")]
         public event EventHandler DropShadowSizeChanged
         {
-            add { this.Events.AddHandler(_eventDropShadowSizeChanged, value); }
-            remove { this.Events.RemoveHandler(_eventDropShadowSizeChanged, value); }
+            add => this.Events.AddHandler(_eventDropShadowSizeChanged, value);
+            remove => this.Events.RemoveHandler(_eventDropShadowSizeChanged, value);
         }
 
         /// <summary>
@@ -320,8 +320,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Property Changed")]
         public event EventHandler GridCellSizeChanged
         {
-            add { this.Events.AddHandler(_eventGridCellSizeChanged, value); }
-            remove { this.Events.RemoveHandler(_eventGridCellSizeChanged, value); }
+            add => this.Events.AddHandler(_eventGridCellSizeChanged, value);
+            remove => this.Events.RemoveHandler(_eventGridCellSizeChanged, value);
         }
 
         /// <summary>
@@ -330,8 +330,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Property Changed")]
         public event EventHandler GridColorAlternateChanged
         {
-            add { this.Events.AddHandler(_eventGridColorAlternateChanged, value); }
-            remove { this.Events.RemoveHandler(_eventGridColorAlternateChanged, value); }
+            add => this.Events.AddHandler(_eventGridColorAlternateChanged, value);
+            remove => this.Events.RemoveHandler(_eventGridColorAlternateChanged, value);
         }
 
         /// <summary>
@@ -340,8 +340,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Property Changed")]
         public event EventHandler GridColorChanged
         {
-            add { this.Events.AddHandler(_eventGridColorChanged, value); }
-            remove { this.Events.RemoveHandler(_eventGridColorChanged, value); }
+            add => this.Events.AddHandler(_eventGridColorChanged, value);
+            remove => this.Events.RemoveHandler(_eventGridColorChanged, value);
         }
 
         /// <summary>
@@ -350,8 +350,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Property Changed")]
         public event EventHandler GridDisplayModeChanged
         {
-            add { this.Events.AddHandler(_eventGridDisplayModeChanged, value); }
-            remove { this.Events.RemoveHandler(_eventGridDisplayModeChanged, value); }
+            add => this.Events.AddHandler(_eventGridDisplayModeChanged, value);
+            remove => this.Events.RemoveHandler(_eventGridDisplayModeChanged, value);
         }
 
         /// <summary>
@@ -360,8 +360,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Property Changed")]
         public event EventHandler GridScaleChanged
         {
-            add { this.Events.AddHandler(_eventGridScaleChanged, value); }
-            remove { this.Events.RemoveHandler(_eventGridScaleChanged, value); }
+            add => this.Events.AddHandler(_eventGridScaleChanged, value);
+            remove => this.Events.RemoveHandler(_eventGridScaleChanged, value);
         }
 
         /// <summary>
@@ -370,8 +370,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Property Changed")]
         public event EventHandler ImageBorderColorChanged
         {
-            add { this.Events.AddHandler(_eventImageBorderColorChanged, value); }
-            remove { this.Events.RemoveHandler(_eventImageBorderColorChanged, value); }
+            add => this.Events.AddHandler(_eventImageBorderColorChanged, value);
+            remove => this.Events.RemoveHandler(_eventImageBorderColorChanged, value);
         }
 
         /// <summary>
@@ -380,8 +380,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Property Changed")]
         public event EventHandler ImageBorderStyleChanged
         {
-            add { this.Events.AddHandler(_eventImageBorderStyleChanged, value); }
-            remove { this.Events.RemoveHandler(_eventImageBorderStyleChanged, value); }
+            add => this.Events.AddHandler(_eventImageBorderStyleChanged, value);
+            remove => this.Events.RemoveHandler(_eventImageBorderStyleChanged, value);
         }
 
         /// <summary>
@@ -390,8 +390,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Property Changed")]
         public event EventHandler ImageChanged
         {
-            add { this.Events.AddHandler(_eventImageChanged, value); }
-            remove { this.Events.RemoveHandler(_eventImageChanged, value); }
+            add => this.Events.AddHandler(_eventImageChanged, value);
+            remove => this.Events.RemoveHandler(_eventImageChanged, value);
         }
 
         /// <summary>
@@ -400,8 +400,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Property Changed")]
         public event EventHandler InterpolationModeChanged
         {
-            add { this.Events.AddHandler(_eventInterpolationModeChanged, value); }
-            remove { this.Events.RemoveHandler(_eventInterpolationModeChanged, value); }
+            add => this.Events.AddHandler(_eventInterpolationModeChanged, value);
+            remove => this.Events.RemoveHandler(_eventInterpolationModeChanged, value);
         }
 
         /// <summary>
@@ -410,8 +410,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Property Changed")]
         public event EventHandler InvertMouseChanged
         {
-            add { this.Events.AddHandler(_eventInvertMouseChanged, value); }
-            remove { this.Events.RemoveHandler(_eventInvertMouseChanged, value); }
+            add => this.Events.AddHandler(_eventInvertMouseChanged, value);
+            remove => this.Events.RemoveHandler(_eventInvertMouseChanged, value);
         }
 
         /// <summary>
@@ -420,8 +420,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Property Changed")]
         public event EventHandler LimitSelectionToImageChanged
         {
-            add { this.Events.AddHandler(_eventLimitSelectionToImageChanged, value); }
-            remove { this.Events.RemoveHandler(_eventLimitSelectionToImageChanged, value); }
+            add => this.Events.AddHandler(_eventLimitSelectionToImageChanged, value);
+            remove => this.Events.RemoveHandler(_eventLimitSelectionToImageChanged, value);
         }
 
         /// <summary>
@@ -430,8 +430,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Property Changed")]
         public event EventHandler PanEnd
         {
-            add { this.Events.AddHandler(_eventPanEnd, value); }
-            remove { this.Events.RemoveHandler(_eventPanEnd, value); }
+            add => this.Events.AddHandler(_eventPanEnd, value);
+            remove => this.Events.RemoveHandler(_eventPanEnd, value);
         }
 
         /// <summary>
@@ -440,8 +440,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Property Changed")]
         public event EventHandler PanStart
         {
-            add { this.Events.AddHandler(_eventPanStart, value); }
-            remove { this.Events.RemoveHandler(_eventPanStart, value); }
+            add => this.Events.AddHandler(_eventPanStart, value);
+            remove => this.Events.RemoveHandler(_eventPanStart, value);
         }
 
         /// <summary>
@@ -450,8 +450,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Property Changed")]
         public event EventHandler PixelGridColorChanged
         {
-            add { this.Events.AddHandler(_eventPixelGridColorChanged, value); }
-            remove { this.Events.RemoveHandler(_eventPixelGridColorChanged, value); }
+            add => this.Events.AddHandler(_eventPixelGridColorChanged, value);
+            remove => this.Events.RemoveHandler(_eventPixelGridColorChanged, value);
         }
 
         /// <summary>
@@ -460,8 +460,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Property Changed")]
         public event EventHandler PixelGridThresholdChanged
         {
-            add { this.Events.AddHandler(_eventPixelGridThresholdChanged, value); }
-            remove { this.Events.RemoveHandler(_eventPixelGridThresholdChanged, value); }
+            add => this.Events.AddHandler(_eventPixelGridThresholdChanged, value);
+            remove => this.Events.RemoveHandler(_eventPixelGridThresholdChanged, value);
         }
 
         /// <summary>
@@ -470,8 +470,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Property Changed")]
         public event EventHandler ScaleTextChanged
         {
-            add { this.Events.AddHandler(_eventScaleTextChanged, value); }
-            remove { this.Events.RemoveHandler(_eventScaleTextChanged, value); }
+            add => this.Events.AddHandler(_eventScaleTextChanged, value);
+            remove => this.Events.RemoveHandler(_eventScaleTextChanged, value);
         }
 
         /// <summary>
@@ -481,8 +481,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         public event EventHandler<EventArgs> Selected
         {
             // TODO: The event signature is wrong and should just be EventHandler - breaking change however. Do in the 2.0 scroll changes branch.
-            add { this.Events.AddHandler(_eventSelected, value); }
-            remove { this.Events.RemoveHandler(_eventSelected, value); }
+            add => this.Events.AddHandler(_eventSelected, value);
+            remove => this.Events.RemoveHandler(_eventSelected, value);
         }
 
         /// <summary>
@@ -491,8 +491,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Action")]
         public event EventHandler<ImageBoxExtendedCancelEventArgs> Selecting
         {
-            add { this.Events.AddHandler(_eventSelecting, value); }
-            remove { this.Events.RemoveHandler(_eventSelecting, value); }
+            add => this.Events.AddHandler(_eventSelecting, value);
+            remove => this.Events.RemoveHandler(_eventSelecting, value);
         }
 
         /// <summary>
@@ -501,8 +501,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Property Changed")]
         public event EventHandler SelectionColorChanged
         {
-            add { this.Events.AddHandler(_eventSelectionColorChanged, value); }
-            remove { this.Events.RemoveHandler(_eventSelectionColorChanged, value); }
+            add => this.Events.AddHandler(_eventSelectionColorChanged, value);
+            remove => this.Events.RemoveHandler(_eventSelectionColorChanged, value);
         }
 
         /// <summary>
@@ -511,8 +511,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Property Changed")]
         public event EventHandler SelectionModeChanged
         {
-            add { this.Events.AddHandler(_eventSelectionModeChanged, value); }
-            remove { this.Events.RemoveHandler(_eventSelectionModeChanged, value); }
+            add => this.Events.AddHandler(_eventSelectionModeChanged, value);
+            remove => this.Events.RemoveHandler(_eventSelectionModeChanged, value);
         }
 
         /// <summary>
@@ -521,8 +521,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Property Changed")]
         public event EventHandler SelectionRegionChanged
         {
-            add { this.Events.AddHandler(_eventSelectionRegionChanged, value); }
-            remove { this.Events.RemoveHandler(_eventSelectionRegionChanged, value); }
+            add => this.Events.AddHandler(_eventSelectionRegionChanged, value);
+            remove => this.Events.RemoveHandler(_eventSelectionRegionChanged, value);
         }
 
         /// <summary>
@@ -531,8 +531,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Property Changed")]
         public event EventHandler ShortcutsEnabledChanged
         {
-            add { this.Events.AddHandler(_eventShortcutsEnabledChanged, value); }
-            remove { this.Events.RemoveHandler(_eventShortcutsEnabledChanged, value); }
+            add => this.Events.AddHandler(_eventShortcutsEnabledChanged, value);
+            remove => this.Events.RemoveHandler(_eventShortcutsEnabledChanged, value);
         }
 
         /// <summary>
@@ -541,8 +541,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Property Changed")]
         public event EventHandler ShowPixelGridChanged
         {
-            add { this.Events.AddHandler(_eventShowPixelGridChanged, value); }
-            remove { this.Events.RemoveHandler(_eventShowPixelGridChanged, value); }
+            add => this.Events.AddHandler(_eventShowPixelGridChanged, value);
+            remove => this.Events.RemoveHandler(_eventShowPixelGridChanged, value);
         }
 
         /// <summary>
@@ -551,8 +551,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Property Changed")]
         public event EventHandler SizeModeChanged
         {
-            add { this.Events.AddHandler(_eventSizeModeChanged, value); }
-            remove { this.Events.RemoveHandler(_eventSizeModeChanged, value); }
+            add => this.Events.AddHandler(_eventSizeModeChanged, value);
+            remove => this.Events.RemoveHandler(_eventSizeModeChanged, value);
         }
 
         /// <summary>
@@ -561,8 +561,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Property Changed")]
         public event EventHandler SizeToFitChanged
         {
-            add { this.Events.AddHandler(_eventSizeToFitChanged, value); }
-            remove { this.Events.RemoveHandler(_eventSizeToFitChanged, value); }
+            add => this.Events.AddHandler(_eventSizeToFitChanged, value);
+            remove => this.Events.RemoveHandler(_eventSizeToFitChanged, value);
         }
 
         /// <summary>
@@ -571,8 +571,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Property Changed")]
         public event EventHandler TextAlignChanged
         {
-            add { this.Events.AddHandler(_eventTextAlignChanged, value); }
-            remove { this.Events.RemoveHandler(_eventTextAlignChanged, value); }
+            add => this.Events.AddHandler(_eventTextAlignChanged, value);
+            remove => this.Events.RemoveHandler(_eventTextAlignChanged, value);
         }
 
         /// <summary>
@@ -581,8 +581,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Property Changed")]
         public event EventHandler TextBackColorChanged
         {
-            add { this.Events.AddHandler(_eventTextBackColorChanged, value); }
-            remove { this.Events.RemoveHandler(_eventTextBackColorChanged, value); }
+            add => this.Events.AddHandler(_eventTextBackColorChanged, value);
+            remove => this.Events.RemoveHandler(_eventTextBackColorChanged, value);
         }
 
         /// <summary>
@@ -591,8 +591,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Property Changed")]
         public event EventHandler TextDisplayModeChanged
         {
-            add { this.Events.AddHandler(_eventTextDisplayModeChanged, value); }
-            remove { this.Events.RemoveHandler(_eventTextDisplayModeChanged, value); }
+            add => this.Events.AddHandler(_eventTextDisplayModeChanged, value);
+            remove => this.Events.RemoveHandler(_eventTextDisplayModeChanged, value);
         }
 
         /// <summary>
@@ -601,8 +601,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Property Changed")]
         public event EventHandler TextPaddingChanged
         {
-            add { this.Events.AddHandler(_eventTextPaddingChanged, value); }
-            remove { this.Events.RemoveHandler(_eventTextPaddingChanged, value); }
+            add => this.Events.AddHandler(_eventTextPaddingChanged, value);
+            remove => this.Events.RemoveHandler(_eventTextPaddingChanged, value);
         }
 
         /// <summary>
@@ -611,8 +611,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Appearance")]
         public event PaintEventHandler VirtualDraw
         {
-            add { this.Events.AddHandler(_eventVirtualDraw, value); }
-            remove { this.Events.RemoveHandler(_eventVirtualDraw, value); }
+            add => this.Events.AddHandler(_eventVirtualDraw, value);
+            remove => this.Events.RemoveHandler(_eventVirtualDraw, value);
         }
 
         /// <summary>
@@ -621,8 +621,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Property Changed")]
         public event EventHandler VirtualModeChanged
         {
-            add { this.Events.AddHandler(_eventVirtualModeChanged, value); }
-            remove { this.Events.RemoveHandler(_eventVirtualModeChanged, value); }
+            add => this.Events.AddHandler(_eventVirtualModeChanged, value);
+            remove => this.Events.RemoveHandler(_eventVirtualModeChanged, value);
         }
 
         /// <summary>
@@ -631,8 +631,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Property Changed")]
         public event EventHandler VirtualSizeChanged
         {
-            add { this.Events.AddHandler(_eventVirtualSizeChanged, value); }
-            remove { this.Events.RemoveHandler(_eventVirtualSizeChanged, value); }
+            add => this.Events.AddHandler(_eventVirtualSizeChanged, value);
+            remove => this.Events.RemoveHandler(_eventVirtualSizeChanged, value);
         }
 
         /// <summary>
@@ -641,8 +641,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Property Changed")]
         public event EventHandler ZoomChanged
         {
-            add { this.Events.AddHandler(_eventZoomChanged, value); }
-            remove { this.Events.RemoveHandler(_eventZoomChanged, value); }
+            add => this.Events.AddHandler(_eventZoomChanged, value);
+            remove => this.Events.RemoveHandler(_eventZoomChanged, value);
         }
 
         /// <summary>
@@ -651,8 +651,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Action")]
         public event EventHandler<ImageBoxExtendedZoomEventArgs> Zoomed
         {
-            add { this.Events.AddHandler(_eventZoomed, value); }
-            remove { this.Events.RemoveHandler(_eventZoomed, value); }
+            add => this.Events.AddHandler(_eventZoomed, value);
+            remove => this.Events.RemoveHandler(_eventZoomed, value);
         }
 
         /// <summary>
@@ -661,8 +661,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Property Changed")]
         public event EventHandler ZoomLevelsChanged
         {
-            add { this.Events.AddHandler(_eventZoomLevelsChanged, value); }
-            remove { this.Events.RemoveHandler(_eventZoomLevelsChanged, value); }
+            add => this.Events.AddHandler(_eventZoomLevelsChanged, value);
+            remove => this.Events.RemoveHandler(_eventZoomLevelsChanged, value);
         }
 
         #endregion
@@ -728,7 +728,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Behavior")]
         public virtual bool AllowClickZoom
         {
-            get { return _allowClickZoom; }
+            get => _allowClickZoom;
             set
             {
                 if (_allowClickZoom != value)
@@ -747,7 +747,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DefaultValue(false)]
         public virtual bool AllowDoubleClick
         {
-            get { return _allowDoubleClick; }
+            get => _allowDoubleClick;
             set
             {
                 if (this.AllowDoubleClick != value)
@@ -763,7 +763,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DefaultValue(false)]
         public virtual bool AllowUnfocusedMouseWheel
         {
-            get { return _allowUnfocusedMouseWheel; }
+            get => _allowUnfocusedMouseWheel;
             set
             {
                 if (this.AllowUnfocusedMouseWheel != value)
@@ -785,7 +785,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DefaultValue(true)]
         public virtual bool AllowZoom
         {
-            get { return _allowZoom; }
+            get => _allowZoom;
             set
             {
                 if (this.AllowZoom != value)
@@ -807,7 +807,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Appearance")]
         public virtual bool AutoCenter
         {
-            get { return _autoCenter; }
+            get => _autoCenter;
             set
             {
                 if (_autoCenter != value)
@@ -829,7 +829,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Behavior")]
         public virtual bool AutoPan
         {
-            get { return _autoPan; }
+            get => _autoPan;
             set
             {
                 if (_autoPan != value)
@@ -849,8 +849,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DefaultValue(true)]
         public override bool AutoScroll
         {
-            get { return base.AutoScroll; }
-            set { base.AutoScroll = value; }
+            get => base.AutoScroll;
+            set => base.AutoScroll = value;
         }
 
         /// <summary>
@@ -865,8 +865,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public new Size AutoScrollMinSize
         {
-            get { return base.AutoScrollMinSize; }
-            set { base.AutoScrollMinSize = value; }
+            get => base.AutoScrollMinSize;
+            set => base.AutoScrollMinSize = value;
         }
 
         /// <summary>
@@ -882,7 +882,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DefaultValue(false)]
         public override bool AutoSize
         {
-            get { return base.AutoSize; }
+            get => base.AutoSize;
             set
             {
                 if (base.AutoSize != value)
@@ -906,8 +906,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DefaultValue(typeof(Color), "White")]
         public override Color BackColor
         {
-            get { return base.BackColor; }
-            set { base.BackColor = value; }
+            get => base.BackColor;
+            set => base.BackColor = value;
         }
 
         /// <summary>
@@ -922,8 +922,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public override Image BackgroundImage
         {
-            get { return base.BackgroundImage; }
-            set { base.BackgroundImage = value; }
+            get => base.BackgroundImage;
+            set => base.BackgroundImage = value;
         }
 
         /// <summary>
@@ -947,8 +947,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public override ImageLayout BackgroundImageLayout
         {
-            get { return base.BackgroundImageLayout; }
-            set { base.BackgroundImageLayout = value; }
+            get => base.BackgroundImageLayout;
+            set => base.BackgroundImageLayout = value;
         }
 
         /// <summary>
@@ -976,7 +976,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DefaultValue(3)]
         public virtual int DropShadowSize
         {
-            get { return _dropShadowSize; }
+            get => _dropShadowSize;
             set
             {
                 if (this.DropShadowSize != value)
@@ -996,7 +996,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DefaultValue(8)]
         public virtual int GridCellSize
         {
-            get { return _gridCellSize; }
+            get => _gridCellSize;
             set
             {
                 if (_gridCellSize != value)
@@ -1015,7 +1015,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DefaultValue(typeof(Color), "Gainsboro")]
         public virtual Color GridColor
         {
-            get { return _gridColor; }
+            get => _gridColor;
             set
             {
                 if (_gridColor != value)
@@ -1034,7 +1034,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DefaultValue(typeof(Color), "White")]
         public virtual Color GridColorAlternate
         {
-            get { return _gridColorAlternate; }
+            get => _gridColorAlternate;
             set
             {
                 if (_gridColorAlternate != value)
@@ -1053,7 +1053,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Appearance")]
         public virtual ImageBoxGridDisplayMode GridDisplayMode
         {
-            get { return _gridDisplayMode; }
+            get => _gridDisplayMode;
             set
             {
                 if (_gridDisplayMode != value)
@@ -1072,7 +1072,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Appearance")]
         public virtual ImageBoxGridScale GridScale
         {
-            get { return _gridScale; }
+            get => _gridScale;
             set
             {
                 if (_gridScale != value)
@@ -1091,7 +1091,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DefaultValue(null)]
         public virtual Image Image
         {
-            get { return _image; }
+            get => _image;
             set
             {
                 if (_image != value)
@@ -1116,7 +1116,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DefaultValue(typeof(Color), "ControlDark")]
         public virtual Color ImageBorderColor
         {
-            get { return _imageBorderColor; }
+            get => _imageBorderColor;
             set
             {
                 if (this.ImageBorderColor != value)
@@ -1136,7 +1136,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DefaultValue(typeof(ImageBoxBorderStyle), "None")]
         public virtual ImageBoxBorderStyle ImageBorderStyle
         {
-            get { return _imageBorderStyle; }
+            get => _imageBorderStyle;
             set
             {
                 if (this.ImageBorderStyle != value)
@@ -1156,7 +1156,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DefaultValue(InterpolationMode.NearestNeighbor)]
         public virtual InterpolationMode InterpolationMode
         {
-            get { return _interpolationMode; }
+            get => _interpolationMode;
             set
             {
                 if (value == InterpolationMode.Invalid)
@@ -1182,7 +1182,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Behavior")]
         public virtual bool InvertMouse
         {
-            get { return _invertMouse; }
+            get => _invertMouse;
             set
             {
                 if (_invertMouse != value)
@@ -1198,10 +1198,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// </summary>
         /// <value><c>true</c> if the image is currently being displayed at 100% zoom; otherwise, <c>false</c>.</value>
         [Browsable(false)]
-        public virtual bool IsActualSize
-        {
-            get { return this.Zoom == 100; }
-        }
+        public virtual bool IsActualSize => this.Zoom == 100;
 
         /// <summary>
         ///   Gets a value indicating whether this control is panning.
@@ -1214,7 +1211,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Browsable(false)]
         public virtual bool IsPanning
         {
-            get { return _isPanning; }
+            get => _isPanning;
             protected set
             {
                 if (_isPanning != value)
@@ -1260,14 +1257,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public virtual bool IsSelecting
         {
-            get
-            {
-                return _isSelecting;
-            }
-            protected set
-            {
-                _isSelecting = value;
-            }
+            get => _isSelecting;
+            protected set => _isSelecting = value;
         }
 
         /// <summary>
@@ -1280,7 +1271,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DefaultValue(true)]
         public virtual bool LimitSelectionToImage
         {
-            get { return _limitSelectionToImage; }
+            get => _limitSelectionToImage;
             set
             {
                 if (this.LimitSelectionToImage != value)
@@ -1300,7 +1291,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DefaultValue(typeof(Color), "DimGray")]
         public virtual Color PixelGridColor
         {
-            get { return _pixelGridColor; }
+            get => _pixelGridColor;
             set
             {
                 if (this.PixelGridColor != value)
@@ -1320,7 +1311,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DefaultValue(5)]
         public virtual int PixelGridThreshold
         {
-            get { return _pixelGridThreshold; }
+            get => _pixelGridThreshold;
             set
             {
                 if (this.PixelGridThreshold != value)
@@ -1340,7 +1331,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DefaultValue(false)]
         public virtual bool ScaleText
         {
-            get { return _scaleText; }
+            get => _scaleText;
             set
             {
                 if (this.ScaleText != value)
@@ -1362,7 +1353,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DefaultValue(typeof(Color), "Highlight")]
         public virtual Color SelectionColor
         {
-            get { return _selectionColor; }
+            get => _selectionColor;
             set
             {
                 if (this.SelectionColor != value)
@@ -1384,7 +1375,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DefaultValue(typeof(ImageBoxSelectionMode), "None")]
         public virtual ImageBoxSelectionMode SelectionMode
         {
-            get { return _selectionMode; }
+            get => _selectionMode;
             set
             {
                 if (this.SelectionMode != value)
@@ -1406,7 +1397,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public virtual RectangleF SelectionRegion
         {
-            get { return _selectionRegion; }
+            get => _selectionRegion;
             set
             {
                 if (this.SelectionRegion != value)
@@ -1428,7 +1419,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DefaultValue(true)]
         public virtual bool ShortcutsEnabled
         {
-            get { return _shortcutsEnabled; }
+            get => _shortcutsEnabled;
             set
             {
                 if (this.ShortcutsEnabled != value)
@@ -1448,7 +1439,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DefaultValue(false)]
         public virtual bool ShowPixelGrid
         {
-            get { return _showPixelGrid; }
+            get => _showPixelGrid;
             set
             {
                 if (this.ShowPixelGrid != value)
@@ -1468,7 +1459,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DefaultValue(typeof(ImageBoxSizeMode), "Normal")]
         public virtual ImageBoxSizeMode SizeMode
         {
-            get { return _sizeMode; }
+            get => _sizeMode;
             set
             {
                 if (this.SizeMode != value)
@@ -1494,7 +1485,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Obsolete("This property is deprecated and will be removed in a future version of the component. Implementors should use the SizeMode property instead.")]
         public virtual bool SizeToFit
         {
-            get { return this.SizeMode == ImageBoxSizeMode.Fit; }
+            get => this.SizeMode == ImageBoxSizeMode.Fit;
             set
             {
                 if (this.SizeMode == ImageBoxSizeMode.Fit != value)
@@ -1522,7 +1513,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DefaultValue(typeof(ContentAlignment), "MiddleCenter")]
         public virtual ContentAlignment TextAlign
         {
-            get { return _textAlign; }
+            get => _textAlign;
             set
             {
                 if (this.TextAlign != value)
@@ -1542,7 +1533,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DefaultValue(typeof(Color), "Transparent")]
         public virtual Color TextBackColor
         {
-            get { return _textBackColor; }
+            get => _textBackColor;
             set
             {
                 if (this.TextBackColor != value)
@@ -1562,7 +1553,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DefaultValue(typeof(ImageBoxGridDisplayMode), "Client")]
         public virtual ImageBoxGridDisplayMode TextDisplayMode
         {
-            get { return _textDisplayMode; }
+            get => _textDisplayMode;
             set
             {
                 if (this.TextDisplayMode != value)
@@ -1578,7 +1569,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DefaultValue(typeof(Padding), "0, 0, 0, 0")]
         public virtual Padding TextPadding
         {
-            get { return _textPadding; }
+            get => _textPadding;
             set
             {
                 if (this.TextPadding != value)
@@ -1603,7 +1594,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DefaultValue(false)]
         public virtual bool VirtualMode
         {
-            get { return _virtualMode; }
+            get => _virtualMode;
             set
             {
                 if (this.VirtualMode != value)
@@ -1623,7 +1614,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DefaultValue(typeof(Size), "0, 0")]
         public virtual Size VirtualSize
         {
-            get { return _virtualSize; }
+            get => _virtualSize;
             set
             {
                 if (this.VirtualSize != value)
@@ -1643,8 +1634,8 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [Category("Appearance")]
         public virtual int Zoom
         {
-            get { return _zoom; }
-            set { this.SetZoom(value, value > this.Zoom ? ImageBoxZoomActions.ZoomIn : ImageBoxZoomActions.ZoomOut, ImageBoxActionSources.Unknown); }
+            get => _zoom;
+            set => this.SetZoom(value, value > this.Zoom ? ImageBoxZoomActions.ZoomIn : ImageBoxZoomActions.ZoomOut, ImageBoxActionSources.Unknown);
         }
 
         /// <summary>
@@ -1653,10 +1644,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// <value>The zoom factor.</value>
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public virtual double ZoomFactor
-        {
-            get { return (double)this.Zoom / 100; }
-        }
+        public virtual double ZoomFactor => (double)this.Zoom / 100;
 
         /// <summary>
         ///   Gets or sets the zoom levels.
@@ -1666,7 +1654,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public virtual ZoomLevelCollection ZoomLevels
         {
-            get { return _zoomLevels; }
+            get => _zoomLevels;
             set
             {
                 if (this.ZoomLevels != value)
@@ -1684,10 +1672,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         /// <value>
         ///   <c>true</c> if painting of the control is allowed; otherwise, <c>false</c>.
         /// </value>
-        protected virtual bool AllowPainting
-        {
-            get { return _updateCount == 0; }
-        }
+        protected virtual bool AllowPainting => _updateCount == 0;
 
         /// <summary>
         /// Gets or sets a value indicating whether the current image is animated.
@@ -1699,28 +1684,19 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         ///   Gets the height of the scaled image.
         /// </summary>
         /// <value>The height of the scaled image.</value>
-        protected virtual int ScaledImageHeight
-        {
-            get { return Convert.ToInt32(this.ViewSize.Height * this.ZoomFactor); }
-        }
+        protected virtual int ScaledImageHeight => Convert.ToInt32(this.ViewSize.Height * this.ZoomFactor);
 
         /// <summary>
         ///   Gets the width of the scaled image.
         /// </summary>
         /// <value>The width of the scaled image.</value>
-        protected virtual int ScaledImageWidth
-        {
-            get { return Convert.ToInt32(this.ViewSize.Width * this.ZoomFactor); }
-        }
+        protected virtual int ScaledImageWidth => Convert.ToInt32(this.ViewSize.Width * this.ZoomFactor);
 
         /// <summary>
         /// Gets the size of the view.
         /// </summary>
         /// <value>The size of the view.</value>
-        protected virtual Size ViewSize
-        {
-            get { return this.VirtualMode ? this.VirtualSize : this.GetImageSize(); }
-        }
+        protected virtual Size ViewSize => this.VirtualMode ? this.VirtualSize : this.GetImageSize();
 
         /// <summary>
         /// Gets or sets a value indicating whether a drag operation was cancelled.

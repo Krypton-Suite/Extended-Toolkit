@@ -6,7 +6,6 @@
  */
 #endregion
 
-using System.IO;
 using System.Text;
 
 namespace Krypton.Toolkit.Suite.Extended.Core
@@ -793,7 +792,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #endregion
 
         #region Properties
-        public Control TargetControl { get { return _targetControl; } set { _targetControl = value; } }
+        public Control TargetControl { get => _targetControl;
+            set => _targetControl = value;
+        }
         #endregion
 
         public SystemInformationWindow()

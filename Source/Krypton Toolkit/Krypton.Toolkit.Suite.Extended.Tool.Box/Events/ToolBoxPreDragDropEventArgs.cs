@@ -20,15 +20,9 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
 
         #region Properties
 
-        public DataObject DataObject
-        {
-            get { return _dataObject; }
-        }
+        public DataObject DataObject => _dataObject;
 
-        public object DragObject
-        {
-            get { return _object; }
-        }
+        public object DragObject => _object;
 
         #endregion //Properties
         #region Construction

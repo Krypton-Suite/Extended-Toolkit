@@ -6,8 +6,6 @@
  */
 #endregion
 
-using System.Drawing;
-
 namespace Krypton.Toolkit.Suite.Extended.Settings
 {
     public class PaletteExplorerWindowLocationSettingsManager
@@ -27,15 +25,9 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         /// </value>
         public bool AlwaysUsePrompt
         {
-            get
-            {
-                return _alwaysUsePrompt;
-            }
+            get => _alwaysUsePrompt;
 
-            set
-            {
-                _alwaysUsePrompt = value;
-            }
+            set => _alwaysUsePrompt = value;
         }
 
         /// <summary>
@@ -46,15 +38,9 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         /// </value>
         public bool SettingsModified
         {
-            get
-            {
-                return _settingsModified;
-            }
+            get => _settingsModified;
 
-            set
-            {
-                _settingsModified = value;
-            }
+            set => _settingsModified = value;
         }
         #endregion
 

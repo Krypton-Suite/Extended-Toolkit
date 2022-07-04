@@ -71,9 +71,10 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         #endregion
 
         #region Properties
-        public string[] OrignalCustomPaletteColourDefinitions { get => _originalCustomPaletteColourDefinitions; }
+        public string[] OrignalCustomPaletteColourDefinitions => _originalCustomPaletteColourDefinitions;
 
-        public string[] NewCustomPaletteColourDefinitions { get => _newCustomPaletteColourDefinitions; }
+        public string[] NewCustomPaletteColourDefinitions => _newCustomPaletteColourDefinitions;
+
         #endregion
 
         #region Constructor

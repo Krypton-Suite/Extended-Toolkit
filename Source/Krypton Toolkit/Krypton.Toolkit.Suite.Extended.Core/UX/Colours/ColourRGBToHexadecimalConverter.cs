@@ -281,7 +281,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <value>
         ///   <c>true</c> if [enable alpha channel]; otherwise, <c>false</c>.
         /// </value>
-        public bool EnableAlphaChannel { get { return _enableAlphaChannel; } set { _enableAlphaChannel = value; } }
+        public bool EnableAlphaChannel { get => _enableAlphaChannel;
+            set => _enableAlphaChannel = value;
+        }
         #endregion
 
         #region Setters & Getters        

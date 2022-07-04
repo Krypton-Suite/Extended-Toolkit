@@ -57,7 +57,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
 #endif
             }
 
-            BlurValues.EnableBlur = UseBlur;
+            BlurValues.BlurWhenFocusLost = UseBlur;
 
             base.OnLoad(e);
         }

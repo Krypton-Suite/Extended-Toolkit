@@ -23,10 +23,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 
         #region IEnumerator<NaviBand> Members
 
-        public NaviBand Current
-        {
-            get { return current; }
-        }
+        public NaviBand Current => current;
 
         #endregion
 
@@ -38,10 +35,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 
         #region IEnumerator Members
 
-        object System.Collections.IEnumerator.Current
-        {
-            get { return current; }
-        }
+        object System.Collections.IEnumerator.Current => current;
 
         public bool MoveNext()
         {

@@ -1,4 +1,12 @@
-﻿namespace Krypton.Toolkit.Suite.Extended.Networking
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license or other governing licenses that can be found in the LICENSE.md file or at
+ * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ */
+#endregion
+
+namespace Krypton.Toolkit.Suite.Extended.Networking
 {
     public class KryptonNetworkNodePicker : KryptonForm
     {
@@ -267,7 +275,8 @@
         #region Properties
         /// <summary>Gets the name of the selected computer.</summary>
         /// <value>The name of the selected computer.</value>
-        public string SelectedComputerName { get => _selectedComputerName; }
+        public string SelectedComputerName => _selectedComputerName;
+
         #endregion
 
         #region Constructor

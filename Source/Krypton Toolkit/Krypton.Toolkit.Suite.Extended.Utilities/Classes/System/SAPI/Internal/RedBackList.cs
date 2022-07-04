@@ -70,10 +70,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
 
             internal TreeNode Left
             {
-                get
-                {
-                    return _leftChild;
-                }
+                get => _leftChild;
                 set
                 {
                     _leftChild = value;
@@ -86,10 +83,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
 
             internal TreeNode Right
             {
-                get
-                {
-                    return _rightChild;
-                }
+                get => _rightChild;
                 set
                 {
                     _rightChild = value;
@@ -102,26 +96,14 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Internal
 
             internal TreeNode Parent
             {
-                get
-                {
-                    return _parent;
-                }
-                set
-                {
-                    _parent = value;
-                }
+                get => _parent;
+                set => _parent = value;
             }
 
             internal bool IsRed
             {
-                get
-                {
-                    return _isRed;
-                }
-                set
-                {
-                    _isRed = value;
-                }
+                get => _isRed;
+                set => _isRed = value;
             }
 
             internal object Key => _key;

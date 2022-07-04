@@ -24,7 +24,8 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
         #region Property
         public FloatableMenuStrip FloatableMenuStrip { get => _floatableMenuStrip; set => _floatableMenuStrip = value; }
 
-        public Rectangle ActiveRectangle { get => _activeRectangle; }
+        public Rectangle ActiveRectangle => _activeRectangle;
+
         #endregion
 
         #region Constructor

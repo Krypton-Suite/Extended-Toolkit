@@ -58,10 +58,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [Category("Visuals"), DefaultValue(PaletteBackStyle.PanelClient)]
         public PaletteBackStyle PanelBackStyle
         {
-            get
-            {
-                return m_PaletteTabPageBackground.Style;
-            }
+            get => m_PaletteTabPageBackground.Style;
             set
             {
                 m_PaletteTabPageBackground.Style = value;
@@ -72,10 +69,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [Category("Visuals"), DefaultValue(PaletteMode.Global)]
         public PaletteMode PaletteMode
         {
-            get
-            {
-                return m_PaletteMode;
-            }
+            get => m_PaletteMode;
             set
             {
                 m_PaletteMode = value;
@@ -118,13 +112,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             }
         }
 
-        public override SelectionRules SelectionRules
-        {
-            get
-            {
-                return SelectionRules.Visible;
-            }
-        }
+        public override SelectionRules SelectionRules => SelectionRules.Visible;
 
         public override void InitializeNewComponent(System.Collections.IDictionary defaultValues)
         {
@@ -151,11 +139,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             }
         }
 
-        private KryptonTabPage KryptonTabPage
-        {
-            get { return (KryptonTabPage)this.Component; }
-        }
-
+        private KryptonTabPage KryptonTabPage => (KryptonTabPage)this.Component;
     }
 
     public class KryptonTabPageDesignList : DesignerActionList
@@ -170,14 +154,14 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
 
         public PaletteBackStyle PanelBackStyle
         {
-            get { return this.KryptonTabPage.PanelBackStyle; }
-            set { SetProperty("PanelBackStyle", value); }
+            get => this.KryptonTabPage.PanelBackStyle;
+            set => SetProperty("PanelBackStyle", value);
         }
 
         public PaletteMode PaletteMode
         {
-            get { return this.KryptonTabPage.PaletteMode; }
-            set { SetProperty("PaletteMode", value); }
+            get => this.KryptonTabPage.PaletteMode;
+            set => SetProperty("PaletteMode", value);
         }
 
         public override DesignerActionItemCollection GetSortedActionItems()
@@ -219,11 +203,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
             }
         }
 
-        private KryptonTabPage KryptonTabPage
-        {
-            get { return (KryptonTabPage)this.Component; }
-        }
-
+        private KryptonTabPage KryptonTabPage => (KryptonTabPage)this.Component;
     }
 
 }

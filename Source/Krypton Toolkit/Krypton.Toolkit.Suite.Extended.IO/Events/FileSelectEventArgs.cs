@@ -28,8 +28,8 @@ namespace Krypton.Toolkit.Suite.Extended.IO
         /// </summary>
         public string FileName
         {
-            get { return _fileName; }
-            set { _fileName = FileName; }
+            get => _fileName;
+            set => _fileName = FileName;
         }
         /// <summary>
         /// Initializes a new instance of the FileSelectEventArgs in order to provide

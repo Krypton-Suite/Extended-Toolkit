@@ -22,35 +22,35 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         [DefaultValue("false")]
         public Boolean DrawBorder
         {
-            get { return _drawBorder; }
+            get => _drawBorder;
             set { _drawBorder = value; Invalidate(); }
         }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public new virtual Size ItemSize
         {
-            get { return base.ItemSize; }
+            get => base.ItemSize;
             set { base.ItemSize = value; Invalidate(); }
         }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public new virtual TabSizeMode SizeMode
         {
-            get { return base.SizeMode; }
+            get => base.SizeMode;
             set { base.SizeMode = value; Invalidate(); }
         }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public new virtual TabAppearance Appearance
         {
-            get { return base.Appearance; }
+            get => base.Appearance;
             set { base.Appearance = value; Invalidate(); }
         }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public new virtual TabDrawMode DrawMode
         {
-            get { return base.DrawMode; }
+            get => base.DrawMode;
             set { base.DrawMode = value; Invalidate(); }
         }
 
@@ -58,14 +58,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
         /// Indicates if the current view is being utilized in the VS.NET IDE or not.
         ///
         private bool _designMode;
-        public new bool DesignMode
-        {
-            get
-            {
-                //return (System.Diagnostics.Process.GetCurrentProcess().ProcessName == "devenv");
-                return _designMode; ;
-            }
-        }
+        public new bool DesignMode =>
+            //return (System.Diagnostics.Process.GetCurrentProcess().ProcessName == "devenv");
+            _designMode;
 
         public KryptonEmptyTabControl()
         {

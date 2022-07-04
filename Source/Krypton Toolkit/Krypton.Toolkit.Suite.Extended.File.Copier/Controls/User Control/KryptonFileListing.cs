@@ -196,11 +196,11 @@ namespace Krypton.Toolkit.Suite.Extended.File.Copier
         [DefaultValue("Browse to a directory:")]
         public string OpenFileDialogTitle { get => _openFileDialogTitle; set => _openFileDialogTitle = value; }
 
-        public KryptonButton BrowseButton { get => kbtnBrowse; }
+        public KryptonButton BrowseButton => kbtnBrowse;
 
-        public KryptonTextBox DirectoryPath { get => ktxtDirectory; }
+        public KryptonTextBox DirectoryPath => ktxtDirectory;
 
-        public KryptonListBox FileListing { get => klbFileListing; }
+        public KryptonListBox FileListing => klbFileListing;
 
         public List<string> DirectoryContents { get => _directoryContents; private set => _directoryContents = value; }
 

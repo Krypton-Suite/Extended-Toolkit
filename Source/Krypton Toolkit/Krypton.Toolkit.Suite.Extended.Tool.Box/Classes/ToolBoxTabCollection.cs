@@ -23,8 +23,8 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         #region Properties
         public ToolBoxTab this[int index]
         {
-            get { return (ToolBoxTab)base.List[index]; }
-            set { base.List[index] = value; }
+            get => (ToolBoxTab)base.List[index];
+            set => base.List[index] = value;
         }
         #endregion //Properties
 

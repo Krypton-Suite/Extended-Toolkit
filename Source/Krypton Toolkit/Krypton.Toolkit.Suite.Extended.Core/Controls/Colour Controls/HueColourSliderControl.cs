@@ -6,7 +6,6 @@
  */
 #endregion
 
-using System.ComponentModel;
 using System.Linq;
 
 namespace Krypton.Toolkit.Suite.Extended.Core
@@ -31,54 +30,54 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public override ColourBarStyle BarStyle
         {
-            get { return base.BarStyle; }
-            set { base.BarStyle = value; }
+            get => base.BarStyle;
+            set => base.BarStyle = value;
         }
 
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public override Color Colour1
         {
-            get { return base.Colour1; }
-            set { base.Colour1 = value; }
+            get => base.Colour1;
+            set => base.Colour1 = value;
         }
 
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public override Color Colour2
         {
-            get { return base.Colour2; }
-            set { base.Colour2 = value; }
+            get => base.Colour2;
+            set => base.Colour2 = value;
         }
 
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public override Color Colour3
         {
-            get { return base.Colour3; }
-            set { base.Colour3 = value; }
+            get => base.Colour3;
+            set => base.Colour3 = value;
         }
 
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public override float Maximum
         {
-            get { return base.Maximum; }
-            set { base.Maximum = value; }
+            get => base.Maximum;
+            set => base.Maximum = value;
         }
 
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public override float Minimum
         {
-            get { return base.Minimum; }
-            set { base.Minimum = value; }
+            get => base.Minimum;
+            set => base.Minimum = value;
         }
 
         public override float Value
         {
-            get { return base.Value; }
-            set { base.Value = (int)value; }
+            get => base.Value;
+            set => base.Value = (int)value;
         }
 
         #endregion

@@ -6,8 +6,6 @@
  */
 #endregion
 
-using System.IO;
-
 namespace Krypton.Toolkit.Suite.Extended.Core
 {
     public interface IPaletteSerialiser

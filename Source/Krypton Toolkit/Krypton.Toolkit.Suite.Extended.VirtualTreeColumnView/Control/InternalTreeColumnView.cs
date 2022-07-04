@@ -333,14 +333,14 @@ namespace Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView
 
         internal VirtualTreeRowNode VisibleRowNode
         {
-            get { throw new NotImplementedException(); }
-            set { throw new NotImplementedException(); }
+            get => throw new NotImplementedException();
+            set => throw new NotImplementedException();
         }
 
         internal IComparer<VirtualTreeRowNode> TreeViewNodeSorter
         {
-            get { throw new NotImplementedException(); }
-            set { throw new NotImplementedException(); }
+            get => throw new NotImplementedException();
+            set => throw new NotImplementedException();
         }
 
         internal int VisibleCount => GetPossibleOpenVisibleNodes().Count;

@@ -238,7 +238,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             // 
             this.ktxtFilePath.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.ktxtFilePath.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
-            this.ktxtFilePath.Hint = "Type a file path here...";
+            this.ktxtFilePath.CueHint.CueHintText = "Type a file path here...";
             this.ktxtFilePath.Location = new System.Drawing.Point(83, 12);
             this.ktxtFilePath.Name = "ktxtFilePath";
             this.ktxtFilePath.Size = new System.Drawing.Size(574, 23);

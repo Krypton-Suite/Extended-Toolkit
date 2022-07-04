@@ -112,10 +112,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
 
         public string Id
         {
-            get
-            {
-                return _id;
-            }
+            get => _id;
             set
             {
                 XmlParser.ValidateRuleId(value);
@@ -125,10 +122,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
 
         public SrgsRuleScope Scope
         {
-            get
-            {
-                return _scope;
-            }
+            get => _scope;
             set
             {
                 _scope = value;
@@ -138,22 +132,13 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
 
         public string BaseClass
         {
-            get
-            {
-                return _baseclass;
-            }
-            set
-            {
-                _baseclass = value;
-            }
+            get => _baseclass;
+            set => _baseclass = value;
         }
 
         public string Script
         {
-            get
-            {
-                return _script;
-            }
+            get => _script;
             set
             {
                 Helpers.ThrowIfEmptyOrNull(value, "value");
@@ -163,10 +148,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
 
         public string OnInit
         {
-            get
-            {
-                return _onInit;
-            }
+            get => _onInit;
             set
             {
                 ValidateIdentifier(value);
@@ -176,10 +158,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
 
         public string OnParse
         {
-            get
-            {
-                return _onParse;
-            }
+            get => _onParse;
             set
             {
                 ValidateIdentifier(value);
@@ -189,10 +168,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
 
         public string OnError
         {
-            get
-            {
-                return _onError;
-            }
+            get => _onError;
             set
             {
                 ValidateIdentifier(value);
@@ -202,10 +178,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
 
         public string OnRecognition
         {
-            get
-            {
-                return _onRecognition;
-            }
+            get => _onRecognition;
             set
             {
                 ValidateIdentifier(value);
@@ -215,14 +188,8 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsGrammar
 
         internal RuleDynamic Dynamic
         {
-            get
-            {
-                return _dynamic;
-            }
-            set
-            {
-                _dynamic = value;
-            }
+            get => _dynamic;
+            set => _dynamic = value;
         }
 
         internal bool HasCode => _script.Length > 0;

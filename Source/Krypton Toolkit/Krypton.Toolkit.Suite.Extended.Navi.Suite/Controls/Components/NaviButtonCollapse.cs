@@ -36,7 +36,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         ]
         public override bool Collapsed
         {
-            get { return collapsed; }
+            get => collapsed;
             set
             {
                 // We need an explicit override with Invalidate otherwise the control is not 

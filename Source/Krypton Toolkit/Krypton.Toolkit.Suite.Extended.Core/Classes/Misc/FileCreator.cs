@@ -6,8 +6,6 @@
  */
 #endregion
 
-using System.IO;
-
 using Krypton.Toolkit.Suite.Extended.Core.Resources;
 
 namespace Krypton.Toolkit.Suite.Extended.Core

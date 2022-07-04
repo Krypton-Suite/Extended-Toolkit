@@ -142,7 +142,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         [Description("Shows Small Scale marking")]
         public bool ShowSmallScale
         {
-            get { return _ShowSmallScale; }
+            get => _ShowSmallScale;
             set
             {
                 _ShowSmallScale = value;
@@ -157,7 +157,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         [Description(" Shows Large Scale marking")]
         public bool ShowLargeScale
         {
-            get { return _ShowLargeScale; }
+            get => _ShowLargeScale;
             set
             {
                 _ShowLargeScale = value;
@@ -171,7 +171,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         [Description("Size of the large Scale Marker")]
         public int SizeLargeScaleMarker
         {
-            get { return _SizeLargeScaleMarker; }
+            get => _SizeLargeScaleMarker;
             set
             {
                 _SizeLargeScaleMarker = value;
@@ -184,7 +184,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         [Description("Size of the small Scale Marker")]
         public int SizeSmallScaleMarker
         {
-            get { return _SizeSmallScaleMarker; }
+            get => _SizeSmallScaleMarker;
             set
             {
                 _SizeSmallScaleMarker = value;
@@ -198,7 +198,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         [Description("Minimum Value for knob Control")]
         public int Minimum
         {
-            get { return _Minimum; }
+            get => _Minimum;
             set
             {
                 _Minimum = value;
@@ -212,7 +212,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         [Description("Maximum value for knob control")]
         public int Maximum
         {
-            get { return _Maximum; }
+            get => _Maximum;
             set
             {
                 _Maximum = value;
@@ -226,7 +226,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         [Description("value set for large change")]
         public int LargeChange
         {
-            get { return _LargeChange; }
+            get => _LargeChange;
             set
             {
                 _LargeChange = value;
@@ -240,7 +240,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         [Description("value set for small change")]
         public int SmallChange
         {
-            get { return _SmallChange; }
+            get => _SmallChange;
             set
             {
                 _SmallChange = value;
@@ -252,7 +252,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         [Description("Current Value of knob control")]
         public int Value
         {
-            get { return _Value; }
+            get => _Value;
             set
             {
                 _Value = value;
@@ -271,7 +271,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         [Description("Set Colour of knob control")]
         public Color KnobColour
         {
-            get { return _KnobColour; }
+            get => _KnobColour;
             set
             {
                 _KnobColour = value;
@@ -285,10 +285,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         [Description("Sets the mouse over Colour of knob control")]
         public Color MouseOverKnobColour
         {
-            get
-            {
-                return _mouseOverColour;
-            }
+            get => _mouseOverColour;
 
             set
             {
@@ -305,7 +302,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         [Description("Set Colour of the border of knob control")]
         public Color KnobBorderColour
         {
-            get { return _KnobBorderColour; }
+            get => _KnobBorderColour;
             set
             {
                 _KnobBorderColour = value;
@@ -320,7 +317,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         [Description("Set Colour of the back of knob control")]
         public Color KnobBackColour
         {
-            get { return _KnobBackColour; }
+            get => _KnobBackColour;
             set
             {
                 _KnobBackColour = value;

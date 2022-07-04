@@ -143,7 +143,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <exception cref="InvalidOperationException">Animation is running</exception>
         public Path2D[] Paths
         {
-            get { return _paths.ToArray(); }
+            get => _paths.ToArray();
             set
             {
                 if (CurrentStatus == AnimatorStatus.Stopped)
@@ -172,9 +172,9 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// </summary>
         public virtual bool Repeat
         {
-            get { return HorizontalAnimator.Repeat && VerticalAnimator.Repeat; }
+            get => HorizontalAnimator.Repeat && VerticalAnimator.Repeat;
 
-            set { HorizontalAnimator.Repeat = VerticalAnimator.Repeat = value; }
+            set => HorizontalAnimator.Repeat = VerticalAnimator.Repeat = value;
         }
 
         /// <summary>
@@ -182,9 +182,9 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// </summary>
         public virtual bool ReverseRepeat
         {
-            get { return HorizontalAnimator.ReverseRepeat && VerticalAnimator.ReverseRepeat; }
+            get => HorizontalAnimator.ReverseRepeat && VerticalAnimator.ReverseRepeat;
 
-            set { HorizontalAnimator.ReverseRepeat = VerticalAnimator.ReverseRepeat = value; }
+            set => HorizontalAnimator.ReverseRepeat = VerticalAnimator.ReverseRepeat = value;
         }
 
         /// <summary>

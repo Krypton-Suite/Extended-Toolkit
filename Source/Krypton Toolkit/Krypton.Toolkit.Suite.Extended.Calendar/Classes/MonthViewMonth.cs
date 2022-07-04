@@ -62,57 +62,42 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
         #region Props
 
-        public Rectangle Bounds
-        {
-            get { return new Rectangle(Location, Size); }
-        }
+        public Rectangle Bounds => new Rectangle(Location, Size);
 
-        public MonthView MonthView
-        {
-            get { return _monthview; }
-        }
+        public MonthView MonthView => _monthview;
 
-        public Point Location
-        {
-            get { return _location; }
-        }
+        public Point Location => _location;
 
-        public Size Size
-        {
-            get { return MonthView.MonthSize; }
-        }
+        public Size Size => MonthView.MonthSize;
 
         public MonthViewDay[] Days
         {
-            get { return days; }
-            set { days = value; }
+            get => days;
+            set => days = value;
         }
 
         public Rectangle[] DayNamesBounds
         {
-            get { return dayNamesBounds; }
-            set { dayNamesBounds = value; }
+            get => dayNamesBounds;
+            set => dayNamesBounds = value;
         }
 
         public string[] DayHeaders
         {
-            get { return _dayHeaders; }
-            set { _dayHeaders = value; }
+            get => _dayHeaders;
+            set => _dayHeaders = value;
         }
 
         public Rectangle MonthNameBounds
         {
-            get { return monthNameBounds; }
-            set { monthNameBounds = value; }
+            get => monthNameBounds;
+            set => monthNameBounds = value;
         }
 
         /// <summary>
         /// Gets or sets the date of the first day of the month
         /// </summary>
-        public DateTime Date
-        {
-            get { return _date; }
-        }
+        public DateTime Date => _date;
 
         #endregion
 

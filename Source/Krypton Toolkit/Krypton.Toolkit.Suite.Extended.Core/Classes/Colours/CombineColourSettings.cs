@@ -17,61 +17,117 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #endregion
 
         #region Properties
-        public Color BaseColour { get { return _baseColour; } set { _baseColour = value; } }
+        public Color BaseColour { get => _baseColour;
+            set => _baseColour = value;
+        }
 
-        public Color DarkColour { get { return _darkColour; } set { _darkColour = value; } }
+        public Color DarkColour { get => _darkColour;
+            set => _darkColour = value;
+        }
 
-        public Color MiddleColour { get { return _middleColour; } set { _middleColour = value; } }
+        public Color MiddleColour { get => _middleColour;
+            set => _middleColour = value;
+        }
 
-        public Color LightColour { get { return _lightColour; } set { _lightColour = value; } }
+        public Color LightColour { get => _lightColour;
+            set => _lightColour = value;
+        }
 
-        public Color LightestColour { get { return _lightestColour; } set { _lightestColour = value; } }
+        public Color LightestColour { get => _lightestColour;
+            set => _lightestColour = value;
+        }
 
-        public Color BorderColourPreview { get { return _borderColourPreview; } set { _borderColourPreview = value; } }
+        public Color BorderColourPreview { get => _borderColourPreview;
+            set => _borderColourPreview = value;
+        }
 
-        public Color AlternativeNormalTextColourPreview { get { return _alternativeNormalTextColourPreview; } set { _alternativeNormalTextColourPreview = value; } }
+        public Color AlternativeNormalTextColourPreview { get => _alternativeNormalTextColourPreview;
+            set => _alternativeNormalTextColourPreview = value;
+        }
 
-        public Color NormalTextColourPreview { get { return _normalTextColourPreview; } set { _normalTextColourPreview = value; } }
+        public Color NormalTextColourPreview { get => _normalTextColourPreview;
+            set => _normalTextColourPreview = value;
+        }
 
-        public Color DisabledTextColourPreview { get { return _disabledTextColourPreview; } set { _disabledTextColourPreview = value; } }
+        public Color DisabledTextColourPreview { get => _disabledTextColourPreview;
+            set => _disabledTextColourPreview = value;
+        }
 
-        public Color FocusedTextColourPreview { get { return _focusedTextColourPreview; } set { _focusedTextColourPreview = value; } }
+        public Color FocusedTextColourPreview { get => _focusedTextColourPreview;
+            set => _focusedTextColourPreview = value;
+        }
 
-        public Color PressedTextColourPreview { get { return _pressedTextColourPreview; } set { _pressedTextColourPreview = value; } }
+        public Color PressedTextColourPreview { get => _pressedTextColourPreview;
+            set => _pressedTextColourPreview = value;
+        }
 
-        public Color DisabledColourPreview { get { return _disabledColourPreview; } set { _disabledColourPreview = value; } }
+        public Color DisabledColourPreview { get => _disabledColourPreview;
+            set => _disabledColourPreview = value;
+        }
 
-        public Color LinkNormalColourPreview { get { return _linkNormalColourPreview; } set { _linkNormalColourPreview = value; } }
+        public Color LinkNormalColourPreview { get => _linkNormalColourPreview;
+            set => _linkNormalColourPreview = value;
+        }
 
-        public Color LinkHoverColourPreview { get { return _linkHoverColourPreview; } set { _linkHoverColourPreview = value; } }
+        public Color LinkHoverColourPreview { get => _linkHoverColourPreview;
+            set => _linkHoverColourPreview = value;
+        }
 
-        public Color LinkVisitedColourPreview { get { return _linkVisitedColourPreview; } set { _linkVisitedColourPreview = value; } }
+        public Color LinkVisitedColourPreview { get => _linkVisitedColourPreview;
+            set => _linkVisitedColourPreview = value;
+        }
 
-        public Color CustomColourOne { get { return _customColourOne; } set { _customColourOne = value; } }
+        public Color CustomColourOne { get => _customColourOne;
+            set => _customColourOne = value;
+        }
 
-        public Color CustomColourTwo { get { return _customColourTwo; } set { _customColourTwo = value; } }
+        public Color CustomColourTwo { get => _customColourTwo;
+            set => _customColourTwo = value;
+        }
 
-        public Color CustomColourThree { get { return _customColourThree; } set { _customColourThree = value; } }
+        public Color CustomColourThree { get => _customColourThree;
+            set => _customColourThree = value;
+        }
 
-        public Color CustomColourFour { get { return _customColourFour; } set { _customColourFour = value; } }
+        public Color CustomColourFour { get => _customColourFour;
+            set => _customColourFour = value;
+        }
 
-        public Color CustomColourFive { get { return _customColourFive; } set { _customColourFive = value; } }
+        public Color CustomColourFive { get => _customColourFive;
+            set => _customColourFive = value;
+        }
 
-        public Color CustomTextColourOne { get { return _customTextColourOne; } set { _customTextColourOne = value; } }
+        public Color CustomTextColourOne { get => _customTextColourOne;
+            set => _customTextColourOne = value;
+        }
 
-        public Color CustomTextColourTwo { get { return _customTextColourTwo; } set { _customTextColourTwo = value; } }
+        public Color CustomTextColourTwo { get => _customTextColourTwo;
+            set => _customTextColourTwo = value;
+        }
 
-        public Color CustomTextColourThree { get { return _customTextColourThree; } set { _customTextColourThree = value; } }
+        public Color CustomTextColourThree { get => _customTextColourThree;
+            set => _customTextColourThree = value;
+        }
 
-        public Color CustomTextColourFour { get { return _customTextColourFour; } set { _customTextColourFour = value; } }
+        public Color CustomTextColourFour { get => _customTextColourFour;
+            set => _customTextColourFour = value;
+        }
 
-        public Color CustomTextColourFive { get { return _customTextColourFive; } set { _customTextColourFive = value; } }
+        public Color CustomTextColourFive { get => _customTextColourFive;
+            set => _customTextColourFive = value;
+        }
 
-        public Color MenuTextColour { get { return _menuTextColour; } set { _menuTextColour = value; } }
+        public Color MenuTextColour { get => _menuTextColour;
+            set => _menuTextColour = value;
+        }
 
-        public Color StatusTextColour { get { return _statusTextColour; } set { _statusTextColour = value; } }
+        public Color StatusTextColour { get => _statusTextColour;
+            set => _statusTextColour = value;
+        }
 
-        public Color RibbonTabTextColour { get { return _ribbonTabTextColour; } set { _ribbonTabTextColour = value; } }
+        public Color RibbonTabTextColour { get => _ribbonTabTextColour;
+            set => _ribbonTabTextColour = value;
+        }
         #endregion
 
         #region Constructors

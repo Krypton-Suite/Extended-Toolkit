@@ -38,28 +38,21 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets the calendar that originated the event
         /// </summary>
-        public KryptonCalendar Calendar
-        {
-            get { return _calendar; }
-        }
+        public KryptonCalendar Calendar => _calendar;
 
         /// <summary>
         /// Gets the start date of the load
         /// </summary>
         public DateTime DateStart
         {
-            get { return _dateStart; }
-            set { _dateStart = value; }
+            get => _dateStart;
+            set => _dateStart = value;
         }
 
         /// <summary>
         /// Gets the end date of the load
         /// </summary>
-        public DateTime DateEnd
-        {
-            get { return _dateEnd; }
-        }
-
+        public DateTime DateEnd => _dateEnd;
 
         #endregion
     }

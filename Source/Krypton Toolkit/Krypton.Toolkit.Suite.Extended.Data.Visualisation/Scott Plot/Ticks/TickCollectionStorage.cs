@@ -11,7 +11,9 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
     public class TickCollectionStorage
     {
         public static double[] tickPositionsMajor;
+#pragma warning disable CS8632
         public static double[]? tickPositionsMinor;
+#pragma warning restore CS8632
         public static string[] tickLabels;
         public static double[] manualTickPositions;
         public static string[] manualTickLabels;

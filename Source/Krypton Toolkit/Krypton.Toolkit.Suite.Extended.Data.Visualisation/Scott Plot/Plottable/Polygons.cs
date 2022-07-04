@@ -61,7 +61,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
             }
         }
 
-        public int PointCount { get => Polys.Count; }
+        public int PointCount => Polys.Count;
 
         public AxisLimits GetAxisLimits()
         {

@@ -6,7 +6,6 @@
  */
 #endregion
 
-
 namespace Krypton.Toolkit.Suite.Extended.Panels
 {
     [ToolboxBitmap(typeof(KryptonPanel))]

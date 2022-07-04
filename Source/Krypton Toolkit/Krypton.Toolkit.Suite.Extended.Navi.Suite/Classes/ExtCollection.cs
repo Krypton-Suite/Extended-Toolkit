@@ -96,8 +96,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// </summary>
         public event CollectionEventHandler ItemAdded
         {
-            add { m_itemAdded += value; }
-            remove { m_itemAdded -= value; }
+            add => m_itemAdded += value;
+            remove => m_itemAdded -= value;
         }
 
         /// <summary>
@@ -105,8 +105,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// </summary>
         public event CollectionEventHandler ItemRemoved
         {
-            add { m_itemRemoved += value; }
-            remove { m_itemRemoved -= value; }
+            add => m_itemRemoved += value;
+            remove => m_itemRemoved -= value;
         }
 
         #endregion

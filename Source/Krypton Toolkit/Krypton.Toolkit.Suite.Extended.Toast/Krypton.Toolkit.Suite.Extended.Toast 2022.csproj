@@ -3,53 +3,44 @@
 	<Choose>
 		<When Condition="'$(Configuration)' == 'Nightly'">
 			<PropertyGroup>
-				<TargetFrameworks>net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows;net6.0-windows;net7.0-windows</TargetFrameworks>
+				<TargetFrameworks>net462;net47;net471;net472;net48;net481;netcoreapp3.1;net5.0-windows;net6.0-windows;net7.0-windows</TargetFrameworks>
+			</PropertyGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'Canary'">
+			<PropertyGroup>
+				<TargetFrameworks>net462;net47;net471;net472;net48;net481;netcoreapp3.1;net5.0-windows;net6.0-windows;net7.0-windows</TargetFrameworks>
+			</PropertyGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'StableFull'">
+			<PropertyGroup>
+				<TargetFrameworks>net462;net47;net471;net472;net48;net481;netcoreapp3.1;net5.0-windows;net6.0-windows;net7.0-windows</TargetFrameworks>
+			</PropertyGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'StableLite'">
+			<PropertyGroup>
+				<TargetFrameworks>net48;net481;netcoreapp3.1;net6.0-windows;net7.0-windows</TargetFrameworks>
+			</PropertyGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'SignedFull'">
+			<PropertyGroup>
+				<TargetFrameworks>net462;net47;net471;net472;net48;net481;netcoreapp3.1;net5.0-windows;net6.0-windows;net7.0-windows</TargetFrameworks>
+			</PropertyGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'SignedLite'">
+			<PropertyGroup>
+				<TargetFrameworks>net48;net481;netcoreapp3.1;net6.0-windows;net7.0-windows</TargetFrameworks>
 			</PropertyGroup>
 		</When>
 		<Otherwise>
-			<Choose>
-				<When Condition="'$(Configuration)' == 'Canary'">
-					<PropertyGroup>
-						<TargetFrameworks>net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows;net6.0-windows;net7.0-windows</TargetFrameworks>
-					</PropertyGroup>
-				</When>
-				<Otherwise>
-					<Choose>
-						<When Condition="'$(Configuration)' == 'StableFull'">
-							<PropertyGroup>
-								<TargetFrameworks>net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows;net6.0-windows;net7.0-windows</TargetFrameworks>
-							</PropertyGroup>
-						</When>
-						<Otherwise>
-							<Choose>
-								<When Condition="'$(Configuration)' == 'StableLite'">
-									<PropertyGroup>
-										<TargetFrameworks>net48;netcoreapp3.1;net6.0-windows;net7.0-windows</TargetFrameworks>
-									</PropertyGroup>
-								</When>
-								<Otherwise>
-									<Choose>
-										<When Condition="'$(Configuration)' == 'SignedFull'">
-											<PropertyGroup>
-												<TargetFrameworks>net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows;net6.0-windows;net7.0-windows</TargetFrameworks>
-											</PropertyGroup>
-										</When>
-										<Otherwise>
-											<Choose>
-												<When Condition="'$(Configuration)' == 'SignedLite'">
-													<PropertyGroup>
-														<TargetFrameworks>net48;netcoreapp3.1;net6.0-windows;net7.0-windows</TargetFrameworks>
-													</PropertyGroup>
-												</When>
-											</Choose>
-										</Otherwise>
-									</Choose>
-								</Otherwise>
-							</Choose>
-						</Otherwise>
-					</Choose>
-				</Otherwise>
-			</Choose>
+			<!--If all else fails-->
+			<PropertyGroup>
+				<TargetFrameworks>net462;net47;net471;net472;net48;net481;netcoreapp3.1;net5.0-windows;net6.0-windows;net7.0-windows</TargetFrameworks>
+			</PropertyGroup>
 		</Otherwise>
 	</Choose>
 
@@ -90,9 +81,9 @@
 
 	<PropertyGroup>
 		<Description>
-			An extension to the Standard Toolkit, which supports .NET Framework 4.6.2 - 4.8, .NET Core 3.1 and .NET 5/6. This package contains a framework that allows the creation of toast notifications.
+			An extension to the Standard Toolkit, which supports .NET Framework 4.6.2 - 4.8.1, .NET Core 3.1 and .NET 5 - 7. This package contains a framework that allows the creation of toast notifications.
 
-			This package supports all .NET Framework versions starting .NET Framework 4.6.2 - 4.8, .NET Core 3.1 and .NET 5/6.
+			This package supports all .NET Framework versions starting .NET Framework 4.6.2 - 4.8.1, .NET Core 3.1 and .NET 5 - 7.
 			Also, all libraries are included targeting each specific framework version for performance purposes.
 
 			To view all of the extended toolkit package latest version information, please visit: https://github.com/Krypton-Suite/Krypton-Toolkit-Suite-Version-Dashboard/blob/main/Documents/Modules/Extended/Krypton-Toolkit-Suite-Extended-Modules.md
@@ -100,57 +91,74 @@
 	</PropertyGroup>
 
 	<Choose>
-		<When Condition="'$(SolutionName.Endswith(`NuGet`))'">
-			<Choose>
-				<When Condition="'$(Configuration)' == 'Nightly'">
-					<PropertyGroup>
-						<LangVersion>preview</LangVersion>
-					</PropertyGroup>
+		<When Condition="'$(Configuration)' == 'Nightly'">
+			<PropertyGroup>
+				<LangVersion>preview</LangVersion>
+			</PropertyGroup>
 
-					<ItemGroup>
-						<PackageReference Include="Krypton.Toolkit.Nightly" Version="70.22.6.165-alpha" />
-					</ItemGroup>
-				</When>
-				<Otherwise>
-					<Choose>
-						<When Condition="'$(Configuration)' == 'Canary'">
-							<PropertyGroup>
-								<LangVersion>preview</LangVersion>
-							</PropertyGroup>
-
-							<ItemGroup>
-								<PackageReference Include="Krypton.Toolkit.Canary" Version="65.22.5.123-beta" />
-							</ItemGroup>
-						</When>
-						<Otherwise>
-							<Choose>
-								<When Condition="'$(Configuration)' == 'Signed'">
-									<PropertyGroup>
-										<LangVersion>preview</LangVersion>
-									</PropertyGroup>
-
-									<ItemGroup>
-										<PackageReference Include="Krypton.Toolkit.Signed" Version="60.22.4.4" />
-									</ItemGroup>
-								</When>
-								<Otherwise>
-									<PropertyGroup>
-										<LangVersion>preview</LangVersion>
-									</PropertyGroup>
-
-									<ItemGroup>
-										<PackageReference Include="Krypton.Toolkit" Version="60.22.2.32" />
-									</ItemGroup>
-								</Otherwise>
-							</Choose>
-						</Otherwise>
-					</Choose>
-				</Otherwise>
-			</Choose>
-		</When>
-		<Otherwise>
 			<ItemGroup>
-				<ProjectReference Include="..\..\..\Standard-Toolkit\Source\Krypton Components\Krypton.Toolkit\Krypton.Toolkit 2022.csproj" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="70.22.6.181-alpha" />
+			</ItemGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'Canary'">
+			<PropertyGroup>
+				<LangVersion>preview</LangVersion>
+			</PropertyGroup>
+
+			<ItemGroup>
+				<PackageReference Include="Krypton.Toolkit.Canary" Version="65.22.5.123-beta" />
+			</ItemGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'StableFull'">
+			<PropertyGroup>
+				<LangVersion>preview</LangVersion>
+			</PropertyGroup>
+
+			<ItemGroup>
+				<PackageReference Include="Krypton.Toolkit" Version="65.22.6.152" />
+			</ItemGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'StableLite'">
+			<PropertyGroup>
+				<LangVersion>preview</LangVersion>
+			</PropertyGroup>
+
+			<ItemGroup>
+				<PackageReference Include="Krypton.Toolkit.Lite" Version="65.22.6.152" />
+			</ItemGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'SignedFull'">
+			<PropertyGroup>
+				<LangVersion>preview</LangVersion>
+			</PropertyGroup>
+
+			<ItemGroup>
+				<PackageReference Include="Krypton.Toolkit.Signed" Version="65.22.6.152" />
+			</ItemGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'SignedLite'">
+			<PropertyGroup>
+				<LangVersion>preview</LangVersion>
+			</PropertyGroup>
+
+			<ItemGroup>
+				<PackageReference Include="Krypton.Toolkit.Signed.Lite" Version="65.22.6.152" />
+			</ItemGroup>
+		</When>
+
+		<Otherwise>
+			<!--If all else fails-->
+			<PropertyGroup>
+				<LangVersion>preview</LangVersion>
+			</PropertyGroup>
+
+			<ItemGroup>
+				<PackageReference Include="Krypton.Toolkit" Version="65.22.6.152" />
 			</ItemGroup>
 		</Otherwise>
 	</Choose>

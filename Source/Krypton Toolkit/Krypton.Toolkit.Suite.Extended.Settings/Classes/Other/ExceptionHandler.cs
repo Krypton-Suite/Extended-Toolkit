@@ -6,10 +6,6 @@
  */
 #endregion
 
-using System;
-using System.IO;
-using System.Runtime.ExceptionServices;
-
 namespace Krypton.Toolkit.Suite.Extended.Settings
 {
     /// <summary>

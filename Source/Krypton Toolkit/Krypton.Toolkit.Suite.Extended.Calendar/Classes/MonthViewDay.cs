@@ -42,60 +42,39 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         public MonthView MonthView
         {
-            get { return _monthView; }
-            set { _monthView = value; }
+            get => _monthView;
+            set => _monthView = value;
         }
 
         /// <summary>
         /// Gets the parent MonthViewMonth
         /// </summary>
-        public MonthViewMonth Month
-        {
-            get { return _month; }
-        }
+        public MonthViewMonth Month => _month;
 
         /// <summary>
         /// Gets the bounds of the day
         /// </summary>
-        public Rectangle Bounds
-        {
-            get { return _bounds; }
-        }
+        public Rectangle Bounds => _bounds;
 
         /// <summary>
         /// Gets the date this day represents
         /// </summary>
-        public DateTime Date
-        {
-            get { return _date; }
-        }
+        public DateTime Date => _date;
 
         /// <summary>
         /// Gets or sets if the day is currently selected
         /// </summary>
-        public bool Selected
-        {
-            get { return Date >= MonthView.SelectionStart && Date <= MonthView.SelectionEnd; }
-        }
+        public bool Selected => Date >= MonthView.SelectionStart && Date <= MonthView.SelectionEnd;
 
         /// <summary>
         /// Gets if the day is grayed
         /// </summary>
-        public bool Grayed
-        {
-            get { return Month.Date.Month != Date.Month; }
-        }
+        public bool Grayed => Month.Date.Month != Date.Month;
 
         /// <summary>
         /// Gets a value indicating if the day instance is visible on the calendar
         /// </summary>
-        public bool Visible
-        {
-            get
-            {
-                return !(Grayed && (Date > MonthView.ViewStart && Date < MonthView.ViewEnd));
-            }
-        }
+        public bool Visible => !(Grayed && (Date > MonthView.ViewStart && Date < MonthView.ViewEnd));
 
         #endregion
 

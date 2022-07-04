@@ -391,10 +391,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// </summary>
         AppCastItem IUpdateAvailable.CurrentItem => CurrentItem;
 
-        public AppCastItem CurrentItem
-        {
-            get { return _updates.Count() > 0 ? _updates[0] : null; }
-        }
+        public AppCastItem CurrentItem => _updates.Count() > 0 ? _updates[0] : null;
 
         /// <summary>
         /// The result of ShowDialog()

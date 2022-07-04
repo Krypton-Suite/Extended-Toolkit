@@ -20,27 +20,21 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Box
         #endregion //Private Attributes
 
         #region Properties
-        public string NewCaption
-        {
-            get { return _newCaption; }
-        }
+        public string NewCaption => _newCaption;
 
         public bool Cancel
         {
-            get { return _cancel; }
-            set { _cancel = value; }
+            get => _cancel;
+            set => _cancel = value;
         }
 
         public bool ContinueRenaming
         {
-            get { return _continueRenaming; }
-            set { _continueRenaming = value; }
+            get => _continueRenaming;
+            set => _continueRenaming = value;
         }
 
-        public bool EscapeKeyPressed
-        {
-            get { return _escapeKeyPressed; }
-        }
+        public bool EscapeKeyPressed => _escapeKeyPressed;
 
         #endregion //Properties
 

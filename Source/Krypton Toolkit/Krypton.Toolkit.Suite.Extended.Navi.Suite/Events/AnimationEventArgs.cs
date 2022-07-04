@@ -50,15 +50,9 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
 
         #region Properties
 
-        public Dictionary<string, int> Animatables
-        {
-            get { return animatables; }
-        }
+        public Dictionary<string, int> Animatables => animatables;
 
-        public Graphics Graphics
-        {
-            get { return graphics; }
-        }
+        public Graphics Graphics => graphics;
 
         #endregion
 

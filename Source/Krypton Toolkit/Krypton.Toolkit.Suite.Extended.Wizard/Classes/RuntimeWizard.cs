@@ -162,7 +162,11 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
 
         private bool Finishing()
         {
-            if (!_wizard.OnLastPage() || _wizard.HasExplicitFinishButton()) return false;
+            if (!_wizard.OnLastPage() || _wizard.HasExplicitFinishButton())
+            {
+                return false;
+            }
+
             _wizard.FireFinishEvent();
             return true;
         }

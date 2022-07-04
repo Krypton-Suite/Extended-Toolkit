@@ -17,7 +17,7 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public string seriesLabel;
         public Color color;
 
-        public PopulationSeries(Population[] populations, string? seriesLabel = null, Color? color = null)
+        public PopulationSeries(Population[] populations, string seriesLabel = null, Color? color = null)
         {
             this.populations = populations;
             this.seriesLabel = seriesLabel ?? string.Empty;

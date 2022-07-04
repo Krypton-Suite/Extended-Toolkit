@@ -21,7 +21,8 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         #region Properties
         public Version AssemblyVersion { get => _assemblyVersion; set => _assemblyVersion = value; }
 
-        public Version InternalVersion { get => _internalVersion; }
+        public Version InternalVersion => _internalVersion;
+
         #endregion
 
         #region Constructors

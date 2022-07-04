@@ -7,7 +7,6 @@
 #endregion
 
 using System.Globalization;
-using System.IO;
 using System.Text;
 
 namespace Krypton.Toolkit.Suite.Extended.Core
@@ -20,10 +19,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// Gets the default extension for files generated with this palette format.
         /// </summary>
         /// <value>The default extension for files generated with this palette format.</value>
-        public override string DefaultExtension
-        {
-            get { return "txt"; }
-        }
+        public override string DefaultExtension => "txt";
 
         /// <summary>
         /// Gets the maximum number of colors supported by this format.
@@ -31,19 +27,13 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <value>
         /// The maximum value number of colors supported by this format.
         /// </value>
-        public override int Maximum
-        {
-            get { return 96; }
-        }
+        public override int Maximum => 96;
 
         /// <summary>
         /// Gets a descriptive name of the palette format
         /// </summary>
         /// <value>The descriptive name of the palette format.</value>
-        public override string Name
-        {
-            get { return "Paint.NET Palette"; }
-        }
+        public override string Name => "Paint.NET Palette";
 
         #endregion
 

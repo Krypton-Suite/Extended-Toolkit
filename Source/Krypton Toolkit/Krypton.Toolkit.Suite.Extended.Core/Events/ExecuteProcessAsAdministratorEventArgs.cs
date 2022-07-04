@@ -6,10 +6,6 @@
  */
 #endregion
 
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Security.Principal;
-
 namespace Krypton.Toolkit.Suite.Extended.Core
 {
     public class ExecuteProcessAsAdministratorEventArgs : EventArgs

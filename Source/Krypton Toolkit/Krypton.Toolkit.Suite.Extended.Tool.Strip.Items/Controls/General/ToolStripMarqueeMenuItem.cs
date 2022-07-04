@@ -57,10 +57,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
                 MeasureText();
             }
-            get
-            {
-                return _minimumTextWidth;
-            }
+            get => _minimumTextWidth;
         }
 
         /// <summary>
@@ -81,8 +78,8 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         [Description("Interval in milliseconds when new position is calculated and refreshed.")]
         public int RefreshInterval
         {
-            get { return _timer.Interval; }
-            set { _timer.Interval = value; }
+            get => _timer.Interval;
+            set => _timer.Interval = value;
         }
 
         /// <summary>
@@ -115,7 +112,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         [Description("Sets or gets text value of menu item text.")]
         public new string Text
         {
-            get { return _text; }
+            get => _text;
             set
             {
                 _text = value;

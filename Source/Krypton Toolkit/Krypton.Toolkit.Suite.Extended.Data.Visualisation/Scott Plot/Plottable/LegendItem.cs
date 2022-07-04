@@ -26,8 +26,8 @@ namespace Krypton.Toolkit.Suite.Extended.Data.Visualisation.ScottPlot
         public HatchStyle hatchStyle;
         public bool IsRectangle
         {
-            get { return lineWidth >= 10; }
-            set { lineWidth = 10; }
+            get => lineWidth >= 10;
+            set => lineWidth = 10;
         }
     }
 }

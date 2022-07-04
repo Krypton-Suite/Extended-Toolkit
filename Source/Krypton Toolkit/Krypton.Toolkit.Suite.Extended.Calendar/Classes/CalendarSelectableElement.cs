@@ -41,38 +41,23 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         #region ICalendarSelectableElement Members
 
 
-        public virtual DateTime Date
-        {
-            get { return _date; }
-        }
+        public virtual DateTime Date => _date;
 
 
         /// <summary>
         /// Gets the Calendar this element belongs to
         /// </summary>
-        public virtual KryptonCalendar Calendar
-        {
-            get { return _calendar; }
-        }
+        public virtual KryptonCalendar Calendar => _calendar;
 
         /// <summary>
         /// Gets the Bounds of the element on the <see cref="Calendar"/> window
         /// </summary>
-        public virtual Rectangle Bounds
-        {
-            get { return _bounds; }
-        }
+        public virtual Rectangle Bounds => _bounds;
 
         /// <summary>
         /// Gets a value indicating if the element is currently selected
         /// </summary>
-        public virtual bool Selected
-        {
-            get
-            {
-                return _selected;
-            }
-        }
+        public virtual bool Selected => _selected;
 
         /// <summary>
         /// Compares this element with other using date as comparer

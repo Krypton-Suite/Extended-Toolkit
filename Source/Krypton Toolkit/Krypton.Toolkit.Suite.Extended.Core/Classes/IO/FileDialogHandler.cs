@@ -6,8 +6,6 @@
  */
 #endregion
 
-using Microsoft.WindowsAPICodePack.Dialogs;
-
 namespace Krypton.Toolkit.Suite.Extended.Core
 {
     public class FileDialogHandler

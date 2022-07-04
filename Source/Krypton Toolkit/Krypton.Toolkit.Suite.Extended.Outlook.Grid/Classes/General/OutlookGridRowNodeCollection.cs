@@ -80,13 +80,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// </value>
         /// <param name="index">The index.</param>
         /// <returns>The IOutlookGridGroup.</returns>
-        public OutlookGridRow this[int index]
-        {
-            get
-            {
-                return subNodes[index];
-            }
-        }
+        public OutlookGridRow this[int index] => subNodes[index];
 
         /// <summary>
         /// Adds the specified row.

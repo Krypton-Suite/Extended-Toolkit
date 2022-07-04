@@ -17,11 +17,17 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #endregion
 
         #region Properties
-        public string ErrorMessage { get { return _errorMessage; } set { _errorMessage = value; } }
+        public string ErrorMessage { get => _errorMessage;
+            set => _errorMessage = value;
+        }
 
-        public AssemblyInformation CurrentAssemblyInformation { get { return _assemblyInformation; } set { _assemblyInformation = value; } }
+        public AssemblyInformation CurrentAssemblyInformation { get => _assemblyInformation;
+            set => _assemblyInformation = value;
+        }
 
-        public List<AssemblyInformation> ReferenceAssembly { get { return _referencesList; } set { _referencesList = value; } }
+        public List<AssemblyInformation> ReferenceAssembly { get => _referencesList;
+            set => _referencesList = value;
+        }
         #endregion
 
         #region Constructor

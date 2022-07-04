@@ -23,50 +23,26 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.TTSEngine
 
         public int SsmlAttributeId
         {
-            get
-            {
-                return _ssmlAttributeId;
-            }
-            internal set
-            {
-                _ssmlAttributeId = value;
-            }
+            get => _ssmlAttributeId;
+            internal set => _ssmlAttributeId = value;
         }
 
         public bool IsNumberPercent
         {
-            get
-            {
-                return _isPercent;
-            }
-            internal set
-            {
-                _isPercent = value;
-            }
+            get => _isPercent;
+            internal set => _isPercent = value;
         }
 
         public float Number
         {
-            get
-            {
-                return _number;
-            }
-            internal set
-            {
-                _number = value;
-            }
+            get => _number;
+            internal set => _number = value;
         }
 
         public ProsodyUnit Unit
         {
-            get
-            {
-                return _unit;
-            }
-            internal set
-            {
-                _unit = value;
-            }
+            get => _unit;
+            internal set => _unit = value;
         }
 
         public ProsodyNumber(int ssmlAttributeId)

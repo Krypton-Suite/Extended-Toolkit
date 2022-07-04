@@ -675,7 +675,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #endregion
 
         #region Properties
-        public BasicPaletteColourDefinitions BasicPaletteColourDefinition { get { return _basicPaletteColourDefinitions; } set { _basicPaletteColourDefinitions = value; } }
+        public BasicPaletteColourDefinitions BasicPaletteColourDefinition { get => _basicPaletteColourDefinitions;
+            set => _basicPaletteColourDefinitions = value;
+        }
         #endregion
 
         public DefineIndividualColoursDialog()

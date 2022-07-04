@@ -304,6 +304,9 @@
   <data name="ComboBoxEx" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ComboBoxEx.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Copy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Copy_16_x_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Copy_16_x_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -321,6 +324,9 @@
   </data>
   <data name="Cube_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Cube_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cut" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cut.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Cut_16_x_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Cut_16_x_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -763,6 +769,9 @@
   <data name="NaviUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\NaviUp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="New" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\New.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="New_File_16_x_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\New_File_16_x_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -796,6 +805,9 @@
   <data name="Open_File_32_x_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Open_File_32_x_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Open_V2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Open_V2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="paint_bucket_green" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\paint_bucket_green.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -820,6 +832,9 @@
   <data name="PasswordEyeImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PasswordEyeImage.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Paste" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Paste.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Paste_16_x_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Paste_16_x_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -837,6 +852,12 @@
   </data>
   <data name="popupcontainerbuttons" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\popupcontainerbuttons.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Print" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Print.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Print_Preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Print_Preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="progress_bar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\progress_bar.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -903,6 +924,9 @@
   </data>
   <data name="restore" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\restore.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Save" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Save.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="SearchToolBar_ButtonCaseSensitive" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SearchToolBar_ButtonCaseSensitive.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

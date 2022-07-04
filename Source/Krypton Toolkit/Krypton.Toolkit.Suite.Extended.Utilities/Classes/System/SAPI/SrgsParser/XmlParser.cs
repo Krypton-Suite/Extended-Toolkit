@@ -70,10 +70,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsParser
 
         public IElementFactory ElementFactory
         {
-            set
-            {
-                _parser = value;
-            }
+            set => _parser = value;
         }
 
         internal XmlParser(XmlReader reader, Uri uri)

@@ -19,10 +19,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 
         internal bool RuleRef
         {
-            get
-            {
-                return (_flag1 & 1) != 0;
-            }
+            get => (_flag1 & 1) != 0;
             set
             {
                 if (value)
@@ -38,10 +35,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 
         internal bool LastArc
         {
-            get
-            {
-                return (_flag1 & 2) != 0;
-            }
+            get => (_flag1 & 2) != 0;
             set
             {
                 if (value)
@@ -57,10 +51,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 
         internal bool HasSemanticTag
         {
-            get
-            {
-                return (_flag1 & 4) != 0;
-            }
+            get => (_flag1 & 4) != 0;
             set
             {
                 if (value)
@@ -76,10 +67,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 
         internal bool LowConfRequired
         {
-            get
-            {
-                return (_flag1 & 8) != 0;
-            }
+            get => (_flag1 & 8) != 0;
             set
             {
                 if (value)
@@ -95,10 +83,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 
         internal bool HighConfRequired
         {
-            get
-            {
-                return (_flag1 & 0x10) != 0;
-            }
+            get => (_flag1 & 0x10) != 0;
             set
             {
                 if (value)
@@ -114,10 +99,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 
         internal uint TransitionIndex
         {
-            get
-            {
-                return (_flag1 >> 5) & 0x3FFFFF;
-            }
+            get => (_flag1 >> 5) & 0x3FFFFF;
             set
             {
                 if (value > 4194303)
@@ -140,10 +122,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.SrgsCompiler
 
         internal uint NextStartArcIndex
         {
-            get
-            {
-                return (_flag2 >> 8) & 0x3FFFFF;
-            }
+            get => (_flag2 >> 8) & 0x3FFFFF;
             set
             {
                 if (value > 4194303)

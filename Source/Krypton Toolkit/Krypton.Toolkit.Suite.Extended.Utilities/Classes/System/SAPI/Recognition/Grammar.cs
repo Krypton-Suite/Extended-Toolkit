@@ -81,10 +81,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
 
         public bool Enabled
         {
-            get
-            {
-                return _enabled;
-            }
+            get => _enabled;
             set
             {
                 if (_grammarState != 0 && _enabled != value)
@@ -97,10 +94,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
 
         public float Weight
         {
-            get
-            {
-                return _weight;
-            }
+            get => _weight;
             set
             {
                 if ((double)value < 0.0 || (double)value > 1.0)
@@ -117,10 +111,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
 
         public int Priority
         {
-            get
-            {
-                return _priority;
-            }
+            get => _priority;
             set
             {
                 if (value < -128 || value > 127)
@@ -137,10 +128,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
 
         public string Name
         {
-            get
-            {
-                return _grammarName;
-            }
+            get => _grammarName;
             set
             {
                 if (value == null)
@@ -159,22 +147,13 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
 
         internal IRecognizerInternal Recognizer
         {
-            get
-            {
-                return _recognizer;
-            }
-            set
-            {
-                _recognizer = value;
-            }
+            get => _recognizer;
+            set => _recognizer = value;
         }
 
         internal GrammarState State
         {
-            get
-            {
-                return _grammarState;
-            }
+            get => _grammarState;
             set
             {
                 switch (value)
@@ -202,14 +181,8 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
 
         internal Exception LoadException
         {
-            get
-            {
-                return _loadException;
-            }
-            set
-            {
-                _loadException = value;
-            }
+            get => _loadException;
+            set => _loadException = value;
         }
 
         internal byte[] CfgData => _cfgData;
@@ -220,14 +193,8 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
 
         internal uint SapiGrammarId
         {
-            get
-            {
-                return _sapiGrammarId;
-            }
-            set
-            {
-                _sapiGrammarId = value;
-            }
+            get => _sapiGrammarId;
+            set => _sapiGrammarId = value;
         }
 
         protected internal virtual bool IsStg => _isStg;
@@ -236,22 +203,13 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
 
         internal InternalGrammarData InternalData
         {
-            get
-            {
-                return _internalData;
-            }
-            set
-            {
-                _internalData = value;
-            }
+            get => _internalData;
+            set => _internalData = value;
         }
 
         protected string ResourceName
         {
-            get
-            {
-                return _resources;
-            }
+            get => _resources;
             set
             {
                 Helpers.ThrowIfEmptyOrNull(value, "value");

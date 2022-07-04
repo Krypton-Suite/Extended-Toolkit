@@ -6,8 +6,6 @@
  */
 #endregion
 
-using System.Collections;
-
 namespace Krypton.Toolkit.Suite.Extended.Core
 {
     public class PaletteCompisitionEngine
@@ -17,7 +15,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         #endregion
 
         #region Properties
-        public PaletteMode PaletteMode { get { return _paletteMode; } set { _paletteMode = value; } }
+        public PaletteMode PaletteMode { get => _paletteMode;
+            set => _paletteMode = value;
+        }
         #endregion
 
         #region Constructors

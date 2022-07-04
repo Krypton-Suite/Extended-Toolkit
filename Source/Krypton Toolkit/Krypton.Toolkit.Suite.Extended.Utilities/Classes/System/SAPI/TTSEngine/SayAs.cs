@@ -24,10 +24,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.TTSEngine
 
         public string InterpretAs
         {
-            get
-            {
-                return _interpretAs;
-            }
+            get => _interpretAs;
             set
             {
                 Helpers.ThrowIfEmptyOrNull(value, "value");
@@ -37,10 +34,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.TTSEngine
 
         public string Format
         {
-            get
-            {
-                return _format;
-            }
+            get => _format;
             set
             {
                 Helpers.ThrowIfEmptyOrNull(value, "value");
@@ -50,10 +44,7 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.TTSEngine
 
         public string Detail
         {
-            get
-            {
-                return _detail;
-            }
+            get => _detail;
             set
             {
                 Helpers.ThrowIfEmptyOrNull(value, "value");

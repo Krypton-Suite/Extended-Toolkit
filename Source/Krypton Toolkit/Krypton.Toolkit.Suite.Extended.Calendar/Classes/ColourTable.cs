@@ -54,289 +54,133 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         #region "   Properties   "
         public Font FontStd
         {
-            get
-            {
-                return _fontStd;
-            }
-            set
-            {
-                _fontStd = value;
-            }
+            get => _fontStd;
+            set => _fontStd = value;
         }
         public Color BorderColour
         {
-            get
-            {
-                return _borderColor;
-            }
-            set
-            {
-                _borderColor = value;
-            }
+            get => _borderColor;
+            set => _borderColor = value;
         }
         public SolidBrush BorderBrush
         {
-            get
-            {
-                return _borderBrush;
-            }
-            set
-            {
-                _borderBrush = value;
-            }
+            get => _borderBrush;
+            set => _borderBrush = value;
         }
         public Color ForeColour
         {
-            get
-            {
-                return _foreColor;
-            }
-            set
-            {
-                _foreColor = value;
-            }
+            get => _foreColor;
+            set => _foreColor = value;
         }
         public SolidBrush ForeBrush
         {
-            get
-            {
-                return _foreBrush;
-            }
-            set
-            {
-                _foreBrush = value;
-            }
+            get => _foreBrush;
+            set => _foreBrush = value;
         }
         public Color SeparatorDark
         {
-            get
-            {
-                return _separatorDark;
-            }
-            set
-            {
-                _separatorDark = value;
-            }
+            get => _separatorDark;
+            set => _separatorDark = value;
         }
         public Color SelectionColour
         {
-            get
-            {
-                return _selectionColor;
-            }
-            set
-            {
-                _selectionColor = value;
-            }
+            get => _selectionColor;
+            set => _selectionColor = value;
         }
         public Color BackColour
         {
-            get
-            {
-                return _backColor;
-            }
-            set
-            {
-                _backColor = value;
-            }
+            get => _backColor;
+            set => _backColor = value;
         }
         public Color HeaderDark
         {
-            get
-            {
-                return _headerDark;
-            }
-            set
-            {
-                _headerDark = value;
-            }
+            get => _headerDark;
+            set => _headerDark = value;
         }
         public Color HeaderLight
         {
-            get
-            {
-                return _headerLight;
-            }
-            set
-            {
-                _headerLight = value;
-            }
+            get => _headerLight;
+            set => _headerLight = value;
         }
         public Color HeaderText
         {
-            get
-            {
-                return _headerText;
-            }
-            set
-            {
-                _headerText = value;
-            }
+            get => _headerText;
+            set => _headerText = value;
         }
         public SolidBrush HeaderBrush
         {
-            get
-            {
-                return _headerBrush;
-            }
-            set
-            {
-                _headerBrush = value;
-            }
+            get => _headerBrush;
+            set => _headerBrush = value;
         }
         public Color DayBackColour
         {
-            get
-            {
-                return _dayBackColor;
-            }
-            set
-            {
-                _dayBackColor = value;
-            }
+            get => _dayBackColor;
+            set => _dayBackColor = value;
         }
         public Color NewMonth
         {
-            get
-            {
-                return _newMonth;
-            }
-            set
-            {
-                _newMonth = value;
-            }
+            get => _newMonth;
+            set => _newMonth = value;
         }
         public Color CurrentMonth
         {
-            get
-            {
-                return _currentMonth;
-            }
-            set
-            {
-                _currentMonth = value;
-            }
+            get => _currentMonth;
+            set => _currentMonth = value;
         }
         public Color TodayGradient
         {
-            get
-            {
-                return _todayGradient;
-            }
-            set
-            {
-                _todayGradient = value;
-            }
+            get => _todayGradient;
+            set => _todayGradient = value;
         }
         public SolidBrush TodayGradientBrush
         {
-            get
-            {
-                return _todayGradientBrush;
-            }
-            set
-            {
-                _todayGradientBrush = value;
-            }
+            get => _todayGradientBrush;
+            set => _todayGradientBrush = value;
         }
         public Color WorkingColour
         {
-            get
-            {
-                return _workingColor;
-            }
-            set
-            {
-                _workingColor = value;
-            }
+            get => _workingColor;
+            set => _workingColor = value;
         }
         public Color NonWorkingColour
         {
-            get
-            {
-                return _nonWorkingColor;
-            }
-            set
-            {
-                _nonWorkingColor = value;
-            }
+            get => _nonWorkingColor;
+            set => _nonWorkingColor = value;
         }
         public Color HalfHourEndingColour
         {
-            get
-            {
-                return _halfHourEndingColour;
-            }
-            set
-            {
-                _halfHourEndingColour = value;
-            }
+            get => _halfHourEndingColour;
+            set => _halfHourEndingColour = value;
         }
         public Color HourEndingColour
         {
-            get
-            {
-                return _hourEndingColour;
-            }
-            set
-            {
-                _hourEndingColour = value;
-            }
+            get => _hourEndingColour;
+            set => _hourEndingColour = value;
         }
         public Color LeftMarginFillColor
         {
-            get
-            {
-                return _leftMarginFillColor;
-            }
-            set
-            {
-                _leftMarginFillColor = value;
-            }
+            get => _leftMarginFillColor;
+            set => _leftMarginFillColor = value;
         }
         public Color ItemBackColour
         {
-            get
-            {
-                return _itemBackColor;
-            }
-            set
-            {
-                _itemBackColor = value;
-            }
+            get => _itemBackColor;
+            set => _itemBackColor = value;
         }
         public Color ItemLeftMarginColour
         {
-            get
-            {
-                return _itemLeftMarginColor;
-            }
-            set
-            {
-                _itemLeftMarginColor = value;
-            }
+            get => _itemLeftMarginColor;
+            set => _itemLeftMarginColor = value;
         }
         public Color SelectedBackColour
         {
-            get
-            {
-                return _selectedBackColor;
-            }
-            set
-            {
-                _selectedBackColor = value;
-            }
+            get => _selectedBackColor;
+            set => _selectedBackColor = value;
         }
         public Color SelectedForeColour
         {
-            get
-            {
-                return _selectedForeColor;
-            }
-            set
-            {
-                _selectedForeColor = value;
-            }
+            get => _selectedForeColor;
+            set => _selectedForeColor = value;
         }
         #endregion
         #region "   Functions   "

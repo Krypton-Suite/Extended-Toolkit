@@ -381,8 +381,8 @@ namespace Krypton.Toolkit.Suite.Extended.Common
 
         public bool SubClassed
         {
-            get { return this.IsSubClassed; }
-            set { this.IsSubClassed = value; }
+            get => this.IsSubClassed;
+            set => this.IsSubClassed = value;
         }
 
         protected override void WndProc(ref Message m)

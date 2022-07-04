@@ -40,39 +40,30 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// </summary>
         public Image[] Cache
         {
-            get { return cache; }
-            set { cache = value; }
+            get => cache;
+            set => cache = value;
         }
 
         /// <summary>
         /// Gets the framerate in frames per second
         /// </summary>
-        public int FrameRate
-        {
-            get { return frameRate; }
-        }
+        public int FrameRate => frameRate;
 
         /// <summary>
         /// Gets the length (in frames) of the animation
         /// </summary>
-        public int Length
-        {
-            get { return length; }
-        }
+        public int Length => length;
 
         /// <summary>
         /// Gets or sets the direction of the animation
         /// </summary>
         public int Direction
         {
-            get { return direction; }
-            set { direction = value; }
+            get => direction;
+            set => direction = value;
         }
 
-        public Dictionary<string, int> Animatables
-        {
-            get { return animatables; }
-        }
+        public Dictionary<string, int> Animatables => animatables;
 
         #endregion
 
@@ -200,8 +191,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// </summary>
         public event AnimationEventHandler PaintFrame
         {
-            add { paintFrame += value; }
-            remove { paintFrame -= value; }
+            add => paintFrame += value;
+            remove => paintFrame -= value;
         }
 
         #endregion

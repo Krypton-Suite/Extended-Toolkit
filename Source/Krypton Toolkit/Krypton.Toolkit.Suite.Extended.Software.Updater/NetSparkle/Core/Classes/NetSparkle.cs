@@ -150,14 +150,8 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// </summary>
         public SecurityProtocolType SecurityProtocolType
         {
-            get
-            {
-                return ServicePointManager.SecurityProtocol;
-            }
-            set
-            {
-                ServicePointManager.SecurityProtocol = value;
-            }
+            get => ServicePointManager.SecurityProtocol;
+            set => ServicePointManager.SecurityProtocol = value;
         }
 
         /// <summary>
@@ -172,8 +166,8 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// </summary>
         public string TmpDownloadFilePath
         {
-            get { return _tmpDownloadFilePath; }
-            set { _tmpDownloadFilePath = value?.Trim(); }
+            get => _tmpDownloadFilePath;
+            set => _tmpDownloadFilePath = value?.Trim();
         }
 
         /// <summary>
@@ -195,20 +189,14 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// <summary>
         /// Whether or not the update loop is running
         /// </summary>
-        public bool IsUpdateLoopRunning
-        {
-            get
-            {
-                return _loopingHandle.WaitOne(0);
-            }
-        }
+        public bool IsUpdateLoopRunning => _loopingHandle.WaitOne(0);
 
         /// <summary>
         /// Factory for creating UI elements like progress window, etc.
         /// </summary>
         public IUIFactory UIFactory
         {
-            get { return _uiFactory; }
+            get => _uiFactory;
             set { _uiFactory = value; _uiFactory?.Init(); }
         }
 
@@ -296,10 +284,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
                 }
                 return _logWriter;
             }
-            set
-            {
-                _logWriter = value;
-            }
+            set => _logWriter = value;
         }
 
         /// <summary>
@@ -311,13 +296,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
         /// <summary>
         /// Returns the latest appcast items to the caller. Might be null.
         /// </summary>
-        public List<AppCastItem> LatestAppCastItems
-        {
-            get
-            {
-                return _latestDownloadedUpdateInfo?.Updates;
-            }
-        }
+        public List<AppCastItem> LatestAppCastItems => _latestDownloadedUpdateInfo?.Updates;
 
         /// <summary>
         /// Loops through all of the most recently grabbed app cast items

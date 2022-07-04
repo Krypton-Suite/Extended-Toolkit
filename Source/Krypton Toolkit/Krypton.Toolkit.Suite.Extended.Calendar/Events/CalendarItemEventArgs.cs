@@ -32,11 +32,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets the <see cref="CalendarItemAlternative"/> related to the event
         /// </summary>
-        public CalendarItemAlternative Item
-        {
-            get { return _item; }
-        }
-
+        public CalendarItemAlternative Item => _item;
 
         #endregion
     }

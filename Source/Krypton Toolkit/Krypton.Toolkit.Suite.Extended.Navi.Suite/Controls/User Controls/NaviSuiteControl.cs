@@ -81,7 +81,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         [DefaultValue(NaviLayoutStyle.Office2007Blue)]
         public NaviLayoutStyle LayoutStyle
         {
-            get { return layoutStyle; }
+            get => layoutStyle;
             set
             {
                 layoutStyle = value;
@@ -100,7 +100,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         ]
         public virtual NaviRenderer Renderer
         {
-            get { return renderer; }
+            get => renderer;
             set
             {
                 renderer = value;

@@ -47,14 +47,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// </summary>
         public KryptonForm Popup
         {
-            get
-            {
-                return this.popup;
-            }
-            set
-            {
-                this.popup = value;
-            }
+            get => this.popup;
+            set => this.popup = value;
         }
 
         /// <summary>

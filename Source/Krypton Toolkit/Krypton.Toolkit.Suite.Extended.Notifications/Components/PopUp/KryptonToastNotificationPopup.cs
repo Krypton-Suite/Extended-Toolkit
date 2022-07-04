@@ -158,7 +158,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
                     return imageSize;
                 }
             }
-            set { imageSize = value; }
+            set => imageSize = value;
         }
 
         public void ResetImageSize()

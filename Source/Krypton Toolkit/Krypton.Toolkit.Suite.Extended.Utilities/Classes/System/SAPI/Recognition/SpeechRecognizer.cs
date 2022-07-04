@@ -33,27 +33,15 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
 
         public bool Enabled
         {
-            get
-            {
-                return RecoBase.Enabled;
-            }
-            set
-            {
-                RecoBase.Enabled = value;
-            }
+            get => RecoBase.Enabled;
+            set => RecoBase.Enabled = value;
         }
 
         /// <filterpriority>2</filterpriority>
         public bool PauseRecognizerOnRecognition
         {
-            get
-            {
-                return RecoBase.PauseRecognizerOnRecognition;
-            }
-            set
-            {
-                RecoBase.PauseRecognizerOnRecognition = value;
-            }
+            get => RecoBase.PauseRecognizerOnRecognition;
+            set => RecoBase.PauseRecognizerOnRecognition = value;
         }
 
         public ReadOnlyCollection<Grammar> Grammars => RecoBase.Grammars;
@@ -76,14 +64,8 @@ namespace Krypton.Toolkit.Suite.Extended.Utilities.System.Recognition
 
         public int MaxAlternates
         {
-            get
-            {
-                return RecoBase.MaxAlternates;
-            }
-            set
-            {
-                RecoBase.MaxAlternates = value;
-            }
+            get => RecoBase.MaxAlternates;
+            set => RecoBase.MaxAlternates = value;
         }
 
         private RecognizerBase RecoBase

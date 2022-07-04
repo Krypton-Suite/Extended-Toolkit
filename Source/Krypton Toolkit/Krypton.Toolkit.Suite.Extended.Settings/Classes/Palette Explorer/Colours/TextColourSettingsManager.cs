@@ -6,11 +6,6 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Global.Utilities;
-using Microsoft.WindowsAPICodePack.Dialogs;
-using System;
-using System.Drawing;
-
 namespace Krypton.Toolkit.Suite.Extended.Settings
 {
     public class TextColourSettingsManager
@@ -30,15 +25,9 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         /// </value>
         public bool AlwaysUsePrompt
         {
-            get
-            {
-                return _alwaysUsePrompt;
-            }
+            get => _alwaysUsePrompt;
 
-            set
-            {
-                _alwaysUsePrompt = value;
-            }
+            set => _alwaysUsePrompt = value;
         }
 
         /// <summary>
@@ -49,15 +38,9 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         /// </value>
         public bool SettingsModified
         {
-            get
-            {
-                return _settingsModified;
-            }
+            get => _settingsModified;
 
-            set
-            {
-                _settingsModified = value;
-            }
+            set => _settingsModified = value;
         }
         #endregion
 

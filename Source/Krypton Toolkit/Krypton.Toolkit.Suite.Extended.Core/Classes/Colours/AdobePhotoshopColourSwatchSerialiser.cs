@@ -6,8 +6,6 @@
  */
 #endregion
 
-using System.IO;
-
 namespace Krypton.Toolkit.Suite.Extended.Core
 {
     /// <summary>
@@ -21,19 +19,13 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// Gets the default extension for files generated with this palette format.
         /// </summary>
         /// <value>The default extension for files generated with this palette format.</value>
-        public override string DefaultExtension
-        {
-            get { return "aco"; }
-        }
+        public override string DefaultExtension => "aco";
 
         /// <summary>
         /// Gets a descriptive name of the palette format
         /// </summary>
         /// <value>The descriptive name of the palette format.</value>
-        public override string Name
-        {
-            get { return "Adobe Photoshop Colour Swatch"; }
-        }
+        public override string Name => "Adobe Photoshop Colour Swatch";
 
         #endregion
 

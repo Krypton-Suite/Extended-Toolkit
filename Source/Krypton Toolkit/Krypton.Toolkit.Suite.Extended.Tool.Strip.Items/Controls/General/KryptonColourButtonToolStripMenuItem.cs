@@ -22,10 +22,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         /// <value>The KryptonColorButton control.</value>
         [RefreshProperties(RefreshProperties.All),
         DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
-        public KryptonColorButton KryptonColourButtonControl
-        {
-            get { return Control as KryptonColorButton; }
-        }
+        public KryptonColorButton KryptonColourButtonControl => Control as KryptonColorButton;
 
         // Constructor ========================================================
         /// <summary>

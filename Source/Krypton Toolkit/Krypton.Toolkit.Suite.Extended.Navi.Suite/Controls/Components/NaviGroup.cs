@@ -63,8 +63,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// </summary>
         public string Caption
         {
-            get { return caption; }
-            set { caption = value; }
+            get => caption;
+            set => caption = value;
         }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         ]
         public int HeaderHeight
         {
-            get { return headerHeight; }
+            get => headerHeight;
             set
             {
                 if (headerHeight != value)
@@ -94,7 +94,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         ]
         public bool Expanded
         {
-            get { return expanded; }
+            get => expanded;
             set
             {
                 if (expanded != value)
@@ -120,8 +120,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         ]
         public int ExpandedHeight
         {
-            get { return expandedHeight; }
-            set { expandedHeight = value; }
+            get => expandedHeight;
+            set => expandedHeight = value;
         }
 
         /// <summary>
@@ -129,7 +129,7 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// </summary>
         public new int Height
         {
-            get { return base.Height; }
+            get => base.Height;
             set
             {
                 base.Height = value;
@@ -145,8 +145,8 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// </summary>
         public new ContextMenuStrip ContextMenuStrip
         {
-            get { return m_contextMenuStrip; }
-            set { m_contextMenuStrip = value; }
+            get => m_contextMenuStrip;
+            set => m_contextMenuStrip = value;
         }
 
         /// <summary>
@@ -154,18 +154,15 @@ namespace Krypton.Toolkit.Suite.Extended.Navi.Suite
         /// </summary>
         public ContextMenuStrip HeaderContextMenuStrip
         {
-            get { return m_headerContextMenuStrip; }
-            set { m_headerContextMenuStrip = value; }
+            get => m_headerContextMenuStrip;
+            set => m_headerContextMenuStrip = value;
         }
 
         /// <summary>
         /// Gets the region used for the header
         /// </summary>
         [Browsable(false)]
-        public Region HeaderRegion
-        {
-            get { return headerRegion; }
-        }
+        public Region HeaderRegion => headerRegion;
 
         #endregion
 
