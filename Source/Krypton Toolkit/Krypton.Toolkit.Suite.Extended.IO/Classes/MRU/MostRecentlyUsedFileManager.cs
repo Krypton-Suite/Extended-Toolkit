@@ -43,14 +43,35 @@ namespace Krypton.Toolkit.Suite.Extended.IO
             
         }
 
+        /// <summary>Initializes a new instance of the <see cref="MostRecentlyUsedFileManager" /> class.</summary>
+        /// <param name="parentMenuItem">The parent menu item.</param>
+        /// <param name="applicationName">Name of the application.</param>
+        /// <param name="onRecentFileClick">The on recent file click.</param>
+        /// <param name="onClearRecentFilesClick">The on clear recent files click.</param>
+        /// <exception cref="System.ArgumentException">Bad argument.</exception>
+        public MostRecentlyUsedFileManager(ToolStripMenuItem parentMenuItem, string applicationName, Action<object, EventArgs> onRecentFileClick, Action<object, EventArgs> onClearRecentFilesClick = null)
+        {
+            if (parentMenuItem == null || onRecentFileClick == null || applicationName == null || applicationName.Length == 0 || applicationName.Contains("\\"))
+            {
+                throw new ArgumentException("Bad argument.");
+            }
+
+            _parentMenuItem = parentMenuItem;
+
+            _applicationName = applicationName;
+
+            OnClearRecentFilesClick = onClearRecentFilesClick;
+
+            OnRecentFileClick = onRecentFileClick;
+
+            _subKeyName = $"Software\\{applicationName}\\MostRecentlyUsed";
+
+            RefreshRecentFilesMenu();
+        }
+
         #endregion
 
         #region Implementation
-
-        private void OnRecentFile_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void OnClearRecentFiles_Click(object sender, EventArgs e)
         {
@@ -147,6 +168,8 @@ namespace Krypton.Toolkit.Suite.Extended.IO
             _parentMenuItem.Enabled = true;
         }
 
+        /// <summary>Adds the recent file to the MRU list.</summary>
+        /// <param name="fileNameWithFullPath">The file name with full path.</param>
         public static void AddRecentFile(string fileNameWithFullPath)
         {
             MostRecentlyUsedFileManager manager = new MostRecentlyUsedFileManager();
@@ -163,7 +186,49 @@ namespace Krypton.Toolkit.Suite.Extended.IO
 
                     if (value == null)
                     {
-                        
+                        key.SetValue(i.ToString(), fileNameWithFullPath);
+
+                        key.Close();
+
+                        break;
+                    }
+                    else if (value == fileNameWithFullPath)
+                    {
+                        key.Close();
+
+                        break;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                ExceptionCapture.CaptureException(e);
+            }
+
+            manager.RefreshRecentFilesMenu();
+        }
+
+        /// <summary>Removes the recent file from the MRU list.</summary>
+        /// <param name="fileNameWithFullPath">The file name with full path.</param>
+        public static void RemoveRecentFile(string fileNameWithFullPath)
+        {
+            MostRecentlyUsedFileManager manager = new MostRecentlyUsedFileManager();
+
+            try
+            {
+                RegistryKey key = Registry.CurrentUser.CreateSubKey(manager._subKeyName, true);
+
+                string[] valueNames = key.GetValueNames();
+
+                foreach (string valueName in valueNames)
+                {
+                    if ((key.GetValue(valueName, null) as string) == fileNameWithFullPath)
+                    {
+                        key.DeleteValue(valueName);
+
+                        manager.RefreshRecentFilesMenu();
+
+                        break;
                     }
                 }
             }
