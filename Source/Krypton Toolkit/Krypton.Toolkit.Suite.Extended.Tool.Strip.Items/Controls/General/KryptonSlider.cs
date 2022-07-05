@@ -8,7 +8,7 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 {
-    [DefaultEvent("ValueChanged"), ToolboxBitmap(typeof(TrackBar)), ToolStripItemDesignerAvailability(ToolStripItemDesignerAvailability.All)]
+    [DefaultEvent("ValueChanged"), ToolboxBitmap(typeof(TrackBar)), ToolStripItemDesignerAvailability(ToolStripItemDesignerAvailability.ContextMenuStrip | ToolStripItemDesignerAvailability.StatusStrip | ToolStripItemDesignerAvailability.ToolStrip)]
     public partial class KryptonSlider : ToolStripControlHostFixed
     {
         #region Events
