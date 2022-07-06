@@ -44,26 +44,26 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         [Category("Slider Values"), DefaultValue(0)]
         public int Value
         {
-            get => (this.Control as KryptonToolbarSlider).Value;
-            set => (this.Control as KryptonToolbarSlider).Value = value;
+            get => (Control as KryptonToolbarSlider).Value;
+            set => (Control as KryptonToolbarSlider).Value = value;
         }
         [Category("Slider Values"), DefaultValue(100)]
         public int Range
         {
-            get => (this.Control as KryptonToolbarSlider).Range;
-            set => (this.Control as KryptonToolbarSlider).Range = value;
+            get => (Control as KryptonToolbarSlider).Range;
+            set => (Control as KryptonToolbarSlider).Range = value;
         }
         [Category("Slider Values"), DefaultValue(5)]
         public int Steps
         {
-            get => (this.Control as KryptonToolbarSlider).Steps;
-            set => (this.Control as KryptonToolbarSlider).Steps = value;
+            get => (Control as KryptonToolbarSlider).Steps;
+            set => (Control as KryptonToolbarSlider).Steps = value;
         }
         [Category("Slider Values")]
-        public int Maximum => (this.Control as KryptonToolbarSlider).Maximum;
+        public int Maximum => (Control as KryptonToolbarSlider).Maximum;
 
         [Category("Slider Values")]
-        public int Minimum => (this.Control as KryptonToolbarSlider).Minimum;
+        public int Minimum => (Control as KryptonToolbarSlider).Minimum;
 
         #endregion
 
@@ -90,7 +90,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         {
             base.OnUnsubscribeControlEvents(control);
 
-            (this.Control as KryptonToolbarSlider).ValueChanged -= OnValueChanged;
+            (Control as KryptonToolbarSlider).ValueChanged -= OnValueChanged;
             //(this.Control as KryptonToolbarSlider).kminus.SliderButtonFire -= kminus_SliderButtonFire;
             //(this.Control as KryptonToolbarSlider).kplus.SliderButtonFire -= kplus_SliderButtonFire;
         }

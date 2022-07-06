@@ -8,7 +8,7 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 {
-    [ToolStripItemDesignerAvailability(ToolStripItemDesignerAvailability.ContextMenuStrip | ToolStripItemDesignerAvailability.MenuStrip)]
+    //[ToolStripItemDesignerAvailability(ToolStripItemDesignerAvailability.ContextMenuStrip | ToolStripItemDesignerAvailability.MenuStrip | )]
     public class MRUMenuItem : ToolStripMenuItem
     {
         #region Variables
