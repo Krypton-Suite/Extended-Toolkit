@@ -180,5 +180,15 @@ namespace TestApp
         {
             SaveFile(_fileName, true);
         }
+
+        private void ktbPBValue_ValueChanged(object sender, EventArgs e)
+        {
+            tspbTest.Value = ktbPBValue.Value;
+        }
+
+        private void kryptonColourButtonToolStripMenuItem1_KryptonColourButtonControl_SelectedColorChanged(object sender, ColorEventArgs e)
+        {
+            kryptonRichTextBox1.BackColor = kryptonColourButtonToolStripMenuItem1.KryptonColourButtonControl.SelectedColor;
+        }
     }
 }

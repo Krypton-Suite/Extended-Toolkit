@@ -6,33 +6,116 @@
  */
 #endregion
 
+using System.Data.SqlClient;
+
 namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 {
-    [ToolboxBitmap(typeof(Button)), ToolStripItemDesignerAvailability(ToolStripItemDesignerAvailability.All)]
+    [ToolboxBitmap(typeof(Button)), ToolStripItemDesignerAvailability(ToolStripItemDesignerAvailability.All), DefaultEvent(@"SelectedColorChanged"), DefaultProperty(@"SelectedColor")]
     public class KryptonColourButtonToolStripMenuItem : ToolStripControlHostFixed
     {
-        // Constants =========================================================
+        #region Instance Fields
 
-        // Attributes ========================================================
+        private Color _selectedColor;
 
-        // Properties ========================================================
+        private Color _emptyBorderColor;
+
+        #endregion
+
+        #region Events
+
+        /// <summary>
+        /// Occurs when the SelectedColor property changes value.
+        /// </summary>
+        [Category(@"Property Changed")]
+        [Description(@"Occurs when the SelectedColor property changes value.")]
+        public event EventHandler<ColorEventArgs> SelectedColorChanged;
+
+        /// <summary>
+        /// Occurs when the user is tracking over a color.
+        /// </summary>
+        [Category(@"Action")]
+        [Description(@"Occurs when user is tracking over a color.")]
+        public event EventHandler<ColorEventArgs> TrackingColor;
+
+        /// <summary>
+        /// Occurs when the user selects the more colors option.
+        /// </summary>
+        [Category(@"Action")]
+        [Description(@"Occurs when user selects the more colors option.")]
+        public event CancelEventHandler MoreColors;
+
+        #endregion
+
+        #region Host Control
+
         /// <summary>
         /// Gets the KryptonColorButton control.
         /// </summary>
         /// <value>The KryptonColorButton control.</value>
         [RefreshProperties(RefreshProperties.All),
-        DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+         DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
         public KryptonColorButton KryptonColourButtonControl => Control as KryptonColorButton;
 
-        // Constructor ========================================================
-        /// <summary>
+        #endregion
+
+        #region Public
+
+        public Color SelectedColor
+        {
+            get => KryptonColourButtonControl.SelectedColor;
+            set
+            {
+                if (value != KryptonColourButtonControl.SelectedColor)
+                {
+                    KryptonColourButtonControl.SelectedColor = value;
+
+                    OnSelectedColorChanged(KryptonColourButtonControl.SelectedColor);
+                }
+            }
+        }
+
+        public Color EmptyBorderColor
+        {
+            get => KryptonColourButtonControl.EmptyBorderColor;
+
+            set
+            {
+                if (value != _emptyBorderColor)
+                {
+                    KryptonColourButtonControl.EmptyBorderColor = value;
+                }
+            }
+        }
+
+        public new string Text { get => KryptonColourButtonControl.Text; set => KryptonColourButtonControl.Text = value; }
+
+        #endregion
+
+        #region Identity
+
         /// Initializes a new instance of the <see cref="KryptonComboBoxToolStripMenuItem"/> class.
         /// </summary>
         public KryptonColourButtonToolStripMenuItem()
             : base(new KryptonColorButton())
         {
-            this.AutoSize = false;
+            AutoSize = false;
+
+            SelectedColor = KryptonColourButtonControl.SelectedColor;
+
+            EmptyBorderColor = KryptonColourButtonControl.EmptyBorderColor;
         }
+
+        #endregion
+
+        #region Protected Virtual
+
+        protected virtual void OnSelectedColorChanged(Color selectedColor) => SelectedColorChanged?.Invoke(this, new ColorEventArgs(selectedColor));
+
+        protected virtual void OnTrackingColor(ColorEventArgs colorEvent) => TrackingColor?.Invoke(this, colorEvent);
+
+        protected virtual void OnMoreColors(CancelEventArgs e) => MoreColors?.Invoke(this, e); 
+
+        #endregion
 
         /// <summary>
         /// Retrieves the size of a rectangular area into which a control can be fitted.
