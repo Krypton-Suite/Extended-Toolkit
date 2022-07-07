@@ -110,6 +110,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FDDE0872-007C-4945-9D20-C9011C37204B}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+		.nuspec = .nuspec
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Core 2022", "Krypton.Toolkit.Suite.Extended.Core\Krypton.Toolkit.Suite.Extended.Core 2022.csproj", "{E68C45C0-418B-4CFC-97C0-282798B38B37}"
@@ -235,6 +236,10 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView 2022", "Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView\Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView 2022.csproj", "{CB1E8B1F-E019-498A-8E4E-117012F6368C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Ribbon 2022", "Krypton.Toolkit.Suite.Extended.Ribbon\Krypton.Toolkit.Suite.Extended.Ribbon 2022.csproj", "{9FCE31CF-18F7-4F24-8B73-799B3CB19D57}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing", "Testing", "{0703388D-5FBE-4345-94B0-5FA9FD043079}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestApp", "TestApp\TestApp.csproj", "{F464AFD3-EF76-430E-B81D-051DE45D023A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -1096,6 +1101,22 @@ Global
 		{9FCE31CF-18F7-4F24-8B73-799B3CB19D57}.StableFull|Any CPU.Build.0 = StableFull|Any CPU
 		{9FCE31CF-18F7-4F24-8B73-799B3CB19D57}.StableLite|Any CPU.ActiveCfg = StableLite|Any CPU
 		{9FCE31CF-18F7-4F24-8B73-799B3CB19D57}.StableLite|Any CPU.Build.0 = StableLite|Any CPU
+		{F464AFD3-EF76-430E-B81D-051DE45D023A}.Canary|Any CPU.ActiveCfg = Debug|Any CPU
+		{F464AFD3-EF76-430E-B81D-051DE45D023A}.Canary|Any CPU.Build.0 = Debug|Any CPU
+		{F464AFD3-EF76-430E-B81D-051DE45D023A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F464AFD3-EF76-430E-B81D-051DE45D023A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F464AFD3-EF76-430E-B81D-051DE45D023A}.Nightly|Any CPU.ActiveCfg = Debug|Any CPU
+		{F464AFD3-EF76-430E-B81D-051DE45D023A}.Nightly|Any CPU.Build.0 = Debug|Any CPU
+		{F464AFD3-EF76-430E-B81D-051DE45D023A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F464AFD3-EF76-430E-B81D-051DE45D023A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F464AFD3-EF76-430E-B81D-051DE45D023A}.SignedFull|Any CPU.ActiveCfg = Debug|Any CPU
+		{F464AFD3-EF76-430E-B81D-051DE45D023A}.SignedFull|Any CPU.Build.0 = Debug|Any CPU
+		{F464AFD3-EF76-430E-B81D-051DE45D023A}.SignedLite|Any CPU.ActiveCfg = Debug|Any CPU
+		{F464AFD3-EF76-430E-B81D-051DE45D023A}.SignedLite|Any CPU.Build.0 = Debug|Any CPU
+		{F464AFD3-EF76-430E-B81D-051DE45D023A}.StableFull|Any CPU.ActiveCfg = Debug|Any CPU
+		{F464AFD3-EF76-430E-B81D-051DE45D023A}.StableFull|Any CPU.Build.0 = Debug|Any CPU
+		{F464AFD3-EF76-430E-B81D-051DE45D023A}.StableLite|Any CPU.ActiveCfg = Debug|Any CPU
+		{F464AFD3-EF76-430E-B81D-051DE45D023A}.StableLite|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1171,6 +1192,7 @@ Global
 		{241C9BD1-CB7D-4AF0-8FDB-3BCB4C98AF51} = {5D85B551-9AFC-4E96-93C3-D8D81B69971F}
 		{CB1E8B1F-E019-498A-8E4E-117012F6368C} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 		{9FCE31CF-18F7-4F24-8B73-799B3CB19D57} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
+		{F464AFD3-EF76-430E-B81D-051DE45D023A} = {0703388D-5FBE-4345-94B0-5FA9FD043079}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A7CE7732-0982-4703-8EFD-7715D569BAB5}

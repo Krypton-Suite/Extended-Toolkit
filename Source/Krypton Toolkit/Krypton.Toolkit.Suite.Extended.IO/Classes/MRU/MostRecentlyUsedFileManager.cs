@@ -170,7 +170,7 @@ namespace Krypton.Toolkit.Suite.Extended.IO
 
         /// <summary>Adds the recent file to the MRU list.</summary>
         /// <param name="fileNameWithFullPath">The file name with full path.</param>
-        public static void AddRecentFile(string fileNameWithFullPath)
+        public static void StaticAddRecentFile(string fileNameWithFullPath)
         {
             MostRecentlyUsedFileManager manager = new MostRecentlyUsedFileManager();
 
@@ -208,9 +208,47 @@ namespace Krypton.Toolkit.Suite.Extended.IO
             manager.RefreshRecentFilesMenu();
         }
 
+        public void AddRecentFile(string fileNameWithFullPath)
+        {
+            string value = null;
+
+            try
+            {
+                // Create or append a registry key
+                RegistryKey key =
+                    Registry.CurrentUser.CreateSubKey(_subKeyName, RegistryKeyPermissionCheck.ReadWriteSubTree);
+
+                for (int i = 0; true; i++)
+                {
+                    // Grab the current key value
+                    value = key.GetValue(i.ToString(), null) as string;
+
+                    if (value == null)
+                    {
+                        // Set the key value
+                        key.SetValue(i.ToString(), fileNameWithFullPath);
+
+                        key.Close();
+                    }
+                    else if (value == fileNameWithFullPath)
+                    {
+                        key.Close();
+
+                        break;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                ExceptionCapture.CaptureException(e);
+            }
+
+            RefreshRecentFilesMenu();
+        }
+
         /// <summary>Removes the recent file from the MRU list.</summary>
         /// <param name="fileNameWithFullPath">The file name with full path.</param>
-        public static void RemoveRecentFile(string fileNameWithFullPath)
+        public static void StaticRemoveRecentFile(string fileNameWithFullPath)
         {
             MostRecentlyUsedFileManager manager = new MostRecentlyUsedFileManager();
 
@@ -238,6 +276,34 @@ namespace Krypton.Toolkit.Suite.Extended.IO
             }
 
             manager.RefreshRecentFilesMenu();
+        }
+
+        public void RemoveRecentFile(string fileNameWithFullPath)
+        {
+            try
+            {
+                RegistryKey key = Registry.CurrentUser.CreateSubKey(_subKeyName, true);
+
+                string[] keyValues = key.GetValueNames();
+
+                foreach (string keyValue in keyValues)
+                {
+                    if ((key.GetValue(keyValue, null) as string) == fileNameWithFullPath)
+                    {
+                        key.DeleteValue(keyValue);
+
+                        RefreshRecentFilesMenu();
+
+                        break;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                ExceptionCapture.CaptureException(e);
+            }
+
+            RefreshRecentFilesMenu();
         }
 
         #endregion
