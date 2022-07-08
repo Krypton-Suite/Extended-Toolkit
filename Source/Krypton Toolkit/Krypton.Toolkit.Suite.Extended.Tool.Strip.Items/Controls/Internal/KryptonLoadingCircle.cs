@@ -45,7 +45,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         }
 
         // Attributes ========================================================
-        private System.Windows.Forms.Timer m_Timer;
+        private Timer m_Timer;
         private bool m_IsTimerActive;
         private int m_NumberOfSpoke;
         private int m_SpokeThickness;
@@ -82,8 +82,8 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         /// Gets or sets the outer circle radius.
         /// </summary>
         /// <value>The outer circle radius.</value>
-        [System.ComponentModel.Description("Gets or sets the radius of outer circle."),
-         System.ComponentModel.Category("LoadingCircle")]
+        [Description("Gets or sets the radius of outer circle."),
+         Category("LoadingCircle")]
         public int OuterCircleRadius
         {
             get
@@ -104,8 +104,8 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         /// Gets or sets the inner circle radius.
         /// </summary>
         /// <value>The inner circle radius.</value>
-        [System.ComponentModel.Description("Gets or sets the radius of inner circle."),
-         System.ComponentModel.Category("LoadingCircle")]
+        [Description("Gets or sets the radius of inner circle."),
+         Category("LoadingCircle")]
         public int InnerCircleRadius
         {
             get
@@ -126,8 +126,8 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         /// Gets or sets the number of spoke.
         /// </summary>
         /// <value>The number of spoke.</value>
-        [System.ComponentModel.Description("Gets or sets the number of spoke."),
-        System.ComponentModel.Category("LoadingCircle")]
+        [Description("Gets or sets the number of spoke."),
+        Category("LoadingCircle")]
         public int NumberSpoke
         {
             get
@@ -154,8 +154,8 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         /// Gets or sets a value indicating whether this <see cref="T:LoadingCircle"/> is active.
         /// </summary>
         /// <value><c>true</c> if active; otherwise, <c>false</c>.</value>
-        [System.ComponentModel.Description("Gets or sets the number of spoke."),
-        System.ComponentModel.Category("LoadingCircle")]
+        [Description("Gets or sets the number of spoke."),
+        Category("LoadingCircle")]
         public bool Active
         {
             get => m_IsTimerActive;
@@ -170,8 +170,8 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         /// Gets or sets the spoke thickness.
         /// </summary>
         /// <value>The spoke thickness.</value>
-        [System.ComponentModel.Description("Gets or sets the thickness of a spoke."),
-        System.ComponentModel.Category("LoadingCircle")]
+        [Description("Gets or sets the thickness of a spoke."),
+        Category("LoadingCircle")]
         public int SpokeThickness
         {
             get
@@ -192,8 +192,8 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         /// Gets or sets the rotation speed.
         /// </summary>
         /// <value>The rotation speed.</value>
-        [System.ComponentModel.Description("Gets or sets the rotation speed. Higher the slower."),
-        System.ComponentModel.Category("LoadingCircle")]
+        [Description("Gets or sets the rotation speed. Higher the slower."),
+        Category("LoadingCircle")]
         public int RotationSpeed
         {
             get => m_Timer.Interval;
@@ -262,11 +262,11 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             GetSpokesAngles();
             GetControlCenterPoint();
 
-            m_Timer = new System.Windows.Forms.Timer();
+            m_Timer = new Timer();
             m_Timer.Tick += new EventHandler(aTimer_Tick);
             ActiveTimer();
 
-            this.Resize += new EventHandler(LoadingCircle_Resize);
+            Resize += new EventHandler(LoadingCircle_Resize);
         }
 
         // Events ============================================================

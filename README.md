@@ -59,48 +59,50 @@ A toolkit example application has been included to showcase what the toolkit is 
 
 ## Main Modules
 
-* Buttons - This package holds extensions to the standard `KryptonButton` controls.
-* Calendar - This package implements a `KryptonCalendar` control.
-* CheckSum Tools - This package holds utilities to compute and verify checksums.
-* Circular Progress Bar - This package holds the circular progressbar control.
-* ComboBox - This package implements extensions to the Krypton standard toolkit ComboBox, including additional Drop Down types and views.
-* Compression - This package holds additional file compression utilities.
-* Controls - This package holds numerous controls that complement the standard toolkit.
-* Data Visualisation - This package implements charts, graphs and other additional data visualisation tools.
-* DataGridView - This package implements additional extensions to the Krypton standard toolkit DataGridView, including Column types and Master-Detail views.
-* Dialogs - This package implements additional extensions to standard dialogs.
-* Dock Extender - This package implements additional docking operations. (Under Development)
-* Drawing Utilities - This package implements additional drawing utilities.
-* Error Reporting - This package implements error reporting features.
-* Fast Coloured TextBox - This package implements the FastColouredTextBox control.
-* File Copier - This package provides tools to move and copy files.
-* File Explorer - This package implements a file explorer. (Under Development)
-* Floating Toolbars - This package allows the usage of floating toolbars.
-* Forms - This package implements additional `KryptonForm` effects, to be used in conjunction with the standard toolkit.
-* Gages - This package implements additional gage controls. (Under Development)
-* InputBox - This package implements a input box dialog.
-* IO - This package implements IO controls and features.
-* Memory Box - This package implements a memory box dialog.
-* Messagebox - This package implements additional `KryptonMessageBox` features and functionality.
-* Navi Suite - This package implements the 'NaviSuite' control.
-* Navigator - This package implements additional `KryptonNavigator` designs and features.
-* Networking - This package implements networking features.
-* Notifications - This package implements items to create notifications for your applications.
-* Outlook Grid - This package implements the 'OutlookGrid' control.
-* Palette Selectors - This package implements palette creation tools. (Under Development)
-* Panels - This package implements extra 'KryptonPanel' features and functionality. (Under Development)
-* Ribbon - This package implements extra 'KryptonRibbon' features and functionality.
-* Software Updater - This package implements software updating features.
-* Specialised Dialogs - This package implements system dialogs, using the Krypton themes.
-* TaskDialogs - This package implements extra 'KryptonTaskDialog' features and functionality.
-* Theme Switcher - This package implements a easy to use theme switcher.
-* Toast - This package contains a framework that allows the creation of toast notifications.
-* Toggle Switch - This package implements toggle switch controls. (Under Development)
-* Tool Box - This package implements a Visual Studio toolbox control.
-* Tool Strip Items - This package implements additional tool strip items.
-* TreeGridView - This package implements items to create tree grid views for your applications.
-* VirtualTreeColumnView - This package implements items to create a 'virtual tree column view' for your applications.
-* Wizard - This package implements a wizard control.
+| Module Name              | Description                                                                                                                                 | Example Image |
+|--------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|---------------|
+| Buttons                  | This package holds extensions to the standard `KryptonButton` controls.                                                                     | 1             |
+| Calendar                 | This package implements a `KryptonCalendar` control.                                                                                        | 2             |
+| CheckSum Tools           | This package holds utilities to compute and verify checksums.                                                                               | 3             |
+| Circular Progress Bar    | This package holds the circular progressbar control.                                                                                        | 4             |
+| ComboBox                 | This package implements extensions to the Krypton standard toolkit ComboBox, including additional Drop Down types and views.                | 5             |
+| Compression              | This package holds additional file compression utilities.                                                                                   | 6             |
+| Controls                 | This package holds numerous controls that complement the standard toolkit.                                                                  | 7             |
+| Data Visualisation       | This package implements charts, graphs and other additional data visualisation tools.                                                       | 8             |
+| Data Grid View           | This package implements additional extensions to the Krypton standard toolkit DataGridView, including Column types and Master-Detail views. | 9             |
+| Dialogs                  | This package implements additional extensions to standard dialogs.                                                                          | 10            |
+| Dock Extender            | This package implements additional docking operations. (Under Development)                                                                  | 11            |
+| Drawing Utilities        | This package implements additional drawing utilities.                                                                                       | 12            |
+| Error Reporting          | This package implements error reporting features.                                                                                           | 13            |
+| Fast Coloured TextBox    | This package implements the FastColouredTextBox control.                                                                                    | 14            |
+| File Copier              | This package provides tools to move and copy files.                                                                                         | 15            |
+| File Explorer            | This package implements a file explorer. (Under Development)                                                                                | 16            |
+| Floating Toolbars        | This package allows the usage of floating toolbars.                                                                                         | 17            |
+| Forms                    | This package implements additional `KryptonForm` effects, to be used in conjunction with the standard toolkit.                              | 18            |
+| Gages                    | This package implements additional gage controls. (Under Development)                                                                       | 19            |
+| Input Box                | This package implements a input box dialog.                                                                                                 | 20            |
+| IO                       | This package implements IO controls and features.                                                                                           | 21            |
+| Memory Box               | This package implements a memory box dialog.                                                                                                | 22            |
+| Message Box              | This package implements additional `KryptonMessageBox` features and functionality.                                                          | 23            |
+| Navi Suite               | This package implements the 'NaviSuite' control.                                                                                            | 24            |
+| Navigator                | This package implements additional `KryptonNavigator` designs and features.                                                                 | 25            |
+| Networking               | This package implements networking features.                                                                                                | 26            |
+| Notifications            | This package implements items to create notifications for your applications.                                                                | 27            |
+| Outlook Grid             | This package implements the 'OutlookGrid' control.                                                                                          | 28            |
+| Palette Selectors        | This package implements palette creation tools. (Under Development)                                                                         | 29            |
+| Panel                    | This package implements extra 'KryptonPanel' features and functionality. (Under Development)                                                | 30            |
+| Ribbon                   | This package implements extra 'KryptonRibbon' features and functionality.                                                                   | 31            |
+| Software Updater         | This package implements software updating features.                                                                                         | 32            |
+| Specialised Dialogs      | This package implements system dialogs, using the Krypton themes.                                                                           | 33            |
+| Task Dialogs             | This package implements extra 'KryptonTaskDialog' features and functionality.                                                               | 34            |
+| Theme Switcher           | This package implements a easy to use theme switcher.                                                                                       | 35            |
+| Toast                    | This package contains a framework that allows the creation of toast notifications.                                                          | 36            |
+| Toggle Switch            | This package implements toggle switch controls. (Under Development)                                                                         | 37            |
+| Tool Box                 | This package implements a Visual Studio toolbox control.                                                                                    | 38            |
+| Tool Strip Items         | This package implements additional tool strip items.                                                                                        | 39            |
+| Tree Grid View           | This package implements items to create tree grid views for your applications.                                                              | 40            |
+| Virtual Tree Column View | This package implements items to create a 'virtual tree column view' for your applications.                                                 | 41            |
+| Wizard                   | This package implements a wizard control.                                                                                                   | 42            |
 
 ## Additional Modules
 

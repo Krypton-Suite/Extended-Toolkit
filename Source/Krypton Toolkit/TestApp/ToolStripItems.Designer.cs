@@ -72,7 +72,6 @@
             this.kryptonColourButtonToolStripMenuItem1 = new Krypton.Toolkit.Suite.Extended.Tool.Strip.Items.KryptonColourButtonToolStripMenuItem();
             this.kryptonPanel3 = new Krypton.Toolkit.KryptonPanel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.tspbTest = new Krypton.Toolkit.Suite.Extended.Tool.Strip.Items.ToolStripProgressBarWithValueText();
             this.kryptonNumericUpDownToolStripItem1 = new Krypton.Toolkit.Suite.Extended.Tool.Strip.Items.KryptonNumericUpDownToolStripItem();
             this.kryptonToolStripTextBox2 = new Krypton.Toolkit.Suite.Extended.Tool.Strip.Items.KryptonToolStripTextBox();
             this.ktbProgressBarValue = new Krypton.Toolkit.Suite.Extended.Tool.Strip.Items.KryptonTrackBarToolStripMenuItem();
@@ -405,7 +404,7 @@
             this.kryptonColourButtonToolStripMenuItem1});
             this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(430, 30);
+            this.toolStrip1.Size = new System.Drawing.Size(399, 30);
             this.toolStrip1.TabIndex = 0;
             // 
             // kryptonTrackBarToolStripMenuItem1
@@ -451,8 +450,10 @@
             this.kryptonColourButtonToolStripMenuItem1.KryptonColourButtonControl.TabIndex = 0;
             this.kryptonColourButtonToolStripMenuItem1.KryptonColourButtonControl.SelectedColorChanged += new System.EventHandler<Krypton.Toolkit.ColorEventArgs>(this.kryptonColourButtonToolStripMenuItem1_KryptonColourButtonControl_SelectedColorChanged);
             this.kryptonColourButtonToolStripMenuItem1.Name = "kryptonColourButtonToolStripMenuItem1";
+            this.kryptonColourButtonToolStripMenuItem1.SelectedRect = new System.Drawing.Rectangle(0, 12, 16, 4);
             this.kryptonColourButtonToolStripMenuItem1.Size = new System.Drawing.Size(90, 25);
             this.kryptonColourButtonToolStripMenuItem1.Text = "&Color";
+            this.kryptonColourButtonToolStripMenuItem1.SelectedColorChanged += new System.EventHandler<Krypton.Toolkit.ColorEventArgs>(this.kryptonColourButtonToolStripMenuItem1_SelectedColorChanged);
             // 
             // kryptonPanel3
             // 
@@ -467,7 +468,6 @@
             // 
             this.statusStrip1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tspbTest,
             this.kryptonNumericUpDownToolStripItem1,
             this.kryptonToolStripTextBox2,
             this.ktbProgressBarValue,
@@ -478,11 +478,6 @@
             this.statusStrip1.Size = new System.Drawing.Size(1069, 25);
             this.statusStrip1.TabIndex = 0;
             this.statusStrip1.Text = "statusStrip1";
-            // 
-            // tspbTest
-            // 
-            this.tspbTest.Name = "tspbTest";
-            this.tspbTest.Size = new System.Drawing.Size(100, 19);
             // 
             // kryptonNumericUpDownToolStripItem1
             // 
@@ -508,7 +503,7 @@
             // ktbProgressBarValue
             // 
             this.ktbProgressBarValue.KryptonTrackBarControl.AccessibleName = "ktbProgressBarValue";
-            this.ktbProgressBarValue.KryptonTrackBarControl.Location = new System.Drawing.Point(295, 2);
+            this.ktbProgressBarValue.KryptonTrackBarControl.Location = new System.Drawing.Point(193, 2);
             this.ktbProgressBarValue.KryptonTrackBarControl.Maximum = 100;
             this.ktbProgressBarValue.KryptonTrackBarControl.Name = "kryptonTrackBarToolStripMenuItem2";
             this.ktbProgressBarValue.KryptonTrackBarControl.Size = new System.Drawing.Size(150, 23);

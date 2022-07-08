@@ -15,7 +15,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         /// <summary> 
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
 
         #region Component Designer generated code
@@ -118,7 +118,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             m_paletteContent = new PaletteContentInheritRedirect(_paletteRedirect);
 
             //Set Back Color
-            this.BackColor = System.Drawing.Color.Transparent;
+            BackColor = Color.Transparent;
 
         }
 
@@ -172,7 +172,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         #region "Painting"
 
         //Overrides
-        protected override void OnPaint(System.Windows.Forms.PaintEventArgs e)
+        protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
             DrawLines(e.Graphics);
@@ -205,7 +205,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
                     m_mementoBack2 = null;
                 }
 
-                if (this.components != null)
+                if (components != null)
                 {
                     components.Dispose();
                 }
@@ -224,7 +224,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
             base.Dispose(disposing);
         }
-        protected override void OnLayout(System.Windows.Forms.LayoutEventArgs e)
+        protected override void OnLayout(LayoutEventArgs e)
         {
 
             //Active Palette
@@ -275,17 +275,17 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
             //Smoothing Mode
             Gfx.SmoothingMode = SmoothingMode.AntiAlias;
-            Gfx.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            Gfx.TextRenderingHint = TextRenderingHint.ClearTypeGridFit;
 
             //Define Pen Colors
             Pen TopPen = new Pen(m_sliderlinetop, 1);
             Pen BottomPen = new Pen(m_sliderlinebottom, 1);
 
             //Draw Lines
-            Gfx.DrawLine(TopPen, 17, (int)this.Height / 2 - 1, this.Width - 18, (int)this.Height / 2 - 1);
-            Gfx.DrawLine(BottomPen, 17, (int)this.Height / 2, this.Width - 18, (int)this.Height / 2);
-            Gfx.DrawLine(TopPen, (int)this.Width / 2, (int)this.Height / 2 - 3, (int)this.Width / 2, (int)this.Height / 2 + 3);
-            Gfx.DrawLine(BottomPen, (int)this.Width / 2 + 1, (int)this.Height / 2 - 3, (int)this.Width / 2 + 1, (int)this.Height / 2 + 3);
+            Gfx.DrawLine(TopPen, 17, (int)Height / 2 - 1, Width - 18, (int)Height / 2 - 1);
+            Gfx.DrawLine(BottomPen, 17, (int)Height / 2, Width - 18, (int)Height / 2);
+            Gfx.DrawLine(TopPen, (int)Width / 2, (int)Height / 2 - 3, (int)Width / 2, (int)Height / 2 + 3);
+            Gfx.DrawLine(BottomPen, (int)Width / 2 + 1, (int)Height / 2 - 3, (int)Width / 2 + 1, (int)Height / 2 + 3);
 
         }
         private void DrawSlider(Graphics Gfx)
@@ -293,7 +293,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
             //Smoothing Mode
             Gfx.SmoothingMode = SmoothingMode.AntiAlias;
-            Gfx.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            Gfx.TextRenderingHint = TextRenderingHint.ClearTypeGridFit;
 
             //Slider Bounds
             Rectangle SliderBounds = GetSliderBounds(GetSliderPosition());
@@ -317,7 +317,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
                         m_paletteBack.Style = PaletteBackStyle.HeaderPrimary;
 
                         // Ask renderer to draw the background
-                        m_mementoBack1 = Renderer.RenderStandardBack.DrawBack(RenderContext, SliderBounds, Path, m_paletteBack, VisualOrientation.Top, (this.Enabled ? PaletteState.Normal : PaletteState.Disabled), m_mementoBack1);
+                        m_mementoBack1 = Renderer.RenderStandardBack.DrawBack(RenderContext, SliderBounds, Path, m_paletteBack, VisualOrientation.Top, (Enabled ? PaletteState.Normal : PaletteState.Disabled), m_mementoBack1);
 
                     }
 
@@ -363,12 +363,12 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         {
             if (Value == 0)
             {
-                return new Point((int)Math.Round((double)(((double)this.Width) / 2.0)), (int)Math.Round((double)((((double)this.Height) / 2.0) - 6.5)));
+                return new Point((int)Math.Round((double)(((double)Width) / 2.0)), (int)Math.Round((double)((((double)Height) / 2.0) - 6.5)));
             }
-            Point Result = new Point((int)Math.Round((double)((((double)this.Width) / 2.0) + (((((double)this.Width) / 2.0) - 20.0) * (((double)Value) / (((double)this.m_range) / 2.0))))), (int)Math.Round((double)((((double)this.Height) / 2.0) - 6.5)));
-            if (Result.X > (this.Width - 0x16))
+            Point Result = new Point((int)Math.Round((double)((((double)Width) / 2.0) + (((((double)Width) / 2.0) - 20.0) * (((double)Value) / (((double)m_range) / 2.0))))), (int)Math.Round((double)((((double)Height) / 2.0) - 6.5)));
+            if (Result.X > (Width - 0x16))
             {
-                Result.X = this.Width - 0x16;
+                Result.X = Width - 0x16;
             }
             if (Result.X < 20)
             {
@@ -379,14 +379,14 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         }
         private int GetValueFromPoint(Point Value)
         {
-            int Result = (int)Math.Round((double)((((Value.X - (((double)this.Width) / 2.0)) / ((((double)this.Width) / 2.0) - 20.0)) * this.m_range) / 2.0));
-            if (Result > (((double)this.m_range) / 2.0))
+            int Result = (int)Math.Round((double)((((Value.X - (((double)Width) / 2.0)) / ((((double)Width) / 2.0) - 20.0)) * m_range) / 2.0));
+            if (Result > (((double)m_range) / 2.0))
             {
-                Result = (int)Math.Round((double)(((double)this.m_range) / 2.0));
+                Result = (int)Math.Round((double)(((double)m_range) / 2.0));
             }
-            if (Result < ((((double)this.m_range) / 2.0) * -1.0))
+            if (Result < ((((double)m_range) / 2.0) * -1.0))
             {
-                Result = (int)Math.Round((double)((((double)this.m_range) / 2.0) * -1.0));
+                Result = (int)Math.Round((double)((((double)m_range) / 2.0) * -1.0));
             }
             return Result;
 
@@ -409,12 +409,12 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         }
         private Point GetSliderPosition()
         {
-            return new Point((int)Math.Round((double)(this.GetPointFromValue(this.m_value).X - 4.5)), (int)Math.Round((double)((((double)this.Height) / 2.0) - 6.5)));
+            return new Point((int)Math.Round((double)(GetPointFromValue(m_value).X - 4.5)), (int)Math.Round((double)((((double)Height) / 2.0) - 6.5)));
         }
 
         private PaletteState GetSliderState()
         {
-            if (!this.Enabled)
+            if (!Enabled)
             {
                 return PaletteState.Disabled;
             }
@@ -446,13 +446,13 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         }
         private RangeTests GetSliderRangeTest(Point Location)
         {
-            if ((Location.X > 20) & (Location.X < (this.Width - 20)))
+            if ((Location.X > 20) & (Location.X < (Width - 20)))
             {
-                if ((Location.X >= ((((double)this.Width) / 2.0) - 5.0)) & (Location.X <= ((((double)this.Width) / 2.0) + 5.0)))
+                if ((Location.X >= ((((double)Width) / 2.0) - 5.0)) & (Location.X <= ((((double)Width) / 2.0) + 5.0)))
                 {
                     return RangeTests.MiddleDomain;
                 }
-                if (Location.X < (((double)this.Width) / 2.0))
+                if (Location.X < (((double)Width) / 2.0))
                 {
                     return RangeTests.LeftDomain;
                 }
@@ -462,7 +462,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             {
                 return RangeTests.MinusDomain;
             }
-            if (Location.X >= (this.Width - 20))
+            if (Location.X >= (Width - 20))
             {
                 return RangeTests.PlusDomain;
             }
@@ -473,7 +473,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         //Slider Values
         private void ChangeValue(int NewValue)
         {
-            if (this.Enabled)
+            if (Enabled)
             {
                 if (ValueChanged != null)
                 {
@@ -502,25 +502,25 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         #region "Events"
 
         //Key Mouse Events
-        private void KryptonSliderButton_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
+        private void KryptonSliderButton_MouseDown(object sender, MouseEventArgs e)
         {
             if (GetSliderBounds(GetSliderPosition()).Contains(e.Location))
             {
                 m_down = true;
-                this.Invalidate();
+                Invalidate();
             }
         }
-        private void KryptonSliderButton_MouseEnter(object sender, System.EventArgs e)
+        private void KryptonSliderButton_MouseEnter(object sender, EventArgs e)
         {
             m_highlight = true;
-            this.Invalidate();
+            Invalidate();
         }
-        private void KryptonSliderButton_MouseLeave(object sender, System.EventArgs e)
+        private void KryptonSliderButton_MouseLeave(object sender, EventArgs e)
         {
             m_highlight = false;
-            this.Invalidate();
+            Invalidate();
         }
-        private void KryptonSlider_MouseMove(object sender, System.Windows.Forms.MouseEventArgs e)
+        private void KryptonSlider_MouseMove(object sender, MouseEventArgs e)
         {
 
             //Repaint Flag
@@ -569,10 +569,10 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             }
 
             //Check Invalidation
-            if (DoInvalidate) this.Invalidate();
+            if (DoInvalidate) Invalidate();
 
         }
-        private void KryptonSliderButton_MouseUp(object sender, System.Windows.Forms.MouseEventArgs e)
+        private void KryptonSliderButton_MouseUp(object sender, MouseEventArgs e)
         {
             m_down = false;
             if (!GetSliderBounds(GetSliderPosition()).Contains(e.Location))
@@ -590,33 +590,33 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
                         break;
                 }
             }
-            this.Invalidate();
+            Invalidate();
         }
 
         //Krypton Paint Helpers
-        private void k_palette_BasePaletteChanged(object sender, System.EventArgs e)
+        private void k_palette_BasePaletteChanged(object sender, EventArgs e)
         {
-            this.Invalidate();
+            Invalidate();
         }
-        private void k_palette_BaseRendererChanged(object sender, System.EventArgs e)
+        private void k_palette_BaseRendererChanged(object sender, EventArgs e)
         {
-            this.Invalidate();
+            Invalidate();
         }
-        private void k_palette_PalettePaint(object sender, Krypton.Toolkit.PaletteLayoutEventArgs e)
+        private void k_palette_PalettePaint(object sender, PaletteLayoutEventArgs e)
         {
-            this.Invalidate();
+            Invalidate();
         }
 
         //Slider Buttons
-        private void kminus_SliderButtonFire(KryptonSliderButton Sender, System.EventArgs e)
+        private void kminus_SliderButtonFire(KryptonSliderButton Sender, EventArgs e)
         {
             SliderDecrement();
-            this.Invalidate();
+            Invalidate();
         }
-        private void kplus_SliderButtonFire(KryptonSliderButton Sender, System.EventArgs e)
+        private void kplus_SliderButtonFire(KryptonSliderButton Sender, EventArgs e)
         {
             SliderIncrement();
-            this.Invalidate();
+            Invalidate();
         }
 
         #endregion
@@ -631,7 +631,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
                 if (m_value != value)
                 {
                     m_value = value;
-                    this.Invalidate();
+                    Invalidate();
                 }
             }
         }
@@ -642,10 +642,10 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             set
             {
                 m_singleClick = value;
-                this.kplus.SingleClick = value;
-                this.kminus.SingleClick = value;
+                kplus.SingleClick = value;
+                kminus.SingleClick = value;
 
-                this.Invalidate();
+                Invalidate();
             }
         }
 
@@ -655,10 +655,10 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             set
             {
                 m_fireInterval = value;
-                this.kplus.EventFireRate = value;
-                this.kminus.EventFireRate = value;
+                kplus.EventFireRate = value;
+                kminus.EventFireRate = value;
 
-                this.Invalidate();
+                Invalidate();
             }
         }
 
@@ -670,7 +670,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
                 if (m_range != value)
                 {
                     m_range = value;
-                    this.Invalidate();
+                    Invalidate();
                 }
             }
         }
@@ -682,7 +682,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
                 if (m_step != value)
                 {
                     m_step = value;
-                    this.Invalidate();
+                    Invalidate();
                 }
             }
         }
@@ -695,11 +695,11 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         #region "IContentValues"
 
         //Implements IContentValues
-        public System.Drawing.Image GetImage(Krypton.Toolkit.PaletteState state)
+        public Image GetImage(PaletteState state)
         {
             return null;
         }
-        public System.Drawing.Color GetImageTransparentColor(Krypton.Toolkit.PaletteState state)
+        public Color GetImageTransparentColor(PaletteState state)
         {
             return Color.Empty;
         }
@@ -716,7 +716,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
         #region "SliderEventArgs"
 
-        public class SliderEventArgs : System.EventArgs
+        public class SliderEventArgs : EventArgs
         {
 
             //Starter

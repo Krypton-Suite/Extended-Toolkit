@@ -188,7 +188,12 @@ namespace TestApp
 
         private void kryptonColourButtonToolStripMenuItem1_KryptonColourButtonControl_SelectedColorChanged(object sender, ColorEventArgs e)
         {
-            kryptonRichTextBox1.BackColor = kryptonColourButtonToolStripMenuItem1.KryptonColourButtonControl.SelectedColor;
+            //kryptonRichTextBox1.StateCommon.Back.Color1 = kryptonColourButtonToolStripMenuItem1.KryptonColourButtonControl.SelectedColor;
+        }
+
+        private void kryptonColourButtonToolStripMenuItem1_SelectedColorChanged(object sender, ColorEventArgs e)
+        {
+            kryptonRichTextBox1.StateCommon.Back.Color1 = kryptonColourButtonToolStripMenuItem1.KryptonColourButtonControl.SelectedColor;
         }
     }
 }

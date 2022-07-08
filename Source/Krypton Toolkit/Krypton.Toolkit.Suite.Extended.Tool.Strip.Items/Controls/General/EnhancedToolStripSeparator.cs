@@ -99,10 +99,10 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            ToolStrip ts = this.Owner ?? this.GetCurrentParent();
+            ToolStrip ts = Owner ?? GetCurrentParent();
             int textLeft = ts.Padding.Horizontal;
 
-            if (ts.BackColor != this.BackColor)
+            if (ts.BackColor != BackColor)
             {
                 using (SolidBrush sb = new SolidBrush(BackColor))
                 {

@@ -60,6 +60,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
         #region Public
 
+        [DefaultValue(typeof(Color), "Red")]
         public Color SelectedColor
         {
             get => KryptonColourButtonControl.SelectedColor;
@@ -69,11 +70,12 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
                 {
                     KryptonColourButtonControl.SelectedColor = value;
 
-                    OnSelectedColorChanged(KryptonColourButtonControl.SelectedColor);
+                    //OnSelectedColorChanged(KryptonColourButtonControl.SelectedColor);
                 }
             }
         }
 
+        [DefaultValue(typeof(Color), "DarkGray")]
         public Color EmptyBorderColor
         {
             get => KryptonColourButtonControl.EmptyBorderColor;
@@ -88,6 +90,8 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         }
 
         public new string Text { get => KryptonColourButtonControl.Text; set => KryptonColourButtonControl.Text = value; }
+
+        public Rectangle SelectedRect { get => KryptonColourButtonControl.SelectedRect; set => KryptonColourButtonControl.SelectedRect = value; }
 
         #endregion
 
@@ -109,13 +113,15 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
         #region Protected Virtual
 
-        protected virtual void OnSelectedColorChanged(Color selectedColor) => SelectedColorChanged?.Invoke(this, new ColorEventArgs(selectedColor));
+        //protected virtual void OnSelectedColorChanged(Color selectedColor) => SelectedColorChanged?.Invoke(this, new ColorEventArgs(selectedColor));
 
-        protected virtual void OnTrackingColor(ColorEventArgs colorEvent) => TrackingColor?.Invoke(this, colorEvent);
+        //protected virtual void OnTrackingColor(ColorEventArgs colorEvent) => TrackingColor?.Invoke(this, colorEvent);
 
-        protected virtual void OnMoreColors(CancelEventArgs e) => MoreColors?.Invoke(this, e); 
+        //protected virtual void OnMoreColors(CancelEventArgs e) => MoreColors?.Invoke(this, e); 
 
         #endregion
+
+        #region Implementation
 
         /// <summary>
         /// Retrieves the size of a rectangular area into which a control can be fitted.
@@ -128,7 +134,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         public override Size GetPreferredSize(Size constrainingSize)
         {
             //return base.GetPreferredSize(constrainingSize);
-            return this.KryptonColourButtonControl.GetPreferredSize(constrainingSize);
+            return KryptonColourButtonControl.GetPreferredSize(constrainingSize);
         }
 
         /// <summary>
@@ -152,5 +158,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
             //Add your code here to unsubscribe from control events.
         }
+
+        #endregion
     }
 }

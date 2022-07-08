@@ -59,7 +59,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
         private ExpandingMenuItem _menuItemReference;
 
-        private System.Windows.Forms.Timer _timer;
+        private Timer _timer;
         #endregion
 
         #region Constants
@@ -69,7 +69,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         #endregion
 
         #region Properties
-        public System.Windows.Forms.Timer Timer
+        public Timer Timer
         {
             [MethodImpl(MethodImplOptions.Synchronized)]
             get => _timer;
@@ -116,7 +116,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         {
             _menuItemReference = this;
 
-            Timer = new System.Windows.Forms.Timer();
+            Timer = new Timer();
 
             Timer.Interval = MILLISECOND_DELAY;
         }
