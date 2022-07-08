@@ -108,16 +108,19 @@ A toolkit example application has been included to showcase what the toolkit is 
 
 The following modules **will** be installed alongside the main packages when required.
 
-* Common - This package implements common tools and utilities that are used by the extended toolkit.
-* Core - This package implements core utilities that are fundamental to the extended toolkit.
-* Developer Utilities - This package implements utilities for developer usage.
-* Drawing - This package implements base drawing utilities.
-* Effects - This package implements additional effects, to be used in conjunction with the standard toolkit.
-* Global Utilities - This package implements global utilities that are used by the extended toolkit.
-* Language Model - This package implements language options for certain Krypton button controls.
-* Resources - This package implements global resources used by the extended toolkit.
-* Settings - This package implements global settings used by the extended toolkit.
-* Tools - This package implements global tools used by the extended toolkit.
-* Utilities - This package implements global utilities used by the extended toolkit.
+| Module Name         | Description                                                                                      | Example Image |
+|---------------------|--------------------------------------------------------------------------------------------------|---------------|
+| Common              | This package implements common tools and utilities that are used by the extended toolkit.        | 1             |
+| Core                | This package implements core utilities that are fundamental to the extended toolkit.             | 2             |
+| Developer Utilities | This package implements utilities for developer usage.                                           | 3             |
+| Drawing             | This package implements base drawing utilities.                                                  | 4             |
+| Effects             | This package implements additional effects, to be used in conjunction with the standard toolkit. | 5             |
+| Global Utilities    | This package implements global utilities that are used by the extended toolkit.                  | 6             |
+| Language Model      | This package implements language options for certain Krypton button controls.                    | 7             |
+| Resources           | This package implements global resources used by the extended toolkit.                           | 8             |
+| Settings            | This package implements global settings used by the extended toolkit.                            | 9             |
+| Tools               | This package implements global tools used by the extended toolkit.                               | 10            |
+| Utilities           | This package implements global utilities used by the extended toolkit.                           | 11            |
+
 
 ***Note:*** Some packages may install third-party libraries in order to make them function correctly.
