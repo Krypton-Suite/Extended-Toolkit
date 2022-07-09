@@ -61,27 +61,27 @@
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel1.Name = "kryptonPanel1";
-            this.kryptonPanel1.Size = new System.Drawing.Size(800, 450);
+            this.kryptonPanel1.Size = new System.Drawing.Size(686, 390);
             this.kryptonPanel1.TabIndex = 0;
             // 
             // kryptonYesDialogButton1
             // 
             this.kryptonYesDialogButton1.CornerRoundingRadius = -1F;
             this.kryptonYesDialogButton1.DialogResult = System.Windows.Forms.DialogResult.Yes;
-            this.kryptonYesDialogButton1.Location = new System.Drawing.Point(131, 12);
+            this.kryptonYesDialogButton1.Location = new System.Drawing.Point(112, 10);
             this.kryptonYesDialogButton1.Name = "kryptonYesDialogButton1";
             this.kryptonYesDialogButton1.ParentWindow = null;
-            this.kryptonYesDialogButton1.Size = new System.Drawing.Size(90, 25);
+            this.kryptonYesDialogButton1.Size = new System.Drawing.Size(77, 22);
             this.kryptonYesDialogButton1.TabIndex = 21;
             this.kryptonYesDialogButton1.Values.Text = "&Yes";
             // 
             // kryptonViewButtons1
             // 
             this.kryptonViewButtons1.BackColor = System.Drawing.Color.Transparent;
-            this.kryptonViewButtons1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.kryptonViewButtons1.Location = new System.Drawing.Point(419, 19);
+            this.kryptonViewButtons1.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.kryptonViewButtons1.Location = new System.Drawing.Point(359, 16);
             this.kryptonViewButtons1.Name = "kryptonViewButtons1";
-            this.kryptonViewButtons1.Size = new System.Drawing.Size(117, 18);
+            this.kryptonViewButtons1.Size = new System.Drawing.Size(100, 16);
             this.kryptonViewButtons1.TabIndex = 20;
             // 
             // kryptonuacButtonVersion21
@@ -91,7 +91,7 @@
             this.kryptonuacButtonVersion21.CornerRoundingRadius = -1F;
             this.kryptonuacButtonVersion21.CustomShieldSize = new System.Drawing.Size(0, 0);
             this.kryptonuacButtonVersion21.ExtraArguments = null;
-            this.kryptonuacButtonVersion21.Location = new System.Drawing.Point(164, 43);
+            this.kryptonuacButtonVersion21.Location = new System.Drawing.Point(141, 37);
             this.kryptonuacButtonVersion21.Name = "kryptonuacButtonVersion21";
             this.kryptonuacButtonVersion21.PathToElevatedObject = null;
             this.kryptonuacButtonVersion21.Size = new System.Drawing.Size(194, 36);
@@ -105,9 +105,9 @@
             // 
             this.kryptonuacButtonVersion11.AssemblyToElevate = null;
             this.kryptonuacButtonVersion11.CornerRoundingRadius = -1F;
-            this.kryptonuacButtonVersion11.Location = new System.Drawing.Point(12, 43);
+            this.kryptonuacButtonVersion11.Location = new System.Drawing.Point(10, 37);
             this.kryptonuacButtonVersion11.Name = "kryptonuacButtonVersion11";
-            this.kryptonuacButtonVersion11.Size = new System.Drawing.Size(135, 26);
+            this.kryptonuacButtonVersion11.Size = new System.Drawing.Size(116, 23);
             this.kryptonuacButtonVersion11.TabIndex = 18;
             this.kryptonuacButtonVersion11.Values.Image = ((System.Drawing.Image)(resources.GetObject("kryptonuacButtonVersion11.Values.Image")));
             this.kryptonuacButtonVersion11.Values.Text = "kryptonuacButtonVersion11";
@@ -116,11 +116,11 @@
             // 
             this.kryptonSplitButton1.AutoSize = true;
             this.kryptonSplitButton1.CornerRoundingRadius = -1F;
-            this.kryptonSplitButton1.Location = new System.Drawing.Point(542, 12);
+            this.kryptonSplitButton1.Location = new System.Drawing.Point(465, 10);
             this.kryptonSplitButton1.Name = "kryptonSplitButton1";
             this.kryptonSplitButton1.ProcessPath = null;
             this.kryptonSplitButton1.ShowSplitOption = true;
-            this.kryptonSplitButton1.Size = new System.Drawing.Size(140, 22);
+            this.kryptonSplitButton1.Size = new System.Drawing.Size(120, 22);
             this.kryptonSplitButton1.TabIndex = 17;
             this.kryptonSplitButton1.UseUACElevation = false;
             this.kryptonSplitButton1.Values.Text = "kryptonSplitButton1";
@@ -129,10 +129,10 @@
             // 
             this.kryptonokDialogButton1.CornerRoundingRadius = -1F;
             this.kryptonokDialogButton1.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.kryptonokDialogButton1.Location = new System.Drawing.Point(35, 12);
+            this.kryptonokDialogButton1.Location = new System.Drawing.Point(30, 10);
             this.kryptonokDialogButton1.Name = "kryptonokDialogButton1";
             this.kryptonokDialogButton1.ParentWindow = null;
-            this.kryptonokDialogButton1.Size = new System.Drawing.Size(90, 25);
+            this.kryptonokDialogButton1.Size = new System.Drawing.Size(77, 22);
             this.kryptonokDialogButton1.TabIndex = 16;
             this.kryptonokDialogButton1.Values.Text = "&OK";
             // 
@@ -140,20 +140,20 @@
             // 
             this.kryptonnoDialogButton1.CornerRoundingRadius = -1F;
             this.kryptonnoDialogButton1.DialogResult = System.Windows.Forms.DialogResult.No;
-            this.kryptonnoDialogButton1.Location = new System.Drawing.Point(227, 12);
+            this.kryptonnoDialogButton1.Location = new System.Drawing.Point(195, 10);
             this.kryptonnoDialogButton1.Name = "kryptonnoDialogButton1";
             this.kryptonnoDialogButton1.ParentWindow = null;
-            this.kryptonnoDialogButton1.Size = new System.Drawing.Size(90, 25);
+            this.kryptonnoDialogButton1.Size = new System.Drawing.Size(77, 22);
             this.kryptonnoDialogButton1.TabIndex = 15;
             this.kryptonnoDialogButton1.Values.Text = "&No";
             // 
             // kryptonCommandLinkVersion21
             // 
             this.kryptonCommandLinkVersion21.CornerRoundingRadius = -1F;
-            this.kryptonCommandLinkVersion21.Location = new System.Drawing.Point(268, 175);
+            this.kryptonCommandLinkVersion21.Location = new System.Drawing.Point(230, 152);
             this.kryptonCommandLinkVersion21.Name = "kryptonCommandLinkVersion21";
             this.kryptonCommandLinkVersion21.ProcessToElevate = null;
-            this.kryptonCommandLinkVersion21.Size = new System.Drawing.Size(268, 79);
+            this.kryptonCommandLinkVersion21.Size = new System.Drawing.Size(230, 68);
             this.kryptonCommandLinkVersion21.TabIndex = 14;
             this.kryptonCommandLinkVersion21.UACShieldSize = new System.Drawing.Size(0, 0);
             this.kryptonCommandLinkVersion21.Values.Image = ((System.Drawing.Image)(resources.GetObject("kryptonCommandLinkVersion21.Values.Image")));
@@ -161,7 +161,7 @@
             // 
             // kryptonCommandLinkButton1
             // 
-            this.kryptonCommandLinkButton1.Location = new System.Drawing.Point(12, 175);
+            this.kryptonCommandLinkButton1.Location = new System.Drawing.Point(10, 152);
             this.kryptonCommandLinkButton1.Name = "kryptonCommandLinkButton1";
             this.kryptonCommandLinkButton1.OverrideFocus.Border.Draw = Krypton.Toolkit.InheritBool.True;
             this.kryptonCommandLinkButton1.OverrideFocus.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
@@ -169,10 +169,10 @@
             | Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.kryptonCommandLinkButton1.OverrideFocus.Border.GraphicsHint = Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
             this.kryptonCommandLinkButton1.ProcessToElevate = null;
-            this.kryptonCommandLinkButton1.Size = new System.Drawing.Size(250, 55);
+            this.kryptonCommandLinkButton1.Size = new System.Drawing.Size(214, 48);
             this.kryptonCommandLinkButton1.StateCommon.Content.LongText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
             this.kryptonCommandLinkButton1.StateCommon.Content.LongText.TextV = Krypton.Toolkit.PaletteRelativeAlign.Far;
-            this.kryptonCommandLinkButton1.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.kryptonCommandLinkButton1.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.kryptonCommandLinkButton1.StateCommon.Content.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
             this.kryptonCommandLinkButton1.StateCommon.Content.ShortText.TextV = Krypton.Toolkit.PaletteRelativeAlign.Center;
             this.kryptonCommandLinkButton1.TabIndex = 13;
@@ -181,10 +181,10 @@
             // 
             this.kryptonCancelDialogButton1.CornerRoundingRadius = -1F;
             this.kryptonCancelDialogButton1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.kryptonCancelDialogButton1.Location = new System.Drawing.Point(323, 12);
+            this.kryptonCancelDialogButton1.Location = new System.Drawing.Point(277, 10);
             this.kryptonCancelDialogButton1.Name = "kryptonCancelDialogButton1";
             this.kryptonCancelDialogButton1.ParentWindow = null;
-            this.kryptonCancelDialogButton1.Size = new System.Drawing.Size(90, 25);
+            this.kryptonCancelDialogButton1.Size = new System.Drawing.Size(77, 22);
             this.kryptonCancelDialogButton1.TabIndex = 12;
             this.kryptonCancelDialogButton1.Values.Text = "C&ancel";
             // 
@@ -199,7 +199,7 @@
             this.kryptonBrowseButton1.ExtensionList = null;
             this.kryptonBrowseButton1.FileNames = null;
             this.kryptonBrowseButton1.FolderBrowserDialogDescription = null;
-            this.kryptonBrowseButton1.Location = new System.Drawing.Point(12, 12);
+            this.kryptonBrowseButton1.Location = new System.Drawing.Point(10, 10);
             this.kryptonBrowseButton1.Name = "kryptonBrowseButton1";
             this.kryptonBrowseButton1.RawDisplayName = null;
             this.kryptonBrowseButton1.Size = new System.Drawing.Size(17, 22);
@@ -211,10 +211,11 @@
             // 
             // ButtonItems
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(686, 390);
             this.Controls.Add(this.kryptonPanel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ButtonItems";
             this.Text = "ButtonItems";
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();

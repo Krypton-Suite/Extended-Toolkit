@@ -33,9 +33,10 @@
             Krypton.Toolkit.Suite.Extended.Calendar.CalendarHighlightRange calendarHighlightRange3 = new Krypton.Toolkit.Suite.Extended.Calendar.CalendarHighlightRange();
             Krypton.Toolkit.Suite.Extended.Calendar.CalendarHighlightRange calendarHighlightRange4 = new Krypton.Toolkit.Suite.Extended.Calendar.CalendarHighlightRange();
             Krypton.Toolkit.Suite.Extended.Calendar.CalendarHighlightRange calendarHighlightRange5 = new Krypton.Toolkit.Suite.Extended.Calendar.CalendarHighlightRange();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CalendarItems));
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
-            this.kryptonCalendar1 = new Krypton.Toolkit.Suite.Extended.Calendar.KryptonCalendar();
             this.monthView1 = new Krypton.Toolkit.Suite.Extended.Calendar.MonthView();
+            this.kryptonCalendar1 = new Krypton.Toolkit.Suite.Extended.Calendar.KryptonCalendar();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -49,6 +50,27 @@
             this.kryptonPanel1.Name = "kryptonPanel1";
             this.kryptonPanel1.Size = new System.Drawing.Size(857, 390);
             this.kryptonPanel1.TabIndex = 1;
+            // 
+            // monthView1
+            // 
+            this.monthView1.ArrowsColour = System.Drawing.SystemColors.Window;
+            this.monthView1.ArrowsSelectedColour = System.Drawing.Color.Gold;
+            this.monthView1.DayBackgroundColour = System.Drawing.Color.Empty;
+            this.monthView1.DayGrayedText = System.Drawing.SystemColors.GrayText;
+            this.monthView1.DaySelectedBackgroundColour = System.Drawing.SystemColors.Highlight;
+            this.monthView1.DaySelectedColour = System.Drawing.SystemColors.WindowText;
+            this.monthView1.DaySelectedTextColour = System.Drawing.SystemColors.HighlightText;
+            this.monthView1.ItemPadding = new System.Windows.Forms.Padding(2);
+            this.monthView1.Location = new System.Drawing.Point(502, 12);
+            this.monthView1.MonthTitleColour = System.Drawing.SystemColors.ActiveCaption;
+            this.monthView1.MonthTitleColourInactive = System.Drawing.SystemColors.InactiveCaption;
+            this.monthView1.MonthTitleTextColour = System.Drawing.SystemColors.ActiveCaptionText;
+            this.monthView1.MonthTitleTextColourInactive = System.Drawing.SystemColors.InactiveCaptionText;
+            this.monthView1.Name = "monthView1";
+            this.monthView1.Size = new System.Drawing.Size(266, 218);
+            this.monthView1.TabIndex = 1;
+            this.monthView1.Text = "monthView1";
+            this.monthView1.TodayBorderColour = System.Drawing.Color.Maroon;
             // 
             // kryptonCalendar1
             // 
@@ -80,33 +102,13 @@
             this.kryptonCalendar1.TabIndex = 0;
             this.kryptonCalendar1.Text = "kryptonCalendar1";
             // 
-            // monthView1
-            // 
-            this.monthView1.ArrowsColour = System.Drawing.SystemColors.Window;
-            this.monthView1.ArrowsSelectedColour = System.Drawing.Color.Gold;
-            this.monthView1.DayBackgroundColour = System.Drawing.Color.Empty;
-            this.monthView1.DayGrayedText = System.Drawing.SystemColors.GrayText;
-            this.monthView1.DaySelectedBackgroundColour = System.Drawing.SystemColors.Highlight;
-            this.monthView1.DaySelectedColour = System.Drawing.SystemColors.WindowText;
-            this.monthView1.DaySelectedTextColour = System.Drawing.SystemColors.HighlightText;
-            this.monthView1.ItemPadding = new System.Windows.Forms.Padding(2);
-            this.monthView1.Location = new System.Drawing.Point(502, 12);
-            this.monthView1.MonthTitleColour = System.Drawing.SystemColors.ActiveCaption;
-            this.monthView1.MonthTitleColourInactive = System.Drawing.SystemColors.InactiveCaption;
-            this.monthView1.MonthTitleTextColour = System.Drawing.SystemColors.ActiveCaptionText;
-            this.monthView1.MonthTitleTextColourInactive = System.Drawing.SystemColors.InactiveCaptionText;
-            this.monthView1.Name = "monthView1";
-            this.monthView1.Size = new System.Drawing.Size(266, 218);
-            this.monthView1.TabIndex = 1;
-            this.monthView1.Text = "monthView1";
-            this.monthView1.TodayBorderColour = System.Drawing.Color.Maroon;
-            // 
             // CalendarItems
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(857, 390);
             this.Controls.Add(this.kryptonPanel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CalendarItems";
             this.Text = "CalendarItems";
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
