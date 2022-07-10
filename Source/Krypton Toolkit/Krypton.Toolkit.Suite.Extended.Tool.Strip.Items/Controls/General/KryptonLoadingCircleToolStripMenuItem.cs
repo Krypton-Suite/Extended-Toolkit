@@ -45,7 +45,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         public override Size GetPreferredSize(Size constrainingSize)
         {
             //return base.GetPreferredSize(constrainingSize);
-            return this.LoadingCircleControl.GetPreferredSize(constrainingSize);
+            return LoadingCircleControl.GetPreferredSize(constrainingSize);
         }
 
 

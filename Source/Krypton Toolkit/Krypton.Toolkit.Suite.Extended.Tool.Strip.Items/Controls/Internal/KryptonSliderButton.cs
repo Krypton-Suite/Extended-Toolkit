@@ -15,7 +15,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         /// <summary> 
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary> 
         /// Clean up any resources being used.
@@ -56,7 +56,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
         #endregion
 
-        internal System.Windows.Forms.Timer FireTimer;
+        internal Timer FireTimer;
         #endregion
 
         #region ...   Enums    ...
@@ -79,13 +79,13 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             SetStyle(ControlStyles.UserPaint, true);
 
             //(5) Create redirection object to the base palette
-            if (((this._palette != null)))
+            if (((_palette != null)))
             {
-                this._palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(this.OnPalettePaint);
+                _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
             }
-            KryptonManager.GlobalPaletteChanged += new EventHandler(this.OnGlobalPaletteChanged);
-            this._palette = KryptonManager.CurrentGlobalPalette;
-            this._paletteRedirect = new PaletteRedirect(this._palette);
+            KryptonManager.GlobalPaletteChanged += new EventHandler(OnGlobalPaletteChanged);
+            _palette = KryptonManager.CurrentGlobalPalette;
+            _paletteRedirect = new PaletteRedirect(_palette);
 
             //(6) Create accessor objects for the back, border and content
             m_paletteBack = new PaletteBackInheritRedirect(_paletteRedirect);
@@ -93,10 +93,10 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             m_paletteContent = new PaletteContentInheritRedirect(_paletteRedirect);
 
             //Set Properties
-            this.BackColor = System.Drawing.Color.Transparent;
-            this.Size = new System.Drawing.Size(16, 16);
+            BackColor = Color.Transparent;
+            Size = new Size(16, 16);
 
-            this.InitColors();
+            InitColors();
 
         }
 
@@ -135,7 +135,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             set
             {
                 m_singleClick = value;
-                this.Invalidate();
+                Invalidate();
             }
         }
         public VisualOrientation Orientation
@@ -146,8 +146,8 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
                 if (m_orientation != value)
                 {
                     m_orientation = value;
-                    this.PerformLayout();
-                    this.Invalidate();
+                    PerformLayout();
+                    Invalidate();
                 }
             }
         }
@@ -157,7 +157,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             set
             {
                 m_buttonstyle = value;
-                this.Invalidate();
+                Invalidate();
             }
         }
         public PaletteBackStyle VisualLook
@@ -168,7 +168,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
                 if (m_visuallook != value)
                 {
                     m_visuallook = value;
-                    this.Invalidate();
+                    Invalidate();
                 }
             }
         }
@@ -185,7 +185,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         }
 
         //ComponentFactory Palette Painting
-        protected override void OnPaint(System.Windows.Forms.PaintEventArgs e)
+        protected override void OnPaint(PaintEventArgs e)
         {
 
             //Define Bounds
@@ -194,7 +194,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
             //Smoothing Mode
             e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
-            e.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            e.Graphics.TextRenderingHint = TextRenderingHint.ClearTypeGridFit;
 
             //Paint Base
             base.OnPaint(e);
@@ -217,7 +217,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
                     using (GraphicsPath Path = GetButtonPath(ButtonBounds))
                     {
                         // Ask renderer to draw the background
-                        m_mementoBack1 = Renderer.RenderStandardBack.DrawBack(RenderContext, ButtonBounds, Path, m_paletteBack, m_orientation, (this.Enabled ? PaletteState.Normal : PaletteState.Disabled), m_mementoBack1);
+                        m_mementoBack1 = Renderer.RenderStandardBack.DrawBack(RenderContext, ButtonBounds, Path, m_paletteBack, m_orientation, (Enabled ? PaletteState.Normal : PaletteState.Disabled), m_mementoBack1);
                     }
 
                     // We want the inner part of the control to act like a button, so 
@@ -253,8 +253,8 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
                     switch (m_buttonstyle)
                     {
                         case ButtonStyles.MinusButton:
-                            Rectangle MinusOuterBounds = new Rectangle(3, (this.Height / 2) - 2, 10, 4);
-                            Rectangle MinusInnerBounds = new Rectangle(4, (this.Height / 2) - 1, 8, 2);
+                            Rectangle MinusOuterBounds = new Rectangle(3, (Height / 2) - 2, 10, 4);
+                            Rectangle MinusInnerBounds = new Rectangle(4, (Height / 2) - 1, 8, 2);
 
                             e.Graphics.FillRectangle(new SolidBrush(m_outerColor), MinusOuterBounds);
                             e.Graphics.FillRectangle(new SolidBrush(m_innerColor), MinusInnerBounds);
@@ -270,7 +270,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             }
 
         }
-        protected override void OnLayout(System.Windows.Forms.LayoutEventArgs e)
+        protected override void OnLayout(LayoutEventArgs e)
         {
 
             //Active Palette
@@ -352,7 +352,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
                     m_mementoBack2 = null;
                 }
 
-                if (this.components != null)
+                if (components != null)
                 {
                     components.Dispose();
                 }
@@ -365,7 +365,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         //Button Helpers
         private PaletteState GetButtonState()
         {
-            if (!this.Enabled)
+            if (!Enabled)
             {
                 return PaletteState.Disabled;
             }
@@ -410,36 +410,36 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         }
         private void DrawPlusOuter(Graphics Gfx, Color Fill)
         {
-            Gfx.FillRectangle(new SolidBrush(Fill), new Rectangle(3, (this.Height / 2) - 2, 10, 4));
-            Gfx.FillRectangle(new SolidBrush(Fill), new Rectangle((this.Width / 2) - 2, 3, 4, 10));
+            Gfx.FillRectangle(new SolidBrush(Fill), new Rectangle(3, (Height / 2) - 2, 10, 4));
+            Gfx.FillRectangle(new SolidBrush(Fill), new Rectangle((Width / 2) - 2, 3, 4, 10));
         }
         private void DrawPlusInner(Graphics Gfx, Color Fill)
         {
-            Gfx.FillRectangle(new SolidBrush(Fill), new Rectangle(4, (this.Height / 2) - 1, 8, 2));
-            Gfx.FillRectangle(new SolidBrush(Fill), new Rectangle((this.Width / 2) - 1, 4, 2, 8));
+            Gfx.FillRectangle(new SolidBrush(Fill), new Rectangle(4, (Height / 2) - 1, 8, 2));
+            Gfx.FillRectangle(new SolidBrush(Fill), new Rectangle((Width / 2) - 1, 4, 2, 8));
         }
 
         //Key Mouse Events
-        private void KryptonSliderButton_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
+        private void KryptonSliderButton_MouseDown(object sender, MouseEventArgs e)
         {
             m_down = true;
             //Single click?
             if (!m_singleClick)
             { FireTimer.Start(); }
 
-            this.Invalidate();
+            Invalidate();
         }
-        private void KryptonSliderButton_MouseEnter(object sender, System.EventArgs e)
+        private void KryptonSliderButton_MouseEnter(object sender, EventArgs e)
         {
             m_highlight = true;
-            this.Invalidate();
+            Invalidate();
         }
-        private void KryptonSliderButton_MouseLeave(object sender, System.EventArgs e)
+        private void KryptonSliderButton_MouseLeave(object sender, EventArgs e)
         {
             m_highlight = false;
-            this.Invalidate();
+            Invalidate();
         }
-        private void KryptonSliderButton_MouseUp(object sender, System.Windows.Forms.MouseEventArgs e)
+        private void KryptonSliderButton_MouseUp(object sender, MouseEventArgs e)
         {
             m_down = false;
 
@@ -447,17 +447,17 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
             if (!m_singleClick)
             { FireTimer.Stop(); }
             else
-            { SliderButtonFire(this, new System.EventArgs()); }
+            { SliderButtonFire(this, new EventArgs()); }
 
-            this.Invalidate();
+            Invalidate();
         }
 
         //Implements IContentValues
-        public System.Drawing.Image GetImage(Krypton.Toolkit.PaletteState state)
+        public Image GetImage(PaletteState state)
         {
             return null;
         }
-        public System.Drawing.Color GetImageTransparentColor(Krypton.Toolkit.PaletteState state)
+        public Color GetImageTransparentColor(PaletteState state)
         {
             return Color.Empty;
         }
@@ -471,25 +471,25 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         }
 
         //Krypton Palette
-        private void k_palette_BasePaletteChanged(object sender, System.EventArgs e)
+        private void k_palette_BasePaletteChanged(object sender, EventArgs e)
         {
-            this.Invalidate();
+            Invalidate();
         }
-        private void k_palette_BaseRendererChanged(object sender, System.EventArgs e)
+        private void k_palette_BaseRendererChanged(object sender, EventArgs e)
         {
-            this.Invalidate();
+            Invalidate();
         }
-        private void k_palette_PalettePaint(object sender, Krypton.Toolkit.PaletteLayoutEventArgs e)
+        private void k_palette_PalettePaint(object sender, PaletteLayoutEventArgs e)
         {
-            this.Invalidate();
+            Invalidate();
         }
 
         //Fire Machine Gun
-        private void FireTimer_Tick(object sender, System.EventArgs e)
+        private void FireTimer_Tick(object sender, EventArgs e)
         {
             if (SliderButtonFire != null)
             {
-                SliderButtonFire(this, new System.EventArgs());
+                SliderButtonFire(this, new EventArgs());
             }
         }
 
@@ -497,23 +497,23 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         //Krypton Events
         private void OnPalettePaint(object sender, PaletteLayoutEventArgs e)
         {
-            base.Invalidate();
+            Invalidate();
         }
 
         private void OnGlobalPaletteChanged(object sender, EventArgs e)
         {
-            if (((this._palette != null)))
+            if (((_palette != null)))
             {
-                this._palette.PalettePaint -= new EventHandler<PaletteLayoutEventArgs>(this.OnPalettePaint);
+                _palette.PalettePaint -= new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
             }
-            this._palette = KryptonManager.CurrentGlobalPalette;
-            this._paletteRedirect.Target = this._palette;
-            if (((this._palette != null)))
+            _palette = KryptonManager.CurrentGlobalPalette;
+            _paletteRedirect.Target = _palette;
+            if (((_palette != null)))
             {
-                this._palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(this.OnPalettePaint);
-                this.InitColors();
+                _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                InitColors();
             }
-            base.Invalidate();
+            Invalidate();
 
         }
 

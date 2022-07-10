@@ -8,39 +8,46 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 {
-    [ToolboxBitmap(typeof(ToolStripStatusLabel)), ToolStripItemDesignerAvailability(ToolStripItemDesignerAvailability.StatusStrip | ToolStripItemDesignerAvailability.ToolStrip)]
+    [ToolboxBitmap(typeof(ToolStripStatusLabel)), ToolboxItem(false), ToolStripItemDesignerAvailability(ToolStripItemDesignerAvailability.StatusStrip | ToolStripItemDesignerAvailability.ToolStrip)]
     public class ToolStripLabelExtended : ToolStripStatusLabel
     {
         #region Variables
 
         #region Krypton
-        IPalette _palette;
 
-        IRenderer _renderer;
+        private IPalette _palette;
+
+        private IRenderer _renderer;
 
         // This may not be needed, but oh well...
-        KryptonPalette _kryptonPalette;
+        private KryptonPalette _kryptonPalette;
         #endregion
 
-        bool _alert, _enableBlinking, _bkClr, _fadeText;
+        private bool _alert, _enableBlinking, _bkClr, _fadeText;
 
-        Color _textColour, _backGradient1, _backGradient2, _textGlow, _alertColour1, _alertColour2, _alertTextColour;
+        private Color _textColour,
+            _backGradient1,
+            _backGradient2,
+            _textGlow,
+            _alertColour1,
+            _alertColour2,
+            _alertTextColour;
 
-        Font _textTypeface;
+        private Font _textTypeface;
 
-        LinearGradientMode _linearGradientMode;
+        private LinearGradientMode _linearGradientMode;
 
-        int _textGlowSpread, _flashInterval, _fadeInteval;
+        private int _textGlowSpread, _flashInterval, _fadeInteval;
 
-        int[] _targetColour, _fadeRGB;
+        private int[] _targetColour, _fadeRGB;
 
-        System.Windows.Forms.Timer _alertFlashTimer, _fadeAnimationTimer;
+        private Timer _alertFlashTimer, _fadeAnimationTimer;
 
-        long _blinkDuration;
+        private long _blinkDuration;
 
-        BlinkState _blinkState;
+        private BlinkState _blinkState;
 
-        short _cycleInterval;
+        private short _cycleInterval;
         #endregion
 
         #region Properties        
@@ -403,7 +410,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
             if (EnableFadeAnimation)
             {
-                _fadeAnimationTimer = new System.Windows.Forms.Timer();
+                _fadeAnimationTimer = new Timer();
 
                 _fadeAnimationTimer.Interval = FadeInterval;
 

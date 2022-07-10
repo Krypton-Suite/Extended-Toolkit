@@ -102,7 +102,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
                 //Find state of radio button
                 RadioButtonState state = RadioButtonState.CheckedNormal;
-                if (this.Checked)
+                if (Checked)
                 {
                     if (Pressed)
                         state = RadioButtonState.CheckedPressed;

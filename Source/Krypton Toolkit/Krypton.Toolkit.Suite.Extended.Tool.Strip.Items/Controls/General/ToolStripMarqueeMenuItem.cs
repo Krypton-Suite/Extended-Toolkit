@@ -28,7 +28,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         Size _textSize;
 
         //Timer used to repaint scrolled text
-        System.Windows.Forms.Timer _timer;
+        Timer _timer;
 
         //Value modified in Timer tick event. Used to represent ever changing text offset.
         int _pixelOffest;
@@ -132,7 +132,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         public ToolStripMarqueeMenuItem()
         {
             MarqueeScrollDirection = DEFAULT_MARQUEE_SCROLL_DIRECTION;
-            _timer = new System.Windows.Forms.Timer();
+            _timer = new Timer();
             _timer.Interval = DEFAULT_REFRESH_INTERVAL;
             _timer.Tick += new EventHandler(timer_Tick);
             _timer.Enabled = true;

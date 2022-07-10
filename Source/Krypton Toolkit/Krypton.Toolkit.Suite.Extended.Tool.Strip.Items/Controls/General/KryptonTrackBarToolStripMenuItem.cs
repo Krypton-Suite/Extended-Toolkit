@@ -29,7 +29,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         public KryptonTrackBarToolStripMenuItem()
             : base(new KryptonTrackBar())
         {
-            this.AutoSize = false;
+            AutoSize = false;
         }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         public override Size GetPreferredSize(Size constrainingSize)
         {
             //return base.GetPreferredSize(constrainingSize);
-            return this.KryptonTrackBarControl.GetPreferredSize(constrainingSize);
+            return KryptonTrackBarControl.GetPreferredSize(constrainingSize);
         }
 
         /// <summary>
@@ -73,62 +73,62 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         #region ... exposed properties ...
         public int Value
         {
-            get => ((KryptonTrackBar)this.Control).Value;
-            set => ((KryptonTrackBar)this.Control).Value = value;
+            get => ((KryptonTrackBar)Control).Value;
+            set => ((KryptonTrackBar)Control).Value = value;
         }
 
         public int LargeChange
         {
-            get => ((KryptonTrackBar)this.Control).LargeChange;
-            set => ((KryptonTrackBar)this.Control).LargeChange = value;
+            get => ((KryptonTrackBar)Control).LargeChange;
+            set => ((KryptonTrackBar)Control).LargeChange = value;
         }
 
         public int SmallChange
         {
-            get => ((KryptonTrackBar)this.Control).SmallChange;
-            set => ((KryptonTrackBar)this.Control).SmallChange = value;
+            get => ((KryptonTrackBar)Control).SmallChange;
+            set => ((KryptonTrackBar)Control).SmallChange = value;
         }
 
         public int Maximum
         {
-            get => ((KryptonTrackBar)this.Control).Maximum;
-            set => ((KryptonTrackBar)this.Control).Maximum = value;
+            get => ((KryptonTrackBar)Control).Maximum;
+            set => ((KryptonTrackBar)Control).Maximum = value;
         }
 
         public int Minimum
         {
-            get => ((KryptonTrackBar)this.Control).Minimum;
-            set => ((KryptonTrackBar)this.Control).Minimum = value;
+            get => ((KryptonTrackBar)Control).Minimum;
+            set => ((KryptonTrackBar)Control).Minimum = value;
         }
 
         public bool VolumeControl
         {
-            get => ((KryptonTrackBar)this.Control).VolumeControl;
-            set => ((KryptonTrackBar)this.Control).VolumeControl = value;
+            get => ((KryptonTrackBar)Control).VolumeControl;
+            set => ((KryptonTrackBar)Control).VolumeControl = value;
         }
 
         public PaletteTrackBarSize TrackBarSize
         {
-            get => ((KryptonTrackBar)this.Control).TrackBarSize;
-            set => ((KryptonTrackBar)this.Control).TrackBarSize = value;
+            get => ((KryptonTrackBar)Control).TrackBarSize;
+            set => ((KryptonTrackBar)Control).TrackBarSize = value;
         }
 
         public TickStyle TickStyle
         {
-            get => ((KryptonTrackBar)this.Control).TickStyle;
-            set => ((KryptonTrackBar)this.Control).TickStyle = value;
+            get => ((KryptonTrackBar)Control).TickStyle;
+            set => ((KryptonTrackBar)Control).TickStyle = value;
         }
 
         public int TickFrequency
         {
-            get => ((KryptonTrackBar)this.Control).TickFrequency;
-            set => ((KryptonTrackBar)this.Control).TickFrequency = value;
+            get => ((KryptonTrackBar)Control).TickFrequency;
+            set => ((KryptonTrackBar)Control).TickFrequency = value;
         }
 
         public Orientation Orientation
         {
-            get => ((KryptonTrackBar)this.Control).Orientation;
-            set => ((KryptonTrackBar)this.Control).Orientation = value;
+            get => ((KryptonTrackBar)Control).Orientation;
+            set => ((KryptonTrackBar)Control).Orientation = value;
         }
         #endregion
 

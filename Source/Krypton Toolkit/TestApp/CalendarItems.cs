@@ -7,14 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 using Krypton.Toolkit;
 
 namespace TestApp
 {
-    public partial class ToolStripItems : KryptonForm
+    public partial class CalendarItems : KryptonForm
     {
-        public ToolStripItems()
+        public CalendarItems()
         {
             InitializeComponent();
         }

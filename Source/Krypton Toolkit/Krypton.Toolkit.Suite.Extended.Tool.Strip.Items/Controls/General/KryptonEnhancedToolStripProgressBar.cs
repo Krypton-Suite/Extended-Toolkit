@@ -52,7 +52,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
         private void Control_HandleCreated(object sender, EventArgs e)
         {
-            var s = new ProgressBarHandler((ProgressBar) Control, _useDisplayText, _displayTextColour);
+            //var s = new ProgressBarHandler((ProgressBar) Control, _useDisplayText, _displayTextColour);
         }
 
         #endregion
@@ -70,58 +70,6 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 
             base.OnPaint(e);
         }
-        #endregion
-
-        #region ProgressBarHandler
-
-        public class ProgressBarHandler : NativeWindow
-        {
-            #region Instance Fields
-
-            private bool _useDisplayText;
-
-            private Color _displayTextColour;
-
-            private ProgressBar _progressBar;
-
-            #endregion
-
-            #region Identity
-
-            public ProgressBarHandler(ProgressBar progressBar, bool useDisplayText, Color displayTextColour)
-            {
-                _progressBar = progressBar;
-
-                _useDisplayText = useDisplayText;
-
-                _displayTextColour = displayTextColour;
-
-                AssignHandle(_progressBar.Handle);
-            }
-
-            #endregion
-
-            #region Protected
-
-            protected override void WndProc(ref Message m)
-            {
-                base.WndProc(ref m);
-
-                if (_useDisplayText)
-                {
-                    if (m.Msg == 0xF)
-                    {
-                        using (var g = _progressBar.CreateGraphics())
-                        {
-                            TextRenderer.DrawText(g, $"{_progressBar.Value}", _progressBar.Font, _progressBar.ClientRectangle, _displayTextColour);
-                        }
-                    }
-                }
-            }
-
-            #endregion
-        }
-
         #endregion
     }
 }

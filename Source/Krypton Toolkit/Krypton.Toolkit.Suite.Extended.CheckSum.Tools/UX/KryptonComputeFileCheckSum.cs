@@ -125,6 +125,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             // 
             // kbtnSaveToFile
             // 
+            this.kbtnSaveToFile.CornerRoundingRadius = -1F;
             this.kbtnSaveToFile.Enabled = false;
             this.kbtnSaveToFile.Location = new System.Drawing.Point(507, 12);
             this.kbtnSaveToFile.Name = "kbtnSaveToFile";
@@ -135,6 +136,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             // 
             // kbtnCancel
             // 
+            this.kbtnCancel.CornerRoundingRadius = -1F;
             this.kbtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.kbtnCancel.Location = new System.Drawing.Point(603, 12);
             this.kbtnCancel.Name = "kbtnCancel";
@@ -169,6 +171,9 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             // 
             // kryptonGroupBox1
             // 
+            this.kryptonGroupBox1.CaptionStyle = Krypton.Toolkit.LabelStyle.GroupBoxCaption;
+            this.kryptonGroupBox1.GroupBackStyle = Krypton.Toolkit.PaletteBackStyle.ControlGroupBox;
+            this.kryptonGroupBox1.GroupBorderStyle = Krypton.Toolkit.PaletteBorderStyle.ControlGroupBox;
             this.kryptonGroupBox1.Location = new System.Drawing.Point(12, 98);
             this.kryptonGroupBox1.Name = "kryptonGroupBox1";
             // 
@@ -185,6 +190,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             this.kwlHash.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kwlHash.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kwlHash.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.kwlHash.LabelStyle = Krypton.Toolkit.LabelStyle.NormalControl;
             this.kwlHash.Location = new System.Drawing.Point(0, 0);
             this.kwlHash.Name = "kwlHash";
             this.kwlHash.Size = new System.Drawing.Size(680, 71);
@@ -193,6 +199,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             // 
             // kbtnCompute
             // 
+            this.kbtnCompute.CornerRoundingRadius = -1F;
             this.kbtnCompute.Enabled = false;
             this.kbtnCompute.Location = new System.Drawing.Point(255, 59);
             this.kbtnCompute.Name = "kbtnCompute";
@@ -203,7 +210,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             // 
             // kcmbAlgorithimType
             // 
-            this.kcmbAlgorithimType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.kcmbAlgorithimType.CornerRoundingRadius = -1F;
             this.kcmbAlgorithimType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.kcmbAlgorithimType.DropDownWidth = 121;
             this.kcmbAlgorithimType.Enabled = false;
@@ -227,6 +234,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             // 
             // kbtnBrowseForFile
             // 
+            this.kbtnBrowseForFile.CornerRoundingRadius = -1F;
             this.kbtnBrowseForFile.Location = new System.Drawing.Point(663, 12);
             this.kbtnBrowseForFile.Name = "kbtnBrowseForFile";
             this.kbtnBrowseForFile.Size = new System.Drawing.Size(33, 25);
@@ -239,6 +247,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             this.ktxtFilePath.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.ktxtFilePath.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
             this.ktxtFilePath.CueHint.CueHintText = "Type a file path here...";
+            this.ktxtFilePath.CueHint.Padding = new System.Windows.Forms.Padding(0);
             this.ktxtFilePath.Location = new System.Drawing.Point(83, 12);
             this.ktxtFilePath.Name = "ktxtFilePath";
             this.ktxtFilePath.Size = new System.Drawing.Size(574, 23);

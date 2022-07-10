@@ -8,7 +8,7 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 {
-    [ToolStripItemDesignerAvailability(ToolStripItemDesignerAvailability.MenuStrip)]
+    [ToolboxItem(false), ToolStripItemDesignerAvailability(ToolStripItemDesignerAvailability.MenuStrip)]
     public class MRUSaveAsFileMenuItem : ToolStripMenuItem
     {
         #region Instance Fields

@@ -15,5 +15,26 @@ namespace TestApp
 
             tsi.Show();
         }
+
+        private void kryptonButton2_Click(object sender, EventArgs e)
+        {
+            CalendarItems calendar = new CalendarItems();
+
+            calendar.Show();
+        }
+
+        private void kryptonButton1_Click(object sender, EventArgs e)
+        {
+            CircularProgressBarExample circularProgressBar = new CircularProgressBarExample();
+
+            circularProgressBar.Show();
+        }
+
+        private void kryptonButton3_Click(object sender, EventArgs e)
+        {
+            CheckSumExample checkSum = new CheckSumExample();
+
+            checkSum.Show();
+        }
     }
 }
