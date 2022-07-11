@@ -27,7 +27,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         #region Structures
 
         /* Contains information to be used to paint the client area of a window. */
-        [System.Runtime.InteropServices.StructLayout(System.Runtime.InteropServices.LayoutKind.Sequential, CharSet = System.Runtime.InteropServices.CharSet.Auto)]
+        [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
         public struct PAINTSTRUCT
         {
             /* A handle to the display DC to use for painting. */
@@ -48,7 +48,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         }
 
         /* Defines the coordinates of the upper-left and lower-right corners of a rectangle. */
-        [System.Runtime.InteropServices.StructLayout(System.Runtime.InteropServices.LayoutKind.Sequential, CharSet = System.Runtime.InteropServices.CharSet.Auto)]
+        [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
         public struct RECT
         {
             /* The x-coordinate of the upper-left corner of the rectangle. */
@@ -65,7 +65,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         }
 
         /*  Contains basic information about a physical font. This is the Unicode version of the structure. */
-        [System.Runtime.InteropServices.StructLayout(System.Runtime.InteropServices.LayoutKind.Sequential, CharSet = System.Runtime.InteropServices.CharSet.Unicode)]
+        [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
         public struct TEXTMETRIC
         {
             /* The height (ascent + descent) of characters. */
@@ -130,7 +130,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         }
 
         /* Contains basic information about a physical font. This is the ANSI version of the structure. */
-        [System.Runtime.InteropServices.StructLayout(System.Runtime.InteropServices.LayoutKind.Sequential, CharSet = System.Runtime.InteropServices.CharSet.Ansi)]
+        [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
         public struct TEXTMETRICA
         {
             /* The height (ascent + descent) of characters. */
@@ -192,6 +192,88 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
             /* The character set of the font. */
             public byte tmCharSet;
+        }
+
+        internal struct CHARRANGE
+        {
+            public int cpMin;
+
+            public int cpMax;
+        }
+
+        internal struct FORMATRANGE
+        {
+            public IntPtr hdc;
+
+            public IntPtr hdcTarget;
+
+            public KryptonRichTextBoxExtendedRECT rc;
+
+            public KryptonRichTextBoxExtendedRECT rcPage;
+
+            public CHARRANGE chrg;
+        }
+
+        internal struct PARAFORMAT
+        {
+            public int cbSize;
+
+            public uint dwMask;
+
+            public short wNumbering;
+
+            public short wReserved;
+
+            public int dxStartIndent;
+
+            public int dxRightIndent;
+
+            public int dxOffset;
+
+            public short wAlignment;
+
+            public short cTabCount;
+
+            public int[] rgxTabs;
+
+            public int dySpaceBefore;
+
+            public int dySpaceAfter;
+
+            public int dyLineSpacing;
+
+            public short sStyle;
+
+            public byte bLineSpacingRule;
+
+            public byte bOutlineLevel;
+
+            public short wShadingWeight;
+
+            public short wShadingStyle;
+
+            public short wNumberingStart;
+
+            public short wNumberingStyle;
+
+            public short wNumberingTab;
+
+            public short wBorderSpace;
+
+            public short wBorderWidth;
+
+            public short wBorders;
+        }
+
+        internal struct KryptonRichTextBoxExtendedRECT
+        {
+            public int Left;
+
+            public int Top;
+
+            public int Right;
+
+            public int Bottom;
         }
 
         #endregion

@@ -11,17 +11,18 @@ namespace Krypton.Toolkit.Suite.Extended.Panels
     [ToolboxBitmap(typeof(KryptonPanel))]
     public class KryptonPanelExtended : KryptonPanel
     {
-        #region Variables
+        #region Intsance Fields
         private int _cornerRadius;
 
         private Pen _pen;
         #endregion
 
-        #region Property
+        #region Public
         public int CornerRadius { get => _cornerRadius; set { _cornerRadius = value; Invalidate(); } }
         #endregion
 
-        #region Constructor
+        #region Identity
+        /// <summary>Initializes a new instance of the <see cref="KryptonPanelExtended" /> class.</summary>
         public KryptonPanelExtended()
         {
             DoubleBuffered = true;
@@ -30,20 +31,20 @@ namespace Krypton.Toolkit.Suite.Extended.Panels
         }
         #endregion
 
-        #region Methods
-        private Rectangle GetUpperLeft(int value) => new Rectangle(0, 0, value, value);
+        #region Implementation
+        private Rectangle GetUpperLeft(int value) => new(0, 0, value, value);
 
-        private Rectangle GetUpperRight(int value) => new Rectangle(Width - value, 0, value, value);
+        private Rectangle GetUpperRight(int value) => new(Width - value, 0, value, value);
 
-        private Rectangle GetLowerRight(int value) => new Rectangle(Width - value, Height - value, value, value);
+        private Rectangle GetLowerRight(int value) => new(Width - value, Height - value, value, value);
 
-        private Rectangle GetLowerLeft(int value) => new Rectangle(0, Height - value, value, value);
+        private Rectangle GetLowerLeft(int value) => new(0, Height - value, value, value);
 
         private void ExtendDraw(PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
 
-            GraphicsPath path = new GraphicsPath();
+            GraphicsPath path = new();
 
             path.StartFigure();
 

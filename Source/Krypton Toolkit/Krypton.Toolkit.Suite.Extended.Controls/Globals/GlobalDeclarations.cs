@@ -9,8 +9,10 @@
 global using System;
 global using System.ComponentModel;
 global using System.Collections;
+global using System.Diagnostics;
 global using System.Drawing;
 global using System.Drawing.Drawing2D;
+global using System.Drawing.Printing;
 global using System.Runtime.InteropServices;
 global using System.Security;
 global using System.Text;
