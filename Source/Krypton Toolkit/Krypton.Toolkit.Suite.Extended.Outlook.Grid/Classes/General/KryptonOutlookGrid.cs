@@ -1392,6 +1392,18 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <summary>
         /// Add a column for internal uses of the OutlookGrid. The column must already exists in the datagridview. Do this *BEFORE* using the grid (sorting and grouping, filling,...)
         /// </summary>
+        /// <param name="col">The DataGridViewColumn.</param>
+        /// <param name="group">The group type for the column.</param>
+        /// <param name="sortDirection">The sort direction.</param>
+        /// <param name="groupIndex">The column's position in grouping and at which level.</param>
+        /// <param name="sortIndex">the column's position among sorted columns.</param>
+        public void AddInternalColumn(DataGridViewColumn col, IOutlookGridGroup group, SortOrder sortDirection,
+            int groupIndex, int sortIndex) =>
+            AddInternalColumn(new OutlookGridColumn(col, group, sortDirection, groupIndex, sortIndex, null));
+
+        /// <summary>
+        /// Add a column for internal uses of the OutlookGrid. The column must already exists in the datagridview. Do this *BEFORE* using the grid (sorting and grouping, filling,...)
+        /// </summary>
         /// <param name="col">The configured OutlookGridColumn.</param>
         public void AddInternalColumn(OutlookGridColumn col)
         {

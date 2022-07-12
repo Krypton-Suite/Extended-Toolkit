@@ -118,6 +118,6 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         ///// <summary>
         ///// Gets or sets the items comparer, if overriding the default IComparable<T> is needed
         ///// </summary>
-        //IComparer ItemsComparer { get; set; }
+        IComparer ItemsComparer { get; set; }
     }
 }

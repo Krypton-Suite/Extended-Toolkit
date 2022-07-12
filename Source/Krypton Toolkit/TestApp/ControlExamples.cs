@@ -2,9 +2,9 @@
 
 namespace TestApp
 {
-    public partial class CalendarItems : KryptonForm
+    public partial class ControlExamples : KryptonForm
     {
-        public CalendarItems()
+        public ControlExamples()
         {
             InitializeComponent();
         }
