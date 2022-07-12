@@ -8,5 +8,10 @@ namespace TestApp
         {
             InitializeComponent();
         }
+
+        private void kcmbTextAlignment_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

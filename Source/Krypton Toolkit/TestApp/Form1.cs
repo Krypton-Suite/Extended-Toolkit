@@ -36,5 +36,12 @@ namespace TestApp
 
             checkSum.Show();
         }
+
+        private void kryptonButton6_Click(object sender, EventArgs e)
+        {
+            ControlExamples controlExamples = new ControlExamples();
+
+            controlExamples.Show();
+        }
     }
 }

@@ -108,6 +108,12 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         [DebuggerNonUserCode]
         public KryptonRichTextBoxExtended()
         {
+            Multiline = true;
+
+            SelectionAlignment = TextAlignment.LEFT;
+
+            Size = new Size(100, 96);
+
             Font = new Font("Segoe UI", 9f, FontStyle.Regular, GraphicsUnit.Point, 0);
         }
 

@@ -18,7 +18,11 @@ namespace TestApp
 
         #region Identity
 
-        public DataGridViewSetup(KryptonOutlookGrid grid, bool restoreIfPossible)
+        #endregion
+
+        #region Implementaton
+
+        public void SetupDataGridView(KryptonOutlookGrid grid, bool restoreIfPossible)
         {
             if (File.Exists(Application.StartupPath + "/grid.xml") & restoreIfPossible)
             {
@@ -38,10 +42,6 @@ namespace TestApp
                 LoadDefaultConfiguration(grid);
             }
         }
-
-        #endregion
-
-        #region Implementaton
 
         private void LoadDefaultConfiguration(KryptonOutlookGrid grid)
         {
