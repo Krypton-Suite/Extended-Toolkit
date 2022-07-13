@@ -20,5 +20,10 @@ namespace TestApp
         {
             circularProgressBar1.UseColourTrio = kryptonCheckBox1.Checked;
         }
+
+        private void CircularProgressBarExample_Load(object sender, EventArgs e)
+        {
+            circularProgressBar1.Text = "0%";
+        }
     }
 }

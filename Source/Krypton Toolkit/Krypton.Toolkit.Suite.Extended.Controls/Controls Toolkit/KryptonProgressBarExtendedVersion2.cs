@@ -37,15 +37,32 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
     {
         #region Instance Fields
 
+        private bool _useKryptonRender;
+
         private int _fade = 150;
 
         private SolidBrush _fadeBrush;
+
+        private IPalette _palette;
 
         #endregion
 
         #region Public Properties
 
-        // <summary>
+        [DefaultValue(false), Category("Appearence"), Description("")]
+        public bool UseKryptonRender
+        {
+            get => _useKryptonRender;
+
+            set
+            {
+                _useKryptonRender = value;
+
+                Invalidate();
+            }
+        }
+
+        /// <summary>
         /// Gets or sets the opacity of the white overlay brush which fades 
         /// the background colors of the <see cref="KryptonProgressBarExtendedVersion2" />.
         /// </summary>
@@ -346,6 +363,22 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
             // Custom painting
             PaintPrivate(hDC);
+        }
+
+        #endregion
+
+        #region Proteced
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            if (_useKryptonRender)
+            {
+                BackColor = _palette.ColorTable.StatusStripGradientBegin;
+
+                ForeColor = _palette.ColorTable.StatusStripText;
+            }
+
+            base.OnPaint(e);
         }
 
         #endregion
