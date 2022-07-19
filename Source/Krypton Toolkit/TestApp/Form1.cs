@@ -50,5 +50,12 @@ namespace TestApp
 
             floatableToolStrips.Show();
         }
+
+        private void kryptonButton8_Click(object sender, EventArgs e)
+        {
+            KryptonMessageBoxExtendedExample kryptonMessageBoxExtendedExample = new KryptonMessageBoxExtendedExample();
+
+            kryptonMessageBoxExtendedExample.Show();
+        }
     }
 }

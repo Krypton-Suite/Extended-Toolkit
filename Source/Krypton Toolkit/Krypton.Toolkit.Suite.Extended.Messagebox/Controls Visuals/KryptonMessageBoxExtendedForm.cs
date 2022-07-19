@@ -16,10 +16,10 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         #endregion
 
         #region Instance Fields
+
+        private readonly bool _showHelpButton;
         private readonly string _text;
         private readonly string _caption;
-        
-        private readonly MessageBoxDefaultButton _defaultButton;
         private readonly MessageBoxOptions _options; // https://github.com/Krypton-Suite/Standard-Toolkit/issues/313
         // If help information provided or we are not a service/default desktop application then grab an owner for showing the message box
         private readonly IWin32Window _showOwner;
@@ -33,6 +33,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         private readonly ExtendedMessageBoxButtons _buttons;
 
         private readonly ExtendedKryptonMessageBoxIcon _kryptonMessageBoxIcon;
+
+        private readonly ExtendedMessageBoxDefaultButton _defaultButton;
 
         private readonly Image _customKryptonMessageBoxIcon;
         #endregion
@@ -49,11 +51,12 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         internal KryptonMessageBoxExtendedForm(IWin32Window showOwner, string text, string caption,
                                                ExtendedMessageBoxButtons buttons,
                                                ExtendedKryptonMessageBoxIcon icon,
-                                               MessageBoxDefaultButton defaultButton,
+                                               ExtendedMessageBoxDefaultButton defaultButton,
                                                MessageBoxOptions options,
                                                HelpInfo helpInfo, bool? showCtrlCopy,
                                                Font messageBoxTypeface, 
-                                               Image customKryptonMessageBoxIcon)
+                                               Image customKryptonMessageBoxIcon,
+                                               bool? showHelpButton)
         {
             // Store incoming values
             _text = text;
@@ -64,10 +67,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             _options = options;
             _helpInfo = helpInfo;
             _showOwner = showOwner;
+            _showHelpButton = showHelpButton ?? false;
 
             // Extended values
             _messageBoxTypeface = messageBoxTypeface ?? new Font("Segoe UI", 8.25F);
-            _customKryptonMessageBoxIcon = customKryptonMessageBoxIcon;
+            _customKryptonMessageBoxIcon = customKryptonMessageBoxIcon ?? null;
 
             // Create the form contents
             InitializeComponent();
@@ -311,11 +315,34 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         {
             switch (_defaultButton)
             {
-                case MessageBoxDefaultButton.Button2:
-                    _button2.Select();
+                case ExtendedMessageBoxDefaultButton.Button1:
+                    _button1.Focus();
                     break;
-                case MessageBoxDefaultButton.Button3:
-                    _button3.Select();
+                case ExtendedMessageBoxDefaultButton.Button2:
+                    _button2.Focus();
+                    break;
+                case ExtendedMessageBoxDefaultButton.Button3:
+                    _button3.Focus();
+                    break;
+                case ExtendedMessageBoxDefaultButton.Button4:
+                    if (_showHelpButton)
+                    {
+                        _button4.Focus();
+                    }
+                    else
+                    {
+                        _button1.Focus();
+                    }
+                    break;
+                default:
+                    if (_showHelpButton)
+                    {
+                        _button4.Focus();
+                    }
+                    else
+                    {
+                        _button1.Focus();
+                    }
                     break;
             }
         }

@@ -150,7 +150,7 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
         {
             try
             {
-
+                SetIsAssemblies64BIT(Environment.Is64BitProcess);
             }
             catch (Exception exc)
             {

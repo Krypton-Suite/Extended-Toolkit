@@ -27,7 +27,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         private ExtendedKryptonMessageBoxIcon _icon;
 
-        private MessageBoxDefaultButton _defaultButton;
+        private ExtendedMessageBoxDefaultButton _defaultButton;
 
         private MessageBoxOptions _options;
 
@@ -88,8 +88,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         /// <summary>Gets or sets the default button.</summary>
         /// <value>The default button.</value>
-        [DefaultValue(typeof(MessageBoxDefaultButton), "MessageBoxDefaultButton.Button1"), Description(@"The default selected message box button.")]
-        public MessageBoxDefaultButton DefaultButton { get => _defaultButton; set => _defaultButton = value; }
+        [DefaultValue(typeof(ExtendedMessageBoxDefaultButton), "ExtendedMessageBoxDefaultButton.Button4"), Description(@"The default selected message box button.")]
+        public ExtendedMessageBoxDefaultButton DefaultButton { get => _defaultButton; set => _defaultButton = value; }
 
         /// <summary>Gets or sets the options.</summary>
         /// <value>The options.</value>
@@ -172,7 +172,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
             _icon = ExtendedKryptonMessageBoxIcon.NONE;
 
-            _defaultButton = MessageBoxDefaultButton.Button1;
+            _defaultButton = ExtendedMessageBoxDefaultButton.Button4;
 
             _options = 0;
 
@@ -217,7 +217,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         public KryptonMessageBoxManager(IWin32Window owner, string text, string caption,
                                         ExtendedMessageBoxButtons buttons,
                                         ExtendedKryptonMessageBoxIcon icon,
-                                        MessageBoxDefaultButton defaultButton,
+                                        ExtendedMessageBoxDefaultButton defaultButton,
                                         MessageBoxOptions options,
                                         string helpFilePath,
                                         HelpNavigator navigator,
@@ -261,34 +261,34 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         /// <summary>Shows the message box.</summary>
         /// <returns></returns>
-        public virtual DialogResult ShowMessageBox()
-        {
-            if (!ShowHelpButton)
-            {
+        //public virtual DialogResult ShowMessageBox()
+        //{
+        //    if (!ShowHelpButton)
+        //    {
 
-                return KryptonMessageBoxExtended.Show(Text, CaptionText, MessageBoxButtons,
-                                                      MessageBoxIcon, DefaultButton,
-                                                      Options, false,
-                                                      ShowCtrlCopy);
-            }
-            else if (MessageBoxTypeface != null)
-            {
-                return KryptonMessageBoxExtended.Show(Text, CaptionText, MessageBoxButtons,
-                                                      MessageBoxIcon, DefaultButton, Options,
-                                                      ShowHelpButton, ShowCtrlCopy,
-                                                      MessageBoxTypeface, CustomImageIcon);
-            }
-            else
-            {
-                return KryptonMessageBoxExtended.Show(Owner, Text, CaptionText,
-                                                     MessageBoxButtons, MessageBoxIcon,
-                                                     DefaultButton, Options,
-                                                     HelpFilePath, HelpNavigator,
-                                                     Parameters, ShowHelpButton,
-                                                     ShowCtrlCopy, MessageBoxTypeface,
-                                                     CustomImageIcon);
-            }
-        }
+        //        return KryptonMessageBoxExtended.Show(Text, CaptionText, MessageBoxButtons,
+        //                                              MessageBoxIcon, DefaultButton,
+        //                                              Options, false,
+        //                                              ShowCtrlCopy);
+        //    }
+        //    else if (MessageBoxTypeface != null)
+        //    {
+        //        return KryptonMessageBoxExtended.Show(Text, CaptionText, MessageBoxButtons,
+        //                                              MessageBoxIcon, DefaultButton, Options,
+        //                                              ShowHelpButton, ShowCtrlCopy,
+        //                                              MessageBoxTypeface, CustomImageIcon);
+        //    }
+        //    else
+        //    {
+        //        return KryptonMessageBoxExtended.Show(Owner, Text, CaptionText,
+        //                                             MessageBoxButtons, MessageBoxIcon,
+        //                                             DefaultButton, Options,
+        //                                             HelpFilePath, HelpNavigator,
+        //                                             Parameters, ShowHelpButton,
+        //                                             ShowCtrlCopy, MessageBoxTypeface,
+        //                                             CustomImageIcon);
+        //    }
+        //}
 
         #endregion
 
@@ -296,34 +296,34 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         /// <summary>Displays the message box.</summary>
         /// <returns></returns>
-        public DialogResult DisplayMessageBox()
-        {
-            if (!ShowHelpButton)
-            {
+        //public DialogResult DisplayMessageBox()
+        //{
+        //    if (!ShowHelpButton)
+        //    {
 
-                return KryptonMessageBoxExtended.Show(Text, CaptionText, MessageBoxButtons,
-                                                      MessageBoxIcon, DefaultButton,
-                                                      Options, false,
-                                                      ShowCtrlCopy);
-            }
-            else if (MessageBoxTypeface != null)
-            {
-                return KryptonMessageBoxExtended.Show(Text, CaptionText, MessageBoxButtons,
-                                                      MessageBoxIcon, DefaultButton, Options,
-                                                      ShowHelpButton, ShowCtrlCopy,
-                                                      MessageBoxTypeface, CustomImageIcon);
-            }
-            else
-            {
-                return KryptonMessageBoxExtended.Show(Owner, Text, CaptionText,
-                                                     MessageBoxButtons, MessageBoxIcon,
-                                                     DefaultButton, Options,
-                                                     HelpFilePath, HelpNavigator,
-                                                     Parameters, ShowHelpButton,
-                                                     ShowCtrlCopy, MessageBoxTypeface,
-                                                     CustomImageIcon);
-            }
-        }
+        //        return KryptonMessageBoxExtended.Show(Text, CaptionText, MessageBoxButtons,
+        //                                              MessageBoxIcon, DefaultButton,
+        //                                              Options, false,
+        //                                              ShowCtrlCopy);
+        //    }
+        //    else if (MessageBoxTypeface != null)
+        //    {
+        //        return KryptonMessageBoxExtended.Show(Text, CaptionText, MessageBoxButtons,
+        //                                              MessageBoxIcon, DefaultButton, Options,
+        //                                              ShowHelpButton, ShowCtrlCopy,
+        //                                              MessageBoxTypeface, CustomImageIcon);
+        //    }
+        //    else
+        //    {
+        //        return KryptonMessageBoxExtended.Show(Owner, Text, CaptionText,
+        //                                             MessageBoxButtons, MessageBoxIcon,
+        //                                             DefaultButton, Options,
+        //                                             HelpFilePath, HelpNavigator,
+        //                                             Parameters, ShowHelpButton,
+        //                                             ShowCtrlCopy, MessageBoxTypeface,
+        //                                             CustomImageIcon);
+        //    }
+        //}
 
         #endregion
     }

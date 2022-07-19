@@ -161,10 +161,7 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
         {
             try
             {
-                if (true)
-                {
-                    // Note: Complete code
-                }
+                SetIsAssemblies64BIT(Environment.Is64BitProcess);
             }
             catch (Exception exc)
             {
@@ -483,7 +480,7 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
         {
             try
             {
-
+                SetIsAssemblies64BIT(Environment.Is64BitProcess);
             }
             catch (Exception exc)
             {
