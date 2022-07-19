@@ -23,7 +23,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
 
         #region Methods
         /// <summary>
-        /// Elevates the application to use administrative privileges. To be used with <see cref="Krypton.Toolkit.Suite.Extended.Buttons.KryptonUACElevatedButton"/> or <see cref="Krypton.Toolkit.Suite.Extended.Tool.Strip.Items.ToolStripMenuItemUACSheld"/> button click.
+        /// Elevates the application to use administrative privileges. To be used with <see cref="Extended.Buttons.KryptonUACElevatedButton"/> or <see cref="Krypton.Toolkit.Suite.Extended.Tool.Strip.Items.ToolStripMenuItemUACSheld"/> button click.
         /// </summary>
         /// <param name="processName">The process name that you wish to elevate.</param>
         public static void ElevateProcessWithAdministrativeRights(string processName)
@@ -47,7 +47,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
                 }
                 catch (Win32Exception wexc)
                 {
-                    KryptonMessageBox.Show("Error: " + wexc.Message, "An Error has Occurred", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ExceptionCapture.CaptureException(wexc);
                 }
 
                 return;

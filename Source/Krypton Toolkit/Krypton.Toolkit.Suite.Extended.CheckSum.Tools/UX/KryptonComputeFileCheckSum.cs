@@ -377,7 +377,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             }
             catch (Exception ex)
             {
-                KryptonMessageBox.Show($"An error has occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                KryptonMessageBox.Show($"An error has occurred: {ex.Message}", "Error", MessageBoxButtons.OK, KryptonMessageBoxIcon.ERROR);
             }
         }
 
@@ -393,7 +393,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             }
             catch (Exception e)
             {
-                KryptonMessageBox.Show($"An error has occurred: {e.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                KryptonMessageBox.Show($"An error has occurred: {e.Message}", "Error", MessageBoxButtons.OK, KryptonMessageBoxIcon.ERROR);
             }
         }
 
@@ -401,7 +401,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
         {
             if (bgMD5Hash.IsBusy || bgSHA1Hash.IsBusy || bgSHA256Hash.IsBusy || bgSHA384Hash.IsBusy || bgSHA512Hash.IsBusy || bgRIPEMD160Hash.IsBusy)
             {
-                DialogResult result = KryptonMessageBox.Show("File hashing is still in progress.\nDo you want to cancel?", "Hashing in Progress", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult result = KryptonMessageBox.Show("File hashing is still in progress.\nDo you want to cancel?", "Hashing in Progress", MessageBoxButtons.YesNo, KryptonMessageBoxIcon.QUESTION);
 
                 if (result == DialogResult.Yes)
                 {
@@ -817,7 +817,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             }
             catch (Exception e)
             {
-                KryptonMessageBox.Show($"An error has occurred: {e.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                KryptonMessageBox.Show($"An error has occurred: {e.Message}", "Error", MessageBoxButtons.OK, KryptonMessageBoxIcon.ERROR);
             }
         }
 
@@ -841,7 +841,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             }
             catch (Exception e)
             {
-                KryptonMessageBox.Show($"An error has occurred: {e.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                KryptonMessageBox.Show($"An error has occurred: {e.Message}", "Error", MessageBoxButtons.OK, KryptonMessageBoxIcon.ERROR);
             }
         }
 

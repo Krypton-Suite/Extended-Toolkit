@@ -49,13 +49,13 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             {
                 if (BasicColourSettingsManager.AreBasicPaletteColoursEmpty() || CustomColourSettingsManager.AreCustomPaletteColoursEmpty() || CustomTextColourSettingsManager.AreCustomPaletteTextColoursEmpty() || LinkTextColourSettingsManager.AreLinkTextPaletteColoursEmpty() || MiscellaneousColourSettingsManager.AreMiscellaneousPaletteColoursEmpty() || StandardControlTextColourSettingsManager.AreStandardControlTextColoursEmpty() || TextColourSettingsManager.AreTextPaletteColoursEmpty())
                 {
-                    KryptonMessageBox.Show("There are no colours to merge.", "Undefined Colours", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    KryptonMessageBox.Show("There are no colours to merge.", "Undefined Colours", MessageBoxButtons.OK, KryptonMessageBoxIcon.INFORMATION);
                 }
                 else
                 {
                     if (usePrompt)
                     {
-                        DialogResult result = KryptonMessageBox.Show("Do you want to merge all the colour settings together?", "Confirm Merge", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        DialogResult result = KryptonMessageBox.Show("Do you want to merge all the colour settings together?", "Confirm Merge", MessageBoxButtons.YesNo, KryptonMessageBoxIcon.QUESTION);
 
                         if (result == DialogResult.Yes)
                         {
@@ -239,13 +239,13 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             {
                 if (BasicColourSettingsManager.AreBasicPaletteColoursEmpty() || CustomColourSettingsManager.AreCustomPaletteColoursEmpty() || CustomTextColourSettingsManager.AreCustomPaletteTextColoursEmpty() || LinkTextColourSettingsManager.AreLinkTextPaletteColoursEmpty() || MiscellaneousColourSettingsManager.AreMiscellaneousPaletteColoursEmpty() || StandardControlTextColourSettingsManager.AreStandardControlTextColoursEmpty() || TextColourSettingsManager.AreTextPaletteColoursEmpty())
                 {
-                    KryptonMessageBox.Show("There are no colours to merge.", "Undefined Colours", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    KryptonMessageBox.Show("There are no colours to merge.", "Undefined Colours", MessageBoxButtons.OK, KryptonMessageBoxIcon.INFORMATION);
                 }
                 else
                 {
                     if (usePrompt)
                     {
-                        DialogResult result = KryptonMessageBox.Show("Do you want to merge all the colour settings together?", "Confirm Merge", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        DialogResult result = KryptonMessageBox.Show("Do you want to merge all the colour settings together?", "Confirm Merge", MessageBoxButtons.YesNo, KryptonMessageBoxIcon.QUESTION);
 
                         if (result == DialogResult.Yes)
                         {

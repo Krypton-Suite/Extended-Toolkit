@@ -32,7 +32,7 @@ namespace TestApp
                 }
                 catch (Exception ex)
                 {
-                    KryptonMessageBox.Show("Error when retrieving configuration : " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    KryptonMessageBox.Show("Error when retrieving configuration : " + ex.Message, "Error", MessageBoxButtons.OK, KryptonMessageBoxIcon.ERROR);
                     grid.ClearEverything();
                     LoadDefaultConfiguration(grid);
                 }

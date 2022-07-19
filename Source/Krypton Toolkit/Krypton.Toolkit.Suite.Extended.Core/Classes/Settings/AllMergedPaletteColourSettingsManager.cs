@@ -734,7 +734,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// </summary>
         public void ResetToDefaults()
         {
-            if (KryptonMessageBox.Show("WARNING! You are about to reset these settings back to their original state. This action cannot be undone!\nDo you want to proceed?", "Reset Settings", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
+            if (KryptonMessageBox.Show("WARNING! You are about to reset these settings back to their original state. This action cannot be undone!\nDo you want to proceed?", "Reset Settings", MessageBoxButtons.YesNo, KryptonMessageBoxIcon.QUESTION) == DialogResult.Yes)
             {
                 SetBaseColour(Color.Empty);
 
@@ -800,7 +800,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
                 SaveAllMergedColourSettings();
 
-                if (KryptonMessageBox.Show($"Done! Do you want to restart the application now?", "Action Complete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (KryptonMessageBox.Show($"Done! Do you want to restart the application now?", "Action Complete", MessageBoxButtons.YesNo, KryptonMessageBoxIcon.QUESTION) == DialogResult.Yes)
                 {
                     Application.Restart();
                 }
@@ -815,7 +815,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             if (alwaysUsePrompt)
             {
-                if (KryptonMessageBox.Show("You have changed a setting value. Do you want to save these changes?", "Setting Values Changed", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (KryptonMessageBox.Show("You have changed a setting value. Do you want to save these changes?", "Setting Values Changed", MessageBoxButtons.YesNo, KryptonMessageBoxIcon.QUESTION) == DialogResult.Yes)
                 {
                     _paletteColourSettings.Save();
 

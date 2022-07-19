@@ -59,7 +59,7 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
                 {
                     if (globalMethods.GetIsTargetPlatformSupported())
                     {
-                        ExceptionCapture.CaptureException(ex, "Exception Thrown", MessageBoxButtons.OK, MessageBoxIcon.Error, "NetworkUtilities", "CheckInternetConnectionState(string pingAddress = null)");
+                        ExceptionCapture.CaptureException(ex, "Exception Thrown", MessageBoxButtons.OK, KryptonMessageBoxIcon.ERROR, "NetworkUtilities", "CheckInternetConnectionState(string pingAddress = null)");
                     }
                     else
                     {
@@ -105,11 +105,11 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
                 {
                     if (globalMethods.GetIsTargetPlatformSupported())
                     {
-                        ExceptionCapture.CaptureException(ex, "Exception Thrown", MessageBoxButtons.OK, MessageBoxIcon.Error, "NetworkUtilities", "ExistsOnServer(Uri fileLocation)");
+                        ExceptionCapture.CaptureException(ex, "Exception Thrown", MessageBoxButtons.OK, KryptonMessageBoxIcon.ERROR, "NetworkUtilities", "ExistsOnServer(Uri fileLocation)");
                     }
                     else
                     {
-                        ExceptionCapture.CaptureException(ex, "Exception Thrown", MessageBoxButtons.OK, MessageBoxIcon.Error, "NetworkUtilities", "ExistsOnServer(Uri fileLocation)");
+                        ExceptionCapture.CaptureException(ex, "Exception Thrown", MessageBoxButtons.OK, KryptonMessageBoxIcon.ERROR, "NetworkUtilities", "ExistsOnServer(Uri fileLocation)");
                     }
                 }
 

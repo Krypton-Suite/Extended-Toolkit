@@ -6,6 +6,8 @@
  */
 #endregion
 
+using Krypton.Toolkit.Suite.Extended.Developer.Utilities;
+
 namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
 {
     public class KryptonVarifyFileCheckSum : KryptonForm
@@ -743,7 +745,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             }
             catch (Exception ex)
             {
-                KryptonMessageBox.Show($"An error has occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ExceptionCapture.CaptureException(ex);
             }
         }
 
@@ -778,13 +780,13 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             }
             catch (Exception exc)
             {
-                KryptonMessageBox.Show($"An error has occurred: {exc.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ExceptionCapture.CaptureException(exc);
             }
         }
 
         private void clearTextBoxToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DialogResult result = KryptonMessageBox.Show("Do you want to clear the textbox of its contents?", "Clear Hash Box", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = KryptonMessageBox.Show("Do you want to clear the textbox of its contents?", "Clear Hash Box", MessageBoxButtons.YesNo, KryptonMessageBoxIcon.QUESTION);
 
             if (result == DialogResult.Yes)
             {
@@ -825,7 +827,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             }
             catch (Exception e)
             {
-                KryptonMessageBox.Show($"An error has occurred: {e.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ExceptionCapture.CaptureException(e);
             }
         }
 

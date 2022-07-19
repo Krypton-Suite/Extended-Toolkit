@@ -606,7 +606,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         {
             if (usePrompt)
             {
-                DialogResult result = KryptonMessageBox.Show("Do you want to save the current colour string settings?", "Save Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult result = KryptonMessageBox.Show("Do you want to save the current colour string settings?", "Save Confirmation", MessageBoxButtons.YesNo, KryptonMessageBoxIcon.QUESTION);
 
                 //KryptonMessageBoxExtendedResult result = ExtendedKryptonMessageBox.Show("Do you want to save the current colour settings?", "Save Confirmation", KryptonMessageBoxExtendedButtons.YESNO, KryptonMessageBoxExtendedIcon.QUESTION);
 
@@ -629,7 +629,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         {
             if (usePrompt)
             {
-                DialogResult result = KryptonMessageBox.Show("This action will reset the colour string values. Do you want to continue?", "Reset Colour String Values", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult result = KryptonMessageBox.Show("This action will reset the colour string values. Do you want to continue?", "Reset Colour String Values", MessageBoxButtons.YesNo, KryptonMessageBoxIcon.QUESTION);
 
                 if (result == DialogResult.Yes)
                 {

@@ -12,9 +12,9 @@ using Krypton.Toolkit;
 
 namespace TestApp
 {
-    public partial class ControlExamples : KryptonForm
+    public partial class FloatingToolStripExample : KryptonForm
     {
-        public ControlExamples()
+        public FloatingToolStripExample()
         {
             InitializeComponent();
         }

@@ -369,7 +369,7 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
         {
             if (kbtnReset.Enabled)
             {
-                DialogResult result = KryptonMessageBox.Show("", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult result = KryptonMessageBox.Show("", "", MessageBoxButtons.YesNo, KryptonMessageBoxIcon.QUESTION);
 
                 if (result == DialogResult.Yes)
                 {

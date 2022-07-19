@@ -48,7 +48,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             if (useDialoguePrompt)
             {
-                DialogResult result = KryptonMessageBox.Show("Do you want to store and save the current setting values?", "Save Settings", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult result = KryptonMessageBox.Show("Do you want to store and save the current setting values?", "Save Settings", MessageBoxButtons.YesNo, KryptonMessageBoxIcon.QUESTION);
 
                 if (result == DialogResult.Yes)
                 {

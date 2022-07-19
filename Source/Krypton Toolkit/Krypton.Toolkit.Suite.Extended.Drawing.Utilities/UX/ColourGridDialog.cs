@@ -216,12 +216,12 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                     }
                     catch (Exception exc)
                     {
-                        KryptonMessageBox.Show($@"Sorry, unable to save palette. { exc.GetBaseException().Message }", "Save Palette", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        KryptonMessageBox.Show($@"Sorry, unable to save palette. { exc.GetBaseException().Message }", "Save Palette", MessageBoxButtons.OK, KryptonMessageBoxIcon.ERROR);
                     }
                 }
                 else
                 {
-                    KryptonMessageBox.Show("Sorry, unable to save palette, the file format is not supported or is not recognised.", "Save Palette", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    KryptonMessageBox.Show("Sorry, unable to save palette, the file format is not supported or is not recognised.", "Save Palette", MessageBoxButtons.OK, KryptonMessageBoxIcon.EXCLAMATION);
                 }
             }
         }
@@ -266,7 +266,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                         }
                         else
                         {
-                            KryptonMessageBox.Show("Sorry, unable to open palette, the file format is not supported or is not recognized.", "Load Palette", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            KryptonMessageBox.Show("Sorry, unable to open palette, the file format is not supported or is not recognized.", "Load Palette", MessageBoxButtons.OK, KryptonMessageBoxIcon.EXCLAMATION);
                         }
                     }
                     catch (Exception exc)

@@ -97,9 +97,9 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="70.22.7.194-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="70.22.7.200-alpha" />
 
-				<PackageReference Include="Krypton.Navigator.Nightly" Version="70.22.7.194-alpha" />
+				<PackageReference Include="Krypton.Navigator.Nightly" Version="70.22.7.200-alpha" />
 			</ItemGroup>
 		</When>
 

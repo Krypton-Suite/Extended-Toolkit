@@ -27,7 +27,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             // KryptonProgressBarExtended
             // 
             this.Name = "KryptonProgressBarExtended";
-            this.Size = new System.Drawing.Size(264, 32);
+            this.Size = new System.Drawing.Size(100, 23);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.KryptonProgressBarExtended_Paint);
             this.ResumeLayout(false);
 
