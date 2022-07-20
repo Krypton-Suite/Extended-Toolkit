@@ -58,5 +58,121 @@ namespace TestApp
                 kwlDefinedFont.Text = $"Selected font: {_customFont}";
             }
         }
+
+        private void icon_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonNone.Checked)
+            {
+                _icon = ExtendedKryptonMessageBoxIcon.NONE;
+            }
+            else if (krbCustom.Checked)
+            {
+                _icon = ExtendedKryptonMessageBoxIcon.CUSTOM;
+            }
+            else if (radioButtonError.Checked)
+            {
+                _icon = ExtendedKryptonMessageBoxIcon.ERROR;
+            }
+            else if (radioButtonQuestion.Checked)
+            {
+                _icon = ExtendedKryptonMessageBoxIcon.QUESTION;
+            }
+            else if (radioButtonWarning.Checked)
+            {
+                _icon = ExtendedKryptonMessageBoxIcon.WARNING;
+            }
+            else if (radioButtonInformation.Checked)
+            {
+                _icon = ExtendedKryptonMessageBoxIcon.INFORMATION;
+            }
+            else if (radioButtonWinLogo.Checked)
+            {
+                _icon = ExtendedKryptonMessageBoxIcon.WINDOWSLOGO;
+            }
+        }
+
+        private void buttons_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonOK.Checked)
+            {
+                _messageBoxButtons = MessageBoxButtons.OK;
+            }
+            else if (radioButtonOKCancel.Checked)
+            {
+                _messageBoxButtons = MessageBoxButtons.OKCancel;
+            }
+            else if (radioButtonRetryCancel.Checked)
+            {
+                _messageBoxButtons = MessageBoxButtons.RetryCancel;
+            }
+            else if (radioButtonAbortRetryIgnore.Checked)
+            {
+                _messageBoxButtons = MessageBoxButtons.AbortRetryIgnore;
+            }
+            else if (radioButtonYesNo.Checked)
+            {
+                _messageBoxButtons = MessageBoxButtons.YesNo;
+            }
+            else if (radioButtonYesNoCancel.Checked)
+            {
+                _messageBoxButtons = MessageBoxButtons.YesNoCancel;
+            }
+        }
+
+        private void defaultButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if (krbDefaultButton1.Checked)
+            {
+                _defaultButton = ExtendedMessageBoxDefaultButton.Button1;
+            }
+            else if (krbDefaultButton2.Checked)
+            {
+                _defaultButton = ExtendedMessageBoxDefaultButton.Button2;
+            }
+            else if (krbDefaultButton3.Checked)
+            {
+                _defaultButton = ExtendedMessageBoxDefaultButton.Button3;
+            }
+            else if (krbDefaultButton4.Checked)
+            {
+                _defaultButton = ExtendedMessageBoxDefaultButton.Button4;
+            }
+        }
+
+        private void messageBoxOptions_CheckedChanged(object sender, EventArgs e)
+        {
+            if (kchkMessageBoxOptionsDefaultDesktopOnly.Checked)
+            {
+                _options |= MessageBoxOptions.DefaultDesktopOnly;
+            }
+            else if (!kchkMessageBoxOptionsDefaultDesktopOnly.Checked)
+            {
+                _options &= ~MessageBoxOptions.DefaultDesktopOnly;
+            }
+            else if (kchkMessageBoxOptionsRightAlign.Checked)
+            {
+                _options |= MessageBoxOptions.RightAlign;
+            }
+            else if (!kchkMessageBoxOptionsRightAlign.Checked)
+            {
+                _options &= ~MessageBoxOptions.RightAlign;
+            }
+            else if (kchkMessageBoxOptionsRTLReading.Checked)
+            {
+                _options |= MessageBoxOptions.RtlReading;
+            }
+            else if (!kchkMessageBoxOptionsRTLReading.Checked)
+            {
+                _options &= ~MessageBoxOptions.RtlReading;
+            }
+            else if (kchkMessageBoxOptionsServiceNotification.Checked)
+            {
+                _options |= MessageBoxOptions.ServiceNotification;
+            }
+            else if (!kchkMessageBoxOptionsServiceNotification.Checked)
+            {
+                _options &= ~MessageBoxOptions.ServiceNotification;
+            }
+        }
     }
 }

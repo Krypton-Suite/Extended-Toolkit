@@ -48,15 +48,19 @@
             this.kcmbShowHelpButton = new Krypton.Toolkit.KryptonCheckBox();
             this.kryptonButton1 = new Krypton.Toolkit.KryptonButton();
             this.kryptonGroupBox4 = new Krypton.Toolkit.KryptonGroupBox();
-            this.krbMessageBoxOptionsRTLReading = new Krypton.Toolkit.KryptonRadioButton();
-            this.krbMessageBoxOptionsRightAlign = new Krypton.Toolkit.KryptonRadioButton();
-            this.krbMessageBoxOptionsServiceNotification = new Krypton.Toolkit.KryptonRadioButton();
-            this.krbMessageBoxOptionsDefaultDesktopOnly = new Krypton.Toolkit.KryptonRadioButton();
+            this.kchkMessageBoxOptionsRTLReading = new Krypton.Toolkit.KryptonCheckBox();
+            this.kchkMessageBoxOptionsRightAlign = new Krypton.Toolkit.KryptonCheckBox();
+            this.kchkMessageBoxOptionsServiceNotification = new Krypton.Toolkit.KryptonCheckBox();
+            this.kchkMessageBoxOptionsDefaultDesktopOnly = new Krypton.Toolkit.KryptonCheckBox();
             this.kryptonGroupBox3 = new Krypton.Toolkit.KryptonGroupBox();
+            this.krbDefaultButton4 = new Krypton.Toolkit.KryptonRadioButton();
             this.krbDefaultButton3 = new Krypton.Toolkit.KryptonRadioButton();
             this.krbDefaultButton2 = new Krypton.Toolkit.KryptonRadioButton();
             this.krbDefaultButton1 = new Krypton.Toolkit.KryptonRadioButton();
             this.kryptonGroupBox2 = new Krypton.Toolkit.KryptonGroupBox();
+            this.kbtnBrowseForCustomImagePath = new Krypton.Toolkit.KryptonButton();
+            this.ktxtCustomImagePath = new Krypton.Toolkit.KryptonTextBox();
+            this.krbCustom = new Krypton.Toolkit.KryptonRadioButton();
             this.radioButtonWinLogo = new Krypton.Toolkit.KryptonRadioButton();
             this.radioButtonNone = new Krypton.Toolkit.KryptonRadioButton();
             this.radioButtonError = new Krypton.Toolkit.KryptonRadioButton();
@@ -74,10 +78,6 @@
             this.ktxtMessageText = new Krypton.Toolkit.KryptonTextBox();
             this.kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
             this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
-            this.krbDefaultButton4 = new Krypton.Toolkit.KryptonRadioButton();
-            this.krbCustom = new Krypton.Toolkit.KryptonRadioButton();
-            this.ktxtCustomImagePath = new Krypton.Toolkit.KryptonTextBox();
-            this.kbtnBrowseForCustomImagePath = new Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox8)).BeginInit();
@@ -305,45 +305,49 @@
             // 
             // kryptonGroupBox4.Panel
             // 
-            this.kryptonGroupBox4.Panel.Controls.Add(this.krbMessageBoxOptionsRTLReading);
-            this.kryptonGroupBox4.Panel.Controls.Add(this.krbMessageBoxOptionsRightAlign);
-            this.kryptonGroupBox4.Panel.Controls.Add(this.krbMessageBoxOptionsServiceNotification);
-            this.kryptonGroupBox4.Panel.Controls.Add(this.krbMessageBoxOptionsDefaultDesktopOnly);
+            this.kryptonGroupBox4.Panel.Controls.Add(this.kchkMessageBoxOptionsRTLReading);
+            this.kryptonGroupBox4.Panel.Controls.Add(this.kchkMessageBoxOptionsRightAlign);
+            this.kryptonGroupBox4.Panel.Controls.Add(this.kchkMessageBoxOptionsServiceNotification);
+            this.kryptonGroupBox4.Panel.Controls.Add(this.kchkMessageBoxOptionsDefaultDesktopOnly);
             this.kryptonGroupBox4.Size = new System.Drawing.Size(364, 164);
             this.kryptonGroupBox4.TabIndex = 7;
             this.kryptonGroupBox4.Values.Heading = "MessageBox Options";
             // 
-            // krbMessageBoxOptionsRTLReading
+            // kchkMessageBoxOptionsRTLReading
             // 
-            this.krbMessageBoxOptionsRTLReading.Location = new System.Drawing.Point(15, 70);
-            this.krbMessageBoxOptionsRTLReading.Name = "krbMessageBoxOptionsRTLReading";
-            this.krbMessageBoxOptionsRTLReading.Size = new System.Drawing.Size(196, 20);
-            this.krbMessageBoxOptionsRTLReading.TabIndex = 3;
-            this.krbMessageBoxOptionsRTLReading.Values.Text = "MessageBoxOptions.RtlReading";
+            this.kchkMessageBoxOptionsRTLReading.Location = new System.Drawing.Point(15, 70);
+            this.kchkMessageBoxOptionsRTLReading.Name = "kchkMessageBoxOptionsRTLReading";
+            this.kchkMessageBoxOptionsRTLReading.Size = new System.Drawing.Size(197, 20);
+            this.kchkMessageBoxOptionsRTLReading.TabIndex = 3;
+            this.kchkMessageBoxOptionsRTLReading.Values.Text = "MessageBoxOptions.RtlReading";
+            this.kchkMessageBoxOptionsRTLReading.CheckedChanged += new System.EventHandler(this.messageBoxOptions_CheckedChanged);
             // 
-            // krbMessageBoxOptionsRightAlign
+            // kchkMessageBoxOptionsRightAlign
             // 
-            this.krbMessageBoxOptionsRightAlign.Location = new System.Drawing.Point(15, 39);
-            this.krbMessageBoxOptionsRightAlign.Name = "krbMessageBoxOptionsRightAlign";
-            this.krbMessageBoxOptionsRightAlign.Size = new System.Drawing.Size(194, 20);
-            this.krbMessageBoxOptionsRightAlign.TabIndex = 2;
-            this.krbMessageBoxOptionsRightAlign.Values.Text = "MessageBoxOptions.RightAlign";
+            this.kchkMessageBoxOptionsRightAlign.Location = new System.Drawing.Point(15, 39);
+            this.kchkMessageBoxOptionsRightAlign.Name = "kchkMessageBoxOptionsRightAlign";
+            this.kchkMessageBoxOptionsRightAlign.Size = new System.Drawing.Size(195, 20);
+            this.kchkMessageBoxOptionsRightAlign.TabIndex = 2;
+            this.kchkMessageBoxOptionsRightAlign.Values.Text = "MessageBoxOptions.RightAlign";
+            this.kchkMessageBoxOptionsRightAlign.CheckedChanged += new System.EventHandler(this.messageBoxOptions_CheckedChanged);
             // 
-            // krbMessageBoxOptionsServiceNotification
+            // kchkMessageBoxOptionsServiceNotification
             // 
-            this.krbMessageBoxOptionsServiceNotification.Location = new System.Drawing.Point(15, 101);
-            this.krbMessageBoxOptionsServiceNotification.Name = "krbMessageBoxOptionsServiceNotification";
-            this.krbMessageBoxOptionsServiceNotification.Size = new System.Drawing.Size(239, 20);
-            this.krbMessageBoxOptionsServiceNotification.TabIndex = 1;
-            this.krbMessageBoxOptionsServiceNotification.Values.Text = "MessageBoxOptions.ServiceNotification";
+            this.kchkMessageBoxOptionsServiceNotification.Location = new System.Drawing.Point(15, 101);
+            this.kchkMessageBoxOptionsServiceNotification.Name = "kchkMessageBoxOptionsServiceNotification";
+            this.kchkMessageBoxOptionsServiceNotification.Size = new System.Drawing.Size(240, 20);
+            this.kchkMessageBoxOptionsServiceNotification.TabIndex = 1;
+            this.kchkMessageBoxOptionsServiceNotification.Values.Text = "MessageBoxOptions.ServiceNotification";
+            this.kchkMessageBoxOptionsServiceNotification.CheckedChanged += new System.EventHandler(this.messageBoxOptions_CheckedChanged);
             // 
-            // krbMessageBoxOptionsDefaultDesktopOnly
+            // kchkMessageBoxOptionsDefaultDesktopOnly
             // 
-            this.krbMessageBoxOptionsDefaultDesktopOnly.Location = new System.Drawing.Point(15, 8);
-            this.krbMessageBoxOptionsDefaultDesktopOnly.Name = "krbMessageBoxOptionsDefaultDesktopOnly";
-            this.krbMessageBoxOptionsDefaultDesktopOnly.Size = new System.Drawing.Size(246, 20);
-            this.krbMessageBoxOptionsDefaultDesktopOnly.TabIndex = 0;
-            this.krbMessageBoxOptionsDefaultDesktopOnly.Values.Text = "MessageBoxOptions.DefaultDesktopOnly";
+            this.kchkMessageBoxOptionsDefaultDesktopOnly.Location = new System.Drawing.Point(15, 8);
+            this.kchkMessageBoxOptionsDefaultDesktopOnly.Name = "kchkMessageBoxOptionsDefaultDesktopOnly";
+            this.kchkMessageBoxOptionsDefaultDesktopOnly.Size = new System.Drawing.Size(247, 20);
+            this.kchkMessageBoxOptionsDefaultDesktopOnly.TabIndex = 0;
+            this.kchkMessageBoxOptionsDefaultDesktopOnly.Values.Text = "MessageBoxOptions.DefaultDesktopOnly";
+            this.kchkMessageBoxOptionsDefaultDesktopOnly.CheckedChanged += new System.EventHandler(this.messageBoxOptions_CheckedChanged);
             // 
             // kryptonGroupBox3
             // 
@@ -360,6 +364,16 @@
             this.kryptonGroupBox3.TabIndex = 6;
             this.kryptonGroupBox3.Values.Heading = "Default Button";
             // 
+            // krbDefaultButton4
+            // 
+            this.krbDefaultButton4.Checked = true;
+            this.krbDefaultButton4.Location = new System.Drawing.Point(239, 25);
+            this.krbDefaultButton4.Name = "krbDefaultButton4";
+            this.krbDefaultButton4.Size = new System.Drawing.Size(69, 20);
+            this.krbDefaultButton4.TabIndex = 3;
+            this.krbDefaultButton4.Values.Text = "Button 4";
+            this.krbDefaultButton4.CheckedChanged += new System.EventHandler(this.defaultButton_CheckedChanged);
+            // 
             // krbDefaultButton3
             // 
             this.krbDefaultButton3.Location = new System.Drawing.Point(164, 25);
@@ -367,6 +381,7 @@
             this.krbDefaultButton3.Size = new System.Drawing.Size(69, 20);
             this.krbDefaultButton3.TabIndex = 2;
             this.krbDefaultButton3.Values.Text = "Button 3";
+            this.krbDefaultButton3.CheckedChanged += new System.EventHandler(this.defaultButton_CheckedChanged);
             // 
             // krbDefaultButton2
             // 
@@ -375,6 +390,7 @@
             this.krbDefaultButton2.Size = new System.Drawing.Size(69, 20);
             this.krbDefaultButton2.TabIndex = 1;
             this.krbDefaultButton2.Values.Text = "Button 2";
+            this.krbDefaultButton2.CheckedChanged += new System.EventHandler(this.defaultButton_CheckedChanged);
             // 
             // krbDefaultButton1
             // 
@@ -383,6 +399,7 @@
             this.krbDefaultButton1.Size = new System.Drawing.Size(69, 20);
             this.krbDefaultButton1.TabIndex = 0;
             this.krbDefaultButton1.Values.Text = "Button 1";
+            this.krbDefaultButton1.CheckedChanged += new System.EventHandler(this.defaultButton_CheckedChanged);
             // 
             // kryptonGroupBox2
             // 
@@ -404,6 +421,36 @@
             this.kryptonGroupBox2.TabIndex = 5;
             this.kryptonGroupBox2.Values.Heading = "Icon";
             // 
+            // kbtnBrowseForCustomImagePath
+            // 
+            this.kbtnBrowseForCustomImagePath.AutoSize = true;
+            this.kbtnBrowseForCustomImagePath.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.kbtnBrowseForCustomImagePath.CornerRoundingRadius = -1F;
+            this.kbtnBrowseForCustomImagePath.Location = new System.Drawing.Point(327, 96);
+            this.kbtnBrowseForCustomImagePath.Name = "kbtnBrowseForCustomImagePath";
+            this.kbtnBrowseForCustomImagePath.Size = new System.Drawing.Size(17, 22);
+            this.kbtnBrowseForCustomImagePath.TabIndex = 14;
+            this.kbtnBrowseForCustomImagePath.Values.Text = "...";
+            // 
+            // ktxtCustomImagePath
+            // 
+            this.ktxtCustomImagePath.CueHint.CueHintText = "Path of custom image...";
+            this.ktxtCustomImagePath.CueHint.Padding = new System.Windows.Forms.Padding(0);
+            this.ktxtCustomImagePath.Enabled = false;
+            this.ktxtCustomImagePath.Location = new System.Drawing.Point(14, 96);
+            this.ktxtCustomImagePath.Name = "ktxtCustomImagePath";
+            this.ktxtCustomImagePath.Size = new System.Drawing.Size(307, 23);
+            this.ktxtCustomImagePath.TabIndex = 13;
+            // 
+            // krbCustom
+            // 
+            this.krbCustom.Location = new System.Drawing.Point(14, 36);
+            this.krbCustom.Name = "krbCustom";
+            this.krbCustom.Size = new System.Drawing.Size(64, 20);
+            this.krbCustom.TabIndex = 12;
+            this.krbCustom.Values.Text = "Custom";
+            this.krbCustom.CheckedChanged += new System.EventHandler(this.icon_CheckedChanged);
+            // 
             // radioButtonWinLogo
             // 
             this.radioButtonWinLogo.Location = new System.Drawing.Point(84, 62);
@@ -412,6 +459,7 @@
             this.radioButtonWinLogo.TabIndex = 11;
             this.radioButtonWinLogo.Tag = "32";
             this.radioButtonWinLogo.Values.Text = "WinLogo";
+            this.radioButtonWinLogo.CheckedChanged += new System.EventHandler(this.icon_CheckedChanged);
             // 
             // radioButtonNone
             // 
@@ -421,6 +469,7 @@
             this.radioButtonNone.TabIndex = 6;
             this.radioButtonNone.Tag = "0";
             this.radioButtonNone.Values.Text = "None";
+            this.radioButtonNone.CheckedChanged += new System.EventHandler(this.icon_CheckedChanged);
             // 
             // radioButtonError
             // 
@@ -430,6 +479,7 @@
             this.radioButtonError.TabIndex = 7;
             this.radioButtonError.Tag = "16";
             this.radioButtonError.Values.Text = "Error";
+            this.radioButtonError.CheckedChanged += new System.EventHandler(this.icon_CheckedChanged);
             // 
             // radioButtonQuestion
             // 
@@ -439,6 +489,7 @@
             this.radioButtonQuestion.TabIndex = 8;
             this.radioButtonQuestion.Tag = "32";
             this.radioButtonQuestion.Values.Text = "Question";
+            this.radioButtonQuestion.CheckedChanged += new System.EventHandler(this.icon_CheckedChanged);
             // 
             // radioButtonWarning
             // 
@@ -449,6 +500,7 @@
             this.radioButtonWarning.TabIndex = 9;
             this.radioButtonWarning.Tag = "48";
             this.radioButtonWarning.Values.Text = "Warning";
+            this.radioButtonWarning.CheckedChanged += new System.EventHandler(this.icon_CheckedChanged);
             // 
             // radioButtonInformation
             // 
@@ -458,6 +510,7 @@
             this.radioButtonInformation.TabIndex = 10;
             this.radioButtonInformation.Tag = "64";
             this.radioButtonInformation.Values.Text = "Information";
+            this.radioButtonInformation.CheckedChanged += new System.EventHandler(this.icon_CheckedChanged);
             // 
             // kryptonGroupBox1
             // 
@@ -484,6 +537,7 @@
             this.radioButtonYesNo.TabIndex = 10;
             this.radioButtonYesNo.Tag = "4";
             this.radioButtonYesNo.Values.Text = "Yes No";
+            this.radioButtonYesNo.CheckedChanged += new System.EventHandler(this.buttons_CheckedChanged);
             // 
             // radioButtonOK
             // 
@@ -493,6 +547,7 @@
             this.radioButtonOK.TabIndex = 6;
             this.radioButtonOK.Tag = "0";
             this.radioButtonOK.Values.Text = "OK";
+            this.radioButtonOK.CheckedChanged += new System.EventHandler(this.buttons_CheckedChanged);
             // 
             // radioButtonRetryCancel
             // 
@@ -502,6 +557,7 @@
             this.radioButtonRetryCancel.TabIndex = 8;
             this.radioButtonRetryCancel.Tag = "5";
             this.radioButtonRetryCancel.Values.Text = "Retry Cancel";
+            this.radioButtonRetryCancel.CheckedChanged += new System.EventHandler(this.buttons_CheckedChanged);
             // 
             // radioButtonAbortRetryIgnore
             // 
@@ -511,6 +567,7 @@
             this.radioButtonAbortRetryIgnore.TabIndex = 9;
             this.radioButtonAbortRetryIgnore.Tag = "2";
             this.radioButtonAbortRetryIgnore.Values.Text = "Abort Retry Ignore";
+            this.radioButtonAbortRetryIgnore.CheckedChanged += new System.EventHandler(this.buttons_CheckedChanged);
             // 
             // radioButtonYesNoCancel
             // 
@@ -520,6 +577,7 @@
             this.radioButtonYesNoCancel.TabIndex = 11;
             this.radioButtonYesNoCancel.Tag = "3";
             this.radioButtonYesNoCancel.Values.Text = "Yes No Cancel";
+            this.radioButtonYesNoCancel.CheckedChanged += new System.EventHandler(this.buttons_CheckedChanged);
             // 
             // radioButtonOKCancel
             // 
@@ -530,6 +588,7 @@
             this.radioButtonOKCancel.TabIndex = 7;
             this.radioButtonOKCancel.Tag = "1";
             this.radioButtonOKCancel.Values.Text = "OK Cancel";
+            this.radioButtonOKCancel.CheckedChanged += new System.EventHandler(this.buttons_CheckedChanged);
             // 
             // ktxtCaption
             // 
@@ -565,44 +624,6 @@
             this.kryptonLabel1.Size = new System.Drawing.Size(59, 20);
             this.kryptonLabel1.TabIndex = 0;
             this.kryptonLabel1.Values.Text = "Caption:";
-            // 
-            // krbDefaultButton4
-            // 
-            this.krbDefaultButton4.Checked = true;
-            this.krbDefaultButton4.Location = new System.Drawing.Point(239, 25);
-            this.krbDefaultButton4.Name = "krbDefaultButton4";
-            this.krbDefaultButton4.Size = new System.Drawing.Size(69, 20);
-            this.krbDefaultButton4.TabIndex = 3;
-            this.krbDefaultButton4.Values.Text = "Button 4";
-            // 
-            // krbCustom
-            // 
-            this.krbCustom.Location = new System.Drawing.Point(14, 36);
-            this.krbCustom.Name = "krbCustom";
-            this.krbCustom.Size = new System.Drawing.Size(64, 20);
-            this.krbCustom.TabIndex = 12;
-            this.krbCustom.Values.Text = "Custom";
-            // 
-            // ktxtCustomImagePath
-            // 
-            this.ktxtCustomImagePath.CueHint.CueHintText = "Path of custom image...";
-            this.ktxtCustomImagePath.CueHint.Padding = new System.Windows.Forms.Padding(0);
-            this.ktxtCustomImagePath.Enabled = false;
-            this.ktxtCustomImagePath.Location = new System.Drawing.Point(14, 96);
-            this.ktxtCustomImagePath.Name = "ktxtCustomImagePath";
-            this.ktxtCustomImagePath.Size = new System.Drawing.Size(307, 23);
-            this.ktxtCustomImagePath.TabIndex = 13;
-            // 
-            // kbtnBrowseForCustomImagePath
-            // 
-            this.kbtnBrowseForCustomImagePath.AutoSize = true;
-            this.kbtnBrowseForCustomImagePath.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.kbtnBrowseForCustomImagePath.CornerRoundingRadius = -1F;
-            this.kbtnBrowseForCustomImagePath.Location = new System.Drawing.Point(327, 96);
-            this.kbtnBrowseForCustomImagePath.Name = "kbtnBrowseForCustomImagePath";
-            this.kbtnBrowseForCustomImagePath.Size = new System.Drawing.Size(17, 22);
-            this.kbtnBrowseForCustomImagePath.TabIndex = 14;
-            this.kbtnBrowseForCustomImagePath.Values.Text = "...";
             // 
             // KryptonMessageBoxExtendedExample
             // 
@@ -697,10 +718,10 @@
         private Krypton.Toolkit.KryptonRadioButton radioButtonAbortRetryIgnore;
         private Krypton.Toolkit.KryptonRadioButton radioButtonYesNoCancel;
         private Krypton.Toolkit.KryptonRadioButton radioButtonOKCancel;
-        private Krypton.Toolkit.KryptonRadioButton krbMessageBoxOptionsRTLReading;
-        private Krypton.Toolkit.KryptonRadioButton krbMessageBoxOptionsRightAlign;
-        private Krypton.Toolkit.KryptonRadioButton krbMessageBoxOptionsServiceNotification;
-        private Krypton.Toolkit.KryptonRadioButton krbMessageBoxOptionsDefaultDesktopOnly;
+        private Krypton.Toolkit.KryptonCheckBox kchkMessageBoxOptionsRTLReading;
+        private Krypton.Toolkit.KryptonCheckBox kchkMessageBoxOptionsRightAlign;
+        private Krypton.Toolkit.KryptonCheckBox kchkMessageBoxOptionsServiceNotification;
+        private Krypton.Toolkit.KryptonCheckBox kchkMessageBoxOptionsDefaultDesktopOnly;
         private Krypton.Toolkit.KryptonRadioButton krbDefaultButton3;
         private Krypton.Toolkit.KryptonRadioButton krbDefaultButton2;
         private Krypton.Toolkit.KryptonRadioButton krbDefaultButton1;
