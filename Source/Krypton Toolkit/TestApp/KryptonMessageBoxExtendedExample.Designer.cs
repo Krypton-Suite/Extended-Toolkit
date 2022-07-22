@@ -30,6 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KryptonMessageBoxExtendedExample));
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            this.kryptonGroupBox5 = new Krypton.Toolkit.KryptonGroupBox();
+            this.kryptonColorButton5 = new Krypton.Toolkit.KryptonColorButton();
+            this.kryptonColorButton4 = new Krypton.Toolkit.KryptonColorButton();
+            this.kryptonColorButton3 = new Krypton.Toolkit.KryptonColorButton();
+            this.kryptonColorButton2 = new Krypton.Toolkit.KryptonColorButton();
+            this.kryptonColorButton1 = new Krypton.Toolkit.KryptonColorButton();
             this.kryptonGroupBox8 = new Krypton.Toolkit.KryptonGroupBox();
             this.kbtnDefineFont = new Krypton.Toolkit.KryptonButton();
             this.kwlDefinedFont = new Krypton.Toolkit.KryptonWrapLabel();
@@ -46,7 +52,7 @@
             this.ktxtHelpKeyword = new Krypton.Toolkit.KryptonTextBox();
             this.ktxtHelpFilePath = new Krypton.Toolkit.KryptonTextBox();
             this.kcmbShowHelpButton = new Krypton.Toolkit.KryptonCheckBox();
-            this.kryptonButton1 = new Krypton.Toolkit.KryptonButton();
+            this.kbtnShow = new Krypton.Toolkit.KryptonButton();
             this.kryptonGroupBox4 = new Krypton.Toolkit.KryptonGroupBox();
             this.kchkMessageBoxOptionsRTLReading = new Krypton.Toolkit.KryptonCheckBox();
             this.kchkMessageBoxOptionsRightAlign = new Krypton.Toolkit.KryptonCheckBox();
@@ -80,6 +86,10 @@
             this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox5.Panel)).BeginInit();
+            this.kryptonGroupBox5.Panel.SuspendLayout();
+            this.kryptonGroupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox8.Panel)).BeginInit();
             this.kryptonGroupBox8.Panel.SuspendLayout();
@@ -112,10 +122,11 @@
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(this.kryptonGroupBox5);
             this.kryptonPanel1.Controls.Add(this.kryptonGroupBox8);
             this.kryptonPanel1.Controls.Add(this.kryptonGroupBox7);
             this.kryptonPanel1.Controls.Add(this.kryptonGroupBox6);
-            this.kryptonPanel1.Controls.Add(this.kryptonButton1);
+            this.kryptonPanel1.Controls.Add(this.kbtnShow);
             this.kryptonPanel1.Controls.Add(this.kryptonGroupBox4);
             this.kryptonPanel1.Controls.Add(this.kryptonGroupBox3);
             this.kryptonPanel1.Controls.Add(this.kryptonGroupBox2);
@@ -127,8 +138,74 @@
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel1.Name = "kryptonPanel1";
-            this.kryptonPanel1.Size = new System.Drawing.Size(1201, 534);
+            this.kryptonPanel1.Size = new System.Drawing.Size(1570, 534);
             this.kryptonPanel1.TabIndex = 0;
+            // 
+            // kryptonGroupBox5
+            // 
+            this.kryptonGroupBox5.Location = new System.Drawing.Point(455, 326);
+            this.kryptonGroupBox5.Name = "kryptonGroupBox5";
+            // 
+            // kryptonGroupBox5.Panel
+            // 
+            this.kryptonGroupBox5.Panel.Controls.Add(this.kryptonColorButton5);
+            this.kryptonGroupBox5.Panel.Controls.Add(this.kryptonColorButton4);
+            this.kryptonGroupBox5.Panel.Controls.Add(this.kryptonColorButton3);
+            this.kryptonGroupBox5.Panel.Controls.Add(this.kryptonColorButton2);
+            this.kryptonGroupBox5.Panel.Controls.Add(this.kryptonColorButton1);
+            this.kryptonGroupBox5.Size = new System.Drawing.Size(363, 168);
+            this.kryptonGroupBox5.TabIndex = 18;
+            this.kryptonGroupBox5.Values.Heading = "Text Colours";
+            // 
+            // kryptonColorButton5
+            // 
+            this.kryptonColorButton5.Location = new System.Drawing.Point(10, 101);
+            this.kryptonColorButton5.Name = "kryptonColorButton5";
+            this.kryptonColorButton5.Size = new System.Drawing.Size(160, 25);
+            this.kryptonColorButton5.Splitter = false;
+            this.kryptonColorButton5.TabIndex = 4;
+            this.kryptonColorButton5.Values.Image = ((System.Drawing.Image)(resources.GetObject("kryptonColorButton5.Values.Image")));
+            this.kryptonColorButton5.Values.Text = "Button &4 Text Colour";
+            // 
+            // kryptonColorButton4
+            // 
+            this.kryptonColorButton4.Location = new System.Drawing.Point(174, 54);
+            this.kryptonColorButton4.Name = "kryptonColorButton4";
+            this.kryptonColorButton4.Size = new System.Drawing.Size(168, 25);
+            this.kryptonColorButton4.Splitter = false;
+            this.kryptonColorButton4.TabIndex = 3;
+            this.kryptonColorButton4.Values.Image = ((System.Drawing.Image)(resources.GetObject("kryptonColorButton4.Values.Image")));
+            this.kryptonColorButton4.Values.Text = "Button &3 Text Colour";
+            // 
+            // kryptonColorButton3
+            // 
+            this.kryptonColorButton3.Location = new System.Drawing.Point(10, 54);
+            this.kryptonColorButton3.Name = "kryptonColorButton3";
+            this.kryptonColorButton3.Size = new System.Drawing.Size(160, 25);
+            this.kryptonColorButton3.Splitter = false;
+            this.kryptonColorButton3.TabIndex = 2;
+            this.kryptonColorButton3.Values.Image = ((System.Drawing.Image)(resources.GetObject("kryptonColorButton3.Values.Image")));
+            this.kryptonColorButton3.Values.Text = "Button &2 Text Colour";
+            // 
+            // kryptonColorButton2
+            // 
+            this.kryptonColorButton2.Location = new System.Drawing.Point(161, 7);
+            this.kryptonColorButton2.Name = "kryptonColorButton2";
+            this.kryptonColorButton2.Size = new System.Drawing.Size(182, 25);
+            this.kryptonColorButton2.Splitter = false;
+            this.kryptonColorButton2.TabIndex = 1;
+            this.kryptonColorButton2.Values.Image = ((System.Drawing.Image)(resources.GetObject("kryptonColorButton2.Values.Image")));
+            this.kryptonColorButton2.Values.Text = "Button &1 Text Colour";
+            // 
+            // kryptonColorButton1
+            // 
+            this.kryptonColorButton1.Location = new System.Drawing.Point(10, 7);
+            this.kryptonColorButton1.Name = "kryptonColorButton1";
+            this.kryptonColorButton1.Size = new System.Drawing.Size(145, 25);
+            this.kryptonColorButton1.Splitter = false;
+            this.kryptonColorButton1.TabIndex = 0;
+            this.kryptonColorButton1.Values.Image = ((System.Drawing.Image)(resources.GetObject("kryptonColorButton1.Values.Image")));
+            this.kryptonColorButton1.Values.Text = "&Message Colour";
             // 
             // kryptonGroupBox8
             // 
@@ -166,7 +243,7 @@
             // 
             // kryptonGroupBox7
             // 
-            this.kryptonGroupBox7.Location = new System.Drawing.Point(824, 178);
+            this.kryptonGroupBox7.Location = new System.Drawing.Point(1195, 13);
             this.kryptonGroupBox7.Name = "kryptonGroupBox7";
             // 
             // kryptonGroupBox7.Panel
@@ -240,7 +317,7 @@
             // 
             // kryptonGroupBox6
             // 
-            this.kryptonGroupBox6.Location = new System.Drawing.Point(824, 13);
+            this.kryptonGroupBox6.Location = new System.Drawing.Point(824, 183);
             this.kryptonGroupBox6.Name = "kryptonGroupBox6";
             // 
             // kryptonGroupBox6.Panel
@@ -288,19 +365,20 @@
             this.kcmbShowHelpButton.TabIndex = 8;
             this.kcmbShowHelpButton.Values.Text = "Show Help button";
             // 
-            // kryptonButton1
+            // kbtnShow
             // 
-            this.kryptonButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.kryptonButton1.CornerRoundingRadius = -1F;
-            this.kryptonButton1.Location = new System.Drawing.Point(1099, 497);
-            this.kryptonButton1.Name = "kryptonButton1";
-            this.kryptonButton1.Size = new System.Drawing.Size(90, 25);
-            this.kryptonButton1.TabIndex = 8;
-            this.kryptonButton1.Values.Text = "S&how";
+            this.kbtnShow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.kbtnShow.CornerRoundingRadius = -1F;
+            this.kbtnShow.Location = new System.Drawing.Point(1468, 497);
+            this.kbtnShow.Name = "kbtnShow";
+            this.kbtnShow.Size = new System.Drawing.Size(90, 25);
+            this.kbtnShow.TabIndex = 8;
+            this.kbtnShow.Values.Text = "S&how";
+            this.kbtnShow.Click += new System.EventHandler(this.kbtnShow_Click);
             // 
             // kryptonGroupBox4
             // 
-            this.kryptonGroupBox4.Location = new System.Drawing.Point(454, 325);
+            this.kryptonGroupBox4.Location = new System.Drawing.Point(824, 13);
             this.kryptonGroupBox4.Name = "kryptonGroupBox4";
             // 
             // kryptonGroupBox4.Panel
@@ -426,11 +504,13 @@
             this.kbtnBrowseForCustomImagePath.AutoSize = true;
             this.kbtnBrowseForCustomImagePath.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.kbtnBrowseForCustomImagePath.CornerRoundingRadius = -1F;
+            this.kbtnBrowseForCustomImagePath.Enabled = false;
             this.kbtnBrowseForCustomImagePath.Location = new System.Drawing.Point(327, 96);
             this.kbtnBrowseForCustomImagePath.Name = "kbtnBrowseForCustomImagePath";
             this.kbtnBrowseForCustomImagePath.Size = new System.Drawing.Size(17, 22);
             this.kbtnBrowseForCustomImagePath.TabIndex = 14;
             this.kbtnBrowseForCustomImagePath.Values.Text = "...";
+            this.kbtnBrowseForCustomImagePath.Click += new System.EventHandler(this.kbtnBrowseForCustomImagePath_Click);
             // 
             // ktxtCustomImagePath
             // 
@@ -463,6 +543,7 @@
             // 
             // radioButtonNone
             // 
+            this.radioButtonNone.Checked = true;
             this.radioButtonNone.Location = new System.Drawing.Point(14, 9);
             this.radioButtonNone.Name = "radioButtonNone";
             this.radioButtonNone.Size = new System.Drawing.Size(52, 20);
@@ -493,7 +574,6 @@
             // 
             // radioButtonWarning
             // 
-            this.radioButtonWarning.Checked = true;
             this.radioButtonWarning.Location = new System.Drawing.Point(84, 36);
             this.radioButtonWarning.Name = "radioButtonWarning";
             this.radioButtonWarning.Size = new System.Drawing.Size(69, 20);
@@ -541,6 +621,7 @@
             // 
             // radioButtonOK
             // 
+            this.radioButtonOK.Checked = true;
             this.radioButtonOK.Location = new System.Drawing.Point(14, 13);
             this.radioButtonOK.Name = "radioButtonOK";
             this.radioButtonOK.Size = new System.Drawing.Size(39, 20);
@@ -581,7 +662,6 @@
             // 
             // radioButtonOKCancel
             // 
-            this.radioButtonOKCancel.Checked = true;
             this.radioButtonOKCancel.Location = new System.Drawing.Point(14, 50);
             this.radioButtonOKCancel.Name = "radioButtonOKCancel";
             this.radioButtonOKCancel.Size = new System.Drawing.Size(78, 20);
@@ -629,7 +709,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1201, 534);
+            this.ClientSize = new System.Drawing.Size(1570, 534);
             this.Controls.Add(this.kryptonPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -640,6 +720,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox5.Panel)).EndInit();
+            this.kryptonGroupBox5.Panel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox5)).EndInit();
+            this.kryptonGroupBox5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox8.Panel)).EndInit();
             this.kryptonGroupBox8.Panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox8)).EndInit();
@@ -688,7 +772,7 @@
         private Krypton.Toolkit.KryptonLabel kryptonLabel2;
         private Krypton.Toolkit.KryptonLabel kryptonLabel1;
         private Krypton.Toolkit.KryptonGroupBox kryptonGroupBox3;
-        private Krypton.Toolkit.KryptonButton kryptonButton1;
+        private Krypton.Toolkit.KryptonButton kbtnShow;
         private Krypton.Toolkit.KryptonGroupBox kryptonGroupBox4;
         private Krypton.Toolkit.KryptonGroupBox kryptonGroupBox8;
         private Krypton.Toolkit.KryptonButton kbtnDefineFont;
@@ -729,5 +813,11 @@
         private Krypton.Toolkit.KryptonButton kbtnBrowseForCustomImagePath;
         private Krypton.Toolkit.KryptonTextBox ktxtCustomImagePath;
         private Krypton.Toolkit.KryptonRadioButton krbCustom;
+        private Krypton.Toolkit.KryptonGroupBox kryptonGroupBox5;
+        private Krypton.Toolkit.KryptonColorButton kryptonColorButton5;
+        private Krypton.Toolkit.KryptonColorButton kryptonColorButton4;
+        private Krypton.Toolkit.KryptonColorButton kryptonColorButton3;
+        private Krypton.Toolkit.KryptonColorButton kryptonColorButton2;
+        private Krypton.Toolkit.KryptonColorButton kryptonColorButton1;
     }
 }

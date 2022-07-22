@@ -11,15 +11,21 @@ using System.Windows.Forms;
 using Krypton.Toolkit;
 using Krypton.Toolkit.Suite.Extended.Messagebox;
 
+using Microsoft.WindowsAPICodePack.Dialogs;
+
 namespace TestApp
 {
     public partial class KryptonMessageBoxExtendedExample : KryptonForm
     {
         #region Instance Fields
 
+        private Color _messageTextColour;
+
+        private Color[] _buttonTextColours = new Color[4];
+
         private ExtendedMessageBoxDefaultButton _defaultButton = ExtendedMessageBoxDefaultButton.Button4;
 
-        private MessageBoxButtons _messageBoxButtons = MessageBoxButtons.OK;
+        private ExtendedMessageBoxButtons _messageBoxButtons = ExtendedMessageBoxButtons.OK;
 
         private MessageBoxOptions _options = 0;
 
@@ -42,12 +48,15 @@ namespace TestApp
         {
             KryptonFontDialog dlg = new KryptonFontDialog()
             {
-                Font = new Font("Segoe UI", 8.25F)
+                Font = new Font("Segoe UI", 8.25F),
+                ShowColor = false
             };
 
             if (dlg.ShowDialog() == DialogResult.OK)
             {
                 _customFont = dlg.Font;
+
+                kwlDefinedFont.Text = $"Selected font: {dlg.Font}";
             }
         }
 
@@ -89,33 +98,35 @@ namespace TestApp
             {
                 _icon = ExtendedKryptonMessageBoxIcon.WINDOWSLOGO;
             }
+
+            EnableCustomImageUI(krbCustom.Checked);
         }
 
         private void buttons_CheckedChanged(object sender, EventArgs e)
         {
             if (radioButtonOK.Checked)
             {
-                _messageBoxButtons = MessageBoxButtons.OK;
+                _messageBoxButtons = ExtendedMessageBoxButtons.OK;
             }
             else if (radioButtonOKCancel.Checked)
             {
-                _messageBoxButtons = MessageBoxButtons.OKCancel;
+                _messageBoxButtons = ExtendedMessageBoxButtons.OKCANCEL;
             }
             else if (radioButtonRetryCancel.Checked)
             {
-                _messageBoxButtons = MessageBoxButtons.RetryCancel;
+                _messageBoxButtons = ExtendedMessageBoxButtons.RETRYCANCEL;
             }
             else if (radioButtonAbortRetryIgnore.Checked)
             {
-                _messageBoxButtons = MessageBoxButtons.AbortRetryIgnore;
+                _messageBoxButtons = ExtendedMessageBoxButtons.ABORTRETRYIGNORE;
             }
             else if (radioButtonYesNo.Checked)
             {
-                _messageBoxButtons = MessageBoxButtons.YesNo;
+                _messageBoxButtons = ExtendedMessageBoxButtons.YESNO;
             }
             else if (radioButtonYesNoCancel.Checked)
             {
-                _messageBoxButtons = MessageBoxButtons.YesNoCancel;
+                _messageBoxButtons = ExtendedMessageBoxButtons.YESNOCANCEL;
             }
         }
 
@@ -173,6 +184,35 @@ namespace TestApp
             {
                 _options &= ~MessageBoxOptions.ServiceNotification;
             }
+        }
+
+        private void EnableCustomImageUI(bool enabled)
+        {
+            ktxtCustomImagePath.Enabled = enabled;
+
+            kbtnBrowseForCustomImagePath.Enabled = enabled;
+        }
+
+        private void kbtnBrowseForCustomImagePath_Click(object sender, EventArgs e)
+        {
+            CommonOpenFileDialog cofd = new CommonOpenFileDialog();
+
+            cofd.Filters.Add(CommonFileDialogStandardFilters.PictureFiles);
+
+            if (cofd.ShowDialog() == CommonFileDialogResult.Ok)
+            {
+                ktxtCustomImagePath.Text = Path.GetFullPath(cofd.FileName);
+            }
+        }
+
+        private void kbtnShow_Click(object sender, EventArgs e)
+        {
+            KryptonMessageBoxExtended.Show(this, ktxtMessageText.Text, ktxtCaption.Text,
+                                           _messageBoxButtons, _icon, _defaultButton,
+                                           _options, "", _helpNavigator, null, 
+                                           false, false, _customFont,
+                                           _customImage, false, _messageTextColour, 
+                                           _buttonTextColours);
         }
     }
 }

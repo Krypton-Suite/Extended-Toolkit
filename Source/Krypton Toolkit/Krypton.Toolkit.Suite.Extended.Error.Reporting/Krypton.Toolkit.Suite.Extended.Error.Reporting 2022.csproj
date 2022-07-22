@@ -109,9 +109,9 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Canary" Version="65.22.5.123-beta" />
+				<PackageReference Include="Krypton.Toolkit.Canary" Version="70.22.7.203-beta" />
 
-				<PackageReference Include="Krypton.Navigator.Canary" Version="65.22.5.123-beta" />
+				<PackageReference Include="Krypton.Navigator.Canary" Version="70.22.7.203-beta" />
 			</ItemGroup>
 		</When>
 
