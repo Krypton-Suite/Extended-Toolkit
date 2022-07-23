@@ -48,7 +48,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
                 }
                 catch (Win32Exception e)
                 {
-                    ExceptionCapture.CaptureException(e);
+                    KryptonMessageBox.Show($"Error: { e.Message }", "An Error has Occurred", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
                 return;

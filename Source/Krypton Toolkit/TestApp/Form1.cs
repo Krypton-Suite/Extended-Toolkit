@@ -39,23 +39,9 @@ namespace TestApp
 
         private void kryptonButton6_Click(object sender, EventArgs e)
         {
-            ControlItems controlItems = new ControlItems();
+            ControlExamples controlExamples = new ControlExamples();
 
-            controlItems.Show();
-        }
-
-        private void kryptonButton7_Click(object sender, EventArgs e)
-        {
-            FloatableToolStripsMenu floatableToolStrips = new FloatableToolStripsMenu();
-
-            floatableToolStrips.Show();
-        }
-
-        private void kryptonButton8_Click(object sender, EventArgs e)
-        {
-            KryptonMessageBoxExtendedExample kryptonMessageBoxExtendedExample = new KryptonMessageBoxExtendedExample();
-
-            kryptonMessageBoxExtendedExample.Show();
+            controlExamples.Show();
         }
     }
 }

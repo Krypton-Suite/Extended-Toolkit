@@ -15,15 +15,16 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
     /// <remarks>
     /// If used on Windows Vista or higher, the button will be a CommandLink: Basically the same functionality as a Button but looks different.
     /// </remarks>
-    [DesignerCategory("Code")]
-    [DisplayName("Krypton Command Link")]
-    [Description("A Krypton Command Link Button.")]
-    [ToolboxItem(true)]
-    [ToolboxBitmap(typeof(KryptonButton))]
+    [DesignerCategory("Code"), DisplayName("Krypton Command Link"),
+     Description("A Krypton Command Link Button."), ToolboxItem(true),
+     ToolboxBitmap(typeof(KryptonButton))]
     public class KryptonCommandLinkVersion2 : KryptonButton
     {
         #region Variables
-        private bool _showUACShield = false;
+        private bool _useAsUACElevatedButton;
+        private Image _originalImage;
+        private Size _uacShieldSize;
+        private string _processToElevate;
         #endregion
 
         #region Properties
@@ -31,15 +32,37 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         /// Gets or sets the shield icon visibility of the command link.
         /// </summary>
         [Category("Command Link"), Description("Gets or sets the shield icon visibility of the command link."), DefaultValue(false)]
-        public bool ShowUACShield
+        public bool UseAsUACElevatedButton
         {
-            get => _showUACShield;
+            get => _useAsUACElevatedButton;
 
             set
             {
-                _showUACShield = value;
+                _useAsUACElevatedButton = value;
 
-                SendMessage(new HandleRef(this, this.Handle), BCM_SETSHIELD, IntPtr.Zero, _showUACShield);
+                // Note: Store the original icon
+
+                Values.Image = SystemIcons.Shield.ToBitmap();
+            }
+        }
+
+        public Image OriginalImage { get => _originalImage; private set => _originalImage = value; }
+
+        /// <summary>Gets or sets the size of the UAC shield.</summary>
+        /// <value>The size of the UAC shield.</value>
+        [Category("Command Link"), Description("Gets or sets the shield icon size of the command link."), DefaultValue(typeof(Size), "15, 15")]
+        public Size UACShieldSize
+        {
+            get => _uacShieldSize;
+
+            set
+            {
+                _uacShieldSize = value;
+
+                if (_useAsUACElevatedButton)
+                {
+                    Values.Image = UACUtilityMethods.ResizeImage(SystemIcons.Shield.ToBitmap(), _uacShieldSize.Width, _uacShieldSize.Height);
+                }
             }
         }
 
@@ -54,34 +77,25 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             set => SetNoteText(value);
         }
 
-        public override string Text
-        {
-            get => base.Text;
-            set => base.Text = value;
-        }
+        /// <summary>Gets or sets the process path to elevate.</summary>
+        /// <value>The process to elevate.</value>
+        [Category("Command Link"), Description("Gets or sets the process path to elevate."), DefaultValue("")]
+        public string ProcessToElevate { get => _processToElevate; set => _processToElevate = value; }
+        #endregion
 
-        /// <summary>
-        /// Gets access to the button content.
-        /// </summary>
-        [Category("CommandLink")]
-        [Description("CommandLink Button Text")]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
-        public CommandLinkTextValuesVersion2 CommandLinkTextValues { get; }
+        #region Custom Events
+        /// <summary></summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="ExecuteProcessAsAdministratorEventArgs"/> instance containing the event data.</param>
+        public delegate void ExecuteProcessAsAdministratorEventHandler(object sender, ExecuteProcessAsAdministratorEventArgs e);
 
-        /// <summary>
-        /// Gets access to the button content.
-        /// </summary>
-        [Category("CommandLink")]
-        [Description("CommandLink Button Image")]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
-        public ImageValue CommandLinkImageValue { get; }
+        /// <summary>The execute process as administrator</summary>
+        public event ExecuteProcessAsAdministratorEventHandler ExecuteProcessAsAdministrator;
 
-        private bool ShouldSerializeValues()
-        {
-            return false;
-        }
-
-
+        /// <summary>Executes the process as an administrator.</summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="ExecuteProcessAsAdministratorEventArgs" /> instance containing the event data.</param>
+        protected virtual void OnExecuteProcessAsAdministrator(object sender, ExecuteProcessAsAdministratorEventArgs e) => ExecuteProcessAsAdministrator?.Invoke(sender, e);
         #endregion
 
         #region WIN32 Calls
@@ -125,6 +139,33 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 
                 return createParams;
             }
+        }
+
+        protected override void OnClick(EventArgs e)
+        {
+            if (_useAsUACElevatedButton)
+            {
+                if (_processToElevate != null)
+                {
+                    try
+                    {
+                        ExecuteProcessAsAdministratorEventArgs executeProcessAsAdministrator = new ExecuteProcessAsAdministratorEventArgs(_processToElevate);
+
+                        executeProcessAsAdministrator.ElevateProcessWithAdministrativeRights(_processToElevate);
+                    }
+                    catch (Exception exc)
+                    {
+                        ExceptionCapture.CaptureException(exc);
+                    }
+                }
+            }
+
+            base.OnClick(e);
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
         }
         #endregion
 

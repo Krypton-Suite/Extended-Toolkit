@@ -9,18 +9,16 @@ namespace TestApp
             InitializeComponent();
         }
 
-        private void CircularProgressBarExample_Load(object sender, EventArgs e)
+        private void kryptonTrackBar1_ValueChanged(object sender, EventArgs e)
         {
-            cpbExample.Text = "0%";
+            circularProgressBar1.Value = (int)kryptonTrackBar1.Value;
+
+            circularProgressBar1.Text = $"{kryptonTrackBar1.Value}%";
         }
 
-        private void ktbProgressValue_ValueChanged(object sender, EventArgs e)
+        private void kryptonCheckBox1_CheckedChanged(object sender, EventArgs e)
         {
-            cpbExample.Value = ktbProgressValue.Value;
-
-            cpbExample.Text = $"{cpbExample.Value}%";
+            circularProgressBar1.UseColourTrio = kryptonCheckBox1.Checked;
         }
-
-        private void kcbUseColourTrio_CheckedChanged(object sender, EventArgs e) => cpbExample.UseColourTrio = kcbUseColourTrio.Checked;
     }
 }

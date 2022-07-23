@@ -312,7 +312,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             if (Modified)
             {
-                DialogResult result = KryptonMessageBox.Show("There are items that are not currently saved.\n\nSave these items now?", "Unsaved Data", MessageBoxButtons.YesNo, KryptonMessageBoxIcon.QUESTION);
+                DialogResult result = KryptonMessageBox.Show("There are items that are not currently saved.\n\nSave these items now?", "Unsaved Data", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (result == DialogResult.Yes)
                 {

@@ -123,6 +123,12 @@
   <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>133, 17</value>
   </metadata>
+  <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>248, 17</value>
+  </metadata>
+  <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>133, 17</value>
+  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="newToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -236,29 +242,6 @@
         v05/54tbqvzBifWNHUvPOwLC4/CXwrv2HsB3+w6EwosJOB5ESeElfGpayGD1AmwlArHSm+W2PR1clToo
         MrbT0mFTVtlbN6xFuJQar3wQz5Q9VksD+7XyPctrJdx4p5s605M5gKz8lJPSDwtGFbKboJ1blAN52vKb
         PdXm80/AfDokTVu+8DfPXv9XCcIPTvjvLQ8YoakAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="kryptonColourButtonToolStripMenuItem2.KryptonColourButtonControl.Values.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EQAACxEBf2RfkQAAAAd0SU1FB9gBBwMpBNNjwEAAAADzSURBVDhPnZGhCoUwFIYHgiD4AlbB5AuYfAGT
-        SRBMZsFkMhlMJkEQBIPVahJsstc6lzPYcG4X7m74wvl3zrcdRiilX1nXFVzXheu6QHeOaENOmqZACIG6
-        rs0FeKvv+0zgeR7c962VKAGnaRqoqgriOGaSvu/NBGEYwnEcMI4jE2Ct61MCZFkWiKJIDARBwCTzPCsS
-        qeAkSQJd14nmtm2ZANd59iFSgZznCbZts4E3lmXBvu+SRBpG8MvyPFduKoqCSbIs+y4YhgEcx4FpmhTB
-        tm3iFc/1RAPfk1OWpWh6nyGYSYJ/0YYmaEMTtKEJ2vB3KPkALW4yqONYazYAAAAASUVORK5CYII=
-</value>
-  </data>
-  <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>248, 17</value>
-  </metadata>
-  <data name="kryptonColourButtonToolStripMenuItem1.KryptonColourButtonControl.Values.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EQAACxEBf2RfkQAAAAd0SU1FB9gBBwMpBNNjwEAAAADzSURBVDhPnZGhCoUwFIYHgiD4AlbB5AuYfAGT
-        SRBMZsFkMhlMJkEQBIPVahJsstc6lzPYcG4X7m74wvl3zrcdRiilX1nXFVzXheu6QHeOaENOmqZACIG6
-        rs0FeKvv+0zgeR7c962VKAGnaRqoqgriOGaSvu/NBGEYwnEcMI4jE2Ct61MCZFkWiKJIDARBwCTzPCsS
-        qeAkSQJd14nmtm2ZANd59iFSgZznCbZts4E3lmXBvu+SRBpG8MvyPFduKoqCSbIs+y4YhgEcx4FpmhTB
-        tm3iFc/1RAPfk1OWpWh6nyGYSYJ/0YYmaEMTtKEJ2vB3KPkALW4yqONYazYAAAAASUVORK5CYII=
 </value>
   </data>
 </root>

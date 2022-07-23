@@ -334,7 +334,7 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
             {
                 if (new FileInfo(FilePath).Length == 0)
                 {
-                    KryptonMessageBox.Show("The file specified is a zero-byte file. Please try again.", "Zero-Byte File Detected", MessageBoxButtons.OK, KryptonMessageBoxIcon.ERROR);
+                    KryptonMessageBox.Show("The file specified is a zero-byte file. Please try again.", "Zero-Byte File Detected", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
@@ -352,17 +352,17 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
         /// <summary>
         /// Determines whether [is file locked] [the specified file].
         /// </summary>
-        /// <param name="file">The file.</param>
+        /// <param name="File">The file.</param>
         /// <returns>
         ///   <c>true</c> if [is file locked] [the specified file]; otherwise, <c>false</c>.
         /// </returns>
-        protected virtual bool IsFileLocked(FileInfo file)
+        protected virtual bool IsFileLocked(FileInfo File)
         {
             FileStream fs = null;
 
             try
             {
-                fs = file.Open(FileMode.Open, FileAccess.Read, FileShare.None);
+                fs = File.Open(FileMode.Open, FileAccess.Read, FileShare.None);
             }
             catch (IOException)
             {

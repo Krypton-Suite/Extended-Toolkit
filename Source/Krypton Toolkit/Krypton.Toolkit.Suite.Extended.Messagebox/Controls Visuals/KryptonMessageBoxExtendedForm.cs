@@ -16,10 +16,10 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         #endregion
 
         #region Instance Fields
-
-        private readonly bool _showHelpButton;
         private readonly string _text;
         private readonly string _caption;
+        
+        private readonly MessageBoxDefaultButton _defaultButton;
         private readonly MessageBoxOptions _options; // https://github.com/Krypton-Suite/Standard-Toolkit/issues/313
         // If help information provided or we are not a service/default desktop application then grab an owner for showing the message box
         private readonly IWin32Window _showOwner;
@@ -28,23 +28,13 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         #endregion
 
         #region Extended Fields
-
-        private readonly Color _textColour;
-
-        private readonly Color[] _buttonTextColours = new Color[4];
-
         private readonly Font _messageBoxTypeface;
 
         private readonly ExtendedMessageBoxButtons _buttons;
 
         private readonly ExtendedKryptonMessageBoxIcon _kryptonMessageBoxIcon;
 
-        private readonly ExtendedMessageBoxDefaultButton _defaultButton;
-
         private readonly Image _customKryptonMessageBoxIcon;
-
-        private readonly IPalette _palette;
-
         #endregion
 
         #region Identity
@@ -59,13 +49,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         internal KryptonMessageBoxExtendedForm(IWin32Window showOwner, string text, string caption,
                                                ExtendedMessageBoxButtons buttons,
                                                ExtendedKryptonMessageBoxIcon icon,
-                                               ExtendedMessageBoxDefaultButton defaultButton,
+                                               MessageBoxDefaultButton defaultButton,
                                                MessageBoxOptions options,
                                                HelpInfo helpInfo, bool? showCtrlCopy,
                                                Font messageBoxTypeface, 
-                                               Image customKryptonMessageBoxIcon,
-                                               bool? showHelpButton, Color? textColour,
-                                               Color[] buttonTextColours)
+                                               Image customKryptonMessageBoxIcon)
         {
             // Store incoming values
             _text = text;
@@ -76,17 +64,10 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             _options = options;
             _helpInfo = helpInfo;
             _showOwner = showOwner;
-            _showHelpButton = showHelpButton ?? false;
 
             // Extended values
-            _textColour = textColour ?? _palette.ColorTable.StatusStripText;
             _messageBoxTypeface = messageBoxTypeface ?? new Font("Segoe UI", 8.25F);
-            _customKryptonMessageBoxIcon = customKryptonMessageBoxIcon ?? null;
-            _buttonTextColours = buttonTextColours ?? new[]
-            {
-                _palette.ColorTable.StatusStripText, _palette.ColorTable.StatusStripText,
-                _palette.ColorTable.StatusStripText, _palette.ColorTable.StatusStripText
-            };
+            _customKryptonMessageBoxIcon = customKryptonMessageBoxIcon;
 
             // Create the form contents
             InitializeComponent();
@@ -112,8 +93,6 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             Text = string.IsNullOrEmpty(_caption) ? string.Empty : _caption.Split(Environment.NewLine.ToCharArray())[0];
 
             _messageText.StateCommon.Font = _messageBoxTypeface;
-
-            _messageText.StateCommon.TextColor = _textColour;
 
             _messageText.Text = _text;
             _messageText.RightToLeft = _options.HasFlag(MessageBoxOptions.RightAlign)
@@ -222,8 +201,6 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                     _button1.Text = KryptonManager.Strings.OK;
                     _button1.DialogResult = DialogResult.OK;
                     _button1.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
-                    _button1.StateCommon.Content.ShortText.Color1 = _buttonTextColours[0];
-                    _button1.StateCommon.Content.ShortText.Color2 = _buttonTextColours[0];
                     _button1.Visible = true;
                     _button1.Enabled = true;
                     break;
@@ -234,10 +211,6 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                     _button2.DialogResult = DialogResult.Cancel;
                     _button1.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
                     _button2.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
-                    _button1.StateCommon.Content.ShortText.Color1 = _buttonTextColours[0];
-                    _button1.StateCommon.Content.ShortText.Color2 = _buttonTextColours[0];
-                    _button2.StateCommon.Content.ShortText.Color1 = _buttonTextColours[1];
-                    _button2.StateCommon.Content.ShortText.Color2 = _buttonTextColours[1];
                     _button1.Visible = true;
                     _button1.Enabled = true;
                     _button2.Visible = true;
@@ -250,10 +223,6 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                     _button2.DialogResult = DialogResult.No;
                     _button1.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
                     _button2.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
-                    _button1.StateCommon.Content.ShortText.Color1 = _buttonTextColours[0];
-                    _button1.StateCommon.Content.ShortText.Color2 = _buttonTextColours[0];
-                    _button2.StateCommon.Content.ShortText.Color1 = _buttonTextColours[1];
-                    _button2.StateCommon.Content.ShortText.Color2 = _buttonTextColours[1];
                     _button1.Visible = true;
                     _button1.Enabled = true;
                     _button2.Visible = true;
@@ -270,12 +239,6 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                     _button1.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
                     _button2.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
                     _button3.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
-                    _button1.StateCommon.Content.ShortText.Color1 = _buttonTextColours[0];
-                    _button1.StateCommon.Content.ShortText.Color2 = _buttonTextColours[0];
-                    _button2.StateCommon.Content.ShortText.Color1 = _buttonTextColours[1];
-                    _button2.StateCommon.Content.ShortText.Color2 = _buttonTextColours[1];
-                    _button3.StateCommon.Content.ShortText.Color1 = _buttonTextColours[2];
-                    _button3.StateCommon.Content.ShortText.Color2 = _buttonTextColours[2];
                     _button1.Visible = true;
                     _button1.Enabled = true;
                     _button2.Visible = true;
@@ -290,10 +253,6 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                     _button2.DialogResult = DialogResult.Cancel;
                     _button1.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
                     _button2.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
-                    _button1.StateCommon.Content.ShortText.Color1 = _buttonTextColours[0];
-                    _button1.StateCommon.Content.ShortText.Color2 = _buttonTextColours[0];
-                    _button2.StateCommon.Content.ShortText.Color1 = _buttonTextColours[1];
-                    _button2.StateCommon.Content.ShortText.Color2 = _buttonTextColours[1];
                     _button1.Visible = true;
                     _button1.Enabled = true;
                     _button2.Visible = true;
@@ -309,12 +268,6 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                     _button1.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
                     _button2.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
                     _button3.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
-                    _button1.StateCommon.Content.ShortText.Color1 = _buttonTextColours[0];
-                    _button1.StateCommon.Content.ShortText.Color2 = _buttonTextColours[0];
-                    _button2.StateCommon.Content.ShortText.Color1 = _buttonTextColours[1];
-                    _button2.StateCommon.Content.ShortText.Color2 = _buttonTextColours[1];
-                    _button3.StateCommon.Content.ShortText.Color1 = _buttonTextColours[2];
-                    _button3.StateCommon.Content.ShortText.Color2 = _buttonTextColours[2];
                     _button1.Visible = true;
                     _button1.Enabled = true;
                     _button2.Visible = true;
@@ -334,12 +287,6 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                     _button1.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
                     _button2.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
                     _button3.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
-                    _button1.StateCommon.Content.ShortText.Color1 = _buttonTextColours[0];
-                    _button1.StateCommon.Content.ShortText.Color2 = _buttonTextColours[0];
-                    _button2.StateCommon.Content.ShortText.Color1 = _buttonTextColours[1];
-                    _button2.StateCommon.Content.ShortText.Color2 = _buttonTextColours[1];
-                    _button3.StateCommon.Content.ShortText.Color1 = _buttonTextColours[2];
-                    _button3.StateCommon.Content.ShortText.Color2 = _buttonTextColours[2];
                     _button1.Visible = true;
                     _button1.Enabled = true;
                     _button2.Visible = true;
@@ -364,34 +311,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         {
             switch (_defaultButton)
             {
-                case ExtendedMessageBoxDefaultButton.Button1:
-                    _button1.Focus();
+                case MessageBoxDefaultButton.Button2:
+                    _button2.Select();
                     break;
-                case ExtendedMessageBoxDefaultButton.Button2:
-                    _button2.Focus();
-                    break;
-                case ExtendedMessageBoxDefaultButton.Button3:
-                    _button3.Focus();
-                    break;
-                case ExtendedMessageBoxDefaultButton.Button4:
-                    if (_showHelpButton)
-                    {
-                        _button4.Focus();
-                    }
-                    else
-                    {
-                        _button1.Focus();
-                    }
-                    break;
-                default:
-                    if (_showHelpButton)
-                    {
-                        _button4.Focus();
-                    }
-                    else
-                    {
-                        _button1.Focus();
-                    }
+                case MessageBoxDefaultButton.Button3:
+                    _button3.Select();
                     break;
             }
         }

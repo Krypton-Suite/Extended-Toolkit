@@ -37,6 +37,7 @@
             this.kryptonSplitButton1 = new Krypton.Toolkit.Suite.Extended.Buttons.KryptonSplitButton();
             this.kryptonokDialogButton1 = new Krypton.Toolkit.Suite.Extended.Buttons.KryptonOKDialogButton();
             this.kryptonnoDialogButton1 = new Krypton.Toolkit.Suite.Extended.Buttons.KryptonNODialogButton();
+            this.kryptonCommandLinkVersion21 = new Krypton.Toolkit.Suite.Extended.Buttons.KryptonCommandLinkVersion2();
             this.kryptonCommandLinkButton1 = new Krypton.Toolkit.Suite.Extended.Buttons.KryptonCommandLinkButton();
             this.kryptonCancelDialogButton1 = new Krypton.Toolkit.Suite.Extended.Buttons.KryptonCancelDialogButton();
             this.kryptonBrowseButton1 = new Krypton.Toolkit.Suite.Extended.Buttons.KryptonBrowseButton();
@@ -53,6 +54,7 @@
             this.kryptonPanel1.Controls.Add(this.kryptonSplitButton1);
             this.kryptonPanel1.Controls.Add(this.kryptonokDialogButton1);
             this.kryptonPanel1.Controls.Add(this.kryptonnoDialogButton1);
+            this.kryptonPanel1.Controls.Add(this.kryptonCommandLinkVersion21);
             this.kryptonPanel1.Controls.Add(this.kryptonCommandLinkButton1);
             this.kryptonPanel1.Controls.Add(this.kryptonCancelDialogButton1);
             this.kryptonPanel1.Controls.Add(this.kryptonBrowseButton1);
@@ -145,6 +147,18 @@
             this.kryptonnoDialogButton1.TabIndex = 15;
             this.kryptonnoDialogButton1.Values.Text = "&No";
             // 
+            // kryptonCommandLinkVersion21
+            // 
+            this.kryptonCommandLinkVersion21.CornerRoundingRadius = -1F;
+            this.kryptonCommandLinkVersion21.Location = new System.Drawing.Point(230, 152);
+            this.kryptonCommandLinkVersion21.Name = "kryptonCommandLinkVersion21";
+            this.kryptonCommandLinkVersion21.ProcessToElevate = null;
+            this.kryptonCommandLinkVersion21.Size = new System.Drawing.Size(230, 68);
+            this.kryptonCommandLinkVersion21.TabIndex = 14;
+            this.kryptonCommandLinkVersion21.UACShieldSize = new System.Drawing.Size(0, 0);
+            this.kryptonCommandLinkVersion21.Values.Image = ((System.Drawing.Image)(resources.GetObject("kryptonCommandLinkVersion21.Values.Image")));
+            this.kryptonCommandLinkVersion21.Values.Text = "kryptonCommandLinkVersion21";
+            // 
             // kryptonCommandLinkButton1
             // 
             this.kryptonCommandLinkButton1.Location = new System.Drawing.Point(10, 152);
@@ -221,6 +235,7 @@
         private Krypton.Toolkit.Suite.Extended.Buttons.KryptonSplitButton kryptonSplitButton1;
         private Krypton.Toolkit.Suite.Extended.Buttons.KryptonOKDialogButton kryptonokDialogButton1;
         private Krypton.Toolkit.Suite.Extended.Buttons.KryptonNODialogButton kryptonnoDialogButton1;
+        private Krypton.Toolkit.Suite.Extended.Buttons.KryptonCommandLinkVersion2 kryptonCommandLinkVersion21;
         private Krypton.Toolkit.Suite.Extended.Buttons.KryptonCommandLinkButton kryptonCommandLinkButton1;
         private Krypton.Toolkit.Suite.Extended.Buttons.KryptonCancelDialogButton kryptonCancelDialogButton1;
         private Krypton.Toolkit.Suite.Extended.Buttons.KryptonBrowseButton kryptonBrowseButton1;

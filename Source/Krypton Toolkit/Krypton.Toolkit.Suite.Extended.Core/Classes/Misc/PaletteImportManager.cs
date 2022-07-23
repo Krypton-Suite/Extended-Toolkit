@@ -80,7 +80,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
             catch (Exception exc)
             {
-                ExceptionCapture.CaptureException(exc);
+                KryptonMessageBox.Show($"Error: { exc.Message }", "Palette Import Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 _globalStringSettingsManager.SetFeedbackText("Failed to import colours!");
 
@@ -219,7 +219,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
             catch (Exception exc)
             {
-                ExceptionCapture.CaptureException(exc);
+                KryptonMessageBox.Show($"Error: { exc.Message }", "_palette Import Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 globalStringSettingsManager.SetFeedbackText("Failed to import colours!");
 
@@ -303,7 +303,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
             catch (Exception exc)
             {
-                ExceptionCapture.CaptureException(exc);
+                KryptonMessageBox.Show($"Error: { exc.Message }", "_palette Import Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 globalStringSettingsManager.SetFeedbackText("Failed to import colours!");
 

@@ -107,7 +107,7 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
             }
             catch (Exception exc)
             {
-                ExceptionCapture.CaptureException(exc, "Exception Thrown", MessageBoxButtons.OK, KryptonMessageBoxIcon.ERROR, "GlobalMethods", "CheckIfTargetPlatformIsSupported(bool useLegacyVistaSupport = false)");
+                ExceptionCapture.CaptureException(exc, "Exception Thrown", MessageBoxButtons.OK, MessageBoxIcon.Error, "GlobalMethods", "CheckIfTargetPlatformIsSupported(bool useLegacyVistaSupport = false)");
 
                 SetIsTargetPlatformSupported(false);
             }
@@ -134,7 +134,7 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
             }
             catch (Exception exc)
             {
-                ExceptionCapture.CaptureException(exc);
+                KryptonMessageBox.Show("Error: " + exc.Message, "Error Thrown", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 SetIsTargetPlatform64BIT(false);
             }
@@ -150,11 +150,11 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
         {
             try
             {
-                SetIsAssemblies64BIT(Environment.Is64BitProcess);
+
             }
             catch (Exception exc)
             {
-                ExceptionCapture.CaptureException(exc);
+                KryptonMessageBox.Show("Error: " + exc.Message, "Error Thrown", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 SetIsAssemblies64BIT(false);
             }

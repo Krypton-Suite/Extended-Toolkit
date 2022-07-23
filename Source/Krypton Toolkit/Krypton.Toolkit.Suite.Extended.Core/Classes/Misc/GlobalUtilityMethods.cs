@@ -26,11 +26,11 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         {
             if (featureName != null)
             {
-                KryptonMessageBox.Show($"The feature: { featureName } is not implemented or fully functional yet. Please check back again later.", "Incomplete Feature", MessageBoxButtons.OK, KryptonMessageBoxIcon.INFORMATION);
+                KryptonMessageBox.Show($"The feature: { featureName } is not implemented or fully functional yet. Please check back again later.", "Incomplete Feature", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                KryptonMessageBox.Show("This is not implemented or fully functional yet. Please check back again later.", "Incomplete Feature", MessageBoxButtons.OK, KryptonMessageBoxIcon.INFORMATION);
+                KryptonMessageBox.Show("This is not implemented or fully functional yet. Please check back again later.", "Incomplete Feature", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
         #endregion

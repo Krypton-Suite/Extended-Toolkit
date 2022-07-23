@@ -98,11 +98,11 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
                     {
                         if (_globalMethods.GetIsTargetPlatformSupported())
                         {
-                            if (KryptonMessageBox.Show("You are about to clear your recent files list. Do you want to continue?", "Clear Recent Files", MessageBoxButtons.YesNo, KryptonMessageBoxIcon.QUESTION) == DialogResult.Yes)
+                            if (KryptonMessageBox.Show("You are about to clear your recent files list. Do you want to continue?", "Clear Recent Files", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                             {
                                 ClearRecentFiles();
                             }
-                            else if (KryptonMessageBox.Show("You are about to clear your recent files list. Do you want to continue?", "Clear Recent Files", MessageBoxButtons.YesNo, KryptonMessageBoxIcon.QUESTION) == DialogResult.Yes)
+                            else if (KryptonMessageBox.Show("You are about to clear your recent files list. Do you want to continue?", "Clear Recent Files", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                             {
                                 ClearRecentFiles();
                             }

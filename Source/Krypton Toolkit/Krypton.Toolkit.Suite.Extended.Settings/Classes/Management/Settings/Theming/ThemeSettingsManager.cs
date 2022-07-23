@@ -78,7 +78,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         {
             if (usePrompt)
             {
-                DialogResult result = KryptonMessageBox.Show("Do you want to save the current theme settings?", "Save Confirmation", MessageBoxButtons.YesNo, KryptonMessageBoxIcon.QUESTION);
+                DialogResult result = KryptonMessageBox.Show("Do you want to save the current theme settings?", "Save Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (result == DialogResult.Yes)
                 {
@@ -99,7 +99,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         {
             if (usePrompt)
             {
-                DialogResult result = KryptonMessageBox.Show("Are you sure that you want to reset the current theme settings back to their defaults?", "Reset Theme Settings", MessageBoxButtons.YesNo, KryptonMessageBoxIcon.QUESTION);
+                DialogResult result = KryptonMessageBox.Show("Are you sure that you want to reset the current theme settings back to their defaults?", "Reset Theme Settings", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (result == DialogResult.Yes)
                 {

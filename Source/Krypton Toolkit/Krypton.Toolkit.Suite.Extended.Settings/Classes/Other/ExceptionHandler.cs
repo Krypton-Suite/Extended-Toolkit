@@ -69,7 +69,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         /// <param name="defaultButton">The default button.</param>
         /// <param name="icon">The icon.</param>
         /// <param name="options">The options.</param>
-        public void ShowException(string exceptionMessage, bool useKryptonMessageBox = false, bool useExtendedKryptonMessageBox = false, bool useWin32MessageBox = false, bool useConsole = false, bool useToolStripLabel = false, ToolStripLabel toolStripLabel = null, object args = null, string caption = "Exception Caught", MessageBoxButtons buttons = MessageBoxButtons.OK, KryptonMessageBoxDefaultButton defaultButton = KryptonMessageBoxDefaultButton.Button3, MessageBoxDefaultButton messageBoxDefaultButton = MessageBoxDefaultButton.Button3, KryptonMessageBoxIcon icon = KryptonMessageBoxIcon.ERROR, MessageBoxOptions options = MessageBoxOptions.DefaultDesktopOnly, MessageBoxIcon winFormsMessageBoxIcon = MessageBoxIcon.Error)
+        public void ShowException(string exceptionMessage, bool useKryptonMessageBox = false, bool useExtendedKryptonMessageBox = false, bool useWin32MessageBox = false, bool useConsole = false, bool useToolStripLabel = false, ToolStripLabel toolStripLabel = null, object args = null, string caption = "Exception Caught", MessageBoxButtons buttons = MessageBoxButtons.OK, MessageBoxDefaultButton defaultButton = MessageBoxDefaultButton.Button3, MessageBoxIcon icon = MessageBoxIcon.Exclamation, MessageBoxOptions options = MessageBoxOptions.DefaultDesktopOnly)
         {
             if (useKryptonMessageBox)
             {
@@ -81,11 +81,11 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
             }
             else if (useWin32MessageBox)
             {
-                MessageBox.Show(exceptionMessage, caption, buttons, winFormsMessageBoxIcon, messageBoxDefaultButton, options);
+                MessageBox.Show(exceptionMessage, caption, buttons, icon, defaultButton, options);
             }
             else if (useConsole)
             {
-                Console.WriteLine($"[ { DateTime.Now } ]: { exceptionMessage }");
+                Console.WriteLine($"[ { DateTime.Now.ToString() } ]: { exceptionMessage }");
             }
         }
 

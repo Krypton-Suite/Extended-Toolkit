@@ -96,13 +96,13 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Docking.Nightly" Version="70.22.7.203-alpha" />
+				<PackageReference Include="Krypton.Docking.Nightly" Version="70.22.7.188-alpha" />
 
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="70.22.7.203-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="70.22.7.188-alpha" />
 
-				<PackageReference Include="Krypton.Ribbon.Nightly" Version="70.22.7.203-alpha" />
+				<PackageReference Include="Krypton.Ribbon.Nightly" Version="70.22.7.188-alpha" />
 
-				<PackageReference Include="Krypton.Navigator.Nightly" Version="70.22.7.203-alpha" />
+				<PackageReference Include="Krypton.Navigator.Nightly" Version="70.22.7.188-alpha" />
 			</ItemGroup>
 		</When>
 
@@ -112,13 +112,13 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Docking.Canary" Version="70.22.7.203-beta" />
+				<PackageReference Include="Krypton.Docking.Canary" Version="65.22.5.123-beta" />
 
-				<PackageReference Include="Krypton.Toolkit.Canary" Version="70.22.7.203-beta" />
+				<PackageReference Include="Krypton.Toolkit.Canary" Version="65.22.5.123-beta" />
 
-				<PackageReference Include="Krypton.Ribbon.Canary" Version="70.22.7.203-beta" />
+				<PackageReference Include="Krypton.Ribbon.Canary" Version="65.22.5.123-beta" />
 
-				<PackageReference Include="Krypton.Navigator.Canary" Version="70.22.7.203-beta" />
+				<PackageReference Include="Krypton.Navigator.Canary" Version="65.22.5.123-beta" />
 			</ItemGroup>
 		</When>
 

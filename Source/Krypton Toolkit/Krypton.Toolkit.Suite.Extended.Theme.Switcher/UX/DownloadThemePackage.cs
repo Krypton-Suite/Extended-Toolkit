@@ -197,15 +197,15 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 
             if (e.Cancelled)
             {
-                KryptonMessageBox.Show("The download has been canceled.", "Download Canceled", MessageBoxButtons.OK, KryptonMessageBoxIcon.WARNING);
+                KryptonMessageBox.Show("The download has been cancelled.", "Download Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
-                DialogResult result = KryptonMessageBox.Show("The download has been completed! Unpack now?", "Download Complete", MessageBoxButtons.YesNo, KryptonMessageBoxIcon.QUESTION);
+                DialogResult result = KryptonMessageBox.Show("The download has been completed! Unpack now?", "Download Complete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (result == DialogResult.OK)
                 {
-                    // Note: Complete this
+
                 }
             }
         }
