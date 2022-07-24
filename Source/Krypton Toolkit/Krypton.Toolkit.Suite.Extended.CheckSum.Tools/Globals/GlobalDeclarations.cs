@@ -15,3 +15,4 @@ global using System.Windows.Forms;
 
 global using Krypton.Toolkit.Suite.Extended.CheckSum.Tools.Properties;
 global using Krypton.Toolkit.Suite.Extended.Tools;
+global using Krypton.Toolkit.Suite.Extended.Developer.Utilities;

@@ -118,7 +118,7 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
             }
             catch (Exception exc)
             {
-                ExceptionCapture.CaptureException(exc, "Exception Thrown", MessageBoxButtons.OK, MessageBoxIcon.Error, "GlobalMethods", "CheckIfTargetPlatformIsSupported(bool useLegacyVistaSupport = false)");
+                ExceptionCapture.CaptureException(exc, "Exception Thrown", MessageBoxButtons.OK, KryptonMessageBoxIcon.ERROR, "GlobalMethods", "CheckIfTargetPlatformIsSupported(bool useLegacyVistaSupport = false)");
 
                 SetIsTargetPlatformSupported(false);
             }
@@ -145,7 +145,7 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
             }
             catch (Exception exc)
             {
-                KryptonMessageBox.Show("Error: " + exc.Message, "Error Thrown", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ExceptionCapture.CaptureException(exc);
 
                 SetIsTargetPlatform64BIT(false);
             }
@@ -165,7 +165,7 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
             }
             catch (Exception exc)
             {
-                KryptonMessageBox.Show("Error: " + exc.Message, "Error Thrown", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ExceptionCapture.CaptureException(exc);
 
                 SetIsAssemblies64BIT(false);
             }
@@ -464,7 +464,7 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
             }
             catch (Exception exc)
             {
-                KryptonMessageBox.Show("Error: " + exc.Message, "Error Thrown", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ExceptionCapture.CaptureException(exc);
 
                 SetIsTargetPlatform64BIT(false);
             }
@@ -480,11 +480,11 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
         {
             try
             {
-
+                SetIsAssemblies64BIT(Environment.Is64BitProcess);
             }
             catch (Exception exc)
             {
-                KryptonMessageBox.Show("Error: " + exc.Message, "Error Thrown", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ExceptionCapture.CaptureException(exc);
 
                 SetIsAssemblies64BIT(false);
             }
@@ -517,7 +517,7 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
                 }
                 catch (Win32Exception wexc)
                 {
-                    KryptonMessageBox.Show("Error: " + wexc.Message, "An Error has Occurred", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ExceptionCapture.CaptureException(wexc);
                 }
 
                 return;
@@ -587,11 +587,11 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
         {
             if (featureName != null)
             {
-                KryptonMessageBox.Show($"The feature: { featureName } is not implemented or fully functional yet. Please check back again later.", "Incomplete Feature", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                KryptonMessageBox.Show($"The feature: { featureName } is not implemented or fully functional yet. Please check back again later.", "Incomplete Feature", MessageBoxButtons.OK, KryptonMessageBoxIcon.INFORMATION);
             }
             else
             {
-                KryptonMessageBox.Show("This is not implemented or fully functional yet. Please check back again later.", "Incomplete Feature", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                KryptonMessageBox.Show("This is not implemented or fully functional yet. Please check back again later.", "Incomplete Feature", MessageBoxButtons.OK, KryptonMessageBoxIcon.INFORMATION);
             }
         }
 

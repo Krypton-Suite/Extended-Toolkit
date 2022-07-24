@@ -14,6 +14,8 @@ using System.Drawing.Imaging;
 using System.Security.Principal;
 using System.Windows.Forms;
 
+using Krypton.Toolkit.Suite.Extended.Developer.Utilities;
+
 namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
 {
     /// <summary>Provides useful methods for specified tasks.</summary>
@@ -55,7 +57,7 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
                 }
                 catch (Win32Exception wexc)
                 {
-                    KryptonMessageBox.Show("Error: " + wexc.Message, "An Error has Occurred", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ExceptionCapture.CaptureException(wexc);
                 }
 
                 return;
