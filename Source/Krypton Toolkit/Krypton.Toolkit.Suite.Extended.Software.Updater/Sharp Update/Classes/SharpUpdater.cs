@@ -218,11 +218,11 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
             }
             else if (result == DialogResult.Abort)
             {
-                KryptonMessageBox.Show(ParentForm, "The update download was cancelled.\nThis program has not been modified.", "Update Download Cancelled", MessageBoxButtons.OK, KryptonMessageBoxIcon.INFORMATION);
+                KryptonMessageBox.Show(ParentForm, "The update download was canceled.\nThis program has not been modified.", "Update Download Canceled", MessageBoxButtons.OK, KryptonMessageBoxIcon.Information);
             }
             else
             {
-                KryptonMessageBox.Show(ParentForm, "There was a problem downloading the update.\nPlease try again later.", "Update Download Error", MessageBoxButtons.OK, KryptonMessageBoxIcon.INFORMATION);
+                KryptonMessageBox.Show(ParentForm, "There was a problem downloading the update.\nPlease try again later.", "Update Download Error", MessageBoxButtons.OK, KryptonMessageBoxIcon.Information);
             }
         }
 
@@ -231,7 +231,7 @@ namespace Krypton.Toolkit.Suite.Extended.Software.Updater.SharpUpdate
         /// </summary>
         private void InstallUpdate()
         {
-            DialogResult result = KryptonMessageBox.Show("The application needs to restart.", "Restart Needed", MessageBoxButtons.OK, KryptonMessageBoxIcon.INFORMATION);
+            DialogResult result = KryptonMessageBox.Show("The application needs to restart.", "Restart Needed", MessageBoxButtons.OK, KryptonMessageBoxIcon.Information);
 
             if (result == DialogResult.OK)
             {

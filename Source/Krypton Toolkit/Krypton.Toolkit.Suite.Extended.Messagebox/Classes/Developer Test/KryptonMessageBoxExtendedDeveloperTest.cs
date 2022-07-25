@@ -55,7 +55,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// </returns>
         public static DialogResult Show(string text, string caption = @"",
                                  ExtendedMessageBoxButtons buttons = ExtendedMessageBoxButtons.OK,
-                                 ExtendedKryptonMessageBoxIcon icon = ExtendedKryptonMessageBoxIcon.NONE,
+                                 ExtendedKryptonMessageBoxIcon icon = ExtendedKryptonMessageBoxIcon.None,
                                  KryptonMessageBoxDefaultButton defaultButton = KryptonMessageBoxDefaultButton.Button1,
                                  MessageBoxOptions options = 0,
                                  bool displayHelpButton = false,
@@ -118,7 +118,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// </returns>
         public static DialogResult Show(IWin32Window owner, string text, string caption = @"",
             ExtendedMessageBoxButtons buttons = ExtendedMessageBoxButtons.OK,
-            ExtendedKryptonMessageBoxIcon icon = ExtendedKryptonMessageBoxIcon.NONE,
+            ExtendedKryptonMessageBoxIcon icon = ExtendedKryptonMessageBoxIcon.None,
             KryptonMessageBoxDefaultButton defaultButton = KryptonMessageBoxDefaultButton.Button1,
             MessageBoxOptions options = 0,
             bool displayHelpButton = false,
@@ -181,7 +181,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// </returns>
         public static DialogResult Show(string text, string caption = @"",
                                  ExtendedMessageBoxButtons buttons = ExtendedMessageBoxButtons.OK,
-                                 ExtendedKryptonMessageBoxIcon icon = ExtendedKryptonMessageBoxIcon.NONE,
+                                 ExtendedKryptonMessageBoxIcon icon = ExtendedKryptonMessageBoxIcon.None,
                                  KryptonMessageBoxDefaultButton defaultButton = KryptonMessageBoxDefaultButton.Button1,
                                  MessageBoxOptions options = 0,
                                  string helpFilePath = @"",
@@ -226,7 +226,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// </returns>
         public static DialogResult Show(IWin32Window owner, string text, string caption = @"",
                                  ExtendedMessageBoxButtons buttons = ExtendedMessageBoxButtons.OK,
-                                 ExtendedKryptonMessageBoxIcon icon = ExtendedKryptonMessageBoxIcon.NONE,
+                                 ExtendedKryptonMessageBoxIcon icon = ExtendedKryptonMessageBoxIcon.None,
                                  KryptonMessageBoxDefaultButton defaultButton = KryptonMessageBoxDefaultButton.Button1,
                                  MessageBoxOptions options = 0,
                                  string helpFilePath = @"",

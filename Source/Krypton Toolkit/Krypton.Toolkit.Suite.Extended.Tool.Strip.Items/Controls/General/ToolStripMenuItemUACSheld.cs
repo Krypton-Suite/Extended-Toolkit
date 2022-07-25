@@ -113,7 +113,7 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
                     }
                     catch (Exception exc)
                     {
-                        KryptonMessageBox.Show($"Your platform is unsupported. Please contact the software vendor for details.\nFor reference, your system is running: { _globalMethods.GetOSFriendlyName() }.\nException message: { exc.Message }.", "Unsupported Software", MessageBoxButtons.OK, KryptonMessageBoxIcon.ERROR);
+                        KryptonMessageBox.Show($"Your platform is unsupported. Please contact the software vendor for details.\nFor reference, your system is running: { _globalMethods.GetOSFriendlyName() }.\nException message: { exc.Message }.", "Unsupported Software", MessageBoxButtons.OK, KryptonMessageBoxIcon.Error);
 
                         _isSystemAbleToLoadShield = false;
                     }

@@ -170,7 +170,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
             _buttons = ExtendedMessageBoxButtons.OK;
 
-            _icon = ExtendedKryptonMessageBoxIcon.NONE;
+            _icon = ExtendedKryptonMessageBoxIcon.None;
 
             _defaultButton = KryptonMessageBoxDefaultButton.Button1;
 
