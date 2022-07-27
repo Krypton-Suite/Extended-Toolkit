@@ -117,7 +117,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         /// </summary>
         public void ResetToDefaults()
         {
-            if (KryptonMessageBox.Show("WARNING! You are about to reset these settings back to their original state. This action cannot be undone!\nDo you want to proceed?", "Reset Settings", MessageBoxButtons.YesNo, KryptonMessageBoxIcon.Exclamation) == DialogResult.Yes)
+            if (General.ResetSettings("Boolean") == DialogResult.Yes)
             {
                 SetUseVirusTotalUseTLS(false);
 
@@ -136,7 +136,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         {
             if (alwaysUsePrompt)
             {
-                if (KryptonMessageBox.Show("You have changed a setting value. Do you want to save these changes?", "Setting Values Changed", MessageBoxButtons.YesNo, KryptonMessageBoxIcon.Question) == DialogResult.Yes)
+                if (General.SaveSettings("Boolean") == DialogResult.Yes)
                 {
                     _booleanSettings.Save();
 

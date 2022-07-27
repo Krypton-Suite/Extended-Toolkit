@@ -71,9 +71,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
             catch (Exception error)
             {
-                ErrorMessage = error.Message;
-
-                KryptonMessageBox.Show($"An error has occurred: { ErrorMessage }", "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ExceptionCapture.CaptureException(error);
 
                 return false;
             }
@@ -96,9 +94,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
             catch (Exception error)
             {
-                ErrorMessage = error.Message;
-
-                KryptonMessageBox.Show($"An error has occurred: { ErrorMessage }", "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ExceptionCapture.CaptureException(error);
 
                 return false;
             }
@@ -117,7 +113,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             {
                 ErrorMessage = "Invalid assembly specifier!";
 
-                KryptonMessageBox.Show($"An error has occurred: { ErrorMessage }", "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                KryptonMessageBox.Show($"An error has occurred: { ErrorMessage }", "Unexpected Error", MessageBoxButtons.OK, KryptonMessageBoxIcon.Error);
 
                 return false;
             }
@@ -146,7 +142,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             {
                 ErrorMessage = "Invalid assembly specifier!";
 
-                KryptonMessageBox.Show($"An error has occurred: { ErrorMessage }", "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                KryptonMessageBox.Show($"An error has occurred: { ErrorMessage }", "Unexpected Error", MessageBoxButtons.OK, KryptonMessageBoxIcon.Error);
 
                 return false;
             }

@@ -1080,16 +1080,18 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
         private void InitialiseWindow()
         {
-            DialogResult result = KryptonMessageBox.Show("This is for developmental use only. Do you want to continue?", "Global Options", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = KryptonMessageBox.Show("This is for developmental use only. Do you want to continue?", "Global Options", MessageBoxButtons.YesNo, KryptonMessageBoxIcon.Question);
 
             if (result == DialogResult.No)
             {
                 Hide();
             }
+            else
+            {
+                _themeManager.PropagateThemes(kcmbPaletteTheme);
 
-            _themeManager.PropagateThemes(kcmbPaletteTheme);
-
-            kcmbPaletteTheme.Text = _paletteThemeSettingsManager.GetTheme().ToString();
+                kcmbPaletteTheme.Text = _paletteThemeSettingsManager.GetTheme().ToString();
+            }
         }
 
         private void kbtnImportPalette_Click(object sender, EventArgs e)

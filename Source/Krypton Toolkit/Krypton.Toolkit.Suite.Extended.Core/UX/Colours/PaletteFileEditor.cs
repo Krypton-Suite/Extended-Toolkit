@@ -182,7 +182,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
             catch (Exception error)
             {
-                KryptonMessageBox.Show($"An error has occurred: { error.Message }", "File Read Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ExceptionCapture.CaptureException(error);
             }
         }
 

@@ -20,6 +20,7 @@ namespace TestApp
 
         #endregion
 
+        
         #region Implementaton
 
         public void SetupDataGridView(KryptonOutlookGrid grid, bool restoreIfPossible)
@@ -32,7 +33,7 @@ namespace TestApp
                 }
                 catch (Exception ex)
                 {
-                    KryptonMessageBox.Show("Error when retrieving configuration : " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    KryptonMessageBox.Show("Error when retrieving configuration : " + ex.Message, "Error", MessageBoxButtons.OK, KryptonMessageBoxIcon.Error);
                     grid.ClearEverything();
                     LoadDefaultConfiguration(grid);
                 }

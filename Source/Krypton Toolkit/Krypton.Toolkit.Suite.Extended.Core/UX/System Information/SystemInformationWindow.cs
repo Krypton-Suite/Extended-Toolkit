@@ -863,7 +863,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
             catch (Exception error)
             {
-                KryptonMessageBox.Show($"An error has occurred: { error.Message }", "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ExceptionCapture.CaptureException(error);
             }
 
             return sb.ToString();

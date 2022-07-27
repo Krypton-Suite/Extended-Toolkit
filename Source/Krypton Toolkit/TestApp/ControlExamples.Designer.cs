@@ -31,6 +31,10 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ControlExamples));
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            this.kryptonBrowseBox1 = new Krypton.Toolkit.Suite.Extended.Controls.KryptonBrowseBox();
+            this.kcmbTextAlignment = new Krypton.Toolkit.KryptonComboBox();
+            this.kryptonKnobControlVersion21 = new Krypton.Toolkit.Suite.Extended.Controls.KryptonKnobControlVersion2();
+            this.kryptonRichTextBoxExtended1 = new Krypton.Toolkit.Suite.Extended.Controls.KryptonRichTextBoxExtended();
             this.kryptonProgressBarExtendedVersion21 = new Krypton.Toolkit.Suite.Extended.Controls.KryptonProgressBarExtendedVersion2();
             this.kryptonStarRatingControl1 = new Krypton.Toolkit.Suite.Extended.Controls.KryptonStarRatingControl();
             this.kryptonMarqueeLabel1 = new Krypton.Toolkit.Suite.Extended.Controls.KryptonMarqueeLabel();
@@ -38,17 +42,16 @@
             this.kryptonKnobControlVersion11 = new Krypton.Toolkit.Suite.Extended.Controls.KryptonKnobControlVersion1();
             this.kryptonBorderedLabel1 = new Krypton.Toolkit.Suite.Extended.Controls.KryptonBorderedLabel();
             this.circularPictureBox1 = new Krypton.Toolkit.Suite.Extended.Controls.CircularPictureBox();
-            this.kryptonRichTextBoxExtended1 = new Krypton.Toolkit.Suite.Extended.Controls.KryptonRichTextBoxExtended();
-            this.kryptonKnobControlVersion21 = new Krypton.Toolkit.Suite.Extended.Controls.KryptonKnobControlVersion2();
-            this.kcmbTextAlignment = new Krypton.Toolkit.KryptonComboBox();
+            this.kryptonCommand1 = new Krypton.Toolkit.KryptonCommand();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kcmbTextAlignment)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(this.kryptonBrowseBox1);
             this.kryptonPanel1.Controls.Add(this.kcmbTextAlignment);
             this.kryptonPanel1.Controls.Add(this.kryptonKnobControlVersion21);
             this.kryptonPanel1.Controls.Add(this.kryptonRichTextBoxExtended1);
@@ -64,6 +67,69 @@
             this.kryptonPanel1.Name = "kryptonPanel1";
             this.kryptonPanel1.Size = new System.Drawing.Size(800, 450);
             this.kryptonPanel1.TabIndex = 0;
+            // 
+            // kryptonBrowseBox1
+            // 
+            this.kryptonBrowseBox1.FileDialogFilter = null;
+            this.kryptonBrowseBox1.Location = new System.Drawing.Point(460, 330);
+            this.kryptonBrowseBox1.Name = "kryptonBrowseBox1";
+            this.kryptonBrowseBox1.ShowResetButton = false;
+            this.kryptonBrowseBox1.Size = new System.Drawing.Size(204, 24);
+            this.kryptonBrowseBox1.TabIndex = 8;
+            this.kryptonBrowseBox1.Text = "kryptonBrowseBox1";
+            // 
+            // kcmbTextAlignment
+            // 
+            this.kcmbTextAlignment.CornerRoundingRadius = -1F;
+            this.kcmbTextAlignment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.kcmbTextAlignment.DropDownWidth = 121;
+            this.kcmbTextAlignment.IntegralHeight = false;
+            this.kcmbTextAlignment.Items.AddRange(new object[] {
+            "Left",
+            "Centre",
+            "Right",
+            "Justify"});
+            this.kcmbTextAlignment.Location = new System.Drawing.Point(340, 330);
+            this.kcmbTextAlignment.Name = "kcmbTextAlignment";
+            this.kcmbTextAlignment.Size = new System.Drawing.Size(121, 21);
+            this.kcmbTextAlignment.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
+            this.kcmbTextAlignment.TabIndex = 7;
+            this.kcmbTextAlignment.SelectedIndexChanged += new System.EventHandler(this.kcmbTextAlignment_SelectedIndexChanged);
+            // 
+            // kryptonKnobControlVersion21
+            // 
+            this.kryptonKnobControlVersion21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(206)))), ((int)(((byte)(230)))));
+            this.kryptonKnobControlVersion21.EndAngle = 405F;
+            this.kryptonKnobControlVersion21.ImeMode = System.Windows.Forms.ImeMode.On;
+            this.kryptonKnobControlVersion21.KnobBackColour = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(206)))), ((int)(((byte)(230)))));
+            this.kryptonKnobControlVersion21.LargeChange = 5;
+            this.kryptonKnobControlVersion21.Location = new System.Drawing.Point(340, 167);
+            this.kryptonKnobControlVersion21.Maximum = 100;
+            this.kryptonKnobControlVersion21.Minimum = 0;
+            this.kryptonKnobControlVersion21.Name = "kryptonKnobControlVersion21";
+            this.kryptonKnobControlVersion21.PointerColour = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(157)))), ((int)(((byte)(189)))));
+            this.kryptonKnobControlVersion21.PointerStyle = Krypton.Toolkit.Suite.Extended.Controls.KryptonKnobControlVersion2.KnobPointerStyles.CIRCLE;
+            this.kryptonKnobControlVersion21.ScaleColour = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.kryptonKnobControlVersion21.ScaleDivisions = 11;
+            this.kryptonKnobControlVersion21.ScaleSubDivisions = 4;
+            this.kryptonKnobControlVersion21.ScaleTypeface = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.kryptonKnobControlVersion21.ShowLargeScale = true;
+            this.kryptonKnobControlVersion21.ShowSmallScale = false;
+            this.kryptonKnobControlVersion21.Size = new System.Drawing.Size(150, 150);
+            this.kryptonKnobControlVersion21.SmallChange = 1;
+            this.kryptonKnobControlVersion21.StartAngle = 135F;
+            this.kryptonKnobControlVersion21.TabIndex = 1;
+            this.kryptonKnobControlVersion21.Value = 0;
+            // 
+            // kryptonRichTextBoxExtended1
+            // 
+            this.kryptonRichTextBoxExtended1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonRichTextBoxExtended1.Location = new System.Drawing.Point(12, 167);
+            this.kryptonRichTextBoxExtended1.Multiline = true;
+            this.kryptonRichTextBoxExtended1.Name = "kryptonRichTextBoxExtended1";
+            this.kryptonRichTextBoxExtended1.Size = new System.Drawing.Size(322, 184);
+            this.kryptonRichTextBoxExtended1.TabIndex = 1;
+            this.kryptonRichTextBoxExtended1.Text = "kryptonRichTextBoxExtended1";
             // 
             // kryptonProgressBarExtendedVersion21
             // 
@@ -150,58 +216,9 @@
             this.circularPictureBox1.TabIndex = 0;
             this.circularPictureBox1.TabStop = false;
             // 
-            // kryptonRichTextBoxExtended1
+            // kryptonCommand1
             // 
-            this.kryptonRichTextBoxExtended1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonRichTextBoxExtended1.Location = new System.Drawing.Point(12, 167);
-            this.kryptonRichTextBoxExtended1.Multiline = true;
-            this.kryptonRichTextBoxExtended1.Name = "kryptonRichTextBoxExtended1";
-            this.kryptonRichTextBoxExtended1.Size = new System.Drawing.Size(322, 184);
-            this.kryptonRichTextBoxExtended1.TabIndex = 1;
-            this.kryptonRichTextBoxExtended1.Text = "kryptonRichTextBoxExtended1";
-            // 
-            // kryptonKnobControlVersion21
-            // 
-            this.kryptonKnobControlVersion21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(206)))), ((int)(((byte)(230)))));
-            this.kryptonKnobControlVersion21.EndAngle = 405F;
-            this.kryptonKnobControlVersion21.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.kryptonKnobControlVersion21.KnobBackColour = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(206)))), ((int)(((byte)(230)))));
-            this.kryptonKnobControlVersion21.LargeChange = 5;
-            this.kryptonKnobControlVersion21.Location = new System.Drawing.Point(340, 167);
-            this.kryptonKnobControlVersion21.Maximum = 100;
-            this.kryptonKnobControlVersion21.Minimum = 0;
-            this.kryptonKnobControlVersion21.Name = "kryptonKnobControlVersion21";
-            this.kryptonKnobControlVersion21.PointerColour = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(157)))), ((int)(((byte)(189)))));
-            this.kryptonKnobControlVersion21.PointerStyle = Krypton.Toolkit.Suite.Extended.Controls.KryptonKnobControlVersion2.KnobPointerStyles.CIRCLE;
-            this.kryptonKnobControlVersion21.ScaleColour = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
-            this.kryptonKnobControlVersion21.ScaleDivisions = 11;
-            this.kryptonKnobControlVersion21.ScaleSubDivisions = 4;
-            this.kryptonKnobControlVersion21.ScaleTypeface = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.kryptonKnobControlVersion21.ShowLargeScale = true;
-            this.kryptonKnobControlVersion21.ShowSmallScale = false;
-            this.kryptonKnobControlVersion21.Size = new System.Drawing.Size(150, 150);
-            this.kryptonKnobControlVersion21.SmallChange = 1;
-            this.kryptonKnobControlVersion21.StartAngle = 135F;
-            this.kryptonKnobControlVersion21.TabIndex = 1;
-            this.kryptonKnobControlVersion21.Value = 0;
-            // 
-            // kcmbTextAlignment
-            // 
-            this.kcmbTextAlignment.CornerRoundingRadius = -1F;
-            this.kcmbTextAlignment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.kcmbTextAlignment.DropDownWidth = 121;
-            this.kcmbTextAlignment.IntegralHeight = false;
-            this.kcmbTextAlignment.Items.AddRange(new object[] {
-            "Left",
-            "Centre",
-            "Right",
-            "Justify"});
-            this.kcmbTextAlignment.Location = new System.Drawing.Point(111, 358);
-            this.kcmbTextAlignment.Name = "kcmbTextAlignment";
-            this.kcmbTextAlignment.Size = new System.Drawing.Size(121, 21);
-            this.kcmbTextAlignment.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
-            this.kcmbTextAlignment.TabIndex = 7;
-            this.kcmbTextAlignment.SelectedIndexChanged += new System.EventHandler(this.kcmbTextAlignment_SelectedIndexChanged);
+            this.kryptonCommand1.Text = "kryptonCommand1";
             // 
             // ControlExamples
             // 
@@ -214,8 +231,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.kcmbTextAlignment)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.circularPictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -233,5 +250,7 @@
         private Krypton.Toolkit.Suite.Extended.Controls.KryptonKnobControlVersion2 kryptonKnobControlVersion21;
         private Krypton.Toolkit.Suite.Extended.Controls.KryptonRichTextBoxExtended kryptonRichTextBoxExtended1;
         private Krypton.Toolkit.KryptonComboBox kcmbTextAlignment;
+        private Krypton.Toolkit.Suite.Extended.Controls.KryptonBrowseBox kryptonBrowseBox1;
+        private Krypton.Toolkit.KryptonCommand kryptonCommand1;
     }
 }

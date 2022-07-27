@@ -43,5 +43,12 @@ namespace TestApp
 
             controlExamples.Show();
         }
+
+        private void kryptonButton7_Click(object sender, EventArgs e)
+        {
+            MessageBoxExample messageBoxExample = new MessageBoxExample();
+
+            messageBoxExample.Show();
+        }
     }
 }

@@ -4,6 +4,7 @@
 =======
 
 ## 2022-11-xx - Build 2211 - November 2022
+* New `KryptonBrowseBox` control to browse for files
 * Added `MostRecentlyUsedFileManager` to the `Krypton.Toolkit.Suite.Extended.IO` module
 <!--* Added 3 new controls in the `Krypton.Toolkit.Suite.Extended.Tool.Strip.Items` module, these are `MRUOpenFileMenuItem`, `MRUSaveAsFileMenuItem` and `MRUSaveFileMenuItem`. Note, these controls only work with text files/documents. If you wish to use the MRU functionality with other file types, please refer to the `MostRecentlyUsedFileManager` in the `Krypton.Toolkit.Suite.Extended.IO` module-->
 * Implemented [#334](https://github.com/Krypton-Suite/Extended-Toolkit/issues/334), `Krypton.Toolkit.Suite.Extended.Outlook.Grid` - language support German. Thanks to [mikel3361](https://github.com/mikel3361)
