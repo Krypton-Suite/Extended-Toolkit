@@ -6,11 +6,32 @@
  */
 #endregion
 
-namespace Krypton.Toolkit.Suite.Extended.Controls
+namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 {
-    /// <summary>Allows the user to browse for files.</summary>
-    [ToolboxBitmap(typeof(KryptonTextBox)), Description(@"Allows the user to browse for files.")]
-    public class KryptonBrowseBox : KryptonTextBox
+    [ToolboxBitmap(typeof(KryptonTextBox)), ToolStripItemDesignerAvailability(ToolStripItemDesignerAvailability.ContextMenuStrip | ToolStripItemDesignerAvailability.MenuStrip | ToolStripItemDesignerAvailability.ToolStrip)]
+    public class KryptonToolStripBrowseBox : ToolStripControlHostFixed
+    {
+        #region Public
+        
+        [Category("Control")]
+        public InternalBrowseBox KryptonBrowseBox => Control as InternalBrowseBox;
+
+        #endregion
+
+        #region Identity
+
+        public KryptonToolStripBrowseBox() : base(new InternalBrowseBox())
+        {
+            
+        }
+
+        #endregion
+    }
+
+    #region Class: InternalBrowseBox
+
+    [ToolboxItem(false), EditorBrowsable(EditorBrowsableState.Never)]
+    public class InternalBrowseBox : KryptonTextBox
     {
         #region Instance Fields
 
@@ -114,8 +135,8 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
         #region Identity
 
-        /// <summary>Initializes a new instance of the <see cref="KryptonBrowseBox" /> class.</summary>
-        public KryptonBrowseBox()
+        /// <summary>Initializes a new instance of the <see cref="InternalBrowseBox" /> class.</summary>
+        public InternalBrowseBox()
         {
             _bsaBrowse = new ButtonSpecAny();
 
@@ -150,7 +171,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             _kcReset.Text = _resetText;
 
             _bsaReset.Enabled = ButtonEnabled.False;
-            
+
             _kcBrowse.Execute += Browse_Execute;
 
             _kcReset.ImageLarge = _largeResetImage;
@@ -159,7 +180,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
             _kcReset.Execute += Reset_Execute;
 
-            ButtonSpecs.AddRange(new [] { _bsaBrowse, _bsaReset });
+            ButtonSpecs.AddRange(new[] { _bsaBrowse, _bsaReset });
         }
 
         #endregion
@@ -251,7 +272,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
             }
             else
             {
-                _bsaReset.Enabled =ButtonEnabled.False;
+                _bsaReset.Enabled = ButtonEnabled.False;
             }
 
             base.OnTextChanged(e);
@@ -259,4 +280,6 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
         #endregion
     }
+
+    #endregion
 }

@@ -70,11 +70,13 @@
             // 
             // kryptonBrowseBox1
             // 
-            this.kryptonBrowseBox1.FileDialogFilter = null;
+            this.kryptonBrowseBox1.LargeResetImage = ((System.Drawing.Image)(resources.GetObject("kryptonBrowseBox1.LargeResetImage")));
             this.kryptonBrowseBox1.Location = new System.Drawing.Point(460, 330);
             this.kryptonBrowseBox1.Name = "kryptonBrowseBox1";
-            this.kryptonBrowseBox1.ShowResetButton = false;
+            this.kryptonBrowseBox1.ResetText = null;
+            this.kryptonBrowseBox1.ShowResetButton = true;
             this.kryptonBrowseBox1.Size = new System.Drawing.Size(204, 24);
+            this.kryptonBrowseBox1.SmallResetImage = ((System.Drawing.Image)(resources.GetObject("kryptonBrowseBox1.SmallResetImage")));
             this.kryptonBrowseBox1.TabIndex = 8;
             this.kryptonBrowseBox1.Text = "kryptonBrowseBox1";
             // 

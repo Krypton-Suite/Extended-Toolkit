@@ -23,5 +23,6 @@ global using System.Windows.Forms.Design;
 global using System.Windows.Forms.Design.Behavior;
 
 global using Krypton.Toolkit.Suite.Extended.Developer.Utilities;
+global using Krypton.Toolkit.Suite.Extended.Controls.Properties;
 
 global using Microsoft.WindowsAPICodePack.Dialogs;

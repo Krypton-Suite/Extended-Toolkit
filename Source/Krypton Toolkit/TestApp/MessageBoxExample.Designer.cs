@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MessageBoxExample));
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             this.kryptonGroupBox2 = new Krypton.Toolkit.KryptonGroupBox();
             this.kryptonComboBox3 = new Krypton.Toolkit.KryptonComboBox();
@@ -48,6 +49,7 @@
             this.radioButtonYesNoCancel = new Krypton.Toolkit.KryptonRadioButton();
             this.radioButtonOKCancel = new Krypton.Toolkit.KryptonRadioButton();
             this.groupBoxIcon = new Krypton.Toolkit.KryptonGroupBox();
+            this.kbbImagePath = new Krypton.Toolkit.Suite.Extended.Controls.KryptonBrowseBox();
             this.krbStop = new Krypton.Toolkit.KryptonRadioButton();
             this.krbShield = new Krypton.Toolkit.KryptonRadioButton();
             this.krbExclamation = new Krypton.Toolkit.KryptonRadioButton();
@@ -64,7 +66,6 @@
             this.kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
             this.ktxtCaption = new Krypton.Toolkit.KryptonTextBox();
             this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
-            this.kbbImagePath = new Krypton.Toolkit.Suite.Extended.Controls.KryptonBrowseBox();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox2)).BeginInit();
@@ -311,6 +312,19 @@
             this.groupBoxIcon.TabIndex = 5;
             this.groupBoxIcon.Values.Heading = "Icon";
             // 
+            // kbbImagePath
+            // 
+            this.kbbImagePath.CueHint.CueHintText = "Enter image path here...";
+            this.kbbImagePath.CueHint.Padding = new System.Windows.Forms.Padding(0);
+            this.kbbImagePath.LargeResetImage = ((System.Drawing.Image)(resources.GetObject("kbbImagePath.LargeResetImage")));
+            this.kbbImagePath.Location = new System.Drawing.Point(12, 123);
+            this.kbbImagePath.Name = "kbbImagePath";
+            this.kbbImagePath.ResetText = null;
+            this.kbbImagePath.ShowResetButton = true;
+            this.kbbImagePath.Size = new System.Drawing.Size(256, 24);
+            this.kbbImagePath.SmallResetImage = ((System.Drawing.Image)(resources.GetObject("kbbImagePath.SmallResetImage")));
+            this.kbbImagePath.TabIndex = 12;
+            // 
             // krbStop
             // 
             this.krbStop.Location = new System.Drawing.Point(117, 23);
@@ -454,17 +468,6 @@
             this.kryptonLabel1.Size = new System.Drawing.Size(59, 20);
             this.kryptonLabel1.TabIndex = 0;
             this.kryptonLabel1.Values.Text = "Caption:";
-            // 
-            // kbbImagePath
-            // 
-            this.kbbImagePath.CueHint.CueHintText = "Enter image path here...";
-            this.kbbImagePath.CueHint.Padding = new System.Windows.Forms.Padding(0);
-            this.kbbImagePath.FileDialogFilter = null;
-            this.kbbImagePath.FileDialogFilterCollection = null;
-            this.kbbImagePath.Location = new System.Drawing.Point(12, 123);
-            this.kbbImagePath.Name = "kbbImagePath";
-            this.kbbImagePath.Size = new System.Drawing.Size(256, 24);
-            this.kbbImagePath.TabIndex = 12;
             // 
             // MessageBoxExample
             // 
