@@ -39,9 +39,9 @@ namespace TestApp
 
         private void kryptonButton6_Click(object sender, EventArgs e)
         {
-            ControlExamples controlExamples = new ControlExamples();
+            ExtendedControlExamples extendedControlExamples = new ExtendedControlExamples();
 
-            controlExamples.Show();
+            extendedControlExamples.Show();
         }
 
         private void kryptonButton7_Click(object sender, EventArgs e)
