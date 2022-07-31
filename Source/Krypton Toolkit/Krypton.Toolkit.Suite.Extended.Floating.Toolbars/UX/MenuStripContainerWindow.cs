@@ -6,11 +6,6 @@
  */
 #endregion
 
-using System;
-using System.Drawing;
-using System.Runtime.InteropServices;
-using System.Windows.Forms;
-
 namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
 {
     public class MenuStripContainerWindow : KryptonForm
@@ -37,12 +32,27 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
         #endregion
 
         #region Variables
+
+        private bool _showWindowFrame;
+
         private FloatableMenuStrip _floatableMenuStrip;
 
         private int _dFrameWidth = 8, _captionWidth = 18, _maxWidth = 0, _minWidth = 0;
         #endregion
 
         #region Properties
+        public bool ShowWindowFrame
+        {
+            get => _showWindowFrame;
+
+            set
+            {
+                _showWindowFrame = value;
+
+                Invalidate();
+            }
+        }
+
         public FloatableMenuStrip FloatableMenuStrip
         {
             get => _floatableMenuStrip;
@@ -182,6 +192,20 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
                     Width = _minWidth;
                 }
             }
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            if (_showWindowFrame)
+            {
+                FormBorderStyle = FormBorderStyle.Fixed3D;
+            }
+            else
+            {
+                FormBorderStyle = FormBorderStyle.None;
+            }
+
+            base.OnPaint(e);
         }
 
         protected override void WndProc(ref Message m)
