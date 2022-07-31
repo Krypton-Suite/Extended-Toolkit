@@ -9,6 +9,13 @@ namespace TestApp
             InitializeComponent();
         }
 
+        private void kbtnButtonItems_Click(object sender, EventArgs e)
+        {
+            ButtonItems buttonItems = new ButtonItems();
+
+            buttonItems.Show();
+        }
+
         private void ktnToolStripItems_Click(object sender, EventArgs e)
         {
             ToolStripItems tsi = new ToolStripItems();
@@ -16,28 +23,28 @@ namespace TestApp
             tsi.Show();
         }
 
-        private void kryptonButton2_Click(object sender, EventArgs e)
+        private void kbtnCalendarItems_Click(object sender, EventArgs e)
         {
             CalendarItems calendar = new CalendarItems();
 
             calendar.Show();
         }
 
-        private void kryptonButton1_Click(object sender, EventArgs e)
+        private void kbtnCircularProgressBarItem_Click(object sender, EventArgs e)
         {
             CircularProgressBarExample circularProgressBar = new CircularProgressBarExample();
 
             circularProgressBar.Show();
         }
 
-        private void kryptonButton3_Click(object sender, EventArgs e)
+        private void kbtnCheckSum_Click(object sender, EventArgs e)
         {
             CheckSumExample checkSum = new CheckSumExample();
 
             checkSum.Show();
         }
 
-        private void kryptonButton6_Click(object sender, EventArgs e)
+        private void kbtnExtendedControls_Click(object sender, EventArgs e)
         {
             ExtendedControlExamples extendedControlExamples = new ExtendedControlExamples();
 
