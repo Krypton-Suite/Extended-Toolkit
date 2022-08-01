@@ -47,7 +47,7 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
                 }
                 catch (Win32Exception wexc)
                 {
-                    KryptonMessageBox.Show("Error: " + wexc.Message, "An Error has Occurred", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ExceptionCapture.CaptureException(wexc);
                 }
 
                 return;

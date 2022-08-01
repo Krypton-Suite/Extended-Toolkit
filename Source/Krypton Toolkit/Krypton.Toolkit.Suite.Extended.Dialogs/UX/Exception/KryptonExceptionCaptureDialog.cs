@@ -236,7 +236,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         {
             if (MissingFrameWorkAPIs.IsNullOrWhiteSpace(ktxtException.Text))
             {
-                KryptonMessageBox.Show("No content was found!", "Save Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                KryptonMessageBox.Show("No content was found!", "Save Information", MessageBoxButtons.OK, KryptonMessageBoxIcon.Information);
             }
             else
             {
@@ -258,7 +258,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
                     writer.Dispose();
 
-                    DialogResult result = KryptonMessageBox.Show($"The exception has been written to file: '{Path.GetFullPath(csfd.FileName)}'.\nDo you want to view it now?", "Success", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    DialogResult result = KryptonMessageBox.Show($"The exception has been written to file: '{Path.GetFullPath(csfd.FileName)}'.\nDo you want to view it now?", "Success", MessageBoxButtons.YesNo, KryptonMessageBoxIcon.Question);
 
                     if (result == DialogResult.Yes)
                     {

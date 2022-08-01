@@ -30,7 +30,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         private ExtendedMessageBoxCustomButtonOptions _customButtonOptions;
 
-        private MessageBoxDefaultButton _defaultButton;
+        private KryptonMessageBoxDefaultButton _defaultButton;
 
         private MessageBoxOptions _options;
 
@@ -178,8 +178,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         /// <summary>Gets or sets the message box default button.</summary>
         /// <value>The message box default button.</value>
-        [DefaultValue(typeof(MessageBoxDefaultButton), "MessageBoxDefaultButton.Button1"), Description("Gets or sets the message box default button.")]
-        public MessageBoxDefaultButton MessageBoxDefaultButton { get => _defaultButton; set => _defaultButton = value; }
+        [DefaultValue(typeof(KryptonMessageBoxDefaultButton), "KryptonMessageBoxDefaultButton.Button1"), Description("Gets or sets the message box default button.")]
+        public KryptonMessageBoxDefaultButton KryptonMessageBoxDefaultButton { get => _defaultButton; set => _defaultButton = value; }
 
         /// <summary>Gets or sets the message box options.</summary>
         /// <value>The message box options.</value>
@@ -338,7 +338,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         public ShowMessageBoxEventArgs(IWin32Window owner, string text, string caption,
                                        ExtendedMessageBoxButtons buttons, ExtendedMessageBoxCustomButtonOptions customButtonOptions,
                                        ExtendedKryptonMessageBoxIcon icon,
-                                       MessageBoxDefaultButton defaultButton,
+                                       KryptonMessageBoxDefaultButton defaultButton,
                                        MessageBoxOptions options, string helpPath,
                                        HelpNavigator helpNavigator, object helpParam,
                                        bool showCtrlCopy, Font messageboxTypeface, bool showOptionalCheckBox,
@@ -367,7 +367,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
             MessageBoxIcon = icon;
 
-            MessageBoxDefaultButton = defaultButton;
+            KryptonMessageBoxDefaultButton = defaultButton;
 
             MessageBoxOptions = options;
 

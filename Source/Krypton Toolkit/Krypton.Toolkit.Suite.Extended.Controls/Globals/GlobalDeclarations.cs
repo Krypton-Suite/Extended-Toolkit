@@ -7,16 +7,22 @@
 #endregion
 
 global using System;
-global using System.ComponentModel;
 global using System.Collections;
+global using System.ComponentModel;
+global using System.Diagnostics;
 global using System.Drawing;
 global using System.Drawing.Drawing2D;
+global using System.Drawing.Printing;
+global using System.Globalization;
+global using System.IO;
 global using System.Runtime.InteropServices;
 global using System.Security;
 global using System.Text;
-global using System.Globalization;
 global using System.Windows.Forms;
 global using System.Windows.Forms.Design;
 global using System.Windows.Forms.Design.Behavior;
 
 global using Krypton.Toolkit.Suite.Extended.Developer.Utilities;
+global using Krypton.Toolkit.Suite.Extended.Controls.Properties;
+
+global using Microsoft.WindowsAPICodePack.Dialogs;

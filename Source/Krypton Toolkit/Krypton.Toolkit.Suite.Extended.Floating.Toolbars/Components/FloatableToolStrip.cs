@@ -6,14 +6,6 @@
  */
 #endregion
 
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Drawing.Design;
-using System.Runtime.InteropServices;
-using System.Windows.Forms;
-
 namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
 {
     [ToolboxBitmap(typeof(FloatableToolStrip), "ToolboxBitmaps.FloatableToolStrip.bmp")]

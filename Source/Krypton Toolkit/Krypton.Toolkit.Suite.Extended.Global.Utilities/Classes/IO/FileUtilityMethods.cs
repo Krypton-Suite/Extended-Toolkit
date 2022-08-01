@@ -334,7 +334,7 @@ namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
             {
                 if (new FileInfo(FilePath).Length == 0)
                 {
-                    KryptonMessageBox.Show("The file specified is a zero-byte file. Please try again.", "Zero-Byte File Detected", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    KryptonMessageBox.Show("The file specified is a zero-byte file. Please try again.", "Zero-Byte File Detected", MessageBoxButtons.OK, KryptonMessageBoxIcon.Error);
                 }
                 else
                 {

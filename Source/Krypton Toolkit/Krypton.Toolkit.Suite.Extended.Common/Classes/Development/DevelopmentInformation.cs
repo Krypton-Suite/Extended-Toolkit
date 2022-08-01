@@ -69,7 +69,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
             }
             catch (Exception exc)
             {
-                KryptonMessageBox.Show(exc.Message, "Exception Caught", MessageBoxButtons.OK, KryptonMessageBoxIcon.ERROR);
+                ExceptionCapture.CaptureException(exc);
             }
         }
 
@@ -109,7 +109,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
             }
             catch (Exception exc)
             {
-                KryptonMessageBox.Show(exc.Message, "Exception Caught", MessageBoxButtons.OK, KryptonMessageBoxIcon.ERROR);
+                ExceptionCapture.CaptureException(exc);
             }
         }
 

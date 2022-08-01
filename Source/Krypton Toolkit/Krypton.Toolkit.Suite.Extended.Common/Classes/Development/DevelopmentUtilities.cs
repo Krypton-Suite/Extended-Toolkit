@@ -23,7 +23,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <param name="message">The message.</param>
         /// <param name="title">The title.</param>
         /// <param name="icon">The icon.</param>
-        public static void UnderConstruction(KryptonForm window, string message = null, string title = null, MessageBoxIcon icon = MessageBoxIcon.Exclamation)
+        public static void UnderConstruction(KryptonForm window, string message = null, string title = null, KryptonMessageBoxIcon icon = KryptonMessageBoxIcon.Exclamation)
         {
             if (message == null)
             {

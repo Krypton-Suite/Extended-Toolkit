@@ -318,7 +318,12 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 }
                 else
                 {
-                    DialogResult result = KryptonMessageBox.Show("One or more colours are not defined, use white & black?", "Non-Defined Colours", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    DialogResult result = KryptonMessageBox.Show("One or more colours are not defined, use white & black?", "Non-Defined Colours", MessageBoxButtons.YesNo, KryptonMessageBoxIcon.Question);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        // Note: Complete code
+                    }
                 }
             }
             catch (Exception exc)

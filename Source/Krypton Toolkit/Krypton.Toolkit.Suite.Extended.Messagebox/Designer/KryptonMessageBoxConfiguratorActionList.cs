@@ -43,17 +43,17 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         //    }
         //}
 
-        //public MessageBoxDefaultButton MessageBoxDefaultButton
+        //public KryptonMessageBoxDefaultButton KryptonMessageBoxDefaultButton
         //{
-        //    get => _messageBoxConfigurator.MessageBoxDefaultButton;
+        //    get => _messageBoxConfigurator.KryptonMessageBoxDefaultButton;
 
         //    set
         //    {
-        //        if (_messageBoxConfigurator.MessageBoxDefaultButton != value)
+        //        if (_messageBoxConfigurator.KryptonMessageBoxDefaultButton != value)
         //        {
-        //            _service.OnComponentChanged(_messageBoxConfigurator, null, _messageBoxConfigurator.MessageBoxDefaultButton, value);
+        //            _service.OnComponentChanged(_messageBoxConfigurator, null, _messageBoxConfigurator.KryptonMessageBoxDefaultButton, value);
 
-        //            _messageBoxConfigurator.MessageBoxDefaultButton = value;
+        //            _messageBoxConfigurator.KryptonMessageBoxDefaultButton = value;
         //        }
         //    }
         //}

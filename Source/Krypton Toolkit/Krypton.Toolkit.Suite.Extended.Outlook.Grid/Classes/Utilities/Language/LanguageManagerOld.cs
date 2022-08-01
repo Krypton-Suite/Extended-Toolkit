@@ -21,6 +21,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
     /// <summary>
     /// Handle localization (singleton)
     /// </summary>
+    // Note: Overhaul this!
     public class LanguageManager
     {        
         private static LanguageManager _mInstance = null;

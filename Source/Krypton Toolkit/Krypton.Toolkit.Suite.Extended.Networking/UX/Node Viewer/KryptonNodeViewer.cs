@@ -164,7 +164,7 @@ namespace Krypton.Toolkit.Suite.Extended.Networking
             catch (Exception ex)
             {
                 ExceptionCapture.CaptureException($"An error occurred trying to access the network computers.\n\n\n{ ex.Message }", "Error",
-                                                  MessageBoxButtons.OK, KryptonMessageBoxIcon.ERROR);
+                                                  MessageBoxButtons.OK, KryptonMessageBoxIcon.Error);
             }
         }
 

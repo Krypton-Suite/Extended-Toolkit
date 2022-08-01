@@ -2863,6 +2863,16 @@ namespace Krypton.Toolkit.Suite.Extended.Resources.Images {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Reset {
+            get {
+                object obj = ResourceManager.GetObject("Reset", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Reset_16_x_16 {
             get {
                 object obj = ResourceManager.GetObject("Reset_16_x_16", resourceCulture);
@@ -2876,6 +2886,26 @@ namespace Krypton.Toolkit.Suite.Extended.Resources.Images {
         internal static System.Drawing.Bitmap Reset_32_x_32 {
             get {
                 object obj = ResourceManager.GetObject("Reset_32_x_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Reset_32_x_32_V2 {
+            get {
+                object obj = ResourceManager.GetObject("Reset_32_x_32_V2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Reset_64_x_64 {
+            get {
+                object obj = ResourceManager.GetObject("Reset_64_x_64", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

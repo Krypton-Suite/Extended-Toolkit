@@ -50,7 +50,7 @@ namespace Krypton.Toolkit.Suite.Extended.Settings
         {
             if (usePrompt)
             {
-                DialogResult result = ExtendedKryptonMessageBox.Show("You have changed a setting value. Do you want to save these changes?", "Setting Values Changed", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult result = ExtendedKryptonMessageBox.Show("You have changed a setting value. Do you want to save these changes?", "Setting Values Changed", MessageBoxButtons.YesNo, KryptonMessageBoxIcon.Question);
 
                 if (result == DialogResult.Yes)
                 {

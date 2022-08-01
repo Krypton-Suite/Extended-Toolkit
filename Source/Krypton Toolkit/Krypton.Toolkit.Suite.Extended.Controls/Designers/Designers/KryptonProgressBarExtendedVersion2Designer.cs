@@ -6,9 +6,6 @@
  */
 #endregion
 
-using System.Collections;
-using System.Windows.Forms.Design.Behavior;
-
 namespace Krypton.Toolkit.Suite.Extended.Controls
 {
     internal class KryptonProgressBarExtendedVersion2Designer : ControlDesigner

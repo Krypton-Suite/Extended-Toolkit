@@ -71,15 +71,15 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="defaultButton">The default button.</param>
         /// <param name="icon">The icon.</param>
         /// <param name="options">The options.</param>
-        public void ShowException(string exceptionMessage, bool useKryptonMessageBox = false, bool useExtendedKryptonMessageBox = false, bool useWin32MessageBox = false, bool useConsole = false, bool useToolStripLabel = false, ToolStripLabel toolStripLabel = null, object args = null, string caption = "Exception Caught", MessageBoxButtons buttons = MessageBoxButtons.OK, MessageBoxDefaultButton defaultButton = MessageBoxDefaultButton.Button3, MessageBoxIcon icon = MessageBoxIcon.Exclamation, MessageBoxOptions options = MessageBoxOptions.DefaultDesktopOnly)
+        public void ShowException(string exceptionMessage, bool useKryptonMessageBox = false, bool useExtendedKryptonMessageBox = false, bool useWin32MessageBox = false, bool useConsole = false, bool useToolStripLabel = false, ToolStripLabel toolStripLabel = null, object args = null, string caption = "Exception Caught", MessageBoxButtons buttons = MessageBoxButtons.OK, MessageBoxDefaultButton defaultButton = MessageBoxDefaultButton.Button3, MessageBoxIcon icon = MessageBoxIcon.Exclamation, MessageBoxOptions options = MessageBoxOptions.DefaultDesktopOnly, KryptonMessageBoxIcon kryptonMessageBoxIcon = KryptonMessageBoxIcon.Error, KryptonMessageBoxDefaultButton kryptonMessageBoxDefaultButton = KryptonMessageBoxDefaultButton.Button4)
         {
             if (useKryptonMessageBox)
             {
-                KryptonMessageBox.Show(exceptionMessage, caption, buttons, icon, defaultButton, options);
+                KryptonMessageBox.Show(exceptionMessage, caption, buttons, kryptonMessageBoxIcon, kryptonMessageBoxDefaultButton, options);
             }
             else if (useExtendedKryptonMessageBox)
             {
-
+                // Note: To do...
             }
             else if (useWin32MessageBox)
             {
@@ -87,7 +87,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
             else if (useConsole)
             {
-                Console.WriteLine($"[ { DateTime.Now.ToString() } ]: { exceptionMessage }");
+                Console.WriteLine($"[ { DateTime.Now} ]: { exceptionMessage }");
             }
         }
 

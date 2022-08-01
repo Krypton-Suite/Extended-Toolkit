@@ -97,7 +97,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="70.22.7.188-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="70.22.7.206-alpha" />
 			</ItemGroup>
 		</When>
 
@@ -165,6 +165,14 @@
 
 	<ItemGroup>
 		<PackageReference Include="System.DirectoryServices" Version="6.0.0" />
+	</ItemGroup>
+	
+	<ItemGroup Condition="'$(TargetFramework)' == 'net6.0-windows'">
+		<PackageReference Include="System.DirectoryServices" Version="7.0.0-preview.6.22324.4" />
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net7.0-windows'">
+		<PackageReference Include="System.DirectoryServices" Version="7.0.0-preview.6.22324.4" />
 	</ItemGroup>
 
 	<ItemGroup>

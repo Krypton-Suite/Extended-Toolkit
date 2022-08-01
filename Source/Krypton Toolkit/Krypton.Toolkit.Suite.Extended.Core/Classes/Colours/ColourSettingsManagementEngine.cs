@@ -368,7 +368,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
             catch (Exception exc)
             {
-                KryptonMessageBox.Show($"An unexpected error has occurred: { exc.Message }", "Retrieving Settings Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                KryptonMessageBox.Show($"An unexpected error has occurred: { exc.Message }", "Retrieving Settings Failed", MessageBoxButtons.OK, KryptonMessageBoxIcon.Error);
 
                 tempColour = Color.FromArgb(0, 0, 0, 0);
             }
@@ -382,11 +382,11 @@ namespace Krypton.Toolkit.Suite.Extended.Core
 
             try
             {
-
+                // Note: Complete this
             }
             catch (Exception exc)
             {
-                KryptonMessageBox.Show($"An unexpected error has occurred: { exc.Message }", "Retrieving Settings Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                KryptonMessageBox.Show($"An unexpected error has occurred: { exc.Message }", "Retrieving Settings Failed", MessageBoxButtons.OK, KryptonMessageBoxIcon.Error);
             }
         }
 

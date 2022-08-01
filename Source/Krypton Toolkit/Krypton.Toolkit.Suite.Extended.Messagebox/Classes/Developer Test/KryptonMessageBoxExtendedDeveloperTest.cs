@@ -21,7 +21,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="showCtrlCopy">The show control copy.</param>
         public static DialogResult Show(string messageText, string caption, ExtendedMessageBoxButtons buttons,
             ExtendedKryptonMessageBoxIcon icon, bool? showCtrlCopy = null)
-            => InternalShow(null, messageText, caption, buttons, icon, MessageBoxDefaultButton.Button1, 0,
+            => InternalShow(null, messageText, caption, buttons, icon, KryptonMessageBoxDefaultButton.Button1, 0,
                 null, showCtrlCopy, null, null, null, null,
                 null, String.Empty, null, String.Empty, String.Empty);
 
@@ -30,7 +30,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             bool isOptionalCheckBoxChecked,
             CheckState optionalCheckBoxCheckState, string optionalCheckBoxText, bool ? showCtrlCopy = null)
             =>
-                InternalShow(null, messageText, caption, buttons, icon, MessageBoxDefaultButton.Button1, 0,
+                InternalShow(null, messageText, caption, buttons, icon, KryptonMessageBoxDefaultButton.Button1, 0,
                     null, showCtrlCopy, null, null, showOptionalCheckBox, isOptionalCheckBoxChecked,
                     optionalCheckBoxCheckState, optionalCheckBoxText, null, String.Empty, String.Empty);
 
@@ -55,8 +55,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// </returns>
         public static DialogResult Show(string text, string caption = @"",
                                  ExtendedMessageBoxButtons buttons = ExtendedMessageBoxButtons.OK,
-                                 ExtendedKryptonMessageBoxIcon icon = ExtendedKryptonMessageBoxIcon.NONE,
-                                 MessageBoxDefaultButton defaultButton = MessageBoxDefaultButton.Button1,
+                                 ExtendedKryptonMessageBoxIcon icon = ExtendedKryptonMessageBoxIcon.None,
+                                 KryptonMessageBoxDefaultButton defaultButton = KryptonMessageBoxDefaultButton.Button1,
                                  MessageBoxOptions options = 0,
                                  bool displayHelpButton = false,
                                  bool? showCtrlCopy = null,
@@ -90,7 +90,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         public static DialogResult Show(string text, string caption,
             ExtendedMessageBoxButtons buttons,
             ExtendedKryptonMessageBoxIcon icon,
-            MessageBoxDefaultButton defaultButton = MessageBoxDefaultButton.Button1,
+            KryptonMessageBoxDefaultButton defaultButton = KryptonMessageBoxDefaultButton.Button1,
             MessageBoxOptions options = 0,
             bool displayHelpButton = false,
             bool? showCtrlCopy = null)
@@ -118,8 +118,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// </returns>
         public static DialogResult Show(IWin32Window owner, string text, string caption = @"",
             ExtendedMessageBoxButtons buttons = ExtendedMessageBoxButtons.OK,
-            ExtendedKryptonMessageBoxIcon icon = ExtendedKryptonMessageBoxIcon.NONE,
-            MessageBoxDefaultButton defaultButton = MessageBoxDefaultButton.Button1,
+            ExtendedKryptonMessageBoxIcon icon = ExtendedKryptonMessageBoxIcon.None,
+            KryptonMessageBoxDefaultButton defaultButton = KryptonMessageBoxDefaultButton.Button1,
             MessageBoxOptions options = 0,
             bool displayHelpButton = false,
             bool? showCtrlCopy = null,
@@ -148,7 +148,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         public static DialogResult Show(IWin32Window owner, string text, string caption,
             ExtendedMessageBoxButtons buttons,
             ExtendedKryptonMessageBoxIcon icon,
-            MessageBoxDefaultButton defaultButton = MessageBoxDefaultButton.Button1,
+            KryptonMessageBoxDefaultButton defaultButton = KryptonMessageBoxDefaultButton.Button1,
             MessageBoxOptions options = 0,
             bool displayHelpButton = false,
             bool? showCtrlCopy = null)
@@ -181,8 +181,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// </returns>
         public static DialogResult Show(string text, string caption = @"",
                                  ExtendedMessageBoxButtons buttons = ExtendedMessageBoxButtons.OK,
-                                 ExtendedKryptonMessageBoxIcon icon = ExtendedKryptonMessageBoxIcon.NONE,
-                                 MessageBoxDefaultButton defaultButton = MessageBoxDefaultButton.Button1,
+                                 ExtendedKryptonMessageBoxIcon icon = ExtendedKryptonMessageBoxIcon.None,
+                                 KryptonMessageBoxDefaultButton defaultButton = KryptonMessageBoxDefaultButton.Button1,
                                  MessageBoxOptions options = 0,
                                  string helpFilePath = @"",
                                  HelpNavigator navigator = 0,
@@ -226,8 +226,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// </returns>
         public static DialogResult Show(IWin32Window owner, string text, string caption = @"",
                                  ExtendedMessageBoxButtons buttons = ExtendedMessageBoxButtons.OK,
-                                 ExtendedKryptonMessageBoxIcon icon = ExtendedKryptonMessageBoxIcon.NONE,
-                                 MessageBoxDefaultButton defaultButton = MessageBoxDefaultButton.Button1,
+                                 ExtendedKryptonMessageBoxIcon icon = ExtendedKryptonMessageBoxIcon.None,
+                                 KryptonMessageBoxDefaultButton defaultButton = KryptonMessageBoxDefaultButton.Button1,
                                  MessageBoxOptions options = 0,
                                  string helpFilePath = @"",
                                  HelpNavigator navigator = 0,
@@ -278,7 +278,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         internal static DialogResult InternalShow(IWin32Window owner, string text, string caption,
                                                   ExtendedMessageBoxButtons buttons,
                                                   ExtendedKryptonMessageBoxIcon icon,
-                                                  MessageBoxDefaultButton defaultButton,
+                                                  KryptonMessageBoxDefaultButton defaultButton,
                                                   MessageBoxOptions options,                          
                                                   HelpInfo helpInfo,
                                                   bool? showCtrlCopy, Font messageBoxTypeface,

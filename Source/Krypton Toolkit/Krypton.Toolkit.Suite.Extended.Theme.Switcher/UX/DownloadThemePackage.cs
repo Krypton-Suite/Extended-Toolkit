@@ -147,6 +147,8 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
         private WebClient _client;
 
         private Stopwatch _stopwatch = new Stopwatch();
+
+        private string _downloadLocation;
         #endregion
 
         #region Constructors
@@ -172,6 +174,8 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
                 try
                 {
                     _client.DownloadFileAsync(url, location);
+
+                    _downloadLocation = location;
                 }
                 catch (Exception e)
                 {
@@ -197,15 +201,25 @@ namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 
             if (e.Cancelled)
             {
-                KryptonMessageBox.Show("The download has been cancelled.", "Download Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                KryptonMessageBox.Show("The download has been canceled.", "Download Canceled", MessageBoxButtons.OK, KryptonMessageBoxIcon.Warning);
             }
             else
             {
-                DialogResult result = KryptonMessageBox.Show("The download has been completed! Unpack now?", "Download Complete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult result = KryptonMessageBox.Show("The download has been completed! Unpack now?", "Download Complete", MessageBoxButtons.YesNo, KryptonMessageBoxIcon.Question);
 
                 if (result == DialogResult.OK)
                 {
-
+                    try
+                    {
+                        if (_downloadLocation != null || _downloadLocation != string.Empty)
+                        {
+                            Process.Start(_downloadLocation);
+                        }
+                    }
+                    catch (Exception exception)
+                    {
+                        ExceptionCapture.CaptureException(exception);
+                    }
                 }
             }
         }

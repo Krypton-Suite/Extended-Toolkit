@@ -73,6 +73,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// Sort groups using count items value
         /// </summary>
         private bool _sortBySummaryCount;
+
+        private IComparer _itemsComparer;
         #endregion
 
         #region "Constructor"
@@ -284,11 +286,11 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         ///// <value>
         ///// The items comparer.
         ///// </value>
-        //public virtual IComparer ItemsComparer
-        //{
-        //    get { return _itemsComparer; }
-        //    set { _itemsComparer = value; }
-        //}
+        public virtual IComparer ItemsComparer
+        {
+            get => _itemsComparer;
+            set => _itemsComparer = value;
+        }
 
         #endregion
 
