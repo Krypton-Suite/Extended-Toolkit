@@ -29,7 +29,6 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// Constructor
         /// </summary>
         public OutlookGridColumnCollection()
-            : base()
         {
             _maxGroupIndex = -1;
             _maxSortIndex = -1;
@@ -75,7 +74,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// Gets the number of columns grouped
         /// </summary>
         /// <returns>the number of columns grouped.</returns>
-        public int CountGrouped() => this.Count(c => c.IsGrouped == true);
+        public int CountGrouped() => this.Count(c => c.IsGrouped);
 
         /// <summary>
         /// Gets the list of grouped columns
@@ -95,7 +94,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             {
                 if (col.IsGrouped && col.GroupIndex > -1)
                 {
-                    res.Add(Tuple.Create<int, SortOrder, IComparer>(col.DataGridViewColumn.Index, col.SortDirection, col.RowsComparer));
+                    res.Add(Tuple.Create(col.DataGridViewColumn.Index, col.SortDirection, col.RowsComparer));
                 }
             }
             return res;
@@ -140,7 +139,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         internal void RemoveGroupIndex(OutlookGridColumn col)
         {
             int removed = col.GroupIndex;
-            for (int i = 0; i < this.Count; i++)
+            for (int i = 0; i < Count; i++)
             {
                 if (this[i].GroupIndex > removed)
                 {
@@ -158,7 +157,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         internal void RemoveSortIndex(OutlookGridColumn col)
         {
             int removed = col.SortIndex;
-            for (int i = 0; i < this.Count; i++)
+            for (int i = 0; i < Count; i++)
             {
                 if (this[i].SortIndex > removed)
                 {
@@ -174,7 +173,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             int currentGroupIndex = -1;
             int newGroupIndex = outlookGridColumn.GroupIndex;
 
-            for (int i = 0; i < this.Count; i++)
+            for (int i = 0; i < Count; i++)
             {
                 if (this[i].Name == outlookGridColumn.Name)
                 {
@@ -192,7 +191,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             DebugOutput();
 #endif
 
-            for (int i = 0; i < this.Count; i++)
+            for (int i = 0; i < Count; i++)
             {
                 if (this[i].IsGrouped)
                 {
@@ -221,11 +220,11 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// </summary>
         public void DebugOutput()
         {
-            for (int i = 0; i < this.Count; i++)
+            for (int i = 0; i < Count; i++)
             {
-                Console.WriteLine(this[i].Name + " , GroupIndex=" + this[i].GroupIndex.ToString() + ", SortIndex=" + this[i].SortIndex.ToString());
+                Console.WriteLine(this[i].Name + " , GroupIndex=" + this[i].GroupIndex + ", SortIndex=" + this[i].SortIndex);
             }
-            Console.WriteLine("MaxGroupIndex=" + _maxGroupIndex.ToString() + ", MaxSortIndex=" + _maxSortIndex.ToString());
+            Console.WriteLine("MaxGroupIndex=" + _maxGroupIndex + ", MaxSortIndex=" + _maxSortIndex);
         }
     }
 }

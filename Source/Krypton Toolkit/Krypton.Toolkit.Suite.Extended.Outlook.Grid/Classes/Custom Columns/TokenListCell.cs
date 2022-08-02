@@ -28,7 +28,6 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// Constructor
         /// </summary>
         public TokenListCell()
-            : base()
         {
             //Value type is an integer. 
             //Formatted value type is an image since we derive from the ImageCell 
@@ -57,7 +56,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             int nextPosition = cellBounds.X + (int)(1 * factorX);
             Font f = KryptonManager.CurrentGlobalPalette.GetContentShortTextFont(PaletteContentStyle.GridDataCellList, PaletteState.Normal);
 
-            foreach (Token tok in (List<Token>)this.Value)
+            foreach (Token tok in (List<Token>)Value)
             {
                 Rectangle rectangle = new Rectangle();
                 Size s = TextRenderer.MeasureText(tok.Text, f);
@@ -90,7 +89,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             int nextPosition = (int)(1 * factorX);
             if (Value != null)
             {
-                foreach (Token tok in (List<Token>)this.Value)
+                foreach (Token tok in (List<Token>)Value)
                 {
                     Size s = TextRenderer.MeasureText(tok.Text, f);
                     nextPosition += s.Width + (int)(10 * factorX) + (int)(5 * factorX);

@@ -73,7 +73,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             {
                 this.hue = hue;
                 this.saturation = saturation;
-                this.valueOrBrightness = value;
+                valueOrBrightness = value;
             }
         }
 
@@ -164,53 +164,51 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 int grayValue = Convert.ToInt32(v * 255);
                 return Color.FromArgb(grayValue, grayValue, grayValue);
             }
-            else
+
+            float hVal = h / 360f; // 0 <= hVah < 1
+
+            float varH = hVal * 6f;
+            if (varH == 6f) varH = 0f;
+            int i = (int)varH; //Or ... vari = floor( varh )
+            float var1 = v * (1f - s);
+            float var2 = v * (1f - s * (varH - i));
+            float var3 = v * (1f - s * (1f - (varH - i)));
+
+            switch (i)
             {
-                float hVal = h / 360f; // 0 <= hVah < 1
-
-                float varH = hVal * 6f;
-                if (varH == 6f) varH = 0f;
-                int i = (int)varH; //Or ... vari = floor( varh )
-                float var1 = v * (1f - s);
-                float var2 = v * (1f - s * (varH - (float)i));
-                float var3 = v * (1f - s * (1f - (varH - i)));
-
-                switch (i)
-                {
-                    case 0:
-                        fRed = v;
-                        fGreen = var3;
-                        fBlue = var1;
-                        break;
-                    case 1:
-                        fRed = var2;
-                        fGreen = v;
-                        fBlue = var1;
-                        break;
-                    case 2:
-                        fRed = var1;
-                        fGreen = v;
-                        fBlue = var3;
-                        break;
-                    case 3:
-                        fRed = var1;
-                        fGreen = var2;
-                        fBlue = v;
-                        break;
-                    case 4:
-                        fRed = var3;
-                        fGreen = var1;
-                        fBlue = v;
-                        break;
-                    default:
-                        fRed = v;
-                        fGreen = var1;
-                        fBlue = var2;
-                        break;
-                }
-
-                return Color.FromArgb((int)(fRed * 255f), (int)(fGreen * 255f), (int)(fBlue * 255f));
+                case 0:
+                    fRed = v;
+                    fGreen = var3;
+                    fBlue = var1;
+                    break;
+                case 1:
+                    fRed = var2;
+                    fGreen = v;
+                    fBlue = var1;
+                    break;
+                case 2:
+                    fRed = var1;
+                    fGreen = v;
+                    fBlue = var3;
+                    break;
+                case 3:
+                    fRed = var1;
+                    fGreen = var2;
+                    fBlue = v;
+                    break;
+                case 4:
+                    fRed = var3;
+                    fGreen = var1;
+                    fBlue = v;
+                    break;
+                default:
+                    fRed = v;
+                    fGreen = var1;
+                    fBlue = var2;
+                    break;
             }
+
+            return Color.FromArgb((int)(fRed * 255f), (int)(fGreen * 255f), (int)(fBlue * 255f));
         }
 
 

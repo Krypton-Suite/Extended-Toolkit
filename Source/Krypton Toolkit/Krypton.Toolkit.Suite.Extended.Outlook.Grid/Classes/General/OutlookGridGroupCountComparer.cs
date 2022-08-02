@@ -20,10 +20,6 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 {
     internal class OutlookGridGroupCountComparer : IComparer<IOutlookGridGroup>
     {
-        public OutlookGridGroupCountComparer()
-        {
-        }
-
         #region IComparer Members
 
         public int Compare(IOutlookGridGroup x, IOutlookGridGroup y)
@@ -45,7 +41,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             }
             catch (Exception ex)
             {
-                throw new Exception("OutlookGridGroupCountComparer: " + this.ToString(), ex);
+                throw new Exception("OutlookGridGroupCountComparer: " + ToString(), ex);
             }
         }
         #endregion

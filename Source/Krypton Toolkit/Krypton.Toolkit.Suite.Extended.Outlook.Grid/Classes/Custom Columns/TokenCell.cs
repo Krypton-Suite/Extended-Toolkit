@@ -28,7 +28,6 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// Constructor
         /// </summary>
         public TokenCell()
-            : base()
         {
             //Value type is an integer. 
             //Formatted value type is an image since we derive from the ImageCell 
@@ -48,10 +47,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             {
                 return tok.Text;
             }
-            else
-            {
-                return "";
-            }
+
+            return "";
         }
 
         /// <summary>

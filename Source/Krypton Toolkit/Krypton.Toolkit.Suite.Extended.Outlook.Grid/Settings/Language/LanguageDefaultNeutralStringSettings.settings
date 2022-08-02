@@ -1,0 +1,201 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Krypton.Toolkit.Suite.Extended.Outlook.Grid.Settings.Language" GeneratedClassName="LanguageDefaultNeutralStringSettings">
+  <Profiles />
+  <Settings>
+    <Setting Name="AfterNextMonth" Type="System.String" Scope="User">
+      <Value Profile="(Default)">After next month</Value>
+    </Setting>
+    <Setting Name="AlphabeticGroupText" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Alphabetic</Value>
+    </Setting>
+    <Setting Name="Bar" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Data Bars</Value>
+    </Setting>
+    <Setting Name="BeforePreviousMonth" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Before previous month</Value>
+    </Setting>
+    <Setting Name="BestFit" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Best fit</Value>
+    </Setting>
+    <Setting Name="BestFitAll" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Best fit (all columns)</Value>
+    </Setting>
+    <Setting Name="Cancel" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Cancel</Value>
+    </Setting>
+    <Setting Name="ClearGrouping" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Clear grouping</Value>
+    </Setting>
+    <Setting Name="ClearRules" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Clear rules...</Value>
+    </Setting>
+    <Setting Name="ClearSorting" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Clear sorting</Value>
+    </Setting>
+    <Setting Name="Collapse" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Collapse</Value>
+    </Setting>
+    <Setting Name="Columns" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Columns</Value>
+    </Setting>
+    <Setting Name="ConditionalFormatting" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Conditional formatting</Value>
+    </Setting>
+    <Setting Name="CustomThreeDots" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Custom...</Value>
+    </Setting>
+    <Setting Name="DateGroupText" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Date</Value>
+    </Setting>
+    <Setting Name="Day" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Day</Value>
+    </Setting>
+    <Setting Name="DragColumnToGroup" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Drag a column header here to group by that column</Value>
+    </Setting>
+    <Setting Name="EarlierDuringThisMonth" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Earlier during this month</Value>
+    </Setting>
+    <Setting Name="EarlierThisYear" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Earlier this year</Value>
+    </Setting>
+    <Setting Name="Expand" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Expand</Value>
+    </Setting>
+    <Setting Name="Finish" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Finish</Value>
+    </Setting>
+    <Setting Name="FullCollapse" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Full collapse</Value>
+    </Setting>
+    <Setting Name="FullExpand" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Full expand</Value>
+    </Setting>
+    <Setting Name="GradientFill" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Gradient Fill</Value>
+    </Setting>
+    <Setting Name="Group" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Group by this column</Value>
+    </Setting>
+    <Setting Name="GroupInterval" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Group interval</Value>
+    </Setting>
+    <Setting Name="HideGroupBox" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Hide GroupBox</Value>
+    </Setting>
+    <Setting Name="InThreeWeeks" Type="System.String" Scope="User">
+      <Value Profile="(Default)">In three weeks</Value>
+    </Setting>
+    <Setting Name="InTwoWeeks" Type="System.String" Scope="User">
+      <Value Profile="(Default)">In two weeks</Value>
+    </Setting>
+    <Setting Name="LaterDuringThisMonth" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Later during this month</Value>
+    </Setting>
+    <Setting Name="Month" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Month</Value>
+    </Setting>
+    <Setting Name="NextMonth" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Next month</Value>
+    </Setting>
+    <Setting Name="NextWeek" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Next Week</Value>
+    </Setting>
+    <Setting Name="NoDate" Type="System.String" Scope="User">
+      <Value Profile="(Default)">No date</Value>
+    </Setting>
+    <Setting Name="Older" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Older</Value>
+    </Setting>
+    <Setting Name="OneItem" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1 item</Value>
+    </Setting>
+    <Setting Name="Other" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Other</Value>
+    </Setting>
+    <Setting Name="PaletteCustom" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Custom...</Value>
+    </Setting>
+    <Setting Name="PaletteCustomHeading" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Custom palettes</Value>
+    </Setting>
+    <Setting Name="PreviousMonth" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Previous month</Value>
+    </Setting>
+    <Setting Name="PreviousWeek" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Previous week</Value>
+    </Setting>
+    <Setting Name="PreviousYear" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Previous year</Value>
+    </Setting>
+    <Setting Name="Q1" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Q1</Value>
+    </Setting>
+    <Setting Name="Q2" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Q2</Value>
+    </Setting>
+    <Setting Name="Q3" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Q3</Value>
+    </Setting>
+    <Setting Name="Q4" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Q4</Value>
+    </Setting>
+    <Setting Name="Quarter" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Quarter</Value>
+    </Setting>
+    <Setting Name="ShowGroupBox" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Show GroupBox</Value>
+    </Setting>
+    <Setting Name="Smart" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Smart</Value>
+    </Setting>
+    <Setting Name="SolidFill" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Solid Fill</Value>
+    </Setting>
+    <Setting Name="SortAscending" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Sort ascending</Value>
+    </Setting>
+    <Setting Name="SortBySummaryCount" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Sort by summary count</Value>
+    </Setting>
+    <Setting Name="SortDescending" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Sort descending</Value>
+    </Setting>
+    <Setting Name="ThreeColorsRange" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Three Color Scale</Value>
+    </Setting>
+    <Setting Name="ThreeWeeksAgo" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Three weeks ago</Value>
+    </Setting>
+    <Setting Name="Today" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Today</Value>
+    </Setting>
+    <Setting Name="Tomorrow" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Tomorrow</Value>
+    </Setting>
+    <Setting Name="TwoColorsRange" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Two Color Scale</Value>
+    </Setting>
+    <Setting Name="TwoWeeksAgo" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Two weeks ago</Value>
+    </Setting>
+    <Setting Name="Ungroup" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Ungroup</Value>
+    </Setting>
+    <Setting Name="Unknown" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Unknown</Value>
+    </Setting>
+    <Setting Name="XXXItems" Type="System.String" Scope="User">
+      <Value Profile="(Default)"> items</Value>
+    </Setting>
+    <Setting Name="Year" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Year</Value>
+    </Setting>
+    <Setting Name="YearGroupText" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Year</Value>
+    </Setting>
+    <Setting Name="Yesterday" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Yesterday</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

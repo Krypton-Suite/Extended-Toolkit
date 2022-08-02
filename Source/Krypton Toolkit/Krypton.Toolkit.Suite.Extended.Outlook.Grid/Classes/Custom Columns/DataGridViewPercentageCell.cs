@@ -68,7 +68,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             int barWidth;
             if ((double)value >= 1.0)
             {
-                barWidth = (int)(cellBounds.Width - 10);
+                barWidth = cellBounds.Width - 10;
             }
             else
             {

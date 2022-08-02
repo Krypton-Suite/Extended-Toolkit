@@ -22,9 +22,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
     /// Handle localization (singleton)
     /// </summary>
     // Note: Overhaul this!
-    public class LanguageManager
+    public class LanguageManagerOld
     {        
-        private static LanguageManager _mInstance = null;
+        private static LanguageManagerOld _mInstance;
 
         private static readonly object _mylock = new object();
         private ResourceManager _rm;
@@ -33,7 +33,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         //Used for blocking critical sections on updates
         private object _locker = new object();
 
-        private LanguageManager()
+        private LanguageManagerOld()
         {
             _rm = new ResourceManager("Krypton.Toolkit.Suite.Extended.Outlook.Grid.Resources.Language.Strings.en-Neutral", Assembly.GetExecutingAssembly());
             _ci = Thread.CurrentThread.CurrentCulture; //CultureInfo.CurrentCulture;
@@ -48,7 +48,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <summary>
         /// Gets the instance of the singleton.
         /// </summary>
-        public static LanguageManager Instance
+        public static LanguageManagerOld Instance
         {
             get
             {
@@ -58,7 +58,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                     {
                         if (_mInstance == null)
                         {
-                            _mInstance = new LanguageManager();
+                            _mInstance = new LanguageManagerOld();
                         }
                     }
                 }

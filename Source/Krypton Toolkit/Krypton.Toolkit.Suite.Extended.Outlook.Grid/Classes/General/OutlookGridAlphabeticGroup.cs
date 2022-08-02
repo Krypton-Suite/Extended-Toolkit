@@ -33,7 +33,6 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// Initializes a new instance of the <see cref="OutlookGridAlphabeticGroup"/> class.
         /// </summary>
         public OutlookGridAlphabeticGroup()
-            : base()
         {
             AllowHiddenWhenGrouped = false;
         }
@@ -51,7 +50,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <summary>
         /// Gets or sets the displayed text.
         /// </summary>
-        public override string Text => $"{Column.DataGridViewColumn.HeaderText}: {Value} ({(ItemCount == 1 ? OneItemText : ItemCount.ToString() + XXXItemsText)})";
+        public override string Text => $"{Column.DataGridViewColumn.HeaderText}: {Value} ({(ItemCount == 1 ? OneItemText : ItemCount + XXXItemsText)})";
 
         /// <summary>
         /// Gets or sets the Alphabetic value
@@ -116,10 +115,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             {
                 return string.Compare(Value.ToString(), ((OutlookGridAlphabeticGroup)obj).Value.ToString()) * orderModifier;
             }
-            else
-            {
-                return 0;
-            }
+
+            return 0;
         }
         #endregion IComparable Members
     }

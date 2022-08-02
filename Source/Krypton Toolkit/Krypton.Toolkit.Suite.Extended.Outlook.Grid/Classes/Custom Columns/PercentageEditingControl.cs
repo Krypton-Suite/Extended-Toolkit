@@ -28,7 +28,6 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// Constructor
         /// </summary>
         public PercentageEditingControl()
-            : base()
         {
         }
 

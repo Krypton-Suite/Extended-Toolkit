@@ -46,8 +46,8 @@
 
 	<PropertyGroup>
 		<OutputType>library</OutputType>
-		<RootNamespace>Krypton.Toolkit.Suite.Extended.ComboBox</RootNamespace>
-		<AssemblyName>Krypton.Toolkit.Suite.Extended.ComboBox</AssemblyName>
+		<RootNamespace>Krypton.Toolkit.Suite.Extended.Outlook.Grid</RootNamespace>
+		<AssemblyName>Krypton.Toolkit.Suite.Extended.Outlook.Grid</AssemblyName>
 		<UseWindowsForms>true</UseWindowsForms>
 		<NeutralLanguage>en</NeutralLanguage>
 		<Configurations>Debug;Release;Nightly;Canary;StableFull;StableLite;SignedFull;SignedLite</Configurations>
@@ -57,31 +57,31 @@
 	<Choose>
 		<When Condition="'$(Configuration)' == 'Canary'">
 			<PropertyGroup>
-				<PackageId>Krypton.Toolkit.Suite.Extended.ComboBox.Canary</PackageId>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Outlook.Grid.Canary</PackageId>
 			</PropertyGroup>
 		</When>
 
 		<When Condition="'$(Configuration)' == 'Nightly'">
 			<PropertyGroup>
-				<PackageId>Krypton.Toolkit.Suite.Extended.ComboBox.Nightly</PackageId>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Outlook.Grid.Nightly</PackageId>
 			</PropertyGroup>
 		</When>
 
 		<When Condition="'$(Configuration)' == 'Signed'">
 			<PropertyGroup>
-				<PackageId>Krypton.Toolkit.Suite.Extended.ComboBox.Signed</PackageId>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Outlook.Grid.Signed</PackageId>
 			</PropertyGroup>
 		</When>
 		<Otherwise>
 			<PropertyGroup>
-				<PackageId>Krypton.Toolkit.Suite.Extended.ComboBox</PackageId>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Outlook.Grid</PackageId>
 			</PropertyGroup>
 		</Otherwise>
 	</Choose>
 
 	<PropertyGroup>
 		<Description>
-			An extension to the Standard Toolkit, which supports .NET Framework 4.6.2 - 4.8.1, .NET Core 3.1 and .NET 5 - 7. This package implements extensions to the Krypton standard toolkit ComboBox, including additional Drop Down types and views.
+			An extension to the Standard Toolkit, which supports .NET Framework 4.6.2 - 4.8.1, .NET Core 3.1 and .NET 5 - 7. This package implements the 'OutlookGrid' control.
 
 			This package supports all .NET Framework versions starting .NET Framework 4.6.2 - 4.8.1, .NET Core 3.1 and .NET 5 - 7.
 			Also, all libraries are included targeting each specific framework version for performance purposes.
@@ -182,9 +182,54 @@
 		<Reference Include="System.Design" Condition="'$(TargetFramework)' == 'net35'" />
 		<!--TODO: Need to specify version here-->
 	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Update="Properties\Resources.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>Resources.resx</DependentUpon>
+		</Compile>
+		
+		<Compile Update="Resources\Language\Strings.en-Neutral.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>Strings.en-Neutral.resx</DependentUpon>
+		</Compile>
+		
+		<Compile Update="Resources\OutlookGridImageResources.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>OutlookGridImageResources.resx</DependentUpon>
+		</Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Update="Properties\Resources.resx">
+			<Generator>ResXFileCodeGenerator</Generator>
+			<LastGenOutput>Resources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		
+		<EmbeddedResource Update="Resources\Language\Strings.en-Neutral.resx">
+			<Generator>ResXFileCodeGenerator</Generator>
+			<LastGenOutput>Strings.en-Neutral.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		
+		<EmbeddedResource Update="Resources\OutlookGridImageResources.resx">
+			<Generator>ResXFileCodeGenerator</Generator>
+			<LastGenOutput>OutlookGridImageResources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="Settings\Language\LanguageSettings.settings">
+	    <Generator>SettingsSingleFileGenerator</Generator>
+	  </None>
+	</ItemGroup>
+	
 	<!--Binary/Documentation Output-->
 	<PropertyGroup>
-		<DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.ComboBox\Krypton.Toolkit.Suite.Extended.ComboBox.xml</DocumentationFile>
-		<OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.ComboBox\</OutputPath>
+		<DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Outlook.Grid\Krypton.Toolkit.Suite.Extended.Outlook.Grid.xml</DocumentationFile>
+		<OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Outlook.Grid\</OutputPath>
 	</PropertyGroup>
+
 </Project>

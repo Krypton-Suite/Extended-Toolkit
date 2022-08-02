@@ -93,8 +93,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                         int barWidth;
                         BarParams par = (BarParams)FormatParams;
                         barWidth = (int)((cellBounds.Width - 10) * par.ProportionValue);
-                        Style.BackColor = this.DataGridView.DefaultCellStyle.BackColor;
-                        Style.ForeColor = this.DataGridView.DefaultCellStyle.ForeColor;
+                        Style.BackColor = DataGridView.DefaultCellStyle.BackColor;
+                        Style.ForeColor = DataGridView.DefaultCellStyle.ForeColor;
 
                         if (barWidth > 0) //(double)value > 0 &&
                         {
@@ -140,8 +140,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             }
             else
             {
-                Style.BackColor = this.DataGridView.DefaultCellStyle.BackColor;
-                Style.ForeColor = this.DataGridView.DefaultCellStyle.ForeColor;
+                Style.BackColor = DataGridView.DefaultCellStyle.BackColor;
+                Style.ForeColor = DataGridView.DefaultCellStyle.ForeColor;
             }
 
             base.Paint(graphics, clipBounds, cellBounds, rowIndex, cellState, value, formattedValue, errorText, cellStyle, advancedBorderStyle,

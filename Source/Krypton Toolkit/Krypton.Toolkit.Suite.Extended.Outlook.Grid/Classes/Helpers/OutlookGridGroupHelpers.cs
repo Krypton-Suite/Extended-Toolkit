@@ -30,16 +30,18 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <returns>The text to display</returns>
         public static string GetDayText(DateTime date)
         {
+            LanguageManager languageManager = new LanguageManager();
+
             switch (GetDateCode(date))
             {
                 case "NODATE":
-                    return LanguageManager.Instance.GetString("NODATE");// "Today";
+                    return languageManager.GetNoDateText();// "Today";
                 case "TODAY":
-                    return LanguageManager.Instance.GetString("TODAY");// "Today";
+                    return languageManager.GetTodayText();// "Today";
                 case "YESTERDAY":
-                    return LanguageManager.Instance.GetString("YESTERDAY");//"Yesterday";
+                    return languageManager.GetYesterdayText();//"Yesterday";
                 case "TOMORROW":
-                    return LanguageManager.Instance.GetString("TOMORROW");//"Tomorrow";
+                    return languageManager.GetTomorrowText();//"Tomorrow";
                 case "Monday":
                 case "Tuesday":
                 case "Wednesday":
@@ -49,35 +51,35 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 case "Sunday":
                     return UppercaseFirst(date.ToString("dddd"));
                 case "NEXTWEEK":
-                    return LanguageManager.Instance.GetString("NEXTWEEK");//"Next Week";
+                    return languageManager.GetNextWeekText();//"Next Week";
                 case "INTWOWEEKS": //dans le deux semaines a venir
-                    return LanguageManager.Instance.GetString("INTWOWEEKS");//"In two weeks"; //dans le deux semaines a venir
+                    return languageManager.GetInTwoWeeksText();//"In two weeks"; //dans le deux semaines a venir
                 case "INTHREEWEEKS": //dans les trois semaines à venir
-                    return LanguageManager.Instance.GetString("INTHREEWEEKS");//"In three weeks"; //dans les trois semaines à venir
+                    return languageManager.GetInThreeWeeksText();//"In three weeks"; //dans les trois semaines à venir
                 case "LATERDURINGTHISMONTH": //Plus tard au cours de ce mois 
-                    return LanguageManager.Instance.GetString("LATERDURINGTHISMONTH");//"Later during this month"; //Plus tard au cours de ce mois 
+                    return languageManager.GetLaterDuringThisMonthText();//"Later during this month"; //Plus tard au cours de ce mois 
                 case "NEXTMONTH": //Prochain mois
-                    return LanguageManager.Instance.GetString("NEXTMONTH");//"Next month"; //Prochain mois
+                    return languageManager.GetNextMonthText();//"Next month"; //Prochain mois
                 case "AFTERNEXTMONTH":  //Au-delà du prochain mois 
-                    return LanguageManager.Instance.GetString("AFTERNEXTMONTH");//"After next month";  //Au-delà du prochain mois 
+                    return languageManager.GetAfterNextMonthText();//"After next month";  //Au-delà du prochain mois 
                 case "PREVIOUSWEEK":
-                    return LanguageManager.Instance.GetString("PREVIOUSWEEK");//"Previous Week";
+                    return languageManager.GetPreviousWeekText();//"Previous Week";
                 case "TWOWEEKSAGO": //Il y a deux semaines
-                    return LanguageManager.Instance.GetString("TWOWEEKSAGO");//"Two weeks ago"; //Il y a deux semaines
+                    return languageManager.GetThreeWeeksAgoText();//"Two weeks ago"; //Il y a deux semaines
                 case "THREEWEEKSAGO": //Il y a trois semaines
-                    return LanguageManager.Instance.GetString("THREEWEEKSAGO");//"Three weeks ago"; //Il y a deux semaines
+                    return languageManager.GetThreeWeeksAgoText();//"Three weeks ago"; //Il y a deux semaines
                 case "EARLIERDURINGTHISMONTH": //Plus tôt durant ce mois
-                    return LanguageManager.Instance.GetString("EARLIERDURINGTHISMONTH");//"Earlier during this month";  //Plus tot au cours de ce mois
+                    return languageManager.GetEarlierDuringThisMonthText();//"Earlier during this month";  //Plus tot au cours de ce mois
                 case "PREVIOUSMONTH": //Mois précédent
-                    return LanguageManager.Instance.GetString("PREVIOUSMONTH");//"Previous Month";  //Mois dernier
+                    return languageManager.GetPreviousMonthText();//"Previous Month";  //Mois dernier
                 case "BEFOREPREVIOUSMONTH":  //Mois dernier // no longer exist
-                    return LanguageManager.Instance.GetString("BEFOREPREVIOUSMONTH");//"Before Previous Month";   //Avant le mois dernier
+                    return languageManager.GetBeforePreviousMonthText();//"Before Previous Month";   //Avant le mois dernier
                 case "EARLIERTHISYEAR":  //Mois dernier // no longer exist
-                    return LanguageManager.Instance.GetString("EARLIERTHISYEAR");//"Before Previous Month";   //Avant le mois dernier
+                    return languageManager.GetEarlierThisYearText();//"Before Previous Month";   //Avant le mois dernier
                 case "PREVIOUSYEAR":  //Mois dernier // no longer exist
-                    return LanguageManager.Instance.GetString("PREVIOUSYEAR");//"Before Previous Month";   //Avant le mois dernier
+                    return languageManager.GetPreviousYearText();//"Before Previous Month";   //Avant le mois dernier
                 case "OLDER":  //Mois dernier // no longer exist
-                    return LanguageManager.Instance.GetString("OLDER");//"Before Previous Month";   //Avant le mois dernier
+                    return languageManager.GetOlderText();//"Before Previous Month";   //Avant le mois dernier
 
                 default:
                     return date.Date.ToShortDateString();
@@ -95,83 +97,99 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             {
                 return "NODATE";
             }
-            else if (date.Date == DateTime.Now.Date)//Today
+
+            if (date.Date == DateTime.Now.Date)//Today
             {
                 return "TODAY";
             }
-            else if (date.Date == DateTime.Now.AddDays(-1).Date)
+
+            if (date.Date == DateTime.Now.AddDays(-1).Date)
             {
                 return "YESTERDAY";
             }
-            else if (date.Date == DateTime.Now.AddDays(1).Date)
+
+            if (date.Date == DateTime.Now.AddDays(1).Date)
             {
                 return "TOMORROW";
             }
-            else if ((date.Date >= GetFirstDayOfWeek(DateTime.Now)) && (date.Date <= GetLastDayOfWeek(DateTime.Now)))
+
+            if ((date.Date >= GetFirstDayOfWeek(DateTime.Now)) && (date.Date <= GetLastDayOfWeek(DateTime.Now)))
             {
                 return date.Date.DayOfWeek.ToString();//"DAYOFWEEK";
             }
-            else if ((date.Date > GetLastDayOfWeek(DateTime.Now)) && (date.Date <= GetLastDayOfWeek(DateTime.Now).AddDays(6)))
+
+            if ((date.Date > GetLastDayOfWeek(DateTime.Now)) && (date.Date <= GetLastDayOfWeek(DateTime.Now).AddDays(6)))
             {
                 return "NEXTWEEK";
             }
-            else if ((date.Date > GetLastDayOfWeek(DateTime.Now).AddDays(6)) && (date.Date <= GetLastDayOfWeek(DateTime.Now).AddDays(12)))
+
+            if ((date.Date > GetLastDayOfWeek(DateTime.Now).AddDays(6)) && (date.Date <= GetLastDayOfWeek(DateTime.Now).AddDays(12)))
             {
                 return "INTWOWEEKS"; //dans les deux semaines a venir
             }
-            else if ((date.Date > GetLastDayOfWeek(DateTime.Now).AddDays(12)) && (date.Date <= GetLastDayOfWeek(DateTime.Now).AddDays(18)))
+
+            if ((date.Date > GetLastDayOfWeek(DateTime.Now).AddDays(12)) && (date.Date <= GetLastDayOfWeek(DateTime.Now).AddDays(18)))
             {
                 return "INTHREEWEEKS"; //dans les trois semaines à venir
             }
-            else if ((date.Date > GetLastDayOfWeek(DateTime.Now).AddDays(18)) && (date.Date <= new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).AddMonths(1).AddDays(-1)))//AddDays(DateTime.DaysInMonth(DateTime.Now.Year,DateTime.Now.Month)-1)))
+
+            if ((date.Date > GetLastDayOfWeek(DateTime.Now).AddDays(18)) && (date.Date <= new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).AddMonths(1).AddDays(-1)))//AddDays(DateTime.DaysInMonth(DateTime.Now.Year,DateTime.Now.Month)-1)))
             {
                 return "LATERDURINGTHISMONTH"; //Plus tard au cours de ce mois 
             }
-            else if ((date.Date > GetLastDayOfWeek(DateTime.Now).AddDays(18)) && (date.Date > new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).AddMonths(1).AddDays(-1)) && (date.Date <= new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).AddMonths(2).AddDays(-1)))
+
+            if ((date.Date > GetLastDayOfWeek(DateTime.Now).AddDays(18)) && (date.Date > new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).AddMonths(1).AddDays(-1)) && (date.Date <= new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).AddMonths(2).AddDays(-1)))
             {
                 return "NEXTMONTH"; //Prochain mois
             }
-            else if ((date.Date > GetLastDayOfWeek(DateTime.Now).AddDays(18)) && (date.Date > new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).AddMonths(2).AddDays(-1)))
+
+            if ((date.Date > GetLastDayOfWeek(DateTime.Now).AddDays(18)) && (date.Date > new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).AddMonths(2).AddDays(-1)))
             {
                 return "AFTERNEXTMONTH";  //Au-delà du prochain mois 
             }
-            else if ((date.Date < GetFirstDayOfWeek(DateTime.Now)) && (date.Date >= GetFirstDayOfWeek(DateTime.Now).AddDays(-7)))
+
+            if ((date.Date < GetFirstDayOfWeek(DateTime.Now)) && (date.Date >= GetFirstDayOfWeek(DateTime.Now).AddDays(-7)))
             {
                 return "PREVIOUSWEEK";
             }
-            else if ((date.Date <= GetFirstDayOfWeek(DateTime.Now).AddDays(-7)) && (date.Date >= GetFirstDayOfWeek(DateTime.Now).AddDays(-14)))
+
+            if ((date.Date <= GetFirstDayOfWeek(DateTime.Now).AddDays(-7)) && (date.Date >= GetFirstDayOfWeek(DateTime.Now).AddDays(-14)))
             {
                 return "TWOWEEKSAGO"; //Il y a deux semaines
             }
-            else if ((date.Date <= GetFirstDayOfWeek(DateTime.Now).AddDays(-14)) && (date.Date >= GetFirstDayOfWeek(DateTime.Now).AddDays(-21)))
+
+            if ((date.Date <= GetFirstDayOfWeek(DateTime.Now).AddDays(-14)) && (date.Date >= GetFirstDayOfWeek(DateTime.Now).AddDays(-21)))
             {
                 return "THREEWEEKSAGO"; //Il y a trois semaines
             }
-            else if ((date.Date <= GetFirstDayOfWeek(DateTime.Now).AddDays(-21)) && (date.Date >= new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1)))
+
+            if ((date.Date <= GetFirstDayOfWeek(DateTime.Now).AddDays(-21)) && (date.Date >= new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1)))
             {
                 return "EARLIERDURINGTHISMONTH"; //Plus tôt durant ce mois
             }
-            else if ((date.Date <= GetFirstDayOfWeek(DateTime.Now).AddDays(-21)) && (date.Date >= new DateTime(DateTime.Now.Year, DateTime.Now.AddMonths(-1).Month, 1)) && (date.Date <= new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).AddDays(-1)))
+
+            if ((date.Date <= GetFirstDayOfWeek(DateTime.Now).AddDays(-21)) && (date.Date >= new DateTime(DateTime.Now.Year, DateTime.Now.AddMonths(-1).Month, 1)) && (date.Date <= new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).AddDays(-1)))
             {
                 return "PREVIOUSMONTH"; //Mois précédent
             }
             //On simplifie les tests, il n'y a pas de raison de tout tester
-            else if (date.Date >= new DateTime(DateTime.Now.Year, 1, 1))
+
+            if (date.Date >= new DateTime(DateTime.Now.Year, 1, 1))
             {
                 return "EARLIERTHISYEAR";  //Plus tôt cet année
             }
-            else if (date.Date >= new DateTime(DateTime.Now.Year - 1, 1, 1) && date.Date <= new DateTime(DateTime.Now.Year, 1, 1).AddDays(-1))
+
+            if (date.Date >= new DateTime(DateTime.Now.Year - 1, 1, 1) && date.Date <= new DateTime(DateTime.Now.Year, 1, 1).AddDays(-1))
             {
                 return "PREVIOUSYEAR";  //L'année dernière
             }
-            else if (date.Date <= new DateTime(DateTime.Now.Year - 1, 1, 1).AddDays(-1))
+
+            if (date.Date <= new DateTime(DateTime.Now.Year - 1, 1, 1).AddDays(-1))
             {
                 return "OLDER";  //Older
             }
-            else
-            {
-                return date.Date.ToShortDateString();
-            }
+
+            return date.Date.ToShortDateString();
         }
 
         /// <summary>Gets the date code numeric.</summary>
@@ -297,16 +315,18 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <returns></returns>
         public static string GetQuarterAsString(DateTime dateTime)
         {
+            LanguageManager languageManager = new LanguageManager();
+
             switch (GetQuarter(dateTime))
             {
                 case 1:
-                    return LanguageManager.Instance.GetString("Q1");
+                    return languageManager.GetQ1Text();
                 case 2:
-                    return LanguageManager.Instance.GetString("Q2");
+                    return languageManager.GetQ2Text();
                 case 3:
-                    return LanguageManager.Instance.GetString("Q3");
+                    return languageManager.GetQ3Text();
                 case 4:
-                    return LanguageManager.Instance.GetString("Q4");
+                    return languageManager.GetQ4Text();
                 default:
                     return "";
             }

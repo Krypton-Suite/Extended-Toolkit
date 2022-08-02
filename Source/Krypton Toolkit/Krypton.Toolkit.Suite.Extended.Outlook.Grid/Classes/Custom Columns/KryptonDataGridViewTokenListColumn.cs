@@ -27,7 +27,6 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// Constructor
         /// </summary>
         public KryptonDataGridViewTokenListColumn()
-            : base()
         {
             CellTemplate = new TokenListCell();
             DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;

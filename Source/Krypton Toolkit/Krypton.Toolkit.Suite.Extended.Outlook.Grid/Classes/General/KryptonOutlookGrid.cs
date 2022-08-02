@@ -16,16 +16,18 @@
 //--------------------------------------------------------------------------------
 #endregion
 
+using Krypton.Toolkit.Suite.Extended.Outlook.Grid.Resources;
+
 namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 {
     /// <summary>
     /// Krypton DataGridView allowing nested grouping and unlimited sorting
     /// </summary>
     /// <seealso cref="KryptonDataGridView" />
-    public partial class KryptonOutlookGrid : KryptonDataGridView
+    public class KryptonOutlookGrid : KryptonDataGridView
     {
         #region Design Code
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components;
 
         private void InitializeComponent()
         {
@@ -86,7 +88,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
         //Nodes
         private bool _showLines;
-        internal bool _inExpandCollapseMouseCapture = false;
+        internal bool _inExpandCollapseMouseCapture;
         private FillMode _fillMode;
 
         //Formatting
@@ -138,10 +140,10 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
             // Hook into palette events
             if (_palette != null)
-                _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                _palette.PalettePaint += OnPalettePaint;
 
             // (4) We want to be notified whenever the global palette changes
-            KryptonManager.GlobalPaletteChanged += new EventHandler(OnGlobalPaletteChanged);
+            KryptonManager.GlobalPaletteChanged += OnGlobalPaletteChanged;
 
             // Create redirection object to the base palette
             _paletteRedirect = new PaletteRedirect(_palette);
@@ -344,12 +346,12 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 // (10) Unhook from the palette events
                 if (_palette != null)
                 {
-                    _palette.PalettePaint -= new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                    _palette.PalettePaint -= OnPalettePaint;
                     _palette = null;
                 }
 
                 // (11) Unhook from the static events, otherwise we cannot be garbage collected
-                KryptonManager.GlobalPaletteChanged -= new EventHandler(OnGlobalPaletteChanged);
+                KryptonManager.GlobalPaletteChanged -= OnGlobalPaletteChanged;
 
                 //Unhook from specific events 
                 if (groupBox != null)
@@ -382,7 +384,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <param name="e">The <see cref="DataGridViewCellCancelEventArgs"/> instance containing the event data.</param>
         protected override void OnCellBeginEdit(DataGridViewCellCancelEventArgs e)
         {
-            OutlookGridRow row = (OutlookGridRow)base.Rows[e.RowIndex];
+            OutlookGridRow row = (OutlookGridRow)Rows[e.RowIndex];
             if (row.IsGroupRow)
                 e.Cancel = true;
             else
@@ -397,7 +399,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         {
             if (e.RowIndex >= 0)
             {
-                OutlookGridRow row = (OutlookGridRow)base.Rows[e.RowIndex];
+                OutlookGridRow row = (OutlookGridRow)Rows[e.RowIndex];
                 if (row.IsGroupRow)
                 {
                     row.Group.Collapsed = !row.Group.Collapsed;
@@ -503,13 +505,13 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
                                 if (col.GroupingType != null)
                                 {
-                                    groupType = col.GroupingType.GetType().Name.ToString();
+                                    groupType = col.GroupingType.GetType().Name;
                                     if (groupType == typeof(OutlookGridDateTimeGroup).Name)
                                         groupInterval = ((OutlookGridDateTimeGroup)col.GroupingType).Interval.ToString();
                                     groupSortBySummaryCount = CommonHelper.BoolToString(col.GroupingType.SortBySummaryCount);
                                 }
                                 //column drag/drop
-                                string info = String.Format("{0}|{1}|{2}|{3}|{4}|{5}|{6}", col.Name.ToString(), col.DataGridViewColumn.HeaderText.ToString(), col.DataGridViewColumn.HeaderCell.SortGlyphDirection.ToString(), col.DataGridViewColumn.SortMode.ToString(), groupType, groupInterval, groupSortBySummaryCount);
+                                string info = String.Format("{0}|{1}|{2}|{3}|{4}|{5}|{6}", col.Name, col.DataGridViewColumn.HeaderText, col.DataGridViewColumn.HeaderCell.SortGlyphDirection.ToString(), col.DataGridViewColumn.SortMode.ToString(), groupType, groupInterval, groupSortBySummaryCount);
                                 DragDropEffects DropEffect = DoDragDrop(info, DragDropEffects.Move);
                                 dragdropdone = true;
                             }
@@ -719,7 +721,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 base.OnCellMouseDown(e); // To allow column resizing
                 return;
             }
-            OutlookGridRow row = (OutlookGridRow)base.Rows[e.RowIndex];
+            OutlookGridRow row = (OutlookGridRow)Rows[e.RowIndex];
             //System.Diagnostics.Debug.WriteLine("OnCellMouseDown " + DateTime.Now.Ticks.ToString() + "IsIconHit" + row.IsIconHit(e).ToString());
             if (_previousGroupRowSelected != -1 && _previousGroupRowSelected != e.RowIndex)
                 InvalidateRow(PreviousSelectedGroupRow);
@@ -778,13 +780,13 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                     {
                         SortOrder previousSort = col.SortDirection;
                         //Reset all sorting column only if not Ctrl or Shift or the column is grouped
-                        if (Control.ModifierKeys != Keys.Shift && Control.ModifierKeys != Keys.Control && !col.IsGrouped)
+                        if (ModifierKeys != Keys.Shift && ModifierKeys != Keys.Control && !col.IsGrouped)
                         {
                             ResetAllSortingColumns();
                         }
 
                         //Remove this SortIndex
-                        if (Control.ModifierKeys == Keys.Control)
+                        if (ModifierKeys == Keys.Control)
                         {
                             UnSortColum(col);
                         }
@@ -870,7 +872,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         {
             // (5) Unhook events from old palette
             if (_palette != null)
-                _palette.PalettePaint -= new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                _palette.PalettePaint -= OnPalettePaint;
 
             // (6) Cache the new IPalette that is the global palette
             _palette = KryptonManager.CurrentGlobalPalette;
@@ -890,7 +892,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
             // (7) Hook into events for the new palette
             if (_palette != null)
-                _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                _palette.PalettePaint += OnPalettePaint;
 
             // (8) Change of palette means we should repaint to show any changes
             Invalidate();
@@ -1541,8 +1543,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             if (!col.IsGrouped)
             {
                 _internalColumns.RemoveSortIndex(col);
-                col.SortDirection = System.Windows.Forms.SortOrder.None;
-                col.DataGridViewColumn.HeaderCell.SortGlyphDirection = System.Windows.Forms.SortOrder.None;
+                col.SortDirection = SortOrder.None;
+                col.DataGridViewColumn.HeaderCell.SortGlyphDirection = SortOrder.None;
             }
 #if DEBUG
             internalColumns.DebugOutput();
@@ -1637,7 +1639,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         {
             for (int i = currentRow - 1; i >= 0; i--)
             {
-                OutlookGridRow row = (OutlookGridRow)base.Rows[i];
+                OutlookGridRow row = (OutlookGridRow)Rows[i];
                 if (row.IsGroupRow)
                 {
                     return i;
@@ -1702,31 +1704,34 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         private void ShowColumnHeaderContextMenu(int columnIndex)
         {
             OutlookGridColumn col = _internalColumns.FindFromColumnIndex(columnIndex);
+
+            LanguageManager languageManager = new LanguageManager();
+
             // Create menu items the first time they are needed
             if (_menuItems == null)
             {
                 // Create individual items
-                _menuSortAscending = new KryptonContextMenuItem(LanguageManager.Instance.GetString("SORTASCENDING"), Resources.OutlookGridImageResources.sort_az_ascending2, OnColumnSortAscending);
-                _menuSortDescending = new KryptonContextMenuItem(LanguageManager.Instance.GetString("SORTDESCENDING"), Resources.OutlookGridImageResources.sort_az_descending2, new EventHandler(OnColumnSortDescending));
-                _menuClearSorting = new KryptonContextMenuItem(LanguageManager.Instance.GetString("CLEARSORTING"), Resources.OutlookGridImageResources.sort_up_down_delete_16, new EventHandler(OnColumnClearSorting));
+                _menuSortAscending = new KryptonContextMenuItem(languageManager.GetSortAscendingText(), OutlookGridImageResources.sort_az_ascending2, OnColumnSortAscending);
+                _menuSortDescending = new KryptonContextMenuItem(languageManager.GetSortDescendingText(), OutlookGridImageResources.sort_az_descending2, OnColumnSortDescending);
+                _menuClearSorting = new KryptonContextMenuItem(languageManager.GetClearSortingText(), OutlookGridImageResources.sort_up_down_delete_16, OnColumnClearSorting);
                 _menuSeparator1 = new KryptonContextMenuSeparator();
-                _menuExpand = new KryptonContextMenuItem(LanguageManager.Instance.GetString("EXPAND"), Resources.OutlookGridImageResources.element_plus_16, new EventHandler(OnGroupExpand));
-                _menuCollapse = new KryptonContextMenuItem(LanguageManager.Instance.GetString("COLLAPSE"), Resources.OutlookGridImageResources.element_minus_16, new EventHandler(OnGroupCollapse));
+                _menuExpand = new KryptonContextMenuItem(languageManager.GetExpandText(), OutlookGridImageResources.element_plus_16, OnGroupExpand);
+                _menuCollapse = new KryptonContextMenuItem(languageManager.GetCollapseText(), OutlookGridImageResources.element_minus_16, OnGroupCollapse);
                 _menuSeparator4 = new KryptonContextMenuSeparator();
-                _menuGroupByThisColumn = new KryptonContextMenuItem(LanguageManager.Instance.GetString("GROUP"), Resources.OutlookGridImageResources.element, new EventHandler(OnGroupByThisColumn));
-                _menuUngroupByThisColumn = new KryptonContextMenuItem(LanguageManager.Instance.GetString("UNGROUP"), Resources.OutlookGridImageResources.element_delete, new EventHandler(OnUnGroupByThisColumn));
-                _menuShowGroupBox = new KryptonContextMenuItem(LanguageManager.Instance.GetString("SHOWGROUPBOX"), null, new EventHandler(OnShowGroupBox));
-                _menuHideGroupBox = new KryptonContextMenuItem(LanguageManager.Instance.GetString("HIDEGROUPBOX"), null, new EventHandler(OnHideGroupBox));
+                _menuGroupByThisColumn = new KryptonContextMenuItem(languageManager.GetGroupText(), OutlookGridImageResources.element, OnGroupByThisColumn);
+                _menuUngroupByThisColumn = new KryptonContextMenuItem(languageManager.GetUngroupText(), OutlookGridImageResources.element_delete, OnUnGroupByThisColumn);
+                _menuShowGroupBox = new KryptonContextMenuItem(languageManager.GetShowGroupBoxText(), null, OnShowGroupBox);
+                _menuHideGroupBox = new KryptonContextMenuItem(languageManager.GetHideGroupBoxText(), null, OnHideGroupBox);
                 _menuSeparator2 = new KryptonContextMenuSeparator();
-                _menuBestFitColumn = new KryptonContextMenuItem(LanguageManager.Instance.GetString("BESTFIT"), null, new EventHandler(OnBestFitColumn));
-                _menuBestFitAllColumns = new KryptonContextMenuItem(LanguageManager.Instance.GetString("BESTFITALL"), Resources.OutlookGridImageResources.fit_to_size, new EventHandler(OnBestFitAllColumns));
+                _menuBestFitColumn = new KryptonContextMenuItem(languageManager.GetBestFitText(), null, OnBestFitColumn);
+                _menuBestFitAllColumns = new KryptonContextMenuItem(languageManager.GetBestFitAllText(), OutlookGridImageResources.fit_to_size, OnBestFitAllColumns);
                 _menuSeparator3 = new KryptonContextMenuSeparator();
-                _menuVisibleColumns = new KryptonContextMenuItem(LanguageManager.Instance.GetString("COLUMNS"), Resources.OutlookGridImageResources.table2_selection_column, null);
-                _menuGroupInterval = new KryptonContextMenuItem(LanguageManager.Instance.GetString("GROUPINTERVAL"));
-                _menuSortBySummary = new KryptonContextMenuItem(LanguageManager.Instance.GetString("SORTBYSUMMARYCOUNT"), null, new EventHandler(OnSortBySummary));
+                _menuVisibleColumns = new KryptonContextMenuItem(languageManager.GetColumnsText(), OutlookGridImageResources.table2_selection_column, null);
+                _menuGroupInterval = new KryptonContextMenuItem(languageManager.GetGroupIntervalText());
+                _menuSortBySummary = new KryptonContextMenuItem(languageManager.GetSortBySummaryCountText(), null, OnSortBySummary);
                 _menuSortBySummary.CheckOnClick = true;
                 _menuSeparator5 = new KryptonContextMenuSeparator();
-                _menuConditionalFormatting = new KryptonContextMenuItem(LanguageManager.Instance.GetString("CONDITIONALFORMATTING"), Resources.OutlookGridImageResources.table_conditional_16, null);
+                _menuConditionalFormatting = new KryptonContextMenuItem(languageManager.GetConditionalFormattingText(), OutlookGridImageResources.table_conditional_16, null);
 
                 //Group Interval
                 KryptonContextMenuItems _GroupIntervalItems;
@@ -1735,7 +1740,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 KryptonContextMenuItemBase[] arrayOptions = new KryptonContextMenuItemBase[names.Length];
                 for (int i = 0; i < names.Length; i++)
                 {
-                    it = new KryptonContextMenuItem(LanguageManager.Instance.GetString(names[i]));
+                    // Note: Need to find out what's happening here...
+                    it = new KryptonContextMenuItem(LanguageManagerOld.Instance.GetString(names[i]));
                     it.Tag = names[i];
                     it.Click += OnGroupIntervalClick;
                     arrayOptions[i] = it;
@@ -1761,68 +1767,68 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 imgListFormatting.ColorDepth = ColorDepth.Depth32Bit;
                 imgListFormatting.ImageSize = new Size(32, 32);
                 List<ConditionalFormatting> tmpTag = new List<ConditionalFormatting>();
-                imgListFormatting.Images.Add(Resources.OutlookGridImageResources.Databar_solid_blue_32);
+                imgListFormatting.Images.Add(OutlookGridImageResources.Databar_solid_blue_32);
                 tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.Bar, new BarParams(Color.FromArgb(76, 118, 255), false)));
-                imgListFormatting.Images.Add(Resources.OutlookGridImageResources.Databar_solid_green_32);
+                imgListFormatting.Images.Add(OutlookGridImageResources.Databar_solid_green_32);
                 tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.Bar, new BarParams(Color.FromArgb(95, 173, 123), false)));
-                imgListFormatting.Images.Add(Resources.OutlookGridImageResources.Databar_solid_red_32);
+                imgListFormatting.Images.Add(OutlookGridImageResources.Databar_solid_red_32);
                 tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.Bar, new BarParams(Color.FromArgb(248, 108, 103), false)));
-                imgListFormatting.Images.Add(Resources.OutlookGridImageResources.Databar_solid_yellow_32);
+                imgListFormatting.Images.Add(OutlookGridImageResources.Databar_solid_yellow_32);
                 tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.Bar, new BarParams(Color.FromArgb(255, 185, 56), false)));
-                imgListFormatting.Images.Add(Resources.OutlookGridImageResources.Databar_solid_violet_32);
+                imgListFormatting.Images.Add(OutlookGridImageResources.Databar_solid_violet_32);
                 tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.Bar, new BarParams(Color.FromArgb(185, 56, 255), false)));
-                imgListFormatting.Images.Add(Resources.OutlookGridImageResources.Databar_solid_pink_32);
+                imgListFormatting.Images.Add(OutlookGridImageResources.Databar_solid_pink_32);
                 tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.Bar, new BarParams(Color.FromArgb(255, 56, 185), false)));
 
-                imgListFormatting.Images.Add(Resources.OutlookGridImageResources.Databar_gradient_blue_32);
+                imgListFormatting.Images.Add(OutlookGridImageResources.Databar_gradient_blue_32);
                 tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.Bar, new BarParams(Color.FromArgb(76, 118, 255), true)));
-                imgListFormatting.Images.Add(Resources.OutlookGridImageResources.Databar_gradient_green_32);
+                imgListFormatting.Images.Add(OutlookGridImageResources.Databar_gradient_green_32);
                 tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.Bar, new BarParams(Color.FromArgb(95, 173, 123), true)));
-                imgListFormatting.Images.Add(Resources.OutlookGridImageResources.Databar_gradient_red_32);
+                imgListFormatting.Images.Add(OutlookGridImageResources.Databar_gradient_red_32);
                 tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.Bar, new BarParams(Color.FromArgb(248, 108, 103), true)));
-                imgListFormatting.Images.Add(Resources.OutlookGridImageResources.Databar_gradient_yellow_32);
+                imgListFormatting.Images.Add(OutlookGridImageResources.Databar_gradient_yellow_32);
                 tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.Bar, new BarParams(Color.FromArgb(255, 185, 56), true)));
-                imgListFormatting.Images.Add(Resources.OutlookGridImageResources.Databar_gradient_violet_32);
+                imgListFormatting.Images.Add(OutlookGridImageResources.Databar_gradient_violet_32);
                 tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.Bar, new BarParams(Color.FromArgb(185, 56, 255), true)));
-                imgListFormatting.Images.Add(Resources.OutlookGridImageResources.Databar_gradient_pink_32);
+                imgListFormatting.Images.Add(OutlookGridImageResources.Databar_gradient_pink_32);
                 tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.Bar, new BarParams(Color.FromArgb(255, 56, 185), true)));
 
-                imgListFormatting.Images.Add(Resources.OutlookGridImageResources.TwoColors_white_blue_32);
+                imgListFormatting.Images.Add(OutlookGridImageResources.TwoColors_white_blue_32);
                 tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.TwoColoursRange, new TwoColoursParams(Color.White, Color.FromArgb(76, 118, 255))));
-                imgListFormatting.Images.Add(Resources.OutlookGridImageResources.TwoColors_blue_white_32);
+                imgListFormatting.Images.Add(OutlookGridImageResources.TwoColors_blue_white_32);
                 tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.TwoColoursRange, new TwoColoursParams(Color.FromArgb(76, 118, 255), Color.White)));
-                imgListFormatting.Images.Add(Resources.OutlookGridImageResources.TwoColors_white_green_32);
+                imgListFormatting.Images.Add(OutlookGridImageResources.TwoColors_white_green_32);
                 tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.TwoColoursRange, new TwoColoursParams(Color.White, Color.FromArgb(95, 173, 123))));
-                imgListFormatting.Images.Add(Resources.OutlookGridImageResources.TwoColors_green_white_32);
+                imgListFormatting.Images.Add(OutlookGridImageResources.TwoColors_green_white_32);
                 tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.TwoColoursRange, new TwoColoursParams(Color.FromArgb(95, 173, 123), Color.White)));
-                imgListFormatting.Images.Add(Resources.OutlookGridImageResources.TwoColors_white_red_32);
+                imgListFormatting.Images.Add(OutlookGridImageResources.TwoColors_white_red_32);
                 tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.TwoColoursRange, new TwoColoursParams(Color.White, Color.FromArgb(248, 108, 103))));
-                imgListFormatting.Images.Add(Resources.OutlookGridImageResources.TwoColors_red_white_32);
+                imgListFormatting.Images.Add(OutlookGridImageResources.TwoColors_red_white_32);
                 tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.TwoColoursRange, new TwoColoursParams(Color.FromArgb(248, 108, 103), Color.White)));
-                imgListFormatting.Images.Add(Resources.OutlookGridImageResources.TwoColors_white_yellow_32);
+                imgListFormatting.Images.Add(OutlookGridImageResources.TwoColors_white_yellow_32);
                 tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.TwoColoursRange, new TwoColoursParams(Color.White, Color.FromArgb(255, 185, 56))));
-                imgListFormatting.Images.Add(Resources.OutlookGridImageResources.TwoColors_yellow_white_32);
+                imgListFormatting.Images.Add(OutlookGridImageResources.TwoColors_yellow_white_32);
                 tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.TwoColoursRange, new TwoColoursParams(Color.FromArgb(255, 185, 56), Color.White)));
-                imgListFormatting.Images.Add(Resources.OutlookGridImageResources.TwoColors_white_violet_32);
+                imgListFormatting.Images.Add(OutlookGridImageResources.TwoColors_white_violet_32);
                 tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.TwoColoursRange, new TwoColoursParams(Color.White, Color.FromArgb(185, 56, 255))));
-                imgListFormatting.Images.Add(Resources.OutlookGridImageResources.TwoColors_violet_white_32);
+                imgListFormatting.Images.Add(OutlookGridImageResources.TwoColors_violet_white_32);
                 tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.TwoColoursRange, new TwoColoursParams(Color.FromArgb(185, 56, 255), Color.White)));
-                imgListFormatting.Images.Add(Resources.OutlookGridImageResources.TwoColors_white_pink_32);
+                imgListFormatting.Images.Add(OutlookGridImageResources.TwoColors_white_pink_32);
                 tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.TwoColoursRange, new TwoColoursParams(Color.White, Color.FromArgb(255, 56, 185))));
-                imgListFormatting.Images.Add(Resources.OutlookGridImageResources.TwoColors_pink_white_32);
+                imgListFormatting.Images.Add(OutlookGridImageResources.TwoColors_pink_white_32);
                 tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.TwoColoursRange, new TwoColoursParams(Color.FromArgb(255, 56, 185), Color.White)));
 
-                imgListFormatting.Images.Add(Resources.OutlookGridImageResources.ThreeColors_green_yellow_red_32);
+                imgListFormatting.Images.Add(OutlookGridImageResources.ThreeColors_green_yellow_red_32);
                 tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.ThreeColoursRange, new ThreeColoursParams(Color.FromArgb(84, 179, 112), Color.FromArgb(252, 229, 130), Color.FromArgb(243, 120, 97))));
-                imgListFormatting.Images.Add(Resources.OutlookGridImageResources.ThreeColors_red_yellow_green_32);
+                imgListFormatting.Images.Add(OutlookGridImageResources.ThreeColors_red_yellow_green_32);
                 tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.ThreeColoursRange, new ThreeColoursParams(Color.FromArgb(243, 120, 97), Color.FromArgb(252, 229, 130), Color.FromArgb(84, 179, 112))));
-                imgListFormatting.Images.Add(Resources.OutlookGridImageResources.ThreeColors_green_white_red_32);
+                imgListFormatting.Images.Add(OutlookGridImageResources.ThreeColors_green_white_red_32);
                 tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.ThreeColoursRange, new ThreeColoursParams(Color.FromArgb(84, 179, 112), Color.White, Color.FromArgb(243, 120, 97))));
-                imgListFormatting.Images.Add(Resources.OutlookGridImageResources.ThreeColors_red_white_green_32);
+                imgListFormatting.Images.Add(OutlookGridImageResources.ThreeColors_red_white_green_32);
                 tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.ThreeColoursRange, new ThreeColoursParams(Color.FromArgb(243, 120, 97), Color.White, Color.FromArgb(84, 179, 112))));
-                imgListFormatting.Images.Add(Resources.OutlookGridImageResources.ThreeColors_blue_white_red_32);
+                imgListFormatting.Images.Add(OutlookGridImageResources.ThreeColors_blue_white_red_32);
                 tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.ThreeColoursRange, new ThreeColoursParams(Color.FromArgb(134, 166, 253), Color.White, Color.FromArgb(243, 120, 97))));
-                imgListFormatting.Images.Add(Resources.OutlookGridImageResources.ThreeColors_red_white_blue_32);
+                imgListFormatting.Images.Add(OutlookGridImageResources.ThreeColors_red_white_blue_32);
                 tmpTag.Add(new ConditionalFormatting(EnumConditionalFormatType.ThreeColoursRange, new ThreeColoursParams(Color.FromArgb(243, 120, 97), Color.White, Color.FromArgb(134, 166, 253))));
 
 
@@ -1831,16 +1837,17 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 arrayOptions = new KryptonContextMenuItemBase[names.Length + 2];
                 for (int i = 0; i < names.Length; i++)
                 {
-                    it = new KryptonContextMenuItem(LanguageManager.Instance.GetString(names[i]));
+                    // Note: What's happening here?
+                    it = new KryptonContextMenuItem(LanguageManagerOld.Instance.GetString(names[i]));
                     it.Tag = names[i];
 
                     if (names[i] == EnumConditionalFormatType.Bar.ToString())
                     {
-                        it.Image = Resources.OutlookGridImageResources.databar_generic_16;
+                        it.Image = OutlookGridImageResources.databar_generic_16;
 
                         //Solid
                         KryptonContextMenuHeading KFormattingBarHeadingSolid = new KryptonContextMenuHeading();
-                        KFormattingBarHeadingSolid.Text = LanguageManager.Instance.GetString("SolidFill");
+                        KFormattingBarHeadingSolid.Text = languageManager.GetSolidFillText();
                         KryptonContextMenuImageSelect KFormattingBarImgSelectSolid = new KryptonContextMenuImageSelect();
                         KFormattingBarImgSelectSolid.ImageList = imgListFormatting;
                         KFormattingBarImgSelectSolid.ImageIndexStart = 0;
@@ -1851,7 +1858,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
                         //Gradient
                         KryptonContextMenuHeading KFormattingBarHeadingGradient = new KryptonContextMenuHeading();
-                        KFormattingBarHeadingGradient.Text = LanguageManager.Instance.GetString("GradientFill");
+                        KFormattingBarHeadingGradient.Text = languageManager.GetGradientFillText();
                         KryptonContextMenuImageSelect KFormattingBarImgSelectGradient = new KryptonContextMenuImageSelect();
                         KFormattingBarImgSelectGradient.ImageList = imgListFormatting;
                         KFormattingBarImgSelectGradient.ImageIndexStart = 6;
@@ -1862,11 +1869,11 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
                         //Custom
                         KryptonContextMenuHeading KFormattingBarHeadingOther = new KryptonContextMenuHeading();
-                        KFormattingBarHeadingOther.Text = LanguageManager.Instance.GetString("Other");
+                        KFormattingBarHeadingOther.Text = languageManager.GetOtherText();
                         KryptonContextMenuItem it2 = null;
-                        it2 = new KryptonContextMenuItem(LanguageManager.Instance.GetString("CustomThreeDots"));
+                        it2 = new KryptonContextMenuItem(languageManager.GetCustomThreeDotsText());
                         it2.Tag = "";
-                        it2.Image = Resources.OutlookGridImageResources.paint_bucket_green;
+                        it2.Image = OutlookGridImageResources.paint_bucket_green;
                         it2.Click += OnBarCustomClick;
 
                         KryptonContextMenuItems _Bars = new KryptonContextMenuItems(new KryptonContextMenuItemBase[] { it2 });
@@ -1883,7 +1890,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                     }
                     else if (names[i] == EnumConditionalFormatType.TwoColoursRange.ToString())
                     {
-                        it.Image = Resources.OutlookGridImageResources.color2scale_generic_16;
+                        it.Image = OutlookGridImageResources.color2scale_generic_16;
 
                         KryptonContextMenuItems _TwoColors;
 
@@ -1900,9 +1907,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                         sep1.Tag = "";
 
                         KryptonContextMenuItem it2 = null;
-                        it2 = new KryptonContextMenuItem(LanguageManager.Instance.GetString("CustomThreeDots"));
+                        it2 = new KryptonContextMenuItem(languageManager.GetCustomThreeDotsText());
                         it2.Tag = "";
-                        it2.Image = Resources.OutlookGridImageResources.paint_bucket_green;
+                        it2.Image = OutlookGridImageResources.paint_bucket_green;
                         it2.Click += OnTwoColorsCustomClick;
 
                         _TwoColors = new KryptonContextMenuItems(new KryptonContextMenuItemBase[] { sep1, it2 });
@@ -1910,7 +1917,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                     }
                     else if (names[i] == EnumConditionalFormatType.ThreeColoursRange.ToString())
                     {
-                        it.Image = Resources.OutlookGridImageResources.color3scale_generic_16;
+                        it.Image = OutlookGridImageResources.color3scale_generic_16;
 
                         KryptonContextMenuItems _ThreeColors;
 
@@ -1927,9 +1934,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                         sep1.Tag = "";
 
                         KryptonContextMenuItem it2 = null;
-                        it2 = new KryptonContextMenuItem(LanguageManager.Instance.GetString("CustomThreeDots"));
+                        it2 = new KryptonContextMenuItem(languageManager.GetCustomThreeDotsText());
                         it2.Tag = "";
-                        it2.Image = Resources.OutlookGridImageResources.paint_bucket_green;
+                        it2.Image = OutlookGridImageResources.paint_bucket_green;
                         it2.Click += OnThreeColorsCustomClick;
 
                         _ThreeColors = new KryptonContextMenuItems(new KryptonContextMenuItemBase[] { sep1, it2 });
@@ -1941,8 +1948,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                     sep2.Tag = "";
                     arrayOptions[i + 1] = sep2;
                     KryptonContextMenuItem it3 = null;
-                    it3 = new KryptonContextMenuItem(LanguageManager.Instance.GetString("ClearRules"));
-                    it3.Image = Resources.OutlookGridImageResources.eraser;
+                    it3 = new KryptonContextMenuItem(languageManager.GetClearRulesText());
+                    it3.Image = OutlookGridImageResources.eraser;
                     it3.Tag = "";
                     it3.Click += OnClearConditionalClick;
                     arrayOptions[i + 2] = it3;
@@ -2197,7 +2204,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             if (!IsGridGrouped || _internalRows.Count == 0 || rowindex < 0)
                 return;
 
-            OutlookGridRow row = (OutlookGridRow)base.Rows[rowindex];
+            OutlookGridRow row = (OutlookGridRow)Rows[rowindex];
             if (row.IsGroupRow)
             {
                 row.Group.Collapsed = collapsed;
@@ -2326,11 +2333,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
                 return !exp.Cancel;
             }
-            else
-            {
-                // row isn't expanded, so we didn't do anything.				
-                return false;
-            }
+
+            // row isn't expanded, so we didn't do anything.				
+            return false;
         }
 
         /// <summary>
@@ -2355,11 +2360,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
                 return !exp.Cancel;
             }
-            else
-            {
-                // row isn't expanded, so we didn't do anything.				
-                return false;
-            }
+
+            // row isn't expanded, so we didn't do anything.				
+            return false;
         }
 
         /// <summary>

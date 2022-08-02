@@ -38,9 +38,9 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         {
             StringBuilder builder = new StringBuilder(0x40);
             builder.Append("KryptonDataGridViewPercentageColumn { Name=");
-            builder.Append(base.Name);
+            builder.Append(Name);
             builder.Append(", Index=");
-            builder.Append(base.Index.ToString(CultureInfo.CurrentCulture));
+            builder.Append(Index.ToString(CultureInfo.CurrentCulture));
             builder.Append(" }");
             return builder.ToString();
         }

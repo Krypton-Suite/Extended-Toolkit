@@ -27,7 +27,6 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// Constructor
         /// </summary>
         public KryptonDataGridViewTokenColumn()
-            : base()
         {
             CellTemplate = new TokenCell();
             

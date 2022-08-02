@@ -44,7 +44,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         public OutlookGridGroupCollection(IOutlookGridGroup parentGroup)
         {
             _groupList = new List<IOutlookGridGroup>();
-            this._parentGroup = parentGroup;
+            _parentGroup = parentGroup;
         }
         #endregion
 

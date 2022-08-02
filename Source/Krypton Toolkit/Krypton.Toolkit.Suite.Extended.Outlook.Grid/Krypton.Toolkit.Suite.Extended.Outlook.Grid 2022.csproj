@@ -97,7 +97,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="70.22.7.206-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="70.22.8.213-alpha" />
 			</ItemGroup>
 		</When>
 
@@ -201,6 +201,18 @@
 			<AutoGen>True</AutoGen>
 			<DependentUpon>OutlookGridImageResources.resx</DependentUpon>
 		</Compile>
+		
+		<Compile Update="Settings\Language\LanguageDefaultNeutralStringSettings.Designer.cs">
+		  <DesignTimeSharedInput>True</DesignTimeSharedInput>
+		  <AutoGen>True</AutoGen>
+		  <DependentUpon>LanguageDefaultNeutralStringSettings.settings</DependentUpon>
+		</Compile>
+		
+		<Compile Update="Settings\Language\LanguageStringSettings.Designer.cs">
+		  <DesignTimeSharedInput>True</DesignTimeSharedInput>
+		  <AutoGen>True</AutoGen>
+		  <DependentUpon>LanguageStringSettings.settings</DependentUpon>
+		</Compile>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -218,6 +230,17 @@
 			<Generator>ResXFileCodeGenerator</Generator>
 			<LastGenOutput>OutlookGridImageResources.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="Settings\Language\LanguageDefaultNeutralStringSettings.settings">
+	    <Generator>SettingsSingleFileGenerator</Generator>
+	    <LastGenOutput>LanguageDefaultNeutralStringSettings.Designer.cs</LastGenOutput>
+	  </None>
+	  <None Update="Settings\Language\LanguageStringSettings.settings">
+	    <Generator>SettingsSingleFileGenerator</Generator>
+	    <LastGenOutput>LanguageStringSettings.Designer.cs</LastGenOutput>
+	  </None>
 	</ItemGroup>
 	
 	<!--Binary/Documentation Output-->

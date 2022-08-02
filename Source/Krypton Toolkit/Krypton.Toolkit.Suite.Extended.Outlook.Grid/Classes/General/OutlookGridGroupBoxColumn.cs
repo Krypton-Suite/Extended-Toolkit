@@ -93,7 +93,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <returns>True or False.</returns>
         public bool Equals(OutlookGridGroupBoxColumn other)
         {
-            return this.ColumnName.Equals(other.ColumnName);
+            return ColumnName.Equals(other.ColumnName);
         }
         #endregion
     }

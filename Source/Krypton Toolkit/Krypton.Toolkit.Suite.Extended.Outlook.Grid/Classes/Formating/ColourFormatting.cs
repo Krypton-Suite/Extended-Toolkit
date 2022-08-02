@@ -102,14 +102,13 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             {
                 return par.MediumColour;
             }
-            else if (percent <= 0.5)
+
+            if (percent <= 0.5)
             {
                 return Color.FromArgb((int)Math.Round(par.MinimumColour.A + (par.MediumColour.A - par.MinimumColour.A) * percent), (int)Math.Round(par.MinimumColour.R + (par.MediumColour.R - par.MinimumColour.R) * percent), (int)Math.Round(par.MinimumColour.G + (par.MediumColour.G - par.MinimumColour.G) * percent), (int)Math.Round(par.MinimumColour.B + (par.MediumColour.B - par.MinimumColour.B) * percent));
             }
-            else
-            {
-                return Color.FromArgb((int)Math.Round(par.MediumColour.A + (par.MaximumColour.A - par.MediumColour.A) * percent), (int)Math.Round(par.MediumColour.R + (par.MaximumColour.R - par.MediumColour.R) * percent), (int)Math.Round(par.MediumColour.G + (par.MaximumColour.G - par.MediumColour.G) * percent), (int)Math.Round(par.MediumColour.B + (par.MaximumColour.B - par.MediumColour.B) * percent));
-            }
+
+            return Color.FromArgb((int)Math.Round(par.MediumColour.A + (par.MaximumColour.A - par.MediumColour.A) * percent), (int)Math.Round(par.MediumColour.R + (par.MaximumColour.R - par.MediumColour.R) * percent), (int)Math.Round(par.MediumColour.G + (par.MaximumColour.G - par.MediumColour.G) * percent), (int)Math.Round(par.MediumColour.B + (par.MaximumColour.B - par.MediumColour.B) * percent));
         }
 
         private static ColourHelper.HSVColour ColourToHSV(Color colour)
@@ -137,16 +136,15 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
             if (hi == 0)
                 return Color.FromArgb(255, v, t, p);
-            else if (hi == 1)
+            if (hi == 1)
                 return Color.FromArgb(255, q, v, p);
-            else if (hi == 2)
+            if (hi == 2)
                 return Color.FromArgb(255, p, v, t);
-            else if (hi == 3)
+            if (hi == 3)
                 return Color.FromArgb(255, p, q, v);
-            else if (hi == 4)
+            if (hi == 4)
                 return Color.FromArgb(255, t, p, v);
-            else
-                return Color.FromArgb(255, v, p, q);
+            return Color.FromArgb(255, v, p, q);
         }
         /// <summary>
         /// Interpolate colors 0.0 - 1.0        

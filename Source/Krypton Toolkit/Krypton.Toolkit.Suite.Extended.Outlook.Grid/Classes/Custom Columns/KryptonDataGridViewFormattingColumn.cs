@@ -30,7 +30,6 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// Initializes a new instance of the <see cref="KryptonDataGridViewFormattingColumn"/> class.
         /// </summary>
         public KryptonDataGridViewFormattingColumn()
-            : base()
         {
             CellTemplate = new FormattingCell();
             DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;

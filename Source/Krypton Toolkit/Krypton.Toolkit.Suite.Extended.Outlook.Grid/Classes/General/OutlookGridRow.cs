@@ -16,6 +16,8 @@
 //--------------------------------------------------------------------------------
 #endregion
 
+using Krypton.Toolkit.Suite.Extended.Outlook.Grid.Resources;
+
 namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 {
     /// <summary>
@@ -112,10 +114,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 {
                     return (NodeIndex == parent.Nodes.Count - 1);
                 }
-                else
-                {
-                    return true;
-                }
+
+                return true;
             }
         }
 
@@ -162,10 +162,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 {
                     return _parentNode.Nodes.IndexOf(this);
                 }
-                else
-                {
-                    return 0;
-                }
+
+                return 0;
             }
         }
         #endregion
@@ -201,7 +199,6 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <param name="group">The group the row is associated to.</param>
         /// <param name="isGroupRow">Determines if it a group row.</param>
         public OutlookGridRow(IOutlookGridGroup group, bool isGroupRow)
-            : base()
         {
             this.group = group;
             this.isGroupRow = isGroupRow;
@@ -230,8 +227,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             //because for an unknown reason the state becomes None instead of at least visible.
             if (base.GetState(rowIndex) == DataGridViewElementStates.None)
                 return DataGridViewElementStates.Visible;
-            else
-                return base.GetState(rowIndex);
+            return base.GetState(rowIndex);
         }
 
         /// <summary>
@@ -246,7 +242,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <param name="rowState"></param>
         /// <param name="isFirstDisplayedRow"></param>
         /// <param name="isLastVisibleRow"></param>
-        protected override void Paint(System.Drawing.Graphics graphics, System.Drawing.Rectangle clipBounds, Rectangle rowBounds, int rowIndex, DataGridViewElementStates rowState, bool isFirstDisplayedRow, bool isLastVisibleRow)
+        protected override void Paint(Graphics graphics, Rectangle clipBounds, Rectangle rowBounds, int rowIndex, DataGridViewElementStates rowState, bool isFirstDisplayedRow, bool isLastVisibleRow)
         {
             if (isGroupRow)
             {
@@ -292,7 +288,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 {
                     using (Pen focusPen = new Pen(Color.Gray))
                     {
-                        focusPen.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
+                        focusPen.DashStyle = DashStyle.Dash;
                         graphics.DrawLine(focusPen, rowBounds.Left + rowHeadersWidth - grid.HorizontalScrollingOffset, rowBounds.Bottom - 1, gridwidth + 1, rowBounds.Bottom - 1);
                     }
                 }
@@ -325,22 +321,22 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 {
                     if (KryptonManager.CurrentGlobalPalette.GetRenderer() == KryptonManager.RenderOffice2010 || KryptonManager.CurrentGlobalPalette.GetRenderer() == KryptonManager.RenderOffice2013)
                     {
-                        graphics.DrawImage(Resources.OutlookGridImageResources.CollapseIcon2010, rowBounds.Left + rowHeadersWidth - grid.HorizontalScrollingOffset + 4 + groupLevelIndentation, rowBounds.Bottom - 18, 11, 11);
+                        graphics.DrawImage(OutlookGridImageResources.CollapseIcon2010, rowBounds.Left + rowHeadersWidth - grid.HorizontalScrollingOffset + 4 + groupLevelIndentation, rowBounds.Bottom - 18, 11, 11);
                     }
                     else
                     {
-                        graphics.DrawImage(Resources.OutlookGridImageResources.ExpandIcon, rowBounds.Left + rowHeadersWidth - grid.HorizontalScrollingOffset + 4 + groupLevelIndentation, rowBounds.Bottom - 18, 11, 11);
+                        graphics.DrawImage(OutlookGridImageResources.ExpandIcon, rowBounds.Left + rowHeadersWidth - grid.HorizontalScrollingOffset + 4 + groupLevelIndentation, rowBounds.Bottom - 18, 11, 11);
                     }
                 }
                 else
                 {
                     if (KryptonManager.CurrentGlobalPalette.GetRenderer() == KryptonManager.RenderOffice2010 || KryptonManager.CurrentGlobalPalette.GetRenderer() == KryptonManager.RenderOffice2013)
                     {
-                        graphics.DrawImage(Resources.OutlookGridImageResources.ExpandIcon2010, rowBounds.Left + rowHeadersWidth - grid.HorizontalScrollingOffset + 4 + groupLevelIndentation, rowBounds.Bottom - 18, 11, 11);
+                        graphics.DrawImage(OutlookGridImageResources.ExpandIcon2010, rowBounds.Left + rowHeadersWidth - grid.HorizontalScrollingOffset + 4 + groupLevelIndentation, rowBounds.Bottom - 18, 11, 11);
                     }
                     else
                     {
-                        graphics.DrawImage(Resources.OutlookGridImageResources.CollapseIcon, rowBounds.Left + rowHeadersWidth - grid.HorizontalScrollingOffset + 4 + groupLevelIndentation, rowBounds.Bottom - 18, 11, 11);
+                        graphics.DrawImage(OutlookGridImageResources.CollapseIcon, rowBounds.Left + rowHeadersWidth - grid.HorizontalScrollingOffset + 4 + groupLevelIndentation, rowBounds.Bottom - 18, 11, 11);
                     }
                 }
 
@@ -401,7 +397,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// <param name="isLastVisibleRow">if set to <c>true</c> [is last visible row].</param>
         /// <param name="paintParts">The paint parts.</param>
         /// <remarks>Will not execute if it is a group row.)</remarks>
-        protected override void PaintCells(System.Drawing.Graphics graphics, System.Drawing.Rectangle clipBounds, System.Drawing.Rectangle rowBounds, int rowIndex, DataGridViewElementStates rowState, bool isFirstDisplayedRow, bool isLastVisibleRow, DataGridViewPaintParts paintParts)
+        protected override void PaintCells(Graphics graphics, Rectangle clipBounds, Rectangle rowBounds, int rowIndex, DataGridViewElementStates rowState, bool isFirstDisplayedRow, bool isLastVisibleRow, DataGridViewPaintParts paintParts)
         {
             if (!isGroupRow)
                 base.PaintCells(graphics, clipBounds, rowBounds, rowIndex, rowState, isFirstDisplayedRow, isLastVisibleRow, paintParts);
@@ -450,17 +446,13 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 //if (i > 1 && gr.Collapsed)
                 if (gr.ParentGroup.Collapsed)
                     return true;
-                else
-                    return IsAParentCollapsed(gr.ParentGroup, i);
+                return IsAParentCollapsed(gr.ParentGroup, i);
             }
-            else
-            {
-                //if 1 that means there is no parent
-                if (i == 1)
-                    return false;
-                else
-                    return gr.Collapsed;
-            }
+
+            //if 1 that means there is no parent
+            if (i == 1)
+                return false;
+            return gr.Collapsed;
         }
 
 
@@ -480,26 +472,20 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 //no need to look further to the parents (one of the parents can be expanded...)
                 if (row.ParentNode.Collapsed)
                     return true;
-                else
-                    return IsAParentNodeOrGroupCollapsed(row.ParentNode, i);
+                return IsAParentNodeOrGroupCollapsed(row.ParentNode, i);
             }
-            else //no parent
-            {
-                if (i == 1) //if 1 that means there is no parent
-                { return false; }
-                else //return the final parent collapsed state
-                {
-                    if (row.group != null)
-                    {
-                        return row.Collapsed || (row.group.Collapsed || IsAParentCollapsed(row.group, 0));
-                    }
-                    else
-                    {
-                        return row.Collapsed;
-                    }
 
-                }
+            //no parent
+            if (i == 1) //if 1 that means there is no parent
+            { return false; }
+
+            //return the final parent collapsed state
+            if (row.group != null)
+            {
+                return row.Collapsed || (row.group.Collapsed || IsAParentCollapsed(row.group, 0));
             }
+
+            return row.Collapsed;
         }
 
         /// <summary>

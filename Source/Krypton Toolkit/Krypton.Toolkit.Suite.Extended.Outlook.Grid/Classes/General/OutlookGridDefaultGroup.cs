@@ -75,6 +75,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         private bool _sortBySummaryCount;
 
         private IComparer _itemsComparer;
+
+        private LanguageManager _languageManager = new LanguageManager();
         #endregion
 
         #region "Constructor"
@@ -86,15 +88,15 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         {
             _val = null;
             _column = null;
-            if (KryptonManager.CurrentGlobalPalette.GetRenderer() == KryptonManager.RenderOffice2013)
+            if (KryptonManager.CurrentGlobalPalette.GetRenderer() == KryptonManager.RenderOffice2013 || KryptonManager.CurrentGlobalPalette.GetRenderer() == KryptonManager.RenderOffice365)
                 _height = StaticValues._2013GroupRowHeight; // special height for office 2013
             else
                 _height = StaticValues._defaultGroupRowHeight; // default height
             Rows = new List<OutlookGridRow>();
             Children = new OutlookGridGroupCollection();
             _formatStyle = "";
-            _oneItemText = LanguageManager.Instance.GetString("OneItem");
-            _xXxItemsText = LanguageManager.Instance.GetString("XXXItems");
+            _oneItemText = _languageManager.GetOneItemText();
+            _xXxItemsText = _languageManager.GetXXXItemsText();
             _allowHiddenWhenGrouped = true;
             _sortBySummaryCount = false;
         }
@@ -147,13 +149,13 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 //For formatting number we need to cast the object value to the number before applying formatting
                 if (_val == null || string.IsNullOrEmpty(_val.ToString()))
                 {
-                    formattedValue = LanguageManager.Instance.GetString("UNKNOWN");
+                    formattedValue = _languageManager.GetUnknownText();
                 }
-                else if (!String.IsNullOrEmpty(_formatStyle))
+                else if (!string.IsNullOrEmpty(_formatStyle))
                 {
                     if (_val is string)
                     {
-                        formattedValue = string.Format(_formatStyle, Value.ToString());
+                        formattedValue = string.Format(_formatStyle, Value);
                     }
                     else if (_val is DateTime)
                     {
@@ -193,7 +195,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                     formattedValue = Value.ToString();
                 }
 
-                res = string.Format("{0}: {1} ({2})", _column.DataGridViewColumn.HeaderText, formattedValue, _itemCount == 1 ? _oneItemText : _itemCount.ToString() + XXXItemsText);
+                res = string.Format("{0}: {1} ({2})", _column.DataGridViewColumn.HeaderText, formattedValue, _itemCount == 1 ? _oneItemText : _itemCount + XXXItemsText);
                 //if (KryptonManager.CurrentGlobalPalette.GetRenderer() == KryptonManager.RenderOffice2013)
                 //    return res.ToUpper();
                 //else
@@ -360,7 +362,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 {
                     bool b1 = (bool)_val;
                     bool b2 = (bool)o2;
-                    compareResult = (b1 == b2 ? 0 : b1 == true ? 1 : -1) * orderModifier;
+                    compareResult = (b1 == b2 ? 0 : b1 ? 1 : -1) * orderModifier;
                 }
                 else if (_val is float)
                 {

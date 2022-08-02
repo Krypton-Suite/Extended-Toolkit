@@ -16,6 +16,8 @@
 //--------------------------------------------------------------------------------
 #endregion
 
+using Krypton.Toolkit.Suite.Extended.Outlook.Grid.Resources;
+
 namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 {
     /// <summary>
@@ -49,10 +51,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             {
                 return null; //For example it is also the case for group row...
             }
-            else
-            {
-                return starImages[(int)value];
-            }
+
+            return starImages[(int)value];
         }
 
         /// <summary>
@@ -147,15 +147,12 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 int imageXArea = (cellBounds.Width / 2) - (IMAGEWIDTH / 2);
                 if (((mouseXRelativeToCell + 4) < imageXArea) || (mouseXRelativeToCell >= (imageXArea + IMAGEWIDTH)))
                     return -1;
-                else
-                {
-                    int oo = (int)Math.Round((((float)(mouseXRelativeToCell - imageXArea + 2) / (float)IMAGEWIDTH) * 10f), MidpointRounding.AwayFromZero);
-                    if (oo > 10 || oo < 0) System.Diagnostics.Debugger.Break();
-                    return oo;
-                }
+                int oo = (int)Math.Round((((mouseXRelativeToCell - imageXArea + 2) / (float)IMAGEWIDTH) * 10f), MidpointRounding.AwayFromZero);
+                if (oo > 10 || oo < 0) Debugger.Break();
+                return oo;
             }
-            else
-                return -1;
+
+            return -1;
         }
 
         //setup star images 
@@ -167,11 +164,11 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             starHotImages = new Image[11];
             // load normal stars 
             for (int i = 0; i <= 10; i++)
-                starImages[i] = (Image)Resources.OutlookGridImageResources.ResourceManager.GetObject("star" + i.ToString());
+                starImages[i] = (Image)OutlookGridImageResources.ResourceManager.GetObject("star" + i);
 
             // load hot normal stars 
             for (int i = 0; i <= 10; i++)
-                starHotImages[i] = (Image)Resources.OutlookGridImageResources.ResourceManager.GetObject("starhot" + i.ToString());
+                starHotImages[i] = (Image)OutlookGridImageResources.ResourceManager.GetObject("starhot" + i);
         }
         #endregion
 
