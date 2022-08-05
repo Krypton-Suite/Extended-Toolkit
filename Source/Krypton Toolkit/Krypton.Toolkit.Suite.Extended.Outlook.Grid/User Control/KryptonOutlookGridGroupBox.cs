@@ -85,7 +85,6 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         private KryptonContextMenuItem _menuGroupInterval;
         private KryptonContextMenuItem _menuSortBySummary;
 
-        private LanguageManager _languageManager = new LanguageManager();
         #endregion
 
         #region Custom Events
@@ -175,7 +174,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
             // Create storage that maps onto the inherit instances
             _border = new PaletteBorder(_paletteBorder, null);
-            _dragColumnToGroupText = _languageManager.GetDragColumnToGroupText();
+            _dragColumnToGroupText = LanguageStrings.DragColumnToGroup;
             
             using (Graphics g = CreateGraphics())
             {
@@ -208,6 +207,10 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             get => _dragColumnToGroupText;
             set => _dragColumnToGroupText = value;
         }
+
+        public LanguageStringStorage LanguageStrings { get; }
+
+        public bool ShouldSerializeLanguageStrings() => LanguageStrings.IsDefault;
 
         #endregion
 
@@ -909,20 +912,20 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             if (_menuItems == null)
             {
                 // Create individual items
-                _menuSortAscending = new KryptonContextMenuItem(_languageManager.GetSortAscendingText(), OutlookGridImageResources.sort_az_ascending2, OnSortAscending);
-                _menuSortDescending = new KryptonContextMenuItem(_languageManager.GetSortDescendingText(), OutlookGridImageResources.sort_az_descending2, OnSortDescending);
+                _menuSortAscending = new KryptonContextMenuItem(LanguageStrings.SortAscending, OutlookGridImageResources.sort_az_ascending2, OnSortAscending);
+                _menuSortDescending = new KryptonContextMenuItem(LanguageStrings.SortDescending, OutlookGridImageResources.sort_az_descending2, OnSortDescending);
                 _menuSeparator1 = new KryptonContextMenuSeparator();
-                _menuExpand = new KryptonContextMenuItem(_languageManager.GetExpandText(), OutlookGridImageResources.element_plus_16, OnGroupExpand);
-                _menuCollapse = new KryptonContextMenuItem(_languageManager.GetCollapseText(), OutlookGridImageResources.element_minus_16, OnGroupCollapse);
-                _menuUnGroup = new KryptonContextMenuItem(_languageManager.GetUngroupText(), OutlookGridImageResources.element_delete, OnUngroup);
+                _menuExpand = new KryptonContextMenuItem(LanguageStrings.Expand, OutlookGridImageResources.element_plus_16, OnGroupExpand);
+                _menuCollapse = new KryptonContextMenuItem(LanguageStrings.Collapse, OutlookGridImageResources.element_minus_16, OnGroupCollapse);
+                _menuUnGroup = new KryptonContextMenuItem(LanguageStrings.Ungroup, OutlookGridImageResources.element_delete, OnUngroup);
                 _menuSeparator2 = new KryptonContextMenuSeparator();
-                _menuFullExpand = new KryptonContextMenuItem(_languageManager.GetFullExpandText(), OutlookGridImageResources.elements_plus_16, OnFullExpand);
-                _menuFullCollapse = new KryptonContextMenuItem(_languageManager.GetFullCollapseText(), OutlookGridImageResources.elements_minus_16, OnFullCollapse);
+                _menuFullExpand = new KryptonContextMenuItem(LanguageStrings.FullExpand, OutlookGridImageResources.elements_plus_16, OnFullExpand);
+                _menuFullCollapse = new KryptonContextMenuItem(LanguageStrings.FullCollapse, OutlookGridImageResources.elements_minus_16, OnFullCollapse);
                 _menuSeparator3 = new KryptonContextMenuSeparator();
-                _menuClearGrouping = new KryptonContextMenuItem(_languageManager.GetClearGroupingText(), OutlookGridImageResources.element_selection_delete, OnClearGrouping);
-                _menuHideGroupBox = new KryptonContextMenuItem(_languageManager.GetHideGroupBoxText(), null, OnHideGroupBox);
-                _menuGroupInterval = new KryptonContextMenuItem(_languageManager.GetGroupIntervalText());
-                _menuSortBySummary = new KryptonContextMenuItem(_languageManager.GetSortBySummaryCountText(), null, OnSortBySummaryCount);
+                _menuClearGrouping = new KryptonContextMenuItem(LanguageStrings.ClearGrouping, OutlookGridImageResources.element_selection_delete, OnClearGrouping);
+                _menuHideGroupBox = new KryptonContextMenuItem(LanguageStrings.HideGroupBox, null, OnHideGroupBox);
+                _menuGroupInterval = new KryptonContextMenuItem(LanguageStrings.GroupInterval);
+                _menuSortBySummary = new KryptonContextMenuItem(LanguageStrings.SortBySummaryCount, null, OnSortBySummaryCount);
                 _menuSortBySummary.CheckOnClick = true;
 
                 //Group Interval

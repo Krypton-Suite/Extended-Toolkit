@@ -6,8 +6,6 @@
  */
 #endregion
 
-using System.Windows.Forms.Design;
-
 namespace Krypton.Toolkit.Suite.Extended.DataGridView
 {
     internal class MasterMultiDetailViewDesigner : ControlDesigner

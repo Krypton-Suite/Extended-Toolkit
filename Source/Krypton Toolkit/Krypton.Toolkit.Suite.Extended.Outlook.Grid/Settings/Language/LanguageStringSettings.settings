@@ -197,5 +197,26 @@
     <Setting Name="Yesterday" Type="System.String" Scope="User">
       <Value Profile="(Default)">Yesterday</Value>
     </Setting>
+    <Setting Name="Monday" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Monday</Value>
+    </Setting>
+    <Setting Name="Tuesday" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Tuesday</Value>
+    </Setting>
+    <Setting Name="Wednesday" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Wednesday</Value>
+    </Setting>
+    <Setting Name="Thursday" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Thursday</Value>
+    </Setting>
+    <Setting Name="Friday" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Friday</Value>
+    </Setting>
+    <Setting Name="Saturday" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Saturday</Value>
+    </Setting>
+    <Setting Name="Sunday" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Sunday</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

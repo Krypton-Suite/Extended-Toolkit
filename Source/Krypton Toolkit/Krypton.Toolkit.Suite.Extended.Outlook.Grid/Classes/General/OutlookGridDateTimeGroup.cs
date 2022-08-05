@@ -30,12 +30,12 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
     {
         private readonly TextInfo _ti = CultureInfo.CurrentCulture.TextInfo;
 
-        private LanguageManager _languageManager = new LanguageManager();
-
         /// <summary>
         /// The Date Interval of OutlookGridDateTimeGroup
         /// </summary>
         public DateInterval Interval { get; set; }
+
+        public LanguageStringStorage LanguageStrings { get; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="OutlookGridDateTimeGroup"/> class.
@@ -94,7 +94,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                         else
                         {
                             valDateTime = DateTime.MinValue;
-                            base.Value = _languageManager.GetNoDateText();
+                            base.Value = LanguageStrings.NoDate;
                         }
                         break;
                     case DateInterval.Month:
@@ -107,7 +107,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                         else
                         {
                             valDateTime = DateTime.MinValue;
-                            base.Value = _languageManager.GetNoDateText();
+                            base.Value = LanguageStrings.NoDate;
                         }
                         break;
                     case DateInterval.Day:
@@ -119,7 +119,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                         else
                         {
                             valDateTime = DateTime.MinValue;
-                            base.Value = _languageManager.GetNoDateText();
+                            base.Value = LanguageStrings.NoDate;
                         }
                         break;
                     case DateInterval.Quarter:
@@ -131,7 +131,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                         else
                         {
                             valDateTime = DateTime.MinValue;
-                            base.Value = _languageManager.GetNoDateText();
+                            base.Value = LanguageStrings.NoDate;
                         }
                         break;
                     default:

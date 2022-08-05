@@ -6,12 +6,6 @@
  */
 #endregion
 
-using System;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Windows.Forms;
-
 namespace Krypton.Toolkit.Suite.Extended.DataGridView
 {
     /// <summary>

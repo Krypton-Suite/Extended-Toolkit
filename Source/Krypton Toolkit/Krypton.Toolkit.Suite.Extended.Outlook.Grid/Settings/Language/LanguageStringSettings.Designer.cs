@@ -802,5 +802,89 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid {
                 this["Yesterday"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Monday")]
+        public string Monday {
+            get {
+                return ((string)(this["Monday"]));
+            }
+            set {
+                this["Monday"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Tuesday")]
+        public string Tuesday {
+            get {
+                return ((string)(this["Tuesday"]));
+            }
+            set {
+                this["Tuesday"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Wednesday")]
+        public string Wednesday {
+            get {
+                return ((string)(this["Wednesday"]));
+            }
+            set {
+                this["Wednesday"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Thursday")]
+        public string Thursday {
+            get {
+                return ((string)(this["Thursday"]));
+            }
+            set {
+                this["Thursday"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Friday")]
+        public string Friday {
+            get {
+                return ((string)(this["Friday"]));
+            }
+            set {
+                this["Friday"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Saturday")]
+        public string Saturday {
+            get {
+                return ((string)(this["Saturday"]));
+            }
+            set {
+                this["Saturday"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Sunday")]
+        public string Sunday {
+            get {
+                return ((string)(this["Sunday"]));
+            }
+            set {
+                this["Sunday"] = value;
+            }
+        }
     }
 }

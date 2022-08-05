@@ -76,7 +76,12 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
         private IComparer _itemsComparer;
 
-        private LanguageManager _languageManager = new LanguageManager();
+        #endregion
+
+        #region Public
+
+        public LanguageStringStorage LanguageStrings { get; }
+
         #endregion
 
         #region "Constructor"
@@ -95,8 +100,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             Rows = new List<OutlookGridRow>();
             Children = new OutlookGridGroupCollection();
             _formatStyle = "";
-            _oneItemText = _languageManager.GetOneItemText();
-            _xXxItemsText = _languageManager.GetXXXItemsText();
+            _oneItemText = LanguageStrings.OneItem;
+            _xXxItemsText = LanguageStrings.XXXItems;
             _allowHiddenWhenGrouped = true;
             _sortBySummaryCount = false;
         }
@@ -149,7 +154,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 //For formatting number we need to cast the object value to the number before applying formatting
                 if (_val == null || string.IsNullOrEmpty(_val.ToString()))
                 {
-                    formattedValue = _languageManager.GetUnknownText();
+                    formattedValue = LanguageStrings.Unknown;
                 }
                 else if (!string.IsNullOrEmpty(_formatStyle))
                 {
