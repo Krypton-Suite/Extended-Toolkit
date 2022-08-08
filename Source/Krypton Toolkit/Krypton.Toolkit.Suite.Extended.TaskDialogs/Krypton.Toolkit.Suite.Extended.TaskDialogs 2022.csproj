@@ -97,7 +97,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="70.22.8.213-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="70.22.8.220-alpha" />
 			</ItemGroup>
 		</When>
 
@@ -181,6 +181,21 @@
 		</Reference>
 		<Reference Include="System.Design" Condition="'$(TargetFramework)' == 'net35'" />
 		<!--TODO: Need to specify version here-->
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Properties\Resources.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>Resources.resx</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Update="Properties\Resources.resx">
+	    <Generator>ResXFileCodeGenerator</Generator>
+	    <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
 	</ItemGroup>
 
 	<!--Binary/Documentation Output-->

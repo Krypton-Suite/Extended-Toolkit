@@ -93,7 +93,11 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
         //Formatting
         private List<ConditionalFormatting> formatConditions;
+
+        private float _factorX, _factorY;
         #endregion
+
+        #region Events
 
         /// <summary>
         /// Group Image Click Event
@@ -116,7 +120,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// </summary>
         public event EventHandler<CollapsedEventArgs> NodeCollapsed;
 
-        float _factorX, _factorY;
+        #endregion
 
         #region Public
 

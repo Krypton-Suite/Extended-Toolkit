@@ -4,6 +4,7 @@
 =======
 
 ## 2022-11-xx - Build 2211 - November 2022
+* Implemented `Krypton.Toolkit.Suite.Extended.TaskDialogs` module
 * `KryptonOutlookGrid` - You can now translate the UI components to your localisation using the `LanguageStrings` property
 * New `KryptonBrowseBox` control to browse for files
 * Added `MostRecentlyUsedFileManager` to the `Krypton.Toolkit.Suite.Extended.IO` module
