@@ -4,6 +4,7 @@
 =======
 
 ## 2022-11-xx - Build 2211 - November 2022
+* Implemented [#239](https://github.com/Krypton-Suite/Extended-Toolkit/issues/239), Messagebox expandable footer
 * Implemented `Krypton.Toolkit.Suite.Extended.TaskDialogs` module
 * `KryptonOutlookGrid` - You can now translate the UI components to your localisation using the `LanguageStrings` property
 * New `KryptonBrowseBox` control to browse for files

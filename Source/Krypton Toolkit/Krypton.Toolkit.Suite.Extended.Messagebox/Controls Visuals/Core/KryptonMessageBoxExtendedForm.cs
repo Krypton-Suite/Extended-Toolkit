@@ -31,6 +31,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         private readonly bool _showHelpButton;
 
+        private readonly bool _showMoreDetailsUI;
+
         private readonly Color _messageTextColour;
 
         private readonly Color[] _buttonTextColours = new Color[4];
@@ -50,6 +52,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         private readonly ExtendedKryptonMessageBoxIcon _kryptonMessageBoxIcon;
 
         private readonly Image _customKryptonMessageBoxIcon;
+        
+        private readonly string _detailsText;
 
         private readonly string _buttonOneCustomText;
 
@@ -58,6 +62,12 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         private readonly string _buttonThreeCustomText;
 
         private readonly string _buttonFourCustomText;
+        #endregion
+
+        #region Public
+
+        public TableLayoutPanel ContentLayoutPanel { get => ktlpContent; }
+
         #endregion
 
         #region Identity
@@ -78,12 +88,13 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                                Font messageBoxTypeface, 
                                                Image customKryptonMessageBoxIcon, bool? showHelpButton,
                                                Color? messageTextColour, Color[] buttonTextColours,
-                                               DialogResult? buttonOneCustomDialogResult, 
-                                               DialogResult? buttonTwoCustomDialogResult, 
-                                               DialogResult? buttonThreeCustomDialogResult, 
+                                               DialogResult? buttonOneCustomDialogResult,
+                                               DialogResult? buttonTwoCustomDialogResult,
+                                               DialogResult? buttonThreeCustomDialogResult,
                                                DialogResult? buttonFourDialogResult,
                                                string buttonOneCustomText, string buttonTwoCustomText,
-                                               string buttonThreeCustomText, string buttonFourCustomText)
+                                               string buttonThreeCustomText, string buttonFourCustomText,
+                                               bool? showMoreDetailsUI, string moreDetailsText)
         {
             // Store incoming values
             _text = text;
@@ -96,6 +107,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             _showOwner = showOwner;
 
             // Extended values
+            _showMoreDetailsUI = showMoreDetailsUI ?? false;
             _messageBoxTypeface = messageBoxTypeface ?? new Font("Segoe UI", 8.25F);
             _customKryptonMessageBoxIcon = customKryptonMessageBoxIcon;
             _showHelpButton = showHelpButton ?? false;
@@ -109,6 +121,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             _buttonTwoCustomText = buttonTwoCustomText ?? KryptonManager.Strings.No;
             _buttonThreeCustomText = buttonThreeCustomText ?? KryptonManager.Strings.Cancel;
             _buttonFourCustomText = buttonFourCustomText ?? KryptonManager.Strings.Retry;
+            _detailsText = moreDetailsText;
 
             // Create the form contents
             InitializeComponent();
@@ -122,6 +135,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             UpdateDefault();
             UpdateHelp();
             UpdateTextExtra(showCtrlCopy);
+
+            SetupMoreDetailsUI(_showMoreDetailsUI);
 
             // Finally calculate and set form sizing
             UpdateSizing(showOwner);
@@ -600,6 +615,40 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             Clipboard.SetText(sb.ToString(), TextDataFormat.Text);
             Clipboard.SetText(sb.ToString(), TextDataFormat.UnicodeText);
         }
-#endregion
+
+        private void MoreDetails_Click(object sender, EventArgs e) => UpdateMoreDetails();
+
+        private void UpdateMoreDetails()
+        {
+            int currentHeight = Height;
+
+            if (_buttonDetails.Text == "E&xpend")
+            {
+                _buttonDetails.Text = "Col&lapse";
+
+                ContentLayoutPanel.RowStyles[2].Height = 40;
+
+                Height = currentHeight + (int)ContentLayoutPanel.RowStyles[2].Height;
+
+                krtbDetails.Text = _detailsText;
+            }
+            else if (_buttonDetails.Text == "Col&lapse")
+            {
+                _buttonDetails.Text = "E&xpand";
+
+                ContentLayoutPanel.RowStyles[2].Height = 0;
+
+                Height = currentHeight;
+            }
+        }
+
+        private void SetupMoreDetailsUI(bool showUI)
+        {
+            _buttonDetails.Visible = showUI;
+
+            _buttonDetails.Text = "E&xpand";
+        }
+        #endregion
+
     }
 }

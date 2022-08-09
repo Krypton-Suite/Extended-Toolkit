@@ -20,11 +20,12 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="icon">The icon.</param>
         /// <param name="showCtrlCopy">The show control copy.</param>
         public static DialogResult Show(string messageText, string caption, ExtendedMessageBoxButtons buttons,
-                                        ExtendedKryptonMessageBoxIcon icon, bool? showCtrlCopy = null)
+                                        ExtendedKryptonMessageBoxIcon icon, bool? showCtrlCopy = null,
+                                        bool? showMoreDetailsUI = null, string moreDetailsText = @"")
             => ShowCore(null, messageText, caption, buttons, icon, KryptonMessageBoxDefaultButton.Button1, 0,
-                null, showCtrlCopy, null, null, null, Color.Empty, new [] {Color.Empty, Color.Empty, Color.Empty, Color.Empty},
-                null, null, null, null, string.Empty, string.Empty,
-                string.Empty, string.Empty);
+                        null, showCtrlCopy, null, null, null, Color.Empty, new [] {Color.Empty, Color.Empty, Color.Empty, Color.Empty},
+                        null, null, null, null, string.Empty, string.Empty,
+                        string.Empty, string.Empty, showMoreDetailsUI, moreDetailsText);
 
         /// <summary>Shows a messagebox.</summary>
         /// <param name="messageText">The text.</param>
@@ -48,14 +49,16 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         bool displayHelpButton = false,
                                         bool? showCtrlCopy = null,
                                         Font messageBoxTypeface = null,
-                                        Image customImageIcon = null)
+                                        Image customImageIcon = null,
+                                        bool? showMoreDetailsUI = null, 
+                                        string moreDetailsText = @"")
             =>
                 ShowCore(null, messageText, caption, buttons, icon, defaultButton, options,
-                             displayHelpButton ? new HelpInfo() : null, showCtrlCopy,
-                             messageBoxTypeface, customImageIcon, null, Color.Empty, 
-                             new[] { Color.Empty, Color.Empty, Color.Empty, Color.Empty },
-                             null, null, null, null, string.Empty, string.Empty, 
-                             string.Empty, string.Empty);
+                         displayHelpButton ? new HelpInfo() : null, showCtrlCopy,
+                         messageBoxTypeface, customImageIcon, null, Color.Empty, 
+                         new[] { Color.Empty, Color.Empty, Color.Empty, Color.Empty },
+                         null, null, null, null, string.Empty, string.Empty, 
+                         string.Empty, string.Empty, showMoreDetailsUI, moreDetailsText);
 
         /// <summary>Shows a messagebox.</summary>
         /// <param name="messageText">The text.</param>
@@ -75,14 +78,17 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         KryptonMessageBoxDefaultButton defaultButton = KryptonMessageBoxDefaultButton.Button1,
                                         MessageBoxOptions options = 0,
                                         bool displayHelpButton = false,
-                                        bool? showCtrlCopy = null)
+                                        bool? showCtrlCopy = null,
+                                        bool? showMoreDetailsUI = null, 
+                                        string moreDetailsText = @"")
             =>
                 ShowCore(null, messageText, caption, buttons, icon, defaultButton, options,
-                             displayHelpButton ? new HelpInfo() : null, showCtrlCopy,
-                             null, null, null, Color.Empty,
-                             new[] { Color.Empty, Color.Empty, Color.Empty, Color.Empty },
-                             null, null, null, null, string.Empty, string.Empty,
-                             string.Empty, string.Empty);
+                         displayHelpButton ? new HelpInfo() : null, showCtrlCopy,
+                         null, null, null, Color.Empty,
+                         new[] { Color.Empty, Color.Empty, Color.Empty, Color.Empty },
+                         null, null, null, null, string.Empty, string.Empty,
+                         string.Empty, string.Empty, showMoreDetailsUI,
+                         moreDetailsText);
 
         /// <summary>Shows a messagebox.</summary>
         /// <param name="owner">The owner.</param>
@@ -107,14 +113,17 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         bool displayHelpButton = false,
                                         bool? showCtrlCopy = null,
                                         Font messageBoxTypeface = null,
-                                        Image customImageIcon = null)
+                                        Image customImageIcon = null,
+                                        bool? showMoreDetailsUI = null, 
+                                        string moreDetailsText = @"")
             =>
                 ShowCore(owner, messageText, caption, buttons, icon, defaultButton, options,
-                             displayHelpButton ? new HelpInfo() : null, showCtrlCopy,
-                             messageBoxTypeface, customImageIcon, null, Color.Empty,
-                             new[] { Color.Empty, Color.Empty, Color.Empty, Color.Empty },
-                             null, null, null, null, string.Empty,
-                             string.Empty, string.Empty, string.Empty);
+                         displayHelpButton ? new HelpInfo() : null, showCtrlCopy,
+                         messageBoxTypeface, customImageIcon, null, Color.Empty,
+                         new[] { Color.Empty, Color.Empty, Color.Empty, Color.Empty },
+                         null, null, null, null, string.Empty,
+                         string.Empty, string.Empty, string.Empty,
+                         showMoreDetailsUI, moreDetailsText);
 
         /// <summary>Shows a messagebox.</summary>
         /// <param name="owner">The owner.</param>
@@ -135,14 +144,17 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         KryptonMessageBoxDefaultButton defaultButton = KryptonMessageBoxDefaultButton.Button1,
                                         MessageBoxOptions options = 0,
                                         bool displayHelpButton = false,
-                                        bool? showCtrlCopy = null)
+                                        bool? showCtrlCopy = null,
+                                        bool? showMoreDetailsUI = null,
+                                        string moreDetailsText = @"")
             =>
                 ShowCore(owner, messageText, caption, buttons, icon, defaultButton, options,
-                    displayHelpButton ? new HelpInfo() : null, showCtrlCopy,
-                    null, null, null, Color.Empty,
-                    new[] { Color.Empty, Color.Empty, Color.Empty, Color.Empty },
-                    null, null, null, null, string.Empty,
-                    string.Empty, string.Empty, string.Empty);
+                         displayHelpButton ? new HelpInfo() : null, showCtrlCopy,
+                         null, null, null, Color.Empty,
+                         new[] { Color.Empty, Color.Empty, Color.Empty, Color.Empty },
+                         null, null, null, null, string.Empty,
+                         string.Empty, string.Empty, string.Empty,
+                         showMoreDetailsUI, moreDetailsText);
 
         /// <summary>Shows a messagebox.</summary>
         /// <param name="messageText">The text.</param>
@@ -170,14 +182,17 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         object param = null,
                                         bool? showCtrlCopy = null,
                                         Font messageBoxTypeface = null,
-                                        Image customImageIcon = null)
+                                        Image customImageIcon = null,
+                                        bool? showMoreDetailsUI = null, 
+                                        string moreDetailsText = @"")
             =>
                 ShowCore(null, messageText, caption, buttons, icon, defaultButton, options,
-                             new HelpInfo(helpFilePath, navigator, param), showCtrlCopy,
-                             messageBoxTypeface, customImageIcon, null, Color.Empty,
-                             new[] { Color.Empty, Color.Empty, Color.Empty, Color.Empty },
-                             null, null, null, null, string.Empty, 
-                             string.Empty, string.Empty, string.Empty);
+                         new HelpInfo(helpFilePath, navigator, param), showCtrlCopy,
+                         messageBoxTypeface, customImageIcon, null, Color.Empty,
+                         new[] { Color.Empty, Color.Empty, Color.Empty, Color.Empty },
+                         null, null, null, null, string.Empty, 
+                         string.Empty, string.Empty, string.Empty, showMoreDetailsUI,
+                         moreDetailsText);
 
         /// <summary>Shows a messagebox.</summary>
         /// <param name="owner">The owner.</param>
@@ -218,7 +233,9 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         string buttonOneCustomText = null,
                                         string buttonTwoCustomText = null,
                                         string buttonThreeCustomText = null,
-                                        string buttonFourCustomText = null)
+                                        string buttonFourCustomText = null,
+                                        bool? showMoreDetailsUI = null, 
+                                        string moreDetailsText = @"")
             =>
                 ShowCore(owner, messageText, caption, buttons, icon, defaultButton, options,
                          displayHelpButton ? new HelpInfo(helpFilePath, navigator, param) : null,
@@ -226,7 +243,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                          showHelpButton, messageTextColour, buttonTextColours, buttonOneCustomDialogResult,
                          buttonTwoCustomDialogResult, buttonThreeCustomDialogResult,
                          buttonFourDialogResult, buttonOneCustomText, buttonTwoCustomText,
-                         buttonThreeCustomText, buttonFourCustomText);
+                         buttonThreeCustomText, buttonFourCustomText,
+                         showMoreDetailsUI, moreDetailsText);
         #endregion
 
         #region Implementation
@@ -259,7 +277,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                               DialogResult? buttonThreeCustomDialogResult,
                                               DialogResult? buttonFourDialogResult,
                                               string buttonOneCustomText, string buttonTwoCustomText,
-                                              string buttonThreeCustomText, string buttonFourCustomText)
+                                              string buttonThreeCustomText, string buttonFourCustomText,
+                                              bool? showMoreDetailsUI, string moreDetailsText)
         {
             IWin32Window showOwner = ValidateOptions(owner, options, helpInfo);
 
@@ -277,7 +296,9 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                                             buttonOneCustomText,
                                                             buttonTwoCustomText,
                                                             buttonThreeCustomText,
-                                                            buttonFourCustomText);
+                                                            buttonFourCustomText,
+                                                            showMoreDetailsUI,
+                                                            moreDetailsText);
 
             return kmbef.ShowDialog(showOwner);
         }
