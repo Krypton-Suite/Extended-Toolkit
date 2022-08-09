@@ -654,6 +654,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             _buttonDetails.Visible = showUI;
 
             _buttonDetails.Text = "E&xpand";
+
+            if (showUI)
+            {
+                ContentLayoutPanel.RowStyles[2].Height = 0;
+            }
         }
         #endregion
 
