@@ -358,6 +358,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 #endif
             }
 
+            if (_showMoreDetailsUI)
+            {
+                _buttonDetails.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
+            }    
+
             // Do we ignore the Alt+F4 on the buttons?
             if (!ControlBox)
             {
@@ -621,6 +626,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         private void UpdateMoreDetails()
         {
             int currentHeight = Height;
+
+            krtbDetails.StateCommon.Content.Font = _messageBoxTypeface;
 
             if (_buttonDetails.Text == "E&xpend")
             {
