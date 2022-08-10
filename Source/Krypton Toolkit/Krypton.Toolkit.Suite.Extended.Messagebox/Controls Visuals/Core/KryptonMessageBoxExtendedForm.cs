@@ -132,7 +132,15 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
             // Extended values
             _showMoreDetailsUI = showMoreDetailsUI ?? false;
-            _messageBoxTypeface = messageBoxTypeface ?? new Font("Segoe UI", 8.25F);
+            if (Environment.OSVersion.Version.Build >= 22000)
+            {
+                _messageBoxTypeface = messageBoxTypeface ?? new Font(@"Segoe UI Variable", 8.25F);
+            }
+            else
+            {
+                _messageBoxTypeface = messageBoxTypeface ?? new Font(@"Segoe UI", 8.25F);
+            }
+
             _customKryptonMessageBoxIcon = customKryptonMessageBoxIcon;
             _showHelpButton = showHelpButton ?? false;
             _messageTextColour = messageTextColour ?? Color.Empty;
