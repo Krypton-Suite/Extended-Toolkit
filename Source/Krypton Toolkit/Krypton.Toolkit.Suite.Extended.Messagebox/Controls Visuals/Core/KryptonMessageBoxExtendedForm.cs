@@ -29,6 +29,10 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         #region Extended Fields
 
+        private readonly bool _showOptionalCheckBox;
+
+        private readonly bool _showOptionalLinkLabel;
+
         private readonly bool _showHelpButton;
 
         private readonly bool _showMoreDetailsUI;
@@ -51,6 +55,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         private readonly ExtendedKryptonMessageBoxIcon _kryptonMessageBoxIcon;
 
+        private readonly KryptonCommand _linkCommand;
+
         private readonly int _maximumMoreDetailsDropDownHeight;
 
         private readonly Image _customKryptonMessageBoxIcon;
@@ -68,6 +74,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         private readonly string _buttonThreeCustomText;
 
         private readonly string _buttonFourCustomText;
+
+        private readonly string _optionalCheckBoxText;
+
+        private readonly string _optionalLinkLabelText;
+
         #endregion
 
         #region Public
@@ -102,7 +113,12 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                                string buttonThreeCustomText, string buttonFourCustomText,
                                                bool? showMoreDetailsUI, string moreDetailsText,
                                                string collapseText, string expandText,
-                                               int? maximumMoreDetailsDropDownHeight)
+                                               int? maximumMoreDetailsDropDownHeight, 
+                                               bool? showOptionalCheckBox, 
+                                               bool? showOptionalLinkLabel, 
+                                               KryptonCommand linkCommand, 
+                                               string optionalCheckBoxText, 
+                                               string optionalLinkLabelText)
         {
             // Store incoming values
             _text = text;
@@ -133,6 +149,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             _collapseText = collapseText ?? KryptonManager.Strings.Collapse;
             _expandText = expandText ?? KryptonManager.Strings.Expand;
             _maximumMoreDetailsDropDownHeight = maximumMoreDetailsDropDownHeight ?? 250;
+            _showOptionalCheckBox = showOptionalCheckBox ?? false;
+            _showOptionalLinkLabel = showOptionalLinkLabel ?? false;
+            _linkCommand = linkCommand;
+            _optionalCheckBoxText = optionalCheckBoxText;
+            _optionalLinkLabelText = optionalLinkLabelText;
 
             // Create the form contents
             InitializeComponent();
@@ -159,12 +180,12 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         {
             Text = string.IsNullOrEmpty(_caption) ? string.Empty : _caption.Split(Environment.NewLine.ToCharArray())[0];
 
-            _messageText.StateCommon.Font = _messageBoxTypeface;
+            kwlMessageText.StateCommon.Font = _messageBoxTypeface;
 
-            _messageText.StateCommon.TextColor = _messageTextColour;
+            kwlMessageText.StateCommon.TextColor = _messageTextColour;
 
-            _messageText.Text = _text;
-            _messageText.RightToLeft = _options.HasFlag(MessageBoxOptions.RightAlign)
+            kwlMessageText.Text = _text;
+            kwlMessageText.RightToLeft = _options.HasFlag(MessageBoxOptions.RightAlign)
                 ? RightToLeft.Yes
                 : _options.HasFlag(MessageBoxOptions.RtlReading)
                     ? RightToLeft.Inherit
@@ -204,64 +225,64 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
                     break;
                 case ExtendedKryptonMessageBoxIcon.Custom:
-                    _messageIcon.Image = _customKryptonMessageBoxIcon;
+                    pbxMessageIcon.Image = _customKryptonMessageBoxIcon;
                     break;
                 case ExtendedKryptonMessageBoxIcon.Question:
-                    _messageIcon.Image = Properties.Resources.Question;
+                    pbxMessageIcon.Image = Properties.Resources.Question;
                     SystemSounds.Question.Play();
                     break;
                 case ExtendedKryptonMessageBoxIcon.Exclamation:
-                    _messageIcon.Image = Properties.Resources.Warning;
+                    pbxMessageIcon.Image = Properties.Resources.Warning;
                     SystemSounds.Exclamation.Play();
                     break;
                 case ExtendedKryptonMessageBoxIcon.Information:
-                    _messageIcon.Image = Properties.Resources.Information;
+                    pbxMessageIcon.Image = Properties.Resources.Information;
                     SystemSounds.Asterisk.Play();
                     break;
                 case ExtendedKryptonMessageBoxIcon.Warning:
-                    _messageIcon.Image = Properties.Resources.Warning;
+                    pbxMessageIcon.Image = Properties.Resources.Warning;
                     SystemSounds.Exclamation.Play();
                     break;
                 case ExtendedKryptonMessageBoxIcon.Error:
-                    _messageIcon.Image = Properties.Resources.Critical;
+                    pbxMessageIcon.Image = Properties.Resources.Critical;
                     SystemSounds.Hand.Play();
                     break;
                 case ExtendedKryptonMessageBoxIcon.Asterisk:
-                    _messageIcon.Image = Properties.Resources.Asterisk;
+                    pbxMessageIcon.Image = Properties.Resources.Asterisk;
                     SystemSounds.Asterisk.Play();
                     break;
                 case ExtendedKryptonMessageBoxIcon.Hand:
-                    _messageIcon.Image = Properties.Resources.Hand;
+                    pbxMessageIcon.Image = Properties.Resources.Hand;
                     SystemSounds.Hand.Play();
                     break;
                 case ExtendedKryptonMessageBoxIcon.Stop:
-                    _messageIcon.Image = Properties.Resources.Stop;
+                    pbxMessageIcon.Image = Properties.Resources.Stop;
                     SystemSounds.Hand.Play();
                     break;
                 case ExtendedKryptonMessageBoxIcon.Shield:
-                    _messageIcon.Image = SystemIcons.Shield.ToBitmap();
+                    pbxMessageIcon.Image = SystemIcons.Shield.ToBitmap();
                     break;
                 case ExtendedKryptonMessageBoxIcon.WindowsLogo:
                     // Because Windows 11 displays a generic application icon,
                     // we need to rely on a image instead
                     if (Environment.OSVersion.Version.Major >= 10 && Environment.OSVersion.Version.Build >= 22000)
                     {
-                        _messageIcon.Image = Properties.Resources.Windows11;
+                        pbxMessageIcon.Image = Properties.Resources.Windows11;
                     }
                     // Windows 10
                     else if (Environment.OSVersion.Version.Major == 10 && Environment.OSVersion.Version.Build <= 19044 /* RTM - 21H2 */)
                     {
-                        _messageIcon.Image = Properties.Resources.Windows_8_and_10_Logo;
+                        pbxMessageIcon.Image = Properties.Resources.Windows_8_and_10_Logo;
                     }
                     else
                     {
-                        _messageIcon.Image = SystemIcons.WinLogo.ToBitmap();
+                        pbxMessageIcon.Image = SystemIcons.WinLogo.ToBitmap();
                     }
 
                     break;
             }
 
-            _messageIcon.Visible = (_kryptonMessageBoxIcon != ExtendedKryptonMessageBoxIcon.None);
+            pbxMessageIcon.Visible = (_kryptonMessageBoxIcon != ExtendedKryptonMessageBoxIcon.None);
 
         }
 
@@ -270,121 +291,123 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             switch (_buttons)
             {
                 case ExtendedMessageBoxButtons.OK:
-                    _button1.Text = KryptonManager.Strings.OK;
-                    _button1.DialogResult = DialogResult.OK;
-                    _button1.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
-                    _button1.Visible = true;
-                    _button1.Enabled = true;
+                    mbButton1.Text = KryptonManager.Strings.OK;
+                    mbButton1.DialogResult = DialogResult.OK;
+                    mbButton1.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
+                    mbButton1.Visible = true;
+                    mbButton1.Enabled = true;
                     break;
                 case ExtendedMessageBoxButtons.OkCancel:
-                    _button1.Text = KryptonManager.Strings.OK;
-                    _button2.Text = KryptonManager.Strings.Cancel;
-                    _button1.DialogResult = DialogResult.OK;
-                    _button2.DialogResult = DialogResult.Cancel;
-                    _button1.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
-                    _button2.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
-                    _button1.Visible = true;
-                    _button1.Enabled = true;
-                    _button2.Visible = true;
-                    _button2.Enabled = true;
+                    mbButton1.Text = KryptonManager.Strings.OK;
+                    mbButton2.Text = KryptonManager.Strings.Cancel;
+                    mbButton1.DialogResult = DialogResult.OK;
+                    mbButton2.DialogResult = DialogResult.Cancel;
+                    mbButton1.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
+                    mbButton2.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
+                    mbButton1.Visible = true;
+                    mbButton1.Enabled = true;
+                    mbButton2.Visible = true;
+                    mbButton2.Enabled = true;
                     break;
                 case ExtendedMessageBoxButtons.YesNo:
-                    _button1.Text = KryptonManager.Strings.Yes;
-                    _button2.Text = KryptonManager.Strings.No;
-                    _button1.DialogResult = DialogResult.Yes;
-                    _button2.DialogResult = DialogResult.No;
-                    _button1.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
-                    _button2.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
-                    _button1.Visible = true;
-                    _button1.Enabled = true;
-                    _button2.Visible = true;
-                    _button2.Enabled = true;
+                    mbButton1.Text = KryptonManager.Strings.Yes;
+                    mbButton2.Text = KryptonManager.Strings.No;
+                    mbButton1.DialogResult = DialogResult.Yes;
+                    mbButton2.DialogResult = DialogResult.No;
+                    mbButton1.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
+                    mbButton2.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
+                    mbButton1.Visible = true;
+                    mbButton1.Enabled = true;
+                    mbButton2.Visible = true;
+                    mbButton2.Enabled = true;
                     ControlBox = false;
                     break;
                 case ExtendedMessageBoxButtons.YesNoCancel:
-                    _button1.Text = KryptonManager.Strings.Yes;
-                    _button2.Text = KryptonManager.Strings.No;
-                    _button3.Text = KryptonManager.Strings.Cancel;
-                    _button1.DialogResult = DialogResult.Yes;
-                    _button2.DialogResult = DialogResult.No;
-                    _button3.DialogResult = DialogResult.Cancel;
-                    _button1.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
-                    _button2.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
-                    _button3.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
-                    _button1.Visible = true;
-                    _button1.Enabled = true;
-                    _button2.Visible = true;
-                    _button2.Enabled = true;
-                    _button3.Visible = true;
-                    _button3.Enabled = true;
+                    mbButton1.Text = KryptonManager.Strings.Yes;
+                    mbButton2.Text = KryptonManager.Strings.No;
+                    mbButton3.Text = KryptonManager.Strings.Cancel;
+                    mbButton1.DialogResult = DialogResult.Yes;
+                    mbButton2.DialogResult = DialogResult.No;
+                    mbButton3.DialogResult = DialogResult.Cancel;
+                    mbButton1.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
+                    mbButton2.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
+                    mbButton3.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
+                    mbButton1.Visible = true;
+                    mbButton1.Enabled = true;
+                    mbButton2.Visible = true;
+                    mbButton2.Enabled = true;
+                    mbButton3.Visible = true;
+                    mbButton3.Enabled = true;
                     break;
                 case ExtendedMessageBoxButtons.RetryCancel:
-                    _button1.Text = KryptonManager.Strings.Retry;
-                    _button2.Text = KryptonManager.Strings.Cancel;
-                    _button1.DialogResult = DialogResult.Retry;
-                    _button2.DialogResult = DialogResult.Cancel;
-                    _button1.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
-                    _button2.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
-                    _button1.Visible = true;
-                    _button1.Enabled = true;
-                    _button2.Visible = true;
-                    _button2.Enabled = true;
+                    mbButton1.Text = KryptonManager.Strings.Retry;
+                    mbButton2.Text = KryptonManager.Strings.Cancel;
+                    mbButton1.DialogResult = DialogResult.Retry;
+                    mbButton2.DialogResult = DialogResult.Cancel;
+                    mbButton1.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
+                    mbButton2.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
+                    mbButton1.Visible = true;
+                    mbButton1.Enabled = true;
+                    mbButton2.Visible = true;
+                    mbButton2.Enabled = true;
                     break;
                 case ExtendedMessageBoxButtons.AbortRetryIgnore:
-                    _button1.Text = KryptonManager.Strings.Abort;
-                    _button2.Text = KryptonManager.Strings.Retry;
-                    _button3.Text = KryptonManager.Strings.Ignore;
-                    _button1.DialogResult = DialogResult.Abort;
-                    _button2.DialogResult = DialogResult.Retry;
-                    _button3.DialogResult = DialogResult.Ignore;
-                    _button1.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
-                    _button2.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
-                    _button3.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
-                    _button1.Visible = true;
-                    _button1.Enabled = true;
-                    _button2.Visible = true;
-                    _button2.Enabled = true;
-                    _button3.Visible = true;
-                    _button3.Enabled = true;
+                    mbButton1.Text = KryptonManager.Strings.Abort;
+                    mbButton2.Text = KryptonManager.Strings.Retry;
+                    mbButton3.Text = KryptonManager.Strings.Ignore;
+                    mbButton1.DialogResult = DialogResult.Abort;
+                    mbButton2.DialogResult = DialogResult.Retry;
+                    mbButton3.DialogResult = DialogResult.Ignore;
+                    mbButton1.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
+                    mbButton2.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
+                    mbButton3.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
+                    mbButton1.Visible = true;
+                    mbButton1.Enabled = true;
+                    mbButton2.Visible = true;
+                    mbButton2.Enabled = true;
+                    mbButton3.Visible = true;
+                    mbButton3.Enabled = true;
                     ControlBox = false;
                     break;
 #if NET60_OR_GREATER
                 case ExtendedMessageBoxButtons.CANCELTRYCONTINUE:
-                    _button1.Text = KryptonManager.Strings.Cancel;
-                    _button2.Text = KryptonManager.Strings.TryAgain;
-                    _button3.Text = KryptonManager.Strings.Continue;
-                    _button1.DialogResult = DialogResult.Cancel;
-                    _button2.DialogResult = DialogResult.TryAgain;
-                    _button3.DialogResult = DialogResult.Continue;
-                    _button1.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
-                    _button2.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
-                    _button3.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
-                    _button1.Visible = true;
-                    _button1.Enabled = true;
-                    _button2.Visible = true;
-                    _button2.Enabled = true;
-                    _button3.Visible = true;
-                    _button3.Enabled = true;
+                    mbButton1.Text = KryptonManager.Strings.Cancel;
+                    mbButton2.Text = KryptonManager.Strings.TryAgain;
+                    mbButton3.Text = KryptonManager.Strings.Continue;
+                    mbButton1.DialogResult = DialogResult.Cancel;
+                    mbButton2.DialogResult = DialogResult.TryAgain;
+                    mbButton3.DialogResult = DialogResult.Continue;
+                    mbButton1.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
+                    mbButton2.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
+                    mbButton3.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
+                    mbButton1.Visible = true;
+                    mbButton1.Enabled = true;
+                    mbButton2.Visible = true;
+                    mbButton2.Enabled = true;
+                    mbButton3.Visible = true;
+                    mbButton3.Enabled = true;
                     break;
 #endif
             }
 
             if (_showMoreDetailsUI)
             {
-                _buttonDetails.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
+                mbMoreDetails.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
 
-                _buttonDetails.Visible = _showMoreDetailsUI;
+                mbMoreDetails.Visible = _showMoreDetailsUI;
 
-                _buttonDetails.Text = _expandText;
+                mbMoreDetails.Enabled = _showMoreDetailsUI;
+
+                mbMoreDetails.Text = _expandText;
             }    
 
             // Do we ignore the Alt+F4 on the buttons?
             if (!ControlBox)
             {
-                _button1.IgnoreAltF4 = true;
-                _button2.IgnoreAltF4 = true;
-                _button3.IgnoreAltF4 = true;
-                _button4.IgnoreAltF4 = true;
+                mbButton1.IgnoreAltF4 = true;
+                mbButton2.IgnoreAltF4 = true;
+                mbButton3.IgnoreAltF4 = true;
+                mbButton4.IgnoreAltF4 = true;
             }
         }
 
@@ -393,16 +416,16 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             switch (_defaultButton)
             {
                 case KryptonMessageBoxDefaultButton.Button1:
-                    _button1.Focus();
+                    mbButton1.Focus();
                     break;
                 case KryptonMessageBoxDefaultButton.Button2:
-                    _button2.Focus();
+                    mbButton2.Focus();
                     break;
                 case KryptonMessageBoxDefaultButton.Button3:
-                    _button3.Focus();
+                    mbButton3.Focus();
                     break;
                 case KryptonMessageBoxDefaultButton.Button4:
-                    _button4.Focus();
+                    mbButton4.Focus();
                     break;
             }
         }
@@ -416,9 +439,9 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
             MessageButton helpButton = _buttons switch
             {
-                ExtendedMessageBoxButtons.OK => _button2,
-                ExtendedMessageBoxButtons.OkCancel or ExtendedMessageBoxButtons.YesNo or ExtendedMessageBoxButtons.RetryCancel => _button3,
-                ExtendedMessageBoxButtons.AbortRetryIgnore or ExtendedMessageBoxButtons.YesNoCancel => _button4,
+                ExtendedMessageBoxButtons.OK => mbButton2,
+                ExtendedMessageBoxButtons.OkCancel or ExtendedMessageBoxButtons.YesNo or ExtendedMessageBoxButtons.RetryCancel => mbButton3,
+                ExtendedMessageBoxButtons.AbortRetryIgnore or ExtendedMessageBoxButtons.YesNoCancel => mbButton4,
                 _ => throw new ArgumentOutOfRangeException()
             };
             if (helpButton != null)
@@ -490,10 +513,10 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                 SizeF scaledMonitorSize = screen.Bounds.Size;
                 scaledMonitorSize.Width *= 2 / 3.0f;
                 scaledMonitorSize.Height *= 0.95f;
-                _messageText.UpdateFont();
-                SizeF messageSize = g.MeasureString(_text, _messageText.Font, scaledMonitorSize);
+                kwlMessageText.UpdateFont();
+                SizeF messageSize = g.MeasureString(_text, kwlMessageText.Font, scaledMonitorSize);
                 // SKC: Don't forget to add the TextExtra into the calculation
-                SizeF captionSize = g.MeasureString($@"{_caption} {TextExtra}", _messageText.Font, scaledMonitorSize);
+                SizeF captionSize = g.MeasureString($@"{_caption} {TextExtra}", kwlMessageText.Font, scaledMonitorSize);
 
                 var messageXSize = Math.Max(messageSize.Width, captionSize.Width);
                 // Work out DPI adjustment factor
@@ -507,9 +530,9 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             }
 
             // Find size of icon area plus the text area added together
-            if (_messageIcon.Image != null)
+            if (pbxMessageIcon.Image != null)
             {
-                return new Size(textSize.Width + _messageIcon.Width, Math.Max(_messageIcon.Height + 10, textSize.Height));
+                return new Size(textSize.Width + pbxMessageIcon.Width, Math.Max(pbxMessageIcon.Height + 10, textSize.Height));
             }
 
             return textSize;
@@ -520,68 +543,90 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             var numButtons = 1;
 
             // Button1 is always visible
-            Size button1Size = _button1.GetPreferredSize(Size.Empty);
+            Size button1Size = mbButton1.GetPreferredSize(Size.Empty);
             Size maxButtonSize = new(button1Size.Width + GAP, button1Size.Height);
 
             // If Button2 is visible
-            if (_button2.Enabled)
+            if (mbButton2.Enabled)
             {
                 numButtons++;
-                Size button2Size = _button2.GetPreferredSize(Size.Empty);
+                Size button2Size = mbButton2.GetPreferredSize(Size.Empty);
                 maxButtonSize.Width = Math.Max(maxButtonSize.Width, button2Size.Width + GAP);
                 maxButtonSize.Height = Math.Max(maxButtonSize.Height, button2Size.Height);
             }
 
             // If Button3 is visible
-            if (_button3.Enabled)
+            if (mbButton3.Enabled)
             {
                 numButtons++;
-                Size button3Size = _button3.GetPreferredSize(Size.Empty);
+                Size button3Size = mbButton3.GetPreferredSize(Size.Empty);
                 maxButtonSize.Width = Math.Max(maxButtonSize.Width, button3Size.Width + GAP);
                 maxButtonSize.Height = Math.Max(maxButtonSize.Height, button3Size.Height);
             }
             // If Button4 is visible
-            if (_button4.Enabled)
+            if (mbButton4.Enabled)
             {
                 numButtons++;
-                Size button4Size = _button4.GetPreferredSize(Size.Empty);
+                Size button4Size = mbButton4.GetPreferredSize(Size.Empty);
                 maxButtonSize.Width = Math.Max(maxButtonSize.Width, button4Size.Width + GAP);
                 maxButtonSize.Height = Math.Max(maxButtonSize.Height, button4Size.Height);
             }
 
+            if (mbMoreDetails.Enabled)
+            {
+                numButtons++;
+
+                Size moreDetailsSize = mbMoreDetails.GetPreferredSize(Size.Empty);
+
+                moreDetailsSize.Width = Math.Max(maxButtonSize.Width, moreDetailsSize.Width + GAP);
+
+                moreDetailsSize.Height = Math.Max(maxButtonSize.Height, moreDetailsSize.Height + GAP);
+            }
+
             // Start positioning buttons 10 pixels from right edge
-            var right = _panelButtons.Right - GAP;
+            var right = kpnlButtons.Right - GAP;
+
+            var left = kpnlButtons.Left - GAP;
 
             // If Button4 is visible
-            if (_button4.Enabled)
+            if (mbButton4.Enabled)
             {
-                _button4.Location = new Point(right - maxButtonSize.Width, GAP);
-                _button4.Size = maxButtonSize;
+                mbButton4.Location = new Point(right - maxButtonSize.Width, GAP);
+                mbButton4.Size = maxButtonSize;
                 right -= maxButtonSize.Width + GAP;
             }
 
             // If Button3 is visible
-            if (_button3.Enabled)
+            if (mbButton3.Enabled)
             {
-                _button3.Location = new Point(right - maxButtonSize.Width, GAP);
-                _button3.Size = maxButtonSize;
+                mbButton3.Location = new Point(right - maxButtonSize.Width, GAP);
+                mbButton3.Size = maxButtonSize;
                 right -= maxButtonSize.Width + GAP;
             }
 
             // If Button2 is visible
-            if (_button2.Enabled)
+            if (mbButton2.Enabled)
             {
-                _button2.Location = new Point(right - maxButtonSize.Width, GAP);
-                _button2.Size = maxButtonSize;
+                mbButton2.Location = new Point(right - maxButtonSize.Width, GAP);
+                mbButton2.Size = maxButtonSize;
                 right -= maxButtonSize.Width + GAP;
             }
 
+            if (mbMoreDetails.Enabled)
+            {
+                mbMoreDetails.Location = new Point(left - maxButtonSize.Width, GAP);
+
+                mbMoreDetails.Size = maxButtonSize;
+
+                left -= maxButtonSize.Width + GAP;
+            }
+
             // Button1 is always visible
-            _button1.Location = new Point(right - maxButtonSize.Width, GAP);
-            _button1.Size = maxButtonSize;
+            mbButton1.Location = new Point(right - maxButtonSize.Width, GAP);
+            mbButton1.Size = maxButtonSize;
 
             // Size the panel for the buttons
-            _panelButtons.Size = new Size((maxButtonSize.Width * numButtons) + (GAP * (numButtons + 1)), maxButtonSize.Height + (GAP * 2));
+            kpnlButtons.Size = new Size((maxButtonSize.Width * numButtons) + (GAP * (numButtons + 1)), maxButtonSize.Height + (GAP * 2));
 
             // Button area is the number of buttons with gaps between them and 10 pixels around all edges
             return new Size((maxButtonSize.Width * numButtons) + (GAP * (numButtons + 1)), maxButtonSize.Height + (GAP * 2));
@@ -612,20 +657,20 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             sb.AppendLine(DIVIDER);
             sb.AppendLine(Text);
             sb.AppendLine(DIVIDER);
-            sb.AppendLine(_messageText.Text);
+            sb.AppendLine(kwlMessageText.Text);
             sb.AppendLine(DIVIDER);
-            sb.Append(_button1.Text).Append(BUTTON_TEXT_SPACER);
-            if (_button2.Enabled)
+            sb.Append(mbButton1.Text).Append(BUTTON_TEXT_SPACER);
+            if (mbButton2.Enabled)
             {
-                sb.Append(_button2.Text).Append(BUTTON_TEXT_SPACER);
-                if (_button3.Enabled)
+                sb.Append(mbButton2.Text).Append(BUTTON_TEXT_SPACER);
+                if (mbButton3.Enabled)
                 {
-                    sb.Append(_button3.Text).Append(BUTTON_TEXT_SPACER);
+                    sb.Append(mbButton3.Text).Append(BUTTON_TEXT_SPACER);
                 }
 
-                if (_button4.Enabled)
+                if (mbButton4.Enabled)
                 {
-                    sb.Append(_button4.Text).Append(BUTTON_TEXT_SPACER);
+                    sb.Append(mbButton4.Text).Append(BUTTON_TEXT_SPACER);
                 }
             }
 
@@ -642,25 +687,29 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         {
             int currentHeight = Height;
 
-            krtbDetails.StateCommon.Content.Font = _messageBoxTypeface;
+            krtbMoreDetails.StateCommon.Content.Font = _messageBoxTypeface;
 
-            if (_buttonDetails.Text == _expandText)
+            if (mbMoreDetails.Text == _expandText)
             {
-                _buttonDetails.Text = _collapseText;
+                mbMoreDetails.Text = _collapseText;
 
-                //ContentLayoutPanel.RowStyles[2].Height = 40;
+                //ContentLayoutPanel.RowStyles[2].Height = _maximumMoreDetailsDropDownHeight;
 
-                kpnlDetails.Height = _maximumMoreDetailsDropDownHeight;
+                //Height = currentHeight + ContentLayoutPanel.Height;
 
-                Height = currentHeight + kpnlDetails.Height;
+                kpnlExpandableFooter.Visible = true;
 
-                krtbDetails.Text = _detailsText;
+                krtbMoreDetails.Visible = true;
+
+                krtbMoreDetails.Text = _detailsText;
             }
-            else if (_buttonDetails.Text == _collapseText)
+            else if (mbMoreDetails.Text == _collapseText)
             {
-                _buttonDetails.Text = _expandText;
+                mbMoreDetails.Text = _expandText;
 
-                ContentLayoutPanel.RowStyles[2].Height = 0;
+                kpnlExpandableFooter.Visible = false;
+
+                krtbMoreDetails.Visible = false;
 
                 Height = currentHeight;
             }
@@ -668,9 +717,9 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         private void SetupMoreDetailsUI(bool showUI)
         {
-            _buttonDetails.Visible = showUI;
+            mbMoreDetails.Visible = showUI;
 
-            _buttonDetails.Text = "E&xpand";
+            mbMoreDetails.Text = "E&xpand";
 
             if (showUI)
             {

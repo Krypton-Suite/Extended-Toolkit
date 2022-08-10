@@ -120,24 +120,13 @@
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="ktlpContent.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAALwAAABRCAYAAABok8z3AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEhSURBVHhe7dbBDYMwFAVB2nWN9EAZtAECyZyowDuHieLk
-        unr62xjjmvbj/L57e6/43p4PKHiifxf+709YjeBJETw5bngyLDwpgidF8OS44cmw8KQInhTBk+OGJ8PC
-        kyJ4UgRPjhueDAtPiuBJETw5bngyLDwpgidF8OS44cmw8KQInhTBk+OGJ8PCkyJ4UgRPjhueDAtPiuBJ
-        ETw5bngyLDwpgidF8OS44cmw8KQInhTBk+OGJ8PCkyJ4UgRPjhueDAtPiuBJETw5bngyLDwpgidF8OS4
-        4cmw8KQInhTBk+OGJ8PCkyJ4UgRPjhueDAtPiuBJETw5bngyLDwpgidF8OS44cmw8KQInhTBk+OGJ8PC
-        kyJ4Ur7gp/mjt/ea7/O6AZGSLKuwnbulAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="kryptonTableLayoutPanel1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAALwAAABRCAYAAABok8z3AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEhSURBVHhe7dbBDYMwFAVB2nWN9EAZtAECyZyowDuHieLk
-        unr62xjjmvbj/L57e6/43p4PKHiifxf+709YjeBJETw5bngyLDwpgidF8OS44cmw8KQInhTBk+OGJ8PC
-        kyJ4UgRPjhueDAtPiuBJETw5bngyLDwpgidF8OS44cmw8KQInhTBk+OGJ8PCkyJ4UgRPjhueDAtPiuBJ
-        ETw5bngyLDwpgidF8OS44cmw8KQInhTBk+OGJ8PCkyJ4UgRPjhueDAtPiuBJETw5bngyLDwpgidF8OS4
-        4cmw8KQInhTBk+OGJ8PCkyJ4UgRPjhueDAtPiuBJETw5bngyLDwpgidF8OS44cmw8KQInhTBk+OGJ8PC
-        kyJ4Ur7gp/mjt/ea7/O6AZGSLKuwnbulAAAAAElFTkSuQmCC
+        iVBORw0KGgoAAAANSUhEUgAAALwAAABRCAYAAABok8z3AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wgAADsIBFShKgAAAASFJREFUeF7t1sENgzAUBUHadY30QBm0AQLJnKjAO4eJ4uS6evrbGOOa9uP8vnt7
+        r/jeng8oeKJ/F/7vT1iN4EkRPDlueDIsPCmCJ0Xw5LjhybDwpAieFMGT44Ynw8KTInhSBE+OG54MC0+K
+        4EkRPDlueDIsPCmCJ0Xw5LjhybDwpAieFMGT44Ynw8KTInhSBE+OG54MC0+K4EkRPDlueDIsPCmCJ0Xw
+        5LjhybDwpAieFMGT44Ynw8KTInhSBE+OG54MC0+K4EkRPDlueDIsPCmCJ0Xw5LjhybDwpAieFMGT44Yn
+        w8KTInhSBE+OG54MC0+K4EkRPDlueDIsPCmCJ0Xw5LjhybDwpAieFMGT44Ynw8KTInhSvuCn+aO395rv
+        87oBkZIsq7Cdu6UAAAAASUVORK5CYII=
 </value>
   </data>
 </root>
