@@ -28,8 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MessageBoxExample));
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            this.kryptonGroupBox3 = new Krypton.Toolkit.KryptonGroupBox();
             this.kryptonGroupBox2 = new Krypton.Toolkit.KryptonGroupBox();
             this.kryptonComboBox3 = new Krypton.Toolkit.KryptonComboBox();
             this.ktxtCustomButtonFourText = new Krypton.Toolkit.KryptonTextBox();
@@ -66,8 +68,14 @@
             this.kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
             this.ktxtCaption = new Krypton.Toolkit.KryptonTextBox();
             this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
+            this.kbtnQuickTest = new Krypton.Toolkit.KryptonButton();
+            this.kryptonManager1 = new Krypton.Toolkit.KryptonManager(this.components);
+            this.kryptonButton2 = new Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox3.Panel)).BeginInit();
+            this.kryptonGroupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox2.Panel)).BeginInit();
             this.kryptonGroupBox2.Panel.SuspendLayout();
@@ -88,6 +96,9 @@
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(this.kryptonButton2);
+            this.kryptonPanel1.Controls.Add(this.kbtnQuickTest);
+            this.kryptonPanel1.Controls.Add(this.kryptonGroupBox3);
             this.kryptonPanel1.Controls.Add(this.kryptonGroupBox2);
             this.kryptonPanel1.Controls.Add(this.kryptonGroupBox1);
             this.kryptonPanel1.Controls.Add(this.groupBoxIcon);
@@ -100,6 +111,13 @@
             this.kryptonPanel1.Name = "kryptonPanel1";
             this.kryptonPanel1.Size = new System.Drawing.Size(1577, 884);
             this.kryptonPanel1.TabIndex = 0;
+            // 
+            // kryptonGroupBox3
+            // 
+            this.kryptonGroupBox3.Location = new System.Drawing.Point(404, 13);
+            this.kryptonGroupBox3.Name = "kryptonGroupBox3";
+            this.kryptonGroupBox3.Size = new System.Drawing.Size(150, 150);
+            this.kryptonGroupBox3.TabIndex = 14;
             // 
             // kryptonGroupBox2
             // 
@@ -320,6 +338,8 @@
             this.kbbImagePath.Location = new System.Drawing.Point(12, 123);
             this.kbbImagePath.Name = "kbbImagePath";
             this.kbbImagePath.ResetText = null;
+            this.kbbImagePath.ResetTextToolTipDescription = null;
+            this.kbbImagePath.ResetTextToolTipHeading = null;
             this.kbbImagePath.ShowResetButton = true;
             this.kbbImagePath.Size = new System.Drawing.Size(256, 24);
             this.kbbImagePath.SmallResetImage = ((System.Drawing.Image)(resources.GetObject("kbbImagePath.SmallResetImage")));
@@ -469,6 +489,32 @@
             this.kryptonLabel1.TabIndex = 0;
             this.kryptonLabel1.Values.Text = "Caption:";
             // 
+            // kbtnQuickTest
+            // 
+            this.kbtnQuickTest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.kbtnQuickTest.CornerRoundingRadius = -1F;
+            this.kbtnQuickTest.Location = new System.Drawing.Point(1370, 847);
+            this.kbtnQuickTest.Name = "kbtnQuickTest";
+            this.kbtnQuickTest.Size = new System.Drawing.Size(99, 25);
+            this.kbtnQuickTest.TabIndex = 15;
+            this.kbtnQuickTest.Values.Text = "&Quick Test";
+            this.kbtnQuickTest.Click += new System.EventHandler(this.kbtnQuickTest_Click);
+            // 
+            // kryptonManager1
+            // 
+            this.kryptonManager1.GlobalStrings.Collapse = null;
+            this.kryptonManager1.GlobalStrings.Expand = null;
+            // 
+            // kryptonButton2
+            // 
+            this.kryptonButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.kryptonButton2.CornerRoundingRadius = -1F;
+            this.kryptonButton2.Location = new System.Drawing.Point(1475, 847);
+            this.kryptonButton2.Name = "kryptonButton2";
+            this.kryptonButton2.Size = new System.Drawing.Size(90, 25);
+            this.kryptonButton2.TabIndex = 16;
+            this.kryptonButton2.Values.Text = "&Show";
+            // 
             // MessageBoxExample
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -482,6 +528,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox3.Panel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox3)).EndInit();
+            this.kryptonGroupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox2.Panel)).EndInit();
             this.kryptonGroupBox2.Panel.ResumeLayout(false);
             this.kryptonGroupBox2.Panel.PerformLayout();
@@ -544,5 +593,9 @@
         private Krypton.Toolkit.KryptonRadioButton krbButtonsCancelTryContinue;
         private Krypton.Toolkit.KryptonRadioButton krbButtonsCustom;
         private Krypton.Toolkit.Suite.Extended.Controls.KryptonBrowseBox kbbImagePath;
+        private Krypton.Toolkit.KryptonGroupBox kryptonGroupBox3;
+        private Krypton.Toolkit.KryptonButton kbtnQuickTest;
+        private Krypton.Toolkit.KryptonManager kryptonManager1;
+        private Krypton.Toolkit.KryptonButton kryptonButton2;
     }
 }

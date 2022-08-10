@@ -54,7 +54,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         /// <value>
         /// The selection alignment.
         /// </value>
-        [DefaultValue(TextAlignment.LEFT), Description("Gets or sets the selection alignment."), Category("Appearance")]
+        [DefaultValue(TextAlignment.Left), Description("Gets or sets the selection alignment."), Category("Appearance")]
         public new TextAlignment SelectionAlignment
         {
             get
@@ -73,7 +73,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
 
                 if ((_paraformat.dwMask & 8) == 0)
                 {
-                    alignment = TextAlignment.LEFT;
+                    alignment = TextAlignment.Left;
                 }
                 else
 {
@@ -110,7 +110,7 @@ namespace Krypton.Toolkit.Suite.Extended.Controls
         {
             Multiline = true;
 
-            SelectionAlignment = TextAlignment.LEFT;
+            SelectionAlignment = TextAlignment.Left;
 
             Size = new Size(100, 96);
 

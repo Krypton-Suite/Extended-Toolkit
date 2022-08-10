@@ -13,13 +13,13 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
     [ToolboxBitmap(typeof(KryptonMessageBox), "ToolboxBitmaps.KryptonMessageBox.bmp"),
      DefaultEvent("ShowMessageBox"), DefaultProperty("MessageBoxContentText"),
      Description("Allows the creation of a KryptonMessageBoxExtended through the designer."),
-     ToolboxItem(false)]
+     ToolboxItem(true)]
     //, Designer(typeof(KryptonMessageBoxConfiguratorDesigner))]
-    internal class KryptonMessageBoxManager : Component
+    public class KryptonMessageBoxManager : Component
     {
         #region Fields
 
-        private bool _showCtrlCopy, _showOptionalCheckBox, _isOptionalCheckBoxChecked, _showHelpButton, _showOptionalLinkLabel;
+        private bool _showCtrlCopy, _showOptionalCheckBox, _isOptionalCheckBoxChecked, _showHelpButton, _showOptionalLinkLabel, _useMoreDetailsUI;
 
         private CheckState _optionalCheckBoxCheckState;
 
@@ -33,9 +33,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         private Font _messageBoxTypeface;
 
+        private int _maximumMoreDetailsDropDownHeight;
+
         private Image _customImageIcon;
 
-        private string _text, _captionText, _helpFilePath, _optionalCheckBoxText, _optionalLinkLabelText, _optionalLinkLabelDestination;
+        private string _text, _captionText, _helpFilePath, _optionalCheckBoxText, _optionalLinkLabelText, _optionalLinkLabelDestination, _moreDetailsText, _collapseText, _expandText;
 
         private object _parameters;
 
@@ -76,6 +78,9 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         public CheckState OptionalCheckBoxCheckState { get => _optionalCheckBoxCheckState; set => _optionalCheckBoxCheckState = value; }
         */
 
+        [DefaultValue(false), Description(@"Allows the usage of more details.")]
+        public bool UseMoreDetailsUI { get => _useMoreDetailsUI; set => _useMoreDetailsUI = value; }
+
         /// <summary>Gets or sets the message box icon.</summary>
         /// <value>The message box icon.</value>
         [DefaultValue(typeof(ExtendedKryptonMessageBoxIcon), "ExtendedKryptonMessageBoxIcon.NONE"), Description(@"Set the message box icon.")]
@@ -98,8 +103,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         /// <summary>Gets or sets the message box typeface.</summary>
         /// <value>The message box typeface.</value>
-        [DefaultValue(typeof(Font), "Segoe UI, 8.25F"), Description(@"Specifies the font on all text surfaces.Specifies")]
+        [DefaultValue(typeof(Font), "Segoe UI, 8.25F"), Description(@"Specifies the font on all text surfaces.")]
         public Font MessageBoxTypeface { get => _messageBoxTypeface; set => _messageBoxTypeface = value; }
+
+        [DefaultValue(250), Description(@"")]
+        public int MaximumMoreDetailsDropDownHeight { get => _maximumMoreDetailsDropDownHeight; set => _maximumMoreDetailsDropDownHeight = value;}
 
         /// <summary>Gets or sets the custom image icon.</summary>
         /// <value>The custom image icon.</value>
@@ -134,6 +142,15 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         public string OptionalLinkLabelDestination { get => _optionalLinkLabelDestination; set => _optionalLinkLabelDestination = value; }
         */
 
+        [DefaultValue(null), Description(@"Specifies the details text.")]
+        public string MoreDetailsText { get => _moreDetailsText; set => _moreDetailsText = value; }
+
+        [DefaultValue(@"Co&llapse"), Description(@"Specifies the collapse text.")]
+        public string CollapseText { get => _collapseText; set => _collapseText = value; }
+
+        [DefaultValue(@"E&xpand"), Description(@"Specifies the expand text.")]
+        public string ExpandText { get => _expandText; set => _expandText = value; }
+
         /// <summary>Gets or sets the parameters.</summary>
         /// <value>The parameters.</value>
         [DefaultValue(null), Description(@"The numeric ID of the Help topic to display when the user clicks the Help button.")]
@@ -166,6 +183,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
             _showOptionalLinkLabel = false;
 
+            _useMoreDetailsUI = false;
+
             _optionalCheckBoxCheckState = CheckState.Unchecked;
 
             _buttons = ExtendedMessageBoxButtons.OK;
@@ -191,6 +210,12 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             _optionalLinkLabelDestination = @"";
 
             _optionalLinkLabelText = @"";
+
+            _moreDetailsText = @"";
+
+            _collapseText = @"Co&llapse";
+
+            _expandText = @"E&xpand";
 
             _parameters = null;
 
@@ -269,14 +294,20 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                 return KryptonMessageBoxExtended.Show(Text, CaptionText, MessageBoxButtons,
                                                       MessageBoxIcon, DefaultButton,
                                                       Options, false,
-                                                      ShowCtrlCopy);
+                                                      ShowCtrlCopy,
+                                                      UseMoreDetailsUI, MoreDetailsText,
+                                                      CollapseText, ExpandText,
+                                                      MaximumMoreDetailsDropDownHeight);
             }
             else if (MessageBoxTypeface != null)
             {
                 return KryptonMessageBoxExtended.Show(Text, CaptionText, MessageBoxButtons,
                                                       MessageBoxIcon, DefaultButton, Options,
                                                       ShowHelpButton, ShowCtrlCopy,
-                                                      MessageBoxTypeface, CustomImageIcon);
+                                                      MessageBoxTypeface, CustomImageIcon,
+                                                      UseMoreDetailsUI, MoreDetailsText,
+                                                      CollapseText, ExpandText,
+                                                      MaximumMoreDetailsDropDownHeight);
             }
             else
             {
@@ -286,12 +317,17 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                                      HelpFilePath, HelpNavigator,
                                                      Parameters, ShowHelpButton,
                                                      ShowCtrlCopy, MessageBoxTypeface,
-                                                     CustomImageIcon);
+                                                     CustomImageIcon, ShowHelpButton,
+                                                     null, null, null, null, null,
+                                                     null, null, null, null, null,
+                                                     UseMoreDetailsUI, MoreDetailsText,
+                                                     CollapseText, ExpandText,
+                                                     MaximumMoreDetailsDropDownHeight);
             }
         }
 
         #endregion
-
+        
         #region Methods
 
         /// <summary>Displays the message box.</summary>
@@ -304,14 +340,20 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                 return KryptonMessageBoxExtended.Show(Text, CaptionText, MessageBoxButtons,
                                                       MessageBoxIcon, DefaultButton,
                                                       Options, false,
-                                                      ShowCtrlCopy);
+                                                      ShowCtrlCopy,
+                                                      UseMoreDetailsUI, MoreDetailsText,
+                                                      CollapseText, ExpandText,
+                                                      MaximumMoreDetailsDropDownHeight);
             }
             else if (MessageBoxTypeface != null)
             {
                 return KryptonMessageBoxExtended.Show(Text, CaptionText, MessageBoxButtons,
                                                       MessageBoxIcon, DefaultButton, Options,
                                                       ShowHelpButton, ShowCtrlCopy,
-                                                      MessageBoxTypeface, CustomImageIcon);
+                                                      MessageBoxTypeface, CustomImageIcon,
+                                                      UseMoreDetailsUI, MoreDetailsText,
+                                                      CollapseText, ExpandText,
+                                                      MaximumMoreDetailsDropDownHeight);
             }
             else
             {
@@ -321,7 +363,12 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                                      HelpFilePath, HelpNavigator,
                                                      Parameters, ShowHelpButton,
                                                      ShowCtrlCopy, MessageBoxTypeface,
-                                                     CustomImageIcon);
+                                                     CustomImageIcon, ShowHelpButton,
+                                                     null, null, null, null, null,
+                                                     null, null, null, null, null,
+                                                     UseMoreDetailsUI, MoreDetailsText,
+                                                     CollapseText, ExpandText,
+                                                     MaximumMoreDetailsDropDownHeight);
             }
         }
 

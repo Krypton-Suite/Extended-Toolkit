@@ -30,5 +30,30 @@ namespace TestApp
         {
             kryptonProgressBarExtendedVersion21.Value = e.Value;
         }
+
+        private void kcbReset_CheckedChanged(object sender, EventArgs e)
+        {
+            kbbTest.ShowResetButton = kcbReset.Checked;
+        }
+
+        private void kcbFolderPicker_CheckedChanged(object sender, EventArgs e)
+        {
+            kbbTest.IsFolderPicker = kcbFolderPicker.Checked;
+        }
+
+        private void kcbExpandedMode_CheckedChanged(object sender, EventArgs e)
+        {
+            kbbTest.IsExpandedMode = kcbExpandedMode.Checked;
+        }
+
+        private void kcbSaveDialog_CheckedChanged(object sender, EventArgs e)
+        {
+            kbbTest.UseSaveDialog = kcbSaveDialog.Checked;
+        }
+
+        private void kcmbAlignment_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

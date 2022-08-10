@@ -51,9 +51,15 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         private readonly ExtendedKryptonMessageBoxIcon _kryptonMessageBoxIcon;
 
+        private readonly int _maximumMoreDetailsDropDownHeight;
+
         private readonly Image _customKryptonMessageBoxIcon;
+
+        private readonly string _collapseText;
         
         private readonly string _detailsText;
+
+        private readonly string _expandText;
 
         private readonly string _buttonOneCustomText;
 
@@ -94,7 +100,9 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                                DialogResult? buttonFourDialogResult,
                                                string buttonOneCustomText, string buttonTwoCustomText,
                                                string buttonThreeCustomText, string buttonFourCustomText,
-                                               bool? showMoreDetailsUI, string moreDetailsText)
+                                               bool? showMoreDetailsUI, string moreDetailsText,
+                                               string collapseText, string expandText,
+                                               int? maximumMoreDetailsDropDownHeight)
         {
             // Store incoming values
             _text = text;
@@ -122,6 +130,9 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             _buttonThreeCustomText = buttonThreeCustomText ?? KryptonManager.Strings.Cancel;
             _buttonFourCustomText = buttonFourCustomText ?? KryptonManager.Strings.Retry;
             _detailsText = moreDetailsText;
+            _collapseText = collapseText ?? KryptonManager.Strings.Collapse;
+            _expandText = expandText ?? KryptonManager.Strings.Expand;
+            _maximumMoreDetailsDropDownHeight = maximumMoreDetailsDropDownHeight ?? 250;
 
             // Create the form contents
             InitializeComponent();
@@ -361,6 +372,10 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             if (_showMoreDetailsUI)
             {
                 _buttonDetails.StateCommon.Content.ShortText.Font = _messageBoxTypeface;
+
+                _buttonDetails.Visible = _showMoreDetailsUI;
+
+                _buttonDetails.Text = _expandText;
             }    
 
             // Do we ignore the Alt+F4 on the buttons?
@@ -629,19 +644,21 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
             krtbDetails.StateCommon.Content.Font = _messageBoxTypeface;
 
-            if (_buttonDetails.Text == "E&xpend")
+            if (_buttonDetails.Text == _expandText)
             {
-                _buttonDetails.Text = "Col&lapse";
+                _buttonDetails.Text = _collapseText;
 
-                ContentLayoutPanel.RowStyles[2].Height = 40;
+                //ContentLayoutPanel.RowStyles[2].Height = 40;
 
-                Height = currentHeight + (int)ContentLayoutPanel.RowStyles[2].Height;
+                kpnlDetails.Height = _maximumMoreDetailsDropDownHeight;
+
+                Height = currentHeight + kpnlDetails.Height;
 
                 krtbDetails.Text = _detailsText;
             }
-            else if (_buttonDetails.Text == "Col&lapse")
+            else if (_buttonDetails.Text == _collapseText)
             {
-                _buttonDetails.Text = "E&xpand";
+                _buttonDetails.Text = _expandText;
 
                 ContentLayoutPanel.RowStyles[2].Height = 0;
 

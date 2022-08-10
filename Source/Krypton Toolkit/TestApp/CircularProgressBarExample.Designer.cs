@@ -30,6 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CircularProgressBarExample));
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            this.kryptonColorButton3 = new Krypton.Toolkit.KryptonColorButton();
+            this.kryptonColorButton2 = new Krypton.Toolkit.KryptonColorButton();
+            this.kryptonColorButton1 = new Krypton.Toolkit.KryptonColorButton();
             this.kryptonCheckBox1 = new Krypton.Toolkit.KryptonCheckBox();
             this.kryptonTrackBar1 = new Krypton.Toolkit.KryptonTrackBar();
             this.circularProgressBar1 = new Krypton.Toolkit.Suite.Extended.Circular.ProgressBar.CircularProgressBar();
@@ -39,14 +42,44 @@
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(this.kryptonColorButton3);
+            this.kryptonPanel1.Controls.Add(this.kryptonColorButton2);
+            this.kryptonPanel1.Controls.Add(this.kryptonColorButton1);
             this.kryptonPanel1.Controls.Add(this.kryptonCheckBox1);
             this.kryptonPanel1.Controls.Add(this.kryptonTrackBar1);
             this.kryptonPanel1.Controls.Add(this.circularProgressBar1);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel1.Name = "kryptonPanel1";
-            this.kryptonPanel1.Size = new System.Drawing.Size(659, 450);
+            this.kryptonPanel1.Size = new System.Drawing.Size(659, 352);
             this.kryptonPanel1.TabIndex = 0;
+            // 
+            // kryptonColorButton3
+            // 
+            this.kryptonColorButton3.Location = new System.Drawing.Point(339, 141);
+            this.kryptonColorButton3.Name = "kryptonColorButton3";
+            this.kryptonColorButton3.Size = new System.Drawing.Size(205, 25);
+            this.kryptonColorButton3.TabIndex = 6;
+            this.kryptonColorButton3.Values.Image = ((System.Drawing.Image)(resources.GetObject("kryptonColorButton3.Values.Image")));
+            this.kryptonColorButton3.Values.Text = "Thi&rd Colour";
+            // 
+            // kryptonColorButton2
+            // 
+            this.kryptonColorButton2.Location = new System.Drawing.Point(339, 110);
+            this.kryptonColorButton2.Name = "kryptonColorButton2";
+            this.kryptonColorButton2.Size = new System.Drawing.Size(205, 25);
+            this.kryptonColorButton2.TabIndex = 5;
+            this.kryptonColorButton2.Values.Image = ((System.Drawing.Image)(resources.GetObject("kryptonColorButton2.Values.Image")));
+            this.kryptonColorButton2.Values.Text = "&Second Colour";
+            // 
+            // kryptonColorButton1
+            // 
+            this.kryptonColorButton1.Location = new System.Drawing.Point(339, 79);
+            this.kryptonColorButton1.Name = "kryptonColorButton1";
+            this.kryptonColorButton1.Size = new System.Drawing.Size(205, 25);
+            this.kryptonColorButton1.TabIndex = 4;
+            this.kryptonColorButton1.Values.Image = ((System.Drawing.Image)(resources.GetObject("kryptonColorButton1.Values.Image")));
+            this.kryptonColorButton1.Values.Text = "F&irst Colour";
             // 
             // kryptonCheckBox1
             // 
@@ -105,7 +138,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(659, 450);
+            this.ClientSize = new System.Drawing.Size(659, 352);
             this.Controls.Add(this.kryptonPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -125,5 +158,8 @@
         private Krypton.Toolkit.KryptonTrackBar kryptonTrackBar1;
         private Krypton.Toolkit.Suite.Extended.Circular.ProgressBar.CircularProgressBar circularProgressBar1;
         private Krypton.Toolkit.KryptonCheckBox kryptonCheckBox1;
+        private Krypton.Toolkit.KryptonColorButton kryptonColorButton3;
+        private Krypton.Toolkit.KryptonColorButton kryptonColorButton2;
+        private Krypton.Toolkit.KryptonColorButton kryptonColorButton1;
     }
 }

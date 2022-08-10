@@ -120,13 +120,24 @@
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="ktlpContent.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAALwAAAA/CAYAAABabaLdAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEGSURBVHhe7dQxbQVADAXB0D2M4RAYoZHouzYC7xSj08nt
-        6n299/4+vn9+5/X3v/yf4D8fuG6C3w5wkYUnR/BkWHhSJvjtABdZeHIET4aFJ2WC3w5wkYUnR/BkWHhS
-        JvjtABdZeHIET4aFJ2WC3w5wkYUnR/BkWHhSJvjtABdZeHIET4aFJ2WC3w5wkYUnR/BkWHhSJvjtABdZ
-        eHIET4aFJ2WC3w5wkYUnR/BkWHhSJvjtABdZeHIET4aFJ2WC3w5wkYUnR/BkWHhSJvjtABdZeHIET4aF
-        J2WC3w5wkYUnR/BkWHhSJvjtABdZeHIET4aFJ2WC3w5wkYUnR/BkWHhSBE/Ke+/vH2fjm7CkE7b+AAAA
-        AElFTkSuQmCC
+        iVBORw0KGgoAAAANSUhEUgAAALwAAABRCAYAAABok8z3AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEhSURBVHhe7dbBDYMwFAVB2nWN9EAZtAECyZyowDuHieLk
+        unr62xjjmvbj/L57e6/43p4PKHiifxf+709YjeBJETw5bngyLDwpgidF8OS44cmw8KQInhTBk+OGJ8PC
+        kyJ4UgRPjhueDAtPiuBJETw5bngyLDwpgidF8OS44cmw8KQInhTBk+OGJ8PCkyJ4UgRPjhueDAtPiuBJ
+        ETw5bngyLDwpgidF8OS44cmw8KQInhTBk+OGJ8PCkyJ4UgRPjhueDAtPiuBJETw5bngyLDwpgidF8OS4
+        4cmw8KQInhTBk+OGJ8PCkyJ4UgRPjhueDAtPiuBJETw5bngyLDwpgidF8OS44cmw8KQInhTBk+OGJ8PC
+        kyJ4Ur7gp/mjt/ea7/O6AZGSLKuwnbulAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="kryptonTableLayoutPanel1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAALwAAABRCAYAAABok8z3AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEhSURBVHhe7dbBDYMwFAVB2nWN9EAZtAECyZyowDuHieLk
+        unr62xjjmvbj/L57e6/43p4PKHiifxf+709YjeBJETw5bngyLDwpgidF8OS44cmw8KQInhTBk+OGJ8PC
+        kyJ4UgRPjhueDAtPiuBJETw5bngyLDwpgidF8OS44cmw8KQInhTBk+OGJ8PCkyJ4UgRPjhueDAtPiuBJ
+        ETw5bngyLDwpgidF8OS44cmw8KQInhTBk+OGJ8PCkyJ4UgRPjhueDAtPiuBJETw5bngyLDwpgidF8OS4
+        4cmw8KQInhTBk+OGJ8PCkyJ4UgRPjhueDAtPiuBJETw5bngyLDwpgidF8OS44cmw8KQInhTBk+OGJ8PC
+        kyJ4Ur7gp/mjt/ea7/O6AZGSLKuwnbulAAAAAElFTkSuQmCC
 </value>
   </data>
 </root>

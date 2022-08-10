@@ -9,7 +9,7 @@
 namespace Krypton.Toolkit.Suite.Extended.Controls
 {
     /// <summary>Allows the user to browse for files.</summary>
-    [ToolboxBitmap(typeof(KryptonTextBox)), Description(@"Allows the user to browse for files.")]
+    [ToolboxBitmap(typeof(KryptonTextBox)), Description(@"Allows the user to browse for files."), Category(@"Code")]
     public class KryptonBrowseBox : KryptonTextBox
     {
         #region Instance Fields
