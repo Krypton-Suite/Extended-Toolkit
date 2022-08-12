@@ -28,7 +28,9 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                         null, showCtrlCopy, null, null, null, Color.Empty, new [] {Color.Empty, Color.Empty, Color.Empty, Color.Empty},
                         null, null, null, null, string.Empty, string.Empty,
                         string.Empty, string.Empty, showMoreDetailsUI, moreDetailsText,
-                        collapseText, expandText, maximumMoreDetailsDropDownHeight);
+                        collapseText, expandText, maximumMoreDetailsDropDownHeight,
+                        null, null, null, null, @"",
+                        @"", @"");
 
         /// <summary>Shows a messagebox.</summary>
         /// <param name="messageText">The text.</param>
@@ -64,7 +66,9 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                          new[] { Color.Empty, Color.Empty, Color.Empty, Color.Empty },
                          null, null, null, null, string.Empty, string.Empty, 
                          string.Empty, string.Empty, showMoreDetailsUI, moreDetailsText,
-                         collapseText, expandText, maximumMoreDetailsDropDownHeight);
+                         collapseText, expandText, maximumMoreDetailsDropDownHeight,
+                         null, null, null, null, @"",
+                         @"", @"");
 
         /// <summary>Shows a messagebox.</summary>
         /// <param name="messageText">The text.</param>
@@ -96,7 +100,9 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                          new[] { Color.Empty, Color.Empty, Color.Empty, Color.Empty },
                          null, null, null, null, string.Empty, string.Empty,
                          string.Empty, string.Empty, showMoreDetailsUI,
-                         moreDetailsText, collapseText, expandText, maximumMoreDetailsDropDownHeight);
+                         moreDetailsText, collapseText, expandText, maximumMoreDetailsDropDownHeight,
+                         null, null, null, null, @"",
+                         @"", @"");
 
         /// <summary>Shows a messagebox.</summary>
         /// <param name="owner">The owner.</param>
@@ -133,7 +139,9 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                          new[] { Color.Empty, Color.Empty, Color.Empty, Color.Empty },
                          null, null, null, null, string.Empty,
                          string.Empty, string.Empty, string.Empty,
-                         showMoreDetailsUI, moreDetailsText, collapseText, expandText, maximumMoreDetailsDropDownHeight);
+                         showMoreDetailsUI, moreDetailsText, collapseText, expandText, maximumMoreDetailsDropDownHeight,
+                         null, null, null, null, @"",
+                         @"", @"");
 
         /// <summary>Shows a messagebox.</summary>
         /// <param name="owner">The owner.</param>
@@ -166,7 +174,9 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                          new[] { Color.Empty, Color.Empty, Color.Empty, Color.Empty },
                          null, null, null, null, string.Empty,
                          string.Empty, string.Empty, string.Empty,
-                         showMoreDetailsUI, moreDetailsText, collapseText, expandText, maximumMoreDetailsDropDownHeight);
+                         showMoreDetailsUI, moreDetailsText, collapseText, expandText, maximumMoreDetailsDropDownHeight,
+                         null, null, null, null, @"",
+                         @"", @"");
 
         /// <summary>Shows a messagebox.</summary>
         /// <param name="messageText">The text.</param>
@@ -206,7 +216,9 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                          new[] { Color.Empty, Color.Empty, Color.Empty, Color.Empty },
                          null, null, null, null, string.Empty, 
                          string.Empty, string.Empty, string.Empty, showMoreDetailsUI,
-                         moreDetailsText, collapseText, expandText, maximumMoreDetailsDropDownHeight);
+                         moreDetailsText, collapseText, expandText, maximumMoreDetailsDropDownHeight,
+                         null, null, null, null, @"",
+                         @"", @"");
 
         /// <summary>Shows a messagebox.</summary>
         /// <param name="owner">The owner.</param>
@@ -251,7 +263,14 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                         bool? showMoreDetailsUI = null, 
                                         string moreDetailsText = @"",
                                         string collapseText = @"", string expandText = @"",
-                                        int? maximumMoreDetailsDropDownHeight = null)
+                                        int? maximumMoreDetailsDropDownHeight = null,
+                                        bool? showOptionalCheckBox = null,
+                                        CheckState? optionalCheckBoxCheckState = CheckState.Unchecked,
+                                        bool? showOptionalLinkLabel = null,
+                                        KryptonCommand linkCommand = null,
+                                        string optionalCheckBoxText = @"",
+                                        string optionalLinkLabelText = @"",
+                                        string optionalLinkLabelURL = @"")
             =>
                 ShowCore(owner, messageText, caption, buttons, icon, defaultButton, options,
                          displayHelpButton ? new HelpInfo(helpFilePath, navigator, param) : null,
@@ -261,12 +280,14 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                          buttonFourDialogResult, buttonOneCustomText, buttonTwoCustomText,
                          buttonThreeCustomText, buttonFourCustomText,
                          showMoreDetailsUI, moreDetailsText, collapseText, expandText,
-                         maximumMoreDetailsDropDownHeight);
+                         maximumMoreDetailsDropDownHeight, showOptionalCheckBox, optionalCheckBoxCheckState,
+                         showOptionalLinkLabel, linkCommand, optionalCheckBoxText, optionalLinkLabelText,
+                         optionalLinkLabelURL);
         #endregion
 
         #region Implementation
 
-        /// <summary>Shows the messagebox.</summary>
+        /// <summary>Shows the core.</summary>
         /// <param name="owner">The owner.</param>
         /// <param name="text">The text.</param>
         /// <param name="caption">The caption.</param>
@@ -278,9 +299,29 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="showCtrlCopy">The show control copy.</param>
         /// <param name="messageBoxTypeface">The message box typeface.</param>
         /// <param name="customImageIcon">The custom image icon.</param>
-        /// <returns>
-        ///   <br />
-        /// </returns>
+        /// <param name="showHelpButton">The show help button.</param>
+        /// <param name="messageTextColour">The message text colour.</param>
+        /// <param name="buttonTextColours">The button text colours.</param>
+        /// <param name="buttonOneCustomDialogResult">The button one custom dialog result.</param>
+        /// <param name="buttonTwoCustomDialogResult">The button two custom dialog result.</param>
+        /// <param name="buttonThreeCustomDialogResult">The button three custom dialog result.</param>
+        /// <param name="buttonFourDialogResult">The button four dialog result.</param>
+        /// <param name="buttonOneCustomText">The button one custom text.</param>
+        /// <param name="buttonTwoCustomText">The button two custom text.</param>
+        /// <param name="buttonThreeCustomText">The button three custom text.</param>
+        /// <param name="buttonFourCustomText">The button four custom text.</param>
+        /// <param name="showMoreDetailsUI">The show more details UI.</param>
+        /// <param name="moreDetailsText">The more details text.</param>
+        /// <param name="collapseText">The collapse text.</param>
+        /// <param name="expandText">The expand text.</param>
+        /// <param name="maximumMoreDetailsDropDownHeight">Maximum height of the more details drop down.</param>
+        /// <param name="showOptionalCheckBox">The show optional CheckBox.</param>
+        /// <param name="optionalCheckBoxCheckState">State of the optional CheckBox check.</param>
+        /// <param name="showOptionalLinkLabel">The show optional link label.</param>
+        /// <param name="linkCommand">The link command.</param>
+        /// <param name="optionalCheckBoxText">The optional CheckBox text.</param>
+        /// <param name="optionalLinkLabelText">The optional link label text.</param>
+        /// <param name="optionalLinkLabelURL">The optional link label URL.</param>
         internal static DialogResult ShowCore(IWin32Window owner, string text, string caption,
                                               ExtendedMessageBoxButtons buttons,
                                               ExtendedKryptonMessageBoxIcon icon,
@@ -297,7 +338,14 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                               string buttonThreeCustomText, string buttonFourCustomText,
                                               bool? showMoreDetailsUI, string moreDetailsText,
                                               string collapseText, string expandText,
-                                              int? maximumMoreDetailsDropDownHeight)
+                                              int? maximumMoreDetailsDropDownHeight,
+                                              bool? showOptionalCheckBox,
+                                              CheckState? optionalCheckBoxCheckState,
+                                              bool? showOptionalLinkLabel,
+                                              KryptonCommand linkCommand,
+                                              string optionalCheckBoxText,
+                                              string optionalLinkLabelText,
+                                              string optionalLinkLabelURL)
         {
             IWin32Window showOwner = ValidateOptions(owner, options, helpInfo);
 
@@ -320,7 +368,14 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                                             moreDetailsText,
                                                             collapseText,
                                                             expandText,
-                                                            maximumMoreDetailsDropDownHeight);
+                                                            maximumMoreDetailsDropDownHeight,
+                                                            showOptionalCheckBox,
+                                                            optionalCheckBoxCheckState,
+                                                            showOptionalLinkLabel,
+                                                            linkCommand,
+                                                            optionalCheckBoxText,
+                                                            optionalLinkLabelText,
+                                                            optionalLinkLabelURL);
 
             return kmbef.ShowDialog(showOwner);
         }

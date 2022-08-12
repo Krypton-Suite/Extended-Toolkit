@@ -11,7 +11,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
     public partial class BasicNotificationAlternativeUI : KryptonForm
     {
         #region Variables
-        private IconType _iconType;
+        private KryptonToastNotificationIconType _iconType;
 
         private int _time, _seconds;
 
@@ -25,11 +25,11 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
         private Image _customImage;
 
-        private RightToLeftSupport _rightToLeftSupport;
+        private KryptonToastNotificationRightToLeftSupport _rightToLeftSupport;
         #endregion
 
         #region Properties
-        public IconType IconType { get => _iconType; set => _iconType = value; }
+        public KryptonToastNotificationIconType IconType { get => _iconType; set => _iconType = value; }
 
         public int Time { get => _time; set => _time = value; }
 
@@ -47,13 +47,13 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
         public Image CustomImage { get => _customImage; set => _customImage = value; }
 
-        public RightToLeftSupport RightToLeftSupport { get => _rightToLeftSupport; set { _rightToLeftSupport = value; Invalidate(); } }
+        public KryptonToastNotificationRightToLeftSupport RightToLeftSupport { get => _rightToLeftSupport; set { _rightToLeftSupport = value; Invalidate(); } }
         #endregion
 
         #region Constructor
-        public BasicNotificationAlternativeUI(IconType iconType, string title, string contentText, 
+        public BasicNotificationAlternativeUI(KryptonToastNotificationIconType iconType, string title, string contentText, 
                                               Image customImage = null, string dismissText = "&Dismiss",
-                                              RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LEFTTORIGHT)
+                                              KryptonToastNotificationRightToLeftSupport? rightToLeftSupport = KryptonToastNotificationRightToLeftSupport.LEFTTORIGHT)
         {
             InitializeComponent();
 
@@ -67,7 +67,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
             DismissText = dismissText;
 
-            RightToLeftSupport = rightToLeftSupport ?? RightToLeftSupport.LEFTTORIGHT;
+            RightToLeftSupport = rightToLeftSupport ?? KryptonToastNotificationRightToLeftSupport.LEFTTORIGHT;
 
             TopMost = true;
 
@@ -80,27 +80,27 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             ReconfigureUI(rightToLeftSupport);
         }
 
-        public BasicNotificationAlternativeUI(IconType iconType, string title, string contentText, int seconds, 
+        public BasicNotificationAlternativeUI(KryptonToastNotificationIconType iconType, string title, string contentText, int seconds, 
                                               Image customImage = null, string dismissText = "&Dismiss", 
-                                              RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LEFTTORIGHT)
+                                              KryptonToastNotificationRightToLeftSupport? rightToLeftSupport = KryptonToastNotificationRightToLeftSupport.LEFTTORIGHT)
             : this(iconType, title, contentText, customImage, dismissText, rightToLeftSupport) => Seconds = seconds;
 
-        public BasicNotificationAlternativeUI(IconType iconType, string title, string contentText, int seconds, 
+        public BasicNotificationAlternativeUI(KryptonToastNotificationIconType iconType, string title, string contentText, int seconds, 
                                               string soundPath, Image customImage = null, 
                                               string dismissText = "&Dismiss",
-                                              RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LEFTTORIGHT)
+                                              KryptonToastNotificationRightToLeftSupport? rightToLeftSupport = KryptonToastNotificationRightToLeftSupport.LEFTTORIGHT)
             : this(iconType, title, contentText, seconds, customImage, dismissText, rightToLeftSupport) => SoundPath = soundPath;
 
-        public BasicNotificationAlternativeUI(IconType iconType, string title, string contentText, 
+        public BasicNotificationAlternativeUI(KryptonToastNotificationIconType iconType, string title, string contentText, 
                                               Stream soundStream, Image customImage = null,
                                               string dismissText = "&Dismiss",
-                                              RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LEFTTORIGHT)
+                                              KryptonToastNotificationRightToLeftSupport? rightToLeftSupport = KryptonToastNotificationRightToLeftSupport.LEFTTORIGHT)
             : this(iconType, title, contentText, customImage, dismissText, rightToLeftSupport) => SoundStream = soundStream;
 
-        public BasicNotificationAlternativeUI(IconType iconType, string title, string contentText, int seconds, 
+        public BasicNotificationAlternativeUI(KryptonToastNotificationIconType iconType, string title, string contentText, int seconds, 
                                               Stream soundStream, Image customImage = null, 
                                               string dismissText = "&Dismiss",
-                                              RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LEFTTORIGHT)
+                                              KryptonToastNotificationRightToLeftSupport? rightToLeftSupport = KryptonToastNotificationRightToLeftSupport.LEFTTORIGHT)
             : this(iconType, title, contentText, seconds, customImage, dismissText, rightToLeftSupport) => SoundStream = soundStream;
         #endregion
 
@@ -197,9 +197,9 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             base.Show();
         }
 
-        private void ReconfigureUI(RightToLeftSupport? rightToLeftSupport)
+        private void ReconfigureUI(KryptonToastNotificationRightToLeftSupport? rightToLeftSupport)
         {
-            if (rightToLeftSupport == RightToLeftSupport.LEFTTORIGHT)
+            if (rightToLeftSupport == KryptonToastNotificationRightToLeftSupport.LEFTTORIGHT)
             {
                 RightToLeft = RightToLeft.No;
 

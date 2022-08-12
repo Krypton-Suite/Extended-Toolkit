@@ -39,42 +39,53 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             return tmp;
         }
         
-        public static void SetIconType(IconType iconType, Image customImage, PictureBox target)
+        public static void SetIconType(KryptonToastNotificationIconType iconType, Image customImage, PictureBox target)
         {
             switch (iconType)
             {
-                case IconType.CUSTOM:
+                case KryptonToastNotificationIconType.Custom:
                     SetIconImage(target, customImage);
                     break;
-                case IconType.OK:
+                case KryptonToastNotificationIconType.Ok:
                     SetIconImage(target, Properties.Resources.Input_Box_Ok_128_x_128);
                     break;
-                case IconType.ERROR:
+                case KryptonToastNotificationIconType.Error:
                     SetIconImage(target, Properties.Resources.Input_Box_Critical_128_x_128);
                     break;
-                case IconType.EXCLAMATION:
+                case KryptonToastNotificationIconType.Exclamation:
                     SetIconImage(target, Properties.Resources.Input_Box_Warning_128_x_115);
                     break;
-                case IconType.INFORMATION:
+                case KryptonToastNotificationIconType.Information:
                     SetIconImage(target, Properties.Resources.Input_Box_Information_128_x_128);
                     break;
-                case IconType.QUESTION:
+                case KryptonToastNotificationIconType.Question:
                     SetIconImage(target, Properties.Resources.Input_Box_Question_128_x_128);
                     break;
-                case IconType.NOTHING:
+                case KryptonToastNotificationIconType.None:
                     SetIconImage(target, null);
                     break;
-                case IconType.NONE:
-                    SetIconImage(target, null);
-                    break;
-                case IconType.STOP:
+                case KryptonToastNotificationIconType.Stop:
                     SetIconImage(target, Properties.Resources.Input_Box_Stop_128_x_128);
                     break;
-                case IconType.HAND:
+                case KryptonToastNotificationIconType.Hand:
                     SetIconImage(target, Properties.Resources.Input_Box_Hand_128_x_128);
                     break;
-                case IconType.WARNING:
+                case KryptonToastNotificationIconType.Warning:
                     SetIconImage(target, Properties.Resources.Input_Box_Warning_128_x_115);
+                    break;
+                case KryptonToastNotificationIconType.Asterisk:
+                    break;
+                case KryptonToastNotificationIconType.Shield:
+                    break;
+                case KryptonToastNotificationIconType.WindowsLogo:
+                    if (Environment.OSVersion.Version.Major == 10 && Environment.OSVersion.Version.Minor >= 22000)
+                    {
+                        SetIconImage(target, Properties.Resources.Windows_11_128_x_128);
+                    }
+                    else if (Environment.OSVersion.Version.Major == 10 && Environment.OSVersion.Version.Build <= 19044 /* RTM - 21H2 */)
+                    {
+                        SetIconImage(target, Properties.Resources.Windows_10_128_x_128);
+                    }
                     break;
             }
         }

@@ -8,42 +8,58 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Toast
 {
-    public enum ActionType
+    public enum KryptonToastNotificationActionType
     {
-        DEFAULT,
-        LAUCHPROCESS,
-        OPEN
+        Default,
+        LaunchProcess,
+        Open
     }
 
-    public enum ActionButtonLocation
+    public enum KryptonToastNotificationActionButtonLocation
     {
-        LEFT,
-        RIGHT
+        Left,
+        Right
     }
 
-    public enum DefaultNotificationButton
+    public enum KryptonToastNotificationDefaultNotificationButton
     {
-        ACTIONBUTTON,
-        DISMISSBUTTON,
-        NONE
+        ActionButton,
+        DismissButton,
+        None
     }
 
-    public enum IconType
+    // Note: Replicate Krypton message box extended icon options
+    public enum KryptonToastNotificationIconType
     {
-        CUSTOM,
-        OK,
-        ERROR,
-        EXCLAMATION,
-        INFORMATION,
-        QUESTION,
-        NOTHING,
-        NONE,
-        STOP,
-        HAND,
-        WARNING
+        /// <summary>Specify a custom icon.</summary>
+        Custom = 0,
+        /// <summary>Specify no icon.</summary>
+        None = 1,
+        /// <summary>Specify a hand icon.</summary>
+        Hand = 2,
+        /// <summary>Specify a question icon.</summary>
+        Question = 3,
+        /// <summary>Specify a exclamation icon.</summary>
+        Exclamation = 4,
+        /// <summary>Specify a asterisk icon.</summary>
+        Asterisk = 5,
+        /// <summary>Specify a stop icon.</summary>
+        Stop = 6,
+        /// <summary>Specify a error icon.</summary>
+        Error = 7,
+        /// <summary>Specify a warning icon.</summary>
+        Warning = 8,
+        /// <summary>Specify a information icon.</summary>
+        Information = 9,
+        /// <summary>Specify a UAC shield icon.</summary>
+        Shield = 10,
+        /// <summary>Specify a Windows logo icon.</summary>
+        WindowsLogo = 11,
+        /// <summary>Specify a ok icon.</summary>
+        Ok = 12
     }
 
-    public enum RightToLeftSupport
+    public enum KryptonToastNotificationRightToLeftSupport
     {
         LEFTTORIGHT,
         RIGHTTOLEFT
@@ -60,7 +76,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         NONE = 6
     }
 
-    public enum ContentAreaType
+    public enum KryptonToastNotificationContentAreaType
     {
         LABEL = 0,
         WRAPPEDLABEL = 1,

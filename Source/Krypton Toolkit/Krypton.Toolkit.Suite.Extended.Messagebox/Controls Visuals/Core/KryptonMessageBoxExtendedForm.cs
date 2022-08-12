@@ -41,6 +41,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         private readonly Color[] _buttonTextColours = new Color[4];
 
+        private readonly CheckState _optionalCheckBoxCheckState;
+
         private readonly DialogResult _buttonOneCustomDialogResult;
 
         private readonly DialogResult _buttonTwoCustomDialogResult;
@@ -79,6 +81,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         private readonly string _optionalLinkLabelText;
 
+        private readonly string _optionalLinkLabelURL;
+
         #endregion
 
         #region Public
@@ -115,10 +119,12 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                                string collapseText, string expandText,
                                                int? maximumMoreDetailsDropDownHeight, 
                                                bool? showOptionalCheckBox, 
+                                               CheckState? optionalCheckBoxCheckState,
                                                bool? showOptionalLinkLabel, 
                                                KryptonCommand linkCommand, 
                                                string optionalCheckBoxText, 
-                                               string optionalLinkLabelText)
+                                               string optionalLinkLabelText,
+                                               string optionalLinkLabelURL)
         {
             // Store incoming values
             _text = text;
@@ -159,9 +165,11 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             _maximumMoreDetailsDropDownHeight = maximumMoreDetailsDropDownHeight ?? 250;
             _showOptionalCheckBox = showOptionalCheckBox ?? false;
             _showOptionalLinkLabel = showOptionalLinkLabel ?? false;
+            _optionalCheckBoxCheckState = optionalCheckBoxCheckState ?? CheckState.Unchecked;
             _linkCommand = linkCommand;
             _optionalCheckBoxText = optionalCheckBoxText;
             _optionalLinkLabelText = optionalLinkLabelText;
+            _optionalLinkLabelURL = optionalLinkLabelURL;
 
             // Create the form contents
             InitializeComponent();
@@ -177,6 +185,10 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             UpdateTextExtra(showCtrlCopy);
 
             SetupMoreDetailsUI(_showMoreDetailsUI);
+
+            SetupOptionalCheckBoxUI(_showOptionalCheckBox);
+
+            SetupOptionalLinkLabelUI(_showOptionalLinkLabel);
 
             // Finally calculate and set form sizing
             UpdateSizing(showOwner);
@@ -622,7 +634,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
             if (mbMoreDetails.Enabled)
             {
-                mbMoreDetails.Location = new Point(left - maxButtonSize.Width, GAP);
+                mbMoreDetails.Location = new Point(4, GAP);
 
                 mbMoreDetails.Size = maxButtonSize;
 
@@ -689,11 +701,54 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             Clipboard.SetText(sb.ToString(), TextDataFormat.UnicodeText);
         }
 
+        private void SetupOptionalLinkLabelUI(bool showOptionalLinkLabel)
+        {
+            kpnlExpandableFooter.Visible = showOptionalLinkLabel;
+
+            kllOptionalLink.Visible = showOptionalLinkLabel;
+
+            kcbOptionalCheckBox.Visible = false;
+
+            krtbMoreDetails.Visible = false;
+
+            kllOptionalLink.StateCommon.ShortText.Font = _messageBoxTypeface;
+
+            kllOptionalLink.Text = _optionalLinkLabelText;
+
+            if (_linkCommand != null)
+            {
+                kllOptionalLink.KryptonCommand = _linkCommand;
+            }
+        }
+
+        private void SetupOptionalCheckBoxUI(bool showOptionalCheckBox)
+        {
+            kpnlExpandableFooter.Visible = showOptionalCheckBox;
+
+            kcbOptionalCheckBox.Visible = showOptionalCheckBox;
+
+            kcbOptionalCheckBox.StateCommon.ShortText.Font = _messageBoxTypeface;
+
+            kcbOptionalCheckBox.Text = _optionalCheckBoxText;
+
+            krtbMoreDetails.Visible = false;
+
+            kllOptionalLink.Visible = false;
+        }
+
         private void MoreDetails_Click(object sender, EventArgs e) => UpdateMoreDetails();
 
         private void UpdateMoreDetails()
         {
-            int currentHeight = Height;
+            int currentHeight = Size.Height;
+
+            int originalBasePanelHeight = kpnlExpandableFooter.Size.Height;
+
+            int newBasePanelHeight;
+
+            int detailsPaneOriginalHeight = krtbMoreDetails.Size.Height;
+
+            int detailsPaneNewHeight;
 
             krtbMoreDetails.StateCommon.Content.Font = _messageBoxTypeface;
 
@@ -701,15 +756,15 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             {
                 mbMoreDetails.Text = _collapseText;
 
-                //ContentLayoutPanel.RowStyles[2].Height = _maximumMoreDetailsDropDownHeight;
-
-                //Height = currentHeight + ContentLayoutPanel.Height;
-
                 kpnlExpandableFooter.Visible = true;
 
                 krtbMoreDetails.Visible = true;
 
                 krtbMoreDetails.Text = _detailsText;
+
+                detailsPaneNewHeight = detailsPaneOriginalHeight + _maximumMoreDetailsDropDownHeight;
+
+                Height = currentHeight + detailsPaneNewHeight;
             }
             else if (mbMoreDetails.Text == _collapseText)
             {
@@ -736,5 +791,30 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         }
         #endregion
 
+        private void kllOptionalLink_LinkClicked(object sender, EventArgs e) => ProcessLink();
+
+        private void ProcessLink()
+        {
+            try
+            {
+                if (_linkCommand != null)
+                {
+                    _linkCommand.PerformExecute();
+                }
+                else
+                {
+                    Process.Start(_optionalLinkLabelURL);
+                }
+            }
+            catch (Exception e)
+            {
+                KryptonMessageBox.Show($"Error: {e}", "Error", MessageBoxButtons.OK, KryptonMessageBoxIcon.Error);
+            }
+        }
+
+        private void kcbOptionalCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -19,7 +19,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
         private Font _userResponsePromptFont;
 
-        private IconType _iconType;
+        private KryptonToastNotificationIconType _iconType;
 
         private int _time, _seconds;
 
@@ -33,9 +33,9 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
         private Image _customImage;
 
-        private RightToLeftSupport _rightToLeftSupport;
+        private KryptonToastNotificationRightToLeftSupport _rightToLeftSupport;
 
-        private ContentAreaType _contentAreaType;
+        private KryptonToastNotificationContentAreaType _contentAreaType;
         #endregion
 
         #region Properties
@@ -63,8 +63,8 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         [DefaultValue(typeof(Font), "Segoe UI, 8.25F"), Description(@"")]
         public Font UserResponsePromptFont { get => _userResponsePromptFont; set => _userResponsePromptFont = value; }
 
-        [DefaultValue(typeof(IconType), "IconType.NONE"), Description(@"")]
-        public IconType IconType { get => _iconType; set => _iconType = value; }
+        [DefaultValue(typeof(KryptonToastNotificationIconType), "IconType.NONE"), Description(@"")]
+        public KryptonToastNotificationIconType IconType { get => _iconType; set => _iconType = value; }
 
         [DefaultValue(60), Description(@"")]
         public int Time { get => _time; set => _time = value; }
@@ -93,11 +93,11 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         [DefaultValue(null), Description(@"")]
         public Image CustomImage { get => _customImage; set => _customImage = value; }
 
-        [DefaultValue(typeof(RightToLeftSupport), "RightToLeftSupport.LEFTTORIGHT"), Description(@"")]
-        public RightToLeftSupport RightToLeftSupport { get => _rightToLeftSupport; set => _rightToLeftSupport = value; }
+        [DefaultValue(typeof(KryptonToastNotificationRightToLeftSupport), "RightToLeftSupport.LEFTTORIGHT"), Description(@"")]
+        public KryptonToastNotificationRightToLeftSupport RightToLeftSupport { get => _rightToLeftSupport; set => _rightToLeftSupport = value; }
 
-        [DefaultValue(typeof(ContentAreaType), "ContentAreaType.WRAPPEDLABEL"), Description(@"")]
-        public ContentAreaType ContentAreaType { get => _contentAreaType; set => _contentAreaType = value; }
+        [DefaultValue(typeof(KryptonToastNotificationContentAreaType), "ContentAreaType.WRAPPEDLABEL"), Description(@"")]
+        public KryptonToastNotificationContentAreaType ContentAreaType { get => _contentAreaType; set => _contentAreaType = value; }
         #endregion
 
         #region Custom Events
@@ -124,7 +124,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
             UserResponsePromptFont = new Font("Segoe UI", 8.25F);
 
-            IconType = IconType.NONE;
+            IconType = KryptonToastNotificationIconType.None;
 
             Time = 60;
 
@@ -144,9 +144,9 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
             CustomImage = null;
 
-            RightToLeftSupport = RightToLeftSupport.LEFTTORIGHT;
+            RightToLeftSupport = KryptonToastNotificationRightToLeftSupport.LEFTTORIGHT;
 
-            ContentAreaType = ContentAreaType.WRAPPEDLABEL;
+            ContentAreaType = KryptonToastNotificationContentAreaType.WRAPPEDLABEL;
         }
 
         public KryptonToastNotificationManager(bool useUserResponse, string title, string contentText,
@@ -154,11 +154,11 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                                                Color? userResponsePromptColour = null,
                                                PaletteRelativeAlign userResponsePromptAlignHorizontal = PaletteRelativeAlign.Near,
                                                PaletteRelativeAlign userResponsePromptAlignVertical = PaletteRelativeAlign.Near,
-                                               Font userResponsePromptFont = null, IconType iconType = IconType.NONE,
+                                               Font userResponsePromptFont = null, KryptonToastNotificationIconType iconType = KryptonToastNotificationIconType.None,
                                                int time = 0, int seconds = 0, string soundPath = null, string dismissText = "Di&smiss",
                                                string userResponsePromptText = "Type response here...", Stream soundStream = null,
-                                               Image customImage = null, RightToLeftSupport rightToLeftSupport = RightToLeftSupport.LEFTTORIGHT,
-                                               bool useProgressBar = false, ContentAreaType contentAreaType = ContentAreaType.WRAPPEDLABEL)
+                                               Image customImage = null, KryptonToastNotificationRightToLeftSupport rightToLeftSupport = KryptonToastNotificationRightToLeftSupport.LEFTTORIGHT,
+                                               bool useProgressBar = false, KryptonToastNotificationContentAreaType contentAreaType = KryptonToastNotificationContentAreaType.WRAPPEDLABEL)
         {
             UseProgressBar = useProgressBar;
 
@@ -205,17 +205,17 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         #region Methods
         public void DisplayNotificationToast()
         {
-            if (_rightToLeftSupport == RightToLeftSupport.LEFTTORIGHT)
+            if (_rightToLeftSupport == KryptonToastNotificationRightToLeftSupport.LEFTTORIGHT)
             {
                 if (!_useUserResponse)
                 {
                     if (!_useProgressBar)
                     {
-                        if (_contentAreaType == ContentAreaType.LABEL)
+                        if (_contentAreaType == KryptonToastNotificationContentAreaType.LABEL)
                         {
                             ApplicationUtilities.UnderConstruction();
                         }
-                        else if (_contentAreaType == ContentAreaType.WRAPPEDLABEL)
+                        else if (_contentAreaType == KryptonToastNotificationContentAreaType.WRAPPEDLABEL)
                         {
                             BasicNotificationAlternativeUI notification = new BasicNotificationAlternativeUI(
                                 IconType,
@@ -225,11 +225,11 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
                             notification.Show();
                         }
-                        else if (_contentAreaType == ContentAreaType.MULTILINEDTEXTBOX)
+                        else if (_contentAreaType == KryptonToastNotificationContentAreaType.MULTILINEDTEXTBOX)
                         {
                             ApplicationUtilities.UnderConstruction();
                         }
-                        else if (_contentAreaType == ContentAreaType.RICHTEXTBOX)
+                        else if (_contentAreaType == KryptonToastNotificationContentAreaType.RICHTEXTBOX)
                         {
                             BasicNotification notification = new BasicNotification(IconType, Title, ContentText, 
                                                                                    UsePanelColourInTextArea,
@@ -241,11 +241,11 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                     }
                     else
                     {
-                        if (_contentAreaType == ContentAreaType.LABEL)
+                        if (_contentAreaType == KryptonToastNotificationContentAreaType.LABEL)
                         {
                             ApplicationUtilities.UnderConstruction();
                         }
-                        else if (_contentAreaType == ContentAreaType.WRAPPEDLABEL)
+                        else if (_contentAreaType == KryptonToastNotificationContentAreaType.WRAPPEDLABEL)
                         {
                             BasicNotificationWithProgressBarAlternativeUI notification =
                                 new BasicNotificationWithProgressBarAlternativeUI(IconType, Title, ContentText,
@@ -254,11 +254,11 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
                             notification.Show();
                         }
-                        else if (_contentAreaType == ContentAreaType.MULTILINEDTEXTBOX)
+                        else if (_contentAreaType == KryptonToastNotificationContentAreaType.MULTILINEDTEXTBOX)
                         {
                             ApplicationUtilities.UnderConstruction();
                         }
-                        else if (_contentAreaType == ContentAreaType.RICHTEXTBOX)
+                        else if (_contentAreaType == KryptonToastNotificationContentAreaType.RICHTEXTBOX)
                         {
                             BasicNotificationWithProgressBar notification = new BasicNotificationWithProgressBar(
                                                                                                                  IconType, Title, ContentText,
@@ -274,11 +274,11 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                 {
                     if (!_useProgressBar)
                     {
-                        if (_contentAreaType == ContentAreaType.LABEL)
+                        if (_contentAreaType == KryptonToastNotificationContentAreaType.LABEL)
                         {
                             ApplicationUtilities.UnderConstruction();
                         }
-                        else if (_contentAreaType == ContentAreaType.WRAPPEDLABEL)
+                        else if (_contentAreaType == KryptonToastNotificationContentAreaType.WRAPPEDLABEL)
                         {
                             BasicNotificationWithUserResponseWrappedLabel notification = new BasicNotificationWithUserResponseWrappedLabel(IconType, Title, ContentText, Seconds,
                                                                                                                                                  SoundPath, CustomImage,
@@ -290,11 +290,11 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
                             notification.Show();
                         }
-                        else if (_contentAreaType == ContentAreaType.MULTILINEDTEXTBOX)
+                        else if (_contentAreaType == KryptonToastNotificationContentAreaType.MULTILINEDTEXTBOX)
                         {
                             ApplicationUtilities.UnderConstruction();
                         }
-                        else if (_contentAreaType == ContentAreaType.RICHTEXTBOX)
+                        else if (_contentAreaType == KryptonToastNotificationContentAreaType.RICHTEXTBOX)
                         {
                             BasicNotificationWithUserResponse notification = new BasicNotificationWithUserResponse(IconType, Title, ContentText,
                                                                                                                          UsePanelColourInTextArea, UseNativeBackColourInUserResponseArea,

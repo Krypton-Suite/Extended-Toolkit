@@ -20,7 +20,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
         private Font _userResponsePromptFont;
 
-        private IconType _iconType;
+        private KryptonToastNotificationIconType _iconType;
 
         private int _time, _seconds;
 
@@ -34,7 +34,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
         private Image _customImage;
 
-        private RightToLeftSupport _rightToLeftSupport;
+        private KryptonToastNotificationRightToLeftSupport _rightToLeftSupport;
         #endregion
 
         #region Properties
@@ -46,7 +46,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
         public Font UserResponsePromptFont { get => _userResponsePromptFont; set => _userResponsePromptFont = value; }
 
-        public IconType IconType { get => _iconType; set => _iconType = value; }
+        public KryptonToastNotificationIconType IconType { get => _iconType; set => _iconType = value; }
 
         public int Time { get => _time; set => _time = value; }
 
@@ -66,17 +66,17 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
         public Image CustomImage { get => _customImage; set => _customImage = value; }
 
-        public RightToLeftSupport RightToLeftSupport { get => _rightToLeftSupport; set { _rightToLeftSupport = value; Invalidate(); } }
+        public KryptonToastNotificationRightToLeftSupport RightToLeftSupport { get => _rightToLeftSupport; set { _rightToLeftSupport = value; Invalidate(); } }
         #endregion
 
         #region Constructors
-        public BasicNotificationWithUserResponseWrappedLabel(IconType iconType, string title, string contentText, Image customImage = null,
+        public BasicNotificationWithUserResponseWrappedLabel(KryptonToastNotificationIconType iconType, string title, string contentText, Image customImage = null,
                                                              string dismissText = "&Dismiss", string userResponseCueText = "",
                                                              Color? userResponseCueColour = null,
                                                              PaletteRelativeAlign? userResponseCueAlignHorizontal = null,
                                                              PaletteRelativeAlign? userResponseCueAlignVertical = null,
                                                              Font userResponseCueFont = null,
-                                                             RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LEFTTORIGHT)
+                                                             KryptonToastNotificationRightToLeftSupport? rightToLeftSupport = KryptonToastNotificationRightToLeftSupport.LEFTTORIGHT)
         {
             InitializeComponent();
 
@@ -100,7 +100,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
             UserResponsePromptFont = userResponseCueFont;
 
-            RightToLeftSupport = rightToLeftSupport ?? RightToLeftSupport.LEFTTORIGHT;
+            RightToLeftSupport = rightToLeftSupport ?? KryptonToastNotificationRightToLeftSupport.LEFTTORIGHT;
 
             TopMost = true;
 
@@ -115,46 +115,46 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             ReconfigureUI(rightToLeftSupport);
         }
 
-        public BasicNotificationWithUserResponseWrappedLabel(IconType iconType, string title, string contentText, int seconds, Image customImage = null,
+        public BasicNotificationWithUserResponseWrappedLabel(KryptonToastNotificationIconType iconType, string title, string contentText, int seconds, Image customImage = null,
                                                              string dismissText = "&Dismiss", string userResponseCueText = "",
                                                              Color? userResponseCueColour = null,
                                                              PaletteRelativeAlign? userResponseCueAlignHorizontal = null,
                                                              PaletteRelativeAlign? userResponseCueAlignVertical = null,
                                                              Font userResponseCueFont = null,
-                                                             RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LEFTTORIGHT)
+                                                             KryptonToastNotificationRightToLeftSupport? rightToLeftSupport = KryptonToastNotificationRightToLeftSupport.LEFTTORIGHT)
             : this(iconType, title, contentText, customImage, dismissText, userResponseCueText,
                    userResponseCueColour, userResponseCueAlignHorizontal,
                    userResponseCueAlignVertical, userResponseCueFont, rightToLeftSupport) => Seconds = seconds;
 
-        public BasicNotificationWithUserResponseWrappedLabel(IconType iconType, string title, string contentText, int seconds, string soundPath, Image customImage = null,
+        public BasicNotificationWithUserResponseWrappedLabel(KryptonToastNotificationIconType iconType, string title, string contentText, int seconds, string soundPath, Image customImage = null,
                                                              string dismissText = "&Dismiss", string userResponseCueText = "",
                                                              Color? userResponseCueColour = null,
                                                              PaletteRelativeAlign? userResponseCueAlignHorizontal = null,
                                                              PaletteRelativeAlign? userResponseCueAlignVertical = null,
                                                              Font userResponseCueFont = null,
-                                                             RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LEFTTORIGHT)
+                                                             KryptonToastNotificationRightToLeftSupport? rightToLeftSupport = KryptonToastNotificationRightToLeftSupport.LEFTTORIGHT)
             : this(iconType, title, contentText, seconds, customImage, dismissText, userResponseCueText,
                    userResponseCueColour, userResponseCueAlignHorizontal,
                    userResponseCueAlignVertical, userResponseCueFont, rightToLeftSupport) => SoundPath = soundPath;
 
-        public BasicNotificationWithUserResponseWrappedLabel(IconType iconType, string title, string contentText, Stream soundStream, Image customImage = null,
+        public BasicNotificationWithUserResponseWrappedLabel(KryptonToastNotificationIconType iconType, string title, string contentText, Stream soundStream, Image customImage = null,
                                                              string dismissText = "&Dismiss", string userResponseCueText = "",
                                                              Color? userResponseCueColour = null,
                                                              PaletteRelativeAlign? userResponseCueAlignHorizontal = null,
                                                              PaletteRelativeAlign? userResponseCueAlignVertical = null,
                                                              Font userResponseCueFont = null,
-                                                             RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LEFTTORIGHT)
+                                                             KryptonToastNotificationRightToLeftSupport? rightToLeftSupport = KryptonToastNotificationRightToLeftSupport.LEFTTORIGHT)
             : this(iconType, title, contentText, customImage, dismissText, userResponseCueText,
                    userResponseCueColour, userResponseCueAlignHorizontal,
                    userResponseCueAlignVertical, userResponseCueFont, rightToLeftSupport) => SoundStream = soundStream;
 
-        public BasicNotificationWithUserResponseWrappedLabel(IconType iconType, string title, string contentText, int seconds, Stream soundStream, Image customImage = null,
+        public BasicNotificationWithUserResponseWrappedLabel(KryptonToastNotificationIconType iconType, string title, string contentText, int seconds, Stream soundStream, Image customImage = null,
                                                              string dismissText = "&Dismiss", string userResponseCueText = "",
                                                              Color? userResponseCueColour = null,
                                                              PaletteRelativeAlign? userResponseCueAlignHorizontal = null,
                                                              PaletteRelativeAlign? userResponseCueAlignVertical = null,
                                                              Font userResponseCueFont = null,
-                                                             RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LEFTTORIGHT)
+                                                             KryptonToastNotificationRightToLeftSupport? rightToLeftSupport = KryptonToastNotificationRightToLeftSupport.LEFTTORIGHT)
             : this(iconType, title, contentText, seconds, customImage, dismissText, userResponseCueText,
                    userResponseCueColour, userResponseCueAlignHorizontal,
                    userResponseCueAlignVertical, userResponseCueFont, rightToLeftSupport) => SoundStream = soundStream;
@@ -368,9 +368,9 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
         public string GetUserResponse() => ktxtUserResponse.Text;
 
-        private void ReconfigureUI(RightToLeftSupport? rightToLeftSupport)
+        private void ReconfigureUI(KryptonToastNotificationRightToLeftSupport? rightToLeftSupport)
         {
-            if (rightToLeftSupport == RightToLeftSupport.LEFTTORIGHT)
+            if (rightToLeftSupport == KryptonToastNotificationRightToLeftSupport.LEFTTORIGHT)
             {
                 RightToLeft = RightToLeft.No;
 

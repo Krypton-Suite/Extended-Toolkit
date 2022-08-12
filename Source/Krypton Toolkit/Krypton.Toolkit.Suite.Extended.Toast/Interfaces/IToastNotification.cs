@@ -13,7 +13,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
     {
         /// <summary>Gets or sets the button location.</summary>
         /// <value>The action button location.</value>
-        public ActionButtonLocation ButtonLocation { get; set; }
+        public KryptonToastNotificationActionButtonLocation ButtonLocation { get; set; }
 
         /// <summary>
         /// Gets or sets the type of the action.
@@ -21,7 +21,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <value>
         /// The type of the action.
         /// </value>
-        public ActionType Action { get; set; }
+        public KryptonToastNotificationActionType Action { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether this <see cref="KryptonToastNotificationWindow"/> is fade.
@@ -105,7 +105,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
         /// <summary>Gets or sets the type of the icon.</summary>
         /// <value>The type of the icon.</value>
-        public IconType IconType { get; set; }
+        public KryptonToastNotificationIconType IconType { get; set; }
 
         /// <summary>
         /// Gets or sets the right to left support.
@@ -113,7 +113,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <value>
         /// The right to left support.
         /// </value>
-        public RightToLeftSupport RightToLeft { get; set; }
+        public KryptonToastNotificationRightToLeftSupport RightToLeft { get; set; }
 
         /// <summary>Gets or sets the dismiss text.</summary>
         /// <value>The dismiss text.</value>

@@ -117,16 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="ktlpContent.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAALwAAABRCAYAAABok8z3AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wgAADsIBFShKgAAAASFJREFUeF7t1sENgzAUBUHadY30QBm0AQLJnKjAO4eJ4uS6evrbGOOa9uP8vnt7
-        r/jeng8oeKJ/F/7vT1iN4EkRPDlueDIsPCmCJ0Xw5LjhybDwpAieFMGT44Ynw8KTInhSBE+OG54MC0+K
-        4EkRPDlueDIsPCmCJ0Xw5LjhybDwpAieFMGT44Ynw8KTInhSBE+OG54MC0+K4EkRPDlueDIsPCmCJ0Xw
-        5LjhybDwpAieFMGT44Ynw8KTInhSBE+OG54MC0+K4EkRPDlueDIsPCmCJ0Xw5LjhybDwpAieFMGT44Yn
-        w8KTInhSBE+OG54MC0+K4EkRPDlueDIsPCmCJ0Xw5LjhybDwpAieFMGT44Ynw8KTInhSvuCn+aO395rv
-        87oBkZIsq7Cdu6UAAAAASUVORK5CYII=
-</value>
-  </data>
 </root>

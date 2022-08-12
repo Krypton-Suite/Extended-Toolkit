@@ -14,7 +14,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
         private bool _usePanelColourInTextArea;
 
-        private IconType _iconType;
+        private KryptonToastNotificationIconType _iconType;
 
         private int _time, _seconds;
 
@@ -28,13 +28,13 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
         private Image _customImage;
 
-        private RightToLeftSupport _rightToLeft;
+        private KryptonToastNotificationRightToLeftSupport _rightToLeft;
         #endregion
 
         #region Properties
         public bool UsePanelColourInTextArea { get => _usePanelColourInTextArea; set => _usePanelColourInTextArea = value; }
 
-        public IconType IconType { get => _iconType; set => _iconType = value; }
+        public KryptonToastNotificationIconType IconType { get => _iconType; set => _iconType = value; }
 
         public int Time { get => _time; set => _time = value; }
 
@@ -52,7 +52,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
         public Image CustomImage { get => _customImage; set => _customImage = value; }
 
-        public RightToLeftSupport RightToLeftSupport { get => _rightToLeft; set { _rightToLeft = value; Invalidate(); } }
+        public KryptonToastNotificationRightToLeftSupport RightToLeftSupport { get => _rightToLeft; set { _rightToLeft = value; Invalidate(); } }
         #endregion
 
         #region Constructor
@@ -63,9 +63,9 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <param name="usePanelColourInTextArea">The use panel colour in text area.</param>
         /// <param name="customImage">The custom image.</param>
         /// <param name="dismissText">The dismiss text.</param>
-        public BasicNotification(IconType iconType, string title, string contentText,
+        public BasicNotification(KryptonToastNotificationIconType iconType, string title, string contentText,
                                     bool? usePanelColourInTextArea, Image customImage = null,
-                                    string dismissText = "&Dismiss", RightToLeftSupport? rightToLeft = RightToLeftSupport.LEFTTORIGHT)
+                                    string dismissText = "&Dismiss", KryptonToastNotificationRightToLeftSupport? rightToLeft = KryptonToastNotificationRightToLeftSupport.LEFTTORIGHT)
         {
             InitializeComponent();
 
@@ -81,7 +81,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
             DismissText = dismissText;
 
-            RightToLeftSupport = rightToLeft ?? RightToLeftSupport.RIGHTTOLEFT;
+            RightToLeftSupport = rightToLeft ?? KryptonToastNotificationRightToLeftSupport.RIGHTTOLEFT;
 
             TopMost = true;
 
@@ -104,11 +104,11 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <param name="seconds">The seconds.</param>
         /// <param name="customImage">The custom image.</param>
         /// <param name="dismissText">The dismiss text.</param>
-        public BasicNotification(IconType iconType, string title, string contentText,
+        public BasicNotification(KryptonToastNotificationIconType iconType, string title, string contentText,
                                     bool? usePanelColourInTextArea,
                                     int seconds, Image customImage = null,
                                     string dismissText = "&Dismiss",
-                                    RightToLeftSupport? rightToLeft = RightToLeftSupport.LEFTTORIGHT)
+                                    KryptonToastNotificationRightToLeftSupport? rightToLeft = KryptonToastNotificationRightToLeftSupport.LEFTTORIGHT)
             : this(iconType, title, contentText, usePanelColourInTextArea, customImage, dismissText, rightToLeft) => Seconds = seconds;
 
         /// <summary>Initializes a new instance of the <see cref="BasicNotification" /> class.</summary>
@@ -120,11 +120,11 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <param name="soundPath">The sound path.</param>
         /// <param name="customImage">The custom image.</param>
         /// <param name="dismissText">The dismiss text.</param>
-        public BasicNotification(IconType iconType, string title, string contentText,
+        public BasicNotification(KryptonToastNotificationIconType iconType, string title, string contentText,
                                     bool? usePanelColourInTextArea, int seconds,
                                     string soundPath, Image customImage = null,
                                     string dismissText = "&Dismiss",
-                                    RightToLeftSupport? rightToLeft = RightToLeftSupport.LEFTTORIGHT)
+                                    KryptonToastNotificationRightToLeftSupport? rightToLeft = KryptonToastNotificationRightToLeftSupport.LEFTTORIGHT)
             : this(iconType, title, contentText, usePanelColourInTextArea, seconds, customImage, dismissText, rightToLeft) => SoundPath = soundPath;
 
         /// <summary>Initializes a new instance of the <see cref="BasicNotification" /> class.</summary>
@@ -135,11 +135,11 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <param name="soundStream">The sound stream.</param>
         /// <param name="customImage">The custom image.</param>
         /// <param name="dismissText">The dismiss text.</param>
-        public BasicNotification(IconType iconType, string title, string contentText,
+        public BasicNotification(KryptonToastNotificationIconType iconType, string title, string contentText,
                                     bool? usePanelColourInTextArea, Stream soundStream,
                                     Image customImage = null,
                                     string dismissText = "&Dismiss",
-                                    RightToLeftSupport? rightToLeft = RightToLeftSupport.LEFTTORIGHT)
+                                    KryptonToastNotificationRightToLeftSupport? rightToLeft = KryptonToastNotificationRightToLeftSupport.LEFTTORIGHT)
             : this(iconType, title, contentText, usePanelColourInTextArea, customImage, dismissText, rightToLeft) => SoundStream = soundStream;
 
         /// <summary>Initializes a new instance of the <see cref="BasicNotification" /> class.</summary>
@@ -151,11 +151,11 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <param name="soundStream">The sound stream.</param>
         /// <param name="customImage">The custom image.</param>
         /// <param name="dismissText">The dismiss text.</param>
-        public BasicNotification(IconType iconType, string title, string contentText,
+        public BasicNotification(KryptonToastNotificationIconType iconType, string title, string contentText,
                                     bool? usePanelColourInTextArea, int seconds,
                                     Stream soundStream, Image customImage = null,
                                     string dismissText = "&Dismiss",
-                                    RightToLeftSupport? rightToLeft = RightToLeftSupport.LEFTTORIGHT)
+                                    KryptonToastNotificationRightToLeftSupport? rightToLeft = KryptonToastNotificationRightToLeftSupport.LEFTTORIGHT)
             : this(iconType, title, contentText, usePanelColourInTextArea, seconds, customImage, dismissText, rightToLeft) => SoundStream = soundStream;
         #endregion
 
@@ -276,9 +276,9 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             base.Show();
         }
 
-        private void ReconfigureUI(RightToLeftSupport? rightToLeft)
+        private void ReconfigureUI(KryptonToastNotificationRightToLeftSupport? rightToLeft)
         {
-            if (rightToLeft == RightToLeftSupport.LEFTTORIGHT)
+            if (rightToLeft == KryptonToastNotificationRightToLeftSupport.LEFTTORIGHT)
             {
                 RightToLeft = RightToLeft.No;
 

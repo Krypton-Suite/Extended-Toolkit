@@ -36,10 +36,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KryptonMessageBoxExtendedForm));
-            this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            this.kpnlBase = new Krypton.Toolkit.KryptonPanel();
             this.ktlpContent = new System.Windows.Forms.TableLayoutPanel();
-            this.pbxMessageIcon = new System.Windows.Forms.PictureBox();
             this.kpnlButtons = new Krypton.Toolkit.KryptonPanel();
             this.kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
             this.mbButton4 = new Krypton.Toolkit.Suite.Extended.Messagebox.MessageButton();
@@ -47,29 +45,36 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             this.mbButton1 = new Krypton.Toolkit.Suite.Extended.Messagebox.MessageButton();
             this.mbButton2 = new Krypton.Toolkit.Suite.Extended.Messagebox.MessageButton();
             this.mbMoreDetails = new Krypton.Toolkit.Suite.Extended.Messagebox.MessageButton();
-            this.kwlMessageText = new Krypton.Toolkit.KryptonWrapLabel();
             this.kpnlExpandableFooter = new Krypton.Toolkit.KryptonPanel();
             this.krtbMoreDetails = new Krypton.Toolkit.KryptonRichTextBox();
             this.kcbOptionalCheckBox = new Krypton.Toolkit.KryptonCheckBox();
             this.kllOptionalLink = new Krypton.Toolkit.KryptonLinkLabel();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
-            this.kryptonPanel1.SuspendLayout();
+            this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
+            this.pbxMessageIcon = new System.Windows.Forms.PictureBox();
+            this.kryptonPanel3 = new Krypton.Toolkit.KryptonPanel();
+            this.kwlMessageText = new Krypton.Toolkit.KryptonWrapLabel();
+            ((System.ComponentModel.ISupportInitialize)(this.kpnlBase)).BeginInit();
+            this.kpnlBase.SuspendLayout();
             this.ktlpContent.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxMessageIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kpnlButtons)).BeginInit();
             this.kpnlButtons.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kpnlExpandableFooter)).BeginInit();
             this.kpnlExpandableFooter.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
+            this.kryptonPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxMessageIcon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel3)).BeginInit();
+            this.kryptonPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
-            // kryptonPanel1
+            // kpnlBase
             // 
-            this.kryptonPanel1.Controls.Add(this.ktlpContent);
-            this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
-            this.kryptonPanel1.Name = "kryptonPanel1";
-            this.kryptonPanel1.Size = new System.Drawing.Size(188, 81);
-            this.kryptonPanel1.TabIndex = 3;
+            this.kpnlBase.Controls.Add(this.ktlpContent);
+            this.kpnlBase.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kpnlBase.Location = new System.Drawing.Point(0, 0);
+            this.kpnlBase.Name = "kpnlBase";
+            this.kpnlBase.Size = new System.Drawing.Size(188, 81);
+            this.kpnlBase.TabIndex = 3;
             // 
             // ktlpContent
             // 
@@ -78,10 +83,10 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             this.ktlpContent.ColumnCount = 2;
             this.ktlpContent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.ktlpContent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.ktlpContent.Controls.Add(this.pbxMessageIcon, 0, 0);
             this.ktlpContent.Controls.Add(this.kpnlButtons, 0, 1);
-            this.ktlpContent.Controls.Add(this.kwlMessageText, 1, 0);
             this.ktlpContent.Controls.Add(this.kpnlExpandableFooter, 0, 2);
+            this.ktlpContent.Controls.Add(this.kryptonPanel2, 0, 0);
+            this.ktlpContent.Controls.Add(this.kryptonPanel3, 1, 0);
             this.ktlpContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ktlpContent.Location = new System.Drawing.Point(0, 0);
             this.ktlpContent.Name = "ktlpContent";
@@ -92,18 +97,6 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             this.ktlpContent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.ktlpContent.Size = new System.Drawing.Size(188, 81);
             this.ktlpContent.TabIndex = 0;
-            // 
-            // pbxMessageIcon
-            // 
-            this.pbxMessageIcon.BackColor = System.Drawing.Color.Transparent;
-            this.pbxMessageIcon.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pbxMessageIcon.Location = new System.Drawing.Point(8, 4);
-            this.pbxMessageIcon.Margin = new System.Windows.Forms.Padding(8, 4, 4, 4);
-            this.pbxMessageIcon.Name = "pbxMessageIcon";
-            this.pbxMessageIcon.Size = new System.Drawing.Size(31, 32);
-            this.pbxMessageIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pbxMessageIcon.TabIndex = 0;
-            this.pbxMessageIcon.TabStop = false;
             // 
             // kpnlButtons
             // 
@@ -210,20 +203,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             this.mbMoreDetails.Size = new System.Drawing.Size(38, 23);
             this.mbMoreDetails.TabIndex = 4;
             this.mbMoreDetails.Values.Text = "BM";
-            this.mbMoreDetails.Click += new System.EventHandler(this.MoreDetails_Click);
             this.mbMoreDetails.Visible = false;
-            // 
-            // kwlMessageText
-            // 
-            this.kwlMessageText.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kwlMessageText.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.kwlMessageText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
-            this.kwlMessageText.LabelStyle = Krypton.Toolkit.LabelStyle.NormalControl;
-            this.kwlMessageText.Location = new System.Drawing.Point(46, 0);
-            this.kwlMessageText.Name = "kwlMessageText";
-            this.kwlMessageText.Size = new System.Drawing.Size(139, 40);
-            this.kwlMessageText.Text = "Dummy message text...";
-            this.kwlMessageText.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.mbMoreDetails.Click += new System.EventHandler(this.MoreDetails_Click);
             // 
             // kpnlExpandableFooter
             // 
@@ -261,6 +242,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             this.kcbOptionalCheckBox.TabIndex = 1;
             this.kcbOptionalCheckBox.Values.Text = "CB1";
             this.kcbOptionalCheckBox.Visible = false;
+            this.kcbOptionalCheckBox.CheckedChanged += new System.EventHandler(this.kcbOptionalCheckBox_CheckedChanged);
             // 
             // kllOptionalLink
             // 
@@ -271,13 +253,57 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             this.kllOptionalLink.TabIndex = 2;
             this.kllOptionalLink.Values.Text = "LL1";
             this.kllOptionalLink.Visible = false;
+            this.kllOptionalLink.LinkClicked += new System.EventHandler(this.kllOptionalLink_LinkClicked);
+            // 
+            // kryptonPanel2
+            // 
+            this.kryptonPanel2.Controls.Add(this.pbxMessageIcon);
+            this.kryptonPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonPanel2.Location = new System.Drawing.Point(3, 3);
+            this.kryptonPanel2.Name = "kryptonPanel2";
+            this.kryptonPanel2.Size = new System.Drawing.Size(32, 34);
+            this.kryptonPanel2.TabIndex = 5;
+            // 
+            // pbxMessageIcon
+            // 
+            this.pbxMessageIcon.BackColor = System.Drawing.Color.Transparent;
+            this.pbxMessageIcon.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pbxMessageIcon.Location = new System.Drawing.Point(0, 0);
+            this.pbxMessageIcon.Margin = new System.Windows.Forms.Padding(8, 4, 4, 4);
+            this.pbxMessageIcon.Name = "pbxMessageIcon";
+            this.pbxMessageIcon.Size = new System.Drawing.Size(32, 34);
+            this.pbxMessageIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pbxMessageIcon.TabIndex = 0;
+            this.pbxMessageIcon.TabStop = false;
+            // 
+            // kryptonPanel3
+            // 
+            this.kryptonPanel3.Controls.Add(this.kwlMessageText);
+            this.kryptonPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonPanel3.Location = new System.Drawing.Point(41, 3);
+            this.kryptonPanel3.Name = "kryptonPanel3";
+            this.kryptonPanel3.Size = new System.Drawing.Size(144, 34);
+            this.kryptonPanel3.TabIndex = 6;
+            // 
+            // kwlMessageText
+            // 
+            this.kwlMessageText.AutoSize = false;
+            this.kwlMessageText.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kwlMessageText.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.kwlMessageText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.kwlMessageText.LabelStyle = Krypton.Toolkit.LabelStyle.NormalControl;
+            this.kwlMessageText.Location = new System.Drawing.Point(0, 0);
+            this.kwlMessageText.Name = "kwlMessageText";
+            this.kwlMessageText.Size = new System.Drawing.Size(144, 34);
+            this.kwlMessageText.Text = "Dummy message text...";
+            this.kwlMessageText.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // KryptonMessageBoxExtendedForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(188, 81);
-            this.Controls.Add(this.kryptonPanel1);
+            this.Controls.Add(this.kpnlBase);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -286,23 +312,26 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
-            this.kryptonPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kpnlBase)).EndInit();
+            this.kpnlBase.ResumeLayout(false);
             this.ktlpContent.ResumeLayout(false);
-            this.ktlpContent.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxMessageIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.kpnlButtons)).EndInit();
             this.kpnlButtons.ResumeLayout(false);
             this.kpnlButtons.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kpnlExpandableFooter)).EndInit();
             this.kpnlExpandableFooter.ResumeLayout(false);
             this.kpnlExpandableFooter.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
+            this.kryptonPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbxMessageIcon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel3)).EndInit();
+            this.kryptonPanel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private KryptonPanel kryptonPanel1;
+        private KryptonPanel kpnlBase;
         private TableLayoutPanel ktlpContent;
         private PictureBox pbxMessageIcon;
         private KryptonPanel kpnlButtons;
@@ -317,5 +346,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         private KryptonRichTextBox krtbMoreDetails;
         private KryptonCheckBox kcbOptionalCheckBox;
         private KryptonLinkLabel kllOptionalLink;
+        private KryptonPanel kryptonPanel2;
+        private KryptonPanel kryptonPanel3;
     }
 }
