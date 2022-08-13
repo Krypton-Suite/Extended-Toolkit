@@ -157,9 +157,9 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         #endregion
 
         #region Variables
-        private ActionButtonType _actionButtonType;
+        private KryptonNotificationActionButtonType _actionButtonType;
 
-        private ActionType _actionType;
+        private KryptonNotificationActionType _actionType;
 
         private bool _showActionButton;
 
@@ -169,7 +169,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
 
         private Image _iconImage;
 
-        private IconType _iconType;
+        private KryptonNotificationIconType _iconType;
 
         private System.Windows.Forms.Timer _timer;
 
@@ -179,9 +179,9 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         #endregion
 
         #region Properties
-        private ActionButtonType ActionButtonType { get => _actionButtonType; set => _actionButtonType = value; }
+        private KryptonNotificationActionButtonType ActionButtonType { get => _actionButtonType; set => _actionButtonType = value; }
 
-        public ActionType ActionType { get => _actionType; set => _actionType = value; }
+        public KryptonNotificationActionType ActionType { get => _actionType; set => _actionType = value; }
 
         public bool ShowActionButton { get => _showActionButton; set => _showActionButton = value; }
 
@@ -268,7 +268,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
             }
         }
 
-        public IconType IconType
+        public KryptonNotificationIconType IconType
         {
             get => _iconType;
 
@@ -295,7 +295,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// <param name="actionButtonType">Type of the action button.</param>
         /// <param name="actionType">Type of the action.</param>
         /// <param name="showActionButton">The show action button.</param>
-        public KryptonToastNotificationVersion1(Image image, string header, string message, Color? borderColourOne, Color? borderColourTwo, int? cornerRadius, ActionButtonType? actionButtonType, ActionType? actionType, bool? showActionButton, string actionButtonText, string dismissButtonText, IconType? iconType)
+        public KryptonToastNotificationVersion1(Image image, string header, string message, Color? borderColourOne, Color? borderColourTwo, int? cornerRadius, KryptonNotificationActionButtonType? actionButtonType, KryptonNotificationActionType? actionType, bool? showActionButton, string actionButtonText, string dismissButtonText, KryptonNotificationIconType? iconType)
         {
             InitializeComponent();
 
@@ -315,13 +315,13 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
 
             CornerRadius = cornerRadius ?? -1;
 
-            ActionButtonType = actionButtonType ?? ActionButtonType.NORMAL;
+            ActionButtonType = actionButtonType ?? KryptonNotificationActionButtonType.Normal;
 
-            ActionType = actionType ?? ActionType.DEFAULT;
+            ActionType = actionType ?? KryptonNotificationActionType.Default;
 
             ShowActionButton = showActionButton ?? false;
 
-            IconType = iconType ?? IconType.CUSTOM;
+            IconType = iconType ?? KryptonNotificationIconType.Custom;
 
             TopMost = true;
 
@@ -334,27 +334,27 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
             SetActionText(actionType, actionButtonText);
         }
 
-        public KryptonToastNotificationVersion1(Image image, string header, string message, Color? borderColourOne, Color? borderColourTwo, int? cornerRadius, ActionButtonType? actionButtonType, ActionType? actionType, bool? showActionButton, string actionButtonText, string dismissButtonText, IconType? iconType, int seconds) : this(image, header, message, borderColourOne, borderColourTwo, cornerRadius, actionButtonType, actionType, showActionButton, actionButtonText, dismissButtonText, iconType)
+        public KryptonToastNotificationVersion1(Image image, string header, string message, Color? borderColourOne, Color? borderColourTwo, int? cornerRadius, KryptonNotificationActionButtonType? actionButtonType, KryptonNotificationActionType? actionType, bool? showActionButton, string actionButtonText, string dismissButtonText, KryptonNotificationIconType? iconType, int seconds) : this(image, header, message, borderColourOne, borderColourTwo, cornerRadius, actionButtonType, actionType, showActionButton, actionButtonText, dismissButtonText, iconType)
         {
             Seconds = seconds;
         }
 
-        public KryptonToastNotificationVersion1(Image image, string header, string message, Color? borderColourOne, Color? borderColourTwo, int? cornerRadius, ActionButtonType? actionButtonType, ActionType? actionType, bool? showActionButton, string actionButtonText, string dismissButtonText, IconType? iconType, int seconds, string soundPath) : this(image, header, message, borderColourOne, borderColourTwo, cornerRadius, actionButtonType, actionType, showActionButton, actionButtonText, dismissButtonText, iconType, seconds)
+        public KryptonToastNotificationVersion1(Image image, string header, string message, Color? borderColourOne, Color? borderColourTwo, int? cornerRadius, KryptonNotificationActionButtonType? actionButtonType, KryptonNotificationActionType? actionType, bool? showActionButton, string actionButtonText, string dismissButtonText, KryptonNotificationIconType? iconType, int seconds, string soundPath) : this(image, header, message, borderColourOne, borderColourTwo, cornerRadius, actionButtonType, actionType, showActionButton, actionButtonText, dismissButtonText, iconType, seconds)
         {
             SoundPath = soundPath;
         }
 
-        public KryptonToastNotificationVersion1(Image image, string header, string message, Color? borderColourOne, Color? borderColourTwo, int? cornerRadius, ActionButtonType? actionButtonType, ActionType? actionType, bool? showActionButton, string actionButtonText, string dismissButtonText, IconType? iconType, string soundPath) : this(image, header, message, borderColourOne, borderColourTwo, cornerRadius, actionButtonType, actionType, showActionButton, actionButtonText, dismissButtonText, iconType)
+        public KryptonToastNotificationVersion1(Image image, string header, string message, Color? borderColourOne, Color? borderColourTwo, int? cornerRadius, KryptonNotificationActionButtonType? actionButtonType, KryptonNotificationActionType? actionType, bool? showActionButton, string actionButtonText, string dismissButtonText, KryptonNotificationIconType? iconType, string soundPath) : this(image, header, message, borderColourOne, borderColourTwo, cornerRadius, actionButtonType, actionType, showActionButton, actionButtonText, dismissButtonText, iconType)
         {
             SoundPath = soundPath;
         }
 
-        public KryptonToastNotificationVersion1(Image image, string header, string message, Color? borderColourOne, Color? borderColourTwo, int? cornerRadius, ActionButtonType? actionButtonType, ActionType? actionType, bool? showActionButton, string actionButtonText, string dismissButtonText, IconType? iconType, Stream soundStream) : this(image, header, message, borderColourOne, borderColourTwo, cornerRadius, actionButtonType, actionType, showActionButton, actionButtonText, dismissButtonText, iconType)
+        public KryptonToastNotificationVersion1(Image image, string header, string message, Color? borderColourOne, Color? borderColourTwo, int? cornerRadius, KryptonNotificationActionButtonType? actionButtonType, KryptonNotificationActionType? actionType, bool? showActionButton, string actionButtonText, string dismissButtonText, KryptonNotificationIconType? iconType, Stream soundStream) : this(image, header, message, borderColourOne, borderColourTwo, cornerRadius, actionButtonType, actionType, showActionButton, actionButtonText, dismissButtonText, iconType)
         {
             SoundStream = soundStream;
         }
 
-        public KryptonToastNotificationVersion1(Image image, string header, string message, Color? borderColourOne, Color? borderColourTwo, int? cornerRadius, ActionButtonType? actionButtonType, ActionType? actionType, bool? showActionButton, string actionButtonText, string dismissButtonText, IconType? iconType, int seconds, Stream soundStream) : this(image, header, message, borderColourOne, borderColourTwo, cornerRadius, actionButtonType, actionType, showActionButton, actionButtonText, dismissButtonText, iconType, seconds)
+        public KryptonToastNotificationVersion1(Image image, string header, string message, Color? borderColourOne, Color? borderColourTwo, int? cornerRadius, KryptonNotificationActionButtonType? actionButtonType, KryptonNotificationActionType? actionType, bool? showActionButton, string actionButtonText, string dismissButtonText, KryptonNotificationIconType? iconType, int seconds, Stream soundStream) : this(image, header, message, borderColourOne, borderColourTwo, cornerRadius, actionButtonType, actionType, showActionButton, actionButtonText, dismissButtonText, iconType, seconds)
         {
             SoundStream = soundStream;
         }
@@ -392,10 +392,10 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
 
             switch (_actionButtonType)
             {
-                case ActionButtonType.NORMAL:
+                case KryptonNotificationActionButtonType.Normal:
                     kbtnAction.Values.Image = null;
                     break;
-                case ActionButtonType.UACELEVATED:
+                case KryptonNotificationActionButtonType.UserAccountControlElevated:
                     kbtnAction.Values.Image = IconExtractor.LoadIcon(IconExtractor.IconType.Shield, SystemInformation.SmallIconSize).ToBitmap();
                     break;
                 default:
@@ -407,26 +407,26 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         {
             switch (_actionButtonType)
             {
-                case ActionButtonType.NORMAL:
+                case KryptonNotificationActionButtonType.Normal:
                     switch (_actionType)
                     {
-                        case ActionType.DEFAULT:
+                        case KryptonNotificationActionType.Default:
                             StartProcess(ProcessToStart);
                             break;
-                        case ActionType.LAUCHPROCESS:
+                        case KryptonNotificationActionType.LaunchProcess:
                             break;
-                        case ActionType.OPEN:
+                        case KryptonNotificationActionType.Open:
                             break;
                     }
                     break;
-                case ActionButtonType.UACELEVATED:
+                case KryptonNotificationActionButtonType.UserAccountControlElevated:
                     switch (_actionType)
                     {
-                        case ActionType.DEFAULT:
+                        case KryptonNotificationActionType.Default:
                             break;
-                        case ActionType.LAUCHPROCESS:
+                        case KryptonNotificationActionType.LaunchProcess:
                             break;
-                        case ActionType.OPEN:
+                        case KryptonNotificationActionType.Open:
                             break;
                     }
                     break;
@@ -486,7 +486,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
 
             if (IconImage != null)
             {
-                SetIconType(IconType.CUSTOM, IconImage);
+                SetIconType(KryptonNotificationIconType.Custom, IconImage);
             }
             else
             {
@@ -598,11 +598,11 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
 
         private void StartProcessInExplorer(string process) => Process.Start("explorer.exe", process);
 
-        private void SetIconType(IconType iconType, Image customImage = null)
+        private void SetIconType(KryptonNotificationIconType iconType, Image customImage = null)
         {
             switch (iconType)
             {
-                case IconType.CUSTOM:
+                case KryptonNotificationIconType.Custom:
                     if (customImage != null)
                     {
                         pbxIcon.Image = customImage;
@@ -612,43 +612,41 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
                         pbxIcon.Image = Properties.Resources.Information_128_x_128;
                     }
                     break;
-                case IconType.OK:
+                case KryptonNotificationIconType.Ok:
                     pbxIcon.Image = Properties.Resources.Ok_128_x_128;
                     break;
-                case IconType.ERROR:
+                case KryptonNotificationIconType.Error:
                     pbxIcon.Image = Properties.Resources.Critical_128_x_128;
                     break;
-                case IconType.EXCLAMATION:
+                case KryptonNotificationIconType.Exclamation:
                     pbxIcon.Image = Properties.Resources.Warning_128_x_128;
                     break;
-                case IconType.INFORMATION:
+                case KryptonNotificationIconType.Information:
                     pbxIcon.Image = Properties.Resources.Information_128_x_128;
                     break;
-                case IconType.QUESTION:
+                case KryptonNotificationIconType.Question:
                     pbxIcon.Image = Properties.Resources.Question_128_x_128;
                     break;
-                case IconType.NOTHING:
+                case KryptonNotificationIconType.None:
                     pbxIcon.Image = null;
                     break;
-                case IconType.NONE:
-                    break;
-                case IconType.STOP:
+                case KryptonNotificationIconType.Stop:
                     pbxIcon.Image = Properties.Resources.Stop_128_x_128;
                     break;
-                case IconType.HAND:
+                case KryptonNotificationIconType.Hand:
                     pbxIcon.Image = Properties.Resources.Hand_128_x_128;
                     break;
-                case IconType.WARNING:
+                case KryptonNotificationIconType.Warning:
                     pbxIcon.Image = Properties.Resources.Input_Box_Warning_128_x_115;
                     break;
             }
         }
 
-        private void SetActionText(ActionType? type, string buttonText = null)
+        private void SetActionText(KryptonNotificationActionType? type, string buttonText = null)
         {
             switch (type)
             {
-                case ActionType.DEFAULT:
+                case KryptonNotificationActionType.Default:
                     if (buttonText != null)
                     {
                         kbtnAction.Text = $"{buttonText} {Path.GetFileName(ProcessToStart)}";
@@ -658,7 +656,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
                         kbtnAction.Text = $"&Open {Path.GetFileName(ProcessToStart)}";
                     }
                     break;
-                case ActionType.LAUCHPROCESS:
+                case KryptonNotificationActionType.LaunchProcess:
                     if (buttonText != null)
                     {
                         kbtnAction.Text = $"{buttonText} {Path.GetFileName(ProcessToStart)}";
@@ -668,7 +666,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
                         kbtnAction.Text = $"L&aunch {Path.GetFileName(ProcessToStart)}";
                     }
                     break;
-                case ActionType.OPEN:
+                case KryptonNotificationActionType.Open:
                     if (buttonText != null)
                     {
                         kbtnAction.Text = $"{buttonText} {Path.GetFileName(ProcessToStart)}";

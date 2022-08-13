@@ -34,7 +34,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         {
             KryptonAlertWindow alertWindow = new KryptonAlertWindow();
 
-            alertWindow.DisplayAlert(message, AlertType.SUCESS, interval, headerText: headerText);
+            alertWindow.DisplayAlert(message, KryptonNotificationAlertType.Success, interval, headerText: headerText);
         }
         #endregion
 
@@ -49,7 +49,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         {
             KryptonAlertWindow alertWindow = new KryptonAlertWindow();
 
-            alertWindow.DisplayAlert(message, AlertType.INFORMATION, interval, headerText: headerText);
+            alertWindow.DisplayAlert(message, KryptonNotificationAlertType.Information, interval, headerText: headerText);
         }
 
         #endregion
@@ -65,7 +65,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         {
             KryptonAlertWindow alertWindow = new KryptonAlertWindow();
 
-            alertWindow.DisplayAlert(message, AlertType.WARNING, interval, headerText: headerText);
+            alertWindow.DisplayAlert(message, KryptonNotificationAlertType.Warning, interval, headerText: headerText);
         }
 
         #endregion
@@ -81,7 +81,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         {
             KryptonAlertWindow alertWindow = new KryptonAlertWindow();
 
-            alertWindow.DisplayAlert(message, AlertType.ERROR, interval, headerText: headerText);
+            alertWindow.DisplayAlert(message, KryptonNotificationAlertType.Error, interval, headerText: headerText);
         }
 
         #endregion
@@ -100,7 +100,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         {
             KryptonAlertWindow alertWindow = new KryptonAlertWindow();
 
-            alertWindow.DisplayAlert(message, AlertType.CUSTOM, interval, image, backColour == default ? Color.FromArgb(83, 92, 104) : backColour, textColour == default ? Color.White : textColour, headerText);
+            alertWindow.DisplayAlert(message, KryptonNotificationAlertType.Custom, interval, image, backColour == default ? Color.FromArgb(83, 92, 104) : backColour, textColour == default ? Color.White : textColour, headerText);
         }
 
         #endregion

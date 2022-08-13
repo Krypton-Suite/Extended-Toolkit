@@ -61,6 +61,7 @@
             this.kcbThirdColour.SelectedColor = System.Drawing.Color.Green;
             this.kcbThirdColour.SelectedRect = new System.Drawing.Rectangle(0, 0, 16, 16);
             this.kcbThirdColour.Size = new System.Drawing.Size(205, 25);
+            this.kcbThirdColour.Splitter = false;
             this.kcbThirdColour.TabIndex = 6;
             this.kcbThirdColour.Values.RoundedCorners = 8;
             this.kcbThirdColour.Values.Text = "Thi&rd Colour";
@@ -74,6 +75,7 @@
             this.kcbSecondColour.SelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(191)))), ((int)(((byte)(0)))));
             this.kcbSecondColour.SelectedRect = new System.Drawing.Rectangle(0, 0, 16, 16);
             this.kcbSecondColour.Size = new System.Drawing.Size(205, 25);
+            this.kcbSecondColour.Splitter = false;
             this.kcbSecondColour.TabIndex = 5;
             this.kcbSecondColour.Values.Image = ((System.Drawing.Image)(resources.GetObject("kcbSecondColour.Values.Image")));
             this.kcbSecondColour.Values.RoundedCorners = 8;
@@ -87,6 +89,7 @@
             this.kcbFirstColour.Name = "kcbFirstColour";
             this.kcbFirstColour.SelectedRect = new System.Drawing.Rectangle(0, 0, 16, 16);
             this.kcbFirstColour.Size = new System.Drawing.Size(205, 25);
+            this.kcbFirstColour.Splitter = false;
             this.kcbFirstColour.TabIndex = 4;
             this.kcbFirstColour.Values.Image = ((System.Drawing.Image)(resources.GetObject("kcbFirstColour.Values.Image")));
             this.kcbFirstColour.Values.RoundedCorners = 8;

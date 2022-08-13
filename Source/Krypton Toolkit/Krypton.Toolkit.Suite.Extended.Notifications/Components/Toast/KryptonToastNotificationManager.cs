@@ -15,15 +15,15 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
     public class KryptonToastNotificationManager : Component
     {
         #region Variables
-        private ActionButtonType _actionButtonType;
-        private ActionType _actionType;
+        private KryptonNotificationActionButtonType _actionButtonType;
+        private KryptonNotificationActionType _actionType;
         private Color _borderColourOne, _borderColourTwo;
         private bool _fade, _showActionButton, _showSubScript, _showTimeoutProgress, _showControlBox;
         private string _headerText, _contentText, _dismissButtonText, _processPath, _actionButtonText, _soundPath;
         private Stream _soundStream;
         private Image _customIconImage;
         private int _cornerRadius, _seconds, _timeOutProgress;
-        private IconType _iconType;
+        private KryptonNotificationIconType _iconType;
         #endregion
 
         #region Properties
@@ -33,7 +33,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// <value>
         /// The type of the action.
         /// </value>
-        public ActionType Action { get => _actionType; set => _actionType = value; }
+        public KryptonNotificationActionType Action { get => _actionType; set => _actionType = value; }
 
         /// <summary>
         /// Gets or sets a value indicating whether [show action button].
@@ -134,7 +134,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
 
         /// <summary>Gets or sets the type of the icon.</summary>
         /// <value>The type of the icon.</value>
-        public IconType IconType { get => _iconType; set => _iconType = value; }
+        public KryptonNotificationIconType IconType { get => _iconType; set => _iconType = value; }
         #endregion
 
         #region Constructor
@@ -163,11 +163,11 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         /// <param name="seconds">The seconds.</param>
         /// <param name="timeOutProgress">The time out progress.</param>
         /// <param name="cornerRadius">The corner radius.</param>
-        public KryptonToastNotificationManager(ActionType actionType, bool showActionButton, bool? showSubScript, bool? showControlBox,
+        public KryptonToastNotificationManager(KryptonNotificationActionType actionType, bool showActionButton, bool? showSubScript, bool? showControlBox,
                                                bool? showTimeOutProgress, Color? borderColourOne, Color? borderColourTwo,
                                                string soundPath, string contentText, string headerText, string actionButtonText,
                                                string dismissButtonText, string processPath, Stream soundStream, 
-                                               Image customIconImage, IconType iconType, int? seconds, int? timeOutProgress, 
+                                               Image customIconImage, KryptonNotificationIconType iconType, int? seconds, int? timeOutProgress, 
                                                int? cornerRadius)
         {
             // Store values

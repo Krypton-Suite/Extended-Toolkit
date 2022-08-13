@@ -34,7 +34,7 @@
             // 
             // kryptonToastNotificationManager1
             // 
-            this.kryptonToastNotificationManager1.Action = Krypton.Toolkit.Suite.Extended.Notifications.ActionType.DEFAULT;
+            this.kryptonToastNotificationManager1.Action = Krypton.Toolkit.Suite.Extended.Notifications.KryptonNotificationActionType.Default;
             this.kryptonToastNotificationManager1.ActionButtonText = null;
             this.kryptonToastNotificationManager1.BorderColourOne = System.Drawing.Color.Empty;
             this.kryptonToastNotificationManager1.BorderColourTwo = System.Drawing.Color.Empty;
@@ -43,7 +43,7 @@
             this.kryptonToastNotificationManager1.CustomIconImage = null;
             this.kryptonToastNotificationManager1.DismissButtonText = null;
             this.kryptonToastNotificationManager1.HeaderText = null;
-            this.kryptonToastNotificationManager1.IconType = Krypton.Toolkit.Suite.Extended.Notifications.IconType.CUSTOM;
+            this.kryptonToastNotificationManager1.IconType = Krypton.Toolkit.Suite.Extended.Notifications.KryptonNotificationIconType.Custom;
             this.kryptonToastNotificationManager1.ProcessPath = null;
             this.kryptonToastNotificationManager1.Seconds = 0;
             this.kryptonToastNotificationManager1.ShowActionButton = false;

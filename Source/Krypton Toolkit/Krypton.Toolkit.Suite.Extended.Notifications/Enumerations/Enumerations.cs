@@ -9,92 +9,90 @@
 namespace Krypton.Toolkit.Suite.Extended.Notifications
 {
     /// <summary>The <see cref="KryptonToastNotificationVersion1" /> action button type.</summary>
-    public enum ActionType
+    public enum KryptonNotificationActionType
     {
         /// <summary>The default action.</summary>
-        DEFAULT,
+        Default,
         /// <summary>Launches or starts a process.</summary>
-        LAUCHPROCESS,
+        LaunchProcess,
         /// <summary>Opens a process.</summary>
-        OPEN
+        Open
     }
 
     /// <summary>Defines the <see cref="KryptonToastNotificationVersion1"/> action button location.</summary>
-    public enum ActionButtonLocation
+    public enum KryptonNotificationActionButtonLocation
     {
         /// <summary>Place the action button to the left.</summary>
-        LEFT,
+        Left,
         /// <summary>Place the action button to the right.</summary>
-        RIGHT
+        Right
     }
 
     /// <summary>Defines the <see cref="KryptonToastNotificationVersion1"/> default button.</summary>
     // TODO: Implement this feature into `KryptonToastNotification`
-    public enum DefaultNotificationButton
+    public enum KryptonNotificationDefaultNotificationButton
     {
         /// <summary>Use the 'action' button as the default button.</summary>
-        ACTIONBUTTON,
+        ActionButton,
         /// <summary>Use the 'dismiss' button as the default button.</summary>
-        DISMISSBUTTON,
+        DismissButton,
         /// <summary>Use neither button as the default button.</summary>
-        NONE
+        None
     }
 
     /// <summary>Specifies the icon shown on the <see cref="KryptonToastNotificationVersion1"/>.</summary>
-    public enum IconType
+    public enum KryptonNotificationIconType
     {
         /// <summary>Use a custom icon.</summary>
-        CUSTOM,
+        Custom,
         /// <summary>Use a Ok icon.</summary>
-        OK,
+        Ok,
         /// <summary>Use a error icon.</summary>
-        ERROR,
+        Error,
         /// <summary>Use a exclamation icon.</summary>
-        EXCLAMATION,
+        Exclamation,
         /// <summary>Use a information icon.</summary>
-        INFORMATION,
+        Information,
         /// <summary>Use a question icon.</summary>
-        QUESTION,
-        /// <summary>Use no icon, but keep the same layout.</summary>
-        NOTHING,
+        Question,
         /// <summary>Use no icon.</summary>
-        NONE,
+        None,
         /// <summary>Use a stop icon.</summary>
-        STOP,
+        Stop,
         /// <summary>Use a hand icon.</summary>
-        HAND,
+        Hand,
         /// <summary>Use a warning icon.</summary>
-        WARNING
+        Warning
     }
 
     /// <summary>The layout of the UI elements on the <see cref="KryptonToastNotificationVersion1"/>.</summary>
-    public enum RightToLeftSupport
+    public enum KryptonNotificationRightToLeftSupport
     {
         /// <summary>Configure the <see cref="KryptonToastNotificationVersion1"/> UX for left-to-right.</summary>
-        LEFTTORIGHT,
+        LeftToRight,
         /// <summary>Configure the <see cref="KryptonToastNotificationVersion1"/> UX for right-to-left.</summary>
-        RIGHTTOLEFT
+        RightToLeft
     }
 
-    public enum AlertAction
+    public enum KryptonNotificationAlertAction
     {
-        START,
-        WAIT,
-        CLOSE
+        Start,
+        Wait,
+        Close
     }
 
-    public enum AlertType
+    public enum KryptonNotificationAlertType
     {
-        SUCESS,
-        INFORMATION,
-        WARNING,
-        ERROR,
-        CUSTOM
+        Success,
+        Information,
+        Warning,
+        Error,
+        Custom
     }
 
-    public enum ActionButtonType
+    public enum KryptonNotificationActionButtonType
     {
-        NORMAL =  0,
-        UACELEVATED = 1
+        Normal =  0,
+        UserAccountControlElevated = 1
     }
 }
