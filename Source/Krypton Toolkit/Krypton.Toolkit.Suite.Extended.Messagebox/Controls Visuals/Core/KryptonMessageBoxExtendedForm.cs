@@ -41,7 +41,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         private readonly Color[] _buttonTextColours = new Color[4];
 
-        private readonly CheckState _optionalCheckBoxCheckState;
+        private /*readonly*/ CheckState _optionalCheckBoxCheckState;
 
         private readonly DialogResult _buttonOneCustomDialogResult;
 
@@ -87,7 +87,13 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         #region Public
 
-        public TableLayoutPanel ContentLayoutPanel { get => ktlpContent; }
+        /// <summary>Gets the state of the optional CheckBox check state.</summary>
+        /// <value>The state of the optional CheckBox check state.</value>
+        public CheckState OptionalCheckBoxCheckState { get => _optionalCheckBoxCheckState; private set => _optionalCheckBoxCheckState = value; }
+
+        /// <summary>Gets the content layout panel.</summary>
+        /// <value>The content layout panel.</value>
+        public TableLayoutPanel ContentLayoutPanel => ktlpContent;
 
         #endregion
 
@@ -738,6 +744,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         private void MoreDetails_Click(object sender, EventArgs e) => UpdateMoreDetails();
 
+        /// <summary>Updates the more details.</summary>
         private void UpdateMoreDetails()
         {
             int originalHeight = Size.Height;
@@ -787,6 +794,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             }
         }
 
+        /// <summary>Setups the more details UI.</summary>
+        /// <param name="showUI">if set to <c>true</c> [show UI].</param>
         private void SetupMoreDetailsUI(bool showUI)
         {
             mbMoreDetails.Visible = showUI;
@@ -822,8 +831,29 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         private void kcbOptionalCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-
+            SetOptionalCheckBoxCheckStateValue(kcbOptionalCheckBox.CheckState);
         }
+        #endregion
+
+        #region Protected
+
+        protected override void OnResize(EventArgs e)
+        {
+            base.OnResize(e);
+        }
+
+        #endregion
+
+        #region Setters & Getters
+
+        /// <summary>Sets the optional CheckBox check state value.</summary>
+        /// <param name="checkStateValue">The check state value.</param>
+        private void SetOptionalCheckBoxCheckStateValue(CheckState checkStateValue) => OptionalCheckBoxCheckState = checkStateValue;
+
+        /// <summary>Get optional the CheckBox check state value.</summary>
+        /// <returns></returns>
+        public CheckState GetOptionalCheckBoxCheckStateValue() => OptionalCheckBoxCheckState;
+
         #endregion
     }
 }
