@@ -829,10 +829,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             }
         }
 
-        private void kcbOptionalCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            SetOptionalCheckBoxCheckStateValue(kcbOptionalCheckBox.CheckState);
-        }
+        private void kcbOptionalCheckBox_CheckedChanged(object sender, EventArgs e) => SetOptionalCheckBoxCheckStateValue(kcbOptionalCheckBox.CheckState);
+
         #endregion
 
         #region Protected
