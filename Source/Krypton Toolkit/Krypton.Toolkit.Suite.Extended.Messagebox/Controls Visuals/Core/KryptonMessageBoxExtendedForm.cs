@@ -740,15 +740,13 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
 
         private void UpdateMoreDetails()
         {
-            int currentHeight = Size.Height;
+            int originalHeight = Size.Height;
 
-            int originalBasePanelHeight = kpnlExpandableFooter.Size.Height;
+            int newHeight;
 
-            int newBasePanelHeight;
+            int originalFooterHeight = kpnlExpandableFooter.Size.Height;
 
-            int detailsPaneOriginalHeight = krtbMoreDetails.Size.Height;
-
-            int detailsPaneNewHeight;
+            int newFooterHeight;
 
             krtbMoreDetails.StateCommon.Content.Font = _messageBoxTypeface;
 
@@ -761,10 +759,6 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                 krtbMoreDetails.Visible = true;
 
                 krtbMoreDetails.Text = _detailsText;
-
-                detailsPaneNewHeight = detailsPaneOriginalHeight + _maximumMoreDetailsDropDownHeight;
-
-                Height = currentHeight + detailsPaneNewHeight;
             }
             else if (mbMoreDetails.Text == _collapseText)
             {
@@ -773,8 +767,23 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                 kpnlExpandableFooter.Visible = false;
 
                 krtbMoreDetails.Visible = false;
+            }
 
-                Height = currentHeight;
+            if (kpnlExpandableFooter.Visible)
+            {
+                newFooterHeight = originalFooterHeight + _maximumMoreDetailsDropDownHeight;
+
+                kpnlExpandableFooter.Height = newFooterHeight;
+
+                newHeight = originalFooterHeight + newFooterHeight;
+
+                Height = newHeight;
+            }
+            else
+            {
+                kpnlExpandableFooter.Height = originalFooterHeight;
+
+                Height = originalHeight;
             }
         }
 
@@ -789,7 +798,6 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                 ContentLayoutPanel.RowStyles[2].Height = 0;
             }
         }
-        #endregion
 
         private void kllOptionalLink_LinkClicked(object sender, EventArgs e) => ProcessLink();
 
@@ -816,5 +824,6 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         {
 
         }
+        #endregion
     }
 }

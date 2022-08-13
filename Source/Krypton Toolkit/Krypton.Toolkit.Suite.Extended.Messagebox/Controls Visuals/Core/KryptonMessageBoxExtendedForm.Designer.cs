@@ -91,10 +91,9 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             this.ktlpContent.Location = new System.Drawing.Point(0, 0);
             this.ktlpContent.Name = "ktlpContent";
             this.ktlpContent.RowCount = 3;
-            this.ktlpContent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.ktlpContent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 66.66666F));
             this.ktlpContent.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.ktlpContent.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.ktlpContent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.ktlpContent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.ktlpContent.Size = new System.Drawing.Size(188, 81);
             this.ktlpContent.TabIndex = 0;
             // 
@@ -108,7 +107,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             this.kpnlButtons.Controls.Add(this.mbButton2);
             this.kpnlButtons.Controls.Add(this.mbMoreDetails);
             this.kpnlButtons.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kpnlButtons.Location = new System.Drawing.Point(0, 40);
+            this.kpnlButtons.Location = new System.Drawing.Point(0, 39);
             this.kpnlButtons.Margin = new System.Windows.Forms.Padding(0);
             this.kpnlButtons.Name = "kpnlButtons";
             this.kpnlButtons.PanelBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelAlternate;
@@ -213,10 +212,10 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             this.kpnlExpandableFooter.Controls.Add(this.kcbOptionalCheckBox);
             this.kpnlExpandableFooter.Controls.Add(this.kllOptionalLink);
             this.kpnlExpandableFooter.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kpnlExpandableFooter.Location = new System.Drawing.Point(3, 64);
+            this.kpnlExpandableFooter.Location = new System.Drawing.Point(3, 63);
             this.kpnlExpandableFooter.Name = "kpnlExpandableFooter";
             this.kpnlExpandableFooter.PanelBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelAlternate;
-            this.kpnlExpandableFooter.Size = new System.Drawing.Size(182, 14);
+            this.kpnlExpandableFooter.Size = new System.Drawing.Size(182, 15);
             this.kpnlExpandableFooter.TabIndex = 4;
             this.kpnlExpandableFooter.Visible = false;
             // 
@@ -228,7 +227,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             this.krtbMoreDetails.Name = "krtbMoreDetails";
             this.krtbMoreDetails.ReadOnly = true;
             this.krtbMoreDetails.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
-            this.krtbMoreDetails.Size = new System.Drawing.Size(182, 14);
+            this.krtbMoreDetails.Size = new System.Drawing.Size(182, 15);
             this.krtbMoreDetails.TabIndex = 0;
             this.krtbMoreDetails.Text = "";
             this.krtbMoreDetails.Visible = false;
@@ -238,7 +237,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             this.kcbOptionalCheckBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kcbOptionalCheckBox.Location = new System.Drawing.Point(0, 0);
             this.kcbOptionalCheckBox.Name = "kcbOptionalCheckBox";
-            this.kcbOptionalCheckBox.Size = new System.Drawing.Size(182, 14);
+            this.kcbOptionalCheckBox.Size = new System.Drawing.Size(182, 15);
             this.kcbOptionalCheckBox.TabIndex = 1;
             this.kcbOptionalCheckBox.Values.Text = "CB1";
             this.kcbOptionalCheckBox.Visible = false;
@@ -249,7 +248,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             this.kllOptionalLink.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kllOptionalLink.Location = new System.Drawing.Point(0, 0);
             this.kllOptionalLink.Name = "kllOptionalLink";
-            this.kllOptionalLink.Size = new System.Drawing.Size(182, 14);
+            this.kllOptionalLink.Size = new System.Drawing.Size(182, 15);
             this.kllOptionalLink.TabIndex = 2;
             this.kllOptionalLink.Values.Text = "LL1";
             this.kllOptionalLink.Visible = false;
@@ -261,7 +260,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             this.kryptonPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel2.Location = new System.Drawing.Point(3, 3);
             this.kryptonPanel2.Name = "kryptonPanel2";
-            this.kryptonPanel2.Size = new System.Drawing.Size(32, 34);
+            this.kryptonPanel2.Size = new System.Drawing.Size(32, 33);
             this.kryptonPanel2.TabIndex = 5;
             // 
             // pbxMessageIcon
@@ -271,7 +270,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             this.pbxMessageIcon.Location = new System.Drawing.Point(0, 0);
             this.pbxMessageIcon.Margin = new System.Windows.Forms.Padding(8, 4, 4, 4);
             this.pbxMessageIcon.Name = "pbxMessageIcon";
-            this.pbxMessageIcon.Size = new System.Drawing.Size(32, 34);
+            this.pbxMessageIcon.Size = new System.Drawing.Size(32, 33);
             this.pbxMessageIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pbxMessageIcon.TabIndex = 0;
             this.pbxMessageIcon.TabStop = false;
@@ -282,7 +281,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             this.kryptonPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel3.Location = new System.Drawing.Point(41, 3);
             this.kryptonPanel3.Name = "kryptonPanel3";
-            this.kryptonPanel3.Size = new System.Drawing.Size(144, 34);
+            this.kryptonPanel3.Size = new System.Drawing.Size(144, 33);
             this.kryptonPanel3.TabIndex = 6;
             // 
             // kwlMessageText
@@ -294,7 +293,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             this.kwlMessageText.LabelStyle = Krypton.Toolkit.LabelStyle.NormalControl;
             this.kwlMessageText.Location = new System.Drawing.Point(0, 0);
             this.kwlMessageText.Name = "kwlMessageText";
-            this.kwlMessageText.Size = new System.Drawing.Size(144, 34);
+            this.kwlMessageText.Size = new System.Drawing.Size(144, 33);
             this.kwlMessageText.Text = "Dummy message text...";
             this.kwlMessageText.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 

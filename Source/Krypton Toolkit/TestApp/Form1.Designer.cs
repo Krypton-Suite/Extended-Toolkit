@@ -39,14 +39,14 @@
             this.kbtnCircularProgressBarItem = new Krypton.Toolkit.KryptonButton();
             this.ktnToolStripItems = new Krypton.Toolkit.KryptonButton();
             this.kbtnButtonItems = new Krypton.Toolkit.KryptonButton();
-            this.kryptonButton1 = new Krypton.Toolkit.KryptonButton();
+            this.kbtnToast = new Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // kryptonPanel1
             // 
-            this.kryptonPanel1.Controls.Add(this.kryptonButton1);
+            this.kryptonPanel1.Controls.Add(this.kbtnToast);
             this.kryptonPanel1.Controls.Add(this.kryptonButton7);
             this.kryptonPanel1.Controls.Add(this.kbtnExtendedControls);
             this.kryptonPanel1.Controls.Add(this.kryptonButton5);
@@ -150,14 +150,14 @@
             this.kbtnButtonItems.Values.Text = "Button Items";
             this.kbtnButtonItems.Click += new System.EventHandler(this.kbtnButtonItems_Click);
             // 
-            // kryptonButton1
+            // kbtnToast
             // 
-            this.kryptonButton1.CornerRoundingRadius = -1F;
-            this.kryptonButton1.Location = new System.Drawing.Point(13, 277);
-            this.kryptonButton1.Name = "kryptonButton1";
-            this.kryptonButton1.Size = new System.Drawing.Size(90, 25);
-            this.kryptonButton1.TabIndex = 9;
-            this.kryptonButton1.Values.Text = "kryptonButton1";
+            this.kbtnToast.CornerRoundingRadius = -1F;
+            this.kbtnToast.Location = new System.Drawing.Point(12, 66);
+            this.kbtnToast.Name = "kbtnToast";
+            this.kbtnToast.Size = new System.Drawing.Size(110, 22);
+            this.kbtnToast.TabIndex = 9;
+            this.kbtnToast.Values.Text = "Toast Notification";
             // 
             // Form1
             // 
@@ -186,6 +186,6 @@
         private Krypton.Toolkit.KryptonButton kryptonButton5;
         private Krypton.Toolkit.KryptonButton kryptonButton4;
         private Krypton.Toolkit.KryptonButton kryptonButton7;
-        private Krypton.Toolkit.KryptonButton kryptonButton1;
+        private Krypton.Toolkit.KryptonButton kbtnToast;
     }
 }
