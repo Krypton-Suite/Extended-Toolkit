@@ -6,16 +6,6 @@
  */
 #endregion
 
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Drawing.Imaging;
-using System.Security.Principal;
-using System.Windows.Forms;
-
-using Krypton.Toolkit.Suite.Extended.Developer.Utilities;
-
 namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
 {
     /// <summary>Provides useful methods for specified tasks.</summary>

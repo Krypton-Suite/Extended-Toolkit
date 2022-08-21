@@ -6,9 +6,6 @@
  */
 #endregion
 
-using System.Drawing;
-using System.Windows.Forms;
-
 namespace Krypton.Toolkit.Suite.Extended.Notifications
 {
     /// <summary>Provides useful methods for specified tasks.</summary>

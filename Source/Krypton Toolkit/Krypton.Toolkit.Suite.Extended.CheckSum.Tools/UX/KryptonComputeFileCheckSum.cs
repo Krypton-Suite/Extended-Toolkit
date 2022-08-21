@@ -6,8 +6,6 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Developer.Utilities;
-
 namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
 {
     public class KryptonComputeFileCheckSum : KryptonForm

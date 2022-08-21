@@ -6,8 +6,6 @@
  */
 #endregion
 
-using System.Windows.Forms;
-
 namespace Krypton.Toolkit.Suite.Extended.Notifications
 {
     /// <summary>Controls the UI elements of an <see cref="KryptonToastNotificationVersion1"/>.</summary>

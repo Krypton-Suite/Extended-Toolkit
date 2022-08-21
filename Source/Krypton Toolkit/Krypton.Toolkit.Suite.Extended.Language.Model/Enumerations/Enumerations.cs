@@ -12,19 +12,19 @@ namespace Krypton.Toolkit.Suite.Extended.Language.Model
     public enum SelectedLanguage
     {
         /// <summary>The Czech definition.</summary>
-        CZECH,
+        Czech = 0,
         /// <summary>The English definition.</summary>
-        ENGLISH,
+        English = 1,
         /// <summary>The Français definition.</summary>
-        FRANÇAIS,
+        Français = 2,
         /// <summary>The Deutsch definition.</summary>
-        DEUTSCH,
+        Deutsch = 3,
         /// <summary>The Slovakian definition.</summary>
-        SLOVAKIAN,
+        Slovakian = 4,
         /// <summary>The Español definition.</summary>
-        ESPAÑOL,
+        Español = 5,
         /// <summary>A custom language definition.</summary>
-        CUSTOM
+        Custom = 6
     }
 
     /// <summary>The type of buttons.</summary>
@@ -33,25 +33,25 @@ namespace Krypton.Toolkit.Suite.Extended.Language.Model
         /// <summary>Ok button only.</summary>
         OK,
         /// <summary>A ok/cancel button.</summary>
-        OKCANCEL,
+        OKCancel,
         /// <summary>A yes/no button.</summary>
-        YESNO,
+        YesNo,
         /// <summary>A yes/no/cancel button.</summary>
-        YESNOCANCEL,
+        YesNoCancel,
         /// <summary>A retry/cancel button.</summary>
-        RETRYCANCEL,
+        RetryCancel,
         /// <summary>A abort/retry/ignore button.</summary>
-        ABORTRETRYIGNORE
+        AbortRetryIgnore
     }
 
     public enum DialogButtonType
     {
-        ABORT = 0,
-        CANCEL = 1,
-        IGNORE = 2,
-        NO = 3,
+        Abort = 0,
+        Cancel = 1,
+        Ignore = 2,
+        No = 3,
         OK = 4,
-        RETRY = 5,
-        YES = 6
+        Retry = 5,
+        Yes = 6
     }
 }

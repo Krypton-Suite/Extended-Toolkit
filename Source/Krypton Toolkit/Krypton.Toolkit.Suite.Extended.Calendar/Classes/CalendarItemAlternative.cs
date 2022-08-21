@@ -6,11 +6,6 @@
  */
 #endregion
 
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Drawing.Drawing2D;
-
 namespace Krypton.Toolkit.Suite.Extended.Calendar
 {
     /// <summary>
@@ -75,7 +70,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             _borderColour = Color.Empty;
             _oreColour = Color.Empty;
             _backgroundColourLighter = Color.Empty;
-            _imageAlign = CalendarItemImageAlign.WEST;
+            _imageAlign = CalendarItemImageAlign.West;
         }
 
         /// <summary>
@@ -407,15 +402,15 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets a value indicating if the item should show the time of the <see cref="StartDate"/>
         /// </summary>
-        public bool ShowStartTime => IsOpenStart || ((IsOnDayTop || Calendar.DaysMode == CalendarDaysMode.SHORT) && !StartDate.TimeOfDay.Equals(new TimeSpan(0, 0, 0)));
+        public bool ShowStartTime => IsOpenStart || ((IsOnDayTop || Calendar.DaysMode == CalendarDaysMode.Short) && !StartDate.TimeOfDay.Equals(new TimeSpan(0, 0, 0)));
 
         /// <summary>
         /// Gets a value indicating if the item should show the time of the <see cref="EndDate"/>
         /// </summary>
         public virtual bool ShowEndTime =>
             (IsOpenEnd ||
-             ((IsOnDayTop || Calendar.DaysMode == CalendarDaysMode.SHORT) && !EndDate.TimeOfDay.Equals(new TimeSpan(23, 59, 59)))) &&
-            !(Calendar.DaysMode == CalendarDaysMode.SHORT && StartDate.Date == EndDate.Date);
+             ((IsOnDayTop || Calendar.DaysMode == CalendarDaysMode.Short) && !EndDate.TimeOfDay.Equals(new TimeSpan(23, 59, 59)))) &&
+            !(Calendar.DaysMode == CalendarDaysMode.Short && StartDate.Date == EndDate.Date);
 
         /// <summary>
         /// Gets the text of the start date
@@ -545,7 +540,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             Rectangle first = rects[0];
             Rectangle last = rects[rects.Count - 1];
 
-            if (IsOnDayTop || Calendar.DaysMode == CalendarDaysMode.SHORT)
+            if (IsOnDayTop || Calendar.DaysMode == CalendarDaysMode.Short)
             {
                 return Rectangle.FromLTRB(first.Left, first.Top, first.Left + margin, first.Bottom).Contains(p);
             }
@@ -568,7 +563,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             Rectangle first = rects[0];
             Rectangle last = rects[rects.Count - 1];
 
-            if (IsOnDayTop || Calendar.DaysMode == CalendarDaysMode.SHORT)
+            if (IsOnDayTop || Calendar.DaysMode == CalendarDaysMode.Short)
             {
                 return Rectangle.FromLTRB(last.Right - margin, last.Top, last.Right, last.Bottom).Contains(p);
             }

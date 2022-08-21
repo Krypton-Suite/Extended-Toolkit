@@ -6,10 +6,6 @@
  */
 #endregion
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
 namespace Krypton.Toolkit.Suite.Extended.TreeGridView
 {
     public class TreeGridNodeCollection : IList<KryptonTreeGridNodeRow>, System.Collections.IList

@@ -6,10 +6,6 @@
  */
 #endregion
 
-using System.ComponentModel;
-using System.Drawing;
-using System.IO;
-
 namespace Krypton.Toolkit.Suite.Extended.Notifications
 {
     public class KryptonToastNotificationManager : Component

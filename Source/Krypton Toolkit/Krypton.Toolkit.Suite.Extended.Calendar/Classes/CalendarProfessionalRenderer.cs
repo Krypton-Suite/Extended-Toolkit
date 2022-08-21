@@ -6,10 +6,6 @@
  */
 #endregion
 
-using System;
-using System.Drawing;
-using System.Drawing.Drawing2D;
-
 namespace Krypton.Toolkit.Suite.Extended.Calendar
 {
     public class CalendarProfessionalRenderer : CalendarSystemRenderer
@@ -127,7 +123,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                 GlossyRect(e.Graphics, e.Day.HeaderBounds, HeaderA, HeaderB, HeaderC, HeaderD);
             }
 
-            if (e.Calendar.DaysMode == CalendarDaysMode.SHORT)
+            if (e.Calendar.DaysMode == CalendarDaysMode.Short)
             {
                 using (Pen p = new Pen(ColourTable.DayBorder))
                 {
@@ -154,7 +150,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                 Rectangle r2 = new Rectangle(0, 0, 5, 5);
 
                 horizontal = e.Item.IsOnDayTop;
-                vertical = !e.Item.IsOnDayTop && e.Calendar.DaysMode == CalendarDaysMode.EXPANDED;
+                vertical = !e.Item.IsOnDayTop && e.Calendar.DaysMode == CalendarDaysMode.Expanded;
 
                 if (horizontal)
                 {

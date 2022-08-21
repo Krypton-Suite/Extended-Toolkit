@@ -6,10 +6,6 @@
  */
 #endregion
 
-using System.Drawing;
-using System.IO;
-using System.Windows.Forms;
-
 namespace Krypton.Toolkit.Suite.Extended.Notifications
 {
     /// <summary>Contains elements of <see cref="KryptonToastNotificationVersion1"/>.</summary>

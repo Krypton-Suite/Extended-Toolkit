@@ -6,10 +6,6 @@
  */
 #endregion
 
-using System;
-using System.Drawing;
-using System.Drawing.Drawing2D;
-
 namespace Krypton.Toolkit.Suite.Extended.Calendar
 {
     /// <summary>
@@ -100,7 +96,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
             using (Pen p = new Pen(today ? ColourTable.TodayBorder : ColourTable.DayBorder, today ? 2 : 1))
             {
-                if (e.Calendar.DaysMode == CalendarDaysMode.SHORT)
+                if (e.Calendar.DaysMode == CalendarDaysMode.Short)
                 {
                     e.Graphics.DrawLine(p, r.Right, r.Top, r.Right, r.Bottom);
                     e.Graphics.DrawLine(p, r.Left, r.Bottom, r.Right, r.Bottom);
@@ -217,7 +213,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                 }
             }
 
-            if (e.Calendar.DaysMode == CalendarDaysMode.EXPANDED
+            if (e.Calendar.DaysMode == CalendarDaysMode.Expanded
                 && e.Calendar.Days != null
                 && e.Calendar.Days.Length > 0
                 && e.Calendar.Days[0].TimeUnits != null
@@ -257,7 +253,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             {
                 alpha = 120;
             }
-            else if (e.Calendar.DaysMode == CalendarDaysMode.SHORT)
+            else if (e.Calendar.DaysMode == CalendarDaysMode.Short)
             {
                 alpha = 200;
             }
@@ -283,7 +279,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         {
             base.OnDrawItemShadow(e);
 
-            if (e.Item.IsOnDayTop || e.Calendar.DaysMode == CalendarDaysMode.SHORT || e.Item.IsDragging)
+            if (e.Item.IsOnDayTop || e.Calendar.DaysMode == CalendarDaysMode.Short || e.Item.IsDragging)
             {
                 return;
             }

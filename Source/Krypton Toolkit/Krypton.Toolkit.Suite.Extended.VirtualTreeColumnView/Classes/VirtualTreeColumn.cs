@@ -6,8 +6,6 @@
  */
 #endregion
 
-using System.ComponentModel;
-
 namespace Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView
 {
     [TypeConverter(typeof(ExpandableObjectConverter))]

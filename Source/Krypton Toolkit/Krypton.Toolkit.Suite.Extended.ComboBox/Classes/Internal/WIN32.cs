@@ -1,9 +1,4 @@
-﻿using System;
-using System.Drawing;
-using System.Runtime.InteropServices;
-using System.Windows.Forms;
-
-namespace Krypton.Toolkit.Suite.Extended.ComboBox
+﻿namespace Krypton.Toolkit.Suite.Extended.ComboBox
 {
     internal class WIN32
     {

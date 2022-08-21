@@ -10,8 +10,8 @@ namespace Krypton.Toolkit.Suite.Extended.Effects
 {
     public enum FadeDirection
     {
-        IN = 0,
-        OUT = 1
+        In = 0,
+        Out = 1
     }
 
     /// <summary>
