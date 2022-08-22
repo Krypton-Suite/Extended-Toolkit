@@ -6,9 +6,6 @@
  */
 #endregion
 
-using System;
-using System.Drawing;
-
 namespace Krypton.Toolkit.Suite.Extended.Drawing
 {
     public class ColourHandler

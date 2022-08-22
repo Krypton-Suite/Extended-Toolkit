@@ -6,8 +6,6 @@
  */
 #endregion
 
-using System.Runtime.CompilerServices;
-
 namespace Krypton.Toolkit.Suite.Extended.Tools
 {
     public static class MissingFrameWorkAPIs

@@ -6,7 +6,6 @@
  */
 #endregion
 
-using System;
 using System.Collections;
 
 namespace Krypton.Toolkit.Suite.Extended.Tool.Box

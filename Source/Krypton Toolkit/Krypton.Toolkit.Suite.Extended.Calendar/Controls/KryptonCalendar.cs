@@ -6,12 +6,6 @@
  */
 #endregion
 
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Windows.Forms;
-
 namespace Krypton.Toolkit.Suite.Extended.Calendar
 {
     [DefaultEvent("LoadItems")]
@@ -293,7 +287,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                 new CalendarHighlightRange( DayOfWeek.Friday, new TimeSpan(8,0,0), new TimeSpan(17,0,0)),
             };
 
-            _timeScale = CalendarTimeScale.THIRTYMINUTES;
+            _timeScale = CalendarTimeScale.ThirtyMinutes;
             SetViewRange(DateTime.Now, DateTime.Now.AddDays(2));
 
             InvalidateEventHandler IEH = new InvalidateEventHandler(Calendar_Invalidated);
@@ -559,7 +553,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets or sets the <see cref="CalendarTimeScale"/> for visualization.
         /// </summary>
-        [DefaultValue(CalendarTimeScale.THIRTYMINUTES)]
+        [DefaultValue(CalendarTimeScale.ThirtyMinutes)]
         public CalendarTimeScale TimeScale
         {
             get => _timeScale;
@@ -917,7 +911,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             {
                 if (Days[i].Bounds.Contains(p))
                 {
-                    if (DaysMode == CalendarDaysMode.EXPANDED)
+                    if (DaysMode == CalendarDaysMode.Expanded)
                     {
                         if (Days[i].DayTop.Bounds.Contains(p))
                         {
@@ -937,7 +931,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
                         return Days[i];
                     }
-                    else if (DaysMode == CalendarDaysMode.SHORT)
+                    else if (DaysMode == CalendarDaysMode.Short)
                     {
                         return Days[i];
                     }
@@ -1300,7 +1294,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
             if (span.Days > MaximumFullDays)
             {
-                SetDaysMode(CalendarDaysMode.SHORT);
+                SetDaysMode(CalendarDaysMode.Short);
                 preDays = (new int[] { 0, 1, 2, 3, 4, 5, 6 })[(int)ViewStart.DayOfWeek] - (int)FirstDayOfWeek;
                 span = span.Add(new TimeSpan(preDays, 0, 0, 0));
 
@@ -1309,7 +1303,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             }
             else
             {
-                SetDaysMode(CalendarDaysMode.EXPANDED);
+                SetDaysMode(CalendarDaysMode.Expanded);
             }
 
             _days = new CalendarDay[span.Days];
@@ -1319,7 +1313,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
 
             //Weeks
-            if (DaysMode == CalendarDaysMode.SHORT)
+            if (DaysMode == CalendarDaysMode.Short)
             {
                 List<CalendarWeek> weeks = new List<CalendarWeek>();
 
@@ -1752,7 +1746,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                         {
                             if ((hittedItem.ResizeEndDateZone(e.Location) || hittedItem.ResizeStartDateZone(e.Location)) && AllowItemResize)
                             {
-                                should = hittedItem.IsOnDayTop || DaysMode == CalendarDaysMode.SHORT ? Cursors.SizeWE : Cursors.SizeNS;
+                                should = hittedItem.IsOnDayTop || DaysMode == CalendarDaysMode.Short ? Cursors.SizeWE : Cursors.SizeNS;
                             }
 
                             OnItemMouseHover(new CalendarItemEventArgs(hittedItem));
@@ -1776,7 +1770,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                     case CalendarState.ResizingItem:
                         if (itemOnState.IsResizingEndDate && hitted.Date.CompareTo(itemOnState.StartDate) >= 0)
                         {
-                            itemOnState.EndDate = hitted.Date.Add(hittedTop != null || DaysMode == CalendarDaysMode.SHORT ? new TimeSpan(23, 59, 59) : Days[0].TimeUnits[0].Duration);
+                            itemOnState.EndDate = hitted.Date.Add(hittedTop != null || DaysMode == CalendarDaysMode.Short ? new TimeSpan(23, 59, 59) : Days[0].TimeUnits[0].Duration);
                         }
                         else if (itemOnState.IsResizingStartDate && hitted.Date.CompareTo(itemOnState.EndDate) <= 0)
                         {
@@ -1847,11 +1841,11 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         {
             base.OnMouseWheel(e);
 
-            if (DaysMode == CalendarDaysMode.EXPANDED)
+            if (DaysMode == CalendarDaysMode.Expanded)
             {
                 ScrollTimeUnits(e.Delta);
             }
-            else if (DaysMode == CalendarDaysMode.SHORT)
+            else if (DaysMode == CalendarDaysMode.Short)
             {
                 ScrollCalendar(e.Delta);
             }
@@ -1869,11 +1863,11 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             /// Headers / Timescale
             switch (DaysMode)
             {
-                case CalendarDaysMode.SHORT:
+                case CalendarDaysMode.Short:
                     Renderer.OnDrawDayNameHeaders(evt);
                     Renderer.OnDrawWeekHeaders(evt);
                     break;
-                case CalendarDaysMode.EXPANDED:
+                case CalendarDaysMode.Expanded:
                     Renderer.OnDrawTimeScale(evt);
                     break;
                 default:

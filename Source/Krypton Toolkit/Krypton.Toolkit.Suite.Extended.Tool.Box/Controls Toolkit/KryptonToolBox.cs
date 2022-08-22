@@ -6,15 +6,6 @@
  */
 #endregion
 
-using System;
-using System.ComponentModel;
-using System.Drawing;
-using System.Drawing.Imaging;
-using System.Runtime.InteropServices;
-using System.Windows.Forms;
-using System.Xml;
-using System.Xml.Serialization;
-
 namespace Krypton.Toolkit.Suite.Extended.Tool.Box
 {
     /// <summary>A Visual Studio toolbox like control for your application. Adapted from: https://www.codeproject.com/Articles/8658/Another-ToolBox-Control.</summary>

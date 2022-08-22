@@ -6,15 +6,6 @@
  */
 #endregion
 
-using System;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Drawing;
-using System.Text.RegularExpressions;
-using System.Windows.Forms;
-
-using Krypton.Toolkit.Suite.Extended.Tools;
-
 namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
 {
     /// <summary>

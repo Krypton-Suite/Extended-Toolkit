@@ -6,14 +6,6 @@
  */
 #endregion
 
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Windows.Forms;
-
-using Krypton.Toolkit.Suite.Extended.Tools;
-
 namespace Krypton.Toolkit.Suite.Extended.Calendar
 {
     /// <summary>
@@ -282,7 +274,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets a value indicating if the day names headers are visible (e.g. Monday, Tuesday, Wednesday ...)
         /// </summary>
-        public bool DayNameHeadersVisible => Calendar.DaysMode == CalendarDaysMode.SHORT;
+        public bool DayNameHeadersVisible => Calendar.DaysMode == CalendarDaysMode.Short;
 
         /// <summary>
         /// Gets the height of the day name headers
@@ -374,7 +366,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Gets if the <see cref="TimeScale"/> is currently visible.
         /// </summary>
-        public bool TimeScaleVisible => Calendar.DaysMode == CalendarDaysMode.EXPANDED;
+        public bool TimeScaleVisible => Calendar.DaysMode == CalendarDaysMode.Expanded;
 
         /// <summary>
         /// Gets the width of the timescale
@@ -420,7 +412,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <exception cref="InvalidOperationException">When calendar is not in <c>Expaned</c> mode.</exception>
         public int GetTimeY(TimeSpan time)
         {
-            if (Calendar.DaysMode != CalendarDaysMode.EXPANDED)
+            if (Calendar.DaysMode != CalendarDaysMode.Expanded)
                 throw new InvalidOperationException("Can't measure Time's Y when calendar isn't in Expanded mode");
 
             //If no days, no Y
@@ -455,7 +447,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             if ((evtData.Item.Bounds.Top != evtData.Item.MinuteStartTop ||
                 evtData.Item.Bounds.Bottom != evtData.Item.MinuteEndTop) &&
                 (evtData.Item.MinuteEndTop != 0 && evtData.Item.MinuteStartTop != 0) &&
-                !evtData.Item.IsOnDayTop && evtData.Calendar.DaysMode == CalendarDaysMode.EXPANDED)
+                !evtData.Item.IsOnDayTop && evtData.Calendar.DaysMode == CalendarDaysMode.Expanded)
             {
                 /*
                  * Trace pointed item
@@ -603,7 +595,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
             TimeScaleBounds = Rectangle.Empty;
 
-            if (Calendar.DaysMode == CalendarDaysMode.EXPANDED)
+            if (Calendar.DaysMode == CalendarDaysMode.Expanded)
             {
                 #region Expanded days
                 TimeScaleBounds = new Rectangle(0, 0, TimeScaleWidth, Calendar.ClientRectangle.Height);
@@ -691,7 +683,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             foreach (CalendarDay day in Calendar.Days)
                 day.ContainedItems.Clear();
 
-            if (Calendar.DaysMode == CalendarDaysMode.EXPANDED)
+            if (Calendar.DaysMode == CalendarDaysMode.Expanded)
             {
                 #region Expanded mode algorithm
 
@@ -958,7 +950,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                 }
                 #endregion
             }
-            else if (Calendar.DaysMode == CalendarDaysMode.SHORT)
+            else if (Calendar.DaysMode == CalendarDaysMode.Short)
             {
                 #region Short mode algorithm
 
@@ -1104,7 +1096,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// </summary>
         internal int GetVisibleTimeUnits()
         {
-            if (Calendar.DaysMode == CalendarDaysMode.SHORT)
+            if (Calendar.DaysMode == CalendarDaysMode.Short)
             {
                 return 0;
             }
@@ -1290,13 +1282,13 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <param name="e">Paint info</param>
         public virtual void OnDrawTimeScale(CalendarRendererEventArgs e)
         {
-            if (e.Calendar.DaysMode == CalendarDaysMode.SHORT
+            if (e.Calendar.DaysMode == CalendarDaysMode.Short
                 || e.Calendar.Days == null
                 || e.Calendar.Days.Length == 0
                 || e.Calendar.Days[0].TimeUnits == null
                 ) return;
 
-            Font hourFont = new Font(e.Calendar.Font.FontFamily, e.Calendar.Font.Size * (e.Calendar.TimeScale == CalendarTimeScale.SIXTYMINUTES ? 1f : 1.5f));
+            Font hourFont = new Font(e.Calendar.Font.FontFamily, e.Calendar.Font.Size * (e.Calendar.TimeScale == CalendarTimeScale.SixtyMinutes ? 1f : 1.5f));
             Font minuteFont = e.Calendar.Font;
             int hourLeft = TimeScaleBounds.Left;
             int hourWidth = TimeScaleBounds.Left + TimeScaleBounds.Width / 2;
@@ -1390,7 +1382,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
             OnDrawDayHeaderBackground(e);
 
-            if (Calendar.DaysMode == CalendarDaysMode.SHORT && (day.Index == 0 || day.Date.Day == 1))
+            if (Calendar.DaysMode == CalendarDaysMode.Short && (day.Index == 0 || day.Date.Day == 1))
             {
                 hevt.Text = day.Date.ToString("dd MMM");
             }
@@ -1398,7 +1390,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
             OnDrawDayHeaderText(hevt);
 
             if (devt.TextSize.Width < day.HeaderBounds.Width - hevt.TextSize.Width * 2
-                && e.Calendar.DaysMode == CalendarDaysMode.EXPANDED)
+                && e.Calendar.DaysMode == CalendarDaysMode.Expanded)
             {
                 OnDrawDayHeaderText(devt);
             }
@@ -1505,7 +1497,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         {
             Rectangle days = e.Calendar.DaysBodyRectangle; days.Inflate(-1, -1);
             Region oldclip = e.Graphics.Clip;
-            bool doClip = e.Calendar.DaysMode == CalendarDaysMode.EXPANDED;
+            bool doClip = e.Calendar.DaysMode == CalendarDaysMode.Expanded;
             bool clipped = false;
 
             #region Shadows
@@ -1690,7 +1682,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
                 if (e.Item.ShowStartTime || e.Item.ShowEndTime)
                     evt.Font = new Font(evt.Font, FontStyle.Bold);
 
-                if (e.Item.IsOnDayTop || Calendar.DaysMode == CalendarDaysMode.SHORT)
+                if (e.Item.IsOnDayTop || Calendar.DaysMode == CalendarDaysMode.Short)
                     evt.Format |= TextFormatFlags.HorizontalCenter;
 
                 if (!e.Item.ForeColour.IsEmpty)
@@ -1709,20 +1701,20 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
                     switch (e.Item.ImageAlign)
                     {
-                        case CalendarItemImageAlign.NORTH:
+                        case CalendarItemImageAlign.North:
                             tBounds.Height -= imageBounds.Height;
                             tBounds.Y += imageBounds.Height;
                             imageBounds.Y = tBounds.Y - imageBounds.Height;
                             break;
-                        case CalendarItemImageAlign.SOUTH:
+                        case CalendarItemImageAlign.South:
                             tBounds.Height -= imageBounds.Height;
                             imageBounds.Y = tBounds.Bottom;
                             break;
-                        case CalendarItemImageAlign.EAST:
+                        case CalendarItemImageAlign.East:
                             tBounds.Width -= imageBounds.Width;
                             imageBounds.X = tBounds.Right;
                             break;
-                        case CalendarItemImageAlign.WEST:
+                        case CalendarItemImageAlign.West:
                             tBounds.Width -= imageBounds.Width;
                             tBounds.X += imageBounds.Width;
                             imageBounds.X = tBounds.Left - imageBounds.Width;
@@ -1731,12 +1723,12 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
                     switch (e.Item.ImageAlign)
                     {
-                        case CalendarItemImageAlign.NORTH:
-                        case CalendarItemImageAlign.SOUTH:
+                        case CalendarItemImageAlign.North:
+                        case CalendarItemImageAlign.South:
                             imageBounds.X = e.Item.Bounds.X + ((e.Item.Bounds.Width - imageBounds.Width) / 2);
                             break;
-                        case CalendarItemImageAlign.EAST:
-                        case CalendarItemImageAlign.WEST:
+                        case CalendarItemImageAlign.East:
+                        case CalendarItemImageAlign.West:
                             imageBounds.Y = e.Item.Bounds.Y + ((e.Item.Bounds.Height - imageBounds.Height) / 2);
                             break;
                     }

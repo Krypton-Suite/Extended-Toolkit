@@ -6,12 +6,6 @@
  */
 #endregion
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Reflection;
-using System.Text.RegularExpressions;
 // ReSharper disable UnusedType.Global
 
 namespace Krypton.Toolkit.Suite.Extended.DataGridView

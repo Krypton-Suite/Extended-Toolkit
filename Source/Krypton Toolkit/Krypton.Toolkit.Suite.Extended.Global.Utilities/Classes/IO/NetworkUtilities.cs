@@ -6,13 +6,6 @@
  */
 #endregion
 
-using System;
-using System.Net;
-using System.Net.NetworkInformation;
-using System.Windows.Forms;
-
-using Krypton.Toolkit.Suite.Extended.Developer.Utilities;
-
 namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
 {
     /// <summary>

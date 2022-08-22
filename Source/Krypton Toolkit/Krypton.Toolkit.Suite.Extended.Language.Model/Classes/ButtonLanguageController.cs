@@ -6,11 +6,6 @@
  */
 #endregion
 
-using System;
-
-using Krypton.Toolkit.Suite.Extended.Developer.Utilities;
-using Krypton.Toolkit.Suite.Extended.Tools;
-
 namespace Krypton.Toolkit.Suite.Extended.Language.Model
 {
     public class ButtonLanguageController
@@ -41,22 +36,22 @@ namespace Krypton.Toolkit.Suite.Extended.Language.Model
         {
             switch (language)
             {
-                case SelectedLanguage.CZECH:
+                case SelectedLanguage.Czech:
                     _buttonTextArray = "OK,Ano,Ne,Storno,Přerušení,Opakovat".Split(',');
                     break;
-                case SelectedLanguage.FRANÇAIS:
+                case SelectedLanguage.Français:
                     _buttonTextArray = "OK,Oui,Non,Annuler,Annuler,Réessayer".Split(',');
                     break;
-                case SelectedLanguage.DEUTSCH:
+                case SelectedLanguage.Deutsch:
                     _buttonTextArray = "OK,Ja,Nein,Streichen,Abbrechen,Wiederholen".Split(',');
                     break;
-                case SelectedLanguage.SLOVAKIAN:
+                case SelectedLanguage.Slovakian:
                     _buttonTextArray = "OK,Áno,Nie,Zrušiť,Prerušiť,Zopakujte".Split(',');
                     break;
-                case SelectedLanguage.ESPAÑOL:
+                case SelectedLanguage.Español:
                     _buttonTextArray = "OK,Sí,No,Cancelar,Aborta,Reintentar".Split(',');
                     break;
-                case SelectedLanguage.CUSTOM:
+                case SelectedLanguage.Custom:
                     _buttonTextArray = SetCustomText(okText, yesText, noText, cancelText, abortText, ignoreText, retryText);
                     break;
                 default:
@@ -79,23 +74,23 @@ namespace Krypton.Toolkit.Suite.Extended.Language.Model
                     {
                         switch (language)
                         {
-                            case SelectedLanguage.CZECH:
-                                if (type == DialogButtonType.ABORT)
+                            case SelectedLanguage.Czech:
+                                if (type == DialogButtonType.Abort)
                                 {
                                     button.Text = _buttonTextArray[4];
                                 }
 
-                                if (type == DialogButtonType.CANCEL)
+                                if (type == DialogButtonType.Cancel)
                                 {
                                     button.Text = _buttonTextArray[3];
                                 }
 
-                                if (type == DialogButtonType.IGNORE)
+                                if (type == DialogButtonType.Ignore)
                                 {
                                     button.Text = _buttonTextArray[5];
                                 }
 
-                                if (type == DialogButtonType.NO)
+                                if (type == DialogButtonType.No)
                                 {
                                     button.Text = _buttonTextArray[2];
                                 }
@@ -105,33 +100,33 @@ namespace Krypton.Toolkit.Suite.Extended.Language.Model
                                     button.Text = _buttonTextArray[0];
                                 }
 
-                                if (type == DialogButtonType.RETRY)
+                                if (type == DialogButtonType.Retry)
                                 {
                                     button.Text = _buttonTextArray[6];
                                 }
 
-                                if (type == DialogButtonType.YES)
+                                if (type == DialogButtonType.Yes)
                                 {
                                     button.Text = _buttonTextArray[1];
                                 }
                                 break;
-                            case SelectedLanguage.ENGLISH:
-                                if (type == DialogButtonType.ABORT)
+                            case SelectedLanguage.English:
+                                if (type == DialogButtonType.Abort)
                                 {
                                     button.Text = @"A&bort";
                                 }
 
-                                if (type == DialogButtonType.CANCEL)
+                                if (type == DialogButtonType.Cancel)
                                 {
                                     button.Text = @"&Cancel";
                                 }
 
-                                if (type == DialogButtonType.IGNORE)
+                                if (type == DialogButtonType.Ignore)
                                 {
                                     button.Text = @"Ig&nore";
                                 }
 
-                                if (type == DialogButtonType.NO)
+                                if (type == DialogButtonType.No)
                                 {
                                     button.Text = @"&N&o";
                                 }
@@ -141,33 +136,33 @@ namespace Krypton.Toolkit.Suite.Extended.Language.Model
                                     button.Text = @"&Ok";
                                 }
 
-                                if (type == DialogButtonType.RETRY)
+                                if (type == DialogButtonType.Retry)
                                 {
                                     button.Text = @"Re&try";
                                 }
 
-                                if (type == DialogButtonType.YES)
+                                if (type == DialogButtonType.Yes)
                                 {
                                     button.Text = @"Y&es";
                                 }
                                 break;
-                            case SelectedLanguage.FRANÇAIS:
-                                if (type == DialogButtonType.ABORT)
+                            case SelectedLanguage.Français:
+                                if (type == DialogButtonType.Abort)
                                 {
                                     button.Text = _buttonTextArray[4];
                                 }
 
-                                if (type == DialogButtonType.CANCEL)
+                                if (type == DialogButtonType.Cancel)
                                 {
                                     button.Text = _buttonTextArray[3];
                                 }
 
-                                if (type == DialogButtonType.IGNORE)
+                                if (type == DialogButtonType.Ignore)
                                 {
                                     button.Text = _buttonTextArray[5];
                                 }
 
-                                if (type == DialogButtonType.NO)
+                                if (type == DialogButtonType.No)
                                 {
                                     button.Text = _buttonTextArray[2];
                                 }
@@ -177,33 +172,33 @@ namespace Krypton.Toolkit.Suite.Extended.Language.Model
                                     button.Text = _buttonTextArray[0];
                                 }
 
-                                if (type == DialogButtonType.RETRY)
+                                if (type == DialogButtonType.Retry)
                                 {
                                     button.Text = _buttonTextArray[6];
                                 }
 
-                                if (type == DialogButtonType.YES)
+                                if (type == DialogButtonType.Yes)
                                 {
                                     button.Text = _buttonTextArray[1];
                                 }
                                 break;
-                            case SelectedLanguage.DEUTSCH:
-                                if (type == DialogButtonType.ABORT)
+                            case SelectedLanguage.Deutsch:
+                                if (type == DialogButtonType.Abort)
                                 {
                                     button.Text = _buttonTextArray[4];
                                 }
 
-                                if (type == DialogButtonType.CANCEL)
+                                if (type == DialogButtonType.Cancel)
                                 {
                                     button.Text = _buttonTextArray[3];
                                 }
 
-                                if (type == DialogButtonType.IGNORE)
+                                if (type == DialogButtonType.Ignore)
                                 {
                                     button.Text = _buttonTextArray[5];
                                 }
 
-                                if (type == DialogButtonType.NO)
+                                if (type == DialogButtonType.No)
                                 {
                                     button.Text = _buttonTextArray[2];
                                 }
@@ -213,33 +208,33 @@ namespace Krypton.Toolkit.Suite.Extended.Language.Model
                                     button.Text = _buttonTextArray[0];
                                 }
 
-                                if (type == DialogButtonType.RETRY)
+                                if (type == DialogButtonType.Retry)
                                 {
                                     button.Text = _buttonTextArray[6];
                                 }
 
-                                if (type == DialogButtonType.YES)
+                                if (type == DialogButtonType.Yes)
                                 {
                                     button.Text = _buttonTextArray[1];
                                 }
                                 break;
-                            case SelectedLanguage.SLOVAKIAN:
-                                if (type == DialogButtonType.ABORT)
+                            case SelectedLanguage.Slovakian:
+                                if (type == DialogButtonType.Abort)
                                 {
                                     button.Text = _buttonTextArray[4];
                                 }
 
-                                if (type == DialogButtonType.CANCEL)
+                                if (type == DialogButtonType.Cancel)
                                 {
                                     button.Text = _buttonTextArray[3];
                                 }
 
-                                if (type == DialogButtonType.IGNORE)
+                                if (type == DialogButtonType.Ignore)
                                 {
                                     button.Text = _buttonTextArray[5];
                                 }
 
-                                if (type == DialogButtonType.NO)
+                                if (type == DialogButtonType.No)
                                 {
                                     button.Text = _buttonTextArray[2];
                                 }
@@ -249,33 +244,33 @@ namespace Krypton.Toolkit.Suite.Extended.Language.Model
                                     button.Text = _buttonTextArray[0];
                                 }
 
-                                if (type == DialogButtonType.RETRY)
+                                if (type == DialogButtonType.Retry)
                                 {
                                     button.Text = _buttonTextArray[6];
                                 }
 
-                                if (type == DialogButtonType.YES)
+                                if (type == DialogButtonType.Yes)
                                 {
                                     button.Text = _buttonTextArray[1];
                                 }
                                 break;
-                            case SelectedLanguage.ESPAÑOL:
-                                if (type == DialogButtonType.ABORT)
+                            case SelectedLanguage.Español:
+                                if (type == DialogButtonType.Abort)
                                 {
                                     button.Text = _buttonTextArray[4];
                                 }
 
-                                if (type == DialogButtonType.CANCEL)
+                                if (type == DialogButtonType.Cancel)
                                 {
                                     button.Text = _buttonTextArray[3];
                                 }
 
-                                if (type == DialogButtonType.IGNORE)
+                                if (type == DialogButtonType.Ignore)
                                 {
                                     button.Text = _buttonTextArray[5];
                                 }
 
-                                if (type == DialogButtonType.NO)
+                                if (type == DialogButtonType.No)
                                 {
                                     button.Text = _buttonTextArray[2];
                                 }
@@ -285,33 +280,33 @@ namespace Krypton.Toolkit.Suite.Extended.Language.Model
                                     button.Text = _buttonTextArray[0];
                                 }
 
-                                if (type == DialogButtonType.RETRY)
+                                if (type == DialogButtonType.Retry)
                                 {
                                     button.Text = _buttonTextArray[6];
                                 }
 
-                                if (type == DialogButtonType.YES)
+                                if (type == DialogButtonType.Yes)
                                 {
                                     button.Text = _buttonTextArray[1];
                                 }
                                 break;
-                            case SelectedLanguage.CUSTOM:
-                                if (type == DialogButtonType.ABORT)
+                            case SelectedLanguage.Custom:
+                                if (type == DialogButtonType.Abort)
                                 {
                                     button.Text = _buttonTextArray[4];
                                 }
 
-                                if (type == DialogButtonType.CANCEL)
+                                if (type == DialogButtonType.Cancel)
                                 {
                                     button.Text = _buttonTextArray[3];
                                 }
 
-                                if (type == DialogButtonType.IGNORE)
+                                if (type == DialogButtonType.Ignore)
                                 {
                                     button.Text = _buttonTextArray[5];
                                 }
 
-                                if (type == DialogButtonType.NO)
+                                if (type == DialogButtonType.No)
                                 {
                                     button.Text = _buttonTextArray[2];
                                 }
@@ -321,12 +316,12 @@ namespace Krypton.Toolkit.Suite.Extended.Language.Model
                                     button.Text = _buttonTextArray[0];
                                 }
 
-                                if (type == DialogButtonType.RETRY)
+                                if (type == DialogButtonType.Retry)
                                 {
                                     button.Text = _buttonTextArray[6];
                                 }
 
-                                if (type == DialogButtonType.YES)
+                                if (type == DialogButtonType.Yes)
                                 {
                                     button.Text = _buttonTextArray[1];
                                 }
@@ -402,15 +397,15 @@ namespace Krypton.Toolkit.Suite.Extended.Language.Model
             {
                 case DialogButtonsType.OK:
                     break;
-                case DialogButtonsType.OKCANCEL:
+                case DialogButtonsType.OKCancel:
                     break;
-                case DialogButtonsType.YESNO:
+                case DialogButtonsType.YesNo:
                     break;
-                case DialogButtonsType.YESNOCANCEL:
+                case DialogButtonsType.YesNoCancel:
                     break;
-                case DialogButtonsType.RETRYCANCEL:
+                case DialogButtonsType.RetryCancel:
                     break;
-                case DialogButtonsType.ABORTRETRYIGNORE:
+                case DialogButtonsType.AbortRetryIgnore:
                     break;
                 default:
                     break;

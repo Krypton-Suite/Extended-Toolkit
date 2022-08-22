@@ -6,11 +6,6 @@
  */
 #endregion
 
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Windows.Forms;
-
 namespace Krypton.Toolkit.Suite.Extended.Calendar
 {
     /// <summary>
@@ -217,12 +212,12 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
 
             switch (Calendar.TimeScale)
             {
-                case CalendarTimeScale.SIXTYMINUTES: factor = 1; break;
-                case CalendarTimeScale.THIRTYMINUTES: factor = 2; break;
-                case CalendarTimeScale.FIFTEENMINUTES: factor = 4; break;
-                case CalendarTimeScale.TENMINUTES: factor = 6; break;
-                case CalendarTimeScale.SIXMINUTES: factor = 10; break;
-                case CalendarTimeScale.FIVEMINUTES: factor = 12; break;
+                case CalendarTimeScale.SixtyMinutes: factor = 1; break;
+                case CalendarTimeScale.ThirtyMinutes: factor = 2; break;
+                case CalendarTimeScale.FifteenMinutes: factor = 4; break;
+                case CalendarTimeScale.TenMinutes: factor = 6; break;
+                case CalendarTimeScale.SixMinutes: factor = 10; break;
+                case CalendarTimeScale.FiveMinutes: factor = 12; break;
                 default: throw new NotImplementedException("TimeScale not supported");
             }
 

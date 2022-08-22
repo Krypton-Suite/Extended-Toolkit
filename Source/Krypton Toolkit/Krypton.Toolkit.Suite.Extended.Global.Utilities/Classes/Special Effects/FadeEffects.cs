@@ -6,10 +6,6 @@
  */
 #endregion
 
-using System;
-using System.Threading;
-using System.Windows.Forms;
-
 namespace Krypton.Toolkit.Suite.Extended.Global.Utilities
 {
     /// <summary>

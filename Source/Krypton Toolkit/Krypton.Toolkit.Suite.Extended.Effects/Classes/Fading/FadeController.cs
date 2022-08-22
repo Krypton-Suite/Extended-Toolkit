@@ -6,11 +6,6 @@
  */
 #endregion
 
-using System;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
 namespace Krypton.Toolkit.Suite.Extended.Effects
 {
     /// <summary>Handles the fading effects. Original library: (https://gist.github.com/nathan-fiscaletti/3c0514862fe88b5664b10444e1098778)</summary>
@@ -66,7 +61,7 @@ namespace Krypton.Toolkit.Suite.Extended.Effects
             switch (fadeDirection)
             {
                 // Fade in
-                case FadeDirection.IN:
+                case FadeDirection.In:
                     if (form.Opacity < 1.0)
                     {
                         form.Opacity += (fadeSpeed / 1000.0);
@@ -79,7 +74,7 @@ namespace Krypton.Toolkit.Suite.Extended.Effects
                     break;
 
                 // Fade out
-                case FadeDirection.OUT:
+                case FadeDirection.Out:
                     if (form.Opacity > 0.1)
                     {
                         form.Opacity -= (fadeSpeed / 1000.0);
@@ -116,7 +111,7 @@ namespace Krypton.Toolkit.Suite.Extended.Effects
             fadeFinished = finished;
             form.Opacity = 0;
             this.fadeSpeed = fadeSpeed;
-            fadeDirection = FadeDirection.IN;
+            fadeDirection = FadeDirection.In;
             BeginFade();
 
             return await showDialogResult.Task;
@@ -132,7 +127,7 @@ namespace Krypton.Toolkit.Suite.Extended.Effects
 
             fadeFinished = finished;
             this.fadeSpeed = fadeSpeed;
-            fadeDirection = FadeDirection.IN;
+            fadeDirection = FadeDirection.In;
 
             BeginFade();
         }
@@ -173,7 +168,7 @@ namespace Krypton.Toolkit.Suite.Extended.Effects
                     break;
             }
 
-            fadeDirection = FadeDirection.IN;
+            fadeDirection = FadeDirection.In;
 
             BeginFade();
         }
@@ -192,7 +187,7 @@ namespace Krypton.Toolkit.Suite.Extended.Effects
             fadeFinished = finished;
             form.Opacity = 100;
             this.fadeSpeed = fadeSpeed;
-            fadeDirection = FadeDirection.OUT;
+            fadeDirection = FadeDirection.Out;
 
             BeginFade();
         }
@@ -238,7 +233,7 @@ namespace Krypton.Toolkit.Suite.Extended.Effects
                     break;
             }
 
-            fadeDirection = FadeDirection.OUT;
+            fadeDirection = FadeDirection.Out;
 
             BeginFade();
         }

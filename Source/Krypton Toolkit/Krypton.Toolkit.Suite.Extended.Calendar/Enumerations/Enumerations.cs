@@ -16,12 +16,12 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// A short version of the day is visible without time scale.
         /// </summary>
-        SHORT,
+        Short,
 
         /// <summary>
         /// The day is fully visible with time scale.
         /// </summary>
-        EXPANDED
+        Expanded
     }
 
     /// <summary>
@@ -32,22 +32,22 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Image is drawn at north of text
         /// </summary>
-        NORTH,
+        North,
 
         /// <summary>
         /// Image is drawn at south of text
         /// </summary>
-        SOUTH,
+        South,
 
         /// <summary>
         /// Image is drawn at east of text
         /// </summary>
-        EAST,
+        East,
 
         /// <summary>
         /// Image is drawn at west of text
         /// </summary>
-        WEST,
+        West,
     }
 
     /// <summary>
@@ -58,31 +58,31 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Makes calendar show intervals of 60 minutes
         /// </summary>
-        SIXTYMINUTES = 60,
+        SixtyMinutes = 60,
 
         /// <summary>
         /// Makes calendar show intervals of 30 minutes
         /// </summary>
-        THIRTYMINUTES = 30,
+        ThirtyMinutes = 30,
 
         /// <summary>
         /// Makes calendar show intervals of 15 minutes
         /// </summary>
-        FIFTEENMINUTES = 15,
+        FifteenMinutes = 15,
 
         /// <summary>
         /// Makes calendar show intervals of 10 minutes
         /// </summary>
-        TENMINUTES = 10,
+        TenMinutes = 10,
 
         /// <summary>
         /// Makes calendar show intervals of 6 minutes
         /// </summary>
-        SIXMINUTES = 6,
+        SixMinutes = 6,
 
         /// <summary>
         /// Makes calendar show intervals of 5 minutes
         /// </summary>
-        FIVEMINUTES = 5
+        FiveMinutes = 5
     }
 }

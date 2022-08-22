@@ -6,15 +6,6 @@
  */
 #endregion
 
-using System;
-using System.Diagnostics;
-using System.Drawing;
-using System.IO;
-using System.Media;
-using System.Windows.Forms;
-
-using Krypton.Toolkit.Suite.Extended.Developer.Utilities;
-
 namespace Krypton.Toolkit.Suite.Extended.Notifications
 {
     public class KryptonToastNotificationVersion1 : KryptonForm
@@ -317,11 +308,11 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
 
             ActionButtonType = actionButtonType ?? ActionButtonType.NORMAL;
 
-            ActionType = actionType ?? ActionType.DEFAULT;
+            ActionType = actionType ?? ActionType.Default;
 
             ShowActionButton = showActionButton ?? false;
 
-            IconType = iconType ?? IconType.CUSTOM;
+            IconType = iconType ?? IconType.Custom;
 
             TopMost = true;
 
@@ -410,23 +401,23 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
                 case ActionButtonType.NORMAL:
                     switch (_actionType)
                     {
-                        case ActionType.DEFAULT:
+                        case ActionType.Default:
                             StartProcess(ProcessToStart);
                             break;
-                        case ActionType.LAUCHPROCESS:
+                        case ActionType.LaunchProcess:
                             break;
-                        case ActionType.OPEN:
+                        case ActionType.Open:
                             break;
                     }
                     break;
                 case ActionButtonType.UACELEVATED:
                     switch (_actionType)
                     {
-                        case ActionType.DEFAULT:
+                        case ActionType.Default:
                             break;
-                        case ActionType.LAUCHPROCESS:
+                        case ActionType.LaunchProcess:
                             break;
-                        case ActionType.OPEN:
+                        case ActionType.Open:
                             break;
                     }
                     break;
@@ -486,7 +477,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
 
             if (IconImage != null)
             {
-                SetIconType(IconType.CUSTOM, IconImage);
+                SetIconType(IconType.Custom, IconImage);
             }
             else
             {
@@ -602,7 +593,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         {
             switch (iconType)
             {
-                case IconType.CUSTOM:
+                case IconType.Custom:
                     if (customImage != null)
                     {
                         pbxIcon.Image = customImage;
@@ -612,34 +603,38 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
                         pbxIcon.Image = Properties.Resources.Information_128_x_128;
                     }
                     break;
-                case IconType.OK:
+                case IconType.Ok:
                     pbxIcon.Image = Properties.Resources.Ok_128_x_128;
                     break;
-                case IconType.ERROR:
+                case IconType.Error:
                     pbxIcon.Image = Properties.Resources.Critical_128_x_128;
                     break;
-                case IconType.EXCLAMATION:
+                case IconType.Exclamation:
                     pbxIcon.Image = Properties.Resources.Warning_128_x_128;
                     break;
-                case IconType.INFORMATION:
+                case IconType.Information:
                     pbxIcon.Image = Properties.Resources.Information_128_x_128;
                     break;
-                case IconType.QUESTION:
+                case IconType.Question:
                     pbxIcon.Image = Properties.Resources.Question_128_x_128;
                     break;
-                case IconType.NOTHING:
+                case IconType.None:
                     pbxIcon.Image = null;
                     break;
-                case IconType.NONE:
-                    break;
-                case IconType.STOP:
+                case IconType.Stop:
                     pbxIcon.Image = Properties.Resources.Stop_128_x_128;
                     break;
-                case IconType.HAND:
+                case IconType.Hand:
                     pbxIcon.Image = Properties.Resources.Hand_128_x_128;
                     break;
-                case IconType.WARNING:
+                case IconType.Warning:
                     pbxIcon.Image = Properties.Resources.Input_Box_Warning_128_x_115;
+                    break;
+                case IconType.Asterisk:
+                    break;
+                case IconType.Shield:
+                    break;
+                case IconType.WindowsLogo:
                     break;
             }
         }
@@ -648,7 +643,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         {
             switch (type)
             {
-                case ActionType.DEFAULT:
+                case ActionType.Default:
                     if (buttonText != null)
                     {
                         kbtnAction.Text = $"{buttonText} {Path.GetFileName(ProcessToStart)}";
@@ -658,7 +653,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
                         kbtnAction.Text = $"&Open {Path.GetFileName(ProcessToStart)}";
                     }
                     break;
-                case ActionType.LAUCHPROCESS:
+                case ActionType.LaunchProcess:
                     if (buttonText != null)
                     {
                         kbtnAction.Text = $"{buttonText} {Path.GetFileName(ProcessToStart)}";
@@ -668,7 +663,7 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
                         kbtnAction.Text = $"L&aunch {Path.GetFileName(ProcessToStart)}";
                     }
                     break;
-                case ActionType.OPEN:
+                case ActionType.Open:
                     if (buttonText != null)
                     {
                         kbtnAction.Text = $"{buttonText} {Path.GetFileName(ProcessToStart)}";

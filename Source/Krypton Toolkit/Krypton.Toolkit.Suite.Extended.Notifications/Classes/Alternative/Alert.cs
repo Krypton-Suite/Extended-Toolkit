@@ -6,8 +6,6 @@
  */
 #endregion
 
-using System.Drawing;
-
 namespace Krypton.Toolkit.Suite.Extended.Notifications
 {
     public class Alert

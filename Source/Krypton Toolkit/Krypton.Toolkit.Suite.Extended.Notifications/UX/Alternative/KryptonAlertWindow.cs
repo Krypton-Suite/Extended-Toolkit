@@ -6,12 +6,6 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Tools;
-
-using System;
-using System.Drawing;
-using System.Windows.Forms;
-
 namespace Krypton.Toolkit.Suite.Extended.Notifications
 {
     public class KryptonAlertWindow : KryptonForm
