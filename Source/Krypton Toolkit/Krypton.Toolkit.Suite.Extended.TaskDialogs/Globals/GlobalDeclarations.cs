@@ -15,6 +15,3 @@ global using System.IO;
 global using System.Media;
 global using System.Runtime.InteropServices;
 global using System.Windows.Forms;
-
-global using Krypton.Toolkit.Suite.Extended.Developer.Utilities;
-global using Krypton.Toolkit.Suite.Extended.Tools;
