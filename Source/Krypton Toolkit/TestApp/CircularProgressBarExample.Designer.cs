@@ -30,7 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CircularProgressBarExample));
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
-            this.kryptonCheckBox1 = new Krypton.Toolkit.KryptonCheckBox();
+            this.kcbtnProgressColour = new Krypton.Toolkit.KryptonColorButton();
+            this.kcbtnThirdColour = new Krypton.Toolkit.KryptonColorButton();
+            this.kcbtnSecondColour = new Krypton.Toolkit.KryptonColorButton();
+            this.kcbtnFirstColour = new Krypton.Toolkit.KryptonColorButton();
+            this.kcbUseColourTrio = new Krypton.Toolkit.KryptonCheckBox();
             this.kryptonTrackBar1 = new Krypton.Toolkit.KryptonTrackBar();
             this.circularProgressBar1 = new Krypton.Toolkit.Suite.Extended.Circular.ProgressBar.CircularProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
@@ -39,7 +43,11 @@
             // 
             // kryptonPanel1
             // 
-            this.kryptonPanel1.Controls.Add(this.kryptonCheckBox1);
+            this.kryptonPanel1.Controls.Add(this.kcbtnProgressColour);
+            this.kryptonPanel1.Controls.Add(this.kcbtnThirdColour);
+            this.kryptonPanel1.Controls.Add(this.kcbtnSecondColour);
+            this.kryptonPanel1.Controls.Add(this.kcbtnFirstColour);
+            this.kryptonPanel1.Controls.Add(this.kcbUseColourTrio);
             this.kryptonPanel1.Controls.Add(this.kryptonTrackBar1);
             this.kryptonPanel1.Controls.Add(this.circularProgressBar1);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -48,14 +56,75 @@
             this.kryptonPanel1.Size = new System.Drawing.Size(659, 450);
             this.kryptonPanel1.TabIndex = 0;
             // 
-            // kryptonCheckBox1
+            // kcbtnProgressColour
             // 
-            this.kryptonCheckBox1.Location = new System.Drawing.Point(339, 52);
-            this.kryptonCheckBox1.Name = "kryptonCheckBox1";
-            this.kryptonCheckBox1.Size = new System.Drawing.Size(104, 20);
-            this.kryptonCheckBox1.TabIndex = 3;
-            this.kryptonCheckBox1.Values.Text = "Use colour trio";
-            this.kryptonCheckBox1.CheckedChanged += new System.EventHandler(this.kryptonCheckBox1_CheckedChanged);
+            this.kcbtnProgressColour.CustomColorPreviewShape = Krypton.Toolkit.KryptonColorButtonCustomColorPreviewShape.Circle;
+            this.kcbtnProgressColour.Location = new System.Drawing.Point(339, 204);
+            this.kcbtnProgressColour.Name = "kcbtnProgressColour";
+            this.kcbtnProgressColour.SelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(216)))), ((int)(((byte)(107)))));
+            this.kcbtnProgressColour.Size = new System.Drawing.Size(194, 25);
+            this.kcbtnProgressColour.Splitter = false;
+            this.kcbtnProgressColour.TabIndex = 7;
+            this.kcbtnProgressColour.Values.Image = ((System.Drawing.Image)(resources.GetObject("kcbtnProgressColour.Values.Image")));
+            this.kcbtnProgressColour.Values.RoundedCorners = 8;
+            this.kcbtnProgressColour.Values.Text = "Progress Colour";
+            this.kcbtnProgressColour.SelectedColorChanged += new System.EventHandler<Krypton.Toolkit.ColorEventArgs>(this.kcbtnProgressColour_SelectedColorChanged);
+            // 
+            // kcbtnThirdColour
+            // 
+            this.kcbtnThirdColour.CustomColorPreviewShape = Krypton.Toolkit.KryptonColorButtonCustomColorPreviewShape.Circle;
+            this.kcbtnThirdColour.DropDownOrientation = Krypton.Toolkit.VisualOrientation.Right;
+            this.kcbtnThirdColour.Enabled = false;
+            this.kcbtnThirdColour.Location = new System.Drawing.Point(339, 141);
+            this.kcbtnThirdColour.Name = "kcbtnThirdColour";
+            this.kcbtnThirdColour.SelectedColor = System.Drawing.Color.Green;
+            this.kcbtnThirdColour.Size = new System.Drawing.Size(194, 25);
+            this.kcbtnThirdColour.Splitter = false;
+            this.kcbtnThirdColour.TabIndex = 6;
+            this.kcbtnThirdColour.Values.Image = ((System.Drawing.Image)(resources.GetObject("kcbtnThirdColour.Values.Image")));
+            this.kcbtnThirdColour.Values.RoundedCorners = 8;
+            this.kcbtnThirdColour.Values.Text = "Third Colour";
+            this.kcbtnThirdColour.SelectedColorChanged += new System.EventHandler<Krypton.Toolkit.ColorEventArgs>(this.kcbtnThirdColour_SelectedColorChanged);
+            // 
+            // kcbtnSecondColour
+            // 
+            this.kcbtnSecondColour.CustomColorPreviewShape = Krypton.Toolkit.KryptonColorButtonCustomColorPreviewShape.Circle;
+            this.kcbtnSecondColour.DropDownOrientation = Krypton.Toolkit.VisualOrientation.Right;
+            this.kcbtnSecondColour.Enabled = false;
+            this.kcbtnSecondColour.Location = new System.Drawing.Point(339, 110);
+            this.kcbtnSecondColour.Name = "kcbtnSecondColour";
+            this.kcbtnSecondColour.SelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(191)))), ((int)(((byte)(0)))));
+            this.kcbtnSecondColour.Size = new System.Drawing.Size(194, 25);
+            this.kcbtnSecondColour.Splitter = false;
+            this.kcbtnSecondColour.TabIndex = 5;
+            this.kcbtnSecondColour.Values.Image = ((System.Drawing.Image)(resources.GetObject("kcbtnSecondColour.Values.Image")));
+            this.kcbtnSecondColour.Values.RoundedCorners = 8;
+            this.kcbtnSecondColour.Values.Text = "Second Colour";
+            this.kcbtnSecondColour.SelectedColorChanged += new System.EventHandler<Krypton.Toolkit.ColorEventArgs>(this.kcbtnSecondColour_SelectedColorChanged);
+            // 
+            // kcbtnFirstColour
+            // 
+            this.kcbtnFirstColour.CustomColorPreviewShape = Krypton.Toolkit.KryptonColorButtonCustomColorPreviewShape.Circle;
+            this.kcbtnFirstColour.DropDownOrientation = Krypton.Toolkit.VisualOrientation.Right;
+            this.kcbtnFirstColour.Enabled = false;
+            this.kcbtnFirstColour.Location = new System.Drawing.Point(339, 79);
+            this.kcbtnFirstColour.Name = "kcbtnFirstColour";
+            this.kcbtnFirstColour.Size = new System.Drawing.Size(194, 25);
+            this.kcbtnFirstColour.Splitter = false;
+            this.kcbtnFirstColour.TabIndex = 4;
+            this.kcbtnFirstColour.Values.Image = ((System.Drawing.Image)(resources.GetObject("kcbtnFirstColour.Values.Image")));
+            this.kcbtnFirstColour.Values.RoundedCorners = 8;
+            this.kcbtnFirstColour.Values.Text = "First Colour";
+            this.kcbtnFirstColour.SelectedColorChanged += new System.EventHandler<Krypton.Toolkit.ColorEventArgs>(this.kcbtnFirstColour_SelectedColorChanged);
+            // 
+            // kcbUseColourTrio
+            // 
+            this.kcbUseColourTrio.Location = new System.Drawing.Point(339, 52);
+            this.kcbUseColourTrio.Name = "kcbUseColourTrio";
+            this.kcbUseColourTrio.Size = new System.Drawing.Size(104, 20);
+            this.kcbUseColourTrio.TabIndex = 3;
+            this.kcbUseColourTrio.Values.Text = "Use colour trio";
+            this.kcbUseColourTrio.CheckedChanged += new System.EventHandler(this.kcbUseColourTrio_CheckedChanged);
             // 
             // kryptonTrackBar1
             // 
@@ -124,6 +193,10 @@
         private Krypton.Toolkit.KryptonPanel kryptonPanel1;
         private Krypton.Toolkit.KryptonTrackBar kryptonTrackBar1;
         private Krypton.Toolkit.Suite.Extended.Circular.ProgressBar.CircularProgressBar circularProgressBar1;
-        private Krypton.Toolkit.KryptonCheckBox kryptonCheckBox1;
+        private Krypton.Toolkit.KryptonCheckBox kcbUseColourTrio;
+        private Krypton.Toolkit.KryptonColorButton kcbtnThirdColour;
+        private Krypton.Toolkit.KryptonColorButton kcbtnSecondColour;
+        private Krypton.Toolkit.KryptonColorButton kcbtnFirstColour;
+        private Krypton.Toolkit.KryptonColorButton kcbtnProgressColour;
     }
 }

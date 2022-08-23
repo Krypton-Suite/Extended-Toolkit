@@ -2,9 +2,9 @@ using Krypton.Toolkit;
 
 namespace TestApp
 {
-    public partial class Form1 : KryptonForm
+    public partial class MainWindow : KryptonForm
     {
-        public Form1()
+        public MainWindow()
         {
             InitializeComponent();
         }

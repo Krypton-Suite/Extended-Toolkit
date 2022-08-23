@@ -43,11 +43,17 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 case "TOMORROW":
                     return Strings.Tomorrow;//"Tomorrow";
                 case "Monday":
+                    return Strings.Monday;
                 case "Tuesday":
+                    return Strings.Tuesday;
                 case "Wednesday":
+                    return Strings.Wednesday;
                 case "Thursday":
+                    return Strings.Thursday;
                 case "Friday":
+                    return Strings.Friday;
                 case "Saturday":
+                    return Strings.Saturday;
                 case "Sunday":
                     return UppercaseFirst(date.ToString("dddd"));
                 case "NEXTWEEK":

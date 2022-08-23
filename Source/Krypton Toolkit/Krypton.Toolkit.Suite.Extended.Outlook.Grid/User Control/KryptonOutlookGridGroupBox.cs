@@ -133,11 +133,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
         #region Static Strings
 
-        public static OutlookGridLanguageStrings Strings { get; } = new();
-
-        private bool ShouldSerializeOutlookGridLanguageStrings() => !Strings.IsDefault;
-
-        public void ResetOutlookGridLanguageStrings() => Strings.Reset();
+        public static OutlookGridLanguageStrings Strings => KryptonOutlookGrid.Strings;
 
         #endregion
 
@@ -937,7 +933,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 _menuSeparator1 = new KryptonContextMenuSeparator();
                 _menuExpand = new KryptonContextMenuItem(Strings.Expand, Resources.OutlookGridImageResources.element_plus_16, OnGroupExpand);
                 _menuCollapse = new KryptonContextMenuItem(Strings.Collapse, Resources.OutlookGridImageResources.element_minus_16, OnGroupCollapse);
-                _menuUnGroup = new KryptonContextMenuItem(Strings.Ungroup, Resources.OutlookGridImageResources.element_delete, OnUngroup);
+                _menuUnGroup = new KryptonContextMenuItem(Strings.UnGroup, Resources.OutlookGridImageResources.element_delete, OnUngroup);
                 _menuSeparator2 = new KryptonContextMenuSeparator();
                 _menuFullExpand = new KryptonContextMenuItem(Strings.FullExpand, Resources.OutlookGridImageResources.elements_plus_16, OnFullExpand);
                 _menuFullCollapse = new KryptonContextMenuItem(Strings.FullCollapse, Resources.OutlookGridImageResources.elements_minus_16, OnFullCollapse);

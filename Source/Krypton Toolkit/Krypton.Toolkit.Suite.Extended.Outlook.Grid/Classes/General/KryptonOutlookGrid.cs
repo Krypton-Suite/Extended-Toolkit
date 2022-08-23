@@ -120,6 +120,10 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
         public static OutlookGridLanguageStrings Strings => KryptonOutlookGridGroupBox.Strings;
 
+        private bool ShouldSerializeOutlookGridLanguageStrings() => !Strings.IsDefault;
+
+        public void ResetOutlookGridLanguageStrings() => Strings.Reset();
+
         #endregion
 
         #region OutlookGrid constructor
@@ -329,7 +333,15 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             }
         }
 
-        public OutlookGridLanguageStrings OutlookGridLanguageStrings => Strings;
+        /// <summary>
+        /// Gets a set of language strings used by KryptonOutlookGrid that can be localized.
+        /// </summary>
+        [Category(@"Visuals")]
+        [Description(@"Collection of language strings.")]
+        [MergableProperty(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+        [Localizable(true)]
+        public OutlookGridLanguageStrings LanguageStrings => Strings;
 
         #endregion OutlookGrid property definitions
 
@@ -1746,7 +1758,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 _menuCollapse = new KryptonContextMenuItem(Strings.Collapse, Resources.OutlookGridImageResources.element_minus_16, OnGroupCollapse);
                 _menuSeparator4 = new KryptonContextMenuSeparator();
                 _menuGroupByThisColumn = new KryptonContextMenuItem(Strings.Group, Resources.OutlookGridImageResources.element, OnGroupByThisColumn);
-                _menuUngroupByThisColumn = new KryptonContextMenuItem(Strings.Ungroup, Resources.OutlookGridImageResources.element_delete, OnUnGroupByThisColumn);
+                _menuUngroupByThisColumn = new KryptonContextMenuItem(Strings.UnGroup, Resources.OutlookGridImageResources.element_delete, OnUnGroupByThisColumn);
                 _menuShowGroupBox = new KryptonContextMenuItem(Strings.ShowGroupBox, null, OnShowGroupBox);
                 _menuHideGroupBox = new KryptonContextMenuItem(Strings.HideGroupBox, null, OnHideGroupBox);
                 _menuSeparator2 = new KryptonContextMenuSeparator();
@@ -2948,5 +2960,21 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             return _internalColumns.FindFromColumnIndex(index);
         }
         #endregion OutlookGrid methods
+
+        #region Public
+
+        /// <summary>
+        /// Have any of the language string values been modified
+        /// </summary>
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public bool IsDefault => !(ShouldSerializeOutlookGridLanguageStrings());
+
+        public void Reset()
+        {
+            ResetOutlookGridLanguageStrings();
+        }
+
+        #endregion
     }
 }

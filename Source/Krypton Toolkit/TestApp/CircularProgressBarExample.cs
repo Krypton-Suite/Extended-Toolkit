@@ -16,9 +16,28 @@ namespace TestApp
             circularProgressBar1.Text = $"{kryptonTrackBar1.Value}%";
         }
 
-        private void kryptonCheckBox1_CheckedChanged(object sender, EventArgs e)
+        private void kcbUseColourTrio_CheckedChanged(object sender, EventArgs e)
         {
-            circularProgressBar1.UseColourTrio = kryptonCheckBox1.Checked;
+            EnableColourTrioUI(kcbUseColourTrio.Checked);
+
+            circularProgressBar1.UseColourTrio = kcbUseColourTrio.Checked;
         }
+
+        private void EnableColourTrioUI(bool enabled)
+        {
+            kcbtnFirstColour.Enabled = enabled;
+
+            kcbtnSecondColour.Enabled = enabled;
+
+            kcbtnThirdColour.Enabled = enabled;
+        }
+
+        private void kcbtnFirstColour_SelectedColorChanged(object sender, ColorEventArgs e) => circularProgressBar1.FirstValueColour = e.Color;
+
+        private void kcbtnSecondColour_SelectedColorChanged(object sender, ColorEventArgs e) => circularProgressBar1.SecondValueColour = e.Color;
+
+        private void kcbtnThirdColour_SelectedColorChanged(object sender, ColorEventArgs e) => circularProgressBar1.ThirdValueColour = e.Color;
+
+        private void kcbtnProgressColour_SelectedColorChanged(object sender, ColorEventArgs e) => circularProgressBar1.ProgressColour = e.Color;
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace TestApp
 {
-    partial class Form1
+    partial class MainWindow
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            this.kryptonButton7 = new Krypton.Toolkit.KryptonButton();
             this.kbtnExtendedControls = new Krypton.Toolkit.KryptonButton();
             this.kryptonButton5 = new Krypton.Toolkit.KryptonButton();
             this.kryptonButton4 = new Krypton.Toolkit.KryptonButton();
@@ -38,7 +39,6 @@
             this.kbtnCircularProgressBarItem = new Krypton.Toolkit.KryptonButton();
             this.ktnToolStripItems = new Krypton.Toolkit.KryptonButton();
             this.kbtnButtonItems = new Krypton.Toolkit.KryptonButton();
-            this.kryptonButton7 = new Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -60,7 +60,17 @@
             this.kryptonPanel1.Size = new System.Drawing.Size(620, 390);
             this.kryptonPanel1.TabIndex = 0;
             // 
-            // kryptonButton6
+            // kryptonButton7
+            // 
+            this.kryptonButton7.CornerRoundingRadius = -1F;
+            this.kryptonButton7.Location = new System.Drawing.Point(261, 38);
+            this.kryptonButton7.Name = "kryptonButton7";
+            this.kryptonButton7.Size = new System.Drawing.Size(109, 22);
+            this.kryptonButton7.TabIndex = 8;
+            this.kryptonButton7.Values.Text = "MessageBox";
+            this.kryptonButton7.Click += new System.EventHandler(this.kryptonButton7_Click);
+            // 
+            // kbtnExtendedControls
             // 
             this.kbtnExtendedControls.CornerRoundingRadius = -1F;
             this.kbtnExtendedControls.Location = new System.Drawing.Point(146, 38);
@@ -88,7 +98,7 @@
             this.kryptonButton4.TabIndex = 5;
             this.kryptonButton4.Values.Text = "ComboBox Items";
             // 
-            // kryptonButton3
+            // kbtnCheckSum
             // 
             this.kbtnCheckSum.CornerRoundingRadius = -1F;
             this.kbtnCheckSum.Location = new System.Drawing.Point(240, 10);
@@ -98,7 +108,7 @@
             this.kbtnCheckSum.Values.Text = "CheckSum Tools";
             this.kbtnCheckSum.Click += new System.EventHandler(this.kbtnCheckSum_Click);
             // 
-            // kryptonButton2
+            // kbtnCalendarItems
             // 
             this.kbtnCalendarItems.CornerRoundingRadius = -1F;
             this.kbtnCalendarItems.Location = new System.Drawing.Point(125, 10);
@@ -108,7 +118,7 @@
             this.kbtnCalendarItems.Values.Text = "Calendar Items";
             this.kbtnCalendarItems.Click += new System.EventHandler(this.kbtnCalendarItems_Click);
             // 
-            // kryptonButton1
+            // kbtnCircularProgressBarItem
             // 
             this.kbtnCircularProgressBarItem.CornerRoundingRadius = -1F;
             this.kbtnCircularProgressBarItem.Location = new System.Drawing.Point(358, 10);
@@ -121,7 +131,7 @@
             // ktnToolStripItems
             // 
             this.ktnToolStripItems.CornerRoundingRadius = -1F;
-            this.ktnToolStripItems.Location = new System.Drawing.Point(358, 90);
+            this.ktnToolStripItems.Location = new System.Drawing.Point(376, 38);
             this.ktnToolStripItems.Name = "ktnToolStripItems";
             this.ktnToolStripItems.Size = new System.Drawing.Size(110, 22);
             this.ktnToolStripItems.TabIndex = 1;
@@ -138,24 +148,14 @@
             this.kbtnButtonItems.Values.Text = "Button Items";
             this.kbtnButtonItems.Click += new System.EventHandler(this.kbtnButtonItems_Click);
             // 
-            // kryptonButton7
-            // 
-            this.kryptonButton7.CornerRoundingRadius = -1F;
-            this.kryptonButton7.Location = new System.Drawing.Point(261, 38);
-            this.kryptonButton7.Name = "kryptonButton7";
-            this.kryptonButton7.Size = new System.Drawing.Size(109, 22);
-            this.kryptonButton7.TabIndex = 8;
-            this.kryptonButton7.Values.Text = "MessageBox";
-            this.kryptonButton7.Click += new System.EventHandler(this.kryptonButton7_Click);
-            // 
-            // Form1
+            // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(620, 390);
             this.Controls.Add(this.kryptonPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Form1";
+            this.Name = "MainWindow";
             this.Text = "Landing";
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
