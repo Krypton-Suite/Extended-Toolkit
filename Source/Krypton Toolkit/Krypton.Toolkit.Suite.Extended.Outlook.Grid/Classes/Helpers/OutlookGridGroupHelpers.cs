@@ -23,6 +23,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
     /// </summary>
     public class OutlookGridGroupHelpers
     {
+        public static OutlookGridLanguageStrings Strings => KryptonOutlookGridGroupBox.Strings;
+
         /// <summary>
         /// Gets the title for a specific datetime
         /// </summary>
@@ -33,13 +35,13 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             switch (GetDateCode(date))
             {
                 case "NODATE":
-                    return LanguageManager.Instance.GetString("NODATE");// "Today";
+                    return Strings.NoDate;// "Today";
                 case "TODAY":
-                    return LanguageManager.Instance.GetString("TODAY");// "Today";
+                    return Strings.Today;// "Today";
                 case "YESTERDAY":
-                    return LanguageManager.Instance.GetString("YESTERDAY");//"Yesterday";
+                    return Strings.Yesterday;//"Yesterday";
                 case "TOMORROW":
-                    return LanguageManager.Instance.GetString("TOMORROW");//"Tomorrow";
+                    return Strings.Tomorrow;//"Tomorrow";
                 case "Monday":
                 case "Tuesday":
                 case "Wednesday":
@@ -49,35 +51,35 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 case "Sunday":
                     return UppercaseFirst(date.ToString("dddd"));
                 case "NEXTWEEK":
-                    return LanguageManager.Instance.GetString("NEXTWEEK");//"Next Week";
+                    return Strings.NextWeek;//"Next Week";
                 case "INTWOWEEKS": //dans le deux semaines a venir
-                    return LanguageManager.Instance.GetString("INTWOWEEKS");//"In two weeks"; //dans le deux semaines a venir
+                    return Strings.InTwoWeeks;//"In two weeks"; //dans le deux semaines a venir
                 case "INTHREEWEEKS": //dans les trois semaines à venir
-                    return LanguageManager.Instance.GetString("INTHREEWEEKS");//"In three weeks"; //dans les trois semaines à venir
+                    return Strings.InThreeWeeks;//"In three weeks"; //dans les trois semaines à venir
                 case "LATERDURINGTHISMONTH": //Plus tard au cours de ce mois 
-                    return LanguageManager.Instance.GetString("LATERDURINGTHISMONTH");//"Later during this month"; //Plus tard au cours de ce mois 
+                    return Strings.LaterDuringThisMonth;//"Later during this month"; //Plus tard au cours de ce mois 
                 case "NEXTMONTH": //Prochain mois
-                    return LanguageManager.Instance.GetString("NEXTMONTH");//"Next month"; //Prochain mois
+                    return Strings.NextMonth;//"Next month"; //Prochain mois
                 case "AFTERNEXTMONTH":  //Au-delà du prochain mois 
-                    return LanguageManager.Instance.GetString("AFTERNEXTMONTH");//"After next month";  //Au-delà du prochain mois 
+                    return Strings.AfterNextMonth;//"After next month";  //Au-delà du prochain mois 
                 case "PREVIOUSWEEK":
-                    return LanguageManager.Instance.GetString("PREVIOUSWEEK");//"Previous Week";
+                    return Strings.PreviousWeek;//"Previous Week";
                 case "TWOWEEKSAGO": //Il y a deux semaines
-                    return LanguageManager.Instance.GetString("TWOWEEKSAGO");//"Two weeks ago"; //Il y a deux semaines
+                    return Strings.TwoWeeksAgo;//"Two weeks ago"; //Il y a deux semaines
                 case "THREEWEEKSAGO": //Il y a trois semaines
-                    return LanguageManager.Instance.GetString("THREEWEEKSAGO");//"Three weeks ago"; //Il y a deux semaines
+                    return Strings.ThreeWeeksAgo;//"Three weeks ago"; //Il y a deux semaines
                 case "EARLIERDURINGTHISMONTH": //Plus tôt durant ce mois
-                    return LanguageManager.Instance.GetString("EARLIERDURINGTHISMONTH");//"Earlier during this month";  //Plus tot au cours de ce mois
+                    return Strings.EarlierDuringThisMonth;//"Earlier during this month";  //Plus tot au cours de ce mois
                 case "PREVIOUSMONTH": //Mois précédent
-                    return LanguageManager.Instance.GetString("PREVIOUSMONTH");//"Previous Month";  //Mois dernier
+                    return Strings.PreviousMonth;//"Previous Month";  //Mois dernier
                 case "BEFOREPREVIOUSMONTH":  //Mois dernier // no longer exist
-                    return LanguageManager.Instance.GetString("BEFOREPREVIOUSMONTH");//"Before Previous Month";   //Avant le mois dernier
+                    return Strings.BeforePreviousMonth;//"Before Previous Month";   //Avant le mois dernier
                 case "EARLIERTHISYEAR":  //Mois dernier // no longer exist
-                    return LanguageManager.Instance.GetString("EARLIERTHISYEAR");//"Before Previous Month";   //Avant le mois dernier
+                    return Strings.EarlierDuringThisYear;//"Before Previous Month";   //Avant le mois dernier
                 case "PREVIOUSYEAR":  //Mois dernier // no longer exist
-                    return LanguageManager.Instance.GetString("PREVIOUSYEAR");//"Before Previous Month";   //Avant le mois dernier
+                    return Strings.PreviousYear;//"Before Previous Month";   //Avant le mois dernier
                 case "OLDER":  //Mois dernier // no longer exist
-                    return LanguageManager.Instance.GetString("OLDER");//"Before Previous Month";   //Avant le mois dernier
+                    return Strings.Older;//"Before Previous Month";   //Avant le mois dernier
 
                 default:
                     return date.Date.ToShortDateString();
@@ -300,13 +302,13 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             switch (GetQuarter(dateTime))
             {
                 case 1:
-                    return LanguageManager.Instance.GetString("Q1");
+                    return Strings.QuarterOne;
                 case 2:
-                    return LanguageManager.Instance.GetString("Q2");
+                    return Strings.QuarterTwo;
                 case 3:
-                    return LanguageManager.Instance.GetString("Q3");
+                    return Strings.QuarterThree;
                 case 4:
-                    return LanguageManager.Instance.GetString("Q4");
+                    return Strings.QuarterFour;
                 default:
                     return "";
             }

@@ -35,8 +35,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             this.AllowDrop = true;
             this.Name = "KryptonOutlookGridGroupBox";
             this.Size = new System.Drawing.Size(744, 46);
-            this.DragDrop += new System.Windows.Forms.DragEventHandler(this.KryptonOutlookGridGroupBox_DragDrop);
-            this.DragEnter += new System.Windows.Forms.DragEventHandler(this.KryptonOutlookGridGroupBox_DragEnter);
+            this.DragDrop += this.KryptonOutlookGridGroupBox_DragDrop;
+            this.DragEnter += this.KryptonOutlookGridGroupBox_DragEnter;
             this.ResumeLayout(false);
 
         }
@@ -131,6 +131,16 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         public event EventHandler<OutlookGridColumnEventArgs> SortBySummaryCount;
         #endregion
 
+        #region Static Strings
+
+        public static OutlookGridLanguageStrings Strings { get; } = new();
+
+        private bool ShouldSerializeOutlookGridLanguageStrings() => !Strings.IsDefault;
+
+        public void ResetOutlookGridLanguageStrings() => Strings.Reset();
+
+        #endregion
+
         #region Constructor
 
         /// <summary>
@@ -153,10 +163,10 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
             // Hook into palette events
             if (_palette != null)
-                _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                _palette.PalettePaint += OnPalettePaint;
 
             // (4) We want to be notified whenever the global palette changes
-            KryptonManager.GlobalPaletteChanged += new EventHandler(OnGlobalPaletteChanged);
+            KryptonManager.GlobalPaletteChanged += OnGlobalPaletteChanged;
 
             // Create redirection object to the base palette
             _paletteRedirect = new PaletteRedirect(_palette);
@@ -171,7 +181,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
             // Create storage that maps onto the inherit instances
             _border = new PaletteBorder(_paletteBorder, null);
-            _dragColumnToGroupText = LanguageManager.Instance.GetString("DRAGCOLUMNTOGROUP");
+            _dragColumnToGroupText = Strings.DragColumnToGroup;
             
             using (Graphics g = CreateGraphics())
             {
@@ -226,12 +236,12 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 // (10) Unhook from the palette events
                 if (_palette != null)
                 {
-                    _palette.PalettePaint -= new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                    _palette.PalettePaint -= OnPalettePaint;
                     _palette = null;
                 }
 
                 // (11) Unhook from the static events, otherwise we cannot be garbage collected
-                KryptonManager.GlobalPaletteChanged -= new EventHandler(OnGlobalPaletteChanged);
+                KryptonManager.GlobalPaletteChanged -= OnGlobalPaletteChanged;
             }
 
             if (disposing && (components != null))
@@ -530,7 +540,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         {
             // (5) Unhook events from old palette
             if (_palette != null)
-                _palette.PalettePaint -= new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                _palette.PalettePaint -= OnPalettePaint;
 
             // (6) Cache the new IPalette that is the global palette
             _palette = KryptonManager.CurrentGlobalPalette;
@@ -538,7 +548,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
             // (7) Hook into events for the new palette
             if (_palette != null)
-                _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                _palette.PalettePaint += OnPalettePaint;
 
             // (8) Change of palette means we should repaint to show any changes
             Invalidate();
@@ -905,7 +915,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             if (_menuItems == null)
             {
                 // Create individual items
-                _menuSortAscending = new KryptonContextMenuItem(LanguageManager.Instance.GetString("SORTASCENDING"), Resources.OutlookGridImageResources.sort_az_ascending2, new EventHandler(OnSortAscending));
+                /*_menuSortAscending = new KryptonContextMenuItem(LanguageManager.Instance.GetString("SORTASCENDING"), Resources.OutlookGridImageResources.sort_az_ascending2, new EventHandler(OnSortAscending));
                 _menuSortDescending = new KryptonContextMenuItem(LanguageManager.Instance.GetString("SORTDESCENDING"), Resources.OutlookGridImageResources.sort_az_descending2, new EventHandler(OnSortDescending));
                 _menuSeparator1 = new KryptonContextMenuSeparator();
                 _menuExpand = new KryptonContextMenuItem(LanguageManager.Instance.GetString("EXPAND"), Resources.OutlookGridImageResources.element_plus_16, new EventHandler(OnGroupExpand));
@@ -918,7 +928,27 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 _menuClearGrouping = new KryptonContextMenuItem(LanguageManager.Instance.GetString("CLEARGROUPING"), Resources.OutlookGridImageResources.element_selection_delete, new EventHandler(OnClearGrouping));
                 _menuHideGroupBox = new KryptonContextMenuItem(LanguageManager.Instance.GetString("HIDEGROUPBOX"), null, new EventHandler(OnHideGroupBox));
                 _menuGroupInterval = new KryptonContextMenuItem(LanguageManager.Instance.GetString("GROUPINTERVAL"));
-                _menuSortBySummary = new KryptonContextMenuItem(LanguageManager.Instance.GetString("SORTBYSUMMARYCOUNT"), null, new EventHandler(OnSortBySummaryCount));
+                _menuSortBySummary = new KryptonContextMenuItem(LanguageManager.Instance.GetString("SORTBYSUMMARYCOUNT"), null, new EventHandler(OnSortBySummaryCount));*/
+
+                #region Localisation
+
+                _menuSortAscending = new KryptonContextMenuItem(Strings.SortAscending, Resources.OutlookGridImageResources.sort_az_ascending2, OnSortAscending);
+                _menuSortDescending = new KryptonContextMenuItem(Strings.SortDescending, Resources.OutlookGridImageResources.sort_az_descending2, OnSortDescending);
+                _menuSeparator1 = new KryptonContextMenuSeparator();
+                _menuExpand = new KryptonContextMenuItem(Strings.Expand, Resources.OutlookGridImageResources.element_plus_16, OnGroupExpand);
+                _menuCollapse = new KryptonContextMenuItem(Strings.Collapse, Resources.OutlookGridImageResources.element_minus_16, OnGroupCollapse);
+                _menuUnGroup = new KryptonContextMenuItem(Strings.Ungroup, Resources.OutlookGridImageResources.element_delete, OnUngroup);
+                _menuSeparator2 = new KryptonContextMenuSeparator();
+                _menuFullExpand = new KryptonContextMenuItem(Strings.FullExpand, Resources.OutlookGridImageResources.elements_plus_16, OnFullExpand);
+                _menuFullCollapse = new KryptonContextMenuItem(Strings.FullCollapse, Resources.OutlookGridImageResources.elements_minus_16, OnFullCollapse);
+                _menuSeparator3 = new KryptonContextMenuSeparator();
+                _menuClearGrouping = new KryptonContextMenuItem(Strings.ClearGrouping, Resources.OutlookGridImageResources.element_selection_delete, OnClearGrouping);
+                _menuHideGroupBox = new KryptonContextMenuItem(Strings.HideGroupBox, null, OnHideGroupBox);
+                _menuGroupInterval = new KryptonContextMenuItem(Strings.GroupInterval);
+                _menuSortBySummary = new KryptonContextMenuItem(Strings.SortBySummaryCount, null, OnSortBySummaryCount);
+
+                #endregion
+
                 _menuSortBySummary.CheckOnClick = true;
 
                 //Group Interval

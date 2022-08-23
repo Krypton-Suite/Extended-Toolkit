@@ -35,6 +35,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         /// </summary>
         public DateInterval Interval { get; set; }
 
+        public static OutlookGridLanguageStrings Strings => KryptonOutlookGridGroupBox.Strings;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="OutlookGridDateTimeGroup"/> class.
         /// </summary>
@@ -93,7 +95,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                         else
                         {
                             valDateTime = DateTime.MinValue;
-                            base.Value = LanguageManager.Instance.GetString("NODATE");
+                            base.Value = Strings.NoDate;
                         }
                         break;
                     case DateInterval.Month:
@@ -106,7 +108,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                         else
                         {
                             valDateTime = DateTime.MinValue;
-                            base.Value = LanguageManager.Instance.GetString("NODATE");
+                            base.Value = Strings.NoDate;
                         }
                         break;
                     case DateInterval.Day:
@@ -118,7 +120,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                         else
                         {
                             valDateTime = DateTime.MinValue;
-                            base.Value = LanguageManager.Instance.GetString("NODATE");
+                            base.Value = Strings.NoDate;
                         }
                         break;
                     case DateInterval.Quarter:
@@ -130,7 +132,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                         else
                         {
                             valDateTime = DateTime.MinValue;
-                            base.Value = LanguageManager.Instance.GetString("NODATE");
+                            base.Value = Strings.NoDate;
                         }
                         break;
                     default:
