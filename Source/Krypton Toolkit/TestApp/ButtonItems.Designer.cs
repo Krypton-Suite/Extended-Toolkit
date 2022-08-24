@@ -41,12 +41,14 @@
             this.kryptonCommandLinkButton1 = new Krypton.Toolkit.Suite.Extended.Buttons.KryptonCommandLinkButton();
             this.kryptonCancelDialogButton1 = new Krypton.Toolkit.Suite.Extended.Buttons.KryptonCancelDialogButton();
             this.kryptonBrowseButton1 = new Krypton.Toolkit.Suite.Extended.Buttons.KryptonBrowseButton();
+            this.kryptonButtonExtended1 = new Krypton.Toolkit.Suite.Extended.Buttons.KryptonButtonExtended();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(this.kryptonButtonExtended1);
             this.kryptonPanel1.Controls.Add(this.kryptonYesDialogButton1);
             this.kryptonPanel1.Controls.Add(this.kryptonViewButtons1);
             this.kryptonPanel1.Controls.Add(this.kryptonuacButtonVersion21);
@@ -96,7 +98,7 @@
             this.kryptonuacButtonVersion21.PathToElevatedObject = null;
             this.kryptonuacButtonVersion21.Size = new System.Drawing.Size(194, 36);
             this.kryptonuacButtonVersion21.TabIndex = 19;
-            this.kryptonuacButtonVersion21.UACShieldSize = Krypton.Toolkit.Suite.Extended.Buttons.UACShieldSize.MEDIUM;
+            this.kryptonuacButtonVersion21.UACShieldSize = Krypton.Toolkit.Suite.Extended.Buttons.UACShieldSize.Medium;
             this.kryptonuacButtonVersion21.UseAsUACElevatedButton = true;
             this.kryptonuacButtonVersion21.Values.Image = ((System.Drawing.Image)(resources.GetObject("kryptonuacButtonVersion21.Values.Image")));
             this.kryptonuacButtonVersion21.Values.Text = "kryptonuacButtonVersion21";
@@ -192,7 +194,7 @@
             // 
             this.kryptonBrowseButton1.AutoSize = true;
             this.kryptonBrowseButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.kryptonBrowseButton1.BrowseButtonAction = Krypton.Toolkit.Suite.Extended.Buttons.BrowseButtonAction.SAVEFILE;
+            this.kryptonBrowseButton1.BrowseButtonAction = Krypton.Toolkit.Suite.Extended.Buttons.BrowseButtonAction.SaveFile;
             this.kryptonBrowseButton1.CornerRoundingRadius = -1F;
             this.kryptonBrowseButton1.DialogFilter = null;
             this.kryptonBrowseButton1.DialogTitle = null;
@@ -208,6 +210,16 @@
             this.kryptonBrowseButton1.UseAsSaveFileBrowseButton = false;
             this.kryptonBrowseButton1.UseSystemFolderBrowser = false;
             this.kryptonBrowseButton1.Values.Text = "...";
+            // 
+            // kryptonButtonExtended1
+            // 
+            this.kryptonButtonExtended1.CornerRoundingRadius = -1F;
+            this.kryptonButtonExtended1.DisplayString = Krypton.Toolkit.Suite.Extended.Buttons.KryptonButtonBuiltInDisplayString.Custom;
+            this.kryptonButtonExtended1.Location = new System.Drawing.Point(342, 37);
+            this.kryptonButtonExtended1.Name = "kryptonButtonExtended1";
+            this.kryptonButtonExtended1.Size = new System.Drawing.Size(188, 36);
+            this.kryptonButtonExtended1.TabIndex = 22;
+            this.kryptonButtonExtended1.Values.Text = "Co&ntinue";
             // 
             // ButtonItems
             // 
@@ -239,5 +251,6 @@
         private Krypton.Toolkit.Suite.Extended.Buttons.KryptonCommandLinkButton kryptonCommandLinkButton1;
         private Krypton.Toolkit.Suite.Extended.Buttons.KryptonCancelDialogButton kryptonCancelDialogButton1;
         private Krypton.Toolkit.Suite.Extended.Buttons.KryptonBrowseButton kryptonBrowseButton1;
+        private Krypton.Toolkit.Suite.Extended.Buttons.KryptonButtonExtended kryptonButtonExtended1;
     }
 }

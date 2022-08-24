@@ -26,6 +26,8 @@ namespace TestApp
 
         private void LoadData()
         {
+            string fileName = null;
+
             //Setup Rows
             OutlookGridRow row = new OutlookGridRow();
             List<OutlookGridRow> l = new List<OutlookGridRow>();
@@ -42,8 +44,16 @@ namespace TestApp
 
             Random random = new Random();
             //.Next permet de retourner un nombre aléatoire contenu dans la plage spécifiée entre parenthèses.
+
+            OpenFileDialog ofd = new OpenFileDialog();
+
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                fileName = Path.GetFullPath(ofd.FileName);
+            }
+
             XmlDocument doc = new XmlDocument();
-            doc.Load("invoices.xml");
+            doc.Load(fileName);
             IFormatProvider culture = new CultureInfo("en-US", true);
             foreach (XmlNode customer in doc.SelectNodes("//invoice")) //TODO for instead foreach for perfs...
             {

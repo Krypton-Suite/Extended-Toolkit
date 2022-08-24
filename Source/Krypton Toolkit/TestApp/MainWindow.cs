@@ -57,5 +57,19 @@ namespace TestApp
 
             messageBoxExample.Show();
         }
+
+        private void kbtnOutlookGrid_Click(object sender, EventArgs e)
+        {
+            OutlookGridExample outlookGridExample = new OutlookGridExample();
+
+            outlookGridExample.Show();
+        }
+
+        private void kbtnNotificationExample_Click(object sender, EventArgs e)
+        {
+            NotificationExample notificationExample = new NotificationExample();
+
+            notificationExample.Show();
+        }
     }
 }

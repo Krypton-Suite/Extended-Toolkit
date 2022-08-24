@@ -168,6 +168,12 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
         private const string DEFAULT_SUNDAY = "Sunday";
 
+        private const string DEFAULT_MINIMUM_COLOUR = "Min Colour";
+
+        private const string DEFAULT_MEDIUM_COLOUR = "Medium Colour";
+
+        private const string DEFAULT_MAXIMUM_COLOUR = "Max Colour";
+
         #endregion
 
         #region Identity
@@ -252,7 +258,10 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                                  Thursday.Equals(DEFAULT_THURSDAY) &&
                                  Friday.Equals(DEFAULT_FRIDAY) &&
                                  Saturday.Equals(DEFAULT_SATURDAY) &&
-                                 Sunday.Equals(DEFAULT_SUNDAY);
+                                 Sunday.Equals(DEFAULT_SUNDAY) &&
+                                 MinimumColour.Equals(DEFAULT_MINIMUM_COLOUR) &&
+                                 MediumColour.Equals(DEFAULT_MEDIUM_COLOUR) &&
+                                 MaximumColour.Equals(DEFAULT_MAXIMUM_COLOUR);
 
         public void Reset()
         {
@@ -399,6 +408,12 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             Saturday = DEFAULT_SATURDAY;
 
             Sunday = DEFAULT_SUNDAY;
+
+            MinimumColour = DEFAULT_MINIMUM_COLOUR;
+
+            MediumColour = DEFAULT_MEDIUM_COLOUR;
+
+            MaximumColour = DEFAULT_MAXIMUM_COLOUR;
         }
 
         #endregion
@@ -618,6 +633,12 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         public string Saturday { get; set; }
 
         public string Sunday { get; set; }
+
+        public string MinimumColour { get; set; }
+
+        public string MediumColour { get; set; }
+
+        public string MaximumColour { get; set; }
 
         #endregion
     }

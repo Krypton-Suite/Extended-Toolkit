@@ -77,17 +77,16 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 169);
             this.kryptonPanel1.Name = "kryptonPanel1";
             this.kryptonPanel1.PanelBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelAlternate;
-            this.kryptonPanel1.Size = new System.Drawing.Size(440, 50);
+            this.kryptonPanel1.Size = new System.Drawing.Size(540, 50);
             this.kryptonPanel1.TabIndex = 0;
             // 
             // kbtnOk
             // 
             this.kbtnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.kbtnOk.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowOnly;
+            this.kbtnOk.CornerRoundingRadius = -1F;
             this.kbtnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.kbtnOk.Location = new System.Drawing.Point(242, 13);
+            this.kbtnOk.Location = new System.Drawing.Point(342, 13);
             this.kbtnOk.Name = "kbtnOk";
-            this.kbtnOk.Orientation = Krypton.Toolkit.VisualOrientation.Top;
             this.kbtnOk.Size = new System.Drawing.Size(90, 25);
             this.kbtnOk.TabIndex = 3;
             this.kbtnOk.Values.Image = ((System.Drawing.Image)(resources.GetObject("kbtnOk.Values.Image")));
@@ -97,11 +96,10 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             // kbtnCancel
             // 
             this.kbtnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.kbtnCancel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowOnly;
+            this.kbtnCancel.CornerRoundingRadius = -1F;
             this.kbtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.kbtnCancel.Location = new System.Drawing.Point(338, 13);
+            this.kbtnCancel.Location = new System.Drawing.Point(438, 13);
             this.kbtnCancel.Name = "kbtnCancel";
-            this.kbtnCancel.Orientation = Krypton.Toolkit.VisualOrientation.Top;
             this.kbtnCancel.Size = new System.Drawing.Size(90, 25);
             this.kbtnCancel.TabIndex = 2;
             this.kbtnCancel.Values.Image = ((System.Drawing.Image)(resources.GetObject("kbtnCancel.Values.Image")));
@@ -110,13 +108,11 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             // 
             // kryptonBorderEdge1
             // 
-            this.kryptonBorderEdge1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.kryptonBorderEdge1.BorderStyle = Krypton.Toolkit.PaletteBorderStyle.HeaderPrimary;
             this.kryptonBorderEdge1.Dock = System.Windows.Forms.DockStyle.Top;
             this.kryptonBorderEdge1.Location = new System.Drawing.Point(0, 0);
             this.kryptonBorderEdge1.Name = "kryptonBorderEdge1";
-            this.kryptonBorderEdge1.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            this.kryptonBorderEdge1.Size = new System.Drawing.Size(440, 1);
+            this.kryptonBorderEdge1.Size = new System.Drawing.Size(540, 1);
             this.kryptonBorderEdge1.Text = "kryptonBorderEdge1";
             // 
             // kryptonPanel2
@@ -131,14 +127,12 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             this.kryptonPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel2.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel2.Name = "kryptonPanel2";
-            this.kryptonPanel2.Size = new System.Drawing.Size(440, 169);
+            this.kryptonPanel2.Size = new System.Drawing.Size(540, 169);
             this.kryptonPanel2.TabIndex = 1;
             // 
             // kcmbFillMode
             // 
-            this.kcmbFillMode.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
-            this.kcmbFillMode.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
-            this.kcmbFillMode.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.kcmbFillMode.CornerRoundingRadius = -1F;
             this.kcmbFillMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.kcmbFillMode.DropDownWidth = 198;
             this.kcmbFillMode.IntegralHeight = false;
@@ -163,7 +157,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             // 
             // kryptonGroup1
             // 
-            this.kryptonGroup1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.kryptonGroup1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.kryptonGroup1.Location = new System.Drawing.Point(13, 78);
             this.kryptonGroup1.Name = "kryptonGroup1";
             // 
@@ -172,71 +167,53 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             this.kryptonGroup1.Panel.Controls.Add(this.kcbMaxColour);
             this.kryptonGroup1.Panel.Controls.Add(this.kcbMediumColour);
             this.kryptonGroup1.Panel.Controls.Add(this.kcbMinColour);
-            this.kryptonGroup1.Size = new System.Drawing.Size(415, 38);
+            this.kryptonGroup1.Size = new System.Drawing.Size(515, 38);
             this.kryptonGroup1.TabIndex = 4;
             // 
             // kcbMaxColour
             // 
-            this.kcbMaxColour.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowOnly;
-            this.kcbMaxColour.ButtonOrientation = Krypton.Toolkit.VisualOrientation.Top;
-            this.kcbMaxColour.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.kcbMaxColour.DropDownOrientation = Krypton.Toolkit.VisualOrientation.Bottom;
-            this.kcbMaxColour.DropDownPosition = Krypton.Toolkit.VisualOrientation.Right;
-            this.kcbMaxColour.EmptyBorderColor = System.Drawing.Color.DarkGray;
-            this.kcbMaxColour.Location = new System.Drawing.Point(242, 5);
+            this.kcbMaxColour.CustomColorPreviewShape = Krypton.Toolkit.KryptonColorButtonCustomColorPreviewShape.Circle;
+            this.kcbMaxColour.Location = new System.Drawing.Point(319, 5);
             this.kcbMaxColour.Name = "kcbMaxColour";
-            this.kcbMaxColour.SchemeStandard = Krypton.Toolkit.ColorScheme.OfficeStandard;
-            this.kcbMaxColour.SchemeThemes = Krypton.Toolkit.ColorScheme.OfficeThemes;
             this.kcbMaxColour.SelectedColor = System.Drawing.Color.Transparent;
             this.kcbMaxColour.SelectedRect = new System.Drawing.Rectangle(0, 0, 40, 20);
-            this.kcbMaxColour.Size = new System.Drawing.Size(107, 25);
+            this.kcbMaxColour.Size = new System.Drawing.Size(150, 25);
             this.kcbMaxColour.Splitter = false;
             this.kcbMaxColour.TabIndex = 2;
             this.kcbMaxColour.Values.Image = ((System.Drawing.Image)(resources.GetObject("kcbMaxColour.Values.Image")));
+            this.kcbMaxColour.Values.RoundedCorners = 8;
             this.kcbMaxColour.Values.Text = "M&ax Colour";
             this.kcbMaxColour.VisibleNoColor = false;
             this.kcbMaxColour.SelectedColorChanged += new System.EventHandler<Krypton.Toolkit.ColorEventArgs>(this.kcbMaxColour_SelectedColorChanged);
             // 
             // kcbMediumColour
             // 
-            this.kcbMediumColour.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowOnly;
-            this.kcbMediumColour.ButtonOrientation = Krypton.Toolkit.VisualOrientation.Top;
-            this.kcbMediumColour.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.kcbMediumColour.DropDownOrientation = Krypton.Toolkit.VisualOrientation.Bottom;
-            this.kcbMediumColour.DropDownPosition = Krypton.Toolkit.VisualOrientation.Right;
-            this.kcbMediumColour.EmptyBorderColor = System.Drawing.Color.DarkGray;
-            this.kcbMediumColour.Location = new System.Drawing.Point(113, 5);
+            this.kcbMediumColour.CustomColorPreviewShape = Krypton.Toolkit.KryptonColorButtonCustomColorPreviewShape.Circle;
+            this.kcbMediumColour.Location = new System.Drawing.Point(163, 5);
             this.kcbMediumColour.Name = "kcbMediumColour";
-            this.kcbMediumColour.SchemeStandard = Krypton.Toolkit.ColorScheme.OfficeStandard;
-            this.kcbMediumColour.SchemeThemes = Krypton.Toolkit.ColorScheme.OfficeThemes;
             this.kcbMediumColour.SelectedColor = System.Drawing.Color.Transparent;
             this.kcbMediumColour.SelectedRect = new System.Drawing.Rectangle(0, 0, 40, 20);
-            this.kcbMediumColour.Size = new System.Drawing.Size(123, 25);
+            this.kcbMediumColour.Size = new System.Drawing.Size(150, 25);
             this.kcbMediumColour.Splitter = false;
             this.kcbMediumColour.TabIndex = 1;
             this.kcbMediumColour.Values.Image = ((System.Drawing.Image)(resources.GetObject("kcbMediumColour.Values.Image")));
+            this.kcbMediumColour.Values.RoundedCorners = 8;
             this.kcbMediumColour.Values.Text = "M&edium Colour";
             this.kcbMediumColour.VisibleNoColor = false;
             this.kcbMediumColour.SelectedColorChanged += new System.EventHandler<Krypton.Toolkit.ColorEventArgs>(this.kcbMediumColour_SelectedColorChanged);
             // 
             // kcbMinColour
             // 
-            this.kcbMinColour.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowOnly;
-            this.kcbMinColour.ButtonOrientation = Krypton.Toolkit.VisualOrientation.Top;
-            this.kcbMinColour.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.kcbMinColour.DropDownOrientation = Krypton.Toolkit.VisualOrientation.Bottom;
-            this.kcbMinColour.DropDownPosition = Krypton.Toolkit.VisualOrientation.Right;
-            this.kcbMinColour.EmptyBorderColor = System.Drawing.Color.DarkGray;
+            this.kcbMinColour.CustomColorPreviewShape = Krypton.Toolkit.KryptonColorButtonCustomColorPreviewShape.Circle;
             this.kcbMinColour.Location = new System.Drawing.Point(7, 5);
             this.kcbMinColour.Name = "kcbMinColour";
-            this.kcbMinColour.SchemeStandard = Krypton.Toolkit.ColorScheme.OfficeStandard;
-            this.kcbMinColour.SchemeThemes = Krypton.Toolkit.ColorScheme.OfficeThemes;
             this.kcbMinColour.SelectedColor = System.Drawing.Color.Transparent;
             this.kcbMinColour.SelectedRect = new System.Drawing.Rectangle(0, 0, 40, 20);
-            this.kcbMinColour.Size = new System.Drawing.Size(100, 25);
+            this.kcbMinColour.Size = new System.Drawing.Size(150, 25);
             this.kcbMinColour.Splitter = false;
             this.kcbMinColour.TabIndex = 0;
             this.kcbMinColour.Values.Image = ((System.Drawing.Image)(resources.GetObject("kcbMinColour.Values.Image")));
+            this.kcbMinColour.Values.RoundedCorners = 8;
             this.kcbMinColour.Values.Text = "Mi&n Colour";
             this.kcbMinColour.VisibleNoColor = false;
             this.kcbMinColour.SelectedColorChanged += new System.EventHandler<Krypton.Toolkit.ColorEventArgs>(this.kcbMinColour_SelectedColorChanged);
@@ -262,9 +239,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             // 
             // kcmbStyle
             // 
-            this.kcmbStyle.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
-            this.kcmbStyle.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
-            this.kcmbStyle.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.kcmbStyle.CornerRoundingRadius = -1F;
             this.kcmbStyle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.kcmbStyle.DropDownWidth = 290;
             this.kcmbStyle.IntegralHeight = false;
@@ -286,7 +261,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             // 
             // CustomFormatRule
             // 
-            this.ClientSize = new System.Drawing.Size(440, 219);
+            this.ClientSize = new System.Drawing.Size(540, 219);
             this.Controls.Add(this.kryptonPanel2);
             this.Controls.Add(this.kryptonPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -332,6 +307,12 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         public bool _gradient;
         #endregion
 
+        #region Public
+
+        public static OutlookGridLanguageStrings Strings => KryptonOutlookGrid.Strings;
+
+        #endregion
+
         #region Constructors
         public CustomFormatRule(EnumConditionalFormatType initialFormatType)
         {
@@ -348,6 +329,12 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             _colMedium = Color.FromArgb(252, 229, 130);
 
             _colMax = Color.FromArgb(243, 120, 97);
+
+            kcbMaxColour.Text = Strings.MaximumColour;
+
+            kcbMinColour.Text = Strings.MinimumColour;
+
+            kcbMediumColour.Text = Strings.MediumColour;
         }
         #endregion
 

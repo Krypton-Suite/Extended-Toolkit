@@ -118,7 +118,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
 
         #region Static Strings
 
-        public static OutlookGridLanguageStrings Strings => KryptonOutlookGridGroupBox.Strings;
+        public static OutlookGridLanguageStrings Strings { get; set; } = new();
 
         private bool ShouldSerializeOutlookGridLanguageStrings() => !Strings.IsDefault;
 
@@ -180,6 +180,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
             StaticValues._ImageOffsetwidth = (int)(StaticValues._ImageOffsetwidth * _factorX);
             StaticValues._groupLevelMultiplier = (int)(StaticValues._groupLevelMultiplier * _factorX);
             StaticValues._groupImageSide = (int)(StaticValues._groupImageSide * _factorX);
+
+            //Strings = KryptonOutlookGrid.Strings;
         }
 
         /// <summary>

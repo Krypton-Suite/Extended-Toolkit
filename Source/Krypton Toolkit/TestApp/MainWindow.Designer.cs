@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            this.kbtnOutlookGrid = new Krypton.Toolkit.KryptonButton();
             this.kryptonButton7 = new Krypton.Toolkit.KryptonButton();
             this.kbtnExtendedControls = new Krypton.Toolkit.KryptonButton();
             this.kryptonButton5 = new Krypton.Toolkit.KryptonButton();
@@ -39,12 +40,15 @@
             this.kbtnCircularProgressBarItem = new Krypton.Toolkit.KryptonButton();
             this.ktnToolStripItems = new Krypton.Toolkit.KryptonButton();
             this.kbtnButtonItems = new Krypton.Toolkit.KryptonButton();
+            this.kbtnNotificationExample = new Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(this.kbtnNotificationExample);
+            this.kryptonPanel1.Controls.Add(this.kbtnOutlookGrid);
             this.kryptonPanel1.Controls.Add(this.kryptonButton7);
             this.kryptonPanel1.Controls.Add(this.kbtnExtendedControls);
             this.kryptonPanel1.Controls.Add(this.kryptonButton5);
@@ -59,6 +63,17 @@
             this.kryptonPanel1.Name = "kryptonPanel1";
             this.kryptonPanel1.Size = new System.Drawing.Size(620, 390);
             this.kryptonPanel1.TabIndex = 0;
+            // 
+            // kbtnOutlookGrid
+            // 
+            this.kbtnOutlookGrid.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.kbtnOutlookGrid.CornerRoundingRadius = -1F;
+            this.kbtnOutlookGrid.Location = new System.Drawing.Point(13, 67);
+            this.kbtnOutlookGrid.Name = "kbtnOutlookGrid";
+            this.kbtnOutlookGrid.Size = new System.Drawing.Size(127, 25);
+            this.kbtnOutlookGrid.TabIndex = 9;
+            this.kbtnOutlookGrid.Values.Text = "OutlookGrid Example";
+            this.kbtnOutlookGrid.Click += new System.EventHandler(this.kbtnOutlookGrid_Click);
             // 
             // kryptonButton7
             // 
@@ -148,6 +163,16 @@
             this.kbtnButtonItems.Values.Text = "Button Items";
             this.kbtnButtonItems.Click += new System.EventHandler(this.kbtnButtonItems_Click);
             // 
+            // kbtnNotificationExample
+            // 
+            this.kbtnNotificationExample.CornerRoundingRadius = -1F;
+            this.kbtnNotificationExample.Location = new System.Drawing.Point(147, 67);
+            this.kbtnNotificationExample.Name = "kbtnNotificationExample";
+            this.kbtnNotificationExample.Size = new System.Drawing.Size(162, 25);
+            this.kbtnNotificationExample.TabIndex = 10;
+            this.kbtnNotificationExample.Values.Text = "Notification Example";
+            this.kbtnNotificationExample.Click += new System.EventHandler(this.kbtnNotificationExample_Click);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -175,5 +200,7 @@
         private Krypton.Toolkit.KryptonButton kryptonButton5;
         private Krypton.Toolkit.KryptonButton kryptonButton4;
         private Krypton.Toolkit.KryptonButton kryptonButton7;
+        private Krypton.Toolkit.KryptonButton kbtnOutlookGrid;
+        private Krypton.Toolkit.KryptonButton kbtnNotificationExample;
     }
 }
