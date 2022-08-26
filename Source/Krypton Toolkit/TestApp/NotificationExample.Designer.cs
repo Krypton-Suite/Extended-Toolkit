@@ -28,35 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ktnmTest = new Krypton.Toolkit.Suite.Extended.Notifications.KryptonToastNotificationManager();
             this.kryptonToastNotificationPopup1 = new Krypton.Toolkit.Suite.Extended.Notifications.KryptonToastNotificationPopup();
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             this.kbtnShowToastNotification = new Krypton.Toolkit.KryptonButton();
+            this.ktnmTest = new Krypton.Toolkit.Suite.Extended.Toast.KryptonToastNotificationManager();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // ktnmTest
-            // 
-            this.ktnmTest.Action = Krypton.Toolkit.Suite.Extended.Notifications.ActionType.Default;
-            this.ktnmTest.ActionButtonText = null;
-            this.ktnmTest.BorderColourOne = System.Drawing.Color.Empty;
-            this.ktnmTest.BorderColourTwo = System.Drawing.Color.Empty;
-            this.ktnmTest.ContentText = "A sample toast notification.";
-            this.ktnmTest.CornerRadius = 0;
-            this.ktnmTest.CustomIconImage = null;
-            this.ktnmTest.DismissButtonText = null;
-            this.ktnmTest.HeaderText = "Sample Toast";
-            this.ktnmTest.IconType = Krypton.Toolkit.Suite.Extended.Notifications.IconType.Information;
-            this.ktnmTest.ProcessPath = null;
-            this.ktnmTest.Seconds = 0;
-            this.ktnmTest.ShowActionButton = false;
-            this.ktnmTest.ShowControlBox = false;
-            this.ktnmTest.ShowSubScript = false;
-            this.ktnmTest.ShowTimeOutProgress = false;
-            this.ktnmTest.SoundPath = null;
-            this.ktnmTest.SoundStream = null;
-            this.ktnmTest.TimeOutProgress = 0;
             // 
             // kryptonToastNotificationPopup1
             // 
@@ -88,6 +66,19 @@
             this.kbtnShowToastNotification.Values.Text = "Show Toast Notification";
             this.kbtnShowToastNotification.Click += new System.EventHandler(this.kbtnShowToastNotification_Click);
             // 
+            // ktnmTest
+            // 
+            this.ktnmTest.ContentAreaType = Krypton.Toolkit.Suite.Extended.Toast.ContentAreaType.WrappedLabel;
+            this.ktnmTest.ContentText = "This is a sample notification.";
+            this.ktnmTest.DismissText = "&Dismiss";
+            this.ktnmTest.IconType = Krypton.Toolkit.Suite.Extended.Toast.IconType.Information;
+            this.ktnmTest.RightToLeftSupport = Krypton.Toolkit.Suite.Extended.Toast.RightToLeftSupport.LeftToRight;
+            this.ktnmTest.Title = "Sample Notification";
+            this.ktnmTest.UserResponsePromptAlignHorizontal = Krypton.Toolkit.PaletteRelativeAlign.Center;
+            this.ktnmTest.UserResponsePromptAlignVertical = Krypton.Toolkit.PaletteRelativeAlign.Center;
+            this.ktnmTest.UserResponsePromptColour = System.Drawing.Color.Gray;
+            this.ktnmTest.UserResponsePromptFont = new System.Drawing.Font("Segoe UI", 8.25F);
+            // 
             // NotificationExample
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -103,10 +94,9 @@
         }
 
         #endregion
-
-        private Krypton.Toolkit.Suite.Extended.Notifications.KryptonToastNotificationManager ktnmTest;
         private Krypton.Toolkit.Suite.Extended.Notifications.KryptonToastNotificationPopup kryptonToastNotificationPopup1;
         private Krypton.Toolkit.KryptonPanel kryptonPanel1;
         private Krypton.Toolkit.KryptonButton kbtnShowToastNotification;
+        private Krypton.Toolkit.Suite.Extended.Toast.KryptonToastNotificationManager ktnmTest;
     }
 }

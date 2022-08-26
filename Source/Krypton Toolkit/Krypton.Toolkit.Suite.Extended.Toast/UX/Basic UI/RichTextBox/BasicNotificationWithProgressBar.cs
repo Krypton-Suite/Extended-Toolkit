@@ -12,7 +12,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
     {
         #region Variables
 
-        private bool _usePanelColourInTextArea;
+        private bool _usePanelColourInTextArea, _showCloseButton;
 
         private IconType _iconType;
 
@@ -33,6 +33,8 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
         #region Properties
         public bool UsePanelColourInTextArea { get => _usePanelColourInTextArea; set => _usePanelColourInTextArea = value; }
+
+        public bool ShowCloseButton { get => _showCloseButton; set => _showCloseButton = value; }
 
         public IconType IconType { get => _iconType; set => _iconType = value; }
 
@@ -64,44 +66,14 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <param name="customImage">The custom image.</param>
         /// <param name="dismissText">The dismiss text.</param>
         public BasicNotificationWithProgressBar(IconType iconType, string title, string contentText,
-                                                bool? usePanelColourInTextArea,
+                                                bool? usePanelColourInTextArea, bool? showCloseButton,
                                                 Image customImage = null,
                                                 string dismissText = "&Dismiss",
-                                                RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LEFTTORIGHT)
+                                                RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight)
         {
             InitializeComponent();
 
-            IconType = iconType;
-
-            Title = title;
-
-            ContentText = contentText;
-
-            UsePanelColourInTextArea = usePanelColourInTextArea ?? false;
-
-            CustomImage = customImage;
-
-            DismissText = dismissText;
-
-            RightToLeftSupport = rightToLeftSupport ?? RightToLeftSupport.LEFTTORIGHT;
-
-            TopMost = true;
-
-            Resize += BasicNotificationWithProgressBar_Resize;
-
-            GotFocus += BasicNotificationWithProgressBar_GotFocus;
-
-            MouseEnter += BasicNotificationWithProgressBar_MouseEnter;
-
-            MouseHover += BasicNotificationWithProgressBar_MouseHover;
-
-            MouseLeave += BasicNotificationWithProgressBar_MouseLeave;
-
-            DoubleBuffered = true;
-
-            SetupTextArea();
-
-            ReconfigureUI(rightToLeftSupport);
+            SetupBaseUI(iconType, title, contentText, usePanelColourInTextArea, showCloseButton, customImage, dismissText, rightToLeftSupport);
         }
 
         /// <summary>Initializes a new instance of the <see cref="BasicNotificationWithProgressBar" /> class.</summary>
@@ -113,10 +85,10 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <param name="customImage">The custom image.</param>
         /// <param name="dismissText">The dismiss text.</param>
         public BasicNotificationWithProgressBar(IconType iconType, string title, string contentText,
-                                                bool? usePanelColourInTextArea, int seconds,
+                                                bool? usePanelColourInTextArea, bool? showCloseButton, int seconds,
                                                 Image customImage = null, string dismissText = "&Dismiss",
-                                                RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LEFTTORIGHT)
-            : this(iconType, title, contentText, usePanelColourInTextArea, customImage, dismissText, rightToLeftSupport)
+                                                RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight)
+            : this(iconType, title, contentText, usePanelColourInTextArea, showCloseButton, customImage, dismissText, rightToLeftSupport)
         {
             Seconds = seconds;
 
@@ -143,11 +115,11 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <param name="customImage">The custom image.</param>
         /// <param name="dismissText">The dismiss text.</param>
         public BasicNotificationWithProgressBar(IconType iconType, string title, string contentText,
-                                                bool? usePanelColourInTextArea, int seconds,
+                                                bool? usePanelColourInTextArea, bool? showCloseButton, int seconds,
                                                 string soundPath, Image customImage = null,
                                                 string dismissText = "&Dismiss",
-                                                RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LEFTTORIGHT)
-            : this(iconType, title, contentText, usePanelColourInTextArea, seconds, customImage, dismissText, rightToLeftSupport) => SoundPath = soundPath;
+                                                RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight)
+            : this(iconType, title, contentText, usePanelColourInTextArea, showCloseButton, seconds, customImage, dismissText, rightToLeftSupport) => SoundPath = soundPath;
 
         /// <summary>Initializes a new instance of the <see cref="BasicNotificationWithProgressBar" /> class.</summary>
         /// <param name="iconType">Type of the icon.</param>
@@ -158,10 +130,10 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <param name="customImage">The custom image.</param>
         /// <param name="dismissText">The dismiss text.</param>
         public BasicNotificationWithProgressBar(IconType iconType, string title, string contentText,
-                                                bool? usePanelColourInTextArea, Stream soundStream,
+                                                bool? usePanelColourInTextArea, bool? showCloseButton, Stream soundStream,
                                                 Image customImage = null, string dismissText = "&Dismiss",
-                                                RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LEFTTORIGHT)
-            : this(iconType, title, contentText, usePanelColourInTextArea, customImage, dismissText, rightToLeftSupport) => SoundStream = soundStream;
+                                                RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight)
+            : this(iconType, title, contentText, usePanelColourInTextArea, showCloseButton, customImage, dismissText, rightToLeftSupport) => SoundStream = soundStream;
 
         /// <summary>Initializes a new instance of the <see cref="BasicNotificationWithProgressBar" /> class.</summary>
         /// <param name="iconType">Type of the icon.</param>
@@ -173,11 +145,11 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <param name="customImage">The custom image.</param>
         /// <param name="dismissText">The dismiss text.</param>
         public BasicNotificationWithProgressBar(IconType iconType, string title, string contentText,
-                                                bool? usePanelColourInTextArea, int seconds,
+                                                bool? usePanelColourInTextArea, bool? showCloseButton, int seconds,
                                                 Stream soundStream, Image customImage = null,
                                                 string dismissText = "&Dismiss",
-                                                RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LEFTTORIGHT)
-            : this(iconType, title, contentText, usePanelColourInTextArea, seconds, customImage, dismissText, rightToLeftSupport) => SoundStream = soundStream;
+                                                RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight)
+            : this(iconType, title, contentText, usePanelColourInTextArea, showCloseButton, seconds, customImage, dismissText, rightToLeftSupport) => SoundStream = soundStream;
         #endregion
 
         #region Event Handlers
@@ -328,7 +300,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
         private void ReconfigureUI(RightToLeftSupport? rightToLeftSupport)
         {
-            if (rightToLeftSupport == RightToLeftSupport.LEFTTORIGHT)
+            if (rightToLeftSupport == RightToLeftSupport.LeftToRight)
             {
                 RightToLeft = RightToLeft.No;
 
@@ -356,6 +328,53 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
                 kbtnDismiss.Location = new Point(12, 13);
             }
+        }
+
+        private void SetControlBoxVisibility(bool visibilityToggle) => ControlBox = visibilityToggle;
+
+        private void SetWindowBorderStyle(FormBorderStyle borderStyle) => FormBorderStyle = borderStyle;
+
+        private void SetupBaseUI(IconType iconType, string title, string contentText,
+                                 bool? usePanelColourInTextArea, bool? showCloseButton,
+                                 Image customImage = null,
+                                 string dismissText = "&Dismiss",
+                                 RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight)
+        {
+            IconType = iconType;
+
+            Title = title;
+
+            ContentText = contentText;
+
+            UsePanelColourInTextArea = usePanelColourInTextArea ?? false;
+
+            ShowCloseButton = showCloseButton ?? false;
+
+            CustomImage = customImage;
+
+            DismissText = dismissText;
+
+            RightToLeftSupport = rightToLeftSupport ?? RightToLeftSupport.LeftToRight;
+
+            TopMost = true;
+
+            SetControlBoxVisibility(ShowCloseButton);
+
+            Resize += BasicNotificationWithProgressBar_Resize;
+
+            GotFocus += BasicNotificationWithProgressBar_GotFocus;
+
+            MouseEnter += BasicNotificationWithProgressBar_MouseEnter;
+
+            MouseHover += BasicNotificationWithProgressBar_MouseHover;
+
+            MouseLeave += BasicNotificationWithProgressBar_MouseLeave;
+
+            DoubleBuffered = true;
+
+            SetupTextArea();
+
+            ReconfigureUI(rightToLeftSupport);
         }
         #endregion
     }

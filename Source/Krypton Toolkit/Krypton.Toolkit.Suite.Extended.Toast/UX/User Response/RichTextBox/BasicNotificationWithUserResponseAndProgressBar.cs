@@ -11,7 +11,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
     public partial class BasicNotificationWithUserResponseAndProgressBar : KryptonForm
     {
         #region Variables
-        private bool _usePanelColourInTextArea, _useNativeBackColourInUserResponseArea;
+        private bool _usePanelColourInTextArea, _useNativeBackColourInUserResponseArea, _showCloseButton;
 
         private Color _userResponsePromptColour;
 
@@ -40,6 +40,8 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         public bool UsePanelColourInTextArea { get => _usePanelColourInTextArea; set => _usePanelColourInTextArea = value; }
 
         public bool UseNativeBackColourInUserResponseArea { get => _useNativeBackColourInUserResponseArea; set => _useNativeBackColourInUserResponseArea = value; }
+
+        public bool ShowCloseButton { get => _showCloseButton; set => _showCloseButton = value; }
 
         public Color UserResponsePromptColour { get => _userResponsePromptColour; set => _userResponsePromptColour = value; }
 
@@ -96,7 +98,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                                                                PaletteRelativeAlign? userResponseCueAlignHorizontal = null,
                                                                PaletteRelativeAlign? userResponseCueAlignVertical = null,
                                                                Font userResponseCueFont = null,
-                                                               RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LEFTTORIGHT)
+                                                               RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight)
         {
             InitializeComponent();
 
@@ -124,7 +126,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
             UserResponsePromptFont = userResponseCueFont;
 
-            RightToLeftSupport = rightToLeftSupport ?? RightToLeftSupport.LEFTTORIGHT;
+            RightToLeftSupport = rightToLeftSupport ?? RightToLeftSupport.LeftToRight;
 
             TopMost = true;
 
@@ -169,7 +171,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                                                                PaletteRelativeAlign? userResponseCueAlignHorizontal = null,
                                                                PaletteRelativeAlign? userResponseCueAlignVertical = null,
                                                                Font userResponseCueFont = null,
-                                                               RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LEFTTORIGHT)
+                                                               RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight)
             : this(iconType, title, contentText, usePanelColourInTextArea, useNativeBackColourInUserResponseArea,
                    customImage, dismissText, userResponseCueText,
                    userResponseCueColour, userResponseCueAlignHorizontal,
@@ -216,7 +218,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                                                                PaletteRelativeAlign? userResponseCueAlignHorizontal = null,
                                                                PaletteRelativeAlign? userResponseCueAlignVertical = null,
                                                                Font userResponseCueFont = null,
-                                                               RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LEFTTORIGHT)
+                                                               RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight)
             : this(iconType, title, contentText, usePanelColourInTextArea, useNativeBackColourInUserResponseArea, seconds, customImage, dismissText, userResponseCueText,
                    userResponseCueColour, userResponseCueAlignHorizontal,
                    userResponseCueAlignVertical, userResponseCueFont, rightToLeftSupport) => SoundPath = soundPath;
@@ -245,7 +247,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                                                                PaletteRelativeAlign? userResponseCueAlignHorizontal = null,
                                                                PaletteRelativeAlign? userResponseCueAlignVertical = null,
                                                                Font userResponseCueFont = null,
-                                                               RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LEFTTORIGHT)
+                                                               RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight)
             : this(iconType, title, contentText, usePanelColourInTextArea, useNativeBackColourInUserResponseArea, customImage, dismissText, userResponseCueText,
                    userResponseCueColour, userResponseCueAlignHorizontal,
                    userResponseCueAlignVertical, userResponseCueFont, rightToLeftSupport) => SoundStream = soundStream;
@@ -274,7 +276,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                                                                PaletteRelativeAlign? userResponseCueAlignHorizontal = null,
                                                                PaletteRelativeAlign? userResponseCueAlignVertical = null,
                                                                Font userResponseCueFont = null,
-                                                               RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LEFTTORIGHT)
+                                                               RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight)
             : this(iconType, title, contentText, usePanelColourInTextArea, useNativeBackColourInUserResponseArea, seconds, customImage, dismissText, userResponseCueText,
                    userResponseCueColour, userResponseCueAlignHorizontal,
                    userResponseCueAlignVertical, userResponseCueFont, rightToLeftSupport) => SoundStream = soundStream;
@@ -555,7 +557,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
         private void ReconfigureUI(RightToLeftSupport? rightToLeftSupport)
         {
-            if (rightToLeftSupport == RightToLeftSupport.LEFTTORIGHT)
+            if (rightToLeftSupport == RightToLeftSupport.LeftToRight)
             {
                 RightToLeft = RightToLeft.No;
 

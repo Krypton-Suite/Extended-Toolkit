@@ -11,7 +11,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
     public class KryptonToastNotificationManager : Component
     {
         #region Variables
-        private bool _useUserResponse, _useProgressBar, _usePanelColourInTextArea, _useNativeBackColourInUserResponseArea;
+        private bool _useUserResponse, _useProgressBar, _usePanelColourInTextArea, _useNativeBackColourInUserResponseArea, _showCloseButton;
 
         private Color _userResponsePromptColour;
 
@@ -50,6 +50,9 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
         [DefaultValue(false), Description(@"")]
         public bool UseNativeBackColourInUserResponseArea { get => _useNativeBackColourInUserResponseArea; set => _useNativeBackColourInUserResponseArea = value; }
+
+        [DefaultValue(false), Description(@"")]
+        public bool ShowCloseButton { get => _showCloseButton; set => _showCloseButton = value; }
 
         [DefaultValue(typeof(Color), "Color.Gray"), Description(@"")]
         public Color UserResponsePromptColour { get => _userResponsePromptColour; set => _userResponsePromptColour = value; }
@@ -106,6 +109,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
         #region Constructor
 
+        /// <summary>Initializes a new instance of the <see cref="KryptonToastNotificationManager" /> class.</summary>
         public KryptonToastNotificationManager()
         {
             UseUserResponsePrompt = false;
@@ -116,6 +120,8 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
             UseNativeBackColourInUserResponseArea = false;
 
+            ShowCloseButton = false;
+
             UserResponsePromptColour = Color.Gray;
 
             UserResponsePromptAlignHorizontal = PaletteRelativeAlign.Center;
@@ -124,7 +130,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
             UserResponsePromptFont = new Font("Segoe UI", 8.25F);
 
-            IconType = IconType.NONE;
+            IconType = IconType.None;
 
             Time = 60;
 
@@ -144,25 +150,50 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
             CustomImage = null;
 
-            RightToLeftSupport = RightToLeftSupport.LEFTTORIGHT;
+            RightToLeftSupport = RightToLeftSupport.LeftToRight;
 
-            ContentAreaType = ContentAreaType.WRAPPEDLABEL;
+            ContentAreaType = ContentAreaType.WrappedLabel;
         }
 
+        /// <summary>Initializes a new instance of the <see cref="KryptonToastNotificationManager" /> class.</summary>
+        /// <param name="useUserResponse">if set to <c>true</c> [use user response].</param>
+        /// <param name="title">The title.</param>
+        /// <param name="contentText">The content text.</param>
+        /// <param name="usePanelColourInTextArea">The use panel colour in text area.</param>
+        /// <param name="useNativeBackColourInUserResponseArea">The use native back colour in user response area.</param>
+        /// <param name="showCloseButton">Shows the control box on the toast.</param>
+        /// <param name="userResponsePromptColour">The user response prompt colour.</param>
+        /// <param name="userResponsePromptAlignHorizontal">The user response prompt align horizontal.</param>
+        /// <param name="userResponsePromptAlignVertical">The user response prompt align vertical.</param>
+        /// <param name="userResponsePromptFont">The user response prompt font.</param>
+        /// <param name="iconType">Type of the icon.</param>
+        /// <param name="time">The time.</param>
+        /// <param name="seconds">The seconds.</param>
+        /// <param name="soundPath">The sound path.</param>
+        /// <param name="dismissText">The dismiss text.</param>
+        /// <param name="userResponsePromptText">The user response prompt text.</param>
+        /// <param name="soundStream">The sound stream.</param>
+        /// <param name="customImage">The custom image.</param>
+        /// <param name="rightToLeftSupport">The right to left support.</param>
+        /// <param name="useProgressBar">if set to <c>true</c> [use progress bar].</param>
+        /// <param name="contentAreaType">Type of the content area.</param>
         public KryptonToastNotificationManager(bool useUserResponse, string title, string contentText,
                                                bool? usePanelColourInTextArea, bool? useNativeBackColourInUserResponseArea,
+                                               bool? showCloseButton,
                                                Color? userResponsePromptColour = null,
                                                PaletteRelativeAlign userResponsePromptAlignHorizontal = PaletteRelativeAlign.Near,
                                                PaletteRelativeAlign userResponsePromptAlignVertical = PaletteRelativeAlign.Near,
-                                               Font userResponsePromptFont = null, IconType iconType = IconType.NONE,
+                                               Font userResponsePromptFont = null, IconType iconType = IconType.None,
                                                int time = 0, int seconds = 0, string soundPath = null, string dismissText = "Di&smiss",
                                                string userResponsePromptText = "Type response here...", Stream soundStream = null,
-                                               Image customImage = null, RightToLeftSupport rightToLeftSupport = RightToLeftSupport.LEFTTORIGHT,
-                                               bool useProgressBar = false, ContentAreaType contentAreaType = ContentAreaType.WRAPPEDLABEL)
+                                               Image customImage = null, RightToLeftSupport rightToLeftSupport = RightToLeftSupport.LeftToRight,
+                                               bool useProgressBar = false, ContentAreaType contentAreaType = ContentAreaType.WrappedLabel)
         {
             UseProgressBar = useProgressBar;
 
             UseUserResponsePrompt = useUserResponse;
+
+            ShowCloseButton = showCloseButton ?? false;
 
             Title = title;
 
@@ -205,34 +236,35 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         #region Methods
         public void DisplayNotificationToast()
         {
-            if (_rightToLeftSupport == RightToLeftSupport.LEFTTORIGHT)
+            if (_rightToLeftSupport == RightToLeftSupport.LeftToRight)
             {
                 if (!_useUserResponse)
                 {
                     if (!_useProgressBar)
                     {
-                        if (_contentAreaType == ContentAreaType.LABEL)
+                        if (_contentAreaType == ContentAreaType.Label)
                         {
                             ApplicationUtilities.UnderConstruction();
                         }
-                        else if (_contentAreaType == ContentAreaType.WRAPPEDLABEL)
+                        else if (_contentAreaType == ContentAreaType.WrappedLabel)
                         {
                             BasicNotificationAlternativeUI notification = new BasicNotificationAlternativeUI(
                                 IconType,
-                                Title, ContentText, Seconds, SoundPath,
+                                Title, ContentText, ShowCloseButton, Seconds, SoundPath,
                                 CustomImage, DismissText,
                                 RightToLeftSupport);
 
                             notification.Show();
                         }
-                        else if (_contentAreaType == ContentAreaType.MULTILINEDTEXTBOX)
+                        else if (_contentAreaType == ContentAreaType.MultiLinedTextBox)
                         {
                             ApplicationUtilities.UnderConstruction();
                         }
-                        else if (_contentAreaType == ContentAreaType.RICHTEXTBOX)
+                        else if (_contentAreaType == ContentAreaType.RichTextBox)
                         {
                             BasicNotification notification = new BasicNotification(IconType, Title, ContentText, 
                                                                                    UsePanelColourInTextArea,
+                                                                                   ShowCloseButton,
                                                                                    Seconds, SoundPath,
                                                                                    CustomImage, DismissText, RightToLeftSupport);
 
@@ -241,28 +273,30 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                     }
                     else
                     {
-                        if (_contentAreaType == ContentAreaType.LABEL)
+                        if (_contentAreaType == ContentAreaType.Label)
                         {
                             ApplicationUtilities.UnderConstruction();
                         }
-                        else if (_contentAreaType == ContentAreaType.WRAPPEDLABEL)
+                        else if (_contentAreaType == ContentAreaType.WrappedLabel)
                         {
                             BasicNotificationWithProgressBarAlternativeUI notification =
-                                new BasicNotificationWithProgressBarAlternativeUI(IconType, Title, ContentText,
-                                    Seconds,
-                                    SoundStream, CustomImage, DismissText, RightToLeftSupport);
+                                new BasicNotificationWithProgressBarAlternativeUI(IconType, Title, ContentText, 
+                                                                                  ShowCloseButton,
+                                                                                  Seconds, SoundStream,
+                                                                                  CustomImage, DismissText, RightToLeftSupport);
 
                             notification.Show();
                         }
-                        else if (_contentAreaType == ContentAreaType.MULTILINEDTEXTBOX)
+                        else if (_contentAreaType == ContentAreaType.MultiLinedTextBox)
                         {
                             ApplicationUtilities.UnderConstruction();
                         }
-                        else if (_contentAreaType == ContentAreaType.RICHTEXTBOX)
+                        else if (_contentAreaType == ContentAreaType.RichTextBox)
                         {
                             BasicNotificationWithProgressBar notification = new BasicNotificationWithProgressBar(
                                                                                                                  IconType, Title, ContentText,
-                                                                                                                 UsePanelColourInTextArea,
+                                                                                                                 UsePanelColourInTextArea, 
+                                                                                                                 ShowCloseButton,
                                                                                                                  Seconds, SoundStream,
                                                                                                                  CustomImage, DismissText, RightToLeftSupport);
 
@@ -274,11 +308,11 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                 {
                     if (!_useProgressBar)
                     {
-                        if (_contentAreaType == ContentAreaType.LABEL)
+                        if (_contentAreaType == ContentAreaType.Label)
                         {
                             ApplicationUtilities.UnderConstruction();
                         }
-                        else if (_contentAreaType == ContentAreaType.WRAPPEDLABEL)
+                        else if (_contentAreaType == ContentAreaType.WrappedLabel)
                         {
                             BasicNotificationWithUserResponseWrappedLabel notification = new BasicNotificationWithUserResponseWrappedLabel(IconType, Title, ContentText, Seconds,
                                                                                                                                                  SoundPath, CustomImage,
@@ -290,14 +324,15 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
                             notification.Show();
                         }
-                        else if (_contentAreaType == ContentAreaType.MULTILINEDTEXTBOX)
+                        else if (_contentAreaType == ContentAreaType.MultiLinedTextBox)
                         {
                             ApplicationUtilities.UnderConstruction();
                         }
-                        else if (_contentAreaType == ContentAreaType.RICHTEXTBOX)
+                        else if (_contentAreaType == ContentAreaType.RichTextBox)
                         {
                             BasicNotificationWithUserResponse notification = new BasicNotificationWithUserResponse(IconType, Title, ContentText,
-                                                                                                                         UsePanelColourInTextArea, UseNativeBackColourInUserResponseArea,
+                                                                                                                         UsePanelColourInTextArea, UseNativeBackColourInUserResponseArea, 
+                                                                                                                         ShowCloseButton,
                                                                                                                          Seconds,
                                                                                                                          SoundPath, CustomImage,
                                                                                                                          DismissText, UserResponsePromptText, 

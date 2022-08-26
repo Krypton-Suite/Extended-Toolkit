@@ -8,6 +8,7 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Notifications
 {
+    [Obsolete("Please use the 'KryptonToastNotificationManager' in the 'Toast' module."), ToolboxItem(false)]
     public class KryptonToastNotificationManager : Component
     {
         #region Variables
@@ -23,117 +24,104 @@ namespace Krypton.Toolkit.Suite.Extended.Notifications
         #endregion
 
         #region Properties
-        /// <summary>
-        /// Gets or sets the type of the action.
-        /// </summary>
-        /// <value>
-        /// The type of the action.
-        /// </value>
+        /// <summary>Gets or sets the type of the action.</summary>
+        /// <value>The type of the action.</value>
+        [DefaultValue(typeof(ActionType), "ActionType.Default")]
         public ActionType Action { get => _actionType; set => _actionType = value; }
 
-        /// <summary>
-        /// Gets or sets a value indicating whether [show action button].
-        /// </summary>
-        /// <value>
-        ///   <c>true</c> if [show action button]; otherwise, <c>false</c>.
-        /// </value>
+        /// <summary>Gets or sets a value indicating whether [show action button].</summary>
+        /// <value><c>true</c> if [show action button]; otherwise, <c>false</c>.</value>
+        [DefaultValue(false)]
         public bool ShowActionButton { get => _showActionButton; set => _showActionButton = value; }
 
         /// <summary>Gets or sets a value indicating whether show the seconds subscript.</summary>
         /// <value><c>true</c> if [show sub script]; otherwise, <c>false</c>.</value>
+        [DefaultValue(false)]
         public bool ShowSubScript { get => _showSubScript; set => _showSubScript = value; }
 
         /// <summary>Gets or sets the border colour one.</summary>
         /// <value>The border colour one.</value>
+        [DefaultValue(typeof(Color), "Color.Empty")]
         public Color BorderColourOne { get => _borderColourOne; set => _borderColourOne = value; }
 
         /// <summary>Gets or sets the border colour two.</summary>
         /// <value>The border colour two.</value>
+        [DefaultValue(typeof(Color), "Color.Empty")]
         public Color BorderColourTwo { get => _borderColourTwo; set => _borderColourTwo = value; }
 
         /// <summary>Gets or sets a value indicating whether [show time out progress].</summary>
         /// <value><c>true</c> if [show time out progress]; otherwise, <c>false</c>.</value>
+        [DefaultValue(false)]
         public bool ShowTimeOutProgress { get => _showTimeoutProgress; set => _showTimeoutProgress = value; }
 
         /// <summary>Gets or sets a value indicating whether [show control box].</summary>
-        /// <value>
-        ///   <c>true</c> if [show control box]; otherwise, <c>false</c>.</value>
+        /// <value><c>true</c> if [show control box]; otherwise, <c>false</c>.</value>
+        [DefaultValue(false)]
         public bool ShowControlBox { get => _showControlBox; set => _showControlBox = value; }
 
-        /// <summary>
-        /// Gets or sets the sound path.
-        /// </summary>
-        /// <value>
-        /// The sound path.
-        /// </value>
+        /// <summary>Gets or sets the sound path.</summary>
+        /// <value> The sound path.</value>
+        [DefaultValue("")]
         public string SoundPath { get => _soundPath; set => _soundPath = value; }
 
-        /// <summary>
-        /// Gets or sets the sound stream.
-        /// </summary>
-        /// <value>
-        /// The sound stream.
-        /// </value>
+        /// <summary>Gets or sets the sound stream.</summary>
+        /// <value>The sound stream.</value>
+        [DefaultValue("")]
         public Stream SoundStream { get => _soundStream; set => _soundStream = value; }
 
-        /// <summary>
-        /// Gets or sets the header text.
-        /// </summary>
-        /// <value>
-        /// The header text.
-        /// </value>
+        /// <summary>Gets or sets the header text.</summary>
+        /// <value>The header text.</value>
+        [DefaultValue("")]
         public string HeaderText { get => _headerText; set => _headerText = value; }
 
-        /// <summary>
-        /// Gets or sets the content text.
-        /// </summary>
-        /// <value>
-        /// The content text.
-        /// </value>
+        /// <summary>Gets or sets the content text.</summary>
+        /// <value>The content text.</value>
+        [DefaultValue("")]
         public string ContentText { get; set; } //? { get => _contentText; set => _contentText = value; }
 
-        /// <summary>
-        /// Gets or sets the name of the process.
-        /// </summary>
-        /// <value>
-        /// The name of the process.
-        /// </value>
+        /// <summary>Gets or sets the name of the process.</summary>
+        /// <value>The name of the process.</value>
+        [DefaultValue("")]
         public string ProcessPath { get => _processPath; set => _processPath = value; }
 
         /// <summary>Gets or sets the dismiss button text.</summary>
         /// <value>The dismiss button text.</value>
+        [DefaultValue("")]
         public string DismissButtonText { get => _dismissButtonText; set => _dismissButtonText = value; }
 
-        /// <summary>
-        /// Gets or sets the icon image.
-        /// </summary>
-        /// <value>
-        /// The icon image.
-        /// </value>
+        /// <summary>Gets or sets the icon image.</summary>
+        /// <value>The icon image.</value>
+        [DefaultValue(null)]
         public Image CustomIconImage { get => _customIconImage; set => _customIconImage = value; }
 
-        /// <summary>
-        /// Gets or sets the seconds.
-        /// </summary>
-        /// <value>
-        /// The seconds.
-        /// </value>
+        /// <summary>Gets or sets the seconds.</summary>
+        /// <value>The seconds.</value>
+        [DefaultValue(60)]
         public int Seconds { get => _seconds; set => _seconds = value; }
 
         /// <summary>Gets or sets the corner radius.</summary>
         /// <value>The corner radius.</value>
+        [DefaultValue(-1)]
         public int CornerRadius { get => _cornerRadius; set => _cornerRadius = value; }
 
+        /// <summary>Gets or sets the time out progress.</summary>
+        /// <value>The time out progress.</value>
+        [DefaultValue(60)]
         public int TimeOutProgress { get => _timeOutProgress; set => _timeOutProgress = value; }
 
+        /// <summary>Gets or sets the action button text.</summary>
+        /// <value>The action button text.</value>
+        [DefaultValue("")]
         public string ActionButtonText { get => _actionButtonText; set => _actionButtonText = value; }
 
         /// <summary>Gets or sets the type of the icon.</summary>
         /// <value>The type of the icon.</value>
+        [DefaultValue(typeof(IconType), "IconType.None")]
         public IconType IconType { get => _iconType; set => _iconType = value; }
         #endregion
 
         #region Constructor
+        /// <summary>Initializes a new instance of the <see cref="KryptonToastNotificationManager" /> class.</summary>
         public KryptonToastNotificationManager()
         {
 

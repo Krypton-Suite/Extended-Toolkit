@@ -43,38 +43,70 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         {
             switch (iconType)
             {
-                case IconType.CUSTOM:
+                case IconType.Custom:
                     SetIconImage(target, customImage);
                     break;
-                case IconType.OK:
+                case IconType.Ok:
                     SetIconImage(target, Properties.Resources.Input_Box_Ok_128_x_128);
                     break;
-                case IconType.ERROR:
+                case IconType.Error:
                     SetIconImage(target, Properties.Resources.Input_Box_Critical_128_x_128);
                     break;
-                case IconType.EXCLAMATION:
+                case IconType.Exclamation:
                     SetIconImage(target, Properties.Resources.Input_Box_Warning_128_x_115);
                     break;
-                case IconType.INFORMATION:
+                case IconType.Information:
                     SetIconImage(target, Properties.Resources.Input_Box_Information_128_x_128);
                     break;
-                case IconType.QUESTION:
+                case IconType.Question:
                     SetIconImage(target, Properties.Resources.Input_Box_Question_128_x_128);
                     break;
-                case IconType.NOTHING:
+                case IconType.None:
                     SetIconImage(target, null);
                     break;
-                case IconType.NONE:
-                    SetIconImage(target, null);
-                    break;
-                case IconType.STOP:
+                case IconType.Stop:
                     SetIconImage(target, Properties.Resources.Input_Box_Stop_128_x_128);
                     break;
-                case IconType.HAND:
+                case IconType.Hand:
                     SetIconImage(target, Properties.Resources.Input_Box_Hand_128_x_128);
                     break;
-                case IconType.WARNING:
+                case IconType.Warning:
                     SetIconImage(target, Properties.Resources.Input_Box_Warning_128_x_115);
+                    break;
+                case IconType.Asterisk:
+                    SetIconImage(target, Properties.Resources.Input_Box_Asterisk_128_x_128);
+                    break;
+                case IconType.Shield:
+                    if (Environment.OSVersion.Version.Major >= 10 && Environment.OSVersion.Version.Build >= 22000)
+                    {
+                        SetIconImage(target, Properties.Resources.Input_Box_UAC_Shield_Windows_11_128_x_128);
+                    }
+                    // Windows 10
+                    else if (Environment.OSVersion.Version.Major == 10 && Environment.OSVersion.Version.Build <= 19044 /* RTM - 21H2 */)
+                    {
+                        SetIconImage(target, Properties.Resources.Input_Box_UAC_Shield_Windows_10_128_x_128);
+                    }
+                    else
+                    {
+                        SetIconImage(target, Properties.Resources.Input_Box_UAC_Shield_Windows_7_and_8_128_x_128);
+                    }
+                    break;
+                case IconType.WindowsLogo:
+                    // Because Windows 11 displays a generic application icon,
+                    // we need to rely on a image instead
+                    if (Environment.OSVersion.Version.Major >= 10 && Environment.OSVersion.Version.Build >= 22000)
+                    {
+                        SetIconImage(target, Properties.Resources.Input_Box_Windows_11_128_x_128);
+                    }
+                    // Windows 10
+                    else if (Environment.OSVersion.Version.Major == 10 && Environment.OSVersion.Version.Build <= 19044 /* RTM - 21H2 */)
+                    {
+                        SetIconImage(target, Properties.Resources.Input_Box_Windows_10_128_x_121);
+                    }
+                    else
+                    {
+                        SetIconImage(target, SystemIcons.WinLogo.ToBitmap());
+                    }
                     break;
             }
         }

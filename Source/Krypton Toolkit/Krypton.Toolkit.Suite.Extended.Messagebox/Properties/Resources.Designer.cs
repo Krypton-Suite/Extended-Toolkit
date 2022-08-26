@@ -133,9 +133,29 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap UAC_Shield {
+        internal static System.Drawing.Bitmap UAC_Shield_Windows_10 {
             get {
-                object obj = ResourceManager.GetObject("UAC_Shield", resourceCulture);
+                object obj = ResourceManager.GetObject("UAC_Shield_Windows_10", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap UAC_Shield_Windows_11 {
+            get {
+                object obj = ResourceManager.GetObject("UAC_Shield_Windows_11", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap UAC_Shield_Windows_7 {
+            get {
+                object obj = ResourceManager.GetObject("UAC_Shield_Windows_7", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -12,16 +12,11 @@ using Krypton.Toolkit;
 
 namespace TestApp
 {
-    public partial class NotificationExample : KryptonForm
+    public partial class ToastExample : KryptonForm
     {
-        public NotificationExample()
+        public ToastExample()
         {
             InitializeComponent();
-        }
-
-        private void kbtnShowToastNotification_Click(object sender, EventArgs e)
-        {
-            ktnmTest.DisplayNotificationToast();
         }
     }
 }
