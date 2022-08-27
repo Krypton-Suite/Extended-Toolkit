@@ -62,19 +62,19 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
                     Text = KryptonManager.Strings.Abort;
                     break;
                 case KryptonButtonBuiltInDisplayString.Apply:
-                    //Text = KryptonManager.Strings.Apply;
+                    Text = KryptonManager.Strings.Apply;
                     break;
                 case KryptonButtonBuiltInDisplayString.Cancel:
                     Text = KryptonManager.Strings.Cancel;
-                    break;
-                case KryptonButtonBuiltInDisplayString.Close:
-                    Text = KryptonManager.Strings.Close;
                     break;
                 case KryptonButtonBuiltInDisplayString.Collapse:
                     Text = KryptonManager.Strings.Collapse;
                     break;
                 case KryptonButtonBuiltInDisplayString.Continue:
                     Text = KryptonManager.Strings.Continue;
+                    break;
+                case KryptonButtonBuiltInDisplayString.Close:
+                    Text = KryptonManager.Strings.Close;
                     break;
                 case KryptonButtonBuiltInDisplayString.Custom:
                     Text = customText;
@@ -103,7 +103,14 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
                 case KryptonButtonBuiltInDisplayString.Expand:
                     Text = KryptonManager.Strings.Expand;
                     break;
+                case KryptonButtonBuiltInDisplayString.Today:
+                    Text = KryptonManager.Strings.Today;
+                    break;
+                default:
+                    break;
             }
+
+            DisplayString = ReturnDisplayString(Text);
         }
 
         private void ChangeButtonText(string buttonText)
@@ -142,6 +149,38 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             else if (buttonText == KryptonManager.Strings.Expand)
             {
                 return KryptonButtonBuiltInDisplayString.Expand;
+            }
+            else if (buttonText == KryptonManager.Strings.Help)
+            {
+                return KryptonButtonBuiltInDisplayString.Help;
+            }
+            else if (buttonText == KryptonManager.Strings.Ignore)
+            {
+                return KryptonButtonBuiltInDisplayString.Ignore;
+            }
+            else if (buttonText == KryptonManager.Strings.No)
+            {
+                return KryptonButtonBuiltInDisplayString.No;
+            }
+            else if (buttonText == KryptonManager.Strings.OK)
+            {
+                return KryptonButtonBuiltInDisplayString.Ok;
+            }
+            else if (buttonText == KryptonManager.Strings.Retry)
+            {
+                return KryptonButtonBuiltInDisplayString.Retry;
+            }
+            else if (buttonText == KryptonManager.Strings.Today)
+            {
+                return KryptonButtonBuiltInDisplayString.Today;
+            }
+            else if (buttonText == KryptonManager.Strings.TryAgain)
+            {
+                return KryptonButtonBuiltInDisplayString.TryAgain;
+            }
+            else if (buttonText == KryptonManager.Strings.Yes)
+            {
+                return KryptonButtonBuiltInDisplayString.Yes;
             }
             else
             {

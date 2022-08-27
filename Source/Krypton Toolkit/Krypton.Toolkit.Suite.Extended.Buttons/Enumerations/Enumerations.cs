@@ -39,6 +39,12 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         Ignore = 11,
         Help = 12,
         TryAgain = 13,
-        Expand = 14
+        Expand = 14,
+        Today = 15,
+        Back = 16,
+        Exit = 17,
+        Finish = 18,
+        Next = 19,
+        Previous = 20
     }
 }
