@@ -62,7 +62,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
                     Text = KryptonManager.Strings.Abort;
                     break;
                 case KryptonButtonBuiltInDisplayString.Apply:
-                    Text = KryptonManager.Strings.Apply;
+                    //Text = KryptonManager.Strings.Apply;
                     break;
                 case KryptonButtonBuiltInDisplayString.Cancel:
                     Text = KryptonManager.Strings.Cancel;
@@ -106,16 +106,56 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             }
         }
 
+        private void ChangeButtonText(string buttonText)
+        {
+
+
+            DisplayString = ReturnDisplayString(buttonText);
+        }
+
+        private KryptonButtonBuiltInDisplayString ReturnDisplayString(string buttonText)
+        {
+            if (buttonText == KryptonManager.Strings.Abort)
+            {
+                return KryptonButtonBuiltInDisplayString.Abort;
+            }
+            else if (buttonText == KryptonManager.Strings.Apply)
+            {
+                return KryptonButtonBuiltInDisplayString.Apply;
+            }
+            else if (buttonText == KryptonManager.Strings.Cancel)
+            {
+                return KryptonButtonBuiltInDisplayString.Cancel;
+            }
+            else if (buttonText == KryptonManager.Strings.Close)
+            {
+                return KryptonButtonBuiltInDisplayString.Close;
+            }
+            else if (buttonText == KryptonManager.Strings.Collapse)
+            {
+                return KryptonButtonBuiltInDisplayString.Collapse;
+            }
+            else if (buttonText == KryptonManager.Strings.Continue)
+            {
+                return KryptonButtonBuiltInDisplayString.Continue;
+            }
+            else if (buttonText == KryptonManager.Strings.Expand)
+            {
+                return KryptonButtonBuiltInDisplayString.Expand;
+            }
+            else
+            {
+                return KryptonButtonBuiltInDisplayString.Custom;
+            }
+        }
+
         #endregion
 
         #region Protected
 
         protected override void OnTextChanged(EventArgs e)
         {
-            if (Text != KryptonManager.Strings.Abort || Text != KryptonManager.Strings.Apply || Text != KryptonManager.Strings.Cancel || Text != KryptonManager.Strings.Close || Text != KryptonManager.Strings.Collapse || Text != KryptonManager.Strings.Continue || Text != KryptonManager.Strings.Expand || Text != KryptonManager.Strings.Help || Text != KryptonManager.Strings.Ignore || Text != KryptonManager.Strings.No || Text != KryptonManager.Strings.OK)
-            {
-                _displayString = KryptonButtonBuiltInDisplayString.Custom;
-            }
+            ChangeButtonText(Text);
 
             base.OnTextChanged(e);
         }
