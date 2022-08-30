@@ -68,7 +68,7 @@
             // 
             // ktnmTest
             // 
-            this.ktnmTest.ContentAreaType = Krypton.Toolkit.Suite.Extended.Toast.ContentAreaType.WrappedLabel;
+            this.ktnmTest.ContentAreaType = Krypton.Toolkit.Suite.Extended.Toast.ToastNotificationContentAreaType.WrappedLabel;
             this.ktnmTest.ContentText = "This is a sample notification.";
             this.ktnmTest.DismissText = "&Dismiss";
             this.ktnmTest.IconType = Krypton.Toolkit.Suite.Extended.Toast.IconType.Information;

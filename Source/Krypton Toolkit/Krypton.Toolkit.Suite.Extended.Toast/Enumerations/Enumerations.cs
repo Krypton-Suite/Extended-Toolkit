@@ -67,7 +67,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         RightToLeft = 1
     }
 
-    public enum InputBoxSystemSounds
+    public enum ToastNotificationSystemSounds
     {
         Asterisk = 0,
         Beep = 1,
@@ -78,7 +78,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         None = 6
     }
 
-    public enum ContentAreaType
+    public enum ToastNotificationContentAreaType
     {
         Label = 0,
         WrappedLabel = 1,

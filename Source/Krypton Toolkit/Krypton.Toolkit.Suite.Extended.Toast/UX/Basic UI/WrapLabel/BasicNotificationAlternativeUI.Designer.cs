@@ -43,6 +43,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             this.kbtnDismiss = new Krypton.Toolkit.KryptonButton();
             this.kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
+            this.kbtnAction = new Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
             this.kryptonPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxToastImage)).BeginInit();
@@ -104,6 +105,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(this.kbtnAction);
             this.kryptonPanel1.Controls.Add(this.kbtnDismiss);
             this.kryptonPanel1.Controls.Add(this.kryptonBorderEdge1);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -115,6 +117,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             // 
             // kbtnDismiss
             // 
+            this.kbtnDismiss.CornerRoundingRadius = -1F;
             this.kbtnDismiss.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.kbtnDismiss.Location = new System.Drawing.Point(423, 13);
             this.kbtnDismiss.Name = "kbtnDismiss";
@@ -131,6 +134,18 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             this.kryptonBorderEdge1.Name = "kryptonBorderEdge1";
             this.kryptonBorderEdge1.Size = new System.Drawing.Size(609, 1);
             this.kryptonBorderEdge1.Text = "kryptonBorderEdge1";
+            // 
+            // kbtnAction
+            // 
+            this.kbtnAction.AutoSize = true;
+            this.kbtnAction.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.kbtnAction.CornerRoundingRadius = -1F;
+            this.kbtnAction.Location = new System.Drawing.Point(12, 13);
+            this.kbtnAction.Name = "kbtnAction";
+            this.kbtnAction.Size = new System.Drawing.Size(56, 22);
+            this.kbtnAction.TabIndex = 4;
+            this.kbtnAction.Values.Text = "O&pen {0}";
+            this.kbtnAction.Visible = false;
             // 
             // BasicNotificationAlternativeUI
             // 
@@ -166,5 +181,6 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         private KryptonPanel kryptonPanel1;
         private KryptonButton kbtnDismiss;
         private KryptonBorderEdge kryptonBorderEdge1;
+        private KryptonButton kbtnAction;
     }
 }

@@ -14,6 +14,8 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
         private bool _usePanelColourInTextArea, _showCloseButton;
 
+        private Font _contentTypeface, _headerTypeface;
+
         private IconType _iconType;
 
         private int _time, _seconds;

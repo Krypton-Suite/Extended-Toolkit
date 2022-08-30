@@ -8,6 +8,7 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Buttons
 {
+    [Designer(typeof(KryptonButtonExtendedDesigner))]
     public class KryptonButtonExtended : KryptonButton
     {
         #region Instance Fields
