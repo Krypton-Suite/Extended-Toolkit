@@ -290,16 +290,18 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         {
             IWin32Window showOwner = ValidateOptions(owner, options, helpInfo);
 
-            using KryptonMessageBoxExtendedFormDeveloperTest kmbef = new(showOwner, text, caption, buttons,
-                                                            icon, defaultButton, options,
-                                                            helpInfo, showCtrlCopy,
-                                                            messageBoxTypeface,
-                                                            customImageIcon, showOptionalCheckBox,
-                                                            optionalCheckBoxChecked, optionalCheckBoxCheckState,
-                                                            optionalCheckBoxText, showOptionalLinkLabel,
-                                                            optionalLinkLabelText, optionalLinkLabelDestination);
+            //using KryptonMessageBoxExtendedFormDeveloperTest kmbef = new(showOwner, text, caption, buttons,
+            //                                                icon, defaultButton, options,
+            //                                                helpInfo, showCtrlCopy,
+            //                                                messageBoxTypeface,
+            //                                                customImageIcon, showOptionalCheckBox,
+            //                                                optionalCheckBoxChecked, optionalCheckBoxCheckState,
+            //                                                optionalCheckBoxText, showOptionalLinkLabel,
+            //                                                optionalLinkLabelText, optionalLinkLabelDestination);
 
-            return kmbef.ShowDialog(showOwner);
+            //return kmbef.ShowDialog(showOwner);
+
+            return DialogResult.None;
         }
         #endregion
 

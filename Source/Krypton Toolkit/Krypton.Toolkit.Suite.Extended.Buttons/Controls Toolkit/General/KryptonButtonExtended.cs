@@ -60,12 +60,16 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             {
                 case KryptonButtonBuiltInDisplayString.Abort:
                     Text = KryptonManager.Strings.Abort;
+
+                    DialogResult = DialogResult.Abort;
                     break;
                 case KryptonButtonBuiltInDisplayString.Apply:
                     Text = KryptonManager.Strings.Apply;
                     break;
                 case KryptonButtonBuiltInDisplayString.Cancel:
                     Text = KryptonManager.Strings.Cancel;
+
+                    DialogResult = DialogResult.Cancel;
                     break;
                 case KryptonButtonBuiltInDisplayString.Collapse:
                     Text = KryptonManager.Strings.Collapse;
@@ -75,24 +79,38 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
                     break;
                 case KryptonButtonBuiltInDisplayString.Close:
                     Text = KryptonManager.Strings.Close;
+
+                    DialogResult = DialogResult.Cancel;
                     break;
                 case KryptonButtonBuiltInDisplayString.Custom:
                     Text = customText;
+
+                    DialogResult = customDialogResult;
                     break;
                 case KryptonButtonBuiltInDisplayString.Yes:
                     Text = KryptonManager.Strings.Yes;
+
+                    DialogResult = DialogResult.Yes;
                     break;
                 case KryptonButtonBuiltInDisplayString.No:
                     Text = KryptonManager.Strings.No;
+
+                    DialogResult = DialogResult.No;
                     break;
                 case KryptonButtonBuiltInDisplayString.Ok:
                     Text = KryptonManager.Strings.OK;
+
+                    DialogResult = DialogResult.OK;
                     break;
                 case KryptonButtonBuiltInDisplayString.Retry:
                     Text = KryptonManager.Strings.Retry;
+
+                    DialogResult = DialogResult.Retry;
                     break;
                 case KryptonButtonBuiltInDisplayString.Ignore:
                     Text = KryptonManager.Strings.Ignore;
+
+                    DialogResult = DialogResult.Ignore;
                     break;
                 case KryptonButtonBuiltInDisplayString.Help:
                     Text = KryptonManager.Strings.Help;
@@ -105,8 +123,6 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
                     break;
                 case KryptonButtonBuiltInDisplayString.Today:
                     Text = KryptonManager.Strings.Today;
-                    break;
-                default:
                     break;
             }
 
@@ -194,7 +210,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 
         protected override void OnTextChanged(EventArgs e)
         {
-            ChangeButtonText(Text);
+            ChangeText(_displayString);
 
             base.OnTextChanged(e);
         }
