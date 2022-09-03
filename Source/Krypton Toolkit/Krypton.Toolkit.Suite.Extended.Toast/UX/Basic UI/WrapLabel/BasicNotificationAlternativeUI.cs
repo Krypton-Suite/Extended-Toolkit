@@ -12,7 +12,11 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
     {
         #region Variables
 
-        private bool _showControlButton;
+        private ActionButtonLocation _actionButtonLocation;
+
+        private ActionType _actionType;
+
+        private bool _showControlButton, _showCloseButton;
 
         private IconType _iconType;
 
@@ -28,11 +32,17 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
         private Image _customImage;
 
-        private RightToLeftSupport _rightToLeftSupport;
+        private RightToLeftSupport _rightToLeft;
+
+        private KryptonCommand _actionButtonCommand;
 
         #endregion
 
         #region Properties
+
+        public ActionButtonLocation ActionButtonLocation { get => _actionButtonLocation; set => _actionButtonLocation = value; }
+
+        public ActionType ActionType { get => _actionType; set => _actionType = value; }
 
         public bool ShowCloseButton { get => _showControlButton; set => _showControlButton = value; }
 
@@ -54,11 +64,17 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
         public Image CustomImage { get => _customImage; set => _customImage = value; }
 
-        public RightToLeftSupport RightToLeftSupport { get => _rightToLeftSupport; set { _rightToLeftSupport = value; Invalidate(); } }
+        public RightToLeftSupport RightToLeftSupport { get => _rightToLeft; set { _rightToLeft = value; Invalidate(); } }
+
+        public KryptonCommand ActionButtonCommand { get => _actionButtonCommand; set => _actionButtonCommand = value; }
+
         #endregion
 
         #region Constructor
+
         /// <summary>Initializes a new instance of the <see cref="BasicNotificationAlternativeUI" /> class.</summary>
+        /// <param name="actionButtonLocation">The action button location.</param>
+        /// <param name="actionType">Type of the action.</param>
         /// <param name="iconType">Type of the icon.</param>
         /// <param name="title">The title.</param>
         /// <param name="contentText">The content text.</param>
@@ -66,17 +82,22 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <param name="customImage">The custom image.</param>
         /// <param name="dismissText">The dismiss text.</param>
         /// <param name="rightToLeftSupport">The right to left support.</param>
-        public BasicNotificationAlternativeUI(IconType iconType, string title, string contentText, 
+        /// <param name="actionButtonCommand">The action button command.</param>
+        public BasicNotificationAlternativeUI(ActionButtonLocation? actionButtonLocation, ActionType? actionType,
+                                              IconType iconType, string title, string contentText, 
                                               bool? showCloseButton,
                                               Image customImage = null, string dismissText = "&Dismiss",
-                                              RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight)
+                                              RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight,
+                                              KryptonCommand actionButtonCommand = null)
         {
             InitializeComponent();
 
-            SetupBaseUI(iconType, title, contentText, showCloseButton, customImage, dismissText, rightToLeftSupport);
+            SetupBaseUI(actionButtonLocation, actionType, iconType, title, contentText, showCloseButton, customImage, dismissText, rightToLeftSupport, actionButtonCommand);
         }
 
         /// <summary>Initializes a new instance of the <see cref="BasicNotificationAlternativeUI" /> class.</summary>
+        /// <param name="actionButtonLocation">The action button location.</param>
+        /// <param name="actionType">Type of the action.</param>
         /// <param name="iconType">Type of the icon.</param>
         /// <param name="title">The title.</param>
         /// <param name="contentText">The content text.</param>
@@ -85,13 +106,20 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <param name="customImage">The custom image.</param>
         /// <param name="dismissText">The dismiss text.</param>
         /// <param name="rightToLeftSupport">The right to left support.</param>
-        public BasicNotificationAlternativeUI(IconType iconType, string title, string contentText,
+        /// <param name="actionButtonCommand">The action button command.</param>
+        public BasicNotificationAlternativeUI(ActionButtonLocation? actionButtonLocation, ActionType? actionType,
+                                              IconType iconType, string title, string contentText,
                                               bool? showCloseButton, int seconds, 
                                               Image customImage = null, string dismissText = "&Dismiss", 
-                                              RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight)
-            : this(iconType, title, contentText, showCloseButton, customImage, dismissText, rightToLeftSupport) => Seconds = seconds;
+                                              RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight,
+                                              KryptonCommand actionButtonCommand = null)
+            : this(actionButtonLocation, actionType,iconType, title, contentText, 
+                   showCloseButton, customImage, dismissText,
+                   rightToLeftSupport, actionButtonCommand) => Seconds = seconds;
 
         /// <summary>Initializes a new instance of the <see cref="BasicNotificationAlternativeUI" /> class.</summary>
+        /// <param name="actionButtonLocation">The action button location.</param>
+        /// <param name="actionType">Type of the action.</param>
         /// <param name="iconType">Type of the icon.</param>
         /// <param name="title">The title.</param>
         /// <param name="contentText">The content text.</param>
@@ -101,14 +129,21 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <param name="customImage">The custom image.</param>
         /// <param name="dismissText">The dismiss text.</param>
         /// <param name="rightToLeftSupport">The right to left support.</param>
-        public BasicNotificationAlternativeUI(IconType iconType, string title, string contentText,
+        /// <param name="actionButtonCommand">The action button command.</param>
+        public BasicNotificationAlternativeUI(ActionButtonLocation? actionButtonLocation, ActionType? actionType,
+                                              IconType iconType, string title, string contentText,
                                               bool? showCloseButton, int seconds, 
                                               string soundPath, Image customImage = null, 
                                               string dismissText = "&Dismiss",
-                                              RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight)
-            : this(iconType, title, contentText, showCloseButton, seconds, customImage, dismissText, rightToLeftSupport) => SoundPath = soundPath;
+                                              RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight,
+                                              KryptonCommand actionButtonCommand = null)
+            : this(actionButtonLocation, actionType, iconType, title, contentText, 
+                   showCloseButton, seconds, customImage, dismissText,
+                   rightToLeftSupport, actionButtonCommand) => SoundPath = soundPath;
 
         /// <summary>Initializes a new instance of the <see cref="BasicNotificationAlternativeUI" /> class.</summary>
+        /// <param name="actionButtonLocation">The action button location.</param>
+        /// <param name="actionType">Type of the action.</param>
         /// <param name="iconType">Type of the icon.</param>
         /// <param name="title">The title.</param>
         /// <param name="contentText">The content text.</param>
@@ -117,14 +152,21 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <param name="customImage">The custom image.</param>
         /// <param name="dismissText">The dismiss text.</param>
         /// <param name="rightToLeftSupport">The right to left support.</param>
-        public BasicNotificationAlternativeUI(IconType iconType, string title, string contentText,
+        /// <param name="actionButtonCommand">The action button command.</param>
+        public BasicNotificationAlternativeUI(ActionButtonLocation? actionButtonLocation, ActionType? actionType,
+                                              IconType iconType, string title, string contentText,
                                               bool? showCloseButton, 
                                               Stream soundStream, Image customImage = null,
                                               string dismissText = "&Dismiss",
-                                              RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight)
-            : this(iconType, title, contentText, showCloseButton, customImage, dismissText, rightToLeftSupport) => SoundStream = soundStream;
+                                              RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight,
+                                              KryptonCommand actionButtonCommand = null)
+            : this(actionButtonLocation, actionType, iconType, title, contentText, 
+                   showCloseButton, customImage, dismissText, 
+                   rightToLeftSupport, actionButtonCommand) => SoundStream = soundStream;
 
         /// <summary>Initializes a new instance of the <see cref="BasicNotificationAlternativeUI" /> class.</summary>
+        /// <param name="actionButtonLocation">The action button location.</param>
+        /// <param name="actionType">Type of the action.</param>
         /// <param name="iconType">Type of the icon.</param>
         /// <param name="title">The title.</param>
         /// <param name="contentText">The content text.</param>
@@ -134,12 +176,17 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <param name="customImage">The custom image.</param>
         /// <param name="dismissText">The dismiss text.</param>
         /// <param name="rightToLeftSupport">The right to left support.</param>
-        public BasicNotificationAlternativeUI(IconType iconType, string title, string contentText,
+        /// <param name="actionButtonCommand">The action button command.</param>
+        public BasicNotificationAlternativeUI(ActionButtonLocation? actionButtonLocation, ActionType? actionType,
+                                              IconType iconType, string title, string contentText,
                                               bool? showCloseButton, int seconds, 
                                               Stream soundStream, Image customImage = null, 
                                               string dismissText = "&Dismiss",
-                                              RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight)
-            : this(iconType, title, contentText, showCloseButton, seconds, customImage, dismissText, rightToLeftSupport) => SoundStream = soundStream;
+                                              RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight,
+                                              KryptonCommand actionButtonCommand = null)
+            : this(actionButtonLocation, actionType, iconType, title, contentText,
+                   showCloseButton, seconds, customImage, dismissText,
+                   rightToLeftSupport, actionButtonCommand) => SoundStream = soundStream;
         #endregion
 
         #region Event Handlers
@@ -271,9 +318,16 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
         private void SetWindowBorderStyle(FormBorderStyle borderStyle) => FormBorderStyle = borderStyle;
 
-        private void SetupBaseUI(IconType iconType, string title, string contentText, bool? showCloseButton, Image customImage,
-                                 string dismissText, RightToLeftSupport? rightToLeftSupport)
+        private void SetupBaseUI(ActionButtonLocation? actionButtonLocation, ActionType? actionType,
+                                 IconType iconType, string title, string contentText, 
+                                 bool? showCloseButton, Image customImage,
+                                 string dismissText, RightToLeftSupport? rightToLeftSupport,
+                                 KryptonCommand actionButtonCommand)
         {
+            ActionButtonLocation = actionButtonLocation ?? ActionButtonLocation.Left;
+
+            ActionType = actionType ?? ActionType.Default;
+
             IconType = iconType;
 
             Title = title;
@@ -297,6 +351,8 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             GotFocus += BasicNotificationAlternativeUI_GotFocus;
 
             DoubleBuffered = true;
+
+            ActionButtonCommand = actionButtonCommand;
 
             ReconfigureUI(rightToLeftSupport);
         }

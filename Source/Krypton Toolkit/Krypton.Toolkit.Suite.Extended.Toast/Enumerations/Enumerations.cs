@@ -63,8 +63,9 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
     public enum RightToLeftSupport
     {
-        LeftToRight = 0,
-        RightToLeft = 1
+        Inherit = 0,
+        LeftToRight = 1,
+        RightToLeft = 2
     }
 
     public enum ToastNotificationSystemSounds

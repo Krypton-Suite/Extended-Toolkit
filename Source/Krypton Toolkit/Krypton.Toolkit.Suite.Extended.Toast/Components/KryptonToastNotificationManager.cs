@@ -18,7 +18,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
         private bool _useUserResponse, _useProgressBar, _usePanelColourInTextArea, _useNativeBackColourInUserResponseArea, _showCloseButton;
 
-        private Color _userResponsePromptColour;
+        private Color _contentTextColour, _headerTextColour, _userPromptTextColour, _userResponsePromptColour;
 
         private DefaultNotificationButton _defaultNotificationButton;
 
@@ -332,11 +332,13 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                         }
                         else if (_contentAreaType == ToastNotificationContentAreaType.WrappedLabel)
                         {
-                            BasicNotificationAlternativeUI notification = new BasicNotificationAlternativeUI(
-                                IconType,
-                                Title, ContentText, ShowCloseButton, Seconds, SoundPath,
-                                CustomImage, DismissText,
-                                RightToLeftSupport);
+                            BasicNotificationAlternativeUI notification = new BasicNotificationAlternativeUI(ActionButtonLocation, ActionType,
+                                                                                                             IconType,
+                                                                                                             Title, ContentText, ShowCloseButton,
+                                                                                                             Seconds, SoundPath,
+                                                                                                             CustomImage, DismissText,
+                                                                                                             RightToLeftSupport,
+                                                                                                             ActionButtonCommand);
 
                             notification.Show();
                         }
@@ -377,12 +379,13 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                         }
                         else if (_contentAreaType == ToastNotificationContentAreaType.RichTextBox)
                         {
-                            BasicNotificationWithProgressBar notification = new BasicNotificationWithProgressBar(
+                            BasicNotificationWithProgressBar notification = new BasicNotificationWithProgressBar(ActionButtonLocation, ActionType,
                                                                                                                  IconType, Title, ContentText,
                                                                                                                  UsePanelColourInTextArea, 
                                                                                                                  ShowCloseButton,
                                                                                                                  Seconds, SoundStream,
-                                                                                                                 CustomImage, DismissText, RightToLeftSupport);
+                                                                                                                 CustomImage, DismissText, RightToLeftSupport,
+                                                                                                                 ActionButtonCommand);
 
                             notification.Show();
                         }
