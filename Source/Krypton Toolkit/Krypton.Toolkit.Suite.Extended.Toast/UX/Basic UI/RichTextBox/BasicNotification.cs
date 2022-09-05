@@ -414,47 +414,33 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
         private void RearrangeUI(RightToLeftSupport? rightToLeft)
         {
-            if (rightToLeft == RightToLeftSupport.LeftToRight)
+            switch (rightToLeft)
             {
-                RightToLeft = RightToLeft.No;
+                case RightToLeftSupport.Inherit:
+                    break;
+                case RightToLeftSupport.LeftToRight:
+                    UtilityMethods.CalibrateUILayout(this, new Control[]{kbtnToastButton1, kbtnToastButton2, kbtnToastButton3, kwlTitle, krtbContent}, RightToLeft.No);
 
-                RightToLeftLayout = false;
+                    RightToLeftLayout = false;
+                    
+                    UtilityMethods.ChangeControlLocation(pbxToastImage, new Point(12, 12));
 
-                UtilityMethods.ChangeControlLocation(pbxToastImage, new Point(12, 12));
+                    UtilityMethods.ChangeControlLocation(kwlTitle, new Point(146, 12));
+                    
+                    UtilityMethods.ChangeControlLocation(krtbContent, new Point(146, 89));
+                    break;
+                case RightToLeftSupport.RightToLeft:
+                    UtilityMethods.CalibrateUILayout(this, new Control[] { kbtnToastButton1, kbtnToastButton2, kbtnToastButton3, kwlTitle, krtbContent }, RightToLeft.Yes);
 
-                UtilityMethods.ChangeControlLocation(kwlTitle, new Point(146, 12));
+                    RightToLeftLayout = true;
 
-                UtilityMethods.ChangeControlLocation(krtbContent, new Point(146, 89));
+                    UtilityMethods.ChangeControlLocation(pbxToastImage, new Point(469, 12));
 
-                ChangeUIRightToLeftElements(RightToLeft.No);
+                    UtilityMethods.ChangeControlLocation(kwlTitle, new Point(12, 12));
+
+                    UtilityMethods.ChangeControlLocation(krtbContent, new Point(12, 89));
+                    break;
             }
-            else
-            {
-                RightToLeft = RightToLeft.Yes;
-
-                RightToLeftLayout = true;
-
-                UtilityMethods.ChangeControlLocation(pbxToastImage, new Point(469, 12));
-
-                UtilityMethods.ChangeControlLocation(kwlTitle, new Point(12, 12));
-
-                UtilityMethods.ChangeControlLocation(krtbContent, new Point(12, 89));
-
-                ChangeUIRightToLeftElements(RightToLeft.Yes);
-            }
-        }
-
-        private void ChangeUIRightToLeftElements(RightToLeft rightToLeft)
-        {
-            kbtnToastButton1.RightToLeft = rightToLeft;
-
-            kbtnToastButton2.RightToLeft = rightToLeft;
-
-            kbtnToastButton3.RightToLeft = rightToLeft;
-
-            kwlTitle.RightToLeft = rightToLeft;
-
-            krtbContent.RightToLeft = rightToLeft;
         }
 
         #endregion

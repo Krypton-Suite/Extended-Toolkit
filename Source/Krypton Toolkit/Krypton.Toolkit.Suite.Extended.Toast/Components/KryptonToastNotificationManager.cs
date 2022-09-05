@@ -348,11 +348,13 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                         }
                         else if (_contentAreaType == ToastNotificationContentAreaType.RichTextBox)
                         {
-                            BasicNotification notification = new BasicNotification(IconType, Title, ContentText, 
+                            BasicNotification notification = new BasicNotification(ActionButtonLocation, ActionType,
+                                                                                   IconType, Title, ContentText, 
                                                                                    UsePanelColourInTextArea,
                                                                                    ShowCloseButton,
                                                                                    Seconds, SoundPath,
-                                                                                   CustomImage, DismissText, RightToLeftSupport);
+                                                                                   CustomImage, DismissText, RightToLeftSupport,
+                                                                                   ActionButtonCommand);
 
                             notification.Show();
                         }
@@ -417,15 +419,18 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                         }
                         else if (_contentAreaType == ToastNotificationContentAreaType.RichTextBox)
                         {
-                            BasicNotificationWithUserResponse notification = new BasicNotificationWithUserResponse(IconType, Title, ContentText,
-                                                                                                                         UsePanelColourInTextArea, UseNativeBackColourInUserResponseArea, 
-                                                                                                                         ShowCloseButton,
-                                                                                                                         Seconds,
-                                                                                                                         SoundPath, CustomImage,
-                                                                                                                         DismissText, UserResponsePromptText, 
-                                                                                                                         UserResponsePromptColour,
-                                                                                                                         UserResponsePromptAlignHorizontal, UserResponsePromptAlignVertical,
-                                                                                                                         UserResponsePromptFont, RightToLeftSupport);
+                            BasicNotificationWithUserResponse notification = new BasicNotificationWithUserResponse(ActionButtonLocation, ActionType,
+                                                                                                                   IconType, Title, ContentText,
+                                                                                                                   UsePanelColourInTextArea, 
+                                                                                                                   UseNativeBackColourInUserResponseArea, 
+                                                                                                                   ShowCloseButton,
+                                                                                                                   Seconds,
+                                                                                                                   SoundPath, CustomImage,
+                                                                                                                   DismissText, UserResponsePromptText, 
+                                                                                                                   UserResponsePromptColour,
+                                                                                                                   UserResponsePromptAlignHorizontal, UserResponsePromptAlignVertical,
+                                                                                                                   UserResponsePromptFont, RightToLeftSupport,
+                                                                                                                   ActionButtonCommand);
 
                             notification.Show();
                         }

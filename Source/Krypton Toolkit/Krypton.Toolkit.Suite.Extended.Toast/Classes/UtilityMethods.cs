@@ -152,6 +152,24 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
             timer.Start();
         }
+
+        /// <summary>Calibrates the UI layout.</summary>
+        /// <param name="owner">The owner.</param>
+        /// <param name="controls">The controls.</param>
+        /// <param name="rightToLeft">The right to left.</param>
+        public static void CalibrateUILayout(KryptonForm owner, Control[] controls, RightToLeft rightToLeft)
+        {
+            owner.RightToLeft = rightToLeft;
+
+            if (controls.Length > 0)
+            {
+                foreach (Control control in controls)
+                {
+                    control.RightToLeft = rightToLeft;
+                }
+            }
+        }
+
         #endregion
     }
 }

@@ -14,6 +14,8 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
         #region Variables
         private MenuStripContainerWindow _menuStripContainerWindow;
 
+        private FloatingContainerForm _floatingContainer;
+
         private Control _originalParent = null;
 
         private bool _aboutToFloat = false, _isFloating = false, _parentChanged = false;
@@ -89,7 +91,7 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
 
             if (Parent != null)
             {
-                if (!(Parent is MenuStripContainerWindow))
+                if (!(Parent is MenuStripContainerWindow) || !(Parent is FloatingContainerForm))
                 {
                     _originalParent = Parent;
 

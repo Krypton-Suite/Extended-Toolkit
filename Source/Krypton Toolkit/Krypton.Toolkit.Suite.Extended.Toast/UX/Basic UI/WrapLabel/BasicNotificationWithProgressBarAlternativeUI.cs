@@ -156,27 +156,20 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         #endregion
 
         #region Event Handlers
-        private void BasicNotificationWithProgressBarAlternativeUI_Load(object sender, EventArgs e)
+
+        private void BasicNotificationWithProgressBarAlternativeUI_Load(object sender, EventArgs e) => SetupUI(RightToLeftSupport);
+
+        private void BasicNotificationWithProgressBarAlternativeUI_GotFocus(object sender, EventArgs e)
         {
-            //Once loaded, position the form to the bottom left of the screen with added padding
-            Location = new Point(Screen.PrimaryScreen.WorkingArea.Width - Width - 5, Screen.PrimaryScreen.WorkingArea.Height - Height - 5);
-
-            UtilityMethods.FadeIn(this);
-
-            if (_timer != null)
+            if (RightToLeftSupport == RightToLeftSupport.LeftToRight)
             {
-                _timer.Start();
+                kbtnToastButton3.Focus();
             }
-
-            if (_soundPlayer != null)
+            else
             {
-                _soundPlayer.Play();
+                kbtnToastButton1.Focus();
             }
-
-            kbtnDismiss.Text = _dismissText;
         }
-
-        private void BasicNotificationWithProgressBarAlternativeUI_GotFocus(object sender, EventArgs e) => kbtnDismiss.Focus();
 
         private void BasicNotificationWithProgressBarAlternativeUI_Resize(object sender, EventArgs e)
         {
@@ -198,7 +191,14 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         {
             _time++;
 
-            kbtnDismiss.Text = $"{DismissText} ({Seconds - Time}s)";
+            if (RightToLeftSupport == RightToLeftSupport.LeftToRight)
+            {
+                kbtnToastButton3.Text = $"{DismissText} ({Seconds - Time}s)";
+            }
+            else
+            {
+                kbtnToastButton1.Text = $"{DismissText} ({Seconds - Time}s)";
+            }
 
             if (_time == Seconds)
             {
@@ -230,29 +230,25 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
                 pbCountdown.Value = currentValue;
 
-                kbtnDismiss.Text = $"{DismissText} ({Seconds - Time})";
-
-                /*_timer = new Timer();
-
-                _timer.Interval = 1000;
-
-                _timer.Tick += (sender, e) =>
+                if (RightToLeftSupport == RightToLeftSupport.LeftToRight)
                 {
-                    _time++;
-
-                    kbtnDismiss.Text = $"{ DismissText } ({ Seconds - Time }s)";
-
-                    if (_time == Seconds)
-                    {
-                        _timer.Stop();
-
-                        UtilityMethods.FadeOutAndClose(this);
-                    }
-                };*/
+                    kbtnToastButton3.Text = $"{DismissText} ({Seconds - Time})";
+                }
+                else
+                {
+                    kbtnToastButton1.Text = $"{DismissText} ({Seconds - Time})";
+                }
             }
             else
             {
-                kbtnDismiss.Text = DismissText;
+                if (RightToLeftSupport == RightToLeftSupport.LeftToRight)
+                {
+                    kbtnToastButton3.Text = DismissText;
+                }
+                else
+                {
+                    kbtnToastButton1.Text = DismissText;
+                }
             }
 
             if (SoundPath != null)
@@ -274,38 +270,6 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             }
 
             base.Show();
-        }
-
-        private void ReconfigureUI(RightToLeftSupport? rightToLeftSupport)
-        {
-            if (rightToLeftSupport == RightToLeftSupport.LeftToRight)
-            {
-                RightToLeft = RightToLeft.No;
-
-                RightToLeftLayout = false;
-
-                pbxToastImage.Location = new Point(12, 12);
-
-                kwlTitle.Location = new Point(146, 12);
-
-                kwlContent.Location = new Point(146, 95);
-
-                kbtnDismiss.Location = new Point(423, 13);
-            }
-            else
-            {
-                RightToLeft = RightToLeft.Yes;
-
-                RightToLeftLayout = true;
-
-                pbxToastImage.Location = new Point(469, 12);
-
-                kwlTitle.Location = new Point(12, 12);
-
-                kwlContent.Location = new Point(12, 95);
-
-                kbtnDismiss.Location = new Point(12, 13);
-            }
         }
 
         private void SetControlBoxVisibility(bool visibilityToggle) => ControlBox = visibilityToggle;
@@ -345,8 +309,71 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
             DoubleBuffered = true;
 
-            ReconfigureUI(rightToLeftSupport);
+            RearrangeUI(rightToLeftSupport);
         }
+
+        private void SetupUI(RightToLeftSupport rightToLeft = RightToLeftSupport.LeftToRight)
+        {
+            //Once loaded, position the form to the bottom left of the screen with added padding
+            Location = new Point(Screen.PrimaryScreen.WorkingArea.Width - Width - 5,
+                Screen.PrimaryScreen.WorkingArea.Height - Height - 5);
+
+            UtilityMethods.FadeIn(this);
+
+            if (_timer != null)
+            {
+                _timer.Start();
+            }
+
+            if (_soundPlayer != null)
+            {
+                _soundPlayer.Play();
+            }
+
+            RearrangeUI(rightToLeft);
+
+            if (rightToLeft == RightToLeftSupport.LeftToRight)
+            {
+                kbtnToastButton3.Text = _dismissText;
+            }
+            else
+            {
+                kbtnToastButton1.Text = _dismissText;
+            }
+        }
+
+        private void RearrangeUI(RightToLeftSupport? rightToLeft)
+        {
+            switch (rightToLeft)
+            {
+                case RightToLeftSupport.Inherit:
+                    // Note: Come back to this
+                    break;
+                case RightToLeftSupport.LeftToRight:
+                    UtilityMethods.CalibrateUILayout(this, new Control[] { kbtnToastButton1, kbtnToastButton2, kbtnToastButton3, kwlTitle, kwlContent }, RightToLeft.No);
+
+                    RightToLeftLayout = false;
+
+                    pbxToastImage.Location = new Point(12, 12);
+
+                    kwlTitle.Location = new Point(146, 12);
+
+                    kwlContent.Location = new Point(146, 95);
+                    break;
+                case RightToLeftSupport.RightToLeft:
+                    UtilityMethods.CalibrateUILayout(this, new Control[] { kbtnToastButton1, kbtnToastButton2, kbtnToastButton3, kwlTitle, kwlContent }, RightToLeft.Yes);
+
+                    RightToLeftLayout = true;
+
+                    pbxToastImage.Location = new Point(469, 12);
+
+                    kwlTitle.Location = new Point(12, 12);
+
+                    kwlContent.Location = new Point(12, 95);
+                    break;
+            }
+        }
+
         #endregion
 
         #region Overrides
