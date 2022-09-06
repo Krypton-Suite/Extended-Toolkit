@@ -403,13 +403,16 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                         }
                         else if (_contentAreaType == ToastNotificationContentAreaType.WrappedLabel)
                         {
-                            BasicNotificationWithUserResponseWrappedLabel notification = new BasicNotificationWithUserResponseWrappedLabel(IconType, Title, ContentText, Seconds,
-                                                                                                                                                 SoundPath, CustomImage,
-                                                                                                                                                 DismissText, UserResponsePromptText,
-                                                                                                                                                 UserResponsePromptColour,
-                                                                                                                                                 UserResponsePromptAlignHorizontal, 
-                                                                                                                                                 UserResponsePromptAlignVertical,
-                                                                                                                                                 UserResponsePromptFont, RightToLeftSupport);
+                            BasicNotificationWithUserResponseWrappedLabel notification = new BasicNotificationWithUserResponseWrappedLabel(ActionButtonLocation, ActionType,
+                                                                                                                                           IconType, Title, ContentText, 
+                                                                                                                                           Seconds, SoundPath, CustomImage,
+                                                                                                                                           DismissText, UserResponsePromptText,
+                                                                                                                                           UserResponsePromptColour,
+                                                                                                                                           UserResponsePromptAlignHorizontal, 
+                                                                                                                                           UserResponsePromptAlignVertical,
+                                                                                                                                           UserResponsePromptFont, 
+                                                                                                                                           RightToLeftSupport,
+                                                                                                                                           ActionButtonCommand);
 
                             notification.Show();
                         }

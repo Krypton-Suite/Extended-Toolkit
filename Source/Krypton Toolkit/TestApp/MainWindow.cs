@@ -71,5 +71,12 @@ namespace TestApp
 
             notificationExample.Show();
         }
+
+        private void kbtnFloating_Click(object sender, EventArgs e)
+        {
+            FloatingMenuToolbarExampleMain floating = new FloatingMenuToolbarExampleMain();
+
+            floating.Show();
+        }
     }
 }

@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            this.kbtnNotificationExample = new Krypton.Toolkit.KryptonButton();
             this.kbtnOutlookGrid = new Krypton.Toolkit.KryptonButton();
             this.kryptonButton7 = new Krypton.Toolkit.KryptonButton();
             this.kbtnExtendedControls = new Krypton.Toolkit.KryptonButton();
@@ -40,13 +41,14 @@
             this.kbtnCircularProgressBarItem = new Krypton.Toolkit.KryptonButton();
             this.ktnToolStripItems = new Krypton.Toolkit.KryptonButton();
             this.kbtnButtonItems = new Krypton.Toolkit.KryptonButton();
-            this.kbtnNotificationExample = new Krypton.Toolkit.KryptonButton();
+            this.kbtnFloating = new Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(this.kbtnFloating);
             this.kryptonPanel1.Controls.Add(this.kbtnNotificationExample);
             this.kryptonPanel1.Controls.Add(this.kbtnOutlookGrid);
             this.kryptonPanel1.Controls.Add(this.kryptonButton7);
@@ -63,6 +65,16 @@
             this.kryptonPanel1.Name = "kryptonPanel1";
             this.kryptonPanel1.Size = new System.Drawing.Size(620, 390);
             this.kryptonPanel1.TabIndex = 0;
+            // 
+            // kbtnNotificationExample
+            // 
+            this.kbtnNotificationExample.CornerRoundingRadius = -1F;
+            this.kbtnNotificationExample.Location = new System.Drawing.Point(147, 67);
+            this.kbtnNotificationExample.Name = "kbtnNotificationExample";
+            this.kbtnNotificationExample.Size = new System.Drawing.Size(162, 25);
+            this.kbtnNotificationExample.TabIndex = 10;
+            this.kbtnNotificationExample.Values.Text = "Notification Example";
+            this.kbtnNotificationExample.Click += new System.EventHandler(this.kbtnNotificationExample_Click);
             // 
             // kbtnOutlookGrid
             // 
@@ -146,7 +158,7 @@
             // ktnToolStripItems
             // 
             this.ktnToolStripItems.CornerRoundingRadius = -1F;
-            this.ktnToolStripItems.Location = new System.Drawing.Point(376, 38);
+            this.ktnToolStripItems.Location = new System.Drawing.Point(492, 38);
             this.ktnToolStripItems.Name = "ktnToolStripItems";
             this.ktnToolStripItems.Size = new System.Drawing.Size(110, 22);
             this.ktnToolStripItems.TabIndex = 1;
@@ -163,15 +175,15 @@
             this.kbtnButtonItems.Values.Text = "Button Items";
             this.kbtnButtonItems.Click += new System.EventHandler(this.kbtnButtonItems_Click);
             // 
-            // kbtnNotificationExample
+            // kbtnFloating
             // 
-            this.kbtnNotificationExample.CornerRoundingRadius = -1F;
-            this.kbtnNotificationExample.Location = new System.Drawing.Point(147, 67);
-            this.kbtnNotificationExample.Name = "kbtnNotificationExample";
-            this.kbtnNotificationExample.Size = new System.Drawing.Size(162, 25);
-            this.kbtnNotificationExample.TabIndex = 10;
-            this.kbtnNotificationExample.Values.Text = "Notification Example";
-            this.kbtnNotificationExample.Click += new System.EventHandler(this.kbtnNotificationExample_Click);
+            this.kbtnFloating.CornerRoundingRadius = -1F;
+            this.kbtnFloating.Location = new System.Drawing.Point(376, 38);
+            this.kbtnFloating.Name = "kbtnFloating";
+            this.kbtnFloating.Size = new System.Drawing.Size(110, 22);
+            this.kbtnFloating.TabIndex = 11;
+            this.kbtnFloating.Values.Text = "Floating Toolbars";
+            this.kbtnFloating.Click += new System.EventHandler(this.kbtnFloating_Click);
             // 
             // MainWindow
             // 
@@ -202,5 +214,6 @@
         private Krypton.Toolkit.KryptonButton kryptonButton7;
         private Krypton.Toolkit.KryptonButton kbtnOutlookGrid;
         private Krypton.Toolkit.KryptonButton kbtnNotificationExample;
+        private Krypton.Toolkit.KryptonButton kbtnFloating;
     }
 }
