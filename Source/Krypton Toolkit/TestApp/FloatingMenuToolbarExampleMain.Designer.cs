@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
-            this.kbtnFloatingAdvanced = new Krypton.Toolkit.KryptonButton();
             this.kryptonButton2 = new Krypton.Toolkit.KryptonButton();
+            this.kbtnFloatingAdvanced = new Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -45,6 +45,15 @@
             this.kryptonPanel1.Size = new System.Drawing.Size(306, 83);
             this.kryptonPanel1.TabIndex = 0;
             // 
+            // kryptonButton2
+            // 
+            this.kryptonButton2.CornerRoundingRadius = -1F;
+            this.kryptonButton2.Location = new System.Drawing.Point(13, 44);
+            this.kryptonButton2.Name = "kryptonButton2";
+            this.kryptonButton2.Size = new System.Drawing.Size(281, 25);
+            this.kryptonButton2.TabIndex = 1;
+            this.kryptonButton2.Values.Text = "Floating Menu && Toolbar";
+            // 
             // kbtnFloatingAdvanced
             // 
             this.kbtnFloatingAdvanced.CornerRoundingRadius = -1F;
@@ -54,15 +63,6 @@
             this.kbtnFloatingAdvanced.TabIndex = 0;
             this.kbtnFloatingAdvanced.Values.Text = "Floating Menu && Toolbar (Advanced)";
             this.kbtnFloatingAdvanced.Click += new System.EventHandler(this.kbtnFloatingAdvanced_Click);
-            // 
-            // kryptonButton2
-            // 
-            this.kryptonButton2.CornerRoundingRadius = -1F;
-            this.kryptonButton2.Location = new System.Drawing.Point(18, 44);
-            this.kryptonButton2.Name = "kryptonButton2";
-            this.kryptonButton2.Size = new System.Drawing.Size(281, 25);
-            this.kryptonButton2.TabIndex = 1;
-            this.kryptonButton2.Values.Text = "Floating Menu && Toolbar";
             // 
             // FloatingMenuToolbarExampleMain
             // 
