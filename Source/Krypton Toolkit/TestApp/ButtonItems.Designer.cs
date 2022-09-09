@@ -68,14 +68,23 @@
             // 
             // kryptonButtonExtended1
             // 
+            this.kryptonButtonExtended1.AcceptButtonBackColour1 = System.Drawing.Color.Green;
+            this.kryptonButtonExtended1.AcceptButtonBackColour2 = System.Drawing.Color.Green;
             this.kryptonButtonExtended1.CornerRoundingRadius = -1F;
-            this.kryptonButtonExtended1.DialogResult = System.Windows.Forms.DialogResult.Abort;
-            this.kryptonButtonExtended1.DisplayString = Krypton.Toolkit.Suite.Extended.Buttons.KryptonButtonBuiltInDisplayString.Abort;
+            this.kryptonButtonExtended1.DenyButtonBackColour1 = System.Drawing.Color.Red;
+            this.kryptonButtonExtended1.DenyButtonBackColour2 = System.Drawing.Color.Red;
+            this.kryptonButtonExtended1.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.kryptonButtonExtended1.DisplayString = Krypton.Toolkit.Suite.Extended.Buttons.KryptonButtonBuiltInDisplayString.Ok;
+            this.kryptonButtonExtended1.IsAcceptButton = true;
+            this.kryptonButtonExtended1.IsDenyButton = true;
             this.kryptonButtonExtended1.Location = new System.Drawing.Point(342, 37);
             this.kryptonButtonExtended1.Name = "kryptonButtonExtended1";
             this.kryptonButtonExtended1.Size = new System.Drawing.Size(188, 36);
+            this.kryptonButtonExtended1.StateCommon.Back.Color1 = System.Drawing.Color.Green;
+            this.kryptonButtonExtended1.StateCommon.Back.Color2 = System.Drawing.Color.Green;
             this.kryptonButtonExtended1.TabIndex = 22;
-            this.kryptonButtonExtended1.Values.Text = "A&bort";
+            this.kryptonButtonExtended1.UseAcceptDenyColours = true;
+            this.kryptonButtonExtended1.Values.Text = "O&K";
             // 
             // kryptonYesDialogButton1
             // 

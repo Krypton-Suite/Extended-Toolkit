@@ -65,6 +65,8 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
                 {
                     Text = _floatableMenuStrip.FloatingWindowText;
 
+                    ControlBox = _floatableMenuStrip.ShowFloatingWindowControlBox;
+
                     SuspendLayout();
 
                     _floatableMenuStrip.Dock = DockStyle.None;

@@ -12,17 +12,19 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
     public class FloatableMenuStrip : MenuStrip
     {
         #region Variables
+
+        private bool _aboutToFloat = false, _isFloating = false, _parentChanged = false, _showFloatingWindowControlBox;
+
         private MenuStripContainerWindow _menuStripContainerWindow;
 
         private FloatingContainerForm _floatingContainer;
 
         private Control _originalParent = null;
 
-        private bool _aboutToFloat = false, _isFloating = false, _parentChanged = false;
-
         private List<MenuStripPanelExtened> _menuStripPanelExtenedList = new List<MenuStripPanelExtened>();
 
         private string _floatingWindowText;
+
         #endregion
 
         #region Properties
@@ -65,6 +67,12 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
             }
         }
 
+        /// <summary>Gets or sets a value indicating whether [show floating window control box].</summary>
+        /// <value><c>true</c> if [show floating window control box]; otherwise, <c>false</c>.</value>
+        public bool ShowFloatingWindowControlBox { get => _showFloatingWindowControlBox; set => _showFloatingWindowControlBox = value; }
+
+        /// <summary>Gets or sets the floating window text.</summary>
+        /// <value>The floating window text.</value>
         public string FloatingWindowText { get => _floatingWindowText; set => _floatingWindowText = value; }
         #endregion
 
@@ -76,6 +84,8 @@ namespace Krypton.Toolkit.Suite.Extended.Floating.Toolbars
         #region Constructor
         public FloatableMenuStrip()
         {
+            ShowFloatingWindowControlBox = true;
+
             Dock = DockStyle.None;
 
             GripStyle = ToolStripGripStyle.Visible;

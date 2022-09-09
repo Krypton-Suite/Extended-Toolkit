@@ -1,14 +1,6 @@
-﻿#region BSD License
-/*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
- */
-#endregion
-
-namespace Krypton.Toolkit.Suite.Extended.Toast
+﻿namespace Krypton.Toolkit.Suite.Extended.Toast.UX
 {
-    partial class BasicNotificationWithUserResponseWrappedLabel
+    partial class BasicNotificationWithUserResponseWrappedLabelAndProgressBar
     {
         /// <summary>
         /// Required designer variable.
@@ -36,12 +28,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BasicNotificationWithUserResponseWrappedLabel));
-            this.kpnlContent = new Krypton.Toolkit.KryptonPanel();
-            this.kwlContent = new Krypton.Toolkit.KryptonWrapLabel();
-            this.ktxtUserResponse = new Krypton.Toolkit.KryptonTextBox();
-            this.kwlTitle = new Krypton.Toolkit.KryptonWrapLabel();
-            this.pbxToastImage = new System.Windows.Forms.PictureBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BasicNotificationWithUserResponseWrappedLabelAndProgressBar));
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             this.tlpButtons = new Krypton.Toolkit.KryptonTableLayoutPanel();
             this.kbtnToastButtonPanel3 = new Krypton.Toolkit.KryptonPanel();
@@ -52,9 +39,12 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             this.kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
             this.kbtnToastButtonPanel1 = new Krypton.Toolkit.KryptonPanel();
             this.kbtnToastButton1 = new Krypton.Toolkit.KryptonButton();
-            ((System.ComponentModel.ISupportInitialize)(this.kpnlContent)).BeginInit();
-            this.kpnlContent.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxToastImage)).BeginInit();
+            this.kpnlContent = new Krypton.Toolkit.KryptonPanel();
+            this.kwlContent = new Krypton.Toolkit.KryptonWrapLabel();
+            this.ktxtUserResponse = new Krypton.Toolkit.KryptonTextBox();
+            this.kwlTitle = new Krypton.Toolkit.KryptonWrapLabel();
+            this.pbxToastImage = new System.Windows.Forms.PictureBox();
+            this.pbProgress = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             this.tlpButtons.SuspendLayout();
@@ -66,80 +56,20 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             this.kryptonPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kbtnToastButtonPanel1)).BeginInit();
             this.kbtnToastButtonPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kpnlContent)).BeginInit();
+            this.kpnlContent.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxToastImage)).BeginInit();
             this.SuspendLayout();
-            // 
-            // kpnlContent
-            // 
-            this.kpnlContent.Controls.Add(this.kwlContent);
-            this.kpnlContent.Controls.Add(this.ktxtUserResponse);
-            this.kpnlContent.Controls.Add(this.kwlTitle);
-            this.kpnlContent.Controls.Add(this.pbxToastImage);
-            this.kpnlContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kpnlContent.Location = new System.Drawing.Point(0, 0);
-            this.kpnlContent.Name = "kpnlContent";
-            this.kpnlContent.Size = new System.Drawing.Size(609, 277);
-            this.kpnlContent.TabIndex = 5;
-            // 
-            // kwlContent
-            // 
-            this.kwlContent.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.kwlContent.AutoSize = false;
-            this.kwlContent.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kwlContent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
-            this.kwlContent.LabelStyle = Krypton.Toolkit.LabelStyle.NormalControl;
-            this.kwlContent.Location = new System.Drawing.Point(146, 90);
-            this.kwlContent.Name = "kwlContent";
-            this.kwlContent.Size = new System.Drawing.Size(451, 154);
-            this.kwlContent.StateCommon.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kwlContent.Text = "{0}";
-            this.kwlContent.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // ktxtUserResponse
-            // 
-            this.ktxtUserResponse.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ktxtUserResponse.Location = new System.Drawing.Point(146, 247);
-            this.ktxtUserResponse.Name = "ktxtUserResponse";
-            this.ktxtUserResponse.Size = new System.Drawing.Size(451, 23);
-            this.ktxtUserResponse.TabIndex = 3;
-            // 
-            // kwlTitle
-            // 
-            this.kwlTitle.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.kwlTitle.AutoSize = false;
-            this.kwlTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kwlTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
-            this.kwlTitle.LabelStyle = Krypton.Toolkit.LabelStyle.NormalControl;
-            this.kwlTitle.Location = new System.Drawing.Point(146, 12);
-            this.kwlTitle.Name = "kwlTitle";
-            this.kwlTitle.Size = new System.Drawing.Size(451, 74);
-            this.kwlTitle.StateCommon.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kwlTitle.Text = "{0}";
-            this.kwlTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // pbxToastImage
-            // 
-            this.pbxToastImage.BackColor = System.Drawing.Color.Transparent;
-            this.pbxToastImage.Location = new System.Drawing.Point(12, 12);
-            this.pbxToastImage.Name = "pbxToastImage";
-            this.pbxToastImage.Size = new System.Drawing.Size(128, 128);
-            this.pbxToastImage.TabIndex = 1;
-            this.pbxToastImage.TabStop = false;
             // 
             // kryptonPanel1
             // 
             this.kryptonPanel1.Controls.Add(this.tlpButtons);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.kryptonPanel1.Location = new System.Drawing.Point(0, 277);
+            this.kryptonPanel1.Location = new System.Drawing.Point(0, 282);
             this.kryptonPanel1.Name = "kryptonPanel1";
             this.kryptonPanel1.PanelBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelAlternate;
             this.kryptonPanel1.Size = new System.Drawing.Size(609, 50);
-            this.kryptonPanel1.TabIndex = 4;
+            this.kryptonPanel1.TabIndex = 5;
             // 
             // tlpButtons
             // 
@@ -250,25 +180,90 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             this.kbtnToastButton1.TabIndex = 0;
             this.kbtnToastButton1.Values.Text = "B1";
             // 
-            // BasicNotificationWithUserResponseWrappedLabel
+            // kpnlContent
+            // 
+            this.kpnlContent.Controls.Add(this.pbProgress);
+            this.kpnlContent.Controls.Add(this.kwlContent);
+            this.kpnlContent.Controls.Add(this.ktxtUserResponse);
+            this.kpnlContent.Controls.Add(this.kwlTitle);
+            this.kpnlContent.Controls.Add(this.pbxToastImage);
+            this.kpnlContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kpnlContent.Location = new System.Drawing.Point(0, 0);
+            this.kpnlContent.Name = "kpnlContent";
+            this.kpnlContent.Size = new System.Drawing.Size(609, 282);
+            this.kpnlContent.TabIndex = 6;
+            // 
+            // kwlContent
+            // 
+            this.kwlContent.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.kwlContent.AutoSize = false;
+            this.kwlContent.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kwlContent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.kwlContent.LabelStyle = Krypton.Toolkit.LabelStyle.NormalControl;
+            this.kwlContent.Location = new System.Drawing.Point(146, 115);
+            this.kwlContent.Name = "kwlContent";
+            this.kwlContent.Size = new System.Drawing.Size(451, 116);
+            this.kwlContent.StateCommon.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kwlContent.Text = "{0}";
+            this.kwlContent.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // ktxtUserResponse
+            // 
+            this.ktxtUserResponse.Location = new System.Drawing.Point(146, 247);
+            this.ktxtUserResponse.Name = "ktxtUserResponse";
+            this.ktxtUserResponse.Size = new System.Drawing.Size(451, 23);
+            this.ktxtUserResponse.TabIndex = 3;
+            // 
+            // kwlTitle
+            // 
+            this.kwlTitle.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.kwlTitle.AutoSize = false;
+            this.kwlTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kwlTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.kwlTitle.LabelStyle = Krypton.Toolkit.LabelStyle.NormalControl;
+            this.kwlTitle.Location = new System.Drawing.Point(146, 12);
+            this.kwlTitle.Name = "kwlTitle";
+            this.kwlTitle.Size = new System.Drawing.Size(451, 87);
+            this.kwlTitle.StateCommon.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kwlTitle.Text = "{0}";
+            this.kwlTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pbxToastImage
+            // 
+            this.pbxToastImage.BackColor = System.Drawing.Color.Transparent;
+            this.pbxToastImage.Location = new System.Drawing.Point(12, 12);
+            this.pbxToastImage.Name = "pbxToastImage";
+            this.pbxToastImage.Size = new System.Drawing.Size(128, 128);
+            this.pbxToastImage.TabIndex = 1;
+            this.pbxToastImage.TabStop = false;
+            // 
+            // pbProgress
+            // 
+            this.pbProgress.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pbProgress.Location = new System.Drawing.Point(0, 277);
+            this.pbProgress.Name = "pbProgress";
+            this.pbProgress.Size = new System.Drawing.Size(609, 5);
+            this.pbProgress.TabIndex = 5;
+            // 
+            // BasicNotificationWithUserResponseWrappedLabelAndProgressBar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(609, 327);
+            this.ClientSize = new System.Drawing.Size(609, 332);
             this.Controls.Add(this.kpnlContent);
             this.Controls.Add(this.kryptonPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "BasicNotificationWithUserResponseWrappedLabel";
+            this.Name = "BasicNotificationWithUserResponseWrappedLabelAndProgressBar";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Load += new System.EventHandler(this.BasicNotificationWithUserResponseWrappedLabel_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.kpnlContent)).EndInit();
-            this.kpnlContent.ResumeLayout(false);
-            this.kpnlContent.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxToastImage)).EndInit();
+            this.Load += new System.EventHandler(this.BasicNotificationWithUserResponseWrappedLabelAndProgressBar_Load);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.tlpButtons.ResumeLayout(false);
@@ -284,17 +279,16 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             ((System.ComponentModel.ISupportInitialize)(this.kbtnToastButtonPanel1)).EndInit();
             this.kbtnToastButtonPanel1.ResumeLayout(false);
             this.kbtnToastButtonPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kpnlContent)).EndInit();
+            this.kpnlContent.ResumeLayout(false);
+            this.kpnlContent.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxToastImage)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private KryptonPanel kpnlContent;
-        private KryptonWrapLabel kwlContent;
-        private KryptonTextBox ktxtUserResponse;
-        private KryptonWrapLabel kwlTitle;
-        private PictureBox pbxToastImage;
         private KryptonPanel kryptonPanel1;
         private KryptonTableLayoutPanel tlpButtons;
         private KryptonPanel kbtnToastButtonPanel3;
@@ -305,5 +299,11 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         private KryptonBorderEdge kryptonBorderEdge1;
         private KryptonPanel kbtnToastButtonPanel1;
         private KryptonButton kbtnToastButton1;
+        private KryptonPanel kpnlContent;
+        private ProgressBar pbProgress;
+        private KryptonWrapLabel kwlContent;
+        private KryptonTextBox ktxtUserResponse;
+        private KryptonWrapLabel kwlTitle;
+        private PictureBox pbxToastImage;
     }
 }
