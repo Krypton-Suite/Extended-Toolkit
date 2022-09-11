@@ -170,6 +170,34 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             }
         }
 
+        /// <summary>Configures the toast notification button.</summary>
+        /// <param name="toastButton">The toast button.</param>
+        /// <param name="actionType">Type of the action.</param>
+        /// <param name="isAcceptButton">The is accept button.</param>
+        /// <param name="isDenyButton">The is deny button.</param>
+        /// <param name="openInExplorer">The open in explorer.</param>
+        /// <param name="optionalParameters">The optional parameters.</param>
+        /// <param name="processName">Name of the process.</param>
+        /// <param name="text">The text.</param>
+        public static void ConfigureToastNotificationButton(KryptonToastButton toastButton, ActionType actionType,
+            bool? isAcceptButton, bool? isDenyButton, bool? openInExplorer, object optionalParameters = null,
+            string processName = null, string text = null)
+        {
+            toastButton.ActionType = actionType;
+
+            toastButton.IsAcceptButton = isAcceptButton ?? false;
+
+            toastButton.IsDenyButton = isDenyButton ?? false;
+
+            toastButton.OpenInExplorer = openInExplorer ?? false;
+
+            toastButton.OptionalParameters = optionalParameters;
+
+            toastButton.ProcessName = processName ?? string.Empty;
+
+            toastButton.Text = text ?? string.Empty;
+        }
+
         #endregion
     }
 }
