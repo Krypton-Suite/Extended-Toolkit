@@ -560,7 +560,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast.UX
                     // Note: Come back to this
                     break;
                 case RightToLeftSupport.LeftToRight:
-                    UtilityMethods.CalibrateUILayout(this, new Control[] { kbtnToastButton1, kbtnToastButton2, kbtnToastButton3, kwlTitle, kwlContent, ktxtUserResponse }, RightToLeft.No);
+                    UtilityMethods.CalibrateUILayout(this, new Control[] { ktbActionButton1, ktbActionButton2, ktbActionButton3, kwlTitle, kwlContent, ktxtUserResponse }, RightToLeft.No);
 
                     RightToLeftLayout = false;
 
@@ -573,7 +573,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast.UX
                     ktxtUserResponse.Location = new Point(146, 247);
                     break;
                 case RightToLeftSupport.RightToLeft:
-                    UtilityMethods.CalibrateUILayout(this, new Control[] { kbtnToastButton1, kbtnToastButton2, kbtnToastButton3, kwlTitle, kwlContent, ktxtUserResponse }, RightToLeft.Yes);
+                    UtilityMethods.CalibrateUILayout(this, new Control[] { ktbActionButton1, ktbActionButton2, ktbActionButton3, kwlTitle, kwlContent, ktxtUserResponse }, RightToLeft.Yes);
 
                     RightToLeftLayout = true;
 
