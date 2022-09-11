@@ -8,8 +8,8 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Buttons
 {
-    [Designer(typeof(KryptonButtonExtendedDesigner))]
-    public class KryptonButtonExtended : KryptonButton
+    [Designer(typeof(KryptonDialogButtonExtendedDesigner))]
+    public class KryptonDialogButtonExtended : KryptonButton
     {
         #region Instance Fields
 
@@ -66,7 +66,10 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         [DefaultValue(typeof(Color), @"Color.Empty")]
         public Color DenyButtonTextColour2 { get => _denyButtonTextColour2; set { _denyButtonTextColour2 = value; Invalidate(); } }
 
-        [DefaultValue(typeof(KryptonButtonBuiltInDisplayString), @"KryptonButtonBuiltInDisplayString.Custom")]
+        //[EditorBrowsable(EditorBrowsableState.Never)]
+        //public override string Text { get; set; }
+
+        [DefaultValue(typeof(KryptonButtonBuiltInDisplayString), @"KryptonButtonBuiltInDisplayString.Ok"), Description(@"Controls what the button does. The text is controlled via 'KryptonManager.Strings'.")]
         public KryptonButtonBuiltInDisplayString DisplayString
         {
             get => _displayString;
@@ -86,8 +89,8 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 
         #region Identity
 
-        /// <summary>Initializes a new instance of the <see cref="KryptonButtonExtended" /> class.</summary>
-        public KryptonButtonExtended()
+        /// <summary>Initializes a new instance of the <see cref="KryptonDialogButtonExtended" /> class.</summary>
+        public KryptonDialogButtonExtended()
         {
             _isAcceptButton = false;
 
@@ -111,7 +114,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 
             _denyButtonTextColour2 = Color.Empty;
 
-            _displayString = KryptonButtonBuiltInDisplayString.Custom;
+            _displayString = KryptonButtonBuiltInDisplayString.Ok;
         }
 
         #endregion
@@ -159,11 +162,6 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
                     DialogResult = DialogResult.Cancel;
 
                     SetDenyButton(true);
-                    break;
-                case KryptonButtonBuiltInDisplayString.Custom:
-                    Text = customText;
-
-                    DialogResult = customDialogResult;
                     break;
                 case KryptonButtonBuiltInDisplayString.Yes:
                     Text = KryptonManager.Strings.Yes;
@@ -289,7 +287,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             }
             else
             {
-                return KryptonButtonBuiltInDisplayString.Custom;
+                return KryptonButtonBuiltInDisplayString.Ok;
             }
         }
 

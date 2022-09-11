@@ -29,7 +29,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 
         private static bool? _isSystemAbleToLoadShield = null;
 
-        private GlobalMethods _globalMethods = new GlobalMethods();
+        private GlobalMethods _globalMethods = new();
         #endregion
 
         #region Constants
@@ -69,7 +69,8 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         #region Constructor
         public KryptonUACButtonVersion1() : base()
         {
-            this.Size = new Size((int)(this.Width * 1.5), this.Height + 1);
+            Size = new Size((int)(this.Width * 1.5), this.Height + 1);
+
             if (PlatformHelper.VistaOrHigher)
             {
                 //Only try to load the icon if it did not fail before

@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Krypton.Toolkit.Suite.Extended.Buttons
 {
-    internal class KryptonButtonExtendedDesigner : ControlDesigner
+    internal class KryptonDialogButtonExtendedDesigner : ControlDesigner
     {
         #region Identity
 
-        /// <summary>Initializes a new instance of the <see cref="KryptonButtonExtendedDesigner" /> class.</summary>
-        public KryptonButtonExtendedDesigner()
+        /// <summary>Initializes a new instance of the <see cref="KryptonDialogButtonExtendedDesigner" /> class.</summary>
+        public KryptonDialogButtonExtendedDesigner()
         {
             // The resizing handles around the control need to change depending on the
             // value of the AutoSize and AutoSizeMode properties. When in AutoSize you
@@ -29,7 +29,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             {
                 DesignerActionListCollection actionList = new()
                 {
-                    new KryptonButtonExtendedActionList(this)
+                    new KryptonDialogButtonExtendedActionList(this)
                 };
 
                 return actionList;

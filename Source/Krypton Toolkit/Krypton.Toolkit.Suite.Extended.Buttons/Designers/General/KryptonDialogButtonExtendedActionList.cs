@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 
 namespace Krypton.Toolkit.Suite.Extended.Buttons
 {
-    internal class KryptonButtonExtendedActionList : DesignerActionList
+    internal class KryptonDialogButtonExtendedActionList : DesignerActionList
     {
         #region Instance Fields
-        private readonly KryptonButtonExtended _button;
+        private readonly KryptonDialogButtonExtended _button;
 
         private readonly IComponentChangeService _service;
         #endregion
 
         #region Identity
-        public KryptonButtonExtendedActionList(KryptonButtonExtendedDesigner owner) : base(owner.Component)
+        public KryptonDialogButtonExtendedActionList(KryptonDialogButtonExtendedDesigner owner) : base(owner.Component)
         {
             // Remember the button instance
-            _button = owner.Component as KryptonButtonExtended;
+            _button = owner.Component as KryptonDialogButtonExtended;
 
             // Cache service used to notify when a property has changed
             _service = (IComponentChangeService)GetService(typeof(IComponentChangeService));

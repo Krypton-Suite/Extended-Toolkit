@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ButtonItems));
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
-            this.kryptonButtonExtended1 = new Krypton.Toolkit.Suite.Extended.Buttons.KryptonButtonExtended();
             this.kryptonYesDialogButton1 = new Krypton.Toolkit.Suite.Extended.Buttons.KryptonYesDialogButton();
             this.kryptonViewButtons1 = new Krypton.Toolkit.Suite.Extended.Buttons.KryptonViewButtons();
             this.kryptonuacButtonVersion21 = new Krypton.Toolkit.Suite.Extended.Buttons.KryptonUACButtonVersion2();
@@ -42,13 +41,14 @@
             this.kryptonCommandLinkButton1 = new Krypton.Toolkit.Suite.Extended.Buttons.KryptonCommandLinkButton();
             this.kryptonCancelDialogButton1 = new Krypton.Toolkit.Suite.Extended.Buttons.KryptonCancelDialogButton();
             this.kryptonBrowseButton1 = new Krypton.Toolkit.Suite.Extended.Buttons.KryptonBrowseButton();
+            this.kryptonDialogButtonExtended1 = new Krypton.Toolkit.Suite.Extended.Buttons.KryptonDialogButtonExtended();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // kryptonPanel1
             // 
-            this.kryptonPanel1.Controls.Add(this.kryptonButtonExtended1);
+            this.kryptonPanel1.Controls.Add(this.kryptonDialogButtonExtended1);
             this.kryptonPanel1.Controls.Add(this.kryptonYesDialogButton1);
             this.kryptonPanel1.Controls.Add(this.kryptonViewButtons1);
             this.kryptonPanel1.Controls.Add(this.kryptonuacButtonVersion21);
@@ -65,26 +65,6 @@
             this.kryptonPanel1.Name = "kryptonPanel1";
             this.kryptonPanel1.Size = new System.Drawing.Size(686, 390);
             this.kryptonPanel1.TabIndex = 0;
-            // 
-            // kryptonButtonExtended1
-            // 
-            this.kryptonButtonExtended1.AcceptButtonBackColour1 = System.Drawing.Color.Green;
-            this.kryptonButtonExtended1.AcceptButtonBackColour2 = System.Drawing.Color.Green;
-            this.kryptonButtonExtended1.CornerRoundingRadius = -1F;
-            this.kryptonButtonExtended1.DenyButtonBackColour1 = System.Drawing.Color.Red;
-            this.kryptonButtonExtended1.DenyButtonBackColour2 = System.Drawing.Color.Red;
-            this.kryptonButtonExtended1.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.kryptonButtonExtended1.DisplayString = Krypton.Toolkit.Suite.Extended.Buttons.KryptonButtonBuiltInDisplayString.Ok;
-            this.kryptonButtonExtended1.IsAcceptButton = true;
-            this.kryptonButtonExtended1.IsDenyButton = true;
-            this.kryptonButtonExtended1.Location = new System.Drawing.Point(342, 37);
-            this.kryptonButtonExtended1.Name = "kryptonButtonExtended1";
-            this.kryptonButtonExtended1.Size = new System.Drawing.Size(188, 36);
-            this.kryptonButtonExtended1.StateCommon.Back.Color1 = System.Drawing.Color.Green;
-            this.kryptonButtonExtended1.StateCommon.Back.Color2 = System.Drawing.Color.Green;
-            this.kryptonButtonExtended1.TabIndex = 22;
-            this.kryptonButtonExtended1.UseAcceptDenyColours = true;
-            this.kryptonButtonExtended1.Values.Text = "O&K";
             // 
             // kryptonYesDialogButton1
             // 
@@ -142,7 +122,7 @@
             this.kryptonSplitButton1.Name = "kryptonSplitButton1";
             this.kryptonSplitButton1.ProcessPath = null;
             this.kryptonSplitButton1.ShowSplitOption = true;
-            this.kryptonSplitButton1.Size = new System.Drawing.Size(120, 22);
+            this.kryptonSplitButton1.Size = new System.Drawing.Size(209, 22);
             this.kryptonSplitButton1.TabIndex = 17;
             this.kryptonSplitButton1.UseUACElevation = false;
             this.kryptonSplitButton1.Values.Text = "kryptonSplitButton1";
@@ -231,6 +211,27 @@
             this.kryptonBrowseButton1.UseSystemFolderBrowser = false;
             this.kryptonBrowseButton1.Values.Text = "...";
             // 
+            // kryptonDialogButtonExtended1
+            // 
+            this.kryptonDialogButtonExtended1.AcceptButtonBackColour1 = System.Drawing.Color.Green;
+            this.kryptonDialogButtonExtended1.AcceptButtonBackColour2 = System.Drawing.Color.Green;
+            this.kryptonDialogButtonExtended1.AcceptButtonTextColour1 = System.Drawing.Color.Empty;
+            this.kryptonDialogButtonExtended1.AcceptButtonTextColour2 = System.Drawing.Color.Empty;
+            this.kryptonDialogButtonExtended1.CornerRoundingRadius = -1F;
+            this.kryptonDialogButtonExtended1.DenyButtonBackColour1 = System.Drawing.Color.Red;
+            this.kryptonDialogButtonExtended1.DenyButtonBackColour2 = System.Drawing.Color.Red;
+            this.kryptonDialogButtonExtended1.DenyButtonTextColour1 = System.Drawing.Color.Empty;
+            this.kryptonDialogButtonExtended1.DenyButtonTextColour2 = System.Drawing.Color.Empty;
+            this.kryptonDialogButtonExtended1.DialogResult = System.Windows.Forms.DialogResult.No;
+            this.kryptonDialogButtonExtended1.DisplayString = Krypton.Toolkit.Suite.Extended.Buttons.KryptonButtonBuiltInDisplayString.No;
+            this.kryptonDialogButtonExtended1.IsAcceptButton = true;
+            this.kryptonDialogButtonExtended1.IsDenyButton = true;
+            this.kryptonDialogButtonExtended1.Location = new System.Drawing.Point(342, 47);
+            this.kryptonDialogButtonExtended1.Name = "kryptonDialogButtonExtended1";
+            this.kryptonDialogButtonExtended1.Size = new System.Drawing.Size(90, 25);
+            this.kryptonDialogButtonExtended1.TabIndex = 22;
+            this.kryptonDialogButtonExtended1.Values.Text = "N&o";
+            // 
             // ButtonItems
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -261,6 +262,6 @@
         private Krypton.Toolkit.Suite.Extended.Buttons.KryptonCommandLinkButton kryptonCommandLinkButton1;
         private Krypton.Toolkit.Suite.Extended.Buttons.KryptonCancelDialogButton kryptonCancelDialogButton1;
         private Krypton.Toolkit.Suite.Extended.Buttons.KryptonBrowseButton kryptonBrowseButton1;
-        private Krypton.Toolkit.Suite.Extended.Buttons.KryptonButtonExtended kryptonButtonExtended1;
+        private Krypton.Toolkit.Suite.Extended.Buttons.KryptonDialogButtonExtended kryptonDialogButtonExtended1;
     }
 }
