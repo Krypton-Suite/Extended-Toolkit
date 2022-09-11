@@ -45,12 +45,15 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             this.tlpButtons = new Krypton.Toolkit.KryptonTableLayoutPanel();
             this.kbtnToastButtonPanel3 = new Krypton.Toolkit.KryptonPanel();
+            this.ktbActionButton3 = new Krypton.Toolkit.Suite.Extended.Toast.KryptonToastButton();
             this.kbtnToastButton3 = new Krypton.Toolkit.KryptonButton();
             this.kbtnToastButtonPanel2 = new Krypton.Toolkit.KryptonPanel();
+            this.ktbActionButton2 = new Krypton.Toolkit.Suite.Extended.Toast.KryptonToastButton();
             this.kbtnToastButton2 = new Krypton.Toolkit.KryptonButton();
             this.kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
             this.kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
             this.kbtnToastButtonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            this.ktbActionButton1 = new Krypton.Toolkit.Suite.Extended.Toast.KryptonToastButton();
             this.kbtnToastButton1 = new Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.kpnlContent)).BeginInit();
             this.kpnlContent.SuspendLayout();
@@ -160,6 +163,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             // 
             // kbtnToastButtonPanel3
             // 
+            this.kbtnToastButtonPanel3.Controls.Add(this.ktbActionButton3);
             this.kbtnToastButtonPanel3.Controls.Add(this.kbtnToastButton3);
             this.kbtnToastButtonPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kbtnToastButtonPanel3.Location = new System.Drawing.Point(79, 10);
@@ -167,6 +171,27 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             this.kbtnToastButtonPanel3.PanelBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelAlternate;
             this.kbtnToastButtonPanel3.Size = new System.Drawing.Size(527, 37);
             this.kbtnToastButtonPanel3.TabIndex = 3;
+            // 
+            // ktbActionButton3
+            // 
+            this.ktbActionButton3.AcceptButtonBackColour1 = System.Drawing.Color.Green;
+            this.ktbActionButton3.AcceptButtonBackColour2 = System.Drawing.Color.Green;
+            this.ktbActionButton3.AcceptButtonTextColour1 = System.Drawing.Color.Empty;
+            this.ktbActionButton3.AcceptButtonTextColour2 = System.Drawing.Color.Empty;
+            this.ktbActionButton3.ActionType = Krypton.Toolkit.Suite.Extended.Toast.ActionType.Default;
+            this.ktbActionButton3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.ktbActionButton3.AutoSize = true;
+            this.ktbActionButton3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ktbActionButton3.CornerRoundingRadius = -1F;
+            this.ktbActionButton3.DenyButtonBackColour1 = System.Drawing.Color.Red;
+            this.ktbActionButton3.DenyButtonBackColour2 = System.Drawing.Color.Red;
+            this.ktbActionButton3.DenyButtonTextColour1 = System.Drawing.Color.Empty;
+            this.ktbActionButton3.DenyButtonTextColour2 = System.Drawing.Color.Empty;
+            this.ktbActionButton3.Location = new System.Drawing.Point(488, 6);
+            this.ktbActionButton3.Name = "ktbActionButton3";
+            this.ktbActionButton3.Size = new System.Drawing.Size(30, 22);
+            this.ktbActionButton3.TabIndex = 2;
+            this.ktbActionButton3.Values.Text = "AB3";
             // 
             // kbtnToastButton3
             // 
@@ -182,6 +207,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             // 
             // kbtnToastButtonPanel2
             // 
+            this.kbtnToastButtonPanel2.Controls.Add(this.ktbActionButton2);
             this.kbtnToastButtonPanel2.Controls.Add(this.kbtnToastButton2);
             this.kbtnToastButtonPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kbtnToastButtonPanel2.Location = new System.Drawing.Point(59, 10);
@@ -189,6 +215,27 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             this.kbtnToastButtonPanel2.PanelBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelAlternate;
             this.kbtnToastButtonPanel2.Size = new System.Drawing.Size(14, 37);
             this.kbtnToastButtonPanel2.TabIndex = 2;
+            // 
+            // ktbActionButton2
+            // 
+            this.ktbActionButton2.AcceptButtonBackColour1 = System.Drawing.Color.Green;
+            this.ktbActionButton2.AcceptButtonBackColour2 = System.Drawing.Color.Green;
+            this.ktbActionButton2.AcceptButtonTextColour1 = System.Drawing.Color.Empty;
+            this.ktbActionButton2.AcceptButtonTextColour2 = System.Drawing.Color.Empty;
+            this.ktbActionButton2.ActionType = Krypton.Toolkit.Suite.Extended.Toast.ActionType.Default;
+            this.ktbActionButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.ktbActionButton2.AutoSize = true;
+            this.ktbActionButton2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ktbActionButton2.CornerRoundingRadius = -1F;
+            this.ktbActionButton2.DenyButtonBackColour1 = System.Drawing.Color.Red;
+            this.ktbActionButton2.DenyButtonBackColour2 = System.Drawing.Color.Red;
+            this.ktbActionButton2.DenyButtonTextColour1 = System.Drawing.Color.Empty;
+            this.ktbActionButton2.DenyButtonTextColour2 = System.Drawing.Color.Empty;
+            this.ktbActionButton2.Location = new System.Drawing.Point(-20, 6);
+            this.ktbActionButton2.Name = "ktbActionButton2";
+            this.ktbActionButton2.Size = new System.Drawing.Size(30, 22);
+            this.ktbActionButton2.TabIndex = 2;
+            this.ktbActionButton2.Values.Text = "AB2";
             // 
             // kbtnToastButton2
             // 
@@ -224,6 +271,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             // 
             // kbtnToastButtonPanel1
             // 
+            this.kbtnToastButtonPanel1.Controls.Add(this.ktbActionButton1);
             this.kbtnToastButtonPanel1.Controls.Add(this.kbtnToastButton1);
             this.kbtnToastButtonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kbtnToastButtonPanel1.Location = new System.Drawing.Point(3, 10);
@@ -232,6 +280,27 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             this.kbtnToastButtonPanel1.Size = new System.Drawing.Size(50, 37);
             this.kbtnToastButtonPanel1.TabIndex = 1;
             this.kbtnToastButtonPanel1.Visible = false;
+            // 
+            // ktbActionButton1
+            // 
+            this.ktbActionButton1.AcceptButtonBackColour1 = System.Drawing.Color.Green;
+            this.ktbActionButton1.AcceptButtonBackColour2 = System.Drawing.Color.Green;
+            this.ktbActionButton1.AcceptButtonTextColour1 = System.Drawing.Color.Empty;
+            this.ktbActionButton1.AcceptButtonTextColour2 = System.Drawing.Color.Empty;
+            this.ktbActionButton1.ActionType = Krypton.Toolkit.Suite.Extended.Toast.ActionType.Default;
+            this.ktbActionButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.ktbActionButton1.AutoSize = true;
+            this.ktbActionButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ktbActionButton1.CornerRoundingRadius = -1F;
+            this.ktbActionButton1.DenyButtonBackColour1 = System.Drawing.Color.Red;
+            this.ktbActionButton1.DenyButtonBackColour2 = System.Drawing.Color.Red;
+            this.ktbActionButton1.DenyButtonTextColour1 = System.Drawing.Color.Empty;
+            this.ktbActionButton1.DenyButtonTextColour2 = System.Drawing.Color.Empty;
+            this.ktbActionButton1.Location = new System.Drawing.Point(9, 6);
+            this.ktbActionButton1.Name = "ktbActionButton1";
+            this.ktbActionButton1.Size = new System.Drawing.Size(30, 22);
+            this.ktbActionButton1.TabIndex = 1;
+            this.ktbActionButton1.Values.Text = "AB1";
             // 
             // kbtnToastButton1
             // 
@@ -292,12 +361,15 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         private KryptonPanel kryptonPanel1;
         private KryptonTableLayoutPanel tlpButtons;
         private KryptonPanel kbtnToastButtonPanel3;
+        private KryptonToastButton ktbActionButton3;
         private KryptonButton kbtnToastButton3;
         private KryptonPanel kbtnToastButtonPanel2;
+        private KryptonToastButton ktbActionButton2;
         private KryptonButton kbtnToastButton2;
         private KryptonPanel kryptonPanel2;
         private KryptonBorderEdge kryptonBorderEdge1;
         private KryptonPanel kbtnToastButtonPanel1;
+        private KryptonToastButton ktbActionButton1;
         private KryptonButton kbtnToastButton1;
     }
 }
