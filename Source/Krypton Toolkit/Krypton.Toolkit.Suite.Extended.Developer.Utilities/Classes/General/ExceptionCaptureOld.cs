@@ -31,7 +31,8 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
         /// <param name="className">Name of the class.</param>
         /// <param name="methodSignature">The method signature.</param>
         /// <param name="useDebugConsole">Use the debug console.</param>
-        public static void CaptureException(Exception exception, string title = @"Exception Caught", MessageBoxButtons buttons = MessageBoxButtons.OK, KryptonMessageBoxIcon icon = KryptonMessageBoxIcon.Error, string className = "", string methodSignature = "", bool useDebugConsole = false)
+        /// <param name="dumpException">Dumps the exception data to a file.</param>
+        public static void CaptureException(Exception exception, string title = @"Exception Caught", MessageBoxButtons buttons = MessageBoxButtons.OK, KryptonMessageBoxIcon icon = KryptonMessageBoxIcon.Error, string className = "", string methodSignature = "", bool useDebugConsole = false, bool dumpException = false)
         {
             if (className != "")
             {
@@ -192,6 +193,36 @@ namespace Krypton.Toolkit.Suite.Extended.Developer.Utilities
                 CaptureException(e);
             }
         }
+
+        private void DumpException(Exception e)
+        {
+            try
+            {
+                string fileName = $"Exception Log - {CultureInfo.CurrentCulture.DateTimeFormat.LongDatePattern}.log";
+
+                File.Create(fileName);
+
+                StreamWriter writer = new StreamWriter(fileName);
+
+                writer.Write(e.Data.ToString());
+
+                writer.Close();
+
+                writer.Dispose();
+
+                DialogResult result = KryptonMessageBox.Show($"Log file created at: '{Path.GetFullPath(fileName)}'. Open now?", "Log File Created", MessageBoxButtons.YesNo, KryptonMessageBoxIcon.Information);
+
+                if (result == DialogResult.Yes)
+                {
+                    Process.Start(@"Notepad.exe", Path.GetFullPath(fileName));
+                }
+            }
+            catch (Exception exception)
+            {
+                CaptureException(e);
+            }
+        }
+
         #endregion
 
         #region Destruction

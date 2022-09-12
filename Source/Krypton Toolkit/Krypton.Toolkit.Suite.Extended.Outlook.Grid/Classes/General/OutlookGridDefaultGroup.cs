@@ -77,6 +77,8 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         private IComparer _itemsComparer;
         #endregion
 
+        public static OutlookGridLanguageStrings Strings => KryptonOutlookGridGroupBox.Strings;
+
         #region "Constructor"
 
         /// <summary>
@@ -86,15 +88,15 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         {
             _val = null;
             _column = null;
-            if (KryptonManager.CurrentGlobalPalette.GetRenderer() == KryptonManager.RenderOffice2013)
+            if (KryptonManager.CurrentGlobalPalette.GetRenderer() == KryptonManager.RenderOffice2013 || KryptonManager.CurrentGlobalPalette.GetRenderer() == KryptonManager.RenderOffice365)
                 _height = StaticValues._2013GroupRowHeight; // special height for office 2013
             else
                 _height = StaticValues._defaultGroupRowHeight; // default height
             Rows = new List<OutlookGridRow>();
             Children = new OutlookGridGroupCollection();
             _formatStyle = "";
-            _oneItemText = LanguageManager.Instance.GetString("OneItem");
-            _xXxItemsText = LanguageManager.Instance.GetString("XXXItems");
+            _oneItemText = Strings.OneItem;
+            _xXxItemsText = Strings.NumberOfItems;
             _allowHiddenWhenGrouped = true;
             _sortBySummaryCount = false;
         }
@@ -147,7 +149,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
                 //For formatting number we need to cast the object value to the number before applying formatting
                 if (_val == null || string.IsNullOrEmpty(_val.ToString()))
                 {
-                    formattedValue = LanguageManager.Instance.GetString("UNKNOWN");
+                    formattedValue = Strings.Unknown;
                 }
                 else if (!String.IsNullOrEmpty(_formatStyle))
                 {

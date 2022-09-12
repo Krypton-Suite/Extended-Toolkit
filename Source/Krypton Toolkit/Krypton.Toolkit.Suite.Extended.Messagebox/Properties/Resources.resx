@@ -139,8 +139,14 @@
   <data name="Stop" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Stop.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="UAC_Shield" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\UAC_Shield.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="UAC_Shield_Windows_10" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\UAC_Shield_Windows_10.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="UAC_Shield_Windows_11" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\UAC_Shield_Windows_11.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="UAC_Shield_Windows_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\UAC_Shield_Windows_7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Warning" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Warning.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

@@ -91,7 +91,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 
             Size = new Size(34, 25);
 
-            BrowseButtonAction = BrowseButtonAction.SAVEFILE;
+            BrowseButtonAction = BrowseButtonAction.SaveFile;
         }
         #endregion
 
@@ -101,7 +101,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
         {
             switch (_browseButtonAction)
             {
-                case BrowseButtonAction.SAVEFILE:
+                case BrowseButtonAction.SaveFile:
                     if (!_useWindowsAPICodePackDialogs)
                     {
                         if (_dialogFilter != null)
@@ -157,7 +157,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
                         }
                     }
                     break;
-                case BrowseButtonAction.OPENDIRECTORY:
+                case BrowseButtonAction.OpenDirectory:
                     if (_useSystemFolderBrowser)
                     {
                         FolderBrowserDialog fbd = new FolderBrowserDialog();
@@ -187,7 +187,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
                         }
                     }
                     break;
-                case BrowseButtonAction.OPENFILE:
+                case BrowseButtonAction.OpenFile:
                     if (!_useWindowsAPICodePackDialogs)
                     {
                         if (_dialogFilter != null)

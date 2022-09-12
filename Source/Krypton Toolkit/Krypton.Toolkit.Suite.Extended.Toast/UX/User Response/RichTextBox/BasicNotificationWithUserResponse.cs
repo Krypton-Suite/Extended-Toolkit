@@ -11,7 +11,12 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
     public partial class BasicNotificationWithUserResponse : KryptonForm
     {
         #region Variables
-        private bool _usePanelColourInTextArea, _useNativeBackColourInUserResponseArea;
+
+        private ActionButtonLocation _actionButtonLocation;
+
+        private ActionType _actionType;
+
+        private bool _usePanelColourInTextArea, _useNativeBackColourInUserResponseArea, _showCloseButton;
 
         private Color _userResponsePromptColour;
 
@@ -34,12 +39,22 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         private Image _customImage;
 
         private RightToLeftSupport _rightToLeftSupport;
+
+        private KryptonCommand _actionButtonCommand;
+
         #endregion
 
         #region Properties
+
+        public ActionButtonLocation ActionButtonLocation { get => _actionButtonLocation; set => _actionButtonLocation = value; }
+
+        public ActionType ActionType { get => _actionType; set => _actionType = value; }
+
         public bool UsePanelColourInTextArea { get => _usePanelColourInTextArea; set => _usePanelColourInTextArea = value; }
 
         public bool UseNativeBackColourInUserResponseArea { get => _useNativeBackColourInUserResponseArea; set => _useNativeBackColourInUserResponseArea = value; }
+        
+        public bool ShowCloseButton { get => _showCloseButton; set => _showCloseButton = value; }
 
         public Color UserResponsePromptColour { get => _userResponsePromptColour; set => _userResponsePromptColour = value; }
 
@@ -70,6 +85,9 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         public Image CustomImage { get => _customImage; set => _customImage = value; }
 
         public RightToLeftSupport RightToLeftSupport { get => _rightToLeftSupport; set { _rightToLeftSupport = value; Invalidate(); } }
+
+        public KryptonCommand ActionButtonCommand { get => _actionButtonCommand; set => _actionButtonCommand = value; }
+
         #endregion
 
         #region Constructors
@@ -86,9 +104,11 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <param name="userResponseCueAlignHorizontal">The user response cue align horizontal.</param>
         /// <param name="userResponseCueAlignVertical">The user response cue align vertical.</param>
         /// <param name="userResponseCueFont">The user response cue font.</param>
-        public BasicNotificationWithUserResponse(IconType iconType, string title, string contentText,
+        public BasicNotificationWithUserResponse(ActionButtonLocation? actionButtonLocation, ActionType? actionType,
+                                                 IconType iconType, string title, string contentText,
                                                  bool? usePanelColourInTextArea,
                                                  bool? useNativeBackColourInUserResponseArea,
+                                                 bool? showCloseButton,
                                                  Image customImage = null,
                                                  string dismissText = "&Dismiss",
                                                  string userResponseCueText = "",
@@ -96,49 +116,16 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                                                  PaletteRelativeAlign? userResponseCueAlignHorizontal = null,
                                                  PaletteRelativeAlign? userResponseCueAlignVertical = null,
                                                  Font userResponseCueFont = null,
-                                                 RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LEFTTORIGHT)
+                                                 RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight,
+                                                 KryptonCommand actionButtonCommand = null)
         {
             InitializeComponent();
 
-            IconType = iconType;
-
-            Title = title;
-
-            ContentText = contentText;
-
-            CustomImage = customImage;
-
-            UsePanelColourInTextArea = usePanelColourInTextArea ?? false;
-
-            UseNativeBackColourInUserResponseArea = useNativeBackColourInUserResponseArea ?? false;
-
-            DismissText = dismissText;
-
-            UserResponsePrompt = userResponseCueText;
-
-            UserResponsePromptColour = userResponseCueColour ?? Color.Empty;
-
-            UserResponsePromptAlignHorizontal = userResponseCueAlignHorizontal ?? PaletteRelativeAlign.Near;
-
-            UserResponsePromptAlignVertical = userResponseCueAlignVertical ?? PaletteRelativeAlign.Near;
-
-            UserResponsePromptFont = userResponseCueFont;
-
-            RightToLeftSupport = rightToLeftSupport ?? RightToLeftSupport.LEFTTORIGHT;
-
-            TopMost = true;
-
-            Resize += BasicNotificationWithUserResponse_Resize;
-
-            GotFocus += BasicNotificationWithUserResponse_GotFocus;
-
-            LostFocus += BasicNotificationWithUserResponse_LostFocus;
-
-            DoubleBuffered = true;
-
-            SetupTextArea();
-
-            ReconfigureUI(rightToLeftSupport);
+            SetupBaseUI(actionButtonLocation, actionType, iconType, title, contentText, usePanelColourInTextArea, 
+                        useNativeBackColourInUserResponseArea, showCloseButton, customImage, dismissText,
+                        userResponseCueText, userResponseCueColour, userResponseCueAlignHorizontal,
+                        userResponseCueAlignVertical, userResponseCueFont, rightToLeftSupport,
+                        actionButtonCommand);
         }
 
         /// <summary>Initializes a new instance of the <see cref="BasicNotificationWithUserResponse" /> class.</summary>
@@ -155,19 +142,22 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <param name="userResponseCueAlignHorizontal">The user response cue align horizontal.</param>
         /// <param name="userResponseCueAlignVertical">The user response cue align vertical.</param>
         /// <param name="userResponseCueFont">The user response cue font.</param>
-        public BasicNotificationWithUserResponse(IconType iconType, string title, string contentText,
+        public BasicNotificationWithUserResponse(ActionButtonLocation? actionButtonLocation, ActionType? actionType, 
+                                                 IconType iconType, string title, string contentText,
                                                  bool? usePanelColourInTextArea,
                                                  bool? useNativeBackColourInUserResponseArea,
+                                                 bool? showCloseButton,
                                                  int seconds, Image customImage = null,
                                                  string dismissText = "&Dismiss", string userResponseCueText = "",
                                                  Color? userResponseCueColour = null,
                                                  PaletteRelativeAlign? userResponseCueAlignHorizontal = null,
                                                  PaletteRelativeAlign? userResponseCueAlignVertical = null,
                                                  Font userResponseCueFont = null,
-                                                 RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LEFTTORIGHT)
-            : this(iconType, title, contentText, usePanelColourInTextArea, useNativeBackColourInUserResponseArea, customImage, dismissText, userResponseCueText,
+                                                 RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight,
+                                                 KryptonCommand actionButtonCommand = null)
+            : this(actionButtonLocation, actionType, iconType, title, contentText, usePanelColourInTextArea, useNativeBackColourInUserResponseArea, showCloseButton, customImage, dismissText, userResponseCueText,
                    userResponseCueColour, userResponseCueAlignHorizontal,
-                   userResponseCueAlignVertical, userResponseCueFont, rightToLeftSupport) => Seconds = seconds;
+                   userResponseCueAlignVertical, userResponseCueFont, rightToLeftSupport, actionButtonCommand) => Seconds = seconds;
 
         /// <summary>Initializes a new instance of the <see cref="BasicNotificationWithUserResponse" /> class.</summary>
         /// <param name="iconType">Type of the icon.</param>
@@ -184,19 +174,25 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <param name="userResponseCueAlignHorizontal">The user response cue align horizontal.</param>
         /// <param name="userResponseCueAlignVertical">The user response cue align vertical.</param>
         /// <param name="userResponseCueFont">The user response cue font.</param>
-        public BasicNotificationWithUserResponse(IconType iconType, string title, string contentText,
+        public BasicNotificationWithUserResponse(ActionButtonLocation? actionButtonLocation, ActionType? actionType, 
+                                                 IconType iconType, string title, string contentText,
                                                  bool? usePanelColourInTextArea,
                                                  bool? useNativeBackColourInUserResponseArea,
+                                                 bool? showCloseButton,
                                                  int seconds, string soundPath, Image customImage = null,
                                                  string dismissText = "&Dismiss", string userResponseCueText = "",
                                                  Color? userResponseCueColour = null,
                                                  PaletteRelativeAlign? userResponseCueAlignHorizontal = null, 
                                                  PaletteRelativeAlign? userResponseCueAlignVertical = null,
                                                  Font userResponseCueFont = null,
-                                                 RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LEFTTORIGHT)
-            : this(iconType, title, contentText, usePanelColourInTextArea, useNativeBackColourInUserResponseArea, seconds, customImage, dismissText, userResponseCueText,
+                                                 RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight,
+                                                 KryptonCommand actionButtonCommand = null)
+            : this(actionButtonLocation, actionType, iconType, title, contentText,
+                   usePanelColourInTextArea, useNativeBackColourInUserResponseArea, showCloseButton,
+                   seconds, customImage, dismissText, userResponseCueText,
                    userResponseCueColour, userResponseCueAlignHorizontal,
-                   userResponseCueAlignVertical, userResponseCueFont, rightToLeftSupport) => SoundPath = soundPath;
+                   userResponseCueAlignVertical, userResponseCueFont, rightToLeftSupport,
+                   actionButtonCommand) => SoundPath = soundPath;
 
         /// <summary>Initializes a new instance of the <see cref="BasicNotificationWithUserResponse" /> class.</summary>
         /// <param name="iconType">Type of the icon.</param>
@@ -212,19 +208,25 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <param name="userResponseCueAlignHorizontal">The user response cue align horizontal.</param>
         /// <param name="userResponseCueAlignVertical">The user response cue align vertical.</param>
         /// <param name="userResponseCueFont">The user response cue font.</param>
-        public BasicNotificationWithUserResponse(IconType iconType, string title, string contentText,
+        public BasicNotificationWithUserResponse(ActionButtonLocation? actionButtonLocation, ActionType? actionType, 
+                                                 IconType iconType, string title, string contentText,
                                                  bool? usePanelColourInTextArea,
                                                  bool? useNativeBackColourInUserResponseArea,
+                                                 bool? showCloseButton,
                                                  Stream soundStream, Image customImage = null,
                                                  string dismissText = "&Dismiss", string userResponseCueText = "",
                                                  Color? userResponseCueColour = null,
                                                  PaletteRelativeAlign? userResponseCueAlignHorizontal = null,
                                                  PaletteRelativeAlign? userResponseCueAlignVertical = null,
                                                  Font userResponseCueFont = null,
-                                                 RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LEFTTORIGHT)
-            : this(iconType, title, contentText, usePanelColourInTextArea, useNativeBackColourInUserResponseArea, customImage, dismissText, userResponseCueText,
+                                                 RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight,
+                                                 KryptonCommand actionButtonCommand = null)
+            : this(actionButtonLocation, actionType, iconType, title, contentText, usePanelColourInTextArea,
+                   useNativeBackColourInUserResponseArea, showCloseButton,
+                   customImage, dismissText, userResponseCueText,
                    userResponseCueColour, userResponseCueAlignHorizontal,
-                   userResponseCueAlignVertical, userResponseCueFont, rightToLeftSupport) => SoundStream = soundStream;
+                   userResponseCueAlignVertical, userResponseCueFont, rightToLeftSupport,
+                   actionButtonCommand) => SoundStream = soundStream;
 
         /// <summary>Initializes a new instance of the <see cref="BasicNotificationWithUserResponse" /> class.</summary>
         /// <param name="iconType">Type of the icon.</param>
@@ -241,45 +243,43 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <param name="userResponseCueAlignHorizontal">The user response cue align horizontal.</param>
         /// <param name="userResponseCueAlignVertical">The user response cue align vertical.</param>
         /// <param name="userResponseCueFont">The user response cue font.</param>
-        public BasicNotificationWithUserResponse(IconType iconType, string title, string contentText,
+        public BasicNotificationWithUserResponse(ActionButtonLocation? actionButtonLocation, ActionType? actionType, 
+                                                 IconType iconType, string title, string contentText,
                                                  bool? usePanelColourInTextArea,
                                                  bool? useNativeBackColourInUserResponseArea,
+                                                 bool? showCloseButton,
                                                  int seconds, Stream soundStream, Image customImage = null,
                                                  string dismissText = "&Dismiss", string userResponseCueText = "",
                                                  Color? userResponseCueColour = null,
                                                  PaletteRelativeAlign? userResponseCueAlignHorizontal = null,
                                                  PaletteRelativeAlign? userResponseCueAlignVertical = null,
                                                  Font userResponseCueFont = null,
-                                                 RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LEFTTORIGHT)
-            : this(iconType, title, contentText, usePanelColourInTextArea, useNativeBackColourInUserResponseArea, seconds, customImage, dismissText, userResponseCueText,
+                                                 RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight,
+                                                 KryptonCommand actionButtonCommand = null)
+            : this(actionButtonLocation, actionType, iconType, title, contentText,
+                   usePanelColourInTextArea, useNativeBackColourInUserResponseArea, showCloseButton,
+                   seconds, customImage, dismissText, userResponseCueText,
                    userResponseCueColour, userResponseCueAlignHorizontal,
-                   userResponseCueAlignVertical, userResponseCueFont, rightToLeftSupport) => SoundStream = soundStream;
+                   userResponseCueAlignVertical, userResponseCueFont, rightToLeftSupport,
+                   actionButtonCommand) => SoundStream = soundStream;
         #endregion
 
         #region Event Handlers
         private void BasicNotificationWithUserResponse_Load(object sender, EventArgs e)
         {
-            //Once loaded, position the form to the bottom left of the screen with added padding
-            Location = new Point(Screen.PrimaryScreen.WorkingArea.Width - Width - 5, Screen.PrimaryScreen.WorkingArea.Height - Height - 5);
-
-            UtilityMethods.FadeIn(this);
-
-            if (_timer != null)
-            {
-                _timer.Start();
-            }
-
-            if (_soundPlayer != null)
-            {
-                _soundPlayer.Play();
-            }
-
-            kbtnDismiss.Text = _dismissText;
+            SetupUI(RightToLeftSupport);
         }
 
         private void BasicNotificationWithUserResponse_GotFocus(object sender, EventArgs e)
         {
-            kbtnDismiss.Focus();
+            if (RightToLeftSupport == RightToLeftSupport.LeftToRight)
+            {
+                kbtnToastButton3.Focus();
+            }
+            else
+            {
+                kbtnToastButton1.Focus();
+            }
 
             if (_timer != null)
             {
@@ -372,7 +372,14 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
             if (Seconds != 0)
             {
-                kbtnDismiss.Text = $"{DismissText} ({Seconds - Time})";
+                if (RightToLeftSupport == RightToLeftSupport.LeftToRight)
+                {
+                    kbtnToastButton3.Text = $"{DismissText} ({Seconds - Time})";
+                }
+                else
+                {
+                    kbtnToastButton1.Text = $"{DismissText} ({Seconds - Time})";
+                }
 
                 _timer = new Timer();
 
@@ -382,7 +389,14 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                 {
                     _time++;
 
-                    kbtnDismiss.Text = $"{DismissText} ({Seconds - Time}s)";
+                    if (RightToLeftSupport == RightToLeftSupport.LeftToRight)
+                    {
+                        kbtnToastButton3.Text = $"{DismissText} ({Seconds - Time}s)";
+                    }
+                    else
+                    {
+                        kbtnToastButton1.Text = $"{DismissText} ({Seconds - Time}s)";
+                    }
 
                     if (_time == Seconds)
                     {
@@ -440,7 +454,14 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
             if (Seconds != 0)
             {
-                kbtnDismiss.Text = $"{DismissText} ({Seconds - Time})";
+                if (RightToLeftSupport == RightToLeftSupport.LeftToRight)
+                {
+                    kbtnToastButton3.Text = $"{DismissText} ({Seconds - Time})";
+                }
+                else
+                {
+                    kbtnToastButton1.Text = $"{DismissText} ({Seconds - Time})";
+                }
 
                 _timer = new Timer();
 
@@ -450,7 +471,14 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                 {
                     _time++;
 
-                    kbtnDismiss.Text = $"{DismissText} ({Seconds - Time}s)";
+                    if (RightToLeftSupport == RightToLeftSupport.LeftToRight)
+                    {
+                        kbtnToastButton3.Text = $"{DismissText} ({Seconds - Time}s)";
+                    }
+                    else
+                    {
+                        kbtnToastButton1.Text = $"{DismissText} ({Seconds - Time}s)";
+                    }
 
                     if (_time == Seconds)
                     {
@@ -484,41 +512,128 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
         public string GetUserResponse() => ktxtUserResponse.Text;
 
-        private void ReconfigureUI(RightToLeftSupport? rightToLeftSupport)
+        private void SetupBaseUI(ActionButtonLocation? actionButtonLocation, ActionType? actionType,
+                                 IconType iconType, string title, string contentText,
+                                 bool? usePanelColourInTextArea, bool? useNativeBackColourInUserResponseArea, 
+                                 bool? showCloseButton, Image customImage, string dismissText,
+                                 string userResponseCueText, Color? userResponseCueColour,
+                                 PaletteRelativeAlign? userResponseCueAlignHorizontal,
+                                 PaletteRelativeAlign? userResponseCueAlignVertical, Font userResponseCueFont,
+                                 RightToLeftSupport? rightToLeftSupport, KryptonCommand actionButtonCommand)
         {
-            if (rightToLeftSupport == RightToLeftSupport.LEFTTORIGHT)
+            ActionButtonLocation = actionButtonLocation ?? ActionButtonLocation.Left;
+
+            ActionType = actionType ?? ActionType.Default;
+
+            IconType = iconType;
+
+            Title = title;
+
+            ContentText = contentText;
+
+            CustomImage = customImage;
+
+            UsePanelColourInTextArea = usePanelColourInTextArea ?? false;
+
+            UseNativeBackColourInUserResponseArea = useNativeBackColourInUserResponseArea ?? false;
+
+            ShowCloseButton = showCloseButton ?? false;
+
+            DismissText = dismissText;
+
+            UserResponsePrompt = userResponseCueText;
+
+            UserResponsePromptColour = userResponseCueColour ?? Color.Empty;
+
+            UserResponsePromptAlignHorizontal = userResponseCueAlignHorizontal ?? PaletteRelativeAlign.Near;
+
+            UserResponsePromptAlignVertical = userResponseCueAlignVertical ?? PaletteRelativeAlign.Near;
+
+            UserResponsePromptFont = userResponseCueFont;
+
+            RightToLeftSupport = rightToLeftSupport ?? RightToLeftSupport.LeftToRight;
+
+            ActionButtonCommand = actionButtonCommand;
+
+            TopMost = true;
+
+            Resize += BasicNotificationWithUserResponse_Resize;
+
+            GotFocus += BasicNotificationWithUserResponse_GotFocus;
+
+            LostFocus += BasicNotificationWithUserResponse_LostFocus;
+
+            DoubleBuffered = true;
+
+            SetupTextArea();
+
+            RearrangeUI(rightToLeftSupport);
+        }
+
+        private void SetupUI(RightToLeftSupport rightToLeft)
+        {
+            //Once loaded, position the form to the bottom left of the screen with added padding
+            Location = new Point(Screen.PrimaryScreen.WorkingArea.Width - Width - 5,
+                Screen.PrimaryScreen.WorkingArea.Height - Height - 5);
+
+            UtilityMethods.FadeIn(this);
+
+            if (_timer != null)
             {
-                RightToLeft = RightToLeft.No;
+                _timer.Start();
+            }
 
-                RightToLeftLayout = false;
+            if (_soundPlayer != null)
+            {
+                _soundPlayer.Play();
+            }
 
-                pbxToastImage.Location = new Point(12, 12);
-
-                kwlTitle.Location = new Point(146, 12);
-
-                krtbContent.Location = new Point(146, 89);
-
-                ktxtUserResponse.Location = new Point(146, 247);
-
-                kbtnDismiss.Location = new Point(423, 13);
+            if (rightToLeft == RightToLeftSupport.LeftToRight)
+            {
+                kbtnToastButton3.Text = _dismissText;
             }
             else
             {
-                RightToLeft = RightToLeft.Yes;
-
-                RightToLeftLayout = true;
-
-                pbxToastImage.Location = new Point(469, 12);
-
-                kwlTitle.Location = new Point(12, 12);
-
-                krtbContent.Location = new Point(12, 89);
-
-                ktxtUserResponse.Location = new Point(12, 247);
-
-                kbtnDismiss.Location = new Point(12, 13);
+                kbtnToastButton1.Text = _dismissText;
             }
         }
+
+        private void RearrangeUI(RightToLeftSupport? rightToLeft)
+        {
+            switch (rightToLeft)
+            {
+                case RightToLeftSupport.Inherit:
+                    // Note: Come back to this
+                    break;
+                case RightToLeftSupport.LeftToRight:
+                    UtilityMethods.CalibrateUILayout(this, new Control[] { ktbActionButton1, ktbActionButton2, ktbActionButton3, kwlTitle, krtbContent, ktxtUserResponse }, RightToLeft.No);
+
+                    RightToLeftLayout = false;
+
+                    pbxToastImage.Location = new Point(12, 12);
+
+                    kwlTitle.Location = new Point(146, 12);
+
+                    krtbContent.Location = new Point(146, 89);
+
+                    ktxtUserResponse.Location = new Point(146, 247);
+                    break;
+                case RightToLeftSupport.RightToLeft:
+                    UtilityMethods.CalibrateUILayout(this, new Control[] { ktbActionButton1, ktbActionButton2, ktbActionButton3, kwlTitle, krtbContent, ktxtUserResponse }, RightToLeft.Yes);
+
+                    RightToLeftLayout = true;
+
+                    pbxToastImage.Location = new Point(469, 12);
+
+                    kwlTitle.Location = new Point(12, 12);
+
+                    krtbContent.Location = new Point(12, 89);
+
+                    ktxtUserResponse.Location = new Point(12, 247);
+                    break;
+            }
+        }
+
         #endregion
 
         #region Overrides

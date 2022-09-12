@@ -107,5 +107,12 @@ namespace Krypton.Toolkit.Suite.Extended.Common
 
             return stringFormat;
         }
+
+        /// <summary>Repositions the control.</summary>
+        /// <param name="targetControl">The target control.</param>
+        /// <param name="xPosition">The x position.</param>
+        /// <param name="yPosition">The y position.</param>
+        /// <returns></returns>
+        public static Point RepositionControl(Control targetControl, int xPosition, int yPosition) => targetControl.Location = new Point(xPosition, yPosition);
     }
 }

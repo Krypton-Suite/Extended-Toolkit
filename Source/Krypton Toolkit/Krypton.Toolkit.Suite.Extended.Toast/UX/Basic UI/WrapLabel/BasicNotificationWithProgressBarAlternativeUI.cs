@@ -11,6 +11,8 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
     public partial class BasicNotificationWithProgressBarAlternativeUI : KryptonForm
     {
         #region Variables
+        private bool _showCloseButton;
+
         private IconType _iconType;
 
         private int _time, _seconds;
@@ -29,6 +31,8 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         #endregion
 
         #region Properties
+        public bool ShowCloseButton { get => _showCloseButton; set => _showCloseButton = value; }
+
         public IconType IconType { get => _iconType; set => _iconType = value; }
 
         public int Time { get => _time; set => _time = value; }
@@ -51,46 +55,39 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         #endregion
 
         #region Constructor
-        public BasicNotificationWithProgressBarAlternativeUI(IconType iconType, string title, string contentText, 
+        /// <summary>Initializes a new instance of the <see cref="BasicNotificationWithProgressBarAlternativeUI" /> class.</summary>
+        /// <param name="iconType">Type of the icon.</param>
+        /// <param name="title">The title.</param>
+        /// <param name="contentText">The content text.</param>
+        /// <param name="showCloseButton">The show close button.</param>
+        /// <param name="customImage">The custom image.</param>
+        /// <param name="dismissText">The dismiss text.</param>
+        /// <param name="rightToLeftSupport">The right to left support.</param>
+        public BasicNotificationWithProgressBarAlternativeUI(IconType iconType, string title, string contentText,
+                                                             bool? showCloseButton, 
                                                              Image customImage = null, string dismissText = "&Dismiss",
-                                                             RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LEFTTORIGHT)
+                                                             RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight)
         {
             InitializeComponent();
 
-            IconType = iconType;
-
-            Title = title;
-
-            ContentText = contentText;
-
-            CustomImage = customImage;
-
-            DismissText = dismissText;
-
-            RightToLeftSupport = rightToLeftSupport ?? RightToLeftSupport.LEFTTORIGHT;
-
-            TopMost = true;
-
-            Resize += BasicNotificationWithProgressBarAlternativeUI_Resize;
-
-            GotFocus += BasicNotificationWithProgressBarAlternativeUI_GotFocus;
-
-            MouseEnter += BasicNotificationWithProgressBarAlternativeUI_MouseEnter;
-
-            MouseHover += BasicNotificationWithProgressBarAlternativeUI_MouseHover;
-
-            MouseLeave += BasicNotificationWithProgressBarAlternativeUI_MouseLeave;
-
-            DoubleBuffered = true;
-
-            ReconfigureUI(rightToLeftSupport);
+            SetupBaseUI(iconType, title, contentText, showCloseButton, customImage, dismissText, rightToLeftSupport);
         }
 
+        /// <summary>Initializes a new instance of the <see cref="BasicNotificationWithProgressBarAlternativeUI" /> class.</summary>
+        /// <param name="iconType">Type of the icon.</param>
+        /// <param name="title">The title.</param>
+        /// <param name="contentText">The content text.</param>
+        /// <param name="showCloseButton">The show close button.</param>
+        /// <param name="seconds">The seconds.</param>
+        /// <param name="customImage">The custom image.</param>
+        /// <param name="dismissText">The dismiss text.</param>
+        /// <param name="rightToLeftSupport">The right to left support.</param>
         public BasicNotificationWithProgressBarAlternativeUI(IconType iconType, string title, string contentText,
+                                                             bool? showCloseButton,
                                                              int seconds, Image customImage = null, 
                                                              string dismissText = "&Dismiss",
-                                                             RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LEFTTORIGHT)
-            : this(iconType, title, contentText, customImage, dismissText, rightToLeftSupport)
+                                                             RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight)
+            : this(iconType, title, contentText, showCloseButton, customImage, dismissText, rightToLeftSupport)
         {
             Seconds = seconds;
 
@@ -107,47 +104,72 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             }
         }
 
-        public BasicNotificationWithProgressBarAlternativeUI(IconType iconType, string title, string contentText, 
+        /// <summary>Initializes a new instance of the <see cref="BasicNotificationWithProgressBarAlternativeUI" /> class.</summary>
+        /// <param name="iconType">Type of the icon.</param>
+        /// <param name="title">The title.</param>
+        /// <param name="contentText">The content text.</param>
+        /// <param name="showCloseButton">The show close button.</param>
+        /// <param name="seconds">The seconds.</param>
+        /// <param name="soundPath">The sound path.</param>
+        /// <param name="customImage">The custom image.</param>
+        /// <param name="dismissText">The dismiss text.</param>
+        /// <param name="rightToLeftSupport">The right to left support.</param>
+        public BasicNotificationWithProgressBarAlternativeUI(IconType iconType, string title, string contentText,
+                                                             bool? showCloseButton, 
                                                              int seconds, string soundPath, Image customImage = null, 
                                                              string dismissText = "&Dismiss",
-                                                             RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LEFTTORIGHT)
-            : this(iconType, title, contentText, seconds, customImage, dismissText, rightToLeftSupport) => SoundPath = soundPath;
+                                                             RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight)
+            : this(iconType, title, contentText, showCloseButton, seconds, customImage, dismissText, rightToLeftSupport) => SoundPath = soundPath;
 
-        public BasicNotificationWithProgressBarAlternativeUI(IconType iconType, string title, string contentText, 
+        /// <summary>Initializes a new instance of the <see cref="BasicNotificationWithProgressBarAlternativeUI" /> class.</summary>
+        /// <param name="iconType">Type of the icon.</param>
+        /// <param name="title">The title.</param>
+        /// <param name="contentText">The content text.</param>
+        /// <param name="showCloseButton">The show close button.</param>
+        /// <param name="soundStream">The sound stream.</param>
+        /// <param name="customImage">The custom image.</param>
+        /// <param name="dismissText">The dismiss text.</param>
+        /// <param name="rightToLeftSupport">The right to left support.</param>
+        public BasicNotificationWithProgressBarAlternativeUI(IconType iconType, string title, string contentText,
+                                                             bool? showCloseButton, 
                                                              Stream soundStream, Image customImage = null,
                                                              string dismissText = "&Dismiss",
-                                                             RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LEFTTORIGHT)
-            : this(iconType, title, contentText, customImage, dismissText, rightToLeftSupport) => SoundStream = soundStream;
+                                                             RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight)
+            : this(iconType, title, contentText, showCloseButton, customImage, dismissText, rightToLeftSupport) => SoundStream = soundStream;
 
+        /// <summary>Initializes a new instance of the <see cref="BasicNotificationWithProgressBarAlternativeUI" /> class.</summary>
+        /// <param name="iconType">Type of the icon.</param>
+        /// <param name="title">The title.</param>
+        /// <param name="contentText">The content text.</param>
+        /// <param name="showCloseButton">The show close button.</param>
+        /// <param name="seconds">The seconds.</param>
+        /// <param name="soundStream">The sound stream.</param>
+        /// <param name="customImage">The custom image.</param>
+        /// <param name="dismissText">The dismiss text.</param>
+        /// <param name="rightToLeftSupport">The right to left support.</param>
         public BasicNotificationWithProgressBarAlternativeUI(IconType iconType, string title, string contentText,
+                                                             bool? showCloseButton,
                                                              int seconds, Stream soundStream, Image customImage = null,
                                                              string dismissText = "&Dismiss",
-                                                             RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LEFTTORIGHT)
-            : this(iconType, title, contentText, seconds, customImage, dismissText, rightToLeftSupport) => SoundStream = soundStream;
+                                                             RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight)
+            : this(iconType, title, contentText, showCloseButton, seconds, customImage, dismissText, rightToLeftSupport) => SoundStream = soundStream;
         #endregion
 
         #region Event Handlers
-        private void BasicNotificationWithProgressBarAlternativeUI_Load(object sender, EventArgs e)
+
+        private void BasicNotificationWithProgressBarAlternativeUI_Load(object sender, EventArgs e) => SetupUI(RightToLeftSupport);
+
+        private void BasicNotificationWithProgressBarAlternativeUI_GotFocus(object sender, EventArgs e)
         {
-            //Once loaded, position the form to the bottom left of the screen with added padding
-            Location = new Point(Screen.PrimaryScreen.WorkingArea.Width - Width - 5, Screen.PrimaryScreen.WorkingArea.Height - Height - 5);
-
-            UtilityMethods.FadeIn(this);
-
-            if (_timer != null)
+            if (RightToLeftSupport == RightToLeftSupport.LeftToRight)
             {
-                _timer.Start();
+                kbtnToastButton3.Focus();
             }
-
-            if (_soundPlayer != null)
+            else
             {
-                _soundPlayer.Play();
+                kbtnToastButton1.Focus();
             }
-
-            kbtnDismiss.Text = _dismissText;
         }
-
-        private void BasicNotificationWithProgressBarAlternativeUI_GotFocus(object sender, EventArgs e) => kbtnDismiss.Focus();
 
         private void BasicNotificationWithProgressBarAlternativeUI_Resize(object sender, EventArgs e)
         {
@@ -169,7 +191,14 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         {
             _time++;
 
-            kbtnDismiss.Text = $"{DismissText} ({Seconds - Time}s)";
+            if (RightToLeftSupport == RightToLeftSupport.LeftToRight)
+            {
+                kbtnToastButton3.Text = $"{DismissText} ({Seconds - Time}s)";
+            }
+            else
+            {
+                kbtnToastButton1.Text = $"{DismissText} ({Seconds - Time}s)";
+            }
 
             if (_time == Seconds)
             {
@@ -201,29 +230,25 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
                 pbCountdown.Value = currentValue;
 
-                kbtnDismiss.Text = $"{DismissText} ({Seconds - Time})";
-
-                /*_timer = new Timer();
-
-                _timer.Interval = 1000;
-
-                _timer.Tick += (sender, e) =>
+                if (RightToLeftSupport == RightToLeftSupport.LeftToRight)
                 {
-                    _time++;
-
-                    kbtnDismiss.Text = $"{ DismissText } ({ Seconds - Time }s)";
-
-                    if (_time == Seconds)
-                    {
-                        _timer.Stop();
-
-                        UtilityMethods.FadeOutAndClose(this);
-                    }
-                };*/
+                    kbtnToastButton3.Text = $"{DismissText} ({Seconds - Time})";
+                }
+                else
+                {
+                    kbtnToastButton1.Text = $"{DismissText} ({Seconds - Time})";
+                }
             }
             else
             {
-                kbtnDismiss.Text = DismissText;
+                if (RightToLeftSupport == RightToLeftSupport.LeftToRight)
+                {
+                    kbtnToastButton3.Text = DismissText;
+                }
+                else
+                {
+                    kbtnToastButton1.Text = DismissText;
+                }
             }
 
             if (SoundPath != null)
@@ -247,37 +272,108 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             base.Show();
         }
 
-        private void ReconfigureUI(RightToLeftSupport? rightToLeftSupport)
+        private void SetControlBoxVisibility(bool visibilityToggle) => ControlBox = visibilityToggle;
+
+        private void SetWindowBorderStyle(FormBorderStyle borderStyle) => FormBorderStyle = borderStyle;
+
+        private void SetupBaseUI(IconType iconType, string title, string contentText, bool? showCloseButton, Image customImage,
+                                 string dismissText, RightToLeftSupport? rightToLeftSupport)
         {
-            if (rightToLeftSupport == RightToLeftSupport.LEFTTORIGHT)
+            IconType = iconType;
+
+            Title = title;
+
+            ContentText = contentText;
+
+            ShowCloseButton = showCloseButton ?? false;
+
+            CustomImage = customImage;
+
+            DismissText = dismissText;
+
+            RightToLeftSupport = rightToLeftSupport ?? RightToLeftSupport.LeftToRight;
+
+            TopMost = true;
+
+            SetControlBoxVisibility(ShowCloseButton);
+
+            Resize += BasicNotificationWithProgressBarAlternativeUI_Resize;
+
+            GotFocus += BasicNotificationWithProgressBarAlternativeUI_GotFocus;
+
+            MouseEnter += BasicNotificationWithProgressBarAlternativeUI_MouseEnter;
+
+            MouseHover += BasicNotificationWithProgressBarAlternativeUI_MouseHover;
+
+            MouseLeave += BasicNotificationWithProgressBarAlternativeUI_MouseLeave;
+
+            DoubleBuffered = true;
+
+            RearrangeUI(rightToLeftSupport);
+        }
+
+        private void SetupUI(RightToLeftSupport rightToLeft = RightToLeftSupport.LeftToRight)
+        {
+            //Once loaded, position the form to the bottom left of the screen with added padding
+            Location = new Point(Screen.PrimaryScreen.WorkingArea.Width - Width - 5,
+                Screen.PrimaryScreen.WorkingArea.Height - Height - 5);
+
+            UtilityMethods.FadeIn(this);
+
+            if (_timer != null)
             {
-                RightToLeft = RightToLeft.No;
+                _timer.Start();
+            }
 
-                RightToLeftLayout = false;
+            if (_soundPlayer != null)
+            {
+                _soundPlayer.Play();
+            }
 
-                pbxToastImage.Location = new Point(12, 12);
+            RearrangeUI(rightToLeft);
 
-                kwlTitle.Location = new Point(146, 12);
-
-                kwlContent.Location = new Point(146, 95);
-
-                kbtnDismiss.Location = new Point(423, 13);
+            if (rightToLeft == RightToLeftSupport.LeftToRight)
+            {
+                kbtnToastButton3.Text = _dismissText;
             }
             else
             {
-                RightToLeft = RightToLeft.Yes;
-
-                RightToLeftLayout = true;
-
-                pbxToastImage.Location = new Point(469, 12);
-
-                kwlTitle.Location = new Point(12, 12);
-
-                kwlContent.Location = new Point(12, 95);
-
-                kbtnDismiss.Location = new Point(12, 13);
+                kbtnToastButton1.Text = _dismissText;
             }
         }
+
+        private void RearrangeUI(RightToLeftSupport? rightToLeft)
+        {
+            switch (rightToLeft)
+            {
+                case RightToLeftSupport.Inherit:
+                    // Note: Come back to this
+                    break;
+                case RightToLeftSupport.LeftToRight:
+                    UtilityMethods.CalibrateUILayout(this, new Control[] { ktbActionButton1, ktbActionButton2, ktbActionButton3, kwlTitle, kwlContent }, RightToLeft.No);
+
+                    RightToLeftLayout = false;
+
+                    pbxToastImage.Location = new Point(12, 12);
+
+                    kwlTitle.Location = new Point(146, 12);
+
+                    kwlContent.Location = new Point(146, 95);
+                    break;
+                case RightToLeftSupport.RightToLeft:
+                    UtilityMethods.CalibrateUILayout(this, new Control[] { ktbActionButton1, ktbActionButton2, ktbActionButton3, kwlTitle, kwlContent }, RightToLeft.Yes);
+
+                    RightToLeftLayout = true;
+
+                    pbxToastImage.Location = new Point(469, 12);
+
+                    kwlTitle.Location = new Point(12, 12);
+
+                    kwlContent.Location = new Point(12, 95);
+                    break;
+            }
+        }
+
         #endregion
 
         #region Overrides

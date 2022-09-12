@@ -63,6 +63,16 @@ namespace Krypton.Toolkit.Suite.Extended.Toast.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Input_Box_Asterisk_128_x_128 {
+            get {
+                object obj = ResourceManager.GetObject("Input_Box_Asterisk_128_x_128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Input_Box_Critical_128_x_128 {
             get {
                 object obj = ResourceManager.GetObject("Input_Box_Critical_128_x_128", resourceCulture);
@@ -303,6 +313,36 @@ namespace Krypton.Toolkit.Suite.Extended.Toast.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Input_Box_UAC_Shield_Windows_10_128_x_128 {
+            get {
+                object obj = ResourceManager.GetObject("Input_Box_UAC_Shield_Windows_10_128_x_128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Input_Box_UAC_Shield_Windows_11_128_x_128 {
+            get {
+                object obj = ResourceManager.GetObject("Input_Box_UAC_Shield_Windows_11_128_x_128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Input_Box_UAC_Shield_Windows_7_and_8_128_x_128 {
+            get {
+                object obj = ResourceManager.GetObject("Input_Box_UAC_Shield_Windows_7_and_8_128_x_128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Input_Box_Warning_128_x_115 {
             get {
                 object obj = ResourceManager.GetObject("Input_Box_Warning_128_x_115", resourceCulture);
@@ -336,6 +376,26 @@ namespace Krypton.Toolkit.Suite.Extended.Toast.Properties {
         internal static System.Drawing.Bitmap Input_Box_Warning_64_x_58 {
             get {
                 object obj = ResourceManager.GetObject("Input_Box_Warning_64_x_58", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Input_Box_Windows_10_128_x_121 {
+            get {
+                object obj = ResourceManager.GetObject("Input_Box_Windows_10_128_x_121", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Input_Box_Windows_11_128_x_128 {
+            get {
+                object obj = ResourceManager.GetObject("Input_Box_Windows_11_128_x_128", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

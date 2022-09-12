@@ -10,61 +10,105 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 {
     public enum ActionType
     {
-        DEFAULT,
-        LAUCHPROCESS,
-        OPEN
+        Default = 0,
+        LaunchProcess = 1,
+        Open = 2
     }
 
     public enum ActionButtonLocation
     {
-        LEFT,
-        RIGHT
+        Left = 0,
+        Right = 1
     }
 
     public enum DefaultNotificationButton
     {
-        ACTIONBUTTON,
-        DISMISSBUTTON,
-        NONE
+        /// <summary>Use the 'action' button as the default button.</summary>
+        ActionButton = 0,
+        /// <summary>Use the 'dismiss' button as the default button.</summary>
+        DismissButton = 1,
+        /// <summary>Use neither button as the default button.</summary>
+        None = 2
     }
 
     public enum IconType
     {
-        CUSTOM,
-        OK,
-        ERROR,
-        EXCLAMATION,
-        INFORMATION,
-        QUESTION,
-        NOTHING,
-        NONE,
-        STOP,
-        HAND,
-        WARNING
+        /// <summary>Specify no icon.</summary>
+        None = 0,
+        /// <summary>Specify a hand icon.</summary>
+        Hand = 1,
+        /// <summary>Specify a question icon.</summary>
+        Question = 2,
+        /// <summary>Specify a exclamation icon.</summary>
+        Exclamation = 3,
+        /// <summary>Specify a asterisk icon.</summary>
+        Asterisk = 4,
+        /// <summary>Specify a stop icon.</summary>
+        Stop = 5,
+        /// <summary>Specify a error icon.</summary>
+        Error = 6,
+        /// <summary>Specify a warning icon.</summary>
+        Warning = 7,
+        /// <summary>Specify a information icon.</summary>
+        Information = 8,
+        /// <summary>Specify a UAC shield icon.</summary>
+        Shield = 9,
+        /// <summary>Specify a Windows logo icon.</summary>
+        WindowsLogo = 10,
+        /// <summary>Use a custom icon.</summary>
+        Custom = 11,
+        /// <summary>Use a Ok icon.</summary>
+        Ok = 12
     }
 
     public enum RightToLeftSupport
     {
-        LEFTTORIGHT,
-        RIGHTTOLEFT
+        Inherit = 0,
+        LeftToRight = 1,
+        RightToLeft = 2
     }
 
-    public enum InputBoxSystemSounds
+    public enum ToastNotificationSystemSounds
     {
-        ASTERISK = 0,
-        BEEP = 1,
-        EXCLAMATION = 2,
-        HAND = 3,
-        QUESTION = 4,
-        CUSTOM = 5,
-        NONE = 6
+        Asterisk = 0,
+        Beep = 1,
+        Exclamation = 2,
+        Hand = 3,
+        Question = 4,
+        Custom = 5,
+        None = 6
     }
 
-    public enum ContentAreaType
+    public enum ToastNotificationContentAreaType
     {
-        LABEL = 0,
-        WRAPPEDLABEL = 1,
-        MULTILINEDTEXTBOX = 2,
-        RICHTEXTBOX = 3
+        Label = 0,
+        WrappedLabel = 1,
+        MultiLinedTextBox = 2,
+        RichTextBox = 3
+    }
+
+    public enum KryptonButtonBuiltInDisplayString
+    {
+        Abort = 0,
+        Apply = 1,
+        Cancel = 2,
+        Collapse = 3,
+        Continue = 4,
+        Close = 5,
+        Custom = 6,
+        Yes = 7,
+        No = 8,
+        Ok = 9,
+        Retry = 10,
+        Ignore = 11,
+        Help = 12,
+        TryAgain = 13,
+        Expand = 14,
+        Today = 15,
+        Back = 16,
+        Exit = 17,
+        Finish = 18,
+        Next = 19,
+        Previous = 20
     }
 }

@@ -213,7 +213,19 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                     SystemSounds.Hand.Play();
                     break;
                 case ExtendedKryptonMessageBoxIcon.Shield:
-                    _messageIcon.Image = SystemIcons.Shield.ToBitmap();
+                    if (Environment.OSVersion.Version.Major >= 10 && Environment.OSVersion.Version.Build >= 22000)
+                    {
+                        _messageIcon.Image = Properties.Resources.UAC_Shield_Windows_11;
+                    }
+                    // Windows 10
+                    else if (Environment.OSVersion.Version.Major == 10 && Environment.OSVersion.Version.Build <= 19044 /* RTM - 21H2 */)
+                    {
+                        _messageIcon.Image = Properties.Resources.UAC_Shield_Windows_10;
+                    }
+                    else
+                    {
+                        _messageIcon.Image = Properties.Resources.UAC_Shield_Windows_7;
+                    }
                     break;
                 case ExtendedKryptonMessageBoxIcon.WindowsLogo:
                     // Because Windows 11 displays a generic application icon,
@@ -231,7 +243,6 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                     {
                         _messageIcon.Image = SystemIcons.WinLogo.ToBitmap();
                     }
-
                     break;
             }
 

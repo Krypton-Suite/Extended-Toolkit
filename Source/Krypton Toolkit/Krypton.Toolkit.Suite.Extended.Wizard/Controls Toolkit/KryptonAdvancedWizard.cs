@@ -252,6 +252,7 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
         [Category("Wizard")]
         [Description("Customise the text of the Cancel button.")]
         [Localizable(true)]
+        [DefaultValue(typeof(string), "KryptonManager.Strings.Help")]
         public string HelpButtonText
         {
             get => kbtnHelp.Text;
@@ -265,6 +266,7 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
         [Category("Wizard")]
         [Description("Customise the text of the Cancel button.")]
         [Localizable(true)]
+        [DefaultValue(typeof(string), "KryptonManager.Strings.Cancel")]
         public string CancelButtonText
         {
             get => kbtnCancel.Text;
@@ -278,6 +280,7 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
         [Category("Wizard")]
         [Description("Customise the text of the Finish button.")]
         [Localizable(true)]
+        [DefaultValue(typeof(string), "KryptonManager.Strings.Finish")]
         public string FinishButtonText
         {
             get => kbtnFinish.Text;
@@ -291,6 +294,7 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
         [Category("Wizard")]
         [Description("Customise the text of the Back button.")]
         [Localizable(true)]
+        [DefaultValue(typeof(string), "KryptonManager.Strings.Back")]
         public string BackButtonText
         {
             get => kbtnBack.Text;
@@ -304,6 +308,7 @@ namespace Krypton.Toolkit.Suite.Extended.Wizard
         [Category("Wizard")]
         [Description("Customise the text of the Next button.")]
         [Localizable(true)]
+        [DefaultValue(typeof(string), "KryptonManager.Strings.Next")]
         public string NextButtonText
         {
             get => kbtnNext.Text;

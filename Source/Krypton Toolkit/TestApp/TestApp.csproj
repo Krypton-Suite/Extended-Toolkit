@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Krypton.Toolkit.Nightly" Version="70.22.8.234-alpha" />
+    <PackageReference Include="Krypton.Toolkit.Nightly" Version="70.22.9.251-alpha" />
   </ItemGroup>
 
   <ItemGroup>
@@ -72,6 +72,12 @@
     <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.TreeGridView\Krypton.Toolkit.Suite.Extended.TreeGridView 2022.csproj" />
     <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Utilities\Krypton.Toolkit.Suite.Extended.Utilities 2022.csproj" />
     <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView\Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView 2022.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Krypton.Toolkit.Suite.Extended.Wizard">
+      <HintPath>..\Krypton.Toolkit.Suite.Extended.Wizard\obj\Nightly\net462\Krypton.Toolkit.Suite.Extended.Wizard.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>

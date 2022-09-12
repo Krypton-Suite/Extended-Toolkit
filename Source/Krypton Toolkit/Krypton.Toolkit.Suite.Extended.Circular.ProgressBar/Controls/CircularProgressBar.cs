@@ -24,7 +24,7 @@ namespace Krypton.Toolkit.Suite.Extended.Circular.ProgressBar
         private ProgressBarStyle? _lastStyle;
         private int _lastValue;
         private bool _useColourTrio;
-        private Color _firstValueColour, _secondValueColour, _thirdValueColour;
+        private Color _firstValueColour, _secondValueColour, _thirdValueColour, _progressColour;
 
         #region Krypton
         //Palette State
@@ -126,8 +126,8 @@ namespace Krypton.Toolkit.Suite.Extended.Circular.ProgressBar
 
         /// <summary>
         /// </summary>
-        [Category("Appearance")]
-        public Color ProgressColour { get; set; }
+        [Category("Appearance"), DefaultValue(typeof(Color), "_palette.ColorTable.ButtonCheckedGradientBegin")]
+        public Color ProgressColour { get => _progressColour; set => _progressColour = value; }
 
         /// <summary>
         /// </summary>
@@ -194,10 +194,13 @@ namespace Krypton.Toolkit.Suite.Extended.Circular.ProgressBar
         [Category("Appearance"), DefaultValue(false), Description("Use three colours to depict the current values.")]
         public bool UseColourTrio { get => _useColourTrio; set => _useColourTrio = value; }
 
+        [Category("Appearance"), DefaultValue(typeof(Color), "Color.Red")]
         public Color FirstValueColour { get => _firstValueColour; set => _firstValueColour = value; }
 
+        [Category("Appearance"), DefaultValue(typeof(Color), "Color.FromArgb(255, 191, 0)")]
         public Color SecondValueColour { get => _secondValueColour; set => _secondValueColour = value; }
 
+        [Category("Appearance"), DefaultValue(typeof(Color), "Color.Green")]
         public Color ThirdValueColour { get => _thirdValueColour; set => _thirdValueColour = value; }
         #endregion
 

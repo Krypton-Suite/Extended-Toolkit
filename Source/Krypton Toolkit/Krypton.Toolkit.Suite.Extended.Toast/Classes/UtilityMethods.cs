@@ -43,38 +43,70 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         {
             switch (iconType)
             {
-                case IconType.CUSTOM:
+                case IconType.Custom:
                     SetIconImage(target, customImage);
                     break;
-                case IconType.OK:
+                case IconType.Ok:
                     SetIconImage(target, Properties.Resources.Input_Box_Ok_128_x_128);
                     break;
-                case IconType.ERROR:
+                case IconType.Error:
                     SetIconImage(target, Properties.Resources.Input_Box_Critical_128_x_128);
                     break;
-                case IconType.EXCLAMATION:
+                case IconType.Exclamation:
                     SetIconImage(target, Properties.Resources.Input_Box_Warning_128_x_115);
                     break;
-                case IconType.INFORMATION:
+                case IconType.Information:
                     SetIconImage(target, Properties.Resources.Input_Box_Information_128_x_128);
                     break;
-                case IconType.QUESTION:
+                case IconType.Question:
                     SetIconImage(target, Properties.Resources.Input_Box_Question_128_x_128);
                     break;
-                case IconType.NOTHING:
+                case IconType.None:
                     SetIconImage(target, null);
                     break;
-                case IconType.NONE:
-                    SetIconImage(target, null);
-                    break;
-                case IconType.STOP:
+                case IconType.Stop:
                     SetIconImage(target, Properties.Resources.Input_Box_Stop_128_x_128);
                     break;
-                case IconType.HAND:
+                case IconType.Hand:
                     SetIconImage(target, Properties.Resources.Input_Box_Hand_128_x_128);
                     break;
-                case IconType.WARNING:
+                case IconType.Warning:
                     SetIconImage(target, Properties.Resources.Input_Box_Warning_128_x_115);
+                    break;
+                case IconType.Asterisk:
+                    SetIconImage(target, Properties.Resources.Input_Box_Asterisk_128_x_128);
+                    break;
+                case IconType.Shield:
+                    if (Environment.OSVersion.Version.Major >= 10 && Environment.OSVersion.Version.Build >= 22000)
+                    {
+                        SetIconImage(target, Properties.Resources.Input_Box_UAC_Shield_Windows_11_128_x_128);
+                    }
+                    // Windows 10
+                    else if (Environment.OSVersion.Version.Major == 10 && Environment.OSVersion.Version.Build <= 19044 /* RTM - 21H2 */)
+                    {
+                        SetIconImage(target, Properties.Resources.Input_Box_UAC_Shield_Windows_10_128_x_128);
+                    }
+                    else
+                    {
+                        SetIconImage(target, Properties.Resources.Input_Box_UAC_Shield_Windows_7_and_8_128_x_128);
+                    }
+                    break;
+                case IconType.WindowsLogo:
+                    // Because Windows 11 displays a generic application icon,
+                    // we need to rely on a image instead
+                    if (Environment.OSVersion.Version.Major >= 10 && Environment.OSVersion.Version.Build >= 22000)
+                    {
+                        SetIconImage(target, Properties.Resources.Input_Box_Windows_11_128_x_128);
+                    }
+                    // Windows 10
+                    else if (Environment.OSVersion.Version.Major == 10 && Environment.OSVersion.Version.Build <= 19044 /* RTM - 21H2 */)
+                    {
+                        SetIconImage(target, Properties.Resources.Input_Box_Windows_10_128_x_121);
+                    }
+                    else
+                    {
+                        SetIconImage(target, SystemIcons.WinLogo.ToBitmap());
+                    }
                     break;
             }
         }
@@ -120,6 +152,52 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
             timer.Start();
         }
+
+        /// <summary>Calibrates the UI layout.</summary>
+        /// <param name="owner">The owner.</param>
+        /// <param name="controls">The controls.</param>
+        /// <param name="rightToLeft">The right to left.</param>
+        public static void CalibrateUILayout(KryptonForm owner, Control[] controls, RightToLeft rightToLeft)
+        {
+            owner.RightToLeft = rightToLeft;
+
+            if (controls.Length > 0)
+            {
+                foreach (Control control in controls)
+                {
+                    control.RightToLeft = rightToLeft;
+                }
+            }
+        }
+
+        /// <summary>Configures the toast notification button.</summary>
+        /// <param name="toastButton">The toast button.</param>
+        /// <param name="actionType">Type of the action.</param>
+        /// <param name="isAcceptButton">The is accept button.</param>
+        /// <param name="isDenyButton">The is deny button.</param>
+        /// <param name="openInExplorer">The open in explorer.</param>
+        /// <param name="optionalParameters">The optional parameters.</param>
+        /// <param name="processName">Name of the process.</param>
+        /// <param name="text">The text.</param>
+        public static void ConfigureToastNotificationButton(KryptonToastButton toastButton, ActionType actionType,
+            bool? isAcceptButton, bool? isDenyButton, bool? openInExplorer, object optionalParameters = null,
+            string processName = null, string text = null)
+        {
+            toastButton.ActionType = actionType;
+
+            toastButton.IsAcceptButton = isAcceptButton ?? false;
+
+            toastButton.IsDenyButton = isDenyButton ?? false;
+
+            toastButton.OpenInExplorer = openInExplorer ?? false;
+
+            toastButton.OptionalParameters = optionalParameters;
+
+            toastButton.ProcessName = processName ?? string.Empty;
+
+            toastButton.Text = text ?? string.Empty;
+        }
+
         #endregion
     }
 }

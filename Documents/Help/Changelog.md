@@ -1,12 +1,16 @@
 
 <!--* Checkbox option for `KryptonMessageBoxExtended` (***Note:*** This feature is experimental, and may not fully work)-->
+<!--* Added 3 new controls in the `Krypton.Toolkit.Suite.Extended.Tool.Strip.Items` module, these are `MRUOpenFileMenuItem`, `MRUSaveAsFileMenuItem` and `MRUSaveFileMenuItem`. Note, these controls only work with text files/documents. If you wish to use the MRU functionality with other file types, please refer to the `MostRecentlyUsedFileManager` in the `Krypton.Toolkit.Suite.Extended.IO` module-->
 
 =======
 
 ## 2022-11-xx - Build 2211 - November 2022
+* New `KryptonDialogButtonExtended` control. Uses the strings configured in `KryptonManager` to create dialog buttons
+* Toasts can now be configured to use RTL layouts
+* Updated wizard control to use strings controlled by the `KryptonManager`
+* `KryptonOutlookGrid` - You can now translate the UI components to your localisation using the `LanguageStrings` property
 * New `KryptonBrowseBox` control to browse for files
 * Added `MostRecentlyUsedFileManager` to the `Krypton.Toolkit.Suite.Extended.IO` module
-<!--* Added 3 new controls in the `Krypton.Toolkit.Suite.Extended.Tool.Strip.Items` module, these are `MRUOpenFileMenuItem`, `MRUSaveAsFileMenuItem` and `MRUSaveFileMenuItem`. Note, these controls only work with text files/documents. If you wish to use the MRU functionality with other file types, please refer to the `MostRecentlyUsedFileManager` in the `Krypton.Toolkit.Suite.Extended.IO` module-->
 * Implemented [#334](https://github.com/Krypton-Suite/Extended-Toolkit/issues/334), `Krypton.Toolkit.Suite.Extended.Outlook.Grid` - language support German. Thanks to [mikel3361](https://github.com/mikel3361)
 * Implemented [#330](https://github.com/Krypton-Suite/Extended-Toolkit/issues/330), `KryptonProgressBar` add text attribute
 * Implemented [#329](https://github.com/Krypton-Suite/Extended-Toolkit/issues/329), `KryptonRichTextBox` Support for justify

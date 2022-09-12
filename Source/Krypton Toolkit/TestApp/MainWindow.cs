@@ -2,9 +2,9 @@ using Krypton.Toolkit;
 
 namespace TestApp
 {
-    public partial class Form1 : KryptonForm
+    public partial class MainWindow : KryptonForm
     {
-        public Form1()
+        public MainWindow()
         {
             InitializeComponent();
         }
@@ -56,6 +56,27 @@ namespace TestApp
             MessageBoxExample messageBoxExample = new MessageBoxExample();
 
             messageBoxExample.Show();
+        }
+
+        private void kbtnOutlookGrid_Click(object sender, EventArgs e)
+        {
+            OutlookGridExample outlookGridExample = new OutlookGridExample();
+
+            outlookGridExample.Show();
+        }
+
+        private void kbtnNotificationExample_Click(object sender, EventArgs e)
+        {
+            NotificationExample notificationExample = new NotificationExample();
+
+            notificationExample.Show();
+        }
+
+        private void kbtnFloating_Click(object sender, EventArgs e)
+        {
+            FloatingMenuToolbarExampleMain floating = new FloatingMenuToolbarExampleMain();
+
+            floating.Show();
         }
     }
 }

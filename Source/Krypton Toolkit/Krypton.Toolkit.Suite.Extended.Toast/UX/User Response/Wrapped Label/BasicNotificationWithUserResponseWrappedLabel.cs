@@ -12,7 +12,11 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
     {
         #region Variables
 
-        private bool _useNativeBackColourInUserResponseArea;
+        private ActionButtonLocation _actionButtonLocation;
+
+        private ActionType _actionType;
+
+        private bool _useNativeBackColourInUserResponseArea, _showCloseButton;
 
         private Color _userResponsePromptColour;
 
@@ -35,9 +39,19 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         private Image _customImage;
 
         private RightToLeftSupport _rightToLeftSupport;
+
+        private KryptonCommand _actionButtonCommand;
+
         #endregion
 
         #region Properties
+
+        public ActionButtonLocation ActionButtonLocation { get => _actionButtonLocation; set => _actionButtonLocation = value; }
+
+        public ActionType ActionType { get => _actionType; set => _actionType = value; }
+
+        public bool ShowCloseButton { get => _showCloseButton; set => _showCloseButton = value; }
+
         public Color UserResponsePromptColour { get => _userResponsePromptColour; set => _userResponsePromptColour = value; }
 
         public PaletteRelativeAlign UserResponsePromptAlignHorizontal { get => _userResponsePromptAlignHorizontal; set => _userResponsePromptAlignHorizontal = value; }
@@ -67,123 +81,106 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         public Image CustomImage { get => _customImage; set => _customImage = value; }
 
         public RightToLeftSupport RightToLeftSupport { get => _rightToLeftSupport; set { _rightToLeftSupport = value; Invalidate(); } }
+
+        public KryptonCommand ActionButtonCommand { get => _actionButtonCommand; set => _actionButtonCommand = value; }
+
         #endregion
 
         #region Constructors
-        public BasicNotificationWithUserResponseWrappedLabel(IconType iconType, string title, string contentText, Image customImage = null,
+        public BasicNotificationWithUserResponseWrappedLabel(ActionButtonLocation? actionButtonLocation, ActionType? actionType,
+                                                             IconType iconType, string title, string contentText,
+                                                             Image customImage = null,
                                                              string dismissText = "&Dismiss", string userResponseCueText = "",
                                                              Color? userResponseCueColour = null,
                                                              PaletteRelativeAlign? userResponseCueAlignHorizontal = null,
                                                              PaletteRelativeAlign? userResponseCueAlignVertical = null,
                                                              Font userResponseCueFont = null,
-                                                             RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LEFTTORIGHT)
+                                                             RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight,
+                                                             KryptonCommand actionButtonCommand = null)
         {
             InitializeComponent();
 
-            IconType = iconType;
-
-            Title = title;
-
-            ContentText = contentText;
-
-            CustomImage = customImage;
-
-            DismissText = dismissText;
-
-            UserResponsePrompt = userResponseCueText;
-
-            UserResponsePromptColour = userResponseCueColour ?? Color.Empty;
-
-            UserResponsePromptAlignHorizontal = userResponseCueAlignHorizontal ?? PaletteRelativeAlign.Near;
-
-            UserResponsePromptAlignVertical = userResponseCueAlignVertical ?? PaletteRelativeAlign.Near;
-
-            UserResponsePromptFont = userResponseCueFont;
-
-            RightToLeftSupport = rightToLeftSupport ?? RightToLeftSupport.LEFTTORIGHT;
-
-            TopMost = true;
-
-            Resize += BasicNotificationWithUserResponseWrappedLabel_Resize;
-
-            GotFocus += BasicNotificationWithUserResponseWrappedLabel_GotFocus;
-
-            LostFocus += BasicNotificationWithUserResponseWrappedLabel_LostFocus;
-
-            DoubleBuffered = true;
-
-            ReconfigureUI(rightToLeftSupport);
+            SetupUI(actionButtonLocation, actionType, iconType, title, contentText, customImage, dismissText, userResponseCueText, userResponseCueColour, userResponseCueAlignHorizontal, userResponseCueAlignVertical, userResponseCueFont, rightToLeftSupport, actionButtonCommand);
         }
 
-        public BasicNotificationWithUserResponseWrappedLabel(IconType iconType, string title, string contentText, int seconds, Image customImage = null,
+        public BasicNotificationWithUserResponseWrappedLabel(ActionButtonLocation? actionButtonLocation, ActionType? actionType,
+                                                             IconType iconType, string title, string contentText, 
+                                                             int seconds, Image customImage = null,
                                                              string dismissText = "&Dismiss", string userResponseCueText = "",
                                                              Color? userResponseCueColour = null,
                                                              PaletteRelativeAlign? userResponseCueAlignHorizontal = null,
                                                              PaletteRelativeAlign? userResponseCueAlignVertical = null,
                                                              Font userResponseCueFont = null,
-                                                             RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LEFTTORIGHT)
-            : this(iconType, title, contentText, customImage, dismissText, userResponseCueText,
+                                                             RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight,
+                                                             KryptonCommand actionButtonCommand = null)
+            : this(actionButtonLocation, actionType, iconType, title, contentText, 
+                   customImage, dismissText, userResponseCueText,
                    userResponseCueColour, userResponseCueAlignHorizontal,
-                   userResponseCueAlignVertical, userResponseCueFont, rightToLeftSupport) => Seconds = seconds;
+                   userResponseCueAlignVertical, userResponseCueFont, rightToLeftSupport,
+                   actionButtonCommand) => Seconds = seconds;
 
-        public BasicNotificationWithUserResponseWrappedLabel(IconType iconType, string title, string contentText, int seconds, string soundPath, Image customImage = null,
+        public BasicNotificationWithUserResponseWrappedLabel(ActionButtonLocation? actionButtonLocation, ActionType? actionType,
+                                                             IconType iconType, string title, string contentText,
+                                                             int seconds, string soundPath, Image customImage = null,
                                                              string dismissText = "&Dismiss", string userResponseCueText = "",
                                                              Color? userResponseCueColour = null,
                                                              PaletteRelativeAlign? userResponseCueAlignHorizontal = null,
                                                              PaletteRelativeAlign? userResponseCueAlignVertical = null,
                                                              Font userResponseCueFont = null,
-                                                             RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LEFTTORIGHT)
-            : this(iconType, title, contentText, seconds, customImage, dismissText, userResponseCueText,
+                                                             RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight,
+                                                             KryptonCommand actionButtonCommand = null)
+            : this(actionButtonLocation, actionType, iconType, title, contentText, 
+                   seconds, customImage, dismissText, userResponseCueText,
                    userResponseCueColour, userResponseCueAlignHorizontal,
-                   userResponseCueAlignVertical, userResponseCueFont, rightToLeftSupport) => SoundPath = soundPath;
+                   userResponseCueAlignVertical, userResponseCueFont, rightToLeftSupport,
+                   actionButtonCommand) => SoundPath = soundPath;
 
-        public BasicNotificationWithUserResponseWrappedLabel(IconType iconType, string title, string contentText, Stream soundStream, Image customImage = null,
+        public BasicNotificationWithUserResponseWrappedLabel(ActionButtonLocation? actionButtonLocation, ActionType? actionType,
+                                                             IconType iconType, string title, string contentText,
+                                                             Stream soundStream, Image customImage = null,
                                                              string dismissText = "&Dismiss", string userResponseCueText = "",
                                                              Color? userResponseCueColour = null,
                                                              PaletteRelativeAlign? userResponseCueAlignHorizontal = null,
                                                              PaletteRelativeAlign? userResponseCueAlignVertical = null,
                                                              Font userResponseCueFont = null,
-                                                             RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LEFTTORIGHT)
-            : this(iconType, title, contentText, customImage, dismissText, userResponseCueText,
+                                                             RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight,
+                                                             KryptonCommand actionButtonCommand = null)
+            : this(actionButtonLocation, actionType, iconType, title, contentText,
+                   customImage, dismissText, userResponseCueText,
                    userResponseCueColour, userResponseCueAlignHorizontal,
-                   userResponseCueAlignVertical, userResponseCueFont, rightToLeftSupport) => SoundStream = soundStream;
+                   userResponseCueAlignVertical, userResponseCueFont, rightToLeftSupport,
+                   actionButtonCommand) => SoundStream = soundStream;
 
-        public BasicNotificationWithUserResponseWrappedLabel(IconType iconType, string title, string contentText, int seconds, Stream soundStream, Image customImage = null,
+        public BasicNotificationWithUserResponseWrappedLabel(ActionButtonLocation? actionButtonLocation, ActionType? actionType,
+                                                             IconType iconType, string title, string contentText, 
+                                                             int seconds, Stream soundStream, Image customImage = null,
                                                              string dismissText = "&Dismiss", string userResponseCueText = "",
                                                              Color? userResponseCueColour = null,
                                                              PaletteRelativeAlign? userResponseCueAlignHorizontal = null,
                                                              PaletteRelativeAlign? userResponseCueAlignVertical = null,
                                                              Font userResponseCueFont = null,
-                                                             RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LEFTTORIGHT)
-            : this(iconType, title, contentText, seconds, customImage, dismissText, userResponseCueText,
+                                                             RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight,
+                                                             KryptonCommand actionButtonCommand = null)
+            : this(actionButtonLocation, actionType, iconType, title, contentText,
+                seconds, customImage, dismissText, userResponseCueText,
                    userResponseCueColour, userResponseCueAlignHorizontal,
-                   userResponseCueAlignVertical, userResponseCueFont, rightToLeftSupport) => SoundStream = soundStream;
+                   userResponseCueAlignVertical, userResponseCueFont, rightToLeftSupport,
+                   actionButtonCommand) => SoundStream = soundStream;
         #endregion
 
         #region Event Handlers
-        private void BasicNotificationWithUserResponseWrappedLabel_Load(object sender, EventArgs e)
-        {
-            //Once loaded, position the form to the bottom left of the screen with added padding
-            Location = new Point(Screen.PrimaryScreen.WorkingArea.Width - Width - 5, Screen.PrimaryScreen.WorkingArea.Height - Height - 5);
-
-            UtilityMethods.FadeIn(this);
-
-            if (_timer != null)
-            {
-                _timer.Start();
-            }
-
-            if (_soundPlayer != null)
-            {
-                _soundPlayer.Play();
-            }
-
-            kbtnDismiss.Text = _dismissText;
-        }
+        private void BasicNotificationWithUserResponseWrappedLabel_Load(object sender, EventArgs e) => SetupBaseUI(RightToLeftSupport);
 
         private void BasicNotificationWithUserResponseWrappedLabel_GotFocus(object sender, EventArgs e)
         {
-            kbtnDismiss.Focus();
+            if (RightToLeftSupport == RightToLeftSupport.LeftToRight)
+            {
+                kbtnToastButton3.Focus();
+            }
+            else
+            {
+                kbtnToastButton1.Focus();
+            }
 
             if (_timer != null)
             {
@@ -256,7 +253,14 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
             if (Seconds != 0)
             {
-                kbtnDismiss.Text = $"{DismissText} ({Seconds - Time})";
+                if (RightToLeftSupport == RightToLeftSupport.LeftToRight)
+                {
+                    kbtnToastButton3.Text = $"{DismissText} ({Seconds - Time})";
+                }
+                else
+                {
+                    kbtnToastButton1.Text = $"{DismissText} ({Seconds - Time})";
+                }
 
                 _timer = new Timer();
 
@@ -266,7 +270,14 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                 {
                     _time++;
 
-                    kbtnDismiss.Text = $"{DismissText} ({Seconds - Time}s)";
+                    if (RightToLeftSupport == RightToLeftSupport.LeftToRight)
+                    {
+                        kbtnToastButton3.Text = $"{DismissText} ({Seconds - Time}s)";
+                    }
+                    else
+                    {
+                        kbtnToastButton1.Text = $"{DismissText} ({Seconds - Time}s)";
+                    }
 
                     if (_time == Seconds)
                     {
@@ -324,7 +335,14 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
             if (Seconds != 0)
             {
-                kbtnDismiss.Text = $"{DismissText} ({Seconds - Time})";
+                if (RightToLeftSupport == RightToLeftSupport.LeftToRight)
+                {
+                    kbtnToastButton3.Text = $"{DismissText} ({Seconds - Time})";
+                }
+                else
+                {
+                    kbtnToastButton1.Text = $"{DismissText} ({Seconds - Time})";
+                }
 
                 _timer = new Timer();
 
@@ -334,7 +352,14 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                 {
                     _time++;
 
-                    kbtnDismiss.Text = $"{DismissText} ({Seconds - Time}s)";
+                    if (RightToLeftSupport == RightToLeftSupport.LeftToRight)
+                    {
+                        kbtnToastButton3.Text = $"{DismissText} ({Seconds - Time}s)";
+                    }
+                    else
+                    {
+                        kbtnToastButton1.Text = $"{DismissText} ({Seconds - Time}s)";
+                    }
 
                     if (_time == Seconds)
                     {
@@ -368,41 +393,117 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
         public string GetUserResponse() => ktxtUserResponse.Text;
 
-        private void ReconfigureUI(RightToLeftSupport? rightToLeftSupport)
+        private void SetupUI(ActionButtonLocation? actionButtonLocation, ActionType? actionType, IconType iconType,
+            string title, string contentText, Image customImage, string dismissText, string userResponseCueText,
+            Color? userResponseCueColour, PaletteRelativeAlign? userResponseCueAlignHorizontal,
+            PaletteRelativeAlign? userResponseCueAlignVertical, Font userResponseCueFont,
+            RightToLeftSupport? rightToLeftSupport, KryptonCommand actionButtonCommand)
         {
-            if (rightToLeftSupport == RightToLeftSupport.LEFTTORIGHT)
+            ActionButtonLocation = actionButtonLocation ?? ActionButtonLocation.Left;
+
+            ActionType = actionType ?? ActionType.Default;
+
+            IconType = iconType;
+
+            Title = title;
+
+            ContentText = contentText;
+
+            CustomImage = customImage;
+
+            DismissText = dismissText;
+
+            UserResponsePrompt = userResponseCueText;
+
+            UserResponsePromptColour = userResponseCueColour ?? Color.Empty;
+
+            UserResponsePromptAlignHorizontal = userResponseCueAlignHorizontal ?? PaletteRelativeAlign.Near;
+
+            UserResponsePromptAlignVertical = userResponseCueAlignVertical ?? PaletteRelativeAlign.Near;
+
+            UserResponsePromptFont = userResponseCueFont;
+
+            RightToLeftSupport = rightToLeftSupport ?? RightToLeftSupport.LeftToRight;
+
+            ActionButtonCommand = actionButtonCommand;
+
+            TopMost = true;
+
+            Resize += BasicNotificationWithUserResponseWrappedLabel_Resize;
+
+            GotFocus += BasicNotificationWithUserResponseWrappedLabel_GotFocus;
+
+            LostFocus += BasicNotificationWithUserResponseWrappedLabel_LostFocus;
+
+            DoubleBuffered = true;
+
+            RearrangeUI(rightToLeftSupport);
+        }
+
+        private void SetupBaseUI(RightToLeftSupport rightToLeft)
+        {
+            //Once loaded, position the form to the bottom left of the screen with added padding
+            Location = new Point(Screen.PrimaryScreen.WorkingArea.Width - Width - 5,
+                Screen.PrimaryScreen.WorkingArea.Height - Height - 5);
+
+            UtilityMethods.FadeIn(this);
+
+            if (_timer != null)
             {
-                RightToLeft = RightToLeft.No;
+                _timer.Start();
+            }
 
-                RightToLeftLayout = false;
+            if (_soundPlayer != null)
+            {
+                _soundPlayer.Play();
+            }
 
-                pbxToastImage.Location = new Point(12, 12);
-
-                kwlTitle.Location = new Point(146, 12);
-
-                kwlContent.Location = new Point(146, 90);
-
-                ktxtUserResponse.Location = new Point(146, 247);
-
-                kbtnDismiss.Location = new Point(423, 13);
+            if (rightToLeft == RightToLeftSupport.LeftToRight)
+            {
+                kbtnToastButton3.Text = _dismissText;
             }
             else
             {
-                RightToLeft = RightToLeft.Yes;
-
-                RightToLeftLayout = true;
-
-                pbxToastImage.Location = new Point(469, 12);
-
-                kwlTitle.Location = new Point(12, 12);
-
-                kwlContent.Location = new Point(12, 90);
-
-                ktxtUserResponse.Location = new Point(12, 247);
-
-                kbtnDismiss.Location = new Point(12, 13);
+                kbtnToastButton1.Text = _dismissText;
             }
         }
+        private void RearrangeUI(RightToLeftSupport? rightToLeft)
+        {
+            switch (rightToLeft)
+            {
+                case RightToLeftSupport.Inherit:
+                    // Note: Come back to this
+                    break;
+                case RightToLeftSupport.LeftToRight:
+                    UtilityMethods.CalibrateUILayout(this, new Control[] { ktbActionButton1, ktbActionButton2, ktbActionButton3, kwlTitle, kwlContent, ktxtUserResponse }, RightToLeft.No);
+
+                    RightToLeftLayout = false;
+
+                    pbxToastImage.Location = new Point(12, 12);
+
+                    kwlTitle.Location = new Point(146, 12);
+
+                    kwlContent.Location = new Point(146, 90);
+
+                    ktxtUserResponse.Location = new Point(146, 247);
+                    break;
+                case RightToLeftSupport.RightToLeft:
+                    UtilityMethods.CalibrateUILayout(this, new Control[] { ktbActionButton1, ktbActionButton2, ktbActionButton3, kwlTitle, kwlContent, ktxtUserResponse }, RightToLeft.Yes);
+
+                    RightToLeftLayout = true;
+
+                    pbxToastImage.Location = new Point(469, 12);
+
+                    kwlTitle.Location = new Point(12, 12);
+
+                    kwlContent.Location = new Point(12, 90);
+
+                    ktxtUserResponse.Location = new Point(12, 247);
+                    break;
+            }
+        }
+
+
         #endregion
 
         #region Overrides

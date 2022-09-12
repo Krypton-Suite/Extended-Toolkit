@@ -11,6 +11,13 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
     public partial class BasicNotificationAlternativeUI : KryptonForm
     {
         #region Variables
+
+        private ActionButtonLocation _actionButtonLocation;
+
+        private ActionType _actionType;
+
+        private bool _showControlButton, _showCloseButton;
+
         private IconType _iconType;
 
         private int _time, _seconds;
@@ -25,10 +32,20 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
         private Image _customImage;
 
-        private RightToLeftSupport _rightToLeftSupport;
+        private RightToLeftSupport _rightToLeft;
+
+        private KryptonCommand _actionButtonCommand;
+
         #endregion
 
         #region Properties
+
+        public ActionButtonLocation ActionButtonLocation { get => _actionButtonLocation; set => _actionButtonLocation = value; }
+
+        public ActionType ActionType { get => _actionType; set => _actionType = value; }
+
+        public bool ShowCloseButton { get => _showControlButton; set => _showControlButton = value; }
+
         public IconType IconType { get => _iconType; set => _iconType = value; }
 
         public int Time { get => _time; set => _time = value; }
@@ -47,85 +64,146 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
         public Image CustomImage { get => _customImage; set => _customImage = value; }
 
-        public RightToLeftSupport RightToLeftSupport { get => _rightToLeftSupport; set { _rightToLeftSupport = value; Invalidate(); } }
+        public RightToLeftSupport RightToLeftSupport { get => _rightToLeft; set { _rightToLeft = value; Invalidate(); } }
+
+        public KryptonCommand ActionButtonCommand { get => _actionButtonCommand; set => _actionButtonCommand = value; }
+
         #endregion
 
         #region Constructor
-        public BasicNotificationAlternativeUI(IconType iconType, string title, string contentText, 
+
+        /// <summary>Initializes a new instance of the <see cref="BasicNotificationAlternativeUI" /> class.</summary>
+        /// <param name="actionButtonLocation">The action button location.</param>
+        /// <param name="actionType">Type of the action.</param>
+        /// <param name="iconType">Type of the icon.</param>
+        /// <param name="title">The title.</param>
+        /// <param name="contentText">The content text.</param>
+        /// <param name="showCloseButton">The show close button.</param>
+        /// <param name="customImage">The custom image.</param>
+        /// <param name="dismissText">The dismiss text.</param>
+        /// <param name="rightToLeftSupport">The right to left support.</param>
+        /// <param name="actionButtonCommand">The action button command.</param>
+        public BasicNotificationAlternativeUI(ActionButtonLocation? actionButtonLocation, ActionType? actionType,
+                                              IconType iconType, string title, string contentText, 
+                                              bool? showCloseButton,
                                               Image customImage = null, string dismissText = "&Dismiss",
-                                              RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LEFTTORIGHT)
+                                              RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight,
+                                              KryptonCommand actionButtonCommand = null)
         {
             InitializeComponent();
 
-            IconType = iconType;
-
-            Title = title;
-
-            ContentText = contentText;
-
-            CustomImage = customImage;
-
-            DismissText = dismissText;
-
-            RightToLeftSupport = rightToLeftSupport ?? RightToLeftSupport.LEFTTORIGHT;
-
-            TopMost = true;
-
-            Resize += BasicNotificationAlternativeUI_Resize;
-
-            GotFocus += BasicNotificationAlternativeUI_GotFocus;
-
-            DoubleBuffered = true;
-
-            ReconfigureUI(rightToLeftSupport);
+            SetupBaseUI(actionButtonLocation, actionType, iconType, title, contentText, showCloseButton, customImage, dismissText, rightToLeftSupport, actionButtonCommand);
         }
 
-        public BasicNotificationAlternativeUI(IconType iconType, string title, string contentText, int seconds, 
+        /// <summary>Initializes a new instance of the <see cref="BasicNotificationAlternativeUI" /> class.</summary>
+        /// <param name="actionButtonLocation">The action button location.</param>
+        /// <param name="actionType">Type of the action.</param>
+        /// <param name="iconType">Type of the icon.</param>
+        /// <param name="title">The title.</param>
+        /// <param name="contentText">The content text.</param>
+        /// <param name="showCloseButton">The show close button.</param>
+        /// <param name="seconds">The seconds.</param>
+        /// <param name="customImage">The custom image.</param>
+        /// <param name="dismissText">The dismiss text.</param>
+        /// <param name="rightToLeftSupport">The right to left support.</param>
+        /// <param name="actionButtonCommand">The action button command.</param>
+        public BasicNotificationAlternativeUI(ActionButtonLocation? actionButtonLocation, ActionType? actionType,
+                                              IconType iconType, string title, string contentText,
+                                              bool? showCloseButton, int seconds, 
                                               Image customImage = null, string dismissText = "&Dismiss", 
-                                              RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LEFTTORIGHT)
-            : this(iconType, title, contentText, customImage, dismissText, rightToLeftSupport) => Seconds = seconds;
+                                              RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight,
+                                              KryptonCommand actionButtonCommand = null)
+            : this(actionButtonLocation, actionType,iconType, title, contentText, 
+                   showCloseButton, customImage, dismissText,
+                   rightToLeftSupport, actionButtonCommand) => Seconds = seconds;
 
-        public BasicNotificationAlternativeUI(IconType iconType, string title, string contentText, int seconds, 
+        /// <summary>Initializes a new instance of the <see cref="BasicNotificationAlternativeUI" /> class.</summary>
+        /// <param name="actionButtonLocation">The action button location.</param>
+        /// <param name="actionType">Type of the action.</param>
+        /// <param name="iconType">Type of the icon.</param>
+        /// <param name="title">The title.</param>
+        /// <param name="contentText">The content text.</param>
+        /// <param name="showCloseButton">The show close button.</param>
+        /// <param name="seconds">The seconds.</param>
+        /// <param name="soundPath">The sound path.</param>
+        /// <param name="customImage">The custom image.</param>
+        /// <param name="dismissText">The dismiss text.</param>
+        /// <param name="rightToLeftSupport">The right to left support.</param>
+        /// <param name="actionButtonCommand">The action button command.</param>
+        public BasicNotificationAlternativeUI(ActionButtonLocation? actionButtonLocation, ActionType? actionType,
+                                              IconType iconType, string title, string contentText,
+                                              bool? showCloseButton, int seconds, 
                                               string soundPath, Image customImage = null, 
                                               string dismissText = "&Dismiss",
-                                              RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LEFTTORIGHT)
-            : this(iconType, title, contentText, seconds, customImage, dismissText, rightToLeftSupport) => SoundPath = soundPath;
+                                              RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight,
+                                              KryptonCommand actionButtonCommand = null)
+            : this(actionButtonLocation, actionType, iconType, title, contentText, 
+                   showCloseButton, seconds, customImage, dismissText,
+                   rightToLeftSupport, actionButtonCommand) => SoundPath = soundPath;
 
-        public BasicNotificationAlternativeUI(IconType iconType, string title, string contentText, 
+        /// <summary>Initializes a new instance of the <see cref="BasicNotificationAlternativeUI" /> class.</summary>
+        /// <param name="actionButtonLocation">The action button location.</param>
+        /// <param name="actionType">Type of the action.</param>
+        /// <param name="iconType">Type of the icon.</param>
+        /// <param name="title">The title.</param>
+        /// <param name="contentText">The content text.</param>
+        /// <param name="showCloseButton">The show close button.</param>
+        /// <param name="soundStream">The sound stream.</param>
+        /// <param name="customImage">The custom image.</param>
+        /// <param name="dismissText">The dismiss text.</param>
+        /// <param name="rightToLeftSupport">The right to left support.</param>
+        /// <param name="actionButtonCommand">The action button command.</param>
+        public BasicNotificationAlternativeUI(ActionButtonLocation? actionButtonLocation, ActionType? actionType,
+                                              IconType iconType, string title, string contentText,
+                                              bool? showCloseButton, 
                                               Stream soundStream, Image customImage = null,
                                               string dismissText = "&Dismiss",
-                                              RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LEFTTORIGHT)
-            : this(iconType, title, contentText, customImage, dismissText, rightToLeftSupport) => SoundStream = soundStream;
+                                              RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight,
+                                              KryptonCommand actionButtonCommand = null)
+            : this(actionButtonLocation, actionType, iconType, title, contentText, 
+                   showCloseButton, customImage, dismissText, 
+                   rightToLeftSupport, actionButtonCommand) => SoundStream = soundStream;
 
-        public BasicNotificationAlternativeUI(IconType iconType, string title, string contentText, int seconds, 
+        /// <summary>Initializes a new instance of the <see cref="BasicNotificationAlternativeUI" /> class.</summary>
+        /// <param name="actionButtonLocation">The action button location.</param>
+        /// <param name="actionType">Type of the action.</param>
+        /// <param name="iconType">Type of the icon.</param>
+        /// <param name="title">The title.</param>
+        /// <param name="contentText">The content text.</param>
+        /// <param name="showCloseButton">The show close button.</param>
+        /// <param name="seconds">The seconds.</param>
+        /// <param name="soundStream">The sound stream.</param>
+        /// <param name="customImage">The custom image.</param>
+        /// <param name="dismissText">The dismiss text.</param>
+        /// <param name="rightToLeftSupport">The right to left support.</param>
+        /// <param name="actionButtonCommand">The action button command.</param>
+        public BasicNotificationAlternativeUI(ActionButtonLocation? actionButtonLocation, ActionType? actionType,
+                                              IconType iconType, string title, string contentText,
+                                              bool? showCloseButton, int seconds, 
                                               Stream soundStream, Image customImage = null, 
                                               string dismissText = "&Dismiss",
-                                              RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LEFTTORIGHT)
-            : this(iconType, title, contentText, seconds, customImage, dismissText, rightToLeftSupport) => SoundStream = soundStream;
+                                              RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight,
+                                              KryptonCommand actionButtonCommand = null)
+            : this(actionButtonLocation, actionType, iconType, title, contentText,
+                   showCloseButton, seconds, customImage, dismissText,
+                   rightToLeftSupport, actionButtonCommand) => SoundStream = soundStream;
         #endregion
 
         #region Event Handlers
-        private void BasicNotificationAlternativeUI_Load(object sender, EventArgs e)
+
+        private void BasicNotificationAlternativeUI_Load(object sender, EventArgs e) => SetupUI(RightToLeftSupport);
+
+        private void BasicNotificationAlternativeUI_GotFocus(object sender, EventArgs e)
         {
-            //Once loaded, position the form to the bottom left of the screen with added padding
-            Location = new Point(Screen.PrimaryScreen.WorkingArea.Width - Width - 5, Screen.PrimaryScreen.WorkingArea.Height - Height - 5);
-
-            UtilityMethods.FadeIn(this);
-
-            if (_timer != null)
+            if (RightToLeftSupport == RightToLeftSupport.LeftToRight)
             {
-                _timer.Start();
+                kbtnToastButton3.Focus();
             }
-
-            if (_soundPlayer != null)
+            else
             {
-                _soundPlayer.Play();
+                kbtnToastButton1.Focus();
             }
-
-            kbtnDismiss.Text = _dismissText;
         }
-
-        private void BasicNotificationAlternativeUI_GotFocus(object sender, EventArgs e) => kbtnDismiss.Focus();
 
         private void BasicNotificationAlternativeUI_Resize(object sender, EventArgs e)
         {
@@ -151,7 +229,14 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
             if (Seconds != 0)
             {
-                kbtnDismiss.Text = $"{DismissText} ({Seconds - Time})";
+                if (RightToLeftSupport == RightToLeftSupport.LeftToRight)
+                {
+                    kbtnToastButton3.Text = $"{DismissText} ({Seconds - Time})";
+                }
+                else
+                {
+                    kbtnToastButton1.Text = $"{DismissText} ({Seconds - Time})";
+                }
 
                 _timer = new Timer();
 
@@ -161,7 +246,14 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                 {
                     _time++;
 
-                    kbtnDismiss.Text = $"{DismissText} ({Seconds - Time}s)";
+                    if (RightToLeftSupport == RightToLeftSupport.LeftToRight)
+                    {
+                        kbtnToastButton3.Text = $"{DismissText} ({Seconds - Time}s)";
+                    }
+                    else
+                    {
+                        kbtnToastButton1.Text = $"{DismissText} ({Seconds - Time}s)";
+                    }
 
                     if (_time == Seconds)
                     {
@@ -173,7 +265,14 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             }
             else
             {
-                kbtnDismiss.Text = DismissText;
+                if (RightToLeftSupport == RightToLeftSupport.LeftToRight)
+                {
+                    kbtnToastButton3.Text = DismissText;
+                }
+                else
+                {
+                    kbtnToastButton1.Text = DismissText;
+                }
             }
 
             if (SoundPath != null)
@@ -197,37 +296,111 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             base.Show();
         }
 
-        private void ReconfigureUI(RightToLeftSupport? rightToLeftSupport)
+        private void SetControlBoxVisibility(bool visibilityToggle) => ControlBox = visibilityToggle;
+
+        private void SetWindowBorderStyle(FormBorderStyle borderStyle) => FormBorderStyle = borderStyle;
+
+        private void SetupBaseUI(ActionButtonLocation? actionButtonLocation, ActionType? actionType,
+                                 IconType iconType, string title, string contentText, 
+                                 bool? showCloseButton, Image customImage,
+                                 string dismissText, RightToLeftSupport? rightToLeftSupport,
+                                 KryptonCommand actionButtonCommand)
         {
-            if (rightToLeftSupport == RightToLeftSupport.LEFTTORIGHT)
+            ActionButtonLocation = actionButtonLocation ?? ActionButtonLocation.Left;
+
+            ActionType = actionType ?? ActionType.Default;
+
+            IconType = iconType;
+
+            Title = title;
+
+            ContentText = contentText;
+
+            ShowCloseButton = showCloseButton ?? false;
+
+            CustomImage = customImage;
+
+            DismissText = dismissText;
+
+            RightToLeftSupport = rightToLeftSupport ?? RightToLeftSupport.LeftToRight;
+
+            TopMost = true;
+
+            SetControlBoxVisibility(ShowCloseButton);
+
+            Resize += BasicNotificationAlternativeUI_Resize;
+
+            GotFocus += BasicNotificationAlternativeUI_GotFocus;
+
+            DoubleBuffered = true;
+
+            ActionButtonCommand = actionButtonCommand;
+
+            RearrangeUI(rightToLeftSupport);
+        }
+
+        private void SetupUI(RightToLeftSupport rightToLeft = RightToLeftSupport.LeftToRight)
+        {
+            //Once loaded, position the form to the bottom left of the screen with added padding
+            Location = new Point(Screen.PrimaryScreen.WorkingArea.Width - Width - 5,
+                Screen.PrimaryScreen.WorkingArea.Height - Height - 5);
+
+            UtilityMethods.FadeIn(this);
+
+            if (_timer != null)
             {
-                RightToLeft = RightToLeft.No;
+                _timer.Start();
+            }
 
-                RightToLeftLayout = false;
+            if (_soundPlayer != null)
+            {
+                _soundPlayer.Play();
+            }
 
-                pbxToastImage.Location = new Point(12, 12);
+            RearrangeUI(rightToLeft);
 
-                kwlTitle.Location = new Point(146, 12);
-
-                kwlContent.Location = new Point(146, 92); //89);
-
-                kbtnDismiss.Location = new Point(423, 13);
+            if (rightToLeft == RightToLeftSupport.LeftToRight)
+            {
+                kbtnToastButton3.Text = _dismissText;
             }
             else
             {
-                RightToLeft = RightToLeft.Yes;
-
-                RightToLeftLayout = true;
-
-                pbxToastImage.Location = new Point(469, 12);
-
-                kwlTitle.Location = new Point(12, 12);
-
-                kwlContent.Location = new Point(12, 92);
-
-                kbtnDismiss.Location = new Point(12, 13);
+                kbtnToastButton1.Text = _dismissText;
             }
         }
+
+        private void RearrangeUI(RightToLeftSupport? rightToLeft)
+        {
+            switch (rightToLeft)
+            {
+                case RightToLeftSupport.Inherit:
+                    // Note: Come back to this
+                    break;
+                case RightToLeftSupport.LeftToRight:
+                    UtilityMethods.CalibrateUILayout(this, new Control[] { ktbActionButton1, ktbActionButton2, ktbActionButton3, kwlTitle, kwlContent }, RightToLeft.No);
+
+                    RightToLeftLayout = false;
+
+                    pbxToastImage.Location = new Point(12, 12);
+
+                    kwlTitle.Location = new Point(146, 12);
+
+                    kwlContent.Location = new Point(146, 92); //89);
+                    break;
+                case RightToLeftSupport.RightToLeft:
+                    UtilityMethods.CalibrateUILayout(this, new Control[] { ktbActionButton1, ktbActionButton2, ktbActionButton3, kwlTitle, kwlContent }, RightToLeft.Yes);
+
+                    RightToLeftLayout = true;
+
+                    pbxToastImage.Location = new Point(469, 12);
+
+                    kwlTitle.Location = new Point(12, 12);
+
+                    kwlContent.Location = new Point(12, 92);
+                    break;
+            }
+        }
+
         #endregion
 
         #region Overrides
