@@ -16,7 +16,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
         private ActionType _actionType;
 
-        private bool _usePanelColourInTextArea, _showCloseButton;
+        private bool _showActionButton, _usePanelColourInTextArea, _showCloseButton, _openProcessInExplorer;
 
         private Font _contentTypeface, _headerTypeface;
 
@@ -28,7 +28,9 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
         private SoundPlayer _soundPlayer;
 
-        private string _actionButtonText, _title, _contentText, _soundPath, _dismissText;
+        private string _actionButtonText, _title, _contentText, _soundPath, _dismissText, _processPath;
+
+        private object _optionalParameters;
 
         private Stream _soundStream;
 
@@ -46,9 +48,13 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
         public ActionType ActionType { get => _actionType; set => _actionType = value; }
 
+        public bool ShowActionButton { get => _showActionButton; set => _showActionButton = value; }
+
         public bool UsePanelColourInTextArea { get => _usePanelColourInTextArea; set => _usePanelColourInTextArea = value; }
 
         public bool ShowCloseButton { get => _showCloseButton; set => _showCloseButton = value; }
+
+        public bool OpenProcessInExplorer { get => _openProcessInExplorer; set => _openProcessInExplorer = value; }
 
         public IconType IconType { get => _iconType; set => _iconType = value; }
 
@@ -65,6 +71,10 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         public string SoundPath { get => _soundPath; set => _soundPath = value; }
 
         public string DismissText { get => _dismissText; set => _dismissText = value; }
+
+        public string ProcessPath { get => _processPath; set => _processPath = value; }
+
+        public object OptionalParameters { get => _optionalParameters; set => _optionalParameters = value; }
 
         public Stream SoundStream { get => _soundStream; set => _soundStream = value; }
 
@@ -86,20 +96,30 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <param name="contentText">The content text.</param>
         /// <param name="usePanelColourInTextArea">The use panel colour in text area.</param>
         /// <param name="showCloseButton">The show close button.</param>
+        /// <param name="showActionButton">The show action button.</param>
         /// <param name="customImage">The custom image.</param>
         /// <param name="dismissText">The dismiss text.</param>
+        /// <param name="actionButtonText">The action button text.</param>
         /// <param name="rightToLeft">The right to left.</param>
         /// <param name="actionButtonCommand">The action button command.</param>
+        /// <param name="openProcessInExplorer">The open process in explorer.</param>
+        /// <param name="processPath">The process path.</param>
+        /// <param name="optionalParameters">The optional parameters.</param>
         public BasicNotification(ActionButtonLocation? actionButtonLocation, ActionType? actionType,
                                  IconType iconType, string title, string contentText,
-                                 bool? usePanelColourInTextArea, bool? showCloseButton, Image customImage = null,
+                                 bool? usePanelColourInTextArea, bool? showCloseButton, bool? showActionButton,
+                                 Image customImage = null,
                                  string dismissText = "&Dismiss", 
+                                 string actionButtonText = @"L&aunch Process",
                                  RightToLeftSupport? rightToLeft = RightToLeftSupport.LeftToRight,
-                                 KryptonCommand actionButtonCommand = null)
+                                 KryptonCommand actionButtonCommand = null,
+                                 bool? openProcessInExplorer = null,
+                                 string processPath = null,
+                                 object optionalParameters = null)
         {
             InitializeComponent();
 
-            SetupBaseUI(actionButtonLocation, actionType, iconType, title, contentText, usePanelColourInTextArea, showCloseButton, customImage, dismissText, rightToLeft, actionButtonCommand);
+            SetupBaseUI(actionButtonLocation, actionType, iconType, title, contentText, usePanelColourInTextArea, showCloseButton, showActionButton, customImage, dismissText, actionButtonText, rightToLeft, actionButtonCommand, openProcessInExplorer, processPath, optionalParameters);
         }
 
         /// <summary>Initializes a new instance of the <see cref="BasicNotification" /> class.</summary>
@@ -110,21 +130,25 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <param name="contentText">The content text.</param>
         /// <param name="usePanelColourInTextArea">The use panel colour in text area.</param>
         /// <param name="showCloseButton">The show close button.</param>
+        /// <param name="showActionButton">The show action button.</param>
         /// <param name="seconds">The seconds.</param>
         /// <param name="customImage">The custom image.</param>
         /// <param name="dismissText">The dismiss text.</param>
+        /// <param name="actionButtonText">The action button text.</param>
         /// <param name="rightToLeft">The right to left.</param>
         /// <param name="actionButtonCommand">The action button command.</param>
         public BasicNotification(ActionButtonLocation? actionButtonLocation, ActionType? actionType,
                                  IconType iconType, string title, string contentText,
-                                 bool? usePanelColourInTextArea, bool? showCloseButton,
+                                 bool? usePanelColourInTextArea, bool? showCloseButton, bool? showActionButton,
                                  int seconds, Image customImage = null,
                                  string dismissText = "&Dismiss",
+                                 string actionButtonText = @"L&aunch Process",
                                  RightToLeftSupport? rightToLeft = RightToLeftSupport.LeftToRight,
                                  KryptonCommand actionButtonCommand = null)
             : this(actionButtonLocation, actionType, iconType, title, contentText,
-                   usePanelColourInTextArea, showCloseButton, customImage, 
-                   dismissText, rightToLeft, actionButtonCommand) => Seconds = seconds;
+                   usePanelColourInTextArea, showCloseButton, showActionButton, customImage, 
+                   dismissText, actionButtonText,
+                   rightToLeft, actionButtonCommand) => Seconds = seconds;
 
         /// <summary>Initializes a new instance of the <see cref="BasicNotification" /> class.</summary>
         /// <param name="actionButtonLocation">The action button location.</param>
@@ -134,23 +158,29 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <param name="contentText">The content text.</param>
         /// <param name="usePanelColourInTextArea">The use panel colour in text area.</param>
         /// <param name="showCloseButton">The show close button.</param>
+        /// <param name="showActionButton">The show action button.</param>
         /// <param name="seconds">The seconds.</param>
         /// <param name="soundPath">The sound path.</param>
         /// <param name="customImage">The custom image.</param>
         /// <param name="dismissText">The dismiss text.</param>
+        /// <param name="actionButtonText">The action button text.</param>
         /// <param name="rightToLeft">The right to left.</param>
         /// <param name="actionButtonCommand">The action button command.</param>
         public BasicNotification(ActionButtonLocation? actionButtonLocation, ActionType? actionType, 
                                  IconType iconType, string title, string contentText,
                                  bool? usePanelColourInTextArea,
-                                 bool? showCloseButton, int seconds,
+                                 bool? showCloseButton, bool? showActionButton, int seconds,
                                  string soundPath, Image customImage = null,
                                  string dismissText = "&Dismiss",
+                                 string actionButtonText = @"L&aunch Process",
                                  RightToLeftSupport? rightToLeft = RightToLeftSupport.LeftToRight,
                                  KryptonCommand actionButtonCommand = null)
             : this(actionButtonLocation, actionType, iconType, title, contentText,
-                  usePanelColourInTextArea, showCloseButton, seconds, customImage,
-                  dismissText, rightToLeft, actionButtonCommand) => SoundPath = soundPath;
+                   usePanelColourInTextArea, showCloseButton,
+                   showActionButton,
+                   seconds, customImage,
+                   dismissText, actionButtonText,
+                   rightToLeft, actionButtonCommand) => SoundPath = soundPath;
 
         /// <summary>Initializes a new instance of the <see cref="BasicNotification" /> class.</summary>
         /// <param name="actionButtonLocation">The action button location.</param>
@@ -160,22 +190,28 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <param name="contentText">The content text.</param>
         /// <param name="usePanelColourInTextArea">The use panel colour in text area.</param>
         /// <param name="showCloseButton">The show close button.</param>
+        /// <param name="showActionButton">The show action button.</param>
         /// <param name="soundStream">The sound stream.</param>
         /// <param name="customImage">The custom image.</param>
         /// <param name="dismissText">The dismiss text.</param>
+        /// <param name="actionButtonText">The action button text.</param>
         /// <param name="rightToLeft">The right to left.</param>
         /// <param name="actionButtonCommand">The action button command.</param>
         public BasicNotification(ActionButtonLocation? actionButtonLocation, ActionType? actionType, 
                                  IconType iconType, string title, string contentText,
                                  bool? usePanelColourInTextArea,
-                                 bool? showCloseButton, Stream soundStream,
+                                 bool? showCloseButton, bool? showActionButton,
+                                 Stream soundStream,
                                  Image customImage = null,
                                  string dismissText = "&Dismiss",
+                                 string actionButtonText = @"L&aunch Process",
                                  RightToLeftSupport? rightToLeft = RightToLeftSupport.LeftToRight,
                                  KryptonCommand actionButtonCommand = null)
             : this(actionButtonLocation, actionType, iconType, title, contentText, 
-                   usePanelColourInTextArea, showCloseButton, customImage,
-                   dismissText, rightToLeft, actionButtonCommand) => SoundStream = soundStream;
+                   usePanelColourInTextArea, showCloseButton, showActionButton,
+                   customImage,
+                   dismissText, actionButtonText,
+                   rightToLeft, actionButtonCommand) => SoundStream = soundStream;
 
         /// <summary>Initializes a new instance of the <see cref="BasicNotification" /> class.</summary>
         /// <param name="actionButtonLocation">The action button location.</param>
@@ -185,23 +221,29 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         /// <param name="contentText">The content text.</param>
         /// <param name="usePanelColourInTextArea">The use panel colour in text area.</param>
         /// <param name="showCloseButton">The show close button.</param>
+        /// <param name="showActionButton">The show action button.</param>
         /// <param name="seconds">The seconds.</param>
         /// <param name="soundStream">The sound stream.</param>
         /// <param name="customImage">The custom image.</param>
         /// <param name="dismissText">The dismiss text.</param>
+        /// <param name="actionButtonText">The action button text.</param>
         /// <param name="rightToLeft">The right to left.</param>
         /// <param name="actionButtonCommand">The action button command.</param>
         public BasicNotification(ActionButtonLocation? actionButtonLocation, ActionType? actionType, 
                                  IconType iconType, string title, string contentText,
                                  bool? usePanelColourInTextArea,
-                                 bool? showCloseButton, int seconds,
+                                 bool? showCloseButton, bool? showActionButton,
+                                 int seconds,
                                  Stream soundStream, Image customImage = null,
                                  string dismissText = "&Dismiss",
+                                 string actionButtonText = @"L&aunch Process",
                                  RightToLeftSupport? rightToLeft = RightToLeftSupport.LeftToRight,
                                  KryptonCommand actionButtonCommand = null)
             : this(actionButtonLocation, actionType, iconType, title, contentText,
-                   usePanelColourInTextArea, showCloseButton, seconds, customImage,
-                   dismissText, rightToLeft, actionButtonCommand) => SoundStream = soundStream;
+                   usePanelColourInTextArea, showCloseButton, showActionButton,
+                   seconds, customImage,
+                   dismissText, actionButtonText,
+                   rightToLeft, actionButtonCommand) => SoundStream = soundStream;
         #endregion
 
         #region Event Handlers
@@ -334,16 +376,96 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             base.Show();
         }
 
+        /// <summary>Setups the action button.</summary>
+        /// <param name="showActionButton">if set to <c>true</c> [show action button].</param>
+        /// <param name="actionButtonLocation">The action button location.</param>
+        private void SetupActionButton(bool? showActionButton, ActionButtonLocation? actionButtonLocation)
+        {
+            if (showActionButton != null)
+            {
+                if (_rightToLeft == RightToLeftSupport.LeftToRight)
+                {
+                    if (actionButtonLocation == ActionButtonLocation.Left)
+                    {
+                        kbtnToastButtonPanel1.Visible = true;
+
+                        ktbActionButton1.Visible = true;
+                    }
+                    else
+                    {
+                        kbtnToastButtonPanel2.Visible = true;
+
+                        ktbActionButton2.Visible = true;
+                    }
+                }
+                else if (_rightToLeft == RightToLeftSupport.RightToLeft)
+                {
+                    if (actionButtonLocation == ActionButtonLocation.Right)
+                    {
+                        tlpButtons.ColumnStyles[0].SizeType = SizeType.Percent;
+
+                        tlpButtons.ColumnStyles[0].Width = 100F;
+
+                        tlpButtons.ColumnStyles[2].SizeType = SizeType.AutoSize;
+
+                        kbtnToastButtonPanel3.Visible = true;
+
+                        ktbActionButton3.Visible = true;
+                    }
+                    else
+                    {
+                        tlpButtons.ColumnStyles[0].SizeType = SizeType.Percent;
+
+                        tlpButtons.ColumnStyles[0].Width = 100F;
+
+                        tlpButtons.ColumnStyles[2].SizeType = SizeType.AutoSize;
+
+                        kbtnToastButtonPanel3.Visible = false;
+
+                        ktbActionButton3.Visible = false;
+
+                        kbtnToastButtonPanel1.Visible = true;
+
+                        ktbActionButton1.Visible = true;
+                    }
+                }
+            }
+            else
+            {
+                if (_rightToLeft == RightToLeftSupport.LeftToRight)
+                {
+                    kbtnToastButtonPanel1.Visible = false;
+
+                    kbtnToastButtonPanel2.Visible = false;
+                }
+                else if (_rightToLeft == RightToLeftSupport.RightToLeft)
+                {
+                    kbtnToastButtonPanel2.Visible = false;
+
+                    kbtnToastButtonPanel3.Visible = false;
+
+                    kbtnToastButtonPanel1.Visible = true;
+
+                    ktbActionButton1.Visible = true;
+                }
+            }
+        }
+
         private void SetControlBoxVisibility(bool visibilityToggle) => ControlBox = visibilityToggle;
 
         private void SetWindowBorderStyle(FormBorderStyle borderStyle) => FormBorderStyle = borderStyle;
 
         private void SetupBaseUI(ActionButtonLocation? actionButtonLocation, ActionType? actionType,
                                  IconType iconType, string title, string contentText,
-                                 bool? usePanelColourInTextArea, bool? showCloseButton, Image customImage = null,
+                                 bool? usePanelColourInTextArea, bool? showCloseButton, bool? showActionButton,
+                                 Image customImage = null,
                                  string dismissText = "&Dismiss", 
+                                 string actionButtonText = @"L&aunch Process",
                                  RightToLeftSupport? rightToLeft = RightToLeftSupport.LeftToRight,
-                                 KryptonCommand actionButtonCommand = null)
+                                 KryptonCommand actionButtonCommand = null,
+                                 bool? openProcessInExplorer = null,
+                                 string processPath = null,
+                                 object optionalParameters = null)
         {
             ActionButtonLocation = actionButtonLocation ?? ActionButtonLocation.Left;
 
@@ -351,17 +473,27 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
             IconType = iconType;
 
+            ActionButtonText = actionButtonText;
+
             Title = title;
 
             ContentText = contentText;
+
+            ShowActionButton = showActionButton ?? false;
 
             UsePanelColourInTextArea = usePanelColourInTextArea ?? false;
 
             ShowCloseButton = showCloseButton ?? false;
 
+            OpenProcessInExplorer = openProcessInExplorer ?? false;
+
             CustomImage = customImage;
 
             DismissText = dismissText;
+
+            ProcessPath = processPath ?? string.Empty;
+
+            OptionalParameters = optionalParameters ?? null;
 
             RightToLeftSupport = rightToLeft ?? RightToLeftSupport.RightToLeft;
 
@@ -380,6 +512,10 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             SetupTextArea();
 
             RearrangeUI(rightToLeft);
+
+            ConfigureRightToLeftActions(rightToLeft);
+
+            SetupActionButton(showActionButton, actionButtonLocation);
         }
 
         private void SetupUI(RightToLeftSupport rightToLeft = RightToLeftSupport.LeftToRight)
@@ -439,6 +575,27 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                     UtilityMethods.ChangeControlLocation(kwlTitle, new Point(12, 12));
 
                     UtilityMethods.ChangeControlLocation(krtbContent, new Point(12, 89));
+                    break;
+            }
+        }
+
+        /// <summary>Configures the right to left action buttons.</summary>
+        /// <param name="rightToLeftSupport">The layout of the toast window.</param>
+        private void ConfigureRightToLeftActions(RightToLeftSupport? rightToLeftSupport = RightToLeftSupport.LeftToRight)
+        {
+            switch (rightToLeftSupport)
+            {
+                case RightToLeftSupport.Inherit:
+                    break;
+                case RightToLeftSupport.LeftToRight:
+                    UtilityMethods.ConfigureToastNotificationButton(ktbActionButton1, _actionType, false, false, _openProcessInExplorer, _optionalParameters, _processPath, _actionButtonText);
+
+                    UtilityMethods.ConfigureToastNotificationButton(ktbActionButton3, ActionType.Default, false, false, false, null, null, _dismissText);
+                    break;
+                case RightToLeftSupport.RightToLeft:
+                    UtilityMethods.ConfigureToastNotificationButton(ktbActionButton1, ActionType.Default, false, false, false, null, null, _dismissText);
+
+                    UtilityMethods.ConfigureToastNotificationButton(ktbActionButton3, _actionType, false, false, _openProcessInExplorer, _optionalParameters, _processPath, _actionButtonText);
                     break;
             }
         }
