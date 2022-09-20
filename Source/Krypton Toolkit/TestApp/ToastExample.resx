@@ -121,7 +121,7 @@
     <value>17, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="kryptonBrowseBox2.LargeResetImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="kbbProcessPath.LargeResetImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
         dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAVhSURBVFhHvZZraJtlFMdfKAyEgW16Sy9JL2mTJWlu
@@ -150,7 +150,7 @@
         zeCPV8pqxoSjF7sfNqG7CUtUPbDsj/8XMv4C4EU4InvAOU4AAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="kryptonBrowseBox2.SmallResetImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="kbbProcessPath.SmallResetImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
         dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAJ8SURBVDhPdZJNaBNREMcfFAIFofnaTbJJdpNsNnTz
@@ -170,11 +170,11 @@
   <data name="kcolUserResponseColour.Values.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EAAACxABrSO9dQAAAAd0SU1FB9gBEgI0L+a2mIYAAAATSURBVDhPYxgFo2AUjAIwYGAAAAQQAAGnRHxj
+        DAAACwwBP0AiyAAAAAd0SU1FB9gBEgI0L+a2mIYAAAATSURBVDhPYxgFo2AUjAIwYGAAAAQQAAGnRHxj
         AAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="kryptonBrowseBox1.LargeResetImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="kbbIconTypeCustomPath.LargeResetImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
         dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAVhSURBVFhHvZZraJtlFMdfKAyEgW16Sy9JL2mTJWlu
@@ -203,7 +203,7 @@
         zeCPV8pqxoSjF7sfNqG7CUtUPbDsj/8XMv4C4EU4InvAOU4AAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="kryptonBrowseBox1.SmallResetImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="kbbIconTypeCustomPath.SmallResetImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
         dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAJ8SURBVDhPdZJNaBNREMcfFAIFofnaTbJJdpNsNnTz

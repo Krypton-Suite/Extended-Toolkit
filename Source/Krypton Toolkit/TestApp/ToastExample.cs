@@ -31,6 +31,12 @@ namespace TestApp
 
         private ToastNotificationContentAreaType _contentAreaType = ToastNotificationContentAreaType.Label;
 
+        private PaletteRelativeAlign _userResponsePromptAlignHorizontal;
+
+        private PaletteRelativeAlign _userResponsePromptAlignVertical;
+
+        private KryptonCommand _actionButtonCommand = null;
+
         #endregion
 
         public ToastExample()
@@ -88,6 +94,146 @@ namespace TestApp
         /// <returns>The value of the ToastNotificationSystemSounds.</returns>
         public ToastNotificationSystemSounds GetToastNotificationSystemSounds() => _systemSounds;
 
+        /// <summary>Sets the ToastNotificationContentAreaType to value.</summary>
+        /// <param name="value">The value of the ToastNotificationContentAreaType.</param>
+        public void SetToastNotificationContentAreaType(ToastNotificationContentAreaType value) => _contentAreaType = value;
+
+        /// <summary>Gets the ToastNotificationContentAreaType value.</summary>
+        /// <returns>The value of the ToastNotificationContentAreaType.</returns>
+        public ToastNotificationContentAreaType GetToastNotificationContentAreaType() => _contentAreaType;
+
+        /// <summary>Sets the UserResponsePromptAlignHorizontal to value.</summary>
+        /// <param name="value">The value of the UserResponsePromptAlignHorizontal.</param>
+        public void SetUserResponsePromptAlignHorizontal(PaletteRelativeAlign value) => _userResponsePromptAlignHorizontal = value;
+
+        /// <summary>Gets the UserResponsePromptAlignHorizontal value.</summary>
+        /// <returns>The value of the UserResponsePromptAlignHorizontal.</returns>
+        public PaletteRelativeAlign GetUserResponsePromptAlignHorizontal() => _userResponsePromptAlignHorizontal;
+
+        /// <summary>Sets the UserResponsePromptAlignVertical to value.</summary>
+        /// <param name="value">The value of the UserResponsePromptAlignVertical.</param>
+        public void SetUserResponsePromptAlignVertical(PaletteRelativeAlign value) => _userResponsePromptAlignVertical = value;
+
+        /// <summary>Gets the UserResponsePromptAlignVertical value.</summary>
+        /// <returns>The value of the UserResponsePromptAlignVertical.</returns>
+        public PaletteRelativeAlign GetUserResponsePromptAlignVertical() => _userResponsePromptAlignVertical;
+
         #endregion
+
+        #region Methods
+
+        private void EnableUserResponseUI(bool enabled)
+        {
+            ktxtPromptText.Enabled = enabled;
+
+            kcolUserResponseColour.Enabled = enabled;
+
+            kbtnUserResponseFont.Enabled = enabled;
+
+            kryptonLabel3.Enabled = enabled;
+
+            kcmbUserResponseTextAlignHorizontal.Enabled = enabled;
+
+            kryptonLabel4.Enabled = enabled;
+
+            kcmbUserResponseTextAlignVertical.Enabled = enabled;
+        }
+
+        #endregion
+
+        private void ChangeIconType_CheckedChanged(object sender, EventArgs e)
+        {
+            kbbIconTypeCustomPath.Enabled = krbIconTypeCustom.Checked;
+
+            if (krbIconTypeAsterisk.Checked)
+            {
+                SetIconType(IconType.Asterisk);
+            }
+            else if (krbIconTypeCustom.Checked)
+            {
+                SetIconType(IconType.Custom);
+            }
+            else if (krbIconTypeError.Checked)
+            {
+                SetIconType(IconType.Error);
+            }
+            else if (krbIconTypeExclamation.Checked)
+            {
+                SetIconType(IconType.Exclamation);
+            }
+            else if (krbIconTypeHand.Checked)
+            {
+                SetIconType(IconType.Hand);
+            }
+            else if (krbIconTypeNone.Checked)
+            {
+                SetIconType(IconType.None);
+            }
+            else if (krbIconTypeOk.Checked)
+            {
+                SetIconType(IconType.Ok);
+            }
+            else if (krbIconTypeShield.Checked)
+            {
+                SetIconType(IconType.Shield);
+            }
+            else if (krbIconTypeStop.Checked)
+            {
+                SetIconType(IconType.Stop);
+            }
+            else if (krbIconTypeInformation.Checked)
+            {
+                SetIconType(IconType.Information);
+            }
+            else if (krbIconTypeWarning.Checked)
+            {
+                SetIconType(IconType.Warning);
+            }
+            else if (krbIconTypeWindowsLogo.Checked)
+            {
+                SetIconType(IconType.WindowsLogo);
+            }
+        }
+
+        private void ChangeContentAreaType_CheckedChanged(object sender, EventArgs e)
+        {
+            if (krbContentAreaTypeLabel.Checked)
+            {
+                SetToastNotificationContentAreaType(ToastNotificationContentAreaType.Label);
+            }
+            else if (krbContentAreaTypeMultilinedTextBox.Checked)
+            {
+                SetToastNotificationContentAreaType(ToastNotificationContentAreaType.MultiLinedTextBox);
+            }
+            else if (krbContentAreaTypeRichTextBox.Checked)
+            {
+                SetToastNotificationContentAreaType(ToastNotificationContentAreaType.RichTextBox);
+            }
+            else if (krbContentAreaTypeWrappedLabel.Checked)
+            {
+                SetToastNotificationContentAreaType(ToastNotificationContentAreaType.WrappedLabel);
+            }
+        }
+
+        private void kcmbActionButtonLocation_TextChanged(object sender, EventArgs e) => SetActionButtonLocation((ActionButtonLocation)Enum.Parse(typeof(ActionButtonLocation), kcmbActionButtonLocation.Text));
+
+        private void kcbActionType_TextChanged(object sender, EventArgs e) => SetActionType((ActionType)Enum.Parse(typeof(ActionType), kcbActionType.Text));
+
+        private void kbtnShow_Click(object sender, EventArgs e)
+        {
+            KryptonToastNotificationManager manager = new()
+            {
+
+            };
+
+            manager.DisplayNotificationToast();
+        }
+
+        private void kchkUseUserResponse_CheckedChanged(object sender, EventArgs e) => EnableUserResponseUI(kchkUseUserResponse.Checked);
+
+        private void kbtnAttachCommand_Click(object sender, EventArgs e)
+        {
+            _actionButtonCommand = new();
+        }
     }
 }
