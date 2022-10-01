@@ -4,7 +4,7 @@
 
 =======
 
-## 2022-11-xx - Build 2211 - November 2022
+## 2022-11-01 - Build 2211 - November 2022
 * New `KryptonDialogButtonExtended` control. Uses the strings configured in `KryptonManager` to create dialog buttons
 * Toasts can now be configured to use RTL layouts
 * Updated wizard control to use strings controlled by the `KryptonManager`
