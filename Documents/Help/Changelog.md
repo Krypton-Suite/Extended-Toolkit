@@ -4,6 +4,14 @@
 
 =======
 
+## 2023-11-xx - Build 2311 - November 2023
+* Add support for .NET 8.0
+* Removed support for .NET Core 3.1 & .NET 5.0 (See [package support information]() for details)
+* Implemented [#354](https://github.com/Krypton-Suite/Extended-Toolkit/issues/354), Change the license from BSD-3-Clause to MIT
+* Updated standard toolkit to build `2311`
+
+=======
+
 ## 2022-11-01 - Build 2211 - November 2022
 * New `KryptonDialogButtonExtended` control. Uses the strings configured in `KryptonManager` to create dialog buttons
 * Toasts can now be configured to use RTL layouts
