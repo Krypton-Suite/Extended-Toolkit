@@ -8,12 +8,10 @@
 
 global using System;
 global using System.ComponentModel;
+global using System.Diagnostics.CodeAnalysis;
 global using System.Drawing;
-global using System.Drawing.Drawing2D;
-global using System.Diagnostics;
+global using System.Reflection;
 global using System.Runtime.InteropServices;
-global using System.Threading.Tasks;
+global using System.Runtime.Versioning;
+global using System.Text;
 global using System.Windows.Forms;
-global using System.Windows.Forms.VisualStyles;
-
-global using Microsoft.Win32;
