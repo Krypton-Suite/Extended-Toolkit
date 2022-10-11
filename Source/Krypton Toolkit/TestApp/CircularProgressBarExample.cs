@@ -1,6 +1,4 @@
-﻿using Krypton.Toolkit;
-
-namespace TestApp
+﻿namespace TestApp
 {
     public partial class CircularProgressBarExample : KryptonForm
     {

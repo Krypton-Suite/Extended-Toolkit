@@ -1,4 +1,4 @@
-# Development Workflow for the Standard Toolkit
+# Development Workflow for the Extended Toolkit
 
 This document is intended to assist development of the standard toolkit. The repository has **3** main branches. They are:-
 
@@ -9,5 +9,4 @@ This document is intended to assist development of the standard toolkit. The rep
 	- All `Canary` NuGet builds are built from this branch. 
 	- These builds are released a few times per month.
 * **main** - The final public release code. 
-	- All stable, `Signed` and `Installer` NuGet builds are built from this branch.
-	- These builds are released 2 - 3 times per year, and are intended for production ready applications/code.
+	- These builds are released once per year, and are intended for production ready applications/code.

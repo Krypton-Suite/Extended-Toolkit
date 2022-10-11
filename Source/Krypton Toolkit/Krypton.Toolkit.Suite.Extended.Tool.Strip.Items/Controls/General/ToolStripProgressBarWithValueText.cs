@@ -6,8 +6,6 @@
  */
 #endregion
 
-using static Krypton.Toolkit.Suite.Extended.Tool.Strip.Items.KryptonEnhancedToolStripProgressBar;
-
 namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 {
     [ToolStripItemDesignerAvailability(ToolStripItemDesignerAvailability.StatusStrip), ToolboxBitmap(typeof(ToolStripProgressBar)), Description(@"")]
