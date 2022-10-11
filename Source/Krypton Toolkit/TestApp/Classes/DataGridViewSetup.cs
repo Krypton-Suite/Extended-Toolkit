@@ -1,9 +1,7 @@
 ﻿using System.Collections;
-using System.ComponentModel;
 using System.Xml.Linq;
 using System.Xml.XPath;
 
-using Krypton.Toolkit;
 using Krypton.Toolkit.Suite.Extended.Outlook.Grid;
 
 namespace TestApp

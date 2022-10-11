@@ -6,7 +6,6 @@
  */
 #endregion
 
-using Newtonsoft.Json;
 #if NET451
 using Newtonsoft.Json;
 #endif

@@ -1,7 +1,6 @@
 ﻿using System.Globalization;
 using System.Xml;
 
-using Krypton.Toolkit;
 using Krypton.Toolkit.Suite.Extended.Outlook.Grid;
 
 namespace TestApp

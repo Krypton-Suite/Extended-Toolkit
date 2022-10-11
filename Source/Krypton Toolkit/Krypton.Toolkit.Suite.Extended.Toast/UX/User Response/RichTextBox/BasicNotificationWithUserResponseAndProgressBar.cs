@@ -6,8 +6,6 @@
  */
 #endregion
 
-using System.Windows.Forms;
-
 namespace Krypton.Toolkit.Suite.Extended.Toast
 {
     public partial class BasicNotificationWithUserResponseAndProgressBar : KryptonForm

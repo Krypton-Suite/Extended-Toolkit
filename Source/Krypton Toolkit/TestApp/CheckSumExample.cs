@@ -1,5 +1,4 @@
-﻿using Krypton.Toolkit;
-using Krypton.Toolkit.Suite.Extended.CheckSum.Tools;
+﻿using Krypton.Toolkit.Suite.Extended.CheckSum.Tools;
 
 namespace TestApp
 {

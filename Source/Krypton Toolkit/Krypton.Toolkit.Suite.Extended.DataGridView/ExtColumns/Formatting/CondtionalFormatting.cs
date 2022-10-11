@@ -6,8 +6,6 @@
  */
 #endregion
 
-using System.Xml;
-
 namespace Krypton.Toolkit.Suite.Extended.DataGridView
 {
     /// <summary>
