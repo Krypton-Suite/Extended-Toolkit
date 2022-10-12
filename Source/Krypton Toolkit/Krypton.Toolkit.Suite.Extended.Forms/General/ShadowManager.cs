@@ -6,14 +6,14 @@
     internal class ShadowManager
     {
         #region Instance Fields
-        private readonly KryptonVirtualForm _parentForm;
+        private readonly VirtualForm _parentForm;
         private readonly ShadowValues _shadowValues;
         private bool _allowDrawing;
         private VisualShadowBase[] _shadowForms;
         #endregion
 
         #region Identity
-        public ShadowManager(KryptonVirtualForm kryptonForm, ShadowValues shadowValues)
+        public ShadowManager(VirtualForm kryptonForm, ShadowValues shadowValues)
         {
             _parentForm = kryptonForm;
             _shadowValues = shadowValues;

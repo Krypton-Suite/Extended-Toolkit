@@ -6,7 +6,7 @@
     internal class BlurManager
     {
         #region Instance Fields
-        private readonly KryptonVirtualForm _parentForm;
+        private readonly VirtualForm _parentForm;
         private readonly BlurValues _blurValues;
         private VisualBlur _visualBlur;
         private readonly Timer _detectIsActiveTimer;
@@ -16,7 +16,7 @@
 
         #region Identity
 
-        public BlurManager(KryptonVirtualForm kryptonForm, BlurValues blurValues)
+        public BlurManager(VirtualForm kryptonForm, BlurValues blurValues)
         {
             _parentForm = kryptonForm;
             _blurValues = blurValues;

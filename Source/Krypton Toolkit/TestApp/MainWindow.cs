@@ -76,5 +76,12 @@ namespace TestApp
 
             floating.Show();
         }
+
+        private void kbtnKryptonFormExtendedExample_Click(object sender, EventArgs e)
+        {
+            KryptonFormExtended1 kryptonFormExtended = new KryptonFormExtended1();
+
+            kryptonFormExtended.Show();
+        }
     }
 }

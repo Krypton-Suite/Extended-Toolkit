@@ -6,7 +6,7 @@
     /// Taken from <see cref="VisualForm"/>
     /// </summary>
     [ToolboxItem(false)]
-    public abstract class KryptonVirtualForm : Form, IKryptonDebug
+    public abstract class VirtualForm : Form, IKryptonDebug
     {
         #region Static Fields
 
@@ -34,6 +34,10 @@
         private ShadowManager _shadowManager;
         private BlurValues _blurValues;
         private BlurManager _blurManager;
+        private FadeValues _fadeValues;
+        private FadeManager _fadeManager;
+
+        private readonly InternalFadeController _fadeController;
         #endregion
 
         #region Events
@@ -67,7 +71,7 @@
         #endregion
 
         #region Identity
-        static KryptonVirtualForm()
+        static VirtualForm()
         {
             try
             {
@@ -83,7 +87,7 @@
         /// <summary>
         /// Initialize a new instance of the KryptonVirtualForm class. 
         /// </summary>
-        public KryptonVirtualForm()
+        public VirtualForm()
         {
             // Automatically redraw whenever the size of the window changes
             SetStyle(ControlStyles.ResizeRedraw, true);
@@ -114,6 +118,8 @@
 
             ShadowValues = new ShadowValues();
             BlurValues = new BlurValues();
+
+            FadeValues = new FadeValues();
 
 #if !NET462
             DpiChanged += OnDpiChanged;
@@ -420,6 +426,23 @@
         /// Resets the <see cref="KryptonForm"/> blur values.
         /// </summary>
         public void ResetBlurValues() => _blurValues.Reset();
+
+        public FadeValues FadeValues
+        {
+            [DebuggerStepThrough]
+            get => _fadeValues;
+
+            set
+            {
+                _fadeValues = value;
+
+                _fadeManager = new FadeManager(this, null, _fadeValues.UseFade, _fadeValues.FadeInterval, _fadeValues, _fadeController);
+            }
+        }
+
+        private bool ShouldSerializeFadeValues() => !_fadeValues.IsDefault;
+
+        public void ResetFadeValues() => _fadeValues.Reset();
 
         /// <summary>
         /// Gets and sets the custom palette implementation.

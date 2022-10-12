@@ -13,7 +13,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         #region Variables
         private int _fadeInterval;
 
-        private KryptonFormExtended _owner, _nextWindow;
+        private VirtualForm _owner, _nextWindow;
         #endregion
 
         #region Constructors
@@ -24,7 +24,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         /// <param name="fadeInterval">The fade sleep timer.</param>
         /// <param name="owner">The owner.</param>
         /// <param name="nextWindow">The next window.</param>
-        public InternalFadeController(int fadeInterval, KryptonFormExtended owner, KryptonFormExtended nextWindow = null)
+        public InternalFadeController(int fadeInterval, VirtualForm owner, VirtualForm nextWindow = null)
         {
             _fadeInterval = fadeInterval;
 
@@ -37,12 +37,12 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         #region Methods
         /// <summary>Fades the window in. Credit: https://stackoverflow.com/questions/12497826/better-algorithm-to-fade-a-winform.</summary>
         /// <param name="owner">The owner.</param>
-        public async void FadeWindowIn(KryptonForm owner)
+        public async void FadeWindowIn(VirtualForm owner, int fadeInterval = 50)
         {
             // The window is not visible, so fade it in
             while (owner.Opacity <= 1.0)
             {
-                await Task.Delay(_fadeInterval);
+                await Task.Delay(fadeInterval);
 
                 owner.Opacity += 0.05;
             }
@@ -54,12 +54,12 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         /// <summary>Fades the window out. Credit: https://stackoverflow.com/questions/12497826/better-algorithm-to-fade-a-winform.</summary>
         /// <param name="owner">The owner.</param>
         /// <param name="nextWindow">The next window.</param>
-        public async void FadeWindowOut(KryptonForm owner, KryptonForm nextWindow = null)
+        public async void FadeWindowOut(VirtualForm owner, VirtualForm nextWindow = null, int fadeInterval = 50)
         {
             // The window is visible, so fade it out
             while (owner.Opacity > 0.0)
             {
-                await Task.Delay(_fadeInterval);
+                await Task.Delay(fadeInterval);
 
                 owner.Opacity -= 0.05;
             }

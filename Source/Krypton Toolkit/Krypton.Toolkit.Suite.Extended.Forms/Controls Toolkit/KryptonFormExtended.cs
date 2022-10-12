@@ -15,7 +15,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
     [ToolboxBitmap(typeof(KryptonFormExtended), "ToolboxBitmaps.KryptonForm.bmp")]
     [Description(@"Draws the window chrome using a Krypton palette.")]
     [Designer("Krypton.Toolkit.Suite.Extended.Forms.KryptonFormExtendedDesigner, Krypton.Toolkit")]
-    public class KryptonFormExtended : KryptonVirtualForm, IContentValues
+    public class KryptonFormExtended : VirtualForm, IContentValues
     {
         #region Type Definitions
         /// <summary>

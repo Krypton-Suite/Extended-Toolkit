@@ -18,7 +18,7 @@
         /// <summary>
         /// Gets and sets the form that owns the composition.
         /// </summary>
-        KryptonVirtualForm CompOwnerForm { get; set; }
+        VirtualForm CompOwnerForm { get; set; }
 
         /// <summary>
         /// Request a repaint and optional layout.

@@ -1,7 +1,6 @@
-﻿using System.Resources;
-
-namespace Krypton.Toolkit.Suite.Extended.Forms
+﻿namespace Krypton.Toolkit.Suite.Extended.Forms
 {
+    [ToolboxItem(false), DesignerCategory(@"code")]
     public class FadeValues : Storage
     {
         #region Instance Variables
@@ -12,9 +11,9 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
 
         private int _fadeInterval;
 
-        private KryptonFormExtended _currentWindow;
+        private VirtualForm _currentWindow;
 
-        private KryptonFormExtended _nextWindow;
+        private VirtualForm _nextWindow;
 
         #endregion
 
@@ -29,10 +28,10 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         public int FadeInterval { get => _fadeInterval; set => _fadeInterval = value; }
 
         [DefaultValue(null)]
-        public KryptonFormExtended CurrentWindow { get => _currentWindow; set => _currentWindow = value; }
+        public VirtualForm CurrentWindow { get => _currentWindow; set => _currentWindow = value; }
 
         [DefaultValue(null)]
-        public KryptonFormExtended NextWindow { get => _nextWindow; set => _nextWindow = value; }
+        public VirtualForm NextWindow { get => _nextWindow; set => _nextWindow = value; }
 
         #endregion
 
@@ -40,7 +39,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
 
         public FadeValues() => Reset();
 
-        private void Reset()
+        internal void Reset()
         {
             UseFade = false;
 
