@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace Krypton.Toolkit.Suite.Extended.Toast.UX
+﻿namespace Krypton.Toolkit.Suite.Extended.Toast.UX
 {
     public partial class BasicNotificationWithUserResponseWrappedLabelAndProgressBar : KryptonForm
     {
@@ -40,7 +30,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast.UX
 
         private Image _customImage;
 
-        private RightToLeftSupport _rightToLeftSupport;
+        private RightToLeftSupport _rightToLeft;
 
         private KryptonCommand _actionButtonCommand;
 
@@ -82,7 +72,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast.UX
 
         public Image CustomImage { get => _customImage; set => _customImage = value; }
 
-        public RightToLeftSupport RightToLeftSupport { get => _rightToLeftSupport; set { _rightToLeftSupport = value; Invalidate(); } }
+        public RightToLeftSupport RightToLeftSupport { get => _rightToLeft; set { _rightToLeft = value; Invalidate(); } }
 
         public KryptonCommand ActionButtonCommand { get => _actionButtonCommand; set => _actionButtonCommand = value; }
 
@@ -596,6 +586,81 @@ namespace Krypton.Toolkit.Suite.Extended.Toast.UX
         }
 
         private void ChangeProgressBarValue(int value) => pbProgress.Value = value;
+
+        /// <summary>Setups the action button.</summary>
+        /// <param name="showActionButton">if set to <c>true</c> [show action button].</param>
+        /// <param name="actionButtonLocation">The action button location.</param>
+        private void SetupActionButton(bool? showActionButton, ActionButtonLocation? actionButtonLocation)
+        {
+            if (showActionButton != null)
+            {
+                if (_rightToLeft == RightToLeftSupport.LeftToRight)
+                {
+                    if (actionButtonLocation == ActionButtonLocation.Left)
+                    {
+                        kbtnToastButtonPanel1.Visible = true;
+
+                        ktbActionButton1.Visible = true;
+                    }
+                    else
+                    {
+                        kbtnToastButtonPanel2.Visible = true;
+
+                        ktbActionButton2.Visible = true;
+                    }
+                }
+                else if (_rightToLeft == RightToLeftSupport.RightToLeft)
+                {
+                    if (actionButtonLocation == ActionButtonLocation.Right)
+                    {
+                        tlpButtons.ColumnStyles[0].SizeType = SizeType.Percent;
+
+                        tlpButtons.ColumnStyles[0].Width = 100F;
+
+                        tlpButtons.ColumnStyles[2].SizeType = SizeType.AutoSize;
+
+                        kbtnToastButtonPanel3.Visible = true;
+
+                        ktbActionButton3.Visible = true;
+                    }
+                    else
+                    {
+                        tlpButtons.ColumnStyles[0].SizeType = SizeType.Percent;
+
+                        tlpButtons.ColumnStyles[0].Width = 100F;
+
+                        tlpButtons.ColumnStyles[2].SizeType = SizeType.AutoSize;
+
+                        kbtnToastButtonPanel3.Visible = false;
+
+                        ktbActionButton3.Visible = false;
+
+                        kbtnToastButtonPanel1.Visible = true;
+
+                        ktbActionButton1.Visible = true;
+                    }
+                }
+            }
+            else
+            {
+                if (_rightToLeft == RightToLeftSupport.LeftToRight)
+                {
+                    kbtnToastButtonPanel1.Visible = false;
+
+                    kbtnToastButtonPanel2.Visible = false;
+                }
+                else if (_rightToLeft == RightToLeftSupport.RightToLeft)
+                {
+                    kbtnToastButtonPanel2.Visible = false;
+
+                    kbtnToastButtonPanel3.Visible = false;
+
+                    kbtnToastButtonPanel1.Visible = true;
+
+                    ktbActionButton1.Visible = true;
+                }
+            }
+        }
 
         #endregion
     }

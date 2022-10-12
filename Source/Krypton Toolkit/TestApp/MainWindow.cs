@@ -1,5 +1,3 @@
-using Krypton.Toolkit;
-
 namespace TestApp
 {
     public partial class MainWindow : KryptonForm

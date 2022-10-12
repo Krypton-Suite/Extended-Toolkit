@@ -16,7 +16,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
         private ActionButtonLocation _actionButtonLocation;
 
-        private bool _useUserResponse, _useProgressBar, _usePanelColourInTextArea, _useNativeBackColourInUserResponseArea, _showCloseButton;
+        private bool _showActionButton, _useUserResponse, _useProgressBar, _usePanelColourInTextArea, _useNativeBackColourInUserResponseArea, _showCloseButton, _openProcessInExplorer;
 
         private Color _contentTextColour, _headerTextColour, _userPromptTextColour, _userResponsePromptColour;
 
@@ -34,7 +34,9 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
         private SoundPlayer _soundPlayer;
 
-        private string _actionButtonText, _title, _contentText, _soundPath, _dismissText, _userResponsePrompt;
+        private string _actionButtonText, _title, _contentText, _soundPath, _dismissText, _userResponsePrompt, _processPath, _processName;
+
+        private object _optionalParameters;
 
         private Stream _soundStream;
 
@@ -57,6 +59,9 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         [DefaultValue(typeof(ActionButtonLocation), "ActionButtonLocation.Left")]
         public ActionButtonLocation ActionButtonLocation { get => _actionButtonLocation; set => _actionButtonLocation = value; }
 
+        [DefaultValue(false)]
+        public bool ShowActionButton { get => _showActionButton; set => _showActionButton = value; }
+
         [DefaultValue(false), Description(@"Allows the user to type a response in a toast window.")]
         public bool UseUserResponsePrompt { get => _useUserResponse; set => _useUserResponse = value; }
 
@@ -71,6 +76,9 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
         [DefaultValue(false), Description(@"")]
         public bool ShowCloseButton { get => _showCloseButton; set => _showCloseButton = value; }
+
+        [DefaultValue(false)]
+        public bool OpenProcessInExplorer { get => _openProcessInExplorer; set => _openProcessInExplorer = value; }
 
         [DefaultValue(typeof(Color), "Color.Gray"), Description(@"")]
         public Color UserResponsePromptColour { get => _userResponsePromptColour; set => _userResponsePromptColour = value; }
@@ -120,6 +128,15 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         [DefaultValue(@"Type response here..."), Description(@"")]
         public string UserResponsePromptText { get => _userResponsePrompt; set => _userResponsePrompt = value; }
 
+        [DefaultValue(@"")]
+        public string ProcessPath { get => _processPath; set => _processPath = value; }
+
+        [DefaultValue(@"")]
+        public string ProcessName { get => _processName; set => _processName = value; }
+
+        [DefaultValue(null)]
+        public object OptionalParameters { get => _optionalParameters; set => _optionalParameters = value; }
+
         [DefaultValue(null), Description(@"")]
         public Stream SoundStream { get => _soundStream; set => _soundStream = value; }
 
@@ -153,6 +170,8 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
 
             ActionType = ActionType.Default;
 
+            ShowActionButton = false;
+
             UseUserResponsePrompt = false;
 
             UseProgressBar = false;
@@ -162,6 +181,8 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             UseNativeBackColourInUserResponseArea = false;
 
             ShowCloseButton = false;
+
+            OpenProcessInExplorer = false;
 
             UserResponsePromptColour = Color.Gray;
 
@@ -194,6 +215,12 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             DismissText = @"&Dismiss";
 
             UserResponsePromptText = @"Type response here...";
+
+            ProcessName = @"";
+
+            ProcessPath = @"";
+
+            OptionalParameters = null;
 
             SoundStream = null;
 
@@ -238,7 +265,7 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
         public KryptonToastNotificationManager(ActionType? actionType, ActionButtonLocation? actionButtonLocation,
                                                bool useUserResponse, string title, string contentText,
                                                bool? usePanelColourInTextArea, bool? useNativeBackColourInUserResponseArea,
-                                               bool? showCloseButton,
+                                               bool? showCloseButton, bool? showActionButton,
                                                Color? userResponsePromptColour = null,
                                                DefaultNotificationButton? defaultNotificationButton = null,
                                                PaletteRelativeAlign userResponsePromptAlignHorizontal = PaletteRelativeAlign.Near,
@@ -255,17 +282,25 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                                                bool useProgressBar = false, 
                                                ToastNotificationContentAreaType contentAreaType = ToastNotificationContentAreaType.WrappedLabel,
                                                ToastNotificationSystemSounds? notificationSystemSound = ToastNotificationSystemSounds.None,
-                                               KryptonCommand? actionButtonCommand = null)
+                                               KryptonCommand actionButtonCommand = null,
+                                               string processName = null,
+                                               string processPath = null,
+                                               bool? openProcessInExplorer = null,
+                                               object optionalParameters = null)
         {
             ActionButtonLocation = actionButtonLocation ?? ActionButtonLocation.Left;
 
             ActionType = actionType ?? ActionType.Default;
+
+            ShowActionButton = showActionButton ?? false;
 
             UseProgressBar = useProgressBar;
 
             UseUserResponsePrompt = useUserResponse;
 
             ShowCloseButton = showCloseButton ?? false;
+
+            OpenProcessInExplorer = openProcessInExplorer ?? false;
 
             Title = title;
 
@@ -302,6 +337,12 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
             DismissText = dismissText;
 
             UserResponsePromptText = userResponsePromptText;
+
+            ProcessPath = processPath;
+
+            ProcessName = processName;
+
+            OptionalParameters = optionalParameters;
 
             SoundStream = soundStream;
 
@@ -351,10 +392,14 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                             BasicNotification notification = new BasicNotification(ActionButtonLocation, ActionType,
                                                                                    IconType, Title, ContentText, 
                                                                                    UsePanelColourInTextArea,
-                                                                                   ShowCloseButton,
-                                                                                   Seconds, SoundPath,
-                                                                                   CustomImage, DismissText, RightToLeftSupport,
-                                                                                   ActionButtonCommand);
+                                                                                   ShowCloseButton, ShowActionButton,
+                                                                                   CustomImage, DismissText,
+                                                                                   ActionButtonText,
+                                                                                   RightToLeftSupport,
+                                                                                   ActionButtonCommand,
+                                                                                   OpenProcessInExplorer,
+                                                                                   ProcessPath,
+                                                                                   OptionalParameters);
 
                             notification.Show();
                         }
@@ -384,10 +429,9 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
                             BasicNotificationWithProgressBar notification = new BasicNotificationWithProgressBar(ActionButtonLocation, ActionType,
                                                                                                                  IconType, Title, ContentText,
                                                                                                                  UsePanelColourInTextArea, 
-                                                                                                                 ShowCloseButton,
-                                                                                                                 Seconds, SoundStream,
-                                                                                                                 CustomImage, DismissText, RightToLeftSupport,
-                                                                                                                 ActionButtonCommand);
+                                                                                                                 ShowCloseButton, ShowActionButton, 
+                                                                                                                 SoundStream, CustomImage, DismissText,
+                                                                                                                 RightToLeftSupport, ActionButtonCommand);
 
                             notification.Show();
                         }

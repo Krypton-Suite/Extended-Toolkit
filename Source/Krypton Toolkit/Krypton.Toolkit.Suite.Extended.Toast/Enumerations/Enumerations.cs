@@ -11,8 +11,9 @@ namespace Krypton.Toolkit.Suite.Extended.Toast
     public enum ActionType
     {
         Default = 0,
-        LaunchProcess = 1,
-        Open = 2
+        Dismiss = 1,
+        LaunchProcess = 2,
+        Open = 3
     }
 
     public enum ActionButtonLocation
