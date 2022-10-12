@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Krypton.Toolkit.Suite.Extended.Shared;
-
-namespace Krypton.Toolkit.Suite.Extended.Forms
+﻿namespace Krypton.Toolkit.Suite.Extended.Forms
 {
     /// <summary>
     /// Base class that allows a form to have custom chrome applied. You should derive 
