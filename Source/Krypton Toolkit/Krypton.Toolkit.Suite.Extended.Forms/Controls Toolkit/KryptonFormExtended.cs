@@ -86,11 +86,13 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         private bool _firstCheckView;
         private bool _lastNotNormal;
         private bool _useDropShadow;
+        private bool _useWindows11StyleCornerRounding;
         private StatusStrip _statusStrip;
         private Bitmap _cacheBitmap;
         private Icon _cacheIcon;
         private float _cornerRoundingRadius;
         private Control _activeControl;
+
         #endregion
 
         #region Identity
@@ -180,8 +182,20 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             // Create the view manager instance
             ViewManager = new ViewManager(this, _drawDocker);
 
-            // Set the CornerRoundingRadius to 'GlobalStaticValues.PRIMARY_CORNER_ROUNDING_VALUE', default value
-            CornerRoundingRadius = GlobalStaticValues.PRIMARY_CORNER_ROUNDING_VALUE;
+            // If Windows 11 or higher
+            if (Environment.OSVersion.Version.Major >= 10 && Environment.OSVersion.Version.Build >= 22000)
+            {
+                _useWindows11StyleCornerRounding = true;
+
+                CornerRoundingRadius = 5;
+            }
+            else
+            {
+                _useWindows11StyleCornerRounding = false;
+                
+                // Set the CornerRoundingRadius to 'GlobalStaticValues.PRIMARY_CORNER_ROUNDING_VALUE', default value
+                CornerRoundingRadius = GlobalStaticValues.PRIMARY_CORNER_ROUNDING_VALUE;
+            }
 
             // Disable 'UseDropShadow' on creation
 #pragma warning disable CS0618

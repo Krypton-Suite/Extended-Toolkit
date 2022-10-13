@@ -37,7 +37,7 @@
         private FadeValues _fadeValues;
         private FadeManager _fadeManager;
 
-        private readonly InternalFadeController _fadeController;
+        private readonly FadeController _fadeController;
         #endregion
 
         #region Events
@@ -443,6 +443,7 @@
         private bool ShouldSerializeFadeValues() => !_fadeValues.IsDefault;
 
         public void ResetFadeValues() => _fadeValues.Reset();
+
 
         /// <summary>
         /// Gets and sets the custom palette implementation.
@@ -937,7 +938,7 @@
         /// <param name="e">An EventArgs containing event data.</param>
         protected override void OnShown(EventArgs e)
         {
-            // Under Windows7 a modal window with custom chrome under the DWM
+            // With Windows 7 and above, a modal window with custom chrome under the DWM
             // will sometimes not be drawn when first shown.
             if (Environment.OSVersion.Version.Major >= 6)
             {
@@ -946,6 +947,34 @@
 
             base.OnShown(e);
         }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            if (_fadeValues.UseFade)
+            {
+                _fadeController.FadeWindowIn(this, _fadeValues.FadeInterval);
+            }
+
+            base.OnLoad(e);
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            if (_fadeValues.UseFade)
+            {
+                if (_fadeValues.NextVirtualWindow != null)
+                {
+                    _fadeController.FadeWindowOut(this, _fadeValues.NextVirtualWindow, _fadeValues.FadeInterval);
+                }
+                else
+                {
+                    _fadeController.FadeWindowOut(this, null, _fadeValues.FadeInterval);
+                }
+            }
+
+            base.OnFormClosing(e);
+        }
+
         #endregion
 
         #region Protected Virtual
