@@ -1,0 +1,694 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="FreshFile" xml:space="preserve">
+    <value>&lt;?xml version="1.0"?&gt;
+&lt;!--Created by exporting the settings of a KryptonPalette instance.--&gt;
+&lt;!--For more information about Krypton visit www.ComponentFactory.com--&gt;
+&lt;!--WARNING: Modifying this file may render it invalid for importing.--&gt;
+&lt;KryptonPalette Version="18" Generated="{0}"&gt;
+  &lt;Properties&gt;
+    &lt;ButtonStyles&gt;
+      &lt;ButtonCommon&gt;
+        &lt;StateCommon&gt;
+          &lt;Back&gt;
+            &lt;Color1 Type="Color" Value="{1}" /&gt;
+          &lt;/Back&gt;
+          &lt;Content&gt;
+            &lt;ShortText&gt;
+              &lt;Color1 Type="Color" Value="{normalTextColour}" /&gt;
+            &lt;/ShortText&gt;
+            &lt;LongText&gt;
+              &lt;Color1 Type="Color" Value="{normalTextColour}" /&gt;
+            &lt;/LongText&gt;
+          &lt;/Content&gt;
+        &lt;/StateCommon&gt;
+        &lt;StateDisabled&gt;
+          &lt;Back&gt;
+            &lt;Color1 Type="Color" Value="{1}" /&gt;
+            &lt;Color2 Type="Color" Value="{1}" /&gt;
+          &lt;/Back&gt;
+          &lt;Content&gt;
+            &lt;ShortText&gt;
+              &lt;Color1 Type="Color" Value="{disabledTextColour}" /&gt;
+            &lt;/ShortText&gt;
+            &lt;LongText&gt;
+              &lt;Color1 Type="Color" Value="{disabledTextColour}" /&gt;
+            &lt;/LongText&gt;
+          &lt;/Content&gt;
+        &lt;/StateDisabled&gt;
+        &lt;StateNormal&gt;
+          &lt;Back&gt;
+            &lt;Color1 Type="Color" Value="{1}" /&gt;
+            &lt;Color2 Type="Color" Value="{1}" /&gt;
+          &lt;/Back&gt;
+          &lt;Content&gt;
+            &lt;ShortText&gt;
+              &lt;Color1 Type="Color" Value="{normalTextColour}" /&gt;
+              &lt;Color2 Type="Color" Value="{normalTextColour}" /&gt;
+            &lt;/ShortText&gt;
+          &lt;/Content&gt;
+        &lt;/StateNormal&gt;
+        &lt;StateTracking&gt;
+          &lt;Back&gt;
+            &lt;Color1 Type="Color" Value="{1}" /&gt;
+            &lt;Color2 Type="Color" Value="{ 2 }" /&gt;
+          &lt;/Back&gt;
+          &lt;Content&gt;
+            &lt;ShortText&gt;
+              &lt;Color1 Type="Color" Value="{normalTextColour}" /&gt;
+            &lt;/ShortText&gt;
+          &lt;/Content&gt;
+        &lt;/StateTracking&gt;
+        &lt;StatePressed&gt;
+          &lt;Back&gt;
+            &lt;Color1 Type="Color" Value="{ 3 }" /&gt;
+            &lt;Color2 Type="Color" Value="{ 2 }" /&gt;
+          &lt;/Back&gt;
+          &lt;Content&gt;
+            &lt;ShortText&gt;
+              &lt;Color1 Type="Color" Value="{normalTextColour}" /&gt;
+            &lt;/ShortText&gt;
+            &lt;LongText&gt;
+              &lt;Color1 Type="Color" Value="{normalTextColour}" /&gt;
+            &lt;/LongText&gt;
+          &lt;/Content&gt;
+        &lt;/StatePressed&gt;
+        &lt;StateCheckedNormal&gt;
+          &lt;Back&gt;
+            &lt;Color1 Type="Color" Value="{ 3 }" /&gt;
+            &lt;Color2 Type="Color" Value="{ 2 }" /&gt;
+            &lt;ColorStyle Type="PaletteColorStyle" Value="GlassCheckedFull" /&gt;
+          &lt;/Back&gt;
+          &lt;Content&gt;
+            &lt;ShortText&gt;
+              &lt;Color1 Type="Color" Value="{normalTextColour}" /&gt;
+            &lt;/ShortText&gt;
+            &lt;LongText&gt;
+              &lt;Color1 Type="Color" Value="{normalTextColour}" /&gt;
+            &lt;/LongText&gt;
+          &lt;/Content&gt;
+        &lt;/StateCheckedNormal&gt;
+        &lt;StateCheckedTracking&gt;
+          &lt;Back&gt;
+            &lt;Color1 Type="Color" Value="{ 3 }" /&gt;
+            &lt;Color2 Type="Color" Value="{ 2 }" /&gt;
+          &lt;/Back&gt;
+          &lt;Border&gt;
+            &lt;DrawBorders Type="PaletteDrawBorders" Value="Top,Bottom,Left,Right" /&gt;
+          &lt;/Border&gt;
+          &lt;Content&gt;
+            &lt;ShortText&gt;
+              &lt;Color1 Type="Color" Value="{normalTextColour}" /&gt;
+            &lt;/ShortText&gt;
+            &lt;LongText&gt;
+              &lt;Color1 Type="Color" Value="{normalTextColour}" /&gt;
+            &lt;/LongText&gt;
+          &lt;/Content&gt;
+        &lt;/StateCheckedTracking&gt;
+        &lt;StateCheckedPressed&gt;
+          &lt;Back&gt;
+            &lt;Color1 Type="Color" Value="{ 3 }" /&gt;
+            &lt;Color2 Type="Color" Value="{ 2 }" /&gt;
+            &lt;ColorStyle Type="PaletteColorStyle" Value="GlassCheckedStump" /&gt;
+          &lt;/Back&gt;
+          &lt;Border&gt;
+            &lt;DrawBorders Type="PaletteDrawBorders" Value="Top,Bottom,Left,Right" /&gt;
+          &lt;/Border&gt;
+          &lt;Content&gt;
+            &lt;ShortText&gt;
+              &lt;Color1 Type="Color" Value="{normalTextColour}" /&gt;
+            &lt;/ShortText&gt;
+            &lt;LongText&gt;
+              &lt;Color1 Type="Color" Value="{normalTextColour}" /&gt;
+            &lt;/LongText&gt;
+          &lt;/Content&gt;
+        &lt;/StateCheckedPressed&gt;
+        &lt;OverrideDefault&gt;
+          &lt;Back&gt;
+            &lt;Color1 Type="Color" Value="{ 3 }" /&gt;
+            &lt;Color2 Type="Color" Value="{ 4 }" /&gt;
+          &lt;/Back&gt;
+          &lt;Content&gt;
+            &lt;ShortText&gt;
+              &lt;Color1 Type="Color" Value="{normalTextColour}" /&gt;
+            &lt;/ShortText&gt;
+            &lt;LongText&gt;
+              &lt;Color1 Type="Color" Value="{normalTextColour}" /&gt;
+            &lt;/LongText&gt;
+          &lt;/Content&gt;
+        &lt;/OverrideDefault&gt;
+      &lt;/ButtonCommon&gt;
+      &lt;ButtonCluster&gt;
+        &lt;StateCommon&gt;
+          &lt;Back&gt;
+            &lt;ColorStyle Type="PaletteColorStyle" Value="GlassNormalFull" /&gt;
+          &lt;/Back&gt;
+        &lt;/StateCommon&gt;
+        &lt;StateNormal&gt;
+          &lt;Back&gt;
+            &lt;Color1 Type="Color" Value="{ 2 }" /&gt;
+          &lt;/Back&gt;
+        &lt;/StateNormal&gt;
+        &lt;StateTracking&gt;
+          &lt;Back&gt;
+            &lt;Color1 Type="Color" Value="{1}" /&gt;
+          &lt;/Back&gt;
+        &lt;/StateTracking&gt;
+        &lt;StatePressed&gt;
+          &lt;Back&gt;
+            &lt;Color1 Type="Color" Value="{1}" /&gt;
+          &lt;/Back&gt;
+        &lt;/StatePressed&gt;
+        &lt;StateCheckedNormal&gt;
+          &lt;Back&gt;
+            &lt;Color1 Type="Color" Value="{1}" /&gt;
+          &lt;/Back&gt;
+        &lt;/StateCheckedNormal&gt;
+        &lt;OverrideDefault&gt;
+          &lt;Back&gt;
+            &lt;Color1 Type="Color" Value="{1}" /&gt;
+          &lt;/Back&gt;
+        &lt;/OverrideDefault&gt;
+        &lt;OverrideFocus&gt;
+          &lt;Back&gt;
+            &lt;Color1 Type="Color" Value="{1}" /&gt;
+          &lt;/Back&gt;
+        &lt;/OverrideFocus&gt;
+      &lt;/ButtonCluster&gt;
+    &lt;/ButtonStyles&gt;
+    &lt;Common&gt;
+      &lt;StateCommon&gt;
+        &lt;Back&gt;
+          &lt;Color1 Type="Color" Value="{ lightColour }" /&gt;
+          &lt;Color2 Type="Color" Value="{1}" /&gt;
+        &lt;/Back&gt;
+        &lt;Border&gt;
+          &lt;DrawBorders Type="PaletteDrawBorders" Value="Top,Bottom,Left,Right" /&gt;
+          &lt;Color1 Type="Color" Value="{1}" /&gt;
+          &lt;Color2 Type="Color" Value="{ 5 }" /&gt;
+        &lt;/Border&gt;
+        &lt;Content&gt;
+          &lt;ShortText&gt;
+            &lt;Color1 Type="Color" Value="{normalTextColour}" /&gt;
+            &lt;Color2 Type="Color" Value="{normalTextColour}" /&gt;
+          &lt;/ShortText&gt;
+          &lt;LongText&gt;
+            &lt;Color1 Type="Color" Value="{normalTextColour}" /&gt;
+            &lt;Color2 Type="Color" Value="{normalTextColour}" /&gt;
+          &lt;/LongText&gt;
+        &lt;/Content&gt;
+      &lt;/StateCommon&gt;
+    &lt;/Common&gt;
+    &lt;FormStyles&gt;
+      &lt;FormCommon&gt;
+        &lt;StateActive&gt;
+          &lt;Back&gt;
+            &lt;Color1 Type="Color" Value="{1}" /&gt;
+          &lt;/Back&gt;
+          &lt;Border&gt;
+            &lt;DrawBorders Type="PaletteDrawBorders" Value="Top,Bottom,Left,Right" /&gt;
+          &lt;/Border&gt;
+        &lt;/StateActive&gt;
+      &lt;/FormCommon&gt;
+    &lt;/FormStyles&gt;
+    &lt;HeaderStyles&gt;
+      &lt;HeaderCommon&gt;
+        &lt;StateCommon&gt;
+          &lt;Back&gt;
+            &lt;Color1 Type="Color" Value="{1}" /&gt;
+            &lt;Color2 Type="Color" Value="{ 2 }" /&gt;
+          &lt;/Back&gt;
+        &lt;/StateCommon&gt;
+        &lt;StateDisabled&gt;
+          &lt;Back&gt;
+            &lt;Color1 Type="Color" Value="{ 2 }" /&gt;
+            &lt;Color2 Type="Color" Value="{ 3 }" /&gt;
+          &lt;/Back&gt;
+          &lt;Content&gt;
+            &lt;ShortText&gt;
+              &lt;Color1 Type="Color" Value="{disabledTextColour}" /&gt;
+              &lt;Color2 Type="Color" Value="{disabledTextColour}" /&gt;
+            &lt;/ShortText&gt;
+            &lt;LongText&gt;
+              &lt;Color1 Type="Color" Value="{disabledTextColour}" /&gt;
+              &lt;Color2 Type="Color" Value="{1}" /&gt;
+            &lt;/LongText&gt;
+          &lt;/Content&gt;
+        &lt;/StateDisabled&gt;
+      &lt;/HeaderCommon&gt;
+      &lt;HeaderForm&gt;
+        &lt;StateCommon&gt;
+          &lt;Back&gt;
+            &lt;Color1 Type="Color" Value="{1}" /&gt;
+            &lt;Color2 Type="Color" Value="{ 2 }" /&gt;
+          &lt;/Back&gt;
+        &lt;/StateCommon&gt;
+        &lt;StateDisabled&gt;
+          &lt;Back&gt;
+            &lt;Color1 Type="Color" Value="{disabledTextColour}" /&gt;
+            &lt;Color2 Type="Color" Value="{1}" /&gt;
+          &lt;/Back&gt;
+          &lt;Content&gt;
+            &lt;ShortText&gt;
+              &lt;Color1 Type="Color" Value="{normalTextColour}" /&gt;
+            &lt;/ShortText&gt;
+            &lt;LongText&gt;
+              &lt;Color1 Type="Color" Value="{normalTextColour}" /&gt;
+            &lt;/LongText&gt;
+          &lt;/Content&gt;
+        &lt;/StateDisabled&gt;
+      &lt;/HeaderForm&gt;
+    &lt;/HeaderStyles&gt;
+    &lt;GridStyles&gt;
+      &lt;GridSheet&gt;
+        &lt;StateCommon&gt;
+          &lt;HeaderColumn&gt;
+            &lt;Content&gt;
+              &lt;Color1 Type="Color" Value="{ 2 }" /&gt;
+            &lt;/Content&gt;
+          &lt;/HeaderColumn&gt;
+          &lt;HeaderRow&gt;
+            &lt;Content&gt;
+              &lt;Color1 Type="Color" Value="{ 2 }" /&gt;
+            &lt;/Content&gt;
+          &lt;/HeaderRow&gt;
+        &lt;/StateCommon&gt;
+        &lt;StateNormal&gt;
+          &lt;HeaderColumn&gt;
+            &lt;Content&gt;
+              &lt;Color1 Type="Color" Value="{ contentColour }" /&gt; // 104, 17, 19
+              &lt;Color2 Type="Color" Value="{ 2 }" /&gt;
+            &lt;/Content&gt;
+          &lt;/HeaderColumn&gt;
+          &lt;HeaderRow&gt;
+            &lt;Content&gt;
+              &lt;Color1 Type="Color" Value="{ contentColour }" /&gt;
+            &lt;/Content&gt;
+          &lt;/HeaderRow&gt;
+        &lt;/StateNormal&gt;
+        &lt;StateTracking&gt;
+          &lt;HeaderColumn&gt;
+            &lt;Content&gt;
+              &lt;Color1 Type="Color" Value="{ contentColour }" /&gt;
+            &lt;/Content&gt;
+          &lt;/HeaderColumn&gt;
+        &lt;/StateTracking&gt;
+      &lt;/GridSheet&gt;
+    &lt;/GridStyles&gt;
+    &lt;InputControlStyles&gt;
+      &lt;InputControlCommon&gt;
+        &lt;StateCommon&gt;
+          &lt;Back&gt;
+            &lt;Color1 Type="Color" Value="{1}" /&gt;
+          &lt;/Back&gt;
+        &lt;/StateCommon&gt;
+      &lt;/InputControlCommon&gt;
+      &lt;InputControlCustom1&gt;
+        &lt;StateCommon&gt;
+          &lt;Back&gt;
+            &lt;Color1 Type="Color" Value="{1}" /&gt;
+          &lt;/Back&gt;
+        &lt;/StateCommon&gt;
+      &lt;/InputControlCustom1&gt;
+    &lt;/InputControlStyles&gt;
+    &lt;LabelStyles&gt;
+      &lt;LabelNormalControl&gt;
+        &lt;StateDisabled&gt;
+          &lt;ShortText&gt;
+            &lt;Color1 Type="Color" Value="{disabledTextColour}" /&gt;
+          &lt;/ShortText&gt;
+          &lt;LongText&gt;
+            &lt;Color1 Type="Color" Value="{disabledTextColour}" /&gt;
+          &lt;/LongText&gt;
+        &lt;/StateDisabled&gt;
+        &lt;StateNormal&gt;
+          &lt;ShortText&gt;
+            &lt;Color1 Type="Color" Value="{normalTextColour}" /&gt;
+          &lt;/ShortText&gt;
+          &lt;LongText&gt;
+            &lt;Color1 Type="Color" Value="{normalTextColour}" /&gt;
+          &lt;/LongText&gt;
+        &lt;/StateNormal&gt;
+        &lt;OverrideVisited&gt;
+          &lt;ShortText&gt;
+            &lt;Color1 Type="Color" Value="Purple" /&gt;
+          &lt;/ShortText&gt;
+          &lt;LongText&gt;
+            &lt;Color1 Type="Color" Value="{ 2 }" /&gt;
+          &lt;/LongText&gt;
+        &lt;/OverrideVisited&gt;
+        &lt;OverrideNotVisited&gt;
+          &lt;ShortText&gt;
+            &lt;Color1 Type="Color" Value="Blue" /&gt;
+          &lt;/ShortText&gt;
+          &lt;LongText&gt;
+            &lt;Color1 Type="Color" Value="{normalTextColour}" /&gt;
+          &lt;/LongText&gt;
+        &lt;/OverrideNotVisited&gt;
+        &lt;OverridePressed&gt;
+          &lt;ShortText&gt;
+            &lt;Color1 Type="Color" Value="Red" /&gt;
+          &lt;/ShortText&gt;
+          &lt;LongText&gt;
+            &lt;Color1 Type="Color" Value="{normalTextColour}" /&gt;
+          &lt;/LongText&gt;
+        &lt;/OverridePressed&gt;
+      &lt;/LabelNormalControl&gt;
+    &lt;/LabelStyles&gt;
+    &lt;PanelStyles&gt;
+      &lt;PanelCommon&gt;
+        &lt;StateCommon&gt;
+          &lt;Color1 Type="Color" Value="{1}" /&gt;
+        &lt;/StateCommon&gt;
+      &lt;/PanelCommon&gt;
+    &lt;/PanelStyles&gt;
+    &lt;Ribbon&gt;
+      &lt;RibbonAppButton&gt;
+        &lt;StateCommon&gt;
+          &lt;BackColor2 Type="Color" Value="{1}" /&gt;
+          &lt;BackColor3 Type="Color" Value="{ 2 }" /&gt;
+          &lt;BackColor5 Type="Color" Value="{1}" /&gt;
+        &lt;/StateCommon&gt;
+        &lt;StateTracking&gt;
+          &lt;BackColor5 Type="Color" Value="{ 5 }" /&gt;
+        &lt;/StateTracking&gt;
+        &lt;StatePressed&gt;
+          &lt;BackColor5 Type="Color" Value="{1}" /&gt;
+        &lt;/StatePressed&gt;
+      &lt;/RibbonAppButton&gt;
+      &lt;RibbonGroupArea&gt;
+        &lt;StateCheckedNormal&gt;
+          &lt;BackColor1 Type="Color" Value="{1}" /&gt;
+          &lt;BackColor2 Type="Color" Value="AliceBlue" /&gt;
+          &lt;BackColor3 Type="Color" Value="{1}" /&gt;
+          &lt;BackColor4 Type="Color" Value="{1}" /&gt;
+          &lt;BackColor5 Type="Color" Value="{1}" /&gt;
+        &lt;/StateCheckedNormal&gt;
+      &lt;/RibbonGroupArea&gt;
+      &lt;RibbonGroupButtonText&gt;
+        &lt;StateCommon&gt;
+          &lt;TextColor Type="Color" Value="MintCream" /&gt;
+        &lt;/StateCommon&gt;
+      &lt;/RibbonGroupButtonText&gt;
+      &lt;RibbonGroupCheckBoxText&gt;
+        &lt;StateCommon&gt;
+          &lt;TextColor Type="Color" Value="MintCream" /&gt;
+        &lt;/StateCommon&gt;
+      &lt;/RibbonGroupCheckBoxText&gt;
+      &lt;RibbonGroupNormalBorder&gt;
+        &lt;StateCommon&gt;
+          &lt;BackColor1 Type="Color" Value="{ 5 }" /&gt;
+          &lt;BackColor2 Type="Color" Value="{1}" /&gt;
+        &lt;/StateCommon&gt;
+      &lt;/RibbonGroupNormalBorder&gt;
+      &lt;RibbonGroupNormalTitle&gt;
+        &lt;StateCommon&gt;
+          &lt;BackColor1 Type="Color" Value="230, 230, 230" /&gt;
+          &lt;BackColor2 Type="Color" Value="{1}" /&gt;
+          &lt;TextColor Type="Color" Value="MintCream" /&gt;
+        &lt;/StateCommon&gt;
+        &lt;StateTracking&gt;
+          &lt;BackColor1 Type="Color" Value="237, 237, 237" /&gt;
+          &lt;BackColor2 Type="Color" Value="{1}" /&gt;
+        &lt;/StateTracking&gt;
+      &lt;/RibbonGroupNormalTitle&gt;
+      &lt;RibbonGroupCollapsedBorder&gt;
+        &lt;StateCommon&gt;
+          &lt;BackColor1 Type="Color" Value="{1}" /&gt;
+          &lt;BackColor2 Type="Color" Value="{ 2 }" /&gt;
+          &lt;BackColor3 Type="Color" Value="{ 3 }" /&gt;
+          &lt;BackColor4 Type="Color" Value="{1}" /&gt;
+          &lt;BackColor5 Type="Color" Value="{1}" /&gt;
+        &lt;/StateCommon&gt;
+      &lt;/RibbonGroupCollapsedBorder&gt;
+      &lt;RibbonGroupCollapsedBack&gt;
+        &lt;StateNormal&gt;
+          &lt;BackColor1 Type="Color" Value="Window" /&gt;
+          &lt;BackColor2 Type="Color" Value="{1}" /&gt;
+          &lt;BackColor3 Type="Color" Value="{ 3 }" /&gt;
+          &lt;BackColor4 Type="Color" Value="{1}" /&gt;
+        &lt;/StateNormal&gt;
+        &lt;StateTracking&gt;
+          &lt;BackColor1 Type="Color" Value="Window" /&gt;
+          &lt;BackColor2 Type="Color" Value="{ 2 }" /&gt;
+          &lt;BackColor3 Type="Color" Value="230, 230, 230" /&gt;
+          &lt;BackColor4 Type="Color" Value="{1}" /&gt;
+        &lt;/StateTracking&gt;
+      &lt;/RibbonGroupCollapsedBack&gt;
+      &lt;RibbonGroupCollapsedFrameBorder&gt;
+        &lt;StateCommon&gt;
+          &lt;BackColor1 Type="Color" Value="{ 2 }" /&gt;
+          &lt;BackColor2 Type="Color" Value="230, 230, 230" /&gt;
+        &lt;/StateCommon&gt;
+      &lt;/RibbonGroupCollapsedFrameBorder&gt;
+      &lt;RibbonGroupCollapsedFrameBack&gt;
+        &lt;StateCommon&gt;
+          &lt;BackColor1 Type="Color" Value="{1}" /&gt;
+          &lt;BackColor2 Type="Color" Value="{1}" /&gt;
+          &lt;BackColor3 Type="Color" Value="{ 3 }" /&gt;
+          &lt;BackColor4 Type="Color" Value="{ 3 }" /&gt;
+          &lt;BackColor5 Type="Color" Value="{1}" /&gt;
+        &lt;/StateCommon&gt;
+      &lt;/RibbonGroupCollapsedFrameBack&gt;
+      &lt;RibbonGroupCollapsedText&gt;
+        &lt;StateCommon&gt;
+          &lt;TextColor Type="Color" Value="{normalTextColour}" /&gt;
+        &lt;/StateCommon&gt;
+      &lt;/RibbonGroupCollapsedText&gt;
+      &lt;RibbonQATFullbar&gt;
+        &lt;BackColor1 Type="Color" Value="{1}" /&gt;
+        &lt;BackColor2 Type="Color" Value="{1}" /&gt;
+        &lt;BackColor3 Type="Color" Value="{1}" /&gt;
+      &lt;/RibbonQATFullbar&gt;
+      &lt;RibbonQATMinibar&gt;
+        &lt;StateCommon&gt;
+          &lt;BackColor1 Type="Color" Value="{1}" /&gt;
+          &lt;BackColor2 Type="Color" Value="{1}" /&gt;
+          &lt;BackColor3 Type="Color" Value="{1}" /&gt;
+          &lt;BackColor4 Type="Color" Value="{1}" /&gt;
+        &lt;/StateCommon&gt;
+      &lt;/RibbonQATMinibar&gt;
+      &lt;RibbonQATOverflow&gt;
+        &lt;BackColor1 Type="Color" Value="{1}" /&gt;
+        &lt;BackColor2 Type="Color" Value="{1}" /&gt;
+      &lt;/RibbonQATOverflow&gt;
+      &lt;RibbonTab&gt;
+        &lt;StateCommon&gt;
+          &lt;BackColor1 Type="Color" Value="{1}" /&gt;
+          &lt;BackColor3 Type="Color" Value="{1}" /&gt;
+          &lt;BackColor4 Type="Color" Value="{ 2 }" /&gt;
+          &lt;BackColor5 Type="Color" Value="{ 2 }" /&gt;
+          &lt;TextColor Type="Color" Value="{normalTextColour}" /&gt;
+        &lt;/StateCommon&gt;
+        &lt;StateTracking&gt;
+          &lt;BackColor2 Type="Color" Value="{1}" /&gt;
+        &lt;/StateTracking&gt;
+        &lt;StateCheckedTracking&gt;
+          &lt;BackColor1 Type="Color" Value="{1}" /&gt;
+          &lt;BackColor2 Type="Color" Value="{ 2 }" /&gt;
+          &lt;BackColor3 Type="Color" Value="{ 5 }" /&gt;
+          &lt;BackColor4 Type="Color" Value="{1}" /&gt;
+        &lt;/StateCheckedTracking&gt;
+        &lt;StateContextCheckedTracking&gt;
+          &lt;BackColor2 Type="Color" Value="{1}" /&gt;
+        &lt;/StateContextCheckedTracking&gt;
+      &lt;/RibbonTab&gt;
+    &lt;/Ribbon&gt;
+    &lt;SeparatorStyles&gt;
+      &lt;SeparatorCommon&gt;
+        &lt;StateCommon&gt;
+          &lt;Back&gt;
+            &lt;Color1 Type="Color" Value="{1}" /&gt;
+            &lt;Color2 Type="Color" Value="{1}" /&gt;
+          &lt;/Back&gt;
+          &lt;Border&gt;
+            &lt;DrawBorders Type="PaletteDrawBorders" Value="Top,Bottom,Left,Right" /&gt;
+            &lt;Color1 Type="Color" Value="{1}" /&gt;
+            &lt;Color2 Type="Color" Value="{1}" /&gt;
+          &lt;/Border&gt;
+        &lt;/StateCommon&gt;
+      &lt;/SeparatorCommon&gt;
+    &lt;/SeparatorStyles&gt;
+    &lt;ToolMenuStatus&gt;
+      &lt;Button&gt;
+        &lt;ButtonPressedBorder Type="Color" Value="{1}" /&gt;
+        &lt;ButtonSelectedBorder Type="Color" Value="{1}" /&gt;
+        &lt;OverflowButtonGradientBegin Type="Color" Value="{ 2 }" /&gt;
+        &lt;OverflowButtonGradientEnd Type="Color" Value="{1}" /&gt;
+        &lt;OverflowButtonGradientMiddle Type="Color" Value="{1}" /&gt;
+      &lt;/Button&gt;
+      &lt;Grip&gt;
+        &lt;GripDark Type="Color" Value="{1}" /&gt;
+        &lt;GripLight Type="Color" Value="MintCream" /&gt;
+      &lt;/Grip&gt;
+      &lt;Menu&gt;
+        &lt;ImageMarginGradientBegin Type="Color" Value="{1}" /&gt;
+        &lt;ImageMarginGradientEnd Type="Color" Value="{ 2 }" /&gt;
+        &lt;ImageMarginGradientMiddle Type="Color" Value="{ 3 }" /&gt;
+        &lt;ImageMarginRevealedGradientBegin Type="Color" Value="{1}" /&gt;
+        &lt;ImageMarginRevealedGradientEnd Type="Color" Value="{ 2 }" /&gt;
+        &lt;ImageMarginRevealedGradientMiddle Type="Color" Value="{ 3 }" /&gt;
+        &lt;MenuBorder Type="Color" Value="{1}" /&gt;
+        &lt;MenuItemText Type="Color" Value="{normalTextColour}" /&gt;
+        &lt;MenuItemBorder Type="Color" Value="{ 2 }" /&gt;
+        &lt;MenuItemPressedGradientBegin Type="Color" Value="{1}" /&gt;
+        &lt;MenuItemPressedGradientEnd Type="Color" Value="{ 2 }" /&gt;
+        &lt;MenuItemPressedGradientMiddle Type="Color" Value="{ 2 }" /&gt;
+        &lt;MenuItemSelected Type="Color" Value="{1}" /&gt;
+        &lt;MenuItemSelectedGradientBegin Type="Color" Value="{ 2 }" /&gt;
+        &lt;MenuItemSelectedGradientEnd Type="Color" Value="{1}" /&gt;
+      &lt;/Menu&gt;
+      &lt;Rafting&gt;
+        &lt;RaftingContainerGradientBegin Type="Color" Value="{ 3 }" /&gt;
+        &lt;RaftingContainerGradientEnd Type="Color" Value="{ 2 }" /&gt;
+      &lt;/Rafting&gt;
+      &lt;MenuStrip&gt;
+        &lt;MenuStripText Type="Color" Value="{normalTextColour}" /&gt;
+        &lt;MenuStripGradientBegin Type="Color" Value="{1}" /&gt;
+        &lt;MenuStripGradientEnd Type="Color" Value="{ 2 }" /&gt;
+      &lt;/MenuStrip&gt;
+      &lt;Separator&gt;
+        &lt;SeparatorDark Type="Color" Value="{1}" /&gt;
+        &lt;SeparatorLight Type="Color" Value="MintCream" /&gt;
+      &lt;/Separator&gt;
+      &lt;StatusStrip&gt;
+        &lt;StatusStripText Type="Color" Value="{normalTextColour}" /&gt;
+        &lt;StatusStripGradientBegin Type="Color" Value="{ 3 }" /&gt;
+        &lt;StatusStripGradientEnd Type="Color" Value="{1}" /&gt;
+      &lt;/StatusStrip&gt;
+      &lt;ToolStrip&gt;
+        &lt;ToolStripText Type="Color" Value="{normalTextColour}" /&gt;
+        &lt;ToolStripBorder Type="Color" Value="{ 2 }" /&gt;
+        &lt;ToolStripContentPanelGradientBegin Type="Color" Value="{1}" /&gt;
+        &lt;ToolStripContentPanelGradientEnd Type="Color" Value="{ 2 }" /&gt;
+        &lt;ToolStripDropDownBackground Type="Color" Value="{ 3 }" /&gt;
+        &lt;ToolStripGradientBegin Type="Color" Value="{ 2 }" /&gt;
+        &lt;ToolStripGradientEnd Type="Color" Value="{1}" /&gt;
+        &lt;ToolStripGradientMiddle Type="Color" Value="{1}" /&gt;
+        &lt;ToolStripPanelGradientBegin Type="Color" Value="{1}" /&gt;
+        &lt;ToolStripPanelGradientEnd Type="Color" Value="{ 2 }" /&gt;
+      &lt;/ToolStrip&gt;
+    &lt;/ToolMenuStatus&gt;
+    &lt;BasePaletteMode Type="PaletteMode" Value="Office 2007 - {disabledTextColour}" /&gt;
+  &lt;/Properties&gt;
+  &lt;Images /&gt;
+&lt;/KryptonPalette&gt;</value>
+  </data>
+</root>

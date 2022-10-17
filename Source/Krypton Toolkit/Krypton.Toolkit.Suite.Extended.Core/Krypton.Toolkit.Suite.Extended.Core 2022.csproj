@@ -1,0 +1,224 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<Choose>
+		<When Condition="'$(Configuration)' == 'Nightly'">
+			<PropertyGroup>
+				<TargetFrameworks>net462;net47;net471;net472;net48;net481;netcoreapp3.1;net5.0-windows;net6.0-windows;net7.0-windows</TargetFrameworks>
+			</PropertyGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'Canary'">
+			<PropertyGroup>
+				<TargetFrameworks>net462;net47;net471;net472;net48;net481;netcoreapp3.1;net5.0-windows;net6.0-windows;net7.0-windows</TargetFrameworks>
+			</PropertyGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'StableFull'">
+			<PropertyGroup>
+				<TargetFrameworks>net462;net47;net471;net472;net48;net481;netcoreapp3.1;net5.0-windows;net6.0-windows;net7.0-windows</TargetFrameworks>
+			</PropertyGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'StableLite'">
+			<PropertyGroup>
+				<TargetFrameworks>net48;net481;netcoreapp3.1;net6.0-windows;net7.0-windows</TargetFrameworks>
+			</PropertyGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'SignedFull'">
+			<PropertyGroup>
+				<TargetFrameworks>net462;net47;net471;net472;net48;net481;netcoreapp3.1;net5.0-windows;net6.0-windows;net7.0-windows</TargetFrameworks>
+			</PropertyGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'SignedLite'">
+			<PropertyGroup>
+				<TargetFrameworks>net48;net481;netcoreapp3.1;net6.0-windows;net7.0-windows</TargetFrameworks>
+			</PropertyGroup>
+		</When>
+		<Otherwise>
+			<!--If all else fails-->
+			<PropertyGroup>
+				<TargetFrameworks>net462;net47;net471;net472;net48;net481;netcoreapp3.1;net5.0-windows;net6.0-windows;net7.0-windows</TargetFrameworks>
+			</PropertyGroup>
+		</Otherwise>
+	</Choose>
+
+	<PropertyGroup>
+		<OutputType>library</OutputType>
+		<RootNamespace>Krypton.Toolkit.Suite.Extended.Core</RootNamespace>
+		<AssemblyName>Krypton.Toolkit.Suite.Extended.Core</AssemblyName>
+		<UseWindowsForms>true</UseWindowsForms>
+		<Configurations>Debug;Release;Nightly;Canary;StableFull;StableLite;SignedFull;SignedLite</Configurations>
+	</PropertyGroup>
+
+	<!--Package Data-->
+	<Choose>
+		<When Condition="'$(Configuration)' == 'Canary'">
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Core.Canary</PackageId>
+			</PropertyGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'Nightly'">
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Core.Nightly</PackageId>
+			</PropertyGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'Signed'">
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Core.Signed</PackageId>
+			</PropertyGroup>
+		</When>
+		<Otherwise>
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Core</PackageId>
+			</PropertyGroup>
+		</Otherwise>
+	</Choose>
+
+	<PropertyGroup>
+		<Description>
+			An extension to the Standard Toolkit, which supports .NET Framework 4.6.2 - 4.8.1, .NET Core 3.1 and .NET 5 - 7. This package implements core utilities that are fundamental to the extended toolkit.
+
+			This package supports all .NET Framework versions starting .NET Framework 4.6.2 - 4.8.1, .NET Core 3.1 and .NET 5 - 7.
+			Also, all libraries are included targeting each specific framework version for performance purposes.
+
+			To view all of the extended toolkit package latest version information, please visit: https://github.com/Krypton-Suite/Krypton-Toolkit-Suite-Version-Dashboard/blob/main/Documents/Modules/Extended/Krypton-Toolkit-Suite-Extended-Modules.md
+		</Description>
+	</PropertyGroup>
+
+	<Choose>
+		<When Condition="'$(Configuration)' == 'Nightly'">
+			<PropertyGroup>
+				<LangVersion>preview</LangVersion>
+			</PropertyGroup>
+
+			<ItemGroup>
+				<PackageReference Include="Krypton.Docking.Nightly" Version="70.22.10.275-alpha" />
+
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="70.22.10.275-alpha" />
+
+				<PackageReference Include="Krypton.Ribbon.Nightly" Version="70.22.10.275-alpha" />
+
+				<PackageReference Include="Krypton.Navigator.Nightly" Version="70.22.10.275-alpha" />
+			</ItemGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'Canary'">
+			<PropertyGroup>
+				<LangVersion>preview</LangVersion>
+			</PropertyGroup>
+
+			<ItemGroup>
+				<PackageReference Include="Krypton.Docking.Canary" Version="70.22.8.234-beta" />
+
+				<PackageReference Include="Krypton.Toolkit.Canary" Version="70.22.8.234-beta" />
+
+				<PackageReference Include="Krypton.Ribbon.Canary" Version="70.22.8.234-beta" />
+
+				<PackageReference Include="Krypton.Navigator.Canary" Version="70.22.8.234-beta" />
+			</ItemGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'StableFull'">
+			<PropertyGroup>
+				<LangVersion>preview</LangVersion>
+			</PropertyGroup>
+
+			<ItemGroup>
+				<PackageReference Include="Krypton.Docking" Version="65.22.6.152" />
+
+				<PackageReference Include="Krypton.Toolkit" Version="65.22.6.152" />
+
+				<PackageReference Include="Krypton.Ribbon" Version="65.22.6.152" />
+
+				<PackageReference Include="Krypton.Navigator" Version="65.22.6.152" />
+			</ItemGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'StableLite'">
+			<PropertyGroup>
+				<LangVersion>preview</LangVersion>
+			</PropertyGroup>
+
+			<ItemGroup>
+				<PackageReference Include="Krypton.Docking.Lite" Version="65.22.6.152" />
+
+				<PackageReference Include="Krypton.Toolkit.Lite" Version="65.22.6.152" />
+
+				<PackageReference Include="Krypton.Ribbon.Lite" Version="65.22.6.152" />
+
+				<PackageReference Include="Krypton.Navigator.Lite" Version="65.22.6.152" />
+			</ItemGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'SignedFull'">
+			<PropertyGroup>
+				<LangVersion>preview</LangVersion>
+			</PropertyGroup>
+
+			<ItemGroup>
+				<PackageReference Include="Krypton.Docking.Signed" Version="65.22.6.152" />
+
+				<PackageReference Include="Krypton.Toolkit.Signed" Version="65.22.6.152" />
+
+				<PackageReference Include="Krypton.Ribbon.Signed" Version="65.22.6.152" />
+
+				<PackageReference Include="Krypton.Navigator.Signed" Version="65.22.6.152" />
+			</ItemGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'SignedLite'">
+			<PropertyGroup>
+				<LangVersion>preview</LangVersion>
+			</PropertyGroup>
+
+			<ItemGroup>
+				<PackageReference Include="Krypton.Docking.Signed.Lite" Version="65.22.6.152" />
+
+				<PackageReference Include="Krypton.Toolkit.Signed.Lite" Version="65.22.6.152" />
+
+				<PackageReference Include="Krypton.Ribbon.Signed.Lite" Version="65.22.6.152" />
+
+				<PackageReference Include="Krypton.Navigator.Signed.Lite" Version="65.22.6.152" />
+			</ItemGroup>
+		</When>
+
+		<Otherwise>
+			<!--If all else fails-->
+			<PropertyGroup>
+				<LangVersion>preview</LangVersion>
+			</PropertyGroup>
+
+			<ItemGroup>
+				<PackageReference Include="Krypton.Docking" Version="65.22.6.152" />
+
+				<PackageReference Include="Krypton.Toolkit" Version="65.22.6.152" />
+
+				<PackageReference Include="Krypton.Ribbon" Version="65.22.6.152" />
+
+				<PackageReference Include="Krypton.Navigator" Version="65.22.6.152" />
+			</ItemGroup>
+		</Otherwise>
+	</Choose>
+
+	<!--Binary/Documentation Output-->
+	<PropertyGroup>
+		<DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Common\Krypton.Toolkit.Suite.Extended.Common.xml</DocumentationFile>
+		<OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Common\</OutputPath>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="EasyScintilla" Version="1.0.5" />
+		<PackageReference Include="WindowsAPICodePack" Version="1.1.2" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Controls\Krypton.Toolkit.Suite.Extended.Controls 2022.csproj" />
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Global.Utilities\Krypton.Toolkit.Suite.Extended.Global.Utilities 2022.csproj" />
+		<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Settings\Krypton.Toolkit.Suite.Extended.Settings 2022.csproj" />
+	</ItemGroup>
+
+</Project>
