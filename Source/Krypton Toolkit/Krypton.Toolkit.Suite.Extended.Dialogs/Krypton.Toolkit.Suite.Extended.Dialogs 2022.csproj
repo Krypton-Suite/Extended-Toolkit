@@ -216,4 +216,8 @@
 		<!--TODO: Need to specify version here-->
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Classes\" />
+	</ItemGroup>
+
 </Project>
