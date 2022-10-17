@@ -10,7 +10,7 @@
         /// Initialize a new instance of the ButtonSpecFormWindowMin class.
         /// </summary>
         /// <param name="form">Reference to owning krypton form instance.</param>
-        public ButtonSpecFormWindowMin(KryptonFormExtended form)
+        public ButtonSpecFormWindowMin(VirtualKryptonFormExtended form)
             : base(form, PaletteButtonSpecStyle.FormMin)
         {
         }

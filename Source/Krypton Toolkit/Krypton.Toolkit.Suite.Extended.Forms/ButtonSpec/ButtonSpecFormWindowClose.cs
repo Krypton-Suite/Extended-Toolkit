@@ -10,7 +10,7 @@
         /// Initialize a new instance of the ButtonSpecFormWindowClose class.
         /// </summary>
         /// <param name="form">Reference to owning krypton form instance.</param>
-        public ButtonSpecFormWindowClose(KryptonFormExtended form)
+        public ButtonSpecFormWindowClose(VirtualKryptonFormExtended form)
             : base(form, PaletteButtonSpecStyle.FormClose)
         {
         }

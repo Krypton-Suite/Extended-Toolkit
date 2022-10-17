@@ -16,7 +16,7 @@
         /// </summary>
         /// <param name="form">Reference to owning krypton form.</param>
         /// <param name="fixedStyle">Fixed style to use.</param>
-        protected ButtonSpecFormFixed(KryptonFormExtended form,
+        protected ButtonSpecFormFixed(VirtualKryptonFormExtended form,
             PaletteButtonSpecStyle fixedStyle)
         {
             Debug.Assert(form != null);
@@ -41,7 +41,7 @@
         /// <summary>
         /// Gets access to the owning krypton form.
         /// </summary>
-        protected KryptonFormExtended KryptonForm { get; }
+        protected VirtualKryptonFormExtended KryptonForm { get; }
 
         #endregion
 

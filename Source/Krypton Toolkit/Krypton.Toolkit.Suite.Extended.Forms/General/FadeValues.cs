@@ -66,11 +66,15 @@
 
         #endregion
 
+        #region Default Instance
+
         public override bool IsDefault => UseFade == false &&
-                                          FadeInterval.Equals(50) && 
+                                          FadeInterval.Equals(50) &&
                                           CurrentWindow.Equals(null) &&
                                           NextWindow.Equals(null) &&
-                                          CurrentVirtualWindow.Equals(null) && 
+                                          CurrentVirtualWindow.Equals(null) &&
                                           NextVirtualWindow.Equals(null);
+
+        #endregion
     }
 }
