@@ -1,6 +1,0 @@
-The email is ready to be sent.
-Information about the error is included below. Please feel free to add any relevant information or attach additional files.
-{{#if ScreenshotTaken}}
-A screenshot, taken at the time of the exception, is attached.
-You may delete the attachment before sending if you prefer.
-{{/if}}
