@@ -1,8 +1,28 @@
-﻿#region BSD License
+﻿#region MIT License
 /*
- * Use of this source code is governed by a BSD-style
- * license or other governing licenses that can be found in the LICENSE.md file or at
- * https://raw.githubusercontent.com/Krypton-Suite/Extended-Toolkit/master/LICENSE
+ *
+ * MIT License
+ *
+ * Copyright (c) 2017 - 2023 Krypton Suite
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  */
 #endregion
 
@@ -212,7 +232,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         private MessageButton _button2;
         private MessageButton _button3;
         private KryptonBorderEdge _borderEdge;
-        private HelpInformation _helpInformation; // TODO: What is this used for ?
+        private HelPlatformInvokenformation _helPlatformInvokenformation; // TODO: What is this used for ?
         private Font _messageboxTypeface;
         #endregion
 
@@ -228,7 +248,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         #endregion
 
         #region Internal Classes
-        internal class HelpInformation
+        internal class HelPlatformInvokenformation
         {
             #region Properties
             /// <summary>
@@ -254,50 +274,50 @@ namespace Krypton.Toolkit.Suite.Extended.Common
 
             #region Methods
             /// <summary>
-            /// Initialize a new instance of the HelpInformation class.
+            /// Initialize a new instance of the HelPlatformInvokenformation class.
             /// </summary>
-            public HelpInformation()
+            public HelPlatformInvokenformation()
             {
             }
 
             /// <summary>
-            /// Initialize a new instance of the HelpInformation class.
+            /// Initialize a new instance of the HelPlatformInvokenformation class.
             /// </summary>
             /// <param name="helpFilePath">Value for HelpFilePath.</param>
-            public HelpInformation(string helpFilePath)
+            public HelPlatformInvokenformation(string helpFilePath)
             {
                 HelpFilePath = helpFilePath;
             }
 
             /// <summary>
-            /// Initialize a new instance of the HelpInformation class.
+            /// Initialize a new instance of the HelPlatformInvokenformation class.
             /// </summary>
             /// <param name="helpFilePath">Value for HelpFilePath.</param>
             /// <param name="keyword">Value for Keyword</param>
-            public HelpInformation(string helpFilePath, string keyword)
+            public HelPlatformInvokenformation(string helpFilePath, string keyword)
             {
                 HelpFilePath = helpFilePath;
                 Keyword = keyword;
             }
 
             /// <summary>
-            /// Initialize a new instance of the HelpInformation class.
+            /// Initialize a new instance of the HelPlatformInvokenformation class.
             /// </summary>
             /// <param name="helpFilePath">Value for HelpFilePath.</param>
             /// <param name="navigator">Value for Navigator</param>
-            public HelpInformation(string helpFilePath, HelpNavigator navigator)
+            public HelPlatformInvokenformation(string helpFilePath, HelpNavigator navigator)
             {
                 HelpFilePath = helpFilePath;
                 Navigator = navigator;
             }
 
             /// <summary>
-            /// Initialize a new instance of the HelpInformation class.
+            /// Initialize a new instance of the HelPlatformInvokenformation class.
             /// </summary>
             /// <param name="helpFilePath">Value for HelpFilePath.</param>
             /// <param name="navigator">Value for Navigator</param>
             /// <param name="param">Value for Param</param>
-            public HelpInformation(string helpFilePath, HelpNavigator navigator, object param)
+            public HelPlatformInvokenformation(string helpFilePath, HelpNavigator navigator, object param)
             {
                 HelpFilePath = helpFilePath;
                 Navigator = navigator;
@@ -326,8 +346,8 @@ namespace Krypton.Toolkit.Suite.Extended.Common
             {
                 switch (m.Msg)
                 {
-                    case PI.WM_KEYDOWN:
-                    case PI.WM_SYSKEYDOWN:
+                    case PlatformInvoke.WM_KEYDOWN:
+                    case PlatformInvoke.WM_SYSKEYDOWN:
                         if (IgnoreAltF4)
                         {
                             // Extract the keys being pressed
@@ -365,12 +385,12 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <param name="icon">The icon.</param>
         /// <param name="defaultButton">The default button.</param>
         /// <param name="options">The options.</param>
-        /// <param name="helpInformation">The help information.</param>
+        /// <param name="helPlatformInvokenformation">The help information.</param>
         /// <param name="showCtrlCopy">The show control copy. (Can be null)</param>
         /// <param name="messageboxTypeface">The messagebox typeface. (Can be null)</param>
         private InternalKryptonMessageBoxExtended(IWin32Window showOwner, string text, string caption,
             MessageBoxButtons buttons, MessageBoxIcon icon, MessageBoxDefaultButton defaultButton,
-            MessageBoxOptions options, HelpInformation helpInformation, bool? showCtrlCopy,
+            MessageBoxOptions options, HelPlatformInvokenformation helPlatformInvokenformation, bool? showCtrlCopy,
             Font messageboxTypeface)
         {
             #region Store Values
@@ -386,7 +406,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
 
             _options = options;
 
-            _helpInformation = helpInformation;
+            _helPlatformInvokenformation = helPlatformInvokenformation;
 
             MessageBoxTypeface = messageboxTypeface ?? new Font(@"Segoe UI", 12F);
 
@@ -631,7 +651,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                         bool displayHelpButton, bool? showCtrlCopy = null, Font messageboxTypeface = null)
         {
-            return InternalShow(null, text, caption, buttons, icon, defaultButton, options, displayHelpButton ? new HelpInformation() : null, showCtrlCopy, messageboxTypeface);
+            return InternalShow(null, text, caption, buttons, icon, defaultButton, options, displayHelpButton ? new HelPlatformInvokenformation() : null, showCtrlCopy, messageboxTypeface);
         }
 
         /// <summary>
@@ -651,7 +671,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                         string helpFilePath, bool? showCtrlCopy = null, Font messageboxTypeface = null)
         {
-            return InternalShow(null, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath), showCtrlCopy, messageboxTypeface);
+            return InternalShow(null, text, caption, buttons, icon, defaultButton, options, new HelPlatformInvokenformation(helpFilePath), showCtrlCopy, messageboxTypeface);
         }
 
         /// <summary>
@@ -673,7 +693,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                         string helpFilePath, bool? showCtrlCopy = null, Font messageboxTypeface = null)
         {
-            return InternalShow(owner, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath), showCtrlCopy, messageboxTypeface);
+            return InternalShow(owner, text, caption, buttons, icon, defaultButton, options, new HelPlatformInvokenformation(helpFilePath), showCtrlCopy, messageboxTypeface);
         }
 
         /// <summary>
@@ -694,7 +714,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                         string helpFilePath, HelpNavigator navigator, bool? showCtrlCopy = null, Font messageboxTypeface = null)
         {
-            return InternalShow(null, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath, navigator), showCtrlCopy, messageboxTypeface);
+            return InternalShow(null, text, caption, buttons, icon, defaultButton, options, new HelPlatformInvokenformation(helpFilePath, navigator), showCtrlCopy, messageboxTypeface);
         }
 
         /// <summary>
@@ -715,7 +735,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                         string helpFilePath, string keyword, bool? showCtrlCopy = null, Font messageboxTypeface = null)
         {
-            return InternalShow(null, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath, keyword), showCtrlCopy, messageboxTypeface);
+            return InternalShow(null, text, caption, buttons, icon, defaultButton, options, new HelPlatformInvokenformation(helpFilePath, keyword), showCtrlCopy, messageboxTypeface);
         }
 
         /// <summary>
@@ -738,7 +758,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                         string helpFilePath, HelpNavigator navigator, bool? showCtrlCopy = null, Font messageboxTypeface = null)
         {
-            return InternalShow(owner, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath, navigator), showCtrlCopy, messageboxTypeface);
+            return InternalShow(owner, text, caption, buttons, icon, defaultButton, options, new HelPlatformInvokenformation(helpFilePath, navigator), showCtrlCopy, messageboxTypeface);
         }
 
         /// <summary>
@@ -761,11 +781,11 @@ namespace Krypton.Toolkit.Suite.Extended.Common
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                         string helpFilePath, string keyword, bool? showCtrlCopy = null, Font messageboxTypeface = null)
         {
-            return InternalShow(owner, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath, keyword), showCtrlCopy, messageboxTypeface);
+            return InternalShow(owner, text, caption, buttons, icon, defaultButton, options, new HelPlatformInvokenformation(helpFilePath, keyword), showCtrlCopy, messageboxTypeface);
         }
 
         /// <summary>
-        /// Displays a message box with the specified text, caption, buttons, icon, default button, options, and Help button, using the specified Help file, HelpNavigator, and Help topic.
+        /// Displays a message box with the specified text, caption, buttons, icon, default button, options, and Help button, using the specified Help file, HelpNavigator, and Help toPlatformInvokec.
         /// </summary>
         /// <param name="text">The text to display in the message box.</param>
         /// <param name="caption">The text to display in the title bar of the message box.</param>
@@ -775,7 +795,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <param name="options">One of the System.Windows.Forms.MessageBoxOptions values that specifies which display and association options will be used for the message box. You may pass in 0 if you wish to use the defaults.</param>
         /// <param name="helpFilePath">The path and name of the Help file to display when the user clicks the Help button.</param>
         /// <param name="navigator">One of the System.Windows.Forms.HelpNavigator values.</param>
-        /// <param name="param">The numeric ID of the Help topic to display when the user clicks the Help button.</param>
+        /// <param name="param">The numeric ID of the Help toPlatformInvokec to display when the user clicks the Help button.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
         public static DialogResult Show(string text, string caption,
@@ -783,11 +803,11 @@ namespace Krypton.Toolkit.Suite.Extended.Common
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                         string helpFilePath, HelpNavigator navigator, object param, bool? showCtrlCopy = null, Font messageboxTypeface = null)
         {
-            return InternalShow(null, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath, navigator, param), showCtrlCopy, messageboxTypeface);
+            return InternalShow(null, text, caption, buttons, icon, defaultButton, options, new HelPlatformInvokenformation(helpFilePath, navigator, param), showCtrlCopy, messageboxTypeface);
         }
 
         /// <summary>
-        /// Displays a message box with the specified text, caption, buttons, icon, default button, options, and Help button, using the specified Help file, HelpNavigator, and Help topic.
+        /// Displays a message box with the specified text, caption, buttons, icon, default button, options, and Help button, using the specified Help file, HelpNavigator, and Help toPlatformInvokec.
         /// </summary>
         /// <param name="owner">Owner of the modal dialog box.</param>
         /// <param name="text">The text to display in the message box.</param>
@@ -798,7 +818,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
         /// <param name="options">One of the System.Windows.Forms.MessageBoxOptions values that specifies which display and association options will be used for the message box. You may pass in 0 if you wish to use the defaults.</param>
         /// <param name="helpFilePath">The path and name of the Help file to display when the user clicks the Help button.</param>
         /// <param name="navigator">One of the System.Windows.Forms.HelpNavigator values.</param>
-        /// <param name="param">The numeric ID of the Help topic to display when the user clicks the Help button.</param>
+        /// <param name="param">The numeric ID of the Help toPlatformInvokec to display when the user clicks the Help button.</param>
         /// <param name="showCtrlCopy">Show extraText in title. If null(default) then only when Warning or Error icon is used.</param>
         /// <param name="messageboxTypeface">Defines the messagebox font.</param>
         /// <returns>One of the System.Windows.Forms.DialogResult values.</returns>
@@ -808,7 +828,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
                                         MessageBoxDefaultButton defaultButton, MessageBoxOptions options,
                                         string helpFilePath, HelpNavigator navigator, object param, bool? showCtrlCopy = null, Font messageboxTypeface = null)
         {
-            return InternalShow(owner, text, caption, buttons, icon, defaultButton, options, new HelpInformation(helpFilePath, navigator, param), showCtrlCopy, messageboxTypeface);
+            return InternalShow(owner, text, caption, buttons, icon, defaultButton, options, new HelPlatformInvokenformation(helpFilePath, navigator, param), showCtrlCopy, messageboxTypeface);
         }
         #endregion
 
@@ -819,7 +839,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
                                                  MessageBoxIcon icon,
                                                  MessageBoxDefaultButton defaultButton,
                                                  MessageBoxOptions options,
-                                                 HelpInformation helpInformation, bool? showCtrlCopy, Font messageboxTypeface = null)
+                                                 HelPlatformInvokenformation helPlatformInvokenformation, bool? showCtrlCopy, Font messageboxTypeface = null)
         {
             // Check if trying to show a message box from a non-interactive process, this is not possible
             if (!SystemInformation.UserInteractive && ((options & (MessageBoxOptions.ServiceNotification | MessageBoxOptions.DefaultDesktopOnly)) == 0))
@@ -834,21 +854,21 @@ namespace Krypton.Toolkit.Suite.Extended.Common
             }
 
             // Check if trying to show a message box from a service and help information is specified, this is not possible
-            if ((helpInformation != null) && ((options & (MessageBoxOptions.ServiceNotification | MessageBoxOptions.DefaultDesktopOnly)) != 0))
+            if ((helPlatformInvokenformation != null) && ((options & (MessageBoxOptions.ServiceNotification | MessageBoxOptions.DefaultDesktopOnly)) != 0))
             {
                 throw new ArgumentException(@"Cannot show message box from a service with help specified", nameof(options));
             }
 
             // If help information provided or we are not a service/default desktop application then grab an owner for showing the message box
             IWin32Window showOwner = null;
-            if ((helpInformation != null) || ((options & (MessageBoxOptions.ServiceNotification | MessageBoxOptions.DefaultDesktopOnly)) == 0))
+            if ((helPlatformInvokenformation != null) || ((options & (MessageBoxOptions.ServiceNotification | MessageBoxOptions.DefaultDesktopOnly)) == 0))
             {
                 // If do not have an owner passed in then get the active window and use that instead
-                showOwner = owner ?? FromHandle(PI.GetActiveWindow());
+                showOwner = owner ?? FromHandle(PlatformInvoke.GetActiveWindow());
             }
 
             // Show message box window as a modal dialog and then dispose of it afterwards
-            using (InternalKryptonMessageBoxExtended ekmb = new InternalKryptonMessageBoxExtended(showOwner, text, caption, buttons, icon, defaultButton, options, helpInformation, showCtrlCopy, messageboxTypeface))
+            using (InternalKryptonMessageBoxExtended ekmb = new InternalKryptonMessageBoxExtended(showOwner, text, caption, buttons, icon, defaultButton, options, helPlatformInvokenformation, showCtrlCopy, messageboxTypeface))
             {
                 ekmb.StartPosition = showOwner == null ? FormStartPosition.CenterScreen : FormStartPosition.CenterParent;
 
@@ -1038,13 +1058,13 @@ namespace Krypton.Toolkit.Suite.Extended.Common
                 SizeF captionSize = g.MeasureString($@"{_caption} {TextExtra}", _messageText.Font, scaledMonitorSize);
 
                 float messageXSize = Math.Max(messageSize.Width, captionSize.Width);
-                // Work out DPI adjustment factor
+                // Work out DPlatformInvoke adjustment factor
                 float factorX = g.DpiX > 96 ? ((1.0f * g.DpiX) / 96) : 1.0f;
-                float factorY = g.DpiY > 96 ? ((1.0f * g.DpiY) / 96) : 1.0f;
+                float factorY = g.DpiX > 96 ? ((1.0f * g.DpiX) / 96) : 1.0f;
                 messageSize.Width = messageXSize * factorX;
                 messageSize.Height = messageSize.Height * factorY;
 
-                // Always add on ad extra 5 pixels as sometimes the measure size does not draw the last 
+                // Always add on ad extra 5 PlatformInvokexels as sometimes the measure size does not draw the last 
                 // character it contains, this ensures there is always definitely enough space for it all
                 messageSize.Width += 5;
                 _messageText.Size = Size.Ceiling(messageSize);
@@ -1112,7 +1132,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
                     break;
             }
 
-            // Start positioning buttons 10 pixels from right edge
+            // Start positioning buttons 10 PlatformInvokexels from right edge
             int right = _panelButtons.Right - GAP;
 
             // If Button3 is visible
@@ -1151,7 +1171,7 @@ namespace Krypton.Toolkit.Suite.Extended.Common
             // Size the panel for the buttons
             _panelButtons.Size = new Size((maxButtonSize.Width * numButtons) + (GAP * (numButtons + 1)), maxButtonSize.Height + (GAP * 2));
 
-            // Button area is the number of buttons with gaps between them and 10 pixels around all edges
+            // Button area is the number of buttons with gaps between them and 10 PlatformInvokexels around all edges
             return new Size((maxButtonSize.Width * numButtons) + (GAP * (numButtons + 1)), maxButtonSize.Height + (GAP * 2));
         }
 

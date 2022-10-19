@@ -246,6 +246,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestApp", "TestApp\TestApp.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Shared 2022", "Krypton.Toolkit.Suite.Extended.Shared\Krypton.Toolkit.Suite.Extended.Shared 2022.csproj", "{0F113F6F-775D-456D-93F7-B0D3BFEF8FB3}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NuGet", "NuGet", "{5DB6B467-9257-42D3-B81F-380B5D537C04}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Schemas", "Schemas", "{1AD413AC-FAD3-4F79-A948-4FB66AF10685}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\Assets\NuGet\Schemas\Krypton.Toolkit.Suite.Extended.Lite.nuspec = ..\..\Assets\NuGet\Schemas\Krypton.Toolkit.Suite.Extended.Lite.nuspec
+		..\..\Assets\NuGet\Schemas\Krypton.Toolkit.Suite.Extended.nuspec = ..\..\Assets\NuGet\Schemas\Krypton.Toolkit.Suite.Extended.nuspec
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Canary|Any CPU = Canary|Any CPU
@@ -1215,6 +1223,8 @@ Global
 		{9FCE31CF-18F7-4F24-8B73-799B3CB19D57} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 		{F464AFD3-EF76-430E-B81D-051DE45D023A} = {0703388D-5FBE-4345-94B0-5FA9FD043079}
 		{0F113F6F-775D-456D-93F7-B0D3BFEF8FB3} = {726DC0AA-2B0D-4EAC-BB7A-7C49AE13A390}
+		{5DB6B467-9257-42D3-B81F-380B5D537C04} = {6B01F113-016E-445F-BE5E-80BA7144B928}
+		{1AD413AC-FAD3-4F79-A948-4FB66AF10685} = {5DB6B467-9257-42D3-B81F-380B5D537C04}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A7CE7732-0982-4703-8EFD-7715D569BAB5}
