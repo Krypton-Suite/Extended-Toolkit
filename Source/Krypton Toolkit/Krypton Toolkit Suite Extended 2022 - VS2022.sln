@@ -175,6 +175,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Memory.Box 2022", "Krypton.Toolkit.Suite.Extended.Memory.Box\Krypton.Toolkit.Suite.Extended.Memory.Box 2022.csproj", "{1E21CD49-0719-4C22-AF79-691BE1D56D1C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Messagebox 2022", "Krypton.Toolkit.Suite.Extended.Messagebox\Krypton.Toolkit.Suite.Extended.Messagebox 2022.csproj", "{26C63B46-8753-4331-AC03-9C2FC8C28FC0}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0F113F6F-775D-456D-93F7-B0D3BFEF8FB3} = {0F113F6F-775D-456D-93F7-B0D3BFEF8FB3}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Navi.Suite 2022", "Krypton.Toolkit.Suite.Extended.Navi.Suite\Krypton.Toolkit.Suite.Extended.Navi.Suite 2022.csproj", "{998B91CA-CC14-405F-BAAD-17BB8DD5C04A}"
 EndProject
@@ -254,7 +257,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Schemas", "Schemas", "{1AD4
 		..\..\Assets\NuGet\Schemas\Krypton.Toolkit.Suite.Extended.nuspec = ..\..\Assets\NuGet\Schemas\Krypton.Toolkit.Suite.Extended.nuspec
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton.Toolkit.Suite.Extended.Themes 2022", "Krypton.Toolkit.Suite.Extended.Themes\Krypton.Toolkit.Suite.Extended.Themes 2022.csproj", "{A58A93DE-0CBF-495B-8D29-761B1143AD32}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Themes 2022", "Krypton.Toolkit.Suite.Extended.Themes\Krypton.Toolkit.Suite.Extended.Themes 2022.csproj", "{A58A93DE-0CBF-495B-8D29-761B1143AD32}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

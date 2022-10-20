@@ -331,7 +331,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                 ((options & (MessageBoxOptions.ServiceNotification | MessageBoxOptions.DefaultDesktopOnly)) == 0))
             {
                 // If do not have an owner passed in then get the active window and use that instead
-                showOwner = owner ?? Control.FromHandle(PI.GetActiveWindow());
+                showOwner = owner ?? Control.FromHandle(PlatformInvoke.GetActiveWindow());
             }
 
             return showOwner;

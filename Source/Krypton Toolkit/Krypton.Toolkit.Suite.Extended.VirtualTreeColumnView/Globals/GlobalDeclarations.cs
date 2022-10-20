@@ -35,3 +35,5 @@ global using System.Drawing.Design;
 global using System.Linq;
 global using System.Runtime.InteropServices;
 global using System.Windows.Forms;
+
+global using Krypton.Toolkit.Suite.Extended.Shared;

@@ -80,7 +80,7 @@
 
 	<PropertyGroup>
 		<Description>
-			An extension to the Standard Toolkit, which supports .NET Framework 4.6.2 - 4.8.1, .NET Core 3.1 and .NET 5 - 7. This package implements theme utilities.
+			An extension to the Standard Toolkit, which supports .NET Framework 4.6.2 - 4.8.1, .NET Core 3.1 and .NET 5 - 7. This package implements theme utilities for use with KryptonFormExtended.
 
 			This package supports all .NET Framework versions starting .NET Framework 4.6.2 - 4.8.1, .NET Core 3.1 and .NET 5 - 7.
 			Also, all libraries are included targeting each specific framework version for performance purposes.

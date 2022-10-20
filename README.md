@@ -99,31 +99,33 @@ A toolkit example application has been included to showcase what the toolkit is 
 | Specialised Dialogs      | This package implements system dialogs, using the Krypton themes.                                                                           | 33            |
 | Task Dialogs             | This package implements extra 'KryptonTaskDialog' features and functionality.                                                               | 34            |
 | Theme Switcher           | This package implements a easy to use theme switcher.                                                                                       | 35            |
-| Toast                    | This package contains a framework that allows the creation of toast notifications.                                                          | 36            |
-| Toggle Switch            | This package implements toggle switch controls. (Under Development)                                                                         | 37            |
-| Tool Box                 | This package implements a Visual Studio toolbox control.                                                                                    | 38            |
-| Tool Strip Items         | This package implements additional tool strip items.                                                                                        | 39            |
-| Tree Grid View           | This package implements items to create tree grid views for your applications.                                                              | 40            |
-| Virtual Tree Column View | This package implements items to create a 'virtual tree column view' for your applications.                                                 | 41            |
-| Wizard                   | This package implements a wizard control.                                                                                                   | 42            |
+| Themes                   | This package implements theme utilities for use with KryptonFormExtended.                                                                   | 36            |
+| Toast                    | This package contains a framework that allows the creation of toast notifications.                                                          | 37            |
+| Toggle Switch            | This package implements toggle switch controls. (Under Development)                                                                         | 38            |
+| Tool Box                 | This package implements a Visual Studio toolbox control.                                                                                    | 39            |
+| Tool Strip Items         | This package implements additional tool strip items.                                                                                        | 40            |
+| Tree Grid View           | This package implements items to create tree grid views for your applications.                                                              | 41            |
+| Virtual Tree Column View | This package implements items to create a 'virtual tree column view' for your applications.                                                 | 42            |
+| Wizard                   | This package implements a wizard control.                                                                                                   | 43            |
 
 ## Additional Modules
 
 The following modules **will** be installed alongside the main packages when required.
 
-| Module Name         | Description                                                                                      |
-|---------------------|--------------------------------------------------------------------------------------------------|
-| Common              | This package implements common tools and utilities that are used by the extended toolkit.        |
-| Core                | This package implements core utilities that are fundamental to the extended toolkit.             |
-| Developer Utilities | This package implements utilities for developer usage.                                           |
-| Drawing             | This package implements base drawing utilities.                                                  |
-| Effects             | This package implements additional effects, to be used in conjunction with the standard toolkit. |
-| Global Utilities    | This package implements global utilities that are used by the extended toolkit.                  |
-| Language Model      | This package implements language options for certain Krypton button controls.                    |
-| Resources           | This package implements global resources used by the extended toolkit.                           |
-| Settings            | This package implements global settings used by the extended toolkit.                            |
-| Tools               | This package implements global tools used by the extended toolkit.                               |
-| Utilities           | This package implements global utilities used by the extended toolkit.                           |
+| Module Name         | Description                                                                                        |
+|---------------------|----------------------------------------------------------------------------------------------------|
+| Common              | This package implements common tools and utilities that are used by the extended toolkit.          |
+| Core                | This package implements core utilities that are fundamental to the extended toolkit.               |
+| Developer Utilities | This package implements utilities for developer usage.                                             |
+| Drawing             | This package implements base drawing utilities.                                                    |
+| Effects             | This package implements additional effects, to be used in conjunction with the standard toolkit.   |
+| Global Utilities    | This package implements global utilities that are used by the extended toolkit.                    |
+| Language Model      | This package implements language options for certain Krypton button controls.                      |
+| Resources           | This package implements global resources used by the extended toolkit.                             |
+| Settings            | This package implements global settings used by the extended toolkit.                              |
+| Shared              | This package implements APIs that are in the standard toolkit, but are inaccessible outside of it. |
+| Tools               | This package implements global tools used by the extended toolkit.                                 |
+| Utilities           | This package implements global utilities used by the extended toolkit.                             |
 
 
 

@@ -1292,7 +1292,7 @@ namespace Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView
         {
             base.CreateHandle();
 
-            _ = PI.SetWindowTheme(Handle, @"DarkMode_Explorer", null);
+            _ = PlatformInvoke.SetWindowTheme(Handle, @"DarkMode_Explorer", null);
         }
 
         //protected override onh

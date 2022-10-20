@@ -60,8 +60,8 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         {
             switch (m.Msg)
             {
-                case PI.WM_.KEYDOWN:
-                case PI.WM_.SYSKEYDOWN:
+                case PlatformInvoke.WM_.KEYDOWN:
+                case PlatformInvoke.WM_.SYSKEYDOWN:
                     if (IgnoreAltF4)
                     {
                         // Extract the keys being pressed

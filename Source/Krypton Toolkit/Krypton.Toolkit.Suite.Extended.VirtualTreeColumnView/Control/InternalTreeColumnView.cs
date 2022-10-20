@@ -143,17 +143,17 @@ namespace Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView
         {
             switch (m.Msg)
             {
-                case PI.WM_.ERASEBKGND:
+                case PlatformInvoke.WM_.ERASEBKGND:
                     // Do not draw the background here, always do it in the paint 
                     // instead to prevent flicker because of a two stage drawing process
                     break;
-                case PI.WM_.VSCROLL:
-                case PI.WM_.HSCROLL:
-                case PI.WM_.MOUSEWHEEL:
+                case PlatformInvoke.WM_.VSCROLL:
+                case PlatformInvoke.WM_.HSCROLL:
+                case PlatformInvoke.WM_.MOUSEWHEEL:
                     Invalidate();
                     base.WndProc(ref m);
                     break;
-                case PI.WM_.MOUSELEAVE:
+                case PlatformInvoke.WM_.MOUSELEAVE:
                     if (MouseOver)
                     {
                         MouseOver = false;
@@ -162,7 +162,7 @@ namespace Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView
                     }
                     base.WndProc(ref m);
                     break;
-                case PI.WM_.MOUSEMOVE:
+                case PlatformInvoke.WM_.MOUSEMOVE:
                     if (!MouseOver)
                     {
                         MouseOver = true;
