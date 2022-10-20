@@ -68,7 +68,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                 }
                 catch (Win32Exception e)
                 {
-                    CoreInternalKryptonMessageBoxExtended.Show($"Error: { e.Message }", "An Error has Occurred", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ExceptionCapture.CaptureException(e);
                 }
 
                 return;

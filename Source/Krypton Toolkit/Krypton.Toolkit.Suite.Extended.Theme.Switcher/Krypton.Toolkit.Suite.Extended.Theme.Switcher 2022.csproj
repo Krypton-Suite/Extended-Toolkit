@@ -205,6 +205,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<None Update="License\License.txt">
+		  <PackagePath></PackagePath>
+		  <Pack>true</Pack>
+		</None>
 		<None Update="Properties\Settings.settings">
 			<Generator>SettingsSingleFileGenerator</Generator>
 			<LastGenOutput>Settings.Designer.cs</LastGenOutput>

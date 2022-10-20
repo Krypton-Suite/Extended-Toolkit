@@ -27,7 +27,6 @@
 #endregion
 
 using System.Globalization;
-using System.Text;
 
 namespace Krypton.Toolkit.Suite.Extended.Core
 {

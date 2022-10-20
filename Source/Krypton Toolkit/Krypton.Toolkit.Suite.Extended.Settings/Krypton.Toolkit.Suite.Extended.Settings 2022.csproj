@@ -196,6 +196,10 @@
 	</Compile>
   </ItemGroup>
   <ItemGroup>
+	<None Update="License\License.txt">
+	  <PackagePath></PackagePath>
+	  <Pack>true</Pack>
+	</None>
 	<None Update="Settings\Globals\GlobalBooleanSettings.settings">
 	  <Generator>SettingsSingleFileGenerator</Generator>
 	  <LastGenOutput>GlobalBooleanSettings.Designer.cs</LastGenOutput>

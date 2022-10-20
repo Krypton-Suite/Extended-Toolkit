@@ -26,10 +26,6 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Common;
-using Krypton.Toolkit.Suite.Extended.Core.Settings;
-using Krypton.Toolkit.Suite.Extended.Global.Utilities;
-
 namespace Krypton.Toolkit.Suite.Extended.Core
 {
     public class AllMergedPaletteColourSettingsManager
@@ -939,7 +935,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
             catch (Exception exc)
             {
-                ExceptionHandler.CaptureException(exc, icon: MessageBoxIcon.Error, methodSignature: MethodHelpers.GetCurrentMethod());
+                ExceptionHandler.CaptureException(exc, icon: ExtendedKryptonMessageBoxIcon.Error, methodSignature: MethodHelpers.GetCurrentMethod());
             }
         }
 
@@ -1030,7 +1026,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
             catch (Exception exc)
             {
-                ExceptionHandler.CaptureException(exc, icon: MessageBoxIcon.Error, methodSignature: MethodHelpers.GetCurrentMethod());
+                ExceptionHandler.CaptureException(exc, icon: ExtendedKryptonMessageBoxIcon.Error, methodSignature: MethodHelpers.GetCurrentMethod());
             }
         }
 
@@ -1082,7 +1078,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
             catch (Exception exc)
             {
-                ExceptionHandler.CaptureException(exc, icon: MessageBoxIcon.Error, methodSignature: MethodHelpers.GetCurrentMethod());
+                ExceptionHandler.CaptureException(exc, icon: ExtendedKryptonMessageBoxIcon.Error, methodSignature: MethodHelpers.GetCurrentMethod());
             }
         }
 
@@ -1131,7 +1127,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
             catch (Exception exc)
             {
-                ExceptionHandler.CaptureException(exc, icon: MessageBoxIcon.Error, methodSignature: MethodHelpers.GetCurrentMethod());
+                ExceptionHandler.CaptureException(exc, icon: ExtendedKryptonMessageBoxIcon.Error, methodSignature: MethodHelpers.GetCurrentMethod());
             }
         }
         #endregion

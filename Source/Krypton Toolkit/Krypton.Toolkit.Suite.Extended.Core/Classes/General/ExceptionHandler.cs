@@ -55,23 +55,23 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         /// <param name="icon">The icon.</param>
         /// <param name="className">Name of the class.</param>
         /// <param name="methodSignature">The method signature.</param>
-        public static void CaptureException(Exception exception, string title = @"Exception Caught", MessageBoxButtons buttons = MessageBoxButtons.OK, MessageBoxIcon icon = MessageBoxIcon.Error, string className = "", string methodSignature = "")
+        public static void CaptureException(Exception exception, string title = @"Exception Caught", ExtendedMessageBoxButtons buttons = ExtendedMessageBoxButtons.OK, ExtendedKryptonMessageBoxIcon icon = ExtendedKryptonMessageBoxIcon.Error, string className = "", string methodSignature = "")
         {
             if (className != "")
             {
-                ExtendedKryptonMessageBox.Show($"An unexpected error has occurred: { exception.Message }.\n\nError in class: '{ className }.cs'.", title, buttons, icon);
+                CoreInternalKryptonMessageBoxExtended.Show($"An unexpected error has occurred: {exception.Message}.\n\nError in class: '{className}.cs'.", title, buttons, icon);
             }
             else if (methodSignature != "")
             {
-                ExtendedKryptonMessageBox.Show($"An unexpected error has occurred: { exception.Message }.\n\nError in method: '{ methodSignature }'.", title, buttons, icon);
+                CoreInternalKryptonMessageBoxExtended.Show($"An unexpected error has occurred: { exception.Message }.\n\nError in method: '{ methodSignature }'.", title, buttons, icon);
             }
             else if (className != "" && methodSignature != "")
             {
-                ExtendedKryptonMessageBox.Show($"An unexpected error has occurred: { exception.Message }.\n\nError in class: '{ className }.cs'.\n\nError in method: '{ methodSignature }'.", title, buttons, icon);
+                CoreInternalKryptonMessageBoxExtended.Show($"An unexpected error has occurred: { exception.Message }.\n\nError in class: '{ className }.cs'.\n\nError in method: '{ methodSignature }'.", title, buttons, icon);
             }
             else
             {
-                ExtendedKryptonMessageBox.Show($"An unexpected error has occurred: { exception.Message }.", title, buttons, icon);
+                CoreInternalKryptonMessageBoxExtended.Show($"An unexpected error has occurred: { exception.Message }.", title, buttons, icon);
             }
         }
 

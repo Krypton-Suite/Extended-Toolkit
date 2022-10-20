@@ -214,5 +214,11 @@
 			<LastGenOutput>ProjectResources.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
 	</ItemGroup>
+	<ItemGroup>
+	  <None Update="License\License.txt">
+	    <PackagePath></PackagePath>
+	    <Pack>true</Pack>
+	  </None>
+	</ItemGroup>
 
 </Project>

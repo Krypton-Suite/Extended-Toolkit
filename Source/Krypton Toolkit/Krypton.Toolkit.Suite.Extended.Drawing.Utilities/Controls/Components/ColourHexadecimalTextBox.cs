@@ -70,7 +70,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
                 if (!allowedCharacters.Contains(character))
                 {
                     KryptonMessageBoxExtended.Show($"'{character}' is not a hexadecimal character", "Illegal Character",
-                        ExtendedMessageBoxButtons.OK, ExtendedKryptonMessageBoxIcon.Information, null);
+                        ExtendedMessageBoxButtons.OK, Messagebox.ExtendedKryptonMessageBoxIcon.Information, null);
 
                     e.Cancel = true;
                 }

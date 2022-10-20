@@ -26,9 +26,6 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Common;
-using Krypton.Toolkit.Suite.Extended.Global.Utilities;
-
 namespace Krypton.Toolkit.Suite.Extended.Core
 {
     /// <summary>
@@ -137,7 +134,9 @@ namespace Krypton.Toolkit.Suite.Extended.Core
                     }
                     catch (Exception exc)
                     {
-                        CoreInternalKryptonMessageBoxExtended.Show($"Your platform is unsupported. Please contact the software vendor for details.\nFor reference, your system is running: { _globalMethods.GetOSFriendlyName() }.\nException message: { exc.Message }.", "Unsupported Software", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //CoreInternalKryptonMessageBoxExtended.Show($"Your platform is unsupported. Please contact the software vendor for details.\nFor reference, your system is running: { _globalMethods.GetOSFriendlyName() }.\nException message: { exc.Message }.", "Unsupported Software", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                        ExceptionCapture.CaptureException(exc);
 
                         _isSystemAbleToLoadShield = false;
                     }
@@ -169,41 +168,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             base.OnPaint(e);
         }
         #endregion
-
-        #region Methods
-        /// <summary>Captures the exception.</summary>
-        /// <param name="exception">The exception.</param>
-        /// <param name="currentWindow">The current window.</param>
-        /// <param name="control">The control.</param>
-        /// <param name="title">The title.</param>
-        /// <param name="buttons">The buttons.</param>
-        /// <param name="icon">The icon.</param>
-        /// <param name="className">Name of the class.</param>
-        /// <param name="methodSignature">The method signature.</param>
-        /// <param name="defaultTypeface">The default typeface.</param>
-        private static void CaptureException(Exception exception, KryptonForm currentWindow, Control control = null, string title = @"Exception Caught", MessageBoxButtons buttons = MessageBoxButtons.OK, MessageBoxIcon icon = MessageBoxIcon.Error, string className = "", string methodSignature = "", Font defaultTypeface = null)
-        {
-            defaultTypeface = new Font(currentWindow.Font.FontFamily, currentWindow.Font.Size, currentWindow.Font.Style, currentWindow.Font.Unit);
-
-            if (className != "")
-            {
-                CoreInternalKryptonMessageBoxExtended.Show($"An unexpected error has occurred: { exception.Message }.\n\nError in class: '{ className }.cs'.", title, buttons, icon, messageboxTypeface: defaultTypeface);
-            }
-            else if (methodSignature != "")
-            {
-                CoreInternalKryptonMessageBoxExtended.Show($"An unexpected error has occurred: { exception.Message }.\n\nError in method: '{ methodSignature }'.", title, buttons, icon, messageboxTypeface: defaultTypeface);
-            }
-            else if (className != "" && methodSignature != "")
-            {
-                CoreInternalKryptonMessageBoxExtended.Show($"An unexpected error has occurred: { exception.Message }.\n\nError in class: '{ className }.cs'.\n\nError in method: '{ methodSignature }'.", title, buttons, icon, messageboxTypeface: defaultTypeface);
-            }
-            else
-            {
-                CoreInternalKryptonMessageBoxExtended.Show($"An unexpected error has occurred: { exception.Message }.", title, buttons, icon, messageboxTypeface: defaultTypeface);
-            }
-        }
-        #endregion
-
+        
         /// <summary>Called when [execute process as administrator].</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="ExecuteProcessAsAdministratorEventArgs"/> instance containing the event data.</param>

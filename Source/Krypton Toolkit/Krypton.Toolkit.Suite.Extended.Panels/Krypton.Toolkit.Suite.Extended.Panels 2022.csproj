@@ -168,5 +168,11 @@
 		<DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Panels\Krypton.Toolkit.Suite.Extended.Panels.xml</DocumentationFile>
 		<OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Panels\</OutputPath>
 	</PropertyGroup>
+	<ItemGroup>
+	  <None Update="License\License.txt">
+	    <PackagePath></PackagePath>
+	    <Pack>true</Pack>
+	  </None>
+	</ItemGroup>
 
 </Project>

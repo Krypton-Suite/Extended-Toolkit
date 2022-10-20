@@ -186,6 +186,13 @@
 		<Reference Include="System.Design" Condition="'$(TargetFramework)' == 'net35'" />
 		<!--TODO: Need to specify version here-->
 	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="License\License.txt">
+	    <PackagePath></PackagePath>
+	    <Pack>true</Pack>
+	  </None>
+	</ItemGroup>
 	<!--Binary/Documentation Output-->
 	<PropertyGroup>
 		<DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.IO\Krypton.Toolkit.Suite.Extended.IO.xml</DocumentationFile>

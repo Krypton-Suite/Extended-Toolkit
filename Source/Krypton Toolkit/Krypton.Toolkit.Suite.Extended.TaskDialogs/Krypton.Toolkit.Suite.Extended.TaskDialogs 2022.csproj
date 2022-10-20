@@ -183,6 +183,13 @@
 		<!--TODO: Need to specify version here-->
 	</ItemGroup>
 
+	<ItemGroup>
+	  <None Update="License\License.txt">
+	    <PackagePath></PackagePath>
+	    <Pack>true</Pack>
+	  </None>
+	</ItemGroup>
+
 	<!--Binary/Documentation Output-->
 	<PropertyGroup>
 		<DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Task.Dialogs\Krypton.Toolkit.Suite.Extended.Task.Dialogs.xml</DocumentationFile>

@@ -26,10 +26,6 @@
  */
 #endregion
 
-using Microsoft.Win32;
-
-using System.Runtime.InteropServices;
-
 namespace Krypton.Toolkit.Suite.Extended.Core
 {
     // <summary>
@@ -1195,13 +1191,13 @@ namespace Krypton.Toolkit.Suite.Extended.Core
         protected override void WndProc(ref Message m)
         {
             // We need to snoop the need to show a context menu
-            if (m.Msg == PI.WM_.CONTEXTMENU)
+            if (m.Msg == PlatformInvoke.WM_.CONTEXTMENU)
             {
                 // Only interested in overriding the behaviour when we have a krypton context menu...
                 if (KryptonContextMenu != null)
                 {
                     // Extract the screen mouse position (if might not actually be provided)
-                    Point mousePt = new Point(PI.LOWORD(m.LParam), PI.HIWORD(m.LParam));
+                    Point mousePt = new Point(PlatformInvoke.LOWORD(m.LParam), PlatformInvoke.HIWORD(m.LParam));
 
                     // If keyboard activated, the menu position is centered
                     if (((int)((long)m.LParam)) == -1)

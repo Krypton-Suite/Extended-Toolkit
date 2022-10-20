@@ -26,8 +26,6 @@
  */
 #endregion
 
-using System.Runtime.InteropServices;
-
 namespace Krypton.Toolkit.Suite.Extended.Core
 {
     internal class NativeMethods

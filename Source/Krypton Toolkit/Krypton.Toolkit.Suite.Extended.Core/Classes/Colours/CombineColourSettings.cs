@@ -348,7 +348,7 @@ namespace Krypton.Toolkit.Suite.Extended.Core
             }
             catch (Exception exc)
             {
-                ExceptionHandler.CaptureException(exc, icon: MessageBoxIcon.Error, methodSignature: Helpers.GetCurrentMethod());
+                ExceptionHandler.CaptureException(exc, icon: ExtendedKryptonMessageBoxIcon.Error, methodSignature: Helpers.GetCurrentMethod());
             }
         }
 

@@ -26,8 +26,6 @@
  */
 #endregion
 
-using Krypton.Toolkit.Suite.Extended.Core.Settings;
-
 namespace Krypton.Toolkit.Suite.Extended.Core
 {
     public class SettingsManagerAlternative

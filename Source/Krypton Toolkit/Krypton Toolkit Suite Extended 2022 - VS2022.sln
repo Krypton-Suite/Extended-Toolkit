@@ -254,6 +254,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Schemas", "Schemas", "{1AD4
 		..\..\Assets\NuGet\Schemas\Krypton.Toolkit.Suite.Extended.nuspec = ..\..\Assets\NuGet\Schemas\Krypton.Toolkit.Suite.Extended.nuspec
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypton.Toolkit.Suite.Extended.Themes 2022", "Krypton.Toolkit.Suite.Extended.Themes\Krypton.Toolkit.Suite.Extended.Themes 2022.csproj", "{A58A93DE-0CBF-495B-8D29-761B1143AD32}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Canary|Any CPU = Canary|Any CPU
@@ -1134,8 +1136,8 @@ Global
 		{0F113F6F-775D-456D-93F7-B0D3BFEF8FB3}.Canary|Any CPU.Build.0 = Debug|Any CPU
 		{0F113F6F-775D-456D-93F7-B0D3BFEF8FB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0F113F6F-775D-456D-93F7-B0D3BFEF8FB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0F113F6F-775D-456D-93F7-B0D3BFEF8FB3}.Nightly|Any CPU.ActiveCfg = Debug|Any CPU
-		{0F113F6F-775D-456D-93F7-B0D3BFEF8FB3}.Nightly|Any CPU.Build.0 = Debug|Any CPU
+		{0F113F6F-775D-456D-93F7-B0D3BFEF8FB3}.Nightly|Any CPU.ActiveCfg = Nightly|Any CPU
+		{0F113F6F-775D-456D-93F7-B0D3BFEF8FB3}.Nightly|Any CPU.Build.0 = Nightly|Any CPU
 		{0F113F6F-775D-456D-93F7-B0D3BFEF8FB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F113F6F-775D-456D-93F7-B0D3BFEF8FB3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0F113F6F-775D-456D-93F7-B0D3BFEF8FB3}.SignedFull|Any CPU.ActiveCfg = Debug|Any CPU
@@ -1146,6 +1148,22 @@ Global
 		{0F113F6F-775D-456D-93F7-B0D3BFEF8FB3}.StableFull|Any CPU.Build.0 = Debug|Any CPU
 		{0F113F6F-775D-456D-93F7-B0D3BFEF8FB3}.StableLite|Any CPU.ActiveCfg = Debug|Any CPU
 		{0F113F6F-775D-456D-93F7-B0D3BFEF8FB3}.StableLite|Any CPU.Build.0 = Debug|Any CPU
+		{A58A93DE-0CBF-495B-8D29-761B1143AD32}.Canary|Any CPU.ActiveCfg = Debug|Any CPU
+		{A58A93DE-0CBF-495B-8D29-761B1143AD32}.Canary|Any CPU.Build.0 = Debug|Any CPU
+		{A58A93DE-0CBF-495B-8D29-761B1143AD32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A58A93DE-0CBF-495B-8D29-761B1143AD32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A58A93DE-0CBF-495B-8D29-761B1143AD32}.Nightly|Any CPU.ActiveCfg = Debug|Any CPU
+		{A58A93DE-0CBF-495B-8D29-761B1143AD32}.Nightly|Any CPU.Build.0 = Debug|Any CPU
+		{A58A93DE-0CBF-495B-8D29-761B1143AD32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A58A93DE-0CBF-495B-8D29-761B1143AD32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A58A93DE-0CBF-495B-8D29-761B1143AD32}.SignedFull|Any CPU.ActiveCfg = Debug|Any CPU
+		{A58A93DE-0CBF-495B-8D29-761B1143AD32}.SignedFull|Any CPU.Build.0 = Debug|Any CPU
+		{A58A93DE-0CBF-495B-8D29-761B1143AD32}.SignedLite|Any CPU.ActiveCfg = Debug|Any CPU
+		{A58A93DE-0CBF-495B-8D29-761B1143AD32}.SignedLite|Any CPU.Build.0 = Debug|Any CPU
+		{A58A93DE-0CBF-495B-8D29-761B1143AD32}.StableFull|Any CPU.ActiveCfg = Debug|Any CPU
+		{A58A93DE-0CBF-495B-8D29-761B1143AD32}.StableFull|Any CPU.Build.0 = Debug|Any CPU
+		{A58A93DE-0CBF-495B-8D29-761B1143AD32}.StableLite|Any CPU.ActiveCfg = Debug|Any CPU
+		{A58A93DE-0CBF-495B-8D29-761B1143AD32}.StableLite|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1225,6 +1243,7 @@ Global
 		{0F113F6F-775D-456D-93F7-B0D3BFEF8FB3} = {726DC0AA-2B0D-4EAC-BB7A-7C49AE13A390}
 		{5DB6B467-9257-42D3-B81F-380B5D537C04} = {6B01F113-016E-445F-BE5E-80BA7144B928}
 		{1AD413AC-FAD3-4F79-A948-4FB66AF10685} = {5DB6B467-9257-42D3-B81F-380B5D537C04}
+		{A58A93DE-0CBF-495B-8D29-761B1143AD32} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A7CE7732-0982-4703-8EFD-7715D569BAB5}

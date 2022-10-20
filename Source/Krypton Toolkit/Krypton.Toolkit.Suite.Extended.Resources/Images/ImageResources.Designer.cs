@@ -323,6 +323,16 @@ namespace Krypton.Toolkit.Suite.Extended.Resources.Images {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Asterisk {
+            get {
+                object obj = ResourceManager.GetObject("Asterisk", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap BackBtnStrip {
             get {
                 object obj = ResourceManager.GetObject("BackBtnStrip", resourceCulture);
@@ -3903,6 +3913,36 @@ namespace Krypton.Toolkit.Suite.Extended.Resources.Images {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap UAC_Shield_Windows_10 {
+            get {
+                object obj = ResourceManager.GetObject("UAC_Shield_Windows_10", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap UAC_Shield_Windows_11 {
+            get {
+                object obj = ResourceManager.GetObject("UAC_Shield_Windows_11", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap UAC_Shield_Windows_7 {
+            get {
+                object obj = ResourceManager.GetObject("UAC_Shield_Windows_7", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Undo_128_x_128 {
             get {
                 object obj = ResourceManager.GetObject("Undo_128_x_128", resourceCulture);
@@ -4016,6 +4056,56 @@ namespace Krypton.Toolkit.Suite.Extended.Resources.Images {
         internal static System.Drawing.Bitmap Warning_64_x_58 {
             get {
                 object obj = ResourceManager.GetObject("Warning_64_x_58", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Windows_10 {
+            get {
+                object obj = ResourceManager.GetObject("Windows_10", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Windows_10_Coloured {
+            get {
+                object obj = ResourceManager.GetObject("Windows_10_Coloured", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Windows_7 {
+            get {
+                object obj = ResourceManager.GetObject("Windows_7", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Windows_8_and_10_Logo {
+            get {
+                object obj = ResourceManager.GetObject("Windows_8_and_10_Logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Windows11 {
+            get {
+                object obj = ResourceManager.GetObject("Windows11", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

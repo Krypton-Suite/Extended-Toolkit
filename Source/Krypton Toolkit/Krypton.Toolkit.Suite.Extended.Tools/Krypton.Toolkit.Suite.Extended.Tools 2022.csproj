@@ -167,5 +167,11 @@
 	<DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Tools\Krypton.Toolkit.Suite.Extended.Tools.xml</DocumentationFile>
 	<OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Tools\</OutputPath>
   </PropertyGroup>
+  <ItemGroup>
+    <None Update="License\License.txt">
+      <PackagePath></PackagePath>
+      <Pack>true</Pack>
+    </None>
+  </ItemGroup>
   
 </Project>

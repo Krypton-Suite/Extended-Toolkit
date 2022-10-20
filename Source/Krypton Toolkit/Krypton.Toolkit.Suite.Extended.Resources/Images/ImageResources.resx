@@ -154,6 +154,9 @@
   <data name="Arrow_Up" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Arrow_Up.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Asterisk" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Asterisk.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="BackBtnStrip" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BackBtnStrip.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -1228,6 +1231,15 @@
   <data name="TwoColors_yellow_white_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\TwoColors_yellow_white_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="UAC_Shield_Windows_10" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\UAC_Shield_Windows_10.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="UAC_Shield_Windows_11" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\UAC_Shield_Windows_11.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="UAC_Shield_Windows_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\UAC_Shield_Windows_7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Undo_128_x_128" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Undo 128 x 128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -1263,6 +1275,21 @@
   </data>
   <data name="Warning_64_x_58" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Warning_64_x_58.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Windows11" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Windows11.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Windows_10" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Windows_10.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Windows_10_Coloured" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Windows_10_Coloured.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Windows_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Windows_7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Windows_8_and_10_Logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Windows_8_and_10_Logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="WizardControl" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\WizardControl.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

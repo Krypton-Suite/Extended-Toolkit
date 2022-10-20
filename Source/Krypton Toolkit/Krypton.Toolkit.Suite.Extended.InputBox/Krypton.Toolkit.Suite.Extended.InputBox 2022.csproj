@@ -187,5 +187,11 @@
   <ItemGroup>
 	<None Include="..\Krypton.Toolkit.Suite.Extended.Drawing\Krypton.Toolkit.Suite.Extended.Drawing.licenseheader" Link="Krypton.Toolkit.Suite.Extended.Drawing.licenseheader" />
   </ItemGroup>
+  <ItemGroup>
+    <None Update="License\License.txt">
+      <PackagePath></PackagePath>
+      <Pack>true</Pack>
+    </None>
+  </ItemGroup>
 
 </Project>
