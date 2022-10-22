@@ -26,9 +26,6 @@
  */
 #endregion
 
-using System.Linq;
-using System.Text;
-
 namespace Krypton.Toolkit.Suite.Extended.Core
 {
     /// <summary>
