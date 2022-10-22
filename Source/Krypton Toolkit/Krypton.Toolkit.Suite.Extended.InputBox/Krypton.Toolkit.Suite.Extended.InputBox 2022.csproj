@@ -21,7 +21,7 @@
 
 		<When Condition="'$(Configuration)' == 'StableLite'">
 			<PropertyGroup>
-				<TargetFrameworks>net48;net481;netcoreapp3.1;net6.0-windows;net7.0-windows</TargetFrameworks>
+				<TargetFrameworks>net48;net481;net60-windows;net7.0-windows</TargetFrameworks>
 			</PropertyGroup>
 		</When>
 
@@ -33,7 +33,7 @@
 
 		<When Condition="'$(Configuration)' == 'SignedLite'">
 			<PropertyGroup>
-				<TargetFrameworks>net48;net481;netcoreapp3.1;net6.0-windows;net7.0-windows</TargetFrameworks>
+				<TargetFrameworks>net48;net481;net60-windows;net7.0-windows</TargetFrameworks>
 			</PropertyGroup>
 		</When>
 		<Otherwise>
