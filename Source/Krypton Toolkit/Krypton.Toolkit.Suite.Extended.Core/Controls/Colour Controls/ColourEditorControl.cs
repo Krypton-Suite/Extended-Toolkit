@@ -1,4 +1,4 @@
-﻿#region MIT License
+#region MIT License
 /*
  *
  * MIT License
@@ -27,6 +27,7 @@
 #endregion
 
 using System.Linq;
+using System.Text;
 
 namespace Krypton.Toolkit.Suite.Extended.Core
 {
