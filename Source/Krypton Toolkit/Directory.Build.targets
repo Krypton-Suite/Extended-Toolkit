@@ -62,62 +62,6 @@
 			</PropertyGroup>
 		</When>
 
-		<When Condition="'$(Configuration)' == 'SignedFull'">
-			<PropertyGroup>
-				<Minor>$([System.DateTime]::Now.ToString(yy))</Minor>
-				<Build>$([System.DateTime]::Now.ToString(MM))</Build>
-				<Revision>$([System.DateTime]::Now.get_DayOfYear().ToString())</Revision>
-
-				<!--Version layout schema:
-				80 = Major
-				23 = Minor - Year of release
-				01 = Build - Month of release
-				1 = Revision - Day of release (day of year)
-				-->
-				<LibraryVersion>80.$(Minor).$(Build).$(Revision)</LibraryVersion>
-				<!--https://docs.microsoft.com/en-us/nuget/create-packages/prerelease-packages-->
-
-				<!--Stable/Signed-->
-				<PackageVersion>80.$(Minor).$(Build).$(Revision)</PackageVersion>
-
-				<AssemblyVersion>80.$(Minor).$(Build).$(Revision)</AssemblyVersion>
-
-				<FileVersion>80.$(Minor).$(Build).$(Revision)</FileVersion>
-
-				<LangVersion>preview</LangVersion>
-
-				<AnalysLevel>preview</AnalysLevel>
-			</PropertyGroup>
-		</When>
-
-		<When Condition="'$(Configuration)' == 'SignedLite'">
-			<PropertyGroup>
-				<Minor>$([System.DateTime]::Now.ToString(yy))</Minor>
-				<Build>$([System.DateTime]::Now.ToString(MM))</Build>
-				<Revision>$([System.DateTime]::Now.get_DayOfYear().ToString())</Revision>
-
-				<!--Version layout schema:
-				80 = Major
-				23 = Minor - Year of release
-				01 = Build - Month of release
-				1 = Revision - Day of release (day of year)
-				-->
-				<LibraryVersion>80.$(Minor).$(Build).$(Revision)</LibraryVersion>
-				<!--https://docs.microsoft.com/en-us/nuget/create-packages/prerelease-packages-->
-
-				<!--Stable/Signed-->
-				<PackageVersion>80.$(Minor).$(Build).$(Revision)</PackageVersion>
-
-				<AssemblyVersion>80.$(Minor).$(Build).$(Revision)</AssemblyVersion>
-
-				<FileVersion>80.$(Minor).$(Build).$(Revision)</FileVersion>
-
-				<LangVersion>preview</LangVersion>
-
-				<AnalysLevel>preview</AnalysLevel>
-			</PropertyGroup>
-		</When>
-
 		<When Condition="'$(Configuration)' == 'Installer'">
 			<PropertyGroup>
 				<Minor>$([System.DateTime]::Now.ToString(yy))</Minor>
