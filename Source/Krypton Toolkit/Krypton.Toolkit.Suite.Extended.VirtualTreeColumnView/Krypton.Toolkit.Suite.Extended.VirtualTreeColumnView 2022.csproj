@@ -36,6 +36,8 @@
 		<UseWindowsForms>true</UseWindowsForms>
 		<RootNamespace>Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView</RootNamespace>
 		<AssemblyName>Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView</AssemblyName>
+        <SignAssembly>True</SignAssembly>
+        <AssemblyOriginatorKeyFile>StrongKrypton.snk</AssemblyOriginatorKeyFile>
 		<NeutralLanguage>en</NeutralLanguage>
 		<Configurations>Debug;Release;Nightly;Canary;StableFull;StableLite</Configurations>
 	</PropertyGroup>

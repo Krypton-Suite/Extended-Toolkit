@@ -34,8 +34,10 @@
 
 	<PropertyGroup>
 		<OutputType>library</OutputType>
-		<RootNamespace>Krypton.Toolkit.Suite.Extended.Core</RootNamespace>
-		<AssemblyName>Krypton.Toolkit.Suite.Extended.Core</AssemblyName>
+		<RootNamespace>Krypton.Toolkit.Suite.Extended.Themes</RootNamespace>
+		<AssemblyName>Krypton.Toolkit.Suite.Extended.Themes</AssemblyName>
+		<SignAssembly>True</SignAssembly>
+		<AssemblyOriginatorKeyFile>StrongKrypton.snk</AssemblyOriginatorKeyFile>
 		<UseWindowsForms>true</UseWindowsForms>
 		<Configurations>Debug;Release;Nightly;Canary;StableFull;StableLite</Configurations>
 	</PropertyGroup>
@@ -44,24 +46,24 @@
 	<Choose>
 		<When Condition="'$(Configuration)' == 'Canary'">
 			<PropertyGroup>
-				<PackageId>Krypton.Toolkit.Suite.Extended.Core.Canary</PackageId>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Themes.Canary</PackageId>
 			</PropertyGroup>
 		</When>
 
 		<When Condition="'$(Configuration)' == 'Nightly'">
 			<PropertyGroup>
-				<PackageId>Krypton.Toolkit.Suite.Extended.Core.Nightly</PackageId>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Themes.Nightly</PackageId>
 			</PropertyGroup>
 		</When>
 
 		<When Condition="'$(Configuration)' == 'Signed'">
 			<PropertyGroup>
-				<PackageId>Krypton.Toolkit.Suite.Extended.Core.Signed</PackageId>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Themes.Signed</PackageId>
 			</PropertyGroup>
 		</When>
 		<Otherwise>
 			<PropertyGroup>
-				<PackageId>Krypton.Toolkit.Suite.Extended.Core</PackageId>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Themes</PackageId>
 			</PropertyGroup>
 		</Otherwise>
 	</Choose>

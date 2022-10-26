@@ -37,6 +37,8 @@
 		<UseWindowsForms>true</UseWindowsForms>
 		<RootNamespace>Krypton.Toolkit.Suite.Extended.TreeGridView</RootNamespace>
 		<AssemblyName>Krypton.Toolkit.Suite.Extended.TreeGridView</AssemblyName>
+		<SignAssembly>True</SignAssembly>
+		<AssemblyOriginatorKeyFile>StrongKrypton.snk</AssemblyOriginatorKeyFile>
 		<!--<TreatWarningsAsErrors>true</TreatWarningsAsErrors>-->
 		<EnableNETAnalyzers>true</EnableNETAnalyzers>
 		<AnalysisLevel>latest</AnalysisLevel>

@@ -36,6 +36,8 @@
 		<OutputType>library</OutputType>
 		<RootNamespace>Krypton.Toolkit.Suite.Extended.Tools</RootNamespace>
 		<AssemblyName>Krypton.Toolkit.Suite.Extended.Tools</AssemblyName>
+		<SignAssembly>True</SignAssembly>
+		<AssemblyOriginatorKeyFile>StrongKrypton.snk</AssemblyOriginatorKeyFile>
 		<UseWindowsForms>true</UseWindowsForms>
 		<Configurations>Debug;Release;Nightly;Canary;StableFull;StableLite</Configurations>
 	</PropertyGroup>
@@ -156,10 +158,10 @@
 	<OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Tools\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <None Update="License\License.txt">
-      <PackagePath></PackagePath>
-      <Pack>true</Pack>
-    </None>
+	<None Update="License\License.txt">
+	  <PackagePath></PackagePath>
+	  <Pack>true</Pack>
+	</None>
   </ItemGroup>
   
 </Project>
