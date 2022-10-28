@@ -50,6 +50,9 @@ Development of the Krypton Extended Toolkit is supported by these generous organ
 ## Version History
 <a href="https://github.com/Krypton-Suite/Extended-Toolkit/blob/master/Documents/Help/Changelog.md"><img src="https://img.shields.io/badge/Version History-Changelog-B19CD1.svg?style=flat-square" alt="Extended Toolkit Changelog" /></a>
 
+## Support Information
+<a href="https://github.com/Krypton-Suite/Documentation/blob/main/Documents/Development/Package-Support-Information.md"><img src="https://img.shields.io/badge/NuGet-Package Support Information-informational.svg?style=flat-square" alt="Package Support Information" /></a>
+
 =======
 
 # Toolkit Example Application
