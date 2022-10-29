@@ -25,12 +25,13 @@
  */
 #endregion
 
-#if NET451
 using Newtonsoft.Json;
-#endif
-#if NETSTANDARD
-using System.Text.Json;
-#endif
+//#if NET451
+//using Newtonsoft.Json;
+//#endif
+//#if NETSTANDARD
+//using System.Text.Json;
+//#endif
 
 namespace Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle
 {
