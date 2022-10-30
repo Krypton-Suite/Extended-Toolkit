@@ -59,14 +59,28 @@ Development of the Krypton Extended Toolkit is supported by these generous organ
 
 ### Full
 
-```pm
-PM> NuGet\Install-Package Krypton.Toolkit.Suite.Extended.Ultimate
+#### Package Manager
+
+```ps
+PM> NuGet\Install-Package Krypton.Toolkit.Suite.Extended.Ultimate -Version 70.22.11.3xx
+```
+
+#### Package Reference
+
+```xml
+<PackageReference Include="Krypton.Toolkit.Suite.Extended.Ultimate" Version="70.22.11.3xxx" />
 ```
 
 ### Lite
 
-```pm
-PM> NuGet\Install-Package Krypton.Toolkit.Suite.Extended.Ultimate.Lite
+```ps
+PM> NuGet\Install-Package Krypton.Toolkit.Suite.Extended.Ultimate.Lite -Version 70.22.11.3xx
+```
+
+#### Package Reference
+
+```xml
+<PackageReference Include="Krypton.Toolkit.Suite.Extended.Ultimate.Lite" Version="70.22.11.3xxx" />
 ```
 
 =======
