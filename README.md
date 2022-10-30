@@ -55,6 +55,22 @@ Development of the Krypton Extended Toolkit is supported by these generous organ
 
 =======
 
+## Install the `Ultimate` Package
+
+### Full
+
+```pm
+PM> NuGet\Install-Package Krypton.Toolkit.Suite.Extended.Ultimate
+```
+
+### Lite
+
+```pm
+PM> NuGet\Install-Package Krypton.Toolkit.Suite.Extended.Ultimate.Lite
+```
+
+=======
+
 # Toolkit Example Application
 
 A toolkit example application has been included to showcase what the toolkit is capable of.

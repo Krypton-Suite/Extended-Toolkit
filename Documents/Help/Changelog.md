@@ -4,7 +4,8 @@
 
 =======
 
-## 2022-11-01 - Build 2211 - November 2022
+## 2022-11-08 - Build 2211 - November 2022
+* Implemented [#311](https://github.com/Krypton-Suite/Extended-Toolkit/issues/331), One Krypton Extended Toolkit NuGet package to rule them all
 * New `KryptonDialogButtonExtended` control. Uses the strings configured in `KryptonManager` to create dialog buttons
 * Toasts can now be configured to use RTL layouts
 * Updated wizard control to use strings controlled by the `KryptonManager`
