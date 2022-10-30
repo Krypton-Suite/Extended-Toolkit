@@ -55,6 +55,22 @@ Development of the Krypton Extended Toolkit is supported by these generous organ
 
 =======
 
+## Install the `Ultimate` Package
+
+### Full
+
+```ps
+
+```
+
+### Lite
+
+```ps
+
+```
+
+=======
+
 # Toolkit Example Application
 
 A toolkit example application has been included to showcase what the toolkit is capable of.
