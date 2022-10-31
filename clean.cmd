@@ -102,6 +102,8 @@ echo Deleting 'Krypton.Toolkit.Suite.Extended.TaskDialogs\obj'
 rd /s /q "Source\Krypton Toolkit\Krypton.Toolkit.Suite.Extended.TaskDialogs\obj"
 echo Deleting 'Krypton.Toolkit.Suite.Extended.Theme.Switcher\obj'
 rd /s /q "Source\Krypton Toolkit\Krypton.Toolkit.Suite.Extended.Theme.Switcher\obj"
+echo Deleting 'Krypton.Toolkit.Suite.Extended.Themes\obj'
+rd /s /q "Source\Krypton Toolkit\Krypton.Toolkit.Suite.Extended.Themes\obj"
 echo Deleting 'Krypton.Toolkit.Suite.Extended.Toast\obj'
 rd /s /q "Source\Krypton Toolkit\Krypton.Toolkit.Suite.Extended.Toast\obj"
 echo Deleting 'Krypton.Toolkit.Suite.Extended.Toggle.Switch\obj'
@@ -120,6 +122,8 @@ echo Deleting 'Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView\obj'
 rd /s /q "Source\Krypton Toolkit\Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView\obj"
 echo Deleting 'Krypton.Toolkit.Suite.Extended.Wizard\obj'
 rd /s /q "Source\Krypton Toolkit\Krypton.Toolkit.Suite.Extended.Wizard\obj
+echo Deleting 'Krypton.Toolkit.Suite.Extended.Shared\obj'
+rd /s /q "Source\Krypton Toolkit\Krypton.Toolkit.Suite.Extended.Shared\obj"
 
 rd /s /q "Source\Bin"
 
@@ -238,8 +242,8 @@ echo Deleting 'Krypton.Toolkit.Suite.Extended.Specialised.Dialogs\*.bak'
 rd /s /q "Source\Krypton Toolkit\Krypton.Toolkit.Suite.Extended.Specialised.Dialogs\*.bak"
 echo Deleting 'Krypton.Toolkit.Suite.Extended.TaskDialogs\*.bak'
 rd /s /q "Source\Krypton Toolkit\Krypton.Toolkit.Suite.Extended.TaskDialogs\*.bak"
-echo Deleting 'Krypton.Toolkit.Suite.Extended.Theme.Switcher\*.bak'
-rd /s /q "Source\Krypton Toolkit\Krypton.Toolkit.Suite.Extended.Theme.Switcher\*.bak"
+echo Deleting 'Krypton.Toolkit.Suite.Extended.Themes\*.bak'
+rd /s /q "Source\Krypton Toolkit\Krypton.Toolkit.Suite.Extended.Themes\*.bak"
 echo Deleting 'Krypton.Toolkit.Suite.Extended.Toast\*.bak'
 rd /s /q "Source\Krypton Toolkit\Krypton.Toolkit.Suite.Extended.Toast\*.bak"
 echo Deleting 'Krypton.Toolkit.Suite.Extended.Toggle.Switch\*.bak'
@@ -258,6 +262,8 @@ echo Deleting 'Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView\*.bak'
 rd /s /q "Source\Krypton Toolkit\Krypton.Toolkit.Suite.Extended.VirtualTreeColumnView\*.bak"
 echo Deleting 'Krypton.Toolkit.Suite.Extended.Wizard\*.bak'
 rd /s /q "Source\Krypton Toolkit\Krypton.Toolkit.Suite.Extended.Wizard\*.bak"
+echo Deleting 'Krypton.Toolkit.Suite.Extended.Shared\*.bak'
+rd /s /q "Source\Krypton Toolkit\Krypton.Toolkit.Suite.Extended.Shared\*.bak"
 
 :no
 pause

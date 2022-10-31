@@ -21,19 +21,7 @@
 
 		<When Condition="'$(Configuration)' == 'StableLite'">
 			<PropertyGroup>
-				<TargetFrameworks>net48;net481;netcoreapp3.1;net6.0-windows;net7.0-windows</TargetFrameworks>
-			</PropertyGroup>
-		</When>
-
-		<When Condition="'$(Configuration)' == 'SignedFull'">
-			<PropertyGroup>
-				<TargetFrameworks>net462;net47;net471;net472;net48;net481;netcoreapp3.1;net5.0-windows;net6.0-windows;net7.0-windows</TargetFrameworks>
-			</PropertyGroup>
-		</When>
-
-		<When Condition="'$(Configuration)' == 'SignedLite'">
-			<PropertyGroup>
-				<TargetFrameworks>net48;net481;netcoreapp3.1;net6.0-windows;net7.0-windows</TargetFrameworks>
+				<TargetFrameworks>net48;net481;net60-windows;net7.0-windows</TargetFrameworks>
 			</PropertyGroup>
 		</When>
 		<Otherwise>
@@ -50,7 +38,7 @@
 		<AssemblyName>Krypton.Toolkit.Suite.Extended.Buttons</AssemblyName>
 		<UseWindowsForms>true</UseWindowsForms>
 		<NeutralLanguage>en</NeutralLanguage>
-		<Configurations>Debug;Release;Nightly;Canary;StableFull;StableLite;SignedFull;SignedLite</Configurations>
+		<Configurations>Debug;Release;Nightly;Canary;StableFull;StableLite</Configurations>
 	</PropertyGroup>
 
 	<!--Package Data-->
@@ -193,7 +181,8 @@
 		<DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Buttons\Krypton.Toolkit.Suite.Extended.Buttons.xml</DocumentationFile>
 		<OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Buttons\</OutputPath>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-		<SignAssembly>False</SignAssembly>
+		<SignAssembly>True</SignAssembly>
+		<AssemblyOriginatorKeyFile>StrongKrypton.snk</AssemblyOriginatorKeyFile>
 		<!--<PackageIcon>Stable.png</PackageIcon>-->
 	</PropertyGroup>
 
@@ -215,6 +204,12 @@
 			<Generator>ResXFileCodeGenerator</Generator>
 			<LastGenOutput>Resources.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
+	</ItemGroup>
+	<ItemGroup>
+	  <None Update="License\License.txt">
+	    <PackagePath></PackagePath>
+	    <Pack>true</Pack>
+	  </None>
 	</ItemGroup>
 
 	<!--TODO: Needs looking at, attemping to add the build output to a ZIP file for distribution-->

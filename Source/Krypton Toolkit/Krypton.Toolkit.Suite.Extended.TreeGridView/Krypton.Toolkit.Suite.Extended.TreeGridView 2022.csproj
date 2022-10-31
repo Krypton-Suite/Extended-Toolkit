@@ -21,19 +21,7 @@
 
 		<When Condition="'$(Configuration)' == 'StableLite'">
 			<PropertyGroup>
-				<TargetFrameworks>net48;net481;netcoreapp3.1;net6.0-windows;net7.0-windows</TargetFrameworks>
-			</PropertyGroup>
-		</When>
-
-		<When Condition="'$(Configuration)' == 'SignedFull'">
-			<PropertyGroup>
-				<TargetFrameworks>net462;net47;net471;net472;net48;net481;netcoreapp3.1;net5.0-windows;net6.0-windows;net7.0-windows</TargetFrameworks>
-			</PropertyGroup>
-		</When>
-
-		<When Condition="'$(Configuration)' == 'SignedLite'">
-			<PropertyGroup>
-				<TargetFrameworks>net48;net481;netcoreapp3.1;net6.0-windows;net7.0-windows</TargetFrameworks>
+				<TargetFrameworks>net48;net481;net60-windows;net7.0-windows</TargetFrameworks>
 			</PropertyGroup>
 		</When>
 		<Otherwise>
@@ -49,11 +37,13 @@
 		<UseWindowsForms>true</UseWindowsForms>
 		<RootNamespace>Krypton.Toolkit.Suite.Extended.TreeGridView</RootNamespace>
 		<AssemblyName>Krypton.Toolkit.Suite.Extended.TreeGridView</AssemblyName>
+		<SignAssembly>True</SignAssembly>
+		<AssemblyOriginatorKeyFile>StrongKrypton.snk</AssemblyOriginatorKeyFile>
 		<!--<TreatWarningsAsErrors>true</TreatWarningsAsErrors>-->
 		<EnableNETAnalyzers>true</EnableNETAnalyzers>
 		<AnalysisLevel>latest</AnalysisLevel>
 		<NeutralLanguage>en</NeutralLanguage>
-		<Configurations>Debug;Release;Nightly;Canary;StableFull;StableLite;SignedFull;SignedLite</Configurations>
+		<Configurations>Debug;Release;Nightly;Canary;StableFull;StableLite</Configurations>
 	</PropertyGroup>
 
 	<!--Package Data-->
@@ -184,6 +174,13 @@
 	  </Reference>
 	  <Reference Include="System.Design" Condition="'$(TargetFramework)' == 'net35'" />
 	  <!--TODO: Need to specify version here-->
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="License\License.txt">
+      <PackagePath></PackagePath>
+      <Pack>true</Pack>
+    </None>
   </ItemGroup>
 	<!--Binary/Documentation Output-->
 	<PropertyGroup>
