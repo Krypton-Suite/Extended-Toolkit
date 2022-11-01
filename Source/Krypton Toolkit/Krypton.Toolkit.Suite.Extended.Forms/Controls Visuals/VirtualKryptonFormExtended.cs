@@ -1755,7 +1755,7 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
         private CreateParams GetCreateParams()
         {
             CreateParams cp = base.CreateParams;
-
+            
             return cp;
         }
 
@@ -1774,6 +1774,11 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
                 if (UseDropShadow)
                 {
                     cp.ClassStyle |= CS_DROPSHADOW;
+                }
+
+                if (!CloseBox)
+                {
+                    cp.ClassStyle |= CP_NOCLOSE_BUTTON;
                 }
 #pragma warning restore CS0618 // Type or member is obsolete
 
