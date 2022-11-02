@@ -35,8 +35,6 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
         private KryptonLabel kryptonLabel1;
         private KryptonButton kbtnCancel;
         private KryptonButton kbtnImportHash;
-        private KryptonButton kbtnBrowseForFile;
-        private KryptonTextBox ktxtFilePath;
         private KryptonGroupBox kryptonGroupBox2;
         private KryptonGroupBox kryptonGroupBox1;
         private KryptonWrapLabel kwlCalculatedCheckSum;
@@ -61,11 +59,13 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
         private BackgroundWorker bgSHA256Hash;
         private BackgroundWorker bgSHA1Hash;
         private BackgroundWorker bgMD5Hash;
+        private CheckSum.Tools.KryptonBrowseBox kbbFilePath;
         private KryptonPanel kryptonPanel2;
 
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KryptonVarifyFileCheckSum));
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             this.kbtnValidate = new Krypton.Toolkit.KryptonButton();
             this.kbtnImportHash = new Krypton.Toolkit.KryptonButton();
@@ -83,8 +83,6 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             this.kbtnCompute = new Krypton.Toolkit.KryptonButton();
             this.kcmbAlgorithimType = new Krypton.Toolkit.KryptonComboBox();
             this.kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
-            this.kbtnBrowseForFile = new Krypton.Toolkit.KryptonButton();
-            this.ktxtFilePath = new Krypton.Toolkit.KryptonTextBox();
             this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
             this.kryptonContextMenuItems1 = new Krypton.Toolkit.KryptonContextMenuItems();
             this.kryptonContextMenuItems2 = new Krypton.Toolkit.KryptonContextMenuItems();
@@ -97,6 +95,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             this.bgSHA256Hash = new System.ComponentModel.BackgroundWorker();
             this.bgSHA1Hash = new System.ComponentModel.BackgroundWorker();
             this.bgMD5Hash = new System.ComponentModel.BackgroundWorker();
+            this.kbbFilePath = new Krypton.Toolkit.Suite.Extended.CheckSum.Tools.KryptonBrowseBox();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
@@ -129,6 +128,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             // 
             // kbtnValidate
             // 
+            this.kbtnValidate.CornerRoundingRadius = -1F;
             this.kbtnValidate.Enabled = false;
             this.kbtnValidate.Location = new System.Drawing.Point(511, 13);
             this.kbtnValidate.Name = "kbtnValidate";
@@ -139,6 +139,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             // 
             // kbtnImportHash
             // 
+            this.kbtnImportHash.CornerRoundingRadius = -1F;
             this.kbtnImportHash.Enabled = false;
             this.kbtnImportHash.Location = new System.Drawing.Point(13, 13);
             this.kbtnImportHash.Name = "kbtnImportHash";
@@ -149,6 +150,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             // 
             // kbtnCancel
             // 
+            this.kbtnCancel.CornerRoundingRadius = -1F;
             this.kbtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.kbtnCancel.Location = new System.Drawing.Point(607, 13);
             this.kbtnCancel.Name = "kbtnCancel";
@@ -168,13 +170,12 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             // 
             // kryptonPanel2
             // 
+            this.kryptonPanel2.Controls.Add(this.kbbFilePath);
             this.kryptonPanel2.Controls.Add(this.kryptonGroupBox2);
             this.kryptonPanel2.Controls.Add(this.kryptonGroupBox1);
             this.kryptonPanel2.Controls.Add(this.kbtnCompute);
             this.kryptonPanel2.Controls.Add(this.kcmbAlgorithimType);
             this.kryptonPanel2.Controls.Add(this.kryptonLabel2);
-            this.kryptonPanel2.Controls.Add(this.kbtnBrowseForFile);
-            this.kryptonPanel2.Controls.Add(this.ktxtFilePath);
             this.kryptonPanel2.Controls.Add(this.kryptonLabel1);
             this.kryptonPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel2.Location = new System.Drawing.Point(0, 0);
@@ -198,11 +199,11 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             // 
             this.ktxtVarifyCheckSum.ContextMenuStrip = this.cmsCheckSumValidation;
             this.ktxtVarifyCheckSum.CueHint.CueHintText = "Type or paste checksum here...";
+            this.ktxtVarifyCheckSum.CueHint.Padding = new System.Windows.Forms.Padding(0);
             this.ktxtVarifyCheckSum.Location = new System.Drawing.Point(6, 23);
             this.ktxtVarifyCheckSum.Name = "ktxtVarifyCheckSum";
             this.ktxtVarifyCheckSum.Size = new System.Drawing.Size(665, 24);
             this.ktxtVarifyCheckSum.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ktxtVarifyCheckSum.StateCommon.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
             this.ktxtVarifyCheckSum.TabIndex = 0;
             this.ktxtVarifyCheckSum.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.ktxtVarifyCheckSum.TextChanged += new System.EventHandler(this.ktxtVarifyCheckSum_TextChanged);
@@ -254,6 +255,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             this.kwlCalculatedCheckSum.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kwlCalculatedCheckSum.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kwlCalculatedCheckSum.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.kwlCalculatedCheckSum.LabelStyle = Krypton.Toolkit.LabelStyle.NormalControl;
             this.kwlCalculatedCheckSum.Location = new System.Drawing.Point(0, 0);
             this.kwlCalculatedCheckSum.Name = "kwlCalculatedCheckSum";
             this.kwlCalculatedCheckSum.Size = new System.Drawing.Size(680, 71);
@@ -262,6 +264,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             // 
             // kbtnCompute
             // 
+            this.kbtnCompute.CornerRoundingRadius = -1F;
             this.kbtnCompute.Enabled = false;
             this.kbtnCompute.Location = new System.Drawing.Point(256, 63);
             this.kbtnCompute.Name = "kbtnCompute";
@@ -272,7 +275,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             // 
             // kcmbAlgorithimType
             // 
-            this.kcmbAlgorithimType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.kcmbAlgorithimType.CornerRoundingRadius = -1F;
             this.kcmbAlgorithimType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.kcmbAlgorithimType.DropDownWidth = 121;
             this.kcmbAlgorithimType.Enabled = false;
@@ -293,23 +296,6 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             this.kryptonLabel2.Size = new System.Drawing.Size(108, 20);
             this.kryptonLabel2.TabIndex = 3;
             this.kryptonLabel2.Values.Text = "Algorithim Type:";
-            // 
-            // kbtnBrowseForFile
-            // 
-            this.kbtnBrowseForFile.Location = new System.Drawing.Point(664, 13);
-            this.kbtnBrowseForFile.Name = "kbtnBrowseForFile";
-            this.kbtnBrowseForFile.Size = new System.Drawing.Size(33, 25);
-            this.kbtnBrowseForFile.TabIndex = 2;
-            this.kbtnBrowseForFile.Values.Text = ".&..";
-            this.kbtnBrowseForFile.Click += new System.EventHandler(this.kbtnBrowseForFile_Click);
-            // 
-            // ktxtFilePath
-            // 
-            this.ktxtFilePath.CueHint.CueHintText = "Type a file path here...";
-            this.ktxtFilePath.Location = new System.Drawing.Point(84, 13);
-            this.ktxtFilePath.Name = "ktxtFilePath";
-            this.ktxtFilePath.Size = new System.Drawing.Size(574, 23);
-            this.ktxtFilePath.TabIndex = 1;
             // 
             // kryptonLabel1
             // 
@@ -352,48 +338,65 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             this.bgRIPEMD160Hash.WorkerReportsProgress = true;
             this.bgRIPEMD160Hash.WorkerSupportsCancellation = true;
             this.bgRIPEMD160Hash.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgRIPEMD160Hash_DoWork);
-            this.bgRIPEMD160Hash.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(ProgressChanged);
-            this.bgRIPEMD160Hash.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(RunWorkerCompleted);
+            this.bgRIPEMD160Hash.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.ProgressChanged);
+            this.bgRIPEMD160Hash.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.RunWorkerCompleted);
             // 
             // bgSHA512Hash
             // 
             this.bgSHA512Hash.WorkerReportsProgress = true;
             this.bgSHA512Hash.WorkerSupportsCancellation = true;
             this.bgSHA512Hash.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgSHA512Hash_DoWork);
-            this.bgSHA512Hash.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(ProgressChanged);
-            this.bgSHA512Hash.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(RunWorkerCompleted);
+            this.bgSHA512Hash.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.ProgressChanged);
+            this.bgSHA512Hash.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.RunWorkerCompleted);
             // 
             // bgSHA384Hash
             // 
             this.bgSHA384Hash.WorkerReportsProgress = true;
             this.bgSHA384Hash.WorkerSupportsCancellation = true;
             this.bgSHA384Hash.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgSHA384Hash_DoWork);
-            this.bgSHA384Hash.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(ProgressChanged);
-            this.bgSHA384Hash.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(RunWorkerCompleted);
+            this.bgSHA384Hash.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.ProgressChanged);
+            this.bgSHA384Hash.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.RunWorkerCompleted);
             // 
             // bgSHA256Hash
             // 
             this.bgSHA256Hash.WorkerReportsProgress = true;
             this.bgSHA256Hash.WorkerSupportsCancellation = true;
             this.bgSHA256Hash.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgSHA256Hash_DoWork);
-            this.bgSHA256Hash.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(ProgressChanged);
-            this.bgSHA256Hash.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(RunWorkerCompleted);
+            this.bgSHA256Hash.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.ProgressChanged);
+            this.bgSHA256Hash.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.RunWorkerCompleted);
             // 
             // bgSHA1Hash
             // 
             this.bgSHA1Hash.WorkerReportsProgress = true;
             this.bgSHA1Hash.WorkerSupportsCancellation = true;
             this.bgSHA1Hash.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgSHA1Hash_DoWork);
-            this.bgSHA1Hash.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(ProgressChanged);
-            this.bgSHA1Hash.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(RunWorkerCompleted);
+            this.bgSHA1Hash.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.ProgressChanged);
+            this.bgSHA1Hash.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.RunWorkerCompleted);
             // 
             // bgMD5Hash
             // 
             this.bgMD5Hash.WorkerReportsProgress = true;
             this.bgMD5Hash.WorkerSupportsCancellation = true;
             this.bgMD5Hash.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgMD5Hash_DoWork);
-            this.bgMD5Hash.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(ProgressChanged);
-            this.bgMD5Hash.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(RunWorkerCompleted);
+            this.bgMD5Hash.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.ProgressChanged);
+            this.bgMD5Hash.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.RunWorkerCompleted);
+            // 
+            // kbbFilePath
+            // 
+            this.kbbFilePath.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.kbbFilePath.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
+            this.kbbFilePath.CueHint.CueHintText = "Type a file path here...";
+            this.kbbFilePath.CueHint.Padding = new System.Windows.Forms.Padding(0);
+            this.kbbFilePath.LargeResetImage = ((System.Drawing.Image)(resources.GetObject("kbbFilePath.LargeResetImage")));
+            this.kbbFilePath.Location = new System.Drawing.Point(83, 13);
+            this.kbbFilePath.Name = "kbbFilePath";
+            this.kbbFilePath.ResetText = null;
+            this.kbbFilePath.ResetTextToolTipDescription = null;
+            this.kbbFilePath.ResetTextToolTipHeading = null;
+            this.kbbFilePath.ShowResetButton = true;
+            this.kbbFilePath.Size = new System.Drawing.Size(614, 24);
+            this.kbbFilePath.SmallResetImage = ((System.Drawing.Image)(resources.GetObject("kbbFilePath.SmallResetImage")));
+            this.kbbFilePath.TabIndex = 12;
             // 
             // KryptonVarifyFileCheckSum
             // 
@@ -695,25 +698,7 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
         #endregion
 
         private string UpdateStatus(string status) => tsslStatus.Text = status;
-
-        private void kbtnBrowseForFile_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog ofd = new OpenFileDialog();
-
-            ofd.Title = "Browse for a File:";
-
-            if (ofd.ShowDialog() == DialogResult.OK)
-            {
-                ktxtFilePath.Text = Path.GetFullPath(ofd.FileName);
-
-                FileNameWithoutExtension = Path.GetFileNameWithoutExtension(ofd.FileName);
-
-                kcmbAlgorithimType.Enabled = true;
-
-                kcmbAlgorithimType.Enabled = true;
-            }
-        }
-
+        
         private void kbtnValidate_Click(object sender, EventArgs e)
         {
             if (HelperMethods.IsValid(kwlCalculatedCheckSum.Text, ktxtVarifyCheckSum.Text.ToUpper()))
@@ -817,27 +802,27 @@ namespace Krypton.Toolkit.Suite.Extended.CheckSum.Tools
             {
                 if (kcmbAlgorithimType.Text == "MD-5")
                 {
-                    bgMD5Hash.RunWorkerAsync(ktxtFilePath.Text);
+                    bgMD5Hash.RunWorkerAsync(kbbFilePath.Text);
                 }
                 else if (kcmbAlgorithimType.Text == "SHA-1")
                 {
-                    bgSHA1Hash.RunWorkerAsync(ktxtFilePath.Text);
+                    bgSHA1Hash.RunWorkerAsync(kbbFilePath.Text);
                 }
                 else if (kcmbAlgorithimType.Text == "SHA-256")
                 {
-                    bgSHA256Hash.RunWorkerAsync(ktxtFilePath.Text);
+                    bgSHA256Hash.RunWorkerAsync(kbbFilePath.Text);
                 }
                 else if (kcmbAlgorithimType.Text == "SHA-384")
                 {
-                    bgSHA384Hash.RunWorkerAsync(ktxtFilePath.Text);
+                    bgSHA384Hash.RunWorkerAsync(kbbFilePath.Text);
                 }
                 else if (kcmbAlgorithimType.Text == "SHA-512")
                 {
-                    bgSHA512Hash.RunWorkerAsync(ktxtFilePath.Text);
+                    bgSHA512Hash.RunWorkerAsync(kbbFilePath.Text);
                 }
                 else if (kcmbAlgorithimType.Text == "RIPEMD-160")
                 {
-                    bgRIPEMD160Hash.RunWorkerAsync(ktxtFilePath.Text);
+                    bgRIPEMD160Hash.RunWorkerAsync(kbbFilePath.Text);
                 }
 
                 kbtnImportHash.Enabled = true;

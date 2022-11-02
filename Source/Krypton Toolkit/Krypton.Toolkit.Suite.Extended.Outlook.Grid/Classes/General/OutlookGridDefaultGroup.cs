@@ -88,7 +88,7 @@ namespace Krypton.Toolkit.Suite.Extended.Outlook.Grid
         {
             _val = null;
             _column = null;
-            if (KryptonManager.CurrentGlobalPalette.GetRenderer() == KryptonManager.RenderOffice2013 || KryptonManager.CurrentGlobalPalette.GetRenderer() == KryptonManager.RenderOffice365)
+            if (KryptonManager.CurrentGlobalPalette.GetRenderer() == KryptonManager.RenderOffice2013 || KryptonManager.CurrentGlobalPalette.GetRenderer() == KryptonManager.RenderMicrosoft365)
                 _height = StaticValues._2013GroupRowHeight; // special height for office 2013
             else
                 _height = StaticValues._defaultGroupRowHeight; // default height

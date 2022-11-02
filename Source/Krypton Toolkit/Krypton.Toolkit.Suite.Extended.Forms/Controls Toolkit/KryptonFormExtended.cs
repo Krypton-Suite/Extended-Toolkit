@@ -25,12 +25,6 @@
  */
 #endregion
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace Krypton.Toolkit.Suite.Extended.Forms
 {
     public class KryptonFormExtended : VirtualKryptonFormExtended
@@ -49,6 +43,8 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
 
         #endregion
 
+        private KryptonFormTitleStyle _titleStyle;
+
         #endregion
 
         #region Public
@@ -63,6 +59,9 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
 
         public KryptonFormExtended NextWindow { get => _nextWindow; set => _nextWindow = value; }
 
+        [Category(@"Appearance"), DefaultValue(typeof(KryptonFormTitleStyle), "KryptonFormTitleStyle.Inherit")]
+        public KryptonFormTitleStyle TitleStyle { get => _titleStyle; set { _titleStyle = value; UpdateTitleStyle(value); } }
+
         #endregion
 
         #region Identity
@@ -76,6 +75,30 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             _currentWindow = null;
 
             _nextWindow = null;
+
+            _titleStyle = KryptonFormTitleStyle.Inherit;
+        }
+
+        #endregion
+
+        #region Implementation
+
+        /// <summary>Updates the title style.</summary>
+        /// <param name="titleStyle">The title style.</param>
+        private void UpdateTitleStyle(KryptonFormTitleStyle titleStyle)
+        {
+            switch (titleStyle)
+            {
+                case KryptonFormTitleStyle.Inherit:
+                    FormTitleAlign = PaletteRelativeAlign.Inherit;
+                    break;
+                case KryptonFormTitleStyle.Classic:
+                    FormTitleAlign = PaletteRelativeAlign.Near;
+                    break;
+                case KryptonFormTitleStyle.Modern:
+                    FormTitleAlign = PaletteRelativeAlign.Center;
+                    break;
+            }
         }
 
         #endregion
@@ -107,6 +130,11 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
             }
 
             base.OnFormClosing(e);
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
         }
 
         #endregion

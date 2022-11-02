@@ -33,11 +33,14 @@ global using System.Globalization;
 global using System.IO;
 global using System.Reflection;
 global using System.Runtime.InteropServices;
+global using System.Security.Principal;
 global using System.Text;
 global using System.Windows.Forms;
 
 global using Krypton.Toolkit.Suite.Extended.Common;
 global using Krypton.Toolkit.Suite.Extended.Developer.Utilities;
 global using Krypton.Toolkit.Suite.Extended.Global.Utilities;
+global using Krypton.Toolkit.Suite.Extended.Forms;
 global using Krypton.Toolkit.Suite.Extended.Settings;
 global using Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis;
+global using Krypton.Toolkit.Suite.Extended.Tools;
