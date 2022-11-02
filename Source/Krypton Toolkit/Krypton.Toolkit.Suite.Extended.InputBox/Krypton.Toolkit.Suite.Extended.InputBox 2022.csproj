@@ -36,6 +36,8 @@
 		<OutputType>library</OutputType>
 		<RootNamespace>Krypton.Toolkit.Suite.Extended.InputBox</RootNamespace>
 		<AssemblyName>Krypton.Toolkit.Suite.Extended.InputBox</AssemblyName>
+		<!-- Set the CheckEolTargetFramework property to false to fix the warning -->
+		<CheckEolTargetFramework>false</CheckEolTargetFramework>
 		<SignAssembly>True</SignAssembly>
 		<AssemblyOriginatorKeyFile>StrongKrypton.snk</AssemblyOriginatorKeyFile>
 		<UseWindowsForms>true</UseWindowsForms>
@@ -87,7 +89,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="70.22.10.275-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="80.22.11.306-alpha" />
 			</ItemGroup>
 		</When>
 
@@ -178,10 +180,10 @@
 	<None Include="..\Krypton.Toolkit.Suite.Extended.Drawing\Krypton.Toolkit.Suite.Extended.Drawing.licenseheader" Link="Krypton.Toolkit.Suite.Extended.Drawing.licenseheader" />
   </ItemGroup>
   <ItemGroup>
-    <None Update="License\License.txt">
-      <PackagePath></PackagePath>
-      <Pack>true</Pack>
-    </None>
+	<None Update="License\License.txt">
+	  <PackagePath></PackagePath>
+	  <Pack>true</Pack>
+	</None>
   </ItemGroup>
 
 </Project>

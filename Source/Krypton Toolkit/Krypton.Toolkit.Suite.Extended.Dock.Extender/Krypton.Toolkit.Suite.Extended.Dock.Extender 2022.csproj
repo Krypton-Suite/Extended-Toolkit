@@ -36,6 +36,8 @@
 		<OutputType>library</OutputType>
 		<RootNamespace>Krypton.Toolkit.Suite.Extended.Dock.Extender</RootNamespace>
 		<AssemblyName>Krypton.Toolkit.Suite.Extended.Dock.Extender</AssemblyName>
+		<!-- Set the CheckEolTargetFramework property to false to fix the warning -->
+		<CheckEolTargetFramework>false</CheckEolTargetFramework>
 		<SignAssembly>True</SignAssembly>
 		<AssemblyOriginatorKeyFile>StrongKrypton.snk</AssemblyOriginatorKeyFile>
 		<UseWindowsForms>true</UseWindowsForms>
