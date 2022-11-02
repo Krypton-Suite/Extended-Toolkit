@@ -59,8 +59,27 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
 
         public KryptonFormExtended NextWindow { get => _nextWindow; set => _nextWindow = value; }
 
-        [Category(@"Appearance"), DefaultValue(typeof(KryptonFormTitleStyle), "KryptonFormTitleStyle.Inherit")]
+        [Category(@"Appearance"), DefaultValue(typeof(KryptonFormTitleStyle), "KryptonFormTitleStyle.Inherit"), Description(@"Arranges the current window title.")]
         public KryptonFormTitleStyle TitleStyle { get => _titleStyle; set { _titleStyle = value; UpdateTitleStyle(value); } }
+
+        public static GlobalStrings Strings { get; } = new();
+
+        /// <summary>
+        /// Gets a set of global strings used by Krypton that can be localized.
+        /// </summary>
+        [Category(@"Visuals")]
+        [Description(@"Collection of global strings.")]
+        [MergableProperty(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+        [Localizable(true)]
+        public GlobalStrings GlobalStrings => Strings;
+
+        private bool ShouldSerializeGlobalStrings() => !Strings.IsDefault;
+
+        /// <summary>
+        /// Resets the GlobalStrings property to its default value.
+        /// </summary>
+        public void ResetGlobalStrings() => Strings.Reset();
 
         #endregion
 

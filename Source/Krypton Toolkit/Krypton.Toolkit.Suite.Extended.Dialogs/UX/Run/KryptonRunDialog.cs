@@ -18,5 +18,35 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         {
             InitializeComponent();
         }
+
+        private void KryptonRunDialog_Load(object sender, EventArgs e)
+        {
+            //kcmdOpenInExplorer.ImageLarge =
+        }
+
+        private void bsReset_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(kcmbRunPath.Text))
+            {
+                kcmbRunPath.Text = null;
+            }
+        }
+
+        private void kcmbRunPath_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void kcmbRunPath_TextChanged(object sender, EventArgs e)
+        {
+            if (kcmbRunPath.Text == string.Empty)
+            {
+                bsReset.Enabled = ButtonEnabled.False;
+            }
+            else
+            {
+                bsReset.Enabled = ButtonEnabled.True;
+            }
+        }
     }
 }
