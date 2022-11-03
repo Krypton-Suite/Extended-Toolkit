@@ -100,6 +100,7 @@
             // 
             // kryptonContextMenuItem1
             // 
+            this.kryptonContextMenuItem1.KryptonCommand = this.kcmdRunAsAdministrator;
             this.kryptonContextMenuItem1.Text = "Run as &Administrator";
             // 
             // kryptonContextMenuItems2
@@ -109,6 +110,7 @@
             // 
             // kryptonContextMenuItem2
             // 
+            this.kryptonContextMenuItem2.KryptonCommand = this.kcmdOpenInExplorer;
             this.kryptonContextMenuItem2.Text = "&Open in Explorer";
             // 
             // kryptonButton2
@@ -220,11 +222,12 @@
             // 
             // kcmdRunAsAdministrator
             // 
-            this.kcmdRunAsAdministrator.Text = "kryptonCommand1";
+            this.kcmdRunAsAdministrator.Text = "Run process as &administrator";
             // 
             // kcmdOpenInExplorer
             // 
-            this.kcmdOpenInExplorer.Text = "kryptonCommand2";
+            this.kcmdOpenInExplorer.Text = "&Open in file explorer";
+            this.kcmdOpenInExplorer.Execute += new System.EventHandler(this.kcmdOpenInExplorer_Execute);
             // 
             // KryptonRunDialog
             // 
@@ -239,6 +242,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "KryptonRunDialog";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.StateCommon.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | Krypton.Toolkit.PaletteDrawBorders.Left) 
             | Krypton.Toolkit.PaletteDrawBorders.Right)));

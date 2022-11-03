@@ -89,7 +89,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="80.22.11.306-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="80.22.11.307-alpha" />
 			</ItemGroup>
 		</When>
 
@@ -160,11 +160,6 @@
 	<DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Dialogs\Krypton.Toolkit.Suite.Extended.Dialogs.xml</DocumentationFile>
 	<OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Dialogs\</OutputPath>
   </PropertyGroup>
-  <ItemGroup>
-    <Compile Remove="Classes\**" />
-    <EmbeddedResource Remove="Classes\**" />
-    <None Remove="Classes\**" />
-  </ItemGroup>
   <ItemGroup>
 	<Reference Include="Krypton.Toolkit.Suite.Extended.Buttons">
 	  <HintPath>..\Krypton.Toolkit.Suite.Extended.Buttons\obj\Nightly\net462\Krypton.Toolkit.Suite.Extended.Buttons.dll</HintPath>
