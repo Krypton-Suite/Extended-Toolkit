@@ -44,3 +44,5 @@ global using Krypton.Toolkit.Suite.Extended.Forms;
 global using Krypton.Toolkit.Suite.Extended.Settings;
 global using Krypton.Toolkit.Suite.Extended.Utilities.System.Synthesis;
 global using Krypton.Toolkit.Suite.Extended.Tools;
+
+global using Microsoft.WindowsAPICodePack.Dialogs;

@@ -201,7 +201,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         #endregion
 
         #region Constructors
-        public KryptonAboutDialog(Image applicationIcon, Assembly assembly, FadeSpeedChoice speedChoice = FadeSpeedChoice.Normal, float fadeDelay = 50, int fadeSpeed = 50)
+        public KryptonAboutDialog(Image applicationIcon, Assembly assembly, Effects.FadeSpeedChoice speedChoice = Effects.FadeSpeedChoice.Normal, float fadeDelay = 50, int fadeSpeed = 50)
         {
             InitializeComponent();
 

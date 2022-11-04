@@ -33,13 +33,13 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
 
         #region Fade Items
 
-        private bool _useFade;
+        private bool _useBlur, _useFade;
 
-        private FadeController _fadeController = new();
+        private float _fadeSpeed;
 
-        private int _fadeSpeed;
+        private FadeSpeedChoice _fadeSpeedChoice;
 
-        private KryptonFormExtended _currentWindow, _nextWindow;
+        private int _sleepInterval;
 
         #endregion
 
@@ -49,15 +49,24 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
 
         #region Public
 
+        #region Fading
+
         [DefaultValue(false)]
-        public bool UseFade { get => _useFade; set => _useFade = value; }
+        public bool UseBlur { get => _useBlur; set => _useBlur = value; }
 
-        [DefaultValue(50)]
-        public int FadeSpeed { get => _fadeSpeed; set => _fadeSpeed = value; }
+        [DefaultValue(true), Description("")]
+        public bool UseFade { get => _useFade; set => _useBlur = value; }
 
-        public KryptonFormExtended CurrentWindow { get => _currentWindow; set => _currentWindow = value; }
+        [DefaultValue(50), Description("")]
+        public int SleepInterval { get => _sleepInterval; set => _sleepInterval = value; }
 
-        public KryptonFormExtended NextWindow { get => _nextWindow; set => _nextWindow = value; }
+        [DefaultValue(0), Description("")]
+        public float FadeSpeed { get => _fadeSpeed; set => _fadeSpeed = value; }
+
+        [DefaultValue(typeof(FadeSpeedChoice), "FadeSpeedChoice.Normal"), Description("")]
+        public FadeSpeedChoice FadeSpeedChoice { get => _fadeSpeedChoice; set => _fadeSpeedChoice = value; }
+
+        #endregion
 
         [Category(@"Appearance"), DefaultValue(typeof(KryptonFormTitleStyle), "KryptonFormTitleStyle.Inherit"), Description(@"Arranges the current window title.")]
         public KryptonFormTitleStyle TitleStyle { get => _titleStyle; set { _titleStyle = value; UpdateTitleStyle(value); } }
@@ -91,9 +100,11 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
 
             _fadeSpeed = 50;
 
-            _currentWindow = null;
+            _useBlur = false;
 
-            _nextWindow = null;
+            _sleepInterval = 50;
+
+            _fadeSpeedChoice = FadeSpeedChoice.Normal;
 
             _titleStyle = KryptonFormTitleStyle.Inherit;
         }
@@ -126,26 +137,29 @@ namespace Krypton.Toolkit.Suite.Extended.Forms
 
         protected override void OnLoad(EventArgs e)
         {
-            if (_useFade)
+            if (UseFade)
             {
-                _fadeController.FadeWindowIn(this);
+#if NETCOREAPP3_1_OR_GREATER
+                FadeControllerNETCoreSafe.FadeWindowInExtended(this, SleepInterval);
+#else
+                FadeController.FadeIn(this, FadeSpeedChoice, FadeSpeed);
+#endif
             }
+
+            BlurValues.BlurWhenFocusLost = UseBlur;
 
             base.OnLoad(e);
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
-            if (_useFade)
+            if (UseFade)
             {
-                if (_nextWindow != null)
-                {
-                    _fadeController.FadeWindowOut(_currentWindow, _nextWindow);
-                }
-                else
-                {
-                    _fadeController.FadeWindowOut(_currentWindow);
-                }
+#if NETCOREAPP3_1_OR_GREATER
+                FadeControllerNETCoreSafe.FadeWindowOutExtended(this, SleepInterval);
+#else
+                FadeController.FadeOutAndClose(this, _fadeSpeedChoice);
+#endif
             }
 
             base.OnFormClosing(e);

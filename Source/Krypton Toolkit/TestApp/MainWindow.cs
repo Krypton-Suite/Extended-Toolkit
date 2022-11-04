@@ -83,5 +83,12 @@ namespace TestApp
 
             kryptonFormExtended.Show();
         }
+
+        private void kbtnDialogExamples_Click(object sender, EventArgs e)
+        {
+            DialogExamples dialogExamples = new DialogExamples();
+
+            dialogExamples.Show();
+        }
     }
 }

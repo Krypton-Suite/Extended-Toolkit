@@ -160,6 +160,9 @@
 		<OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Themes\</OutputPath>
 	</PropertyGroup>
 	<ItemGroup>
+	  <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Shared\Krypton.Toolkit.Suite.Extended.Shared 2022.csproj" />
+	</ItemGroup>
+	<ItemGroup>
 	  <None Update="License\License.txt">
 	    <PackagePath></PackagePath>
 	    <Pack>true</Pack>
