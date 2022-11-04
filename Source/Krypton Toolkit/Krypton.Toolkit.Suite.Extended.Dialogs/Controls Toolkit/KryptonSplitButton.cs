@@ -47,6 +47,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         #endregion
 
         #region Properties
+        [DefaultValue(true)]
         public bool ShowSplitOption
         {
             get => _showSplitOption;
@@ -68,8 +69,8 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         }
 
         /// <summary>Gets or sets a value indicating whether [use uac elevation].</summary>
-        /// <value>
-        ///   <c>true</c> if [use uac elevation]; otherwise, <c>false</c>.</value>
+        /// <value><c>true</c> if [use uac elevation]; otherwise, <c>false</c>.</value>
+        [DefaultValue(false)]
         public bool UseUACElevation
         {
             get => _useUACElevation;
@@ -82,7 +83,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
                     if (_useUACElevation)
                     {
-                        Values.Image = IconExtractor.LoadIcon(IconExtractor.IconType.Shield, SystemInformation.SmallIconSize).ToBitmap();
+                        Values.Image = GraphicsExtensions.LoadIcon(GraphicsExtensions.IconType.Shield, SystemInformation.SmallIconSize).ToBitmap();
                     }
                     else
                     {
@@ -92,6 +93,9 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
             }
         }
 
+        /// <summary>Gets or sets the process path.</summary>
+        /// <value>The process path.</value>
+        [DefaultValue(null)]
         public string ProcessPath { get => _processPath; set => _processPath = value; }
         #endregion
 
@@ -116,7 +120,11 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
         {
             AutoSize = true;
 
-            ShowSplitOption = true;
+            _showSplitOption = true;
+
+            _useUACElevation = false;
+
+            _processPath = null;
         }
         #endregion
 

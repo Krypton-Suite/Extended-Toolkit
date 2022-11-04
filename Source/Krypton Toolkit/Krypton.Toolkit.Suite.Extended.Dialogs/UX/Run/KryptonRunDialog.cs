@@ -58,14 +58,7 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
 
         private void kcmbRunPath_TextChanged(object sender, EventArgs e)
         {
-            if (kcmbRunPath.Text == string.Empty)
-            {
-                bsReset.Enabled = ButtonEnabled.False;
-            }
-            else
-            {
-                bsReset.Enabled = ButtonEnabled.True;
-            }
+          
         }
         
         private void kcmdOpenInExplorer_Execute(object sender, EventArgs e)

@@ -113,7 +113,7 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
 
                 if (shieldSize == UACShieldSize.Small)
                 {
-                    Values.Image = IconExtractor.LoadIcon(IconExtractor.IconType.Shield, SystemInformation.SmallIconSize).ToBitmap();
+                    Values.Image = GraphicsExtensions.LoadIcon(GraphicsExtensions.IconType.Shield, SystemInformation.SmallIconSize).ToBitmap();
 
                     Invalidate();
                 }
