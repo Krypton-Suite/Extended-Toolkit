@@ -52,6 +52,35 @@
             kcmdOpenAsAdministrator.Text = Properties.Resources.OpenAsAdministratorCommandText;
 
             kcmdOpenInExplorer.Text = Properties.Resources.OpenInExplorerCommandText;
+
+            kcmdOpenInExplorer.ImageLarge = GraphicsExtensions.SetIcon(GraphicsExtensions.ExtractIconFromFilePath(@"C:\Windows\explorer.exe").ToBitmap(), new Size(64, 64));
+
+            kcmdOpenInExplorer.ImageSmall = GraphicsExtensions.SetIcon(GraphicsExtensions.ExtractIconFromFilePath(@"C:\Windows\explorer.exe").ToBitmap(), new Size(16, 16));
+        }
+
+        private void bsBrowse_Click(object sender, EventArgs e)
+        {
+            kcmbFilePath.Text = Browse();
+        }
+
+        private void kcmbFilePath_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(kcmbFilePath.Text))
+            {
+                bsReset.Visible = true;
+
+                ksbRun.Enabled = true;
+
+                pbxProcessIcon.Image = GraphicsExtensions.SetIcon(GraphicsExtensions.ExtractIconFromFilePath(kcmbFilePath.Text).ToBitmap(), new Size(32, 32));
+            }
+            else
+            {
+                bsReset.Visible = false;
+
+                ksbRun.Enabled = false;
+
+                pbxProcessIcon.Image = null;
+            }
         }
 
         private void AdjustStartPosition(RunDialogStartPosition startPosition)
@@ -70,6 +99,33 @@
                     StartPosition = FormStartPosition.Manual;
                     break;
             }
+        }
+
+        private string Browse(bool isFolderPicker = false)
+        {
+            string result = string.Empty;
+
+            try
+            {
+                CommonOpenFileDialog cofd = new CommonOpenFileDialog();
+
+                cofd.IsFolderPicker = isFolderPicker;
+
+                cofd.Title = @"Browse for a resource:";
+
+                if (cofd.ShowDialog() == CommonFileDialogResult.Ok)
+                {
+                    result = Path.GetFullPath(cofd.FileName);
+                }
+            }
+            catch (Exception e)
+            {
+                ExceptionCapture.CaptureException(e);
+
+                return result;
+            }
+
+            return result;
         }
 
         #endregion

@@ -1,0 +1,43 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Krypton.Toolkit.Suite.Extended.Dialogs
+{
+    internal class SettingsManager
+    {
+        #region Instance Fields
+
+        private Properties.Settings _mySettings = new Properties.Settings();
+
+        #endregion
+
+        #region Identity
+
+        public SettingsManager()
+        {
+            
+        }
+
+        #endregion
+
+        #region Implementation
+
+        public void SetShowApplicationIconPreview(bool showApplicationIconPreview) => _mySettings.ShowApplicationIconPreview = showApplicationIconPreview;
+
+        public bool GetShowApplicationIconPreview() => _mySettings.ShowApplicationIconPreview;
+
+        public void SetShowOptionsButton(bool showOptionsButton) => _mySettings.ShowOptionsButton = showOptionsButton;
+
+        public bool GetShowOptionsButton() => _mySettings.ShowOptionsButton;
+
+        public void GetRunDialogHistory(StringCollection runDialogHistory) => _mySettings.RunDialogHistory = runDialogHistory;
+
+        public StringCollection GetRunDialogHistory() => _mySettings.RunDialogHistory;
+
+        #endregion
+    }
+}

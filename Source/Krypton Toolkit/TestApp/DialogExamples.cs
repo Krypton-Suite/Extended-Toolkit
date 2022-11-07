@@ -48,7 +48,7 @@ namespace TestApp
 
         private void kbtnRun_Click(object sender, EventArgs e)
         {
-            KryptonRunDialog runDialog = new KryptonRunDialog(RunDialogStartPosition.CentreScreen);
+            KryptonRunDialog runDialog = new KryptonRunDialog(RunDialogStartPosition.BottomLeft);
 
             runDialog.ShowDialog();
         }

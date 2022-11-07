@@ -33,8 +33,10 @@
             this.kcmRunOptions = new Krypton.Toolkit.KryptonContextMenu();
             this.kryptonContextMenuItems2 = new Krypton.Toolkit.KryptonContextMenuItems();
             this.kryptonContextMenuItem3 = new Krypton.Toolkit.KryptonContextMenuItem();
+            this.kcmdOpenInExplorer = new Krypton.Toolkit.KryptonCommand();
             this.kryptonContextMenuSeparator2 = new Krypton.Toolkit.KryptonContextMenuSeparator();
             this.kryptonContextMenuItem4 = new Krypton.Toolkit.KryptonContextMenuItem();
+            this.kcmdOpenAsAdministrator = new Krypton.Toolkit.KryptonCommand();
             this.kbtnCancel = new Krypton.Toolkit.KryptonButton();
             this.kbtnSettings = new Krypton.Toolkit.KryptonButton();
             this.kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
@@ -42,18 +44,16 @@
             this.kcmbFilePath = new Krypton.Toolkit.KryptonComboBox();
             this.bsBrowse = new Krypton.Toolkit.ButtonSpecAny();
             this.bsReset = new Krypton.Toolkit.ButtonSpecAny();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pbxProcessIcon = new System.Windows.Forms.PictureBox();
             this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
             this.kwlHeader = new Krypton.Toolkit.KryptonWrapLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.kcmdOpenInExplorer = new Krypton.Toolkit.KryptonCommand();
-            this.kcmdOpenAsAdministrator = new Krypton.Toolkit.KryptonCommand();
             ((System.ComponentModel.ISupportInitialize)(this.kpnlButtons)).BeginInit();
             this.kpnlButtons.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kpnlContent)).BeginInit();
             this.kpnlContent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kcmbFilePath)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxProcessIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -101,10 +101,18 @@
             this.kryptonContextMenuItem3.KryptonCommand = this.kcmdOpenInExplorer;
             this.kryptonContextMenuItem3.Text = "Menu Item";
             // 
+            // kcmdOpenInExplorer
+            // 
+            this.kcmdOpenInExplorer.Text = "kryptonCommand1";
+            // 
             // kryptonContextMenuItem4
             // 
             this.kryptonContextMenuItem4.KryptonCommand = this.kcmdOpenAsAdministrator;
             this.kryptonContextMenuItem4.Text = "Menu Item";
+            // 
+            // kcmdOpenAsAdministrator
+            // 
+            this.kcmdOpenAsAdministrator.Text = "kryptonCommand2";
             // 
             // kbtnCancel
             // 
@@ -139,7 +147,7 @@
             // kpnlContent
             // 
             this.kpnlContent.Controls.Add(this.kcmbFilePath);
-            this.kpnlContent.Controls.Add(this.pictureBox2);
+            this.kpnlContent.Controls.Add(this.pbxProcessIcon);
             this.kpnlContent.Controls.Add(this.kryptonLabel1);
             this.kpnlContent.Controls.Add(this.kwlHeader);
             this.kpnlContent.Controls.Add(this.pictureBox1);
@@ -164,24 +172,28 @@
             this.kcmbFilePath.Size = new System.Drawing.Size(276, 24);
             this.kcmbFilePath.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
             this.kcmbFilePath.TabIndex = 4;
+            this.kcmbFilePath.TextChanged += new System.EventHandler(this.kcmbFilePath_TextChanged);
             // 
             // bsBrowse
             // 
             this.bsBrowse.Text = "..&.";
             this.bsBrowse.UniqueName = "8a1d6890727c478dade41dcbdbd74238";
+            this.bsBrowse.Click += new System.EventHandler(this.bsBrowse_Click);
             // 
             // bsReset
             // 
             this.bsReset.UniqueName = "931933948ca64018931b454e39422fc6";
+            this.bsReset.Visible = false;
             // 
-            // pictureBox2
+            // pbxProcessIcon
             // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.Location = new System.Drawing.Point(350, 76);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(32, 32);
-            this.pictureBox2.TabIndex = 3;
-            this.pictureBox2.TabStop = false;
+            this.pbxProcessIcon.BackColor = System.Drawing.Color.Transparent;
+            this.pbxProcessIcon.Location = new System.Drawing.Point(350, 76);
+            this.pbxProcessIcon.Name = "pbxProcessIcon";
+            this.pbxProcessIcon.Size = new System.Drawing.Size(32, 32);
+            this.pbxProcessIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pbxProcessIcon.TabIndex = 3;
+            this.pbxProcessIcon.TabStop = false;
             // 
             // kryptonLabel1
             // 
@@ -215,14 +227,6 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // kcmdOpenInExplorer
-            // 
-            this.kcmdOpenInExplorer.Text = "kryptonCommand1";
-            // 
-            // kcmdOpenAsAdministrator
-            // 
-            this.kcmdOpenAsAdministrator.Text = "kryptonCommand2";
-            // 
             // KryptonRunDialog
             // 
             this.AcceptButton = this.ksbRun;
@@ -250,7 +254,7 @@
             this.kpnlContent.ResumeLayout(false);
             this.kpnlContent.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kcmbFilePath)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxProcessIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -277,7 +281,7 @@
         private PictureBox pictureBox1;
         private KryptonWrapLabel kwlHeader;
         private KryptonLabel kryptonLabel1;
-        private PictureBox pictureBox2;
+        private PictureBox pbxProcessIcon;
         private KryptonComboBox kcmbFilePath;
         private ButtonSpecAny bsBrowse;
         private ButtonSpecAny bsReset;

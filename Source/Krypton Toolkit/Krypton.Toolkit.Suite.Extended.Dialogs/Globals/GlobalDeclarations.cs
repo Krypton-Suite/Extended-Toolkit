@@ -27,6 +27,7 @@
 
 global using System;
 global using System.ComponentModel;
+global using System.Collections.Specialized;
 global using System.Diagnostics;
 global using System.Drawing;
 global using System.Globalization;
