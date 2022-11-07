@@ -72,6 +72,14 @@
                 ksbRun.Enabled = true;
 
                 pbxProcessIcon.Image = GraphicsExtensions.SetIcon(GraphicsExtensions.ExtractIconFromFilePath(kcmbFilePath.Text).ToBitmap(), new Size(32, 32));
+
+                FileVersionInfo info;
+
+                //info
+
+                FileInfo fi = new FileInfo(kcmbFilePath.Text);
+
+                ttAppIcon.SetToolTip(pbxProcessIcon, $"Name: {Path.GetFileName(kcmbFilePath.Text)}");
             }
             else
             {
@@ -101,6 +109,10 @@
             }
         }
 
+        private void pbxProcessIcon_MouseEnter(object sender, EventArgs e)
+        {
+        }
+
         private string Browse(bool isFolderPicker = false)
         {
             string result = string.Empty;
@@ -126,6 +138,15 @@
             }
 
             return result;
+        }
+
+        private void Reset()
+        {
+            kcmbFilePath.Text = string.Empty;
+
+            bsReset.Visible = false;
+
+            pbxProcessIcon.Image = null;
         }
 
         #endregion

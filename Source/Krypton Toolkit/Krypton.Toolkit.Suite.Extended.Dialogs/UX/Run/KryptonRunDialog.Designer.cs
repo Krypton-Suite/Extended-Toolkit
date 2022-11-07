@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.kpnlButtons = new Krypton.Toolkit.KryptonPanel();
             this.ksbRun = new Krypton.Toolkit.Suite.Extended.Dialogs.KryptonSplitButton();
             this.kcmRunOptions = new Krypton.Toolkit.KryptonContextMenu();
@@ -48,6 +49,7 @@
             this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
             this.kwlHeader = new Krypton.Toolkit.KryptonWrapLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.ttAppIcon = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.kpnlButtons)).BeginInit();
             this.kpnlButtons.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kpnlContent)).BeginInit();
@@ -194,6 +196,7 @@
             this.pbxProcessIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pbxProcessIcon.TabIndex = 3;
             this.pbxProcessIcon.TabStop = false;
+            this.pbxProcessIcon.MouseEnter += new System.EventHandler(this.pbxProcessIcon_MouseEnter);
             // 
             // kryptonLabel1
             // 
@@ -287,5 +290,6 @@
         private ButtonSpecAny bsReset;
         private KryptonCommand kcmdOpenInExplorer;
         private KryptonCommand kcmdOpenAsAdministrator;
+        private ToolTip ttAppIcon;
     }
 }
