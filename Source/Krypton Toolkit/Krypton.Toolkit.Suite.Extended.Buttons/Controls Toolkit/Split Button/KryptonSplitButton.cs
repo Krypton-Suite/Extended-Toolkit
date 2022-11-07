@@ -117,6 +117,9 @@ namespace Krypton.Toolkit.Suite.Extended.Buttons
             AutoSize = true;
 
             ShowSplitOption = true;
+
+            // Default size
+            Size = new Size(90, 25);
         }
         #endregion
 

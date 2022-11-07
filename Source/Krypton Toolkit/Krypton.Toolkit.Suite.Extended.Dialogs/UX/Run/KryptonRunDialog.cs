@@ -1,29 +1,60 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-using Krypton.Toolkit.Suite.Extended.Forms;
-
-namespace Krypton.Toolkit.Suite.Extended.Dialogs
+﻿namespace Krypton.Toolkit.Suite.Extended.Dialogs
 {
     public partial class KryptonRunDialog : KryptonFormExtended
     {
-        public KryptonRunDialog(RunDialogStartPosition startPosition)
+        #region Instance Fields
+
+        private bool _showApplicationIconPreview, _showOptionsButton, _showResetButton;
+
+        #endregion
+
+        public KryptonRunDialog(RunDialogStartPosition startPosition, bool showApplicationIconPreview = true, bool showOptionsButton = false, bool showResetButton = true)
         {
             InitializeComponent();
 
-            SetupStartPosition(startPosition);
+            _showApplicationIconPreview = showApplicationIconPreview;
+
+            _showOptionsButton = showOptionsButton;
+
+            _showResetButton = showResetButton;
+
+            Setup();
+
+            AdjustStartPosition(startPosition);
+        }
+
+        private void KryptonRunDialog_Load(object sender, EventArgs e)
+        {
+
         }
 
         #region Implementation
+        private void Setup()
+        {
+            kwlHeader.Text = Properties.Resources.DefaultRunDialogContentText;
 
-        private void SetupStartPosition(RunDialogStartPosition startPosition)
+            kryptonLabel1.Text = Properties.Resources.OpenDefaultText;
+
+            pictureBox1.Image = Properties.Resources.Run_481;
+
+            Icon = Properties.Resources.Run_48;
+
+            kbtnSettings.Values.Image = Properties.Resources.Settings_16_x_16;
+
+            bsReset.Image = Properties.Resources.Reset_16_x_16;
+
+            bsReset.Visible = _showResetButton;
+
+            kbtnSettings.Visible = _showOptionsButton;
+
+            kcmbFilePath.CueHint.CueHintText = Properties.Resources.InputBoxCueText;
+
+            kcmdOpenAsAdministrator.Text = Properties.Resources.OpenAsAdministratorCommandText;
+
+            kcmdOpenInExplorer.Text = Properties.Resources.OpenInExplorerCommandText;
+        }
+
+        private void AdjustStartPosition(RunDialogStartPosition startPosition)
         {
             switch (startPosition)
             {
@@ -35,48 +66,12 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs
                 case RunDialogStartPosition.CentreScreen:
                     StartPosition = FormStartPosition.CenterScreen;
                     break;
-            }
-        }
-
-        private void KryptonRunDialog_Load(object sender, EventArgs e)
-        {
-            //kcmdOpenInExplorer.ImageLarge = Icon
-        }
-
-        private void bsReset_Click(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrEmpty(kcmbRunPath.Text))
-            {
-                kcmbRunPath.Text = null;
-            }
-        }
-
-        private void kcmbRunPath_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void kcmbRunPath_TextChanged(object sender, EventArgs e)
-        {
-          
-        }
-        
-        private void kcmdOpenInExplorer_Execute(object sender, EventArgs e)
-        {
-            try
-            {
-                Process.Start("explorer.exe", kcmbRunPath.Text);
-
-                Hide();
-            }
-            catch (Exception exception)
-            {
-                ExceptionCapture.CaptureException(exception);
+                default:
+                    StartPosition = FormStartPosition.Manual;
+                    break;
             }
         }
 
         #endregion
-
-       
     }
 }

@@ -61,6 +61,15 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Type the name of a program, folder, document or Internet resource, and Windows will open it for you..
+        /// </summary>
+        internal static string DefaultRunDialogContentText {
+            get {
+                return ResourceManager.GetString("DefaultRunDialogContentText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Input_Box_Critical_128_x_128 {
@@ -131,6 +140,42 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Type a file path or URL here....
+        /// </summary>
+        internal static string InputBoxCueText {
+            get {
+                return ResourceManager.GetString("InputBoxCueText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open as &amp;administrator.
+        /// </summary>
+        internal static string OpenAsAdministratorCommandText {
+            get {
+                return ResourceManager.GetString("OpenAsAdministratorCommandText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open:.
+        /// </summary>
+        internal static string OpenDefaultText {
+            get {
+                return ResourceManager.GetString("OpenDefaultText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open process in e&amp;xplorer.
+        /// </summary>
+        internal static string OpenInExplorerCommandText {
+            get {
+                return ResourceManager.GetString("OpenInExplorerCommandText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Reset_16_x_16 {
@@ -166,6 +211,16 @@ namespace Krypton.Toolkit.Suite.Extended.Dialogs.Properties {
         internal static System.Drawing.Bitmap Run_481 {
             get {
                 object obj = ResourceManager.GetObject("Run 481", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Settings_16_x_16 {
+            get {
+                object obj = ResourceManager.GetObject("Settings_16_x_16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -28,102 +28,104 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KryptonRunDialog));
             this.kpnlButtons = new Krypton.Toolkit.KryptonPanel();
-            this.kctxRun = new Krypton.Toolkit.KryptonContextMenu();
-            this.kryptonContextMenuItems1 = new Krypton.Toolkit.KryptonContextMenuItems();
-            this.kryptonContextMenuItem1 = new Krypton.Toolkit.KryptonContextMenuItem();
-            this.kcmdRunAsAdministrator = new Krypton.Toolkit.KryptonCommand();
-            this.kryptonContextMenuSeparator1 = new Krypton.Toolkit.KryptonContextMenuSeparator();
+            this.ksbRun = new Krypton.Toolkit.Suite.Extended.Dialogs.KryptonSplitButton();
+            this.kcmRunOptions = new Krypton.Toolkit.KryptonContextMenu();
             this.kryptonContextMenuItems2 = new Krypton.Toolkit.KryptonContextMenuItems();
-            this.kryptonContextMenuItem2 = new Krypton.Toolkit.KryptonContextMenuItem();
-            this.kcmdOpenInExplorer = new Krypton.Toolkit.KryptonCommand();
-            this.kryptonButton2 = new Krypton.Toolkit.KryptonButton();
-            this.kbtnBrowse = new Krypton.Toolkit.KryptonButton();
+            this.kryptonContextMenuItem3 = new Krypton.Toolkit.KryptonContextMenuItem();
+            this.kryptonContextMenuSeparator2 = new Krypton.Toolkit.KryptonContextMenuSeparator();
+            this.kryptonContextMenuItem4 = new Krypton.Toolkit.KryptonContextMenuItem();
+            this.kbtnCancel = new Krypton.Toolkit.KryptonButton();
+            this.kbtnSettings = new Krypton.Toolkit.KryptonButton();
             this.kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
-            this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
-            this.pbxResourceIcon = new System.Windows.Forms.PictureBox();
-            this.kcmbRunPath = new Krypton.Toolkit.KryptonComboBox();
+            this.kpnlContent = new Krypton.Toolkit.KryptonPanel();
+            this.kcmbFilePath = new Krypton.Toolkit.KryptonComboBox();
+            this.bsBrowse = new Krypton.Toolkit.ButtonSpecAny();
+            this.bsReset = new Krypton.Toolkit.ButtonSpecAny();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
-            this.kryptonWrapLabel1 = new Krypton.Toolkit.KryptonWrapLabel();
+            this.kwlHeader = new Krypton.Toolkit.KryptonWrapLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.kryptonContextMenuItems3 = new Krypton.Toolkit.KryptonContextMenuItems();
-            this.kryptonSplitButton1 = new Krypton.Toolkit.Suite.Extended.Dialogs.KryptonSplitButton();
+            this.kcmdOpenInExplorer = new Krypton.Toolkit.KryptonCommand();
+            this.kcmdOpenAsAdministrator = new Krypton.Toolkit.KryptonCommand();
             ((System.ComponentModel.ISupportInitialize)(this.kpnlButtons)).BeginInit();
             this.kpnlButtons.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
-            this.kryptonPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxResourceIcon)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kcmbRunPath)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kpnlContent)).BeginInit();
+            this.kpnlContent.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kcmbFilePath)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // kpnlButtons
             // 
-            this.kpnlButtons.Controls.Add(this.kryptonSplitButton1);
-            this.kpnlButtons.Controls.Add(this.kryptonButton2);
-            this.kpnlButtons.Controls.Add(this.kbtnBrowse);
+            this.kpnlButtons.Controls.Add(this.ksbRun);
+            this.kpnlButtons.Controls.Add(this.kbtnCancel);
+            this.kpnlButtons.Controls.Add(this.kbtnSettings);
             this.kpnlButtons.Controls.Add(this.kryptonBorderEdge1);
             this.kpnlButtons.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.kpnlButtons.Location = new System.Drawing.Point(0, 118);
             this.kpnlButtons.Name = "kpnlButtons";
             this.kpnlButtons.PanelBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelAlternate;
-            this.kpnlButtons.Size = new System.Drawing.Size(384, 50);
+            this.kpnlButtons.Size = new System.Drawing.Size(394, 50);
             this.kpnlButtons.TabIndex = 0;
             // 
-            // kctxRun
+            // ksbRun
             // 
-            this.kctxRun.Items.AddRange(new Krypton.Toolkit.KryptonContextMenuItemBase[] {
-            this.kryptonContextMenuItems1,
-            this.kryptonContextMenuSeparator1,
+            this.ksbRun.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.ksbRun.AutoSize = true;
+            this.ksbRun.CornerRoundingRadius = -1F;
+            this.ksbRun.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.ksbRun.Enabled = false;
+            this.ksbRun.KryptonContextMenu = this.kcmRunOptions;
+            this.ksbRun.Location = new System.Drawing.Point(168, 13);
+            this.ksbRun.Name = "ksbRun";
+            this.ksbRun.Size = new System.Drawing.Size(118, 25);
+            this.ksbRun.TabIndex = 2;
+            this.ksbRun.Values.Text = "Ru&n...";
+            // 
+            // kcmRunOptions
+            // 
+            this.kcmRunOptions.Items.AddRange(new Krypton.Toolkit.KryptonContextMenuItemBase[] {
             this.kryptonContextMenuItems2});
-            // 
-            // kryptonContextMenuItems1
-            // 
-            this.kryptonContextMenuItems1.Items.AddRange(new Krypton.Toolkit.KryptonContextMenuItemBase[] {
-            this.kryptonContextMenuItem1});
-            // 
-            // kryptonContextMenuItem1
-            // 
-            this.kryptonContextMenuItem1.KryptonCommand = this.kcmdRunAsAdministrator;
-            this.kryptonContextMenuItem1.Text = "Run as &Administrator";
-            // 
-            // kcmdRunAsAdministrator
-            // 
-            this.kcmdRunAsAdministrator.Text = "Run process as &administrator";
             // 
             // kryptonContextMenuItems2
             // 
             this.kryptonContextMenuItems2.Items.AddRange(new Krypton.Toolkit.KryptonContextMenuItemBase[] {
-            this.kryptonContextMenuItem2});
+            this.kryptonContextMenuItem3,
+            this.kryptonContextMenuSeparator2,
+            this.kryptonContextMenuItem4});
             // 
-            // kryptonContextMenuItem2
+            // kryptonContextMenuItem3
             // 
-            this.kryptonContextMenuItem2.KryptonCommand = this.kcmdOpenInExplorer;
-            this.kryptonContextMenuItem2.Text = "&Open in Explorer";
+            this.kryptonContextMenuItem3.KryptonCommand = this.kcmdOpenInExplorer;
+            this.kryptonContextMenuItem3.Text = "Menu Item";
             // 
-            // kcmdOpenInExplorer
+            // kryptonContextMenuItem4
             // 
-            this.kcmdOpenInExplorer.Text = "&Open in file explorer";
-            this.kcmdOpenInExplorer.Execute += new System.EventHandler(this.kcmdOpenInExplorer_Execute);
+            this.kryptonContextMenuItem4.KryptonCommand = this.kcmdOpenAsAdministrator;
+            this.kryptonContextMenuItem4.Text = "Menu Item";
             // 
-            // kryptonButton2
+            // kbtnCancel
             // 
-            this.kryptonButton2.CornerRoundingRadius = -1F;
-            this.kryptonButton2.Location = new System.Drawing.Point(186, 13);
-            this.kryptonButton2.Name = "kryptonButton2";
-            this.kryptonButton2.Size = new System.Drawing.Size(90, 25);
-            this.kryptonButton2.TabIndex = 2;
-            this.kryptonButton2.Values.Text = "kryptonButton2";
+            this.kbtnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.kbtnCancel.CornerRoundingRadius = -1F;
+            this.kbtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.kbtnCancel.Location = new System.Drawing.Point(292, 13);
+            this.kbtnCancel.Name = "kbtnCancel";
+            this.kbtnCancel.Size = new System.Drawing.Size(90, 25);
+            this.kbtnCancel.TabIndex = 3;
+            this.kbtnCancel.Values.Text = "Can&cel";
             // 
-            // kbtnBrowse
+            // kbtnSettings
             // 
-            this.kbtnBrowse.CornerRoundingRadius = -1F;
-            this.kbtnBrowse.Location = new System.Drawing.Point(282, 13);
-            this.kbtnBrowse.Name = "kbtnBrowse";
-            this.kbtnBrowse.Size = new System.Drawing.Size(90, 25);
-            this.kbtnBrowse.TabIndex = 1;
-            this.kbtnBrowse.Values.Text = "&Browse...";
+            this.kbtnSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.kbtnSettings.CornerRoundingRadius = -1F;
+            this.kbtnSettings.Location = new System.Drawing.Point(12, 13);
+            this.kbtnSettings.Name = "kbtnSettings";
+            this.kbtnSettings.Size = new System.Drawing.Size(90, 25);
+            this.kbtnSettings.TabIndex = 2;
+            this.kbtnSettings.Values.Text = "&Settings";
             // 
             // kryptonBorderEdge1
             // 
@@ -131,74 +133,81 @@
             this.kryptonBorderEdge1.Dock = System.Windows.Forms.DockStyle.Top;
             this.kryptonBorderEdge1.Location = new System.Drawing.Point(0, 0);
             this.kryptonBorderEdge1.Name = "kryptonBorderEdge1";
-            this.kryptonBorderEdge1.Size = new System.Drawing.Size(384, 1);
+            this.kryptonBorderEdge1.Size = new System.Drawing.Size(394, 1);
             this.kryptonBorderEdge1.Text = "kryptonBorderEdge1";
             // 
-            // kryptonPanel1
+            // kpnlContent
             // 
-            this.kryptonPanel1.Controls.Add(this.pbxResourceIcon);
-            this.kryptonPanel1.Controls.Add(this.kcmbRunPath);
-            this.kryptonPanel1.Controls.Add(this.kryptonLabel1);
-            this.kryptonPanel1.Controls.Add(this.kryptonWrapLabel1);
-            this.kryptonPanel1.Controls.Add(this.pictureBox1);
-            this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
-            this.kryptonPanel1.Name = "kryptonPanel1";
-            this.kryptonPanel1.Size = new System.Drawing.Size(384, 118);
-            this.kryptonPanel1.TabIndex = 1;
+            this.kpnlContent.Controls.Add(this.kcmbFilePath);
+            this.kpnlContent.Controls.Add(this.pictureBox2);
+            this.kpnlContent.Controls.Add(this.kryptonLabel1);
+            this.kpnlContent.Controls.Add(this.kwlHeader);
+            this.kpnlContent.Controls.Add(this.pictureBox1);
+            this.kpnlContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kpnlContent.Location = new System.Drawing.Point(0, 0);
+            this.kpnlContent.Name = "kpnlContent";
+            this.kpnlContent.Size = new System.Drawing.Size(394, 118);
+            this.kpnlContent.TabIndex = 1;
             // 
-            // pbxResourceIcon
+            // kcmbFilePath
             // 
-            this.pbxResourceIcon.BackColor = System.Drawing.Color.Transparent;
-            this.pbxResourceIcon.Location = new System.Drawing.Point(340, 74);
-            this.pbxResourceIcon.Name = "pbxResourceIcon";
-            this.pbxResourceIcon.Size = new System.Drawing.Size(32, 32);
-            this.pbxResourceIcon.TabIndex = 4;
-            this.pbxResourceIcon.TabStop = false;
+            this.kcmbFilePath.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.kcmbFilePath.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.AllSystemSources;
+            this.kcmbFilePath.ButtonSpecs.AddRange(new Krypton.Toolkit.ButtonSpecAny[] {
+            this.bsBrowse,
+            this.bsReset});
+            this.kcmbFilePath.CornerRoundingRadius = -1F;
+            this.kcmbFilePath.DropDownWidth = 258;
+            this.kcmbFilePath.IntegralHeight = false;
+            this.kcmbFilePath.Location = new System.Drawing.Point(68, 79);
+            this.kcmbFilePath.Name = "kcmbFilePath";
+            this.kcmbFilePath.Size = new System.Drawing.Size(276, 24);
+            this.kcmbFilePath.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
+            this.kcmbFilePath.TabIndex = 4;
             // 
-            // kcmbRunPath
+            // bsBrowse
             // 
-            this.kcmbRunPath.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.kcmbRunPath.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.AllSystemSources;
-            this.kcmbRunPath.CornerRoundingRadius = -1F;
-            this.kcmbRunPath.CueHint.CueHintText = "Enter a path here...";
-            this.kcmbRunPath.CueHint.Padding = new System.Windows.Forms.Padding(0);
-            this.kcmbRunPath.DropDownWidth = 261;
-            this.kcmbRunPath.IntegralHeight = false;
-            this.kcmbRunPath.Location = new System.Drawing.Point(68, 79);
-            this.kcmbRunPath.Name = "kcmbRunPath";
-            this.kcmbRunPath.Size = new System.Drawing.Size(266, 21);
-            this.kcmbRunPath.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
-            this.kcmbRunPath.TabIndex = 3;
-            this.kcmbRunPath.SelectedIndexChanged += new System.EventHandler(this.kcmbRunPath_SelectedIndexChanged);
-            this.kcmbRunPath.TextChanged += new System.EventHandler(this.kcmbRunPath_TextChanged);
+            this.bsBrowse.Text = "..&.";
+            this.bsBrowse.UniqueName = "8a1d6890727c478dade41dcbdbd74238";
+            // 
+            // bsReset
+            // 
+            this.bsReset.UniqueName = "931933948ca64018931b454e39422fc6";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox2.Location = new System.Drawing.Point(350, 76);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox2.TabIndex = 3;
+            this.pictureBox2.TabStop = false;
             // 
             // kryptonLabel1
             // 
-            this.kryptonLabel1.LabelStyle = Krypton.Toolkit.LabelStyle.BoldControl;
-            this.kryptonLabel1.Location = new System.Drawing.Point(13, 79);
+            this.kryptonLabel1.LabelStyle = Krypton.Toolkit.LabelStyle.BoldPanel;
+            this.kryptonLabel1.Location = new System.Drawing.Point(16, 79);
             this.kryptonLabel1.Name = "kryptonLabel1";
             this.kryptonLabel1.Size = new System.Drawing.Size(45, 20);
             this.kryptonLabel1.TabIndex = 2;
             this.kryptonLabel1.Values.Text = "Open:";
             // 
-            // kryptonWrapLabel1
+            // kwlHeader
             // 
-            this.kryptonWrapLabel1.AutoSize = false;
-            this.kryptonWrapLabel1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.kryptonWrapLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
-            this.kryptonWrapLabel1.LabelStyle = Krypton.Toolkit.LabelStyle.NormalControl;
-            this.kryptonWrapLabel1.Location = new System.Drawing.Point(68, 13);
-            this.kryptonWrapLabel1.Name = "kryptonWrapLabel1";
-            this.kryptonWrapLabel1.Size = new System.Drawing.Size(304, 48);
-            this.kryptonWrapLabel1.Text = "Type the name of a application, directory, document or Internet resource, and Win" +
-    "dows will open it for you.";
-            this.kryptonWrapLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.kwlHeader.AutoEllipsis = true;
+            this.kwlHeader.AutoSize = false;
+            this.kwlHeader.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.kwlHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.kwlHeader.LabelStyle = Krypton.Toolkit.LabelStyle.NormalControl;
+            this.kwlHeader.Location = new System.Drawing.Point(68, 13);
+            this.kwlHeader.Name = "kwlHeader";
+            this.kwlHeader.Size = new System.Drawing.Size(314, 48);
+            this.kwlHeader.Text = "kryptonWrapLabel1";
+            this.kwlHeader.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = global::Krypton.Toolkit.Suite.Extended.Dialogs.Properties.Resources.Run_481;
             this.pictureBox1.Location = new System.Drawing.Point(13, 13);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(48, 48);
@@ -206,27 +215,24 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // kryptonSplitButton1
+            // kcmdOpenInExplorer
             // 
-            this.kryptonSplitButton1.AutoSize = true;
-            this.kryptonSplitButton1.CornerRoundingRadius = -1F;
-            this.kryptonSplitButton1.KryptonContextMenu = this.kctxRun;
-            this.kryptonSplitButton1.Location = new System.Drawing.Point(62, 13);
-            this.kryptonSplitButton1.Name = "kryptonSplitButton1";
-            this.kryptonSplitButton1.Size = new System.Drawing.Size(118, 25);
-            this.kryptonSplitButton1.TabIndex = 3;
-            this.kryptonSplitButton1.Values.Text = "&Run...";
+            this.kcmdOpenInExplorer.Text = "kryptonCommand1";
+            // 
+            // kcmdOpenAsAdministrator
+            // 
+            this.kcmdOpenAsAdministrator.Text = "kryptonCommand2";
             // 
             // KryptonRunDialog
             // 
+            this.AcceptButton = this.ksbRun;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(384, 168);
-            this.Controls.Add(this.kryptonPanel1);
+            this.CancelButton = this.kbtnCancel;
+            this.ClientSize = new System.Drawing.Size(394, 168);
+            this.Controls.Add(this.kpnlContent);
             this.Controls.Add(this.kpnlButtons);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.FormTitleAlign = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "KryptonRunDialog";
@@ -240,11 +246,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.kpnlButtons)).EndInit();
             this.kpnlButtons.ResumeLayout(false);
             this.kpnlButtons.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
-            this.kryptonPanel1.ResumeLayout(false);
-            this.kryptonPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxResourceIcon)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kcmbRunPath)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kpnlContent)).EndInit();
+            this.kpnlContent.ResumeLayout(false);
+            this.kpnlContent.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kcmbFilePath)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -253,24 +259,29 @@
         #endregion
 
         private KryptonPanel kpnlButtons;
-        private KryptonButton kryptonButton2;
-        private KryptonButton kbtnBrowse;
+        private KryptonButton kbtnCancel;
+        private KryptonButton kbtnSettings;
         private KryptonBorderEdge kryptonBorderEdge1;
-        private KryptonPanel kryptonPanel1;
-        private Dialogs.KryptonSplitButton kryptonSplitButton1;
-        private PictureBox pictureBox1;
-        private KryptonContextMenu kctxRun;
+        private KryptonPanel kpnlContent;
         private KryptonContextMenuItems kryptonContextMenuItems1;
         private KryptonContextMenuItem kryptonContextMenuItem1;
         private KryptonContextMenuSeparator kryptonContextMenuSeparator1;
-        private KryptonContextMenuItems kryptonContextMenuItems2;
         private KryptonContextMenuItem kryptonContextMenuItem2;
-        private KryptonContextMenuItems kryptonContextMenuItems3;
-        private KryptonCommand kcmdRunAsAdministrator;
-        private KryptonCommand kcmdOpenInExplorer;
-        private KryptonWrapLabel kryptonWrapLabel1;
-        private PictureBox pbxResourceIcon;
-        private KryptonComboBox kcmbRunPath;
+        private KryptonContextMenuHeading kryptonContextMenuHeading1;
+        private Dialogs.KryptonSplitButton ksbRun;
+        private KryptonContextMenu kcmRunOptions;
+        private KryptonContextMenuItems kryptonContextMenuItems2;
+        private KryptonContextMenuItem kryptonContextMenuItem3;
+        private KryptonContextMenuSeparator kryptonContextMenuSeparator2;
+        private KryptonContextMenuItem kryptonContextMenuItem4;
+        private PictureBox pictureBox1;
+        private KryptonWrapLabel kwlHeader;
         private KryptonLabel kryptonLabel1;
+        private PictureBox pictureBox2;
+        private KryptonComboBox kcmbFilePath;
+        private ButtonSpecAny bsBrowse;
+        private ButtonSpecAny bsReset;
+        private KryptonCommand kcmdOpenInExplorer;
+        private KryptonCommand kcmdOpenAsAdministrator;
     }
 }

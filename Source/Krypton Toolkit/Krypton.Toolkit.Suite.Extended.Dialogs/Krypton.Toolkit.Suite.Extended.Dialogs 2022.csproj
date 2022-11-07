@@ -161,14 +161,12 @@
 	<OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Dialogs\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-	<Reference Include="Krypton.Toolkit.Suite.Extended.Buttons">
-	  <HintPath>..\Krypton.Toolkit.Suite.Extended.Buttons\obj\Nightly\net462\Krypton.Toolkit.Suite.Extended.Buttons.dll</HintPath>
-	</Reference>
 	<Reference Include="System.Runtime.InteropServices.RuntimeInformation" />
 	<PackageReference Include="WindowsAPICodePackShell" Version="1.1.2" />
   </ItemGroup>
   
-  <ItemGroup>
+  <ItemGroup> 
+	<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.CheckSum.Tools\Krypton.Toolkit.Suite.Extended.CheckSum.Tools 2022.csproj" /> 
 	<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Forms\Krypton.Toolkit.Suite.Extended.Forms 2022.csproj" />
 	<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Global.Utilities\Krypton.Toolkit.Suite.Extended.Global.Utilities 2022.csproj" />
 	<ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Controls\Krypton.Toolkit.Suite.Extended.Controls 2022.csproj" />
