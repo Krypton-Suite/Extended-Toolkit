@@ -1,0 +1,133 @@
+<Project>
+	<Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../../'))" />
+	
+<!--Handle AssemblyInfo-->
+	<PropertyGroup>
+		<GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+		<NeutralLanguage>en</NeutralLanguage>
+		<Authors>Peter Wagner (A.K.A Wagnerp) and Simon Coghlan (A.K.A Smurf-IV), et al.</Authors>
+		<Copyright>© Component Factory Pty Ltd, 2006 - 2016. Then modifications by Peter Wagner (aka Wagnerp) and Simon Coghlan (aka Smurf-IV) 2017 - 2022. All rights reserved.</Copyright>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<!-- common project data -->
+		<Version>$(LibraryVersion)</Version>
+	</PropertyGroup>
+
+	<Choose>
+		<When Condition="'$(Configuration)' == 'Canary'">
+			<ItemGroup>
+				<None Include="../../../Assets/PNG/NuGet Package Icons/Krypton Canary.png" Link="Icon.png" Pack="true" PackagePath="" />
+			
+				<None Include="License\License.txt" Pack="true" PackagePath="" />
+			</ItemGroup>
+
+			<PropertyGroup>
+				<!-- common package data -->
+				<PackageProjectUrl>https://github.com/Krypton-Suite/Extended-Toolkit</PackageProjectUrl>
+				<PackageIcon>Krypton Canary.png</PackageIcon>
+				<Authors>Peter William Wagner &amp; Simon Coghlan &amp; Thomas Bolon</Authors>
+				<PackageTags>Krypton ComponentFactory WinForms Themes Controls DataGrid Ribbon Workspace Tabs .Net Toolkit Core</PackageTags>
+				<PackageReleaseNotes>Get updates here: https://github.com/Krypton-Suite/Extended-Toolkit</PackageReleaseNotes>
+				<RepositoryType>git</RepositoryType>
+				<RepositoryURL>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryURL>
+
+				<!--Package generation-->
+				<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+				<PackageLicenseFile>License.txt</PackageLicenseFile>
+				<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+				<LangVersion>latest</LangVersion>
+				<PackageOutputPath>..\..\..\Bin\NuGet Packages\Canary</PackageOutputPath>
+				<BaseOutputPath>..\..\..\Bin\</BaseOutputPath>
+				<!--<BaseIntermediateOutputPath>..\..\..\Base Intermediate Output Objects\$(AssemblyName)\obj\</BaseIntermediateOutputPath>-->
+			</PropertyGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'Nightly'">
+			<ItemGroup>
+				<None Include="../../../Assets/PNG/NuGet Package Icons/Krypton Nightly.png" Link="Icon.png" Pack="true" PackagePath="" />
+			
+				<None Include="License\License.txt" Pack="true" PackagePath="" />
+			</ItemGroup>
+
+			<PropertyGroup>
+				<!-- common package data -->
+				<PackageProjectUrl>https://github.com/Krypton-Suite/Extended-Toolkit</PackageProjectUrl>
+				<PackageIcon>Krypton Nightly.png</PackageIcon>
+				<Authors>Peter William Wagner &amp; Simon Coghlan &amp; Thomas Bolon</Authors>
+				<PackageTags>Krypton ComponentFactory WinForms Themes Controls DataGrid Ribbon Workspace Tabs .Net Toolkit Core</PackageTags>
+				<PackageReleaseNotes>Get updates here: https://github.com/Krypton-Suite/Extended-Toolkit</PackageReleaseNotes>
+				<RepositoryType>git</RepositoryType>
+				<RepositoryURL>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryURL>
+				
+				<!--Package generation-->
+				<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+				<PackageLicenseFile>License.txt</PackageLicenseFile>
+				<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+				<LangVersion>latest</LangVersion>
+				<PackageOutputPath>..\..\..\Bin\NuGet Packages\Nightly</PackageOutputPath>
+				<BaseOutputPath>..\..\..\Bin\</BaseOutputPath>
+				<!--<BaseIntermediateOutputPath>..\..\..\Base Intermediate Output Objects\$(AssemblyName)\obj\</BaseIntermediateOutputPath>-->
+			</PropertyGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'Signed'">
+			<ItemGroup>
+				<None Include="../../../Assets/PNG/NuGet Package Icons/Krypton Stable.png" Link="Icon.png" Pack="true" PackagePath="" />
+			
+				<None Include="License\License.txt" Pack="true" PackagePath="" />
+			</ItemGroup>
+
+			<PropertyGroup>
+				<!-- common package data -->
+				<PackageProjectUrl>https://github.com/Krypton-Suite/Extended-Toolkit</PackageProjectUrl>
+				<PackageIcon>Krypton Stable.png</PackageIcon>
+				<Authors>Peter William Wagner &amp; Simon Coghlan &amp; Thomas Bolon</Authors>
+				<PackageLicenseFile>License.txt</PackageLicenseFile>
+				<PackageTags>Krypton ComponentFactory WinForms Themes Controls DataGrid Ribbon Workspace Tabs .Net Toolkit Core</PackageTags>
+				<PackageReleaseNotes>Get updates here: https://github.com/Krypton-Suite/Extended-Toolkit</PackageReleaseNotes>
+				<RepositoryType>git</RepositoryType>
+				<RepositoryURL>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryURL>
+				<BaseOutputPath>..\..\..\Bin\</BaseOutputPath>
+				<!--<BaseIntermediateOutputPath>..\..\..\Base Intermediate Output Objects\$(AssemblyName)\obj\</BaseIntermediateOutputPath>-->
+				
+				<!--Package generation-->
+				<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+				<PackageLicenseFile>License.txt</PackageLicenseFile>
+				<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+				<LangVersion>latest</LangVersion>
+				<PackageOutputPath>..\..\..\Bin\NuGet Packages\Signed</PackageOutputPath>
+
+				<SignAssembly>True</SignAssembly>
+			</PropertyGroup>
+		</When>
+		<Otherwise>
+			<ItemGroup>
+				<None Include="../../../Assets/PNG/NuGet Package Icons/Krypton Stable.png" Link="Icon.png" Pack="true" PackagePath="" />
+			
+				<None Include="License\License.txt" Pack="true" PackagePath="" />
+			</ItemGroup>
+
+			<PropertyGroup>
+				<!-- common package data -->
+				<PackageProjectUrl>https://github.com/Krypton-Suite/Extended-Toolkit</PackageProjectUrl>
+				<PackageIcon>Krypton Stable.png</PackageIcon>
+				<Authors>Peter William Wagner &amp; Simon Coghlan &amp; Thomas Bolon</Authors>
+				<PackageLicenseFile>License.txt</PackageLicenseFile>
+				<PackageTags>Krypton ComponentFactory WinForms Themes Controls DataGrid Ribbon Workspace Tabs .Net Toolkit Core</PackageTags>
+				<PackageReleaseNotes>Get updates here: https://github.com/Krypton-Suite/Extended-Toolkit</PackageReleaseNotes>
+				<RepositoryType>git</RepositoryType>
+				<RepositoryURL>https://github.com/Krypton-Suite/Extended-Toolkit</RepositoryURL>
+				<BaseOutputPath>..\..\..\Bin\</BaseOutputPath>
+				<!--<BaseIntermediateOutputPath>..\..\..\Base Intermediate Output Objects\$(AssemblyName)\obj\</BaseIntermediateOutputPath>-->
+
+				<!--Package generation-->
+				<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+				<PackageLicenseFile>License.txt</PackageLicenseFile>
+				<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+				<LangVersion>latest</LangVersion>
+				<PackageOutputPath>..\..\..\Bin\NuGet Packages\Release</PackageOutputPath>
+			</PropertyGroup>
+		</Otherwise>
+	</Choose>
+</Project>

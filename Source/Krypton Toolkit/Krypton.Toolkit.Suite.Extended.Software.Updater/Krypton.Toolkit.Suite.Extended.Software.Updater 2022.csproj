@@ -1,0 +1,242 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<Choose>
+		<When Condition="'$(Configuration)' == 'Nightly'">
+			<PropertyGroup>
+				<TargetFrameworks>net462;net47;net471;net472;net48;net481;netcoreapp3.1;net5.0-windows;net6.0-windows;net7.0-windows</TargetFrameworks>
+			</PropertyGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'Canary'">
+			<PropertyGroup>
+				<TargetFrameworks>net462;net47;net471;net472;net48;net481;netcoreapp3.1;net5.0-windows;net6.0-windows;net7.0-windows</TargetFrameworks>
+			</PropertyGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'StableFull'">
+			<PropertyGroup>
+				<TargetFrameworks>net462;net47;net471;net472;net48;net481;netcoreapp3.1;net5.0-windows;net6.0-windows;net7.0-windows</TargetFrameworks>
+			</PropertyGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'StableLite'">
+			<PropertyGroup>
+				<TargetFrameworks>net48;net481;netcoreapp3.1;net6.0-windows;net7.0-windows</TargetFrameworks>
+			</PropertyGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'SignedFull'">
+			<PropertyGroup>
+				<TargetFrameworks>net462;net47;net471;net472;net48;net481;netcoreapp3.1;net5.0-windows;net6.0-windows;net7.0-windows</TargetFrameworks>
+			</PropertyGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'SignedLite'">
+			<PropertyGroup>
+				<TargetFrameworks>net48;net481;netcoreapp3.1;net6.0-windows;net7.0-windows</TargetFrameworks>
+			</PropertyGroup>
+		</When>
+		<Otherwise>
+			<!--If all else fails-->
+			<PropertyGroup>
+				<TargetFrameworks>net462;net47;net471;net472;net48;net481;netcoreapp3.1;net5.0-windows;net6.0-windows;net7.0-windows</TargetFrameworks>
+			</PropertyGroup>
+		</Otherwise>
+	</Choose>
+
+	<PropertyGroup>
+		<OutputType>library</OutputType>
+		<RootNamespace>Krypton.Toolkit.Suite.Extended.Software.Updater</RootNamespace>
+		<AssemblyName>Krypton.Toolkit.Suite.Extended.Software.Updater</AssemblyName>
+		<UseWindowsForms>true</UseWindowsForms>
+		<NeutralLanguage>en</NeutralLanguage>
+		<Configurations>Debug;Release;Nightly;Canary;StableFull;StableLite;SignedFull;SignedLite</Configurations>
+	</PropertyGroup>
+
+	<!--Package Data-->
+	<Choose>
+		<When Condition="'$(Configuration)' == 'Canary'">
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Software.Updater.Canary</PackageId>
+			</PropertyGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'Nightly'">
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Software.Updater.Nightly</PackageId>
+			</PropertyGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'Signed'">
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Software.Updater.Signed</PackageId>
+			</PropertyGroup>
+		</When>
+		<Otherwise>
+			<PropertyGroup>
+				<PackageId>Krypton.Toolkit.Suite.Extended.Software.Updater</PackageId>
+			</PropertyGroup>
+		</Otherwise>
+	</Choose>
+
+	<PropertyGroup>
+		<Description>
+			An extension to the Standard Toolkit, which supports .NET Framework 4.6.2 - 4.8.1, .NET Core 3.1 and .NET 5 - 7. This package implements software updating features.
+
+			This package supports all .NET Framework versions starting .NET Framework 4.6.2 - 4.8.1, .NET Core 3.1 and .NET 5 - 7.
+			Also, all libraries are included targeting each specific framework version for performance purposes.
+
+			To view all of the extended toolkit package latest version information, please visit: https://github.com/Krypton-Suite/Krypton-Toolkit-Suite-Version-Dashboard/blob/main/Documents/Modules/Extended/Krypton-Toolkit-Suite-Extended-Modules.md
+		</Description>
+	</PropertyGroup>
+
+	<Choose>
+		<When Condition="'$(Configuration)' == 'Nightly'">
+			<PropertyGroup>
+				<LangVersion>preview</LangVersion>
+			</PropertyGroup>
+
+			<ItemGroup>
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="70.22.10.275-alpha" />
+			</ItemGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'Canary'">
+			<PropertyGroup>
+				<LangVersion>preview</LangVersion>
+			</PropertyGroup>
+
+			<ItemGroup>
+				<PackageReference Include="Krypton.Toolkit.Canary" Version="70.22.8.234-beta" />
+			</ItemGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'StableFull'">
+			<PropertyGroup>
+				<LangVersion>preview</LangVersion>
+			</PropertyGroup>
+
+			<ItemGroup>
+				<PackageReference Include="Krypton.Toolkit" Version="65.22.6.152" />
+			</ItemGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'StableLite'">
+			<PropertyGroup>
+				<LangVersion>preview</LangVersion>
+			</PropertyGroup>
+
+			<ItemGroup>
+				<PackageReference Include="Krypton.Toolkit.Lite" Version="65.22.6.152" />
+			</ItemGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'SignedFull'">
+			<PropertyGroup>
+				<LangVersion>preview</LangVersion>
+			</PropertyGroup>
+
+			<ItemGroup>
+				<PackageReference Include="Krypton.Toolkit.Signed" Version="65.22.6.152" />
+			</ItemGroup>
+		</When>
+
+		<When Condition="'$(Configuration)' == 'SignedLite'">
+			<PropertyGroup>
+				<LangVersion>preview</LangVersion>
+			</PropertyGroup>
+
+			<ItemGroup>
+				<PackageReference Include="Krypton.Toolkit.Signed.Lite" Version="65.22.6.152" />
+			</ItemGroup>
+		</When>
+
+		<Otherwise>
+			<!--If all else fails-->
+			<PropertyGroup>
+				<LangVersion>preview</LangVersion>
+			</PropertyGroup>
+
+			<ItemGroup>
+				<PackageReference Include="Krypton.Toolkit" Version="65.22.6.152" />
+			</ItemGroup>
+		</Otherwise>
+	</Choose>
+
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
+		<Reference Include="System.IO.Compression" />
+		<Reference Include="System.IO.Compression.FileSystem" />
+	</ItemGroup>
+  
+	<ItemGroup>
+		<PackageReference Include="ILRepack.Lib.MSBuild.Task" Version="2.0.18.2" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.2-beta1" />
+		<PackageReference Include="System.Net.Http" Version="4.3.4" />
+		<PackageReference Include="ZipStorer" Version="3.8.0" />
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net6.0-windows'">
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.1-beta1" />
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net7.0-windows'">
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.1-beta1" />
+	</ItemGroup>
+
+	<!--Binary/Documentation Output-->
+	<PropertyGroup>
+		<DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Software.Updater\Krypton.Toolkit.Suite.Extended.Software.Updater.xml</DocumentationFile>
+		<OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Software.Updater\</OutputPath>
+	</PropertyGroup>
+	
+	<ItemGroup>
+		<Compile Update="NetSparkle\Resources\NetSparkleResources.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>NetSparkleResources.resx</DependentUpon>
+		</Compile>
+		
+		<Compile Update="Properties\Resources.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>Resources.resx</DependentUpon>
+		</Compile>
+	</ItemGroup>
+	
+	<ItemGroup>
+		<EmbeddedResource Update="NetSparkle\Resources\NetSparkleResources.resx">
+			<Generator>ResXFileCodeGenerator</Generator>
+			<LastGenOutput>NetSparkleResources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+	
+		<EmbeddedResource Update="Properties\Resources.resx">
+			<Generator>ResXFileCodeGenerator</Generator>
+			<LastGenOutput>Resources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		
+		<EmbeddedResource Update="Sharp Update\Resources\SharpUpdateResources.resx">
+			<Generator>ResXFileCodeGenerator</Generator>
+		</EmbeddedResource>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Reference Include="System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net4'))">
+			<SpecificVersion>True</SpecificVersion>
+			<Version>4.0.0.0</Version>
+			<TreatAsUsed>True</TreatAsUsed>
+		</Reference>
+		<Reference Include="System.Design, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net5'))">
+			<SpecificVersion>True</SpecificVersion>
+			<Version>5.0.0.0</Version>
+			<TreatAsUsed>True</TreatAsUsed>
+		</Reference>
+		<Reference Include="System.Design, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net6'))">
+			<SpecificVersion>True</SpecificVersion>
+			<Version>6.0.0.0</Version>
+			<TreatAsUsed>True</TreatAsUsed>
+		</Reference>
+		<Reference Include="System.Design" Condition="'$(TargetFramework)' == 'net35'" />
+		<!--TODO: Need to specify version here-->
+	</ItemGroup>
+
+</Project>
