@@ -160,8 +160,6 @@
 				</Description>
 			</PropertyGroup>
 		</When>
-<<<<<<< Updated upstream
-=======
 
 		<When Condition="'$(Configuration)' == 'StableLite'">
 			<PropertyGroup>
@@ -179,8 +177,6 @@
 				</Description>
 			</PropertyGroup>
 		</When>
-
->>>>>>> Stashed changes
 		<Otherwise>
 			<PropertyGroup>
 				<PackageId Condition="'$(TFMs)' == 'all'">$(PackageId)</PackageId>
