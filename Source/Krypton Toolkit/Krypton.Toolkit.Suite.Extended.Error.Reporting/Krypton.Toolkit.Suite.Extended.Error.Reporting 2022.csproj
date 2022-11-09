@@ -113,9 +113,9 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit" Version="65.22.6.152" />
+				<PackageReference Include="Krypton.Toolkit" Version="70.22.11.312" />
 
-				<PackageReference Include="Krypton.Navigator" Version="65.22.6.152" />
+				<PackageReference Include="Krypton.Navigator" Version="70.22.11.312" />
 			</ItemGroup>
 		</When>
 
@@ -172,8 +172,8 @@
 	<ItemGroup>
 	    <PackageReference Include="DotNetZip" Version="1.16.0" />
 	    <PackageReference Include="Handlebars.Net" Version="2.1.2" />
-	    <PackageReference Include="Simple-MAPI.NET" Version="1.2.0" />
-	    <PackageReference Include="System.Management" Version="6.0.0" />
+	    <PackageReference Include="Simple-MAPI.NET" Version="1.2.1" />
+	    <PackageReference Include="System.Management" Version="7.0.0" />
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)' == 'net6.0-windows'">
