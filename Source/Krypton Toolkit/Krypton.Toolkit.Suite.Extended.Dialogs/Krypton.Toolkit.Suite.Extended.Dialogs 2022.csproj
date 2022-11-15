@@ -89,7 +89,7 @@
 			</PropertyGroup>
 
 			<ItemGroup>
-				<PackageReference Include="Krypton.Toolkit.Nightly" Version="80.22.11.313-alpha" />
+				<PackageReference Include="Krypton.Toolkit.Nightly" Version="80.22.11.318-alpha" />
 			</ItemGroup>
 		</When>
 
@@ -162,7 +162,7 @@
   </PropertyGroup>
   <ItemGroup>
 	<Reference Include="System.Runtime.InteropServices.RuntimeInformation" />
-	<PackageReference Include="WindowsAPICodePackShell" Version="1.1.2" />
+	<PackageReference Include="WindowsAPICodePackShell" Version="7.0.1" />
   </ItemGroup>
   
   <ItemGroup> 
