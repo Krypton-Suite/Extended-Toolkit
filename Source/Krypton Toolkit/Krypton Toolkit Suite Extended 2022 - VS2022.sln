@@ -255,6 +255,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Schemas", "Schemas", "{1AD4
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Themes 2022", "Krypton.Toolkit.Suite.Extended.Themes\Krypton.Toolkit.Suite.Extended.Themes 2022.csproj", "{A58A93DE-0CBF-495B-8D29-761B1143AD32}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Buttons 2022", "Krypton.Toolkit.Suite.Extended.Buttons\Krypton.Toolkit.Suite.Extended.Buttons 2022.csproj", "{A7C0B094-539C-4283-AA9A-3959749886B7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krypton.Toolkit.Suite.Extended.Calendar 2022", "Krypton.Toolkit.Suite.Extended.Calendar\Krypton.Toolkit.Suite.Extended.Calendar 2022.csproj", "{BE3A7DFA-3616-4840-B9CC-09E96CC894B4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Canary|Any CPU = Canary|Any CPU
@@ -913,6 +917,30 @@ Global
 		{A58A93DE-0CBF-495B-8D29-761B1143AD32}.StableFull|Any CPU.Build.0 = Debug|Any CPU
 		{A58A93DE-0CBF-495B-8D29-761B1143AD32}.StableLite|Any CPU.ActiveCfg = Debug|Any CPU
 		{A58A93DE-0CBF-495B-8D29-761B1143AD32}.StableLite|Any CPU.Build.0 = Debug|Any CPU
+		{A7C0B094-539C-4283-AA9A-3959749886B7}.Canary|Any CPU.ActiveCfg = Canary|Any CPU
+		{A7C0B094-539C-4283-AA9A-3959749886B7}.Canary|Any CPU.Build.0 = Canary|Any CPU
+		{A7C0B094-539C-4283-AA9A-3959749886B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7C0B094-539C-4283-AA9A-3959749886B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7C0B094-539C-4283-AA9A-3959749886B7}.Nightly|Any CPU.ActiveCfg = Nightly|Any CPU
+		{A7C0B094-539C-4283-AA9A-3959749886B7}.Nightly|Any CPU.Build.0 = Nightly|Any CPU
+		{A7C0B094-539C-4283-AA9A-3959749886B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7C0B094-539C-4283-AA9A-3959749886B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7C0B094-539C-4283-AA9A-3959749886B7}.StableFull|Any CPU.ActiveCfg = StableFull|Any CPU
+		{A7C0B094-539C-4283-AA9A-3959749886B7}.StableFull|Any CPU.Build.0 = StableFull|Any CPU
+		{A7C0B094-539C-4283-AA9A-3959749886B7}.StableLite|Any CPU.ActiveCfg = StableLite|Any CPU
+		{A7C0B094-539C-4283-AA9A-3959749886B7}.StableLite|Any CPU.Build.0 = StableLite|Any CPU
+		{BE3A7DFA-3616-4840-B9CC-09E96CC894B4}.Canary|Any CPU.ActiveCfg = Canary|Any CPU
+		{BE3A7DFA-3616-4840-B9CC-09E96CC894B4}.Canary|Any CPU.Build.0 = Canary|Any CPU
+		{BE3A7DFA-3616-4840-B9CC-09E96CC894B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE3A7DFA-3616-4840-B9CC-09E96CC894B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE3A7DFA-3616-4840-B9CC-09E96CC894B4}.Nightly|Any CPU.ActiveCfg = Nightly|Any CPU
+		{BE3A7DFA-3616-4840-B9CC-09E96CC894B4}.Nightly|Any CPU.Build.0 = Nightly|Any CPU
+		{BE3A7DFA-3616-4840-B9CC-09E96CC894B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE3A7DFA-3616-4840-B9CC-09E96CC894B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE3A7DFA-3616-4840-B9CC-09E96CC894B4}.StableFull|Any CPU.ActiveCfg = StableFull|Any CPU
+		{BE3A7DFA-3616-4840-B9CC-09E96CC894B4}.StableFull|Any CPU.Build.0 = StableFull|Any CPU
+		{BE3A7DFA-3616-4840-B9CC-09E96CC894B4}.StableLite|Any CPU.ActiveCfg = StableLite|Any CPU
+		{BE3A7DFA-3616-4840-B9CC-09E96CC894B4}.StableLite|Any CPU.Build.0 = StableLite|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -991,6 +1019,8 @@ Global
 		{5DB6B467-9257-42D3-B81F-380B5D537C04} = {6B01F113-016E-445F-BE5E-80BA7144B928}
 		{1AD413AC-FAD3-4F79-A948-4FB66AF10685} = {5DB6B467-9257-42D3-B81F-380B5D537C04}
 		{A58A93DE-0CBF-495B-8D29-761B1143AD32} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
+		{A7C0B094-539C-4283-AA9A-3959749886B7} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
+		{BE3A7DFA-3616-4840-B9CC-09E96CC894B4} = {252CCB85-EC69-4B0F-9ACB-4C37AE3F54B5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A7CE7732-0982-4703-8EFD-7715D569BAB5}

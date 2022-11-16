@@ -25,6 +25,7 @@
  */
 #endregion
 
+#nullable enable
 namespace Krypton.Toolkit.Suite.Extended.Theme.Switcher
 {
     public class ThemeSelector : KryptonForm

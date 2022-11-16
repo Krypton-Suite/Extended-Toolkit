@@ -25,6 +25,8 @@
  */
 #endregion
 
+using OpenFileDialog = System.Windows.Forms.OpenFileDialog;
+
 namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
 {
     public class KryptonRunDialog : CommonExtendedKryptonForm
@@ -306,7 +308,7 @@ namespace Krypton.Toolkit.Suite.Extended.Specialised.Dialogs
             // ktxtOpenBox
             // 
             this.ktxtOpenBox.ContextMenuStrip = this.cmsRunBox;
-            this.ktxtOpenBox.Hint = "Type a path to launch...";
+            this.ktxtOpenBox.CueHint.CueHintText = "Type a path to launch...";
             this.ktxtOpenBox.Location = new System.Drawing.Point(62, 83);
             this.ktxtOpenBox.Name = "ktxtOpenBox";
             this.ktxtOpenBox.Size = new System.Drawing.Size(307, 23);

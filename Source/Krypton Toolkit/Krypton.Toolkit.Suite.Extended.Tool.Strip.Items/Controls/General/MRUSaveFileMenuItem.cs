@@ -25,6 +25,7 @@
  */
 #endregion
 
+#pragma warning disable CS0414
 namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
 {
     [ToolboxItem(false), ToolStripItemDesignerAvailability(ToolStripItemDesignerAvailability.MenuStrip)]

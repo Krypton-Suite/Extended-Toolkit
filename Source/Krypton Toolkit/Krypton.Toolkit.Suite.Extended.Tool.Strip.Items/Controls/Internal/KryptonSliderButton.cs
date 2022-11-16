@@ -36,11 +36,6 @@ namespace Krypton.Toolkit.Suite.Extended.Tool.Strip.Items
         /// </summary>
         private IContainer components = null;
 
-        /// <summary> 
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-
         #region Component Designer generated code
 
         /// <summary> 
