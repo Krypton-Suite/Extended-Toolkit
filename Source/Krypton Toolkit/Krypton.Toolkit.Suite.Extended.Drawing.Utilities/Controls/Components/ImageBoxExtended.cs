@@ -27,7 +27,7 @@
 
 namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 {
-    // <summary>
+    /// <summary>
     ///   Component for displaying images with support for scrolling and zooming.
     /// </summary>
     [DefaultProperty("Image")]

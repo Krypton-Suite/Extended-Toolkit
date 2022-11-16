@@ -25,6 +25,7 @@
  */
 #endregion
 
+// ReSharper disable ConditionIsAlwaysTrueOrFalse
 namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 {
     [ToolboxItem(true), ToolboxBitmap(typeof(KryptonColourButtonExtended), "ToolboxBitmaps.KryptonColourButtonExtended.bmp"), DefaultEvent("SelectedColourChanged"), DefaultProperty("SelectedColour"), Designer(typeof(KryptonColourButtonExtendedDesigner)), DesignerCategory("code"), Description("Raises an event when the user clicks it."), ClassInterface(ClassInterfaceType.AutoDispatch), ComVisible(true)]

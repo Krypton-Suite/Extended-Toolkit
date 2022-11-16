@@ -441,7 +441,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             this.knudBlue.StateCommon.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Inherit;
             this.knudBlue.TabIndex = 28;
             this.knudBlue.Typeface = null;
-            this.knudBlue.UseAccessibleUI = false;
+            this.knudBlue.UseAccessibleUi = false;
             // 
             // pnlHexadecimal
             // 

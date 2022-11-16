@@ -25,6 +25,7 @@
  */
 #endregion
 
+#pragma warning disable CS1574, CS1584, CS1581, CS1580
 namespace Krypton.Toolkit.Suite.Extended.Calendar
 {
     /// <summary>

@@ -43,11 +43,14 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
             StateCommon.Content.TextH = PaletteRelativeAlign.Center;
 
+            // ReSharper disable VirtualMemberCallInConstructor
             Text = string.Empty;
+            // ReSharper restore VirtualMemberCallInConstructor
         }
 
         protected override void OnPaint(PaintEventArgs e)
         {
+            // ReSharper disable once ConditionIsAlwaysTrueOrFalse
             if (Colour != Color.Empty || Colour != Color.Transparent || Colour != null)
             {
                 Text = ColorTranslator.ToHtml(Colour);
@@ -55,7 +58,7 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 
             if (Colour == Color.Empty || Colour == Color.Transparent)
             {
-                Text = "000000";
+                Text = @"000000";
             }
 
             base.OnPaint(e);

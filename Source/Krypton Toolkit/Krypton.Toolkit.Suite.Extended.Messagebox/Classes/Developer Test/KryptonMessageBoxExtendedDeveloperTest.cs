@@ -47,7 +47,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         public static DialogResult Show(string messageText, string caption, ExtendedMessageBoxButtons buttons,
             ExtendedKryptonMessageBoxIcon icon, bool showOptionalCheckBox,
             bool isOptionalCheckBoxChecked,
-            CheckState optionalCheckBoxCheckState, string optionalCheckBoxText, bool ? showCtrlCopy = null)
+            CheckState optionalCheckBoxCheckState, string optionalCheckBoxText, bool? showCtrlCopy = null)
             =>
                 InternalShow(null, messageText, caption, buttons, icon, KryptonMessageBoxDefaultButton.Button1, 0,
                     null, showCtrlCopy, null, null, showOptionalCheckBox, isOptionalCheckBoxChecked,
@@ -69,6 +69,9 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
         /// <param name="isOptionalCheckBoxChecked">if set to <c>true</c> [is optional CheckBox checked].</param>
         /// <param name="optionalCheckBoxCheckState">State of the optional CheckBox check.</param>
         /// <param name="optionalCheckBoxText">The optional CheckBox text.</param>
+        /// <param name="showOptionalLinkLabel"></param>
+        /// <param name="optionalLinkLabelText"></param>
+        /// <param name="optionalLinkLabelDestination"></param>
         /// <returns>
         ///   <br />
         /// </returns>
@@ -88,7 +91,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                                   string optionalLinkLabelText = @"", string optionalLinkLabelDestination = @"")
             =>
                 InternalShow(null, text, caption, buttons, icon, defaultButton, options,
-                             displayHelpButton ? new HelpInfo() : null, showCtrlCopy, 
+                             displayHelpButton ? new HelpInfo() : null, showCtrlCopy,
                              messageBoxTypeface, customImageIcon, showOptionalCheckBox,
                              isOptionalCheckBoxChecked, optionalCheckBoxCheckState,
                              optionalCheckBoxText, showOptionalLinkLabel,
@@ -173,7 +176,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             bool? showCtrlCopy = null)
             =>
                 InternalShow(owner, text, caption, buttons, icon, defaultButton, options,
-                             displayHelpButton ? new HelpInfo() : null, showCtrlCopy, 
+                             displayHelpButton ? new HelpInfo() : null, showCtrlCopy,
                              null, null, false,
                              false, CheckState.Unchecked,
                              @"", null, @"", @"");
@@ -263,7 +266,7 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
             =>
                 InternalShow(owner, text, caption, buttons, icon, defaultButton, options,
                              displayHelpButton ? new HelpInfo(helpFilePath, navigator, param) : null,
-                             showCtrlCopy, 
+                             showCtrlCopy,
                              messageBoxTypeface, customImageIcon, showOptionalCheckBox,
                              isOptionalCheckBoxChecked, optionalCheckBoxCheckState,
                              optionalCheckBoxText, showOptionalLinkLabel, optionalLinkLabelText,
@@ -298,10 +301,10 @@ namespace Krypton.Toolkit.Suite.Extended.Messagebox
                                                   ExtendedMessageBoxButtons buttons,
                                                   ExtendedKryptonMessageBoxIcon icon,
                                                   KryptonMessageBoxDefaultButton defaultButton,
-                                                  MessageBoxOptions options,                          
+                                                  MessageBoxOptions options,
                                                   HelpInfo helpInfo,
                                                   bool? showCtrlCopy, Font messageBoxTypeface,
-                                                  Image customImageIcon, bool? showOptionalCheckBox, 
+                                                  Image customImageIcon, bool? showOptionalCheckBox,
                                                   bool? optionalCheckBoxChecked,
                                                   CheckState? optionalCheckBoxCheckState,
                                                   string optionalCheckBoxText, bool? showOptionalLinkLabel,

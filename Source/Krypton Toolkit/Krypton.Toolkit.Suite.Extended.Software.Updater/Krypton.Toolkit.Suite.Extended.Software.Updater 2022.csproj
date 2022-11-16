@@ -180,6 +180,9 @@
 		<DocumentationFile>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Software.Updater\Krypton.Toolkit.Suite.Extended.Software.Updater.xml</DocumentationFile>
 		<OutputPath>..\..\..\Bin\$(configuration)\Krypton.Toolkit.Suite.Extended.Software.Updater\</OutputPath>
 	</PropertyGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\Krypton.Toolkit.Suite.Extended.Developer.Utilities\Krypton.Toolkit.Suite.Extended.Developer.Utilities 2022.csproj" />
+	</ItemGroup>
 	
 	<ItemGroup>
 		<Compile Update="NetSparkle\Resources\NetSparkleResources.Designer.cs">

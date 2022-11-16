@@ -25,19 +25,31 @@
  */
 #endregion
 
-global using System;
-global using System.ComponentModel;
-global using System.ComponentModel.Design;
-global using System.Drawing;
-global using System.Drawing.Design;
-global using System.Drawing.Drawing2D;
-global using System.Runtime.InteropServices;
-global using System.Security.Permissions;
-global using System.Windows.Forms;
-global using System.Windows.Forms.Design;
-global using System.Windows.Forms.VisualStyles;
 
-global using Krypton.Navigator;
-global using Krypton.Toolkit.Suite.Extended.Drawing;
+#pragma warning disable CS1574, CS1584, CS1581, CS1580
+namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
+{
+    /// <summary>
+    /// Specifies the style of a color cell border.
+    /// </summary>
+    public enum ColourCellBorderStyle
+    {
+        /// <summary>
+        /// No border.
+        /// </summary>
+        None,
 
-global using Microsoft.VisualBasic;
+        /// <summary>
+        /// A single line border.
+        /// </summary>
+        FixedSingle,
+
+        /// <summary>
+        /// A contrasting double border with a soft inner outline using the color of the cell.
+        /// </summary>
+        DoubleSoft
+    }
+
+
+#pragma warning disable CS1574 // XML comment has cref attribute that could not be resolved
+}

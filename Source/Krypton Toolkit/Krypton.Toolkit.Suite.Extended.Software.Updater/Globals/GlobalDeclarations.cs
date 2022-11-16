@@ -54,3 +54,4 @@ global using System.Xml.Linq;
 global using Microsoft.Win32;
 
 global using Krypton.Toolkit.Suite.Extended.Software.Updater.NetSparkle.Resources;
+global using Krypton.Toolkit.Suite.Extended.Developer.Utilities;

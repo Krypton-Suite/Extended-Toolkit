@@ -25,6 +25,8 @@
  */
 #endregion
 
+#pragma warning disable CS0169
+#pragma warning disable IDE0051
 namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
 {
     public class KryptonColourButtonCustomColourDialog : CommonExtendedKryptonForm
@@ -400,7 +402,11 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
         #region Variables
         private Color _colour, _hsbValue;
 
-        private System.Windows.Forms.Timer _tmrARGB, _tmrHSB, _tmrFillColourValues;
+        // ReSharper disable InconsistentNaming
+        // ReSharper disable FieldCanBeMadeReadOnly.Local
+        private Timer _tmrARGB, _tmrHSB;
+        // ReSharper restore FieldCanBeMadeReadOnly.Local
+        // ReSharper restore InconsistentNaming
         #endregion
 
         #region Properties
@@ -415,12 +421,11 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             InitializeComponent();
 
             //cwColours.Colour = Color.White;
+            var tmrFillColourValues = new System.Windows.Forms.Timer();
 
-            _tmrFillColourValues = new System.Windows.Forms.Timer();
+            tmrFillColourValues.Enabled = true;
 
-            _tmrFillColourValues.Enabled = true;
-
-            _tmrFillColourValues.Interval = 250;
+            tmrFillColourValues.Interval = 250;
 
             //_tmrFillColourValues.Tick += FillColourValues_Tick;
         }
@@ -430,12 +435,11 @@ namespace Krypton.Toolkit.Suite.Extended.Drawing.Utilities
             InitializeComponent();
 
             //cwColours.Colour = colour;
+            var tmrFillColourValues = new System.Windows.Forms.Timer();
 
-            _tmrFillColourValues = new System.Windows.Forms.Timer();
+            tmrFillColourValues.Enabled = true;
 
-            _tmrFillColourValues.Enabled = true;
-
-            _tmrFillColourValues.Interval = 250;
+            tmrFillColourValues.Interval = 250;
 
             //_tmrFillColourValues.Tick += FillColourValues_Tick;
         }

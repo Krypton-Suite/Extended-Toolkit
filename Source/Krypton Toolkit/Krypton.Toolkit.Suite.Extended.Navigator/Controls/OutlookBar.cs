@@ -25,6 +25,7 @@
  */
 #endregion
 
+// ReSharper disable ConditionIsAlwaysTrueOrFalse
 namespace Krypton.Toolkit.Suite.Extended.Navigator
 {
     [DefaultEvent("ButtonClicked")]
@@ -860,7 +861,6 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                         case true:
                             return Brushes.Black;
                     }
-                    break;
                 case Renderer.Krypton:
                     switch (isSelected)
                     {
@@ -869,7 +869,6 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                         case true:
                             return new SolidBrush(this.ForeColourSelected);
                     }
-                    break;
                 case Renderer.Custom:
                     switch (isSelected)
                     {
@@ -878,7 +877,6 @@ namespace Krypton.Toolkit.Suite.Extended.Navigator
                         case true:
                             return new SolidBrush(this.ForeColourSelected);
                     }
-                    break;
             }
             return null;
         }

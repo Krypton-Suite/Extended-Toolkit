@@ -176,14 +176,6 @@
 	    <PackageReference Include="System.Management" Version="7.0.0" />
 	</ItemGroup>
 
-	<ItemGroup Condition="'$(TargetFramework)' == 'net6.0-windows'">
-		<PackageReference Include="System.Management" Version="7.0.0-preview.6.22324.4" />
-	</ItemGroup>
-
-	<ItemGroup Condition="'$(TargetFramework)' == 'net7.0-windows'">
-		<PackageReference Include="System.Management" Version="7.0.0-preview.6.22324.4" />
-	</ItemGroup>
-
 	<ItemGroup>
 		<Reference Include="System.Deployment" />
 		<Reference Include="System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Condition="$(TargetFramework.StartsWith('net4'))">

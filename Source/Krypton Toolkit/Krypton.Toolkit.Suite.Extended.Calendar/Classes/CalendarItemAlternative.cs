@@ -25,6 +25,7 @@
  */
 #endregion
 
+#pragma warning disable CS1574, CS1584, CS1581, CS1580
 namespace Krypton.Toolkit.Suite.Extended.Calendar
 {
     /// <summary>
@@ -121,7 +122,7 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         #region Properties
 
         /// <summary>
-        /// Gets or sets an array of rectangles containing bounds additional to <see cref="Bounds"/> property.
+        /// Gets or sets an array of rectangles containing bounds additional to <see cref="CalendarSelectableElement.Bounds"/> property.
         /// </summary>
         /// <remarks>
         /// Items may contain additional bounds because of several graphical occourences, mostly when <see cref="Calendar"/> in 
@@ -604,7 +605,8 @@ namespace Krypton.Toolkit.Suite.Extended.Calendar
         /// <summary>
         /// Indicates if the time of the item intersects with the provided time
         /// </summary>
-        /// <param name="time"></param>
+        /// <param name="timeStart"></param>
+        /// <param name="timeEnd"></param>
         /// <returns></returns>
         public bool IntersectsWith(TimeSpan timeStart, TimeSpan timeEnd)
         {
